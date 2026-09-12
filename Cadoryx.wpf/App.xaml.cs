@@ -8,6 +8,7 @@ using Cadoryx.ViewModels.Services.Platform.Settings;
 using Cadoryx.ViewModels.Toolboxes;
 using Cadoryx.wpf.Services.Application;
 using Cadoryx.wpf.Services.Dialogs;
+using Cadoryx.wpf.Services.Toolboxes;
 using CommunityToolkit.Mvvm.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection;
 using System.Windows;
@@ -70,6 +71,7 @@ public partial class App : Application
         services.AddSingleton<IDialogService>(provider => provider.GetRequiredService<DialogService>());
         services.AddSingleton<IApplicationSettingsDialogService>(provider => provider.GetRequiredService<DialogService>());
         services.AddSingleton<ToolboxLayoutPersistenceService>();
+        services.AddSingleton<Cadoryx.ViewModels.Services.Platform.IToolboxIconProvider, ToolboxIconProvider>();
 
 
         services.AddDockLayoutService(configure: dock =>
@@ -85,6 +87,7 @@ public partial class App : Application
             // Register toolboxes — order determines the sidebar button order.
             dock.AddToolbox<ModelTreeToolboxViewModel>();
             dock.AddToolbox<PropertiesToolboxViewModel>();
+            dock.AddToolbox<ModelingToolboxViewModel>();
             dock.AddToolbox<MessagesToolboxViewModel>();
 
         });

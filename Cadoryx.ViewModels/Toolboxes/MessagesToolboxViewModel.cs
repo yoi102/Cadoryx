@@ -3,15 +3,18 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using AvalonDock.Core;
 using Cadoryx.ViewModels.Services.Platform.Notifications;
 using Cadoryx.Lang.Strings;
+using Cadoryx.ViewModels.Services.Platform;
 
 namespace Cadoryx.ViewModels.Toolboxes;
 
 public partial class MessagesToolboxViewModel : CadToolboxViewModelBase
 {
-    public MessagesToolboxViewModel(ICadMessageLog messageLog)
-        : base("toolbox.messages", Strings.Messages, DockZone.BottomLeft, "≡", isOpenByDefault: true)
+    public MessagesToolboxViewModel(ICadMessageLog messageLog, IToolboxIconProvider iconProvider)
+        : base("toolbox.messages", Strings.Messages, DockZone.BottomLeft, "", isOpenByDefault: true)
     {
         ArgumentNullException.ThrowIfNull(messageLog);
+        ArgumentNullException.ThrowIfNull(iconProvider);
+        Icon=iconProvider.Messages;
         ClearCommand=new CommunityToolkit.Mvvm.Input.RelayCommand(messageLog.Clear);
         if (messageLog.Entries.Count == 0)
         {

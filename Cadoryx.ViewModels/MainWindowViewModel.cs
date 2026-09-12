@@ -72,6 +72,10 @@ public partial class MainWindowViewModel : ObservableObject
         _dockLayoutService.GetAnchorable<PropertiesToolboxViewModel>()
         ?? throw new InvalidOperationException("The properties toolbox is not registered.");
 
+    public ModelingToolboxViewModel Modeling =>
+        _dockLayoutService.GetAnchorable<ModelingToolboxViewModel>()
+        ?? throw new InvalidOperationException("The modeling toolbox is not registered.");
+
     public MessagesToolboxViewModel Messages =>
         _dockLayoutService.GetAnchorable<MessagesToolboxViewModel>()
         ?? throw new InvalidOperationException("The messages toolbox is not registered.");
@@ -182,7 +186,7 @@ public partial class MainWindowViewModel : ObservableObject
             if(!ReferenceEquals(doc,value)){doc.IsActive=false;doc.InvalidatePreview();}
         }
         if(value is not null){value.IsActive=true;if(!ReferenceEquals(_dockLayoutService.ActiveDockable,value))_dockLayoutService.ActiveDockable=value;}
-        ModelTree.Bind(value);Properties.Bind(value);
+        ModelTree.Bind(value);Properties.Bind(value);Modeling.Bind(value);
         RefreshCommandState();
     }
     private bool CanStartOperation()=>!IsBusy&&!IsShuttingDown;

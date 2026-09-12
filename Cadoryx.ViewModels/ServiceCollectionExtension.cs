@@ -11,6 +11,7 @@ public static class ServiceCollectionExtension
         services.AddTransient<MainWindowViewModel>();
         services.AddTransient<ModelTreeToolboxViewModel>();
         services.AddTransient<PropertiesToolboxViewModel>();
+        services.AddTransient<ModelingToolboxViewModel>();
         services.AddTransient<MessagesToolboxViewModel>();
         return services;
     }

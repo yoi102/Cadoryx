@@ -5,13 +5,18 @@ using AvalonDock.Core;
 using Cadoryx.Db;
 using Cadoryx.Editor;
 using Cadoryx.Lang.Strings;
+using Cadoryx.ViewModels.Services.Platform;
 namespace Cadoryx.ViewModels.Toolboxes;
 public partial class ModelTreeToolboxViewModel : CadToolboxViewModelBase
 {
     private CadDocumentViewModel? document;
     private bool syncing;
     public ObservableCollection<ModelTreeItemViewModel> Items {get;}=[];
-    public ModelTreeToolboxViewModel():base("toolbox.model-tree",Strings.Model,DockZone.LeftTop,"▦",true){}
+    public ModelTreeToolboxViewModel(IToolboxIconProvider iconProvider):base("toolbox.model-tree",Strings.Model,DockZone.LeftTop,"",true)
+    {
+        ArgumentNullException.ThrowIfNull(iconProvider);
+        Icon=iconProvider.ModelTree;
+    }
     public void Bind(CadDocumentViewModel? value)
     {
         if(document is not null){document.SceneChanged-=OnScene;document.Selection.Changed-=OnSelection;}

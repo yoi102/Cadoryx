@@ -6,6 +6,7 @@ using Cadoryx.Db;
 using Cadoryx.Commands;
 using Cadoryx.Editor;
 using Cadoryx.Lang.Strings;
+using Cadoryx.ViewModels.Services.Platform;
 namespace Cadoryx.ViewModels.Toolboxes;
 public partial class PropertiesToolboxViewModel:CadToolboxViewModelBase
 {
@@ -20,7 +21,11 @@ public partial class PropertiesToolboxViewModel:CadToolboxViewModelBase
     [ObservableProperty] private MaterialId? selectedMaterial;
     public ObservableCollection<CadMaterial> Materials {get;}=[];
     public ObservableCollection<PropertyRowViewModel> Properties {get;}=[];
-    public PropertiesToolboxViewModel():base("toolbox.properties",Strings.Properties,DockZone.RightTop,"◈",true){}
+    public PropertiesToolboxViewModel(IToolboxIconProvider iconProvider):base("toolbox.properties",Strings.Properties,DockZone.RightTop,"",true)
+    {
+        ArgumentNullException.ThrowIfNull(iconProvider);
+        Icon=iconProvider.Properties;
+    }
     public void Bind(CadDocumentViewModel? value)
     {
         if(document is not null){document.Selection.Changed-=Refresh;document.SceneChanged-=Refresh;}

@@ -147,6 +147,9 @@
             <DataTemplate DataType="{x:Type vmToolboxes:PropertiesToolboxViewModel}">
                 <toolboxViews:PropertiesToolboxView />
             </DataTemplate>
+            <DataTemplate DataType="{x:Type vmToolboxes:ModelingToolboxViewModel}">
+                <toolboxViews:ModelingToolboxView />
+            </DataTemplate>
             <DataTemplate DataType="{x:Type vmToolboxes:MessagesToolboxViewModel}">
                 <toolboxViews:MessagesToolboxView />
             </DataTemplate>
