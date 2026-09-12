@@ -1,8 +1,9 @@
 <UserControl x:Class="Cadoryx.wpf.Views.Toolboxes.ModelTreeToolboxView"
  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+ xmlns:r="clr-namespace:Cadoryx.Lang;assembly=Cadoryx.Lang"
  xmlns:vm="clr-namespace:Cadoryx.ViewModels.Toolboxes;assembly=Cadoryx.ViewModels">
  <DockPanel Margin="8">
-  <TextBlock DockPanel.Dock="Top" Text="勾选实体可多选；点击特征可编辑参数" TextWrapping="Wrap" Margin="0,0,0,8"/>
+  <TextBlock DockPanel.Dock="Top" Text="{I18N {x:Static r:LangKeys.ModelTreeInstruction}}" TextWrapping="Wrap" Margin="0,0,0,8"/>
   <TreeView ItemsSource="{Binding Items}" SelectedItemChanged="OnSelectedItemChanged" BorderThickness="0">
    <TreeView.ItemContainerStyle><Style TargetType="TreeViewItem"><Setter Property="IsExpanded" Value="{Binding IsExpanded,Mode=TwoWay}"/></Style></TreeView.ItemContainerStyle>
    <TreeView.Resources>

@@ -346,7 +346,8 @@
       "cadoryx.commands": {
         "type": "Project",
         "dependencies": {
-          "Cadoryx.Kernel.Abstractions": "[1.0.0, )"
+          "Cadoryx.Kernel.Abstractions": "[1.0.0, )",
+          "Cadoryx.Lang": "[1.0.0, )"
         }
       },
       "cadoryx.db": {
@@ -402,6 +403,7 @@
         "type": "Project",
         "dependencies": {
           "Cadoryx.Editor": "[1.0.0, )",
+          "Cadoryx.Lang": "[1.0.0, )",
           "Cadoryx.ViewModels.Services": "[1.0.0, )",
           "CommunityToolkit.Mvvm": "[8.4.2, )",
           "Dirkster.AvalonDock.Core": "[5.0.1-preview.127, )",

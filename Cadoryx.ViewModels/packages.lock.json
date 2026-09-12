@@ -48,10 +48,16 @@
         "resolved": "11.0.0-preview.7.26381.103",
         "contentHash": "PQNgwclRUW8bimfMe2AqQZjvs0cUGbY/Rut+q6Vq4ub61TwNjOmvhMULq7V6bnyhLmfpQrsZ76X5SlFH9omdSA=="
       },
+      "Antelcat.I18N.SourceGenerators": {
+        "type": "Transitive",
+        "resolved": "2.0.0-preview-2",
+        "contentHash": "xZo+iwketCNIjnDkPM1v1erAPBSMLMYn7ztr1VBjWLFGNdVTd3fYJ7rpuF5i5d0eYHr1ZOrIOay+qfkJrCKYPQ=="
+      },
       "cadoryx.commands": {
         "type": "Project",
         "dependencies": {
-          "Cadoryx.Kernel.Abstractions": "[1.0.0, )"
+          "Cadoryx.Kernel.Abstractions": "[1.0.0, )",
+          "Cadoryx.Lang": "[1.0.0, )"
         }
       },
       "cadoryx.db": {
@@ -68,6 +74,12 @@
         "type": "Project",
         "dependencies": {
           "Cadoryx.Db": "[1.0.0, )"
+        }
+      },
+      "cadoryx.lang": {
+        "type": "Project",
+        "dependencies": {
+          "Antelcat.I18N.SourceGenerators": "[2.0.0-preview-2, )"
         }
       },
       "cadoryx.rendering": {

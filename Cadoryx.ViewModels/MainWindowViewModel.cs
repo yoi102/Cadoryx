@@ -1,5 +1,6 @@
 ﻿using AvalonDock.Core;
 using AvalonDock.Mvvm;
+using Cadoryx.Lang.Strings;
 using Cadoryx.ViewModels.Services.Platform;
 using Cadoryx.ViewModels.Services.Platform.Settings;
 using Cadoryx.ViewModels.Toolboxes;
@@ -88,7 +89,7 @@ public partial class MainWindowViewModel : ObservableObject
     public partial bool IsDarkTheme { get; set; }
 
     [ObservableProperty]
-    public partial string StatusText { get; set; } = "就绪";
+    public partial string StatusText { get; set; } = Strings.Ready;
 
     partial void OnIsDarkThemeChanged(bool value)
     {
@@ -120,7 +121,7 @@ public partial class MainWindowViewModel : ObservableObject
     }
 
     [RelayCommand(CanExecute=nameof(CanStartOperation))]
-    private void New(){if(!IsShuttingDown)Attach(workspace.Create($"未命名 {Documents.Count+1}"));}
+    private void New(){if(!IsShuttingDown)Attach(workspace.Create(string.Format(Strings.UntitledDocumentFormat,Documents.Count+1)));}
 
     [RelayCommand(CanExecute=nameof(CanStartOperation))]
     private async Task OpenFileAsync()
@@ -136,7 +137,7 @@ public partial class MainWindowViewModel : ObservableObject
         using var loaded=own?await storage.LoadAsync(path,assets):await kernel.ImportAsync(path,assets);
         Attach(workspace.Attach(loaded.Snapshot,own?Path.GetFullPath(path):null));
         foreach(var diagnostic in loaded.Diagnostics)log.Add(diagnostic.Message,CadMessageLevel.Information,diagnostic.Code);
-        StatusText=$"已打开 {Path.GetFileName(path)}";
+        StatusText=string.Format(Strings.OpenedFormat,Path.GetFileName(path));
     });
 
     [RelayCommand(CanExecute=nameof(CanUseDocument))]
@@ -146,7 +147,7 @@ public partial class MainWindowViewModel : ObservableObject
     {
         var path=saveAs?null:doc.Session.FilePath;path??=files.SaveDocument(doc.Session.Snapshot.Name);
         if(path is null)return false;
-        await doc.Session.SaveAsync(storage,path);StatusText=$"已保存 {Path.GetFileName(path)}";return !doc.Session.IsDirty;
+        await doc.Session.SaveAsync(storage,path);StatusText=string.Format(Strings.SavedFormat,Path.GetFileName(path));return !doc.Session.IsDirty;
     }
     [RelayCommand(CanExecute=nameof(CanUseDocument))] private async Task ExportAsync()
     {
@@ -157,7 +158,7 @@ public partial class MainWindowViewModel : ObservableObject
             using var capture=doc.Session.Capture();
             var report=await kernel.ExportAsync(capture.Snapshot,assets,request.Path,new CadExportOptions(request.LinearDeflectionMm,request.AngularDeflectionRad,request.BinaryStl,request.VisibleOnly));
             foreach(var diagnostic in report.Diagnostics)log.Add(diagnostic.Message,CadMessageLevel.Information,diagnostic.Code);
-            StatusText=$"已导出 {report.Format}：{Path.GetFileName(report.Path)}";
+            StatusText=string.Format(Strings.ExportedFormat,report.Format,Path.GetFileName(report.Path));
         });
     }
 
@@ -171,7 +172,7 @@ public partial class MainWindowViewModel : ObservableObject
     private void FitView()=>ActiveDocument?.FitView();
 
     [RelayCommand(CanExecute=nameof(CanUseDocument))]
-    private void SetView(string viewName)=>ActiveDocument?.SetView(viewName switch{"前视"=>CadProjection.Front,"顶视"=>CadProjection.Top,"右视"=>CadProjection.Right,_=>CadProjection.Axonometric});
+    private void SetView(string viewName)=>ActiveDocument?.SetView(viewName switch{"Front"=>CadProjection.Front,"Top"=>CadProjection.Top,"Right"=>CadProjection.Right,_=>CadProjection.Axonometric});
     [RelayCommand] private void StartTool(string kind){if(ActiveDocument is null)New();ActiveDocument?.StartTool(kind);}
     [RelayCommand] private void SetDisplay(string mode)=>ActiveDocument?.SetDisplay(mode=="Wireframe"?CadDisplayMode.Wireframe:CadDisplayMode.Shaded);
     partial void OnActiveDocumentChanged(CadDocumentViewModel? value)
@@ -271,7 +272,7 @@ public partial class MainWindowViewModel : ObservableObject
         ApplySettingsToServices(_applicationSettings);
         CurrentCultureLCID = _applicationSettings.General.CultureLcid;
         IsDarkTheme = _applicationSettings.General.IsDarkTheme;
-        StatusText = "应用设置已应用";
+        StatusText = Strings.ApplicationSettingsApplied;
     }
 
     private void ApplySettingsToServices(CadoryxApplicationSettings settings)

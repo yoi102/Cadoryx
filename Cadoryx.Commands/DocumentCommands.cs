@@ -1,6 +1,7 @@
 using System.Collections.Immutable;
 using Cadoryx.Db;
 using Cadoryx.Kernel.Abstractions;
+using Cadoryx.Lang.Strings;
 
 namespace Cadoryx.Commands;
 
@@ -26,7 +27,7 @@ public sealed record DocumentChangeSet(DocumentId DocumentId,DocumentStateId Bef
 }
 public sealed class AddBodyCommand(GeometryRecipe recipe,string name,DefinitionId? targetPart=null) : ICadDocumentCommand
 {
-    public string Name=>"创建 "+name;
+    public string Name=>string.Format(Strings.CreateBodyFormat,name);
     public async Task<PreparedDocumentEdit> PrepareAsync(DocumentCommandContext context,CancellationToken cancellationToken)
     {
         CadGuard.Name(name);recipe.Validate();
@@ -55,7 +56,13 @@ public sealed class AddBodyCommand(GeometryRecipe recipe,string name,DefinitionI
 public sealed class BooleanCommand(BooleanOperation operation,IEnumerable<BodyId> inputBodies) : ICadDocumentCommand
 {
     private readonly BodyId[] ids=inputBodies.Distinct().ToArray();
-    public string Name=>operation.ToString();
+    public string Name=>operation switch
+    {
+        BooleanOperation.Fuse=>Strings.Union,
+        BooleanOperation.Cut=>Strings.Difference,
+        BooleanOperation.Common=>Strings.Intersection,
+        _=>operation.ToString()
+    };
     public async Task<PreparedDocumentEdit> PrepareAsync(DocumentCommandContext context,CancellationToken cancellationToken)
     {
         if(ids.Length<2)throw new CadValidationException("Select at least two bodies.");
@@ -89,19 +96,19 @@ public sealed class EditDocumentCommand(string name,Func<DocumentSnapshot,Docume
 }
 public static class DocumentEdits
 {
-    public static ICadDocumentCommand RenameBody(BodyId id,string name)=>new EditDocumentCommand("重命名",doc=>
+    public static ICadDocumentCommand RenameBody(BodyId id,string name)=>new EditDocumentCommand(Strings.Rename,doc=>
     {
         CadGuard.Name(name);var b=EditableBody(doc,id);return b.Name==name?doc:doc with {Bodies=doc.Bodies.SetItem(id,b with {Name=name})};
     });
-    public static ICadDocumentCommand SetAppearance(BodyId id,CadAppearance appearance)=>new EditDocumentCommand("修改外观",doc=>
+    public static ICadDocumentCommand SetAppearance(BodyId id,CadAppearance appearance)=>new EditDocumentCommand(Strings.SetAppearance,doc=>
     {
         var b=EditableBody(doc,id);return b.Appearance==appearance?doc:doc with {Bodies=doc.Bodies.SetItem(id,b with {Appearance=appearance})};
     });
-    public static ICadDocumentCommand SetVisibility(BodyId id,bool visible)=>new EditDocumentCommand("修改可见性",doc=>
+    public static ICadDocumentCommand SetVisibility(BodyId id,bool visible)=>new EditDocumentCommand(Strings.SetVisibility,doc=>
     {
         var b=EditableBody(doc,id);return b.IsVisible==visible?doc:doc with {Bodies=doc.Bodies.SetItem(id,b with {IsVisible=visible})};
     });
-    public static ICadDocumentCommand MoveSlot(DefinitionId owner,ComponentSlotId id,RigidTransform3d placement)=>new EditDocumentCommand("移动实例",doc=>
+    public static ICadDocumentCommand MoveSlot(DefinitionId owner,ComponentSlotId id,RigidTransform3d placement)=>new EditDocumentCommand(Strings.MoveInstance,doc=>
     {
         placement.Validate();var a=(AssemblyDefinition)doc.Definitions[owner];var index=a.Children.FindIndex(x=>x.Id==id);
         if(index<0)throw new CadValidationException("Slot not in this assembly.");

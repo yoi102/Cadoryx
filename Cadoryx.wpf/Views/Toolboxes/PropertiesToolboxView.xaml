@@ -1,19 +1,20 @@
 <UserControl x:Class="Cadoryx.wpf.Views.Toolboxes.PropertiesToolboxView"
  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
- xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls" xmlns:cv="clr-namespace:Cadoryx.wpf.Converters">
+ xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls" xmlns:cv="clr-namespace:Cadoryx.wpf.Converters"
+ xmlns:r="clr-namespace:Cadoryx.Lang;assembly=Cadoryx.Lang">
  <ScrollViewer VerticalScrollBarVisibility="Auto">
   <StackPanel Margin="12">
    <TextBlock Text="{Binding SelectionSummary}" FontSize="15" Margin="0,0,0,12"/>
    <StackPanel IsEnabled="{Binding HasSelection}">
-    <TextBlock Text="实体名称"/><TextBox Text="{Binding ObjectName}" Margin="0,4,0,12"/>
-    <TextBlock Text="颜色"/>
+    <TextBlock Text="{I18N {x:Static r:LangKeys.EntityName}}"/><TextBox Text="{Binding ObjectName}" Margin="0,4,0,12"/>
+    <TextBlock Text="{I18N {x:Static r:LangKeys.Color}}"/>
     <mah:ColorPicker SelectedColor="{Binding Argb,Mode=TwoWay,Converter={x:Static cv:UIntColorToMediaColorConverter.Instance}}" IsAlphaChannelVisible="False" Margin="0,4,0,12"/>
-    <CheckBox Content="颜色跟随图层" IsChecked="{Binding ByLayer}" Margin="0,0,0,8"/>
-    <CheckBox Content="可见" IsChecked="{Binding IsBodyVisible}" Margin="0,0,0,12"/>
-    <TextBlock Text="材质"/>
+    <CheckBox Content="{I18N {x:Static r:LangKeys.ByLayer}}" IsChecked="{Binding ByLayer}" Margin="0,0,0,8"/>
+    <CheckBox Content="{I18N {x:Static r:LangKeys.Visible}}" IsChecked="{Binding IsBodyVisible}" Margin="0,0,0,12"/>
+    <TextBlock Text="{I18N {x:Static r:LangKeys.Material}}"/>
     <ComboBox ItemsSource="{Binding Materials}" DisplayMemberPath="Name" SelectedValuePath="Id" SelectedValue="{Binding SelectedMaterial}" Margin="0,4,0,12"/>
-    <Button Content="应用属性" Command="{Binding ApplyCommand}" Margin="0,0,0,8"/>
-    <Button Content="编辑生成特征" Command="{Binding EditFeatureCommand}" Margin="0,0,0,16"/>
+    <Button Content="{I18N {x:Static r:LangKeys.ApplyProperties}}" Command="{Binding ApplyCommand}" Margin="0,0,0,8"/>
+    <Button Content="{I18N {x:Static r:LangKeys.EditFeature}}" Command="{Binding EditFeatureCommand}" Margin="0,0,0,16"/>
    </StackPanel>
    <ItemsControl ItemsSource="{Binding Properties}">
     <ItemsControl.ItemTemplate><DataTemplate><StackPanel Margin="0,4"><TextBlock Text="{Binding Name}" Opacity="0.6"/><TextBlock Text="{Binding Value}" TextWrapping="Wrap"/></StackPanel></DataTemplate></ItemsControl.ItemTemplate>

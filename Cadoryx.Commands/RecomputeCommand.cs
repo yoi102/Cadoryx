@@ -1,11 +1,12 @@
 using Cadoryx.Db;
+using Cadoryx.Lang.Strings;
 using System.Collections.Immutable;
 namespace Cadoryx.Commands;
 
 /// <summary>Reevaluates the changed feature and its dependent closure into an isolated candidate.</summary>
 public sealed class RecomputeCommand(FeatureId featureId,GeometryRecipe recipe) : ICadDocumentCommand
 {
-    public string Name=>"修改特征参数";
+    public string Name=>Strings.EditFeatureParameters;
     public async Task<PreparedDocumentEdit> PrepareAsync(DocumentCommandContext context,CancellationToken cancellationToken)
     {
         var doc=context.Snapshot;var original=doc.Features[featureId];

@@ -20,7 +20,7 @@
                  mc:Ignorable="d"
                  d:DataContext="{d:DesignInstance Type=vm:MainWindowViewModel}"
                  Topmost="{Binding Topmost}"
-                 Title="Cadoryx"
+                 Title="{I18N {x:Static r:LangKeys.Cadoryx}}"
                  TitleAlignment="Center"
                  TitleCharacterCasing="Normal"
                  ShowIconOnTitleBar="True"
@@ -40,26 +40,26 @@
         <mah:WindowCommands>
             <Button Margin="12,0,5,0"
                     Content="{md:PackIcon Kind=Github, Size=19}"
-                    ToolTip="Cadoryx GitHub"
+                    ToolTip="{I18N {x:Static r:LangKeys.CadoryxGitHub}}"
                     Click="IconClicked"
                     Width="32"
                     Height="24"
                     Padding="0" />
             <Menu VerticalAlignment="Center" md:MenuAssist.TopLevelMenuItemHeight="25">
-                <MenuItem Header="文件" Foreground="White">
-                    <MenuItem Header="新建"
+                <MenuItem Header="{I18N {x:Static r:LangKeys.File}}" Foreground="White">
+                    <MenuItem Header="{I18N {x:Static r:LangKeys.New}}"
                               Command="{Binding NewCommand}"
                               Icon="{md:PackIcon Kind=FilePlusOutline}" />
-                    <MenuItem Header="打开"
+                    <MenuItem Header="{I18N {x:Static r:LangKeys.OpenFile}}"
                               Command="{Binding OpenFileCommand}"
                               Icon="{md:PackIcon Kind=FolderOpenOutline}" />
-                    <MenuItem Header="保存"
+                    <MenuItem Header="{I18N {x:Static r:LangKeys.Save}}"
                               Command="{Binding SaveCommand}"
                               Icon="{md:PackIcon Kind=ContentSaveOutline}" />
                     <Separator />
-                    <MenuItem Header="另存为" Command="{Binding SaveAsCommand}" />
-                    <MenuItem Header="导出 STEP / IGES / STL" Command="{Binding ExportCommand}" />
-                    <MenuItem Header="应用设置"
+                    <MenuItem Header="{I18N {x:Static r:LangKeys.SaveAs}}" Command="{Binding SaveAsCommand}" />
+                    <MenuItem Header="{I18N {x:Static r:LangKeys.ExportFormats}}" Command="{Binding ExportCommand}" />
+                    <MenuItem Header="{I18N {x:Static r:LangKeys.ApplicationSettings}}"
                               Command="{Binding OpenApplicationSettingsCommand}"
                               Icon="{md:PackIcon Kind=CogOutline}" />
                 </MenuItem>
@@ -74,14 +74,14 @@
                           IsChecked="{Binding Topmost}"
                           Background="Transparent"
                           Foreground="White"
-                          ToolTip="窗口置顶"
+                          ToolTip="{I18N {x:Static r:LangKeys.AlwaysOnTop}}"
                           md:ToggleButtonAssist.OnContent="{md:PackIcon Kind=Pin}" />
             <ToggleButton Style="{StaticResource MaterialDesignActionSecondaryToggleButton}"
                           Content="{md:PackIcon Kind=WhiteBalanceSunny, Size=19}"
                           IsChecked="{Binding IsDarkTheme}"
                           Background="Transparent"
                           Foreground="White"
-                          ToolTip="深色主题"
+                          ToolTip="{I18N {x:Static r:LangKeys.UseDarkTheme}}"
                           md:ToggleButtonAssist.OnContent="{md:PackIcon Kind=WeatherNight}" />
             <Menu VerticalAlignment="Center"
                   Width="70"

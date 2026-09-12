@@ -22,6 +22,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Cadoryx.Lang\Cadoryx.Lang.csproj" />
     <ProjectReference Include="..\Cadoryx.ViewModels.Services\Cadoryx.ViewModels.Services.csproj" />
     <ProjectReference Include="..\Cadoryx.Editor\Cadoryx.Editor.csproj" />
   </ItemGroup>

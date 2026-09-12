@@ -1,4 +1,5 @@
 using Cadoryx.ViewModels.Services.Platform.Settings;
+using Cadoryx.Lang.Strings;
 using CommunityToolkit.Mvvm.ComponentModel;
 
 namespace Cadoryx.ViewModels.Settings;
@@ -45,7 +46,7 @@ public partial class ApplicationSettingsViewModel : ObservableObject
                 continue;
 
             SelectedSection = section;
-            ValidationError = "设置中存在无效值，请检查当前页面。";
+            ValidationError = Strings.InvalidApplicationSettings;
             return false;
         }
 
@@ -89,13 +90,13 @@ public sealed record ApplicationCultureOption(int Lcid, string DisplayName);
 public partial class GeneralApplicationSettingsViewModel : ApplicationSettingsSectionViewModel
 {
     public GeneralApplicationSettingsViewModel(CadoryxGeneralSettings settings)
-        : base("常规")
+        : base(Strings.General)
     {
         CultureOptions =
         [
-            new(1033, "English"),
-            new(1041, "日本語"),
-            new(2052, "中文")
+            new(1033, Strings.English),
+            new(1041, Strings.Japanese),
+            new(2052, Strings.Chinese)
         ];
         Load(settings);
     }
@@ -137,13 +138,13 @@ public sealed record ProjectionOption(CadoryxProjection Projection, string Displ
 public partial class ViewportApplicationSettingsViewModel : ApplicationSettingsSectionViewModel
 {
     public ViewportApplicationSettingsViewModel(CadoryxViewportSettings settings)
-        : base("三维视口")
+        : base(Strings.Viewport)
     {
         ProjectionOptions =
         [
-            new(CadoryxProjection.Isometric, "等轴测"),
-            new(CadoryxProjection.Orthographic, "正交"),
-            new(CadoryxProjection.Perspective, "透视")
+            new(CadoryxProjection.Isometric, Strings.Axonometric),
+            new(CadoryxProjection.Orthographic, Strings.Orthographic),
+            new(CadoryxProjection.Perspective, Strings.Perspective)
         ];
         Load(settings);
     }
@@ -189,13 +190,13 @@ public sealed record SelectionModeOption(CadoryxSelectionMode Mode, string Displ
 public partial class InteractionApplicationSettingsViewModel : ApplicationSettingsSectionViewModel
 {
     public InteractionApplicationSettingsViewModel(CadoryxInteractionSettings settings)
-        : base("交互")
+        : base(Strings.Interaction)
     {
         SelectionModeOptions =
         [
-            new(CadoryxSelectionMode.Single, "单选"),
-            new(CadoryxSelectionMode.Multiple, "多选"),
-            new(CadoryxSelectionMode.Window, "框选")
+            new(CadoryxSelectionMode.Single, Strings.SingleSelection),
+            new(CadoryxSelectionMode.Multiple, Strings.MultipleSelection),
+            new(CadoryxSelectionMode.Window, Strings.WindowSelection)
         ];
         Load(settings);
     }

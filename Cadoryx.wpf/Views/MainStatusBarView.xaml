@@ -1,7 +1,8 @@
 <UserControl x:Class="Cadoryx.wpf.Views.MainStatusBarView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes">
+             xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:r="clr-namespace:Cadoryx.Lang;assembly=Cadoryx.Lang">
     <Border Background="{DynamicResource MaterialDesign.Brush.Background}"
             BorderBrush="{DynamicResource MaterialDesign.Brush.Divider}"
             BorderThickness="0,1,0,0"
@@ -18,18 +19,18 @@
             </StatusBarItem>
             <Separator />
             <StatusBarItem>
-                <TextBlock Text="工作区：建模" Opacity="0.75" />
+                <TextBlock Text="{I18N {x:Static r:LangKeys.WorkspaceModeling}}" Opacity="0.75" />
             </StatusBarItem>
             <Separator />
             <StatusBarItem>
-                <TextBlock Text="单位：mm" Opacity="0.75" />
+                <TextBlock Text="{I18N {x:Static r:LangKeys.UnitMillimeter}}" Opacity="0.75" />
             </StatusBarItem>
             <Separator />
             <StatusBarItem>
                 <TextBlock Text="{Binding ActiveDocument.Session.Snapshot.Name}" Opacity="0.75" />
             </StatusBarItem>
             <StatusBarItem HorizontalAlignment="Right">
-                <TextBlock Text="OcctSharp · 3D CAD"
+                <TextBlock Text="{I18N {x:Static r:LangKeys.OcctSharp3dCad}}"
                            Foreground="#FFFFB74D" />
             </StatusBarItem>
         </StatusBar>

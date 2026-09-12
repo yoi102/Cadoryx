@@ -121,69 +121,9 @@
     <value>Cancel</value>
     <comment>Cancel</comment>
   </data>
-  <data name="Arc" xml:space="preserve">
-    <value>Arc</value>
-    <comment>Arc</comment>
-  </data>
-  <data name="ArcThreePoint" xml:space="preserve">
-    <value>3-Point Arc</value>
-    <comment>3-Point Arc</comment>
-  </data>
-  <data name="ArcStartCenterEnd" xml:space="preserve">
-    <value>Start, Center, End Arc</value>
-    <comment>Start, Center, End Arc</comment>
-  </data>
-  <data name="ArcStartCenterAngle" xml:space="preserve">
-    <value>Start, Center, Angle Arc</value>
-    <comment>Start, Center, Angle Arc</comment>
-  </data>
-  <data name="ArcStartCenterLength" xml:space="preserve">
-    <value>Start, Center, Length Arc</value>
-    <comment>Start, Center, Length Arc</comment>
-  </data>
-  <data name="ArcStartEndAngle" xml:space="preserve">
-    <value>Start, End, Angle Arc</value>
-    <comment>Start, End, Angle Arc</comment>
-  </data>
-  <data name="ArcStartEndDirection" xml:space="preserve">
-    <value>Start, End, Direction Arc</value>
-    <comment>Start, End, Direction Arc</comment>
-  </data>
-  <data name="ArcStartEndRadius" xml:space="preserve">
-    <value>Start, End, Radius Arc</value>
-    <comment>Start, End, Radius Arc</comment>
-  </data>
-  <data name="ArcCenterStartEnd" xml:space="preserve">
-    <value>Center, Start, End Arc</value>
-    <comment>Center, Start, End Arc</comment>
-  </data>
-  <data name="ArcCenterStartAngle" xml:space="preserve">
-    <value>Center, Start, Angle Arc</value>
-    <comment>Center, Start, Angle Arc</comment>
-  </data>
-  <data name="ArcCenterStartLength" xml:space="preserve">
-    <value>Center, Start, Length Arc</value>
-    <comment>Center, Start, Length Arc</comment>
-  </data>
-  <data name="ArcContinue" xml:space="preserve">
-    <value>Continue Arc</value>
-    <comment>Continue Arc</comment>
-  </data>
   <data name="Chinese" xml:space="preserve">
     <value>中文</value>
     <comment>中文</comment>
-  </data>
-  <data name="Circle" xml:space="preserve">
-    <value>Circle</value>
-    <comment>Circle</comment>
-  </data>
-  <data name="Ellipse" xml:space="preserve">
-    <value>Ellipse</value>
-    <comment>Ellipse</comment>
-  </data>
-  <data name="Rectangle" xml:space="preserve">
-    <value>Rectangle</value>
-    <comment>Rectangle</comment>
   </data>
   <data name="Confirm" xml:space="preserve">
     <value>Confirm</value>
@@ -197,30 +137,6 @@
     <value>Exit Confirmation</value>
     <comment>Exit Confirmation</comment>
   </data>
-  <data name="UnsavedDocumentTitle" xml:space="preserve">
-    <value>Unsaved changes</value>
-    <comment>Unsaved document dialog title</comment>
-  </data>
-  <data name="UnsavedDocumentMessageFormat" xml:space="preserve">
-    <value>Do you want to save changes to "{0}"?</value>
-    <comment>Unsaved document dialog message</comment>
-  </data>
-  <data name="DontSave" xml:space="preserve">
-    <value>Don't Save</value>
-    <comment>Close without saving</comment>
-  </data>
-  <data name="Cross" xml:space="preserve">
-    <value>Cross</value>
-    <comment>Cross</comment>
-  </data>
-  <data name="InfiniteCross" xml:space="preserve">
-    <value>Infinite Cross</value>
-    <comment>Infinite Cross</comment>
-  </data>
-  <data name="Dots" xml:space="preserve">
-    <value>Dots</value>
-    <comment>Dots</comment>
-  </data>
   <data name="English" xml:space="preserve">
     <value>English</value>
     <comment>English</comment>
@@ -233,80 +149,16 @@
     <value>日本語</value>
     <comment>日本語</comment>
   </data>
-  <data name="Line" xml:space="preserve">
-    <value>Line</value>
-    <comment>Line</comment>
-  </data>
-  <data name="Lines" xml:space="preserve">
-    <value>Lines</value>
-    <comment>Lines</comment>
-  </data>
-  <data name="None" xml:space="preserve">
-    <value>None</value>
-    <comment>None</comment>
-  </data>
   <data name="Ok" xml:space="preserve">
     <value>OK</value>
-  </data>
-  <data name="Pan" xml:space="preserve">
-    <value>Pan</value>
-    <comment>Pan</comment>
-  </data>
-  <data name="Polygon" xml:space="preserve">
-    <value>Polygon</value>
-    <comment>Polygon</comment>
-  </data>
-  <data name="Polyline" xml:space="preserve">
-    <value>Polyline</value>
-    <comment>Polyline</comment>
   </data>
   <data name="SaveAs" xml:space="preserve">
     <value>Save As...</value>
     <comment>Save As...</comment>
   </data>
-  <data name="Select" xml:space="preserve">
-    <value>Select</value>
-    <comment>Select</comment>
-  </data>
-  <data name="ShowImageInNewWindow" xml:space="preserve">
-    <value>Show Image in New Window</value>
-    <comment>Show Image in New Window</comment>
-  </data>
-  <data name="ShowProperties" xml:space="preserve">
-    <value>Show Properties</value>
-    <comment>Show Properties</comment>
-  </data>
-  <data name="Source" xml:space="preserve">
-    <value>Source</value>
-    <comment>Source</comment>
-  </data>
-  <data name="Spline" xml:space="preserve">
-    <value>Spline</value>
-    <comment>Spline</comment>
-  </data>
-  <data name="Text" xml:space="preserve">
-    <value>Text</value>
-    <comment>Text</comment>
-  </data>
-  <data name="ShapeText" xml:space="preserve">
-    <value>CAD Text</value>
-    <comment>CAD stroke text</comment>
-  </data>
-  <data name="UnhandledException" xml:space="preserve">
-    <value>Unhandled Exception</value>
-    <comment>Unhandled Exception</comment>
-  </data>
-  <data name="UnhandledExceptionExit" xml:space="preserve">
-    <value>An unhandled exception has occurred. The application will now exit.</value>
-    <comment>An unhandled exception has occurred. The application will now exit.</comment>
-  </data>
   <data name="View" xml:space="preserve">
     <value>View</value>
     <comment>View</comment>
-  </data>
-  <data name="Direct2dCad" xml:space="preserve">
-    <value>Direct2dCad</value>
-    <comment>Direct2dCad</comment>
   </data>
   <data name="OpenFile" xml:space="preserve">
     <value>Open File</value>
@@ -324,449 +176,29 @@
     <value>Redo</value>
     <comment>Redo</comment>
   </data>
-  <data name="DeleteSelection" xml:space="preserve">
-    <value>Delete selected entities</value>
-    <comment>Delete selected entities from the drawing</comment>
-  </data>
-  <data name="CopySelection" xml:space="preserve">
-    <value>Copy selected entities</value>
-    <comment>Copy selected entities</comment>
-  </data>
-  <data name="CutSelection" xml:space="preserve">
-    <value>Cut selected entities</value>
-    <comment>Cut selected entities</comment>
-  </data>
-  <data name="SelectAll" xml:space="preserve">
-    <value>Select all entities</value>
-    <comment>Select all entities</comment>
-  </data>
-  <data name="ClearSelection" xml:space="preserve">
-    <value>Clear selection</value>
-    <comment>Clear the current selection</comment>
-  </data>
-  <data name="CancelCurrentInteraction" xml:space="preserve">
-    <value>Cancel current interaction</value>
-    <comment>Cancel the active drawing or editing interaction</comment>
-  </data>
-  <data name="Grid" xml:space="preserve">
-    <value>Grid</value>
-    <comment>Grid</comment>
-  </data>
-  <data name="SnapMarker" xml:space="preserve">
-    <value>Snap Marker</value>
-    <comment>Snap Marker</comment>
-  </data>
-  <data name="ShapeFont" xml:space="preserve">
-    <value>Shape Font</value>
-    <comment>Shape Font</comment>
-  </data>
-  <data name="SetOrigin" xml:space="preserve">
-    <value>Set Origin</value>
-    <comment>Set Origin</comment>
-  </data>
-  <data name="Inverted" xml:space="preserve">
-    <value>Inverted</value>
-    <comment>Inverted</comment>
-  </data>
-  <data name="Margin" xml:space="preserve">
-    <value>Margin</value>
-    <comment>Margin</comment>
-  </data>
-  <data name="Origin" xml:space="preserve">
-    <value>Origin</value>
-    <comment>Origin</comment>
-  </data>
-  <data name="OriginMarker" xml:space="preserve">
-    <value>Origin Marker</value>
-    <comment>Origin Marker</comment>
-  </data>
-  <data name="OriginLine" xml:space="preserve">
-    <value>Origin Line</value>
-    <comment>Origin Line</comment>
-  </data>
-  <data name="Size" xml:space="preserve">
-    <value>Size</value>
-    <comment>Size</comment>
-  </data>
-  <data name="Stroke" xml:space="preserve">
-    <value>Stroke</value>
-    <comment>Stroke</comment>
-  </data>
   <data name="Color" xml:space="preserve">
     <value>Color</value>
     <comment>Color</comment>
-  </data>
-  <data name="User" xml:space="preserve">
-    <value>User</value>
-    <comment>User</comment>
-  </data>
-  <data name="Antialias" xml:space="preserve">
-    <value>Antialias</value>
-    <comment>Antialias</comment>
-  </data>
-  <data name="TextAntialiasing" xml:space="preserve">
-    <value>Text AA</value>
-    <comment>Text antialiasing</comment>
-  </data>
-  <data name="Selected" xml:space="preserve">
-    <value>Selected</value>
-    <comment>Selected</comment>
-  </data>
-  <data name="SelectionWindow" xml:space="preserve">
-    <value>Window</value>
-    <comment>Window selection</comment>
-  </data>
-  <data name="SelectionCrossing" xml:space="preserve">
-    <value>Crossing</value>
-    <comment>Crossing selection</comment>
-  </data>
-  <data name="Welcome" xml:space="preserve">
-    <value>Welcome</value>
-    <comment>Welcome</comment>
-  </data>
-  <data name="X" xml:space="preserve">
-    <value>X</value>
-    <comment>X</comment>
-  </data>
-  <data name="Square" xml:space="preserve">
-    <value>Square</value>
-    <comment>Square</comment>
-  </data>
-  <data name="Axes" xml:space="preserve">
-    <value>Axes</value>
-    <comment>Axes</comment>
-  </data>
-  <data name="Marker" xml:space="preserve">
-    <value>Marker</value>
-    <comment>Marker</comment>
-  </data>
-  <data name="AxesAndMarker" xml:space="preserve">
-    <value>Axes &amp; Marker</value>
-    <comment>Axes and marker</comment>
-  </data>
-  <data name="Solid" xml:space="preserve">
-    <value>Solid</value>
-    <comment>Solid</comment>
-  </data>
-  <data name="Dash" xml:space="preserve">
-    <value>Dash</value>
-    <comment>Dash</comment>
-  </data>
-  <data name="Dot" xml:space="preserve">
-    <value>Dot</value>
-    <comment>Dot</comment>
-  </data>
-  <data name="DashDot" xml:space="preserve">
-    <value>Dash Dot</value>
-    <comment>Dash Dot</comment>
-  </data>
-  <data name="Unicode" xml:space="preserve">
-    <value>Unicode</value>
-    <comment>Unicode</comment>
-  </data>
-  <data name="Simplex" xml:space="preserve">
-    <value>Simplex</value>
-    <comment>Simplex</comment>
-  </data>
-  <data name="MonoLine" xml:space="preserve">
-    <value>Mono Line</value>
-    <comment>Mono Line</comment>
-  </data>
-  <data name="BoxFallback" xml:space="preserve">
-    <value>Box Fallback</value>
-    <comment>Box Fallback</comment>
-  </data>
-  <data name="Y" xml:space="preserve">
-    <value>Y</value>
-    <comment>Y</comment>
   </data>
   <data name="File" xml:space="preserve">
     <value>File</value>
     <comment>File</comment>
   </data>
-  <data name="Draw" xml:space="preserve">
-    <value>Draw</value>
-    <comment>Draw</comment>
-  </data>
   <data name="New" xml:space="preserve">
     <value>New</value>
     <comment>New</comment>
-  </data>
-  <data name="Documents" xml:space="preserve">
-    <value>Documents</value>
-    <comment>Documents</comment>
-  </data>
-  <data name="Refresh" xml:space="preserve">
-    <value>Refresh</value>
-    <comment>Refresh</comment>
-  </data>
-  <data name="Background" xml:space="preserve">
-    <value>Background</value>
-    <comment>Background</comment>
-  </data>
-  <data name="ColorPickerPalettes" xml:space="preserve">
-    <value>Palettes</value>
-    <comment>Palettes</comment>
-  </data>
-  <data name="ColorPickerAdvanced" xml:space="preserve">
-    <value>Advanced</value>
-    <comment>Advanced</comment>
-  </data>
-  <data name="ColorPickerStandardColors" xml:space="preserve">
-    <value>Standard Colors</value>
-    <comment>Standard Colors</comment>
-  </data>
-  <data name="ColorPickerAvailableColors" xml:space="preserve">
-    <value>Available Colors</value>
-    <comment>Available Colors</comment>
-  </data>
-  <data name="ColorPickerRecentColors" xml:space="preserve">
-    <value>Recent Colors</value>
-    <comment>Recent Colors</comment>
-  </data>
-  <data name="Layers" xml:space="preserve">
-    <value>Layers</value>
-    <comment>Layers</comment>
-  </data>
-  <data name="AddLayer" xml:space="preserve">
-    <value>Add layer</value>
-    <comment>Add layer</comment>
-  </data>
-  <data name="DeleteLayer" xml:space="preserve">
-    <value>Delete layer</value>
-    <comment>Delete layer</comment>
-  </data>
-  <data name="Priority" xml:space="preserve">
-    <value>Priority</value>
-    <comment>Priority</comment>
-  </data>
-  <data name="Entities" xml:space="preserve">
-    <value>Entities</value>
-    <comment>Entities</comment>
-  </data>
-  <data name="Weight" xml:space="preserve">
-    <value>Weight</value>
-    <comment>Weight</comment>
   </data>
   <data name="Visible" xml:space="preserve">
     <value>Visible</value>
     <comment>Visible</comment>
   </data>
-  <data name="Locked" xml:space="preserve">
-    <value>Locked</value>
-    <comment>Locked</comment>
-  </data>
-  <data name="Frozen" xml:space="preserve">
-    <value>Frozen</value>
-    <comment>Frozen</comment>
-  </data>
-  <data name="LayerLockedMessageFormat" xml:space="preserve">
-    <value>Layer "{0}" is locked.</value>
-    <comment>Shown when an entity cannot be created on a locked layer.</comment>
-  </data>
-  <data name="LayerFrozenMessageFormat" xml:space="preserve">
-    <value>Layer "{0}" is frozen.</value>
-    <comment>Shown when an entity cannot be created on a frozen layer.</comment>
-  </data>
-  <data name="TogglePrimarySideBar" xml:space="preserve">
-    <value>Toggle primary side bar</value>
-    <comment>Toggle primary side bar</comment>
-  </data>
-  <data name="TogglePanel" xml:space="preserve">
-    <value>Toggle panel</value>
-    <comment>Toggle panel</comment>
-  </data>
-  <data name="ToggleSecondarySideBar" xml:space="preserve">
-    <value>Toggle secondary side bar</value>
-    <comment>Toggle secondary side bar</comment>
-  </data>
-  <data name="DocumentNameCannotBeEmpty" xml:space="preserve">
-    <value>Document name cannot be empty.</value>
-    <comment>Document name cannot be empty.</comment>
-  </data>
-  <data name="Id" xml:space="preserve">
-    <value>Id</value>
-    <comment>Id</comment>
-  </data>
   <data name="Name" xml:space="preserve">
     <value>Name</value>
     <comment>Name</comment>
   </data>
-  <data name="StrokeStyle" xml:space="preserve">
-    <value>Stroke style</value>
-    <comment>Stroke style</comment>
-  </data>
-  <data name="StartCap" xml:space="preserve">
-    <value>Start cap</value>
-    <comment>Start cap</comment>
-  </data>
-  <data name="EndCap" xml:space="preserve">
-    <value>End cap</value>
-    <comment>End cap</comment>
-  </data>
-  <data name="DashCap" xml:space="preserve">
-    <value>Dash cap</value>
-    <comment>Dash cap</comment>
-  </data>
-  <data name="DashStyle" xml:space="preserve">
-    <value>Dash style</value>
-    <comment>Dash style</comment>
-  </data>
-  <data name="LineJoin" xml:space="preserve">
-    <value>Line join</value>
-    <comment>Line join</comment>
-  </data>
-  <data name="CenterX" xml:space="preserve">
-    <value>Center X</value>
-    <comment>Center X</comment>
-  </data>
-  <data name="CenterY" xml:space="preserve">
-    <value>Center Y</value>
-    <comment>Center Y</comment>
-  </data>
-  <data name="Radius" xml:space="preserve">
-    <value>Radius</value>
-    <comment>Radius</comment>
-  </data>
-  <data name="RadiusX" xml:space="preserve">
-    <value>Radius X</value>
-    <comment>Radius X</comment>
-  </data>
-  <data name="RadiusY" xml:space="preserve">
-    <value>Radius Y</value>
-    <comment>Radius Y</comment>
-  </data>
-  <data name="Diameter" xml:space="preserve">
-    <value>Diameter</value>
-    <comment>Diameter</comment>
-  </data>
-  <data name="DiameterX" xml:space="preserve">
-    <value>Diameter X</value>
-    <comment>Diameter X</comment>
-  </data>
-  <data name="DiameterY" xml:space="preserve">
-    <value>Diameter Y</value>
-    <comment>Diameter Y</comment>
-  </data>
-  <data name="Start" xml:space="preserve">
-    <value>Start</value>
-    <comment>Start</comment>
-  </data>
-  <data name="StartX" xml:space="preserve">
-    <value>Start X</value>
-    <comment>Start X</comment>
-  </data>
-  <data name="StartY" xml:space="preserve">
-    <value>Start Y</value>
-    <comment>Start Y</comment>
-  </data>
-  <data name="End" xml:space="preserve">
-    <value>End</value>
-    <comment>End</comment>
-  </data>
-  <data name="EndX" xml:space="preserve">
-    <value>End X</value>
-    <comment>End X</comment>
-  </data>
-  <data name="EndY" xml:space="preserve">
-    <value>End Y</value>
-    <comment>End Y</comment>
-  </data>
-  <data name="Sweep" xml:space="preserve">
-    <value>Sweep</value>
-    <comment>Sweep</comment>
-  </data>
-  <data name="CounterClockwise" xml:space="preserve">
-    <value>Counter clockwise</value>
-    <comment>Counter clockwise</comment>
-  </data>
-  <data name="Fill" xml:space="preserve">
-    <value>Fill</value>
-    <comment>Fill</comment>
-  </data>
-  <data name="LineWeight" xml:space="preserve">
-    <value>Line weight (mm)</value>
-    <comment>Plotted line weight in millimeters</comment>
-  </data>
   <data name="ByLayer" xml:space="preserve">
     <value>By layer</value>
     <comment>By layer</comment>
-  </data>
-  <data name="DrawOrder" xml:space="preserve">
-    <value>Draw order</value>
-    <comment>Draw order</comment>
-  </data>
-  <data name="Length" xml:space="preserve">
-    <value>Length</value>
-    <comment>Length</comment>
-  </data>
-  <data name="Unit" xml:space="preserve">
-    <value>Unit</value>
-    <comment>Drawing unit selector</comment>
-  </data>
-  <data name="Unitless" xml:space="preserve">
-    <value>Unitless</value>
-    <comment>Drawing unit</comment>
-  </data>
-  <data name="Millimeter" xml:space="preserve">
-    <value>Millimeter</value>
-    <comment>Drawing unit</comment>
-  </data>
-  <data name="Centimeter" xml:space="preserve">
-    <value>Centimeter</value>
-    <comment>Drawing unit</comment>
-  </data>
-  <data name="Meter" xml:space="preserve">
-    <value>Meter</value>
-    <comment>Drawing unit</comment>
-  </data>
-  <data name="Inch" xml:space="preserve">
-    <value>Inch</value>
-    <comment>Drawing unit</comment>
-  </data>
-  <data name="Foot" xml:space="preserve">
-    <value>Foot</value>
-    <comment>Drawing unit</comment>
-  </data>
-  <data name="Mil" xml:space="preserve">
-    <value>Mil</value>
-    <comment>Drawing unit</comment>
-  </data>
-  <data name="Angle" xml:space="preserve">
-    <value>Angle</value>
-    <comment>Angle</comment>
-  </data>
-  <data name="Closed" xml:space="preserve">
-    <value>Closed</value>
-    <comment>Closed</comment>
-  </data>
-  <data name="Vertices" xml:space="preserve">
-    <value>Vertices</value>
-    <comment>Vertices</comment>
-  </data>
-  <data name="AddAfter" xml:space="preserve">
-    <value>Add after</value>
-    <comment>Add after</comment>
-  </data>
-  <data name="Remove" xml:space="preserve">
-    <value>Remove</value>
-    <comment>Remove</comment>
-  </data>
-  <data name="PointCount" xml:space="preserve">
-    <value>Point count</value>
-    <comment>Point count</comment>
-  </data>
-  <data name="FitPoints" xml:space="preserve">
-    <value>Fit points</value>
-    <comment>Fit points</comment>
-  </data>
-  <data name="Left" xml:space="preserve">
-    <value>Left</value>
-    <comment>Left</comment>
-  </data>
-  <data name="Bottom" xml:space="preserve">
-    <value>Bottom</value>
-    <comment>Bottom</comment>
   </data>
   <data name="Right" xml:space="preserve">
     <value>Right</value>
@@ -776,290 +208,8 @@
     <value>Top</value>
     <comment>Top</comment>
   </data>
-  <data name="Width" xml:space="preserve">
-    <value>Width</value>
-    <comment>Width</comment>
-  </data>
-  <data name="Height" xml:space="preserve">
-    <value>Height</value>
-    <comment>Height</comment>
-  </data>
-  <data name="CornerX" xml:space="preserve">
-    <value>Corner X</value>
-    <comment>Corner X</comment>
-  </data>
-  <data name="CornerY" xml:space="preserve">
-    <value>Corner Y</value>
-    <comment>Corner Y</comment>
-  </data>
-  <data name="Content" xml:space="preserve">
-    <value>Content</value>
-    <comment>Content</comment>
-  </data>
-  <data name="Style" xml:space="preserve">
-    <value>Style</value>
-    <comment>Style</comment>
-  </data>
-  <data name="PositionX" xml:space="preserve">
-    <value>Position X</value>
-    <comment>Position X</comment>
-  </data>
-  <data name="PositionY" xml:space="preserve">
-    <value>Position Y</value>
-    <comment>Position Y</comment>
-  </data>
-  <data name="Rotation" xml:space="preserve">
-    <value>Rotation</value>
-    <comment>Rotation</comment>
-  </data>
-  <data name="Bounds" xml:space="preserve">
-    <value>Bounds</value>
-    <comment>Bounds</comment>
-  </data>
-  <data name="Measure" xml:space="preserve">
-    <value>Measure</value>
-    <comment>Measure</comment>
-  </data>
-  <data name="ArcDrawing" xml:space="preserve">
-    <value>Arc drawing</value>
-    <comment>Arc drawing</comment>
-  </data>
-  <data name="CircleDrawing" xml:space="preserve">
-    <value>Circle drawing</value>
-    <comment>Circle drawing</comment>
-  </data>
-  <data name="EllipseDrawing" xml:space="preserve">
-    <value>Ellipse drawing</value>
-    <comment>Ellipse drawing</comment>
-  </data>
-  <data name="LineDrawing" xml:space="preserve">
-    <value>Line drawing</value>
-    <comment>Line drawing</comment>
-  </data>
-  <data name="PolygonDrawing" xml:space="preserve">
-    <value>Polygon drawing</value>
-    <comment>Polygon drawing</comment>
-  </data>
-  <data name="PolylineDrawing" xml:space="preserve">
-    <value>Polyline drawing</value>
-    <comment>Polyline drawing</comment>
-  </data>
-  <data name="RectangleDrawing" xml:space="preserve">
-    <value>Rectangle drawing</value>
-    <comment>Rectangle drawing</comment>
-  </data>
-  <data name="SplineDrawing" xml:space="preserve">
-    <value>Spline drawing</value>
-    <comment>Spline drawing</comment>
-  </data>
-  <data name="TextDrawing" xml:space="preserve">
-    <value>Text drawing</value>
-    <comment>Text drawing</comment>
-  </data>
-  <data name="CircleCenterRadius" xml:space="preserve">
-    <value>Center, Radius Circle</value>
-    <comment>Center, Radius Circle</comment>
-  </data>
-  <data name="CircleCenterDiameter" xml:space="preserve">
-    <value>Center, Diameter Circle</value>
-    <comment>Center, Diameter Circle</comment>
-  </data>
-  <data name="CircleTwoPoint" xml:space="preserve">
-    <value>2-Point Circle</value>
-    <comment>2-Point Circle</comment>
-  </data>
-  <data name="CircleThreePoint" xml:space="preserve">
-    <value>3-Point Circle</value>
-    <comment>3-Point Circle</comment>
-  </data>
-  <data name="EllipseCenter" xml:space="preserve">
-    <value>Center Ellipse</value>
-    <comment>Center Ellipse</comment>
-  </data>
-  <data name="EllipseAxisEnd" xml:space="preserve">
-    <value>Axis, End Ellipse</value>
-    <comment>Axis, End Ellipse</comment>
-  </data>
-  <data name="EllipseArc" xml:space="preserve">
-    <value>Elliptical Arc</value>
-    <comment>Elliptical Arc</comment>
-  </data>
-  <data name="FillNoFill" xml:space="preserve">
-    <value>No fill</value>
-    <comment>No fill</comment>
-  </data>
-  <data name="FillSolid" xml:space="preserve">
-    <value>Solid fill</value>
-    <comment>Solid fill</comment>
-  </data>
-  <data name="FillHatchAnsi31" xml:space="preserve">
-    <value>ANSI31</value>
-    <comment>ANSI31 hatch</comment>
-  </data>
-  <data name="FillHatchHorizontal" xml:space="preserve">
-    <value>Horizontal hatch</value>
-    <comment>Horizontal hatch</comment>
-  </data>
-  <data name="FillHatchVertical" xml:space="preserve">
-    <value>Vertical hatch</value>
-    <comment>Vertical hatch</comment>
-  </data>
-  <data name="FillHatchGrid" xml:space="preserve">
-    <value>Grid hatch</value>
-    <comment>Grid hatch</comment>
-  </data>
-  <data name="FillHatchCross45" xml:space="preserve">
-    <value>Cross 45 hatch</value>
-    <comment>Cross 45 hatch</comment>
-  </data>
-  <data name="FillHatchDashed" xml:space="preserve">
-    <value>Dashed hatch</value>
-    <comment>Dashed hatch</comment>
-  </data>
-  <data name="FillHatchDotted" xml:space="preserve">
-    <value>Dotted hatch</value>
-    <comment>Dotted hatch</comment>
-  </data>
-  <data name="FillHatchBrick" xml:space="preserve">
-    <value>Brick hatch</value>
-    <comment>Brick hatch</comment>
-  </data>
-  <data name="FillColor" xml:space="preserve">
-    <value>Fill color</value>
-    <comment>Fill color</comment>
-  </data>
-  <data name="LayerDeleteConfirmTitle" xml:space="preserve">
-    <value>LayerDeleteConfirmTitle</value>
-    <comment>Confirm Delete Layer</comment>
-  </data>
-  <data name="LayerDeleteConfirmMessageFormat" xml:space="preserve">
-    <value>Are you sure you want to delete layer '{0}'? All entities on this layer will be deleted.</value>
-    <comment>LayerDeleteConfirmMessageFormat</comment>
-  </data>
-  <data name="Paste" xml:space="preserve">
-    <value>Paste</value>
-    <comment>Paste</comment>
-  </data>
-  <data name="TargetLayer" xml:space="preserve">
-    <value>Target layer</value>
-    <comment>Target layer</comment>
-  </data>
-  <data name="LayerNameAlreadyExists" xml:space="preserve">
-    <value>Layer name already exists.</value>
-    <comment>Layer name already exists.</comment>
-  </data>
-  <data name="Image" xml:space="preserve">
-    <value>Image</value>
-    <comment>Image</comment>
-  </data>
-  <data name="InsertImage" xml:space="preserve">
-    <value>Insert Image</value>
-    <comment>Insert Image</comment>
-  </data>
-  <data name="PasteImage" xml:space="preserve">
-    <value>Paste Image</value>
-    <comment>Paste Image</comment>
-  </data>
-  <data name="ContentType" xml:space="preserve">
-    <value>Content type</value>
-    <comment>Content type</comment>
-  </data>
-  <data name="PixelWidth" xml:space="preserve">
-    <value>Pixel width</value>
-    <comment>Pixel width</comment>
-  </data>
-  <data name="PixelHeight" xml:space="preserve">
-    <value>Pixel height</value>
-    <comment>Pixel height</comment>
-  </data>
-  <data name="Opacity" xml:space="preserve">
-    <value>Opacity</value>
-  </data>
-  <data name="Settings" xml:space="preserve">
-    <value>Settings</value>
-    <comment>Settings</comment>
-  </data>
-  <data name="DocumentSettings" xml:space="preserve">
-    <value>Document Settings</value>
-  </data>
-  <data name="Display" xml:space="preserve">
-    <value>Display</value>
-  </data>
-  <data name="GridAndSnapping" xml:space="preserve">
-    <value>Grid &amp; Snapping</value>
-  </data>
-  <data name="GridType" xml:space="preserve">
-    <value>Grid type</value>
-  </data>
-  <data name="SpacingX" xml:space="preserve">
-    <value>Spacing X</value>
-  </data>
-  <data name="SpacingY" xml:space="preserve">
-    <value>Spacing Y</value>
-  </data>
-  <data name="Subdivision" xml:space="preserve">
-    <value>Subdivisions</value>
-    <comment>Subdivisions</comment>
-  </data>
-  <data name="MinimumScreenSpacing" xml:space="preserve">
-    <value>Minimum screen spacing</value>
-  </data>
-  <data name="MinimumWorldSpacing" xml:space="preserve">
-    <value>Minimum world spacing</value>
-  </data>
-  <data name="MinorGridColor" xml:space="preserve">
-    <value>Minor grid color</value>
-  </data>
-  <data name="MinorGridLineWidth" xml:space="preserve">
-    <value>Minor grid line width</value>
-  </data>
-  <data name="MajorGridColor" xml:space="preserve">
-    <value>Major grid color</value>
-  </data>
-  <data name="MajorGridLineWidth" xml:space="preserve">
-    <value>Major grid line width</value>
-  </data>
-  <data name="SnapSpacingX" xml:space="preserve">
-    <value>Snap spacing X (0 = auto)</value>
-  </data>
-  <data name="SnapSpacingY" xml:space="preserve">
-    <value>Snap spacing Y (0 = auto)</value>
-  </data>
-  <data name="SnapMarkerType" xml:space="preserve">
-    <value>Snap marker type</value>
-  </data>
-  <data name="SnapMarkerColor" xml:space="preserve">
-    <value>Snap marker color</value>
-  </data>
-  <data name="SnapMarkerLength" xml:space="preserve">
-    <value>Snap marker length</value>
-  </data>
-  <data name="SnapMarkerStrokeWidth" xml:space="preserve">
-    <value>Snap marker line width</value>
-  </data>
-  <data name="OriginDisplayType" xml:space="preserve">
-    <value>Origin display</value>
-  </data>
-  <data name="OriginMarkerType" xml:space="preserve">
-    <value>Origin marker type</value>
-  </data>
-  <data name="OriginLinePattern" xml:space="preserve">
-    <value>Origin line pattern</value>
-  </data>
-  <data name="OriginColor" xml:space="preserve">
-    <value>Origin color</value>
-  </data>
-  <data name="OriginSize" xml:space="preserve">
-    <value>Origin size</value>
-  </data>
-  <data name="OriginStrokeWidth" xml:space="preserve">
-    <value>Origin line width</value>
-  </data>
   <data name="Apply" xml:space="preserve">
     <value>Apply</value>
-  </data>
-  <data name="DocumentSettingsInvalidValues" xml:space="preserve">
-    <value>Enter valid finite values. Sizes, spacing, and line widths must be greater than zero.</value>
   </data>
   <data name="ApplicationSettings" xml:space="preserve">
     <value>Application Settings</value>
@@ -1067,46 +217,14 @@
   <data name="General" xml:space="preserve">
     <value>General</value>
   </data>
-  <data name="Geometry" xml:space="preserve">
-    <value>Geometry</value>
-  </data>
-  <data name="ObjectSettings" xml:space="preserve">
-    <value>Object settings</value>
-  </data>
-  <data name="Rendering" xml:space="preserve">
-    <value>Rendering</value>
-  </data>
   <data name="Interaction" xml:space="preserve">
     <value>Interaction</value>
   </data>
   <data name="Antialiasing" xml:space="preserve">
     <value>Antialiasing</value>
   </data>
-  <data name="SelectedEntity" xml:space="preserve">
-    <value>Selected entity</value>
-  </data>
-  <data name="Grip" xml:space="preserve">
-    <value>Grip</value>
-  </data>
-  <data name="GripPreview" xml:space="preserve">
-    <value>Grip preview</value>
-  </data>
-  <data name="StrokeColor" xml:space="preserve">
-    <value>Stroke color</value>
-    <comment>Stroke color</comment>
-  </data>
-  <data name="StrokeWidth" xml:space="preserve">
-    <value>Stroke width</value>
-    <comment>Stroke width</comment>
-  </data>
   <data name="Language" xml:space="preserve">
     <value>Language</value>
-  </data>
-  <data name="DarkTheme" xml:space="preserve">
-    <value>Dark theme</value>
-  </data>
-  <data name="UserSettingsInvalidValues" xml:space="preserve">
-    <value>Enter valid finite values. Sizes and stroke widths must be greater than zero.</value>
   </data>
   <data name="Reset" xml:space="preserve">
     <value>Reset</value>
@@ -1117,562 +235,403 @@
   <data name="SecondaryColor" xml:space="preserve">
     <value>Secondary color</value>
   </data>
-  <data name="EntitySettings" xml:space="preserve">
-    <value>Entity</value>
-  </data>
-  <data name="SelectionFilter" xml:space="preserve">
-    <value>Selection Filter</value>
-  </data>
-  <data name="Type" xml:space="preserve">
-    <value>Type</value>
-    <comment>Type</comment>
-  </data>
-  <data name="Appearance" xml:space="preserve">
-    <value>Appearance</value>
-  </data>
-  <data name="Coordinates" xml:space="preserve">
-    <value>Coordinates and size</value>
-  </data>
-  <data name="Font" xml:space="preserve">
-    <value>Font</value>
-  </data>
-  <data name="Terminal" xml:space="preserve">
-    <value>Terminal</value>
-    <comment>Terminal</comment>
-  </data>
-  <data name="Property" xml:space="preserve">
-    <value>Property</value>
-    <comment>Property</comment>
-  </data>
-  <data name="EntitySearch" xml:space="preserve">
-    <value>Entity Search</value>
-    <comment>Entity Search</comment>
-  </data>
-  <data name="SelectedEntities" xml:space="preserve">
-    <value>Selected entities</value>
-  </data>
-  <data name="MultipleEntityTypes" xml:space="preserve">
-    <value>Multiple entity types</value>
-  </data>
-  <data name="MultipleValues" xml:space="preserve">
-    <value>Multiple values</value>
-  </data>
-  <data name="CommonProperties" xml:space="preserve">
-    <value>Common properties</value>
-  </data>
-  <data name="Close" xml:space="preserve">
-    <value>Close</value>
-  </data>
   <data name="Model" xml:space="preserve">
     <value>Model</value>
-  </data>
-  <data name="LayoutSettings" xml:space="preserve">
-    <value>Layout settings</value>
-  </data>
-  <data name="AddLayout" xml:space="preserve">
-    <value>Add layout</value>
-  </data>
-  <data name="DeleteLayout" xml:space="preserve">
-    <value>Delete layout</value>
-  </data>
-  <data name="LayoutNameCannotBeEmpty" xml:space="preserve">
-    <value>Layout name cannot be empty.</value>
-  </data>
-  <data name="Paper" xml:space="preserve">
-    <value>Paper</value>
-  </data>
-  <data name="PaperWidth" xml:space="preserve">
-    <value>Paper width</value>
-  </data>
-  <data name="PaperHeight" xml:space="preserve">
-    <value>Paper height</value>
-  </data>
-  <data name="PaperColor" xml:space="preserve">
-    <value>Paper color</value>
-  </data>
-  <data name="MarginLeft" xml:space="preserve">
-    <value>Left margin</value>
-  </data>
-  <data name="MarginTop" xml:space="preserve">
-    <value>Top margin</value>
-  </data>
-  <data name="MarginRight" xml:space="preserve">
-    <value>Right margin</value>
-  </data>
-  <data name="MarginBottom" xml:space="preserve">
-    <value>Bottom margin</value>
-  </data>
-  <data name="SwapOrientation" xml:space="preserve">
-    <value>Swap orientation</value>
   </data>
   <data name="Viewport" xml:space="preserve">
     <value>Viewport</value>
   </data>
-  <data name="AddViewport" xml:space="preserve">
-    <value>Add viewport</value>
-  </data>
-  <data name="DeleteViewport" xml:space="preserve">
-    <value>Delete viewport</value>
-  </data>
-  <data name="ModelCenterX" xml:space="preserve">
-    <value>Model center X</value>
-  </data>
-  <data name="ModelCenterY" xml:space="preserve">
-    <value>Model center Y</value>
-  </data>
-  <data name="ViewportScale" xml:space="preserve">
-    <value>Viewport scale</value>
-  </data>
-  <data name="RotationDegrees" xml:space="preserve">
-    <value>Rotation (deg)</value>
-  </data>
-  <data name="TogglePaperModelSpace" xml:space="preserve">
-    <value>Switch between paper space and model editing through the viewport</value>
-  </data>
-  <data name="LayoutViewportMode" xml:space="preserve">
-    <value>Layout viewport</value>
-  </data>
-  <data name="CreateViewportMode" xml:space="preserve">
-    <value>Create and adjust a layout viewport</value>
-  </data>
-  <data name="UnsavedDocumentsTitle" xml:space="preserve">
-    <value>Unsaved documents</value>
-    <comment>Unsaved documents dialog title</comment>
-  </data>
-  <data name="UnsavedDocumentsMessage" xml:space="preserve">
-    <value>The following documents have unsaved changes:</value>
-    <comment>Unsaved documents dialog message</comment>
-  </data>
-  <data name="UnsavedDocumentNoPath" xml:space="preserve">
-    <value>Not saved yet</value>
-    <comment>Document has no file path yet</comment>
-  </data>
-  <data name="SaveAll" xml:space="preserve">
-    <value>Save All</value>
-    <comment>Save all modified documents</comment>
-  </data>
-  <data name="EntitySearchScope" xml:space="preserve">
-    <value>Scope</value>
-    <comment>Entity search scope label</comment>
-  </data>
-  <data name="EntitySearchCurrentSpace" xml:space="preserve">
-    <value>Current space</value>
-    <comment>Search only the active model or paper space</comment>
-  </data>
-  <data name="EntitySearchEntireDocument" xml:space="preserve">
-    <value>Entire document</value>
-    <comment>Search model space and every paper space</comment>
-  </data>
-  <data name="EntitySearchHint" xml:space="preserve">
-    <value>Entity name, ID, layer, or type</value>
-    <comment>Entity search text box hint</comment>
-  </data>
-  <data name="EntitySearchLayerHint" xml:space="preserve">
-    <value>Layer</value>
-    <comment>Entity search layer filter hint</comment>
-  </data>
-  <data name="EntitySearchTypeHint" xml:space="preserve">
-    <value>Type</value>
-    <comment>Entity search type filter hint</comment>
-  </data>
-  <data name="EntitySearchAllLayers" xml:space="preserve">
-    <value>All layers</value>
-    <comment>Entity search all-layers filter</comment>
-  </data>
-  <data name="EntitySearchAllTypes" xml:space="preserve">
-    <value>All types</value>
-    <comment>Entity search all-types filter</comment>
-  </data>
-  <data name="EntitySearchNoDocument" xml:space="preserve">
-    <value>No document</value>
-    <comment>Entity search has no active document</comment>
-  </data>
-  <data name="EntitySearchResultCountFormat" xml:space="preserve">
-    <value>{0} entities</value>
-    <comment>Entity search result count</comment>
-  </data>
-  <data name="Blocks" xml:space="preserve">
-    <value>Blocks</value>
-  </data>
-  <data name="CreateBlock" xml:space="preserve">
-    <value>Create block</value>
-  </data>
-  <data name="CreateBlockNameRequired" xml:space="preserve">
-    <value>Enter a block name.</value>
-  </data>
-  <data name="BlockNameAlreadyExists" xml:space="preserve">
-    <value>A block with this name already exists.</value>
-  </data>
-  <data name="CreateBlockBasePointInvalid" xml:space="preserve">
-    <value>Enter a valid base point.</value>
-  </data>
-  <data name="InsertBlock" xml:space="preserve">
-    <value>Insert block</value>
-  </data>
-  <data name="EditBlock" xml:space="preserve">
-    <value>Edit block</value>
-  </data>
-  <data name="BlockEditing" xml:space="preserve">
-    <value>Block editing</value>
-  </data>
-  <data name="ExitBlockEditor" xml:space="preserve">
-    <value>Exit block editor</value>
-  </data>
-  <data name="DeleteBlock" xml:space="preserve">
-    <value>Delete block</value>
-  </data>
-  <data name="BasePoint" xml:space="preserve">
-    <value>Base point</value>
-  </data>
-  <data name="References" xml:space="preserve">
-    <value>References</value>
-  </data>
-  <data name="ScaleX" xml:space="preserve">
-    <value>Scale X</value>
-  </data>
-  <data name="ScaleY" xml:space="preserve">
-    <value>Scale Y</value>
-  </data>
-  <data name="BlockReference" xml:space="preserve">
-    <value>Block reference</value>
-  </data>
-  <data name="BlockDefinition" xml:space="preserve">
-    <value>Block definition</value>
-  </data>
-  <data name="DeleteBlockConfirmFormat" xml:space="preserve">
-    <value>Delete block '{0}'?</value>
-  </data>
-  <data name="GridDensity" xml:space="preserve">
-    <value>Grid density</value>
-  </data>
-  <data name="GridDensityPreset" xml:space="preserve">
-    <value>Density preset (major / minor)</value>
-  </data>
-  <data name="MajorGridSpacingXMillimeters" xml:space="preserve">
-    <value>Major spacing X (mm)</value>
-  </data>
-  <data name="MajorGridSpacingYMillimeters" xml:space="preserve">
-    <value>Major spacing Y (mm)</value>
-  </data>
-  <data name="MinorGridSpacingXMillimeters" xml:space="preserve">
-    <value>Minor spacing X (mm)</value>
-  </data>
-  <data name="MinorGridSpacingYMillimeters" xml:space="preserve">
-    <value>Minor spacing Y (mm)</value>
-  </data>
-  <data name="GridAppearance" xml:space="preserve">
-    <value>Grid appearance</value>
-  </data>
-  <data name="GridSpacingOptions" xml:space="preserve">
-    <value>Grid spacing options</value>
-  </data>
-  <data name="GridSpacingSelection" xml:space="preserve">
-    <value>Grid spacing selection</value>
-  </data>
-  <data name="MajorGridSpacing" xml:space="preserve">
-    <value>Major grid</value>
-  </data>
-  <data name="MinorGridSpacing" xml:space="preserve">
-    <value>Minor grid</value>
-  </data>
-  <data name="AddGridSpacingPreset" xml:space="preserve">
-    <value>Add grid spacing</value>
-  </data>
-  <data name="EditGridSpacingPreset" xml:space="preserve">
-    <value>Edit grid spacing</value>
-  </data>
-  <data name="DeleteGridSpacingPreset" xml:space="preserve">
-    <value>Delete grid spacing</value>
-  </data>
-  <data name="MoveUp" xml:space="preserve">
-    <value>Move up</value>
-  </data>
-  <data name="MoveDown" xml:space="preserve">
-    <value>Move down</value>
-  </data>
-  <data name="LinkGridAxes" xml:space="preserve">
-    <value>Link X and Y</value>
-  </data>
-  <data name="GridSpacingPresetNameExists" xml:space="preserve">
-    <value>A grid spacing with this name already exists.</value>
-  </data>
-  <data name="GridSpacingPresetRangeError" xml:space="preserve">
-    <value>Spacing must be between {0} {2} and {1} {2}.</value>
-  </data>
-  <data name="ColorSource" xml:space="preserve">
-    <value>Color source</value>
-  </data>
-  <data name="ByBlock" xml:space="preserve">
-    <value>By block</value>
-  </data>
-  <data name="Explicit" xml:space="preserve">
-    <value>Explicit</value>
-  </data>
   <data name="ShowFramesPerSecond" xml:space="preserve">
     <value>Show frames per second</value>
-  </data>
-  <data name="ZoomSnapshotPreview" xml:space="preserve">
-    <value>Zoom snapshot preview</value>
-  </data>
-  <data name="ApproximateTileScaleFallback" xml:space="preserve">
-    <value>Allow nearby tile-scale fallback</value>
-  </data>
-  <data name="LevelOfDetailOptimization" xml:space="preserve">
-    <value>Level of detail optimization</value>
-  </data>
-  <data name="BackgroundChunkRecording" xml:space="preserve">
-    <value>Background command-list chunk recording (experimental)</value>
-  </data>
-  <data name="AiAssistant" xml:space="preserve">
-    <value>AI Assistant</value>
-  </data>
-  <data name="AiAssistantWelcome" xml:space="preserve">
-    <value>Configure LM Studio or Codex, then ask me to inspect or edit documents in the workspace.</value>
-  </data>
-  <data name="LmStudioConnection" xml:space="preserve">
-    <value>LM Studio connection</value>
-  </data>
-  <data name="Endpoint" xml:space="preserve">
-    <value>Endpoint</value>
-  </data>
-  <data name="Temperature" xml:space="preserve">
-    <value>Temperature</value>
-  </data>
-  <data name="ContextWindowTokens" xml:space="preserve">
-    <value>Context window</value>
-  </data>
-  <data name="RefreshModels" xml:space="preserve">
-    <value>Refresh models</value>
-  </data>
-  <data name="EnableCadAiTools" xml:space="preserve">
-    <value>Allow AI to use CAD editing tools</value>
-  </data>
-  <data name="ClearConversation" xml:space="preserve">
-    <value>Clear conversation</value>
-  </data>
-  <data name="AiPromptHint" xml:space="preserve">
-    <value>Ask about or edit the active drawing</value>
-  </data>
-  <data name="Send" xml:space="preserve">
-    <value>Send</value>
-  </data>
-  <data name="Stop" xml:space="preserve">
-    <value>Stop</value>
-  </data>
-  <data name="Error" xml:space="preserve">
-    <value>Error</value>
-  </data>
-  <data name="Status" xml:space="preserve">
-    <value>Status</value>
-  </data>
-  <data name="AiDisconnected" xml:space="preserve">
-    <value>Not connected</value>
-  </data>
-  <data name="AiConnecting" xml:space="preserve">
-    <value>Connecting...</value>
-  </data>
-  <data name="AiNoModels" xml:space="preserve">
-    <value>Connected, but no model is loaded</value>
-  </data>
-  <data name="AiConnectedModelCountFormat" xml:space="preserve">
-    <value>Connected: {0} model(s)</value>
-  </data>
-  <data name="AiCancelled" xml:space="preserve">
-    <value>Cancelled</value>
-  </data>
-  <data name="AiConnectionFailed" xml:space="preserve">
-    <value>Connection failed</value>
-  </data>
-  <data name="AiActiveDocumentFormat" xml:space="preserve">
-    <value>Active document: {0}</value>
-  </data>
-  <data name="AiGenerating" xml:space="preserve">
-    <value>Generating...</value>
-  </data>
-  <data name="AiReducingContext" xml:space="preserve">
-    <value>Reducing conversation context and retrying...</value>
-  </data>
-  <data name="AiEmptyResponse" xml:space="preserve">
-    <value>The model returned an empty response.</value>
-  </data>
-  <data name="AiReadyModelFormat" xml:space="preserve">
-    <value>Ready: {0}</value>
-  </data>
-  <data name="AiRequestFailed" xml:space="preserve">
-    <value>Request failed</value>
-  </data>
-  <data name="AiConversationCleared" xml:space="preserve">
-    <value>Conversation cleared.</value>
-  </data>
-  <data name="AiYou" xml:space="preserve">
-    <value>You</value>
-  </data>
-  <data name="AiAssistantShort" xml:space="preserve">
-    <value>AI</value>
-  </data>
-  <data name="AiCadTool" xml:space="preserve">
-    <value>CAD tool</value>
-  </data>
-  <data name="ParallelRendering" xml:space="preserve">
-    <value>Experimental parallel rendering</value>
-  </data>
-  <data name="GraphicsDeviceMode" xml:space="preserve">
-    <value>Graphics device mode</value>
-  </data>
-  <data name="GraphicsDeviceAutomatic" xml:space="preserve">
-    <value>Automatic (hardware with WARP fallback)</value>
-  </data>
-  <data name="GraphicsDeviceHardware" xml:space="preserve">
-    <value>Hardware acceleration</value>
-  </data>
-  <data name="GraphicsDeviceWarp" xml:space="preserve">
-    <value>WARP software rendering</value>
-  </data>
-  <data name="ParallelRenderingMode" xml:space="preserve">
-    <value>Resource strategy</value>
-  </data>
-  <data name="ParallelRenderingWorkerCount" xml:space="preserve">
-    <value>Rendering workers</value>
-  </data>
-  <data name="ParallelRenderingMultipleDevices" xml:space="preserve">
-    <value>Multiple devices</value>
-  </data>
-  <data name="ParallelRenderingSharedDeviceContexts" xml:space="preserve">
-    <value>Shared device, multiple contexts</value>
-  </data>
-  <data name="AiSettings" xml:space="preserve">
-    <value>AI assistant settings</value>
-  </data>
-  <data name="AiProvider" xml:space="preserve">
-    <value>Provider</value>
-  </data>
-  <data name="CodexExecutable" xml:space="preserve">
-    <value>Codex executable</value>
-  </data>
-  <data name="ReasoningEffort" xml:space="preserve">
-    <value>Reasoning effort</value>
-  </data>
-  <data name="ServiceTier" xml:space="preserve">
-    <value>Service tier</value>
-  </data>
-  <data name="Advanced" xml:space="preserve">
-    <value>Advanced</value>
   </data>
   <data name="Messages" xml:space="preserve">
     <value>Messages</value>
   </data>
-  <data name="All" xml:space="preserve">
-    <value>All</value>
-  </data>
-  <data name="Information" xml:space="preserve">
-    <value>Information</value>
-  </data>
-  <data name="Warning" xml:space="preserve">
-    <value>Warning</value>
-  </data>
-  <data name="MessageLevel" xml:space="preserve">
-    <value>Message level</value>
-  </data>
-  <data name="SearchMessages" xml:space="preserve">
-    <value>Search messages</value>
-  </data>
   <data name="ClearMessages" xml:space="preserve">
     <value>Clear messages</value>
   </data>
-  <data name="AiAttachImage" xml:space="preserve">
-    <value>Attach file</value>
+  <data name="AddPoint" xml:space="preserve">
+    <value>Add point</value>
   </data>
-  <data name="AiPasteImage" xml:space="preserve">
-    <value>Paste file or image from clipboard</value>
+  <data name="AlwaysOnTop" xml:space="preserve">
+    <value>Always on top</value>
   </data>
-  <data name="AiImagePrompt" xml:space="preserve">
-    <value>Please analyze the attached files.</value>
+  <data name="AngularDeviation" xml:space="preserve">
+    <value>Angular deviation</value>
   </data>
-  <data name="AiClipboardNoImage" xml:space="preserve">
-    <value>The clipboard does not contain a supported file or image.</value>
+  <data name="ApplicationSettingsApplied" xml:space="preserve">
+    <value>Application settings applied.</value>
   </data>
-  <data name="AiImageTooLarge" xml:space="preserve">
-    <value>The image is too large to attach.</value>
+  <data name="ApplyProperties" xml:space="preserve">
+    <value>Apply properties</value>
   </data>
-  <data name="GraphicsDeviceAutomaticHardware" xml:space="preserve">
-    <value>Automatic (current: hardware acceleration)</value>
+  <data name="Assembly" xml:space="preserve">
+    <value>Assembly</value>
   </data>
-  <data name="GraphicsDeviceAutomaticWarp" xml:space="preserve">
-    <value>Automatic (current: WARP)</value>
+  <data name="Axonometric" xml:space="preserve">
+    <value>Axonometric</value>
   </data>
-  <data name="RadialMenu" xml:space="preserve">
-    <value>Radial menu</value>
+  <data name="BackgroundColor" xml:space="preserve">
+    <value>Background color</value>
   </data>
-  <data name="RadialMenuEnabled" xml:space="preserve">
-    <value>Enable middle mouse radial menus</value>
+  <data name="BinaryStl" xml:space="preserve">
+    <value>Binary STL</value>
   </data>
-  <data name="RadialMenuMiddleMouse" xml:space="preserve">
-    <value>Middle mouse</value>
+  <data name="BooleanInstruction" xml:space="preserve">
+    <value>Select a feature and choose a boolean operation.</value>
   </data>
-  <data name="RadialMenuShiftMiddleMouse" xml:space="preserve">
-    <value>Shift + middle mouse</value>
+  <data name="BoundsMaximum" xml:space="preserve">
+    <value>Maximum bounds</value>
   </data>
-  <data name="RadialMenuControlMiddleMouse" xml:space="preserve">
-    <value>Ctrl + middle mouse</value>
+  <data name="BoundsMinimum" xml:space="preserve">
+    <value>Minimum bounds</value>
   </data>
-  <data name="RadialMenuAltMiddleMouse" xml:space="preserve">
-    <value>Alt + middle mouse</value>
+  <data name="Box" xml:space="preserve">
+    <value>Box</value>
   </data>
-  <data name="RadialMenuSlot" xml:space="preserve">
-    <value>Slot {0}</value>
+  <data name="CadoryxDocumentFilter" xml:space="preserve">
+    <value>Cadoryx document (*.cadoryx)|*.cadoryx</value>
   </data>
-  <data name="Print" xml:space="preserve">
-    <value>Print</value>
+  <data name="CadoryxDocumentsFilter" xml:space="preserve">
+    <value>Cadoryx documents (*.cadoryx)|*.cadoryx|All files (*.*)|*.*</value>
   </data>
-  <data name="PrintPreview" xml:space="preserve">
-    <value>Print preview</value>
+  <data name="CadoryxFilter" xml:space="preserve">
+    <value>Cadoryx document (*.cadoryx)|*.cadoryx|All files (*.*)|*.*</value>
   </data>
-  <data name="PrintPreviewDescription" xml:space="preserve">
-    <value>Review the layout and choose the print settings.</value>
+  <data name="CalculatePreview" xml:space="preserve">
+    <value>Calculate preview</value>
   </data>
-  <data name="PrintPreviewPrinterNote" xml:space="preserve">
-    <value>The preview uses the selected paper and orientation. Printer margins are applied when printing.</value>
+  <data name="CalculatingPreview" xml:space="preserve">
+    <value>Calculating preview...</value>
   </data>
-  <data name="PrinterSettings" xml:space="preserve">
-    <value>Printer settings</value>
+  <data name="CanceledStatus" xml:space="preserve">
+    <value>Canceled</value>
   </data>
-  <data name="Printer" xml:space="preserve">
-    <value>Printer</value>
+  <data name="CloseDocumentTitle" xml:space="preserve">
+    <value>Close document</value>
   </data>
-  <data name="PaperSize" xml:space="preserve">
-    <value>Paper size</value>
+  <data name="CommittedStatus" xml:space="preserve">
+    <value>Feature committed.</value>
   </data>
-  <data name="Orientation" xml:space="preserve">
-    <value>Orientation</value>
+  <data name="Cylinder" xml:space="preserve">
+    <value>Cylinder</value>
   </data>
-  <data name="Portrait" xml:space="preserve">
-    <value>Portrait</value>
+  <data name="DefaultProjection" xml:space="preserve">
+    <value>Default projection</value>
   </data>
-  <data name="Landscape" xml:space="preserve">
-    <value>Landscape</value>
+  <data name="DefaultSelectionMode" xml:space="preserve">
+    <value>Default selection mode</value>
   </data>
-  <data name="Copies" xml:space="preserve">
-    <value>Copies</value>
+  <data name="Difference" xml:space="preserve">
+    <value>Difference</value>
   </data>
-  <data name="PrintResolution" xml:space="preserve">
-    <value>Resolution (DPI)</value>
+  <data name="EditFeature" xml:space="preserve">
+    <value>Edit feature</value>
   </data>
-  <data name="CustomPaperSize" xml:space="preserve">
-    <value>Custom</value>
+  <data name="EditingFeatureStatus" xml:space="preserve">
+    <value>Editing feature...</value>
   </data>
-  <data name="NoPrintersAvailable" xml:space="preserve">
-    <value>No printers are installed or available.</value>
+  <data name="EmptyPreviewStatus" xml:space="preserve">
+    <value>No preview available.</value>
   </data>
-  <data name="PrintStarted" xml:space="preserve">
-    <value>Printing started.</value>
+  <data name="EnablePreselection" xml:space="preserve">
+    <value>Enable preselection</value>
   </data>
-  <data name="PrintSubmitted" xml:space="preserve">
-    <value>Print job submitted.</value>
+  <data name="EntityName" xml:space="preserve">
+    <value>Entity name</value>
   </data>
-  <data name="PrintCompleted" xml:space="preserve">
-    <value>Printing completed.</value>
+  <data name="Export" xml:space="preserve">
+    <value>Export</value>
   </data>
-  <data name="PrintFailed" xml:space="preserve">
-    <value>Print failed</value>
+  <data name="ExportedFormat" xml:space="preserve">
+    <value>Exported {0} to {1}.</value>
+  </data>
+  <data name="ExportFormats" xml:space="preserve">
+    <value>Supported export formats</value>
+  </data>
+  <data name="ExportModelTitle" xml:space="preserve">
+    <value>Export model</value>
+  </data>
+  <data name="ExportOptions" xml:space="preserve">
+    <value>Export options</value>
+  </data>
+  <data name="Extrude" xml:space="preserve">
+    <value>Extrude</value>
+  </data>
+  <data name="ExtrudeRevolveProfile" xml:space="preserve">
+    <value>Extrude / revolve profile</value>
+  </data>
+  <data name="FeatureHistory" xml:space="preserve">
+    <value>Feature history</value>
+  </data>
+  <data name="Front" xml:space="preserve">
+    <value>Front</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>Home</value>
+  </data>
+  <data name="IgesFilter" xml:space="preserve">
+    <value>IGES files (*.igs;*.iges)|*.igs;*.iges|All files (*.*)|*.*</value>
+  </data>
+  <data name="IgesModelFilter" xml:space="preserve">
+    <value>IGES model (*.igs;*.iges)|*.igs;*.iges</value>
+  </data>
+  <data name="ImportExportSupportMessage" xml:space="preserve">
+    <value>STEP, IGES, and STL import/export are supported.</value>
+  </data>
+  <data name="InstancePath" xml:space="preserve">
+    <value>Instance path</value>
+  </data>
+  <data name="Intersection" xml:space="preserve">
+    <value>Intersection</value>
+  </data>
+  <data name="InvalidApplicationSettings" xml:space="preserve">
+    <value>Application settings are invalid.</value>
+  </data>
+  <data name="InvertOrbitVerticalAxis" xml:space="preserve">
+    <value>Invert orbit vertical axis</value>
+  </data>
+  <data name="InvertZoom" xml:space="preserve">
+    <value>Invert zoom</value>
+  </data>
+  <data name="Layer" xml:space="preserve">
+    <value>Layer</value>
+  </data>
+  <data name="LayerLocked" xml:space="preserve">
+    <value>Layer locked</value>
+  </data>
+  <data name="LinearDeviation" xml:space="preserve">
+    <value>Linear deviation</value>
+  </data>
+  <data name="Material" xml:space="preserve">
+    <value>Material</value>
+  </data>
+  <data name="ModelExportSemantics" xml:space="preserve">
+    <value>Export the visible model using the selected format.</value>
+  </data>
+  <data name="ModelFormat" xml:space="preserve">
+    <value>Model format</value>
+  </data>
+  <data name="Modeling" xml:space="preserve">
+    <value>Modeling</value>
+  </data>
+  <data name="ModelingInstruction" xml:space="preserve">
+    <value>Choose a modeling operation and adjust its parameters.</value>
+  </data>
+  <data name="ModelingParameters" xml:space="preserve">
+    <value>Modeling parameters</value>
+  </data>
+  <data name="ModelTreeInstruction" xml:space="preserve">
+    <value>Select an object to inspect its properties.</value>
+  </data>
+  <data name="MultipleSelection" xml:space="preserve">
+    <value>Multiple selection</value>
+  </data>
+  <data name="NoSelection" xml:space="preserve">
+    <value>No selection</value>
+  </data>
+  <data name="OcctSharp3dCad" xml:space="preserve">
+    <value>OCCT Sharp 3D CAD</value>
+  </data>
+  <data name="OnlyVisibleObjects" xml:space="preserve">
+    <value>Only visible objects</value>
+  </data>
+  <data name="OpenCadDocumentTitle" xml:space="preserve">
+    <value>Open Cadoryx document</value>
+  </data>
+  <data name="OpenedFormat" xml:space="preserve">
+    <value>Opened {0}.</value>
+  </data>
+  <data name="OpenImport" xml:space="preserve">
+    <value>Open / import</value>
+  </data>
+  <data name="OrbitSensitivity" xml:space="preserve">
+    <value>Orbit sensitivity</value>
+  </data>
+  <data name="Orthographic" xml:space="preserve">
+    <value>Orthographic</value>
+  </data>
+  <data name="Part" xml:space="preserve">
+    <value>Part</value>
+  </data>
+  <data name="Perspective" xml:space="preserve">
+    <value>Perspective</value>
+  </data>
+  <data name="PolygonExtrude" xml:space="preserve">
+    <value>Polygon extrude</value>
+  </data>
+  <data name="PolygonRevolve" xml:space="preserve">
+    <value>Polygon revolve</value>
+  </data>
+  <data name="PositionXYZ" xml:space="preserve">
+    <value>Position (X, Y, Z)</value>
+  </data>
+  <data name="PreviewReadyStatus" xml:space="preserve">
+    <value>Preview ready.</value>
+  </data>
+  <data name="ProfileInstruction" xml:space="preserve">
+    <value>Define a profile for the selected operation.</value>
+  </data>
+  <data name="Properties" xml:space="preserve">
+    <value>Properties</value>
+  </data>
+  <data name="Ready" xml:space="preserve">
+    <value>Ready</value>
+  </data>
+  <data name="RemovePoint" xml:space="preserve">
+    <value>Remove point</value>
+  </data>
+  <data name="Revolve" xml:space="preserve">
+    <value>Revolve</value>
+  </data>
+  <data name="RotationAngle" xml:space="preserve">
+    <value>Rotation angle</value>
+  </data>
+  <data name="SaveCadoryxDocumentTitle" xml:space="preserve">
+    <value>Save Cadoryx document</value>
+  </data>
+  <data name="SaveChangesQuestion" xml:space="preserve">
+    <value>Save changes to “{0}”?</value>
+  </data>
+  <data name="SavedFormat" xml:space="preserve">
+    <value>Saved {0}.</value>
+  </data>
+  <data name="SelectionSummaryFormat" xml:space="preserve">
+    <value>{0} selected</value>
+  </data>
+  <data name="SettingsSavedHint" xml:space="preserve">
+    <value>Settings saved.</value>
+  </data>
+  <data name="Shaded" xml:space="preserve">
+    <value>Shaded</value>
+  </data>
+  <data name="ShowAxes" xml:space="preserve">
+    <value>Show axes</value>
+  </data>
+  <data name="ShowViewCube" xml:space="preserve">
+    <value>Show view cube</value>
+  </data>
+  <data name="SingleSelection" xml:space="preserve">
+    <value>Single selection</value>
+  </data>
+  <data name="SizeXRadius" xml:space="preserve">
+    <value>Size X / radius</value>
+  </data>
+  <data name="SizeY" xml:space="preserve">
+    <value>Size Y</value>
+  </data>
+  <data name="SizeZDistance" xml:space="preserve">
+    <value>Size Z / distance</value>
+  </data>
+  <data name="StepFilter" xml:space="preserve">
+    <value>STEP files (*.step;*.stp)|*.step;*.stp|All files (*.*)|*.*</value>
+  </data>
+  <data name="StepModelFilter" xml:space="preserve">
+    <value>STEP model (*.step;*.stp)|*.step;*.stp</value>
+  </data>
+  <data name="StlExportSemantics" xml:space="preserve">
+    <value>Export a tessellated STL mesh.</value>
+  </data>
+  <data name="StlMesh" xml:space="preserve">
+    <value>STL mesh</value>
+  </data>
+  <data name="StlModelFilter" xml:space="preserve">
+    <value>STL model (*.stl)|*.stl</value>
+  </data>
+  <data name="ToolStatusHint" xml:space="preserve">
+    <value>Select a tool to begin.</value>
+  </data>
+  <data name="Union" xml:space="preserve">
+    <value>Union</value>
+  </data>
+  <data name="UnitMillimeter" xml:space="preserve">
+    <value>Millimeter</value>
+  </data>
+  <data name="UnsupportedDocumentReadOnly" xml:space="preserve">
+    <value>This document type is read-only.</value>
+  </data>
+  <data name="UnsupportedFeatureEdit" xml:space="preserve">
+    <value>This feature cannot be edited yet.</value>
+  </data>
+  <data name="UntitledDocumentFormat" xml:space="preserve">
+    <value>Untitled {0}</value>
+  </data>
+  <data name="UseDarkTheme" xml:space="preserve">
+    <value>Use dark theme</value>
+  </data>
+  <data name="ViewportInteractionHint" xml:space="preserve">
+    <value>Left drag: rotate · Middle drag: pan · Wheel: zoom</value>
+  </data>
+  <data name="Volume" xml:space="preserve">
+    <value>Volume</value>
+  </data>
+  <data name="WindowSelection" xml:space="preserve">
+    <value>Window selection</value>
+  </data>
+  <data name="Wireframe" xml:space="preserve">
+    <value>Wireframe</value>
+  </data>
+  <data name="WorkspaceModeling" xml:space="preserve">
+    <value>Modeling workspace</value>
+  </data>
+  <data name="WorkspaceReadyMessage" xml:space="preserve">
+    <value>Workspace ready. Create or open a document to begin.</value>
+  </data>
+  <data name="EditEntityProperties" xml:space="preserve">
+    <value>Edit entity properties</value>
+  </data>
+  <data name="Cadoryx" xml:space="preserve">
+    <value>Cadoryx</value>
+  </data>
+  <data name="CadoryxGitHub" xml:space="preserve">
+    <value>Cadoryx on GitHub</value>
+  </data>
+  <data name="AxisX" xml:space="preserve">
+    <value>X</value>
+  </data>
+  <data name="AxisY" xml:space="preserve">
+    <value>Y</value>
+  </data>
+  <data name="CreateBodyFormat" xml:space="preserve">
+    <value>Created {0}</value>
+  </data>
+  <data name="Rename" xml:space="preserve">
+    <value>Rename</value>
+  </data>
+  <data name="SetAppearance" xml:space="preserve">
+    <value>Change appearance</value>
+  </data>
+  <data name="SetVisibility" xml:space="preserve">
+    <value>Change visibility</value>
+  </data>
+  <data name="MoveInstance" xml:space="preserve">
+    <value>Move instance</value>
+  </data>
+  <data name="EditFeatureParameters" xml:space="preserve">
+    <value>Edit feature parameters</value>
+  </data>
+  <data name="Solid" xml:space="preserve">
+    <value>Solid</value>
+  </data>
+  <data name="Sheet" xml:space="preserve">
+    <value>Sheet</value>
+  </data>
+  <data name="Wire" xml:space="preserve">
+    <value>Wire</value>
+  </data>
+  <data name="Compound" xml:space="preserve">
+    <value>Compound</value>
+  </data>
+  <data name="Mesh" xml:space="preserve">
+    <value>Mesh</value>
+  </data>
+  <data name="Import" xml:space="preserve">
+    <value>Import</value>
+  </data>
+  <data name="Transform" xml:space="preserve">
+    <value>Transform</value>
+  </data>
+  <data name="Empty" xml:space="preserve">
+    <value>Empty</value>
   </data>
 </root>

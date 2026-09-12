@@ -1,6 +1,7 @@
 using System.IO;
 using System.Windows;
 using Cadoryx.ViewModels.Services.Platform;
+using Cadoryx.Lang.Strings;
 namespace Cadoryx.wpf.Views.Dialogs;
 public partial class ExportOptionsWindow:Window
 {
@@ -9,8 +10,9 @@ public partial class ExportOptionsWindow:Window
     public ExportOptionsWindow(string path)
     {
         InitializeComponent();this.path=path;bool stl=Path.GetExtension(path).Equals(".stl",StringComparison.OrdinalIgnoreCase);
-        FormatText.Text=stl?"STL 网格":Path.GetExtension(path).ToUpperInvariant().TrimStart('.')+" 模型";
-        SemanticsText.Text=stl?"按毫米坐标导出三角网格。STL 不包含单位标记、颜色、装配关系或特征历史。偏差越小，文件通常越大。":"导出几何、放置、名称和整体颜色。Cadoryx 参数历史及部分源文件标注、子形状样式不会写入交换文件。";
+        var format=Path.GetExtension(path).ToUpperInvariant().TrimStart('.');
+        FormatText.Text=stl?Strings.StlMesh:string.Format(Strings.ModelFormat,format);
+        SemanticsText.Text=stl?Strings.StlExportSemantics:Strings.ModelExportSemantics;
         StlSettings.Visibility=stl?Visibility.Visible:Visibility.Collapsed;
     }
     private void ExportClicked(object sender,RoutedEventArgs e)

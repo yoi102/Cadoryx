@@ -3,6 +3,7 @@ using System.Collections.Immutable;
 using System.ComponentModel;
 using AvalonDock.Mvvm.CommunityToolkit;
 using Cadoryx.Db;
+using Cadoryx.Lang.Strings;
 using Cadoryx.Commands;
 using Cadoryx.Editor;
 using Cadoryx.Rendering;
@@ -56,7 +57,7 @@ public partial class CadDocumentViewModel : ObservableDocument
     [ObservableProperty]
     [NotifyCanExecuteChangedFor(nameof(ConfirmCommand))]
     private bool hasPreview;
-    [ObservableProperty] private string toolStatus="输入参数后预览，再确认创建。尺寸单位 mm。";
+    [ObservableProperty] private string toolStatus=Strings.ToolStatusHint;
     [ObservableProperty] private GeometryAssetRef? previewGeometry;
     [ObservableProperty] private FeatureId? editingFeature;
     public bool IsReadOnly=>!Session.Snapshot.Extensions.IsDefaultOrEmpty;
@@ -82,7 +83,7 @@ public partial class CadDocumentViewModel : ObservableDocument
     public void FitView()=>FitRequested?.Invoke(this,EventArgs.Empty);
     public void SetView(CadProjection projection)=>ProjectionRequested?.Invoke(this,projection);
     public void SetDisplay(CadDisplayMode mode){CurrentDisplayMode=mode;DisplayModeRequested?.Invoke(this,mode);}
-    public void StartTool(string kind){InvalidatePreview();EditingFeature=null;placementRotation=Quaterniond.Identity;ToolKind=kind;ObjectName=kind;ToolStatus="输入参数后预览，再确认创建。尺寸单位 mm。";}
+    public void StartTool(string kind){InvalidatePreview();EditingFeature=null;placementRotation=Quaterniond.Identity;ToolKind=kind;ObjectName=kind;ToolStatus=Strings.ToolStatusHint;}
     public void EditFeature(FeatureId id)
     {
         var feature=Session.Snapshot.Features[id];InvalidatePreview();EditingFeature=id;ObjectName=feature.Name;
@@ -92,9 +93,9 @@ public partial class CadDocumentViewModel : ObservableDocument
             case CylinderRecipe c:ToolKind="Cylinder";SizeX=c.Radius;SizeZ=c.Height;SetPosition(c.Placement);break;
             case ExtrudeRecipe e:ToolKind="Extrude";SizeZ=e.Distance;SetPosition(e.Placement);LoadProfile(e.Profile);break;
             case RevolveRecipe r:ToolKind="Revolve";AngleDegrees=r.AngleRadians*180/Math.PI;SetPosition(r.Placement);LoadProfile(r.Profile);break;
-            default:EditingFeature=null;ToolStatus="此特征的参数编辑尚未开放。";return;
+            default:EditingFeature=null;ToolStatus=Strings.UnsupportedFeatureEdit;return;
         }
-        ToolStatus="正在编辑特征；确认后会重算依赖它的后续特征。";
+        ToolStatus=Strings.EditingFeatureStatus;
     }
     private void SetPosition(RigidTransform3d p){PositionX=p.Translation.X;PositionY=p.Translation.Y;PositionZ=p.Translation.Z;placementRotation=p.Rotation;}
     private void LoadProfile(SketchProfile profile){ProfilePoints.Clear();foreach(var p in profile.Points)ProfilePoints.Add(new(p.X,p.Y));}
@@ -125,10 +126,10 @@ public partial class CadDocumentViewModel : ObservableDocument
     {
         if(IsClosingRequested)return;
         InvalidatePreview();long request=previewSequence;var cancel=new CancellationTokenSource();previewCancellation=cancel;
-        IsWorking=true;ToolStatus="正在计算预览…";
+        IsWorking=true;ToolStatus=Strings.CalculatingPreview;
         try
         {
-            if(IsReadOnly)throw new NotSupportedException("文档包含未支持扩展，当前只读。");
+            if(IsReadOnly)throw new NotSupportedException(Strings.UnsupportedDocumentReadOnly);
             using var capture=Session.Capture();long generation=Session.Generation;
             var candidate=await command().PrepareAsync(new(capture.Snapshot,generation,Session.Assets,kernel),cancel.Token);
             if(cancel.IsCancellationRequested||request!=previewSequence||Session.IsClosing||generation!=Session.Generation){candidate.Dispose();return;}
@@ -142,10 +143,10 @@ public partial class CadDocumentViewModel : ObservableDocument
             catch{candidate.Dispose();throw;}
             prepared=candidate;preparedGeneration=generation;
             PreviewGeometry=candidate.Snapshot.Bodies.Values.FirstOrDefault(b=>!capture.Snapshot.Bodies.TryGetValue(b.Id,out var old)||old.Geometry.Revision!=b.Geometry.Revision)?.Geometry;
-            HasPreview=true;ToolStatus=PreviewGeometry is null?"结果为空；确认将删除被切除的当前体。":"预览已就绪。确认提交，或取消放弃。";
+            HasPreview=true;ToolStatus=PreviewGeometry is null?Strings.EmptyPreviewStatus:Strings.PreviewReadyStatus;
             PreviewChanged?.Invoke(this,EventArgs.Empty);
         }
-        catch(OperationCanceledException){if(request==previewSequence)ToolStatus="已取消。";}
+        catch(OperationCanceledException){if(request==previewSequence)ToolStatus=Strings.CanceledStatus;}
         catch(Exception ex){if(request==previewSequence)Report(ex);}
         finally{if(request==previewSequence)IsWorking=false;cancel.Dispose();if(ReferenceEquals(previewCancellation,cancel))previewCancellation=null;}
     }
@@ -156,7 +157,7 @@ public partial class CadDocumentViewModel : ObservableDocument
         try
         {
             await Session.ExecuteAsync(new PreparedCommand(edit.Snapshot,expected));
-            InvalidatePreview();ToolStatus="已提交，可撤销。";FitView();
+            InvalidatePreview();ToolStatus=Strings.CommittedStatus;FitView();
         }
         catch(Exception ex){Report(ex);InvalidatePreview();}
         finally{IsWorking=false;}
@@ -192,7 +193,7 @@ public partial class CadDocumentViewModel : ObservableDocument
     }
     private sealed class PreparedCommand(DocumentSnapshot snapshot,long generation) : ICadDocumentCommand
     {
-        public string Name=>"建模";
+        public string Name=>Strings.Modeling;
         public Task<PreparedDocumentEdit> PrepareAsync(DocumentCommandContext context,CancellationToken token)
         {
             token.ThrowIfCancellationRequested();if(context.Generation!=generation)throw new StaleDocumentException();
