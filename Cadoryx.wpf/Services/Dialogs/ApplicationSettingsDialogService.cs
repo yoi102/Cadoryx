@@ -8,10 +8,12 @@ namespace Cadoryx.wpf.Services.Dialogs;
 internal sealed class ApplicationSettingsDialogService : IApplicationSettingsDialogService
 {
     private readonly IApplicationSettingsStore _settingsStore;
+    private readonly DialogService _dialogs;
 
-    public ApplicationSettingsDialogService(IApplicationSettingsStore settingsStore)
+    public ApplicationSettingsDialogService(IApplicationSettingsStore settingsStore, DialogService dialogs)
     {
         _settingsStore = settingsStore;
+        _dialogs = dialogs;
     }
 
     public void Show(
@@ -20,9 +22,8 @@ internal sealed class ApplicationSettingsDialogService : IApplicationSettingsDia
     {
         var dialog = new ApplicationSettingsWindow
         {
-            Owner = System.Windows.Application.Current?.MainWindow,
             DataContext = new ApplicationSettingsViewModel(settings, _settingsStore, applySettings)
         };
-        dialog.ShowDialog();
+        _ = _dialogs.ShowDialogAsync(dialog);
     }
 }

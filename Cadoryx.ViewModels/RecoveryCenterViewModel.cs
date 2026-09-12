@@ -7,8 +7,14 @@ using CommunityToolkit.Mvvm.Input;
 namespace Cadoryx.ViewModels;
 
 public partial class RecoveryCenterViewModel(IRecoveryStore store, Func<RecoveryKey, Task<bool>> restore,
-    Func<RecoveryEntry, bool> confirmDiscard) : ObservableObject
+    Func<RecoveryEntry, Task<bool>> confirmDiscard) : ObservableObject
 {
+    public RecoveryCenterViewModel(IRecoveryStore store, Func<RecoveryKey, Task<bool>> restore,
+        Func<RecoveryEntry, bool> confirmDiscard)
+        : this(store, restore, entry => Task.FromResult(confirmDiscard(entry)))
+    {
+    }
+
     public ObservableCollection<RecoveryEntry> Entries { get; } = [];
     [ObservableProperty]
     [NotifyCanExecuteChangedFor(nameof(RestoreCommand), nameof(DiscardCommand))]
@@ -52,7 +58,7 @@ public partial class RecoveryCenterViewModel(IRecoveryStore store, Func<Recovery
     [RelayCommand(CanExecute = nameof(CanChoose))]
     private async Task DiscardAsync()
     {
-        if (SelectedEntry is not {} entry || !confirmDiscard(entry)) return;
+        if (SelectedEntry is not {} entry || !await confirmDiscard(entry)) return;
         IsBusy = true;
         try { await store.DiscardAsync(entry.Key); await ReloadAsync(); }
         catch (Exception ex) { Status = ex.Message; }

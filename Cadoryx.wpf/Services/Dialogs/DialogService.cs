@@ -12,7 +12,7 @@ namespace Cadoryx.wpf.Services.Dialogs;
 /// <summary>
 /// WPF 对话框实现。所有 UI 操作都切回应用 Dispatcher，调用方可以安全地从后台任务使用它。
 /// </summary>
-internal sealed class DialogService : IDialogService, IApplicationSettingsDialogService
+public sealed class DialogService : IDialogService, IApplicationSettingsDialogService
 {
     private readonly IApplicationSettingsStore _settingsStore;
     private readonly ICadMessageLog _messageLog;
@@ -81,6 +81,14 @@ internal sealed class DialogService : IDialogService, IApplicationSettingsDialog
         return new DeferredScope(() => Close(identifier));
     }
 
+    public Task<object?> ShowDialogAsync(
+        object content,
+        string dialogIdentifier = ViewServiceIdentifiers.RootDialogHost)
+    {
+        ArgumentNullException.ThrowIfNull(content);
+        return ShowReplacingCurrentAsync(() => content, dialogIdentifier);
+    }
+
     public async Task<bool> ShowExitConfirmation(
         string dialogIdentifier = ViewServiceIdentifiers.RootDialogHost)
     {
@@ -101,13 +109,12 @@ internal sealed class DialogService : IDialogService, IApplicationSettingsDialog
         {
             var dialog = new ApplicationSettingsWindow
             {
-                Owner = System.Windows.Application.Current?.MainWindow,
                 DataContext = new ApplicationSettingsViewModel(
                     settings,
                     _settingsStore,
                     applySettings)
             };
-            dialog.ShowDialog();
+            _ = ShowDialogAsync(dialog);
         });
     }
 

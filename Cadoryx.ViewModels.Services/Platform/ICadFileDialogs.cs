@@ -5,6 +5,6 @@ public interface ICadFileDialogs
 {
     string? OpenDocument();
     string? SaveDocument(string name);
-    CadExportRequest? ExportDocument(string name);
-    SaveDecision ConfirmSave(string name);
+    Task<CadExportRequest?> ExportDocumentAsync(string name);
+    Task<SaveDecision> ConfirmSaveAsync(string name);
 }

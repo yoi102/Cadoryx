@@ -2,11 +2,12 @@ using Cadoryx.ViewModels;
 using Cadoryx.wpf.Views.Dialogs;
 namespace Cadoryx.wpf.Services.Dialogs;
 
-public sealed class DocumentResourcesDialogService : IDocumentResourcesDialogService
+public sealed class DocumentResourcesDialogService(DialogService dialogs) : IDocumentResourcesDialogService
 {
-    public void Show(DocumentResourcesViewModel model)
+    public async Task ShowAsync(DocumentResourcesViewModel model)
     {
-        var dialog=new DocumentResourcesWindow{Owner=System.Windows.Application.Current.MainWindow,DataContext=model};
-        dialog.ShowDialog();
+        ArgumentNullException.ThrowIfNull(model);
+        var dialog=new DocumentResourcesDialog{DataContext=model};
+        await dialogs.ShowDialogAsync(dialog);
     }
 }

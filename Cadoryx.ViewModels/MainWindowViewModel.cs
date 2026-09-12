@@ -165,7 +165,7 @@ public partial class MainWindowViewModel : ObservableObject
     [RelayCommand(CanExecute=nameof(CanUseDocument))] private async Task ExportAsync()
     {
         if(ActiveDocument is not {} doc)return;
-        var request=files.ExportDocument(doc.Session.Snapshot.Name);if(request is null)return;
+        var request=await files.ExportDocumentAsync(doc.Session.Snapshot.Name);if(request is null)return;
         await RunAsync(async()=>
         {
             using var capture=doc.Session.Capture();
@@ -242,7 +242,7 @@ public partial class MainWindowViewModel : ObservableObject
     private async Task<bool> CanCloseAsync(CadDocumentViewModel doc)
     {
         await doc.StopToolsAsync();if(!doc.Session.IsDirty)return true;
-        return files.ConfirmSave(doc.Session.Snapshot.Name) switch
+        return await files.ConfirmSaveAsync(doc.Session.Snapshot.Name) switch
         {SaveDecision.Discard=>true,SaveDecision.Save=>await SaveDocumentAsync(doc,false),_=>false};
     }
     private async Task CloseDocumentAsync(CadDocumentViewModel doc)
@@ -278,12 +278,12 @@ public partial class MainWindowViewModel : ObservableObject
     public void ReportRecoveryFailure(Exception ex)
     {log.Add(string.Format(Strings.RecoveryWriteFailed,ex.Message),CadMessageLevel.Warning,"Recovery");}
     [RelayCommand(CanExecute=nameof(CanStartOperation))]
-    private void OpenRecovery()=>recoveryDialog.Show();
+    private async Task OpenRecoveryAsync()=>await recoveryDialog.ShowAsync();
     [RelayCommand(CanExecute=nameof(CanUseDocument))]
-    private void ManageResources()
+    private async Task ManageResourcesAsync()
     {
         if(ActiveDocument is not {} doc)return;
-        using var model=new DocumentResourcesViewModel(doc);resourcesDialog.Show(model);
+        using var model=new DocumentResourcesViewModel(doc);await resourcesDialog.ShowAsync(model);
     }
     public async Task CheckForRecoveryAsync()
     {
@@ -291,7 +291,7 @@ public partial class MainWindowViewModel : ObservableObject
         {
             var scan=await recoveryStore.ScanAsync();
             foreach(var diagnostic in scan.Diagnostics)log.Add(diagnostic.Message,CadMessageLevel.Warning,diagnostic.Code);
-            if(scan.Entries.Count>0)recoveryDialog.Show();
+            if(scan.Entries.Count>0)await recoveryDialog.ShowAsync();
         }
         catch(Exception ex){ReportRecoveryFailure(ex);}
     }

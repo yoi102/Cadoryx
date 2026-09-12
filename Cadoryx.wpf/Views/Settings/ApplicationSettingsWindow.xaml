@@ -1,21 +1,19 @@
-<mah:MetroWindow x:Class="Cadoryx.wpf.Views.Settings.ApplicationSettingsWindow"
+<UserControl x:Class="Cadoryx.wpf.Views.Settings.ApplicationSettingsWindow"
                  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                 xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
+                 xmlns:sys="clr-namespace:System;assembly=mscorlib"
                  xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                  xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
                  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                  xmlns:r="clr-namespace:Cadoryx.Lang;assembly=Cadoryx.Lang"
                  xmlns:vm="clr-namespace:Cadoryx.ViewModels.Settings;assembly=Cadoryx.ViewModels"
                  mc:Ignorable="d"
-                 Style="{StaticResource Cadoryx.DialogWindowStyle}"
                  d:DataContext="{d:DesignInstance Type=vm:ApplicationSettingsViewModel}"
-                 Title="{I18N {x:Static r:LangKeys.ApplicationSettings}}"
                  Width="760"
                  Height="560"
                  MinWidth="650"
                  MinHeight="480"
-                 WindowStartupLocation="CenterOwner"
-                 ShowInTaskbar="False"
                  Background="{DynamicResource MaterialDesign.Brush.Background}"
                  AutomationProperties.AutomationId="ApplicationSettingsWindow">
     <Grid Margin="16">
@@ -55,4 +53,4 @@
             </StackPanel>
         </Grid>
     </Grid>
-</mah:MetroWindow>
+</UserControl>

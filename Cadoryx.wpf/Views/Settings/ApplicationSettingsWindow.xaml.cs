@@ -1,5 +1,6 @@
 using Cadoryx.ViewModels.Settings;
 using System.Windows;
+using MaterialDesignThemes.Wpf;
 
 namespace Cadoryx.wpf.Views.Settings;
 
@@ -13,7 +14,7 @@ public partial class ApplicationSettingsWindow
     private void Ok_Click(object sender, RoutedEventArgs e)
     {
         if (DataContext is ApplicationSettingsViewModel viewModel && viewModel.TryApply())
-            DialogResult = true;
+            DialogHost.CloseDialogCommand.Execute(bool.TrueString, this);
     }
 
     private void Apply_Click(object sender, RoutedEventArgs e)
@@ -30,6 +31,6 @@ public partial class ApplicationSettingsWindow
 
     private void Cancel_Click(object sender, RoutedEventArgs e)
     {
-        DialogResult = false;
+        DialogHost.CloseDialogCommand.Execute(bool.FalseString, this);
     }
 }

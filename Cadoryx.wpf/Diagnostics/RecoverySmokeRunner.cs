@@ -12,9 +12,11 @@ using Cadoryx.Editor;
 using Cadoryx.IO;
 using Cadoryx.Kernel.Abstractions;
 using Cadoryx.ViewModels;
+using Cadoryx.ViewModels.Services.Platform;
 using Cadoryx.wpf.Controls;
 using Cadoryx.wpf.Views.Dialogs;
 using Microsoft.Extensions.DependencyInjection;
+using MaterialDesignThemes.Wpf;
 
 namespace Cadoryx.wpf.Diagnostics;
 
@@ -72,18 +74,18 @@ internal static class RecoverySmokeRunner
             var expectedState = JsonSerializer.Deserialize<Expected>(await File.ReadAllTextAsync(Path.Combine(output, "expected.json")), CadJson.Options)!;
             await first.Session.SaveAsync(storage, Path.Combine(output, "startup.cadoryx"));
             await vm.CheckForRecoveryAsync(); await Idle();
-            var center = System.Windows.Application.Current.Windows.OfType<RecoveryWindow>().Single();
+            var center = Find<RecoveryDialog>(window) ?? throw new InvalidOperationException("Recovery dialog was not shown.");
             var centerVm = (RecoveryCenterViewModel)center.DataContext;
             if (centerVm.RefreshCommand.ExecutionTask is {} refresh) await refresh;
             Require(centerVm.Entries.Count == 1, "The crashed process was not discovered exactly once.");
-            SaveWindow(center, Path.Combine(output, "recovery-center.png"));
+            SaveVisual(center, Path.Combine(output, "recovery-center.png"));
             var priorCulture = System.Globalization.CultureInfo.GetCultureInfo(vm.CurrentCultureLCID);
             try
             {
                 foreach (string culture in new[] { "zh-CN", "ja-JP" })
                 {
                     Antelcat.I18N.WPF.I18NExtension.Culture = System.Globalization.CultureInfo.GetCultureInfo(culture);
-                    await Idle(); SaveWindow(center, Path.Combine(output, $"recovery-center-{culture}.png"));
+                    await Idle(); SaveVisual(center, Path.Combine(output, $"recovery-center-{culture}.png"));
                 }
             }
             finally { Antelcat.I18N.WPF.I18NExtension.Culture = priorCulture; }
@@ -95,11 +97,11 @@ internal static class RecoverySmokeRunner
             var actual = Expected.Capture(restored.Session.Snapshot, await HashFile(original));
             Require(JsonSerializer.Serialize(actual, CadJson.Options) == JsonSerializer.Serialize(expectedState, CadJson.Options), "Restored IDs/assets/state differ or the original file was changed.");
             Require(centerVm.Entries.Count == 0, "The transferred source still appears in recovery.");
-            center.Close(); await Idle();
+            DialogHost.GetDialogSession(ViewServiceIdentifiers.RootDialogHost)?.Close(); await Idle();
             var host = Find<OcctViewportHost>(window) ?? throw new InvalidOperationException("No recovered viewport host.");
             var viewport = host.Viewport ?? throw new InvalidOperationException("Recovered native viewer did not initialize.");
             viewport.FitAll(); viewport.SaveScreenshot(Path.Combine(output, "restored-viewport.png"));
-            SaveWindow(window, Path.Combine(output, "restored-shell.png"));
+            SaveVisual(window, Path.Combine(output, "restored-shell.png"));
             await restored.Session.SaveAsync(storage, Path.Combine(output, "recovered-copy.cadoryx"));
             await recovery.CheckpointAsync(restored.Session);
             Require(await HashFile(original) == expectedState.OriginalHash, "Save copy overwrote the original.");
@@ -134,7 +136,7 @@ internal static class RecoverySmokeRunner
     private static void Require(bool condition, string message) { if (!condition) throw new InvalidOperationException(message); }
     private static async Task Idle()
     { await System.Windows.Application.Current.Dispatcher.InvokeAsync(() => { }, DispatcherPriority.ApplicationIdle); await Task.Delay(200); }
-    private static void SaveWindow(Window window, string path)
+    private static void SaveVisual(FrameworkElement window, string path)
     {
         var bitmap = new RenderTargetBitmap((int)window.ActualWidth, (int)window.ActualHeight, 96, 96, PixelFormats.Pbgra32); bitmap.Render(window);
         var encoder = new PngBitmapEncoder(); encoder.Frames.Add(BitmapFrame.Create(bitmap)); using var file = File.Create(path); encoder.Save(file);

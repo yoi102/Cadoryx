@@ -46,7 +46,7 @@ M2-I 的实现说明，更新于 2026-09-12。入口为主页工具栏或“文�
 | Commands | `RecomputeCommand` 在计算前检查依赖闭包内的锁定图层；布尔保留被消费源体的输出属性 |
 | Editor | `SelectionService` 同时支持实体选中与只有实例路径的选中，空零件也能编辑位置 |
 | ViewModels | `DocumentResourcesViewModel`、`InstancePlacementViewModel`，以及文档的创建归属默认值 |
-| WPF | `DocumentResourcesWindow`、`InstancePlacementView`，共用弹窗风格和文档级 UI 生命周期 |
+| WPF | `DocumentResourcesDialog`、`InstancePlacementView`，共用弹窗风格和文档级 UI 生命周期 |
 
 图层、材料、体引用、位姿和输出元数据均使用已有 MessagePack v2 字段，本阶段没有新增格式编号或改变字段 Key。保存重开和恢复快照复用相同协议。
 

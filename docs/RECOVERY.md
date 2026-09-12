@@ -20,7 +20,7 @@ M3-R 的实际实现，更新于 2026-09-12。恢复快照复用现有 `.cadoryx
 | Editor | DocumentRecoveryService | 捕获快照和资产租约、合并定时任务、保存/关闭协调 |
 | Editor | DocumentSession / Workspace | 独立 SessionId、原路径与脏状态的原子捕获、恢复会话创建 |
 | ViewModels | RecoveryCenterViewModel / MainWindowViewModel | 列表命令、工作区接入、持久副本交接和错误消息 |
-| WPF | RecoveryHost / RecoveryDialogService / RecoveryWindow | 30 秒定时器、非模态 owner 窗口、三种语言资源 |
+| WPF | RecoveryHost / RecoveryDialogService / RecoveryDialog | 30 秒定时器、非模态 owner Dialog、三种语言资源 |
 
 `SessionId` 是本次打开的身份；`DocumentId` 是持久业务身份，同一文档的多个副本不能共用清理键。`RecoveryKey=(RunId, SessionId)` 定位记录。`DocumentCapture` 在会话锁内一次性捕获 Snapshot、IsDirty、FilePath，并持有全部可达资产租约，写入期间继续编辑或释放历史不会使快照缺少资产。
 

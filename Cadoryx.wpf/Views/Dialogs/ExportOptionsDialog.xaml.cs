@@ -2,12 +2,13 @@ using System.IO;
 using System.Windows;
 using Cadoryx.ViewModels.Services.Platform;
 using Cadoryx.Lang.Strings;
+using MaterialDesignThemes.Wpf;
 namespace Cadoryx.wpf.Views.Dialogs;
-public partial class ExportOptionsWindow:MahApps.Metro.Controls.MetroWindow
+public partial class ExportOptionsDialog
 {
     private readonly string path;
     public CadExportRequest? Request {get;private set;}
-    public ExportOptionsWindow(string path)
+    public ExportOptionsDialog(string path)
     {
         InitializeComponent();this.path=path;bool stl=Path.GetExtension(path).Equals(".stl",StringComparison.OrdinalIgnoreCase);
         var format=Path.GetExtension(path).ToUpperInvariant().TrimStart('.');
@@ -18,6 +19,7 @@ public partial class ExportOptionsWindow:MahApps.Metro.Controls.MetroWindow
     private void ExportClicked(object sender,RoutedEventArgs e)
     {
         if(LinearInput.Value is not {} linear||AngleInput.Value is not {} angle)return;
-        Request=new(path,linear,angle*Math.PI/180,BinaryCheck.IsChecked==true,VisibleCheck.IsChecked==true);DialogResult=true;
+        Request=new(path,linear,angle*Math.PI/180,BinaryCheck.IsChecked==true,VisibleCheck.IsChecked==true);
+        DialogHost.CloseDialogCommand.Execute(bool.TrueString, this);
     }
 }

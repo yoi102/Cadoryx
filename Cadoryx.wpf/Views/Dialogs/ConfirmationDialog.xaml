@@ -1,0 +1,27 @@
+<UserControl x:Class="Cadoryx.wpf.Views.Dialogs.ConfirmationDialog"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+             xmlns:r="clr-namespace:Cadoryx.Lang;assembly=Cadoryx.Lang"
+             xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
+             Width="580">
+    <StackPanel Margin="24">
+        <TextBlock x:Name="MessageText"
+                   TextWrapping="Wrap"
+                   Margin="0,0,0,24" />
+        <WrapPanel HorizontalAlignment="Right">
+            <Button x:Name="AcceptButton"
+                    Click="AcceptClicked"
+                    Margin="0,0,8,8" />
+            <Button x:Name="DiscardButton"
+                    Click="DiscardClicked"
+                    Margin="0,0,8,8" />
+            <Button Content="{I18N {x:Static r:LangKeys.Cancel}}"
+                    IsCancel="True"
+                    Command="{x:Static md:DialogHost.CloseDialogCommand}"
+                    CommandParameter="{x:Static sys:Boolean.FalseString}"
+                    Margin="0,0,0,8" />
+        </WrapPanel>
+    </StackPanel>
+</UserControl>

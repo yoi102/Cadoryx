@@ -7,7 +7,7 @@ using CommunityToolkit.Mvvm.Input;
 
 namespace Cadoryx.ViewModels;
 
-public interface IDocumentResourcesDialogService { void Show(DocumentResourcesViewModel model); }
+public interface IDocumentResourcesDialogService { Task ShowAsync(DocumentResourcesViewModel model); }
 
 /// <summary>Applies explicit, undoable edits to the document that opened the window.</summary>
 public partial class DocumentResourcesViewModel : ObservableObject, IDisposable

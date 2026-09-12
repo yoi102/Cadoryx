@@ -108,7 +108,7 @@
     </mah:MetroWindow.RightWindowCommands>
 
     <Grid>
-        <md:DialogHost Style="{StaticResource MaterialDesignEmbeddedDialogHost}"
+        <md:DialogHost 
                        Identifier="{x:Static svc:ViewServiceIdentifiers.RootDialogHost}"
                        Background="{DynamicResource MaterialDesign.Brush.Background}"
                        DialogTheme="Inherit" DialogOpened="OnDialogOpened" DialogClosed="OnDialogClosed">
