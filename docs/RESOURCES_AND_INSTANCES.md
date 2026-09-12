@@ -52,7 +52,7 @@ M2-I 的实现说明，更新于 2026-09-12。入口为主页工具栏或“文�
 
 ## 弹窗与生命周期
 
-独立应用弹窗统一为 `mah:MetroWindow`：文档资源、恢复、导出选项、应用设置、保存/丢弃确认。共用 `Cadoryx.DialogWindowStyle` 管理主题、标题大小写、任务栏和最大/最小化按钮；各窗口显式设置 owner 和居中方式。原有嵌入式 DialogHost 消息、进度与退出确认控件保留，系统文件选择器使用 Windows 标准文件对话框。
+M2-I 原验收使用独立 `mah:MetroWindow`。当前工作区的文档资源、恢复、导出选项、应用设置和保存确认已改为 `DialogHost` 内容，消息/进度/退出确认也使用此承载方式；系统文件选择器保留标准 owner 窗口。M3-V 已按当前 Popup 内容完成回归，诊断通过 DialogSession.Content 获取实际显示内容。以后新增独立应用窗口继续遵循 `mah:MetroWindow` 风格要求。
 
 关闭文档通过 `CadDocumentViewModel.Detaching` 显式通知原生视图释放，再释放会话资产；不依赖 WPF 延迟发生的 `Unloaded`。迟到的 Loaded/Ready 不得为已关闭文档重建视口。这条顺序在本阶段扩展恢复验收时补齐。
 

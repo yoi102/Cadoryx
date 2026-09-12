@@ -7,6 +7,7 @@
     <Project Path="Cadoryx.wpf/Cadoryx.wpf.csproj" />
   </Folder>
   <Folder Name="/core/">
+    <Project Path="Cadoryx.Sketching/Cadoryx.Sketching.csproj" />
     <Project Path="Cadoryx.Commands/Cadoryx.Commands.csproj" />
     <Project Path="Cadoryx.Db/Cadoryx.Db.csproj" />
     <Project Path="Cadoryx.Editor/Cadoryx.Editor.csproj" />

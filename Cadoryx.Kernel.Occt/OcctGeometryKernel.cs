@@ -7,11 +7,11 @@ using DocumentSnapshot = Cadoryx.Db.DocumentSnapshot;
 namespace Cadoryx.Kernel.Occt;
 
 /// <summary>Serializes native modeling/exchange; no Viewer or UI object enters this queue.</summary>
-public sealed class OcctGeometryKernel : IGeometryKernel
+public sealed partial class OcctGeometryKernel : IGeometryKernel, ITopologyResolver
 {
     private static readonly SemaphoreSlim Queue=new(1,1);
     public string Version=>"OcctSharp 8.0.1-preview.26 / OCCT 8.0.1";
-    public bool Supports(GeometryRecipe recipe)=>recipe is BoxRecipe or CylinderRecipe or ImportedRecipe or BooleanRecipe or TransformRecipe or ExtrudeRecipe or RevolveRecipe;
+    public bool Supports(GeometryRecipe recipe)=>recipe is BoxRecipe or CylinderRecipe or ImportedRecipe or BooleanRecipe or TransformRecipe or ExtrudeRecipe or RevolveRecipe or LocalFeatureRecipe;
     private static async Task<T> Run<T>(Func<T> action,CancellationToken token)
     {
         await Queue.WaitAsync(token).ConfigureAwait(false);
@@ -23,6 +23,17 @@ public sealed class OcctGeometryKernel : IGeometryKernel
         recipe.Validate();
         return Run(()=>
         {
+            if(recipe is LocalFeatureRecipe local)
+            {
+                using var source=OcctGeometryBridge.ReadShape(local.Source,assets);
+                using var topology=source.GetTopologyAdjacency(ShapeKind.Edge,ShapeKind.Face);
+                var candidates=topology.Items.Where(e=>BoxTopology.Matches(e,local.Box,TopologyKind.Edge,local.First,local.Second)).ToArray();
+                if(candidates.Length!=1)throw new CadValidationException("Local edge is missing or ambiguous. Reselect it.");
+                using var operation=local.Operation==Cadoryx.Db.LocalFeatureOperation.Fillet?
+                    FeatureModeling.Fillet(source,candidates,local.Size):FeatureModeling.Chamfer(source,candidates,local.Size);
+                cancellationToken.ThrowIfCancellationRequested();
+                return OcctGeometryBridge.StoreShape(operation.RequireShape(),assets);
+            }
             if(recipe is BooleanRecipe boolean)
             {
                 var shapes=new List<Shape>();
@@ -102,7 +113,7 @@ public sealed class OcctGeometryKernel : IGeometryKernel
                 {
                     using var original=label.Shape;using var identity=TopLocLocation.Identity;using var local=original.Located(identity);
                     var stored=OcctGeometryBridge.StoreShape(local,assets);results.Add(stored);
-                    var geometry=stored.Geometry with {Source=new(context.Id,label.Entry)};
+                    var geometry=stored.Geometry with {Source=new(context.Id,label.Entry,AssetFormatPolicy.CurrentXde)};
                     var bodyId=BodyId.New();var featureId=FeatureId.New();
                     var color=OverallColor(label);
                     var body=new CadBody(bodyId,id,name,geometry,featureId,doc.Layers.Keys.First(),new(color is {} c?OcctGeometryBridge.ToArgb(c):0xFF86ACC5,PreserveSourceStyles:true));

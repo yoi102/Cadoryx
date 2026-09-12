@@ -24,9 +24,9 @@ internal static class ResourceSmokeRunner
     {
         var document=workspace.ActiveDocument!;int originalBodies=document.Session.Snapshot.Bodies.Count;
         DefinitionId target=default;LayerId layer=default;MaterialId material=default;
-        await ModalAsync(()=>{workspace.ManageResourcesCommand.Execute(null);return Task.CompletedTask;},async()=>
+        await ModalAsync(()=>workspace.ManageResourcesCommand.ExecuteAsync(null),async()=>
         {
-            var dialog=Find<DocumentResourcesDialog>(window)??throw new InvalidOperationException("Resource dialog was not shown.");
+            var dialog=DialogHost.GetDialogSession(ViewServiceIdentifiers.RootDialogHost)?.Content as DocumentResourcesDialog??throw new InvalidOperationException("Resource dialog was not shown.");
             var vm=(DocumentResourcesViewModel)dialog.DataContext;
             try
             {
@@ -66,9 +66,9 @@ internal static class ResourceSmokeRunner
         var before=document.Session.Snapshot;await document.Placement.ApplyCommand.ExecuteAsync(null);await Idle();
         Require(OccurrencePlacement.Resolve(document.Session.Snapshot,occurrence.Path).Slot.LocalTransform.Translation.X==80,"Position did not commit.");
         await document.Session.UndoAsync();Require(document.Session.Snapshot.StateId==before.StateId,"Position undo was not exact.");await document.Session.RedoAsync();
-        await ModalAsync(()=>{workspace.ManageResourcesCommand.Execute(null);return Task.CompletedTask;},async()=>
+        await ModalAsync(()=>workspace.ManageResourcesCommand.ExecuteAsync(null),async()=>
         {
-                var dialog=Find<DocumentResourcesDialog>(window)??throw new InvalidOperationException("Resource dialog was not shown.");var vm=(DocumentResourcesViewModel)dialog.DataContext;
+                var dialog=DialogHost.GetDialogSession(ViewServiceIdentifiers.RootDialogHost)?.Content as DocumentResourcesDialog??throw new InvalidOperationException("Resource dialog was not shown.");var vm=(DocumentResourcesViewModel)dialog.DataContext;
             try
             {
                 vm.SelectedLayer=vm.Layers.Single(l=>l.Id==layer);vm.LayerVisible=false;await vm.ApplyLayerCommand.ExecuteAsync(null);
@@ -91,7 +91,7 @@ internal static class ResourceSmokeRunner
         });
         await ModalAsync(()=>{workspace.OpenApplicationSettingsCommand.Execute(null);return Task.CompletedTask;},()=>
         {
-            var dialog=Find<ApplicationSettingsWindow>(window)??throw new InvalidOperationException("Settings dialog was not shown.");
+            var dialog=DialogHost.GetDialogSession(ViewServiceIdentifiers.RootDialogHost)?.Content as ApplicationSettingsWindow??throw new InvalidOperationException("Settings dialog was not shown.");
             Capture(dialog,Path.Combine(output,"metro-settings.png"));DialogHost.GetDialogSession(ViewServiceIdentifiers.RootDialogHost)?.Close();return Task.CompletedTask;
         });
         var confirmation=new ConfirmationDialog("Save changes","Save changes to Housing?","Save","Don't save");
@@ -107,7 +107,17 @@ internal static class ResourceSmokeRunner
         Task showing=Task.CompletedTask;
         _=System.Windows.Application.Current.Dispatcher.BeginInvoke(new Action(async()=>
         {
-            try{await Idle();await Task.Delay(250);await exercise();await Task.Delay(250);await showing;complete.SetResult();}
+            try
+            {
+                var deadline=System.Diagnostics.Stopwatch.StartNew();
+                while(DialogHost.GetDialogSession(ViewServiceIdentifiers.RootDialogHost)?.Content is not FrameworkElement {IsLoaded:true,IsVisible:true})
+                {
+                    if(showing.IsFaulted)await showing;
+                    if(deadline.Elapsed>TimeSpan.FromSeconds(5))throw new TimeoutException("Dialog content did not become visible.");
+                    await Idle();
+                }
+                await Idle();await exercise();await Idle();await showing;complete.SetResult();
+            }
             catch(Exception ex)
             {
                 complete.SetException(ex);

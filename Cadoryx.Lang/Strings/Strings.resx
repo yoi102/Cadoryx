@@ -634,61 +634,406 @@
   <data name="Empty" xml:space="preserve">
     <value>Empty</value>
   </data>
-  <data name="RecoveryTitle" xml:space="preserve"><value>Document recovery</value></data>
-  <data name="RecoveryDescription" xml:space="preserve"><value>Recover unsaved work from a previous session. A recovered document opens as an unsaved copy. If the newest snapshot is damaged, the previous completed snapshot will be tried.</value></data>
-  <data name="RecoveryEmpty" xml:space="preserve"><value>No recoverable documents. Snapshots belonging to running Cadoryx windows are excluded.</value></data>
-  <data name="RecoveryOpened" xml:space="preserve"><value>Recovered as an unsaved copy. Save it to a location of your choice.</value></data>
-  <data name="RecoveryRestoreFailed" xml:space="preserve"><value>Recovery failed or the workspace is busy. See Messages for details.</value></data>
-  <data name="RecoveryWriteFailed" xml:space="preserve"><value>Recovery protection could not be updated: {0}</value></data>
-  <data name="RecoveryOriginalPath" xml:space="preserve"><value>Original file</value></data>
-  <data name="RecoverySnapshotTime" xml:space="preserve"><value>Snapshot time (UTC)</value></data>
-  <data name="RecoverySnapshotCount" xml:space="preserve"><value>Snapshots</value></data>
-  <data name="RecoveryRestore" xml:space="preserve"><value>Recover copy</value></data>
-  <data name="RecoveryDiscard" xml:space="preserve"><value>Discard snapshots</value></data>
-  <data name="RecoveryDiscardQuestion" xml:space="preserve"><value>Discard all recovery snapshots for “{0}”? This cannot be undone. The original file is not affected.</value></data>
-  <data name="RecoveryLater" xml:space="preserve"><value>Later</value></data>
-  <data name="RecoveryRefresh" xml:space="preserve"><value>Refresh</value></data>
-  <data name="RecoveryName" xml:space="preserve"><value>Document</value></data>
-  <data name="AddPart" xml:space="preserve"><value>Add part</value></data>
-  <data name="SelectTargetPart" xml:space="preserve"><value>Select a target part.</value></data>
-  <data name="AddLayer" xml:space="preserve"><value>Add layer</value></data>
-  <data name="EditLayer" xml:space="preserve"><value>Edit layer</value></data>
-  <data name="DeleteLayer" xml:space="preserve"><value>Delete layer</value></data>
-  <data name="SelectLayer" xml:space="preserve"><value>Select an existing layer.</value></data>
-  <data name="LastLayerRequired" xml:space="preserve"><value>Keep at least one layer.</value></data>
-  <data name="ResourceInUse" xml:space="preserve"><value>This resource is referenced by bodies or retained feature outputs. Reassign those references before deleting it.</value></data>
-  <data name="AddMaterial" xml:space="preserve"><value>Add material</value></data>
-  <data name="EditMaterial" xml:space="preserve"><value>Edit material</value></data>
-  <data name="DeleteMaterial" xml:space="preserve"><value>Delete material</value></data>
-  <data name="SelectMaterial" xml:space="preserve"><value>Select an existing material.</value></data>
-  <data name="DuplicateResourceName" xml:space="preserve"><value>A resource with this name already exists.</value></data>
-  <data name="SharedParentMoveBlocked" xml:space="preserve"><value>This position belongs to a reused subassembly. Select its parent instance to move a single copy; independent child editing is not available yet.</value></data>
-  <data name="ResourceEditApplied" xml:space="preserve"><value>Applied. You can undo this change after closing the window.</value></data>
-  <data name="SelectInstance" xml:space="preserve"><value>Select a part or assembly instance in the model tree.</value></data>
-  <data name="InstanceLocalCoordinates" xml:space="preserve"><value>Edit this instance in its parent's coordinates. Geometry and other instances stay unchanged.</value></data>
-  <data name="FirstPartCreatedAutomatically" xml:space="preserve"><value>The first confirmed body creates a part. Use document resources to add more parts.</value></data>
-  <data name="SharedPartEditingHint" xml:space="preserve"><value>Edits to a part definition affect all its instances.</value></data>
-  <data name="MassKg" xml:space="preserve"><value>Mass (kg)</value></data>
-  <data name="DontSave" xml:space="preserve"><value>Don't save</value></data>
-  <data name="DocumentResources" xml:space="preserve"><value>Document resources</value></data>
-  <data name="ResourceWindowHint" xml:space="preserve"><value>Enter a name, then add or apply. Each edit takes effect immediately and can be undone in the document. Referenced resources cannot be deleted.</value></data>
-  <data name="Parts" xml:space="preserve"><value>Parts</value></data>
-  <data name="PartDefinitionName" xml:space="preserve"><value>Part definition name</value></data>
-  <data name="UseAsTargetPart" xml:space="preserve"><value>Use as modeling target</value></data>
-  <data name="Layers" xml:space="preserve"><value>Layers</value></data>
-  <data name="Locked" xml:space="preserve"><value>Locked</value></data>
-  <data name="ReferenceCount" xml:space="preserve"><value>Body / feature references:</value></data>
-  <data name="Delete" xml:space="preserve"><value>Delete</value></data>
-  <data name="Materials" xml:space="preserve"><value>Materials</value></data>
-  <data name="DensityKgPerM3" xml:space="preserve"><value>Density (kg/m³)</value></data>
-  <data name="MaterialDensityHint" xml:space="preserve"><value>Mass uses the exact body volume and this density. No material means no mass estimate.</value></data>
-  <data name="Close" xml:space="preserve"><value>Close</value></data>
-  <data name="CreationTarget" xml:space="preserve"><value>Creation target</value></data>
-  <data name="TargetPart" xml:space="preserve"><value>Target part</value></data>
-  <data name="NoMaterial" xml:space="preserve"><value>No material</value></data>
-  <data name="InstancePlacement" xml:space="preserve"><value>Instance placement</value></data>
-  <data name="LocalTranslation" xml:space="preserve"><value>Local translation X / Y / Z (mm)</value></data>
-  <data name="RotationAxis" xml:space="preserve"><value>Rotation axis X / Y / Z</value></data>
-  <data name="InstanceRotationAngle" xml:space="preserve"><value>Rotation angle (°)</value></data>
-  <data name="ApplyPlacement" xml:space="preserve"><value>Apply instance placement</value></data>
+  <data name="RecoveryTitle" xml:space="preserve">
+    <value>Document recovery</value>
+  </data>
+  <data name="RecoveryDescription" xml:space="preserve">
+    <value>Recover unsaved work from a previous session. A recovered document opens as an unsaved copy. If the newest snapshot is damaged, the previous completed snapshot will be tried.</value>
+  </data>
+  <data name="RecoveryEmpty" xml:space="preserve">
+    <value>No recoverable documents. Snapshots belonging to running Cadoryx windows are excluded.</value>
+  </data>
+  <data name="RecoveryOpened" xml:space="preserve">
+    <value>Recovered as an unsaved copy. Save it to a location of your choice.</value>
+  </data>
+  <data name="RecoveryRestoreFailed" xml:space="preserve">
+    <value>Recovery failed or the workspace is busy. See Messages for details.</value>
+  </data>
+  <data name="RecoveryWriteFailed" xml:space="preserve">
+    <value>Recovery protection could not be updated: {0}</value>
+  </data>
+  <data name="RecoveryOriginalPath" xml:space="preserve">
+    <value>Original file</value>
+  </data>
+  <data name="RecoverySnapshotTime" xml:space="preserve">
+    <value>Snapshot time (UTC)</value>
+  </data>
+  <data name="RecoverySnapshotCount" xml:space="preserve">
+    <value>Snapshots</value>
+  </data>
+  <data name="RecoveryRestore" xml:space="preserve">
+    <value>Recover copy</value>
+  </data>
+  <data name="RecoveryDiscard" xml:space="preserve">
+    <value>Discard snapshots</value>
+  </data>
+  <data name="RecoveryDiscardQuestion" xml:space="preserve">
+    <value>Discard all recovery snapshots for “{0}”? This cannot be undone. The original file is not affected.</value>
+  </data>
+  <data name="RecoveryLater" xml:space="preserve">
+    <value>Later</value>
+  </data>
+  <data name="RecoveryRefresh" xml:space="preserve">
+    <value>Refresh</value>
+  </data>
+  <data name="RecoveryName" xml:space="preserve">
+    <value>Document</value>
+  </data>
+  <data name="AddPart" xml:space="preserve">
+    <value>Add part</value>
+  </data>
+  <data name="SelectTargetPart" xml:space="preserve">
+    <value>Select a target part.</value>
+  </data>
+  <data name="AddLayer" xml:space="preserve">
+    <value>Add layer</value>
+  </data>
+  <data name="EditLayer" xml:space="preserve">
+    <value>Edit layer</value>
+  </data>
+  <data name="DeleteLayer" xml:space="preserve">
+    <value>Delete layer</value>
+  </data>
+  <data name="SelectLayer" xml:space="preserve">
+    <value>Select an existing layer.</value>
+  </data>
+  <data name="LastLayerRequired" xml:space="preserve">
+    <value>Keep at least one layer.</value>
+  </data>
+  <data name="ResourceInUse" xml:space="preserve">
+    <value>This resource is referenced by bodies or retained feature outputs. Reassign those references before deleting it.</value>
+  </data>
+  <data name="AddMaterial" xml:space="preserve">
+    <value>Add material</value>
+  </data>
+  <data name="EditMaterial" xml:space="preserve">
+    <value>Edit material</value>
+  </data>
+  <data name="DeleteMaterial" xml:space="preserve">
+    <value>Delete material</value>
+  </data>
+  <data name="SelectMaterial" xml:space="preserve">
+    <value>Select an existing material.</value>
+  </data>
+  <data name="DuplicateResourceName" xml:space="preserve">
+    <value>A resource with this name already exists.</value>
+  </data>
+  <data name="SharedParentMoveBlocked" xml:space="preserve">
+    <value>This position belongs to a reused subassembly. Select its parent instance to move a single copy; independent child editing is not available yet.</value>
+  </data>
+  <data name="ResourceEditApplied" xml:space="preserve">
+    <value>Applied. You can undo this change after closing the window.</value>
+  </data>
+  <data name="SelectInstance" xml:space="preserve">
+    <value>Select a part or assembly instance in the model tree.</value>
+  </data>
+  <data name="InstanceLocalCoordinates" xml:space="preserve">
+    <value>Edit this instance in its parent's coordinates. Geometry and other instances stay unchanged.</value>
+  </data>
+  <data name="FirstPartCreatedAutomatically" xml:space="preserve">
+    <value>The first confirmed body creates a part. Use document resources to add more parts.</value>
+  </data>
+  <data name="SharedPartEditingHint" xml:space="preserve">
+    <value>Edits to a part definition affect all its instances.</value>
+  </data>
+  <data name="MassKg" xml:space="preserve">
+    <value>Mass (kg)</value>
+  </data>
+  <data name="DontSave" xml:space="preserve">
+    <value>Don't save</value>
+  </data>
+  <data name="DocumentResources" xml:space="preserve">
+    <value>Document resources</value>
+  </data>
+  <data name="ResourceWindowHint" xml:space="preserve">
+    <value>Enter a name, then add or apply. Each edit takes effect immediately and can be undone in the document. Referenced resources cannot be deleted.</value>
+  </data>
+  <data name="Parts" xml:space="preserve">
+    <value>Parts</value>
+  </data>
+  <data name="PartDefinitionName" xml:space="preserve">
+    <value>Part definition name</value>
+  </data>
+  <data name="UseAsTargetPart" xml:space="preserve">
+    <value>Use as modeling target</value>
+  </data>
+  <data name="Layers" xml:space="preserve">
+    <value>Layers</value>
+  </data>
+  <data name="Locked" xml:space="preserve">
+    <value>Locked</value>
+  </data>
+  <data name="ReferenceCount" xml:space="preserve">
+    <value>Body / feature references:</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="Materials" xml:space="preserve">
+    <value>Materials</value>
+  </data>
+  <data name="DensityKgPerM3" xml:space="preserve">
+    <value>Density (kg/m³)</value>
+  </data>
+  <data name="MaterialDensityHint" xml:space="preserve">
+    <value>Mass uses the exact body volume and this density. No material means no mass estimate.</value>
+  </data>
+  <data name="Close" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="CreationTarget" xml:space="preserve">
+    <value>Creation target</value>
+  </data>
+  <data name="TargetPart" xml:space="preserve">
+    <value>Target part</value>
+  </data>
+  <data name="NoMaterial" xml:space="preserve">
+    <value>No material</value>
+  </data>
+  <data name="InstancePlacement" xml:space="preserve">
+    <value>Instance placement</value>
+  </data>
+  <data name="LocalTranslation" xml:space="preserve">
+    <value>Local translation X / Y / Z (mm)</value>
+  </data>
+  <data name="RotationAxis" xml:space="preserve">
+    <value>Rotation axis X / Y / Z</value>
+  </data>
+  <data name="InstanceRotationAngle" xml:space="preserve">
+    <value>Rotation angle (°)</value>
+  </data>
+  <data name="ApplyPlacement" xml:space="preserve">
+    <value>Apply instance placement</value>
+  </data>
+  <data name="LocalFeatureTitle" xml:space="preserve">
+    <value>Local features</value>
+  </data>
+  <data name="LocalFeatureStale" xml:space="preserve">
+    <value>Document changed. Close and reopen this window.</value>
+  </data>
+  <data name="LocalFeatureScope" xml:space="preserve">
+    <value>Edits the shared box definition. One edge per feature; further operations on the result are not yet supported.</value>
+  </data>
+  <data name="InspectReference" xml:space="preserve">
+    <value>Check reference</value>
+  </data>
+  <data name="LocalFeatureOperation" xml:space="preserve">
+    <value>Operation</value>
+  </data>
+  <data name="LocalFeaturePick" xml:space="preserve">
+    <value>Click a box face or edge. Choose Edge for fillet or chamfer.</value>
+  </data>
+  <data name="SelectionKind" xml:space="preserve">
+    <value>Selection type</value>
+  </data>
+  <data name="MissingReference" xml:space="preserve">
+    <value>Reference missing. Reselect explicitly.</value>
+  </data>
+  <data name="SaveReference" xml:space="preserve">
+    <value>Save / reselect reference</value>
+  </data>
+  <data name="AmbiguousSelection" xml:space="preserve">
+    <value>Selection is missing or ambiguous. Choose one supported face or edge.</value>
+  </data>
+  <data name="ReferenceResolved" xml:space="preserve">
+    <value>Reference resolved.</value>
+  </data>
+  <data name="WrongReferenceContext" xml:space="preserve">
+    <value>Reference belongs to another context.</value>
+  </data>
+  <data name="NoBoxOutput" xml:space="preserve">
+    <value>No available box output. Create a box first.</value>
+  </data>
+  <data name="SavedReferences" xml:space="preserve">
+    <value>Saved references (select to reselect)</value>
+  </data>
+  <data name="UnsupportedTopology" xml:space="preserve">
+    <value>This topology is not supported.</value>
+  </data>
+  <data name="Selected" xml:space="preserve">
+    <value>Selected:</value>
+  </data>
+  <data name="RadiusOrDistance" xml:space="preserve">
+    <value>Radius / distance (mm)</value>
+  </data>
+  <data name="Chamfer" xml:space="preserve">
+    <value>Chamfer</value>
+  </data>
+  <data name="Edge" xml:space="preserve">
+    <value>Edge</value>
+  </data>
+  <data name="ReferenceStale" xml:space="preserve">
+    <value>Geometry revision changed. Reselect this reference.</value>
+  </data>
+  <data name="Face" xml:space="preserve">
+    <value>Face</value>
+  </data>
+  <data name="Reselect" xml:space="preserve">
+    <value>Reselect</value>
+  </data>
+  <data name="Fillet" xml:space="preserve">
+    <value>Fillet</value>
+  </data>
+  <data name="Sketch" xml:space="preserve">
+    <value>Sketch</value>
+  </data>
+  <data name="SketchEditorTitle" xml:space="preserve">
+    <value>Sketch editor</value>
+  </data>
+  <data name="NewSketch" xml:space="preserve">
+    <value>New sketch</value>
+  </data>
+  <data name="EditSketch" xml:space="preserve">
+    <value>Edit sketch</value>
+  </data>
+  <data name="RemoveSketch" xml:space="preserve">
+    <value>Remove sketch</value>
+  </data>
+  <data name="SketchExtrude" xml:space="preserve">
+    <value>Sketch extrusion</value>
+  </data>
+  <data name="SketchRevolve" xml:space="preserve">
+    <value>Sketch revolution</value>
+  </data>
+  <data name="SelectOrDrag" xml:space="preserve">
+    <value>Select / drag</value>
+  </data>
+  <data name="Point" xml:space="preserve">
+    <value>Point</value>
+  </data>
+  <data name="Line" xml:space="preserve">
+    <value>Line</value>
+  </data>
+  <data name="Rectangle" xml:space="preserve">
+    <value>Rectangle</value>
+  </data>
+  <data name="Circle" xml:space="preserve">
+    <value>Circle</value>
+  </data>
+  <data name="ConstructionGeometry" xml:space="preserve">
+    <value>Construction geometry</value>
+  </data>
+  <data name="SnapGridEndpoints" xml:space="preserve">
+    <value>Snap to grid / endpoints</value>
+  </data>
+  <data name="FitSketch" xml:space="preserve">
+    <value>Fit sketch</value>
+  </data>
+  <data name="PartPlane" xml:space="preserve">
+    <value>Part plane</value>
+  </data>
+  <data name="PlaneOrigin" xml:space="preserve">
+    <value>Plane origin (mm)</value>
+  </data>
+  <data name="Geometry" xml:space="preserve">
+    <value>Geometry</value>
+  </data>
+  <data name="ConstraintsDimensions" xml:space="preserve">
+    <value>Constraints / dimensions</value>
+  </data>
+  <data name="ConstraintValue" xml:space="preserve">
+    <value>Value (mm), fixed point X / Y</value>
+  </data>
+  <data name="AddConstraint" xml:space="preserve">
+    <value>Add to selected targets</value>
+  </data>
+  <data name="ToggleConstraint" xml:space="preserve">
+    <value>Enable / disable</value>
+  </data>
+  <data name="SolveAndPreview" xml:space="preserve">
+    <value>Solve and preview</value>
+  </data>
+  <data name="SketchHint" xml:space="preserve">
+    <value>Click to draw. Ctrl-click selects multiple targets; drag points, wheel zoom, middle button pan. Enter previews; Esc cancels drawing or closes.</value>
+  </data>
+  <data name="DraftChanged" xml:space="preserve">
+    <value>Draft changed — preview before confirming.</value>
+  </data>
+  <data name="SolvingSketch" xml:space="preserve">
+    <value>Solving and rebuilding dependent features…</value>
+  </data>
+  <data name="PickSketch" xml:space="preserve">
+    <value>Select a sketch in the model tree first.</value>
+  </data>
+  <data name="PickProfile" xml:space="preserve">
+    <value>Select a closed straight-line loop. Circles and holes are not feature profiles yet.</value>
+  </data>
+  <data name="AssociateSketch" xml:space="preserve">
+    <value>Associate with sketch</value>
+  </data>
+  <data name="FrozenPolygon" xml:space="preserve">
+    <value>Frozen polygon</value>
+  </data>
+  <data name="SourceSketchLoop" xml:space="preserve">
+    <value>Source sketch / loop</value>
+  </data>
+  <data name="LinkedSketchHint" xml:space="preserve">
+    <value>Profile and plane follow the source sketch. Edit dimensions in the sketch editor.</value>
+  </data>
+  <data name="FixPoint" xml:space="preserve">
+    <value>Fix point</value>
+  </data>
+  <data name="CoincidentPoints" xml:space="preserve">
+    <value>Coincident points</value>
+  </data>
+  <data name="HorizontalLine" xml:space="preserve">
+    <value>Horizontal line</value>
+  </data>
+  <data name="VerticalLine" xml:space="preserve">
+    <value>Vertical line</value>
+  </data>
+  <data name="PointDistance" xml:space="preserve">
+    <value>Point distance</value>
+  </data>
+  <data name="XOffset" xml:space="preserve">
+    <value>X offset</value>
+  </data>
+  <data name="YOffset" xml:space="preserve">
+    <value>Y offset</value>
+  </data>
+  <data name="LineLength" xml:space="preserve">
+    <value>Line length</value>
+  </data>
+  <data name="ParallelLines" xml:space="preserve">
+    <value>Parallel lines</value>
+  </data>
+  <data name="PerpendicularLines" xml:space="preserve">
+    <value>Perpendicular lines</value>
+  </data>
+  <data name="EqualLengths" xml:space="preserve">
+    <value>Equal lengths</value>
+  </data>
+  <data name="CircleRadius" xml:space="preserve">
+    <value>Circle radius</value>
+  </data>
+  <data name="EqualRadii" xml:space="preserve">
+    <value>Equal radii</value>
+  </data>
+  <data name="SketchTargets" xml:space="preserve">
+    <value>Select {0} target(s) of the required kind.</value>
+  </data>
+  <data name="ConstraintSolveFailure" xml:space="preserve">
+    <value>Solve failed: {0}. Conflicting constraints: {1}.</value>
+  </data>
+  <data name="SelectedCoordinates" xml:space="preserve">
+    <value>Selected point X / Y or circle radius (mm)</value>
+  </data>
+  <data name="ApplyCoordinates" xml:space="preserve">
+    <value>Apply coordinates / radius</value>
+  </data>
+  <data name="ExistingSketchPlane" xml:space="preserve">
+    <value>Existing sketch plane (preserved)</value>
+  </data>
+  <data name="DeleteSelected" xml:space="preserve">
+    <value>Delete selected</value>
+  </data>
+  <data name="ApplyValue" xml:space="preserve">
+    <value>Apply value</value>
+  </data>
+  <data name="SketchPreviewReady" xml:space="preserve">
+    <value>Preview ready; DOF {0}, redundant {1}, rebuilt features {2}.</value>
+  </data>
+  <data name="Stale" xml:space="preserve">
+    <value>Document changed. Close and reopen this editor.</value>
+  </data>
 </root>

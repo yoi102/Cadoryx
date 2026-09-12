@@ -23,12 +23,12 @@
 
 | 仓库 | 当前已看到的内容 | 对 Cadoryx 的意义 |
 |---|---|---|
-| Cadoryx | 14 个项目，保留 WPF、主题/语言/设置与停靠布局，新增八个核心项目及测试项目 | 组合根注册全局内核/资产仓，每文档显式持有会话 |
+| Cadoryx | 15 个项目，保留 WPF、主题/语言/设置与停靠布局，新增九个核心项目及测试项目 | 组合根注册内核/资产仓和托管草图求解器，每文档显式持有会话 |
 | Cadoryx | 文件/历史命令路由到活动文档，树/属性由快照投影，HwndHost 承载真实 OCCT Viewer | 已跑通基础建模、交换、存储与多文档生命周期 |
 | Direct2dCad | Db、Commands、Editor、ChangeTracking、Rendering、IO 等层；独立文档/编辑器命令；分节版本化存储 | 借鉴职责和交互流程，不照搬 2D Entity 继承体系 |
 | OcctSharp | .NET 10、Windows x64；Shape/XDE/Viewer/Parametric 友好 API；模块包与门面包 | 使用适配器封装并明确所有权和线程边界 |
 
-当前 Cadoryx 目录未检测到 Git 仓库；本轮不初始化仓库、不修改两个参考仓库。
+当前 Cadoryx 目录已有 Git 仓库；两个参考仓库作为接入和布局依据，不建立源码项目依赖。
 
 ## 3. 项目布局
 
@@ -37,9 +37,10 @@
 | 项目 | 职责 | 允许依赖 |
 |---|---|---|
 | `Cadoryx.Db` | ID、数值、文档快照、定义/实例、体、资产引用、领域验证 | BCL |
+| `Cadoryx.Sketching` | 草图约束方程、托管求解、局部自由度/冗余/冲突报告与预算 | Db、MathNet.Numerics |
 | `Cadoryx.Kernel.Abstractions` | 几何计算、交换、结果资产、能力与诊断契约 | Db |
 | `Cadoryx.Kernel.Occt` | OcctSharp NuGet、Shape/XDE 适配、几何资产、数值与单位转换 | Kernel.Abstractions、Db、OcctSharp |
-| `Cadoryx.Commands` | 文档命令、准备/提交、撤销记录和批量策略 | Db、Kernel.Abstractions |
+| `Cadoryx.Commands` | 文档命令、准备/提交、草图候选求解、撤销记录和批量策略 | Db、Kernel.Abstractions、Sketching |
 | `Cadoryx.Editor` | 每文档会话、选中集、工具状态机、预览、任务协调、编辑器命令 | Commands、Db、Kernel.Abstractions、Rendering |
 | `Cadoryx.Rendering` | 场景差量、相机/选取/宿主能力契约，无 UI 类型 | Db |
 | `Cadoryx.Rendering.Occt` | Viewer、Presentation 缓存、选取映射、OCCT 导航 | Rendering、Kernel.Occt |
@@ -53,6 +54,8 @@
 
 当前 Commands 与 Editor 已独立成项目，分别承载候选编辑/重算和会话提交/历史/保存点。工具参数与预览协调当前位于 CadDocumentViewModel；后续多个前端共用工具时再提取 Editor 工具服务。实际类名、源码入口与完成边界见[实施说明](IMPLEMENTATION.md)。
 
+Sketching 只操作 Db 草图和托管数值，不持有 OCCT 或 UI 对象。M4-S2 已接通独立 MetroWindow 二维编辑、Editor 草稿历史、ViewModel 候选预览，以及 SketchId/修订驱动的拉伸/旋转与后继重算。原冻结多边形仍保留；关联特征只使用明确选择的直线闭环。详见[草图基础](SKETCH_FOUNDATION.md)与[草图编辑](SKETCH_EDITOR.md)。
+
 ```mermaid
 flowchart TD
     WPF[Cadoryx.wpf 组合根与宿主] --> VM[ViewModels]
@@ -60,6 +63,9 @@ flowchart TD
     E --> C[Commands 文档事务]
     E --> R[Rendering 契约]
     C --> D[Db 业务状态]
+    C --> S[Sketching 约束求解]
+    S --> D
+    S --> M[MathNet.Numerics]
     C --> K[Kernel.Abstractions]
     K --> D
     R --> D
@@ -139,6 +145,8 @@ flowchart TD
 - UI Dispatcher：所有文档提交与用户历史操作，以及 Viewer / Presentation 创建、更新、选取、重绘和销毁。
 - 内核队列：首先使用一个全局串行 worker 执行建模/交换；避免尚未验证的 OCCT 全局交换配置并发和同一 Shape 并发访问。任务接收不可变托管快照和独立输入，产生独立结果。
 
+M4-S1 额外使用 Task.Run 执行纯托管草图求解，无需占用 OCCT 队列。每次求解持有独立矩阵和输入快照，受变量/方程/迭代预算约束；结果仍通过同一 Session 代际检查和 Dispatcher 提交，不能从工作线程直接发布文档。
+
 worker 不读取实时可变文档，不调用 Viewer，不把有父对象约束的 XdeLabel 传给 UI。M1 可在 worker 产出 BRep 文件/字节和托管元数据，在 UI 侧建立专用显示形状；这是明确的安全复制边界，之后根据性能验证优化。OCCT 共享底层 TShape 的浅复制不能当作跨线程深隔离。
 
 异步操作捕获 `(DocumentId, Generation, SessionLifetime)`，提交前逐项核对；用户关闭文档、撤销或再次编辑后，旧结果全部丢弃并释放。取消只保证在受支持的边界检查；长耗时原生调用中途不承诺立刻停止。UI 可以立即退出工具，资源清理等待调用返回。需要硬超时/崩溃隔离时再引入独立内核进程。
@@ -153,3 +161,9 @@ worker 不读取实时可变文档，不调用 Viewer，不把有父对象约束
 - 输入坐标、数学和 BRep 使用 double；渲染 GPU float 数据可在适配器内以局部原点转换，不能回写降精度坐标。
 - 命令行、批处理、未来脚本和 AI 操作调用同一应用命令入口，不通过直接写 Db 绕过事务/校验。
 - 首版不提供任意脚本执行的表达式求值器。参数表达式使用受限 AST、白名单函数和带量纲的值。
+
+## 已实现的拓扑引用层
+
+M4-T1：Db 保存版本化语义引用；Kernel.Abstractions 的 ITopologyResolver 定义可选解析能力；Occt 适配器在原有串行队列上读取 BRep 和唯一邻接表；Commands 验证唯一解析后注册/重选；Editor 生成带状态身份的诊断报告；IO 保存 topology v1。当前支持 Box 六面/十二边，不承担跨算法历史传播或实例拾取。具体所有权、修订及后续门禁见 [拓扑引用基础](TOPOLOGY_REFERENCES.md)。
+
+M4-T2 通过独立 MetroWindow 承载局部建模视口，避免依赖主窗口选择副本的 native 身份。Viewer 只发出语义值，工作队列重新加载精确源图并解析唯一边；局部特征配方参加现有依赖图与事务。详见 [局部建模](LOCAL_FEATURES.md)。

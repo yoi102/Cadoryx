@@ -31,6 +31,13 @@ public partial class CadDocumentViewModel : ObservableDocument
     public ObservableCollection<PartDefinition> TargetParts {get;}=[];
     public ObservableCollection<CadLayer> CreationLayers {get;}=[];
     public ObservableCollection<CadMaterial> CreationMaterials {get;}=[];
+    [ObservableProperty] private SketchId? selectedSketchId;
+    [ObservableProperty] private SketchProfileChoice? selectedSketchProfile;
+    [ObservableProperty] private bool useLinkedSketch;
+    public bool IsProfileTool=>ToolKind is "Extrude" or "Revolve";
+    public bool IsFrozenProfile=>!UseLinkedSketch||!IsProfileTool;
+    public string ProfileInputHint=>UseLinkedSketch?Strings.LinkedSketchHint:Strings.FrozenPolygon;
+    public ObservableCollection<SketchProfileChoice> SketchProfiles {get;}=[];
     [ObservableProperty] private DefinitionId? selectedTargetPart;
     [ObservableProperty] private LayerId? selectedCreationLayer;
     [ObservableProperty] private MaterialId? selectedCreationMaterial;
@@ -97,7 +104,7 @@ public partial class CadDocumentViewModel : ObservableDocument
     public void SetDisplay(CadDisplayMode mode){CurrentDisplayMode=mode;DisplayModeRequested?.Invoke(this,mode);}
     public void StartTool(string kind)
     {
-        InvalidatePreview();EditingFeature=null;placementRotation=Quaterniond.Identity;ToolKind=kind;ObjectName=kind;ToolStatus=Strings.ToolStatusHint;
+        InvalidatePreview();EditingFeature=null;UseLinkedSketch=false;SelectedSketchProfile=null;placementRotation=Quaterniond.Identity;ToolKind=kind;ObjectName=kind;ToolStatus=Strings.ToolStatusHint;
         if(Selection.Items.FirstOrDefault() is {} selection)SelectedTargetPart=Session.Snapshot.Bodies[selection.BodyId].PartId;
         else if(Selection.Occurrence is {} path&&Session.Snapshot.Definitions[OccurrencePlacement.Resolve(Session.Snapshot,path).Slot.DefinitionId] is PartDefinition part)SelectedTargetPart=part.Id;
     }
@@ -113,6 +120,15 @@ public partial class CadDocumentViewModel : ObservableDocument
             default:EditingFeature=null;ToolStatus=Strings.UnsupportedFeatureEdit;return;
         }
         ToolStatus=Strings.EditingFeatureStatus;
+        UseLinkedSketch=feature.SketchSource is not null;
+        SelectedSketchProfile=feature.SketchSource is {} source?SketchProfiles.FirstOrDefault(p=>p.Source.SketchId==source.SketchId&&p.Source.Lines.SequenceEqual(source.Lines)):null;
+        if(feature.SketchSource is {} linked&&SelectedSketchProfile is null){var choice=new SketchProfileChoice(Session.Snapshot.Sketches[linked.SketchId].Name,linked);SketchProfiles.Add(choice);SelectedSketchProfile=choice;}
+    }
+    public void StartSketchFeature(string kind)
+    {
+        var sketch=SelectedSketchId;StartTool(kind);UseLinkedSketch=true;
+        SelectedSketchProfile=SketchProfiles.FirstOrDefault(p=>p.Source.SketchId==sketch)??SketchProfiles.FirstOrDefault();
+        ToolStatus=SelectedSketchProfile is null?Strings.PickProfile:Strings.LinkedSketchHint;
     }
     private void SetPosition(RigidTransform3d p){PositionX=p.Translation.X;PositionY=p.Translation.Y;PositionZ=p.Translation.Z;placementRotation=p.Rotation;}
     private void LoadProfile(SketchProfile profile){ProfilePoints.Clear();foreach(var p in profile.Points)ProfilePoints.Add(new(p.X,p.Y));}
@@ -120,7 +136,7 @@ public partial class CadDocumentViewModel : ObservableDocument
     {
         var placement=new RigidTransform3d(new(PositionX,PositionY,PositionZ),placementRotation);
         var profile=new SketchProfile(ProfilePoints.Select(p=>new Point2d(p.X,p.Y)).ToImmutableArray());
-        return ToolKind switch
+        GeometryRecipe recipe=ToolKind switch
         {
             "Box"=>new BoxRecipe(SizeX,SizeY,SizeZ,placement),
             "Cylinder"=>new CylinderRecipe(SizeX,SizeZ,placement),
@@ -128,9 +144,28 @@ public partial class CadDocumentViewModel : ObservableDocument
             "Revolve"=>new RevolveRecipe(profile,AngleDegrees*Math.PI/180,placement),
             _=>throw new CadValidationException("Choose a supported modeling tool.")
         };
+        if(UseLinkedSketch&&ToolKind is "Extrude" or "Revolve")
+        {
+            var source=(EditingFeature is {} id?Session.Snapshot.Features[id].SketchSource:null)??SelectedSketchProfile?.Source??throw new CadValidationException(Strings.PickProfile);
+            return source.Resolve(Session.Snapshot,SelectedTargetPart??throw new CadValidationException(Strings.SelectTargetPart),recipe);
+        }
+        return recipe;
     }
     private ICadDocumentCommand ToolCommand()=>EditingFeature is {} feature?new RecomputeCommand(feature,Recipe()):
-        new AddBodyCommand(Recipe(),ObjectName,SelectedTargetPart,SelectedCreationLayer,SelectedCreationMaterial);
+        new AddBodyCommand(Recipe(),ObjectName,SelectedTargetPart,SelectedCreationLayer,SelectedCreationMaterial,
+            UseLinkedSketch&&ToolKind is "Extrude" or "Revolve"?SelectedSketchProfile?.Source:null);
+    partial void OnUseLinkedSketchChanged(bool value){InvalidatePreview();OnPropertyChanged(nameof(IsFrozenProfile));OnPropertyChanged(nameof(ProfileInputHint));}
+    partial void OnToolKindChanged(string value){OnPropertyChanged(nameof(IsProfileTool));OnPropertyChanged(nameof(IsFrozenProfile));}
+    partial void OnSelectedSketchProfileChanged(SketchProfileChoice? value)=>InvalidatePreview();
+    partial void OnSelectedTargetPartChanged(DefinitionId? value){if(!refreshingTargets)RefreshSketchProfiles();}
+    private void RefreshSketchProfiles()
+    {
+        var source=SelectedSketchProfile?.Source;SketchProfiles.Clear();
+        foreach(var sketch in Session.Snapshot.Sketches.Values.Where(s=>s.PartId==SelectedTargetPart).OrderBy(s=>s.Name))
+            foreach(var (loop,index) in SketchLoops.Find(sketch).Select((loop,index)=>(loop,index)))
+                SketchProfiles.Add(new($"{sketch.Name} · {index+1} ({loop.Length})",SketchProfileReference.Create(sketch,loop)));
+        SelectedSketchProfile=source is null?null:SketchProfiles.FirstOrDefault(p=>p.Source.SketchId==source.SketchId&&p.Source.Lines.SequenceEqual(source.Lines));
+    }
     partial void OnEditingFeatureChanged(FeatureId? value)=>OnPropertyChanged(nameof(IsCreating));
     [RelayCommand] private void ClearCreationMaterial()=>SelectedCreationMaterial=null;
     private void RefreshTargets()
@@ -146,6 +181,8 @@ public partial class CadDocumentViewModel : ObservableDocument
             SelectedCreationLayer=CreationLayers.FirstOrDefault(l=>l.Id==layer)?.Id??CreationLayers.OrderBy(l=>l.IsLocked).ThenBy(l=>l.Id.Value).FirstOrDefault()?.Id;
             SelectedCreationMaterial=CreationMaterials.FirstOrDefault(m=>m.Id==material)?.Id;
             OnPropertyChanged(nameof(TargetPartHint));
+            RefreshSketchProfiles();
+            if(SelectedSketchId is {} sketch&&!snapshot.Sketches.ContainsKey(sketch))SelectedSketchId=null;
         }
         finally{refreshingTargets=false;}
     }
@@ -204,6 +241,11 @@ public partial class CadDocumentViewModel : ObservableDocument
         previewSequence++;previewCancellation?.Cancel();prepared?.Dispose();prepared=null;
         PreviewGeometry=null;PreviewScene=null;HasPreview=false;IsWorking=false;PreviewChanged?.Invoke(this,EventArgs.Empty);
     }
+    public void SetSketchPreview(DocumentSnapshot? candidate)
+    {
+        PreviewScene=candidate is null?null:CadScene.FromDocument(candidate);
+        PreviewChanged?.Invoke(this,EventArgs.Empty);
+    }
     public async Task StopToolsAsync()
     {
         InvalidatePreview();
@@ -244,6 +286,7 @@ public partial class CadDocumentViewModel : ObservableDocument
         }
     }
 }
+public sealed record SketchProfileChoice(string Label,SketchProfileReference Source);
 public partial class ProfilePointViewModel(double x,double y) : ObservableObject
 {
     [ObservableProperty] private double x=x;

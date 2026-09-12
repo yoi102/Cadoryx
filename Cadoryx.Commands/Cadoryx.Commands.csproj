@@ -1,1 +1,1 @@
-<Project Sdk="Microsoft.NET.Sdk"><ItemGroup><ProjectReference Include="../Cadoryx.Kernel.Abstractions/Cadoryx.Kernel.Abstractions.csproj" /><ProjectReference Include="../Cadoryx.Lang/Cadoryx.Lang.csproj" /></ItemGroup></Project>
+<Project Sdk="Microsoft.NET.Sdk"><ItemGroup><ProjectReference Include="../Cadoryx.Kernel.Abstractions/Cadoryx.Kernel.Abstractions.csproj" /><ProjectReference Include="../Cadoryx.Lang/Cadoryx.Lang.csproj" /><ProjectReference Include="../Cadoryx.Sketching/Cadoryx.Sketching.csproj" /></ItemGroup></Project>

@@ -1,0 +1,8 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup><OutputType>Exe</OutputType></PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="../../Cadoryx.Sketching/Cadoryx.Sketching.csproj" />
+    <ProjectReference Include="../../Cadoryx.IO/Cadoryx.IO.csproj" />
+    <None Include="../../licenses/MathNet.Numerics/LICENSE.md" Link="licenses/MathNet.Numerics/LICENSE.md" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+</Project>

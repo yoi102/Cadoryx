@@ -20,7 +20,7 @@ public sealed class ToolboxLayoutPersistenceService
     private static string LayoutFilePath()
     {
         var args=Environment.GetCommandLineArgs();
-        if(args.Length>=3&&args[1] is "--smoke" or "--window-smoke" or "--recovery-seed" or "--recovery-verify")
+        if(args.Length>=3&&args[1] is "--smoke" or "--window-smoke" or "--recovery-seed" or "--recovery-verify" or "--sketch-editor-smoke")
             return Path.Combine(Path.GetFullPath(args[2]),"toolbox-layout.json");
         return Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),"Cadoryx","toolbox-layout.json");
     }

@@ -36,6 +36,9 @@ public partial class MainWindowViewModel : ObservableObject
     private readonly IRecoveryStore recoveryStore;
     private readonly IRecoveryDialogService recoveryDialog;
     private readonly IDocumentResourcesDialogService resourcesDialog;
+    private readonly ISketchEditorHost sketchEditor;
+    private readonly ILocalFeatureHost localFeatureHost;
+    private readonly Cadoryx.Sketching.ISketchConstraintSolver sketchSolver;
     private readonly HashSet<CadDocumentViewModel> closingDocuments=[];
     public ObservableCollection<CadDocumentViewModel> Documents {get;}=[];
     [ObservableProperty] private CadDocumentViewModel? activeDocument;
@@ -48,7 +51,8 @@ public partial class MainWindowViewModel : ObservableObject
     IApplicationSettingsStore applicationSettingsStore,
     IDialogService dialogService, CadWorkspace workspace, IGeometryKernel kernel, IAssetStore assets,
     IDocumentStorage storage, ICadFileDialogs files, ICadMessageLog log,
-    DocumentRecoveryService recovery, IRecoveryStore recoveryStore, IRecoveryDialogService recoveryDialog, IDocumentResourcesDialogService resourcesDialog
+    DocumentRecoveryService recovery, IRecoveryStore recoveryStore, IRecoveryDialogService recoveryDialog, IDocumentResourcesDialogService resourcesDialog,
+    ISketchEditorHost sketchEditor,Cadoryx.Sketching.ISketchConstraintSolver sketchSolver,ILocalFeatureHost localFeatureHost
     )
     {
         this._dockLayoutService = dockLayoutService;
@@ -59,7 +63,9 @@ public partial class MainWindowViewModel : ObservableObject
         _dialogService = dialogService;
         this.workspace=workspace;this.kernel=kernel;this.assets=assets;this.storage=storage;this.files=files;this.log=log;
         this.recovery=recovery;this.recoveryStore=recoveryStore;this.recoveryDialog=recoveryDialog;
+        this.localFeatureHost=localFeatureHost;
         this.resourcesDialog=resourcesDialog;
+        this.sketchEditor=sketchEditor;this.sketchSolver=sketchSolver;
         _applicationSettings = applicationSettingsStore.Load();
 
         ApplySettingsToServices(_applicationSettings);
@@ -188,6 +194,30 @@ public partial class MainWindowViewModel : ObservableObject
     private void SetView(string viewName)=>ActiveDocument?.SetView(viewName switch{"Front"=>CadProjection.Front,"Top"=>CadProjection.Top,"Right"=>CadProjection.Right,_=>CadProjection.Axonometric});
     [RelayCommand] private void StartTool(string kind){if(ActiveDocument is null)New();ActiveDocument?.StartTool(kind);}
     [RelayCommand] private void SetDisplay(string mode)=>ActiveDocument?.SetDisplay(mode=="Wireframe"?CadDisplayMode.Wireframe:CadDisplayMode.Shaded);
+    [RelayCommand(CanExecute=nameof(CanStartOperation))] private async Task NewSketchAsync()
+    {
+        if(ActiveDocument is null)New();if(ActiveDocument is not {} doc||doc.IsReadOnly)return;
+        var part=doc.SelectedTargetPart??Cadoryx.Db.DefinitionId.New();
+        var sketch=Cadoryx.Db.CadSketch.Create(part,Strings.Sketch+" "+(doc.Session.Snapshot.Sketches.Count+1),Cadoryx.Db.RigidTransform3d.Identity);
+        await RunAsync(async()=>{await using var editor=new SketchEditorViewModel(doc,kernel,sketchSolver,sketch,true);await sketchEditor.ShowAsync(editor);});
+    }
+    [RelayCommand(CanExecute=nameof(CanUseDocument))] private async Task LocalFeatureAsync()
+    {
+        if(ActiveDocument is not {} doc||doc.IsReadOnly)return;
+        await RunAsync(async()=>{await using var editor=new LocalFeatureViewModel(doc.Session,kernel);await localFeatureHost.ShowAsync(editor);});
+    }
+    [RelayCommand(CanExecute=nameof(CanUseDocument))] private async Task EditSketchAsync()
+    {
+        if(ActiveDocument is not {} doc||doc.IsReadOnly)return;
+        if(doc.SelectedSketchId is not {} id||!doc.Session.Snapshot.Sketches.TryGetValue(id,out var sketch)){StatusText=Strings.PickSketch;return;}
+        await RunAsync(async()=>{await using var editor=new SketchEditorViewModel(doc,kernel,sketchSolver,sketch,false);await sketchEditor.ShowAsync(editor);});
+    }
+    [RelayCommand(CanExecute=nameof(CanUseDocument))] private async Task DeleteSketchAsync()
+    {
+        if(ActiveDocument is not {} doc||doc.SelectedSketchId is not {} id){StatusText=Strings.PickSketch;return;}
+        await RunAsync(()=>doc.Session.ExecuteAsync(new Cadoryx.Commands.RemoveSketchCommand(id)));
+    }
+    [RelayCommand(CanExecute=nameof(CanUseDocument))] private void StartSketchFeature(string kind)=>ActiveDocument?.StartSketchFeature(kind);
     partial void OnActiveDocumentChanged(CadDocumentViewModel? value)
     {
         foreach(var doc in Documents)
@@ -211,6 +241,7 @@ public partial class MainWindowViewModel : ObservableObject
         RedoCommand.NotifyCanExecuteChanged();FitViewCommand.NotifyCanExecuteChanged();SetViewCommand.NotifyCanExecuteChanged();
         OpenRecoveryCommand.NotifyCanExecuteChanged();
         ManageResourcesCommand.NotifyCanExecuteChanged();
+        NewSketchCommand.NotifyCanExecuteChanged();EditSketchCommand.NotifyCanExecuteChanged();DeleteSketchCommand.NotifyCanExecuteChanged();StartSketchFeatureCommand.NotifyCanExecuteChanged();LocalFeatureCommand.NotifyCanExecuteChanged();
     }
     private void Attach(CadDocumentSession session)
     {

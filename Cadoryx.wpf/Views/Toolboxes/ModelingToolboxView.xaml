@@ -46,6 +46,15 @@
                     <ComboBoxItem Content="{I18N {x:Static r:LangKeys.PolygonRevolve}}" Tag="Revolve" />
                 </ComboBox>
 
+                <StackPanel>
+                    <StackPanel.Style><Style TargetType="StackPanel"><Setter Property="Visibility" Value="Collapsed"/><Style.Triggers><DataTrigger Binding="{Binding Document.IsProfileTool}" Value="True"><Setter Property="Visibility" Value="Visible"/></DataTrigger></Style.Triggers></Style></StackPanel.Style>
+                    <StackPanel IsEnabled="{Binding Document.IsCreating}">
+                        <CheckBox Content="{I18N {x:Static r:LangKeys.AssociateSketch}}" IsChecked="{Binding Document.UseLinkedSketch}" Margin="0,0,0,6"/>
+                        <TextBlock Text="{I18N {x:Static r:LangKeys.SourceSketchLoop}}"/>
+                        <ComboBox ItemsSource="{Binding Document.SketchProfiles}" SelectedItem="{Binding Document.SelectedSketchProfile}" DisplayMemberPath="Label" IsEnabled="{Binding Document.UseLinkedSketch}" Margin="0,4,0,8"/>
+                    </StackPanel>
+                    <TextBlock Text="{Binding Document.ProfileInputHint}" TextWrapping="Wrap" Opacity="0.7" Margin="0,0,0,8"/>
+                </StackPanel>
                 <TextBlock Text="{I18N {x:Static r:LangKeys.Name}}" />
                 <TextBox Text="{Binding Document.ObjectName, UpdateSourceTrigger=PropertyChanged}"
                          Margin="0,2,0,8" />
@@ -66,7 +75,7 @@
                                    Margin="0,2,0,8" />
 
                 <TextBlock Text="{I18N {x:Static r:LangKeys.PositionXYZ}}" />
-                <UniformGrid Columns="3" Margin="0,2,0,8">
+                <UniformGrid Columns="3" Margin="0,2,0,8" IsEnabled="{Binding Document.IsFrozenProfile}">
                     <mah:NumericUpDown Value="{Binding Document.PositionX, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                        HideUpDownButtons="True" />
                     <mah:NumericUpDown Value="{Binding Document.PositionY, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
@@ -81,7 +90,7 @@
                                    Maximum="360"
                                    Margin="0,2,0,8" />
 
-                <Expander Header="{I18N {x:Static r:LangKeys.ExtrudeRevolveProfile}}"
+                <Expander IsEnabled="{Binding Document.IsFrozenProfile}" Header="{I18N {x:Static r:LangKeys.ExtrudeRevolveProfile}}"
                           Margin="0,0,0,8">
                     <StackPanel>
                         <TextBlock Text="{I18N {x:Static r:LangKeys.ProfileInstruction}}"

@@ -21,8 +21,33 @@ public sealed class OcctViewport : ICadViewport
     private Shape? previewShape;
     private CadDisplayMode mode;
     private bool disposed;
-    public ViewportCapabilities Capabilities {get;}=new(false,false,true);
+    public ViewportCapabilities Capabilities {get;}=new(false,true,true);
     public event EventHandler<IReadOnlyList<SceneItem>>? SelectionChanged;
+    public event EventHandler<(BoxBoundary First,BoxBoundary? Second)?>? BoxSubshapeSelected;
+    private BoxRecipe? selectionBox;
+    private TopologyKind? selectionKind;
+    public void SetBoxSelection(BoxRecipe? box,TopologyKind? kind)
+    {
+        selectionBox=box;selectionKind=kind;viewer.ClearSelection();
+        foreach(var entry in entries.Values)entry.Presentation.SetSelectionKind(kind is null?null:kind==TopologyKind.Face?ShapeKind.Face:ShapeKind.Edge);
+    }
+    public void HighlightBoxSelection(TopologyReference? reference)
+    {
+        foreach(var entry in entries.Values)
+        {
+            entry.Presentation.ClearAllSubshapeOverrides();
+            if(reference is null||selectionBox is not {} box)continue;
+            using var topology=entry.Geometry.Shape.GetTopologyAdjacency(ShapeKind.Edge,ShapeKind.Face);
+            var parts=reference.Kind==TopologyKind.Face?topology.Ancestors:topology.Items;
+            var candidates=parts.Where(s=>BoxTopology.Matches(s,box,reference.Kind,reference.Boundary,reference.SecondBoundary)).ToArray();
+            if(candidates.Length==1)
+            {
+                entry.Presentation.SetSubshapeColor(candidates[0],new(1,0.65,0));
+                if(reference.Kind==TopologyKind.Edge)entry.Presentation.SetSubshapeWidth(candidates[0],4);
+            }
+        }
+        viewer.Redraw();
+    }
     public OcctViewport(nint windowHandle,IAssetStore assets)
     {
         this.assets=assets;viewer=OcctViewer.Create(windowHandle);
@@ -82,6 +107,7 @@ public sealed class OcctViewport : ICadViewport
                 presentation.SetColor(new(color.Red,color.Green,color.Blue));presentation.SetTransparency(1-color.Alpha);
             }
             presentation.SetDisplayMode(mode==CadDisplayMode.Shaded?ViewerDisplayMode.Shaded:ViewerDisplayMode.Wireframe);
+            if(selectionKind is {} kind)presentation.SetSelectionKind(kind==TopologyKind.Face?ShapeKind.Face:ShapeKind.Edge);
             return presentation;
         }
         catch{presentation.Dispose();throw;}
@@ -146,6 +172,22 @@ public sealed class OcctViewport : ICadViewport
         var selected=viewer.Input.PointerReleased(Button(button),x,y);
         bool clicked=button==0&&selectionClick;selectionClick=false;
         if(!clicked)return;
+        if(selectionKind is {} kind&&selectionBox is {} box)
+        {
+            var pickedItems=viewer.GetSelectedItems();
+            try
+            {
+                (BoxBoundary First,BoxBoundary? Second)? value=null;
+                if(pickedItems.Count==1)
+                {
+                    var candidates=BoxTopology.Classify(pickedItems[0].Shape,box,kind);
+                    if(candidates.Count==1)value=candidates[0];
+                }
+                BoxSubshapeSelected?.Invoke(this,value);
+            }
+            finally{foreach(var item in pickedItems)item.Dispose();}
+            return;
+        }
         var hit=entries.Where(e=>selected.Contains(e.Value.Presentation)).Select(e=>e.Key).ToHashSet();
         var keys=new HashSet<(OccurrencePath,BodyId)>(highlighted);
         if((modifiers&2)!=0)keys.SymmetricExceptWith(hit);
@@ -200,7 +242,7 @@ public sealed class OcctViewport : ICadViewport
                 if(reference.Source is {} source)
                 {
                     sourceLease=assets.Acquire(source.ContextAssetId);
-                    context=OcctGeometryBridge.ReadContext(source.ContextAssetId,assets);Label=context.GetLabel(source.DefinitionEntry);
+                    context=OcctGeometryBridge.ReadContext(source.ContextAssetId,assets,source.Format);Label=context.GetLabel(source.DefinitionEntry);
                     Shape=Label.Shape;using var location=Label.Location;using var t=location.ToTransform();
                     SourceLocationInverse=OcctGeometryBridge.FromNative(t).Inverse();
                 }

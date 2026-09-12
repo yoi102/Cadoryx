@@ -5,15 +5,17 @@ using Cadoryx.Db;
 
 namespace Cadoryx.IO;
 
-public sealed record StorageLimits(long MaxAssetBytes=256L*1024*1024,long MaxTotalBytes=1024L*1024*1024,int MaxEntries=200000,int MaxJsonBytes=32*1024*1024);
+public sealed record StorageLimits(long MaxAssetBytes=256L*1024*1024,long MaxTotalBytes=1024L*1024*1024,int MaxEntries=200000,int MaxJsonBytes=32*1024*1024,int MaxManifestBytes=8*1024*1024);
 public sealed record SectionEntry(string Kind,string Path,int SchemaVersion,bool Required,long Length,string Sha256,string Encoding="json");
-public sealed record AssetEntry(AssetId Id,string Path,long Length,string Sha256);
+public sealed record AssetEntry(AssetId Id,string Path,long Length,string Sha256,AssetFormat? Format=null);
 public sealed record CadManifest(string Format,int ContainerVersion,DocumentId DocumentId,DocumentStateId StateId,string ApplicationVersion,
-    ImmutableArray<SectionEntry> Sections,ImmutableArray<AssetEntry> Assets,ImmutableArray<string> RequiredCapabilities);
+    ImmutableArray<SectionEntry> Sections,ImmutableArray<AssetEntry> Assets,ImmutableArray<string> RequiredCapabilities,int AssetCatalogVersion=0);
 internal sealed record DocumentSection(DocumentId Id,DocumentStateId StateId,string Name,DefinitionId RootAssemblyId,DocumentSettings Settings);
 internal sealed record StructureSection(ImmutableArray<CadDefinition> Definitions,ImmutableArray<CadBody> Bodies);
 internal sealed record FeaturesSection(ImmutableArray<FeatureDefinition> Features);
 internal sealed record PresentationSection(ImmutableArray<CadLayer> Layers,ImmutableArray<CadMaterial> Materials);
+public readonly record struct SectionFormat(string Kind,int Version,string Encoding);
+public sealed record SectionPayload(SectionFormat Format,ReadOnlyMemory<byte> Bytes);
 public static class CadJson
 {
     public static JsonSerializerOptions Options { get; }=Create();
@@ -25,7 +27,7 @@ public static class CadJson
     };
 }
 /// <summary>Explicit, ordered migrations; a missing step never silently treats old bytes as current.</summary>
-public sealed class CadSectionMigrationRegistry
+public sealed partial class CadSectionMigrationRegistry
 {
     private readonly Dictionary<(string,int),Func<JsonElement,JsonElement>> migrations=[];
     public void Register(string kind,int fromVersion,Func<JsonElement,JsonElement> migration)

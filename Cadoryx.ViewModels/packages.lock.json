@@ -53,11 +53,17 @@
         "resolved": "2.0.0-preview-2",
         "contentHash": "xZo+iwketCNIjnDkPM1v1erAPBSMLMYn7ztr1VBjWLFGNdVTd3fYJ7rpuF5i5d0eYHr1ZOrIOay+qfkJrCKYPQ=="
       },
+      "MathNet.Numerics": {
+        "type": "Transitive",
+        "resolved": "5.0.0",
+        "contentHash": "pg1W2VwaEQMAiTpGK840hZgzavnqjlCMTVSbtVCXVyT+7AX4mc1o89SPv4TBlAjhgCOo9c1Y+jZ5m3ti2YgGgA=="
+      },
       "cadoryx.commands": {
         "type": "Project",
         "dependencies": {
           "Cadoryx.Kernel.Abstractions": "[1.0.0, )",
-          "Cadoryx.Lang": "[1.0.0, )"
+          "Cadoryx.Lang": "[1.0.0, )",
+          "Cadoryx.Sketching": "[1.0.0, )"
         }
       },
       "cadoryx.db": {
@@ -86,6 +92,13 @@
         "type": "Project",
         "dependencies": {
           "Cadoryx.Db": "[1.0.0, )"
+        }
+      },
+      "cadoryx.sketching": {
+        "type": "Project",
+        "dependencies": {
+          "Cadoryx.Db": "[1.0.0, )",
+          "MathNet.Numerics": "[5.0.0, 5.0.0]"
         }
       },
       "cadoryx.viewmodels.services": {

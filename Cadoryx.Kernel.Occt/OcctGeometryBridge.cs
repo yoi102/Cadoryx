@@ -10,12 +10,15 @@ public static class OcctGeometryBridge
     public static Shape ReadShape(GeometryAssetRef geometry,IAssetStore assets)
     {
         using var lease=assets.Acquire(geometry.AssetId);using var files=new KernelFiles();
+        var format=geometry.Format??AssetFormatPolicy.Inspect(lease.Content.Span);
+        AssetFormatPolicy.RequireBRep(format);AssetFormatPolicy.VerifyPayload(format,lease.Content.Span);
         var path=files.PathFor("input.brep");File.WriteAllBytes(path,lease.Content.ToArray());
         return ShapeExchange.ReadBrep(path);
     }
-    public static XdeDocument ReadContext(AssetId id,IAssetStore assets)
+    public static XdeDocument ReadContext(AssetId id,IAssetStore assets,AssetFormat? declaredFormat=null)
     {
         using var lease=assets.Acquire(id);using var files=new KernelFiles();
+        var format=declaredFormat??AssetFormatPolicy.Inspect(lease.Content.Span);AssetFormatPolicy.RequireXde(format);AssetFormatPolicy.VerifyPayload(format,lease.Content.Span);
         var path=files.PathFor("context.xbf");File.WriteAllBytes(path,lease.Content.ToArray());
         return XdeDocument.Open(path);
     }
@@ -31,7 +34,7 @@ public static class OcctGeometryBridge
         var lease=assets.Stage(File.ReadAllBytes(path));
         try
         {
-            var reference=new GeometryAssetRef(lease.Id,GeometryRevisionId.New(),kind,box,volume);reference.Validate();
+            var reference=new GeometryAssetRef(lease.Id,GeometryRevisionId.New(),kind,box,volume,Format:AssetFormatPolicy.CurrentBRep);reference.Validate();
             return new(reference,lease);
         }
         catch{lease.Dispose();throw;}

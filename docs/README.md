@@ -14,12 +14,17 @@
 | [异常退出恢复](RECOVERY.md) | 自动快照、恢复入口、进程锁、故障边界与验收 |
 | [资源与实例](RESOURCES_AND_INSTANCES.md) | 建模归属、图层/材料、局部位姿、MetroWindow 风格 |
 | [交换与视口验收](EXCHANGE_AND_VIEWPORT.md) | 固定单位/旋转/面颜色样本、鼠标捕获、浮动与环境门禁 |
+| [格式演进与存储基准](FORMAT_EVOLUTION.md) | 资产描述、跨节迁移、旧文件固定样本、读写时间与内存 |
+| [草图模型与求解基础](SKETCH_FOUNDATION.md) | 13 种约束、局部自由度/冲突、命令与六节文件协议 |
+| [草图编辑与关联特征](SKETCH_EDITOR.md) | MetroWindow 二维编辑、尺寸/约束、候选预览、依赖重算与新版协议 |
 
-设计基线日期：2026-09-11；代码实施更新：2026-09-12。现已建立 14 个项目，接通多文档 WPF、真实 OCCT 视口、模型树、属性、基础建模、特征重算、撤销重做、文件操作与异常退出恢复。完整草图求解、装配编辑及大型模型能力仍按[路线图](ROADMAP.md)推进。
+设计基线日期：2026-09-11；代码实施更新：2026-09-12。现已建立 15 个项目，接通多文档 WPF、真实 OCCT 视口、模型树、属性、基础建模、特征重算、撤销重做、文件操作、恢复及有限约束集的草图编辑/关联特征。曲线区域、拓扑命名、装配编辑及大型模型能力仍按[路线图](ROADMAP.md)推进。
 
 ## 当前存储与交换
 
-`.cadoryx` 采用 ZIP 容器、JSON 清单、MessagePack 3.1.8 数字键 DTO 和独立 BRep/XDE 资产。当前四个核心节使用 schemaVersion=2 / encoding=messagepack，保留 v1 JSON 节读取。模型数据不直接序列化 ViewModel 或 native 对象。
+M4-T1 已实现 Box 六面/十二边语义引用与持久化；M4-T2 接通 MetroWindow 面/边拾取、失效重选和单边圆角/倒角预览确认。支持边界见 [拓扑引用基础](TOPOLOGY_REFERENCES.md)和 [局部建模](LOCAL_FEATURES.md)。
+
+`.cadoryx` 采用 ZIP 容器、JSON 清单、MessagePack 3.1.8 数字键 DTO 和独立 BRep/XDE 资产。当前七节为 features v5、document v4、structure v3、presentation/sketches v2、geometry/topology v1；支持旧四节 JSON v1、MessagePack v2、M3-V 及 M4-S1/S2/T1 文件迁移。资产目录记录媒体类型、编码/格式版本和内核来源。模型数据不直接序列化 ViewModel 或 native 对象。
 
 | 格式 | 读取 | 写入 | 用途 |
 |---|---|---|---|

@@ -9,6 +9,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Update="Fixtures/Exchange/**/*" CopyToOutputDirectory="PreserveNewest" />
+    <None Update="Fixtures/Storage/**/*" CopyToOutputDirectory="PreserveNewest" />
     <ProjectReference Include="../Cadoryx.Editor/Cadoryx.Editor.csproj" />
     <ProjectReference Include="../Cadoryx.IO/Cadoryx.IO.csproj" />
     <ProjectReference Include="../Cadoryx.Kernel.Occt/Cadoryx.Kernel.Occt.csproj" />

@@ -1,8 +1,10 @@
 # Cadoryx 数据结构设计
 
-本文定义长期目标模型、字段语义和不变量。2026-09-12 已实现强类型 ID、双精度几何、DocumentSnapshot、Part/Assembly/Slot/Body、七种特征配方、图层/材料与引用验证；完整约束草图、持久拓扑命名、装配约束等片段仍是设计草案。准确的当前结构见 `Cadoryx.Db` 和[实施说明](IMPLEMENTATION.md)。序列化 DTO 位于 `Cadoryx.IO`，与领域类型分离。
+本文定义长期目标模型、字段语义和不变量。2026-09-12 已实现强类型 ID、双精度几何、DocumentSnapshot、Part/Assembly/Slot/Body、七种特征配方、图层/材料、点/线/圆草图及 13 种约束与引用验证；更完整的约束集、关联基准、持久拓扑命名、装配约束等片段仍是设计草案。准确的当前结构见 `Cadoryx.Db` 和[实施说明](IMPLEMENTATION.md)。序列化 DTO 位于 `Cadoryx.IO`，与领域类型分离。
 
 ## 1. 三类数据
+
+M3-V 补充：`GeometryAssetRef.Format`、`XdeSourceRef.Format` 保存不可变 `AssetFormat`（媒体类型、编码/格式版本、内核及写出库来源）。共享内存资产仓只管理字节及租约，不全局覆盖文档来源。持久化时以 `GeometryRevisionId` 建立独立 geometry 表，体、特征结果和配方输入引用同一记录；同一修订的不同定义必须拒绝。未知扩展的资产格式由 `RetainedAssetFormats` 随只读快照保留。详细协议见 [格式演进](FORMAT_EVOLUTION.md)。
 
 | 数据 | 示例 | 是否持久化 | 谁维护 |
 |---|---|---|---|
@@ -227,7 +229,9 @@ FeatureEvaluation
 
 ## 8. 草图与约束
 
-`CadSketch`：Id、PartId、Name、Support、Elements、Constraints、DimensionParameters。Support 可为固定 PlaneFrame、DatumPlaneId 或带几何版本约束的平面 Face 引用；引用失效必须报错，不自动跳到世界 XY。
+M4-S1 实现 `DocumentSnapshot.Sketches`、稳定 SketchEntityId/SketchConstraintId、点/线/圆、固定平面、13 种类型化约束、独立求解结果和六节存储。M4-S2 增加 CadSketch.Revision、FeatureDefinition.SketchSource 和固定平面编辑/关联重算。采用共享点引用，构造几何也参加求解；圆弧和更完整约束仍是后续目标。准确字段、数值范围与验收见 [草图基础](SKETCH_FOUNDATION.md)和[草图编辑](SKETCH_EDITOR.md)。
+
+当前 `CadSketch`：Id、PartId、Name、Plane、Points、Lines、Circles、Constraints。Plane 为固定 RigidTransform3d，将局部 XY 映射到零件坐标。长期设计可增加 Support、DimensionParameters；Support 再扩展为 DatumPlaneId 或带几何版本约束的平面 Face 引用。引用失效必须报错，不自动跳到世界 XY。
 
 几何全部在草图局部二维坐标系中：
 
@@ -236,18 +240,18 @@ FeatureEvaluation
 | Point | Position(u,v)、是否构造元素 |
 | LineSegment | Start/End 的点引用 |
 | Circle | Center、Radius |
-| Arc | Center、Radius、StartAngle、SweepAngle |
+| Arc（后续） | Center、Radius、StartAngle、SweepAngle |
 | Ellipse / BSpline（后续） | 明确的轴/参数区间，或次数/控制点/节点/权重 |
 
-端点是可引用的子元素，不能把“第 2 条线的第 1 个端点”作为长期身份；使用 ElementId + `Start/End/Center` 等语义子项。
+端点是可引用的独立 SketchPoint，线的 Start/End 和圆的 Center 持有稳定 SketchEntityId；共享端点只保留一份坐标。不能把“第 2 条线的第 1 个端点”作为长期身份。
 
-约束结构：`ConstraintId + Type + Targets[] + DrivingValue? + IsReference + IsEnabled`。首批约束为 Coincident、Horizontal、Vertical、Parallel、Perpendicular、Tangent、Equal、Distance、Angle、Radius、Fix。
+当前每种约束是独立类型，携带 SketchConstraintId、类型化目标/尺寸及 IsEnabled，支持 FixPoint、Coincident、Horizontal、Vertical、OffsetX、OffsetY、Distance、Length、Parallel、Perpendicular、EqualLength、Radius、EqualRadius。IsReference、Tangent、Angle 和表达式尺寸仍待实现，不能用通用字符串目标绕过类型验证。
 
-求解结果独立为 `SketchSolveReport`：`NotSolved / UnderConstrained / FullyConstrained / OverConstrained / Inconsistent / Failed`、自由度、冲突 ConstraintId、解坐标和残差。未接入求解器时只能标注 NotSolved，不能因为曲线能生成 OCCT Edge 就宣称完整参数化草图。
+求解结果独立为 `SketchSolveReport`：UnderConstrained / FullyConstrained / Inconsistent / DidNotConverge / InvalidInput / LimitExceeded，包含局部自由度/秩、冗余/冲突约束 ID、解坐标和残差。仅前两种状态可提交；失败时解和自由度/秩为空。冗余约束单独报告，不等同于无解。读取文件不重新求解，UI 不能把尚未求解的坐标直接显示为“完全约束”。
 
-OcctSharp 已有草图曲线求值、投影、相交、平面轮廓和建模能力；本轮查到的文档明确不提供通用约束求解器。设计 `ISketchConstraintSolver` 作为后续独立边界，先评估实现/依赖与许可证，再承诺完整约束草图。
+OcctSharp 提供几何曲线和建模能力，约束求解由独立 `ISketchConstraintSolver` 承担。M4-S1 已采用 MathNet.Numerics 5.0.0（MIT）的托管 SVD，Cadoryx 实现解析约束方程和阻尼迭代。DOF/冗余是局部线性化诊断；非线性未收敛不能声称无解。它不代表完整约束草图已经交付。
 
-草图生成轮廓要验证闭合、重复、零长、自交、孔洞方向和嵌套。拉伸输入是已验证的 Region/Profile 引用，不能把任意线条集合直接视为可拉伸面。
+草图生成轮廓要验证闭合、重复、零长和自交；M4-S1 提取单个直线闭环的冻结 SketchProfile，M4-S2 的 SketchProfileReference 以 SketchId/Revision/有序线 ID 持续关联同一闭环。孔洞方向/嵌套与曲线区域留待后续，不能把任意线条集合直接视为可拉伸面。
 
 ## 9. 持久拓扑引用
 
@@ -332,3 +336,9 @@ AssemblySolveReport
 8. ModelTree 和 Properties 仅投影已提交状态或有明确标识的预览；不能成为文档的第二份可修改事实。
 
 验证分为 DTO 语法、领域引用一致性、内核几何合法性三层。纯元数据读取不加载 OCCT；真实精确几何验证在接入对应能力后运行。
+
+## M4-T1 实际拓扑数据
+
+DocumentSnapshot.TopologyReferences 是以 TopologyReferenceId 为键的不可变表。引用具有 DocumentId、FeatureId、OutputBodyId、OriginRevision、Kind、BoxBoundary/SecondBoundary、Policy 和 SchemaVersion。此实现限定长方体的面与边；上文更广泛的语义路径和几何签名仍是目标模型。解析结果不持久化，删除的生产者可保留为诊断对象；精确撤销恢复原引用及几何。参见 [实际协议和支持边界](TOPOLOGY_REFERENCES.md)。
+
+M4-T2 新增 LocalFeatureRecipe：Source、上游 BoxRecipe 缓存、两个语义边界、Operation 和 Size；输入必须为同零件的唯一 Box 特征，缓存和几何必须与上游一致。局部特征输出使用新的 FeatureId/BodyId，原生产者和来源元数据保留。无序号或 native 对象进入持久状态。具体范围见 [局部建模](LOCAL_FEATURES.md)。

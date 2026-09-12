@@ -612,61 +612,406 @@
   <data name="Empty" xml:space="preserve">
     <value>空</value>
   </data>
-  <data name="RecoveryTitle" xml:space="preserve"><value>文档恢复</value></data>
-  <data name="RecoveryDescription" xml:space="preserve"><value>找回上次会话中未保存的工作。恢复后将打开为未保存副本；如果最新快照损坏，会尝试前一次已完成的快照。</value></data>
-  <data name="RecoveryEmpty" xml:space="preserve"><value>暂无可恢复文档。正在运行的 Cadoryx 窗口所拥有的快照不会列出。</value></data>
-  <data name="RecoveryOpened" xml:space="preserve"><value>已恢复为未保存副本，请选择位置保存。</value></data>
-  <data name="RecoveryRestoreFailed" xml:space="preserve"><value>恢复失败或工作区正在忙碌，详情请查看消息面板。</value></data>
-  <data name="RecoveryWriteFailed" xml:space="preserve"><value>恢复保护未能更新：{0}</value></data>
-  <data name="RecoveryOriginalPath" xml:space="preserve"><value>原文件</value></data>
-  <data name="RecoverySnapshotTime" xml:space="preserve"><value>快照时间 (UTC)</value></data>
-  <data name="RecoverySnapshotCount" xml:space="preserve"><value>快照数</value></data>
-  <data name="RecoveryRestore" xml:space="preserve"><value>恢复副本</value></data>
-  <data name="RecoveryDiscard" xml:space="preserve"><value>丢弃快照</value></data>
-  <data name="RecoveryDiscardQuestion" xml:space="preserve"><value>丢弃“{0}”的全部恢复快照？此操作无法撤销，原文件不会受影响。</value></data>
-  <data name="RecoveryLater" xml:space="preserve"><value>稍后处理</value></data>
-  <data name="RecoveryRefresh" xml:space="preserve"><value>刷新</value></data>
-  <data name="RecoveryName" xml:space="preserve"><value>文档</value></data>
-  <data name="AddPart" xml:space="preserve"><value>新增零件</value></data>
-  <data name="SelectTargetPart" xml:space="preserve"><value>请选择目标零件。</value></data>
-  <data name="AddLayer" xml:space="preserve"><value>新增图层</value></data>
-  <data name="EditLayer" xml:space="preserve"><value>编辑图层</value></data>
-  <data name="DeleteLayer" xml:space="preserve"><value>删除图层</value></data>
-  <data name="SelectLayer" xml:space="preserve"><value>请选择有效图层。</value></data>
-  <data name="LastLayerRequired" xml:space="preserve"><value>至少需要保留一个图层。</value></data>
-  <data name="ResourceInUse" xml:space="preserve"><value>此资源仍被实体或特征保留输出引用，请先调整引用后再删除。</value></data>
-  <data name="AddMaterial" xml:space="preserve"><value>新增材料</value></data>
-  <data name="EditMaterial" xml:space="preserve"><value>编辑材料</value></data>
-  <data name="DeleteMaterial" xml:space="preserve"><value>删除材料</value></data>
-  <data name="SelectMaterial" xml:space="preserve"><value>请选择有效材料。</value></data>
-  <data name="DuplicateResourceName" xml:space="preserve"><value>已存在同名资源。</value></data>
-  <data name="SharedParentMoveBlocked" xml:space="preserve"><value>该位置属于复用子装配，修改会影响多个副本。请选择其父级实例移动；独立编辑子实例将在装配阶段提供。</value></data>
-  <data name="ResourceEditApplied" xml:space="preserve"><value>已应用，关闭窗口后可撤销此修改。</value></data>
-  <data name="SelectInstance" xml:space="preserve"><value>请在模型树选择零件或装配实例。</value></data>
-  <data name="InstanceLocalCoordinates" xml:space="preserve"><value>编辑此实例在父装配中的局部位置与旋转，几何定义和其他实例保持不变。</value></data>
-  <data name="FirstPartCreatedAutomatically" xml:space="preserve"><value>首个实体确认后会创建零件；更多零件可在文档资源中新增。</value></data>
-  <data name="SharedPartEditingHint" xml:space="preserve"><value>零件定义的修改会作用于它的所有实例。</value></data>
-  <data name="MassKg" xml:space="preserve"><value>质量 (kg)</value></data>
-  <data name="DontSave" xml:space="preserve"><value>不保存</value></data>
-  <data name="DocumentResources" xml:space="preserve"><value>文档资源</value></data>
-  <data name="ResourceWindowHint" xml:space="preserve"><value>输入名称后新增或应用。每次修改立即生效，可在文档中撤销；被引用的资源不能删除。</value></data>
-  <data name="Parts" xml:space="preserve"><value>零件</value></data>
-  <data name="PartDefinitionName" xml:space="preserve"><value>零件定义名称</value></data>
-  <data name="UseAsTargetPart" xml:space="preserve"><value>设为建模目标</value></data>
-  <data name="Layers" xml:space="preserve"><value>图层</value></data>
-  <data name="Locked" xml:space="preserve"><value>锁定</value></data>
-  <data name="ReferenceCount" xml:space="preserve"><value>实体 / 特征引用数：</value></data>
-  <data name="Delete" xml:space="preserve"><value>删除</value></data>
-  <data name="Materials" xml:space="preserve"><value>材料</value></data>
-  <data name="DensityKgPerM3" xml:space="preserve"><value>密度 (kg/m³)</value></data>
-  <data name="MaterialDensityHint" xml:space="preserve"><value>质量按实体精确体积与密度计算；未指定材料时不估算质量。</value></data>
-  <data name="Close" xml:space="preserve"><value>关闭</value></data>
-  <data name="CreationTarget" xml:space="preserve"><value>创建归属</value></data>
-  <data name="TargetPart" xml:space="preserve"><value>目标零件</value></data>
-  <data name="NoMaterial" xml:space="preserve"><value>不指定材料</value></data>
-  <data name="InstancePlacement" xml:space="preserve"><value>实例位置</value></data>
-  <data name="LocalTranslation" xml:space="preserve"><value>局部平移 X / Y / Z (mm)</value></data>
-  <data name="RotationAxis" xml:space="preserve"><value>旋转轴 X / Y / Z</value></data>
-  <data name="InstanceRotationAngle" xml:space="preserve"><value>旋转角度 (°)</value></data>
-  <data name="ApplyPlacement" xml:space="preserve"><value>应用实例位置</value></data>
+  <data name="RecoveryTitle" xml:space="preserve">
+    <value>文档恢复</value>
+  </data>
+  <data name="RecoveryDescription" xml:space="preserve">
+    <value>找回上次会话中未保存的工作。恢复后将打开为未保存副本；如果最新快照损坏，会尝试前一次已完成的快照。</value>
+  </data>
+  <data name="RecoveryEmpty" xml:space="preserve">
+    <value>暂无可恢复文档。正在运行的 Cadoryx 窗口所拥有的快照不会列出。</value>
+  </data>
+  <data name="RecoveryOpened" xml:space="preserve">
+    <value>已恢复为未保存副本，请选择位置保存。</value>
+  </data>
+  <data name="RecoveryRestoreFailed" xml:space="preserve">
+    <value>恢复失败或工作区正在忙碌，详情请查看消息面板。</value>
+  </data>
+  <data name="RecoveryWriteFailed" xml:space="preserve">
+    <value>恢复保护未能更新：{0}</value>
+  </data>
+  <data name="RecoveryOriginalPath" xml:space="preserve">
+    <value>原文件</value>
+  </data>
+  <data name="RecoverySnapshotTime" xml:space="preserve">
+    <value>快照时间 (UTC)</value>
+  </data>
+  <data name="RecoverySnapshotCount" xml:space="preserve">
+    <value>快照数</value>
+  </data>
+  <data name="RecoveryRestore" xml:space="preserve">
+    <value>恢复副本</value>
+  </data>
+  <data name="RecoveryDiscard" xml:space="preserve">
+    <value>丢弃快照</value>
+  </data>
+  <data name="RecoveryDiscardQuestion" xml:space="preserve">
+    <value>丢弃“{0}”的全部恢复快照？此操作无法撤销，原文件不会受影响。</value>
+  </data>
+  <data name="RecoveryLater" xml:space="preserve">
+    <value>稍后处理</value>
+  </data>
+  <data name="RecoveryRefresh" xml:space="preserve">
+    <value>刷新</value>
+  </data>
+  <data name="RecoveryName" xml:space="preserve">
+    <value>文档</value>
+  </data>
+  <data name="AddPart" xml:space="preserve">
+    <value>新增零件</value>
+  </data>
+  <data name="SelectTargetPart" xml:space="preserve">
+    <value>请选择目标零件。</value>
+  </data>
+  <data name="AddLayer" xml:space="preserve">
+    <value>新增图层</value>
+  </data>
+  <data name="EditLayer" xml:space="preserve">
+    <value>编辑图层</value>
+  </data>
+  <data name="DeleteLayer" xml:space="preserve">
+    <value>删除图层</value>
+  </data>
+  <data name="SelectLayer" xml:space="preserve">
+    <value>请选择有效图层。</value>
+  </data>
+  <data name="LastLayerRequired" xml:space="preserve">
+    <value>至少需要保留一个图层。</value>
+  </data>
+  <data name="ResourceInUse" xml:space="preserve">
+    <value>此资源仍被实体或特征保留输出引用，请先调整引用后再删除。</value>
+  </data>
+  <data name="AddMaterial" xml:space="preserve">
+    <value>新增材料</value>
+  </data>
+  <data name="EditMaterial" xml:space="preserve">
+    <value>编辑材料</value>
+  </data>
+  <data name="DeleteMaterial" xml:space="preserve">
+    <value>删除材料</value>
+  </data>
+  <data name="SelectMaterial" xml:space="preserve">
+    <value>请选择有效材料。</value>
+  </data>
+  <data name="DuplicateResourceName" xml:space="preserve">
+    <value>已存在同名资源。</value>
+  </data>
+  <data name="SharedParentMoveBlocked" xml:space="preserve">
+    <value>该位置属于复用子装配，修改会影响多个副本。请选择其父级实例移动；独立编辑子实例将在装配阶段提供。</value>
+  </data>
+  <data name="ResourceEditApplied" xml:space="preserve">
+    <value>已应用，关闭窗口后可撤销此修改。</value>
+  </data>
+  <data name="SelectInstance" xml:space="preserve">
+    <value>请在模型树选择零件或装配实例。</value>
+  </data>
+  <data name="InstanceLocalCoordinates" xml:space="preserve">
+    <value>编辑此实例在父装配中的局部位置与旋转，几何定义和其他实例保持不变。</value>
+  </data>
+  <data name="FirstPartCreatedAutomatically" xml:space="preserve">
+    <value>首个实体确认后会创建零件；更多零件可在文档资源中新增。</value>
+  </data>
+  <data name="SharedPartEditingHint" xml:space="preserve">
+    <value>零件定义的修改会作用于它的所有实例。</value>
+  </data>
+  <data name="MassKg" xml:space="preserve">
+    <value>质量 (kg)</value>
+  </data>
+  <data name="DontSave" xml:space="preserve">
+    <value>不保存</value>
+  </data>
+  <data name="DocumentResources" xml:space="preserve">
+    <value>文档资源</value>
+  </data>
+  <data name="ResourceWindowHint" xml:space="preserve">
+    <value>输入名称后新增或应用。每次修改立即生效，可在文档中撤销；被引用的资源不能删除。</value>
+  </data>
+  <data name="Parts" xml:space="preserve">
+    <value>零件</value>
+  </data>
+  <data name="PartDefinitionName" xml:space="preserve">
+    <value>零件定义名称</value>
+  </data>
+  <data name="UseAsTargetPart" xml:space="preserve">
+    <value>设为建模目标</value>
+  </data>
+  <data name="Layers" xml:space="preserve">
+    <value>图层</value>
+  </data>
+  <data name="Locked" xml:space="preserve">
+    <value>锁定</value>
+  </data>
+  <data name="ReferenceCount" xml:space="preserve">
+    <value>实体 / 特征引用数：</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>删除</value>
+  </data>
+  <data name="Materials" xml:space="preserve">
+    <value>材料</value>
+  </data>
+  <data name="DensityKgPerM3" xml:space="preserve">
+    <value>密度 (kg/m³)</value>
+  </data>
+  <data name="MaterialDensityHint" xml:space="preserve">
+    <value>质量按实体精确体积与密度计算；未指定材料时不估算质量。</value>
+  </data>
+  <data name="Close" xml:space="preserve">
+    <value>关闭</value>
+  </data>
+  <data name="CreationTarget" xml:space="preserve">
+    <value>创建归属</value>
+  </data>
+  <data name="TargetPart" xml:space="preserve">
+    <value>目标零件</value>
+  </data>
+  <data name="NoMaterial" xml:space="preserve">
+    <value>不指定材料</value>
+  </data>
+  <data name="InstancePlacement" xml:space="preserve">
+    <value>实例位置</value>
+  </data>
+  <data name="LocalTranslation" xml:space="preserve">
+    <value>局部平移 X / Y / Z (mm)</value>
+  </data>
+  <data name="RotationAxis" xml:space="preserve">
+    <value>旋转轴 X / Y / Z</value>
+  </data>
+  <data name="InstanceRotationAngle" xml:space="preserve">
+    <value>旋转角度 (°)</value>
+  </data>
+  <data name="ApplyPlacement" xml:space="preserve">
+    <value>应用实例位置</value>
+  </data>
+  <data name="LocalFeatureTitle" xml:space="preserve">
+    <value>局部建模</value>
+  </data>
+  <data name="LocalFeatureStale" xml:space="preserve">
+    <value>文档已改变，请关闭后重新打开。</value>
+  </data>
+  <data name="LocalFeatureScope" xml:space="preserve">
+    <value>编辑共享长方体定义。每个特征处理一条边，暂不支持在结果上继续局部建模。</value>
+  </data>
+  <data name="InspectReference" xml:space="preserve">
+    <value>检查引用</value>
+  </data>
+  <data name="LocalFeatureOperation" xml:space="preserve">
+    <value>操作</value>
+  </data>
+  <data name="LocalFeaturePick" xml:space="preserve">
+    <value>点击长方体的面或边。圆角和倒角请选择边。</value>
+  </data>
+  <data name="SelectionKind" xml:space="preserve">
+    <value>选择类型</value>
+  </data>
+  <data name="MissingReference" xml:space="preserve">
+    <value>引用缺失，请重新选择。</value>
+  </data>
+  <data name="SaveReference" xml:space="preserve">
+    <value>保存 / 重选引用</value>
+  </data>
+  <data name="AmbiguousSelection" xml:space="preserve">
+    <value>选择缺失或有歧义，请选择一个受支持的面或边。</value>
+  </data>
+  <data name="ReferenceResolved" xml:space="preserve">
+    <value>引用解析成功。</value>
+  </data>
+  <data name="WrongReferenceContext" xml:space="preserve">
+    <value>引用上下文不匹配。</value>
+  </data>
+  <data name="NoBoxOutput" xml:space="preserve">
+    <value>没有可用的长方体输出，请先创建长方体。</value>
+  </data>
+  <data name="SavedReferences" xml:space="preserve">
+    <value>已存引用（选中后可重选）</value>
+  </data>
+  <data name="UnsupportedTopology" xml:space="preserve">
+    <value>不支持此拓扑引用。</value>
+  </data>
+  <data name="Selected" xml:space="preserve">
+    <value>已选择：</value>
+  </data>
+  <data name="RadiusOrDistance" xml:space="preserve">
+    <value>半径 / 距离（mm）</value>
+  </data>
+  <data name="Chamfer" xml:space="preserve">
+    <value>倒角</value>
+  </data>
+  <data name="Edge" xml:space="preserve">
+    <value>边</value>
+  </data>
+  <data name="ReferenceStale" xml:space="preserve">
+    <value>几何修订已改变，请重新选择此引用。</value>
+  </data>
+  <data name="Face" xml:space="preserve">
+    <value>面</value>
+  </data>
+  <data name="Reselect" xml:space="preserve">
+    <value>重新选择</value>
+  </data>
+  <data name="Fillet" xml:space="preserve">
+    <value>圆角</value>
+  </data>
+  <data name="Sketch" xml:space="preserve">
+    <value>草图</value>
+  </data>
+  <data name="SketchEditorTitle" xml:space="preserve">
+    <value>草图编辑器</value>
+  </data>
+  <data name="NewSketch" xml:space="preserve">
+    <value>新建草图</value>
+  </data>
+  <data name="EditSketch" xml:space="preserve">
+    <value>编辑草图</value>
+  </data>
+  <data name="RemoveSketch" xml:space="preserve">
+    <value>删除草图</value>
+  </data>
+  <data name="SketchExtrude" xml:space="preserve">
+    <value>草图拉伸</value>
+  </data>
+  <data name="SketchRevolve" xml:space="preserve">
+    <value>草图旋转</value>
+  </data>
+  <data name="SelectOrDrag" xml:space="preserve">
+    <value>选择 / 拖动</value>
+  </data>
+  <data name="Point" xml:space="preserve">
+    <value>点</value>
+  </data>
+  <data name="Line" xml:space="preserve">
+    <value>直线</value>
+  </data>
+  <data name="Rectangle" xml:space="preserve">
+    <value>矩形</value>
+  </data>
+  <data name="Circle" xml:space="preserve">
+    <value>圆</value>
+  </data>
+  <data name="ConstructionGeometry" xml:space="preserve">
+    <value>构造几何</value>
+  </data>
+  <data name="SnapGridEndpoints" xml:space="preserve">
+    <value>捕捉网格 / 端点</value>
+  </data>
+  <data name="FitSketch" xml:space="preserve">
+    <value>适合草图</value>
+  </data>
+  <data name="PartPlane" xml:space="preserve">
+    <value>零件内平面</value>
+  </data>
+  <data name="PlaneOrigin" xml:space="preserve">
+    <value>平面原点（mm）</value>
+  </data>
+  <data name="Geometry" xml:space="preserve">
+    <value>几何元素</value>
+  </data>
+  <data name="ConstraintsDimensions" xml:space="preserve">
+    <value>约束 / 尺寸</value>
+  </data>
+  <data name="ConstraintValue" xml:space="preserve">
+    <value>数值（mm），固定点 X / Y</value>
+  </data>
+  <data name="AddConstraint" xml:space="preserve">
+    <value>添加到选中目标</value>
+  </data>
+  <data name="ToggleConstraint" xml:space="preserve">
+    <value>启用 / 禁用</value>
+  </data>
+  <data name="SolveAndPreview" xml:space="preserve">
+    <value>求解并预览</value>
+  </data>
+  <data name="SketchHint" xml:space="preserve">
+    <value>点击绘制；Ctrl 多选目标，拖动点，滚轮缩放，中键平移。Enter 预览；Esc 取消绘制或关闭。</value>
+  </data>
+  <data name="DraftChanged" xml:space="preserve">
+    <value>草稿已修改，请预览后确认。</value>
+  </data>
+  <data name="SolvingSketch" xml:space="preserve">
+    <value>正在求解并重建依赖特征…</value>
+  </data>
+  <data name="PickSketch" xml:space="preserve">
+    <value>请先在模型树选择草图。</value>
+  </data>
+  <data name="PickProfile" xml:space="preserve">
+    <value>请选择闭合直线轮廓；圆和带孔区域暂不作为特征轮廓。</value>
+  </data>
+  <data name="AssociateSketch" xml:space="preserve">
+    <value>关联草图</value>
+  </data>
+  <data name="FrozenPolygon" xml:space="preserve">
+    <value>冻结多边形</value>
+  </data>
+  <data name="SourceSketchLoop" xml:space="preserve">
+    <value>来源草图 / 轮廓</value>
+  </data>
+  <data name="LinkedSketchHint" xml:space="preserve">
+    <value>轮廓与平面跟随来源草图；请在草图编辑器修改尺寸。</value>
+  </data>
+  <data name="FixPoint" xml:space="preserve">
+    <value>固定点</value>
+  </data>
+  <data name="CoincidentPoints" xml:space="preserve">
+    <value>点重合</value>
+  </data>
+  <data name="HorizontalLine" xml:space="preserve">
+    <value>水平线</value>
+  </data>
+  <data name="VerticalLine" xml:space="preserve">
+    <value>垂直线</value>
+  </data>
+  <data name="PointDistance" xml:space="preserve">
+    <value>点间距离</value>
+  </data>
+  <data name="XOffset" xml:space="preserve">
+    <value>X 偏移</value>
+  </data>
+  <data name="YOffset" xml:space="preserve">
+    <value>Y 偏移</value>
+  </data>
+  <data name="LineLength" xml:space="preserve">
+    <value>线长度</value>
+  </data>
+  <data name="ParallelLines" xml:space="preserve">
+    <value>平行线</value>
+  </data>
+  <data name="PerpendicularLines" xml:space="preserve">
+    <value>垂直关系</value>
+  </data>
+  <data name="EqualLengths" xml:space="preserve">
+    <value>等长</value>
+  </data>
+  <data name="CircleRadius" xml:space="preserve">
+    <value>圆半径</value>
+  </data>
+  <data name="EqualRadii" xml:space="preserve">
+    <value>等半径</value>
+  </data>
+  <data name="SketchTargets" xml:space="preserve">
+    <value>请选择 {0} 个所需类型的目标。</value>
+  </data>
+  <data name="ConstraintSolveFailure" xml:space="preserve">
+    <value>求解失败：{0}；冲突约束数：{1}。</value>
+  </data>
+  <data name="SelectedCoordinates" xml:space="preserve">
+    <value>选中点 X / Y 或圆半径（mm）</value>
+  </data>
+  <data name="ApplyCoordinates" xml:space="preserve">
+    <value>应用坐标 / 半径</value>
+  </data>
+  <data name="ExistingSketchPlane" xml:space="preserve">
+    <value>现有草图平面（保持）</value>
+  </data>
+  <data name="DeleteSelected" xml:space="preserve">
+    <value>删除选中项</value>
+  </data>
+  <data name="ApplyValue" xml:space="preserve">
+    <value>应用数值</value>
+  </data>
+  <data name="SketchPreviewReady" xml:space="preserve">
+    <value>预览就绪；自由度 {0}，冗余约束 {1}，重建特征 {2}。</value>
+  </data>
+  <data name="Stale" xml:space="preserve">
+    <value>文档已变更，请关闭并重新打开编辑器。</value>
+  </data>
 </root>

@@ -18,14 +18,17 @@ public sealed class PreparedDocumentEdit(DocumentSnapshot snapshot,IEnumerable<I
     public void Dispose(){foreach(var resource in resources)resource.Dispose();}
 }
 public sealed record DocumentChangeSet(DocumentId DocumentId,DocumentStateId Before,DocumentStateId After,long Generation,
-    ImmutableArray<BodyId> Added,ImmutableArray<BodyId> Removed,ImmutableArray<BodyId> Changed,bool StructureChanged)
+    ImmutableArray<BodyId> Added,ImmutableArray<BodyId> Removed,ImmutableArray<BodyId> Changed,bool StructureChanged,
+    ImmutableArray<SketchId> ChangedSketches=default,ImmutableArray<TopologyReferenceId> ChangedTopologyReferences=default)
 {
     public static DocumentChangeSet Between(DocumentSnapshot a,DocumentSnapshot b,long generation) => new(
         b.Id,a.StateId,b.StateId,generation,b.Bodies.Keys.Except(a.Bodies.Keys).ToImmutableArray(),
         a.Bodies.Keys.Except(b.Bodies.Keys).ToImmutableArray(),
-        b.Bodies.Keys.Intersect(a.Bodies.Keys).Where(id=>a.Bodies[id]!=b.Bodies[id]).ToImmutableArray(),!ReferenceEquals(a.Definitions,b.Definitions));
+        b.Bodies.Keys.Intersect(a.Bodies.Keys).Where(id=>a.Bodies[id]!=b.Bodies[id]).ToImmutableArray(),!ReferenceEquals(a.Definitions,b.Definitions),
+        a.Sketches.Keys.Union(b.Sketches.Keys).Where(id=>a.Sketches.GetValueOrDefault(id)!=b.Sketches.GetValueOrDefault(id)).ToImmutableArray(),
+        a.TopologyReferences.Keys.Union(b.TopologyReferences.Keys).Where(id=>a.TopologyReferences.GetValueOrDefault(id)!=b.TopologyReferences.GetValueOrDefault(id)).ToImmutableArray());
 }
-public sealed class AddBodyCommand(GeometryRecipe recipe,string name,DefinitionId? targetPart=null,LayerId? targetLayer=null,MaterialId? material=null) : ICadDocumentCommand
+public sealed class AddBodyCommand(GeometryRecipe recipe,string name,DefinitionId? targetPart=null,LayerId? targetLayer=null,MaterialId? material=null,SketchProfileReference? sketchSource=null) : ICadDocumentCommand
 {
     public string Name=>string.Format(Strings.CreateBodyFormat,name);
     public async Task<PreparedDocumentEdit> PrepareAsync(DocumentCommandContext context,CancellationToken cancellationToken)
@@ -40,7 +43,8 @@ public sealed class AddBodyCommand(GeometryRecipe recipe,string name,DefinitionI
         if(!initial.Layers.TryGetValue(layer,out var destination))throw new CadValidationException(Strings.SelectLayer);
         if(destination.IsLocked)throw new CadValidationException(Strings.LayerLocked);
         if(material is {} m&&!initial.Materials.ContainsKey(m))throw new CadValidationException(Strings.SelectMaterial);
-        var result=await context.Kernel.EvaluateAsync(recipe,context.Assets,cancellationToken).ConfigureAwait(false);
+        var effective=sketchSource is null?recipe:sketchSource.Resolve(initial,target?.Id??throw new CadValidationException("Select the sketch's part."),recipe);
+        var result=await context.Kernel.EvaluateAsync(effective,context.Assets,cancellationToken).ConfigureAwait(false);
         try
         {
             var doc=context.Snapshot;
@@ -53,7 +57,7 @@ public sealed class AddBodyCommand(GeometryRecipe recipe,string name,DefinitionI
             }
             var body=BodyId.New();var feature=FeatureId.New();
             var b=new CadBody(body,part.Id,name,result.Geometry,feature,layer,new(ByLayer:true),MaterialId:material);
-            var f=new FeatureDefinition(feature,part.Id,name,recipe,[],body,result.Geometry,OutputMetadata:BodyOutputMetadata.FromBody(b));
+            var f=new FeatureDefinition(feature,part.Id,name,effective,[],body,result.Geometry,OutputMetadata:BodyOutputMetadata.FromBody(b)){SketchSource=sketchSource};
             doc=doc with {Bodies=doc.Bodies.Add(body,b),Features=doc.Features.Add(feature,f),
                 Definitions=doc.Definitions.SetItem(part.Id,part with {Bodies=part.Bodies.Add(body),Features=part.Features.Add(feature)})};
             return new(doc.WithNewState(),[result]);

@@ -49,6 +49,8 @@ public partial class App : Application
         recoveryHost.Start((MainWindowViewModel)mainWindow.DataContext);
         if(e.Args.Length>=2&&e.Args[0]=="--smoke")
             _=Diagnostics.SmokeRunner.RunAsync(mainWindow,_serviceProvider,e.Args[1]);
+        else if(e.Args.Length>=2&&e.Args[0]=="--sketch-editor-smoke")
+            _=Diagnostics.SketchEditorSmokeRunner.RunAsync(mainWindow,_serviceProvider,e.Args[1]);
         else if(e.Args.Length>=3&&e.Args[0]=="--window-smoke")
             _=Diagnostics.WindowSmokeRunner.RunAsync(mainWindow,_serviceProvider,e.Args[1],e.Args[2]);
         else if(e.Args.Length>=2&&e.Args[0] is "--recovery-seed" or "--recovery-verify")
@@ -79,11 +81,14 @@ public partial class App : Application
         services.AddSingleton<Cadoryx.Kernel.Abstractions.IAssetStore,Cadoryx.Kernel.Abstractions.MemoryAssetStore>();
         services.AddSingleton<Cadoryx.Kernel.Abstractions.IGeometryKernel,Cadoryx.Kernel.Occt.OcctGeometryKernel>();
         services.AddSingleton<Cadoryx.Kernel.Abstractions.IDocumentStorage,Cadoryx.IO.CadDocumentStorage>();
+        services.AddSingleton<Cadoryx.Sketching.ISketchConstraintSolver,Cadoryx.Sketching.ManagedSketchConstraintSolver>();
+        services.AddSingleton<ISketchEditorHost,Cadoryx.wpf.Views.SketchEditorHost>();
+        services.AddSingleton<ILocalFeatureHost,Cadoryx.wpf.Views.LocalFeatureHost>();
         services.AddSingleton<Cadoryx.Editor.ISessionDispatcher,WpfSessionDispatcher>();
         services.AddSingleton<Cadoryx.Kernel.Abstractions.IRecoveryStore>(provider=>
         {
             var args=Environment.GetCommandLineArgs();
-            bool smoke=args.Length>=3&&args[1] is "--smoke" or "--recovery-seed" or "--recovery-verify" or "--window-smoke";
+            bool smoke=args.Length>=3&&args[1] is "--smoke" or "--recovery-seed" or "--recovery-verify" or "--window-smoke" or "--sketch-editor-smoke";
             string root=smoke?Path.Combine(Path.GetFullPath(args[2]),"recovery"):
                 Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),"Cadoryx","Recovery");
             return new Cadoryx.IO.CadRecoveryStore(root,provider.GetRequiredService<Cadoryx.Kernel.Abstractions.IDocumentStorage>());

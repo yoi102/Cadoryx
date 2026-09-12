@@ -1,0 +1,59 @@
+<mah:MetroWindow x:Class="Cadoryx.wpf.Views.SketchEditorWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+    xmlns:r="clr-namespace:Cadoryx.Lang;assembly=Cadoryx.Lang"
+    xmlns:controls="clr-namespace:Cadoryx.wpf.Controls"
+    Style="{StaticResource Cadoryx.DialogWindowStyle}" Title="{I18N {x:Static r:LangKeys.SketchEditorTitle}}"
+    Width="1160" Height="790" MinWidth="900" MinHeight="600" WindowStartupLocation="CenterOwner">
+    <Grid Margin="12">
+        <Grid.RowDefinitions><RowDefinition Height="Auto"/><RowDefinition/><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/></Grid.RowDefinitions>
+        <WrapPanel Margin="0,0,0,10">
+            <ComboBox x:Name="ToolPicker" Width="170" ItemsSource="{Binding Tools}" DisplayMemberPath="Label" SelectedValuePath="Key" SelectedValue="{Binding Tool}"/>
+            <CheckBox Content="{I18N {x:Static r:LangKeys.ConstructionGeometry}}" IsChecked="{Binding Construction}" Margin="12,0" VerticalAlignment="Center"/>
+            <CheckBox Content="{I18N {x:Static r:LangKeys.SnapGridEndpoints}}" IsChecked="{Binding Snap}" Margin="0,0,6,0" VerticalAlignment="Center"/>
+            <mah:NumericUpDown Width="90" Value="{Binding GridStep}" Minimum="0.001" Maximum="100000"/>
+            <Button Content="{I18N {x:Static r:LangKeys.FitSketch}}" Click="OnFit" Margin="10,0"/>
+            <Button Content="{I18N {x:Static r:LangKeys.UndoDraft}}" Command="{Binding UndoCommand}" Margin="0,0,8,0"/>
+            <Button Content="{I18N {x:Static r:LangKeys.RedoDraft}}" Command="{Binding RedoCommand}"/>
+        </WrapPanel>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions><ColumnDefinition/><ColumnDefinition Width="12"/><ColumnDefinition Width="340"/></Grid.ColumnDefinitions>
+            <Border CornerRadius="4" BorderBrush="#54677D" BorderThickness="1"><controls:SketchCanvas x:Name="Canvas"/></Border>
+            <ScrollViewer Grid.Column="2" VerticalScrollBarVisibility="Auto">
+                <StackPanel IsEnabled="{Binding CanEdit}">
+                    <TextBlock Text="{I18N {x:Static r:LangKeys.Name}}"/><TextBox x:Name="SketchName" Text="{Binding Name,UpdateSourceTrigger=PropertyChanged}" Margin="0,4,0,8"/>
+                    <StackPanel IsEnabled="{Binding CanChangePlane}">
+                        <TextBlock Text="{I18N {x:Static r:LangKeys.PartPlane}}"/><ComboBox ItemsSource="{Binding Planes}" SelectedItem="{Binding Plane}" Margin="0,4,0,6"/>
+                        <TextBlock Text="{I18N {x:Static r:LangKeys.PlaneOrigin}}"/><UniformGrid Columns="3" Margin="0,4,0,8">
+                            <mah:NumericUpDown Value="{Binding OriginX}" HideUpDownButtons="True"/><mah:NumericUpDown Value="{Binding OriginY}" HideUpDownButtons="True"/><mah:NumericUpDown Value="{Binding OriginZ}" HideUpDownButtons="True"/>
+                        </UniformGrid>
+                    </StackPanel>
+                    <Expander Header="{I18N {x:Static r:LangKeys.Geometry}}" IsExpanded="False">
+                        <StackPanel Margin="0,6,0,8">
+                            <ListBox x:Name="EntityList" ItemsSource="{Binding Entities}" DisplayMemberPath="Label" SelectionMode="Extended" SelectionChanged="OnEntitySelection" Height="110"/>
+                            <TextBlock Text="{I18N {x:Static r:LangKeys.SelectedCoordinates}}" TextWrapping="Wrap" Margin="0,6,0,4"/>
+                            <UniformGrid Columns="3"><mah:NumericUpDown IsEnabled="{Binding HasSelectedPoint}" Value="{Binding PointX}" HideUpDownButtons="True"/><mah:NumericUpDown IsEnabled="{Binding HasSelectedPoint}" Value="{Binding PointY}" HideUpDownButtons="True"/><mah:NumericUpDown IsEnabled="{Binding HasSelectedCircle}" Value="{Binding CircleRadius}" Minimum="0.00001" HideUpDownButtons="True"/></UniformGrid>
+                            <Button Content="{I18N {x:Static r:LangKeys.ApplyCoordinates}}" Command="{Binding ApplyCoordinatesCommand}" Margin="0,6,0,4"/>
+                            <Button Content="{I18N {x:Static r:LangKeys.DeleteSelected}}" Command="{Binding DeleteEntitiesCommand}"/>
+                        </StackPanel>
+                    </Expander>
+                    <TextBlock Text="{I18N {x:Static r:LangKeys.ConstraintsDimensions}}" FontSize="16" Margin="0,6"/>
+                    <ListBox x:Name="ConstraintList" ItemsSource="{Binding Constraints}" DisplayMemberPath="Label" SelectedItem="{Binding SelectedConstraint}" Height="145" HorizontalContentAlignment="Stretch"/>
+                    <TextBlock Text="{I18N {x:Static r:LangKeys.ConstraintValue}}" TextWrapping="Wrap" Margin="0,8,0,4"/>
+                    <UniformGrid Columns="2"><mah:NumericUpDown x:Name="DimensionInput" Value="{Binding DimensionValue,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/><mah:NumericUpDown Value="{Binding DimensionY}"/></UniformGrid>
+                    <WrapPanel Margin="0,6"><Button Content="{I18N {x:Static r:LangKeys.ApplyValue}}" Command="{Binding ApplyDimensionCommand}" Margin="0,0,6,4"/><Button Content="{I18N {x:Static r:LangKeys.ToggleConstraint}}" Command="{Binding ToggleConstraintCommand}" Margin="0,0,0,4"/></WrapPanel>
+                    <Button Content="{I18N {x:Static r:LangKeys.DeleteSelected}}" Command="{Binding DeleteConstraintCommand}" Margin="0,0,0,8"/>
+                    <ComboBox ItemsSource="{Binding ConstraintKinds}" SelectedValue="{Binding ConstraintKind}" SelectedValuePath="Key" DisplayMemberPath="Label"/>
+                    <Button Content="{I18N {x:Static r:LangKeys.AddConstraint}}" Command="{Binding AddConstraintCommand}" Margin="0,6,0,0"/>
+                </StackPanel>
+            </ScrollViewer>
+        </Grid>
+        <StackPanel Grid.Row="2" Margin="0,8,0,0"><TextBlock Text="{Binding Status}" TextWrapping="Wrap" Foreground="{DynamicResource MahApps.Brushes.Accent}"/><TextBlock Text="{I18N {x:Static r:LangKeys.SketchHint}}" TextWrapping="Wrap" Opacity="0.7" Margin="0,4"/></StackPanel>
+        <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,8,0,0">
+            <Button x:Name="PreviewButton" Content="{I18N {x:Static r:LangKeys.SolveAndPreview}}" Command="{Binding PreviewCommand}" Margin="0,0,8,0"/>
+            <Button x:Name="ConfirmButton" Content="{I18N {x:Static r:LangKeys.Confirm}}" Command="{Binding ConfirmCommand}" Margin="0,0,8,0"/>
+            <Button Content="{I18N {x:Static r:LangKeys.Cancel}}" Command="{Binding CancelCommand}"/>
+        </StackPanel>
+    </Grid>
+</mah:MetroWindow>

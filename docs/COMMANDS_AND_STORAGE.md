@@ -152,12 +152,15 @@ model.cadoryx
 ├ sections/document.msgpack      # 文档身份、单位、公差、根定义
 ├ sections/structure.msgpack     # Part/Assembly、Slots、Bodies
 ├ sections/features.msgpack      # 配方、依赖、结果、空结果输出属性
+├ sections/geometry.msgpack      # 修订 ID → BRep、包围盒、体积、源 XDE 引用
+├ sections/sketches.msgpack      # 草图平面、稳定实体和约束；不保存瞬时求解报告
+├ sections/topology.msgpack      # 版本化语义引用；不保存解析状态或 native 序号
 ├ sections/presentation.msgpack  # 图层、外观、材料
 ├ extensions/<index>.bin         # 未知可选节，保留原始编码和载荷
 └ assets/<sha256>.bin            # BRep 或嵌入 XDE 上下文
 ```
 
-以上是实际写出的目录结构。网格输入、独立 sketches/references 节、命名视图和缩略图仍未实现。XDE 上下文不是所有文档的必需项。所有被当前特征图作为 Source 输入的旧几何资产也属于“当前可达资产”，不能只保存可见 Body 的最新 BRep。
+以上是实际写出的目录结构。sketches 节已实现；网格输入、独立 references 节、命名视图和缩略图仍未实现。XDE 上下文不是所有文档的必需项。所有被当前特征图作为 Source 输入的旧几何资产也属于“当前可达资产”，不能只保存可见 Body 的最新 BRep。
 
 `manifest.json` 必需字段：
 
@@ -165,10 +168,10 @@ model.cadoryx
 |---|---|
 | format / containerVersion | `Cadoryx` 与 ZIP 内约定版本；与各节版本独立 |
 | documentId / stateId | 文件中的文档身份与保存快照身份 |
-| applicationVersion | 来源版本；时间戳和每资产内核版本记录后续补充 |
+| applicationVersion / assetCatalogVersion | 当前写出 0.4.1 / 1；与节版本分别演进 |
 | requiredCapabilities[] | 当前必需能力；未知能力拒绝加载 |
 | sections[] | kind、path、schemaVersion、encoding、required、length、sha256 |
-| assets[] | id、path、length、sha256；当前编码由 BRep/XDE 引用角色确定 |
+| assets[] | id、path、length、sha256、format；format 含媒体类型、编码/格式版本、内核及写出库版本 |
 
 每个 section/asset 的 hash 针对未压缩载荷字节。禁止把绝对路径、XdeLabel.Entry 或进程指针当作资产路径/业务身份。Header 指格式清单摘要，不把“ZIP 没有自定义头”混同为必须实现另一个头格式。
 
@@ -186,16 +189,20 @@ SaveAsync(snapshot, assets, path)        # 只保存捕获的快照
 
 容器版本、每节 SchemaVersion、资产编码版本、特征参数版本是四个不同维度。一个新草图字段不需要让每个几何资产重新编码，也不能只递增容器号而不提供节迁移。
 
-当前读取分派严格匹配 `(schemaVersion, encoding)`：v1/json 通过旧 JSON DTO 解码，v2/messagepack 通过数字键 DTO 解码，两者转换到同一领域快照，保存统一写 v2。JSON 迁移注册器仅处理 JSON 内连续版本步骤；未来跨编码/跨节迁移需扩展注册表，不能假装已存在通用二进制迁移。字段 Key 和持久枚举编号不得重排或复用；新增字段须确定缺省语义，破坏兼容的变更提升节版本。解码后拒绝尾随字节、非法配方、未来必需节，并执行整个领域图验证。
+当前迁移严格匹配 `(kind, schemaVersion, encoding)`，由 `RegisterStep` 声明多个输入/输出。M3-V 迁移步骤先将旧 v1/json 逐节迁移为 v2/messagepack；structure/features v2 联合提取 geometry 表，输出 structure/features v3 和 geometry v1；该步骤的 document/presentation 保持 v2，再接续下述 M4-S1 迁移。迁移结果全组校验、检查容量和取消后才接纳；缺步骤、依赖缺失、输出冲突或修订定义冲突会拒绝加载。旧 JSON `Register/Read` 辅助 API 保留，实际存储使用新流水线。字段 Key 和持久枚举编号不得重排或复用；破坏兼容的变更提升节版本。解码后拒绝尾随字节、非法配方、未来必需节，并执行整个领域图验证。完整协议和固定样本见 [格式演进](FORMAT_EVOLUTION.md)。
 
 M1-Q 为 PackAppearance 追加可选 Key(2) PreserveSourceStyles；旧 Key(0)/Key(1) 不变，缺失字段默认 false。它只控制源 XDE 显示样式，v2 编码保持不变；新文件在旧程序重存可能丢失该新标志。旧两字段字节样本与当前原生保存均有回归，细节见 [交换与视口](EXCHANGE_AND_VIEWPORT.md)。
+
+M4-S1 接续迁移：document v2 → v3 同时初始化空 sketches v1。v3 表示 sketches 权威表必须存在；M4-S1 当时六节版本为 document/structure/features v3、presentation v2、geometry/sketches v1。新增必需能力 cadoryx.sketches.1；旧五节文件中的 ID、状态、资产不变。读取不运行求解器，设置读取仍只消费 document。详见 [草图基础](SKETCH_FOUNDATION.md)。
+
+M4-S2 再迁移 sketches v1→v2，添加稳定初始 Revision；features v3→v4，旧特征保持空 SketchSource，即冻结轮廓。M4-S2 当时为 document/structure v3、features v4、presentation/sketches v2、geometry v1。新增必需能力 cadoryx.sketch-association.1。关联引用、修订、缓存轮廓与所属零件均验证，失效数据不得静默重算修补；详见[草图编辑协议](SKETCH_EDITOR.md)。
 
 未知版本处理：
 
 - 新于当前能力的必需节/必需特征拒绝编辑，可在已保存结果足够时提供明确标记的只读模式。
-- 未知可选节和字段保留原始载荷；若编辑使其引用或依赖可能失效，按扩展契约标记失效/禁止保真保存，不能承诺盲目复制即可语义保真。
+- 未知可选节及其附属资产/格式原样保留，文档只读；不承诺已知 DTO 中任意未知字段的透传。可选资产即使声明未来 OCCT 格式，也只复制；当前几何实际依赖的资产必须通过兼容性检查。
 - BRep/上下文资产先验证 hash，再由合适内核版本尝试解码；不假设 OCCT 任意跨版本都可往返。
-- 迁移后默认保存到新文件或原子替换前保留旧副本；失败保留原文件。
+- 迁移只改变内存表示，不改变 ID/StateId 和保存点；下次保存写当前格式，普通保存可原子替换原路径，另存为可保留旧版副本。失败保留旧目标，不自动制作永久备份。
 - `ReadDocumentSettingsAsync` 只迁移 document 节；它不应该强制创建 Viewer、读取所有 BRep 或等待草图求解。
 
 ## 8. 保存、打开与恢复协议
@@ -247,3 +254,7 @@ M1-Q 为 PackAppearance 追加可选 Key(2) PreserveSourceStyles；旧 Key(0)/Ke
 | 改写/缺失一个几何资产 | hash/引用检查报错，不部分加载成成功文档 |
 | 未支持的未来特征 | 明确只读或拒绝编辑，不静默删除特征后保存 |
 | 同名零件/重复子装配实例 | 依靠 ID/完整路径定位，树和 Viewer 选择一致 |
+
+M4-T1 新增 document v3→v4 与 topology v1 空表迁移，当前为七节。topology-references.1 为必需能力；保存语义引用和来源修订，禁止保存临时拓扑序号或解析缓存。注册/重选需当前修订和唯一 native 解析；重算保持原引用，精确历史恢复旧快照。协议及失效规则见 [拓扑引用基础](TOPOLOGY_REFERENCES.md)。
+
+M4-T2 将 features v4→v5，增加白名单 local-box-edge 配方；应用版本 0.4.2、必需能力 cadoryx.local-box-edge.1。七节目录不变，旧 v4 不得夹带新配方。局部参数/源缓存/轴序/依赖在解码后全图验证，失败拒绝加载；事务/预览/取消和原生生命周期见 [局部建模](LOCAL_FEATURES.md)。

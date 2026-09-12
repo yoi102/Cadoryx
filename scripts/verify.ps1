@@ -1,4 +1,4 @@
-param([switch]$PublishSmoke, [switch]$RecoverySmoke, [switch]$WindowSmoke)
+param([switch]$PublishSmoke, [switch]$RecoverySmoke, [switch]$WindowSmoke, [switch]$SketchSmoke)
 $ErrorActionPreference = 'Stop'
 $cadRoot = Split-Path -Parent $PSScriptRoot
 Push-Location $cadRoot
@@ -9,13 +9,13 @@ try {
     if ($LASTEXITCODE -ne 0) { throw 'Release build failed.' }
     dotnet test Cadoryx.Tests -c Release --no-build --no-restore --nologo -v minimal
     if ($LASTEXITCODE -ne 0) { throw 'Tests failed.' }
-    if ($PublishSmoke -or $RecoverySmoke -or $WindowSmoke) {
+    if ($PublishSmoke -or $RecoverySmoke -or $WindowSmoke -or $SketchSmoke) {
         $cadStamp = Get-Date -Format 'yyyyMMdd-HHmmss'
         $cadPublish = Join-Path $cadRoot "artifacts\publish\$cadStamp"
         $cadSmoke = Join-Path $cadRoot "artifacts\smoke-$cadStamp"
         dotnet publish Cadoryx.wpf/Cadoryx.wpf.csproj -c Release --self-contained false --no-restore -o $cadPublish --nologo -v minimal
         if ($LASTEXITCODE -ne 0) { throw 'Publish failed.' }
-        foreach ($cadFile in @('occt\OcctSharp.Native.dll','runtime-baseline.json','licenses\OcctSharp.Native\THIRD_PARTY_NOTICES.md')) {
+        foreach ($cadFile in @('occt\OcctSharp.Native.dll','runtime-baseline.json','licenses\OcctSharp.Native\THIRD_PARTY_NOTICES.md','MathNet.Numerics.dll','licenses\MathNet.Numerics\LICENSE.md')) {
             if (!(Test-Path -LiteralPath (Join-Path $cadPublish $cadFile))) { throw "Missing publish asset: $cadFile" }
         }
         $cadStart = [System.Diagnostics.ProcessStartInfo]::new()
@@ -54,6 +54,21 @@ try {
                 Write-Output "Window evidence: $cadWindowSmoke"
             }
             finally { $cadWindowRun.Dispose() }
+        }
+        if ($SketchSmoke) {
+            $cadSketchSmoke = Join-Path $cadRoot "artifacts\sketch-editor-smoke-$cadStamp"
+            $cadStart.Arguments = '--sketch-editor-smoke "' + $cadSketchSmoke + '"'
+            $cadSketchRun = [System.Diagnostics.Process]::Start($cadStart)
+            try {
+                if (!$cadSketchRun.WaitForExit(45000)) { $cadSketchRun.Kill(); throw 'Sketch editor smoke timed out.' }
+                $cadSketchResult = Join-Path $cadSketchSmoke 'result.txt'
+                if (!(Test-Path -LiteralPath $cadSketchResult)) { throw "No sketch editor result (exit $($cadSketchRun.ExitCode))." }
+                Get-Content -LiteralPath $cadSketchResult
+                if ($cadSketchRun.ExitCode -ne 0 -or !(Get-Content -LiteralPath $cadSketchResult -Raw).StartsWith('PASS:')) { throw 'Sketch editor smoke failed.' }
+                if ((Get-Item -LiteralPath (Join-Path $cadSketchSmoke 'bindings.log')).Length -gt 0) { throw 'Sketch editor binding errors recorded.' }
+                Write-Output "Sketch editor evidence: $cadSketchSmoke"
+            }
+            finally { $cadSketchRun.Dispose() }
         }
         if ($RecoverySmoke) {
             $cadRecovery = Join-Path $cadRoot "artifacts\recovery-smoke-$cadStamp"

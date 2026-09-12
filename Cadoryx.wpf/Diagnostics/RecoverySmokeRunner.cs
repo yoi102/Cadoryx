@@ -54,6 +54,17 @@ internal static class RecoverySmokeRunner
                 await first.Session.ExecuteAsync(DocumentEdits.SetBodyProperties(body.Id,body.Name,new(ByLayer:true),true,layer.Id,material.Id));
                 var occurrence=first.Session.Snapshot.EnumerateOccurrences().Single();
                 await first.Session.ExecuteAsync(DocumentEdits.MoveOccurrence(occurrence.Path,RigidTransform3d.Translate(3,4,5)));
+                await first.Session.ExecuteAsync(new UpsertSketchCommand(SketchSmokeRunner.Rectangle(body.PartId),services.GetRequiredService<Cadoryx.Sketching.ISketchConstraintSolver>()));
+                var sketch=first.Session.Snapshot.Sketches.Values.Single();
+                await first.Session.ExecuteAsync(new AddBodyCommand(new ExtrudeRecipe(SketchProfileBuilder.Polygon(sketch,sketch.Lines.Select(l=>l.Id)),10,sketch.Plane),
+                    "Recover linked sketch",sketch.PartId,sketchSource:SketchProfileReference.Create(sketch,sketch.Lines.Select(l=>l.Id))));
+                var width=sketch.Constraints.OfType<OffsetXConstraint>().Single();
+                await first.Session.ExecuteAsync(new UpsertSketchCommand(sketch with{Constraints=sketch.Constraints.Replace(width,width with{Offset=60})},services.GetRequiredService<Cadoryx.Sketching.ISketchConstraintSolver>()));
+                var boxFeature=first.Session.Snapshot.Features.Values.Single(f=>f.Name=="Saved box");
+                await first.Session.ExecuteAsync(new UpsertTopologyReferenceCommand(TopologyReference.Box(first.Session.Snapshot,boxFeature.Id,BoxBoundary.XMax,BoxBoundary.ZMax)));
+                await first.Session.ExecuteAsync(new UpsertTopologyReferenceCommand(TopologyReference.Box(first.Session.Snapshot,boxFeature.Id,BoxBoundary.XMax,policy:TopologyRebindPolicy.ExactRevision)));
+                await first.Session.ExecuteAsync(new RecomputeCommand(boxFeature.Id,new BoxRecipe(12,20,30,RigidTransform3d.Identity)));
+                await first.Session.ExecuteAsync(new LocalFeatureCommand(TopologyReference.Box(first.Session.Snapshot,boxFeature.Id,BoxBoundary.YMin,BoxBoundary.ZMax),LocalFeatureOperation.Fillet,1));
                 var expected = Expected.Capture(first.Session.Snapshot, await HashFile(original));
                 await File.WriteAllTextAsync(Path.Combine(output, "expected.json"), JsonSerializer.Serialize(expected, CadJson.Options));
                 // Deliberately do not invoke CheckpointAsync: this must exercise the production 30-second timer.
@@ -74,7 +85,7 @@ internal static class RecoverySmokeRunner
             var expectedState = JsonSerializer.Deserialize<Expected>(await File.ReadAllTextAsync(Path.Combine(output, "expected.json")), CadJson.Options)!;
             await first.Session.SaveAsync(storage, Path.Combine(output, "startup.cadoryx"));
             await vm.CheckForRecoveryAsync(); await Idle();
-            var center = Find<RecoveryDialog>(window) ?? throw new InvalidOperationException("Recovery dialog was not shown.");
+            var center = DialogHost.GetDialogSession(ViewServiceIdentifiers.RootDialogHost)?.Content as RecoveryDialog ?? throw new InvalidOperationException("Recovery dialog was not shown.");
             var centerVm = (RecoveryCenterViewModel)center.DataContext;
             if (centerVm.RefreshCommand.ExecutionTask is {} refresh) await refresh;
             Require(centerVm.Entries.Count == 1, "The crashed process was not discovered exactly once.");
@@ -96,6 +107,11 @@ internal static class RecoverySmokeRunner
             Require(restored.Session.RecoveryOriginPath == original, "Original path was lost.");
             var actual = Expected.Capture(restored.Session.Snapshot, await HashFile(original));
             Require(JsonSerializer.Serialize(actual, CadJson.Options) == JsonSerializer.Serialize(expectedState, CadJson.Options), "Restored IDs/assets/state differ or the original file was changed.");
+            var topology=await TopologyReferenceInspection.InspectAsync(restored.Session.Snapshot,restored.Session.Assets,(ITopologyResolver)services.GetRequiredService<IGeometryKernel>());
+            Require(topology.Results.Length==3&&topology.Results.Count(r=>r.Status==TopologyResolutionStatus.Resolved)==2&&topology.Results.Count(r=>r.Status==TopologyResolutionStatus.Stale)==1,"Restored topology references must preserve semantic and exact-revision behavior.");
+            var local=restored.Session.Snapshot.Features.Values.Single(f=>f.Recipe is LocalFeatureRecipe);
+            Require(Math.Abs(local.Result.VolumeMm3-(7200-12*(1-Math.PI/4)))<1e-4,"Recovered local fillet geometry.");
+            await File.WriteAllTextAsync(Path.Combine(output,"topology-result.json"),JsonSerializer.Serialize(topology,CadJson.Options));
             Require(centerVm.Entries.Count == 0, "The transferred source still appears in recovery.");
             DialogHost.GetDialogSession(ViewServiceIdentifiers.RootDialogHost)?.Close(); await Idle();
             var host = Find<OcctViewportHost>(window) ?? throw new InvalidOperationException("No recovered viewport host.");
@@ -123,14 +139,17 @@ internal static class RecoverySmokeRunner
     }
 
     private sealed record Expected(string DocumentId, string StateId, string Name, string[] Bodies, string[] Assets, string OriginalHash,
-        string[] Layers,string[] Materials,string[] Placements)
+        string[] Layers,string[] Materials,string[] Placements,string[] Sketches,string[] Features,string[] TopologyReferences)
     {
         public static Expected Capture(DocumentSnapshot snapshot, string hash) => new(snapshot.Id.ToString(), snapshot.StateId.ToString(), snapshot.Name,
             snapshot.Bodies.Values.OrderBy(b=>b.Id.Value).Select(b=>JsonSerializer.Serialize(b,CadJson.Options)).ToArray(),
             snapshot.ReferencedAssets().Select(id => id.ToString()).Order().ToArray(), hash,
             snapshot.Layers.Values.OrderBy(l=>l.Id.Value).Select(l=>JsonSerializer.Serialize(l,CadJson.Options)).ToArray(),
             snapshot.Materials.Values.OrderBy(m=>m.Id.Value).Select(m=>JsonSerializer.Serialize(m,CadJson.Options)).ToArray(),
-            snapshot.EnumerateOccurrences().Select(o=>o.Path+" "+JsonSerializer.Serialize(o.WorldTransform,CadJson.Options)).Order().ToArray());
+            snapshot.EnumerateOccurrences().Select(o=>o.Path+" "+JsonSerializer.Serialize(o.WorldTransform,CadJson.Options)).Order().ToArray(),
+            snapshot.Sketches.Values.OrderBy(s=>s.Id.Value).Select(SketchSmokeRunner.Describe).ToArray(),
+            snapshot.Features.Values.OrderBy(f=>f.Id.Value).Select(f=>JsonSerializer.Serialize(f,CadJson.Options)).ToArray(),
+            snapshot.TopologyReferences.Values.OrderBy(r=>r.Id.Value).Select(r=>JsonSerializer.Serialize(r,CadJson.Options)).ToArray());
     }
     private static async Task<string> HashFile(string path) => Convert.ToHexString(SHA256.HashData(await File.ReadAllBytesAsync(path)));
     private static void Require(bool condition, string message) { if (!condition) throw new InvalidOperationException(message); }

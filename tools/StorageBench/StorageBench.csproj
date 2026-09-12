@@ -1,0 +1,8 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup><OutputType>Exe</OutputType><PlatformTarget>x64</PlatformTarget></PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="../../Cadoryx.IO/Cadoryx.IO.csproj" />
+    <ProjectReference Include="../../Cadoryx.Kernel.Occt/Cadoryx.Kernel.Occt.csproj" />
+    <PackageReference Include="OcctSharp.Native.win-x64" Version="[$(OcctSharpVersion)]" />
+  </ItemGroup>
+</Project>

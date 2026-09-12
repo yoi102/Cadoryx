@@ -71,6 +71,19 @@
                                Margin="16,0" />
                 </WrapPanel>
             </TabItem>
+            <TabItem Header="{I18N {x:Static r:LangKeys.Sketch}}">
+                <WrapPanel>
+                    <Button Content="{I18N {x:Static r:LangKeys.NewSketch}}" Command="{Binding NewSketchCommand}"/>
+                    <Button Content="{I18N {x:Static r:LangKeys.EditSketch}}" Command="{Binding EditSketchCommand}"/>
+                    <Button Content="{I18N {x:Static r:LangKeys.RemoveSketch}}" Command="{Binding DeleteSketchCommand}"/>
+                    <Separator Width="12"/>
+                    <Button Content="{I18N {x:Static r:LangKeys.SketchExtrude}}" Command="{Binding StartSketchFeatureCommand}" CommandParameter="Extrude"/>
+                    <Button Content="{I18N {x:Static r:LangKeys.SketchRevolve}}" Command="{Binding StartSketchFeatureCommand}" CommandParameter="Revolve"/>
+                </WrapPanel>
+            </TabItem>
+            <TabItem Header="{I18N {x:Static r:LangKeys.LocalFeatureTitle}}">
+                <StackPanel Orientation="Horizontal" Margin="8"><Button Content="{I18N {x:Static r:LangKeys.LocalFeatureTitle}}" Command="{Binding LocalFeatureCommand}"/></StackPanel>
+            </TabItem>
             <TabItem Header="{I18N {x:Static r:LangKeys.View}}">
                 <WrapPanel>
                     <Button Content="{I18N {x:Static r:LangKeys.Axonometric}}"

@@ -5,7 +5,7 @@ using MessagePack;
 namespace Cadoryx.IO;
 
 /// <summary>Version 2 uses explicit numeric DTO keys; no typeless or contractless deserialization.</summary>
-internal static class MessagePackSections
+internal static partial class MessagePackSections
 {
     private static readonly MessagePackSerializerOptions Options=MessagePackSerializerOptions.Standard
         .WithSecurity(MessagePackSecurity.UntrustedData.WithMaximumObjectGraphDepth(128))
@@ -84,6 +84,7 @@ internal static class MessagePackSections
         f.OutputMetadata is {} m?new(m.Name,new(m.Layer),A(m.Appearance),m.Visible,m.Material is {} material?new MaterialId(material):null):null);
     private static PackRecipe R(GeometryRecipe r)=>r switch
     {
+        LocalFeatureRecipe l=>new("local-box-edge",[l.Box.X,l.Box.Y,l.Box.Z,l.Size,(int)l.First,(int)l.Second],T(l.Box.Placement),[G(l.Source)],[],(int)l.Operation),
         BoxRecipe b=>new("box",[b.X,b.Y,b.Z],T(b.Placement),[],[],0),
         CylinderRecipe c=>new("cylinder",[c.Radius,c.Height],T(c.Placement),[],[],0),
         ImportedRecipe i=>new("import",[],null,[G(i.Source)],[],0),
@@ -95,16 +96,17 @@ internal static class MessagePackSections
     };
     private static GeometryRecipe R(PackRecipe r)
     {
-        int numbers=r.Kind switch{"box"=>3,"cylinder"=>2,"extrude" or "revolve"=>1,_=>0};
+        int numbers=r.Kind switch{"local-box-edge"=>6,"box"=>3,"cylinder"=>2,"extrude" or "revolve"=>1,_=>0};
         if(r.Numbers.Length!=numbers)throw new InvalidDataException("Invalid recipe parameter count.");
-        bool placed=r.Kind is "box" or "cylinder" or "transform" or "extrude" or "revolve";
+        bool placed=r.Kind is "local-box-edge" or "box" or "cylinder" or "transform" or "extrude" or "revolve";
         if(placed!=(r.Placement is not null))throw new InvalidDataException("Invalid recipe placement.");
-        if(r.Kind is "import" or "transform"){if(r.Sources.Length!=1)throw new InvalidDataException("Expected one source.");}
+        if(r.Kind is "local-box-edge" or "import" or "transform"){if(r.Sources.Length!=1)throw new InvalidDataException("Expected one source.");}
         else if(r.Kind!="boolean"&&r.Sources.Length!=0)throw new InvalidDataException("Unexpected recipe source.");
         if(r.Kind is not ("extrude" or "revolve")&&r.Profile.Length!=0)throw new InvalidDataException("Unexpected recipe profile.");
         SketchProfile Profile()=>new(r.Profile.Select(p=>p.Length==2?new Point2d(p[0],p[1]):throw new InvalidDataException("Malformed profile point.")).ToImmutableArray());
         return r.Kind switch
         {
+            "local-box-edge"=>Local(r),
             "box"=>new BoxRecipe(r.Numbers[0],r.Numbers[1],r.Numbers[2],T(r.Placement!)),
             "cylinder"=>new CylinderRecipe(r.Numbers[0],r.Numbers[1],T(r.Placement!)),
             "import"=>new ImportedRecipe(G(r.Sources[0])),
@@ -114,6 +116,11 @@ internal static class MessagePackSections
             "revolve"=>new RevolveRecipe(Profile(),r.Numbers[0],T(r.Placement!)),
             _=>throw new NotSupportedException("Unsupported feature recipe: "+r.Kind)
         };
+    }
+    private static LocalFeatureRecipe Local(PackRecipe r)
+    {
+        if(r.Numbers.Skip(4).Any(n=>!double.IsFinite(n)||n!=Math.Truncate(n)||n<0||n>5))throw new InvalidDataException("Invalid semantic edge boundaries.");
+        var result=new LocalFeatureRecipe(G(r.Sources[0]),new(r.Numbers[0],r.Numbers[1],r.Numbers[2],T(r.Placement!)),(BoxBoundary)r.Numbers[4],(BoxBoundary)r.Numbers[5],(LocalFeatureOperation)r.Operation,r.Numbers[3]);result.Validate();return result;
     }
     private static PackPresentation Presentation(PresentationSection p)=>new(
         p.Layers.Select(l=>new PackLayer(l.Id.Value,l.Name,l.Argb,l.IsVisible,l.IsLocked)).ToArray(),

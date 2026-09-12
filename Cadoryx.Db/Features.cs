@@ -12,6 +12,7 @@ public enum BooleanOperation { Fuse=0, Cut=1, Common=2 }
 [JsonDerivedType(typeof(TransformRecipe),"transform")]
 [JsonDerivedType(typeof(ExtrudeRecipe),"extrude")]
 [JsonDerivedType(typeof(RevolveRecipe),"revolve")]
+[JsonDerivedType(typeof(LocalFeatureRecipe),"local-box-edge")]
 public abstract record GeometryRecipe
 {
     public abstract void Validate();
@@ -78,7 +79,10 @@ public sealed record RevolveRecipe(SketchProfile Profile,double AngleRadians,Rig
     public override void Validate(){Profile.Validate();CadGuard.Positive(AngleRadians);if(AngleRadians>Math.PI*2+1e-10)throw new CadValidationException("Revolution exceeds a full turn.");Placement.Validate();}
 }
 public sealed record FeatureDefinition(FeatureId Id,DefinitionId PartId,string Name,GeometryRecipe Recipe,
-    ImmutableArray<FeatureId> Inputs,BodyId OutputBodyId,GeometryAssetRef Result,int SchemaVersion=1,BodyOutputMetadata? OutputMetadata=null);
+    ImmutableArray<FeatureId> Inputs,BodyId OutputBodyId,GeometryAssetRef Result,int SchemaVersion=1,BodyOutputMetadata? OutputMetadata=null)
+{
+    public SketchProfileReference? SketchSource {get;init;}
+}
 /// <summary>Retains the output's authored attributes when recompute temporarily produces no body.</summary>
 public sealed record BodyOutputMetadata(string Name,LayerId Layer,CadAppearance Appearance,bool Visible,MaterialId? Material)
 {

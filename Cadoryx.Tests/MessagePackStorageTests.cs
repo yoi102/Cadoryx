@@ -12,7 +12,7 @@ using Xunit;
 namespace Cadoryx.Tests;
 public sealed class MessagePackStorageTests
 {
-    [Fact] public async Task VersionTwoWritesNumericKeyMessagePackAndRetainsEveryRecipe()
+    [Fact] public async Task CurrentFormatWritesNumericKeyMessagePackAndRetainsEveryRecipe()
     {
         using var files=new TestFiles();var assets=new MemoryAssetStore();var storage=new CadDocumentStorage();var kernel=new OcctGeometryKernel();
         await using(var session=new CadDocumentSession(DocumentSnapshot.Create("All recipes 零件"),assets,kernel,new InlineSessionDispatcher()))
@@ -28,7 +28,7 @@ public sealed class MessagePackStorageTests
             string path=files.PathFor("all.cadoryx");await session.SaveAsync(storage,path);
             using(var zip=ZipFile.OpenRead(path))
             {
-                var manifest=ReadManifest(zip);Assert.All(manifest.Sections,s=>{Assert.Equal(2,s.SchemaVersion);Assert.Equal("messagepack",s.Encoding);Assert.EndsWith(".msgpack",s.Path);});
+                var manifest=ReadManifest(zip);Assert.All(manifest.Sections,s=>{Assert.Equal(CadSectionMigrationRegistry.CurrentFormats[s.Kind].Version,s.SchemaVersion);Assert.Equal("messagepack",s.Encoding);Assert.EndsWith(".msgpack",s.Path);});
                 using var section=zip.GetEntry("sections/document.msgpack")!.Open();int header=section.ReadByte();Assert.InRange(header,0x90,0x9f);
             }
             using var loaded=await storage.LoadAsync(path,assets);Assert.Equal(7,loaded.Snapshot.Features.Count);

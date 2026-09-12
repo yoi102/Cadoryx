@@ -1,5 +1,8 @@
 using System.Diagnostics;
 using System.IO;
+using System.IO.Compression;
+using System.Security.Cryptography;
+using System.Text.Json;
 using System.Runtime.InteropServices;
 using System.Windows;
 using System.Windows.Interop;
@@ -10,6 +13,7 @@ using AvalonDock.Layout;
 using Cadoryx.Db;
 using Cadoryx.Commands;
 using Cadoryx.Editor;
+using Cadoryx.IO;
 using Cadoryx.Kernel.Abstractions;
 using Cadoryx.Rendering;
 using Cadoryx.Rendering.Occt;
@@ -35,6 +39,7 @@ internal static class WindowSmokeRunner
             var storage=services.GetRequiredService<IDocumentStorage>();
             foreach(var initial in vm.Documents)await initial.Session.SaveAsync(storage,Path.Combine(output,"initial.cadoryx"));
             Check(await vm.CloseAllAsync(),"Initial documents close");await Idle();
+            await LegacyStorage(vm,services,storage,output,Path.Combine(Path.GetDirectoryName(Path.GetFullPath(fixtures))!,"Storage"));
             string saved=Path.Combine(output,"colors.cadoryx");
             await vm.OpenPathAsync(Path.Combine(fixtures,"rotated-colors.step"));await Idle();
             var doc=vm.ActiveDocument??throw new InvalidOperationException("Fixture did not open");
@@ -88,7 +93,7 @@ internal static class WindowSmokeRunner
             listener.Flush();bindingOutput.Flush();
             Check(new FileInfo(Path.Combine(output,"bindings.log")).Length==0,"No WPF binding errors");
             await File.WriteAllTextAsync(Path.Combine(output,"observations.json"),System.Text.Json.JsonSerializer.Serialize(new{baselineHandles,observations},new System.Text.Json.JsonSerializerOptions{WriteIndented=true}));
-            await File.WriteAllTextAsync(Path.Combine(output,"result.txt"),"PASS: source/face colors, selection/deselection, explicit override/undo, save/reopen, 12 float/resize/redock/close cycles, camera and selection continuity, three-button capture loss and late release, zero hosts/assets at every close. Environment and resource samples are observations, not mixed-DPI/RDP/long-run acceptance.");
+            await File.WriteAllTextAsync(Path.Combine(output,"result.txt"),"PASS: three frozen legacy files opened, migrated, saved and reopened with exact IDs/assets and source colors; source/face colors, selection/deselection, explicit override/undo, save/reopen, 12 float/resize/redock/close cycles, camera and selection continuity, three-button capture loss and late release, zero hosts/assets at every close. Environment and resource samples are observations, not mixed-DPI/RDP/long-run acceptance.");
             window.CloseAfterSmoke();
         }
         catch(Exception ex)
@@ -97,6 +102,43 @@ internal static class WindowSmokeRunner
             System.Windows.Application.Current.Shutdown(1);
         }
         finally{PresentationTraceSources.DataBindingSource.Listeners.Remove(listener);}
+    }
+    private static async Task LegacyStorage(MainWindowViewModel vm,IServiceProvider services,IDocumentStorage storage,string output,string fixtures)
+    {
+        var observations=new List<object>();
+        foreach(string name in new[]{"v1-box.cadoryx","v2-box.cadoryx","v2-colored-assembly.cadoryx"})
+        {
+            string original=Path.Combine(fixtures,name),saved=Path.Combine(output,"migrated-"+name);
+            var originalHash=SHA256.HashData(await File.ReadAllBytesAsync(original));
+            await vm.OpenPathAsync(original);await Idle();
+            var doc=vm.ActiveDocument??throw new InvalidOperationException("Legacy file did not open: "+name);
+            var before=doc.Session.Snapshot;
+            Check(!doc.Session.IsDirty,"Legacy migration does not dirty the document");
+            var viewport=Host(doc).Viewport!;viewport.FitAll();
+            if(name.Contains("colored"))CaptureColors(viewport,output,"legacy-colors");
+            else viewport.SaveScreenshot(Path.Combine(output,"legacy-"+name+".png"));
+            await doc.Session.SaveAsync(storage,saved);Check(!doc.Session.IsDirty,"Migrated savepoint");
+            Check(await vm.CloseAllAsync(),"Legacy document close");await Idle();
+            Check(OcctViewportHost.LiveCount==0&&((MemoryAssetStore)services.GetRequiredService<IAssetStore>()).Count==0,"Legacy resources released");
+            await vm.OpenPathAsync(saved);await Idle();doc=vm.ActiveDocument??throw new InvalidOperationException("Migrated file did not reopen");
+            var after=doc.Session.Snapshot;
+            Check(before.Id==after.Id&&before.StateId==after.StateId,"Migrated stable identity");
+            Check(before.Bodies.Count==after.Bodies.Count&&before.Bodies.All(b=>after.Bodies.TryGetValue(b.Key,out var body)&&body==b.Value),"Migrated exact bodies and geometry");
+            Check(before.ReferencedAssets().OrderBy(a=>a.Sha256).SequenceEqual(after.ReferencedAssets().OrderBy(a=>a.Sha256)),"Migrated exact assets");
+            if(name.Contains("colored"))CaptureColors(Host(doc).Viewport!,output,"migrated-colors");
+            using(var zip=ZipFile.OpenRead(saved))using(var stream=zip.GetEntry("manifest.json")!.Open())
+            {
+                var manifest=JsonSerializer.Deserialize<CadManifest>(stream,CadJson.Options)!;
+                Check(manifest.AssetCatalogVersion==1&&manifest.Assets.All(a=>a.Format is not null),"Current asset catalog");
+                Check(manifest.Sections.Length==CadSectionMigrationRegistry.CurrentFormats.Count&&manifest.Sections.All(s=>new SectionFormat(s.Kind,s.SchemaVersion,s.Encoding)==CadSectionMigrationRegistry.CurrentFormats[s.Kind]),"Current migrated sections");
+                observations.Add(new{name,documentId=after.Id,stateId=after.StateId,assetCount=manifest.Assets.Length,sections=manifest.Sections.Select(s=>new{s.Kind,s.SchemaVersion,s.Encoding})});
+            }
+            Check(await vm.CloseAllAsync(),"Migrated document close");await Idle();
+            Check(OcctViewportHost.LiveCount==0&&((MemoryAssetStore)services.GetRequiredService<IAssetStore>()).Count==0,"Migrated resources released");
+            var finalHash=SHA256.HashData(await File.ReadAllBytesAsync(original));
+            Check(originalHash.SequenceEqual(finalHash),"Frozen fixture unchanged");
+        }
+        await File.WriteAllTextAsync(Path.Combine(output,"legacy-storage.json"),JsonSerializer.Serialize(observations,new JsonSerializerOptions{WriteIndented=true}));
     }
     private static void CaptureLoss(OcctViewportHost host,CadDocumentViewModel doc)
     {

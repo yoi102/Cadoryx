@@ -7,8 +7,11 @@ public sealed record DocumentSnapshot(DocumentId Id,DocumentStateId StateId,stri
     DocumentSettings Settings,ImmutableDictionary<DefinitionId,CadDefinition> Definitions,
     ImmutableDictionary<BodyId,CadBody> Bodies,ImmutableDictionary<FeatureId,FeatureDefinition> Features,
     ImmutableDictionary<LayerId,CadLayer> Layers,ImmutableDictionary<MaterialId,CadMaterial> Materials,
-    ImmutableArray<PreservedSection> Extensions=default,ImmutableArray<AssetId> RetainedAssets=default)
+    ImmutableArray<PreservedSection> Extensions=default,ImmutableArray<AssetId> RetainedAssets=default,
+    ImmutableDictionary<AssetId,AssetFormat>? RetainedAssetFormats=null)
 {
+    public ImmutableDictionary<SketchId,CadSketch> Sketches {get;init;}=ImmutableDictionary<SketchId,CadSketch>.Empty;
+    public ImmutableDictionary<TopologyReferenceId,TopologyReference> TopologyReferences {get;init;}=ImmutableDictionary<TopologyReferenceId,TopologyReference>.Empty;
     public static DocumentSnapshot Create(string name)
     {
         CadGuard.Name(name);var root=DefinitionId.New();var layer=LayerId.New();
@@ -17,8 +20,8 @@ public sealed record DocumentSnapshot(DocumentId Id,DocumentStateId StateId,stri
             ImmutableDictionary<BodyId,CadBody>.Empty,ImmutableDictionary<FeatureId,FeatureDefinition>.Empty,
             ImmutableDictionary<LayerId,CadLayer>.Empty.Add(layer,new(layer,"Default")),ImmutableDictionary<MaterialId,CadMaterial>.Empty);
     }
-    public IEnumerable<AssetId> ReferencedAssets() =>
-        Bodies.Values.Select(x=>x.Geometry).Concat(Features.Values.SelectMany(x=>x.Recipe.AssetInputs.Append(x.Result)))
+    public IEnumerable<GeometryAssetRef> ReferencedGeometry()=>Bodies.Values.Select(x=>x.Geometry).Concat(Features.Values.SelectMany(x=>x.Recipe.AssetInputs.Append(x.Result)));
+    public IEnumerable<AssetId> ReferencedAssets() => ReferencedGeometry()
         .SelectMany(g=>g.Source is {} s?new[]{g.AssetId,s.ContextAssetId}:new[]{g.AssetId})
         .Concat(Extensions.IsDefault?[]:Extensions.Select(x=>x.PayloadAssetId)).Concat(RetainedAssets.IsDefault?[]:RetainedAssets).Distinct();
 
@@ -26,10 +29,25 @@ public sealed record DocumentSnapshot(DocumentId Id,DocumentStateId StateId,stri
     public void Validate()
     {
         CadGuard.Id(Id);CadGuard.Id(StateId);CadGuard.Name(Name);Settings.Validate();
+        foreach(var (id,reference) in TopologyReferences)
+        {
+            reference.Validate();
+            if(id!=reference.Id||reference.DocumentId!=Id)throw new CadValidationException("Invalid topology reference ownership.");
+            // Deleted producers remain diagnosable and can be restored by exact undo.
+            if(Features.TryGetValue(reference.FeatureId,out var producer)&&producer.OutputBodyId!=reference.OutputBodyId)
+                throw new CadValidationException("Topology output identity mismatch.");
+        }
         if(!Extensions.IsDefault)foreach(var extension in Extensions){CadGuard.Name(extension.Kind);extension.PayloadAssetId.Validate();if(extension.SchemaVersion<1)throw new CadValidationException("Invalid extension version.");}
         if(!RetainedAssets.IsDefault)foreach(var asset in RetainedAssets)asset.Validate();
+        if(RetainedAssetFormats is not null)foreach(var (id,format) in RetainedAssetFormats){id.Validate();format.Validate();}
         if(!Definitions.TryGetValue(RootAssemblyId,out var root)||root is not AssemblyDefinition) throw new CadValidationException("Missing root assembly.");
         if(Layers.Count==0) throw new CadValidationException("A document requires a layer.");
+        foreach(var (id,sketch) in Sketches)
+        {
+            sketch.Validate();
+            if(id!=sketch.Id||!Definitions.TryGetValue(sketch.PartId,out var owner)||owner is not PartDefinition)
+                throw new CadValidationException("Invalid sketch ownership.");
+        }
         var slots=new HashSet<ComponentSlotId>();var ownedBodies=new HashSet<BodyId>();var ownedFeatures=new HashSet<FeatureId>();
         foreach(var (id,definition) in Definitions)
         {
@@ -64,6 +82,7 @@ public sealed record DocumentSnapshot(DocumentId Id,DocumentStateId StateId,stri
         foreach(var (id,f) in Features)
         {
             CadGuard.Id(id);CadGuard.Id(f.OutputBodyId);CadGuard.Name(f.Name);f.Recipe.Validate();f.Result.Validate();
+            f.SketchSource?.ValidateCache(this,f);
             if(id!=f.Id||f.SchemaVersion!=1||f.Inputs.IsDefault||f.Inputs.Distinct().Count()!=f.Inputs.Length)throw new CadValidationException("Invalid feature.");
             if(f.OutputMetadata is {} metadata)
             {
@@ -72,6 +91,9 @@ public sealed record DocumentSnapshot(DocumentId Id,DocumentStateId StateId,stri
             }
             foreach(var input in f.Inputs)
                 if(!Features.TryGetValue(input,out var upstream)||upstream.PartId!=f.PartId)throw new CadValidationException("Invalid feature dependency.");
+            if(f.Recipe is LocalFeatureRecipe local&&
+                (f.Inputs.Length!=1||Features[f.Inputs[0]].Recipe is not BoxRecipe box||local.Box!=box||local.Source!=Features[f.Inputs[0]].Result))
+                throw new CadValidationException("Local feature must reference its current upstream box.");
         }
         foreach(var (id,l) in Layers){CadGuard.Id(id);CadGuard.Name(l.Name);if(id!=l.Id)throw new CadValidationException("Layer key mismatch.");}
         foreach(var (id,m) in Materials){CadGuard.Id(id);CadGuard.Name(m.Name);CadGuard.Positive(m.DensityKgPerMm3);if(id!=m.Id)throw new CadValidationException("Material key mismatch.");}

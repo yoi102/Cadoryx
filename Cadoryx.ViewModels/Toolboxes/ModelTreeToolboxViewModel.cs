@@ -46,6 +46,8 @@ public partial class ModelTreeToolboxViewModel : CadToolboxViewModelBase
             var history=new ModelTreeItemViewModel(Strings.FeatureHistory,Strings.FeatureHistory);
             foreach(var fid in part.Features){var f=snapshot.Features[fid];history.Children.Add(new(f.Name,RecipeText(f.Recipe),null,fid,occurrence.Path));}
             node.Children.Add(history);
+            foreach(var sketch in snapshot.Sketches.Values.Where(s=>s.PartId==part.Id).OrderBy(s=>s.Name))
+                node.Children.Add(new(sketch.Name,Strings.Sketch,path:occurrence.Path,sketch:sketch.Id));
         }
         OnSelection(this,EventArgs.Empty);
     }
@@ -61,6 +63,7 @@ public partial class ModelTreeToolboxViewModel : CadToolboxViewModelBase
         else
         {
             document.Selection.SelectOccurrence(item.Path);
+            document.SelectedSketchId=item.Sketch;
             if(item.Feature is {} id)document.EditFeature(id);
             else if(item.Path is {} path&&document.Session.Snapshot.Definitions[OccurrencePlacement.Resolve(document.Session.Snapshot,path).Slot.DefinitionId] is PartDefinition part)
                 document.SelectedTargetPart=part.Id;
@@ -102,12 +105,13 @@ public partial class ModelTreeToolboxViewModel : CadToolboxViewModelBase
         _=>Strings.Modeling
     };
 }
-public partial class ModelTreeItemViewModel(string name,string kind,SelectionTarget? target=null,FeatureId? feature=null,OccurrencePath? path=null):ObservableObject
+public partial class ModelTreeItemViewModel(string name,string kind,SelectionTarget? target=null,FeatureId? feature=null,OccurrencePath? path=null,SketchId? sketch=null):ObservableObject
 {
     public string Name {get;}=name;
     public string Kind {get;}=kind;
     public SelectionTarget? Target {get;}=target;
     public FeatureId? Feature {get;}=feature;
+    public SketchId? Sketch {get;}=sketch;
     public OccurrencePath? Path {get;}=path??target?.Path;
     public bool CanCheck=>Target is not null;
     public ObservableCollection<ModelTreeItemViewModel> Children {get;}=[];

@@ -1,0 +1,31 @@
+using System.Collections.Immutable;
+using System.IO.Compression;
+using System.Security.Cryptography;
+using System.Text.Json;
+using Cadoryx.IO;
+using Cadoryx.Kernel.Abstractions;
+
+if(args[0]=="--freeze-legacy")
+{
+    var store=new MemoryAssetStore();
+    using var loaded=await new CadDocumentStorage().LoadAsync(args[1],store);var d=loaded.Snapshot;
+    using var zip=ZipFile.Open(args[2],ZipArchiveMode.Create);
+    var sections=ImmutableArray.CreateBuilder<SectionEntry>();var assets=ImmutableArray.CreateBuilder<AssetEntry>();
+    void Write(string kind,object value)
+    {
+        byte[] bytes=JsonSerializer.SerializeToUtf8Bytes(value,CadJson.Options);string path="sections/"+kind+".json";
+        using var output=zip.CreateEntry(path).Open();output.Write(bytes);
+        sections.Add(new(kind,path,1,true,bytes.Length,Convert.ToHexStringLower(SHA256.HashData(bytes))));
+    }
+    Write("document",new{d.Id,d.StateId,d.Name,d.RootAssemblyId,d.Settings});
+    Write("structure",new{Definitions=d.Definitions.Values.ToArray(),Bodies=d.Bodies.Values.ToArray()});
+    Write("features",new{Features=d.Features.Values.ToArray()});
+    Write("presentation",new{Layers=d.Layers.Values.ToArray(),Materials=d.Materials.Values.ToArray()});
+    foreach(var id in d.ReferencedAssets())
+    {
+        using var lease=store.Acquire(id);string path="assets/"+id.Sha256+".bin";
+        using var output=zip.CreateEntry(path).Open();output.Write(lease.Content.Span);assets.Add(new(id,path,lease.Content.Length,id.Sha256));
+    }
+    var manifest=new CadManifest("Cadoryx",1,d.Id,d.StateId,"0.1.0",sections.ToImmutable(),assets.ToImmutable(),["cadoryx.core.1","occt.brep.1"]);
+    using var m=zip.CreateEntry("manifest.json").Open();JsonSerializer.Serialize(m,manifest,CadJson.Options);
+}

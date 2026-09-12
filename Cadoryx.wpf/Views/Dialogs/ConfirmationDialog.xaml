@@ -5,23 +5,30 @@
              xmlns:r="clr-namespace:Cadoryx.Lang;assembly=Cadoryx.Lang"
              xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:sys="clr-namespace:System;assembly=mscorlib"
-             Width="580">
-    <StackPanel Margin="24">
+             Height="150"
+             Width="480">
+    <Grid Margin="24"
+          RowDefinitions="auto auto">
         <TextBlock x:Name="MessageText"
                    TextWrapping="Wrap"
                    Margin="0,0,0,24" />
-        <WrapPanel HorizontalAlignment="Right">
+        <WrapPanel Grid.Row="1"
+                   Margin="0 20 0 0 "
+                   HorizontalAlignment="Right"
+                   VerticalAlignment="Bottom">
             <Button x:Name="AcceptButton"
                     Click="AcceptClicked"
                     Margin="0,0,8,8" />
             <Button x:Name="DiscardButton"
                     Click="DiscardClicked"
+                    Style="{StaticResource MaterialDesignFlatSecondaryButton}"
                     Margin="0,0,8,8" />
             <Button Content="{I18N {x:Static r:LangKeys.Cancel}}"
                     IsCancel="True"
+                    Style="{StaticResource MaterialDesignFlatSecondaryButton}"
                     Command="{x:Static md:DialogHost.CloseDialogCommand}"
                     CommandParameter="{x:Static sys:Boolean.FalseString}"
                     Margin="0,0,0,8" />
         </WrapPanel>
-    </StackPanel>
+    </Grid>
 </UserControl>
