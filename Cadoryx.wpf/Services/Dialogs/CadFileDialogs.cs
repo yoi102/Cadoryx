@@ -24,7 +24,7 @@ public sealed class CadFileDialogs:ICadFileDialogs
         var options=new ExportOptionsWindow(dialog.FileName){Owner=Owner};
         return options.ShowDialog()==true?options.Request:null;
     }
-    public SaveDecision ConfirmSave(string name)=>MessageBox.Show(Owner,string.Format(Strings.SaveChangesQuestion,name),Strings.CloseDocumentTitle,MessageBoxButton.YesNoCancel,MessageBoxImage.Question) switch
-    {MessageBoxResult.Yes=>SaveDecision.Save,MessageBoxResult.No=>SaveDecision.Discard,_=>SaveDecision.Cancel};
+    public SaveDecision ConfirmSave(string name)=>ConfirmationWindow.Ask(Owner,Strings.CloseDocumentTitle,string.Format(Strings.SaveChangesQuestion,name),Strings.Save,Strings.DontSave) switch
+    {CadConfirmationResult.Accept=>SaveDecision.Save,CadConfirmationResult.Discard=>SaveDecision.Discard,_=>SaveDecision.Cancel};
     private static string SafeName(string name)=>string.Concat(name.Select(c=>System.IO.Path.GetInvalidFileNameChars().Contains(c)?'_':c));
 }

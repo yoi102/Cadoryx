@@ -15,12 +15,14 @@ public partial class ViewportView
     }
     private void Attach()
     {
-        if(host is not null||DataContext is not CadDocumentViewModel vm)return;
+        if(host is not null||DataContext is not CadDocumentViewModel vm||vm.IsDetached||vm.Session.IsClosing)return;
         document=vm;host=new(vm.Session.Assets);
         host.Ready+=OnReady;host.Error+=OnError;
+        host.Destroying+=OnHostDestroying;
         host.ShortcutPressed+=OnShortcut;
         vm.SceneChanged+=OnScene;vm.PreviewChanged+=OnPreview;vm.FitRequested+=OnFit;
         vm.ProjectionRequested+=OnProjection;vm.DisplayModeRequested+=OnDisplay;vm.Selection.Changed+=OnSelection;
+        vm.Detaching+=OnDocumentDetaching;
         HostPanel.Children.Add(host);
     }
     private void OnReady(object? sender,EventArgs e)
@@ -34,13 +36,16 @@ public partial class ViewportView
     {
         if(document is {} vm)
         {
+            vm.Detaching-=OnDocumentDetaching;
             vm.SceneChanged-=OnScene;vm.PreviewChanged-=OnPreview;vm.FitRequested-=OnFit;
             vm.ProjectionRequested-=OnProjection;vm.DisplayModeRequested-=OnDisplay;vm.Selection.Changed-=OnSelection;
             if(host?.Viewport is {} viewport){Guard(()=>vm.Camera=viewport.CaptureCamera());viewport.SelectionChanged-=OnNativeSelection;}
         }
-        if(host is not null){host.Ready-=OnReady;host.Error-=OnError;host.ShortcutPressed-=OnShortcut;HostPanel.Children.Remove(host);host.Dispose();host=null;}
+        if(host is not null){host.Ready-=OnReady;host.Error-=OnError;host.Destroying-=OnHostDestroying;host.ShortcutPressed-=OnShortcut;HostPanel.Children.Remove(host);host.Dispose();host=null;}
         document=null;
     }
+    private void OnDocumentDetaching(object? sender,EventArgs e)=>Detach();
+    private void OnHostDestroying(object? sender,EventArgs e)=>Guard(()=>{if(document is {} vm&&host?.Viewport is {} viewport)vm.Camera=viewport.CaptureCamera();});
     private void OnScene(object? sender,EventArgs e)=>Guard(()=>{if(document is {} vm)host?.Viewport?.SetScene(vm.Scene);});
     private void OnPreview(object? sender,EventArgs e)=>Guard(()=>{if(document is {} vm)host?.Viewport?.SetScene(vm.PreviewScene??vm.Scene);});
     private void OnFit(object? sender,EventArgs e)=>Guard(()=>host?.Viewport?.FitAll());

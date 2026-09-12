@@ -49,6 +49,7 @@
                     <Button Content="{I18N {x:Static r:LangKeys.Cylinder}}"
                             Command="{Binding StartToolCommand}"
                             CommandParameter="Cylinder" />
+                    <Button Content="{I18N {x:Static r:LangKeys.DocumentResources}}" Command="{Binding ManageResourcesCommand}" />
                 </WrapPanel>
             </TabItem>
             <TabItem Header="{I18N {x:Static r:LangKeys.Modeling}}">

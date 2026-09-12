@@ -23,9 +23,19 @@ public partial class CadDocumentViewModel : ObservableDocument
     private long previewSequence;
     private CancellationTokenSource? previewCancellation;
     private bool allowClose;
+    private bool refreshingTargets;
     private Quaterniond placementRotation=Quaterniond.Identity;
     public CadDocumentSession Session {get;}
     public SelectionService Selection {get;}=new();
+    public InstancePlacementViewModel Placement {get;}
+    public ObservableCollection<PartDefinition> TargetParts {get;}=[];
+    public ObservableCollection<CadLayer> CreationLayers {get;}=[];
+    public ObservableCollection<CadMaterial> CreationMaterials {get;}=[];
+    [ObservableProperty] private DefinitionId? selectedTargetPart;
+    [ObservableProperty] private LayerId? selectedCreationLayer;
+    [ObservableProperty] private MaterialId? selectedCreationMaterial;
+    public bool IsCreating=>EditingFeature is null;
+    public string TargetPartHint=>TargetParts.Count==0?Strings.FirstPartCreatedAutomatically:Strings.SharedPartEditingHint;
     public string ContentId=>Id;
     public CadScene Scene=>CadScene.FromDocument(Session.Snapshot);
     public CadScene? PreviewScene {get;private set;}
@@ -35,6 +45,8 @@ public partial class CadDocumentViewModel : ObservableDocument
     [NotifyCanExecuteChangedFor(nameof(PreviewCommand),nameof(BooleanPreviewCommand),nameof(ConfirmCommand))]
     private bool isClosingRequested;
     public event EventHandler? Activated;
+    public event EventHandler? Detaching;
+    public bool IsDetached {get;private set;}
     public event EventHandler? CloseRequested;
     public event EventHandler? SceneChanged;
     public event EventHandler? PreviewChanged;
@@ -75,7 +87,7 @@ public partial class CadDocumentViewModel : ObservableDocument
             if(e.NewItems is not null)foreach(ProfilePointViewModel p in e.NewItems)p.PropertyChanged+=OnProfilePointChanged;
             InvalidatePreview();
         };
-        UpdateTitle();
+        Placement=new(this);RefreshTargets();UpdateTitle();
     }
     public override void OnSelected(){Activated?.Invoke(this,EventArgs.Empty);}
     public override bool OnClose(){if(allowClose)return true;CloseRequested?.Invoke(this,EventArgs.Empty);return false;}
@@ -83,10 +95,15 @@ public partial class CadDocumentViewModel : ObservableDocument
     public void FitView()=>FitRequested?.Invoke(this,EventArgs.Empty);
     public void SetView(CadProjection projection)=>ProjectionRequested?.Invoke(this,projection);
     public void SetDisplay(CadDisplayMode mode){CurrentDisplayMode=mode;DisplayModeRequested?.Invoke(this,mode);}
-    public void StartTool(string kind){InvalidatePreview();EditingFeature=null;placementRotation=Quaterniond.Identity;ToolKind=kind;ObjectName=kind;ToolStatus=Strings.ToolStatusHint;}
+    public void StartTool(string kind)
+    {
+        InvalidatePreview();EditingFeature=null;placementRotation=Quaterniond.Identity;ToolKind=kind;ObjectName=kind;ToolStatus=Strings.ToolStatusHint;
+        if(Selection.Items.FirstOrDefault() is {} selection)SelectedTargetPart=Session.Snapshot.Bodies[selection.BodyId].PartId;
+        else if(Selection.Occurrence is {} path&&Session.Snapshot.Definitions[OccurrencePlacement.Resolve(Session.Snapshot,path).Slot.DefinitionId] is PartDefinition part)SelectedTargetPart=part.Id;
+    }
     public void EditFeature(FeatureId id)
     {
-        var feature=Session.Snapshot.Features[id];InvalidatePreview();EditingFeature=id;ObjectName=feature.Name;
+        var feature=Session.Snapshot.Features[id];InvalidatePreview();EditingFeature=id;SelectedTargetPart=feature.PartId;ObjectName=feature.Name;
         switch(feature.Recipe)
         {
             case BoxRecipe b:ToolKind="Box";SizeX=b.X;SizeY=b.Y;SizeZ=b.Z;SetPosition(b.Placement);break;
@@ -112,7 +129,26 @@ public partial class CadDocumentViewModel : ObservableDocument
             _=>throw new CadValidationException("Choose a supported modeling tool.")
         };
     }
-    private ICadDocumentCommand ToolCommand()=>EditingFeature is {} feature?new RecomputeCommand(feature,Recipe()):new AddBodyCommand(Recipe(),ObjectName);
+    private ICadDocumentCommand ToolCommand()=>EditingFeature is {} feature?new RecomputeCommand(feature,Recipe()):
+        new AddBodyCommand(Recipe(),ObjectName,SelectedTargetPart,SelectedCreationLayer,SelectedCreationMaterial);
+    partial void OnEditingFeatureChanged(FeatureId? value)=>OnPropertyChanged(nameof(IsCreating));
+    [RelayCommand] private void ClearCreationMaterial()=>SelectedCreationMaterial=null;
+    private void RefreshTargets()
+    {
+        refreshingTargets=true;
+        try
+        {
+            var part=SelectedTargetPart;var layer=SelectedCreationLayer;var material=SelectedCreationMaterial;var snapshot=Session.Snapshot;
+            TargetParts.Clear();foreach(var p in snapshot.Definitions.Values.OfType<PartDefinition>().OrderBy(p=>p.Name).ThenBy(p=>p.Id.Value))TargetParts.Add(p);
+            CreationLayers.Clear();foreach(var l in snapshot.Layers.Values.OrderBy(l=>l.Name))CreationLayers.Add(l);
+            CreationMaterials.Clear();foreach(var m in snapshot.Materials.Values.OrderBy(m=>m.Name))CreationMaterials.Add(m);
+            SelectedTargetPart=TargetParts.FirstOrDefault(p=>p.Id==part)?.Id??TargetParts.FirstOrDefault()?.Id;
+            SelectedCreationLayer=CreationLayers.FirstOrDefault(l=>l.Id==layer)?.Id??CreationLayers.OrderBy(l=>l.IsLocked).ThenBy(l=>l.Id.Value).FirstOrDefault()?.Id;
+            SelectedCreationMaterial=CreationMaterials.FirstOrDefault(m=>m.Id==material)?.Id;
+            OnPropertyChanged(nameof(TargetPartHint));
+        }
+        finally{refreshingTargets=false;}
+    }
     [RelayCommand] private void AddProfilePoint()=>ProfilePoints.Add(new(10,10));
     [RelayCommand] private void RemoveProfilePoint(){if(ProfilePoints.Count>3)ProfilePoints.RemoveAt(ProfilePoints.Count-1);}
     private bool CanPreview()=>!IsClosingRequested&&!IsWorking&&!IsReadOnly;
@@ -138,7 +174,7 @@ public partial class CadDocumentViewModel : ObservableDocument
                 candidate.Snapshot.Validate();var resultScene=CadScene.FromDocument(candidate.Snapshot);
                 PreviewScene=resultScene with{Items=resultScene.Items.Select(item=>
                     !capture.Snapshot.Bodies.TryGetValue(item.BodyId,out var old)||old.Geometry.Revision!=item.Geometry.Revision
-                        ?item with{Argb=0xFF32CCA0}:item).ToImmutableArray()};
+                        ?item with{Argb=0xFF32CCA0,PreserveSourceStyles=false}:item).ToImmutableArray()};
             }
             catch{candidate.Dispose();throw;}
             prepared=candidate;preparedGeneration=generation;
@@ -176,12 +212,18 @@ public partial class CadDocumentViewModel : ObservableDocument
     }
     public void Detach()
     {
+        if(IsDetached)return;IsDetached=true;
+        // Release native views before the session leases, without waiting for a deferred WPF Unloaded event.
+        foreach(var observer in Detaching?.GetInvocationList()??[])
+            try{((EventHandler)observer)(this,EventArgs.Empty);}catch(Exception ex){Report(ex);}
+        Detaching=null;
         InvalidatePreview();Session.Changed-=OnDocumentChanged;Session.StatusChanged-=OnSessionStatus;Session.ObserverFailed-=OnObserverFailed;
         PropertyChanged-=OnPropertiesChanged;foreach(var p in ProfilePoints)p.PropertyChanged-=OnProfilePointChanged;
+        Placement.Dispose();
     }
     public void Report(Exception error){ToolStatus=error.Message;log.Add(error.Message,CadMessageLevel.Error,"Document");}
     private void OnObserverFailed(object? sender,Exception error)=>Report(error);
-    private void OnDocumentChanged(object? sender,DocumentChangeSet change){InvalidatePreview();Selection.Reconcile(Session.Snapshot);UpdateTitle();SceneChanged?.Invoke(this,EventArgs.Empty);}
+    private void OnDocumentChanged(object? sender,DocumentChangeSet change){InvalidatePreview();Selection.Reconcile(Session.Snapshot);RefreshTargets();UpdateTitle();SceneChanged?.Invoke(this,EventArgs.Empty);}
     private void OnSessionStatus(object? sender,EventArgs e){UpdateTitle();OnPropertyChanged(nameof(IsReadOnly));}
     private void UpdateTitle(){Title=Session.Snapshot.Name+(Session.IsDirty?" *":"");IsModified=Session.IsDirty;}
     private void OnProfilePointChanged(object? sender,PropertyChangedEventArgs e)=>InvalidatePreview();
@@ -190,6 +232,7 @@ public partial class CadDocumentViewModel : ObservableDocument
         if(e.PropertyName==nameof(IsActive)&&IsActive)Activated?.Invoke(this,EventArgs.Empty);
         if(e.PropertyName is nameof(ToolKind) or nameof(ObjectName) or nameof(SizeX) or nameof(SizeY) or nameof(SizeZ) or nameof(PositionX) or nameof(PositionY) or nameof(PositionZ) or nameof(AngleDegrees))
             InvalidatePreview();
+        if(!refreshingTargets&&e.PropertyName is nameof(SelectedTargetPart) or nameof(SelectedCreationLayer) or nameof(SelectedCreationMaterial))InvalidatePreview();
     }
     private sealed class PreparedCommand(DocumentSnapshot snapshot,long generation) : ICadDocumentCommand
     {

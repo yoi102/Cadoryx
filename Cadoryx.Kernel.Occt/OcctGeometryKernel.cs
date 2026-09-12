@@ -104,8 +104,8 @@ public sealed class OcctGeometryKernel : IGeometryKernel
                     var stored=OcctGeometryBridge.StoreShape(local,assets);results.Add(stored);
                     var geometry=stored.Geometry with {Source=new(context.Id,label.Entry)};
                     var bodyId=BodyId.New();var featureId=FeatureId.New();
-                    var color=label.Color??label.VisualMaterial?.BaseColor;
-                    var body=new CadBody(bodyId,id,name,geometry,featureId,doc.Layers.Keys.First(),new(color is {} c?OcctGeometryBridge.ToArgb(c):0xFF86ACC5));
+                    var color=OverallColor(label);
+                    var body=new CadBody(bodyId,id,name,geometry,featureId,doc.Layers.Keys.First(),new(color is {} c?OcctGeometryBridge.ToArgb(c):0xFF86ACC5,PreserveSourceStyles:true));
                     bodies.Add(bodyId,body);
                     features.Add(featureId,new(featureId,id,"Import",new ImportedRecipe(geometry),[],bodyId,geometry));
                     definitions.Add(id,new PartDefinition(id,name,[bodyId],[featureId]));
@@ -129,6 +129,18 @@ public sealed class OcctGeometryKernel : IGeometryKernel
         }
         finally{foreach(var result in results)result.Dispose();foreach(var lease in leases)lease.Dispose();}
     },cancellationToken);
+    private static XdeColor? OverallColor(XdeLabel label)
+    {
+        if((label.Color??label.VisualMaterial?.BaseColor) is {} direct)return direct;
+        // IGES commonly attaches color to every face instead of the enclosing group.
+        var styles=label.GetPresentationStyles();
+        try
+        {
+            var colors=styles.Select(s=>s.EffectiveColor).Distinct().ToArray();
+            return colors.Length==1?colors[0]:null;
+        }
+        finally{foreach(var style in styles)style.Dispose();}
+    }
     public Task ExportAsync(DocumentSnapshot snapshot,IAssetStore assets,string path,CancellationToken cancellationToken=default)=>ExportAsync(snapshot,assets,path,new CadExportOptions(),cancellationToken);
     public Task<CadExportReport> ExportAsync(DocumentSnapshot snapshot,IAssetStore assets,string path,CadExportOptions options,CancellationToken cancellationToken=default)=>Run(()=>
     {
@@ -197,8 +209,11 @@ public sealed class OcctGeometryKernel : IGeometryKernel
             cancellationToken.ThrowIfCancellationRequested();File.Move(temp,fullPath,true);
         }
         finally{if(File.Exists(temp))File.Delete(temp);}
-        return new CadExportReport(fullPath,extension is ".igs" or ".iges"?"IGES":"STEP",[
-            new("EXPORT.METADATA","Exports definitions, placements, names and overall colors. Cadoryx feature history and unsupported source PMI/subshape styles are not transferred.")]);
+        var diagnostics=ImmutableArray.CreateBuilder<CadDiagnostic>();
+        diagnostics.Add(new("EXPORT.METADATA","Exports definitions, placements, names and overall colors. Cadoryx feature history and unsupported source PMI/subshape styles are not transferred."));
+        bool iges=extension is ".igs" or ".iges";
+        if(iges)diagnostics.Add(new("EXPORT.IGES_SURFACES","The current IGES writer transfers surfaces; a closed solid may reopen as faces without solid volume, and assembly sharing may be flattened. Use STEP or Cadoryx when those semantics must be retained."));
+        return new CadExportReport(fullPath,iges?"IGES":"STEP",diagnostics.ToImmutable());
     },cancellationToken);
     private static CadExportReport ExportStl(DocumentSnapshot snapshot,IAssetStore assets,string path,CadExportOptions options,CancellationToken token)
     {

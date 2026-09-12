@@ -16,10 +16,14 @@ namespace Cadoryx.wpf.Services.Application;
 /// </summary>
 public sealed class ToolboxLayoutPersistenceService
 {
-    private readonly string _layoutFilePath = Path.Combine(
-        Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
-        "Cadoryx",
-        "toolbox-layout.json");
+    private readonly string _layoutFilePath = LayoutFilePath();
+    private static string LayoutFilePath()
+    {
+        var args=Environment.GetCommandLineArgs();
+        if(args.Length>=3&&args[1] is "--smoke" or "--window-smoke" or "--recovery-seed" or "--recovery-verify")
+            return Path.Combine(Path.GetFullPath(args[2]),"toolbox-layout.json");
+        return Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),"Cadoryx","toolbox-layout.json");
+    }
 
     public void Save(ToggleDockingManager dockingManager, IEnumerable<IDockable> anchorables)
     {

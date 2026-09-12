@@ -12,6 +12,7 @@ using Cadoryx.wpf.Services.Toolboxes;
 using CommunityToolkit.Mvvm.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection;
 using System.Windows;
+using System.IO;
 
 namespace Cadoryx.wpf;
 /// <summary>
@@ -44,8 +45,22 @@ public partial class App : Application
         this.MainWindow = mainWindow;
 
         mainWindow.Show();
+        var recoveryHost=_serviceProvider.GetRequiredService<RecoveryHost>();
+        recoveryHost.Start((MainWindowViewModel)mainWindow.DataContext);
         if(e.Args.Length>=2&&e.Args[0]=="--smoke")
             _=Diagnostics.SmokeRunner.RunAsync(mainWindow,_serviceProvider,e.Args[1]);
+        else if(e.Args.Length>=3&&e.Args[0]=="--window-smoke")
+            _=Diagnostics.WindowSmokeRunner.RunAsync(mainWindow,_serviceProvider,e.Args[1],e.Args[2]);
+        else if(e.Args.Length>=2&&e.Args[0] is "--recovery-seed" or "--recovery-verify")
+            _=Diagnostics.RecoverySmokeRunner.RunAsync(mainWindow,_serviceProvider,e.Args[0],e.Args[1]);
+        else _=((MainWindowViewModel)mainWindow.DataContext).CheckForRecoveryAsync();
+    }
+    internal Task StopRecoveryAsync()=>_serviceProvider.GetRequiredService<RecoveryHost>().StopAsync();
+    protected override void OnExit(ExitEventArgs e)
+    {
+        _serviceProvider.GetRequiredService<RecoveryHost>().Dispose();
+        _serviceProvider.GetRequiredService<Cadoryx.Kernel.Abstractions.IRecoveryStore>().Dispose();
+        base.OnExit(e);
     }
 
 
@@ -65,6 +80,18 @@ public partial class App : Application
         services.AddSingleton<Cadoryx.Kernel.Abstractions.IGeometryKernel,Cadoryx.Kernel.Occt.OcctGeometryKernel>();
         services.AddSingleton<Cadoryx.Kernel.Abstractions.IDocumentStorage,Cadoryx.IO.CadDocumentStorage>();
         services.AddSingleton<Cadoryx.Editor.ISessionDispatcher,WpfSessionDispatcher>();
+        services.AddSingleton<Cadoryx.Kernel.Abstractions.IRecoveryStore>(provider=>
+        {
+            var args=Environment.GetCommandLineArgs();
+            bool smoke=args.Length>=3&&args[1] is "--smoke" or "--recovery-seed" or "--recovery-verify" or "--window-smoke";
+            string root=smoke?Path.Combine(Path.GetFullPath(args[2]),"recovery"):
+                Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),"Cadoryx","Recovery");
+            return new Cadoryx.IO.CadRecoveryStore(root,provider.GetRequiredService<Cadoryx.Kernel.Abstractions.IDocumentStorage>());
+        });
+        services.AddSingleton<Cadoryx.Editor.DocumentRecoveryService>();
+        services.AddSingleton<RecoveryHost>();
+        services.AddSingleton<IRecoveryDialogService,RecoveryDialogService>();
+        services.AddSingleton<IDocumentResourcesDialogService,DocumentResourcesDialogService>();
         services.AddSingleton<Cadoryx.Editor.CadWorkspace>();
         services.AddSingleton<ICadFileDialogs,CadFileDialogs>();
         services.AddSingleton<DialogService>();

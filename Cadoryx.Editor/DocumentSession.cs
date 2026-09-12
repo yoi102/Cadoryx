@@ -12,9 +12,11 @@ public sealed class InlineSessionDispatcher : ISessionDispatcher
 }
 public sealed class StaleDocumentException() : InvalidOperationException("The document changed while this operation was being prepared.");
 
-public sealed class DocumentCapture(DocumentSnapshot snapshot,DocumentAssetLease lease) : IDisposable
+public sealed class DocumentCapture(DocumentSnapshot snapshot,DocumentAssetLease lease,bool isDirty=false,string? filePath=null) : IDisposable
 {
     public DocumentSnapshot Snapshot { get; }=snapshot;
+    public bool IsDirty {get;}=isDirty;
+    public string? FilePath {get;}=filePath;
     public void Dispose()=>lease.Dispose();
 }
 public sealed class CadDocumentSession : IAsyncDisposable
@@ -35,6 +37,8 @@ public sealed class CadDocumentSession : IAsyncDisposable
     private TaskCompletionSource drained=CompletedSource();
     private Task? disposeTask;
     public IAssetStore Assets { get; }
+    public Guid SessionId {get;}=Guid.NewGuid();
+    public string? RecoveryOriginPath {get;internal set;}
     public int HistoryLimit { get; set; }=50;
     public event EventHandler<DocumentChangeSet>? Changed;
     public event EventHandler? StatusChanged;
@@ -55,7 +59,7 @@ public sealed class CadDocumentSession : IAsyncDisposable
     }
     public DocumentCapture Capture()
     {
-        lock(gate){ThrowIfClosing();return new(snapshot,new(snapshot,Assets));}
+        lock(gate){ThrowIfClosing();return new(snapshot,new(snapshot,Assets),snapshot.StateId!=savedState,FilePath);}
     }
     public async Task ExecuteAsync(ICadDocumentCommand command,CancellationToken cancellationToken=default)
     {

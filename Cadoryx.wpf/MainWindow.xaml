@@ -59,6 +59,8 @@
                     <Separator />
                     <MenuItem Header="{I18N {x:Static r:LangKeys.SaveAs}}" Command="{Binding SaveAsCommand}" />
                     <MenuItem Header="{I18N {x:Static r:LangKeys.ExportFormats}}" Command="{Binding ExportCommand}" />
+                    <MenuItem Header="{I18N {x:Static r:LangKeys.RecoveryTitle}}" Command="{Binding OpenRecoveryCommand}" />
+                    <MenuItem Header="{I18N {x:Static r:LangKeys.DocumentResources}}" Command="{Binding ManageResourcesCommand}" />
                     <MenuItem Header="{I18N {x:Static r:LangKeys.ApplicationSettings}}"
                               Command="{Binding OpenApplicationSettingsCommand}"
                               Icon="{md:PackIcon Kind=CogOutline}" />

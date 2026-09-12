@@ -7,6 +7,8 @@ WPF / .NET 10 桌面 3D CAD，使用 OcctSharp NuGet。原生文档使用 Messag
 - [整体架构](docs/ARCHITECTURE.md)
 - [数据模型](docs/DATA_MODEL.md)
 - [路线与验收](docs/ROADMAP.md)
+- [自动快照与异常退出恢复](docs/RECOVERY.md)
+- [零件、图层/材料与实例位置](docs/RESOURCES_AND_INSTANCES.md)
 
 ```powershell
 dotnet build Cadoryx.slnx -c Release

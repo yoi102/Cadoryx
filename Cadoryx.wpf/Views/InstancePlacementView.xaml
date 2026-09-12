@@ -1,0 +1,34 @@
+<UserControl x:Class="Cadoryx.wpf.Views.InstancePlacementView"
+ xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+ xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls" xmlns:r="clr-namespace:Cadoryx.Lang;assembly=Cadoryx.Lang">
+ <UserControl.Style><Style TargetType="UserControl">
+  <Setter Property="Visibility" Value="Collapsed"/>
+  <Style.Triggers><DataTrigger Binding="{Binding HasOccurrence}" Value="True"><Setter Property="Visibility" Value="Visible"/></DataTrigger></Style.Triggers>
+ </Style></UserControl.Style>
+ <UserControl.Resources><Style TargetType="mah:NumericUpDown" BasedOn="{StaticResource MahApps.Styles.NumericUpDown}">
+  <Setter Property="StringFormat" Value="0.######"/>
+ </Style></UserControl.Resources>
+ <Expander Header="{I18N {x:Static r:LangKeys.InstancePlacement}}" IsExpanded="True" Margin="0,0,0,16">
+  <StackPanel Margin="0,8,0,0">
+   <TextBlock Text="{Binding InstanceName}" FontWeight="SemiBold" Margin="0,0,0,6"/>
+   <TextBlock Text="{Binding Context}" TextWrapping="Wrap" Opacity="0.7" Margin="0,0,0,10"/>
+   <StackPanel IsEnabled="{Binding CanMove}">
+    <TextBlock Text="{I18N {x:Static r:LangKeys.LocalTranslation}}"/>
+    <UniformGrid Columns="3" Margin="0,4,0,10">
+     <mah:NumericUpDown x:Name="XInput" Value="{Binding X,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" HideUpDownButtons="True" ToolTip="X"/>
+     <mah:NumericUpDown Value="{Binding Y,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" HideUpDownButtons="True" ToolTip="Y"/>
+     <mah:NumericUpDown Value="{Binding Z,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" HideUpDownButtons="True" ToolTip="Z"/>
+    </UniformGrid>
+    <TextBlock Text="{I18N {x:Static r:LangKeys.RotationAxis}}"/>
+    <UniformGrid Columns="3" Margin="0,4,0,10">
+     <mah:NumericUpDown Value="{Binding AxisX,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" HideUpDownButtons="True" ToolTip="X"/>
+     <mah:NumericUpDown Value="{Binding AxisY,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" HideUpDownButtons="True" ToolTip="Y"/>
+     <mah:NumericUpDown Value="{Binding AxisZ,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" HideUpDownButtons="True" ToolTip="Z"/>
+    </UniformGrid>
+    <TextBlock Text="{I18N {x:Static r:LangKeys.InstanceRotationAngle}}"/>
+    <mah:NumericUpDown x:Name="AngleInput" Value="{Binding AngleDegrees,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Margin="0,4,0,10"/>
+    <Button Content="{I18N {x:Static r:LangKeys.ApplyPlacement}}" Command="{Binding ApplyCommand}"/>
+   </StackPanel>
+  </StackPanel>
+ </Expander>
+</UserControl>

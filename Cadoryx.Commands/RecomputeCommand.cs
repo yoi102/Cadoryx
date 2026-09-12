@@ -14,6 +14,9 @@ public sealed class RecomputeCommand(FeatureId featureId,GeometryRecipe recipe) 
         var pending=new HashSet<FeatureId>{featureId};
         bool added;
         do {added=false;foreach(var f in doc.Features.Values)if(f.Inputs.Any(pending.Contains))added|=pending.Add(f.Id);}while(added);
+        if(pending.Any(id=>doc.Bodies.TryGetValue(doc.Features[id].OutputBodyId,out var body)?doc.Layers[body.LayerId].IsLocked:
+            doc.Features[id].OutputMetadata is {} metadata&&doc.Layers[metadata.Layer].IsLocked))
+            throw new CadValidationException(Strings.LayerLocked);
         var done=new HashSet<FeatureId>();var resources=new List<IDisposable>();
         try
         {

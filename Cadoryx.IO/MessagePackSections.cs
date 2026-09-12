@@ -65,8 +65,8 @@ internal static class MessagePackSections
     private static ComponentSlot S(PackSlot s)=>new(new(s.Id),new(s.DefinitionId),s.Name,T(s.Transform),s.Visible,s.Appearance is {} a?A(a):null);
     private static PackTransform T(RigidTransform3d t)=>new(t.Translation.X,t.Translation.Y,t.Translation.Z,t.Rotation.X,t.Rotation.Y,t.Rotation.Z,t.Rotation.W);
     private static RigidTransform3d T(PackTransform t)=>new(new(t.X,t.Y,t.Z),new(t.Qx,t.Qy,t.Qz,t.Qw));
-    private static PackAppearance A(CadAppearance a)=>new(a.Argb,a.ByLayer);
-    private static CadAppearance A(PackAppearance a)=>new(a.Argb,a.ByLayer);
+    private static PackAppearance A(CadAppearance a)=>new(a.Argb,a.ByLayer,a.PreserveSourceStyles);
+    private static CadAppearance A(PackAppearance a)=>new(a.Argb,a.ByLayer,a.PreserveSourceStyles);
     private static PackGeometry G(GeometryAssetRef g)=>new(g.AssetId.Sha256,g.Revision.Value,(int)g.Kind,
         [g.Bounds.Min.X,g.Bounds.Min.Y,g.Bounds.Min.Z],[g.Bounds.Max.X,g.Bounds.Max.Y,g.Bounds.Max.Z],g.VolumeMm3,g.Source?.ContextAssetId.Sha256,g.Source?.DefinitionEntry);
     private static GeometryAssetRef G(PackGeometry g)

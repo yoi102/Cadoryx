@@ -7,6 +7,7 @@
                  xmlns:r="clr-namespace:Cadoryx.Lang;assembly=Cadoryx.Lang"
                  xmlns:vm="clr-namespace:Cadoryx.ViewModels.Settings;assembly=Cadoryx.ViewModels"
                  mc:Ignorable="d"
+                 Style="{StaticResource Cadoryx.DialogWindowStyle}"
                  d:DataContext="{d:DesignInstance Type=vm:ApplicationSettingsViewModel}"
                  Title="{I18N {x:Static r:LangKeys.ApplicationSettings}}"
                  Width="760"

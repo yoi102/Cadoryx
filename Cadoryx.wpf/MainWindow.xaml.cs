@@ -127,6 +127,7 @@ public partial class MainWindow
             if (!await dialog.ShowExitConfirmation())
                 return;
             if(!await _viewModel.CloseAllAsync())return;
+            await ((App)System.Windows.Application.Current).StopRecoveryAsync();
 
             _allowWindowClose = true;
             Closing -= OnWindowClosing;

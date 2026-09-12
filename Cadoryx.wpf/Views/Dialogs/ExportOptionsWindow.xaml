@@ -1,8 +1,9 @@
-<Window x:Class="Cadoryx.wpf.Views.Dialogs.ExportOptionsWindow"
+<mah:MetroWindow x:Class="Cadoryx.wpf.Views.Dialogs.ExportOptionsWindow"
  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
  xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
  xmlns:r="clr-namespace:Cadoryx.Lang;assembly=Cadoryx.Lang"
+ Style="{StaticResource Cadoryx.DialogWindowStyle}"
  Title="{I18N {x:Static r:LangKeys.ExportOptions}}" Width="480" SizeToContent="Height" ResizeMode="NoResize" WindowStartupLocation="CenterOwner"
  Background="{DynamicResource MaterialDesign.Brush.Background}" Foreground="{DynamicResource MaterialDesign.Brush.Foreground}">
  <StackPanel Margin="24">
@@ -21,4 +22,4 @@
    <Button Content="{I18N {x:Static r:LangKeys.Export}}" IsDefault="True" Click="ExportClicked"/>
   </StackPanel>
  </StackPanel>
-</Window>
+</mah:MetroWindow>

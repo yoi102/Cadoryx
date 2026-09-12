@@ -25,6 +25,18 @@
                     </Style>
                 </StackPanel.Style>
 
+                <Expander Header="{I18N {x:Static r:LangKeys.CreationTarget}}" IsExpanded="True" Margin="0,0,0,12">
+                    <StackPanel IsEnabled="{Binding Document.IsCreating}" Margin="0,8,0,0">
+                        <TextBlock Text="{I18N {x:Static r:LangKeys.TargetPart}}"/>
+                        <ComboBox ItemsSource="{Binding Document.TargetParts}" DisplayMemberPath="Name" SelectedValuePath="Id" SelectedValue="{Binding Document.SelectedTargetPart,Mode=TwoWay}" Margin="0,4,0,8"/>
+                        <TextBlock Text="{Binding Document.TargetPartHint}" TextWrapping="Wrap" Opacity="0.7" Margin="0,0,0,8"/>
+                        <TextBlock Text="{I18N {x:Static r:LangKeys.Layer}}"/>
+                        <ComboBox ItemsSource="{Binding Document.CreationLayers}" DisplayMemberPath="Name" SelectedValuePath="Id" SelectedValue="{Binding Document.SelectedCreationLayer,Mode=TwoWay}" Margin="0,4,0,8"/>
+                        <TextBlock Text="{I18N {x:Static r:LangKeys.Material}}"/>
+                        <ComboBox ItemsSource="{Binding Document.CreationMaterials}" DisplayMemberPath="Name" SelectedValuePath="Id" SelectedValue="{Binding Document.SelectedCreationMaterial,Mode=TwoWay}" Margin="0,4,0,8"/>
+                        <Button Content="{I18N {x:Static r:LangKeys.NoMaterial}}" Command="{Binding Document.ClearCreationMaterialCommand}"/>
+                    </StackPanel>
+                </Expander>
                 <ComboBox SelectedValue="{Binding Document.ToolKind}"
                           SelectedValuePath="Tag"
                           Margin="0,0,0,8">

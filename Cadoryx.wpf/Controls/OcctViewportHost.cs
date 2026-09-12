@@ -15,8 +15,11 @@ public sealed class OcctViewportHost(IAssetStore assets) : HwndHost
     private static readonly ushort Atom=Register();
     private nint hwnd;
     private static bool suspended;
+    internal static int LiveCount=>Hosts.Count;
     public static void SuspendAll(bool value)
-    {suspended=value;foreach(var h in Hosts.Keys)Native.ShowWindow(h,value?0:5);}
+    {suspended=value;foreach(var (h,host) in Hosts){if(value)host.CancelCapture();Native.ShowWindow(h,value?0:5);}}
+    private void CancelCapture()
+    {Viewport?.CancelInput();if(Native.GetCapture()==hwnd)Native.ReleaseCapture();}
     public OcctViewport? Viewport {get;private set;}
     public event EventHandler? Ready;
     public event EventHandler? Destroying;
@@ -38,7 +41,7 @@ public sealed class OcctViewportHost(IAssetStore assets) : HwndHost
         try{Destroying?.Invoke(this,EventArgs.Empty);}
         finally
         {
-            Viewport?.Dispose();Viewport=null;
+            CancelCapture();Viewport?.Dispose();Viewport=null;
             if(handle.Handle!=0){Hosts.Remove(handle.Handle);Native.DestroyWindow(handle.Handle);}
             hwnd=0;
         }
@@ -55,9 +58,10 @@ public sealed class OcctViewportHost(IAssetStore assets) : HwndHost
                 case 0x100:
                     int key=(int)w;
                     if(key==27||((modifiers&2)!=0&&key is 83 or 90 or 89))
-                    {host.Dispatcher.BeginInvoke(()=>host.ShortcutPressed?.Invoke(host,key));return 0;}
+                    {if(key==27)host.CancelCapture();host.Dispatcher.BeginInvoke(()=>host.ShortcutPressed?.Invoke(host,key));return 0;}
                     break;
-                case 0x215:viewer.CancelInput();return 0;
+                case 0x215:if(l!=hwnd)viewer.CancelInput();return 0;
+                case 0x1F:case 8:host.CancelCapture();break; // WM_CANCELMODE / WM_KILLFOCUS
                 case 5:viewer.Resize();return 0;
                 case 15:viewer.Redraw();break;
                 case 20:return 1;
@@ -65,10 +69,12 @@ public sealed class OcctViewportHost(IAssetStore assets) : HwndHost
                     int buttons=((w&1)!=0?1:0)|((w&0x10)!=0?2:0)|((w&2)!=0?4:0);
                     viewer.PointerMoved(x,y,buttons,modifiers);return 0;
                 case 0x201:case 0x207:case 0x204:
-                    Native.SetFocus(hwnd);Native.SetCapture(hwnd);
+                    if(Native.GetFocus()!=hwnd)Native.SetFocus(hwnd);
+                    if(Native.GetCapture()!=hwnd)Native.SetCapture(hwnd);
                     viewer.PointerPressed(message==0x201?0:message==0x207?1:2,x,y,modifiers);return 0;
                 case 0x202:case 0x208:case 0x205:
-                    try{viewer.PointerReleased(message==0x202?0:message==0x208?1:2,x,y,modifiers);}finally{Native.ReleaseCapture();}return 0;
+                    try{viewer.PointerReleased(message==0x202?0:message==0x208?1:2,x,y,modifiers);}
+                    finally{if(!viewer.HasPointerCapture&&Native.GetCapture()==hwnd)Native.ReleaseCapture();}return 0;
                 case 0x20A:
                     var point=new Point{x=x,y=y};Native.ScreenToClient(hwnd,ref point);
                     viewer.MouseWheel(unchecked((short)((w>>16)&65535)),point.x,point.y,modifiers);return 0;
@@ -98,7 +104,9 @@ public sealed class OcctViewportHost(IAssetStore assets) : HwndHost
         [DllImport("user32.dll")][return:MarshalAs(UnmanagedType.Bool)]internal static extern bool DestroyWindow(nint hwnd);
         [DllImport("user32.dll",EntryPoint="LoadCursorW")]internal static extern nint LoadCursor(nint instance,int name);
         [DllImport("user32.dll")]internal static extern nint SetFocus(nint hwnd);
+        [DllImport("user32.dll")]internal static extern nint GetFocus();
         [DllImport("user32.dll")]internal static extern nint SetCapture(nint hwnd);
+        [DllImport("user32.dll")]internal static extern nint GetCapture();
         [DllImport("user32.dll")][return:MarshalAs(UnmanagedType.Bool)]internal static extern bool ReleaseCapture();
         [DllImport("user32.dll")][return:MarshalAs(UnmanagedType.Bool)]internal static extern bool ScreenToClient(nint hwnd,ref Point point);
         [DllImport("user32.dll")]internal static extern short GetKeyState(int key);

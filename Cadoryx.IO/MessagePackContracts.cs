@@ -69,7 +69,8 @@ public sealed record PackGeometry(
 [MessagePackObject]
 public sealed record PackAppearance(
     [property: Key(0)] uint Argb,
-    [property: Key(1)] bool ByLayer);
+    [property: Key(1)] bool ByLayer,
+    [property: Key(2)] bool PreserveSourceStyles = false);
 
 [MessagePackObject]
 public sealed record PackBody(

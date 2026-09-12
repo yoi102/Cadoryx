@@ -32,7 +32,8 @@ public partial class ModelTreeToolboxViewModel : CadToolboxViewModelBase
         foreach(var occurrence in snapshot.EnumerateOccurrences())
         {
             var definition=snapshot.Definitions[occurrence.DefinitionId];
-            var node=new ModelTreeItemViewModel(occurrence.Name,definition is PartDefinition?Strings.Part:Strings.Assembly);nodes.Add(occurrence.Path,node);
+            var label=occurrence.Name==definition.Name?occurrence.Name:$"{occurrence.Name} [{definition.Name}]";
+            var node=new ModelTreeItemViewModel(label,definition is PartDefinition?Strings.Part:Strings.Assembly,path:occurrence.Path);nodes.Add(occurrence.Path,node);
             var parent=occurrence.Path.Slots.Length==0?null:new OccurrencePath(snapshot.Id,occurrence.Path.Slots.RemoveAt(occurrence.Path.Slots.Length-1));
             if(parent is not null&&nodes.TryGetValue(parent,out var p))p.Children.Add(node);else Items.Add(node);
             if(definition is not PartDefinition part)continue;
@@ -43,7 +44,7 @@ public partial class ModelTreeToolboxViewModel : CadToolboxViewModelBase
                 child.PropertyChanged+=(_,e)=>{if(e.PropertyName==nameof(child.IsChecked)&&!syncing)Toggle(child);};node.Children.Add(child);
             }
             var history=new ModelTreeItemViewModel(Strings.FeatureHistory,Strings.FeatureHistory);
-            foreach(var fid in part.Features){var f=snapshot.Features[fid];history.Children.Add(new(f.Name,RecipeText(f.Recipe),null,fid));}
+            foreach(var fid in part.Features){var f=snapshot.Features[fid];history.Children.Add(new(f.Name,RecipeText(f.Recipe),null,fid,occurrence.Path));}
             node.Children.Add(history);
         }
         OnSelection(this,EventArgs.Empty);
@@ -57,7 +58,13 @@ public partial class ModelTreeToolboxViewModel : CadToolboxViewModelBase
     {
         if(document is null)return;
         if(item.Target is {} target)document.Selection.Replace([target]);
-        else if(item.Feature is {} id)document.EditFeature(id);
+        else
+        {
+            document.Selection.SelectOccurrence(item.Path);
+            if(item.Feature is {} id)document.EditFeature(id);
+            else if(item.Path is {} path&&document.Session.Snapshot.Definitions[OccurrencePlacement.Resolve(document.Session.Snapshot,path).Slot.DefinitionId] is PartDefinition part)
+                document.SelectedTargetPart=part.Id;
+        }
     }
     private void OnSelection(object? sender,EventArgs e)
     {
@@ -95,12 +102,13 @@ public partial class ModelTreeToolboxViewModel : CadToolboxViewModelBase
         _=>Strings.Modeling
     };
 }
-public partial class ModelTreeItemViewModel(string name,string kind,SelectionTarget? target=null,FeatureId? feature=null):ObservableObject
+public partial class ModelTreeItemViewModel(string name,string kind,SelectionTarget? target=null,FeatureId? feature=null,OccurrencePath? path=null):ObservableObject
 {
     public string Name {get;}=name;
     public string Kind {get;}=kind;
     public SelectionTarget? Target {get;}=target;
     public FeatureId? Feature {get;}=feature;
+    public OccurrencePath? Path {get;}=path??target?.Path;
     public bool CanCheck=>Target is not null;
     public ObservableCollection<ModelTreeItemViewModel> Children {get;}=[];
     [ObservableProperty] private bool isExpanded=true;

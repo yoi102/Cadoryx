@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -612,4 +612,61 @@
   <data name="Empty" xml:space="preserve">
     <value>空</value>
   </data>
+  <data name="RecoveryTitle" xml:space="preserve"><value>ドキュメントの復元</value></data>
+  <data name="RecoveryDescription" xml:space="preserve"><value>前回のセッションで保存されなかった作業を復元します。復元結果は未保存のコピーとして開きます。最新のスナップショットが破損している場合は、前の完成済みスナップショットを試します。</value></data>
+  <data name="RecoveryEmpty" xml:space="preserve"><value>復元可能なドキュメントはありません。実行中の Cadoryx ウィンドウのスナップショットは表示されません。</value></data>
+  <data name="RecoveryOpened" xml:space="preserve"><value>未保存のコピーとして復元しました。保存先を選択してください。</value></data>
+  <data name="RecoveryRestoreFailed" xml:space="preserve"><value>復元に失敗したか、作業領域が処理中です。メッセージを確認してください。</value></data>
+  <data name="RecoveryWriteFailed" xml:space="preserve"><value>復元用データを更新できませんでした：{0}</value></data>
+  <data name="RecoveryOriginalPath" xml:space="preserve"><value>元のファイル</value></data>
+  <data name="RecoverySnapshotTime" xml:space="preserve"><value>保存日時 (UTC)</value></data>
+  <data name="RecoverySnapshotCount" xml:space="preserve"><value>世代数</value></data>
+  <data name="RecoveryRestore" xml:space="preserve"><value>コピーを復元</value></data>
+  <data name="RecoveryDiscard" xml:space="preserve"><value>スナップショットを破棄</value></data>
+  <data name="RecoveryDiscardQuestion" xml:space="preserve"><value>「{0}」の復元用スナップショットをすべて破棄しますか？この操作は取り消せません。元のファイルは変更されません。</value></data>
+  <data name="RecoveryLater" xml:space="preserve"><value>後で</value></data>
+  <data name="RecoveryRefresh" xml:space="preserve"><value>更新</value></data>
+  <data name="RecoveryName" xml:space="preserve"><value>ドキュメント</value></data>
+  <data name="AddPart" xml:space="preserve"><value>パーツを追加</value></data>
+  <data name="SelectTargetPart" xml:space="preserve"><value>対象パーツを選択してください。</value></data>
+  <data name="AddLayer" xml:space="preserve"><value>レイヤーを追加</value></data>
+  <data name="EditLayer" xml:space="preserve"><value>レイヤーを編集</value></data>
+  <data name="DeleteLayer" xml:space="preserve"><value>レイヤーを削除</value></data>
+  <data name="SelectLayer" xml:space="preserve"><value>有効なレイヤーを選択してください。</value></data>
+  <data name="LastLayerRequired" xml:space="preserve"><value>少なくとも一つのレイヤーが必要です。</value></data>
+  <data name="ResourceInUse" xml:space="preserve"><value>ボディまたは保持されたフィーチャー出力が参照しています。参照を変更してから削除してください。</value></data>
+  <data name="AddMaterial" xml:space="preserve"><value>材料を追加</value></data>
+  <data name="EditMaterial" xml:space="preserve"><value>材料を編集</value></data>
+  <data name="DeleteMaterial" xml:space="preserve"><value>材料を削除</value></data>
+  <data name="SelectMaterial" xml:space="preserve"><value>有効な材料を選択してください。</value></data>
+  <data name="DuplicateResourceName" xml:space="preserve"><value>同名のリソースが既に存在します。</value></data>
+  <data name="SharedParentMoveBlocked" xml:space="preserve"><value>この位置は再利用サブアセンブリで共有されています。親インスタンスを選択して移動してください。子の独立編集は今後対応します。</value></data>
+  <data name="ResourceEditApplied" xml:space="preserve"><value>適用しました。ウィンドウを閉じてから元に戻せます。</value></data>
+  <data name="SelectInstance" xml:space="preserve"><value>モデルツリーでパーツまたはアセンブリのインスタンスを選択してください。</value></data>
+  <data name="InstanceLocalCoordinates" xml:space="preserve"><value>親座標系でこのインスタンスの位置と回転を編集します。形状定義と他のインスタンスは変わりません。</value></data>
+  <data name="FirstPartCreatedAutomatically" xml:space="preserve"><value>最初のボディ確定時にパーツを作成します。追加のパーツは文書リソースで作成できます。</value></data>
+  <data name="SharedPartEditingHint" xml:space="preserve"><value>パーツ定義の編集は、そのすべてのインスタンスに反映されます。</value></data>
+  <data name="MassKg" xml:space="preserve"><value>質量 (kg)</value></data>
+  <data name="DontSave" xml:space="preserve"><value>保存しない</value></data>
+  <data name="DocumentResources" xml:space="preserve"><value>文書リソース</value></data>
+  <data name="ResourceWindowHint" xml:space="preserve"><value>名前を入力して追加または適用します。変更は即座に反映され、文書で元に戻せます。参照中のリソースは削除できません。</value></data>
+  <data name="Parts" xml:space="preserve"><value>パーツ</value></data>
+  <data name="PartDefinitionName" xml:space="preserve"><value>パーツ定義名</value></data>
+  <data name="UseAsTargetPart" xml:space="preserve"><value>モデリング対象に設定</value></data>
+  <data name="Layers" xml:space="preserve"><value>レイヤー</value></data>
+  <data name="Locked" xml:space="preserve"><value>ロック</value></data>
+  <data name="ReferenceCount" xml:space="preserve"><value>ボディ／フィーチャー参照数：</value></data>
+  <data name="Delete" xml:space="preserve"><value>削除</value></data>
+  <data name="Materials" xml:space="preserve"><value>材料</value></data>
+  <data name="DensityKgPerM3" xml:space="preserve"><value>密度 (kg/m³)</value></data>
+  <data name="MaterialDensityHint" xml:space="preserve"><value>質量は正確なボディ体積と密度から計算します。材料未指定の場合は計算しません。</value></data>
+  <data name="Close" xml:space="preserve"><value>閉じる</value></data>
+  <data name="CreationTarget" xml:space="preserve"><value>作成先</value></data>
+  <data name="TargetPart" xml:space="preserve"><value>対象パーツ</value></data>
+  <data name="NoMaterial" xml:space="preserve"><value>材料なし</value></data>
+  <data name="InstancePlacement" xml:space="preserve"><value>インスタンス配置</value></data>
+  <data name="LocalTranslation" xml:space="preserve"><value>局所移動 X / Y / Z (mm)</value></data>
+  <data name="RotationAxis" xml:space="preserve"><value>回転軸 X / Y / Z</value></data>
+  <data name="InstanceRotationAngle" xml:space="preserve"><value>回転角度 (°)</value></data>
+  <data name="ApplyPlacement" xml:space="preserve"><value>インスタンス配置を適用</value></data>
 </root>

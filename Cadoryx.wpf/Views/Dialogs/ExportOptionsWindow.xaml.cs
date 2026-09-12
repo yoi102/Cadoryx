@@ -3,7 +3,7 @@ using System.Windows;
 using Cadoryx.ViewModels.Services.Platform;
 using Cadoryx.Lang.Strings;
 namespace Cadoryx.wpf.Views.Dialogs;
-public partial class ExportOptionsWindow:Window
+public partial class ExportOptionsWindow:MahApps.Metro.Controls.MetroWindow
 {
     private readonly string path;
     public CadExportRequest? Request {get;private set;}

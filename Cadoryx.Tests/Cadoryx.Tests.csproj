@@ -8,6 +8,7 @@
     <PackageReference Include="OcctSharp.Native.win-x64" Version="[$(OcctSharpVersion)]" />
   </ItemGroup>
   <ItemGroup>
+    <None Update="Fixtures/Exchange/**/*" CopyToOutputDirectory="PreserveNewest" />
     <ProjectReference Include="../Cadoryx.Editor/Cadoryx.Editor.csproj" />
     <ProjectReference Include="../Cadoryx.IO/Cadoryx.IO.csproj" />
     <ProjectReference Include="../Cadoryx.Kernel.Occt/Cadoryx.Kernel.Occt.csproj" />

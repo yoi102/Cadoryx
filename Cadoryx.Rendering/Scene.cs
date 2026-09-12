@@ -3,7 +3,7 @@ using Cadoryx.Db;
 
 namespace Cadoryx.Rendering;
 
-public sealed record SceneItem(OccurrencePath Path,BodyId BodyId,GeometryAssetRef Geometry,RigidTransform3d WorldTransform,uint Argb);
+public sealed record SceneItem(OccurrencePath Path,BodyId BodyId,GeometryAssetRef Geometry,RigidTransform3d WorldTransform,uint Argb,bool PreserveSourceStyles=false);
 public sealed record CadScene(DocumentId DocumentId,DocumentStateId StateId,ImmutableArray<SceneItem> Items)
 {
     public static CadScene FromDocument(DocumentSnapshot document)
@@ -17,7 +17,8 @@ public sealed record CadScene(DocumentId DocumentId,DocumentStateId StateId,Immu
                 var body=document.Bodies[id];var layer=document.Layers[body.LayerId];
                 if(!body.IsVisible||!layer.IsVisible||body.Geometry.Kind==BodyKind.Empty)continue;
                 var appearance=occurrence.AppearanceOverride??body.Appearance;
-                items.Add(new(occurrence.Path,id,body.Geometry,occurrence.WorldTransform,appearance.ByLayer?layer.Argb:appearance.Argb));
+                items.Add(new(occurrence.Path,id,body.Geometry,occurrence.WorldTransform,appearance.ByLayer?layer.Argb:appearance.Argb,
+                    occurrence.AppearanceOverride is null&&!appearance.ByLayer&&appearance.PreserveSourceStyles&&body.Geometry.Source is not null));
             }
         }
         return new(document.Id,document.StateId,items.ToImmutable());

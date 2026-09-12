@@ -12,6 +12,11 @@ public sealed class OcctViewport : ICadViewport
     private readonly IAssetStore assets;
     private readonly Dictionary<(OccurrencePath,BodyId),Entry> entries=[];
     private readonly Dictionary<GeometryRevisionId,GeometryResource> geometry=[];
+    private HashSet<(OccurrencePath,BodyId)> highlighted=[];
+    private int pressedButtons;
+    private int lastX,lastY;
+    private int pressX,pressY;
+    private bool selectionClick;
     private ViewerPresentation? preview;
     private Shape? previewShape;
     private CadDisplayMode mode;
@@ -44,8 +49,8 @@ public sealed class OcctViewport : ICadViewport
                 var key=(item.Path,item.BodyId);
                 if(entries.TryGetValue(key,out var existing)&&existing.Item==item){staged.Add(key,existing);continue;}
                 var resource=Resource(item.Geometry);
-                ViewerPresentation presentation=resource.Label is {} label?viewer.Display(label):viewer.Display(resource.Shape);
-                created.Add(presentation);Apply(presentation,item,resource);staged.Add(key,new(item,presentation,resource));
+                var presentation=CreatePresentation(item,resource,highlighted.Contains(key));
+                created.Add(presentation);staged.Add(key,new(item,presentation,resource));
             }
         }
         catch{foreach(var p in created)p.Dispose();PruneGeometry();viewer.Redraw();throw;}
@@ -63,22 +68,38 @@ public sealed class OcctViewport : ICadViewport
         if(geometry.TryGetValue(reference.Revision,out var resource))return resource;
         resource=new(reference,assets);geometry.Add(reference.Revision,resource);return resource;
     }
-    private void Apply(ViewerPresentation presentation,SceneItem item,GeometryResource resource)
+    private ViewerPresentation CreatePresentation(SceneItem item,GeometryResource resource,bool selected)
     {
-        using var transform=OcctGeometryBridge.ToNative(item.WorldTransform*resource.SourceLocationInverse);
-        presentation.SetTransform(transform);
-        var color=OcctGeometryBridge.ToXdeColor(item.Argb);presentation.SetColor(new(color.Red,color.Green,color.Blue));
-        presentation.SetTransparency(1-color.Alpha);
-        presentation.SetDisplayMode(mode==CadDisplayMode.Shaded?ViewerDisplayMode.Shaded:ViewerDisplayMode.Wireframe);
+        bool sourceStyles=item.PreserveSourceStyles&&!selected&&resource.Label is not null;
+        var presentation=sourceStyles?viewer.Display(resource.Label!):viewer.Display(resource.Shape);
+        try
+        {
+            using var transform=OcctGeometryBridge.ToNative(item.WorldTransform*resource.SourceLocationInverse);
+            presentation.SetTransform(transform);
+            if(!sourceStyles)
+            {
+                var color=OcctGeometryBridge.ToXdeColor(selected?0xFFFF6B0Au:item.Argb);
+                presentation.SetColor(new(color.Red,color.Green,color.Blue));presentation.SetTransparency(1-color.Alpha);
+            }
+            presentation.SetDisplayMode(mode==CadDisplayMode.Shaded?ViewerDisplayMode.Shaded:ViewerDisplayMode.Wireframe);
+            return presentation;
+        }
+        catch{presentation.Dispose();throw;}
     }
     public void Highlight(IEnumerable<(OccurrencePath Path,BodyId Body)> selected)
     {
         var keys=selected.ToHashSet();
-        foreach(var pair in entries)
+        var replacements=new Dictionary<(OccurrencePath,BodyId),Entry>();
+        try
         {
-            pair.Value.Presentation.ClearAllSubshapeOverrides();
-            if(keys.Contains(pair.Key))pair.Value.Presentation.SetSubshapeColor(pair.Value.Geometry.Shape,new ViewerColor(1,0.42,0.06));
+            foreach(var (key,entry) in entries)
+                if(keys.Contains(key)!=highlighted.Contains(key))
+                    replacements.Add(key,new(entry.Item,CreatePresentation(entry.Item,entry.Geometry,keys.Contains(key)),entry.Geometry));
         }
+        catch{foreach(var entry in replacements.Values)entry.Presentation.Dispose();throw;}
+        // Rebuild only changed highlights. Clearing XCAFPrs custom aspects also erases source face styles.
+        foreach(var (key,entry) in replacements){entries[key].Presentation.Dispose();entries[key]=entry;}
+        highlighted=keys;
         viewer.Redraw();
     }
     public void SetPreview(GeometryAssetRef? reference)
@@ -105,16 +126,41 @@ public sealed class OcctViewport : ICadViewport
     }
     public void Resize()=>viewer.Resize();
     public void Redraw()=>viewer.Redraw();
-    public void PointerMoved(int x,int y,int buttons,int modifiers)=>viewer.Input.PointerMoved(x,y,(ViewerPointerButtons)buttons,(ViewerModifierKeys)modifiers);
-    public void PointerPressed(int button,int x,int y,int modifiers)=>viewer.Input.PointerPressed(Button(button),x,y,(ViewerModifierKeys)modifiers);
+    public bool HasPointerCapture=>pressedButtons!=0;
+    public void PointerMoved(int x,int y,int buttons,int modifiers)
+    {
+        lastX=x;lastY=y;
+        if(Math.Abs(x-pressX)>2||Math.Abs(y-pressY)>2)selectionClick=false;
+        viewer.Input.PointerMoved(x,y,(ViewerPointerButtons)(buttons&pressedButtons),(ViewerModifierKeys)modifiers);
+    }
+    public void PointerPressed(int button,int x,int y,int modifiers)
+    {
+        lastX=x;lastY=y;pressedButtons|=1<<button;
+        pressX=x;pressY=y;selectionClick=button==0;
+        viewer.Input.PointerPressed(Button(button),x,y,(ViewerModifierKeys)modifiers);
+    }
     public void PointerReleased(int button,int x,int y,int modifiers)
     {
-        var selected=viewer.Input.PointerReleased(Button(button),x,y,(ViewerModifierKeys)modifiers);
-        if(button!=0)return;
-        var items=entries.Values.Where(e=>selected.Contains(e.Presentation)).Select(e=>e.Item).ToArray();
+        if((pressedButtons&(1<<button))==0)return; // Late release after capture loss must not clear model selection.
+        pressedButtons&=~(1<<button);lastX=x;lastY=y;
+        var selected=viewer.Input.PointerReleased(Button(button),x,y);
+        bool clicked=button==0&&selectionClick;selectionClick=false;
+        if(!clicked)return;
+        var hit=entries.Where(e=>selected.Contains(e.Value.Presentation)).Select(e=>e.Key).ToHashSet();
+        var keys=new HashSet<(OccurrencePath,BodyId)>(highlighted);
+        if((modifiers&2)!=0)keys.SymmetricExceptWith(hit);
+        else if((modifiers&4)!=0)keys.ExceptWith(hit);
+        else if((modifiers&1)!=0)keys.UnionWith(hit);
+        else keys=hit;
+        var items=entries.Where(e=>keys.Contains(e.Key)).Select(e=>e.Value.Item).ToArray();
         SelectionChanged?.Invoke(this,items);
     }
-    public void CancelInput()=>viewer.Input.PointerReleased(ViewerPointerButton.Right,0,0);
+    public void CancelInput()
+    {
+        pressedButtons=0;selectionClick=false;
+        // preview.26 clears any pressed button on release. Right avoids synthesizing a left click.
+        viewer.Input.PointerReleased(ViewerPointerButton.Right,lastX,lastY);
+    }
     public void ClearSelection()=>viewer.ClearSelection();
     public void MouseWheel(int delta,int x,int y,int modifiers)=>viewer.Input.MouseWheel(delta,x,y,(ViewerModifierKeys)modifiers);
     private static ViewerPointerButton Button(int button)=>button switch{0=>ViewerPointerButton.Left,1=>ViewerPointerButton.Middle,_=>ViewerPointerButton.Right};
@@ -126,6 +172,10 @@ public sealed class OcctViewport : ICadViewport
     public void RestoreCamera(CadCamera c)=>viewer.Rendering.SetCamera(new(new(c.Eye.X,c.Eye.Y,c.Eye.Z),new(c.Target.X,c.Target.Y,c.Target.Z),new(c.Up.X,c.Up.Y,c.Up.Z),
         c.Aspect,c.Scale,c.FieldOfViewY,c.NearPlane,c.FarPlane,c.Perspective,c.AutoFitDepth));
     public void SaveScreenshot(string path)=>viewer.SaveScreenshot(path,overwrite:true);
+    public (int X,int Y) WorldToScreen(Vector3d point)
+    {
+        var pixel=viewer.WorldToScreen(new(point.X,point.Y,point.Z));return(pixel.X,pixel.Y);
+    }
     public void Dispose()
     {
         if(disposed)return;

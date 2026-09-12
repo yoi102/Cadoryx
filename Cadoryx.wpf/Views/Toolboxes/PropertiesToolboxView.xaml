@@ -5,12 +5,16 @@
  xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls" xmlns:cv="clr-namespace:Cadoryx.wpf.Converters"
  xmlns:r="clr-namespace:Cadoryx.Lang;assembly=Cadoryx.Lang"
  xmlns:vm="clr-namespace:Cadoryx.ViewModels.Toolboxes;assembly=Cadoryx.ViewModels"
+ xmlns:views="clr-namespace:Cadoryx.wpf.Views"
  mc:Ignorable="d"
  d:DataContext="{d:DesignInstance Type=vm:PropertiesToolboxViewModel}">
  <ScrollViewer VerticalScrollBarVisibility="Auto">
   <StackPanel Margin="12">
    <TextBlock Text="{Binding SelectionSummary}" FontSize="15" Margin="0,0,0,12"/>
    <StackPanel IsEnabled="{Binding HasSelection}">
+    <StackPanel.Style><Style TargetType="StackPanel"><Style.Triggers>
+     <DataTrigger Binding="{Binding HasSelection}" Value="False"><Setter Property="Visibility" Value="Collapsed"/></DataTrigger>
+    </Style.Triggers></Style></StackPanel.Style>
     <TextBlock Text="{I18N {x:Static r:LangKeys.EntityName}}"/><TextBox Text="{Binding ObjectName}" Margin="0,4,0,12"/>
     <TextBlock Text="{I18N {x:Static r:LangKeys.Color}}"/>
     <mah:ColorPicker SelectedColor="{Binding Argb,Mode=TwoWay,Converter={x:Static cv:UIntColorToMediaColorConverter.Instance}}" IsAlphaChannelVisible="False" Margin="0,4,0,12"/>
@@ -18,12 +22,16 @@
     <CheckBox Content="{I18N {x:Static r:LangKeys.Visible}}" IsChecked="{Binding IsBodyVisible}" Margin="0,0,0,12"/>
     <TextBlock Text="{I18N {x:Static r:LangKeys.Material}}"/>
     <ComboBox ItemsSource="{Binding Materials}" DisplayMemberPath="Name" SelectedValuePath="Id" SelectedValue="{Binding SelectedMaterial}" Margin="0,4,0,12"/>
+    <Button Content="{I18N {x:Static r:LangKeys.NoMaterial}}" Command="{Binding ClearMaterialCommand}" Margin="0,0,0,12"/>
+    <TextBlock Text="{I18N {x:Static r:LangKeys.Layer}}"/>
+    <ComboBox ItemsSource="{Binding Layers}" DisplayMemberPath="Name" SelectedValuePath="Id" SelectedValue="{Binding SelectedLayer}" Margin="0,4,0,12"/>
     <Button Content="{I18N {x:Static r:LangKeys.ApplyProperties}}" Command="{Binding ApplyCommand}" Margin="0,0,0,8"/>
     <Button Content="{I18N {x:Static r:LangKeys.EditFeature}}" Command="{Binding EditFeatureCommand}" Margin="0,0,0,16"/>
    </StackPanel>
    <ItemsControl ItemsSource="{Binding Properties}">
     <ItemsControl.ItemTemplate><DataTemplate><StackPanel Margin="0,4"><TextBlock Text="{Binding Name}" Opacity="0.6"/><TextBlock Text="{Binding Value}" TextWrapping="Wrap"/></StackPanel></DataTemplate></ItemsControl.ItemTemplate>
    </ItemsControl>
+   <views:InstancePlacementView DataContext="{Binding Instance}"/>
   </StackPanel>
  </ScrollViewer>
 </UserControl>

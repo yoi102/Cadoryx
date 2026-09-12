@@ -10,7 +10,7 @@ public sealed record GeometryAssetRef(AssetId AssetId, GeometryRevisionId Revisi
 {
     public void Validate() { AssetId.Validate(); CadGuard.Id(Revision); Bounds.Validate(); CadGuard.Finite(VolumeMm3); if(VolumeMm3<0 || !Enum.IsDefined(Kind)) throw new CadValidationException("Invalid geometry metadata."); if(Source is {} s){s.ContextAssetId.Validate();if(string.IsNullOrWhiteSpace(s.DefinitionEntry))throw new CadValidationException("Invalid XDE source entry.");} }
 }
-public sealed record CadAppearance(uint Argb = 0xFF86ACC5, bool ByLayer = false);
+public sealed record CadAppearance(uint Argb = 0xFF86ACC5, bool ByLayer = false, bool PreserveSourceStyles = false);
 public sealed record CadLayer(LayerId Id, string Name, uint Argb = 0xFF86ACC5, bool IsVisible = true, bool IsLocked = false);
 public sealed record CadMaterial(MaterialId Id, string Name, double DensityKgPerMm3);
 public sealed record CadBody(BodyId Id, DefinitionId PartId, string Name, GeometryAssetRef Geometry,

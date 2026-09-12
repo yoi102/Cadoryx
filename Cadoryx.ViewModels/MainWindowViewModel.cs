@@ -32,6 +32,10 @@ public partial class MainWindowViewModel : ObservableObject
     private readonly IDocumentStorage storage;
     private readonly ICadFileDialogs files;
     private readonly ICadMessageLog log;
+    private readonly DocumentRecoveryService recovery;
+    private readonly IRecoveryStore recoveryStore;
+    private readonly IRecoveryDialogService recoveryDialog;
+    private readonly IDocumentResourcesDialogService resourcesDialog;
     private readonly HashSet<CadDocumentViewModel> closingDocuments=[];
     public ObservableCollection<CadDocumentViewModel> Documents {get;}=[];
     [ObservableProperty] private CadDocumentViewModel? activeDocument;
@@ -43,7 +47,8 @@ public partial class MainWindowViewModel : ObservableObject
     IApplicationThemeService themeSettingService,
     IApplicationSettingsStore applicationSettingsStore,
     IDialogService dialogService, CadWorkspace workspace, IGeometryKernel kernel, IAssetStore assets,
-    IDocumentStorage storage, ICadFileDialogs files, ICadMessageLog log
+    IDocumentStorage storage, ICadFileDialogs files, ICadMessageLog log,
+    DocumentRecoveryService recovery, IRecoveryStore recoveryStore, IRecoveryDialogService recoveryDialog, IDocumentResourcesDialogService resourcesDialog
     )
     {
         this._dockLayoutService = dockLayoutService;
@@ -53,6 +58,8 @@ public partial class MainWindowViewModel : ObservableObject
         _applicationSettingsStore = applicationSettingsStore;
         _dialogService = dialogService;
         this.workspace=workspace;this.kernel=kernel;this.assets=assets;this.storage=storage;this.files=files;this.log=log;
+        this.recovery=recovery;this.recoveryStore=recoveryStore;this.recoveryDialog=recoveryDialog;
+        this.resourcesDialog=resourcesDialog;
         _applicationSettings = applicationSettingsStore.Load();
 
         ApplySettingsToServices(_applicationSettings);
@@ -151,7 +158,9 @@ public partial class MainWindowViewModel : ObservableObject
     {
         var path=saveAs?null:doc.Session.FilePath;path??=files.SaveDocument(doc.Session.Snapshot.Name);
         if(path is null)return false;
-        await doc.Session.SaveAsync(storage,path);StatusText=string.Format(Strings.SavedFormat,Path.GetFileName(path));return !doc.Session.IsDirty;
+        await doc.Session.SaveAsync(storage,path);
+        try{await recovery.CheckpointAsync(doc.Session);}catch(Exception ex){ReportRecoveryFailure(ex);}
+        StatusText=string.Format(Strings.SavedFormat,Path.GetFileName(path));return !doc.Session.IsDirty;
     }
     [RelayCommand(CanExecute=nameof(CanUseDocument))] private async Task ExportAsync()
     {
@@ -200,13 +209,27 @@ public partial class MainWindowViewModel : ObservableObject
         NewCommand.NotifyCanExecuteChanged();OpenFileCommand.NotifyCanExecuteChanged();SaveCommand.NotifyCanExecuteChanged();
         SaveAsCommand.NotifyCanExecuteChanged();ExportCommand.NotifyCanExecuteChanged();UndoCommand.NotifyCanExecuteChanged();
         RedoCommand.NotifyCanExecuteChanged();FitViewCommand.NotifyCanExecuteChanged();SetViewCommand.NotifyCanExecuteChanged();
+        OpenRecoveryCommand.NotifyCanExecuteChanged();
+        ManageResourcesCommand.NotifyCanExecuteChanged();
     }
     private void Attach(CadDocumentSession session)
     {
         var doc=new CadDocumentViewModel(session,kernel,log);Documents.Add(doc);
         doc.Activated+=OnDocumentActivated;doc.CloseRequested+=OnDocumentCloseRequested;
         session.StatusChanged+=OnDocumentStatus;
-        _dockLayoutService.OpenDocument(doc);ActiveDocument=doc;doc.IsActive=true;
+        try{_dockLayoutService.OpenDocument(doc);ActiveDocument=doc;doc.IsActive=true;}
+        catch
+        {
+            // A failed dock attachment must not leave a view model observing a discarded recovery candidate.
+            try{doc.PermitClose();_dockLayoutService.CloseDocument(doc);}
+            finally
+            {
+                doc.Detach();doc.Activated-=OnDocumentActivated;doc.CloseRequested-=OnDocumentCloseRequested;
+                session.StatusChanged-=OnDocumentStatus;Documents.Remove(doc);
+                if(ReferenceEquals(ActiveDocument,doc))ActiveDocument=Documents.LastOrDefault();
+            }
+            throw;
+        }
     }
     private void OnDocumentActivated(object? sender,EventArgs e)=>ActiveDocument=(CadDocumentViewModel)sender!;
     private async void OnDocumentCloseRequested(object? sender,EventArgs e)
@@ -252,6 +275,48 @@ public partial class MainWindowViewModel : ObservableObject
         try{await action();}catch(Exception ex){Report(ex);}finally{IsBusy=false;}
     }
     public void Report(Exception ex){StatusText=ex.Message;log.Add(ex.Message,CadMessageLevel.Error,"Workspace");}
+    public void ReportRecoveryFailure(Exception ex)
+    {log.Add(string.Format(Strings.RecoveryWriteFailed,ex.Message),CadMessageLevel.Warning,"Recovery");}
+    [RelayCommand(CanExecute=nameof(CanStartOperation))]
+    private void OpenRecovery()=>recoveryDialog.Show();
+    [RelayCommand(CanExecute=nameof(CanUseDocument))]
+    private void ManageResources()
+    {
+        if(ActiveDocument is not {} doc)return;
+        using var model=new DocumentResourcesViewModel(doc);resourcesDialog.Show(model);
+    }
+    public async Task CheckForRecoveryAsync()
+    {
+        try
+        {
+            var scan=await recoveryStore.ScanAsync();
+            foreach(var diagnostic in scan.Diagnostics)log.Add(diagnostic.Message,CadMessageLevel.Warning,diagnostic.Code);
+            if(scan.Entries.Count>0)recoveryDialog.Show();
+        }
+        catch(Exception ex){ReportRecoveryFailure(ex);}
+    }
+    public async Task<bool> RestoreRecoveryAsync(RecoveryKey key)
+    {
+        if(!CanStartOperation())return false;IsBusy=true;
+        CadDocumentSession? candidate=null;bool attached=false;
+        try
+        {
+            using var source=await recoveryStore.OpenAsync(key,assets);
+            candidate=workspace.AttachRecovered(source.Document.Snapshot,source.Entry.OriginalPath);
+            // Establish a durable checkpoint in this process before retiring the old source.
+            await recovery.CheckpointAsync(candidate);
+            Attach(candidate);attached=true;
+            foreach(var diagnostic in source.Document.Diagnostics)log.Add(diagnostic.Message,CadMessageLevel.Warning,diagnostic.Code);
+            try{await source.RetireAsync();}catch(Exception ex){ReportRecoveryFailure(ex);}
+            StatusText=Strings.RecoveryOpened;return true;
+        }
+        catch(Exception ex)
+        {
+            if(candidate is not null&&!attached)await workspace.CloseAsync(candidate);
+            Report(ex);return false;
+        }
+        finally{IsBusy=false;}
+    }
 
     [RelayCommand]
     private void ToggleLeftPanel() => _sideToggleManager.Toggle(ToolboxSide.Left);

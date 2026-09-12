@@ -45,15 +45,17 @@ internal static class SmokeRunner
             first.IsActive=true;await Idle();
             if(!ReferenceEquals(vm.ActiveDocument,first))throw new InvalidOperationException("Dock activation did not route to the first document.");
             await first.Session.UndoAsync();await first.Session.RedoAsync();await Idle();
+            await ResourceSmokeRunner.RunAsync(window,vm,storage,output);
             OcctViewportHost.SuspendAll(true);await Idle();OcctViewportHost.SuspendAll(false);await Idle();
             var bitmap=new RenderTargetBitmap((int)window.ActualWidth,(int)window.ActualHeight,96,96,PixelFormats.Pbgra32);bitmap.Render(window);
             var encoder=new PngBitmapEncoder();encoder.Frames.Add(BitmapFrame.Create(bitmap));using(var file=File.Create(Path.Combine(output,"shell.png")))encoder.Save(file);
             if(!await vm.CloseAllAsync())throw new InvalidOperationException("Documents did not close cleanly.");
+            await ((App)System.Windows.Application.Current).StopRecoveryAsync();
             await Idle();
             int assets=((MemoryAssetStore)services.GetRequiredService<IAssetStore>()).Count;
             if(assets!=0)throw new InvalidOperationException($"{assets} assets remain after document close.");
             listener.Flush();bindingOutput.Flush();
-            await File.WriteAllTextAsync(Path.Combine(output,"result.txt"),"PASS: native viewport, preview/commit, tree, STEP import, document switching, undo/redo, MessagePack save, STEP/IGES/STL export, modal airspace suspension, zero remaining assets.");
+            await File.WriteAllTextAsync(Path.Combine(output,"result.txt"),"PASS: native viewport, preview/commit, tree, STEP import, document switching, undo/redo, MessagePack save, STEP/IGES/STL export, resource window and density bindings, target part/layer/material creation, instance position bindings, visibility, MetroWindow dialogs, three-language layouts, modal airspace suspension, zero remaining assets.");
             window.CloseAfterSmoke();
         }
         catch(Exception ex)

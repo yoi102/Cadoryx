@@ -1,4 +1,4 @@
-param([switch]$PublishSmoke)
+param([switch]$PublishSmoke, [switch]$RecoverySmoke, [switch]$WindowSmoke)
 $ErrorActionPreference = 'Stop'
 $cadRoot = Split-Path -Parent $PSScriptRoot
 Push-Location $cadRoot
@@ -9,7 +9,7 @@ try {
     if ($LASTEXITCODE -ne 0) { throw 'Release build failed.' }
     dotnet test Cadoryx.Tests -c Release --no-build --no-restore --nologo -v minimal
     if ($LASTEXITCODE -ne 0) { throw 'Tests failed.' }
-    if ($PublishSmoke) {
+    if ($PublishSmoke -or $RecoverySmoke -or $WindowSmoke) {
         $cadStamp = Get-Date -Format 'yyyyMMdd-HHmmss'
         $cadPublish = Join-Path $cadRoot "artifacts\publish\$cadStamp"
         $cadSmoke = Join-Path $cadRoot "artifacts\smoke-$cadStamp"
@@ -39,6 +39,60 @@ try {
             Write-Output "Evidence: $cadSmoke"
         }
         finally { $cadRun.Dispose() }
+        if ($WindowSmoke) {
+            $cadWindowSmoke = Join-Path $cadRoot "artifacts\window-smoke-$cadStamp"
+            $cadFixtures = Join-Path $cadRoot 'Cadoryx.Tests\Fixtures\Exchange'
+            $cadStart.Arguments = '--window-smoke "' + $cadWindowSmoke + '" "' + $cadFixtures + '"'
+            $cadWindowRun = [System.Diagnostics.Process]::Start($cadStart)
+            try {
+                if (!$cadWindowRun.WaitForExit(45000)) { $cadWindowRun.Kill(); throw 'Window smoke timed out.' }
+                $cadWindowResult = Join-Path $cadWindowSmoke 'result.txt'
+                if (!(Test-Path -LiteralPath $cadWindowResult)) { throw "No window result (exit $($cadWindowRun.ExitCode))." }
+                Get-Content -LiteralPath $cadWindowResult
+                if ($cadWindowRun.ExitCode -ne 0 -or !(Get-Content -LiteralPath $cadWindowResult -Raw).StartsWith('PASS:')) { throw 'Window smoke failed.' }
+                if ((Get-Item -LiteralPath (Join-Path $cadWindowSmoke 'bindings.log')).Length -gt 0) { throw 'Window binding errors recorded.' }
+                Write-Output "Window evidence: $cadWindowSmoke"
+            }
+            finally { $cadWindowRun.Dispose() }
+        }
+        if ($RecoverySmoke) {
+            $cadRecovery = Join-Path $cadRoot "artifacts\recovery-smoke-$cadStamp"
+            $cadStart.Arguments = '--recovery-seed "' + $cadRecovery + '"'
+            $cadSeed = [System.Diagnostics.Process]::Start($cadStart)
+            try {
+                $cadDeadline = [System.Diagnostics.Stopwatch]::StartNew()
+                $cadReady = Join-Path $cadRecovery 'seed.ready'
+                while (!(Test-Path -LiteralPath $cadReady)) {
+                    if ($cadSeed.HasExited) {
+                        $cadSeedResult = Join-Path $cadRecovery 'seed-result.txt'
+                        if (Test-Path -LiteralPath $cadSeedResult) { Get-Content -LiteralPath $cadSeedResult }
+                        throw 'Recovery seed exited before its timer checkpoint.'
+                    }
+                    if ($cadDeadline.Elapsed.TotalSeconds -gt 55) { throw 'Recovery timer checkpoint timed out.' }
+                    Start-Sleep -Milliseconds 200
+                }
+                # Terminate only the diagnostic process just started, without running normal close cleanup.
+                $cadSeed.Kill()
+                if (!$cadSeed.WaitForExit(10000)) { throw 'Recovery seed did not terminate.' }
+                if ((Get-Item -LiteralPath (Join-Path $cadRecovery 'seed-bindings.log')).Length -gt 0) { throw 'Recovery seed binding errors recorded.' }
+            }
+            finally {
+                if (!$cadSeed.HasExited) { $cadSeed.Kill(); $null = $cadSeed.WaitForExit(10000) }
+                $cadSeed.Dispose()
+            }
+            $cadStart.Arguments = '--recovery-verify "' + $cadRecovery + '"'
+            $cadRestart = [System.Diagnostics.Process]::Start($cadStart)
+            try {
+                if (!$cadRestart.WaitForExit(30000)) { $cadRestart.Kill(); throw 'Recovery restart timed out.' }
+                $cadRecoveryResult = Join-Path $cadRecovery 'result.txt'
+                if (!(Test-Path -LiteralPath $cadRecoveryResult)) { throw "No recovery result (exit $($cadRestart.ExitCode))." }
+                Get-Content -LiteralPath $cadRecoveryResult
+                if ($cadRestart.ExitCode -ne 0 -or !(Get-Content -LiteralPath $cadRecoveryResult -Raw).StartsWith('PASS:')) { throw 'Recovery smoke failed.' }
+                if ((Get-Item -LiteralPath (Join-Path $cadRecovery 'bindings.log')).Length -gt 0) { throw 'Recovery UI binding errors recorded.' }
+                Write-Output "Recovery evidence: $cadRecovery"
+            }
+            finally { $cadRestart.Dispose() }
+        }
     }
 }
 finally { Pop-Location }
