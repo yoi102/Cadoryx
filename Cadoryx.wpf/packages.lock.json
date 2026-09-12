@@ -1,0 +1,423 @@
+{
+  "version": 1,
+  "dependencies": {
+    "net10.0-windows7.0": {
+      "Antelcat.I18N.WPF": {
+        "type": "Direct",
+        "requested": "[2.0.0-preview-1, )",
+        "resolved": "2.0.0-preview-1",
+        "contentHash": "hQohJhw4J/J5QykecgkPz6MZAEd+cUvW3SDzaZvHvx96VlxD2+yeV/sqc8budx7NOimiRULGPinNY3gfSKQCxQ==",
+        "dependencies": {
+          "Antelcat.I18N.SourceGenerators": "2.0.0-preview-1"
+        }
+      },
+      "CommunityToolkit.Mvvm": {
+        "type": "Direct",
+        "requested": "[8.4.2, )",
+        "resolved": "8.4.2",
+        "contentHash": "WadCzGEc2U+3e20avRLng4qNtt4zoOGWrdUISqJWrHe3/FSnrYjuM5Sb4yQb09LhkBXrrI4Zt3dLKgRMbItsrg=="
+      },
+      "Dirkster.AvalonDock": {
+        "type": "Direct",
+        "requested": "[5.0.1-preview.127, )",
+        "resolved": "5.0.1-preview.127",
+        "contentHash": "ODv2ueR3xVl5N99I0Kg8l2lKN2RRWj5V3UE4dh5XxKrF13PCZUHF5Zr8yZWllUGIs8vPkOmQ+6ZH4LyNwkLQuA==",
+        "dependencies": {
+          "Dirkster.AvalonDock.Core": "5.0.1-preview.127"
+        }
+      },
+      "Dirkster.AvalonDock.DependencyInjection": {
+        "type": "Direct",
+        "requested": "[5.0.1-preview.127, )",
+        "resolved": "5.0.1-preview.127",
+        "contentHash": "PonIkOAFt1C0r1yeihHivjo5nxbuxRspkv05NtZxSe3wLz+qaoIvJ38SC/Yy6bmW6qyIb8TbnjiWo2DcEyKsfA==",
+        "dependencies": {
+          "Dirkster.AvalonDock.Core": "5.0.1-preview.127",
+          "Dirkster.AvalonDock.Mvvm": "5.0.1-preview.127",
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "10.0.10"
+        }
+      },
+      "Dirkster.AvalonDock.Serializer.Json": {
+        "type": "Direct",
+        "requested": "[5.0.1-preview.127, )",
+        "resolved": "5.0.1-preview.127",
+        "contentHash": "LW+VgDFOHU2tMK+H6pDoDx7VXi+GqPQeUSWRYWZHwrI6VEu+tb6ca0RIGwC+RRdZVLhKB1imKL8St+m5gddwag==",
+        "dependencies": {
+          "Dirkster.AvalonDock.Core": "5.0.1-preview.127"
+        }
+      },
+      "Dirkster.AvalonDock.Themes.Arc": {
+        "type": "Direct",
+        "requested": "[5.0.1-preview.127, )",
+        "resolved": "5.0.1-preview.127",
+        "contentHash": "n2KjpS7qCXjONZUcXRn+EHUnv7oPlKFtxYOJBAzGkIo6jiG7h54CafUEIyWujDAIftSeBTRBiZnxDORXvmy/yQ==",
+        "dependencies": {
+          "Dirkster.AvalonDock": "5.0.1-preview.127"
+        }
+      },
+      "gong-wpf-dragdrop": {
+        "type": "Direct",
+        "requested": "[4.0.0, )",
+        "resolved": "4.0.0",
+        "contentHash": "nDj86v1XHhgmQR8PPo/uDDp/xdLDxcqZdvIwSxWAHQPiRX/GBXK13FYY0C2xQow9RSl6j5FKLk8xoYrdb52vqg=="
+      },
+      "MahApps.Metro": {
+        "type": "Direct",
+        "requested": "[3.0.0-rc0529, )",
+        "resolved": "3.0.0-rc0529",
+        "contentHash": "3k5YxcSiBEuUJ//8I0nwHTBPAgiaZ3Jb78wdpsSVc+uXPSU4Xvv/D2uqXB6XOszO1X5XFubFNCzFniwbdE4TNg==",
+        "dependencies": {
+          "ControlzEx": "7.0.2"
+        }
+      },
+      "MaterialDesignThemes.MahApps": {
+        "type": "Direct",
+        "requested": "[5.4.0-ci1475, )",
+        "resolved": "5.4.0-ci1475",
+        "contentHash": "QH5PG9dY1PIoIQiUQpvwByC2mHnkLyzV8AaB78mSBHGYnVYT70pOhTt7MDhmkbqWzx9RLjSmb25yTy5dlxdKJA==",
+        "dependencies": {
+          "MahApps.Metro": "2.4.11",
+          "MaterialDesignColors": "5.4.0-ci1475",
+          "MaterialDesignThemes": "5.4.0-ci1475",
+          "Microsoft.Xaml.Behaviors.Wpf": "1.1.142"
+        }
+      },
+      "MessagePipe": {
+        "type": "Direct",
+        "requested": "[1.8.2, )",
+        "resolved": "1.8.2",
+        "contentHash": "ZTQERiwXB0ev/3TWDsKmzXOkxQ1a0fwcTljghSRZQq2hLUJ16SNw/gcjEjvyeKOX90DPkbV2sSv86aGb+2ryxQ==",
+        "dependencies": {
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "6.0.0"
+        }
+      },
+      "Microsoft.Extensions.DependencyInjection": {
+        "type": "Direct",
+        "requested": "[11.0.0-preview.7.26381.103, )",
+        "resolved": "11.0.0-preview.7.26381.103",
+        "contentHash": "IgS1YfEd2i0p/zY8ytcW1zaFR3ivC0M4Ce3JnpZoKpzK9MogNkHb9BZPqYtq0mDuCe2ouirh6058glgPxhwD8g==",
+        "dependencies": {
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "11.0.0-preview.7.26381.103"
+        }
+      },
+      "OcctSharp.Native.win-x64": {
+        "type": "Direct",
+        "requested": "[8.0.1-preview.26, 8.0.1-preview.26]",
+        "resolved": "8.0.1-preview.26",
+        "contentHash": "YcnRrMZrTAMELJCZSGb+30ijG/GX4qiA1V7s/L0Ss8LZ9K1RNgshsOUS8lTb+3BN4mSM2/dj7sQ7a7pL2MjeKQ=="
+      },
+      "Antelcat.I18N.SourceGenerators": {
+        "type": "Transitive",
+        "resolved": "2.0.0-preview-2",
+        "contentHash": "xZo+iwketCNIjnDkPM1v1erAPBSMLMYn7ztr1VBjWLFGNdVTd3fYJ7rpuF5i5d0eYHr1ZOrIOay+qfkJrCKYPQ=="
+      },
+      "ControlzEx": {
+        "type": "Transitive",
+        "resolved": "7.0.2",
+        "contentHash": "PqQ/K4AnVjn64r52lvMrKDaJxdlF2AJJlRZCuF2NvXe6S420CDIFu7h3eHOzi2CeKsNU/qpI5qwut4WZ4RSrAg==",
+        "dependencies": {
+          "Microsoft.Xaml.Behaviors.Wpf": "1.1.135"
+        }
+      },
+      "Dirkster.AvalonDock.Core": {
+        "type": "Transitive",
+        "resolved": "5.0.1-preview.127",
+        "contentHash": "l+0Fgj/npXP3CN+r9qOw8nmm1KfVus36HTNSUA6Z+QhPIfrAa/fXl7vfW0H6ivXf/yMtbVThmlrL8zLN5x1Ypw=="
+      },
+      "Dirkster.AvalonDock.Mvvm": {
+        "type": "Transitive",
+        "resolved": "5.0.1-preview.127",
+        "contentHash": "M1lXYYTguqFD3XB9Mo04ZV3JkKHYBoZ/3wxvBg3B39mLdXCmcV2WDlpQBw+/xgv0JUaZqxo6hRad3Vb94n2evg==",
+        "dependencies": {
+          "Dirkster.AvalonDock.Core": "5.0.1-preview.127"
+        }
+      },
+      "Dirkster.AvalonDock.Mvvm.CommunityToolkit": {
+        "type": "Transitive",
+        "resolved": "5.0.1-preview.127",
+        "contentHash": "ZNK+25IaR9VOVf5XMlXB87aG9R4mgYgFkFkfiWd5gobDjwvbzEibsGJMAWBnnG/WpcB8U2ho6PReXuJ8U/FW2A==",
+        "dependencies": {
+          "CommunityToolkit.Mvvm": "8.4.0",
+          "Dirkster.AvalonDock.Core": "5.0.1-preview.127"
+        }
+      },
+      "MaterialDesignColors": {
+        "type": "Transitive",
+        "resolved": "5.4.0-ci1475",
+        "contentHash": "SJkCCuD/sgDvyzXqQosbtpRBkWlmd/RPjiYhODhQBESN61WHnO8gENQ5xQhKDroEnSVMBeFo+5OkENPaN90ZsQ=="
+      },
+      "MaterialDesignThemes": {
+        "type": "Transitive",
+        "resolved": "5.4.0-ci1475",
+        "contentHash": "bCEyy9Mlof8BVFkYCmKJOccs7AUZCOUE4M0cVRKUhLm6XnDaaBKeFCbPmzPcFvxRF5Di6cOW6mdU6TF3kzxCSg==",
+        "dependencies": {
+          "MaterialDesignColors": "5.4.0-ci1475",
+          "Microsoft.Xaml.Behaviors.Wpf": "1.1.142"
+        }
+      },
+      "MessagePack": {
+        "type": "Transitive",
+        "resolved": "3.1.8",
+        "contentHash": "Qk2q+9FVxnMSp+NQ9y3SLz3HqWe7Rg3KRMHhBX28FkKUoOeP9YIU86mA4pFOxDDjUIRA9e7Ssbxs/LwWUcAzPw==",
+        "dependencies": {
+          "MessagePack.Annotations": "3.1.8",
+          "MessagePackAnalyzer": "3.1.8",
+          "Microsoft.NET.StringTools": "17.11.4"
+        }
+      },
+      "MessagePack.Annotations": {
+        "type": "Transitive",
+        "resolved": "3.1.8",
+        "contentHash": "SitOtZ4tOlAZZPF7p52M7143F+Cuz7o/aU0MrtAXX0+ZkPXzDNroOFhzzE2ogMFThsoEW/E6akXVVcBFM9ZKaw=="
+      },
+      "MessagePackAnalyzer": {
+        "type": "Transitive",
+        "resolved": "3.1.8",
+        "contentHash": "Vm4g0cR4YRKRchEOmMJ0uVFU6yxdg7cJa2KHv3SUAHEsdYKvMpHMF5A1hZfsix89ymD5cmuzRnw9a6dKMcvq+Q=="
+      },
+      "Microsoft.Extensions.DependencyInjection.Abstractions": {
+        "type": "Transitive",
+        "resolved": "11.0.0-preview.7.26381.103",
+        "contentHash": "PQNgwclRUW8bimfMe2AqQZjvs0cUGbY/Rut+q6Vq4ub61TwNjOmvhMULq7V6bnyhLmfpQrsZ76X5SlFH9omdSA=="
+      },
+      "Microsoft.NET.StringTools": {
+        "type": "Transitive",
+        "resolved": "17.11.4",
+        "contentHash": "mudqUHhNpeqIdJoUx2YDWZO/I9uEDYVowan89R6wsomfnUJQk6HteoQTlNjZDixhT2B4IXMkMtgZtoceIjLRmA=="
+      },
+      "Microsoft.Xaml.Behaviors.Wpf": {
+        "type": "Transitive",
+        "resolved": "1.1.142",
+        "contentHash": "c47wA/8GHiQ9w+O6+mdqrZhZrxHogx2/fSZyRKL9tz0k+ypoTiwOx6fID0X3jr5LnCazJbCk7KiAcL0zVnNgNA=="
+      },
+      "OcctSharp": {
+        "type": "Transitive",
+        "resolved": "8.0.1-preview.26",
+        "contentHash": "fm4x14BGUonmsFyB27e4sfVaA/O2uRJMxvsOFXKmKOS41NL035LafOU4XQrFxGaEInspTn8xAy6s/S2Wt/uqSw==",
+        "dependencies": {
+          "OcctSharp.DataExchange": "8.0.1-preview.26",
+          "OcctSharp.Documents": "8.0.1-preview.26",
+          "OcctSharp.Draw": "8.0.1-preview.26",
+          "OcctSharp.Foundation": "8.0.1-preview.26",
+          "OcctSharp.Geometry": "8.0.1-preview.26",
+          "OcctSharp.IVtk": "8.0.1-preview.26",
+          "OcctSharp.Mesh": "8.0.1-preview.26",
+          "OcctSharp.MeshData": "8.0.1-preview.26",
+          "OcctSharp.Modeling": "8.0.1-preview.26",
+          "OcctSharp.Runtime": "8.0.1-preview.26",
+          "OcctSharp.Visualization": "8.0.1-preview.26",
+          "OcctSharp.Xde": "8.0.1-preview.26"
+        }
+      },
+      "OcctSharp.DataExchange": {
+        "type": "Transitive",
+        "resolved": "8.0.1-preview.26",
+        "contentHash": "3JviP3IQixkmimZ5F0eilktl+andtFlviDvOe/jxX+wmNN3EEJyST/Qs8l14rMobfFkm3hgAU/gyfn/eLnAO0g==",
+        "dependencies": {
+          "OcctSharp.Documents": "8.0.1-preview.26",
+          "OcctSharp.Foundation": "8.0.1-preview.26",
+          "OcctSharp.Geometry": "8.0.1-preview.26",
+          "OcctSharp.Mesh": "8.0.1-preview.26",
+          "OcctSharp.MeshData": "8.0.1-preview.26",
+          "OcctSharp.Modeling": "8.0.1-preview.26",
+          "OcctSharp.Runtime": "8.0.1-preview.26",
+          "OcctSharp.Visualization": "8.0.1-preview.26"
+        }
+      },
+      "OcctSharp.Documents": {
+        "type": "Transitive",
+        "resolved": "8.0.1-preview.26",
+        "contentHash": "9rjgmSjN282+/dS1QnpIP4d9Ng2xbBehxdVt23vLyfoT2674+8YNmhd0a3cFQ1jrAd2l22eygSemY3SUg1AKmg==",
+        "dependencies": {
+          "OcctSharp.Foundation": "8.0.1-preview.26",
+          "OcctSharp.Geometry": "8.0.1-preview.26",
+          "OcctSharp.MeshData": "8.0.1-preview.26",
+          "OcctSharp.Modeling": "8.0.1-preview.26",
+          "OcctSharp.Runtime": "8.0.1-preview.26"
+        }
+      },
+      "OcctSharp.Draw": {
+        "type": "Transitive",
+        "resolved": "8.0.1-preview.26",
+        "contentHash": "KhJ0UJQ9gRyYz9o5e+j8ioUqgyd60YajZfojNTiI+HuOw5QJH+pJjxFqsPlcRWhPCsp0JrthkyvK6klZMxCIDg==",
+        "dependencies": {
+          "OcctSharp.Runtime": "8.0.1-preview.26",
+          "OcctSharp.Visualization": "8.0.1-preview.26",
+          "OcctSharp.Xde": "8.0.1-preview.26"
+        }
+      },
+      "OcctSharp.Foundation": {
+        "type": "Transitive",
+        "resolved": "8.0.1-preview.26",
+        "contentHash": "14NNahjjwU8jTGLJvFbzxElVVcYGUp3cK8DCsTr11gZzGP5Scb75TBMwDU+YUVkbirn4aP7wWF6rX4yfEjjrQw==",
+        "dependencies": {
+          "OcctSharp.Runtime": "8.0.1-preview.26"
+        }
+      },
+      "OcctSharp.Geometry": {
+        "type": "Transitive",
+        "resolved": "8.0.1-preview.26",
+        "contentHash": "Cgyb/uMrU+ntXxHNEMk/HdkTLas3cD+8TUf8pQ4gR3+u8DgpvU0FMb+92xphnYvjXvYlhVcF7eZrCegHUxdVew==",
+        "dependencies": {
+          "OcctSharp.Foundation": "8.0.1-preview.26",
+          "OcctSharp.Runtime": "8.0.1-preview.26"
+        }
+      },
+      "OcctSharp.IVtk": {
+        "type": "Transitive",
+        "resolved": "8.0.1-preview.26",
+        "contentHash": "zlWphAbrTc49fRwYbg3xYv9Wa9rFHTLi0Xe7evXYtfHc3W2kAS3qFRhyP+vwpR02gOZZ7pSE9hXaUTKFCki9kA==",
+        "dependencies": {
+          "OcctSharp.Runtime": "8.0.1-preview.26",
+          "OcctSharp.Visualization": "8.0.1-preview.26"
+        }
+      },
+      "OcctSharp.Mesh": {
+        "type": "Transitive",
+        "resolved": "8.0.1-preview.26",
+        "contentHash": "XQF5N2n8WRvBPbVl6GbZRdZIthuHjEtCLz6bCdSy8ZLFhlCsLWHzE2RVnS0p+8BEHWDHpD4IuW03khn+8QFZJg==",
+        "dependencies": {
+          "OcctSharp.Foundation": "8.0.1-preview.26",
+          "OcctSharp.Geometry": "8.0.1-preview.26",
+          "OcctSharp.MeshData": "8.0.1-preview.26",
+          "OcctSharp.Modeling": "8.0.1-preview.26",
+          "OcctSharp.Runtime": "8.0.1-preview.26"
+        }
+      },
+      "OcctSharp.MeshData": {
+        "type": "Transitive",
+        "resolved": "8.0.1-preview.26",
+        "contentHash": "E60qVkXfZWdg632YXI5iMPEVFOa3fO/fBn805kVxLnQ5+H27UuYhekmp42N8sBmX9CnoSVJDbRzApY7Y6YecbA==",
+        "dependencies": {
+          "OcctSharp.Foundation": "8.0.1-preview.26",
+          "OcctSharp.Geometry": "8.0.1-preview.26",
+          "OcctSharp.Runtime": "8.0.1-preview.26"
+        }
+      },
+      "OcctSharp.Modeling": {
+        "type": "Transitive",
+        "resolved": "8.0.1-preview.26",
+        "contentHash": "elqrYOqv+XOrab5kQXpMoTP/fyq03LxuxkZ0N0l3pJyo9k3S23g+XDoDQFBlxAdkupe2fk/mlFHVn1GGlpeCGg==",
+        "dependencies": {
+          "OcctSharp.Foundation": "8.0.1-preview.26",
+          "OcctSharp.Geometry": "8.0.1-preview.26",
+          "OcctSharp.MeshData": "8.0.1-preview.26",
+          "OcctSharp.Runtime": "8.0.1-preview.26"
+        }
+      },
+      "OcctSharp.Runtime": {
+        "type": "Transitive",
+        "resolved": "8.0.1-preview.26",
+        "contentHash": "Lwz40KG4Z3SRHZ0vHzGRlEpaCfRxvUvPdCzSpu8KKbDV6HdYKRauW2loarncYGUM0xVihYpKUEMC5Z9Bc5N1Ng==",
+        "dependencies": {
+          "OcctSharp.Native.win-x64": "8.0.1-preview.26"
+        }
+      },
+      "OcctSharp.Visualization": {
+        "type": "Transitive",
+        "resolved": "8.0.1-preview.26",
+        "contentHash": "7+cLcLRpu7WGeMc557wnrUPk08bvDS9E4aL+IY7fW9dpbaFCF+6JeolQyc8m1/vfZtqO7cMDyIrkfoRIvN0kNA==",
+        "dependencies": {
+          "OcctSharp.Documents": "8.0.1-preview.26",
+          "OcctSharp.Foundation": "8.0.1-preview.26",
+          "OcctSharp.Geometry": "8.0.1-preview.26",
+          "OcctSharp.Mesh": "8.0.1-preview.26",
+          "OcctSharp.MeshData": "8.0.1-preview.26",
+          "OcctSharp.Modeling": "8.0.1-preview.26",
+          "OcctSharp.Runtime": "8.0.1-preview.26"
+        }
+      },
+      "OcctSharp.Xde": {
+        "type": "Transitive",
+        "resolved": "8.0.1-preview.26",
+        "contentHash": "xuuWno9ZPYrJ9ANbqNvdfZpI8bQGsh+oRVFsIuo3WwcpZ5laRBxLsV9Jh5Fxf2fn/p4iGwa3trTwiAPQjcHp8g==",
+        "dependencies": {
+          "OcctSharp.DataExchange": "8.0.1-preview.26",
+          "OcctSharp.Documents": "8.0.1-preview.26",
+          "OcctSharp.Foundation": "8.0.1-preview.26",
+          "OcctSharp.Geometry": "8.0.1-preview.26",
+          "OcctSharp.Mesh": "8.0.1-preview.26",
+          "OcctSharp.MeshData": "8.0.1-preview.26",
+          "OcctSharp.Modeling": "8.0.1-preview.26",
+          "OcctSharp.Runtime": "8.0.1-preview.26",
+          "OcctSharp.Visualization": "8.0.1-preview.26"
+        }
+      },
+      "cadoryx.commands": {
+        "type": "Project",
+        "dependencies": {
+          "Cadoryx.Kernel.Abstractions": "[1.0.0, )"
+        }
+      },
+      "cadoryx.db": {
+        "type": "Project"
+      },
+      "cadoryx.editor": {
+        "type": "Project",
+        "dependencies": {
+          "Cadoryx.Commands": "[1.0.0, )",
+          "Cadoryx.Rendering": "[1.0.0, )"
+        }
+      },
+      "cadoryx.io": {
+        "type": "Project",
+        "dependencies": {
+          "Cadoryx.Kernel.Abstractions": "[1.0.0, )",
+          "MessagePack": "[3.1.8, )"
+        }
+      },
+      "cadoryx.kernel.abstractions": {
+        "type": "Project",
+        "dependencies": {
+          "Cadoryx.Db": "[1.0.0, )"
+        }
+      },
+      "cadoryx.kernel.occt": {
+        "type": "Project",
+        "dependencies": {
+          "Cadoryx.Kernel.Abstractions": "[1.0.0, )",
+          "OcctSharp": "[8.0.1-preview.26, 8.0.1-preview.26]"
+        }
+      },
+      "cadoryx.lang": {
+        "type": "Project",
+        "dependencies": {
+          "Antelcat.I18N.SourceGenerators": "[2.0.0-preview-2, )"
+        }
+      },
+      "cadoryx.rendering": {
+        "type": "Project",
+        "dependencies": {
+          "Cadoryx.Db": "[1.0.0, )"
+        }
+      },
+      "cadoryx.rendering.occt": {
+        "type": "Project",
+        "dependencies": {
+          "Cadoryx.Kernel.Occt": "[1.0.0, )",
+          "Cadoryx.Rendering": "[1.0.0, )"
+        }
+      },
+      "cadoryx.viewmodels": {
+        "type": "Project",
+        "dependencies": {
+          "Cadoryx.Editor": "[1.0.0, )",
+          "Cadoryx.ViewModels.Services": "[1.0.0, )",
+          "CommunityToolkit.Mvvm": "[8.4.2, )",
+          "Dirkster.AvalonDock.Core": "[5.0.1-preview.127, )",
+          "Dirkster.AvalonDock.Mvvm": "[5.0.1-preview.127, )",
+          "Dirkster.AvalonDock.Mvvm.CommunityToolkit": "[5.0.1-preview.127, )",
+          "MessagePipe": "[1.8.2, )",
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "[11.0.0-preview.7.26381.103, )"
+        }
+      },
+      "cadoryx.viewmodels.services": {
+        "type": "Project"
+      },
+      "cadoryx.wpf.controls": {
+        "type": "Project"
+      }
+    },
+    "net10.0-windows7.0/win-x64": {}
+  }
+}

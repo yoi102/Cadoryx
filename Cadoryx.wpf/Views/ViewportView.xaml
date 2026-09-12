@@ -1,0 +1,50 @@
+<UserControl x:Class="Cadoryx.wpf.Views.ViewportView"
+ xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+ xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls">
+ <Grid Background="#09101A">
+  <Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="250"/></Grid.ColumnDefinitions>
+  <Grid.RowDefinitions><RowDefinition Height="Auto"/><RowDefinition Height="*"/></Grid.RowDefinitions>
+  <TextBlock Text="左键选择 · Ctrl 多选 · 中键平移 · 右键旋转 · 滚轮缩放" Foreground="#B0C1D8" Margin="12,8"/>
+  <Grid x:Name="HostPanel" Grid.Row="1"/>
+  <Border Grid.Column="1" Grid.RowSpan="2" Background="{DynamicResource MaterialDesign.Brush.Background}" Padding="12">
+   <ScrollViewer VerticalScrollBarVisibility="Auto">
+    <StackPanel>
+     <TextBlock Text="建模参数" FontSize="18" Margin="0,0,0,10"/>
+     <ComboBox SelectedValue="{Binding ToolKind}" SelectedValuePath="Tag" Margin="0,0,0,8">
+      <ComboBoxItem Content="长方体" Tag="Box"/><ComboBoxItem Content="圆柱" Tag="Cylinder"/>
+      <ComboBoxItem Content="多边形拉伸" Tag="Extrude"/><ComboBoxItem Content="多边形旋转" Tag="Revolve"/>
+     </ComboBox>
+     <TextBlock Text="名称"/><TextBox Text="{Binding ObjectName,UpdateSourceTrigger=PropertyChanged}" Margin="0,2,0,8"/>
+     <TextBlock Text="X 尺寸 / 圆柱半径 (mm)"/><mah:NumericUpDown Value="{Binding SizeX}" Minimum="0.001" Margin="0,2,0,8"/>
+     <TextBlock Text="Y 尺寸 (mm)"/><mah:NumericUpDown Value="{Binding SizeY}" Minimum="0.001" Margin="0,2,0,8"/>
+     <TextBlock Text="Z 尺寸 / 拉伸距离 (mm)"/><mah:NumericUpDown Value="{Binding SizeZ}" Minimum="0.001" Margin="0,2,0,8"/>
+     <TextBlock Text="位置 X / Y / Z (mm)"/>
+     <UniformGrid Columns="3" Margin="0,2,0,8">
+      <mah:NumericUpDown Value="{Binding PositionX}" HideUpDownButtons="True"/>
+      <mah:NumericUpDown Value="{Binding PositionY}" HideUpDownButtons="True"/>
+      <mah:NumericUpDown Value="{Binding PositionZ}" HideUpDownButtons="True"/>
+     </UniformGrid>
+     <TextBlock Text="旋转角度 (°)"/><mah:NumericUpDown Value="{Binding AngleDegrees}" Minimum="0.01" Maximum="360" Margin="0,2,0,8"/>
+     <Expander Header="拉伸 / 旋转轮廓" Margin="0,0,0,8">
+      <StackPanel>
+       <TextBlock Text="拉伸：XY 平面；旋转：半径 X、高度 Y，绕 Z 轴。按顺序闭合。" TextWrapping="Wrap" Margin="0,6"/>
+       <DataGrid ItemsSource="{Binding ProfilePoints}" AutoGenerateColumns="False" CanUserAddRows="False" Height="140">
+        <DataGrid.Columns><DataGridTextColumn Header="X" Binding="{Binding X}" Width="*"/><DataGridTextColumn Header="Y" Binding="{Binding Y}" Width="*"/></DataGrid.Columns>
+       </DataGrid>
+       <WrapPanel><Button Content="加点" Command="{Binding AddProfilePointCommand}"/><Button Content="减点" Command="{Binding RemoveProfilePointCommand}"/></WrapPanel>
+      </StackPanel>
+     </Expander>
+     <Button Content="计算预览" Command="{Binding PreviewCommand}" Margin="0,4"/>
+     <UniformGrid Columns="2"><Button Content="确认" Command="{Binding ConfirmCommand}" IsEnabled="{Binding HasPreview}" Margin="0,4,4,4"/><Button Content="取消" Command="{Binding CancelCommand}" Margin="4,4,0,4"/></UniformGrid>
+     <TextBlock Text="布尔：勾选同一零件内两个以上实体。差集以先选的实体为主体。" TextWrapping="Wrap" Margin="0,10,0,6"/>
+     <UniformGrid Columns="3">
+      <Button Content="并集" Command="{Binding BooleanPreviewCommand}" CommandParameter="Fuse" Padding="4"/>
+      <Button Content="差集" Command="{Binding BooleanPreviewCommand}" CommandParameter="Cut" Padding="4"/>
+      <Button Content="交集" Command="{Binding BooleanPreviewCommand}" CommandParameter="Common" Padding="4"/>
+     </UniformGrid>
+     <TextBlock Text="{Binding ToolStatus}" TextWrapping="Wrap" Margin="0,12"/>
+    </StackPanel>
+   </ScrollViewer>
+  </Border>
+ </Grid>
+</UserControl>

@@ -1,0 +1,22 @@
+<Solution>
+  <Folder Name="/clients/">
+    <Project Path="Cadoryx.Lang/Cadoryx.Lang.csproj" Id="8c410f11-fd41-4788-bcb4-c7694f7c6579" />
+    <Project Path="Cadoryx.ViewModels.Services/Cadoryx.ViewModels.Services.csproj" Id="ebda4ce6-5fdf-4049-b101-36adbbc00e0a" />
+    <Project Path="Cadoryx.ViewModels/Cadoryx.ViewModels.csproj" Id="a82748ea-fde8-472e-91aa-63001f76689f" />
+    <Project Path="Cadoryx.wpf.Controls/Cadoryx.wpf.Controls.csproj" Id="874c5bc2-1509-4ee7-b779-9edec329faf8" />
+    <Project Path="Cadoryx.wpf/Cadoryx.wpf.csproj" />
+  </Folder>
+  <Folder Name="/core/">
+    <Project Path="Cadoryx.Commands/Cadoryx.Commands.csproj" />
+    <Project Path="Cadoryx.Db/Cadoryx.Db.csproj" />
+    <Project Path="Cadoryx.Editor/Cadoryx.Editor.csproj" />
+    <Project Path="Cadoryx.IO/Cadoryx.IO.csproj" />
+    <Project Path="Cadoryx.Kernel.Abstractions/Cadoryx.Kernel.Abstractions.csproj" />
+    <Project Path="Cadoryx.Kernel.Occt/Cadoryx.Kernel.Occt.csproj" />
+    <Project Path="Cadoryx.Rendering.Occt/Cadoryx.Rendering.Occt.csproj" />
+    <Project Path="Cadoryx.Rendering/Cadoryx.Rendering.csproj" />
+  </Folder>
+  <Folder Name="/Tests/">
+    <Project Path="Cadoryx.Tests/Cadoryx.Tests.csproj" />
+  </Folder>
+</Solution>

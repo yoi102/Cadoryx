@@ -1,0 +1,29 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Converters\**" />
+    <EmbeddedResource Remove="Converters\**" />
+    <None Remove="Converters\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.2" />
+    <PackageReference Include="Dirkster.AvalonDock.Core" Version="5.0.1-preview.127" />
+    <PackageReference Include="Dirkster.AvalonDock.Mvvm" Version="5.0.1-preview.127" />
+    <PackageReference Include="Dirkster.AvalonDock.Mvvm.CommunityToolkit" Version="5.0.1-preview.127" />
+    <PackageReference Include="MessagePipe" Version="1.8.2" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="11.0.0-preview.7.26381.103" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Cadoryx.ViewModels.Services\Cadoryx.ViewModels.Services.csproj" />
+    <ProjectReference Include="..\Cadoryx.Editor\Cadoryx.Editor.csproj" />
+  </ItemGroup>
+
+</Project>

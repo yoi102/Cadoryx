@@ -1,0 +1,288 @@
+﻿using AvalonDock.Core;
+using AvalonDock.Mvvm;
+using Cadoryx.ViewModels.Services.Platform;
+using Cadoryx.ViewModels.Services.Platform.Settings;
+using Cadoryx.ViewModels.Toolboxes;
+using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
+using System;
+using System.Collections.Generic;
+using System.Text;
+using System.Collections.ObjectModel;
+using Cadoryx.Editor;
+using Cadoryx.Kernel.Abstractions;
+using Cadoryx.Rendering;
+using Cadoryx.ViewModels.Services.Platform.Notifications;
+
+namespace Cadoryx.ViewModels;
+
+public partial class MainWindowViewModel : ObservableObject
+{
+    private readonly IDockLayoutService _dockLayoutService;
+    private readonly SideToggleManager _sideToggleManager;
+    private readonly IApplicationCultureService _cultureSettingService;
+    private readonly IApplicationThemeService _themeSettingService;
+    private readonly IApplicationSettingsStore _applicationSettingsStore;
+    private readonly IDialogService _dialogService;
+    private readonly CadoryxApplicationSettings _applicationSettings;
+    private readonly CadWorkspace workspace;
+    private readonly IGeometryKernel kernel;
+    private readonly IAssetStore assets;
+    private readonly IDocumentStorage storage;
+    private readonly ICadFileDialogs files;
+    private readonly ICadMessageLog log;
+    private readonly HashSet<CadDocumentViewModel> closingDocuments=[];
+    public ObservableCollection<CadDocumentViewModel> Documents {get;}=[];
+    [ObservableProperty] private CadDocumentViewModel? activeDocument;
+    [ObservableProperty] private bool isBusy;
+    public bool IsShuttingDown {get;private set;}
+
+    public MainWindowViewModel(IDockLayoutService dockLayoutService, SideToggleManager sideToggleManager,
+    IApplicationCultureService cultureSettingService,
+    IApplicationThemeService themeSettingService,
+    IApplicationSettingsStore applicationSettingsStore,
+    IDialogService dialogService, CadWorkspace workspace, IGeometryKernel kernel, IAssetStore assets,
+    IDocumentStorage storage, ICadFileDialogs files, ICadMessageLog log
+    )
+    {
+        this._dockLayoutService = dockLayoutService;
+        this._sideToggleManager = sideToggleManager;
+        this._cultureSettingService = cultureSettingService;
+        this._themeSettingService = themeSettingService;
+        _applicationSettingsStore = applicationSettingsStore;
+        _dialogService = dialogService;
+        this.workspace=workspace;this.kernel=kernel;this.assets=assets;this.storage=storage;this.files=files;this.log=log;
+        _applicationSettings = applicationSettingsStore.Load();
+
+        ApplySettingsToServices(_applicationSettings);
+        CurrentCultureLCID = _applicationSettings.General.CultureLcid;
+        IsDarkTheme = _applicationSettings.General.IsDarkTheme;
+    }
+
+    public IRootDock DockLayout => _dockLayoutService.Layout;
+
+    public IDockLayoutService LayoutService => _dockLayoutService;
+
+    public ModelTreeToolboxViewModel ModelTree =>
+        _dockLayoutService.GetAnchorable<ModelTreeToolboxViewModel>()
+        ?? throw new InvalidOperationException("The model tree toolbox is not registered.");
+
+    public PropertiesToolboxViewModel Properties =>
+        _dockLayoutService.GetAnchorable<PropertiesToolboxViewModel>()
+        ?? throw new InvalidOperationException("The properties toolbox is not registered.");
+
+    public MessagesToolboxViewModel Messages =>
+        _dockLayoutService.GetAnchorable<MessagesToolboxViewModel>()
+        ?? throw new InvalidOperationException("The messages toolbox is not registered.");
+
+    public CadoryxApplicationSettings ApplicationSettings => _applicationSettings;
+
+
+    [ObservableProperty]
+    public partial bool Topmost { get; set; }
+
+    [ObservableProperty]
+    public partial int CurrentCultureLCID { get; set; }
+
+    [ObservableProperty]
+    public partial bool IsDarkTheme { get; set; }
+
+    [ObservableProperty]
+    public partial string StatusText { get; set; } = "就绪";
+
+    partial void OnIsDarkThemeChanged(bool value)
+    {
+        if (value == _applicationSettings.General.IsDarkTheme)
+            return;
+
+        _applicationSettings.General.IsDarkTheme = value;
+        _themeSettingService.ApplyThemeLightDark(value);
+        _applicationSettingsStore.Save(_applicationSettings);
+      
+
+    }
+
+    [RelayCommand]
+    private void ChangeCulture(string lcidString)
+    {
+        if (!int.TryParse(lcidString, out var lcid))
+            return;
+        CurrentCultureLCID = lcid;
+        _cultureSettingService.ChangeCulture(lcid);
+        _applicationSettings.General.CultureLcid = lcid;
+        _applicationSettingsStore.Save(_applicationSettings);
+    }
+
+    [RelayCommand]
+    private void ChangeTopmost()
+    {
+        Topmost = !Topmost;
+    }
+
+    [RelayCommand(CanExecute=nameof(CanStartOperation))]
+    private void New(){if(!IsShuttingDown)Attach(workspace.Create($"未命名 {Documents.Count+1}"));}
+
+    [RelayCommand(CanExecute=nameof(CanStartOperation))]
+    private async Task OpenFileAsync()
+    {
+        if(IsShuttingDown)return;var path=files.OpenDocument();if(path is null)return;
+        await OpenPathAsync(path);
+    }
+    public async Task OpenPathAsync(string path)=>await RunAsync(async()=>
+    {
+        var existing=Documents.FirstOrDefault(d=>string.Equals(d.Session.FilePath,Path.GetFullPath(path),StringComparison.OrdinalIgnoreCase));
+        if(existing is not null){existing.IsActive=true;ActiveDocument=existing;return;}
+        bool own=Path.GetExtension(path).Equals(".cadoryx",StringComparison.OrdinalIgnoreCase);
+        using var loaded=own?await storage.LoadAsync(path,assets):await kernel.ImportAsync(path,assets);
+        Attach(workspace.Attach(loaded.Snapshot,own?Path.GetFullPath(path):null));
+        foreach(var diagnostic in loaded.Diagnostics)log.Add(diagnostic.Message,CadMessageLevel.Information,diagnostic.Code);
+        StatusText=$"已打开 {Path.GetFileName(path)}";
+    });
+
+    [RelayCommand(CanExecute=nameof(CanUseDocument))]
+    private async Task SaveAsync(){if(ActiveDocument is {} doc)await RunAsync(async()=>{await SaveDocumentAsync(doc,false);});}
+    [RelayCommand(CanExecute=nameof(CanUseDocument))] private async Task SaveAsAsync(){if(ActiveDocument is {} doc)await RunAsync(async()=>{await SaveDocumentAsync(doc,true);});}
+    private async Task<bool> SaveDocumentAsync(CadDocumentViewModel doc,bool saveAs)
+    {
+        var path=saveAs?null:doc.Session.FilePath;path??=files.SaveDocument(doc.Session.Snapshot.Name);
+        if(path is null)return false;
+        await doc.Session.SaveAsync(storage,path);StatusText=$"已保存 {Path.GetFileName(path)}";return !doc.Session.IsDirty;
+    }
+    [RelayCommand(CanExecute=nameof(CanUseDocument))] private async Task ExportAsync()
+    {
+        if(ActiveDocument is not {} doc)return;
+        var request=files.ExportDocument(doc.Session.Snapshot.Name);if(request is null)return;
+        await RunAsync(async()=>
+        {
+            using var capture=doc.Session.Capture();
+            var report=await kernel.ExportAsync(capture.Snapshot,assets,request.Path,new CadExportOptions(request.LinearDeflectionMm,request.AngularDeflectionRad,request.BinaryStl,request.VisibleOnly));
+            foreach(var diagnostic in report.Diagnostics)log.Add(diagnostic.Message,CadMessageLevel.Information,diagnostic.Code);
+            StatusText=$"已导出 {report.Format}：{Path.GetFileName(report.Path)}";
+        });
+    }
+
+    [RelayCommand(CanExecute=nameof(CanUndo))]
+    private async Task UndoAsync(){if(ActiveDocument is {} doc)await RunAsync(doc.Session.UndoAsync);}
+
+    [RelayCommand(CanExecute=nameof(CanRedo))]
+    private async Task RedoAsync(){if(ActiveDocument is {} doc)await RunAsync(doc.Session.RedoAsync);}
+
+    [RelayCommand(CanExecute=nameof(CanUseDocument))]
+    private void FitView()=>ActiveDocument?.FitView();
+
+    [RelayCommand(CanExecute=nameof(CanUseDocument))]
+    private void SetView(string viewName)=>ActiveDocument?.SetView(viewName switch{"前视"=>CadProjection.Front,"顶视"=>CadProjection.Top,"右视"=>CadProjection.Right,_=>CadProjection.Axonometric});
+    [RelayCommand] private void StartTool(string kind){if(ActiveDocument is null)New();ActiveDocument?.StartTool(kind);}
+    [RelayCommand] private void SetDisplay(string mode)=>ActiveDocument?.SetDisplay(mode=="Wireframe"?CadDisplayMode.Wireframe:CadDisplayMode.Shaded);
+    partial void OnActiveDocumentChanged(CadDocumentViewModel? value)
+    {
+        foreach(var doc in Documents)
+        {
+            if(!ReferenceEquals(doc,value)){doc.IsActive=false;doc.InvalidatePreview();}
+        }
+        if(value is not null){value.IsActive=true;if(!ReferenceEquals(_dockLayoutService.ActiveDockable,value))_dockLayoutService.ActiveDockable=value;}
+        ModelTree.Bind(value);Properties.Bind(value);
+        RefreshCommandState();
+    }
+    private bool CanStartOperation()=>!IsBusy&&!IsShuttingDown;
+    private bool CanUseDocument()=>CanStartOperation()&&ActiveDocument is {IsClosingRequested:false};
+    private bool CanUndo()=>CanUseDocument()&&ActiveDocument!.Session.CanUndo;
+    private bool CanRedo()=>CanUseDocument()&&ActiveDocument!.Session.CanRedo;
+    partial void OnIsBusyChanged(bool value)=>RefreshCommandState();
+    private void OnDocumentStatus(object? sender,EventArgs e)=>RefreshCommandState();
+    private void RefreshCommandState()
+    {
+        NewCommand.NotifyCanExecuteChanged();OpenFileCommand.NotifyCanExecuteChanged();SaveCommand.NotifyCanExecuteChanged();
+        SaveAsCommand.NotifyCanExecuteChanged();ExportCommand.NotifyCanExecuteChanged();UndoCommand.NotifyCanExecuteChanged();
+        RedoCommand.NotifyCanExecuteChanged();FitViewCommand.NotifyCanExecuteChanged();SetViewCommand.NotifyCanExecuteChanged();
+    }
+    private void Attach(CadDocumentSession session)
+    {
+        var doc=new CadDocumentViewModel(session,kernel,log);Documents.Add(doc);
+        doc.Activated+=OnDocumentActivated;doc.CloseRequested+=OnDocumentCloseRequested;
+        session.StatusChanged+=OnDocumentStatus;
+        _dockLayoutService.OpenDocument(doc);ActiveDocument=doc;doc.IsActive=true;
+    }
+    private void OnDocumentActivated(object? sender,EventArgs e)=>ActiveDocument=(CadDocumentViewModel)sender!;
+    private async void OnDocumentCloseRequested(object? sender,EventArgs e)
+    {
+        if(sender is not CadDocumentViewModel doc||IsShuttingDown||IsBusy||!closingDocuments.Add(doc))return;
+        doc.IsClosingRequested=true;
+        RefreshCommandState();
+        try{if(await CanCloseAsync(doc))await CloseDocumentAsync(doc);}catch(Exception ex){Report(ex);}finally{doc.IsClosingRequested=false;closingDocuments.Remove(doc);RefreshCommandState();}
+    }
+    private async Task<bool> CanCloseAsync(CadDocumentViewModel doc)
+    {
+        await doc.StopToolsAsync();if(!doc.Session.IsDirty)return true;
+        return files.ConfirmSave(doc.Session.Snapshot.Name) switch
+        {SaveDecision.Discard=>true,SaveDecision.Save=>await SaveDocumentAsync(doc,false),_=>false};
+    }
+    private async Task CloseDocumentAsync(CadDocumentViewModel doc)
+    {
+        doc.PermitClose();_dockLayoutService.CloseDocument(doc);doc.Detach();
+        doc.Activated-=OnDocumentActivated;doc.CloseRequested-=OnDocumentCloseRequested;
+        doc.Session.StatusChanged-=OnDocumentStatus;
+        await workspace.CloseAsync(doc.Session);Documents.Remove(doc);
+        if(ReferenceEquals(ActiveDocument,doc))ActiveDocument=Documents.LastOrDefault();
+        if(ActiveDocument is {} next)next.IsActive=true;
+    }
+    public async Task<bool> CloseAllAsync()
+    {
+        if(IsBusy||closingDocuments.Count>0)return false;
+        IsShuttingDown=true;
+        foreach(var doc in Documents)doc.IsClosingRequested=true;
+        RefreshCommandState();
+        try
+        {
+            foreach(var doc in Documents.ToArray())if(!await CanCloseAsync(doc))return false;
+            foreach(var doc in Documents.ToArray())await CloseDocumentAsync(doc);
+            return true;
+        }
+        catch(Exception ex){Report(ex);return false;}
+        finally{IsShuttingDown=false;foreach(var doc in Documents)doc.IsClosingRequested=false;RefreshCommandState();}
+    }
+    private async Task RunAsync(Func<Task> action)
+    {
+        if(IsShuttingDown||IsBusy)return;IsBusy=true;
+        try{await action();}catch(Exception ex){Report(ex);}finally{IsBusy=false;}
+    }
+    public void Report(Exception ex){StatusText=ex.Message;log.Add(ex.Message,CadMessageLevel.Error,"Workspace");}
+
+    [RelayCommand]
+    private void ToggleLeftPanel() => _sideToggleManager.Toggle(ToolboxSide.Left);
+
+    [RelayCommand]
+    private void ToggleRightPanel() => _sideToggleManager.Toggle(ToolboxSide.Right);
+
+    [RelayCommand]
+    private void ToggleBottomPanel() => _sideToggleManager.Toggle(ToolboxSide.Bottom);
+
+    [RelayCommand]
+    private void OpenApplicationSettings()
+    {
+        _dialogService.ShowApplicationSettingsDialog(
+            _applicationSettings.Clone(),
+            ApplyApplicationSettings);
+    }
+
+    private void ApplyApplicationSettings(CadoryxApplicationSettings settings)
+    {
+        _applicationSettings.CopyFrom(settings);
+        ApplySettingsToServices(_applicationSettings);
+        CurrentCultureLCID = _applicationSettings.General.CultureLcid;
+        IsDarkTheme = _applicationSettings.General.IsDarkTheme;
+        StatusText = "应用设置已应用";
+    }
+
+    private void ApplySettingsToServices(CadoryxApplicationSettings settings)
+    {
+        _themeSettingService.ApplyTheme(
+            settings.General.IsDarkTheme,
+            settings.General.PrimaryColor,
+            settings.General.SecondaryColor);
+        _cultureSettingService.ChangeCulture(settings.General.CultureLcid);
+    }
+
+
+
+}

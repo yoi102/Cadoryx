@@ -1,0 +1,84 @@
+{
+  "version": 1,
+  "dependencies": {
+    "net10.0": {
+      "CommunityToolkit.Mvvm": {
+        "type": "Direct",
+        "requested": "[8.4.2, )",
+        "resolved": "8.4.2",
+        "contentHash": "WadCzGEc2U+3e20avRLng4qNtt4zoOGWrdUISqJWrHe3/FSnrYjuM5Sb4yQb09LhkBXrrI4Zt3dLKgRMbItsrg=="
+      },
+      "Dirkster.AvalonDock.Core": {
+        "type": "Direct",
+        "requested": "[5.0.1-preview.127, )",
+        "resolved": "5.0.1-preview.127",
+        "contentHash": "l+0Fgj/npXP3CN+r9qOw8nmm1KfVus36HTNSUA6Z+QhPIfrAa/fXl7vfW0H6ivXf/yMtbVThmlrL8zLN5x1Ypw=="
+      },
+      "Dirkster.AvalonDock.Mvvm": {
+        "type": "Direct",
+        "requested": "[5.0.1-preview.127, )",
+        "resolved": "5.0.1-preview.127",
+        "contentHash": "M1lXYYTguqFD3XB9Mo04ZV3JkKHYBoZ/3wxvBg3B39mLdXCmcV2WDlpQBw+/xgv0JUaZqxo6hRad3Vb94n2evg==",
+        "dependencies": {
+          "Dirkster.AvalonDock.Core": "5.0.1-preview.127"
+        }
+      },
+      "Dirkster.AvalonDock.Mvvm.CommunityToolkit": {
+        "type": "Direct",
+        "requested": "[5.0.1-preview.127, )",
+        "resolved": "5.0.1-preview.127",
+        "contentHash": "ZNK+25IaR9VOVf5XMlXB87aG9R4mgYgFkFkfiWd5gobDjwvbzEibsGJMAWBnnG/WpcB8U2ho6PReXuJ8U/FW2A==",
+        "dependencies": {
+          "CommunityToolkit.Mvvm": "8.4.0",
+          "Dirkster.AvalonDock.Core": "5.0.1-preview.127"
+        }
+      },
+      "MessagePipe": {
+        "type": "Direct",
+        "requested": "[1.8.2, )",
+        "resolved": "1.8.2",
+        "contentHash": "ZTQERiwXB0ev/3TWDsKmzXOkxQ1a0fwcTljghSRZQq2hLUJ16SNw/gcjEjvyeKOX90DPkbV2sSv86aGb+2ryxQ==",
+        "dependencies": {
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "6.0.0"
+        }
+      },
+      "Microsoft.Extensions.DependencyInjection.Abstractions": {
+        "type": "Direct",
+        "requested": "[11.0.0-preview.7.26381.103, )",
+        "resolved": "11.0.0-preview.7.26381.103",
+        "contentHash": "PQNgwclRUW8bimfMe2AqQZjvs0cUGbY/Rut+q6Vq4ub61TwNjOmvhMULq7V6bnyhLmfpQrsZ76X5SlFH9omdSA=="
+      },
+      "cadoryx.commands": {
+        "type": "Project",
+        "dependencies": {
+          "Cadoryx.Kernel.Abstractions": "[1.0.0, )"
+        }
+      },
+      "cadoryx.db": {
+        "type": "Project"
+      },
+      "cadoryx.editor": {
+        "type": "Project",
+        "dependencies": {
+          "Cadoryx.Commands": "[1.0.0, )",
+          "Cadoryx.Rendering": "[1.0.0, )"
+        }
+      },
+      "cadoryx.kernel.abstractions": {
+        "type": "Project",
+        "dependencies": {
+          "Cadoryx.Db": "[1.0.0, )"
+        }
+      },
+      "cadoryx.rendering": {
+        "type": "Project",
+        "dependencies": {
+          "Cadoryx.Db": "[1.0.0, )"
+        }
+      },
+      "cadoryx.viewmodels.services": {
+        "type": "Project"
+      }
+    }
+  }
+}

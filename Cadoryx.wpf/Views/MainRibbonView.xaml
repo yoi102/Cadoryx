@@ -1,0 +1,39 @@
+<UserControl x:Class="Cadoryx.wpf.Views.MainRibbonView"
+ xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+ <Border Background="{DynamicResource MaterialDesign.Brush.Background}" BorderBrush="{DynamicResource MaterialDesign.Brush.Divider}" BorderThickness="0,0,0,1" Padding="12,4">
+  <TabControl BorderThickness="0" Background="Transparent">
+   <TabControl.Resources><Style TargetType="Button" BasedOn="{StaticResource MaterialDesignFlatButton}"><Setter Property="Margin" Value="0,4,6,4"/><Setter Property="MinWidth" Value="60"/></Style></TabControl.Resources>
+   <TabItem Header="主页">
+    <WrapPanel>
+     <Button Content="新建" Command="{Binding NewCommand}"/><Button Content="打开 / 导入" Command="{Binding OpenFileCommand}"/>
+     <Button Content="保存" Command="{Binding SaveCommand}"/><Button Content="另存为" Command="{Binding SaveAsCommand}"/>
+     <Button Content="导出" Command="{Binding ExportCommand}" ToolTip="STEP / IGES / STL"/>
+     <Separator Width="12"/><Button Content="撤销" Command="{Binding UndoCommand}"/><Button Content="重做" Command="{Binding RedoCommand}"/>
+     <Separator Width="12"/><Button Content="适应窗口" Command="{Binding FitViewCommand}"/>
+     <Button Content="长方体" Command="{Binding StartToolCommand}" CommandParameter="Box"/>
+     <Button Content="圆柱" Command="{Binding StartToolCommand}" CommandParameter="Cylinder"/>
+    </WrapPanel>
+   </TabItem>
+   <TabItem Header="建模">
+    <WrapPanel>
+     <Button Content="长方体" Command="{Binding StartToolCommand}" CommandParameter="Box"/>
+     <Button Content="圆柱" Command="{Binding StartToolCommand}" CommandParameter="Cylinder"/>
+     <Button Content="拉伸" Command="{Binding StartToolCommand}" CommandParameter="Extrude"/>
+     <Button Content="旋转" Command="{Binding StartToolCommand}" CommandParameter="Revolve"/>
+     <TextBlock Text="修改右侧参数 → 预览 → 确认；布尔运算请先选择实体。" VerticalAlignment="Center" Margin="16,0"/>
+    </WrapPanel>
+   </TabItem>
+   <TabItem Header="视图">
+    <WrapPanel>
+     <Button Content="等轴测" Command="{Binding SetViewCommand}" CommandParameter="等轴测"/>
+     <Button Content="前视" Command="{Binding SetViewCommand}" CommandParameter="前视"/>
+     <Button Content="顶视" Command="{Binding SetViewCommand}" CommandParameter="顶视"/>
+     <Button Content="右视" Command="{Binding SetViewCommand}" CommandParameter="右视"/>
+     <Button Content="着色" Command="{Binding SetDisplayCommand}" CommandParameter="Shaded"/>
+     <Button Content="线框" Command="{Binding SetDisplayCommand}" CommandParameter="Wireframe"/>
+     <Button Content="模型树" Command="{Binding ToggleLeftPanelCommand}"/><Button Content="属性" Command="{Binding ToggleRightPanelCommand}"/><Button Content="消息" Command="{Binding ToggleBottomPanelCommand}"/>
+    </WrapPanel>
+   </TabItem>
+  </TabControl>
+ </Border>
+</UserControl>

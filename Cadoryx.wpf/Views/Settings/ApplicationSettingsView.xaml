@@ -1,0 +1,141 @@
+<UserControl x:Class="Cadoryx.wpf.Views.Settings.ApplicationSettingsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+             xmlns:cv="clr-namespace:Cadoryx.wpf.Converters"
+             xmlns:vm="clr-namespace:Cadoryx.ViewModels.Settings;assembly=Cadoryx.ViewModels">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="150" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <ListBox Grid.Column="0"
+                 ItemsSource="{Binding Sections}"
+                 SelectedItem="{Binding SelectedSection, Mode=TwoWay}"
+                 DisplayMemberPath="Title"
+                 BorderThickness="0"
+                 Background="Transparent"
+                 Margin="0,0,12,0"
+                 Style="{StaticResource MaterialDesignNavigationListBox}" />
+
+        <Border Grid.Column="1"
+                BorderBrush="{DynamicResource MaterialDesign.Brush.Divider}"
+                BorderThickness="1"
+                CornerRadius="3"
+                Padding="16,10">
+            <ContentControl Content="{Binding SelectedSection}">
+                <ContentControl.Resources>
+                    <DataTemplate DataType="{x:Type vm:GeneralApplicationSettingsViewModel}">
+                        <ScrollViewer VerticalScrollBarVisibility="Auto">
+                            <StackPanel>
+                                <TextBlock Text="常规设置"
+                                           FontSize="18"
+                                           FontWeight="SemiBold"
+                                           Margin="0,0,0,16" />
+                                <CheckBox Content="使用深色主题"
+                                          IsChecked="{Binding IsDarkTheme}"
+                                          Margin="0,0,0,14" />
+                                <TextBlock Text="界面语言" Opacity="0.75" />
+                                <ComboBox ItemsSource="{Binding CultureOptions}"
+                                          SelectedItem="{Binding SelectedCulture}"
+                                          DisplayMemberPath="DisplayName"
+                                          Margin="0,4,0,14"
+                                          Width="220"
+                                          HorizontalAlignment="Left" />
+                                <TextBlock Text="主色" Opacity="0.75" />
+                                <mah:ColorPicker SelectedColor="{Binding PrimaryColor, Mode=TwoWay, Converter={x:Static cv:UIntColorToMediaColorConverter.Instance}}"
+                                                 IsAlphaChannelVisible="False"
+                                                 AddToRecentColorsTrigger="SelectedColorChanged"
+                                                 Margin="0,4,0,14"
+                                                 Width="220"
+                                                 HorizontalAlignment="Left" />
+                                <TextBlock Text="辅色" Opacity="0.75" />
+                                <mah:ColorPicker SelectedColor="{Binding SecondaryColor, Mode=TwoWay, Converter={x:Static cv:UIntColorToMediaColorConverter.Instance}}"
+                                                 IsAlphaChannelVisible="False"
+                                                 AddToRecentColorsTrigger="SelectedColorChanged"
+                                                 Margin="0,4,0,14"
+                                                 Width="220"
+                                                 HorizontalAlignment="Left" />
+                                <TextBlock Text="设置会保存到当前用户配置目录。"
+                                           Opacity="0.6"
+                                           TextWrapping="Wrap" />
+                            </StackPanel>
+                        </ScrollViewer>
+                    </DataTemplate>
+
+                    <DataTemplate DataType="{x:Type vm:ViewportApplicationSettingsViewModel}">
+                        <ScrollViewer VerticalScrollBarVisibility="Auto">
+                            <StackPanel>
+                                <TextBlock Text="三维视口设置"
+                                           FontSize="18"
+                                           FontWeight="SemiBold"
+                                           Margin="0,0,0,16" />
+                                <TextBlock Text="默认投影" Opacity="0.75" />
+                                <ComboBox ItemsSource="{Binding ProjectionOptions}"
+                                          SelectedItem="{Binding SelectedProjection}"
+                                          DisplayMemberPath="DisplayName"
+                                          Margin="0,4,0,14"
+                                          Width="220"
+                                          HorizontalAlignment="Left" />
+                                <TextBlock Text="视口背景色" Opacity="0.75" />
+                                <mah:ColorPicker SelectedColor="{Binding BackgroundColor, Mode=TwoWay, Converter={x:Static cv:UIntColorToMediaColorConverter.Instance}}"
+                                                 IsAlphaChannelVisible="False"
+                                                 AddToRecentColorsTrigger="SelectedColorChanged"
+                                                 Margin="0,4,0,14"
+                                                 Width="220"
+                                                 HorizontalAlignment="Left" />
+                                <CheckBox Content="显示坐标轴"
+                                          IsChecked="{Binding ShowAxes}"
+                                          Margin="0,0,0,10" />
+                                <CheckBox Content="显示视图立方体"
+                                          IsChecked="{Binding ShowViewCube}"
+                                          Margin="0,0,0,10" />
+                                <CheckBox Content="显示帧率"
+                                          IsChecked="{Binding ShowFramesPerSecond}"
+                                          Margin="0,0,0,10" />
+                                <CheckBox Content="启用抗锯齿"
+                                          IsChecked="{Binding IsAntialiasingEnabled}" />
+                            </StackPanel>
+                        </ScrollViewer>
+                    </DataTemplate>
+
+                    <DataTemplate DataType="{x:Type vm:InteractionApplicationSettingsViewModel}">
+                        <ScrollViewer VerticalScrollBarVisibility="Auto">
+                            <StackPanel>
+                                <TextBlock Text="交互设置"
+                                           FontSize="18"
+                                           FontWeight="SemiBold"
+                                           Margin="0,0,0,16" />
+                                <TextBlock Text="默认选择模式" Opacity="0.75" />
+                                <ComboBox ItemsSource="{Binding SelectionModeOptions}"
+                                          SelectedItem="{Binding SelectedSelectionMode}"
+                                          DisplayMemberPath="DisplayName"
+                                          Margin="0,4,0,14"
+                                          Width="220"
+                                          HorizontalAlignment="Left" />
+                                <CheckBox Content="启用预选高亮"
+                                          IsChecked="{Binding EnablePreselection}"
+                                          Margin="0,0,0,10" />
+                                <CheckBox Content="反转旋转垂直方向"
+                                          IsChecked="{Binding InvertOrbitVerticalAxis}"
+                                          Margin="0,0,0,10" />
+                                <CheckBox Content="反转滚轮缩放"
+                                          IsChecked="{Binding InvertZoom}"
+                                          Margin="0,0,0,14" />
+                                <TextBlock Text="旋转灵敏度（0.1 - 5.0）" Opacity="0.75" />
+                                <mah:NumericUpDown Value="{Binding OrbitSensitivity}"
+                                                   Minimum="0.1"
+                                                   Maximum="5"
+                                                   Interval="0.1"
+                                                   Margin="0,4,0,0"
+                                                   Width="220"
+                                                   HorizontalAlignment="Left" />
+                            </StackPanel>
+                        </ScrollViewer>
+                    </DataTemplate>
+                </ContentControl.Resources>
+            </ContentControl>
+        </Border>
+    </Grid>
+</UserControl>

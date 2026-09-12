@@ -1,0 +1,48 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net10.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+    <PlatformTarget>x64</PlatformTarget>
+    <RuntimeIdentifier>win-x64</RuntimeIdentifier>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="OcctSharp.Native.win-x64" Version="[$(OcctSharpVersion)]" GeneratePathProperty="true" />
+    <PackageReference Include="Antelcat.I18N.WPF" Version="2.0.0-preview-1" />
+    <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.2" />
+    <PackageReference Include="Dirkster.AvalonDock" Version="5.0.1-preview.127" />
+    <PackageReference Include="Dirkster.AvalonDock.DependencyInjection" Version="5.0.1-preview.127" />
+    <PackageReference Include="Dirkster.AvalonDock.Serializer.Json" Version="5.0.1-preview.127" />
+    <PackageReference Include="Dirkster.AvalonDock.Themes.Arc" Version="5.0.1-preview.127" />
+    <PackageReference Include="gong-wpf-dragdrop" Version="4.0.0" />
+    <PackageReference Include="MahApps.Metro" Version="3.0.0-rc0529" />
+    <PackageReference Include="MaterialDesignThemes.MahApps" Version="5.4.0-ci1475" />
+    <PackageReference Include="MessagePipe" Version="1.8.2" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="11.0.0-preview.7.26381.103" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Cadoryx.Lang\Cadoryx.Lang.csproj" />
+    <ProjectReference Include="..\Cadoryx.ViewModels\Cadoryx.ViewModels.csproj" />
+    <ProjectReference Include="..\Cadoryx.wpf.Controls\Cadoryx.wpf.Controls.csproj" />
+    <ProjectReference Include="..\Cadoryx.IO\Cadoryx.IO.csproj" />
+    <ProjectReference Include="..\Cadoryx.Rendering.Occt\Cadoryx.Rendering.Occt.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Cadoryx.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Content Include="$(PkgOcctSharp_Native_win-x64)\licenses\**\*">
+      <Link>licenses\OcctSharp.Native\%(RecursiveDir)%(Filename)%(Extension)</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="runtime-baseline.json" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" />
+  </ItemGroup>
+
+</Project>

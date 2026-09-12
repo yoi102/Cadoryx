@@ -1,0 +1,43 @@
+<UserControl x:Class="Cadoryx.wpf.Views.Toolboxes.MessagesToolboxView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:vm="clr-namespace:Cadoryx.ViewModels.Toolboxes;assembly=Cadoryx.ViewModels"
+             xmlns:notificationVm="clr-namespace:Cadoryx.ViewModels.Services.Platform.Notifications;assembly=Cadoryx.ViewModels.Services">
+    <Grid Margin="8,4">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <DockPanel Grid.Row="0" Margin="2,0,0,4">
+            <TextBlock Text="消息"
+                       FontSize="13"
+                       FontWeight="SemiBold" />
+            <Button DockPanel.Dock="Right"
+                    Command="{Binding ClearCommand}"
+                    ToolTip="清除消息"
+                    Content="{md:PackIcon Kind=DeleteSweepOutline, Size=17}"
+                    Style="{StaticResource MaterialDesignFlatButton}"
+                    Width="28"
+                    Height="28"
+                    Padding="0" />
+        </DockPanel>
+        <ItemsControl Grid.Row="1" ItemsSource="{Binding Messages}">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate DataType="{x:Type notificationVm:CadMessageEntry}">
+                    <Border BorderBrush="{DynamicResource MaterialDesign.Brush.Divider}"
+                            BorderThickness="0,0,0,1"
+                            Padding="2,5">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding Level}"
+                                       Width="90"
+                                       Opacity="0.7" />
+                            <TextBlock Text="{Binding Text}"
+                                       TextTrimming="CharacterEllipsis" />
+                        </StackPanel>
+                    </Border>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+    </Grid>
+</UserControl>

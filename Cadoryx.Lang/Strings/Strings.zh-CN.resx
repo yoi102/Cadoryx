@@ -1,0 +1,1443 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Cancel" xml:space="preserve">
+    <value>取消</value>
+  </data>
+  <data name="Arc" xml:space="preserve">
+    <value>圆弧</value>
+  </data>
+  <data name="ArcThreePoint" xml:space="preserve">
+    <value>三点圆弧</value>
+  </data>
+  <data name="ArcStartCenterEnd" xml:space="preserve">
+    <value>起点，圆心，端点</value>
+  </data>
+  <data name="ArcStartCenterAngle" xml:space="preserve">
+    <value>起点，圆心，角度</value>
+  </data>
+  <data name="ArcStartCenterLength" xml:space="preserve">
+    <value>起点，圆心，长度</value>
+  </data>
+  <data name="ArcStartEndAngle" xml:space="preserve">
+    <value>起点，端点，角度</value>
+  </data>
+  <data name="ArcStartEndDirection" xml:space="preserve">
+    <value>起点，端点，方向</value>
+  </data>
+  <data name="ArcStartEndRadius" xml:space="preserve">
+    <value>起点，端点，半径</value>
+  </data>
+  <data name="ArcCenterStartEnd" xml:space="preserve">
+    <value>圆心，起点，端点</value>
+  </data>
+  <data name="ArcCenterStartAngle" xml:space="preserve">
+    <value>圆心，起点，角度</value>
+  </data>
+  <data name="ArcCenterStartLength" xml:space="preserve">
+    <value>圆心，起点，长度</value>
+  </data>
+  <data name="ArcContinue" xml:space="preserve">
+    <value>连续</value>
+  </data>
+  <data name="Chinese" xml:space="preserve">
+    <value>中文</value>
+  </data>
+  <data name="Circle" xml:space="preserve">
+    <value>圆</value>
+  </data>
+  <data name="Ellipse" xml:space="preserve">
+    <value>椭圆</value>
+  </data>
+  <data name="Rectangle" xml:space="preserve">
+    <value>矩形</value>
+  </data>
+  <data name="Confirm" xml:space="preserve">
+    <value>确认</value>
+  </data>
+  <data name="ConfirmExitMessage" xml:space="preserve">
+    <value>您确定要退出程序吗？</value>
+  </data>
+  <data name="ConfirmExitTitle" xml:space="preserve">
+    <value>退出确认</value>
+  </data>
+  <data name="UnsavedDocumentTitle" xml:space="preserve">
+    <value>未保存的更改</value>
+  </data>
+  <data name="UnsavedDocumentMessageFormat" xml:space="preserve">
+    <value>是否保存对“{0}”所做的更改？</value>
+  </data>
+  <data name="DontSave" xml:space="preserve">
+    <value>不保存</value>
+  </data>
+  <data name="Cross" xml:space="preserve">
+    <value>十字</value>
+  </data>
+  <data name="InfiniteCross" xml:space="preserve">
+    <value>无限十字</value>
+  </data>
+  <data name="Dots" xml:space="preserve">
+    <value>点</value>
+  </data>
+  <data name="English" xml:space="preserve">
+    <value>English</value>
+  </data>
+  <data name="Fit" xml:space="preserve">
+    <value>适应窗口</value>
+  </data>
+  <data name="Japanese" xml:space="preserve">
+    <value>日本語</value>
+  </data>
+  <data name="Line" xml:space="preserve">
+    <value>直线</value>
+  </data>
+  <data name="Lines" xml:space="preserve">
+    <value>线</value>
+  </data>
+  <data name="None" xml:space="preserve">
+    <value>无</value>
+  </data>
+  <data name="Ok" xml:space="preserve">
+    <value>确定</value>
+  </data>
+  <data name="Pan" xml:space="preserve">
+    <value>平移</value>
+  </data>
+  <data name="Polygon" xml:space="preserve">
+    <value>多边形</value>
+  </data>
+  <data name="Polyline" xml:space="preserve">
+    <value>多段线</value>
+  </data>
+  <data name="SaveAs" xml:space="preserve">
+    <value>另存为...</value>
+  </data>
+  <data name="Select" xml:space="preserve">
+    <value>选择</value>
+  </data>
+  <data name="ShowImageInNewWindow" xml:space="preserve">
+    <value>在新窗口中显示图片</value>
+  </data>
+  <data name="ShowProperties" xml:space="preserve">
+    <value>显示属性 </value>
+  </data>
+  <data name="Source" xml:space="preserve">
+    <value>源</value>
+  </data>
+  <data name="Spline" xml:space="preserve">
+    <value>样条曲线</value>
+  </data>
+  <data name="Text" xml:space="preserve">
+    <value>文字</value>
+  </data>
+  <data name="ShapeText" xml:space="preserve">
+    <value>CAD文字</value>
+  </data>
+  <data name="UnhandledException" xml:space="preserve">
+    <value>未处理的异常</value>
+  </data>
+  <data name="UnhandledExceptionExit" xml:space="preserve">
+    <value>存在未处理的异常，程序将退出。</value>
+  </data>
+  <data name="View" xml:space="preserve">
+    <value>视图</value>
+  </data>
+  <data name="Direct2dCad" xml:space="preserve">
+    <value>Direct2dCad</value>
+  </data>
+  <data name="OpenFile" xml:space="preserve">
+    <value>打开文件</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>保存</value>
+  </data>
+  <data name="Undo" xml:space="preserve">
+    <value>撤销</value>
+  </data>
+  <data name="Redo" xml:space="preserve">
+    <value>重做</value>
+  </data>
+  <data name="DeleteSelection" xml:space="preserve">
+    <value>删除选中实体</value>
+  </data>
+  <data name="CopySelection" xml:space="preserve">
+    <value>复制选中实体</value>
+  </data>
+  <data name="CutSelection" xml:space="preserve">
+    <value>剪切选中实体</value>
+  </data>
+  <data name="SelectAll" xml:space="preserve">
+    <value>全选实体</value>
+  </data>
+  <data name="ClearSelection" xml:space="preserve">
+    <value>清除选择</value>
+  </data>
+  <data name="CancelCurrentInteraction" xml:space="preserve">
+    <value>取消当前操作</value>
+  </data>
+  <data name="Grid" xml:space="preserve">
+    <value>网格</value>
+  </data>
+  <data name="SnapMarker" xml:space="preserve">
+    <value>捕捉标记</value>
+  </data>
+  <data name="ShapeFont" xml:space="preserve">
+    <value>形文字体</value>
+  </data>
+  <data name="SetOrigin" xml:space="preserve">
+    <value>设置原点</value>
+  </data>
+  <data name="Inverted" xml:space="preserve">
+    <value>反白</value>
+  </data>
+  <data name="Margin" xml:space="preserve">
+    <value>边距</value>
+  </data>
+  <data name="Origin" xml:space="preserve">
+    <value>原点</value>
+  </data>
+  <data name="OriginMarker" xml:space="preserve">
+    <value>原点标记</value>
+  </data>
+  <data name="OriginLine" xml:space="preserve">
+    <value>原点轴线</value>
+  </data>
+  <data name="Size" xml:space="preserve">
+    <value>大小</value>
+  </data>
+  <data name="Stroke" xml:space="preserve">
+    <value>线宽</value>
+  </data>
+  <data name="Color" xml:space="preserve">
+    <value>颜色</value>
+  </data>
+  <data name="User" xml:space="preserve">
+    <value>用户</value>
+  </data>
+  <data name="Antialias" xml:space="preserve">
+    <value>抗锯齿</value>
+  </data>
+  <data name="TextAntialiasing" xml:space="preserve">
+    <value>文字抗锯齿</value>
+  </data>
+  <data name="Selected" xml:space="preserve">
+    <value>选中</value>
+  </data>
+  <data name="SelectionWindow" xml:space="preserve">
+    <value>正选</value>
+  </data>
+  <data name="SelectionCrossing" xml:space="preserve">
+    <value>反选</value>
+  </data>
+  <data name="Welcome" xml:space="preserve">
+    <value>欢迎</value>
+  </data>
+  <data name="X" xml:space="preserve">
+    <value>X</value>
+  </data>
+  <data name="Square" xml:space="preserve">
+    <value>方形</value>
+  </data>
+  <data name="Axes" xml:space="preserve">
+    <value>坐标轴</value>
+  </data>
+  <data name="Marker" xml:space="preserve">
+    <value>标记</value>
+  </data>
+  <data name="AxesAndMarker" xml:space="preserve">
+    <value>坐标轴和标记</value>
+  </data>
+  <data name="Solid" xml:space="preserve">
+    <value>实线</value>
+  </data>
+  <data name="Dash" xml:space="preserve">
+    <value>虚线</value>
+  </data>
+  <data name="Dot" xml:space="preserve">
+    <value>点线</value>
+  </data>
+  <data name="DashDot" xml:space="preserve">
+    <value>点划线</value>
+  </data>
+  <data name="Unicode" xml:space="preserve">
+    <value>Unicode</value>
+  </data>
+  <data name="Simplex" xml:space="preserve">
+    <value>Simplex</value>
+  </data>
+  <data name="MonoLine" xml:space="preserve">
+    <value>单线</value>
+  </data>
+  <data name="BoxFallback" xml:space="preserve">
+    <value>方框后备</value>
+  </data>
+  <data name="Y" xml:space="preserve">
+    <value>Y</value>
+  </data>
+  <data name="File" xml:space="preserve">
+    <value>文件</value>
+  </data>
+  <data name="Draw" xml:space="preserve">
+    <value>绘制</value>
+  </data>
+  <data name="New" xml:space="preserve">
+    <value>新建</value>
+  </data>
+  <data name="Documents" xml:space="preserve">
+    <value>文档</value>
+  </data>
+  <data name="Refresh" xml:space="preserve">
+    <value>刷新</value>
+  </data>
+  <data name="Background" xml:space="preserve">
+    <value>背景</value>
+  </data>
+  <data name="ColorPickerPalettes" xml:space="preserve">
+    <value>调色板</value>
+  </data>
+  <data name="ColorPickerAdvanced" xml:space="preserve">
+    <value>高级</value>
+  </data>
+  <data name="ColorPickerStandardColors" xml:space="preserve">
+    <value>标准颜色</value>
+  </data>
+  <data name="ColorPickerAvailableColors" xml:space="preserve">
+    <value>可用颜色</value>
+  </data>
+  <data name="ColorPickerRecentColors" xml:space="preserve">
+    <value>最近颜色</value>
+  </data>
+  <data name="Layers" xml:space="preserve">
+    <value>图层</value>
+  </data>
+  <data name="AddLayer" xml:space="preserve">
+    <value>添加图层</value>
+  </data>
+  <data name="DeleteLayer" xml:space="preserve">
+    <value>删除图层</value>
+  </data>
+  <data name="Priority" xml:space="preserve">
+    <value>优先级</value>
+  </data>
+  <data name="Entities" xml:space="preserve">
+    <value>实体</value>
+  </data>
+  <data name="Weight" xml:space="preserve">
+    <value>线宽</value>
+  </data>
+  <data name="Visible" xml:space="preserve">
+    <value>可见</value>
+  </data>
+  <data name="Locked" xml:space="preserve">
+    <value>锁定</value>
+  </data>
+  <data name="Frozen" xml:space="preserve">
+    <value>冻结</value>
+  </data>
+  <data name="LayerLockedMessageFormat" xml:space="preserve">
+    <value>图层“{0}”已锁定。</value>
+  </data>
+  <data name="LayerFrozenMessageFormat" xml:space="preserve">
+    <value>图层“{0}”已冻结。</value>
+  </data>
+  <data name="TogglePrimarySideBar" xml:space="preserve">
+    <value>切换主侧栏</value>
+  </data>
+  <data name="TogglePanel" xml:space="preserve">
+    <value>切换面板</value>
+  </data>
+  <data name="ToggleSecondarySideBar" xml:space="preserve">
+    <value>切换副侧栏</value>
+  </data>
+  <data name="DocumentNameCannotBeEmpty" xml:space="preserve">
+    <value>文档名称不能为空。</value>
+  </data>
+  <data name="Id" xml:space="preserve">
+    <value>Id</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>名称</value>
+  </data>
+  <data name="StrokeStyle" xml:space="preserve">
+    <value>描边样式</value>
+  </data>
+  <data name="StartCap" xml:space="preserve">
+    <value>起点端帽</value>
+  </data>
+  <data name="EndCap" xml:space="preserve">
+    <value>终点端帽</value>
+  </data>
+  <data name="DashCap" xml:space="preserve">
+    <value>虚线端帽</value>
+  </data>
+  <data name="DashStyle" xml:space="preserve">
+    <value>虚线样式</value>
+  </data>
+  <data name="LineJoin" xml:space="preserve">
+    <value>连接样式</value>
+  </data>
+  <data name="CenterX" xml:space="preserve">
+    <value>中心 X</value>
+  </data>
+  <data name="CenterY" xml:space="preserve">
+    <value>中心 Y</value>
+  </data>
+  <data name="Radius" xml:space="preserve">
+    <value>半径</value>
+  </data>
+  <data name="RadiusX" xml:space="preserve">
+    <value>X 半径</value>
+  </data>
+  <data name="RadiusY" xml:space="preserve">
+    <value>Y 半径</value>
+  </data>
+  <data name="Diameter" xml:space="preserve">
+    <value>直径</value>
+  </data>
+  <data name="DiameterX" xml:space="preserve">
+    <value>X 直径</value>
+  </data>
+  <data name="DiameterY" xml:space="preserve">
+    <value>Y 直径</value>
+  </data>
+  <data name="Start" xml:space="preserve">
+    <value>起始角</value>
+  </data>
+  <data name="StartX" xml:space="preserve">
+    <value>起点 X</value>
+  </data>
+  <data name="StartY" xml:space="preserve">
+    <value>起点 Y</value>
+  </data>
+  <data name="End" xml:space="preserve">
+    <value>结束角</value>
+  </data>
+  <data name="EndX" xml:space="preserve">
+    <value>终点 X</value>
+  </data>
+  <data name="EndY" xml:space="preserve">
+    <value>终点 Y</value>
+  </data>
+  <data name="Sweep" xml:space="preserve">
+    <value>扫描角</value>
+  </data>
+  <data name="CounterClockwise" xml:space="preserve">
+    <value>逆时针</value>
+  </data>
+  <data name="Fill" xml:space="preserve">
+    <value>填充</value>
+  </data>
+  <data name="LineWeight" xml:space="preserve">
+    <value>线宽 (mm)</value>
+  </data>
+  <data name="ByLayer" xml:space="preserve">
+    <value>随图层</value>
+  </data>
+  <data name="DrawOrder" xml:space="preserve">
+    <value>绘制顺序</value>
+  </data>
+  <data name="Length" xml:space="preserve">
+    <value>长度</value>
+  </data>
+  <data name="Unit" xml:space="preserve">
+    <value>单位</value>
+  </data>
+  <data name="Unitless" xml:space="preserve">
+    <value>无单位</value>
+  </data>
+  <data name="Millimeter" xml:space="preserve">
+    <value>毫米</value>
+  </data>
+  <data name="Centimeter" xml:space="preserve">
+    <value>厘米</value>
+  </data>
+  <data name="Meter" xml:space="preserve">
+    <value>米</value>
+  </data>
+  <data name="Inch" xml:space="preserve">
+    <value>英寸</value>
+  </data>
+  <data name="Foot" xml:space="preserve">
+    <value>英尺</value>
+  </data>
+  <data name="Mil" xml:space="preserve">
+    <value>密耳</value>
+  </data>
+  <data name="Angle" xml:space="preserve">
+    <value>角度</value>
+  </data>
+  <data name="Closed" xml:space="preserve">
+    <value>闭合</value>
+  </data>
+  <data name="Vertices" xml:space="preserve">
+    <value>顶点</value>
+  </data>
+  <data name="AddAfter" xml:space="preserve">
+    <value>在后添加</value>
+  </data>
+  <data name="Remove" xml:space="preserve">
+    <value>删除</value>
+  </data>
+  <data name="PointCount" xml:space="preserve">
+    <value>点数</value>
+  </data>
+  <data name="FitPoints" xml:space="preserve">
+    <value>拟合点</value>
+  </data>
+  <data name="Left" xml:space="preserve">
+    <value>左</value>
+  </data>
+  <data name="Bottom" xml:space="preserve">
+    <value>底</value>
+  </data>
+  <data name="Right" xml:space="preserve">
+    <value>右</value>
+  </data>
+  <data name="Top" xml:space="preserve">
+    <value>顶</value>
+  </data>
+  <data name="Width" xml:space="preserve">
+    <value>宽度</value>
+  </data>
+  <data name="Height" xml:space="preserve">
+    <value>高度</value>
+  </data>
+  <data name="CornerX" xml:space="preserve">
+    <value>X 圆角</value>
+  </data>
+  <data name="CornerY" xml:space="preserve">
+    <value>Y 圆角</value>
+  </data>
+  <data name="Content" xml:space="preserve">
+    <value>内容</value>
+  </data>
+  <data name="Style" xml:space="preserve">
+    <value>样式</value>
+  </data>
+  <data name="PositionX" xml:space="preserve">
+    <value>位置 X</value>
+  </data>
+  <data name="PositionY" xml:space="preserve">
+    <value>位置 Y</value>
+  </data>
+  <data name="Rotation" xml:space="preserve">
+    <value>旋转</value>
+  </data>
+  <data name="Bounds" xml:space="preserve">
+    <value>边界</value>
+  </data>
+  <data name="Measure" xml:space="preserve">
+    <value>测量</value>
+  </data>
+  <data name="ArcDrawing" xml:space="preserve">
+    <value>绘制圆弧</value>
+  </data>
+  <data name="CircleDrawing" xml:space="preserve">
+    <value>绘制圆</value>
+  </data>
+  <data name="EllipseDrawing" xml:space="preserve">
+    <value>绘制椭圆</value>
+  </data>
+  <data name="LineDrawing" xml:space="preserve">
+    <value>绘制直线</value>
+  </data>
+  <data name="PolygonDrawing" xml:space="preserve">
+    <value>绘制多边形</value>
+  </data>
+  <data name="PolylineDrawing" xml:space="preserve">
+    <value>绘制多段线</value>
+  </data>
+  <data name="RectangleDrawing" xml:space="preserve">
+    <value>绘制矩形</value>
+  </data>
+  <data name="SplineDrawing" xml:space="preserve">
+    <value>绘制样条</value>
+  </data>
+  <data name="TextDrawing" xml:space="preserve">
+    <value>绘制文字</value>
+  </data>
+  <data name="CircleCenterRadius" xml:space="preserve">
+    <value>圆心-半径圆</value>
+  </data>
+  <data name="CircleCenterDiameter" xml:space="preserve">
+    <value>圆心-直径圆</value>
+  </data>
+  <data name="CircleTwoPoint" xml:space="preserve">
+    <value>两点圆</value>
+  </data>
+  <data name="CircleThreePoint" xml:space="preserve">
+    <value>三点圆</value>
+  </data>
+  <data name="EllipseCenter" xml:space="preserve">
+    <value>圆心</value>
+  </data>
+  <data name="EllipseAxisEnd" xml:space="preserve">
+    <value>轴，端点</value>
+  </data>
+  <data name="EllipseArc" xml:space="preserve">
+    <value>椭圆弧</value>
+  </data>
+  <data name="FillNoFill" xml:space="preserve">
+    <value>不填充</value>
+  </data>
+  <data name="FillSolid" xml:space="preserve">
+    <value>纯色填充</value>
+  </data>
+  <data name="FillHatchAnsi31" xml:space="preserve">
+    <value>ANSI31 图案</value>
+  </data>
+  <data name="FillHatchHorizontal" xml:space="preserve">
+    <value>水平线图案</value>
+  </data>
+  <data name="FillHatchVertical" xml:space="preserve">
+    <value>垂直线图案</value>
+  </data>
+  <data name="FillHatchGrid" xml:space="preserve">
+    <value>网格图案</value>
+  </data>
+  <data name="FillHatchCross45" xml:space="preserve">
+    <value>45度交叉图案</value>
+  </data>
+  <data name="FillHatchDashed" xml:space="preserve">
+    <value>虚线图案</value>
+  </data>
+  <data name="FillHatchDotted" xml:space="preserve">
+    <value>点线图案</value>
+  </data>
+  <data name="FillHatchBrick" xml:space="preserve">
+    <value>砖块图案</value>
+  </data>
+  <data name="FillColor" xml:space="preserve">
+    <value>填充颜色</value>
+  </data>
+  <data name="LayerDeleteConfirmTitle" xml:space="preserve">
+    <value>确认删除图层</value>
+  </data>
+  <data name="LayerDeleteConfirmMessageFormat" xml:space="preserve">
+    <value>确定要删除图层“{0}”吗？ 该图层上的所有实体都会被删除。</value>
+  </data>
+  <data name="Paste" xml:space="preserve">
+    <value>粘贴</value>
+  </data>
+  <data name="TargetLayer" xml:space="preserve">
+    <value>目标层</value>
+  </data>
+  <data name="LayerNameAlreadyExists" xml:space="preserve">
+    <value>图层名称已存在。</value>
+  </data>
+  <data name="Image" xml:space="preserve">
+    <value>图片</value>
+  </data>
+  <data name="InsertImage" xml:space="preserve">
+    <value>插入图片</value>
+  </data>
+  <data name="PasteImage" xml:space="preserve">
+    <value>粘贴图片</value>
+  </data>
+  <data name="ContentType" xml:space="preserve">
+    <value>内容类型</value>
+  </data>
+  <data name="PixelWidth" xml:space="preserve">
+    <value>像素宽度</value>
+  </data>
+  <data name="PixelHeight" xml:space="preserve">
+    <value>像素高度</value>
+  </data>
+  <data name="Opacity" xml:space="preserve">
+    <value>不透明度</value>
+  </data>
+  <data name="Settings" xml:space="preserve">
+    <value>设置</value>
+  </data>
+  <data name="DocumentSettings" xml:space="preserve">
+    <value>文档设置</value>
+  </data>
+  <data name="Display" xml:space="preserve">
+    <value>显示</value>
+  </data>
+  <data name="GridAndSnapping" xml:space="preserve">
+    <value>网格与捕捉</value>
+  </data>
+  <data name="GridType" xml:space="preserve">
+    <value>网格类型</value>
+  </data>
+  <data name="SpacingX" xml:space="preserve">
+    <value>X 间距</value>
+  </data>
+  <data name="SpacingY" xml:space="preserve">
+    <value>Y 间距</value>
+  </data>
+  <data name="Subdivision" xml:space="preserve">
+    <value>细分数</value>
+  </data>
+  <data name="MinimumScreenSpacing" xml:space="preserve">
+    <value>最小屏幕间距</value>
+  </data>
+  <data name="MinimumWorldSpacing" xml:space="preserve">
+    <value>最小世界间距</value>
+  </data>
+  <data name="MinorGridColor" xml:space="preserve">
+    <value>次网格颜色</value>
+  </data>
+  <data name="MinorGridLineWidth" xml:space="preserve">
+    <value>次网格线宽</value>
+  </data>
+  <data name="MajorGridColor" xml:space="preserve">
+    <value>主网格颜色</value>
+  </data>
+  <data name="MajorGridLineWidth" xml:space="preserve">
+    <value>主网格线宽</value>
+  </data>
+  <data name="SnapSpacingX" xml:space="preserve">
+    <value>X 捕捉间距（0 为自动）</value>
+  </data>
+  <data name="SnapSpacingY" xml:space="preserve">
+    <value>Y 捕捉间距（0 为自动）</value>
+  </data>
+  <data name="SnapMarkerType" xml:space="preserve">
+    <value>捕捉标记类型</value>
+  </data>
+  <data name="SnapMarkerColor" xml:space="preserve">
+    <value>捕捉标记颜色</value>
+  </data>
+  <data name="SnapMarkerLength" xml:space="preserve">
+    <value>捕捉标记长度</value>
+  </data>
+  <data name="SnapMarkerStrokeWidth" xml:space="preserve">
+    <value>捕捉标记线宽</value>
+  </data>
+  <data name="OriginDisplayType" xml:space="preserve">
+    <value>原点显示方式</value>
+  </data>
+  <data name="OriginMarkerType" xml:space="preserve">
+    <value>原点标记类型</value>
+  </data>
+  <data name="OriginLinePattern" xml:space="preserve">
+    <value>原点线型</value>
+  </data>
+  <data name="OriginColor" xml:space="preserve">
+    <value>原点颜色</value>
+  </data>
+  <data name="OriginSize" xml:space="preserve">
+    <value>原点大小</value>
+  </data>
+  <data name="OriginStrokeWidth" xml:space="preserve">
+    <value>原点线宽</value>
+  </data>
+  <data name="Apply" xml:space="preserve">
+    <value>应用</value>
+  </data>
+  <data name="DocumentSettingsInvalidValues" xml:space="preserve">
+    <value>请输入有效的有限数值，大小、间距和线宽必须大于零。</value>
+  </data>
+  <data name="ApplicationSettings" xml:space="preserve">
+    <value>应用程序设置</value>
+  </data>
+  <data name="General" xml:space="preserve">
+    <value>常规</value>
+  </data>
+  <data name="Geometry" xml:space="preserve">
+    <value>几何</value>
+  </data>
+  <data name="ObjectSettings" xml:space="preserve">
+    <value>对象设置</value>
+  </data>
+  <data name="Rendering" xml:space="preserve">
+    <value>渲染</value>
+  </data>
+  <data name="Interaction" xml:space="preserve">
+    <value>交互</value>
+  </data>
+  <data name="Antialiasing" xml:space="preserve">
+    <value>抗锯齿</value>
+  </data>
+  <data name="SelectedEntity" xml:space="preserve">
+    <value>选中实体</value>
+  </data>
+  <data name="Grip" xml:space="preserve">
+    <value>夹点</value>
+  </data>
+  <data name="GripPreview" xml:space="preserve">
+    <value>夹点预览</value>
+  </data>
+  <data name="StrokeColor" xml:space="preserve">
+    <value>线条颜色</value>
+  </data>
+  <data name="StrokeWidth" xml:space="preserve">
+    <value>线宽</value>
+  </data>
+  <data name="Language" xml:space="preserve">
+    <value>语言</value>
+  </data>
+  <data name="DarkTheme" xml:space="preserve">
+    <value>深色主题</value>
+  </data>
+  <data name="UserSettingsInvalidValues" xml:space="preserve">
+    <value>请输入有效的有限数值，大小和线宽必须大于零。</value>
+  </data>
+  <data name="Reset" xml:space="preserve">
+    <value>重置</value>
+  </data>
+  <data name="PrimaryColor" xml:space="preserve">
+    <value>主颜色</value>
+  </data>
+  <data name="SecondaryColor" xml:space="preserve">
+    <value>副颜色</value>
+  </data>
+  <data name="EntitySettings" xml:space="preserve">
+    <value>实体设置</value>
+  </data>
+  <data name="SelectionFilter" xml:space="preserve">
+    <value>选择过滤器</value>
+  </data>
+  <data name="Type" xml:space="preserve">
+    <value>类型</value>
+  </data>
+  <data name="Appearance" xml:space="preserve">
+    <value>线条外观</value>
+  </data>
+  <data name="Coordinates" xml:space="preserve">
+    <value>坐标与尺寸</value>
+  </data>
+  <data name="Font" xml:space="preserve">
+    <value>字体</value>
+  </data>
+  <data name="Terminal" xml:space="preserve">
+    <value>命令行</value>
+  </data>
+  <data name="Property" xml:space="preserve">
+    <value>属性</value>
+  </data>
+  <data name="EntitySearch" xml:space="preserve">
+    <value>实体检索</value>
+  </data>
+  <data name="SelectedEntities" xml:space="preserve">
+    <value>已选择实体</value>
+  </data>
+  <data name="MultipleEntityTypes" xml:space="preserve">
+    <value>选择了多种实体类型</value>
+  </data>
+  <data name="MultipleValues" xml:space="preserve">
+    <value>多个值</value>
+  </data>
+  <data name="CommonProperties" xml:space="preserve">
+    <value>公共属性</value>
+  </data>
+  <data name="Close" xml:space="preserve">
+    <value>关闭</value>
+  </data>
+  <data name="Model" xml:space="preserve">
+    <value>模型</value>
+  </data>
+  <data name="LayoutSettings" xml:space="preserve">
+    <value>布局设置</value>
+  </data>
+  <data name="AddLayout" xml:space="preserve">
+    <value>添加布局</value>
+  </data>
+  <data name="DeleteLayout" xml:space="preserve">
+    <value>删除布局</value>
+  </data>
+  <data name="LayoutNameCannotBeEmpty" xml:space="preserve">
+    <value>布局名称不能为空。</value>
+  </data>
+  <data name="Paper" xml:space="preserve">
+    <value>图纸</value>
+  </data>
+  <data name="PaperWidth" xml:space="preserve">
+    <value>图纸宽度</value>
+  </data>
+  <data name="PaperHeight" xml:space="preserve">
+    <value>图纸高度</value>
+  </data>
+  <data name="PaperColor" xml:space="preserve">
+    <value>图纸颜色</value>
+  </data>
+  <data name="MarginLeft" xml:space="preserve">
+    <value>左边距</value>
+  </data>
+  <data name="MarginTop" xml:space="preserve">
+    <value>上边距</value>
+  </data>
+  <data name="MarginRight" xml:space="preserve">
+    <value>右边距</value>
+  </data>
+  <data name="MarginBottom" xml:space="preserve">
+    <value>下边距</value>
+  </data>
+  <data name="SwapOrientation" xml:space="preserve">
+    <value>交换横纵方向</value>
+  </data>
+  <data name="Viewport" xml:space="preserve">
+    <value>视口</value>
+  </data>
+  <data name="AddViewport" xml:space="preserve">
+    <value>添加视口</value>
+  </data>
+  <data name="DeleteViewport" xml:space="preserve">
+    <value>删除视口</value>
+  </data>
+  <data name="ModelCenterX" xml:space="preserve">
+    <value>模型中心 X</value>
+  </data>
+  <data name="ModelCenterY" xml:space="preserve">
+    <value>模型中心 Y</value>
+  </data>
+  <data name="ViewportScale" xml:space="preserve">
+    <value>视口比例</value>
+  </data>
+  <data name="RotationDegrees" xml:space="preserve">
+    <value>旋转角度</value>
+  </data>
+  <data name="TogglePaperModelSpace" xml:space="preserve">
+    <value>切换图纸空间与视口内模型编辑</value>
+  </data>
+  <data name="LayoutViewportMode" xml:space="preserve">
+    <value>布局视口</value>
+  </data>
+  <data name="CreateViewportMode" xml:space="preserve">
+    <value>创建并调整布局视口</value>
+  </data>
+  <data name="UnsavedDocumentsTitle" xml:space="preserve">
+    <value>未保存的文档</value>
+  </data>
+  <data name="UnsavedDocumentsMessage" xml:space="preserve">
+    <value>以下文档包含未保存的更改：</value>
+  </data>
+  <data name="UnsavedDocumentNoPath" xml:space="preserve">
+    <value>尚未保存</value>
+  </data>
+  <data name="SaveAll" xml:space="preserve">
+    <value>全部保存</value>
+  </data>
+  <data name="EntitySearchScope" xml:space="preserve">
+    <value>范围</value>
+  </data>
+  <data name="EntitySearchCurrentSpace" xml:space="preserve">
+    <value>当前空间</value>
+  </data>
+  <data name="EntitySearchEntireDocument" xml:space="preserve">
+    <value>整个文档</value>
+  </data>
+  <data name="EntitySearchHint" xml:space="preserve">
+    <value>实体名称、ID、图层或类型</value>
+  </data>
+  <data name="EntitySearchLayerHint" xml:space="preserve">
+    <value>图层</value>
+  </data>
+  <data name="EntitySearchTypeHint" xml:space="preserve">
+    <value>类型</value>
+  </data>
+  <data name="EntitySearchAllLayers" xml:space="preserve">
+    <value>全部图层</value>
+  </data>
+  <data name="EntitySearchAllTypes" xml:space="preserve">
+    <value>全部类型</value>
+  </data>
+  <data name="EntitySearchNoDocument" xml:space="preserve">
+    <value>没有活动文档</value>
+  </data>
+  <data name="EntitySearchResultCountFormat" xml:space="preserve">
+    <value>共 {0} 个实体</value>
+  </data>
+  <data name="Blocks" xml:space="preserve">
+    <value>块</value>
+  </data>
+  <data name="CreateBlock" xml:space="preserve">
+    <value>创建块</value>
+  </data>
+  <data name="CreateBlockNameRequired" xml:space="preserve">
+    <value>请输入块名称。</value>
+  </data>
+  <data name="BlockNameAlreadyExists" xml:space="preserve">
+    <value>已存在同名块。</value>
+  </data>
+  <data name="CreateBlockBasePointInvalid" xml:space="preserve">
+    <value>请输入有效的基点。</value>
+  </data>
+  <data name="InsertBlock" xml:space="preserve">
+    <value>插入块</value>
+  </data>
+  <data name="EditBlock" xml:space="preserve">
+    <value>编辑块</value>
+  </data>
+  <data name="BlockEditing" xml:space="preserve">
+    <value>块编辑中</value>
+  </data>
+  <data name="ExitBlockEditor" xml:space="preserve">
+    <value>退出块编辑</value>
+  </data>
+  <data name="DeleteBlock" xml:space="preserve">
+    <value>删除块</value>
+  </data>
+  <data name="BasePoint" xml:space="preserve">
+    <value>基点</value>
+  </data>
+  <data name="References" xml:space="preserve">
+    <value>参照数</value>
+  </data>
+  <data name="ScaleX" xml:space="preserve">
+    <value>X 比例</value>
+  </data>
+  <data name="ScaleY" xml:space="preserve">
+    <value>Y 比例</value>
+  </data>
+  <data name="BlockReference" xml:space="preserve">
+    <value>块参照</value>
+  </data>
+  <data name="BlockDefinition" xml:space="preserve">
+    <value>块定义</value>
+  </data>
+  <data name="DeleteBlockConfirmFormat" xml:space="preserve">
+    <value>确定删除块“{0}”吗？</value>
+  </data>
+  <data name="GridDensity" xml:space="preserve">
+    <value>栅格密度</value>
+  </data>
+  <data name="GridDensityPreset" xml:space="preserve">
+    <value>密度预设（主 / 副）</value>
+  </data>
+  <data name="MajorGridSpacingXMillimeters" xml:space="preserve">
+    <value>主栅格 X 间距 (mm)</value>
+  </data>
+  <data name="MajorGridSpacingYMillimeters" xml:space="preserve">
+    <value>主栅格 Y 间距 (mm)</value>
+  </data>
+  <data name="MinorGridSpacingXMillimeters" xml:space="preserve">
+    <value>副栅格 X 间距 (mm)</value>
+  </data>
+  <data name="MinorGridSpacingYMillimeters" xml:space="preserve">
+    <value>副栅格 Y 间距 (mm)</value>
+  </data>
+  <data name="GridAppearance" xml:space="preserve">
+    <value>栅格外观</value>
+  </data>
+  <data name="GridSpacingOptions" xml:space="preserve">
+    <value>栅格规格</value>
+  </data>
+  <data name="GridSpacingSelection" xml:space="preserve">
+    <value>栅格选择</value>
+  </data>
+  <data name="MajorGridSpacing" xml:space="preserve">
+    <value>主栅格</value>
+  </data>
+  <data name="MinorGridSpacing" xml:space="preserve">
+    <value>副栅格</value>
+  </data>
+  <data name="AddGridSpacingPreset" xml:space="preserve">
+    <value>添加栅格规格</value>
+  </data>
+  <data name="EditGridSpacingPreset" xml:space="preserve">
+    <value>编辑栅格规格</value>
+  </data>
+  <data name="DeleteGridSpacingPreset" xml:space="preserve">
+    <value>删除栅格规格</value>
+  </data>
+  <data name="MoveUp" xml:space="preserve">
+    <value>上移</value>
+  </data>
+  <data name="MoveDown" xml:space="preserve">
+    <value>下移</value>
+  </data>
+  <data name="LinkGridAxes" xml:space="preserve">
+    <value>联动 X 和 Y</value>
+  </data>
+  <data name="GridSpacingPresetNameExists" xml:space="preserve">
+    <value>已存在同名的栅格规格。</value>
+  </data>
+  <data name="GridSpacingPresetRangeError" xml:space="preserve">
+    <value>间距必须在 {0} {2} 到 {1} {2} 之间。</value>
+  </data>
+  <data name="ColorSource" xml:space="preserve">
+    <value>颜色来源</value>
+  </data>
+  <data name="ByBlock" xml:space="preserve">
+    <value>随块</value>
+  </data>
+  <data name="Explicit" xml:space="preserve">
+    <value>显式</value>
+  </data>
+  <data name="ShowFramesPerSecond" xml:space="preserve">
+    <value>显示帧率</value>
+  </data>
+  <data name="ZoomSnapshotPreview" xml:space="preserve">
+    <value>缩放快照预览</value>
+  </data>
+  <data name="ApproximateTileScaleFallback" xml:space="preserve">
+    <value>允许使用邻近缩放级别的图块缓存</value>
+  </data>
+  <data name="LevelOfDetailOptimization" xml:space="preserve">
+    <value>启用细节层级优化</value>
+  </data>
+  <data name="BackgroundChunkRecording" xml:space="preserve">
+    <value>后台录制命令列表区块（实验性）</value>
+  </data>
+  <data name="AiAssistant" xml:space="preserve">
+    <value>AI 助手</value>
+  </data>
+  <data name="AiAssistantWelcome" xml:space="preserve">
+    <value>配置 LM Studio 或 Codex 后，可以查看或编辑工作区中的图纸。</value>
+  </data>
+  <data name="LmStudioConnection" xml:space="preserve">
+    <value>LM Studio 连接</value>
+  </data>
+  <data name="Endpoint" xml:space="preserve">
+    <value>服务地址</value>
+  </data>
+  <data name="Temperature" xml:space="preserve">
+    <value>温度</value>
+  </data>
+  <data name="ContextWindowTokens" xml:space="preserve">
+    <value>上下文窗口</value>
+  </data>
+  <data name="RefreshModels" xml:space="preserve">
+    <value>刷新模型</value>
+  </data>
+  <data name="EnableCadAiTools" xml:space="preserve">
+    <value>允许 AI 使用 CAD 编辑工具</value>
+  </data>
+  <data name="ClearConversation" xml:space="preserve">
+    <value>清空对话</value>
+  </data>
+  <data name="AiPromptHint" xml:space="preserve">
+    <value>询问或编辑当前图纸</value>
+  </data>
+  <data name="Send" xml:space="preserve">
+    <value>发送</value>
+  </data>
+  <data name="Stop" xml:space="preserve">
+    <value>停止</value>
+  </data>
+  <data name="Error" xml:space="preserve">
+    <value>错误</value>
+  </data>
+  <data name="Status" xml:space="preserve">
+    <value>状态</value>
+  </data>
+  <data name="AiDisconnected" xml:space="preserve">
+    <value>未连接</value>
+  </data>
+  <data name="AiConnecting" xml:space="preserve">
+    <value>正在连接...</value>
+  </data>
+  <data name="AiNoModels" xml:space="preserve">
+    <value>已连接，但没有加载模型</value>
+  </data>
+  <data name="AiConnectedModelCountFormat" xml:space="preserve">
+    <value>已连接：{0} 个模型</value>
+  </data>
+  <data name="AiCancelled" xml:space="preserve">
+    <value>已取消</value>
+  </data>
+  <data name="AiConnectionFailed" xml:space="preserve">
+    <value>连接失败</value>
+  </data>
+  <data name="AiActiveDocumentFormat" xml:space="preserve">
+    <value>当前文档：{0}</value>
+  </data>
+  <data name="AiGenerating" xml:space="preserve">
+    <value>正在生成...</value>
+  </data>
+  <data name="AiReducingContext" xml:space="preserve">
+    <value>正在缩减对话上下文并重试...</value>
+  </data>
+  <data name="AiEmptyResponse" xml:space="preserve">
+    <value>模型返回了空响应。</value>
+  </data>
+  <data name="AiReadyModelFormat" xml:space="preserve">
+    <value>就绪：{0}</value>
+  </data>
+  <data name="AiRequestFailed" xml:space="preserve">
+    <value>请求失败</value>
+  </data>
+  <data name="AiConversationCleared" xml:space="preserve">
+    <value>对话已清空。</value>
+  </data>
+  <data name="AiYou" xml:space="preserve">
+    <value>你</value>
+  </data>
+  <data name="AiAssistantShort" xml:space="preserve">
+    <value>AI</value>
+  </data>
+  <data name="AiCadTool" xml:space="preserve">
+    <value>CAD 工具</value>
+  </data>
+  <data name="ParallelRendering" xml:space="preserve">
+    <value>实验性并行绘制</value>
+  </data>
+  <data name="GraphicsDeviceMode" xml:space="preserve">
+    <value>图形设备模式</value>
+  </data>
+  <data name="GraphicsDeviceAutomatic" xml:space="preserve">
+    <value>自动（硬件加速失败时使用 WARP）</value>
+  </data>
+  <data name="GraphicsDeviceHardware" xml:space="preserve">
+    <value>硬件加速</value>
+  </data>
+  <data name="GraphicsDeviceWarp" xml:space="preserve">
+    <value>WARP 软件渲染</value>
+  </data>
+  <data name="ParallelRenderingMode" xml:space="preserve">
+    <value>资源策略</value>
+  </data>
+  <data name="ParallelRenderingWorkerCount" xml:space="preserve">
+    <value>绘制工作线程数</value>
+  </data>
+  <data name="ParallelRenderingMultipleDevices" xml:space="preserve">
+    <value>多个设备</value>
+  </data>
+  <data name="ParallelRenderingSharedDeviceContexts" xml:space="preserve">
+    <value>单个共享设备，多个上下文</value>
+  </data>
+  <data name="AiSettings" xml:space="preserve">
+    <value>AI 助手设置</value>
+  </data>
+  <data name="AiProvider" xml:space="preserve">
+    <value>提供商</value>
+  </data>
+  <data name="CodexExecutable" xml:space="preserve">
+    <value>Codex 可执行文件</value>
+  </data>
+  <data name="ReasoningEffort" xml:space="preserve">
+    <value>推理强度</value>
+  </data>
+  <data name="ServiceTier" xml:space="preserve">
+    <value>服务等级</value>
+  </data>
+  <data name="Advanced" xml:space="preserve">
+    <value>高级设置</value>
+  </data>
+  <data name="Messages" xml:space="preserve">
+    <value>消息</value>
+  </data>
+  <data name="All" xml:space="preserve">
+    <value>全部</value>
+  </data>
+  <data name="Information" xml:space="preserve">
+    <value>信息</value>
+  </data>
+  <data name="Warning" xml:space="preserve">
+    <value>警告</value>
+  </data>
+  <data name="MessageLevel" xml:space="preserve">
+    <value>消息级别</value>
+  </data>
+  <data name="SearchMessages" xml:space="preserve">
+    <value>搜索消息</value>
+  </data>
+  <data name="ClearMessages" xml:space="preserve">
+    <value>清空消息</value>
+  </data>
+  <data name="AiAttachImage" xml:space="preserve">
+    <value>添加文件</value>
+  </data>
+  <data name="AiPasteImage" xml:space="preserve">
+    <value>从剪贴板粘贴文件或图片</value>
+  </data>
+  <data name="AiImagePrompt" xml:space="preserve">
+    <value>请分析附件中的文件。</value>
+  </data>
+  <data name="AiClipboardNoImage" xml:space="preserve">
+    <value>剪贴板中没有受支持的文件或图片。</value>
+  </data>
+  <data name="AiImageTooLarge" xml:space="preserve">
+    <value>图片太大，无法添加。</value>
+  </data>
+  <data name="GraphicsDeviceAutomaticHardware" xml:space="preserve">
+    <value>自动（当前：硬件加速）</value>
+  </data>
+  <data name="GraphicsDeviceAutomaticWarp" xml:space="preserve">
+    <value>自动（当前：WARP）</value>
+  </data>
+  <data name="RadialMenu" xml:space="preserve">
+    <value>轮盘菜单</value>
+  </data>
+  <data name="RadialMenuEnabled" xml:space="preserve">
+    <value>启用鼠标中键轮盘菜单</value>
+  </data>
+  <data name="RadialMenuMiddleMouse" xml:space="preserve">
+    <value>鼠标中键</value>
+  </data>
+  <data name="RadialMenuShiftMiddleMouse" xml:space="preserve">
+    <value>Shift + 鼠标中键</value>
+  </data>
+  <data name="RadialMenuControlMiddleMouse" xml:space="preserve">
+    <value>Ctrl + 鼠标中键</value>
+  </data>
+  <data name="RadialMenuAltMiddleMouse" xml:space="preserve">
+    <value>Alt + 鼠标中键</value>
+  </data>
+  <data name="RadialMenuSlot" xml:space="preserve">
+    <value>扇区 {0}</value>
+  </data>
+  <data name="Print" xml:space="preserve">
+    <value>打印</value>
+  </data>
+  <data name="PrintPreview" xml:space="preserve">
+    <value>打印预览</value>
+  </data>
+  <data name="PrintPreviewDescription" xml:space="preserve">
+    <value>检查当前布局并选择打印设置。</value>
+  </data>
+  <data name="PrintPreviewPrinterNote" xml:space="preserve">
+    <value>预览会使用所选纸张和方向；打印时将自动应用打印机边距。</value>
+  </data>
+  <data name="PrinterSettings" xml:space="preserve">
+    <value>打印机设置</value>
+  </data>
+  <data name="Printer" xml:space="preserve">
+    <value>打印机</value>
+  </data>
+  <data name="PaperSize" xml:space="preserve">
+    <value>纸张大小</value>
+  </data>
+  <data name="Orientation" xml:space="preserve">
+    <value>方向</value>
+  </data>
+  <data name="Portrait" xml:space="preserve">
+    <value>纵向</value>
+  </data>
+  <data name="Landscape" xml:space="preserve">
+    <value>横向</value>
+  </data>
+  <data name="Copies" xml:space="preserve">
+    <value>份数</value>
+  </data>
+  <data name="PrintResolution" xml:space="preserve">
+    <value>打印分辨率（DPI）</value>
+  </data>
+  <data name="CustomPaperSize" xml:space="preserve">
+    <value>自定义</value>
+  </data>
+  <data name="NoPrintersAvailable" xml:space="preserve">
+    <value>没有已安装或可用的打印机。</value>
+  </data>
+  <data name="PrintStarted" xml:space="preserve">
+    <value>已开始打印。</value>
+  </data>
+  <data name="PrintSubmitted" xml:space="preserve">
+    <value>打印任务已提交。</value>
+  </data>
+  <data name="PrintCompleted" xml:space="preserve">
+    <value>打印已完成。</value>
+  </data>
+  <data name="PrintFailed" xml:space="preserve">
+    <value>打印失败</value>
+  </data>
+</root>

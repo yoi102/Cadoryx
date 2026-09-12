@@ -1,0 +1,4 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup><PlatformTarget>x64</PlatformTarget></PropertyGroup>
+  <ItemGroup><ProjectReference Include="../Cadoryx.Rendering/Cadoryx.Rendering.csproj" /><ProjectReference Include="../Cadoryx.Kernel.Occt/Cadoryx.Kernel.Occt.csproj" /></ItemGroup>
+</Project>

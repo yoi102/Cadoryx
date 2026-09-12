@@ -1,0 +1,191 @@
+<mah:MetroWindow x:Class="Cadoryx.wpf.MainWindow"
+                 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                 xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                 xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+                 xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
+                 xmlns:avalonDock="https://github.com/Dirkster99/AvalonDock"
+                 xmlns:avalonDockControls="clr-namespace:AvalonDock.Controls;assembly=AvalonDock"
+                 xmlns:avalonDockThemes="clr-namespace:AvalonDock.Themes;assembly=AvalonDock.Themes.Arc"
+                 xmlns:views="clr-namespace:Cadoryx.wpf.Views"
+                 xmlns:toolboxViews="clr-namespace:Cadoryx.wpf.Views.Toolboxes"
+                 xmlns:selectors="clr-namespace:Cadoryx.wpf.Selectors"
+                 xmlns:vm="clr-namespace:Cadoryx.ViewModels;assembly=Cadoryx.ViewModels"
+                 xmlns:vmToolboxes="clr-namespace:Cadoryx.ViewModels.Toolboxes;assembly=Cadoryx.ViewModels"
+                 xmlns:svc="clr-namespace:Cadoryx.ViewModels.Services.Platform;assembly=Cadoryx.ViewModels.Services"
+                 xmlns:cv="clr-namespace:Cadoryx.wpf.Converters"
+                 xmlns:r="clr-namespace:Cadoryx.Lang;assembly=Cadoryx.Lang"
+                 Icon="Cadoryx.ico"
+                 mc:Ignorable="d"
+                 d:DataContext="{d:DesignInstance Type=vm:MainWindowViewModel}"
+                 Topmost="{Binding Topmost}"
+                 Title="Cadoryx"
+                 TitleAlignment="Center"
+                 TitleCharacterCasing="Normal"
+                 ShowIconOnTitleBar="True"
+                 WindowStartupLocation="CenterScreen"
+                 AutomationProperties.AutomationId="Cadoryx.MainWindow"
+                 Height="900"
+                 Width="1450"
+                 MinHeight="620"
+                 MinWidth="980">
+    <mah:MetroWindow.InputBindings>
+        <KeyBinding Key="S" Modifiers="Control" Command="{Binding SaveCommand}" />
+        <KeyBinding Key="Z" Modifiers="Control" Command="{Binding UndoCommand}" />
+        <KeyBinding Key="Y" Modifiers="Control" Command="{Binding RedoCommand}" />
+    </mah:MetroWindow.InputBindings>
+
+    <mah:MetroWindow.LeftWindowCommands>
+        <mah:WindowCommands>
+            <Button Margin="12,0,5,0"
+                    Content="{md:PackIcon Kind=Github, Size=19}"
+                    ToolTip="Cadoryx GitHub"
+                    Click="IconClicked"
+                    Width="32"
+                    Height="24"
+                    Padding="0" />
+            <Menu VerticalAlignment="Center" md:MenuAssist.TopLevelMenuItemHeight="25">
+                <MenuItem Header="文件" Foreground="White">
+                    <MenuItem Header="新建"
+                              Command="{Binding NewCommand}"
+                              Icon="{md:PackIcon Kind=FilePlusOutline}" />
+                    <MenuItem Header="打开"
+                              Command="{Binding OpenFileCommand}"
+                              Icon="{md:PackIcon Kind=FolderOpenOutline}" />
+                    <MenuItem Header="保存"
+                              Command="{Binding SaveCommand}"
+                              Icon="{md:PackIcon Kind=ContentSaveOutline}" />
+                    <Separator />
+                    <MenuItem Header="另存为" Command="{Binding SaveAsCommand}" />
+                    <MenuItem Header="导出 STEP / IGES / STL" Command="{Binding ExportCommand}" />
+                    <MenuItem Header="应用设置"
+                              Command="{Binding OpenApplicationSettingsCommand}"
+                              Icon="{md:PackIcon Kind=CogOutline}" />
+                </MenuItem>
+            </Menu>
+        </mah:WindowCommands>
+    </mah:MetroWindow.LeftWindowCommands>
+
+    <mah:MetroWindow.RightWindowCommands>
+        <mah:WindowCommands>
+            <ToggleButton Style="{StaticResource MaterialDesignActionSecondaryToggleButton}"
+                          Content="{md:PackIcon Kind=PinOff, Size=19}"
+                          IsChecked="{Binding Topmost}"
+                          Background="Transparent"
+                          Foreground="White"
+                          ToolTip="窗口置顶"
+                          md:ToggleButtonAssist.OnContent="{md:PackIcon Kind=Pin}" />
+            <ToggleButton Style="{StaticResource MaterialDesignActionSecondaryToggleButton}"
+                          Content="{md:PackIcon Kind=WhiteBalanceSunny, Size=19}"
+                          IsChecked="{Binding IsDarkTheme}"
+                          Background="Transparent"
+                          Foreground="White"
+                          ToolTip="深色主题"
+                          md:ToggleButtonAssist.OnContent="{md:PackIcon Kind=WeatherNight}" />
+            <Menu VerticalAlignment="Center"
+                  Width="70"
+                  md:MenuAssist.TopLevelMenuItemHeight="25">
+                <MenuItem Header="{Binding CurrentCultureLCID, Converter={x:Static cv:LCIDToStringConverter.Instance}}"
+                          Foreground="White">
+                    <MenuItem Header="{I18N {x:Static r:LangKeys.English}}"
+                              Command="{Binding ChangeCultureCommand}"
+                              CommandParameter="1033"
+                              Foreground="{DynamicResource MaterialDesignBody}" />
+                    <MenuItem Header="{I18N {x:Static r:LangKeys.Japanese}}"
+                              Command="{Binding ChangeCultureCommand}"
+                              CommandParameter="1041"
+                              Foreground="{DynamicResource MaterialDesignBody}" />
+                    <MenuItem Header="{I18N {x:Static r:LangKeys.Chinese}}"
+                              Command="{Binding ChangeCultureCommand}"
+                              CommandParameter="2052"
+                              Foreground="{DynamicResource MaterialDesignBody}" />
+                </MenuItem>
+            </Menu>
+        </mah:WindowCommands>
+    </mah:MetroWindow.RightWindowCommands>
+
+    <Grid>
+        <md:DialogHost Style="{StaticResource MaterialDesignEmbeddedDialogHost}"
+                       Identifier="{x:Static svc:ViewServiceIdentifiers.RootDialogHost}"
+                       Background="{DynamicResource MaterialDesign.Brush.Background}"
+                       DialogTheme="Inherit" DialogOpened="OnDialogOpened" DialogClosed="OnDialogClosed">
+            <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <views:MainRibbonView Grid.Row="0" DataContext="{Binding}" />
+
+        <avalonDock:ToggleDockingManager x:Name="dockManager"
+                                         Grid.Row="1"
+                                         BorderThickness="0"
+                                         DockLayout="{Binding DockLayout}"
+                                         DocumentHeaderTemplate="{DynamicResource DocumentTabHeaderTemplate}"
+                                         LayoutItemContainerStyleSelector="{DynamicResource PanesStyleSelector}">
+            <avalonDock:ToggleDockingManager.Theme>
+                <avalonDockThemes:ArcDarkTheme />
+            </avalonDock:ToggleDockingManager.Theme>
+            <avalonDock:LayoutRoot>
+                <avalonDock:LayoutPanel Orientation="Horizontal">
+                    <avalonDock:LayoutDocumentPaneGroup>
+                        <avalonDock:LayoutDocumentPane />
+                    </avalonDock:LayoutDocumentPaneGroup>
+                </avalonDock:LayoutPanel>
+            </avalonDock:LayoutRoot>
+        </avalonDock:ToggleDockingManager>
+
+        <views:MainStatusBarView Grid.Row="2" DataContext="{Binding}" />
+
+        <Grid.Resources>
+            <DataTemplate DataType="{x:Type vm:CadDocumentViewModel}"><views:ViewportView /></DataTemplate>
+            <DataTemplate DataType="{x:Type vmToolboxes:ModelTreeToolboxViewModel}">
+                <toolboxViews:ModelTreeToolboxView />
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type vmToolboxes:PropertiesToolboxViewModel}">
+                <toolboxViews:PropertiesToolboxView />
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type vmToolboxes:MessagesToolboxViewModel}">
+                <toolboxViews:MessagesToolboxView />
+            </DataTemplate>
+
+            <DataTemplate x:Key="DocumentTabHeaderTemplate">
+                <StackPanel Orientation="Horizontal">
+                    <md:PackIcon Kind="CubeOutline" Width="14" Height="14" Margin="0,0,5,0" />
+                    <TextBlock Text="{Binding Title}" TextTrimming="CharacterEllipsis" />
+                </StackPanel>
+            </DataTemplate>
+
+            <Style x:Key="ToolboxLayoutItemStyle" TargetType="{x:Type avalonDockControls:LayoutAnchorableItem}">
+                <Setter Property="Title" Value="{Binding Model.Title}" />
+                <Setter Property="ContentId" Value="{Binding Model.ContentId}" />
+                <Setter Property="AutomationProperties.AutomationId" Value="{Binding Model.ContentId}" />
+                <Setter Property="ClipToBounds" Value="True" />
+            </Style>
+            <Style x:Key="DocumentLayoutItemStyle" TargetType="{x:Type avalonDockControls:LayoutDocumentItem}">
+                <Setter Property="Title" Value="{Binding Model.Title}" />
+                <Setter Property="ContentId" Value="{Binding Model.ContentId}" />
+            </Style>
+            <selectors:PanesStyleSelector x:Key="PanesStyleSelector">
+                <selectors:PanesStyleSelector.ToolboxStyle>
+                    <Style TargetType="{x:Type avalonDockControls:LayoutAnchorableItem}">
+                        <Setter Property="Title" Value="{Binding Model.Title}" />
+                        <Setter Property="ContentId" Value="{Binding Model.ContentId}" />
+                        <Setter Property="AutomationProperties.AutomationId" Value="{Binding Model.ContentId}" />
+                        <Setter Property="ClipToBounds" Value="True" />
+                    </Style>
+                </selectors:PanesStyleSelector.ToolboxStyle>
+                <selectors:PanesStyleSelector.DocumentStyle>
+                    <Style TargetType="{x:Type avalonDockControls:LayoutDocumentItem}">
+                        <Setter Property="Title" Value="{Binding Model.Title}" />
+                        <Setter Property="ContentId" Value="{Binding Model.ContentId}" />
+                    </Style>
+                </selectors:PanesStyleSelector.DocumentStyle>
+            </selectors:PanesStyleSelector>
+        </Grid.Resources>
+            </Grid>
+        </md:DialogHost>
+    </Grid>
+</mah:MetroWindow>

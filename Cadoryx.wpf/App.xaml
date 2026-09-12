@@ -1,0 +1,47 @@
+﻿<Application x:Class="Cadoryx.wpf.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:Cadoryx.wpf"
+             xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+             xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <md:MahAppsBundledTheme BaseTheme="Dark"
+                                        PrimaryColor="Blue"
+                                        SecondaryColor="LightBlue">
+                    <md:MahAppsBundledTheme.ColorAdjustment>
+                        <md:ColorAdjustment Colors="All"
+                                            Contrast="Medium"
+                                            DesiredContrastRatio="4.0" />
+                    </md:MahAppsBundledTheme.ColorAdjustment>
+                </md:MahAppsBundledTheme>
+
+                <!--  MahApps  -->
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Controls.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Fonts.xaml" />
+
+                <!--  Material Design  -->
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesign3.Defaults.xaml" />
+
+                <!--  Material Design: MahApps Compatibility  -->
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.MahApps;component/Themes/MaterialDesignTheme.MahApps.Defaults.xaml" />
+
+                <!--AvalonDock.Themes.Arc-->
+                <ResourceDictionary Source="/AvalonDock.Themes.Arc;component/DarkTheme.xaml" />
+
+                <ResourceDictionary Source="pack://application:,,,/Cadoryx.wpf.Controls;component/Generic.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+
+            <!-- MahApps 3.0 RC ColorCanvas omits its themed foreground setter. -->
+            <Style TargetType="{x:Type mah:ColorCanvas}"
+                   BasedOn="{StaticResource MahApps.Styles.ColorCanvas}">
+                <Setter Property="Foreground"
+                        Value="{DynamicResource MahApps.Brushes.Text}" />
+            </Style>
+
+            <Style TargetType="ScrollBar"
+                   BasedOn="{StaticResource MaterialDesignScrollBarMinimal}" />
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

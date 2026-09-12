@@ -1,0 +1,12 @@
+{
+  "application": "Cadoryx",
+  "applicationVersion": "0.1.0",
+  "framework": "net10.0-windows",
+  "runtime": "win-x64",
+  "occtSharpPackage": "8.0.1-preview.26",
+  "occtVersion": "8.0.1",
+  "messagePackPackage": "3.1.8",
+  "containerVersion": 1,
+  "coreSectionVersion": 2,
+  "coreSectionEncoding": "messagepack"
+}

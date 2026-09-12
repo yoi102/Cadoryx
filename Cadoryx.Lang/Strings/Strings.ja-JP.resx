@@ -1,0 +1,1443 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Cancel" xml:space="preserve">
+    <value>キャンセル</value>
+  </data>
+  <data name="Arc" xml:space="preserve">
+    <value>円弧</value>
+  </data>
+  <data name="ArcThreePoint" xml:space="preserve">
+    <value>3点円弧</value>
+  </data>
+  <data name="ArcStartCenterEnd" xml:space="preserve">
+    <value>始点、中心、終点</value>
+  </data>
+  <data name="ArcStartCenterAngle" xml:space="preserve">
+    <value>始点、中心、角度</value>
+  </data>
+  <data name="ArcStartCenterLength" xml:space="preserve">
+    <value>始点、中心、長さ</value>
+  </data>
+  <data name="ArcStartEndAngle" xml:space="preserve">
+    <value>始点、終点、角度</value>
+  </data>
+  <data name="ArcStartEndDirection" xml:space="preserve">
+    <value>始点、終点、方向</value>
+  </data>
+  <data name="ArcStartEndRadius" xml:space="preserve">
+    <value>始点、終点、半径</value>
+  </data>
+  <data name="ArcCenterStartEnd" xml:space="preserve">
+    <value>中心、始点、終点</value>
+  </data>
+  <data name="ArcCenterStartAngle" xml:space="preserve">
+    <value>中心、始点、角度</value>
+  </data>
+  <data name="ArcCenterStartLength" xml:space="preserve">
+    <value>中心、始点、長さ</value>
+  </data>
+  <data name="ArcContinue" xml:space="preserve">
+    <value>連続</value>
+  </data>
+  <data name="Chinese" xml:space="preserve">
+    <value>中文</value>
+  </data>
+  <data name="Circle" xml:space="preserve">
+    <value>円</value>
+  </data>
+  <data name="Ellipse" xml:space="preserve">
+    <value>楕円</value>
+  </data>
+  <data name="Rectangle" xml:space="preserve">
+    <value>矩形</value>
+  </data>
+  <data name="Confirm" xml:space="preserve">
+    <value>確認</value>
+  </data>
+  <data name="ConfirmExitMessage" xml:space="preserve">
+    <value>アプリケーションを終了しますか？</value>
+  </data>
+  <data name="ConfirmExitTitle" xml:space="preserve">
+    <value>終了の確認</value>
+  </data>
+  <data name="UnsavedDocumentTitle" xml:space="preserve">
+    <value>未保存の変更</value>
+  </data>
+  <data name="UnsavedDocumentMessageFormat" xml:space="preserve">
+    <value>「{0}」への変更を保存しますか？</value>
+  </data>
+  <data name="DontSave" xml:space="preserve">
+    <value>保存しない</value>
+  </data>
+  <data name="Cross" xml:space="preserve">
+    <value>十字</value>
+  </data>
+  <data name="InfiniteCross" xml:space="preserve">
+    <value>無限十字</value>
+  </data>
+  <data name="Dots" xml:space="preserve">
+    <value>点</value>
+  </data>
+  <data name="English" xml:space="preserve">
+    <value>English</value>
+  </data>
+  <data name="Fit" xml:space="preserve">
+    <value>ウィンドウに合わせ</value>
+  </data>
+  <data name="Japanese" xml:space="preserve">
+    <value>日本語</value>
+  </data>
+  <data name="Line" xml:space="preserve">
+    <value>線分</value>
+  </data>
+  <data name="Lines" xml:space="preserve">
+    <value>線</value>
+  </data>
+  <data name="None" xml:space="preserve">
+    <value>なし</value>
+  </data>
+  <data name="Ok" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="Pan" xml:space="preserve">
+    <value>パン</value>
+  </data>
+  <data name="Polygon" xml:space="preserve">
+    <value>多角形</value>
+  </data>
+  <data name="Polyline" xml:space="preserve">
+    <value>ポリライン</value>
+  </data>
+  <data name="SaveAs" xml:space="preserve">
+    <value>名前を付けて保存...</value>
+  </data>
+  <data name="Select" xml:space="preserve">
+    <value>選択</value>
+  </data>
+  <data name="ShowImageInNewWindow" xml:space="preserve">
+    <value>新しいウィンドウで画像を表示</value>
+  </data>
+  <data name="ShowProperties" xml:space="preserve">
+    <value>プロパティを表示</value>
+  </data>
+  <data name="Source" xml:space="preserve">
+    <value>ソース</value>
+  </data>
+  <data name="Spline" xml:space="preserve">
+    <value>スプライン</value>
+  </data>
+  <data name="Text" xml:space="preserve">
+    <value>文字</value>
+  </data>
+  <data name="ShapeText" xml:space="preserve">
+    <value>CAD文字</value>
+  </data>
+  <data name="UnhandledException" xml:space="preserve">
+    <value>未処理の例外</value>
+  </data>
+  <data name="UnhandledExceptionExit" xml:space="preserve">
+    <value>未処理の例外が発生しました。アプリケーションは終了します。</value>
+  </data>
+  <data name="View" xml:space="preserve">
+    <value>ビュー</value>
+  </data>
+  <data name="Direct2dCad" xml:space="preserve">
+    <value>Direct2dCad</value>
+  </data>
+  <data name="OpenFile" xml:space="preserve">
+    <value>ファイルを開く</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>保存</value>
+  </data>
+  <data name="Undo" xml:space="preserve">
+    <value>元に戻す</value>
+  </data>
+  <data name="Redo" xml:space="preserve">
+    <value>やり直し</value>
+  </data>
+  <data name="DeleteSelection" xml:space="preserve">
+    <value>選択したエンティティを削除</value>
+  </data>
+  <data name="CopySelection" xml:space="preserve">
+    <value>選択したエンティティをコピー</value>
+  </data>
+  <data name="CutSelection" xml:space="preserve">
+    <value>選択したエンティティを切り取り</value>
+  </data>
+  <data name="SelectAll" xml:space="preserve">
+    <value>すべてのエンティティを選択</value>
+  </data>
+  <data name="ClearSelection" xml:space="preserve">
+    <value>選択を解除</value>
+  </data>
+  <data name="CancelCurrentInteraction" xml:space="preserve">
+    <value>現在の操作をキャンセル</value>
+  </data>
+  <data name="Grid" xml:space="preserve">
+    <value>グリッド</value>
+  </data>
+  <data name="SnapMarker" xml:space="preserve">
+    <value>スナップマーカー</value>
+  </data>
+  <data name="ShapeFont" xml:space="preserve">
+    <value>シェイプフォント</value>
+  </data>
+  <data name="SetOrigin" xml:space="preserve">
+    <value>原点を設定</value>
+  </data>
+  <data name="Inverted" xml:space="preserve">
+    <value>白抜き</value>
+  </data>
+  <data name="Margin" xml:space="preserve">
+    <value>余白</value>
+  </data>
+  <data name="Origin" xml:space="preserve">
+    <value>原点</value>
+  </data>
+  <data name="OriginMarker" xml:space="preserve">
+    <value>原点マーカー</value>
+  </data>
+  <data name="OriginLine" xml:space="preserve">
+    <value>原点軸</value>
+  </data>
+  <data name="Size" xml:space="preserve">
+    <value>サイズ</value>
+  </data>
+  <data name="Stroke" xml:space="preserve">
+    <value>線幅</value>
+  </data>
+  <data name="Color" xml:space="preserve">
+    <value>色</value>
+  </data>
+  <data name="User" xml:space="preserve">
+    <value>ユーザー</value>
+  </data>
+  <data name="Antialias" xml:space="preserve">
+    <value>アンチエイリアス</value>
+  </data>
+  <data name="TextAntialiasing" xml:space="preserve">
+    <value>文字AA</value>
+  </data>
+  <data name="Selected" xml:space="preserve">
+    <value>選択中</value>
+  </data>
+  <data name="SelectionWindow" xml:space="preserve">
+    <value>囲み選択</value>
+  </data>
+  <data name="SelectionCrossing" xml:space="preserve">
+    <value>交差選択</value>
+  </data>
+  <data name="Welcome" xml:space="preserve">
+    <value>ようこそ</value>
+  </data>
+  <data name="X" xml:space="preserve">
+    <value>X</value>
+  </data>
+  <data name="Square" xml:space="preserve">
+    <value>四角</value>
+  </data>
+  <data name="Axes" xml:space="preserve">
+    <value>軸</value>
+  </data>
+  <data name="Marker" xml:space="preserve">
+    <value>マーカー</value>
+  </data>
+  <data name="AxesAndMarker" xml:space="preserve">
+    <value>軸とマーカー</value>
+  </data>
+  <data name="Solid" xml:space="preserve">
+    <value>実線</value>
+  </data>
+  <data name="Dash" xml:space="preserve">
+    <value>破線</value>
+  </data>
+  <data name="Dot" xml:space="preserve">
+    <value>点線</value>
+  </data>
+  <data name="DashDot" xml:space="preserve">
+    <value>一点鎖線</value>
+  </data>
+  <data name="Unicode" xml:space="preserve">
+    <value>Unicode</value>
+  </data>
+  <data name="Simplex" xml:space="preserve">
+    <value>Simplex</value>
+  </data>
+  <data name="MonoLine" xml:space="preserve">
+    <value>単線</value>
+  </data>
+  <data name="BoxFallback" xml:space="preserve">
+    <value>ボックス代替</value>
+  </data>
+  <data name="Y" xml:space="preserve">
+    <value>Y</value>
+  </data>
+  <data name="File" xml:space="preserve">
+    <value>ファイル</value>
+  </data>
+  <data name="Draw" xml:space="preserve">
+    <value>描画</value>
+  </data>
+  <data name="New" xml:space="preserve">
+    <value>クリエイト</value>
+  </data>
+  <data name="Documents" xml:space="preserve">
+    <value>ドキュメント</value>
+  </data>
+  <data name="Refresh" xml:space="preserve">
+    <value>更新</value>
+  </data>
+  <data name="Background" xml:space="preserve">
+    <value>背景</value>
+  </data>
+  <data name="ColorPickerPalettes" xml:space="preserve">
+    <value>パレット</value>
+  </data>
+  <data name="ColorPickerAdvanced" xml:space="preserve">
+    <value>詳細</value>
+  </data>
+  <data name="ColorPickerStandardColors" xml:space="preserve">
+    <value>標準色</value>
+  </data>
+  <data name="ColorPickerAvailableColors" xml:space="preserve">
+    <value>使用可能な色</value>
+  </data>
+  <data name="ColorPickerRecentColors" xml:space="preserve">
+    <value>最近使った色</value>
+  </data>
+  <data name="Layers" xml:space="preserve">
+    <value>レイヤー</value>
+  </data>
+  <data name="AddLayer" xml:space="preserve">
+    <value>レイヤー追加</value>
+  </data>
+  <data name="DeleteLayer" xml:space="preserve">
+    <value>レイヤー削除</value>
+  </data>
+  <data name="Priority" xml:space="preserve">
+    <value>優先度</value>
+  </data>
+  <data name="Entities" xml:space="preserve">
+    <value>エンティティ</value>
+  </data>
+  <data name="Weight" xml:space="preserve">
+    <value>線幅</value>
+  </data>
+  <data name="Visible" xml:space="preserve">
+    <value>表示</value>
+  </data>
+  <data name="Locked" xml:space="preserve">
+    <value>ロック</value>
+  </data>
+  <data name="Frozen" xml:space="preserve">
+    <value>凍結</value>
+  </data>
+  <data name="LayerLockedMessageFormat" xml:space="preserve">
+    <value>レイヤー「{0}」はロックされています。</value>
+  </data>
+  <data name="LayerFrozenMessageFormat" xml:space="preserve">
+    <value>レイヤー「{0}」は凍結されています。</value>
+  </data>
+  <data name="TogglePrimarySideBar" xml:space="preserve">
+    <value>プライマリサイドバー切替</value>
+  </data>
+  <data name="TogglePanel" xml:space="preserve">
+    <value>パネル切替</value>
+  </data>
+  <data name="ToggleSecondarySideBar" xml:space="preserve">
+    <value>セカンダリサイドバー切替</value>
+  </data>
+  <data name="DocumentNameCannotBeEmpty" xml:space="preserve">
+    <value>ドキュメント名は空にできません。</value>
+  </data>
+  <data name="Id" xml:space="preserve">
+    <value>ID</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>名前</value>
+  </data>
+  <data name="StrokeStyle" xml:space="preserve">
+    <value>ストロークスタイル</value>
+  </data>
+  <data name="StartCap" xml:space="preserve">
+    <value>開始キャップ</value>
+  </data>
+  <data name="EndCap" xml:space="preserve">
+    <value>終了キャップ</value>
+  </data>
+  <data name="DashCap" xml:space="preserve">
+    <value>破線キャップ</value>
+  </data>
+  <data name="DashStyle" xml:space="preserve">
+    <value>破線スタイル</value>
+  </data>
+  <data name="LineJoin" xml:space="preserve">
+    <value>線の結合</value>
+  </data>
+  <data name="CenterX" xml:space="preserve">
+    <value>中心 X</value>
+  </data>
+  <data name="CenterY" xml:space="preserve">
+    <value>中心 Y</value>
+  </data>
+  <data name="Radius" xml:space="preserve">
+    <value>半径</value>
+  </data>
+  <data name="RadiusX" xml:space="preserve">
+    <value>X 半径</value>
+  </data>
+  <data name="RadiusY" xml:space="preserve">
+    <value>Y 半径</value>
+  </data>
+  <data name="Diameter" xml:space="preserve">
+    <value>直径</value>
+  </data>
+  <data name="DiameterX" xml:space="preserve">
+    <value>X 直径</value>
+  </data>
+  <data name="DiameterY" xml:space="preserve">
+    <value>Y 直径</value>
+  </data>
+  <data name="Start" xml:space="preserve">
+    <value>開始</value>
+  </data>
+  <data name="StartX" xml:space="preserve">
+    <value>開始 X</value>
+  </data>
+  <data name="StartY" xml:space="preserve">
+    <value>開始 Y</value>
+  </data>
+  <data name="End" xml:space="preserve">
+    <value>終了</value>
+  </data>
+  <data name="EndX" xml:space="preserve">
+    <value>終了 X</value>
+  </data>
+  <data name="EndY" xml:space="preserve">
+    <value>終了 Y</value>
+  </data>
+  <data name="Sweep" xml:space="preserve">
+    <value>スイープ</value>
+  </data>
+  <data name="CounterClockwise" xml:space="preserve">
+    <value>反時計回り</value>
+  </data>
+  <data name="Fill" xml:space="preserve">
+    <value>塗り</value>
+  </data>
+  <data name="LineWeight" xml:space="preserve">
+    <value>線幅 (mm)</value>
+  </data>
+  <data name="ByLayer" xml:space="preserve">
+    <value>レイヤー依存</value>
+  </data>
+  <data name="DrawOrder" xml:space="preserve">
+    <value>描画順</value>
+  </data>
+  <data name="Length" xml:space="preserve">
+    <value>長さ</value>
+  </data>
+  <data name="Unit" xml:space="preserve">
+    <value>単位</value>
+  </data>
+  <data name="Unitless" xml:space="preserve">
+    <value>単位なし</value>
+  </data>
+  <data name="Millimeter" xml:space="preserve">
+    <value>ミリメートル</value>
+  </data>
+  <data name="Centimeter" xml:space="preserve">
+    <value>センチメートル</value>
+  </data>
+  <data name="Meter" xml:space="preserve">
+    <value>メートル</value>
+  </data>
+  <data name="Inch" xml:space="preserve">
+    <value>インチ</value>
+  </data>
+  <data name="Foot" xml:space="preserve">
+    <value>フィート</value>
+  </data>
+  <data name="Mil" xml:space="preserve">
+    <value>ミル</value>
+  </data>
+  <data name="Angle" xml:space="preserve">
+    <value>角度</value>
+  </data>
+  <data name="Closed" xml:space="preserve">
+    <value>閉じる</value>
+  </data>
+  <data name="Vertices" xml:space="preserve">
+    <value>頂点</value>
+  </data>
+  <data name="AddAfter" xml:space="preserve">
+    <value>後に追加</value>
+  </data>
+  <data name="Remove" xml:space="preserve">
+    <value>削除</value>
+  </data>
+  <data name="PointCount" xml:space="preserve">
+    <value>点数</value>
+  </data>
+  <data name="FitPoints" xml:space="preserve">
+    <value>フィット点</value>
+  </data>
+  <data name="Left" xml:space="preserve">
+    <value>左</value>
+  </data>
+  <data name="Bottom" xml:space="preserve">
+    <value>下</value>
+  </data>
+  <data name="Right" xml:space="preserve">
+    <value>右</value>
+  </data>
+  <data name="Top" xml:space="preserve">
+    <value>上</value>
+  </data>
+  <data name="Width" xml:space="preserve">
+    <value>幅</value>
+  </data>
+  <data name="Height" xml:space="preserve">
+    <value>高さ</value>
+  </data>
+  <data name="CornerX" xml:space="preserve">
+    <value>X 角丸</value>
+  </data>
+  <data name="CornerY" xml:space="preserve">
+    <value>Y 角丸</value>
+  </data>
+  <data name="Content" xml:space="preserve">
+    <value>内容</value>
+  </data>
+  <data name="Style" xml:space="preserve">
+    <value>スタイル</value>
+  </data>
+  <data name="PositionX" xml:space="preserve">
+    <value>位置 X</value>
+  </data>
+  <data name="PositionY" xml:space="preserve">
+    <value>位置 Y</value>
+  </data>
+  <data name="Rotation" xml:space="preserve">
+    <value>回転</value>
+  </data>
+  <data name="Bounds" xml:space="preserve">
+    <value>境界</value>
+  </data>
+  <data name="Measure" xml:space="preserve">
+    <value>計測</value>
+  </data>
+  <data name="ArcDrawing" xml:space="preserve">
+    <value>円弧描画</value>
+  </data>
+  <data name="CircleDrawing" xml:space="preserve">
+    <value>円描画</value>
+  </data>
+  <data name="EllipseDrawing" xml:space="preserve">
+    <value>楕円描画</value>
+  </data>
+  <data name="LineDrawing" xml:space="preserve">
+    <value>線描画</value>
+  </data>
+  <data name="PolygonDrawing" xml:space="preserve">
+    <value>ポリゴン描画</value>
+  </data>
+  <data name="PolylineDrawing" xml:space="preserve">
+    <value>ポリライン描画</value>
+  </data>
+  <data name="RectangleDrawing" xml:space="preserve">
+    <value>矩形描画</value>
+  </data>
+  <data name="SplineDrawing" xml:space="preserve">
+    <value>スプライン描画</value>
+  </data>
+  <data name="TextDrawing" xml:space="preserve">
+    <value>文字描画</value>
+  </data>
+  <data name="CircleCenterRadius" xml:space="preserve">
+    <value>中心-半径の円</value>
+  </data>
+  <data name="CircleCenterDiameter" xml:space="preserve">
+    <value>中心-直径の円</value>
+  </data>
+  <data name="CircleTwoPoint" xml:space="preserve">
+    <value>2点円</value>
+  </data>
+  <data name="CircleThreePoint" xml:space="preserve">
+    <value>3点円</value>
+  </data>
+  <data name="EllipseCenter" xml:space="preserve">
+    <value>中心</value>
+  </data>
+  <data name="EllipseAxisEnd" xml:space="preserve">
+    <value>軸、終点</value>
+  </data>
+  <data name="EllipseArc" xml:space="preserve">
+    <value>楕円弧</value>
+  </data>
+  <data name="FillNoFill" xml:space="preserve">
+    <value>塗りなし</value>
+  </data>
+  <data name="FillSolid" xml:space="preserve">
+    <value>単色塗り</value>
+  </data>
+  <data name="FillHatchAnsi31" xml:space="preserve">
+    <value>ANSI31 ハッチ</value>
+  </data>
+  <data name="FillHatchHorizontal" xml:space="preserve">
+    <value>水平ハッチ</value>
+  </data>
+  <data name="FillHatchVertical" xml:space="preserve">
+    <value>垂直ハッチ</value>
+  </data>
+  <data name="FillHatchGrid" xml:space="preserve">
+    <value>グリッドハッチ</value>
+  </data>
+  <data name="FillHatchCross45" xml:space="preserve">
+    <value>45度クロスハッチ</value>
+  </data>
+  <data name="FillHatchDashed" xml:space="preserve">
+    <value>破線ハッチ</value>
+  </data>
+  <data name="FillHatchDotted" xml:space="preserve">
+    <value>点線ハッチ</value>
+  </data>
+  <data name="FillHatchBrick" xml:space="preserve">
+    <value>レンガハッチ</value>
+  </data>
+  <data name="FillColor" xml:space="preserve">
+    <value>塗り色</value>
+  </data>
+  <data name="LayerDeleteConfirmTitle" xml:space="preserve">
+    <value>レイヤー削除の確認</value>
+  </data>
+  <data name="LayerDeleteConfirmMessageFormat" xml:space="preserve">
+    <value> レイヤー「{0}」を削除してもよろしいですか？ このレイヤー上のすべての図形も削除されます。</value>
+  </data>
+  <data name="Paste" xml:space="preserve">
+    <value>ペースト</value>
+  </data>
+  <data name="TargetLayer" xml:space="preserve">
+    <value>ターゲットレイヤー</value>
+  </data>
+  <data name="LayerNameAlreadyExists" xml:space="preserve">
+    <value>レイヤー名は既に存在します。</value>
+  </data>
+  <data name="Image" xml:space="preserve">
+    <value>画像</value>
+  </data>
+  <data name="InsertImage" xml:space="preserve">
+    <value>画像を挿入</value>
+  </data>
+  <data name="PasteImage" xml:space="preserve">
+    <value>画像を貼り付け</value>
+  </data>
+  <data name="ContentType" xml:space="preserve">
+    <value>コンテンツタイプ</value>
+  </data>
+  <data name="PixelWidth" xml:space="preserve">
+    <value>ピクセル幅</value>
+  </data>
+  <data name="PixelHeight" xml:space="preserve">
+    <value>ピクセル高さ</value>
+  </data>
+  <data name="Opacity" xml:space="preserve">
+    <value>不透明度</value>
+  </data>
+  <data name="Settings" xml:space="preserve">
+    <value>設定</value>
+  </data>
+  <data name="DocumentSettings" xml:space="preserve">
+    <value>ドキュメント設定</value>
+  </data>
+  <data name="Display" xml:space="preserve">
+    <value>表示</value>
+  </data>
+  <data name="GridAndSnapping" xml:space="preserve">
+    <value>グリッドとスナップ</value>
+  </data>
+  <data name="GridType" xml:space="preserve">
+    <value>グリッド種類</value>
+  </data>
+  <data name="SpacingX" xml:space="preserve">
+    <value>X 間隔</value>
+  </data>
+  <data name="SpacingY" xml:space="preserve">
+    <value>Y 間隔</value>
+  </data>
+  <data name="Subdivision" xml:space="preserve">
+    <value>分割数</value>
+  </data>
+  <data name="MinimumScreenSpacing" xml:space="preserve">
+    <value>最小画面間隔</value>
+  </data>
+  <data name="MinimumWorldSpacing" xml:space="preserve">
+    <value>最小ワールド間隔</value>
+  </data>
+  <data name="MinorGridColor" xml:space="preserve">
+    <value>補助グリッド色</value>
+  </data>
+  <data name="MinorGridLineWidth" xml:space="preserve">
+    <value>補助グリッド線幅</value>
+  </data>
+  <data name="MajorGridColor" xml:space="preserve">
+    <value>主グリッド色</value>
+  </data>
+  <data name="MajorGridLineWidth" xml:space="preserve">
+    <value>主グリッド線幅</value>
+  </data>
+  <data name="SnapSpacingX" xml:space="preserve">
+    <value>X スナップ間隔（0 は自動）</value>
+  </data>
+  <data name="SnapSpacingY" xml:space="preserve">
+    <value>Y スナップ間隔（0 は自動）</value>
+  </data>
+  <data name="SnapMarkerType" xml:space="preserve">
+    <value>スナップマーカー種類</value>
+  </data>
+  <data name="SnapMarkerColor" xml:space="preserve">
+    <value>スナップマーカー色</value>
+  </data>
+  <data name="SnapMarkerLength" xml:space="preserve">
+    <value>スナップマーカー長さ</value>
+  </data>
+  <data name="SnapMarkerStrokeWidth" xml:space="preserve">
+    <value>スナップマーカー線幅</value>
+  </data>
+  <data name="OriginDisplayType" xml:space="preserve">
+    <value>原点表示</value>
+  </data>
+  <data name="OriginMarkerType" xml:space="preserve">
+    <value>原点マーカー種類</value>
+  </data>
+  <data name="OriginLinePattern" xml:space="preserve">
+    <value>原点線種</value>
+  </data>
+  <data name="OriginColor" xml:space="preserve">
+    <value>原点色</value>
+  </data>
+  <data name="OriginSize" xml:space="preserve">
+    <value>原点サイズ</value>
+  </data>
+  <data name="OriginStrokeWidth" xml:space="preserve">
+    <value>原点線幅</value>
+  </data>
+  <data name="Apply" xml:space="preserve">
+    <value>適用</value>
+  </data>
+  <data name="DocumentSettingsInvalidValues" xml:space="preserve">
+    <value>有効な有限値を入力してください。サイズ、間隔、線幅は 0 より大きい必要があります。</value>
+  </data>
+  <data name="ApplicationSettings" xml:space="preserve">
+    <value>アプリケーション設定</value>
+  </data>
+  <data name="General" xml:space="preserve">
+    <value>一般</value>
+  </data>
+  <data name="Geometry" xml:space="preserve">
+    <value>ジオメトリ</value>
+  </data>
+  <data name="ObjectSettings" xml:space="preserve">
+    <value>オブジェクト設定</value>
+  </data>
+  <data name="Rendering" xml:space="preserve">
+    <value>レンダリング</value>
+  </data>
+  <data name="Interaction" xml:space="preserve">
+    <value>操作</value>
+  </data>
+  <data name="Antialiasing" xml:space="preserve">
+    <value>アンチエイリアス</value>
+  </data>
+  <data name="SelectedEntity" xml:space="preserve">
+    <value>選択図形</value>
+  </data>
+  <data name="Grip" xml:space="preserve">
+    <value>グリップ</value>
+  </data>
+  <data name="GripPreview" xml:space="preserve">
+    <value>グリッププレビュー</value>
+  </data>
+  <data name="StrokeColor" xml:space="preserve">
+    <value>線色</value>
+  </data>
+  <data name="StrokeWidth" xml:space="preserve">
+    <value>線幅</value>
+  </data>
+  <data name="Language" xml:space="preserve">
+    <value>言語</value>
+  </data>
+  <data name="DarkTheme" xml:space="preserve">
+    <value>ダークテーマ</value>
+  </data>
+  <data name="UserSettingsInvalidValues" xml:space="preserve">
+    <value>有効な有限値を入力してください。サイズと線幅は 0 より大きい必要があります。</value>
+  </data>
+  <data name="Reset" xml:space="preserve">
+    <value>リセット</value>
+  </data>
+  <data name="PrimaryColor" xml:space="preserve">
+    <value>プライマリカラー</value>
+  </data>
+  <data name="SecondaryColor" xml:space="preserve">
+    <value>セカンダリカラー</value>
+  </data>
+  <data name="EntitySettings" xml:space="preserve">
+    <value>エンティティ設定</value>
+  </data>
+  <data name="SelectionFilter" xml:space="preserve">
+    <value>選択フィルター</value>
+  </data>
+  <data name="Type" xml:space="preserve">
+    <value>種類</value>
+  </data>
+  <data name="Appearance" xml:space="preserve">
+    <value>線の外観</value>
+  </data>
+  <data name="Coordinates" xml:space="preserve">
+    <value>座標とサイズ</value>
+  </data>
+  <data name="Font" xml:space="preserve">
+    <value>フォント</value>
+  </data>
+  <data name="Terminal" xml:space="preserve">
+    <value>コマンドライン</value>
+  </data>
+  <data name="Property" xml:space="preserve">
+    <value>プロパティ</value>
+  </data>
+  <data name="EntitySearch" xml:space="preserve">
+    <value>エンタティ検索</value>
+  </data>
+  <data name="SelectedEntities" xml:space="preserve">
+    <value>選択したエンティティ</value>
+  </data>
+  <data name="MultipleEntityTypes" xml:space="preserve">
+    <value>複数のエンティティタイプ</value>
+  </data>
+  <data name="MultipleValues" xml:space="preserve">
+    <value>複数の値</value>
+  </data>
+  <data name="CommonProperties" xml:space="preserve">
+    <value>共通プロパティ</value>
+  </data>
+  <data name="Close" xml:space="preserve">
+    <value>閉じる</value>
+  </data>
+  <data name="Model" xml:space="preserve">
+    <value>モデル</value>
+  </data>
+  <data name="LayoutSettings" xml:space="preserve">
+    <value>レイアウト設定</value>
+  </data>
+  <data name="AddLayout" xml:space="preserve">
+    <value>レイアウトを追加</value>
+  </data>
+  <data name="DeleteLayout" xml:space="preserve">
+    <value>レイアウトを削除</value>
+  </data>
+  <data name="LayoutNameCannotBeEmpty" xml:space="preserve">
+    <value>レイアウト名を空にできません。</value>
+  </data>
+  <data name="Paper" xml:space="preserve">
+    <value>用紙</value>
+  </data>
+  <data name="PaperWidth" xml:space="preserve">
+    <value>用紙の幅</value>
+  </data>
+  <data name="PaperHeight" xml:space="preserve">
+    <value>用紙の高さ</value>
+  </data>
+  <data name="PaperColor" xml:space="preserve">
+    <value>用紙の色</value>
+  </data>
+  <data name="MarginLeft" xml:space="preserve">
+    <value>左余白</value>
+  </data>
+  <data name="MarginTop" xml:space="preserve">
+    <value>上余白</value>
+  </data>
+  <data name="MarginRight" xml:space="preserve">
+    <value>右余白</value>
+  </data>
+  <data name="MarginBottom" xml:space="preserve">
+    <value>下余白</value>
+  </data>
+  <data name="SwapOrientation" xml:space="preserve">
+    <value>縦横を入れ替え</value>
+  </data>
+  <data name="Viewport" xml:space="preserve">
+    <value>ビューポート</value>
+  </data>
+  <data name="AddViewport" xml:space="preserve">
+    <value>ビューポートを追加</value>
+  </data>
+  <data name="DeleteViewport" xml:space="preserve">
+    <value>ビューポートを削除</value>
+  </data>
+  <data name="ModelCenterX" xml:space="preserve">
+    <value>モデル中心 X</value>
+  </data>
+  <data name="ModelCenterY" xml:space="preserve">
+    <value>モデル中心 Y</value>
+  </data>
+  <data name="ViewportScale" xml:space="preserve">
+    <value>ビューポート尺度</value>
+  </data>
+  <data name="RotationDegrees" xml:space="preserve">
+    <value>回転角度</value>
+  </data>
+  <data name="TogglePaperModelSpace" xml:space="preserve">
+    <value>ペーパー空間とビューポート内モデル編集を切り替え</value>
+  </data>
+  <data name="LayoutViewportMode" xml:space="preserve">
+    <value>レイアウトビューポート</value>
+  </data>
+  <data name="CreateViewportMode" xml:space="preserve">
+    <value>レイアウトビューポートを作成して調整</value>
+  </data>
+  <data name="UnsavedDocumentsTitle" xml:space="preserve">
+    <value>未保存のドキュメント</value>
+  </data>
+  <data name="UnsavedDocumentsMessage" xml:space="preserve">
+    <value>次のドキュメントには未保存の変更があります：</value>
+  </data>
+  <data name="UnsavedDocumentNoPath" xml:space="preserve">
+    <value>まだ保存されていません</value>
+  </data>
+  <data name="SaveAll" xml:space="preserve">
+    <value>すべて保存</value>
+  </data>
+  <data name="EntitySearchScope" xml:space="preserve">
+    <value>範囲</value>
+  </data>
+  <data name="EntitySearchCurrentSpace" xml:space="preserve">
+    <value>現在の空間</value>
+  </data>
+  <data name="EntitySearchEntireDocument" xml:space="preserve">
+    <value>ドキュメント全体</value>
+  </data>
+  <data name="EntitySearchHint" xml:space="preserve">
+    <value>図形名、ID、レイヤー、または種類</value>
+  </data>
+  <data name="EntitySearchLayerHint" xml:space="preserve">
+    <value>レイヤー</value>
+  </data>
+  <data name="EntitySearchTypeHint" xml:space="preserve">
+    <value>種類</value>
+  </data>
+  <data name="EntitySearchAllLayers" xml:space="preserve">
+    <value>すべてのレイヤー</value>
+  </data>
+  <data name="EntitySearchAllTypes" xml:space="preserve">
+    <value>すべての種類</value>
+  </data>
+  <data name="EntitySearchNoDocument" xml:space="preserve">
+    <value>アクティブなドキュメントがありません</value>
+  </data>
+  <data name="EntitySearchResultCountFormat" xml:space="preserve">
+    <value>{0} 個のエンティティ</value>
+  </data>
+  <data name="Blocks" xml:space="preserve">
+    <value>ブロック</value>
+  </data>
+  <data name="CreateBlock" xml:space="preserve">
+    <value>ブロックを作成</value>
+  </data>
+  <data name="CreateBlockNameRequired" xml:space="preserve">
+    <value>ブロック名を入力してください。</value>
+  </data>
+  <data name="BlockNameAlreadyExists" xml:space="preserve">
+    <value>同じ名前のブロックが既に存在します。</value>
+  </data>
+  <data name="CreateBlockBasePointInvalid" xml:space="preserve">
+    <value>有効な基点を入力してください。</value>
+  </data>
+  <data name="InsertBlock" xml:space="preserve">
+    <value>ブロックを挿入</value>
+  </data>
+  <data name="EditBlock" xml:space="preserve">
+    <value>ブロックを編集</value>
+  </data>
+  <data name="BlockEditing" xml:space="preserve">
+    <value>ブロック編集中</value>
+  </data>
+  <data name="ExitBlockEditor" xml:space="preserve">
+    <value>ブロック編集を終了</value>
+  </data>
+  <data name="DeleteBlock" xml:space="preserve">
+    <value>ブロックを削除</value>
+  </data>
+  <data name="BasePoint" xml:space="preserve">
+    <value>基点</value>
+  </data>
+  <data name="References" xml:space="preserve">
+    <value>参照数</value>
+  </data>
+  <data name="ScaleX" xml:space="preserve">
+    <value>X 尺度</value>
+  </data>
+  <data name="ScaleY" xml:space="preserve">
+    <value>Y 尺度</value>
+  </data>
+  <data name="BlockReference" xml:space="preserve">
+    <value>ブロック参照</value>
+  </data>
+  <data name="BlockDefinition" xml:space="preserve">
+    <value>ブロック定義</value>
+  </data>
+  <data name="DeleteBlockConfirmFormat" xml:space="preserve">
+    <value>ブロック「{0}」を削除しますか？</value>
+  </data>
+  <data name="GridDensity" xml:space="preserve">
+    <value>グリッド密度</value>
+  </data>
+  <data name="GridDensityPreset" xml:space="preserve">
+    <value>密度プリセット（主 / 副）</value>
+  </data>
+  <data name="MajorGridSpacingXMillimeters" xml:space="preserve">
+    <value>主グリッド X 間隔 (mm)</value>
+  </data>
+  <data name="MajorGridSpacingYMillimeters" xml:space="preserve">
+    <value>主グリッド Y 間隔 (mm)</value>
+  </data>
+  <data name="MinorGridSpacingXMillimeters" xml:space="preserve">
+    <value>副グリッド X 間隔 (mm)</value>
+  </data>
+  <data name="MinorGridSpacingYMillimeters" xml:space="preserve">
+    <value>副グリッド Y 間隔 (mm)</value>
+  </data>
+  <data name="GridAppearance" xml:space="preserve">
+    <value>グリッド表示</value>
+  </data>
+  <data name="GridSpacingOptions" xml:space="preserve">
+    <value>グリッド間隔一覧</value>
+  </data>
+  <data name="GridSpacingSelection" xml:space="preserve">
+    <value>グリッド間隔の選択</value>
+  </data>
+  <data name="MajorGridSpacing" xml:space="preserve">
+    <value>主グリッド</value>
+  </data>
+  <data name="MinorGridSpacing" xml:space="preserve">
+    <value>副グリッド</value>
+  </data>
+  <data name="AddGridSpacingPreset" xml:space="preserve">
+    <value>グリッド間隔を追加</value>
+  </data>
+  <data name="EditGridSpacingPreset" xml:space="preserve">
+    <value>グリッド間隔を編集</value>
+  </data>
+  <data name="DeleteGridSpacingPreset" xml:space="preserve">
+    <value>グリッド間隔を削除</value>
+  </data>
+  <data name="MoveUp" xml:space="preserve">
+    <value>上へ移動</value>
+  </data>
+  <data name="MoveDown" xml:space="preserve">
+    <value>下へ移動</value>
+  </data>
+  <data name="LinkGridAxes" xml:space="preserve">
+    <value>X と Y を連動</value>
+  </data>
+  <data name="GridSpacingPresetNameExists" xml:space="preserve">
+    <value>同じ名前のグリッド間隔が既に存在します。</value>
+  </data>
+  <data name="GridSpacingPresetRangeError" xml:space="preserve">
+    <value>間隔は {0} {2} から {1} {2} の範囲で指定してください。</value>
+  </data>
+  <data name="ColorSource" xml:space="preserve">
+    <value>色のソース</value>
+  </data>
+  <data name="ByBlock" xml:space="preserve">
+    <value>ブロック依存</value>
+  </data>
+  <data name="Explicit" xml:space="preserve">
+    <value>明示</value>
+  </data>
+  <data name="ShowFramesPerSecond" xml:space="preserve">
+    <value>フレームレートを表示</value>
+  </data>
+  <data name="ZoomSnapshotPreview" xml:space="preserve">
+    <value>ズームスナップショットプレビュー</value>
+  </data>
+  <data name="ApproximateTileScaleFallback" xml:space="preserve">
+    <value>近いズームレベルのタイルキャッシュ代替を許可</value>
+  </data>
+  <data name="LevelOfDetailOptimization" xml:space="preserve">
+    <value>LOD 最適化を有効にする</value>
+  </data>
+  <data name="BackgroundChunkRecording" xml:space="preserve">
+    <value>コマンドリストチャンクのバックグラウンド記録（試験的）</value>
+  </data>
+  <data name="AiAssistant" xml:space="preserve">
+    <value>AI アシスタント</value>
+  </data>
+  <data name="AiAssistantWelcome" xml:space="preserve">
+    <value>LM Studio または Codex を設定すると、ワークスペース内の図面を確認・編集できます。</value>
+  </data>
+  <data name="LmStudioConnection" xml:space="preserve">
+    <value>LM Studio 接続</value>
+  </data>
+  <data name="Endpoint" xml:space="preserve">
+    <value>エンドポイント</value>
+  </data>
+  <data name="Temperature" xml:space="preserve">
+    <value>Temperature</value>
+  </data>
+  <data name="ContextWindowTokens" xml:space="preserve">
+    <value>コンテキストウィンドウ</value>
+  </data>
+  <data name="RefreshModels" xml:space="preserve">
+    <value>モデルを更新</value>
+  </data>
+  <data name="EnableCadAiTools" xml:space="preserve">
+    <value>AI に CAD 編集ツールの使用を許可する</value>
+  </data>
+  <data name="ClearConversation" xml:space="preserve">
+    <value>会話をクリア</value>
+  </data>
+  <data name="AiPromptHint" xml:space="preserve">
+    <value>現在の図面について質問または編集</value>
+  </data>
+  <data name="Send" xml:space="preserve">
+    <value>送信</value>
+  </data>
+  <data name="Stop" xml:space="preserve">
+    <value>停止</value>
+  </data>
+  <data name="Error" xml:space="preserve">
+    <value>エラー</value>
+  </data>
+  <data name="Status" xml:space="preserve">
+    <value>状態</value>
+  </data>
+  <data name="AiDisconnected" xml:space="preserve">
+    <value>未接続</value>
+  </data>
+  <data name="AiConnecting" xml:space="preserve">
+    <value>接続中...</value>
+  </data>
+  <data name="AiNoModels" xml:space="preserve">
+    <value>接続済みですが、モデルが読み込まれていません</value>
+  </data>
+  <data name="AiConnectedModelCountFormat" xml:space="preserve">
+    <value>接続済み: {0} モデル</value>
+  </data>
+  <data name="AiCancelled" xml:space="preserve">
+    <value>キャンセルしました</value>
+  </data>
+  <data name="AiConnectionFailed" xml:space="preserve">
+    <value>接続に失敗しました</value>
+  </data>
+  <data name="AiActiveDocumentFormat" xml:space="preserve">
+    <value>現在のドキュメント: {0}</value>
+  </data>
+  <data name="AiGenerating" xml:space="preserve">
+    <value>生成中...</value>
+  </data>
+  <data name="AiReducingContext" xml:space="preserve">
+    <value>会話コンテキストを縮小して再試行しています...</value>
+  </data>
+  <data name="AiEmptyResponse" xml:space="preserve">
+    <value>モデルから空の応答が返されました。</value>
+  </data>
+  <data name="AiReadyModelFormat" xml:space="preserve">
+    <value>準備完了: {0}</value>
+  </data>
+  <data name="AiRequestFailed" xml:space="preserve">
+    <value>リクエストに失敗しました</value>
+  </data>
+  <data name="AiConversationCleared" xml:space="preserve">
+    <value>会話をクリアしました。</value>
+  </data>
+  <data name="AiYou" xml:space="preserve">
+    <value>あなた</value>
+  </data>
+  <data name="AiAssistantShort" xml:space="preserve">
+    <value>AI</value>
+  </data>
+  <data name="AiCadTool" xml:space="preserve">
+    <value>CAD ツール</value>
+  </data>
+  <data name="ParallelRendering" xml:space="preserve">
+    <value>実験的な並列描画</value>
+  </data>
+  <data name="GraphicsDeviceMode" xml:space="preserve">
+    <value>グラフィックスデバイスモード</value>
+  </data>
+  <data name="GraphicsDeviceAutomatic" xml:space="preserve">
+    <value>自動（ハードウェア失敗時は WARP）</value>
+  </data>
+  <data name="GraphicsDeviceHardware" xml:space="preserve">
+    <value>ハードウェアアクセラレーション</value>
+  </data>
+  <data name="GraphicsDeviceWarp" xml:space="preserve">
+    <value>WARP ソフトウェアレンダリング</value>
+  </data>
+  <data name="ParallelRenderingMode" xml:space="preserve">
+    <value>リソース方式</value>
+  </data>
+  <data name="ParallelRenderingWorkerCount" xml:space="preserve">
+    <value>描画ワーカー数</value>
+  </data>
+  <data name="ParallelRenderingMultipleDevices" xml:space="preserve">
+    <value>複数デバイス</value>
+  </data>
+  <data name="ParallelRenderingSharedDeviceContexts" xml:space="preserve">
+    <value>共有デバイス・複数コンテキスト</value>
+  </data>
+  <data name="AiSettings" xml:space="preserve">
+    <value>AI アシスタント設定</value>
+  </data>
+  <data name="AiProvider" xml:space="preserve">
+    <value>プロバイダー</value>
+  </data>
+  <data name="CodexExecutable" xml:space="preserve">
+    <value>Codex 実行ファイル</value>
+  </data>
+  <data name="ReasoningEffort" xml:space="preserve">
+    <value>推論レベル</value>
+  </data>
+  <data name="ServiceTier" xml:space="preserve">
+    <value>サービス階層</value>
+  </data>
+  <data name="Advanced" xml:space="preserve">
+    <value>詳細設定</value>
+  </data>
+  <data name="Messages" xml:space="preserve">
+    <value>メッセージ</value>
+  </data>
+  <data name="All" xml:space="preserve">
+    <value>すべて</value>
+  </data>
+  <data name="Information" xml:space="preserve">
+    <value>情報</value>
+  </data>
+  <data name="Warning" xml:space="preserve">
+    <value>警告</value>
+  </data>
+  <data name="MessageLevel" xml:space="preserve">
+    <value>メッセージレベル</value>
+  </data>
+  <data name="SearchMessages" xml:space="preserve">
+    <value>メッセージを検索</value>
+  </data>
+  <data name="ClearMessages" xml:space="preserve">
+    <value>メッセージをクリア</value>
+  </data>
+  <data name="AiAttachImage" xml:space="preserve">
+    <value>ファイルを添付</value>
+  </data>
+  <data name="AiPasteImage" xml:space="preserve">
+    <value>クリップボードからファイルまたは画像を貼り付け</value>
+  </data>
+  <data name="AiImagePrompt" xml:space="preserve">
+    <value>添付ファイルを分析してください。</value>
+  </data>
+  <data name="AiClipboardNoImage" xml:space="preserve">
+    <value>クリップボードに対応するファイルまたは画像がありません。</value>
+  </data>
+  <data name="AiImageTooLarge" xml:space="preserve">
+    <value>画像が大きすぎるため添付できません。</value>
+  </data>
+  <data name="GraphicsDeviceAutomaticHardware" xml:space="preserve">
+    <value>自動（現在：ハードウェアアクセラレーション）</value>
+  </data>
+  <data name="GraphicsDeviceAutomaticWarp" xml:space="preserve">
+    <value>自動（現在：WARP）</value>
+  </data>
+  <data name="RadialMenu" xml:space="preserve">
+    <value>ラジアルメニュー</value>
+  </data>
+  <data name="RadialMenuEnabled" xml:space="preserve">
+    <value>中ボタンのラジアルメニューを有効にする</value>
+  </data>
+  <data name="RadialMenuMiddleMouse" xml:space="preserve">
+    <value>中ボタン</value>
+  </data>
+  <data name="RadialMenuShiftMiddleMouse" xml:space="preserve">
+    <value>Shift + 中ボタン</value>
+  </data>
+  <data name="RadialMenuControlMiddleMouse" xml:space="preserve">
+    <value>Ctrl + 中ボタン</value>
+  </data>
+  <data name="RadialMenuAltMiddleMouse" xml:space="preserve">
+    <value>Alt + 中ボタン</value>
+  </data>
+  <data name="RadialMenuSlot" xml:space="preserve">
+    <value>スロット {0}</value>
+  </data>
+  <data name="Print" xml:space="preserve">
+    <value>印刷</value>
+  </data>
+  <data name="PrintPreview" xml:space="preserve">
+    <value>印刷プレビュー</value>
+  </data>
+  <data name="PrintPreviewDescription" xml:space="preserve">
+    <value>現在のレイアウトを確認し、印刷設定を選択してください。</value>
+  </data>
+  <data name="PrintPreviewPrinterNote" xml:space="preserve">
+    <value>プレビューには選択した用紙と向きが反映されます。印刷時にプリンターの余白が適用されます。</value>
+  </data>
+  <data name="PrinterSettings" xml:space="preserve">
+    <value>プリンター設定</value>
+  </data>
+  <data name="Printer" xml:space="preserve">
+    <value>プリンター</value>
+  </data>
+  <data name="PaperSize" xml:space="preserve">
+    <value>用紙サイズ</value>
+  </data>
+  <data name="Orientation" xml:space="preserve">
+    <value>印刷の向き</value>
+  </data>
+  <data name="Portrait" xml:space="preserve">
+    <value>縦</value>
+  </data>
+  <data name="Landscape" xml:space="preserve">
+    <value>横</value>
+  </data>
+  <data name="Copies" xml:space="preserve">
+    <value>部数</value>
+  </data>
+  <data name="PrintResolution" xml:space="preserve">
+    <value>印刷解像度 (DPI)</value>
+  </data>
+  <data name="CustomPaperSize" xml:space="preserve">
+    <value>カスタム</value>
+  </data>
+  <data name="NoPrintersAvailable" xml:space="preserve">
+    <value>インストール済みまたは利用可能なプリンターがありません。</value>
+  </data>
+  <data name="PrintStarted" xml:space="preserve">
+    <value>印刷を開始しました。</value>
+  </data>
+  <data name="PrintSubmitted" xml:space="preserve">
+    <value>印刷ジョブを送信しました。</value>
+  </data>
+  <data name="PrintCompleted" xml:space="preserve">
+    <value>印刷が完了しました。</value>
+  </data>
+  <data name="PrintFailed" xml:space="preserve">
+    <value>印刷に失敗しました</value>
+  </data>
+</root>
