@@ -70,6 +70,11 @@ internal static class RecoverySmokeRunner
                 var booleanBase=first.Session.Snapshot.Features.Values.Single(f=>f.Name=="History base");
                 var booleanTool=first.Session.Snapshot.Features.Values.Single(f=>f.Name=="History tool");
                 await first.Session.ExecuteAsync(new BooleanCommand(BooleanOperation.Cut,[booleanBase.OutputBodyId,booleanTool.OutputBodyId]));
+                var historyCut=first.Session.Snapshot.Features.Values.Single(f=>f.Recipe is BooleanRecipe);
+                await first.Session.ExecuteAsync(new AddBodyCommand(new BoxRecipe(2,3,4,RigidTransform3d.Translate(80,0,0)),"History side",body.PartId));
+                var historySide=first.Session.Snapshot.Features.Values.Single(f=>f.Name=="History side");
+                await first.Session.ExecuteAsync(new BooleanCommand(BooleanOperation.Fuse,[historySide.OutputBodyId,historyCut.OutputBodyId]));
+                await first.Session.ExecuteAsync(new RecomputeCommand(booleanTool.Id,new BoxRecipe(3,22,32,RigidTransform3d.Translate(54,-1,-1))));
                 var expected = Expected.Capture(first.Session.Snapshot, await HashFile(original));
                 await File.WriteAllTextAsync(Path.Combine(output, "expected.json"), JsonSerializer.Serialize(expected, CadJson.Options));
                 // Deliberately do not invoke CheckpointAsync: this must exercise the production 30-second timer.
@@ -121,14 +126,20 @@ internal static class RecoverySmokeRunner
                 (ITopologyHistoryResolver)services.GetRequiredService<IGeometryKernel>());
             Require(history.Result.Status==HistoryResolutionStatus.Resolved,"Recovered history locator must resolve against restored BRep.");
             await File.WriteAllTextAsync(Path.Combine(output,"history-result.json"),JsonSerializer.Serialize(history,CadJson.Options));
-            var boolean=restored.Session.Snapshot.Features.Values.Single(f=>f.Recipe is BooleanRecipe);
-            Require(boolean.TopologyHistory?.ArgumentCount==2&&Math.Abs(boolean.Result.VolumeMm3-4800)<1e-5,"Recovered Boolean geometry and input evidence.");
+            var boolean=restored.Session.Snapshot.Features.Values.Single(f=>f.Recipe is BooleanRecipe b&&b.Operation==BooleanOperation.Cut);
+            Require(boolean.TopologyHistory?.ArgumentCount==2&&Math.Abs(boolean.Result.VolumeMm3-4200)<1e-5,"Recovered Boolean geometry and input evidence.");
             var booleanResolver=(ITopologyHistoryResolver)services.GetRequiredService<IGeometryKernel>();
             var stable=await booleanResolver.TraceAsync(restored.Session.Snapshot,TopologyReference.Box(restored.Session.Snapshot,boolean.Inputs[0],BoxBoundary.XMin),boolean.Id,restored.Session.Assets);
             var split=await booleanResolver.TraceAsync(restored.Session.Snapshot,TopologyReference.Box(restored.Session.Snapshot,boolean.Inputs[0],BoxBoundary.YMin),boolean.Id,restored.Session.Assets);
             var deleted=await booleanResolver.TraceAsync(restored.Session.Snapshot,TopologyReference.Box(restored.Session.Snapshot,boolean.Inputs[1],BoxBoundary.ZMax),boolean.Id,restored.Session.Assets);
             Require(stable.Status==HistoryResolutionStatus.Resolved&&split.Status==HistoryResolutionStatus.Ambiguous&&deleted.Status==HistoryResolutionStatus.Deleted,"Recovered Boolean evidence must resolve conservatively.");
             await File.WriteAllTextAsync(Path.Combine(output,"boolean-history-result.json"),JsonSerializer.Serialize(new{stable,split,deleted,history=boolean.TopologyHistory},CadJson.Options));
+            var last=restored.Session.Snapshot.Features.Values.Single(f=>f.Recipe is BooleanRecipe b&&b.Operation==BooleanOperation.Fuse);
+            var chain=await booleanResolver.TraceAsync(restored.Session.Snapshot,TopologyReference.Box(restored.Session.Snapshot,boolean.Inputs[0],BoxBoundary.XMin),last.Id,restored.Session.Assets);
+            var chainSplit=await booleanResolver.TraceAsync(restored.Session.Snapshot,TopologyReference.Box(restored.Session.Snapshot,boolean.Inputs[0],BoxBoundary.YMin),last.Id,restored.Session.Assets);
+            Require(chain.Status==HistoryResolutionStatus.Resolved&&chain.CompletedSteps==2&&chain.PathLength==2&&chain.Target?.Asset==last.Result.AssetId,"Recovered two-step chain");
+            Require(chainSplit.Status==HistoryResolutionStatus.Ambiguous&&chainSplit.StoppedAt==boolean.Id&&chainSplit.CompletedSteps==0&&chainSplit.Target is null,"Recovered intermediate split");
+            await File.WriteAllTextAsync(Path.Combine(output,"chain-history-result.json"),JsonSerializer.Serialize(new{chain,chainSplit},CadJson.Options));
             Require(Math.Abs(local.Result.VolumeMm3-(7200-12*(1-Math.PI/4)))<1e-4,"Recovered local fillet geometry.");
             await File.WriteAllTextAsync(Path.Combine(output,"topology-result.json"),JsonSerializer.Serialize(topology,CadJson.Options));
             Require(centerVm.Entries.Count == 0, "The transferred source still appears in recovery.");

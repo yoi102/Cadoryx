@@ -169,3 +169,7 @@ worker 不读取实时可变文档，不调用 Viewer，不把有父对象约束
 M4-T1：Db 保存版本化语义引用；Kernel.Abstractions 的 ITopologyResolver 定义可选解析能力；Occt 适配器在原有串行队列上读取 BRep 和唯一邻接表；Commands 验证唯一解析后注册/重选；Editor 生成带状态身份的诊断报告；IO 保存 topology v1。当前支持 Box 六面/十二边，不承担跨算法历史传播或实例拾取。具体所有权、修订及后续门禁见 [拓扑引用基础](TOPOLOGY_REFERENCES.md)。
 
 M4-T2 通过独立 MetroWindow 承载局部建模视口，避免依赖主窗口选择副本的 native 身份。Viewer 只发出语义值，工作队列重新加载精确源图并解析唯一边；局部特征配方参加现有依赖图与事务。详见 [局部建模](LOCAL_FEATURES.md)。
+
+H2-B3 的历史诊断分为纯托管路径规划和原生证据解析。Kernel.Abstractions 的 `TopologyHistoryPaths` 在不可变依赖图上计算唯一有界路径，不依赖 WPF 或 OcctSharp；Kernel.Occt 在既有串行队列逐段验证全部操作数和结果，延续同一原生地图的精确槽位。路径分支、证据缺失或拆分／合并都会停止，不能跨过失败段。三个地图以内的逐段作用域控制原生资源生命周期，取消和异常也释放资源。
+
+Editor 的 `TopologyHistoryInspection` 以 DocumentId／StateId 标识诊断时的快照，保护异步界面结果。路径和结果是查询数据，不产生文档事务，也不进入存储节；现有 Commands 重算、撤销和 IO 恢复负责保存权威配方、精确资产和算法证据。详细预算与状态见 [多步历史](HISTORY_CHAINS.md)。

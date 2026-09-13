@@ -57,6 +57,33 @@ internal static class HistorySmokeRunner
             foreach(string extension in new[]{"step","iges","stl"})await kernel.ExportAsync(loaded.Snapshot,assets,Path.Combine(output,"history-Boolean."+extension));
             reports.Add(new{operation="BooleanCut",stable,split,deleted,history});
         }
+        await using(var session=new CadDocumentSession(DocumentSnapshot.Create("Multi-step history"),assets,kernel,new InlineSessionDispatcher()))
+        {
+            await session.ExecuteAsync(new AddBodyCommand(new BoxRecipe(10,20,30,RigidTransform3d.Identity),"Chain base"));var source=session.Snapshot.Features.Values.Single();
+            var face=TopologyReference.Box(session.Snapshot,source.Id,BoxBoundary.XMin);
+            await session.ExecuteAsync(new LocalFeatureCommand(TopologyReference.Box(session.Snapshot,source.Id,BoxBoundary.YMin,BoxBoundary.ZMax),LocalFeatureOperation.Fillet,1));
+            var local=session.Snapshot.Features.Values.Single(f=>f.Recipe is LocalFeatureRecipe);
+            await session.ExecuteAsync(new AddBodyCommand(new BoxRecipe(2,22,32,RigidTransform3d.Translate(4,-1,-1)),"Chain tool",source.PartId));
+            var tool=session.Snapshot.Features.Values.Single(f=>f.Name=="Chain tool");
+            await session.ExecuteAsync(new BooleanCommand(BooleanOperation.Cut,[local.OutputBodyId,tool.OutputBodyId]));
+            var cut=session.Snapshot.Features.Values.Single(f=>f.Recipe is BooleanRecipe);
+            await session.ExecuteAsync(new AddBodyCommand(new BoxRecipe(2,3,4,RigidTransform3d.Translate(40,0,0)),"Chain side",source.PartId));
+            var side=session.Snapshot.Features.Values.Single(f=>f.Name=="Chain side");
+            await session.ExecuteAsync(new BooleanCommand(BooleanOperation.Fuse,[side.OutputBodyId,cut.OutputBodyId]));
+            var last=session.Snapshot.Features.Values.Single(f=>f.Recipe is BooleanRecipe b&&b.Operation==BooleanOperation.Fuse);var before=session.Snapshot;
+            await session.ExecuteAsync(new RecomputeCommand(source.Id,new BoxRecipe(11,20,30,RigidTransform3d.Identity)));var after=session.Snapshot;
+            var stable=await resolver.TraceAsync(after,face,last.Id,assets);
+            var split=await resolver.TraceAsync(after,TopologyReference.Box(after,source.Id,BoxBoundary.YMin),last.Id,assets);
+            Check(stable.Status==HistoryResolutionStatus.Resolved&&stable.CompletedSteps==3&&stable.PathLength==3,"Three verified segments");
+            Check(split.Status==HistoryResolutionStatus.Ambiguous&&split.StoppedAt==cut.Id&&split.CompletedSteps==1&&split.Target is null,"Stop at split segment");
+            await session.UndoAsync();Check(ReferenceEquals(before,session.Snapshot),"Chain exact undo");
+            await session.RedoAsync();Check(ReferenceEquals(after,session.Snapshot),"Chain exact redo");
+            string path=Path.Combine(output,"history-Chain.cadoryx");await session.SaveAsync(storage,path);
+            using var loaded=await storage.LoadAsync(path,assets);
+            Check(await resolver.TraceAsync(loaded.Snapshot,face,last.Id,assets)==stable,"Reopened three-step locator");
+            foreach(string extension in new[]{"step","iges","stl"})await kernel.ExportAsync(loaded.Snapshot,assets,Path.Combine(output,"history-Chain."+extension));
+            reports.Add(new{operation="LocalCutFuseChain",stable,split});
+        }
         Check(assets.Count==0,"Assets released");
         await File.WriteAllTextAsync(Path.Combine(output,"history-result.json"),JsonSerializer.Serialize(new{passed=true,kernel=kernel.Version,remainingAssets=assets.Count,reports},new JsonSerializerOptions{WriteIndented=true}));
     }

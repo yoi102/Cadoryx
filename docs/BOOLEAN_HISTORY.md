@@ -1,5 +1,7 @@
 # H2-B2：真实布尔拓扑历史
 
+本文保留 H2-B2 的直接后继阶段范围与证据。当前多步诊断已由 [H2-B3](HISTORY_CHAINS.md) 扩展；下文“未开放多步”描述的是 B2 当时的边界。
+
 本阶段将 OcctSharp 的真实逐源布尔历史接入 Cadoryx。依赖锁定为本地开发包 `8.0.1-preview.28.cadoryx.h2b2.2`，基于 Preview.28 源码扩展；没有公开发布 NuGet。应用文件写出版本为 0.4.5，八节 MessagePack 版本不变，沿用 history v2。
 
 ## 上游接口与所有权

@@ -1,6 +1,6 @@
 # M4-T1 拓扑引用基础
 
-本文保留 T1 的接口和当时验证边界。M4-T2 已证明当前 Box 原图中的唯一边可用于局部建模，并扩展 features v5；交互及原生所有权见 [LOCAL_FEATURES](LOCAL_FEATURES.md)。M4-T1-H1 单列通过 BRep 校验的局部历史诊断和八节协议，见 [算法历史](TOPOLOGY_HISTORY.md)。原 Box 用户引用规则不变，布尔与通用传播仍未实现。
+本文保留 T1 的接口和当时验证边界。M4-T2 已证明当前 Box 原图中的唯一边可用于局部建模，并扩展 features v5；交互及原生所有权见 [LOCAL_FEATURES](LOCAL_FEATURES.md)。M4-T1-H1 单列通过 BRep 校验的局部历史诊断和八节协议，见 [算法历史](TOPOLOGY_HISTORY.md)。原 Box 用户引用规则不变；H2-B2/B3 已扩展布尔及有界多步诊断，见 [多步历史](HISTORY_CHAINS.md)，通用持久引用与生成面建模仍未开放。
 
 2026-09-12 实现。当前支持范围是 BoxRecipe 的六个平面和十二条直边，包括尺寸和刚体放置变化后的语义重绑定。这是有限的拓扑引用基础，不是通用拓扑命名算法。面/边鼠标选择、圆角/倒角窗口属于 M4-T2。
 

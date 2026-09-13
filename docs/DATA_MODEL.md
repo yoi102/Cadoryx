@@ -344,3 +344,18 @@ AssemblySolveReport
 DocumentSnapshot.TopologyReferences 是以 TopologyReferenceId 为键的不可变表。引用具有 DocumentId、FeatureId、OutputBodyId、OriginRevision、Kind、BoxBoundary/SecondBoundary、Policy 和 SchemaVersion。此实现限定长方体的面与边；上文更广泛的语义路径和几何签名仍是目标模型。解析结果不持久化，删除的生产者可保留为诊断对象；精确撤销恢复原引用及几何。参见 [实际协议和支持边界](TOPOLOGY_REFERENCES.md)。
 
 M4-T2 新增 LocalFeatureRecipe：Source、上游 BoxRecipe 缓存、两个语义边界、Operation 和 Size；输入必须为同零件的唯一 Box 特征，缓存和几何必须与上游一致。局部特征输出使用新的 FeatureId/BodyId，原生产者和来源元数据保留。无序号或 native 对象进入持久状态。具体范围见 [局部建模](LOCAL_FEATURES.md)。
+
+## H2 算法证据与多步查询
+
+`FeatureDefinition.TopologyHistory` 保存同次算法的精确输入／结果证据：Revision、Asset、Fingerprint、TopologyCount、AdapterVersion 以及逐源演化条目。history v2 用 `(SourceArgument, SourceIndex)` 区分各操作数的独立来源，`AdditionalSources` 顺序必须与配方和 Feature.Inputs 一致。条目里的全图槽位仅属于指定资产／版本／适配器；它不是新的稳定用户引用。详见 [多输入协议](MULTI_INPUT_HISTORY.md)。
+
+H2-B3 增加的运行时结构位于 Kernel.Abstractions，不进入 Db 或 MessagePack：
+
+| 查询结构 | 字段与约束 |
+|---|---|
+| HistoryPathStep | 目标 FeatureId、该段 SourceArgument；顺序从源到目标 |
+| HistoryPathPlan | 唯一有界 Steps 或 Failure；歧义／超限时不返回部分路径 |
+| HistoryResolution | Status、最终 Target、CandidateCount、Diagnostic、PathLength、CompletedSteps、StoppedAt |
+| HistoryTarget | 精确修订／资产、FullTopologyIndex、Kind、AdapterVersion；仅诊断使用 |
+
+最终目标只在每一段均唯一且验证通过时返回。失败保留停止特征和已完成段数，不保留中途目标供调用方误用。源语义引用仍遵守原来的 ExactRevision／Semantic 策略；持久化诊断查询和可被建模特征消费的跨特征引用按 H2-C1／C2 分开设计，见 [多步历史](HISTORY_CHAINS.md)。

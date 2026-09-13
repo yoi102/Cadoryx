@@ -22,11 +22,11 @@
 
 ## 当前存储与交换
 
-H2-B2 已补齐 OcctSharp 逐源布尔接口，并通过本地 NuGet 接入真实历史、两侧来源校验和直接后继诊断。拆分／共享目标保持歧义，尚未开放多步传播；见 [布尔历史](BOOLEAN_HISTORY.md)。H2-B1 的 history v2 协议保持兼容，见 [多输入历史](MULTI_INPUT_HISTORY.md)。
+H2-B3 已扩展为唯一有界多步链诊断，逐段核对所有输入，报告路径歧义、拆分／共享目标及停止位置；见 [多步历史](HISTORY_CHAINS.md)。诊断成功尚不等于可用于建模的持久引用。H2-B2 的真实内核接口和本地 NuGet 见 [布尔历史](BOOLEAN_HISTORY.md)，history v2 协议保持兼容，见 [多输入历史](MULTI_INPUT_HISTORY.md)。
 
 H2-A 已补充旋转坐标系的限定舍入处理和旧历史适配器兼容。其当时的布尔接口缺口与阶段证据保留在 [旋转历史与布尔门禁](HISTORY_ROTATION.md)。
 
-M4-T1-H1 新增局部算法历史证据、八节存储和诊断解析。通过严格 BRep 映射校验的单次圆角／倒角可追踪修改及未改变对象；部分旋转、布尔和连续传播仍不支持，见 [算法历史](TOPOLOGY_HISTORY.md)。
+M4-T1-H1 建立局部算法历史证据、八节存储和诊断解析，其当时的限制与验证记录见 [算法历史](TOPOLOGY_HISTORY.md)；旋转、布尔和多步诊断的当前范围以上述 H2 文档为准。
 
 M4-T1 已实现 Box 六面/十二边语义引用与持久化；M4-T2 接通 MetroWindow 面/边拾取、失效重选和单边圆角/倒角预览确认。支持边界见 [拓扑引用基础](TOPOLOGY_REFERENCES.md)和 [局部建模](LOCAL_FEATURES.md)。
 

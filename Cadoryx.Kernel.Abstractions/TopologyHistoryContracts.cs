@@ -2,11 +2,18 @@ using Cadoryx.Db;
 
 namespace Cadoryx.Kernel.Abstractions;
 
-public enum HistoryResolutionStatus { Resolved, Missing, Stale, Ambiguous, Unsupported, WrongContext, Deleted, Generated }
+public enum HistoryResolutionStatus { Resolved, Missing, Stale, Ambiguous, Unsupported, WrongContext, Deleted, Generated, LimitExceeded }
 /// <summary>Diagnostic-only locator in the adapter's full topology map. Not the adjacency index
 /// used by ResolvedSubshape. Consumers must verify the exact asset and adapter before use.</summary>
 public sealed record HistoryTarget(GeometryRevisionId Revision,AssetId Asset,int FullTopologyIndex,HistoryShapeKind Kind,string AdapterVersion);
-public sealed record HistoryResolution(HistoryResolutionStatus Status,HistoryTarget? Target,int CandidateCount,string Diagnostic);
+public sealed record HistoryResolution(HistoryResolutionStatus Status,HistoryTarget? Target,int CandidateCount,string Diagnostic)
+{
+    /// <summary>Unique planned chain length; zero when no unique bounded path was established.</summary>
+    public int PathLength {get;init;}
+    /// <summary>Segments reduced to a unique verified successor before stopping.</summary>
+    public int CompletedSteps {get;init;}
+    public FeatureId? StoppedAt {get;init;}
+}
 
 public interface ITopologyHistoryResolver
 {
