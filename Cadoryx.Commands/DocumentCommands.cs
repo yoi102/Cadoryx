@@ -90,7 +90,7 @@ public sealed class BooleanCommand(BooleanOperation operation,IEnumerable<BodyId
             var b=new CadBody(body,part.Id,Name,result.Geometry,fid,inputs[0].LayerId,inputs[0].Appearance,MaterialId:inputs[0].MaterialId);
             foreach(var input in inputs)
                 if(input.Producer is {} source)doc=doc with{Features=doc.Features.SetItem(source,doc.Features[source] with{OutputMetadata=BodyOutputMetadata.FromBody(input)})};
-            feature=feature with{OutputMetadata=BodyOutputMetadata.FromBody(b)};
+            feature=feature with{OutputMetadata=BodyOutputMetadata.FromBody(b),TopologyHistory=result.TopologyHistory};
             bool empty=result.Geometry.Kind==BodyKind.Empty;
             doc=doc with {Bodies=empty?doc.Bodies.RemoveRange(ids):doc.Bodies.RemoveRange(ids).Add(body,b),Features=doc.Features.Add(fid,feature),
                 Definitions=doc.Definitions.SetItem(part.Id,part with {Bodies=empty?part.Bodies.RemoveRange(ids):part.Bodies.RemoveRange(ids).Add(body),Features=part.Features.Add(fid)})};

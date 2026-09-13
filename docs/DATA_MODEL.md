@@ -1,5 +1,7 @@
 # Cadoryx 数据结构设计
 
+2026-09-13 更新：FeatureDefinition 持有可空 TopologyHistory，包含来源／结果修订与资产、适配器版本、BRep 指纹、全图数量和逐源演化关系。H2-B1 新增 AdditionalSources 和 SourceArgument，以输入参数与源槽位共同标识来源，并核对配方及上游特征顺序。该值随创建／重算提交及精确撤销恢复；索引仅属于声明的精确图，不是通用持久身份。结构、归约与八节协议见 [算法历史](TOPOLOGY_HISTORY.md)及[多输入历史](MULTI_INPUT_HISTORY.md)。
+
 本文定义长期目标模型、字段语义和不变量。2026-09-12 已实现强类型 ID、双精度几何、DocumentSnapshot、Part/Assembly/Slot/Body、七种特征配方、图层/材料、点/线/圆草图及 13 种约束与引用验证；更完整的约束集、关联基准、持久拓扑命名、装配约束等片段仍是设计草案。准确的当前结构见 `Cadoryx.Db` 和[实施说明](IMPLEMENTATION.md)。序列化 DTO 位于 `Cadoryx.IO`，与领域类型分离。
 
 ## 1. 三类数据

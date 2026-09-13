@@ -1,6 +1,14 @@
 # 当前实现与开发入口
 
-更新：2026-09-12。文档描述代码现状；更长期的目标保留在 ROADMAP 和其他设计文档。
+H2-B2：OcctSharp.BooleanHistoryModeling 提供同次布尔逐源关系，Cadoryx 经复制及 BRep 重载校验后发布证据，直接 Box → 布尔后继可诊断追踪。消费本地包 `8.0.1-preview.28.cadoryx.h2b2.2`，文件写出版本 0.4.5，history v2 不变；见 [布尔历史](BOOLEAN_HISTORY.md)。以下保留先前阶段背景。
+
+H2-B1：TopologyHistory 支持多输入参数，BooleanCommand 原子接收内核证据，history 文件节升级为 v2，应用写出版本 0.4.4。真实 Boolean 历史仍依赖上游接口，当前生产解析不开放；协议、迁移和测试边界见 [MULTI_INPUT_HISTORY](MULTI_INPUT_HISTORY.md)。
+
+M4-T1-H2-A 在同一存储写读链上增加 BrepDirectionRoundtrip 的限定单位轴舍入校验，写出 axis-v2 历史并保留旧 v1 可读；未通过的模型仍无映射。旋转重算／旧文件和真实布尔拆分能力边界见 [HISTORY_ROTATION](HISTORY_ROTATION.md)。八节协议及 NuGet 版本不变。
+
+M4-T1-H1 新增 Db/TopologyHistory、Kernel.Occt/OcctLocalHistory 与 OcctHistoryResolver、Editor/TopologyHistoryInspection 和 IO/HistorySections。局部算法在同次调用捕获证据，严格校验 BRep 重载对应后才开放诊断解析；不通过者仍建模但不提供映射。八节持久化和后续门禁见 [算法历史](TOPOLOGY_HISTORY.md)。
+
+更新：2026-09-13。文档描述代码现状；更长期的目标保留在 ROADMAP 和其他设计文档。
 
 ## 模块与主要入口
 
@@ -12,7 +20,7 @@
 | Sketching | ManagedSketchConstraintSolver、SketchEquationSystem、SketchSolveContracts | 13 种约束、解析导数/阻尼 SVD、局部 DOF、冗余/冲突与预算；纯托管 |
 | Commands | DocumentCommands、RecomputeCommand、ResourceCommands、SketchCommands | 候选状态、归属与锁定检查、基础建模/布尔、属性与资源修改、位姿、依赖闭包重算、草图求解后提交 |
 | Editor | DocumentSession、Workspace、Selection、SketchDraft、DocumentRecoveryService | Dispatcher 提交、代际检查、精确历史、草稿几何/历史、保存点、恢复协调和关闭排空 |
-| IO | CadDocumentStorage、GeometrySections、SketchSections、SectionMigrations、AssetCatalog、CadRecoveryStore | 七节 MessagePack、旧 JSON/MessagePack 迁移、资产/草图目录、完整性/限额、原子替换与恢复快照 |
+| IO | CadDocumentStorage、GeometrySections、SketchSections、HistorySections、SectionMigrations、AssetCatalog、CadRecoveryStore | 八节 MessagePack、旧 JSON/MessagePack 迁移、资产/草图/历史目录、完整性/限额、原子替换与恢复快照 |
 | Rendering | Scene、CadCamera | 托管场景、实例路径、最终世界变换和可见性 |
 | Rendering.Occt | OcctViewport | 独立 native 显示资产、候选场景替换、选取与照明 |
 | ViewModels | MainWindowViewModel、CadDocumentViewModel、SketchEditorViewModel、RecoveryCenterViewModel、DocumentResourcesViewModel、InstancePlacementViewModel、Toolboxes | 多文档命令路由、草图输入/诊断/关联特征、归属/位姿/资源面板、预览、树/属性双向操作、恢复入口 |
@@ -37,8 +45,8 @@
 采用 MessagePack NuGet：数值和记录数组紧凑、类型契约明确，C# 工具链成熟。M3-V 已测量当时五节实现的共享实例、25 MB BRep 和 128 MiB 扩展载荷；M4-S1 未重跑六节性能基准，也没有做与 JSON 的同条件性能比较，不能据此宣称固定倍数提升。详见 [格式演进与基准](FORMAT_EVOLUTION.md)。
 
 - 清单保留 JSON，便于诊断；七个业务节使用数字键 DTO；精确 BRep/XDE 不进入反射对象图序列化。
-- 当前 containerVersion=1、assetCatalogVersion=1、applicationVersion=0.4.2；features v5、document v4、structure v3、presentation/sketches v2、geometry/topology v1，均为 MessagePack。旧四节 v1/json → v2/messagepack → 提取共享 geometry 表；document v2 → v3 建立空 sketches 表；再迁移 sketches v1→v2 和 features v3→v4，明确草图修订与可选特征引用；document v3→v4 初始化 topology v1。
-- AssetFormat 记录媒体类型、编码/格式版本、内核及写出库版本，跟随不可变几何引用。当前新资产为 OCCT 8.0.1 / OcctSharp preview.26；旧文件缺失的生产者版本保持未知。实际依赖的原生资产先校验描述与文件头，再进入内核。
+- 当前 containerVersion=1、assetCatalogVersion=1、applicationVersion=0.4.5；features v5、document v5、structure v3、presentation/sketches/history v2、geometry/topology v1，均为 MessagePack。旧四节 v1/json → v2/messagepack → 提取共享 geometry 表；document v2 → v3 建立空 sketches 表；再迁移 sketches v1→v2 和 features v3→v4，明确草图修订与可选特征引用；document v3→v4 初始化 topology v1，document v4→v5 初始化 history v1，再经 history v1→v2 明确来源参数表。
+- AssetFormat 记录媒体类型、编码/格式版本、内核及写出库版本，跟随不可变几何引用。当前新资产为 OCCT 8.0.1 / OcctSharp 8.0.1-preview.28.cadoryx.h2b2.2；旧文件缺失的生产者版本保持未知。实际依赖的原生资产先校验描述与文件头，再进入内核。
 - Key 与枚举数字是文件协议，不能重新编号或复用。配方有显式白名单。新增字段需要缺省语义或迁移；未知未来必需功能拒绝加载。
 - 未知可选节逐字节保留，同时文档只读；避免业务修改后悄悄写回不理解的引用。
 - ZIP 默认总解压上限 1 GiB、单资产 256 MiB、单结构节 32 MiB、清单 8 MiB、20 万条目。迁移输出也检查每节和总容量。还检查路径、重复名、声明长度与 SHA-256；这些限额属于当前可配置策略。

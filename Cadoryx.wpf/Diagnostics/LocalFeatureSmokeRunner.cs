@@ -29,7 +29,8 @@ internal static class LocalFeatureSmokeRunner
         await Operate(()=>vm.LocalFeatureCommand.ExecuteAsync(null),async dialog=>
         {
             var editor=dialog.Editor;editor.SelectedBox=editor.Boxes.Single(b=>b.FeatureId==producer.Id);editor.SelectedReference=editor.References.Single(r=>r.Reference.Id==oldReference.Id);
-            await editor.InspectReferenceCommand.ExecuteAsync(null);Check(editor.Status==Cadoryx.Lang.Strings.Strings.ReferenceStale,"Visible stale reference diagnostic");
+            await editor.InspectReferenceCommand.ExecuteAsync(null);Check(editor.Status==Cadoryx.Lang.Strings.Strings.ReferenceStale,
+                $"Visible stale reference diagnostic: actual='{editor.Status}', expected='{Cadoryx.Lang.Strings.Strings.ReferenceStale}'");
             editor.SelectionKind=TopologyKind.Face;var viewport=dialog.Host.Viewport!;viewport.SetProjection(CadProjection.Top);viewport.FitAll();await Idle();
             var face=viewport.WorldToScreen(new(5,10,30));viewport.PointerPressed(0,face.X,face.Y,0);viewport.PointerReleased(0,face.X,face.Y,0);
             Check(editor.Selection?.Id==oldReference.Id,"Reselection keeps reference identity");await editor.SaveReferenceCommand.ExecuteAsync(null);
@@ -80,7 +81,12 @@ internal static class LocalFeatureSmokeRunner
         _=System.Windows.Application.Current.Dispatcher.InvokeAsync(async()=>
         {
             LocalFeatureWindow? dialog=null;
-            try{await Idle();dialog=System.Windows.Application.Current.Windows.OfType<LocalFeatureWindow>().Single();await action(dialog);completion.TrySetResult();}
+            try
+            {
+                await Idle();dialog=System.Windows.Application.Current.Windows.OfType<LocalFeatureWindow>().Single();
+                Check(dialog.IsVisible,"Local window did not open: "+((MainWindowViewModel)System.Windows.Application.Current.MainWindow.DataContext).StatusText);
+                await action(dialog);completion.TrySetResult();
+            }
             catch(Exception ex){completion.TrySetException(ex);}
             finally{if(dialog is {IsVisible:true})dialog.Close();}
         },DispatcherPriority.ApplicationIdle);

@@ -10,7 +10,7 @@ namespace Cadoryx.Kernel.Occt;
 public sealed partial class OcctGeometryKernel : IGeometryKernel, ITopologyResolver
 {
     private static readonly SemaphoreSlim Queue=new(1,1);
-    public string Version=>"OcctSharp 8.0.1-preview.26 / OCCT 8.0.1";
+    public string Version=>"OcctSharp 8.0.1-preview.28.cadoryx.h2b2.2 / OCCT 8.0.1";
     public bool Supports(GeometryRecipe recipe)=>recipe is BoxRecipe or CylinderRecipe or ImportedRecipe or BooleanRecipe or TransformRecipe or ExtrudeRecipe or RevolveRecipe or LocalFeatureRecipe;
     private static async Task<T> Run<T>(Func<T> action,CancellationToken token)
     {
@@ -25,17 +25,12 @@ public sealed partial class OcctGeometryKernel : IGeometryKernel, ITopologyResol
         {
             if(recipe is LocalFeatureRecipe local)
             {
-                using var source=OcctGeometryBridge.ReadShape(local.Source,assets);
-                using var topology=source.GetTopologyAdjacency(ShapeKind.Edge,ShapeKind.Face);
-                var candidates=topology.Items.Where(e=>BoxTopology.Matches(e,local.Box,TopologyKind.Edge,local.First,local.Second)).ToArray();
-                if(candidates.Length!=1)throw new CadValidationException("Local edge is missing or ambiguous. Reselect it.");
-                using var operation=local.Operation==Cadoryx.Db.LocalFeatureOperation.Fillet?
-                    FeatureModeling.Fillet(source,candidates,local.Size):FeatureModeling.Chamfer(source,candidates,local.Size);
-                cancellationToken.ThrowIfCancellationRequested();
-                return OcctGeometryBridge.StoreShape(operation.RequireShape(),assets);
+                return EvaluateLocal(local,assets,cancellationToken);
             }
             if(recipe is BooleanRecipe boolean)
             {
+                if(boolean.Inputs.Length<=256&&boolean.Inputs.All(i=>i.Kind!=BodyKind.Empty))
+                    return EvaluateBoolean(boolean,assets,cancellationToken);
                 var shapes=new List<Shape>();
                 try
                 {

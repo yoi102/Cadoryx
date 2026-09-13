@@ -1,5 +1,11 @@
 # 固定旧版 Cadoryx 文件
 
+H2-B1 冻结 `m4t1h2a-history.cadoryx`：来自 `artifacts/smoke-20260913-104928/history-Fillet.cadoryx`，SHA-256 `cc4722b54c3a96dc9fbd65f9bd470c24ab2fd785d66e89f89dc856240da17528`。MultiInputHistoryTests 验证 history v1→v2 迁移保留 axis-v2 来源、旧字段、状态与几何，重载解析一致；此前九份样本保持不变。
+
+H2-A 冻结 `m4t1h1-history.cadoryx`：`artifacts/smoke-20260913-102750/history-Fillet.cadoryx`，SHA-256 `b007b5576dac2622911eeac9e224278795be605494bccc6d7014842048f4dad7`。旧 full-topology-brep-v1 证据的读取、原样保存、解析与显式重算升级由 TopologyHistoryTests 验证。此前八份样本保持字节不变。
+
+M4-T1-H1 冻结 `m4t2-local.cadoryx`，来自写出器升级前的 `artifacts/smoke-20260912-230828/local-feature.cadoryx`，七节、document v4。SHA-256：`c5b9347bae6e5b46e7d4109781503c221617758846c4ba211f33f3c0e53cbe02`。验证迁移仅添加空历史、显式重算才产生历史，原有七份样本不变。当前八节协议见 [算法历史](../../../docs/TOPOLOGY_HISTORY.md)。
+
 冻结日期：2026-09-12。前三个文件在 M3-V 修改领域类型和存储写出器之前冻结；m3v-colored 在 M4-S1 修改存储写出器之前冻结。测试直接读取文件，不调用当前写出器生成“旧文件”。修改协议时应增加样本，保留这些字节和原始身份。
 
 | 文件 | 来源 | 解析几何预期 |

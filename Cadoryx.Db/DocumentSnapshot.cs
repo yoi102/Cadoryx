@@ -83,6 +83,7 @@ public sealed record DocumentSnapshot(DocumentId Id,DocumentStateId StateId,stri
         {
             CadGuard.Id(id);CadGuard.Id(f.OutputBodyId);CadGuard.Name(f.Name);f.Recipe.Validate();f.Result.Validate();
             f.SketchSource?.ValidateCache(this,f);
+            f.TopologyHistory?.ValidateFor(f);
             if(id!=f.Id||f.SchemaVersion!=1||f.Inputs.IsDefault||f.Inputs.Distinct().Count()!=f.Inputs.Length)throw new CadValidationException("Invalid feature.");
             if(f.OutputMetadata is {} metadata)
             {
@@ -91,6 +92,13 @@ public sealed record DocumentSnapshot(DocumentId Id,DocumentStateId StateId,stri
             }
             foreach(var input in f.Inputs)
                 if(!Features.TryGetValue(input,out var upstream)||upstream.PartId!=f.PartId)throw new CadValidationException("Invalid feature dependency.");
+            if(f.TopologyHistory is {} history)
+                for(int argument=0;argument<f.Inputs.Length;argument++)
+                {
+                    var geometry=Features[f.Inputs[argument]].Result;var source=history.GetSource(argument);
+                    if(geometry.Revision!=source.Revision||geometry.AssetId!=source.Asset)
+                        throw new CadValidationException("History operand order differs from its upstream features.");
+                }
             if(f.Recipe is LocalFeatureRecipe local&&
                 (f.Inputs.Length!=1||Features[f.Inputs[0]].Recipe is not BoxRecipe box||local.Box!=box||local.Source!=Features[f.Inputs[0]].Result))
                 throw new CadValidationException("Local feature must reference its current upstream box.");

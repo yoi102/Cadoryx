@@ -89,7 +89,7 @@ public sealed class TopologyReferenceTests
                 Assert.Equal(semantic,loaded.Snapshot.TopologyReferences[semantic.Id]);Assert.Equal(exact,loaded.Snapshot.TopologyReferences[exact.Id]);
                 Assert.Equal(resolved,await kernel.ResolveAsync(loaded.Snapshot,semantic,assets));
                 Assert.Equal(TopologyResolutionStatus.Stale,(await kernel.ResolveAsync(loaded.Snapshot,exact,assets)).Status);
-                Assert.Equal(7,FormatEvolutionTests.Manifest(path).Sections.Length);
+                Assert.Equal(8,FormatEvolutionTests.Manifest(path).Sections.Length);
             }
             await session.ExecuteAsync(new RemoveTopologyReferenceCommand(semantic.Id));Assert.False(session.Snapshot.TopologyReferences.ContainsKey(semantic.Id));
             await session.UndoAsync();Assert.Same(after,session.Snapshot);

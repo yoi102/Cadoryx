@@ -14,8 +14,8 @@
             <CheckBox Content="{I18N {x:Static r:LangKeys.SnapGridEndpoints}}" IsChecked="{Binding Snap}" Margin="0,0,6,0" VerticalAlignment="Center"/>
             <mah:NumericUpDown Width="90" Value="{Binding GridStep}" Minimum="0.001" Maximum="100000"/>
             <Button Content="{I18N {x:Static r:LangKeys.FitSketch}}" Click="OnFit" Margin="10,0"/>
-            <Button Content="{I18N {x:Static r:LangKeys.UndoDraft}}" Command="{Binding UndoCommand}" Margin="0,0,8,0"/>
-            <Button Content="{I18N {x:Static r:LangKeys.RedoDraft}}" Command="{Binding RedoCommand}"/>
+            <Button Content="{I18N {x:Static r:LangKeys.Undo}}" Command="{Binding UndoCommand}" Margin="0,0,8,0"/>
+            <Button Content="{I18N {x:Static r:LangKeys.Redo}}" Command="{Binding RedoCommand}"/>
         </WrapPanel>
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions><ColumnDefinition/><ColumnDefinition Width="12"/><ColumnDefinition Width="340"/></Grid.ColumnDefinitions>

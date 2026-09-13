@@ -3,7 +3,7 @@ $ErrorActionPreference = 'Stop'
 $cadRoot = Split-Path -Parent $PSScriptRoot
 Push-Location $cadRoot
 try {
-    dotnet restore Cadoryx.slnx --locked-mode --nologo -v minimal
+    dotnet restore Cadoryx.slnx --configfile (Join-Path $cadRoot 'NuGet.Config') --locked-mode --nologo -v minimal
     if ($LASTEXITCODE -ne 0) { throw 'Locked restore failed.' }
     dotnet build Cadoryx.slnx -c Release --no-restore --nologo -v minimal
     if ($LASTEXITCODE -ne 0) { throw 'Release build failed.' }
@@ -29,7 +29,7 @@ try {
         @($cadStart.EnvironmentVariables.Keys) | Where-Object { $_ -match '^(CSF_|CASROOT|OCCT|OCCTSHARP)' } | ForEach-Object { $cadStart.EnvironmentVariables.Remove($_) }
         $cadRun = [System.Diagnostics.Process]::Start($cadStart)
         try {
-            if (!$cadRun.WaitForExit(30000)) { $cadRun.Kill(); throw 'Desktop smoke timed out.' }
+            if (!$cadRun.WaitForExit(60000)) { $cadRun.Kill(); throw 'Desktop smoke timed out.' }
             $cadResult = Join-Path $cadSmoke 'result.txt'
             if (!(Test-Path -LiteralPath $cadResult)) { throw "No smoke result (exit $($cadRun.ExitCode))." }
             Get-Content -LiteralPath $cadResult

@@ -18,11 +18,11 @@
 T1 的 ResolvedSubshape.Index 仍然只是诊断输出，本阶段不消费它来建模。`BoxTopology` 统一语义分类：校验局部平面/直线类型和完整边界范围，保持 T1 的容差与最小尺寸约束。
 
 - 视口开启 OCCT Face/Edge selection mode，用 GetSelectedItems 得到选择副本；只接受一个唯一 Box 语义。视口只向 ViewModel 发出 BoxBoundary 值，不传 native Shape。
-- 建模在已有串行队列中重新加载当前精确 BRep，通过 GetTopologyAdjacency(Edge, Face) 获得其唯一边，按相同语义解析；零个或多个候选拒绝。
-- 保持源 Shape、邻接表、选中的边及 FeatureOperationResult 在同一个 operation 生命周期内；调用 FeatureModeling.Fillet/Chamfer 后检查操作完成并存储合法 BRep，依次释放所有者。
+- 建模在已有串行队列中重新加载当前精确 BRep，通过 RepairSnapshot 全图按相同语义找到唯一边；零个或多个候选拒绝。
+- M4-T1-H1 改用 ContourFilletRecipe／ContourChamferRecipe，在同一算法调用中捕获逐源历史。保持快照、选择和 LocalFeatureResult 生命周期；检查结果合法性并存储 BRep。倒角的支持面由 First 边界唯一匹配。
 - 实际包测试证明此图中的唯一边可作为局部算法输入：十二边 × 两种操作均验证体积与 BRep 合法性，且包含任意刚体放置。不能把其他 BRep 加载图、Viewer 选择副本或旧诊断序号传给建模代替这一步。
 
-这是在一个当前原图内使用边的能力。它没有建立操作前后通用的拓扑命名关系；圆角生成面、倒角生成边以及后继布尔结果的持久传播仍由 M4-T1-H 单独验收。
+通过逐槽 BRep 校验的结果现在附带版本化历史证据，可诊断追踪唯一修改／未改变的源角色。校验失败仍正常建模，但不提供传播映射。生成拓扑的继续建模、布尔及通用持久命名仍未开放，详见 [算法历史](TOPOLOGY_HISTORY.md)。
 
 ## 领域、命令与重算
 

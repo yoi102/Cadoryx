@@ -27,7 +27,7 @@ public sealed class SketchStorageTests
         {
             Assert.Equal(doc.Id,loaded.Snapshot.Id);Assert.Equal(doc.StateId,loaded.Snapshot.StateId);Equal(s,loaded.Snapshot.Sketches[s.Id]);
             var manifest=FormatEvolutionTests.Manifest(path);Assert.Equal(CadSectionMigrationRegistry.CurrentFormats.Count,manifest.Sections.Length);Assert.Contains("cadoryx.sketches.1",manifest.RequiredCapabilities);
-            Assert.Equal(4,manifest.Sections.Single(e=>e.Kind=="document").SchemaVersion);Assert.Equal(2,manifest.Sections.Single(e=>e.Kind=="sketches").SchemaVersion);
+            Assert.Equal(5,manifest.Sections.Single(e=>e.Kind=="document").SchemaVersion);Assert.Equal(2,manifest.Sections.Single(e=>e.Kind=="sketches").SchemaVersion);
             Assert.Empty(loaded.Diagnostics);
         }
         Assert.Equal(0,assets.Count);

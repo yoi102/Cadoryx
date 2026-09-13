@@ -1,5 +1,7 @@
 # Cadoryx 命令、事务与存储设计
 
+2026-09-13 更新：H2-B1 将多输入历史证据接入布尔命令，重算整体替换、撤销精确恢复。当前应用写出版本 0.4.5，document v5、history v2，共八节 MessagePack。旧 document v4 文件先迁移为空 history v1，再明确升级为 v2；旧局部历史保留原证据，不自动重算。详细契约见 [多输入历史](MULTI_INPUT_HISTORY.md)，原单输入设计见 [算法历史](TOPOLOGY_HISTORY.md)。H2-B2 已接入生产布尔逐源证据，详见 [布尔历史](BOOLEAN_HISTORY.md)；以下阶段记录保留原版本背景。
+
 本文保留目标行为，并记录当前实现。2026-09-12 已接通候选编辑、Dispatcher 提交、精确资产历史、MessagePack 文件、三格式导出与恢复快照；后续预算、通用迁移等目标以[路线图](ROADMAP.md)标示，接口草案不一定与当前类名逐字一致。
 
 ## 1. 三条操作路径

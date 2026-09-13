@@ -1,5 +1,7 @@
 # OcctSharp 接入设计
 
+2026-09-13 H2-B2：当前消费本地开发包 `8.0.1-preview.28.cadoryx.h2b2.2`，在 Preview.28 基线上增加真实布尔逐源历史。NuGet 仍为唯一接入路径；构建与部署见[接入目录](../integrations/occtsharp-boolean-history/README.md)，接口及验证边界见[布尔历史](BOOLEAN_HISTORY.md)。下文 Preview.26 是初始选型时的历史基线。
+
 ## 1. 本轮核实范围与版本选择
 
 核实日期：2026-09-11。参考仓库为 `C:\Users\yoiri\source\repos\OcctSharp`，源码/包在其内层 `OcctSharp` 目录，产品文档在仓库根 `docs` 目录。

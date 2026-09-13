@@ -8,8 +8,8 @@ namespace Cadoryx.Kernel.Abstractions;
 /// <summary>Managed checks before native decoding. Unknown provenance is never replaced with today's kernel.</summary>
 public static class AssetFormatPolicy
 {
-    public static AssetFormat CurrentBRep {get;}=new(AssetFormat.BRepMediaType,"brep-ascii",3,"OCCT","8.0.1","OcctSharp","8.0.1-preview.26");
-    public static AssetFormat CurrentXde {get;}=new(AssetFormat.XdeMediaType,"binxcaf",12,"OCCT","8.0.1","OcctSharp","8.0.1-preview.26");
+    public static AssetFormat CurrentBRep {get;}=new(AssetFormat.BRepMediaType,"brep-ascii",3,"OCCT","8.0.1","OcctSharp","8.0.1-preview.28.cadoryx.h2b2.2");
+    public static AssetFormat CurrentXde {get;}=new(AssetFormat.XdeMediaType,"binxcaf",12,"OCCT","8.0.1","OcctSharp","8.0.1-preview.28.cadoryx.h2b2.2");
     public static void RequireBRep(AssetFormat format)
     {
         format.Validate();RequireKernel(format);

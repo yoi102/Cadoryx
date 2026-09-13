@@ -1,5 +1,7 @@
 # Cadoryx
 
+H2-B2 已接入真实布尔逐源历史与独立本地 OcctSharp 包，当前范围和限制见[布尔历史](docs/BOOLEAN_HISTORY.md)。
+
 WPF / .NET 10 桌面 3D CAD，使用 OcctSharp NuGet。原生文档使用 MessagePack + BRep/XDE 资产；支持 STEP、IGES 导入和 STEP、IGES、STL 导出。
 
 - [文档入口](docs/README.md)
@@ -14,6 +16,9 @@ WPF / .NET 10 桌面 3D CAD，使用 OcctSharp NuGet。原生文档使用 Messag
 - [草图编辑器与关联特征使用说明](docs/SKETCH_EDITOR.md)
 - [拓扑引用基础与支持边界](docs/TOPOLOGY_REFERENCES.md)
 - [面/边选择、引用重选与局部圆角/倒角](docs/LOCAL_FEATURES.md)
+- [局部算法历史映射与持久化门禁](docs/TOPOLOGY_HISTORY.md)
+- [旋转历史校验与布尔能力门禁](docs/HISTORY_ROTATION.md)
+- [多输入历史协议与布尔接入准备](docs/MULTI_INPUT_HISTORY.md)
 
 ```powershell
 dotnet build Cadoryx.slnx -c Release

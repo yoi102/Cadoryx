@@ -1,0 +1,348 @@
+--- /dev/null
++++ b/OcctSharp/src/OcctSharp.Native/src/Modeling/BooleanTopologyHistory.cpp
+@@ -0,0 +1,63 @@
++#include "Modeling/LocalFeatures.hxx"
++#include "Modeling/Repair.hxx"
++#include <BRepAlgoAPI_BooleanOperation.hxx>
++#include <BRepAlgoAPI_Common.hxx>
++#include <BRepAlgoAPI_Cut.hxx>
++#include <BRepAlgoAPI_Fuse.hxx>
++#include <NCollection_List.hxx>
++
++using namespace OcctSharp::Native;
++using namespace OcctSharp::Native::LocalFeatures;
++
++OcctSharp_Status OCCTSHARP_CALL occtsharp_boolean_topology_history(
++  const OcctSharp_ShapeHandle* const* inputs, int32_t count, int32_t argument_count,
++  int32_t operation, OcctSharp_FeatureResultHandle** output) {
++  if (output) *output = nullptr;
++  return Guard([&] {
++    Require(output != nullptr, "Missing Boolean history output.");
++    Require(count >= 2 && count <= 256 && argument_count > 0 && argument_count < count,
++      "Boolean history requires two to 256 inputs and nonempty argument/tool groups.");
++    Require(operation >= 0 && operation <= 2, "Unsupported Boolean history operation.");
++    // One private graph copy preserves each original input's full-map order.
++    // The caller's input geometry and topology flags remain untouched.
++    InputGraph graph(inputs, count);
++    NCollection_List<TopoDS_Shape> arguments, tools;
++    for (int i = 0; i < count; ++i)
++      (i < argument_count ? arguments : tools).Append(graph.At(i));
++    std::unique_ptr<BRepAlgoAPI_BooleanOperation> algorithm;
++    if (operation == 0) algorithm = std::make_unique<BRepAlgoAPI_Fuse>();
++    else if (operation == 1) algorithm = std::make_unique<BRepAlgoAPI_Cut>();
++    else algorithm = std::make_unique<BRepAlgoAPI_Common>();
++    algorithm->SetArguments(arguments); algorithm->SetTools(tools);
++    algorithm->SetNonDestructive(true); algorithm->SetRunParallel(false);
++    algorithm->SetToFillHistory(true);
++    Result result(11); result.Data().Info.ready = 1;
++    algorithm->Build();
++    if (!algorithm->IsDone() || algorithm->HasErrors())
++      result.Fail("OCCT Boolean history operation did not complete.");
++    else {
++      result.Owner->Result = algorithm->Shape(); result.Data().Info.done = 1;
++      const auto finalMap = Map(result.Owner->Result);
++      // RepairSnapshot copies the result before diagnostics/persistence. Prove
++      // that the actual copier preserves every full-map slot via its exact
++      // ModifiedShape correspondence, never standalone BRep byte similarity.
++      std::vector<TopoDS_Shape> correspondence;
++      const auto diagnosticCopy = OcctSharp::Native::Repair::Copy(result.Owner->Result, &correspondence);
++      const auto diagnosticMap = Map(diagnosticCopy);
++      bool stable = diagnosticMap.Extent() == finalMap.Extent()
++        && correspondence.size() == static_cast<size_t>(finalMap.Extent());
++      for (int i = 1; stable && i <= finalMap.Extent(); ++i)
++        stable = diagnosticMap(i).IsSame(correspondence[i - 1])
++          && diagnosticMap(i).Orientation() == finalMap(i).Orientation();
++      // Modified/Generated/Deleted are read while this exact builder is alive;
++      // Unchanged uses TShape/location identity in the final output graph.
++      if (stable) History(*algorithm, graph, result);
++      for (auto& item : result.Owner->History)
++        if (!item.Shape.IsNull() && finalMap.Contains(item.Shape))
++          item.Shape = finalMap(finalMap.FindIndex(item.Shape));
++      result.Owner->Message = stable ? "Boolean topology history captured from the final output."
++        : "Valid Boolean geometry; diagnostic copy order could not be verified, history unavailable.";
++    }
++    result.Publish(output);
++  });
++}
+--- /dev/null
++++ b/OcctSharp/src/OcctSharp.Modeling/LocalFeatures/BooleanHistoryModeling.cs
+@@ -0,0 +1,45 @@
++using OcctSharp.Interop;
++
++namespace OcctSharp;
++
++/// <summary>Boolean operations with exact, per-input topology history.</summary>
++public enum TopologyBooleanOperation
++{
++    /// <summary>Union of the argument and tool groups.</summary>
++    Fuse,
++    /// <summary>Subtract the tool group from the argument group.</summary>
++    Cut,
++    /// <summary>Intersection of the argument and tool groups.</summary>
++    Common
++}
++
++/// <summary>Captures face, edge and vertex relations from one non-destructive Boolean build.
++/// Indices name the supplied snapshots and the returned exact result, not persistent names.</summary>
++public static class BooleanHistoryModeling
++{
++    /// <summary>Builds with input slots [0, argumentCount) as arguments and the remainder as tools.
++    /// The caller retains its snapshots; the returned result and history shapes own their lifetime.
++    /// Deleted/unmapped relations have no target. Split and shared targets are retained without choosing one.
++    /// Inputs and results may be disposed independently after the call. The default has one base and N tools.</summary>
++    public static unsafe LocalFeatureResult Build(TopologyBooleanOperation operation,
++        IReadOnlyList<RepairSnapshot> inputs, int argumentCount = 1)
++    {
++        ArgumentNullException.ThrowIfNull(inputs);
++        if (!Enum.IsDefined(operation)) throw new ArgumentOutOfRangeException(nameof(operation));
++        if (inputs.Count is < 2 or > 256) throw new ArgumentException("Expected two to 256 snapshots.", nameof(inputs));
++        if (argumentCount < 1 || argumentCount >= inputs.Count) throw new ArgumentOutOfRangeException(nameof(argumentCount));
++        var shapes = new Shape[inputs.Count];
++        for (int i = 0; i < shapes.Length; i++)
++        {
++            ArgumentNullException.ThrowIfNull(inputs[i]);
++            shapes[i] = inputs[i].Shape;
++        }
++        // WithInputs holds SafeHandle references throughout native copying/building.
++        return AuthoringBridge.WithInputs(shapes, (p, count) =>
++        {
++            NativeError.ThrowIfFailed(NativeMethods.BooleanTopologyHistory(p, count, argumentCount, (int)operation, out nint result),
++                "boolean_topology_history");
++            return LocalFeatureBridge.Read(Guid.NewGuid(), result);
++        });
++    }
++}
+--- /dev/null
++++ b/OcctSharp/tests/OcctSharp.Runtime.Tests/BooleanTopologyHistoryTests.cs
+@@ -0,0 +1,88 @@
++using OcctSharp.Interop;
++
++namespace OcctSharp.Runtime.Tests;
++
++#pragma warning disable CA1861
++public sealed class BooleanTopologyHistoryTests
++{
++    private static Shape Translate(Shape source, double x, double y, double z)
++    {
++        using var transform = GpTrsf.Create(x, y, z);
++        return source.Transformed(transform);
++    }
++
++    [Theory]
++    [InlineData(TopologyBooleanOperation.Cut, 4800)]
++    [InlineData(TopologyBooleanOperation.Fuse, 6208)]
++    [InlineData(TopologyBooleanOperation.Common, 1200)]
++    public void ExactHistoryCoversBothInputsAndKeepsInputGeometry(TopologyBooleanOperation operation, double volume)
++    {
++        using var box = ShapeFactory.CreateBox(10, 20, 30);
++        using var tool = ShapeFactory.CreateBox(2, 22, 32);
++        using var placed = Translate(tool, 4, -1, -1);
++        using var first = RepairSnapshot.Create(box); using var second = RepairSnapshot.Create(placed);
++        using var result = BooleanHistoryModeling.Build(operation, new[] { first, second });
++        Assert.InRange(Math.Abs(result.RequireShape().InspectProperties(InspectionPropertyKind.Volume).Mass), volume - 1e-6, volume + 1e-6);
++        Assert.False(result.Diagnostics.HasComposedHistory);
++        Assert.True(result.Diagnostics.GroupSupport.HasFlag(LocalFeatureGroupSupport.Evolution));
++        Assert.Equal(LocalFeatureOperation.Boolean, result.Diagnostics.Operation);
++        Assert.Equal(first.Fingerprint, RepairSnapshot.ComputeFingerprint(first.Shape));
++        Assert.Equal(second.Fingerprint, RepairSnapshot.ComputeFingerprint(second.Shape));
++        using var final = RepairSnapshot.Create(result.RequireShape());
++        var inputs = new[] { first, second };
++        for (int argument = 0; argument < inputs.Length; argument++)
++            foreach (var item in inputs[argument].Topology.Where(t => t.Kind is ShapeKind.Face or ShapeKind.Edge or ShapeKind.Vertex))
++                Assert.Contains(result.History, h => h.Source is { } s && s.ArgumentIndex == argument
++                    && s.TopologyIndex == item.Selection.Index && s.Kind == item.Kind && s.PlanId == result.PlanId);
++        Assert.All(result.History, h =>
++        {
++            Assert.NotNull(h.Source);
++            if (h.ResultTopologyIndex is { } target)
++            {
++                Assert.InRange(target, 0, final.Topology.Count - 1); Assert.NotNull(h.Shape);
++                // Select directly in the exact returned graph. RepairSnapshot makes
++                // a deep copy whose p-curve representation is a separate contract.
++                NativeError.ThrowIfFailed(NativeMethods.LocalFeatureSourceSubshape(result.RequireShape().Handle, target, out nint raw), "test_final_slot");
++                using var exact = ShapeFactory.FromNativeHandle(raw, "test_final_slot");
++                Assert.Equal(RepairSnapshot.ComputeFingerprint(exact), RepairSnapshot.ComputeFingerprint(h.Shape!));
++            }
++            else Assert.True(h.Kind is LocalFeatureHistoryKind.Deleted or LocalFeatureHistoryKind.Unmapped);
++        });
++        if (operation == TopologyBooleanOperation.Cut)
++        {
++            Assert.Contains(result.History, h => h.Kind == LocalFeatureHistoryKind.Deleted);
++            Assert.Contains(result.History, h => h.Kind == LocalFeatureHistoryKind.Unchanged);
++            Assert.Contains(result.History.Where(h => h.Source!.Value.ArgumentIndex == 0 && h.Source.Value.Kind == ShapeKind.Face
++                && h.Kind == LocalFeatureHistoryKind.Modified).GroupBy(h => h.Source),
++                g => g.Select(h => h.ResultTopologyIndex).Distinct().Count() > 1);
++        }
++    }
++
++    [Fact]
++    public void CopiedOutputsOutliveSourcesAndRejectDisposedInputs()
++    {
++        using var box = ShapeFactory.CreateBox(10, 20, 30);
++        using var first = RepairSnapshot.Create(box); using var second = RepairSnapshot.Create(box);
++        using var result = BooleanHistoryModeling.Build(TopologyBooleanOperation.Common, new[] { first, second });
++        first.Dispose(); second.Dispose(); box.Dispose();
++        Assert.InRange(Math.Abs(result.RequireShape().InspectProperties(InspectionPropertyKind.Volume).Mass), 5999.99999, 6000.00001);
++        // Coincident independent sources genuinely share final topology, without fabricated relations.
++        Assert.Contains(result.History.Where(h => h.ResultTopologyIndex.HasValue).GroupBy(h => h.ResultTopologyIndex),
++            g => g.Select(h => h.Source!.Value.ArgumentIndex).Distinct().Count() == 2);
++        foreach (var h in result.History.Where(h => h.Shape is not null)) Assert.True(h.Shape!.IsValid);
++        Assert.Throws<ObjectDisposedException>(() => BooleanHistoryModeling.Build(TopologyBooleanOperation.Cut, new[] { first, second }));
++        result.Dispose(); result.Dispose();
++        Assert.Throws<ObjectDisposedException>(() => result.RequireShape());
++    }
++
++    [Fact]
++    public void InvalidOperationAndInputGroupsRejectBeforeBuilding()
++    {
++        using var box = ShapeFactory.CreateBox(1, 1, 1); using var source = RepairSnapshot.Create(box);
++        Assert.Throws<ArgumentOutOfRangeException>(() => BooleanHistoryModeling.Build((TopologyBooleanOperation)99, new[] { source, source }));
++        Assert.Throws<ArgumentException>(() => BooleanHistoryModeling.Build(TopologyBooleanOperation.Cut, new[] { source }));
++        Assert.Throws<ArgumentOutOfRangeException>(() => BooleanHistoryModeling.Build(TopologyBooleanOperation.Cut, new[] { source, source }, 0));
++        Assert.Throws<ArgumentOutOfRangeException>(() => BooleanHistoryModeling.Build(TopologyBooleanOperation.Cut, new[] { source, source }, 2));
++    }
++}
++#pragma warning restore CA1861
+--- a/OcctSharp/src/OcctSharp.Native/CMakeLists.txt
++++ b/OcctSharp/src/OcctSharp.Native/CMakeLists.txt
+@@ -22,6 +22,7 @@
+   src/Modeling/RegionInspection.cpp
+   src/Modeling/VolumeConstruction.cpp
+   src/Modeling/LocalFeatureData.cpp
++  src/Modeling/BooleanTopologyHistory.cpp
+   src/Modeling/ContourFinishing.cpp
+   src/Modeling/ChamferContours.cpp
+   src/Modeling/LocalDraft.cpp
+--- a/OcctSharp/src/OcctSharp.Native/include/OcctSharp.Native.LocalFeatures.h
++++ b/OcctSharp/src/OcctSharp.Native/include/OcctSharp.Native.LocalFeatures.h
+@@ -101,6 +101,13 @@
+   const OcctSharp_RibSlotOptions* options, OcctSharp_FeatureResultHandle** output);
+ OCCTSHARP_API OcctSharp_Status OCCTSHARP_CALL occtsharp_local_hole(
+   const OcctSharp_ShapeHandle* source, const OcctSharp_LocalHoleOptions* options, OcctSharp_FeatureResultHandle** output);
++/* One private graph copy and one Boolean build. Input slots retain each original
++   full-map order; result slots are in the final returned topology. Operation 0/1/2
++   means Fuse/Cut/Common. Both argument and tool groups must be nonempty. */
++OCCTSHARP_API OcctSharp_Status OCCTSHARP_CALL occtsharp_boolean_topology_history(
++  const OcctSharp_ShapeHandle* const* inputs, int32_t count, int32_t argument_count,
++  int32_t operation, OcctSharp_FeatureResultHandle** output);
++
+ /* All-zero null buffers query counts. Otherwise every capacity is checked before
+    any array is written, including arrays whose corresponding count is zero. */
+ OCCTSHARP_API OcctSharp_Status OCCTSHARP_CALL occtsharp_local_feature_snapshot(
+--- a/OcctSharp/src/OcctSharp/Interop/LocalFeatureNativeMethods.cs
++++ b/OcctSharp/src/OcctSharp/Interop/LocalFeatureNativeMethods.cs
+@@ -92,6 +92,11 @@
+ 
+ internal static partial class NativeMethods
+ {
++    [LibraryImport(LibraryName, EntryPoint = "occtsharp_boolean_topology_history")]
++    [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
++    internal static unsafe partial NativeStatus BooleanTopologyHistory(nint* inputs, int count,
++        int argumentCount, int operation, out nint result);
++
+     [LibraryImport(LibraryName, EntryPoint = "occtsharp_local_feature_source_subshape")]
+     [UnmanagedCallConv(CallConvs = [typeof(CallConvCdecl)])]
+     internal static partial NativeStatus LocalFeatureSourceSubshape(ShapeHandle source, int index, out nint result);
+--- a/OcctSharp/src/OcctSharp.Modeling/LocalFeatures/LocalFeatureResult.cs
++++ b/OcctSharp/src/OcctSharp.Modeling/LocalFeatures/LocalFeatureResult.cs
+@@ -11,7 +11,7 @@
+ }
+ [Flags]
+ public enum LocalFeatureGroupSupport { None = 0, Caps = 1, Laterals = 2, Contacts = 4, Patches = 8, Evolution = 16 }
+-public enum LocalFeatureOperation { Fillet, Chamfer, FaceDraft, ShellDraft, Prism, DraftedPrism, Revolved, Pipe, LinearRibSlot, RevolutionRibSlot, Hole }
++public enum LocalFeatureOperation { Fillet, Chamfer, FaceDraft, ShellDraft, Prism, DraftedPrism, Revolved, Pipe, LinearRibSlot, RevolutionRibSlot, Hole, Boolean }
+ public enum LocalFeatureFaultKind { Contour, Vertex, DraftFace }
+ public readonly record struct LocalFeatureReference(Guid PlanId, int ArgumentIndex, int TopologyIndex, ShapeKind Kind);
+ public sealed record LocalFeatureHistoryItem(LocalFeatureReference? Source, LocalFeatureHistoryKind Kind, int? Group, Shape? Shape, int? ResultTopologyIndex = null) : IDisposable
+--- a/docs/SPECIAL_CASES.md
++++ b/docs/SPECIAL_CASES.md
+@@ -2202,3 +2202,15 @@
+ - Removal criteria: Replace this exception only after generated session/document
+   ownership and path-safe exchange can preserve the same copied diagnostics, metadata,
+   lifetime, failure, viewer, and package evidence.
++
++## Cadoryx H2-B2: exact Boolean topology-history companion
++
++Manual composition export `occtsharp_boolean_topology_history` extends the accepted
++ADR-0088 copied-input/FeatureResult boundary. It reuses existing generated OCCT
++bindings without changing their IDs; generated binding delta is zero. One added
++manual C ABI entry composes BRepAlgoAPI_Fuse/Cut/Common with LocalFeatures::InputGraph
++and History, preserving each source full-map index and the final result-map index.
++No native builder, iterator or registry category escapes. Both input groups are
++nonempty, inputs are bounded to 256, and algorithms run non-destructively without
++parallel mutation. Missing final membership remains explicit. The existing feature
++API is unchanged. Validation status is recorded in BOOLEAN_TOPOLOGY_HISTORY.md.
+--- a/docs/OWNERSHIP.md
++++ b/docs/OWNERSHIP.md
+@@ -797,3 +797,12 @@
+ successful native completion, and cleans success/failure/exception paths. No temporary
+ path or file owner escapes to callers. The WPF host owns the imported XDE document and
+ viewer-parent-bound presentations exactly as it does for STEP.
++
++## Boolean topology-history companion
++
++BooleanHistoryModeling holds SafeHandle references to every RepairSnapshot input
++while native InputGraph copies the entire graph. Builders and history iterators
++remain call-local. Existing FeatureResult and Shape owners publish the result and
++history shapes; input disposal after Build cannot invalidate outputs. History
++result indices refer to the exact final graph, with final traversal orientation.
++There is no new registry or borrowed pointer; existing release paths are reused.
+--- /dev/null
++++ b/docs/BOOLEAN_TOPOLOGY_HISTORY.md
+@@ -0,0 +1,43 @@
++# Boolean topology history for Cadoryx H2-B2
++
++Development extension on the Preview.28 source baseline; not a public release.
++BooleanHistoryModeling.Build accepts ordered RepairSnapshot inputs and an argument
++group count, and returns owning LocalFeatureResult evidence. Source.ArgumentIndex
++and TopologyIndex identify an input slot and its full-map topology. ResultTopologyIndex
++identifies membership in the final result graph. PlanId scopes all relations to
++this invocation. The supplied snapshots remain caller-owned and unchanged.
++
++The implementation uses one private graph copy, then one non-destructive serial
++Fuse/Cut/Common build. Modified/Generated/Deleted come from that builder; Unchanged
++uses exact TShape/location membership. Split and shared-result relations are kept.
++No geometry-proximity mapping or persistent naming is implied. Generated/modified
++items absent from the final graph have no final index and consumers must fail closed.
++No same-domain simplification or multi-step propagation is enabled.
++
++New ABI export: occtsharp_boolean_topology_history. Existing fixed structs and
++enum values remain unchanged; LocalFeatureOperation.Boolean is appended as 11.
++The generated binding set is untouched. The manual composition is recorded in
++SPECIAL_CASES; the existing ownership category is recorded in OWNERSHIP.
++
++The actual Repair::Copy ModifiedShape correspondence also verifies every final
++full-map slot and orientation before history is published. A failed correspondence
++keeps valid Boolean geometry but exposes no evolution group. The native tests
++select history targets in the exact returned graph; independent deep copies can
++change p-curve representation and are not compared as raw serialized bytes.
++
++Executed development validation: Release/Debug native and affected managed builds;
++BooleanTopologyHistoryTests 5/5 against each actual native configuration; all 62 DLLs
++in each test output match the corresponding build hashes; C11 fixed layouts and
++function signature; 40,570 identical Release/Debug exports, exactly one addition and
++no removals from the 40,569-export Preview.28 baseline. No generated file is edited.
++
++Local development package version: 8.0.1-preview.28.cadoryx.h2b2.2. This is an
++additive experimental companion, not a new full-library migration or public release.
++Cadoryx owns the downstream NuGet, BRep reload, transaction and desktop acceptance
++records in its docs/BOOLEAN_HISTORY.md and docs/ROADMAP.md. Package-generation and
++consumer completion are recorded in this repository's STATUS, which is excluded
++from NuGet documentation to avoid representing later execution as packaged evidence.
++
++Full upstream Generator/Runtime suites, clean regeneration, complete release-check,
++hosted CI, signing and public publication: NOT RUN for this extension. The historical
++Batch AC full delivery remains evidence for its original Preview.28 source only.
+--- a/docs/STATUS.md
++++ b/docs/STATUS.md
+@@ -1,7 +1,8 @@
+ # Current Status
+ 
+-- Last updated: 2026-09-12.
+-- Current work: [Batch AC](BATCH_AC_OWNED_UTILITY_EXPANSION.md). Implementation and
++- Last updated: 2026-09-13.
++- Development follow-up: [Cadoryx Boolean topology history](BOOLEAN_TOPOLOGY_HISTORY.md), Release/Debug native and affected managed builds, 5/5 focused tests per native configuration, C11/exports and 62-DLL identity checks passed. Fourteen local .2 packages, native payload/lock hashes, an isolated direct-module NuGet consumer and Cadoryx 306 tests passed. Cadoryx owns the final desktop evidence in its ROADMAP; full upstream release gates are NOT RUN. The following Batch AC delivery describes the unchanged Preview.28 baseline.
++- Baseline work: [Batch AC](BATCH_AC_OWNED_UTILITY_EXPANSION.md). Implementation and
+   Release/Debug tests pass; local delivery checks are complete. Public-release
+   readiness remains false because hosted CI, signing and publication are not run,
+   and 32 SDK headers remain explicit Clang parse exclusions.

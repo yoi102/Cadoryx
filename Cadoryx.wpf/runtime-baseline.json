@@ -1,12 +1,13 @@
 {
   "application": "Cadoryx",
-  "applicationVersion": "0.1.0",
+  "documentWriterVersion": "0.4.5",
   "framework": "net10.0-windows",
   "runtime": "win-x64",
-  "occtSharpPackage": "8.0.1-preview.26",
+  "occtSharpPackage": "8.0.1-preview.28.cadoryx.h2b2.2",
+  "nativeSha256": "f719823bbb12cb19650656993217744c59feef54903e57951877d28605db8f00",
   "occtVersion": "8.0.1",
   "messagePackPackage": "3.1.8",
   "containerVersion": 1,
-  "coreSectionVersion": 2,
+  "sectionVersions": { "document": 5, "structure": 3, "features": 5, "presentation": 2, "geometry": 1, "sketches": 2, "topology": 1, "history": 2 },
   "coreSectionEncoding": "messagepack"
 }

@@ -20,7 +20,7 @@ public sealed class LocalFeatureCommand(TopologyReference edge,LocalFeatureOpera
         try
         {
             var id=FeatureId.New();var body=source with{Id=BodyId.New(),Producer=id,Name=Name,Geometry=result.Geometry};var part=(PartDefinition)doc.Definitions[source.PartId];
-            var feature=new FeatureDefinition(id,part.Id,Name,recipe,[producer.Id],body.Id,result.Geometry,OutputMetadata:BodyOutputMetadata.FromBody(body));
+            var feature=new FeatureDefinition(id,part.Id,Name,recipe,[producer.Id],body.Id,result.Geometry,OutputMetadata:BodyOutputMetadata.FromBody(body)){TopologyHistory=result.TopologyHistory};
             doc=doc with{Bodies=doc.Bodies.Remove(source.Id).Add(body.Id,body),
                 Features=doc.Features.SetItem(producer.Id,producer with{OutputMetadata=BodyOutputMetadata.FromBody(source)}).Add(id,feature),
                 TopologyReferences=doc.TopologyReferences.SetItem(edge.Id,edge),

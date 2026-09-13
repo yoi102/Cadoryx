@@ -1,5 +1,7 @@
 # Cadoryx 整体架构
 
+2026-09-13 更新：局部算法历史证据由 Kernel.Occt 在建模时生成，Db 随特征持有，Commands 原子替换，Editor 提供带文档状态的诊断。H2-B1 扩展为多输入协议及 IO/history v2 存储，BooleanCommand 接收可选证据；H2-B2 已通过独立本地 NuGet 接入真实布尔逐源映射，见 [布尔历史](BOOLEAN_HISTORY.md)。严格 BRep 校验失败时不提供映射，通用传播仍有门禁，见 [算法历史](TOPOLOGY_HISTORY.md)及[多输入历史](MULTI_INPUT_HISTORY.md)。
+
 ## 1. 产品方向与设计决策
 
 目标是可持续增加建模能力的桌面 3D CAD：先跑通模型导入、选择、属性、直接编辑、撤销和保存，再实现草图驱动的参数化零件与装配管理。

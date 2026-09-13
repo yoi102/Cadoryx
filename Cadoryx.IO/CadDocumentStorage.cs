@@ -13,7 +13,7 @@ public sealed class CadDocumentStorage(CadSectionMigrationRegistry? migrations=n
     private readonly CadSectionMigrationRegistry registry=migrations??new();
     private readonly StorageLimits limits=limits??new();
     private static readonly HashSet<string> KnownSections=CadSectionMigrationRegistry.CurrentFormats.Keys.ToHashSet();
-    private static readonly string[] Capabilities=["cadoryx.core.1","occt.brep.1","cadoryx.geometry-table.1","cadoryx.asset-catalog.1","cadoryx.sketches.1","cadoryx.sketch-association.1","cadoryx.topology-references.1","cadoryx.local-box-edge.1"];
+    private static readonly string[] Capabilities=["cadoryx.core.1","occt.brep.1","cadoryx.geometry-table.1","cadoryx.asset-catalog.1","cadoryx.sketches.1","cadoryx.sketch-association.1","cadoryx.topology-references.1","cadoryx.local-box-edge.1","cadoryx.topology-history.1","cadoryx.topology-history.2"];
     public async Task SaveAsync(DocumentSnapshot snapshot,IAssetStore assets,string path,CancellationToken cancellationToken=default)
     {
         cancellationToken.ThrowIfCancellationRequested();
@@ -54,6 +54,7 @@ public sealed class CadDocumentStorage(CadSectionMigrationRegistry? migrations=n
                 await Section(new(CadSectionMigrationRegistry.CurrentFormats["presentation"],MessagePackSections.Encode("presentation",new PresentationSection(snapshot.Layers.Values.ToImmutableArray(),snapshot.Materials.Values.ToImmutableArray()))));
                 await Section(new(CadSectionMigrationRegistry.CurrentFormats["sketches"],MessagePackSections.EncodeSketches(snapshot.Sketches.Values)));
                 await Section(new(CadSectionMigrationRegistry.CurrentFormats["topology"],MessagePackSections.EncodeTopology(snapshot.TopologyReferences.Values)));
+                await Section(new(CadSectionMigrationRegistry.CurrentFormats["history"],MessagePackSections.EncodeHistories(snapshot.Features.Values)));
                 if(!snapshot.Extensions.IsDefault)
                     foreach(var extension in snapshot.Extensions)
                     {
@@ -66,7 +67,7 @@ public sealed class CadDocumentStorage(CadSectionMigrationRegistry? migrations=n
                 {
                     using var lease=assets.Acquire(asset.Id);await WriteEntry(zip,asset.Path,lease.Content,token);
                 }
-                var manifest=new CadManifest("Cadoryx",1,snapshot.Id,snapshot.StateId,"0.4.2",sections.ToImmutable(),catalog.ToImmutableArray(),[..Capabilities],1);
+                var manifest=new CadManifest("Cadoryx",1,snapshot.Id,snapshot.StateId,"0.4.5",sections.ToImmutable(),catalog.ToImmutableArray(),[..Capabilities],1);
                 await WriteEntry(zip,"manifest.json",JsonSerializer.SerializeToUtf8Bytes(manifest,CadJson.Options),token);
             }
             await stream.FlushAsync(token);stream.Flush(true);
@@ -114,7 +115,7 @@ public sealed class CadDocumentStorage(CadSectionMigrationRegistry? migrations=n
             }
             var snapshot=new DocumentSnapshot(document.Id,document.StateId,document.Name,document.RootAssemblyId,document.Settings,
                 structure.Definitions.ToImmutableDictionary(x=>x.Id),structure.Bodies.ToImmutableDictionary(x=>x.Id),
-                features.Features.ToImmutableDictionary(x=>x.Id),presentation.Layers.ToImmutableDictionary(x=>x.Id),
+                Malformed(()=>MessagePackSections.AttachHistories(core["history"].Bytes,features.Features.ToImmutableDictionary(x=>x.Id))),presentation.Layers.ToImmutableDictionary(x=>x.Id),
                 presentation.Materials.ToImmutableDictionary(x=>x.Id),extensions.ToImmutable(),extensions.Count>0?manifest.Assets.Select(x=>x.Id).ToImmutableArray():[],extensions.Count>0?formats.ToImmutableDictionary():null)
                 {Sketches=Malformed(()=>MessagePackSections.DecodeSketches(core["sketches"].Bytes)),
                  TopologyReferences=Malformed(()=>MessagePackSections.DecodeTopology(core["topology"].Bytes))};

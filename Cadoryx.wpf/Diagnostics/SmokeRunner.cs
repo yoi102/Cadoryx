@@ -48,6 +48,7 @@ internal static class SmokeRunner
             await ResourceSmokeRunner.RunAsync(window,vm,storage,output);
             await SketchSmokeRunner.RunAsync(window,services,output);
             await TopologySmokeRunner.RunAsync(services,output);
+            await HistorySmokeRunner.RunAsync(services,output);
             await LocalFeatureSmokeRunner.RunAsync(window,services,output);
             OcctViewportHost.SuspendAll(true);await Idle();OcctViewportHost.SuspendAll(false);await Idle();
             var bitmap=new RenderTargetBitmap((int)window.ActualWidth,(int)window.ActualHeight,96,96,PixelFormats.Pbgra32);bitmap.Render(window);

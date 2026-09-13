@@ -7,6 +7,7 @@ public sealed record CadDiagnostic(string Code,string Message,bool IsError=false
 public sealed class GeometryResult(GeometryAssetRef geometry,IAssetLease lease,ImmutableArray<CadDiagnostic> diagnostics=default) : IDisposable
 {
     public GeometryAssetRef Geometry { get; }=geometry;
+    public TopologyHistory? TopologyHistory {get;init;}
     public ImmutableArray<CadDiagnostic> Diagnostics { get; }=diagnostics.IsDefault?[]:diagnostics;
     public void Dispose()=>lease.Dispose();
 }

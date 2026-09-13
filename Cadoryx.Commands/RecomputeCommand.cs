@@ -49,7 +49,7 @@ internal static class FeatureRecompute
                     current=local with{Source=doc.Features[f.Inputs[0]].Result,Box=doc.Features[f.Inputs[0]].Recipe as BoxRecipe??throw new CadValidationException("Local feature requires a box source.")};
                 var result=await context.Kernel.EvaluateAsync(current,context.Assets,cancellationToken).ConfigureAwait(false);
                 resources.Add(result);
-                doc=doc with {Features=doc.Features.SetItem(f.Id,f with {Recipe=current,Result=result.Geometry,SketchSource=sketchSource})};
+                doc=doc with {Features=doc.Features.SetItem(f.Id,f with {Recipe=current,Result=result.Geometry,SketchSource=sketchSource,TopologyHistory=result.TopologyHistory})};
                 var part=(PartDefinition)doc.Definitions[f.PartId];
                 bool terminal=!doc.Features.Values.Any(other=>other.Inputs.Contains(f.Id));
                 if(doc.Bodies.TryGetValue(f.OutputBodyId,out var body))

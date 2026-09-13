@@ -23,6 +23,7 @@ public sealed class LocalFeatureTests
             int axis=3-(int)first/2-(int)second/2;double length=new[]{10d,20,30}[axis];
             double removed=length*(operation==LocalFeatureOperation.Chamfer?0.5:1-Math.PI/4);
             Assert.Equal(6000-removed,result.Geometry.VolumeMm3,4);
+            Assert.NotNull(result.TopologyHistory);
             using var native=OcctGeometryBridge.ReadShape(result.Geometry,assets);Assert.True(native.IsValid);
         }
         Assert.Equal(0,assets.Count);

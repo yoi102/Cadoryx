@@ -6,6 +6,6 @@
     <LangVersion>latest</LangVersion>
     <Deterministic>true</Deterministic>
     <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
-    <OcctSharpVersion>8.0.1-preview.26</OcctSharpVersion>
+    <OcctSharpVersion>8.0.1-preview.28.cadoryx.h2b2.2</OcctSharpVersion>
   </PropertyGroup>
 </Project>

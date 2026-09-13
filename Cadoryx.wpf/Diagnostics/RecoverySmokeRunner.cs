@@ -63,8 +63,13 @@ internal static class RecoverySmokeRunner
                 var boxFeature=first.Session.Snapshot.Features.Values.Single(f=>f.Name=="Saved box");
                 await first.Session.ExecuteAsync(new UpsertTopologyReferenceCommand(TopologyReference.Box(first.Session.Snapshot,boxFeature.Id,BoxBoundary.XMax,BoxBoundary.ZMax)));
                 await first.Session.ExecuteAsync(new UpsertTopologyReferenceCommand(TopologyReference.Box(first.Session.Snapshot,boxFeature.Id,BoxBoundary.XMax,policy:TopologyRebindPolicy.ExactRevision)));
-                await first.Session.ExecuteAsync(new RecomputeCommand(boxFeature.Id,new BoxRecipe(12,20,30,RigidTransform3d.Identity)));
+                await first.Session.ExecuteAsync(new RecomputeCommand(boxFeature.Id,new BoxRecipe(12,20,30,new(new(4,5,6),Quaterniond.FromAxisAngle(new(2,3,1),0.8)))));
                 await first.Session.ExecuteAsync(new LocalFeatureCommand(TopologyReference.Box(first.Session.Snapshot,boxFeature.Id,BoxBoundary.YMin,BoxBoundary.ZMax),LocalFeatureOperation.Fillet,1));
+                await first.Session.ExecuteAsync(new AddBodyCommand(new BoxRecipe(10,20,30,RigidTransform3d.Translate(50,0,0)),"History base",body.PartId));
+                await first.Session.ExecuteAsync(new AddBodyCommand(new BoxRecipe(2,22,32,RigidTransform3d.Translate(54,-1,-1)),"History tool",body.PartId));
+                var booleanBase=first.Session.Snapshot.Features.Values.Single(f=>f.Name=="History base");
+                var booleanTool=first.Session.Snapshot.Features.Values.Single(f=>f.Name=="History tool");
+                await first.Session.ExecuteAsync(new BooleanCommand(BooleanOperation.Cut,[booleanBase.OutputBodyId,booleanTool.OutputBodyId]));
                 var expected = Expected.Capture(first.Session.Snapshot, await HashFile(original));
                 await File.WriteAllTextAsync(Path.Combine(output, "expected.json"), JsonSerializer.Serialize(expected, CadJson.Options));
                 // Deliberately do not invoke CheckpointAsync: this must exercise the production 30-second timer.
@@ -110,6 +115,20 @@ internal static class RecoverySmokeRunner
             var topology=await TopologyReferenceInspection.InspectAsync(restored.Session.Snapshot,restored.Session.Assets,(ITopologyResolver)services.GetRequiredService<IGeometryKernel>());
             Require(topology.Results.Length==3&&topology.Results.Count(r=>r.Status==TopologyResolutionStatus.Resolved)==2&&topology.Results.Count(r=>r.Status==TopologyResolutionStatus.Stale)==1,"Restored topology references must preserve semantic and exact-revision behavior.");
             var local=restored.Session.Snapshot.Features.Values.Single(f=>f.Recipe is LocalFeatureRecipe);
+            Require(local.TopologyHistory is not null,"Recovered topology history is missing.");
+            var historyReference=TopologyReference.Box(restored.Session.Snapshot,local.Inputs[0],BoxBoundary.YMin);
+            var history=await TopologyHistoryInspection.InspectAsync(restored.Session.Snapshot,historyReference,local.Id,restored.Session.Assets,
+                (ITopologyHistoryResolver)services.GetRequiredService<IGeometryKernel>());
+            Require(history.Result.Status==HistoryResolutionStatus.Resolved,"Recovered history locator must resolve against restored BRep.");
+            await File.WriteAllTextAsync(Path.Combine(output,"history-result.json"),JsonSerializer.Serialize(history,CadJson.Options));
+            var boolean=restored.Session.Snapshot.Features.Values.Single(f=>f.Recipe is BooleanRecipe);
+            Require(boolean.TopologyHistory?.ArgumentCount==2&&Math.Abs(boolean.Result.VolumeMm3-4800)<1e-5,"Recovered Boolean geometry and input evidence.");
+            var booleanResolver=(ITopologyHistoryResolver)services.GetRequiredService<IGeometryKernel>();
+            var stable=await booleanResolver.TraceAsync(restored.Session.Snapshot,TopologyReference.Box(restored.Session.Snapshot,boolean.Inputs[0],BoxBoundary.XMin),boolean.Id,restored.Session.Assets);
+            var split=await booleanResolver.TraceAsync(restored.Session.Snapshot,TopologyReference.Box(restored.Session.Snapshot,boolean.Inputs[0],BoxBoundary.YMin),boolean.Id,restored.Session.Assets);
+            var deleted=await booleanResolver.TraceAsync(restored.Session.Snapshot,TopologyReference.Box(restored.Session.Snapshot,boolean.Inputs[1],BoxBoundary.ZMax),boolean.Id,restored.Session.Assets);
+            Require(stable.Status==HistoryResolutionStatus.Resolved&&split.Status==HistoryResolutionStatus.Ambiguous&&deleted.Status==HistoryResolutionStatus.Deleted,"Recovered Boolean evidence must resolve conservatively.");
+            await File.WriteAllTextAsync(Path.Combine(output,"boolean-history-result.json"),JsonSerializer.Serialize(new{stable,split,deleted,history=boolean.TopologyHistory},CadJson.Options));
             Require(Math.Abs(local.Result.VolumeMm3-(7200-12*(1-Math.PI/4)))<1e-4,"Recovered local fillet geometry.");
             await File.WriteAllTextAsync(Path.Combine(output,"topology-result.json"),JsonSerializer.Serialize(topology,CadJson.Options));
             Require(centerVm.Entries.Count == 0, "The transferred source still appears in recovery.");

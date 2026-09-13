@@ -82,6 +82,7 @@ public sealed record FeatureDefinition(FeatureId Id,DefinitionId PartId,string N
     ImmutableArray<FeatureId> Inputs,BodyId OutputBodyId,GeometryAssetRef Result,int SchemaVersion=1,BodyOutputMetadata? OutputMetadata=null)
 {
     public SketchProfileReference? SketchSource {get;init;}
+    public TopologyHistory? TopologyHistory {get;init;}
 }
 /// <summary>Retains the output's authored attributes when recompute temporarily produces no body.</summary>
 public sealed record BodyOutputMetadata(string Name,LayerId Layer,CadAppearance Appearance,bool Visible,MaterialId? Material)
