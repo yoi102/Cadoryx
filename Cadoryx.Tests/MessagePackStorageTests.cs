@@ -8,6 +8,7 @@ using Cadoryx.Editor;
 using Cadoryx.IO;
 using Cadoryx.Kernel.Abstractions;
 using Cadoryx.Kernel.Occt;
+using MessagePack;
 using Xunit;
 namespace Cadoryx.Tests;
 public sealed class MessagePackStorageTests
@@ -29,7 +30,9 @@ public sealed class MessagePackStorageTests
             using(var zip=ZipFile.OpenRead(path))
             {
                 var manifest=ReadManifest(zip);Assert.All(manifest.Sections,s=>{Assert.Equal(CadSectionMigrationRegistry.CurrentFormats[s.Kind].Version,s.SchemaVersion);Assert.Equal("messagepack",s.Encoding);Assert.EndsWith(".msgpack",s.Path);});
-                using var section=zip.GetEntry("sections/document.msgpack")!.Open();int header=section.ReadByte();Assert.InRange(header,0x90,0x9f);
+                using var section=zip.GetEntry("sections/document.msgpack")!.Open();
+                using var buffer=new MemoryStream();section.CopyTo(buffer);
+                var reader=new MessagePackReader(buffer.ToArray());Assert.Equal(18,reader.ReadArrayHeader());
             }
             using var loaded=await storage.LoadAsync(path,assets);Assert.Equal(7,loaded.Snapshot.Features.Count);
             foreach(var feature in session.Snapshot.Features.Values)

@@ -11,7 +11,17 @@ public sealed record PackDocument(
     [property: Key(4)] int Unit,
     [property: Key(5)] int Decimals,
     [property: Key(6)] double LinearTolerance,
-    [property: Key(7)] double AngularTolerance);
+    [property: Key(7)] double AngularTolerance,
+    [property: Key(8)] bool GridVisible,
+    [property: Key(9)] double GridSpacingMm,
+    [property: Key(10)] bool GridSnap,
+    [property: Key(11)] uint BackgroundTopArgb,
+    [property: Key(12)] uint BackgroundBottomArgb,
+    [property: Key(13)] bool OriginVisible,
+    [property: Key(14)] int OriginStyle,
+    [property: Key(15)] double OriginSizeMm,
+    [property: Key(16)] int WorkPlaneKind = 0,
+    [property: Key(17)] double WorkPlaneOffsetMm = 0);
 
 [MessagePackObject]
 public sealed record PackStructure(

@@ -34,6 +34,12 @@ internal static class FeatureRecompute
                 var f=doc.Features.Values.FirstOrDefault(f=>pending.Contains(f.Id)&&!done.Contains(f.Id)&&f.Inputs.All(x=>!pending.Contains(x)||done.Contains(x)))
                     ??throw new CadValidationException("Cyclic recompute graph.");
                 cancellationToken.ThrowIfCancellationRequested();
+                void Freeze()
+                {
+                    doc=doc with{Features=doc.Features.SetItem(f.Id,f with{IsStale=true,TopologyHistory=null})};
+                    done.Add(f.Id);
+                }
+                if(f.Inputs.Any(input=>doc.Features[input].IsStale)){Freeze();continue;}
                 GeometryRecipe current=replacements?.GetValueOrDefault(f.Id)??f.Recipe;
                 var sketchSource=f.SketchSource;
                 if(sketchSource is not null)
@@ -47,9 +53,20 @@ internal static class FeatureRecompute
                     current=transform with {Source=doc.Features[f.Inputs[0]].Result};
                 if(current is LocalFeatureRecipe local&&f.Inputs.Length==1)
                     current=local with{Source=doc.Features[f.Inputs[0]].Result,Box=doc.Features[f.Inputs[0]].Recipe as BoxRecipe??throw new CadValidationException("Local feature requires a box source.")};
+                if(current is HistoryFilletRecipe bound)
+                {
+                    var binding=f.TopologyBinding??throw new CadValidationException("Bound fillet has no selection.");
+                    if(f.Inputs.Length!=1||f.Inputs[0]!=binding.TargetFeatureId)throw new CadValidationException("Bound fillet dependency changed.");
+                    var upstream=doc.Features[binding.TargetFeatureId];
+                    if(upstream.Result.Revision!=binding.TargetRevision||upstream.Result.AssetId!=binding.TargetAsset)
+                    {Freeze();continue;}
+                    var confirmed=await FeatureBindingGuard.ConfirmAsync(context with{Snapshot=doc},binding.Origin,
+                        binding.TargetFeatureId,new(binding.TargetRevision,binding.TargetAsset,binding.FullTopologyIndex,HistoryShapeKind.Edge,binding.AdapterVersion),cancellationToken);
+                    current=bound with{Source=upstream.Result,FullTopologyIndex=confirmed.Target.FullTopologyIndex};
+                }
                 var result=await context.Kernel.EvaluateAsync(current,context.Assets,cancellationToken).ConfigureAwait(false);
                 resources.Add(result);
-                doc=doc with {Features=doc.Features.SetItem(f.Id,f with {Recipe=current,Result=result.Geometry,SketchSource=sketchSource,TopologyHistory=result.TopologyHistory})};
+                doc=doc with {Features=doc.Features.SetItem(f.Id,f with {Recipe=current,Result=result.Geometry,SketchSource=sketchSource,TopologyHistory=result.TopologyHistory,IsStale=false})};
                 var part=(PartDefinition)doc.Definitions[f.PartId];
                 bool terminal=!doc.Features.Values.Any(other=>other.Inputs.Contains(f.Id));
                 if(doc.Bodies.TryGetValue(f.OutputBodyId,out var body))

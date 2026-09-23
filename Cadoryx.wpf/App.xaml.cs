@@ -84,6 +84,8 @@ public partial class App : Application
         services.AddSingleton<Cadoryx.Sketching.ISketchConstraintSolver,Cadoryx.Sketching.ManagedSketchConstraintSolver>();
         services.AddSingleton<ISketchEditorHost,Cadoryx.wpf.Views.SketchEditorHost>();
         services.AddSingleton<ILocalFeatureHost,Cadoryx.wpf.Views.LocalFeatureHost>();
+        services.AddSingleton<IHistoryQueryHost,Cadoryx.wpf.Views.HistoryQueryHost>();
+        services.AddSingleton<Cadoryx.ViewModels.Settings.IDocumentSettingsHost,Cadoryx.wpf.Views.Settings.DocumentSettingsHost>();
         services.AddSingleton<Cadoryx.Editor.ISessionDispatcher,WpfSessionDispatcher>();
         services.AddSingleton<Cadoryx.Kernel.Abstractions.IRecoveryStore>(provider=>
         {

@@ -40,9 +40,43 @@ internal static partial class MessagePackSections
         return result;
     }
     private static PackDocument Doc(DocumentSection d)=>new(d.Id.Value,d.StateId.Value,d.Name,d.RootAssemblyId.Value,
-        (int)d.Settings.DisplayUnit,d.Settings.DecimalPlaces,d.Settings.LinearToleranceMm,d.Settings.AngularToleranceRad);
+        (int)d.Settings.DisplayUnit,d.Settings.DecimalPlaces,d.Settings.LinearToleranceMm,d.Settings.AngularToleranceRad,
+        d.Settings.Grid.Visible,d.Settings.Grid.SpacingMm,d.Settings.Grid.Snap,
+        d.Settings.BackgroundTopArgb,d.Settings.BackgroundBottomArgb,
+        d.Settings.Origin.Visible,(int)d.Settings.Origin.Style,d.Settings.Origin.SizeMm,
+        (int)d.Settings.WorkPlane.Kind,d.Settings.WorkPlane.OffsetMm);
     private static DocumentSection Doc(PackDocument d)=>new(new(d.Id),new(d.StateId),d.Name,new(d.Root),
-        new((LengthUnit)d.Unit,d.Decimals,d.LinearTolerance,d.AngularTolerance));
+        new DocumentSettings((LengthUnit)d.Unit,d.Decimals,d.LinearTolerance,d.AngularTolerance)
+        { Grid = new(d.GridVisible,d.GridSpacingMm,d.GridSnap),
+          BackgroundTopArgb=d.BackgroundTopArgb, BackgroundBottomArgb=d.BackgroundBottomArgb,
+          Origin=new(d.OriginVisible,(DocumentOriginStyle)d.OriginStyle,d.OriginSizeMm),
+          WorkPlane=new((DocumentWorkPlaneKind)d.WorkPlaneKind,d.WorkPlaneOffsetMm) });
+    public static byte[] UpgradeDocumentWorkPlane(ReadOnlyMemory<byte> bytes)
+    {
+        var old=Read<PackDocument>(bytes);
+        return Serialize(old with { WorkPlaneKind=(int)DocumentWorkPlaneKind.XY, WorkPlaneOffsetMm=0 });
+    }
+    public static byte[] UpgradeDocumentOrigin(ReadOnlyMemory<byte> bytes)
+    {
+        var old=Read<PackDocument>(bytes);
+        return Serialize(old with { OriginVisible=true, OriginStyle=(int)DocumentOriginStyle.ColorAxes, OriginSizeMm=20 });
+    }
+    public static byte[] UpgradeDocumentGrid(ReadOnlyMemory<byte> bytes)
+    {
+        var old=Read<PackDocument>(bytes);
+        return Serialize(old with { GridVisible=true, GridSpacingMm=10, GridSnap=false });
+    }
+    public static byte[] UpgradeDocumentBackground(ReadOnlyMemory<byte> bytes)
+    {
+        var old=Read<PackDocument>(bytes);
+        return Serialize(old with { BackgroundTopArgb=DocumentSettings.DefaultBackgroundTopArgb,
+            BackgroundBottomArgb=DocumentSettings.DefaultBackgroundBottomArgb });
+    }
+    public static byte[] UpgradeSolidDocumentBackground(ReadOnlyMemory<byte> bytes)
+    {
+        var old=Read<PackDocument>(bytes);
+        return Serialize(old with { BackgroundBottomArgb=old.BackgroundTopArgb });
+    }
     private static PackStructure Structure(StructureSection s)=>new(s.Definitions.Select(D).ToArray(),s.Bodies.Select(B).ToArray());
     private static StructureSection Structure(PackStructure s)=>new(s.Definitions.Select(D).ToImmutableArray(),s.Bodies.Select(B).ToImmutableArray());
     private static PackDefinition D(CadDefinition d)=>d switch
@@ -85,6 +119,7 @@ internal static partial class MessagePackSections
     private static PackRecipe R(GeometryRecipe r)=>r switch
     {
         LocalFeatureRecipe l=>new("local-box-edge",[l.Box.X,l.Box.Y,l.Box.Z,l.Size,(int)l.First,(int)l.Second],T(l.Box.Placement),[G(l.Source)],[],(int)l.Operation),
+        HistoryFilletRecipe h=>new("history-edge-fillet",[h.Radius,h.FullTopologyIndex],null,[G(h.Source)],[],0),
         BoxRecipe b=>new("box",[b.X,b.Y,b.Z],T(b.Placement),[],[],0),
         CylinderRecipe c=>new("cylinder",[c.Radius,c.Height],T(c.Placement),[],[],0),
         ImportedRecipe i=>new("import",[],null,[G(i.Source)],[],0),
@@ -96,17 +131,18 @@ internal static partial class MessagePackSections
     };
     private static GeometryRecipe R(PackRecipe r)
     {
-        int numbers=r.Kind switch{"local-box-edge"=>6,"box"=>3,"cylinder"=>2,"extrude" or "revolve"=>1,_=>0};
+        int numbers=r.Kind switch{"local-box-edge"=>6,"history-edge-fillet" or "cylinder"=>2,"box"=>3,"extrude" or "revolve"=>1,_=>0};
         if(r.Numbers.Length!=numbers)throw new InvalidDataException("Invalid recipe parameter count.");
         bool placed=r.Kind is "local-box-edge" or "box" or "cylinder" or "transform" or "extrude" or "revolve";
         if(placed!=(r.Placement is not null))throw new InvalidDataException("Invalid recipe placement.");
-        if(r.Kind is "local-box-edge" or "import" or "transform"){if(r.Sources.Length!=1)throw new InvalidDataException("Expected one source.");}
+        if(r.Kind is "local-box-edge" or "history-edge-fillet" or "import" or "transform"){if(r.Sources.Length!=1)throw new InvalidDataException("Expected one source.");}
         else if(r.Kind!="boolean"&&r.Sources.Length!=0)throw new InvalidDataException("Unexpected recipe source.");
         if(r.Kind is not ("extrude" or "revolve")&&r.Profile.Length!=0)throw new InvalidDataException("Unexpected recipe profile.");
         SketchProfile Profile()=>new(r.Profile.Select(p=>p.Length==2?new Point2d(p[0],p[1]):throw new InvalidDataException("Malformed profile point.")).ToImmutableArray());
         return r.Kind switch
         {
             "local-box-edge"=>Local(r),
+            "history-edge-fillet"=>HistoryFillet(r),
             "box"=>new BoxRecipe(r.Numbers[0],r.Numbers[1],r.Numbers[2],T(r.Placement!)),
             "cylinder"=>new CylinderRecipe(r.Numbers[0],r.Numbers[1],T(r.Placement!)),
             "import"=>new ImportedRecipe(G(r.Sources[0])),
@@ -121,6 +157,12 @@ internal static partial class MessagePackSections
     {
         if(r.Numbers.Skip(4).Any(n=>!double.IsFinite(n)||n!=Math.Truncate(n)||n<0||n>5))throw new InvalidDataException("Invalid semantic edge boundaries.");
         var result=new LocalFeatureRecipe(G(r.Sources[0]),new(r.Numbers[0],r.Numbers[1],r.Numbers[2],T(r.Placement!)),(BoxBoundary)r.Numbers[4],(BoxBoundary)r.Numbers[5],(LocalFeatureOperation)r.Operation,r.Numbers[3]);result.Validate();return result;
+    }
+    private static HistoryFilletRecipe HistoryFillet(PackRecipe r)
+    {
+        if(!double.IsFinite(r.Numbers[1])||r.Numbers[1]!=Math.Truncate(r.Numbers[1])||r.Operation!=0)
+            throw new InvalidDataException("Invalid history fillet locator.");
+        var result=new HistoryFilletRecipe(G(r.Sources[0]),checked((int)r.Numbers[1]),r.Numbers[0]);result.Validate();return result;
     }
     private static PackPresentation Presentation(PresentationSection p)=>new(
         p.Layers.Select(l=>new PackLayer(l.Id.Value,l.Name,l.Argb,l.IsVisible,l.IsLocked)).ToArray(),

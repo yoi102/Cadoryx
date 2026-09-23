@@ -10,6 +10,10 @@
 | [数据结构](DATA_MODEL.md) | 文档、零件、装配、几何、特征、草图、拓扑引用 |
 | [命令与存储](COMMANDS_AND_STORAGE.md) | 事务、撤销、异步提交、增量更新、`.cadoryx` 格式 |
 | [OcctSharp 接入](OCCT_INTEGRATION.md) | 已核实的 API、包版本、所有权、视口限制 |
+| [OcctSharp 能力核查](OCCT_CAPABILITY_AUDIT.md) | 当前 NuGet 是否足够、17 组场景（含 Viewer 渐变契约）、62 DLL 核对、应用接入与后续迁移边界 |
+| [历史诊断查询](HISTORY_QUERIES.md) | H2-C1 MetroWindow、源/目标查询、异步状态、九节文件迁移 |
+| [跨特征边绑定](HISTORY_FEATURE_BINDINGS.md) | H2-C2 精确目标确认、圆角、过期传播、显式重选与十节文件协议 |
+| [视口鼠标建模](VIEWPORT_CONSTRUCTION.md) | XY 工作网格、显示/间距/吸附设置、基础形体鼠标尺寸与预览 |
 | [实施路线与验收](ROADMAP.md) | 每个阶段的交付、验证及本轮完成边界 |
 | [异常退出恢复](RECOVERY.md) | 自动快照、恢复入口、进程锁、故障边界与验收 |
 | [资源与实例](RESOURCES_AND_INSTANCES.md) | 建模归属、图层/材料、局部位姿、MetroWindow 风格 |
@@ -22,7 +26,7 @@
 
 ## 当前存储与交换
 
-H2-B3 已扩展为唯一有界多步链诊断，逐段核对所有输入，报告路径歧义、拆分／共享目标及停止位置；见 [多步历史](HISTORY_CHAINS.md)。诊断成功尚不等于可用于建模的持久引用。H2-B2 的真实内核接口和本地 NuGet 见 [布尔历史](BOOLEAN_HISTORY.md)，history v2 协议保持兼容，见 [多输入历史](MULTI_INPUT_HISTORY.md)。
+H2-B3 已扩展为唯一有界多步链诊断，逐段核对所有输入，报告路径歧义、拆分／共享目标及停止位置；H2-C1 增加可保存的诊断查询和 MetroWindow，见 [历史诊断查询](HISTORY_QUERIES.md)。H2-C2 可在重新分析并确认精确边目标后创建跨特征圆角，过期后必须显式重选，见 [跨特征绑定](HISTORY_FEATURE_BINDINGS.md)。H2-B2 的真实内核接口和本地 NuGet 见 [布尔历史](BOOLEAN_HISTORY.md)，history v2 协议保持兼容，见 [多输入历史](MULTI_INPUT_HISTORY.md)。
 
 H2-A 已补充旋转坐标系的限定舍入处理和旧历史适配器兼容。其当时的布尔接口缺口与阶段证据保留在 [旋转历史与布尔门禁](HISTORY_ROTATION.md)。
 
@@ -30,7 +34,7 @@ M4-T1-H1 建立局部算法历史证据、八节存储和诊断解析，其当�
 
 M4-T1 已实现 Box 六面/十二边语义引用与持久化；M4-T2 接通 MetroWindow 面/边拾取、失效重选和单边圆角/倒角预览确认。支持边界见 [拓扑引用基础](TOPOLOGY_REFERENCES.md)和 [局部建模](LOCAL_FEATURES.md)。
 
-`.cadoryx` 采用 ZIP 容器、JSON 清单、MessagePack 3.1.8 数字键 DTO 和独立 BRep/XDE 资产。当前八节为 features v5、document v5、structure v3、presentation/sketches/history v2、geometry/topology v1；支持旧四节 JSON v1、MessagePack v2、M3-V、M4-S1/S2/T1/T2 及 history v1 文件迁移。资产目录记录媒体类型、编码/格式版本和内核来源。模型数据不直接序列化 ViewModel 或 native 对象。
+`.cadoryx` 采用 ZIP 容器、JSON 清单、MessagePack 3.1.8 数字键 DTO 和独立 BRep/XDE 资产。当前十节为 features v6、document v12、structure v3、presentation/sketches/history v2、geometry/topology/history-queries/feature-bindings v1；支持旧四节 JSON v1、MessagePack v2、M3-V、M4-S1/S2/T1/T2、H2-C1 九节、document v7/v8/v9/v10/v11 及 history v1 文件迁移。资产目录记录媒体类型、编码/格式版本和内核来源。模型数据不直接序列化 ViewModel 或 native 对象。
 
 | 格式 | 读取 | 写入 | 用途 |
 |---|---|---|---|
@@ -43,7 +47,7 @@ M4-T1 已实现 Box 六面/十二边语义引用与持久化；M4-T2 接通 Metr
 
 ## 构建与验证
 
-需要 Windows x64、.NET SDK 10.0.401 和可用 OpenGL 桌面环境。`NuGet.Config` 使用相邻 OcctSharp 内层 `artifacts/packages` 作为本地源；固定本地开发包 `8.0.1-preview.28.cadoryx.h2b2.2`。该版本未公开发布，移植时需提供这批包或按[接入目录](../integrations/occtsharp-boolean-history/README.md)构建。
+需要 Windows x64、.NET SDK 10.0.401 和可用 OpenGL 桌面环境。`NuGet.Config` 使用相邻 OcctSharp 内层 `artifacts/packages` 作为本地源；当前固定本地开发包 `8.0.1-preview.28.cadoryx.viewcube.4`。该版本未公开发布，移植时需提供同版本托管／原生包或从相邻 OcctSharp 源码构建。H2-B2 的历史构建说明见[接入目录](../integrations/occtsharp-boolean-history/README.md)。
 
 ```powershell
 dotnet build Cadoryx.slnx -c Release

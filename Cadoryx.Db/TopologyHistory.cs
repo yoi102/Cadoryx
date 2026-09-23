@@ -51,7 +51,7 @@ public sealed record TopologyHistory(GeometryRevisionId SourceRevision,AssetId S
     public void ValidateFor(FeatureDefinition feature)
     {
         Validate();
-        if(feature.Recipe is not (LocalFeatureRecipe or BooleanRecipe)||
+        if(feature.Recipe is not (LocalFeatureRecipe or HistoryFilletRecipe or BooleanRecipe)||
             feature.Recipe is BooleanRecipe&&SchemaVersion!=2||
             ResultRevision!=feature.Result.Revision||ResultAsset!=feature.Result.AssetId)
             throw new CadValidationException("Topology history belongs to different geometry.");

@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:r="clr-namespace:Cadoryx.Lang;assembly=Cadoryx.Lang"
              xmlns:vm="clr-namespace:Cadoryx.ViewModels;assembly=Cadoryx.ViewModels"
@@ -29,6 +30,42 @@
             <Separator />
             <StatusBarItem>
                 <TextBlock Text="{I18N {x:Static r:LangKeys.UnitMillimeter}}" Opacity="0.75" />
+            </StatusBarItem>
+            <Separator />
+            <StatusBarItem>
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                    <StackPanel.Style>
+                        <Style TargetType="StackPanel">
+                            <Setter Property="IsEnabled" Value="True" />
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding ActiveDocument}" Value="{x:Null}">
+                                    <Setter Property="IsEnabled" Value="False" />
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding ActiveDocument.IsReadOnly}" Value="True">
+                                    <Setter Property="IsEnabled" Value="False" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </StackPanel.Style>
+                    <CheckBox x:Name="GridVisibleInput" Content="{Binding GridVisibleLabel}"
+                              IsChecked="{Binding ActiveDocument.GridVisible, Mode=OneWay}"
+                              Click="GridVisibleClicked" VerticalAlignment="Center" />
+                    <TextBlock Text="{Binding GridSpacingLabel}"
+                               Margin="12,0,5,0" VerticalAlignment="Center" />
+                    <mah:NumericUpDown x:Name="GridSpacingInput" Width="85" Height="24"
+                                       Minimum="0.1" Maximum="1000" Interval="1"
+                                       Value="{Binding ActiveDocument.GridSpacingMm, Mode=OneWay}"
+                                       LostKeyboardFocus="GridSpacingLostFocus" KeyDown="GridSpacingKeyDown" />
+                    <CheckBox x:Name="GridSnapInput" Content="{Binding GridSnapLabel}"
+                              Margin="12,0,0,0" VerticalAlignment="Center"
+                              IsChecked="{Binding ActiveDocument.SnapToGrid, Mode=OneWay}"
+                              Click="GridSnapClicked" />
+                    <Button Command="{Binding OpenDocumentSettingsCommand}" ToolTip="{Binding DocumentSettingsTitle}"
+                            AutomationProperties.AutomationId="OpenDocumentSettingsFromStatusBar"
+                            Margin="10,0,0,0" Padding="5,2">
+                        <md:PackIcon Kind="CogOutline" Width="17" Height="17"/>
+                    </Button>
+                </StackPanel>
             </StatusBarItem>
             <Separator />
             <StatusBarItem>

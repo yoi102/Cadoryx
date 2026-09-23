@@ -14,6 +14,7 @@ using Cadoryx.Editor;
 using Cadoryx.Kernel.Abstractions;
 using Cadoryx.Rendering;
 using Cadoryx.ViewModels.Services.Platform.Notifications;
+using Cadoryx.ViewModels.Settings;
 
 namespace Cadoryx.ViewModels;
 
@@ -38,6 +39,8 @@ public partial class MainWindowViewModel : ObservableObject
     private readonly IDocumentResourcesDialogService resourcesDialog;
     private readonly ISketchEditorHost sketchEditor;
     private readonly ILocalFeatureHost localFeatureHost;
+    private readonly IHistoryQueryHost historyQueryHost;
+    private readonly IDocumentSettingsHost documentSettingsHost;
     private readonly Cadoryx.Sketching.ISketchConstraintSolver sketchSolver;
     private readonly HashSet<CadDocumentViewModel> closingDocuments=[];
     public ObservableCollection<CadDocumentViewModel> Documents {get;}=[];
@@ -52,7 +55,7 @@ public partial class MainWindowViewModel : ObservableObject
     IDialogService dialogService, CadWorkspace workspace, IGeometryKernel kernel, IAssetStore assets,
     IDocumentStorage storage, ICadFileDialogs files, ICadMessageLog log,
     DocumentRecoveryService recovery, IRecoveryStore recoveryStore, IRecoveryDialogService recoveryDialog, IDocumentResourcesDialogService resourcesDialog,
-    ISketchEditorHost sketchEditor,Cadoryx.Sketching.ISketchConstraintSolver sketchSolver,ILocalFeatureHost localFeatureHost
+    ISketchEditorHost sketchEditor,Cadoryx.Sketching.ISketchConstraintSolver sketchSolver,ILocalFeatureHost localFeatureHost,IHistoryQueryHost historyQueryHost,IDocumentSettingsHost documentSettingsHost
     )
     {
         this._dockLayoutService = dockLayoutService;
@@ -64,6 +67,8 @@ public partial class MainWindowViewModel : ObservableObject
         this.workspace=workspace;this.kernel=kernel;this.assets=assets;this.storage=storage;this.files=files;this.log=log;
         this.recovery=recovery;this.recoveryStore=recoveryStore;this.recoveryDialog=recoveryDialog;
         this.localFeatureHost=localFeatureHost;
+        this.historyQueryHost=historyQueryHost;
+        this.documentSettingsHost=documentSettingsHost;
         this.resourcesDialog=resourcesDialog;
         this.sketchEditor=sketchEditor;this.sketchSolver=sketchSolver;
         _applicationSettings = applicationSettingsStore.Load();
@@ -94,6 +99,11 @@ public partial class MainWindowViewModel : ObservableObject
         ?? throw new InvalidOperationException("The messages toolbox is not registered.");
 
     public CadoryxApplicationSettings ApplicationSettings => _applicationSettings;
+    public string GridVisibleLabel=>Strings.ResourceManager.GetString("GridVisible")??"Show work grid";
+    public string GridSpacingLabel=>Strings.ResourceManager.GetString("GridSpacing")??"Grid spacing (mm)";
+    public string GridSnapLabel=>Strings.ResourceManager.GetString("SnapToGrid")??"Snap to grid";
+    public string DocumentSettingsTitle=>Strings.ResourceManager.GetString("DocumentSettingsTitle")??"Document settings";
+    public string HistoryQueryTitle=>Cadoryx.Lang.Strings.Strings.ResourceManager.GetString("HistoryQueryTitle")??"History diagnostics";
 
 
     [ObservableProperty]
@@ -127,6 +137,11 @@ public partial class MainWindowViewModel : ObservableObject
             return;
         CurrentCultureLCID = lcid;
         _cultureSettingService.ChangeCulture(lcid);
+        OnPropertyChanged(nameof(HistoryQueryTitle));
+        OnPropertyChanged(nameof(GridVisibleLabel));
+        OnPropertyChanged(nameof(GridSpacingLabel));
+        OnPropertyChanged(nameof(GridSnapLabel));
+        OnPropertyChanged(nameof(DocumentSettingsTitle));
         _applicationSettings.General.CultureLcid = lcid;
         _applicationSettingsStore.Save(_applicationSettings);
     }
@@ -194,6 +209,10 @@ public partial class MainWindowViewModel : ObservableObject
     private void SetView(string viewName)=>ActiveDocument?.SetView(viewName switch{"Front"=>CadProjection.Front,"Top"=>CadProjection.Top,"Right"=>CadProjection.Right,_=>CadProjection.Axonometric});
     [RelayCommand] private void StartTool(string kind){if(ActiveDocument is null)New();ActiveDocument?.StartTool(kind);}
     [RelayCommand] private void SetDisplay(string mode)=>ActiveDocument?.SetDisplay(mode=="Wireframe"?CadDisplayMode.Wireframe:CadDisplayMode.Shaded);
+    [RelayCommand(CanExecute=nameof(CanEditDocument))] private async Task OpenDocumentSettingsAsync()
+    {
+        if(ActiveDocument is {} doc)await RunAsync(()=>documentSettingsHost.ShowAsync(doc));
+    }
     [RelayCommand(CanExecute=nameof(CanStartOperation))] private async Task NewSketchAsync()
     {
         if(ActiveDocument is null)New();if(ActiveDocument is not {} doc||doc.IsReadOnly)return;
@@ -205,6 +224,11 @@ public partial class MainWindowViewModel : ObservableObject
     {
         if(ActiveDocument is not {} doc||doc.IsReadOnly)return;
         await RunAsync(async()=>{await using var editor=new LocalFeatureViewModel(doc.Session,kernel);await localFeatureHost.ShowAsync(editor);});
+    }
+    [RelayCommand(CanExecute=nameof(CanUseDocument))] private async Task HistoryQueryAsync()
+    {
+        if(ActiveDocument is not {} doc)return;
+        await RunAsync(async()=>{await using var editor=new HistoryQueryViewModel(doc.Session,kernel);await historyQueryHost.ShowAsync(editor);});
     }
     [RelayCommand(CanExecute=nameof(CanUseDocument))] private async Task EditSketchAsync()
     {
@@ -230,6 +254,7 @@ public partial class MainWindowViewModel : ObservableObject
     }
     private bool CanStartOperation()=>!IsBusy&&!IsShuttingDown;
     private bool CanUseDocument()=>CanStartOperation()&&ActiveDocument is {IsClosingRequested:false};
+    private bool CanEditDocument()=>CanUseDocument()&&ActiveDocument is {IsReadOnly:false};
     private bool CanUndo()=>CanUseDocument()&&ActiveDocument!.Session.CanUndo;
     private bool CanRedo()=>CanUseDocument()&&ActiveDocument!.Session.CanRedo;
     partial void OnIsBusyChanged(bool value)=>RefreshCommandState();
@@ -239,9 +264,10 @@ public partial class MainWindowViewModel : ObservableObject
         NewCommand.NotifyCanExecuteChanged();OpenFileCommand.NotifyCanExecuteChanged();SaveCommand.NotifyCanExecuteChanged();
         SaveAsCommand.NotifyCanExecuteChanged();ExportCommand.NotifyCanExecuteChanged();UndoCommand.NotifyCanExecuteChanged();
         RedoCommand.NotifyCanExecuteChanged();FitViewCommand.NotifyCanExecuteChanged();SetViewCommand.NotifyCanExecuteChanged();
+        OpenDocumentSettingsCommand.NotifyCanExecuteChanged();
         OpenRecoveryCommand.NotifyCanExecuteChanged();
         ManageResourcesCommand.NotifyCanExecuteChanged();
-        NewSketchCommand.NotifyCanExecuteChanged();EditSketchCommand.NotifyCanExecuteChanged();DeleteSketchCommand.NotifyCanExecuteChanged();StartSketchFeatureCommand.NotifyCanExecuteChanged();LocalFeatureCommand.NotifyCanExecuteChanged();
+        NewSketchCommand.NotifyCanExecuteChanged();EditSketchCommand.NotifyCanExecuteChanged();DeleteSketchCommand.NotifyCanExecuteChanged();StartSketchFeatureCommand.NotifyCanExecuteChanged();LocalFeatureCommand.NotifyCanExecuteChanged();HistoryQueryCommand.NotifyCanExecuteChanged();
     }
     private void Attach(CadDocumentSession session)
     {
@@ -371,7 +397,9 @@ public partial class MainWindowViewModel : ObservableObject
         _applicationSettings.CopyFrom(settings);
         ApplySettingsToServices(_applicationSettings);
         CurrentCultureLCID = _applicationSettings.General.CultureLcid;
+        OnPropertyChanged(nameof(HistoryQueryTitle));
         IsDarkTheme = _applicationSettings.General.IsDarkTheme;
+        OnPropertyChanged(nameof(ApplicationSettings));
         StatusText = Strings.ApplicationSettingsApplied;
     }
 

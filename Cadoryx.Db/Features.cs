@@ -13,6 +13,7 @@ public enum BooleanOperation { Fuse=0, Cut=1, Common=2 }
 [JsonDerivedType(typeof(ExtrudeRecipe),"extrude")]
 [JsonDerivedType(typeof(RevolveRecipe),"revolve")]
 [JsonDerivedType(typeof(LocalFeatureRecipe),"local-box-edge")]
+[JsonDerivedType(typeof(HistoryFilletRecipe),"history-edge-fillet")]
 public abstract record GeometryRecipe
 {
     public abstract void Validate();
@@ -83,6 +84,8 @@ public sealed record FeatureDefinition(FeatureId Id,DefinitionId PartId,string N
 {
     public SketchProfileReference? SketchSource {get;init;}
     public TopologyHistory? TopologyHistory {get;init;}
+    public FeatureTopologyBinding? TopologyBinding {get;init;}
+    public bool IsStale {get;init;}
 }
 /// <summary>Retains the output's authored attributes when recompute temporarily produces no body.</summary>
 public sealed record BodyOutputMetadata(string Name,LayerId Layer,CadAppearance Appearance,bool Visible,MaterialId? Material)

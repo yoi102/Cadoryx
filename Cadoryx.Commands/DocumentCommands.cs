@@ -79,6 +79,8 @@ public sealed class BooleanCommand(BooleanOperation operation,IEnumerable<BodyId
     {
         if(ids.Length<2)throw new CadValidationException("Select at least two bodies.");
         var doc=context.Snapshot;var inputs=ids.Select(id=>doc.Bodies[id]).ToArray();
+        if(inputs.Any(b=>b.Producer is {} producer&&doc.Features[producer].IsStale))
+            throw new CadValidationException("A stale feature must be explicitly reselected before modeling.");
         if(inputs.Select(x=>x.PartId).Distinct().Count()!=1)throw new CadValidationException("Boolean operands must belong to the same part; edit the part definition first.");
         if(inputs.Any(x=>doc.Layers[x.LayerId].IsLocked))throw new CadValidationException("A selected body is on a locked layer.");
         var recipe=new BooleanRecipe(operation,inputs.Select(x=>x.Geometry).ToImmutableArray());
@@ -110,6 +112,18 @@ public sealed class EditDocumentCommand(string name,Func<DocumentSnapshot,Docume
 }
 public static class DocumentEdits
 {
+    public static ICadDocumentCommand SetSettings(DocumentSettings settings) => new EditDocumentCommand("Set document settings", doc =>
+    {
+        ArgumentNullException.ThrowIfNull(settings);
+        settings.Validate();
+        return doc.Settings == settings ? doc : doc with { Settings = settings };
+    });
+    public static ICadDocumentCommand SetGrid(DocumentGridSettings grid) => new EditDocumentCommand("Set document grid", doc =>
+    {
+        ArgumentNullException.ThrowIfNull(grid);
+        grid.Validate();
+        return doc.Settings.Grid == grid ? doc : doc with { Settings = doc.Settings with { Grid = grid } };
+    });
     public static ICadDocumentCommand RenameBody(BodyId id,string name)=>new EditDocumentCommand(Strings.Rename,doc=>
     {
         CadGuard.Name(name);var b=EditableBody(doc,id);return WithBody(doc,b with{Name=name});

@@ -489,6 +489,9 @@
   <data name="ShowViewCube" xml:space="preserve">
     <value>ビューキューブを表示</value>
   </data>
+  <data name="ViewCubeRotationStep" xml:space="preserve">
+    <value>ビューキューブの回転角度（度）</value>
+  </data>
   <data name="SingleSelection" xml:space="preserve">
     <value>単一選択</value>
   </data>
@@ -1014,4 +1017,161 @@
   <data name="Stale" xml:space="preserve">
     <value>ドキュメントが変更されました。編集を開き直してください。</value>
   </data>
+  <data name="HistoryQueryTitle" xml:space="preserve">
+    <value>履歴診断</value>
+  </data>
+  <data name="HistoryQuerySaved" xml:space="preserve">
+    <value>保存済み診断クエリ</value>
+  </data>
+  <data name="HistoryQueryNew" xml:space="preserve">
+    <value>新しいクエリ</value>
+  </data>
+  <data name="HistoryQueryName" xml:space="preserve">
+    <value>クエリ名</value>
+  </data>
+  <data name="HistoryQuerySource" xml:space="preserve">
+    <value>元の意味参照（先にローカルフィーチャーで保存）</value>
+  </data>
+  <data name="HistoryQueryTarget" xml:space="preserve">
+    <value>対象フィーチャー</value>
+  </data>
+  <data name="HistoryQueryReselect" xml:space="preserve">
+    <value>元を再選択</value>
+  </data>
+  <data name="HistoryQuerySave" xml:space="preserve">
+    <value>クエリを保存</value>
+  </data>
+  <data name="HistoryQueryDelete" xml:space="preserve">
+    <value>クエリを削除</value>
+  </data>
+  <data name="HistoryQueryAnalyze" xml:space="preserve">
+    <value>現在の文書を解析</value>
+  </data>
+  <data name="HistoryQuerySteps" xml:space="preserve">
+    <value>フィーチャー経路と停止位置</value>
+  </data>
+  <data name="HistoryQueryPending" xml:space="preserve">
+    <value>未確認</value>
+  </data>
+  <data name="HistoryQueryDone" xml:space="preserve">
+    <value>検証済み</value>
+  </data>
+  <data name="HistoryQueryStopped" xml:space="preserve">
+    <value>停止</value>
+  </data>
+  <data name="HistoryQueryReady" xml:space="preserve">
+    <value>保存したエッジのクエリを解析し、正確な対象を確認してからフィレットを作成または再選択してください。</value>
+  </data>
+  <data name="HistoryFilletRadius" xml:space="preserve">
+    <value>フィレット半径（mm）</value>
+  </data>
+  <data name="HistoryFilletCreate" xml:space="preserve">
+    <value>確認済みエッジからフィレットを作成</value>
+  </data>
+  <data name="HistoryFilletStaleConsumer" xml:space="preserve">
+    <value>再選択する期限切れフィレット</value>
+  </data>
+  <data name="HistoryFilletRebind" xml:space="preserve">
+    <value>エッジを再選択してフィレットを再計算</value>
+  </data>
+  <data name="HistoryFilletConfirmFirst" xml:space="preserve">
+    <value>操作前にクエリを保存し、現在のエッジを解析してください。</value>
+  </data>
+  <data name="HistoryQueryChanged" xml:space="preserve">
+    <value>文書が変更されました。再解析してください。</value>
+  </data>
+  <data name="HistoryQueryNoSource" xml:space="preserve">
+    <value>元が未選択</value>
+  </data>
+  <data name="HistoryQueryMissing" xml:space="preserve">
+    <value>フィーチャーがありません</value>
+  </data>
+  <data name="HistoryQueryIncomplete" xml:space="preserve">
+    <value>名前を入力し、保存済みの元を再選択して対象フィーチャーを選んでください。</value>
+  </data>
+  <data name="HistoryQuerySaveFirst" xml:space="preserve">
+    <value>解析前にクエリを保存してください。</value>
+  </data>
+  <data name="HistoryStatusResolved" xml:space="preserve">
+    <value>解決済み</value>
+  </data>
+  <data name="HistoryStatusMissing" xml:space="preserve">
+    <value>見つかりません</value>
+  </data>
+  <data name="HistoryStatusStale" xml:space="preserve">
+    <value>期限切れ</value>
+  </data>
+  <data name="HistoryStatusAmbiguous" xml:space="preserve">
+    <value>曖昧</value>
+  </data>
+  <data name="HistoryStatusUnsupported" xml:space="preserve">
+    <value>未対応</value>
+  </data>
+  <data name="HistoryStatusWrongContext" xml:space="preserve">
+    <value>コンテキスト不一致</value>
+  </data>
+  <data name="HistoryStatusDeleted" xml:space="preserve">
+    <value>削除済み</value>
+  </data>
+  <data name="HistoryStatusGenerated" xml:space="preserve">
+    <value>生成のみ</value>
+  </data>
+  <data name="HistoryStatusLimitExceeded" xml:space="preserve">
+    <value>上限超過</value>
+  </data>
+  <data name="GridVisible" xml:space="preserve">
+    <value>作業グリッドを表示</value>
+  </data>
+  <data name="GridSpacing" xml:space="preserve">
+    <value>グリッド間隔（mm）</value>
+  </data>
+  <data name="SnapToGrid" xml:space="preserve">
+    <value>作成点をグリッドにスナップ</value>
+  </data>
+  <data name="DrawInViewport" xml:space="preserve">
+    <value>ビューで作図</value>
+  </data>
+  <data name="ViewportDrawingHint" xml:space="preserve">
+    <value>始点をクリックし、移動して底面寸法を確定し、さらに移動して高さを確定します。Esc で中止。</value>
+  </data>
+  <data name="ViewportProfileDrawingHint" xml:space="preserve">
+    <value>クリックして開始し、移動中に立体を確認してから、クリックして押し出し距離または回転角度を確定します。Esc で中止。</value>
+  </data>
+  <data name="HideGrid" xml:space="preserve">
+    <value>作業グリッドを非表示</value>
+  </data>
+  <data name="ViewportPlaneUnavailable" xml:space="preserve">
+    <value>作業平面が視線と平行かカメラの後方にあります。平面に向いた視点へ切り替えてください。</value>
+  </data>
+  <data name="DocumentSettingsTitle" xml:space="preserve">
+    <value>ドキュメント設定</value>
+  </data>
+  <data name="BackgroundTop" xml:space="preserve">
+    <value>空の上部</value>
+  </data>
+  <data name="BackgroundBottom" xml:space="preserve">
+    <value>空の下部</value>
+  </data>
+  <data name="DocumentGridSection" xml:space="preserve">
+    <value>グリッドとスナップ</value>
+  </data>
+  <data name="DocumentUnitsSection" xml:space="preserve">
+    <value>単位と精度</value>
+  </data>
+  <data name="DocumentDisplayUnit" xml:space="preserve">
+    <value>表示単位</value>
+  </data>
+  <data name="DocumentDecimalPlaces" xml:space="preserve">
+    <value>小数桁数</value>
+  </data>
+  <data name="DocumentOriginSection" xml:space="preserve"><value>原点と座標軸</value></data>
+  <data name="DocumentOriginVisible" xml:space="preserve"><value>モデル原点を表示</value></data>
+  <data name="DocumentOriginStyle" xml:space="preserve"><value>スタイル</value></data>
+  <data name="DocumentOriginSize" xml:space="preserve"><value>サイズ（mm）</value></data>
+  <data name="DocumentOriginHint" xml:space="preserve"><value>ワールド座標 (0, 0, 0) に固定。X は赤、Y は緑、Z は青。</value></data>
+  <data name="DocumentOriginColorAxes" xml:space="preserve"><value>色付き XYZ 座標軸</value></data>
+  <data name="DocumentOriginSubtleAxes" xml:space="preserve"><value>淡い単色の座標軸</value></data>
+  <data name="DocumentOriginMarker" xml:space="preserve"><value>原点マーカーのみ</value></data>
+  <data name="DocumentWorkPlane" xml:space="preserve"><value>作業平面</value></data>
+  <data name="DocumentWorkPlaneOffset" xml:space="preserve"><value>平面オフセット（mm）</value></data>
 </root>

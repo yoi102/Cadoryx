@@ -511,6 +511,9 @@
   <data name="ShowViewCube" xml:space="preserve">
     <value>Show view cube</value>
   </data>
+  <data name="ViewCubeRotationStep" xml:space="preserve">
+    <value>View cube roll angle (degrees)</value>
+  </data>
   <data name="SingleSelection" xml:space="preserve">
     <value>Single selection</value>
   </data>
@@ -1036,4 +1039,161 @@
   <data name="Stale" xml:space="preserve">
     <value>Document changed. Close and reopen this editor.</value>
   </data>
+  <data name="HistoryQueryTitle" xml:space="preserve">
+    <value>History diagnostics</value>
+  </data>
+  <data name="HistoryQuerySaved" xml:space="preserve">
+    <value>Saved diagnostic queries</value>
+  </data>
+  <data name="HistoryQueryNew" xml:space="preserve">
+    <value>New query</value>
+  </data>
+  <data name="HistoryQueryName" xml:space="preserve">
+    <value>Query name</value>
+  </data>
+  <data name="HistoryQuerySource" xml:space="preserve">
+    <value>Source semantic reference (save one in Local Feature first)</value>
+  </data>
+  <data name="HistoryQueryTarget" xml:space="preserve">
+    <value>Target feature</value>
+  </data>
+  <data name="HistoryQueryReselect" xml:space="preserve">
+    <value>Reselect source</value>
+  </data>
+  <data name="HistoryQuerySave" xml:space="preserve">
+    <value>Save query</value>
+  </data>
+  <data name="HistoryQueryDelete" xml:space="preserve">
+    <value>Delete query</value>
+  </data>
+  <data name="HistoryQueryAnalyze" xml:space="preserve">
+    <value>Analyze current document</value>
+  </data>
+  <data name="HistoryQuerySteps" xml:space="preserve">
+    <value>Feature path and stop point</value>
+  </data>
+  <data name="HistoryQueryPending" xml:space="preserve">
+    <value>Pending</value>
+  </data>
+  <data name="HistoryQueryDone" xml:space="preserve">
+    <value>Verified</value>
+  </data>
+  <data name="HistoryQueryStopped" xml:space="preserve">
+    <value>Stopped</value>
+  </data>
+  <data name="HistoryQueryReady" xml:space="preserve">
+    <value>Analyze a saved edge query to confirm its exact target before creating or rebinding a fillet.</value>
+  </data>
+  <data name="HistoryFilletRadius" xml:space="preserve">
+    <value>Fillet radius (mm)</value>
+  </data>
+  <data name="HistoryFilletCreate" xml:space="preserve">
+    <value>Create fillet from confirmed edge</value>
+  </data>
+  <data name="HistoryFilletStaleConsumer" xml:space="preserve">
+    <value>Stale bound fillet to reselect</value>
+  </data>
+  <data name="HistoryFilletRebind" xml:space="preserve">
+    <value>Reselect and recompute fillet</value>
+  </data>
+  <data name="HistoryFilletConfirmFirst" xml:space="preserve">
+    <value>Save the query and analyze the current edge before confirming this operation.</value>
+  </data>
+  <data name="HistoryQueryChanged" xml:space="preserve">
+    <value>Document changed. Analyze again to see current results.</value>
+  </data>
+  <data name="HistoryQueryNoSource" xml:space="preserve">
+    <value>No source selected</value>
+  </data>
+  <data name="HistoryQueryMissing" xml:space="preserve">
+    <value>Missing feature</value>
+  </data>
+  <data name="HistoryQueryIncomplete" xml:space="preserve">
+    <value>Enter a name, reselect a saved source, and choose a target feature.</value>
+  </data>
+  <data name="HistoryQuerySaveFirst" xml:space="preserve">
+    <value>Save the query before analyzing.</value>
+  </data>
+  <data name="HistoryStatusResolved" xml:space="preserve">
+    <value>Resolved</value>
+  </data>
+  <data name="HistoryStatusMissing" xml:space="preserve">
+    <value>Missing</value>
+  </data>
+  <data name="HistoryStatusStale" xml:space="preserve">
+    <value>Stale</value>
+  </data>
+  <data name="HistoryStatusAmbiguous" xml:space="preserve">
+    <value>Ambiguous</value>
+  </data>
+  <data name="HistoryStatusUnsupported" xml:space="preserve">
+    <value>Unsupported</value>
+  </data>
+  <data name="HistoryStatusWrongContext" xml:space="preserve">
+    <value>Wrong context</value>
+  </data>
+  <data name="HistoryStatusDeleted" xml:space="preserve">
+    <value>Deleted</value>
+  </data>
+  <data name="HistoryStatusGenerated" xml:space="preserve">
+    <value>Generated only</value>
+  </data>
+  <data name="HistoryStatusLimitExceeded" xml:space="preserve">
+    <value>Limit exceeded</value>
+  </data>
+  <data name="GridVisible" xml:space="preserve">
+    <value>Show work grid</value>
+  </data>
+  <data name="GridSpacing" xml:space="preserve">
+    <value>Grid spacing (mm)</value>
+  </data>
+  <data name="SnapToGrid" xml:space="preserve">
+    <value>Snap creation points to grid</value>
+  </data>
+  <data name="DrawInViewport" xml:space="preserve">
+    <value>Draw in viewport</value>
+  </data>
+  <data name="ViewportDrawingHint" xml:space="preserve">
+    <value>Click a start point, move and click the base size, then move and click the height. Esc cancels.</value>
+  </data>
+  <data name="ViewportProfileDrawingHint" xml:space="preserve">
+    <value>Click to start, move to preview the solid, then click to set the extrusion distance or revolution angle. Esc cancels.</value>
+  </data>
+  <data name="HideGrid" xml:space="preserve">
+    <value>Hide work grid</value>
+  </data>
+  <data name="ViewportPlaneUnavailable" xml:space="preserve">
+    <value>The selected work plane is edge-on or behind the camera. Switch to a view facing the plane.</value>
+  </data>
+  <data name="DocumentSettingsTitle" xml:space="preserve">
+    <value>Document settings</value>
+  </data>
+  <data name="BackgroundTop" xml:space="preserve">
+    <value>Sky top</value>
+  </data>
+  <data name="BackgroundBottom" xml:space="preserve">
+    <value>Sky bottom</value>
+  </data>
+  <data name="DocumentGridSection" xml:space="preserve">
+    <value>Grid and snapping</value>
+  </data>
+  <data name="DocumentUnitsSection" xml:space="preserve">
+    <value>Units and precision</value>
+  </data>
+  <data name="DocumentDisplayUnit" xml:space="preserve">
+    <value>Display unit</value>
+  </data>
+  <data name="DocumentDecimalPlaces" xml:space="preserve">
+    <value>Decimal places</value>
+  </data>
+  <data name="DocumentOriginSection" xml:space="preserve"><value>Origin and axes</value></data>
+  <data name="DocumentOriginVisible" xml:space="preserve"><value>Show model origin</value></data>
+  <data name="DocumentOriginStyle" xml:space="preserve"><value>Style</value></data>
+  <data name="DocumentOriginSize" xml:space="preserve"><value>Size (mm)</value></data>
+  <data name="DocumentOriginHint" xml:space="preserve"><value>Fixed at world (0, 0, 0); X red, Y green, Z blue.</value></data>
+  <data name="DocumentOriginColorAxes" xml:space="preserve"><value>Colored XYZ axes</value></data>
+  <data name="DocumentOriginSubtleAxes" xml:space="preserve"><value>Subtle single-color axes</value></data>
+  <data name="DocumentOriginMarker" xml:space="preserve"><value>Origin marker</value></data>
+  <data name="DocumentWorkPlane" xml:space="preserve"><value>Work plane</value></data>
+  <data name="DocumentWorkPlaneOffset" xml:space="preserve"><value>Plane offset (mm)</value></data>
 </root>

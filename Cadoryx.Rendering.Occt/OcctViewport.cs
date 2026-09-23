@@ -17,13 +17,211 @@ public sealed class OcctViewport : ICadViewport
     private int lastX,lastY;
     private int pressX,pressY;
     private bool selectionClick;
+    private bool cubeClick;
     private ViewerPresentation? preview;
     private Shape? previewShape;
+    private ViewerPresentation? workGrid;
+    private Shape? workGridShape;
+    private readonly List<(Shape Shape,ViewerColor Color)> originShapes=[];
+    private readonly List<ViewerPresentation> originPresentations=[];
+    private ViewerPresentation? constructionGhost;
+    private Shape? constructionShape;
+    private bool constructing;
     private CadDisplayMode mode;
     private bool disposed;
     public ViewportCapabilities Capabilities {get;}=new(false,true,true);
     public event EventHandler<IReadOnlyList<SceneItem>>? SelectionChanged;
+    public event EventHandler<ViewerCubeOrientation>? ViewCubeOrientationRequested;
+    public event EventHandler<ViewerCubeTurn>? ViewCubeTurnRequested;
     public event EventHandler<(BoxBoundary First,BoxBoundary? Second)?>? BoxSubshapeSelected;
+    public event EventHandler<(int X,int Y,bool Click)>? ConstructionPointer;
+    public event EventHandler? NavigationStarted;
+    public void SetConstructionMode(bool enabled){constructing=enabled;if(!enabled)SetConstructionGhost(null);viewer.ClearSelection();}
+    public bool TryWorkplanePoint(int x,int y,double spacing,bool snap,out Vector3d point) =>
+        TryWorkplanePoint(x,y,spacing,snap,new DocumentWorkPlaneSettings(),out point);
+    public bool TryWorkplanePoint(int x,int y,double spacing,bool snap,DocumentWorkPlaneSettings plane,out Vector3d point)
+    {
+        ArgumentNullException.ThrowIfNull(plane);plane.Validate();
+        if(snap&&(!double.IsFinite(spacing)||spacing<=0))throw new ArgumentOutOfRangeException(nameof(spacing));
+        var ray=viewer.GetPickRay(x,y);point=default;
+        var normal=plane.Normal;
+        var direction=new Vector3d(ray.Direction.X,ray.Direction.Y,ray.Direction.Z);
+        var origin=new Vector3d(ray.Origin.X,ray.Origin.Y,ray.Origin.Z);
+        double denominator=normal.Dot(direction);
+        if(Math.Abs(denominator)<1e-8)return false;
+        double t=normal.Dot(plane.Origin-origin)/denominator;
+        if(!double.IsFinite(t)||t<0)return false;
+        var local=plane.ToLocal(origin+direction*t);
+        double u=local.X,v=local.Y;
+        if(snap){u=Math.Round(u/spacing)*spacing;v=Math.Round(v/spacing)*spacing;}
+        if(!double.IsFinite(u)||!double.IsFinite(v))return false;
+        point=plane.ToWorld(u,v);return true;
+    }
+    public double PixelsPerMillimeter(Vector3d at)=>PixelsPerMillimeter(at,new DocumentWorkPlaneSettings());
+    public double PixelsPerMillimeter(Vector3d at,DocumentWorkPlaneSettings plane)
+    {
+        var a=WorldToScreen(at);var u=plane.Rotation.Rotate(new Vector3d(10,0,0));var v=plane.Rotation.Rotate(new Vector3d(0,10,0));
+        var x=WorldToScreen(at+u);var y=WorldToScreen(at+v);
+        return Math.Max(0.01,Math.Max(Math.Sqrt(Math.Pow(x.X-a.X,2)+Math.Pow(x.Y-a.Y,2)),Math.Sqrt(Math.Pow(y.X-a.X,2)+Math.Pow(y.Y-a.Y,2)))/10);
+    }
+    public void SetBackgroundGradient(uint topArgb,uint bottomArgb)
+    {
+        if((topArgb&0xFF000000u)!=0xFF000000u)throw new ArgumentOutOfRangeException(nameof(topArgb));
+        if((bottomArgb&0xFF000000u)!=0xFF000000u)throw new ArgumentOutOfRangeException(nameof(bottomArgb));
+        viewer.SetBackgroundGradient(ToViewerColor(topArgb),ToViewerColor(bottomArgb));
+        viewer.Redraw();
+    }
+    private static ViewerColor ToViewerColor(uint argb)=>new(
+        ToLinear((byte)(argb>>16)),ToLinear((byte)(argb>>8)),ToLinear((byte)argb));
+    private static double ToLinear(byte channel)
+    {
+        double srgb=channel/255.0;
+        return srgb<=0.04045?srgb/12.92:Math.Pow((srgb+0.055)/1.055,2.4);
+    }
+    public void SetWorkGrid(bool visible,double spacing)=>SetWorkGrid(visible,spacing,new DocumentWorkPlaneSettings());
+    public void SetWorkGrid(bool visible,double spacing,DocumentWorkPlaneSettings plane)
+    {
+        ArgumentNullException.ThrowIfNull(plane);plane.Validate();
+        workGrid?.Dispose();workGrid=null;workGridShape?.Dispose();workGridShape=null;
+        if(!visible)return;
+        if(!double.IsFinite(spacing)||spacing<0.1||spacing>1000)throw new ArgumentOutOfRangeException(nameof(spacing));
+        var lines=new List<Shape>();
+        try
+        {
+            for(int i=-20;i<=20;i++)
+            {
+                double p=i*spacing,extent=20*spacing;
+                var a=plane.ToWorld(-extent,p);var b=plane.ToWorld(extent,p);
+                var c=plane.ToWorld(p,-extent);var d=plane.ToWorld(p,extent);
+                lines.Add(ShapeFactory.CreateEdge(new(a.X,a.Y,a.Z),new(b.X,b.Y,b.Z)));
+                lines.Add(ShapeFactory.CreateEdge(new(c.X,c.Y,c.Z),new(d.X,d.Y,d.Z)));
+            }
+            workGridShape=ShapeFactory.CreateCompound(lines);
+            ShowWorkGrid();
+        }
+        catch{workGrid?.Dispose();workGrid=null;workGridShape?.Dispose();workGridShape=null;throw;}
+        finally{foreach(var line in lines)line.Dispose();}
+    }
+    private void ShowWorkGrid()
+    {
+        if(workGridShape is null)return;
+        workGrid=viewer.Display(workGridShape);
+        workGrid.SetColor(new(0.22,0.31,0.40));workGrid.SetDisplayMode(ViewerDisplayMode.Wireframe);
+        // Grid topology contains edges only, so face-only selection keeps it out of model picking.
+        workGrid.SetSelectionKind(ShapeKind.Face);
+        viewer.Redraw();
+    }
+    public void SetOriginAxes(DocumentOriginSettings settings)
+    {
+        ArgumentNullException.ThrowIfNull(settings);settings.Validate();
+        ClearOriginAxes();
+        if(!settings.Visible){viewer.Redraw();return;}
+        double size=settings.SizeMm,wing=size*0.12;
+        try
+        {
+            for(int axis=0;axis<3;axis++)
+            {
+                var edges=new List<Shape>();
+                try
+                {
+                    Shape Edge(Vector3d a,Vector3d b)=>ShapeFactory.CreateEdge(
+                        new(a.X,a.Y,a.Z),new(b.X,b.Y,b.Z));
+                    Vector3d Along(double value)=>axis switch
+                    {
+                        0=>new(value,0,0),1=>new(0,value,0),_=>new(0,0,value)
+                    };
+                    Vector3d Wing(double value)=>axis switch
+                    {
+                        0=>new(0,value,0),1=>new(0,0,value),_=>new(value,0,0)
+                    };
+                    if(settings.Style==DocumentOriginStyle.OriginMarker)
+                        edges.Add(Edge(Along(-size/2),Along(size/2)));
+                    else
+                    {
+                        edges.Add(Edge(Along(-size/2),Along(size)));
+                        edges.Add(Edge(Along(size),Along(size-wing)+Wing(wing*0.55)));
+                        edges.Add(Edge(Along(size),Along(size-wing)-Wing(wing*0.55)));
+                    }
+                    var shape=ShapeFactory.CreateCompound(edges);
+                    var color=settings.Style switch
+                    {
+                        DocumentOriginStyle.ColorAxes=>axis switch
+                        {
+                            0=>new ViewerColor(0.95,0.18,0.16),
+                            1=>new ViewerColor(0.17,0.75,0.25),
+                            _=>new ViewerColor(0.16,0.42,0.96)
+                        },
+                        DocumentOriginStyle.SubtleAxes=>new ViewerColor(0.68,0.75,0.82),
+                        _=>new ViewerColor(0.90,0.72,0.22)
+                    };
+                    originShapes.Add((shape,color));
+                }
+                finally{foreach(var edge in edges)edge.Dispose();}
+            }
+            ShowOriginAxes();
+        }
+        catch{ClearOriginAxes();throw;}
+    }
+    private void ShowOriginAxes()
+    {
+        foreach(var (shape,color) in originShapes)
+        {
+            var presentation=viewer.Display(shape);
+            originPresentations.Add(presentation);
+            presentation.SetColor(color);presentation.SetDisplayMode(ViewerDisplayMode.Wireframe);
+            // Axis shapes contain edges only; face selection excludes them from model picking.
+            presentation.SetSelectionKind(ShapeKind.Face);
+        }
+        viewer.Redraw();
+    }
+    private void ClearOriginAxes()
+    {
+        foreach(var presentation in originPresentations)presentation.Dispose();originPresentations.Clear();
+        foreach(var (shape,_) in originShapes)shape.Dispose();originShapes.Clear();
+    }
+    public void SetConstructionGhost(GeometryRecipe? recipe)
+    {
+        constructionGhost?.Dispose();constructionGhost=null;constructionShape?.Dispose();constructionShape=null;
+        if(recipe is null){viewer.Redraw();return;}
+        recipe.Validate();
+        constructionShape=recipe switch
+        {
+            BoxRecipe b=>ShapeFactory.CreateBox(b.X,b.Y,b.Z),
+            CylinderRecipe c=>ShapeFactory.CreateCylinder(c.Radius,c.Height),
+            ExtrudeRecipe e=>CreateProfileGhost(e.Profile,e.Distance,null),
+            RevolveRecipe r=>CreateProfileGhost(r.Profile,null,r.AngleRadians),
+            _=>throw new NotSupportedException("Only viewport construction recipes are supported.")
+        };
+        try
+        {
+            constructionGhost=viewer.Display(constructionShape);
+            var placement=recipe switch
+            {
+                BoxRecipe b=>b.Placement,CylinderRecipe c=>c.Placement,
+                ExtrudeRecipe e=>e.Placement,RevolveRecipe r=>r.Placement,
+                _=>throw new NotSupportedException()
+            };
+            using var transform=OcctGeometryBridge.ToNative(placement);
+            constructionGhost.SetTransform(transform);constructionGhost.SetDisplayMode(ViewerDisplayMode.Shaded);
+            constructionGhost.SetColor(new(0.1,0.8,0.55));constructionGhost.SetTransparency(0.65);
+            constructionGhost.SetSelectionKind(ShapeKind.Edge);
+            viewer.Redraw();
+        }
+        catch{constructionGhost?.Dispose();constructionGhost=null;constructionShape.Dispose();constructionShape=null;throw;}
+    }
+    private static Shape CreateProfileGhost(SketchProfile profile,double? distance,double? angle)
+    {
+        using var wire=ShapeFactory.CreatePolygonWire(profile.Points.Select(p=>
+            angle is null?new GpPoint(p.X,p.Y,0):new GpPoint(p.X,0,p.Y)).ToArray(),true);
+        using var face=ShapeFactory.CreatePlanarFace(wire);
+        if(distance is {} length)
+        {
+            using var direction=GpVec.Create(0,0,length);
+            return face.Extrude(direction);
+        }
+        using var axis=GpAx1.Create(0,0,0,0,0,1);
+        return face.Revolve(axis,angle!.Value);
+    }
     private BoxRecipe? selectionBox;
     private TopologyKind? selectionKind;
     public void SetBoxSelection(BoxRecipe? box,TopologyKind? kind)
@@ -53,7 +251,8 @@ public sealed class OcctViewport : ICadViewport
         this.assets=assets;viewer=OcctViewer.Create(windowHandle);
         try
         {
-            viewer.SetBackgroundColor(new ViewerColor(0.035,0.05,0.075));viewer.SetProjection(ViewerProjection.Axonometric);
+            SetBackgroundGradient(DocumentSettings.DefaultBackgroundTopArgb,DocumentSettings.DefaultBackgroundBottomArgb);
+            viewer.SetProjection(ViewerProjection.Axonometric);
             viewer.ShowTrihedron(ViewerTrihedronPosition.LeftLower,new(0.9,0.9,0.9),0.08);
             viewer.Rendering.SetProfile(new ViewerRenderProfile{Shading=ViewerShading.Phong});
             viewer.Rendering.ReplaceLightRig([
@@ -139,13 +338,43 @@ public sealed class OcctViewport : ICadViewport
         }
         viewer.Redraw();
     }
-    public void FitAll()=>viewer.FitAll();
-    public void SetProjection(CadProjection projection)=>viewer.SetProjection(projection switch
+    public void FitAll()
+    {
+        workGrid?.Dispose();workGrid=null;
+        foreach(var presentation in originPresentations)presentation.Dispose();originPresentations.Clear();
+        constructionGhost?.Dispose();constructionGhost=null;
+        viewer.FitAll();ShowWorkGrid();ShowOriginAxes();
+    }
+    public void SetProjection(CadProjection projection)=>viewer.SetProjection(ToViewerProjection(projection));
+    public CadCamera CaptureProjectionTarget(CadProjection projection)
+    {
+        var current=CaptureCamera();
+        try {viewer.SetProjection(ToViewerProjection(projection));return CaptureCamera();}
+        finally {RestoreCamera(current);viewer.Redraw();}
+    }
+    public CadCamera CaptureCubeTarget(ViewerCubeOrientation orientation)
+    {
+        var current=CaptureCamera();
+        try {viewer.SetCubeOrientation(orientation);return CaptureCamera();}
+        finally {RestoreCamera(current);viewer.Redraw();}
+    }
+    public void SetViewCubeVisible(bool visible)=>viewer.SetViewCubeVisible(visible);
+    public ViewerCubeOrientation? HitViewCube(int x,int y)=>viewer.HitViewCube(x,y);
+    public ViewerCubeHit? HitViewCubeControl(int x,int y)=>viewer.HitViewCubeControl(x,y);
+    public CadCamera CaptureCubeTurnTarget(ViewerCubeTurn turn,int degrees)
+    {
+        if(turn is not (ViewerCubeTurn.Left or ViewerCubeTurn.Right))throw new ArgumentOutOfRangeException(nameof(turn));
+        if(degrees is < 1 or > 180)throw new ArgumentOutOfRangeException(nameof(degrees));
+        var current=CaptureCamera();
+        try {viewer.RollCamera(turn==ViewerCubeTurn.Left?-degrees:degrees);return CaptureCamera();}
+        finally {RestoreCamera(current);viewer.Redraw();}
+    }
+    private static ViewerProjection ToViewerProjection(CadProjection projection)=>projection switch
     {
         CadProjection.Front=>ViewerProjection.Front,CadProjection.Top=>ViewerProjection.Top,
         CadProjection.Right=>ViewerProjection.Right,CadProjection.Left=>ViewerProjection.Left,
         CadProjection.Back=>ViewerProjection.Back,CadProjection.Bottom=>ViewerProjection.Bottom,_=>ViewerProjection.Axonometric
-    });
+    };
     public void SetDisplayMode(CadDisplayMode displayMode)
     {
         mode=displayMode;foreach(var e in entries.Values)e.Presentation.SetDisplayMode(mode==CadDisplayMode.Shaded?ViewerDisplayMode.Shaded:ViewerDisplayMode.Wireframe);viewer.Redraw();
@@ -156,12 +385,18 @@ public sealed class OcctViewport : ICadViewport
     public void PointerMoved(int x,int y,int buttons,int modifiers)
     {
         lastX=x;lastY=y;
+        if(cubeClick){viewer.MoveTo(x,y);return;}
+        if(constructing&&(buttons&6)==0){ConstructionPointer?.Invoke(this,(x,y,false));return;}
         if(Math.Abs(x-pressX)>2||Math.Abs(y-pressY)>2)selectionClick=false;
         viewer.Input.PointerMoved(x,y,(ViewerPointerButtons)(buttons&pressedButtons),(ViewerModifierKeys)modifiers);
     }
     public void PointerPressed(int button,int x,int y,int modifiers)
     {
+        NavigationStarted?.Invoke(this,EventArgs.Empty);
         lastX=x;lastY=y;pressedButtons|=1<<button;
+        if(button==0&&viewer.HitViewCubeControl(x,y) is not null)
+        {cubeClick=true;pressX=x;pressY=y;selectionClick=true;return;}
+        if(constructing&&button==0)return;
         pressX=x;pressY=y;selectionClick=button==0;
         viewer.Input.PointerPressed(Button(button),x,y,(ViewerModifierKeys)modifiers);
     }
@@ -169,6 +404,17 @@ public sealed class OcctViewport : ICadViewport
     {
         if((pressedButtons&(1<<button))==0)return; // Late release after capture loss must not clear model selection.
         pressedButtons&=~(1<<button);lastX=x;lastY=y;
+        if(button==0&&cubeClick)
+        {
+            cubeClick=false;
+            if(selectionClick&&Math.Abs(x-pressX)<=2&&Math.Abs(y-pressY)<=2&&viewer.HitViewCubeControl(x,y) is {} cubeHit)
+            {
+                if(cubeHit.Orientation is {} orientation)ViewCubeOrientationRequested?.Invoke(this,orientation);
+                else if(cubeHit.Turn!=ViewerCubeTurn.None)ViewCubeTurnRequested?.Invoke(this,cubeHit.Turn);
+            }
+            selectionClick=false;return;
+        }
+        if(constructing&&button==0){ConstructionPointer?.Invoke(this,(x,y,true));return;}
         var selected=viewer.Input.PointerReleased(Button(button),x,y);
         bool clicked=button==0&&selectionClick;selectionClick=false;
         if(!clicked)return;
@@ -199,12 +445,16 @@ public sealed class OcctViewport : ICadViewport
     }
     public void CancelInput()
     {
-        pressedButtons=0;selectionClick=false;
+        pressedButtons=0;selectionClick=false;cubeClick=false;
         // preview.26 clears any pressed button on release. Right avoids synthesizing a left click.
         viewer.Input.PointerReleased(ViewerPointerButton.Right,lastX,lastY);
     }
     public void ClearSelection()=>viewer.ClearSelection();
-    public void MouseWheel(int delta,int x,int y,int modifiers)=>viewer.Input.MouseWheel(delta,x,y,(ViewerModifierKeys)modifiers);
+    public void MouseWheel(int delta,int x,int y,int modifiers)
+    {
+        NavigationStarted?.Invoke(this,EventArgs.Empty);
+        viewer.Input.MouseWheel(delta,x,y,(ViewerModifierKeys)modifiers);
+    }
     private static ViewerPointerButton Button(int button)=>button switch{0=>ViewerPointerButton.Left,1=>ViewerPointerButton.Middle,_=>ViewerPointerButton.Right};
     public CadCamera CaptureCamera()
     {
@@ -221,7 +471,7 @@ public sealed class OcctViewport : ICadViewport
     public void Dispose()
     {
         if(disposed)return;
-        preview?.Dispose();previewShape?.Dispose();
+        preview?.Dispose();previewShape?.Dispose();constructionGhost?.Dispose();constructionShape?.Dispose();workGrid?.Dispose();workGridShape?.Dispose();ClearOriginAxes();
         foreach(var e in entries.Values)e.Presentation.Dispose();entries.Clear();
         viewer.Dispose();foreach(var g in geometry.Values)g.Dispose();geometry.Clear();disposed=true;
     }

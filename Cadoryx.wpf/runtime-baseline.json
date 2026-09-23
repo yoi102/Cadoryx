@@ -1,13 +1,13 @@
 {
   "application": "Cadoryx",
-  "documentWriterVersion": "0.4.5",
+  "documentWriterVersion": "0.4.12",
   "framework": "net10.0-windows",
   "runtime": "win-x64",
-  "occtSharpPackage": "8.0.1-preview.28.cadoryx.h2b2.2",
-  "nativeSha256": "f719823bbb12cb19650656993217744c59feef54903e57951877d28605db8f00",
+  "occtSharpPackage": "8.0.1-preview.28.cadoryx.viewcube.4",
+  "nativeSha256": "0334460244fba1f500b911f516de007038ebd8b54b4aa5a1a15fec2220677300",
   "occtVersion": "8.0.1",
   "messagePackPackage": "3.1.8",
   "containerVersion": 1,
-  "sectionVersions": { "document": 5, "structure": 3, "features": 5, "presentation": 2, "geometry": 1, "sketches": 2, "topology": 1, "history": 2 },
+  "sectionVersions": { "document": 11, "structure": 3, "features": 6, "presentation": 2, "geometry": 1, "sketches": 2, "topology": 1, "history": 2, "history-queries": 1, "feature-bindings": 1 },
   "coreSectionEncoding": "messagepack"
 }

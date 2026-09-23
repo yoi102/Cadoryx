@@ -15,16 +15,19 @@ public sealed record PackTopologyReference([property:Key(0)] Guid Id,[property:K
 internal static partial class MessagePackSections
 {
     internal static byte[] EncodeTopology(IEnumerable<TopologyReference> references)=>Serialize(new PackTopologyReferences(
-        references.OrderBy(r=>r.Id.Value).Select(r=>new PackTopologyReference(r.Id.Value,r.DocumentId.Value,r.FeatureId.Value,
-            r.OutputBodyId.Value,r.OriginRevision.Value,(int)r.Kind,(int)r.Boundary,r.SecondBoundary is {} second?(int)second:null,(int)r.Policy,r.SchemaVersion)).ToArray()));
+        references.OrderBy(r=>r.Id.Value).Select(PackTopology).ToArray()));
+
+    internal static PackTopologyReference PackTopology(TopologyReference r)=>new(r.Id.Value,r.DocumentId.Value,r.FeatureId.Value,
+        r.OutputBodyId.Value,r.OriginRevision.Value,(int)r.Kind,(int)r.Boundary,r.SecondBoundary is {} second?(int)second:null,(int)r.Policy,r.SchemaVersion);
+    internal static TopologyReference UnpackTopology(PackTopologyReference r)=>new(new(r.Id),new(r.Document),new(r.Feature),new(r.Body),new(r.OriginRevision),
+        (TopologyKind)r.Kind,(BoxBoundary)r.Boundary,r.SecondBoundary is {} second?(BoxBoundary)second:null,(TopologyRebindPolicy)r.Policy,r.Version);
 
     internal static ImmutableDictionary<TopologyReferenceId,TopologyReference> DecodeTopology(ReadOnlyMemory<byte> bytes)
     {
         var result=ImmutableDictionary.CreateBuilder<TopologyReferenceId,TopologyReference>();
         foreach(var r in Read<PackTopologyReferences>(bytes).References)
         {
-            var reference=new TopologyReference(new(r.Id),new(r.Document),new(r.Feature),new(r.Body),new(r.OriginRevision),
-                (TopologyKind)r.Kind,(BoxBoundary)r.Boundary,r.SecondBoundary is {} second?(BoxBoundary)second:null,(TopologyRebindPolicy)r.Policy,r.Version);
+            var reference=UnpackTopology(r);
             reference.Validate();
             if(result.ContainsKey(reference.Id))throw new InvalidDataException("Duplicate topology reference identity.");
             result.Add(reference.Id,reference);

@@ -10,8 +10,8 @@ namespace Cadoryx.Kernel.Occt;
 public sealed partial class OcctGeometryKernel : IGeometryKernel, ITopologyResolver
 {
     private static readonly SemaphoreSlim Queue=new(1,1);
-    public string Version=>"OcctSharp 8.0.1-preview.28.cadoryx.h2b2.2 / OCCT 8.0.1";
-    public bool Supports(GeometryRecipe recipe)=>recipe is BoxRecipe or CylinderRecipe or ImportedRecipe or BooleanRecipe or TransformRecipe or ExtrudeRecipe or RevolveRecipe or LocalFeatureRecipe;
+    public string Version=>"OcctSharp 8.0.1-preview.28.cadoryx.viewcube.2 / OCCT 8.0.1";
+    public bool Supports(GeometryRecipe recipe)=>recipe is BoxRecipe or CylinderRecipe or ImportedRecipe or BooleanRecipe or TransformRecipe or ExtrudeRecipe or RevolveRecipe or LocalFeatureRecipe or HistoryFilletRecipe;
     private static async Task<T> Run<T>(Func<T> action,CancellationToken token)
     {
         await Queue.WaitAsync(token).ConfigureAwait(false);
@@ -26,6 +26,10 @@ public sealed partial class OcctGeometryKernel : IGeometryKernel, ITopologyResol
             if(recipe is LocalFeatureRecipe local)
             {
                 return EvaluateLocal(local,assets,cancellationToken);
+            }
+            if(recipe is HistoryFilletRecipe bound)
+            {
+                return EvaluateHistoryFillet(bound,assets,cancellationToken);
             }
             if(recipe is BooleanRecipe boolean)
             {
@@ -151,6 +155,7 @@ public sealed partial class OcctGeometryKernel : IGeometryKernel, ITopologyResol
     public Task<CadExportReport> ExportAsync(DocumentSnapshot snapshot,IAssetStore assets,string path,CadExportOptions options,CancellationToken cancellationToken=default)=>Run(()=>
     {
         snapshot.Validate();options.Validate();string extension=Path.GetExtension(path).ToLowerInvariant();
+        if(snapshot.Features.Values.Any(f=>f.IsStale))throw new CadValidationException("Reselect stale feature bindings before export.");
         if(extension is not (".step" or ".stp" or ".iges" or ".igs" or ".stl"))throw new NotSupportedException("Export supports STEP, IGES and STL.");
         if(extension==".stl")return ExportStl(snapshot,assets,path,options,cancellationToken);
         using var native=XdeDocument.Create();var labels=new Dictionary<DefinitionId,XdeLabel>();

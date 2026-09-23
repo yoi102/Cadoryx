@@ -46,6 +46,9 @@
                     <ComboBoxItem Content="{I18N {x:Static r:LangKeys.PolygonRevolve}}" Tag="Revolve" />
                 </ComboBox>
 
+                <Button Content="{Binding Document.ViewportDrawingLabel}" Command="{Binding Document.BeginViewportConstructionCommand}" Margin="0,0,0,8" />
+                <TextBlock Text="{Binding Document.ViewportDrawingHint}" TextWrapping="Wrap" Opacity="0.7" Margin="0,0,0,8" />
+
                 <StackPanel>
                     <StackPanel.Style><Style TargetType="StackPanel"><Setter Property="Visibility" Value="Collapsed"/><Style.Triggers><DataTrigger Binding="{Binding Document.IsProfileTool}" Value="True"><Setter Property="Visibility" Value="Visible"/></DataTrigger></Style.Triggers></Style></StackPanel.Style>
                     <StackPanel IsEnabled="{Binding Document.IsCreating}">

@@ -489,6 +489,9 @@
   <data name="ShowViewCube" xml:space="preserve">
     <value>显示视图立方体</value>
   </data>
+  <data name="ViewCubeRotationStep" xml:space="preserve">
+    <value>视图立方体旋转角度（度）</value>
+  </data>
   <data name="SingleSelection" xml:space="preserve">
     <value>单选</value>
   </data>
@@ -1014,4 +1017,161 @@
   <data name="Stale" xml:space="preserve">
     <value>文档已变更，请关闭并重新打开编辑器。</value>
   </data>
+  <data name="HistoryQueryTitle" xml:space="preserve">
+    <value>历史诊断</value>
+  </data>
+  <data name="HistoryQuerySaved" xml:space="preserve">
+    <value>已保存的诊断查询</value>
+  </data>
+  <data name="HistoryQueryNew" xml:space="preserve">
+    <value>新建查询</value>
+  </data>
+  <data name="HistoryQueryName" xml:space="preserve">
+    <value>查询名称</value>
+  </data>
+  <data name="HistoryQuerySource" xml:space="preserve">
+    <value>源语义引用（先在局部特征中保存）</value>
+  </data>
+  <data name="HistoryQueryTarget" xml:space="preserve">
+    <value>目标特征</value>
+  </data>
+  <data name="HistoryQueryReselect" xml:space="preserve">
+    <value>重新选择源</value>
+  </data>
+  <data name="HistoryQuerySave" xml:space="preserve">
+    <value>保存查询</value>
+  </data>
+  <data name="HistoryQueryDelete" xml:space="preserve">
+    <value>删除查询</value>
+  </data>
+  <data name="HistoryQueryAnalyze" xml:space="preserve">
+    <value>分析当前文档</value>
+  </data>
+  <data name="HistoryQuerySteps" xml:space="preserve">
+    <value>特征路径与停止位置</value>
+  </data>
+  <data name="HistoryQueryPending" xml:space="preserve">
+    <value>待检查</value>
+  </data>
+  <data name="HistoryQueryDone" xml:space="preserve">
+    <value>已验证</value>
+  </data>
+  <data name="HistoryQueryStopped" xml:space="preserve">
+    <value>已停止</value>
+  </data>
+  <data name="HistoryQueryReady" xml:space="preserve">
+    <value>先分析已保存的边查询，确认精确目标后再创建圆角或重新绑定。</value>
+  </data>
+  <data name="HistoryFilletRadius" xml:space="preserve">
+    <value>圆角半径（毫米）</value>
+  </data>
+  <data name="HistoryFilletCreate" xml:space="preserve">
+    <value>从已确认的边创建圆角</value>
+  </data>
+  <data name="HistoryFilletStaleConsumer" xml:space="preserve">
+    <value>待重选的过期圆角</value>
+  </data>
+  <data name="HistoryFilletRebind" xml:space="preserve">
+    <value>重选边并重算圆角</value>
+  </data>
+  <data name="HistoryFilletConfirmFirst" xml:space="preserve">
+    <value>请先保存查询并分析当前边，再确认此操作。</value>
+  </data>
+  <data name="HistoryQueryChanged" xml:space="preserve">
+    <value>文档已变更，请重新分析当前结果。</value>
+  </data>
+  <data name="HistoryQueryNoSource" xml:space="preserve">
+    <value>尚未选择源</value>
+  </data>
+  <data name="HistoryQueryMissing" xml:space="preserve">
+    <value>特征不存在</value>
+  </data>
+  <data name="HistoryQueryIncomplete" xml:space="preserve">
+    <value>请填写名称、重新选择已保存的源并选择目标特征。</value>
+  </data>
+  <data name="HistoryQuerySaveFirst" xml:space="preserve">
+    <value>请先保存查询再分析。</value>
+  </data>
+  <data name="HistoryStatusResolved" xml:space="preserve">
+    <value>已解析</value>
+  </data>
+  <data name="HistoryStatusMissing" xml:space="preserve">
+    <value>缺失</value>
+  </data>
+  <data name="HistoryStatusStale" xml:space="preserve">
+    <value>已过期</value>
+  </data>
+  <data name="HistoryStatusAmbiguous" xml:space="preserve">
+    <value>有歧义</value>
+  </data>
+  <data name="HistoryStatusUnsupported" xml:space="preserve">
+    <value>不支持</value>
+  </data>
+  <data name="HistoryStatusWrongContext" xml:space="preserve">
+    <value>上下文不符</value>
+  </data>
+  <data name="HistoryStatusDeleted" xml:space="preserve">
+    <value>已删除</value>
+  </data>
+  <data name="HistoryStatusGenerated" xml:space="preserve">
+    <value>仅生成结果</value>
+  </data>
+  <data name="HistoryStatusLimitExceeded" xml:space="preserve">
+    <value>超出限制</value>
+  </data>
+  <data name="GridVisible" xml:space="preserve">
+    <value>显示工作网格</value>
+  </data>
+  <data name="GridSpacing" xml:space="preserve">
+    <value>网格间距（毫米）</value>
+  </data>
+  <data name="SnapToGrid" xml:space="preserve">
+    <value>创建点吸附到网格</value>
+  </data>
+  <data name="DrawInViewport" xml:space="preserve">
+    <value>在视口中绘制</value>
+  </data>
+  <data name="ViewportDrawingHint" xml:space="preserve">
+    <value>点击起点，移动并点击确定底面尺寸，再移动并点击确定高度。Esc 取消。</value>
+  </data>
+  <data name="ViewportProfileDrawingHint" xml:space="preserve">
+    <value>点击开始，移动鼠标查看实时形体，再点击确定拉伸距离或旋转角度。Esc 取消。</value>
+  </data>
+  <data name="HideGrid" xml:space="preserve">
+    <value>隐藏工作网格</value>
+  </data>
+  <data name="ViewportPlaneUnavailable" xml:space="preserve">
+    <value>当前工作平面与视线平行或位于相机后方，请切换到正对该平面的视角。</value>
+  </data>
+  <data name="DocumentSettingsTitle" xml:space="preserve">
+    <value>文档设置</value>
+  </data>
+  <data name="BackgroundTop" xml:space="preserve">
+    <value>天空顶部</value>
+  </data>
+  <data name="BackgroundBottom" xml:space="preserve">
+    <value>天空底部</value>
+  </data>
+  <data name="DocumentGridSection" xml:space="preserve">
+    <value>网格与吸附</value>
+  </data>
+  <data name="DocumentUnitsSection" xml:space="preserve">
+    <value>单位与精度</value>
+  </data>
+  <data name="DocumentDisplayUnit" xml:space="preserve">
+    <value>显示单位</value>
+  </data>
+  <data name="DocumentDecimalPlaces" xml:space="preserve">
+    <value>小数位数</value>
+  </data>
+  <data name="DocumentOriginSection" xml:space="preserve"><value>原点与坐标轴</value></data>
+  <data name="DocumentOriginVisible" xml:space="preserve"><value>显示模型原点</value></data>
+  <data name="DocumentOriginStyle" xml:space="preserve"><value>样式</value></data>
+  <data name="DocumentOriginSize" xml:space="preserve"><value>尺寸（毫米）</value></data>
+  <data name="DocumentOriginHint" xml:space="preserve"><value>固定在世界坐标 (0, 0, 0)；X 红、Y 绿、Z 蓝。</value></data>
+  <data name="DocumentOriginColorAxes" xml:space="preserve"><value>彩色 XYZ 坐标轴</value></data>
+  <data name="DocumentOriginSubtleAxes" xml:space="preserve"><value>柔和单色坐标轴</value></data>
+  <data name="DocumentOriginMarker" xml:space="preserve"><value>仅显示原点标记</value></data>
+  <data name="DocumentWorkPlane" xml:space="preserve"><value>工作平面</value></data>
+  <data name="DocumentWorkPlaneOffset" xml:space="preserve"><value>平面偏移（毫米）</value></data>
 </root>

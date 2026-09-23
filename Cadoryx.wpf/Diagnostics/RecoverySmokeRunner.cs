@@ -75,6 +75,16 @@ internal static class RecoverySmokeRunner
                 var historySide=first.Session.Snapshot.Features.Values.Single(f=>f.Name=="History side");
                 await first.Session.ExecuteAsync(new BooleanCommand(BooleanOperation.Fuse,[historySide.OutputBodyId,historyCut.OutputBodyId]));
                 await first.Session.ExecuteAsync(new RecomputeCommand(booleanTool.Id,new BoxRecipe(3,22,32,RigidTransform3d.Translate(54,-1,-1))));
+                var savedLast=first.Session.Snapshot.Features.Values.Single(f=>f.Recipe is BooleanRecipe b&&b.Operation==BooleanOperation.Fuse);
+                var savedSource=TopologyReference.Box(first.Session.Snapshot,booleanBase.Id,BoxBoundary.XMin);
+                await first.Session.ExecuteAsync(new UpsertTopologyReferenceCommand(savedSource));
+                await first.Session.ExecuteAsync(new UpsertHistoryQueryCommand(new(HistoryQueryId.New(),"Recovered history chain",savedSource,savedLast.Id)));
+                var boundSource=TopologyReference.Box(first.Session.Snapshot,boxFeature.Id,BoxBoundary.XMax,BoxBoundary.YMax);
+                var boundTarget=first.Session.Snapshot.Features.Values.Single(f=>f.Recipe is LocalFeatureRecipe);
+                var verifiedBound=await ((ITopologyHistoryResolver)services.GetRequiredService<IGeometryKernel>()).TraceAsync(
+                    first.Session.Snapshot,boundSource,boundTarget.Id,first.Session.Assets);
+                Require(verifiedBound.Status==HistoryResolutionStatus.Resolved&&verifiedBound.Target is {Kind:HistoryShapeKind.Edge},"Recovery seed bound edge is not uniquely verified.");
+                await first.Session.ExecuteAsync(new HistoryFilletCommand(boundSource,boundTarget.Id,1,verifiedBound.Target!));
                 var expected = Expected.Capture(first.Session.Snapshot, await HashFile(original));
                 await File.WriteAllTextAsync(Path.Combine(output, "expected.json"), JsonSerializer.Serialize(expected, CadJson.Options));
                 // Deliberately do not invoke CheckpointAsync: this must exercise the production 30-second timer.
@@ -118,7 +128,7 @@ internal static class RecoverySmokeRunner
             var actual = Expected.Capture(restored.Session.Snapshot, await HashFile(original));
             Require(JsonSerializer.Serialize(actual, CadJson.Options) == JsonSerializer.Serialize(expectedState, CadJson.Options), "Restored IDs/assets/state differ or the original file was changed.");
             var topology=await TopologyReferenceInspection.InspectAsync(restored.Session.Snapshot,restored.Session.Assets,(ITopologyResolver)services.GetRequiredService<IGeometryKernel>());
-            Require(topology.Results.Length==3&&topology.Results.Count(r=>r.Status==TopologyResolutionStatus.Resolved)==2&&topology.Results.Count(r=>r.Status==TopologyResolutionStatus.Stale)==1,"Restored topology references must preserve semantic and exact-revision behavior.");
+            Require(topology.Results.Length==4&&topology.Results.Count(r=>r.Status==TopologyResolutionStatus.Resolved)==3&&topology.Results.Count(r=>r.Status==TopologyResolutionStatus.Stale)==1,"Restored topology references must preserve semantic and exact-revision behavior.");
             var local=restored.Session.Snapshot.Features.Values.Single(f=>f.Recipe is LocalFeatureRecipe);
             Require(local.TopologyHistory is not null,"Recovered topology history is missing.");
             var historyReference=TopologyReference.Box(restored.Session.Snapshot,local.Inputs[0],BoxBoundary.YMin);
@@ -139,6 +149,18 @@ internal static class RecoverySmokeRunner
             var chainSplit=await booleanResolver.TraceAsync(restored.Session.Snapshot,TopologyReference.Box(restored.Session.Snapshot,boolean.Inputs[0],BoxBoundary.YMin),last.Id,restored.Session.Assets);
             Require(chain.Status==HistoryResolutionStatus.Resolved&&chain.CompletedSteps==2&&chain.PathLength==2&&chain.Target?.Asset==last.Result.AssetId,"Recovered two-step chain");
             Require(chainSplit.Status==HistoryResolutionStatus.Ambiguous&&chainSplit.StoppedAt==boolean.Id&&chainSplit.CompletedSteps==0&&chainSplit.Target is null,"Recovered intermediate split");
+            var savedQuery=restored.Session.Snapshot.HistoryQueries.Values.Single();
+            var queryResult=await TopologyHistoryInspection.InspectAsync(restored.Session.Snapshot,savedQuery.Source,savedQuery.TargetFeatureId,restored.Session.Assets,booleanResolver);
+            Require(savedQuery.Name=="Recovered history chain"&&savedQuery.TargetFeatureId==last.Id&&queryResult.Result.Status==HistoryResolutionStatus.Resolved&&queryResult.Result.CompletedSteps==2,
+                "Recovered diagnostic query must re-evaluate against current BRep.");
+            var bound=restored.Session.Snapshot.Features.Values.Single(f=>f.Recipe is HistoryFilletRecipe);
+            Require(!bound.IsStale&&bound.TopologyBinding is {} binding&&binding.TargetFeatureId==local.Id&&bound.TopologyHistory is not null,
+                "Recovered bound fillet must retain its exact upstream identity and history.");
+            var reboundEvidence=await booleanResolver.TraceAsync(restored.Session.Snapshot,bound.TopologyBinding!.Origin,
+                bound.TopologyBinding.TargetFeatureId,restored.Session.Assets);
+            Require(reboundEvidence.Status==HistoryResolutionStatus.Resolved&&reboundEvidence.Target?.FullTopologyIndex==bound.TopologyBinding.FullTopologyIndex&&
+                reboundEvidence.Target.Revision==bound.TopologyBinding.TargetRevision,"Recovered bound edge no longer matches native history.");
+            await File.WriteAllTextAsync(Path.Combine(output,"saved-query-result.json"),JsonSerializer.Serialize(new{savedQuery,queryResult},CadJson.Options));
             await File.WriteAllTextAsync(Path.Combine(output,"chain-history-result.json"),JsonSerializer.Serialize(new{chain,chainSplit},CadJson.Options));
             Require(Math.Abs(local.Result.VolumeMm3-(7200-12*(1-Math.PI/4)))<1e-4,"Recovered local fillet geometry.");
             await File.WriteAllTextAsync(Path.Combine(output,"topology-result.json"),JsonSerializer.Serialize(topology,CadJson.Options));
@@ -169,7 +191,7 @@ internal static class RecoverySmokeRunner
     }
 
     private sealed record Expected(string DocumentId, string StateId, string Name, string[] Bodies, string[] Assets, string OriginalHash,
-        string[] Layers,string[] Materials,string[] Placements,string[] Sketches,string[] Features,string[] TopologyReferences)
+        string[] Layers,string[] Materials,string[] Placements,string[] Sketches,string[] Features,string[] TopologyReferences,string[] HistoryQueries)
     {
         public static Expected Capture(DocumentSnapshot snapshot, string hash) => new(snapshot.Id.ToString(), snapshot.StateId.ToString(), snapshot.Name,
             snapshot.Bodies.Values.OrderBy(b=>b.Id.Value).Select(b=>JsonSerializer.Serialize(b,CadJson.Options)).ToArray(),
@@ -179,7 +201,8 @@ internal static class RecoverySmokeRunner
             snapshot.EnumerateOccurrences().Select(o=>o.Path+" "+JsonSerializer.Serialize(o.WorldTransform,CadJson.Options)).Order().ToArray(),
             snapshot.Sketches.Values.OrderBy(s=>s.Id.Value).Select(SketchSmokeRunner.Describe).ToArray(),
             snapshot.Features.Values.OrderBy(f=>f.Id.Value).Select(f=>JsonSerializer.Serialize(f,CadJson.Options)).ToArray(),
-            snapshot.TopologyReferences.Values.OrderBy(r=>r.Id.Value).Select(r=>JsonSerializer.Serialize(r,CadJson.Options)).ToArray());
+            snapshot.TopologyReferences.Values.OrderBy(r=>r.Id.Value).Select(r=>JsonSerializer.Serialize(r,CadJson.Options)).ToArray(),
+            snapshot.HistoryQueries.Values.OrderBy(q=>q.Id.Value).Select(q=>JsonSerializer.Serialize(q,CadJson.Options)).ToArray());
     }
     private static async Task<string> HashFile(string path) => Convert.ToHexString(SHA256.HashData(await File.ReadAllBytesAsync(path)));
     private static void Require(bool condition, string message) { if (!condition) throw new InvalidOperationException(message); }

@@ -19,7 +19,7 @@ public sealed record PackFeaturesV3([property:Key(0)] PackFeatureV3[] Features);
 public sealed record PackFeatureV3([property:Key(0)] Guid Id,[property:Key(1)] Guid Part,[property:Key(2)] string Name,
     [property:Key(3)] PackRecipeV3 Recipe,[property:Key(4)] Guid[] Inputs,[property:Key(5)] Guid Output,
     [property:Key(6)] Guid Result,[property:Key(7)] int Version,[property:Key(8)] PackOutputMetadata? OutputMetadata,
-    [property:Key(9)] PackSketchProfileReference? SketchSource=null);
+    [property:Key(9)] PackSketchProfileReference? SketchSource=null,[property:Key(10)] bool IsStale=false);
 [MessagePackObject]
 public sealed record PackSketchProfileReference([property:Key(0)] Guid Sketch,[property:Key(1)] Guid Revision,[property:Key(2)] Guid[] Lines);
 [MessagePackObject]
@@ -51,7 +51,7 @@ internal static partial class MessagePackSections
     }
 
     // V3 changes geometry fields from embedded records to revision IDs; V2 contracts remain intact.
-    internal static SectionPayload[] SplitGeometry(StructureSection structure,FeaturesSection features,int featureVersion=5)
+    internal static SectionPayload[] SplitGeometry(StructureSection structure,FeaturesSection features,int featureVersion=6)
     {
         var table=new Dictionary<GeometryRevisionId,GeometryAssetRef>();
         Guid Reference(GeometryAssetRef geometry)
@@ -69,7 +69,7 @@ internal static partial class MessagePackSections
             return new PackFeatureV3(f.Id.Value,f.PartId.Value,f.Name,
                 new(recipe.Kind,recipe.Numbers,recipe.Placement,f.Recipe.AssetInputs.Select(Reference).ToArray(),recipe.Profile,recipe.Operation),
                 f.Inputs.Select(i=>i.Value).ToArray(),f.OutputBodyId.Value,Reference(f.Result),f.SchemaVersion,metadata,
-                f.SketchSource is {} source?new(source.SketchId.Value,source.Revision,source.Lines.Select(l=>l.Value).ToArray()):null);
+                f.SketchSource is {} source?new(source.SketchId.Value,source.Revision,source.Lines.Select(l=>l.Value).ToArray()):null,f.IsStale);
         }).ToArray();
         return [new(new("structure",3,"messagepack"),Serialize(new PackStructureV3(structure.Definitions.Select(D).ToArray(),bodies))),
             new(new("features",featureVersion,"messagepack"),Serialize(new PackFeaturesV3(featureRecords))),
@@ -111,12 +111,12 @@ internal static partial class MessagePackSections
             recipe=recipe switch
             {
                 LocalFeatureRecipe l=>l with{Source=inputs[0]},ImportedRecipe i=>i with{Source=inputs[0]},TransformRecipe t=>t with{Source=inputs[0]},
-                BooleanRecipe b=>b with{Inputs=inputs.ToImmutableArray()},_=>recipe
+                BooleanRecipe b=>b with{Inputs=inputs.ToImmutableArray()},HistoryFilletRecipe h=>h with{Source=inputs[0]},_=>recipe
             };
             var metadata=v.OutputMetadata;
             return new FeatureDefinition(new(v.Id),new(v.Part),v.Name,recipe,v.Inputs.Select(i=>new FeatureId(i)).ToImmutableArray(),new(v.Output),
                 Resolve(v.Result),v.Version,metadata is null?null:new(metadata.Name,new(metadata.Layer),A(metadata.Appearance),metadata.Visible,metadata.Material is {} m?new MaterialId(m):null))
-                {SketchSource=v.SketchSource is {} source?new(new(source.Sketch),source.Revision,source.Lines.Select(l=>new SketchEntityId(l)).ToImmutableArray()):null};
+                {SketchSource=v.SketchSource is {} source?new(new(source.Sketch),source.Revision,source.Lines.Select(l=>new SketchEntityId(l)).ToImmutableArray()):null,IsStale=v.IsStale};
         }).ToImmutableArray();
         if(used.Count!=table.Count)throw new InvalidDataException("Unreferenced geometry table records.");
         return(new(s.Definitions.Select(D).ToImmutableArray(),bodies),new(features));

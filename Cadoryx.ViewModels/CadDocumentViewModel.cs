@@ -9,6 +9,7 @@ using Cadoryx.Editor;
 using Cadoryx.Rendering;
 using Cadoryx.Kernel.Abstractions;
 using Cadoryx.ViewModels.Services.Platform.Notifications;
+using Cadoryx.ViewModels.Services.Platform.Settings;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 
@@ -18,6 +19,8 @@ public partial class CadDocumentViewModel : ObservableDocument
 {
     private readonly IGeometryKernel kernel;
     private readonly ICadMessageLog log;
+    private readonly SemaphoreSlim gridEditQueue=new(1,1);
+    private DocumentSnapshot observedSnapshot;
     private PreparedDocumentEdit? prepared;
     private long preparedGeneration;
     private long previewSequence;
@@ -25,6 +28,35 @@ public partial class CadDocumentViewModel : ObservableDocument
     private bool allowClose;
     private bool refreshingTargets;
     private Quaterniond placementRotation=Quaterniond.Identity;
+    private Vector3d constructionAnchor;
+    private int constructionStage,constructionBaseY,constructionStartX;
+    private double constructionScale=1;
+    public bool GridVisible => Session.Snapshot.Settings.Grid.Visible;
+    public double GridSpacingMm => Session.Snapshot.Settings.Grid.SpacingMm;
+    public bool SnapToGrid => Session.Snapshot.Settings.Grid.Snap;
+    public DocumentWorkPlaneSettings WorkPlaneSettings => Session.Snapshot.Settings.WorkPlane;
+    public uint BackgroundTopArgb => Session.Snapshot.Settings.BackgroundTopArgb;
+    public uint BackgroundBottomArgb => Session.Snapshot.Settings.BackgroundBottomArgb;
+    public DocumentOriginSettings OriginSettings => Session.Snapshot.Settings.Origin;
+    public string ViewportDrawingLabel=>Strings.ResourceManager.GetString("DrawInViewport")??"Draw in viewport";
+    public string ViewportDrawingHint=>Strings.ResourceManager.GetString(ToolKind is "Extrude" or "Revolve"?"ViewportProfileDrawingHint":"ViewportDrawingHint")??"Click to set the dimensions.";
+    public event EventHandler? ViewportSettingsChanged;
+    public async Task SetGridAsync(bool? visible=null,double? spacingMm=null,bool? snap=null)
+    {
+        await gridEditQueue.WaitAsync();
+        try
+        {
+            var grid=Session.Snapshot.Settings.Grid;
+            await Session.ExecuteAsync(DocumentEdits.SetGrid(grid with
+            { Visible=visible??grid.Visible, SpacingMm=spacingMm??grid.SpacingMm, Snap=snap??grid.Snap }));
+        }
+        finally {gridEditQueue.Release();}
+    }
+    public async Task SetWorkPlaneAsync(DocumentWorkPlaneSettings plane)
+    {
+        ArgumentNullException.ThrowIfNull(plane);
+        await Session.ExecuteAsync(DocumentEdits.SetSettings(Session.Snapshot.Settings with { WorkPlane=plane }));
+    }
     public CadDocumentSession Session {get;}
     public SelectionService Selection {get;}=new();
     public InstancePlacementViewModel Placement {get;}
@@ -62,6 +94,7 @@ public partial class CadDocumentViewModel : ObservableDocument
     public event EventHandler<CadDisplayMode>? DisplayModeRequested;
     public ObservableCollection<ProfilePointViewModel> ProfilePoints {get;}=[new(0,0),new(30,0),new(30,20),new(0,20)];
     [ObservableProperty] private string toolKind="Box";
+    [ObservableProperty] private bool isViewportConstructing;
     [ObservableProperty] private string objectName="Box";
     [ObservableProperty] private double sizeX=40;
     [ObservableProperty] private double sizeY=30;
@@ -83,7 +116,7 @@ public partial class CadDocumentViewModel : ObservableDocument
 
     public CadDocumentViewModel(CadDocumentSession session,IGeometryKernel kernel,ICadMessageLog log)
     {
-        Session=session;this.kernel=kernel;this.log=log;Id="document."+Guid.NewGuid().ToString("N");Context=this;
+        Session=session;observedSnapshot=session.Snapshot;this.kernel=kernel;this.log=log;Id="document."+Guid.NewGuid().ToString("N");Context=this;
         Session.Changed+=OnDocumentChanged;Session.StatusChanged+=OnSessionStatus;
         Session.ObserverFailed+=OnObserverFailed;
         PropertyChanged+=OnPropertiesChanged;
@@ -104,9 +137,67 @@ public partial class CadDocumentViewModel : ObservableDocument
     public void SetDisplay(CadDisplayMode mode){CurrentDisplayMode=mode;DisplayModeRequested?.Invoke(this,mode);}
     public void StartTool(string kind)
     {
-        InvalidatePreview();EditingFeature=null;UseLinkedSketch=false;SelectedSketchProfile=null;placementRotation=Quaterniond.Identity;ToolKind=kind;ObjectName=kind;ToolStatus=Strings.ToolStatusHint;
+        IsViewportConstructing=false;InvalidatePreview();EditingFeature=null;UseLinkedSketch=false;SelectedSketchProfile=null;placementRotation=Quaterniond.Identity;ToolKind=kind;ObjectName=kind;ToolStatus=Strings.ToolStatusHint;
         if(Selection.Items.FirstOrDefault() is {} selection)SelectedTargetPart=Session.Snapshot.Bodies[selection.BodyId].PartId;
         else if(Selection.Occurrence is {} path&&Session.Snapshot.Definitions[OccurrencePlacement.Resolve(Session.Snapshot,path).Slot.DefinitionId] is PartDefinition part)SelectedTargetPart=part.Id;
+        BeginViewportConstruction();
+    }
+    [RelayCommand] public void BeginViewportConstruction()
+    {
+        if(IsReadOnly||EditingFeature is not null||ToolKind is not ("Box" or "Cylinder" or "Extrude" or "Revolve"))return;
+        InvalidatePreview();constructionStage=0;IsViewportConstructing=true;
+        ToolStatus=ViewportDrawingHint;
+    }
+    public void CancelViewportConstruction()
+    {constructionStage=0;IsViewportConstructing=false;InvalidatePreview();}
+    public (GeometryRecipe? Ghost,bool PreviewNow) ConstructionPointer(Vector3d point,int x,int y,double pixelsPerMm,bool click)
+    {
+        if(!IsViewportConstructing)return(null,false);
+        bool primitive=ToolKind is "Box" or "Cylinder";
+        if(constructionStage==0)
+        {
+            if(!click)return(null,false);
+            constructionAnchor=point;constructionBaseY=y;constructionStartX=x;constructionScale=pixelsPerMm;constructionStage=1;
+            if(!UseLinkedSketch){PositionX=point.X;PositionY=point.Y;PositionZ=point.Z;placementRotation=WorkPlaneSettings.Rotation;}
+            return(null,false);
+        }
+        if(constructionStage==1&&primitive)
+        {
+            var anchor=WorkPlaneSettings.ToLocal(constructionAnchor);
+            var local=WorkPlaneSettings.ToLocal(point);
+            double dx=local.X-anchor.X,dy=local.Y-anchor.Y;
+            if(ToolKind=="Box")
+            {
+                var corner=WorkPlaneSettings.ToWorld(Math.Min(local.X,anchor.X),Math.Min(local.Y,anchor.Y));
+                PositionX=corner.X;PositionY=corner.Y;PositionZ=corner.Z;
+                SizeX=Math.Max(0.001,Math.Abs(dx));SizeY=Math.Max(0.001,Math.Abs(dy));
+            }
+            else{PositionX=constructionAnchor.X;PositionY=constructionAnchor.Y;PositionZ=constructionAnchor.Z;SizeX=Math.Max(0.001,Math.Sqrt(dx*dx+dy*dy));}
+            bool valid=ToolKind=="Box"?Math.Abs(dx)>0.001&&Math.Abs(dy)>0.001:Math.Sqrt(dx*dx+dy*dy)>0.001;
+            if(click&&valid){constructionStage=2;constructionBaseY=y;constructionScale=pixelsPerMm;}
+            return(Recipe(),false);
+        }
+        if(constructionStage==1&&!primitive)
+        {
+            double measure=ToolKind=="Extrude"?Math.Abs(y-constructionBaseY)/Math.Max(constructionScale,0.01):Math.Abs(x-constructionStartX)*0.5;
+            if(ToolKind=="Extrude")SizeZ=Math.Max(0.001,measure);
+            else AngleDegrees=Math.Clamp(measure,0.01,360);
+            if(click&&measure>0.001){constructionStage=0;IsViewportConstructing=false;return(null,true);}
+            return(TryProfileConstructionGhost(),false);
+        }
+        double height=Math.Abs(y-constructionBaseY)/Math.Max(constructionScale,0.01);
+        if(SnapToGrid)height=Math.Round(height/GridSpacingMm)*GridSpacingMm;
+        SizeZ=Math.Max(0.001,height);
+        var ghost=Recipe();
+        if(click&&height>0.001){constructionStage=0;IsViewportConstructing=false;return(null,true);}
+        return(ghost,false);
+    }
+    private GeometryRecipe? TryProfileConstructionGhost()
+    {
+        // An unselected or temporarily invalid profile must not abort the pointer gesture.
+        if(UseLinkedSketch&&SelectedSketchProfile is null)return null;
+        try{var recipe=Recipe();recipe.Validate();return recipe;}
+        catch(CadValidationException){return null;}
     }
     public void EditFeature(FeatureId id)
     {
@@ -155,7 +246,7 @@ public partial class CadDocumentViewModel : ObservableDocument
         new AddBodyCommand(Recipe(),ObjectName,SelectedTargetPart,SelectedCreationLayer,SelectedCreationMaterial,
             UseLinkedSketch&&ToolKind is "Extrude" or "Revolve"?SelectedSketchProfile?.Source:null);
     partial void OnUseLinkedSketchChanged(bool value){InvalidatePreview();OnPropertyChanged(nameof(IsFrozenProfile));OnPropertyChanged(nameof(ProfileInputHint));}
-    partial void OnToolKindChanged(string value){OnPropertyChanged(nameof(IsProfileTool));OnPropertyChanged(nameof(IsFrozenProfile));}
+    partial void OnToolKindChanged(string value){OnPropertyChanged(nameof(IsProfileTool));OnPropertyChanged(nameof(IsFrozenProfile));OnPropertyChanged(nameof(ViewportDrawingHint));}
     partial void OnSelectedSketchProfileChanged(SketchProfileChoice? value)=>InvalidatePreview();
     partial void OnSelectedTargetPartChanged(DefinitionId? value){if(!refreshingTargets)RefreshSketchProfiles();}
     private void RefreshSketchProfiles()
@@ -230,12 +321,12 @@ public partial class CadDocumentViewModel : ObservableDocument
         try
         {
             await Session.ExecuteAsync(new PreparedCommand(edit.Snapshot,expected));
-            InvalidatePreview();ToolStatus=Strings.CommittedStatus;FitView();
+            IsViewportConstructing=false;InvalidatePreview();ToolStatus=Strings.CommittedStatus;FitView();
         }
         catch(Exception ex){Report(ex);InvalidatePreview();}
         finally{IsWorking=false;}
     }
-    [RelayCommand] private void Cancel()=>InvalidatePreview();
+    [RelayCommand] private void Cancel()=>CancelViewportConstruction();
     public void InvalidatePreview()
     {
         previewSequence++;previewCancellation?.Cancel();prepared?.Dispose();prepared=null;
@@ -265,7 +356,29 @@ public partial class CadDocumentViewModel : ObservableDocument
     }
     public void Report(Exception error){ToolStatus=error.Message;log.Add(error.Message,CadMessageLevel.Error,"Document");}
     private void OnObserverFailed(object? sender,Exception error)=>Report(error);
-    private void OnDocumentChanged(object? sender,DocumentChangeSet change){InvalidatePreview();Selection.Reconcile(Session.Snapshot);RefreshTargets();UpdateTitle();SceneChanged?.Invoke(this,EventArgs.Empty);}
+    private void OnDocumentChanged(object? sender,DocumentChangeSet change)
+    {
+        var next=Session.Snapshot;
+        bool planeChanged=observedSnapshot.Settings.WorkPlane!=next.Settings.WorkPlane;
+        bool viewOnly=(observedSnapshot with {StateId=next.StateId,Settings=next.Settings})==next &&
+                      (observedSnapshot.Settings with {Grid=next.Settings.Grid,Origin=next.Settings.Origin,WorkPlane=next.Settings.WorkPlane,
+                          BackgroundTopArgb=next.Settings.BackgroundTopArgb,
+                          BackgroundBottomArgb=next.Settings.BackgroundBottomArgb})==next.Settings;
+        observedSnapshot=next;
+        if(!viewOnly)
+        {
+            IsViewportConstructing=false;InvalidatePreview();Selection.Reconcile(next);RefreshTargets();
+            SceneChanged?.Invoke(this,EventArgs.Empty);
+        }
+        UpdateTitle();
+        OnPropertyChanged(nameof(GridVisible));OnPropertyChanged(nameof(GridSpacingMm));OnPropertyChanged(nameof(SnapToGrid));
+        OnPropertyChanged(nameof(BackgroundTopArgb));OnPropertyChanged(nameof(BackgroundBottomArgb));
+        OnPropertyChanged(nameof(OriginSettings));
+        OnPropertyChanged(nameof(WorkPlaneSettings));
+        if(planeChanged&&IsViewportConstructing)
+            CancelViewportConstruction();
+        ViewportSettingsChanged?.Invoke(this,EventArgs.Empty);
+    }
     private void OnSessionStatus(object? sender,EventArgs e){UpdateTitle();OnPropertyChanged(nameof(IsReadOnly));}
     private void UpdateTitle(){Title=Session.Snapshot.Name+(Session.IsDirty?" *":"");IsModified=Session.IsDirty;}
     private void OnProfilePointChanged(object? sender,PropertyChangedEventArgs e)=>InvalidatePreview();

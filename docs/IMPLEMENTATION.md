@@ -1,5 +1,11 @@
 # 当前实现与开发入口
 
+2026-09-23 M2-V5 给视口鼠标 Extrude／Revolve 增加实时 OCCT 半透明形体：冻结轮廓与关联草图共用现有配方解析，按约 40 ms 更新；点击后仍由隔离内核生成正式预览，确认前不提交或分配文档资产。锁定 NuGet 的独立消费探针已验证轮廓面拉伸／旋转，见 [视口鼠标建模](VIEWPORT_CONSTRUCTION.md)和[能力核查](OCCT_CAPABILITY_AUDIT.md)。
+
+2026-09-23 H2-C1 增加 `HistoryQuery` 不可变诊断定义、命令、独立 MessagePack 节和统一风格窗口，见 [历史诊断查询](HISTORY_QUERIES.md)；H2-C2 加入跨特征精确边绑定、圆角、过期传播与显式重选，当时写出 0.4.7，见 [跨特征绑定](HISTORY_FEATURE_BINDINGS.md)。以下 H2-B2/B1 记录保留当时的版本与能力边界。
+
+M2-V1 增加 XY 工作网格与鼠标创建：视口相机射线定位起点，Box/Cylinder 通过底面与高度点击更新半透明原生预览，Extrude/Revolve 通过移动确定距离／角度，最后进入原有隔离候选与确认事务。网格现为文档设置，底部状态栏编辑并随 document v8 保存；见 [视口鼠标建模](VIEWPORT_CONSTRUCTION.md)。
+
 H2-B2：OcctSharp.BooleanHistoryModeling 提供同次布尔逐源关系，Cadoryx 经复制及 BRep 重载校验后发布证据，直接 Box → 布尔后继可诊断追踪。消费本地包 `8.0.1-preview.28.cadoryx.h2b2.2`，文件写出版本 0.4.5，history v2 不变；见 [布尔历史](BOOLEAN_HISTORY.md)。以下保留先前阶段背景。
 
 H2-B1：TopologyHistory 支持多输入参数，BooleanCommand 原子接收内核证据，history 文件节升级为 v2，应用写出版本 0.4.4。真实 Boolean 历史仍依赖上游接口，当前生产解析不开放；协议、迁移和测试边界见 [MULTI_INPUT_HISTORY](MULTI_INPUT_HISTORY.md)。
@@ -8,7 +14,7 @@ M4-T1-H2-A 在同一存储写读链上增加 BrepDirectionRoundtrip 的限定单
 
 M4-T1-H1 新增 Db/TopologyHistory、Kernel.Occt/OcctLocalHistory 与 OcctHistoryResolver、Editor/TopologyHistoryInspection 和 IO/HistorySections。局部算法在同次调用捕获证据，严格校验 BRep 重载对应后才开放诊断解析；不通过者仍建模但不提供映射。八节持久化和后续门禁见 [算法历史](TOPOLOGY_HISTORY.md)。
 
-更新：2026-09-13。文档描述代码现状；更长期的目标保留在 ROADMAP 和其他设计文档。
+更新：2026-09-23。文档描述代码现状；更长期的目标保留在 ROADMAP 和其他设计文档。
 
 ## 模块与主要入口
 
@@ -20,7 +26,7 @@ M4-T1-H1 新增 Db/TopologyHistory、Kernel.Occt/OcctLocalHistory 与 OcctHistor
 | Sketching | ManagedSketchConstraintSolver、SketchEquationSystem、SketchSolveContracts | 13 种约束、解析导数/阻尼 SVD、局部 DOF、冗余/冲突与预算；纯托管 |
 | Commands | DocumentCommands、RecomputeCommand、ResourceCommands、SketchCommands | 候选状态、归属与锁定检查、基础建模/布尔、属性与资源修改、位姿、依赖闭包重算、草图求解后提交 |
 | Editor | DocumentSession、Workspace、Selection、SketchDraft、DocumentRecoveryService | Dispatcher 提交、代际检查、精确历史、草稿几何/历史、保存点、恢复协调和关闭排空 |
-| IO | CadDocumentStorage、GeometrySections、SketchSections、HistorySections、SectionMigrations、AssetCatalog、CadRecoveryStore | 八节 MessagePack、旧 JSON/MessagePack 迁移、资产/草图/历史目录、完整性/限额、原子替换与恢复快照 |
+| IO | CadDocumentStorage、GeometrySections、SketchSections、HistorySections、HistoryQuerySections、FeatureBindingSections、SectionMigrations、AssetCatalog、CadRecoveryStore | 十节 MessagePack、旧 JSON/MessagePack 迁移、资产/草图/历史/查询与绑定目录、完整性/限额、原子替换与恢复快照 |
 | Rendering | Scene、CadCamera | 托管场景、实例路径、最终世界变换和可见性 |
 | Rendering.Occt | OcctViewport | 独立 native 显示资产、候选场景替换、选取与照明 |
 | ViewModels | MainWindowViewModel、CadDocumentViewModel、SketchEditorViewModel、RecoveryCenterViewModel、DocumentResourcesViewModel、InstancePlacementViewModel、Toolboxes | 多文档命令路由、草图输入/诊断/关联特征、归属/位姿/资源面板、预览、树/属性双向操作、恢复入口 |
@@ -44,9 +50,9 @@ M4-T1-H1 新增 Db/TopologyHistory、Kernel.Occt/OcctLocalHistory 与 OcctHistor
 
 采用 MessagePack NuGet：数值和记录数组紧凑、类型契约明确，C# 工具链成熟。M3-V 已测量当时五节实现的共享实例、25 MB BRep 和 128 MiB 扩展载荷；M4-S1 未重跑六节性能基准，也没有做与 JSON 的同条件性能比较，不能据此宣称固定倍数提升。详见 [格式演进与基准](FORMAT_EVOLUTION.md)。
 
-- 清单保留 JSON，便于诊断；七个业务节使用数字键 DTO；精确 BRep/XDE 不进入反射对象图序列化。
-- 当前 containerVersion=1、assetCatalogVersion=1、applicationVersion=0.4.5；features v5、document v5、structure v3、presentation/sketches/history v2、geometry/topology v1，均为 MessagePack。旧四节 v1/json → v2/messagepack → 提取共享 geometry 表；document v2 → v3 建立空 sketches 表；再迁移 sketches v1→v2 和 features v3→v4，明确草图修订与可选特征引用；document v3→v4 初始化 topology v1，document v4→v5 初始化 history v1，再经 history v1→v2 明确来源参数表。
-- AssetFormat 记录媒体类型、编码/格式版本、内核及写出库版本，跟随不可变几何引用。当前新资产为 OCCT 8.0.1 / OcctSharp 8.0.1-preview.28.cadoryx.h2b2.2；旧文件缺失的生产者版本保持未知。实际依赖的原生资产先校验描述与文件头，再进入内核。
+- 清单保留 JSON，便于诊断；十个业务节使用数字键 DTO；精确 BRep/XDE 不进入反射对象图序列化。
+- 当前 containerVersion=1、assetCatalogVersion=1、applicationVersion=0.4.12；features v6、document v12、structure v3、presentation/sketches/history v2、geometry/topology/history-queries/feature-bindings v1，均为 MessagePack。旧四节 v1/json → v2/messagepack → 提取共享 geometry 表；document v2 → v3 建立空 sketches 表；再迁移 sketches v1→v2 和 features v3→v4，明确草图修订与可选特征引用；document v3→v4 初始化 topology v1，document v4→v5 初始化 history v1，再经 history v1→v2 明确来源参数表；document v5→v6 初始化空 history-queries v1，v6→v7 初始化空 feature-bindings v1，v7→v8 补入默认文档网格；v8→v10 补默认天空渐变，v9→v10 保留单色两端，v10→v11 补默认原点坐标轴，v11→v12 补默认 XY 工作平面及零偏移；features v5→v6 保留原字节并使旧记录的过期位默认为 false。
+- AssetFormat 记录媒体类型、编码/格式版本、内核及写出库版本，跟随不可变几何引用。当前新资产为 OCCT 8.0.1 / OcctSharp 8.0.1-preview.28.cadoryx.viewcube.4；旧文件缺失的生产者版本保持未知。实际依赖的原生资产先校验描述与文件头，再进入内核。
 - Key 与枚举数字是文件协议，不能重新编号或复用。配方有显式白名单。新增字段需要缺省语义或迁移；未知未来必需功能拒绝加载。
 - 未知可选节逐字节保留，同时文档只读；避免业务修改后悄悄写回不理解的引用。
 - ZIP 默认总解压上限 1 GiB、单资产 256 MiB、单结构节 32 MiB、清单 8 MiB、20 万条目。迁移输出也检查每节和总容量。还检查路径、重复名、声明长度与 SHA-256；这些限额属于当前可配置策略。
@@ -96,4 +102,4 @@ M3-V 在 `-WindowSmoke` 中新增三个固定旧文件的 MainWindow 打开、�
 
 ## M4-T2 局部建模入口
 
-Ribbon“局部建模”命令 → LocalFeatureViewModel → LocalFeatureWindow（MetroWindow + 独立 OcctViewportHost）。视口输出 BoxBoundary 语义，BoxTopology 共用于解析、高亮和建模；LocalFeatureCommand 创建带唯一 Box 上游的 LocalFeatureRecipe。FeatureRecompute 刷新依赖缓存，IO features v5 保存配方；旧 features v4 显式迁移。当前单边圆角/倒角、面/边引用重选已验证，连续编辑仍有门禁，见 [局部建模](LOCAL_FEATURES.md)。
+Ribbon“局部建模”命令 → LocalFeatureViewModel → LocalFeatureWindow（MetroWindow + 独立 OcctViewportHost）。视口输出 BoxBoundary 语义，BoxTopology 共用于解析、高亮和建模；LocalFeatureCommand 创建带唯一 Box 上游的 LocalFeatureRecipe。FeatureRecompute 刷新依赖缓存，IO features v6 保存配方与过期位；旧 features v4/v5 显式迁移。Box 直接单边圆角/倒角见 [局部建模](LOCAL_FEATURES.md)；历史跨特征圆角见 [跨特征绑定](HISTORY_FEATURE_BINDINGS.md)，多边与变半径仍有门禁。

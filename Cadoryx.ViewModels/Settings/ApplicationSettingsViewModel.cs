@@ -152,21 +152,21 @@ public partial class ViewportApplicationSettingsViewModel : ApplicationSettingsS
     public IReadOnlyList<ProjectionOption> ProjectionOptions { get; }
 
     [ObservableProperty] public partial ProjectionOption? SelectedProjection { get; set; }
-    [ObservableProperty] public partial uint BackgroundColor { get; set; } = 0xFF20242A;
     [ObservableProperty] public partial bool ShowAxes { get; set; }
     [ObservableProperty] public partial bool ShowViewCube { get; set; }
+    [ObservableProperty] public partial int ViewCubeRotationDegrees { get; set; }
     [ObservableProperty] public partial bool ShowFramesPerSecond { get; set; }
     [ObservableProperty] public partial bool IsAntialiasingEnabled { get; set; }
 
     internal override bool TryApplyTo(CadoryxApplicationSettings settings)
     {
-        if (SelectedProjection is null)
+        if (SelectedProjection is null || ViewCubeRotationDegrees is < 1 or > 180)
             return false;
 
         settings.Viewport.Projection = SelectedProjection.Projection;
-        settings.Viewport.BackgroundColor = BackgroundColor;
         settings.Viewport.ShowAxes = ShowAxes;
         settings.Viewport.ShowViewCube = ShowViewCube;
+        settings.Viewport.ViewCubeRotationDegrees = ViewCubeRotationDegrees;
         settings.Viewport.ShowFramesPerSecond = ShowFramesPerSecond;
         settings.Viewport.IsAntialiasingEnabled = IsAntialiasingEnabled;
         return true;
@@ -177,9 +177,9 @@ public partial class ViewportApplicationSettingsViewModel : ApplicationSettingsS
     private void Load(CadoryxViewportSettings settings)
     {
         SelectedProjection = ProjectionOptions.First(option => option.Projection == settings.Projection);
-        BackgroundColor = settings.BackgroundColor;
         ShowAxes = settings.ShowAxes;
         ShowViewCube = settings.ShowViewCube;
+        ViewCubeRotationDegrees = settings.ViewCubeRotationDegrees;
         ShowFramesPerSecond = settings.ShowFramesPerSecond;
         IsAntialiasingEnabled = settings.IsAntialiasingEnabled;
     }

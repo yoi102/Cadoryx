@@ -1,6 +1,12 @@
 # OcctSharp 接入设计
 
-2026-09-13 H2-B2：当前消费本地开发包 `8.0.1-preview.28.cadoryx.h2b2.2`，在 Preview.28 基线上增加真实布尔逐源历史。NuGet 仍为唯一接入路径；构建与部署见[接入目录](../integrations/occtsharp-boolean-history/README.md)，接口及验证边界见[布尔历史](BOOLEAN_HISTORY.md)。下文 Preview.26 是初始选型时的历史基线。
+2026-09-23 ViewCube：当前锁定本地开发包 `8.0.1-preview.28.cadoryx.viewcube.4`，手写 Viewer 桥拥有 OCCT `AIS_ViewCube`，提供显示开关、面／边／角命中和对应相机方向（26 种）。两个 45° 短弧箭头位于立方体右上侧，只在相机对准六个正交面时显示；悬停高亮被命中的面或箭头。Cadoryx 在原生 HWND 内绘制，点击后沿用 320 ms 相机动画，左右箭头绕当前视线方向转动，单次角度为应用设置 `ViewCubeRotationDegrees`（1–180°，默认 45°）。ViewCube 不进入模型选择、网格或文档存储。命中查询仅在右上角区域更新 AIS 检测，避免建模点击改变模型悬停高亮。应用设置 `ShowViewCube` 控制所有已打开视口及新视口。独立 NuGet 消费和桌面冒烟证据见 ROADMAP 的 M2-V8 验收记录。
+
+2026-09-23 渐变接入历史：开发包 `8.0.1-preview.28.cadoryx.gradient.1` 新增 `OcctViewer.SetBackgroundGradient(top, bottom)`；原生桥调用 OCCT 8.0.1 的竖直 `V3d_View::SetBgGradientColors`。顶部和底部的 UI sRGB 色先转为线性 RGB，再交给 Viewer。文档级背景与文件迁移见[视口与工作网格](VIEWPORT_CONSTRUCTION.md)。
+
+2026-09-13 能力复核：当前本地 .2 版本的独立 NuGet 消费者已通过 16 组建模／历史／交换场景，62 个原生 DLL 与包载荷一致。多边／变半径圆角、双距离倒角、连续局部建模、曲线孔洞和放样／扫掠均已有公开接口；当前应用待接入项与后续迁移边界见 [能力核查](OCCT_CAPABILITY_AUDIT.md)。
+
+2026-09-13 H2-B2：当时消费本地开发包 `8.0.1-preview.28.cadoryx.h2b2.2`，在 Preview.28 基线上增加真实布尔逐源历史。NuGet 仍为唯一接入路径；历史构建与部署见[接入目录](../integrations/occtsharp-boolean-history/README.md)，接口及验证边界见[布尔历史](BOOLEAN_HISTORY.md)。下文 Preview.26 是初始选型时的历史基线。
 
 ## 1. 本轮核实范围与版本选择
 

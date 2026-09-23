@@ -25,7 +25,23 @@ public sealed partial class OcctGeometryKernel
             if(faces.Length!=1)throw new CadValidationException("Chamfer support face is missing or ambiguous.");
             return ContourChamferRecipe.Create(source,[new(source.Select(edges[0]),source.Select(faces[0]),ChamferDimensions.Symmetric,local.Size)]).Build(source);
         }
-        using var operation=Build();
+        return FinishLocal(local.Source,source,Build(),assets,token);
+    }
+
+    private GeometryResult EvaluateHistoryFillet(HistoryFilletRecipe recipe,IAssetStore assets,CancellationToken token)
+    {
+        using var shape=OcctGeometryBridge.ReadShape(recipe.Source,assets);
+        using var source=RepairSnapshot.Create(shape);
+        if(recipe.FullTopologyIndex>=source.Topology.Count||source.Topology[recipe.FullTopologyIndex].Kind!=ShapeKind.Edge)
+            throw new CadValidationException("Bound edge is not present in the exact target BRep.");
+        return FinishLocal(recipe.Source,source,
+            ContourFilletRecipe.Create(source,[FilletContourProgram.Constant(source.Select(recipe.FullTopologyIndex),recipe.Radius)]).Build(source),assets,token);
+    }
+
+    private GeometryResult FinishLocal(GeometryAssetRef sourceGeometry,RepairSnapshot source,LocalFeatureResult operation,IAssetStore assets,CancellationToken token)
+    {
+        using(operation)
+        {
         token.ThrowIfCancellationRequested();
         using var stored=OcctGeometryBridge.StoreShape(operation.RequireShape(),assets);
         using var reopened=OcctGeometryBridge.ReadShape(stored.Geometry,assets);
@@ -68,10 +84,11 @@ public sealed partial class OcctGeometryKernel
         }
         foreach(var t in source.Topology.Where(t=>t.Kind is ShapeKind.Face or ShapeKind.Edge or ShapeKind.Vertex))
             if(!entries.Any(e=>e.SourceIndex==t.Selection.Index))entries.Add(new(t.Selection.Index,HistoryKind(t.Kind),TopologyEvolution.Unmapped,null,null));
-        var history=new TopologyHistory(local.Source.Revision,local.Source.AssetId,stored.Geometry.Revision,stored.Geometry.AssetId,
+        var history=new TopologyHistory(sourceGeometry.Revision,sourceGeometry.AssetId,stored.Geometry.Revision,stored.Geometry.AssetId,
             HistoryAdapterVersion,source.Fingerprint,result.Fingerprint,source.Topology.Count,result.Topology.Count,entries.Distinct().ToImmutableArray());
         history.Validate();token.ThrowIfCancellationRequested();
         return new(stored.Geometry,assets.Acquire(stored.Geometry.AssetId)){TopologyHistory=history};
+        }
     }
 
     private static string CanonicalBrep(Shape shape)

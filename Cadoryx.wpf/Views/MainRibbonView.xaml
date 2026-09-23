@@ -82,10 +82,11 @@
                 </WrapPanel>
             </TabItem>
             <TabItem Header="{I18N {x:Static r:LangKeys.LocalFeatureTitle}}">
-                <StackPanel Orientation="Horizontal" Margin="8"><Button Content="{I18N {x:Static r:LangKeys.LocalFeatureTitle}}" Command="{Binding LocalFeatureCommand}"/></StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="8"><Button Content="{I18N {x:Static r:LangKeys.LocalFeatureTitle}}" Command="{Binding LocalFeatureCommand}"/><Button Content="{Binding HistoryQueryTitle}" Command="{Binding HistoryQueryCommand}" Margin="8,0,0,0"/></StackPanel>
             </TabItem>
             <TabItem Header="{I18N {x:Static r:LangKeys.View}}">
                 <WrapPanel>
+                    <Button Content="{Binding DocumentSettingsTitle}" Command="{Binding OpenDocumentSettingsCommand}" AutomationProperties.AutomationId="OpenDocumentSettings" />
                     <Button Content="{I18N {x:Static r:LangKeys.Axonometric}}"
                             Command="{Binding SetViewCommand}"
                             CommandParameter="Axonometric" />

@@ -12,7 +12,9 @@ M3-V 补充：`GeometryAssetRef.Format`、`XdeSourceRef.Format` 保存不可变 
 |---|---|---|---|
 | 业务/设计数据 | 名称、定义、装配引用、参数、草图约束、材质、命名视图 | 是 | Db + 文档命令 |
 | 精确结果与源资产 | 导入体 BRep、建模结果 BRep、源交换附件 | 是；不可重建的导入资产必需 | 资产仓 + Kernel.Occt + IO |
-| 会话/派生数据 | Selection、Camera、工具预览、BVH、网格、Viewer、原生句柄 | 默认否；NamedView 等显式转成业务对象 | Editor / Rendering |
+| 会话/派生数据 | Selection、Camera、工具预览、BVH、三角网格缓存、Viewer、原生句柄 | 默认否；NamedView 等显式转成业务对象 | Editor / Rendering |
+
+工作网格的显示、间距和吸附是 `DocumentSettings.Grid` 文档业务设置；`DocumentSettings.WorkPlane` 保存 XY/XZ/YZ 正交方向及法向偏移。背景是 `DocumentSettings.BackgroundTopArgb` 与 `BackgroundBottomArgb` 两个不透明色。世界原点固定 `(0,0,0)`，`DocumentSettings.Origin` 保存其显示开关、样式和彩绘尺寸（1–1000 mm）。渲染出的网格线、原点轴线与天空渐变均是派生显示。设置随 `document` v12 持久化，使用文档命令修改并进入撤销历史，不进入导出几何。旧 `document` v10 经显式迁移获得默认彩色坐标轴、20 mm；v11 获得默认 XY 零偏移工作平面。
 
 参数化结果可以重算，但首版仍保存最后一次成功的精确结果，让文档在能力缺失时可查看。导入形状、直接编辑的固化结果不能被当作可随意删除的缓存。装配结构也不能只存在 Viewer 场景里。
 
@@ -358,4 +360,4 @@ H2-B3 增加的运行时结构位于 Kernel.Abstractions，不进入 Db 或 Mess
 | HistoryResolution | Status、最终 Target、CandidateCount、Diagnostic、PathLength、CompletedSteps、StoppedAt |
 | HistoryTarget | 精确修订／资产、FullTopologyIndex、Kind、AdapterVersion；仅诊断使用 |
 
-最终目标只在每一段均唯一且验证通过时返回。失败保留停止特征和已完成段数，不保留中途目标供调用方误用。源语义引用仍遵守原来的 ExactRevision／Semantic 策略；持久化诊断查询和可被建模特征消费的跨特征引用按 H2-C1／C2 分开设计，见 [多步历史](HISTORY_CHAINS.md)。
+最终目标只在每一段均唯一且验证通过时返回。失败保留停止特征和已完成段数，不保留中途目标供调用方误用。源语义引用仍遵守原来的 ExactRevision／Semantic 策略；H2-C1 诊断查询见 [多步历史](HISTORY_CHAINS.md)，H2-C2 的可消费精确边绑定及过期策略见 [跨特征绑定](HISTORY_FEATURE_BINDINGS.md)。

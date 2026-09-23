@@ -45,9 +45,9 @@ public sealed class CadoryxApplicationSettings
         Viewport = new CadoryxViewportSettings
         {
             Projection = source.Viewport.Projection,
-            BackgroundColor = source.Viewport.BackgroundColor,
             ShowAxes = source.Viewport.ShowAxes,
             ShowViewCube = source.Viewport.ShowViewCube,
+            ViewCubeRotationDegrees = source.Viewport.ViewCubeRotationDegrees,
             ShowFramesPerSecond = source.Viewport.ShowFramesPerSecond,
             IsAntialiasingEnabled = source.Viewport.IsAntialiasingEnabled
         };
@@ -93,9 +93,9 @@ public enum CadoryxProjection
 public sealed class CadoryxViewportSettings
 {
     public CadoryxProjection Projection { get; set; } = CadoryxProjection.Isometric;
-    public uint BackgroundColor { get; set; } = 0xFF20242A;
     public bool ShowAxes { get; set; } = true;
     public bool ShowViewCube { get; set; } = true;
+    public int ViewCubeRotationDegrees { get; set; } = 45;
     public bool ShowFramesPerSecond { get; set; }
     public bool IsAntialiasingEnabled { get; set; } = true;
 
@@ -103,7 +103,8 @@ public sealed class CadoryxViewportSettings
     {
         if (!Enum.IsDefined(Projection))
             Projection = CadoryxProjection.Isometric;
-        BackgroundColor = BackgroundColor == 0 ? 0xFF20242A : BackgroundColor | 0xFF000000;
+        if (ViewCubeRotationDegrees is < 1 or > 180)
+            ViewCubeRotationDegrees = 45;
     }
 }
 

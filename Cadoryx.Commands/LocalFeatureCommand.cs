@@ -14,6 +14,7 @@ public sealed class LocalFeatureCommand(TopologyReference edge,LocalFeatureOpera
             throw new CadValidationException("Select an edge of the current box output.");
         if(doc.Layers[source.LayerId].IsLocked)throw new CadValidationException("Output layer is locked.");
         var producer=doc.Features[edge.FeatureId];
+        if(producer.IsStale)throw new CadValidationException("A stale feature cannot be used for local modeling.");
         if(producer.Recipe is not BoxRecipe box)throw new CadValidationException("Only box edges are supported.");
         var recipe=new LocalFeatureRecipe(source.Geometry,box,edge.Boundary,edge.SecondBoundary.Value,operation,size);recipe.Validate();
         var result=await context.Kernel.EvaluateAsync(recipe,context.Assets,token).ConfigureAwait(false);

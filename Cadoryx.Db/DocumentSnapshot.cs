@@ -12,6 +12,7 @@ public sealed record DocumentSnapshot(DocumentId Id,DocumentStateId StateId,stri
 {
     public ImmutableDictionary<SketchId,CadSketch> Sketches {get;init;}=ImmutableDictionary<SketchId,CadSketch>.Empty;
     public ImmutableDictionary<TopologyReferenceId,TopologyReference> TopologyReferences {get;init;}=ImmutableDictionary<TopologyReferenceId,TopologyReference>.Empty;
+    public ImmutableDictionary<HistoryQueryId,HistoryQuery> HistoryQueries {get;init;}=ImmutableDictionary<HistoryQueryId,HistoryQuery>.Empty;
     public static DocumentSnapshot Create(string name)
     {
         CadGuard.Name(name);var root=DefinitionId.New();var layer=LayerId.New();
@@ -36,6 +37,11 @@ public sealed record DocumentSnapshot(DocumentId Id,DocumentStateId StateId,stri
             // Deleted producers remain diagnosable and can be restored by exact undo.
             if(Features.TryGetValue(reference.FeatureId,out var producer)&&producer.OutputBodyId!=reference.OutputBodyId)
                 throw new CadValidationException("Topology output identity mismatch.");
+        }
+        foreach(var (id,query) in HistoryQueries)
+        {
+            query.Validate(Id);
+            if(id!=query.Id)throw new CadValidationException("History query key mismatch.");
         }
         if(!Extensions.IsDefault)foreach(var extension in Extensions){CadGuard.Name(extension.Kind);extension.PayloadAssetId.Validate();if(extension.SchemaVersion<1)throw new CadValidationException("Invalid extension version.");}
         if(!RetainedAssets.IsDefault)foreach(var asset in RetainedAssets)asset.Validate();
@@ -84,6 +90,18 @@ public sealed record DocumentSnapshot(DocumentId Id,DocumentStateId StateId,stri
             CadGuard.Id(id);CadGuard.Id(f.OutputBodyId);CadGuard.Name(f.Name);f.Recipe.Validate();f.Result.Validate();
             f.SketchSource?.ValidateCache(this,f);
             f.TopologyHistory?.ValidateFor(f);
+            if(f.IsStale&&f.TopologyHistory is not null)throw new CadValidationException("A stale feature cannot retain topology history.");
+            if(f.Recipe is HistoryFilletRecipe bound)
+            {
+                var binding=f.TopologyBinding??throw new CadValidationException("History fillet has no confirmed binding.");
+                binding.Validate(Id);
+                if(f.Inputs.Length!=1||f.Inputs[0]!=binding.TargetFeatureId||bound.FullTopologyIndex!=binding.FullTopologyIndex||
+                    bound.Source.Revision!=binding.TargetRevision||bound.Source.AssetId!=binding.TargetAsset||
+                    !Features.TryGetValue(binding.TargetFeatureId,out var target)||target.PartId!=f.PartId||
+                    !f.IsStale&&(target.Result.Revision!=binding.TargetRevision||target.Result.AssetId!=binding.TargetAsset||target.IsStale))
+                    throw new CadValidationException("History fillet binding differs from its target.");
+            }
+            else if(f.TopologyBinding is not null)throw new CadValidationException("Unexpected feature topology binding.");
             if(id!=f.Id||f.SchemaVersion!=1||f.Inputs.IsDefault||f.Inputs.Distinct().Count()!=f.Inputs.Length)throw new CadValidationException("Invalid feature.");
             if(f.OutputMetadata is {} metadata)
             {
@@ -99,7 +117,7 @@ public sealed record DocumentSnapshot(DocumentId Id,DocumentStateId StateId,stri
                     if(geometry.Revision!=source.Revision||geometry.AssetId!=source.Asset)
                         throw new CadValidationException("History operand order differs from its upstream features.");
                 }
-            if(f.Recipe is LocalFeatureRecipe local&&
+            if(!f.IsStale&&f.Recipe is LocalFeatureRecipe local&&
                 (f.Inputs.Length!=1||Features[f.Inputs[0]].Recipe is not BoxRecipe box||local.Box!=box||local.Source!=Features[f.Inputs[0]].Result))
                 throw new CadValidationException("Local feature must reference its current upstream box.");
         }

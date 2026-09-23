@@ -83,19 +83,17 @@
                                           Margin="0,4,0,14"
                                           Width="220"
                                           HorizontalAlignment="Left" />
-                                <TextBlock Text="{I18N {x:Static r:LangKeys.BackgroundColor}}" Opacity="0.75" />
-                                <mah:ColorPicker SelectedColor="{Binding BackgroundColor, Mode=TwoWay, Converter={x:Static cv:UIntColorToMediaColorConverter.Instance}}"
-                                                 IsAlphaChannelVisible="False"
-                                                 AddToRecentColorsTrigger="SelectedColorChanged"
-                                                 Margin="0,4,0,14"
-                                                 Width="220"
-                                                 HorizontalAlignment="Left" />
                                 <CheckBox Content="{I18N {x:Static r:LangKeys.ShowAxes}}"
                                           IsChecked="{Binding ShowAxes}"
                                           Margin="0,0,0,10" />
                                 <CheckBox Content="{I18N {x:Static r:LangKeys.ShowViewCube}}"
                                           IsChecked="{Binding ShowViewCube}"
                                           Margin="0,0,0,10" />
+                                <TextBlock Text="{I18N {x:Static r:LangKeys.ViewCubeRotationStep}}" Opacity="0.75" />
+                                <mah:NumericUpDown Value="{Binding ViewCubeRotationDegrees, Mode=TwoWay}"
+                                                   Minimum="1" Maximum="180" Interval="1"
+                                                   Margin="0,4,0,14" Width="220"
+                                                   HorizontalAlignment="Left" />
                                 <CheckBox Content="{I18N {x:Static r:LangKeys.ShowFramesPerSecond}}"
                                           IsChecked="{Binding ShowFramesPerSecond}"
                                           Margin="0,0,0,10" />

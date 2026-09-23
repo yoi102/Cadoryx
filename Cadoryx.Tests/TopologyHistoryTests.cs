@@ -132,7 +132,7 @@ public sealed class TopologyHistoryTests
             using var loaded=await storage.LoadAsync(path,assets);var saved=loaded.Snapshot.Features[feature.Id].TopologyHistory!;
             Assert.Equal(after.Features[feature.Id].TopologyHistory!.Entries.ToArray(),saved.Entries.ToArray());
             Assert.Equal(await kernel.TraceAsync(after,face,feature.Id,assets),await kernel.TraceAsync(loaded.Snapshot,face,feature.Id,assets));
-            Assert.Equal(8,FormatEvolutionTests.Manifest(path).Sections.Length);
+            Assert.Equal(CadSectionMigrationRegistry.CurrentFormats.Count,FormatEvolutionTests.Manifest(path).Sections.Length);
             Assert.Equal(session.Snapshot.Settings,await storage.ReadSettingsAsync(path));
             await Assert.ThrowsAnyAsync<Exception>(()=>session.ExecuteAsync(new RecomputeCommand(feature.Id,(LocalFeatureRecipe)feature.Recipe with{Size=1000})));
             Assert.Same(after,session.Snapshot);

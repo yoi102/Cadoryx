@@ -10,8 +10,8 @@ public sealed partial class CadSectionMigrationRegistry
     private readonly object gate=new();
     public static ImmutableDictionary<string,SectionFormat> CurrentFormats {get;}=new[]
     {
-        new SectionFormat("document",5,"messagepack"),new("structure",3,"messagepack"),new("features",5,"messagepack"),
-        new("presentation",2,"messagepack"),new("geometry",1,"messagepack"),new("sketches",2,"messagepack"),new("topology",1,"messagepack"),new("history",2,"messagepack")
+        new SectionFormat("document",12,"messagepack"),new("structure",3,"messagepack"),new("features",6,"messagepack"),
+        new("presentation",2,"messagepack"),new("geometry",1,"messagepack"),new("sketches",2,"messagepack"),new("topology",1,"messagepack"),new("history",2,"messagepack"),new("history-queries",1,"messagepack"),new("feature-bindings",1,"messagepack")
     }.ToImmutableDictionary(x=>x.Kind,StringComparer.Ordinal);
 
     public CadSectionMigrationRegistry(bool includeBuiltIns=true)
@@ -39,8 +39,24 @@ public sealed partial class CadSectionMigrationRegistry
             [new(new("document",3,"messagepack"),input["document"].Bytes),new(new("sketches",1,"messagepack"),MessagePackSections.EncodeSketches([]))]);
         RegisterStep("introduce-topology-references",[new("document",3,"messagepack")],[new("document",4,"messagepack"),CurrentFormats["topology"]],input=>
             [new(new("document",4,"messagepack"),input["document"].Bytes),new(CurrentFormats["topology"],MessagePackSections.EncodeTopology([]))]);
-        RegisterStep("introduce-topology-history",[new("document",4,"messagepack")],[CurrentFormats["document"],new("history",1,"messagepack")],input=>
-            [new(CurrentFormats["document"],input["document"].Bytes),new(new("history",1,"messagepack"),MessagePackSections.EncodeHistories([]))]);
+        RegisterStep("introduce-topology-history",[new("document",4,"messagepack")],[new("document",5,"messagepack"),new("history",1,"messagepack")],input=>
+            [new(new("document",5,"messagepack"),input["document"].Bytes),new(new("history",1,"messagepack"),MessagePackSections.EncodeHistories([]))]);
+        RegisterStep("introduce-history-queries",[new("document",5,"messagepack")],[new("document",6,"messagepack"),CurrentFormats["history-queries"]],input=>
+            [new(new("document",6,"messagepack"),input["document"].Bytes),new(CurrentFormats["history-queries"],MessagePackSections.EncodeHistoryQueries([]))]);
+        RegisterStep("introduce-feature-bindings",[new("document",6,"messagepack")],[new("document",7,"messagepack"),CurrentFormats["feature-bindings"]],input=>
+            [new(new("document",7,"messagepack"),input["document"].Bytes),new(CurrentFormats["feature-bindings"],MessagePackSections.EncodeFeatureBindings([]))]);
+        RegisterStep("document-grid-settings",[new("document",7,"messagepack")],[new("document",8,"messagepack")],input=>
+            [new(new("document",8,"messagepack"),MessagePackSections.UpgradeDocumentGrid(input["document"].Bytes))]);
+        RegisterStep("document-background-color",[new("document",8,"messagepack")],[new("document",10,"messagepack")],input=>
+            [new(new("document",10,"messagepack"),MessagePackSections.UpgradeDocumentBackground(input["document"].Bytes))]);
+        RegisterStep("document-solid-background-to-gradient",[new("document",9,"messagepack")],[new("document",10,"messagepack")],input=>
+            [new(new("document",10,"messagepack"),MessagePackSections.UpgradeSolidDocumentBackground(input["document"].Bytes))]);
+        RegisterStep("document-origin-axes",[new("document",10,"messagepack")],[new("document",11,"messagepack")],input=>
+            [new(new("document",11,"messagepack"),MessagePackSections.UpgradeDocumentOrigin(input["document"].Bytes))]);
+        RegisterStep("document-work-plane",[new("document",11,"messagepack")],[CurrentFormats["document"]],input=>
+            [new(CurrentFormats["document"],MessagePackSections.UpgradeDocumentWorkPlane(input["document"].Bytes))]);
+        RegisterStep("feature-stale-state",[new("features",5,"messagepack")],[CurrentFormats["features"]],input=>
+            [new(CurrentFormats["features"],input["features"].Bytes)]);
         RegisterStep("history-source-arguments",[new("history",1,"messagepack")],[CurrentFormats["history"]],input=>
             [new(CurrentFormats["history"],MessagePackSections.UpgradeHistorySources(input["history"].Bytes))]);
         RegisterStep("sketch-revisions",[new("sketches",1,"messagepack")],[CurrentFormats["sketches"]],input=>

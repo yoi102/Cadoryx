@@ -100,6 +100,9 @@ public sealed class SketchEditorTests
         try
         {
             document.SelectedSketchId=s.Id;document.StartSketchFeature("Extrude");Assert.NotNull(document.SelectedSketchProfile);document.SizeZ=10;document.PositionX=1000;
+            document.ConstructionPointer(new(5,5,0),100,100,2,true);
+            var linkedGhost=Assert.IsType<ExtrudeRecipe>(document.ConstructionPointer(new(5,5,0),100,80,2,false).Ghost);
+            Assert.Equal(10,linkedGhost.Distance);Assert.Equal(s.Plane,linkedGhost.Placement);
             await document.PreviewCommand.ExecuteAsync(null);Assert.True(document.HasPreview,document.ToolStatus);await document.ConfirmCommand.ExecuteAsync(null);
             var feature=Assert.Single(session.Snapshot.Features.Values);Assert.Equal(s.Id,feature.SketchSource!.SketchId);Assert.Equal(0,((ExtrudeRecipe)feature.Recipe).Placement.Translation.X);
             document.EditFeature(feature.Id);document.SizeZ=15;await document.PreviewCommand.ExecuteAsync(null);Assert.True(document.HasPreview,document.ToolStatus);await document.ConfirmCommand.ExecuteAsync(null);

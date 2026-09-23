@@ -38,7 +38,7 @@ public sealed partial class OcctGeometryKernel : ITopologyHistoryResolver
                     cancellationToken.ThrowIfCancellationRequested();
                     var feature=snapshot.Features[step.Feature];var history=feature.TopologyHistory;
                     HistoryResolution Stop(HistoryResolutionStatus status,string? code=null)=>Annotate(Fail(status,code),feature.Id);
-                    if(feature.Recipe is not (LocalFeatureRecipe or BooleanRecipe)||history is null)return Stop(HistoryResolutionStatus.Unsupported,"MISSING_HISTORY");
+                    if(feature.Recipe is not (LocalFeatureRecipe or HistoryFilletRecipe or BooleanRecipe)||history is null)return Stop(HistoryResolutionStatus.Unsupported,"MISSING_HISTORY");
                     if(history.ResultRevision!=feature.Result.Revision||history.ResultAsset!=feature.Result.AssetId)return Stop(HistoryResolutionStatus.Stale);
                     try{history.ValidateFor(feature);}
                     catch(CadValidationException){return Stop(HistoryResolutionStatus.Unsupported,"INVALID_HISTORY");}
