@@ -102,9 +102,9 @@
       },
       "OcctSharp.Native.win-x64": {
         "type": "Direct",
-        "requested": "[8.0.1-preview.28.cadoryx.viewcube.4, 8.0.1-preview.28.cadoryx.viewcube.4]",
-        "resolved": "8.0.1-preview.28.cadoryx.viewcube.4",
-        "contentHash": "SavHBrjzp0xR2zhy31QBmIC4KTiyXar2at21F5qXotWBAnC5L+fC39cDtHmDNkf0D1YzkFoUv5uHBfEB3xW2pg=="
+        "requested": "[8.0.1-preview.28.cadoryx.viewcube.5, 8.0.1-preview.28.cadoryx.viewcube.5]",
+        "resolved": "8.0.1-preview.28.cadoryx.viewcube.5",
+        "contentHash": "N+fFfR9NHHuIGvqmfNg0y7dQxMeq4de1N4yvKKNQJu/2I3H0rCTAgjtCU4vISJkFb4RqgyYZeVWHE0iZ+6FxHw=="
       },
       "Antelcat.I18N.SourceGenerators": {
         "type": "Transitive",
@@ -197,155 +197,155 @@
       },
       "OcctSharp": {
         "type": "Transitive",
-        "resolved": "8.0.1-preview.28.cadoryx.viewcube.4",
-        "contentHash": "Nwu482oTUHwsw/nMJMhxeXzeqx0j+RBFq1AQP2D5eqrArIuVrvGcb6DpLtq+VgDrDbbRYCA/gAH5WfUCiIHgDw==",
+        "resolved": "8.0.1-preview.28.cadoryx.viewcube.5",
+        "contentHash": "o+hi4ZGxVRYqsCCSzOnse5ALbCm69KPR1Qn3R7QMuqBVfqAz/iR2pQUlFVeH50bBUa1vzHQU33TIuOor0Wp6ew==",
         "dependencies": {
-          "OcctSharp.DataExchange": "8.0.1-preview.28.cadoryx.viewcube.4",
-          "OcctSharp.Documents": "8.0.1-preview.28.cadoryx.viewcube.4",
-          "OcctSharp.Draw": "8.0.1-preview.28.cadoryx.viewcube.4",
-          "OcctSharp.Foundation": "8.0.1-preview.28.cadoryx.viewcube.4",
-          "OcctSharp.Geometry": "8.0.1-preview.28.cadoryx.viewcube.4",
-          "OcctSharp.IVtk": "8.0.1-preview.28.cadoryx.viewcube.4",
-          "OcctSharp.Mesh": "8.0.1-preview.28.cadoryx.viewcube.4",
-          "OcctSharp.MeshData": "8.0.1-preview.28.cadoryx.viewcube.4",
-          "OcctSharp.Modeling": "8.0.1-preview.28.cadoryx.viewcube.4",
-          "OcctSharp.Runtime": "8.0.1-preview.28.cadoryx.viewcube.4",
-          "OcctSharp.Visualization": "8.0.1-preview.28.cadoryx.viewcube.4",
-          "OcctSharp.Xde": "8.0.1-preview.28.cadoryx.viewcube.4"
+          "OcctSharp.DataExchange": "8.0.1-preview.28.cadoryx.viewcube.5",
+          "OcctSharp.Documents": "8.0.1-preview.28.cadoryx.viewcube.5",
+          "OcctSharp.Draw": "8.0.1-preview.28.cadoryx.viewcube.5",
+          "OcctSharp.Foundation": "8.0.1-preview.28.cadoryx.viewcube.5",
+          "OcctSharp.Geometry": "8.0.1-preview.28.cadoryx.viewcube.5",
+          "OcctSharp.IVtk": "8.0.1-preview.28.cadoryx.viewcube.5",
+          "OcctSharp.Mesh": "8.0.1-preview.28.cadoryx.viewcube.5",
+          "OcctSharp.MeshData": "8.0.1-preview.28.cadoryx.viewcube.5",
+          "OcctSharp.Modeling": "8.0.1-preview.28.cadoryx.viewcube.5",
+          "OcctSharp.Runtime": "8.0.1-preview.28.cadoryx.viewcube.5",
+          "OcctSharp.Visualization": "8.0.1-preview.28.cadoryx.viewcube.5",
+          "OcctSharp.Xde": "8.0.1-preview.28.cadoryx.viewcube.5"
         }
       },
       "OcctSharp.DataExchange": {
         "type": "Transitive",
-        "resolved": "8.0.1-preview.28.cadoryx.viewcube.4",
-        "contentHash": "ZDAjF6MgIH4lpJnRxwzKoMfFXccOGS+kB9D5nLz8SfX5xNkkjatKJKfO3ItFpGt3EjE40i8m4WePuToKWGmnZA==",
+        "resolved": "8.0.1-preview.28.cadoryx.viewcube.5",
+        "contentHash": "/JXWFBe8yGm8c7Bf3DAURuyDjrlD2v4/xyOMNDP6FPUm4ZFl7uZPtAC08eKJ6Y6kA8ed4hrJv92XHsqzYHdSOQ==",
         "dependencies": {
-          "OcctSharp.Documents": "8.0.1-preview.28.cadoryx.viewcube.4",
-          "OcctSharp.Foundation": "8.0.1-preview.28.cadoryx.viewcube.4",
-          "OcctSharp.Geometry": "8.0.1-preview.28.cadoryx.viewcube.4",
-          "OcctSharp.Mesh": "8.0.1-preview.28.cadoryx.viewcube.4",
-          "OcctSharp.MeshData": "8.0.1-preview.28.cadoryx.viewcube.4",
-          "OcctSharp.Modeling": "8.0.1-preview.28.cadoryx.viewcube.4",
-          "OcctSharp.Runtime": "8.0.1-preview.28.cadoryx.viewcube.4",
-          "OcctSharp.Visualization": "8.0.1-preview.28.cadoryx.viewcube.4"
+          "OcctSharp.Documents": "8.0.1-preview.28.cadoryx.viewcube.5",
+          "OcctSharp.Foundation": "8.0.1-preview.28.cadoryx.viewcube.5",
+          "OcctSharp.Geometry": "8.0.1-preview.28.cadoryx.viewcube.5",
+          "OcctSharp.Mesh": "8.0.1-preview.28.cadoryx.viewcube.5",
+          "OcctSharp.MeshData": "8.0.1-preview.28.cadoryx.viewcube.5",
+          "OcctSharp.Modeling": "8.0.1-preview.28.cadoryx.viewcube.5",
+          "OcctSharp.Runtime": "8.0.1-preview.28.cadoryx.viewcube.5",
+          "OcctSharp.Visualization": "8.0.1-preview.28.cadoryx.viewcube.5"
         }
       },
       "OcctSharp.Documents": {
         "type": "Transitive",
-        "resolved": "8.0.1-preview.28.cadoryx.viewcube.4",
-        "contentHash": "oTfC596A1Zl177MUfGXTkQ85XDmKFqMOP0QD4YwEME/+hwheqEDW+rnf/obqY1hUs9GPuadbDdvG57LcgI4ivw==",
+        "resolved": "8.0.1-preview.28.cadoryx.viewcube.5",
+        "contentHash": "vOQhQxKvuGklDUAe0Vp/p5UetIj6CWWEblVrcqHPLlFYxDr6Imq8V0sq4KZTULPRzEFOqnt+Kpnw+nFk9fPbwQ==",
         "dependencies": {
-          "OcctSharp.Foundation": "8.0.1-preview.28.cadoryx.viewcube.4",
-          "OcctSharp.Geometry": "8.0.1-preview.28.cadoryx.viewcube.4",
-          "OcctSharp.MeshData": "8.0.1-preview.28.cadoryx.viewcube.4",
-          "OcctSharp.Modeling": "8.0.1-preview.28.cadoryx.viewcube.4",
-          "OcctSharp.Runtime": "8.0.1-preview.28.cadoryx.viewcube.4"
+          "OcctSharp.Foundation": "8.0.1-preview.28.cadoryx.viewcube.5",
+          "OcctSharp.Geometry": "8.0.1-preview.28.cadoryx.viewcube.5",
+          "OcctSharp.MeshData": "8.0.1-preview.28.cadoryx.viewcube.5",
+          "OcctSharp.Modeling": "8.0.1-preview.28.cadoryx.viewcube.5",
+          "OcctSharp.Runtime": "8.0.1-preview.28.cadoryx.viewcube.5"
         }
       },
       "OcctSharp.Draw": {
         "type": "Transitive",
-        "resolved": "8.0.1-preview.28.cadoryx.viewcube.4",
-        "contentHash": "QTnBt31aPESlu1mQdAMp0lRpJtaVMK6M/Z91em6pBNVU1oTt4Ymaz8W7jDx0byiBp/90f/GNe1drnX66WQU5nA==",
+        "resolved": "8.0.1-preview.28.cadoryx.viewcube.5",
+        "contentHash": "iUVAUZTLIk8gSJEAHEv98Hu8Em79JmQWWSM3lmzqlAr7YPKuDo1K+8wqZnuzvtuCAmGH8dVEncnDDPoBDrdRQg==",
         "dependencies": {
-          "OcctSharp.Runtime": "8.0.1-preview.28.cadoryx.viewcube.4",
-          "OcctSharp.Visualization": "8.0.1-preview.28.cadoryx.viewcube.4",
-          "OcctSharp.Xde": "8.0.1-preview.28.cadoryx.viewcube.4"
+          "OcctSharp.Runtime": "8.0.1-preview.28.cadoryx.viewcube.5",
+          "OcctSharp.Visualization": "8.0.1-preview.28.cadoryx.viewcube.5",
+          "OcctSharp.Xde": "8.0.1-preview.28.cadoryx.viewcube.5"
         }
       },
       "OcctSharp.Foundation": {
         "type": "Transitive",
-        "resolved": "8.0.1-preview.28.cadoryx.viewcube.4",
-        "contentHash": "T0kTw3nFI/v5EUZnldSG80jYTWhmZ5TpUpF2bIZPgChBCk7QG9GGN+A3IM3t8Hi5E2eT9+eb0L9JmgdSaZa8eA==",
+        "resolved": "8.0.1-preview.28.cadoryx.viewcube.5",
+        "contentHash": "G76f5R8KG3fPeBL5UDU9n6My4o0l5TS+Ig3/IazuHSb6sMlzx6EmgWtyCV/5X9cQLYKxo9Xk3EZTz5uwHmc5gA==",
         "dependencies": {
-          "OcctSharp.Runtime": "8.0.1-preview.28.cadoryx.viewcube.4"
+          "OcctSharp.Runtime": "8.0.1-preview.28.cadoryx.viewcube.5"
         }
       },
       "OcctSharp.Geometry": {
         "type": "Transitive",
-        "resolved": "8.0.1-preview.28.cadoryx.viewcube.4",
-        "contentHash": "b3rVDK6BxKVGm742/0EKwPZ6NdKw1+OqhGBC77XasjKqA5cEe0IbPtjMpD9eP7MrgTPFoKGqQoE0zaKl5F+jlA==",
+        "resolved": "8.0.1-preview.28.cadoryx.viewcube.5",
+        "contentHash": "wJPOTNSVTfjHyMmd+qchpF+BdT6zbl8iP7OQwOgegzEAtkSPgeE0rKnUjcVXwvJFDKxhKjhS7Y9Z1bqIhcPCEg==",
         "dependencies": {
-          "OcctSharp.Foundation": "8.0.1-preview.28.cadoryx.viewcube.4",
-          "OcctSharp.Runtime": "8.0.1-preview.28.cadoryx.viewcube.4"
+          "OcctSharp.Foundation": "8.0.1-preview.28.cadoryx.viewcube.5",
+          "OcctSharp.Runtime": "8.0.1-preview.28.cadoryx.viewcube.5"
         }
       },
       "OcctSharp.IVtk": {
         "type": "Transitive",
-        "resolved": "8.0.1-preview.28.cadoryx.viewcube.4",
-        "contentHash": "0F+IwnHFAeETCSvVpIPLBmAfd8glxju0CgT7r8Z6Eyu3INcqR60adn3xYZGl/ybhjOAiJmr7ojbhtA3uG7Y3KA==",
+        "resolved": "8.0.1-preview.28.cadoryx.viewcube.5",
+        "contentHash": "KeDzYcMOt1Lb5Hn2jAg9I02alAFCfWqxp2ZGmv2/dOTjLOIBO4s3ZFCwbzqnsa2g+V22VJ5j4YBhsYvVxNpBTw==",
         "dependencies": {
-          "OcctSharp.Runtime": "8.0.1-preview.28.cadoryx.viewcube.4",
-          "OcctSharp.Visualization": "8.0.1-preview.28.cadoryx.viewcube.4"
+          "OcctSharp.Runtime": "8.0.1-preview.28.cadoryx.viewcube.5",
+          "OcctSharp.Visualization": "8.0.1-preview.28.cadoryx.viewcube.5"
         }
       },
       "OcctSharp.Mesh": {
         "type": "Transitive",
-        "resolved": "8.0.1-preview.28.cadoryx.viewcube.4",
-        "contentHash": "cgEWgqx+cvMdduKCPEofHxs/wMIc18sj3feONYZd96RmgxQr/P/gXsGrL+3soxBUrGVQETQ/oBUDOwZxRJCQRA==",
+        "resolved": "8.0.1-preview.28.cadoryx.viewcube.5",
+        "contentHash": "KxFGyErCReP+DKhygn7USdO2RFD/MxaEnttzb0g7MaGUUuC5wl+D10BVmleem5hPerGdoCOgrgWLSpZlIBkfXQ==",
         "dependencies": {
-          "OcctSharp.Foundation": "8.0.1-preview.28.cadoryx.viewcube.4",
-          "OcctSharp.Geometry": "8.0.1-preview.28.cadoryx.viewcube.4",
-          "OcctSharp.MeshData": "8.0.1-preview.28.cadoryx.viewcube.4",
-          "OcctSharp.Modeling": "8.0.1-preview.28.cadoryx.viewcube.4",
-          "OcctSharp.Runtime": "8.0.1-preview.28.cadoryx.viewcube.4"
+          "OcctSharp.Foundation": "8.0.1-preview.28.cadoryx.viewcube.5",
+          "OcctSharp.Geometry": "8.0.1-preview.28.cadoryx.viewcube.5",
+          "OcctSharp.MeshData": "8.0.1-preview.28.cadoryx.viewcube.5",
+          "OcctSharp.Modeling": "8.0.1-preview.28.cadoryx.viewcube.5",
+          "OcctSharp.Runtime": "8.0.1-preview.28.cadoryx.viewcube.5"
         }
       },
       "OcctSharp.MeshData": {
         "type": "Transitive",
-        "resolved": "8.0.1-preview.28.cadoryx.viewcube.4",
-        "contentHash": "jW1MhXeMOUL1qt2etd5vB0D7ZsEaAuodoVE5UwmvTXnbSK6DoMMT8T+Km2MA5k7SdpN6s0/AZ+UZFf6KXfKxdA==",
+        "resolved": "8.0.1-preview.28.cadoryx.viewcube.5",
+        "contentHash": "Z4zO6/GGDIoFomT78yJlYAXBUv7lgkmHvyEr0xrr+LLpm74ogUrYE9fgBRDIk0iVhj5D/1m4K+FxgoakT6jeBQ==",
         "dependencies": {
-          "OcctSharp.Foundation": "8.0.1-preview.28.cadoryx.viewcube.4",
-          "OcctSharp.Geometry": "8.0.1-preview.28.cadoryx.viewcube.4",
-          "OcctSharp.Runtime": "8.0.1-preview.28.cadoryx.viewcube.4"
+          "OcctSharp.Foundation": "8.0.1-preview.28.cadoryx.viewcube.5",
+          "OcctSharp.Geometry": "8.0.1-preview.28.cadoryx.viewcube.5",
+          "OcctSharp.Runtime": "8.0.1-preview.28.cadoryx.viewcube.5"
         }
       },
       "OcctSharp.Modeling": {
         "type": "Transitive",
-        "resolved": "8.0.1-preview.28.cadoryx.viewcube.4",
-        "contentHash": "Pirr/vPYfcP97Q90+pHldv/Ghgve0xl4WU71VERtzVlqQ/MjOgMe7evVJpY7Rn/2bSXUZdbU5NeeeqALyl7mlA==",
+        "resolved": "8.0.1-preview.28.cadoryx.viewcube.5",
+        "contentHash": "Mhi/0mzjWhIuxtPeoo+HGMjSiZHPxJvw3kMlKdjktPoUDk1BOSFPFue/ANSflzemn5Nz+xh3vP9wvNMLUqr9Kw==",
         "dependencies": {
-          "OcctSharp.Foundation": "8.0.1-preview.28.cadoryx.viewcube.4",
-          "OcctSharp.Geometry": "8.0.1-preview.28.cadoryx.viewcube.4",
-          "OcctSharp.MeshData": "8.0.1-preview.28.cadoryx.viewcube.4",
-          "OcctSharp.Runtime": "8.0.1-preview.28.cadoryx.viewcube.4"
+          "OcctSharp.Foundation": "8.0.1-preview.28.cadoryx.viewcube.5",
+          "OcctSharp.Geometry": "8.0.1-preview.28.cadoryx.viewcube.5",
+          "OcctSharp.MeshData": "8.0.1-preview.28.cadoryx.viewcube.5",
+          "OcctSharp.Runtime": "8.0.1-preview.28.cadoryx.viewcube.5"
         }
       },
       "OcctSharp.Runtime": {
         "type": "Transitive",
-        "resolved": "8.0.1-preview.28.cadoryx.viewcube.4",
-        "contentHash": "TugRAuOtWTUS4lpOw22lolDgvjaQwZA8MX5zX8mpisfkl/eTgpzaQW+RTtMICbQfJUhJYjXX94rbmkgW6y7XrA==",
+        "resolved": "8.0.1-preview.28.cadoryx.viewcube.5",
+        "contentHash": "I6I/1pPsVcJo/PvMwuW+ImD7Kw/i9thEU5qZqTYMmUIe3shb56tYRFGU4ParmeoUZc64xWvkUnTylRLYpfi6sg==",
         "dependencies": {
-          "OcctSharp.Native.win-x64": "8.0.1-preview.28.cadoryx.viewcube.4"
+          "OcctSharp.Native.win-x64": "8.0.1-preview.28.cadoryx.viewcube.5"
         }
       },
       "OcctSharp.Visualization": {
         "type": "Transitive",
-        "resolved": "8.0.1-preview.28.cadoryx.viewcube.4",
-        "contentHash": "XYVBvRdXSUZDMsw5W0VxGsISfTpLOjAG01DBE2CeE5FBs1QERtYjYfNoFiRkVK7StYGIXDuUm10ZEZ0VZXAIOA==",
+        "resolved": "8.0.1-preview.28.cadoryx.viewcube.5",
+        "contentHash": "utLplEWhSGl650lHmWoU/IZs4+jTm+BGcppZKYJiYp/OKfOl1umHT6pULPDUyctXAIJTk6kd2lFqj9eodtpiUA==",
         "dependencies": {
-          "OcctSharp.Documents": "8.0.1-preview.28.cadoryx.viewcube.4",
-          "OcctSharp.Foundation": "8.0.1-preview.28.cadoryx.viewcube.4",
-          "OcctSharp.Geometry": "8.0.1-preview.28.cadoryx.viewcube.4",
-          "OcctSharp.Mesh": "8.0.1-preview.28.cadoryx.viewcube.4",
-          "OcctSharp.MeshData": "8.0.1-preview.28.cadoryx.viewcube.4",
-          "OcctSharp.Modeling": "8.0.1-preview.28.cadoryx.viewcube.4",
-          "OcctSharp.Runtime": "8.0.1-preview.28.cadoryx.viewcube.4"
+          "OcctSharp.Documents": "8.0.1-preview.28.cadoryx.viewcube.5",
+          "OcctSharp.Foundation": "8.0.1-preview.28.cadoryx.viewcube.5",
+          "OcctSharp.Geometry": "8.0.1-preview.28.cadoryx.viewcube.5",
+          "OcctSharp.Mesh": "8.0.1-preview.28.cadoryx.viewcube.5",
+          "OcctSharp.MeshData": "8.0.1-preview.28.cadoryx.viewcube.5",
+          "OcctSharp.Modeling": "8.0.1-preview.28.cadoryx.viewcube.5",
+          "OcctSharp.Runtime": "8.0.1-preview.28.cadoryx.viewcube.5"
         }
       },
       "OcctSharp.Xde": {
         "type": "Transitive",
-        "resolved": "8.0.1-preview.28.cadoryx.viewcube.4",
-        "contentHash": "y26Hp6JS2rNxtiVC3Sz3qFPUpOjB5LJdxAuv5frTMLEBQZVRIVC+4QPjY2hbrlbiFRaY30tYxTB6m4xgknqrCw==",
+        "resolved": "8.0.1-preview.28.cadoryx.viewcube.5",
+        "contentHash": "oGUzBklYPvfLy6Mhn1At+FHox41SsMkTQdYBBAKu5tTDoGHRZhqXoyWBZabAg3qxv3lJ8rMT9oe9e4lNpy1tGw==",
         "dependencies": {
-          "OcctSharp.DataExchange": "8.0.1-preview.28.cadoryx.viewcube.4",
-          "OcctSharp.Documents": "8.0.1-preview.28.cadoryx.viewcube.4",
-          "OcctSharp.Foundation": "8.0.1-preview.28.cadoryx.viewcube.4",
-          "OcctSharp.Geometry": "8.0.1-preview.28.cadoryx.viewcube.4",
-          "OcctSharp.Mesh": "8.0.1-preview.28.cadoryx.viewcube.4",
-          "OcctSharp.MeshData": "8.0.1-preview.28.cadoryx.viewcube.4",
-          "OcctSharp.Modeling": "8.0.1-preview.28.cadoryx.viewcube.4",
-          "OcctSharp.Runtime": "8.0.1-preview.28.cadoryx.viewcube.4",
-          "OcctSharp.Visualization": "8.0.1-preview.28.cadoryx.viewcube.4"
+          "OcctSharp.DataExchange": "8.0.1-preview.28.cadoryx.viewcube.5",
+          "OcctSharp.Documents": "8.0.1-preview.28.cadoryx.viewcube.5",
+          "OcctSharp.Foundation": "8.0.1-preview.28.cadoryx.viewcube.5",
+          "OcctSharp.Geometry": "8.0.1-preview.28.cadoryx.viewcube.5",
+          "OcctSharp.Mesh": "8.0.1-preview.28.cadoryx.viewcube.5",
+          "OcctSharp.MeshData": "8.0.1-preview.28.cadoryx.viewcube.5",
+          "OcctSharp.Modeling": "8.0.1-preview.28.cadoryx.viewcube.5",
+          "OcctSharp.Runtime": "8.0.1-preview.28.cadoryx.viewcube.5",
+          "OcctSharp.Visualization": "8.0.1-preview.28.cadoryx.viewcube.5"
         }
       },
       "cadoryx.commands": {
@@ -383,7 +383,7 @@
         "type": "Project",
         "dependencies": {
           "Cadoryx.Kernel.Abstractions": "[1.0.0, )",
-          "OcctSharp": "[8.0.1-preview.28.cadoryx.viewcube.4, 8.0.1-preview.28.cadoryx.viewcube.4]"
+          "OcctSharp": "[8.0.1-preview.28.cadoryx.viewcube.5, 8.0.1-preview.28.cadoryx.viewcube.5]"
         }
       },
       "cadoryx.lang": {

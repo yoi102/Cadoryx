@@ -51,8 +51,8 @@ M4-T1-H1 新增 Db/TopologyHistory、Kernel.Occt/OcctLocalHistory 与 OcctHistor
 采用 MessagePack NuGet：数值和记录数组紧凑、类型契约明确，C# 工具链成熟。M3-V 已测量当时五节实现的共享实例、25 MB BRep 和 128 MiB 扩展载荷；M4-S1 未重跑六节性能基准，也没有做与 JSON 的同条件性能比较，不能据此宣称固定倍数提升。详见 [格式演进与基准](FORMAT_EVOLUTION.md)。
 
 - 清单保留 JSON，便于诊断；十个业务节使用数字键 DTO；精确 BRep/XDE 不进入反射对象图序列化。
-- 当前 containerVersion=1、assetCatalogVersion=1、applicationVersion=0.4.12；features v6、document v12、structure v3、presentation/sketches/history v2、geometry/topology/history-queries/feature-bindings v1，均为 MessagePack。旧四节 v1/json → v2/messagepack → 提取共享 geometry 表；document v2 → v3 建立空 sketches 表；再迁移 sketches v1→v2 和 features v3→v4，明确草图修订与可选特征引用；document v3→v4 初始化 topology v1，document v4→v5 初始化 history v1，再经 history v1→v2 明确来源参数表；document v5→v6 初始化空 history-queries v1，v6→v7 初始化空 feature-bindings v1，v7→v8 补入默认文档网格；v8→v10 补默认天空渐变，v9→v10 保留单色两端，v10→v11 补默认原点坐标轴，v11→v12 补默认 XY 工作平面及零偏移；features v5→v6 保留原字节并使旧记录的过期位默认为 false。
-- AssetFormat 记录媒体类型、编码/格式版本、内核及写出库版本，跟随不可变几何引用。当前新资产为 OCCT 8.0.1 / OcctSharp 8.0.1-preview.28.cadoryx.viewcube.4；旧文件缺失的生产者版本保持未知。实际依赖的原生资产先校验描述与文件头，再进入内核。
+- 当前 containerVersion=1、assetCatalogVersion=1、applicationVersion=0.4.14；features v8、document v12、structure v3、presentation/sketches/history v2、geometry/topology/history-queries/feature-bindings v1，均为 MessagePack。旧四节 v1/json → v2/messagepack → 提取共享 geometry 表；document v2 → v3 建立空 sketches 表；再迁移 sketches v1→v2 和 features v3→v4，明确草图修订与可选特征引用；document v3→v4 初始化 topology v1，document v4→v5 初始化 history v1，再经 history v1→v2 明确来源参数表；document v5→v6 初始化空 history-queries v1，v6→v7 初始化空 feature-bindings v1，v7→v8 补入默认文档网格；v8→v10 补默认天空渐变，v9→v10 保留单色两端，v10→v11 补默认原点坐标轴，v11→v12 补默认 XY 工作平面及零偏移；features v5→v6 保留原字节并使旧记录的过期位默认为 false，v6→v7 对旧六数字局部配方补第七项 0，v7→v8 补附加边掩码与终点半径 0。
+- AssetFormat 记录媒体类型、编码/格式版本、内核及写出库版本，跟随不可变几何引用。当前新资产为 OCCT 8.0.1 / OcctSharp 8.0.1-preview.28.cadoryx.viewcube.5；旧文件缺失的生产者版本保持未知。实际依赖的原生资产先校验描述与文件头，再进入内核。
 - Key 与枚举数字是文件协议，不能重新编号或复用。配方有显式白名单。新增字段需要缺省语义或迁移；未知未来必需功能拒绝加载。
 - 未知可选节逐字节保留，同时文档只读；避免业务修改后悄悄写回不理解的引用。
 - ZIP 默认总解压上限 1 GiB、单资产 256 MiB、单结构节 32 MiB、清单 8 MiB、20 万条目。迁移输出也检查每节和总容量。还检查路径、重复名、声明长度与 SHA-256；这些限额属于当前可配置策略。
@@ -102,4 +102,4 @@ M3-V 在 `-WindowSmoke` 中新增三个固定旧文件的 MainWindow 打开、�
 
 ## M4-T2 局部建模入口
 
-Ribbon“局部建模”命令 → LocalFeatureViewModel → LocalFeatureWindow（MetroWindow + 独立 OcctViewportHost）。视口输出 BoxBoundary 语义，BoxTopology 共用于解析、高亮和建模；LocalFeatureCommand 创建带唯一 Box 上游的 LocalFeatureRecipe。FeatureRecompute 刷新依赖缓存，IO features v6 保存配方与过期位；旧 features v4/v5 显式迁移。Box 直接单边圆角/倒角见 [局部建模](LOCAL_FEATURES.md)；历史跨特征圆角见 [跨特征绑定](HISTORY_FEATURE_BINDINGS.md)，多边与变半径仍有门禁。
+Ribbon“局部建模”命令 → LocalFeatureViewModel → LocalFeatureWindow（MetroWindow + 独立 OcctViewportHost）。视口输出 BoxBoundary 语义，BoxTopology 共用于解析、高亮和建模；LocalFeatureCommand 创建带唯一 Box 上游的 LocalFeatureRecipe。FeatureRecompute 刷新依赖缓存，IO features v8 保存配方、附加 Box 边、线性终点半径、可选第二倒角距离与过期位；旧 features v4/v5/v6/v7 显式迁移。Box 边单次多边操作、单边线性变半径及既有参数编辑见 [局部建模](LOCAL_FEATURES.md)；历史跨特征圆角见 [跨特征绑定](HISTORY_FEATURE_BINDINGS.md)，局部结果连续建模和生成拓扑重选仍有门禁。

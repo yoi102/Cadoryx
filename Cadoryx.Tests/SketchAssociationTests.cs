@@ -86,7 +86,7 @@ public sealed class SketchAssociationTests
         Assert.All(a.Snapshot.Features.Values,f=>Assert.Null(f.SketchSource));Assert.Contains(a.Diagnostics,d=>d.Code=="IO.MIGRATED");
         using var files=new TestFiles();await storage.SaveAsync(a.Snapshot,assets,files.PathFor("new.cadoryx"));using var current=await storage.LoadAsync(files.PathFor("new.cadoryx"),assets);
         Assert.Empty(current.Diagnostics);Assert.Equal(a.Snapshot.StateId,current.Snapshot.StateId);Assert.Equal(a.Snapshot.Bodies.Values.OrderBy(x=>x.Id.Value),current.Snapshot.Bodies.Values.OrderBy(x=>x.Id.Value));
-        var manifest=FormatEvolutionTests.Manifest(files.PathFor("new.cadoryx"));Assert.Equal(6,manifest.Sections.Single(s=>s.Kind=="features").SchemaVersion);Assert.Equal(2,manifest.Sections.Single(s=>s.Kind=="sketches").SchemaVersion);
+        var manifest=FormatEvolutionTests.Manifest(files.PathFor("new.cadoryx"));Assert.Equal(CadSectionMigrationRegistry.CurrentFormats["features"].Version,manifest.Sections.Single(s=>s.Kind=="features").SchemaVersion);Assert.Equal(2,manifest.Sections.Single(s=>s.Kind=="sketches").SchemaVersion);
     }
     internal static AddBodyCommand Extrude(CadSketch s,double distance)=>new(new ExtrudeRecipe(SketchProfileBuilder.Polygon(s,s.Lines.Select(l=>l.Id)),distance,s.Plane),"Linked extrusion",s.PartId,sketchSource:SketchProfileReference.Create(s,s.Lines.Select(l=>l.Id)));
     internal sealed class InspectingKernel:IGeometryKernel

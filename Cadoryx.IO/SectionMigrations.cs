@@ -10,7 +10,7 @@ public sealed partial class CadSectionMigrationRegistry
     private readonly object gate=new();
     public static ImmutableDictionary<string,SectionFormat> CurrentFormats {get;}=new[]
     {
-        new SectionFormat("document",12,"messagepack"),new("structure",3,"messagepack"),new("features",6,"messagepack"),
+        new SectionFormat("document",12,"messagepack"),new("structure",3,"messagepack"),new("features",8,"messagepack"),
         new("presentation",2,"messagepack"),new("geometry",1,"messagepack"),new("sketches",2,"messagepack"),new("topology",1,"messagepack"),new("history",2,"messagepack"),new("history-queries",1,"messagepack"),new("feature-bindings",1,"messagepack")
     }.ToImmutableDictionary(x=>x.Kind,StringComparer.Ordinal);
 
@@ -55,16 +55,20 @@ public sealed partial class CadSectionMigrationRegistry
             [new(new("document",11,"messagepack"),MessagePackSections.UpgradeDocumentOrigin(input["document"].Bytes))]);
         RegisterStep("document-work-plane",[new("document",11,"messagepack")],[CurrentFormats["document"]],input=>
             [new(CurrentFormats["document"],MessagePackSections.UpgradeDocumentWorkPlane(input["document"].Bytes))]);
-        RegisterStep("feature-stale-state",[new("features",5,"messagepack")],[CurrentFormats["features"]],input=>
-            [new(CurrentFormats["features"],input["features"].Bytes)]);
+        RegisterStep("feature-stale-state",[new("features",5,"messagepack")],[new("features",6,"messagepack")],input=>
+            [new(new("features",6,"messagepack"),input["features"].Bytes)]);
+        RegisterStep("local-chamfer-two-distances",[new("features",6,"messagepack")],[new("features",7,"messagepack")],input=>
+            [new(new("features",7,"messagepack"),MessagePackSections.UpgradeLocalChamferTwoDistances(input["features"].Bytes))]);
+        RegisterStep("local-multi-edge-and-variable-radius",[new("features",7,"messagepack")],[CurrentFormats["features"]],input=>
+            [new(CurrentFormats["features"],MessagePackSections.UpgradeLocalMultiEdgeAndVariableRadius(input["features"].Bytes))]);
         RegisterStep("history-source-arguments",[new("history",1,"messagepack")],[CurrentFormats["history"]],input=>
             [new(CurrentFormats["history"],MessagePackSections.UpgradeHistorySources(input["history"].Bytes))]);
         RegisterStep("sketch-revisions",[new("sketches",1,"messagepack")],[CurrentFormats["sketches"]],input=>
             [new(CurrentFormats["sketches"],MessagePackSections.UpgradeSketchRevisions(input["sketches"].Bytes))]);
         RegisterStep("sketch-feature-references",[new("features",3,"messagepack")],[new("features",4,"messagepack")],input=>
             [new(new("features",4,"messagepack"),MessagePackSections.UpgradeSketchFeatureReferences(input["features"].Bytes))]);
-        RegisterStep("local-box-edge-recipes",[new("features",4,"messagepack")],[CurrentFormats["features"]],input=>
-            [new(CurrentFormats["features"],MessagePackSections.UpgradeLocalFeatures(input["features"].Bytes))]);
+        RegisterStep("local-box-edge-recipes",[new("features",4,"messagepack")],[new("features",6,"messagepack")],input=>
+            [new(new("features",6,"messagepack"),MessagePackSections.UpgradeLocalFeatures(input["features"].Bytes))]);
     }
     private static T Json<T>(SectionPayload input)=>JsonSerializer.Deserialize<T>(input.Bytes.Span,CadJson.Options)??throw new InvalidDataException("Null JSON section.");
 

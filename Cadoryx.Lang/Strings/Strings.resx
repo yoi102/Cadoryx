@@ -856,6 +856,12 @@
   <data name="Selected" xml:space="preserve">
     <value>Selected:</value>
   </data>
+  <data name="TwoDistances" xml:space="preserve">
+    <value>Two distances</value>
+  </data>
+  <data name="SecondDistance" xml:space="preserve">
+    <value>Second distance (mm)</value>
+  </data>
   <data name="RadiusOrDistance" xml:space="preserve">
     <value>Radius / distance (mm)</value>
   </data>
@@ -1186,14 +1192,46 @@
   <data name="DocumentDecimalPlaces" xml:space="preserve">
     <value>Decimal places</value>
   </data>
-  <data name="DocumentOriginSection" xml:space="preserve"><value>Origin and axes</value></data>
-  <data name="DocumentOriginVisible" xml:space="preserve"><value>Show model origin</value></data>
-  <data name="DocumentOriginStyle" xml:space="preserve"><value>Style</value></data>
-  <data name="DocumentOriginSize" xml:space="preserve"><value>Size (mm)</value></data>
-  <data name="DocumentOriginHint" xml:space="preserve"><value>Fixed at world (0, 0, 0); X red, Y green, Z blue.</value></data>
-  <data name="DocumentOriginColorAxes" xml:space="preserve"><value>Colored XYZ axes</value></data>
-  <data name="DocumentOriginSubtleAxes" xml:space="preserve"><value>Subtle single-color axes</value></data>
-  <data name="DocumentOriginMarker" xml:space="preserve"><value>Origin marker</value></data>
-  <data name="DocumentWorkPlane" xml:space="preserve"><value>Work plane</value></data>
-  <data name="DocumentWorkPlaneOffset" xml:space="preserve"><value>Plane offset (mm)</value></data>
+  <data name="DocumentOriginSection" xml:space="preserve">
+    <value>Origin and axes</value>
+  </data>
+  <data name="DocumentOriginVisible" xml:space="preserve">
+    <value>Show model origin</value>
+  </data>
+  <data name="DocumentOriginStyle" xml:space="preserve">
+    <value>Style</value>
+  </data>
+  <data name="DocumentOriginSize" xml:space="preserve">
+    <value>Size (mm)</value>
+  </data>
+  <data name="DocumentOriginHint" xml:space="preserve">
+    <value>Fixed at world (0, 0, 0); X red, Y green, Z blue.</value>
+  </data>
+  <data name="DocumentOriginColorAxes" xml:space="preserve">
+    <value>Colored XYZ axes</value>
+  </data>
+  <data name="DocumentOriginSubtleAxes" xml:space="preserve">
+    <value>Subtle single-color axes</value>
+  </data>
+  <data name="DocumentOriginMarker" xml:space="preserve">
+    <value>Origin marker</value>
+  </data>
+  <data name="DocumentWorkPlane" xml:space="preserve">
+    <value>Work plane</value>
+  </data>
+  <data name="DocumentWorkPlaneOffset" xml:space="preserve">
+    <value>Plane offset (mm)</value>
+  </data>
+  <data name="LocalVariableRadius" xml:space="preserve">
+    <value>Linear variable radius</value>
+  </data>
+  <data name="LocalEndRadius" xml:space="preserve">
+    <value>End radius (mm)</value>
+  </data>
+  <data name="LocalAddEdgesOnPick" xml:space="preserve">
+    <value>Click to add or remove edges</value>
+  </data>
+  <data name="LocalEdgeList" xml:space="preserve">
+    <value>Box edges (primary edge is fixed)</value>
+  </data>
 </root>

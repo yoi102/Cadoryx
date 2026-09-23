@@ -33,6 +33,26 @@ internal static partial class MessagePackSections
         if(Read<PackFeaturesV3>(bytes).Features.Any(f=>f.Recipe.Kind=="local-box-edge"))throw new InvalidDataException("Local feature in legacy schema.");
         return bytes;
     }
+    internal static ReadOnlyMemory<byte> UpgradeLocalChamferTwoDistances(ReadOnlyMemory<byte> bytes)
+    {
+        var old=Read<PackFeaturesV3>(bytes);
+        return Serialize(old with{Features=old.Features.Select(f=>
+        {
+            if(f.Recipe.Kind!="local-box-edge")return f;
+            if(f.Recipe.Numbers.Length!=6)throw new InvalidDataException("Invalid legacy local feature parameter count.");
+            return f with{Recipe=f.Recipe with{Numbers=[..f.Recipe.Numbers,0]}};
+        }).ToArray()});
+    }
+    internal static ReadOnlyMemory<byte> UpgradeLocalMultiEdgeAndVariableRadius(ReadOnlyMemory<byte> bytes)
+    {
+        var old=Read<PackFeaturesV3>(bytes);
+        return Serialize(old with{Features=old.Features.Select(f=>
+        {
+            if(f.Recipe.Kind!="local-box-edge")return f;
+            if(f.Recipe.Numbers.Length!=7)throw new InvalidDataException("Invalid v7 local feature parameter count.");
+            return f with{Recipe=f.Recipe with{Numbers=[..f.Recipe.Numbers,0,0]}};
+        }).ToArray()});
+    }
     internal static IReadOnlyDictionary<AssetId,string> RequiredAssetRoles(SectionPayload geometrySection)
     {
         var roles=new Dictionary<AssetId,string>();
@@ -51,7 +71,7 @@ internal static partial class MessagePackSections
     }
 
     // V3 changes geometry fields from embedded records to revision IDs; V2 contracts remain intact.
-    internal static SectionPayload[] SplitGeometry(StructureSection structure,FeaturesSection features,int featureVersion=6)
+    internal static SectionPayload[] SplitGeometry(StructureSection structure,FeaturesSection features,int featureVersion=8)
     {
         var table=new Dictionary<GeometryRevisionId,GeometryAssetRef>();
         Guid Reference(GeometryAssetRef geometry)

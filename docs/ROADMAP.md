@@ -7,17 +7,17 @@
 | 阶段 | 已有代码和证据 | 当前状态 / 剩余 |
 |---|---|---|
 | M0 | 项目分层、领域验证、资产租约、事务、历史、多文档路由、真实树/属性；自动化与桌面冒烟 | 基础闭环完成 |
-| M1 | 初始 preview.26 NuGet，H2-B2 升级为本地 .h2b2.2，M2-V8 使用本地 8.0.1-preview.28.cadoryx.viewcube.4；真实 Viewer、XDE 导入、单位/旋转/源颜色和浮动重建 | M1-Q 本机项完成；仍需完整元数据、外部厂商样本、真实混合 DPI/RDP/长期验证 |
+| M1 | 初始 preview.26 NuGet，H2-B2 升级为本地 .h2b2.2，M2-V8 当前使用本地 8.0.1-preview.28.cadoryx.viewcube.5；真实 Viewer、XDE 导入、单位/旋转/源颜色和浮动重建 | M1-Q 本机项完成；仍需完整元数据、外部厂商样本、真实混合 DPI/RDP/长期验证 |
 | M2 | 基础建模、预览/确认/取消、属性、精确撤销重做；目标零件、文档内图层/材料、局部实例位置 UI；工作网格、原点轴、视口鼠标确定基础尺寸、文档级天空渐变、轮廓形体反馈、三种正交工作平面与标准视图动画 | 基础闭环、M2-I 和 M2-V1–V7 限定范围完成；共享子装配使独立、自由旋转工作平面及更多实时手柄仍在后续阶段 |
 | M3 | 十节 MessagePack、资产格式目录、JSON v1/MessagePack v2/M3-V/M4-S1/S2 迁移；hash/限额、保存点、设置读取；三格式导出与进程终止恢复 | M3-R、M3-V 已完成，M4 扩展草图/拓扑/历史、诊断查询及特征绑定节；整体仍需更多文件系统故障覆盖 |
-| M4 | 草图编辑与关联重算；Box 面/边语义引用；MetroWindow 局部建模；局部／布尔历史与有界多步诊断、查询及精确边绑定 | M4-S1/S2、T1/T2、H1/H2-A、H2-B1/B2/B3、H2-C1/C2 声明范围已实现；通用拓扑命名、连续局部建模及曲线区域继续分项实施 |
+| M4 | 草图编辑与关联重算；Box 面/边语义引用；MetroWindow 局部建模；局部／布尔历史与有界多步诊断、查询及精确边绑定 | M4-S1/S2、T1/T2、T3-A 参数编辑、T3-B1 双距离倒角、H1/H2-A、H2-B1/B2/B3、H2-C1/C2 声明范围已实现；通用拓扑命名、更多连续局部建模及曲线区域继续分项实施 |
 | M5 | 定义/实例模型和刚体位姿命令 | 未完成：完整装配编辑、约束求解与外部引用 |
 | M6 | 资产复用、历史条目上限、容量限制；共享实例/25 MB BRep/128 MiB 载荷读写基准 | 未完成：真实大模型导入/绘制、内存预算、多视口及发布专项验证 |
 
 新增实施要求：
 
 - IO-01：结构节使用 MessagePack 3.1.8，稳定数值 Key、白名单 DTO、UntrustedData 安全选项；禁止 Typeless。JSON 仅作清单及 v1 结构节兼容读取。
-- IO-02：每节同时记录 schemaVersion 与 encoding；当前 features v6、document v12、structure v3、presentation/sketches/history v2、geometry/topology/history-queries/feature-bindings v1 均为 MessagePack，旧 JSON v1、MessagePack v2、M3-V、M4-S1/S2/T1/T2、H2-C1 九节、document v7/v8/v9/v10/v11 和 history v1 文件经显式规则迁移。字段编号不得重排或复用。
+- IO-02：每节同时记录 schemaVersion 与 encoding；当前 features v8、document v12、structure v3、presentation/sketches/history v2、geometry/topology/history-queries/feature-bindings v1 均为 MessagePack，旧 JSON v1、MessagePack v2、M3-V、M4-S1/S2/T1/T2、features v6/v7、H2-C1 九节、document v7/v8/v9/v10/v11 和 history v1 文件经显式规则迁移。字段编号不得重排或复用。
 - IO-03：资产目录包含媒体类型、编码/格式版本、内核和写出库来源；旧版本缺失的生产者信息保持未知，不能补成当前版本。跨节迁移必须完整检查输入/输出、容量、取消和引用一致性。
 - EX-01：导出入口支持 STEP/STP、IGES/IGS、STL；STL 提供线性/角度网格偏差、二进制/ASCII 和可见对象选项。
 - EX-02：格式能力与信息损失必须反馈给用户；导出不改变 `.cadoryx` 保存点；失败或取消保留旧目标文件。
@@ -188,7 +188,7 @@ M4-S2 已完成固定零件平面上的点/线/矩形/圆绘制、捕捉、点�
 
 | 事项 | 已定方向 | 需要的证据 |
 |---|---|---|
-| 消费包版本 | 初始 preview.26；当前固定本地 8.0.1-preview.28.cadoryx.viewcube.4 | 同版本族锁文件、原生 DLL 哈希与实际消费者；公开发布及完整上游发布门禁独立记录 |
+| 消费包版本 | 初始 preview.26；当前固定本地 8.0.1-preview.28.cadoryx.viewcube.5 | 同版本族锁文件、原生 DLL 哈希与实际消费者；公开发布及完整上游发布门禁独立记录 |
 | 草图约束求解器 | 已采用独立 ISketchConstraintSolver + MathNet.Numerics 5.0.0（MIT）；解析方程和有上限的托管稠密 SVD 已验收 | 更完整约束集、交互拖动、大草图与奇异构型/分支处理仍需验证 |
 | 拓扑持久命名 | 明确版本 + 语义/算法历史，歧义不猜测 | 布尔/圆角变更、上下文保存恢复用例 |
 | 实时 WPF 合成视口 | HwndHost 首版 | 若需求确实需要覆盖控件，再评估 D3DImage/帧复制 |
@@ -283,12 +283,16 @@ M4-T1 最终验证：`scripts/verify.ps1 -PublishSmoke -WindowSmoke -RecoverySmo
 | 已完成（唯一有界链诊断） | M4-T1-H2-B3 多步历史诊断 | 32 段链及图/证据预算、逐段所有输入核对、路径/拆分/合并停止定位、重算/撤销/保存恢复；不开放自动重绑定 |
 | 已完成（诊断查询） | M4-T1-H2-C1 历史诊断交互与查询持久化 | 保存源语义引用及目标 FeatureId，统一 MetroWindow 展示逐段链/停止位置，三语言、异步状态保护、删除/重选/撤销和文件迁移；不保存临时目标索引，验收见 [历史诊断查询](HISTORY_QUERIES.md) |
 | 已完成（唯一历史 Box 源边） | M4-T1-H2-C2 跨特征引用与显式重选 | 精确目标绑定、非 Box 圆角、过期冻结与后继传播、窗口确认／重选、重算/历史/迁移/恢复闭环，见 [跨特征绑定](HISTORY_FEATURE_BINDINGS.md)；自动重绑定及生成面建模另行验收 |
-| 局部建模扩展 | M4-T3 连续编辑 | 已有局部特征参数编辑 UI、多边操作、生成面/边重选、变半径和双距离倒角；分别验证，不并入 T2 已完成范围 |
+| 已完成（既有单边局部特征） | M4-T3-A 参数编辑 | 模型树与属性面板打开 MetroWindow；原操作/尺寸初始化、预览/取消/确认、后继布尔重算、精确撤销/重做和存储；被后继消费后也可从模型树编辑 |
+| 已完成（单条 Box 边） | M4-T3-B1 双距离倒角 | 第一支撑面距离和相邻面第二距离分别设置；创建/编辑、重算、文件迁移与真实 OCCT 倒角验证 |
+| 已实现（限定 Box） | M4-T3-B2a 多条边一次操作 | 最多十二条 Box 原始边逐条增删，高亮与单次圆角／倒角、参数编辑、重算及存储；相邻边需由 OCCT 实际算法判定可行性 |
+| 已实现（单边） | M4-T3-B2b 线性变半径圆角 | 起点／终点半径、原生线性 law、创建／编辑、预览及存储；与多边、倒角组合明确拒绝 |
+| 局部建模扩展 | M4-T3-B2c 连续建模 | 在局部结果上继续操作、生成面/边显式重选及有界历史身份；独立设计与验收 |
 | 后续扩展 | M4-S3 曲线区域与约束 | 圆/圆弧和孔洞区域、切线/角度、构造几何编辑、更多拖动与捕捉，分项验收 |
 | 后续 | M5/M6 装配与规模 | 装配编辑、共享子装配使独立、外部引用、资产预算和真实模型性能，逐项验收 |
 | 专项门禁 | M1-Q 环境及互操作余项 | 外部 CAD 厂商文件、真实混合 DPI/RDP、长期资源矩阵；与完整面样式/PMI 导出分项验收 |
 
-H2-C1 的实现与范围见 [历史诊断查询](HISTORY_QUERIES.md)，H2-C2 的精确边绑定与显式重选见 [跨特征绑定](HISTORY_FEATURE_BINDINGS.md)。自动重绑定、通用拓扑命名和生成面继续建模仍需独立验收，H2 整体尚未完成。M4-T3 参数编辑/多边等扩展、M4-S3 曲线区域，以及 M1-Q 环境和 M3 文件系统门禁继续保留。
+H2-C1 的实现与范围见 [历史诊断查询](HISTORY_QUERIES.md)，H2-C2 的精确边绑定与显式重选见 [跨特征绑定](HISTORY_FEATURE_BINDINGS.md)。自动重绑定、通用拓扑命名和生成面继续建模仍需独立验收，H2 整体尚未完成。M4-T3-B2c 连续建模、M4-S3 曲线区域，以及 M1-Q 环境和 M3 文件系统门禁继续保留。
 
 H2-C1 最终执行 `scripts/verify.ps1 -PublishSmoke -WindowSmoke -RecoverySmoke`：锁定还原、Release 0 警告／错误，349 项测试通过；补充三语言状态资源测试后全套 352 项再次通过。独立发布常规、窗口和生产 30 秒终止／重启恢复冒烟均 PASS。恢复文件内的诊断查询从当前 BRep 重新解析为 Resolved、2/2。日志 `artifacts/h2c1-verify-complete.log` 与 `artifacts/h2c1-tests-final.log`，发布与三组冒烟目录时间戳 `20260923-154701`。本阶段未改 OcctSharp 或原生 ABI；完整上游发布、全新机器、混合 DPI/RDP、长期资源及真实大型模型门禁未运行。
 
@@ -311,3 +315,11 @@ M2-V6 将工作平面方向和法向偏移放进文档设置，以局部右手�
 M2-V7 让 Ribbon 标准视图按钮从当前相机方向转至 OCCT 提供的最终前／顶／右／轴测等视角。动画用 320 ms 缓入缓出和相机姿态球面插值，保持目标、视距及有效上方向；重复点击从当前帧继续，鼠标导航、FitAll 或视口销毁会终止计时器。`artifacts/camera-animation-verify.log`：锁定还原、Release 0 警告／错误、371/371 测试，以及独立发布、窗口与生产 30 秒终止／恢复冒烟均 PASS；发布和三组冒烟目录时间戳 `20260923-200321`。窗口检查动画开始时原位、中途帧、准确到达、快速重定向与滚轮中断；`view-front-transition.png` 和 `view-front-complete.png` 已目视核对，绑定日志为空。本阶段复用锁定的 OcctSharp 相机接口，不修改上游或文件格式。物理鼠标、多 GPU／混合 DPI 与长期动画资源验证仍需独立验收。
 
 M2-V8 将 OCCT Viewer 自有的 ViewCube 固定在视口右上角；面、边、角点击沿用 M2-V7 的 320 ms 可中断动画。两枚 45°（1/8 圆）短弧箭头位于立方体右上侧，只在视线对准六个正交面时显示，斜面／轴测视角隐藏；悬停高亮被命中的面或箭头。箭头绕当前视线方向旋转，相机眼点和目标点不变；应用设置可将单次角度设为 1–180°，默认 45°，并控制 ViewCube 显隐。新增原生空命中保护以避免空白右上角导致进程访问异常。锁定本地 `8.0.1-preview.28.cadoryx.viewcube.4` 配对包；OcctSharp Release／Debug 原生构建与两配置真实 Viewer 定向测试通过，独立 NuGet 消费探针 19/19 场景和 62/62 原生 DLL 哈希通过。`artifacts/viewcube4-verify.log` 记录 Cadoryx 锁定还原、Release 0 警告／错误、372/372 测试，以及独立发布、窗口和生产 30 秒强制终止／恢复冒烟均 PASS，绑定日志为空；发布与三组冒烟目录时间戳为 `20260923-212850`。已目视核对窗口截图 `view-cube-face-arrows.png`、`view-cube-face-hover.png`、`view-cube-left-hover.png` 和 `view-cube-oblique-no-arrows.png`。本地开发包未公开发布；完整上游发布门禁、物理鼠标、多 GPU／混合 DPI 与长期资源验证尚未运行。
+
+M2-V8 点击闪帧修复：原先计算 ViewCube、Ribbon 标准视角及旋转箭头目标时，先在显示中的 OCCT 视图切到目标方向，再恢复当前相机；即使立即恢复，目标帧也可能先出现在窗口。现由 OcctSharp 在独立相机副本上计算目标，保留观察中心和视距，查询不改动实时视图；Cadoryx 从当前帧开始原有 320 ms 动画。锁定本地 `8.0.1-preview.28.cadoryx.viewcube.5` 配对包。OcctSharp Release／Debug 原生构建和两配置真实 Viewer 定向测试通过，覆盖 26 个立方体方向、7 个标准视角、查询不改动当前相机及旋转目标；独立 NuGet 探针 19/19 场景、62/62 原生 DLL 包载荷匹配。`artifacts/viewcube5-verify-complete.log` 记录 Cadoryx 锁定还原、Release 0 警告／错误、372/372 测试、独立发布、窗口和生产 30 秒强制终止／恢复冒烟一次运行均 PASS；发布与三组冒烟目录时间戳 `20260923-221107`，绑定日志为空。窗口冒烟新增点击后首帧前相机不变的断言，并继续检查终点方向和箭头点击。完整流程实测比原脚本 60 秒发布／45 秒窗口等待上限更长，已各放宽到 120 秒；此前两次超时不是测试断言失败。物理鼠标与多 GPU／混合 DPI 的瞬时帧缓冲仍需专项目视验收。
+
+M4-T3-A 完成既有单边局部圆角／倒角特征的参数编辑闭环。模型树特征项或选中输出后的属性面板会打开同一 MetroWindow，初始化原操作和尺寸；只编辑操作与半径／距离，预览不提交，修改参数／取消／外部文档变更会清除旧候选。`RecomputeCommand` 按现有特征 ID 重算后继闭包；即使局部 Body 已被布尔后继消费，编辑窗口也从特征结果显示源与预览。测试覆盖后继布尔、失败/锁定层、精确撤销／重做与保存重开。锁定包 `8.0.1-preview.28.cadoryx.viewcube.5` 的独立 NuGet 探针 19/19 场景、62/62 原生 DLL 匹配，证据 `artifacts/occt-capability-20260923-222911`；本项只需要现有应用命令与内核接口，未改上游 OcctSharp。最终 `scripts/verify.ps1 -PublishSmoke -WindowSmoke -RecoverySmoke`：锁定还原、Release 0 警告／错误、375/375 测试，发布桌面、窗口与生产 30 秒强制终止／恢复冒烟均 PASS；三组绑定日志为空。发布及三组冒烟目录时间戳 `20260923-223229`，常规冒烟的 `local-feature-result.json` 记录 `parameterEdit=true` 和编辑后 5,955 mm³，并导出 STEP/IGES/STL。M4-T3-B 的连续结果建模、多边和更丰富的局部参数仍未实现；物理鼠标、混合 DPI/RDP、长期资源和真实大型模型门禁未运行。
+
+M4-T3-B1 为单条 Box 边增加可选双距离倒角：第一距离以 First 支撑面为准，第二距离沿相邻面；取消选项仍是旧等距倒角，圆角禁止携带第二距离。创建和既有参数编辑窗口共用输入、隔离预览、原子重算及资产生命周期。`features` v7 对本地配方数字数组追加第七项，旧 v6 六数字配方迁移时补第七项 0；该阶段写出器为 0.4.13，旧文件仍可读取，新格式缺项则拒绝。真实 OCCT 2×3 mm 倒角在 10×20×30 mm Box 的选定边上得到 5,970 mm³、合法 BRep 与历史；定向测试覆盖错误参数、UI 候选取消、上游重算、当前往返、合成旧格式迁移和损坏协议。锁定 `8.0.1-preview.28.cadoryx.viewcube.5` 包的独立消费者已经覆盖 `ChamferDimensions.TwoDistances`，该阶段探针 `artifacts/occt-capability-20260923-230918` 为 19/19 场景及 62/62 原生 DLL 匹配，未发现需迁移 OcctSharp 的接口缺口。阶段验收 `scripts/verify.ps1 -PublishSmoke -WindowSmoke -RecoverySmoke` 锁定还原、Release 0 警告／错误、386/386 测试，以及独立发布常规、窗口、生产 30 秒强制终止／恢复冒烟均 PASS；发布及三组冒烟目录时间戳 `20260923-232053`，绑定日志均为空。常规冒烟 `local-feature-result.json` 记录 `twoDistanceChamfer=true` 和 5,970 mm³，保存后导出 STEP/IGES/STL。首次完整脚本在旧草图迁移测试中遇到硬编码 features v6 断言，已改为检查当前格式；首次运行不计完整通过，以最终运行结果为准。该阶段尚未实施 B2 的多边、变半径或连续结果建模；物理鼠标、混合 DPI/RDP、长期资源与真实大模型门禁未运行。
+
+M4-T3-B2a/B2b 连续完成两个独立扩展。B2a 在单次局部特征中对多条原始 Box 边建立稳定 12 位掩码，逐边唯一定位并用一次原生圆角／倒角构建；创建窗口连续拾取和勾选、编辑窗口附加边勾选、视口多边高亮、预览取消、上游重算及历史均沿用现有原子链路。B2b 对单边圆角增加线性终点半径，调用 `FilletContourProgram.FromLaw` 和 `ScalarLawDefinition.Linear`；与多边或倒角组合明确拒绝。`features` v8 对旧七数字配方追加两个零值，v7→v8 迁移保持旧语义；写出器 0.4.14，非法位、重复主边、非整数掩码、非法半径及缺项拒绝加载。定向 67/67、最终 Release 0 警告／错误及 397/397 全量测试通过，真实双边圆角／倒角和变半径均检查 BRep 与历史。独立锁定 NuGet 探针 `artifacts/occt-capability-20260923-233837` 为 19/19、62/62 原生 DLL 匹配，无需修改 OcctSharp。`scripts/verify.ps1 -PublishSmoke -WindowSmoke -RecoverySmoke` 的发布、常规桌面、窗口专项及生产 30 秒终止／恢复均 PASS，时间戳 `20260923-234129`，常规／窗口／恢复绑定日志均为 0 字节；常规桌面冒烟还覆盖新控件的多边预览、变半径参数互斥和取消不提交。B2c 的局部结果连续建模及生成拓扑重选未实现；物理鼠标、混合 DPI/RDP、长期资源和真实大型模型门禁未运行。

@@ -84,6 +84,7 @@ public partial class CadDocumentViewModel : ObservableDocument
     [NotifyCanExecuteChangedFor(nameof(PreviewCommand),nameof(BooleanPreviewCommand),nameof(ConfirmCommand))]
     private bool isClosingRequested;
     public event EventHandler? Activated;
+    public event EventHandler<FeatureId>? LocalFeatureEditRequested;
     public event EventHandler? Detaching;
     public bool IsDetached {get;private set;}
     public event EventHandler? CloseRequested;
@@ -202,6 +203,12 @@ public partial class CadDocumentViewModel : ObservableDocument
     public void EditFeature(FeatureId id)
     {
         var feature=Session.Snapshot.Features[id];InvalidatePreview();EditingFeature=id;SelectedTargetPart=feature.PartId;ObjectName=feature.Name;
+        if(feature.Recipe is LocalFeatureRecipe)
+        {
+            EditingFeature=null;
+            LocalFeatureEditRequested?.Invoke(this,id);
+            return;
+        }
         switch(feature.Recipe)
         {
             case BoxRecipe b:ToolKind="Box";SizeX=b.X;SizeY=b.Y;SizeZ=b.Z;SetPosition(b.Placement);break;

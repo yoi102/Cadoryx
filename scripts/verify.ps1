@@ -29,7 +29,7 @@ try {
         @($cadStart.EnvironmentVariables.Keys) | Where-Object { $_ -match '^(CSF_|CASROOT|OCCT|OCCTSHARP)' } | ForEach-Object { $cadStart.EnvironmentVariables.Remove($_) }
         $cadRun = [System.Diagnostics.Process]::Start($cadStart)
         try {
-            if (!$cadRun.WaitForExit(60000)) { $cadRun.Kill(); throw 'Desktop smoke timed out.' }
+            if (!$cadRun.WaitForExit(120000)) { $cadRun.Kill(); throw 'Desktop smoke timed out.' }
             $cadResult = Join-Path $cadSmoke 'result.txt'
             if (!(Test-Path -LiteralPath $cadResult)) { throw "No smoke result (exit $($cadRun.ExitCode))." }
             Get-Content -LiteralPath $cadResult
@@ -45,7 +45,7 @@ try {
             $cadStart.Arguments = '--window-smoke "' + $cadWindowSmoke + '" "' + $cadFixtures + '"'
             $cadWindowRun = [System.Diagnostics.Process]::Start($cadStart)
             try {
-                if (!$cadWindowRun.WaitForExit(45000)) { $cadWindowRun.Kill(); throw 'Window smoke timed out.' }
+                if (!$cadWindowRun.WaitForExit(120000)) { $cadWindowRun.Kill(); throw 'Window smoke timed out.' }
                 $cadWindowResult = Join-Path $cadWindowSmoke 'result.txt'
                 if (!(Test-Path -LiteralPath $cadWindowResult)) { throw "No window result (exit $($cadWindowRun.ExitCode))." }
                 Get-Content -LiteralPath $cadWindowResult

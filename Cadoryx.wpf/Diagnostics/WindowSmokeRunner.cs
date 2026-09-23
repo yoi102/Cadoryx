@@ -90,9 +90,11 @@ internal static class WindowSmokeRunner
                     }
             Check(cubePixel is not null&&cubeTarget is not null,"Upper-right ViewCube has a selectable direction");
             var (cubeX,cubeY)=cubePixel ?? throw new InvalidOperationException("ViewCube hit disappeared.");
+            Camera(initialCubeCamera,drawingViewport.CaptureCamera());
             drawingViewport.SaveScreenshot(Path.Combine(output,"view-cube.png"));
             drawingViewport.PointerPressed(0,cubeX,cubeY,0);
             drawingViewport.PointerReleased(0,cubeX,cubeY,0);
+            Camera(initialCubeCamera,drawingViewport.CaptureCamera());
             await Task.Delay(380);Camera(cubeTarget!,drawingViewport.CaptureCamera());
             drawingViewport.SetProjection(CadProjection.Front);drawingViewport.Redraw();
             drawingViewport.SaveScreenshot(Path.Combine(output,"view-cube-face-arrows.png"));
@@ -118,7 +120,9 @@ internal static class WindowSmokeRunner
                 "ViewCube arrow hover visibly highlights the detected arrow");
             var beforeTurn=drawingViewport.CaptureCamera();
             var leftTarget=drawingViewport.CaptureCubeTurnTarget(OcctSharp.ViewerCubeTurn.Left,45);
+            Camera(beforeTurn,drawingViewport.CaptureCamera());
             drawingViewport.PointerPressed(0,left.X,left.Y,0);drawingViewport.PointerReleased(0,left.X,left.Y,0);
+            Camera(beforeTurn,drawingViewport.CaptureCamera());
             await Task.Delay(380);Camera(leftTarget,drawingViewport.CaptureCamera());
             var cubeRightTarget=drawingViewport.CaptureCubeTurnTarget(OcctSharp.ViewerCubeTurn.Right,45);
             drawingViewport.PointerPressed(0,right.X,right.Y,0);drawingViewport.PointerReleased(0,right.X,right.Y,0);

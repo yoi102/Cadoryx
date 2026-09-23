@@ -834,6 +834,12 @@
   <data name="Selected" xml:space="preserve">
     <value>已选择：</value>
   </data>
+  <data name="TwoDistances" xml:space="preserve">
+    <value>双距离倒角</value>
+  </data>
+  <data name="SecondDistance" xml:space="preserve">
+    <value>第二距离 (mm)</value>
+  </data>
   <data name="RadiusOrDistance" xml:space="preserve">
     <value>半径 / 距离（mm）</value>
   </data>
@@ -1164,14 +1170,46 @@
   <data name="DocumentDecimalPlaces" xml:space="preserve">
     <value>小数位数</value>
   </data>
-  <data name="DocumentOriginSection" xml:space="preserve"><value>原点与坐标轴</value></data>
-  <data name="DocumentOriginVisible" xml:space="preserve"><value>显示模型原点</value></data>
-  <data name="DocumentOriginStyle" xml:space="preserve"><value>样式</value></data>
-  <data name="DocumentOriginSize" xml:space="preserve"><value>尺寸（毫米）</value></data>
-  <data name="DocumentOriginHint" xml:space="preserve"><value>固定在世界坐标 (0, 0, 0)；X 红、Y 绿、Z 蓝。</value></data>
-  <data name="DocumentOriginColorAxes" xml:space="preserve"><value>彩色 XYZ 坐标轴</value></data>
-  <data name="DocumentOriginSubtleAxes" xml:space="preserve"><value>柔和单色坐标轴</value></data>
-  <data name="DocumentOriginMarker" xml:space="preserve"><value>仅显示原点标记</value></data>
-  <data name="DocumentWorkPlane" xml:space="preserve"><value>工作平面</value></data>
-  <data name="DocumentWorkPlaneOffset" xml:space="preserve"><value>平面偏移（毫米）</value></data>
+  <data name="DocumentOriginSection" xml:space="preserve">
+    <value>原点与坐标轴</value>
+  </data>
+  <data name="DocumentOriginVisible" xml:space="preserve">
+    <value>显示模型原点</value>
+  </data>
+  <data name="DocumentOriginStyle" xml:space="preserve">
+    <value>样式</value>
+  </data>
+  <data name="DocumentOriginSize" xml:space="preserve">
+    <value>尺寸（毫米）</value>
+  </data>
+  <data name="DocumentOriginHint" xml:space="preserve">
+    <value>固定在世界坐标 (0, 0, 0)；X 红、Y 绿、Z 蓝。</value>
+  </data>
+  <data name="DocumentOriginColorAxes" xml:space="preserve">
+    <value>彩色 XYZ 坐标轴</value>
+  </data>
+  <data name="DocumentOriginSubtleAxes" xml:space="preserve">
+    <value>柔和单色坐标轴</value>
+  </data>
+  <data name="DocumentOriginMarker" xml:space="preserve">
+    <value>仅显示原点标记</value>
+  </data>
+  <data name="DocumentWorkPlane" xml:space="preserve">
+    <value>工作平面</value>
+  </data>
+  <data name="DocumentWorkPlaneOffset" xml:space="preserve">
+    <value>平面偏移（毫米）</value>
+  </data>
+  <data name="LocalVariableRadius" xml:space="preserve">
+    <value>线性变半径</value>
+  </data>
+  <data name="LocalEndRadius" xml:space="preserve">
+    <value>终点半径（毫米）</value>
+  </data>
+  <data name="LocalAddEdgesOnPick" xml:space="preserve">
+    <value>点击添加或移除边</value>
+  </data>
+  <data name="LocalEdgeList" xml:space="preserve">
+    <value>Box 边（主边固定）</value>
+  </data>
 </root>

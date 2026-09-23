@@ -32,9 +32,9 @@ H2-A 已补充旋转坐标系的限定舍入处理和旧历史适配器兼容。
 
 M4-T1-H1 建立局部算法历史证据、八节存储和诊断解析，其当时的限制与验证记录见 [算法历史](TOPOLOGY_HISTORY.md)；旋转、布尔和多步诊断的当前范围以上述 H2 文档为准。
 
-M4-T1 已实现 Box 六面/十二边语义引用与持久化；M4-T2 接通 MetroWindow 面/边拾取、失效重选和单边圆角/倒角预览确认。支持边界见 [拓扑引用基础](TOPOLOGY_REFERENCES.md)和 [局部建模](LOCAL_FEATURES.md)。
+M4-T1 已实现 Box 六面/十二边语义引用与持久化；M4-T2 接通 MetroWindow 面/边拾取、失效重选和单边圆角/倒角预览确认；M4-T3-A/B1 增加既有局部特征参数编辑及单边双距离倒角。支持边界见 [拓扑引用基础](TOPOLOGY_REFERENCES.md)和 [局部建模](LOCAL_FEATURES.md)。
 
-`.cadoryx` 采用 ZIP 容器、JSON 清单、MessagePack 3.1.8 数字键 DTO 和独立 BRep/XDE 资产。当前十节为 features v6、document v12、structure v3、presentation/sketches/history v2、geometry/topology/history-queries/feature-bindings v1；支持旧四节 JSON v1、MessagePack v2、M3-V、M4-S1/S2/T1/T2、H2-C1 九节、document v7/v8/v9/v10/v11 及 history v1 文件迁移。资产目录记录媒体类型、编码/格式版本和内核来源。模型数据不直接序列化 ViewModel 或 native 对象。
+`.cadoryx` 采用 ZIP 容器、JSON 清单、MessagePack 3.1.8 数字键 DTO 和独立 BRep/XDE 资产。当前十节为 features v8、document v12、structure v3、presentation/sketches/history v2、geometry/topology/history-queries/feature-bindings v1；支持旧四节 JSON v1、MessagePack v2、M3-V、M4-S1/S2/T1/T2、features v6/v7、H2-C1 九节、document v7/v8/v9/v10/v11 及 history v1 文件迁移。资产目录记录媒体类型、编码/格式版本和内核来源。模型数据不直接序列化 ViewModel 或 native 对象。
 
 | 格式 | 读取 | 写入 | 用途 |
 |---|---|---|---|

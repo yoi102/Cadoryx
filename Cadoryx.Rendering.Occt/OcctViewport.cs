@@ -229,19 +229,24 @@ public sealed class OcctViewport : ICadViewport
         selectionBox=box;selectionKind=kind;viewer.ClearSelection();
         foreach(var entry in entries.Values)entry.Presentation.SetSelectionKind(kind is null?null:kind==TopologyKind.Face?ShapeKind.Face:ShapeKind.Edge);
     }
-    public void HighlightBoxSelection(TopologyReference? reference)
+    public void HighlightBoxSelection(TopologyReference? reference)=>HighlightBoxSelections(reference is null?[]:[reference]);
+    public void HighlightBoxSelections(IEnumerable<TopologyReference> references)
     {
+        var selected=references.ToArray();
         foreach(var entry in entries.Values)
         {
             entry.Presentation.ClearAllSubshapeOverrides();
-            if(reference is null||selectionBox is not {} box)continue;
+            if(selected.Length==0||selectionBox is not {} box)continue;
             using var topology=entry.Geometry.Shape.GetTopologyAdjacency(ShapeKind.Edge,ShapeKind.Face);
-            var parts=reference.Kind==TopologyKind.Face?topology.Ancestors:topology.Items;
-            var candidates=parts.Where(s=>BoxTopology.Matches(s,box,reference.Kind,reference.Boundary,reference.SecondBoundary)).ToArray();
-            if(candidates.Length==1)
+            foreach(var reference in selected)
             {
-                entry.Presentation.SetSubshapeColor(candidates[0],new(1,0.65,0));
-                if(reference.Kind==TopologyKind.Edge)entry.Presentation.SetSubshapeWidth(candidates[0],4);
+                var parts=reference.Kind==TopologyKind.Face?topology.Ancestors:topology.Items;
+                var candidates=parts.Where(s=>BoxTopology.Matches(s,box,reference.Kind,reference.Boundary,reference.SecondBoundary)).ToArray();
+                if(candidates.Length==1)
+                {
+                    entry.Presentation.SetSubshapeColor(candidates[0],new(1,0.65,0));
+                    if(reference.Kind==TopologyKind.Edge)entry.Presentation.SetSubshapeWidth(candidates[0],4);
+                }
             }
         }
         viewer.Redraw();
@@ -349,14 +354,16 @@ public sealed class OcctViewport : ICadViewport
     public CadCamera CaptureProjectionTarget(CadProjection projection)
     {
         var current=CaptureCamera();
-        try {viewer.SetProjection(ToViewerProjection(projection));return CaptureCamera();}
-        finally {RestoreCamera(current);viewer.Redraw();}
+        var target=viewer.GetProjectionTargetCamera(ToViewerProjection(projection));
+        return current with {Eye=new(target.Eye.X,target.Eye.Y,target.Eye.Z),
+            Target=new(target.Target.X,target.Target.Y,target.Target.Z),Up=new(target.Up.X,target.Up.Y,target.Up.Z)};
     }
     public CadCamera CaptureCubeTarget(ViewerCubeOrientation orientation)
     {
         var current=CaptureCamera();
-        try {viewer.SetCubeOrientation(orientation);return CaptureCamera();}
-        finally {RestoreCamera(current);viewer.Redraw();}
+        var target=viewer.GetCubeTargetCamera(orientation);
+        return current with {Eye=new(target.Eye.X,target.Eye.Y,target.Eye.Z),
+            Target=new(target.Target.X,target.Target.Y,target.Target.Z),Up=new(target.Up.X,target.Up.Y,target.Up.Z)};
     }
     public void SetViewCubeVisible(bool visible)=>viewer.SetViewCubeVisible(visible);
     public ViewerCubeOrientation? HitViewCube(int x,int y)=>viewer.HitViewCube(x,y);
@@ -366,8 +373,8 @@ public sealed class OcctViewport : ICadViewport
         if(turn is not (ViewerCubeTurn.Left or ViewerCubeTurn.Right))throw new ArgumentOutOfRangeException(nameof(turn));
         if(degrees is < 1 or > 180)throw new ArgumentOutOfRangeException(nameof(degrees));
         var current=CaptureCamera();
-        try {viewer.RollCamera(turn==ViewerCubeTurn.Left?-degrees:degrees);return CaptureCamera();}
-        finally {RestoreCamera(current);viewer.Redraw();}
+        var target=viewer.GetRolledCamera(turn==ViewerCubeTurn.Left?-degrees:degrees);
+        return current with {Up=new(target.Up.X,target.Up.Y,target.Up.Z)};
     }
     private static ViewerProjection ToViewerProjection(CadProjection projection)=>projection switch
     {

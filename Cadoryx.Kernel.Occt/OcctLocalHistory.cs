@@ -15,15 +15,27 @@ public sealed partial class OcctGeometryKernel
     {
         using var shape=OcctGeometryBridge.ReadShape(local.Source,assets);
         using var source=RepairSnapshot.Create(shape);
-        var edges=FindSemantic(source,local.Box,TopologyKind.Edge,local.First,local.Second);
-        if(edges.Length!=1)throw new CadValidationException("Local edge is missing or ambiguous. Reselect it.");
+        var selected=local.Edges().Select(pair=>
+        {
+            var edges=FindSemantic(source,local.Box,TopologyKind.Edge,pair.First,pair.Second);
+            if(edges.Length!=1)throw new CadValidationException("Local edge is missing or ambiguous. Reselect it.");
+            return(pair.First,Index:edges[0]);
+        }).ToArray();
         LocalFeatureResult Build()
         {
             if(local.Operation==Cadoryx.Db.LocalFeatureOperation.Fillet)
-                return ContourFilletRecipe.Create(source,[FilletContourProgram.Constant(source.Select(edges[0]),local.Size)]).Build(source);
-            var faces=FindSemantic(source,local.Box,TopologyKind.Face,local.First,null);
-            if(faces.Length!=1)throw new CadValidationException("Chamfer support face is missing or ambiguous.");
-            return ContourChamferRecipe.Create(source,[new(source.Select(edges[0]),source.Select(faces[0]),ChamferDimensions.Symmetric,local.Size)]).Build(source);
+                return ContourFilletRecipe.Create(source,selected.Select(edge=>local.EndRadius is {} end
+                    ?FilletContourProgram.FromLaw(source.Select(edge.Index),ScalarLawDefinition.Linear(new(0,1),local.Size,end))
+                    :FilletContourProgram.Constant(source.Select(edge.Index),local.Size)).ToArray()).Build(source);
+            var chamfers=selected.Select(edge=>
+            {
+                var faces=FindSemantic(source,local.Box,TopologyKind.Face,edge.First,null);
+                if(faces.Length!=1)throw new CadValidationException("Chamfer support face is missing or ambiguous.");
+                return local.SecondDistance is {} second
+                    ?new ChamferContourProgram(source.Select(edge.Index),source.Select(faces[0]),ChamferDimensions.TwoDistances,local.Size,second)
+                    :new ChamferContourProgram(source.Select(edge.Index),source.Select(faces[0]),ChamferDimensions.Symmetric,local.Size);
+            }).ToArray();
+            return ContourChamferRecipe.Create(source,chamfers).Build(source);
         }
         return FinishLocal(local.Source,source,Build(),assets,token);
     }

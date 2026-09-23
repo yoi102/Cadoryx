@@ -7,6 +7,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Threading;
 using Cadoryx.Commands;
 using Cadoryx.Db;
+using Cadoryx.Editor;
 using Cadoryx.Kernel.Abstractions;
 using Cadoryx.Rendering;
 using Cadoryx.ViewModels;
@@ -38,6 +39,24 @@ internal static class LocalFeatureSmokeRunner
         var reselected=session.Snapshot.TopologyReferences[oldReference.Id];
         Check(reselected.Boundary==BoxBoundary.ZMax&&reselected.Policy==TopologyRebindPolicy.ExactRevision&&reselected.OriginRevision!=oldReference.OriginRevision,"Explicit reselection persisted");
         var before=session.Snapshot;
+        await Operate(()=>vm.LocalFeatureCommand.ExecuteAsync(null),async dialog=>
+        {
+            var editor=dialog.Editor;editor.SelectedBox=editor.Boxes.Single(b=>b.FeatureId==producer.Id);
+            editor.Pick(BoxBoundary.XMin,BoxBoundary.YMin);dialog.SizeInput.Value=.5;
+            dialog.AddEdgesOnPickCheck.IsChecked=true;await Idle();
+            editor.Pick(BoxBoundary.XMax,BoxBoundary.YMax);
+            Check(editor.AddEdgesOnPick&&editor.AdditionalEdges==LocalFeatureRecipe.EdgeBit(BoxBoundary.XMax,BoxBoundary.YMax),"Multi-edge controls and selection");
+            await editor.PreviewCommand.ExecuteAsync(null);Check(editor.CanConfirm,editor.Status);
+            dialog.VariableRadiusCheck.IsChecked=true;dialog.EndRadiusInput.Value=2;await Idle();
+            Check(!editor.CanConfirm,"Parameter change discards preview");
+            await editor.PreviewCommand.ExecuteAsync(null);Check(!editor.CanConfirm,"Variable radius rejects multiple edges");
+            editor.Pick(BoxBoundary.XMax,BoxBoundary.YMax);
+            await editor.PreviewCommand.ExecuteAsync(null);Check(editor.CanConfirm,editor.Status);
+            Check(editor.Scene!.Items.Single().Geometry.VolumeMm3<6000,"Variable radius preview volume");
+            Check(ReferenceEquals(before,session.Snapshot),"Extended preview is uncommitted");
+            dialog.Close();
+        });
+        Check(ReferenceEquals(before,session.Snapshot),"Extended dialog cancellation keeps document unchanged");
         foreach(var language in new[]{"en-US","zh-CN","ja-JP"})
         {
             var original=CultureInfo.CurrentUICulture;CultureInfo.CurrentUICulture=CultureInfo.GetCultureInfo(language);
@@ -70,11 +89,41 @@ internal static class LocalFeatureSmokeRunner
         var after=session.Snapshot;var feature=after.Features.Values.Single(f=>f.PartId==part&&f.Recipe is LocalFeatureRecipe);
         Check(Math.Abs(feature.Result.VolumeMm3-5980)<1e-4,"Confirmed volume");
         await session.UndoAsync();Check(ReferenceEquals(before,session.Snapshot),"Exact undo");await session.RedoAsync();Check(ReferenceEquals(after,session.Snapshot),"Exact redo");
+        var treeFeature=All(vm.ModelTree.Items).Single(item=>item.Feature==feature.Id);
+        await Operate(()=>{vm.ModelTree.Select(treeFeature);return Task.CompletedTask;},async dialog=>
+        {
+            var editor=dialog.Editor;Check(editor.IsEditing&&!editor.CanChooseSource,"Model tree opens parameter editor");
+            Check(editor.Operation==LocalFeatureOperation.Chamfer&&editor.Size==2,"Existing recipe initialized");
+            dialog.SizeInput.Value=3;dialog.TwoDistancesCheck.IsChecked=true;dialog.SecondSizeInput.Value=2;
+            await Idle();await editor.PreviewCommand.ExecuteAsync(null);
+            Check(editor.UseTwoDistances&&editor.SecondDistance==2&&editor.CanConfirm&&
+                Math.Abs(editor.Scene!.Items.Single().Geometry.VolumeMm3-5970)<1e-4,"Two-distance preview and MahApps binding");
+            Check(ReferenceEquals(after,session.Snapshot),"Edited preview is uncommitted");
+            dialog.Close();
+        });
+        Check(ReferenceEquals(after,session.Snapshot),"Tree edit cancellation keeps original output");
+        var occurrence=after.EnumerateOccurrences().Single(o=>o.DefinitionId==part);
+        vm.ActiveDocument.Selection.Replace([new SelectionTarget(occurrence.Path,feature.OutputBodyId,feature.Result.Revision)]);
+        await Operate(()=>{vm.Properties.EditFeatureCommand.Execute(null);return Task.CompletedTask;},async dialog=>
+        {
+            var editor=dialog.Editor;Check(editor.IsEditing,"Properties opens parameter editor");
+            dialog.SizeInput.Value=3;dialog.TwoDistancesCheck.IsChecked=true;dialog.SecondSizeInput.Value=2;
+            await Idle();await editor.PreviewCommand.ExecuteAsync(null);
+            Check(editor.CanConfirm&&Math.Abs(editor.Scene!.Items.Single().Geometry.VolumeMm3-5970)<1e-4,"Properties two-distance preview");
+            await editor.ConfirmCommand.ExecuteAsync(null);
+        });
+        var edited=session.Snapshot;Check(edited.Features[feature.Id].OutputBodyId==feature.OutputBodyId&&
+            Math.Abs(edited.Features[feature.Id].Result.VolumeMm3-5970)<1e-4&&
+            ((LocalFeatureRecipe)edited.Features[feature.Id].Recipe).SecondDistance==2,"Edited feature keeps identity and both distances");
+        await session.UndoAsync();Check(ReferenceEquals(after,session.Snapshot),"Edit exact undo");
+        await session.RedoAsync();Check(ReferenceEquals(edited,session.Snapshot),"Edit exact redo");
         var storage=services.GetRequiredService<IDocumentStorage>();var path=Path.Combine(output,"local-feature.cadoryx");await session.SaveAsync(storage,path);
-        using(var loaded=await storage.LoadAsync(path,session.Assets))Check(loaded.Snapshot.Features[feature.Id].Recipe==feature.Recipe,"Local recipe roundtrip");
-        foreach(var extension in new[]{"step","iges","stl"})await services.GetRequiredService<IGeometryKernel>().ExportAsync(after,session.Assets,Path.Combine(output,"local-feature."+extension));
-        await File.WriteAllTextAsync(Path.Combine(output,"local-feature-result.json"),JsonSerializer.Serialize(new{passed=true,facePicking=true,edgePicking=true,referenceReselection=true,previewCancel=true,exactUndoRedo=true,volume=5980,cultures=new[]{"en-US","zh-CN","ja-JP"}}));
+        using(var loaded=await storage.LoadAsync(path,session.Assets))Check(loaded.Snapshot.Features[feature.Id].Recipe==edited.Features[feature.Id].Recipe,"Edited local recipe roundtrip");
+        foreach(var extension in new[]{"step","iges","stl"})await services.GetRequiredService<IGeometryKernel>().ExportAsync(edited,session.Assets,Path.Combine(output,"local-feature."+extension));
+        await File.WriteAllTextAsync(Path.Combine(output,"local-feature-result.json"),JsonSerializer.Serialize(new{passed=true,facePicking=true,edgePicking=true,referenceReselection=true,previewCancel=true,parameterEdit=true,twoDistanceChamfer=true,exactUndoRedo=true,volume=5970,cultures=new[]{"en-US","zh-CN","ja-JP"}}));
     }
+    private static IEnumerable<Cadoryx.ViewModels.Toolboxes.ModelTreeItemViewModel> All(IEnumerable<Cadoryx.ViewModels.Toolboxes.ModelTreeItemViewModel> items)
+    {foreach(var item in items){yield return item;foreach(var child in All(item.Children))yield return child;}}
     private static async Task Operate(Func<Task> open,Func<LocalFeatureWindow,Task> action)
     {
         var completion=new TaskCompletionSource(TaskCreationOptions.RunContinuationsAsynchronously);

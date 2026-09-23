@@ -3,7 +3,7 @@ using Strings = Cadoryx.Lang.Strings.Strings;
 
 namespace Cadoryx.Commands;
 
-public sealed class LocalFeatureCommand(TopologyReference edge,LocalFeatureOperation operation,double size) : ICadDocumentCommand
+public sealed class LocalFeatureCommand(TopologyReference edge,LocalFeatureOperation operation,double size,double? secondDistance=null,int additionalEdges=0,double? endRadius=null) : ICadDocumentCommand
 {
     public string Name=>operation==LocalFeatureOperation.Fillet?Strings.Fillet:Strings.Chamfer;
     public async Task<PreparedDocumentEdit> PrepareAsync(DocumentCommandContext context,CancellationToken token)
@@ -16,7 +16,7 @@ public sealed class LocalFeatureCommand(TopologyReference edge,LocalFeatureOpera
         var producer=doc.Features[edge.FeatureId];
         if(producer.IsStale)throw new CadValidationException("A stale feature cannot be used for local modeling.");
         if(producer.Recipe is not BoxRecipe box)throw new CadValidationException("Only box edges are supported.");
-        var recipe=new LocalFeatureRecipe(source.Geometry,box,edge.Boundary,edge.SecondBoundary.Value,operation,size);recipe.Validate();
+        var recipe=new LocalFeatureRecipe(source.Geometry,box,edge.Boundary,edge.SecondBoundary.Value,operation,size,secondDistance,additionalEdges,endRadius);recipe.Validate();
         var result=await context.Kernel.EvaluateAsync(recipe,context.Assets,token).ConfigureAwait(false);
         try
         {

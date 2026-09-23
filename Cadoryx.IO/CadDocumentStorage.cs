@@ -13,7 +13,7 @@ public sealed class CadDocumentStorage(CadSectionMigrationRegistry? migrations=n
     private readonly CadSectionMigrationRegistry registry=migrations??new();
     private readonly StorageLimits limits=limits??new();
     private static readonly HashSet<string> KnownSections=CadSectionMigrationRegistry.CurrentFormats.Keys.ToHashSet();
-    private static readonly string[] Capabilities=["cadoryx.core.1","occt.brep.1","cadoryx.geometry-table.1","cadoryx.asset-catalog.1","cadoryx.sketches.1","cadoryx.sketch-association.1","cadoryx.topology-references.1","cadoryx.local-box-edge.1","cadoryx.topology-history.1","cadoryx.topology-history.2","cadoryx.history-queries.1","cadoryx.feature-bindings.1"];
+    private static readonly string[] Capabilities=["cadoryx.core.1","occt.brep.1","cadoryx.geometry-table.1","cadoryx.asset-catalog.1","cadoryx.sketches.1","cadoryx.sketch-association.1","cadoryx.topology-references.1","cadoryx.local-box-edge.1","cadoryx.local-chamfer-two-distances.1","cadoryx.local-multi-edge.1","cadoryx.local-variable-radius.1","cadoryx.topology-history.1","cadoryx.topology-history.2","cadoryx.history-queries.1","cadoryx.feature-bindings.1"];
     public async Task SaveAsync(DocumentSnapshot snapshot,IAssetStore assets,string path,CancellationToken cancellationToken=default)
     {
         cancellationToken.ThrowIfCancellationRequested();
@@ -69,7 +69,7 @@ public sealed class CadDocumentStorage(CadSectionMigrationRegistry? migrations=n
                 {
                     using var lease=assets.Acquire(asset.Id);await WriteEntry(zip,asset.Path,lease.Content,token);
                 }
-                var manifest=new CadManifest("Cadoryx",1,snapshot.Id,snapshot.StateId,"0.4.12",sections.ToImmutable(),catalog.ToImmutableArray(),[..Capabilities],1);
+                var manifest=new CadManifest("Cadoryx",1,snapshot.Id,snapshot.StateId,"0.4.14",sections.ToImmutable(),catalog.ToImmutableArray(),[..Capabilities],1);
                 await WriteEntry(zip,"manifest.json",JsonSerializer.SerializeToUtf8Bytes(manifest,CadJson.Options),token);
             }
             await stream.FlushAsync(token);stream.Flush(true);

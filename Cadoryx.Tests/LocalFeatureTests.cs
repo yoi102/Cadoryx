@@ -10,6 +10,88 @@ namespace Cadoryx.Tests;
 
 public sealed class LocalFeatureTests
 {
+    [Fact] public async Task TwoSeparateEdgesAndLinearRadiusProduceValidHistoryAndSave()
+    {
+        var assets=new MemoryAssetStore();var kernel=new OcctGeometryKernel();using var files=new TestFiles();
+        await using(var session=new CadDocumentSession(DocumentSnapshot.Create("Multi edge"),assets,kernel,new InlineSessionDispatcher()))
+        {
+            await session.ExecuteAsync(new AddBodyCommand(new BoxRecipe(10,20,30,RigidTransform3d.Identity),"Box"));
+            var source=session.Snapshot.Features.Values.Single();var edge=TopologyReference.Box(session.Snapshot,source.Id,BoxBoundary.XMin,BoxBoundary.YMin);
+            int other=LocalFeatureRecipe.EdgeBit(BoxBoundary.XMax,BoxBoundary.YMax);var before=session.Snapshot;
+            await session.ExecuteAsync(new LocalFeatureCommand(edge,LocalFeatureOperation.Fillet,.5,additionalEdges:other));
+            var multi=session.Snapshot;var local=multi.Features.Values.Single(f=>f.Recipe is LocalFeatureRecipe);
+            Assert.Equal(other,((LocalFeatureRecipe)local.Recipe).AdditionalEdges);
+            Assert.Equal(6000-2*30*(1-Math.PI/4)*.25,local.Result.VolumeMm3,3);
+            Assert.NotNull(local.TopologyHistory);
+            await session.UndoAsync();Assert.Same(before,session.Snapshot);
+            await session.RedoAsync();Assert.Same(multi,session.Snapshot);
+            await session.ExecuteAsync(new RecomputeCommand(local.Id,((LocalFeatureRecipe)local.Recipe) with{AdditionalEdges=0,EndRadius=2}));
+            var variable=session.Snapshot.Features[local.Id];Assert.NotNull(variable.TopologyHistory);
+            Assert.InRange(variable.Result.VolumeMm3,5800,6000);
+            using(var native=OcctGeometryBridge.ReadShape(variable.Result,assets))Assert.True(native.IsValid);
+            var path=files.PathFor("local-variable.cadoryx");await session.SaveAsync(new CadDocumentStorage(),path);
+            using var loaded=await new CadDocumentStorage().LoadAsync(path,assets);
+            Assert.Equal(2,((LocalFeatureRecipe)loaded.Snapshot.Features[local.Id].Recipe).EndRadius);
+        }
+        Assert.Equal(0,assets.Count);
+    }
+    [Fact] public async Task InvalidMultiEdgeAndVariableRadiusCombinationsAreRejected()
+    {
+        var assets=new MemoryAssetStore();var kernel=new OcctGeometryKernel();
+        var box=new BoxRecipe(10,20,30,RigidTransform3d.Identity);
+        using(var source=await kernel.EvaluateAsync(box,assets))
+        {
+            LocalFeatureRecipe Recipe(int mask=0,double? end=null,LocalFeatureOperation operation=LocalFeatureOperation.Fillet)
+                =>new(source.Geometry,box,BoxBoundary.XMin,BoxBoundary.YMin,operation,1,AdditionalEdges:mask,EndRadius:end);
+            Assert.Throws<CadValidationException>(()=>Recipe(LocalFeatureRecipe.EdgeBit(BoxBoundary.XMin,BoxBoundary.YMin)).Validate());
+            Assert.Throws<CadValidationException>(()=>Recipe(0x1000).Validate());
+            Assert.Throws<CadValidationException>(()=>Recipe(-1).Validate());
+            Assert.Throws<CadValidationException>(()=>Recipe(0,double.NaN).Validate());
+            Assert.Throws<CadValidationException>(()=>Recipe(0,2,LocalFeatureOperation.Chamfer).Validate());
+            Assert.Throws<CadValidationException>(()=>Recipe(LocalFeatureRecipe.EdgeBit(BoxBoundary.XMax,BoxBoundary.YMax),2).Validate());
+        }
+        Assert.Equal(0,assets.Count);
+    }
+    [Fact] public async Task TwoDistanceChamferUsesBothValuesAndPreservesHistory()
+    {
+        var assets=new MemoryAssetStore();var kernel=new OcctGeometryKernel();var box=new BoxRecipe(10,20,30,RigidTransform3d.Identity);
+        using(var source=await kernel.EvaluateAsync(box,assets))
+        using(var result=await kernel.EvaluateAsync(new LocalFeatureRecipe(source.Geometry,box,BoxBoundary.YMin,BoxBoundary.ZMax,LocalFeatureOperation.Chamfer,2,3),assets))
+        {
+            Assert.Equal(5970,result.Geometry.VolumeMm3,4);
+            Assert.NotNull(result.TopologyHistory);
+            using var native=OcctGeometryBridge.ReadShape(result.Geometry,assets);Assert.True(native.IsValid);
+        }
+        Assert.Equal(0,assets.Count);
+    }
+    [Fact] public async Task TwoSeparatedChamfersUseBothEdges()
+    {
+        var assets=new MemoryAssetStore();var kernel=new OcctGeometryKernel();var box=new BoxRecipe(10,20,30,RigidTransform3d.Identity);
+        using(var source=await kernel.EvaluateAsync(box,assets))
+        using(var result=await kernel.EvaluateAsync(new LocalFeatureRecipe(source.Geometry,box,BoxBoundary.XMin,BoxBoundary.YMin,
+            LocalFeatureOperation.Chamfer,1,AdditionalEdges:LocalFeatureRecipe.EdgeBit(BoxBoundary.XMax,BoxBoundary.YMax)),assets))
+        {
+            Assert.Equal(5970,result.Geometry.VolumeMm3,3);
+            Assert.NotNull(result.TopologyHistory);
+            using var native=OcctGeometryBridge.ReadShape(result.Geometry,assets);Assert.True(native.IsValid);
+        }
+        Assert.Equal(0,assets.Count);
+    }
+    [Theory][InlineData(LocalFeatureOperation.Fillet,2)][InlineData(LocalFeatureOperation.Chamfer,0)]
+    [InlineData(LocalFeatureOperation.Chamfer,-1)][InlineData(LocalFeatureOperation.Chamfer,double.NaN)]
+    public async Task InvalidSecondDistanceIsRejectedBeforeNativeEvaluation(LocalFeatureOperation operation,double second)
+    {
+        var assets=new MemoryAssetStore();var kernel=new OcctGeometryKernel();
+        await using(var session=new CadDocumentSession(DocumentSnapshot.Create("Invalid chamfer"),assets,kernel,new InlineSessionDispatcher()))
+        {
+            await session.ExecuteAsync(new AddBodyCommand(new BoxRecipe(10,20,30,RigidTransform3d.Identity),"Box"));
+            var box=session.Snapshot.Features.Values.Single();var before=session.Snapshot;var count=assets.Count;
+            await Assert.ThrowsAsync<CadValidationException>(()=>session.ExecuteAsync(new LocalFeatureCommand(
+                TopologyReference.Box(before,box.Id,BoxBoundary.YMin,BoxBoundary.ZMax),operation,2,second)));
+            Assert.Same(before,session.Snapshot);Assert.Equal(count,assets.Count);
+        }
+        Assert.Equal(0,assets.Count);
+    }
     public static IEnumerable<object[]> Edges()=>from first in Enum.GetValues<BoxBoundary>()
         from second in Enum.GetValues<BoxBoundary>() where (int)first/2<(int)second/2
         from operation in Enum.GetValues<LocalFeatureOperation>() select new object[]{first,second,operation};

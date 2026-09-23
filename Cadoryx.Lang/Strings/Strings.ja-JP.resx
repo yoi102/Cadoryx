@@ -834,6 +834,12 @@
   <data name="Selected" xml:space="preserve">
     <value>選択：</value>
   </data>
+  <data name="TwoDistances" xml:space="preserve">
+    <value>2 距離面取り</value>
+  </data>
+  <data name="SecondDistance" xml:space="preserve">
+    <value>第 2 距離 (mm)</value>
+  </data>
   <data name="RadiusOrDistance" xml:space="preserve">
     <value>半径 / 距離 (mm)</value>
   </data>
@@ -1164,14 +1170,46 @@
   <data name="DocumentDecimalPlaces" xml:space="preserve">
     <value>小数桁数</value>
   </data>
-  <data name="DocumentOriginSection" xml:space="preserve"><value>原点と座標軸</value></data>
-  <data name="DocumentOriginVisible" xml:space="preserve"><value>モデル原点を表示</value></data>
-  <data name="DocumentOriginStyle" xml:space="preserve"><value>スタイル</value></data>
-  <data name="DocumentOriginSize" xml:space="preserve"><value>サイズ（mm）</value></data>
-  <data name="DocumentOriginHint" xml:space="preserve"><value>ワールド座標 (0, 0, 0) に固定。X は赤、Y は緑、Z は青。</value></data>
-  <data name="DocumentOriginColorAxes" xml:space="preserve"><value>色付き XYZ 座標軸</value></data>
-  <data name="DocumentOriginSubtleAxes" xml:space="preserve"><value>淡い単色の座標軸</value></data>
-  <data name="DocumentOriginMarker" xml:space="preserve"><value>原点マーカーのみ</value></data>
-  <data name="DocumentWorkPlane" xml:space="preserve"><value>作業平面</value></data>
-  <data name="DocumentWorkPlaneOffset" xml:space="preserve"><value>平面オフセット（mm）</value></data>
+  <data name="DocumentOriginSection" xml:space="preserve">
+    <value>原点と座標軸</value>
+  </data>
+  <data name="DocumentOriginVisible" xml:space="preserve">
+    <value>モデル原点を表示</value>
+  </data>
+  <data name="DocumentOriginStyle" xml:space="preserve">
+    <value>スタイル</value>
+  </data>
+  <data name="DocumentOriginSize" xml:space="preserve">
+    <value>サイズ（mm）</value>
+  </data>
+  <data name="DocumentOriginHint" xml:space="preserve">
+    <value>ワールド座標 (0, 0, 0) に固定。X は赤、Y は緑、Z は青。</value>
+  </data>
+  <data name="DocumentOriginColorAxes" xml:space="preserve">
+    <value>色付き XYZ 座標軸</value>
+  </data>
+  <data name="DocumentOriginSubtleAxes" xml:space="preserve">
+    <value>淡い単色の座標軸</value>
+  </data>
+  <data name="DocumentOriginMarker" xml:space="preserve">
+    <value>原点マーカーのみ</value>
+  </data>
+  <data name="DocumentWorkPlane" xml:space="preserve">
+    <value>作業平面</value>
+  </data>
+  <data name="DocumentWorkPlaneOffset" xml:space="preserve">
+    <value>平面オフセット（mm）</value>
+  </data>
+  <data name="LocalVariableRadius" xml:space="preserve">
+    <value>線形可変半径</value>
+  </data>
+  <data name="LocalEndRadius" xml:space="preserve">
+    <value>終端半径（mm）</value>
+  </data>
+  <data name="LocalAddEdgesOnPick" xml:space="preserve">
+    <value>クリックしてエッジを追加・削除</value>
+  </data>
+  <data name="LocalEdgeList" xml:space="preserve">
+    <value>Box エッジ（主エッジは固定）</value>
+  </data>
 </root>

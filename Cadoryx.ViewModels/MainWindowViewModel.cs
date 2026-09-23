@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Collections.ObjectModel;
 using Cadoryx.Editor;
+using Cadoryx.Db;
 using Cadoryx.Kernel.Abstractions;
 using Cadoryx.Rendering;
 using Cadoryx.ViewModels.Services.Platform.Notifications;
@@ -225,6 +226,11 @@ public partial class MainWindowViewModel : ObservableObject
         if(ActiveDocument is not {} doc||doc.IsReadOnly)return;
         await RunAsync(async()=>{await using var editor=new LocalFeatureViewModel(doc.Session,kernel);await localFeatureHost.ShowAsync(editor);});
     }
+    private async void OnLocalFeatureEditRequested(object? sender,FeatureId id)
+    {
+        if(sender is not CadDocumentViewModel doc||doc.IsReadOnly||doc.IsClosingRequested||!ReferenceEquals(ActiveDocument,doc))return;
+        await RunAsync(async()=>{await using var editor=new LocalFeatureViewModel(doc.Session,kernel,id);await localFeatureHost.ShowAsync(editor);});
+    }
     [RelayCommand(CanExecute=nameof(CanUseDocument))] private async Task HistoryQueryAsync()
     {
         if(ActiveDocument is not {} doc)return;
@@ -272,7 +278,7 @@ public partial class MainWindowViewModel : ObservableObject
     private void Attach(CadDocumentSession session)
     {
         var doc=new CadDocumentViewModel(session,kernel,log);Documents.Add(doc);
-        doc.Activated+=OnDocumentActivated;doc.CloseRequested+=OnDocumentCloseRequested;
+        doc.Activated+=OnDocumentActivated;doc.CloseRequested+=OnDocumentCloseRequested;doc.LocalFeatureEditRequested+=OnLocalFeatureEditRequested;
         session.StatusChanged+=OnDocumentStatus;
         try{_dockLayoutService.OpenDocument(doc);ActiveDocument=doc;doc.IsActive=true;}
         catch
@@ -281,7 +287,7 @@ public partial class MainWindowViewModel : ObservableObject
             try{doc.PermitClose();_dockLayoutService.CloseDocument(doc);}
             finally
             {
-                doc.Detach();doc.Activated-=OnDocumentActivated;doc.CloseRequested-=OnDocumentCloseRequested;
+                doc.Detach();doc.Activated-=OnDocumentActivated;doc.CloseRequested-=OnDocumentCloseRequested;doc.LocalFeatureEditRequested-=OnLocalFeatureEditRequested;
                 session.StatusChanged-=OnDocumentStatus;Documents.Remove(doc);
                 if(ReferenceEquals(ActiveDocument,doc))ActiveDocument=Documents.LastOrDefault();
             }
@@ -305,7 +311,7 @@ public partial class MainWindowViewModel : ObservableObject
     private async Task CloseDocumentAsync(CadDocumentViewModel doc)
     {
         doc.PermitClose();_dockLayoutService.CloseDocument(doc);doc.Detach();
-        doc.Activated-=OnDocumentActivated;doc.CloseRequested-=OnDocumentCloseRequested;
+        doc.Activated-=OnDocumentActivated;doc.CloseRequested-=OnDocumentCloseRequested;doc.LocalFeatureEditRequested-=OnLocalFeatureEditRequested;
         doc.Session.StatusChanged-=OnDocumentStatus;
         await workspace.CloseAsync(doc.Session);Documents.Remove(doc);
         if(ReferenceEquals(ActiveDocument,doc))ActiveDocument=Documents.LastOrDefault();

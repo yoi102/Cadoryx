@@ -118,7 +118,7 @@ internal static partial class MessagePackSections
         f.OutputMetadata is {} m?new(m.Name,new(m.Layer),A(m.Appearance),m.Visible,m.Material is {} material?new MaterialId(material):null):null);
     private static PackRecipe R(GeometryRecipe r)=>r switch
     {
-        LocalFeatureRecipe l=>new("local-box-edge",[l.Box.X,l.Box.Y,l.Box.Z,l.Size,(int)l.First,(int)l.Second],T(l.Box.Placement),[G(l.Source)],[],(int)l.Operation),
+        LocalFeatureRecipe l=>new("local-box-edge",[l.Box.X,l.Box.Y,l.Box.Z,l.Size,(int)l.First,(int)l.Second,l.SecondDistance??0,l.AdditionalEdges,l.EndRadius??0],T(l.Box.Placement),[G(l.Source)],[],(int)l.Operation),
         HistoryFilletRecipe h=>new("history-edge-fillet",[h.Radius,h.FullTopologyIndex],null,[G(h.Source)],[],0),
         BoxRecipe b=>new("box",[b.X,b.Y,b.Z],T(b.Placement),[],[],0),
         CylinderRecipe c=>new("cylinder",[c.Radius,c.Height],T(c.Placement),[],[],0),
@@ -131,7 +131,7 @@ internal static partial class MessagePackSections
     };
     private static GeometryRecipe R(PackRecipe r)
     {
-        int numbers=r.Kind switch{"local-box-edge"=>6,"history-edge-fillet" or "cylinder"=>2,"box"=>3,"extrude" or "revolve"=>1,_=>0};
+        int numbers=r.Kind switch{"local-box-edge"=>9,"history-edge-fillet" or "cylinder"=>2,"box"=>3,"extrude" or "revolve"=>1,_=>0};
         if(r.Numbers.Length!=numbers)throw new InvalidDataException("Invalid recipe parameter count.");
         bool placed=r.Kind is "local-box-edge" or "box" or "cylinder" or "transform" or "extrude" or "revolve";
         if(placed!=(r.Placement is not null))throw new InvalidDataException("Invalid recipe placement.");
@@ -155,8 +155,13 @@ internal static partial class MessagePackSections
     }
     private static LocalFeatureRecipe Local(PackRecipe r)
     {
-        if(r.Numbers.Skip(4).Any(n=>!double.IsFinite(n)||n!=Math.Truncate(n)||n<0||n>5))throw new InvalidDataException("Invalid semantic edge boundaries.");
-        var result=new LocalFeatureRecipe(G(r.Sources[0]),new(r.Numbers[0],r.Numbers[1],r.Numbers[2],T(r.Placement!)),(BoxBoundary)r.Numbers[4],(BoxBoundary)r.Numbers[5],(LocalFeatureOperation)r.Operation,r.Numbers[3]);result.Validate();return result;
+        if(r.Numbers.Skip(4).Take(2).Any(n=>!double.IsFinite(n)||n!=Math.Truncate(n)||n<0||n>5))throw new InvalidDataException("Invalid semantic edge boundaries.");
+        if(!double.IsFinite(r.Numbers[6])||r.Numbers[6]<0||!double.IsFinite(r.Numbers[7])||r.Numbers[7]!=Math.Truncate(r.Numbers[7])||
+            r.Numbers[7]<0||r.Numbers[7]>0xfff||!double.IsFinite(r.Numbers[8])||r.Numbers[8]<0)
+            throw new InvalidDataException("Invalid local feature parameters.");
+        var second=r.Numbers[6]>0?r.Numbers[6]:(double?)null;
+        var end=r.Numbers[8]>0?r.Numbers[8]:(double?)null;
+        var result=new LocalFeatureRecipe(G(r.Sources[0]),new(r.Numbers[0],r.Numbers[1],r.Numbers[2],T(r.Placement!)),(BoxBoundary)r.Numbers[4],(BoxBoundary)r.Numbers[5],(LocalFeatureOperation)r.Operation,r.Numbers[3],second,(int)r.Numbers[7],end);result.Validate();return result;
     }
     private static HistoryFilletRecipe HistoryFillet(PackRecipe r)
     {

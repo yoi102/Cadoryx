@@ -26,7 +26,7 @@ public partial class LocalFeatureWindow:MetroWindow
     {
         if(Host.Viewport is not {} viewport||Editor.Scene is not {} scene)return;
         viewport.SetScene(scene);viewport.SetBoxSelection(Editor.HasCandidate?null:Editor.Box,Editor.HasCandidate?null:Editor.SelectionKind);
-        viewport.HighlightBoxSelection(Editor.HasCandidate?null:Editor.Selection);
+        viewport.HighlightBoxSelections(Editor.HasCandidate?[]:Editor.HighlightEdges());
     }
     private void OnFit(object sender,RoutedEventArgs e)=>Host.Viewport?.FitAll();
     private void OnClose(object? sender,EventArgs e)=>Close();

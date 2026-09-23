@@ -1,5 +1,7 @@
 # OcctSharp 对 Cadoryx 的能力核查
 
+2026-09-23 M4-T3-B2 增量：Cadoryx 已接入多条原始 Box 边的一次圆角／倒角和单边线性变半径圆角，配方、窗口、features v8、真实 BRep／历史与桌面冒烟见 [ROADMAP](ROADMAP.md)。锁定 `.viewcube.5` 独立包消费 19/19 场景、62/62 原生 DLL 一致，证据 `artifacts/occt-capability-20260923-233837`。下方“待增加多选配方与 UI”等表述属于 2026-09-13 基线，不是当前进度；局部结果连续建模、生成拓扑显式重选仍待 Cadoryx 应用层实现。
+
 2026-09-23 ViewCube 增量：旧锁定包的手写 `OcctViewer` 没有 ViewCube 显示、命中与相机方向 API；生成 `AISViewCube` 类型不足以接入 Viewer 私有的 AIS 上下文。已在 OcctSharp 手写桥补齐显示、面／边／角命中、相机方向和弧形箭头命中，Cadoryx 锁定 `8.0.1-preview.28.cadoryx.viewcube.4`。独立 NuGet 消费探针与窗口证据见 ROADMAP M2-V8。此前 M2-V5 的“没有新缺口”仅针对轮廓形体，不适用于 ViewCube。
 
 2026-09-23 M2-V5 补充独立 NuGet 消费场景：锁定包的 `CreatePolygonWire`、`CreatePlanarFace`、`Shape.Extrude` 与 `Shape.Revolve` 生成正确体积的真实轮廓形体；18/18 场景、62/62 原生 DLL 包载荷匹配，证据在 `artifacts/occt-capability-profile-ghost`。视口本身仍由 Cadoryx 发布后窗口冒烟验证。本阶段没有证实新的上游 API 缺口，故不修改 OcctSharp。
