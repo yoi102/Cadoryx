@@ -5,6 +5,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Threading;
 using Cadoryx.Db;
+using Cadoryx.Commands;
 using Cadoryx.Kernel.Abstractions;
 using Cadoryx.ViewModels;
 using Cadoryx.ViewModels.Services.Platform;
@@ -66,6 +67,112 @@ internal static class ResourceSmokeRunner
         var before=document.Session.Snapshot;await document.Placement.ApplyCommand.ExecuteAsync(null);await Idle();
         Require(OccurrencePlacement.Resolve(document.Session.Snapshot,occurrence.Path).Slot.LocalTransform.Translation.X==80,"Position did not commit.");
         await document.Session.UndoAsync();Require(document.Session.Snapshot.StateId==before.StateId,"Position undo was not exact.");await document.Session.RedoAsync();
+        Require(placement.CreateAssemblyButton.Command is not null,"Create assembly UI is unavailable.");
+        document.Placement.NewAssemblyName="Shared group";
+        await document.Placement.CreateAssemblyCommand.ExecuteAsync(null);await Idle();
+        var leftPath=document.Selection.Occurrence!;var left=leftPath.Slots[^1];
+        var sharedGroup=OccurrencePlacement.Resolve(document.Session.Snapshot,leftPath).Slot.DefinitionId;
+        document.Placement.SelectedDefinition=document.Placement.Definitions.Single(d=>d.Id==target);
+        await document.Placement.InsertCommand.ExecuteAsync(null);await Idle();
+        await document.Session.ExecuteAsync(DocumentEdits.MoveOccurrence(leftPath,RigidTransform3d.Translate(12,0,0)));
+        var right=ComponentSlotId.New();
+        await document.Session.ExecuteAsync(AssemblyOccurrenceCommands.Insert(new(document.Session.Snapshot.Id,[]),sharedGroup,right,
+            "Right group",RigidTransform3d.Translate(100,0,0)));
+        document.Selection.SelectOccurrence(leftPath);await Idle();
+        Require(document.Placement.CanMakeIndependent&&placement.IndependentButton.IsEnabled&&placement.IndependentButton.Command is not null,
+            "Shared assembly independence UI is unavailable.");
+        Capture(placement,Path.Combine(output,"assembly-instance-controls.png"));
+        await document.Placement.MakeIndependentCommand.ExecuteAsync(null);await Idle();
+        var isolated=OccurrencePlacement.Resolve(document.Session.Snapshot,leftPath).Slot.DefinitionId;
+        Require(isolated!=sharedGroup&&OccurrencePlacement.Resolve(document.Session.Snapshot,
+            new(document.Session.Snapshot.Id,[right])).Slot.DefinitionId==sharedGroup,"UI isolation changed another group.");
+        Require(document.Placement.CanInsertChild&&placement.InsertButton.IsEnabled&&placement.InsertButton.Command is not null,
+            "Isolated assembly insert UI is unavailable.");
+        document.Placement.SelectedDefinition=document.Placement.Definitions.Single(d=>d.Id==target);
+        await document.Placement.InsertCommand.ExecuteAsync(null);await Idle();
+        var addedPath=document.Selection.Occurrence!;var inserted=addedPath.Slots[^1];
+        Require(addedPath.Slots.Length==2&&addedPath.Slots[0]==left,"Insert command did not select its new child.");
+        document.Placement.SelectedParent=document.Placement.Parents.Single(p=>p.Path.Slots.IsEmpty);
+        Require(placement.ReparentButton.Command is not null,"Reparent UI is unavailable.");
+        await document.Placement.ReparentCommand.ExecuteAsync(null);await Idle();
+        var reparented=new OccurrencePath(document.Session.Snapshot.Id,[inserted]);
+        Require(document.Selection.Occurrence!.Equals(reparented)&&
+            Math.Abs(OccurrencePlacement.Resolve(document.Session.Snapshot,reparented).Slot.LocalTransform.Translation.X-12)<1e-8,
+            "UI reparent did not preserve world position.");
+        await document.Placement.RemoveCommand.ExecuteAsync(null);await Idle();
+        Require(!document.Session.Snapshot.EnumerateOccurrences().Any(o=>o.Path.Equals(reparented)),"UI remove left an instance.");
+        document.Selection.SelectOccurrence(occurrence.Path);await Idle();
+        Require(document.Placement.CanMakePartIndependent&&placement.IndependentPartButton.IsEnabled&&
+            placement.IndependentPartButton.Command is not null,"Part isolation UI is unavailable.");
+        await document.Placement.MakePartIndependentCommand.ExecuteAsync(null);await Idle();
+        var copyId=OccurrencePlacement.Resolve(document.Session.Snapshot,occurrence.Path).Slot.DefinitionId;
+        Require(copyId!=target&&document.SelectedTargetPart==copyId,"UI part isolation did not change the selected target.");
+        var copy=(PartDefinition)document.Session.Snapshot.Definitions[copyId];
+        var copyBody=document.Session.Snapshot.Bodies[copy.Bodies.Single()];
+        Require(copyBody.Id!=body.Id&&copyBody.Geometry==body.Geometry,"Independent part did not retain immutable geometry.");
+        placement.OccurrenceNameInput.SetCurrentValue(TextBox.TextProperty,"One placement");
+        await document.Placement.RenameOccurrenceCommand.ExecuteAsync(null);await Idle();
+        Require(OccurrencePlacement.Resolve(document.Session.Snapshot,occurrence.Path).Slot.Name=="One placement",
+            "Instance rename UI did not reach the selected slot.");
+        placement.DefinitionNameInput.SetCurrentValue(TextBox.TextProperty,"Independent housing");
+        await document.Placement.RenameDefinitionCommand.ExecuteAsync(null);await Idle();
+        Require(document.Session.Snapshot.Definitions[copyId].Name=="Independent housing"&&
+            document.Session.Snapshot.Definitions[target].Name=="Housing","Definition rename affected another part.");
+        await document.Placement.RemoveCommand.ExecuteAsync(null);await Idle();
+        document.Selection.SelectOccurrence(leftPath);await Idle();
+        Require(document.Placement.CanPruneUnused&&placement.PruneUnusedButton.Command is not null,
+            "Unused definition cleanup UI is unavailable.");
+        await document.Placement.PruneUnusedCommand.ExecuteAsync(null);await Idle();
+        Require(!document.Session.Snapshot.Definitions.ContainsKey(copyId)&&
+            !document.Session.Snapshot.Bodies.ContainsKey(copyBody.Id),"Unused independent part was not removed.");
+        var relations=Find<AssemblyConstraintsView>(window)??throw new InvalidOperationException("Assembly relation UI is missing.");
+        Require(relations.FixButton.Command is not null&&document.AssemblyConstraints.CanCreate,
+            "Fixed relation UI is unavailable.");
+        await document.AssemblyConstraints.AddFixedCommand.ExecuteAsync(null);await Idle();
+        var fixedRelation=AssertSingleRelation(document.Session.Snapshot);
+        Require(fixedRelation.Evaluate(document.Session.Snapshot).Status==AssemblyConstraintStatus.Satisfied,
+            "Fixed relation did not capture the selected world pose.");
+        try
+        {
+            await document.Session.ExecuteAsync(DocumentEdits.MoveOccurrence(leftPath,RigidTransform3d.Translate(13,0,0)));
+            throw new InvalidOperationException("Fixed assembly instance moved.");
+        }
+        catch(CadValidationException){}
+        document.AssemblyConstraints.SelectedConstraint=document.AssemblyConstraints.Constraints.Single(c=>c.Id==fixedRelation.Id);
+        await document.AssemblyConstraints.ToggleCommand.ExecuteAsync(null);await Idle();
+        await document.Session.ExecuteAsync(DocumentEdits.MoveOccurrence(leftPath,RigidTransform3d.Translate(13,0,0)));await Idle();
+        await document.AssemblyConstraints.RetargetCommand.ExecuteAsync(null);await Idle();
+        await document.AssemblyConstraints.ToggleCommand.ExecuteAsync(null);await Idle();
+        Require(AssertSingleRelation(document.Session.Snapshot).Evaluate(document.Session.Snapshot).Status==AssemblyConstraintStatus.Satisfied,
+            "Explicit fixed-pose recapture failed.");
+        await document.AssemblyConstraints.RemoveCommand.ExecuteAsync(null);await Idle();
+        document.AssemblyConstraints.SelectedReference=document.AssemblyConstraints.References.Single(r=>r.Path.Equals(new OccurrencePath(document.Session.Snapshot.Id,[right])));
+        relations.DistanceInput.SetCurrentValue(MahApps.Metro.Controls.NumericUpDown.ValueProperty,40d);
+        Require(relations.AddDistanceButton.Command is not null,"Distance relation UI is unavailable.");
+        await document.AssemblyConstraints.AddDistanceCommand.ExecuteAsync(null);await Idle();
+        var distanceRelation=AssertSingleRelation(document.Session.Snapshot);
+        document.AssemblyConstraints.SelectedConstraint=document.AssemblyConstraints.Constraints.Single(c=>c.Id==distanceRelation.Id);
+        await document.AssemblyConstraints.AdjustCommand.ExecuteAsync(null);await Idle();
+        Require(AssertSingleRelation(document.Session.Snapshot).Evaluate(document.Session.Snapshot).Status==AssemblyConstraintStatus.Satisfied,
+            "Distance adjustment did not satisfy the selected point pair.");
+        await document.AssemblyConstraints.RemoveCommand.ExecuteAsync(null);await Idle();
+        relations.SecondaryAxisXInput.SetCurrentValue(MahApps.Metro.Controls.NumericUpDown.ValueProperty,1d);
+        relations.SecondaryAxisZInput.SetCurrentValue(MahApps.Metro.Controls.NumericUpDown.ValueProperty,0d);
+        await Idle();
+        Require(relations.CoaxialButton.Command is not null,"Coaxial relation UI is unavailable.");
+        await document.AssemblyConstraints.AddCoaxialCommand.ExecuteAsync(null);await Idle();
+        var coaxial=AssertSingleRelation(document.Session.Snapshot);
+        Require(coaxial.Kind==AssemblyConstraintKind.Coaxial,"Coaxial relation was not created.");
+        document.AssemblyConstraints.SelectedConstraint=document.AssemblyConstraints.Constraints.Single(c=>c.Id==coaxial.Id);
+        relations.SecondaryXInput.SetCurrentValue(MahApps.Metro.Controls.NumericUpDown.ValueProperty,2d);
+        await Idle();
+        await document.AssemblyConstraints.ApplyAnchorsCommand.ExecuteAsync(null);await Idle();
+        Require(AssertSingleRelation(document.Session.Snapshot).SecondaryLocalPoint.X==2,
+            "Local anchor editing did not reach the document.");
+        await document.AssemblyConstraints.AdjustCommand.ExecuteAsync(null);await Idle();
+        Require(AssertSingleRelation(document.Session.Snapshot).Evaluate(document.Session.Snapshot).Status==AssemblyConstraintStatus.Satisfied,
+            "Coaxial adjustment did not satisfy the selected axes.");
+        await document.AssemblyConstraints.RemoveCommand.ExecuteAsync(null);await Idle();
         await ModalAsync(()=>workspace.ManageResourcesCommand.ExecuteAsync(null),async()=>
         {
                 var dialog=DialogHost.GetDialogSession(ViewServiceIdentifiers.RootDialogHost)?.Content as DocumentResourcesDialog??throw new InvalidOperationException("Resource dialog was not shown.");var vm=(DocumentResourcesViewModel)dialog.DataContext;
@@ -127,6 +234,7 @@ internal static class ResourceSmokeRunner
         showing=show();await complete.Task;
     }
     private static void Require(bool value,string message){if(!value)throw new InvalidOperationException(message);}
+    private static AssemblyConstraint AssertSingleRelation(DocumentSnapshot snapshot)=>snapshot.AssemblyConstraints.Values.Single();
     private static async Task Idle(){await System.Windows.Application.Current.Dispatcher.InvokeAsync(()=>{},DispatcherPriority.ApplicationIdle);await Task.Delay(100);}
     private static void Capture(FrameworkElement window,string path)
     {

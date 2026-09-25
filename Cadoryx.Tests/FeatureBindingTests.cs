@@ -147,6 +147,20 @@ public sealed class FeatureBindingTests
                 Assert.Null(reopenedHistory.Target);
                 Assert.Equal(10,FormatEvolutionTests.Manifest(path).Sections.Length);
             }
+            var legacy=files.PathFor("legacy-binding.cadoryx");await session.SaveAsync(storage,legacy);
+            FormatEvolutionTests.RewriteSection(legacy,"feature-bindings",bytes=>
+            {
+                var data=MessagePackSerializer.Deserialize<PackFeatureBindings>(bytes);
+                return MessagePackSerializer.Serialize(new PackFeatureBindingsV1(data.Bindings.Select(b=>
+                    new PackFeatureBindingV1(b.Feature,b.Origin!,b.Target,b.Revision,b.Asset,b.Index,b.Adapter,b.Version)).ToArray()));
+            });
+            FormatEvolutionTests.RewriteManifest(legacy,m=>m with
+            {Sections=[..m.Sections.Select(s=>s.Kind=="feature-bindings"?s with{SchemaVersion=1}:s)]});
+            using(var loaded=await storage.LoadAsync(legacy,assets))
+            {
+                Assert.Contains(loaded.Diagnostics,d=>d.Code=="IO.MIGRATED");
+                Assert.Equal(rebound.TopologyBinding,loaded.Snapshot.Features[second.Id].TopologyBinding);
+            }
             FormatEvolutionTests.RewriteSection(path,"feature-bindings",bytes=>
             {
                 var data=MessagePackSerializer.Deserialize<PackFeatureBindings>(bytes);

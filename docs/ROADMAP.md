@@ -1,23 +1,23 @@
 # Cadoryx 实施路线与验收
 
-## 1. 当前实施状态（2026-09-23）
+## 1. 当前实施状态（2026-09-25）
 
 2026-09-11 完成设计文档；2026-09-12 用户已授权构建整体代码架构、按路线实施并补充路线。以下状态持续更新，只有经过对应验收才标记完成。
 
 | 阶段 | 已有代码和证据 | 当前状态 / 剩余 |
 |---|---|---|
 | M0 | 项目分层、领域验证、资产租约、事务、历史、多文档路由、真实树/属性；自动化与桌面冒烟 | 基础闭环完成 |
-| M1 | 初始 preview.26 NuGet，H2-B2 升级为本地 .h2b2.2，M2-V8 当前使用本地 8.0.1-preview.28.cadoryx.viewcube.5；真实 Viewer、XDE 导入、单位/旋转/源颜色和浮动重建 | M1-Q 本机项完成；仍需完整元数据、外部厂商样本、真实混合 DPI/RDP/长期验证 |
-| M2 | 基础建模、预览/确认/取消、属性、精确撤销重做；目标零件、文档内图层/材料、局部实例位置 UI；工作网格、原点轴、视口鼠标确定基础尺寸、文档级天空渐变、轮廓形体反馈、三种正交工作平面与标准视图动画 | 基础闭环、M2-I 和 M2-V1–V7 限定范围完成；共享子装配使独立、自由旋转工作平面及更多实时手柄仍在后续阶段 |
-| M3 | 十节 MessagePack、资产格式目录、JSON v1/MessagePack v2/M3-V/M4-S1/S2 迁移；hash/限额、保存点、设置读取；三格式导出与进程终止恢复 | M3-R、M3-V 已完成，M4 扩展草图/拓扑/历史、诊断查询及特征绑定节；整体仍需更多文件系统故障覆盖 |
-| M4 | 草图编辑与关联重算；Box 面/边语义引用；MetroWindow 局部建模；局部／布尔历史与有界多步诊断、查询及精确边绑定 | M4-S1/S2、T1/T2、T3-A 参数编辑、T3-B1 双距离倒角、H1/H2-A、H2-B1/B2/B3、H2-C1/C2 声明范围已实现；通用拓扑命名、更多连续局部建模及曲线区域继续分项实施 |
-| M5 | 定义/实例模型和刚体位姿命令 | 未完成：完整装配编辑、约束求解与外部引用 |
+| M1 | 初始 preview.26 NuGet，H2-B2 升级为本地 .h2b2.2，M4-T3-B2d 当前使用本地 8.0.1-preview.28.cadoryx.topology.1；真实 Viewer、XDE 导入、单位/旋转/源颜色和浮动重建 | M1-Q 本机项完成；仍需完整元数据、外部厂商样本、真实混合 DPI/RDP/长期验证 |
+| M2 | 基础建模、预览/确认/取消、属性、精确撤销重做；目标零件、文档内图层/材料、局部实例位置 UI；工作网格、原点轴、视口鼠标确定基础尺寸、文档级天空渐变、轮廓形体反馈、三种正交工作平面与标准视图动画 | 基础闭环、M2-I 和 M2-V1–V7 限定范围完成；共享子装配独立化已在 M5 验收，自由旋转工作平面及更多实时手柄仍在后续阶段 |
+| M3 | 十节 MessagePack、资产格式目录、JSON v1/MessagePack v2/M3-V/M4-S1/S2 迁移；hash/限额、保存点、设置读取；三格式导出与进程终止恢复 | M3-R、M3-V 及确定性写入／读取／恢复故障矩阵已联合验收；真实磁盘满、断电及网络盘专项仍待完成 |
+| M4 | 草图编辑与关联重算；Box 面/边语义引用；MetroWindow 局部建模；局部／布尔历史与有界多步诊断、查询及精确边绑定 | M4-S1/S2、S3a–aj、T1/T2、T3-A、T3-B1、T3-B2a–d、H1/H2-A、H2-B1/B2/B3、H2-C1/C2 声明范围已验收；多圆弧/混合曲线孔、二次 Bézier、单层岛屿及受限三次 B 样条独立区域已联合验收 |
+| M5 | 定义/实例模型和刚体位姿命令；指定路径的插入／替换／删除、保世界位姿重挂、共享子装配独立化及属性面板入口 | 基础实例、逐实例零件、维护、装配关系及局部锚点／轴关系三个大阶段已联合验收；完整机械配合与外部引用仍待后续 |
 | M6 | 资产复用、历史条目上限、容量限制；共享实例/25 MB BRep/128 MiB 载荷读写基准 | 未完成：真实大模型导入/绘制、内存预算、多视口及发布专项验证 |
 
 新增实施要求：
 
 - IO-01：结构节使用 MessagePack 3.1.8，稳定数值 Key、白名单 DTO、UntrustedData 安全选项；禁止 Typeless。JSON 仅作清单及 v1 结构节兼容读取。
-- IO-02：每节同时记录 schemaVersion 与 encoding；当前 features v8、document v12、structure v3、presentation/sketches/history v2、geometry/topology/history-queries/feature-bindings v1 均为 MessagePack，旧 JSON v1、MessagePack v2、M3-V、M4-S1/S2/T1/T2、features v6/v7、H2-C1 九节、document v7/v8/v9/v10/v11 和 history v1 文件经显式规则迁移。字段编号不得重排或复用。
+- IO-02：每节同时记录 schemaVersion 与 encoding；当前 features v19、document v14、structure v3、presentation/history/feature-bindings v2、sketches v6、geometry/topology/history-queries v1 均为 MessagePack，旧 JSON v1、MessagePack v2、M3-V、M4-S1/S2/T1/T2、features v6–v18、feature-bindings v1、sketches v1–v5、H2-C1 九节、document v7–v13 和 history v1 文件经显式规则迁移。字段编号不得重排或复用。
 - IO-03：资产目录包含媒体类型、编码/格式版本、内核和写出库来源；旧版本缺失的生产者信息保持未知，不能补成当前版本。跨节迁移必须完整检查输入/输出、容量、取消和引用一致性。
 - EX-01：导出入口支持 STEP/STP、IGES/IGS、STL；STL 提供线性/角度网格偏差、二进制/ASCII 和可见对象选项。
 - EX-02：格式能力与信息损失必须反馈给用户；导出不改变 `.cadoryx` 保存点；失败或取消保留旧目标文件。
@@ -122,7 +122,7 @@ M2-I 子阶段已完成：目标零件/图层/材料选择和新建/属性链路
 
 M2 + M3 是第一份“能建模、能撤销、能保存恢复”的交付基线。不要先把 Ribbon 上的几十个建模按钮全部做成占位，再补这条闭环。
 
-M3-R 恢复子阶段已完成：生产定时器、两代快照、跨进程锁、最新损坏回退、恢复为未保存副本、原路径保护、保存/关闭协调和三语言恢复窗口。已用真实 WPF 进程强制终止与重启验收。M3-V 也已完成：资产格式目录、显式跨编码/跨节迁移、三个固定旧文件、桌面升级闭环及大载荷读写基准。完整 M3 仍需扩展文件系统故障矩阵；不把定时快照称为逐操作无损日志。详细范围见 [RECOVERY.md](RECOVERY.md) 和 [FORMAT_EVOLUTION.md](FORMAT_EVOLUTION.md)。
+M3-R 恢复子阶段已完成：生产定时器、两代快照、跨进程锁、最新损坏回退、恢复为未保存副本、原路径保护、保存/关闭协调和三语言恢复窗口。已用真实 WPF 进程强制终止与重启验收。M3-V 也已完成：资产格式目录、显式跨编码/跨节迁移、三个固定旧文件、桌面升级闭环及大载荷读写基准。本轮补充确定性的保存中断／读取回滚／恢复取消故障矩阵；真实磁盘满、断电和网络盘仍需专项验证。不把定时快照称为逐操作无损日志。详见 [恢复](RECOVERY.md)、[格式演进](FORMAT_EVOLUTION.md) 与 [本轮范围](CUBIC_SPLINE_AND_FILE_FAULTS.md)。
 
 ### M4：草图驱动参数化零件
 
@@ -137,7 +137,7 @@ M3-R 恢复子阶段已完成：生产定时器、两代快照、跨进程锁、
 
 M4-S1 已完成有限约束集的基础：点/线/圆与共享点身份、固定平面、13 种约束、解析雅可比与托管 SVD、局部 DOF/冗余/仿射冲突诊断、Upsert/Remove、精确历史、草图节与旧文件迁移、真实进程恢复。冻结多边形已接入 OCCT 拉伸验证。该阶段不包含鼠标草图编辑、圆弧/切线/角度约束或 SketchId 驱动的特征重算；这些按 M4-S2 和后续约束扩展验收。详见 [草图基础](SKETCH_FOUNDATION.md)。
 
-M4-S2 已完成固定零件平面上的点/线/矩形/圆绘制、捕捉、点拖动、尺寸/约束列表、草稿历史、预览/确认/取消，以及模型树和 Ribbon 入口。SketchId/Revision/有序直线 ID 驱动拉伸/旋转及后继闭包重算，失败、锁定、取消或过期时整体保留原状态；引用中的草图不能删除。当前特征区域限单个直线闭环，圆可编辑/约束/保存但不能生成曲线区域，孔洞、圆弧/切线/角度另列扩展。详见 [草图编辑](SKETCH_EDITOR.md)。
+M4-S2 已完成固定零件平面上的点/线/矩形/圆绘制、捕捉、点拖动、尺寸/约束列表、草稿历史、预览/确认/取消，以及模型树和 Ribbon 入口。SketchId/Revision/有序实体 ID 驱动拉伸/旋转及后继闭包重算，失败、锁定、取消或过期时整体保留原状态；引用中的草图不能删除。S3 已扩展单圆、圆孔、闭合直线多边形孔、三点圆弧＋弦、多圆弧及混合曲线闭环/孔，并增加切线/角度约束。二次 Bézier＋隐式弦区域和孔内单层岛屿已验收；本轮新增 4–8 控制点三次 B 样条＋隐式弦独立区域并完成联合验收。任意混合样条链、样条孔/约束及岛中孔仍列后续任务。详见 [草图编辑](SKETCH_EDITOR.md)、[圆孔拉伸](CIRCULAR_SKETCH_HOLES.md)、[切线和角度尺寸](SKETCH_TANGENCY_AND_REBIND.md)、[多边形孔](POLYGON_SKETCH_HOLES.md)、[圆弧区域](ARC_SEGMENT_SKETCH_PROFILES.md)、[混合闭环](MIXED_CURVE_SKETCH_PROFILES.md)、[扩展混合轮廓](EXPANDED_MIXED_CURVE_PROFILES.md)、[二次 Bézier 与单层岛屿](BEZIER_AND_SINGLE_LEVEL_ISLANDS.md)及[三次 B 样条与文件故障](CUBIC_SPLINE_AND_FILE_FAULTS.md)。
 
 ### M5：装配编辑与约束
 
@@ -145,7 +145,7 @@ M4-S2 已完成固定零件平面上的点/线/矩形/圆绘制、捕捉、点�
 
 - 插入、替换、删除实例、使独立、重挂父级、可复用子装配编辑。
 - 明确“编辑共享定义”和“仅改当前实例”的上下文。
-- 装配约束模型：ConstraintId、参与实例路径、基准/拓扑引用、参数、状态；预留 Fixed/Coincident/Concentric/Distance/Angle 等。
+- 文档级装配关系已有稳定 ID、精确实例路径、局部点/轴、可选拓扑来源及状态；Fixed/Coincident/Distance/ParallelAxes/Coaxial 已实现。角度、面贴合及从真实拓扑提取轴线另行设计和验收。
 - 先做固定/刚体位置管理；机械配合约束求解独立设计和评估，不视为 OCCT Shape 变换自然附带的功能。
 - 外部零件链接与按版本更新独立于嵌入装配；冲突、缺失文件和更新结果可追溯。
 
@@ -287,12 +287,36 @@ M4-T1 最终验证：`scripts/verify.ps1 -PublishSmoke -WindowSmoke -RecoverySmo
 | 已完成（单条 Box 边） | M4-T3-B1 双距离倒角 | 第一支撑面距离和相邻面第二距离分别设置；创建/编辑、重算、文件迁移与真实 OCCT 倒角验证 |
 | 已实现（限定 Box） | M4-T3-B2a 多条边一次操作 | 最多十二条 Box 原始边逐条增删，高亮与单次圆角／倒角、参数编辑、重算及存储；相邻边需由 OCCT 实际算法判定可行性 |
 | 已实现（单边） | M4-T3-B2b 线性变半径圆角 | 起点／终点半径、原生线性 law、创建／编辑、预览及存储；与多边、倒角组合明确拒绝 |
-| 局部建模扩展 | M4-T3-B2c 连续建模 | 在局部结果上继续操作、生成面/边显式重选及有界历史身份；独立设计与验收 |
-| 后续扩展 | M4-S3 曲线区域与约束 | 圆/圆弧和孔洞区域、切线/角度、构造几何编辑、更多拖动与捕捉，分项验收 |
-| 后续 | M5/M6 装配与规模 | 装配编辑、共享子装配使独立、外部引用、资产预算和真实模型性能，逐项验收 |
+| 已实现（未改变的原 Box 边） | M4-T3-B2c1 局部结果来源 | 局部结果进入来源列表，在结果视口只识别仍完整匹配原 Box 语义的边；不把原生遍历序号当持久身份 |
+| 已实现（唯一历史路径） | M4-T3-B2c2 连续圆角 | 拾取结果边后重新追踪源 Box 边到当前 BRep，唯一 Resolved 才预览和提交；失败不修改文档 |
+| 已实现（有界链） | M4-T3-B2c3 多步与参数编辑 | 后继圆角结果可再次作为来源；绑定圆角从模型树／属性进入参数编辑，上游改变后冻结，沿原历史查询显式重选 |
+| 已实现（单边） | M4-T3-B2c4 绑定变半径 | 连续圆角支持线性终点半径，features v9 与 v8→v9 显式迁移、坏协议拒绝 |
+| 已实现（精确资产、有界单边） | M4-T3-B2d1–d4 生成拓扑与倒角 | 原生生成边/面精确拾取、生成边圆角、局部结果倒角及支撑面、参数编辑/冻结重选、文件迁移；见 [局部结果精确拓扑](EXACT_LOCAL_TOPOLOGY.md)。跨重算通用拓扑命名仍未实现 |
+| 已实现（单圆关联拉伸） | M4-S3a–f 精确圆区域 | 非构造圆来源、原生圆面拉伸、关联重算、半径与构造状态编辑、文件迁移和恢复；见[圆区域文档](CIRCULAR_SKETCH_PROFILES.md) |
+| 已实现（明确圆孔拉伸） | M4-S3g–l 精确圆孔 | 多边形/圆外轮廓的单孔或多孔、稳定孔 ID、精确 OCCT 通孔、features v12 与恢复；见[圆孔文档](CIRCULAR_SKETCH_HOLES.md) |
+| 已实现（圆孔换源和角度约束） | M4-S3m–r | 任意数量圆孔勾选、已有拉伸换源、直线/圆切线、两直线角度尺寸、sketches v3 迁移与恢复；见[阶段文档](SKETCH_TANGENCY_AND_REBIND.md) |
+| 已实现（闭合直线孔） | M4-S3s–x | 多边形孔严格校验、精确拉伸、稳定线环引用、逐孔勾选、features v13 迁移和恢复；见[阶段文档](POLYGON_SKETCH_HOLES.md) |
+| 已实现（三点圆弧段拉伸） | M4-S3y–ad | 三点圆弧＋隐式弦的闭合区域：实体与编辑、关联拉伸、精确 OCCT 几何、重算、格式迁移及恢复；见[阶段文档](ARC_SEGMENT_SKETCH_PROFILES.md) |
+| 已实现（单圆弧混合闭环） | M4-S3ae–aj | 单段圆弧＋至少两段直线的无孔混合闭环：严格识别、鼠标成环、关联拉伸、精确内核、重算与存储恢复；见[阶段文档](MIXED_CURVE_SKETCH_PROFILES.md) |
+| 已实现且联合验收 | M4-S3 三个大阶段 | 多圆弧闭环；混合外边界的圆/多边形孔；稳定曲线孔引用、精确通孔、UI 和文件恢复；见[阶段文档](EXPANDED_MIXED_CURVE_PROFILES.md) |
+| 已实现且联合验收 | M4-S3 二次 Bézier 与单层岛屿 | 三点 Bézier 区域；直线孔内多边形岛屿；圆/混合曲线孔内圆/曲线岛屿，精确复合实体和文件恢复；见[阶段文档](BEZIER_AND_SINGLE_LEVEL_ISLANDS.md) |
+| 已实现且联合验收 | M4-S3 三次 B 样条独立区域 | 4–8 控制点，五点鼠标绘制、稳定引用、精确拉伸、迁移与恢复；见[阶段文档](CUBIC_SPLINE_AND_FILE_FAULTS.md) |
+| 已实现且联合验收 | M3 确定性文件故障矩阵 | 中途保存故障和取消、旧文件保留、租约回滚、恢复发布取消；见[阶段文档](CUBIC_SPLINE_AND_FILE_FAULTS.md) |
+| 后续扩展 | M4-S3 混合样条与深层嵌套 | 多控制点 B 样条混合链、样条孔、样条约束、岛中孔和任意深度区域树，分别验收 |
+| 已实现且联合验收 | M5 装配实例两个大阶段 | 实例插入／替换／删除、保世界位姿重挂；共享子装配沿路径独立化及 UI；见[阶段文档](M5_ASSEMBLY_OCCURRENCES.md) |
+| 已实现且联合验收 | M5 零件与维护三个大阶段 | 逐实例零件独立化；未用定义安全清理；实例／共享定义编辑范围与 UI；见[阶段文档](M5_PARTS_AND_MAINTENANCE.md) |
+| 已实现且联合验收 | M5 装配关系五个大阶段 | 持久模型、固定实例、点对重合与距离、失效诊断与显式重选、UI/恢复；450/450 测试及四组发布版冒烟通过，见[阶段文档](M5_ASSEMBLY_RELATIONS.md) |
+| 已实现且联合验收 | M5 局部锚点与轴关系三个大阶段 | 局部点编辑、平行轴/同轴单关系调整、属性面板与 document v14 迁移；453/453 测试及四组发布版冒烟通过，见[阶段文档](M5_AXIS_RELATIONS.md) |
+| 后续 | M5/M6 装配与规模 | 完整机械配合求解、外部引用、显式保留资产的清理策略、资产预算和真实模型性能，逐项验收 |
 | 专项门禁 | M1-Q 环境及互操作余项 | 外部 CAD 厂商文件、真实混合 DPI/RDP、长期资源矩阵；与完整面样式/PMI 导出分项验收 |
 
-H2-C1 的实现与范围见 [历史诊断查询](HISTORY_QUERIES.md)，H2-C2 的精确边绑定与显式重选见 [跨特征绑定](HISTORY_FEATURE_BINDINGS.md)。自动重绑定、通用拓扑命名和生成面继续建模仍需独立验收，H2 整体尚未完成。M4-T3-B2c 连续建模、M4-S3 曲线区域，以及 M1-Q 环境和 M3 文件系统门禁继续保留。
+H2-C1 的实现与范围见 [历史诊断查询](HISTORY_QUERIES.md)，H2-C2 的精确边绑定与显式重选见 [跨特征绑定](HISTORY_FEATURE_BINDINGS.md)。B2d1–d4 只提供当前精确资产上的生成边/面选择、单边圆角和倒角，不提供自动重绑定或跨重算通用拓扑命名；H2 的其它范围仍需独立验收。M4-S3 任意 B 样条混合链及深层嵌套，以及 M1-Q 环境和 M3 文件系统门禁继续保留。
+
+M4-S3a–f 联合验收：`scripts/verify.ps1 -PublishSmoke -WindowSmoke -RecoverySmoke` 完成锁定还原、Release 零警告/错误、406/406 测试、独立发布及常规桌面/窗口/生产 30 秒强制终止恢复冒烟，发布和三组证据目录时间戳 `20260924-192956`，四份 WPF 绑定日志均为空；日志 `artifacts/m4s3-circle-verify.log`。恢复种子新增真实圆区域、关联拉伸与半径变更，重启后逐字段核对引用及约 `392π mm³` 的精确实体。定向测试还核对圆的实际 OCCT 体积/放置、STEP/IGES/STL 导出、草图参数编辑、构造切换与撤销/重做、features v11 往返及伪装成 v10 的新字段拒绝。独立 NuGet 消费 `artifacts/occt-capability-m4s3-circle` 为 21/21 场景、62/62 原生 DLL 与包载荷一致，复用既有 OcctSharp 圆边/面/拉伸 API，无上游迁移。六阶段范围见 [精确圆形草图区域](CIRCULAR_SKETCH_PROFILES.md)。草图物理鼠标专项 `-SketchSmoke`、混合 DPI/RDP、长期资源、大型模型及完整上游发布门禁未运行，不能以本次自动化冒烟替代。
+
+M4-T3-B2d1–d4 最终共同验收：OcctSharp 对原始 BRep 新增完整拓扑索引查询，Release/Debug 原生及托管构建和各 1/1 定向运行时测试通过；Debug 测试输出桥与实际 Debug 构建 SHA-256 相同。相对 Preview.28 原生基线，当前开发树共增加 297 个导出、删除 0 个，Release/Debug 的 40,866 个导出名称一致；新增集合包含 `occtsharp_repair_find_topology_index`，其余增量包括本开发树已有的其它工作，不能全计为本阶段接口。锁定配对包 `8.0.1-preview.28.cadoryx.topology.1` 的 Release 桥哈希与构建一致；独立 NuGet 消费探针 `artifacts/occt-capability-20260924-004751` 通过 20/20 场景，62 个原生 DLL 与包载荷匹配。OcctSharp 导出报告为其 `OcctSharp/artifacts/topology-native-export-compatibility.json`。
+
+Cadoryx 最终 `scripts/verify.ps1 -PublishSmoke -WindowSmoke -RecoverySmoke` 通过锁定还原、Release 零警告／错误、403/403 测试、独立发布、常规桌面、窗口专项以及生产 30 秒强制终止／恢复；发布及三组冒烟证据时间戳 `20260924-005234`，四份绑定日志均为空。常规桌面冒烟覆盖真实 Viewer 生成边索引与倒角支撑面拾取；最后补充绑定倒角参数编辑断言后的 403/403 全量测试另行复跑通过。最初完整冒烟因旧断言禁止切换到倒角而失败，修正断言后的完整运行通过，不能将首次运行记为通过。范围见 [局部结果精确拓扑](EXACT_LOCAL_TOPOLOGY.md)；物理鼠标、混合 DPI/RDP、长期原生资源、大型模型、完整上游 release-check、签名和公开发布仍未验收。
 
 H2-C1 最终执行 `scripts/verify.ps1 -PublishSmoke -WindowSmoke -RecoverySmoke`：锁定还原、Release 0 警告／错误，349 项测试通过；补充三语言状态资源测试后全套 352 项再次通过。独立发布常规、窗口和生产 30 秒终止／重启恢复冒烟均 PASS。恢复文件内的诊断查询从当前 BRep 重新解析为 Resolved、2/2。日志 `artifacts/h2c1-verify-complete.log` 与 `artifacts/h2c1-tests-final.log`，发布与三组冒烟目录时间戳 `20260923-154701`。本阶段未改 OcctSharp 或原生 ABI；完整上游发布、全新机器、混合 DPI/RDP、长期资源及真实大型模型门禁未运行。
 
@@ -323,3 +347,21 @@ M4-T3-A 完成既有单边局部圆角／倒角特征的参数编辑闭环。模
 M4-T3-B1 为单条 Box 边增加可选双距离倒角：第一距离以 First 支撑面为准，第二距离沿相邻面；取消选项仍是旧等距倒角，圆角禁止携带第二距离。创建和既有参数编辑窗口共用输入、隔离预览、原子重算及资产生命周期。`features` v7 对本地配方数字数组追加第七项，旧 v6 六数字配方迁移时补第七项 0；该阶段写出器为 0.4.13，旧文件仍可读取，新格式缺项则拒绝。真实 OCCT 2×3 mm 倒角在 10×20×30 mm Box 的选定边上得到 5,970 mm³、合法 BRep 与历史；定向测试覆盖错误参数、UI 候选取消、上游重算、当前往返、合成旧格式迁移和损坏协议。锁定 `8.0.1-preview.28.cadoryx.viewcube.5` 包的独立消费者已经覆盖 `ChamferDimensions.TwoDistances`，该阶段探针 `artifacts/occt-capability-20260923-230918` 为 19/19 场景及 62/62 原生 DLL 匹配，未发现需迁移 OcctSharp 的接口缺口。阶段验收 `scripts/verify.ps1 -PublishSmoke -WindowSmoke -RecoverySmoke` 锁定还原、Release 0 警告／错误、386/386 测试，以及独立发布常规、窗口、生产 30 秒强制终止／恢复冒烟均 PASS；发布及三组冒烟目录时间戳 `20260923-232053`，绑定日志均为空。常规冒烟 `local-feature-result.json` 记录 `twoDistanceChamfer=true` 和 5,970 mm³，保存后导出 STEP/IGES/STL。首次完整脚本在旧草图迁移测试中遇到硬编码 features v6 断言，已改为检查当前格式；首次运行不计完整通过，以最终运行结果为准。该阶段尚未实施 B2 的多边、变半径或连续结果建模；物理鼠标、混合 DPI/RDP、长期资源与真实大模型门禁未运行。
 
 M4-T3-B2a/B2b 连续完成两个独立扩展。B2a 在单次局部特征中对多条原始 Box 边建立稳定 12 位掩码，逐边唯一定位并用一次原生圆角／倒角构建；创建窗口连续拾取和勾选、编辑窗口附加边勾选、视口多边高亮、预览取消、上游重算及历史均沿用现有原子链路。B2b 对单边圆角增加线性终点半径，调用 `FilletContourProgram.FromLaw` 和 `ScalarLawDefinition.Linear`；与多边或倒角组合明确拒绝。`features` v8 对旧七数字配方追加两个零值，v7→v8 迁移保持旧语义；写出器 0.4.14，非法位、重复主边、非整数掩码、非法半径及缺项拒绝加载。定向 67/67、最终 Release 0 警告／错误及 397/397 全量测试通过，真实双边圆角／倒角和变半径均检查 BRep 与历史。独立锁定 NuGet 探针 `artifacts/occt-capability-20260923-233837` 为 19/19、62/62 原生 DLL 匹配，无需修改 OcctSharp。`scripts/verify.ps1 -PublishSmoke -WindowSmoke -RecoverySmoke` 的发布、常规桌面、窗口专项及生产 30 秒终止／恢复均 PASS，时间戳 `20260923-234129`，常规／窗口／恢复绑定日志均为 0 字节；常规桌面冒烟还覆盖新控件的多边预览、变半径参数互斥和取消不提交。B2c 的局部结果连续建模及生成拓扑重选未实现；物理鼠标、混合 DPI/RDP、长期资源和真实大型模型门禁未运行。
+
+M4-T3-B2c1–c4 连续交付四个有界阶段：c1 将局部结果列为来源，结果视口只识别仍完整的原 Box 边；c2 拾取后经 `ITopologyHistoryResolver.TraceAsync` 与 `HistoryFilletCommand` 重新确认当前 BRep 的唯一 Edge 才创建后继圆角；c3 允许第三个圆角沿两段历史继续，并把绑定圆角接入模型树／属性参数编辑，上游改变时冻结后继，原历史查询负责显式重选；c4 为绑定圆角增加线性终点半径，features v9 追加第三个数字并显式迁移 v8，写出器 0.4.15。对已消耗边、非唯一历史、非法半径和坏文件均拒绝；生成边、局部结果倒角、自动重绑定仍是 B2d。锁定 `.viewcube.5` 包的独立探针 `artifacts/occt-capability-20260923-235813` 为 19/19 场景、62/62 原生 DLL 匹配，无需迁移 OcctSharp。最终 `scripts/verify.ps1 -PublishSmoke -WindowSmoke -RecoverySmoke`：锁定还原、Release 0 警告／错误、401/401 测试、独立发布、常规桌面、窗口专项与生产 30 秒强制终止／恢复全部 PASS，发布及三组冒烟时间戳 `20260924-000803`，四份绑定日志均为空。常规桌面冒烟包含真实原生视口拾取局部结果边、变半径预览和取消不提交。首次完整运行 401/401 测试通过，但旧窗口冒烟假定 ViewCube 可见，而用户应用设置将其隐藏；已让测试显式打开待测控件，首次运行不计完整通过。物理鼠标、混合 DPI/RDP、长期资源和真实大型模型门禁未运行。
+
+M4-S3g–l 联合验收（2026-09-24）：scripts/verify.ps1 -PublishSmoke -WindowSmoke -RecoverySmoke 最终运行完成锁定还原、Release 零警告/错误、410/410 测试、独立发布、常规桌面/窗口/生产 30 秒强制终止恢复冒烟全部 PASS；发布和三组冒烟目录时间戳 20260924-200517，四份 WPF 绑定日志均为 0 字节，日志 artifacts/m4s3-holes-verify-final2.log。恢复核对带孔圆环的稳定孔 ID、精确实体、原始文件不变和资源清理。独立锁定 NuGet 消费 artifacts/occt-capability-m4s3-holes 为 22/22 场景及 62/62 原生 DLL 与包载荷一致，复用现有 OCCT API，无需上游迁移。定向测试覆盖多边形双孔与圆环、非法边界、草图关联重算/失败回退、撤销/重做、features v12 往返、v11 迁移与伪装拒绝、STEP/IGES/STL 导出。阶段范围见 [精确圆孔拉伸](CIRCULAR_SKETCH_HOLES.md)。草图物理鼠标专项 -SketchSmoke、混合 DPI/RDP、长期资源、大模型和公开发布门禁仍未运行。
+
+M4-S3m–r 联合验收（2026-09-24）：`scripts/verify.ps1 -PublishSmoke -WindowSmoke -SketchSmoke -RecoverySmoke` 最终运行完成锁定还原、Release 0 警告／错误、414/414 测试、独立发布及常规桌面、窗口、草图编辑器真实指针、生产 30 秒强制终止／恢复冒烟全部 PASS；日志 `artifacts/m4s3-angular-verify-final5.log`，发布与四组冒烟目录时间戳 `20260924-205233`，五份 WPF 绑定日志均为 0 字节。恢复核对带孔圆环及切线／角度约束、原始文件不变和资源清理。独立锁定 NuGet 消费 `artifacts/occt-capability-m4s3-constraints` 为 22/22 场景、62/62 原生 DLL 与包载荷一致；草图约束和换源属于 Cadoryx 应用层，无需补 OcctSharp 绑定。定向测试覆盖 9 孔选择、已有拉伸原子换源、求解、v3 往返、旧版迁移及伪装拒绝。前几次联合运行因新增资源强类型属性缺失、草图冒烟对桌面指针与 WPF 坐标的过严像素断言中断；修复后只将最终完整运行记为通过。范围见[圆孔换源与角度约束](SKETCH_TANGENCY_AND_REBIND.md)。混合 DPI/RDP、长时间资源、大模型与公开发布门禁仍未运行。
+
+M4-S3s–x 联合验收（2026-09-24）：`scripts/verify.ps1 -PublishSmoke -WindowSmoke -SketchSmoke -RecoverySmoke` 最终运行完成锁定还原、Release 0 警告／错误、417/417 测试、独立发布、常规桌面／窗口／草图输入／生产 30 秒强制终止恢复冒烟全部 PASS；日志 `artifacts/m4s3-polygon-holes-verify-final.log`，发布和四组冒烟目录时间戳 `20260924-213310`，五份 WPF 绑定日志均为 0 字节。恢复种子新增有稳定直线环引用的 4×4 mm 多边形孔，恢复后核对 20×20×5 mm 外形扣孔体积 1,920 mm³、原文件不变及资源清理。独立锁定 NuGet 消费 `artifacts/occt-capability-m4s3-polygon-holes` 为 23/23 场景、62/62 原生 DLL 与包载荷一致；直接复用已有 OCCT 多边形线框、平面、拉伸与布尔接口，无需迁移上游绑定。定向测试覆盖严格包含／孔间分离、逐孔勾选创建、已有特征换源、草图尺寸重算与失败回退、撤销／重做、features v13 往返、v12 迁移与伪装拒绝、STEP/IGES/STL 导出。首次联合运行的草图冒烟因旧指针消息与写死矩形体积断言中断；改用 Windows `SendInput` 并按实际绘制尺寸核对后，只有最终完整运行计为通过。范围见[多边形草图通孔](POLYGON_SKETCH_HOLES.md)。圆弧/样条、嵌套岛屿、带孔旋转、混合 DPI/RDP、长时间资源、大型模型和公开发布仍未验收。
+
+M4-S3y–ad 联合验收（2026-09-24）：`scripts/verify.ps1 -PublishSmoke -WindowSmoke -SketchSmoke -RecoverySmoke` 完成锁定还原、Release 0 警告／错误、419/419 测试、独立发布和常规桌面／窗口／草图真实指针／生产 30 秒强制终止恢复冒烟，日志 `artifacts/m4s3-arc-verify-final2.log`，发布及四组冒烟目录时间戳 `20260924-221529`。恢复种子核对三点圆弧加隐式弦的关联拉伸精确体积 `125π mm³`，草图鼠标冒烟覆盖三次点击绘制。独立锁定 NuGet 探针 `artifacts/occt-capability-m4s3-arc` 通过 24/24 场景，62/62 原生 DLL 与包载荷一致，现有 OcctSharp 接口足够，无上游迁移。定向测试覆盖退化拒绝、构造切换、点编辑、关联重算、撤销／重做、sketches v4/features v14 往返及旧版伪装拒绝、STEP/IGES/STL 导出。首次联合运行仅因旧测试仍断言 features v13 而失败；更新断言后完整重跑通过。任意混合曲线闭环、样条、嵌套岛屿、混合 DPI/RDP、长时间资源和大型模型仍待后续验收。
+
+M4-S3ae–aj 联合验收（2026-09-24）：六项实现后统一执行 `scripts/verify.ps1 -PublishSmoke -WindowSmoke -SketchSmoke -RecoverySmoke`，最终运行通过锁定还原、Release 0 警告／错误、422/422 测试、独立发布和常规桌面／窗口／草图真实指针／生产 30 秒强制终止恢复冒烟；日志 `artifacts/m4s3-mixed-verify-final.log`，发布及四组冒烟目录时间戳 `20260924-223533`。草图指针冒烟绘制一段圆弧接三段直线的真实闭环；恢复种子核对其关联拉伸体积 `1000+125π mm³`、ID 和资产。定向测试覆盖分叉拒绝、交叉拒绝、构造状态、精确 BRep、草图修改重算／失败回退、撤销／重做、features v15 往返、v14→v15 迁移、新字段伪装成旧版拒绝及 STEP/IGES/STL 导出。独立锁定 NuGet 消费 `artifacts/occt-capability-m4s3-mixed` 通过 25/25 场景、62/62 原生 DLL 与包载荷一致；直接复用已有曲线链／建面 API，无需迁移 OcctSharp。多圆弧、样条、混合曲线孔、嵌套岛屿、混合 DPI/RDP、长期资源和大模型仍待独立验收。
+
+M4-S3 三个大阶段联合验收（2026-09-24）：多圆弧闭环、混合外边界的圆／多边形孔、混合曲线孔的关联编辑与精确通孔实现后，统一执行 `scripts/verify.ps1 -PublishSmoke -WindowSmoke -SketchSmoke -RecoverySmoke`。最终运行通过锁定还原、Release 0 警告／错误、426/426 测试、独立发布和桌面／窗口／草图真实指针／生产强制终止恢复冒烟；日志 `artifacts/m4s3-expanded-verify-final.log`，发布及四组证据时间戳 `20260924-231833`，五份 WPF 绑定日志均为空。恢复种子核对两圆弧外边界加曲线孔的关联 ID 及精确体积 `368+196π mm³`。独立锁定 NuGet 消费 `artifacts/occt-capability-m4s3-expanded` 为 26/26 场景，62/62 原生 DLL 哈希与包载荷一致，无需上游迁移。定向测试覆盖弧弧相交、严格孔包含／排斥嵌套、原子重算和撤销／重做、features v16 往返、v15→v16 迁移与伪装拒绝。样条草图实体、嵌套岛屿、多实体结果、混合 DPI/RDP、长时间资源和大型模型仍待后续验收。
+
+M4-S3 三个大阶段联合验收（2026-09-25）：二次 Bézier 区域、直线孔内单层岛屿、圆／混合曲线孔内单层岛屿连续实现后统一验证。最终 `scripts/verify.ps1 -PublishSmoke -WindowSmoke -SketchSmoke -RecoverySmoke` 通过锁定还原、Release 0 警告／错误、432/432 测试、独立发布及常规桌面／窗口／草图真实指针／生产强制终止恢复冒烟；日志 `artifacts/m4s3-bezier-islands-verify-final5.log`，发布与四组冒烟目录时间戳 `20260925-202558`，五份 WPF 绑定日志均为 0 字节。独立锁定 NuGet 消费 `artifacts/occt-capability-m4s3-bezier-islands` 为 27/27 场景，62/62 原生 DLL 哈希与包载荷一致；无需迁移 OcctSharp。features v18、sketches v5；接缝射线判定、岛屿缓存／JSON、旧版本迁移及恢复均有回归覆盖。任意 B 样条链、样条孔／约束、岛中孔、多层区域树，以及混合 DPI/RDP、长期资源和大型模型留后续独立验收；详见[阶段文档](BEZIER_AND_SINGLE_LEVEL_ISLANDS.md)。
+
+M4-S3 三次 B 样条与 M3 文件故障两个大阶段联合验收（2026-09-25）：`scripts/verify.ps1 -PublishSmoke -WindowSmoke -SketchSmoke -RecoverySmoke` 通过锁定还原、Release 0 警告／错误、440/440 测试、独立发布及常规桌面／窗口／草图真实指针／生产 30 秒强制终止恢复冒烟；日志 `artifacts/m4s3-spline-m3-fault-verify.log`，发布及四组冒烟时间戳 `20260925-205337`，五份 WPF 绑定日志均为 0 字节。恢复种子核对五控制点样条的稳定引用、资产和约 168.5 mm³ 精确实体，原文件不变。定向测试覆盖四／五／六控制点、关联修改与失败回退、撤销／重做、features v18→v19 和 sketches v5→v6 迁移与伪装拒绝、三格式导出，以及中途保存异常／取消、旧目标保留、加载资产租约回滚和恢复元数据发布前取消。独立锁定 NuGet 消费 `artifacts/occt-capability-m4s3-spline-m3-fault` 通过 28/28 场景，62/62 原生 DLL 哈希与包载荷一致，现有 OcctSharp 三次 B 样条 API 足够，无需上游迁移。真实磁盘满、断电、网络文件系统、混合 DPI/RDP、长期资源、大型模型和公开发布仍需专项验收；范围见[阶段文档](CUBIC_SPLINE_AND_FILE_FAULTS.md)。

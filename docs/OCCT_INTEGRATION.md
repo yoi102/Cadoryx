@@ -1,5 +1,9 @@
 # OcctSharp 接入设计
 
+2026-09-24 M4-T3-B2d1–d4：锁定本地 `.topology.1` 配对包。Cadoryx 通过新 `RepairSnapshot.FindTopologyIndex` 在原始 Viewer 形体上精确定位拾取子形状；OcctSharp 补足该手写原生/托管接口，原生圆角、倒角与历史接口复用现有能力。索引只与精确资产/修订/指纹一起使用，不跨重算自动迁移。范围和验证见 [局部结果精确拓扑](EXACT_LOCAL_TOPOLOGY.md) 与 ROADMAP。
+
+2026-09-24 M4-T3-B2c1–c4（历史阶段）：局部结果上的连续圆角和绑定线性变半径复用当时锁定 `.viewcube.5` 的历史追踪、`ContourFilletRecipe` 与 `ScalarLawDefinition.Linear` 公共接口。应用层负责来源选择、唯一历史确认、冻结/重选、参数编辑和 features v9；独立包探针 `artifacts/occt-capability-20260923-235813` 为 19/19 场景、62/62 原生 DLL 与包一致，当时未证明有新的上游封装缺口。
+
 2026-09-23 M4-T3-B2a/B2b：锁定 `8.0.1-preview.28.cadoryx.viewcube.5` 已提供多轮廓 `ContourFilletRecipe`／`ContourChamferRecipe` 与 `FilletContourProgram.FromLaw`。Cadoryx 本轮只扩展 Box 配方、内核调用和窗口；独立 NuGet 探针 19/19 场景、62/62 原生 DLL 与包载荷一致，见 `artifacts/occt-capability-20260923-233837`。没有新的公共接口缺口，未改 OcctSharp。
 
 2026-09-23 ViewCube：当前锁定本地开发包 `8.0.1-preview.28.cadoryx.viewcube.5`，手写 Viewer 桥拥有 OCCT `AIS_ViewCube`，提供显示开关、面／边／角命中和对应相机方向（26 种）。两个 45° 短弧箭头位于立方体右上侧，只在相机对准六个正交面时显示；悬停高亮被命中的面或箭头。Cadoryx 在原生 HWND 内绘制，点击后沿用 320 ms 相机动画，左右箭头绕当前视线方向转动，单次角度为应用设置 `ViewCubeRotationDegrees`（1–180°，默认 45°）。ViewCube 不进入模型选择、网格或文档存储。命中查询仅在右上角区域更新 AIS 检测，避免建模点击改变模型悬停高亮。应用设置 `ShowViewCube` 控制所有已打开视口及新视口。点击目标相机由 OcctSharp 的独立相机副本计算，保留当前观察中心与视距；查询阶段不触碰显示视图，避免动画前短暂绘出最终方向。独立 NuGet 消费和桌面冒烟证据见 ROADMAP 的 M2-V8 验收记录。

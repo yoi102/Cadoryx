@@ -52,9 +52,43 @@
                 <StackPanel>
                     <StackPanel.Style><Style TargetType="StackPanel"><Setter Property="Visibility" Value="Collapsed"/><Style.Triggers><DataTrigger Binding="{Binding Document.IsProfileTool}" Value="True"><Setter Property="Visibility" Value="Visible"/></DataTrigger></Style.Triggers></Style></StackPanel.Style>
                     <StackPanel IsEnabled="{Binding Document.IsCreating}">
-                        <CheckBox Content="{I18N {x:Static r:LangKeys.AssociateSketch}}" IsChecked="{Binding Document.UseLinkedSketch}" Margin="0,0,0,6"/>
+                        <CheckBox Content="{I18N {x:Static r:LangKeys.AssociateSketch}}" IsChecked="{Binding Document.UseLinkedSketch}" IsEnabled="{Binding Document.CanChangeSketchAssociation}" Margin="0,0,0,6"/>
                         <TextBlock Text="{I18N {x:Static r:LangKeys.SourceSketchLoop}}"/>
-                        <ComboBox ItemsSource="{Binding Document.SketchProfiles}" SelectedItem="{Binding Document.SelectedSketchProfile}" DisplayMemberPath="Label" IsEnabled="{Binding Document.UseLinkedSketch}" Margin="0,4,0,8"/>
+                        <ComboBox ItemsSource="{Binding Document.SketchProfiles}" SelectedItem="{Binding Document.SelectedSketchProfile}" DisplayMemberPath="Label" IsEnabled="{Binding Document.CanChooseSketchProfile}" Margin="0,4,0,8"/>
+                        <StackPanel IsEnabled="{Binding Document.CanChooseSketchHoles}" Margin="0,0,0,8">
+                            <TextBlock Text="{I18N {x:Static r:LangKeys.SketchCircularHoles}}" Margin="0,0,0,4"/>
+                            <ScrollViewer MaxHeight="120" VerticalScrollBarVisibility="Auto">
+                                <ItemsControl ItemsSource="{Binding Document.SketchHoleChoices}">
+                                    <ItemsControl.ItemTemplate><DataTemplate><CheckBox Content="{Binding Label}" IsChecked="{Binding IsSelected,Mode=TwoWay}" Margin="0,2"/></DataTemplate></ItemsControl.ItemTemplate>
+                                </ItemsControl>
+                            </ScrollViewer>
+                            <TextBlock Text="{I18N {x:Static r:LangKeys.SketchPolygonHoles}}" Margin="0,8,0,4"/>
+                            <ScrollViewer MaxHeight="120" VerticalScrollBarVisibility="Auto">
+                                <ItemsControl ItemsSource="{Binding Document.SketchPolygonHoleChoices}">
+                                    <ItemsControl.ItemTemplate><DataTemplate><CheckBox Content="{Binding Label}" IsChecked="{Binding IsSelected,Mode=TwoWay}" Margin="0,2"/></DataTemplate></ItemsControl.ItemTemplate>
+                                </ItemsControl>
+                            </ScrollViewer>
+                            <TextBlock Text="{I18N {x:Static r:LangKeys.MixedCurveLoop}}" Margin="0,8,0,4"/>
+                            <ScrollViewer MaxHeight="120" VerticalScrollBarVisibility="Auto">
+                                <ItemsControl ItemsSource="{Binding Document.SketchMixedHoleChoices}">
+                                    <ItemsControl.ItemTemplate><DataTemplate><CheckBox Content="{Binding Label}" IsChecked="{Binding IsSelected,Mode=TwoWay}" Margin="0,2"/></DataTemplate></ItemsControl.ItemTemplate>
+                                </ItemsControl>
+                            </ScrollViewer>
+                            <TextBlock Text="{I18N {x:Static r:LangKeys.SketchIslands}}" Margin="0,8,0,4"/>
+                            <ScrollViewer MaxHeight="120" VerticalScrollBarVisibility="Auto">
+                                <StackPanel>
+                                    <ItemsControl ItemsSource="{Binding Document.SketchIslandCircleChoices}">
+                                        <ItemsControl.ItemTemplate><DataTemplate><CheckBox Content="{Binding Label}" IsChecked="{Binding IsSelected,Mode=TwoWay}" Margin="0,2"/></DataTemplate></ItemsControl.ItemTemplate>
+                                    </ItemsControl>
+                                    <ItemsControl ItemsSource="{Binding Document.SketchIslandPolygonChoices}">
+                                        <ItemsControl.ItemTemplate><DataTemplate><CheckBox Content="{Binding Label}" IsChecked="{Binding IsSelected,Mode=TwoWay}" Margin="0,2"/></DataTemplate></ItemsControl.ItemTemplate>
+                                    </ItemsControl>
+                                    <ItemsControl ItemsSource="{Binding Document.SketchIslandMixedChoices}">
+                                        <ItemsControl.ItemTemplate><DataTemplate><CheckBox Content="{Binding Label}" IsChecked="{Binding IsSelected,Mode=TwoWay}" Margin="0,2"/></DataTemplate></ItemsControl.ItemTemplate>
+                                    </ItemsControl>
+                                </StackPanel>
+                            </ScrollViewer>
+                        </StackPanel>
                     </StackPanel>
                     <TextBlock Text="{Binding Document.ProfileInputHint}" TextWrapping="Wrap" Opacity="0.7" Margin="0,0,0,8"/>
                 </StackPanel>

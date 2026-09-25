@@ -233,9 +233,9 @@ FeatureEvaluation
 
 ## 8. 草图与约束
 
-M4-S1 实现 `DocumentSnapshot.Sketches`、稳定 SketchEntityId/SketchConstraintId、点/线/圆、固定平面、13 种类型化约束、独立求解结果和六节存储。M4-S2 增加 CadSketch.Revision、FeatureDefinition.SketchSource 和固定平面编辑/关联重算。采用共享点引用，构造几何也参加求解；圆弧和更完整约束仍是后续目标。准确字段、数值范围与验收见 [草图基础](SKETCH_FOUNDATION.md)和[草图编辑](SKETCH_EDITOR.md)。
+M4-S1 实现 `DocumentSnapshot.Sketches`、稳定 SketchEntityId/SketchConstraintId、点/线/圆、固定平面、13 种类型化约束、独立求解结果和六节存储。M4-S2 增加 CadSketch.Revision、FeatureDefinition.SketchSource 和固定平面编辑/关联重算。采用共享点引用，构造几何也参加求解；后续 S3y–aj 已实现三点圆弧加隐式弦和单圆弧直线混合闭环的关联拉伸；多圆弧、样条与混合孔和更完整约束仍是后续目标。准确字段、数值范围与验收见 [草图基础](SKETCH_FOUNDATION.md)和[草图编辑](SKETCH_EDITOR.md)。
 
-当前 `CadSketch`：Id、PartId、Name、Plane、Points、Lines、Circles、Constraints。Plane 为固定 RigidTransform3d，将局部 XY 映射到零件坐标。长期设计可增加 Support、DimensionParameters；Support 再扩展为 DatumPlaneId 或带几何版本约束的平面 Face 引用。引用失效必须报错，不自动跳到世界 XY。
+当前 `CadSketch`：Id、PartId、Name、Plane、Points、Lines、Circles、Arcs、Constraints。Plane 为固定 RigidTransform3d，将局部 XY 映射到零件坐标。长期设计可增加 Support、DimensionParameters；Support 再扩展为 DatumPlaneId 或带几何版本约束的平面 Face 引用。引用失效必须报错，不自动跳到世界 XY。
 
 几何全部在草图局部二维坐标系中：
 
@@ -304,27 +304,23 @@ SelectionSet、Hover、检测容差和过滤器属于 Editor Session。Viewer �
 - 自定义属性使用命名空间键、类型标签（string/bool/int64/double/quantity/date/reference）和版本，不保存任意 CLR 对象。
 - 扩展数据限制大小、深度和类型。未知可选字段可保留；未知必需功能进入只读或拒绝编辑，避免保存时丢数据。
 
-### 基准与装配约束预留
+### 文档级装配关系与后续配合求解
 
 `CadDatum` 包含 Id、PartId、Name、Kind、Definition、Dependencies。Kind 为 Point/Axis/Plane/CoordinateSystem；Definition 是固定数值定义，或带明确偏移/方向参数的关联定义。关联基准参与特征依赖环检测；支持面失效时基准也失效，不能变成原点处的有效坐标系。
 
-装配约束采用独立结构，不混入草图 Constraint：
+当前已实现的 `AssemblyConstraint` 是文档级关系，不混入草图 Constraint：
 
 ```text
 AssemblyConstraint
-  ConstraintId / OwnerAssemblyId / Name / TypeKey / SchemaVersion
-  Participants[]（相对 OwnerAssembly 的 SlotId 路径 + Datum/Topology 引用）
-  Parameters（距离、角度、方向解、偏置等类型化值）
-  IsSuppressed
-
-AssemblySolveReport
-  AssemblyId / InputRevisions
-  Status（NotSolved/UnderConstrained/Solved/OverConstrained/Failed）
-  RemainingDegreesOfFreedom / ConflictingConstraintIds / Diagnostics
-  CandidatePlacements[]（解的候选位姿，成功后整体提交）
+  Id / Name / Kind(Fixed,Coincident,Distance,ParallelAxes,Coaxial) / SchemaVersion / IsEnabled
+  PrimaryPath + PrimaryDefinitionId
+  SecondaryPath? + SecondaryDefinitionId?
+  PrimaryLocalPoint / SecondaryLocalPoint / PrimaryLocalAxis / SecondaryLocalAxis
+  TargetDistanceMm / FixedWorld?
+  PrimaryTopology? / SecondaryTopology?（精确修订来源，仅诊断）
 ```
 
-拥有者为装配定义，因此约束参与路径相对该定义解析；同一子装配的多个实例复用约束图，各自在世界中定位。首版约束只引用拥有者子图内的实例，禁止通过全局路径依赖外层装配，避免循环和实例相关求解。柔性子装配、跨装配上下文约束和运动学不在首版承诺内。
+路径包含文档 ID 与完整 SlotId 链，定义 ID 在捕获时锁定；缺路径、替换定义或拓扑修订变化均给出诊断，不自动寻找替代。有效固定关系由快照验证保护世界位姿；点对关系只在显式调整时平移第二实例。平行轴只旋转第二实例以对齐无向轴，同轴还消除径向偏移而保留轴向滑移。关系保存在 `document` v14 中，旧 v12 文件迁移为空表、v13 关系补空轴字段。当前没有 `AssemblySolveReport`、拥有者相对路径的复用约束图、角度/面配合或全局求解；它们仍是后续设计议题，详见 [M5 装配关系](M5_ASSEMBLY_RELATIONS.md)及[轴关系扩展](M5_AXIS_RELATIONS.md)。
 
 外部零件引用后续可扩展为 `ExternalDefinitionSource(DocumentId, PinnedStateId, ContentHash, RelativeUri, ResolvePolicy)`。已解析内容作为固定版本的本地快照参与本轮命令；文件更新由显式更新命令获取新版本、校验引用并整体提交。源 URI 是定位提示，不能代替文档和内容身份。
 

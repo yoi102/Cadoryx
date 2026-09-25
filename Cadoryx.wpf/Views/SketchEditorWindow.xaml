@@ -35,6 +35,7 @@
                             <TextBlock Text="{I18N {x:Static r:LangKeys.SelectedCoordinates}}" TextWrapping="Wrap" Margin="0,6,0,4"/>
                             <UniformGrid Columns="3"><mah:NumericUpDown IsEnabled="{Binding HasSelectedPoint}" Value="{Binding PointX}" HideUpDownButtons="True"/><mah:NumericUpDown IsEnabled="{Binding HasSelectedPoint}" Value="{Binding PointY}" HideUpDownButtons="True"/><mah:NumericUpDown IsEnabled="{Binding HasSelectedCircle}" Value="{Binding CircleRadius}" Minimum="0.00001" HideUpDownButtons="True"/></UniformGrid>
                             <Button Content="{I18N {x:Static r:LangKeys.ApplyCoordinates}}" Command="{Binding ApplyCoordinatesCommand}" Margin="0,6,0,4"/>
+                            <Button Content="{I18N {x:Static r:LangKeys.ConstructionGeometry}}" Command="{Binding ToggleConstructionCommand}" Margin="0,0,0,4"/>
                             <Button Content="{I18N {x:Static r:LangKeys.DeleteSelected}}" Command="{Binding DeleteEntitiesCommand}"/>
                         </StackPanel>
                     </Expander>

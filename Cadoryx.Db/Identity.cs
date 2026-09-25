@@ -25,6 +25,11 @@ public readonly record struct ComponentSlotId(Guid Value) : ICadId
     public static ComponentSlotId New() => new(Guid.NewGuid());
     public override string ToString() => Value.ToString("D");
 }
+public readonly record struct AssemblyConstraintId(Guid Value) : ICadId
+{
+    public static AssemblyConstraintId New()=>new(Guid.NewGuid());
+    public override string ToString()=>Value.ToString("D");
+}
 
 public readonly record struct BodyId(Guid Value) : ICadId
 {

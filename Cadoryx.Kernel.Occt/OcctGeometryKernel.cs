@@ -11,7 +11,7 @@ public sealed partial class OcctGeometryKernel : IGeometryKernel, ITopologyResol
 {
     private static readonly SemaphoreSlim Queue=new(1,1);
     public string Version=>"OcctSharp 8.0.1-preview.28.cadoryx.viewcube.2 / OCCT 8.0.1";
-    public bool Supports(GeometryRecipe recipe)=>recipe is BoxRecipe or CylinderRecipe or ImportedRecipe or BooleanRecipe or TransformRecipe or ExtrudeRecipe or RevolveRecipe or LocalFeatureRecipe or HistoryFilletRecipe;
+    public bool Supports(GeometryRecipe recipe)=>recipe is BoxRecipe or CylinderRecipe or ImportedRecipe or BooleanRecipe or TransformRecipe or ExtrudeRecipe or RevolveRecipe or LocalFeatureRecipe or HistoryFilletRecipe or HistoryChamferRecipe;
     private static async Task<T> Run<T>(Func<T> action,CancellationToken token)
     {
         await Queue.WaitAsync(token).ConfigureAwait(false);
@@ -30,6 +30,10 @@ public sealed partial class OcctGeometryKernel : IGeometryKernel, ITopologyResol
             if(recipe is HistoryFilletRecipe bound)
             {
                 return EvaluateHistoryFillet(bound,assets,cancellationToken);
+            }
+            if(recipe is HistoryChamferRecipe chamfer)
+            {
+                return EvaluateHistoryChamfer(chamfer,assets,cancellationToken);
             }
             if(recipe is BooleanRecipe boolean)
             {
@@ -59,6 +63,54 @@ public sealed partial class OcctGeometryKernel : IGeometryKernel, ITopologyResol
         }
         static Shape Profile(SketchProfile profile,bool radial)
         {
+            if(!profile.BoundaryCurves.IsEmpty)
+            {
+                if(radial)throw new CadValidationException("Mixed-curve profiles are not supported by revolve.");
+                var curves=profile.BoundaryCurves.Select(edge=>
+                {
+                    if(edge.Middle is not {} middle)
+                        return SketchCurve2d.Segment(new(edge.Start.X,edge.Start.Y),new(edge.End.X,edge.End.Y));
+                    var arc=SketchArcGeometry.Through(edge.Start,middle,edge.End);
+                    return SketchCurve2d.CircularArc(new(arc.Center.X,arc.Center.Y),arc.Radius,arc.StartAngle,arc.SweepAngle);
+                }).ToArray();
+                var chain=SketchCurveChain2d.Create(curves,requireClosed:true);
+                return SketchProfile2d.Create(chain).CreateFace(SketchPlane.XY);
+            }
+            if(profile.Arc is {} segment)
+            {
+                if(radial)throw new CadValidationException("Arc segment profiles are not supported by revolve.");
+                var geometry=SketchArcGeometry.Through(segment.Start,segment.Middle,segment.End);
+                var arc=SketchCurve2d.CircularArc(new(geometry.Center.X,geometry.Center.Y),geometry.Radius,
+                    geometry.StartAngle,geometry.SweepAngle);
+                var chord=SketchCurve2d.Segment(new(segment.End.X,segment.End.Y),new(segment.Start.X,segment.Start.Y));
+                var chain=SketchCurveChain2d.Create([arc,chord],requireClosed:true);
+                return SketchProfile2d.Create(chain).CreateFace(SketchPlane.XY);
+            }
+            if(profile.Bezier is {} bezier)
+            {
+                if(radial)throw new CadValidationException("Bezier segment profiles are not supported by revolve.");
+                var curve=SketchCurve2d.Bezier([new(bezier.Start.X,bezier.Start.Y),
+                    new(bezier.Control.X,bezier.Control.Y),new(bezier.End.X,bezier.End.Y)]);
+                var chord=SketchCurve2d.Segment(new(bezier.End.X,bezier.End.Y),new(bezier.Start.X,bezier.Start.Y));
+                return SketchProfile2d.Create(SketchCurveChain2d.Create([curve,chord],requireClosed:true)).CreateFace(SketchPlane.XY);
+            }
+            if(profile.Spline is {} spline)
+            {
+                if(radial)throw new CadValidationException("Spline segment profiles are not supported by revolve.");
+                var controls=spline.Controls;
+                var curve=SketchCurve2d.BSpline(controls.Select(p=>new SketchPoint2d(p.X,p.Y)).ToArray(),
+                    SketchSplineGeometry.Knots(controls.Length),SketchSplineGeometry.Multiplicities(controls.Length),
+                    SketchSplineGeometry.Degree);
+                var chord=SketchCurve2d.Segment(new(controls[^1].X,controls[^1].Y),new(controls[0].X,controls[0].Y));
+                return SketchProfile2d.Create(SketchCurveChain2d.Create([curve,chord],requireClosed:true)).CreateFace(SketchPlane.XY);
+            }
+            if(profile.Circle is {} circle)
+            {
+                if(radial)throw new CadValidationException("Circular sketch regions are not supported by revolve.");
+                using var edge=ShapeFactory.CreateCircleEdge(new GpPoint(circle.Center.X,circle.Center.Y,0),new GpPoint(0,0,1),circle.Radius);
+                using var circleWire=ShapeFactory.CreateWire([edge]);
+                return ShapeFactory.CreatePlanarFace(circleWire);
+            }
             using var wire=ShapeFactory.CreatePolygonWire(profile.Points.Select(p=>radial?new GpPoint(p.X,0,p.Y):new GpPoint(p.X,p.Y,0)).ToArray(),true);
             return ShapeFactory.CreatePlanarFace(wire);
         }
@@ -70,7 +122,54 @@ public sealed partial class OcctGeometryKernel : IGeometryKernel, ITopologyResol
             case TransformRecipe t:return Place(OcctGeometryBridge.ReadShape(t.Source,assets),t.Transform);
             case ExtrudeRecipe e:
                 using(var face=Profile(e.Profile,false))using(var direction=GpVec.Create(0,0,e.Distance))
-                    return Place(face.Extrude(direction),e.Placement);
+                {
+                    Shape current=face.Extrude(direction);
+                    try
+                    {
+                        foreach(var hole in e.Profile.Holes.IsDefault?ImmutableArray<CircularSketchRegion>.Empty:e.Profile.Holes)
+                        {
+                            double margin=Math.Max(1e-5,Math.Min(1,e.Distance*.1));
+                            using var edge=ShapeFactory.CreateCircleEdge(new(hole.Center.X,hole.Center.Y,-margin),new(0,0,1),hole.Radius);
+                            using var wire=ShapeFactory.CreateWire([edge]);
+                            using var holeFace=ShapeFactory.CreatePlanarFace(wire);
+                            using var holeDirection=GpVec.Create(0,0,e.Distance+2*margin);
+                            using var cutter=holeFace.Extrude(holeDirection);
+                            var next=current.Cut(cutter);current.Dispose();current=next;
+                        }
+                        foreach(var hole in e.Profile.PolygonHoles)
+                        {
+                            double margin=Math.Max(1e-5,Math.Min(1,e.Distance*.1));
+                            using var wire=ShapeFactory.CreatePolygonWire(hole.Select(p=>new GpPoint(p.X,p.Y,-margin)).ToArray(),true);
+                            using var holeFace=ShapeFactory.CreatePlanarFace(wire);
+                            using var holeDirection=GpVec.Create(0,0,e.Distance+2*margin);
+                            using var cutter=holeFace.Extrude(holeDirection);
+                            var next=current.Cut(cutter);current.Dispose();current=next;
+                        }
+                        foreach(var hole in e.Profile.MixedHoles)
+                        {
+                            double margin=Math.Max(1e-5,Math.Min(1,e.Distance*.1));
+                            using var holeFace=Place(Profile(new SketchProfile([]){BoundaryCurves=hole},false),
+                                RigidTransform3d.Translate(0,0,-margin));
+                            using var holeDirection=GpVec.Create(0,0,e.Distance+2*margin);
+                            using var cutter=holeFace.Extrude(holeDirection);
+                            var next=current.Cut(cutter);current.Dispose();current=next;
+                        }
+                        if(e.Profile.Islands.IsEmpty)return Place(current,e.Placement);
+                        var pieces=new List<Shape>{current};
+                        try
+                        {
+                            foreach(var island in e.Profile.Islands)
+                            {
+                                using var islandFace=Profile(island.Profile,false);
+                                pieces.Add(islandFace.Extrude(direction));
+                            }
+                            using var compound=ShapeFactory.CreateCompound(pieces);
+                            return Place(compound,e.Placement);
+                        }
+                        finally{foreach(var piece in pieces)piece.Dispose();}
+                    }
+                    catch {current.Dispose();throw;}
+                }
             case RevolveRecipe r:
                 using(var face=Profile(r.Profile,true))using(var axis=GpAx1.Create(0,0,0,0,0,1))
                     return Place(face.Revolve(axis,r.AngleRadians),r.Placement);

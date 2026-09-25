@@ -10,9 +10,10 @@
 | [数据结构](DATA_MODEL.md) | 文档、零件、装配、几何、特征、草图、拓扑引用 |
 | [命令与存储](COMMANDS_AND_STORAGE.md) | 事务、撤销、异步提交、增量更新、`.cadoryx` 格式 |
 | [OcctSharp 接入](OCCT_INTEGRATION.md) | 已核实的 API、包版本、所有权、视口限制 |
-| [OcctSharp 能力核查](OCCT_CAPABILITY_AUDIT.md) | 当前 NuGet 是否足够、17 组场景（含 Viewer 渐变契约）、62 DLL 核对、应用接入与后续迁移边界 |
+| [OcctSharp 能力核查](OCCT_CAPABILITY_AUDIT.md) | 当前 NuGet 是否足够、独立消费场景、62 DLL 核对、应用接入与后续迁移边界 |
 | [历史诊断查询](HISTORY_QUERIES.md) | H2-C1 MetroWindow、源/目标查询、异步状态、九节文件迁移 |
 | [跨特征边绑定](HISTORY_FEATURE_BINDINGS.md) | H2-C2 精确目标确认、圆角、过期传播、显式重选与十节文件协议 |
+| [局部结果精确拓扑](EXACT_LOCAL_TOPOLOGY.md) | B2d1–d4 生成边/面拾取、结果倒角、精确绑定和冻结重选 |
 | [视口鼠标建模](VIEWPORT_CONSTRUCTION.md) | XY 工作网格、显示/间距/吸附设置、基础形体鼠标尺寸与预览 |
 | [实施路线与验收](ROADMAP.md) | 每个阶段的交付、验证及本轮完成边界 |
 | [异常退出恢复](RECOVERY.md) | 自动快照、恢复入口、进程锁、故障边界与验收 |
@@ -21,8 +22,21 @@
 | [格式演进与存储基准](FORMAT_EVOLUTION.md) | 资产描述、跨节迁移、旧文件固定样本、读写时间与内存 |
 | [草图模型与求解基础](SKETCH_FOUNDATION.md) | 13 种约束、局部自由度/冲突、命令与六节文件协议 |
 | [草图编辑与关联特征](SKETCH_EDITOR.md) | MetroWindow 二维编辑、尺寸/约束、候选预览、依赖重算与新版协议 |
+| [精确圆形草图区域](CIRCULAR_SKETCH_PROFILES.md) | M4-S3a–f 单圆关联拉伸、编辑、迁移与恢复边界 |
+| [精确圆孔拉伸](CIRCULAR_SKETCH_HOLES.md) | M4-S3g–l 明确选择的完整圆孔、关联重算与文件协议 |
+| [草图切线、角度与换源](SKETCH_TANGENCY_AND_REBIND.md) | M4-S3m–r 圆孔多选、已有拉伸换源、切线和角度尺寸、sketches v3 |
+| [多边形草图通孔](POLYGON_SKETCH_HOLES.md) | M4-S3s–x 非圆形闭合直线孔、精确拉伸、关联编辑、features v13 与恢复 |
+| [三点圆弧草图区域](ARC_SEGMENT_SKETCH_PROFILES.md) | M4-S3y–ad 圆弧＋隐式弦、精确拉伸、关联重算、sketches v4/features v14 与恢复 |
+| [直线圆弧混合闭环](MIXED_CURVE_SKETCH_PROFILES.md) | M4-S3ae–aj 一段圆弧与直线成环、精确关联拉伸、features v15 与恢复 |
+| [曲线区域三阶段扩展](EXPANDED_MIXED_CURVE_PROFILES.md) | 多圆弧闭环、混合外边界的常规孔、精确混合曲线孔与 features v16 |
+| [二次 Bézier 与单层岛屿](BEZIER_AND_SINGLE_LEVEL_ISLANDS.md) | Bézier 精确关联拉伸、孔内岛屿复合实体、features v18/sketches v5 |
+| [三次 B 样条与文件故障](CUBIC_SPLINE_AND_FILE_FAULTS.md) | 受限三次样条独立区域、features v19/sketches v6、M3 故障矩阵 |
+| [M5 装配实例与独立化](M5_ASSEMBLY_OCCURRENCES.md) | 指定路径的插入、替换、删除、重挂与共享子装配隔离 |
+| [M5 零件与定义维护](M5_PARTS_AND_MAINTENANCE.md) | 逐实例零件独立化、未用定义清理和编辑范围 |
+| [M5 装配关系](M5_ASSEMBLY_RELATIONS.md) | 固定实例、点对重合/距离、失效诊断、文档保存和属性面板 |
+| [M5 局部锚点与轴关系](M5_AXIS_RELATIONS.md) | 可编辑局部点、平行轴/同轴单关系调整及 document v14 |
 
-设计基线日期：2026-09-11；代码实施更新：2026-09-13。现已建立 15 个项目，接通多文档 WPF、真实 OCCT 视口、模型树、属性、基础建模、特征重算、撤销重做、文件操作、恢复及有限约束集的草图编辑/关联特征。曲线区域、拓扑命名、装配编辑及大型模型能力仍按[路线图](ROADMAP.md)推进。
+设计基线日期：2026-09-11；代码实施更新：2026-09-25。现已建立 15 个项目，接通多文档 WPF、真实 OCCT 视口、模型树、属性、基础建模、特征重算、撤销重做、文件操作、恢复及有限约束集的草图编辑/关联特征。已明确选择的圆孔、直线闭环多边形孔、三点圆弧＋弦、多圆弧混合闭环及曲线孔可用于拉伸；受限三次 B 样条独立区域、基础装配实例编辑、逐实例零件独立化、未用定义清理，以及固定实例、可编辑局部点和平行轴/同轴单关系调整已联合验收。任意混合样条链、通用拓扑命名、完整机械配合求解、外部引用以及大型模型能力仍按[路线图](ROADMAP.md)推进。
 
 ## 当前存储与交换
 
@@ -34,7 +48,7 @@ M4-T1-H1 建立局部算法历史证据、八节存储和诊断解析，其当�
 
 M4-T1 已实现 Box 六面/十二边语义引用与持久化；M4-T2 接通 MetroWindow 面/边拾取、失效重选和单边圆角/倒角预览确认；M4-T3-A/B1 增加既有局部特征参数编辑及单边双距离倒角。支持边界见 [拓扑引用基础](TOPOLOGY_REFERENCES.md)和 [局部建模](LOCAL_FEATURES.md)。
 
-`.cadoryx` 采用 ZIP 容器、JSON 清单、MessagePack 3.1.8 数字键 DTO 和独立 BRep/XDE 资产。当前十节为 features v8、document v12、structure v3、presentation/sketches/history v2、geometry/topology/history-queries/feature-bindings v1；支持旧四节 JSON v1、MessagePack v2、M3-V、M4-S1/S2/T1/T2、features v6/v7、H2-C1 九节、document v7/v8/v9/v10/v11 及 history v1 文件迁移。资产目录记录媒体类型、编码/格式版本和内核来源。模型数据不直接序列化 ViewModel 或 native 对象。
+`.cadoryx` 采用 ZIP 容器、JSON 清单、MessagePack 3.1.8 数字键 DTO 和独立 BRep/XDE 资产。当前十节为 features v19、document v14、structure v3、presentation/history/feature-bindings v2、sketches v6、geometry/topology/history-queries v1；支持旧四节 JSON v1、MessagePack v2、M3-V、M4-S1/S2/T1/T2、features v6–v18、feature-bindings v1、sketches v1–v5、H2-C1 九节、document v7–v13 及 history v1 文件迁移。资产目录记录媒体类型、编码/格式版本和内核来源。模型数据不直接序列化 ViewModel 或 native 对象。
 
 | 格式 | 读取 | 写入 | 用途 |
 |---|---|---|---|
@@ -47,7 +61,7 @@ M4-T1 已实现 Box 六面/十二边语义引用与持久化；M4-T2 接通 Metr
 
 ## 构建与验证
 
-需要 Windows x64、.NET SDK 10.0.401 和可用 OpenGL 桌面环境。`NuGet.Config` 使用相邻 OcctSharp 内层 `artifacts/packages` 作为本地源；当前固定本地开发包 `8.0.1-preview.28.cadoryx.viewcube.4`。该版本未公开发布，移植时需提供同版本托管／原生包或从相邻 OcctSharp 源码构建。H2-B2 的历史构建说明见[接入目录](../integrations/occtsharp-boolean-history/README.md)。
+需要 Windows x64、.NET SDK 10.0.401 和可用 OpenGL 桌面环境。`NuGet.Config` 使用相邻 OcctSharp 内层 `artifacts/packages` 作为本地源；当前固定本地开发包 `8.0.1-preview.28.cadoryx.topology.1`。该版本未公开发布，移植时需提供同版本托管／原生包或从相邻 OcctSharp 源码构建。H2-B2 的历史构建说明见[接入目录](../integrations/occtsharp-boolean-history/README.md)。
 
 ```powershell
 dotnet build Cadoryx.slnx -c Release

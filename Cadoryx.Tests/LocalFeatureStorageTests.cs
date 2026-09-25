@@ -76,7 +76,7 @@ public sealed class LocalFeatureStorageTests
             var local=session.Snapshot.Features.Values.Single(f=>f.Recipe is LocalFeatureRecipe);
             var current=files.PathFor("two-distances.cadoryx");await session.SaveAsync(storage,current);
             var manifest=FormatEvolutionTests.Manifest(current);
-            Assert.Equal(8,manifest.Sections.Single(s=>s.Kind=="features").SchemaVersion);
+            Assert.Equal(CadSectionMigrationRegistry.CurrentFormats["features"].Version,manifest.Sections.Single(s=>s.Kind=="features").SchemaVersion);
             Assert.Contains("cadoryx.local-chamfer-two-distances.1",manifest.RequiredCapabilities);
             using(var loaded=await storage.LoadAsync(current,assets))
             {

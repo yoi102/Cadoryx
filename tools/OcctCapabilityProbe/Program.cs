@@ -45,6 +45,25 @@ Probe("viewer-view-cube-contract",()=>
     return new{orientations=26,viewerOwned=true};
 });
 
+Probe("exact-picked-topology-index",()=>
+{
+    using var box=ShapeFactory.CreateBox(10,12,15);
+    using var map=RepairSnapshot.Create(box);
+    var edges=box.GetSubShapes(ShapeKind.Edge);
+    try
+    {
+        var indices=edges.Select(e=>RepairSnapshot.FindTopologyIndex(box,e)).Distinct().ToArray();
+        Require(indices.Length==12&&indices.All(i=>i>=0&&map.Topology[i].Kind==ShapeKind.Edge),
+            "Picked edges do not map to the exact full topology slots.");
+        using var foreign=ShapeFactory.CreateBox(10,12,15);
+        var other=foreign.GetSubShapes(ShapeKind.Edge);
+        try{Require(RepairSnapshot.FindTopologyIndex(box,other[0])==-1,"Foreign edge mapped into source.");}
+        finally{foreach(var edge in other)edge.Dispose();}
+        return new{edges=indices.Length,foreignRejected=true};
+    }
+    finally{foreach(var edge in edges)edge.Dispose();}
+});
+
 Probe("primitives-transform",()=>
 {
     using var box=ShapeFactory.CreateBox(10,12,15);using var moved=box.Transformed(ShapeTransform.CreateTranslationAndRotationZ(30,40,50,90));
@@ -66,6 +85,47 @@ Probe("profile-extrude-revolve-ghost",()=>
     using var revolution=rotationFace.Revolve(axis,Math.PI/2);
     Near(Volume(extrusion),60);Near(Volume(revolution),4*Math.PI);
     return new{extrusionVolume=Volume(extrusion),revolutionVolume=Volume(revolution)};
+});
+Probe("polygon-through-hole",()=>
+{
+    using var outerWire=ShapeFactory.CreatePolygonWire([new(0,0,0),new(20,0,0),new(20,20,0),new(0,20,0)],true);
+    using var outerFace=ShapeFactory.CreatePlanarFace(outerWire);
+    using var direction=GpVec.Create(0,0,10);
+    using var outer=outerFace.Extrude(direction);
+    using var holeWire=ShapeFactory.CreatePolygonWire([new(6,6,-.1),new(10,6,-.1),new(10,10,-.1),new(6,10,-.1)],true);
+    using var holeFace=ShapeFactory.CreatePlanarFace(holeWire);
+    using var holeDirection=GpVec.Create(0,0,10.2);
+    using var cutter=holeFace.Extrude(holeDirection);
+    using var result=outer.Cut(cutter);
+    double volume=Volume(result);Near(volume,3840);
+    return new{volume,outerVolume=Volume(outer),holeVolume=Volume(cutter)};
+});
+Probe("exact-circle-profile-extrude",()=>
+{
+    using var edge=ShapeFactory.CreateCircleEdge(new(2,3,0),new(0,0,1),5);
+    using var wire=ShapeFactory.CreateWire([edge]);
+    using var face=ShapeFactory.CreatePlanarFace(wire);
+    using var direction=GpVec.Create(0,0,8);
+    using var solid=face.Extrude(direction);
+    Near(Volume(solid),Math.PI*200);
+    Near(solid.GetBoundingBox().Minimum.X,-3,1e-5);
+    return new{exactCircularEdge=true,volume=Volume(solid)};
+});
+Probe("exact-circular-through-hole-cut",()=>
+{
+    using var outerEdge=ShapeFactory.CreateCircleEdge(new(0,0,0),new(0,0,1),10);
+    using var outerWire=ShapeFactory.CreateWire([outerEdge]);
+    using var outerFace=ShapeFactory.CreatePlanarFace(outerWire);
+    using var direction=GpVec.Create(0,0,6);
+    using var blank=outerFace.Extrude(direction);
+    using var holeEdge=ShapeFactory.CreateCircleEdge(new(0,0,-0.1),new(0,0,1),2);
+    using var holeWire=ShapeFactory.CreateWire([holeEdge]);
+    using var holeFace=ShapeFactory.CreatePlanarFace(holeWire);
+    using var holeDirection=GpVec.Create(0,0,6.2);
+    using var cutter=holeFace.Extrude(holeDirection);
+    using var result=blank.Cut(cutter);
+    Near(Volume(result),576*Math.PI,0.001);
+    return new{exactCircularHole=true,volume=Volume(result)};
 });
 foreach(var operation in Enum.GetValues<TopologyBooleanOperation>())Probe("boolean-history-"+operation,()=>
 {
@@ -124,6 +184,74 @@ Probe("curve-profile-with-hole",()=>
     var inner=SketchCurveChain2d.Create([SketchCurve2d.Circle(new(0,0),2)],requireClosed:true);
     var profile=SketchProfile2d.Create(outer,[inner]);using var solid=profile.Extrude(SketchPlane.XY,3);
     double volume=Volume(solid);Near(volume,63*Math.PI);return new{volume,holes=profile.Holes.Count};
+});
+Probe("three-point-arc-segment-face",()=>
+{
+    var arc=SketchCurve2d.CircularArc(new(5,0),5,Math.PI,-Math.PI);
+    var chord=SketchCurve2d.Segment(new(10,0),new(0,0));
+    var chain=SketchCurveChain2d.Create([arc,chord],requireClosed:true);
+    var profile=SketchProfile2d.Create(chain);
+    using var face=profile.CreateFace(SketchPlane.XY);
+    using var direction=GpVec.Create(0,0,10);
+    using var solid=face.Extrude(direction);
+    double volume=Volume(solid);Near(volume,125*Math.PI,0.01);
+    return new{volume,exactArc=true,closed=chain.IsClosed};
+});
+Probe("mixed-line-arc-closed-face",()=>
+{
+    var curves=new SketchCurve2d[]{
+        SketchCurve2d.CircularArc(new(5,0),5,Math.PI,Math.PI),
+        SketchCurve2d.Segment(new(10,0),new(10,10)),
+        SketchCurve2d.Segment(new(10,10),new(0,10)),
+        SketchCurve2d.Segment(new(0,10),new(0,0))};
+    var chain=SketchCurveChain2d.Create(curves,requireClosed:true);
+    using var face=SketchProfile2d.Create(chain).CreateFace(SketchPlane.XY);
+    using var direction=GpVec.Create(0,0,10);
+    using var solid=face.Extrude(direction);
+    double volume=Volume(solid);Near(volume,1000+125*Math.PI,0.02);
+    return new{volume,curves=chain.Curves.Count};
+});
+Probe("multi-arc-profile-with-curved-hole",()=>
+{
+    var outer=SketchCurveChain2d.Create([
+        SketchCurve2d.CircularArc(new(5,0),5,Math.PI,Math.PI),
+        SketchCurve2d.Segment(new(10,0),new(10,10)),
+        SketchCurve2d.CircularArc(new(5,10),5,0,Math.PI),
+        SketchCurve2d.Segment(new(0,10),new(0,0))],requireClosed:true);
+    var hole=SketchCurveChain2d.Create([
+        SketchCurve2d.CircularArc(new(5,5),1,Math.PI,Math.PI),
+        SketchCurve2d.Segment(new(6,5),new(6,7)),
+        SketchCurve2d.Segment(new(6,7),new(4,7)),
+        SketchCurve2d.Segment(new(4,7),new(4,5))],requireClosed:true);
+    using var solid=SketchProfile2d.Create(outer,[hole]).Extrude(SketchPlane.XY,2);
+    double volume=Volume(solid);Near(volume,2*(100+25*Math.PI-4-Math.PI/2),0.03);
+    return new{volume,outerArcs=2,curvedHoles=1};
+});
+Probe("quadratic-bezier-and-island-compound",()=>
+{
+    var bezier=SketchCurve2d.Bezier([new(0,0),new(5,5),new(10,0)]);
+    var chord=SketchCurve2d.Segment(new(10,0),new(0,0));
+    using var bezierSolid=SketchProfile2d.Create(SketchCurveChain2d.Create([bezier,chord],true))
+        .Extrude(SketchPlane.XY,6);
+    Near(Volume(bezierSolid),100,0.02);
+    static SketchCurveChain2d Rect(double x0,double y0,double x1,double y1)=>SketchCurveChain2d.Create([
+        SketchCurve2d.Segment(new(x0,y0),new(x1,y0)),SketchCurve2d.Segment(new(x1,y0),new(x1,y1)),
+        SketchCurve2d.Segment(new(x1,y1),new(x0,y1)),SketchCurve2d.Segment(new(x0,y1),new(x0,y0))],true);
+    using var ring=SketchProfile2d.Create(Rect(0,0,20,20),[Rect(6,6,10,10)]).Extrude(SketchPlane.XY,5);
+    using var island=SketchProfile2d.Create(Rect(7,7,9,9)).Extrude(SketchPlane.XY,5);
+    using var compound=ShapeFactory.CreateCompound([ring,island]);
+    double volume=Volume(compound);Near(volume,1940,0.02);
+    return new{bezierVolume=Volume(bezierSolid),compoundVolume=volume};
+});
+Probe("clamped-cubic-spline-region",()=>
+{
+    var spline=SketchCurve2d.BSpline([new(0,0),new(2,4),new(5,6),new(8,4),new(10,0)],
+        [0,.5,1],[4,1,4],3);
+    var chord=SketchCurve2d.Segment(new(10,0),new(0,0));
+    using var solid=SketchProfile2d.Create(SketchCurveChain2d.Create([spline,chord],true))
+        .Extrude(SketchPlane.XY,5);
+    double volume=Volume(solid);Near(volume,168.5,.03);
+    return new{volume,controls=5,degree=3};
 });
 Probe("bspline-projection-intersection",()=>
 {

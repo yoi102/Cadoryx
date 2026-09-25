@@ -1,3 +1,4 @@
+using System.Collections.Immutable;
 using System.Diagnostics;
 using System.IO;
 using System.Security.Cryptography;
@@ -54,12 +55,106 @@ internal static class RecoverySmokeRunner
                 await first.Session.ExecuteAsync(DocumentEdits.SetBodyProperties(body.Id,body.Name,new(ByLayer:true),true,layer.Id,material.Id));
                 var occurrence=first.Session.Snapshot.EnumerateOccurrences().Single();
                 await first.Session.ExecuteAsync(DocumentEdits.MoveOccurrence(occurrence.Path,RigidTransform3d.Translate(3,4,5)));
+                await first.Session.ExecuteAsync(AssemblyConstraintCommands.AddFixed(AssemblyConstraintId.New(),
+                    "Recovery fixed instance",occurrence.Path));
                 await first.Session.ExecuteAsync(new UpsertSketchCommand(SketchSmokeRunner.Rectangle(body.PartId),services.GetRequiredService<Cadoryx.Sketching.ISketchConstraintSolver>()));
                 var sketch=first.Session.Snapshot.Sketches.Values.Single();
                 await first.Session.ExecuteAsync(new AddBodyCommand(new ExtrudeRecipe(SketchProfileBuilder.Polygon(sketch,sketch.Lines.Select(l=>l.Id)),10,sketch.Plane),
                     "Recover linked sketch",sketch.PartId,sketchSource:SketchProfileReference.Create(sketch,sketch.Lines.Select(l=>l.Id))));
                 var width=sketch.Constraints.OfType<OffsetXConstraint>().Single();
                 await first.Session.ExecuteAsync(new UpsertSketchCommand(sketch with{Constraints=sketch.Constraints.Replace(width,width with{Offset=60})},services.GetRequiredService<Cadoryx.Sketching.ISketchConstraintSolver>()));
+                var circleDraft=new SketchDraft(CadSketch.Create(body.PartId,"Recovery circle",RigidTransform3d.Translate(110,0,0)));
+                circleDraft.AddCircle(new(0,0),5);
+                await first.Session.ExecuteAsync(new UpsertSketchCommand(circleDraft.Value,services.GetRequiredService<Cadoryx.Sketching.ISketchConstraintSolver>()));
+                var circleSketch=first.Session.Snapshot.Sketches[circleDraft.Value.Id];var circle=AssertCircle(circleSketch);
+                await first.Session.ExecuteAsync(new AddBodyCommand(new ExtrudeRecipe(SketchProfileBuilder.Circle(circleSketch,circle.Id),8,circleSketch.Plane),
+                    "Recover circle",body.PartId,sketchSource:SketchProfileReference.CreateCircle(circleSketch,circle.Id)));
+                var radius=circleSketch.Constraints.OfType<RadiusConstraint>().Single();
+                await first.Session.ExecuteAsync(new UpsertSketchCommand(circleSketch with{Constraints=circleSketch.Constraints.Replace(radius,radius with{Radius=7})},
+                    services.GetRequiredService<Cadoryx.Sketching.ISketchConstraintSolver>()));
+                var holeDraft=new SketchDraft(CadSketch.Create(body.PartId,"Recovery annulus",RigidTransform3d.Translate(140,0,0)));
+                holeDraft.AddCircle(new(0,0),10);holeDraft.AddCircle(new(0,0),2);
+                await first.Session.ExecuteAsync(new UpsertSketchCommand(holeDraft.Value,services.GetRequiredService<Cadoryx.Sketching.ISketchConstraintSolver>()));
+                var holeSketch=first.Session.Snapshot.Sketches[holeDraft.Value.Id];
+                var outer=holeSketch.Circles.Single(c=>c.Radius==10);var inner=holeSketch.Circles.Single(c=>c.Radius==2);
+                var holeSource=SketchProfileReference.CreateCircleWithHoles(holeSketch,outer.Id,[inner.Id]);
+                var holeRecipe=(ExtrudeRecipe)holeSource.Resolve(first.Session.Snapshot,body.PartId,
+                    new ExtrudeRecipe(new([]),6,holeSketch.Plane));
+                await first.Session.ExecuteAsync(new AddBodyCommand(holeRecipe,"Recover annulus",body.PartId,sketchSource:holeSource));
+                var polygonDraft=new SketchDraft(CadSketch.Create(body.PartId,"Recovery polygon hole",RigidTransform3d.Translate(195,0,0)));
+                polygonDraft.AddRectangle(new(0,0),new(20,20));polygonDraft.AddRectangle(new(6,6),new(10,10));
+                polygonDraft.AddRectangle(new(7,7),new(9,9));
+                await first.Session.ExecuteAsync(new UpsertSketchCommand(polygonDraft.Value,services.GetRequiredService<Cadoryx.Sketching.ISketchConstraintSolver>()));
+                var polygonSketch=first.Session.Snapshot.Sketches[polygonDraft.Value.Id];
+                var polygonSource=SketchProfileReference.CreateWithPolygonHoles(polygonSketch,
+                    polygonSketch.Lines.Take(4).Select(l=>l.Id),[polygonSketch.Lines.Skip(4).Take(4).Select(l=>l.Id)])
+                    with{IslandPolygonLines=[polygonSketch.Lines.Skip(8).Select(l=>l.Id).ToImmutableArray()]};
+                var polygonRecipe=(ExtrudeRecipe)polygonSource.Resolve(first.Session.Snapshot,body.PartId,new ExtrudeRecipe(new([]),5,polygonSketch.Plane));
+                await first.Session.ExecuteAsync(new AddBodyCommand(polygonRecipe,"Recover polygon hole",body.PartId,sketchSource:polygonSource));
+                var arcDraft=new SketchDraft(CadSketch.Create(body.PartId,"Recovery arc segment",RigidTransform3d.Translate(225,0,0)));
+                arcDraft.AddArc(new(0,0),new(5,5),new(10,0));
+                await first.Session.ExecuteAsync(new UpsertSketchCommand(arcDraft.Value,services.GetRequiredService<Cadoryx.Sketching.ISketchConstraintSolver>()));
+                var arcSketch=first.Session.Snapshot.Sketches[arcDraft.Value.Id];
+                var arcSource=SketchProfileReference.CreateArcSegment(arcSketch,arcSketch.Arcs.Single().Id);
+                var arcRecipe=(ExtrudeRecipe)arcSource.Resolve(first.Session.Snapshot,body.PartId,new ExtrudeRecipe(new([]),10,arcSketch.Plane));
+                await first.Session.ExecuteAsync(new AddBodyCommand(arcRecipe,"Recover arc segment",body.PartId,sketchSource:arcSource));
+                var mixedDraft=new SketchDraft(CadSketch.Create(body.PartId,"Recovery mixed curve",RigidTransform3d.Translate(255,0,0)));
+                mixedDraft.AddArc(new(0,0),new(5,-5),new(10,0));
+                var mixedArc=mixedDraft.Value.Arcs.Single();
+                mixedDraft.AddLine(new(10,0),new(10,10),mixedArc.End);
+                mixedDraft.AddLine(new(10,10),new(0,10),mixedDraft.Value.Lines[^1].End);
+                mixedDraft.AddLine(new(0,10),new(0,0),mixedDraft.Value.Lines[^1].End,mixedArc.Start);
+                await first.Session.ExecuteAsync(new UpsertSketchCommand(mixedDraft.Value,services.GetRequiredService<Cadoryx.Sketching.ISketchConstraintSolver>()));
+                var mixedSketch=first.Session.Snapshot.Sketches[mixedDraft.Value.Id];
+                var mixedSource=SketchProfileReference.CreateMixed(mixedSketch,SketchMixedLoops.Find(mixedSketch).Single());
+                var mixedRecipe=(ExtrudeRecipe)mixedSource.Resolve(first.Session.Snapshot,body.PartId,new ExtrudeRecipe(new([]),10,mixedSketch.Plane));
+                await first.Session.ExecuteAsync(new AddBodyCommand(mixedRecipe,"Recover mixed curve",body.PartId,sketchSource:mixedSource));
+                var expandedDraft=new SketchDraft(CadSketch.Create(body.PartId,"Recovery expanded curves",RigidTransform3d.Translate(285,0,0)));
+                expandedDraft.AddArc(new(0,0),new(10,-10),new(20,0));var outerArc=expandedDraft.Value.Arcs[^1];
+                expandedDraft.AddLine(new(20,0),new(20,10),outerArc.End);
+                expandedDraft.AddArc(new(20,10),new(10,20),new(0,10),expandedDraft.Value.Lines[^1].End);
+                expandedDraft.AddLine(new(0,10),new(0,0),expandedDraft.Value.Arcs[^1].End,outerArc.Start);
+                expandedDraft.AddArc(new(8,4),new(10,2),new(12,4));var holeArc=expandedDraft.Value.Arcs[^1];
+                expandedDraft.AddLine(new(12,4),new(12,8),holeArc.End);
+                expandedDraft.AddLine(new(12,8),new(8,8),expandedDraft.Value.Lines[^1].End);
+                expandedDraft.AddLine(new(8,8),new(8,4),expandedDraft.Value.Lines[^1].End,holeArc.Start);
+                expandedDraft.AddCircle(new(10,6),.5);
+                await first.Session.ExecuteAsync(new UpsertSketchCommand(expandedDraft.Value,services.GetRequiredService<Cadoryx.Sketching.ISketchConstraintSolver>()));
+                var expandedSketch=first.Session.Snapshot.Sketches[expandedDraft.Value.Id];
+                var expandedLoops=SketchMixedLoops.Find(expandedSketch);
+                var expandedOuter=expandedLoops.Single(loop=>loop.Count(id=>expandedSketch.Arcs.Any(a=>a.Id==id))==2);
+                var expandedHole=expandedLoops.Single(loop=>loop.Count(id=>expandedSketch.Arcs.Any(a=>a.Id==id))==1);
+                var expandedSource=SketchProfileReference.CreateMixed(expandedSketch,expandedOuter) with
+                    {MixedHoleIds=[expandedHole],IslandCircleIds=[expandedSketch.Circles.Single().Id]};
+                var expandedRecipe=(ExtrudeRecipe)expandedSource.Resolve(first.Session.Snapshot,body.PartId,new ExtrudeRecipe(new([]),2,expandedSketch.Plane));
+                await first.Session.ExecuteAsync(new AddBodyCommand(expandedRecipe,"Recover expanded curves",body.PartId,sketchSource:expandedSource));
+                var bezierDraft=new SketchDraft(CadSketch.Create(body.PartId,"Recovery Bezier",RigidTransform3d.Translate(320,0,0)));
+                bezierDraft.AddBezier(new(0,0),new(5,5),new(10,0));
+                await first.Session.ExecuteAsync(new UpsertSketchCommand(bezierDraft.Value,services.GetRequiredService<Cadoryx.Sketching.ISketchConstraintSolver>()));
+                var bezierSketch=first.Session.Snapshot.Sketches[bezierDraft.Value.Id];
+                var bezierSource=SketchProfileReference.CreateBezierSegment(bezierSketch,bezierSketch.Beziers.Single().Id);
+                var bezierRecipe=(ExtrudeRecipe)bezierSource.Resolve(first.Session.Snapshot,body.PartId,new ExtrudeRecipe(new([]),6,bezierSketch.Plane));
+                await first.Session.ExecuteAsync(new AddBodyCommand(bezierRecipe,"Recover Bezier",body.PartId,sketchSource:bezierSource));
+                var splineDraft=new SketchDraft(CadSketch.Create(body.PartId,"Recovery spline",RigidTransform3d.Translate(350,0,0)));
+                splineDraft.AddSpline([new(0,0),new(2,4),new(5,6),new(8,4),new(10,0)]);
+                await first.Session.ExecuteAsync(new UpsertSketchCommand(splineDraft.Value,services.GetRequiredService<Cadoryx.Sketching.ISketchConstraintSolver>()));
+                var splineSketch=first.Session.Snapshot.Sketches[splineDraft.Value.Id];
+                var splineSource=SketchProfileReference.CreateSplineSegment(splineSketch,splineSketch.Splines.Single().Id);
+                var splineRecipe=(ExtrudeRecipe)splineSource.Resolve(first.Session.Snapshot,body.PartId,new ExtrudeRecipe(new([]),5,splineSketch.Plane));
+                await first.Session.ExecuteAsync(new AddBodyCommand(splineRecipe,"Recover spline",body.PartId,sketchSource:splineSource));
+                var angularDraft=new SketchDraft(CadSketch.Create(body.PartId,"Recovery angular constraints",RigidTransform3d.Translate(170,0,0)));
+                angularDraft.AddLine(new(0,0),new(10,0));angularDraft.AddLine(new(0,0),new(6,8));
+                angularDraft.AddCircle(new(5,3),2);
+                var angularFirst=angularDraft.Value.Lines[0];var angularSecond=angularDraft.Value.Lines[1];
+                var angularCircle=angularDraft.Value.Circles[0];
+                angularDraft.Change(s=>s with{Constraints=[..s.Constraints,
+                    new FixPointConstraint(SketchConstraintId.New(),angularFirst.Start,new(0,0)),
+                    new FixPointConstraint(SketchConstraintId.New(),angularFirst.End,new(10,0)),
+                    new FixPointConstraint(SketchConstraintId.New(),angularSecond.Start,new(0,0)),
+                    new LengthConstraint(SketchConstraintId.New(),angularSecond.Id,10),
+                    new AngleConstraint(SketchConstraintId.New(),angularFirst.Id,angularSecond.Id,Math.PI/3),
+                    new TangentConstraint(SketchConstraintId.New(),angularFirst.Id,angularCircle.Id)]});
+                await first.Session.ExecuteAsync(new UpsertSketchCommand(angularDraft.Value,services.GetRequiredService<Cadoryx.Sketching.ISketchConstraintSolver>()));
                 var boxFeature=first.Session.Snapshot.Features.Values.Single(f=>f.Name=="Saved box");
                 await first.Session.ExecuteAsync(new UpsertTopologyReferenceCommand(TopologyReference.Box(first.Session.Snapshot,boxFeature.Id,BoxBoundary.XMax,BoxBoundary.ZMax)));
                 await first.Session.ExecuteAsync(new UpsertTopologyReferenceCommand(TopologyReference.Box(first.Session.Snapshot,boxFeature.Id,BoxBoundary.XMax,policy:TopologyRebindPolicy.ExactRevision)));
@@ -127,6 +222,43 @@ internal static class RecoverySmokeRunner
             Require(restored.Session.RecoveryOriginPath == original, "Original path was lost.");
             var actual = Expected.Capture(restored.Session.Snapshot, await HashFile(original));
             Require(JsonSerializer.Serialize(actual, CadJson.Options) == JsonSerializer.Serialize(expectedState, CadJson.Options), "Restored IDs/assets/state differ or the original file was changed.");
+            var recoveredCircle=restored.Session.Snapshot.Features.Values.Single(f=>f.Name=="Recover circle");
+            Require(recoveredCircle.SketchSource?.CircleId is not null&&recoveredCircle.Recipe is ExtrudeRecipe {Profile.Circle.Radius:7}&&
+                Math.Abs(recoveredCircle.Result.VolumeMm3-Math.PI*392)<1e-4,"Recovered exact circular sketch extrusion.");
+            var recoveredAnnulus=restored.Session.Snapshot.Features.Values.Single(f=>f.Name=="Recover annulus");
+            Require(recoveredAnnulus.SketchSource?.CircleId is not null&&recoveredAnnulus.SketchSource.HoleCircleIds.Length==1&&
+                recoveredAnnulus.Recipe is ExtrudeRecipe {Profile.Holes.Length:1}&&
+                Math.Abs(recoveredAnnulus.Result.VolumeMm3-576*Math.PI)<0.001,"Recovered exact circular through-hole extrusion.");
+            var recoveredPolygon=restored.Session.Snapshot.Features.Values.Single(f=>f.Name=="Recover polygon hole");
+            Require(recoveredPolygon.SketchSource?.PolygonHoleLines.Length==1&&
+                recoveredPolygon.SketchSource.IslandPolygonLines.Length==1&&
+                recoveredPolygon.Recipe is ExtrudeRecipe {Profile.PolygonHoles.Length:1,Profile.Islands.Length:1}&&
+                Math.Abs(recoveredPolygon.Result.VolumeMm3-1940)<0.01,"Recovered polygon hole and island extrusion.");
+            var recoveredArc=restored.Session.Snapshot.Features.Values.Single(f=>f.Name=="Recover arc segment");
+            Require(recoveredArc.SketchSource?.ArcId is not null&&recoveredArc.Recipe is ExtrudeRecipe {Profile.Arc: not null}&&
+                Math.Abs(recoveredArc.Result.VolumeMm3-125*Math.PI)<0.01,"Recovered exact arc segment extrusion.");
+            var recoveredMixed=restored.Session.Snapshot.Features.Values.Single(f=>f.Name=="Recover mixed curve");
+            Require(recoveredMixed.SketchSource?.MixedBoundaryIds.Length==4&&
+                recoveredMixed.Recipe is ExtrudeRecipe {Profile.BoundaryCurves.Length:4}&&
+                Math.Abs(recoveredMixed.Result.VolumeMm3-(1000+125*Math.PI))<0.02,"Recovered exact mixed curve extrusion.");
+            var recoveredExpanded=restored.Session.Snapshot.Features.Values.Single(f=>f.Name=="Recover expanded curves");
+            Require(recoveredExpanded.SketchSource?.MixedBoundaryIds.Length==4&&
+                recoveredExpanded.SketchSource.MixedHoleIds.Length==1&&recoveredExpanded.SketchSource.IslandCircleIds.Length==1&&
+                recoveredExpanded.Recipe is ExtrudeRecipe {Profile.BoundaryCurves.Length:4,Profile.MixedHoles.Length:1,Profile.Islands.Length:1}&&
+                Math.Abs(recoveredExpanded.Result.VolumeMm3-(368+196.5*Math.PI))<0.03,
+                "Recovered multi-arc boundary, curved hole and circular island.");
+            var recoveredBezier=restored.Session.Snapshot.Features.Values.Single(f=>f.Name=="Recover Bezier");
+            Require(recoveredBezier.SketchSource?.BezierId is not null&&
+                recoveredBezier.Recipe is ExtrudeRecipe {Profile.Bezier:not null}&&
+                Math.Abs(recoveredBezier.Result.VolumeMm3-100)<0.02,"Recovered exact quadratic Bezier region.");
+            var recoveredSpline=restored.Session.Snapshot.Features.Values.Single(f=>f.Name=="Recover spline");
+            Require(recoveredSpline.SketchSource?.SplineId is not null&&
+                recoveredSpline.Recipe is ExtrudeRecipe {Profile.Spline:not null}&&
+                Math.Abs(recoveredSpline.Result.VolumeMm3-168.5)<0.03,"Recovered exact cubic spline region.");
+            var recoveredAngular=restored.Session.Snapshot.Sketches.Values.Single(s=>s.Name=="Recovery angular constraints");
+            Require(recoveredAngular.Constraints.OfType<AngleConstraint>().Single().AngleRadians==Math.PI/3&&
+                recoveredAngular.Constraints.OfType<TangentConstraint>().Count()==1,
+                "Recovered angle dimension and line-circle tangency identities.");
             var topology=await TopologyReferenceInspection.InspectAsync(restored.Session.Snapshot,restored.Session.Assets,(ITopologyResolver)services.GetRequiredService<IGeometryKernel>());
             Require(topology.Results.Length==4&&topology.Results.Count(r=>r.Status==TopologyResolutionStatus.Resolved)==3&&topology.Results.Count(r=>r.Status==TopologyResolutionStatus.Stale)==1,"Restored topology references must preserve semantic and exact-revision behavior.");
             var local=restored.Session.Snapshot.Features.Values.Single(f=>f.Recipe is LocalFeatureRecipe);
@@ -156,7 +288,7 @@ internal static class RecoverySmokeRunner
             var bound=restored.Session.Snapshot.Features.Values.Single(f=>f.Recipe is HistoryFilletRecipe);
             Require(!bound.IsStale&&bound.TopologyBinding is {} binding&&binding.TargetFeatureId==local.Id&&bound.TopologyHistory is not null,
                 "Recovered bound fillet must retain its exact upstream identity and history.");
-            var reboundEvidence=await booleanResolver.TraceAsync(restored.Session.Snapshot,bound.TopologyBinding!.Origin,
+            var reboundEvidence=await booleanResolver.TraceAsync(restored.Session.Snapshot,bound.TopologyBinding!.Origin!,
                 bound.TopologyBinding.TargetFeatureId,restored.Session.Assets);
             Require(reboundEvidence.Status==HistoryResolutionStatus.Resolved&&reboundEvidence.Target?.FullTopologyIndex==bound.TopologyBinding.FullTopologyIndex&&
                 reboundEvidence.Target.Revision==bound.TopologyBinding.TargetRevision,"Recovered bound edge no longer matches native history.");
@@ -190,8 +322,11 @@ internal static class RecoverySmokeRunner
         finally { PresentationTraceSources.DataBindingSource.Listeners.Remove(listener); }
     }
 
+    private static SketchCircle AssertCircle(CadSketch sketch)=>sketch.Circles.Single();
+
     private sealed record Expected(string DocumentId, string StateId, string Name, string[] Bodies, string[] Assets, string OriginalHash,
-        string[] Layers,string[] Materials,string[] Placements,string[] Sketches,string[] Features,string[] TopologyReferences,string[] HistoryQueries)
+        string[] Layers,string[] Materials,string[] Placements,string[] Sketches,string[] Features,string[] TopologyReferences,string[] HistoryQueries,
+        string[] AssemblyConstraints)
     {
         public static Expected Capture(DocumentSnapshot snapshot, string hash) => new(snapshot.Id.ToString(), snapshot.StateId.ToString(), snapshot.Name,
             snapshot.Bodies.Values.OrderBy(b=>b.Id.Value).Select(b=>JsonSerializer.Serialize(b,CadJson.Options)).ToArray(),
@@ -200,9 +335,15 @@ internal static class RecoverySmokeRunner
             snapshot.Materials.Values.OrderBy(m=>m.Id.Value).Select(m=>JsonSerializer.Serialize(m,CadJson.Options)).ToArray(),
             snapshot.EnumerateOccurrences().Select(o=>o.Path+" "+JsonSerializer.Serialize(o.WorldTransform,CadJson.Options)).Order().ToArray(),
             snapshot.Sketches.Values.OrderBy(s=>s.Id.Value).Select(SketchSmokeRunner.Describe).ToArray(),
-            snapshot.Features.Values.OrderBy(f=>f.Id.Value).Select(f=>JsonSerializer.Serialize(f,CadJson.Options)).ToArray(),
+            snapshot.Features.Values.OrderBy(f=>f.Id.Value).Select(SerializeFeature).ToArray(),
             snapshot.TopologyReferences.Values.OrderBy(r=>r.Id.Value).Select(r=>JsonSerializer.Serialize(r,CadJson.Options)).ToArray(),
-            snapshot.HistoryQueries.Values.OrderBy(q=>q.Id.Value).Select(q=>JsonSerializer.Serialize(q,CadJson.Options)).ToArray());
+            snapshot.HistoryQueries.Values.OrderBy(q=>q.Id.Value).Select(q=>JsonSerializer.Serialize(q,CadJson.Options)).ToArray(),
+            snapshot.AssemblyConstraints.Values.OrderBy(c=>c.Id.Value).Select(c=>JsonSerializer.Serialize(c,CadJson.Options)).ToArray());
+        private static string SerializeFeature(FeatureDefinition feature)
+        {
+            try{return JsonSerializer.Serialize(feature,CadJson.Options);}
+            catch(Exception error){throw new InvalidOperationException($"Cannot compare recovered feature '{feature.Name}' ({feature.Id}).",error);}
+        }
     }
     private static async Task<string> HashFile(string path) => Convert.ToHexString(SHA256.HashData(await File.ReadAllBytesAsync(path)));
     private static void Require(bool condition, string message) { if (!condition) throw new InvalidOperationException(message); }

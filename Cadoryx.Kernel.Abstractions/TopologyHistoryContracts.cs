@@ -21,6 +21,13 @@ public interface ITopologyHistoryResolver
         IAssetStore assets,CancellationToken cancellationToken=default);
 }
 
+/// <summary>Checks a user-picked full-map slot against one exact document asset. It never searches for a replacement.</summary>
+public interface IExactTopologyResolver
+{
+    Task ConfirmAsync(DocumentSnapshot snapshot,ExactTopologySelection selection,IAssetStore assets,
+        CancellationToken cancellationToken=default);
+}
+
 /// <summary>Conservative reduction of native evidence. Split or shared targets never select a first candidate.</summary>
 public static class TopologyHistoryReduction
 {

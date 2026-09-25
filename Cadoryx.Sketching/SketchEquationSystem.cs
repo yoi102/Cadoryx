@@ -10,6 +10,7 @@ internal sealed class SketchEquationSystem
     private readonly SketchSolveOptions options;
     private readonly Dictionary<SketchEntityId,int> pointIndices=[],radiusIndices=[];
     private readonly Dictionary<SketchEntityId,SketchLine> lines;
+    private readonly Dictionary<SketchConstraintId,double> tangentSigns=[];
     private readonly Point2d origin;
     private readonly double scale;
     internal double[] Initial {get;}
@@ -28,6 +29,13 @@ internal sealed class SketchEquationSystem
         foreach(var p in sketch.Points.OrderBy(p=>p.Id.Value))
         {pointIndices.Add(p.Id,initial.Count);initial.Add((p.Position.X-origin.X)/scale);initial.Add((p.Position.Y-origin.Y)/scale);}
         foreach(var c in sketch.Circles.OrderBy(c=>c.Id.Value)){radiusIndices.Add(c.Id,initial.Count);initial.Add(c.Radius/scale);}
+        var authoredPoints=sketch.Points.ToDictionary(p=>p.Id,p=>p.Position);
+        foreach(var t in sketch.Constraints.OfType<TangentConstraint>())
+        {
+            var line=lines[t.Line];var center=authoredPoints[sketch.Circles.Single(c=>c.Id==t.Circle).Center];
+            var a=authoredPoints[line.Start];var b=authoredPoints[line.End];
+            tangentSigns[t.Id]=(b.X-a.X)*(center.Y-a.Y)-(b.Y-a.Y)*(center.X-a.X)<0?-1:1;
+        }
         Initial=initial.ToArray();var groups=ImmutableArray.CreateBuilder<EquationGroup>();int offset=0;
         foreach(var c in sketch.Constraints.Where(c=>c.IsEnabled).OrderBy(c=>c.Id.Value))
         {
@@ -69,6 +77,10 @@ internal sealed class SketchEquationSystem
                 case EqualRadiusConstraint c:a=x[radiusIndices[c.A]]-x[radiusIndices[c.B]];break;
                 case ParallelConstraint c:{var u=Direction(x,c.A);var w=Direction(x,c.B);a=(u.X*w.Y-u.Y*w.X)/(Length(u)*Length(w));angle=true;break;}
                 case PerpendicularConstraint c:{var u=Direction(x,c.A);var w=Direction(x,c.B);a=(u.X*w.X+u.Y*w.Y)/(Length(u)*Length(w));angle=true;break;}
+                case AngleConstraint c:{var u=Direction(x,c.A);var w=Direction(x,c.B);a=(u.X*w.X+u.Y*w.Y)/(Length(u)*Length(w))-Math.Cos(c.AngleRadians);angle=true;break;}
+                case TangentConstraint c:{var line=lines[c.Line];var u=Direction(x,c.Line);var start=Point(x,line.Start);
+                    var center=Point(x,sketch.Circles.Single(circle=>circle.Id==c.Circle).Center);
+                    a=(u.X*(center.Y-start.Y)-u.Y*(center.X-start.X))/Length(u)-tangentSigns[c.Id]*x[radiusIndices[c.Circle]];break;}
                 default:throw new NotSupportedException("Unknown constraint equation.");
             }
             residual[g.Start]=a/(angle?options.AngularTolerance:tolerance);
@@ -119,6 +131,22 @@ internal sealed class SketchEquationSystem
                 case EqualRadiusConstraint c:matrix[row,radiusIndices[c.A]]=linear;matrix[row,radiusIndices[c.B]]=-linear;break;
                 case ParallelConstraint c:Relation(c.A,c.B,true);break;
                 case PerpendicularConstraint c:Relation(c.A,c.B,false);break;
+                case AngleConstraint c:Relation(c.A,c.B,false);break;
+                case TangentConstraint c:
+                {
+                    var line=lines[c.Line];var u=Direction(x,c.Line);var a=Point(x,line.Start);
+                    var centerId=sketch.Circles.Single(circle=>circle.Id==c.Circle).Center;var center=Point(x,centerId);
+                    var v=new Point2d(center.X-a.X,center.Y-a.Y);double length=Length(u);
+                    double cross=u.X*v.Y-u.Y*v.X;double inverse=1/length;
+                    double dux=v.Y*inverse-cross*u.X/(length*length*length);
+                    double duy=-v.X*inverse-cross*u.Y/(length*length*length);
+                    double dvx=-u.Y*inverse,dvy=u.X*inverse;
+                    PointGradient(line.Start,(-dux-dvx)*linear,(-duy-dvy)*linear,row);
+                    PointGradient(line.End,dux*linear,duy*linear,row);
+                    PointGradient(centerId,dvx*linear,dvy*linear,row);
+                    matrix[row,radiusIndices[c.Circle]]=-tangentSigns[c.Id]*linear;
+                    break;
+                }
                 default:throw new NotSupportedException("Unknown constraint derivative.");
             }
         }

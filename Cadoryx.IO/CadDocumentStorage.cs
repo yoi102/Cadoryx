@@ -13,7 +13,7 @@ public sealed class CadDocumentStorage(CadSectionMigrationRegistry? migrations=n
     private readonly CadSectionMigrationRegistry registry=migrations??new();
     private readonly StorageLimits limits=limits??new();
     private static readonly HashSet<string> KnownSections=CadSectionMigrationRegistry.CurrentFormats.Keys.ToHashSet();
-    private static readonly string[] Capabilities=["cadoryx.core.1","occt.brep.1","cadoryx.geometry-table.1","cadoryx.asset-catalog.1","cadoryx.sketches.1","cadoryx.sketch-association.1","cadoryx.topology-references.1","cadoryx.local-box-edge.1","cadoryx.local-chamfer-two-distances.1","cadoryx.local-multi-edge.1","cadoryx.local-variable-radius.1","cadoryx.topology-history.1","cadoryx.topology-history.2","cadoryx.history-queries.1","cadoryx.feature-bindings.1"];
+    private static readonly string[] Capabilities=["cadoryx.core.1","occt.brep.1","cadoryx.geometry-table.1","cadoryx.asset-catalog.1","cadoryx.sketches.1","cadoryx.sketch-association.1","cadoryx.topology-references.1","cadoryx.local-box-edge.1","cadoryx.local-chamfer-two-distances.1","cadoryx.local-multi-edge.1","cadoryx.local-variable-radius.1","cadoryx.bound-variable-radius.1","cadoryx.topology-history.1","cadoryx.topology-history.2","cadoryx.history-queries.1","cadoryx.feature-bindings.1","cadoryx.exact-local-selection.1","cadoryx.bound-local-chamfer.1","cadoryx.circular-sketch-profile.1","cadoryx.circular-sketch-holes.1","cadoryx.sketch-angular-constraints.1","cadoryx.polygon-sketch-holes.1","cadoryx.assembly-constraints.1"];
     public async Task SaveAsync(DocumentSnapshot snapshot,IAssetStore assets,string path,CancellationToken cancellationToken=default)
     {
         cancellationToken.ThrowIfCancellationRequested();
@@ -49,7 +49,7 @@ public sealed class CadDocumentStorage(CadSectionMigrationRegistry? migrations=n
                     string entry="sections/"+kind+".msgpack";await WriteEntry(zip,entry,bytes,token);
                     sections.Add(new(kind,entry,payload.Format.Version,true,bytes.Length,Hash(bytes.Span),payload.Format.Encoding));
                 }
-                await Section(new(CadSectionMigrationRegistry.CurrentFormats["document"],MessagePackSections.Encode("document",new DocumentSection(snapshot.Id,snapshot.StateId,snapshot.Name,snapshot.RootAssemblyId,snapshot.Settings))));
+                await Section(new(CadSectionMigrationRegistry.CurrentFormats["document"],MessagePackSections.Encode("document",new DocumentSection(snapshot.Id,snapshot.StateId,snapshot.Name,snapshot.RootAssemblyId,snapshot.Settings,snapshot.AssemblyConstraints.Values.ToImmutableArray()))));
                 foreach(var payload in MessagePackSections.SplitGeometry(new(snapshot.Definitions.Values.ToImmutableArray(),snapshot.Bodies.Values.ToImmutableArray()),new(snapshot.Features.Values.ToImmutableArray())))await Section(payload);
                 await Section(new(CadSectionMigrationRegistry.CurrentFormats["presentation"],MessagePackSections.Encode("presentation",new PresentationSection(snapshot.Layers.Values.ToImmutableArray(),snapshot.Materials.Values.ToImmutableArray()))));
                 await Section(new(CadSectionMigrationRegistry.CurrentFormats["sketches"],MessagePackSections.EncodeSketches(snapshot.Sketches.Values)));
@@ -69,7 +69,7 @@ public sealed class CadDocumentStorage(CadSectionMigrationRegistry? migrations=n
                 {
                     using var lease=assets.Acquire(asset.Id);await WriteEntry(zip,asset.Path,lease.Content,token);
                 }
-                var manifest=new CadManifest("Cadoryx",1,snapshot.Id,snapshot.StateId,"0.4.14",sections.ToImmutable(),catalog.ToImmutableArray(),[..Capabilities],1);
+                var manifest=new CadManifest("Cadoryx",1,snapshot.Id,snapshot.StateId,"0.4.28",sections.ToImmutable(),catalog.ToImmutableArray(),[..Capabilities],1);
                 await WriteEntry(zip,"manifest.json",JsonSerializer.SerializeToUtf8Bytes(manifest,CadJson.Options),token);
             }
             await stream.FlushAsync(token);stream.Flush(true);
@@ -122,7 +122,9 @@ public sealed class CadDocumentStorage(CadSectionMigrationRegistry? migrations=n
                 presentation.Materials.ToImmutableDictionary(x=>x.Id),extensions.ToImmutable(),extensions.Count>0?manifest.Assets.Select(x=>x.Id).ToImmutableArray():[],extensions.Count>0?formats.ToImmutableDictionary():null)
                 {Sketches=Malformed(()=>MessagePackSections.DecodeSketches(core["sketches"].Bytes)),
                  TopologyReferences=Malformed(()=>MessagePackSections.DecodeTopology(core["topology"].Bytes)),
-                 HistoryQueries=Malformed(()=>MessagePackSections.DecodeHistoryQueries(core["history-queries"].Bytes,document.Id))};
+                 HistoryQueries=Malformed(()=>MessagePackSections.DecodeHistoryQueries(core["history-queries"].Bytes,document.Id)),
+                 AssemblyConstraints=Malformed(()=>(document.AssemblyConstraints.IsDefault?[]:document.AssemblyConstraints)
+                     .ToImmutableDictionary(c=>c.Id))};
             Malformed(()=>{snapshot.Validate();return true;});using var verify=new DocumentAssetLease(snapshot,assets);
             var diagnostics=ImmutableArray.CreateBuilder<CadDiagnostic>();
             if(extensions.Count>0)diagnostics.Add(new("IO.READ_ONLY","Unknown optional sections and their asset formats are preserved; editing is disabled."));

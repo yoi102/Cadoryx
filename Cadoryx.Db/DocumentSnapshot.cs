@@ -13,6 +13,8 @@ public sealed record DocumentSnapshot(DocumentId Id,DocumentStateId StateId,stri
     public ImmutableDictionary<SketchId,CadSketch> Sketches {get;init;}=ImmutableDictionary<SketchId,CadSketch>.Empty;
     public ImmutableDictionary<TopologyReferenceId,TopologyReference> TopologyReferences {get;init;}=ImmutableDictionary<TopologyReferenceId,TopologyReference>.Empty;
     public ImmutableDictionary<HistoryQueryId,HistoryQuery> HistoryQueries {get;init;}=ImmutableDictionary<HistoryQueryId,HistoryQuery>.Empty;
+    public ImmutableDictionary<AssemblyConstraintId,AssemblyConstraint> AssemblyConstraints {get;init;}=
+        ImmutableDictionary<AssemblyConstraintId,AssemblyConstraint>.Empty;
     public static DocumentSnapshot Create(string name)
     {
         CadGuard.Name(name);var root=DefinitionId.New();var layer=LayerId.New();
@@ -91,15 +93,21 @@ public sealed record DocumentSnapshot(DocumentId Id,DocumentStateId StateId,stri
             f.SketchSource?.ValidateCache(this,f);
             f.TopologyHistory?.ValidateFor(f);
             if(f.IsStale&&f.TopologyHistory is not null)throw new CadValidationException("A stale feature cannot retain topology history.");
-            if(f.Recipe is HistoryFilletRecipe bound)
+            if(f.Recipe is HistoryFilletRecipe or HistoryChamferRecipe)
             {
-                var binding=f.TopologyBinding??throw new CadValidationException("History fillet has no confirmed binding.");
+                var binding=f.TopologyBinding??throw new CadValidationException("Bound local feature has no confirmed binding.");
                 binding.Validate(Id);
-                if(f.Inputs.Length!=1||f.Inputs[0]!=binding.TargetFeatureId||bound.FullTopologyIndex!=binding.FullTopologyIndex||
-                    bound.Source.Revision!=binding.TargetRevision||bound.Source.AssetId!=binding.TargetAsset||
+                var source=f.Recipe is HistoryFilletRecipe fillet?fillet.Source:((HistoryChamferRecipe)f.Recipe).Source;
+                var edgeIndex=f.Recipe is HistoryFilletRecipe f1?f1.FullTopologyIndex:((HistoryChamferRecipe)f.Recipe).FullTopologyIndex;
+                if(f.Inputs.Length!=1||f.Inputs[0]!=binding.TargetFeatureId||edgeIndex!=binding.FullTopologyIndex||
+                    source.Revision!=binding.TargetRevision||source.AssetId!=binding.TargetAsset||
                     !Features.TryGetValue(binding.TargetFeatureId,out var target)||target.PartId!=f.PartId||
                     !f.IsStale&&(target.Result.Revision!=binding.TargetRevision||target.Result.AssetId!=binding.TargetAsset||target.IsStale))
-                    throw new CadValidationException("History fillet binding differs from its target.");
+                    throw new CadValidationException("Bound local feature differs from its target.");
+                if(f.Recipe is HistoryChamferRecipe chamfer&&
+                    (binding.SupportFace is null||chamfer.SupportFaceIndex!=binding.SupportFace.FullTopologyIndex)||
+                    f.Recipe is HistoryFilletRecipe&&binding.SupportFace is not null)
+                    throw new CadValidationException("Bound local feature support face differs from its recipe.");
             }
             else if(f.TopologyBinding is not null)throw new CadValidationException("Unexpected feature topology binding.");
             if(id!=f.Id||f.SchemaVersion!=1||f.Inputs.IsDefault||f.Inputs.Distinct().Count()!=f.Inputs.Length)throw new CadValidationException("Invalid feature.");
@@ -125,6 +133,15 @@ public sealed record DocumentSnapshot(DocumentId Id,DocumentStateId StateId,stri
         foreach(var (id,m) in Materials){CadGuard.Id(id);CadGuard.Name(m.Name);CadGuard.Positive(m.DensityKgPerMm3);if(id!=m.Id)throw new CadValidationException("Material key mismatch.");}
         ValidateDag(Definitions.Keys,id=>Definitions[id] is AssemblyDefinition a?a.Children.Select(x=>x.DefinitionId):[]);
         ValidateDag(Features.Keys,id=>Features[id].Inputs);
+        if(AssemblyConstraints.Count>4096)throw new CadValidationException("Too many assembly constraints.");
+        var constraintOccurrences=AssemblyConstraints.Count>0?EnumerateOccurrences().ToDictionary(o=>o.Path):null;
+        foreach(var (id,constraint) in AssemblyConstraints)
+        {
+            if(id!=constraint.Id)throw new CadValidationException("Assembly constraint key mismatch.");
+            var evaluation=constraint.Evaluate(this,constraintOccurrences!);
+            if(constraint.Kind==AssemblyConstraintKind.Fixed&&evaluation.Status==AssemblyConstraintStatus.Unsatisfied)
+                throw new CadValidationException("A fixed assembly instance cannot move until its constraint is disabled or removed.");
+        }
     }
     private static void ValidateDag<T>(IEnumerable<T> keys,Func<T,IEnumerable<T>> children) where T:notnull
     {

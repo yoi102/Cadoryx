@@ -10,8 +10,8 @@ public sealed partial class CadSectionMigrationRegistry
     private readonly object gate=new();
     public static ImmutableDictionary<string,SectionFormat> CurrentFormats {get;}=new[]
     {
-        new SectionFormat("document",12,"messagepack"),new("structure",3,"messagepack"),new("features",8,"messagepack"),
-        new("presentation",2,"messagepack"),new("geometry",1,"messagepack"),new("sketches",2,"messagepack"),new("topology",1,"messagepack"),new("history",2,"messagepack"),new("history-queries",1,"messagepack"),new("feature-bindings",1,"messagepack")
+        new SectionFormat("document",14,"messagepack"),new("structure",3,"messagepack"),new("features",19,"messagepack"),
+        new("presentation",2,"messagepack"),new("geometry",1,"messagepack"),new("sketches",6,"messagepack"),new("topology",1,"messagepack"),new("history",2,"messagepack"),new("history-queries",1,"messagepack"),new("feature-bindings",2,"messagepack")
     }.ToImmutableDictionary(x=>x.Kind,StringComparer.Ordinal);
 
     public CadSectionMigrationRegistry(bool includeBuiltIns=true)
@@ -53,18 +53,54 @@ public sealed partial class CadSectionMigrationRegistry
             [new(new("document",10,"messagepack"),MessagePackSections.UpgradeSolidDocumentBackground(input["document"].Bytes))]);
         RegisterStep("document-origin-axes",[new("document",10,"messagepack")],[new("document",11,"messagepack")],input=>
             [new(new("document",11,"messagepack"),MessagePackSections.UpgradeDocumentOrigin(input["document"].Bytes))]);
-        RegisterStep("document-work-plane",[new("document",11,"messagepack")],[CurrentFormats["document"]],input=>
-            [new(CurrentFormats["document"],MessagePackSections.UpgradeDocumentWorkPlane(input["document"].Bytes))]);
+        RegisterStep("document-work-plane",[new("document",11,"messagepack")],[new("document",12,"messagepack")],input=>
+            [new(new("document",12,"messagepack"),MessagePackSections.UpgradeDocumentWorkPlane(input["document"].Bytes))]);
+        RegisterStep("document-assembly-constraints",[new("document",12,"messagepack")],[new("document",13,"messagepack")],input=>
+            [new(new("document",13,"messagepack"),MessagePackSections.UpgradeDocumentAssemblyConstraints(input["document"].Bytes))]);
+        RegisterStep("document-assembly-axes",[new("document",13,"messagepack")],[CurrentFormats["document"]],input=>
+            [new(CurrentFormats["document"],MessagePackSections.UpgradeDocumentAssemblyAxes(input["document"].Bytes))]);
         RegisterStep("feature-stale-state",[new("features",5,"messagepack")],[new("features",6,"messagepack")],input=>
             [new(new("features",6,"messagepack"),input["features"].Bytes)]);
         RegisterStep("local-chamfer-two-distances",[new("features",6,"messagepack")],[new("features",7,"messagepack")],input=>
             [new(new("features",7,"messagepack"),MessagePackSections.UpgradeLocalChamferTwoDistances(input["features"].Bytes))]);
-        RegisterStep("local-multi-edge-and-variable-radius",[new("features",7,"messagepack")],[CurrentFormats["features"]],input=>
-            [new(CurrentFormats["features"],MessagePackSections.UpgradeLocalMultiEdgeAndVariableRadius(input["features"].Bytes))]);
+        RegisterStep("local-multi-edge-and-variable-radius",[new("features",7,"messagepack")],[new("features",8,"messagepack")],input=>
+            [new(new("features",8,"messagepack"),MessagePackSections.UpgradeLocalMultiEdgeAndVariableRadius(input["features"].Bytes))]);
+        RegisterStep("bound-variable-radius",[new("features",8,"messagepack")],[new("features",9,"messagepack")],input=>
+            [new(new("features",9,"messagepack"),MessagePackSections.UpgradeBoundVariableRadius(input["features"].Bytes))]);
+        RegisterStep("bound-local-chamfer",[new("features",9,"messagepack")],[new("features",10,"messagepack")],input=>
+            [new(new("features",10,"messagepack"),input["features"].Bytes)]);
+        RegisterStep("circular-sketch-profiles",[new("features",10,"messagepack")],[new("features",11,"messagepack")],input=>
+            [new(new("features",11,"messagepack"),MessagePackSections.UpgradeCircularSketchProfiles(input["features"].Bytes))]);
+        RegisterStep("circular-sketch-holes",[new("features",11,"messagepack")],[new("features",12,"messagepack")],input=>
+            [new(new("features",12,"messagepack"),MessagePackSections.UpgradeCircularHoles(input["features"].Bytes))]);
+        RegisterStep("polygon-sketch-holes",[new("features",12,"messagepack")],[new("features",13,"messagepack")],input=>
+            [new(new("features",13,"messagepack"),MessagePackSections.UpgradePolygonHoles(input["features"].Bytes))]);
+        RegisterStep("arc-segment-features",[new("features",13,"messagepack")],[new("features",14,"messagepack")],input=>
+            [new(new("features",14,"messagepack"),MessagePackSections.UpgradeArcSegmentFeatures(input["features"].Bytes))]);
+        RegisterStep("mixed-curve-features",[new("features",14,"messagepack")],[new("features",15,"messagepack")],input=>
+            [new(new("features",15,"messagepack"),MessagePackSections.UpgradeMixedCurveFeatures(input["features"].Bytes))]);
+        RegisterStep("expanded-mixed-features",[new("features",15,"messagepack")],[new("features",16,"messagepack")],input=>
+            [new(new("features",16,"messagepack"),MessagePackSections.UpgradeExpandedMixedFeatures(input["features"].Bytes))]);
+        RegisterStep("single-level-islands",[new("features",16,"messagepack")],[new("features",17,"messagepack")],input=>
+            [new(new("features",17,"messagepack"),MessagePackSections.UpgradeIslandFeatures(input["features"].Bytes))]);
+        RegisterStep("quadratic-bezier-features",[new("features",17,"messagepack")],[new("features",18,"messagepack")],input=>
+            [new(new("features",18,"messagepack"),MessagePackSections.UpgradeBezierFeatures(input["features"].Bytes))]);
+        RegisterStep("cubic-spline-features",[new("features",18,"messagepack")],[CurrentFormats["features"]],input=>
+            [new(CurrentFormats["features"],MessagePackSections.UpgradeSplineFeatures(input["features"].Bytes))]);
+        RegisterStep("exact-local-bindings",[new("feature-bindings",1,"messagepack")],[CurrentFormats["feature-bindings"]],input=>
+            [new(CurrentFormats["feature-bindings"],MessagePackSections.UpgradeExactFeatureBindings(input["feature-bindings"].Bytes))]);
         RegisterStep("history-source-arguments",[new("history",1,"messagepack")],[CurrentFormats["history"]],input=>
             [new(CurrentFormats["history"],MessagePackSections.UpgradeHistorySources(input["history"].Bytes))]);
-        RegisterStep("sketch-revisions",[new("sketches",1,"messagepack")],[CurrentFormats["sketches"]],input=>
-            [new(CurrentFormats["sketches"],MessagePackSections.UpgradeSketchRevisions(input["sketches"].Bytes))]);
+        RegisterStep("sketch-revisions",[new("sketches",1,"messagepack")],[new("sketches",2,"messagepack")],input=>
+            [new(new("sketches",2,"messagepack"),MessagePackSections.UpgradeSketchRevisions(input["sketches"].Bytes))]);
+        RegisterStep("sketch-angular-constraints",[new("sketches",2,"messagepack")],[new("sketches",3,"messagepack")],input=>
+            [new(new("sketches",3,"messagepack"),MessagePackSections.UpgradeAngularSketchConstraints(input["sketches"].Bytes))]);
+        RegisterStep("three-point-sketch-arcs",[new("sketches",3,"messagepack")],[new("sketches",4,"messagepack")],input=>
+            [new(new("sketches",4,"messagepack"),MessagePackSections.UpgradeSketchArcs(input["sketches"].Bytes))]);
+        RegisterStep("quadratic-sketch-beziers",[new("sketches",4,"messagepack")],[new("sketches",5,"messagepack")],input=>
+            [new(new("sketches",5,"messagepack"),MessagePackSections.UpgradeSketchBeziers(input["sketches"].Bytes))]);
+        RegisterStep("cubic-sketch-splines",[new("sketches",5,"messagepack")],[CurrentFormats["sketches"]],input=>
+            [new(CurrentFormats["sketches"],MessagePackSections.UpgradeSketchSplines(input["sketches"].Bytes))]);
         RegisterStep("sketch-feature-references",[new("features",3,"messagepack")],[new("features",4,"messagepack")],input=>
             [new(new("features",4,"messagepack"),MessagePackSections.UpgradeSketchFeatureReferences(input["features"].Bytes))]);
         RegisterStep("local-box-edge-recipes",[new("features",4,"messagepack")],[new("features",6,"messagepack")],input=>

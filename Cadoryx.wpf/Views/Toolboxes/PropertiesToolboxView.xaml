@@ -32,6 +32,7 @@
     <ItemsControl.ItemTemplate><DataTemplate><StackPanel Margin="0,4"><TextBlock Text="{Binding Name}" Opacity="0.6"/><TextBlock Text="{Binding Value}" TextWrapping="Wrap"/></StackPanel></DataTemplate></ItemsControl.ItemTemplate>
    </ItemsControl>
    <views:InstancePlacementView DataContext="{Binding Instance}"/>
+   <views:AssemblyConstraintsView DataContext="{Binding AssemblyRelations}"/>
   </StackPanel>
  </ScrollViewer>
 </UserControl>

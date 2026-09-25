@@ -54,7 +54,7 @@ internal static class SketchSmokeRunner
             new HorizontalConstraint(SketchConstraintId.New(),l[2].Id),new VerticalConstraint(SketchConstraintId.New(),l[3].Id),
             new OffsetXConstraint(SketchConstraintId.New(),p[0].Id,p[1].Id,40),new OffsetYConstraint(SketchConstraintId.New(),p[0].Id,p[3].Id,30)]);
     }
-    internal static string Describe(CadSketch sketch)=>JsonSerializer.Serialize(new{sketch.Id,sketch.Revision,sketch.PartId,sketch.Name,sketch.Plane,sketch.Points,sketch.Lines,sketch.Circles,
+    internal static string Describe(CadSketch sketch)=>JsonSerializer.Serialize(new{sketch.Id,sketch.Revision,sketch.PartId,sketch.Name,sketch.Plane,sketch.Points,sketch.Lines,sketch.Circles,sketch.Arcs,sketch.Beziers,sketch.Splines,
         Constraints=sketch.Constraints.Select(c=>new{Kind=c.GetType().Name,Value=JsonSerializer.SerializeToElement(c,c.GetType(),CadJson.Options)}).ToArray()},CadJson.Options);
     private static void Check(bool condition,string message){if(!condition)throw new InvalidOperationException(message);}
     private static T? Find<T>(DependencyObject root) where T:DependencyObject

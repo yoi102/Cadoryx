@@ -74,6 +74,8 @@ internal static class WindowSmokeRunner
             Check(drawingDoc.BackgroundTopArgb==DocumentSettings.DefaultBackgroundTopArgb&&
                 drawingDoc.BackgroundBottomArgb==DocumentSettings.DefaultBackgroundBottomArgb,"New document uses sky gradient");
             drawingViewport.FitAll();
+            // This probe needs a visible cube even when the user's saved app preference hides it.
+            drawingViewport.SetViewCubeVisible(true);
             var cubeHost=Host(drawingDoc);
             drawingViewport.SaveScreenshot(Path.Combine(output,"view-cube-controls-before-hit.png"));
             Check(GetClientRect(cubeHost.Handle,out var cubeBounds),"ViewCube client bounds available");

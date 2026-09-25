@@ -722,7 +722,7 @@
     <value>A resource with this name already exists.</value>
   </data>
   <data name="SharedParentMoveBlocked" xml:space="preserve">
-    <value>This position belongs to a reused subassembly. Select its parent instance to move a single copy; independent child editing is not available yet.</value>
+    <value>This position belongs to a reused subassembly. Select its parent assembly and make it independent to edit this copy.</value>
   </data>
   <data name="ResourceEditApplied" xml:space="preserve">
     <value>Applied. You can undo this change after closing the window.</value>
@@ -965,8 +965,13 @@
     <value>Select a sketch in the model tree first.</value>
   </data>
   <data name="PickProfile" xml:space="preserve">
-    <value>Select a closed straight-line loop. Circles and holes are not feature profiles yet.</value>
+    <value>Select a closed line loop or circle. For extrusion, choose an explicit circular-hole combination if needed.</value>
   </data>
+  <data name="SketchCircularHoles" xml:space="preserve">
+    <value>Circular through holes (select explicitly)</value>
+  </data>
+  <data name="TangentLineCircle" xml:space="preserve"><value>Line-circle tangent</value></data>
+  <data name="AngleBetweenLines" xml:space="preserve"><value>Angle between lines (degrees)</value></data>
   <data name="AssociateSketch" xml:space="preserve">
     <value>Associate with sketch</value>
   </data>
@@ -1234,4 +1239,56 @@
   <data name="LocalEdgeList" xml:space="preserve">
     <value>Box edges (primary edge is fixed)</value>
   </data>
+  <data name="LocalSourceBody" xml:space="preserve"><value>Source body</value></data>
+  <data name="LocalChainedHint" xml:space="preserve"><value>Pick an edge on this result. For a chamfer, switch to Face and pick its support face.</value></data>
+  <data name="LocalReselectHint" xml:space="preserve"><value>Upstream geometry changed. Reselect an edge on its current result; for a chamfer also pick its support face.</value></data>
+  <data name="LocalExactEdge" xml:space="preserve"><value>Edge #{0}</value></data>
+  <data name="LocalSupportFaceHint" xml:space="preserve"><value>Select a support face</value></data>
+  <data name="LocalSupportFaceSelected" xml:space="preserve"><value>Support face #{0}</value></data>
+  <data name="SketchPolygonHoles" xml:space="preserve"><value>Polygon holes</value></data>
+  <data name="ThreePointArc" xml:space="preserve"><value>Three-point arc segment</value></data>
+  <data name="MixedCurveLoop" xml:space="preserve"><value>Mixed curve loop</value></data>
+  <data name="SketchIslands" xml:space="preserve"><value>Islands inside selected holes</value></data>
+  <data name="QuadraticBezier" xml:space="preserve"><value>Quadratic Bézier region</value></data>
+  <data name="CubicSpline" xml:space="preserve"><value>Cubic B-spline region (5 points)</value></data>
+  <data name="InsertInstance" xml:space="preserve"><value>Insert instance into selected assembly</value></data>
+  <data name="ReplaceInstance" xml:space="preserve"><value>Replace selected instance</value></data>
+  <data name="RemoveInstance" xml:space="preserve"><value>Remove selected instance</value></data>
+  <data name="ReparentInstance" xml:space="preserve"><value>Move to assembly (keep world position)</value></data>
+  <data name="MakeAssemblyIndependent" xml:space="preserve"><value>Make this assembly independent</value></data>
+  <data name="InstanceDefinition" xml:space="preserve"><value>Definition to insert or replace</value></data>
+  <data name="DestinationAssembly" xml:space="preserve"><value>Destination assembly</value></data>
+  <data name="CreateSiblingAssembly" xml:space="preserve"><value>Create assembly beside selection</value></data>
+  <data name="NewAssemblyName" xml:space="preserve"><value>New assembly name</value></data>
+  <data name="MakePartIndependent" xml:space="preserve"><value>Make this part independent</value></data>
+  <data name="OccurrenceName" xml:space="preserve"><value>Instance name (this placement)</value></data>
+  <data name="SharedDefinitionName" xml:space="preserve"><value>Definition name (all instances)</value></data>
+  <data name="RenameOccurrence" xml:space="preserve"><value>Rename instance</value></data>
+  <data name="RenameDefinition" xml:space="preserve"><value>Rename shared definition</value></data>
+  <data name="DefinitionUsageCount" xml:space="preserve"><value>This definition is used by {0} instance(s).</value></data>
+  <data name="PruneUnusedDefinitions" xml:space="preserve"><value>Remove unused definitions</value></data>
+  <data name="AssemblyRelations" xml:space="preserve"><value>Assembly relations</value></data>
+  <data name="AssemblyReference" xml:space="preserve"><value>Reference instance</value></data>
+  <data name="AssemblyDistance" xml:space="preserve"><value>Target distance (mm)</value></data>
+  <data name="AssemblyFix" xml:space="preserve"><value>Fix selected instance</value></data>
+  <data name="AssemblyCoincident" xml:space="preserve"><value>Make local points coincident</value></data>
+  <data name="AssemblyAddDistance" xml:space="preserve"><value>Add local point distance</value></data>
+  <data name="AssemblyAdjust" xml:space="preserve"><value>Adjust second instance</value></data>
+  <data name="AssemblyRetarget" xml:space="preserve"><value>Retarget using selection</value></data>
+  <data name="AssemblyToggle" xml:space="preserve"><value>Enable / disable</value></data>
+  <data name="AssemblyRemove" xml:space="preserve"><value>Remove relation</value></data>
+  <data name="AssemblyApplyDistance" xml:space="preserve"><value>Change distance target</value></data>
+  <data name="AssemblyFixedName" xml:space="preserve"><value>Fixed</value></data>
+  <data name="AssemblyCoincidentName" xml:space="preserve"><value>Coincident</value></data>
+  <data name="AssemblyDistanceName" xml:space="preserve"><value>Distance</value></data>
+  <data name="AssemblyApplyAnchors" xml:space="preserve"><value>Apply local points</value></data>
+  <data name="AssemblyApplyAxes" xml:space="preserve"><value>Apply local axes</value></data>
+  <data name="AssemblyCoaxial" xml:space="preserve"><value>Add coaxial axes</value></data>
+  <data name="AssemblyCoaxialName" xml:space="preserve"><value>Coaxial</value></data>
+  <data name="AssemblyParallel" xml:space="preserve"><value>Add parallel axes</value></data>
+  <data name="AssemblyParallelName" xml:space="preserve"><value>Parallel</value></data>
+  <data name="AssemblyPrimaryAxis" xml:space="preserve"><value>Reference local axis</value></data>
+  <data name="AssemblyPrimaryPoint" xml:space="preserve"><value>Reference local point (mm)</value></data>
+  <data name="AssemblySecondaryAxis" xml:space="preserve"><value>Moving local axis</value></data>
+  <data name="AssemblySecondaryPoint" xml:space="preserve"><value>Moving local point (mm)</value></data>
 </root>

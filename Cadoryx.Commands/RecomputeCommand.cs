@@ -4,21 +4,29 @@ using System.Collections.Immutable;
 namespace Cadoryx.Commands;
 
 /// <summary>Reevaluates the changed feature and its dependent closure into an isolated candidate.</summary>
-public sealed class RecomputeCommand(FeatureId featureId,GeometryRecipe recipe) : ICadDocumentCommand
+public sealed class RecomputeCommand(FeatureId featureId,GeometryRecipe recipe,SketchProfileReference? replacementSketchSource=null) : ICadDocumentCommand
 {
     public string Name=>Strings.EditFeatureParameters;
     public Task<PreparedDocumentEdit> PrepareAsync(DocumentCommandContext context,CancellationToken cancellationToken)
     {
         var doc=context.Snapshot;var original=doc.Features[featureId];
         if(original.Recipe.GetType()!=recipe.GetType())throw new CadValidationException("Changing feature kind requires a new identity.");
-        return FeatureRecompute.PrepareAsync(context,[featureId],new Dictionary<FeatureId,GeometryRecipe>{{featureId,recipe}},cancellationToken);
+        if(replacementSketchSource is not null)
+        {
+            if(original.SketchSource is null||recipe is not ExtrudeRecipe)
+                throw new CadValidationException("Only an existing linked extrusion can change sketch source.");
+            replacementSketchSource.Resolve(doc,original.PartId,recipe);
+        }
+        return FeatureRecompute.PrepareAsync(context,[featureId],new Dictionary<FeatureId,GeometryRecipe>{{featureId,recipe}},cancellationToken,
+            replacementSketchSource is null?null:new Dictionary<FeatureId,SketchProfileReference>{{featureId,replacementSketchSource}});
     }
 }
 
 internal static class FeatureRecompute
 {
     internal static async Task<PreparedDocumentEdit> PrepareAsync(DocumentCommandContext context,IEnumerable<FeatureId> roots,
-        IReadOnlyDictionary<FeatureId,GeometryRecipe>? replacements,CancellationToken cancellationToken)
+        IReadOnlyDictionary<FeatureId,GeometryRecipe>? replacements,CancellationToken cancellationToken,
+        IReadOnlyDictionary<FeatureId,SketchProfileReference>? sketchSourceReplacements=null)
     {
         var doc=context.Snapshot;var pending=roots.ToHashSet();
         bool added;
@@ -41,7 +49,7 @@ internal static class FeatureRecompute
                 }
                 if(f.Inputs.Any(input=>doc.Features[input].IsStale)){Freeze();continue;}
                 GeometryRecipe current=replacements?.GetValueOrDefault(f.Id)??f.Recipe;
-                var sketchSource=f.SketchSource;
+                var sketchSource=sketchSourceReplacements?.GetValueOrDefault(f.Id)??f.SketchSource;
                 if(sketchSource is not null)
                 {
                     current=sketchSource.Resolve(doc,f.PartId,current,refresh:true);
@@ -53,16 +61,26 @@ internal static class FeatureRecompute
                     current=transform with {Source=doc.Features[f.Inputs[0]].Result};
                 if(current is LocalFeatureRecipe local&&f.Inputs.Length==1)
                     current=local with{Source=doc.Features[f.Inputs[0]].Result,Box=doc.Features[f.Inputs[0]].Recipe as BoxRecipe??throw new CadValidationException("Local feature requires a box source.")};
-                if(current is HistoryFilletRecipe bound)
+                if(current is HistoryFilletRecipe or HistoryChamferRecipe)
                 {
-                    var binding=f.TopologyBinding??throw new CadValidationException("Bound fillet has no selection.");
-                    if(f.Inputs.Length!=1||f.Inputs[0]!=binding.TargetFeatureId)throw new CadValidationException("Bound fillet dependency changed.");
+                    var binding=f.TopologyBinding??throw new CadValidationException("Bound local feature has no selection.");
+                    if(f.Inputs.Length!=1||f.Inputs[0]!=binding.TargetFeatureId)throw new CadValidationException("Bound local feature dependency changed.");
                     var upstream=doc.Features[binding.TargetFeatureId];
                     if(upstream.Result.Revision!=binding.TargetRevision||upstream.Result.AssetId!=binding.TargetAsset)
                     {Freeze();continue;}
-                    var confirmed=await FeatureBindingGuard.ConfirmAsync(context with{Snapshot=doc},binding.Origin,
-                        binding.TargetFeatureId,new(binding.TargetRevision,binding.TargetAsset,binding.FullTopologyIndex,HistoryShapeKind.Edge,binding.AdapterVersion),cancellationToken);
-                    current=bound with{Source=upstream.Result,FullTopologyIndex=confirmed.Target.FullTopologyIndex};
+                    if(binding.Origin is {} origin)
+                        await FeatureBindingGuard.ConfirmAsync(context with{Snapshot=doc},origin,
+                            binding.TargetFeatureId,new(binding.TargetRevision,binding.TargetAsset,binding.FullTopologyIndex,HistoryShapeKind.Edge,binding.AdapterVersion),cancellationToken);
+                    else await FeatureBindingGuard.ConfirmExactAsync(context with{Snapshot=doc},binding.ExactEdge!,binding.SupportFace,cancellationToken);
+                    if(binding.SupportFace is {} face&&binding.Origin is not null)
+                        await FeatureBindingGuard.WithFaceAsync(context with{Snapshot=doc},binding,face,cancellationToken);
+                    current=current switch
+                    {
+                        HistoryFilletRecipe fillet=>fillet with{Source=upstream.Result,FullTopologyIndex=binding.FullTopologyIndex},
+                        HistoryChamferRecipe chamfer=>chamfer with{Source=upstream.Result,FullTopologyIndex=binding.FullTopologyIndex,
+                            SupportFaceIndex=binding.SupportFace!.FullTopologyIndex},
+                        _=>current
+                    };
                 }
                 var result=await context.Kernel.EvaluateAsync(current,context.Assets,cancellationToken).ConfigureAwait(false);
                 resources.Add(result);

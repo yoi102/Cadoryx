@@ -97,6 +97,27 @@ public sealed class RecoveryTests
         Assert.Single(Directory.GetFiles(root, "*.cadoryx", SearchOption.AllDirectories));
     }
 
+    [Fact] public async Task CancellationAfterPayloadWriteDoesNotPublishIncompleteRecoveryRecord()
+    {
+        using var files=new TestFiles();var real=new CadDocumentStorage();var storage=new ControlledStorage(real);
+        var assets=new MemoryAssetStore();var root=files.PathFor("recovery");var id=Guid.NewGuid();
+        using(var writer=new CadRecoveryStore(root,storage))
+        {
+            await writer.WriteAsync(id,DocumentSnapshot.Create("Committed"),assets,null);
+            using var cancellation=new CancellationTokenSource();
+            storage.AfterWrite=()=>cancellation.Cancel();
+            await Assert.ThrowsAnyAsync<OperationCanceledException>(()=>writer.WriteAsync(id,
+                DocumentSnapshot.Create("Interrupted"),assets,null,cancellation.Token));
+            Assert.Single(Directory.GetFiles(root,"*.json",SearchOption.AllDirectories));
+            Assert.Single(Directory.GetFiles(root,"*.cadoryx",SearchOption.AllDirectories));
+            Assert.Empty(Directory.GetFiles(root,"*.tmp",SearchOption.AllDirectories));
+        }
+        using var reader=new CadRecoveryStore(root,real);
+        var entry=Assert.Single((await reader.ScanAsync()).Entries);
+        using var recovered=await reader.OpenAsync(entry.Key,assets);
+        Assert.Equal("Committed",recovered.Document.Snapshot.Name);
+    }
+
     [Fact] public async Task EditingDuringCheckpointIsCapturedOnTheNextTick()
     {
         using var files = new TestFiles(); var storage = new ControlledStorage(new CadDocumentStorage()) { Pause = true }; var assets = new MemoryAssetStore();
@@ -285,12 +306,14 @@ public sealed class RecoveryTests
         public bool FailAfterWrite { get; set; }
         public string? FailName { get; set; }
         public bool Pause { get; set; }
+        public Action? AfterWrite { get; set; }
         public TaskCompletionSource Started { get; } = new(TaskCreationOptions.RunContinuationsAsynchronously);
         public TaskCompletionSource Release { get; } = new(TaskCreationOptions.RunContinuationsAsynchronously);
         public async Task SaveAsync(DocumentSnapshot snapshot, IAssetStore assets, string path, CancellationToken cancellationToken = default)
         {
             if (Pause) { Started.TrySetResult(); await Release.Task.WaitAsync(cancellationToken); Pause = false; }
             await inner.SaveAsync(snapshot, assets, path, cancellationToken);
+            AfterWrite?.Invoke();
             if (FailAfterWrite || snapshot.Name == FailName) throw new IOException("Injected failure after payload write.");
         }
         public Task<LoadedDocument> LoadAsync(string path, IAssetStore assets, CancellationToken cancellationToken = default) => inner.LoadAsync(path, assets, cancellationToken);

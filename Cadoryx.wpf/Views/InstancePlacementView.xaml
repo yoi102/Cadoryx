@@ -10,7 +10,15 @@
  </Style></UserControl.Resources>
  <Expander Header="{I18N {x:Static r:LangKeys.InstancePlacement}}" IsExpanded="True" Margin="0,0,0,16">
   <StackPanel Margin="0,8,0,0">
-   <TextBlock Text="{Binding InstanceName}" FontWeight="SemiBold" Margin="0,0,0,6"/>
+   <TextBlock Text="{Binding InstanceNameLabel}"/>
+   <TextBox x:Name="OccurrenceNameInput" Text="{Binding InstanceName,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Margin="0,4,0,5"/>
+   <Button x:Name="RenameOccurrenceButton" Content="{Binding RenameOccurrenceLabel}" Command="{Binding RenameOccurrenceCommand}"
+           IsEnabled="{Binding CanMove}" Margin="0,0,0,8"/>
+   <TextBlock Text="{Binding DefinitionNameLabel}"/>
+   <TextBox x:Name="DefinitionNameInput" Text="{Binding DefinitionName,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Margin="0,4,0,5"/>
+   <TextBlock Text="{Binding DefinitionScope}" TextWrapping="Wrap" Opacity="0.7" Margin="0,0,0,5"/>
+   <Button x:Name="RenameDefinitionButton" Content="{Binding RenameDefinitionLabel}" Command="{Binding RenameDefinitionCommand}"
+           IsEnabled="{Binding CanRenameDefinition}" Margin="0,0,0,8"/>
    <TextBlock Text="{Binding Context}" TextWrapping="Wrap" Opacity="0.7" Margin="0,0,0,10"/>
    <StackPanel IsEnabled="{Binding CanMove}">
     <TextBlock Text="{I18N {x:Static r:LangKeys.LocalTranslation}}"/>
@@ -29,6 +37,28 @@
     <mah:NumericUpDown x:Name="AngleInput" Value="{Binding AngleDegrees,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Margin="0,4,0,10"/>
     <Button Content="{I18N {x:Static r:LangKeys.ApplyPlacement}}" Command="{Binding ApplyCommand}"/>
    </StackPanel>
+   <Separator Margin="0,12,0,8"/>
+   <TextBlock Text="{Binding NewAssemblyNameLabel}"/>
+   <TextBox Text="{Binding NewAssemblyName,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Margin="0,4,0,6"/>
+   <Button x:Name="CreateAssemblyButton" Content="{Binding CreateAssemblyLabel}" Command="{Binding CreateAssemblyCommand}"
+           IsEnabled="{Binding CanMove}" Margin="0,0,0,10"/>
+   <TextBlock Text="{Binding DefinitionLabel}"/>
+   <ComboBox ItemsSource="{Binding Definitions}" SelectedItem="{Binding SelectedDefinition}" DisplayMemberPath="Name" Margin="0,4,0,8"/>
+   <Button x:Name="IndependentButton" Content="{Binding MakeIndependentLabel}" Command="{Binding MakeIndependentCommand}"
+           IsEnabled="{Binding CanMakeIndependent}" Margin="0,0,0,6"/>
+   <Button x:Name="IndependentPartButton" Content="{Binding MakePartIndependentLabel}" Command="{Binding MakePartIndependentCommand}"
+           IsEnabled="{Binding CanMakePartIndependent}" Margin="0,0,0,6"/>
+   <Button x:Name="InsertButton" Content="{Binding InsertLabel}" Command="{Binding InsertCommand}"
+           IsEnabled="{Binding CanInsertChild}" Margin="0,0,0,6"/>
+   <UniformGrid Columns="2" Margin="0,0,0,8">
+    <Button Content="{Binding ReplaceLabel}" Command="{Binding ReplaceCommand}" IsEnabled="{Binding CanMove}" Margin="0,0,3,0"/>
+    <Button Content="{Binding RemoveLabel}" Command="{Binding RemoveCommand}" IsEnabled="{Binding CanMove}" Margin="3,0,0,0"/>
+   </UniformGrid>
+   <TextBlock Text="{Binding DestinationLabel}"/>
+   <ComboBox ItemsSource="{Binding Parents}" SelectedItem="{Binding SelectedParent}" DisplayMemberPath="Name" Margin="0,4,0,6"/>
+   <Button x:Name="ReparentButton" Content="{Binding ReparentLabel}" Command="{Binding ReparentCommand}" IsEnabled="{Binding CanMove}"/>
+   <Button x:Name="PruneUnusedButton" Content="{Binding PruneUnusedLabel}" Command="{Binding PruneUnusedCommand}"
+           IsEnabled="{Binding CanPruneUnused}" Margin="0,10,0,0"/>
   </StackPanel>
  </Expander>
 </UserControl>

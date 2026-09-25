@@ -39,8 +39,8 @@ public partial class SketchEditorViewModel : ObservableObject,IAsyncDisposable
     public ObservableCollection<SketchEntityItem> Entities {get;}=[];
     public ObservableCollection<SketchConstraintItem> Constraints {get;}=[];
     public ObservableCollection<SketchEntityId> SelectedEntities {get;}=[];
-    public IReadOnlyList<SketchOption> Tools {get;}=new[]{"Select","Point","Line","Rectangle","Circle"}.Select(k=>new SketchOption(k,ToolLabel(k))).ToArray();
-    public IReadOnlyList<SketchOption> ConstraintKinds {get;}=new[]{"FixPoint","Coincident","Horizontal","Vertical","Distance","OffsetX","OffsetY","Length","Parallel","Perpendicular","EqualLength","Radius","EqualRadius"}.Select(k=>new SketchOption(k,ConstraintLabel(k))).ToArray();
+    public IReadOnlyList<SketchOption> Tools {get;}=new[]{"Select","Point","Line","Rectangle","Circle","ArcSegment","BezierSegment","SplineRegion"}.Select(k=>new SketchOption(k,ToolLabel(k))).ToArray();
+    public IReadOnlyList<SketchOption> ConstraintKinds {get;}=new[]{"FixPoint","Coincident","Horizontal","Vertical","Distance","OffsetX","OffsetY","Length","Parallel","Perpendicular","EqualLength","Radius","EqualRadius","Tangent","Angle"}.Select(k=>new SketchOption(k,ConstraintLabel(k))).ToArray();
     public IReadOnlyList<string> Planes=>CanChangePlane?["XY","XZ","YZ"]:[Plane];
     public bool CanChangePlane {get;}
     public bool CanEdit=>!IsWorking&&!IsStale&&!disposed;
@@ -129,7 +129,9 @@ public partial class SketchEditorViewModel : ObservableObject,IAsyncDisposable
     {
         if(SelectedEntities.Count!=1)throw new CadValidationException(string.Format(Strings.SketchTargets,1));var id=SelectedEntities[0];
         if(Sketch.Points.Any(p=>p.Id==id))d.MovePoint(id,new(PointX,PointY));
-        else if(Sketch.Circles.Any(c=>c.Id==id))d.Change(s=>s with{Circles=s.Circles.Select(c=>c.Id==id?c with{Radius=CircleRadius}:c).ToImmutableArray()});
+        else if(Sketch.Circles.Any(c=>c.Id==id))d.Change(s=>s with{
+            Circles=s.Circles.Select(c=>c.Id==id?c with{Radius=CircleRadius}:c).ToImmutableArray(),
+            Constraints=s.Constraints.Select(c=>c is RadiusConstraint radius&&radius.Circle==id?radius with{Radius=CircleRadius}:c).ToImmutableArray()});
         pendingCoordinates=false;
     }
     private void ApplyMetadata()
@@ -143,6 +145,15 @@ public partial class SketchEditorViewModel : ObservableObject,IAsyncDisposable
     private void RestoreMetadata(){Name=Sketch.Name;OriginX=Sketch.Plane.Translation.X;OriginY=Sketch.Plane.Translation.Y;OriginZ=Sketch.Plane.Translation.Z;
         if(CanChangePlane)Plane=Sketch.Plane.Rotation==Quaterniond.Identity?"XY":Sketch.Plane.Rotation==Quaterniond.FromAxisAngle(new(1,0,0),Math.PI/2)?"XZ":"YZ";pendingDimension=false;pendingCoordinates=false;}
     [RelayCommand] private void DeleteEntities()=>Mutate(d=>d.RemoveEntities(SelectedEntities.ToArray()));
+    [RelayCommand] private void ToggleConstruction()
+    {
+        var ids=SelectedEntities.ToArray();
+        bool allConstruction=ids.Length>0&&ids.All(id=>Sketch.Points.Any(p=>p.Id==id&&p.IsConstruction)||
+            Sketch.Lines.Any(l=>l.Id==id&&l.IsConstruction)||Sketch.Circles.Any(c=>c.Id==id&&c.IsConstruction)||
+            Sketch.Arcs.Any(a=>a.Id==id&&a.IsConstruction)||Sketch.Beziers.Any(b=>b.Id==id&&b.IsConstruction)||
+            Sketch.Splines.Any(b=>b.Id==id&&b.IsConstruction));
+        Mutate(d=>d.SetConstruction(ids,!allConstruction));
+    }
     [RelayCommand] private void DeleteConstraint()=>Mutate(d=>d.Change(s=>s with{Constraints=s.Constraints.Where(c=>c.Id!=SelectedConstraint?.Id).ToImmutableArray()}));
     [RelayCommand] private void ToggleConstraint()=>Mutate(d=>d.Change(s=>s with{Constraints=s.Constraints.Select(c=>c.Id==SelectedConstraint?.Id?c with{IsEnabled=!c.IsEnabled}:c).ToImmutableArray()}));
     [RelayCommand] private void ApplyDimension()=>Mutate(ApplyDimensionCore);
@@ -159,7 +170,11 @@ public partial class SketchEditorViewModel : ObservableObject,IAsyncDisposable
             "Horizontal"=>new HorizontalConstraint(id,a),"Vertical"=>new VerticalConstraint(id,a),"Distance"=>new DistanceConstraint(id,a,b,DimensionValue),
             "OffsetX"=>new OffsetXConstraint(id,a,b,DimensionValue),"OffsetY"=>new OffsetYConstraint(id,a,b,DimensionValue),"Length"=>new LengthConstraint(id,a,DimensionValue),
             "Parallel"=>new ParallelConstraint(id,a,b),"Perpendicular"=>new PerpendicularConstraint(id,a,b),"EqualLength"=>new EqualLengthConstraint(id,a,b),
-            "Radius"=>new RadiusConstraint(id,a,DimensionValue),"EqualRadius"=>new EqualRadiusConstraint(id,a,b),_=>throw new NotSupportedException()
+            "Radius"=>new RadiusConstraint(id,a,DimensionValue),"EqualRadius"=>new EqualRadiusConstraint(id,a,b),
+            "Tangent"=>Sketch.Lines.Any(l=>l.Id==a)&&Sketch.Circles.Any(c=>c.Id==b)?new TangentConstraint(id,a,b):
+                Sketch.Lines.Any(l=>l.Id==b)&&Sketch.Circles.Any(c=>c.Id==a)?new TangentConstraint(id,b,a):
+                throw new CadValidationException("Tangency requires one line and one circle."),
+            "Angle"=>new AngleConstraint(id,a,b,DimensionValue*Math.PI/180),_=>throw new NotSupportedException()
         };
         d.Change(s=>s with{Constraints=s.Constraints.Add(c)});
         pendingDimension=false;
@@ -169,7 +184,14 @@ public partial class SketchEditorViewModel : ObservableObject,IAsyncDisposable
         var selected=SelectedConstraint?.Id;Entities.Clear();int i=0;
         foreach(var p in Sketch.Points)Entities.Add(new(p.Id,$"P{++i} ({Display(p.Position.X)}, {Display(p.Position.Y)})"));i=0;
         foreach(var l in Sketch.Lines)Entities.Add(new(l.Id,$"L{++i}"+(l.IsConstruction?" · "+Strings.ConstructionGeometry:"")));i=0;
-        foreach(var c in Sketch.Circles)Entities.Add(new(c.Id,$"C{++i} · R {c.Radius:G6}"));
+        foreach(var c in Sketch.Circles)Entities.Add(new(c.Id,$"C{++i} · R {c.Radius:G6}"+(c.IsConstruction?" · "+Strings.ConstructionGeometry:"")));
+        i=0;foreach(var arc in Sketch.Arcs)Entities.Add(new(arc.Id,$"A{++i} · "+(Strings.ResourceManager.GetString("ThreePointArc",Strings.Culture)??"Three-point arc")+
+            (arc.IsConstruction?" · "+Strings.ConstructionGeometry:"")));
+        i=0;foreach(var bezier in Sketch.Beziers)Entities.Add(new(bezier.Id,$"B{++i} · "+(Strings.ResourceManager.GetString("QuadraticBezier",Strings.Culture)??"Quadratic Bezier")+
+            (bezier.IsConstruction?" · "+Strings.ConstructionGeometry:"")));
+        i=0;foreach(var spline in Sketch.Splines)Entities.Add(new(spline.Id,$"S{++i} · "+
+            (Strings.ResourceManager.GetString("CubicSpline",Strings.Culture)??"Cubic B-spline")+
+            $" ({spline.Controls.Length})"+(spline.IsConstruction?" · "+Strings.ConstructionGeometry:"")));
         var labels=Entities.ToDictionary(e=>e.Id,e=>e.Label.Split(' ')[0]);Constraints.Clear();i=0;
         foreach(var c in Sketch.Constraints)
         {
@@ -189,6 +211,9 @@ public partial class SketchEditorViewModel : ObservableObject,IAsyncDisposable
         "Line"=>Strings.Line,
         "Rectangle"=>Strings.Rectangle,
         "Circle"=>Strings.Circle,
+        "ArcSegment"=>Strings.ResourceManager.GetString("ThreePointArc",Strings.Culture)??"Three-point arc",
+        "BezierSegment"=>Strings.ResourceManager.GetString("QuadraticBezier",Strings.Culture)??"Quadratic Bezier",
+        "SplineRegion"=>Strings.ResourceManager.GetString("CubicSpline",Strings.Culture)??"Cubic B-spline (5 points)",
         _=>key
     };
     private static string ConstraintLabel(string key)=>key switch
@@ -206,6 +231,8 @@ public partial class SketchEditorViewModel : ObservableObject,IAsyncDisposable
         "EqualLength"=>Strings.EqualLengths,
         "Radius"=>Strings.CircleRadius,
         "EqualRadius"=>Strings.EqualRadii,
+        "Tangent"=>Strings.ResourceManager.GetString("TangentLineCircle",Strings.Culture)??"Line-circle tangent",
+        "Angle"=>Strings.ResourceManager.GetString("AngleBetweenLines",Strings.Culture)??"Angle between lines",
         _=>key
     };
     private static string Display(double value)=>(Math.Abs(value)<1e-9?0:value).ToString("G6");

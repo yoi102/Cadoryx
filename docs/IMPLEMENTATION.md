@@ -51,8 +51,9 @@ M4-T1-H1 新增 Db/TopologyHistory、Kernel.Occt/OcctLocalHistory 与 OcctHistor
 采用 MessagePack NuGet：数值和记录数组紧凑、类型契约明确，C# 工具链成熟。M3-V 已测量当时五节实现的共享实例、25 MB BRep 和 128 MiB 扩展载荷；M4-S1 未重跑六节性能基准，也没有做与 JSON 的同条件性能比较，不能据此宣称固定倍数提升。详见 [格式演进与基准](FORMAT_EVOLUTION.md)。
 
 - 清单保留 JSON，便于诊断；十个业务节使用数字键 DTO；精确 BRep/XDE 不进入反射对象图序列化。
-- 当前 containerVersion=1、assetCatalogVersion=1、applicationVersion=0.4.14；features v8、document v12、structure v3、presentation/sketches/history v2、geometry/topology/history-queries/feature-bindings v1，均为 MessagePack。旧四节 v1/json → v2/messagepack → 提取共享 geometry 表；document v2 → v3 建立空 sketches 表；再迁移 sketches v1→v2 和 features v3→v4，明确草图修订与可选特征引用；document v3→v4 初始化 topology v1，document v4→v5 初始化 history v1，再经 history v1→v2 明确来源参数表；document v5→v6 初始化空 history-queries v1，v6→v7 初始化空 feature-bindings v1，v7→v8 补入默认文档网格；v8→v10 补默认天空渐变，v9→v10 保留单色两端，v10→v11 补默认原点坐标轴，v11→v12 补默认 XY 工作平面及零偏移；features v5→v6 保留原字节并使旧记录的过期位默认为 false，v6→v7 对旧六数字局部配方补第七项 0，v7→v8 补附加边掩码与终点半径 0。
-- AssetFormat 记录媒体类型、编码/格式版本、内核及写出库版本，跟随不可变几何引用。当前新资产为 OCCT 8.0.1 / OcctSharp 8.0.1-preview.28.cadoryx.viewcube.5；旧文件缺失的生产者版本保持未知。实际依赖的原生资产先校验描述与文件头，再进入内核。
+- 当前 containerVersion=1、assetCatalogVersion=1、applicationVersion=0.4.28；features v19、document v14、structure v3、presentation/history/feature-bindings v2、sketches v6、geometry/topology/history-queries v1，均为 MessagePack。旧四节 v1/json → v2/messagepack → 提取共享 geometry 表；document v2 → v3 建立空 sketches 表；再迁移 sketches v1→v2、v2→v3 和 features v3→v4，明确草图修订与可选特征引用；document v3→v4 初始化 topology v1，document v4→v5 初始化 history v1，再经 history v1→v2 明确来源参数表；document v5→v6 初始化空 history-queries v1，v6→v7 初始化空 feature-bindings v1，v7→v8 补入默认文档网格；v8→v10 补默认天空渐变，v9→v10 保留单色两端，v10→v11 补默认原点坐标轴，v11→v12 补默认 XY 工作平面及零偏移；features v5→v6 保留原字节并使旧记录的过期位默认为 false，v6→v7 对旧六数字局部配方补第七项 0，v7→v8 补附加边掩码与终点半径 0，v8→v9 为旧绑定圆角补恒定半径模式，v9→v10 保留配方并开放绑定倒角，v10→v11 增加显式单圆关联拉伸，v11→v12 增加明确选择的完整圆孔，v12→v13 增加多边形孔，v13→v14 增加三点圆弧拉伸，v14→v15 增加单圆弧混合闭环，v15→v16 增加多圆弧及曲线孔，v16→v17 增加单层岛屿，v17→v18 增加二次 Bézier 区域；feature-bindings v1→v2 补精确边/面槽位；sketches v2→v3 增加切线与角度约束白名单，v3→v4 保存三点圆弧实体，v4→v5 保存二次 Bézier 实体。
+- document v12→v13 在现有文档节内增加装配关系表，旧文件获得空表；v13→v14 为关系追加两个可选局部轴字段。features v18→v19 与 sketches v5→v6 增加受限三次 B 样条区域和草图实体。详细范围见 [M5 装配关系](M5_ASSEMBLY_RELATIONS.md)、[M5 轴关系](M5_AXIS_RELATIONS.md)与[三次 B 样条](CUBIC_SPLINE_AND_FILE_FAULTS.md)。
+- AssetFormat 记录媒体类型、编码/格式版本、内核及写出库版本，跟随不可变几何引用。当前锁定包为 OCCT 8.0.1 / OcctSharp 8.0.1-preview.28.cadoryx.topology.1；旧文件缺失的生产者版本保持未知。实际依赖的原生资产先校验描述与文件头，再进入内核。
 - Key 与枚举数字是文件协议，不能重新编号或复用。配方有显式白名单。新增字段需要缺省语义或迁移；未知未来必需功能拒绝加载。
 - 未知可选节逐字节保留，同时文档只读；避免业务修改后悄悄写回不理解的引用。
 - ZIP 默认总解压上限 1 GiB、单资产 256 MiB、单结构节 32 MiB、清单 8 MiB、20 万条目。迁移输出也检查每节和总容量。还检查路径、重复名、声明长度与 SHA-256；这些限额属于当前可配置策略。
@@ -62,7 +63,7 @@ M4-T1-H1 新增 Db/TopologyHistory、Kernel.Occt/OcctLocalHistory 与 OcctHistor
 
 “草图”页签可新建/编辑草图、删除未被引用的草图，以及创建草图拉伸/旋转。MetroWindow 编辑器支持点/直线/矩形/圆、捕捉、点拖动、尺寸与 13 种约束、草稿历史、求解诊断和预览/确认/取消。固定零件平面和共享端点身份贯穿保存/恢复。
 
-关联特征记录 SketchId、草图修订和有序直线 ID；修改草图会重算全部依赖特征及后继闭包，整体提交或失败回滚。原冻结轮廓保持原语义，关联特征的轮廓/平面输入受来源草图控制；当前只支持单个直线闭环，不支持圆/孔洞区域。详见 [草图基础](SKETCH_FOUNDATION.md)和[编辑器使用说明](SKETCH_EDITOR.md)。
+关联特征记录 SketchId、草图修订和有序直线 ID；修改草图会重算全部依赖特征及后继闭包，整体提交或失败回滚。原冻结轮廓保持原语义，关联特征的轮廓/平面输入受来源草图控制；当前拉伸支持直线闭环或单圆外轮廓及明确选中的完整圆孔，关联拉伸可原子更换所选孔；草图新增直线/圆切线及两直线角度尺寸，旋转仍限直线闭环。详见 [草图基础](SKETCH_FOUNDATION.md)和[编辑器使用说明](SKETCH_EDITOR.md)。
 
 ## 导入与导出
 
@@ -90,9 +91,9 @@ M4-T1-H1 新增 Db/TopologyHistory、Kernel.Occt/OcctLocalHistory 与 OcctHistor
 
 ## 尚未完成
 
-M3-V 在 `-WindowSmoke` 中新增三个固定旧文件的 MainWindow 打开、升级保存、关闭/重开和源面颜色验证。存储性能复现命令为 `./scripts/benchmark-storage.ps1`；原始 JSON 结果、内存解释和未覆盖范围见 [格式演进](FORMAT_EVOLUTION.md)。
+M3-V 在 `-WindowSmoke` 中新增三个固定旧文件的 MainWindow 打开、升级保存、关闭/重开和源面颜色验证。存储性能复现命令为 `./scripts/benchmark-storage.ps1`；原始 JSON 结果、内存解释和未覆盖范围见 [格式演进](FORMAT_EVOLUTION.md)。本轮确定性文件故障矩阵覆盖保存中途异常／取消、旧目标保留、临时文件清理、加载资产回滚及恢复负载完成后取消；介质与断电专项尚未进行，见 [阶段文档](CUBIC_SPLINE_AND_FILE_FAULTS.md)。
 
-完整装配编辑和共享子装配使独立、草图曲线区域/孔洞及完整约束集、通用拓扑命名、外部引用、多视口、大型模型性能预算仍未完成。M4-S2 完成固定平面与直线闭环的编辑/关联重算，局部数值 DOF 不等于全局解唯一。跨节/跨编码迁移框架和资产格式目录已实现，后续新增协议仍须注册具体迁移和固定兼容样本。文档内材料/图层管理已接通，外部材料库和纹理/PBR 材质仍未提供。
+逐实例零件几何独立、装配约束求解、任意混合样条闭环及完整草图约束集、通用拓扑命名、外部引用、多视口、大型模型性能预算仍未完成。M5 本轮加入指定实例路径的插入／替换／删除、保世界位姿重挂及共享子装配独立化，仍共用零件定义和 BRep，见 [装配阶段文档](M5_ASSEMBLY_OCCURRENCES.md)。M4-S2 完成固定平面与直线闭环的编辑/关联重算，S3s–x 补充明确选择的多边形通孔；限定的三次 B 样条独立区域不能称作任意样条混合链。局部数值 DOF 不等于全局解唯一。跨节/跨编码迁移框架和资产格式目录已实现，后续新增协议仍须注册具体迁移和固定兼容样本。文档内材料/图层管理已接通，外部材料库和纹理/PBR 材质仍未提供。
 
 验证是在当前 Windows 机器和本地包基线上完成；独立发布目录使用已安装的 .NET 10 Desktop Runtime。尚未在全新 Windows 虚拟机、混合 DPI、多 GPU/远程桌面或长时间运行条件下验收，也未制作安装器或发布 NuGet。
 
@@ -102,4 +103,4 @@ M3-V 在 `-WindowSmoke` 中新增三个固定旧文件的 MainWindow 打开、�
 
 ## M4-T2 局部建模入口
 
-Ribbon“局部建模”命令 → LocalFeatureViewModel → LocalFeatureWindow（MetroWindow + 独立 OcctViewportHost）。视口输出 BoxBoundary 语义，BoxTopology 共用于解析、高亮和建模；LocalFeatureCommand 创建带唯一 Box 上游的 LocalFeatureRecipe。FeatureRecompute 刷新依赖缓存，IO features v8 保存配方、附加 Box 边、线性终点半径、可选第二倒角距离与过期位；旧 features v4/v5/v6/v7 显式迁移。Box 边单次多边操作、单边线性变半径及既有参数编辑见 [局部建模](LOCAL_FEATURES.md)；历史跨特征圆角见 [跨特征绑定](HISTORY_FEATURE_BINDINGS.md)，局部结果连续建模和生成拓扑重选仍有门禁。
+Ribbon“局部建模”命令 → LocalFeatureViewModel → LocalFeatureWindow（MetroWindow + 独立 OcctViewportHost）。Box 输出仍由 `LocalFeatureCommand` 直接用 BoxBoundary 语义建模；局部结果的完整原 Box 边可沿唯一历史目标使用 `HistoryFilletCommand` 或带显式支撑面的 `HistoryChamferCommand`。生成边由 Viewport 在原始 BRep 上取得完整拓扑索引，`ExactLocalFeatureCommand` 只在精确资产/指纹核对后调用 OCCT。FeatureRecompute 刷新依赖缓存；上游变化时冻结绑定后继，MetroWindow 对当前上游结果显式重选。该阶段 IO features v10、feature-bindings v2 与旧版显式迁移见 [局部结果精确拓扑](EXACT_LOCAL_TOPOLOGY.md)；多边原始 Box 操作与线性变半径见 [局部建模](LOCAL_FEATURES.md)。后续 features v12 的圆孔拉伸见 [圆孔区域](CIRCULAR_SKETCH_HOLES.md)，features v13 引入的多边形孔见 [多边形草图通孔](POLYGON_SKETCH_HOLES.md)，此前单圆关联拉伸见 [圆形草图区域](CIRCULAR_SKETCH_PROFILES.md)。

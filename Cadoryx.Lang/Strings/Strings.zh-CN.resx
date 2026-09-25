@@ -700,7 +700,7 @@
     <value>已存在同名资源。</value>
   </data>
   <data name="SharedParentMoveBlocked" xml:space="preserve">
-    <value>该位置属于复用子装配，修改会影响多个副本。请选择其父级实例移动；独立编辑子实例将在装配阶段提供。</value>
+    <value>该位置属于复用子装配。请选中父级装配并使其独立，再编辑这个副本。</value>
   </data>
   <data name="ResourceEditApplied" xml:space="preserve">
     <value>已应用，关闭窗口后可撤销此修改。</value>
@@ -943,8 +943,13 @@
     <value>请先在模型树选择草图。</value>
   </data>
   <data name="PickProfile" xml:space="preserve">
-    <value>请选择闭合直线轮廓；圆和带孔区域暂不作为特征轮廓。</value>
+    <value>请选择闭合直线轮廓或圆；拉伸需要圆孔时，请明确选择带孔组合。</value>
   </data>
+  <data name="SketchCircularHoles" xml:space="preserve">
+    <value>圆形通孔（明确勾选）</value>
+  </data>
+  <data name="TangentLineCircle" xml:space="preserve"><value>直线与圆相切</value></data>
+  <data name="AngleBetweenLines" xml:space="preserve"><value>两直线夹角（度）</value></data>
   <data name="AssociateSketch" xml:space="preserve">
     <value>关联草图</value>
   </data>
@@ -1212,4 +1217,56 @@
   <data name="LocalEdgeList" xml:space="preserve">
     <value>Box 边（主边固定）</value>
   </data>
+  <data name="LocalSourceBody" xml:space="preserve"><value>来源实体</value></data>
+  <data name="LocalChainedHint" xml:space="preserve"><value>在当前结果上选择边；倒角时再切换到“面”并选择支撑面。</value></data>
+  <data name="LocalReselectHint" xml:space="preserve"><value>上游几何已变化。请在当前结果上重新选择边；倒角还需重新选择支撑面。</value></data>
+  <data name="LocalExactEdge" xml:space="preserve"><value>边 #{0}</value></data>
+  <data name="LocalSupportFaceHint" xml:space="preserve"><value>请选择支撑面</value></data>
+  <data name="LocalSupportFaceSelected" xml:space="preserve"><value>支撑面 #{0}</value></data>
+  <data name="SketchPolygonHoles" xml:space="preserve"><value>多边形孔</value></data>
+  <data name="ThreePointArc" xml:space="preserve"><value>三点圆弧区域</value></data>
+  <data name="MixedCurveLoop" xml:space="preserve"><value>直线圆弧闭环</value></data>
+  <data name="SketchIslands" xml:space="preserve"><value>选中孔内的岛屿</value></data>
+  <data name="QuadraticBezier" xml:space="preserve"><value>二次贝塞尔区域</value></data>
+  <data name="CubicSpline" xml:space="preserve"><value>三次 B 样条区域（5 点）</value></data>
+  <data name="InsertInstance" xml:space="preserve"><value>向选中装配插入实例</value></data>
+  <data name="ReplaceInstance" xml:space="preserve"><value>替换选中实例</value></data>
+  <data name="RemoveInstance" xml:space="preserve"><value>删除选中实例</value></data>
+  <data name="ReparentInstance" xml:space="preserve"><value>重挂到装配（保持世界位置）</value></data>
+  <data name="MakeAssemblyIndependent" xml:space="preserve"><value>使这个子装配独立</value></data>
+  <data name="InstanceDefinition" xml:space="preserve"><value>要插入或替换的定义</value></data>
+  <data name="DestinationAssembly" xml:space="preserve"><value>目标装配</value></data>
+  <data name="CreateSiblingAssembly" xml:space="preserve"><value>在选中实例旁新建装配</value></data>
+  <data name="NewAssemblyName" xml:space="preserve"><value>新装配名称</value></data>
+  <data name="MakePartIndependent" xml:space="preserve"><value>使这个零件独立</value></data>
+  <data name="OccurrenceName" xml:space="preserve"><value>实例名称（仅此位置）</value></data>
+  <data name="SharedDefinitionName" xml:space="preserve"><value>定义名称（所有实例）</value></data>
+  <data name="RenameOccurrence" xml:space="preserve"><value>重命名此实例</value></data>
+  <data name="RenameDefinition" xml:space="preserve"><value>重命名共享定义</value></data>
+  <data name="DefinitionUsageCount" xml:space="preserve"><value>该定义被 {0} 个实例使用。</value></data>
+  <data name="PruneUnusedDefinitions" xml:space="preserve"><value>清理未使用的定义</value></data>
+  <data name="AssemblyRelations" xml:space="preserve"><value>装配约束</value></data>
+  <data name="AssemblyReference" xml:space="preserve"><value>参照实例</value></data>
+  <data name="AssemblyDistance" xml:space="preserve"><value>目标距离（毫米）</value></data>
+  <data name="AssemblyFix" xml:space="preserve"><value>固定选中实例</value></data>
+  <data name="AssemblyCoincident" xml:space="preserve"><value>使局部点重合</value></data>
+  <data name="AssemblyAddDistance" xml:space="preserve"><value>添加局部点距离约束</value></data>
+  <data name="AssemblyAdjust" xml:space="preserve"><value>调整第二个实例</value></data>
+  <data name="AssemblyRetarget" xml:space="preserve"><value>按当前选择重新指定</value></data>
+  <data name="AssemblyToggle" xml:space="preserve"><value>启用／禁用</value></data>
+  <data name="AssemblyRemove" xml:space="preserve"><value>删除约束</value></data>
+  <data name="AssemblyApplyDistance" xml:space="preserve"><value>修改目标距离</value></data>
+  <data name="AssemblyFixedName" xml:space="preserve"><value>固定</value></data>
+  <data name="AssemblyCoincidentName" xml:space="preserve"><value>重合</value></data>
+  <data name="AssemblyDistanceName" xml:space="preserve"><value>距离</value></data>
+  <data name="AssemblyApplyAnchors" xml:space="preserve"><value>应用局部点</value></data>
+  <data name="AssemblyApplyAxes" xml:space="preserve"><value>应用局部轴向</value></data>
+  <data name="AssemblyCoaxial" xml:space="preserve"><value>添加同轴关系</value></data>
+  <data name="AssemblyCoaxialName" xml:space="preserve"><value>同轴</value></data>
+  <data name="AssemblyParallel" xml:space="preserve"><value>添加平行轴关系</value></data>
+  <data name="AssemblyParallelName" xml:space="preserve"><value>平行轴</value></data>
+  <data name="AssemblyPrimaryAxis" xml:space="preserve"><value>参照实例局部轴向</value></data>
+  <data name="AssemblyPrimaryPoint" xml:space="preserve"><value>参照实例局部点 (mm)</value></data>
+  <data name="AssemblySecondaryAxis" xml:space="preserve"><value>移动实例局部轴向</value></data>
+  <data name="AssemblySecondaryPoint" xml:space="preserve"><value>移动实例局部点 (mm)</value></data>
 </root>

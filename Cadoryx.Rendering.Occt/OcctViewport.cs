@@ -5,6 +5,8 @@ using OcctSharp;
 
 namespace Cadoryx.Rendering.Occt;
 
+public sealed record LocalTopologyPick((BoxBoundary First,BoxBoundary? Second)? Box,ExactTopologySelection? Exact);
+
 /// <summary>UI-thread-owned OCCT scene adapter. Its source geometry is independent of worker inputs.</summary>
 public sealed class OcctViewport : ICadViewport
 {
@@ -34,6 +36,7 @@ public sealed class OcctViewport : ICadViewport
     public event EventHandler<ViewerCubeOrientation>? ViewCubeOrientationRequested;
     public event EventHandler<ViewerCubeTurn>? ViewCubeTurnRequested;
     public event EventHandler<(BoxBoundary First,BoxBoundary? Second)?>? BoxSubshapeSelected;
+    public event EventHandler<LocalTopologyPick>? LocalTopologySelected;
     public event EventHandler<(int X,int Y,bool Click)>? ConstructionPointer;
     public event EventHandler? NavigationStarted;
     public void SetConstructionMode(bool enabled){constructing=enabled;if(!enabled)SetConstructionGhost(null);viewer.ClearSelection();}
@@ -224,6 +227,9 @@ public sealed class OcctViewport : ICadViewport
     }
     private BoxRecipe? selectionBox;
     private TopologyKind? selectionKind;
+    private (DocumentId Document,FeatureId Feature)? exactSelectionSource;
+    public void SetExactSelectionSource(DocumentId document,FeatureId feature)=>exactSelectionSource=(document,feature);
+    public void ClearExactSelectionSource()=>exactSelectionSource=null;
     public void SetBoxSelection(BoxRecipe? box,TopologyKind? kind)
     {
         selectionBox=box;selectionKind=kind;viewer.ClearSelection();
@@ -247,6 +253,30 @@ public sealed class OcctViewport : ICadViewport
                     entry.Presentation.SetSubshapeColor(candidates[0],new(1,0.65,0));
                     if(reference.Kind==TopologyKind.Edge)entry.Presentation.SetSubshapeWidth(candidates[0],4);
                 }
+            }
+        }
+        viewer.Redraw();
+    }
+    public void HighlightExactSelections(IEnumerable<ExactTopologySelection> selections)
+    {
+        foreach(var entry in entries.Values)
+        {
+            var chosen=selections.Where(s=>s.Revision==entry.Item.Geometry.Revision&&s.Asset==entry.Item.Geometry.AssetId).ToArray();
+            if(chosen.Length==0)continue;
+            using var map=RepairSnapshot.Create(entry.Geometry.Shape);
+            foreach(var exact in chosen)
+            {
+                if(map.Fingerprint!=exact.Fingerprint||exact.FullTopologyIndex>=map.Topology.Count)continue;
+                var parts=entry.Geometry.Shape.GetSubShapes(exact.Kind==HistoryShapeKind.Edge?ShapeKind.Edge:ShapeKind.Face);
+                try
+                {
+                    foreach(var part in parts.Where(part=>RepairSnapshot.FindTopologyIndex(entry.Geometry.Shape,part)==exact.FullTopologyIndex))
+                    {
+                        entry.Presentation.SetSubshapeColor(part,new(1,0.65,0));
+                        if(exact.Kind==HistoryShapeKind.Edge)entry.Presentation.SetSubshapeWidth(part,4);
+                    }
+                }
+                finally{foreach(var part in parts)part.Dispose();}
             }
         }
         viewer.Redraw();
@@ -425,7 +455,7 @@ public sealed class OcctViewport : ICadViewport
         var selected=viewer.Input.PointerReleased(Button(button),x,y);
         bool clicked=button==0&&selectionClick;selectionClick=false;
         if(!clicked)return;
-        if(selectionKind is {} kind&&selectionBox is {} box)
+        if(selectionKind is {} kind&&(selectionBox is not null||exactSelectionSource is not null))
         {
             var pickedItems=viewer.GetSelectedItems();
             try
@@ -433,10 +463,25 @@ public sealed class OcctViewport : ICadViewport
                 (BoxBoundary First,BoxBoundary? Second)? value=null;
                 if(pickedItems.Count==1)
                 {
-                    var candidates=BoxTopology.Classify(pickedItems[0].Shape,box,kind);
-                    if(candidates.Count==1)value=candidates[0];
+                    if(selectionBox is {} box)
+                    {
+                        var candidates=BoxTopology.Classify(pickedItems[0].Shape,box,kind);
+                        if(candidates.Count==1)value=candidates[0];
+                    }
                 }
-                BoxSubshapeSelected?.Invoke(this,value);
+                ExactTopologySelection? exact=null;
+                if(exactSelectionSource is {} owner&&pickedItems.Count==1&&entries.Count==1)
+                {
+                    var entry=entries.Values.Single();
+                    using var map=RepairSnapshot.Create(entry.Geometry.Shape);
+                    int index=RepairSnapshot.FindTopologyIndex(entry.Geometry.Shape,pickedItems[0].Shape);
+                    if(index>=0&&index<map.Topology.Count&&map.Topology[index].Kind==pickedItems[0].Shape.Kind)
+                        exact=new(owner.Document,owner.Feature,entry.Item.Geometry.Revision,entry.Item.Geometry.AssetId,
+                            map.Fingerprint,index,kind==TopologyKind.Edge?HistoryShapeKind.Edge:HistoryShapeKind.Face,
+                            OcctGeometryKernel.HistoryAdapterVersion);
+                }
+                if(exactSelectionSource is not null)LocalTopologySelected?.Invoke(this,new(value,exact));
+                else BoxSubshapeSelected?.Invoke(this,value);
             }
             finally{foreach(var item in pickedItems)item.Dispose();}
             return;

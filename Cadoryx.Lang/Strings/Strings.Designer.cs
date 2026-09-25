@@ -3344,5 +3344,19 @@ namespace Cadoryx.Lang.Strings {
                 return ResourceManager.GetString("YOffset", resourceCulture);
             }
         }
+        // Strongly typed accessors for resource entries added since the last VS designer run.
+        public static string AngleBetweenLines => ResourceManager.GetString("AngleBetweenLines", resourceCulture);
+        public static string LocalChainedHint => ResourceManager.GetString("LocalChainedHint", resourceCulture);
+        public static string LocalExactEdge => ResourceManager.GetString("LocalExactEdge", resourceCulture);
+        public static string LocalReselectHint => ResourceManager.GetString("LocalReselectHint", resourceCulture);
+        public static string LocalSourceBody => ResourceManager.GetString("LocalSourceBody", resourceCulture);
+        public static string LocalSupportFaceHint => ResourceManager.GetString("LocalSupportFaceHint", resourceCulture);
+        public static string LocalSupportFaceSelected => ResourceManager.GetString("LocalSupportFaceSelected", resourceCulture);
+        public static string SketchCircularHoles => ResourceManager.GetString("SketchCircularHoles", resourceCulture);
+        public static string TangentLineCircle => ResourceManager.GetString("TangentLineCircle", resourceCulture);
+        public static string SketchPolygonHoles => ResourceManager.GetString("SketchPolygonHoles", resourceCulture);
+        public static string MixedCurveLoop => ResourceManager.GetString("MixedCurveLoop", resourceCulture);
+        public static string SketchIslands => ResourceManager.GetString("SketchIslands", resourceCulture);
+        public static string QuadraticBezier => ResourceManager.GetString("QuadraticBezier", resourceCulture);
     }
 }

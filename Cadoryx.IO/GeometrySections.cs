@@ -21,10 +21,18 @@ public sealed record PackFeatureV3([property:Key(0)] Guid Id,[property:Key(1)] G
     [property:Key(6)] Guid Result,[property:Key(7)] int Version,[property:Key(8)] PackOutputMetadata? OutputMetadata,
     [property:Key(9)] PackSketchProfileReference? SketchSource=null,[property:Key(10)] bool IsStale=false);
 [MessagePackObject]
-public sealed record PackSketchProfileReference([property:Key(0)] Guid Sketch,[property:Key(1)] Guid Revision,[property:Key(2)] Guid[] Lines);
+public sealed record PackSketchProfileReference([property:Key(0)] Guid Sketch,[property:Key(1)] Guid Revision,[property:Key(2)] Guid[] Lines,
+    [property:Key(3)] Guid? Circle=null,[property:Key(4)] Guid[]? Holes=null,[property:Key(5)] Guid[][]? PolygonHoles=null,
+    [property:Key(6)] Guid? Arc=null,[property:Key(7)] Guid[]? MixedBoundary=null,
+    [property:Key(8)] Guid[][]? MixedHoles=null,[property:Key(9)] Guid[]? IslandCircles=null,
+    [property:Key(10)] Guid[][]? IslandPolygons=null,[property:Key(11)] Guid[][]? IslandMixed=null,
+    [property:Key(12)] Guid? Bezier=null,[property:Key(13)] Guid? Spline=null);
 [MessagePackObject]
 public sealed record PackRecipeV3([property:Key(0)] string Kind,[property:Key(1)] double[] Numbers,
-    [property:Key(2)] PackTransform? Placement,[property:Key(3)] Guid[] Sources,[property:Key(4)] double[][] Profile,[property:Key(5)] int Operation);
+    [property:Key(2)] PackTransform? Placement,[property:Key(3)] Guid[] Sources,[property:Key(4)] double[][] Profile,[property:Key(5)] int Operation,
+    [property:Key(6)] PackCircularHole[]? Holes=null,[property:Key(7)] PackPolygonHole[]? PolygonHoles=null,
+    [property:Key(8)] PackMixedCurve[]? MixedCurves=null,[property:Key(9)] PackMixedCurve[][]? MixedHoles=null,
+    [property:Key(10)] PackIsland[]? Islands=null,[property:Key(11)] double[][]? SplineControls=null);
 
 internal static partial class MessagePackSections
 {
@@ -53,6 +61,16 @@ internal static partial class MessagePackSections
             return f with{Recipe=f.Recipe with{Numbers=[..f.Recipe.Numbers,0,0]}};
         }).ToArray()});
     }
+    internal static ReadOnlyMemory<byte> UpgradeBoundVariableRadius(ReadOnlyMemory<byte> bytes)
+    {
+        var old=Read<PackFeaturesV3>(bytes);
+        return Serialize(old with{Features=old.Features.Select(f=>
+        {
+            if(f.Recipe.Kind!="history-edge-fillet")return f;
+            if(f.Recipe.Numbers.Length!=2)throw new InvalidDataException("Invalid v8 bound fillet parameter count.");
+            return f with{Recipe=f.Recipe with{Numbers=[..f.Recipe.Numbers,0]}};
+        }).ToArray()});
+    }
     internal static IReadOnlyDictionary<AssetId,string> RequiredAssetRoles(SectionPayload geometrySection)
     {
         var roles=new Dictionary<AssetId,string>();
@@ -71,7 +89,7 @@ internal static partial class MessagePackSections
     }
 
     // V3 changes geometry fields from embedded records to revision IDs; V2 contracts remain intact.
-    internal static SectionPayload[] SplitGeometry(StructureSection structure,FeaturesSection features,int featureVersion=8)
+    internal static SectionPayload[] SplitGeometry(StructureSection structure,FeaturesSection features,int featureVersion=19)
     {
         var table=new Dictionary<GeometryRevisionId,GeometryAssetRef>();
         Guid Reference(GeometryAssetRef geometry)
@@ -87,9 +105,17 @@ internal static partial class MessagePackSections
         {
             var recipe=R(f.Recipe);var metadata=F(f).OutputMetadata;
             return new PackFeatureV3(f.Id.Value,f.PartId.Value,f.Name,
-                new(recipe.Kind,recipe.Numbers,recipe.Placement,f.Recipe.AssetInputs.Select(Reference).ToArray(),recipe.Profile,recipe.Operation),
+                new(recipe.Kind,recipe.Numbers,recipe.Placement,f.Recipe.AssetInputs.Select(Reference).ToArray(),recipe.Profile,recipe.Operation,recipe.Holes,recipe.PolygonHoles,recipe.MixedCurves,recipe.MixedHoles,recipe.Islands,recipe.SplineControls),
                 f.Inputs.Select(i=>i.Value).ToArray(),f.OutputBodyId.Value,Reference(f.Result),f.SchemaVersion,metadata,
-                f.SketchSource is {} source?new(source.SketchId.Value,source.Revision,source.Lines.Select(l=>l.Value).ToArray()):null,f.IsStale);
+                f.SketchSource is {} source?new(source.SketchId.Value,source.Revision,source.Lines.Select(l=>l.Value).ToArray(),source.CircleId?.Value,
+                    source.HoleCircleIds.IsDefaultOrEmpty?null:source.HoleCircleIds.Select(id=>id.Value).ToArray(),
+                    source.PolygonHoleLines.IsDefaultOrEmpty?null:source.PolygonHoleLines.Select(h=>h.Select(id=>id.Value).ToArray()).ToArray(),
+                    source.ArcId?.Value,source.MixedBoundaryIds.IsEmpty?null:source.MixedBoundaryIds.Select(id=>id.Value).ToArray(),
+                    source.MixedHoleIds.IsDefaultOrEmpty?null:source.MixedHoleIds.Select(h=>h.Select(id=>id.Value).ToArray()).ToArray(),
+                    source.IslandCircleIds.IsDefaultOrEmpty?null:source.IslandCircleIds.Select(id=>id.Value).ToArray(),
+                    source.IslandPolygonLines.IsDefaultOrEmpty?null:source.IslandPolygonLines.Select(h=>h.Select(id=>id.Value).ToArray()).ToArray(),
+                    source.IslandMixedIds.IsDefaultOrEmpty?null:source.IslandMixedIds.Select(h=>h.Select(id=>id.Value).ToArray()).ToArray(),
+                    source.BezierId?.Value,source.SplineId?.Value):null,f.IsStale);
         }).ToArray();
         return [new(new("structure",3,"messagepack"),Serialize(new PackStructureV3(structure.Definitions.Select(D).ToArray(),bodies))),
             new(new("features",featureVersion,"messagepack"),Serialize(new PackFeaturesV3(featureRecords))),
@@ -122,21 +148,37 @@ internal static partial class MessagePackSections
         var bodies=s.Bodies.Select(b=>new CadBody(new(b.Id),new(b.Part),b.Name,Resolve(b.Geometry),b.Producer is {} p?new FeatureId(p):null,
             new(b.Layer),A(b.Appearance),b.Visible,b.Material is {} m?new MaterialId(m):null)).ToImmutableArray();
         var f=Read<PackFeaturesV3>(sections["features"].Bytes);
+        if(f.Features.Any(v=>v.SketchSource?.PolygonHoles?.Any(h=>h is null)==true||
+            v.SketchSource?.MixedHoles?.Any(h=>h is null)==true||
+            v.SketchSource?.IslandPolygons?.Any(h=>h is null)==true||v.SketchSource?.IslandMixed?.Any(h=>h is null)==true))
+            throw new InvalidDataException("Malformed polygon hole line references.");
         var features=f.Features.Select(v=>
         {
             var r=v.Recipe;
             // Reuse the audited recipe whitelist and parameter validation, then restore shared references.
             var inputs=r.Sources.Select(Resolve).ToArray();
-            var recipe=R(new PackRecipe(r.Kind,r.Numbers,r.Placement,inputs.Select(G).ToArray(),r.Profile,r.Operation));
+            var recipe=R(new PackRecipe(r.Kind,r.Numbers,r.Placement,inputs.Select(G).ToArray(),r.Profile,r.Operation,r.Holes,r.PolygonHoles,r.MixedCurves,r.MixedHoles,r.Islands,r.SplineControls));
             recipe=recipe switch
             {
                 LocalFeatureRecipe l=>l with{Source=inputs[0]},ImportedRecipe i=>i with{Source=inputs[0]},TransformRecipe t=>t with{Source=inputs[0]},
-                BooleanRecipe b=>b with{Inputs=inputs.ToImmutableArray()},HistoryFilletRecipe h=>h with{Source=inputs[0]},_=>recipe
+                BooleanRecipe b=>b with{Inputs=inputs.ToImmutableArray()},HistoryFilletRecipe h=>h with{Source=inputs[0]},
+                HistoryChamferRecipe h=>h with{Source=inputs[0]},_=>recipe
             };
             var metadata=v.OutputMetadata;
             return new FeatureDefinition(new(v.Id),new(v.Part),v.Name,recipe,v.Inputs.Select(i=>new FeatureId(i)).ToImmutableArray(),new(v.Output),
                 Resolve(v.Result),v.Version,metadata is null?null:new(metadata.Name,new(metadata.Layer),A(metadata.Appearance),metadata.Visible,metadata.Material is {} m?new MaterialId(m):null))
-                {SketchSource=v.SketchSource is {} source?new(new(source.Sketch),source.Revision,source.Lines.Select(l=>new SketchEntityId(l)).ToImmutableArray()):null,IsStale=v.IsStale};
+                {SketchSource=v.SketchSource is {} source?new(new(source.Sketch),source.Revision,source.Lines.Select(l=>new SketchEntityId(l)).ToImmutableArray(),
+                    source.Circle is {} circle?new SketchEntityId(circle):null,
+                    source.Holes is null?default:source.Holes.Select(id=>new SketchEntityId(id)).ToImmutableArray(),
+                    source.PolygonHoles is null?default:source.PolygonHoles.Select(h=>h.Select(id=>new SketchEntityId(id)).ToImmutableArray()).ToImmutableArray())
+                    {ArcId=source.Arc is {} arc?new SketchEntityId(arc):null,
+                        MixedBoundaryIds=source.MixedBoundary is null?[]:source.MixedBoundary.Select(id=>new SketchEntityId(id)).ToImmutableArray(),
+                        MixedHoleIds=source.MixedHoles is null?[]:source.MixedHoles.Select(h=>h.Select(id=>new SketchEntityId(id)).ToImmutableArray()).ToImmutableArray(),
+                        IslandCircleIds=source.IslandCircles is null?[]:source.IslandCircles.Select(id=>new SketchEntityId(id)).ToImmutableArray(),
+                        IslandPolygonLines=source.IslandPolygons is null?[]:source.IslandPolygons.Select(h=>h.Select(id=>new SketchEntityId(id)).ToImmutableArray()).ToImmutableArray(),
+                        IslandMixedIds=source.IslandMixed is null?[]:source.IslandMixed.Select(h=>h.Select(id=>new SketchEntityId(id)).ToImmutableArray()).ToImmutableArray(),
+                        BezierId=source.Bezier is {} bezier?new SketchEntityId(bezier):null,
+                        SplineId=source.Spline is {} spline?new SketchEntityId(spline):null}:null,IsStale=v.IsStale};
         }).ToImmutableArray();
         if(used.Count!=table.Count)throw new InvalidDataException("Unreferenced geometry table records.");
         return(new(s.Definitions.Select(D).ToImmutableArray(),bodies),new(features));
@@ -147,5 +189,70 @@ internal static partial class MessagePackSections
         if(Read<PackFeaturesV3>(bytes).Features.Any(f=>f.SketchSource is not null))
             throw new InvalidDataException("Unexpected sketch association in legacy features.");
         return bytes; // V4 adds optional Key(9); absence explicitly means a frozen recipe.
+    }
+    internal static ReadOnlyMemory<byte> UpgradeCircularSketchProfiles(ReadOnlyMemory<byte> bytes)
+    {
+        var old=Read<PackFeaturesV3>(bytes);
+        if(old.Features.Any(f=>f.Recipe.Kind=="extrude-circle"||f.SketchSource?.Circle is not null))
+            throw new InvalidDataException("Circular sketch profile in legacy features schema.");
+        return bytes;
+    }
+    internal static ReadOnlyMemory<byte> UpgradeCircularHoles(ReadOnlyMemory<byte> bytes)
+    {
+        var old=Read<PackFeaturesV3>(bytes);
+        if(old.Features.Any(f=>f.Recipe.Holes is not null||f.SketchSource?.Holes is not null))
+            throw new InvalidDataException("Circular holes in legacy features schema.");
+        return bytes;
+    }
+    internal static ReadOnlyMemory<byte> UpgradePolygonHoles(ReadOnlyMemory<byte> bytes)
+    {
+        var old=Read<PackFeaturesV3>(bytes);
+        if(old.Features.Any(f=>f.Recipe.PolygonHoles is not null||f.SketchSource?.PolygonHoles is not null))
+            throw new InvalidDataException("Polygon holes in legacy features schema.");
+        return bytes;
+    }
+    internal static ReadOnlyMemory<byte> UpgradeArcSegmentFeatures(ReadOnlyMemory<byte> bytes)
+    {
+        var old=Read<PackFeaturesV3>(bytes);
+        if(old.Features.Any(f=>f.Recipe.Kind=="extrude-arc"||f.SketchSource?.Arc is not null))
+            throw new InvalidDataException("Arc segment in legacy features schema.");
+        return bytes;
+    }
+    internal static ReadOnlyMemory<byte> UpgradeMixedCurveFeatures(ReadOnlyMemory<byte> bytes)
+    {
+        var old=Read<PackFeaturesV3>(bytes);
+        if(old.Features.Any(f=>f.Recipe.Kind=="extrude-mixed"||f.Recipe.MixedCurves is not null||f.SketchSource?.MixedBoundary is not null))
+            throw new InvalidDataException("Mixed boundary in legacy features schema.");
+        return bytes;
+    }
+    internal static ReadOnlyMemory<byte> UpgradeExpandedMixedFeatures(ReadOnlyMemory<byte> bytes)
+    {
+        var old=Read<PackFeaturesV3>(bytes);
+        if(old.Features.Any(f=>f.Recipe.MixedHoles is not null||f.SketchSource?.MixedHoles is not null||
+            f.Recipe.MixedCurves?.Count(c=>c.Middle is not null)>1))
+            throw new InvalidDataException("Expanded mixed profile in legacy features schema.");
+        return bytes;
+    }
+    internal static ReadOnlyMemory<byte> UpgradeIslandFeatures(ReadOnlyMemory<byte> bytes)
+    {
+        var old=Read<PackFeaturesV3>(bytes);
+        if(old.Features.Any(f=>f.Recipe.Islands is not null||f.SketchSource?.IslandCircles is not null||
+            f.SketchSource?.IslandPolygons is not null||f.SketchSource?.IslandMixed is not null))
+            throw new InvalidDataException("Islands in legacy features schema.");
+        return bytes;
+    }
+    internal static ReadOnlyMemory<byte> UpgradeBezierFeatures(ReadOnlyMemory<byte> bytes)
+    {
+        var old=Read<PackFeaturesV3>(bytes);
+        if(old.Features.Any(f=>f.Recipe.Kind=="extrude-bezier"||f.SketchSource?.Bezier is not null))
+            throw new InvalidDataException("Bezier feature in legacy schema.");
+        return bytes;
+    }
+    internal static ReadOnlyMemory<byte> UpgradeSplineFeatures(ReadOnlyMemory<byte> bytes)
+    {
+        var old=Read<PackFeaturesV3>(bytes);
+        if(old.Features.Any(f=>f.Recipe.Kind=="extrude-spline"||f.Recipe.SplineControls is not null||f.SketchSource?.Spline is not null))
+            throw new InvalidDataException("Spline feature in legacy schema.");
+        return bytes;
     }
 }

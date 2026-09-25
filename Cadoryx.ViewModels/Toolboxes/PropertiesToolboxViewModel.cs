@@ -21,6 +21,7 @@ public partial class PropertiesToolboxViewModel:CadToolboxViewModelBase
     [ObservableProperty] private MaterialId? selectedMaterial;
     [ObservableProperty] private LayerId? selectedLayer;
     public InstancePlacementViewModel? Instance=>document?.Placement;
+    public AssemblyConstraintsViewModel? AssemblyRelations=>document?.AssemblyConstraints;
     public ObservableCollection<CadMaterial> Materials {get;}=[];
     public ObservableCollection<CadLayer> Layers {get;}=[];
     public ObservableCollection<PropertyRowViewModel> Properties {get;}=[];
@@ -34,6 +35,7 @@ public partial class PropertiesToolboxViewModel:CadToolboxViewModelBase
         if(document is not null){document.Selection.Changed-=Refresh;document.SceneChanged-=Refresh;}
         document=value;
         OnPropertyChanged(nameof(Instance));
+        OnPropertyChanged(nameof(AssemblyRelations));
         if(document is not null){document.Selection.Changed+=Refresh;document.SceneChanged+=Refresh;}
         Refresh(this,EventArgs.Empty);
     }

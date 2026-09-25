@@ -700,7 +700,7 @@
     <value>同名のリソースが既に存在します。</value>
   </data>
   <data name="SharedParentMoveBlocked" xml:space="preserve">
-    <value>この位置は再利用サブアセンブリで共有されています。親インスタンスを選択して移動してください。子の独立編集は今後対応します。</value>
+    <value>この位置は再利用サブアセンブリで共有されています。親アセンブリを選択して独立化してから、このインスタンスを編集してください。</value>
   </data>
   <data name="ResourceEditApplied" xml:space="preserve">
     <value>適用しました。ウィンドウを閉じてから元に戻せます。</value>
@@ -943,8 +943,13 @@
     <value>先にモデルツリーでスケッチを選択してください。</value>
   </data>
   <data name="PickProfile" xml:space="preserve">
-    <value>閉じた線分ループを選択してください。円や穴付き領域は未対応です。</value>
+    <value>閉じた線分ループまたは円を選択してください。押し出しの円穴は穴付きの組み合わせを明示的に選択します。</value>
   </data>
+  <data name="SketchCircularHoles" xml:space="preserve">
+    <value>円形の貫通穴（明示的に選択）</value>
+  </data>
+  <data name="TangentLineCircle" xml:space="preserve"><value>直線と円の接線</value></data>
+  <data name="AngleBetweenLines" xml:space="preserve"><value>2直線の角度（度）</value></data>
   <data name="AssociateSketch" xml:space="preserve">
     <value>スケッチと関連付け</value>
   </data>
@@ -1212,4 +1217,56 @@
   <data name="LocalEdgeList" xml:space="preserve">
     <value>Box エッジ（主エッジは固定）</value>
   </data>
+  <data name="LocalSourceBody" xml:space="preserve"><value>元のボディ</value></data>
+  <data name="LocalChainedHint" xml:space="preserve"><value>この結果のエッジを選択します。面取りでは「面」に切り替えて支持面も選択してください。</value></data>
+  <data name="LocalReselectHint" xml:space="preserve"><value>上流の形状が変わりました。現在の結果でエッジを再選択し、面取りでは支持面も再選択してください。</value></data>
+  <data name="LocalExactEdge" xml:space="preserve"><value>エッジ #{0}</value></data>
+  <data name="LocalSupportFaceHint" xml:space="preserve"><value>支持面を選択してください</value></data>
+  <data name="LocalSupportFaceSelected" xml:space="preserve"><value>支持面 #{0}</value></data>
+  <data name="SketchPolygonHoles" xml:space="preserve"><value>多角形の穴</value></data>
+  <data name="ThreePointArc" xml:space="preserve"><value>3点円弧領域</value></data>
+  <data name="MixedCurveLoop" xml:space="preserve"><value>直線と円弧の閉ループ</value></data>
+  <data name="SketchIslands" xml:space="preserve"><value>選択した穴の中の島</value></data>
+  <data name="QuadraticBezier" xml:space="preserve"><value>2次ベジェ領域</value></data>
+  <data name="CubicSpline" xml:space="preserve"><value>3次 B スプライン領域（5点）</value></data>
+  <data name="InsertInstance" xml:space="preserve"><value>選択したアセンブリにインスタンスを挿入</value></data>
+  <data name="ReplaceInstance" xml:space="preserve"><value>選択したインスタンスを置換</value></data>
+  <data name="RemoveInstance" xml:space="preserve"><value>選択したインスタンスを削除</value></data>
+  <data name="ReparentInstance" xml:space="preserve"><value>アセンブリへ移動（ワールド位置を保持）</value></data>
+  <data name="MakeAssemblyIndependent" xml:space="preserve"><value>このサブアセンブリを独立化</value></data>
+  <data name="InstanceDefinition" xml:space="preserve"><value>挿入または置換する定義</value></data>
+  <data name="DestinationAssembly" xml:space="preserve"><value>移動先アセンブリ</value></data>
+  <data name="CreateSiblingAssembly" xml:space="preserve"><value>選択したインスタンスの隣にアセンブリを作成</value></data>
+  <data name="NewAssemblyName" xml:space="preserve"><value>新しいアセンブリ名</value></data>
+  <data name="MakePartIndependent" xml:space="preserve"><value>この部品を独立化</value></data>
+  <data name="OccurrenceName" xml:space="preserve"><value>インスタンス名（この配置のみ）</value></data>
+  <data name="SharedDefinitionName" xml:space="preserve"><value>定義名（すべてのインスタンス）</value></data>
+  <data name="RenameOccurrence" xml:space="preserve"><value>インスタンス名を変更</value></data>
+  <data name="RenameDefinition" xml:space="preserve"><value>共有定義名を変更</value></data>
+  <data name="DefinitionUsageCount" xml:space="preserve"><value>この定義は {0} 個のインスタンスで使用されています。</value></data>
+  <data name="PruneUnusedDefinitions" xml:space="preserve"><value>未使用の定義を削除</value></data>
+  <data name="AssemblyRelations" xml:space="preserve"><value>アセンブリ拘束</value></data>
+  <data name="AssemblyReference" xml:space="preserve"><value>基準インスタンス</value></data>
+  <data name="AssemblyDistance" xml:space="preserve"><value>目標距離（mm）</value></data>
+  <data name="AssemblyFix" xml:space="preserve"><value>選択したインスタンスを固定</value></data>
+  <data name="AssemblyCoincident" xml:space="preserve"><value>ローカル点を一致させる</value></data>
+  <data name="AssemblyAddDistance" xml:space="preserve"><value>原点間距離を追加</value></data>
+  <data name="AssemblyAdjust" xml:space="preserve"><value>2番目のインスタンスを調整</value></data>
+  <data name="AssemblyRetarget" xml:space="preserve"><value>現在の選択で再指定</value></data>
+  <data name="AssemblyToggle" xml:space="preserve"><value>有効／無効</value></data>
+  <data name="AssemblyRemove" xml:space="preserve"><value>拘束を削除</value></data>
+  <data name="AssemblyApplyDistance" xml:space="preserve"><value>目標距離を変更</value></data>
+  <data name="AssemblyFixedName" xml:space="preserve"><value>固定</value></data>
+  <data name="AssemblyCoincidentName" xml:space="preserve"><value>一致</value></data>
+  <data name="AssemblyDistanceName" xml:space="preserve"><value>距離</value></data>
+  <data name="AssemblyApplyAnchors" xml:space="preserve"><value>ローカル点を適用</value></data>
+  <data name="AssemblyApplyAxes" xml:space="preserve"><value>ローカル軸を適用</value></data>
+  <data name="AssemblyCoaxial" xml:space="preserve"><value>同軸関係を追加</value></data>
+  <data name="AssemblyCoaxialName" xml:space="preserve"><value>同軸</value></data>
+  <data name="AssemblyParallel" xml:space="preserve"><value>平行軸を追加</value></data>
+  <data name="AssemblyParallelName" xml:space="preserve"><value>平行軸</value></data>
+  <data name="AssemblyPrimaryAxis" xml:space="preserve"><value>参照インスタンスのローカル軸</value></data>
+  <data name="AssemblyPrimaryPoint" xml:space="preserve"><value>参照インスタンスのローカル点 (mm)</value></data>
+  <data name="AssemblySecondaryAxis" xml:space="preserve"><value>移動インスタンスのローカル軸</value></data>
+  <data name="AssemblySecondaryPoint" xml:space="preserve"><value>移動インスタンスのローカル点 (mm)</value></data>
 </root>

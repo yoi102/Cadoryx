@@ -58,7 +58,7 @@ public sealed class DocumentGridTests
             var pack=new PackDocument(first.Snapshot.Id.Value,first.Snapshot.StateId.Value,"Old",first.Snapshot.RootAssemblyId.Value,
                 0,3,1e-7,1e-9,false,5,true,0xFF335577,0xFFD1E4F1,false,2,12,2,25);
             var reader=new MessagePackReader(MessagePackSerializer.Serialize(pack));
-            Assert.Equal(18,reader.ReadArrayHeader());
+            Assert.Equal(19,reader.ReadArrayHeader());
             var buffer=new ArrayBufferWriter<byte>();var writer=new MessagePackWriter(buffer);writer.WriteArrayHeader(16);
             for(int i=0;i<16;i++)writer.WriteRaw(reader.ReadRaw());writer.Flush();
             var migrated=new CadSectionMigrationRegistry().Migrate(
@@ -110,7 +110,7 @@ public sealed class DocumentGridTests
         var packed=new PackDocument(doc.Id.Value,doc.StateId.Value,doc.Name,doc.RootAssemblyId.Value,0,3,1e-7,1e-9,false,2,true,0,0,false,0,0);
         var bytes=MessagePackSerializer.Serialize(packed);
         var reader=new MessagePackReader(bytes);
-        Assert.Equal(18,reader.ReadArrayHeader());
+        Assert.Equal(19,reader.ReadArrayHeader());
         var buffer=new ArrayBufferWriter<byte>();
         var writer=new MessagePackWriter(buffer);
         writer.WriteArrayHeader(8);
@@ -133,7 +133,7 @@ public sealed class DocumentGridTests
         var doc=DocumentSnapshot.Create("Grid only");
         var packed=new PackDocument(doc.Id.Value,doc.StateId.Value,doc.Name,doc.RootAssemblyId.Value,0,3,1e-7,1e-9,false,4,true,0,0,false,0,0);
         var reader=new MessagePackReader(MessagePackSerializer.Serialize(packed));
-        Assert.Equal(18,reader.ReadArrayHeader());
+        Assert.Equal(19,reader.ReadArrayHeader());
         var buffer=new ArrayBufferWriter<byte>();var writer=new MessagePackWriter(buffer);
         writer.WriteArrayHeader(11);
         for(int index=0;index<11;index++)writer.WriteRaw(reader.ReadRaw());
@@ -153,7 +153,7 @@ public sealed class DocumentGridTests
         var doc=DocumentSnapshot.Create("Solid legacy");
         var packed=new PackDocument(doc.Id.Value,doc.StateId.Value,doc.Name,doc.RootAssemblyId.Value,0,3,1e-7,1e-9,true,10,false,0xFF335577,0,false,0,0);
         var reader=new MessagePackReader(MessagePackSerializer.Serialize(packed));
-        Assert.Equal(18,reader.ReadArrayHeader());
+        Assert.Equal(19,reader.ReadArrayHeader());
         var buffer=new ArrayBufferWriter<byte>();var writer=new MessagePackWriter(buffer);
         writer.WriteArrayHeader(12);
         for(int index=0;index<12;index++)writer.WriteRaw(reader.ReadRaw());
@@ -173,7 +173,7 @@ public sealed class DocumentGridTests
         var packed=new PackDocument(doc.Id.Value,doc.StateId.Value,doc.Name,doc.RootAssemblyId.Value,
             0,3,1e-7,1e-9,false,7,true,0xFF335577,0xFFE1EEFA,false,0,0);
         var reader=new MessagePackReader(MessagePackSerializer.Serialize(packed));
-        Assert.Equal(18,reader.ReadArrayHeader());
+        Assert.Equal(19,reader.ReadArrayHeader());
         var buffer=new ArrayBufferWriter<byte>();var writer=new MessagePackWriter(buffer);
         writer.WriteArrayHeader(13);
         for(int index=0;index<13;index++)writer.WriteRaw(reader.ReadRaw());

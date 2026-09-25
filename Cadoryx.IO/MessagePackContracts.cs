@@ -21,7 +21,20 @@ public sealed record PackDocument(
     [property: Key(14)] int OriginStyle,
     [property: Key(15)] double OriginSizeMm,
     [property: Key(16)] int WorkPlaneKind = 0,
-    [property: Key(17)] double WorkPlaneOffsetMm = 0);
+    [property: Key(17)] double WorkPlaneOffsetMm = 0,
+    [property: Key(18)] PackAssemblyConstraint[]? AssemblyConstraints = null);
+
+[MessagePackObject]
+public sealed record PackAssemblyConstraint(
+    [property:Key(0)] Guid Id,[property:Key(1)] string Name,[property:Key(2)] int Kind,
+    [property:Key(3)] Guid[] PrimarySlots,[property:Key(4)] Guid PrimaryDefinition,
+    [property:Key(5)] Guid[]? SecondarySlots,[property:Key(6)] Guid? SecondaryDefinition,
+    [property:Key(7)] double[] PrimaryPoint,[property:Key(8)] double[] SecondaryPoint,
+    [property:Key(9)] double DistanceMm,[property:Key(10)] PackTransform? FixedWorld,
+    [property:Key(11)] PackTopologyReference? PrimaryTopology,
+    [property:Key(12)] PackTopologyReference? SecondaryTopology,
+    [property:Key(13)] bool Enabled,[property:Key(14)] int Version,
+    [property:Key(15)] double[]? PrimaryAxis=null,[property:Key(16)] double[]? SecondaryAxis=null);
 
 [MessagePackObject]
 public sealed record PackStructure(
@@ -121,7 +134,24 @@ public sealed record PackRecipe(
     [property: Key(2)] PackTransform? Placement,
     [property: Key(3)] PackGeometry[] Sources,
     [property: Key(4)] double[][] Profile,
-    [property: Key(5)] int Operation);
+    [property: Key(5)] int Operation,
+    [property: Key(6)] PackCircularHole[]? Holes=null,
+    [property: Key(7)] PackPolygonHole[]? PolygonHoles=null,
+    [property: Key(8)] PackMixedCurve[]? MixedCurves=null,
+    [property: Key(9)] PackMixedCurve[][]? MixedHoles=null,
+    [property: Key(10)] PackIsland[]? Islands=null,
+    [property: Key(11)] double[][]? SplineControls=null);
+
+[MessagePackObject]
+public sealed record PackCircularHole([property:Key(0)] double X,[property:Key(1)] double Y,[property:Key(2)] double Radius);
+[MessagePackObject]
+public sealed record PackPolygonHole([property:Key(0)] double[][] Vertices);
+[MessagePackObject]
+public sealed record PackMixedCurve([property:Key(0)] double[] Start,[property:Key(1)] double[] End,
+    [property:Key(2)] double[]? Middle);
+[MessagePackObject]
+public sealed record PackIsland([property:Key(0)] double[][] Points,[property:Key(1)] PackCircularHole? Circle=null,
+    [property:Key(2)] PackMixedCurve[]? MixedCurves=null);
 
 [MessagePackObject]
 public sealed record PackLayer(

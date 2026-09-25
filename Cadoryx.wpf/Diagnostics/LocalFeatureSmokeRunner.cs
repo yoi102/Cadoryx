@@ -9,10 +9,13 @@ using Cadoryx.Commands;
 using Cadoryx.Db;
 using Cadoryx.Editor;
 using Cadoryx.Kernel.Abstractions;
+using Cadoryx.Kernel.Occt;
 using Cadoryx.Rendering;
 using Cadoryx.ViewModels;
 using Cadoryx.wpf.Views;
 using Microsoft.Extensions.DependencyInjection;
+using OcctSharp;
+using LocalFeatureOperation=Cadoryx.Db.LocalFeatureOperation;
 
 namespace Cadoryx.wpf.Diagnostics;
 
@@ -117,6 +120,65 @@ internal static class LocalFeatureSmokeRunner
             ((LocalFeatureRecipe)edited.Features[feature.Id].Recipe).SecondDistance==2,"Edited feature keeps identity and both distances");
         await session.UndoAsync();Check(ReferenceEquals(after,session.Snapshot),"Edit exact undo");
         await session.RedoAsync();Check(ReferenceEquals(edited,session.Snapshot),"Edit exact redo");
+        await Operate(()=>vm.LocalFeatureCommand.ExecuteAsync(null),async dialog=>
+        {
+            var editor=dialog.Editor;editor.SelectedBox=editor.Boxes.Single(b=>b.FeatureId==feature.Id);
+            Check(editor.IsChainedSource&&editor.SelectedBox.OriginBoxFeatureId==producer.Id,"Local result offered as chained source");
+            var viewport=dialog.Host.Viewport!;viewport.SetProjection(CadProjection.Back);viewport.FitAll();await Idle();
+            var edge=viewport.WorldToScreen(new(10,20,15));
+            viewport.PointerPressed(0,edge.X,edge.Y,0);viewport.PointerReleased(0,edge.X,edge.Y,0);
+            Check(editor.Selection is {Kind:TopologyKind.Edge,Boundary:BoxBoundary.XMax,SecondBoundary:BoxBoundary.YMax},"Native unchanged result-edge picking");
+            Check(editor.Selection!.FeatureId==producer.Id&&editor.CanChangeOperation,"Chained pick keeps original semantic identity and offers chamfer");
+            dialog.SizeInput.Value=.5;dialog.VariableRadiusCheck.IsChecked=true;dialog.EndRadiusInput.Value=1;
+            await Idle();await editor.PreviewCommand.ExecuteAsync(null);Check(editor.CanConfirm,editor.Status);
+            Check(editor.Scene!.Items.Single().Geometry.VolumeMm3<edited.Features[feature.Id].Result.VolumeMm3,"Chained variable-radius preview");
+            Check(ReferenceEquals(edited,session.Snapshot),"Chained preview is uncommitted");
+            dialog.Close();
+        });
+        Check(ReferenceEquals(edited,session.Snapshot),"Chained preview cancellation keeps source result");
+        await Operate(()=>vm.LocalFeatureCommand.ExecuteAsync(null),async dialog=>
+        {
+            var editor=dialog.Editor;editor.SelectedBox=editor.Boxes.Single(b=>b.FeatureId==feature.Id);
+            var viewport=dialog.Host.Viewport!;
+            using var shape=OcctGeometryBridge.ReadShape(edited.Features[feature.Id].Result,session.Assets);
+            using var map=RepairSnapshot.Create(shape);
+            var edges=shape.GetSubShapes(ShapeKind.Edge);
+            try
+            {
+                var generated=edges.Select(edge=>(Shape:edge,Index:RepairSnapshot.FindTopologyIndex(shape,edge)))
+                    .Where(item=>item.Index>=0&&BoxTopology.Classify(item.Shape,(BoxRecipe)producer.Recipe,TopologyKind.Edge).Count==0)
+                    .DistinctBy(item=>item.Index).ToArray();
+                Check(generated.Length>0,"Native result includes generated edges");
+                bool picked=false;
+                foreach(var projection in new[]{CadProjection.Front,CadProjection.Back,CadProjection.Left,CadProjection.Right,
+                    CadProjection.Top,CadProjection.Bottom,CadProjection.Axonometric})
+                {
+                    viewport.SetProjection(projection);viewport.FitAll();await Idle();
+                    foreach(var item in generated)
+                    {
+                        var curve=item.Shape.GetEdgeCurveSnapshot();
+                        if(!double.IsFinite(curve.FirstParameter)||!double.IsFinite(curve.LastParameter))continue;
+                        var point=item.Shape.EvaluateEdge((curve.FirstParameter+curve.LastParameter)/2).Point;
+                        var pixel=viewport.WorldToScreen(new(point.X,point.Y,point.Z));
+                        viewport.PointerPressed(0,pixel.X,pixel.Y,0);viewport.PointerReleased(0,pixel.X,pixel.Y,0);
+                        if(editor.ExactEdge?.FullTopologyIndex!=item.Index)continue;
+                        picked=true;break;
+                    }
+                    if(picked)break;
+                }
+                Check(picked,"Native Viewer generated-edge pick maps to exact full topology index");
+                editor.Operation=LocalFeatureOperation.Chamfer;editor.SelectionKind=TopologyKind.Face;
+                viewport.SetProjection(CadProjection.Top);viewport.FitAll();await Idle();
+                var face=viewport.WorldToScreen(new(5,10,30));
+                viewport.PointerPressed(0,face.X,face.Y,0);viewport.PointerReleased(0,face.X,face.Y,0);
+                Check(editor.SupportFace is {Kind:HistoryShapeKind.Face}&&editor.ExactEdge is not null,
+                    "Native support-face pick retains the exact edge");
+                Check(ReferenceEquals(edited,session.Snapshot),"Generated topology pick is uncommitted");
+            }
+            finally{foreach(var edge in edges)edge.Dispose();}
+            dialog.Close();
+        });
+        Check(ReferenceEquals(edited,session.Snapshot),"Generated topology selection cancellation keeps document unchanged");
         var storage=services.GetRequiredService<IDocumentStorage>();var path=Path.Combine(output,"local-feature.cadoryx");await session.SaveAsync(storage,path);
         using(var loaded=await storage.LoadAsync(path,session.Assets))Check(loaded.Snapshot.Features[feature.Id].Recipe==edited.Features[feature.Id].Recipe,"Edited local recipe roundtrip");
         foreach(var extension in new[]{"step","iges","stl"})await services.GetRequiredService<IGeometryKernel>().ExportAsync(edited,session.Assets,Path.Combine(output,"local-feature."+extension));

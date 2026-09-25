@@ -5,8 +5,24 @@ using DocumentSnapshot=Cadoryx.Db.DocumentSnapshot;
 
 namespace Cadoryx.Kernel.Occt;
 
-public sealed partial class OcctGeometryKernel : ITopologyHistoryResolver
+public sealed partial class OcctGeometryKernel : ITopologyHistoryResolver,IExactTopologyResolver
 {
+    public Task ConfirmAsync(DocumentSnapshot snapshot,ExactTopologySelection selection,IAssetStore assets,
+        CancellationToken cancellationToken=default)=>Run(()=>
+    {
+        selection.Validate();cancellationToken.ThrowIfCancellationRequested();
+        if(selection.DocumentId!=snapshot.Id||!snapshot.Features.TryGetValue(selection.FeatureId,out var feature)||
+            feature.IsStale||feature.Result.Revision!=selection.Revision||feature.Result.AssetId!=selection.Asset||
+            selection.AdapterVersion!=HistoryAdapterVersion)
+            throw new CadValidationException("Exact topology selection is stale; pick it again.");
+        using var shape=OcctGeometryBridge.ReadShape(feature.Result,assets);
+        using var map=RepairSnapshot.Create(shape);
+        if(map.Fingerprint!=selection.Fingerprint||selection.FullTopologyIndex>=map.Topology.Count||
+            map.Topology[selection.FullTopologyIndex].Kind!=(selection.Kind==HistoryShapeKind.Edge?ShapeKind.Edge:ShapeKind.Face))
+            throw new CadValidationException("Exact topology selection no longer matches this BRep.");
+        return true;
+    },cancellationToken);
+
     public async Task<HistoryResolution> TraceAsync(DocumentSnapshot snapshot,TopologyReference reference,FeatureId target,IAssetStore assets,CancellationToken cancellationToken=default)
     {
         cancellationToken.ThrowIfCancellationRequested();reference.Validate();
@@ -38,7 +54,7 @@ public sealed partial class OcctGeometryKernel : ITopologyHistoryResolver
                     cancellationToken.ThrowIfCancellationRequested();
                     var feature=snapshot.Features[step.Feature];var history=feature.TopologyHistory;
                     HistoryResolution Stop(HistoryResolutionStatus status,string? code=null)=>Annotate(Fail(status,code),feature.Id);
-                    if(feature.Recipe is not (LocalFeatureRecipe or HistoryFilletRecipe or BooleanRecipe)||history is null)return Stop(HistoryResolutionStatus.Unsupported,"MISSING_HISTORY");
+                    if(feature.Recipe is not (LocalFeatureRecipe or HistoryFilletRecipe or HistoryChamferRecipe or BooleanRecipe)||history is null)return Stop(HistoryResolutionStatus.Unsupported,"MISSING_HISTORY");
                     if(history.ResultRevision!=feature.Result.Revision||history.ResultAsset!=feature.Result.AssetId)return Stop(HistoryResolutionStatus.Stale);
                     try{history.ValidateFor(feature);}
                     catch(CadValidationException){return Stop(HistoryResolutionStatus.Unsupported,"INVALID_HISTORY");}

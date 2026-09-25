@@ -46,8 +46,27 @@ public sealed partial class OcctGeometryKernel
         using var source=RepairSnapshot.Create(shape);
         if(recipe.FullTopologyIndex>=source.Topology.Count||source.Topology[recipe.FullTopologyIndex].Kind!=ShapeKind.Edge)
             throw new CadValidationException("Bound edge is not present in the exact target BRep.");
+        var edge=source.Select(recipe.FullTopologyIndex);
+        var program=recipe.EndRadius is {} end
+            ?FilletContourProgram.FromLaw(edge,ScalarLawDefinition.Linear(new(0,1),recipe.Radius,end))
+            :FilletContourProgram.Constant(edge,recipe.Radius);
         return FinishLocal(recipe.Source,source,
-            ContourFilletRecipe.Create(source,[FilletContourProgram.Constant(source.Select(recipe.FullTopologyIndex),recipe.Radius)]).Build(source),assets,token);
+            ContourFilletRecipe.Create(source,[program]).Build(source),assets,token);
+    }
+
+    private GeometryResult EvaluateHistoryChamfer(HistoryChamferRecipe recipe,IAssetStore assets,CancellationToken token)
+    {
+        using var shape=OcctGeometryBridge.ReadShape(recipe.Source,assets);
+        using var source=RepairSnapshot.Create(shape);
+        if(recipe.FullTopologyIndex>=source.Topology.Count||source.Topology[recipe.FullTopologyIndex].Kind!=ShapeKind.Edge||
+            recipe.SupportFaceIndex>=source.Topology.Count||source.Topology[recipe.SupportFaceIndex].Kind!=ShapeKind.Face)
+            throw new CadValidationException("Bound chamfer edge or support face is missing.");
+        var edge=source.Select(recipe.FullTopologyIndex);
+        var face=source.Select(recipe.SupportFaceIndex);
+        var program=recipe.SecondDistance is {} second
+            ?new ChamferContourProgram(edge,face,ChamferDimensions.TwoDistances,recipe.Distance,second)
+            :new ChamferContourProgram(edge,face,ChamferDimensions.Symmetric,recipe.Distance);
+        return FinishLocal(recipe.Source,source,ContourChamferRecipe.Create(source,[program]).Build(source),assets,token);
     }
 
     private GeometryResult FinishLocal(GeometryAssetRef sourceGeometry,RepairSnapshot source,LocalFeatureResult operation,IAssetStore assets,CancellationToken token)

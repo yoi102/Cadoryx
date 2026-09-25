@@ -10,7 +10,8 @@ public sealed record SectionEntry(string Kind,string Path,int SchemaVersion,bool
 public sealed record AssetEntry(AssetId Id,string Path,long Length,string Sha256,AssetFormat? Format=null);
 public sealed record CadManifest(string Format,int ContainerVersion,DocumentId DocumentId,DocumentStateId StateId,string ApplicationVersion,
     ImmutableArray<SectionEntry> Sections,ImmutableArray<AssetEntry> Assets,ImmutableArray<string> RequiredCapabilities,int AssetCatalogVersion=0);
-internal sealed record DocumentSection(DocumentId Id,DocumentStateId StateId,string Name,DefinitionId RootAssemblyId,DocumentSettings Settings);
+internal sealed record DocumentSection(DocumentId Id,DocumentStateId StateId,string Name,DefinitionId RootAssemblyId,
+    DocumentSettings Settings,ImmutableArray<AssemblyConstraint> AssemblyConstraints=default);
 internal sealed record StructureSection(ImmutableArray<CadDefinition> Definitions,ImmutableArray<CadBody> Bodies);
 internal sealed record FeaturesSection(ImmutableArray<FeatureDefinition> Features);
 internal sealed record PresentationSection(ImmutableArray<CadLayer> Layers,ImmutableArray<CadMaterial> Materials);
