@@ -13,6 +13,7 @@ public partial class AssemblyConstraintsViewModel : ObservableObject, IDisposabl
     [ObservableProperty] private AssemblyConstraintRow? selectedConstraint;
     [ObservableProperty] private AssemblyOccurrenceChoice? selectedReference;
     [ObservableProperty] private double distanceMm=10;
+    [ObservableProperty] private double angleDegrees=90;
     [ObservableProperty] private double primaryX;
     [ObservableProperty] private double primaryY;
     [ObservableProperty] private double primaryZ;
@@ -51,6 +52,11 @@ public partial class AssemblyConstraintsViewModel : ObservableObject, IDisposabl
     public string CoaxialLabel=>Label("AssemblyCoaxial","Add coaxial axes");
     public string ApplyAnchorsLabel=>Label("AssemblyApplyAnchors","Apply local points");
     public string ApplyAxesLabel=>Label("AssemblyApplyAxes","Apply local axes");
+    public string AngleLabel=>Label("AssemblyAngle","Angle (degrees)");
+    public string AddAngleLabel=>Label("AssemblyAddAngle","Add axis angle");
+    public string AddPlaneLabel=>Label("AssemblyAddPlane","Add plane mate");
+    public string ApplyAngleLabel=>Label("AssemblyApplyAngle","Change angle target");
+    public string SolveAllLabel=>Label("AssemblySolveAll","Solve assembly relations");
 
     public AssemblyConstraintsViewModel(CadDocumentViewModel document)
     {
@@ -89,6 +95,7 @@ public partial class AssemblyConstraintsViewModel : ObservableObject, IDisposabl
         if(value is {} row&&document.Session.Snapshot.AssemblyConstraints.TryGetValue(row.Id,out var constraint))
         {
             if(constraint.Kind==AssemblyConstraintKind.Distance)DistanceMm=constraint.TargetDistanceMm;
+            if(constraint.Kind==AssemblyConstraintKind.AngleAxes)AngleDegrees=constraint.TargetAngleRad*180/Math.PI;
             (PrimaryX,PrimaryY,PrimaryZ)=(constraint.PrimaryLocalPoint.X,constraint.PrimaryLocalPoint.Y,constraint.PrimaryLocalPoint.Z);
             (SecondaryX,SecondaryY,SecondaryZ)=(constraint.SecondaryLocalPoint.X,constraint.SecondaryLocalPoint.Y,constraint.SecondaryLocalPoint.Z);
             var axisA=constraint.PrimaryLocalAxis==Vector3d.Zero?Vector3d.UnitZ:constraint.PrimaryLocalAxis;
@@ -119,14 +126,22 @@ public partial class AssemblyConstraintsViewModel : ObservableObject, IDisposabl
     }
     [RelayCommand] private Task AddParallelAsync()=>AddAxisAsync(AssemblyConstraintKind.ParallelAxes);
     [RelayCommand] private Task AddCoaxialAsync()=>AddAxisAsync(AssemblyConstraintKind.Coaxial);
+    [RelayCommand] private Task AddAngleAsync()=>AddAxisAsync(AssemblyConstraintKind.AngleAxes);
+    [RelayCommand] private Task AddPlaneAsync()=>AddAxisAsync(AssemblyConstraintKind.PlanarMate);
     private Task AddAxisAsync(AssemblyConstraintKind kind)
     {
         if(!CanCreate||IsBusy||document.Selection.Occurrence is not {} path||SelectedReference is not {} reference)
             return Task.CompletedTask;
+        var name=kind switch
+        {
+            AssemblyConstraintKind.Coaxial=>Label("AssemblyCoaxialName","Coaxial"),
+            AssemblyConstraintKind.ParallelAxes=>Label("AssemblyParallelName","Parallel"),
+            AssemblyConstraintKind.AngleAxes=>Label("AssemblyAngleName","Angle"),
+            _=>Label("AssemblyPlaneName","Plane")
+        };
         return ExecuteAsync(AssemblyConstraintCommands.AddAxisPair(AssemblyConstraintId.New(),
-            Label(kind==AssemblyConstraintKind.Coaxial?"AssemblyCoaxialName":"AssemblyParallelName",
-                kind==AssemblyConstraintKind.Coaxial?"Coaxial":"Parallel")+" "+(Constraints.Count+1),
-            kind,reference.Path,path,PrimaryPoint,SecondaryPoint,PrimaryAxis,SecondaryAxis));
+            name+" "+(Constraints.Count+1),kind,reference.Path,path,PrimaryPoint,SecondaryPoint,
+            PrimaryAxis,SecondaryAxis,kind==AssemblyConstraintKind.AngleAxes?AngleDegrees*Math.PI/180:0));
     }
     private Vector3d PrimaryPoint=>new(PrimaryX,PrimaryY,PrimaryZ);
     private Vector3d SecondaryPoint=>new(SecondaryX,SecondaryY,SecondaryZ);
@@ -151,6 +166,18 @@ public partial class AssemblyConstraintsViewModel : ObservableObject, IDisposabl
     {
         if(!CanEditSelected||IsBusy||SelectedConstraint is not {} row)return;
         await ExecuteAsync(AssemblyConstraintCommands.SetAxes(row.Id,PrimaryAxis,SecondaryAxis));
+    }
+    [RelayCommand] private async Task ApplyAngleAsync()
+    {
+        if(!CanEditSelected||IsBusy||SelectedConstraint is not {} row)return;
+        await ExecuteAsync(AssemblyConstraintCommands.SetAngle(row.Id,AngleDegrees*Math.PI/180));
+    }
+    [RelayCommand] private async Task SolveAllAsync()
+    {
+        if(IsBusy||document.IsReadOnly||document.IsClosingRequested)return;
+        var command=AssemblySolveCommands.Solve();
+        await ExecuteAsync(command);
+        if(command.Report is {} report)Status=report.Explanation;
     }
     [RelayCommand] private async Task RetargetAsync()
     {

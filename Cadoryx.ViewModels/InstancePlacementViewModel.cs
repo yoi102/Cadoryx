@@ -20,6 +20,11 @@ public partial class InstancePlacementViewModel : ObservableObject, IDisposable
     [ObservableProperty] private bool canMakePartIndependent;
     [ObservableProperty] private bool canRenameDefinition;
     [ObservableProperty] private bool canPruneUnused;
+    [ObservableProperty] private bool canLinkExternal;
+    [ObservableProperty] private bool hasExternalLink;
+    [ObservableProperty] private string externalSourcePath="";
+    [ObservableProperty] private string externalStatus="";
+    [ObservableProperty] private ExternalPartChoice? selectedExternalPart;
     [ObservableProperty] private string newAssemblyName=Strings.Assembly;
     [ObservableProperty] private InstanceDefinitionChoice? selectedDefinition;
     [ObservableProperty] private AssemblyParentChoice? selectedParent;
@@ -37,6 +42,7 @@ public partial class InstancePlacementViewModel : ObservableObject, IDisposable
     [ObservableProperty] private bool isBusy;
     public ObservableCollection<InstanceDefinitionChoice> Definitions {get;}=[];
     public ObservableCollection<AssemblyParentChoice> Parents {get;}=[];
+    public ObservableCollection<ExternalPartChoice> ExternalSourceParts {get;}=[];
     public string InsertLabel=>Label("InsertInstance","Insert instance");
     public string ReplaceLabel=>Label("ReplaceInstance","Replace instance");
     public string RemoveLabel=>Label("RemoveInstance","Remove instance");
@@ -52,6 +58,13 @@ public partial class InstancePlacementViewModel : ObservableObject, IDisposable
     public string RenameOccurrenceLabel=>Label("RenameOccurrence","Rename instance");
     public string RenameDefinitionLabel=>Label("RenameDefinition","Rename definition");
     public string PruneUnusedLabel=>Label("PruneUnusedDefinitions","Remove unused definitions");
+    public string ExternalSourceLabel=>Label("ExternalPartSource","External .cadoryx source");
+    public string ExternalInspectLabel=>Label("ExternalPartInspect","Inspect source");
+    public string ExternalBrowseLabel=>Label("ExternalPartBrowse","Browse…");
+    public string ExternalLinkLabel=>Label("ExternalPartLink","Link selected source part");
+    public string ExternalCheckLabel=>Label("ExternalPartCheck","Check source version");
+    public string ExternalRefreshLabel=>Label("ExternalPartRefresh","Refresh from source");
+    public string ExternalDetachLabel=>Label("ExternalPartDetach","Detach link");
     private static string Label(string key,string fallback)=>Strings.ResourceManager.GetString(key,Strings.Culture)??fallback;
     public InstancePlacementViewModel(CadDocumentViewModel document)
     {
@@ -69,6 +82,7 @@ public partial class InstancePlacementViewModel : ObservableObject, IDisposable
         {
             path=document.Selection.Occurrence;HasOccurrence=path is not null;CanMove=false;CanInsertChild=false;
             CanMakeIndependent=false;CanMakePartIndependent=false;CanRenameDefinition=false;CanPruneUnused=false;
+            CanLinkExternal=false;HasExternalLink=false;
             Definitions.Clear();Parents.Clear();
             if(path is null){Context=Strings.SelectInstance;return;}
             var snapshot=document.Session.Snapshot;var resolved=OccurrencePlacement.Resolve(snapshot,path);
@@ -83,10 +97,17 @@ public partial class InstancePlacementViewModel : ObservableObject, IDisposable
             DefinitionName=snapshot.Definitions[resolved.Slot.DefinitionId].Name;
             DefinitionScope=string.Format(Label("DefinitionUsageCount","This definition is used by {0} instance(s)."),count);
             CanInsertChild=assembly&&count==1&&editable;
+            CanLinkExternal=CanInsertChild&&document.ExternalPartStorage is not null;
             CanMakeIndependent=assembly&&count>1&&editable;
             CanMakePartIndependent=part&&count>1&&editable;
             CanRenameDefinition=editable;
             CanPruneUnused=editable&&UnusedDefinitionCommands.CountRemovable(snapshot)>0;
+            if(snapshot.ExternalParts.TryGetValue(resolved.Slot.DefinitionId,out var external))
+            {
+                HasExternalLink=true;
+                ExternalStatus=Label("ExternalPartPinned","Pinned source snapshot")+" · "+external.SourceStateId;
+            }
+            else ExternalStatus="";
             foreach(var definition in snapshot.Definitions.Values.Where(d=>d.Id!=snapshot.RootAssemblyId).OrderBy(d=>d.Name))
                 Definitions.Add(new(definition.Id,definition.Name));
             SelectedDefinition=Definitions.FirstOrDefault(d=>d.Id==resolved.Slot.DefinitionId)??Definitions.FirstOrDefault();
@@ -195,6 +216,60 @@ public partial class InstancePlacementViewModel : ObservableObject, IDisposable
         if(!CanPruneUnused||IsBusy)return;
         await ExecuteAsync(UnusedDefinitionCommands.Prune(),path);
     }
+    [RelayCommand] private async Task BrowseExternalAsync()
+    {
+        var source=document.ExternalPartFiles?.OpenDocument();
+        if(source is null)return;
+        ExternalSourcePath=source;
+        await InspectExternalAsync();
+    }
+    [RelayCommand] private async Task InspectExternalAsync()
+    {
+        if(IsBusy||document.ExternalPartStorage is not {} storage||string.IsNullOrWhiteSpace(ExternalSourcePath))return;
+        try
+        {
+            IsBusy=true;
+            using var source=await storage.LoadAsync(ExternalSourcePath,document.Session.Assets);
+            ExternalSourceParts.Clear();
+            foreach(var part in source.Snapshot.Definitions.Values.OfType<PartDefinition>().Where(p=>!p.Bodies.IsEmpty)
+                .OrderBy(p=>p.Name))ExternalSourceParts.Add(new(part.Id,part.Name));
+            SelectedExternalPart=ExternalSourceParts.Count==1?ExternalSourceParts[0]:null;
+            ExternalStatus=ExternalSourceParts.Count==0?"No nonempty source part was found.":
+                ExternalSourceParts.Count==1?"Source part ready.":"Select one source part.";
+        }
+        catch(Exception ex){ExternalStatus=ex.Message;document.Report(ex);}
+        finally{IsBusy=false;}
+    }
+    [RelayCommand] private async Task LinkExternalAsync()
+    {
+        if(!CanLinkExternal||IsBusy||path is null||SelectedExternalPart is not {} source||
+           document.ExternalPartStorage is not {} storage)return;
+        var command=ExternalPartCommands.Link(storage,ExternalSourcePath,path,DefinitionId.New(),ComponentSlotId.New(),
+            source.Name,source.Id,document.Session.FilePath);
+        await ExecuteAsync(command,command.ResultPath);
+    }
+    [RelayCommand] private void CheckExternal()
+    {
+        if(!HasExternalLink||path is null)return;
+        try
+        {
+            var id=OccurrencePlacement.Resolve(document.Session.Snapshot,path).Slot.DefinitionId;
+            ExternalStatus=ExternalPartCommands.Check(document.Session.Snapshot,id,document.Session.FilePath).ToString();
+        }
+        catch(Exception ex){ExternalStatus=ex.Message;document.Report(ex);}
+    }
+    [RelayCommand] private async Task RefreshExternalAsync()
+    {
+        if(!HasExternalLink||IsBusy||path is null||document.ExternalPartStorage is not {} storage)return;
+        var id=OccurrencePlacement.Resolve(document.Session.Snapshot,path).Slot.DefinitionId;
+        await ExecuteAsync(ExternalPartCommands.Refresh(storage,id,document.Session.FilePath),path);
+    }
+    [RelayCommand] private async Task DetachExternalAsync()
+    {
+        if(!HasExternalLink||IsBusy||path is null)return;
+        var id=OccurrencePlacement.Resolve(document.Session.Snapshot,path).Slot.DefinitionId;
+        await ExecuteAsync(ExternalPartCommands.Detach(id),path);
+    }
     private async Task ExecuteAsync(ICadDocumentCommand command,OccurrencePath? select)
     {
         try
@@ -210,3 +285,4 @@ public partial class InstancePlacementViewModel : ObservableObject, IDisposable
 }
 public sealed record InstanceDefinitionChoice(DefinitionId Id,string Name);
 public sealed record AssemblyParentChoice(string Name,OccurrencePath Path);
+public sealed record ExternalPartChoice(DefinitionId Id,string Name);

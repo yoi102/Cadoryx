@@ -1269,4 +1269,229 @@
   <data name="AssemblyPrimaryPoint" xml:space="preserve"><value>参照实例局部点 (mm)</value></data>
   <data name="AssemblySecondaryAxis" xml:space="preserve"><value>移动实例局部轴向</value></data>
   <data name="AssemblySecondaryPoint" xml:space="preserve"><value>移动实例局部点 (mm)</value></data>
+  <data name="ExternalPartBrowse" xml:space="preserve">
+    <value>浏览…</value>
+  </data>
+  <data name="ExternalPartCheck" xml:space="preserve">
+    <value>检查来源版本</value>
+  </data>
+  <data name="ExternalPartDetach" xml:space="preserve">
+    <value>解除链接</value>
+  </data>
+  <data name="ExternalPartInspect" xml:space="preserve">
+    <value>检查来源</value>
+  </data>
+  <data name="ExternalPartLink" xml:space="preserve">
+    <value>链接选中来源零件</value>
+  </data>
+  <data name="ExternalPartPinned" xml:space="preserve">
+    <value>已锁定来源快照</value>
+  </data>
+  <data name="ExternalPartRefresh" xml:space="preserve">
+    <value>从来源更新</value>
+  </data>
+  <data name="ExternalPartSource" xml:space="preserve">
+    <value>外部 .cadoryx 来源</value>
+  </data>
+  <data name="AssemblyAddAngle" xml:space="preserve">
+    <value>添加轴角度关系</value>
+  </data>
+  <data name="AssemblyAddPlane" xml:space="preserve">
+    <value>添加平面贴合关系</value>
+  </data>
+  <data name="AssemblyAngle" xml:space="preserve">
+    <value>角度（度）</value>
+  </data>
+  <data name="AssemblyAngleName" xml:space="preserve">
+    <value>角度</value>
+  </data>
+  <data name="AssemblyApplyAngle" xml:space="preserve">
+    <value>修改目标角度</value>
+  </data>
+  <data name="AssemblyPlaneName" xml:space="preserve">
+    <value>平面贴合</value>
+  </data>
+  <data name="AssemblySolveAll" xml:space="preserve">
+    <value>求解装配关系</value>
+  </data>
+  <data name="DocumentScaleFormat" xml:space="preserve">
+    <value>{0} 个定义 · {1} 个实例 · {2} 个唯一资产（{3:F1} MiB）</value>
+  </data>
+  <data name="GridDisplayHint" xml:space="preserve">
+    <value>显示网格会随缩放调整疏密；吸附仍使用文档设置的间距。</value>
+  </data>
+  <data name="SessionHistory" xml:space="preserve">
+    <value>本次会话历史</value>
+  </data>
+  <data name="HistoryUsageFormat" xml:space="preserve">
+    <value>撤销 {0} · 重做 {1} · 额外资产 {2:F1} MiB</value>
+  </data>
+  <data name="HistoryBudgetHint" xml:space="preserve">
+    <value>仅作用于当前打开的文档会话。统计当前文档之外额外保留的唯一资产载荷，不是进程内存。降低限额会丢弃最旧撤销及最远重做记录；清空不可撤销。</value>
+  </data>
+  <data name="HistoryEntryLimit" xml:space="preserve">
+    <value>历史记录上限</value>
+  </data>
+  <data name="HistoryAssetBudget" xml:space="preserve">
+    <value>额外资产预算（MiB）</value>
+  </data>
+  <data name="ApplyHistoryBudget" xml:space="preserve">
+    <value>应用并裁剪历史</value>
+  </data>
+  <data name="ClearSessionHistory" xml:space="preserve">
+    <value>清空撤销和重做历史</value>
+  </data>
+  <data name="ModelSearch" xml:space="preserve">
+    <value>搜索模型</value>
+  </data>
+  <data name="ModelSearchHint" xml:space="preserve">
+    <value>搜索实例、零件、装配和实体名称，包含未展开分支。按 Enter 搜索。</value>
+  </data>
+  <data name="ModelSearchCountFormat" xml:space="preserve">
+    <value>{0} 个结果</value>
+  </data>
+  <data name="ModelSearchLimitedFormat" xml:space="preserve">
+    <value>显示前 {0} 个结果，请缩小搜索范围。</value>
+  </data>
+  <data name="LocateSelection" xml:space="preserve">
+    <value>定位当前选择</value>
+  </data>
+  <data name="LocateSearchResult" xml:space="preserve">
+    <value>在树中定位结果</value>
+  </data>
+  <data name="SelectionMeasurements" xml:space="preserve">
+    <value>选择测量汇总</value>
+  </data>
+  <data name="SelectionMeasurementHint" xml:space="preserve">
+    <value>世界包围范围由局部包围盒变换得到，可能大于实际形状。体积和质量按实例相加，重叠部分不扣除。选择两个实体时显示包围盒中心距离，不是表面最短距离。</value>
+  </data>
+  <data name="MeasuredInstances" xml:space="preserve">
+    <value>测量实体实例数</value>
+  </data>
+  <data name="WorldEnvelopeMin" xml:space="preserve">
+    <value>世界包围范围最小点</value>
+  </data>
+  <data name="WorldEnvelopeMax" xml:space="preserve">
+    <value>世界包围范围最大点</value>
+  </data>
+  <data name="WorldEnvelopeSize" xml:space="preserve">
+    <value>世界包围尺寸（X、Y、Z）</value>
+  </data>
+  <data name="SelectionVolumeSum" xml:space="preserve">
+    <value>体积总和（体积对象数 / 已选数）</value>
+  </data>
+  <data name="SelectionMassSum" xml:space="preserve">
+    <value>质量总和</value>
+  </data>
+  <data name="MeasurementMassUnavailable" xml:space="preserve">
+    <value>不可用：需要为全部体积对象指定材料；曲面和网格不计实体质量。</value>
+  </data>
+  <data name="EnvelopeCenterDistance" xml:space="preserve">
+    <value>包围盒中心距离</value>
+  </data>
+  <data name="ExactArea" xml:space="preserve">
+    <value>表面积合计</value>
+  </data>
+  <data name="ExactCancelled" xml:space="preserve">
+    <value>计算已取消。</value>
+  </data>
+  <data name="ExactCentroid" xml:space="preserve">
+    <value>体积形心（世界坐标）</value>
+  </data>
+  <data name="ExactDistance" xml:space="preserve">
+    <value>BRep 最小距离</value>
+  </data>
+  <data name="ExactFirstPoint" xml:space="preserve">
+    <value>第一个体上的最近点</value>
+  </data>
+  <data name="ExactInspection" xml:space="preserve">
+    <value>精确几何检查</value>
+  </data>
+  <data name="ExactMeasure" xml:space="preserve">
+    <value>计算精确值</value>
+  </data>
+  <data name="ExactMeasurementHint" xml:space="preserve">
+    <value>按实例累加，包含重叠部分。形心按均匀密度计算。距离无符号，零距离不代表穿透量。</value>
+  </data>
+  <data name="ExactMeasuring" xml:space="preserve">
+    <value>正在计算…</value>
+  </data>
+  <data name="ExactSecondPoint" xml:space="preserve">
+    <value>第二个体上的最近点</value>
+  </data>
+  <data name="ExactSelectionHint" xml:space="preserve">
+    <value>选择 1–256 个体；选择两个体可计算最小距离。结果使用文档单位。</value>
+  </data>
+  <data name="ExactTopology" xml:space="preserve">
+    <value>面 / 边 / 实体</value>
+  </data>
+  <data name="ExactVolume" xml:space="preserve">
+    <value>闭合实体体积合计</value>
+  </data>
+  <data name="ReviewFocus" xml:space="preserve">
+    <value>聚焦选择</value>
+  </data>
+  <data name="ReviewHide" xml:space="preserve">
+    <value>临时隐藏</value>
+  </data>
+  <data name="ReviewIsolate" xml:space="preserve">
+    <value>隔离选择</value>
+  </data>
+  <data name="ReviewShowAll" xml:space="preserve">
+    <value>恢复显示</value>
+  </data>
+  <data name="ReviewSplit" xml:space="preserve">
+    <value>双视口</value>
+  </data>
+  <data name="SectionApply" xml:space="preserve">
+    <value>应用剖切</value>
+  </data>
+  <data name="SectionEnabled" xml:space="preserve">
+    <value>启用剖切</value>
+  </data>
+  <data name="SectionHint" xml:space="preserve">
+    <value>本次文档会话的显示剖切，两个视口共享。几何和导出保持完整；不生成截面轮廓或封口。</value>
+  </data>
+  <data name="SectionOffset" xml:space="preserve">
+    <value>世界坐标平面偏移（mm）</value>
+  </data>
+  <data name="SectionReset" xml:space="preserve">
+    <value>清除剖切</value>
+  </data>
+  <data name="SectionReverse" xml:space="preserve">
+    <value>反向半空间</value>
+  </data>
+  <data name="SectionSlab" xml:space="preserve">
+    <value>保留中心薄层</value>
+  </data>
+  <data name="SectionThickness" xml:space="preserve">
+    <value>薄层厚度（mm）</value>
+  </data>
+  <data name="SectionView" xml:space="preserve">
+    <value>剖切视图</value>
+  </data>
+  <data name="CreateSection" xml:space="preserve"><value>生成截面几何</value></data>
+  <data name="InterferenceCheck" xml:space="preserve"><value>检查干涉</value></data>
+  <data name="InterferenceHint" xml:space="preserve"><value>选择 2–32 个实体实例，按文档容差逐对检查；不支持片体、网格或混合复合体。重叠量是每对的体积，不是穿透深度。</value></data>
+  <data name="LocateInterference" xml:space="preserve"><value>隔离并定位此对实例</value></data>
+  <data name="PairContained" xml:space="preserve"><value>包含</value></data>
+  <data name="PairInterfering" xml:space="preserve"><value>体积相交</value></data>
+  <data name="PairOverlap" xml:space="preserve"><value>重叠体积</value></data>
+  <data name="PairSeparated" xml:space="preserve"><value>分离</value></data>
+  <data name="PairSummary" xml:space="preserve"><value>已检查 {0} 对，其中 {1} 对存在正重叠体积。</value></data>
+  <data name="PairTouching" xml:space="preserve"><value>接触</value></data>
+  <data name="ReviewCalculating" xml:space="preserve"><value>正在计算几何…</value></data>
+  <data name="SectionCreated" xml:space="preserve"><value>已在新零件中生成冻结截面，可撤销、保存及导出 STEP/IGES。</value></data>
+  <data name="SectionCurves" xml:space="preserve"><value>截面曲线</value></data>
+  <data name="SectionGeometryHint" xml:space="preserve"><value>用上方的轴和偏移平面与 1–256 个选中体求交，生成独立的世界坐标曲线。不自动跟随源体、不封口，也不同时生成薄层两侧轮廓。</value></data>
+  <data name="RibbonHistory" xml:space="preserve"><value>历史操作</value></data>
+  <data name="RibbonPrimitives" xml:space="preserve"><value>基础形体</value></data>
+  <data name="RibbonProfiles" xml:space="preserve"><value>轮廓特征</value></data>
+  <data name="RibbonNavigation" xml:space="preserve"><value>视图导航</value></data>
+  <data name="RibbonStandardViews" xml:space="preserve"><value>标准视图</value></data>
+  <data name="RibbonDisplay" xml:space="preserve"><value>显示方式</value></data>
+  <data name="RibbonLayout" xml:space="preserve"><value>工作区布局</value></data>
+  <data name="ViewBack" xml:space="preserve"><value>后视</value></data>
+  <data name="ViewBottom" xml:space="preserve"><value>底视</value></data>
+  <data name="ViewLeft" xml:space="preserve"><value>左视</value></data>
 </root>

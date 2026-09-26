@@ -13,7 +13,8 @@ public sealed class OcctViewport : ICadViewport
     private readonly OcctViewer viewer;
     private readonly IAssetStore assets;
     private readonly Dictionary<(OccurrencePath,BodyId),Entry> entries=[];
-    private readonly Dictionary<GeometryRevisionId,GeometryResource> geometry=[];
+    // A revision identifies a modeling result; identical BRep bytes in different parts can share one native shape.
+    private readonly Dictionary<(AssetId Asset,XdeSourceRef? Source,AssetFormat? Format),GeometryResource> geometry=[];
     private HashSet<(OccurrencePath,BodyId)> highlighted=[];
     private int pressedButtons;
     private int lastX,lastY;
@@ -24,6 +25,11 @@ public sealed class OcctViewport : ICadViewport
     private Shape? previewShape;
     private ViewerPresentation? workGrid;
     private Shape? workGridShape;
+    private bool gridVisible;
+    private double gridSpacingMm=10;
+    private double gridDisplaySpacingMm;
+    private DocumentWorkPlaneSettings gridPlane=new();
+    public double DisplayGridSpacingMm=>gridDisplaySpacingMm;
     private readonly List<(Shape Shape,ViewerColor Color)> originShapes=[];
     private readonly List<ViewerPresentation> originPresentations=[];
     private ViewerPresentation? constructionGhost;
@@ -31,6 +37,23 @@ public sealed class OcctViewport : ICadViewport
     private bool constructing;
     private CadDisplayMode mode;
     private bool disposed;
+    private readonly List<ViewerClipPlane> clipPlanes=[];
+    public int SectionPlaneCount=>clipPlanes.Count;
+    public int VisibleBodyCount=>entries.Count;
+    public void SetSection(SectionView section)
+    {
+        var equations=section.Planes();var staged=new List<ViewerClipPlane>();
+        try
+        {
+            foreach(var (n,d) in equations)staged.Add(viewer.CreateClipPlane(new(n.X,n.Y,n.Z,d)));
+        }
+        catch {foreach(var plane in staged)plane.Dispose();throw;}
+        foreach(var plane in clipPlanes)plane.Dispose();clipPlanes.Clear();clipPlanes.AddRange(staged);viewer.Redraw();
+    }
+    public CadCamera CaptureFocusTarget(Bounds3d bounds)=>SceneEnvelope.Fit(CaptureCamera(),bounds);
+    // Compute the destination without presenting a fitted frame first (which would flash).
+    public CadCamera CaptureFitTarget()=>SceneEnvelope.Measure(entries.Values.Select(e=>e.Item)) is {} bounds
+        ? CaptureFocusTarget(bounds) : CaptureCamera();
     public ViewportCapabilities Capabilities {get;}=new(false,true,true);
     public event EventHandler<IReadOnlyList<SceneItem>>? SelectionChanged;
     public event EventHandler<ViewerCubeOrientation>? ViewCubeOrientationRequested;
@@ -85,21 +108,35 @@ public sealed class OcctViewport : ICadViewport
     public void SetWorkGrid(bool visible,double spacing,DocumentWorkPlaneSettings plane)
     {
         ArgumentNullException.ThrowIfNull(plane);plane.Validate();
-        workGrid?.Dispose();workGrid=null;workGridShape?.Dispose();workGridShape=null;
-        if(!visible)return;
         if(!double.IsFinite(spacing)||spacing<0.1||spacing>1000)throw new ArgumentOutOfRangeException(nameof(spacing));
+        gridVisible=visible;gridSpacingMm=spacing;gridPlane=plane;
+        RebuildWorkGrid();
+    }
+    private void RefreshWorkGridScale()
+    {
+        if(!gridVisible)return;
+        double next=AdaptiveGridScale.Choose(gridSpacingMm,PixelsPerMillimeter(gridPlane.Origin,gridPlane));
+        if(Math.Abs(next-gridDisplaySpacingMm)>gridDisplaySpacingMm*1e-9)RebuildWorkGrid();
+    }
+    private void RebuildWorkGrid()
+    {
+        workGrid?.Dispose();workGrid=null;workGridShape?.Dispose();workGridShape=null;
+        gridDisplaySpacingMm=0;
+        if(!gridVisible)return;
+        double spacing=AdaptiveGridScale.Choose(gridSpacingMm,PixelsPerMillimeter(gridPlane.Origin,gridPlane));
         var lines=new List<Shape>();
         try
         {
             for(int i=-20;i<=20;i++)
             {
                 double p=i*spacing,extent=20*spacing;
-                var a=plane.ToWorld(-extent,p);var b=plane.ToWorld(extent,p);
-                var c=plane.ToWorld(p,-extent);var d=plane.ToWorld(p,extent);
+                var a=gridPlane.ToWorld(-extent,p);var b=gridPlane.ToWorld(extent,p);
+                var c=gridPlane.ToWorld(p,-extent);var d=gridPlane.ToWorld(p,extent);
                 lines.Add(ShapeFactory.CreateEdge(new(a.X,a.Y,a.Z),new(b.X,b.Y,b.Z)));
                 lines.Add(ShapeFactory.CreateEdge(new(c.X,c.Y,c.Z),new(d.X,d.Y,d.Z)));
             }
             workGridShape=ShapeFactory.CreateCompound(lines);
+            gridDisplaySpacingMm=spacing;
             ShowWorkGrid();
         }
         catch{workGrid?.Dispose();workGrid=null;workGridShape?.Dispose();workGridShape=null;throw;}
@@ -319,13 +356,14 @@ public sealed class OcctViewport : ICadViewport
     }
     private void PruneGeometry()
     {
-        var used=entries.Values.Select(e=>e.Item.Geometry.Revision).ToHashSet();
-        foreach(var key in geometry.Keys.Where(k=>!used.Contains(k)).ToArray()){geometry[key].Dispose();geometry.Remove(key);}
+        var used=entries.Values.Select(e=>e.Geometry).ToHashSet();
+        foreach(var key in geometry.Keys.Where(k=>!used.Contains(geometry[k])).ToArray()){geometry[key].Dispose();geometry.Remove(key);}
     }
     private GeometryResource Resource(GeometryAssetRef reference)
     {
-        if(geometry.TryGetValue(reference.Revision,out var resource))return resource;
-        resource=new(reference,assets);geometry.Add(reference.Revision,resource);return resource;
+        var key=(reference.AssetId,reference.Source,reference.Format);
+        if(geometry.TryGetValue(key,out var resource))return resource;
+        resource=new(reference,assets);geometry.Add(key,resource);return resource;
     }
     private ViewerPresentation CreatePresentation(SceneItem item,GeometryResource resource,bool selected)
     {
@@ -378,7 +416,7 @@ public sealed class OcctViewport : ICadViewport
         workGrid?.Dispose();workGrid=null;
         foreach(var presentation in originPresentations)presentation.Dispose();originPresentations.Clear();
         constructionGhost?.Dispose();constructionGhost=null;
-        viewer.FitAll();ShowWorkGrid();ShowOriginAxes();
+        viewer.FitAll();ShowWorkGrid();ShowOriginAxes();RefreshWorkGridScale();
     }
     public void SetProjection(CadProjection projection)=>viewer.SetProjection(ToViewerProjection(projection));
     public CadCamera CaptureProjectionTarget(CadProjection projection)
@@ -416,7 +454,7 @@ public sealed class OcctViewport : ICadViewport
     {
         mode=displayMode;foreach(var e in entries.Values)e.Presentation.SetDisplayMode(mode==CadDisplayMode.Shaded?ViewerDisplayMode.Shaded:ViewerDisplayMode.Wireframe);viewer.Redraw();
     }
-    public void Resize()=>viewer.Resize();
+    public void Resize(){viewer.Resize();RefreshWorkGridScale();}
     public void Redraw()=>viewer.Redraw();
     public bool HasPointerCapture=>pressedButtons!=0;
     public void PointerMoved(int x,int y,int buttons,int modifiers)
@@ -453,6 +491,7 @@ public sealed class OcctViewport : ICadViewport
         }
         if(constructing&&button==0){ConstructionPointer?.Invoke(this,(x,y,true));return;}
         var selected=viewer.Input.PointerReleased(Button(button),x,y);
+        RefreshWorkGridScale();
         bool clicked=button==0&&selectionClick;selectionClick=false;
         if(!clicked)return;
         if(selectionKind is {} kind&&(selectionBox is not null||exactSelectionSource is not null))
@@ -506,6 +545,7 @@ public sealed class OcctViewport : ICadViewport
     {
         NavigationStarted?.Invoke(this,EventArgs.Empty);
         viewer.Input.MouseWheel(delta,x,y,(ViewerModifierKeys)modifiers);
+        RefreshWorkGridScale();
     }
     private static ViewerPointerButton Button(int button)=>button switch{0=>ViewerPointerButton.Left,1=>ViewerPointerButton.Middle,_=>ViewerPointerButton.Right};
     public CadCamera CaptureCamera()
@@ -513,8 +553,12 @@ public sealed class OcctViewport : ICadViewport
         var c=viewer.Rendering.GetCamera();return new(new(c.Eye.X,c.Eye.Y,c.Eye.Z),new(c.Target.X,c.Target.Y,c.Target.Z),new(c.Up.X,c.Up.Y,c.Up.Z),
             c.Aspect,c.Scale,c.FieldOfViewY,c.NearPlane,c.FarPlane,c.Perspective,c.AutoFitDepth);
     }
-    public void RestoreCamera(CadCamera c)=>viewer.Rendering.SetCamera(new(new(c.Eye.X,c.Eye.Y,c.Eye.Z),new(c.Target.X,c.Target.Y,c.Target.Z),new(c.Up.X,c.Up.Y,c.Up.Z),
-        c.Aspect,c.Scale,c.FieldOfViewY,c.NearPlane,c.FarPlane,c.Perspective,c.AutoFitDepth));
+    public void RestoreCamera(CadCamera c)
+    {
+        viewer.Rendering.SetCamera(new(new(c.Eye.X,c.Eye.Y,c.Eye.Z),new(c.Target.X,c.Target.Y,c.Target.Z),new(c.Up.X,c.Up.Y,c.Up.Z),
+            c.Aspect,c.Scale,c.FieldOfViewY,c.NearPlane,c.FarPlane,c.Perspective,c.AutoFitDepth));
+        RefreshWorkGridScale();
+    }
     public void SaveScreenshot(string path)=>viewer.SaveScreenshot(path,overwrite:true);
     public (int X,int Y) WorldToScreen(Vector3d point)
     {
@@ -523,6 +567,7 @@ public sealed class OcctViewport : ICadViewport
     public void Dispose()
     {
         if(disposed)return;
+        foreach(var plane in clipPlanes)plane.Dispose();clipPlanes.Clear();
         preview?.Dispose();previewShape?.Dispose();constructionGhost?.Dispose();constructionShape?.Dispose();workGrid?.Dispose();workGridShape?.Dispose();ClearOriginAxes();
         foreach(var e in entries.Values)e.Presentation.Dispose();entries.Clear();
         viewer.Dispose();foreach(var g in geometry.Values)g.Dispose();geometry.Clear();disposed=true;

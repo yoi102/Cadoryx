@@ -1269,4 +1269,229 @@
   <data name="AssemblyPrimaryPoint" xml:space="preserve"><value>参照インスタンスのローカル点 (mm)</value></data>
   <data name="AssemblySecondaryAxis" xml:space="preserve"><value>移動インスタンスのローカル軸</value></data>
   <data name="AssemblySecondaryPoint" xml:space="preserve"><value>移動インスタンスのローカル点 (mm)</value></data>
+  <data name="ExternalPartBrowse" xml:space="preserve">
+    <value>参照…</value>
+  </data>
+  <data name="ExternalPartCheck" xml:space="preserve">
+    <value>ソースの版を確認</value>
+  </data>
+  <data name="ExternalPartDetach" xml:space="preserve">
+    <value>リンクを解除</value>
+  </data>
+  <data name="ExternalPartInspect" xml:space="preserve">
+    <value>ソースを確認</value>
+  </data>
+  <data name="ExternalPartLink" xml:space="preserve">
+    <value>選択したソース部品をリンク</value>
+  </data>
+  <data name="ExternalPartPinned" xml:space="preserve">
+    <value>ソースのスナップショットを固定</value>
+  </data>
+  <data name="ExternalPartRefresh" xml:space="preserve">
+    <value>ソースから更新</value>
+  </data>
+  <data name="ExternalPartSource" xml:space="preserve">
+    <value>外部 .cadoryx ソース</value>
+  </data>
+  <data name="AssemblyAddAngle" xml:space="preserve">
+    <value>軸角度関係を追加</value>
+  </data>
+  <data name="AssemblyAddPlane" xml:space="preserve">
+    <value>平面合致を追加</value>
+  </data>
+  <data name="AssemblyAngle" xml:space="preserve">
+    <value>角度（度）</value>
+  </data>
+  <data name="AssemblyAngleName" xml:space="preserve">
+    <value>角度</value>
+  </data>
+  <data name="AssemblyApplyAngle" xml:space="preserve">
+    <value>目標角度を変更</value>
+  </data>
+  <data name="AssemblyPlaneName" xml:space="preserve">
+    <value>平面合致</value>
+  </data>
+  <data name="AssemblySolveAll" xml:space="preserve">
+    <value>組立関係を解く</value>
+  </data>
+  <data name="DocumentScaleFormat" xml:space="preserve">
+    <value>定義 {0} · インスタンス {1} · 固有アセット {2}（{3:F1} MiB）</value>
+  </data>
+  <data name="GridDisplayHint" xml:space="preserve">
+    <value>表示グリッドの密度はズームに応じて変わります。スナップには文書の間隔を使用します。</value>
+  </data>
+  <data name="SessionHistory" xml:space="preserve">
+    <value>セッション履歴</value>
+  </data>
+  <data name="HistoryUsageFormat" xml:space="preserve">
+    <value>元に戻す {0} · やり直し {1} · 追加アセット {2:F1} MiB</value>
+  </data>
+  <data name="HistoryBudgetHint" xml:space="preserve">
+    <value>この文書のセッションだけに適用。現在の文書以外に保持する固有データ量で、プロセスメモリではありません。上限を下げると古い履歴から破棄されます。消去は元に戻せません。</value>
+  </data>
+  <data name="HistoryEntryLimit" xml:space="preserve">
+    <value>履歴件数の上限</value>
+  </data>
+  <data name="HistoryAssetBudget" xml:space="preserve">
+    <value>追加アセット上限 (MiB)</value>
+  </data>
+  <data name="ApplyHistoryBudget" xml:space="preserve">
+    <value>適用して履歴を整理</value>
+  </data>
+  <data name="ClearSessionHistory" xml:space="preserve">
+    <value>元に戻す・やり直し履歴を消去</value>
+  </data>
+  <data name="ModelSearch" xml:space="preserve">
+    <value>モデルを検索</value>
+  </data>
+  <data name="ModelSearchHint" xml:space="preserve">
+    <value>未展開の分岐も含め、インスタンス・部品・アセンブリ・ボディ名を検索。Enter で検索。</value>
+  </data>
+  <data name="ModelSearchCountFormat" xml:space="preserve">
+    <value>{0} 件</value>
+  </data>
+  <data name="ModelSearchLimitedFormat" xml:space="preserve">
+    <value>先頭 {0} 件を表示。検索語を絞り込んでください。</value>
+  </data>
+  <data name="LocateSelection" xml:space="preserve">
+    <value>選択を表示</value>
+  </data>
+  <data name="LocateSearchResult" xml:space="preserve">
+    <value>結果をツリーに表示</value>
+  </data>
+  <data name="SelectionMeasurements" xml:space="preserve">
+    <value>選択の計測</value>
+  </data>
+  <data name="SelectionMeasurementHint" xml:space="preserve">
+    <value>ローカル境界箱を変換したワールド範囲です。形状より大きくなる場合があります。体積・質量は重なりも含めたインスタンスの合計。2 ボディの距離は境界箱中心間で、表面の最短距離ではありません。</value>
+  </data>
+  <data name="MeasuredInstances" xml:space="preserve">
+    <value>計測ボディ数</value>
+  </data>
+  <data name="WorldEnvelopeMin" xml:space="preserve">
+    <value>ワールド範囲の最小点</value>
+  </data>
+  <data name="WorldEnvelopeMax" xml:space="preserve">
+    <value>ワールド範囲の最大点</value>
+  </data>
+  <data name="WorldEnvelopeSize" xml:space="preserve">
+    <value>ワールド範囲寸法 (X, Y, Z)</value>
+  </data>
+  <data name="SelectionVolumeSum" xml:space="preserve">
+    <value>体積合計（体積対象数 / 選択数）</value>
+  </data>
+  <data name="SelectionMassSum" xml:space="preserve">
+    <value>質量合計</value>
+  </data>
+  <data name="MeasurementMassUnavailable" xml:space="preserve">
+    <value>計測不可：すべての体積対象に材料が必要です。面・メッシュにはソリッド質量を計算しません。</value>
+  </data>
+  <data name="EnvelopeCenterDistance" xml:space="preserve">
+    <value>境界箱中心間距離</value>
+  </data>
+  <data name="ExactArea" xml:space="preserve">
+    <value>表面積合計</value>
+  </data>
+  <data name="ExactCancelled" xml:space="preserve">
+    <value>計算をキャンセルしました。</value>
+  </data>
+  <data name="ExactCentroid" xml:space="preserve">
+    <value>体積重心（ワールド）</value>
+  </data>
+  <data name="ExactDistance" xml:space="preserve">
+    <value>BRep 最短距離</value>
+  </data>
+  <data name="ExactFirstPoint" xml:space="preserve">
+    <value>1 個目の最近点</value>
+  </data>
+  <data name="ExactInspection" xml:space="preserve">
+    <value>精密形状検査</value>
+  </data>
+  <data name="ExactMeasure" xml:space="preserve">
+    <value>精密計算</value>
+  </data>
+  <data name="ExactMeasurementHint" xml:space="preserve">
+    <value>インスタンス合計は重複を含みます。重心は均一密度。距離は符号なしで、ゼロは貫入量ではありません。</value>
+  </data>
+  <data name="ExactMeasuring" xml:space="preserve">
+    <value>計算中…</value>
+  </data>
+  <data name="ExactSecondPoint" xml:space="preserve">
+    <value>2 個目の最近点</value>
+  </data>
+  <data name="ExactSelectionHint" xml:space="preserve">
+    <value>1～256 個のボディを選択。2 個の場合は最短距離も計算。結果はドキュメント単位。</value>
+  </data>
+  <data name="ExactTopology" xml:space="preserve">
+    <value>面 / エッジ / ソリッド</value>
+  </data>
+  <data name="ExactVolume" xml:space="preserve">
+    <value>閉じたソリッド体積合計</value>
+  </data>
+  <data name="ReviewFocus" xml:space="preserve">
+    <value>選択にズーム</value>
+  </data>
+  <data name="ReviewHide" xml:space="preserve">
+    <value>一時的に非表示</value>
+  </data>
+  <data name="ReviewIsolate" xml:space="preserve">
+    <value>選択を分離表示</value>
+  </data>
+  <data name="ReviewShowAll" xml:space="preserve">
+    <value>表示を復元</value>
+  </data>
+  <data name="ReviewSplit" xml:space="preserve">
+    <value>2 ビュー</value>
+  </data>
+  <data name="SectionApply" xml:space="preserve">
+    <value>断面を適用</value>
+  </data>
+  <data name="SectionEnabled" xml:space="preserve">
+    <value>クリップを有効化</value>
+  </data>
+  <data name="SectionHint" xml:space="preserve">
+    <value>セッション内の表示クリップを両ビューで共有。形状とエクスポートは完全なままです。断面曲線や蓋は生成しません。</value>
+  </data>
+  <data name="SectionOffset" xml:space="preserve">
+    <value>平面オフセット（mm）</value>
+  </data>
+  <data name="SectionReset" xml:space="preserve">
+    <value>断面を解除</value>
+  </data>
+  <data name="SectionReverse" xml:space="preserve">
+    <value>半空間を反転</value>
+  </data>
+  <data name="SectionSlab" xml:space="preserve">
+    <value>中心スラブを保持</value>
+  </data>
+  <data name="SectionThickness" xml:space="preserve">
+    <value>スラブ厚さ（mm）</value>
+  </data>
+  <data name="SectionView" xml:space="preserve">
+    <value>断面ビュー</value>
+  </data>
+  <data name="CreateSection" xml:space="preserve"><value>断面形状を生成</value></data>
+  <data name="InterferenceCheck" xml:space="preserve"><value>干渉チェック</value></data>
+  <data name="InterferenceHint" xml:space="preserve"><value>2～32 個のソリッドを選択しドキュメント公差で全ペアを検査。シート・メッシュ・混合形状は対象外。重なりはペアの体積で、貫入深さではありません。</value></data>
+  <data name="LocateInterference" xml:space="preserve"><value>このペアを分離して表示</value></data>
+  <data name="PairContained" xml:space="preserve"><value>包含</value></data>
+  <data name="PairInterfering" xml:space="preserve"><value>体積干渉</value></data>
+  <data name="PairOverlap" xml:space="preserve"><value>重なり体積</value></data>
+  <data name="PairSeparated" xml:space="preserve"><value>離間</value></data>
+  <data name="PairSummary" xml:space="preserve"><value>{0} ペアを検査、{1} ペアに正の重なり体積。</value></data>
+  <data name="PairTouching" xml:space="preserve"><value>接触</value></data>
+  <data name="ReviewCalculating" xml:space="preserve"><value>形状を計算中…</value></data>
+  <data name="SectionCreated" xml:space="preserve"><value>新しい部品に固定断面を作成しました。元に戻す・保存・STEP/IGES 出力が可能です。</value></data>
+  <data name="SectionCurves" xml:space="preserve"><value>断面曲線</value></data>
+  <data name="SectionGeometryHint" xml:space="preserve"><value>上の軸とオフセットで選択した 1～256 個のボディと交差。独立したワールド座標の曲線です。自動更新・蓋・スラブ両面の生成はありません。</value></data>
+  <data name="RibbonHistory" xml:space="preserve"><value>履歴</value></data>
+  <data name="RibbonPrimitives" xml:space="preserve"><value>基本形状</value></data>
+  <data name="RibbonProfiles" xml:space="preserve"><value>プロファイル</value></data>
+  <data name="RibbonNavigation" xml:space="preserve"><value>ナビゲーション</value></data>
+  <data name="RibbonStandardViews" xml:space="preserve"><value>標準ビュー</value></data>
+  <data name="RibbonDisplay" xml:space="preserve"><value>表示モード</value></data>
+  <data name="RibbonLayout" xml:space="preserve"><value>ワークスペース</value></data>
+  <data name="ViewBack" xml:space="preserve"><value>背面</value></data>
+  <data name="ViewBottom" xml:space="preserve"><value>下面</value></data>
+  <data name="ViewLeft" xml:space="preserve"><value>左面</value></data>
 </root>

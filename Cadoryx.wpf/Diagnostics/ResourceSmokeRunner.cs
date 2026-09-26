@@ -173,6 +173,37 @@ internal static class ResourceSmokeRunner
         Require(AssertSingleRelation(document.Session.Snapshot).Evaluate(document.Session.Snapshot).Status==AssemblyConstraintStatus.Satisfied,
             "Coaxial adjustment did not satisfy the selected axes.");
         await document.AssemblyConstraints.RemoveCommand.ExecuteAsync(null);await Idle();
+        var externalFixture=DocumentSnapshot.Create("External fixture");
+        var externalRoot=(AssemblyDefinition)externalFixture.Definitions[externalFixture.RootAssemblyId];
+        var externalPart=DefinitionId.New();var externalBody=BodyId.New();var externalSlot=ComponentSlotId.New();
+        var fixtureBody=document.Session.Snapshot.Bodies.Values.First();
+        externalFixture=externalFixture with{Definitions=externalFixture.Definitions
+            .Add(externalPart,new PartDefinition(externalPart,"Source part",[externalBody],[]))
+            .SetItem(externalRoot.Id,externalRoot with{Children=[new(externalSlot,externalPart,"Source part",RigidTransform3d.Identity)]}),
+            Bodies=externalFixture.Bodies.Add(externalBody,fixtureBody with{Id=externalBody,PartId=externalPart,
+                Producer=null,LayerId=externalFixture.Layers.Keys.Single(),MaterialId=null})};
+        var externalPath=Path.Combine(output,"external-source.cadoryx");
+        await storage.SaveAsync(externalFixture,document.Session.Assets,externalPath);
+        var assemblyId=DefinitionId.New();var assemblySlot=ComponentSlotId.New();
+        var rootPath=new OccurrencePath(document.Session.Snapshot.Id,[]);
+        await document.Session.ExecuteAsync(AssemblyOccurrenceCommands.CreateAssembly(rootPath,assemblyId,
+            assemblySlot,"External assembly",RigidTransform3d.Identity));
+        var assemblyPath=rootPath.Append(assemblySlot);
+        document.Selection.SelectOccurrence(assemblyPath);await Idle();
+        Require(document.Placement.CanLinkExternal&&placement.LinkExternalButton.Command is not null,
+            "External part link UI is unavailable.");
+        placement.ExternalSourceInput.SetCurrentValue(TextBox.TextProperty,externalPath);
+        await document.Placement.InspectExternalCommand.ExecuteAsync(null);await Idle();
+        Require(document.Placement.SelectedExternalPart?.Id==externalPart,"External source part inspection failed.");
+        await document.Placement.LinkExternalCommand.ExecuteAsync(null);await Idle();
+        var linkedPath=document.Selection.Occurrence!;
+        var linkedId=OccurrencePlacement.Resolve(document.Session.Snapshot,linkedPath).Slot.DefinitionId;
+        Require(ExternalPartCommands.Check(document.Session.Snapshot,linkedId,document.Session.FilePath)==ExternalPartStatus.Current,
+            "External source snapshot was not pinned.");
+        await document.Session.ExecuteAsync(AssemblyOccurrenceCommands.Remove(linkedPath));
+        await document.Session.ExecuteAsync(AssemblyOccurrenceCommands.Remove(assemblyPath));
+        await document.Session.ExecuteAsync(UnusedDefinitionCommands.Prune());
+        document.Selection.SelectOccurrence(leftPath);await Idle();
         await ModalAsync(()=>workspace.ManageResourcesCommand.ExecuteAsync(null),async()=>
         {
                 var dialog=DialogHost.GetDialogSession(ViewServiceIdentifiers.RootDialogHost)?.Content as DocumentResourcesDialog??throw new InvalidOperationException("Resource dialog was not shown.");var vm=(DocumentResourcesViewModel)dialog.DataContext;

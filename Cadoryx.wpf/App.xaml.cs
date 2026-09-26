@@ -62,6 +62,7 @@ public partial class App : Application
     {
         _serviceProvider.GetRequiredService<RecoveryHost>().Dispose();
         _serviceProvider.GetRequiredService<Cadoryx.Kernel.Abstractions.IRecoveryStore>().Dispose();
+        (_serviceProvider.GetRequiredService<Cadoryx.Kernel.Abstractions.IAssetStore>() as IDisposable)?.Dispose();
         base.OnExit(e);
     }
 
@@ -78,7 +79,11 @@ public partial class App : Application
           .AddSingleton<IApplicationThemeService, ApplicationThemeService>();
         services.AddSingleton<IApplicationSettingsStore, JsonApplicationSettingsStore>();
         services.AddSingleton<ICadMessageLog, CadMessageLog>();
-        services.AddSingleton<Cadoryx.Kernel.Abstractions.IAssetStore,Cadoryx.Kernel.Abstractions.MemoryAssetStore>();
+        services.AddSingleton<Cadoryx.Kernel.Abstractions.IAssetStore>(_=>
+            Environment.GetEnvironmentVariable("CADORYX_ASSET_STORE")=="memory"
+                ?new Cadoryx.Kernel.Abstractions.MemoryAssetStore()
+                :new Cadoryx.Kernel.Abstractions.DiskAssetStore(Path.Combine(
+                    Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),"Cadoryx","AssetCache")));
         services.AddSingleton<Cadoryx.Kernel.Abstractions.IGeometryKernel,Cadoryx.Kernel.Occt.OcctGeometryKernel>();
         services.AddSingleton<Cadoryx.Kernel.Abstractions.IDocumentStorage,Cadoryx.IO.CadDocumentStorage>();
         services.AddSingleton<Cadoryx.Sketching.ISketchConstraintSolver,Cadoryx.Sketching.ManagedSketchConstraintSolver>();

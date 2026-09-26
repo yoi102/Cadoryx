@@ -33,6 +33,9 @@ internal static class SmokeRunner
             var viewport=host.Viewport??throw new InvalidOperationException("Native viewer did not initialize.");
             viewport.FitAll();viewport.SaveScreenshot(Path.Combine(output,"viewport.png"));
             if(vm.ModelTree.Items.Count==0)throw new InvalidOperationException("Model tree was not updated.");
+            await WorkspaceToolsSmokeRunner.RunAsync(window,vm,output);
+            await ReviewToolsSmokeRunner.RunAsync(window,vm,output);
+            await SectionAnalysisSmokeRunner.RunAsync(window,vm,services,output);
             var storage=services.GetRequiredService<IDocumentStorage>();var kernel=services.GetRequiredService<IGeometryKernel>();
             await first.Session.SaveAsync(storage,Path.Combine(output,"smoke.cadoryx"));
             foreach(var ext in new[]{"step","iges","stl"})await kernel.ExportAsync(first.Session.Snapshot,first.Session.Assets,Path.Combine(output,"smoke."+ext));
@@ -56,7 +59,7 @@ internal static class SmokeRunner
             if(!await vm.CloseAllAsync())throw new InvalidOperationException("Documents did not close cleanly.");
             await ((App)System.Windows.Application.Current).StopRecoveryAsync();
             await Idle();
-            int assets=((MemoryAssetStore)services.GetRequiredService<IAssetStore>()).Count;
+            int assets=((IAssetStoreStatistics)services.GetRequiredService<IAssetStore>()).Count;
             if(assets!=0)throw new InvalidOperationException($"{assets} assets remain after document close.");
             listener.Flush();bindingOutput.Flush();
             await File.WriteAllTextAsync(Path.Combine(output,"result.txt"),"PASS: native viewport, preview/commit, tree, STEP import, document switching, undo/redo, MessagePack save, STEP/IGES/STL export, resource dialog and density bindings, target part/layer/material creation, instance position bindings, visibility, DialogHost dialogs, three-language layouts, modal airspace suspension, sketch solver/undo/redo/conflict/serialization and real frozen-profile extrusion, zero remaining assets.");

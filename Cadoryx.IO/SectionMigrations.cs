@@ -10,8 +10,8 @@ public sealed partial class CadSectionMigrationRegistry
     private readonly object gate=new();
     public static ImmutableDictionary<string,SectionFormat> CurrentFormats {get;}=new[]
     {
-        new SectionFormat("document",14,"messagepack"),new("structure",3,"messagepack"),new("features",19,"messagepack"),
-        new("presentation",2,"messagepack"),new("geometry",1,"messagepack"),new("sketches",6,"messagepack"),new("topology",1,"messagepack"),new("history",2,"messagepack"),new("history-queries",1,"messagepack"),new("feature-bindings",2,"messagepack")
+        new SectionFormat("document",16,"messagepack"),new("structure",3,"messagepack"),new("features",19,"messagepack"),
+        new("presentation",2,"messagepack"),new("geometry",1,"messagepack"),new("sketches",6,"messagepack"),new("topology",1,"messagepack"),new("history",2,"messagepack"),new("history-queries",1,"messagepack"),new("feature-bindings",2,"messagepack"),new("external-parts",1,"messagepack")
     }.ToImmutableDictionary(x=>x.Kind,StringComparer.Ordinal);
 
     public CadSectionMigrationRegistry(bool includeBuiltIns=true)
@@ -57,8 +57,15 @@ public sealed partial class CadSectionMigrationRegistry
             [new(new("document",12,"messagepack"),MessagePackSections.UpgradeDocumentWorkPlane(input["document"].Bytes))]);
         RegisterStep("document-assembly-constraints",[new("document",12,"messagepack")],[new("document",13,"messagepack")],input=>
             [new(new("document",13,"messagepack"),MessagePackSections.UpgradeDocumentAssemblyConstraints(input["document"].Bytes))]);
-        RegisterStep("document-assembly-axes",[new("document",13,"messagepack")],[CurrentFormats["document"]],input=>
-            [new(CurrentFormats["document"],MessagePackSections.UpgradeDocumentAssemblyAxes(input["document"].Bytes))]);
+        RegisterStep("document-assembly-axes",[new("document",13,"messagepack")],[new("document",14,"messagepack")],input=>
+            [new(new("document",14,"messagepack"),MessagePackSections.UpgradeDocumentAssemblyAxes(input["document"].Bytes))]);
+        RegisterStep("introduce-external-parts",[new("document",14,"messagepack")],
+            [new("document",15,"messagepack"),CurrentFormats["external-parts"]],input=>
+            [new(new("document",15,"messagepack"),input["document"].Bytes),
+                new(CurrentFormats["external-parts"],MessagePackSections.EncodeExternalParts([]))]);
+        RegisterStep("document-assembly-angle-and-plane",[new("document",15,"messagepack")],
+            [CurrentFormats["document"]],input=>
+            [new(CurrentFormats["document"],MessagePackSections.UpgradeDocumentAssemblyAngles(input["document"].Bytes))]);
         RegisterStep("feature-stale-state",[new("features",5,"messagepack")],[new("features",6,"messagepack")],input=>
             [new(new("features",6,"messagepack"),input["features"].Bytes)]);
         RegisterStep("local-chamfer-two-distances",[new("features",6,"messagepack")],[new("features",7,"messagepack")],input=>

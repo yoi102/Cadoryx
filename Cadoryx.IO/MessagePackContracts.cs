@@ -34,7 +34,8 @@ public sealed record PackAssemblyConstraint(
     [property:Key(11)] PackTopologyReference? PrimaryTopology,
     [property:Key(12)] PackTopologyReference? SecondaryTopology,
     [property:Key(13)] bool Enabled,[property:Key(14)] int Version,
-    [property:Key(15)] double[]? PrimaryAxis=null,[property:Key(16)] double[]? SecondaryAxis=null);
+    [property:Key(15)] double[]? PrimaryAxis=null,[property:Key(16)] double[]? SecondaryAxis=null,
+    [property:Key(17)] double TargetAngleRad=0);
 
 [MessagePackObject]
 public sealed record PackStructure(

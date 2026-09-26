@@ -103,6 +103,8 @@ public partial class MainWindowViewModel : ObservableObject
     public string GridVisibleLabel=>Strings.ResourceManager.GetString("GridVisible")??"Show work grid";
     public string GridSpacingLabel=>Strings.ResourceManager.GetString("GridSpacing")??"Grid spacing (mm)";
     public string GridSnapLabel=>Strings.ResourceManager.GetString("SnapToGrid")??"Snap to grid";
+    public string GridDisplayHint=>Strings.ResourceManager.GetString("GridDisplayHint")??
+        "Visual grid density adapts to zoom; snapping uses the document spacing.";
     public string DocumentSettingsTitle=>Strings.ResourceManager.GetString("DocumentSettingsTitle")??"Document settings";
     public string HistoryQueryTitle=>Cadoryx.Lang.Strings.Strings.ResourceManager.GetString("HistoryQueryTitle")??"History diagnostics";
 
@@ -142,6 +144,9 @@ public partial class MainWindowViewModel : ObservableObject
         OnPropertyChanged(nameof(GridVisibleLabel));
         OnPropertyChanged(nameof(GridSpacingLabel));
         OnPropertyChanged(nameof(GridSnapLabel));
+        OnPropertyChanged(nameof(GridDisplayHint));
+        ActiveDocument?.RefreshScaleSummaryLanguage();
+        ModelTree.RefreshLanguage();Properties.RefreshLanguage();
         OnPropertyChanged(nameof(DocumentSettingsTitle));
         _applicationSettings.General.CultureLcid = lcid;
         _applicationSettingsStore.Save(_applicationSettings);
@@ -207,7 +212,7 @@ public partial class MainWindowViewModel : ObservableObject
     private void FitView()=>ActiveDocument?.FitView();
 
     [RelayCommand(CanExecute=nameof(CanUseDocument))]
-    private void SetView(string viewName)=>ActiveDocument?.SetView(viewName switch{"Front"=>CadProjection.Front,"Top"=>CadProjection.Top,"Right"=>CadProjection.Right,_=>CadProjection.Axonometric});
+    private void SetView(string viewName)=>ActiveDocument?.SetView(viewName switch{"Front"=>CadProjection.Front,"Top"=>CadProjection.Top,"Right"=>CadProjection.Right,"Back"=>CadProjection.Back,"Bottom"=>CadProjection.Bottom,"Left"=>CadProjection.Left,_=>CadProjection.Axonometric});
     [RelayCommand] private void StartTool(string kind){if(ActiveDocument is null)New();ActiveDocument?.StartTool(kind);}
     [RelayCommand] private void SetDisplay(string mode)=>ActiveDocument?.SetDisplay(mode=="Wireframe"?CadDisplayMode.Wireframe:CadDisplayMode.Shaded);
     [RelayCommand(CanExecute=nameof(CanEditDocument))] private async Task OpenDocumentSettingsAsync()
@@ -277,7 +282,7 @@ public partial class MainWindowViewModel : ObservableObject
     }
     private void Attach(CadDocumentSession session)
     {
-        var doc=new CadDocumentViewModel(session,kernel,log);Documents.Add(doc);
+        var doc=new CadDocumentViewModel(session,kernel,log,storage,files);Documents.Add(doc);
         doc.Activated+=OnDocumentActivated;doc.CloseRequested+=OnDocumentCloseRequested;doc.LocalFeatureEditRequested+=OnLocalFeatureEditRequested;
         session.StatusChanged+=OnDocumentStatus;
         try{_dockLayoutService.OpenDocument(doc);ActiveDocument=doc;doc.IsActive=true;}

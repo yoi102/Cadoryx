@@ -7,14 +7,20 @@ public interface IAssetLease : IDisposable
 {
     AssetId Id { get; }
     ReadOnlyMemory<byte> Content { get; }
+    long Length => Content.Length;
 }
 public interface IAssetStore
 {
     IAssetLease Stage(ReadOnlySpan<byte> content);
     IAssetLease Acquire(AssetId id);
 }
+public interface IAssetStoreStatistics
+{
+    int Count {get;}
+    long SizeBytes {get;}
+}
 /// <summary>Content-addressed immutable assets. A lease is required for every consumer.</summary>
-public sealed class MemoryAssetStore : IAssetStore
+public sealed class MemoryAssetStore : IAssetStore,IAssetStoreStatistics
 {
     private readonly object gate=new();
     private readonly Dictionary<AssetId,Entry> entries=[];
@@ -51,6 +57,7 @@ public sealed class MemoryAssetStore : IAssetStore
 public sealed class DocumentAssetLease : IDisposable
 {
     private readonly List<IAssetLease> leases=[];
+    public IReadOnlyDictionary<AssetId,long> PayloadSizes()=>leases.ToDictionary(l=>l.Id,l=>l.Length);
     public DocumentAssetLease(DocumentSnapshot snapshot,IAssetStore store)
     {
         try {foreach(var id in snapshot.ReferencedAssets())leases.Add(store.Acquire(id));}

@@ -39,6 +39,8 @@ public sealed class AddBodyCommand(GeometryRecipe recipe,string name,DefinitionI
         if(targetPart is null&&parts.Length>1)throw new CadValidationException(Strings.SelectTargetPart);
         var target=targetPart is {} selected?initial.Definitions.GetValueOrDefault(selected) as PartDefinition:parts.SingleOrDefault();
         if(targetPart is not null&&target is null)throw new CadValidationException(Strings.SelectTargetPart);
+        if(target is not null&&initial.ExternalParts.ContainsKey(target.Id))
+            throw new CadValidationException("Detach the external part before editing its geometry.");
         var layer=targetLayer??initial.Layers.Values.OrderBy(l=>l.IsLocked).ThenBy(l=>l.Id.Value).First().Id;
         if(!initial.Layers.TryGetValue(layer,out var destination))throw new CadValidationException(Strings.SelectLayer);
         if(destination.IsLocked)throw new CadValidationException(Strings.LayerLocked);

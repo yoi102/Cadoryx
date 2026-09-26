@@ -11,6 +11,18 @@
  <ScrollViewer VerticalScrollBarVisibility="Auto">
   <StackPanel Margin="12">
    <TextBlock Text="{Binding SelectionSummary}" FontSize="15" Margin="0,0,0,12"/>
+   <Expander Header="{I18N {x:Static r:LangKeys.SelectionMeasurements}}" IsExpanded="True" Margin="0,0,0,12">
+    <Expander.Style><Style TargetType="Expander" BasedOn="{StaticResource {x:Type Expander}}"><Style.Triggers>
+     <DataTrigger Binding="{Binding HasSelection}" Value="False"><Setter Property="Visibility" Value="Collapsed"/></DataTrigger>
+    </Style.Triggers></Style></Expander.Style>
+    <StackPanel>
+     <TextBlock Text="{I18N {x:Static r:LangKeys.SelectionMeasurementHint}}" TextWrapping="Wrap" Opacity="0.65" Margin="0,6"/>
+     <ItemsControl ItemsSource="{Binding Measurements}">
+      <ItemsControl.ItemTemplate><DataTemplate><StackPanel Margin="0,4"><TextBlock Text="{Binding Name}" Opacity="0.6"/><TextBlock Text="{Binding Value}" TextWrapping="Wrap"/></StackPanel></DataTemplate></ItemsControl.ItemTemplate>
+     </ItemsControl>
+    </StackPanel>
+   </Expander>
+   <views:DocumentReviewView DataContext="{Binding Review}"/>
    <StackPanel IsEnabled="{Binding HasSelection}">
     <StackPanel.Style><Style TargetType="StackPanel"><Style.Triggers>
      <DataTrigger Binding="{Binding HasSelection}" Value="False"><Setter Property="Visibility" Value="Collapsed"/></DataTrigger>

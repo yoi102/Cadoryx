@@ -44,6 +44,13 @@
     <Button x:Name="ParallelButton" Content="{Binding ParallelLabel}" Command="{Binding AddParallelCommand}" Margin="0,0,3,0"/>
     <Button x:Name="CoaxialButton" Content="{Binding CoaxialLabel}" Command="{Binding AddCoaxialCommand}" Margin="3,0,0,0"/>
    </UniformGrid>
+   <TextBlock Text="{Binding AngleLabel}"/>
+   <mah:NumericUpDown x:Name="AngleRelationInput" Value="{Binding AngleDegrees,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                      Minimum="0" Maximum="180" Margin="0,4,0,8"/>
+   <UniformGrid Columns="2" IsEnabled="{Binding CanCreate}" Margin="0,0,0,8">
+    <Button x:Name="AngleRelationButton" Content="{Binding AddAngleLabel}" Command="{Binding AddAngleCommand}" Margin="0,0,3,0"/>
+    <Button x:Name="PlaneRelationButton" Content="{Binding AddPlaneLabel}" Command="{Binding AddPlaneCommand}" Margin="3,0,0,0"/>
+   </UniformGrid>
    <ListBox x:Name="RelationList" ItemsSource="{Binding Constraints}" SelectedItem="{Binding SelectedConstraint}"
             DisplayMemberPath="Display" MinHeight="42" MaxHeight="180" Margin="0,0,0,6"/>
    <TextBlock Text="{Binding SelectedConstraint.Explanation}" TextWrapping="Wrap" Opacity="0.7" Margin="0,0,0,8"/>
@@ -51,6 +58,10 @@
     <Button x:Name="AdjustButton" Content="{Binding AdjustLabel}" Command="{Binding AdjustCommand}" Margin="0,0,3,0"/>
     <Button Content="{Binding ApplyDistanceLabel}" Command="{Binding ApplyDistanceCommand}" Margin="3,0,0,0"/>
    </UniformGrid>
+   <Button Content="{Binding ApplyAngleLabel}" Command="{Binding ApplyAngleCommand}"
+           IsEnabled="{Binding CanEditSelected}" Margin="0,0,0,8"/>
+   <Button x:Name="SolveAllButton" Content="{Binding SolveAllLabel}" Command="{Binding SolveAllCommand}"
+           Margin="0,0,0,8"/>
    <UniformGrid Columns="2" IsEnabled="{Binding CanEditSelected}" Margin="0,0,0,8">
     <Button x:Name="ApplyAnchorsButton" Content="{Binding ApplyAnchorsLabel}" Command="{Binding ApplyAnchorsCommand}" Margin="0,0,3,0"/>
     <Button x:Name="ApplyAxesButton" Content="{Binding ApplyAxesLabel}" Command="{Binding ApplyAxesCommand}" Margin="3,0,0,0"/>

@@ -4,12 +4,50 @@
  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
  xmlns:r="clr-namespace:Cadoryx.Lang;assembly=Cadoryx.Lang"
  xmlns:vm="clr-namespace:Cadoryx.ViewModels.Toolboxes;assembly=Cadoryx.ViewModels"
+ xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
  mc:Ignorable="d"
  d:DataContext="{d:DesignInstance Type=vm:ModelTreeToolboxViewModel}">
  <DockPanel Margin="8">
   <TextBlock DockPanel.Dock="Top" Text="{I18N {x:Static r:LangKeys.ModelTreeInstruction}}" TextWrapping="Wrap" Margin="0,0,0,8"/>
-  <TreeView ItemsSource="{Binding Items}" SelectedItemChanged="OnSelectedItemChanged" BorderThickness="0">
-   <TreeView.ItemContainerStyle><Style TargetType="TreeViewItem"><Setter Property="IsExpanded" Value="{Binding IsExpanded,Mode=TwoWay}"/></Style></TreeView.ItemContainerStyle>
+  <StackPanel DockPanel.Dock="Top" Margin="0,0,0,8">
+   <TextBox x:Name="SearchInput" Text="{Binding SearchText,UpdateSourceTrigger=PropertyChanged}" ToolTip="{I18N {x:Static r:LangKeys.ModelSearchHint}}">
+    <TextBox.InputBindings><KeyBinding Key="Enter" Command="{Binding SearchCommand}"/></TextBox.InputBindings>
+   </TextBox>
+   <WrapPanel Margin="0,5">
+    <Button Content="{I18N {x:Static r:LangKeys.ModelSearch}}" Command="{Binding SearchCommand}" Margin="0,0,5,0"/>
+    <Button Content="{I18N {x:Static r:LangKeys.LocateSelection}}" Command="{Binding LocateSelectionCommand}"/>
+   </WrapPanel>
+   <Expander Header="{Binding SearchSummary}" IsExpanded="{Binding ShowSearchResults,Mode=TwoWay}">
+    <Expander.Style><Style TargetType="Expander" BasedOn="{StaticResource {x:Type Expander}}"><Style.Triggers>
+     <DataTrigger Binding="{Binding SearchSummary}" Value=""><Setter Property="Visibility" Value="Collapsed"/></DataTrigger>
+    </Style.Triggers></Style></Expander.Style>
+    <StackPanel>
+   <ListBox x:Name="SearchResultsList" ItemsSource="{Binding SearchResults}" SelectedItem="{Binding SelectedSearchHit}" MaxHeight="150"
+            ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+    <ListBox.ItemTemplate><DataTemplate><StackPanel Margin="0,3"><TextBlock Text="{Binding Name}"/><TextBlock Text="{Binding Breadcrumb}" FontSize="11" Opacity="0.65" TextWrapping="Wrap"/></StackPanel></DataTemplate></ListBox.ItemTemplate>
+   </ListBox>
+   <Button x:Name="LocateResultButton" Content="{I18N {x:Static r:LangKeys.LocateSearchResult}}" Command="{Binding LocateSearchResultCommand}" Margin="0,5,0,0"/>
+    </StackPanel>
+   </Expander>
+  </StackPanel>
+  <Expander x:Name="HistoryExpander" DockPanel.Dock="Bottom" Header="{I18N {x:Static r:LangKeys.SessionHistory}}" Margin="0,8,0,0">
+   <ScrollViewer x:Name="HistoryScroll" MaxHeight="140" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+   <StackPanel DataContext="{Binding History}">
+    <TextBlock Text="{Binding Summary}" TextWrapping="Wrap" Margin="0,5"/>
+    <TextBlock Text="{I18N {x:Static r:LangKeys.HistoryBudgetHint}}" TextWrapping="Wrap" Opacity="0.65" Margin="0,5"/>
+    <TextBlock Text="{I18N {x:Static r:LangKeys.HistoryEntryLimit}}"/>
+    <mah:NumericUpDown Minimum="1" Maximum="5000" Interval="1" StringFormat="F0" Value="{Binding EntryLimit}"/>
+    <TextBlock Text="{I18N {x:Static r:LangKeys.HistoryAssetBudget}}" Margin="0,5,0,0"/>
+    <mah:NumericUpDown x:Name="HistoryBudgetInput" Minimum="0" Maximum="32768" Interval="64" Value="{Binding AssetBudgetMiB}"/>
+    <Button x:Name="ApplyHistoryButton" Content="{I18N {x:Static r:LangKeys.ApplyHistoryBudget}}" Command="{Binding ApplyCommand}" Margin="0,5"/>
+    <Button Content="{I18N {x:Static r:LangKeys.ClearSessionHistory}}" Command="{Binding ClearCommand}"/>
+   </StackPanel>
+   </ScrollViewer>
+  </Expander>
+  <TreeView x:Name="ModelTree" ItemsSource="{Binding Items}" SelectedItemChanged="OnSelectedItemChanged" BorderThickness="0"
+            VirtualizingPanel.IsVirtualizing="True" VirtualizingPanel.VirtualizationMode="Recycling"
+            ScrollViewer.CanContentScroll="True">
+   <TreeView.ItemContainerStyle><Style TargetType="TreeViewItem"><Setter Property="IsExpanded" Value="{Binding IsExpanded,Mode=TwoWay}"/><Setter Property="IsSelected" Value="{Binding IsSelected,Mode=TwoWay}"/><EventSetter Event="Selected" Handler="OnTreeItemSelected"/></Style></TreeView.ItemContainerStyle>
    <TreeView.Resources>
     <HierarchicalDataTemplate DataType="{x:Type vm:ModelTreeItemViewModel}" ItemsSource="{Binding Children}">
      <StackPanel Orientation="Horizontal" Margin="0,3">

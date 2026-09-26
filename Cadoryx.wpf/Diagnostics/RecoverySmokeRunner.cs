@@ -309,7 +309,7 @@ internal static class RecoverySmokeRunner
             await ((App)System.Windows.Application.Current).StopRecoveryAsync();
             Require((await store.ScanAsync()).Entries.Count == 0, "Closed documents left recoverable entries.");
             Require(!Directory.EnumerateFiles(Path.Combine(output, "recovery"), "*.json", SearchOption.AllDirectories).Any(), "Normal close left checkpoint metadata.");
-            Require(((MemoryAssetStore)services.GetRequiredService<IAssetStore>()).Count == 0, "Recovered assets leaked after close.");
+            Require(((IAssetStoreStatistics)services.GetRequiredService<IAssetStore>()).Count == 0, "Recovered assets leaked after close.");
             listener.Flush(); bindingOutput.Flush();
             await File.WriteAllTextAsync(Path.Combine(output, "result.txt"), "PASS: production 30-second timer, forced process termination, startup recovery center, restore command, exact IDs/state/assets, unsaved copy, unchanged original, real native viewport, save copy, normal-close cleanup, zero remaining assets.");
             window.CloseAfterSmoke();

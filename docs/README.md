@@ -35,8 +35,10 @@
 | [M5 零件与定义维护](M5_PARTS_AND_MAINTENANCE.md) | 逐实例零件独立化、未用定义清理和编辑范围 |
 | [M5 装配关系](M5_ASSEMBLY_RELATIONS.md) | 固定实例、点对重合/距离、失效诊断、文档保存和属性面板 |
 | [M5 局部锚点与轴关系](M5_AXIS_RELATIONS.md) | 可编辑局部点、平行轴/同轴单关系调整及 document v14 |
+| [M5 外部零件与关系图收尾](M5_COMPLETION.md) | 冻结零件链接、角度/平面基准、保守批量调整与剩余能力边界 |
+| [M6 大型模型基础](M6_SCALE_FOUNDATIONS.md) | 几何复用与规模信息、按展开加载模型树、自适应显示网格 |
 
-设计基线日期：2026-09-11；代码实施更新：2026-09-25。现已建立 15 个项目，接通多文档 WPF、真实 OCCT 视口、模型树、属性、基础建模、特征重算、撤销重做、文件操作、恢复及有限约束集的草图编辑/关联特征。已明确选择的圆孔、直线闭环多边形孔、三点圆弧＋弦、多圆弧混合闭环及曲线孔可用于拉伸；受限三次 B 样条独立区域、基础装配实例编辑、逐实例零件独立化、未用定义清理，以及固定实例、可编辑局部点和平行轴/同轴单关系调整已联合验收。任意混合样条链、通用拓扑命名、完整机械配合求解、外部引用以及大型模型能力仍按[路线图](ROADMAP.md)推进。
+设计基线日期：2026-09-11；代码实施更新：2026-09-25。现已建立 15 个项目，接通多文档 WPF、真实 OCCT 视口、模型树、属性、基础建模、特征重算、撤销重做、文件操作、恢复及有限约束集的草图编辑/关联特征。已明确选择的圆孔、直线闭环多边形孔、三点圆弧＋弦、多圆弧混合闭环及曲线孔可用于拉伸；受限三次 B 样条独立区域、基础装配实例编辑、逐实例零件独立化、未用定义清理，以及固定实例、可编辑局部点、平行轴/同轴单关系调整、冻结外部零件快照与受限基准关系图均已联合验收。任意混合样条链、通用拓扑命名、完整闭环机械配合及大型模型能力仍按[路线图](ROADMAP.md)推进。
 
 ## 当前存储与交换
 
@@ -48,7 +50,7 @@ M4-T1-H1 建立局部算法历史证据、八节存储和诊断解析，其当�
 
 M4-T1 已实现 Box 六面/十二边语义引用与持久化；M4-T2 接通 MetroWindow 面/边拾取、失效重选和单边圆角/倒角预览确认；M4-T3-A/B1 增加既有局部特征参数编辑及单边双距离倒角。支持边界见 [拓扑引用基础](TOPOLOGY_REFERENCES.md)和 [局部建模](LOCAL_FEATURES.md)。
 
-`.cadoryx` 采用 ZIP 容器、JSON 清单、MessagePack 3.1.8 数字键 DTO 和独立 BRep/XDE 资产。当前十节为 features v19、document v14、structure v3、presentation/history/feature-bindings v2、sketches v6、geometry/topology/history-queries v1；支持旧四节 JSON v1、MessagePack v2、M3-V、M4-S1/S2/T1/T2、features v6–v18、feature-bindings v1、sketches v1–v5、H2-C1 九节、document v7–v13 及 history v1 文件迁移。资产目录记录媒体类型、编码/格式版本和内核来源。模型数据不直接序列化 ViewModel 或 native 对象。
+`.cadoryx` 采用 ZIP 容器、JSON 清单、MessagePack 3.1.8 数字键 DTO 和独立 BRep/XDE 资产。当前十一节为 features v19、document v16、structure v3、presentation/history/feature-bindings v2、sketches v6、geometry/topology/history-queries/external-parts v1；document v14→v15 引入空链接节，v15→v16 追加目标角度字段，旧文件按既有显式迁移链升级。资产目录记录媒体类型、编码/格式版本和内核来源。模型数据不直接序列化 ViewModel 或 native 对象。
 
 | 格式 | 读取 | 写入 | 用途 |
 |---|---|---|---|
@@ -70,3 +72,12 @@ dotnet run --project Cadoryx.wpf -c Release
 ```
 
 [实施说明](IMPLEMENTATION.md)包含实际源码入口、验证方式和当前限制；[格式契约](COMMANDS_AND_STORAGE.md)说明版本演进。详细设计中的未实现类型仍是后续目标，不能据此推断界面已有对应功能。
+
+[M6 历史预算、模型检索与选择测量](M6_WORKSPACE_TOOLS.md)说明本轮三个大阶段的用户入口、计量语义与联合验证。
+## 审阅与交付续阶段
+
+- [M6 七阶段：精确检查、剖切、隔离、双视口、CLI、磁盘资产和性能报告](M6_REVIEW_AND_DELIVERY.md)
+
+[M6 截面、干涉与缓存生命周期](M6_SECTION_INTERFERENCE_CACHE.md)记录后续三个大阶段及统一验收。
+
+[视图导航与 Ribbon 布局](VIEW_NAVIGATION.md)记录聚焦/适应窗口动画、标准视图入口与右键菜单手势。

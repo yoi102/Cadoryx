@@ -22,9 +22,12 @@ public partial class PropertiesToolboxViewModel:CadToolboxViewModelBase
     [ObservableProperty] private LayerId? selectedLayer;
     public InstancePlacementViewModel? Instance=>document?.Placement;
     public AssemblyConstraintsViewModel? AssemblyRelations=>document?.AssemblyConstraints;
+    public DocumentReviewViewModel? Review=>document?.Review;
     public ObservableCollection<CadMaterial> Materials {get;}=[];
     public ObservableCollection<CadLayer> Layers {get;}=[];
     public ObservableCollection<PropertyRowViewModel> Properties {get;}=[];
+    public ObservableCollection<PropertyRowViewModel> Measurements {get;}=[];
+    public void RefreshLanguage()=>Refresh(this,EventArgs.Empty);
     public PropertiesToolboxViewModel(IToolboxIconProvider iconProvider):base("toolbox.properties",Strings.Properties,DockZone.RightTop,"",true)
     {
         ArgumentNullException.ThrowIfNull(iconProvider);
@@ -36,18 +39,20 @@ public partial class PropertiesToolboxViewModel:CadToolboxViewModelBase
         document=value;
         OnPropertyChanged(nameof(Instance));
         OnPropertyChanged(nameof(AssemblyRelations));
+        OnPropertyChanged(nameof(Review));
         if(document is not null){document.Selection.Changed+=Refresh;document.SceneChanged+=Refresh;}
         Refresh(this,EventArgs.Empty);
     }
     private void Refresh(object? sender,EventArgs e)
     {
-        target=document?.Selection.Items.FirstOrDefault();Properties.Clear();Materials.Clear();Layers.Clear();
+        target=document?.Selection.Items.FirstOrDefault();Properties.Clear();Measurements.Clear();Materials.Clear();Layers.Clear();
         HasSelection=target is not null&&document is not null;
         if(!HasSelection)
         {
             SelectionSummary=document?.Selection.Occurrence is {} path?OccurrencePlacement.Resolve(document.Session.Snapshot,path).Slot.Name:Strings.NoSelection;return;
         }
         var snapshot=document!.Session.Snapshot;var body=snapshot.Bodies[target!.BodyId];
+        RefreshMeasurements(snapshot);
         SelectionSummary=string.Format(Strings.SelectionSummaryFormat,document.Selection.Items.Length,BodyKindText(body.Geometry.Kind));
         ObjectName=body.Name;Argb=body.Appearance.Argb;ByLayer=body.Appearance.ByLayer;IsBodyVisible=body.IsVisible;
         foreach(var m in snapshot.Materials.Values)Materials.Add(m);SelectedMaterial=body.MaterialId;
@@ -59,6 +64,27 @@ public partial class PropertiesToolboxViewModel:CadToolboxViewModelBase
         Properties.Add(new(Strings.BoundsMaximum,body.Geometry.Bounds.Max.ToString()));
         Properties.Add(new(Strings.Layer,snapshot.Layers[body.LayerId].Name));
         Properties.Add(new(Strings.InstancePath,target.Path.ToString()));
+    }
+    private void RefreshMeasurements(DocumentSnapshot snapshot)
+    {
+        try
+        {
+            if(SelectionMeasurement.Measure(snapshot,document!.Selection.Items) is not {} m)return;
+            var settings=snapshot.Settings;var factor=DocumentSettings.MillimetersPerUnit(settings.DisplayUnit);
+            var unit=settings.DisplayUnit switch{LengthUnit.Centimeter=>"cm",LengthUnit.Meter=>"m",LengthUnit.Inch=>"in",_=>"mm"};
+            string Number(double value)=>value.ToString("F"+settings.DecimalPlaces);
+            string Point(Vector3d p)=>$"({Number(p.X/factor)}, {Number(p.Y/factor)}, {Number(p.Z/factor)}) {unit}";
+            string R(string key)=>Strings.ResourceManager.GetString(key,Strings.Culture)!;
+            Measurements.Add(new(R("MeasuredInstances"),m.BodyInstances.ToString()));
+            Measurements.Add(new(R("WorldEnvelopeMin"),Point(m.WorldEnvelope.Min)));
+            Measurements.Add(new(R("WorldEnvelopeMax"),Point(m.WorldEnvelope.Max)));
+            Measurements.Add(new(R("WorldEnvelopeSize"),Point(m.WorldEnvelope.Max-m.WorldEnvelope.Min)));
+            Measurements.Add(new(R("SelectionVolumeSum"),$"{Number(m.VolumeSumMm3/(factor*factor*factor))} {unit}³ ({m.VolumetricInstances}/{m.BodyInstances})"));
+            Measurements.Add(new(R("SelectionMassSum"),m.MassSumKg is {} mass?Number(mass)+" kg":R("MeasurementMassUnavailable")));
+            if(m.EnvelopeCenterDistanceMm is {} distance)
+                Measurements.Add(new(R("EnvelopeCenterDistance"),Number(distance/factor)+" "+unit));
+        }
+        catch(CadValidationException ex){Measurements.Add(new(Strings.ResourceManager.GetString("SelectionMeasurements",Strings.Culture)!,ex.Message));}
     }
     [RelayCommand] private async Task ApplyAsync()
     {

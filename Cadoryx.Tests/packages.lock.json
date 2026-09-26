@@ -327,6 +327,16 @@
           "xunit.extensibility.core": "[2.9.3]"
         }
       },
+      "cadoryx.cli": {
+        "type": "Project",
+        "dependencies": {
+          "Cadoryx.Editor": "[1.0.0, )",
+          "Cadoryx.IO": "[1.0.0, )",
+          "Cadoryx.Kernel.Occt": "[1.0.0, )",
+          "Cadoryx.Rendering": "[1.0.0, )",
+          "OcctSharp.Native.win-x64": "[8.0.1-preview.28.cadoryx.topology.1, 8.0.1-preview.28.cadoryx.topology.1]"
+        }
+      },
       "cadoryx.commands": {
         "type": "Project",
         "dependencies": {

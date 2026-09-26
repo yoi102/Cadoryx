@@ -1,5 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup><PlatformTarget>x64</PlatformTarget></PropertyGroup>
+  <ItemGroup><AssemblyMetadata Include="OcctSharpPackageVersion" Value="$(OcctSharpVersion)" /></ItemGroup>
   <ItemGroup><ProjectReference Include="../Cadoryx.Kernel.Abstractions/Cadoryx.Kernel.Abstractions.csproj" /></ItemGroup>
   <ItemGroup><PackageReference Include="OcctSharp" Version="[$(OcctSharpVersion)]" /></ItemGroup>
 </Project>

@@ -15,6 +15,8 @@ public sealed record DocumentSnapshot(DocumentId Id,DocumentStateId StateId,stri
     public ImmutableDictionary<HistoryQueryId,HistoryQuery> HistoryQueries {get;init;}=ImmutableDictionary<HistoryQueryId,HistoryQuery>.Empty;
     public ImmutableDictionary<AssemblyConstraintId,AssemblyConstraint> AssemblyConstraints {get;init;}=
         ImmutableDictionary<AssemblyConstraintId,AssemblyConstraint>.Empty;
+    public ImmutableDictionary<DefinitionId,ExternalPartLink> ExternalParts {get;init;}=
+        ImmutableDictionary<DefinitionId,ExternalPartLink>.Empty;
     public static DocumentSnapshot Create(string name)
     {
         CadGuard.Name(name);var root=DefinitionId.New();var layer=LayerId.New();
@@ -133,6 +135,15 @@ public sealed record DocumentSnapshot(DocumentId Id,DocumentStateId StateId,stri
         foreach(var (id,m) in Materials){CadGuard.Id(id);CadGuard.Name(m.Name);CadGuard.Positive(m.DensityKgPerMm3);if(id!=m.Id)throw new CadValidationException("Material key mismatch.");}
         ValidateDag(Definitions.Keys,id=>Definitions[id] is AssemblyDefinition a?a.Children.Select(x=>x.DefinitionId):[]);
         ValidateDag(Features.Keys,id=>Features[id].Inputs);
+        if(ExternalParts.Count>4096)throw new CadValidationException("Too many external part links.");
+        foreach(var (id,link) in ExternalParts)
+        {
+            link.Validate();
+            if(id!=link.TargetPartId||!Definitions.TryGetValue(id,out var definition)||
+               definition is not PartDefinition part||!part.Features.IsEmpty||
+               part.Bodies.Any(body=>Bodies[body].Producer is not null))
+                throw new CadValidationException("External part must be a frozen part snapshot.");
+        }
         if(AssemblyConstraints.Count>4096)throw new CadValidationException("Too many assembly constraints.");
         var constraintOccurrences=AssemblyConstraints.Count>0?EnumerateOccurrences().ToDictionary(o=>o.Path):null;
         foreach(var (id,constraint) in AssemblyConstraints)

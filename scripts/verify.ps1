@@ -9,6 +9,7 @@ try {
     if ($LASTEXITCODE -ne 0) { throw 'Release build failed.' }
     dotnet test Cadoryx.Tests -c Release --no-build --no-restore --nologo -v minimal
     if ($LASTEXITCODE -ne 0) { throw 'Tests failed.' }
+    if ($PublishSmoke) { & (Join-Path $PSScriptRoot 'verify-cli.ps1') }
     if ($PublishSmoke -or $RecoverySmoke -or $WindowSmoke -or $SketchSmoke) {
         $cadStamp = Get-Date -Format 'yyyyMMdd-HHmmss'
         $cadPublish = Join-Path $cadRoot "artifacts\publish\$cadStamp"

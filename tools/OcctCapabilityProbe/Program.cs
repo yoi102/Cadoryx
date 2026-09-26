@@ -329,6 +329,35 @@ Probe("xde-assembly-color-step",()=>
     finally{foreach(var instance in instances)instance.Dispose();}
     return new{occurrences=instances.Length,sharedDefinition=true,colorPreserved=true,placementPreserved=true,bytes=new FileInfo(path).Length};
 });
+Probe("exact-review-properties-and-distance",()=>
+{
+    using var box=ShapeFactory.CreateBox(10,20,30);
+    using var transform=GpTrsf.Create(25,0,0,0,0,1,0);using var placed=box.Transformed(transform);
+    double area=0;var faces=box.GetFaces();
+    try{area=faces.Sum(face=>face.InspectProperties(InspectionPropertyKind.Area).Mass);}finally{foreach(var face in faces)face.Dispose();}
+    Near(area,2200);
+    var volume=placed.InspectProperties(InspectionPropertyKind.Volume);Near(volume.Mass,6000);Near(volume.CenterOfMass.X,30);
+    var distance=box.DistanceTo(placed);Near(distance.Distance,15);
+    return new{area,volume=volume.Mass,distance=distance.Distance,solutions=distance.SolutionCount};
+});
+Probe("world-plane-section-curves",()=>
+{
+    using var box=ShapeFactory.CreateBox(10,20,30);
+    using var wire=ShapeFactory.CreatePolygonWire([new(-1,-1,15),new(11,-1,15),new(11,21,15),new(-1,21,15)],true);
+    using var plane=ShapeFactory.CreatePlanarFace(wire);using var section=box.Section(plane);
+    var edges=section.GetSubShapes(ShapeKind.Edge);
+    try{Require(edges.Length==4,"Missing section edges.");double length=edges.Sum(e=>e.InspectProperties(InspectionPropertyKind.Length).Mass);Near(length,60);return new{edges=edges.Length,length};}
+    finally{foreach(var edge in edges)edge.Dispose();}
+});
+Probe("solid-contact-containment-interference",()=>
+{
+    using var box=ShapeFactory.CreateBox(10,10,10);using var small=ShapeFactory.CreateBox(2,2,2);
+    using var shift=GpTrsf.Create(5,0,0,0,0,1,0);using var moved=box.Transformed(shift);
+    using var pair=box.InspectPair(moved);Require(pair.Classification==ShapePairClassification.Interfering,"Expected volume interference.");Near(pair.OverlapVolume,500);
+    using var inset=GpTrsf.Create(1,1,1,0,0,1,0);using var inner=small.Transformed(inset);
+    using var contained=box.InspectPair(inner);Require(contained.Classification==ShapePairClassification.Contained,"Expected containment.");Near(contained.OverlapVolume,8);
+    return new{overlap=pair.OverlapVolume,contained=contained.OverlapVolume};
+});
 string nativeDirectory=Path.Combine(AppContext.BaseDirectory,"occt");
 var nativeNames=Directory.EnumerateFiles(nativeDirectory,"*.dll").Select(Path.GetFileName).ToHashSet(StringComparer.OrdinalIgnoreCase);
 var loadedNative=Process.GetCurrentProcess().Modules.Cast<ProcessModule>().Where(m=>nativeNames.Contains(m.ModuleName)).ToArray();

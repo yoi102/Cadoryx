@@ -1,13 +1,10 @@
 <UserControl x:Class="Cadoryx.wpf.Views.ViewportView"
  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
- xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
- xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
- xmlns:vm="clr-namespace:Cadoryx.ViewModels;assembly=Cadoryx.ViewModels"
- xmlns:r="clr-namespace:Cadoryx.Lang;assembly=Cadoryx.Lang"
- mc:Ignorable="d"
- d:DataContext="{d:DesignInstance Type=vm:CadDocumentViewModel}">
- <Grid Background="#09101A">
-  <Grid.RowDefinitions><RowDefinition Height="Auto"/><RowDefinition Height="*"/></Grid.RowDefinitions>
-  <Grid x:Name="HostPanel" Grid.Row="1"/>
- </Grid>
+ xmlns:views="clr-namespace:Cadoryx.wpf.Views" xmlns:r="clr-namespace:Cadoryx.Lang;assembly=Cadoryx.Lang">
+  <Grid>
+   <Grid.ColumnDefinitions><ColumnDefinition/><ColumnDefinition x:Name="SplitColumn" Width="0"/><ColumnDefinition x:Name="SecondColumn" Width="0"/></Grid.ColumnDefinitions>
+   <views:ViewportPane/>
+   <GridSplitter Grid.Column="1" Width="5" HorizontalAlignment="Stretch"/>
+   <ContentControl x:Name="SecondPane" Grid.Column="2" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch"/>
+  </Grid>
 </UserControl>

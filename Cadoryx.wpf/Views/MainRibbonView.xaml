@@ -3,115 +3,526 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:r="clr-namespace:Cadoryx.Lang;assembly=Cadoryx.Lang"
              xmlns:vm="clr-namespace:Cadoryx.ViewModels;assembly=Cadoryx.ViewModels"
              mc:Ignorable="d"
-             d:DataContext="{d:DesignInstance Type=vm:MainWindowViewModel}">
+             d:DataContext="{d:DesignInstance Type=vm:MainWindowViewModel}"
+             AutomationProperties.AutomationId="MainRibbon">
+    <UserControl.Resources>
+        <Style x:Key="RibbonGroup"
+               TargetType="HeaderedContentControl">
+            <Setter Property="Margin"
+                    Value="0,2,12,2" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="HeaderedContentControl">
+                        <Border BorderBrush="{DynamicResource MaterialDesign.Brush.Divider}"
+                                BorderThickness="0,0,1,0"
+                                Padding="0,0,12,0">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="62" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <ContentPresenter VerticalAlignment="Center" />
+                                <TextBlock Grid.Row="1"
+                                           Text="{TemplateBinding Header}"
+                                           HorizontalAlignment="Center"
+                                           FontSize="11"
+                                           Opacity="0.65"
+                                           Margin="0,4,0,0" />
+                            </Grid>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style TargetType="Button"
+               BasedOn="{StaticResource MaterialDesignFlatButton}">
+            <Setter Property="Margin"
+                    Value="1" />
+            <Setter Property="MinWidth"
+                    Value="32" />
+            <Setter Property="Width"
+                    Value="32" />
+            <Setter Property="Padding"
+                    Value="4" />
+            <Setter Property="Height"
+                    Value="28" />
+            <Setter Property="HorizontalAlignment"
+                    Value="Center" />
+            <Setter Property="ToolTipService.ShowOnDisabled"
+                    Value="True" />
+            <Setter Property="AutomationProperties.Name"
+                    Value="{Binding ToolTip,RelativeSource={RelativeSource Self}}" />
+            <Style.Triggers>
+                <Trigger Property="Command"
+                         Value="{x:Null}">
+                    <Setter Property="IsEnabled"
+                            Value="False" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <Style x:Key="RibbonIconCheck"
+               TargetType="CheckBox">
+            <Setter Property="Width"
+                    Value="32" />
+            <Setter Property="Height"
+                    Value="28" />
+            <Setter Property="ToolTipService.ShowOnDisabled"
+                    Value="True" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="CheckBox">
+                        <Border x:Name="Frame"
+                                CornerRadius="3"
+                                Background="Transparent"
+                                BorderBrush="Transparent"
+                                BorderThickness="1">
+                            <ContentPresenter HorizontalAlignment="Center"
+                                              VerticalAlignment="Center" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver"
+                                     Value="True">
+                                <Setter TargetName="Frame"
+                                        Property="Background"
+                                        Value="#20808080" />
+                            </Trigger>
+                            <Trigger Property="IsChecked"
+                                     Value="True">
+                                <Setter TargetName="Frame"
+                                        Property="BorderBrush"
+                                        Value="{Binding Foreground,RelativeSource={RelativeSource TemplatedParent}}" />
+                                <Setter TargetName="Frame"
+                                        Property="Background"
+                                        Value="#40808080" />
+                            </Trigger>
+                            <Trigger Property="IsKeyboardFocused"
+                                     Value="True">
+                                <Setter TargetName="Frame"
+                                        Property="BorderBrush"
+                                        Value="{Binding Foreground,RelativeSource={RelativeSource TemplatedParent}}" />
+                            </Trigger>
+                            <Trigger Property="IsEnabled"
+                                     Value="False">
+                                <Setter Property="Opacity"
+                                        Value="0.38" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <DataTemplate x:Key="FrontIcon">
+            <Viewbox Width="20"
+                     Height="20">
+                <Grid Width="24"
+                      Height="24">
+                    <Path Data="M4,8 L12,12 L12,21 L4,17 Z"
+                          Fill="{Binding Foreground,RelativeSource={RelativeSource AncestorType=Button}}"
+                          Opacity="0.55" />
+                    <Path Data="M4,8 L12,3 L20,8 L20,17 L12,21 L4,17 Z M4,8 L12,12 L20,8 M12,12 L12,21"
+                          Stroke="{Binding Foreground,RelativeSource={RelativeSource AncestorType=Button}}"
+                          StrokeThickness="1.4"
+                          StrokeLineJoin="Round" />
+                </Grid>
+            </Viewbox>
+        </DataTemplate>
+        <DataTemplate x:Key="TopIcon">
+            <Viewbox Width="20"
+                     Height="20">
+                <Grid Width="24"
+                      Height="24">
+                    <Path Data="M4,8 L12,3 L20,8 L12,12 Z"
+                          Fill="{Binding Foreground,RelativeSource={RelativeSource AncestorType=Button}}"
+                          Opacity="0.55" />
+                    <Path Data="M4,8 L12,3 L20,8 L20,17 L12,21 L4,17 Z M4,8 L12,12 L20,8 M12,12 L12,21"
+                          Stroke="{Binding Foreground,RelativeSource={RelativeSource AncestorType=Button}}"
+                          StrokeThickness="1.4"
+                          StrokeLineJoin="Round" />
+                </Grid>
+            </Viewbox>
+        </DataTemplate>
+        <DataTemplate x:Key="RightIcon">
+            <Viewbox Width="20"
+                     Height="20">
+                <Grid Width="24"
+                      Height="24">
+                    <Path Data="M12,12 L20,8 L20,17 L12,21 Z"
+                          Fill="{Binding Foreground,RelativeSource={RelativeSource AncestorType=Button}}"
+                          Opacity="0.55" />
+                    <Path Data="M4,8 L12,3 L20,8 L20,17 L12,21 L4,17 Z M4,8 L12,12 L20,8 M12,12 L12,21"
+                          Stroke="{Binding Foreground,RelativeSource={RelativeSource AncestorType=Button}}"
+                          StrokeThickness="1.4"
+                          StrokeLineJoin="Round" />
+                </Grid>
+            </Viewbox>
+        </DataTemplate>
+        <DataTemplate x:Key="ViewBackIcon">
+            <Viewbox Width="20"
+                     Height="20">
+                <Grid Width="24"
+                      Height="24">
+                    <Path Data="M12,3 L20,8 L20,17 L12,12 Z"
+                          Fill="{Binding Foreground,RelativeSource={RelativeSource AncestorType=Button}}"
+                          Opacity="0.55"
+                          Stroke="{Binding Foreground,RelativeSource={RelativeSource AncestorType=Button}}"
+                          StrokeDashArray="2,1"
+                          StrokeThickness="1" />
+                    <Path Data="M4,8 L12,3 L20,8 L20,17 L12,21 L4,17 Z M4,8 L12,12 L20,8 M12,12 L12,21"
+                          Stroke="{Binding Foreground,RelativeSource={RelativeSource AncestorType=Button}}"
+                          StrokeThickness="1.4"
+                          StrokeLineJoin="Round" />
+                </Grid>
+            </Viewbox>
+        </DataTemplate>
+        <DataTemplate x:Key="ViewBottomIcon">
+            <Viewbox Width="20"
+                     Height="20">
+                <Grid Width="24"
+                      Height="24">
+                    <Path Data="M4,17 L12,12 L20,17 L12,21 Z"
+                          Fill="{Binding Foreground,RelativeSource={RelativeSource AncestorType=Button}}"
+                          Opacity="0.55"
+                          Stroke="{Binding Foreground,RelativeSource={RelativeSource AncestorType=Button}}"
+                          StrokeDashArray="2,1"
+                          StrokeThickness="1" />
+                    <Path Data="M4,8 L12,3 L20,8 L20,17 L12,21 L4,17 Z M4,8 L12,12 L20,8 M12,12 L12,21"
+                          Stroke="{Binding Foreground,RelativeSource={RelativeSource AncestorType=Button}}"
+                          StrokeThickness="1.4"
+                          StrokeLineJoin="Round" />
+                </Grid>
+            </Viewbox>
+        </DataTemplate>
+        <DataTemplate x:Key="ViewLeftIcon">
+            <Viewbox Width="20"
+                     Height="20">
+                <Grid Width="24"
+                      Height="24">
+                    <Path Data="M4,8 L12,3 L12,12 L4,17 Z"
+                          Fill="{Binding Foreground,RelativeSource={RelativeSource AncestorType=Button}}"
+                          Opacity="0.55"
+                          Stroke="{Binding Foreground,RelativeSource={RelativeSource AncestorType=Button}}"
+                          StrokeDashArray="2,1"
+                          StrokeThickness="1" />
+                    <Path Data="M4,8 L12,3 L20,8 L20,17 L12,21 L4,17 Z M4,8 L12,12 L20,8 M12,12 L12,21"
+                          Stroke="{Binding Foreground,RelativeSource={RelativeSource AncestorType=Button}}"
+                          StrokeThickness="1.4"
+                          StrokeLineJoin="Round" />
+                </Grid>
+            </Viewbox>
+        </DataTemplate>
+    </UserControl.Resources>
     <Border Background="{DynamicResource MaterialDesign.Brush.Background}"
             BorderBrush="{DynamicResource MaterialDesign.Brush.Divider}"
             BorderThickness="0,0,0,1"
             Padding="12,4">
-        <TabControl BorderThickness="0" Style="{StaticResource MahApps.Styles.TabControl}"
+        <TabControl x:Name="RibbonTabs"
+                    BorderThickness="0"
+                    Style="{StaticResource MahApps.Styles.TabControl}"
                     Background="Transparent">
-            <TabControl.Resources>
-                <Style TargetType="Button"
-                       BasedOn="{StaticResource MaterialDesignFlatButton}">
-                    <Setter Property="Margin"
-                            Value="0,4,6,4" />
-                    <Setter Property="MinWidth"
-                            Value="60" />
-                </Style>
-            </TabControl.Resources>
             <TabItem Header="{I18N {x:Static r:LangKeys.Home}}">
-                <WrapPanel>
-                    <Button Content="{I18N {x:Static r:LangKeys.New}}"
-                            Command="{Binding NewCommand}" />
-                    <Button Content="{I18N {x:Static r:LangKeys.OpenImport}}"
-                            Command="{Binding OpenFileCommand}" />
-                    <Button Content="{I18N {x:Static r:LangKeys.Save}}"
-                            Command="{Binding SaveCommand}" />
-                    <Button Content="{I18N {x:Static r:LangKeys.SaveAs}}"
-                            Command="{Binding SaveAsCommand}" />
-                    <Button Content="{I18N {x:Static r:LangKeys.Export}}"
-                            Command="{Binding ExportCommand}"
-                            ToolTip="{I18N {x:Static r:LangKeys.ExportFormats}}" />
-                    <Separator Width="12" />
-                    <Button Content="{I18N {x:Static r:LangKeys.Undo}}"
-                            Command="{Binding UndoCommand}" />
-                    <Button Content="{I18N {x:Static r:LangKeys.Redo}}"
-                            Command="{Binding RedoCommand}" />
-                    <Separator Width="12" />
-                    <Button Content="{I18N {x:Static r:LangKeys.Fit}}"
-                            Command="{Binding FitViewCommand}" />
-                    <Button Content="{I18N {x:Static r:LangKeys.Box}}"
-                            Command="{Binding StartToolCommand}"
-                            CommandParameter="Box" />
-                    <Button Content="{I18N {x:Static r:LangKeys.Cylinder}}"
-                            Command="{Binding StartToolCommand}"
-                            CommandParameter="Cylinder" />
-                    <Button Content="{I18N {x:Static r:LangKeys.DocumentResources}}" Command="{Binding ManageResourcesCommand}" />
-                </WrapPanel>
+                <ScrollViewer HorizontalScrollBarVisibility="Auto"
+                              VerticalScrollBarVisibility="Disabled">
+                    <StackPanel Orientation="Horizontal">
+                        <HeaderedContentControl Style="{StaticResource RibbonGroup}"
+                                                Header="{I18N {x:Static r:LangKeys.File}}">
+                            <UniformGrid Rows="2"
+                                         Columns="3">
+                                <Button  Command="{Binding NewCommand}"
+                                         ToolTip="{I18N {x:Static r:LangKeys.New}}">
+                                    <md:PackIcon Kind="FilePlusOutline"
+                                                 Width="20"
+                                                 Height="20" />
+                                </Button>
+                                <Button  Command="{Binding OpenFileCommand}"
+                                         ToolTip="{I18N {x:Static r:LangKeys.OpenImport}}">
+                                    <md:PackIcon Kind="FolderOpenOutline"
+                                                 Width="20"
+                                                 Height="20" />
+                                </Button>
+                                <Button  Command="{Binding SaveCommand}"
+                                         ToolTip="{I18N {x:Static r:LangKeys.Save}}">
+                                    <md:PackIcon Kind="ContentSaveOutline"
+                                                 Width="20"
+                                                 Height="20" />
+                                </Button>
+                                <Button  Command="{Binding SaveAsCommand}"
+                                         ToolTip="{I18N {x:Static r:LangKeys.SaveAs}}">
+                                    <md:PackIcon Kind="ContentSaveEditOutline"
+                                                 Width="20"
+                                                 Height="20" />
+                                </Button>
+                                <Button  Command="{Binding ExportCommand}"
+                                         ToolTip="{I18N {x:Static r:LangKeys.Export}}">
+                                    <md:PackIcon Kind="FileExportOutline"
+                                                 Width="20"
+                                                 Height="20" />
+                                </Button>
+                            </UniformGrid>
+                        </HeaderedContentControl>
+                        <HeaderedContentControl Style="{StaticResource RibbonGroup}"
+                                                Header="{I18N {x:Static r:LangKeys.RibbonHistory}}">
+                            <StackPanel>
+                                <Button  Command="{Binding UndoCommand}"
+                                         ToolTip="{I18N {x:Static r:LangKeys.Undo}}">
+                                    <md:PackIcon Kind="Undo"
+                                                 Width="20"
+                                                 Height="20" />
+                                </Button>
+                                <Button  Command="{Binding RedoCommand}"
+                                         ToolTip="{I18N {x:Static r:LangKeys.Redo}}">
+                                    <md:PackIcon Kind="Redo"
+                                                 Width="20"
+                                                 Height="20" />
+                                </Button>
+                            </StackPanel>
+                        </HeaderedContentControl>
+                        <HeaderedContentControl Style="{StaticResource RibbonGroup}"
+                                                Header="{I18N {x:Static r:LangKeys.DocumentResources}}">
+                            <StackPanel>
+                                <Button  Command="{Binding ManageResourcesCommand}"
+                                         ToolTip="{I18N {x:Static r:LangKeys.DocumentResources}}">
+                                    <md:PackIcon Kind="DatabaseCogOutline"
+                                                 Width="20"
+                                                 Height="20" />
+                                </Button>
+                                <Button  Command="{Binding OpenDocumentSettingsCommand}"
+                                         AutomationProperties.AutomationId="OpenDocumentSettings"
+                                         ToolTip="{Binding DocumentSettingsTitle}">
+                                    <md:PackIcon Kind="CogOutline"
+                                                 Width="20"
+                                                 Height="20" />
+                                </Button>
+                            </StackPanel>
+                        </HeaderedContentControl>
+                    </StackPanel>
+                </ScrollViewer>
             </TabItem>
             <TabItem Header="{I18N {x:Static r:LangKeys.Modeling}}">
-                <WrapPanel>
-                    <Button Content="{I18N {x:Static r:LangKeys.Box}}"
-                            Command="{Binding StartToolCommand}"
-                            CommandParameter="Box" />
-                    <Button Content="{I18N {x:Static r:LangKeys.Cylinder}}"
-                            Command="{Binding StartToolCommand}"
-                            CommandParameter="Cylinder" />
-                    <Button Content="{I18N {x:Static r:LangKeys.Extrude}}"
-                            Command="{Binding StartToolCommand}"
-                            CommandParameter="Extrude" />
-                    <Button Content="{I18N {x:Static r:LangKeys.Revolve}}"
-                            Command="{Binding StartToolCommand}"
-                            CommandParameter="Revolve" />
-                    <TextBlock Text="{I18N {x:Static r:LangKeys.ModelingInstruction}}"
-                               VerticalAlignment="Center"
-                               Margin="16,0" />
-                </WrapPanel>
+                <ScrollViewer HorizontalScrollBarVisibility="Auto"
+                              VerticalScrollBarVisibility="Disabled">
+                    <StackPanel Orientation="Horizontal">
+                        <HeaderedContentControl Style="{StaticResource RibbonGroup}"
+                                                Header="{I18N {x:Static r:LangKeys.RibbonPrimitives}}">
+                            <StackPanel>
+                                <Button  Command="{Binding StartToolCommand}"
+                                         CommandParameter="Box"
+                                         ToolTip="{I18N {x:Static r:LangKeys.Box}}">
+                                    <md:PackIcon Kind="CubeOutline"
+                                                 Width="20"
+                                                 Height="20" />
+                                </Button>
+                                <Button  Command="{Binding StartToolCommand}"
+                                         CommandParameter="Cylinder"
+                                         ToolTip="{I18N {x:Static r:LangKeys.Cylinder}}">
+                                    <md:PackIcon Kind="Cylinder"
+                                                 Width="20"
+                                                 Height="20" />
+                                </Button>
+                            </StackPanel>
+                        </HeaderedContentControl>
+                        <HeaderedContentControl Style="{StaticResource RibbonGroup}"
+                                                Header="{I18N {x:Static r:LangKeys.RibbonProfiles}}">
+                            <StackPanel>
+                                <Button  Command="{Binding StartToolCommand}"
+                                         CommandParameter="Extrude"
+                                         ToolTip="{I18N {x:Static r:LangKeys.Extrude}}">
+                                    <md:PackIcon Kind="VectorArrangeAbove"
+                                                 Width="20"
+                                                 Height="20" />
+                                </Button>
+                                <Button  Command="{Binding StartToolCommand}"
+                                         CommandParameter="Revolve"
+                                         ToolTip="{I18N {x:Static r:LangKeys.Revolve}}">
+                                    <md:PackIcon Kind="Rotate_3dVariant"
+                                                 Width="20"
+                                                 Height="20" />
+                                </Button>
+                            </StackPanel>
+                        </HeaderedContentControl>
+                        <HeaderedContentControl Style="{StaticResource RibbonGroup}"
+                                                Header="{I18N {x:Static r:LangKeys.LocalFeatureTitle}}">
+                            <StackPanel>
+                                <Button  Command="{Binding LocalFeatureCommand}"
+                                         ToolTip="{I18N {x:Static r:LangKeys.LocalFeatureTitle}}">
+                                    <md:PackIcon Kind="CubeScan"
+                                                 Width="20"
+                                                 Height="20" />
+                                </Button>
+                                <Button  Command="{Binding HistoryQueryCommand}"
+                                         ToolTip="{Binding HistoryQueryTitle}">
+                                    <md:PackIcon Kind="History"
+                                                 Width="20"
+                                                 Height="20" />
+                                </Button>
+                            </StackPanel>
+                        </HeaderedContentControl>
+                    </StackPanel>
+                </ScrollViewer>
             </TabItem>
             <TabItem Header="{I18N {x:Static r:LangKeys.Sketch}}">
-                <WrapPanel>
-                    <Button Content="{I18N {x:Static r:LangKeys.NewSketch}}" Command="{Binding NewSketchCommand}"/>
-                    <Button Content="{I18N {x:Static r:LangKeys.EditSketch}}" Command="{Binding EditSketchCommand}"/>
-                    <Button Content="{I18N {x:Static r:LangKeys.RemoveSketch}}" Command="{Binding DeleteSketchCommand}"/>
-                    <Separator Width="12"/>
-                    <Button Content="{I18N {x:Static r:LangKeys.SketchExtrude}}" Command="{Binding StartSketchFeatureCommand}" CommandParameter="Extrude"/>
-                    <Button Content="{I18N {x:Static r:LangKeys.SketchRevolve}}" Command="{Binding StartSketchFeatureCommand}" CommandParameter="Revolve"/>
-                </WrapPanel>
+                <ScrollViewer HorizontalScrollBarVisibility="Auto"
+                              VerticalScrollBarVisibility="Disabled">
+                    <StackPanel Orientation="Horizontal">
+                        <HeaderedContentControl Style="{StaticResource RibbonGroup}"
+                                                Header="{I18N {x:Static r:LangKeys.Sketch}}">
+                            <UniformGrid Rows="2"
+                                         Columns="2">
+                                <Button  Command="{Binding NewSketchCommand}"
+                                         ToolTip="{I18N {x:Static r:LangKeys.NewSketch}}">
+                                    <md:PackIcon Kind="VectorSquarePlus"
+                                                 Width="20"
+                                                 Height="20" />
+                                </Button>
+                                <Button  Command="{Binding EditSketchCommand}"
+                                         ToolTip="{I18N {x:Static r:LangKeys.EditSketch}}">
+                                    <md:PackIcon Kind="VectorSquareEdit"
+                                                 Width="20"
+                                                 Height="20" />
+                                </Button>
+                                <Button  Command="{Binding DeleteSketchCommand}"
+                                         ToolTip="{I18N {x:Static r:LangKeys.RemoveSketch}}">
+                                    <md:PackIcon Kind="VectorSquareRemove"
+                                                 Width="20"
+                                                 Height="20" />
+                                </Button>
+                            </UniformGrid>
+                        </HeaderedContentControl>
+                        <HeaderedContentControl Style="{StaticResource RibbonGroup}"
+                                                Header="{I18N {x:Static r:LangKeys.RibbonProfiles}}">
+                            <StackPanel>
+                                <Button  Command="{Binding StartSketchFeatureCommand}"
+                                         CommandParameter="Extrude"
+                                         ToolTip="{I18N {x:Static r:LangKeys.SketchExtrude}}">
+                                    <md:PackIcon Kind="VectorArrangeAbove"
+                                                 Width="20"
+                                                 Height="20" />
+                                </Button>
+                                <Button  Command="{Binding StartSketchFeatureCommand}"
+                                         CommandParameter="Revolve"
+                                         ToolTip="{I18N {x:Static r:LangKeys.SketchRevolve}}">
+                                    <md:PackIcon Kind="Rotate_3dVariant"
+                                                 Width="20"
+                                                 Height="20" />
+                                </Button>
+                            </StackPanel>
+                        </HeaderedContentControl>
+                    </StackPanel>
+                </ScrollViewer>
             </TabItem>
-            <TabItem Header="{I18N {x:Static r:LangKeys.LocalFeatureTitle}}">
-                <StackPanel Orientation="Horizontal" Margin="8"><Button Content="{I18N {x:Static r:LangKeys.LocalFeatureTitle}}" Command="{Binding LocalFeatureCommand}"/><Button Content="{Binding HistoryQueryTitle}" Command="{Binding HistoryQueryCommand}" Margin="8,0,0,0"/></StackPanel>
-            </TabItem>
-            <TabItem Header="{I18N {x:Static r:LangKeys.View}}">
-                <WrapPanel>
-                    <Button Content="{Binding DocumentSettingsTitle}" Command="{Binding OpenDocumentSettingsCommand}" AutomationProperties.AutomationId="OpenDocumentSettings" />
-                    <Button Content="{I18N {x:Static r:LangKeys.Axonometric}}"
-                            Command="{Binding SetViewCommand}"
-                            CommandParameter="Axonometric" />
-                    <Button Content="{I18N {x:Static r:LangKeys.Front}}"
-                            Command="{Binding SetViewCommand}"
-                            CommandParameter="Front" />
-                    <Button Content="{I18N {x:Static r:LangKeys.Top}}"
-                            Command="{Binding SetViewCommand}"
-                            CommandParameter="Top" />
-                    <Button Content="{I18N {x:Static r:LangKeys.Right}}"
-                            Command="{Binding SetViewCommand}"
-                            CommandParameter="Right" />
-                    <Button Content="{I18N {x:Static r:LangKeys.Shaded}}"
-                            Command="{Binding SetDisplayCommand}"
-                            CommandParameter="Shaded" />
-                    <Button Content="{I18N {x:Static r:LangKeys.Wireframe}}"
-                            Command="{Binding SetDisplayCommand}"
-                            CommandParameter="Wireframe" />
-                    <Button Content="{I18N {x:Static r:LangKeys.Model}}"
-                            Command="{Binding ToggleLeftPanelCommand}" />
-                    <Button Content="{I18N {x:Static r:LangKeys.Properties}}"
-                            Command="{Binding ToggleRightPanelCommand}" />
-                    <Button Content="{I18N {x:Static r:LangKeys.Messages}}"
-                            Command="{Binding ToggleBottomPanelCommand}" />
-                </WrapPanel>
+            <TabItem x:Name="ViewTab"
+                     Header="{I18N {x:Static r:LangKeys.View}}">
+                <ScrollViewer HorizontalScrollBarVisibility="Auto"
+                              VerticalScrollBarVisibility="Disabled">
+                    <StackPanel Orientation="Horizontal">
+                        <HeaderedContentControl Style="{StaticResource RibbonGroup}"
+                                                Header="{I18N {x:Static r:LangKeys.RibbonNavigation}}">
+                            <StackPanel>
+                                <Button x:Name="FocusButton"
+                                        Command="{Binding ActiveDocument.Review.FocusCommand}"
+                                        ToolTip="{I18N {x:Static r:LangKeys.ReviewFocus}}">
+                                    <md:PackIcon Kind="SelectionSearch"
+                                                 Width="20"
+                                                 Height="20" />
+                                </Button>
+                                <Button x:Name="FitButton"
+                                        Command="{Binding FitViewCommand}"
+                                        ToolTip="{I18N {x:Static r:LangKeys.Fit}}">
+                                    <md:PackIcon Kind="FitToScreenOutline"
+                                                 Width="20"
+                                                 Height="20" />
+                                </Button>
+                            </StackPanel>
+                        </HeaderedContentControl>
+                        <HeaderedContentControl Style="{StaticResource RibbonGroup}"
+                                                Header="{I18N {x:Static r:LangKeys.RibbonStandardViews}}">
+                            <UniformGrid Rows="2"
+                                         Columns="4">
+                                <Button  Command="{Binding SetViewCommand}"
+                                         CommandParameter="Front"
+                                         ToolTip="{I18N {x:Static r:LangKeys.Front}}"
+                                         ContentTemplate="{StaticResource FrontIcon}" />
+                                <Button  Command="{Binding SetViewCommand}"
+                                         CommandParameter="Top"
+                                         ToolTip="{I18N {x:Static r:LangKeys.Top}}"
+                                         ContentTemplate="{StaticResource TopIcon}" />
+                                <Button  Command="{Binding SetViewCommand}"
+                                         CommandParameter="Right"
+                                         ToolTip="{I18N {x:Static r:LangKeys.Right}}"
+                                         ContentTemplate="{StaticResource RightIcon}" />
+                                <Button  Command="{Binding SetViewCommand}"
+                                         CommandParameter="Axonometric"
+                                         ToolTip="{I18N {x:Static r:LangKeys.Axonometric}}">
+                                    <md:PackIcon Kind="AxisArrow"
+                                                 Width="20"
+                                                 Height="20" />
+                                </Button>
+                                <Button  Command="{Binding SetViewCommand}"
+                                         CommandParameter="Back"
+                                         ToolTip="{I18N {x:Static r:LangKeys.ViewBack}}"
+                                         ContentTemplate="{StaticResource ViewBackIcon}" />
+                                <Button  Command="{Binding SetViewCommand}"
+                                         CommandParameter="Bottom"
+                                         ToolTip="{I18N {x:Static r:LangKeys.ViewBottom}}"
+                                         ContentTemplate="{StaticResource ViewBottomIcon}" />
+                                <Button  Command="{Binding SetViewCommand}"
+                                         CommandParameter="Left"
+                                         ToolTip="{I18N {x:Static r:LangKeys.ViewLeft}}"
+                                         ContentTemplate="{StaticResource ViewLeftIcon}" />
+                            </UniformGrid>
+                        </HeaderedContentControl>
+                        <HeaderedContentControl Style="{StaticResource RibbonGroup}"
+                                                Header="{I18N {x:Static r:LangKeys.RibbonDisplay}}">
+                            <StackPanel>
+                                <Button  Command="{Binding SetDisplayCommand}"
+                                         CommandParameter="Shaded"
+                                         ToolTip="{I18N {x:Static r:LangKeys.Shaded}}">
+                                    <md:PackIcon Kind="Cube"
+                                                 Width="20"
+                                                 Height="20" />
+                                </Button>
+                                <Button  Command="{Binding SetDisplayCommand}"
+                                         CommandParameter="Wireframe"
+                                         ToolTip="{I18N {x:Static r:LangKeys.Wireframe}}">
+                                    <md:PackIcon Kind="CubeOutline"
+                                                 Width="20"
+                                                 Height="20" />
+                                </Button>
+                            </StackPanel>
+                        </HeaderedContentControl>
+                        <HeaderedContentControl Style="{StaticResource RibbonGroup}"
+                                                Header="{I18N {x:Static r:LangKeys.RibbonLayout}}">
+                                <CheckBox x:Name="SplitCheck"
+                                          ToolTip="{I18N {x:Static r:LangKeys.ReviewSplit}}"
+                                          AutomationProperties.Name="{I18N {x:Static r:LangKeys.ReviewSplit}}"
+                                          IsChecked="{Binding ActiveDocument.Review.SplitView,Mode=TwoWay,FallbackValue=False}"
+                                          Margin="1"
+                                          VerticalAlignment="Center"
+                                          HorizontalAlignment="Center">
+                                    <CheckBox.Content>
+                                        <md:PackIcon Kind="ViewSplitVertical"
+                                                     Width="20"
+                                                     Height="20" />
+                                    </CheckBox.Content>
+                                    <CheckBox.Style>
+                                        <Style TargetType="CheckBox"
+                                               BasedOn="{StaticResource RibbonIconCheck}">
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding ActiveDocument}"
+                                                             Value="{x:Null}">
+                                                    <Setter Property="IsEnabled"
+                                                            Value="False" />
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </CheckBox.Style>
+                                </CheckBox>
+                        </HeaderedContentControl>
+                    </StackPanel>
+                </ScrollViewer>
             </TabItem>
         </TabControl>
     </Border>

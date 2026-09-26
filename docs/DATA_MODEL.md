@@ -320,7 +320,7 @@ AssemblyConstraint
   PrimaryTopology? / SecondaryTopology?（精确修订来源，仅诊断）
 ```
 
-路径包含文档 ID 与完整 SlotId 链，定义 ID 在捕获时锁定；缺路径、替换定义或拓扑修订变化均给出诊断，不自动寻找替代。有效固定关系由快照验证保护世界位姿；点对关系只在显式调整时平移第二实例。平行轴只旋转第二实例以对齐无向轴，同轴还消除径向偏移而保留轴向滑移。关系保存在 `document` v14 中，旧 v12 文件迁移为空表、v13 关系补空轴字段。当前没有 `AssemblySolveReport`、拥有者相对路径的复用约束图、角度/面配合或全局求解；它们仍是后续设计议题，详见 [M5 装配关系](M5_ASSEMBLY_RELATIONS.md)及[轴关系扩展](M5_AXIS_RELATIONS.md)。
+路径包含文档 ID 与完整 SlotId 链，定义 ID 在捕获时锁定；缺路径、替换定义或拓扑修订变化均给出诊断，不自动寻找替代。有效固定关系由快照验证保护世界位姿；点对关系只在显式调整时平移第二实例。平行轴只旋转第二实例以对齐无向轴，同轴还消除径向偏移而保留轴向滑移。`document` v16 为角度轴关系追加目标弧度字段；显式点/法向的平面贴合只消除法向距离。`AssemblySolveReport` 仅报告有向关系图的调整、冲突和未固定根实例，不计算准确自由度或任意闭环非线性解。`external-parts` v1 为冻结零件记录来源文档/零件/状态 ID、文件 SHA-256、路径提示和本地指纹；模型载入不主动访问来源。详见 [M5 收尾](M5_COMPLETION.md)。
 
 外部零件引用后续可扩展为 `ExternalDefinitionSource(DocumentId, PinnedStateId, ContentHash, RelativeUri, ResolvePolicy)`。已解析内容作为固定版本的本地快照参与本轮命令；文件更新由显式更新命令获取新版本、校验引用并整体提交。源 URI 是定位提示，不能代替文档和内容身份。
 

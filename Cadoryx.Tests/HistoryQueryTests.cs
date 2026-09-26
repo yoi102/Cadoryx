@@ -59,7 +59,7 @@ public sealed class HistoryQueryTests
                 Assert.Equal(query,loaded.Snapshot.HistoryQueries[query.Id]);
                 Assert.Empty(loaded.Snapshot.TopologyReferences);
                 Assert.Equal(inspection.Result,await kernel.TraceAsync(loaded.Snapshot,query.Source,query.TargetFeatureId,assets));
-                Assert.Equal(10,FormatEvolutionTests.Manifest(path).Sections.Length);
+                Assert.Equal(11,FormatEvolutionTests.Manifest(path).Sections.Length);
             }
             await session.ExecuteAsync(new RemoveHistoryQueryCommand(query.Id));Assert.Empty(session.Snapshot.HistoryQueries);
             await session.UndoAsync();Assert.Equal(query,session.Snapshot.HistoryQueries[query.Id]);
@@ -102,7 +102,7 @@ public sealed class HistoryQueryTests
             string migrated=files.PathFor("migrated.cadoryx");await storage.SaveAsync(loaded.Snapshot,assets,migrated);
             using var next=await storage.LoadAsync(migrated,assets);
             Assert.Empty(next.Snapshot.HistoryQueries);Assert.Equal(loaded.Snapshot.StateId,next.Snapshot.StateId);
-            Assert.Equal(10,FormatEvolutionTests.Manifest(migrated).Sections.Length);
+            Assert.Equal(11,FormatEvolutionTests.Manifest(migrated).Sections.Length);
         }
         Assert.Equal(hash,Convert.ToHexString(System.Security.Cryptography.SHA256.HashData(File.ReadAllBytes(original))));
         Assert.Equal(0,assets.Count);

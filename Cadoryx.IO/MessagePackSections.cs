@@ -62,7 +62,8 @@ internal static partial class MessagePackSections
         c.PrimaryTopology is {} primary?PackTopology(primary):null,
         c.SecondaryTopology is {} secondary?PackTopology(secondary):null,c.IsEnabled,c.SchemaVersion,
         c.PrimaryLocalAxis==Vector3d.Zero?null:[c.PrimaryLocalAxis.X,c.PrimaryLocalAxis.Y,c.PrimaryLocalAxis.Z],
-        c.SecondaryLocalAxis==Vector3d.Zero?null:[c.SecondaryLocalAxis.X,c.SecondaryLocalAxis.Y,c.SecondaryLocalAxis.Z]);
+        c.SecondaryLocalAxis==Vector3d.Zero?null:[c.SecondaryLocalAxis.X,c.SecondaryLocalAxis.Y,c.SecondaryLocalAxis.Z],
+        c.TargetAngleRad);
     private static AssemblyConstraint C(PackAssemblyConstraint c,DocumentId document)
     {
         if(c.PrimarySlots is null||c.PrimaryPoint is not {Length:3}||c.SecondaryPoint is not {Length:3}||
@@ -79,7 +80,12 @@ internal static partial class MessagePackSections
         c.PrimaryTopology is {} primary?UnpackTopology(primary):null,
         c.SecondaryTopology is {} secondary?UnpackTopology(secondary):null,c.Enabled,c.Version,
         c.PrimaryAxis is {} pa?new(pa[0],pa[1],pa[2]):Vector3d.Zero,
-        c.SecondaryAxis is {} sa?new(sa[0],sa[1],sa[2]):Vector3d.Zero);
+        c.SecondaryAxis is {} sa?new(sa[0],sa[1],sa[2]):Vector3d.Zero,c.TargetAngleRad);
+    }
+    public static byte[] UpgradeDocumentAssemblyAngles(ReadOnlyMemory<byte> bytes)
+    {
+        var old=Read<PackDocument>(bytes);
+        return Serialize(old with{AssemblyConstraints=old.AssemblyConstraints??[]});
     }
     public static byte[] UpgradeDocumentAssemblyAxes(ReadOnlyMemory<byte> bytes)
     {

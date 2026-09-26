@@ -9,6 +9,7 @@ using Cadoryx.Editor;
 using Cadoryx.Rendering;
 using Cadoryx.Kernel.Abstractions;
 using Cadoryx.ViewModels.Services.Platform.Notifications;
+using Cadoryx.ViewModels.Services.Platform;
 using Cadoryx.ViewModels.Services.Platform.Settings;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
@@ -21,6 +22,8 @@ public partial class CadDocumentViewModel : ObservableDocument
     private readonly ICadMessageLog log;
     private readonly SemaphoreSlim gridEditQueue=new(1,1);
     private DocumentSnapshot observedSnapshot;
+    private CadScene? cachedScene;
+    private DocumentScaleReport scaleReport;
     private PreparedDocumentEdit? prepared;
     private long preparedGeneration;
     private long previewSequence;
@@ -58,6 +61,10 @@ public partial class CadDocumentViewModel : ObservableDocument
         await Session.ExecuteAsync(DocumentEdits.SetSettings(Session.Snapshot.Settings with { WorkPlane=plane }));
     }
     public CadDocumentSession Session {get;}
+    public SessionHistoryViewModel History {get;}
+    public DocumentReviewViewModel Review {get;}
+    public IDocumentStorage? ExternalPartStorage {get;}
+    public ICadFileDialogs? ExternalPartFiles {get;}
     public SelectionService Selection {get;}=new();
     public InstancePlacementViewModel Placement {get;}
     public AssemblyConstraintsViewModel AssemblyConstraints {get;}
@@ -88,8 +95,22 @@ public partial class CadDocumentViewModel : ObservableDocument
     public bool IsCreating=>EditingFeature is null;
     public string TargetPartHint=>TargetParts.Count==0?Strings.FirstPartCreatedAutomatically:Strings.SharedPartEditingHint;
     public string ContentId=>Id;
-    public CadScene Scene=>CadScene.FromDocument(Session.Snapshot);
+    public CadScene Scene
+    {
+        get
+        {
+            var current=Session.Snapshot;
+            return cachedScene is {} cached&&cached.StateId==current.StateId
+                ?cached:cachedScene=CadScene.FromDocument(current);
+        }
+    }
     public CadScene? PreviewScene {get;private set;}
+    public DocumentScaleReport ScaleReport=>scaleReport;
+    public string ScaleSummary=>string.Format(Strings.ResourceManager.GetString("DocumentScaleFormat",Strings.Culture)
+        ??"{0} definitions · {1} instances · {2} unique assets ({3:F1} MiB)",
+        scaleReport.Definitions,scaleReport.Occurrences,scaleReport.UniqueAssets,
+        scaleReport.AssetBytes/1048576d);
+    public void RefreshScaleSummaryLanguage(){OnPropertyChanged(nameof(ScaleSummary));History.Refresh();Review.RefreshLanguage();}
     public CadCamera? Camera {get;set;}
     public CadDisplayMode CurrentDisplayMode {get;private set;}
     [ObservableProperty]
@@ -127,9 +148,14 @@ public partial class CadDocumentViewModel : ObservableDocument
     [ObservableProperty] private FeatureId? editingFeature;
     public bool IsReadOnly=>!Session.Snapshot.Extensions.IsDefaultOrEmpty;
 
-    public CadDocumentViewModel(CadDocumentSession session,IGeometryKernel kernel,ICadMessageLog log)
+    public CadDocumentViewModel(CadDocumentSession session,IGeometryKernel kernel,ICadMessageLog log,
+        IDocumentStorage? externalPartStorage=null,ICadFileDialogs? externalPartFiles=null)
     {
-        Session=session;observedSnapshot=session.Snapshot;this.kernel=kernel;this.log=log;Id="document."+Guid.NewGuid().ToString("N");Context=this;
+        Session=session;History=new(this);observedSnapshot=session.Snapshot;scaleReport=DocumentScaleReport.Measure(session.Snapshot,session.Assets);
+        this.kernel=kernel;this.log=log;
+        Review=new(this,kernel);
+        ExternalPartStorage=externalPartStorage;ExternalPartFiles=externalPartFiles;
+        Id="document."+Guid.NewGuid().ToString("N");Context=this;
         Session.Changed+=OnDocumentChanged;Session.StatusChanged+=OnSessionStatus;
         Session.ObserverFailed+=OnObserverFailed;
         PropertyChanged+=OnPropertiesChanged;
@@ -526,7 +552,7 @@ public partial class CadDocumentViewModel : ObservableDocument
         Detaching=null;
         InvalidatePreview();Session.Changed-=OnDocumentChanged;Session.StatusChanged-=OnSessionStatus;Session.ObserverFailed-=OnObserverFailed;
         PropertyChanged-=OnPropertiesChanged;foreach(var p in ProfilePoints)p.PropertyChanged-=OnProfilePointChanged;
-        Placement.Dispose();AssemblyConstraints.Dispose();
+        Placement.Dispose();AssemblyConstraints.Dispose();History.Dispose();Review.Dispose();
     }
     public void Report(Exception error){ToolStatus=error.Message;log.Add(error.Message,CadMessageLevel.Error,"Document");}
     private void OnObserverFailed(object? sender,Exception error)=>Report(error);
@@ -539,6 +565,9 @@ public partial class CadDocumentViewModel : ObservableDocument
                           BackgroundTopArgb=next.Settings.BackgroundTopArgb,
                           BackgroundBottomArgb=next.Settings.BackgroundBottomArgb})==next.Settings;
         observedSnapshot=next;
+        cachedScene=null;
+        scaleReport=DocumentScaleReport.Measure(next,Session.Assets);
+        OnPropertyChanged(nameof(ScaleReport));OnPropertyChanged(nameof(ScaleSummary));
         if(!viewOnly)
         {
             IsViewportConstructing=false;InvalidatePreview();Selection.Reconcile(next);RefreshTargets();

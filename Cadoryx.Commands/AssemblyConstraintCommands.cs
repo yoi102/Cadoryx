@@ -37,17 +37,19 @@ public static class AssemblyConstraintCommands
 
     public static ICadDocumentCommand AddAxisPair(AssemblyConstraintId id,string name,AssemblyConstraintKind kind,
         OccurrencePath primary,OccurrencePath secondary,Vector3d primaryPoint,Vector3d secondaryPoint,
-        Vector3d primaryAxis,Vector3d secondaryAxis)=>new EditDocumentCommand("Add assembly axis relation",document=>
+        Vector3d primaryAxis,Vector3d secondaryAxis,double targetAngleRad=0)=>
+        new EditDocumentCommand("Add assembly datum relation",document=>
     {
         CadGuard.Id(id);CadGuard.Name(name);
         if(document.AssemblyConstraints.ContainsKey(id))throw new CadValidationException("Constraint ID is already in use.");
-        if(kind is not (AssemblyConstraintKind.ParallelAxes or AssemblyConstraintKind.Coaxial))
-            throw new CadValidationException("Only parallel and coaxial axis pairs are supported.");
+        if(kind is not (AssemblyConstraintKind.ParallelAxes or AssemblyConstraintKind.Coaxial or
+            AssemblyConstraintKind.AngleAxes or AssemblyConstraintKind.PlanarMate))
+            throw new CadValidationException("Unsupported datum relation kind.");
         primaryPoint.Validate();secondaryPoint.Validate();
         var a=Resolve(document,primary);var b=Resolve(document,secondary);
         var constraint=new AssemblyConstraint(id,name,kind,primary,a.DefinitionId,secondary,b.DefinitionId,
             primaryPoint,secondaryPoint,PrimaryLocalAxis:primaryAxis.Normalized(),
-            SecondaryLocalAxis:secondaryAxis.Normalized());
+            SecondaryLocalAxis:secondaryAxis.Normalized(),TargetAngleRad:targetAngleRad);
         constraint.Validate(document.Id);
         return document with{AssemblyConstraints=document.AssemblyConstraints.Add(id,constraint)};
     });
@@ -67,11 +69,23 @@ public static class AssemblyConstraintCommands
         new EditDocumentCommand("Change assembly axes",document=>
     {
         var constraint=Get(document,id);
-        if(constraint.Kind is not (AssemblyConstraintKind.ParallelAxes or AssemblyConstraintKind.Coaxial))
+        if(constraint.Kind is not (AssemblyConstraintKind.ParallelAxes or AssemblyConstraintKind.Coaxial or
+            AssemblyConstraintKind.AngleAxes or AssemblyConstraintKind.PlanarMate))
             throw new CadValidationException("This relation has no axis pair.");
         var updated=constraint with{PrimaryLocalAxis=primaryAxis.Normalized(),
             SecondaryLocalAxis=secondaryAxis.Normalized()};
         updated.Validate(document.Id);
+        return document with{AssemblyConstraints=document.AssemblyConstraints.SetItem(id,updated)};
+    });
+
+    public static ICadDocumentCommand SetAngle(AssemblyConstraintId id,double angleRad)=>
+        new EditDocumentCommand("Change assembly datum angle",document=>
+    {
+        var constraint=Get(document,id);
+        if(constraint.Kind!=AssemblyConstraintKind.AngleAxes||!double.IsFinite(angleRad)||
+           angleRad<0||angleRad>Math.PI)
+            throw new CadValidationException("Assembly angle must be between 0 and 180 degrees.");
+        var updated=constraint with{TargetAngleRad=angleRad};
         return document with{AssemblyConstraints=document.AssemblyConstraints.SetItem(id,updated)};
     });
 
@@ -131,7 +145,10 @@ public static class AssemblyConstraintCommands
 
     /// <summary>Adjusts one relation only. Point pairs translate; axis pairs rotate about their anchor,
     /// then coaxial pairs remove radial offset while preserving axial slide.</summary>
-    public static ICadDocumentCommand AdjustPair(AssemblyConstraintId id)=>new EditDocumentCommand("Adjust assembly pair",document=>
+    public static ICadDocumentCommand AdjustPair(AssemblyConstraintId id)=>
+        new EditDocumentCommand("Adjust assembly pair",document=>AdjustPairSnapshot(document,id));
+
+    internal static DocumentSnapshot AdjustPairSnapshot(DocumentSnapshot document,AssemblyConstraintId id)
     {
         var relation=Get(document,id);
         if(!relation.IsEnabled||relation.Kind==AssemblyConstraintKind.Fixed||
@@ -152,11 +169,17 @@ public static class AssemblyConstraintCommands
         var anchorA=a.WorldTransform.Apply(relation.PrimaryLocalPoint);
         var anchorB=b.WorldTransform.Apply(relation.SecondaryLocalPoint);
         RigidTransform3d nextWorld;
-        if(relation.Kind is AssemblyConstraintKind.ParallelAxes or AssemblyConstraintKind.Coaxial)
+        if(relation.Kind is AssemblyConstraintKind.ParallelAxes or AssemblyConstraintKind.Coaxial or
+            AssemblyConstraintKind.AngleAxes or AssemblyConstraintKind.PlanarMate)
         {
             var directionA=a.WorldTransform.Rotation.Rotate(relation.PrimaryLocalAxis);
             var directionB=b.WorldTransform.Rotation.Rotate(relation.SecondaryLocalAxis);
-            var targetDirection=directionA.Dot(directionB)>=0?directionA:directionA*-1;
+            var targetDirection=relation.Kind switch
+            {
+                AssemblyConstraintKind.PlanarMate=>directionA*-1,
+                AssemblyConstraintKind.AngleAxes=>AngleTarget(directionA,directionB,relation.TargetAngleRad),
+                _=>directionA.Dot(directionB)>=0?directionA:directionA*-1
+            };
             var rotation=Align(directionB,targetDirection)*b.WorldTransform.Rotation;
             var translation=anchorB-rotation.Rotate(relation.SecondaryLocalPoint);
             if(relation.Kind==AssemblyConstraintKind.Coaxial)
@@ -164,6 +187,8 @@ public static class AssemblyConstraintCommands
                 var between=anchorB-anchorA;
                 translation-=between-directionA*between.Dot(directionA);
             }
+            else if(relation.Kind==AssemblyConstraintKind.PlanarMate)
+                translation-=directionA*(anchorB-anchorA).Dot(directionA);
             nextWorld=new(translation,rotation);
         }
         else
@@ -193,7 +218,18 @@ public static class AssemblyConstraintCommands
                other.Evaluate(candidate).Status==AssemblyConstraintStatus.Unsatisfied)
                 throw new CadValidationException("Adjustment would break another satisfied assembly relation.");
         return candidate;
-    });
+    }
+
+    private static Vector3d AngleTarget(Vector3d primary,Vector3d secondary,double targetAngle)
+    {
+        var tangent=secondary-primary*secondary.Dot(primary);
+        if(tangent.Length<1e-10)
+        {
+            var helper=Math.Abs(primary.Z)<0.9?Vector3d.UnitZ:new Vector3d(1,0,0);
+            tangent=primary.Cross(helper);
+        }
+        return primary*Math.Cos(targetAngle)+tangent.Normalized()*Math.Sin(targetAngle);
+    }
 
     private static Quaterniond Align(Vector3d source,Vector3d target)
     {

@@ -18,6 +18,7 @@ public static class UnusedDefinitionCommands
         var bodies=document.Bodies;
         var features=document.Features;
         var sketches=document.Sketches;
+        var externalParts=document.ExternalParts;
         foreach(var id in unused)
         {
             if(definitions[id] is PartDefinition part)
@@ -27,8 +28,10 @@ public static class UnusedDefinitionCommands
                 foreach(var sketch in sketches.Values.Where(s=>s.PartId==id).ToArray())sketches=sketches.Remove(sketch.Id);
             }
             definitions=definitions.Remove(id);
+            externalParts=externalParts.Remove(id);
         }
-        return document with{Definitions=definitions,Bodies=bodies,Features=features,Sketches=sketches};
+        return document with{Definitions=definitions,Bodies=bodies,Features=features,Sketches=sketches,
+            ExternalParts=externalParts};
     });
 
     private static HashSet<DefinitionId> Removable(DocumentSnapshot document)

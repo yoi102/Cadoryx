@@ -57,6 +57,23 @@
    <TextBlock Text="{Binding DestinationLabel}"/>
    <ComboBox ItemsSource="{Binding Parents}" SelectedItem="{Binding SelectedParent}" DisplayMemberPath="Name" Margin="0,4,0,6"/>
    <Button x:Name="ReparentButton" Content="{Binding ReparentLabel}" Command="{Binding ReparentCommand}" IsEnabled="{Binding CanMove}"/>
+   <Separator Margin="0,12,0,8"/>
+   <TextBlock Text="{Binding ExternalSourceLabel}"/>
+   <TextBox x:Name="ExternalSourceInput" Text="{Binding ExternalSourcePath,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Margin="0,4,0,6"/>
+   <UniformGrid Columns="2" Margin="0,0,0,6">
+    <Button Content="{Binding ExternalBrowseLabel}" Command="{Binding BrowseExternalCommand}" Margin="0,0,3,0"/>
+    <Button x:Name="InspectExternalButton" Content="{Binding ExternalInspectLabel}" Command="{Binding InspectExternalCommand}" Margin="3,0,0,0"/>
+   </UniformGrid>
+   <ComboBox ItemsSource="{Binding ExternalSourceParts}" SelectedItem="{Binding SelectedExternalPart}"
+             DisplayMemberPath="Name" Margin="0,0,0,6"/>
+   <Button x:Name="LinkExternalButton" Content="{Binding ExternalLinkLabel}" Command="{Binding LinkExternalCommand}"
+           IsEnabled="{Binding CanLinkExternal}" Margin="0,0,0,6"/>
+   <TextBlock Text="{Binding ExternalStatus}" TextWrapping="Wrap" Opacity="0.7" Margin="0,0,0,6"/>
+   <UniformGrid Columns="3" IsEnabled="{Binding HasExternalLink}">
+    <Button Content="{Binding ExternalCheckLabel}" Command="{Binding CheckExternalCommand}"/>
+    <Button x:Name="RefreshExternalButton" Content="{Binding ExternalRefreshLabel}" Command="{Binding RefreshExternalCommand}"/>
+    <Button Content="{Binding ExternalDetachLabel}" Command="{Binding DetachExternalCommand}"/>
+   </UniformGrid>
    <Button x:Name="PruneUnusedButton" Content="{Binding PruneUnusedLabel}" Command="{Binding PruneUnusedCommand}"
            IsEnabled="{Binding CanPruneUnused}" Margin="0,10,0,0"/>
   </StackPanel>

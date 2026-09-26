@@ -1,6 +1,7 @@
 namespace Cadoryx.Db;
 
-public enum AssemblyConstraintKind { Fixed=0, Coincident=1, Distance=2, ParallelAxes=3, Coaxial=4 }
+public enum AssemblyConstraintKind { Fixed=0, Coincident=1, Distance=2, ParallelAxes=3, Coaxial=4,
+    AngleAxes=5, PlanarMate=6 }
 public enum AssemblyConstraintStatus { Disabled=0, Satisfied=1, Unsatisfied=2, MissingInstance=3,
     DefinitionChanged=4, TopologyStale=5, TopologyAnchorUnsupported=6 }
 
@@ -16,7 +17,7 @@ public sealed record AssemblyConstraint(AssemblyConstraintId Id,string Name,Asse
     double TargetDistanceMm=0,RigidTransform3d? FixedWorld=null,
     TopologyReference? PrimaryTopology=null,TopologyReference? SecondaryTopology=null,
     bool IsEnabled=true,int SchemaVersion=1,
-    Vector3d PrimaryLocalAxis=default,Vector3d SecondaryLocalAxis=default)
+    Vector3d PrimaryLocalAxis=default,Vector3d SecondaryLocalAxis=default,double TargetAngleRad=0)
 {
     public void Validate(DocumentId document)
     {
@@ -24,7 +25,9 @@ public sealed record AssemblyConstraint(AssemblyConstraintId Id,string Name,Asse
         PrimaryLocalPoint.Validate();SecondaryLocalPoint.Validate();
         PrimaryLocalAxis.Validate();SecondaryLocalAxis.Validate();
         if(SchemaVersion!=1||!Enum.IsDefined(Kind)||PrimaryPath is null||PrimaryPath.DocumentId!=document||
-            PrimaryPath.Slots.IsEmpty||PrimaryPath.Slots.Length>128||!double.IsFinite(TargetDistanceMm)||TargetDistanceMm<0)
+            PrimaryPath.Slots.IsEmpty||PrimaryPath.Slots.Length>128||!double.IsFinite(TargetDistanceMm)||TargetDistanceMm<0||
+            !double.IsFinite(TargetAngleRad)||TargetAngleRad<0||TargetAngleRad>Math.PI||
+            Kind!=AssemblyConstraintKind.AngleAxes&&TargetAngleRad!=0)
             throw new CadValidationException("Invalid assembly constraint.");
         if(Kind==AssemblyConstraintKind.Fixed)
         {
@@ -38,7 +41,8 @@ public sealed record AssemblyConstraint(AssemblyConstraintId Id,string Name,Asse
                 FixedWorld is not null||Kind!=AssemblyConstraintKind.Distance&&TargetDistanceMm!=0)
             throw new CadValidationException("Pair constraint requires two distinct instance paths.");
         else CadGuard.Id(secondary);
-        if(Kind is AssemblyConstraintKind.ParallelAxes or AssemblyConstraintKind.Coaxial)
+        if(Kind is AssemblyConstraintKind.ParallelAxes or AssemblyConstraintKind.Coaxial or
+            AssemblyConstraintKind.AngleAxes or AssemblyConstraintKind.PlanarMate)
         {
             if(PrimaryLocalAxis.Length<1e-10||SecondaryLocalAxis.Length<1e-10||
                Math.Abs(PrimaryLocalAxis.Length-1)>1e-8||Math.Abs(SecondaryLocalAxis.Length-1)>1e-8)
@@ -93,20 +97,32 @@ public sealed record AssemblyConstraint(AssemblyConstraintId Id,string Name,Asse
             return new(AssemblyConstraintStatus.TopologyAnchorUnsupported,0,"Topology provenance is recorded but geometric mate solving is not available.");
         if(Kind==AssemblyConstraintKind.Fixed)
             return new(AssemblyConstraintStatus.Satisfied,0,"Fixed world pose is unchanged.");
-        if(Kind is AssemblyConstraintKind.ParallelAxes or AssemblyConstraintKind.Coaxial)
+        if(Kind is AssemblyConstraintKind.ParallelAxes or AssemblyConstraintKind.Coaxial or
+            AssemblyConstraintKind.AngleAxes or AssemblyConstraintKind.PlanarMate)
         {
             var directionA=a.WorldTransform.Rotation.Rotate(PrimaryLocalAxis);
             var directionB=b!.WorldTransform.Rotation.Rotate(SecondaryLocalAxis);
-            var angular=Math.Acos(Math.Clamp(Math.Abs(directionA.Dot(directionB)),-1,1));
+            var dot=Math.Clamp(directionA.Dot(directionB),-1,1);
+            var angular=Kind switch
+            {
+                AssemblyConstraintKind.AngleAxes=>Math.Abs(Math.Acos(dot)-TargetAngleRad),
+                AssemblyConstraintKind.PlanarMate=>Math.Acos(-dot),
+                _=>Math.Acos(Math.Abs(dot))
+            };
             double radial=0;
             if(Kind==AssemblyConstraintKind.Coaxial)
             {
                 var between=b.WorldTransform.Apply(SecondaryLocalPoint)-a.WorldTransform.Apply(PrimaryLocalPoint);
                 radial=(between-directionA*between.Dot(directionA)).Length;
             }
+            else if(Kind==AssemblyConstraintKind.PlanarMate)
+            {
+                var between=b.WorldTransform.Apply(SecondaryLocalPoint)-a.WorldTransform.Apply(PrimaryLocalPoint);
+                radial=Math.Abs(between.Dot(directionA));
+            }
             return angular<=1e-7&&radial<=1e-7
-                ?new(AssemblyConstraintStatus.Satisfied,radial,"Axes are aligned.",angular)
-                :new(AssemblyConstraintStatus.Unsatisfied,radial,"Axis angle or radial offset differs.",angular);
+                ?new(AssemblyConstraintStatus.Satisfied,radial,"Assembly datum relation is satisfied.",angular)
+                :new(AssemblyConstraintStatus.Unsatisfied,radial,"Datum angle or offset differs.",angular);
         }
         double distance=(a.WorldTransform.Apply(PrimaryLocalPoint)-b!.WorldTransform.Apply(SecondaryLocalPoint)).Length;
         double residual=Math.Abs(distance-TargetDistanceMm);

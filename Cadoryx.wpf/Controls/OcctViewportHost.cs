@@ -14,17 +14,27 @@ public sealed class OcctViewportHost(IAssetStore assets) : HwndHost
     private static readonly string ClassName="Cadoryx.Viewport."+Environment.ProcessId;
     private static readonly ushort Atom=Register();
     private nint hwnd;
+    private bool contextClick;
+    private int contextX,contextY;
+    private long inputSequence;
     private static bool suspended;
     internal static int LiveCount=>Hosts.Count;
     public static void SuspendAll(bool value)
     {suspended=value;foreach(var (h,host) in Hosts){if(value)host.CancelCapture();Native.ShowWindow(h,value?0:5);}}
     private void CancelCapture()
-    {Viewport?.CancelInput();if(Native.GetCapture()==hwnd)Native.ReleaseCapture();}
+    {contextClick=false;inputSequence++;Viewport?.CancelInput();if(Native.GetCapture()==hwnd)Native.ReleaseCapture();}
     public OcctViewport? Viewport {get;private set;}
     public event EventHandler? Ready;
     public event EventHandler? Destroying;
     public event EventHandler<Exception>? Error;
     public event EventHandler<int>? ShortcutPressed;
+    public event EventHandler<System.Windows.Point>? ContextMenuRequested;
+    private bool WithinContextSlop(int x,int y)
+    {
+        var dpi=System.Windows.Media.VisualTreeHelper.GetDpi(this);
+        return Math.Abs(x-contextX)<=System.Windows.SystemParameters.MinimumHorizontalDragDistance*dpi.DpiScaleX
+            &&Math.Abs(y-contextY)<=System.Windows.SystemParameters.MinimumVerticalDragDistance*dpi.DpiScaleY;
+    }
     protected override HandleRef BuildWindowCore(HandleRef parent)
     {
         _=Atom;
@@ -60,22 +70,45 @@ public sealed class OcctViewportHost(IAssetStore assets) : HwndHost
                     if(key==27||((modifiers&2)!=0&&key is 83 or 90 or 89))
                     {if(key==27)host.CancelCapture();host.Dispatcher.BeginInvoke(()=>host.ShortcutPressed?.Invoke(host,key));return 0;}
                     break;
-                case 0x215:if(l!=hwnd)viewer.CancelInput();return 0;
+                case 0x215:if(l!=hwnd){host.contextClick=false;host.inputSequence++;viewer.CancelInput();}return 0;
+                case 0x7B:return 0; // Native WM_CONTEXTMENU must not duplicate the explicit mouse-up menu.
                 case 0x1F:case 8:host.CancelCapture();break; // WM_CANCELMODE / WM_KILLFOCUS
                 case 5:viewer.Resize();return 0;
                 case 15:viewer.Redraw();break;
                 case 20:return 1;
                 case 0x200:
                     int buttons=((w&1)!=0?1:0)|((w&0x10)!=0?2:0)|((w&2)!=0?4:0);
+                    if(host.contextClick)
+                    {
+                        if(buttons==4&&modifiers==0&&host.WithinContextSlop(x,y))return 0;
+                        host.contextClick=false; // Moving back to the origin is still a drag.
+                    }
                     viewer.PointerMoved(x,y,buttons,modifiers);return 0;
                 case 0x201:case 0x207:case 0x204:
+                    host.inputSequence++;
+                    host.contextClick=message==0x204&&!viewer.HasPointerCapture&&modifiers==0;
+                    host.contextX=x;host.contextY=y;
                     if(Native.GetFocus()!=hwnd)Native.SetFocus(hwnd);
                     if(Native.GetCapture()!=hwnd)Native.SetCapture(hwnd);
                     viewer.PointerPressed(message==0x201?0:message==0x207?1:2,x,y,modifiers);return 0;
                 case 0x202:case 0x208:case 0x205:
+                    bool showMenu=message==0x205&&host.contextClick&&host.WithinContextSlop(x,y)&&modifiers==0;
+                    host.contextClick=false;
                     try{viewer.PointerReleased(message==0x202?0:message==0x208?1:2,x,y,modifiers);}
-                    finally{if(!viewer.HasPointerCapture&&Native.GetCapture()==hwnd)Native.ReleaseCapture();}return 0;
+                    finally{if(!viewer.HasPointerCapture&&Native.GetCapture()==hwnd)Native.ReleaseCapture();}
+                    if(showMenu)
+                    {
+                        var screen=new Point{x=x,y=y};Native.ClientToScreen(hwnd,ref screen);
+                        long sequence=host.inputSequence;
+                        host.Dispatcher.BeginInvoke(()=>
+                        {
+                            if(host.hwnd==hwnd&&host.Viewport is not null&&!suspended&&host.IsVisible&&sequence==host.inputSequence)
+                                host.ContextMenuRequested?.Invoke(host,new(screen.x,screen.y));
+                        });
+                    }
+                    return 0;
                 case 0x20A:
+                    host.contextClick=false;host.inputSequence++;
                     var point=new Point{x=x,y=y};Native.ScreenToClient(hwnd,ref point);
                     viewer.MouseWheel(unchecked((short)((w>>16)&65535)),point.x,point.y,modifiers);return 0;
             }
@@ -109,6 +142,7 @@ public sealed class OcctViewportHost(IAssetStore assets) : HwndHost
         [DllImport("user32.dll")]internal static extern nint GetCapture();
         [DllImport("user32.dll")][return:MarshalAs(UnmanagedType.Bool)]internal static extern bool ReleaseCapture();
         [DllImport("user32.dll")][return:MarshalAs(UnmanagedType.Bool)]internal static extern bool ScreenToClient(nint hwnd,ref Point point);
+        [DllImport("user32.dll")][return:MarshalAs(UnmanagedType.Bool)]internal static extern bool ClientToScreen(nint hwnd,ref Point point);
         [DllImport("user32.dll")]internal static extern short GetKeyState(int key);
         [DllImport("user32.dll")][return:MarshalAs(UnmanagedType.Bool)]internal static extern bool ShowWindow(nint hwnd,int command);
     }

@@ -1291,4 +1291,229 @@
   <data name="AssemblyPrimaryPoint" xml:space="preserve"><value>Reference local point (mm)</value></data>
   <data name="AssemblySecondaryAxis" xml:space="preserve"><value>Moving local axis</value></data>
   <data name="AssemblySecondaryPoint" xml:space="preserve"><value>Moving local point (mm)</value></data>
+  <data name="ExternalPartBrowse" xml:space="preserve">
+    <value>Browse…</value>
+  </data>
+  <data name="ExternalPartCheck" xml:space="preserve">
+    <value>Check source version</value>
+  </data>
+  <data name="ExternalPartDetach" xml:space="preserve">
+    <value>Detach link</value>
+  </data>
+  <data name="ExternalPartInspect" xml:space="preserve">
+    <value>Inspect source</value>
+  </data>
+  <data name="ExternalPartLink" xml:space="preserve">
+    <value>Link selected source part</value>
+  </data>
+  <data name="ExternalPartPinned" xml:space="preserve">
+    <value>Pinned source snapshot</value>
+  </data>
+  <data name="ExternalPartRefresh" xml:space="preserve">
+    <value>Refresh from source</value>
+  </data>
+  <data name="ExternalPartSource" xml:space="preserve">
+    <value>External .cadoryx source</value>
+  </data>
+  <data name="AssemblyAddAngle" xml:space="preserve">
+    <value>Add axis angle</value>
+  </data>
+  <data name="AssemblyAddPlane" xml:space="preserve">
+    <value>Add plane mate</value>
+  </data>
+  <data name="AssemblyAngle" xml:space="preserve">
+    <value>Angle (degrees)</value>
+  </data>
+  <data name="AssemblyAngleName" xml:space="preserve">
+    <value>Angle</value>
+  </data>
+  <data name="AssemblyApplyAngle" xml:space="preserve">
+    <value>Change angle target</value>
+  </data>
+  <data name="AssemblyPlaneName" xml:space="preserve">
+    <value>Plane mate</value>
+  </data>
+  <data name="AssemblySolveAll" xml:space="preserve">
+    <value>Solve assembly relations</value>
+  </data>
+  <data name="DocumentScaleFormat" xml:space="preserve">
+    <value>{0} definitions · {1} instances · {2} unique assets ({3:F1} MiB)</value>
+  </data>
+  <data name="GridDisplayHint" xml:space="preserve">
+    <value>Visual grid density adapts to zoom; snapping uses the document spacing.</value>
+  </data>
+  <data name="SessionHistory" xml:space="preserve">
+    <value>Session history</value>
+  </data>
+  <data name="HistoryUsageFormat" xml:space="preserve">
+    <value>Undo {0} · Redo {1} · Extra assets {2:F1} MiB</value>
+  </data>
+  <data name="HistoryBudgetHint" xml:space="preserve">
+    <value>Applies to this open document session. Counts unique payloads beyond the current document, not process memory. Applying lower limits discards old undo/farthest redo entries; clearing cannot be undone.</value>
+  </data>
+  <data name="HistoryEntryLimit" xml:space="preserve">
+    <value>Maximum history entries</value>
+  </data>
+  <data name="HistoryAssetBudget" xml:space="preserve">
+    <value>Additional asset budget (MiB)</value>
+  </data>
+  <data name="ApplyHistoryBudget" xml:space="preserve">
+    <value>Apply and trim history</value>
+  </data>
+  <data name="ClearSessionHistory" xml:space="preserve">
+    <value>Clear undo and redo history</value>
+  </data>
+  <data name="ModelSearch" xml:space="preserve">
+    <value>Search model</value>
+  </data>
+  <data name="ModelSearchHint" xml:space="preserve">
+    <value>Search instance, part, assembly and body names, including collapsed branches. Enter to search.</value>
+  </data>
+  <data name="ModelSearchCountFormat" xml:space="preserve">
+    <value>{0} results</value>
+  </data>
+  <data name="ModelSearchLimitedFormat" xml:space="preserve">
+    <value>First {0} results; narrow the search.</value>
+  </data>
+  <data name="LocateSelection" xml:space="preserve">
+    <value>Locate selection</value>
+  </data>
+  <data name="LocateSearchResult" xml:space="preserve">
+    <value>Locate result in tree</value>
+  </data>
+  <data name="SelectionMeasurements" xml:space="preserve">
+    <value>Selection measurements</value>
+  </data>
+  <data name="SelectionMeasurementHint" xml:space="preserve">
+    <value>World envelope from transformed local bounds; may be larger than the shape. Volumes and masses sum instances, including overlaps. For two bodies, distance is between envelope centers, not closest surfaces.</value>
+  </data>
+  <data name="MeasuredInstances" xml:space="preserve">
+    <value>Measured body instances</value>
+  </data>
+  <data name="WorldEnvelopeMin" xml:space="preserve">
+    <value>World envelope minimum</value>
+  </data>
+  <data name="WorldEnvelopeMax" xml:space="preserve">
+    <value>World envelope maximum</value>
+  </data>
+  <data name="WorldEnvelopeSize" xml:space="preserve">
+    <value>World envelope size (X, Y, Z)</value>
+  </data>
+  <data name="SelectionVolumeSum" xml:space="preserve">
+    <value>Volume sum (volumetric / selected)</value>
+  </data>
+  <data name="SelectionMassSum" xml:space="preserve">
+    <value>Mass sum</value>
+  </data>
+  <data name="MeasurementMassUnavailable" xml:space="preserve">
+    <value>Unavailable: assign materials to all volumetric bodies; sheets/meshes have no solid mass.</value>
+  </data>
+  <data name="EnvelopeCenterDistance" xml:space="preserve">
+    <value>Envelope center distance</value>
+  </data>
+  <data name="ExactArea" xml:space="preserve">
+    <value>Surface area sum</value>
+  </data>
+  <data name="ExactCancelled" xml:space="preserve">
+    <value>Calculation cancelled.</value>
+  </data>
+  <data name="ExactCentroid" xml:space="preserve">
+    <value>Volume centroid (world)</value>
+  </data>
+  <data name="ExactDistance" xml:space="preserve">
+    <value>Minimum BRep distance</value>
+  </data>
+  <data name="ExactFirstPoint" xml:space="preserve">
+    <value>Nearest point on first body</value>
+  </data>
+  <data name="ExactInspection" xml:space="preserve">
+    <value>Exact geometry inspection</value>
+  </data>
+  <data name="ExactMeasure" xml:space="preserve">
+    <value>Calculate exact values</value>
+  </data>
+  <data name="ExactMeasurementHint" xml:space="preserve">
+    <value>Instance sums include overlaps. Centroid assumes uniform density. Distance is unsigned; zero does not measure penetration.</value>
+  </data>
+  <data name="ExactMeasuring" xml:space="preserve">
+    <value>Calculating…</value>
+  </data>
+  <data name="ExactSecondPoint" xml:space="preserve">
+    <value>Nearest point on second body</value>
+  </data>
+  <data name="ExactSelectionHint" xml:space="preserve">
+    <value>Select 1–256 bodies; select two for minimum distance. Values use document units.</value>
+  </data>
+  <data name="ExactTopology" xml:space="preserve">
+    <value>Faces / edges / solids</value>
+  </data>
+  <data name="ExactVolume" xml:space="preserve">
+    <value>Closed-solid volume sum</value>
+  </data>
+  <data name="ReviewFocus" xml:space="preserve">
+    <value>Focus selection</value>
+  </data>
+  <data name="ReviewHide" xml:space="preserve">
+    <value>Hide selection</value>
+  </data>
+  <data name="ReviewIsolate" xml:space="preserve">
+    <value>Isolate selection</value>
+  </data>
+  <data name="ReviewShowAll" xml:space="preserve">
+    <value>Restore view</value>
+  </data>
+  <data name="ReviewSplit" xml:space="preserve">
+    <value>Dual view</value>
+  </data>
+  <data name="SectionApply" xml:space="preserve">
+    <value>Apply section</value>
+  </data>
+  <data name="SectionEnabled" xml:space="preserve">
+    <value>Enable clipping</value>
+  </data>
+  <data name="SectionHint" xml:space="preserve">
+    <value>Temporary visual clipping, shared by both views. Geometry and exports remain complete. No section contours or caps are generated.</value>
+  </data>
+  <data name="SectionOffset" xml:space="preserve">
+    <value>World plane offset (mm)</value>
+  </data>
+  <data name="SectionReset" xml:space="preserve">
+    <value>Clear section</value>
+  </data>
+  <data name="SectionReverse" xml:space="preserve">
+    <value>Reverse half-space</value>
+  </data>
+  <data name="SectionSlab" xml:space="preserve">
+    <value>Keep centered slab</value>
+  </data>
+  <data name="SectionThickness" xml:space="preserve">
+    <value>Slab thickness (mm)</value>
+  </data>
+  <data name="SectionView" xml:space="preserve">
+    <value>Section view</value>
+  </data>
+  <data name="CreateSection" xml:space="preserve"><value>Create section geometry</value></data>
+  <data name="InterferenceCheck" xml:space="preserve"><value>Check interference</value></data>
+  <data name="InterferenceHint" xml:space="preserve"><value>Select 2–32 solid instances. Checks every pair using document tolerance; sheets, meshes and mixed compounds are excluded. Overlap is pairwise volume, not penetration depth.</value></data>
+  <data name="LocateInterference" xml:space="preserve"><value>Isolate and focus this pair</value></data>
+  <data name="PairContained" xml:space="preserve"><value>Contained</value></data>
+  <data name="PairInterfering" xml:space="preserve"><value>Interfering</value></data>
+  <data name="PairOverlap" xml:space="preserve"><value>Overlap volume</value></data>
+  <data name="PairSeparated" xml:space="preserve"><value>Separated</value></data>
+  <data name="PairSummary" xml:space="preserve"><value>{0} pairs checked; {1} with positive overlap volume.</value></data>
+  <data name="PairTouching" xml:space="preserve"><value>Touching</value></data>
+  <data name="ReviewCalculating" xml:space="preserve"><value>Calculating geometry…</value></data>
+  <data name="SectionCreated" xml:space="preserve"><value>Frozen section created in a new part. Undo, save and STEP/IGES export are available.</value></data>
+  <data name="SectionCurves" xml:space="preserve"><value>Section curves</value></data>
+  <data name="SectionGeometryHint" xml:space="preserve"><value>Intersect 1–256 selected bodies with the axis/offset plane above. Creates independent world-space curves; no automatic source updates, caps or slab boundary pair.</value></data>
+  <data name="RibbonHistory" xml:space="preserve"><value>History</value></data>
+  <data name="RibbonPrimitives" xml:space="preserve"><value>Primitives</value></data>
+  <data name="RibbonProfiles" xml:space="preserve"><value>Profile features</value></data>
+  <data name="RibbonNavigation" xml:space="preserve"><value>Navigation</value></data>
+  <data name="RibbonStandardViews" xml:space="preserve"><value>Standard views</value></data>
+  <data name="RibbonDisplay" xml:space="preserve"><value>Display</value></data>
+  <data name="RibbonLayout" xml:space="preserve"><value>Workspace</value></data>
+  <data name="ViewBack" xml:space="preserve"><value>Back</value></data>
+  <data name="ViewBottom" xml:space="preserve"><value>Bottom</value></data>
+  <data name="ViewLeft" xml:space="preserve"><value>Left</value></data>
 </root>

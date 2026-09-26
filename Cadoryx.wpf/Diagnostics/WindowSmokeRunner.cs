@@ -349,7 +349,7 @@ internal static class WindowSmokeRunner
                 }
                 Check(await vm.CloseAllAsync(),"Repeated document close");await Idle();
                 Check(OcctViewportHost.LiveCount==0,"No HWND hosts after close");
-                Check(((MemoryAssetStore)services.GetRequiredService<IAssetStore>()).Count==0,"No assets after close");
+                Check(((IAssetStoreStatistics)services.GetRequiredService<IAssetStore>()).Count==0,"No assets after close");
                 using var process=Process.GetCurrentProcess();process.Refresh();
                 observations.Add(new{cycle=cycle+1,hosts=OcctViewportHost.LiveCount,handles=process.HandleCount,privateBytes=process.PrivateMemorySize64});
             }
@@ -383,7 +383,7 @@ internal static class WindowSmokeRunner
             else viewport.SaveScreenshot(Path.Combine(output,"legacy-"+name+".png"));
             await doc.Session.SaveAsync(storage,saved);Check(!doc.Session.IsDirty,"Migrated savepoint");
             Check(await vm.CloseAllAsync(),"Legacy document close");await Idle();
-            Check(OcctViewportHost.LiveCount==0&&((MemoryAssetStore)services.GetRequiredService<IAssetStore>()).Count==0,"Legacy resources released");
+            Check(OcctViewportHost.LiveCount==0&&((IAssetStoreStatistics)services.GetRequiredService<IAssetStore>()).Count==0,"Legacy resources released");
             await vm.OpenPathAsync(saved);await Idle();doc=vm.ActiveDocument??throw new InvalidOperationException("Migrated file did not reopen");
             var after=doc.Session.Snapshot;
             Check(before.Id==after.Id&&before.StateId==after.StateId,"Migrated stable identity");
@@ -398,7 +398,7 @@ internal static class WindowSmokeRunner
                 observations.Add(new{name,documentId=after.Id,stateId=after.StateId,assetCount=manifest.Assets.Length,sections=manifest.Sections.Select(s=>new{s.Kind,s.SchemaVersion,s.Encoding})});
             }
             Check(await vm.CloseAllAsync(),"Migrated document close");await Idle();
-            Check(OcctViewportHost.LiveCount==0&&((MemoryAssetStore)services.GetRequiredService<IAssetStore>()).Count==0,"Migrated resources released");
+            Check(OcctViewportHost.LiveCount==0&&((IAssetStoreStatistics)services.GetRequiredService<IAssetStore>()).Count==0,"Migrated resources released");
             var finalHash=SHA256.HashData(await File.ReadAllBytesAsync(original));
             Check(originalHash.SequenceEqual(finalHash),"Frozen fixture unchanged");
         }

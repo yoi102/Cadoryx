@@ -40,6 +40,8 @@ public sealed class CadDocumentSession : IAsyncDisposable
     public Guid SessionId {get;}=Guid.NewGuid();
     public string? RecoveryOriginPath {get;internal set;}
     public int HistoryLimit { get; set; }=50;
+    public long HistoryAssetBudgetBytes {get;private set;}=512L*1024*1024;
+    public DocumentHistoryUsage HistoryUsage {get{lock(gate)return MeasureHistory();}}
     public event EventHandler<DocumentChangeSet>? Changed;
     public event EventHandler? StatusChanged;
     public event EventHandler<Exception>? ObserverFailed;
@@ -92,7 +94,7 @@ public sealed class CadDocumentSession : IAsyncDisposable
                         var previous=snapshot;snapshot=next;generation++;
                         currentLease.Dispose();currentLease=nextLease;
                         foreach(var old in redo)old.Dispose();redo.Clear();
-                        undo.Add(entry);while(undo.Count>Math.Max(1,HistoryLimit)){undo[0].Dispose();undo.RemoveAt(0);}
+                        undo.Add(entry);TrimHistory();
                         change=DocumentChangeSet.Between(previous,next,generation);
                     }
                     if(change is not null)Publish(change);
@@ -113,10 +115,60 @@ public sealed class CadDocumentSession : IAsyncDisposable
             var lease=new DocumentAssetLease(next,Assets);var previous=snapshot;
             from.RemoveAt(from.Count-1);to.Add(entry);snapshot=next;generation++;
             currentLease.Dispose();currentLease=lease;
+            TrimHistory();
             change=DocumentChangeSet.Between(previous,next,generation);
         }
         Publish(change);
     });
+    /// <summary>Session-only limits. Oldest undo, then farthest redo entries are discarded.</summary>
+    public Task ConfigureHistoryAsync(int entryLimit,long assetBudgetBytes)
+    {
+        if(entryLimit is < 1 or > 5000)throw new ArgumentOutOfRangeException(nameof(entryLimit));
+        if(assetBudgetBytes<0)throw new ArgumentOutOfRangeException(nameof(assetBudgetBytes));
+        return dispatcher.InvokeAsync(()=>
+        {
+            lock(gate){ThrowIfClosing();HistoryLimit=entryLimit;HistoryAssetBudgetBytes=assetBudgetBytes;TrimHistory();}
+            Notify(StatusChanged);
+        });
+    }
+    public Task ClearHistoryAsync()=>dispatcher.InvokeAsync(()=>
+    {
+        lock(gate){ThrowIfClosing();foreach(var e in undo.Concat(redo))e.Dispose();undo.Clear();redo.Clear();}
+        Notify(StatusChanged);
+    });
+    private DocumentHistoryUsage MeasureHistory()
+    {
+        var current=snapshot.ReferencedAssets().ToHashSet();
+        var sizes=new Dictionary<AssetId,long>();
+        foreach(var entry in undo.Concat(redo))
+            foreach(var pair in entry.AssetSizes)
+                if(!current.Contains(pair.Key))sizes.TryAdd(pair.Key,pair.Value);
+        return new(undo.Count,redo.Count,sizes.Count,sizes.Values.Sum(),HistoryLimit,HistoryAssetBudgetBytes);
+    }
+    private void TrimHistory()
+    {
+        // Count shared payloads once; evict only from the ends that preserve the reachable chain.
+        var current=snapshot.ReferencedAssets().ToHashSet();
+        var refs=new Dictionary<AssetId,(int Count,long Bytes)>();long bytes=0;
+        foreach(var entry in undo.Concat(redo))foreach(var (id,size) in entry.AssetSizes)
+        {
+            if(current.Contains(id))continue;
+            if(refs.TryGetValue(id,out var found))refs[id]=(found.Count+1,size);
+            else{refs[id]=(1,size);bytes=checked(bytes+size);}
+        }
+        while(undo.Count+redo.Count>Math.Max(1,HistoryLimit)||bytes>HistoryAssetBudgetBytes)
+        {
+            var list=undo.Count>0?undo:redo;if(list.Count==0)break;
+            var oldest=list[0];list.RemoveAt(0);
+            foreach(var id in oldest.AssetSizes.Keys)
+                if(refs.TryGetValue(id,out var found))
+                {
+                    if(found.Count==1){refs.Remove(id);bytes-=found.Bytes;}
+                    else refs[id]=(found.Count-1,found.Bytes);
+                }
+            oldest.Dispose();
+        }
+    }
     public async Task SaveAsync(IDocumentStorage storage,string path,CancellationToken cancellationToken=default)
     {
         using var linked=CancellationTokenSource.CreateLinkedTokenSource(cancellationToken,lifetime.Token);
@@ -170,8 +222,10 @@ public sealed class CadDocumentSession : IAsyncDisposable
             try{((EventHandler)observer)(this,EventArgs.Empty);}catch(Exception ex){ReportObserver(ex);}
     }
     private void ReportObserver(Exception ex){try{ObserverFailed?.Invoke(this,ex);}catch{/* An observer cannot roll back a committed document. */}}
-    private sealed class HistoryEntry(string name,DocumentSnapshot before,DocumentSnapshot after,DocumentAssetLease a,DocumentAssetLease b) : IDisposable
+    private sealed class HistoryEntry(string name,DocumentSnapshot before,DocumentSnapshot after,DocumentAssetLease a,DocumentAssetLease b,
+        IReadOnlyDictionary<AssetId,long> assetSizes) : IDisposable
     {
+        public IReadOnlyDictionary<AssetId,long> AssetSizes {get;}=assetSizes;
         public string Name {get;}=name;
         public DocumentSnapshot Before {get;}=before;
         public DocumentSnapshot After {get;}=after;
@@ -186,7 +240,11 @@ public sealed class CadDocumentSession : IAsyncDisposable
             this.a=a;this.b=b;
             try{before=new(a,store);after=new(b,store);current=new(b,store);}catch{Dispose();throw;}
         }
-        public HistoryEntry CreateEntry(string name){var e=new HistoryEntry(name,a,b,before!,after!);before=null;after=null;return e;}
+        public HistoryEntry CreateEntry(string name)
+        {
+            var sizes=before!.PayloadSizes().Concat(after!.PayloadSizes()).DistinctBy(p=>p.Key).ToDictionary(p=>p.Key,p=>p.Value);
+            var e=new HistoryEntry(name,a,b,before,after,sizes);before=null;after=null;return e;
+        }
         public DocumentAssetLease TakeCurrentLease(){var result=current!;current=null;return result;}
         public void Dispose(){before?.Dispose();after?.Dispose();current?.Dispose();}
     }

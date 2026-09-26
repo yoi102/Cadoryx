@@ -10,7 +10,8 @@ namespace Cadoryx.Kernel.Occt;
 public sealed partial class OcctGeometryKernel : IGeometryKernel, ITopologyResolver
 {
     private static readonly SemaphoreSlim Queue=new(1,1);
-    public string Version=>"OcctSharp 8.0.1-preview.28.cadoryx.viewcube.2 / OCCT 8.0.1";
+    public string Version=>"OcctSharp "+System.Reflection.CustomAttributeExtensions.GetCustomAttributes<System.Reflection.AssemblyMetadataAttribute>(typeof(OcctGeometryKernel).Assembly)
+        .Single(a=>a.Key=="OcctSharpPackageVersion").Value;
     public bool Supports(GeometryRecipe recipe)=>recipe is BoxRecipe or CylinderRecipe or ImportedRecipe or BooleanRecipe or TransformRecipe or ExtrudeRecipe or RevolveRecipe or LocalFeatureRecipe or HistoryFilletRecipe or HistoryChamferRecipe;
     private static async Task<T> Run<T>(Func<T> action,CancellationToken token)
     {
@@ -178,6 +179,7 @@ public sealed partial class OcctGeometryKernel : IGeometryKernel, ITopologyResol
     }
     public Task<LoadedDocument> ImportAsync(string path,IAssetStore assets,CancellationToken cancellationToken=default)=>Run(()=>
     {
+        if(Path.GetExtension(path).Equals(".stl",StringComparison.OrdinalIgnoreCase))return ImportStl(path,assets,cancellationToken);
         using var native=XdeDocument.ReadExchange(Path.GetFullPath(path));using var files=new KernelFiles();
         var contextPath=files.PathFor("import.xbf");native.Save(contextPath);
         var leases=new List<IAssetLease>();var results=new List<GeometryResult>();

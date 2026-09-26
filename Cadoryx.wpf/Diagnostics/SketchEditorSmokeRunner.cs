@@ -76,6 +76,7 @@ internal static class SketchEditorSmokeRunner
             double widthMm=drawn.Points.Max(p=>p.X)-drawn.Points.Min(p=>p.X);
             double heightMm=drawn.Points.Max(p=>p.Y)-drawn.Points.Min(p=>p.Y);
             Check(Math.Abs(widthMm-40)<1.5&&Math.Abs(heightMm-30)<1.5,$"Pointer rectangle size {widthMm} × {heightMm} mm.");
+            foreach(var node in vm.ModelTree.Items)node.IsExpanded=true;
             Check(vm.ModelTree.Items.SelectMany(Flatten).Any(n=>n.Sketch==sketch.Id),"Sketch tree projection");
             document.SelectedSketchId=sketch.Id;vm.StartSketchFeatureCommand.Execute("Extrude");document.SizeZ=10;
             await document.PreviewCommand.ExecuteAsync(null);Check(document.HasPreview,document.ToolStatus);await document.ConfirmCommand.ExecuteAsync(null);
@@ -121,7 +122,7 @@ internal static class SketchEditorSmokeRunner
             await File.WriteAllTextAsync(Path.Combine(output,"observations.json"),JsonSerializer.Serialize(new{window="MetroWindow",cultures=new[]{"en-US","zh-CN","ja-JP"},pointerDrawing=true,pointDrag=true,
                 arcPointerDrawing=true,mixedLoopPointerDrawing=true,bezierPointerDrawing=true,previewCancel=true,conflictRollback=true,exactUndoRedo=true,volumeMm3=expectedFinal,featureAssociation=true,saveReopen=true},new JsonSerializerOptions{WriteIndented=true}));
             Check(await vm.CloseAllAsync(),"Close documents");await ((App)System.Windows.Application.Current).StopRecoveryAsync();await Idle();
-            Check(((MemoryAssetStore)services.GetRequiredService<IAssetStore>()).Count==0,"Zero assets after close");listener.Flush();bindings.Flush();
+            Check(((IAssetStoreStatistics)services.GetRequiredService<IAssetStore>()).Count==0,"Zero assets after close");listener.Flush();bindings.Flush();
             await File.WriteAllTextAsync(Path.Combine(output,"result.txt"),"PASS: production sketch commands, owned MetroWindow, actual pointer point/line/rectangle/circle/arc and mixed-loop drawing with point drag, numeric dimension bindings, three-language layouts, preview/close-cancel, linked extrusion and downstream boolean recompute, conflict rejection, exact undo/redo, native screenshot, save/reopen, STEP/IGES/STL export, zero remaining assets.");window.CloseAfterSmoke();
         }
         catch(Exception ex){await File.WriteAllTextAsync(Path.Combine(output,"result.txt"),"FAIL: "+ex);System.Windows.Application.Current.Shutdown(1);}

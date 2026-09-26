@@ -92,6 +92,10 @@ internal static class LocalFeatureSmokeRunner
         var after=session.Snapshot;var feature=after.Features.Values.Single(f=>f.PartId==part&&f.Recipe is LocalFeatureRecipe);
         Check(Math.Abs(feature.Result.VolumeMm3-5980)<1e-4,"Confirmed volume");
         await session.UndoAsync();Check(ReferenceEquals(before,session.Snapshot),"Exact undo");await session.RedoAsync();Check(ReferenceEquals(after,session.Snapshot),"Exact redo");
+        var occurrence=after.EnumerateOccurrences().Single(o=>o.DefinitionId==part);
+        var treePart=vm.ModelTree.Items.Single(item=>Equals(item.Path,occurrence.Path));
+        treePart.IsExpanded=true;
+        treePart.Children.Single(item=>item.Target is null&&item.Feature is null&&item.Sketch is null).IsExpanded=true;
         var treeFeature=All(vm.ModelTree.Items).Single(item=>item.Feature==feature.Id);
         await Operate(()=>{vm.ModelTree.Select(treeFeature);return Task.CompletedTask;},async dialog=>
         {
@@ -105,7 +109,6 @@ internal static class LocalFeatureSmokeRunner
             dialog.Close();
         });
         Check(ReferenceEquals(after,session.Snapshot),"Tree edit cancellation keeps original output");
-        var occurrence=after.EnumerateOccurrences().Single(o=>o.DefinitionId==part);
         vm.ActiveDocument.Selection.Replace([new SelectionTarget(occurrence.Path,feature.OutputBodyId,feature.Result.Revision)]);
         await Operate(()=>{vm.Properties.EditFeatureCommand.Execute(null);return Task.CompletedTask;},async dialog=>
         {

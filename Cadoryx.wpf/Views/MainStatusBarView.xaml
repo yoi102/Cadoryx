@@ -54,6 +54,7 @@
                                Margin="12,0,5,0" VerticalAlignment="Center" />
                     <mah:NumericUpDown x:Name="GridSpacingInput" Width="85" Height="24"
                                        Minimum="0.1" Maximum="1000" Interval="1"
+                                       ToolTip="{Binding GridDisplayHint}"
                                        Value="{Binding ActiveDocument.GridSpacingMm, Mode=OneWay}"
                                        LostKeyboardFocus="GridSpacingLostFocus" KeyDown="GridSpacingKeyDown" />
                     <CheckBox x:Name="GridSnapInput" Content="{Binding GridSnapLabel}"
@@ -66,6 +67,10 @@
                         <md:PackIcon Kind="CogOutline" Width="17" Height="17"/>
                     </Button>
                 </StackPanel>
+            </StatusBarItem>
+            <Separator />
+            <StatusBarItem>
+                <TextBlock Text="{Binding ActiveDocument.ScaleSummary}" Opacity="0.75" />
             </StatusBarItem>
             <Separator />
             <StatusBarItem>
