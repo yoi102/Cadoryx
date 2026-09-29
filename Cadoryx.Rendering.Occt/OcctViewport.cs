@@ -532,8 +532,10 @@ public sealed partial class OcctViewport : ICadViewport
         foreach(var presentation in originPresentations)presentation.Dispose();originPresentations.Clear();
         constructionGhost?.Dispose();constructionGhost=null;
         viewer.FitAll();ShowWorkGrid();ShowOriginAxes();RefreshWorkGridScale();
+        RefreshHandlesForCamera();
     }
-    public void SetProjection(CadProjection projection)=>viewer.SetProjection(ToViewerProjection(projection));
+    public void SetProjection(CadProjection projection)
+    {viewer.SetProjection(ToViewerProjection(projection));RefreshHandlesForCamera();}
     public CadCamera CaptureProjectionTarget(CadProjection projection)
     {
         var current=CaptureCamera();
@@ -586,7 +588,7 @@ public sealed partial class OcctViewport : ICadViewport
     {
         mode=displayMode;foreach(var e in entries.Values)e.Presentation.SetDisplayMode(mode==CadDisplayMode.Shaded?ViewerDisplayMode.Shaded:ViewerDisplayMode.Wireframe);viewer.Redraw();
     }
-    public void Resize(){viewer.Resize();RefreshWorkGridScale();}
+    public void Resize(){viewer.Resize();RefreshWorkGridScale();RefreshHandlesForCamera();}
     public void Redraw()=>viewer.Redraw();
     public bool HasPointerCapture=>pressedButtons!=0;
     public void PointerMoved(int x,int y,int buttons,int modifiers)
@@ -597,7 +599,9 @@ public sealed partial class OcctViewport : ICadViewport
         if(cubeClick){viewer.MoveTo(x,y);UpdateCubeHover(x,y);return;}
         if(constructing&&(buttons&6)==0){ConstructionPointer?.Invoke(this,(x,y,false));UpdateCubeHover(x,y);return;}
         if(Math.Abs(x-pressX)>2||Math.Abs(y-pressY)>2)selectionClick=false;
-        viewer.Input.PointerMoved(x,y,(ViewerPointerButtons)(buttons&pressedButtons),(ViewerModifierKeys)modifiers);
+        var navigationButtons=buttons&pressedButtons;
+        viewer.Input.PointerMoved(x,y,(ViewerPointerButtons)navigationButtons,(ViewerModifierKeys)modifiers);
+        if(navigationButtons!=0)RefreshHandlesForCamera();
         UpdateCubeHover(x,y);
     }
     public void PointerPressed(int button,int x,int y,int modifiers)
@@ -635,6 +639,7 @@ public sealed partial class OcctViewport : ICadViewport
         if(constructing&&button==0){ConstructionPointer?.Invoke(this,(x,y,true));return;}
         var selected=viewer.Input.PointerReleased(Button(button),x,y);
         RefreshWorkGridScale();
+        RefreshHandlesForCamera();
         bool clicked=button==0&&selectionClick;selectionClick=false;
         if(!clicked)return;
         if(assemblyDatumSelection is {} datumKind)
@@ -712,9 +717,10 @@ public sealed partial class OcctViewport : ICadViewport
     {
         FinishOccurrenceHandle(false);
         FinishSolidHandle(false);
+        var released=(pressedButtons&4)!=0?ViewerPointerButton.Right:ViewerPointerButton.Middle;
         pressedButtons=0;selectionClick=false;cubeClick=false;
-        // preview.26 clears any pressed button on release. Right avoids synthesizing a left click.
-        viewer.Input.PointerReleased(ViewerPointerButton.Right,lastX,lastY);
+        // preview.26 clears any pressed button on release. Neither navigation button selects.
+        viewer.Input.PointerReleased(released,lastX,lastY);
     }
     public void ClearSelection()=>viewer.ClearSelection();
     public void MouseWheel(int delta,int x,int y,int modifiers)
@@ -722,6 +728,7 @@ public sealed partial class OcctViewport : ICadViewport
         NavigationStarted?.Invoke(this,EventArgs.Empty);
         viewer.Input.MouseWheel(delta,x,y,(ViewerModifierKeys)modifiers);
         RefreshWorkGridScale();
+        RefreshHandlesForCamera();
     }
     private static ViewerPointerButton Button(int button)=>button switch{0=>ViewerPointerButton.Left,1=>ViewerPointerButton.Middle,_=>ViewerPointerButton.Right};
     public CadCamera CaptureCamera()
@@ -734,6 +741,14 @@ public sealed partial class OcctViewport : ICadViewport
         viewer.Rendering.SetCamera(new(new(c.Eye.X,c.Eye.Y,c.Eye.Z),new(c.Target.X,c.Target.Y,c.Target.Z),new(c.Up.X,c.Up.Y,c.Up.Z),
             c.Aspect,c.Scale,c.FieldOfViewY,c.NearPlane,c.FarPlane,c.Perspective,c.AutoFitDepth));
         RefreshWorkGridScale();
+        RefreshHandlesForCamera();
+    }
+    private void RefreshHandlesForCamera()
+    {
+        // AIS_Manipulator uses zoom persistence; keep its native presentation
+        // attached while the camera moves instead of recreating it per frame.
+        if(draggingSolidHandle is null&&solidHandleRecipe is {} recipe)
+            SetSolidHandles(recipe,solidHandleOccurrence);
     }
     public void SaveScreenshot(string path)=>viewer.SaveScreenshot(path,overwrite:true);
     public (int X,int Y) WorldToScreen(Vector3d point)

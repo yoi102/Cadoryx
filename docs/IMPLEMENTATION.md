@@ -6,7 +6,7 @@
 
 2026-09-23 H2-C1 增加 `HistoryQuery` 不可变诊断定义、命令、独立 MessagePack 节和统一风格窗口，见 [历史诊断查询](HISTORY_QUERIES.md)；H2-C2 加入跨特征精确边绑定、圆角、过期传播与显式重选，当时写出 0.4.7，见 [跨特征绑定](HISTORY_FEATURE_BINDINGS.md)。以下 H2-B2/B1 记录保留当时的版本与能力边界。
 
-M2-V1 增加 XY 工作网格与鼠标创建：视口相机射线定位起点，Box/Cylinder 通过底面与高度点击更新半透明原生预览，Extrude/Revolve 通过移动确定距离／角度，最后进入原有隔离候选与确认事务。网格现为文档设置，底部状态栏编辑并随 document v8 保存；见 [视口鼠标建模](VIEWPORT_CONSTRUCTION.md)。
+M2-V1 增加 XY 工作网格与鼠标创建：视口相机射线定位起点，Box/Cylinder 通过底面与高度点击更新半透明原生预览，Extrude/Revolve 通过移动确定距离／角度。当前 Box/Cylinder 第三次点击在隔离计算成功后自动提交；Extrude/Revolve 仍进入隔离候选并等待确认。网格现为文档设置，底部状态栏编辑并随 document v8 保存；见 [视口鼠标建模](VIEWPORT_CONSTRUCTION.md)。
 
 H2-B2：OcctSharp.BooleanHistoryModeling 提供同次布尔逐源关系，Cadoryx 经复制及 BRep 重载校验后发布证据，直接 Box → 布尔后继可诊断追踪。消费本地包 `8.0.1-preview.28.cadoryx.h2b2.2`，文件写出版本 0.4.5，history v2 不变；见 [布尔历史](BOOLEAN_HISTORY.md)。以下保留先前阶段背景。
 
@@ -98,7 +98,7 @@ M3-V 在 `-WindowSmoke` 中新增三个固定旧文件的 MainWindow 打开、�
 
 M10 已实现有界闭环机械配合、真实拓扑基准提取和显式跨文档依赖预览；通用跨重算拓扑命名仍未实现；多视口混合 DPI/RDP、长时间运行尚未取得环境证据。M8 让 88 MB 样本约 1.26 秒出现首个非空视口画面，但内核/存储加载仍约 55 秒、完整场景提交仍约 9.70 秒；后续实体尺寸手柄通过单独发布版窗口冒烟。M9 已完成受限混合样条闭环、样条孔及多层孔岛，不等于任意自由样条拓扑。M11 已实现关联二维工程图的图纸、真实 BRep 隐线投影、尺寸和 PDF/打印；完整 PMI、标准制图模板、外部材料库与纹理/PBR 材质仍未提供。按功能缺口与验收缺口分别整理在[进度汇总](STATUS.md)，M10 装配的实现与验收见[M10 装配](M10_ASSEMBLY.md)，M11 实际范围见[M11 工程图](M11_TECHNICAL_DRAWINGS.md)。
 
-M12 的当前实现增加 `OccurrenceDrag` 的父局部位移换算和约束保护、`OcctViewportOccurrenceHandles` 的三轴原生手柄、Revolve 角度候选手柄，以及 `CADORYX_IMPORT_PROFILE` 分段诊断。导入复用 `GetTopologySummary().IsValid`，避免对同一 BRep 再运行一遍有效性检查；会话级磁盘缓存不再对每个暂存资产强制刷盘。XDE 继承颜色仍走原有源样式显示，不能为了场景提交数字破坏颜色。当前性能、测试及环境边界以 [M12 交互与性能](M12_INTERACTION_AND_PERFORMANCE.md) 为准；上段 M8 数字是当时的历史结果。
+M12 的当前实现增加 `OccurrenceDrag` 的父局部位移换算和约束保护、`OcctViewportOccurrenceHandles` 的原生移动／旋转操纵器及受限等比缩放、Revolve 角度候选手柄，以及 `CADORYX_IMPORT_PROFILE` 分段诊断。操纵器显示由本地 OcctSharp 的 Topmost 层、固定屏幕尺寸与模式部件重算支持；变换提交仍走文档命令。导入复用 `GetTopologySummary().IsValid`，避免对同一 BRep 再运行一遍有效性检查；会话级磁盘缓存不再对每个暂存资产强制刷盘。XDE 继承颜色仍走原有源样式显示，不能为了场景提交数字破坏颜色。当前性能、测试及环境边界以 [M12 交互与性能](M12_INTERACTION_AND_PERFORMANCE.md) 为准；上段 M8 数字是当时的历史结果。
 
 验证是在当前 Windows 机器和本地包基线上完成；独立发布目录使用已安装的 .NET 10 Desktop Runtime。尚未在全新 Windows 虚拟机、混合 DPI、多 GPU/远程桌面或长时间运行条件下验收，也未制作安装器或发布 NuGet。
 

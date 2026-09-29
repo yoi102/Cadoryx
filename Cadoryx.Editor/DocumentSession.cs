@@ -11,6 +11,7 @@ public sealed class InlineSessionDispatcher : ISessionDispatcher
     public Task InvokeAsync(Action action){action();return Task.CompletedTask;}
 }
 public sealed class StaleDocumentException() : InvalidOperationException("The document changed while this operation was being prepared.");
+public sealed record CadDocumentCommandActivity(string Verb,string Name,string DocumentName);
 
 public sealed class DocumentCapture(DocumentSnapshot snapshot,DocumentAssetLease lease,bool isDirty=false,string? filePath=null) : IDisposable
 {
@@ -43,6 +44,7 @@ public sealed class CadDocumentSession : IAsyncDisposable
     public long HistoryAssetBudgetBytes {get;private set;}=512L*1024*1024;
     public DocumentHistoryUsage HistoryUsage {get{lock(gate)return MeasureHistory();}}
     public event EventHandler<DocumentChangeSet>? Changed;
+    public event EventHandler<CadDocumentCommandActivity>? CommandCommitted;
     public event EventHandler? StatusChanged;
     public event EventHandler<Exception>? ObserverFailed;
     public string? FilePath { get; private set; }
@@ -83,6 +85,7 @@ public sealed class CadDocumentSession : IAsyncDisposable
                 await dispatcher.InvokeAsync(()=>
                 {
                     DocumentChangeSet? change=null;
+                    CadDocumentCommandActivity? activity=null;
                     lock(gate)
                     {
                         linked.Token.ThrowIfCancellationRequested();ThrowIfClosing();
@@ -98,8 +101,13 @@ public sealed class CadDocumentSession : IAsyncDisposable
                         foreach(var old in redo)old.Dispose();redo.Clear();
                         undo.Add(entry);TrimHistory();
                         change=DocumentChangeSet.Between(previous,next,generation);
+                        activity=new("Executed",command.Name,next.Name);
                     }
-                    if(change is not null)Publish(change);
+                    if(change is not null)
+                    {
+                        Publish(change);
+                        PublishCommand(activity!);
+                    }
                 }).ConfigureAwait(false);
             }
         }
@@ -110,6 +118,7 @@ public sealed class CadDocumentSession : IAsyncDisposable
     private Task MoveHistoryAsync(List<HistoryEntry> from,List<HistoryEntry> to,bool forward)=>dispatcher.InvokeAsync(()=>
     {
         DocumentChangeSet? change=null;
+        CadDocumentCommandActivity? activity=null;
         lock(gate)
         {
             ThrowIfClosing();if(from.Count==0)return;
@@ -119,8 +128,10 @@ public sealed class CadDocumentSession : IAsyncDisposable
             currentLease.Dispose();currentLease=lease;
             TrimHistory();
             change=DocumentChangeSet.Between(previous,next,generation);
+            activity=new(forward?"Redo":"Undo",entry.Name,next.Name);
         }
         Publish(change);
+        PublishCommand(activity!);
     });
     /// <summary>Session-only limits. Oldest undo, then farthest redo entries are discarded.</summary>
     public Task ConfigureHistoryAsync(int entryLimit,long assetBudgetBytes)
@@ -204,7 +215,7 @@ public sealed class CadDocumentSession : IAsyncDisposable
         await dispatcher.InvokeAsync(()=>
         {
             lock(gate){currentLease.Dispose();foreach(var e in undo)e.Dispose();foreach(var e in redo)e.Dispose();undo.Clear();redo.Clear();}
-            Changed=null;StatusChanged=null;
+            Changed=null;CommandCommitted=null;StatusChanged=null;
         }).ConfigureAwait(false);
         lifetime.Dispose();saveQueue.Dispose();
     }
@@ -217,6 +228,11 @@ public sealed class CadDocumentSession : IAsyncDisposable
         foreach(var observer in Changed?.GetInvocationList()??[])
             try{((EventHandler<DocumentChangeSet>)observer)(this,change);}catch(Exception ex){ReportObserver(ex);}
         Notify(StatusChanged);
+    }
+    private void PublishCommand(CadDocumentCommandActivity activity)
+    {
+        foreach(var observer in CommandCommitted?.GetInvocationList()??[])
+            try{((EventHandler<CadDocumentCommandActivity>)observer)(this,activity);}catch(Exception ex){ReportObserver(ex);}
     }
     private void Notify(EventHandler? handlers)
     {

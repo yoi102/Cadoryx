@@ -243,7 +243,9 @@ public partial class MainWindowViewModel : ObservableObject
         if(path is null)return false;
         await doc.Session.SaveAsync(storage,path);
         try{await recovery.CheckpointAsync(doc.Session);}catch(Exception ex){ReportRecoveryFailure(ex);}
-        StatusText=string.Format(Strings.SavedFormat,Path.GetFileName(path));return !doc.Session.IsDirty;
+        StatusText=string.Format(Strings.SavedFormat,Path.GetFileName(path));
+        CommandLine.RecordAction(StatusText);
+        return !doc.Session.IsDirty;
     }
     [RelayCommand(CanExecute=nameof(CanUseDocument))] private async Task ExportAsync()
     {
@@ -255,6 +257,7 @@ public partial class MainWindowViewModel : ObservableObject
             var report=await kernel.ExportAsync(capture.Snapshot,assets,request.Path,new CadExportOptions(request.LinearDeflectionMm,request.AngularDeflectionRad,request.BinaryStl,request.VisibleOnly));
             foreach(var diagnostic in report.Diagnostics)log.Add(diagnostic.Message,CadMessageLevel.Information,diagnostic.Code);
             StatusText=string.Format(Strings.ExportedFormat,report.Format,Path.GetFileName(report.Path));
+            CommandLine.RecordAction(StatusText);
         });
     }
 
@@ -265,11 +268,25 @@ public partial class MainWindowViewModel : ObservableObject
     private async Task RedoAsync(){if(ActiveDocument is {} doc)await RunAsync(doc.Session.RedoAsync);}
 
     [RelayCommand(CanExecute=nameof(CanUseDocument))]
-    private void FitView()=>ActiveDocument?.FitView();
+    private void FitView()
+    {
+        if(ActiveDocument is not {} doc)return;
+        doc.FitView();CommandLine.RecordAction("Fit view");
+    }
 
     [RelayCommand(CanExecute=nameof(CanUseDocument))]
-    private void SetView(string viewName)=>ActiveDocument?.SetView(viewName switch{"Front"=>CadProjection.Front,"Top"=>CadProjection.Top,"Right"=>CadProjection.Right,"Back"=>CadProjection.Back,"Bottom"=>CadProjection.Bottom,"Left"=>CadProjection.Left,_=>CadProjection.Axonometric});
-    [RelayCommand] private void StartTool(string kind){if(ActiveDocument is null)New();ActiveDocument?.StartTool(kind);}
+    private void SetView(string viewName)
+    {
+        if(ActiveDocument is not {} doc)return;
+        doc.SetView(viewName switch{"Front"=>CadProjection.Front,"Top"=>CadProjection.Top,"Right"=>CadProjection.Right,"Back"=>CadProjection.Back,"Bottom"=>CadProjection.Bottom,"Left"=>CadProjection.Left,_=>CadProjection.Axonometric});
+        CommandLine.RecordAction($"View: {viewName}");
+    }
+    [RelayCommand] private void StartTool(string kind)
+    {
+        if(ActiveDocument is null)New();
+        ActiveDocument?.StartTool(kind);
+        if(ActiveDocument?.IsViewportConstructing==true)CommandLine.RecordAction($"Tool active: {kind}");
+    }
     [RelayCommand] private void SetDisplay(string mode)=>ActiveDocument?.SetDisplay(mode=="Wireframe"?CadDisplayMode.Wireframe:CadDisplayMode.Shaded);
     [RelayCommand(CanExecute=nameof(CanEditDocument))] private async Task OpenDocumentSettingsAsync()
     {

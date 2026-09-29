@@ -1666,13 +1666,16 @@
   <data name="SuppressFeature" xml:space="preserve"><value>Suppress feature</value></data>
   <data name="RestoreFeature" xml:space="preserve"><value>Restore feature</value></data>
   <data name="RadialMenu" xml:space="preserve"><value>Radial menu</value></data>
-  <data name="RadialEnabled" xml:space="preserve"><value>Enable middle mouse radial menu</value></data>
-  <data name="RadialHint" xml:space="preserve"><value>Hold middle mouse and point to an action; Shift, Ctrl or Alt changes the page. Release to run. Disable to use middle mouse navigation.</value></data>
-  <data name="RadialMiddle" xml:space="preserve"><value>Middle mouse</value></data>
-  <data name="RadialShift" xml:space="preserve"><value>Shift + middle mouse</value></data>
-  <data name="RadialControl" xml:space="preserve"><value>Ctrl + middle mouse</value></data>
+  <data name="RadialEnabled" xml:space="preserve"><value>Enable radial menu on the key below Esc</value></data>
+  <data name="RadialHint" xml:space="preserve"><value>Hold the physical key below Esc (` on US keyboards) to show the menu. Point to an action, use the wheel to switch pages, and release the key to run. Shift, Ctrl and Alt can also select pages 2–4.</value></data>
+  <data name="RadialMiddle" xml:space="preserve"><value>Page 1</value></data>
+  <data name="RadialShift" xml:space="preserve"><value>Page 2</value></data>
+  <data name="RadialControl" xml:space="preserve"><value>Page 3</value></data>
   <data name="RadialEmpty" xml:space="preserve"><value>Empty</value></data>
-  <data name="RadialAlt" xml:space="preserve"><value>Alt + middle mouse</value></data>
+  <data name="RadialAlt" xml:space="preserve"><value>Page 4</value></data>
   <data name="RadialClear" xml:space="preserve"><value>Drag a slot here to clear it</value></data>
   <data name="RadialPaletteHint" xml:space="preserve"><value>Drag an action to a sector; drag a sector to the center to clear it.</value></data>
+  <data name="GizmoMove" xml:space="preserve"><value>Move (axes / planes)</value></data>
+  <data name="GizmoRotate" xml:space="preserve"><value>Rotate</value></data>
+  <data name="GizmoScale" xml:space="preserve"><value>Scale primitive</value></data>
 </root>

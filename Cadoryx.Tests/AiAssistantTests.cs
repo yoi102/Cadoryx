@@ -12,53 +12,8 @@ using Xunit;
 
 namespace Cadoryx.Tests;
 
-public sealed class CommandAndAgentTests
+public sealed class AiAssistantTests
 {
-    [Fact]
-    public async Task CommandLineRejectsUnknownAndInvalidInputWithoutChangingDocument()
-    {
-        var service = new CadCommandLineService(); var document = new Context();
-        Assert.False((await service.ExecuteAsync("NOT_A_COMMAND", document)).Success);
-        Assert.False((await service.ExecuteAsync("VIEW DIAGONAL", document)).Success);
-        Assert.False((await service.ExecuteAsync("UNDO EXTRA", document)).Success);
-        Assert.False((await service.ExecuteAsync("STATUS", null)).Success);
-        Assert.False((await service.ExecuteAsync("FIND", document)).Success);
-        Assert.False((await service.ExecuteAsync("SELECT", document)).Success);
-        Assert.False((await service.ExecuteAsync("TOOL SPHERE", document)).Success);
-        Assert.False((await service.ExecuteAsync("HELP \"", null)).Success);
-        Assert.Equal(0, document.EditCount);
-        Assert.Contains("VIEW", (await service.ExecuteAsync("HELP", null)).Message);
-    }
-
-    [Fact]
-    public async Task CommandLineRoutesDocumentActionsAndHonorsUndoState()
-    {
-        var service = new CadCommandLineService(); var document = new Context();
-        Assert.Contains("body", (await service.ExecuteAsync("LIST", document)).Message);
-        Assert.False((await service.ExecuteAsync("UNDO", document)).Success);
-        document.CanUndo = true;
-        Assert.True((await service.ExecuteAsync("u", document)).Success);
-        Assert.True((await service.ExecuteAsync("VIEW TOP", document)).Success);
-        Assert.True((await service.ExecuteAsync("FIT", document)).Success);
-        Assert.True((await service.ExecuteAsync("DESELECT", document)).Success);
-        Assert.Equal(1, document.EditCount);
-        Assert.Equal("TOP", document.View);
-        Assert.Equal(1, document.FitCount);
-        Assert.Equal(1, document.ClearCount);
-        Assert.Contains("STATUS", service.Complete("st"));
-        Assert.Contains("bracket", (await service.ExecuteAsync("FIND bracket", document)).Message);
-        Assert.Contains("Nothing selected", (await service.ExecuteAsync("SELECTION", document)).Message);
-        Assert.False((await service.ExecuteAsync("SELECT duplicate", document)).Success);
-        Assert.True((await service.ExecuteAsync("SELECT bracket", document)).Success);
-        Assert.True((await service.ExecuteAsync("tool box", document)).Success);
-        Assert.Equal("BOX", document.InteractiveTool);
-        Assert.True((await service.ExecuteAsync("CANCEL", document)).Success);
-        Assert.False((await service.ExecuteAsync("CANCEL", document)).Success);
-        Assert.True((await service.ExecuteAsync("BOX \"Frame 1\" 10 20 30 1 2 3", document)).Success);
-        Assert.Equal("Frame 1", document.CreatedName);
-        Assert.False((await service.ExecuteAsync("CYLINDER C -1 10", document)).Success);
-    }
-
     [Fact]
     public async Task AgentRunsToolRoundAndStoresResultBeforeFinalAnswer()
     {
@@ -80,12 +35,25 @@ public sealed class CommandAndAgentTests
     public async Task CadAgentToolsetUsesBoundedCommandCatalog()
     {
         var tools = new CadAgentToolset(new CadCommandLineService(), null);
-        Assert.Equal(4, tools.ToolDefinitions.Count);
+        Assert.Equal(5, tools.ToolDefinitions.Count);
         Assert.Contains("\"active\":false", await tools.ExecuteAsync(new AiToolCall("1", "cad_status", "{}"), default));
         Assert.Contains("\"success\":true", await tools.ExecuteAsync(new AiToolCall("2", "cad_command", "{\"command\":\"HELP\"}"), default));
         Assert.Contains("\"success\":false", await tools.ExecuteAsync(new AiToolCall("3", "cad_command", "{\"command\":\"BOX Demo 1 2 3\"}"), default));
         Assert.Contains("Invalid tool arguments", await tools.ExecuteAsync(new AiToolCall("bad", "cad_command", "{"), default));
         Assert.Contains("Unknown tool", await tools.ExecuteAsync(new AiToolCall("4", "shell", "{}"), default));
+    }
+
+    [Fact]
+    public void DefaultAgentContextRetainsInspectSelectAndEditTools()
+    {
+        var tools = new CadAgentToolset(new CadCommandLineService(), null);
+        var context = AgentRequestContextBuilder.Build("CAD assistant",
+            [AiChatMessage.User("Select the exact bracket instance")], tools.ToolDefinitions,
+            AiAssistantSettings.DefaultContextWindowTokens);
+
+        Assert.Contains(context.Tools, tool => tool.Name == "cad_inspect");
+        Assert.Contains(context.Tools, tool => tool.Name == "cad_select");
+        Assert.Contains(context.Tools, tool => tool.Name == "cad_edit");
     }
 
     [Fact]
@@ -163,7 +131,7 @@ public sealed class CommandAndAgentTests
             x.GetProperty("text").GetString()!.Contains("part contents"));
         Assert.Contains(parts.EnumerateArray(), x => x.GetProperty("type").GetString() == "image_url" &&
             x.GetProperty("image_url").GetProperty("url").GetString() == "data:image/png;base64,AA==");
-        Assert.Equal(4, root.GetProperty("tools").GetArrayLength());
+        Assert.Equal(5, root.GetProperty("tools").GetArrayLength());
     }
 
     [Fact]
@@ -192,6 +160,26 @@ public sealed class CommandAndAgentTests
         Assert.Contains("\"success\":true", result);
     }
 
+    [Fact]
+    public async Task SwitchingProviderWhileReplyIsPendingIgnoresStaleAssistantOutput()
+    {
+        var runner = new DelayedRunner();
+        using var model = new AiAssistantToolboxViewModel(new FakeSettingsStore(), runner,
+            new FakeChatClient(), new FakeCodexClient(), new CadCommandLineService(), new FakeIcons());
+        model.Model = "test";
+        model.UserInput = "Inspect";
+        var sending = model.SendCommand.ExecuteAsync(null);
+        await runner.Started.Task.WaitAsync(TimeSpan.FromSeconds(10));
+
+        model.Provider = AiAssistantProvider.Codex;
+        runner.Release.TrySetResult(true);
+        await sending.WaitAsync(TimeSpan.FromSeconds(10));
+
+        Assert.Equal("Codex", model.ConnectionStatus);
+        Assert.DoesNotContain(model.Messages, message => message.Content == "stale answer");
+        Assert.False(model.IsBusy);
+    }
+
     private static AiAssistantToolboxViewModel CreateAssistant(FakeSettingsStore store, FakeCodexClient codex,
         FakeChatClient? chat = null)
     {
@@ -205,6 +193,25 @@ public sealed class CommandAndAgentTests
         private AiAssistantSettings settings = new();
         public AiAssistantSettings Load() => settings.Clone();
         public void Save(AiAssistantSettings value) => settings = value.Clone();
+    }
+
+    private sealed class DelayedRunner : IAgentRunner
+    {
+        public TaskCompletionSource<bool> Started { get; } =
+            new(TaskCreationOptions.RunContinuationsAsynchronously);
+        public TaskCompletionSource<bool> Release { get; } =
+            new(TaskCreationOptions.RunContinuationsAsynchronously);
+
+        public async Task<AgentRunResult> RunAsync(AgentRunRequest request,
+            Func<AgentRunEvent, ValueTask>? reportEvent = null,
+            CancellationToken cancellationToken = default)
+        {
+            Started.TrySetResult(true);
+            await Release.Task;
+            if (reportEvent is not null)
+                await reportEvent(new AgentRunEvent(AgentRunEventKind.AssistantMessage, "stale answer"));
+            return new AgentRunResult("test", request.ContextWindowTokens, false);
+        }
     }
 
     private sealed class CancellingCommandService(CancellationTokenSource cancellation) : ICadCommandLineService
@@ -236,42 +243,6 @@ public sealed class CommandAndAgentTests
         public object Properties { get; } = new();
         public object Modeling { get; } = new();
         public object Messages { get; } = new();
-    }
-
-    private sealed class Context : ICadCommandContext
-    {
-        public string DocumentName => "test";
-        public int BodyCount => 1;
-        public int SelectionCount => 1;
-        public bool CanUndo { get; set; }
-        public bool CanRedo => false;
-        public int EditCount { get; private set; }
-        public int FitCount { get; private set; }
-        public int ClearCount { get; private set; }
-        public string? View { get; private set; }
-        public string? CreatedName { get; private set; }
-        public string? InteractiveTool { get; private set; }
-        public IReadOnlyList<string> ListBodies(int limit) => ["body"];
-        public IReadOnlyList<string> FindBodies(string query, int limit) => ["assembly / bracket"];
-        public IReadOnlyList<string> ListSelection(int limit) => [];
-        public CadCommandResult SelectBody(string exactName) => exactName == "bracket"
-            ? new(true, "Selected: bracket") : new(false, "Cannot select: name is ambiguous.");
-        public Task UndoAsync() { EditCount++; return Task.CompletedTask; }
-        public Task RedoAsync() => Task.CompletedTask;
-        public void Fit() => FitCount++;
-        public void SetView(string direction) => View = direction;
-        public void ClearSelection() => ClearCount++;
-        public void StartInteractiveTool(string kind) => InteractiveTool = kind.ToUpperInvariant();
-        public bool CancelInteractiveTool()
-        {
-            if (InteractiveTool is null) return false;
-            InteractiveTool = null;
-            return true;
-        }
-        public Task CreateBoxAsync(string name, double width, double depth, double height, double x, double y, double z)
-        { CreatedName = name; EditCount++; return Task.CompletedTask; }
-        public Task CreateCylinderAsync(string name, double radius, double height, double x, double y, double z)
-        { CreatedName = name; EditCount++; return Task.CompletedTask; }
     }
 
     private sealed class FakeChatClient : IAiChatClient

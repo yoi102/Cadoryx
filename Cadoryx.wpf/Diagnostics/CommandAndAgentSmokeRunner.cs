@@ -22,6 +22,44 @@ internal static class CommandAndAgentSmokeRunner
         await workspace.CommandLine.ExecuteCommand.ExecuteAsync(null);
         if (!workspace.CommandLine.Entries.Any(x => x.Kind == "Output" && x.Text.Contains(document.Session.Snapshot.Name)))
             throw new InvalidOperationException("Command toolbox did not route STATUS to the active document.");
+        workspace.FitViewCommand.Execute(null);
+        if (!workspace.CommandLine.Entries.Any(x => x.Kind == "Action" && x.Text == "Fit view"))
+            throw new InvalidOperationException("Ribbon view command was not printed in the terminal.");
+        workspace.CommandLine.CommandText = "LAYERS";
+        await workspace.CommandLine.ExecuteCommand.ExecuteAsync(null);
+        if (!workspace.CommandLine.Entries.Any(x => x.Kind == "Output" && x.Text.Contains("Default")))
+            throw new InvalidOperationException("LAYERS did not query the active document.");
+        var originalSpacing = document.GridSpacingMm;
+        var changedSpacing = originalSpacing == 12.5 ? 15 : 12.5;
+        workspace.CommandLine.CommandText = "GRID SPACING " + changedSpacing.ToString(System.Globalization.CultureInfo.InvariantCulture);
+        await workspace.CommandLine.ExecuteCommand.ExecuteAsync(null);
+        if (document.GridSpacingMm != changedSpacing)
+            throw new InvalidOperationException("GRID did not update the active document.");
+        workspace.CommandLine.CommandText = "UNDO";
+        await workspace.CommandLine.ExecuteCommand.ExecuteAsync(null);
+        if (document.GridSpacingMm != originalSpacing)
+            throw new InvalidOperationException("UNDO did not restore the original grid state.");
+        workspace.CommandLine.CommandText = "DISPLAY WIREFRAME";
+        await workspace.CommandLine.ExecuteCommand.ExecuteAsync(null);
+        if (document.CurrentDisplayMode != Cadoryx.Rendering.CadDisplayMode.Wireframe)
+            throw new InvalidOperationException("DISPLAY did not switch the active viewport.");
+        workspace.CommandLine.CommandText = "DISPLAY SHADED";
+        await workspace.CommandLine.ExecuteCommand.ExecuteAsync(null);
+        var item = document.Scene.Items.FirstOrDefault() ??
+            throw new InvalidOperationException("No geometry available for command visibility smoke.");
+        {
+            var previousSelection = document.Selection.Items;
+            document.Selection.Replace([new Cadoryx.Editor.SelectionTarget(item.Path, item.BodyId, item.Geometry.Revision)]);
+            workspace.CommandLine.CommandText = "HIDE";
+            await workspace.CommandLine.ExecuteCommand.ExecuteAsync(null);
+            if (!document.Review.IsFiltered)
+                throw new InvalidOperationException("HIDE did not change review visibility.");
+            workspace.CommandLine.CommandText = "SHOWALL";
+            await workspace.CommandLine.ExecuteCommand.ExecuteAsync(null);
+            if (document.Review.IsFiltered)
+                throw new InvalidOperationException("SHOWALL did not restore review visibility.");
+            document.Selection.Replace(previousSelection);
+        }
         workspace.CommandLine.CommandText = "TOOL BOX";
         await workspace.CommandLine.ExecuteCommand.ExecuteAsync(null);
         if (!document.IsViewportConstructing)

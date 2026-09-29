@@ -8,6 +8,6 @@
     <Authors>yoiri</Authors>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
-    <OcctSharpVersion>8.0.1-preview.28.cadoryx.assembly.partner.1</OcctSharpVersion>
+    <OcctSharpVersion>8.0.1-preview.28.cadoryx.handles.gizmo.2</OcctSharpVersion>
   </PropertyGroup>
 </Project>

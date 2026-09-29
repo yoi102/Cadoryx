@@ -1644,13 +1644,16 @@
   <data name="SuppressFeature" xml:space="preserve"><value>抑制特征</value></data>
   <data name="RestoreFeature" xml:space="preserve"><value>恢复特征</value></data>
   <data name="RadialMenu" xml:space="preserve"><value>圆盘菜单</value></data>
-  <data name="RadialEnabled" xml:space="preserve"><value>启用鼠标中键圆盘菜单</value></data>
-  <data name="RadialHint" xml:space="preserve"><value>按住中键并指向操作；Shift、Ctrl 或 Alt 可切换页面，松开中键执行。关闭后中键恢复视口导航。</value></data>
-  <data name="RadialMiddle" xml:space="preserve"><value>鼠标中键</value></data>
-  <data name="RadialShift" xml:space="preserve"><value>Shift + 中键</value></data>
-  <data name="RadialControl" xml:space="preserve"><value>Ctrl + 中键</value></data>
+  <data name="RadialEnabled" xml:space="preserve"><value>启用 Esc 下方按键的圆盘菜单</value></data>
+  <data name="RadialHint" xml:space="preserve"><value>按住 Esc 下方的实体键（美式键盘为 `）显示圆盘，移动光标指向操作；滚轮切换页面，松键执行。Shift、Ctrl、Alt 也可选第 2–4 页。</value></data>
+  <data name="RadialMiddle" xml:space="preserve"><value>第 1 页</value></data>
+  <data name="RadialShift" xml:space="preserve"><value>第 2 页</value></data>
+  <data name="RadialControl" xml:space="preserve"><value>第 3 页</value></data>
   <data name="RadialEmpty" xml:space="preserve"><value>空</value></data>
-  <data name="RadialAlt" xml:space="preserve"><value>Alt + 中键</value></data>
+  <data name="RadialAlt" xml:space="preserve"><value>第 4 页</value></data>
   <data name="RadialClear" xml:space="preserve"><value>拖动扇区到此处清空</value></data>
   <data name="RadialPaletteHint" xml:space="preserve"><value>将动作拖到扇区；将扇区拖到中心可清空。</value></data>
+  <data name="GizmoMove" xml:space="preserve"><value>移动（轴／平面）</value></data>
+  <data name="GizmoRotate" xml:space="preserve"><value>旋转</value></data>
+  <data name="GizmoScale" xml:space="preserve"><value>缩放基础实体</value></data>
 </root>

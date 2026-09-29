@@ -8,6 +8,10 @@
  d:DataContext="{d:DesignInstance Type=vm:CadDocumentViewModel}">
  <UserControl.Resources>
   <ContextMenu x:Key="ReviewContextMenu">
+   <MenuItem Header="Move" Tag="GizmoMove" IsCheckable="True" Click="OnGizmoModeClicked"/>
+   <MenuItem Header="Rotate" Tag="GizmoRotate" IsCheckable="True" Click="OnGizmoModeClicked"/>
+   <MenuItem Header="Scale" Tag="GizmoScale" IsCheckable="True" Click="OnGizmoModeClicked"/>
+   <Separator/>
    <MenuItem Header="{I18N {x:Static r:LangKeys.ReviewIsolate}}" Command="{Binding IsolateCommand}"/>
    <MenuItem Header="{I18N {x:Static r:LangKeys.ReviewHide}}" Command="{Binding HideCommand}"/>
    <Separator/>

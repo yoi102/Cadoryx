@@ -11,6 +11,51 @@ namespace Cadoryx.Tests;
 public sealed class ToolSessionTests
 {
     [Theory]
+    [InlineData(DocumentWorkPlaneKind.XY)]
+    [InlineData(DocumentWorkPlaneKind.XZ)]
+    [InlineData(DocumentWorkPlaneKind.YZ)]
+    public async Task MousePrimitiveHeightCanExtendToEitherSideOfWorkPlane(DocumentWorkPlaneKind kind)
+    {
+        var assets=new MemoryAssetStore();var kernel=new OcctGeometryKernel();
+        await using var session=new CadDocumentSession(DocumentSnapshot.Create("Signed height"),assets,kernel,new InlineSessionDispatcher());
+        var vm=new CadDocumentViewModel(session,kernel,new CadMessageLog());
+        try
+        {
+            var plane=new DocumentWorkPlaneSettings(kind,12);
+            await vm.SetWorkPlaneAsync(plane);
+            await vm.SetGridAsync(spacingMm:5,snap:true);
+            foreach(var tool in new[]{"Box","Cylinder"})
+            {
+                vm.StartTool(tool);
+                vm.ConstructionPointer(plane.ToWorld(0,0),100,100,2,true);
+                vm.ConstructionPointer(plane.ToWorld(10,10),120,120,2,true);
+                var downward=Assert.IsAssignableFrom<GeometryRecipe>(
+                    vm.ConstructionPointer(plane.ToWorld(10,10),120,136,2,false).Ghost);
+                downward.Validate();
+                Assert.Equal(10,vm.SizeZ,10);
+                var downPlacement=downward switch
+                {
+                    BoxRecipe box=>box.Placement,
+                    CylinderRecipe cylinder=>cylinder.Placement,
+                    _=>throw new InvalidOperationException("Expected a primitive ghost.")
+                };
+                Assert.True((downPlacement.Translation-(plane.Origin-plane.Normal*10)).Length<1e-9);
+                var upward=vm.ConstructionPointer(plane.ToWorld(10,10),120,104,2,false).Ghost;
+                var upPlacement=upward switch
+                {
+                    BoxRecipe box=>box.Placement,
+                    CylinderRecipe cylinder=>cylinder.Placement,
+                    _=>throw new InvalidOperationException("Expected a primitive ghost.")
+                };
+                Assert.True((upPlacement.Translation-plane.Origin).Length<1e-9);
+                Assert.True(vm.ConstructionPointer(plane.ToWorld(10,10),120,136,2,true).PreviewNow);
+            }
+        }
+        finally{await vm.StopToolsAsync();vm.Detach();}
+        Assert.Equal(0,assets.Count);
+    }
+
+    [Theory]
     [InlineData(DocumentWorkPlaneKind.XZ)]
     [InlineData(DocumentWorkPlaneKind.YZ)]
     public async Task MouseBoxUsesSelectedPlaneForSizeAndNormal(DocumentWorkPlaneKind kind)

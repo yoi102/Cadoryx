@@ -15,6 +15,29 @@ namespace Cadoryx.Tests;
 public sealed class DocumentGridTests
 {
     [Fact]
+    public async Task ViewportCylinderCanPreviewAndCommitIntoEmptyDocument()
+    {
+        var assets = new MemoryAssetStore();
+        var kernel = new OcctGeometryKernel();
+        await using var session = new CadDocumentSession(DocumentSnapshot.Create("Cylinder"),
+            assets, kernel, new InlineSessionDispatcher());
+        var vm = new CadDocumentViewModel(session, kernel, new CadMessageLog());
+        try
+        {
+            vm.StartTool("Cylinder");
+            vm.ConstructionPointer(new Vector3d(0, 0, 0), 100, 100, 2, true);
+            vm.ConstructionPointer(new Vector3d(10, 0, 0), 120, 100, 2, true);
+            var last = vm.ConstructionPointer(new Vector3d(10, 0, 0), 120, 80, 2, true);
+            Assert.True(last.PreviewNow);
+            await vm.PreviewCommand.ExecuteAsync(null);
+            Assert.True(vm.HasPreview, vm.ToolStatus);
+            await vm.ConfirmCommand.ExecuteAsync(null);
+            Assert.Single(session.Snapshot.Bodies);
+            Assert.Single(vm.Scene.Items);
+        }
+        finally { vm.Detach(); }
+    }
+    [Fact]
     public async Task FreeWorkPlaneUsesOneTransformForGridSketchAndPersistence()
     {
         using var files=new TestFiles();var assets=new MemoryAssetStore();var kernel=new OcctGeometryKernel();

@@ -41,11 +41,15 @@ internal static class RibbonNavigationSmokeRunner
         Same(navigated,primary.CaptureCamera(),"Wheel cancels animation");
 
         var menu=panes[0].ReviewMenu;var camera=primary.CaptureCamera();
+        int contextRequests=0;
+        hosts[0].ContextMenuRequested+=(_,_)=>contextRequests++;
         SendMessage(hosts[0].Handle,0x204,2,Point(100,100));Require(!menu.IsOpen,"No menu on right down");
         SendMessage(hosts[0].Handle,0x200,2,Point(101,101));Same(camera,primary.CaptureCamera(),"Click jitter does not navigate");
-        SendMessage(hosts[0].Handle,0x205,0,Point(101,101));await Idle();Require(menu.IsOpen,"Right up opens menu");
+        SendMessage(hosts[0].Handle,0x205,0,Point(101,101));await Idle();Require(menu.IsOpen,$"Right up opens menu (requests {contextRequests}, capture {GetCapture()==hosts[0].Handle}, pointer {primary.HasPointerCapture})");
         Require(GetCapture()!=hosts[0].Handle,"Native capture released before menu");
-        var isolate=(MenuItem)menu.Items[0];var hide=(MenuItem)menu.Items[1];var show=(MenuItem)menu.Items[3];
+        var isolate=menu.Items.OfType<MenuItem>().Single(item=>item.Command==doc.Review.IsolateCommand);
+        var hide=menu.Items.OfType<MenuItem>().Single(item=>item.Command==doc.Review.HideCommand);
+        var show=menu.Items.OfType<MenuItem>().Single(item=>item.Command==doc.Review.ShowAllCommand);
         Require(isolate.Command==doc.Review.IsolateCommand&&hide.Command==doc.Review.HideCommand&&show.Command==doc.Review.ShowAllCommand,"Menu commands bind current document");
         Capture(menu,Path.Combine(output,"viewport-context-menu.png"));
         isolate.Command.Execute(null);menu.IsOpen=false;await Idle();Require(primary.VisibleBodyCount==1,"Menu isolation");

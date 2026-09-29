@@ -4,6 +4,7 @@ namespace Cadoryx.CommandLine;
 
 public sealed record CadCommandDescriptor(string Name, string Aliases, string Syntax, string Description);
 public sealed record CadCommandResult(bool Success, string Message, bool ClearOutput = false);
+public sealed record CadGridState(bool Visible, double SpacingMm, bool Snap);
 
 public interface ICadCommandContext
 {
@@ -15,6 +16,22 @@ public interface ICadCommandContext
     IReadOnlyList<string> ListBodies(int limit);
     IReadOnlyList<string> FindBodies(string query, int limit);
     IReadOnlyList<string> ListSelection(int limit);
+    IReadOnlyList<string> ListParts(int limit);
+    IReadOnlyList<string> ListFeatures(int limit);
+    IReadOnlyList<string> ListLayers(int limit);
+    IReadOnlyList<string> ListMaterials(int limit);
+    IReadOnlyList<string> ListSketches(int limit);
+    IReadOnlyList<string> ListDrawings(int limit);
+    IReadOnlyList<string> ListOccurrences(int limit);
+    string ScaleSummary { get; }
+    CadGridState Grid { get; }
+    Task SetGridAsync(bool? visible = null, double? spacingMm = null, bool? snap = null);
+    string DisplayMode { get; }
+    void SetDisplayMode(string mode);
+    CadCommandResult IsolateSelection();
+    CadCommandResult HideSelection();
+    CadCommandResult ShowAll();
+    CadCommandResult FocusSelection();
     CadCommandResult SelectBody(string exactName);
     Task UndoAsync();
     Task RedoAsync();
@@ -54,6 +71,8 @@ public sealed class CadCommandLineService : ICadCommandLineService
         Register("STATUS", "ST", "STATUS", "Show the active document and selection.", (args, context) =>
             args.Length != 0 ? Done(false, "Usage: STATUS") : Done(true,
                 $"{context!.DocumentName} | bodies: {context.BodyCount} | selected: {context.SelectionCount}"));
+        Register("STATS", "", "STATS", "Show document definitions, instances, features and asset size.", (args, context) =>
+            args.Length == 0 ? Done(true, context!.ScaleSummary) : Done(false, "Usage: STATS"));
         Register("LIST", "LS", "LIST", "List the first 50 bodies in the active document.", (args, context) =>
             args.Length != 0 ? Done(false, "Usage: LIST") : Done(true,
                 string.Join(Environment.NewLine, context!.ListBodies(50)) is { Length: > 0 } listing ? listing : "No bodies."));
@@ -63,6 +82,13 @@ public sealed class CadCommandLineService : ICadCommandLineService
         Register("SELECTION", "SEL", "SELECTION", "List selected body instances.", (args, context) =>
             args.Length != 0 ? Done(false, "Usage: SELECTION") : Done(true,
                 string.Join(Environment.NewLine, context!.ListSelection(50)) is { Length: > 0 } selected ? selected : "Nothing selected."));
+        RegisterList("PARTS", "", "List up to 50 part definitions.", context => context.ListParts(50));
+        RegisterList("FEATURES", "", "List up to 50 modeling features.", context => context.ListFeatures(50));
+        RegisterList("LAYERS", "", "List up to 50 document layers.", context => context.ListLayers(50));
+        RegisterList("MATERIALS", "", "List up to 50 document materials.", context => context.ListMaterials(50));
+        RegisterList("SKETCHES", "", "List up to 50 sketches.", context => context.ListSketches(50));
+        RegisterList("DRAWINGS", "", "List up to 50 drawing sheets.", context => context.ListDrawings(50));
+        RegisterList("OCCURRENCES", "INSTANCES", "List up to 50 assembly instances.", context => context.ListOccurrences(50));
         Register("SELECT", "", "SELECT exact-name", "Select a uniquely named body instance; ambiguous names are rejected.", (args, context) =>
         {
             if (args.Length != 1 || args[0].Length > 200) return Done(false, "Usage: SELECT exact-name");
@@ -96,6 +122,38 @@ public sealed class CadCommandLineService : ICadCommandLineService
             if (args.Length != 0) return Done(false, "Usage: DESELECT");
             context!.ClearSelection(); return Done(true, "Selection cleared.");
         });
+        Register("FOCUS", "", "FOCUS", "Focus the selected visible body or instance.", (args, context) =>
+            args.Length == 0 ? Task.FromResult(context!.FocusSelection()) : Done(false, "Usage: FOCUS"));
+        Register("ISOLATE", "", "ISOLATE", "Show only the selected bodies or instance.", (args, context) =>
+            args.Length == 0 ? Task.FromResult(context!.IsolateSelection()) : Done(false, "Usage: ISOLATE"));
+        Register("HIDE", "", "HIDE", "Temporarily hide the selected bodies or instance.", (args, context) =>
+            args.Length == 0 ? Task.FromResult(context!.HideSelection()) : Done(false, "Usage: HIDE"));
+        Register("SHOWALL", "UNHIDE", "SHOWALL", "Restore temporarily hidden geometry.", (args, context) =>
+            args.Length == 0 ? Task.FromResult(context!.ShowAll()) : Done(false, "Usage: SHOWALL"));
+        Register("DISPLAY", "", "DISPLAY [SHADED|WIREFRAME]", "Show or change viewport display mode.", (args, context) =>
+        {
+            if (args.Length == 0) return Done(true, $"Display: {context!.DisplayMode}");
+            if (args.Length != 1 || !new[] { "SHADED", "WIREFRAME" }.Contains(args[0], StringComparer.OrdinalIgnoreCase))
+                return Done(false, "Usage: DISPLAY [SHADED|WIREFRAME]");
+            context!.SetDisplayMode(args[0]);
+            return Done(true, $"Display: {context.DisplayMode}");
+        });
+        Register("GRID", "", "GRID [ON|OFF|SPACING mm|SNAP ON|OFF]", "Show or edit the current document grid.", async (args, context) =>
+        {
+            if (args.Length == 0) return new(true, GridMessage(context!.Grid));
+            if (args.Length == 1 && TryOnOff(args[0], out var visible))
+                await context!.SetGridAsync(visible: visible);
+            else if (args.Length == 2 && args[0].Equals("SNAP", StringComparison.OrdinalIgnoreCase) &&
+                TryOnOff(args[1], out var snap))
+                await context!.SetGridAsync(snap: snap);
+            else if (args.Length == 2 && args[0].Equals("SPACING", StringComparison.OrdinalIgnoreCase) &&
+                double.TryParse(args[1], System.Globalization.NumberStyles.Float,
+                    System.Globalization.CultureInfo.InvariantCulture, out var spacing) &&
+                double.IsFinite(spacing) && spacing is >= 0.1 and <= 1000)
+                await context!.SetGridAsync(spacingMm: spacing);
+            else return new(false, "Usage: GRID [ON|OFF|SPACING mm|SNAP ON|OFF] (spacing 0.1–1000 mm)");
+            return new(true, GridMessage(context!.Grid));
+        });
         Register("TOOL", "", "TOOL BOX|CYLINDER", "Start a mouse-driven solid construction in the viewport.", (args, context) =>
         {
             if (args.Length != 1 || !new[] { "BOX", "CYLINDER" }.Contains(args[0], StringComparer.OrdinalIgnoreCase))
@@ -125,6 +183,13 @@ public sealed class CadCommandLineService : ICadCommandLineService
     }
 
     private static readonly string[] Views = ["TOP", "FRONT", "RIGHT", "BACK", "LEFT", "BOTTOM", "ISO"];
+    private static bool TryOnOff(string input, out bool value)
+    {
+        value = input.Equals("ON", StringComparison.OrdinalIgnoreCase);
+        return value || input.Equals("OFF", StringComparison.OrdinalIgnoreCase);
+    }
+    private static string GridMessage(CadGridState grid) =>
+        $"Grid: {(grid.Visible ? "ON" : "OFF")} | spacing: {grid.SpacingMm.ToString(System.Globalization.CultureInfo.InvariantCulture)} mm | snap: {(grid.Snap ? "ON" : "OFF")}";
     public IReadOnlyList<CadCommandDescriptor> Commands => commands.Select(x => x.Descriptor).ToArray();
     public IReadOnlyList<string> Complete(string prefix, int limit = 12) => commands
         .Where(x => x.Descriptor.Name.StartsWith(prefix.Trim(), StringComparison.OrdinalIgnoreCase))
@@ -189,6 +254,12 @@ public sealed class CadCommandLineService : ICadCommandLineService
         }
         commands.Add((descriptor, run));
     }
+
+    private void RegisterList(string name, string aliases, string description,
+        Func<ICadCommandContext, IReadOnlyList<string>> read) =>
+        Register(name, aliases, name, description, (args, context) =>
+            args.Length != 0 ? Done(false, $"Usage: {name}") : Done(true,
+                string.Join(Environment.NewLine, read(context!)) is { Length: > 0 } lines ? lines : $"No {name.ToLowerInvariant()}."));
 
     private static string Describe(CadCommandDescriptor command) => $"{command.Syntax} — {command.Description}";
     private static Task<CadCommandResult> Done(bool success, string message) => Task.FromResult(new CadCommandResult(success, message));

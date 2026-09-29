@@ -13,6 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <InternalsVisibleTo Include="Cadoryx.Tests" />
     <InternalsVisibleTo Include="Cadoryx.Agent.Codex.Tests" />
   </ItemGroup>
 

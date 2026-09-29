@@ -11,12 +11,18 @@ public sealed partial class OcctViewport
     private (int X,int Y) dragHandlePixel,dragAxisPixel;
     private int dragStartX,dragStartY;
     private double lastDragValue;
+    private GeometryRecipe? solidHandleRecipe;
+    private RigidTransform3d solidHandleOccurrence=RigidTransform3d.Identity;
     public event EventHandler<(SolidDimension Dimension,double Value)>? SolidHandleChanged;
     public event EventHandler<(SolidDimension Dimension,double Initial,bool Commit)>? SolidHandleFinished;
+    public IReadOnlyList<double> SolidHandleScreenRadii=>solidHandles.Select(h=>
+        (h.Shape.GetBoundingBox().Maximum.X-h.Shape.GetBoundingBox().Minimum.X)*
+        PixelsPerMillimeter(h.Handle.WorldPoint)/2).ToArray();
 
     public void SetSolidHandles(GeometryRecipe? recipe,RigidTransform3d occurrence)
     {
         ClearSolidHandles();
+        solidHandleRecipe=recipe;solidHandleOccurrence=occurrence;
         if(recipe is null)return;
         var handles=SolidDimensionHandles.Describe(recipe,occurrence);
         try
@@ -32,6 +38,7 @@ public sealed partial class OcctViewport
                         handle.WorldPoint.X,handle.WorldPoint.Y,handle.WorldPoint.Z));
                     presentation.SetTransform(transform);
                     presentation.SetColor(new(1,0.58,0.08));
+                    presentation.SetOverlay(true);
                     presentation.SetSelectionKind(ShapeKind.Edge); // Sphere has no edges; model picking stays intact.
                 }
                 catch{presentation?.Dispose();shape.Dispose();throw;}
@@ -46,7 +53,21 @@ public sealed partial class OcctViewport
     {
         foreach(var (_,shape,presentation) in solidHandles){presentation.Dispose();shape.Dispose();}
         solidHandles.Clear();
+        solidHandleRecipe=null;
         if(!disposed)viewer.Redraw();
+    }
+    public void UpdateSolidHandlePositions(GeometryRecipe? recipe,RigidTransform3d occurrence)
+    {
+        if(recipe is null||solidHandles.Count==0)return;
+        var points=SolidDimensionHandles.Describe(recipe,occurrence).ToDictionary(h=>h.Dimension);
+        foreach(var (handle,_,presentation) in solidHandles)
+        {
+            if(!points.TryGetValue(handle.Dimension,out var next))continue;
+            using var transform=OcctGeometryBridge.ToNative(RigidTransform3d.Translate(
+                next.WorldPoint.X,next.WorldPoint.Y,next.WorldPoint.Z));
+            presentation.SetTransform(transform);
+        }
+        viewer.Redraw();
     }
 
     private bool TryStartSolidHandle(int x,int y)

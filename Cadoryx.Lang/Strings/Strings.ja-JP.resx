@@ -1644,13 +1644,16 @@
   <data name="SuppressFeature" xml:space="preserve"><value>フィーチャーを抑制</value></data>
   <data name="RestoreFeature" xml:space="preserve"><value>フィーチャーを復元</value></data>
   <data name="RadialMenu" xml:space="preserve"><value>ラジアルメニュー</value></data>
-  <data name="RadialEnabled" xml:space="preserve"><value>中ボタンのラジアルメニューを有効にする</value></data>
-  <data name="RadialHint" xml:space="preserve"><value>中ボタンを押したまま項目を指します。Shift、Ctrl、Alt でページを切り替え、離して実行します。無効にすると中ボタンのビュー操作に戻ります。</value></data>
-  <data name="RadialMiddle" xml:space="preserve"><value>中ボタン</value></data>
-  <data name="RadialShift" xml:space="preserve"><value>Shift + 中ボタン</value></data>
-  <data name="RadialControl" xml:space="preserve"><value>Ctrl + 中ボタン</value></data>
+  <data name="RadialEnabled" xml:space="preserve"><value>Esc の下のキーでラジアルメニューを有効にする</value></data>
+  <data name="RadialHint" xml:space="preserve"><value>Esc の下の物理キー（英語配列では `）を押してメニューを表示します。項目を指し、ホイールでページを切り替え、キーを離すと実行します。Shift、Ctrl、Alt でも 2～4 ページを選べます。</value></data>
+  <data name="RadialMiddle" xml:space="preserve"><value>ページ 1</value></data>
+  <data name="RadialShift" xml:space="preserve"><value>ページ 2</value></data>
+  <data name="RadialControl" xml:space="preserve"><value>ページ 3</value></data>
   <data name="RadialEmpty" xml:space="preserve"><value>空</value></data>
-  <data name="RadialAlt" xml:space="preserve"><value>Alt + 中ボタン</value></data>
+  <data name="RadialAlt" xml:space="preserve"><value>ページ 4</value></data>
   <data name="RadialClear" xml:space="preserve"><value>スロットをここにドラッグして消去</value></data>
   <data name="RadialPaletteHint" xml:space="preserve"><value>操作をセクターにドラッグします。セクターを中央にドラッグすると消去できます。</value></data>
+  <data name="GizmoMove" xml:space="preserve"><value>移動（軸／平面）</value></data>
+  <data name="GizmoRotate" xml:space="preserve"><value>回転</value></data>
+  <data name="GizmoScale" xml:space="preserve"><value>基本形状を拡大縮小</value></data>
 </root>

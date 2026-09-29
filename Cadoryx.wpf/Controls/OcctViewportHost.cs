@@ -21,15 +21,17 @@ public sealed class OcctViewportHost(IAssetStore assets) : HwndHost
     private int contextX,contextY;
     private long inputSequence;
     private bool radialActive;
-    private bool radialOwnsMiddle;
+    private bool radialKeyHeld;
     private int radialModifiers;
     private long lastAltMessageTick;
     public bool RadialMenuEnabled { get; set; }
     internal bool IsRadialActive => radialActive;
     public event EventHandler<RadialPointerEventArgs>? RadialStarted;
     public event EventHandler<RadialPointerEventArgs>? RadialMoved;
+    public event EventHandler<int>? RadialModifiersChanged;
     public event EventHandler<RadialPointerEventArgs>? RadialCompleted;
     public event EventHandler? RadialCancelled;
+    public event EventHandler<int>? RadialWheel;
     private static bool suspended;
     internal static int LiveCount=>Hosts.Count;
     public static void SuspendAll(bool value)
@@ -40,6 +42,60 @@ public sealed class OcctViewportHost(IAssetStore assets) : HwndHost
     {if(!radialActive)return;radialActive=false;RadialCancelled?.Invoke(this,EventArgs.Empty);}
     private RadialPointerEventArgs RadialPoint(int x,int y,int modifiers)
     {var point=new Point{x=x,y=y};Native.ClientToScreen(hwnd,ref point);return new(new(point.x,point.y),modifiers);}
+    internal static bool IsRadialTrigger(int key,nint keyData)
+    {
+        // The key below Escape has scan code 0x29 on the supported PC layouts.
+        // Its virtual key changes with the active keyboard layout/IME (for example,
+        // VK_OEM_3 on US and VK_KANJI on Japanese). Synthetic smoke messages have
+        // no scan code, so retain VK_OEM_3 as a compatibility fallback for them.
+        int scanCode=(int)(((long)keyData>>16)&0xFF);
+        return scanCode==0x29||scanCode==0&&key==0xC0;
+    }
+    internal bool HandleRadialKey(uint message,int key,nint keyData)
+    {
+        if(!IsRadialTrigger(key,keyData))return false;
+        if(message is 0x101 or 0x105 or 0x291)
+        {
+            if(!radialKeyHeld)return false;
+            radialKeyHeld=false;
+            var complete=radialActive;
+            radialActive=false;
+            if(complete)RadialCompleted?.Invoke(this,RadialPoint(contextX,contextY,radialModifiers));
+            if(Native.GetCapture()==hwnd)Native.ReleaseCapture();
+            return true;
+        }
+        if(message is not (0x100 or 0x104 or 0x290))return false;
+        if(radialKeyHeld)
+        {
+            if(radialActive||(((long)keyData>>30)&1)!=0)return true; // Held key or auto-repeat after cancellation.
+            // An IME can consume the key-up after focus/capture cancellation. A
+            // fresh physical key-down must recover instead of leaving the menu stuck off.
+            radialKeyHeld=false;
+        }
+        if(!RadialMenuEnabled||suspended||hwnd==0||Viewport is not {} viewport||viewport.HasPointerCapture||
+            Native.GetKeyState(0x11)<0||Native.GetKeyState(0x10)<0||Native.GetKeyState(0x12)<0)
+            return false; // Preserve Ctrl+` and typing shortcuts.
+        if(!Native.GetClientRect(hwnd,out var bounds)||bounds.Right<=0||bounds.Bottom<=0)return false;
+        radialKeyHeld=true;radialActive=true;radialModifiers=0;
+        contextClick=false;inputSequence++;
+        contextX=bounds.Right/2;contextY=bounds.Bottom/2;
+        if(Native.GetFocus()!=hwnd)Native.SetFocus(hwnd);
+        if(Native.GetCapture()!=hwnd)Native.SetCapture(hwnd);
+        var center=RadialPoint(contextX,contextY,0);
+        RadialStarted?.Invoke(this,center);
+        return true;
+    }
+    internal System.Windows.Point WarpRadialCursor(System.Windows.Point screenPoint)
+    {
+        if(!radialActive||hwnd==0)return screenPoint;
+        var point=new Point{x=(int)Math.Round(screenPoint.X),y=(int)Math.Round(screenPoint.Y)};
+        Native.SetCursorPos(point.x,point.y);
+        if(!Native.GetCursorPos(out var actual))actual=point;
+        point=actual;
+        Native.ScreenToClient(hwnd,ref point);
+        contextX=point.x;contextY=point.y;
+        return new(actual.x,actual.y);
+    }
     private void UpdateRadialModifier(uint message,int key)
     {
         int bit=key switch
@@ -57,13 +113,13 @@ public sealed class OcctViewportHost(IAssetStore assets) : HwndHost
     {
         if(!radialActive)return;
         if(key is 0x12 or 0xA4 or 0xA5)lastAltMessageTick=Environment.TickCount64;
+        int previous=radialModifiers;
         UpdateRadialModifier(message,key);
-        if(key is 0x10 or 0x11 or 0x12 or 0xA0 or 0xA1 or 0xA2 or 0xA3 or 0xA4 or 0xA5)
-            RadialMoved?.Invoke(this,RadialPoint(contextX,contextY,radialModifiers));
+        if(radialModifiers!=previous)RadialModifiersChanged?.Invoke(this,radialModifiers);
     }
     private bool KeepRadialDuringAltTransition()
     {
-        if(!radialActive||!radialOwnsMiddle)return false;
+        if(!radialActive||!radialKeyHeld)return false;
         var foreground=Native.GetForegroundWindow();
         var foregroundIsOurs=foreground!=0&&Native.GetWindowThreadProcessId(foreground,out var processId)!=0&&
             processId==Environment.ProcessId;
@@ -74,11 +130,11 @@ public sealed class OcctViewportHost(IAssetStore assets) : HwndHost
         var altJustReleased=(radialModifiers&4)!=0&&Native.GetKeyState(0x12)>=0;
         if(!altJustReleased&&Environment.TickCount64-lastAltMessageTick>500)return false;
         if(altJustReleased)
-        {radialModifiers&=~4;RadialMoved?.Invoke(this,RadialPoint(contextX,contextY,radialModifiers));}
+        {radialModifiers&=~4;RadialModifiersChanged?.Invoke(this,radialModifiers);}
         Dispatcher.BeginInvoke(()=>
         {
             var foregroundNow=Native.GetForegroundWindow();
-            if(radialActive&&radialOwnsMiddle&&hwnd!=0&&Native.GetCapture()!=hwnd&&foregroundNow!=0&&
+            if(radialActive&&radialKeyHeld&&hwnd!=0&&Native.GetCapture()!=hwnd&&foregroundNow!=0&&
                Native.GetWindowThreadProcessId(foregroundNow,out var owner)!=0&&owner==Environment.ProcessId)
                 Native.SetCapture(hwnd);
         });
@@ -112,7 +168,7 @@ public sealed class OcctViewportHost(IAssetStore assets) : HwndHost
         try{Destroying?.Invoke(this,EventArgs.Empty);}
         finally
         {
-            CancelCapture();radialOwnsMiddle=false;Viewport?.Dispose();Viewport=null;
+            CancelCapture();radialKeyHeld=false;Viewport?.Dispose();Viewport=null;
             if(handle.Handle!=0){Hosts.Remove(handle.Handle);Native.DestroyWindow(handle.Handle);}
             hwnd=0;
         }
@@ -130,15 +186,16 @@ public sealed class OcctViewportHost(IAssetStore assets) : HwndHost
                 case 0x101:
                 case 0x104: // WM_SYSKEYDOWN: Alt is delivered as a system key.
                 case 0x105: // WM_SYSKEYUP
+                case 0x290: // WM_IME_KEYDOWN can carry the same physical key.
+                case 0x291: // WM_IME_KEYUP
+                    if(host.HandleRadialKey(message,(int)w,l))return 0;
                     if(host.radialActive)
                     {
                         if((message is 0x100 or 0x104)&&(int)w==27){host.CancelCapture();return 0;}
                         host.NotifyRadialKey(message,(int)w);
                         return 0;
                     }
-                    if((message is 0x104 or 0x105)&&host.RadialMenuEnabled&&((int)w is 0x12 or 0xA4 or 0xA5))
-                        return 0; // Bare Alt must not open the Windows menu before Alt+middle.
-                    if(message is 0x101 or 0x104 or 0x105)break;
+                    if(message is 0x101 or 0x104 or 0x105 or 0x290 or 0x291)break;
                     int key=(int)w;
                     if(key==27||((modifiers&2)!=0&&key is 83 or 90 or 89))
                     {if(key==27)host.CancelCapture();host.Dispatcher.BeginInvoke(()=>host.ShortcutPressed?.Invoke(host,key));return 0;}
@@ -173,18 +230,6 @@ public sealed class OcctViewportHost(IAssetStore assets) : HwndHost
                     }
                     viewer.PointerMoved(x,y,buttons,modifiers);return 0;
                 case 0x2A3:host.mouseTracking=false;viewer.PointerExited();return 0;
-                case 0x207 when host.RadialMenuEnabled&&!viewer.HasPointerCapture&&(w&0x03)==0:
-                    host.inputSequence++;host.contextClick=false;host.radialActive=true;host.radialOwnsMiddle=true;host.radialModifiers=modifiers;
-                    host.contextX=x;host.contextY=y;
-                    if(Native.GetFocus()!=hwnd)Native.SetFocus(hwnd);
-                    if(Native.GetCapture()!=hwnd)Native.SetCapture(hwnd);
-                    host.RadialStarted?.Invoke(host,host.RadialPoint(x,y,modifiers));return 0;
-                case 0x208 when host.radialOwnsMiddle:
-                    var complete=host.radialActive;
-                    host.radialActive=false;
-                    host.radialOwnsMiddle=false;
-                    if(!viewer.HasPointerCapture&&Native.GetCapture()==hwnd)Native.ReleaseCapture();
-                    if(complete)host.RadialCompleted?.Invoke(host,host.RadialPoint(x,y,host.radialModifiers));return 0;
                 case 0x201:case 0x207:case 0x204:
                     host.CancelRadial();
                     host.inputSequence++;
@@ -210,6 +255,8 @@ public sealed class OcctViewportHost(IAssetStore assets) : HwndHost
                     }
                     return 0;
                 case 0x20A:
+                    if(host.radialActive)
+                    {host.RadialWheel?.Invoke(host,unchecked((short)((w>>16)&65535)));return 0;}
                     host.CancelRadial();
                     host.contextClick=false;host.inputSequence++;
                     var point=new Point{x=x,y=y};Native.ScreenToClient(hwnd,ref point);
@@ -231,6 +278,7 @@ public sealed class OcctViewportHost(IAssetStore assets) : HwndHost
         public uint Size,Style;public nint Procedure;public int ClassExtra,WindowExtra;public nint Instance,Icon,Cursor,Background;public string? Menu;public string Name;public nint SmallIcon;
     }
     [StructLayout(LayoutKind.Sequential)] private struct Point {public int x,y;}
+    [StructLayout(LayoutKind.Sequential)] private struct Rect {public int Left,Top,Right,Bottom;}
     [StructLayout(LayoutKind.Sequential)] private struct TrackMouseEventInfo
     {public uint Size,Flags;public nint Window;public uint HoverTime;}
     private static class Native
@@ -250,8 +298,11 @@ public sealed class OcctViewportHost(IAssetStore assets) : HwndHost
         [DllImport("user32.dll")][return:MarshalAs(UnmanagedType.Bool)]internal static extern bool ReleaseCapture();
         [DllImport("user32.dll")][return:MarshalAs(UnmanagedType.Bool)]internal static extern bool ScreenToClient(nint hwnd,ref Point point);
         [DllImport("user32.dll")][return:MarshalAs(UnmanagedType.Bool)]internal static extern bool ClientToScreen(nint hwnd,ref Point point);
+        [DllImport("user32.dll")][return:MarshalAs(UnmanagedType.Bool)]internal static extern bool GetClientRect(nint hwnd,out Rect rect);
+        [DllImport("user32.dll")][return:MarshalAs(UnmanagedType.Bool)]internal static extern bool SetCursorPos(int x,int y);
         [DllImport("user32.dll")]internal static extern short GetKeyState(int key);
         [DllImport("user32.dll",SetLastError=true)][return:MarshalAs(UnmanagedType.Bool)]internal static extern bool TrackMouseEvent(ref TrackMouseEventInfo info);
+        [DllImport("user32.dll")][return:MarshalAs(UnmanagedType.Bool)]internal static extern bool GetCursorPos(out Point point);
         [DllImport("user32.dll")][return:MarshalAs(UnmanagedType.Bool)]internal static extern bool ShowWindow(nint hwnd,int command);
     }
 }

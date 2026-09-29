@@ -20,6 +20,7 @@
 | [视口鼠标建模](VIEWPORT_CONSTRUCTION.md) | XY 工作网格、显示/间距/吸附设置、基础形体鼠标尺寸与预览 |
 | [实施路线与验收](ROADMAP.md) | 每个阶段的交付、验证及本轮完成边界 |
 | [当前进度与剩余工作](STATUS.md) | M0–M15 结论、功能缺口、环境与发布门禁 |
+| [自动测试与覆盖率](TEST_COVERAGE.md) | xUnit 覆盖率口径、按模块结果、复现脚本及补测重点 |
 | [M10–M11 与交付验收规划](M10_M11_DELIVERY_PLAN.md) | 完整装配、二维工程图、安装器与环境的范围、数据结构和验收门槛 |
 | [M10 完整装配](M10_ASSEMBLY.md) | 解析 BRep 基准、闭环求解、自由度/冗余、跨文档依赖与本机验收 |
 | [M11 二维工程图](M11_TECHNICAL_DRAWINGS.md) | 图纸、关联投影、精确尺寸、PDF/打印和本机验收边界 |
@@ -33,7 +34,7 @@
 | [交换与视口验收](EXCHANGE_AND_VIEWPORT.md) | 固定单位/旋转/面颜色样本、鼠标捕获、浮动与环境门禁 |
 | [文件进度与快速取消](PROGRESS_DIALOG.md) | 可选取消按钮、MaterialDesign 弹窗、STEP/IGES/STL 独立读取进程和清理 |
 | [右下角消息通知](NOTIFICATIONS.md) | WpfNotifications 自定义圆角边框、后台打开取消、应用窗口/桌面定位设置 |
-| [中键圆盘菜单](RADIAL_MENU.md) | 视口八扇区菜单、Shift/Ctrl 页面、逐槽自定义与取消行为 |
+| [快捷圆盘菜单](RADIAL_MENU.md) | 反引号键按住显示、滚轮选页、八扇区逐槽自定义与取消行为 |
 | [格式演进与存储基准](FORMAT_EVOLUTION.md) | 资产描述、跨节迁移、旧文件固定样本、读写时间与内存 |
 | [草图模型与求解基础](SKETCH_FOUNDATION.md) | 13 种约束、局部自由度/冲突、命令与六节文件协议 |
 | [草图编辑与关联特征](SKETCH_EDITOR.md) | MetroWindow 二维编辑、尺寸/约束、候选预览、依赖重算与新版协议 |

@@ -33,6 +33,7 @@ public partial class CadDocumentViewModel : ObservableDocument
     private bool refreshingTargets;
     private Quaterniond placementRotation=Quaterniond.Identity;
     private Vector3d constructionAnchor;
+    private Vector3d constructionHeightBase;
     private int constructionStage,constructionBaseY,constructionStartX;
     private double constructionScale=1;
     public bool GridVisible => Session.Snapshot.Settings.Grid.Visible;
@@ -250,7 +251,11 @@ public partial class CadDocumentViewModel : ObservableDocument
             }
             else{PositionX=constructionAnchor.X;PositionY=constructionAnchor.Y;PositionZ=constructionAnchor.Z;SizeX=Math.Max(0.001,Math.Sqrt(dx*dx+dy*dy));}
             bool valid=ToolKind=="Box"?Math.Abs(dx)>0.001&&Math.Abs(dy)>0.001:Math.Sqrt(dx*dx+dy*dy)>0.001;
-            if(click&&valid){constructionStage=2;constructionBaseY=y;constructionScale=pixelsPerMm;}
+            if(click&&valid)
+            {
+                constructionStage=2;constructionBaseY=y;constructionScale=pixelsPerMm;
+                constructionHeightBase=new(PositionX,PositionY,PositionZ);
+            }
             return(Recipe(),false);
         }
         if(constructionStage==1&&!primitive)
@@ -261,11 +266,13 @@ public partial class CadDocumentViewModel : ObservableDocument
             if(click&&measure>0.001){constructionStage=0;IsViewportConstructing=false;return(null,true);}
             return(TryProfileConstructionGhost(),false);
         }
-        double height=Math.Abs(y-constructionBaseY)/Math.Max(constructionScale,0.01);
-        if(SnapToGrid)height=Math.Round(height/GridSpacingMm)*GridSpacingMm;
-        SizeZ=Math.Max(0.001,height);
+        double signedHeight=(constructionBaseY-y)/Math.Max(constructionScale,0.01);
+        if(SnapToGrid)signedHeight=Math.Round(signedHeight/GridSpacingMm)*GridSpacingMm;
+        SizeZ=Math.Max(0.001,Math.Abs(signedHeight));
+        var origin=constructionHeightBase+WorkPlaneSettings.Normal*Math.Min(0,signedHeight);
+        PositionX=origin.X;PositionY=origin.Y;PositionZ=origin.Z;
         var ghost=Recipe();
-        if(click&&height>0.001){constructionStage=0;IsViewportConstructing=false;return(null,true);}
+        if(click&&Math.Abs(signedHeight)>0.001){constructionStage=0;IsViewportConstructing=false;return(null,true);}
         return(ghost,false);
     }
     private GeometryRecipe? TryProfileConstructionGhost()

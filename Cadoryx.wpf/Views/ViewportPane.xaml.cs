@@ -33,13 +33,28 @@ public partial class ViewportPane
     private MainWindowViewModel? main;
     private readonly CadoryxRadialMenuPopup radialMenu = new();
     private CadoryxRadialPage radialPage;
+    private bool radialWheelOverride;
+    private int radialWheelAccumulated;
+    private int radialWheelEmitted;
+    private int radialWheelDirection;
+    private long radialWheelLastTick;
+    internal int RadialPageNumber=>radialMenu.Page+1;
+    internal bool IsRadialPopupOpen=>radialMenu.IsOpen;
+    internal CadoryxRadialAction RadialSelectedAction=>radialMenu.SelectedAction;
+    internal CadoryxRadialAction LastRadialCompletedAction {get;private set;}
+    internal CadoryxRadialAction LastRadialExecutedAction {get;private set;}
+    internal Point RadialCenterScreen=>radialMenu.ScreenCenter;
+    internal FrameworkElement RadialVisual=>radialMenu.Visual;
+    internal nint RadialPopupHandle=>radialMenu.WindowHandle;
     private HwndSource? radialWindowSource;
+    private bool radialThreadHookAttached;
     private int sceneLoadVersion;
     private string? sceneLoadStatus;
     internal static event Action<ProgressiveSceneTiming>? SceneLoadTimed;
     private DocumentStateId? occurrenceHandleState;
     public ViewportPane()
     {
+        radialMenu.Wheel+=OnRadialWheel;
         InitializeComponent();Loaded+=(_,_)=>Attach();Unloaded+=(_,_)=>Detach();
         DataContextChanged+=(_,_)=>{if(IsLoaded){Detach();Attach();}};
     }
@@ -55,7 +70,9 @@ public partial class ViewportPane
         host.ShortcutPressed+=OnShortcut;
         host.ContextMenuRequested+=OnContextMenu;
         host.RadialStarted+=OnRadialStarted;host.RadialMoved+=OnRadialMoved;
+        host.RadialModifiersChanged+=OnRadialModifiersChanged;
         host.RadialCompleted+=OnRadialCompleted;host.RadialCancelled+=OnRadialCancelled;
+        host.RadialWheel+=OnRadialWheel;
         vm.SceneChanged+=OnScene;vm.PreviewChanged+=OnPreview;vm.FitRequested+=OnFit;
         vm.ProjectionRequested+=OnProjection;vm.DisplayModeRequested+=OnDisplay;vm.Selection.Changed+=OnSelection;
         vm.ViewportSettingsChanged+=OnViewportSettings;vm.PropertyChanged+=OnDocumentProperty;
@@ -80,7 +97,7 @@ public partial class ViewportPane
         viewport.ViewCubeTurnRequested+=OnCubeTurn;
         viewport.SolidHandleChanged+=OnSolidHandleChanged;
         viewport.SolidHandleFinished+=OnSolidHandleFinished;
-        viewport.OccurrenceHandleFinished+=OnOccurrenceHandleFinished;
+        viewport.OccurrenceGizmoFinished+=OnOccurrenceGizmoFinished;
         RefreshSolidHandles();
         RefreshOccurrenceHandles();
     }
@@ -102,9 +119,9 @@ public partial class ViewportPane
             vm.SceneChanged-=OnScene;vm.PreviewChanged-=OnPreview;vm.FitRequested-=OnFit;
             vm.ProjectionRequested-=OnProjection;vm.DisplayModeRequested-=OnDisplay;vm.Selection.Changed-=OnSelection;
             vm.ViewportSettingsChanged-=OnViewportSettings;vm.PropertyChanged-=OnDocumentProperty;
-            if(host?.Viewport is {} viewport){Guard(()=>SavedCamera=viewport.CaptureCamera());viewport.SelectionChanged-=OnNativeSelection;viewport.AssemblyDatumSelected-=OnAssemblyDatumSelected;viewport.AssemblyDatumPickRejected-=OnAssemblyDatumPickRejected;viewport.ConstructionPointer-=OnConstructionPointer;viewport.NavigationStarted-=OnNavigationStarted;viewport.ViewCubeOrientationRequested-=OnCubeOrientation;viewport.ViewCubeTurnRequested-=OnCubeTurn;viewport.SolidHandleChanged-=OnSolidHandleChanged;viewport.SolidHandleFinished-=OnSolidHandleFinished;viewport.OccurrenceHandleFinished-=OnOccurrenceHandleFinished;}
+            if(host?.Viewport is {} viewport){Guard(()=>SavedCamera=viewport.CaptureCamera());viewport.SelectionChanged-=OnNativeSelection;viewport.AssemblyDatumSelected-=OnAssemblyDatumSelected;viewport.AssemblyDatumPickRejected-=OnAssemblyDatumPickRejected;viewport.ConstructionPointer-=OnConstructionPointer;viewport.NavigationStarted-=OnNavigationStarted;viewport.ViewCubeOrientationRequested-=OnCubeOrientation;viewport.ViewCubeTurnRequested-=OnCubeTurn;viewport.SolidHandleChanged-=OnSolidHandleChanged;viewport.SolidHandleFinished-=OnSolidHandleFinished;viewport.OccurrenceGizmoFinished-=OnOccurrenceGizmoFinished;}
         }
-        if(host is not null){host.Ready-=OnReady;host.Error-=OnError;host.Destroying-=OnHostDestroying;host.ShortcutPressed-=OnShortcut;host.ContextMenuRequested-=OnContextMenu;host.RadialStarted-=OnRadialStarted;host.RadialMoved-=OnRadialMoved;host.RadialCompleted-=OnRadialCompleted;host.RadialCancelled-=OnRadialCancelled;HostPanel.Children.Remove(host);host.Dispose();host=null;}
+        if(host is not null){host.Ready-=OnReady;host.Error-=OnError;host.Destroying-=OnHostDestroying;host.ShortcutPressed-=OnShortcut;host.ContextMenuRequested-=OnContextMenu;host.RadialStarted-=OnRadialStarted;host.RadialMoved-=OnRadialMoved;host.RadialModifiersChanged-=OnRadialModifiersChanged;host.RadialCompleted-=OnRadialCompleted;host.RadialCancelled-=OnRadialCancelled;host.RadialWheel-=OnRadialWheel;HostPanel.Children.Remove(host);host.Dispose();host=null;}
         document=null;
     }
     private void OnDocumentDetaching(object? sender,EventArgs e)=>Detach();
@@ -188,27 +205,80 @@ public partial class ViewportPane
         ActivatePane();
         var point=HostPanel.PointFromScreen(screenPoint);
         ReviewMenu.DataContext=document.Review;
+        foreach(var menu in ReviewMenu.Items.OfType<MenuItem>())
+        {
+            if(menu.Tag is not string key||!key.StartsWith("Gizmo",StringComparison.Ordinal))continue;
+            menu.Header=Strings.ResourceManager.GetString(key,Strings.Culture)??key;
+            menu.IsChecked=host.Viewport?.GizmoMode==(key switch
+            {
+                "GizmoRotate"=>OccurrenceGizmoMode.Rotate,
+                "GizmoScale"=>OccurrenceGizmoMode.Scale,
+                _=>OccurrenceGizmoMode.Move
+            });
+            menu.IsEnabled=key!="GizmoScale"||host.Viewport?.CanScaleOccurrence==true;
+        }
         ReviewMenu.PlacementTarget=HostPanel;ReviewMenu.Placement=PlacementMode.RelativePoint;
         ReviewMenu.HorizontalOffset=point.X;ReviewMenu.VerticalOffset=point.Y;ReviewMenu.IsOpen=true;
+    }
+    private void OnGizmoModeClicked(object sender,RoutedEventArgs e)
+    {
+        if(sender is not MenuItem {Tag:string key}||host?.Viewport is not {} viewport)return;
+        viewport.SetOccurrenceGizmoMode(key switch
+        {
+            "GizmoRotate"=>OccurrenceGizmoMode.Rotate,
+            "GizmoScale"=>OccurrenceGizmoMode.Scale,
+            _=>OccurrenceGizmoMode.Move
+        });
     }
     private static CadoryxRadialPage PageFor(int modifiers) =>
         (modifiers&1)!=0 ? CadoryxRadialPage.Shift : (modifiers&2)!=0 ? CadoryxRadialPage.Control :
         (modifiers&4)!=0 ? CadoryxRadialPage.Alt : CadoryxRadialPage.Middle;
     private void AttachRadialWindowHook()
     {
+        if(!radialThreadHookAttached)
+        {
+            ComponentDispatcher.ThreadPreprocessMessage+=OnRadialThreadMessage;
+            radialThreadHookAttached=true;
+        }
         if(radialWindowSource is not null)return;
         radialWindowSource=PresentationSource.FromVisual(HostPanel) as HwndSource;
         radialWindowSource?.AddHook(OnRadialWindowMessage);
     }
     private void DetachRadialWindowHook()
     {
+        if(radialThreadHookAttached)
+        {
+            ComponentDispatcher.ThreadPreprocessMessage-=OnRadialThreadMessage;
+            radialThreadHookAttached=false;
+        }
         radialWindowSource?.RemoveHook(OnRadialWindowMessage);
         radialWindowSource=null;
     }
+    private void OnRadialThreadMessage(ref MSG message,ref bool handled)
+    {
+        // Physical wheel input is queued and can target a floating dock window,
+        // the popup, or the native child. Consume it before HWND dispatch so the
+        // same message cannot be applied again by one of their window hooks.
+        if(handled||message.message!=0x20A||host?.IsRadialActive!=true||!radialMenu.IsOpen)return;
+        OnRadialWheel(this,unchecked((short)(((long)message.wParam>>16)&0xFFFF)));
+        handled=true;
+    }
     private nint OnRadialWindowMessage(nint hwnd,int message,nint w,nint l,ref bool handled)
     {
-        if(host?.IsRadialActive!=true)return 0;
-        if((message is 0x104 or 0x105)&&((int)w is 0x12 or 0xA4 or 0xA5))
+        if(host is null)return 0;
+        if((message is 0x100 or 0x101 or 0x104 or 0x105 or 0x290 or 0x291)&&
+            OcctViewportHost.IsRadialTrigger((int)w,l)&&
+            (host.IsRadialActive||IsActive&&ReferenceEquals(main?.ActiveDocument,document)))
+        {
+            if((message is 0x100 or 0x104 or 0x290)&&
+                Keyboard.FocusedElement is (TextBoxBase or PasswordBox or ComboBox{IsEditable:true}))return 0;
+            handled=host.HandleRadialKey((uint)message,(int)w,l);
+            return 0;
+        }
+        if(!host.IsRadialActive)return 0;
+        if(message==0x20A) // WM_MOUSEWHEEL can target the WPF owner instead of either child HWND.
+        {OnRadialWheel(this,unchecked((short)(((long)w>>16)&0xFFFF)));handled=true;}
+        else if((message is 0x104 or 0x105)&&((int)w is 0x12 or 0xA4 or 0xA5))
         {host.NotifyRadialKey((uint)message,(int)w);handled=true;}
         else if(message==0x112&&((long)w&0xFFF0)==0xF100) // SC_KEYMENU
             handled=true;
@@ -218,20 +288,56 @@ public partial class ViewportPane
     {
         if(document is null||host is null||main is null||!IsLoaded)return;
         ActivatePane();ReviewMenu.IsOpen=false;
+        LastRadialCompletedAction=CadoryxRadialAction.None;
+        LastRadialExecutedAction=CadoryxRadialAction.None;
+        radialWheelOverride=false;radialWheelAccumulated=0;radialWheelEmitted=0;radialWheelDirection=0;radialWheelLastTick=0;
         radialPage=PageFor(e.Modifiers);
-        radialMenu.Show(HostPanel,HostPanel.PointFromScreen(e.ScreenPoint),main.ApplicationSettings.RadialMenu.Get(radialPage));
+        radialMenu.Show(HostPanel,HostPanel.PointFromScreen(e.ScreenPoint),main.ApplicationSettings.RadialMenu.Get(radialPage),(int)radialPage);
+        var actualCursor=host.WarpRadialCursor(radialMenu.ScreenCenter);
+        if((actualCursor-radialMenu.ScreenCenter).Length>2)
+            radialMenu.CenterAtScreen(actualCursor);
     }
     private void OnRadialMoved(object? sender,RadialPointerEventArgs e)
     {
-        if(host is null||main is null)return;
-        var next=PageFor(e.Modifiers);
-        if(radialPage!=next){radialPage=next;radialMenu.SetActions(main.ApplicationSettings.RadialMenu.Get(next));}
+        if(host?.IsRadialActive!=true)return;
+        // Pointer motion only changes the selected sector. Page changes come
+        // exclusively from wheel or modifier-key events.
         radialMenu.Update(e.ScreenPoint);
+    }
+    private void OnRadialModifiersChanged(object? sender,int modifiers)
+    {
+        if(host?.IsRadialActive==true&&!radialWheelOverride)
+            SetRadialPage(PageFor(modifiers));
+    }
+    private void SetRadialPage(CadoryxRadialPage page)
+    {
+        if(main is null||radialPage==page)return;
+        radialPage=page;
+        radialMenu.SetPage((int)page,main.ApplicationSettings.RadialMenu.Get(page));
+    }
+    private void OnRadialWheel(object? sender,int delta)
+    {
+        if(main is null||host?.IsRadialActive!=true||delta==0)return;
+        const int wheelDelta=120;
+        const long gesturePauseMs=500;
+        int direction=Math.Sign(delta);
+        long now=Environment.TickCount64;
+        bool newGesture=direction!=radialWheelDirection||now-radialWheelLastTick>gesturePauseMs;
+        if(newGesture){radialWheelAccumulated=0;radialWheelEmitted=0;radialWheelDirection=direction;}
+        radialWheelLastTick=now;
+        radialWheelAccumulated+=Math.Abs(delta);
+        int targetSteps=Math.Max(1,radialWheelAccumulated/wheelDelta);
+        int steps=targetSteps-radialWheelEmitted;
+        if(steps==0)return;
+        radialWheelEmitted=targetSteps;
+        radialWheelOverride=true;
+        SetRadialPage((CadoryxRadialPage)(((int)radialPage+4-direction*(steps%4))%4));
     }
     private void OnRadialCompleted(object? sender,RadialPointerEventArgs e)
     {
-        OnRadialMoved(sender,e);
+        radialMenu.Update(e.ScreenPoint);
         var action=radialMenu.Complete(e.ScreenPoint);
+        LastRadialCompletedAction=action;
         if(action==CadoryxRadialAction.None)return;
         var currentDocument=document;
         Dispatcher.BeginInvoke(()=>{if(host is not null&&ReferenceEquals(document,currentDocument))ExecuteRadialAction(action);});
@@ -240,6 +346,7 @@ public partial class ViewportPane
     private void ExecuteRadialAction(CadoryxRadialAction action)
     {
         if(main is null||document is null||!ReferenceEquals(main.ActiveDocument,document))return;
+        LastRadialExecutedAction=action;
         static void Run(ICommand command,object? parameter=null){if(command.CanExecute(parameter))command.Execute(parameter);}
         switch(action)
         {
@@ -359,11 +466,27 @@ public partial class ViewportPane
                 // A click starts the next construction stage; its first move must not inherit this frame's throttle.
                 lastGhostTick=sample.Click?0:Environment.TickCount64;
             }
-            if(update.PreviewNow)await vm.PreviewCommand.ExecuteAsync(null);
+            if(update.PreviewNow)
+            {
+                // The third viewport click completes a primitive. Keep the isolated preview
+                // calculation, then publish it through the normal undoable document command.
+                bool finishPrimitive=vm.ToolKind is "Box" or "Cylinder";
+                await vm.PreviewCommand.ExecuteAsync(null);
+                if(finishPrimitive&&vm.HasPreview)await vm.ConfirmCommand.ExecuteAsync(null);
+            }
         }
         catch(Exception ex){vm.Report(ex);vm.CancelViewportConstruction();}
     }
-    private void OnNativeSelection(object? sender,IReadOnlyList<SceneItem> items){ActivatePane();document?.Selection.Replace(items.Select(i=>new SelectionTarget(i.Path,i.BodyId,i.Geometry.Revision)));}
+    private void OnNativeSelection(object? sender,IReadOnlyList<SceneItem> items)
+    {
+        ActivatePane();
+        if(document is not {} vm||vm.PreviewScene is not null)return;
+        var snapshot=vm.Session.Snapshot;
+        vm.Selection.Replace(items.Where(item=>item.Path.DocumentId==snapshot.Id&&
+            snapshot.Bodies.TryGetValue(item.BodyId,out var body)&&
+            body.Geometry.Revision==item.Geometry.Revision)
+            .Select(item=>new SelectionTarget(item.Path,item.BodyId,item.Geometry.Revision)));
+    }
     private void OnSelection(object? sender,EventArgs e)=>Guard(()=>
     {
         if(document is not {} vm)return;
@@ -409,32 +532,53 @@ public partial class ViewportPane
             }
             catch(CadValidationException){}
         }
-        viewport.SetOccurrenceHandles(path,vm.Selection.Items.FirstOrDefault(i=>i.Path.Equals(path))?.BodyId);
+        BodyId? focusBody=vm.Selection.Items.FirstOrDefault(i=>i.Path.Equals(path))?.BodyId;
+        bool canScale=focusBody is {} bodyId&&vm.Scene.Items.Count(i=>i.BodyId==bodyId)==1&&
+            vm.Session.Snapshot.Bodies.TryGetValue(bodyId,out var body)&&
+            body.Producer is {} producer&&vm.Session.Snapshot.Features.TryGetValue(producer,out var feature)&&
+            feature.Recipe is BoxRecipe or CylinderRecipe;
+        viewport.SetOccurrenceHandles(path,focusBody,canScale);
     }
-    private async void OnOccurrenceHandleFinished(object? sender,
-        (OccurrencePath Path,Vector3d WorldDelta,bool Commit) result)
+    private async void OnOccurrenceGizmoFinished(object? sender,
+        (OccurrencePath Path,BodyId? FocusBody,ViewerManipulatorMode Mode,double[] WorldMatrix,bool Commit) result)
     {
         if(!result.Commit||document is not {} vm||host?.Viewport is not {} viewport)return;
         try
         {
             var snapshot=vm.Session.Snapshot;
-            if(snapshot.StateId!=occurrenceHandleState||vm.IsReadOnly||vm.IsWorking||vm.IsClosingRequested)
-                throw new CadValidationException("Document changed during instance drag; select the instance again.");
-            var resolved=OccurrencePlacement.Resolve(snapshot,result.Path);
-            if(!OccurrenceDrag.CanMove(snapshot,result.Path))
-                throw new CadValidationException("This instance is shared or constrained; edit its placement or constraints first.");
-            var occurrence=snapshot.EnumerateOccurrences().Single(o=>o.Path.Equals(result.Path));
-            var parentWorld=occurrence.WorldTransform*resolved.Slot.LocalTransform.Inverse();
-            var next=OccurrenceDrag.MoveLocal(parentWorld,resolved.Slot.LocalTransform,result.WorldDelta);
-            if(vm.SnapToGrid)
+            if(snapshot.StateId!=occurrenceHandleState||vm.IsReadOnly||vm.IsWorking||vm.IsClosingRequested||
+                !OccurrenceDrag.CanMove(snapshot,result.Path))
+                throw new CadValidationException("Document changed during manipulation; select the instance again.");
+            var (delta,scale)=OccurrenceGizmoMath.Decompose(result.WorldMatrix);
+            if(result.Mode==ViewerManipulatorMode.Scaling)
             {
-                var t=next.Translation;double spacing=vm.GridSpacingMm;
-                next=next with{Translation=new(Math.Round(t.X/spacing)*spacing,
-                    Math.Round(t.Y/spacing)*spacing,Math.Round(t.Z/spacing)*spacing)};
+                if(result.FocusBody is not {} bodyId||
+                    vm.Selection.Items.All(i=>i.Path!=result.Path||i.BodyId!=bodyId)||
+                    vm.Scene.Items.Count(i=>i.BodyId==bodyId)!=1||
+                    !snapshot.Bodies.TryGetValue(bodyId,out var body)||body.Producer is not {} producer||
+                    !snapshot.Features.TryGetValue(producer,out var feature))
+                    throw new CadValidationException("Scaling requires one unique Box or Cylinder feature.");
+                if(Math.Abs(scale-1)<1e-5){viewport.SetScene(vm.Review.Filter(vm.Scene));RefreshOccurrenceHandles();return;}
+                GeometryRecipe next=OccurrenceGizmoMath.ScalePrimitive(feature.Recipe,scale);
+                await vm.Session.ExecuteAsync(new RecomputeCommand(producer,next));
             }
-            if(next==resolved.Slot.LocalTransform)
-            {viewport.SetScene(vm.Review.Filter(vm.Scene));RefreshOccurrenceHandles();return;}
-            await vm.Session.ExecuteAsync(DocumentEdits.MoveOccurrence(result.Path,next));
+            else if(result.Mode is ViewerManipulatorMode.Translation or ViewerManipulatorMode.TranslationPlane or ViewerManipulatorMode.Rotation)
+            {
+                if(Math.Abs(scale-1)>1e-3)throw new CadValidationException("Unexpected scaling in placement transform.");
+                var resolved=OccurrencePlacement.Resolve(snapshot,result.Path);
+                var occurrence=snapshot.EnumerateOccurrences().Single(o=>o.Path.Equals(result.Path));
+                var parentWorld=occurrence.WorldTransform*resolved.Slot.LocalTransform.Inverse();
+                var next=parentWorld.Inverse()*(delta*occurrence.WorldTransform);
+                if(vm.SnapToGrid&&result.Mode!=ViewerManipulatorMode.Rotation)
+                {
+                    var t=next.Translation;double spacing=vm.GridSpacingMm;
+                    next=next with{Translation=new(Math.Round(t.X/spacing)*spacing,
+                        Math.Round(t.Y/spacing)*spacing,Math.Round(t.Z/spacing)*spacing)};
+                }
+                if(next!=resolved.Slot.LocalTransform)
+                    await vm.Session.ExecuteAsync(DocumentEdits.MoveOccurrence(result.Path,next));
+                else {viewport.SetScene(vm.Review.Filter(vm.Scene));RefreshOccurrenceHandles();}
+            }
         }
         catch(Exception ex){vm.Report(ex);viewport.SetScene(vm.Review.Filter(vm.Scene));RefreshOccurrenceHandles();}
     }
@@ -446,7 +590,10 @@ public partial class ViewportPane
             vm.SetSolidHandleValue(change.Dimension,vm.SnapToGrid&&change.Dimension!=SolidDimension.RevolveAngle?
                 Math.Max(0.001,Math.Round(change.Value/vm.GridSpacingMm)*vm.GridSpacingMm):change.Value);
             if(host?.Viewport is {} viewport&&SolidHandleItem() is {} item)
+            {
                 viewport.SetConstructionGhost(vm.SolidHandleRecipe(),item.WorldTransform);
+                viewport.UpdateSolidHandlePositions(vm.SolidHandleRecipe(),item.WorldTransform);
+            }
         });
     }
     private async void OnSolidHandleFinished(object? sender,(SolidDimension Dimension,double Initial,bool Commit) result)

@@ -9,9 +9,19 @@
            BorderThickness="0" ScrollViewer.HorizontalScrollBarVisibility="Disabled"
            VirtualizingPanel.IsVirtualizing="True" VirtualizingPanel.VirtualizationMode="Recycling">
    <ListBox.ItemTemplate><DataTemplate>
-    <Grid Margin="2,3"><Grid.ColumnDefinitions><ColumnDefinition Width="62"/><ColumnDefinition Width="*"/></Grid.ColumnDefinitions>
+    <Grid Margin="2,3"><Grid.ColumnDefinitions><ColumnDefinition Width="62"/><ColumnDefinition Width="54"/><ColumnDefinition Width="*"/></Grid.ColumnDefinitions>
      <TextBlock Text="{Binding Timestamp,StringFormat={}{0:HH:mm:ss}}" Opacity="0.55" FontSize="11"/>
-     <TextBlock Grid.Column="1" Text="{Binding Text}" TextWrapping="Wrap" FontFamily="Cascadia Mono, Consolas"/>
+     <TextBlock Grid.Column="1" Text="{Binding Kind}" FontSize="11" Opacity="0.75">
+      <TextBlock.Style><Style TargetType="TextBlock">
+       <Setter Property="Foreground" Value="{DynamicResource MaterialDesignBody}"/>
+       <Style.Triggers>
+        <DataTrigger Binding="{Binding Kind}" Value="Error"><Setter Property="Foreground" Value="#E66D78"/></DataTrigger>
+        <DataTrigger Binding="{Binding Kind}" Value="Warning"><Setter Property="Foreground" Value="#DDA647"/></DataTrigger>
+        <DataTrigger Binding="{Binding Kind}" Value="Action"><Setter Property="Foreground" Value="#579FE8"/></DataTrigger>
+       </Style.Triggers>
+      </Style></TextBlock.Style>
+     </TextBlock>
+     <TextBlock Grid.Column="2" Text="{Binding Text}" TextWrapping="Wrap" FontFamily="Cascadia Mono, Consolas"/>
     </Grid>
    </DataTemplate></ListBox.ItemTemplate>
   </ListBox>

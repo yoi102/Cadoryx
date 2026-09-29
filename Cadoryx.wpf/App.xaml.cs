@@ -63,6 +63,8 @@ public partial class App : Application
             _=Diagnostics.SketchEditorSmokeRunner.RunAsync(mainWindow,_serviceProvider,e.Args[1]);
         else if(e.Args.Length>=3&&e.Args[0]=="--window-smoke")
             _=Diagnostics.WindowSmokeRunner.RunAsync(mainWindow,_serviceProvider,e.Args[1],e.Args[2]);
+        else if(e.Args.Length>=2&&e.Args[0]=="--radial-smoke")
+            _=Diagnostics.WindowSmokeRunner.RunRadialAsync(mainWindow,e.Args[1]);
         else if(e.Args.Length>=2&&e.Args[0]=="--m10-window-smoke")
             _=Diagnostics.M10AssemblyWindowSmokeRunner.RunAsync(mainWindow,_serviceProvider,e.Args[1]);
         else if(e.Args.Length>=2&&e.Args[0]=="--m11-window-smoke")
