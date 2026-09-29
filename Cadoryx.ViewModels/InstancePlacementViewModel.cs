@@ -65,6 +65,9 @@ public partial class InstancePlacementViewModel : ObservableObject, IDisposable
     public string ExternalCheckLabel=>Label("ExternalPartCheck","Check source version");
     public string ExternalRefreshLabel=>Label("ExternalPartRefresh","Refresh from source");
     public string ExternalDetachLabel=>Label("ExternalPartDetach","Detach link");
+    public string ExternalPreviewLabel=>Label("ExternalPartPreview","Preview dependency chain");
+    public string ExternalRelocateLabel=>Label("ExternalPartRelocate","Relocate pinned source");
+    public ObservableCollection<string> DependencyRows {get;}=[];
     private static string Label(string key,string fallback)=>Strings.ResourceManager.GetString(key,Strings.Culture)??fallback;
     public InstancePlacementViewModel(CadDocumentViewModel document)
     {
@@ -263,6 +266,32 @@ public partial class InstancePlacementViewModel : ObservableObject, IDisposable
         if(!HasExternalLink||IsBusy||path is null||document.ExternalPartStorage is not {} storage)return;
         var id=OccurrencePlacement.Resolve(document.Session.Snapshot,path).Slot.DefinitionId;
         await ExecuteAsync(ExternalPartCommands.Refresh(storage,id,document.Session.FilePath),path);
+    }
+    [RelayCommand] private async Task PreviewExternalAsync()
+    {
+        if(IsBusy||document.ExternalPartStorage is not {} storage)return;
+        try
+        {
+            IsBusy=true;
+            var preview=await ExternalDependencyGraph.PreviewAsync(document.Session.Snapshot,
+                document.Session.FilePath,storage,document.Session.Assets);
+            DependencyRows.Clear();
+            foreach(var entry in preview.Entries)
+                DependencyRows.Add($"{entry.Consumer} → {entry.Source} · {entry.State}: {entry.Explanation}");
+            ExternalStatus=preview.CanRefresh?
+                $"Source-first refresh order: {string.Join(" → ",preview.RefreshOrder)}":
+                "Dependency chain has missing, conflicting or cyclic sources; frozen parts remain usable.";
+        }
+        catch(Exception ex){ExternalStatus=ex.Message;document.Report(ex);}
+        finally{IsBusy=false;}
+    }
+    [RelayCommand] private async Task RelocateExternalAsync()
+    {
+        if(!HasExternalLink||IsBusy||path is null||document.ExternalPartStorage is not {} storage||
+           string.IsNullOrWhiteSpace(ExternalSourcePath))return;
+        var id=OccurrencePlacement.Resolve(document.Session.Snapshot,path).Slot.DefinitionId;
+        await ExecuteAsync(ExternalPartCommands.Relocate(storage,id,ExternalSourcePath,
+            document.Session.FilePath),path);
     }
     [RelayCommand] private async Task DetachExternalAsync()
     {

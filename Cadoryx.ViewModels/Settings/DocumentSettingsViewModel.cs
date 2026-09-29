@@ -18,7 +18,8 @@ public sealed record DocumentSettingsSection(string Id,string Title);
 public sealed record DocumentSettingsLabels(string Title,string Display,string Grid,string Origin,string Units,
     string Background,string BackgroundTop,string BackgroundBottom,string GridVisible,string GridSpacing,string GridSnap,string DisplayUnit,
     string DecimalPlaces,string OriginVisible,string OriginStyle,string OriginSize,string OriginHint,
-    string Reset,string Ok,string Apply,string Cancel,string WorkPlane,string WorkPlaneOffset);
+    string Reset,string Ok,string Apply,string Cancel,string WorkPlane,string WorkPlaneOffset,
+    string WorkPlaneOrigin,string WorkPlaneAngles);
 
 public partial class DocumentSettingsViewModel : ObservableObject
 {
@@ -33,9 +34,11 @@ public partial class DocumentSettingsViewModel : ObservableObject
         R("DocumentOriginStyle","Style"),R("DocumentOriginSize","Size (mm)"),
         R("DocumentOriginHint","Fixed at world (0, 0, 0); X red, Y green, Z blue."),
         Strings.Reset,Strings.Ok,Strings.Apply,Strings.Cancel,
-        R("DocumentWorkPlane","Work plane"),R("DocumentWorkPlaneOffset","Plane offset (mm)"));
+        R("DocumentWorkPlane","Work plane"),R("DocumentWorkPlaneOffset","Plane offset (mm)"),
+        R("WorkPlaneOrigin","Plane origin (mm)"),R("WorkPlaneAngles","Rotation X / Y / Z (degrees)"));
     public IReadOnlyList<DocumentWorkPlaneOption> WorkPlaneOptions {get;}=
-    [new(DocumentWorkPlaneKind.XY,"XY"),new(DocumentWorkPlaneKind.XZ,"XZ"),new(DocumentWorkPlaneKind.YZ,"YZ")];
+    [new(DocumentWorkPlaneKind.XY,"XY"),new(DocumentWorkPlaneKind.XZ,"XZ"),new(DocumentWorkPlaneKind.YZ,"YZ"),
+     new(DocumentWorkPlaneKind.Custom,R("DocumentCustomPlane","Custom"))];
     public IReadOnlyList<DocumentUnitOption> UnitOptions {get;}=
     [new(LengthUnit.Millimeter,"mm"),new(LengthUnit.Centimeter,"cm"),new(LengthUnit.Meter,"m"),new(LengthUnit.Inch,"in")];
     public IReadOnlyList<DocumentOriginStyleOption> OriginStyleOptions {get;}=
@@ -51,7 +54,15 @@ public partial class DocumentSettingsViewModel : ObservableObject
     [ObservableProperty] public partial double GridSpacingMm {get;set;}
     [ObservableProperty] public partial bool GridSnap {get;set;}
     [ObservableProperty] public partial DocumentWorkPlaneOption? SelectedWorkPlane {get;set;}
+    public bool IsCustomWorkPlane=>SelectedWorkPlane?.Kind==DocumentWorkPlaneKind.Custom;
+    partial void OnSelectedWorkPlaneChanged(DocumentWorkPlaneOption? value)=>OnPropertyChanged(nameof(IsCustomWorkPlane));
     [ObservableProperty] public partial double WorkPlaneOffsetMm {get;set;}
+    [ObservableProperty] public partial double WorkPlaneOriginX {get;set;}
+    [ObservableProperty] public partial double WorkPlaneOriginY {get;set;}
+    [ObservableProperty] public partial double WorkPlaneOriginZ {get;set;}
+    [ObservableProperty] public partial double WorkPlaneAngleX {get;set;}
+    [ObservableProperty] public partial double WorkPlaneAngleY {get;set;}
+    [ObservableProperty] public partial double WorkPlaneAngleZ {get;set;}
     [ObservableProperty] public partial bool OriginVisible {get;set;}
     [ObservableProperty] public partial DocumentOriginStyleOption? SelectedOriginStyle {get;set;}
     [ObservableProperty] public partial double OriginSizeMm {get;set;}
@@ -84,7 +95,9 @@ public partial class DocumentSettingsViewModel : ObservableObject
                 BackgroundTopArgb=BackgroundTopArgb,
                 BackgroundBottomArgb=BackgroundBottomArgb,
                 Grid=new(GridVisible,GridSpacingMm,GridSnap),
-                WorkPlane=new(SelectedWorkPlane?.Kind??throw new CadValidationException("Select a work plane."),WorkPlaneOffsetMm),
+                WorkPlane=new(SelectedWorkPlane?.Kind??throw new CadValidationException("Select a work plane."),WorkPlaneOffsetMm)
+                {CustomOrigin=new(WorkPlaneOriginX,WorkPlaneOriginY,WorkPlaneOriginZ),
+                 CustomRotation=Quaterniond.FromEulerDegrees(WorkPlaneAngleX,WorkPlaneAngleY,WorkPlaneAngleZ)},
                 Origin=new(OriginVisible,SelectedOriginStyle?.Style??throw new CadValidationException("Select an origin style."),OriginSizeMm)
             };
             settings.Validate();
@@ -109,6 +122,11 @@ public partial class DocumentSettingsViewModel : ObservableObject
         GridSnap=settings.Grid.Snap;
         SelectedWorkPlane=WorkPlaneOptions.Single(option=>option.Kind==settings.WorkPlane.Kind);
         WorkPlaneOffsetMm=settings.WorkPlane.OffsetMm;
+        WorkPlaneOriginX=settings.WorkPlane.CustomOrigin.X;
+        WorkPlaneOriginY=settings.WorkPlane.CustomOrigin.Y;
+        WorkPlaneOriginZ=settings.WorkPlane.CustomOrigin.Z;
+        var angles=settings.WorkPlane.CustomRotation.ToEulerDegrees();
+        WorkPlaneAngleX=angles.X;WorkPlaneAngleY=angles.Y;WorkPlaneAngleZ=angles.Z;
         OriginVisible=settings.Origin.Visible;
         SelectedOriginStyle=OriginStyleOptions.Single(option=>option.Style==settings.Origin.Style);
         OriginSizeMm=settings.Origin.SizeMm;

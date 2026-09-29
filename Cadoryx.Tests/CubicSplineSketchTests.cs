@@ -68,6 +68,8 @@ public sealed class CubicSplineSketchTests
         Assert.Throws<CadValidationException>(()=>SketchSplineGeometry.Validate([new(0,0),new(2,4),new(10,0)]));
         SketchSplineGeometry.Validate([new(0,0),new(1,2),new(3,4),new(5,5),new(7,4),new(10,0)]);
         Assert.Throws<CadValidationException>(()=>SketchSplineGeometry.At(Controls,double.NaN));
+        Assert.Throws<CadValidationException>(()=>SketchSplineGeometry.Validate(
+            Enumerable.Range(0,17).Select(i=>new Point2d(i,i is 0 or 16?0:2)).ToImmutableArray()));
     }
 
     [Fact] public async Task PreviousFeatureAndSketchSchemasMigrateWhenNewFieldsAreAbsent()
@@ -89,16 +91,17 @@ public sealed class CubicSplineSketchTests
         using var current=await storage.LoadAsync(path,assets);
         Assert.Empty(current.Diagnostics);
         var manifest=FormatEvolutionTests.Manifest(path);
-        Assert.Equal(19,manifest.Sections.Single(s=>s.Kind=="features").SchemaVersion);
+        Assert.Equal(CadSectionMigrationRegistry.CurrentFormats["features"].Version,manifest.Sections.Single(s=>s.Kind=="features").SchemaVersion);
         Assert.Equal(6,manifest.Sections.Single(s=>s.Kind=="sketches").SchemaVersion);
     }
 
-    [Fact] public async Task FourAndSixControlSplineProfilesBuildAndRoundtrip()
+    [Fact] public async Task FourSixAndSixteenControlSplineProfilesBuildAndRoundtrip()
     {
         using var files=new TestFiles();var assets=new MemoryAssetStore();var kernel=new OcctGeometryKernel();var storage=new CadDocumentStorage();
         ImmutableArray<Point2d>[] samples=[
             [new(0,0),new(10d/3,4),new(20d/3,4),new(10,0)],
-            [new(0,0),new(2,3),new(4,5),new(6,5),new(8,3),new(10,0)]];
+            [new(0,0),new(2,3),new(4,5),new(6,5),new(8,3),new(10,0)],
+            Enumerable.Range(0,16).Select(i=>new Point2d(i*10d/15,i is 0 or 15?0:4*Math.Sin(Math.PI*i/15))).ToImmutableArray()];
         for(int i=0;i<samples.Length;i++)
         {
             await using var session=new CadDocumentSession(DocumentSnapshot.Create("Spline "+i),assets,kernel,new InlineSessionDispatcher());

@@ -41,7 +41,7 @@ public partial class SketchEditorViewModel : ObservableObject,IAsyncDisposable
     public ObservableCollection<SketchEntityId> SelectedEntities {get;}=[];
     public IReadOnlyList<SketchOption> Tools {get;}=new[]{"Select","Point","Line","Rectangle","Circle","ArcSegment","BezierSegment","SplineRegion"}.Select(k=>new SketchOption(k,ToolLabel(k))).ToArray();
     public IReadOnlyList<SketchOption> ConstraintKinds {get;}=new[]{"FixPoint","Coincident","Horizontal","Vertical","Distance","OffsetX","OffsetY","Length","Parallel","Perpendicular","EqualLength","Radius","EqualRadius","Tangent","Angle"}.Select(k=>new SketchOption(k,ConstraintLabel(k))).ToArray();
-    public IReadOnlyList<string> Planes=>CanChangePlane?["XY","XZ","YZ"]:[Plane];
+    public IReadOnlyList<string> Planes=>CanChangePlane?["Document","XY","XZ","YZ"]:[Plane];
     public bool CanChangePlane {get;}
     public bool CanEdit=>!IsWorking&&!IsStale&&!disposed;
     public bool CanConfirm=>CanEdit&&prepared is not null;
@@ -55,6 +55,7 @@ public partial class SketchEditorViewModel : ObservableObject,IAsyncDisposable
     [ObservableProperty] private bool construction;
     [ObservableProperty] private bool snap=true;
     [ObservableProperty] private double gridStep=1;
+    [ObservableProperty] private int splineControlCount=5;
     [ObservableProperty] private string name;
     [ObservableProperty] private string plane="XY";
     [ObservableProperty] private double originX;
@@ -74,7 +75,8 @@ public partial class SketchEditorViewModel : ObservableObject,IAsyncDisposable
     {
         this.document=document;this.kernel=kernel;this.solver=solver;baseline=document.Session.Capture();generation=document.Session.Generation;
         Draft=new(sketch);name=sketch.Name;status=Strings.DraftChanged;CanChangePlane=isNew;
-        plane=sketch.Plane.Rotation==Quaterniond.Identity?"XY":sketch.Plane.Rotation==Quaterniond.FromAxisAngle(new(1,0,0),Math.PI/2)?"XZ":
+        plane=isNew&&sketch.Plane.Rotation==document.WorkPlaneSettings.Rotation?"Document":
+            sketch.Plane.Rotation==Quaterniond.Identity?"XY":sketch.Plane.Rotation==Quaterniond.FromAxisAngle(new(1,0,0),Math.PI/2)?"XZ":
             sketch.Plane.Rotation==Quaterniond.FromAxisAngle(new(0,1,0),Math.PI/2)?"YZ":Strings.ExistingSketchPlane;
         originX=sketch.Plane.Translation.X;originY=sketch.Plane.Translation.Y;originZ=sketch.Plane.Translation.Z;
         newPartName=baseline.Snapshot.Definitions.ContainsKey(sketch.PartId)?null:Cadoryx.Lang.Strings.Strings.Part;
@@ -124,6 +126,11 @@ public partial class SketchEditorViewModel : ObservableObject,IAsyncDisposable
         try{action(Draft);Invalidate();Refresh();Status=Strings.DraftChanged;}catch(Exception ex){Status=ex.Message;}
     }
     public void MovePoint(SketchEntityId point,Point2d position)=>Mutate(d=>d.MovePoint(point,position));
+    public void ResizeCircle(SketchEntityId circle,double radius)=>Mutate(d=>d.Change(s=>s with
+    {
+        Circles=s.Circles.Select(c=>c.Id==circle?c with{Radius=radius}:c).ToImmutableArray(),
+        Constraints=s.Constraints.Select(c=>c is RadiusConstraint r&&r.Circle==circle?r with{Radius=radius}:c).ToImmutableArray()
+    }));
     [RelayCommand] private void ApplyCoordinates()=>Mutate(ApplyCoordinatesCore);
     private void ApplyCoordinatesCore(SketchDraft d)
     {
@@ -137,13 +144,15 @@ public partial class SketchEditorViewModel : ObservableObject,IAsyncDisposable
     private void ApplyMetadata()
     {
         var next=Sketch with{Name=Name,Plane=CanChangePlane?new(new(OriginX,OriginY,OriginZ),Plane switch
-            {"XZ"=>Quaterniond.FromAxisAngle(new(1,0,0),Math.PI/2),"YZ"=>Quaterniond.FromAxisAngle(new(0,1,0),Math.PI/2),_=>Quaterniond.Identity}):Sketch.Plane};
+            {"Document"=>document.WorkPlaneSettings.Rotation,"XZ"=>Quaterniond.FromAxisAngle(new(1,0,0),Math.PI/2),"YZ"=>Quaterniond.FromAxisAngle(new(0,1,0),Math.PI/2),_=>Quaterniond.Identity}):Sketch.Plane};
         next.Validate();if(next!=Sketch)Draft.Change(_=>next);
     }
     [RelayCommand] private void Undo(){if(!CanEdit)return;Draft.Undo();RestoreMetadata();Invalidate();Refresh();}
     [RelayCommand] private void Redo(){if(!CanEdit)return;Draft.Redo();RestoreMetadata();Invalidate();Refresh();}
     private void RestoreMetadata(){Name=Sketch.Name;OriginX=Sketch.Plane.Translation.X;OriginY=Sketch.Plane.Translation.Y;OriginZ=Sketch.Plane.Translation.Z;
-        if(CanChangePlane)Plane=Sketch.Plane.Rotation==Quaterniond.Identity?"XY":Sketch.Plane.Rotation==Quaterniond.FromAxisAngle(new(1,0,0),Math.PI/2)?"XZ":"YZ";pendingDimension=false;pendingCoordinates=false;}
+        if(CanChangePlane)Plane=Sketch.Plane.Rotation==document.WorkPlaneSettings.Rotation?"Document":
+            Sketch.Plane.Rotation==Quaterniond.Identity?"XY":Sketch.Plane.Rotation==Quaterniond.FromAxisAngle(new(1,0,0),Math.PI/2)?"XZ":"YZ";
+        pendingDimension=false;pendingCoordinates=false;}
     [RelayCommand] private void DeleteEntities()=>Mutate(d=>d.RemoveEntities(SelectedEntities.ToArray()));
     [RelayCommand] private void ToggleConstruction()
     {
@@ -213,7 +222,7 @@ public partial class SketchEditorViewModel : ObservableObject,IAsyncDisposable
         "Circle"=>Strings.Circle,
         "ArcSegment"=>Strings.ResourceManager.GetString("ThreePointArc",Strings.Culture)??"Three-point arc",
         "BezierSegment"=>Strings.ResourceManager.GetString("QuadraticBezier",Strings.Culture)??"Quadratic Bezier",
-        "SplineRegion"=>Strings.ResourceManager.GetString("CubicSpline",Strings.Culture)??"Cubic B-spline (5 points)",
+        "SplineRegion"=>Strings.ResourceManager.GetString("CubicSpline",Strings.Culture)??"Cubic B-spline region",
         _=>key
     };
     private static string ConstraintLabel(string key)=>key switch
@@ -250,7 +259,7 @@ public partial class SketchEditorViewModel : ObservableObject,IAsyncDisposable
         var reporting=new ReportingSolver(solver);
         try
         {
-            var edit=await new UpsertSketchCommand(Sketch,reporting,newPartName:newPartName).PrepareAsync(new(baseline.Snapshot,generation,document.Session.Assets,kernel),cancel.Token);
+            var edit=await UpdateAssociatedSections.PrepareCommandAsync(new UpsertSketchCommand(Sketch,reporting,newPartName:newPartName),new(baseline.Snapshot,generation,document.Session.Assets,kernel),cancel.Token);
             if(cancel.IsCancellationRequested||IsStale||disposed||document.Session.Generation!=generation){edit.Dispose();return;}
             try{edit.Snapshot.Validate();document.SetSketchPreview(edit.Snapshot);}catch{edit.Dispose();throw;}
             prepared=edit;Report=reporting.Report!;Draft.UseSolvedCoordinates(Report.Solution!);Refresh();

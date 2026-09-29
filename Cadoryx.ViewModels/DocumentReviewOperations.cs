@@ -17,6 +17,7 @@ public partial class DocumentReviewViewModel
     private bool navigatingFinding;
     private InterferenceReport? interference;
     [ObservableProperty] private bool isReviewBusy;
+    [ObservableProperty] private bool interferenceBroadPhase=true;
     [ObservableProperty] private string reviewStatus="";
     [ObservableProperty] private string sectionName=R("SectionCurves");
     [ObservableProperty] private InterferenceRow? selectedInterference;
@@ -38,7 +39,8 @@ public partial class DocumentReviewViewModel
             var inputs=InspectionSelection.Resolve(document.Session.Snapshot,document.Selection.Items);
             var normal=SectionAxis switch{SectionAxis.X=>new Vector3d(1,0,0),SectionAxis.Y=>new(0,1,0),_=>Vector3d.UnitZ};
             ReviewStatus=R("ReviewCalculating");
-            await document.Session.ExecuteAsync(new CreateSectionCommand(inputs,new(normal,SectionOffsetMm),SectionName),cancel.Token);
+            await document.Session.ExecuteAsync(new CreateSectionCommand(inputs,new(normal,SectionOffsetMm),SectionName,AssociativeSection,
+                SectionFaces?SectionOutput.Faces:SectionOutput.Curves),cancel.Token);
             if(!disposed){ShowAll();ReviewStatus=R("SectionCreated");}
         }
         catch(OperationCanceledException){if(!disposed)ReviewStatus=R("ExactCancelled");}
@@ -54,7 +56,8 @@ public partial class DocumentReviewViewModel
         {
             using var capture=document.Session.Capture();
             var inputs=InspectionSelection.Resolve(capture.Snapshot,document.Selection.Items);GeometryInstanceGuard.Validate(capture.Snapshot,inputs);
-            var result=await review.CheckInterferenceAsync(inputs,capture.Snapshot.Settings.LinearToleranceMm,document.Session.Assets,cancel.Token);
+            var result=await (InterferenceBroadPhase?review.CheckInterferenceCandidatesAsync(inputs,capture.Snapshot.Settings.LinearToleranceMm,document.Session.Assets,cancel.Token):
+                review.CheckInterferenceAsync(inputs,capture.Snapshot.Settings.LinearToleranceMm,document.Session.Assets,cancel.Token));
             if(disposed||request!=analysisSequence||cancel.IsCancellationRequested||capture.Snapshot.StateId!=document.Session.Snapshot.StateId)return;
             interference=result;RefreshAnalysisLanguage();
         }
@@ -91,5 +94,6 @@ public partial class DocumentReviewViewModel
             InterferenceRows.Add(row);if(pair==selected)SelectedInterference=row;
         }
         ReviewStatus=string.Format(R("PairSummary"),report.Pairs.Length,report.Pairs.Count(p=>p.OverlapVolumeMm3>0));
+        if(report.BroadPhaseSeparatedPairs>0)ReviewStatus+=" · "+string.Format(R("BroadPhaseSummary"),report.BroadPhaseSeparatedPairs);
     }
 }

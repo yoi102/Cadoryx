@@ -1,11 +1,14 @@
 <UserControl x:Class="Cadoryx.wpf.Views.AssemblyConstraintsView"
  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
- xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls">
+ xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+ xmlns:r="clr-namespace:Cadoryx.Lang;assembly=Cadoryx.Lang">
  <Expander Header="{Binding Title}" IsExpanded="False" Margin="0,0,0,16">
-  <StackPanel Margin="0,8,0,0">
+  <StackPanel Margin="8,8,8,10">
    <Button x:Name="FixButton" Content="{Binding FixLabel}" Command="{Binding AddFixedCommand}"
            IsEnabled="{Binding CanCreate}" Margin="0,0,0,8"/>
+   <Expander Header="{I18N {x:Static r:LangKeys.AssemblyManualCoordinates}}" Margin="0,0,0,10">
+    <StackPanel Margin="8,8,8,10">
    <TextBlock Text="{Binding ReferenceLabel}"/>
    <ComboBox x:Name="ReferenceInput" ItemsSource="{Binding References}" SelectedItem="{Binding SelectedReference}"
              DisplayMemberPath="Name" Margin="0,4,0,8"/>
@@ -51,6 +54,8 @@
     <Button x:Name="AngleRelationButton" Content="{Binding AddAngleLabel}" Command="{Binding AddAngleCommand}" Margin="0,0,3,0"/>
     <Button x:Name="PlaneRelationButton" Content="{Binding AddPlaneLabel}" Command="{Binding AddPlaneCommand}" Margin="3,0,0,0"/>
    </UniformGrid>
+    </StackPanel>
+   </Expander>
    <ListBox x:Name="RelationList" ItemsSource="{Binding Constraints}" SelectedItem="{Binding SelectedConstraint}"
             DisplayMemberPath="Display" MinHeight="42" MaxHeight="180" Margin="0,0,0,6"/>
    <TextBlock Text="{Binding SelectedConstraint.Explanation}" TextWrapping="Wrap" Opacity="0.7" Margin="0,0,0,8"/>
@@ -60,8 +65,26 @@
    </UniformGrid>
    <Button Content="{Binding ApplyAngleLabel}" Command="{Binding ApplyAngleCommand}"
            IsEnabled="{Binding CanEditSelected}" Margin="0,0,0,8"/>
-   <Button x:Name="SolveAllButton" Content="{Binding SolveAllLabel}" Command="{Binding SolveAllCommand}"
-           Margin="0,0,0,8"/>
+   <Button x:Name="PreviewSolveButton" Content="{Binding PreviewSolveLabel}" Command="{Binding PreviewSolveCommand}"
+           Margin="0,0,0,6"/>
+   <TextBlock Text="{Binding SolvePreviewSummary}" TextWrapping="Wrap" Opacity="0.8" Margin="0,0,0,6"/>
+   <UniformGrid Columns="2" Margin="0,0,0,8">
+    <Button x:Name="ConfirmSolveButton" Content="{Binding ConfirmSolveLabel}" Command="{Binding ConfirmSolveCommand}"
+            IsEnabled="{Binding HasSolvePreview}" Margin="0,0,3,0"/>
+    <Button x:Name="CancelSolveButton" Content="{Binding CancelSolveLabel}" Command="{Binding CancelSolvePreviewCommand}"
+            Margin="3,0,0,0"/>
+   </UniformGrid>
+   <Separator Margin="0,4,0,8"/>
+   <TextBlock Text="{Binding DatumSectionLabel}" FontWeight="SemiBold" Margin="0,0,0,6"/>
+   <ComboBox ItemsSource="{Binding DatumKinds}" SelectedItem="{Binding DatumPickKind}" Margin="0,0,0,6"/>
+   <Button Content="{Binding PickReferenceDatumLabel}" Command="{Binding PickReferenceDatumCommand}" Margin="0,0,0,4"/>
+   <TextBlock Text="{Binding ReferenceDatumLabel}" TextWrapping="Wrap" Opacity="0.7" Margin="0,0,0,6"/>
+   <Button Content="{Binding PickMovingDatumLabel}" Command="{Binding PickMovingDatumCommand}" Margin="0,0,0,4"/>
+   <TextBlock Text="{Binding MovingDatumLabel}" TextWrapping="Wrap" Opacity="0.7" Margin="0,0,0,6"/>
+   <ComboBox ItemsSource="{Binding DatumRelationKinds}" SelectedItem="{Binding DatumRelationKind}" Margin="0,0,0,6"/>
+   <Button Content="{Binding AddDatumRelationLabel}" Command="{Binding AddDatumRelationCommand}" Margin="0,0,0,8"/>
+   <Button Content="{Binding ReselectDatumRelationLabel}" Command="{Binding ReselectDatumRelationCommand}"
+           IsEnabled="{Binding CanEditSelected}" Margin="0,0,0,8"/>
    <UniformGrid Columns="2" IsEnabled="{Binding CanEditSelected}" Margin="0,0,0,8">
     <Button x:Name="ApplyAnchorsButton" Content="{Binding ApplyAnchorsLabel}" Command="{Binding ApplyAnchorsCommand}" Margin="0,0,3,0"/>
     <Button x:Name="ApplyAxesButton" Content="{Binding ApplyAxesLabel}" Command="{Binding ApplyAxesCommand}" Margin="3,0,0,0"/>

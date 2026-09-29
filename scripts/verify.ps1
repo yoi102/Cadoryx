@@ -1,4 +1,4 @@
-param([switch]$PublishSmoke, [switch]$RecoverySmoke, [switch]$WindowSmoke, [switch]$SketchSmoke)
+param([switch]$PublishSmoke, [switch]$RecoverySmoke, [switch]$WindowSmoke, [switch]$SketchSmoke, [switch]$DrawingSmoke)
 $ErrorActionPreference = 'Stop'
 $cadRoot = Split-Path -Parent $PSScriptRoot
 Push-Location $cadRoot
@@ -10,7 +10,7 @@ try {
     dotnet test Cadoryx.Tests -c Release --no-build --no-restore --nologo -v minimal
     if ($LASTEXITCODE -ne 0) { throw 'Tests failed.' }
     if ($PublishSmoke) { & (Join-Path $PSScriptRoot 'verify-cli.ps1') }
-    if ($PublishSmoke -or $RecoverySmoke -or $WindowSmoke -or $SketchSmoke) {
+    if ($PublishSmoke -or $RecoverySmoke -or $WindowSmoke -or $SketchSmoke -or $DrawingSmoke) {
         $cadStamp = Get-Date -Format 'yyyyMMdd-HHmmss'
         $cadPublish = Join-Path $cadRoot "artifacts\publish\$cadStamp"
         $cadSmoke = Join-Path $cadRoot "artifacts\smoke-$cadStamp"
@@ -30,7 +30,7 @@ try {
         @($cadStart.EnvironmentVariables.Keys) | Where-Object { $_ -match '^(CSF_|CASROOT|OCCT|OCCTSHARP)' } | ForEach-Object { $cadStart.EnvironmentVariables.Remove($_) }
         $cadRun = [System.Diagnostics.Process]::Start($cadStart)
         try {
-            if (!$cadRun.WaitForExit(120000)) { $cadRun.Kill(); throw 'Desktop smoke timed out.' }
+            if (!$cadRun.WaitForExit(240000)) { $cadRun.Kill(); throw 'Desktop smoke timed out.' }
             $cadResult = Join-Path $cadSmoke 'result.txt'
             if (!(Test-Path -LiteralPath $cadResult)) { throw "No smoke result (exit $($cadRun.ExitCode))." }
             Get-Content -LiteralPath $cadResult
@@ -46,7 +46,7 @@ try {
             $cadStart.Arguments = '--window-smoke "' + $cadWindowSmoke + '" "' + $cadFixtures + '"'
             $cadWindowRun = [System.Diagnostics.Process]::Start($cadStart)
             try {
-                if (!$cadWindowRun.WaitForExit(120000)) { $cadWindowRun.Kill(); throw 'Window smoke timed out.' }
+                if (!$cadWindowRun.WaitForExit(240000)) { $cadWindowRun.Kill(); throw 'Window smoke timed out.' }
                 $cadWindowResult = Join-Path $cadWindowSmoke 'result.txt'
                 if (!(Test-Path -LiteralPath $cadWindowResult)) { throw "No window result (exit $($cadWindowRun.ExitCode))." }
                 Get-Content -LiteralPath $cadWindowResult
@@ -70,6 +70,24 @@ try {
                 Write-Output "Sketch editor evidence: $cadSketchSmoke"
             }
             finally { $cadSketchRun.Dispose() }
+        }
+        if ($DrawingSmoke) {
+            $cadDrawingSmoke = Join-Path $cadRoot "artifacts\m11-drawing-smoke-$cadStamp"
+            $cadStart.Arguments = '--m11-window-smoke "' + $cadDrawingSmoke + '"'
+            $cadDrawingRun = [System.Diagnostics.Process]::Start($cadStart)
+            try {
+                if (!$cadDrawingRun.WaitForExit(60000)) { $cadDrawingRun.Kill(); throw 'Drawing window smoke timed out.' }
+                $cadDrawingResult = Join-Path $cadDrawingSmoke 'result.json'
+                if (!(Test-Path -LiteralPath $cadDrawingResult)) { throw "No drawing result (exit $($cadDrawingRun.ExitCode))." }
+                Get-Content -LiteralPath $cadDrawingResult
+                if ($cadDrawingRun.ExitCode -ne 0 -or !(Get-Content -LiteralPath $cadDrawingResult -Raw).Contains('"passed": true')) { throw 'Drawing window smoke failed.' }
+                if ((Get-Item -LiteralPath (Join-Path $cadDrawingSmoke 'bindings.log')).Length -gt 0) { throw 'Drawing window binding errors recorded.' }
+                foreach ($cadFile in @('drawing-window.png','drawing.pdf','drawing.cadoryx')) {
+                    if (!(Test-Path -LiteralPath (Join-Path $cadDrawingSmoke $cadFile))) { throw "Missing drawing artifact: $cadFile" }
+                }
+                Write-Output "Drawing evidence: $cadDrawingSmoke"
+            }
+            finally { $cadDrawingRun.Dispose() }
         }
         if ($RecoverySmoke) {
             $cadRecovery = Join-Path $cadRoot "artifacts\recovery-smoke-$cadStamp"

@@ -8,6 +8,7 @@ public sealed class CadoryxApplicationSettings
     public CadoryxGeneralSettings General { get; set; } = new();
     public CadoryxViewportSettings Viewport { get; set; } = new();
     public CadoryxInteractionSettings Interaction { get; set; } = new();
+    public CadoryxRadialMenuSettings RadialMenu { get; set; } = new();
 
     public static CadoryxApplicationSettings CreateDefault() => new();
 
@@ -17,9 +18,11 @@ public sealed class CadoryxApplicationSettings
         General ??= new CadoryxGeneralSettings();
         Viewport ??= new CadoryxViewportSettings();
         Interaction ??= new CadoryxInteractionSettings();
+        RadialMenu ??= new CadoryxRadialMenuSettings();
         General.Normalize();
         Viewport.Normalize();
         Interaction.Normalize();
+        RadialMenu.Normalize();
     }
 
     public CadoryxApplicationSettings Clone()
@@ -40,7 +43,8 @@ public sealed class CadoryxApplicationSettings
             IsDarkTheme = source.General.IsDarkTheme,
             CultureLcid = source.General.CultureLcid,
             PrimaryColor = source.General.PrimaryColor,
-            SecondaryColor = source.General.SecondaryColor
+            SecondaryColor = source.General.SecondaryColor,
+            NotificationAnchor = source.General.NotificationAnchor
         };
         Viewport = new CadoryxViewportSettings
         {
@@ -59,12 +63,14 @@ public sealed class CadoryxApplicationSettings
             InvertZoom = source.Interaction.InvertZoom,
             OrbitSensitivity = source.Interaction.OrbitSensitivity
         };
+        RadialMenu = source.RadialMenu.Clone();
         Normalize();
     }
 }
 
 public sealed class CadoryxGeneralSettings
 {
+    public CadNotificationAnchor NotificationAnchor { get; set; } = CadNotificationAnchor.ApplicationWindow;
     public bool IsDarkTheme { get; set; } = true;
     public int CultureLcid { get; set; } = 1033;
     public uint PrimaryColor { get; set; } = 0xFF3F51B5;
@@ -72,6 +78,7 @@ public sealed class CadoryxGeneralSettings
 
     internal void Normalize()
     {
+        if (!Enum.IsDefined(NotificationAnchor))NotificationAnchor=CadNotificationAnchor.ApplicationWindow;
         if (CultureLcid is not (1033 or 1041 or 2052))
             CultureLcid = 1033;
 
@@ -82,6 +89,8 @@ public sealed class CadoryxGeneralSettings
     private static uint NormalizeColor(uint color, uint fallback) =>
         color == 0 ? fallback : color | 0xFF000000;
 }
+
+public enum CadNotificationAnchor { ApplicationWindow, WindowsDesktop }
 
 public enum CadoryxProjection
 {

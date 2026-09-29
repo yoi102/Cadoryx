@@ -1228,7 +1228,8 @@
   <data name="MixedCurveLoop" xml:space="preserve"><value>直线圆弧闭环</value></data>
   <data name="SketchIslands" xml:space="preserve"><value>选中孔内的岛屿</value></data>
   <data name="QuadraticBezier" xml:space="preserve"><value>二次贝塞尔区域</value></data>
-  <data name="CubicSpline" xml:space="preserve"><value>三次 B 样条区域（5 点）</value></data>
+  <data name="CubicSpline" xml:space="preserve"><value>三次 B 样条区域</value></data>
+  <data name="SplineControlCount" xml:space="preserve"><value>控制点数</value></data>
   <data name="InsertInstance" xml:space="preserve"><value>向选中装配插入实例</value></data>
   <data name="ReplaceInstance" xml:space="preserve"><value>替换选中实例</value></data>
   <data name="RemoveInstance" xml:space="preserve"><value>删除选中实例</value></data>
@@ -1314,6 +1315,10 @@
   <data name="AssemblySolveAll" xml:space="preserve">
     <value>求解装配关系</value>
   </data>
+  <data name="AssemblyPreviewSolve" xml:space="preserve"><value>预览装配位姿</value></data>
+  <data name="AssemblyConfirmSolve" xml:space="preserve"><value>确认位姿</value></data>
+  <data name="AssemblyCancelSolve" xml:space="preserve"><value>取消预览</value></data>
+  <data name="AssemblySolvePreviewSummary" xml:space="preserve"><value>{0} 连通组：{1}；局部自由度：{2}；冗余关系：{3}；未固定组：{4}。</value></data>
   <data name="DocumentScaleFormat" xml:space="preserve">
     <value>{0} 个定义 · {1} 个实例 · {2} 个唯一资产（{3:F1} MiB）</value>
   </data>
@@ -1472,7 +1477,7 @@
   </data>
   <data name="CreateSection" xml:space="preserve"><value>生成截面几何</value></data>
   <data name="InterferenceCheck" xml:space="preserve"><value>检查干涉</value></data>
-  <data name="InterferenceHint" xml:space="preserve"><value>选择 2–32 个实体实例，按文档容差逐对检查；不支持片体、网格或混合复合体。重叠量是每对的体积，不是穿透深度。</value></data>
+  <data name="InterferenceHint" xml:space="preserve"><value>预筛选支持 2–512 个实体实例；关闭时检查 2–32 个实例的全部精确距离。使用文档容差，不支持片体、网格和混合复合体。重叠量为每对的体积。</value></data>
   <data name="LocateInterference" xml:space="preserve"><value>隔离并定位此对实例</value></data>
   <data name="PairContained" xml:space="preserve"><value>包含</value></data>
   <data name="PairInterfering" xml:space="preserve"><value>体积相交</value></data>
@@ -1483,7 +1488,7 @@
   <data name="ReviewCalculating" xml:space="preserve"><value>正在计算几何…</value></data>
   <data name="SectionCreated" xml:space="preserve"><value>已在新零件中生成冻结截面，可撤销、保存及导出 STEP/IGES。</value></data>
   <data name="SectionCurves" xml:space="preserve"><value>截面曲线</value></data>
-  <data name="SectionGeometryHint" xml:space="preserve"><value>用上方的轴和偏移平面与 1–256 个选中体求交，生成独立的世界坐标曲线。不自动跟随源体、不封口，也不同时生成薄层两侧轮廓。</value></data>
+  <data name="SectionGeometryHint" xml:space="preserve"><value>使用上方轴与偏移平面和 1–256 个选中体求交。可生成曲线或封口面（仅实体），可关联来源自动更新。薄层选项仅控制显示。</value></data>
   <data name="RibbonHistory" xml:space="preserve"><value>历史操作</value></data>
   <data name="RibbonPrimitives" xml:space="preserve"><value>基础形体</value></data>
   <data name="RibbonProfiles" xml:space="preserve"><value>轮廓特征</value></data>
@@ -1494,4 +1499,158 @@
   <data name="ViewBack" xml:space="preserve"><value>后视</value></data>
   <data name="ViewBottom" xml:space="preserve"><value>底视</value></data>
   <data name="ViewLeft" xml:space="preserve"><value>左视</value></data>
+  <data name="ProgressWorking" xml:space="preserve"><value>正在处理…</value></data>
+  <data name="ProgressCancelling" xml:space="preserve"><value>正在取消，请等待当前步骤结束…</value></data>
+  <data name="ProgressOpeningFormat" xml:space="preserve"><value>正在打开 {0}…</value></data>
+  <data name="NotificationCompleted" xml:space="preserve"><value>操作完成</value></data>
+  <data name="NotificationInformation" xml:space="preserve"><value>消息提示</value></data>
+  <data name="NotificationWarning" xml:space="preserve"><value>注意</value></data>
+  <data name="NotificationError" xml:space="preserve"><value>操作失败</value></data>
+  <data name="NotificationBackgroundOpening" xml:space="preserve"><value>正在后台打开</value></data>
+  <data name="NotificationOpenCancelledFormat" xml:space="preserve"><value>已取消打开 {0}。</value></data>
+  <data name="NotificationPosition" xml:space="preserve"><value>消息位置</value></data>
+  <data name="NotificationAnchorApplication" xml:space="preserve"><value>当前应用窗口（默认）</value></data>
+  <data name="NotificationAnchorDesktop" xml:space="preserve"><value>Windows 桌面</value></data>
+<data name="AssociativeSection" xml:space="preserve"><value>关联来源实体</value></data>
+<data name="SectionFaces" xml:space="preserve"><value>生成封口截面（实体）</value></data>
+<data name="UpdateSection" xml:space="preserve"><value>更新截面参数</value></data>
+<data name="DetachSection" xml:space="preserve"><value>解除关联</value></data>
+<data name="ReviewCurrent" xml:space="preserve"><value>已更新</value></data>
+<data name="EngineeringDimension" xml:space="preserve"><value>工程标注</value></data>
+<data name="DimensionHint" xml:space="preserve"><value>标注保存固定的世界坐标点，不随几何编辑变化。可引用测量距离或输入毫米坐标。</value></data>
+<data name="NewDimension" xml:space="preserve"><value>新建标注</value></data>
+<data name="UseMeasuredDimension" xml:space="preserve"><value>使用测量距离</value></data>
+<data name="AngleDimension" xml:space="preserve"><value>角度（第二点为顶点）</value></data>
+<data name="DimensionPoints" xml:space="preserve"><value>坐标点：X, Y, Z（毫米）</value></data>
+<data name="DimensionFlyout" xml:space="preserve"><value>标注偏移（毫米）</value></data>
+<data name="SaveDimension" xml:space="preserve"><value>保存标注</value></data>
+<data name="ToggleDimension" xml:space="preserve"><value>显示 / 隐藏</value></data>
+<data name="ReviewBookmark" xml:space="preserve"><value>审阅视图</value></data>
+<data name="SaveBookmark" xml:space="preserve"><value>保存当前视图</value></data>
+<data name="RestoreBookmark" xml:space="preserve"><value>恢复视图</value></data>
+<data name="BroadPhaseCheck" xml:space="preserve"><value>包围盒预筛选（最多 512 个实体实例）</value></data>
+<data name="BroadPhaseSummary" xml:space="preserve"><value>包围盒已排除 {0} 个分离配对</value></data>
+  <data name="EngineeringDelivery" xml:space="preserve"><value>工程交付</value></data>
+  <data name="DeliverySummary" xml:space="preserve"><value>{0} 个零件定义 · {1} 个实例</value></data>
+  <data name="DeliveryHint" xml:space="preserve"><value>预览零件清单。— 表示质量未知；数值使用实体缓存体积和材料密度。原生文档始终包含完整模型及历史，交换文件不包含审阅标注。</value></data>
+  <data name="DeliveryVisibleOnly" xml:space="preserve"><value>清单及交换文件：仅文档可见对象</value></data>
+  <data name="BomQuantity" xml:space="preserve"><value>数量</value></data>
+  <data name="BomMass" xml:space="preserve"><value>总质量 kg</value></data>
+  <data name="DeliveryOutput" xml:space="preserve"><value>输出内容</value></data>
+  <data name="DeliveryPackage" xml:space="preserve"><value>工程交付包 (.zip)</value></data>
+  <data name="DeliveryCsv" xml:space="preserve"><value>零件清单 (.csv)</value></data>
+  <data name="DeliveryHtml" xml:space="preserve"><value>审阅报告 (.html)</value></data>
+  <data name="DeliveryFormats" xml:space="preserve"><value>包含原生文档、清单和报告；附加交换格式：</value></data>
+  <data name="DeliveryLinear" xml:space="preserve"><value>STL 线性偏差 (mm)</value></data>
+  <data name="DeliveryAngle" xml:space="preserve"><value>STL 角度偏差 (°)</value></data>
+  <data name="DeliveryWorking" xml:space="preserve"><value>正在生成交付文件。取消需等待当前原生导出返回。</value></data>
+  <data name="DeliveryCompleted" xml:space="preserve"><value>已生成交付文件：{0}</value></data>
+  <data name="ViewportLoadingFormat" xml:space="preserve"><value>正在显示模型 {0}/{1}…</value></data>
+  <data name="DocumentCustomPlane" xml:space="preserve"><value>自由平面</value></data>
+  <data name="WorkPlaneOrigin" xml:space="preserve"><value>平面原点（毫米）</value></data>
+  <data name="WorkPlaneAngles" xml:space="preserve"><value>X / Y / Z 旋转角（度）</value></data>
+  <data name="SplineHoles" xml:space="preserve"><value>B 样条孔</value></data>
+  <data name="AutoNestRegions" xml:space="preserve"><value>识别嵌套区域</value></data>
+  <data name="NestedRegionsCount" xml:space="preserve"><value>已识别 {0} 个嵌套草图区域</value></data>
+  <data name="ViewCubeFront" xml:space="preserve"><value>前</value></data>
+  <data name="ViewCubeBack" xml:space="preserve"><value>后</value></data>
+  <data name="ViewCubeLeft" xml:space="preserve"><value>左</value></data>
+  <data name="ViewCubeRight" xml:space="preserve"><value>右</value></data>
+  <data name="ViewCubeTop" xml:space="preserve"><value>顶</value></data>
+  <data name="ViewCubeBottom" xml:space="preserve"><value>底</value></data>
+  <data name="SolidHandleHint" xml:space="preserve"><value>拖动橙色手柄调整尺寸，然后确认预览。</value></data>
+  <data name="OccurrenceDragHint" xml:space="preserve"><value>拖动视口中的红、绿、蓝手柄可移动无约束实例。Esc 取消，松开鼠标后提交一次可撤销操作。</value></data>
+  <data name="AssemblyDatumSection" xml:space="preserve"><value>BRep 几何基准</value></data>
+  <data name="AssemblyPickReferenceDatum" xml:space="preserve"><value>拾取参考面或边</value></data>
+  <data name="AssemblyPickMovingDatum" xml:space="preserve"><value>拾取移动面或边</value></data>
+  <data name="AssemblyAddDatumRelation" xml:space="preserve"><value>添加几何配合</value></data>
+  <data name="ExternalPartPreview" xml:space="preserve"><value>预览依赖链</value></data>
+  <data name="ExternalPartRelocate" xml:space="preserve"><value>重新定位已固定的来源</value></data>
+  <data name="AssemblyReselectDatumRelation" xml:space="preserve"><value>重选当前配合的基准</value></data>
+  <data name="DrawingSheets" xml:space="preserve"><value>工程图纸</value></data>
+  <data name="DrawingAddSheet" xml:space="preserve"><value>新建图纸</value></data>
+  <data name="DrawingDeleteSheet" xml:space="preserve"><value>删除图纸</value></data>
+  <data name="DrawingAddView" xml:space="preserve"><value>添加视图</value></data>
+  <data name="DrawingEditView" xml:space="preserve"><value>移动／缩放视图</value></data>
+  <data name="DrawingDeleteView" xml:space="preserve"><value>删除视图</value></data>
+  <data name="DrawingRefresh" xml:space="preserve"><value>刷新投影</value></data>
+  <data name="DrawingPdf" xml:space="preserve"><value>导出 PDF</value></data>
+  <data name="DrawingPrint" xml:space="preserve"><value>打印</value></data>
+  <data name="DrawingPickFirst" xml:space="preserve"><value>拾取第一个基准</value></data>
+  <data name="DrawingPickSecond" xml:space="preserve"><value>拾取第二个基准</value></data>
+  <data name="DrawingAddDimension" xml:space="preserve"><value>添加尺寸</value></data>
+  <data name="DrawingReselectDimension" xml:space="preserve"><value>重选尺寸基准</value></data>
+  <data name="DrawingDeleteDimension" xml:space="preserve"><value>删除尺寸</value></data>
+  <data name="DrawingSelectSource" xml:space="preserve"><value>来源：当前选择或整个模型</value></data>
+  <data name="DrawingStale" xml:space="preserve"><value>引用已过期：请重选或刷新</value></data>
+  <data name="DrawingSheetProperties" xml:space="preserve"><value>图纸属性</value></data>
+  <data name="DrawingViewProperties" xml:space="preserve"><value>视图位置／比例</value></data>
+  <data name="DrawingDimensionProperties" xml:space="preserve"><value>尺寸</value></data>
+  <data name="DrawingStatusPick" xml:space="preserve"><value>请在视口中点击解析面或圆边。</value></data>
+  <data name="DrawingReselectSource" xml:space="preserve"><value>重选来源</value></data>
+  <data name="DrawingViewFront" xml:space="preserve"><value>前视</value></data>
+  <data name="DrawingViewTop" xml:space="preserve"><value>顶视</value></data>
+  <data name="DrawingViewRight" xml:space="preserve"><value>右视</value></data>
+  <data name="DrawingViewIsometric" xml:space="preserve"><value>轴测</value></data>
+  <data name="DrawingViewSection" xml:space="preserve"><value>剖视</value></data>
+  <data name="DrawingViewDetail" xml:space="preserve"><value>局部放大</value></data>
+  <data name="DrawingStandard" xml:space="preserve"><value>制图惯例</value></data>
+  <data name="DrawingDetailCrop" xml:space="preserve"><value>局部中心 X/Y 与半径（模型单位）</value></data>
+  <data name="DrawingTolerance" xml:space="preserve"><value>上／下公差（模型单位）</value></data>
+  <data name="DrawingApplyTolerance" xml:space="preserve"><value>应用公差</value></data>
+  <data name="DrawingMeasureLength" xml:space="preserve"><value>长度</value></data>
+  <data name="DrawingMeasureAngle" xml:space="preserve"><value>角度</value></data>
+  <data name="DrawingMeasureRadius" xml:space="preserve"><value>半径</value></data>
+  <data name="DrawingMeasureDiameter" xml:space="preserve"><value>直径</value></data>
+  <data name="DrawingLinkParent" xml:space="preserve"><value>关联到选中的视图</value></data>
+  <data name="DrawingApplyDimension" xml:space="preserve"><value>应用位置与颜色</value></data>
+  <data name="DrawingSectionPlane" xml:space="preserve"><value>剖切法线 X/Y/Z 与偏移（mm）</value></data>
+  <data name="DrawingDatumFace" xml:space="preserve"><value>拾取面</value></data>
+  <data name="DrawingDatumEdge" xml:space="preserve"><value>拾取圆边</value></data>
+  <data name="DrawingZoom" xml:space="preserve"><value>缩放</value></data>
+  <data name="DrawingTitle" xml:space="preserve"><value>图纸标题</value></data>
+  <data name="DrawingAuthor" xml:space="preserve"><value>作者</value></data>
+  <data name="DrawingPaperSize" xml:space="preserve"><value>纸张尺寸（宽 × 高，mm）</value></data>
+  <data name="DrawingWidth" xml:space="preserve"><value>宽度（mm）</value></data>
+  <data name="DrawingHeight" xml:space="preserve"><value>高度（mm）</value></data>
+  <data name="DrawingViewKind" xml:space="preserve"><value>视图类型</value></data>
+  <data name="DrawingScale" xml:space="preserve"><value>比例</value></data>
+  <data name="DrawingMeasureKind" xml:space="preserve"><value>尺寸类型</value></data>
+  <data name="DrawingDatumKind" xml:space="preserve"><value>基准类型</value></data>
+  <data name="DrawingTextPosition" xml:space="preserve"><value>文字位置（X / Y，mm）</value></data>
+  <data name="AssemblyManualCoordinates" xml:space="preserve"><value>手动坐标与关系</value></data>
+  <data name="DrawingSheetTab" xml:space="preserve"><value>图纸</value></data>
+  <data name="DrawingAppearance" xml:space="preserve"><value>位置与颜色</value></data>
+  <data name="ProfileRegions" xml:space="preserve"><value>草图孔与区域</value></data>
+  <data name="BooleanOperations" xml:space="preserve"><value>布尔运算</value></data>
+  <data name="InstanceStructureActions" xml:space="preserve"><value>装配结构</value></data>
+  <data name="ExternalPartActions" xml:space="preserve"><value>外部零件链接</value></data>
+  <data name="AiAssistant" xml:space="preserve"><value>AI 助手</value></data>
+  <data name="AiAttachFile" xml:space="preserve"><value>附加图片或文本文件</value></data>
+  <data name="AiCodexExecutable" xml:space="preserve"><value>Codex 程序路径</value></data>
+  <data name="AiCodexModel" xml:space="preserve"><value>Codex 模型（可选）</value></data>
+  <data name="AiEnableCadTools" xml:space="preserve"><value>允许 CAD 工具</value></data>
+  <data name="AiEndpoint" xml:space="preserve"><value>LM Studio 地址</value></data>
+  <data name="AiLoadModels" xml:space="preserve"><value>加载模型</value></data>
+  <data name="AiModel" xml:space="preserve"><value>LM Studio 模型</value></data>
+  <data name="AiPrompt" xml:space="preserve"><value>询问 CAD 助手</value></data>
+  <data name="AiProvider" xml:space="preserve"><value>提供方</value></data>
+  <data name="AiReasoning" xml:space="preserve"><value>推理强度</value></data>
+  <data name="AiSend" xml:space="preserve"><value>发送</value></data>
+  <data name="AiSettings" xml:space="preserve"><value>AI 设置</value></data>
+  <data name="AiStop" xml:space="preserve"><value>停止</value></data>
+  <data name="CommandRun" xml:space="preserve"><value>运行命令</value></data>
+  <data name="CommandTerminal" xml:space="preserve"><value>命令</value></data>
+  <data name="SuppressFeature" xml:space="preserve"><value>抑制特征</value></data>
+  <data name="RestoreFeature" xml:space="preserve"><value>恢复特征</value></data>
+  <data name="RadialMenu" xml:space="preserve"><value>圆盘菜单</value></data>
+  <data name="RadialEnabled" xml:space="preserve"><value>启用鼠标中键圆盘菜单</value></data>
+  <data name="RadialHint" xml:space="preserve"><value>按住中键并指向操作；Shift、Ctrl 或 Alt 可切换页面，松开中键执行。关闭后中键恢复视口导航。</value></data>
+  <data name="RadialMiddle" xml:space="preserve"><value>鼠标中键</value></data>
+  <data name="RadialShift" xml:space="preserve"><value>Shift + 中键</value></data>
+  <data name="RadialControl" xml:space="preserve"><value>Ctrl + 中键</value></data>
+  <data name="RadialEmpty" xml:space="preserve"><value>空</value></data>
+  <data name="RadialAlt" xml:space="preserve"><value>Alt + 中键</value></data>
+  <data name="RadialClear" xml:space="preserve"><value>拖动扇区到此处清空</value></data>
+  <data name="RadialPaletteHint" xml:space="preserve"><value>将动作拖到扇区；将扇区拖到中心可清空。</value></data>
 </root>

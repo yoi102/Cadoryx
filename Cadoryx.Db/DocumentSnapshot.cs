@@ -10,6 +10,9 @@ public sealed record DocumentSnapshot(DocumentId Id,DocumentStateId StateId,stri
     ImmutableArray<PreservedSection> Extensions=default,ImmutableArray<AssetId> RetainedAssets=default,
     ImmutableDictionary<AssetId,AssetFormat>? RetainedAssetFormats=null)
 {
+    public ImmutableDictionary<FeatureId,AssociatedSection> AssociatedSections {get;init;}=ImmutableDictionary<FeatureId,AssociatedSection>.Empty;
+    public ImmutableDictionary<Guid,EngineeringDimension> Dimensions {get;init;}=ImmutableDictionary<Guid,EngineeringDimension>.Empty;
+    public ImmutableDictionary<Guid,ReviewBookmark> ReviewBookmarks {get;init;}=ImmutableDictionary<Guid,ReviewBookmark>.Empty;
     public ImmutableDictionary<SketchId,CadSketch> Sketches {get;init;}=ImmutableDictionary<SketchId,CadSketch>.Empty;
     public ImmutableDictionary<TopologyReferenceId,TopologyReference> TopologyReferences {get;init;}=ImmutableDictionary<TopologyReferenceId,TopologyReference>.Empty;
     public ImmutableDictionary<HistoryQueryId,HistoryQuery> HistoryQueries {get;init;}=ImmutableDictionary<HistoryQueryId,HistoryQuery>.Empty;
@@ -17,6 +20,8 @@ public sealed record DocumentSnapshot(DocumentId Id,DocumentStateId StateId,stri
         ImmutableDictionary<AssemblyConstraintId,AssemblyConstraint>.Empty;
     public ImmutableDictionary<DefinitionId,ExternalPartLink> ExternalParts {get;init;}=
         ImmutableDictionary<DefinitionId,ExternalPartLink>.Empty;
+    public ImmutableDictionary<Guid,TechnicalDrawingSheet> DrawingSheets {get;init;}=
+        ImmutableDictionary<Guid,TechnicalDrawingSheet>.Empty;
     public static DocumentSnapshot Create(string name)
     {
         CadGuard.Name(name);var root=DefinitionId.New();var layer=LayerId.New();
@@ -31,8 +36,13 @@ public sealed record DocumentSnapshot(DocumentId Id,DocumentStateId StateId,stri
         .Concat(Extensions.IsDefault?[]:Extensions.Select(x=>x.PayloadAssetId)).Concat(RetainedAssets.IsDefault?[]:RetainedAssets).Distinct();
 
     public DocumentSnapshot WithNewState() => this with { StateId=DocumentStateId.New() };
-    public void Validate()
+    public void Validate()=>Validate(true);
+    public void Validate(bool validateReviewCache)
     {
+        EngineeringReviewValidation.Validate(this);
+        if(DrawingSheets.Count>64)throw new CadValidationException("Too many drawing sheets.");
+        foreach(var (id,sheet) in DrawingSheets)
+        {if(id!=sheet.Id)throw new CadValidationException("Drawing sheet key mismatch.");sheet.Validate(Id);}
         CadGuard.Id(Id);CadGuard.Id(StateId);CadGuard.Name(Name);Settings.Validate();
         foreach(var (id,reference) in TopologyReferences)
         {
@@ -92,9 +102,11 @@ public sealed record DocumentSnapshot(DocumentId Id,DocumentStateId StateId,stri
         foreach(var (id,f) in Features)
         {
             CadGuard.Id(id);CadGuard.Id(f.OutputBodyId);CadGuard.Name(f.Name);f.Recipe.Validate();f.Result.Validate();
-            f.SketchSource?.ValidateCache(this,f);
+            if(!f.IsStale)f.SketchSource?.ValidateCache(this,f);
             f.TopologyHistory?.ValidateFor(f);
             if(f.IsStale&&f.TopologyHistory is not null)throw new CadValidationException("A stale feature cannot retain topology history.");
+            if(f.IsSuppressed&&(!f.IsStale||Bodies.ContainsKey(f.OutputBodyId)))
+                throw new CadValidationException("A suppressed feature must have no active body.");
             if(f.Recipe is HistoryFilletRecipe or HistoryChamferRecipe)
             {
                 var binding=f.TopologyBinding??throw new CadValidationException("Bound local feature has no confirmed binding.");
@@ -135,6 +147,7 @@ public sealed record DocumentSnapshot(DocumentId Id,DocumentStateId StateId,stri
         foreach(var (id,m) in Materials){CadGuard.Id(id);CadGuard.Name(m.Name);CadGuard.Positive(m.DensityKgPerMm3);if(id!=m.Id)throw new CadValidationException("Material key mismatch.");}
         ValidateDag(Definitions.Keys,id=>Definitions[id] is AssemblyDefinition a?a.Children.Select(x=>x.DefinitionId):[]);
         ValidateDag(Features.Keys,id=>Features[id].Inputs);
+        if(validateReviewCache)EngineeringReviewValidation.ValidateBindings(this);
         if(ExternalParts.Count>4096)throw new CadValidationException("Too many external part links.");
         foreach(var (id,link) in ExternalParts)
         {
@@ -152,6 +165,33 @@ public sealed record DocumentSnapshot(DocumentId Id,DocumentStateId StateId,stri
             var evaluation=constraint.Evaluate(this,constraintOccurrences!);
             if(constraint.Kind==AssemblyConstraintKind.Fixed&&evaluation.Status==AssemblyConstraintStatus.Unsatisfied)
                 throw new CadValidationException("A fixed assembly instance cannot move until its constraint is disabled or removed.");
+        }
+        if(DrawingSheets.Count>0)
+        {
+            var occurrences=EnumerateOccurrences().ToDictionary(o=>o.Path);
+            foreach(var sheet in DrawingSheets.Values)
+            {
+                foreach(var view in sheet.Views.Where(v=>v.StaleReason is null))
+                    foreach(var source in view.Sources)
+                    {
+                        if(!occurrences.TryGetValue(source.Path,out var occurrence)||
+                           Definitions[occurrence.DefinitionId] is not PartDefinition part||
+                           !part.Bodies.Contains(source.Body)||!Bodies.TryGetValue(source.Body,out var body)||
+                           body.Producer!=source.Feature||body.Geometry.Revision!=source.Revision||
+                           body.Geometry.AssetId!=source.Asset||occurrence.WorldTransform!=source.WorldTransform)
+                            throw new CadValidationException("Current drawing view has a mismatched source.");
+                    }
+                foreach(var dimension in sheet.Dimensions.Where(d=>d.StaleReason is null))
+                {
+                    var view=sheet.Views.Single(v=>v.Id==dimension.ViewId);
+                    if(view.StaleReason is not null||
+                       !view.Sources.Any(s=>s.Path.Equals(dimension.First.Path)&&s.Body==dimension.First.BodyId)||
+                       dimension.Second is {} paired&&!view.Sources.Any(s=>s.Path.Equals(paired.Path)&&s.Body==paired.BodyId)||
+                       !dimension.First.IsCurrent(this,dimension.First.Path,dimension.First.DefinitionId)||
+                       dimension.Second is {} other&&!other.IsCurrent(this,other.Path,other.DefinitionId))
+                        throw new CadValidationException("Current drawing dimension has a stale datum.");
+                }
+            }
         }
     }
     private static void ValidateDag<T>(IEnumerable<T> keys,Func<T,IEnumerable<T>> children) where T:notnull

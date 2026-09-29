@@ -6,7 +6,9 @@
 
 2026-09-23 M4-T3-B2a/B2b：锁定 `8.0.1-preview.28.cadoryx.viewcube.5` 已提供多轮廓 `ContourFilletRecipe`／`ContourChamferRecipe` 与 `FilletContourProgram.FromLaw`。Cadoryx 本轮只扩展 Box 配方、内核调用和窗口；独立 NuGet 探针 19/19 场景、62/62 原生 DLL 与包载荷一致，见 `artifacts/occt-capability-20260923-233837`。没有新的公共接口缺口，未改 OcctSharp。
 
-2026-09-23 ViewCube：当前锁定本地开发包 `8.0.1-preview.28.cadoryx.viewcube.5`，手写 Viewer 桥拥有 OCCT `AIS_ViewCube`，提供显示开关、面／边／角命中和对应相机方向（26 种）。两个 45° 短弧箭头位于立方体右上侧，只在相机对准六个正交面时显示；悬停高亮被命中的面或箭头。Cadoryx 在原生 HWND 内绘制，点击后沿用 320 ms 相机动画，左右箭头绕当前视线方向转动，单次角度为应用设置 `ViewCubeRotationDegrees`（1–180°，默认 45°）。ViewCube 不进入模型选择、网格或文档存储。命中查询仅在右上角区域更新 AIS 检测，避免建模点击改变模型悬停高亮。应用设置 `ShowViewCube` 控制所有已打开视口及新视口。点击目标相机由 OcctSharp 的独立相机副本计算，保留当前观察中心与视距；查询阶段不触碰显示视图，避免动画前短暂绘出最终方向。独立 NuGet 消费和桌面冒烟证据见 ROADMAP 的 M2-V8 验收记录。
+2026-09-23 ViewCube：当前锁定本地开发包 `8.0.1-preview.28.cadoryx.viewcube.5`，手写 Viewer 桥拥有 OCCT `AIS_ViewCube`，提供显示开关、面／边／角命中和对应相机方向（26 种）。两个 45° 短弧箭头位于立方体右上侧，只在相机对准六个正交面时显示；悬停高亮被命中的面或箭头。Cadoryx 在原生 HWND 内绘制，点击后沿用 320 ms 相机动画，左右箭头绕当前视线方向转动，单次角度为应用设置 `ViewCubeRotationDegrees`（1–180°，默认 45°）。ViewCube 不进入模型选择、网格或文档存储。命中查询仅在右上角区域更新 AIS 检测，避免建模点击改变模型悬停高亮。应用设置 `ShowViewCube` 控制所有已打开视口及新视口。点击目标相机由 OcctSharp 的独立相机副本计算，保留观察中心与视距；查询阶段不触碰显示视图，避免动画前短暂绘出最终方向。独立 NuGet 消费和桌面冒烟证据见 ROADMAP 的 M2-V8 验收记录。
+
+2026-09-27 ViewCube 外观（当时的验收快照）：锁定本地配对包 `8.0.1-preview.28.cadoryx.topology.viewcube.1`。OcctSharp 手写 Viewer 桥提供 `ViewerCubeAppearance`（六面 UTF-8 标签、字体、字号、空闲透明度）及悬停开关，允许 C# 运行时修改，无需向应用暴露 AIS 句柄。Cadoryx 用 en-US／zh-CN／ja-JP 资源生成短标签，语言切换时原位更新；空闲时立方体与旋转箭头半透明，光标悬停时恢复清晰，鼠标离开 HWND 时清除高亮并复原。关闭装饰性坐标轴，保留面／边／角命中与相机动画。最终 Release 0 警告／错误、563/563 测试、发布版桌面／窗口冒烟以及独立 NuGet 33/33、62/62 DLL 核对通过；窗口截图见 `artifacts/window-smoke-20260927-134224`，包证据见 `artifacts/viewcube-style-capability`。
 
 2026-09-23 渐变接入历史：开发包 `8.0.1-preview.28.cadoryx.gradient.1` 新增 `OcctViewer.SetBackgroundGradient(top, bottom)`；原生桥调用 OCCT 8.0.1 的竖直 `V3d_View::SetBgGradientColors`。顶部和底部的 UI sRGB 色先转为线性 RGB，再交给 Viewer。文档级背景与文件迁移见[视口与工作网格](VIEWPORT_CONSTRUCTION.md)。
 
@@ -195,3 +197,5 @@ WPF 浮动/重新停靠、DPI 和 HWND 重建时保存托管相机快照，重�
 - `docs/BATCH_O_2D_SKETCH_PLANAR_MODELING_GAP_INVENTORY.md`：草图能力与非目标。
 - `docs/BATCH_T_PARAMETRIC_DOCUMENT_RECOMPUTE_GAP_INVENTORY.md`：没有通用约束求解器和任意拓扑变更命名保证。
 - `OcctSharp/samples/OcctSharpViewer.Wpf/README.md`：XDE 加载、HwndHost 和静态复制帧说明。
+
+2026-09-27 M10 装配更新：当前锁定本地配对包 `8.0.1-preview.28.cadoryx.assembly.partner.1`。新增 `RepairSnapshot.FindTopologyPartnerIndex` 可在 Viewer 对实例施加位姿后，按唯一同源 TShape 将面/边映回原始 BRep；外来或重复 partner 返回 -1。匹配后仍须核对文档、实例、资产、修订和指纹。配对包独立消费与真实视口双端拾取证据见 [M10 装配](M10_ASSEMBLY.md)。

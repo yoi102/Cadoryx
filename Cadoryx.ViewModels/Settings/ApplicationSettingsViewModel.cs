@@ -22,13 +22,15 @@ public partial class ApplicationSettingsViewModel : ObservableObject
         General = new GeneralApplicationSettingsViewModel(workingCopy.General);
         Viewport = new ViewportApplicationSettingsViewModel(workingCopy.Viewport);
         Interaction = new InteractionApplicationSettingsViewModel(workingCopy.Interaction);
-        Sections = [General, Viewport, Interaction];
+        RadialMenu = new RadialMenuApplicationSettingsViewModel(workingCopy.RadialMenu);
+        Sections = [General, Viewport, Interaction, RadialMenu];
         SelectedSection = Sections[0];
     }
 
     public GeneralApplicationSettingsViewModel General { get; }
     public ViewportApplicationSettingsViewModel Viewport { get; }
     public InteractionApplicationSettingsViewModel Interaction { get; }
+    public RadialMenuApplicationSettingsViewModel RadialMenu { get; }
     public IReadOnlyList<ApplicationSettingsSectionViewModel> Sections { get; }
 
     [ObservableProperty]
@@ -86,6 +88,7 @@ public abstract class ApplicationSettingsSectionViewModel : ObservableObject
 }
 
 public sealed record ApplicationCultureOption(int Lcid, string DisplayName);
+public sealed record NotificationAnchorOption(CadNotificationAnchor Anchor,string DisplayName);
 
 public partial class GeneralApplicationSettingsViewModel : ApplicationSettingsSectionViewModel
 {
@@ -102,6 +105,9 @@ public partial class GeneralApplicationSettingsViewModel : ApplicationSettingsSe
     }
 
     public IReadOnlyList<ApplicationCultureOption> CultureOptions { get; }
+    public IReadOnlyList<NotificationAnchorOption> NotificationAnchorOptions {get;}=
+    [new(CadNotificationAnchor.ApplicationWindow,Strings.NotificationAnchorApplication),new(CadNotificationAnchor.WindowsDesktop,Strings.NotificationAnchorDesktop)];
+    [ObservableProperty] public partial NotificationAnchorOption? SelectedNotificationAnchor {get;set;}
 
     [ObservableProperty] public partial bool IsDarkTheme { get; set; }
     [ObservableProperty] public partial uint PrimaryColor { get; set; } = 0xFF3F51B5;
@@ -110,13 +116,14 @@ public partial class GeneralApplicationSettingsViewModel : ApplicationSettingsSe
 
     internal override bool TryApplyTo(CadoryxApplicationSettings settings)
     {
-        if (SelectedCulture is null)
+        if (SelectedCulture is null || SelectedNotificationAnchor is null)
             return false;
 
         settings.General.IsDarkTheme = IsDarkTheme;
         settings.General.CultureLcid = SelectedCulture.Lcid;
         settings.General.PrimaryColor = PrimaryColor;
         settings.General.SecondaryColor = SecondaryColor;
+        settings.General.NotificationAnchor = SelectedNotificationAnchor.Anchor;
         return true;
     }
 
@@ -127,6 +134,7 @@ public partial class GeneralApplicationSettingsViewModel : ApplicationSettingsSe
         IsDarkTheme = settings.IsDarkTheme;
         PrimaryColor = settings.PrimaryColor;
         SecondaryColor = settings.SecondaryColor;
+        SelectedNotificationAnchor=NotificationAnchorOptions.FirstOrDefault(o=>o.Anchor==settings.NotificationAnchor)??NotificationAnchorOptions[0];
         SelectedCulture = CultureOptions.FirstOrDefault(option => option.Lcid == settings.CultureLcid)
                           ?? CultureOptions[0];
     }

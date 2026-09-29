@@ -40,6 +40,15 @@ foreach($cadFormat in @('step','iges','stl')){
     Invoke-CadCli @('convert',$cadFixture,$cadTarget) 1
 }
 Invoke-CadCli @('inspect',(Join-Path $cadOutput 'converted.step'),'--exact','--output',(Join-Path $cadOutput 'reimport.json'))
+Invoke-CadCli @('bom',$cadFixture,'--output',(Join-Path $cadOutput 'bom.csv'))
+Invoke-CadCli @('report',$cadFixture,'--output',(Join-Path $cadOutput 'review.html'))
+$cadDelivery=Join-Path $cadOutput 'delivery.zip'
+Invoke-CadCli @('deliver',$cadFixture,'--output',$cadDelivery,'--iges','--stl')
+Invoke-CadCli @('verify-delivery',$cadDelivery)
+$cadDeliveryHash=(Get-FileHash -LiteralPath $cadDelivery -Algorithm SHA256).Hash
+Invoke-CadCli @('deliver',$cadFixture,'--output',$cadDelivery) 1
+if((Get-FileHash -LiteralPath $cadDelivery -Algorithm SHA256).Hash -ne $cadDeliveryHash){throw 'Refused delivery overwrite changed the existing package.'}
+'PASS: published BOM, HTML, seven-file delivery, independent archive verification and overwrite protection.' | Set-Content (Join-Path $cadOutput 'delivery-result.txt')
 Invoke-CadCli @('benchmark',$cadFixture,'--iterations','2','--output',(Join-Path $cadOutput 'benchmark-disk.json'))
 Invoke-CadCli @('benchmark',$cadFixture,'--memory','--iterations','2','--output',(Join-Path $cadOutput 'benchmark-memory.json'))
 $cadBenchmark=Get-Content -LiteralPath (Join-Path $cadOutput 'benchmark-disk.json') -Raw | ConvertFrom-Json
@@ -58,11 +67,19 @@ function Start-CadCacheSeed([string]$Ready) {
 }
 function Wait-CadCacheSeed($Process,[string]$Ready) {
     $cadDeadline=[Diagnostics.Stopwatch]::StartNew()
-    while(!(Test-Path -LiteralPath $Ready)) {
+    while($true) {
+        if(Test-Path -LiteralPath $Ready){
+            try{
+                $cadPath=[IO.File]::ReadAllText($Ready).Trim()
+                if($cadPath){return $cadPath}
+            }
+            catch [IO.IOException] {
+                # The seed creates the marker before releasing its exclusive write handle.
+            }
+        }
         if($Process.HasExited -or $cadDeadline.Elapsed.TotalSeconds -gt 15){throw 'Cache seed failed to hold its live payload.'}
         Start-Sleep -Milliseconds 100
     }
-    return [IO.File]::ReadAllText($Ready)
 }
 $cadSeedReady=Join-Path $cadOutput 'cache-seed.ready'
 $cadCacheSeed=Start-CadCacheSeed $cadSeedReady

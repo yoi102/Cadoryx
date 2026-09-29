@@ -14,6 +14,16 @@ internal sealed class ToolboxIconProvider : IToolboxIconProvider
     public object Properties => CreatePropertiesIcon();
     public object Modeling => CreateModelingIcon();
     public object Messages => CreateMessagesIcon();
+    public object CommandLine => CreateSimpleIcon("M2,2 L14,2 L14,14 L2,14 Z M4,6 L7,8 L4,10 M8,11 L12,11");
+    public object Assistant => CreateSimpleIcon("M2,2 L14,2 L14,11 L7,11 L4,14 L4,11 L2,11 Z M8,4 L8.8,6.2 L11,7 L8.8,7.8 L8,10 L7.2,7.8 L5,7 L7.2,6.2 Z");
+
+    private static Viewbox CreateSimpleIcon(string geometry)
+    {
+        var canvas = new Canvas { Width = 16, Height = 16 };
+        var path = new Path { Data = Geometry.Parse(geometry), StrokeThickness = 1.1,
+            Fill = Brushes.Transparent, StrokeLineJoin = PenLineJoin.Round };
+        BindStroke(path); canvas.Children.Add(path); return CreateIcon(canvas);
+    }
 
     private static Binding ForegroundBinding() => new()
     {

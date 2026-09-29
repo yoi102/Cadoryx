@@ -1,0 +1,696 @@
+{
+  "passed": true,
+  "total": 34,
+  "failures": 0,
+  "runtime": {
+    "ManagedVersion": "8.0.1-preview.28.cadoryx.topology.viewcube.1",
+    "BridgeVersion": "0.80.0",
+    "AbiVersion": "1.72",
+    "OcctVersion": "8.0.1"
+  },
+  "packageAssemblies": [
+    {
+      "name": "OcctSharp",
+      "version": "8.0.1-preview.28.cadoryx.topology.viewcube.1",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\OcctCapabilityProbe\\bin\\Release\\net10.0\\win-x64\\OcctSharp.dll"
+    },
+    {
+      "name": "OcctSharp.Documents",
+      "version": "8.0.1-preview.28.cadoryx.topology.viewcube.1",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\OcctCapabilityProbe\\bin\\Release\\net10.0\\win-x64\\OcctSharp.Documents.dll"
+    },
+    {
+      "name": "OcctSharp.Geometry",
+      "version": "8.0.1-preview.28.cadoryx.topology.viewcube.1",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\OcctCapabilityProbe\\bin\\Release\\net10.0\\win-x64\\OcctSharp.Geometry.dll"
+    },
+    {
+      "name": "OcctSharp.Mesh",
+      "version": "8.0.1-preview.28.cadoryx.topology.viewcube.1",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\OcctCapabilityProbe\\bin\\Release\\net10.0\\win-x64\\OcctSharp.Mesh.dll"
+    },
+    {
+      "name": "OcctSharp.MeshData",
+      "version": "8.0.1-preview.28.cadoryx.topology.viewcube.1",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\OcctCapabilityProbe\\bin\\Release\\net10.0\\win-x64\\OcctSharp.MeshData.dll"
+    },
+    {
+      "name": "OcctSharp.Modeling",
+      "version": "8.0.1-preview.28.cadoryx.topology.viewcube.1",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\OcctCapabilityProbe\\bin\\Release\\net10.0\\win-x64\\OcctSharp.Modeling.dll"
+    },
+    {
+      "name": "OcctSharp.Runtime",
+      "version": "8.0.1-preview.28.cadoryx.topology.viewcube.1",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\OcctCapabilityProbe\\bin\\Release\\net10.0\\win-x64\\OcctSharp.Runtime.dll"
+    }
+  ],
+  "nativeModules": [
+    {
+      "name": "OcctSharp.Native.dll",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\OcctCapabilityProbe\\bin\\Release\\net10.0\\win-x64\\occt\\OcctSharp.Native.dll",
+      "sha256": "315ce2ff6b206128690801fd3ba34366de8f2205fbf54074caa896784a291223"
+    },
+    {
+      "name": "TKG2d.dll",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\OcctCapabilityProbe\\bin\\Release\\net10.0\\win-x64\\occt\\TKG2d.dll",
+      "sha256": "0d87a20363cfb66f7862fbc9aa7234059d13712b3a0d7e6b35cbb0172810a93c"
+    },
+    {
+      "name": "TKernel.dll",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\OcctCapabilityProbe\\bin\\Release\\net10.0\\win-x64\\occt\\TKernel.dll",
+      "sha256": "3ecbc7f193ebb746cc88a81e03eb603d24fdf03470b346551698f45d4faeb7b4"
+    },
+    {
+      "name": "TKMath.dll",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\OcctCapabilityProbe\\bin\\Release\\net10.0\\win-x64\\occt\\TKMath.dll",
+      "sha256": "2c41efc32c025d1e7753548498027aa240d315b455bf36130432ea23e5860a2a"
+    },
+    {
+      "name": "TKG3d.dll",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\OcctCapabilityProbe\\bin\\Release\\net10.0\\win-x64\\occt\\TKG3d.dll",
+      "sha256": "8a13921267c5839c0d8d4395dae33fc5c1f80f8d03c0d8c0ceb153aa3da35c6c"
+    },
+    {
+      "name": "TKBRep.dll",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\OcctCapabilityProbe\\bin\\Release\\net10.0\\win-x64\\occt\\TKBRep.dll",
+      "sha256": "a511c8cf51178cf881c3ba0b54287dcece6ded03cf3de99e6fabf2a2d5152207"
+    },
+    {
+      "name": "TKGeomBase.dll",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\OcctCapabilityProbe\\bin\\Release\\net10.0\\win-x64\\occt\\TKGeomBase.dll",
+      "sha256": "6bd91d22b6a893884ba74fec8c352f68bcf0f79096d00f52119d4810ef42567e"
+    },
+    {
+      "name": "TKTopAlgo.dll",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\OcctCapabilityProbe\\bin\\Release\\net10.0\\win-x64\\occt\\TKTopAlgo.dll",
+      "sha256": "6690ce35fcf32bd2c379d12a21abde6baf023087f3eefbccc5ae40e416b0b107"
+    },
+    {
+      "name": "TKPrim.dll",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\OcctCapabilityProbe\\bin\\Release\\net10.0\\win-x64\\occt\\TKPrim.dll",
+      "sha256": "37de279166407566d7fff2dd063638fdf1f8dc89c0d030e550aa4868585f49dd"
+    },
+    {
+      "name": "TKGeomAlgo.dll",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\OcctCapabilityProbe\\bin\\Release\\net10.0\\win-x64\\occt\\TKGeomAlgo.dll",
+      "sha256": "154e047a29217c0faf101ec0b8119d6d327e89560cd82cb18d17ec48d508883b"
+    },
+    {
+      "name": "TKHLR.dll",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\OcctCapabilityProbe\\bin\\Release\\net10.0\\win-x64\\occt\\TKHLR.dll",
+      "sha256": "499f63a9335a17f8d2903db1d56e27ee2dead324e35efe46e2a9fac8a8bf6f89"
+    },
+    {
+      "name": "TKBO.dll",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\OcctCapabilityProbe\\bin\\Release\\net10.0\\win-x64\\occt\\TKBO.dll",
+      "sha256": "41f837935bcc65882acd73295ef65ca13d47b018acdcb6093faf47804b96d0c5"
+    },
+    {
+      "name": "TKShHealing.dll",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\OcctCapabilityProbe\\bin\\Release\\net10.0\\win-x64\\occt\\TKShHealing.dll",
+      "sha256": "91e87bd3e5a3267c4a2d97b171ea05fa21fe1b78a2b905f7cf7e3cf19f5cd43e"
+    },
+    {
+      "name": "TKBool.dll",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\OcctCapabilityProbe\\bin\\Release\\net10.0\\win-x64\\occt\\TKBool.dll",
+      "sha256": "fa76c5374ae85e1649f27da41ed0b45ec36c68c413ace84554198cf39d11dafd"
+    },
+    {
+      "name": "TKHelix.dll",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\OcctCapabilityProbe\\bin\\Release\\net10.0\\win-x64\\occt\\TKHelix.dll",
+      "sha256": "b95f60b662fff3bbdc7a768aa1df664468187c3638ac562b5c87c8b9c6808dff"
+    },
+    {
+      "name": "TKFeat.dll",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\OcctCapabilityProbe\\bin\\Release\\net10.0\\win-x64\\occt\\TKFeat.dll",
+      "sha256": "05f968c96dd0c170463b09f0121db70e3db720250634959c91c42396f9437141"
+    },
+    {
+      "name": "TKOffset.dll",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\OcctCapabilityProbe\\bin\\Release\\net10.0\\win-x64\\occt\\TKOffset.dll",
+      "sha256": "b3145bf379a12f46c68b206966679252cb36c0616c1a3d73d572033cb3efcf8f"
+    },
+    {
+      "name": "TKFillet.dll",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\OcctCapabilityProbe\\bin\\Release\\net10.0\\win-x64\\occt\\TKFillet.dll",
+      "sha256": "6acca10e58155ecaa1621dcecf395463c6560d4a3b63729bd7688ed7b15a38f5"
+    },
+    {
+      "name": "TKMesh.dll",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\OcctCapabilityProbe\\bin\\Release\\net10.0\\win-x64\\occt\\TKMesh.dll",
+      "sha256": "143337a5bf7128b7d5f50b33129d70ee4b4e9669f9166d89af732444a221f95f"
+    },
+    {
+      "name": "TKExpress.dll",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\OcctCapabilityProbe\\bin\\Release\\net10.0\\win-x64\\occt\\TKExpress.dll",
+      "sha256": "2535b5993a42e41c6e35e5ea50574953d0bc5705eae70d596c1194e5b9c8e872"
+    },
+    {
+      "name": "TKService.dll",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\OcctCapabilityProbe\\bin\\Release\\net10.0\\win-x64\\occt\\TKService.dll",
+      "sha256": "b16e5aeb5213d9586a606c6443246c0d77ce52b117a54a4e523fd9e0bb41aae6"
+    },
+    {
+      "name": "TKV3d.dll",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\OcctCapabilityProbe\\bin\\Release\\net10.0\\win-x64\\occt\\TKV3d.dll",
+      "sha256": "5356773b60eaf73345ae6822369eb8b721a9d18eaba925491870e24cba651bd9"
+    },
+    {
+      "name": "TKXMesh.dll",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\OcctCapabilityProbe\\bin\\Release\\net10.0\\win-x64\\occt\\TKXMesh.dll",
+      "sha256": "302bfc3cb41c8ef00548a974c28f86bd194d6267fa31f080227d8d765bc8e9d3"
+    },
+    {
+      "name": "TKOpenGl.dll",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\OcctCapabilityProbe\\bin\\Release\\net10.0\\win-x64\\occt\\TKOpenGl.dll",
+      "sha256": "8c47bb81b4d9f712e557864a67a31637dff74d83d92b83aee6960a673cba07e7"
+    },
+    {
+      "name": "TKMeshVS.dll",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\OcctCapabilityProbe\\bin\\Release\\net10.0\\win-x64\\occt\\TKMeshVS.dll",
+      "sha256": "7cf4cec11ec0b9a7aff012442a9e868932b74848e46caa79dc091175a18dd9dd"
+    },
+    {
+      "name": "TKD3DHost.dll",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\OcctCapabilityProbe\\bin\\Release\\net10.0\\win-x64\\occt\\TKD3DHost.dll",
+      "sha256": "0eb1591d44fff265c3870865013c7fcbde9f9b7df79903ed0116ac1c93de10be"
+    },
+    {
+      "name": "TKCDF.dll",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\OcctCapabilityProbe\\bin\\Release\\net10.0\\win-x64\\occt\\TKCDF.dll",
+      "sha256": "9bccab992da8f4069cb4020a064d67df507309ca679ad20bb97a9b5fb0797a3a"
+    },
+    {
+      "name": "TKLCAF.dll",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\OcctCapabilityProbe\\bin\\Release\\net10.0\\win-x64\\occt\\TKLCAF.dll",
+      "sha256": "c51a1da060562ba8855c02a091d849a575459fee3ed80543358f9113871daf9d"
+    },
+    {
+      "name": "TKCAF.dll",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\OcctCapabilityProbe\\bin\\Release\\net10.0\\win-x64\\occt\\TKCAF.dll",
+      "sha256": "e78fd6196f7356ffa541a015cb6df481e9999d8e813e2d7a5d914ca6205614ae"
+    },
+    {
+      "name": "TKBinL.dll",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\OcctCapabilityProbe\\bin\\Release\\net10.0\\win-x64\\occt\\TKBinL.dll",
+      "sha256": "a8a87e784c6ad97daf773926a106e8904abef77ae30cad602dd236a0fe376378"
+    },
+    {
+      "name": "TKXmlL.dll",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\OcctCapabilityProbe\\bin\\Release\\net10.0\\win-x64\\occt\\TKXmlL.dll",
+      "sha256": "7477a1a138630480d9d42cbaf04637322cd96dca19880694dec6a60c77532bcc"
+    },
+    {
+      "name": "TKBin.dll",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\OcctCapabilityProbe\\bin\\Release\\net10.0\\win-x64\\occt\\TKBin.dll",
+      "sha256": "b27b08ffbe07c1faca441897e6d807062d01f453bd847175cae999b15ad31d96"
+    },
+    {
+      "name": "TKXml.dll",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\OcctCapabilityProbe\\bin\\Release\\net10.0\\win-x64\\occt\\TKXml.dll",
+      "sha256": "9904aaf0435d24e7b89ba094fcb96708942a33b4dfd88241968ce6054b3af811"
+    },
+    {
+      "name": "TKStdL.dll",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\OcctCapabilityProbe\\bin\\Release\\net10.0\\win-x64\\occt\\TKStdL.dll",
+      "sha256": "4ee319e9cd1d1dff7337b1f03ec8fb2ccbad0ae0ab8a18fa8ebbf2dbb3113b61"
+    },
+    {
+      "name": "TKStd.dll",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\OcctCapabilityProbe\\bin\\Release\\net10.0\\win-x64\\occt\\TKStd.dll",
+      "sha256": "7366bfdef0be23ae8c0d9fd7ab1676ccc4f8ccd7defc53add1b4bdc3e91f5660"
+    },
+    {
+      "name": "TKBinTObj.dll",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\OcctCapabilityProbe\\bin\\Release\\net10.0\\win-x64\\occt\\TKBinTObj.dll",
+      "sha256": "f482e7f3a3526150c537e3dd6cdddbd6b4e38b29c62ac3cf3f81d9e97a296eab"
+    },
+    {
+      "name": "TKTObj.dll",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\OcctCapabilityProbe\\bin\\Release\\net10.0\\win-x64\\occt\\TKTObj.dll",
+      "sha256": "b1491d455b088b13bc332260804dbe53e7fbf8e495a3271759c14334cd3a1196"
+    },
+    {
+      "name": "TKXmlTObj.dll",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\OcctCapabilityProbe\\bin\\Release\\net10.0\\win-x64\\occt\\TKXmlTObj.dll",
+      "sha256": "689187644ba9103f9288b2bc22208998a933f68cfe19d9b259ebd78de58fe939"
+    },
+    {
+      "name": "TKVCAF.dll",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\OcctCapabilityProbe\\bin\\Release\\net10.0\\win-x64\\occt\\TKVCAF.dll",
+      "sha256": "94948f34ad0696d0d4ca404da4369b348b0b3c1241eee1e42dad87353e5629bf"
+    },
+    {
+      "name": "TKDE.dll",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\OcctCapabilityProbe\\bin\\Release\\net10.0\\win-x64\\occt\\TKDE.dll",
+      "sha256": "2f0e1c9bd86c367b36dc7519502b095de0dee910d1f86b5b39ba962790a0d0c5"
+    },
+    {
+      "name": "TKXSBase.dll",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\OcctCapabilityProbe\\bin\\Release\\net10.0\\win-x64\\occt\\TKXSBase.dll",
+      "sha256": "3978fec70540bd0b369ff01263ba341e01a57e308f5ea1788b5dc56b1a851aa7"
+    },
+    {
+      "name": "TKXCAF.dll",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\OcctCapabilityProbe\\bin\\Release\\net10.0\\win-x64\\occt\\TKXCAF.dll",
+      "sha256": "64095ff4ffa3bdd41bd17fffdc39f9490ce34c2ef59aab427c71deaa6f3b791a"
+    },
+    {
+      "name": "TKDESTL.dll",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\OcctCapabilityProbe\\bin\\Release\\net10.0\\win-x64\\occt\\TKDESTL.dll",
+      "sha256": "68488a4fd4b3c426123bd9969f5e42dd335a89cea2ffa4e147452653f1bb63a1"
+    },
+    {
+      "name": "TKDEIGES.dll",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\OcctCapabilityProbe\\bin\\Release\\net10.0\\win-x64\\occt\\TKDEIGES.dll",
+      "sha256": "3d16433a5ca16d36dfdfe168af7f7c0645093cdc6c80ca38a157bc84769e43f9"
+    },
+    {
+      "name": "TKDESTEP.dll",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\OcctCapabilityProbe\\bin\\Release\\net10.0\\win-x64\\occt\\TKDESTEP.dll",
+      "sha256": "dc010933aef4481083d21f77adfaee6aceade87d5f454ad5f4743f07a00b4df6"
+    },
+    {
+      "name": "TKRWMesh.dll",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\OcctCapabilityProbe\\bin\\Release\\net10.0\\win-x64\\occt\\TKRWMesh.dll",
+      "sha256": "49a61a27309032c374ed78ed205dc89860c4d5d510a7160ae4a5cf85cc7dac1c"
+    },
+    {
+      "name": "TKDEVRML.dll",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\OcctCapabilityProbe\\bin\\Release\\net10.0\\win-x64\\occt\\TKDEVRML.dll",
+      "sha256": "7f30f93d81398a61f5e52997494c43abfabd868009273b4492b1e2b8dd105f7a"
+    },
+    {
+      "name": "TKDECascade.dll",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\OcctCapabilityProbe\\bin\\Release\\net10.0\\win-x64\\occt\\TKDECascade.dll",
+      "sha256": "6e65801f138067283ca2355f7e43ff5bf30502e0cb6f782f33245e7b5096f5a1"
+    },
+    {
+      "name": "TKBinXCAF.dll",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\OcctCapabilityProbe\\bin\\Release\\net10.0\\win-x64\\occt\\TKBinXCAF.dll",
+      "sha256": "be1f35f341a9bc1ef26db6721afe727747cc97053a86ada5a51c03e4c43eba3a"
+    },
+    {
+      "name": "TKXmlXCAF.dll",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\OcctCapabilityProbe\\bin\\Release\\net10.0\\win-x64\\occt\\TKXmlXCAF.dll",
+      "sha256": "cecc1712c731dcc0ddc4e855fbff9ec8d159f83141fb0e5c010a2ecdfb0cee13"
+    },
+    {
+      "name": "TKDEOBJ.dll",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\OcctCapabilityProbe\\bin\\Release\\net10.0\\win-x64\\occt\\TKDEOBJ.dll",
+      "sha256": "c09644de8f5afea74c531054f713132823f0020f28a889229ae2e762d8ca121d"
+    },
+    {
+      "name": "TKDEGLTF.dll",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\OcctCapabilityProbe\\bin\\Release\\net10.0\\win-x64\\occt\\TKDEGLTF.dll",
+      "sha256": "636f0e11859c256774b1004617e643d5efdc415f993a464d73a82f4618cc902a"
+    },
+    {
+      "name": "TKDEPLY.dll",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\OcctCapabilityProbe\\bin\\Release\\net10.0\\win-x64\\occt\\TKDEPLY.dll",
+      "sha256": "35dafa5efacf1dfeccb3e01d560547630142b4c52ffac5ce4cae726dfbd31262"
+    },
+    {
+      "name": "tbb12.dll",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\OcctCapabilityProbe\\bin\\Release\\net10.0\\win-x64\\occt\\tbb12.dll",
+      "sha256": "887888a0c2ffe7f64718d4eea2a10ce41c68dec1a954db3a62646adeee66c0ad"
+    },
+    {
+      "name": "jemalloc.dll",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\OcctCapabilityProbe\\bin\\Release\\net10.0\\win-x64\\occt\\jemalloc.dll",
+      "sha256": "ea0cfcf6a12bb3863961074547c958fd978aa3f800244cc4fe2847b127c4df5e"
+    },
+    {
+      "name": "openvr_api.dll",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\OcctCapabilityProbe\\bin\\Release\\net10.0\\win-x64\\occt\\openvr_api.dll",
+      "sha256": "71db78e77e577db6d0666c25437695d42ceafb9c7f8da94fbe765525b8e2f5f2"
+    },
+    {
+      "name": "FreeImage.dll",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\OcctCapabilityProbe\\bin\\Release\\net10.0\\win-x64\\occt\\FreeImage.dll",
+      "sha256": "4594bd0538f7f6b05148b00996ff36ddfedef8d66910e931503dcfebf8efe1db"
+    },
+    {
+      "name": "freetype.dll",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\OcctCapabilityProbe\\bin\\Release\\net10.0\\win-x64\\occt\\freetype.dll",
+      "sha256": "637621e4ae51b496b8a86f9b053050d5af2ba999ea0680bbfe3d5df91f976c75"
+    },
+    {
+      "name": "avformat-57.dll",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\OcctCapabilityProbe\\bin\\Release\\net10.0\\win-x64\\occt\\avformat-57.dll",
+      "sha256": "297d3207dd0e6325dab7a080472a4fd2f743cfc53861615b4dc96b91227cd3af"
+    },
+    {
+      "name": "swscale-4.dll",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\OcctCapabilityProbe\\bin\\Release\\net10.0\\win-x64\\occt\\swscale-4.dll",
+      "sha256": "67bcffb3ccdaebf2bbd3149542d92dd9430abfdff1d7b79b3a529af712926412"
+    },
+    {
+      "name": "avutil-55.dll",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\OcctCapabilityProbe\\bin\\Release\\net10.0\\win-x64\\occt\\avutil-55.dll",
+      "sha256": "be7c03ff47618916d16af446e2f7c00e48f2ff8934c6ace4c0d0e3d804732e8e"
+    },
+    {
+      "name": "avcodec-57.dll",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\OcctCapabilityProbe\\bin\\Release\\net10.0\\win-x64\\occt\\avcodec-57.dll",
+      "sha256": "4d7a6a2cff37c782ce1a3c74fa83ebbebcc43dfc774e3f497a406c84c1458c7e"
+    }
+  ],
+  "results": [
+    {
+      "name": "section-face-common",
+      "passed": true,
+      "elapsedMs": 36,
+      "evidence": {
+        "areaMm2": 200,
+        "preservesTrimmedFaces": true
+      }
+    },
+    {
+      "name": "native-dimension-contract",
+      "passed": true,
+      "elapsedMs": 1,
+      "evidence": {
+        "families": [
+          "length",
+          "angle"
+        ],
+        "nativePresentationCoveredBy": "engineering-review desktop smoke"
+      }
+    },
+    {
+      "name": "viewer-gradient-contract",
+      "passed": true,
+      "elapsedMs": 0,
+      "evidence": {
+        "method": "SetBackgroundGradient",
+        "topToBottom": true
+      }
+    },
+    {
+      "name": "viewer-view-cube-contract",
+      "passed": true,
+      "elapsedMs": 0,
+      "evidence": {
+        "orientations": 26,
+        "viewerOwned": true
+      }
+    },
+    {
+      "name": "exact-picked-topology-index",
+      "passed": true,
+      "elapsedMs": 16,
+      "evidence": {
+        "edges": 12,
+        "foreignRejected": true
+      }
+    },
+    {
+      "name": "analytic-assembly-datum-contract",
+      "passed": true,
+      "elapsedMs": 7,
+      "evidence": {
+        "families": [
+          "circle",
+          "cylinder"
+        ],
+        "fingerprint": "D48991812E6DC1B1809F53A43E6AE618F59B70B548ACC714C9A55433742E6B4E"
+      }
+    },
+    {
+      "name": "primitives-transform",
+      "passed": true,
+      "elapsedMs": 2,
+      "evidence": {
+        "boxVolume": 1800,
+        "cylinderVolume": 62.83185307179585
+      }
+    },
+    {
+      "name": "profile-extrude-revolve-ghost",
+      "passed": true,
+      "elapsedMs": 4,
+      "evidence": {
+        "extrusionVolume": 60,
+        "revolutionVolume": 12.566370614359169
+      }
+    },
+    {
+      "name": "polygon-through-hole",
+      "passed": true,
+      "elapsedMs": 26,
+      "evidence": {
+        "volume": 3840.000004,
+        "outerVolume": 4000,
+        "holeVolume": 163.2
+      }
+    },
+    {
+      "name": "exact-circle-profile-extrude",
+      "passed": true,
+      "elapsedMs": 2,
+      "evidence": {
+        "exactCircularEdge": true,
+        "volume": 628.3185307179585
+      }
+    },
+    {
+      "name": "exact-circular-through-hole-cut",
+      "passed": true,
+      "elapsedMs": 34,
+      "evidence": {
+        "exactCircularHole": true,
+        "volume": 1809.5575182772839
+      }
+    },
+    {
+      "name": "boolean-history-Fuse",
+      "passed": true,
+      "elapsedMs": 21,
+      "evidence": {
+        "volume": 6207.999999999999,
+        "relations": 92
+      }
+    },
+    {
+      "name": "boolean-history-Cut",
+      "passed": true,
+      "elapsedMs": 15,
+      "evidence": {
+        "volume": 4800,
+        "relations": 92
+      }
+    },
+    {
+      "name": "boolean-history-Common",
+      "passed": true,
+      "elapsedMs": 10,
+      "evidence": {
+        "volume": 1200,
+        "relations": 84
+      }
+    },
+    {
+      "name": "multi-edge-fillet",
+      "passed": true,
+      "elapsedMs": 16,
+      "evidence": {
+        "volume": 1798.3904862254808,
+        "contours": 2
+      }
+    },
+    {
+      "name": "law-radius-fillet",
+      "passed": true,
+      "elapsedMs": 27,
+      "evidence": {
+        "volume": 1794.3667004532688,
+        "sections": 31
+      }
+    },
+    {
+      "name": "sampled-radius-fillet",
+      "passed": true,
+      "elapsedMs": 25,
+      "evidence": {
+        "volume": 1794.2890045339077,
+        "sections": 30
+      }
+    },
+    {
+      "name": "two-distance-chamfer",
+      "passed": true,
+      "elapsedMs": 7,
+      "evidence": {
+        "volume": 1785
+      }
+    },
+    {
+      "name": "consecutive-local-features",
+      "passed": true,
+      "elapsedMs": 11,
+      "evidence": {
+        "volume": 1793.5619449019232,
+        "nonBoxSource": true,
+        "relations": 34
+      }
+    },
+    {
+      "name": "hole",
+      "passed": true,
+      "elapsedMs": 6,
+      "evidence": {
+        "volume": 1752.8761101961534
+      }
+    },
+    {
+      "name": "curve-profile-with-hole",
+      "passed": true,
+      "elapsedMs": 19,
+      "evidence": {
+        "volume": 197.92033717615692,
+        "holes": 1
+      }
+    },
+    {
+      "name": "three-point-arc-segment-face",
+      "passed": true,
+      "elapsedMs": 2,
+      "evidence": {
+        "volume": 392.6990816987241,
+        "exactArc": true,
+        "closed": true
+      }
+    },
+    {
+      "name": "mixed-line-arc-closed-face",
+      "passed": true,
+      "elapsedMs": 1,
+      "evidence": {
+        "volume": 1392.6990816987245,
+        "curves": 4
+      }
+    },
+    {
+      "name": "multi-arc-profile-with-curved-hole",
+      "passed": true,
+      "elapsedMs": 3,
+      "evidence": {
+        "volume": 345.93804002589985,
+        "outerArcs": 2,
+        "curvedHoles": 1
+      }
+    },
+    {
+      "name": "quadratic-bezier-and-island-compound",
+      "passed": true,
+      "elapsedMs": 6,
+      "evidence": {
+        "bezierVolume": 99.99999999999997,
+        "compoundVolume": 1939.9999999999995
+      }
+    },
+    {
+      "name": "clamped-cubic-spline-region",
+      "passed": true,
+      "elapsedMs": 2,
+      "evidence": {
+        "volume": 168.4987554563397,
+        "controls": 5,
+        "degree": 3
+      }
+    },
+    {
+      "name": "bspline-projection-intersection",
+      "passed": true,
+      "elapsedMs": 2,
+      "evidence": {
+        "intersections": 1,
+        "projections": 1
+      }
+    },
+    {
+      "name": "loft-sweep-sew",
+      "passed": true,
+      "elapsedMs": 7,
+      "evidence": {
+        "loftVolume": 46.66666666666667,
+        "sweepVolume": 19.999999999999996
+      }
+    },
+    {
+      "name": "parametric-transform-selection",
+      "passed": true,
+      "elapsedMs": 131,
+      "evidence": {
+        "status": "Resolved",
+        "evolutions": 36
+      }
+    },
+    {
+      "name": "exchange-brep-step-iges-stl",
+      "passed": true,
+      "elapsedMs": 36,
+      "evidence": [
+        {
+          "format": "brep",
+          "bytes": 2490
+        },
+        {
+          "format": "step",
+          "bytes": 15377
+        },
+        {
+          "format": "iges",
+          "bytes": 13365
+        },
+        {
+          "format": "stl",
+          "bytes": 684
+        }
+      ]
+    },
+    {
+      "name": "xde-assembly-color-step",
+      "passed": true,
+      "elapsedMs": 28,
+      "evidence": {
+        "occurrences": 2,
+        "sharedDefinition": true,
+        "colorPreserved": true,
+        "placementPreserved": true,
+        "bytes": 17982
+      }
+    },
+    {
+      "name": "exact-review-properties-and-distance",
+      "passed": true,
+      "elapsedMs": 3,
+      "evidence": {
+        "area": 2200,
+        "volume": 6000,
+        "distance": 15,
+        "solutions": 4
+      }
+    },
+    {
+      "name": "world-plane-section-curves",
+      "passed": true,
+      "elapsedMs": 2,
+      "evidence": {
+        "edges": 4,
+        "length": 60
+      }
+    },
+    {
+      "name": "solid-contact-containment-interference",
+      "passed": true,
+      "elapsedMs": 10,
+      "evidence": {
+        "overlap": 499.9999999999999,
+        "contained": 7.999999999999998
+      }
+    }
+  ]
+}

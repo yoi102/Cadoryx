@@ -17,14 +17,17 @@ public sealed record AssemblyConstraint(AssemblyConstraintId Id,string Name,Asse
     double TargetDistanceMm=0,RigidTransform3d? FixedWorld=null,
     TopologyReference? PrimaryTopology=null,TopologyReference? SecondaryTopology=null,
     bool IsEnabled=true,int SchemaVersion=1,
-    Vector3d PrimaryLocalAxis=default,Vector3d SecondaryLocalAxis=default,double TargetAngleRad=0)
+    Vector3d PrimaryLocalAxis=default,Vector3d SecondaryLocalAxis=default,double TargetAngleRad=0,
+    AssemblyDatumReference? PrimaryDatum=null,AssemblyDatumReference? SecondaryDatum=null)
 {
     public void Validate(DocumentId document)
     {
         CadGuard.Id(Id);CadGuard.Name(Name);CadGuard.Id(PrimaryDefinitionId);
         PrimaryLocalPoint.Validate();SecondaryLocalPoint.Validate();
         PrimaryLocalAxis.Validate();SecondaryLocalAxis.Validate();
-        if(SchemaVersion!=1||!Enum.IsDefined(Kind)||PrimaryPath is null||PrimaryPath.DocumentId!=document||
+        if(SchemaVersion is not (1 or 2)||SchemaVersion==1&&(PrimaryDatum is not null||SecondaryDatum is not null)||
+            SchemaVersion==2&&(PrimaryDatum is null||SecondaryDatum is null)||
+            !Enum.IsDefined(Kind)||PrimaryPath is null||PrimaryPath.DocumentId!=document||
             PrimaryPath.Slots.IsEmpty||PrimaryPath.Slots.Length>128||!double.IsFinite(TargetDistanceMm)||TargetDistanceMm<0||
             !double.IsFinite(TargetAngleRad)||TargetAngleRad<0||TargetAngleRad>Math.PI||
             Kind!=AssemblyConstraintKind.AngleAxes&&TargetAngleRad!=0)
@@ -58,6 +61,24 @@ public sealed record AssemblyConstraint(AssemblyConstraintId Id,string Name,Asse
         }
         if(Kind==AssemblyConstraintKind.Fixed&&SecondaryTopology is not null)
             throw new CadValidationException("Fixed constraint has no second topology anchor.");
+        if(Kind==AssemblyConstraintKind.Fixed&&(PrimaryDatum is not null||SecondaryDatum is not null)||
+           PrimaryDatum is not null&&PrimaryTopology is not null||
+           SecondaryDatum is not null&&SecondaryTopology is not null)
+            throw new CadValidationException("Assembly datum and legacy topology anchors cannot overlap.");
+        if(Kind==AssemblyConstraintKind.PlanarMate&&
+            (PrimaryDatum is {} planeA&&planeA.Geometry!=AssemblyDatumGeometry.PlaneFace||
+             SecondaryDatum is {} planeB&&planeB.Geometry!=AssemblyDatumGeometry.PlaneFace)||
+           Kind==AssemblyConstraintKind.Coaxial&&
+            (PrimaryDatum is {} axialA&&axialA.Geometry==AssemblyDatumGeometry.PlaneFace||
+             SecondaryDatum is {} axialB&&axialB.Geometry==AssemblyDatumGeometry.PlaneFace))
+            throw new CadValidationException("The selected analytic datum kind does not match the relation.");
+        foreach(var datum in new[]{PrimaryDatum,SecondaryDatum}.OfType<AssemblyDatumReference>())datum.Validate(document);
+        if(PrimaryDatum is {} first&&(!first.Path.Equals(PrimaryPath)||first.DefinitionId!=PrimaryDefinitionId||
+            first.LocalPoint!=PrimaryLocalPoint||PrimaryLocalAxis!=Vector3d.Zero&&first.LocalAxis!=PrimaryLocalAxis)||
+           SecondaryDatum is {} secondDatum&&(!secondDatum.Path.Equals(SecondaryPath)||
+            secondDatum.DefinitionId!=SecondaryDefinitionId||secondDatum.LocalPoint!=SecondaryLocalPoint||
+            SecondaryLocalAxis!=Vector3d.Zero&&secondDatum.LocalAxis!=SecondaryLocalAxis))
+            throw new CadValidationException("Assembly datum does not match its relation endpoint.");
     }
 
     public AssemblyConstraintEvaluation Evaluate(DocumentSnapshot document)=>
@@ -93,6 +114,9 @@ public sealed record AssemblyConstraint(AssemblyConstraintId Id,string Name,Asse
         }
         if(Stale(PrimaryTopology,PrimaryDefinitionId)||b is not null&&Stale(SecondaryTopology,SecondaryDefinitionId!.Value))
             return new(AssemblyConstraintStatus.TopologyStale,0,"An exact topology source is missing or changed; reselect it explicitly.");
+        if(PrimaryDatum is {} primaryDatum&&!primaryDatum.IsCurrent(document,PrimaryPath,PrimaryDefinitionId)||
+           SecondaryDatum is {} secondaryDatum&&(!secondaryDatum.IsCurrent(document,SecondaryPath!,SecondaryDefinitionId!.Value)))
+            return new(AssemblyConstraintStatus.TopologyStale,0,"An exact BRep datum changed; reselect its face or edge.");
         if(PrimaryTopology is not null||SecondaryTopology is not null)
             return new(AssemblyConstraintStatus.TopologyAnchorUnsupported,0,"Topology provenance is recorded but geometric mate solving is not available.");
         if(Kind==AssemblyConstraintKind.Fixed)

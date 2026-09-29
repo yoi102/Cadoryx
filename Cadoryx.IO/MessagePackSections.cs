@@ -45,14 +45,24 @@ internal static partial class MessagePackSections
         d.Settings.BackgroundTopArgb,d.Settings.BackgroundBottomArgb,
         d.Settings.Origin.Visible,(int)d.Settings.Origin.Style,d.Settings.Origin.SizeMm,
         (int)d.Settings.WorkPlane.Kind,d.Settings.WorkPlane.OffsetMm,
-        (d.AssemblyConstraints.IsDefault?[]:d.AssemblyConstraints).OrderBy(c=>c.Id.Value).Select(C).ToArray());
-    private static DocumentSection Doc(PackDocument d)=>new(new(d.Id),new(d.StateId),d.Name,new(d.Root),
+        (d.AssemblyConstraints.IsDefault?[]:d.AssemblyConstraints).OrderBy(c=>c.Id.Value).Select(C).ToArray(),
+        d.Settings.WorkPlane.Kind==DocumentWorkPlaneKind.Custom?
+            T(new RigidTransform3d(d.Settings.WorkPlane.CustomOrigin,d.Settings.WorkPlane.CustomRotation)):null);
+    private static DocumentSection Doc(PackDocument d)
+    {
+        if(d.WorkPlaneKind==(int)DocumentWorkPlaneKind.Custom&&d.CustomWorkPlane is null ||
+           d.WorkPlaneKind!=(int)DocumentWorkPlaneKind.Custom&&d.CustomWorkPlane is not null)
+            throw new InvalidDataException("Custom work plane payload does not match its kind.");
+        var custom=d.CustomWorkPlane is {} transform?T(transform):RigidTransform3d.Identity;
+        return new(new(d.Id),new(d.StateId),d.Name,new(d.Root),
         new DocumentSettings((LengthUnit)d.Unit,d.Decimals,d.LinearTolerance,d.AngularTolerance)
         { Grid = new(d.GridVisible,d.GridSpacingMm,d.GridSnap),
           BackgroundTopArgb=d.BackgroundTopArgb, BackgroundBottomArgb=d.BackgroundBottomArgb,
           Origin=new(d.OriginVisible,(DocumentOriginStyle)d.OriginStyle,d.OriginSizeMm),
-          WorkPlane=new((DocumentWorkPlaneKind)d.WorkPlaneKind,d.WorkPlaneOffsetMm) },
+          WorkPlane=new((DocumentWorkPlaneKind)d.WorkPlaneKind,d.WorkPlaneOffsetMm)
+          {CustomOrigin=custom.Translation,CustomRotation=custom.Rotation} },
         (d.AssemblyConstraints??[]).Select(c=>C(c,new DocumentId(d.Id))).ToImmutableArray());
+    }
     private static PackAssemblyConstraint C(AssemblyConstraint c)=>new(c.Id.Value,c.Name,(int)c.Kind,
         c.PrimaryPath.Slots.Select(s=>s.Value).ToArray(),c.PrimaryDefinitionId.Value,
         c.SecondaryPath?.Slots.Select(s=>s.Value).ToArray(),c.SecondaryDefinitionId?.Value,
@@ -63,7 +73,22 @@ internal static partial class MessagePackSections
         c.SecondaryTopology is {} secondary?PackTopology(secondary):null,c.IsEnabled,c.SchemaVersion,
         c.PrimaryLocalAxis==Vector3d.Zero?null:[c.PrimaryLocalAxis.X,c.PrimaryLocalAxis.Y,c.PrimaryLocalAxis.Z],
         c.SecondaryLocalAxis==Vector3d.Zero?null:[c.SecondaryLocalAxis.X,c.SecondaryLocalAxis.Y,c.SecondaryLocalAxis.Z],
-        c.TargetAngleRad);
+        c.TargetAngleRad,c.PrimaryDatum is {} first?D(first):null,
+        c.SecondaryDatum is {} second?D(second):null);
+    private static PackAssemblyDatum D(AssemblyDatumReference d)=>new(
+        d.Path.Slots.Select(s=>s.Value).ToArray(),d.DefinitionId.Value,d.BodyId.Value,
+        d.FeatureId?.Value,d.Revision.Value,d.Asset.Sha256,d.Fingerprint,d.FullTopologyIndex,
+        (int)d.Geometry,[d.LocalPoint.X,d.LocalPoint.Y,d.LocalPoint.Z],
+        [d.LocalAxis.X,d.LocalAxis.Y,d.LocalAxis.Z],d.RadiusMm,d.SchemaVersion);
+    private static AssemblyDatumReference D(PackAssemblyDatum d,DocumentId document)
+    {
+        if(d.Slots is null||d.Slots.Length>128||d.Point is not {Length:3}||d.Axis is not {Length:3})
+            throw new InvalidDataException("Malformed assembly datum.");
+        return new(new(document,d.Slots.Select(s=>new ComponentSlotId(s))),new(d.Definition),new(d.Body),
+            d.Feature is {} f?new FeatureId(f):null,new(d.Revision),new(d.Asset),d.Fingerprint,d.Index,
+            (AssemblyDatumGeometry)d.Geometry,new(d.Point[0],d.Point[1],d.Point[2]),
+            new(d.Axis[0],d.Axis[1],d.Axis[2]),d.Radius,d.Version);
+    }
     private static AssemblyConstraint C(PackAssemblyConstraint c,DocumentId document)
     {
         if(c.PrimarySlots is null||c.PrimaryPoint is not {Length:3}||c.SecondaryPoint is not {Length:3}||
@@ -80,12 +105,28 @@ internal static partial class MessagePackSections
         c.PrimaryTopology is {} primary?UnpackTopology(primary):null,
         c.SecondaryTopology is {} secondary?UnpackTopology(secondary):null,c.Enabled,c.Version,
         c.PrimaryAxis is {} pa?new(pa[0],pa[1],pa[2]):Vector3d.Zero,
-        c.SecondaryAxis is {} sa?new(sa[0],sa[1],sa[2]):Vector3d.Zero,c.TargetAngleRad);
+        c.SecondaryAxis is {} sa?new(sa[0],sa[1],sa[2]):Vector3d.Zero,c.TargetAngleRad,
+        c.PrimaryDatum is {} first?D(first,document):null,
+        c.SecondaryDatum is {} second?D(second,document):null);
     }
     public static byte[] UpgradeDocumentAssemblyAngles(ReadOnlyMemory<byte> bytes)
     {
         var old=Read<PackDocument>(bytes);
         return Serialize(old with{AssemblyConstraints=old.AssemblyConstraints??[]});
+    }
+    public static byte[] UpgradeDocumentAssemblyDatums(ReadOnlyMemory<byte> bytes)
+    {
+        var old=Read<PackDocument>(bytes);
+        if((old.AssemblyConstraints??[]).Any(c=>c.PrimaryDatum is not null||c.SecondaryDatum is not null))
+            throw new InvalidDataException("Analytic datums cannot be declared by a legacy document section.");
+        return Serialize(old);
+    }
+    public static byte[] UpgradeCustomDocumentWorkPlane(ReadOnlyMemory<byte> bytes)
+    {
+        var old=Read<PackDocument>(bytes);
+        if(old.CustomWorkPlane is not null||old.WorkPlaneKind==(int)DocumentWorkPlaneKind.Custom)
+            throw new InvalidDataException("Custom work plane in legacy document schema.");
+        return Serialize(old with { CustomWorkPlane=null });
     }
     public static byte[] UpgradeDocumentAssemblyAxes(ReadOnlyMemory<byte> bytes)
     {
@@ -172,14 +213,15 @@ internal static partial class MessagePackSections
         ImportedRecipe i=>new("import",[],null,[G(i.Source)],[],0),
         TransformRecipe t=>new("transform",[],T(t.Transform),[G(t.Source)],[],0),
         BooleanRecipe b=>new("boolean",[],null,b.Inputs.Select(G).ToArray(),[],(int)b.Operation),
-        ExtrudeRecipe e when e.Profile.Circle is {} c=>new("extrude-circle",[e.Distance,c.Center.X,c.Center.Y,c.Radius],T(e.Placement),[],[],0,H(e.Profile),P(e.Profile),null,null,I(e.Profile)),
+        ExtrudeRecipe e when e.Profile.Circle is {} c=>new("extrude-circle",[e.Distance,c.Center.X,c.Center.Y,c.Radius],T(e.Placement),[],[],0,H(e.Profile),P(e.Profile),null,MixedHoles(e.Profile),I(e.Profile),SplineHoles:SplineHoles(e.Profile)),
         ExtrudeRecipe e when e.Profile.Arc is {} a=>new("extrude-arc",[e.Distance,a.Start.X,a.Start.Y,a.Middle.X,a.Middle.Y,a.End.X,a.End.Y],T(e.Placement),[],[],0),
         ExtrudeRecipe e when e.Profile.Bezier is {} b=>new("extrude-bezier",[e.Distance,b.Start.X,b.Start.Y,b.Control.X,b.Control.Y,b.End.X,b.End.Y],T(e.Placement),[],[],0),
         ExtrudeRecipe e when e.Profile.Spline is {} s=>new("extrude-spline",[e.Distance],T(e.Placement),[],[],0,
-            SplineControls:s.Controls.Select(p=>new[]{p.X,p.Y}).ToArray()),
+            H(e.Profile),P(e.Profile),null,MixedHoles(e.Profile),I(e.Profile),
+            s.Controls.Select(p=>new[]{p.X,p.Y}).ToArray(),SplineHoles(e.Profile)),
         ExtrudeRecipe e when !e.Profile.BoundaryCurves.IsEmpty=>new("extrude-mixed",[e.Distance],T(e.Placement),[],[],0,H(e.Profile),P(e.Profile),
-            e.Profile.BoundaryCurves.Select(PackCurve).ToArray(),MixedHoles(e.Profile),I(e.Profile)),
-        ExtrudeRecipe e=>new("extrude",[e.Distance],T(e.Placement),[],e.Profile.Points.Select(p=>new[]{p.X,p.Y}).ToArray(),0,H(e.Profile),P(e.Profile),null,MixedHoles(e.Profile),I(e.Profile)),
+            e.Profile.BoundaryCurves.Select(PackCurve).ToArray(),MixedHoles(e.Profile),I(e.Profile),SplineHoles:SplineHoles(e.Profile)),
+        ExtrudeRecipe e=>new("extrude",[e.Distance],T(e.Placement),[],e.Profile.Points.Select(p=>new[]{p.X,p.Y}).ToArray(),0,H(e.Profile),P(e.Profile),null,MixedHoles(e.Profile),I(e.Profile),SplineHoles:SplineHoles(e.Profile)),
         RevolveRecipe v=>new("revolve",[v.AngleRadians],T(v.Placement),[],v.Profile.Points.Select(p=>new[]{p.X,p.Y}).ToArray(),0),
         _=>throw new NotSupportedException("Unknown recipe cannot be persisted.")
     };
@@ -192,12 +234,13 @@ internal static partial class MessagePackSections
         if(r.Kind is "local-box-edge" or "history-edge-fillet" or "history-edge-chamfer" or "import" or "transform"){if(r.Sources.Length!=1)throw new InvalidDataException("Expected one source.");}
         else if(r.Kind!="boolean"&&r.Sources.Length!=0)throw new InvalidDataException("Unexpected recipe source.");
         if(r.Kind is not ("extrude" or "revolve")&&r.Profile.Length!=0)throw new InvalidDataException("Unexpected recipe profile.");
-        if(r.Holes is not null&&r.Kind is not ("extrude" or "extrude-circle" or "extrude-mixed"))throw new InvalidDataException("Unexpected circular holes.");
-        if(r.PolygonHoles is not null&&r.Kind is not ("extrude" or "extrude-circle" or "extrude-mixed"))throw new InvalidDataException("Unexpected polygon holes.");
+        if(r.Holes is not null&&r.Kind is not ("extrude" or "extrude-circle" or "extrude-mixed" or "extrude-spline"))throw new InvalidDataException("Unexpected circular holes.");
+        if(r.PolygonHoles is not null&&r.Kind is not ("extrude" or "extrude-circle" or "extrude-mixed" or "extrude-spline"))throw new InvalidDataException("Unexpected polygon holes.");
         if(r.MixedCurves is not null&&r.Kind!="extrude-mixed")throw new InvalidDataException("Unexpected mixed boundary curves.");
-        if(r.MixedHoles is not null&&r.Kind is not ("extrude" or "extrude-circle" or "extrude-mixed"))throw new InvalidDataException("Unexpected mixed holes.");
-        if(r.Islands is not null&&r.Kind is not ("extrude" or "extrude-circle" or "extrude-mixed"))throw new InvalidDataException("Unexpected islands.");
+        if(r.MixedHoles is not null&&r.Kind is not ("extrude" or "extrude-circle" or "extrude-mixed" or "extrude-spline"))throw new InvalidDataException("Unexpected mixed holes.");
+        if(r.Islands is not null&&r.Kind is not ("extrude" or "extrude-circle" or "extrude-mixed" or "extrude-spline"))throw new InvalidDataException("Unexpected islands.");
         if(r.SplineControls is not null&&r.Kind!="extrude-spline")throw new InvalidDataException("Unexpected spline controls.");
+        if(r.SplineHoles is not null&&r.Kind is not ("extrude" or "extrude-circle" or "extrude-mixed" or "extrude-spline"))throw new InvalidDataException("Unexpected spline holes.");
         ImmutableArray<CircularSketchRegion> Holes()=>r.Holes is null?[]:r.Holes.Length<=64?
             r.Holes.Select(h=>new CircularSketchRegion(new(h.X,h.Y),h.Radius)).ToImmutableArray():throw new InvalidDataException("Too many circular holes.");
         ImmutableArray<ImmutableArray<Point2d>> PolygonHoles()=>r.PolygonHoles is null?[]:r.PolygonHoles.Length<=64?
@@ -206,7 +249,7 @@ internal static partial class MessagePackSections
                 throw new InvalidDataException("Malformed polygon hole.")).ToImmutableArray():
             throw new InvalidDataException("Too many polygon holes.");
         SketchProfile Profile()=>new(r.Profile.Select(p=>p.Length==2?new Point2d(p[0],p[1]):throw new InvalidDataException("Malformed profile point.")).ToImmutableArray(),null,Holes(),PolygonHoles())
-            {MixedHoles=ReadMixedHoles(r.MixedHoles),Islands=ReadIslands(r.Islands)};
+            {MixedHoles=ReadMixedHoles(r.MixedHoles),SplineHoles=ReadSplineHoles(r.SplineHoles),Islands=ReadIslands(r.Islands)};
         return r.Kind switch
         {
             "local-box-edge"=>Local(r),
@@ -246,11 +289,12 @@ internal static partial class MessagePackSections
     }
     private static ExtrudeRecipe SplineExtrude(PackRecipe r)
     {
-        if(r.Operation!=0||r.Holes is not null||r.PolygonHoles is not null||r.MixedCurves is not null||
-            r.MixedHoles is not null||r.Islands is not null||r.SplineControls is not {Length:>=4 and <=8})
+        if(r.Operation!=0||r.MixedCurves is not null||r.SplineControls is not {Length:>=4 and <=SketchSplineGeometry.MaximumControls})
             throw new InvalidDataException("Invalid spline extrusion.");
         var controls=r.SplineControls.Select(ReadMixedPoint).ToImmutableArray();
-        var recipe=new ExtrudeRecipe(new SketchProfile([]){Spline=new(controls)},r.Numbers[0],T(r.Placement!));
+        var profile=new SketchProfile([],null,ReadCircularHoles(r.Holes),ReadPolygonHoles(r.PolygonHoles))
+            {Spline=new(controls),MixedHoles=ReadMixedHoles(r.MixedHoles),SplineHoles=ReadSplineHoles(r.SplineHoles),Islands=ReadIslands(r.Islands)};
+        var recipe=new ExtrudeRecipe(profile,r.Numbers[0],T(r.Placement!));
         recipe.Validate();return recipe;
     }
     private static ExtrudeRecipe MixedExtrude(PackRecipe r)
@@ -259,36 +303,71 @@ internal static partial class MessagePackSections
             throw new InvalidDataException("Invalid mixed profile extrusion.");
         var curves=r.MixedCurves.Select(ReadCurve).ToImmutableArray();
         var profile=new SketchProfile([],null,ReadCircularHoles(r.Holes),ReadPolygonHoles(r.PolygonHoles))
-            {BoundaryCurves=curves,MixedHoles=ReadMixedHoles(r.MixedHoles),Islands=ReadIslands(r.Islands)};
+            {BoundaryCurves=curves,MixedHoles=ReadMixedHoles(r.MixedHoles),SplineHoles=ReadSplineHoles(r.SplineHoles),Islands=ReadIslands(r.Islands)};
         var recipe=new ExtrudeRecipe(profile,r.Numbers[0],T(r.Placement!));recipe.Validate();return recipe;
     }
     private static PackMixedCurve PackCurve(SketchBoundaryCurve c)=>new([c.Start.X,c.Start.Y],[c.End.X,c.End.Y],
-        c.Middle is {} middle?[middle.X,middle.Y]:null);
+        c.Middle is {} middle?[middle.X,middle.Y]:null,
+        c.BezierControl is {} control?[control.X,control.Y]:null,
+        c.SplineControls.IsDefaultOrEmpty?null:c.SplineControls.Select(p=>new[]{p.X,p.Y}).ToArray());
     private static PackMixedCurve[][]? MixedHoles(SketchProfile p)=>p.MixedHoles.IsDefaultOrEmpty?null:
         p.MixedHoles.Select(h=>h.Select(PackCurve).ToArray()).ToArray();
-    private static PackIsland[]? I(SketchProfile p)=>p.Islands.IsDefaultOrEmpty?null:
-        p.Islands.Select(i=>new PackIsland(i.Points.Select(point=>new[]{point.X,point.Y}).ToArray(),
-            i.Circle is {} c?new PackCircularHole(c.Center.X,c.Center.Y,c.Radius):null,
-            i.BoundaryCurves.IsDefaultOrEmpty?null:i.BoundaryCurves.Select(PackCurve).ToArray())).ToArray();
+    private static double[][][]? SplineHoles(SketchProfile p)=>p.SplineHoles.IsDefaultOrEmpty?null:
+        p.SplineHoles.Select(h=>h.Controls.Select(point=>new[]{point.X,point.Y}).ToArray()).ToArray();
+    private static ImmutableArray<CubicSplineRegion> ReadSplineHoles(double[][][]? holes)=>holes is null?[]:
+        holes.Length<=64?holes.Select(h=>h is {Length:>=4 and <=SketchSplineGeometry.MaximumControls}?
+            new CubicSplineRegion(h.Select(ReadMixedPoint).ToImmutableArray()):
+            throw new InvalidDataException("Malformed spline hole.")).ToImmutableArray():
+            throw new InvalidDataException("Too many spline holes.");
+    private static PackIsland[]? I(SketchProfile p)=>p.Islands.IsDefaultOrEmpty?null:p.Islands.Select(PackIslandRegion).ToArray();
+    private static PackIsland PackIslandRegion(SketchIslandRegion i)=>new(
+        i.Points.Select(point=>new[]{point.X,point.Y}).ToArray(),
+        i.Circle is {} c?new PackCircularHole(c.Center.X,c.Center.Y,c.Radius):null,
+        i.BoundaryCurves.IsDefaultOrEmpty?null:i.BoundaryCurves.Select(PackCurve).ToArray(),
+        i.Spline is {} spline?spline.Controls.Select(point=>new[]{point.X,point.Y}).ToArray():null,
+        i.Holes.IsDefaultOrEmpty?null:i.Holes.Select(h=>new PackCircularHole(h.Center.X,h.Center.Y,h.Radius)).ToArray(),
+        i.PolygonHoles.IsDefaultOrEmpty?null:i.PolygonHoles.Select(h=>new PackPolygonHole(h.Select(p=>new[]{p.X,p.Y}).ToArray())).ToArray(),
+        i.MixedHoles.IsDefaultOrEmpty?null:i.MixedHoles.Select(h=>h.Select(PackCurve).ToArray()).ToArray(),
+        i.SplineHoles.IsDefaultOrEmpty?null:i.SplineHoles.Select(h=>h.Controls.Select(p=>new[]{p.X,p.Y}).ToArray()).ToArray(),
+        i.Islands.IsDefaultOrEmpty?null:i.Islands.Select(PackIslandRegion).ToArray());
     private static Point2d ReadMixedPoint(double[]? values)=>values is {Length:2}?new(values[0],values[1]):
         throw new InvalidDataException("Malformed mixed boundary point.");
     private static SketchBoundaryCurve ReadCurve(PackMixedCurve? c)=>c is null?throw new InvalidDataException("Null mixed curve."):
-        new(ReadMixedPoint(c.Start),ReadMixedPoint(c.End),c.Middle is null?null:ReadMixedPoint(c.Middle));
+        new(ReadMixedPoint(c.Start),ReadMixedPoint(c.End),c.Middle is null?null:ReadMixedPoint(c.Middle))
+        {BezierControl=c.BezierControl is null?null:ReadMixedPoint(c.BezierControl),
+         SplineControls=c.SplineControls is null?[]:c.SplineControls.Length<=SketchSplineGeometry.MaximumControls?
+            c.SplineControls.Select(ReadMixedPoint).ToImmutableArray():throw new InvalidDataException("Too many spline controls.")};
     private static ImmutableArray<ImmutableArray<SketchBoundaryCurve>> ReadMixedHoles(PackMixedCurve[][]? holes)=>holes is null?[]:
         holes.Length<=64?holes.Select(h=>h is {Length:>=3 and <=256}?h.Select(ReadCurve).ToImmutableArray():
             throw new InvalidDataException("Malformed mixed hole.")).ToImmutableArray():throw new InvalidDataException("Too many mixed holes.");
-    private static ImmutableArray<SketchIslandRegion> ReadIslands(PackIsland[]? islands)=>islands is null?[]:
-        islands.Length<=64?islands.Select(i=>
+    private static ImmutableArray<SketchIslandRegion> ReadIslands(PackIsland[]? islands)
+    {
+        int count=0;return ReadIslands(islands,0,ref count);
+    }
+    private static ImmutableArray<SketchIslandRegion> ReadIslands(PackIsland[]? islands,int depth,ref int count)
+    {
+        if(islands is null)return [];
+        if(islands.Length>64||depth>12||count+islands.Length>64)
+            throw new InvalidDataException("Too many nested islands.");
+        count+=islands.Length;
+        var result=ImmutableArray.CreateBuilder<SketchIslandRegion>(islands.Length);
+        foreach(var i in islands)
         {
             if(i is null||i.Points is null)throw new InvalidDataException("Malformed island.");
             var points=i.Points.Select(p=>p is {Length:2}?new Point2d(p[0],p[1]):
                 throw new InvalidDataException("Malformed island point.")).ToImmutableArray();
             var curves=i.MixedCurves is null?ImmutableArray<SketchBoundaryCurve>.Empty:
                 i.MixedCurves.Select(ReadCurve).ToImmutableArray();
-            if((i.Circle is not null?1:0)+(points.IsEmpty?0:1)+(curves.IsEmpty?0:1)!=1)
+            var spline=i.SplineControls is null?null:new CubicSplineRegion(i.SplineControls.Select(ReadMixedPoint).ToImmutableArray());
+            if((i.Circle is not null?1:0)+(points.IsEmpty?0:1)+(curves.IsEmpty?0:1)+(spline is null?0:1)!=1)
                 throw new InvalidDataException("Island must have exactly one boundary.");
-            return new SketchIslandRegion(points,i.Circle is {} c?new(new(c.X,c.Y),c.Radius):null,curves);
-        }).ToImmutableArray():throw new InvalidDataException("Too many islands.");
+            result.Add(new SketchIslandRegion(points,i.Circle is {} c?new(new(c.X,c.Y),c.Radius):null,curves)
+            {Spline=spline,Holes=ReadCircularHoles(i.Holes),PolygonHoles=ReadPolygonHoles(i.PolygonHoles),
+             MixedHoles=ReadMixedHoles(i.MixedHoles),SplineHoles=ReadSplineHoles(i.SplineHoles),
+             Islands=ReadIslands(i.Islands,depth+1,ref count)});
+        }
+        return result.ToImmutable();
+    }
     private static ImmutableArray<CircularSketchRegion> ReadCircularHoles(PackCircularHole[]? holes)=>holes is null?[]:
         holes.Length<=64?holes.Select(h=>new CircularSketchRegion(new(h.X,h.Y),h.Radius)).ToImmutableArray():
             throw new InvalidDataException("Too many circular holes.");
@@ -305,7 +384,7 @@ internal static partial class MessagePackSections
     {
         if(r.Operation!=0)throw new InvalidDataException("Invalid circular extrusion operation.");
         var result=new ExtrudeRecipe(SketchProfile.FromCircle(new(r.Numbers[1],r.Numbers[2]),r.Numbers[3]) with
-            {Holes=holes,PolygonHoles=polygonHoles,MixedHoles=ReadMixedHoles(r.MixedHoles),Islands=ReadIslands(r.Islands)},r.Numbers[0],T(r.Placement!));
+            {Holes=holes,PolygonHoles=polygonHoles,MixedHoles=ReadMixedHoles(r.MixedHoles),SplineHoles=ReadSplineHoles(r.SplineHoles),Islands=ReadIslands(r.Islands)},r.Numbers[0],T(r.Placement!));
         result.Validate();return result;
     }
     private static LocalFeatureRecipe Local(PackRecipe r)

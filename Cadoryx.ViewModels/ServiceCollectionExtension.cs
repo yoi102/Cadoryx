@@ -13,6 +13,8 @@ public static class ServiceCollectionExtension
         services.AddTransient<PropertiesToolboxViewModel>();
         services.AddTransient<ModelingToolboxViewModel>();
         services.AddTransient<MessagesToolboxViewModel>();
+        services.AddTransient<CommandLineToolboxViewModel>();
+        services.AddTransient<AiAssistantToolboxViewModel>();
         return services;
     }
 

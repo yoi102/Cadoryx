@@ -4,161 +4,161 @@
     "net10.0": {
       "OcctSharp": {
         "type": "Direct",
-        "requested": "[8.0.1-preview.28.cadoryx.topology.1, 8.0.1-preview.28.cadoryx.topology.1]",
-        "resolved": "8.0.1-preview.28.cadoryx.topology.1",
-        "contentHash": "hiK8C2YIuKNJ4EWK5DL5GEXuikKmACOzq4pfJQkDj0OqzKd1m+yl/ktEpmRYw6ZgdYiWn4s4l/ODoy6/8R43hw==",
+        "requested": "[8.0.1-preview.28.cadoryx.assembly.partner.1, 8.0.1-preview.28.cadoryx.assembly.partner.1]",
+        "resolved": "8.0.1-preview.28.cadoryx.assembly.partner.1",
+        "contentHash": "NlvD++aQ63V0QyjqU8MTKvNwbL8fjqDmHiX6I+yRijsTVxbpK/aVDCQwq4o5fJhMyfjSN6kyNo/71nGAaUgV7g==",
         "dependencies": {
-          "OcctSharp.DataExchange": "8.0.1-preview.28.cadoryx.topology.1",
-          "OcctSharp.Documents": "8.0.1-preview.28.cadoryx.topology.1",
-          "OcctSharp.Draw": "8.0.1-preview.28.cadoryx.topology.1",
-          "OcctSharp.Foundation": "8.0.1-preview.28.cadoryx.topology.1",
-          "OcctSharp.Geometry": "8.0.1-preview.28.cadoryx.topology.1",
-          "OcctSharp.IVtk": "8.0.1-preview.28.cadoryx.topology.1",
-          "OcctSharp.Mesh": "8.0.1-preview.28.cadoryx.topology.1",
-          "OcctSharp.MeshData": "8.0.1-preview.28.cadoryx.topology.1",
-          "OcctSharp.Modeling": "8.0.1-preview.28.cadoryx.topology.1",
-          "OcctSharp.Runtime": "8.0.1-preview.28.cadoryx.topology.1",
-          "OcctSharp.Visualization": "8.0.1-preview.28.cadoryx.topology.1",
-          "OcctSharp.Xde": "8.0.1-preview.28.cadoryx.topology.1"
+          "OcctSharp.DataExchange": "8.0.1-preview.28.cadoryx.assembly.partner.1",
+          "OcctSharp.Documents": "8.0.1-preview.28.cadoryx.assembly.partner.1",
+          "OcctSharp.Draw": "8.0.1-preview.28.cadoryx.assembly.partner.1",
+          "OcctSharp.Foundation": "8.0.1-preview.28.cadoryx.assembly.partner.1",
+          "OcctSharp.Geometry": "8.0.1-preview.28.cadoryx.assembly.partner.1",
+          "OcctSharp.IVtk": "8.0.1-preview.28.cadoryx.assembly.partner.1",
+          "OcctSharp.Mesh": "8.0.1-preview.28.cadoryx.assembly.partner.1",
+          "OcctSharp.MeshData": "8.0.1-preview.28.cadoryx.assembly.partner.1",
+          "OcctSharp.Modeling": "8.0.1-preview.28.cadoryx.assembly.partner.1",
+          "OcctSharp.Runtime": "8.0.1-preview.28.cadoryx.assembly.partner.1",
+          "OcctSharp.Visualization": "8.0.1-preview.28.cadoryx.assembly.partner.1",
+          "OcctSharp.Xde": "8.0.1-preview.28.cadoryx.assembly.partner.1"
         }
       },
       "OcctSharp.DataExchange": {
         "type": "Transitive",
-        "resolved": "8.0.1-preview.28.cadoryx.topology.1",
-        "contentHash": "sAeFFDz1nmrl8/+4oUgRhzYPDtsX8nqUre/t5QfCy4+QzuNjAGKMn38q2YbAxspaP3fd33bhJcK5h5AwcevcuA==",
+        "resolved": "8.0.1-preview.28.cadoryx.assembly.partner.1",
+        "contentHash": "8vfJf8tjjZ/piechNkpL8E6AIYPHjry5+kvtdKKnWbOY/sNOMhZD/eR4t/Rbz5f3IzfrFr7oojeLkBQjra3cMQ==",
         "dependencies": {
-          "OcctSharp.Documents": "8.0.1-preview.28.cadoryx.topology.1",
-          "OcctSharp.Foundation": "8.0.1-preview.28.cadoryx.topology.1",
-          "OcctSharp.Geometry": "8.0.1-preview.28.cadoryx.topology.1",
-          "OcctSharp.Mesh": "8.0.1-preview.28.cadoryx.topology.1",
-          "OcctSharp.MeshData": "8.0.1-preview.28.cadoryx.topology.1",
-          "OcctSharp.Modeling": "8.0.1-preview.28.cadoryx.topology.1",
-          "OcctSharp.Runtime": "8.0.1-preview.28.cadoryx.topology.1",
-          "OcctSharp.Visualization": "8.0.1-preview.28.cadoryx.topology.1"
+          "OcctSharp.Documents": "8.0.1-preview.28.cadoryx.assembly.partner.1",
+          "OcctSharp.Foundation": "8.0.1-preview.28.cadoryx.assembly.partner.1",
+          "OcctSharp.Geometry": "8.0.1-preview.28.cadoryx.assembly.partner.1",
+          "OcctSharp.Mesh": "8.0.1-preview.28.cadoryx.assembly.partner.1",
+          "OcctSharp.MeshData": "8.0.1-preview.28.cadoryx.assembly.partner.1",
+          "OcctSharp.Modeling": "8.0.1-preview.28.cadoryx.assembly.partner.1",
+          "OcctSharp.Runtime": "8.0.1-preview.28.cadoryx.assembly.partner.1",
+          "OcctSharp.Visualization": "8.0.1-preview.28.cadoryx.assembly.partner.1"
         }
       },
       "OcctSharp.Documents": {
         "type": "Transitive",
-        "resolved": "8.0.1-preview.28.cadoryx.topology.1",
-        "contentHash": "w3J3hU3d1ZWw0sn839MVQ9qp9QReIZ5xF7AKnhPfhbgmu38kmIYj3SrEtPPjPEeWulbpSPICrktyNqo1nwArtw==",
+        "resolved": "8.0.1-preview.28.cadoryx.assembly.partner.1",
+        "contentHash": "HZa7WkrV6YS7aNgYxrGGwWTVZ5t3i1bLSaj0ZA3yiR4N/iugl5K8CmR9mIqL7WfrorOksrahNfeD+ov8nUsYqw==",
         "dependencies": {
-          "OcctSharp.Foundation": "8.0.1-preview.28.cadoryx.topology.1",
-          "OcctSharp.Geometry": "8.0.1-preview.28.cadoryx.topology.1",
-          "OcctSharp.MeshData": "8.0.1-preview.28.cadoryx.topology.1",
-          "OcctSharp.Modeling": "8.0.1-preview.28.cadoryx.topology.1",
-          "OcctSharp.Runtime": "8.0.1-preview.28.cadoryx.topology.1"
+          "OcctSharp.Foundation": "8.0.1-preview.28.cadoryx.assembly.partner.1",
+          "OcctSharp.Geometry": "8.0.1-preview.28.cadoryx.assembly.partner.1",
+          "OcctSharp.MeshData": "8.0.1-preview.28.cadoryx.assembly.partner.1",
+          "OcctSharp.Modeling": "8.0.1-preview.28.cadoryx.assembly.partner.1",
+          "OcctSharp.Runtime": "8.0.1-preview.28.cadoryx.assembly.partner.1"
         }
       },
       "OcctSharp.Draw": {
         "type": "Transitive",
-        "resolved": "8.0.1-preview.28.cadoryx.topology.1",
-        "contentHash": "7ALH0u1g7SF8Set/iz870ZwP5OwEdlqnfttFhSuY/9BS2i6ULMENhalp2pWXFyvZwHiVYbG+FoKksFt+3FJW6Q==",
+        "resolved": "8.0.1-preview.28.cadoryx.assembly.partner.1",
+        "contentHash": "ieFyiV77oay14rN77e282agn00KZbA1BH9fEJGcUkgaEGfVgE8Uybb7mUsy5TuIYO8xFxTRITnQ1YeurhdN14Q==",
         "dependencies": {
-          "OcctSharp.Runtime": "8.0.1-preview.28.cadoryx.topology.1",
-          "OcctSharp.Visualization": "8.0.1-preview.28.cadoryx.topology.1",
-          "OcctSharp.Xde": "8.0.1-preview.28.cadoryx.topology.1"
+          "OcctSharp.Runtime": "8.0.1-preview.28.cadoryx.assembly.partner.1",
+          "OcctSharp.Visualization": "8.0.1-preview.28.cadoryx.assembly.partner.1",
+          "OcctSharp.Xde": "8.0.1-preview.28.cadoryx.assembly.partner.1"
         }
       },
       "OcctSharp.Foundation": {
         "type": "Transitive",
-        "resolved": "8.0.1-preview.28.cadoryx.topology.1",
-        "contentHash": "479InOBRVecPC2Ik3DFKFI2sIjKnlTJhFi4XsvXFgAi09B3wkzZBJeUSzSBs26BAQBAz9bECwOjFE9kT3CSiaw==",
+        "resolved": "8.0.1-preview.28.cadoryx.assembly.partner.1",
+        "contentHash": "edDsVVmplUDy5tTJhVr9yA5MGPOkyqYIPpL7dLfIcxAcy29BdSb+mwb8KATTo39rmChIy/heOFJL86hjBD529A==",
         "dependencies": {
-          "OcctSharp.Runtime": "8.0.1-preview.28.cadoryx.topology.1"
+          "OcctSharp.Runtime": "8.0.1-preview.28.cadoryx.assembly.partner.1"
         }
       },
       "OcctSharp.Geometry": {
         "type": "Transitive",
-        "resolved": "8.0.1-preview.28.cadoryx.topology.1",
-        "contentHash": "TN7udKCnKRyt1iZao3qngekWWCMhcXiAwfZcWhZ9IQ3dQuvFkEz3VAZqeKWoPB+DQ6VhmC5nrT0fZ+3j7E/jZA==",
+        "resolved": "8.0.1-preview.28.cadoryx.assembly.partner.1",
+        "contentHash": "yn5arjSCOpv3iUPqNlh9BOb/YapV96A0Ctngjs1tJvcSmfRjNsofcVqbnb1yuK4rQPMRezWJLuZyO2DpHym39w==",
         "dependencies": {
-          "OcctSharp.Foundation": "8.0.1-preview.28.cadoryx.topology.1",
-          "OcctSharp.Runtime": "8.0.1-preview.28.cadoryx.topology.1"
+          "OcctSharp.Foundation": "8.0.1-preview.28.cadoryx.assembly.partner.1",
+          "OcctSharp.Runtime": "8.0.1-preview.28.cadoryx.assembly.partner.1"
         }
       },
       "OcctSharp.IVtk": {
         "type": "Transitive",
-        "resolved": "8.0.1-preview.28.cadoryx.topology.1",
-        "contentHash": "JhaYVkm42jVYMXOk+XiCIKbsYrJEwyqwjnozytji/dn4anJwvS8sb/a/AiPC8FzqWO8atDo5hhKOK0rIzVoLSQ==",
+        "resolved": "8.0.1-preview.28.cadoryx.assembly.partner.1",
+        "contentHash": "kMzw8gg/pWxT/YlFRpPhDYtd+APLsnZ3CEPlH2OXHxjJm1efOUEjMCNUHh5p/hvrvCf9TqGDnsTiSaYONDUtxg==",
         "dependencies": {
-          "OcctSharp.Runtime": "8.0.1-preview.28.cadoryx.topology.1",
-          "OcctSharp.Visualization": "8.0.1-preview.28.cadoryx.topology.1"
+          "OcctSharp.Runtime": "8.0.1-preview.28.cadoryx.assembly.partner.1",
+          "OcctSharp.Visualization": "8.0.1-preview.28.cadoryx.assembly.partner.1"
         }
       },
       "OcctSharp.Mesh": {
         "type": "Transitive",
-        "resolved": "8.0.1-preview.28.cadoryx.topology.1",
-        "contentHash": "g/quR7DuwaCZY4aWHTxM7UIqn11uNRAkvaUkcokEwr0K4eC3V/Vi/XpB06lM2xySZZu24hNqDCP5iMjqXSnucA==",
+        "resolved": "8.0.1-preview.28.cadoryx.assembly.partner.1",
+        "contentHash": "yiiq9FZWl1t09jLlSmbZP6zYPdIygQoHpOgGaXUwnEAaD+79KnJF0vWcQqAix+0VAIU3zkGC9hfICZkzdFd9MQ==",
         "dependencies": {
-          "OcctSharp.Foundation": "8.0.1-preview.28.cadoryx.topology.1",
-          "OcctSharp.Geometry": "8.0.1-preview.28.cadoryx.topology.1",
-          "OcctSharp.MeshData": "8.0.1-preview.28.cadoryx.topology.1",
-          "OcctSharp.Modeling": "8.0.1-preview.28.cadoryx.topology.1",
-          "OcctSharp.Runtime": "8.0.1-preview.28.cadoryx.topology.1"
+          "OcctSharp.Foundation": "8.0.1-preview.28.cadoryx.assembly.partner.1",
+          "OcctSharp.Geometry": "8.0.1-preview.28.cadoryx.assembly.partner.1",
+          "OcctSharp.MeshData": "8.0.1-preview.28.cadoryx.assembly.partner.1",
+          "OcctSharp.Modeling": "8.0.1-preview.28.cadoryx.assembly.partner.1",
+          "OcctSharp.Runtime": "8.0.1-preview.28.cadoryx.assembly.partner.1"
         }
       },
       "OcctSharp.MeshData": {
         "type": "Transitive",
-        "resolved": "8.0.1-preview.28.cadoryx.topology.1",
-        "contentHash": "+yI1MYoRDisrWurp718BFf/tqps2BpXdIXDJOEWLEmDLMeLQIvfmdLPK/BWU3c2qKBJl8nfhXrrQKf9m/9G5dg==",
+        "resolved": "8.0.1-preview.28.cadoryx.assembly.partner.1",
+        "contentHash": "viMtaJ9FMi8l+6EekWC5jA+5wpZJgz0cDJ/UW5UErn9Xz4CK++93lMc5XTtL/lDyDgfwDPRXyE7HKSfFFU3LBw==",
         "dependencies": {
-          "OcctSharp.Foundation": "8.0.1-preview.28.cadoryx.topology.1",
-          "OcctSharp.Geometry": "8.0.1-preview.28.cadoryx.topology.1",
-          "OcctSharp.Runtime": "8.0.1-preview.28.cadoryx.topology.1"
+          "OcctSharp.Foundation": "8.0.1-preview.28.cadoryx.assembly.partner.1",
+          "OcctSharp.Geometry": "8.0.1-preview.28.cadoryx.assembly.partner.1",
+          "OcctSharp.Runtime": "8.0.1-preview.28.cadoryx.assembly.partner.1"
         }
       },
       "OcctSharp.Modeling": {
         "type": "Transitive",
-        "resolved": "8.0.1-preview.28.cadoryx.topology.1",
-        "contentHash": "04B6WEHdKEGY6yRQK+H9VjHptwNZIIAsoGcQtA99l1OhsfaLwUgWWAeUCKN1yu3m2PdrN1bKroUAh/406QPpgw==",
+        "resolved": "8.0.1-preview.28.cadoryx.assembly.partner.1",
+        "contentHash": "nQydoXe2YWkPwZ99n/o09c124j1IvX8DB9zvb2/NwiqDYMkfj5EeHY5ARDKnCtgHyrFq2Fhi0zA8l0557qeQCg==",
         "dependencies": {
-          "OcctSharp.Foundation": "8.0.1-preview.28.cadoryx.topology.1",
-          "OcctSharp.Geometry": "8.0.1-preview.28.cadoryx.topology.1",
-          "OcctSharp.MeshData": "8.0.1-preview.28.cadoryx.topology.1",
-          "OcctSharp.Runtime": "8.0.1-preview.28.cadoryx.topology.1"
+          "OcctSharp.Foundation": "8.0.1-preview.28.cadoryx.assembly.partner.1",
+          "OcctSharp.Geometry": "8.0.1-preview.28.cadoryx.assembly.partner.1",
+          "OcctSharp.MeshData": "8.0.1-preview.28.cadoryx.assembly.partner.1",
+          "OcctSharp.Runtime": "8.0.1-preview.28.cadoryx.assembly.partner.1"
         }
       },
       "OcctSharp.Native.win-x64": {
         "type": "Transitive",
-        "resolved": "8.0.1-preview.28.cadoryx.topology.1",
-        "contentHash": "5CTsefuRZkQSwecRvQEcUwBH2dvpvWRfkQljxomCP3tJ9K9JE78/3kE5na2kfgXrBTJsj/OsoFvDSpXtLKqONQ=="
+        "resolved": "8.0.1-preview.28.cadoryx.assembly.partner.1",
+        "contentHash": "tOAgeICOSEcQyzutU3vDeE6vE4JRknfvDY70zsjuz8URQc0ehQo0Ae9bmubuliMYAu2lTa6AMHTCV3Ys5LddSQ=="
       },
       "OcctSharp.Runtime": {
         "type": "Transitive",
-        "resolved": "8.0.1-preview.28.cadoryx.topology.1",
-        "contentHash": "2uEUmwVQU6fLfBzxLhwGjoTQJrhaKYy27c+mPd6r1VVe6bxlq3Ph3xwTO4NUEK7Z6ZRhsB+xZH2XEWw0tCEzwQ==",
+        "resolved": "8.0.1-preview.28.cadoryx.assembly.partner.1",
+        "contentHash": "Aygj/GM182NKl5kfqID9p3Ah51XKmW+Q/aPN5axASP7V0wWFwEJrbrXVlE4MntHjPkg/7dNMUcD/cpTG5EAyGQ==",
         "dependencies": {
-          "OcctSharp.Native.win-x64": "8.0.1-preview.28.cadoryx.topology.1"
+          "OcctSharp.Native.win-x64": "8.0.1-preview.28.cadoryx.assembly.partner.1"
         }
       },
       "OcctSharp.Visualization": {
         "type": "Transitive",
-        "resolved": "8.0.1-preview.28.cadoryx.topology.1",
-        "contentHash": "/owAyrnSIC1wrwk/O13sVYMm4eJ9SIb2YRinr30oEBfdLgNMMq5k5FU1eLTquafx5j5UXw4zNSC+XdR2QHApeA==",
+        "resolved": "8.0.1-preview.28.cadoryx.assembly.partner.1",
+        "contentHash": "y7V05mhAekGjjbxth+5iA81WSGOCFf1+fkoIHrNXmzBg8lmYy33Du3ktCxrnJ+mHIrrdYsvt1Etb0Ja4FmJnMg==",
         "dependencies": {
-          "OcctSharp.Documents": "8.0.1-preview.28.cadoryx.topology.1",
-          "OcctSharp.Foundation": "8.0.1-preview.28.cadoryx.topology.1",
-          "OcctSharp.Geometry": "8.0.1-preview.28.cadoryx.topology.1",
-          "OcctSharp.Mesh": "8.0.1-preview.28.cadoryx.topology.1",
-          "OcctSharp.MeshData": "8.0.1-preview.28.cadoryx.topology.1",
-          "OcctSharp.Modeling": "8.0.1-preview.28.cadoryx.topology.1",
-          "OcctSharp.Runtime": "8.0.1-preview.28.cadoryx.topology.1"
+          "OcctSharp.Documents": "8.0.1-preview.28.cadoryx.assembly.partner.1",
+          "OcctSharp.Foundation": "8.0.1-preview.28.cadoryx.assembly.partner.1",
+          "OcctSharp.Geometry": "8.0.1-preview.28.cadoryx.assembly.partner.1",
+          "OcctSharp.Mesh": "8.0.1-preview.28.cadoryx.assembly.partner.1",
+          "OcctSharp.MeshData": "8.0.1-preview.28.cadoryx.assembly.partner.1",
+          "OcctSharp.Modeling": "8.0.1-preview.28.cadoryx.assembly.partner.1",
+          "OcctSharp.Runtime": "8.0.1-preview.28.cadoryx.assembly.partner.1"
         }
       },
       "OcctSharp.Xde": {
         "type": "Transitive",
-        "resolved": "8.0.1-preview.28.cadoryx.topology.1",
-        "contentHash": "dF+8Bc62MbG+BW+K2x0FSMYHC++BilspEm9LL2OmPphRh7Aa5CJFAeXBejmLKbjkeHXBKeLr36+rRLTMzlvz/w==",
+        "resolved": "8.0.1-preview.28.cadoryx.assembly.partner.1",
+        "contentHash": "dObT6DIFDNSFWIWa34AIl/LVrg37FSOSDud3lol/bY2DVUTxEYItrXwyxMJQzpxosl29nObTixI9GNFAzWtZPQ==",
         "dependencies": {
-          "OcctSharp.DataExchange": "8.0.1-preview.28.cadoryx.topology.1",
-          "OcctSharp.Documents": "8.0.1-preview.28.cadoryx.topology.1",
-          "OcctSharp.Foundation": "8.0.1-preview.28.cadoryx.topology.1",
-          "OcctSharp.Geometry": "8.0.1-preview.28.cadoryx.topology.1",
-          "OcctSharp.Mesh": "8.0.1-preview.28.cadoryx.topology.1",
-          "OcctSharp.MeshData": "8.0.1-preview.28.cadoryx.topology.1",
-          "OcctSharp.Modeling": "8.0.1-preview.28.cadoryx.topology.1",
-          "OcctSharp.Runtime": "8.0.1-preview.28.cadoryx.topology.1",
-          "OcctSharp.Visualization": "8.0.1-preview.28.cadoryx.topology.1"
+          "OcctSharp.DataExchange": "8.0.1-preview.28.cadoryx.assembly.partner.1",
+          "OcctSharp.Documents": "8.0.1-preview.28.cadoryx.assembly.partner.1",
+          "OcctSharp.Foundation": "8.0.1-preview.28.cadoryx.assembly.partner.1",
+          "OcctSharp.Geometry": "8.0.1-preview.28.cadoryx.assembly.partner.1",
+          "OcctSharp.Mesh": "8.0.1-preview.28.cadoryx.assembly.partner.1",
+          "OcctSharp.MeshData": "8.0.1-preview.28.cadoryx.assembly.partner.1",
+          "OcctSharp.Modeling": "8.0.1-preview.28.cadoryx.assembly.partner.1",
+          "OcctSharp.Runtime": "8.0.1-preview.28.cadoryx.assembly.partner.1",
+          "OcctSharp.Visualization": "8.0.1-preview.28.cadoryx.assembly.partner.1"
         }
       },
       "cadoryx.db": {

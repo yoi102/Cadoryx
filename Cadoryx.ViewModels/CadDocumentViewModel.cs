@@ -19,6 +19,7 @@ namespace Cadoryx.ViewModels;
 public partial class CadDocumentViewModel : ObservableDocument
 {
     private readonly IGeometryKernel kernel;
+    internal IGeometryKernel GeometryKernel=>kernel;
     private readonly ICadMessageLog log;
     private readonly SemaphoreSlim gridEditQueue=new(1,1);
     private DocumentSnapshot observedSnapshot;
@@ -66,6 +67,39 @@ public partial class CadDocumentViewModel : ObservableDocument
     public IDocumentStorage? ExternalPartStorage {get;}
     public ICadFileDialogs? ExternalPartFiles {get;}
     public SelectionService Selection {get;}=new();
+    private bool drawingDatumPickPending;
+    public event EventHandler<TopologyKind?>? DrawingDatumPickRequested;
+    public event EventHandler<AssemblyDatumReference>? DrawingDatumPicked;
+    public event EventHandler<string>? DrawingDatumPickFailed;
+    public bool IsDrawingDatumPickPending=>drawingDatumPickPending;
+    public void RequestDrawingDatumPick(TopologyKind kind)
+    {
+        if(kind is not (TopologyKind.Face or TopologyKind.Edge))
+            throw new ArgumentOutOfRangeException(nameof(kind));
+        drawingDatumPickPending=true;
+        DrawingDatumPickRequested?.Invoke(this,kind);
+    }
+    public void CancelDrawingDatumPick()
+    {
+        if(!drawingDatumPickPending)return;
+        drawingDatumPickPending=false;
+        DrawingDatumPickRequested?.Invoke(this,null);
+    }
+    public async Task ReceiveDrawingDatumPickAsync(OccurrencePath path,BodyId body,int index,string fingerprint)
+    {
+        drawingDatumPickPending=false;
+        try
+        {
+            var current=Session.Snapshot;
+            var resolver=kernel as IAssemblyDatumResolver??throw new CadValidationException("Analytic datum resolver unavailable.");
+            var datum=await resolver.ResolveAssemblyDatumAsync(current,path,body,index,fingerprint,Session.Assets);
+            if(Session.Snapshot.StateId!=current.StateId)throw new StaleDocumentException();
+            DrawingDatumPicked?.Invoke(this,datum);
+        }
+        catch(Exception error){DrawingDatumPickFailed?.Invoke(this,error.Message);}
+    }
+    public void RejectDrawingDatumPick(string message)
+    {drawingDatumPickPending=false;DrawingDatumPickFailed?.Invoke(this,message);}
     public InstancePlacementViewModel Placement {get;}
     public AssemblyConstraintsViewModel AssemblyConstraints {get;}
     public ObservableCollection<PartDefinition> TargetParts {get;}=[];
@@ -81,13 +115,16 @@ public partial class CadDocumentViewModel : ObservableDocument
     public ObservableCollection<SketchHoleChoice> SketchHoleChoices {get;}=[];
     public ObservableCollection<SketchPolygonHoleChoice> SketchPolygonHoleChoices {get;}=[];
     public ObservableCollection<SketchPolygonHoleChoice> SketchMixedHoleChoices {get;}=[];
+    public ObservableCollection<SketchHoleChoice> SketchSplineHoleChoices {get;}=[];
+    private SketchProfileReference? autoNestedSource;
+    [ObservableProperty] private string autoNestStatus=string.Empty;
     public ObservableCollection<SketchHoleChoice> SketchIslandCircleChoices {get;}=[];
     public ObservableCollection<SketchPolygonHoleChoice> SketchIslandPolygonChoices {get;}=[];
     public ObservableCollection<SketchPolygonHoleChoice> SketchIslandMixedChoices {get;}=[];
     public bool CanChooseSketchProfile=>UseLinkedSketch&&(EditingFeature is null||
         Session.Snapshot.Features[EditingFeature.Value].Recipe is ExtrudeRecipe);
     public bool CanChooseSketchHoles=>CanChooseSketchProfile&&ToolKind=="Extrude"&&
-        SelectedSketchProfile is {} selected&&selected.Source.ArcId is null&&selected.Source.BezierId is null&&selected.Source.SplineId is null;
+        SelectedSketchProfile is {} selected&&selected.Source.ArcId is null&&selected.Source.BezierId is null;
     public bool CanChangeSketchAssociation=>EditingFeature is null;
     [ObservableProperty] private DefinitionId? selectedTargetPart;
     [ObservableProperty] private LayerId? selectedCreationLayer;
@@ -240,7 +277,7 @@ public partial class CadDocumentViewModel : ObservableDocument
     }
     public void EditFeature(FeatureId id)
     {
-        var feature=Session.Snapshot.Features[id];InvalidatePreview();EditingFeature=id;SelectedTargetPart=feature.PartId;ObjectName=feature.Name;
+        var feature=Session.Snapshot.Features[id];IsViewportConstructing=false;InvalidatePreview();EditingFeature=id;SelectedTargetPart=feature.PartId;ObjectName=feature.Name;
         if(feature.Recipe is LocalFeatureRecipe or HistoryFilletRecipe or HistoryChamferRecipe)
         {
             EditingFeature=null;
@@ -255,10 +292,14 @@ public partial class CadDocumentViewModel : ObservableDocument
             case RevolveRecipe r:ToolKind="Revolve";AngleDegrees=r.AngleRadians*180/Math.PI;SetPosition(r.Placement);LoadProfile(r.Profile);break;
             default:EditingFeature=null;ToolStatus=Strings.UnsupportedFeatureEdit;return;
         }
-        ToolStatus=Strings.EditingFeatureStatus;
+        ToolStatus=feature.Recipe is BoxRecipe or CylinderRecipe or ExtrudeRecipe
+            ?Strings.EditingFeatureStatus+" "+(Strings.ResourceManager.GetString("SolidHandleHint")??"Drag the orange handles to change dimensions, then confirm the preview.")
+            :Strings.EditingFeatureStatus;
         UseLinkedSketch=feature.SketchSource is not null;
         SelectedSketchProfile=feature.SketchSource is {} source?SketchProfiles.FirstOrDefault(p=>SameProfileSource(p.Source,source)):null;
         if(feature.SketchSource is {} linked&&SelectedSketchProfile is null){var choice=new SketchProfileChoice(Session.Snapshot.Sketches[linked.SketchId].Name,linked);SketchProfiles.Add(choice);SelectedSketchProfile=choice;}
+        if(feature.SketchSource is {Regions.IsEmpty:false} nested)
+        {autoNestedSource=nested;AutoNestStatus=$"{nested.Regions.Length} nested root regions";}
     }
     public void StartSketchFeature(string kind)
     {
@@ -288,20 +329,49 @@ public partial class CadDocumentViewModel : ObservableDocument
         }
         return recipe;
     }
+    public GeometryRecipe? SolidHandleRecipe()
+    {
+        if(IsReadOnly||IsWorking||IsViewportConstructing||EditingFeature is not {} id||
+            !Session.Snapshot.Features.TryGetValue(id,out var feature)||feature.IsStale||
+            !Session.Snapshot.Bodies.ContainsKey(feature.OutputBodyId))return null;
+        if(feature.Recipe is not (BoxRecipe or CylinderRecipe or ExtrudeRecipe or RevolveRecipe)||
+            feature.Recipe is BoxRecipe&&ToolKind!="Box"||
+            feature.Recipe is CylinderRecipe&&ToolKind!="Cylinder"||
+            feature.Recipe is ExtrudeRecipe&&ToolKind!="Extrude"||
+            feature.Recipe is RevolveRecipe&&ToolKind!="Revolve")return null;
+        return Recipe();
+    }
+    public void SetSolidHandleValue(SolidDimension dimension,double value)
+    {
+        if(SolidHandleRecipe() is null)throw new CadValidationException(Strings.UnsupportedFeatureEdit);
+        if(!double.IsFinite(value)||value<=0||value>1_000_000)throw new CadValidationException("Invalid handle dimension.");
+        switch(dimension)
+        {
+            case SolidDimension.BoxX when ToolKind=="Box":SizeX=value;break;
+            case SolidDimension.BoxY when ToolKind=="Box":SizeY=value;break;
+            case SolidDimension.BoxZ when ToolKind=="Box":SizeZ=value;break;
+            case SolidDimension.CylinderRadius when ToolKind=="Cylinder":SizeX=value;break;
+            case SolidDimension.CylinderHeight when ToolKind=="Cylinder":SizeZ=value;break;
+            case SolidDimension.ExtrudeDistance when ToolKind=="Extrude":SizeZ=value;break;
+            case SolidDimension.RevolveAngle when ToolKind=="Revolve"&&value<=Math.PI*2:AngleDegrees=value*180/Math.PI;break;
+            default:throw new CadValidationException(Strings.UnsupportedFeatureEdit);
+        }
+    }
     private SketchProfileReference? CurrentSketchSource()=>SelectedSketchProfile?.Source is {} source&&UseLinkedSketch?
-        source with{HoleCircleIds=ToolKind=="Extrude"?SketchHoleChoices.Where(c=>c.IsSelected).Select(c=>c.Id).ToImmutableArray():[],
+        (autoNestedSource??(source with{Regions=[],HoleCircleIds=ToolKind=="Extrude"?SketchHoleChoices.Where(c=>c.IsSelected).Select(c=>c.Id).ToImmutableArray():[],
             PolygonHoleLines=ToolKind=="Extrude"?SketchPolygonHoleChoices.Where(c=>c.IsSelected).Select(c=>c.Lines).ToImmutableArray():[],
             MixedHoleIds=ToolKind=="Extrude"?SketchMixedHoleChoices.Where(c=>c.IsSelected).Select(c=>c.Lines).ToImmutableArray():[],
+            HoleSplineIds=ToolKind=="Extrude"?SketchSplineHoleChoices.Where(c=>c.IsSelected).Select(c=>c.Id).ToImmutableArray():[],
             IslandCircleIds=ToolKind=="Extrude"?SketchIslandCircleChoices.Where(c=>c.IsSelected).Select(c=>c.Id).ToImmutableArray():[],
             IslandPolygonLines=ToolKind=="Extrude"?SketchIslandPolygonChoices.Where(c=>c.IsSelected).Select(c=>c.Lines).ToImmutableArray():[],
-            IslandMixedIds=ToolKind=="Extrude"?SketchIslandMixedChoices.Where(c=>c.IsSelected).Select(c=>c.Lines).ToImmutableArray():[]}:null;
+            IslandMixedIds=ToolKind=="Extrude"?SketchIslandMixedChoices.Where(c=>c.IsSelected).Select(c=>c.Lines).ToImmutableArray():[]})):null;
     private ICadDocumentCommand ToolCommand()=>EditingFeature is {} feature?new RecomputeCommand(feature,Recipe(),
             UseLinkedSketch&&ToolKind=="Extrude"?CurrentSketchSource():null):
         new AddBodyCommand(Recipe(),ObjectName,SelectedTargetPart,SelectedCreationLayer,SelectedCreationMaterial,
             UseLinkedSketch&&ToolKind is "Extrude" or "Revolve"?CurrentSketchSource():null);
     partial void OnUseLinkedSketchChanged(bool value){InvalidatePreview();OnPropertyChanged(nameof(IsFrozenProfile));OnPropertyChanged(nameof(ProfileInputHint));OnPropertyChanged(nameof(CanChooseSketchProfile));OnPropertyChanged(nameof(CanChooseSketchHoles));}
     partial void OnToolKindChanged(string value){OnPropertyChanged(nameof(IsProfileTool));OnPropertyChanged(nameof(IsFrozenProfile));OnPropertyChanged(nameof(ViewportDrawingHint));RefreshSketchProfiles();}
-    partial void OnSelectedSketchProfileChanged(SketchProfileChoice? value){RefreshHoleChoices();InvalidatePreview();OnPropertyChanged(nameof(CanChooseSketchHoles));}
+    partial void OnSelectedSketchProfileChanged(SketchProfileChoice? value){autoNestedSource=null;AutoNestStatus=string.Empty;RefreshHoleChoices();InvalidatePreview();OnPropertyChanged(nameof(CanChooseSketchHoles));}
     partial void OnSelectedTargetPartChanged(DefinitionId? value){if(!refreshingTargets)RefreshSketchProfiles();}
     private void RefreshSketchProfiles()
     {
@@ -332,13 +402,19 @@ public partial class CadDocumentViewModel : ObservableDocument
                     $" {index+1} ({loop.Length})",SketchProfileReference.CreateMixed(sketch,loop)));
         }
         SelectedSketchProfile=source is null?null:SketchProfiles.FirstOrDefault(p=>SameProfileSource(p.Source,source));
+        if(source is {Regions.IsEmpty:false}&&SelectedSketchProfile is not null)
+        {
+            autoNestedSource=source;
+            AutoNestStatus=string.Format(Strings.ResourceManager.GetString("NestedRegionsCount",Strings.Culture)??"{0} nested sketch regions",
+                source.Regions.Length);
+        }
         OnPropertyChanged(nameof(CanChooseSketchHoles));
     }
     private void RefreshHoleChoices()
     {
-        SketchHoleChoices.Clear();SketchPolygonHoleChoices.Clear();SketchMixedHoleChoices.Clear();
+        SketchHoleChoices.Clear();SketchPolygonHoleChoices.Clear();SketchMixedHoleChoices.Clear();SketchSplineHoleChoices.Clear();
         SketchIslandCircleChoices.Clear();SketchIslandPolygonChoices.Clear();SketchIslandMixedChoices.Clear();
-        if(ToolKind!="Extrude"||SelectedSketchProfile?.Source is not {} boundary||boundary.ArcId is not null||boundary.BezierId is not null||boundary.SplineId is not null||
+        if(ToolKind!="Extrude"||SelectedSketchProfile?.Source is not {} boundary||boundary.ArcId is not null||boundary.BezierId is not null||
             !Session.Snapshot.Sketches.TryGetValue(boundary.SketchId,out var sketch))return;
         var selected=boundary.HoleCircleIds.IsDefaultOrEmpty?ImmutableArray<SketchEntityId>.Empty:boundary.HoleCircleIds;
         foreach(var (circle,index) in sketch.Circles.Where(c=>!c.IsConstruction&&c.Id!=boundary.CircleId)
@@ -348,7 +424,7 @@ public partial class CadDocumentViewModel : ObservableDocument
             try{candidate.Resolve(Session.Snapshot,sketch.PartId,new ExtrudeRecipe(new([]),1,sketch.Plane));}
             catch(CadValidationException){continue;}
             var choice=new SketchHoleChoice(circle.Id,$"◉ {index+1} · R {circle.Radius:G6}",selected.Contains(circle.Id));
-            choice.PropertyChanged+=(_,_)=>{RefreshIslandChoices();InvalidatePreview();};SketchHoleChoices.Add(choice);
+            choice.PropertyChanged+=(_,_)=>{ClearAutoNested();RefreshIslandChoices();InvalidatePreview();};SketchHoleChoices.Add(choice);
         }
         foreach(var (loop,index) in SketchLoops.Find(sketch).Select((loop,index)=>(loop,index)))
         {
@@ -358,7 +434,7 @@ public partial class CadDocumentViewModel : ObservableDocument
             catch(CadValidationException){continue;}
             bool polygonSelected=boundary.PolygonHoleLines.Any(h=>h.Length==loop.Length&&h.ToHashSet().SetEquals(loop));
             var choice=new SketchPolygonHoleChoice(loop,$"◇ {index+1} ({loop.Length})",polygonSelected);
-            choice.PropertyChanged+=(_,_)=>{RefreshIslandChoices();InvalidatePreview();};SketchPolygonHoleChoices.Add(choice);
+            choice.PropertyChanged+=(_,_)=>{ClearAutoNested();RefreshIslandChoices();InvalidatePreview();};SketchPolygonHoleChoices.Add(choice);
         }
         foreach(var (loop,index) in SketchMixedLoops.Find(sketch).Select((loop,index)=>(loop,index)))
         {
@@ -368,7 +444,16 @@ public partial class CadDocumentViewModel : ObservableDocument
             catch(CadValidationException){continue;}
             bool selectedMixed=boundary.MixedHoleIds.Any(h=>h.Length==loop.Length&&h.ToHashSet().SetEquals(loop));
             var choice=new SketchPolygonHoleChoice(loop,$"⌒ {index+1} ({loop.Length})",selectedMixed);
-            choice.PropertyChanged+=(_,_)=>{RefreshIslandChoices();InvalidatePreview();};SketchMixedHoleChoices.Add(choice);
+            choice.PropertyChanged+=(_,_)=>{ClearAutoNested();RefreshIslandChoices();InvalidatePreview();};SketchMixedHoleChoices.Add(choice);
+        }
+        foreach(var (spline,index) in sketch.Splines.Where(s=>!s.IsConstruction&&s.Id!=boundary.SplineId)
+                     .OrderBy(s=>s.Id.Value).Select((spline,index)=>(spline,index)))
+        {
+            var candidate=boundary with{HoleCircleIds=[],PolygonHoleLines=[],MixedHoleIds=[],HoleSplineIds=[spline.Id]};
+            try{candidate.Resolve(Session.Snapshot,sketch.PartId,new ExtrudeRecipe(new([]),1,sketch.Plane));}
+            catch(CadValidationException){continue;}
+            var choice=new SketchHoleChoice(spline.Id,$"S {index+1} ({spline.Controls.Length})",boundary.HoleSplineIds.Contains(spline.Id));
+            choice.PropertyChanged+=(_,_)=>{ClearAutoNested();RefreshIslandChoices();InvalidatePreview();};SketchSplineHoleChoices.Add(choice);
         }
         RefreshIslandChoices();
     }
@@ -382,9 +467,10 @@ public partial class CadDocumentViewModel : ObservableDocument
             HoleCircleIds=SketchHoleChoices.Where(c=>c.IsSelected).Select(c=>c.Id).ToImmutableArray(),
             PolygonHoleLines=SketchPolygonHoleChoices.Where(c=>c.IsSelected).Select(c=>c.Lines).ToImmutableArray(),
             MixedHoleIds=SketchMixedHoleChoices.Where(c=>c.IsSelected).Select(c=>c.Lines).ToImmutableArray(),
+            HoleSplineIds=SketchSplineHoleChoices.Where(c=>c.IsSelected).Select(c=>c.Id).ToImmutableArray(),
             IslandCircleIds=[],IslandPolygonLines=[],IslandMixedIds=[]
         };
-        if(parent.HoleCircleIds.IsEmpty&&parent.PolygonHoleLines.IsEmpty&&parent.MixedHoleIds.IsEmpty)return;
+        if(parent.HoleCircleIds.IsEmpty&&parent.PolygonHoleLines.IsEmpty&&parent.MixedHoleIds.IsEmpty&&parent.HoleSplineIds.IsEmpty)return;
         bool Valid(SketchProfileReference source)
         {
             try{source.Resolve(Session.Snapshot,sketch.PartId,new ExtrudeRecipe(new([]),1,sketch.Plane));return true;}
@@ -394,22 +480,92 @@ public partial class CadDocumentViewModel : ObservableDocument
         {
             if(!Valid(parent with{IslandCircleIds=[circle.Id]}))continue;
             var choice=new SketchHoleChoice(circle.Id,$"○ R {circle.Radius:G6}",boundary.IslandCircleIds.Contains(circle.Id));
-            choice.PropertyChanged+=(_,_)=>InvalidatePreview();SketchIslandCircleChoices.Add(choice);
+            choice.PropertyChanged+=(_,_)=>{ClearAutoNested();InvalidatePreview();};SketchIslandCircleChoices.Add(choice);
         }
         foreach(var loop in SketchLoops.Find(sketch))
         {
             if(!Valid(parent with{IslandPolygonLines=[loop]}))continue;
             var choice=new SketchPolygonHoleChoice(loop,$"◇ ({loop.Length})",
                 boundary.IslandPolygonLines.Any(ids=>ids.Length==loop.Length&&ids.ToHashSet().SetEquals(loop)));
-            choice.PropertyChanged+=(_,_)=>InvalidatePreview();SketchIslandPolygonChoices.Add(choice);
+            choice.PropertyChanged+=(_,_)=>{ClearAutoNested();InvalidatePreview();};SketchIslandPolygonChoices.Add(choice);
         }
         foreach(var loop in SketchMixedLoops.Find(sketch))
         {
             if(!Valid(parent with{IslandMixedIds=[loop]}))continue;
             var choice=new SketchPolygonHoleChoice(loop,$"⌒ ({loop.Length})",
                 boundary.IslandMixedIds.Any(ids=>ids.Length==loop.Length&&ids.ToHashSet().SetEquals(loop)));
-            choice.PropertyChanged+=(_,_)=>InvalidatePreview();SketchIslandMixedChoices.Add(choice);
+            choice.PropertyChanged+=(_,_)=>{ClearAutoNested();InvalidatePreview();};SketchIslandMixedChoices.Add(choice);
         }
+    }
+    private void ClearAutoNested(){autoNestedSource=null;AutoNestStatus=string.Empty;}
+    [RelayCommand]
+    private void AutoNestSketchRegions()
+    {
+        if(!CanChooseSketchHoles||SelectedSketchProfile?.Source is not {} source||
+            !Session.Snapshot.Sketches.TryGetValue(source.SketchId,out var sketch))return;
+        try
+        {
+            autoNestedSource=null;AutoNestStatus=string.Empty;
+            var boundary=source with{HoleCircleIds=[],PolygonHoleLines=[],MixedHoleIds=[],HoleSplineIds=[],
+                IslandCircleIds=[],IslandPolygonLines=[],IslandMixedIds=[],Regions=[]};
+            var outer=((ExtrudeRecipe)boundary.Resolve(Session.Snapshot,sketch.PartId,
+                new ExtrudeRecipe(new SketchProfile([]),1,sketch.Plane))).Profile;
+            static ImmutableArray<SketchBoundaryCurve> Curves(SketchProfile p)=>p.Circle is {} c?SketchMixedProfile.Circle(c):
+                p.Spline is {} s?SketchSplineGeometry.ValidationBoundary(s):
+                !p.BoundaryCurves.IsEmpty?p.BoundaryCurves:SketchMixedProfile.Polygon(p.Points);
+            var outerCurves=Curves(outer);
+            var outerIds=boundary.Lines.Concat(boundary.MixedBoundaryIds).ToHashSet();
+            if(boundary.CircleId is {} circleId)outerIds.Add(circleId);
+            if(boundary.SplineId is {} splineId)outerIds.Add(splineId);
+            var candidates=new List<(SketchRegionReference Ref,ImmutableArray<SketchBoundaryCurve> Curves)>();
+            void Add(SketchRegionReference region,SketchProfile shape,IEnumerable<SketchEntityId> ids)
+            {
+                if(ids.Any(outerIds.Contains))return;
+                var curves=Curves(shape);
+                if(SketchMixedProfile.Touches(outerCurves,curves))
+                    throw new CadValidationException("A sketch region touches or crosses the selected outer boundary.");
+                if(SketchMixedProfile.StrictlyContains(outerCurves,curves))candidates.Add((region,curves));
+                if(candidates.Count>64)throw new CadValidationException("A nested profile has too many regions.");
+            }
+            foreach(var circle in sketch.Circles.Where(c=>!c.IsConstruction).OrderBy(c=>c.Id.Value))
+                Add(new(CircleId:circle.Id),SketchProfileBuilder.Circle(sketch,circle.Id),[circle.Id]);
+            foreach(var loop in SketchLoops.Find(sketch))
+                Add(new(PolygonLineIds:loop),SketchProfileBuilder.Polygon(sketch,loop),loop);
+            var mixedLoops=SketchMixedLoops.Find(sketch);
+            foreach(var loop in mixedLoops)
+                Add(new(MixedCurveIds:loop),SketchProfileBuilder.Mixed(sketch,loop),loop);
+            var mixedMembers=mixedLoops.SelectMany(loop=>loop).ToHashSet();
+            foreach(var spline in sketch.Splines.Where(s=>!s.IsConstruction&&!mixedMembers.Contains(s.Id)).OrderBy(s=>s.Id.Value))
+                Add(new(SplineId:spline.Id),SketchProfileBuilder.SplineSegment(sketch,spline.Id),[spline.Id]);
+            var parents=new int[candidates.Count];
+            for(int i=0;i<candidates.Count;i++)
+            {
+                var containers=new List<int>();
+                for(int j=0;j<candidates.Count;j++)if(i!=j)
+                {
+                    if(SketchMixedProfile.Touches(candidates[i].Curves,candidates[j].Curves))
+                        throw new CadValidationException("Sketch regions touch or cross; select boundaries explicitly.");
+                    if(SketchMixedProfile.StrictlyContains(candidates[j].Curves,candidates[i].Curves))containers.Add(j);
+                }
+                parents[i]=containers.Count==0?-1:containers.Single(j=>containers.All(k=>k==j||
+                    SketchMixedProfile.StrictlyContains(candidates[k].Curves,candidates[j].Curves)));
+            }
+            ImmutableArray<SketchRegionReference> Children(int parent)=>Enumerable.Range(0,candidates.Count)
+                .Where(i=>parents[i]==parent).Select(i=>candidates[i].Ref with{Children=Children(i)}).ToImmutableArray();
+            var nested=boundary with{Regions=Children(-1)};
+            _=nested.Resolve(Session.Snapshot,sketch.PartId,new ExtrudeRecipe(new SketchProfile([]),1,sketch.Plane));
+            foreach(var choice in SketchHoleChoices)choice.IsSelected=false;
+            foreach(var choice in SketchPolygonHoleChoices)choice.IsSelected=false;
+            foreach(var choice in SketchMixedHoleChoices)choice.IsSelected=false;
+            foreach(var choice in SketchSplineHoleChoices)choice.IsSelected=false;
+            foreach(var choice in SketchIslandCircleChoices)choice.IsSelected=false;
+            foreach(var choice in SketchIslandPolygonChoices)choice.IsSelected=false;
+            foreach(var choice in SketchIslandMixedChoices)choice.IsSelected=false;
+            autoNestedSource=nested;
+            AutoNestStatus=string.Format(Strings.ResourceManager.GetString("NestedRegionsCount",Strings.Culture)??"{0} nested sketch regions",candidates.Count);
+            InvalidatePreview();
+        }
+        catch(Exception ex){autoNestedSource=null;AutoNestStatus=ex.Message;InvalidatePreview();}
     }
     private static bool SameProfileSource(SketchProfileReference a,SketchProfileReference b)=>
         a.SketchId==b.SketchId&&a.CircleId==b.CircleId&&a.ArcId==b.ArcId&&a.BezierId==b.BezierId&&a.SplineId==b.SplineId&&a.Lines.SequenceEqual(b.Lines)&&
@@ -420,6 +576,7 @@ public partial class CadDocumentViewModel : ObservableDocument
         a.PolygonHoleLines.Zip(b.PolygonHoleLines).All(pair=>pair.First.SequenceEqual(pair.Second))&&
         a.MixedHoleIds.Length==b.MixedHoleIds.Length&&
         a.MixedHoleIds.Zip(b.MixedHoleIds).All(pair=>pair.First.SequenceEqual(pair.Second))&&
+        a.HoleSplineIds.SequenceEqual(b.HoleSplineIds)&&
         a.IslandCircleIds.SequenceEqual(b.IslandCircleIds)&&
         a.IslandPolygonLines.Length==b.IslandPolygonLines.Length&&
         a.IslandPolygonLines.Zip(b.IslandPolygonLines).All(pair=>pair.First.SequenceEqual(pair.Second))&&
@@ -495,7 +652,7 @@ public partial class CadDocumentViewModel : ObservableDocument
         {
             if(IsReadOnly)throw new NotSupportedException(Strings.UnsupportedDocumentReadOnly);
             using var capture=Session.Capture();long generation=Session.Generation;
-            var candidate=await command().PrepareAsync(new(capture.Snapshot,generation,Session.Assets,kernel),cancel.Token);
+            var candidate=await UpdateAssociatedSections.PrepareCommandAsync(command(),new(capture.Snapshot,generation,Session.Assets,kernel),cancel.Token);
             if(cancel.IsCancellationRequested||request!=previewSequence||Session.IsClosing||generation!=Session.Generation){candidate.Dispose();return;}
             try
             {
@@ -537,6 +694,7 @@ public partial class CadDocumentViewModel : ObservableDocument
         PreviewScene=candidate is null?null:CadScene.FromDocument(candidate);
         PreviewChanged?.Invoke(this,EventArgs.Empty);
     }
+    public void SetAssemblyPreview(DocumentSnapshot? candidate)=>SetSketchPreview(candidate);
     public async Task StopToolsAsync()
     {
         InvalidatePreview();

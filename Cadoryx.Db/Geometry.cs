@@ -30,6 +30,25 @@ public readonly record struct Quaterniond(double X, double Y, double Z, double W
         var n = axis.Normalized(); var s = Math.Sin(angle/2);
         return new(n.X*s,n.Y*s,n.Z*s,Math.Cos(angle/2));
     }
+    /// <summary>Intrinsic X/Y/Z angles in degrees (world rotation Z * Y * X).</summary>
+    public static Quaterniond FromEulerDegrees(double x,double y,double z)
+    {
+        CadGuard.Finite(x,y,z);
+        if(Math.Abs(x)>3600||Math.Abs(y)>3600||Math.Abs(z)>3600)
+            throw new CadValidationException("Work plane angles must be within ±3600 degrees.");
+        const double radians=Math.PI/180;
+        return FromAxisAngle(new(0,0,1),z*radians)*
+            FromAxisAngle(new(0,1,0),y*radians)*FromAxisAngle(new(1,0,0),x*radians);
+    }
+    public Vector3d ToEulerDegrees()
+    {
+        Validate();
+        double x=Math.Atan2(2*(W*X+Y*Z),1-2*(X*X+Y*Y));
+        double y=Math.Asin(Math.Clamp(2*(W*Y-Z*X),-1,1));
+        double z=Math.Atan2(2*(W*Z+X*Y),1-2*(Y*Y+Z*Z));
+        const double degrees=180/Math.PI;
+        return new(x*degrees,y*degrees,z*degrees);
+    }
     public Quaterniond Inverse() => new(-X,-Y,-Z,W);
     public Vector3d Rotate(Vector3d v)
     {
@@ -63,23 +82,30 @@ public sealed record DocumentGridSettings(bool Visible = true, double SpacingMm 
             throw new CadValidationException("Grid spacing must be between 0.1 and 1000 mm.");
     }
 }
-public enum DocumentWorkPlaneKind { XY = 0, XZ = 1, YZ = 2 }
+public enum DocumentWorkPlaneKind { XY = 0, XZ = 1, YZ = 2, Custom = 3 }
 public sealed record DocumentWorkPlaneSettings(DocumentWorkPlaneKind Kind = DocumentWorkPlaneKind.XY, double OffsetMm = 0)
 {
+    public Vector3d CustomOrigin { get; init; } = Vector3d.Zero;
+    public Quaterniond CustomRotation { get; init; } = Quaterniond.Identity;
     public void Validate()
     {
         if (!Enum.IsDefined(Kind) || !double.IsFinite(OffsetMm) || Math.Abs(OffsetMm) > 1_000_000)
             throw new CadValidationException("Work plane or offset is invalid (±1,000,000 mm).");
+        CustomOrigin.Validate();CustomRotation.Validate();
+        if (Kind==DocumentWorkPlaneKind.Custom &&
+            (Math.Abs(CustomOrigin.X)>1_000_000||Math.Abs(CustomOrigin.Y)>1_000_000||Math.Abs(CustomOrigin.Z)>1_000_000))
+            throw new CadValidationException("Custom plane origin must stay within ±1,000,000 mm.");
     }
     public Quaterniond Rotation => Kind switch
     {
         DocumentWorkPlaneKind.XY => Quaterniond.Identity,
         DocumentWorkPlaneKind.XZ => Quaterniond.FromAxisAngle(new(1,0,0),-Math.PI/2),
         DocumentWorkPlaneKind.YZ => new(0.5,0.5,0.5,0.5),
+        DocumentWorkPlaneKind.Custom => CustomRotation,
         _ => throw new CadValidationException("Invalid work plane.")
     };
     public Vector3d Normal => Rotation.Rotate(Vector3d.UnitZ);
-    public Vector3d Origin => Normal*OffsetMm;
+    public Vector3d Origin => (Kind==DocumentWorkPlaneKind.Custom?CustomOrigin:Vector3d.Zero)+Normal*OffsetMm;
     public Vector3d ToWorld(double u,double v) => Origin+Rotation.Rotate(new(u,v,0));
     public Vector3d ToLocal(Vector3d world) => Rotation.Inverse().Rotate(world-Origin);
 }

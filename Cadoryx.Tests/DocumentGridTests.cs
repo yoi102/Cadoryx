@@ -14,6 +14,32 @@ namespace Cadoryx.Tests;
 
 public sealed class DocumentGridTests
 {
+    [Fact]
+    public async Task FreeWorkPlaneUsesOneTransformForGridSketchAndPersistence()
+    {
+        using var files=new TestFiles();var assets=new MemoryAssetStore();var kernel=new OcctGeometryKernel();
+        await using var session=new CadDocumentSession(DocumentSnapshot.Create("Free plane"),assets,kernel,new InlineSessionDispatcher());
+        var vm=new CadDocumentViewModel(session,kernel,new CadMessageLog());
+        try
+        {
+            var plane=new DocumentWorkPlaneSettings(DocumentWorkPlaneKind.Custom,7)
+            {CustomOrigin=new(12,-5,3),CustomRotation=Quaterniond.FromEulerDegrees(25,35,40)};
+            await vm.SetWorkPlaneAsync(plane);
+            var origin=plane.Origin;var u=plane.ToWorld(4,0)-origin;var v=plane.ToWorld(0,5)-origin;
+            Assert.Equal(4,u.Length,9);Assert.Equal(5,v.Length,9);
+            Assert.Equal(0,u.Dot(v),9);Assert.Equal(0,u.Dot(plane.Normal),9);
+            Assert.Equal(4,plane.ToLocal(plane.ToWorld(4,5)).X,9);
+            var euler=plane.CustomRotation.ToEulerDegrees();
+            Assert.Equal(25,euler.X,8);Assert.Equal(35,euler.Y,8);Assert.Equal(40,euler.Z,8);
+            var path=files.PathFor("free-plane.cadoryx");await session.SaveAsync(new CadDocumentStorage(),path);
+            using var loaded=await new CadDocumentStorage().LoadAsync(path,assets);
+            Assert.Equal(plane,loaded.Snapshot.Settings.WorkPlane);
+            await session.UndoAsync();Assert.Equal(new(),vm.WorkPlaneSettings);
+            await session.RedoAsync();Assert.Equal(plane,vm.WorkPlaneSettings);
+            await Assert.ThrowsAsync<CadValidationException>(()=>vm.SetWorkPlaneAsync(plane with{CustomRotation=new(0,0,0,2)}));
+        }
+        finally{vm.Detach();}
+    }
     [Theory]
     [InlineData(DocumentWorkPlaneKind.XY)]
     [InlineData(DocumentWorkPlaneKind.XZ)]
@@ -58,7 +84,7 @@ public sealed class DocumentGridTests
             var pack=new PackDocument(first.Snapshot.Id.Value,first.Snapshot.StateId.Value,"Old",first.Snapshot.RootAssemblyId.Value,
                 0,3,1e-7,1e-9,false,5,true,0xFF335577,0xFFD1E4F1,false,2,12,2,25);
             var reader=new MessagePackReader(MessagePackSerializer.Serialize(pack));
-            Assert.Equal(19,reader.ReadArrayHeader());
+            Assert.Equal(20,reader.ReadArrayHeader());
             var buffer=new ArrayBufferWriter<byte>();var writer=new MessagePackWriter(buffer);writer.WriteArrayHeader(16);
             for(int i=0;i<16;i++)writer.WriteRaw(reader.ReadRaw());writer.Flush();
             var migrated=new CadSectionMigrationRegistry().Migrate(
@@ -110,7 +136,7 @@ public sealed class DocumentGridTests
         var packed=new PackDocument(doc.Id.Value,doc.StateId.Value,doc.Name,doc.RootAssemblyId.Value,0,3,1e-7,1e-9,false,2,true,0,0,false,0,0);
         var bytes=MessagePackSerializer.Serialize(packed);
         var reader=new MessagePackReader(bytes);
-        Assert.Equal(19,reader.ReadArrayHeader());
+        Assert.Equal(20,reader.ReadArrayHeader());
         var buffer=new ArrayBufferWriter<byte>();
         var writer=new MessagePackWriter(buffer);
         writer.WriteArrayHeader(8);
@@ -133,7 +159,7 @@ public sealed class DocumentGridTests
         var doc=DocumentSnapshot.Create("Grid only");
         var packed=new PackDocument(doc.Id.Value,doc.StateId.Value,doc.Name,doc.RootAssemblyId.Value,0,3,1e-7,1e-9,false,4,true,0,0,false,0,0);
         var reader=new MessagePackReader(MessagePackSerializer.Serialize(packed));
-        Assert.Equal(19,reader.ReadArrayHeader());
+        Assert.Equal(20,reader.ReadArrayHeader());
         var buffer=new ArrayBufferWriter<byte>();var writer=new MessagePackWriter(buffer);
         writer.WriteArrayHeader(11);
         for(int index=0;index<11;index++)writer.WriteRaw(reader.ReadRaw());
@@ -153,7 +179,7 @@ public sealed class DocumentGridTests
         var doc=DocumentSnapshot.Create("Solid legacy");
         var packed=new PackDocument(doc.Id.Value,doc.StateId.Value,doc.Name,doc.RootAssemblyId.Value,0,3,1e-7,1e-9,true,10,false,0xFF335577,0,false,0,0);
         var reader=new MessagePackReader(MessagePackSerializer.Serialize(packed));
-        Assert.Equal(19,reader.ReadArrayHeader());
+        Assert.Equal(20,reader.ReadArrayHeader());
         var buffer=new ArrayBufferWriter<byte>();var writer=new MessagePackWriter(buffer);
         writer.WriteArrayHeader(12);
         for(int index=0;index<12;index++)writer.WriteRaw(reader.ReadRaw());
@@ -173,7 +199,7 @@ public sealed class DocumentGridTests
         var packed=new PackDocument(doc.Id.Value,doc.StateId.Value,doc.Name,doc.RootAssemblyId.Value,
             0,3,1e-7,1e-9,false,7,true,0xFF335577,0xFFE1EEFA,false,0,0);
         var reader=new MessagePackReader(MessagePackSerializer.Serialize(packed));
-        Assert.Equal(19,reader.ReadArrayHeader());
+        Assert.Equal(20,reader.ReadArrayHeader());
         var buffer=new ArrayBufferWriter<byte>();var writer=new MessagePackWriter(buffer);
         writer.WriteArrayHeader(13);
         for(int index=0;index<13;index++)writer.WriteRaw(reader.ReadRaw());

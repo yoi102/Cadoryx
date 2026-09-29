@@ -8,6 +8,10 @@ namespace Cadoryx.Kernel.Occt;
 public sealed partial class OcctGeometryKernel : IGeometryReviewKernel
 {
     public Task<GeometryResult> SectionAsync(IReadOnlyList<GeometryInstance> instances,CuttingPlane plane,IAssetStore assets,CancellationToken token=default)
+        =>BuildSectionAsync(instances,plane,assets,false,token);
+    public Task<GeometryResult> SectionFacesAsync(IReadOnlyList<GeometryInstance> instances,CuttingPlane plane,IAssetStore assets,CancellationToken token=default)
+        =>BuildSectionAsync(instances,plane,assets,true,token);
+    private Task<GeometryResult> BuildSectionAsync(IReadOnlyList<GeometryInstance> instances,CuttingPlane plane,IAssetStore assets,bool cap,CancellationToken token)
     {
         plane.Validate();var inputs=ReviewInputs(instances,1,256);
         return Run(()=>
@@ -31,7 +35,8 @@ public sealed partial class OcctGeometryKernel : IGeometryReviewKernel
                     GpPoint P(double a,double c){var p=origin+u*a+v*c;return new(p.X,p.Y,p.Z);}
                     using var wire=ShapeFactory.CreatePolygonWire([P(minU-margin,minV-margin),P(maxU+margin,minV-margin),P(maxU+margin,maxV+margin),P(minU-margin,maxV+margin)],true);
                     using var face=ShapeFactory.CreatePlanarFace(wire);
-                    curves.Add(shape.Section(face));
+                    if(cap&&input.Geometry.Kind!=BodyKind.Solid)throw new CadValidationException("Section faces require a single closed solid body.");
+                    curves.Add(cap?shape.Common(face):shape.Section(face));
                 }
                 token.ThrowIfCancellationRequested();using var result=ShapeFactory.CreateCompound(curves);
                 return OcctGeometryBridge.StoreShape(result,assets);
@@ -40,8 +45,12 @@ public sealed partial class OcctGeometryKernel : IGeometryReviewKernel
         },token);
     }
     public Task<InterferenceReport> CheckInterferenceAsync(IReadOnlyList<GeometryInstance> instances,double toleranceMm,IAssetStore assets,CancellationToken token=default)
+        =>InspectPairsAsync(instances,toleranceMm,assets,false,token);
+    public Task<InterferenceReport> CheckInterferenceCandidatesAsync(IReadOnlyList<GeometryInstance> instances,double toleranceMm,IAssetStore assets,CancellationToken token=default)
+        =>InspectPairsAsync(instances,toleranceMm,assets,true,token);
+    private Task<InterferenceReport> InspectPairsAsync(IReadOnlyList<GeometryInstance> instances,double toleranceMm,IAssetStore assets,bool broadPhase,CancellationToken token)
     {
-        var inputs=ReviewInputs(instances,2,32);
+        var inputs=ReviewInputs(instances,2,broadPhase?512:32);
         if(!double.IsFinite(toleranceMm)||toleranceMm<=0||toleranceMm>1)
             throw new CadValidationException("Contact tolerance must be greater than zero and at most 1 mm.");
         if(inputs.Any(i=>i.Geometry.Kind!=BodyKind.Solid))throw new CadValidationException("Interference inspection requires single solid bodies; sheets, meshes and mixed compounds are not supported.");
@@ -52,8 +61,14 @@ public sealed partial class OcctGeometryKernel : IGeometryReviewKernel
             {
                 foreach(var input in inputs){token.ThrowIfCancellationRequested();shapes.Add(WorldShape(input,assets));}
                 var results=ImmutableArray.CreateBuilder<BodyPairFinding>();
+                int skipped=0;var bounds=shapes.Select(s=>s.GetBoundingBox()).ToArray();
                 for(int i=0;i<inputs.Length;i++)for(int j=i+1;j<inputs.Length;j++)
                 {
+                    token.ThrowIfCancellationRequested();
+                    var a=bounds[i];var b=bounds[j];
+                    if(broadPhase&&(a.Maximum.X+toleranceMm<b.Minimum.X||b.Maximum.X+toleranceMm<a.Minimum.X||
+                        a.Maximum.Y+toleranceMm<b.Minimum.Y||b.Maximum.Y+toleranceMm<a.Minimum.Y||
+                        a.Maximum.Z+toleranceMm<b.Minimum.Z||b.Maximum.Z+toleranceMm<a.Minimum.Z)){skipped++;continue;}
                     token.ThrowIfCancellationRequested();using var pair=shapes[i].InspectPair(shapes[j],toleranceMm);
                     var relation=pair.Classification switch
                     {
@@ -65,7 +80,7 @@ public sealed partial class OcctGeometryKernel : IGeometryReviewKernel
                     };
                     results.Add(new(inputs[i],inputs[j],relation,pair.Distance,pair.OverlapVolume));
                 }
-                token.ThrowIfCancellationRequested();return new InterferenceReport(results.ToImmutable(),toleranceMm);
+                token.ThrowIfCancellationRequested();return new InterferenceReport(results.ToImmutable(),toleranceMm,skipped);
             }
             finally{foreach(var shape in shapes)shape.Dispose();}
         },token);

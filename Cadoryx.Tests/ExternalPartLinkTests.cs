@@ -50,8 +50,13 @@ public sealed class ExternalPartLinkTests
         await Assert.ThrowsAsync<CadValidationException>(()=>target.ExecuteAsync(
             ExternalPartCommands.Refresh(storage,partId,targetPath)));
         await target.UndoAsync();
-        File.Move(sourcePath,files.PathFor("moved.cadoryx"));
+        var movedPath=files.PathFor("moved.cadoryx");File.Move(sourcePath,movedPath);
         Assert.Equal(ExternalPartStatus.SourceMissing,ExternalPartCommands.Check(target.Snapshot,partId,targetPath));
+        var missing=target.Snapshot;
+        await target.ExecuteAsync(ExternalPartCommands.Relocate(storage,partId,movedPath,targetPath));
+        Assert.Equal(ExternalPartStatus.Current,ExternalPartCommands.Check(target.Snapshot,partId,targetPath));
+        await target.UndoAsync();Assert.Same(missing,target.Snapshot);
+        await target.RedoAsync();
         await target.SaveAsync(storage,targetPath);
         using(var loaded=await storage.LoadAsync(targetPath,assets))
             Assert.Equal(2,((PartDefinition)loaded.Snapshot.Definitions[partId]).Bodies.Length);

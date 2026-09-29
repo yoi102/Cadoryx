@@ -8,8 +8,8 @@
  <UserControl.Resources><Style TargetType="mah:NumericUpDown" BasedOn="{StaticResource MahApps.Styles.NumericUpDown}">
   <Setter Property="StringFormat" Value="0.######"/>
  </Style></UserControl.Resources>
- <Expander Header="{I18N {x:Static r:LangKeys.InstancePlacement}}" IsExpanded="True" Margin="0,0,0,16">
-  <StackPanel Margin="0,8,0,0">
+ <Expander Header="{I18N {x:Static r:LangKeys.InstancePlacement}}" IsExpanded="True" Margin="0,0,0,12">
+  <StackPanel Margin="8,8,8,10">
    <TextBlock Text="{Binding InstanceNameLabel}"/>
    <TextBox x:Name="OccurrenceNameInput" Text="{Binding InstanceName,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Margin="0,4,0,5"/>
    <Button x:Name="RenameOccurrenceButton" Content="{Binding RenameOccurrenceLabel}" Command="{Binding RenameOccurrenceCommand}"
@@ -21,6 +21,7 @@
            IsEnabled="{Binding CanRenameDefinition}" Margin="0,0,0,8"/>
    <TextBlock Text="{Binding Context}" TextWrapping="Wrap" Opacity="0.7" Margin="0,0,0,10"/>
    <StackPanel IsEnabled="{Binding CanMove}">
+    <TextBlock Text="{I18N {x:Static r:LangKeys.OccurrenceDragHint}}" TextWrapping="Wrap" Opacity="0.68" Margin="0,0,0,10"/>
     <TextBlock Text="{I18N {x:Static r:LangKeys.LocalTranslation}}"/>
     <UniformGrid Columns="3" Margin="0,4,0,10">
      <mah:NumericUpDown x:Name="XInput" Value="{Binding X,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" HideUpDownButtons="True" ToolTip="X"/>
@@ -37,7 +38,8 @@
     <mah:NumericUpDown x:Name="AngleInput" Value="{Binding AngleDegrees,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Margin="0,4,0,10"/>
     <Button Content="{I18N {x:Static r:LangKeys.ApplyPlacement}}" Command="{Binding ApplyCommand}"/>
    </StackPanel>
-   <Separator Margin="0,12,0,8"/>
+   <Expander Header="{I18N {x:Static r:LangKeys.InstanceStructureActions}}" Margin="0,14,0,8">
+    <StackPanel Margin="8,8,8,10">
    <TextBlock Text="{Binding NewAssemblyNameLabel}"/>
    <TextBox Text="{Binding NewAssemblyName,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Margin="0,4,0,6"/>
    <Button x:Name="CreateAssemblyButton" Content="{Binding CreateAssemblyLabel}" Command="{Binding CreateAssemblyCommand}"
@@ -57,7 +59,10 @@
    <TextBlock Text="{Binding DestinationLabel}"/>
    <ComboBox ItemsSource="{Binding Parents}" SelectedItem="{Binding SelectedParent}" DisplayMemberPath="Name" Margin="0,4,0,6"/>
    <Button x:Name="ReparentButton" Content="{Binding ReparentLabel}" Command="{Binding ReparentCommand}" IsEnabled="{Binding CanMove}"/>
-   <Separator Margin="0,12,0,8"/>
+    </StackPanel>
+   </Expander>
+   <Expander Header="{I18N {x:Static r:LangKeys.ExternalPartActions}}" Margin="0,0,0,8">
+    <StackPanel Margin="8,8,8,10">
    <TextBlock Text="{Binding ExternalSourceLabel}"/>
    <TextBox x:Name="ExternalSourceInput" Text="{Binding ExternalSourcePath,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Margin="0,4,0,6"/>
    <UniformGrid Columns="2" Margin="0,0,0,6">
@@ -74,8 +79,16 @@
     <Button x:Name="RefreshExternalButton" Content="{Binding ExternalRefreshLabel}" Command="{Binding RefreshExternalCommand}"/>
     <Button Content="{Binding ExternalDetachLabel}" Command="{Binding DetachExternalCommand}"/>
    </UniformGrid>
+   <UniformGrid Columns="2" Margin="0,6,0,4">
+    <Button Content="{Binding ExternalPreviewLabel}" Command="{Binding PreviewExternalCommand}" Margin="0,0,3,0"/>
+    <Button Content="{Binding ExternalRelocateLabel}" Command="{Binding RelocateExternalCommand}"
+            IsEnabled="{Binding HasExternalLink}" Margin="3,0,0,0"/>
+   </UniformGrid>
+   <ListBox ItemsSource="{Binding DependencyRows}" MaxHeight="110"/>
    <Button x:Name="PruneUnusedButton" Content="{Binding PruneUnusedLabel}" Command="{Binding PruneUnusedCommand}"
            IsEnabled="{Binding CanPruneUnused}" Margin="0,10,0,0"/>
+    </StackPanel>
+   </Expander>
   </StackPanel>
  </Expander>
 </UserControl>

@@ -4,18 +4,33 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+             xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:r="clr-namespace:Cadoryx.Lang;assembly=Cadoryx.Lang"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
              xmlns:local="clr-namespace:Cadoryx.wpf.Views.Dialogs"
              mc:Ignorable="d"
              d:DesignHeight="450"
              d:DesignWidth="800">
-    <Grid Width="100"
-          Height="100">
+    <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="BooleanVisibility" />
+    </UserControl.Resources>
+    <StackPanel MinWidth="100" MaxWidth="340" Margin="12">
         <mah:ProgressRing Width="30"
                           Height="30"
                           Margin="16"
                           HorizontalAlignment="Center"
                           VerticalAlignment="Center" />
-    </Grid>
+        <TextBlock Text="{Binding Message,RelativeSource={RelativeSource AncestorType=local:ProgressDialog}}"
+                   TextWrapping="Wrap" TextAlignment="Center" Margin="4,0,4,8" />
+        <Button x:Name="CancelButton" AutomationProperties.AutomationId="ProgressCancelButton"
+                Content="{I18N {x:Static r:LangKeys.Cancel}}"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center"
+                Margin="5"
+                Style="{StaticResource MaterialDesignFlatSecondaryButton}"
+                Visibility="{Binding ShowCancelButton,RelativeSource={RelativeSource AncestorType=local:ProgressDialog},Converter={StaticResource BooleanVisibility}}"
+                Command="{Binding CancelCommand,RelativeSource={RelativeSource AncestorType=local:ProgressDialog}}" />
+    </StackPanel>
 
 </UserControl>
 

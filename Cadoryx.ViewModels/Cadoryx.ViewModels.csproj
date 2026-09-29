@@ -25,6 +25,14 @@
     <ProjectReference Include="..\Cadoryx.Lang\Cadoryx.Lang.csproj" />
     <ProjectReference Include="..\Cadoryx.ViewModels.Services\Cadoryx.ViewModels.Services.csproj" />
     <ProjectReference Include="..\Cadoryx.Editor\Cadoryx.Editor.csproj" />
+    <ProjectReference Include="..\Cadoryx.CommandLine\Cadoryx.CommandLine.csproj" />
+    <ProjectReference Include="..\Cadoryx.Agent\Cadoryx.Agent.csproj" />
+    <ProjectReference Include="..\Cadoryx.Agent.Codex\Cadoryx.Agent.Codex.csproj" />
+    <ProjectReference Include="..\Cadoryx.AI.LmStudio\Cadoryx.AI.LmStudio.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <InternalsVisibleTo Include="Cadoryx.Tests" />
   </ItemGroup>
 
 </Project>

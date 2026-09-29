@@ -6,21 +6,35 @@ using OcctSharp;
 namespace Cadoryx.Rendering.Occt;
 
 public sealed record LocalTopologyPick((BoxBoundary First,BoxBoundary? Second)? Box,ExactTopologySelection? Exact);
+public sealed record AssemblyDatumPick(OccurrencePath Path,BodyId Body,int FullTopologyIndex,
+    string Fingerprint,TopologyKind Kind);
+public sealed record SceneSubmissionProfile(double ResourceMs,double DisplayMs,double TransformMs,double DisplayModeMs,double RedrawMs);
 
 /// <summary>UI-thread-owned OCCT scene adapter. Its source geometry is independent of worker inputs.</summary>
-public sealed class OcctViewport : ICadViewport
+public sealed partial class OcctViewport : ICadViewport
 {
     private readonly OcctViewer viewer;
     private readonly IAssetStore assets;
     private readonly Dictionary<(OccurrencePath,BodyId),Entry> entries=[];
     // A revision identifies a modeling result; identical BRep bytes in different parts can share one native shape.
     private readonly Dictionary<(AssetId Asset,XdeSourceRef? Source,AssetFormat? Format),GeometryResource> geometry=[];
+    private readonly Dictionary<(AssetId Asset,AssetFormat? Format),XdeContextResource> xdeContexts=[];
+    private CadScene? progressiveScene;
+    private int progressiveCount;
+    private long progressiveResourceTicks,progressiveDisplayTicks,progressiveTransformTicks,progressiveModeTicks,progressiveRedrawTicks;
+    public SceneSubmissionProfile SubmissionProfile=>new(
+        System.Diagnostics.Stopwatch.GetElapsedTime(0,progressiveResourceTicks).TotalMilliseconds,
+        System.Diagnostics.Stopwatch.GetElapsedTime(0,progressiveDisplayTicks).TotalMilliseconds,
+        System.Diagnostics.Stopwatch.GetElapsedTime(0,progressiveTransformTicks).TotalMilliseconds,
+        System.Diagnostics.Stopwatch.GetElapsedTime(0,progressiveModeTicks).TotalMilliseconds,
+        System.Diagnostics.Stopwatch.GetElapsedTime(0,progressiveRedrawTicks).TotalMilliseconds);
     private HashSet<(OccurrencePath,BodyId)> highlighted=[];
     private int pressedButtons;
     private int lastX,lastY;
     private int pressX,pressY;
     private bool selectionClick;
     private bool cubeClick;
+    private bool cubeHovered;
     private ViewerPresentation? preview;
     private Shape? previewShape;
     private ViewerPresentation? workGrid;
@@ -40,6 +54,8 @@ public sealed class OcctViewport : ICadViewport
     private readonly List<ViewerClipPlane> clipPlanes=[];
     public int SectionPlaneCount=>clipPlanes.Count;
     public int VisibleBodyCount=>entries.Count;
+    public int NativeGeometryCount=>geometry.Count;
+    public int NativeXdeContextCount=>xdeContexts.Count;
     public void SetSection(SectionView section)
     {
         var equations=section.Planes();var staged=new List<ViewerClipPlane>();
@@ -52,10 +68,12 @@ public sealed class OcctViewport : ICadViewport
     }
     public CadCamera CaptureFocusTarget(Bounds3d bounds)=>SceneEnvelope.Fit(CaptureCamera(),bounds);
     // Compute the destination without presenting a fitted frame first (which would flash).
-    public CadCamera CaptureFitTarget()=>SceneEnvelope.Measure(entries.Values.Select(e=>e.Item)) is {} bounds
+    public CadCamera CaptureFitTarget()=>SceneEnvelope.Measure(progressiveScene?.Items.AsEnumerable()??entries.Values.Select(e=>e.Item)) is {} bounds
         ? CaptureFocusTarget(bounds) : CaptureCamera();
     public ViewportCapabilities Capabilities {get;}=new(false,true,true);
     public event EventHandler<IReadOnlyList<SceneItem>>? SelectionChanged;
+    public event EventHandler<AssemblyDatumPick>? AssemblyDatumSelected;
+    public event EventHandler<string>? AssemblyDatumPickRejected;
     public event EventHandler<ViewerCubeOrientation>? ViewCubeOrientationRequested;
     public event EventHandler<ViewerCubeTurn>? ViewCubeTurnRequested;
     public event EventHandler<(BoxBoundary First,BoxBoundary? Second)?>? BoxSubshapeSelected;
@@ -219,7 +237,7 @@ public sealed class OcctViewport : ICadViewport
         foreach(var presentation in originPresentations)presentation.Dispose();originPresentations.Clear();
         foreach(var (shape,_) in originShapes)shape.Dispose();originShapes.Clear();
     }
-    public void SetConstructionGhost(GeometryRecipe? recipe)
+    public void SetConstructionGhost(GeometryRecipe? recipe,RigidTransform3d? occurrence=null)
     {
         constructionGhost?.Dispose();constructionGhost=null;constructionShape?.Dispose();constructionShape=null;
         if(recipe is null){viewer.Redraw();return;}
@@ -241,7 +259,7 @@ public sealed class OcctViewport : ICadViewport
                 ExtrudeRecipe e=>e.Placement,RevolveRecipe r=>r.Placement,
                 _=>throw new NotSupportedException()
             };
-            using var transform=OcctGeometryBridge.ToNative(placement);
+            using var transform=OcctGeometryBridge.ToNative((occurrence??RigidTransform3d.Identity)*placement);
             constructionGhost.SetTransform(transform);constructionGhost.SetDisplayMode(ViewerDisplayMode.Shaded);
             constructionGhost.SetColor(new(0.1,0.8,0.55));constructionGhost.SetTransparency(0.65);
             constructionGhost.SetSelectionKind(ShapeKind.Edge);
@@ -265,6 +283,29 @@ public sealed class OcctViewport : ICadViewport
     private BoxRecipe? selectionBox;
     private TopologyKind? selectionKind;
     private (DocumentId Document,FeatureId Feature)? exactSelectionSource;
+    private TopologyKind? assemblyDatumSelection;
+    public void SetAssemblyDatumSelection(TopologyKind? kind)
+    {
+        bool presentationChanged=(assemblyDatumSelection is null)!=(kind is null);
+        assemblyDatumSelection=kind;viewer.ClearSelection();
+        if(presentationChanged)
+        {
+            var replacements=new Dictionary<(OccurrencePath,BodyId),Entry>();
+            try
+            {
+                foreach(var (key,entry) in entries)
+                    replacements.Add(key,entry with{Presentation=CreatePresentation(entry.Item,entry.Geometry,
+                        highlighted.Contains(key))});
+            }
+            catch{foreach(var replacement in replacements.Values)replacement.Presentation.Dispose();throw;}
+            foreach(var entry in entries.Values)entry.Presentation.Dispose();
+            entries.Clear();foreach(var pair in replacements)entries.Add(pair.Key,pair.Value);
+        }
+        foreach(var entry in entries.Values)
+            entry.Presentation.SetSelectionKind(kind is null?null:kind==TopologyKind.Face?ShapeKind.Face:ShapeKind.Edge);
+        viewer.ClearSelection();
+        viewer.Redraw();
+    }
     public void SetExactSelectionSource(DocumentId document,FeatureId feature)=>exactSelectionSource=(document,feature);
     public void ClearExactSelectionSource()=>exactSelectionSource=null;
     public void SetBoxSelection(BoxRecipe? box,TopologyKind? kind)
@@ -336,6 +377,8 @@ public sealed class OcctViewport : ICadViewport
     public void SetScene(CadScene scene)
     {
         ObjectDisposedException.ThrowIf(disposed,this);
+        FinishOccurrenceHandle(false);ClearOccurrenceHandles();
+        AbortProgressiveScene();
         var staged=new Dictionary<(OccurrencePath,BodyId),Entry>();
         var created=new List<ViewerPresentation>();
         try
@@ -352,33 +395,105 @@ public sealed class OcctViewport : ICadViewport
         catch{foreach(var p in created)p.Dispose();PruneGeometry();viewer.Redraw();throw;}
         foreach(var (key,entry) in entries)if(!staged.TryGetValue(key,out var replacement)||!ReferenceEquals(entry,replacement))entry.Presentation.Dispose();
         entries.Clear();foreach(var pair in staged)entries.Add(pair.Key,pair.Value);
-        PruneGeometry();viewer.Redraw();
+        PruneGeometry();SetDimensions(scene);viewer.Redraw();
+    }
+    /// <summary>Starts an initial large scene on the owning UI thread. Later batches may yield to input and paint.</summary>
+    public void BeginProgressiveScene(CadScene scene)
+    {
+        ObjectDisposedException.ThrowIf(disposed,this);
+        FinishOccurrenceHandle(false);ClearOccurrenceHandles();
+        ArgumentNullException.ThrowIfNull(scene);
+        AbortProgressiveScene();
+        if(entries.Count!=0)throw new InvalidOperationException("Progressive scene loading requires an empty viewport.");
+        progressiveScene=scene;progressiveCount=0;
+        progressiveResourceTicks=progressiveDisplayTicks=progressiveTransformTicks=progressiveModeTicks=progressiveRedrawTicks=0;
+    }
+    /// <summary>Adds at most maxItems or one time budget worth of objects; returns the committed count.</summary>
+    public int AppendProgressiveScene(int maxItems,TimeSpan budget,bool redraw)
+    {
+        ObjectDisposedException.ThrowIf(disposed,this);
+        if(progressiveScene is not {} scene)throw new InvalidOperationException("No progressive scene is active.");
+        if(maxItems<=0||budget<=TimeSpan.Zero)throw new ArgumentOutOfRangeException(nameof(maxItems));
+        var clock=System.Diagnostics.Stopwatch.StartNew();int added=0;
+        try
+        {
+            while(progressiveCount<scene.Items.Length&&added<maxItems&&(added==0||clock.Elapsed<budget))
+            {
+                var item=scene.Items[progressiveCount];var key=(item.Path,item.BodyId);
+                if(entries.ContainsKey(key))throw new InvalidOperationException("Duplicate scene item in progressive load.");
+                long resourceStart=System.Diagnostics.Stopwatch.GetTimestamp();
+                var resource=Resource(item.Geometry);
+                progressiveResourceTicks+=System.Diagnostics.Stopwatch.GetTimestamp()-resourceStart;
+                var presentation=CreatePresentation(item,resource,highlighted.Contains(key));
+                entries.Add(key,new(item,presentation,resource));progressiveCount++;added++;
+            }
+            if(redraw&&added>0)
+            {
+                long redrawStart=System.Diagnostics.Stopwatch.GetTimestamp();viewer.Redraw();
+                progressiveRedrawTicks+=System.Diagnostics.Stopwatch.GetTimestamp()-redrawStart;
+            }
+            return progressiveCount;
+        }
+        catch{AbortProgressiveScene();throw;}
+    }
+    public void CompleteProgressiveScene()
+    {
+        ObjectDisposedException.ThrowIf(disposed,this);
+        if(progressiveScene is not {} scene||progressiveCount!=scene.Items.Length)
+            throw new InvalidOperationException("The progressive scene is incomplete.");
+        try{SetDimensions(scene);viewer.Redraw();progressiveScene=null;progressiveCount=0;}
+        catch{AbortProgressiveScene();throw;}
+    }
+    public void AbortProgressiveScene()
+    {
+        if(progressiveScene is null)return;
+        progressiveScene=null;progressiveCount=0;
+        foreach(var entry in entries.Values)entry.Presentation.Dispose();entries.Clear();
+        PruneGeometry();ClearDimensions();viewer.Redraw();
     }
     private void PruneGeometry()
     {
         var used=entries.Values.Select(e=>e.Geometry).ToHashSet();
         foreach(var key in geometry.Keys.Where(k=>!used.Contains(geometry[k])).ToArray()){geometry[key].Dispose();geometry.Remove(key);}
+        var usedContexts=geometry.Values.Where(g=>g.SourceContext is not null).Select(g=>g.SourceContext!).ToHashSet();
+        foreach(var key in xdeContexts.Keys.Where(k=>!usedContexts.Contains(xdeContexts[k])).ToArray()){xdeContexts[key].Dispose();xdeContexts.Remove(key);}
     }
     private GeometryResource Resource(GeometryAssetRef reference)
     {
         var key=(reference.AssetId,reference.Source,reference.Format);
         if(geometry.TryGetValue(key,out var resource))return resource;
-        resource=new(reference,assets);geometry.Add(key,resource);return resource;
+        resource=new(reference,assets,Context);geometry.Add(key,resource);return resource;
+    }
+    private XdeContextResource Context(XdeSourceRef source)
+    {
+        var key=(source.ContextAssetId,source.Format);
+        if(xdeContexts.TryGetValue(key,out var resource))return resource;
+        resource=new(source,assets);xdeContexts.Add(key,resource);return resource;
     }
     private ViewerPresentation CreatePresentation(SceneItem item,GeometryResource resource,bool selected)
     {
-        bool sourceStyles=item.PreserveSourceStyles&&!selected&&resource.Label is not null;
-        var presentation=sourceStyles?viewer.Display(resource.Label!):viewer.Display(resource.Shape);
+        bool binding=assemblyDatumSelection is not null;
+        bool sourceStyles=item.PreserveSourceStyles&&!selected&&resource.Label is not null&&!binding;
+        long displayStart=System.Diagnostics.Stopwatch.GetTimestamp();
+        var presentation=sourceStyles?viewer.Display(resource.Label!):viewer.Display(
+            binding?resource.GetBindingShape():resource.Shape);
+        long displayEnd=System.Diagnostics.Stopwatch.GetTimestamp();
+        if(progressiveScene is not null)progressiveDisplayTicks+=displayEnd-displayStart;
         try
         {
-            using var transform=OcctGeometryBridge.ToNative(item.WorldTransform*resource.SourceLocationInverse);
+            long transformStart=System.Diagnostics.Stopwatch.GetTimestamp();
+            using var transform=OcctGeometryBridge.ToNative(!binding&&resource.Label is not null?
+                item.WorldTransform*resource.SourceLocationInverse:item.WorldTransform);
             presentation.SetTransform(transform);
+            if(progressiveScene is not null)progressiveTransformTicks+=System.Diagnostics.Stopwatch.GetTimestamp()-transformStart;
             if(!sourceStyles)
             {
                 var color=OcctGeometryBridge.ToXdeColor(selected?0xFFFF6B0Au:item.Argb);
                 presentation.SetColor(new(color.Red,color.Green,color.Blue));presentation.SetTransparency(1-color.Alpha);
             }
+            long modeStart=System.Diagnostics.Stopwatch.GetTimestamp();
             presentation.SetDisplayMode(mode==CadDisplayMode.Shaded?ViewerDisplayMode.Shaded:ViewerDisplayMode.Wireframe);
+            if(progressiveScene is not null)progressiveModeTicks+=System.Diagnostics.Stopwatch.GetTimestamp()-modeStart;
             if(selectionKind is {} kind)presentation.SetSelectionKind(kind==TopologyKind.Face?ShapeKind.Face:ShapeKind.Edge);
             return presentation;
         }
@@ -433,7 +548,24 @@ public sealed class OcctViewport : ICadViewport
         return current with {Eye=new(target.Eye.X,target.Eye.Y,target.Eye.Z),
             Target=new(target.Target.X,target.Target.Y,target.Target.Z),Up=new(target.Up.X,target.Up.Y,target.Up.Z)};
     }
-    public void SetViewCubeVisible(bool visible)=>viewer.SetViewCubeVisible(visible);
+    public void SetViewCubeVisible(bool visible)
+    {
+        if(!visible){cubeHovered=false;viewer.SetViewCubeHovered(false);}
+        viewer.SetViewCubeVisible(visible);
+    }
+    public void SetViewCubeAppearance(ViewerCubeAppearance appearance)=>viewer.SetViewCubeAppearance(appearance);
+    public void PointerExited()
+    {
+        if(!cubeHovered)return;
+        cubeHovered=false;viewer.SetViewCubeHovered(false);
+        viewer.MoveTo(-1,-1); // Clear OCCT's detected-face highlight when leaving the HWND directly.
+    }
+    private void UpdateCubeHover(int x,int y)
+    {
+        bool hovered=viewer.HitViewCubeControl(x,y) is not null;
+        if(hovered==cubeHovered)return;
+        cubeHovered=hovered;viewer.SetViewCubeHovered(hovered);
+    }
     public ViewerCubeOrientation? HitViewCube(int x,int y)=>viewer.HitViewCube(x,y);
     public ViewerCubeHit? HitViewCubeControl(int x,int y)=>viewer.HitViewCubeControl(x,y);
     public CadCamera CaptureCubeTurnTarget(ViewerCubeTurn turn,int degrees)
@@ -460,10 +592,13 @@ public sealed class OcctViewport : ICadViewport
     public void PointerMoved(int x,int y,int buttons,int modifiers)
     {
         lastX=x;lastY=y;
-        if(cubeClick){viewer.MoveTo(x,y);return;}
-        if(constructing&&(buttons&6)==0){ConstructionPointer?.Invoke(this,(x,y,false));return;}
+        if(dragOccurrence is not null){MoveOccurrenceHandle(x,y);return;}
+        if(draggingSolidHandle is not null){MoveSolidHandle(x,y);return;}
+        if(cubeClick){viewer.MoveTo(x,y);UpdateCubeHover(x,y);return;}
+        if(constructing&&(buttons&6)==0){ConstructionPointer?.Invoke(this,(x,y,false));UpdateCubeHover(x,y);return;}
         if(Math.Abs(x-pressX)>2||Math.Abs(y-pressY)>2)selectionClick=false;
         viewer.Input.PointerMoved(x,y,(ViewerPointerButtons)(buttons&pressedButtons),(ViewerModifierKeys)modifiers);
+        UpdateCubeHover(x,y);
     }
     public void PointerPressed(int button,int x,int y,int modifiers)
     {
@@ -471,6 +606,10 @@ public sealed class OcctViewport : ICadViewport
         lastX=x;lastY=y;pressedButtons|=1<<button;
         if(button==0&&viewer.HitViewCubeControl(x,y) is not null)
         {cubeClick=true;pressX=x;pressY=y;selectionClick=true;return;}
+        if(button==0&&!constructing&&modifiers==0&&TryStartSolidHandle(x,y))
+        {selectionClick=false;return;}
+        if(button==0&&!constructing&&modifiers==0&&TryStartOccurrenceHandle(x,y))
+        {selectionClick=false;return;}
         if(constructing&&button==0)return;
         pressX=x;pressY=y;selectionClick=button==0;
         viewer.Input.PointerPressed(Button(button),x,y,(ViewerModifierKeys)modifiers);
@@ -479,6 +618,10 @@ public sealed class OcctViewport : ICadViewport
     {
         if((pressedButtons&(1<<button))==0)return; // Late release after capture loss must not clear model selection.
         pressedButtons&=~(1<<button);lastX=x;lastY=y;
+        if(button==0&&dragOccurrence is not null)
+        {MoveOccurrenceHandle(x,y);FinishOccurrenceHandle(true);return;}
+        if(button==0&&draggingSolidHandle is not null)
+        {MoveSolidHandle(x,y);FinishSolidHandle(true);return;}
         if(button==0&&cubeClick)
         {
             cubeClick=false;
@@ -494,6 +637,37 @@ public sealed class OcctViewport : ICadViewport
         RefreshWorkGridScale();
         bool clicked=button==0&&selectionClick;selectionClick=false;
         if(!clicked)return;
+        if(assemblyDatumSelection is {} datumKind)
+        {
+            var picked=viewer.GetSelectedItems();
+            try
+            {
+                var matches=entries.Where(e=>selected.Contains(e.Value.Presentation)).ToArray();
+                if(picked.Count!=1||matches.Length!=1)
+                {
+                    AssemblyDatumPickRejected?.Invoke(this,
+                        $"Pick one visible model face or edge (subshapes: {picked.Count}, instances: {matches.Length}).");
+                    return;
+                }
+                if(picked.Count==1&&matches.Length==1)
+                {
+                    var entry=matches[0];
+                    var binding=entry.Value.Geometry.GetBindingShape();
+                    using var map=RepairSnapshot.Create(binding);
+                    int index=RepairSnapshot.FindTopologyIndex(binding,picked[0].Shape);
+                    if(index<0)index=RepairSnapshot.FindTopologyPartnerIndex(binding,picked[0].Shape);
+                    var expected=datumKind==TopologyKind.Face?ShapeKind.Face:ShapeKind.Edge;
+                    if(index>=0&&index<map.Topology.Count&&index<entry.Value.Geometry.BindingKinds.Length&&
+                       map.Topology[index].Kind==expected&&entry.Value.Geometry.BindingKinds[index]==expected)
+                        AssemblyDatumSelected?.Invoke(this,new(entry.Key.Item1,entry.Key.Item2,index,
+                            entry.Value.Geometry.BindingFingerprint,datumKind));
+                    else AssemblyDatumPickRejected?.Invoke(this,
+                        $"The picked subshape is not in this body's exact BRep map (index {index}, kind {picked[0].Shape.Kind}, picked X {picked[0].Shape.GetBoundingBox().Minimum.X:G4}, body X {binding.GetBoundingBox().Minimum.X:G4}, instance X {entry.Value.Item.WorldTransform.Translation.X:G4}).");
+                }
+            }
+            finally {foreach(var item in picked)item.Dispose();}
+            return;
+        }
         if(selectionKind is {} kind&&(selectionBox is not null||exactSelectionSource is not null))
         {
             var pickedItems=viewer.GetSelectedItems();
@@ -536,6 +710,8 @@ public sealed class OcctViewport : ICadViewport
     }
     public void CancelInput()
     {
+        FinishOccurrenceHandle(false);
+        FinishSolidHandle(false);
         pressedButtons=0;selectionClick=false;cubeClick=false;
         // preview.26 clears any pressed button on release. Right avoids synthesizing a left click.
         viewer.Input.PointerReleased(ViewerPointerButton.Right,lastX,lastY);
@@ -567,36 +743,70 @@ public sealed class OcctViewport : ICadViewport
     public void Dispose()
     {
         if(disposed)return;
+        FinishOccurrenceHandle(false);ClearOccurrenceHandles();
+        FinishSolidHandle(false);ClearSolidHandles();
+        AbortProgressiveScene();
+        ClearDimensions();
         foreach(var plane in clipPlanes)plane.Dispose();clipPlanes.Clear();
         preview?.Dispose();previewShape?.Dispose();constructionGhost?.Dispose();constructionShape?.Dispose();workGrid?.Dispose();workGridShape?.Dispose();ClearOriginAxes();
         foreach(var e in entries.Values)e.Presentation.Dispose();entries.Clear();
-        viewer.Dispose();foreach(var g in geometry.Values)g.Dispose();geometry.Clear();disposed=true;
+        viewer.Dispose();foreach(var g in geometry.Values)g.Dispose();geometry.Clear();
+        foreach(var context in xdeContexts.Values)context.Dispose();xdeContexts.Clear();disposed=true;
     }
     private sealed record Entry(SceneItem Item,ViewerPresentation Presentation,GeometryResource Geometry);
     private sealed class GeometryResource : IDisposable
     {
         private readonly IAssetLease lease;
-        private IAssetLease? sourceLease;
-        private XdeDocument? context;
+        private readonly GeometryAssetRef reference;
+        private readonly IAssetStore assets;
+        private Shape? bindingShape;
+        public XdeContextResource? SourceContext {get;}
         public Shape Shape {get;}
+        public string BindingFingerprint {get;private set;}="";
+        public ShapeKind[] BindingKinds {get;private set;}=[];
         public XdeLabel? Label {get;}
         public RigidTransform3d SourceLocationInverse {get;}=RigidTransform3d.Identity;
-        public GeometryResource(GeometryAssetRef reference,IAssetStore assets)
+        public GeometryResource(GeometryAssetRef reference,IAssetStore assets,Func<XdeSourceRef,XdeContextResource> context)
         {
+            this.reference=reference;this.assets=assets;
             lease=assets.Acquire(reference.AssetId);
             try
             {
                 if(reference.Source is {} source)
                 {
-                    sourceLease=assets.Acquire(source.ContextAssetId);
-                    context=OcctGeometryBridge.ReadContext(source.ContextAssetId,assets,source.Format);Label=context.GetLabel(source.DefinitionEntry);
+                    SourceContext=context(source);Label=SourceContext.Document.GetLabel(source.DefinitionEntry);
                     Shape=Label.Shape;using var location=Label.Location;using var t=location.ToTransform();
                     SourceLocationInverse=OcctGeometryBridge.FromNative(t).Inverse();
                 }
                 else Shape=OcctGeometryBridge.ReadShape(reference,assets);
             }
-            catch{Shape?.Dispose();context?.Dispose();sourceLease?.Dispose();lease.Dispose();throw;}
+            catch{Shape?.Dispose();lease.Dispose();throw;}
         }
-        public void Dispose(){Shape.Dispose();context?.Dispose();sourceLease?.Dispose();lease.Dispose();}
+        public Shape GetBindingShape()
+        {
+            if(bindingShape is not null)return bindingShape;
+            var created=OcctGeometryBridge.ReadShape(reference,assets);
+            try
+            {
+                using var map=RepairSnapshot.Create(created);
+                BindingFingerprint=map.Fingerprint;
+                BindingKinds=map.Topology.Select(t=>t.Kind).ToArray();
+                bindingShape=created;return created;
+            }
+            catch{created.Dispose();throw;}
+        }
+        public void Dispose(){bindingShape?.Dispose();Shape.Dispose();lease.Dispose();}
+    }
+    private sealed class XdeContextResource : IDisposable
+    {
+        private readonly IAssetLease lease;
+        public XdeDocument Document {get;}
+        public XdeContextResource(XdeSourceRef source,IAssetStore assets)
+        {
+            lease=assets.Acquire(source.ContextAssetId);
+            try{Document=OcctGeometryBridge.ReadContext(source.ContextAssetId,assets,source.Format);}
+            catch{lease.Dispose();throw;}
+        }
+        public void Dispose(){Document.Dispose();lease.Dispose();}
     }
 }

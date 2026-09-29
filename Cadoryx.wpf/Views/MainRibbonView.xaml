@@ -230,7 +230,7 @@
                         <HeaderedContentControl Style="{StaticResource RibbonGroup}"
                                                 Header="{I18N {x:Static r:LangKeys.File}}">
                             <UniformGrid Rows="2"
-                                         Columns="3">
+                                         Columns="4">
                                 <Button  Command="{Binding NewCommand}"
                                          ToolTip="{I18N {x:Static r:LangKeys.New}}">
                                     <md:PackIcon Kind="FilePlusOutline"
@@ -260,6 +260,12 @@
                                     <md:PackIcon Kind="FileExportOutline"
                                                  Width="20"
                                                  Height="20" />
+                                </Button>
+                                <Button Command="{Binding DeliveryCommand}" ToolTip="{I18N {x:Static r:LangKeys.EngineeringDelivery}}">
+                                    <md:PackIcon Kind="PackageVariantClosed" Width="20" Height="20"/>
+                                </Button>
+                                <Button Command="{Binding OpenTechnicalDrawingCommand}" ToolTip="{I18N {x:Static r:LangKeys.DrawingSheets}}">
+                                    <md:PackIcon Kind="FileDocumentOutline" Width="20" Height="20"/>
                                 </Button>
                             </UniformGrid>
                         </HeaderedContentControl>

@@ -5,6 +5,7 @@
              xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:cv="clr-namespace:Cadoryx.wpf.Converters"
+             xmlns:local="clr-namespace:Cadoryx.wpf.Views.Settings"
              xmlns:r="clr-namespace:Cadoryx.Lang;assembly=Cadoryx.Lang"
              xmlns:vm="clr-namespace:Cadoryx.ViewModels.Settings;assembly=Cadoryx.ViewModels"
              mc:Ignorable="d"
@@ -62,6 +63,11 @@
                                                  Margin="0,4,0,14"
                                                  Width="220"
                                                  HorizontalAlignment="Left" />
+                                <TextBlock Text="{I18N {x:Static r:LangKeys.NotificationPosition}}" Opacity="0.75" />
+                                <ComboBox ItemsSource="{Binding NotificationAnchorOptions}"
+                                          SelectedItem="{Binding SelectedNotificationAnchor}"
+                                          DisplayMemberPath="DisplayName" Width="260" HorizontalAlignment="Left"
+                                          Margin="0,4,0,14" AutomationProperties.AutomationId="NotificationAnchor" />
                                 <TextBlock Text="{I18N {x:Static r:LangKeys.SettingsSavedHint}}"
                                            Opacity="0.6"
                                            TextWrapping="Wrap" />
@@ -100,6 +106,12 @@
                                 <CheckBox Content="{I18N {x:Static r:LangKeys.Antialiasing}}"
                                           IsChecked="{Binding IsAntialiasingEnabled}" />
                             </StackPanel>
+                        </ScrollViewer>
+                    </DataTemplate>
+
+                    <DataTemplate DataType="{x:Type vm:RadialMenuApplicationSettingsViewModel}">
+                        <ScrollViewer VerticalScrollBarVisibility="Auto">
+                            <local:RadialMenuSettingsView />
                         </ScrollViewer>
                     </DataTemplate>
 

@@ -30,6 +30,12 @@ public partial class MainWindowViewModel : ObservableObject
     private readonly CadoryxApplicationSettings _applicationSettings;
     private readonly CadWorkspace workspace;
     private readonly IGeometryKernel kernel;
+    private readonly IDocumentDeliveryService delivery;
+    private readonly IDeliveryHost deliveryHost;
+    private readonly IExchangeImportService importer;
+    private readonly ICadNotificationService notifications;
+    private CancellationTokenSource? openingCancellation;
+    private Task? openingTask;
     private readonly IAssetStore assets;
     private readonly IDocumentStorage storage;
     private readonly ICadFileDialogs files;
@@ -47,16 +53,18 @@ public partial class MainWindowViewModel : ObservableObject
     public ObservableCollection<CadDocumentViewModel> Documents {get;}=[];
     [ObservableProperty] private CadDocumentViewModel? activeDocument;
     [ObservableProperty] private bool isBusy;
+    [ObservableProperty] private bool isOpening;
     public bool IsShuttingDown {get;private set;}
 
     public MainWindowViewModel(IDockLayoutService dockLayoutService, SideToggleManager sideToggleManager,
     IApplicationCultureService cultureSettingService,
     IApplicationThemeService themeSettingService,
     IApplicationSettingsStore applicationSettingsStore,
-    IDialogService dialogService, CadWorkspace workspace, IGeometryKernel kernel, IAssetStore assets,
-    IDocumentStorage storage, ICadFileDialogs files, ICadMessageLog log,
+    IDialogService dialogService, CadWorkspace workspace, IGeometryKernel kernel, IAssetStore assets, IExchangeImportService importer,
+    IDocumentStorage storage, ICadFileDialogs files, ICadMessageLog log, ICadNotificationService notifications,
     DocumentRecoveryService recovery, IRecoveryStore recoveryStore, IRecoveryDialogService recoveryDialog, IDocumentResourcesDialogService resourcesDialog,
-    ISketchEditorHost sketchEditor,Cadoryx.Sketching.ISketchConstraintSolver sketchSolver,ILocalFeatureHost localFeatureHost,IHistoryQueryHost historyQueryHost,IDocumentSettingsHost documentSettingsHost
+    ISketchEditorHost sketchEditor,Cadoryx.Sketching.ISketchConstraintSolver sketchSolver,ILocalFeatureHost localFeatureHost,IHistoryQueryHost historyQueryHost,IDocumentSettingsHost documentSettingsHost,
+    IDocumentDeliveryService delivery,IDeliveryHost deliveryHost
     )
     {
         this._dockLayoutService = dockLayoutService;
@@ -66,6 +74,9 @@ public partial class MainWindowViewModel : ObservableObject
         _applicationSettingsStore = applicationSettingsStore;
         _dialogService = dialogService;
         this.workspace=workspace;this.kernel=kernel;this.assets=assets;this.storage=storage;this.files=files;this.log=log;
+        this.importer=importer;
+        this.delivery=delivery;this.deliveryHost=deliveryHost;
+        this.notifications=notifications;
         this.recovery=recovery;this.recoveryStore=recoveryStore;this.recoveryDialog=recoveryDialog;
         this.localFeatureHost=localFeatureHost;
         this.historyQueryHost=historyQueryHost;
@@ -98,6 +109,16 @@ public partial class MainWindowViewModel : ObservableObject
     public MessagesToolboxViewModel Messages =>
         _dockLayoutService.GetAnchorable<MessagesToolboxViewModel>()
         ?? throw new InvalidOperationException("The messages toolbox is not registered.");
+
+    public CommandLineToolboxViewModel CommandLine =>
+        _dockLayoutService.GetAnchorable<CommandLineToolboxViewModel>()
+        ?? throw new InvalidOperationException("The command toolbox is not registered.");
+    public AiAssistantToolboxViewModel AiAssistant =>
+        _dockLayoutService.GetAnchorable<AiAssistantToolboxViewModel>()
+        ?? throw new InvalidOperationException("The AI assistant toolbox is not registered.");
+
+    [RelayCommand] private void ShowCommandLine() => _dockLayoutService.ShowAnchorable(CommandLine);
+    [RelayCommand] private void ShowAiAssistant() => _dockLayoutService.ShowAnchorable(AiAssistant);
 
     public CadoryxApplicationSettings ApplicationSettings => _applicationSettings;
     public string GridVisibleLabel=>Strings.ResourceManager.GetString("GridVisible")??"Show work grid";
@@ -161,21 +182,56 @@ public partial class MainWindowViewModel : ObservableObject
     [RelayCommand(CanExecute=nameof(CanStartOperation))]
     private void New(){if(!IsShuttingDown)Attach(workspace.Create(string.Format(Strings.UntitledDocumentFormat,Documents.Count+1)));}
 
-    [RelayCommand(CanExecute=nameof(CanStartOperation))]
+    [RelayCommand(CanExecute=nameof(CanOpenFile))]
     private async Task OpenFileAsync()
     {
         if(IsShuttingDown)return;var path=files.OpenDocument();if(path is null)return;
         await OpenPathAsync(path);
     }
-    public async Task OpenPathAsync(string path)=>await RunAsync(async()=>
+    public async Task OpenPathAsync(string path)
+    {
+        if(!CanStartOperation()||IsOpening)return;
+        if(Path.GetExtension(path).Equals(".cadoryx",StringComparison.OrdinalIgnoreCase))
+        {await OpenNativePathAsync(path);return;}
+        IsOpening=true;
+        using var cancellation=new CancellationTokenSource();openingCancellation=cancellation;
+        try{openingTask=OpenExchangeAsync(path,cancellation.Token);await openingTask;}
+        finally{openingTask=null;openingCancellation=null;IsOpening=false;}
+    }
+    private async Task OpenExchangeAsync(string path,CancellationToken token)
+    {
+        try
+        {
+            await notifications.RunWithProgressAsync(async cancellation=>
+            {
+                using var loaded=await Task.Run(()=>importer.ImportAsync(path,assets,cancellation),cancellation);
+                // Let foreground edits/close prompts finish before activating the new document.
+                while(IsBusy||closingDocuments.Count>0)await Task.Delay(50,cancellation);
+                cancellation.ThrowIfCancellationRequested();
+                if(IsShuttingDown)throw new OperationCanceledException(cancellation);
+                Attach(workspace.Attach(loaded.Snapshot));
+                foreach(var diagnostic in loaded.Diagnostics)log.Add(diagnostic.Message,CadMessageLevel.Information,diagnostic.Code);
+                StatusText=string.Format(Strings.OpenedFormat,Path.GetFileName(path));
+            },string.Format(Strings.ProgressOpeningFormat,Path.GetFileName(path)),token);
+            log.Add(string.Format(Strings.OpenedFormat,Path.GetFileName(path)),CadMessageLevel.Information,"Open.Completed");
+        }
+        catch(OperationCanceledException)
+        {StatusText=Strings.CanceledStatus;log.Add(string.Format(Strings.NotificationOpenCancelledFormat,Path.GetFileName(path)),CadMessageLevel.Information,"Open.Cancelled");}
+        catch(Exception ex){Report(ex);}
+    }
+    private async Task OpenNativePathAsync(string path)=>await RunAsync(async()=>
     {
         var existing=Documents.FirstOrDefault(d=>string.Equals(d.Session.FilePath,Path.GetFullPath(path),StringComparison.OrdinalIgnoreCase));
         if(existing is not null){existing.IsActive=true;ActiveDocument=existing;return;}
-        bool own=Path.GetExtension(path).Equals(".cadoryx",StringComparison.OrdinalIgnoreCase);
-        using var loaded=own?await storage.LoadAsync(path,assets):await kernel.ImportAsync(path,assets);
-        Attach(workspace.Attach(loaded.Snapshot,own?Path.GetFullPath(path):null));
-        foreach(var diagnostic in loaded.Diagnostics)log.Add(diagnostic.Message,CadMessageLevel.Information,diagnostic.Code);
-        StatusText=string.Format(Strings.OpenedFormat,Path.GetFileName(path));
+        await _dialogService.RunWithProgressAsync(async token =>
+        {
+            using var loaded=await Task.Run(()=>storage.LoadAsync(path,assets,token),token);
+            // Cancellation can race with a completed read; only commit an uncancelled result.
+            token.ThrowIfCancellationRequested();
+            Attach(workspace.Attach(loaded.Snapshot,Path.GetFullPath(path)));
+            foreach(var diagnostic in loaded.Diagnostics)log.Add(diagnostic.Message,CadMessageLevel.Information,diagnostic.Code);
+            StatusText=string.Format(Strings.OpenedFormat,Path.GetFileName(path));
+        },canCancel:true,message:string.Format(Strings.ProgressOpeningFormat,Path.GetFileName(path)));
     });
 
     [RelayCommand(CanExecute=nameof(CanUseDocument))]
@@ -223,7 +279,9 @@ public partial class MainWindowViewModel : ObservableObject
     {
         if(ActiveDocument is null)New();if(ActiveDocument is not {} doc||doc.IsReadOnly)return;
         var part=doc.SelectedTargetPart??Cadoryx.Db.DefinitionId.New();
-        var sketch=Cadoryx.Db.CadSketch.Create(part,Strings.Sketch+" "+(doc.Session.Snapshot.Sketches.Count+1),Cadoryx.Db.RigidTransform3d.Identity);
+        var workPlane=doc.WorkPlaneSettings;
+        var sketch=Cadoryx.Db.CadSketch.Create(part,Strings.Sketch+" "+(doc.Session.Snapshot.Sketches.Count+1),
+            new Cadoryx.Db.RigidTransform3d(workPlane.Origin,workPlane.Rotation));
         await RunAsync(async()=>{await using var editor=new SketchEditorViewModel(doc,kernel,sketchSolver,sketch,true);await sketchEditor.ShowAsync(editor);});
     }
     [RelayCommand(CanExecute=nameof(CanUseDocument))] private async Task LocalFeatureAsync()
@@ -260,10 +318,12 @@ public partial class MainWindowViewModel : ObservableObject
             if(!ReferenceEquals(doc,value)){doc.IsActive=false;doc.InvalidatePreview();}
         }
         if(value is not null){value.IsActive=true;if(!ReferenceEquals(_dockLayoutService.ActiveDockable,value))_dockLayoutService.ActiveDockable=value;}
-        ModelTree.Bind(value);Properties.Bind(value);Modeling.Bind(value);
+        ModelTree.Bind(value);Properties.Bind(value);Modeling.Bind(value);CommandLine.Bind(value);AiAssistant.Bind(value);
         RefreshCommandState();
     }
     private bool CanStartOperation()=>!IsBusy&&!IsShuttingDown;
+    private bool CanOpenFile()=>CanStartOperation()&&!IsOpening;
+    partial void OnIsOpeningChanged(bool value)=>OpenFileCommand.NotifyCanExecuteChanged();
     private bool CanUseDocument()=>CanStartOperation()&&ActiveDocument is {IsClosingRequested:false};
     private bool CanEditDocument()=>CanUseDocument()&&ActiveDocument is {IsReadOnly:false};
     private bool CanUndo()=>CanUseDocument()&&ActiveDocument!.Session.CanUndo;
@@ -273,7 +333,7 @@ public partial class MainWindowViewModel : ObservableObject
     private void RefreshCommandState()
     {
         NewCommand.NotifyCanExecuteChanged();OpenFileCommand.NotifyCanExecuteChanged();SaveCommand.NotifyCanExecuteChanged();
-        SaveAsCommand.NotifyCanExecuteChanged();ExportCommand.NotifyCanExecuteChanged();UndoCommand.NotifyCanExecuteChanged();
+        SaveAsCommand.NotifyCanExecuteChanged();ExportCommand.NotifyCanExecuteChanged();DeliveryCommand.NotifyCanExecuteChanged();OpenTechnicalDrawingCommand.NotifyCanExecuteChanged();UndoCommand.NotifyCanExecuteChanged();
         RedoCommand.NotifyCanExecuteChanged();FitViewCommand.NotifyCanExecuteChanged();SetViewCommand.NotifyCanExecuteChanged();
         OpenDocumentSettingsCommand.NotifyCanExecuteChanged();
         OpenRecoveryCommand.NotifyCanExecuteChanged();
@@ -330,6 +390,8 @@ public partial class MainWindowViewModel : ObservableObject
         RefreshCommandState();
         try
         {
+            openingCancellation?.Cancel();
+            if(openingTask is {} pendingOpen)await pendingOpen;
             foreach(var doc in Documents.ToArray())if(!await CanCloseAsync(doc))return false;
             foreach(var doc in Documents.ToArray())await CloseDocumentAsync(doc);
             return true;
@@ -340,7 +402,7 @@ public partial class MainWindowViewModel : ObservableObject
     private async Task RunAsync(Func<Task> action)
     {
         if(IsShuttingDown||IsBusy)return;IsBusy=true;
-        try{await action();}catch(Exception ex){Report(ex);}finally{IsBusy=false;}
+        try{await action();}catch(OperationCanceledException){StatusText=Strings.CanceledStatus;}catch(Exception ex){Report(ex);}finally{IsBusy=false;}
     }
     public void Report(Exception ex){StatusText=ex.Message;log.Add(ex.Message,CadMessageLevel.Error,"Workspace");}
     public void ReportRecoveryFailure(Exception ex)
@@ -416,6 +478,7 @@ public partial class MainWindowViewModel : ObservableObject
 
     private void ApplySettingsToServices(CadoryxApplicationSettings settings)
     {
+        notifications.SetAnchor(settings.General.NotificationAnchor);
         _themeSettingService.ApplyTheme(
             settings.General.IsDarkTheme,
             settings.General.PrimaryColor,

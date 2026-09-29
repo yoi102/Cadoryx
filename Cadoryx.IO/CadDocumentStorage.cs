@@ -8,12 +8,12 @@ using Cadoryx.Kernel.Abstractions;
 namespace Cadoryx.IO;
 
 /// <summary>Versioned ZIP container. Metadata reads never initialize OCCT.</summary>
-public sealed class CadDocumentStorage(CadSectionMigrationRegistry? migrations=null,StorageLimits? limits=null) : IDocumentStorage
+public sealed class CadDocumentStorage(CadSectionMigrationRegistry? migrations=null,StorageLimits? limits=null,bool deferGeometryAssets=false) : IDocumentStorage
 {
     private readonly CadSectionMigrationRegistry registry=migrations??new();
     private readonly StorageLimits limits=limits??new();
     private static readonly HashSet<string> KnownSections=CadSectionMigrationRegistry.CurrentFormats.Keys.ToHashSet();
-    private static readonly string[] Capabilities=["cadoryx.core.1","occt.brep.1","cadoryx.geometry-table.1","cadoryx.asset-catalog.1","cadoryx.sketches.1","cadoryx.sketch-association.1","cadoryx.topology-references.1","cadoryx.local-box-edge.1","cadoryx.local-chamfer-two-distances.1","cadoryx.local-multi-edge.1","cadoryx.local-variable-radius.1","cadoryx.bound-variable-radius.1","cadoryx.topology-history.1","cadoryx.topology-history.2","cadoryx.history-queries.1","cadoryx.feature-bindings.1","cadoryx.exact-local-selection.1","cadoryx.bound-local-chamfer.1","cadoryx.circular-sketch-profile.1","cadoryx.circular-sketch-holes.1","cadoryx.sketch-angular-constraints.1","cadoryx.polygon-sketch-holes.1","cadoryx.assembly-constraints.1","cadoryx.external-parts.1"];
+    private static readonly string[] Capabilities=["cadoryx.core.1","occt.brep.1","cadoryx.geometry-table.1","cadoryx.asset-catalog.1","cadoryx.sketches.1","cadoryx.sketch-association.1","cadoryx.topology-references.1","cadoryx.local-box-edge.1","cadoryx.local-chamfer-two-distances.1","cadoryx.local-multi-edge.1","cadoryx.local-variable-radius.1","cadoryx.bound-variable-radius.1","cadoryx.topology-history.1","cadoryx.topology-history.2","cadoryx.history-queries.1","cadoryx.feature-bindings.1","cadoryx.exact-local-selection.1","cadoryx.bound-local-chamfer.1","cadoryx.circular-sketch-profile.1","cadoryx.circular-sketch-holes.1","cadoryx.sketch-angular-constraints.1","cadoryx.polygon-sketch-holes.1","cadoryx.assembly-constraints.1","cadoryx.external-parts.1","cadoryx.engineering-review.1","cadoryx.technical-drawings.1"];
     public async Task SaveAsync(DocumentSnapshot snapshot,IAssetStore assets,string path,CancellationToken cancellationToken=default)
     {
         cancellationToken.ThrowIfCancellationRequested();
@@ -59,6 +59,8 @@ public sealed class CadDocumentStorage(CadSectionMigrationRegistry? migrations=n
                 await Section(new(CadSectionMigrationRegistry.CurrentFormats["feature-bindings"],MessagePackSections.EncodeFeatureBindings(snapshot.Features.Values)));
                 await Section(new(CadSectionMigrationRegistry.CurrentFormats["external-parts"],
                     MessagePackSections.EncodeExternalParts(snapshot.ExternalParts.Values)));
+                await Section(new(CadSectionMigrationRegistry.CurrentFormats["engineering-review"],MessagePackSections.EncodeEngineeringReview(snapshot)));
+                await Section(new(CadSectionMigrationRegistry.CurrentFormats["drawings"],MessagePackSections.EncodeDrawings(snapshot)));
                 if(!snapshot.Extensions.IsDefault)
                     foreach(var extension in snapshot.Extensions)
                     {
@@ -71,7 +73,7 @@ public sealed class CadDocumentStorage(CadSectionMigrationRegistry? migrations=n
                 {
                     using var lease=assets.Acquire(asset.Id);await WriteEntry(zip,asset.Path,lease.Content,token);
                 }
-                var manifest=new CadManifest("Cadoryx",1,snapshot.Id,snapshot.StateId,"0.4.29",sections.ToImmutable(),catalog.ToImmutableArray(),[..Capabilities],1);
+                var manifest=new CadManifest("Cadoryx",1,snapshot.Id,snapshot.StateId,"0.7.0",sections.ToImmutable(),catalog.ToImmutableArray(),[..Capabilities],1);
                 await WriteEntry(zip,"manifest.json",JsonSerializer.SerializeToUtf8Bytes(manifest,CadJson.Options),token);
             }
             await stream.FlushAsync(token);stream.Flush(true);
@@ -79,7 +81,9 @@ public sealed class CadDocumentStorage(CadSectionMigrationRegistry? migrations=n
     }
     public async Task<LoadedDocument> LoadAsync(string path,IAssetStore assets,CancellationToken cancellationToken=default)
     {
-        using var stream=File.OpenRead(path);using var zip=new ZipArchive(stream,ZipArchiveMode.Read);
+        using var archive=deferGeometryAssets&&assets is IDeferredAssetStore deferred?
+            await Task.Run(()=>deferred.StageFile(path,cancellationToken),cancellationToken).ConfigureAwait(false):null;
+        using var stream=archive?.OpenRead()??File.OpenRead(path);using var zip=new ZipArchive(stream,ZipArchiveMode.Read);
         var entries=ValidateEntries(zip);var manifest=await ManifestAsync(entries,cancellationToken).ConfigureAwait(false);
         var sectionValues=new Dictionary<string,(SectionEntry Entry,byte[] Bytes)>(StringComparer.Ordinal);
         foreach(var section in manifest.Sections)
@@ -99,6 +103,27 @@ public sealed class CadDocumentStorage(CadSectionMigrationRegistry? migrations=n
         {
             foreach(var asset in manifest.Assets)
             {
+                if(archive is not null&&asset.Format is {} knownFormat&&roles.TryGetValue(asset.Id,out var knownRole))
+                {
+                    if(knownRole==AssetFormat.BRepMediaType)AssetFormatPolicy.RequireBRep(knownFormat);else AssetFormatPolicy.RequireXde(knownFormat);
+                    if(asset.Length<=0||asset.Length>limits.MaxAssetBytes||entries[asset.Path].Length!=asset.Length)
+                        throw new InvalidDataException("Invalid deferred payload length.");
+                    cancellationToken.ThrowIfCancellationRequested();
+                    var backing=(IAssetFileLease)assets.Acquire(archive.Id);
+                    try
+                    {
+                        var deferredLease=((IDeferredAssetStore)assets).StageDeferred(asset.Id,asset.Length,()=>
+                        {
+                            using var ownedStream=backing.OpenRead();using var ownedZip=new ZipArchive(ownedStream,ZipArchiveMode.Read);
+                            var ownedEntry=ownedZip.GetEntry(asset.Path)??throw new InvalidDataException("Deferred payload missing.");
+                            var bytes=ReadVerified(new(StringComparer.OrdinalIgnoreCase){{asset.Path,ownedEntry}},asset.Path,asset.Length,asset.Sha256,limits.MaxAssetBytes,CancellationToken.None).GetAwaiter().GetResult();
+                            AssetFormatPolicy.VerifyPayload(knownFormat,bytes);return bytes;
+                        },backing);
+                        leases.Add(deferredLease);formats.Add(asset.Id,knownFormat);
+                    }
+                    catch{backing.Dispose();throw;}
+                    continue;
+                }
                 var bytes=await ReadVerified(entries,asset.Path,asset.Length,asset.Sha256,limits.MaxAssetBytes,cancellationToken).ConfigureAwait(false);
                 bool required=roles.TryGetValue(asset.Id,out var role);
                 var format=asset.Format??(required?AssetFormatPolicy.Inspect(bytes):AssetFormat.Opaque);
@@ -128,8 +153,11 @@ public sealed class CadDocumentStorage(CadSectionMigrationRegistry? migrations=n
                  ExternalParts=Malformed(()=>MessagePackSections.DecodeExternalParts(core["external-parts"].Bytes)),
                  AssemblyConstraints=Malformed(()=>(document.AssemblyConstraints.IsDefault?[]:document.AssemblyConstraints)
                      .ToImmutableDictionary(c=>c.Id))};
+            snapshot=Malformed(()=>MessagePackSections.AttachEngineeringReview(core["engineering-review"].Bytes,snapshot));
+            snapshot=Malformed(()=>MessagePackSections.AttachDrawings(core["drawings"].Bytes,snapshot));
             Malformed(()=>{snapshot.Validate();return true;});using var verify=new DocumentAssetLease(snapshot,assets);
             var diagnostics=ImmutableArray.CreateBuilder<CadDiagnostic>();
+            if(archive is not null)diagnostics.Add(new("IO.DEFERRED_GEOMETRY","Geometry payloads are decompressed and hash-verified on first use; structural sections were verified at open."));
             if(extensions.Count>0)diagnostics.Add(new("IO.READ_ONLY","Unknown optional sections and their asset formats are preserved; editing is disabled."));
             if(manifest.AssetCatalogVersion==0)diagnostics.Add(new("IO.LEGACY_ASSET_FORMAT","Legacy asset formats were recognized from their headers. Original kernel and writer versions are unknown."));
             if(manifest.Sections.Any(s=>KnownSections.Contains(s.Kind)&&new SectionFormat(s.Kind,s.SchemaVersion,s.Encoding)!=CadSectionMigrationRegistry.CurrentFormats[s.Kind]))

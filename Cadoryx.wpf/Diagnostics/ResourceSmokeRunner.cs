@@ -8,6 +8,7 @@ using Cadoryx.Db;
 using Cadoryx.Commands;
 using Cadoryx.Kernel.Abstractions;
 using Cadoryx.ViewModels;
+using Cadoryx.ViewModels.Settings;
 using Cadoryx.ViewModels.Services.Platform;
 using Cadoryx.wpf.Controls;
 using Cadoryx.wpf.Views;
@@ -227,10 +228,16 @@ internal static class ResourceSmokeRunner
         {
             Capture(options,Path.Combine(output,"metro-export.png"));DialogHost.GetDialogSession(ViewServiceIdentifiers.RootDialogHost)?.Close();return Task.CompletedTask;
         });
-        await ModalAsync(()=>{workspace.OpenApplicationSettingsCommand.Execute(null);return Task.CompletedTask;},()=>
+        await ModalAsync(()=>{workspace.OpenApplicationSettingsCommand.Execute(null);return Task.CompletedTask;},async()=>
         {
             var dialog=DialogHost.GetDialogSession(ViewServiceIdentifiers.RootDialogHost)?.Content as ApplicationSettingsWindow??throw new InvalidOperationException("Settings dialog was not shown.");
-            Capture(dialog,Path.Combine(output,"metro-settings.png"));DialogHost.GetDialogSession(ViewServiceIdentifiers.RootDialogHost)?.Close();return Task.CompletedTask;
+            Capture(dialog,Path.Combine(output,"metro-settings.png"));
+            var settings=(ApplicationSettingsViewModel)dialog.DataContext;
+            Require(settings.RadialMenu.Pages.Count==4,"Radial menu exposes four editable pages.");
+            settings.SelectedSection=settings.RadialMenu;
+            await Idle();dialog.UpdateLayout();
+            Capture(dialog,Path.Combine(output,"metro-radial-settings.png"));
+            DialogHost.GetDialogSession(ViewServiceIdentifiers.RootDialogHost)?.Close();
         });
         var confirmation=new ConfirmationDialog("Save changes","Save changes to Housing?","Save","Don't save");
         await ModalAsync(()=>DialogHost.Show(confirmation, ViewServiceIdentifiers.RootDialogHost),()=>

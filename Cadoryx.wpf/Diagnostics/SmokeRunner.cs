@@ -7,6 +7,9 @@ using System.Windows.Threading;
 using Cadoryx.ViewModels;
 using Cadoryx.wpf.Controls;
 using Cadoryx.Kernel.Abstractions;
+using Cadoryx.Db;
+using Cadoryx.Rendering;
+using Cadoryx.wpf.Views;
 using Microsoft.Extensions.DependencyInjection;
 namespace Cadoryx.wpf.Diagnostics;
 
@@ -32,13 +35,35 @@ internal static class SmokeRunner
             var host=Find<OcctViewportHost>(window)??throw new InvalidOperationException("No native viewport in the window.");
             var viewport=host.Viewport??throw new InvalidOperationException("Native viewer did not initialize.");
             viewport.FitAll();viewport.SaveScreenshot(Path.Combine(output,"viewport.png"));
+            var pane=Find<ViewportPane>(window)??throw new InvalidOperationException("No viewport pane.");
+            var ordinary=first.Scene;var sample=ordinary.Items.Single();
+            var repeated=new CadScene(ordinary.DocumentId,ordinary.StateId,[..Enumerable.Range(0,1000).Select(i=>sample with{
+                Path=new OccurrencePath(ordinary.DocumentId,[ComponentSlotId.New()]),
+                WorldTransform=RigidTransform3d.Translate(i%40*15,i/40*15,0)*sample.WorldTransform})]);
+            pane.ShowSceneForSmoke(new(ordinary.DocumentId,ordinary.StateId,[]));
+            pane.ShowSceneForSmoke(repeated);
+            if(!pane.IsSceneLoading||!vm.StatusText.Contains("0/1000",StringComparison.Ordinal))
+                throw new InvalidOperationException("Progress was not visible before the first native batch.");
+            bool inputServiced=false;
+            _=window.Dispatcher.BeginInvoke(()=>inputServiced=true,DispatcherPriority.Input);
+            await window.Dispatcher.InvokeAsync(()=>{},DispatcherPriority.Background);
+            if(!inputServiced||viewport.VisibleBodyCount is <=0 or >=1000)
+                throw new InvalidOperationException("Progressive scene did not yield to input after its first partial frame.");
+            pane.ShowSceneForSmoke(ordinary);
+            if(pane.IsSceneLoading||viewport.VisibleBodyCount!=ordinary.Items.Length||viewport.NativeGeometryCount!=1)
+                throw new InvalidOperationException("Cancelling a partial viewport load did not restore the original scene.");
             if(vm.ModelTree.Items.Count==0)throw new InvalidOperationException("Model tree was not updated.");
             await WorkspaceToolsSmokeRunner.RunAsync(window,vm,output);
             await ReviewToolsSmokeRunner.RunAsync(window,vm,output);
             await SectionAnalysisSmokeRunner.RunAsync(window,vm,services,output);
+            await EngineeringReviewSmokeRunner.RunAsync(window,vm,services,output);
+            await DeliverySmokeRunner.RunAsync(window,vm,services,output);
             var storage=services.GetRequiredService<IDocumentStorage>();var kernel=services.GetRequiredService<IGeometryKernel>();
             await first.Session.SaveAsync(storage,Path.Combine(output,"smoke.cadoryx"));
             foreach(var ext in new[]{"step","iges","stl"})await kernel.ExportAsync(first.Session.Snapshot,first.Session.Assets,Path.Combine(output,"smoke."+ext));
+            await ProgressDialogSmokeRunner.RunAsync(window,vm,services,output);
+            await NotificationSmokeRunner.RunAsync(services,output);
+            await ExchangeImportSmokeRunner.RunAsync(vm,services,output);
             await vm.OpenPathAsync(Path.Combine(output,"smoke.step"));await Idle();
             var imported=vm.ActiveDocument!;
             if(ReferenceEquals(first,imported)||imported.Session.Snapshot.Bodies.Count==0)throw new InvalidOperationException("Exchange document failed to open.");
@@ -53,16 +78,18 @@ internal static class SmokeRunner
             await TopologySmokeRunner.RunAsync(services,output);
             await HistorySmokeRunner.RunAsync(services,output);
             await LocalFeatureSmokeRunner.RunAsync(window,services,output);
+            await CommandAndAgentSmokeRunner.RunAsync(window,vm,output);
             OcctViewportHost.SuspendAll(true);await Idle();OcctViewportHost.SuspendAll(false);await Idle();
             var bitmap=new RenderTargetBitmap((int)window.ActualWidth,(int)window.ActualHeight,96,96,PixelFormats.Pbgra32);bitmap.Render(window);
             var encoder=new PngBitmapEncoder();encoder.Frames.Add(BitmapFrame.Create(bitmap));using(var file=File.Create(Path.Combine(output,"shell.png")))encoder.Save(file);
             if(!await vm.CloseAllAsync())throw new InvalidOperationException("Documents did not close cleanly.");
+            await ExchangeImportSmokeRunner.RunShutdownAsync(vm,services,output);
             await ((App)System.Windows.Application.Current).StopRecoveryAsync();
             await Idle();
             int assets=((IAssetStoreStatistics)services.GetRequiredService<IAssetStore>()).Count;
             if(assets!=0)throw new InvalidOperationException($"{assets} assets remain after document close.");
             listener.Flush();bindingOutput.Flush();
-            await File.WriteAllTextAsync(Path.Combine(output,"result.txt"),"PASS: native viewport, preview/commit, tree, STEP import, document switching, undo/redo, MessagePack save, STEP/IGES/STL export, resource dialog and density bindings, target part/layer/material creation, instance position bindings, visibility, DialogHost dialogs, three-language layouts, modal airspace suspension, sketch solver/undo/redo/conflict/serialization and real frozen-profile extrusion, zero remaining assets.");
+            await File.WriteAllTextAsync(Path.Combine(output,"result.txt"),"PASS: native viewport, progressive first-frame feedback/input/cancel, preview/commit, tree, STEP import, document switching, undo/redo, MessagePack save, STEP/IGES/STL export, resource dialog and density bindings, target part/layer/material creation, instance position bindings, visibility, DialogHost dialogs, three-language layouts, modal airspace suspension, sketch solver/undo/redo/conflict/serialization and real frozen-profile extrusion, zero remaining assets.");
             window.CloseAfterSmoke();
         }
         catch(Exception ex)

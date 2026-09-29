@@ -52,7 +52,14 @@ public sealed record SketchIslandRegion(ImmutableArray<Point2d> Points,CircularS
     ImmutableArray<SketchBoundaryCurve> BoundaryCurves=default)
 {
     public ImmutableArray<SketchBoundaryCurve> BoundaryCurves {get;init;}=BoundaryCurves.IsDefault?[]:BoundaryCurves;
-    public SketchProfile Profile=>new(Points,Circle){BoundaryCurves=BoundaryCurves};
+    public CubicSplineRegion? Spline {get;init;}
+    public ImmutableArray<CircularSketchRegion> Holes {get;init;}=[];
+    public ImmutableArray<ImmutableArray<Point2d>> PolygonHoles {get;init;}=[];
+    public ImmutableArray<ImmutableArray<SketchBoundaryCurve>> MixedHoles {get;init;}=[];
+    public ImmutableArray<CubicSplineRegion> SplineHoles {get;init;}=[];
+    public ImmutableArray<SketchIslandRegion> Islands {get;init;}=[];
+    public SketchProfile Profile=>new(Points,Circle,Holes,PolygonHoles)
+        {BoundaryCurves=BoundaryCurves,Spline=Spline,MixedHoles=MixedHoles,SplineHoles=SplineHoles,Islands=Islands};
 }
 public sealed record SketchProfile(ImmutableArray<Point2d> Points,CircularSketchRegion? Circle=null,
     ImmutableArray<CircularSketchRegion> Holes=default,ImmutableArray<ImmutableArray<Point2d>> PolygonHoles=default)
@@ -62,13 +69,14 @@ public sealed record SketchProfile(ImmutableArray<Point2d> Points,CircularSketch
     public CubicSplineRegion? Spline {get;init;}
     public ImmutableArray<SketchBoundaryCurve> BoundaryCurves {get;init;}=[];
     public ImmutableArray<ImmutableArray<SketchBoundaryCurve>> MixedHoles {get;init;}=[];
+    public ImmutableArray<CubicSplineRegion> SplineHoles {get;init;}=[];
     public ImmutableArray<SketchIslandRegion> Islands {get;init;}=[];
     public ImmutableArray<CircularSketchRegion> Holes {get;init;}=Holes.IsDefault?[]:Holes;
     public ImmutableArray<ImmutableArray<Point2d>> PolygonHoles {get;init;}=PolygonHoles.IsDefault?[]:PolygonHoles;
     public static SketchProfile FromCircle(Point2d center,double radius)=>new([],new(center,radius));
     public void Validate()
     {
-        if(BoundaryCurves.IsDefault||MixedHoles.IsDefault||Islands.IsDefault)throw new CadValidationException("Uninitialized profile boundary, holes or islands.");
+        if(BoundaryCurves.IsDefault||MixedHoles.IsDefault||SplineHoles.IsDefault||Islands.IsDefault)throw new CadValidationException("Uninitialized profile boundary, holes or islands.");
         if(!BoundaryCurves.IsEmpty)
         {
             if(Circle is not null||Arc is not null||Bezier is not null||Spline is not null||Points.IsDefault||!Points.IsEmpty)
@@ -80,23 +88,24 @@ public sealed record SketchProfile(ImmutableArray<Point2d> Points,CircularSketch
         }
         if(Arc is {} arc)
         {
-            if(Circle is not null||Bezier is not null||Spline is not null||Points.IsDefault||!Points.IsEmpty||!Holes.IsEmpty||!PolygonHoles.IsEmpty||!MixedHoles.IsEmpty||!Islands.IsEmpty)
+            if(Circle is not null||Bezier is not null||Spline is not null||Points.IsDefault||!Points.IsEmpty||!Holes.IsEmpty||!PolygonHoles.IsEmpty||!MixedHoles.IsEmpty||!SplineHoles.IsEmpty||!Islands.IsEmpty)
                 throw new CadValidationException("An arc segment profile cannot have polygon vertices or holes.");
             _=SketchArcGeometry.Through(arc.Start,arc.Middle,arc.End);
             return;
         }
         if(Bezier is {} bezier)
         {
-            if(Circle is not null||Spline is not null||Points.IsDefault||!Points.IsEmpty||!Holes.IsEmpty||!PolygonHoles.IsEmpty||!MixedHoles.IsEmpty||!Islands.IsEmpty)
+            if(Circle is not null||Spline is not null||Points.IsDefault||!Points.IsEmpty||!Holes.IsEmpty||!PolygonHoles.IsEmpty||!MixedHoles.IsEmpty||!SplineHoles.IsEmpty||!Islands.IsEmpty)
                 throw new CadValidationException("A Bezier segment profile cannot have another boundary or holes.");
             SketchBezierGeometry.Validate(bezier.Start,bezier.Control,bezier.End);
             return;
         }
         if(Spline is {} spline)
         {
-            if(Circle is not null||Points.IsDefault||!Points.IsEmpty||!Holes.IsEmpty||!PolygonHoles.IsEmpty||!MixedHoles.IsEmpty||!Islands.IsEmpty)
+            if(Circle is not null||Points.IsDefault||!Points.IsEmpty)
                 throw new CadValidationException("A spline segment profile cannot have another boundary or holes.");
-            SketchSplineGeometry.Validate(spline.Controls);return;
+            SketchSplineGeometry.Validate(spline.Controls);
+            ValidateCurveHoles(SketchSplineGeometry.ValidationBoundary(spline));ValidateIslands();return;
         }
         if(Circle is {} circle)
         {
@@ -104,7 +113,7 @@ public sealed record SketchProfile(ImmutableArray<Point2d> Points,CircularSketch
             CadGuard.Finite(circle.Center.X,circle.Center.Y);CadGuard.Positive(circle.Radius);
         }
         else ValidatePolygon();
-        if(Holes.Length+PolygonHoles.Length+MixedHoles.Length>64)throw new CadValidationException("A profile has too many holes.");
+        if(Holes.Length+PolygonHoles.Length+MixedHoles.Length+SplineHoles.Length>64)throw new CadValidationException("A profile has too many holes.");
         const double clearance=1e-7;
         for(int i=0;i<Holes.Length;i++)
         {
@@ -150,19 +159,21 @@ public sealed record SketchProfile(ImmutableArray<Point2d> Points,CircularSketch
                     throw new CadValidationException("Polygon holes touch or overlap.");
             }
         }
-        if(!MixedHoles.IsEmpty)
+        if(!MixedHoles.IsEmpty||!SplineHoles.IsEmpty)
             ValidateCurveHoles(Circle is {} outerCircle?SketchMixedProfile.Circle(outerCircle):SketchMixedProfile.Polygon(Points));
         ValidateIslands();
     }
     private void ValidateCurveHoles(ImmutableArray<SketchBoundaryCurve> outer)
     {
-        if(Holes.Length+PolygonHoles.Length+MixedHoles.Length>64)
+        if(Holes.Length+PolygonHoles.Length+MixedHoles.Length+SplineHoles.Length>64)
             throw new CadValidationException("A profile has too many holes.");
         foreach(var hole in MixedHoles)SketchMixedProfile.Validate(hole);
+        foreach(var hole in SplineHoles)SketchSplineGeometry.Validate(hole.Controls);
         foreach(var hole in PolygonHoles)(new SketchProfile(hole)).Validate();
         foreach(var hole in Holes){CadGuard.Finite(hole.Center.X,hole.Center.Y);CadGuard.Positive(hole.Radius);}
         var boundaries=Holes.Select(SketchMixedProfile.Circle)
-            .Concat(PolygonHoles.Select(SketchMixedProfile.Polygon)).Concat(MixedHoles).ToImmutableArray();
+            .Concat(PolygonHoles.Select(SketchMixedProfile.Polygon)).Concat(MixedHoles)
+            .Concat(SplineHoles.Select(SketchSplineGeometry.ValidationBoundary)).ToImmutableArray();
         SketchMixedProfile.ValidateHoles(outer,boundaries);
     }
     private void ValidateIslands()
@@ -170,8 +181,10 @@ public sealed record SketchProfile(ImmutableArray<Point2d> Points,CircularSketch
         if(Islands.Length>64)throw new CadValidationException("A profile has too many islands.");
         foreach(var island in Islands)island.Profile.Validate();
         var holes=Holes.Select(SketchMixedProfile.Circle)
-            .Concat(PolygonHoles.Select(SketchMixedProfile.Polygon)).Concat(MixedHoles).ToImmutableArray();
+            .Concat(PolygonHoles.Select(SketchMixedProfile.Polygon)).Concat(MixedHoles)
+            .Concat(SplineHoles.Select(SketchSplineGeometry.ValidationBoundary)).ToImmutableArray();
         var islands=Islands.Select(island=>island.Circle is {} circle?SketchMixedProfile.Circle(circle):
+            island.Spline is {} spline?SketchSplineGeometry.ValidationBoundary(spline):
             !island.BoundaryCurves.IsDefaultOrEmpty?island.BoundaryCurves:SketchMixedProfile.Polygon(island.Points)).ToImmutableArray();
         SketchMixedProfile.ValidateIslands(holes,islands);
     }
@@ -238,6 +251,8 @@ public sealed record FeatureDefinition(FeatureId Id,DefinitionId PartId,string N
     public TopologyHistory? TopologyHistory {get;init;}
     public FeatureTopologyBinding? TopologyBinding {get;init;}
     public bool IsStale {get;init;}
+    /// <summary>Explicit feature-tree suppression; dependent results are blocked until recomputed.</summary>
+    public bool IsSuppressed {get;init;}
 }
 /// <summary>Retains the output's authored attributes when recompute temporarily produces no body.</summary>
 public sealed record BodyOutputMetadata(string Name,LayerId Layer,CadAppearance Appearance,bool Visible,MaterialId? Material)

@@ -35,6 +35,63 @@ public static class AssemblyConstraintCommands
         document.AssemblyConstraints.ContainsKey(id)?document with
             {AssemblyConstraints=document.AssemblyConstraints.Remove(id)}:throw new CadValidationException("Constraint does not exist."));
 
+    /// <summary>Creates a relation between two independently picked analytic BRep datums.</summary>
+    public static ICadDocumentCommand AddDatumPair(AssemblyConstraintId id,string name,AssemblyConstraintKind kind,
+        AssemblyDatumReference primary,AssemblyDatumReference secondary,double target=0)=>
+        new VerifiedDatumCommand(new EditDocumentCommand("Add geometric assembly relation",document=>
+    {
+        if(document.AssemblyConstraints.ContainsKey(id)||kind==AssemblyConstraintKind.Fixed)
+            throw new CadValidationException("Invalid geometric relation identity or kind.");
+        primary.Validate(document.Id);secondary.Validate(document.Id);
+        var a=Resolve(document,primary.Path);var b=Resolve(document,secondary.Path);
+        if(!primary.IsCurrent(document,primary.Path,a.DefinitionId)||
+           !secondary.IsCurrent(document,secondary.Path,b.DefinitionId))
+            throw new CadValidationException("A picked BRep datum is stale; reselect it.");
+        bool axis=kind is AssemblyConstraintKind.ParallelAxes or AssemblyConstraintKind.Coaxial or
+            AssemblyConstraintKind.AngleAxes or AssemblyConstraintKind.PlanarMate;
+        var relation=new AssemblyConstraint(id,name,kind,primary.Path,a.DefinitionId,
+            secondary.Path,b.DefinitionId,primary.LocalPoint,secondary.LocalPoint,
+            TargetDistanceMm:kind==AssemblyConstraintKind.Distance?target:0,SchemaVersion:2,
+            PrimaryLocalAxis:axis?primary.LocalAxis:Vector3d.Zero,
+            SecondaryLocalAxis:axis?secondary.LocalAxis:Vector3d.Zero,
+            TargetAngleRad:kind==AssemblyConstraintKind.AngleAxes?target:0,
+            PrimaryDatum:primary,SecondaryDatum:secondary);
+        relation.Validate(document.Id);
+        return document with{AssemblyConstraints=document.AssemblyConstraints.Add(id,relation)};
+    }),[primary,secondary]);
+
+    private sealed class VerifiedDatumCommand(ICadDocumentCommand inner,
+        IReadOnlyList<AssemblyDatumReference> datums) : ICadDocumentCommand
+    {
+        public string Name=>inner.Name;
+        public async Task<PreparedDocumentEdit> PrepareAsync(DocumentCommandContext context,CancellationToken token)
+        {
+            await AssemblyDatumVerification.VerifyAsync(context,datums,token).ConfigureAwait(false);
+            return await inner.PrepareAsync(context,token).ConfigureAwait(false);
+        }
+    }
+
+    public static ICadDocumentCommand ReselectDatums(AssemblyConstraintId id,
+        AssemblyDatumReference primary,AssemblyDatumReference secondary)=>
+        new VerifiedDatumCommand(new EditDocumentCommand("Reselect assembly BRep datums",document=>
+    {
+        var original=Get(document,id);
+        if(original.Kind==AssemblyConstraintKind.Fixed||!original.PrimaryPath.Equals(primary.Path)||
+           !original.SecondaryPath!.Equals(secondary.Path)||
+           original.PrimaryDefinitionId!=primary.DefinitionId||
+           original.SecondaryDefinitionId!=secondary.DefinitionId)
+            throw new CadValidationException("Reselection must keep both exact instance identities.");
+        bool axis=original.Kind is AssemblyConstraintKind.ParallelAxes or AssemblyConstraintKind.Coaxial or
+            AssemblyConstraintKind.AngleAxes or AssemblyConstraintKind.PlanarMate;
+        var updated=original with{SchemaVersion=2,PrimaryTopology=null,SecondaryTopology=null,
+            PrimaryDatum=primary,SecondaryDatum=secondary,
+            PrimaryLocalPoint=primary.LocalPoint,SecondaryLocalPoint=secondary.LocalPoint,
+            PrimaryLocalAxis=axis?primary.LocalAxis:Vector3d.Zero,
+            SecondaryLocalAxis=axis?secondary.LocalAxis:Vector3d.Zero};
+        updated.Validate(document.Id);
+        return document with{AssemblyConstraints=document.AssemblyConstraints.SetItem(id,updated)};
+    }),[primary,secondary]);
+
     public static ICadDocumentCommand AddAxisPair(AssemblyConstraintId id,string name,AssemblyConstraintKind kind,
         OccurrencePath primary,OccurrencePath secondary,Vector3d primaryPoint,Vector3d secondaryPoint,
         Vector3d primaryAxis,Vector3d secondaryAxis,double targetAngleRad=0)=>
@@ -59,6 +116,8 @@ public static class AssemblyConstraintCommands
     {
         var constraint=Get(document,id);
         if(constraint.Kind==AssemblyConstraintKind.Fixed)throw new CadValidationException("Fixed relation has no point pair.");
+        if(constraint.PrimaryDatum is not null||constraint.SecondaryDatum is not null)
+            throw new CadValidationException("Reselect the BRep datum before changing geometric anchors.");
         primaryPoint.Validate();secondaryPoint.Validate();
         var updated=constraint with{PrimaryLocalPoint=primaryPoint,SecondaryLocalPoint=secondaryPoint};
         updated.Validate(document.Id);
@@ -72,6 +131,8 @@ public static class AssemblyConstraintCommands
         if(constraint.Kind is not (AssemblyConstraintKind.ParallelAxes or AssemblyConstraintKind.Coaxial or
             AssemblyConstraintKind.AngleAxes or AssemblyConstraintKind.PlanarMate))
             throw new CadValidationException("This relation has no axis pair.");
+        if(constraint.PrimaryDatum is not null||constraint.SecondaryDatum is not null)
+            throw new CadValidationException("Reselect the BRep datum before changing geometric axes.");
         var updated=constraint with{PrimaryLocalAxis=primaryAxis.Normalized(),
             SecondaryLocalAxis=secondaryAxis.Normalized()};
         updated.Validate(document.Id);
@@ -112,7 +173,8 @@ public static class AssemblyConstraintCommands
         new EditDocumentCommand("Retarget assembly relation",document=>
     {
         var constraint=Get(document,id);
-        if(constraint.PrimaryTopology is not null||constraint.SecondaryTopology is not null)
+        if(constraint.PrimaryTopology is not null||constraint.SecondaryTopology is not null||
+           constraint.PrimaryDatum is not null||constraint.SecondaryDatum is not null)
             throw new CadValidationException("Reselect topology anchors before retargeting this constraint.");
         var a=Resolve(document,primary);
         AssemblyConstraint updated;

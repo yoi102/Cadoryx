@@ -24,6 +24,11 @@ public static class CadCommandLine
         Cadoryx.Cli benchmark INPUT --output REPORT.json [--iterations 3] [--overwrite] [--memory]
         Cadoryx.Cli interference INPUT [--output REPORT.json] [--overwrite] [--memory]
         Cadoryx.Cli cache-clean CACHE_ROOT
+        Cadoryx.Cli bom INPUT --output BOM.csv [--all] [--overwrite] [--memory]
+        Cadoryx.Cli report INPUT --output REVIEW.html [--all] [--overwrite] [--memory]
+        Cadoryx.Cli deliver INPUT --output PACKAGE.zip [--all] [--iges] [--stl] [--no-step] [--linear MM] [--angular RAD] [--overwrite] [--memory]
+        Cadoryx.Cli verify-delivery PACKAGE.zip
+        Cadoryx.Cli drawing-pdf INPUT.cadoryx --output DRAWING.pdf [--overwrite] [--memory]
         INPUT: .cadoryx, .step/.stp, .iges/.igs, .stl; OUTPUT: .cadoryx, .step/.stp, .iges/.igs, .stl.
         Disk assets are the default. --all includes document-hidden bodies on exchange export.
         Exact inspection is limited to 256 visible body instances; two instances include minimum distance.
@@ -32,6 +37,12 @@ public static class CadCommandLine
         """;
     public static async Task<int> RunAsync(string[] args,TextWriter output,TextWriter error,CancellationToken token=default)
     {
+        if(args is ["verify-delivery",var package])
+        {
+            try{var manifest=await DocumentDeliveryService.VerifyAsync(package,token);await output.WriteLineAsync(JsonSerializer.Serialize(new{verified=true,manifest},Json));return 0;}
+            catch(OperationCanceledException){return 130;}
+            catch(Exception ex){await error.WriteLineAsync(ex.Message);return 1;}
+        }
         if(args is ["cache-clean",var cacheRoot])
         {
             try{token.ThrowIfCancellationRequested();await output.WriteLineAsync(JsonSerializer.Serialize(DiskAssetCache.Reclaim(cacheRoot),Json));return 0;}
@@ -53,6 +64,20 @@ public static class CadCommandLine
             IAssetStore assets=(IAssetStore?)disk??new MemoryAssetStore();
             var kernel=new OcctGeometryKernel();var storage=new CadDocumentStorage();
             using var loaded=await Load(options.Input,assets,kernel,storage,token);
+            if(options.Command=="drawing-pdf")
+            {
+                await AtomicOutput(options.Output!,options.Overwrite,path=>
+                {token.ThrowIfCancellationRequested();TechnicalDrawingPdf.Write(loaded.Snapshot,path);return Task.CompletedTask;},token);
+                await output.WriteLineAsync(JsonSerializer.Serialize(new{output=options.Output,
+                    sheets=loaded.Snapshot.DrawingSheets.Count},Json));return 0;
+            }
+            if(options.Command is "bom" or "report" or "deliver")
+            {
+                var mode=options.Command switch{"bom"=>DeliveryOutput.BomCsv,"report"=>DeliveryOutput.ReviewHtml,_=>DeliveryOutput.Package};
+                var result=await new DocumentDeliveryService(storage,kernel).WriteAsync(loaded.Snapshot,assets,options.Output!,
+                    new(mode,!options.All,!options.NoStep,options.Iges,options.Stl,options.Linear,options.Angular),options.Overwrite,token:token);
+                await output.WriteLineAsync(JsonSerializer.Serialize(result,Json));return 0;
+            }
             if(options.Command=="convert")
             {
                 CadExportReport? export=null;
@@ -135,18 +160,18 @@ public static class CadCommandLine
             processor=Environment.GetEnvironmentVariable("PROCESSOR_IDENTIFIER"),logicalProcessors=Environment.ProcessorCount,
             samples,limitations="Iteration 1 includes cold process initialization; later iterations may use OS/native caches. No forced GC. Peak working set is process-lifetime, not per-iteration. No Viewer/GPU/frame/interaction timing."};
     }
-    private sealed record Options(string Command,string Input,string? Output,bool Overwrite,bool Memory,bool Exact,bool All,double Linear,double Angular,int Iterations)
+    private sealed record Options(string Command,string Input,string? Output,bool Overwrite,bool Memory,bool Exact,bool All,double Linear,double Angular,int Iterations,bool Iges,bool Stl,bool NoStep)
     {
         public static Options Parse(string[] args)
         {
-            if(args.Length<2||args[0] is not ("inspect" or "convert" or "benchmark" or "interference"))throw new ArgumentException("Expected inspect, convert, interference or benchmark and an input file. Use --help.");
+            if(args.Length<2||args[0] is not ("inspect" or "convert" or "benchmark" or "interference" or "bom" or "report" or "deliver" or "drawing-pdf"))throw new ArgumentException("Expected a command and an input file. Use --help.");
             string input=Path.GetFullPath(args[1]);string? output=null;int start=2;
             if(args[0]=="convert")
             {
                 if(args.Length<3||args[2].StartsWith("--",StringComparison.Ordinal))throw new ArgumentException("convert requires an output file.");
                 output=Path.GetFullPath(args[2]);start=3;
             }
-            bool overwrite=false,memory=false,exact=false,all=false;double linear=.1,angular=.5;int iterations=3;var seen=new HashSet<string>();
+            bool overwrite=false,memory=false,exact=false,all=false,iges=false,stl=false,noStep=false;double linear=.1,angular=.5;int iterations=3;var seen=new HashSet<string>();
             for(int i=start;i<args.Length;i++)
             {
                 string key=args[i];if(!seen.Add(key))throw new ArgumentException("Duplicate option: "+key);
@@ -156,22 +181,29 @@ public static class CadCommandLine
                     case "--overwrite":overwrite=true;break;
                     case "--memory":memory=true;break;
                     case "--exact" when args[0]=="inspect":exact=true;break;
-                    case "--all" when args[0]=="convert":all=true;break;
+                    case "--all" when args[0] is "convert" or "bom" or "report" or "deliver":all=true;break;
+                    case "--iges" when args[0]=="deliver":iges=true;break;
+                    case "--stl" when args[0]=="deliver":stl=true;break;
+                    case "--no-step" when args[0]=="deliver":noStep=true;break;
                     case "--output" when args[0]!="convert":output=Path.GetFullPath(Value());break;
-                    case "--linear" when args[0]=="convert":linear=Number(Value());break;
-                    case "--angular" when args[0]=="convert":angular=Number(Value());break;
+                    case "--linear" when args[0] is "convert" or "deliver":linear=Number(Value());break;
+                    case "--angular" when args[0] is "convert" or "deliver":angular=Number(Value());break;
                     case "--iterations" when args[0]=="benchmark":
                         if(!int.TryParse(Value(),NumberStyles.None,CultureInfo.InvariantCulture,out iterations)||iterations is <1 or >20)throw new ArgumentException("iterations must be 1..20.");break;
                     default:throw new ArgumentException("Unsupported option: "+key);
                 }
             }
             if(!Supported(input))throw new ArgumentException("Unsupported input extension.");
+            if(args[0]=="drawing-pdf"&&!Path.GetExtension(input).Equals(".cadoryx",StringComparison.OrdinalIgnoreCase))
+                throw new ArgumentException("drawing-pdf requires a .cadoryx document.");
             if(output is not null&&(StringComparer.OrdinalIgnoreCase.Equals(input,output)))throw new ArgumentException("Input and output must be different files.");
             if(args[0]=="convert"&&!Supported(output!))throw new ArgumentException("Unsupported output extension.");
             if(args[0]=="benchmark"&&output is null)throw new ArgumentException("benchmark requires --output REPORT.json.");
-            if(args[0]!="convert"&&output is not null&&!Path.GetExtension(output).Equals(".json",StringComparison.OrdinalIgnoreCase))throw new ArgumentException("Report output must be .json.");
+            if(args[0] is "bom" or "report" or "deliver" or "drawing-pdf"&&output is null)throw new ArgumentException("Delivery requires --output.");
+            var outputExtension=args[0] switch{"bom"=>".csv","report"=>".html","deliver"=>".zip","drawing-pdf"=>".pdf",_=>".json"};
+            if(args[0]!="convert"&&output is not null&&!Path.GetExtension(output).Equals(outputExtension,StringComparison.OrdinalIgnoreCase))throw new ArgumentException("Output must be "+outputExtension);
             new CadExportOptions(linear,angular).Validate();
-            return new(args[0],input,output,overwrite,memory,exact,all,linear,angular,iterations);
+            return new(args[0],input,output,overwrite,memory,exact,all,linear,angular,iterations,iges,stl,noStep);
         }
         private static bool Supported(string path)=>Path.GetExtension(path).ToLowerInvariant() is ".cadoryx" or ".step" or ".stp" or ".iges" or ".igs" or ".stl";
         private static double Number(string text)=>double.TryParse(text,NumberStyles.Float,CultureInfo.InvariantCulture,out var value)&&double.IsFinite(value)?value:throw new ArgumentException("Expected a finite decimal using '.'.");

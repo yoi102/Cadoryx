@@ -40,6 +40,7 @@ public partial class DocumentReviewViewModel : ObservableObject,IDisposable
     {
         this.document=document;inspector=kernel as IGeometryInspector;
         document.Selection.Changed+=Invalidate;document.SceneChanged+=Invalidate;
+        RefreshEngineeringReview();
     }
     public CadScene Filter(CadScene scene)=>visibility.Apply(scene);
     private IEnumerable<InstanceBodyKey> SelectedKeys()
@@ -79,6 +80,7 @@ public partial class DocumentReviewViewModel : ObservableObject,IDisposable
         FocusCommand.NotifyCanExecuteChanged();IsolateCommand.NotifyCanExecuteChanged();HideCommand.NotifyCanExecuteChanged();
         sequence++;pending?.Cancel();Result=null;Rows.Clear();MeasurementStatus="";
         InvalidateOperations();
+        RefreshEngineeringReview();
     }
     [RelayCommand] private void CancelMeasurement()=>pending?.Cancel();
     [RelayCommand] public async Task MeasureAsync()

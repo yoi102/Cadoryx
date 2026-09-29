@@ -6,4 +6,6 @@ public interface IToolboxIconProvider
     object Properties { get; }
     object Modeling { get; }
     object Messages { get; }
+    object CommandLine => Messages;
+    object Assistant => Messages;
 }

@@ -10,10 +10,10 @@
                  xmlns:vm="clr-namespace:Cadoryx.ViewModels.Settings;assembly=Cadoryx.ViewModels"
                  mc:Ignorable="d"
                  d:DataContext="{d:DesignInstance Type=vm:ApplicationSettingsViewModel}"
-                 Width="760"
-                 Height="560"
-                 MinWidth="650"
-                 MinHeight="480"
+                 Width="860"
+                 Height="740"
+                 MinWidth="760"
+                 MinHeight="560"
                  Background="{DynamicResource MaterialDesign.Brush.Background}"
                  AutomationProperties.AutomationId="ApplicationSettingsWindow">
     <Grid Margin="16">

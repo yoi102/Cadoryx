@@ -10,7 +10,7 @@ public sealed partial class CadSectionMigrationRegistry
     private readonly object gate=new();
     public static ImmutableDictionary<string,SectionFormat> CurrentFormats {get;}=new[]
     {
-        new SectionFormat("document",16,"messagepack"),new("structure",3,"messagepack"),new("features",19,"messagepack"),
+        new SectionFormat("document",20,"messagepack"),new("structure",3,"messagepack"),new("features",21,"messagepack"),new("engineering-review",1,"messagepack"),new("drawings",2,"messagepack"),
         new("presentation",2,"messagepack"),new("geometry",1,"messagepack"),new("sketches",6,"messagepack"),new("topology",1,"messagepack"),new("history",2,"messagepack"),new("history-queries",1,"messagepack"),new("feature-bindings",2,"messagepack"),new("external-parts",1,"messagepack")
     }.ToImmutableDictionary(x=>x.Kind,StringComparer.Ordinal);
 
@@ -64,8 +64,23 @@ public sealed partial class CadSectionMigrationRegistry
             [new(new("document",15,"messagepack"),input["document"].Bytes),
                 new(CurrentFormats["external-parts"],MessagePackSections.EncodeExternalParts([]))]);
         RegisterStep("document-assembly-angle-and-plane",[new("document",15,"messagepack")],
-            [CurrentFormats["document"]],input=>
-            [new(CurrentFormats["document"],MessagePackSections.UpgradeDocumentAssemblyAngles(input["document"].Bytes))]);
+            [new("document",16,"messagepack")],input=>
+            [new(new("document",16,"messagepack"),MessagePackSections.UpgradeDocumentAssemblyAngles(input["document"].Bytes))]);
+        RegisterStep("introduce-engineering-review",[new("document",16,"messagepack")],
+            [new("document",17,"messagepack"),CurrentFormats["engineering-review"]],input=>
+            [new(new("document",17,"messagepack"),input["document"].Bytes),new(CurrentFormats["engineering-review"],
+                MessagePackSections.EncodeEngineeringReview(Cadoryx.Db.DocumentSnapshot.Create("Empty review")))]);
+        RegisterStep("custom-document-work-plane",[new("document",17,"messagepack")],[new("document",18,"messagepack")],input=>
+            [new(new("document",18,"messagepack"),MessagePackSections.UpgradeCustomDocumentWorkPlane(input["document"].Bytes))]);
+        RegisterStep("assembly-analytic-datums",[new("document",18,"messagepack")],[new("document",19,"messagepack")],input=>
+            [new(new("document",19,"messagepack"),MessagePackSections.UpgradeDocumentAssemblyDatums(input["document"].Bytes))]);
+        RegisterStep("introduce-technical-drawings",[new("document",19,"messagepack")],
+            [CurrentFormats["document"],CurrentFormats["drawings"]],input=>
+            [new(CurrentFormats["document"],input["document"].Bytes),
+                new(CurrentFormats["drawings"],MessagePackSections.EncodeDrawings(Cadoryx.Db.DocumentSnapshot.Create("Empty drawing book")))]);
+        RegisterStep("drawing-standards-detail-and-tolerance",[new("drawings",1,"messagepack")],
+            [CurrentFormats["drawings"]],input=>
+            [new(CurrentFormats["drawings"],MessagePackSections.UpgradeDrawingStandards(input["drawings"].Bytes))]);
         RegisterStep("feature-stale-state",[new("features",5,"messagepack")],[new("features",6,"messagepack")],input=>
             [new(new("features",6,"messagepack"),input["features"].Bytes)]);
         RegisterStep("local-chamfer-two-distances",[new("features",6,"messagepack")],[new("features",7,"messagepack")],input=>
@@ -92,8 +107,12 @@ public sealed partial class CadSectionMigrationRegistry
             [new(new("features",17,"messagepack"),MessagePackSections.UpgradeIslandFeatures(input["features"].Bytes))]);
         RegisterStep("quadratic-bezier-features",[new("features",17,"messagepack")],[new("features",18,"messagepack")],input=>
             [new(new("features",18,"messagepack"),MessagePackSections.UpgradeBezierFeatures(input["features"].Bytes))]);
-        RegisterStep("cubic-spline-features",[new("features",18,"messagepack")],[CurrentFormats["features"]],input=>
-            [new(CurrentFormats["features"],MessagePackSections.UpgradeSplineFeatures(input["features"].Bytes))]);
+        RegisterStep("cubic-spline-features",[new("features",18,"messagepack")],[new("features",19,"messagepack")],input=>
+            [new(new("features",19,"messagepack"),MessagePackSections.UpgradeSplineFeatures(input["features"].Bytes))]);
+        RegisterStep("spline-profile-holes",[new("features",19,"messagepack")],[new("features",20,"messagepack")],input=>
+            [new(new("features",20,"messagepack"),MessagePackSections.UpgradeSplineHoleFeatures(input["features"].Bytes))]);
+        RegisterStep("feature-suppression",[new("features",20,"messagepack")],[CurrentFormats["features"]],input=>
+            [new(CurrentFormats["features"],MessagePackSections.UpgradeFeatureSuppression(input["features"].Bytes))]);
         RegisterStep("exact-local-bindings",[new("feature-bindings",1,"messagepack")],[CurrentFormats["feature-bindings"]],input=>
             [new(CurrentFormats["feature-bindings"],MessagePackSections.UpgradeExactFeatureBindings(input["feature-bindings"].Bytes))]);
         RegisterStep("history-source-arguments",[new("history",1,"messagepack")],[CurrentFormats["history"]],input=>

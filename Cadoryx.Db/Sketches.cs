@@ -144,10 +144,15 @@ public static class SketchProfileBuilder
         var points=sketch.Points.ToDictionary(p=>p.Id,p=>p.Position);
         var lines=sketch.Lines.Where(l=>!l.IsConstruction).ToDictionary(l=>l.Id);
         var arcs=sketch.Arcs.Where(a=>!a.IsConstruction).ToDictionary(a=>a.Id);
-        if(!ids.Any(arcs.ContainsKey))throw new CadValidationException("A mixed profile requires a non-construction arc.");
-        (SketchEntityId Start,SketchEntityId End,SketchEntityId? Middle) Edge(SketchEntityId id)=>
-            lines.TryGetValue(id,out var line)?(line.Start,line.End,null):
-            arcs.TryGetValue(id,out var arc)?(arc.Start,arc.End,arc.Middle):
+        var beziers=sketch.Beziers.Where(b=>!b.IsConstruction).ToDictionary(b=>b.Id);
+        var splines=sketch.Splines.Where(s=>!s.IsConstruction).ToDictionary(s=>s.Id);
+        if(!ids.Any(id=>arcs.ContainsKey(id)||beziers.ContainsKey(id)||splines.ContainsKey(id)))
+            throw new CadValidationException("A mixed profile requires a non-construction curved edge.");
+        (SketchEntityId Start,SketchEntityId End,SketchEntityId? Middle,SketchEntityId? Control,ImmutableArray<SketchEntityId> Spline) Edge(SketchEntityId id)=>
+            lines.TryGetValue(id,out var line)?(line.Start,line.End,null,null,[]):
+            arcs.TryGetValue(id,out var arc)?(arc.Start,arc.End,arc.Middle,null,[]):
+            beziers.TryGetValue(id,out var bezier)?(bezier.Start,bezier.End,null,bezier.Control,[]):
+            splines.TryGetValue(id,out var spline)?(spline.Controls[0],spline.Controls[^1],null,null,spline.Controls):
             throw new CadValidationException("Mixed profile references missing or construction geometry.");
         SketchProfile? Build(SketchEntityId first)
         {
@@ -158,7 +163,10 @@ public static class SketchProfileBuilder
                 if(edge.Start!=at&&edge.End!=at)return null;
                 bool forward=edge.Start==at;
                 var end=forward?edge.End:edge.Start;
-                curves.Add(new(points[at],points[end],edge.Middle is {} middle?points[middle]:null));
+                var controls=edge.Spline.IsEmpty?ImmutableArray<Point2d>.Empty:
+                    (forward?edge.Spline:edge.Spline.Reverse().ToImmutableArray()).Select(control=>points[control]).ToImmutableArray();
+                curves.Add(new(points[at],points[end],edge.Middle is {} middle?points[middle]:null)
+                    {BezierControl=edge.Control is {} control?points[control]:null,SplineControls=controls});
                 at=end;
             }
             return at==first?new SketchProfile([]){BoundaryCurves=curves.ToImmutable()}:null;

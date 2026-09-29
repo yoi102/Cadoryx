@@ -3,6 +3,7 @@ using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Threading;
 using Cadoryx.Db;
+using Cadoryx.Lang.Strings;
 using Cadoryx.ViewModels.Toolboxes;
 namespace Cadoryx.wpf.Views.Toolboxes;
 public partial class ModelTreeToolboxView
@@ -73,4 +74,25 @@ public partial class ModelTreeToolboxView
     {if(ReferenceEquals(sender,e.OriginalSource)&&sender is FrameworkElement row)row.BringIntoView();}
     private void OnSelectedItemChanged(object sender,RoutedPropertyChangedEventArgs<object> e)
     {if(DataContext is ModelTreeToolboxViewModel vm&&e.NewValue is ModelTreeItemViewModel item)vm.Select(item);}
+    private void OnFeatureContextMenuOpening(object sender,ContextMenuEventArgs e)
+    {
+        if(e.OriginalSource is not DependencyObject source||DataContext is not ModelTreeToolboxViewModel vm)return;
+        var row=FindTreeRow(source);
+        if(row?.DataContext is not ModelTreeItemViewModel {Feature:{}} feature)return;
+        var suppressed=feature.IsSuppressed;
+        var menu=new ContextMenu();
+        var action=new MenuItem{Header=Strings.ResourceManager.GetString(suppressed?"RestoreFeature":"SuppressFeature",Strings.Culture)};
+        action.Click+=async (_,_)=>await vm.SetFeatureSuppressionAsync(feature,!suppressed);
+        menu.Items.Add(action);
+        row.ContextMenu=menu;
+    }
+    private static TreeViewItem? FindTreeRow(DependencyObject source)
+    {
+        while(source is not null)
+        {
+            if(source is TreeViewItem row)return row;
+            source=VisualTreeHelper.GetParent(source);
+        }
+        return null;
+    }
 }

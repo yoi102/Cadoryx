@@ -118,7 +118,7 @@ public sealed class AssemblyConstraintTests
         var registry=new CadSectionMigrationRegistry();
         var migrated=registry.Migrate([new(new("document",12,"messagepack"),bytes)],
             new Dictionary<string,SectionFormat>{{"document",CadSectionMigrationRegistry.CurrentFormats["document"]}});
-        Assert.Equal(16,migrated["document"].Format.Version);
+        Assert.Equal(CadSectionMigrationRegistry.CurrentFormats["document"].Version,migrated["document"].Format.Version);
         Assert.Empty(MessagePackSerializer.Deserialize<PackDocument>(migrated["document"].Bytes).AssemblyConstraints!);
     }
 
@@ -179,7 +179,7 @@ public sealed class AssemblyConstraintTests
         var migrated=new CadSectionMigrationRegistry().Migrate([new(new("document",13,"messagepack"),
             MessagePackSerializer.Serialize(old))],new Dictionary<string,SectionFormat>
             {{"document",CadSectionMigrationRegistry.CurrentFormats["document"]}});
-        Assert.Equal(16,migrated["document"].Format.Version);
+        Assert.Equal(CadSectionMigrationRegistry.CurrentFormats["document"].Version,migrated["document"].Format.Version);
         var restored=Assert.Single(MessagePackSerializer.Deserialize<PackDocument>(migrated["document"].Bytes).AssemblyConstraints!);
         Assert.Null(restored.PrimaryAxis);Assert.Null(restored.SecondaryAxis);
         Assert.Equal(id,restored.Id);

@@ -6,6 +6,9 @@ using Cadoryx.ViewModels.Settings;
 using Cadoryx.wpf.Views.Dialogs;
 using Cadoryx.wpf.Views.Settings;
 using MaterialDesignThemes.Wpf;
+using CommunityToolkit.Mvvm.Input;
+using System.Windows.Threading;
+using Strings = Cadoryx.Lang.Strings.Strings;
 
 namespace Cadoryx.wpf.Services.Dialogs;
 
@@ -60,25 +63,28 @@ public sealed class DialogService : IDialogService, IApplicationSettingsDialogSe
     }
 
     public IDisposable ShowProgressBarDialog(
-        string dialogIdentifier = ViewServiceIdentifiers.RootDialogHost)
+        string dialogIdentifier = ViewServiceIdentifiers.RootDialogHost,
+        bool showCancelButton = false, Action? cancel = null, string? message = null)
     {
-        var identifier = NormalizeIdentifier(dialogIdentifier);
+        ProgressScope? scope = null;
+        InvokeOnUi(() => scope = new ProgressScope(NormalizeIdentifier(dialogIdentifier), showCancelButton, cancel, message));
+        return scope!;
+    }
 
-        InvokeOnUi(() =>
+    public Task RunWithProgressAsync(Func<CancellationToken, Task> operation, bool canCancel = false,
+        string? message = null, string dialogIdentifier = ViewServiceIdentifiers.RootDialogHost)
+    {
+        ArgumentNullException.ThrowIfNull(operation);
+        return InvokeOnUiAsync(async () =>
         {
-            var progressDialog = new ProgressDialog();
-            var session = DialogHost.GetDialogSession(identifier);
-            if (session is not null)
-            {
-                session.UpdateContent(progressDialog);
-            }
-            else
-            {
-                _ = DialogHost.Show(progressDialog, identifier);
-            }
+            using var cancellation = new CancellationTokenSource();
+            await using var scope = new ProgressScope(NormalizeIdentifier(dialogIdentifier), canCancel, cancellation.Cancel, message);
+            await scope.WaitForOpenAsync();
+            await Dispatcher.Yield(DispatcherPriority.Background);
+            cancellation.Token.ThrowIfCancellationRequested();
+            await operation(canCancel ? cancellation.Token : CancellationToken.None);
+            return true;
         });
-
-        return new DeferredScope(() => Close(identifier));
     }
 
     public Task<object?> ShowDialogAsync(
@@ -181,18 +187,52 @@ public sealed class DialogService : IDialogService, IApplicationSettingsDialogSe
         return dispatcher.InvokeAsync(action).Task.Unwrap();
     }
 
-    private sealed class DeferredScope : IDisposable
+    private sealed class ProgressScope : IDisposable, IAsyncDisposable
     {
-        private readonly Action _disposeAction;
-        private int _disposed;
-
-        public DeferredScope(Action disposeAction)
-            => _disposeAction = disposeAction ?? throw new ArgumentNullException(nameof(disposeAction));
-
-        public void Dispose()
+        private readonly ProgressDialog dialog;
+        private readonly TaskCompletionSource opened = new(TaskCreationOptions.RunContinuationsAsynchronously);
+        private readonly Task completion;
+        private DialogSession? session;
+        private bool disposed;
+        public ProgressScope(string identifier, bool showCancelButton, Action? cancel, string? message)
         {
-            if (Interlocked.Exchange(ref _disposed, 1) == 0)
-                _disposeAction();
+            if (showCancelButton && cancel is null) throw new ArgumentException("A visible cancel button requires a cancellation callback.", nameof(cancel));
+            if (DialogHost.GetDialogSession(identifier) is not null) throw new InvalidOperationException("A dialog is already open.");
+            dialog = new ProgressDialog { ShowCancelButton = showCancelButton, Message = message ?? Strings.ProgressWorking };
+            bool requested = false;
+            RelayCommand? command = null;
+            command = new RelayCommand(() =>
+            {
+                if (requested || disposed) return;
+                requested = true;command!.NotifyCanExecuteChanged();
+                dialog.Message = Strings.ProgressCancelling;
+                cancel!();
+            }, () => showCancelButton && !requested && !disposed);
+            dialog.CancelCommand = command;
+            completion = DialogHost.Show(dialog, identifier, (_, e) =>
+            {
+                session = e.Session;opened.TrySetResult();
+                if (disposed && !session.IsEnded) session.Close();
+            }, (_, e) => { if (!disposed && ReferenceEquals(e.Session.Content, dialog)) e.Cancel(); });
+            _ = completion.ContinueWith(t => { _ = t.Exception; }, TaskContinuationOptions.OnlyOnFaulted);
+        }
+        public async Task WaitForOpenAsync()
+        {
+            if (await Task.WhenAny(opened.Task, completion) == completion)
+            { await completion; throw new InvalidOperationException("Progress dialog closed before opening."); }
+            await opened.Task;
+        }
+        public void Dispose() => InvokeOnUi(() =>
+        {
+            if (disposed) return;
+            disposed = true;
+            if (session is { IsEnded: false } && ReferenceEquals(session.Content, dialog)) session.Close();
+        });
+        public async ValueTask DisposeAsync()
+        {
+            bool replaced = session is { IsEnded: false } && !ReferenceEquals(session.Content, dialog);
+            Dispose();
+            if (!replaced) await completion;
         }
     }
 }

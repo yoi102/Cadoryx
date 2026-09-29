@@ -34,6 +34,8 @@
         <KeyBinding Key="S" Modifiers="Control" Command="{Binding SaveCommand}" />
         <KeyBinding Key="Z" Modifiers="Control" Command="{Binding UndoCommand}" />
         <KeyBinding Key="Y" Modifiers="Control" Command="{Binding RedoCommand}" />
+        <KeyBinding Key="Oem3" Modifiers="Control" Command="{Binding ShowCommandLineCommand}" />
+        <KeyBinding Key="A" Modifiers="Control+Shift" Command="{Binding ShowAiAssistantCommand}" />
     </mah:MetroWindow.InputBindings>
 
     <mah:MetroWindow.LeftWindowCommands>
@@ -154,6 +156,12 @@
             </DataTemplate>
             <DataTemplate DataType="{x:Type vmToolboxes:MessagesToolboxViewModel}">
                 <toolboxViews:MessagesToolboxView />
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type vmToolboxes:CommandLineToolboxViewModel}">
+                <toolboxViews:CommandLineToolboxView />
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type vmToolboxes:AiAssistantToolboxViewModel}">
+                <toolboxViews:AiAssistantToolboxView />
             </DataTemplate>
 
             <DataTemplate x:Key="DocumentTabHeaderTemplate">

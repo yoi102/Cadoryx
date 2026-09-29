@@ -1,12 +1,15 @@
 using Cadoryx.Db;
 using Cadoryx.Kernel.Abstractions;
 using OcctSharp;
+using System.Diagnostics;
 
 namespace Cadoryx.Kernel.Occt;
 
 /// <summary>Only native adapters use this bridge. Each read constructs an independent native graph.</summary>
 public static class OcctGeometryBridge
 {
+    public readonly record struct ShapeStoreTiming(double TopologyMs,double ValidityMs,double BoundsMs,
+        double VolumeMs,double WriteMs,double StageMs);
     public static Shape ReadShape(GeometryAssetRef geometry,IAssetStore assets)
     {
         using var lease=assets.Acquire(geometry.AssetId);using var files=new KernelFiles();
@@ -22,19 +25,29 @@ public static class OcctGeometryBridge
         var path=files.PathFor("context.xbf");File.WriteAllBytes(path,lease.Content.ToArray());
         return XdeDocument.Open(path);
     }
-    public static GeometryResult StoreShape(Shape shape,IAssetStore assets)
+    public static GeometryResult StoreShape(Shape shape,IAssetStore assets,Action<ShapeStoreTiming>? timing=null)
     {
+        long start=Stopwatch.GetTimestamp();
         var summary=shape.GetTopologySummary();var counts=summary.UniqueCounts;
         bool empty=counts.VertexCount==0&&counts.EdgeCount==0&&counts.FaceCount==0;
-        if(!empty&&!shape.IsValid)throw new CadValidationException("OCCT produced invalid topology.");
+        double topologyMs=Stopwatch.GetElapsedTime(start).TotalMilliseconds;start=Stopwatch.GetTimestamp();
+        // GetTopologySummary already runs the same BRepCheck_Analyzer::IsValid query.
+        // Repeating Shape.IsValid traverses every imported BRep a second time.
+        if(!empty&&!summary.IsValid)throw new CadValidationException("OCCT produced invalid topology.");
+        double validityMs=Stopwatch.GetElapsedTime(start).TotalMilliseconds;start=Stopwatch.GetTimestamp();
         var kind=empty?BodyKind.Empty:counts.SolidCount==1?BodyKind.Solid:counts.SolidCount>1?BodyKind.Compound:counts.FaceCount>0?BodyKind.Sheet:BodyKind.Wire;
         var box=empty?new Bounds3d(Vector3d.Zero,Vector3d.Zero):Bounds(shape.GetBoundingBox());
+        double boundsMs=Stopwatch.GetElapsedTime(start).TotalMilliseconds;start=Stopwatch.GetTimestamp();
         double volume=counts.SolidCount>0?Math.Abs(shape.InspectProperties(InspectionPropertyKind.Volume).Mass):0;
+        double volumeMs=Stopwatch.GetElapsedTime(start).TotalMilliseconds;start=Stopwatch.GetTimestamp();
         using var files=new KernelFiles();var path=files.PathFor("result.brep");ShapeExchange.WriteBrep(shape,path);
+        double writeMs=Stopwatch.GetElapsedTime(start).TotalMilliseconds;start=Stopwatch.GetTimestamp();
         var lease=assets.Stage(File.ReadAllBytes(path));
+        double stageMs=Stopwatch.GetElapsedTime(start).TotalMilliseconds;
         try
         {
             var reference=new GeometryAssetRef(lease.Id,GeometryRevisionId.New(),kind,box,volume,Format:AssetFormatPolicy.CurrentBRep);reference.Validate();
+            timing?.Invoke(new(topologyMs,validityMs,boundsMs,volumeMs,writeMs,stageMs));
             return new(reference,lease);
         }
         catch{lease.Dispose();throw;}

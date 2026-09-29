@@ -21,6 +21,7 @@ using Cadoryx.Rendering;
 using Cadoryx.Rendering.Occt;
 using Cadoryx.ViewModels;
 using Cadoryx.ViewModels.Settings;
+using Cadoryx.ViewModels.Services.Platform.Settings;
 using Cadoryx.wpf.Controls;
 using Cadoryx.wpf.Views;
 using Cadoryx.wpf.Views.Settings;
@@ -71,6 +72,7 @@ internal static class WindowSmokeRunner
                 historyWindow.Close();await Idle();
             }
             var drawingDoc=vm.ActiveDocument!;var drawingViewport=Host(drawingDoc).Viewport!;
+            await RadialMenuGesture(vm, drawingDoc);
             Check(drawingDoc.BackgroundTopArgb==DocumentSettings.DefaultBackgroundTopArgb&&
                 drawingDoc.BackgroundBottomArgb==DocumentSettings.DefaultBackgroundBottomArgb,"New document uses sky gradient");
             drawingViewport.FitAll();
@@ -97,9 +99,27 @@ internal static class WindowSmokeRunner
             drawingViewport.PointerPressed(0,cubeX,cubeY,0);
             drawingViewport.PointerReleased(0,cubeX,cubeY,0);
             Camera(initialCubeCamera,drawingViewport.CaptureCamera());
-            await Task.Delay(380);Camera(cubeTarget!,drawingViewport.CaptureCamera());
+            await WaitForCamera(drawingViewport,cubeTarget!);
             drawingViewport.SetProjection(CadProjection.Front);drawingViewport.Redraw();
             drawingViewport.SaveScreenshot(Path.Combine(output,"view-cube-face-arrows.png"));
+            drawingViewport.PointerMoved(cubeBounds.Right-82,82,0,0);
+            drawingViewport.SaveScreenshot(Path.Combine(output,"view-cube-active.png"));
+            SendMessage(cubeHost.Handle,0x2A3,0,0); // WM_MOUSELEAVE from the native host.
+            drawingViewport.SaveScreenshot(Path.Combine(output,"view-cube-idle.png"));
+            Check(!SHA256.HashData(File.ReadAllBytes(Path.Combine(output,"view-cube-active.png"))).SequenceEqual(
+                SHA256.HashData(File.ReadAllBytes(Path.Combine(output,"view-cube-idle.png")))),
+                "ViewCube becomes translucent after the pointer leaves");
+            int originalCulture=vm.CurrentCultureLCID;
+            vm.ChangeCultureCommand.Execute("1033");
+            drawingViewport.SaveScreenshot(Path.Combine(output,"view-cube-en.png"));
+            vm.ChangeCultureCommand.Execute("2052");
+            drawingViewport.SaveScreenshot(Path.Combine(output,"view-cube-zh.png"));
+            Check(!SHA256.HashData(File.ReadAllBytes(Path.Combine(output,"view-cube-en.png"))).SequenceEqual(
+                SHA256.HashData(File.ReadAllBytes(Path.Combine(output,"view-cube-zh.png")))),
+                "ViewCube labels update when the application language changes");
+            vm.ChangeCultureCommand.Execute("1041");
+            drawingViewport.SaveScreenshot(Path.Combine(output,"view-cube-ja.png"));
+            vm.ChangeCultureCommand.Execute(originalCulture.ToString(System.Globalization.CultureInfo.InvariantCulture));
             drawingViewport.PointerMoved(cubeBounds.Right-82,82,0,0);
             drawingViewport.SaveScreenshot(Path.Combine(output,"view-cube-face-hover.png"));
             (int X,int Y)? leftArrow=null,rightArrow=null;
@@ -125,14 +145,14 @@ internal static class WindowSmokeRunner
             Camera(beforeTurn,drawingViewport.CaptureCamera());
             drawingViewport.PointerPressed(0,left.X,left.Y,0);drawingViewport.PointerReleased(0,left.X,left.Y,0);
             Camera(beforeTurn,drawingViewport.CaptureCamera());
-            await Task.Delay(380);Camera(leftTarget,drawingViewport.CaptureCamera());
+            await WaitForCamera(drawingViewport,leftTarget);
             var cubeRightTarget=drawingViewport.CaptureCubeTurnTarget(OcctSharp.ViewerCubeTurn.Right,45);
             drawingViewport.PointerPressed(0,right.X,right.Y,0);drawingViewport.PointerReleased(0,right.X,right.Y,0);
-            await Task.Delay(380);Camera(cubeRightTarget,drawingViewport.CaptureCamera());Camera(beforeTurn,drawingViewport.CaptureCamera());
+            await WaitForCamera(drawingViewport,cubeRightTarget);Camera(beforeTurn,drawingViewport.CaptureCamera());
             vm.ApplicationSettings.Viewport.ViewCubeRotationDegrees=30;
             var customTarget=drawingViewport.CaptureCubeTurnTarget(OcctSharp.ViewerCubeTurn.Right,30);
             drawingViewport.PointerPressed(0,right.X,right.Y,0);drawingViewport.PointerReleased(0,right.X,right.Y,0);
-            await Task.Delay(380);Camera(customTarget,drawingViewport.CaptureCamera());
+            await WaitForCamera(drawingViewport,customTarget);
             vm.ApplicationSettings.Viewport.ViewCubeRotationDegrees=45;
             drawingViewport.RestoreCamera(initialCubeCamera);drawingViewport.Redraw();
             Check(drawingViewport.HitViewCubeControl(left.X,left.Y)?.Turn!=OcctSharp.ViewerCubeTurn.Left&&
@@ -155,14 +175,14 @@ internal static class WindowSmokeRunner
             Check((frontMid.Eye-cameraBefore.Eye).Length>0.01&&
                 (frontMid.Eye-frontTarget.Eye).Length>0.01,"Front view passes through an intermediate camera frame");
             drawingViewport.SaveScreenshot(Path.Combine(output,"view-front-transition.png"));
-            await Task.Delay(380);Camera(frontTarget,drawingViewport.CaptureCamera());
+            await WaitForCamera(drawingViewport,frontTarget);
             drawingViewport.SaveScreenshot(Path.Combine(output,"view-front-complete.png"));
             drawingDoc.SetView(CadProjection.Top);await Task.Delay(90);
             var interrupted=drawingViewport.CaptureCamera();
             var rightTarget=drawingViewport.CaptureProjectionTarget(CadProjection.Right);
             drawingDoc.SetView(CadProjection.Right);
             Camera(interrupted,drawingViewport.CaptureCamera());
-            await Task.Delay(380);Camera(rightTarget,drawingViewport.CaptureCamera());
+            await WaitForCamera(drawingViewport,rightTarget);
             drawingDoc.SetView(CadProjection.Top);await Task.Delay(90);
             drawingViewport.MouseWheel(120,200,200,0);
             var navigated=drawingViewport.CaptureCamera();
@@ -257,6 +277,18 @@ internal static class WindowSmokeRunner
                 Math.Abs(drawingDoc.PositionX-12)<1,"YZ pointer creates a work-plane-oriented box");
             drawingViewport.SaveScreenshot(Path.Combine(output,"mouse-box-yz-ghost.png"));
             drawingDoc.CancelViewportConstruction();
+            settingsEditor.SelectedWorkPlane=settingsEditor.WorkPlaneOptions.Single(o=>o.Kind==DocumentWorkPlaneKind.Custom);
+            settingsEditor.WorkPlaneOffsetMm=2;settingsEditor.WorkPlaneOriginX=3;
+            settingsEditor.WorkPlaneOriginY=4;settingsEditor.WorkPlaneOriginZ=5;
+            settingsEditor.WorkPlaneAngleX=15;settingsEditor.WorkPlaneAngleY=20;settingsEditor.WorkPlaneAngleZ=30;
+            Check(await settingsEditor.TryApplyAsync(),"Custom work plane applied in document settings");
+            var freePlane=drawingDoc.WorkPlaneSettings;
+            Check(freePlane.Kind==DocumentWorkPlaneKind.Custom&&freePlane.CustomOrigin==new Vector3d(3,4,5)&&
+                freePlane.CustomRotation==Quaterniond.FromEulerDegrees(15,20,30),"Document owns the free plane transform");
+            var freeTarget=freePlane.ToWorld(6,8);var freePixel=drawingViewport.WorldToScreen(freeTarget);
+            Check(drawingViewport.TryWorkplanePoint(freePixel.X,freePixel.Y,5,false,freePlane,out var freeHit)&&
+                (freeHit-freeTarget).Length<2,"Native camera ray intersects the free plane");
+            drawingViewport.SaveScreenshot(Path.Combine(output,"work-grid-free-plane.png"));
             settingsEditor.ResetToDefaults();Check(await settingsEditor.TryApplyAsync(),"Document settings reset to defaults");
             settingsWindow.Close();await Idle();
             drawingDoc.StartTool("Box");Check(drawingDoc.IsViewportConstructing,"Box viewport construction begins");
@@ -300,6 +332,8 @@ internal static class WindowSmokeRunner
             drawingViewport.SaveScreenshot(afterGhostCancel);
             Check(SHA256.HashData(File.ReadAllBytes(beforeGhost)).SequenceEqual(SHA256.HashData(File.ReadAllBytes(afterGhostCancel))),
                 "Cancel removes the native construction shape");
+            await SolidHandleSmoke(drawingDoc,drawingViewport,output);
+            await OccurrenceHandleSmoke(drawingDoc,drawingViewport,output);
             var storage=services.GetRequiredService<IDocumentStorage>();
             foreach(var initial in vm.Documents)await initial.Session.SaveAsync(storage,Path.Combine(output,"initial.cadoryx"));
             Check(await vm.CloseAllAsync(),"Initial documents close");await Idle();
@@ -309,6 +343,8 @@ internal static class WindowSmokeRunner
             var doc=vm.ActiveDocument??throw new InvalidOperationException("Fixture did not open");
             await doc.Session.SaveAsync(storage,saved);
             var viewport=Host(doc).Viewport!;viewport.FitAll();
+            Check(viewport.NativeXdeContextCount==doc.Scene.Items.Where(i=>i.Geometry.Source is not null)
+                .Select(i=>(i.Geometry.Source!.ContextAssetId,i.Geometry.Source.Format)).Distinct().Count(),"One XDE context per distinct source asset in this viewport");
             CaptureColors(viewport,output,"source");
             var item=doc.Scene.Items[0];var selection=new SelectionTarget(item.Path,item.BodyId,item.Geometry.Revision);
             doc.Selection.Replace([selection]);await Idle();
@@ -367,6 +403,87 @@ internal static class WindowSmokeRunner
         }
         finally{PresentationTraceSources.DataBindingSource.Listeners.Remove(listener);}
     }
+    private static async Task SolidHandleSmoke(CadDocumentViewModel doc,OcctViewport viewport,string output)
+    {
+        await doc.Session.ExecuteAsync(new AddBodyCommand(new BoxRecipe(30,20,15,
+            RigidTransform3d.Translate(200,0,0)),"M8 handle box"));
+        var feature=doc.Session.Snapshot.Features.Values.Single(f=>f.Name=="M8 handle box");
+        var item=doc.Scene.Items.Single(i=>i.BodyId==feature.OutputBodyId);
+        doc.EditFeature(feature.Id);
+        viewport.RestoreCamera(SceneEnvelope.FitVisible(viewport.CaptureCamera(),[item]));
+        viewport.SetSolidHandles(doc.SolidHandleRecipe(),item.WorldTransform);
+        viewport.Redraw();await Idle();
+        viewport.SaveScreenshot(Path.Combine(output,"solid-dimension-handles.png"));
+        var handles=SolidDimensionHandles.Describe(feature.Recipe,item.WorldTransform);
+        Check(GetClientRect(Host(doc).Handle,out var bounds),"M8 viewport bounds");
+        var candidates=handles.Select(h=>(Handle:h,Pixel:viewport.WorldToScreen(h.WorldPoint),
+                Axis:viewport.WorldToScreen(h.WorldPoint+h.WorldAxis))).ToArray();
+        var chosen=candidates.Where(h=>h.Pixel.X>20&&h.Pixel.X<bounds.Right-20&&h.Pixel.Y>20&&h.Pixel.Y<bounds.Bottom-20&&
+                Math.Pow(h.Axis.X-h.Pixel.X,2)+Math.Pow(h.Axis.Y-h.Pixel.Y,2)>16).FirstOrDefault();
+        Check(chosen.Handle is not null,"M8 visible solid handle: "+string.Join("; ",candidates.Select(h=>$"{h.Handle.Dimension} {h.Pixel} {h.Axis}")));
+        var start=chosen.Pixel;int endX=start.X+(chosen.Axis.X-start.X)*24;
+        int endY=start.Y+(chosen.Axis.Y-start.Y)*24;
+        double before=feature.Result.VolumeMm3;
+        viewport.PointerPressed(0,start.X,start.Y,0);
+        viewport.PointerMoved(endX,endY,1,0);
+        Check(doc.SizeX>30||doc.SizeY>20||doc.SizeZ>15,"M8 handle drag updates candidate");
+        Check(doc.Session.Snapshot.Features[feature.Id].Result.VolumeMm3==before,"M8 drag does not commit document");
+        viewport.CancelInput();await Idle();
+        Check(doc.Session.Snapshot.Features[feature.Id].Result.VolumeMm3==before,"M8 canceled drag preserves document");
+        viewport.PointerPressed(0,start.X,start.Y,0);
+        viewport.PointerMoved(endX,endY,1,0);
+        viewport.PointerReleased(0,endX,endY,0);
+        if(doc.PreviewCommand.ExecutionTask is {} preview)await preview;
+        Check(doc.HasPreview,"M8 mouse release prepares candidate");
+        await doc.ConfirmCommand.ExecuteAsync(null);
+        Check(doc.Session.Snapshot.Features[feature.Id].Result.VolumeMm3>before,"M8 confirm commits dimensional edit");
+        await doc.Session.UndoAsync();
+        Check(doc.Session.Snapshot.Features[feature.Id].Result.VolumeMm3==before,"M8 handle edit undoes exactly");
+        doc.StartTool("Box");doc.CancelViewportConstruction();
+    }
+    private static async Task OccurrenceHandleSmoke(CadDocumentViewModel doc,OcctViewport viewport,string output)
+    {
+        viewport.SetBoxSelection(null,null);viewport.ClearExactSelectionSource();viewport.SetAssemblyDatumSelection(null);
+        var item=doc.Review.Filter(doc.Scene).Items.Last();
+        doc.Selection.SelectOccurrence(item.Path);await Idle();
+        viewport.RestoreCamera(SceneEnvelope.FitVisible(viewport.CaptureCamera(),[item]));
+        viewport.SetOccurrenceHandles(item.Path,item.BodyId);viewport.Redraw();
+        viewport.SaveScreenshot(Path.Combine(output,"m12-occurrence-handles.png"));
+        var targets=viewport.OccurrenceHandleTargets.Select(h=>(h.Point,h.Axis,
+            Pixel:viewport.WorldToScreen(h.Point),End:viewport.WorldToScreen(h.Point+h.Axis))).ToArray();
+        Check(GetClientRect(Host(doc).Handle,out var bounds),"M12 viewport bounds");
+        var chosen=targets.FirstOrDefault(h=>h.Pixel.X>20&&h.Pixel.X<bounds.Right-20&&
+            h.Pixel.Y>20&&h.Pixel.Y<bounds.Bottom-20&&
+            Math.Pow(h.End.X-h.Pixel.X,2)+Math.Pow(h.End.Y-h.Pixel.Y,2)>16);
+        Check(chosen.Axis.Length>0,$"M12 visible occurrence handle (targets {targets.Length}, bodies {viewport.VisibleBodyCount}, rect {bounds.Right}x{bounds.Bottom}, path {item.Path}, bounds {item.Geometry.Bounds}, transform {item.WorldTransform}, camera {viewport.CaptureCamera().Scale}; "+
+            string.Join("; ",targets.Select(h=>$"{h.Point}/{h.Axis}: {h.Pixel}->{h.End}"))+")");
+        var before=OccurrencePlacement.Resolve(doc.Session.Snapshot,item.Path).Slot.LocalTransform;
+        int finished=0;Vector3d finishedDelta=Vector3d.Zero;
+        void OnFinished(object? _,(OccurrencePath Path,Vector3d WorldDelta,bool Commit) drag)
+        {if(drag.Commit){finished++;finishedDelta=drag.WorldDelta;}}
+        viewport.OccurrenceHandleFinished+=OnFinished;
+        double projected=Math.Sqrt(Math.Pow(chosen.End.X-chosen.Pixel.X,2)+Math.Pow(chosen.End.Y-chosen.Pixel.Y,2));
+        int endX=chosen.Pixel.X+(int)Math.Round((chosen.End.X-chosen.Pixel.X)*55/projected);
+        int endY=chosen.Pixel.Y+(int)Math.Round((chosen.End.Y-chosen.Pixel.Y)*55/projected);
+        viewport.PointerPressed(0,chosen.Pixel.X,chosen.Pixel.Y,0);
+        viewport.PointerMoved(endX,endY,1,0);
+        Check(OccurrencePlacement.Resolve(doc.Session.Snapshot,item.Path).Slot.LocalTransform==before,
+            "M12 drag previews without writing document");
+        viewport.CancelInput();
+        Check(OccurrencePlacement.Resolve(doc.Session.Snapshot,item.Path).Slot.LocalTransform==before,
+            "M12 capture cancel preserves placement");
+        viewport.PointerPressed(0,chosen.Pixel.X,chosen.Pixel.Y,0);
+        viewport.PointerMoved(endX,endY,1,0);
+        viewport.PointerReleased(0,endX,endY,0);
+        for(int attempt=0;attempt<30&&OccurrencePlacement.Resolve(doc.Session.Snapshot,item.Path).Slot.LocalTransform==before;attempt++)await Idle();
+        Check(OccurrencePlacement.Resolve(doc.Session.Snapshot,item.Path).Slot.LocalTransform!=before,
+            $"M12 mouse release commits placement (finished {finished}, delta {finishedDelta}, status {doc.ToolStatus})");
+        viewport.OccurrenceHandleFinished-=OnFinished;
+        await doc.Session.UndoAsync();
+        Check(OccurrencePlacement.Resolve(doc.Session.Snapshot,item.Path).Slot.LocalTransform==before,
+            "M12 placement undo is exact");
+        doc.Selection.SelectOccurrence(null);
+    }
     private static async Task LegacyStorage(MainWindowViewModel vm,IServiceProvider services,IDocumentStorage storage,string output,string fixtures)
     {
         var observations=new List<object>();
@@ -403,6 +520,81 @@ internal static class WindowSmokeRunner
             Check(originalHash.SequenceEqual(finalHash),"Frozen fixture unchanged");
         }
         await File.WriteAllTextAsync(Path.Combine(output,"legacy-storage.json"),JsonSerializer.Serialize(observations,new JsonSerializerOptions{WriteIndented=true}));
+    }
+    private static async Task RadialMenuGesture(MainWindowViewModel vm,CadDocumentViewModel doc)
+    {
+        var host=Host(doc);var viewport=host.Viewport!;
+        Check(GetClientRect(host.Handle,out var bounds)&&bounds.Right>300&&bounds.Bottom>300,"Radial viewport bounds");
+        var x=bounds.Right/2;var y=bounds.Bottom/2;
+        var previous=viewport.CaptureCamera();
+        var radial=vm.ApplicationSettings.RadialMenu;
+        var oldActions=Enum.GetValues<CadoryxRadialPage>().ToDictionary(page=>page,page=>radial.Get(page)[0]);
+        var oldEnabled=host.RadialMenuEnabled;
+        int radialCancelled=0;
+        host.RadialCancelled+=OnRadialCancelled;
+        try
+        {
+            host.RadialMenuEnabled=true;
+            foreach(var (page,key,keyMessage,action,projection) in new[]
+            {
+                (CadoryxRadialPage.Middle,0,0u,CadoryxRadialAction.Top,CadProjection.Top),
+                (CadoryxRadialPage.Shift,0x10,0x100u,CadoryxRadialAction.Front,CadProjection.Front),
+                (CadoryxRadialPage.Control,0x11,0x100u,CadoryxRadialAction.Right,CadProjection.Right),
+                (CadoryxRadialPage.Alt,0x12,0x104u,CadoryxRadialAction.Top,CadProjection.Top)
+            })
+            {
+                var target=viewport.CaptureProjectionTarget(projection);
+                switch(page)
+                {
+                    case CadoryxRadialPage.Middle:radial.Middle[0]=action;break;
+                    case CadoryxRadialPage.Shift:radial.Shift[0]=action;break;
+                    case CadoryxRadialPage.Control:radial.Control[0]=action;break;
+                    case CadoryxRadialPage.Alt:radial.Alt[0]=action;break;
+                }
+                SendMessage(host.Handle,0x207,0x10,Point(x,y));
+                Check(GetCapture()==host.Handle,"Radial menu captures middle button");
+                await Idle();
+                if(key!=0)SendMessage(host.Handle,keyMessage,(nuint)key,0);
+                SendMessage(host.Handle,0x200,0x10,Point(x,y-95));
+                Camera(previous,viewport.CaptureCamera());
+                SendMessage(host.Handle,0x208,0,Point(x,y-95));
+                Check(GetCapture()!=host.Handle,$"Radial {page} releases capture");
+                await WaitForCamera(viewport,target);
+                viewport.RestoreCamera(previous);
+            }
+            radial.Middle[0]=CadoryxRadialAction.Top;
+            radial.Alt[0]=CadoryxRadialAction.Front;
+            var middleTarget=viewport.CaptureProjectionTarget(CadProjection.Top);
+            SendMessage(host.Handle,0x207,0x10,Point(x,y));
+            await Idle();
+            SendMessage(host.Handle,0x104,0x12,0); // Alt down while middle is held.
+            SendMessage(host.Handle,0x200,0x10,Point(x,y-95));
+            SendMessage(host.Handle,0x105,0x12,0); // Alt up must return to the middle page.
+            SendMessage(host.Handle,0x1F,0,0); // Alt can briefly cause WM_CANCELMODE before middle-up.
+            SendMessage(host.Handle,0x215,0,0); // And a transient native capture change.
+            SendMessage(new WindowInteropHelper(Window.GetWindow(host)).Handle,0x112,0xF100,0); // SC_KEYMENU
+            Check(GetCapture()==host.Handle&&radialCancelled==0,"Releasing Alt keeps the radial menu and native capture");
+            SendMessage(host.Handle,0x208,0,Point(x,y-95));
+            await WaitForCamera(viewport,middleTarget);
+            viewport.RestoreCamera(previous);
+            SendMessage(host.Handle,0x207,0x10,Point(x,y));
+            await Idle();
+            SendMessage(host.Handle,0x208,0,Point(x,y));
+            await Idle();
+            Camera(previous,viewport.CaptureCamera());
+        }
+        finally
+        {
+            radial.Middle[0]=oldActions[CadoryxRadialPage.Middle];
+            radial.Shift[0]=oldActions[CadoryxRadialPage.Shift];
+            radial.Control[0]=oldActions[CadoryxRadialPage.Control];
+            radial.Alt[0]=oldActions[CadoryxRadialPage.Alt];
+            host.RadialCancelled-=OnRadialCancelled;
+            host.RadialMenuEnabled=oldEnabled;
+            ReleaseCapture();
+            viewport.RestoreCamera(previous);
+        }
+        void OnRadialCancelled(object? sender,EventArgs e)=>radialCancelled++;
     }
     private static void CaptureLoss(OcctViewportHost host,CadDocumentViewModel doc)
     {
@@ -483,6 +675,18 @@ internal static class WindowSmokeRunner
     private static void Camera(CadCamera expected,CadCamera actual)
     {
         Check((expected.Eye-actual.Eye).Length<1e-6&&(expected.Target-actual.Target).Length<1e-6&&(expected.Up-actual.Up).Length<1e-6&&Math.Abs(expected.Scale-actual.Scale)<1e-6,"Camera eye/target/up/scale preserved");
+    }
+    private static async Task WaitForCamera(OcctViewport viewport,CadCamera expected)
+    {
+        var deadline=Stopwatch.StartNew();
+        while(deadline.Elapsed<TimeSpan.FromSeconds(2))
+        {
+            var actual=viewport.CaptureCamera();
+            if((expected.Eye-actual.Eye).Length<1e-6&&(expected.Target-actual.Target).Length<1e-6&&
+               (expected.Up-actual.Up).Length<1e-6&&Math.Abs(expected.Scale-actual.Scale)<1e-6)return;
+            await Task.Delay(20);
+        }
+        Camera(expected,viewport.CaptureCamera());
     }
     // Floating AvalonDock content is hosted in a separate HwndSource, outside its Window visual tree.
     private static OcctViewportHost Host(CadDocumentViewModel doc)=>PresentationSource.CurrentSources.Cast<PresentationSource>()

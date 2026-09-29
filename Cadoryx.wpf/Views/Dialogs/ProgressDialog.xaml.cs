@@ -17,6 +17,15 @@ namespace Cadoryx.wpf.Views.Dialogs;
 /// </summary>
 public partial class ProgressDialog : UserControl
 {
+    public static readonly DependencyProperty ShowCancelButtonProperty = DependencyProperty.Register(
+        nameof(ShowCancelButton), typeof(bool), typeof(ProgressDialog), new PropertyMetadata(false));
+    public static readonly DependencyProperty CancelCommandProperty = DependencyProperty.Register(
+        nameof(CancelCommand), typeof(ICommand), typeof(ProgressDialog));
+    public static readonly DependencyProperty MessageProperty = DependencyProperty.Register(
+        nameof(Message), typeof(string), typeof(ProgressDialog), new PropertyMetadata(""));
+    public bool ShowCancelButton { get => (bool)GetValue(ShowCancelButtonProperty); set => SetValue(ShowCancelButtonProperty, value); }
+    public ICommand? CancelCommand { get => (ICommand?)GetValue(CancelCommandProperty); set => SetValue(CancelCommandProperty, value); }
+    public string Message { get => (string)GetValue(MessageProperty); set => SetValue(MessageProperty, value); }
     public ProgressDialog()
     {
         InitializeComponent();

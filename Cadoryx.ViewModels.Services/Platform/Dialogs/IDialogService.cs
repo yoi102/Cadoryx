@@ -20,7 +20,12 @@ public interface IDialogService
         string dialogIdentifier = ViewServiceIdentifiers.RootDialogHost);
 
     IDisposable ShowProgressBarDialog(
-        string dialogIdentifier = ViewServiceIdentifiers.RootDialogHost);
+        string dialogIdentifier = ViewServiceIdentifiers.RootDialogHost,
+        bool showCancelButton = false, Action? cancel = null, string? message = null);
+
+    /// <summary>Owns the progress dialog until the operation exits. Cancellation is cooperative.</summary>
+    Task RunWithProgressAsync(Func<CancellationToken, Task> operation, bool canCancel = false,
+        string? message = null, string dialogIdentifier = ViewServiceIdentifiers.RootDialogHost);
 
     Task<bool> ShowExitConfirmation(
         string dialogIdentifier = ViewServiceIdentifiers.RootDialogHost);

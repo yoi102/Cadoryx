@@ -1,0 +1,58 @@
+<mah:MetroWindow x:Class="Cadoryx.wpf.Views.DeliveryWindow"
+ xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+ xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+ xmlns:r="clr-namespace:Cadoryx.Lang;assembly=Cadoryx.Lang"
+ Style="{StaticResource Cadoryx.DialogWindowStyle}"
+ Title="{I18N {x:Static r:LangKeys.EngineeringDelivery}}"
+ Width="1040" Height="680" MinWidth="850" MinHeight="540"
+ WindowStartupLocation="CenterOwner" ShowInTaskbar="False" AutomationProperties.AutomationId="DeliveryWindow">
+ <Grid Margin="20">
+  <Grid.RowDefinitions><RowDefinition Height="Auto"/><RowDefinition Height="*"/><RowDefinition Height="Auto"/></Grid.RowDefinitions>
+  <StackPanel Margin="0,0,0,16">
+   <TextBlock Text="{Binding Summary}" FontSize="20" Margin="0,0,0,12"/>
+   <TextBlock Text="{I18N {x:Static r:LangKeys.DeliveryHint}}" TextWrapping="Wrap" Opacity="0.8"/>
+   <CheckBox x:Name="VisibleOnlyCheck" Content="{I18N {x:Static r:LangKeys.DeliveryVisibleOnly}}" IsChecked="{Binding VisibleOnly}" Margin="0,12,0,0"/>
+  </StackPanel>
+  <Grid Grid.Row="1">
+   <Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="250"/></Grid.ColumnDefinitions>
+   <DataGrid x:Name="BomGrid" ItemsSource="{Binding Bom.Parts}" AutoGenerateColumns="False" IsReadOnly="True"
+             EnableRowVirtualization="True" EnableColumnVirtualization="True" CanUserAddRows="False" Margin="0,0,20,0">
+    <DataGrid.Columns>
+     <DataGridTextColumn Header="{I18N {x:Static r:LangKeys.Name}}" Binding="{Binding Name}" Width="*"/>
+     <DataGridTextColumn Header="{I18N {x:Static r:LangKeys.BomQuantity}}" Binding="{Binding Quantity}" Width="Auto" MinWidth="90"/>
+     <DataGridTextColumn Header="{I18N {x:Static r:LangKeys.BomMass}}" Binding="{Binding TotalMassKg,StringFormat=G6,TargetNullValue=—}" Width="105"/>
+    </DataGrid.Columns>
+   </DataGrid>
+   <ScrollViewer Grid.Column="1" VerticalScrollBarVisibility="Auto">
+    <StackPanel>
+     <TextBlock Text="{I18N {x:Static r:LangKeys.DeliveryOutput}}" Margin="0,0,0,8"/>
+     <ComboBox x:Name="OutputChoice" SelectedIndex="{Binding OutputIndex}" Margin="0,0,0,16">
+      <ComboBoxItem Content="{I18N {x:Static r:LangKeys.DeliveryPackage}}"/>
+      <ComboBoxItem Content="{I18N {x:Static r:LangKeys.DeliveryCsv}}"/>
+      <ComboBoxItem Content="{I18N {x:Static r:LangKeys.DeliveryHtml}}"/>
+     </ComboBox>
+     <StackPanel>
+      <StackPanel.Style><Style TargetType="StackPanel"><Setter Property="Visibility" Value="Collapsed"/><Style.Triggers><DataTrigger Binding="{Binding OutputIndex}" Value="0"><Setter Property="Visibility" Value="Visible"/></DataTrigger></Style.Triggers></Style></StackPanel.Style>
+      <TextBlock Text="{I18N {x:Static r:LangKeys.DeliveryFormats}}" TextWrapping="Wrap"/>
+      <CheckBox Content="STEP" IsChecked="{Binding IncludeStep}" Margin="0,8"/>
+      <CheckBox Content="IGES" IsChecked="{Binding IncludeIges}" Margin="0,8"/>
+      <CheckBox Content="STL" IsChecked="{Binding IncludeStl}" Margin="0,8"/>
+      <TextBlock Text="{I18N {x:Static r:LangKeys.DeliveryLinear}}" Margin="0,12,0,6"/>
+      <mah:NumericUpDown Value="{Binding LinearDeflectionMm}" Minimum="0.0001" Maximum="1000" Interval="0.1"/>
+      <TextBlock Text="{I18N {x:Static r:LangKeys.DeliveryAngle}}" Margin="0,12,0,6"/>
+      <mah:NumericUpDown Value="{Binding AngularDeflectionDegrees}" Minimum="0.01" Maximum="180" StringFormat="F2"/>
+     </StackPanel>
+    </StackPanel>
+   </ScrollViewer>
+  </Grid>
+  <Grid Grid.Row="2" Margin="0,16,0,0">
+   <Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
+   <TextBlock x:Name="ErrorText" TextWrapping="Wrap" VerticalAlignment="Center" Foreground="{DynamicResource MaterialDesign.Brush.Primary}"/>
+   <StackPanel Grid.Column="1" Orientation="Horizontal">
+    <Button Content="{I18N {x:Static r:LangKeys.Cancel}}" IsCancel="True" Margin="0,0,12,0"/>
+    <Button x:Name="WriteButton" Content="{I18N {x:Static r:LangKeys.Export}}" Click="WriteClicked" IsDefault="True"/>
+   </StackPanel>
+  </Grid>
+ </Grid>
+</mah:MetroWindow>

@@ -71,7 +71,7 @@ public sealed class AssemblyM5CompletionTests
         Assert.Equal(AssemblyConstraintStatus.Unsatisfied,session.Snapshot.AssemblyConstraints[ab].Evaluate(session.Snapshot).Status);
     }
 
-    [Fact] public async Task CompetingDriversRejectAtomically()
+    [Fact] public async Task CompetingDriversCanSolveTogetherWhenGraphHasFreeMotion()
     {
         var seed=Three();var assets=new MemoryAssetStore();
         await using var session=new CadDocumentSession(seed.Document,assets,new OcctGeometryKernel(),new InlineSessionDispatcher());
@@ -80,8 +80,12 @@ public sealed class AssemblyM5CompletionTests
         await session.ExecuteAsync(AssemblyConstraintCommands.AddPair(AssemblyConstraintId.New(),"CB",
             AssemblyConstraintKind.Coincident,seed.C,seed.B,Vector3d.Zero,Vector3d.Zero,0));
         var before=session.Snapshot;
-        Assert.Equal(AssemblySolveStatus.Conflict,AssemblySolveCommands.Plan(before).Report.Status);
-        await Assert.ThrowsAsync<CadValidationException>(()=>session.ExecuteAsync(AssemblySolveCommands.Solve()));
+        var plan=AssemblySolveCommands.Plan(before);
+        Assert.Equal(AssemblySolveStatus.UnderConstrained,plan.Report.Status);
+        Assert.All(plan.Candidate.AssemblyConstraints.Values,c=>
+            Assert.Equal(AssemblyConstraintStatus.Satisfied,c.Evaluate(plan.Candidate).Status));
         Assert.Same(before,session.Snapshot);
+        await session.ExecuteAsync(AssemblySolveCommands.Solve());
+        Assert.NotSame(before,session.Snapshot);
     }
 }

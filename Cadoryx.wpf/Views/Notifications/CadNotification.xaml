@@ -1,0 +1,48 @@
+<ntf:Notification x:Class="Cadoryx.wpf.Views.Toasts.CadNotification"
+ xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+ xmlns:ntf="clr-namespace:Notifications.Controls;assembly=Notifications"
+ xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
+ xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+ xmlns:r="clr-namespace:Cadoryx.Lang;assembly=Cadoryx.Lang"
+ Width="360" DeferEntranceAnimation="True" OpeningAnimationDuration="0:0:0.34"
+ ClosingAnimationDuration="0:0:0.26" AnimationDistance="24"
+ Foreground="{DynamicResource MaterialDesign.Brush.Foreground}">
+ <ntf:Notification.Resources><BooleanToVisibilityConverter x:Key="BoolVisibility" /></ntf:Notification.Resources>
+ <!-- Keep the MD appearance; WpfNotifications drives motion through PART_AnimationRoot. -->
+ <ntf:Notification.Style>
+  <Style TargetType="{x:Type ntf:Notification}">
+   <Setter Property="OverridesDefaultStyle" Value="True" />
+   <Setter Property="UseLayoutRounding" Value="True" />
+   <Setter Property="SnapsToDevicePixels" Value="True" />
+   <Setter Property="Focusable" Value="True" />
+   <Setter Property="KeyboardNavigation.IsTabStop" Value="True" />
+  </Style>
+ </ntf:Notification.Style>
+ <ntf:Notification.Template>
+  <ControlTemplate TargetType="{x:Type ntf:Notification}">
+   <Border x:Name="PART_AnimationRoot" CornerRadius="12" BorderThickness="1.5" BorderBrush="{Binding Accent}"
+           Background="{DynamicResource MaterialDesign.Brush.Background}" Padding="14">
+    <Grid>
+     <Grid.ColumnDefinitions><ColumnDefinition Width="28"/><ColumnDefinition Width="*"/><ColumnDefinition Width="28"/></Grid.ColumnDefinitions>
+     <md:PackIcon Kind="{Binding Icon}" Width="20" Height="20" Foreground="{Binding Accent}" Margin="0,2,0,0" />
+     <StackPanel Grid.Column="1" Margin="4,0,8,0">
+      <TextBlock Text="{Binding Title}" FontWeight="SemiBold" FontSize="14" TextWrapping="Wrap"/>
+      <TextBlock Text="{Binding Message}" Margin="0,6,0,0" FontSize="12" TextWrapping="Wrap" MaxHeight="160" TextTrimming="CharacterEllipsis"/>
+      <StackPanel Orientation="Horizontal" Margin="0,10,0,0" Visibility="{Binding IsWorking,Converter={StaticResource BoolVisibility}}">
+       <mah:ProgressRing Width="18" Height="18" IsActive="{Binding IsWorking}" Foreground="{Binding Accent}"/>
+       <Button x:Name="CancelImportButton" Margin="10,0,0,0" Padding="10,2" Height="28"
+               Content="{I18N {x:Static r:LangKeys.Cancel}}" Command="{Binding CancelCommand}"
+               Style="{StaticResource MaterialDesignFlatButton}" AutomationProperties.AutomationId="NotificationCancelImport"/>
+      </StackPanel>
+     </StackPanel>
+     <Button x:Name="PART_CloseButton" Grid.Column="2" Width="26" Height="26" Padding="3" VerticalAlignment="Top"
+             Style="{StaticResource MaterialDesignToolButton}" ToolTip="{I18N {x:Static r:LangKeys.Close}}"
+             Visibility="{Binding ShowCloseButton,RelativeSource={RelativeSource TemplatedParent},Converter={StaticResource BoolVisibility}}">
+      <md:PackIcon Kind="Close" Width="16" Height="16"/>
+     </Button>
+    </Grid>
+   </Border>
+  </ControlTemplate>
+ </ntf:Notification.Template>
+</ntf:Notification>

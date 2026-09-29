@@ -1,6 +1,7 @@
 <Solution>
   <Folder Name="/clients/">
     <Project Path="Cadoryx.Cli/Cadoryx.Cli.csproj" />
+    <Project Path="Cadoryx.CommandLine/Cadoryx.CommandLine.csproj" />
     <Project Path="Cadoryx.Lang/Cadoryx.Lang.csproj" Id="8c410f11-fd41-4788-bcb4-c7694f7c6579" />
     <Project Path="Cadoryx.ViewModels.Services/Cadoryx.ViewModels.Services.csproj" Id="ebda4ce6-5fdf-4049-b101-36adbbc00e0a" />
     <Project Path="Cadoryx.ViewModels/Cadoryx.ViewModels.csproj" Id="a82748ea-fde8-472e-91aa-63001f76689f" />
@@ -20,5 +21,11 @@
   </Folder>
   <Folder Name="/Tests/">
     <Project Path="Cadoryx.Tests/Cadoryx.Tests.csproj" />
+  </Folder>
+  <Folder Name="/agents/">
+    <Project Path="Cadoryx.Agent.Codex/Cadoryx.Agent.Codex.csproj" />
+    <Project Path="Cadoryx.Agent/Cadoryx.Agent.csproj" />
+    <Project Path="Cadoryx.AI.Contracts/Cadoryx.AI.Contracts.csproj" />
+    <Project Path="Cadoryx.AI.LmStudio/Cadoryx.AI.LmStudio.csproj" />
   </Folder>
 </Solution>

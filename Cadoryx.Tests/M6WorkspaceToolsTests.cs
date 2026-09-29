@@ -112,6 +112,33 @@ public sealed class M6WorkspaceToolsTests
         finally{tree.Bind(null);vm.Detach();}
     }
 
+    [Fact] public async Task ModelTreeAndViewportSelectionStayInSync()
+    {
+        var (snapshot,body,bytes)=Fixture();var assets=new MemoryAssetStore();using var blob=assets.Stage(bytes);
+        await using var session=Session(snapshot,assets);
+        var vm=new CadDocumentViewModel(session,new OcctGeometryKernel(),new CadMessageLog());
+        var tree=new ModelTreeToolboxViewModel(new Icons());
+        try
+        {
+            tree.Bind(vm);
+            var target=snapshot.EnumerateOccurrences()
+                .Where(o=>o.DefinitionId==body.PartId)
+                .Select(o=>new SelectionTarget(o.Path,body.Id,body.Geometry.Revision)).Last();
+            vm.Selection.Replace([target]);
+            var selected=tree.Items.SelectMany(n=>n.Children).SelectMany(n=>n.Children)
+                .Single(n=>n.IsSelected);
+            Assert.Equal(target,selected.Target);
+            Assert.True(selected.IsChecked);
+            tree.Select(tree.Items[0]);
+            Assert.Equal(tree.Items[0].Path,vm.Selection.Occurrence);
+            Assert.Empty(vm.Selection.Items);
+            Assert.True(tree.Items[0].IsSelected);
+            vm.Selection.SelectOccurrence(null);
+            Assert.DoesNotContain(tree.Items,n=>n.IsSelected);
+        }
+        finally{tree.Bind(null);vm.Detach();}
+    }
+
     [Fact] public void MeasurementUsesNestedWorldTransformsAndCountsRepeatedInstances()
     {
         var (snapshot,body,_)=Fixture();var targets=Targets(snapshot,body);

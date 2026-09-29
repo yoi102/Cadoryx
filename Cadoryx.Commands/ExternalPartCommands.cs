@@ -17,6 +17,9 @@ public static class ExternalPartCommands
     public static RefreshExternalPartCommand Refresh(IDocumentStorage storage,DefinitionId targetPartId,
         string? targetDocumentPath=null)=>new(storage,targetPartId,targetDocumentPath);
 
+    public static RelocateExternalPartCommand Relocate(IDocumentStorage storage,DefinitionId targetPartId,
+        string newPath,string? targetDocumentPath=null)=>new(storage,targetPartId,newPath,targetDocumentPath);
+
     public static ICadDocumentCommand Detach(DefinitionId partId)=>new EditDocumentCommand("Detach external part",document=>
         document.ExternalParts.ContainsKey(partId)?document with{ExternalParts=document.ExternalParts.Remove(partId)}:
             throw new CadValidationException("Part is not externally linked."));
@@ -34,7 +37,7 @@ public static class ExternalPartCommands
         catch(IOException){return ExternalPartStatus.SourceConflict;}
     }
 
-    private static string Resolve(ExternalPartLink link,string? targetDocumentPath)
+    internal static string Resolve(ExternalPartLink link,string? targetDocumentPath)
     {
         if(Path.IsPathRooted(link.SourcePath))return Path.GetFullPath(link.SourcePath);
         if(targetDocumentPath is not null)
@@ -46,7 +49,7 @@ public static class ExternalPartCommands
             throw new FileNotFoundException("External source path cannot be resolved.");
     }
 
-    private static string Hash(string path)
+    internal static string Hash(string path)
     {
         using var stream=File.OpenRead(path);
         return Convert.ToHexStringLower(SHA256.HashData(stream));
@@ -116,6 +119,8 @@ public static class ExternalPartCommands
                 cancellationToken.ThrowIfCancellationRequested();
                 if(Hash(full)!=hash)throw new IOException("External source changed while loading.");
                 if(loaded.Snapshot.Id==target.Id)throw new CadValidationException("A document cannot link itself.");
+                await ExternalDependencyGraph.RequireAcyclicAsync(loaded.Snapshot,full,storage,context.Assets,
+                    target.Id,cancellationToken).ConfigureAwait(false);
                 var sourcePart=SelectPart(loaded.Snapshot,sourcePartId);
                 var (part,bodies)=Freeze(target,loaded.Snapshot,sourcePart,targetPartId,name);
                 var candidate=target with{Definitions=target.Definitions.Add(targetPartId,part).SetItem(owner.Id,
@@ -155,6 +160,8 @@ public static class ExternalPartCommands
                    !loaded.Snapshot.Definitions.TryGetValue(link.SourcePartId,out var definition)||
                    definition is not PartDefinition sourcePart)
                     throw new CadValidationException("External source document or part identity changed.");
+                await ExternalDependencyGraph.RequireAcyclicAsync(loaded.Snapshot,full,storage,context.Assets,
+                    target.Id,cancellationToken).ConfigureAwait(false);
                 if(loaded.Snapshot.StateId==link.SourceStateId)
                     throw new CadValidationException("Source bytes changed without a new document state.");
                 var (part,bodies)=Freeze(target,loaded.Snapshot,sourcePart,current.Id,current.Name);
@@ -165,6 +172,31 @@ public static class ExternalPartCommands
                 var result=new PreparedDocumentEdit(candidate.WithNewState(),[loaded]);loaded=null;return result;
             }
             finally{loaded?.Dispose();}
+        }
+    }
+
+    /// <summary>Changes only the source hint after proving the exact pinned bytes and identity.</summary>
+    public sealed class RelocateExternalPartCommand(IDocumentStorage storage,DefinitionId targetPartId,
+        string newPath,string? targetDocumentPath) : ICadDocumentCommand
+    {
+        public string Name=>"Relocate external source";
+        public async Task<PreparedDocumentEdit> PrepareAsync(DocumentCommandContext context,CancellationToken token)
+        {
+            var target=context.Snapshot;
+            if(!target.ExternalParts.TryGetValue(targetPartId,out var link))
+                throw new CadValidationException("Part is not externally linked.");
+            var full=Path.GetFullPath(newPath);var hash=Hash(full);
+            if(hash!=link.SourceSha256)
+                throw new CadValidationException("Relocated source bytes differ from the pinned version.");
+            using var loaded=await storage.LoadAsync(full,context.Assets,token).ConfigureAwait(false);
+            token.ThrowIfCancellationRequested();
+            if(Hash(full)!=hash||loaded.Snapshot.Id!=link.SourceDocumentId||
+               loaded.Snapshot.StateId!=link.SourceStateId||
+               loaded.Snapshot.Definitions.GetValueOrDefault(link.SourcePartId) is not PartDefinition)
+                throw new CadValidationException("Relocated source identity or version differs.");
+            var updated=link with{SourcePath=SourceHint(full,targetDocumentPath),AbsolutePathHint=full};
+            return new PreparedDocumentEdit(target with
+            {ExternalParts=target.ExternalParts.SetItem(targetPartId,updated),StateId=DocumentStateId.New()});
         }
     }
 }

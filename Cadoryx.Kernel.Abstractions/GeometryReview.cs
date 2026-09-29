@@ -14,11 +14,15 @@ public sealed record CuttingPlane(Vector3d Normal,double OffsetMm)
 }
 public enum BodyPairRelation { Separated,Touching,Contained,Interfering }
 public sealed record BodyPairFinding(GeometryInstance First,GeometryInstance Second,BodyPairRelation Relation,double DistanceMm,double OverlapVolumeMm3);
-public sealed record InterferenceReport(ImmutableArray<BodyPairFinding> Pairs,double ToleranceMm);
+public sealed record InterferenceReport(ImmutableArray<BodyPairFinding> Pairs,double ToleranceMm,int BroadPhaseSeparatedPairs=0);
 public interface IGeometryReviewKernel
 {
     Task<GeometryResult> SectionAsync(IReadOnlyList<GeometryInstance> instances,CuttingPlane plane,IAssetStore assets,CancellationToken token=default);
+    Task<GeometryResult> SectionFacesAsync(IReadOnlyList<GeometryInstance> instances,CuttingPlane plane,IAssetStore assets,CancellationToken token=default)
+        =>throw new NotSupportedException("Section faces are unavailable in this kernel.");
     Task<InterferenceReport> CheckInterferenceAsync(IReadOnlyList<GeometryInstance> instances,double toleranceMm,IAssetStore assets,CancellationToken token=default);
+    Task<InterferenceReport> CheckInterferenceCandidatesAsync(IReadOnlyList<GeometryInstance> instances,double toleranceMm,IAssetStore assets,CancellationToken token=default)
+        =>CheckInterferenceAsync(instances,toleranceMm,assets,token);
 }
 
 public static class GeometryInstanceGuard

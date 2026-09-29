@@ -35,6 +35,7 @@ public partial class MainWindow
     {
         InitializeComponent();
         _viewModel = viewModel;
+        _viewModel.TechnicalDrawingRequested+=OnTechnicalDrawingRequested;
         _toolboxLayoutPersistence = toolboxLayoutPersistence;
         DataContext = _viewModel;
 
@@ -64,6 +65,17 @@ public partial class MainWindow
         Deactivated += OnWindowDeactivated;
         Closing += OnWindowClosing;
         Closed += OnWindowClosed;
+    }
+
+    private readonly Dictionary<Guid,Cadoryx.wpf.Views.TechnicalDrawingWindow> drawingWindows=[];
+    private void OnTechnicalDrawingRequested(object? sender,CadDocumentViewModel document)
+    {
+        if(drawingWindows.TryGetValue(document.Session.SessionId,out var existing))
+        {existing.Activate();return;}
+        var window=new Cadoryx.wpf.Views.TechnicalDrawingWindow(document){Owner=this};
+        drawingWindows.Add(document.Session.SessionId,window);
+        window.Closed+=(_,_)=>drawingWindows.Remove(document.Session.SessionId);
+        window.Show();
     }
 
     private void OnThemeChanged(ThemeChangedEvent message)
@@ -112,7 +124,7 @@ public partial class MainWindow
         _toolboxLayoutSaveTimer.Stop();
         PersistToolboxLayout();
 
-        if (_isExitConfirmationRunning)
+        if (_viewModel.IsBusy || _isExitConfirmationRunning)
             return;
 
         _isExitConfirmationRunning = true;

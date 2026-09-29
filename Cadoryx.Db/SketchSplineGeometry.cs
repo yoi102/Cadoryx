@@ -6,12 +6,12 @@ namespace Cadoryx.Db;
 public static class SketchSplineGeometry
 {
     public const int Degree=3;
-    public const int MaximumControls=8;
+    public const int MaximumControls=16;
 
     public static void Validate(ImmutableArray<Point2d> controls)
     {
         if(controls.IsDefault||controls.Length is <4 or >MaximumControls)
-            throw new CadValidationException("A cubic spline region needs 4 to 8 control points.");
+            throw new CadValidationException("A cubic spline region needs 4 to 16 control points.");
         foreach(var point in controls)CadGuard.Finite(point.X,point.Y);
         var start=controls[0];var end=controls[^1];
         double dx=end.X-start.X,dy=end.Y-start.Y,lengthSquared=dx*dx+dy*dy;
@@ -63,5 +63,20 @@ public static class SketchSplineGeometry
                 (1-alpha)*values[j-1].Y+alpha*values[j].Y);
         }
         return values[Degree];
+    }
+    /// <summary>A conservative validation contour; modeling still uses the exact B-spline.</summary>
+    public static ImmutableArray<SketchBoundaryCurve> ValidationBoundary(CubicSplineRegion region)
+    {
+        Validate(region.Controls);
+        const int segments=128;
+        var curves=ImmutableArray.CreateBuilder<SketchBoundaryCurve>(segments+1);
+        var previous=region.Controls[0];
+        for(int i=1;i<=segments;i++)
+        {
+            var next=At(region.Controls,i/(double)segments);
+            curves.Add(new(previous,next));previous=next;
+        }
+        curves.Add(new(previous,region.Controls[0]));
+        return curves.ToImmutable();
     }
 }

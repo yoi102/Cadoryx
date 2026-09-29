@@ -3,6 +3,7 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using AvalonDock.Core;
 using Cadoryx.Db;
+using Cadoryx.Commands;
 using Cadoryx.Editor;
 using Cadoryx.Lang.Strings;
 using Cadoryx.ViewModels.Services.Platform;
@@ -146,7 +147,7 @@ public partial class ModelTreeToolboxViewModel : CadToolboxViewModelBase
                     loadChildren:()=>part.Features.Select(fid=>
                     {
                         var f=snapshot.Features[fid];return new ModelTreeItemViewModel(f.Name,RecipeText(f.Recipe),
-                            null,fid,path);
+                            null,fid,path,isSuppressed:f.IsSuppressed);
                     }));
             foreach(var sketch in snapshot.Sketches.Values.Where(s=>s.PartId==part.Id).OrderBy(s=>s.Name))
                 yield return new ModelTreeItemViewModel(sketch.Name,Strings.Sketch,path:path,sketch:sketch.Id);
@@ -162,6 +163,17 @@ public partial class ModelTreeToolboxViewModel : CadToolboxViewModelBase
     {
         if(document is null||item.Target is not {} target)return;
         document.Selection.Replace(item.IsChecked?document.Selection.Items.Add(target):document.Selection.Items.Remove(target));
+    }
+    public async Task SetFeatureSuppressionAsync(ModelTreeItemViewModel row,bool suppressed)
+    {
+        if(document is not {} doc||row.Feature is not {} id||doc.IsClosingRequested)return;
+        try
+        {
+            if(!doc.Session.Snapshot.Features.TryGetValue(id,out var feature)||feature.IsSuppressed!=row.IsSuppressed)
+                throw new CadValidationException("Feature changed; refresh the model tree.");
+            await doc.Session.ExecuteAsync(new SetFeatureSuppressionCommand(id,suppressed));
+        }
+        catch(Exception ex){doc.Report(ex);}
     }
     public void Select(ModelTreeItemViewModel item)
     {
@@ -183,6 +195,13 @@ public partial class ModelTreeToolboxViewModel : CadToolboxViewModelBase
         syncing=true;
         try{foreach(var item in All(Items))item.IsChecked=item.Target is {} t&&document?.Selection.Items.Contains(t)==true;}
         finally{syncing=false;}
+        if(document?.Selection.Occurrence is {} path)
+            Reveal(path,document.Selection.Items.FirstOrDefault());
+        else
+        {
+            revealedRow=null;
+            foreach(var item in All(Items))item.IsSelected=false;
+        }
     }
     private static IEnumerable<ModelTreeItemViewModel> All(IEnumerable<ModelTreeItemViewModel> items)
     {foreach(var item in items){yield return item;foreach(var child in All(item.Children))yield return child;}}
@@ -215,13 +234,15 @@ public partial class ModelTreeToolboxViewModel : CadToolboxViewModelBase
     };
 }
 public partial class ModelTreeItemViewModel(string name,string kind,SelectionTarget? target=null,FeatureId? feature=null,
-    OccurrencePath? path=null,SketchId? sketch=null,Func<IEnumerable<ModelTreeItemViewModel>>? loadChildren=null):ObservableObject
+    OccurrencePath? path=null,SketchId? sketch=null,Func<IEnumerable<ModelTreeItemViewModel>>? loadChildren=null,
+    bool isSuppressed=false):ObservableObject
 {
     private Func<IEnumerable<ModelTreeItemViewModel>>? loader=loadChildren;
     public string Name {get;}=name;
     public string Kind {get;}=kind;
     public SelectionTarget? Target {get;}=target;
     public FeatureId? Feature {get;}=feature;
+    public bool IsSuppressed {get;}=isSuppressed;
     public SketchId? Sketch {get;}=sketch;
     public OccurrencePath? Path {get;}=path??target?.Path;
     public bool CanCheck=>Target is not null;

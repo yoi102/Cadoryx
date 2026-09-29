@@ -44,6 +44,11 @@ internal static class SketchEditorSmokeRunner
                 if(editor.Editor.Sketch.Lines.Length!=4)Save(editor,Path.Combine(output,"pointer-failure.png"));
                 Check(editor.Editor.Sketch.Lines.Length==4,$"Rectangle pointer drawing: tool={editor.Editor.Tool}, editable={editor.Editor.CanEdit}, points={editor.Editor.Sketch.Points.Length}, status={editor.Editor.Status}, pointer={System.Windows.Input.Mouse.GetPosition(editor.Canvas)}, hit={System.Windows.Input.Mouse.DirectlyOver}");
                 editor.ToolPicker.SelectedValue="Circle";await Click(editor,new(55,15));await Click(editor,new(60,15));Check(editor.Editor.Sketch.Circles.Length==1,"Circle pointer drawing");
+                editor.ToolPicker.SelectedValue="Select";await Drag(editor,new(60,15),new(63,15));
+                if(editor.Editor.PreviewCommand.ExecutionTask is {} circlePreview)await circlePreview;
+                var resized=editor.Editor.Sketch.Circles.Single();
+                Check(Math.Abs(resized.Radius-8)<.5&&editor.Editor.Sketch.Constraints.OfType<RadiusConstraint>()
+                    .Any(c=>c.Circle==resized.Id&&Math.Abs(c.Radius-resized.Radius)<1e-9),"Circle radius handle and constraint update");
                 editor.ToolPicker.SelectedValue="Line";await Click(editor,new(50,35));await Click(editor,new(60,40));Check(editor.Editor.Sketch.Lines.Length==5,"Line pointer drawing");
                 editor.ToolPicker.SelectedValue="ArcSegment";await Click(editor,new(65,0));await Click(editor,new(70,5));await Click(editor,new(75,0));
                 Check(editor.Editor.Sketch.Arcs.Length==1,"Three-point arc pointer drawing");

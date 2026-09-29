@@ -10,6 +10,7 @@
  AutomationProperties.AutomationId="DocumentSettingsWindow">
  <Grid Margin="16">
   <Grid.Resources>
+   <BooleanToVisibilityConverter x:Key="BoolVisibility"/>
    <DataTemplate x:Key="DisplaySectionTemplate">
     <ScrollViewer VerticalScrollBarVisibility="Auto">
      <StackPanel Margin="0,0,8,0">
@@ -70,6 +71,26 @@
                           Minimum="-1000000" Maximum="1000000" Interval="1"
                           Value="{Binding WorkPlaneOffsetMm, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
       </Grid>
+      <StackPanel Margin="0,18,0,0" Visibility="{Binding IsCustomWorkPlane, Converter={StaticResource BoolVisibility}}">
+       <TextBlock Text="{Binding Labels.WorkPlaneOrigin}" FontWeight="SemiBold" Margin="0,0,0,8"/>
+       <WrapPanel>
+        <TextBlock Text="X" VerticalAlignment="Center" Margin="0,0,8,0"/>
+        <mah:NumericUpDown Width="125" Minimum="-1000000" Maximum="1000000" Value="{Binding WorkPlaneOriginX, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" AutomationProperties.AutomationId="WorkPlaneOriginX"/>
+        <TextBlock Text="Y" VerticalAlignment="Center" Margin="16,0,8,0"/>
+        <mah:NumericUpDown Width="125" Minimum="-1000000" Maximum="1000000" Value="{Binding WorkPlaneOriginY, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" AutomationProperties.AutomationId="WorkPlaneOriginY"/>
+        <TextBlock Text="Z" VerticalAlignment="Center" Margin="16,0,8,0"/>
+        <mah:NumericUpDown Width="125" Minimum="-1000000" Maximum="1000000" Value="{Binding WorkPlaneOriginZ, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" AutomationProperties.AutomationId="WorkPlaneOriginZ"/>
+       </WrapPanel>
+       <TextBlock Text="{Binding Labels.WorkPlaneAngles}" FontWeight="SemiBold" Margin="0,18,0,8"/>
+       <WrapPanel>
+        <TextBlock Text="X" VerticalAlignment="Center" Margin="0,0,8,0"/>
+        <mah:NumericUpDown Width="125" Minimum="-3600" Maximum="3600" Value="{Binding WorkPlaneAngleX, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" AutomationProperties.AutomationId="WorkPlaneAngleX"/>
+        <TextBlock Text="Y" VerticalAlignment="Center" Margin="16,0,8,0"/>
+        <mah:NumericUpDown Width="125" Minimum="-3600" Maximum="3600" Value="{Binding WorkPlaneAngleY, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" AutomationProperties.AutomationId="WorkPlaneAngleY"/>
+        <TextBlock Text="Z" VerticalAlignment="Center" Margin="16,0,8,0"/>
+        <mah:NumericUpDown Width="125" Minimum="-3600" Maximum="3600" Value="{Binding WorkPlaneAngleZ, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" AutomationProperties.AutomationId="WorkPlaneAngleZ"/>
+       </WrapPanel>
+      </StackPanel>
      </StackPanel>
     </ScrollViewer>
    </DataTemplate>

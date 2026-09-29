@@ -4,7 +4,8 @@ using Cadoryx.Kernel.Abstractions;
 namespace Cadoryx.Commands;
 
 /// <summary>One undoable, frozen world-space section in a new independent part. No inferred topology bindings.</summary>
-public sealed class CreateSectionCommand(IReadOnlyList<GeometryInstance> inputs,CuttingPlane plane,string name) : ICadDocumentCommand
+public sealed class CreateSectionCommand(IReadOnlyList<GeometryInstance> inputs,CuttingPlane plane,string name,
+    bool associative=false,SectionOutput outputKind=SectionOutput.Curves) : ICadDocumentCommand
 {
     private readonly GeometryInstance[] instances=inputs.ToArray();
     public string Name=>name;
@@ -13,7 +14,11 @@ public sealed class CreateSectionCommand(IReadOnlyList<GeometryInstance> inputs,
         CadGuard.Name(name);plane.Validate();var doc=context.Snapshot;GeometryInstanceGuard.Validate(doc,instances);
         var layer=doc.Layers.Values.FirstOrDefault(l=>!l.IsLocked)??throw new CadValidationException("No unlocked destination layer.");
         if(context.Kernel is not IGeometryReviewKernel review)throw new NotSupportedException("Section kernel is unavailable.");
-        var result=await review.SectionAsync(instances,plane,context.Assets,cancellationToken).ConfigureAwait(false);
+        if(!Enum.IsDefined(outputKind))throw new CadValidationException("Unknown section output.");
+        if(associative&&instances.Any(i=>doc.Bodies[i.BodyId].Producer is {} p&&doc.AssociatedSections.ContainsKey(p)))
+            throw new CadValidationException("Detach the source section before creating another association.");
+        var result=await (outputKind==SectionOutput.Faces?review.SectionFacesAsync(instances,plane,context.Assets,cancellationToken):
+            review.SectionAsync(instances,plane,context.Assets,cancellationToken)).ConfigureAwait(false);
         try
         {
             cancellationToken.ThrowIfCancellationRequested();
@@ -28,6 +33,8 @@ public sealed class CreateSectionCommand(IReadOnlyList<GeometryInstance> inputs,
                 Bodies=doc.Bodies.Add(body,output),Features=doc.Features.Add(feature,new(feature,part,name,
                     new ImportedRecipe(result.Geometry),[],body,result.Geometry,OutputMetadata:BodyOutputMetadata.FromBody(output)))
             };
+            if(associative)doc=doc with{AssociatedSections=doc.AssociatedSections.Add(feature,new(feature,plane.Normal,plane.OffsetMm,outputKind,
+                [..instances.Select(i=>new SectionSource(i.Path,i.BodyId,doc.Bodies[i.BodyId].Producer,i.Geometry.Revision,i.Geometry.AssetId,i.WorldTransform))]))};
             return new(doc.WithNewState(),[result]);
         }
         catch{result.Dispose();throw;}

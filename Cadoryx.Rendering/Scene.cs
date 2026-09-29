@@ -6,6 +6,9 @@ namespace Cadoryx.Rendering;
 public sealed record SceneItem(OccurrencePath Path,BodyId BodyId,GeometryAssetRef Geometry,RigidTransform3d WorldTransform,uint Argb,bool PreserveSourceStyles=false);
 public sealed record CadScene(DocumentId DocumentId,DocumentStateId StateId,ImmutableArray<SceneItem> Items)
 {
+    public ImmutableArray<EngineeringDimension> Dimensions {get;init;}=[];
+    public LengthUnit DimensionUnit {get;init;}=LengthUnit.Millimeter;
+    public int DimensionDecimalPlaces {get;init;}=3;
     public static CadScene FromDocument(DocumentSnapshot document)
     {
         var items=ImmutableArray.CreateBuilder<SceneItem>();
@@ -21,7 +24,9 @@ public sealed record CadScene(DocumentId DocumentId,DocumentStateId StateId,Immu
                     occurrence.AppearanceOverride is null&&!appearance.ByLayer&&appearance.PreserveSourceStyles&&body.Geometry.Source is not null));
             }
         }
-        return new(document.Id,document.StateId,items.ToImmutable());
+        return new(document.Id,document.StateId,items.ToImmutable()){
+            Dimensions=[..document.Dimensions.Values.OrderBy(d=>d.Id)],DimensionUnit=document.Settings.DisplayUnit,
+            DimensionDecimalPlaces=document.Settings.DecimalPlaces};
     }
 }
 public enum CadProjection { Axonometric, Front, Top, Right, Left, Back, Bottom }

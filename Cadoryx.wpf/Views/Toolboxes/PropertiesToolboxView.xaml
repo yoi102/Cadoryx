@@ -15,15 +15,14 @@
     <Expander.Style><Style TargetType="Expander" BasedOn="{StaticResource {x:Type Expander}}"><Style.Triggers>
      <DataTrigger Binding="{Binding HasSelection}" Value="False"><Setter Property="Visibility" Value="Collapsed"/></DataTrigger>
     </Style.Triggers></Style></Expander.Style>
-    <StackPanel>
-     <TextBlock Text="{I18N {x:Static r:LangKeys.SelectionMeasurementHint}}" TextWrapping="Wrap" Opacity="0.65" Margin="0,6"/>
+    <StackPanel Margin="8,8,8,10">
+     <TextBlock Text="{I18N {x:Static r:LangKeys.SelectionMeasurementHint}}" TextWrapping="Wrap" Opacity="0.65" Margin="0,0,0,8"/>
      <ItemsControl ItemsSource="{Binding Measurements}">
-      <ItemsControl.ItemTemplate><DataTemplate><StackPanel Margin="0,4"><TextBlock Text="{Binding Name}" Opacity="0.6"/><TextBlock Text="{Binding Value}" TextWrapping="Wrap"/></StackPanel></DataTemplate></ItemsControl.ItemTemplate>
+      <ItemsControl.ItemTemplate><DataTemplate><StackPanel Margin="0,4,0,8"><TextBlock Text="{Binding Name}" Opacity="0.6"/><TextBlock Text="{Binding Value}" TextWrapping="Wrap"/></StackPanel></DataTemplate></ItemsControl.ItemTemplate>
      </ItemsControl>
     </StackPanel>
    </Expander>
-   <views:DocumentReviewView DataContext="{Binding Review}"/>
-   <StackPanel IsEnabled="{Binding HasSelection}">
+   <StackPanel IsEnabled="{Binding HasSelection}" Margin="0,0,0,8">
     <StackPanel.Style><Style TargetType="StackPanel"><Style.Triggers>
      <DataTrigger Binding="{Binding HasSelection}" Value="False"><Setter Property="Visibility" Value="Collapsed"/></DataTrigger>
     </Style.Triggers></Style></StackPanel.Style>
@@ -40,9 +39,10 @@
     <Button Content="{I18N {x:Static r:LangKeys.ApplyProperties}}" Command="{Binding ApplyCommand}" Margin="0,0,0,8"/>
     <Button Content="{I18N {x:Static r:LangKeys.EditFeature}}" Command="{Binding EditFeatureCommand}" Margin="0,0,0,16"/>
    </StackPanel>
-   <ItemsControl ItemsSource="{Binding Properties}">
+   <ItemsControl ItemsSource="{Binding Properties}" Margin="0,0,0,12">
     <ItemsControl.ItemTemplate><DataTemplate><StackPanel Margin="0,4"><TextBlock Text="{Binding Name}" Opacity="0.6"/><TextBlock Text="{Binding Value}" TextWrapping="Wrap"/></StackPanel></DataTemplate></ItemsControl.ItemTemplate>
    </ItemsControl>
+   <views:DocumentReviewView DataContext="{Binding Review}"/>
    <views:InstancePlacementView DataContext="{Binding Instance}"/>
    <views:AssemblyConstraintsView DataContext="{Binding AssemblyRelations}"/>
   </StackPanel>

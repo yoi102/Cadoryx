@@ -26,6 +26,21 @@ static RepairSelection Select(RepairSnapshot snapshot,ShapeKind kind,Func<Boundi
 static RepairSelection Vertical(RepairSnapshot s,double x,double y)=>Select(s,ShapeKind.Edge,b=>
     Math.Abs(b.Minimum.X-x)<1e-5&&Math.Abs(b.Maximum.X-x)<1e-5&&Math.Abs(b.Minimum.Y-y)<1e-5&&Math.Abs(b.Maximum.Y-y)<1e-5&&b.SizeZ>14.99);
 
+Probe("section-face-common",()=>
+{
+    using var box=ShapeFactory.CreateBox(10,20,30);
+    using var wire=ShapeFactory.CreatePolygonWire([new(-1,-1,15),new(11,-1,15),new(11,21,15),new(-1,21,15)],true);
+    using var plane=ShapeFactory.CreatePlanarFace(wire);using var cap=box.Common(plane);
+    Require(cap.IsValid,"Section cap is invalid.");var faces=cap.GetSubShapes(ShapeKind.Face);
+    try{Near(faces.Sum(f=>f.InspectProperties(InspectionPropertyKind.Area).Mass),200);}finally{foreach(var face in faces)face.Dispose();}
+    return new{areaMm2=200,preservesTrimmedFaces=true};
+});
+Probe("native-dimension-contract",()=>
+{
+    Require(typeof(OcctViewer).GetMethod(nameof(OcctViewer.DisplayLengthDimension),[typeof(GpPoint),typeof(GpPoint),typeof(ViewerPlaneEquation),typeof(ViewerDimensionStyle)]) is not null,"Length dimension API missing.");
+    Require(typeof(OcctViewer).GetMethod(nameof(OcctViewer.DisplayAngleDimension),[typeof(GpPoint),typeof(GpPoint),typeof(GpPoint),typeof(ViewerDimensionStyle)]) is not null,"Angle dimension API missing.");
+    return new{families=new[]{"length","angle"},nativePresentationCoveredBy="engineering-review desktop smoke"};
+});
 Probe("viewer-gradient-contract",()=>
 {
     var method=typeof(OcctViewer).GetMethod(nameof(OcctViewer.SetBackgroundGradient),
@@ -62,6 +77,38 @@ Probe("exact-picked-topology-index",()=>
         return new{edges=indices.Length,foreignRejected=true};
     }
     finally{foreach(var edge in edges)edge.Dispose();}
+});
+Probe("analytic-assembly-datum-contract",()=>
+{
+    using var cylinder=ShapeFactory.CreateCylinder(7,12);
+    using var map=RepairSnapshot.Create(cylinder);
+    var kinds=new HashSet<string>();
+    foreach(var item in map.Topology.Where(t=>t.Kind is ShapeKind.Face or ShapeKind.Edge))
+    {
+        using var subshape=map.CopySubshape(item.Selection);
+        if(item.Kind==ShapeKind.Face)
+        {
+            var surface=subshape.GetFaceSurfaceSnapshot();
+            if(surface.SurfaceType!=SurfaceGeometryType.Cylinder)continue;
+            var u=(surface.FirstUParameter+surface.LastUParameter)/2;
+            var v=(surface.FirstVParameter+surface.LastVParameter)/2;
+            var point=subshape.EvaluateFace(u,v);
+            var derivatives=subshape.EvaluateFaceDerivatives(u,v);
+            Require(double.IsFinite(point.Point.X)&&double.IsFinite(derivatives.VDerivative.Z),
+                "Cylindrical evaluation is non-finite.");
+            kinds.Add("cylinder");
+        }
+        else
+        {
+            var curve=subshape.GetEdgeCurveSnapshot();
+            if(curve.CurveType!=CurveGeometryType.Circle)continue;
+            var point=subshape.EvaluateEdge((curve.FirstParameter+curve.LastParameter)/2);
+            Require(double.IsFinite(point.Point.X),"Circular edge evaluation is non-finite.");
+            kinds.Add("circle");
+        }
+    }
+    Require(kinds.SetEquals(["cylinder","circle"]),"The locked package does not expose both analytic datum families.");
+    return new{families=kinds.Order().ToArray(),fingerprint=map.Fingerprint};
 });
 
 Probe("primitives-transform",()=>

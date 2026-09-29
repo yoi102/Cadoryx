@@ -34,13 +34,15 @@ public sealed class FeatureBindingTests
         {
             var bindings=manifest.Sections.Single(s=>s.Kind=="feature-bindings");
             var external=manifest.Sections.Single(s=>s.Kind=="external-parts");
+            var review=manifest.Sections.Single(s=>s.Kind=="engineering-review");zip.GetEntry(review.Path)!.Delete();
+            var drawings=manifest.Sections.Single(s=>s.Kind=="drawings");zip.GetEntry(drawings.Path)!.Delete();
             zip.GetEntry(bindings.Path)!.Delete();zip.GetEntry(external.Path)!.Delete();zip.GetEntry("manifest.json")!.Delete();
             var previous=manifest with{ApplicationVersion="0.4.6",
-                Sections=[..manifest.Sections.Where(s=>s.Kind is not ("feature-bindings" or "external-parts")).Select(s=>s.Kind switch
+                Sections=[..manifest.Sections.Where(s=>s.Kind is not ("feature-bindings" or "external-parts" or "engineering-review" or "drawings")).Select(s=>s.Kind switch
                 {
                     "document"=>s with{SchemaVersion=6},"features"=>s with{SchemaVersion=5},_=>s
                 })],
-                RequiredCapabilities=[..manifest.RequiredCapabilities.Where(c=>c is not ("cadoryx.feature-bindings.1" or "cadoryx.external-parts.1"))]};
+                RequiredCapabilities=[..manifest.RequiredCapabilities.Where(c=>c is not ("cadoryx.feature-bindings.1" or "cadoryx.external-parts.1" or "cadoryx.engineering-review.1"))]};
             using var output=zip.CreateEntry("manifest.json").Open();JsonSerializer.Serialize(output,previous,CadJson.Options);
         }
         using(var loaded=await storage.LoadAsync(path,assets))
@@ -146,7 +148,7 @@ public sealed class FeatureBindingTests
                 var reopenedHistory=await kernel.TraceAsync(loaded.Snapshot,origin,second.Id,assets);
                 Assert.Equal(HistoryResolutionStatus.Generated,reopenedHistory.Status);
                 Assert.Null(reopenedHistory.Target);
-                Assert.Equal(11,FormatEvolutionTests.Manifest(path).Sections.Length);
+                Assert.Equal(CadSectionMigrationRegistry.CurrentFormats.Count,FormatEvolutionTests.Manifest(path).Sections.Length);
             }
             var legacy=files.PathFor("legacy-binding.cadoryx");await session.SaveAsync(storage,legacy);
             FormatEvolutionTests.RewriteSection(legacy,"feature-bindings",bytes=>

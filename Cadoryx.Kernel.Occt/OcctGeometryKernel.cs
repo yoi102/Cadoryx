@@ -1,4 +1,6 @@
 using System.Collections.Immutable;
+using System.Diagnostics;
+using System.Text.Json;
 using Cadoryx.Db;
 using Cadoryx.Kernel.Abstractions;
 using OcctSharp;
@@ -69,6 +71,13 @@ public sealed partial class OcctGeometryKernel : IGeometryKernel, ITopologyResol
                 if(radial)throw new CadValidationException("Mixed-curve profiles are not supported by revolve.");
                 var curves=profile.BoundaryCurves.Select(edge=>
                 {
+                    if(edge.BezierControl is {} control)
+                        return SketchCurve2d.Bezier([new(edge.Start.X,edge.Start.Y),
+                            new(control.X,control.Y),new(edge.End.X,edge.End.Y)]);
+                    if(!edge.SplineControls.IsDefaultOrEmpty)
+                        return SketchCurve2d.BSpline(edge.SplineControls.Select(p=>new SketchPoint2d(p.X,p.Y)).ToArray(),
+                            SketchSplineGeometry.Knots(edge.SplineControls.Length),
+                            SketchSplineGeometry.Multiplicities(edge.SplineControls.Length),SketchSplineGeometry.Degree);
                     if(edge.Middle is not {} middle)
                         return SketchCurve2d.Segment(new(edge.Start.X,edge.Start.Y),new(edge.End.X,edge.End.Y));
                     var arc=SketchArcGeometry.Through(edge.Start,middle,edge.End);
@@ -125,6 +134,7 @@ public sealed partial class OcctGeometryKernel : IGeometryKernel, ITopologyResol
                 using(var face=Profile(e.Profile,false))using(var direction=GpVec.Create(0,0,e.Distance))
                 {
                     Shape current=face.Extrude(direction);
+                    bool currentOwnedByPieces=false;
                     try
                     {
                         foreach(var hole in e.Profile.Holes.IsDefault?ImmutableArray<CircularSketchRegion>.Empty:e.Profile.Holes)
@@ -155,21 +165,30 @@ public sealed partial class OcctGeometryKernel : IGeometryKernel, ITopologyResol
                             using var cutter=holeFace.Extrude(holeDirection);
                             var next=current.Cut(cutter);current.Dispose();current=next;
                         }
-                        if(e.Profile.Islands.IsEmpty)return Place(current,e.Placement);
+                        foreach(var hole in e.Profile.SplineHoles)
+                        {
+                            double margin=Math.Max(1e-5,Math.Min(1,e.Distance*.1));
+                            using var holeFace=Place(Profile(new SketchProfile([]){Spline=hole},false),
+                                RigidTransform3d.Translate(0,0,-margin));
+                            using var holeDirection=GpVec.Create(0,0,e.Distance+2*margin);
+                            using var cutter=holeFace.Extrude(holeDirection);
+                            var next=current.Cut(cutter);current.Dispose();current=next;
+                        }
+                        if(e.Profile.Islands.IsEmpty){currentOwnedByPieces=true;return Place(current,e.Placement);}
                         var pieces=new List<Shape>{current};
+                        currentOwnedByPieces=true;
                         try
                         {
                             foreach(var island in e.Profile.Islands)
                             {
-                                using var islandFace=Profile(island.Profile,false);
-                                pieces.Add(islandFace.Extrude(direction));
+                                pieces.Add(Create(new ExtrudeRecipe(island.Profile,e.Distance,RigidTransform3d.Identity),assets));
                             }
                             using var compound=ShapeFactory.CreateCompound(pieces);
                             return Place(compound,e.Placement);
                         }
                         finally{foreach(var piece in pieces)piece.Dispose();}
                     }
-                    catch {current.Dispose();throw;}
+                    catch {if(!currentOwnedByPieces)current.Dispose();throw;}
                 }
             case RevolveRecipe r:
                 using(var face=Profile(r.Profile,true))using(var axis=GpAx1.Create(0,0,0,0,0,1))
@@ -180,12 +199,19 @@ public sealed partial class OcctGeometryKernel : IGeometryKernel, ITopologyResol
     public Task<LoadedDocument> ImportAsync(string path,IAssetStore assets,CancellationToken cancellationToken=default)=>Run(()=>
     {
         if(Path.GetExtension(path).Equals(".stl",StringComparison.OrdinalIgnoreCase))return ImportStl(path,assets,cancellationToken);
-        using var native=XdeDocument.ReadExchange(Path.GetFullPath(path));using var files=new KernelFiles();
+        var clock=Stopwatch.StartNew();
+        using var native=XdeDocument.ReadExchange(Path.GetFullPath(path));
+        double nativeReadMs=clock.Elapsed.TotalMilliseconds;clock.Restart();
+        using var files=new KernelFiles();
         var contextPath=files.PathFor("import.xbf");native.Save(contextPath);
+        double contextSaveMs=clock.Elapsed.TotalMilliseconds;clock.Restart();
         var leases=new List<IAssetLease>();var results=new List<GeometryResult>();
         try
         {
             var context=assets.Stage(File.ReadAllBytes(contextPath));leases.Add(context);
+            double contextStageMs=clock.Elapsed.TotalMilliseconds;clock.Restart();
+            double shapeStoreMs=0,colorMs=0;int partCount=0;
+            double topologyMs=0,validityMs=0,boundsMs=0,volumeMs=0,writeMs=0,stageMs=0;
             var doc=DocumentSnapshot.Create(Path.GetFileNameWithoutExtension(path));
             var definitions=doc.Definitions.ToBuilder();var bodies=doc.Bodies.ToBuilder();var features=doc.Features.ToBuilder();
             var mapped=new Dictionary<string,DefinitionId>(StringComparer.Ordinal);var active=new HashSet<string>();
@@ -212,10 +238,24 @@ public sealed partial class OcctGeometryKernel : IGeometryKernel, ITopologyResol
                 else
                 {
                     using var original=label.Shape;using var identity=TopLocLocation.Identity;using var local=original.Located(identity);
-                    var stored=OcctGeometryBridge.StoreShape(local,assets);results.Add(stored);
+                    long shapeStart=Stopwatch.GetTimestamp();
+                    GeometryResult stored;
+                    try
+                    {
+                        stored=OcctGeometryBridge.StoreShape(local,assets,t=>
+                        {topologyMs+=t.TopologyMs;validityMs+=t.ValidityMs;boundsMs+=t.BoundsMs;
+                         volumeMs+=t.VolumeMs;writeMs+=t.WriteMs;stageMs+=t.StageMs;});
+                    }
+                    catch(CadValidationException error)
+                    {
+                        throw new CadValidationException($"Exchange part '{name}' ({label.Entry}) failed exact BRep validation: {error.Message}");
+                    }
+                    results.Add(stored);
+                    shapeStoreMs+=Stopwatch.GetElapsedTime(shapeStart).TotalMilliseconds;partCount++;
                     var geometry=stored.Geometry with {Source=new(context.Id,label.Entry,AssetFormatPolicy.CurrentXde)};
                     var bodyId=BodyId.New();var featureId=FeatureId.New();
-                    var color=OverallColor(label);
+                    long colorStart=Stopwatch.GetTimestamp();var color=OverallColor(label);
+                    colorMs+=Stopwatch.GetElapsedTime(colorStart).TotalMilliseconds;
                     var body=new CadBody(bodyId,id,name,geometry,featureId,doc.Layers.Keys.First(),new(color is {} c?OcctGeometryBridge.ToArgb(c):0xFF86ACC5,PreserveSourceStyles:true));
                     bodies.Add(bodyId,body);
                     features.Add(featureId,new(featureId,id,"Import",new ImportedRecipe(geometry),[],bodyId,geometry));
@@ -232,8 +272,16 @@ public sealed partial class OcctGeometryKernel : IGeometryKernel, ITopologyResol
             if(roots.Count==0)throw new CadValidationException("The exchange file contains no transferable model.");
             definitions[doc.RootAssemblyId]=new AssemblyDefinition(doc.RootAssemblyId,doc.Name,roots.ToImmutable());
             doc=doc with {Definitions=definitions.ToImmutable(),Bodies=bodies.ToImmutable(),Features=features.ToImmutable()};
+            double transferMs=clock.Elapsed.TotalMilliseconds;clock.Restart();
             doc.Validate();
             foreach(var id in doc.ReferencedAssets())leases.Add(assets.Acquire(id));
+            double validateAndLeaseMs=clock.Elapsed.TotalMilliseconds;
+            if(Environment.GetEnvironmentVariable("CADORYX_IMPORT_PROFILE") is {Length:>0} profilePath)
+                try{File.AppendAllText(profilePath,JsonSerializer.Serialize(new{path=Path.GetFullPath(path),nativeReadMs,
+                    contextSaveMs,contextStageMs,transferMs,shapeStoreMs,colorMs,partCount,
+                    topologyMs,validityMs,boundsMs,volumeMs,writeMs,stageMs,
+                    validateAndLeaseMs,utc=DateTimeOffset.UtcNow})+Environment.NewLine);}
+                catch(IOException){}catch(UnauthorizedAccessException){}
             var loaded=new LoadedDocument(doc,leases,[new("IMPORT.UNITS","OCCT exchange uses its transferred millimeter geometry; no second unit scale is applied."),
                 new("IMPORT.METADATA","XDE source context is embedded for supported display styles. CAD business projection currently includes definitions, placements, names and overall colors.")]);
             leases.Clear();return loaded;
@@ -256,7 +304,9 @@ public sealed partial class OcctGeometryKernel : IGeometryKernel, ITopologyResol
     public Task<CadExportReport> ExportAsync(DocumentSnapshot snapshot,IAssetStore assets,string path,CadExportOptions options,CancellationToken cancellationToken=default)=>Run(()=>
     {
         snapshot.Validate();options.Validate();string extension=Path.GetExtension(path).ToLowerInvariant();
-        if(snapshot.Features.Values.Any(f=>f.IsStale))throw new CadValidationException("Reselect stale feature bindings before export.");
+        var suppressionBlocked=FeatureSuppression.Blocked(snapshot);
+        if(snapshot.Features.Values.Any(f=>f.IsStale&&!suppressionBlocked.Contains(f.Id)))
+            throw new CadValidationException("Reselect stale feature bindings before export.");
         if(extension is not (".step" or ".stp" or ".iges" or ".igs" or ".stl"))throw new NotSupportedException("Export supports STEP, IGES and STL.");
         if(extension==".stl")return ExportStl(snapshot,assets,path,options,cancellationToken);
         using var native=XdeDocument.Create();var labels=new Dictionary<DefinitionId,XdeLabel>();

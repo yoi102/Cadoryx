@@ -10,6 +10,16 @@
         <Grid.RowDefinitions><RowDefinition Height="Auto"/><RowDefinition/><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/></Grid.RowDefinitions>
         <WrapPanel Margin="0,0,0,10">
             <ComboBox x:Name="ToolPicker" Width="170" ItemsSource="{Binding Tools}" DisplayMemberPath="Label" SelectedValuePath="Key" SelectedValue="{Binding Tool}"/>
+            <StackPanel Orientation="Horizontal" Margin="10,0,0,0" VerticalAlignment="Center">
+                <StackPanel.Style>
+                    <Style TargetType="StackPanel">
+                        <Setter Property="Visibility" Value="Collapsed"/>
+                        <Style.Triggers><DataTrigger Binding="{Binding Tool}" Value="SplineRegion"><Setter Property="Visibility" Value="Visible"/></DataTrigger></Style.Triggers>
+                    </Style>
+                </StackPanel.Style>
+                <TextBlock Text="{I18N {x:Static r:LangKeys.SplineControlCount}}" VerticalAlignment="Center" Margin="0,0,6,0"/>
+                <mah:NumericUpDown Width="72" Minimum="4" Maximum="16" Interval="1" Value="{Binding SplineControlCount}"/>
+            </StackPanel>
             <CheckBox Content="{I18N {x:Static r:LangKeys.ConstructionGeometry}}" IsChecked="{Binding Construction}" Margin="12,0" VerticalAlignment="Center"/>
             <CheckBox Content="{I18N {x:Static r:LangKeys.SnapGridEndpoints}}" IsChecked="{Binding Snap}" Margin="0,0,6,0" VerticalAlignment="Center"/>
             <mah:NumericUpDown Width="90" Value="{Binding GridStep}" Minimum="0.001" Maximum="100000"/>

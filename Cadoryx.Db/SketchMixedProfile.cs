@@ -3,12 +3,31 @@ using System.Collections.Immutable;
 namespace Cadoryx.Db;
 
 /// <summary>One directed boundary edge; a middle point makes it an exact circular arc.</summary>
-public sealed record SketchBoundaryCurve(Point2d Start,Point2d End,Point2d? Middle=null);
+public sealed record SketchBoundaryCurve(Point2d Start,Point2d End,Point2d? Middle=null)
+{
+    public Point2d? BezierControl {get;init;}
+    public ImmutableArray<Point2d> SplineControls {get;init;}=[];
+}
 
 /// <summary>Exact, bounded line/arc loops. Curves stay ordered and directed.</summary>
 public static class SketchMixedProfile
 {
     private const double Tolerance=1e-7;
+    private static bool HasFree(SketchBoundaryCurve c)=>c.BezierControl is not null||!c.SplineControls.IsDefaultOrEmpty;
+    private static Point2d[] Samples(SketchBoundaryCurve curve)
+    {
+        if(curve.BezierControl is {} control)
+            return Enumerable.Range(0,129).Select(i=>SketchBezierGeometry.At(curve.Start,control,curve.End,i/128d)).ToArray();
+        if(!curve.SplineControls.IsDefaultOrEmpty)
+            return Enumerable.Range(0,129).Select(i=>SketchSplineGeometry.At(curve.SplineControls,i/128d)).ToArray();
+        return [curve.Start,curve.End];
+    }
+    public static bool Same(SketchBoundaryCurve a,SketchBoundaryCurve b)=>
+        a.Start==b.Start&&a.End==b.End&&a.Middle==b.Middle&&a.BezierControl==b.BezierControl&&
+        (a.SplineControls.IsDefaultOrEmpty?ImmutableArray<Point2d>.Empty:a.SplineControls)
+            .SequenceEqual(b.SplineControls.IsDefaultOrEmpty?ImmutableArray<Point2d>.Empty:b.SplineControls);
+    public static bool SameLoop(ImmutableArray<SketchBoundaryCurve> a,ImmutableArray<SketchBoundaryCurve> b)=>
+        a.Length==b.Length&&a.Zip(b).All(pair=>Same(pair.First,pair.Second));
 
     public static ImmutableArray<SketchBoundaryCurve> Polygon(ImmutableArray<Point2d> vertices)=>
         Enumerable.Range(0,vertices.Length).Select(i=>new SketchBoundaryCurve(vertices[i],vertices[(i+1)%vertices.Length])).ToImmutableArray();
@@ -56,11 +75,15 @@ public static class SketchMixedProfile
     {
         var c=curves[0];
         return c.Middle is {} middle?SketchArcGeometry.Through(c.Start,middle,c.End).At(.37):
+            HasFree(c)?Samples(c)[47]:
             new((c.Start.X+c.End.X)/2,(c.Start.Y+c.End.Y)/2);
     }
 
     private static bool Touch(ImmutableArray<SketchBoundaryCurve> a,ImmutableArray<SketchBoundaryCurve> b)=>
         a.Any(first=>b.Any(second=>Intersections(first,second).Any()));
+    public static bool Touches(ImmutableArray<SketchBoundaryCurve> a,ImmutableArray<SketchBoundaryCurve> b)=>Touch(a,b);
+    public static bool StrictlyContains(ImmutableArray<SketchBoundaryCurve> outer,ImmutableArray<SketchBoundaryCurve> inner)=>
+        !Touch(outer,inner)&&Contains(outer,InteriorProbe(inner));
 
     private static bool Contains(ImmutableArray<SketchBoundaryCurve> boundary,Point2d point)
     {
@@ -71,6 +94,15 @@ public static class SketchMixedProfile
         int crossings=0;
         foreach(var curve in boundary)
         {
+            if(HasFree(curve))
+            {
+                var samples=Samples(curve);
+                for(int i=1;i<samples.Length;i++)
+                    if((samples[i-1].Y>y)!=(samples[i].Y>y)&&
+                       samples[i-1].X+(y-samples[i-1].Y)*(samples[i].X-samples[i-1].X)/(samples[i].Y-samples[i-1].Y)>point.X)
+                        crossings++;
+                continue;
+            }
             if(curve.Middle is not {} middle)
             {
                 if((curve.Start.Y>y)!=(curve.End.Y>y)&&
@@ -94,12 +126,24 @@ public static class SketchMixedProfile
 
     public static void Validate(ImmutableArray<SketchBoundaryCurve> curves)
     {
-        if(curves.IsDefault||curves.Length is <3 or >256||!curves.Any(c=>c.Middle is not null))
-            throw new CadValidationException("A mixed profile requires at least one arc and three boundary curves.");
+        if(curves.IsDefault||curves.Length is <3 or >256||!curves.Any(c=>c.Middle is not null||HasFree(c)))
+            throw new CadValidationException("A mixed profile requires a curved edge and three boundary curves.");
         for(int i=0;i<curves.Length;i++)
         {
             var curve=curves[i];var next=curves[(i+1)%curves.Length];
             CadGuard.Finite(curve.Start.X,curve.Start.Y,curve.End.X,curve.End.Y);
+            if(curve.SplineControls.IsDefault||
+               (curve.Middle is not null&&(curve.BezierControl is not null||!curve.SplineControls.IsEmpty))||
+               (curve.BezierControl is not null&&!curve.SplineControls.IsEmpty))
+                throw new CadValidationException("A mixed edge must have exactly one curve representation.");
+            if(curve.BezierControl is {} control)SketchBezierGeometry.Validate(curve.Start,control,curve.End);
+            if(!curve.SplineControls.IsEmpty)
+            {
+                SketchSplineGeometry.Validate(curve.SplineControls);
+                if(Distance(curve.Start,curve.SplineControls[0])>Tolerance||
+                   Distance(curve.End,curve.SplineControls[^1])>Tolerance)
+                    throw new CadValidationException("Spline controls do not match the mixed edge endpoints.");
+            }
             if(curve.Middle is {} middle)
             {
                 _=SketchArcGeometry.Through(curve.Start,middle,curve.End);
@@ -118,6 +162,13 @@ public static class SketchMixedProfile
                 var arc=SketchArcGeometry.Through(curve.Start,middle,curve.End);
                 area+=arc.Radius*arc.Radius*(arc.SweepAngle-Math.Sin(arc.SweepAngle))/2;
             }
+            if(HasFree(curve))
+            {
+                area-=(curve.Start.X*curve.End.Y-curve.End.X*curve.Start.Y)/2;
+                var samples=Samples(curve);
+                for(int i=1;i<samples.Length;i++)
+                    area+=(samples[i-1].X*samples[i].Y-samples[i].X*samples[i-1].Y)/2;
+            }
         }
         if(!double.IsFinite(area)||Math.Abs(area)<=Tolerance*Tolerance)
             throw new CadValidationException("Mixed profile has no enclosed area.");
@@ -134,6 +185,19 @@ public static class SketchMixedProfile
 
     private static IEnumerable<Point2d> Intersections(SketchBoundaryCurve a,SketchBoundaryCurve b)
     {
+        if(HasFree(a)||HasFree(b))
+        {
+            var aa=Samples(a);var bb=Samples(b);
+            for(int i=1;i<aa.Length;i++)for(int j=1;j<bb.Length;j++)
+            {
+                var first=new SketchBoundaryCurve(aa[i-1],aa[i]);
+                var second=new SketchBoundaryCurve(bb[j-1],bb[j]);
+                if(a.Middle is not null)first=a;
+                if(b.Middle is not null)second=b;
+                foreach(var hit in Intersections(first,second))yield return hit;
+            }
+            yield break;
+        }
         if(a.Middle is not null&&b.Middle is not null)
         {
             var first=SketchArcGeometry.Through(a.Start,a.Middle.Value,a.End);

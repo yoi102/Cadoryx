@@ -76,8 +76,10 @@ public sealed class CadDocumentSession : IAsyncDisposable
         {
             using(inputLease)
             using(var prepared=await command.PrepareAsync(context,linked.Token).ConfigureAwait(false))
+            using(var reviewed=await UpdateAssociatedSections.PrepareAsync(context,prepared.Snapshot,linked.Token).ConfigureAwait(false))
+            using(var drawn=await UpdateTechnicalDrawings.PrepareAsync(context,reviewed.Snapshot,linked.Token).ConfigureAwait(false))
             {
-                linked.Token.ThrowIfCancellationRequested();prepared.Snapshot.Validate();
+                linked.Token.ThrowIfCancellationRequested();drawn.Snapshot.Validate();
                 await dispatcher.InvokeAsync(()=>
                 {
                     DocumentChangeSet? change=null;
@@ -85,7 +87,7 @@ public sealed class CadDocumentSession : IAsyncDisposable
                     {
                         linked.Token.ThrowIfCancellationRequested();ThrowIfClosing();
                         if(context.Generation!=generation||context.Snapshot.Id!=snapshot.Id)throw new StaleDocumentException();
-                        var next=prepared.Snapshot;
+                        var next=drawn.Snapshot;
                         if(ReferenceEquals(next,snapshot)||next.StateId==snapshot.StateId)return;
                         if(next.Id!=snapshot.Id)throw new CadValidationException("A command cannot replace document identity.");
                         using var candidate=new CommitResources(snapshot,next,Assets);

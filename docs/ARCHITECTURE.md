@@ -25,7 +25,7 @@
 
 | 仓库 | 当前已看到的内容 | 对 Cadoryx 的意义 |
 |---|---|---|
-| Cadoryx | 15 个项目，保留 WPF、主题/语言/设置与停靠布局，新增九个核心项目及测试项目 | 组合根注册内核/资产仓和托管草图求解器，每文档显式持有会话 |
+| Cadoryx | 21 个项目，分为客户端、核心、Agent 与测试；保留 WPF、主题/语言/设置与停靠布局 | 组合根注册内核、资产仓、草图求解器、命令行及 AI 连接，每文档显式持有会话 |
 | Cadoryx | 文件/历史命令路由到活动文档，树/属性由快照投影，HwndHost 承载真实 OCCT Viewer | 已跑通基础建模、交换、存储与多文档生命周期 |
 | Direct2dCad | Db、Commands、Editor、ChangeTracking、Rendering、IO 等层；独立文档/编辑器命令；分节版本化存储 | 借鉴职责和交互流程，不照搬 2D Entity 继承体系 |
 | OcctSharp | .NET 10、Windows x64；Shape/XDE/Viewer/Parametric 友好 API；模块包与门面包 | 使用适配器封装并明确所有权和线程边界 |

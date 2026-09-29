@@ -5,55 +5,134 @@
  xmlns:r="clr-namespace:Cadoryx.Lang;assembly=Cadoryx.Lang"
  xmlns:vm="clr-namespace:Cadoryx.ViewModels.Toolboxes;assembly=Cadoryx.ViewModels"
  xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+ xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
  mc:Ignorable="d"
  d:DataContext="{d:DesignInstance Type=vm:ModelTreeToolboxViewModel}">
- <DockPanel Margin="8">
-  <TextBlock DockPanel.Dock="Top" Text="{I18N {x:Static r:LangKeys.ModelTreeInstruction}}" TextWrapping="Wrap" Margin="0,0,0,8"/>
+ <UserControl.Resources>
+  <Style x:Key="TreeSearchAction" TargetType="Button" BasedOn="{StaticResource MaterialDesignFlatButton}">
+   <Setter Property="Width" Value="34"/><Setter Property="Height" Value="34"/>
+   <Setter Property="Padding" Value="5"/><Setter Property="MinWidth" Value="34"/>
+   <Setter Property="ToolTipService.ShowOnDisabled" Value="True"/>
+  </Style>
+ </UserControl.Resources>
+ <DockPanel Margin="10,8">
   <StackPanel DockPanel.Dock="Top" Margin="0,0,0,8">
-   <TextBox x:Name="SearchInput" Text="{Binding SearchText,UpdateSourceTrigger=PropertyChanged}" ToolTip="{I18N {x:Static r:LangKeys.ModelSearchHint}}">
+   <Grid Margin="0,0,0,6">
+    <Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
+   <TextBox x:Name="SearchInput" Grid.Column="0" Text="{Binding SearchText,UpdateSourceTrigger=PropertyChanged}"
+            ToolTip="{I18N {x:Static r:LangKeys.ModelSearchHint}}"
+            AutomationProperties.Name="{I18N {x:Static r:LangKeys.ModelSearchHint}}" VerticalContentAlignment="Center" Margin="0,0,4,0">
     <TextBox.InputBindings><KeyBinding Key="Enter" Command="{Binding SearchCommand}"/></TextBox.InputBindings>
    </TextBox>
-   <WrapPanel Margin="0,5">
-    <Button Content="{I18N {x:Static r:LangKeys.ModelSearch}}" Command="{Binding SearchCommand}" Margin="0,0,5,0"/>
-    <Button Content="{I18N {x:Static r:LangKeys.LocateSelection}}" Command="{Binding LocateSelectionCommand}"/>
-   </WrapPanel>
+   <Button x:Name="SearchButton" Grid.Column="1" Command="{Binding SearchCommand}"
+           ToolTip="{I18N {x:Static r:LangKeys.ModelSearch}}"
+           AutomationProperties.Name="{I18N {x:Static r:LangKeys.ModelSearch}}"
+           Style="{StaticResource TreeSearchAction}" Margin="0,0,2,0">
+    <md:PackIcon Kind="Magnify" Width="19" Height="19"/>
+   </Button>
+   <Button x:Name="LocateSelectionButton" Grid.Column="2" Command="{Binding LocateSelectionCommand}"
+           ToolTip="{I18N {x:Static r:LangKeys.LocateSelection}}"
+           AutomationProperties.Name="{I18N {x:Static r:LangKeys.LocateSelection}}"
+           Style="{StaticResource TreeSearchAction}">
+    <md:PackIcon Kind="Target" Width="19" Height="19"/>
+   </Button>
+   </Grid>
    <Expander Header="{Binding SearchSummary}" IsExpanded="{Binding ShowSearchResults,Mode=TwoWay}">
     <Expander.Style><Style TargetType="Expander" BasedOn="{StaticResource {x:Type Expander}}"><Style.Triggers>
      <DataTrigger Binding="{Binding SearchSummary}" Value=""><Setter Property="Visibility" Value="Collapsed"/></DataTrigger>
     </Style.Triggers></Style></Expander.Style>
-    <StackPanel>
+    <StackPanel Margin="8,8,8,10">
    <ListBox x:Name="SearchResultsList" ItemsSource="{Binding SearchResults}" SelectedItem="{Binding SelectedSearchHit}" MaxHeight="150"
             ScrollViewer.HorizontalScrollBarVisibility="Disabled">
-    <ListBox.ItemTemplate><DataTemplate><StackPanel Margin="0,3"><TextBlock Text="{Binding Name}"/><TextBlock Text="{Binding Breadcrumb}" FontSize="11" Opacity="0.65" TextWrapping="Wrap"/></StackPanel></DataTemplate></ListBox.ItemTemplate>
+    <ListBox.ItemTemplate><DataTemplate><StackPanel Margin="4,5"><TextBlock Text="{Binding Name}" TextTrimming="CharacterEllipsis"/><TextBlock Text="{Binding Breadcrumb}" FontSize="11" Opacity="0.65" TextWrapping="Wrap"/></StackPanel></DataTemplate></ListBox.ItemTemplate>
    </ListBox>
-   <Button x:Name="LocateResultButton" Content="{I18N {x:Static r:LangKeys.LocateSearchResult}}" Command="{Binding LocateSearchResultCommand}" Margin="0,5,0,0"/>
+   <Button x:Name="LocateResultButton" Content="{I18N {x:Static r:LangKeys.LocateSearchResult}}" Command="{Binding LocateSearchResultCommand}" Margin="0,8,0,0"/>
     </StackPanel>
    </Expander>
   </StackPanel>
   <Expander x:Name="HistoryExpander" DockPanel.Dock="Bottom" Header="{I18N {x:Static r:LangKeys.SessionHistory}}" Margin="0,8,0,0">
    <ScrollViewer x:Name="HistoryScroll" MaxHeight="140" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
-   <StackPanel DataContext="{Binding History}">
-    <TextBlock Text="{Binding Summary}" TextWrapping="Wrap" Margin="0,5"/>
-    <TextBlock Text="{I18N {x:Static r:LangKeys.HistoryBudgetHint}}" TextWrapping="Wrap" Opacity="0.65" Margin="0,5"/>
-    <TextBlock Text="{I18N {x:Static r:LangKeys.HistoryEntryLimit}}"/>
-    <mah:NumericUpDown Minimum="1" Maximum="5000" Interval="1" StringFormat="F0" Value="{Binding EntryLimit}"/>
-    <TextBlock Text="{I18N {x:Static r:LangKeys.HistoryAssetBudget}}" Margin="0,5,0,0"/>
-    <mah:NumericUpDown x:Name="HistoryBudgetInput" Minimum="0" Maximum="32768" Interval="64" Value="{Binding AssetBudgetMiB}"/>
-    <Button x:Name="ApplyHistoryButton" Content="{I18N {x:Static r:LangKeys.ApplyHistoryBudget}}" Command="{Binding ApplyCommand}" Margin="0,5"/>
+   <StackPanel DataContext="{Binding History}" Margin="8,8,8,10">
+    <TextBlock Text="{Binding Summary}" TextWrapping="Wrap" Margin="0,0,0,6"/>
+    <TextBlock Text="{I18N {x:Static r:LangKeys.HistoryBudgetHint}}" TextWrapping="Wrap" Opacity="0.65" Margin="0,0,0,10"/>
+    <TextBlock Text="{I18N {x:Static r:LangKeys.HistoryEntryLimit}}" Margin="0,0,0,4"/>
+    <mah:NumericUpDown Minimum="1" Maximum="5000" Interval="1" StringFormat="F0" Value="{Binding EntryLimit}" Margin="0,0,0,10"/>
+    <TextBlock Text="{I18N {x:Static r:LangKeys.HistoryAssetBudget}}" Margin="0,0,0,4"/>
+    <mah:NumericUpDown x:Name="HistoryBudgetInput" Minimum="0" Maximum="32768" Interval="64" Value="{Binding AssetBudgetMiB}" Margin="0,0,0,10"/>
+    <Button x:Name="ApplyHistoryButton" Content="{I18N {x:Static r:LangKeys.ApplyHistoryBudget}}" Command="{Binding ApplyCommand}" Margin="0,0,0,6"/>
     <Button Content="{I18N {x:Static r:LangKeys.ClearSessionHistory}}" Command="{Binding ClearCommand}"/>
    </StackPanel>
    </ScrollViewer>
   </Expander>
   <TreeView x:Name="ModelTree" ItemsSource="{Binding Items}" SelectedItemChanged="OnSelectedItemChanged" BorderThickness="0"
+            ToolTip="{I18N {x:Static r:LangKeys.ModelTreeInstruction}}"
+            AutomationProperties.AutomationId="ModelTree"
             VirtualizingPanel.IsVirtualizing="True" VirtualizingPanel.VirtualizationMode="Recycling"
             ScrollViewer.CanContentScroll="True">
-   <TreeView.ItemContainerStyle><Style TargetType="TreeViewItem"><Setter Property="IsExpanded" Value="{Binding IsExpanded,Mode=TwoWay}"/><Setter Property="IsSelected" Value="{Binding IsSelected,Mode=TwoWay}"/><EventSetter Event="Selected" Handler="OnTreeItemSelected"/></Style></TreeView.ItemContainerStyle>
+   <TreeView.ItemContainerStyle><Style TargetType="TreeViewItem">
+    <Setter Property="IsExpanded" Value="{Binding IsExpanded,Mode=TwoWay}"/>
+    <Setter Property="IsSelected" Value="{Binding IsSelected,Mode=TwoWay}"/>
+    <Setter Property="HorizontalAlignment" Value="Stretch"/>
+    <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+    <Setter Property="AutomationProperties.Name" Value="{Binding Name}"/>
+    <Setter Property="Template">
+     <Setter.Value>
+      <ControlTemplate TargetType="TreeViewItem">
+       <Grid>
+        <Grid.RowDefinitions><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/></Grid.RowDefinitions>
+        <Grid.ColumnDefinitions><ColumnDefinition Width="20"/><ColumnDefinition Width="*"/></Grid.ColumnDefinitions>
+        <Border x:Name="RowBackground" Grid.ColumnSpan="2" Height="32" Background="Transparent" CornerRadius="4"/>
+        <Border x:Name="SelectionMarker" Grid.ColumnSpan="2" Width="3" Height="26" HorizontalAlignment="Left"
+                VerticalAlignment="Center" Background="{DynamicResource MaterialDesign.Brush.Primary}" CornerRadius="2" Visibility="Collapsed"/>
+        <ToggleButton x:Name="Expander" Grid.Column="0" Width="20" Height="30" Focusable="False"
+                      IsChecked="{Binding IsExpanded,RelativeSource={RelativeSource TemplatedParent},Mode=TwoWay}">
+         <ToggleButton.Template>
+          <ControlTemplate TargetType="ToggleButton">
+           <Grid Background="Transparent">
+            <Path x:Name="Chevron" Data="M6,7 L10,11 L6,15" Stroke="{Binding Foreground,RelativeSource={RelativeSource AncestorType=TreeViewItem}}"
+                  StrokeThickness="1.5" StrokeStartLineCap="Round" StrokeEndLineCap="Round" Opacity="0.65"/>
+           </Grid>
+           <ControlTemplate.Triggers>
+            <Trigger Property="IsChecked" Value="True"><Setter TargetName="Chevron" Property="RenderTransform"><Setter.Value><RotateTransform Angle="90" CenterX="8" CenterY="11"/></Setter.Value></Setter></Trigger>
+           </ControlTemplate.Triggers>
+          </ControlTemplate>
+         </ToggleButton.Template>
+        </ToggleButton>
+        <ContentPresenter Grid.Column="1" ContentSource="Header" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+        <ItemsPresenter x:Name="ItemsHost" Grid.Row="1" Grid.ColumnSpan="2" Margin="16,0,0,0"/>
+       </Grid>
+       <ControlTemplate.Triggers>
+        <Trigger Property="IsSelected" Value="True">
+         <Setter TargetName="RowBackground" Property="Background" Value="#1F808080"/>
+         <Setter TargetName="SelectionMarker" Property="Visibility" Value="Visible"/>
+        </Trigger>
+        <MultiTrigger>
+         <MultiTrigger.Conditions><Condition Property="IsMouseOver" Value="True"/><Condition Property="IsSelected" Value="False"/></MultiTrigger.Conditions>
+         <Setter TargetName="RowBackground" Property="Background" Value="#12808080"/>
+        </MultiTrigger>
+        <Trigger Property="HasItems" Value="False"><Setter TargetName="Expander" Property="Visibility" Value="Hidden"/></Trigger>
+        <Trigger Property="IsExpanded" Value="False"><Setter TargetName="ItemsHost" Property="Visibility" Value="Collapsed"/></Trigger>
+       </ControlTemplate.Triggers>
+      </ControlTemplate>
+     </Setter.Value>
+    </Setter>
+    <EventSetter Event="Selected" Handler="OnTreeItemSelected"/>
+    <EventSetter Event="ContextMenuOpening" Handler="OnFeatureContextMenuOpening"/>
+   </Style></TreeView.ItemContainerStyle>
    <TreeView.Resources>
     <HierarchicalDataTemplate DataType="{x:Type vm:ModelTreeItemViewModel}" ItemsSource="{Binding Children}">
-     <StackPanel Orientation="Horizontal" Margin="0,3">
-      <CheckBox IsChecked="{Binding IsChecked}" IsEnabled="{Binding CanCheck}" VerticalAlignment="Center" Margin="0,0,6,0"/>
-      <TextBlock Text="{Binding Name}" ToolTip="{Binding Kind}"/>
-     </StackPanel>
+     <DockPanel Height="32" LastChildFill="True">
+      <CheckBox DockPanel.Dock="Left" IsChecked="{Binding IsChecked}" IsEnabled="{Binding CanCheck}"
+                VerticalAlignment="Center" Margin="5,0,8,0"/>
+      <TextBlock Text="{Binding Name}" ToolTip="{Binding Kind}" VerticalAlignment="Center"
+                 TextTrimming="CharacterEllipsis" Margin="0,0,6,0">
+       <TextBlock.Style><Style TargetType="TextBlock"><Style.Triggers>
+        <DataTrigger Binding="{Binding IsSuppressed}" Value="True">
+         <Setter Property="Opacity" Value="0.55"/><Setter Property="FontStyle" Value="Italic"/>
+        </DataTrigger>
+       </Style.Triggers></Style></TextBlock.Style>
+      </TextBlock>
+     </DockPanel>
     </HierarchicalDataTemplate>
    </TreeView.Resources>
   </TreeView>

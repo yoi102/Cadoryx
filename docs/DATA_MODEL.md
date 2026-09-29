@@ -312,7 +312,7 @@ SelectionSet、Hover、检测容差和过滤器属于 Editor Session。Viewer �
 
 ```text
 AssemblyConstraint
-  Id / Name / Kind(Fixed,Coincident,Distance,ParallelAxes,Coaxial) / SchemaVersion / IsEnabled
+  Id / Name / Kind(Fixed,Coincident,Distance,ParallelAxes,Coaxial,AngleAxes,PlanarMate) / SchemaVersion / IsEnabled
   PrimaryPath + PrimaryDefinitionId
   SecondaryPath? + SecondaryDefinitionId?
   PrimaryLocalPoint / SecondaryLocalPoint / PrimaryLocalAxis / SecondaryLocalAxis
@@ -323,6 +323,8 @@ AssemblyConstraint
 路径包含文档 ID 与完整 SlotId 链，定义 ID 在捕获时锁定；缺路径、替换定义或拓扑修订变化均给出诊断，不自动寻找替代。有效固定关系由快照验证保护世界位姿；点对关系只在显式调整时平移第二实例。平行轴只旋转第二实例以对齐无向轴，同轴还消除径向偏移而保留轴向滑移。`document` v16 为角度轴关系追加目标弧度字段；显式点/法向的平面贴合只消除法向距离。`AssemblySolveReport` 仅报告有向关系图的调整、冲突和未固定根实例，不计算准确自由度或任意闭环非线性解。`external-parts` v1 为冻结零件记录来源文档/零件/状态 ID、文件 SHA-256、路径提示和本地指纹；模型载入不主动访问来源。详见 [M5 收尾](M5_COMPLETION.md)。
 
 外部零件引用后续可扩展为 `ExternalDefinitionSource(DocumentId, PinnedStateId, ContentHash, RelativeUri, ResolvePolicy)`。已解析内容作为固定版本的本地快照参与本轮命令；文件更新由显式更新命令获取新版本、校验引用并整体提交。源 URI 是定位提示，不能代替文档和内容身份。
+
+M10 已把真实 BRep 提取出的基准与 `OccurrencePath` 组合成精确 `AssemblyDatumReference`，并增加闭环刚体求解的隔离候选、逐关系残差/局部自由度诊断及显式跨文档依赖预览；`document` v19 存两端基准引用。具体证据和边界见 [M10 装配](M10_ASSEMBLY.md)。M11 新增 `DrawingSheets`、`DrawingSource`、`TechnicalDrawingView` 与 `TechnicalDrawingDimension`；投影折线和尺寸值为可失效的缓存，精确来源和基准是关联身份。独立 `drawings` v1 与 `document` v20 负责持久化，数据、迁移和操作边界见[M11 工程图](M11_TECHNICAL_DRAWINGS.md)。
 
 ## 11. 提交前必须成立的不变量
 

@@ -1,0 +1,29 @@
+{
+  "version": 1,
+  "dependencies": {
+    "net10.0": {
+      "cadoryx.agent": {
+        "type": "Project",
+        "dependencies": {
+          "Cadoryx.AI.Contracts": "[1.0.0, )"
+        }
+      },
+      "cadoryx.agent.codex": {
+        "type": "Project",
+        "dependencies": {
+          "Cadoryx.AI.Contracts": "[1.0.0, )",
+          "Cadoryx.Agent": "[1.0.0, )"
+        }
+      },
+      "cadoryx.ai.contracts": {
+        "type": "Project"
+      },
+      "cadoryx.ai.lmstudio": {
+        "type": "Project",
+        "dependencies": {
+          "Cadoryx.AI.Contracts": "[1.0.0, )"
+        }
+      }
+    }
+  }
+}

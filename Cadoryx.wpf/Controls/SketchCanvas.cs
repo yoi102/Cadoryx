@@ -23,6 +23,8 @@ public sealed class SketchCanvas:FrameworkElement
     private readonly List<Point2d> splinePoints=[];
     private SketchEntityId? dragging;
     private Point2d? draggedPosition;
+    private SketchEntityId? resizingCircle;
+    private double? resizedRadius;
     private Point pointer;
     private Point panStart;
     private bool panning;
@@ -42,7 +44,11 @@ public sealed class SketchCanvas:FrameworkElement
     }
     private void Detach(){if(editor is not null){editor.DrawingChanged-=OnChanged;editor.PropertyChanged-=OnPropertyChanged;}editor=null;mixedCacheSketch=null;mixedCacheIds.Clear();CancelGesture();}
     private void OnChanged(object? sender,EventArgs e)=>InvalidateVisual();
-    private void OnPropertyChanged(object? sender,PropertyChangedEventArgs e){if(e.PropertyName==nameof(SketchEditorViewModel.Tool))CancelGesture();InvalidateVisual();}
+    private void OnPropertyChanged(object? sender,PropertyChangedEventArgs e)
+    {
+        if(e.PropertyName is nameof(SketchEditorViewModel.Tool) or nameof(SketchEditorViewModel.SplineControlCount))CancelGesture();
+        InvalidateVisual();
+    }
     public Point ToScreen(Point2d point)=>new(offset.X+point.X*scale,offset.Y-point.Y*scale);
     public Point2d ToWorld(Point point)=>new((point.X-offset.X)/scale,(offset.Y-point.Y)/scale);
     public void Fit()
@@ -83,7 +89,17 @@ public sealed class SketchCanvas:FrameworkElement
         Brush ColorFor(SketchEntityId id)=>targets.Contains(id)?Brushes.OrangeRed:editor.SelectedEntities.Contains(id)?Brushes.Gold:Brushes.LightSkyBlue;
         Pen PenFor(SketchEntityId id,bool construction){var pen=new Pen(ColorFor(id),2);if(construction)pen.DashStyle=DashStyles.Dash;return pen;}
         foreach(var l in s.Lines)dc.DrawLine(PenFor(l.Id,l.IsConstruction),ToScreen(points[l.Start]),ToScreen(points[l.End]));
-        foreach(var c in s.Circles)dc.DrawEllipse(null,PenFor(c.Id,c.IsConstruction),ToScreen(points[c.Center]),c.Radius*scale,c.Radius*scale);
+        foreach(var c in s.Circles)
+        {
+            var center=ToScreen(points[c.Center]);var radius=c.Id==resizingCircle&&resizedRadius is {} preview?preview:c.Radius;
+            dc.DrawEllipse(null,PenFor(c.Id,c.IsConstruction),center,radius*scale,radius*scale);
+            if(editor.Tool=="Select"&&editor.CanEdit)
+            {
+                var handle=new Point(center.X+radius*scale,center.Y);
+                dc.DrawEllipse(editor.SelectedEntities.Contains(c.Id)?Brushes.Gold:Brushes.White,
+                    new Pen(Brushes.SteelBlue,1),handle,5,5);
+            }
+        }
         foreach(var arc in s.Arcs)
         {
             DrawArc(dc,SketchArcGeometry.Through(points[arc.Start],points[arc.Middle],points[arc.End]),PenFor(arc.Id,arc.IsConstruction));
@@ -93,14 +109,14 @@ public sealed class SketchCanvas:FrameworkElement
         foreach(var bezier in s.Beziers)
         {
             DrawBezier(dc,points[bezier.Start],points[bezier.Control],points[bezier.End],PenFor(bezier.Id,bezier.IsConstruction));
-            if(!bezier.IsConstruction)
+            if(!bezier.IsConstruction&&!mixedCacheIds.Contains(bezier.Id))
                 dc.DrawLine(new Pen(ColorFor(bezier.Id),1){DashStyle=DashStyles.Dot},ToScreen(points[bezier.End]),ToScreen(points[bezier.Start]));
         }
         foreach(var spline in s.Splines)
         {
             var controls=spline.Controls.Select(id=>points[id]).ToImmutableArray();
             DrawSpline(dc,controls,PenFor(spline.Id,spline.IsConstruction));
-            if(!spline.IsConstruction)
+            if(!spline.IsConstruction&&!mixedCacheIds.Contains(spline.Id))
                 dc.DrawLine(new Pen(ColorFor(spline.Id),1){DashStyle=DashStyles.Dot},ToScreen(controls[^1]),ToScreen(controls[0]));
         }
         foreach(var p in s.Points)dc.DrawEllipse(ColorFor(p.Id),null,ToScreen(points[p.Id]),editor.SelectedEntities.Contains(p.Id)?5:3.5,editor.SelectedEntities.Contains(p.Id)?5:3.5);
@@ -241,6 +257,19 @@ public sealed class SketchCanvas:FrameworkElement
         if(e.ChangedButton!=MouseButton.Left||editor is not {CanEdit:true})return;
         if(editor.Tool=="Select")
         {
+            if((Keyboard.Modifiers&ModifierKeys.Control)==0)
+            {
+                var circle=editor.Sketch.Circles.FirstOrDefault(c=>
+                {
+                    var center=editor.Sketch.Points.Single(p=>p.Id==c.Center).Position;
+                    return (new Point(ToScreen(center).X+c.Radius*scale,ToScreen(center).Y)-pointer).Length<9;
+                });
+                if(circle is not null)
+                {
+                    editor.Select(circle.Id);resizingCircle=circle.Id;resizedRadius=null;CaptureMouse();
+                    e.Handled=true;InvalidateVisual();return;
+                }
+            }
             var id=Hit(pointer);bool extend=(Keyboard.Modifiers&ModifierKeys.Control)!=0;editor.Select(id,extend);
             if(!extend&&id is {} point&&editor.Sketch.Points.Any(p=>p.Id==point)){dragging=point;draggedPosition=null;CaptureMouse();}
         }
@@ -250,7 +279,7 @@ public sealed class SketchCanvas:FrameworkElement
             if(editor.Tool=="SplineRegion")
             {
                 splinePoints.Add(snap.Position);
-                if(splinePoints.Count==5)
+                if(splinePoints.Count==Math.Clamp(editor.SplineControlCount,4,SketchSplineGeometry.MaximumControls))
                 {
                     try{editor.Mutate(d=>d.AddSpline(splinePoints,editor.Construction));}
                     catch(CadValidationException ex){editor.Status=ex.Message;}
@@ -291,12 +320,31 @@ public sealed class SketchCanvas:FrameworkElement
         base.OnMouseMove(e);pointer=e.GetPosition(this);
         if(panning){offset+=pointer-panStart;panStart=pointer;}
         else if(dragging is not null){draggedPosition=SnapPoint(pointer).Position;}
+        else if(resizingCircle is {} id&&editor is {} vm)
+        {
+            var circle=vm.Sketch.Circles.Single(c=>c.Id==id);
+            var center=vm.Sketch.Points.Single(p=>p.Id==circle.Center).Position;
+            var world=ToWorld(pointer);
+            double radius=Math.Max(0.001,double.Hypot(world.X-center.X,world.Y-center.Y));
+            if(vm.Snap&&double.IsFinite(vm.GridStep)&&vm.GridStep>0)
+                radius=Math.Max(0.001,Math.Round(radius/vm.GridStep)*vm.GridStep);
+            resizedRadius=radius;
+        }
         InvalidateVisual();
     }
     protected override async void OnMouseUp(MouseButtonEventArgs e)
     {
         base.OnMouseUp(e);
         if(e.ChangedButton==MouseButton.Middle){panning=false;ReleaseMouseCapture();return;}
+        if(e.ChangedButton==MouseButton.Left&&resizingCircle is {} circle)
+        {
+            var radius=resizedRadius;resizingCircle=null;resizedRadius=null;ReleaseMouseCapture();
+            if(radius is {} value&&editor is {CanEdit:true})
+            {
+                editor.ResizeCircle(circle,value);await editor.PreviewCommand.ExecuteAsync(null);
+            }
+            InvalidateVisual();return;
+        }
         if(e.ChangedButton==MouseButton.Left&&dragging is {} point)
         {
             var position=draggedPosition;dragging=null;draggedPosition=null;ReleaseMouseCapture();
@@ -307,7 +355,7 @@ public sealed class SketchCanvas:FrameworkElement
             }
         }
     }
-    protected override void OnLostMouseCapture(MouseEventArgs e){base.OnLostMouseCapture(e);dragging=null;draggedPosition=null;panning=false;InvalidateVisual();}
+    protected override void OnLostMouseCapture(MouseEventArgs e){base.OnLostMouseCapture(e);dragging=null;draggedPosition=null;resizingCircle=null;resizedRadius=null;panning=false;InvalidateVisual();}
     protected override void OnMouseWheel(MouseWheelEventArgs e)
     {
         base.OnMouseWheel(e);var at=e.GetPosition(this);var before=ToWorld(at);scale=Math.Clamp(scale*Math.Pow(1.15,e.Delta/120d),0.01,5000);
@@ -315,7 +363,7 @@ public sealed class SketchCanvas:FrameworkElement
     }
     public bool CancelGesture()
     {
-        bool active=pending is not null||dragging is not null||panning||splinePoints.Count>0;pending=null;pendingId=null;arcMiddle=null;arcMiddleId=null;splinePoints.Clear();dragging=null;draggedPosition=null;panning=false;
+        bool active=pending is not null||dragging is not null||resizingCircle is not null||panning||splinePoints.Count>0;pending=null;pendingId=null;arcMiddle=null;arcMiddleId=null;splinePoints.Clear();dragging=null;draggedPosition=null;resizingCircle=null;resizedRadius=null;panning=false;
         if(IsMouseCaptured)ReleaseMouseCapture();InvalidateVisual();return active;
     }
 }

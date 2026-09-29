@@ -14,6 +14,16 @@ public interface IAssetStore
     IAssetLease Stage(ReadOnlySpan<byte> content);
     IAssetLease Acquire(AssetId id);
 }
+public interface IAssetFileLease : IAssetLease
+{
+    Stream OpenRead();
+}
+public interface IDeferredAssetStore : IAssetStore
+{
+    IAssetFileLease StageFile(string path,CancellationToken token=default);
+    /// <summary>Takes ownership of backing on success, including when the asset already exists.</summary>
+    IAssetLease StageDeferred(AssetId id,long length,Func<byte[]> materialize,IDisposable backing);
+}
 public interface IAssetStoreStatistics
 {
     int Count {get;}

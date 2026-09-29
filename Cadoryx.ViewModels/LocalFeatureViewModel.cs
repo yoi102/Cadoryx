@@ -324,7 +324,7 @@ public partial class LocalFeatureViewModel : ObservableObject,IAsyncDisposable
                 }
             }
             else command=new LocalFeatureCommand(Selection!,Operation,Size,EffectiveSecondDistance(),AdditionalEdges,EffectiveEndRadius());
-            var result=await command.PrepareAsync(new(Snapshot,generation,Assets,kernel),cancel.Token);
+            var result=await UpdateAssociatedSections.PrepareCommandAsync(command,new(Snapshot,generation,Assets,kernel),cancel.Token);
             if(disposed||IsStale||cancel.IsCancellationRequested||session.Generation!=generation){result.Dispose();return;}
             try
             {

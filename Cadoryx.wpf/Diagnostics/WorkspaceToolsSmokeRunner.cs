@@ -34,6 +34,11 @@ internal static class WorkspaceToolsSmokeRunner
         }));
         await Idle();
         var view=Find<ModelTreeToolboxView>(window)??throw new InvalidOperationException("Missing model tree view.");
+        if(!ReferenceEquals(view.SearchButton.Command,tree.SearchCommand)||
+           !ReferenceEquals(view.LocateSelectionButton.Command,tree.LocateSelectionCommand)||
+           view.SearchButton.Content is not FrameworkElement||view.LocateSelectionButton.Content is not FrameworkElement||
+           view.SearchButton.ToolTip is not string||view.LocateSelectionButton.ToolTip is not string)
+            throw new InvalidOperationException("Model-tree search and locate icon actions are not accessible or bound.");
         view.SearchInput.SetCurrentValue(TextBox.TextProperty,"Search smoke instance");
         await tree.SearchCommand.ExecuteAsync(null);await Idle();
         if(tree.SearchResults.Count!=1||view.SearchResultsList.Items.Count!=1)throw new InvalidOperationException("Search UI failed.");
@@ -43,6 +48,8 @@ internal static class WorkspaceToolsSmokeRunner
         var targets=document.Session.Snapshot.EnumerateOccurrences().Where(o=>o.DefinitionId==body.PartId)
             .Select(o=>new SelectionTarget(o.Path,body.Id,body.Geometry.Revision)).TakeLast(2).ToArray();
         document.Selection.Replace(targets);await Idle();
+        if(view.ModelTree.SelectedItem is not Cadoryx.ViewModels.Toolboxes.ModelTreeItemViewModel automatic||automatic.Target!=targets[0])
+            throw new InvalidOperationException("Viewport selection did not select the corresponding model-tree row.");
         var selectionBefore=document.Selection.Items;
         tree.LocateSelectionCommand.Execute(null);await Idle();
         if(!document.Selection.Items.SequenceEqual(selectionBefore))throw new InvalidOperationException("Locate selection changed the multi-selection.");
