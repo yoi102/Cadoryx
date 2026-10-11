@@ -1,0 +1,33 @@
+{
+  "recordedAt": "2026-10-11T21:04:00.487770+00:00",
+  "state": "SOURCE_CONFIRMED_STOCK_PLANE_REMOVES_PCURVES_AND_CURVE2D_LACKS_OFFSET_NOT_A_NEW_RUNTIME_PASS",
+  "commit": "b8f597c677811d1f9f4d8a97f5ae2825c0353a42",
+  "edgeLoopSource": {
+    "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-5\\pinned-source-1\\StepToTopoDS_TranslateEdgeLoop.cxx",
+    "sha256": "4294B9D82E444E70C266DB1453621033842F442A7DA24FE46093D8D743D7059B"
+  },
+  "stepToGeomSource": {
+    "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-4\\pinned-source-1\\StepToGeom.cxx",
+    "sha256": "8D8E49F42840D0C844AD434ECA14283A30515CFB80E90BB00465A1D161CE8BB4"
+  },
+  "planeBranch": "static void CheckPCurves(TopoDS_Wire&       aWire,\n                         const TopoDS_Face& aFace,\n                         const bool         isPlane,\n                         const double       preci)\n{\n  if (isPlane)\n  {\n    RemovePCurves(aWire, aFace);\n    return;\n  }\n  ",
+  "curve2dImplementation": "StepToGeom::MakeCurve2d(const occ::handle<StepGeom_Curve>& SC,\n                                                  const StepData_Factors& theLocalFactors)\n{\n  if (SC->IsKind(STANDARD_TYPE(StepGeom_Line)))\n  {\n    return MakeLine2d(occ::down_cast<StepGeom_Line>(SC), theLocalFactors);\n  }\n  if (SC->IsKind(STANDARD_TYPE(StepGeom_Conic)))\n  {\n    return MakeConic2d(occ::down_cast<StepGeom_Conic>(SC), theLocalFactors);\n  }\n  if (SC->IsKind(STANDARD_TYPE(StepGeom_BoundedCurve)))\n  {\n    return MakeBoundedCurve2d(occ::down_cast<StepGeom_BoundedCurve>(SC), theLocalFactors);\n  }\n  if (SC->IsKind(STANDARD_TYPE(StepGeom_CurveReplica)))\n  { //: n7 abv 16 Feb 99\n    const occ::handle<StepGeom_CurveReplica> CR = occ::down_cast<StepGeom_CurveReplica>(SC);\n    const occ::handle<StepGeom_Curve>        PC = CR->ParentCurve();\n    const occ::handle<StepGeom_CartesianTransformationOperator2d> T =\n      occ::down_cast<StepGeom_CartesianTransformationOperator2d>(CR->Transformation());\n    // protect against cyclic references and wrong type of cartop\n    if (!T.IsNull() && PC != SC)\n    {\n      occ::handle<Geom2d_Curve> C1 = MakeCurve2d(PC, theLocalFactors);\n      if (!C1.IsNull())\n      {\n        gp_Trsf2d T1;\n        if (MakeTransformation2d(T, T1, theLocalFactors))\n        {\n          C1->Transform(T1);\n          return C1;\n        }\n      }\n    }\n  }\n  return nullptr;\n}\n\n",
+  "stockRuntimeFailures": [
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-4\\stock-reader-release-1-exit.json",
+      "sha256": "D0205033F76B5CEE0BF8E02BD02F9069F0CFC7CD1ED96EA0CFB857CC98986C93"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-4\\stock-reader-debug-1-exit.json",
+      "sha256": "00ED021BA41526BABA48EB5D9D8146E798A62B35C5021A3CAC6C8CF79787EB5F"
+    }
+  ],
+  "conclusion": "Adding a planar pcurve alone cannot satisfy the frozen stock-reader strict gate: stock translation drops it, and 2D offset decoding is absent. Exact outgoing/external equivalence remains unresolved.",
+  "toleranceChanged": false,
+  "fittingUsed": false,
+  "applicationExportGuardChanged": false,
+  "publicUpstreamModified": false,
+  "newDesktopInput": false,
+  "cleanup": false,
+  "AF": "ACTIVE"
+}
