@@ -1,0 +1,1509 @@
+{
+  "recordedAt": "2026-10-11T21:48:50.080240+00:00",
+  "state": "PASS_PRIVATE_SDK31_SHARED_UNIT_CONTEXT_SOURCE_RECOVERY_ONLY_ROOT_VOLUME2_PENDING",
+  "baseline": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-e5-defeature-history-generated-30-draft-1\\workspace-1\\OcctSharp",
+  "candidate": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-6\\workspace-1\\OcctSharp",
+  "changedFiles": 245,
+  "payload": [
+    {
+      "path": "config/generation.json",
+      "baselineSha256": "21E4EA6E1100037A28553738382287BE93F3E26FC88EF2EDAA88935F61B04A53",
+      "candidateSha256": "82EA68210B9211FEECEE2EDB67A1D0918C96CB05EEDDAD4B94423E50C8EEC7E5",
+      "bytes": 190080
+    },
+    {
+      "path": "generated/manifest.json",
+      "baselineSha256": "21F3963051968F92EF4A842B89855F40C26242A83E1FC9D99449C540FFBFB991",
+      "candidateSha256": "080E191FC14D779C1C81954D5D31B4D7532245C810BA8949B7B1E66F4B8FE01B",
+      "bytes": 1793683
+    },
+    {
+      "path": "src/OcctSharp.Generator/Discovery/DiscoveryConfiguration.cs",
+      "baselineSha256": "80F08F7083926ED1B5E055D778E3BD8D31C61C2919CBF0D6239B6FF03462617A",
+      "candidateSha256": "FE76B62C3C6EEEDFF36E25CC497BAFD7D9613C5B92AD44B7AC58BD0CB8EC4842",
+      "bytes": 6277
+    },
+    {
+      "path": "src/OcctSharp.Generator/Emission/ExchangeSupportWorkflowEmitter.cs",
+      "baselineSha256": null,
+      "candidateSha256": "6EEC4C55A4FD0F7F997CD660D678A4819822B7D878BA8CFBE5AB75F9251101BD",
+      "bytes": 3799
+    },
+    {
+      "path": "src/OcctSharp.Generator/Emission/InspectionSupportWorkflowEmitter.cs",
+      "baselineSha256": null,
+      "candidateSha256": "E65306055CBEFD78951FC26E4512172A00E48ACC9D2EA8D7FF15BD3E7CC4EAA1",
+      "bytes": 3898
+    },
+    {
+      "path": "src/OcctSharp.Generator/Emission/inspection-periodic-contract.json",
+      "baselineSha256": null,
+      "candidateSha256": "4BAFC5143ED2301D5A9C493C5179AB90C6DD322C19198782AB51417D1E00C87A",
+      "bytes": 1815
+    },
+    {
+      "path": "src/OcctSharp.Generator/Emission/inspection-periodic-header.txt",
+      "baselineSha256": null,
+      "candidateSha256": "DC754887A381E2710126B7E26821432C9B9017BE9C0399ABF28F84D6D35836E0",
+      "bytes": 2113
+    },
+    {
+      "path": "src/OcctSharp.Generator/Emission/inspection-periodic-native.txt",
+      "baselineSha256": null,
+      "candidateSha256": "AED7A0A74DC584F3C5FED9F203D3A8FAABDEE9E6FCAEB16B6829EADFE3C1E9FC",
+      "bytes": 19898
+    },
+    {
+      "path": "src/OcctSharp.Generator/Emission/step-exact-offset-contract.json",
+      "baselineSha256": null,
+      "candidateSha256": "C708915530F9A1815732552144F6E4530ADEC08E34D72CA34642419A9DD067F6",
+      "bytes": 9555
+    },
+    {
+      "path": "src/OcctSharp.Generator/Emission/step-exact-offset-header.txt",
+      "baselineSha256": null,
+      "candidateSha256": "26ED510E603767DD37D7C78801F4BC73C84A00596D9E3171F837711A2AFA1D54",
+      "bytes": 3535
+    },
+    {
+      "path": "src/OcctSharp.Generator/Emission/step-exact-offset-native.txt",
+      "baselineSha256": null,
+      "candidateSha256": "82667FDAA41C1E62DBF3153624B23F68E59194127F0B137BA32C6C160743F7B4",
+      "bytes": 53886
+    },
+    {
+      "path": "src/OcctSharp.Generator/OcctSharp.Generator.csproj",
+      "baselineSha256": "437DB39EC233A48B426F18A5C4CAE19F7D22CBA9FD12CCDE1F90D436C5344622",
+      "candidateSha256": "9790588C319E9E9EA3E5C957777B95EAC68FD9D595006BF745466B8955A11961",
+      "bytes": 2001
+    },
+    {
+      "path": "src/OcctSharp.Generator/Program.cs",
+      "baselineSha256": "40F251B938CDA37C9B8A992179EE09CB5A331EC3DDA9ADEBBA8CC486F16D6BEC",
+      "candidateSha256": "5E39C9D07631401E2F19AA81D2AF04295162982312A567EF4FC865190ED0DF24",
+      "bytes": 20652
+    },
+    {
+      "path": "src/OcctSharp.Native/generated/DataExchange/OcctSharp.ExactStepOffsets.Generated.cpp",
+      "baselineSha256": null,
+      "candidateSha256": "31569798B8090D18C231B53648944BE5D671E1015F8D844F9B92FCA811B03DD3",
+      "bytes": 53072
+    },
+    {
+      "path": "src/OcctSharp.Native/generated/DataExchange/OcctSharp.ExactStepOffsets.Generated.h",
+      "baselineSha256": null,
+      "candidateSha256": "ECFE320993AD4138DB6985784ACC4614FD1C84CCDEAF5A978F7A48AB00CEC579",
+      "bytes": 3619
+    },
+    {
+      "path": "src/OcctSharp.Native/generated/Modeling/OcctSharp.PeriodicExactDistance.Generated.cpp",
+      "baselineSha256": null,
+      "candidateSha256": "A161C96ECFAACE75B58FEF0FC5722001F8A98D44F624B1BE07D0AF7A1FF2115E",
+      "bytes": 19736
+    },
+    {
+      "path": "src/OcctSharp.Native/generated/Modeling/OcctSharp.PeriodicExactDistance.Generated.h",
+      "baselineSha256": null,
+      "candidateSha256": "C3F3705CE5AF7B9D3CD45BEE37A9A50C52522EC019B32B6B1A00B04FEE3D375A",
+      "bytes": 2225
+    },
+    {
+      "path": "src/OcctSharp.Native/src/Exchange/ShapeExchange.cpp",
+      "baselineSha256": "A311D6AE853103FAF90B4F7C7D349209CD918E6A2EC00DD8AEAAABF500CFC0C1",
+      "candidateSha256": "F746F8FB2095D44E888467974758BCA61A519E14F0AA156E4DF7A589E77CA5F6",
+      "bytes": 18106
+    },
+    {
+      "path": "src/OcctSharp.Native/src/Exchange/StepAssembly.cpp",
+      "baselineSha256": "E621F2A7DFFA14D063CE75360493DFDCAF142A48B4BE99A2AFFCF056A01F3FAA",
+      "candidateSha256": "126F846634815FDEDC188D4C7EE0E89DD564376464AE2875945E343C8D9CDE03",
+      "bytes": 6847
+    },
+    {
+      "path": "src/OcctSharp.Native/src/Exchange/XdeExchange.cpp",
+      "baselineSha256": "0A77C13D4DFED1867236514E701D7AF5B30B5B8EB581F6DE0982B6D0A5F80D43",
+      "candidateSha256": "688E9A848136AA990634967F5A1635DF79234E3B362CC5E1889B3C75A41ED607",
+      "bytes": 29205
+    },
+    {
+      "path": "src/OcctSharp.Native/src/Modeling/Inspection.cpp",
+      "baselineSha256": "524811FAA7D28416AEFE020DC18398E767D43F4C73C5EF5AB874638506B8165F",
+      "candidateSha256": "D5A24B1FA84F52EBABB3234E6DE635D880D069962A25C2C5519BFD875E0DACE2",
+      "bytes": 23814
+    },
+    {
+      "path": "src/OcctSharp.Native/src/Modeling/Inspection.hxx",
+      "baselineSha256": "02DAEE4FFEA1687FE99712640A4F779D39801C6EF05A16D28239DAE51CBA914A",
+      "candidateSha256": "B80D7F4BBF7DDF19C0027A1B56F17334709B45F9A49254F3751183366FAFA571",
+      "bytes": 821
+    },
+    {
+      "path": "tests/OcctSharp.Generator.Tests/ExchangeSupportWorkflowEmitterTests.cs",
+      "baselineSha256": null,
+      "candidateSha256": "CB289CE43EBE56CC3972FC21593574E5F6BD2703FC6BFB9C8E0234D9DC6A3A72",
+      "bytes": 2712
+    },
+    {
+      "path": "tests/OcctSharp.Generator.Tests/InspectionSupportWorkflowEmitterTests.cs",
+      "baselineSha256": null,
+      "candidateSha256": "DD0EC80B08941FFC9DD1762EAD96A3378D1DB4C502A56B30D05597C562CAAB05",
+      "bytes": 2769
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/ExactOffsetStepRoundTripTests.cs",
+      "baselineSha256": null,
+      "candidateSha256": "485026E2B95C21C71719F3B907F239C40FF4E875E2A3CEC4D753F1F95420C8FA",
+      "bytes": 3139
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/ExactOffsetStepUnitRejectionTests.cs",
+      "baselineSha256": null,
+      "candidateSha256": "AFBF409860C63BA4C6E46E0749ADF5C53112CE9B1F6113F1495595DEFE1FF194",
+      "bytes": 5130
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/ExactOffsetXdeRoundTripTests.cs",
+      "baselineSha256": null,
+      "candidateSha256": "B51991B470DCB07C7E690DFD01CD562139CFD31D0D5BD2CD65040D99DEE51E82",
+      "bytes": 3778
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-exact-step/arc-g1-mirrored-inward-Bevel.brep",
+      "baselineSha256": null,
+      "candidateSha256": "93E953A0CA6A822ED1B631CC08FBABADB4E9208C866B052B7AF3EF1CF6FFB15C",
+      "bytes": 4642
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-exact-step/spline-g1-mirrored-inward-Bevel.brep",
+      "baselineSha256": null,
+      "candidateSha256": "B74ABBF44809F93AA28FA4F6349241F2B8882D8BB92A1B40EC3D859EB3260D51",
+      "bytes": 5226
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-exact-step/spline-g1-normal-outward-Round.brep",
+      "baselineSha256": null,
+      "candidateSha256": "F6471A7DD44F950AD43B8000D68A703173D940915FCAFEE26D2198E5FD5A713C",
+      "bytes": 6804
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-exact-step/spline-g2-normal-outward-Round.brep",
+      "baselineSha256": null,
+      "candidateSha256": "F6471A7DD44F950AD43B8000D68A703173D940915FCAFEE26D2198E5FD5A713C",
+      "bytes": 6804
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-distance/arc-g1-normal-outward-Round.brep",
+      "baselineSha256": null,
+      "candidateSha256": "1AFCBC87FEF9ECFF7B7D05070D544A04869D2A885C490532F03E6323203C23FB",
+      "bytes": 6261
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-distance/spline-g1-normal-outward-Round.brep",
+      "baselineSha256": null,
+      "candidateSha256": "F6471A7DD44F950AD43B8000D68A703173D940915FCAFEE26D2198E5FD5A713C",
+      "bytes": 6804
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-distance/spline-g2-normal-outward-Round.brep",
+      "baselineSha256": null,
+      "candidateSha256": "F6471A7DD44F950AD43B8000D68A703173D940915FCAFEE26D2198E5FD5A713C",
+      "bytes": 6804
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/circle-circle-0-a.brep",
+      "baselineSha256": null,
+      "candidateSha256": "B98B16D81F7015DA7AEE1D26EB88F92E27FAE610CDEB82EDC141E8025DB03686",
+      "bytes": 384
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/circle-circle-0-b.brep",
+      "baselineSha256": null,
+      "candidateSha256": "5EE4A049804C9E8D93E84EAE3DAC3319E6A972D77B0C90E8DC06773B1E013249",
+      "bytes": 418
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/circle-circle-1-a.brep",
+      "baselineSha256": null,
+      "candidateSha256": "30DF6B8D1ABF5C0D9B00FE3476BE1CC9131DB5E6B179118A25A0E2231588565F",
+      "bytes": 409
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/circle-circle-1-b.brep",
+      "baselineSha256": null,
+      "candidateSha256": "BF2DD015BC4890245CC6CEBFBBEF7A7FFD148EAC436FF4B5D5872FAC864650EB",
+      "bytes": 416
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/circle-circle-2-a.brep",
+      "baselineSha256": null,
+      "candidateSha256": "D8A85679E946F2F5A3FF8D0BB7C37D046A5B0EBE8F07BB11115D666EC33E4580",
+      "bytes": 409
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/circle-circle-2-b.brep",
+      "baselineSha256": null,
+      "candidateSha256": "E7F3FCF9683473AB986CB83D5F1766543D6BF009C8B68A55D244AAF42E3B3DAB",
+      "bytes": 416
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/circle-circle-3-a.brep",
+      "baselineSha256": null,
+      "candidateSha256": "F043A536FE234EA76CE493DD5944DD9410648FEEF232561A274E8E947F42D084",
+      "bytes": 407
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/circle-circle-3-b.brep",
+      "baselineSha256": null,
+      "candidateSha256": "4EC7AEAB9EAEE08704DA5D3FF866282121F682DCD7E09DDBA72EAA4A6EB277B5",
+      "bytes": 418
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/circle-circle-4-a.brep",
+      "baselineSha256": null,
+      "candidateSha256": "7CAFC945194B18F9A7727EB1D08B944402D8BA78E7859C0F8778EE88B6AD4B8A",
+      "bytes": 407
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/circle-circle-4-b.brep",
+      "baselineSha256": null,
+      "candidateSha256": "8CF5775830D8935B36AAA4E835AF43253D608AD309903D2EA1E5DD0B6CEEBA03",
+      "bytes": 418
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/circle-circle-5-a.brep",
+      "baselineSha256": null,
+      "candidateSha256": "17BFBDDBF3EE6D419ADD6C1F208A8E1DA8A65746C1E25999CF5EB6C6B7DC88EF",
+      "bytes": 479
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/circle-circle-5-b.brep",
+      "baselineSha256": null,
+      "candidateSha256": "F1E30D06A0A6AB3F9CA90816CE18B9F5D535C767874D7995FFB8DB1475E39750",
+      "bytes": 519
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/circle-circle-6-a.brep",
+      "baselineSha256": null,
+      "candidateSha256": "CAA0CD9D1A1278C5B7CB81DFCE83A3C33C97DE76DFFB23FC59528CECF991D81A",
+      "bytes": 477
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/circle-circle-6-b.brep",
+      "baselineSha256": null,
+      "candidateSha256": "95BE85FC8A9C06BA96D609DD017BBC25DF27841101731C062F697D8F9A0B8BC4",
+      "bytes": 521
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/circle-circle-7-a.brep",
+      "baselineSha256": null,
+      "candidateSha256": "9D1C7DF92450903AEC48E70E55BF60C6F225C11B1E4DEC28365665F66E1422BE",
+      "bytes": 480
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/circle-circle-7-b.brep",
+      "baselineSha256": null,
+      "candidateSha256": "533E1EE3B2C3E986DDCA6407C121791E727F5CBA530BEEAD05105A2D05D20A05",
+      "bytes": 519
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/circle-plane-0-a.brep",
+      "baselineSha256": null,
+      "candidateSha256": "B98B16D81F7015DA7AEE1D26EB88F92E27FAE610CDEB82EDC141E8025DB03686",
+      "bytes": 384
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/circle-plane-0-b.brep",
+      "baselineSha256": null,
+      "candidateSha256": "A91758B8F0FACF6E97FC765A70ACD8061B26EC4C25680935DFF350DFE5F32F5D",
+      "bytes": 768
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/circle-plane-1-a.brep",
+      "baselineSha256": null,
+      "candidateSha256": "30DF6B8D1ABF5C0D9B00FE3476BE1CC9131DB5E6B179118A25A0E2231588565F",
+      "bytes": 409
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/circle-plane-1-b.brep",
+      "baselineSha256": null,
+      "candidateSha256": "A91758B8F0FACF6E97FC765A70ACD8061B26EC4C25680935DFF350DFE5F32F5D",
+      "bytes": 768
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/circle-plane-2-a.brep",
+      "baselineSha256": null,
+      "candidateSha256": "D8A85679E946F2F5A3FF8D0BB7C37D046A5B0EBE8F07BB11115D666EC33E4580",
+      "bytes": 409
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/circle-plane-2-b.brep",
+      "baselineSha256": null,
+      "candidateSha256": "A91758B8F0FACF6E97FC765A70ACD8061B26EC4C25680935DFF350DFE5F32F5D",
+      "bytes": 768
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/circle-plane-3-a.brep",
+      "baselineSha256": null,
+      "candidateSha256": "F043A536FE234EA76CE493DD5944DD9410648FEEF232561A274E8E947F42D084",
+      "bytes": 407
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/circle-plane-3-b.brep",
+      "baselineSha256": null,
+      "candidateSha256": "A91758B8F0FACF6E97FC765A70ACD8061B26EC4C25680935DFF350DFE5F32F5D",
+      "bytes": 768
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/circle-plane-4-a.brep",
+      "baselineSha256": null,
+      "candidateSha256": "7CAFC945194B18F9A7727EB1D08B944402D8BA78E7859C0F8778EE88B6AD4B8A",
+      "bytes": 407
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/circle-plane-4-b.brep",
+      "baselineSha256": null,
+      "candidateSha256": "A91758B8F0FACF6E97FC765A70ACD8061B26EC4C25680935DFF350DFE5F32F5D",
+      "bytes": 768
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/circle-plane-5-a.brep",
+      "baselineSha256": null,
+      "candidateSha256": "17BFBDDBF3EE6D419ADD6C1F208A8E1DA8A65746C1E25999CF5EB6C6B7DC88EF",
+      "bytes": 479
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/circle-plane-5-b.brep",
+      "baselineSha256": null,
+      "candidateSha256": "ABB27611A08201D86A58AB16092A26F621654518AC519B19C05D452E08C01033",
+      "bytes": 1203
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/circle-plane-6-a.brep",
+      "baselineSha256": null,
+      "candidateSha256": "CAA0CD9D1A1278C5B7CB81DFCE83A3C33C97DE76DFFB23FC59528CECF991D81A",
+      "bytes": 477
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/circle-plane-6-b.brep",
+      "baselineSha256": null,
+      "candidateSha256": "ABB27611A08201D86A58AB16092A26F621654518AC519B19C05D452E08C01033",
+      "bytes": 1203
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/circle-plane-7-a.brep",
+      "baselineSha256": null,
+      "candidateSha256": "9D1C7DF92450903AEC48E70E55BF60C6F225C11B1E4DEC28365665F66E1422BE",
+      "bytes": 480
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/circle-plane-7-b.brep",
+      "baselineSha256": null,
+      "candidateSha256": "ABB27611A08201D86A58AB16092A26F621654518AC519B19C05D452E08C01033",
+      "bytes": 1203
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/ellipse-line-0-a.brep",
+      "baselineSha256": null,
+      "candidateSha256": "A3902772EE8C883F7D40FF56D4C044F257A74705F5D7E3AF87977052A2536C74",
+      "bytes": 388
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/ellipse-line-0-b.brep",
+      "baselineSha256": null,
+      "candidateSha256": "478E30DAADAA4EAAA49CA9548FCAA2A404C164BB6BFC0DE583D64954907E87D9",
+      "bytes": 302
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/ellipse-line-1-a.brep",
+      "baselineSha256": null,
+      "candidateSha256": "9950A389321BF53D6B46FA78C0865FF9ADADF7654E63344F6E744303763AA3CC",
+      "bytes": 413
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/ellipse-line-1-b.brep",
+      "baselineSha256": null,
+      "candidateSha256": "478E30DAADAA4EAAA49CA9548FCAA2A404C164BB6BFC0DE583D64954907E87D9",
+      "bytes": 302
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/ellipse-line-2-a.brep",
+      "baselineSha256": null,
+      "candidateSha256": "B10B3DCEDF79C7A0F90813B50218F58AF7BB9B6A098EAC4388413AA5604610E4",
+      "bytes": 413
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/ellipse-line-2-b.brep",
+      "baselineSha256": null,
+      "candidateSha256": "478E30DAADAA4EAAA49CA9548FCAA2A404C164BB6BFC0DE583D64954907E87D9",
+      "bytes": 302
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/ellipse-line-3-a.brep",
+      "baselineSha256": null,
+      "candidateSha256": "5E7D7E04520C9487732052A2C2C844C3A7C5F0201F3A307D291EA122C6654271",
+      "bytes": 411
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/ellipse-line-3-b.brep",
+      "baselineSha256": null,
+      "candidateSha256": "478E30DAADAA4EAAA49CA9548FCAA2A404C164BB6BFC0DE583D64954907E87D9",
+      "bytes": 302
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/ellipse-line-4-a.brep",
+      "baselineSha256": null,
+      "candidateSha256": "A8995C27E030DCCE7CE52E26FB16148605FF3AC27B7893E5E1CA4BFE2EB1D1D5",
+      "bytes": 411
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/ellipse-line-4-b.brep",
+      "baselineSha256": null,
+      "candidateSha256": "478E30DAADAA4EAAA49CA9548FCAA2A404C164BB6BFC0DE583D64954907E87D9",
+      "bytes": 302
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/ellipse-line-5-a.brep",
+      "baselineSha256": null,
+      "candidateSha256": "F9A2224F51271B3098DA8191B933ECE45EFA1580FE6C6A1C26DC7D3A3BA6BD3D",
+      "bytes": 483
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/ellipse-line-5-b.brep",
+      "baselineSha256": null,
+      "candidateSha256": "9AAA2F5D9B572CB0B717826E3B974A7D90F3AAC218A2FC8C81778D1970B3AF90",
+      "bytes": 430
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/ellipse-line-6-a.brep",
+      "baselineSha256": null,
+      "candidateSha256": "7CCA4473F81C5EAED6DE731CC139BF77CA5508147AE2EEA73B824AA1967488C1",
+      "bytes": 481
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/ellipse-line-6-b.brep",
+      "baselineSha256": null,
+      "candidateSha256": "9AAA2F5D9B572CB0B717826E3B974A7D90F3AAC218A2FC8C81778D1970B3AF90",
+      "bytes": 430
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/ellipse-line-7-a.brep",
+      "baselineSha256": null,
+      "candidateSha256": "63FB8D0B221C906AA54AD0A3094145AD0E65FAC6B6A5D9D5B51B59D60639CB2D",
+      "bytes": 483
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/ellipse-line-7-b.brep",
+      "baselineSha256": null,
+      "candidateSha256": "9AAA2F5D9B572CB0B717826E3B974A7D90F3AAC218A2FC8C81778D1970B3AF90",
+      "bytes": 430
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/ellipse-plane-0-a.brep",
+      "baselineSha256": null,
+      "candidateSha256": "A3902772EE8C883F7D40FF56D4C044F257A74705F5D7E3AF87977052A2536C74",
+      "bytes": 388
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/ellipse-plane-0-b.brep",
+      "baselineSha256": null,
+      "candidateSha256": "A91758B8F0FACF6E97FC765A70ACD8061B26EC4C25680935DFF350DFE5F32F5D",
+      "bytes": 768
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/ellipse-plane-1-a.brep",
+      "baselineSha256": null,
+      "candidateSha256": "9950A389321BF53D6B46FA78C0865FF9ADADF7654E63344F6E744303763AA3CC",
+      "bytes": 413
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/ellipse-plane-1-b.brep",
+      "baselineSha256": null,
+      "candidateSha256": "A91758B8F0FACF6E97FC765A70ACD8061B26EC4C25680935DFF350DFE5F32F5D",
+      "bytes": 768
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/ellipse-plane-2-a.brep",
+      "baselineSha256": null,
+      "candidateSha256": "B10B3DCEDF79C7A0F90813B50218F58AF7BB9B6A098EAC4388413AA5604610E4",
+      "bytes": 413
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/ellipse-plane-2-b.brep",
+      "baselineSha256": null,
+      "candidateSha256": "A91758B8F0FACF6E97FC765A70ACD8061B26EC4C25680935DFF350DFE5F32F5D",
+      "bytes": 768
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/ellipse-plane-3-a.brep",
+      "baselineSha256": null,
+      "candidateSha256": "5E7D7E04520C9487732052A2C2C844C3A7C5F0201F3A307D291EA122C6654271",
+      "bytes": 411
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/ellipse-plane-3-b.brep",
+      "baselineSha256": null,
+      "candidateSha256": "A91758B8F0FACF6E97FC765A70ACD8061B26EC4C25680935DFF350DFE5F32F5D",
+      "bytes": 768
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/ellipse-plane-4-a.brep",
+      "baselineSha256": null,
+      "candidateSha256": "A8995C27E030DCCE7CE52E26FB16148605FF3AC27B7893E5E1CA4BFE2EB1D1D5",
+      "bytes": 411
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/ellipse-plane-4-b.brep",
+      "baselineSha256": null,
+      "candidateSha256": "A91758B8F0FACF6E97FC765A70ACD8061B26EC4C25680935DFF350DFE5F32F5D",
+      "bytes": 768
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/ellipse-plane-5-a.brep",
+      "baselineSha256": null,
+      "candidateSha256": "F9A2224F51271B3098DA8191B933ECE45EFA1580FE6C6A1C26DC7D3A3BA6BD3D",
+      "bytes": 483
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/ellipse-plane-5-b.brep",
+      "baselineSha256": null,
+      "candidateSha256": "ABB27611A08201D86A58AB16092A26F621654518AC519B19C05D452E08C01033",
+      "bytes": 1203
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/ellipse-plane-6-a.brep",
+      "baselineSha256": null,
+      "candidateSha256": "7CCA4473F81C5EAED6DE731CC139BF77CA5508147AE2EEA73B824AA1967488C1",
+      "bytes": 481
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/ellipse-plane-6-b.brep",
+      "baselineSha256": null,
+      "candidateSha256": "ABB27611A08201D86A58AB16092A26F621654518AC519B19C05D452E08C01033",
+      "bytes": 1203
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/ellipse-plane-7-a.brep",
+      "baselineSha256": null,
+      "candidateSha256": "63FB8D0B221C906AA54AD0A3094145AD0E65FAC6B6A5D9D5B51B59D60639CB2D",
+      "bytes": 483
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/ellipse-plane-7-b.brep",
+      "baselineSha256": null,
+      "candidateSha256": "ABB27611A08201D86A58AB16092A26F621654518AC519B19C05D452E08C01033",
+      "bytes": 1203
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/line-nurbs-torus-0-a.brep",
+      "baselineSha256": null,
+      "candidateSha256": "978C32E86706E784EB3268BF28C0D5B3022DED75167089049056F36E33A7A6E2",
+      "bytes": 309
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/line-nurbs-torus-0-b.brep",
+      "baselineSha256": null,
+      "candidateSha256": "736A9D30AB1A74B41B8DE5294A23B88B61FF39E30A35E78FC61433610D4EE930",
+      "bytes": 5596
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/line-nurbs-torus-1-a.brep",
+      "baselineSha256": null,
+      "candidateSha256": "978C32E86706E784EB3268BF28C0D5B3022DED75167089049056F36E33A7A6E2",
+      "bytes": 309
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/line-nurbs-torus-1-b.brep",
+      "baselineSha256": null,
+      "candidateSha256": "68912521A2B884119742DB0CE5377FA42AAF3600CDF22D7C62AB8C4DD4CA6EF4",
+      "bytes": 5594
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/line-nurbs-torus-2-a.brep",
+      "baselineSha256": null,
+      "candidateSha256": "978C32E86706E784EB3268BF28C0D5B3022DED75167089049056F36E33A7A6E2",
+      "bytes": 309
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/line-nurbs-torus-2-b.brep",
+      "baselineSha256": null,
+      "candidateSha256": "BECCF43A545ACC47D88604510E87CAAC82A5D34DDAEDB3E3D30F1F1EC0E0B397",
+      "bytes": 5594
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/line-nurbs-torus-3-a.brep",
+      "baselineSha256": null,
+      "candidateSha256": "978C32E86706E784EB3268BF28C0D5B3022DED75167089049056F36E33A7A6E2",
+      "bytes": 309
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/line-nurbs-torus-3-b.brep",
+      "baselineSha256": null,
+      "candidateSha256": "8FAB78516E9978E86ABD965507F009B2CA5A6457F16DBAE78F9767F5906E5B95",
+      "bytes": 5518
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/line-nurbs-torus-4-a.brep",
+      "baselineSha256": null,
+      "candidateSha256": "978C32E86706E784EB3268BF28C0D5B3022DED75167089049056F36E33A7A6E2",
+      "bytes": 309
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/line-nurbs-torus-4-b.brep",
+      "baselineSha256": null,
+      "candidateSha256": "001BA4E90203C3F420D86CF6047CED0749C8CB6D2C60BB49E07E48331384F1A9",
+      "bytes": 5586
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/line-nurbs-torus-5-a.brep",
+      "baselineSha256": null,
+      "candidateSha256": "50B63815A8AF5474F70D66C20645EEEC3F7D5530231A4A6E46A9A21281C40E05",
+      "bytes": 403
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/line-nurbs-torus-5-b.brep",
+      "baselineSha256": null,
+      "candidateSha256": "04A380A574CBD43FC314D996601D30DF067171075A2EC747845F20A0D312C9FB",
+      "bytes": 5789
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/line-nurbs-torus-6-a.brep",
+      "baselineSha256": null,
+      "candidateSha256": "50B63815A8AF5474F70D66C20645EEEC3F7D5530231A4A6E46A9A21281C40E05",
+      "bytes": 403
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/line-nurbs-torus-6-b.brep",
+      "baselineSha256": null,
+      "candidateSha256": "E7BB03A5AA1FDB62464644D297BCB7AD0C06A1CB88295A0A38992BDC9CEAB12F",
+      "bytes": 5789
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/line-nurbs-torus-7-a.brep",
+      "baselineSha256": null,
+      "candidateSha256": "50B63815A8AF5474F70D66C20645EEEC3F7D5530231A4A6E46A9A21281C40E05",
+      "bytes": 403
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/line-nurbs-torus-7-b.brep",
+      "baselineSha256": null,
+      "candidateSha256": "AE8316299580CADABF00C92581F39CC3A61640F035CCA59446B2A0EF03E14E27",
+      "bytes": 5823
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/line-torus-0-a.brep",
+      "baselineSha256": null,
+      "candidateSha256": "978C32E86706E784EB3268BF28C0D5B3022DED75167089049056F36E33A7A6E2",
+      "bytes": 309
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/line-torus-0-b.brep",
+      "baselineSha256": null,
+      "candidateSha256": "33C740F70D0797E124DD3B6A628205A5935865DDE3CA750D960447D5FEBB33DB",
+      "bytes": 1660
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/line-torus-1-a.brep",
+      "baselineSha256": null,
+      "candidateSha256": "978C32E86706E784EB3268BF28C0D5B3022DED75167089049056F36E33A7A6E2",
+      "bytes": 309
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/line-torus-1-b.brep",
+      "baselineSha256": null,
+      "candidateSha256": "BD41C15C498E85FE972B2BA672F56E1C76F58CFBE709E2CE383A60BD84D224A1",
+      "bytes": 1658
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/line-torus-2-a.brep",
+      "baselineSha256": null,
+      "candidateSha256": "978C32E86706E784EB3268BF28C0D5B3022DED75167089049056F36E33A7A6E2",
+      "bytes": 309
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/line-torus-2-b.brep",
+      "baselineSha256": null,
+      "candidateSha256": "6663FF4D80B40488EC692864153F319C379AC129963905642B4F61BDEBEEC15E",
+      "bytes": 1658
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/line-torus-3-a.brep",
+      "baselineSha256": null,
+      "candidateSha256": "978C32E86706E784EB3268BF28C0D5B3022DED75167089049056F36E33A7A6E2",
+      "bytes": 309
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/line-torus-3-b.brep",
+      "baselineSha256": null,
+      "candidateSha256": "09C7849E5FBC9D28774D772E5F7F418162B589C6F208CFF7EB9BA5818C23B41C",
+      "bytes": 1582
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/line-torus-4-a.brep",
+      "baselineSha256": null,
+      "candidateSha256": "978C32E86706E784EB3268BF28C0D5B3022DED75167089049056F36E33A7A6E2",
+      "bytes": 309
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/line-torus-4-b.brep",
+      "baselineSha256": null,
+      "candidateSha256": "54BFF1168DF4C5F41784AE7466E9A1B93862B3BD40D55D5BE58A60BD23C82DF5",
+      "bytes": 1650
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/line-torus-5-a.brep",
+      "baselineSha256": null,
+      "candidateSha256": "50B63815A8AF5474F70D66C20645EEEC3F7D5530231A4A6E46A9A21281C40E05",
+      "bytes": 403
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/line-torus-5-b.brep",
+      "baselineSha256": null,
+      "candidateSha256": "7796C4184354A26EDB21C446A8B88779BBA7BEB9D75887C3AA745DEECDE0E145",
+      "bytes": 1840
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/line-torus-6-a.brep",
+      "baselineSha256": null,
+      "candidateSha256": "50B63815A8AF5474F70D66C20645EEEC3F7D5530231A4A6E46A9A21281C40E05",
+      "bytes": 403
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/line-torus-6-b.brep",
+      "baselineSha256": null,
+      "candidateSha256": "84600B8D37DA29FBC8B736817EA85AB9CE20EE57509D62CAE23B800D55EA9953",
+      "bytes": 1840
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/line-torus-7-a.brep",
+      "baselineSha256": null,
+      "candidateSha256": "50B63815A8AF5474F70D66C20645EEEC3F7D5530231A4A6E46A9A21281C40E05",
+      "bytes": 403
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/line-torus-7-b.brep",
+      "baselineSha256": null,
+      "candidateSha256": "DF0A231ADC3FAAB41C911C32157C0328C57534606B3DE4B2B016A87C659F6EE2",
+      "bytes": 1874
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/nurbs-circle-circle-0-a.brep",
+      "baselineSha256": null,
+      "candidateSha256": "D60EED74919F469C96DF0654D4A41A294962DD781632B40ECB48D507C746065E",
+      "bytes": 706
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/nurbs-circle-circle-0-b.brep",
+      "baselineSha256": null,
+      "candidateSha256": "93056E6BE9CFFE62323BEA54866D5A7700AA86E8BD99008E6D6938880023F04D",
+      "bytes": 734
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/nurbs-circle-circle-1-a.brep",
+      "baselineSha256": null,
+      "candidateSha256": "DCE5E4187BD7771CCB5F81DEA1BB46456E51D8ADB75BC9213DEAD08261D9AD09",
+      "bytes": 731
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/nurbs-circle-circle-1-b.brep",
+      "baselineSha256": null,
+      "candidateSha256": "98485FB5DAF273320D4FD3A7C7DA444A19D5DF6BD432533B561DB85A764D976E",
+      "bytes": 732
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/nurbs-circle-circle-2-a.brep",
+      "baselineSha256": null,
+      "candidateSha256": "79E419EEE709F411CBC0D9A424E65181C8D943E122D50292E98F0B7B6510A8FC",
+      "bytes": 731
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/nurbs-circle-circle-2-b.brep",
+      "baselineSha256": null,
+      "candidateSha256": "D28AD61F6F49073099B122D022527495890118D944B8C0F51C923A857E20AF8B",
+      "bytes": 732
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/nurbs-circle-circle-3-a.brep",
+      "baselineSha256": null,
+      "candidateSha256": "FFE27E46D50F7C32AC2F8EF0FD93C173C6676C7D5E2D75078164068F00F24F2F",
+      "bytes": 729
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/nurbs-circle-circle-3-b.brep",
+      "baselineSha256": null,
+      "candidateSha256": "59D016DC2954B57AC4687EC4070F737D06B6C39377EDF9617C1A9A4EB1A6B1EE",
+      "bytes": 734
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/nurbs-circle-circle-4-a.brep",
+      "baselineSha256": null,
+      "candidateSha256": "CCCDAC552A4ECA0BFDBA6A9F6D5F1CA04227800AF73498E26D98C64900281EBD",
+      "bytes": 729
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/nurbs-circle-circle-4-b.brep",
+      "baselineSha256": null,
+      "candidateSha256": "15496889A5B04B6818FB9172CDD4DD9E9119770D76F9D5F80DB1A6AC9FD950B9",
+      "bytes": 734
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/nurbs-circle-circle-5-a.brep",
+      "baselineSha256": null,
+      "candidateSha256": "EB6E963BECBCB6E2C09598890B7807C712296C9120204353157290F651ABCFFC",
+      "bytes": 780
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/nurbs-circle-circle-5-b.brep",
+      "baselineSha256": null,
+      "candidateSha256": "D80DE64C87D0078DAC5AE6439B446744C995A2D6C8A00BB8ABD8A0AC8ABAF884",
+      "bytes": 791
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/nurbs-circle-circle-6-a.brep",
+      "baselineSha256": null,
+      "candidateSha256": "E745F7BFA8017B6706A22ADB8B72E5CA4F48D70FC1ED37489C075EAE6EEF275C",
+      "bytes": 778
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/nurbs-circle-circle-6-b.brep",
+      "baselineSha256": null,
+      "candidateSha256": "B2E46E3EA59A95DA4E961199781B6F54BD7A3E4B143F031DD7809C0F77E5023D",
+      "bytes": 793
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/nurbs-circle-circle-7-a.brep",
+      "baselineSha256": null,
+      "candidateSha256": "A90F87500646BE7D61D046DA01B8E92FFC7F678AFFCD2BADDA73D9D0C5CCBEFF",
+      "bytes": 778
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/nurbs-circle-circle-7-b.brep",
+      "baselineSha256": null,
+      "candidateSha256": "C83BD95BB75F5E639083D2515BA92778353F130A260B46CEF2E83F0851F8F120",
+      "bytes": 791
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/nurbs-circle-plane-0-a.brep",
+      "baselineSha256": null,
+      "candidateSha256": "D60EED74919F469C96DF0654D4A41A294962DD781632B40ECB48D507C746065E",
+      "bytes": 706
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/nurbs-circle-plane-0-b.brep",
+      "baselineSha256": null,
+      "candidateSha256": "A91758B8F0FACF6E97FC765A70ACD8061B26EC4C25680935DFF350DFE5F32F5D",
+      "bytes": 768
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/nurbs-circle-plane-1-a.brep",
+      "baselineSha256": null,
+      "candidateSha256": "DCE5E4187BD7771CCB5F81DEA1BB46456E51D8ADB75BC9213DEAD08261D9AD09",
+      "bytes": 731
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/nurbs-circle-plane-1-b.brep",
+      "baselineSha256": null,
+      "candidateSha256": "A91758B8F0FACF6E97FC765A70ACD8061B26EC4C25680935DFF350DFE5F32F5D",
+      "bytes": 768
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/nurbs-circle-plane-2-a.brep",
+      "baselineSha256": null,
+      "candidateSha256": "79E419EEE709F411CBC0D9A424E65181C8D943E122D50292E98F0B7B6510A8FC",
+      "bytes": 731
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/nurbs-circle-plane-2-b.brep",
+      "baselineSha256": null,
+      "candidateSha256": "A91758B8F0FACF6E97FC765A70ACD8061B26EC4C25680935DFF350DFE5F32F5D",
+      "bytes": 768
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/nurbs-circle-plane-3-a.brep",
+      "baselineSha256": null,
+      "candidateSha256": "FFE27E46D50F7C32AC2F8EF0FD93C173C6676C7D5E2D75078164068F00F24F2F",
+      "bytes": 729
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/nurbs-circle-plane-3-b.brep",
+      "baselineSha256": null,
+      "candidateSha256": "A91758B8F0FACF6E97FC765A70ACD8061B26EC4C25680935DFF350DFE5F32F5D",
+      "bytes": 768
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/nurbs-circle-plane-4-a.brep",
+      "baselineSha256": null,
+      "candidateSha256": "CCCDAC552A4ECA0BFDBA6A9F6D5F1CA04227800AF73498E26D98C64900281EBD",
+      "bytes": 729
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/nurbs-circle-plane-4-b.brep",
+      "baselineSha256": null,
+      "candidateSha256": "A91758B8F0FACF6E97FC765A70ACD8061B26EC4C25680935DFF350DFE5F32F5D",
+      "bytes": 768
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/nurbs-circle-plane-5-a.brep",
+      "baselineSha256": null,
+      "candidateSha256": "EB6E963BECBCB6E2C09598890B7807C712296C9120204353157290F651ABCFFC",
+      "bytes": 780
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/nurbs-circle-plane-5-b.brep",
+      "baselineSha256": null,
+      "candidateSha256": "ABB27611A08201D86A58AB16092A26F621654518AC519B19C05D452E08C01033",
+      "bytes": 1203
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/nurbs-circle-plane-6-a.brep",
+      "baselineSha256": null,
+      "candidateSha256": "E745F7BFA8017B6706A22ADB8B72E5CA4F48D70FC1ED37489C075EAE6EEF275C",
+      "bytes": 778
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/nurbs-circle-plane-6-b.brep",
+      "baselineSha256": null,
+      "candidateSha256": "ABB27611A08201D86A58AB16092A26F621654518AC519B19C05D452E08C01033",
+      "bytes": 1203
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/nurbs-circle-plane-7-a.brep",
+      "baselineSha256": null,
+      "candidateSha256": "A90F87500646BE7D61D046DA01B8E92FFC7F678AFFCD2BADDA73D9D0C5CCBEFF",
+      "bytes": 778
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/nurbs-circle-plane-7-b.brep",
+      "baselineSha256": null,
+      "candidateSha256": "ABB27611A08201D86A58AB16092A26F621654518AC519B19C05D452E08C01033",
+      "bytes": 1203
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/nurbs-torus-torus-0-a.brep",
+      "baselineSha256": null,
+      "candidateSha256": "736A9D30AB1A74B41B8DE5294A23B88B61FF39E30A35E78FC61433610D4EE930",
+      "bytes": 5596
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/nurbs-torus-torus-0-b.brep",
+      "baselineSha256": null,
+      "candidateSha256": "853F6293FD2282DEEABEB448B0AE5AE324F4BCDC8705EEEDB725B6276DD3A0B4",
+      "bytes": 5401
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/nurbs-torus-torus-1-a.brep",
+      "baselineSha256": null,
+      "candidateSha256": "68912521A2B884119742DB0CE5377FA42AAF3600CDF22D7C62AB8C4DD4CA6EF4",
+      "bytes": 5594
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/nurbs-torus-torus-1-b.brep",
+      "baselineSha256": null,
+      "candidateSha256": "D1D302B954D8E1864C8B8906C330EF19996B88553ED3AF7823E466BAD11647AC",
+      "bytes": 5362
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/nurbs-torus-torus-2-a.brep",
+      "baselineSha256": null,
+      "candidateSha256": "BECCF43A545ACC47D88604510E87CAAC82A5D34DDAEDB3E3D30F1F1EC0E0B397",
+      "bytes": 5594
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/nurbs-torus-torus-2-b.brep",
+      "baselineSha256": null,
+      "candidateSha256": "B5E58AD26DD754029735C64EECB09397A048F74A7FCB9E34AFC3F496E1809E65",
+      "bytes": 5396
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/nurbs-torus-torus-3-a.brep",
+      "baselineSha256": null,
+      "candidateSha256": "8FAB78516E9978E86ABD965507F009B2CA5A6457F16DBAE78F9767F5906E5B95",
+      "bytes": 5518
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/nurbs-torus-torus-3-b.brep",
+      "baselineSha256": null,
+      "candidateSha256": "FD34057A3B0329564C77228516FFACEBD65B136186286A883868F1D37ACDBD4B",
+      "bytes": 5362
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/nurbs-torus-torus-4-a.brep",
+      "baselineSha256": null,
+      "candidateSha256": "001BA4E90203C3F420D86CF6047CED0749C8CB6D2C60BB49E07E48331384F1A9",
+      "bytes": 5586
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/nurbs-torus-torus-4-b.brep",
+      "baselineSha256": null,
+      "candidateSha256": "0FA21EB9A3B7CFE9F74A24F90FA795C1FD2E6D6ABE98F2C49DF1F2AA127B797F",
+      "bytes": 5397
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/nurbs-torus-torus-5-a.brep",
+      "baselineSha256": null,
+      "candidateSha256": "04A380A574CBD43FC314D996601D30DF067171075A2EC747845F20A0D312C9FB",
+      "bytes": 5789
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/nurbs-torus-torus-5-b.brep",
+      "baselineSha256": null,
+      "candidateSha256": "D7CBA7EFC516DBED3FF4D754C4C26E0474E37F17F8AADB0E5257DC4F0F6200EC",
+      "bytes": 5709
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/nurbs-torus-torus-6-a.brep",
+      "baselineSha256": null,
+      "candidateSha256": "E7BB03A5AA1FDB62464644D297BCB7AD0C06A1CB88295A0A38992BDC9CEAB12F",
+      "bytes": 5789
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/nurbs-torus-torus-6-b.brep",
+      "baselineSha256": null,
+      "candidateSha256": "7C90179F3B0E5C178119936A086CF3643AAB93D0F4163547939B0A49964C807D",
+      "bytes": 5709
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/nurbs-torus-torus-7-a.brep",
+      "baselineSha256": null,
+      "candidateSha256": "AE8316299580CADABF00C92581F39CC3A61640F035CCA59446B2A0EF03E14E27",
+      "bytes": 5823
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/nurbs-torus-torus-7-b.brep",
+      "baselineSha256": null,
+      "candidateSha256": "298C5BFBEA3516642A2EAAF0640EE0CAA979845E90589175D722E1098A0210E1",
+      "bytes": 5744
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/point-nurbs-torus-0-a.brep",
+      "baselineSha256": null,
+      "candidateSha256": "63D224730DF6C99D29E797F1CE4C128DE2A8AE31CEFAA34425CB9019FFC27FFC",
+      "bytes": 204
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/point-nurbs-torus-0-b.brep",
+      "baselineSha256": null,
+      "candidateSha256": "736A9D30AB1A74B41B8DE5294A23B88B61FF39E30A35E78FC61433610D4EE930",
+      "bytes": 5596
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/point-nurbs-torus-1-a.brep",
+      "baselineSha256": null,
+      "candidateSha256": "63D224730DF6C99D29E797F1CE4C128DE2A8AE31CEFAA34425CB9019FFC27FFC",
+      "bytes": 204
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/point-nurbs-torus-1-b.brep",
+      "baselineSha256": null,
+      "candidateSha256": "68912521A2B884119742DB0CE5377FA42AAF3600CDF22D7C62AB8C4DD4CA6EF4",
+      "bytes": 5594
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/point-nurbs-torus-2-a.brep",
+      "baselineSha256": null,
+      "candidateSha256": "63D224730DF6C99D29E797F1CE4C128DE2A8AE31CEFAA34425CB9019FFC27FFC",
+      "bytes": 204
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/point-nurbs-torus-2-b.brep",
+      "baselineSha256": null,
+      "candidateSha256": "BECCF43A545ACC47D88604510E87CAAC82A5D34DDAEDB3E3D30F1F1EC0E0B397",
+      "bytes": 5594
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/point-nurbs-torus-3-a.brep",
+      "baselineSha256": null,
+      "candidateSha256": "63D224730DF6C99D29E797F1CE4C128DE2A8AE31CEFAA34425CB9019FFC27FFC",
+      "bytes": 204
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/point-nurbs-torus-3-b.brep",
+      "baselineSha256": null,
+      "candidateSha256": "8FAB78516E9978E86ABD965507F009B2CA5A6457F16DBAE78F9767F5906E5B95",
+      "bytes": 5518
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/point-nurbs-torus-4-a.brep",
+      "baselineSha256": null,
+      "candidateSha256": "63D224730DF6C99D29E797F1CE4C128DE2A8AE31CEFAA34425CB9019FFC27FFC",
+      "bytes": 204
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/point-nurbs-torus-4-b.brep",
+      "baselineSha256": null,
+      "candidateSha256": "001BA4E90203C3F420D86CF6047CED0749C8CB6D2C60BB49E07E48331384F1A9",
+      "bytes": 5586
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/point-nurbs-torus-5-a.brep",
+      "baselineSha256": null,
+      "candidateSha256": "E07C908291BEE5D40E41ACA96AE7345BAA4CD015EC72BE3DD6A4E51E10E2F282",
+      "bytes": 234
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/point-nurbs-torus-5-b.brep",
+      "baselineSha256": null,
+      "candidateSha256": "04A380A574CBD43FC314D996601D30DF067171075A2EC747845F20A0D312C9FB",
+      "bytes": 5789
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/point-nurbs-torus-6-a.brep",
+      "baselineSha256": null,
+      "candidateSha256": "E07C908291BEE5D40E41ACA96AE7345BAA4CD015EC72BE3DD6A4E51E10E2F282",
+      "bytes": 234
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/point-nurbs-torus-6-b.brep",
+      "baselineSha256": null,
+      "candidateSha256": "E7BB03A5AA1FDB62464644D297BCB7AD0C06A1CB88295A0A38992BDC9CEAB12F",
+      "bytes": 5789
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/point-nurbs-torus-7-a.brep",
+      "baselineSha256": null,
+      "candidateSha256": "E07C908291BEE5D40E41ACA96AE7345BAA4CD015EC72BE3DD6A4E51E10E2F282",
+      "bytes": 234
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/point-nurbs-torus-7-b.brep",
+      "baselineSha256": null,
+      "candidateSha256": "AE8316299580CADABF00C92581F39CC3A61640F035CCA59446B2A0EF03E14E27",
+      "bytes": 5823
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/point-torus-0-a.brep",
+      "baselineSha256": null,
+      "candidateSha256": "63D224730DF6C99D29E797F1CE4C128DE2A8AE31CEFAA34425CB9019FFC27FFC",
+      "bytes": 204
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/point-torus-0-b.brep",
+      "baselineSha256": null,
+      "candidateSha256": "33C740F70D0797E124DD3B6A628205A5935865DDE3CA750D960447D5FEBB33DB",
+      "bytes": 1660
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/point-torus-1-a.brep",
+      "baselineSha256": null,
+      "candidateSha256": "63D224730DF6C99D29E797F1CE4C128DE2A8AE31CEFAA34425CB9019FFC27FFC",
+      "bytes": 204
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/point-torus-1-b.brep",
+      "baselineSha256": null,
+      "candidateSha256": "BD41C15C498E85FE972B2BA672F56E1C76F58CFBE709E2CE383A60BD84D224A1",
+      "bytes": 1658
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/point-torus-2-a.brep",
+      "baselineSha256": null,
+      "candidateSha256": "63D224730DF6C99D29E797F1CE4C128DE2A8AE31CEFAA34425CB9019FFC27FFC",
+      "bytes": 204
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/point-torus-2-b.brep",
+      "baselineSha256": null,
+      "candidateSha256": "6663FF4D80B40488EC692864153F319C379AC129963905642B4F61BDEBEEC15E",
+      "bytes": 1658
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/point-torus-3-a.brep",
+      "baselineSha256": null,
+      "candidateSha256": "63D224730DF6C99D29E797F1CE4C128DE2A8AE31CEFAA34425CB9019FFC27FFC",
+      "bytes": 204
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/point-torus-3-b.brep",
+      "baselineSha256": null,
+      "candidateSha256": "09C7849E5FBC9D28774D772E5F7F418162B589C6F208CFF7EB9BA5818C23B41C",
+      "bytes": 1582
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/point-torus-4-a.brep",
+      "baselineSha256": null,
+      "candidateSha256": "63D224730DF6C99D29E797F1CE4C128DE2A8AE31CEFAA34425CB9019FFC27FFC",
+      "bytes": 204
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/point-torus-4-b.brep",
+      "baselineSha256": null,
+      "candidateSha256": "54BFF1168DF4C5F41784AE7466E9A1B93862B3BD40D55D5BE58A60BD23C82DF5",
+      "bytes": 1650
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/point-torus-5-a.brep",
+      "baselineSha256": null,
+      "candidateSha256": "E07C908291BEE5D40E41ACA96AE7345BAA4CD015EC72BE3DD6A4E51E10E2F282",
+      "bytes": 234
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/point-torus-5-b.brep",
+      "baselineSha256": null,
+      "candidateSha256": "7796C4184354A26EDB21C446A8B88779BBA7BEB9D75887C3AA745DEECDE0E145",
+      "bytes": 1840
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/point-torus-6-a.brep",
+      "baselineSha256": null,
+      "candidateSha256": "E07C908291BEE5D40E41ACA96AE7345BAA4CD015EC72BE3DD6A4E51E10E2F282",
+      "bytes": 234
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/point-torus-6-b.brep",
+      "baselineSha256": null,
+      "candidateSha256": "84600B8D37DA29FBC8B736817EA85AB9CE20EE57509D62CAE23B800D55EA9953",
+      "bytes": 1840
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/point-torus-7-a.brep",
+      "baselineSha256": null,
+      "candidateSha256": "E07C908291BEE5D40E41ACA96AE7345BAA4CD015EC72BE3DD6A4E51E10E2F282",
+      "bytes": 234
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/point-torus-7-b.brep",
+      "baselineSha256": null,
+      "candidateSha256": "DF0A231ADC3FAAB41C911C32157C0328C57534606B3DE4B2B016A87C659F6EE2",
+      "bytes": 1874
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/sphere-sphere-0-a.brep",
+      "baselineSha256": null,
+      "candidateSha256": "14099D09878BB7A605468815ADD15D5DAB09A9AC5D0F5292E3B9E5B67CAF3469",
+      "bytes": 1550
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/sphere-sphere-0-b.brep",
+      "baselineSha256": null,
+      "candidateSha256": "A900F541B560001DF482E079F2C13A9ECA20CDCB1BE6850A762B6C55D111FA72",
+      "bytes": 1553
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/sphere-sphere-1-a.brep",
+      "baselineSha256": null,
+      "candidateSha256": "CB53E08934A7D5A0EC3A32FF0EBACB115338467A299AF934A421648E07513E86",
+      "bytes": 1549
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/sphere-sphere-1-b.brep",
+      "baselineSha256": null,
+      "candidateSha256": "FD1B7D8BDF51C0A023F4F76E6A906E7C6C2A9AE948A52DDF8B74DA658E509D46",
+      "bytes": 1515
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/sphere-sphere-2-a.brep",
+      "baselineSha256": null,
+      "candidateSha256": "8A8604E6482CE53CAC76EA1FC5D666F3649B2BF6706C73FEAF993A1D69AA8266",
+      "bytes": 1549
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/sphere-sphere-2-b.brep",
+      "baselineSha256": null,
+      "candidateSha256": "3BF0DC46CDF43F74CD276799847B480F1AF26F97482D97282B22C279C96BA4FC",
+      "bytes": 1549
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/sphere-sphere-3-a.brep",
+      "baselineSha256": null,
+      "candidateSha256": "02FB40EA486E44D8BC632049ECC625C79CE6D8321B0C2154BA0134AC998D6C80",
+      "bytes": 1511
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/sphere-sphere-3-b.brep",
+      "baselineSha256": null,
+      "candidateSha256": "20384AE3EE21911024C5FBCC8A1E7A88C7E0CDE55BF265262564D0E073759B4A",
+      "bytes": 1553
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/sphere-sphere-4-a.brep",
+      "baselineSha256": null,
+      "candidateSha256": "BC04BA92259BA9CFEB34AB4C13D12A30B62A84E492D37FE6E96E17D20053B697",
+      "bytes": 1545
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/sphere-sphere-4-b.brep",
+      "baselineSha256": null,
+      "candidateSha256": "D6CC5C78A0EDFFF1B402C78687101D755930DD13D991670EEC924193936CB6A8",
+      "bytes": 1554
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/sphere-sphere-5-a.brep",
+      "baselineSha256": null,
+      "candidateSha256": "E7C68F9580FA5DC18F41F5CE73C8B087325F935DA0B6467B6BC089EA0C3D2831",
+      "bytes": 1765
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/sphere-sphere-5-b.brep",
+      "baselineSha256": null,
+      "candidateSha256": "9D1EF7D79C25B60628AF144152D8C8CC3EB9918D3A52EC7ECADE7E91537C68F1",
+      "bytes": 1896
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/sphere-sphere-6-a.brep",
+      "baselineSha256": null,
+      "candidateSha256": "4338DC7C24774BCF5296B3163A8559F177FE74E2B24AB8E8EB227DE8E8A4D7B2",
+      "bytes": 1727
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/sphere-sphere-6-b.brep",
+      "baselineSha256": null,
+      "candidateSha256": "763CEEEA81C2EADDEEDC5ED0E31CA3811F7139408B258515E0850B6DC8CCD4A9",
+      "bytes": 1934
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/sphere-sphere-7-a.brep",
+      "baselineSha256": null,
+      "candidateSha256": "025393BD39C3BCDFAC7CCDC63AC91D8EEC28926B463835E7C591B3F1C9D146A0",
+      "bytes": 1765
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/sphere-sphere-7-b.brep",
+      "baselineSha256": null,
+      "candidateSha256": "BA68A7F72E1F53E6F5A77A84A46ED32C82AC3A8FAA90A30143154940841D3ED5",
+      "bytes": 1931
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/torus-torus-0-a.brep",
+      "baselineSha256": null,
+      "candidateSha256": "33C740F70D0797E124DD3B6A628205A5935865DDE3CA750D960447D5FEBB33DB",
+      "bytes": 1660
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/torus-torus-0-b.brep",
+      "baselineSha256": null,
+      "candidateSha256": "EC46493F5879B3141581B381CB745662DAC5AC7474CEEFA5E91912D72C0BD47B",
+      "bytes": 1664
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/torus-torus-1-a.brep",
+      "baselineSha256": null,
+      "candidateSha256": "BD41C15C498E85FE972B2BA672F56E1C76F58CFBE709E2CE383A60BD84D224A1",
+      "bytes": 1658
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/torus-torus-1-b.brep",
+      "baselineSha256": null,
+      "candidateSha256": "31FF475FF5560E0A6241934AAC337EC2C3B0F7C7ECE8F2CB3CCFBFFA1761845B",
+      "bytes": 1625
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/torus-torus-2-a.brep",
+      "baselineSha256": null,
+      "candidateSha256": "6663FF4D80B40488EC692864153F319C379AC129963905642B4F61BDEBEEC15E",
+      "bytes": 1658
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/torus-torus-2-b.brep",
+      "baselineSha256": null,
+      "candidateSha256": "1F8E4764B4E4195D1DCECD7CB025B48A4CA6ECAFA812C13727DF0B7BF90B2EF2",
+      "bytes": 1659
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/torus-torus-3-a.brep",
+      "baselineSha256": null,
+      "candidateSha256": "09C7849E5FBC9D28774D772E5F7F418162B589C6F208CFF7EB9BA5818C23B41C",
+      "bytes": 1582
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/torus-torus-3-b.brep",
+      "baselineSha256": null,
+      "candidateSha256": "89884B060AA12AE59DEF320EF4CF7FD5ED04087B7A8787A9B42E5F3FA0C2F0EE",
+      "bytes": 1625
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/torus-torus-4-a.brep",
+      "baselineSha256": null,
+      "candidateSha256": "54BFF1168DF4C5F41784AE7466E9A1B93862B3BD40D55D5BE58A60BD23C82DF5",
+      "bytes": 1650
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/torus-torus-4-b.brep",
+      "baselineSha256": null,
+      "candidateSha256": "0D821361E88C315FE2C60C8A879D8EB9C44DF28157089EB0D3B4E461C6748B55",
+      "bytes": 1660
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/torus-torus-5-a.brep",
+      "baselineSha256": null,
+      "candidateSha256": "7796C4184354A26EDB21C446A8B88779BBA7BEB9D75887C3AA745DEECDE0E145",
+      "bytes": 1840
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/torus-torus-5-b.brep",
+      "baselineSha256": null,
+      "candidateSha256": "498872BC57FFB318C90B4618615CB1ED304E8157F1D7A9453420C8A003A01C43",
+      "bytes": 1943
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/torus-torus-6-a.brep",
+      "baselineSha256": null,
+      "candidateSha256": "84600B8D37DA29FBC8B736817EA85AB9CE20EE57509D62CAE23B800D55EA9953",
+      "bytes": 1840
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/torus-torus-6-b.brep",
+      "baselineSha256": null,
+      "candidateSha256": "65F80055568DFD75C98E90640FCAA1DBA13052686F174C8CE1419F8AC8ED7B81",
+      "bytes": 1943
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/torus-torus-7-a.brep",
+      "baselineSha256": null,
+      "candidateSha256": "DF0A231ADC3FAAB41C911C32157C0328C57534606B3DE4B2B016A87C659F6EE2",
+      "bytes": 1874
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/torus-torus-7-b.brep",
+      "baselineSha256": null,
+      "candidateSha256": "AA62477065F821F966BE0D540D842E5D3265725A8F4CD1BB03C2A0202AAEE9E3",
+      "bytes": 1978
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/OcctSharp.Runtime.Tests.csproj",
+      "baselineSha256": "ACDAC586330C683B35FB63771DECBEEA7E694F31C8A45C1E92FAC717113F6874",
+      "candidateSha256": "4D2E7B4AFF84F4ED9122E7E943159C1EA18B3C647DC04D691289C274A37F69CB",
+      "bytes": 3447
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/PeriodicDistanceRegressionTests.cs",
+      "baselineSha256": null,
+      "candidateSha256": "958ADD9F064FE35F91D75B24B28EF9714DB3EAAE16286E14520F6424B941AF6A",
+      "bytes": 4365
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/PeriodicInteriorDistanceRegressionTests.cs",
+      "baselineSha256": null,
+      "candidateSha256": "B6ADE3253ACA09F0245BBB8903F5A35448AB0FD5335BDA7541C20C489DEF4422",
+      "bytes": 7126
+    }
+  ],
+  "replay": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-6\\recovery-replay-v7-1",
+  "replayChecks": [
+    {
+      "arguments": [
+        "--check"
+      ],
+      "exit": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "arguments": [],
+      "exit": 0,
+      "stdout": "",
+      "stderr": ""
+    }
+  ],
+  "replayMatchingFiles": 245,
+  "patch": {
+    "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\capability-evidence\\AF_PENDING_SDK31_EXACT_STEP_V7.patch",
+    "sha256": "6C5D7B564C89E762E217F1C8EC3A7F0853F49247A8A89C63C8C8FD412748475C",
+    "bytes": 875409
+  },
+  "productionApplied": false,
+  "packageBuilt": false,
+  "applicationIntegrated": false,
+  "applicationExportGuardModified": false,
+  "AF": "ACTIVE",
+  "G": "USER_DEFERRED",
+  "cleanup": "STOPPED"
+}
