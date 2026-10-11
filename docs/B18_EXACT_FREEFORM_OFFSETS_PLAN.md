@@ -69,7 +69,7 @@ B18生产程序集已新增拥有值的Primitive/Offset/Continuation表达式基
 
 SDK19的精确表达式、整段正则性证明和保持来源包含树的区域偏移已完成本地包与正式应用依赖接入。保持来源顺序、填充/孔岛交替和Miter/Round/Bevel；触碰、合并、分裂、坍缩和父级互换明确拒绝。源码Release/实际Debug各1120通过；独立冷生成175项逐字节一致，冷Native/完整托管Release构建零警告/错误，冷Runtime1120、fresh Generator207通过。14个不可变本地NuGet包及全新缓存的精确锁包消费者通过182个BRep、18区域、32回读和23正则性场景，全部62原生库由buildTransitive自动复制/发布。正式Cadoryx现使用SDK19：锁定14包、Release构建零警告/错误、全量 **2936/2936通过**，原2936全部保留；同程序集发布、一般smoke和完整window均通过，13SDK程序集文件匹配，每次实际加载62原生库路径/哈希一致。圆盘7次静止指针桌面像素检查及12次窗口生命周期通过，bindings为空。运行基线已与实际writer0.7.0、ABI1.80/bridge0.88.0和16分区版本一致。原公差、时间/计算预算、41148导出及104/120/32字节布局保持；冷Debug未重跑，原实际Debug1120证据保留。这些是SDK与依赖集成验收：生产偏移作者编辑/关系/C1/历史/存储/三语言UI、交换以及完整偏移单射性/拆分合并历史仍待完成。A5正式DLL迟发故障和物理输入仍待验；最新已验收仍A4/B17/C5/D5/E4/F5g，B18与A–F继续，G暂缓。
 
-证据：[SDK19冷生成与锁包](../artifacts/b18-sdk-package-verification-1.json)、[正式应用接入](../artifacts/b18-app-sdk19-verification-1.json)、[原生核心验证](../artifacts/b18-core-runtime-verification-9.json)、[完整B18契约](B18_EXACT_FREEFORM_OFFSETS_PLAN.md)。 此前逐轮实现、全部失败和原始验收边界完整保存在[区域偏移前开发记录](history/B18_DEV_BEFORE_REGION_OFFSET_20261007.md)。
+证据：[SDK19冷生成与锁包](../artifacts/b18-sdk-package-verification-1.json)、[正式应用接入](../artifacts/b18-app-sdk19-verification-1.json)、[原生核心验证](../artifacts/b18-core-runtime-verification-9.json)、[完整B18契约](B18_EXACT_FREEFORM_OFFSETS_PLAN.md)。 此前逐轮实现、全部失败和原始验收边界完整保存在[区域偏移前开发记录](https://github.com/yoi102/Cadoryx/blob/69268920d83071734f3ddf226d2d89df21109a6e/docs/history/B18_DEV_BEFORE_REGION_OFFSET_20261007.md)。
 
 ## 已证明的几何路径
 

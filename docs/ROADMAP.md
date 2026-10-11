@@ -1,6 +1,6 @@
 # Cadoryx 实施路线与验收
 
-当前状态（2026-10-11）：按用户要求暂停于[本地提交检查点](AF_CHECKPOINT_2026-10-11.md)，A–F未全部完成，G暂缓。下文保留早期实施基线和设计验收；当前代码与候选证据以[STATUS](STATUS.md)及[A–F跟踪](AF_IMPLEMENTATION_TRACKER.md)为准。旧过程记录见[历史路线快照](history/docs_ROADMAP_BEFORE_CHECKPOINT_20261011.md)。
+当前状态（2026-10-11）：按用户要求暂停于[本地提交检查点](AF_CHECKPOINT_2026-10-11.md)，A–F未全部完成，G暂缓。下文保留早期实施基线和设计验收；当前代码与候选证据以[STATUS](STATUS.md)及[A–F跟踪](AF_IMPLEMENTATION_TRACKER.md)为准。旧过程记录见[历史路线快照](https://github.com/yoi102/Cadoryx/blob/69268920d83071734f3ddf226d2d89df21109a6e/docs/history/docs_ROADMAP_BEFORE_CHECKPOINT_20261011.md)。
 
 ## 1. 历史实施基线（2026-09-28）
 

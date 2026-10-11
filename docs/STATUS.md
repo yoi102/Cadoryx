@@ -8,4 +8,4 @@
 
 SDK29 的生成器两配置各 218 项测试和两次一致生成已通过，保留原 175 份输出、增加 3 份支持胶水；原生构建在 CMake 编译器探测阶段因长路径失败，尚未进入产品 C++ 编译。SDK29 包/消费者、WPF 自动恢复 24 场景及物理 GPU 故障仍待验。
 
-具体证据、清理结果与恢复顺序见[暂停检查点](AF_CHECKPOINT_2026-10-11.md)；各批剩余范围见[A–F 跟踪](AF_IMPLEMENTATION_TRACKER.md)和[产品规划第 4 节](CAD_PRODUCT_GAPS.md#4-推荐怎么做下一步)。旧重复过程记录已移至[截至 status195 的历史快照](history/STATUS_THROUGH_STATUS195_20261011.md)，不再当作当前状态。
+具体证据、清理结果与恢复顺序见[暂停检查点](AF_CHECKPOINT_2026-10-11.md)；各批剩余范围见[A–F 跟踪](AF_IMPLEMENTATION_TRACKER.md)和[产品规划第 4 节](CAD_PRODUCT_GAPS.md#4-推荐怎么做下一步)。历史过程记录见[Git历史索引](history/README.md)；33份工作目录副本已清理，原文仍可从已推送的固定提交查看。

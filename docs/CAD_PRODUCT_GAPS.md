@@ -1,6 +1,6 @@
 # 3D CAD 产品缺口与实施规划
 
-2026-10-11，status196：**按用户要求暂停于本地提交检查点。A–F 未全部完成；G 第七批暂缓。** 当前结果见[暂停检查点](AF_CHECKPOINT_2026-10-11.md)，旧重复过程记录见[截至 status195 的规划快照](history/CAD_PRODUCT_GAPS_THROUGH_STATUS195_20261011.md)。第 4 节七大批和第 5 节验收条件保持。
+2026-10-11，status196：**按用户要求暂停于本地提交检查点。A–F 未全部完成；G 第七批暂缓。** 当前结果见[暂停检查点](AF_CHECKPOINT_2026-10-11.md)，旧重复过程记录见[截至 status195 的规划快照](https://github.com/yoi102/Cadoryx/blob/69268920d83071734f3ddf226d2d89df21109a6e/docs/history/CAD_PRODUCT_GAPS_THROUGH_STATUS195_20261011.md)。第 4 节七大批和第 5 节验收条件保持。
 
 ## 1. 当前处于什么位置
 

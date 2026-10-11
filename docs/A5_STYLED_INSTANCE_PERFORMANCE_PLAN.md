@@ -64,7 +64,7 @@
 
 详见[当前状态](STATUS.md)。
 
-上一条摘要保存在[历史记录](history/A5_PROGRESS_20261006_21.md)。
+上一条摘要保存在[历史记录](https://github.com/yoi102/Cadoryx/blob/69268920d83071734f3ddf226d2d89df21109a6e/docs/history/A5_PROGRESS_20261006_21.md)。
 
 ## 此前过程记录（历史状态）
 

@@ -28,9 +28,11 @@ status196。用户要求在合适位置停止、做一次本地提交，并清�
 
 ## 文档与缓存整理
 
-当前状态、规划和跟踪页已改为暂停终态；重复、过期的过程记录移入`docs/history/`，保留原失败和真实验收材料。清理限定于本仓库，删除可重建且未被证据引用的构建缓存、Python字节码及确认无引用的偶发计时文件`30`。被证据引用的测试缓存、JSON/TRX、图片、源码快照、私有SDK包和实际payload保留。
+当前状态、规划和跟踪页保持暂停终态。历史过程快照已由[Git历史索引](history/README.md)提供固定版本链接，工作目录不再重复保留33份全文；原失败和真实验收材料继续保留。清理限定于本仓库，没有修改OcctSharp工作区或全局NuGet缓存。
 
-清理已完成：删除 **66 个缓存目录、10,309 个文件，共 2,330,350,603 字节（约 2.17 GiB）**，无删除失败。保留被266份证据引用的三个目录：`Cadoryx.Tests/bin`、`Cadoryx.wpf/bin`、`tools/OcctCapabilityProbe/bin`。原始[清理计划](../artifacts/checkpoint-cleanup-plan-4.json)和[执行清单](../artifacts/checkpoint-cleanup-executed-1.json)保留，包含路径、字节量及保留原因。未清理全局NuGet或其他仓库。
+前两轮清理累计删除 **532个缓存目录、28,682个文件，约3.18 GiB**。三个被证据引用的`bin`目录和103个中间目录保留；详见[首轮清单](../artifacts/checkpoint-cleanup-executed-1.json)和[推送后清单](../artifacts/post-push-cleanup-executed-2.json)。应用提交`6926892`已推送到`origin/master`。
+
+记录整理另清理 **467项，约10.33 MiB**：194份已执行的一次性文档脚本、11份过期文档状态汇总、166份无引用空日志、63份有保留原本的完全重复输出，以及33份已在Git保存的文档快照。实际验收JSON/TRX、失败记录、当前来源的诊断、待续源码、私有SDK包和实际payload保留。[删除及恢复清单](../artifacts/records-cleanup-executed-1.json)记录每项哈希、理由和可用的恢复位置。
 
 ## 恢复时的顺序
 

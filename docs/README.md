@@ -1,6 +1,6 @@
 # Cadoryx 文档入口
 
-2026-10-11，status196：**按用户要求暂停于本地提交检查点；A–F未全部完成，G暂缓。** 当前应用source1000/SDK26与隔离候选分列，详见[当前状态](STATUS.md)、[暂停检查点](AF_CHECKPOINT_2026-10-11.md)和[A–F跟踪](AF_IMPLEMENTATION_TRACKER.md)。旧重复过程记录见[历史入口快照](history/docs_README_BEFORE_CHECKPOINT_20261011.md)。
+2026-10-11，status196：**按用户要求暂停于本地提交检查点；A–F未全部完成，G暂缓。** 当前应用source1000/SDK26与隔离候选分列，详见[当前状态](STATUS.md)、[暂停检查点](AF_CHECKPOINT_2026-10-11.md)和[A–F跟踪](AF_IMPLEMENTATION_TRACKER.md)。旧重复过程记录见[历史入口快照](https://github.com/yoi102/Cadoryx/blob/69268920d83071734f3ddf226d2d89df21109a6e/docs/history/docs_README_BEFORE_CHECKPOINT_20261011.md)。
 
 ## 设计入口
 
@@ -95,7 +95,7 @@ M4-T1-H1 建立局部算法历史证据、八节存储和诊断解析，其当�
 
 M4-T1 已实现 Box 六面/十二边语义引用与持久化；M4-T2 接通 MetroWindow 面/边拾取、失效重选和单边圆角/倒角预览确认；M4-T3-A/B1 增加既有局部特征参数编辑及单边双距离倒角。支持边界见 [拓扑引用基础](TOPOLOGY_REFERENCES.md)和 [局部建模](LOCAL_FEATURES.md)。
 
-`.cadoryx` 采用 ZIP 容器、JSON 清单、MessagePack 3.1.8 数字键 DTO 和独立 BRep/XDE 资产。当前十三节为 features v21、document v20、structure v3、presentation/history/feature-bindings/drawings v2、sketches v6、geometry/topology/history-queries/external-parts/engineering-review v1；旧文件沿显式迁移链升级，features v20→v21 增加特征抑制状态，document v19→v20 生成空图纸节，drawings v1→v2 迁移新增制图惯例、公差与局部视图字段。资产目录记录媒体类型、编码/格式版本和内核来源。模型数据不直接序列化 ViewModel 或 native 对象。
+`.cadoryx` 采用 ZIP 容器、JSON 清单、MessagePack 数字键 DTO 和独立 BRep/XDE 资产。具体分区及版本以[分区迁移](../Cadoryx.IO/SectionMigrations.cs)和各分区实现为准；旧文件沿显式迁移链升级。资产目录记录媒体类型、编码/格式版本和内核来源。模型数据不直接序列化 ViewModel 或 native 对象。
 
 | 格式 | 读取 | 写入 | 用途 |
 |---|---|---|---|
@@ -108,7 +108,7 @@ M4-T1 已实现 Box 六面/十二边语义引用与持久化；M4-T2 接通 Metr
 
 ## 构建与验证
 
-需要 Windows x64、.NET SDK 10.0.401 和可用 OpenGL 桌面环境。`NuGet.Config` 使用相邻 OcctSharp 内层 `artifacts/packages` 作为本地源；当前固定本地开发包 `8.0.1-preview.28.cadoryx.handles.gizmo.2`，以 `Directory.Build.props` 和项目 lock 文件为准。该版本未公开发布，移植时需提供同版本托管／原生包或从相邻 OcctSharp 源码构建。H2-B2 的历史构建说明见[接入目录](../integrations/occtsharp-boolean-history/README.md)。
+需要 Windows x64、.NET 10 SDK 和可用 OpenGL 桌面环境。当前应用锁定私有包 `8.0.1-preview.31.cadoryx.curve-inspection.26`；[NuGet.Config](../NuGet.Config) 指向相邻 OcctSharp 中保留的 SDK26 私有包目录，具体版本以[Directory.Build.props](../Directory.Build.props)和项目 lock 文件为准。移植时需要提供同版本托管与原生包。H2-B2 的历史构建说明见[接入目录](../integrations/occtsharp-boolean-history/README.md)。
 
 ```powershell
 dotnet build Cadoryx.slnx -c Release

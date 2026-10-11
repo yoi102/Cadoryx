@@ -14,4 +14,4 @@
 
 导航首draft1两个新测试失败（Dictionary删除再插入复用原slot），draft2在创建dictionary前过滤items、末尾追加，原断言不变。SDK29首CA1861、版本字段、队列前置拒绝和native长路径失败均保留；本次没有把失败清理掉或放宽验收条件。
 
-详细证据链接、清理结果及下一步见[暂停检查点](AF_CHECKPOINT_2026-10-11.md)。早期状态与完整接续说明归档于[截至status195的候选记录](history/AF_MERGED_LIVEPOINT_DRAWING_DENSITY_PLAN_THROUGH_STATUS195_20261011.md)。
+详细证据链接、清理结果及下一步见[暂停检查点](AF_CHECKPOINT_2026-10-11.md)。早期状态与完整接续说明归档于[截至status195的候选记录](https://github.com/yoi102/Cadoryx/blob/69268920d83071734f3ddf226d2d89df21109a6e/docs/history/AF_MERGED_LIVEPOINT_DRAWING_DENSITY_PLAN_THROUGH_STATUS195_20261011.md)。

@@ -2,7 +2,7 @@
 
 2026-10-11，status196：**按用户要求暂停于本地提交检查点；A–F未全部完成，G暂缓。** 当前应用source1000/SDK26保持，最新隔离证据、SDK29长路径失败和恢复顺序见[暂停检查点](AF_CHECKPOINT_2026-10-11.md)。
 
-恢复时先完成SDK29短路径语义构建/消费者、1058完整6451与原模型工程图复验、1059真实WPF24和剩余键鼠验收，再考虑候选生产合入。继续保留原预算、公差、失败和身份守卫；底层封装通过生成器承接。旧过程记录见[历史规划快照](history/docs_NEXT_STAGES_BEFORE_CHECKPOINT_20261011.md)。
+恢复时先完成SDK29短路径语义构建/消费者、1058完整6451与原模型工程图复验、1059真实WPF24和剩余键鼠验收，再考虑候选生产合入。继续保留原预算、公差、失败和身份守卫；底层封装通过生成器承接。旧过程记录见[历史规划快照](https://github.com/yoi102/Cadoryx/blob/69268920d83071734f3ddf226d2d89df21109a6e/docs/history/docs_NEXT_STAGES_BEFORE_CHECKPOINT_20261011.md)。
 
 ## A5之后继续的A–F能力
 
@@ -30,4 +30,4 @@ B、C、D、E、F的细项、既有证据及精确边界由[A–F跟踪表](AF_I
 
 暂不制作或公开发布新安装包。保留干净Windows、无SDK启动、安装/升级/回退/卸载、混合DPI/RDP/GPU、数小时运行、真实介质故障、物理打印、受信任签名/时间戳、外部CI和公开下载等门禁。PDF尺寸正确不能代替实纸比例；本机短时测试不能代替环境矩阵。后续交付须取得对应授权及实际结果。
 
-规划原文和所有历史阶段记录完整保存在[整理前快照](history/NEXT_STAGES_BEFORE_RECONCILIATION_20261006.md)。
+规划原文和所有历史阶段记录完整保存在[整理前快照](https://github.com/yoi102/Cadoryx/blob/69268920d83071734f3ddf226d2d89df21109a6e/docs/history/NEXT_STAGES_BEFORE_RECONCILIATION_20261006.md)。

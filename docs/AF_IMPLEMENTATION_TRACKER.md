@@ -16,4 +16,4 @@
 
 OcctSharp 新底层封装从生成器配置/模板/类型映射修改后再生成；高层API与生成输出的边界保持。SDK29生成审计已通过，原生构建长路径失败保留；改用短构建目录后才能继续原生、托管、测试、包及应用验收。
 
-旧状态和逐项G01–G24证据保存在[截至 status195 的跟踪快照](history/AF_IMPLEMENTATION_TRACKER_THROUGH_STATUS195_20261011.md)；它记录历史当时状态，恢复时先以本页和暂停检查点核对。
+旧状态和逐项G01–G24证据保存在[截至 status195 的跟踪快照](https://github.com/yoi102/Cadoryx/blob/69268920d83071734f3ddf226d2d89df21109a6e/docs/history/AF_IMPLEMENTATION_TRACKER_THROUGH_STATUS195_20261011.md)；它记录历史当时状态，恢复时先以本页和暂停检查点核对。
