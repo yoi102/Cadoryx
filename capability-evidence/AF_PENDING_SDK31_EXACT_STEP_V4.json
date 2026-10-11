@@ -1,0 +1,249 @@
+{
+  "recordedAt": "2026-10-11T19:20:22.064601+00:00",
+  "state": "PASS_PRIVATE_SDK31_XDE_FULL_TREE_SOURCE_RECOVERY_ONLY",
+  "baseline": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-e5-defeature-history-generated-30-draft-1\\workspace-1\\OcctSharp",
+  "candidate": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-3\\workspace-1\\OcctSharp",
+  "changedFiles": 35,
+  "payload": [
+    {
+      "path": "config/generation.json",
+      "baselineSha256": "21E4EA6E1100037A28553738382287BE93F3E26FC88EF2EDAA88935F61B04A53",
+      "candidateSha256": "82EA68210B9211FEECEE2EDB67A1D0918C96CB05EEDDAD4B94423E50C8EEC7E5",
+      "bytes": 190080
+    },
+    {
+      "path": "generated/manifest.json",
+      "baselineSha256": "21F3963051968F92EF4A842B89855F40C26242A83E1FC9D99449C540FFBFB991",
+      "candidateSha256": "791F305E75AD0CD1D01AC1CF5D4DEA8F9133B4ECE96AEFD9614D2853CBF5F455",
+      "bytes": 1793683
+    },
+    {
+      "path": "src/OcctSharp.Generator/Discovery/DiscoveryConfiguration.cs",
+      "baselineSha256": "80F08F7083926ED1B5E055D778E3BD8D31C61C2919CBF0D6239B6FF03462617A",
+      "candidateSha256": "FE76B62C3C6EEEDFF36E25CC497BAFD7D9613C5B92AD44B7AC58BD0CB8EC4842",
+      "bytes": 6277
+    },
+    {
+      "path": "src/OcctSharp.Generator/Emission/ExchangeSupportWorkflowEmitter.cs",
+      "baselineSha256": null,
+      "candidateSha256": "6EEC4C55A4FD0F7F997CD660D678A4819822B7D878BA8CFBE5AB75F9251101BD",
+      "bytes": 3799
+    },
+    {
+      "path": "src/OcctSharp.Generator/Emission/InspectionSupportWorkflowEmitter.cs",
+      "baselineSha256": null,
+      "candidateSha256": "E65306055CBEFD78951FC26E4512172A00E48ACC9D2EA8D7FF15BD3E7CC4EAA1",
+      "bytes": 3898
+    },
+    {
+      "path": "src/OcctSharp.Generator/Emission/inspection-periodic-contract.json",
+      "baselineSha256": null,
+      "candidateSha256": "673936FBCF4AED60363E4D1A131F5DAA6106A50B67B2028C4A9D6C2AA24C0FE6",
+      "bytes": 980
+    },
+    {
+      "path": "src/OcctSharp.Generator/Emission/inspection-periodic-header.txt",
+      "baselineSha256": null,
+      "candidateSha256": "F190131637F4CD8C80D8483840206C0D986C6B4E895495238534C90A228900DE",
+      "bytes": 1579
+    },
+    {
+      "path": "src/OcctSharp.Generator/Emission/inspection-periodic-native.txt",
+      "baselineSha256": null,
+      "candidateSha256": "A98A309048DD4A9B123050B7F46BE873FE81FE774233F7D095FC73A3414F1B4B",
+      "bytes": 7515
+    },
+    {
+      "path": "src/OcctSharp.Generator/Emission/step-exact-offset-contract.json",
+      "baselineSha256": null,
+      "candidateSha256": "8F2D619F27EF992246D47519767BD26E0E9C88635B1EB3627EE2EB3494A7ABCF",
+      "bytes": 7701
+    },
+    {
+      "path": "src/OcctSharp.Generator/Emission/step-exact-offset-header.txt",
+      "baselineSha256": null,
+      "candidateSha256": "F3477ADAC9D59B13F5956D3309662143DA3BB360CB06BD22BDF4C305E61B5715",
+      "bytes": 3259
+    },
+    {
+      "path": "src/OcctSharp.Generator/Emission/step-exact-offset-native.txt",
+      "baselineSha256": null,
+      "candidateSha256": "94D4CD97493A3A83909B29F36515A3B25C37DE19F765FC18B35730D8D4923383",
+      "bytes": 38571
+    },
+    {
+      "path": "src/OcctSharp.Generator/OcctSharp.Generator.csproj",
+      "baselineSha256": "437DB39EC233A48B426F18A5C4CAE19F7D22CBA9FD12CCDE1F90D436C5344622",
+      "candidateSha256": "9790588C319E9E9EA3E5C957777B95EAC68FD9D595006BF745466B8955A11961",
+      "bytes": 2001
+    },
+    {
+      "path": "src/OcctSharp.Generator/Program.cs",
+      "baselineSha256": "40F251B938CDA37C9B8A992179EE09CB5A331EC3DDA9ADEBBA8CC486F16D6BEC",
+      "candidateSha256": "5E39C9D07631401E2F19AA81D2AF04295162982312A567EF4FC865190ED0DF24",
+      "bytes": 20652
+    },
+    {
+      "path": "src/OcctSharp.Native/generated/DataExchange/OcctSharp.ExactStepOffsets.Generated.cpp",
+      "baselineSha256": null,
+      "candidateSha256": "D41E26A124BD5B6A6E2F2E20ABBF5A49D38652DAC10909EB3985F831DB702467",
+      "bytes": 38026
+    },
+    {
+      "path": "src/OcctSharp.Native/generated/DataExchange/OcctSharp.ExactStepOffsets.Generated.h",
+      "baselineSha256": null,
+      "candidateSha256": "68654DD120CC9718B3DEBFCE8029A02A623A8BE327F88BE818C00C5A89B1080C",
+      "bytes": 3348
+    },
+    {
+      "path": "src/OcctSharp.Native/generated/Modeling/OcctSharp.PeriodicExactDistance.Generated.cpp",
+      "baselineSha256": null,
+      "candidateSha256": "1064DEDF44A0058EF0D44A4354D1B1672DA6DF7F74A04F1E9EC88F6C96D764E7",
+      "bytes": 7679
+    },
+    {
+      "path": "src/OcctSharp.Native/generated/Modeling/OcctSharp.PeriodicExactDistance.Generated.h",
+      "baselineSha256": null,
+      "candidateSha256": "0BB5D57AFF0B777CA9C3A95A1759AF2E4DF2D4F9092711A9536DDB5062378A0E",
+      "bytes": 1743
+    },
+    {
+      "path": "src/OcctSharp.Native/src/Exchange/ShapeExchange.cpp",
+      "baselineSha256": "A311D6AE853103FAF90B4F7C7D349209CD918E6A2EC00DD8AEAAABF500CFC0C1",
+      "candidateSha256": "F746F8FB2095D44E888467974758BCA61A519E14F0AA156E4DF7A589E77CA5F6",
+      "bytes": 18106
+    },
+    {
+      "path": "src/OcctSharp.Native/src/Exchange/StepAssembly.cpp",
+      "baselineSha256": "E621F2A7DFFA14D063CE75360493DFDCAF142A48B4BE99A2AFFCF056A01F3FAA",
+      "candidateSha256": "126F846634815FDEDC188D4C7EE0E89DD564376464AE2875945E343C8D9CDE03",
+      "bytes": 6847
+    },
+    {
+      "path": "src/OcctSharp.Native/src/Exchange/XdeExchange.cpp",
+      "baselineSha256": "0A77C13D4DFED1867236514E701D7AF5B30B5B8EB581F6DE0982B6D0A5F80D43",
+      "candidateSha256": "688E9A848136AA990634967F5A1635DF79234E3B362CC5E1889B3C75A41ED607",
+      "bytes": 29205
+    },
+    {
+      "path": "src/OcctSharp.Native/src/Modeling/Inspection.cpp",
+      "baselineSha256": "524811FAA7D28416AEFE020DC18398E767D43F4C73C5EF5AB874638506B8165F",
+      "candidateSha256": "D5A24B1FA84F52EBABB3234E6DE635D880D069962A25C2C5519BFD875E0DACE2",
+      "bytes": 23814
+    },
+    {
+      "path": "src/OcctSharp.Native/src/Modeling/Inspection.hxx",
+      "baselineSha256": "02DAEE4FFEA1687FE99712640A4F779D39801C6EF05A16D28239DAE51CBA914A",
+      "candidateSha256": "B80D7F4BBF7DDF19C0027A1B56F17334709B45F9A49254F3751183366FAFA571",
+      "bytes": 821
+    },
+    {
+      "path": "tests/OcctSharp.Generator.Tests/ExchangeSupportWorkflowEmitterTests.cs",
+      "baselineSha256": null,
+      "candidateSha256": "CB289CE43EBE56CC3972FC21593574E5F6BD2703FC6BFB9C8E0234D9DC6A3A72",
+      "bytes": 2712
+    },
+    {
+      "path": "tests/OcctSharp.Generator.Tests/InspectionSupportWorkflowEmitterTests.cs",
+      "baselineSha256": null,
+      "candidateSha256": "DD0EC80B08941FFC9DD1762EAD96A3378D1DB4C502A56B30D05597C562CAAB05",
+      "bytes": 2769
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/ExactOffsetStepRoundTripTests.cs",
+      "baselineSha256": null,
+      "candidateSha256": "485026E2B95C21C71719F3B907F239C40FF4E875E2A3CEC4D753F1F95420C8FA",
+      "bytes": 3139
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/ExactOffsetXdeRoundTripTests.cs",
+      "baselineSha256": null,
+      "candidateSha256": "B51991B470DCB07C7E690DFD01CD562139CFD31D0D5BD2CD65040D99DEE51E82",
+      "bytes": 3778
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-exact-step/arc-g1-mirrored-inward-Bevel.brep",
+      "baselineSha256": null,
+      "candidateSha256": "93E953A0CA6A822ED1B631CC08FBABADB4E9208C866B052B7AF3EF1CF6FFB15C",
+      "bytes": 4642
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-exact-step/spline-g1-mirrored-inward-Bevel.brep",
+      "baselineSha256": null,
+      "candidateSha256": "B74ABBF44809F93AA28FA4F6349241F2B8882D8BB92A1B40EC3D859EB3260D51",
+      "bytes": 5226
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-exact-step/spline-g1-normal-outward-Round.brep",
+      "baselineSha256": null,
+      "candidateSha256": "F6471A7DD44F950AD43B8000D68A703173D940915FCAFEE26D2198E5FD5A713C",
+      "bytes": 6804
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-exact-step/spline-g2-normal-outward-Round.brep",
+      "baselineSha256": null,
+      "candidateSha256": "F6471A7DD44F950AD43B8000D68A703173D940915FCAFEE26D2198E5FD5A713C",
+      "bytes": 6804
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-distance/arc-g1-normal-outward-Round.brep",
+      "baselineSha256": null,
+      "candidateSha256": "1AFCBC87FEF9ECFF7B7D05070D544A04869D2A885C490532F03E6323203C23FB",
+      "bytes": 6261
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-distance/spline-g1-normal-outward-Round.brep",
+      "baselineSha256": null,
+      "candidateSha256": "F6471A7DD44F950AD43B8000D68A703173D940915FCAFEE26D2198E5FD5A713C",
+      "bytes": 6804
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-distance/spline-g2-normal-outward-Round.brep",
+      "baselineSha256": null,
+      "candidateSha256": "F6471A7DD44F950AD43B8000D68A703173D940915FCAFEE26D2198E5FD5A713C",
+      "bytes": 6804
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/OcctSharp.Runtime.Tests.csproj",
+      "baselineSha256": "ACDAC586330C683B35FB63771DECBEEA7E694F31C8A45C1E92FAC717113F6874",
+      "candidateSha256": "CC31CCD1BBB0983854366E0C73103984FB429317574DAB3F007A1A97726B55D3",
+      "bytes": 3347
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/PeriodicDistanceRegressionTests.cs",
+      "baselineSha256": null,
+      "candidateSha256": "958ADD9F064FE35F91D75B24B28EF9714DB3EAAE16286E14520F6424B941AF6A",
+      "bytes": 4365
+    }
+  ],
+  "replay": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-3\\recovery-replay-v4-1",
+  "replayChecks": [
+    {
+      "arguments": [
+        "--check"
+      ],
+      "exit": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "arguments": [],
+      "exit": 0,
+      "stdout": "",
+      "stderr": ""
+    }
+  ],
+  "replayMatchingFiles": 35,
+  "patch": {
+    "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\capability-evidence\\AF_PENDING_SDK31_EXACT_STEP_V4.patch",
+    "sha256": "7369AFC6B931D646DEEAD043C6D8C76FDB7FD08C630ED4FDC23F0F1D1079E861",
+    "bytes": 645923
+  },
+  "productionApplied": false,
+  "packageBuilt": false,
+  "applicationIntegrated": false,
+  "applicationExportGuardModified": false,
+  "AF": "ACTIVE",
+  "G": "USER_DEFERRED",
+  "cleanup": "STOPPED"
+}
