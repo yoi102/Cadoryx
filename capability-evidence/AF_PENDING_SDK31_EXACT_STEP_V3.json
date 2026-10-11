@@ -1,0 +1,243 @@
+{
+  "recordedAt": "2026-10-11T18:12:05.394530+00:00",
+  "state": "PASS_PRIVATE_SDK31_UNIT_PCURVE_SOURCE_RECOVERY_ONLY",
+  "baseline": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-e5-defeature-history-generated-30-draft-1\\workspace-1\\OcctSharp",
+  "candidate": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-2\\workspace-1\\OcctSharp",
+  "changedFiles": 34,
+  "payload": [
+    {
+      "path": "config/generation.json",
+      "baselineSha256": "21E4EA6E1100037A28553738382287BE93F3E26FC88EF2EDAA88935F61B04A53",
+      "candidateSha256": "82EA68210B9211FEECEE2EDB67A1D0918C96CB05EEDDAD4B94423E50C8EEC7E5",
+      "bytes": 190080
+    },
+    {
+      "path": "generated/manifest.json",
+      "baselineSha256": "21F3963051968F92EF4A842B89855F40C26242A83E1FC9D99449C540FFBFB991",
+      "candidateSha256": "029FC457FD70EC1A4B412DB502E73E4A4BF3ECBE1075D9E1E677219D4EE9947C",
+      "bytes": 1793683
+    },
+    {
+      "path": "src/OcctSharp.Generator/Discovery/DiscoveryConfiguration.cs",
+      "baselineSha256": "80F08F7083926ED1B5E055D778E3BD8D31C61C2919CBF0D6239B6FF03462617A",
+      "candidateSha256": "FE76B62C3C6EEEDFF36E25CC497BAFD7D9613C5B92AD44B7AC58BD0CB8EC4842",
+      "bytes": 6277
+    },
+    {
+      "path": "src/OcctSharp.Generator/Emission/ExchangeSupportWorkflowEmitter.cs",
+      "baselineSha256": null,
+      "candidateSha256": "6EEC4C55A4FD0F7F997CD660D678A4819822B7D878BA8CFBE5AB75F9251101BD",
+      "bytes": 3799
+    },
+    {
+      "path": "src/OcctSharp.Generator/Emission/InspectionSupportWorkflowEmitter.cs",
+      "baselineSha256": null,
+      "candidateSha256": "E65306055CBEFD78951FC26E4512172A00E48ACC9D2EA8D7FF15BD3E7CC4EAA1",
+      "bytes": 3898
+    },
+    {
+      "path": "src/OcctSharp.Generator/Emission/inspection-periodic-contract.json",
+      "baselineSha256": null,
+      "candidateSha256": "673936FBCF4AED60363E4D1A131F5DAA6106A50B67B2028C4A9D6C2AA24C0FE6",
+      "bytes": 980
+    },
+    {
+      "path": "src/OcctSharp.Generator/Emission/inspection-periodic-header.txt",
+      "baselineSha256": null,
+      "candidateSha256": "F190131637F4CD8C80D8483840206C0D986C6B4E895495238534C90A228900DE",
+      "bytes": 1579
+    },
+    {
+      "path": "src/OcctSharp.Generator/Emission/inspection-periodic-native.txt",
+      "baselineSha256": null,
+      "candidateSha256": "A98A309048DD4A9B123050B7F46BE873FE81FE774233F7D095FC73A3414F1B4B",
+      "bytes": 7515
+    },
+    {
+      "path": "src/OcctSharp.Generator/Emission/step-exact-offset-contract.json",
+      "baselineSha256": null,
+      "candidateSha256": "8E59D4B1E606320B7CF14C87C83260B6546972CB3D77A9C572008000C645A13F",
+      "bytes": 5926
+    },
+    {
+      "path": "src/OcctSharp.Generator/Emission/step-exact-offset-header.txt",
+      "baselineSha256": null,
+      "candidateSha256": "EBBB58CD572447BC4481B72136A5949AA171DA85CA4D86CD075F699CA33F89E2",
+      "bytes": 2257
+    },
+    {
+      "path": "src/OcctSharp.Generator/Emission/step-exact-offset-native.txt",
+      "baselineSha256": null,
+      "candidateSha256": "209868F16D2C8D3F504E05B5841938973AA4A1F8E33710F016863BC892C78C48",
+      "bytes": 25817
+    },
+    {
+      "path": "src/OcctSharp.Generator/OcctSharp.Generator.csproj",
+      "baselineSha256": "437DB39EC233A48B426F18A5C4CAE19F7D22CBA9FD12CCDE1F90D436C5344622",
+      "candidateSha256": "9790588C319E9E9EA3E5C957777B95EAC68FD9D595006BF745466B8955A11961",
+      "bytes": 2001
+    },
+    {
+      "path": "src/OcctSharp.Generator/Program.cs",
+      "baselineSha256": "40F251B938CDA37C9B8A992179EE09CB5A331EC3DDA9ADEBBA8CC486F16D6BEC",
+      "candidateSha256": "5E39C9D07631401E2F19AA81D2AF04295162982312A567EF4FC865190ED0DF24",
+      "bytes": 20652
+    },
+    {
+      "path": "src/OcctSharp.Native/generated/DataExchange/OcctSharp.ExactStepOffsets.Generated.cpp",
+      "baselineSha256": null,
+      "candidateSha256": "B066D6550B15929B72FCFA8D9C9102B9C657C7A5602E46FDE3BB1F8F018860A2",
+      "bytes": 25501
+    },
+    {
+      "path": "src/OcctSharp.Native/generated/DataExchange/OcctSharp.ExactStepOffsets.Generated.h",
+      "baselineSha256": null,
+      "candidateSha256": "5C9356479C27A58F3E51F29D2A227BC29B4CC1BB86F8C4728759AF4DBBD37D72",
+      "bytes": 2367
+    },
+    {
+      "path": "src/OcctSharp.Native/generated/Modeling/OcctSharp.PeriodicExactDistance.Generated.cpp",
+      "baselineSha256": null,
+      "candidateSha256": "1064DEDF44A0058EF0D44A4354D1B1672DA6DF7F74A04F1E9EC88F6C96D764E7",
+      "bytes": 7679
+    },
+    {
+      "path": "src/OcctSharp.Native/generated/Modeling/OcctSharp.PeriodicExactDistance.Generated.h",
+      "baselineSha256": null,
+      "candidateSha256": "0BB5D57AFF0B777CA9C3A95A1759AF2E4DF2D4F9092711A9536DDB5062378A0E",
+      "bytes": 1743
+    },
+    {
+      "path": "src/OcctSharp.Native/src/Exchange/ShapeExchange.cpp",
+      "baselineSha256": "A311D6AE853103FAF90B4F7C7D349209CD918E6A2EC00DD8AEAAABF500CFC0C1",
+      "candidateSha256": "F746F8FB2095D44E888467974758BCA61A519E14F0AA156E4DF7A589E77CA5F6",
+      "bytes": 18106
+    },
+    {
+      "path": "src/OcctSharp.Native/src/Exchange/StepAssembly.cpp",
+      "baselineSha256": "E621F2A7DFFA14D063CE75360493DFDCAF142A48B4BE99A2AFFCF056A01F3FAA",
+      "candidateSha256": "D7CD087A7B5E8DC54E2976A2E16EFC8EFEECA9EBCC32F7F93243D4CE545DFD72",
+      "bytes": 6666
+    },
+    {
+      "path": "src/OcctSharp.Native/src/Exchange/XdeExchange.cpp",
+      "baselineSha256": "0A77C13D4DFED1867236514E701D7AF5B30B5B8EB581F6DE0982B6D0A5F80D43",
+      "candidateSha256": "CF145B908CE5C4B9711A1F90810F06483F7261A41A8BE59D7432F4A314516917",
+      "bytes": 29024
+    },
+    {
+      "path": "src/OcctSharp.Native/src/Modeling/Inspection.cpp",
+      "baselineSha256": "524811FAA7D28416AEFE020DC18398E767D43F4C73C5EF5AB874638506B8165F",
+      "candidateSha256": "D5A24B1FA84F52EBABB3234E6DE635D880D069962A25C2C5519BFD875E0DACE2",
+      "bytes": 23814
+    },
+    {
+      "path": "src/OcctSharp.Native/src/Modeling/Inspection.hxx",
+      "baselineSha256": "02DAEE4FFEA1687FE99712640A4F779D39801C6EF05A16D28239DAE51CBA914A",
+      "candidateSha256": "B80D7F4BBF7DDF19C0027A1B56F17334709B45F9A49254F3751183366FAFA571",
+      "bytes": 821
+    },
+    {
+      "path": "tests/OcctSharp.Generator.Tests/ExchangeSupportWorkflowEmitterTests.cs",
+      "baselineSha256": null,
+      "candidateSha256": "CB289CE43EBE56CC3972FC21593574E5F6BD2703FC6BFB9C8E0234D9DC6A3A72",
+      "bytes": 2712
+    },
+    {
+      "path": "tests/OcctSharp.Generator.Tests/InspectionSupportWorkflowEmitterTests.cs",
+      "baselineSha256": null,
+      "candidateSha256": "DD0EC80B08941FFC9DD1762EAD96A3378D1DB4C502A56B30D05597C562CAAB05",
+      "bytes": 2769
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/ExactOffsetStepRoundTripTests.cs",
+      "baselineSha256": null,
+      "candidateSha256": "485026E2B95C21C71719F3B907F239C40FF4E875E2A3CEC4D753F1F95420C8FA",
+      "bytes": 3139
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-exact-step/arc-g1-mirrored-inward-Bevel.brep",
+      "baselineSha256": null,
+      "candidateSha256": "93E953A0CA6A822ED1B631CC08FBABADB4E9208C866B052B7AF3EF1CF6FFB15C",
+      "bytes": 4642
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-exact-step/spline-g1-mirrored-inward-Bevel.brep",
+      "baselineSha256": null,
+      "candidateSha256": "B74ABBF44809F93AA28FA4F6349241F2B8882D8BB92A1B40EC3D859EB3260D51",
+      "bytes": 5226
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-exact-step/spline-g1-normal-outward-Round.brep",
+      "baselineSha256": null,
+      "candidateSha256": "F6471A7DD44F950AD43B8000D68A703173D940915FCAFEE26D2198E5FD5A713C",
+      "bytes": 6804
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-exact-step/spline-g2-normal-outward-Round.brep",
+      "baselineSha256": null,
+      "candidateSha256": "F6471A7DD44F950AD43B8000D68A703173D940915FCAFEE26D2198E5FD5A713C",
+      "bytes": 6804
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-distance/arc-g1-normal-outward-Round.brep",
+      "baselineSha256": null,
+      "candidateSha256": "1AFCBC87FEF9ECFF7B7D05070D544A04869D2A885C490532F03E6323203C23FB",
+      "bytes": 6261
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-distance/spline-g1-normal-outward-Round.brep",
+      "baselineSha256": null,
+      "candidateSha256": "F6471A7DD44F950AD43B8000D68A703173D940915FCAFEE26D2198E5FD5A713C",
+      "bytes": 6804
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-distance/spline-g2-normal-outward-Round.brep",
+      "baselineSha256": null,
+      "candidateSha256": "F6471A7DD44F950AD43B8000D68A703173D940915FCAFEE26D2198E5FD5A713C",
+      "bytes": 6804
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/OcctSharp.Runtime.Tests.csproj",
+      "baselineSha256": "ACDAC586330C683B35FB63771DECBEEA7E694F31C8A45C1E92FAC717113F6874",
+      "candidateSha256": "CC31CCD1BBB0983854366E0C73103984FB429317574DAB3F007A1A97726B55D3",
+      "bytes": 3347
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/PeriodicDistanceRegressionTests.cs",
+      "baselineSha256": null,
+      "candidateSha256": "958ADD9F064FE35F91D75B24B28EF9714DB3EAAE16286E14520F6424B941AF6A",
+      "bytes": 4365
+    }
+  ],
+  "replay": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-2\\recovery-replay-v3-1",
+  "replayChecks": [
+    {
+      "arguments": [
+        "--check"
+      ],
+      "exit": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "arguments": [],
+      "exit": 0,
+      "stdout": "",
+      "stderr": ""
+    }
+  ],
+  "replayMatchingFiles": 34,
+  "patch": {
+    "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\capability-evidence\\AF_PENDING_SDK31_EXACT_STEP_V3.patch",
+    "sha256": "4FED3F20EEFFDDBE5579949ACC58B1636CCE85714C75CE69B27C87B8F916770C",
+    "bytes": 634583
+  },
+  "productionApplied": false,
+  "packageBuilt": false,
+  "applicationIntegrated": false,
+  "applicationExportGuardModified": false,
+  "AF": "ACTIVE",
+  "G": "USER_DEFERRED",
+  "cleanup": "STOPPED"
+}
