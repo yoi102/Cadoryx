@@ -81,6 +81,10 @@ internal static class M6BenchmarkRunner
                 int expectedContexts=scene.Items.Where(i=>i.Geometry.Source is not null).Select(i=>(i.Geometry.Source!.ContextAssetId,i.Geometry.Source.Format)).Distinct().Count();
                 if(first.NativeXdeContextCount!=expectedContexts||second.NativeXdeContextCount!=expectedContexts)
                     throw new InvalidOperationException("XDE context sharing does not match the unique source catalog.");
+                int expectedSources=scene.Items.Where(item=>item.PreserveSourceStyles&&item.Geometry.Source is not null)
+                    .Select(item=>(item.Geometry.AssetId,item.Geometry.Source,item.Geometry.Format)).Distinct().Count();
+                if(first.NativeSourceCount!=expectedSources||second.NativeSourceCount!=expectedSources)
+                    throw new InvalidOperationException("Each viewport must own one shared source per immutable geometry/style asset.");
                 for(int frame=0;frame<60;frame++)
                 {
                     var camera=first.CaptureCamera();var turn=Quaterniond.FromAxisAngle(Vector3d.UnitZ,Math.PI/180);
@@ -103,13 +107,14 @@ internal static class M6BenchmarkRunner
                 for(int cycle=0;cycle<cycles;cycle++)
                 {
                     first.SetScene(empty);second.SetScene(empty);
-                    if(first.NativeGeometryCount!=0||second.NativeGeometryCount!=0||first.NativeXdeContextCount!=0||second.NativeXdeContextCount!=0||first.DimensionCount!=0||second.DimensionCount!=0)
+                    if(first.NativeGeometryCount!=0||second.NativeGeometryCount!=0||first.NativeXdeContextCount!=0||second.NativeXdeContextCount!=0||first.NativeSourceCount!=0||second.NativeSourceCount!=0||first.DimensionCount!=0||second.DimensionCount!=0)
                         throw new InvalidOperationException("Native scene resource owners remain after clear.");
                     timer.Restart();first.SetScene(scene);second.SetScene(scene);first.FitAll();second.FitAll();first.Redraw();second.Redraw();
                     double rebuild=timer.Elapsed.TotalMilliseconds;
                     if(cycle%3==0){window.Width=1100+cycle%2*120;window.Height=740+cycle%2*60;await Idle();}
                     process.Refresh();lifecycle.Add(new{cycle=cycle+1,rebuildMs=rebuild,privateBytes=process.PrivateMemorySize64,handles=process.HandleCount,
-                        primaryGeometry=first.NativeGeometryCount,secondaryGeometry=second.NativeGeometryCount,primaryXdeContexts=first.NativeXdeContextCount,secondaryXdeContexts=second.NativeXdeContextCount});
+                        primaryGeometry=first.NativeGeometryCount,secondaryGeometry=second.NativeGeometryCount,primaryXdeContexts=first.NativeXdeContextCount,secondaryXdeContexts=second.NativeXdeContextCount,
+                        primarySources=first.NativeSourceCount,secondarySources=second.NativeSourceCount});
                     await File.AppendAllTextAsync(Path.Combine(output,"lifecycle.jsonl"),JsonSerializer.Serialize(new{tier,cycle=cycle+1,utc=DateTimeOffset.UtcNow,
                         privateBytes=process.PrivateMemorySize64,handles=process.HandleCount,rebuildMs=rebuild})+Environment.NewLine);
                     if(cycle%10==0)await File.WriteAllTextAsync(Path.Combine(output,"progress.txt"),$"{tier}: {cycle+1}/{cycles}");
@@ -132,12 +137,12 @@ internal static class M6BenchmarkRunner
                     first.BeginProgressiveScene(scene);
                     first.AppendProgressiveScene(1,TimeSpan.FromMilliseconds(35),redraw:true);
                     first.AbortProgressiveScene();
-                    if(first.VisibleBodyCount!=0||first.NativeGeometryCount!=0||first.NativeXdeContextCount!=0)
+                    if(first.VisibleBodyCount!=0||first.NativeGeometryCount!=0||first.NativeXdeContextCount!=0||first.NativeSourceCount!=0)
                         throw new InvalidOperationException("Cancelled progressive scene retained native resources.");
                     first.BeginProgressiveScene(scene);
                     first.AppendProgressiveScene(1,TimeSpan.FromMilliseconds(35),redraw:false);
                     first.SetScene(empty);
-                    if(first.VisibleBodyCount!=0||first.NativeGeometryCount!=0)
+                    if(first.VisibleBodyCount!=0||first.NativeGeometryCount!=0||first.NativeSourceCount!=0)
                         throw new InvalidOperationException("Scene replacement did not cancel an in-flight progressive scene.");
                 }
             }

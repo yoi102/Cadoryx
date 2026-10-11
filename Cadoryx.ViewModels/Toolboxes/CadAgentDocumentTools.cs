@@ -23,7 +23,7 @@ internal static class CadAgentDocumentTools
             if (document is null || document.IsDetached) throw new InvalidOperationException("No active document.");
             return call.Name switch
             {
-                "cad_inspect" => Inspect(args, document),
+                "cad_inspect" => Inspect(args, document, cancellationToken),
                 "cad_select" => Select(args, document),
                 _ => await EditAsync(args, document, cancellationToken)
             };
@@ -65,14 +65,29 @@ internal static class CadAgentDocumentTools
             bodyId = selected.ToString(), revision = revision.ToString() });
     }
 
-    private static string Inspect(JsonElement args, CadDocumentViewModel document)
+    private static string Inspect(JsonElement args, CadDocumentViewModel document, CancellationToken cancellationToken)
     {
         var snapshot = document.Session.Snapshot;
         var area = RequiredString(args, "area");
+        if(area=="model_contract")
+        {
+            CadAgentParameterTools.RequireFields(args,["area","id","offset","limit"]);
+            return CadModelContract.Read(RequiredString(args,"id"),OptionalInt(args,"offset",0,0,100000),OptionalInt(args,"limit",1,1,50));
+        }
         var id = OptionalGuid(args, "id");
         var partId = OptionalGuid(args, "partId");
         var offset = OptionalInt(args, "offset", 0, 0, 100000);
         var limit = OptionalInt(args, "limit", 50, 1, 50);
+        CadAgentParameterTools.RequireFields(args, ["area", "id", "partId", "sheetId", "offset", "limit"]);
+        if (CadAuthoringInspection.Supports(area))
+        {
+            if (args.TryGetProperty("sheetId", out _)) throw new ArgumentException("Authoring inspection has no sheetId filter.");
+            return CadAuthoringInspection.Read(document.Session, area, id, partId, offset, limit, cancellationToken);
+        }
+        // Typed namespaces may share a GUID. Refuse a mistaken document filter
+        // only after checking that the actual requested drawing object is absent.
+        if (area == "drawings" && id is {} filterId && filterId == snapshot.Id.Value && !snapshot.DrawingSheets.ContainsKey(filterId))
+            throw new ArgumentException("id selects a drawing sheet, not documentId. Query cad_inspect with area=drawings and no id; copy items[].id as sheetId.");
         object result = area switch
         {
             "document" => Page(snapshot, area, new[] { new
@@ -166,9 +181,17 @@ internal static class CadAgentDocumentTools
     private static object InspectDrawingItems(DocumentSnapshot snapshot, JsonElement args, string area,
         Guid? id, int offset, int limit)
     {
+        if (!args.TryGetProperty("sheetId", out _))
+            throw new ArgumentException("sheetId is required for drawing_views/drawing_dimensions. Query cad_inspect area=drawings first; copy the drawing sheet's items[].id, not documentId.");
         var sheetId = RequiredGuid(args, "sheetId");
         if (!snapshot.DrawingSheets.TryGetValue(sheetId, out var sheet))
+        {
+            if (sheetId == snapshot.Id.Value)
+                throw new InvalidOperationException("sheetId selects a drawing sheet, not documentId. Query cad_inspect area=drawings and copy items[].id.");
             throw new InvalidOperationException("Exact drawing sheet ID is missing. Inspect drawings again.");
+        }
+        if (id == snapshot.Id.Value && !(area == "drawing_views" ? sheet.Views.Any(v => v.Id == id) : sheet.Dimensions.Any(d => d.Id == id)))
+            throw new ArgumentException("id selects an object inside the exact sheet, not documentId. Omit id to list objects using the same sheetId; copy the returned items[].id.");
         if (area == "drawing_views")
             return Page(snapshot, area, sheet.Views
                 .Where(view => id is null || view.Id == id)
@@ -253,6 +276,11 @@ internal static class CadAgentDocumentTools
             RequiredGuid(args, "stateId") != snapshot.StateId.Value)
             throw new InvalidOperationException("Document or state changed. Inspect again before editing.");
         var action = RequiredString(args, "action");
+        if(action=="reselect_region_sources")return await CadSketchRegionReselectionAuthoring.ApplyAsync(document,args,cancellationToken);
+        if(action is "offset_sketch_loop" or "offset_sketch_regions")return await CadSketchOffsetAuthoring.ApplyAsync(document,args,action,cancellationToken);
+        if(action is "set_sketch_contact" or "delete_sketch_contact")return await CadSketchContactAuthoring.ApplyAsync(document,args,action,cancellationToken);
+        if(action is "set_sketch_curvature" or "delete_sketch_curvature")return await CadSketchCurvatureAuthoring.ApplyAsync(document,args,action,cancellationToken);
+        if(action is "set_sketch_finite_contact" or "delete_sketch_finite_contact")return await CadSketchFiniteContactAuthoring.ApplyAsync(document,args,action,cancellationToken);
         ICadDocumentCommand command;
         Guid? createdId = null;
         switch (action)
@@ -376,7 +404,7 @@ internal static class CadAgentDocumentTools
             }
             default: throw new ArgumentException("Unknown edit action.");
         }
-        await document.Session.ExecuteAsync(command, cancellationToken);
+        await document.Session.ExecuteAsync(command, cancellationToken, DocumentCommandExpectation.Capture(snapshot));
         var after = document.Session.Snapshot;
         if (action is "create_box" or "create_cylinder")
         {

@@ -10,7 +10,19 @@ public enum BooleanOperation { Fuse=0, Cut=1, Common=2 }
 [JsonDerivedType(typeof(BooleanRecipe),"boolean")]
 [JsonDerivedType(typeof(ImportedRecipe),"import")]
 [JsonDerivedType(typeof(TransformRecipe),"transform")]
+[JsonDerivedType(typeof(RepetitionRecipe),"repetition")]
+[JsonDerivedType(typeof(HoleRecipe),"hole")]
+[JsonDerivedType(typeof(HolePatternRecipe),"hole-pattern")]
+[JsonDerivedType(typeof(ExtrusionPatternRecipe),"extrusion-pattern")]
+[JsonDerivedType(typeof(ShellRecipe),"shell")]
+[JsonDerivedType(typeof(DraftRecipe),"draft")]
+[JsonDerivedType(typeof(SolidOffsetRecipe),"solid-offset")]
+[JsonDerivedType(typeof(ContourLocalRecipe),"contour-local")]
+[JsonDerivedType(typeof(PlanarPushPullRecipe),"planar-push-pull")]
+[JsonDerivedType(typeof(DefeatureRecipe),"defeature")]
 [JsonDerivedType(typeof(ExtrudeRecipe),"extrude")]
+[JsonDerivedType(typeof(SweepRecipe),"sweep")]
+[JsonDerivedType(typeof(LoftRecipe),"loft")]
 [JsonDerivedType(typeof(RevolveRecipe),"revolve")]
 [JsonDerivedType(typeof(LocalFeatureRecipe),"local-box-edge")]
 [JsonDerivedType(typeof(HistoryFilletRecipe),"history-edge-fillet")]
@@ -47,7 +59,13 @@ public readonly record struct Point2d(double X,double Y);
 public sealed record CircularSketchRegion(Point2d Center,double Radius);
 public sealed record ThreePointArcRegion(Point2d Start,Point2d Middle,Point2d End);
 public sealed record QuadraticBezierRegion(Point2d Start,Point2d Control,Point2d End);
-public sealed record CubicSplineRegion(ImmutableArray<Point2d> Controls);
+public sealed record CubicSplineRegion(ImmutableArray<Point2d> Controls)
+{
+    public CubicSplineKnotVector? Knots {get;init;}
+    public CubicSplineDefinition Definition=>CubicSplineKnotVector.Definition(Controls,Knots);
+    public static bool Same(CubicSplineRegion? a,CubicSplineRegion? b)=>a is null?b is null:
+        b is not null&&CubicSplineKnotVector.Same(a.Controls,a.Knots,b.Controls,b.Knots);
+}
 public sealed record SketchIslandRegion(ImmutableArray<Point2d> Points,CircularSketchRegion? Circle=null,
     ImmutableArray<SketchBoundaryCurve> BoundaryCurves=default)
 {
@@ -74,6 +92,9 @@ public sealed record SketchProfile(ImmutableArray<Point2d> Points,CircularSketch
     public ImmutableArray<CircularSketchRegion> Holes {get;init;}=Holes.IsDefault?[]:Holes;
     public ImmutableArray<ImmutableArray<Point2d>> PolygonHoles {get;init;}=PolygonHoles.IsDefault?[]:PolygonHoles;
     public static SketchProfile FromCircle(Point2d center,double radius)=>new([],new(center,radius));
+    public bool RequiresExactRegionInspection=>Spline?.Knots is not null||BoundaryCurves.Any(c=>c.SplineKnots is not null||c.Ellipse is not null||c.Freeform is not null||c.Expression is not null)||
+        MixedHoles.Any(h=>h.Any(c=>c.SplineKnots is not null||c.Ellipse is not null||c.Freeform is not null||c.Expression is not null))||SplineHoles.Any(h=>h.Knots is not null)||
+        Islands.Any(i=>i.Profile.RequiresExactRegionInspection);
     public void Validate()
     {
         if(BoundaryCurves.IsDefault||MixedHoles.IsDefault||SplineHoles.IsDefault||Islands.IsDefault)throw new CadValidationException("Uninitialized profile boundary, holes or islands.");
@@ -104,7 +125,7 @@ public sealed record SketchProfile(ImmutableArray<Point2d> Points,CircularSketch
         {
             if(Circle is not null||Points.IsDefault||!Points.IsEmpty)
                 throw new CadValidationException("A spline segment profile cannot have another boundary or holes.");
-            SketchSplineGeometry.Validate(spline.Controls);
+            SketchSplineGeometry.Validate(spline.Controls,spline.Knots);
             ValidateCurveHoles(SketchSplineGeometry.ValidationBoundary(spline));ValidateIslands();return;
         }
         if(Circle is {} circle)
@@ -168,13 +189,13 @@ public sealed record SketchProfile(ImmutableArray<Point2d> Points,CircularSketch
         if(Holes.Length+PolygonHoles.Length+MixedHoles.Length+SplineHoles.Length>64)
             throw new CadValidationException("A profile has too many holes.");
         foreach(var hole in MixedHoles)SketchMixedProfile.Validate(hole);
-        foreach(var hole in SplineHoles)SketchSplineGeometry.Validate(hole.Controls);
+        foreach(var hole in SplineHoles)SketchSplineGeometry.Validate(hole.Controls,hole.Knots);
         foreach(var hole in PolygonHoles)(new SketchProfile(hole)).Validate();
         foreach(var hole in Holes){CadGuard.Finite(hole.Center.X,hole.Center.Y);CadGuard.Positive(hole.Radius);}
         var boundaries=Holes.Select(SketchMixedProfile.Circle)
             .Concat(PolygonHoles.Select(SketchMixedProfile.Polygon)).Concat(MixedHoles)
             .Concat(SplineHoles.Select(SketchSplineGeometry.ValidationBoundary)).ToImmutableArray();
-        SketchMixedProfile.ValidateHoles(outer,boundaries);
+        if(!RequiresExactRegionInspection)SketchMixedProfile.ValidateHoles(outer,boundaries);
     }
     private void ValidateIslands()
     {
@@ -186,7 +207,7 @@ public sealed record SketchProfile(ImmutableArray<Point2d> Points,CircularSketch
         var islands=Islands.Select(island=>island.Circle is {} circle?SketchMixedProfile.Circle(circle):
             island.Spline is {} spline?SketchSplineGeometry.ValidationBoundary(spline):
             !island.BoundaryCurves.IsDefaultOrEmpty?island.BoundaryCurves:SketchMixedProfile.Polygon(island.Points)).ToImmutableArray();
-        SketchMixedProfile.ValidateIslands(holes,islands);
+        if(!RequiresExactRegionInspection)SketchMixedProfile.ValidateIslands(holes,islands);
     }
     private void ValidatePolygon()
     {
@@ -236,19 +257,29 @@ public sealed record SketchProfile(ImmutableArray<Point2d> Points,CircularSketch
         return (x*y<0&&z*w<0)||(Math.Abs(x)<1e-10&&On(a,b,c))||(Math.Abs(y)<1e-10&&On(a,b,d))||(Math.Abs(z)<1e-10&&On(c,d,a))||(Math.Abs(w)<1e-10&&On(c,d,b));
     }
 }
-public sealed record ExtrudeRecipe(SketchProfile Profile,double Distance,RigidTransform3d Placement) : GeometryRecipe
+public sealed record ExtrudeRecipe(SketchProfile Profile,double Distance,RigidTransform3d Placement,ExtrusionOptions? Options=null) : GeometryRecipe
 {
-    public override void Validate(){Profile.Validate();CadGuard.Positive(Distance);Placement.Validate();}
+    public override IEnumerable<GeometryAssetRef> AssetInputs=>Options?.AssetInputs??[];
+    public override void Validate(){Profile.Validate();Placement.Validate();if(Options is {} options)options.Validate(Distance);else CadGuard.Positive(Distance);}
 }
 public sealed record RevolveRecipe(SketchProfile Profile,double AngleRadians,RigidTransform3d Placement) : GeometryRecipe
 {
-    public override void Validate(){Profile.Validate();if(Profile.Circle is not null||Profile.Arc is not null||Profile.Bezier is not null||Profile.Spline is not null||!Profile.BoundaryCurves.IsEmpty||!Profile.Holes.IsDefaultOrEmpty||!Profile.PolygonHoles.IsDefaultOrEmpty||!Profile.MixedHoles.IsDefaultOrEmpty||!Profile.Islands.IsDefaultOrEmpty)throw new CadValidationException("Circular, curved and holed sketch regions are not supported by revolve.");CadGuard.Positive(AngleRadians);if(AngleRadians>Math.PI*2+1e-10)throw new CadValidationException("Revolution exceeds a full turn.");Placement.Validate();}
+    public RevolveAxisReference? Axis {get;init;}
+    public RevolveRecipe Refresh(DocumentSnapshot doc,DefinitionId part)=>Axis is null?this:this with{Axis=Axis.Refresh(doc,part)};
+    public override void Validate()
+    {
+        Profile.Validate();
+        RevolveProfileValidation.Validate(this);
+        CadGuard.Positive(AngleRadians);if(AngleRadians>Math.PI*2+1e-10)throw new CadValidationException("Revolution exceeds a full turn.");Placement.Validate();
+    }
 }
 public sealed record FeatureDefinition(FeatureId Id,DefinitionId PartId,string Name,GeometryRecipe Recipe,
     ImmutableArray<FeatureId> Inputs,BodyId OutputBodyId,GeometryAssetRef Result,int SchemaVersion=1,BodyOutputMetadata? OutputMetadata=null)
 {
     public SketchProfileReference? SketchSource {get;init;}
     public TopologyHistory? TopologyHistory {get;init;}
+    public RepetitionPresentationEvidence? RepetitionPresentation {get;init;}
+    public GuidedModelingReport? GuidedModelingReport {get;init;}
     public FeatureTopologyBinding? TopologyBinding {get;init;}
     public bool IsStale {get;init;}
     /// <summary>Explicit feature-tree suppression; dependent results are blocked until recomputed.</summary>

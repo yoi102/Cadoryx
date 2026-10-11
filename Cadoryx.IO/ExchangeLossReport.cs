@@ -13,17 +13,27 @@ public sealed record ExchangeLossReport(int SchemaVersion,string DocumentId,stri
     {
         var rows=new List<ExchangeLossRow>();
         if(options.IncludeStep)rows.Add(new("STEP",
-            ["Exact BRep", "Assembly definitions and placements", "Names", "Overall colors"],
+            ["Generated BRep geometry", "Assembly definitions and placements", "Names", "Overall colors"],
             ["Cadoryx feature history", "Sketch constraints", "Drawing sheets", "Assembly mates"],
-            ["Source PMI and subshape styles are not exported by the current writer"]));
+            ["Supported source subshape colors use exact transformation history; unsupported styles and source PMI are not transferred",
+             "Source layers, per-face visibility and physical/PBR materials require separate receiver verification; surface-color success does not prove these attributes survived"]));
         if(options.IncludeIges)rows.Add(new("IGES",
             ["Analytic surfaces", "Overall colors where supported by the writer"],
             ["Cadoryx feature history", "Sketch constraints", "Drawing sheets", "Assembly mates"],
-            ["Solid volume may reopen as surfaces", "Assembly sharing may be flattened", "PMI and face styles are not verified"]));
+            ["Solid volume may reopen as surfaces", "Assembly sharing may be flattened", "Supported source subshape colors use exact transformation history; source PMI is not transferred",
+             "Source layers, per-face visibility and physical/PBR materials require separate receiver verification; surface-color success does not prove these attributes survived"]));
         if(options.IncludeStl)rows.Add(new("STL",
             ["Triangulated visible surface coordinates"],
             ["Intrinsic unit declaration", "Exact BRep", "Assembly hierarchy", "Names", "Colors", "PMI", "Feature history", "Drawing sheets"],
             ["Coordinates are written in millimeters; the receiver must be told the unit"]));
+        if(snapshot.Features.Values.Any(f=>f.Recipe is HoleRecipe {Thread:not null} or HolePatternRecipe {Template.Thread:not null}))
+            rows=rows.Select(row=>row with{Lost=[..row.Lost,"Thread designation, pitch, hand, profile identity and effective depth as author semantics; symbolic intent has only pilot geometry, modeled intent has tooth geometry"]}).ToList();
+        if(snapshot.Features.Values.Any(f=>f.Recipe is SweepRecipe or LoftRecipe))
+            rows=rows.Select(row=>row with
+            {
+                Lost=[..row.Lost,"Guided author profiles, signed offset operations, native intervals, path direction, station/channel identities and source dependencies as editable Cadoryx semantics"],
+                Conditional=[..row.Conditional,"Guided modeling may already include bounded native curve/surface approximations; proven prism branches retain their authored geometry. Exchange compares with the generated BRep and does not certify algebraic exactness against author expressions or a stored per-result modeling-error bound"]
+            }).ToList();
         return new(1,snapshot.Id.ToString(),snapshot.StateId.ToString(),
             "Writer capability assessment; not a measured import/export round-trip",rows.ToArray());
     }

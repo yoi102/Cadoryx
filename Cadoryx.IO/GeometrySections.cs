@@ -20,7 +20,12 @@ public sealed record PackFeatureV3([property:Key(0)] Guid Id,[property:Key(1)] G
     [property:Key(3)] PackRecipeV3 Recipe,[property:Key(4)] Guid[] Inputs,[property:Key(5)] Guid Output,
     [property:Key(6)] Guid Result,[property:Key(7)] int Version,[property:Key(8)] PackOutputMetadata? OutputMetadata,
     [property:Key(9)] PackSketchProfileReference? SketchSource=null,[property:Key(10)] bool IsStale=false,
-    [property:Key(11)] bool IsSuppressed=false);
+    [property:Key(11)] bool IsSuppressed=false,[property:Key(12)] PackRepetitionPresentation? RepetitionPresentation=null);
+[MessagePackObject]
+public sealed record PackRepetitionPresentation([property:Key(0)] string SourceFingerprint,[property:Key(1)] string ResultFingerprint,
+    [property:Key(2)] int SourceTopologyCount,[property:Key(3)] int ResultTopologyCount,[property:Key(4)] int StyledSourceSlots,
+    [property:Key(5)] int CopiedResultSlots,[property:Key(6)] int SharedResultSlots,[property:Key(7)] bool CompleteHistory,
+    [property:Key(8)] int[] Conflicts);
 [MessagePackObject]
 public sealed record PackSketchProfileReference([property:Key(0)] Guid Sketch,[property:Key(1)] Guid Revision,[property:Key(2)] Guid[] Lines,
     [property:Key(3)] Guid? Circle=null,[property:Key(4)] Guid[]? Holes=null,[property:Key(5)] Guid[][]? PolygonHoles=null,
@@ -40,10 +45,28 @@ public sealed record PackRecipeV3([property:Key(0)] string Kind,[property:Key(1)
     [property:Key(6)] PackCircularHole[]? Holes=null,[property:Key(7)] PackPolygonHole[]? PolygonHoles=null,
     [property:Key(8)] PackMixedCurve[]? MixedCurves=null,[property:Key(9)] PackMixedCurve[][]? MixedHoles=null,
     [property:Key(10)] PackIsland[]? Islands=null,[property:Key(11)] double[][]? SplineControls=null,
-    [property:Key(12)] double[][][]? SplineHoles=null);
+    [property:Key(12)] double[][][]? SplineHoles=null,[property:Key(13)] PackRepetition? Repetition=null,[property:Key(14)] PackHole? Hole=null,
+    [property:Key(15)] PackExtrusion? Extrusion=null,[property:Key(16)] PackGuidedAuthoring? Guided=null,[property:Key(17)] PackFaceFeature? FaceFeature=null,
+    [property:Key(18)] PackRevolveAxis? RevolveAxis=null,[property:Key(19)] PackHolePattern? HolePattern=null,
+    [property:Key(20)] PackExtrusionPattern? ExtrusionPattern=null,
+    [property:Key(21)] PackSplineKnots? SplineKnots=null,[property:Key(22)] PackSplineKnots?[]? SplineHoleKnots=null,
+    [property:Key(23)] PackContourLocal? ContourLocal=null,[property:Key(24)] PackFaceEdit? FaceEdit=null);
 
 internal static partial class MessagePackSections
 {
+    internal static bool HasGeometryReferences(ReadOnlyMemory<byte> bytes)=>Read<PackGeometryTable>(bytes).Items.Any(g=>g.SerializedReferences is not null);
+    private static GeometryAssetRef AttachReferenceFormat(GeometryAssetRef geometry,IReadOnlyDictionary<AssetId,AssetFormat> formats)
+    {
+        if(geometry.SerializedReferences is not {} references)return geometry;
+        if(!formats.TryGetValue(references.TableAssetId,out var format))throw new InvalidDataException("Native reference table missing from manifest.");
+        AssetFormatPolicy.RequireReferenceTable(format);return geometry with{SerializedReferences=references with{Format=format}};
+    }
+    internal static ReadOnlyMemory<byte> UpgradeGeometryReferences(ReadOnlyMemory<byte> bytes)
+    {
+        var table=Read<PackGeometryTable>(bytes);
+        if(table.Items.Any(g=>g.SerializedReferences is not null))throw new InvalidDataException("Native references cannot appear under legacy geometry schema.");
+        return bytes;
+    }
     internal static ReadOnlyMemory<byte> UpgradeLocalFeatures(ReadOnlyMemory<byte> bytes)
     {
         if(Read<PackFeaturesV3>(bytes).Features.Any(f=>f.Recipe.Kind=="local-box-edge"))throw new InvalidDataException("Local feature in legacy schema.");
@@ -86,6 +109,7 @@ internal static partial class MessagePackSections
         {
             var geometry=G(item);geometry.Validate();
             Add(geometry.AssetId,AssetFormat.BRepMediaType);
+            if(geometry.SerializedReferences is {} references)Add(references.TableAssetId,AssetFormat.ReferenceTableMediaType);
             if(geometry.Source is {} source)Add(source.ContextAssetId,AssetFormat.XdeMediaType);
         }
         return roles;
@@ -97,7 +121,7 @@ internal static partial class MessagePackSections
     }
 
     // V3 changes geometry fields from embedded records to revision IDs; V2 contracts remain intact.
-    internal static SectionPayload[] SplitGeometry(StructureSection structure,FeaturesSection features,int featureVersion=21)
+    internal static SectionPayload[] SplitGeometry(StructureSection structure,FeaturesSection features,int? featureVersion=null,IEnumerable<GeometryAssetRef>? datumGeometries=null)
     {
         var table=new Dictionary<GeometryRevisionId,GeometryAssetRef>();
         Guid Reference(GeometryAssetRef geometry)
@@ -113,7 +137,7 @@ internal static partial class MessagePackSections
         {
             var recipe=R(f.Recipe);var metadata=F(f).OutputMetadata;
             return new PackFeatureV3(f.Id.Value,f.PartId.Value,f.Name,
-                new(recipe.Kind,recipe.Numbers,recipe.Placement,f.Recipe.AssetInputs.Select(Reference).ToArray(),recipe.Profile,recipe.Operation,recipe.Holes,recipe.PolygonHoles,recipe.MixedCurves,recipe.MixedHoles,recipe.Islands,recipe.SplineControls,recipe.SplineHoles),
+                new(recipe.Kind,recipe.Numbers,recipe.Placement,f.Recipe.AssetInputs.Select(Reference).ToArray(),recipe.Profile,recipe.Operation,recipe.Holes,recipe.PolygonHoles,recipe.MixedCurves,recipe.MixedHoles,recipe.Islands,recipe.SplineControls,recipe.SplineHoles,recipe.Repetition,recipe.Hole,recipe.Extrusion,recipe.Guided,recipe.FaceFeature,recipe.RevolveAxis,recipe.HolePattern,recipe.ExtrusionPattern,recipe.SplineKnots,recipe.SplineHoleKnots,recipe.ContourLocal,recipe.FaceEdit),
                 f.Inputs.Select(i=>i.Value).ToArray(),f.OutputBodyId.Value,Reference(f.Result),f.SchemaVersion,metadata,
                 f.SketchSource is {} source?new(source.SketchId.Value,source.Revision,source.Lines.Select(l=>l.Value).ToArray(),source.CircleId?.Value,
                     source.HoleCircleIds.IsDefaultOrEmpty?null:source.HoleCircleIds.Select(id=>id.Value).ToArray(),
@@ -125,11 +149,14 @@ internal static partial class MessagePackSections
                     source.IslandMixedIds.IsDefaultOrEmpty?null:source.IslandMixedIds.Select(h=>h.Select(id=>id.Value).ToArray()).ToArray(),
                     source.BezierId?.Value,source.SplineId?.Value,
                     source.HoleSplineIds.IsDefaultOrEmpty?null:source.HoleSplineIds.Select(id=>id.Value).ToArray(),
-                    source.Regions.IsDefaultOrEmpty?null:source.Regions.Select(PackRegion).ToArray()):null,f.IsStale,f.IsSuppressed);
+                    source.Regions.IsDefaultOrEmpty?null:source.Regions.Select(PackRegion).ToArray()):null,f.IsStale,f.IsSuppressed,
+                f.RepetitionPresentation is {} proof?new(proof.SourceFingerprint,proof.ResultFingerprint,proof.SourceTopologyCount,proof.ResultTopologyCount,
+                    proof.StyledSourceSlots,proof.CopiedResultSlots,proof.SharedResultSlots,proof.CompleteHistory,proof.ConflictingResultIndices.ToArray()):null);
         }).ToArray();
+        foreach(var geometry in datumGeometries??[])Reference(geometry);
         return [new(new("structure",3,"messagepack"),Serialize(new PackStructureV3(structure.Definitions.Select(D).ToArray(),bodies))),
-            new(new("features",featureVersion,"messagepack"),Serialize(new PackFeaturesV3(featureRecords))),
-            new(new("geometry",1,"messagepack"),Serialize(new PackGeometryTable(table.Values.OrderBy(g=>g.Revision.Value).Select(G).ToArray())))];
+            new(new("features",featureVersion??CadSectionMigrationRegistry.CurrentFormats["features"].Version,"messagepack"),Serialize(new PackFeaturesV3(featureRecords))),
+            new(CadSectionMigrationRegistry.CurrentFormats["geometry"],Serialize(new PackGeometryTable(table.Values.OrderBy(g=>g.Revision.Value).Select(G).ToArray())))];
     }
     internal static (StructureSection Structure,FeaturesSection Features) JoinGeometry(IReadOnlyDictionary<string,SectionPayload> sections,
         IReadOnlyDictionary<AssetId,AssetFormat> formats)
@@ -138,6 +165,12 @@ internal static partial class MessagePackSections
         foreach(var item in Read<PackGeometryTable>(sections["geometry"].Bytes).Items)
         {
             var geometry=G(item);
+            if(geometry.SerializedReferences is {} references)
+            {
+                if(!formats.TryGetValue(references.TableAssetId,out var referenceFormat))throw new InvalidDataException("Native reference table is missing from the manifest.");
+                AssetFormatPolicy.RequireReferenceTable(referenceFormat);
+                geometry=geometry with{SerializedReferences=references with{Format=referenceFormat}};
+            }
             if(!formats.TryGetValue(geometry.AssetId,out var format))throw new InvalidDataException("Geometry asset is missing from the manifest.");
             XdeSourceRef? source=geometry.Source;
             if(source is not null)
@@ -167,10 +200,21 @@ internal static partial class MessagePackSections
             var r=v.Recipe;
             // Reuse the audited recipe whitelist and parameter validation, then restore shared references.
             var inputs=r.Sources.Select(Resolve).ToArray();
-            var recipe=R(new PackRecipe(r.Kind,r.Numbers,r.Placement,inputs.Select(G).ToArray(),r.Profile,r.Operation,r.Holes,r.PolygonHoles,r.MixedCurves,r.MixedHoles,r.Islands,r.SplineControls,r.SplineHoles));
+            var recipe=R(new PackRecipe(r.Kind,r.Numbers,r.Placement,inputs.Select(G).ToArray(),r.Profile,r.Operation,r.Holes,r.PolygonHoles,r.MixedCurves,r.MixedHoles,r.Islands,r.SplineControls,r.SplineHoles,r.Repetition,r.Hole,r.Extrusion,r.Guided,r.FaceFeature,r.RevolveAxis,r.HolePattern,r.ExtrusionPattern,r.SplineKnots,r.SplineHoleKnots,r.ContourLocal,r.FaceEdit));
             recipe=recipe switch
             {
                 LocalFeatureRecipe l=>l with{Source=inputs[0]},ImportedRecipe i=>i with{Source=inputs[0]},TransformRecipe t=>t with{Source=inputs[0]},
+                RepetitionRecipe repeat=>repeat with{Source=inputs[0]},
+                HoleRecipe hole=>hole with{Source=inputs[0]},
+                HolePatternRecipe pattern=>pattern with{Layout=pattern.Layout with{Source=inputs[0]},Template=pattern.Template with{Source=inputs[1]}},
+                ExtrusionPatternRecipe pattern=>pattern with{Layout=pattern.Layout with{Source=inputs[0]},Template=pattern.Template with{Options=pattern.Template.Options! with
+                    {Source=inputs[1],LimitGeometry=pattern.Template.Options!.LimitGeometry is null?null:inputs[2]}}},
+                ShellRecipe shell=>shell with{Source=inputs[0]},DraftRecipe draft=>draft with{Source=inputs[0]},
+                SolidOffsetRecipe offset=>offset with{Source=inputs[0]},
+                ContourLocalRecipe contour=>contour with{Source=inputs[0]},
+                PlanarPushPullRecipe pushPull=>pushPull with{Source=inputs[0]},DefeatureRecipe defeature=>defeature with{Source=inputs[0]},
+                ExtrudeRecipe {Options:{} options} extrusion=>extrusion with{Options=options with
+                    {Source=options.Source is null?null:inputs[0],LimitGeometry=options.LimitGeometry is null?null:inputs[^1]}},
                 BooleanRecipe b=>b with{Inputs=inputs.ToImmutableArray()},HistoryFilletRecipe h=>h with{Source=inputs[0]},
                 HistoryChamferRecipe h=>h with{Source=inputs[0]},_=>recipe
             };
@@ -191,8 +235,17 @@ internal static partial class MessagePackSections
                         SplineId=source.Spline is {} spline?new SketchEntityId(spline):null,
                         HoleSplineIds=source.HoleSplines is null?[]:source.HoleSplines.Select(id=>new SketchEntityId(id)).ToImmutableArray(),
                         Regions=source.Regions is null?[]:source.Regions.Select(region=>UnpackRegion(region)).ToImmutableArray()}:null,
-                IsStale=v.IsStale,IsSuppressed=v.IsSuppressed};
+                IsStale=v.IsStale,IsSuppressed=v.IsSuppressed,
+                RepetitionPresentation=v.RepetitionPresentation is {} proof?new(proof.SourceFingerprint,proof.ResultFingerprint,proof.SourceTopologyCount,
+                    proof.ResultTopologyCount,proof.StyledSourceSlots,proof.CopiedResultSlots,proof.SharedResultSlots,proof.CompleteHistory,
+                    (proof.Conflicts??throw new InvalidDataException("Missing presentation conflict indices.")).ToImmutableArray()):null};
         }).ToImmutableArray();
+        if(sections.TryGetValue("datums",out var datums))
+            foreach(var inline in PackedDatumGeometries(datums.Bytes))
+            {var referenced=Resolve(inline.Revision);if(G(G(referenced))!=G(inline))throw new InvalidDataException("Exact datum geometry differs from its geometry table record.");}
+        if(sections.TryGetValue("sketches",out var sketches))
+            foreach(var inline in Read<PackSketches>(sketches.Bytes).Sketches.SelectMany(s=>(s.NativeProjections??[]).Select(p=>p.Source)))
+            {var referenced=Resolve(inline.Revision);if(G(G(referenced))!=G(inline))throw new InvalidDataException("Native sketch projection geometry differs from its geometry table record.");}
         if(used.Count!=table.Count)throw new InvalidDataException("Unreferenced geometry table records.");
         return(new(s.Definitions.Select(D).ToImmutableArray(),bodies),new(features));
     }
@@ -208,6 +261,27 @@ internal static partial class MessagePackSections
         var features=Read<PackFeaturesV3>(bytes);
         if(features.Features is null||features.Features.Any(f=>f.IsSuppressed))
             throw new InvalidDataException("Feature suppression in legacy schema.");
+        return bytes;
+    }
+    internal static ReadOnlyMemory<byte> UpgradeAnalyticalRevolve(ReadOnlyMemory<byte> bytes)
+    {
+        var features=Read<PackFeaturesV3>(bytes);
+        if(features.Features is null||features.Features.Any(f=>f.Recipe.Kind is "revolve-circle" or "revolve-arc" or "revolve-mixed"))
+            throw new InvalidDataException("Analytical revolve recipe in legacy features schema.");
+        return bytes;
+    }
+    internal static ReadOnlyMemory<byte> UpgradeRepetition(ReadOnlyMemory<byte> bytes)
+    {
+        var features=Read<PackFeaturesV3>(bytes);
+        if(features.Features is null||features.Features.Any(f=>f.Recipe.Kind=="repetition"||f.Recipe.Repetition is not null))
+            throw new InvalidDataException("Repetition recipe in legacy features schema.");
+        return bytes;
+    }
+    internal static ReadOnlyMemory<byte> UpgradeHoles(ReadOnlyMemory<byte> bytes)
+    {
+        var features=Read<PackFeaturesV3>(bytes);
+        if(features.Features is null||features.Features.Any(f=>f.Recipe.Kind=="hole"||f.Recipe.Hole is not null))
+            throw new InvalidDataException("Hole recipe in legacy features schema.");
         return bytes;
     }
     internal static ReadOnlyMemory<byte> UpgradeCircularSketchProfiles(ReadOnlyMemory<byte> bytes)

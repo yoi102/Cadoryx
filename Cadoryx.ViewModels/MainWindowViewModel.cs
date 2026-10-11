@@ -1,4 +1,4 @@
-﻿using AvalonDock.Core;
+using AvalonDock.Core;
 using AvalonDock.Mvvm;
 using Cadoryx.Lang.Strings;
 using Cadoryx.ViewModels.Services.Platform;
@@ -31,6 +31,7 @@ public partial class MainWindowViewModel : ObservableObject
     private readonly CadWorkspace workspace;
     private readonly IGeometryKernel kernel;
     private readonly IDocumentDeliveryService delivery;
+    private readonly IDocumentFileService? documentFiles;
     private readonly IDeliveryHost deliveryHost;
     private readonly IExchangeImportService importer;
     private readonly ICadNotificationService notifications;
@@ -45,11 +46,29 @@ public partial class MainWindowViewModel : ObservableObject
     private readonly IRecoveryDialogService recoveryDialog;
     private readonly IDocumentResourcesDialogService resourcesDialog;
     private readonly ISketchEditorHost sketchEditor;
+    private readonly IParameterEditorHost? parameterEditor;
+    private readonly IDatumEditorHost? datumEditor;
+    private readonly IRepetitionEditorHost? repetitionEditor;
+    private readonly IAssemblyRepetitionEditorHost? assemblyRepetitionEditor;
+    private readonly IHoleEditorHost? holeEditor;
+    private readonly IExtrusionEditorHost? extrusionEditor;
+    private readonly IGuidedEditorHost? guidedEditor;
+    private readonly IFaceFeatureEditorHost? faceFeatureEditor;
+    private readonly IContourLocalEditorHost? contourLocalEditor;
     private readonly ILocalFeatureHost localFeatureHost;
     private readonly IHistoryQueryHost historyQueryHost;
     private readonly IDocumentSettingsHost documentSettingsHost;
     private readonly Cadoryx.Sketching.ISketchConstraintSolver sketchSolver;
     private readonly HashSet<CadDocumentViewModel> closingDocuments=[];
+    private CadWorkspaceAuthoring? workspaceAuthoring;
+    public void InitializeWorkspaceTools()
+    {
+        workspaceAuthoring ??= new(workspace, Documents, () => ActiveDocument, Attach,
+            doc => ActiveDocument = doc, () => !IsBusy && !IsOpening && !IsShuttingDown && closingDocuments.Count == 0,
+            assets, storage, importer);
+        CommandLine.BindWorkspace(workspaceAuthoring);
+        AiAssistant.BindWorkspace(workspaceAuthoring);
+    }
     public ObservableCollection<CadDocumentViewModel> Documents {get;}=[];
     [ObservableProperty] private CadDocumentViewModel? activeDocument;
     [ObservableProperty] private bool isBusy;
@@ -64,7 +83,7 @@ public partial class MainWindowViewModel : ObservableObject
     IDocumentStorage storage, ICadFileDialogs files, ICadMessageLog log, ICadNotificationService notifications,
     DocumentRecoveryService recovery, IRecoveryStore recoveryStore, IRecoveryDialogService recoveryDialog, IDocumentResourcesDialogService resourcesDialog,
     ISketchEditorHost sketchEditor,Cadoryx.Sketching.ISketchConstraintSolver sketchSolver,ILocalFeatureHost localFeatureHost,IHistoryQueryHost historyQueryHost,IDocumentSettingsHost documentSettingsHost,
-    IDocumentDeliveryService delivery,IDeliveryHost deliveryHost
+    IDocumentDeliveryService delivery,IDeliveryHost deliveryHost,IParameterEditorHost? parameterEditor=null,IDatumEditorHost? datumEditor=null,IRepetitionEditorHost? repetitionEditor=null,IHoleEditorHost? holeEditor=null,IExtrusionEditorHost? extrusionEditor=null,IGuidedEditorHost? guidedEditor=null,IFaceFeatureEditorHost? faceFeatureEditor=null,IAssemblyRepetitionEditorHost? assemblyRepetitionEditor=null,IDocumentFileService? documentFiles=null,IContourLocalEditorHost? contourLocalEditor=null
     )
     {
         this._dockLayoutService = dockLayoutService;
@@ -76,6 +95,7 @@ public partial class MainWindowViewModel : ObservableObject
         this.workspace=workspace;this.kernel=kernel;this.assets=assets;this.storage=storage;this.files=files;this.log=log;
         this.importer=importer;
         this.delivery=delivery;this.deliveryHost=deliveryHost;
+        this.documentFiles=documentFiles;
         this.notifications=notifications;
         this.recovery=recovery;this.recoveryStore=recoveryStore;this.recoveryDialog=recoveryDialog;
         this.localFeatureHost=localFeatureHost;
@@ -83,6 +103,13 @@ public partial class MainWindowViewModel : ObservableObject
         this.documentSettingsHost=documentSettingsHost;
         this.resourcesDialog=resourcesDialog;
         this.sketchEditor=sketchEditor;this.sketchSolver=sketchSolver;
+        this.parameterEditor=parameterEditor;
+        this.datumEditor=datumEditor;
+        this.repetitionEditor=repetitionEditor;
+        this.assemblyRepetitionEditor=assemblyRepetitionEditor;
+        this.holeEditor=holeEditor;this.extrusionEditor=extrusionEditor;
+        this.guidedEditor=guidedEditor;this.faceFeatureEditor=faceFeatureEditor;
+        this.contourLocalEditor=contourLocalEditor;
         _applicationSettings = applicationSettingsStore.Load();
 
         ApplySettingsToServices(_applicationSettings);
@@ -250,10 +277,12 @@ public partial class MainWindowViewModel : ObservableObject
     [RelayCommand(CanExecute=nameof(CanUseDocument))] private async Task ExportAsync()
     {
         if(ActiveDocument is not {} doc)return;
+        if(doc.Session.IsRolledBack){doc.Report(new CadValidationException(Strings.HistoryExportRequiresEnd));return;}
         var request=await files.ExportDocumentAsync(doc.Session.Snapshot.Name);if(request is null)return;
         await RunAsync(async()=>
         {
             using var capture=doc.Session.Capture();
+            if(doc.Session.IsRolledBack)throw new CadValidationException(Strings.HistoryExportRequiresEnd);
             var report=await kernel.ExportAsync(capture.Snapshot,assets,request.Path,new CadExportOptions(request.LinearDeflectionMm,request.AngularDeflectionRad,request.BinaryStl,request.VisibleOnly));
             foreach(var diagnostic in report.Diagnostics)log.Add(diagnostic.Message,CadMessageLevel.Information,diagnostic.Code);
             StatusText=string.Format(Strings.ExportedFormat,report.Format,Path.GetFileName(report.Path));
@@ -297,19 +326,114 @@ public partial class MainWindowViewModel : ObservableObject
         if(ActiveDocument is null)New();if(ActiveDocument is not {} doc||doc.IsReadOnly)return;
         var part=doc.SelectedTargetPart??Cadoryx.Db.DefinitionId.New();
         var workPlane=doc.WorkPlaneSettings;
+        var link=doc.Session.Snapshot.Datums.WorkPlane;
+        var datum=link is {} w?doc.Session.Snapshot.Datums.Planes[w.Datum]:null;
+        if(datum is not null)part=datum.PartId;
         var sketch=Cadoryx.Db.CadSketch.Create(part,Strings.Sketch+" "+(doc.Session.Snapshot.Sketches.Count+1),
-            new Cadoryx.Db.RigidTransform3d(workPlane.Origin,workPlane.Rotation));
-        await RunAsync(async()=>{await using var editor=new SketchEditorViewModel(doc,kernel,sketchSolver,sketch,true);await sketchEditor.ShowAsync(editor);});
+            datum?.Frame??new Cadoryx.Db.RigidTransform3d(workPlane.Origin,workPlane.Rotation));
+        await RunAsync(async()=>{await using var editor=new SketchEditorViewModel(doc,kernel,sketchSolver,sketch,true,datum?.Id);await sketchEditor.ShowAsync(editor);});
+    }
+    [RelayCommand(CanExecute=nameof(CanEditDocument))] private async Task EditParametersAsync()
+    {
+        if(ActiveDocument is not {} doc||parameterEditor is null)return;
+        await RunAsync(async()=>{await using var editor=new ParameterEditorViewModel(doc,kernel);await parameterEditor.ShowAsync(editor);});
+    }
+    [RelayCommand(CanExecute=nameof(CanEditDocument))] private async Task EditDatumsAsync()
+    {
+        if(ActiveDocument is not {} doc||datumEditor is null)return;
+        await RunAsync(async()=>{await using var editor=new DatumEditorViewModel(doc,kernel);await datumEditor.ShowAsync(editor);});
+    }
+    [RelayCommand(CanExecute=nameof(CanEditDocument))] private async Task EditRepetitionsAsync()
+    {
+        if(ActiveDocument is not {} doc||repetitionEditor is null)return;
+        await RunAsync(async()=>{await using var editor=new RepetitionEditorViewModel(doc,kernel);await repetitionEditor.ShowAsync(editor);});
+    }
+    [RelayCommand(CanExecute=nameof(CanEditDocument))] private async Task EditAssemblyRepetitionsAsync()
+    {
+        if(ActiveDocument is not {} doc||assemblyRepetitionEditor is null)return;
+        await RunAsync(async()=>{await using var editor=new AssemblyRepetitionEditorViewModel(doc,kernel,doc.Selection.Occurrence);await assemblyRepetitionEditor.ShowAsync(editor);});
+    }
+    private async void OnAssemblyRepetitionEditRequested(object? sender,Cadoryx.Db.OccurrencePath source)
+    {
+        if(sender is not CadDocumentViewModel doc||assemblyRepetitionEditor is null||doc.IsReadOnly||doc.IsClosingRequested||!ReferenceEquals(ActiveDocument,doc))return;
+        await RunAsync(async()=>{await using var editor=new AssemblyRepetitionEditorViewModel(doc,kernel,source);await assemblyRepetitionEditor.ShowAsync(editor);});
     }
     [RelayCommand(CanExecute=nameof(CanUseDocument))] private async Task LocalFeatureAsync()
     {
         if(ActiveDocument is not {} doc||doc.IsReadOnly)return;
         await RunAsync(async()=>{await using var editor=new LocalFeatureViewModel(doc.Session,kernel);await localFeatureHost.ShowAsync(editor);});
     }
+    [RelayCommand(CanExecute=nameof(CanEditDocument))] private async Task EditHolesAsync()
+    {
+        if(ActiveDocument is not {} doc||holeEditor is null)return;
+        await RunAsync(async()=>{await using var editor=new HoleEditorViewModel(doc,kernel);await holeEditor.ShowAsync(editor);});
+    }
+    [RelayCommand(CanExecute=nameof(CanEditDocument))] private async Task EditExtrusionsAsync()
+    {
+        if(ActiveDocument is not {} doc||extrusionEditor is null)return;
+        await RunAsync(async()=>{await using var editor=new ExtrusionEditorViewModel(doc,kernel);await extrusionEditor.ShowAsync(editor);});
+    }
+    private async void OnExtrusionEditRequested(object? sender,FeatureId id)
+    {
+        if(sender is not CadDocumentViewModel doc||doc.IsReadOnly||doc.IsClosingRequested||!ReferenceEquals(ActiveDocument,doc)||extrusionEditor is null)return;
+        await RunAsync(async()=>{await using var editor=new ExtrusionEditorViewModel(doc,kernel,id);await extrusionEditor.ShowAsync(editor);});
+    }
+    [RelayCommand(CanExecute=nameof(CanEditDocument))] private async Task SweepAsync()=>await OpenGuidedAsync(GuidedEditorKind.Sweep);
+    [RelayCommand(CanExecute=nameof(CanEditDocument))] private async Task LoftAsync()=>await OpenGuidedAsync(GuidedEditorKind.Loft);
+    private async Task OpenGuidedAsync(GuidedEditorKind kind)
+    {
+        if(ActiveDocument is not {} doc||guidedEditor is null)return;
+        await RunAsync(async()=>{await using var editor=new GuidedEditorViewModel(doc,kernel,kind);await guidedEditor.ShowAsync(editor);});
+    }
+    [RelayCommand(CanExecute=nameof(CanEditDocument))] private async Task ShellAsync()=>await OpenFaceFeatureAsync(FaceFeatureKind.Shell);
+    [RelayCommand(CanExecute=nameof(CanEditDocument))] private async Task DraftAsync()=>await OpenFaceFeatureAsync(FaceFeatureKind.Draft);
+    [RelayCommand(CanExecute=nameof(CanEditDocument))] private async Task SolidOffsetAsync()=>await OpenFaceFeatureAsync(FaceFeatureKind.SolidOffset);
+    [RelayCommand(CanExecute=nameof(CanEditDocument))] private async Task PlanarPushPullAsync()=>await OpenFaceFeatureAsync(FaceFeatureKind.PlanarPushPull);
+    [RelayCommand(CanExecute=nameof(CanEditDocument))] private async Task DefeatureAsync()=>await OpenFaceFeatureAsync(FaceFeatureKind.Defeature);
+    [RelayCommand(CanExecute=nameof(CanEditDocument))] private async Task ContourFilletAsync()=>await OpenContourAsync(LocalFeatureOperation.Fillet);
+    [RelayCommand(CanExecute=nameof(CanEditDocument))] private async Task ContourChamferAsync()=>await OpenContourAsync(LocalFeatureOperation.Chamfer);
+    private async Task OpenContourAsync(LocalFeatureOperation operation)
+    {
+        if(ActiveDocument is not {} doc||contourLocalEditor is null)return;
+        await RunAsync(async()=>{await using var editor=new ContourLocalEditorViewModel(doc,kernel,operation);await contourLocalEditor.ShowAsync(editor);});
+    }
+    private async void OnContourLocalEditRequested(object? sender,FeatureId id)
+    {
+        if(sender is not CadDocumentViewModel doc||doc.IsReadOnly||doc.IsClosingRequested||!ReferenceEquals(ActiveDocument,doc)||contourLocalEditor is null)return;
+        var operation=((ContourLocalRecipe)doc.Session.Snapshot.Features[id].Recipe).Operation;
+        await RunAsync(async()=>{await using var editor=new ContourLocalEditorViewModel(doc,kernel,operation,id);await contourLocalEditor.ShowAsync(editor);});
+    }
+    private async Task OpenFaceFeatureAsync(FaceFeatureKind kind)
+    {
+        if(ActiveDocument is not {} doc||faceFeatureEditor is null)return;
+        await RunAsync(async()=>{await using var editor=new FaceFeatureEditorViewModel(doc,kernel,kind);await faceFeatureEditor.ShowAsync(editor);});
+    }
+    private async void OnFaceFeatureEditRequested(object? sender,FeatureId id)
+    {
+        if(sender is not CadDocumentViewModel doc||doc.IsReadOnly||doc.IsClosingRequested||!ReferenceEquals(ActiveDocument,doc)||faceFeatureEditor is null)return;
+        var kind=doc.Session.Snapshot.Features[id].Recipe switch{ShellRecipe=>FaceFeatureKind.Shell,DraftRecipe=>FaceFeatureKind.Draft,SolidOffsetRecipe=>FaceFeatureKind.SolidOffset,PlanarPushPullRecipe=>FaceFeatureKind.PlanarPushPull,DefeatureRecipe=>FaceFeatureKind.Defeature,_=>throw new CadValidationException(Strings.UnsupportedFeatureEdit)};
+        await RunAsync(async()=>{await using var editor=new FaceFeatureEditorViewModel(doc,kernel,kind,id);await faceFeatureEditor.ShowAsync(editor);});
+    }
+    private async void OnGuidedEditRequested(object? sender,FeatureId id)
+    {
+        if(sender is not CadDocumentViewModel doc||doc.IsReadOnly||doc.IsClosingRequested||!ReferenceEquals(ActiveDocument,doc)||guidedEditor is null)return;
+        var kind=doc.Session.Snapshot.Features[id].Recipe is SweepRecipe?GuidedEditorKind.Sweep:GuidedEditorKind.Loft;
+        await RunAsync(async()=>{await using var editor=new GuidedEditorViewModel(doc,kernel,kind,id);await guidedEditor.ShowAsync(editor);});
+    }
+    private async void OnHoleEditRequested(object? sender,FeatureId id)
+    {
+        if(sender is not CadDocumentViewModel doc||doc.IsReadOnly||doc.IsClosingRequested||!ReferenceEquals(ActiveDocument,doc)||holeEditor is null)return;
+        await RunAsync(async()=>{await using var editor=new HoleEditorViewModel(doc,kernel,id);await holeEditor.ShowAsync(editor);});
+    }
     private async void OnLocalFeatureEditRequested(object? sender,FeatureId id)
     {
         if(sender is not CadDocumentViewModel doc||doc.IsReadOnly||doc.IsClosingRequested||!ReferenceEquals(ActiveDocument,doc))return;
         await RunAsync(async()=>{await using var editor=new LocalFeatureViewModel(doc.Session,kernel,id);await localFeatureHost.ShowAsync(editor);});
+    }
+    private async void OnRepetitionEditRequested(object? sender,FeatureId id)
+    {
+        if(sender is not CadDocumentViewModel doc||doc.IsReadOnly||doc.IsClosingRequested||!ReferenceEquals(ActiveDocument,doc)||repetitionEditor is null)return;
+        await RunAsync(async()=>{await using var editor=new RepetitionEditorViewModel(doc,kernel,id);await repetitionEditor.ShowAsync(editor);});
     }
     [RelayCommand(CanExecute=nameof(CanUseDocument))] private async Task HistoryQueryAsync()
     {
@@ -330,6 +454,7 @@ public partial class MainWindowViewModel : ObservableObject
     [RelayCommand(CanExecute=nameof(CanUseDocument))] private void StartSketchFeature(string kind)=>ActiveDocument?.StartSketchFeature(kind);
     partial void OnActiveDocumentChanged(CadDocumentViewModel? value)
     {
+        workspaceAuthoring?.NotifyChanged();
         foreach(var doc in Documents)
         {
             if(!ReferenceEquals(doc,value)){doc.IsActive=false;doc.InvalidatePreview();}
@@ -353,14 +478,15 @@ public partial class MainWindowViewModel : ObservableObject
         SaveAsCommand.NotifyCanExecuteChanged();ExportCommand.NotifyCanExecuteChanged();DeliveryCommand.NotifyCanExecuteChanged();OpenTechnicalDrawingCommand.NotifyCanExecuteChanged();UndoCommand.NotifyCanExecuteChanged();
         RedoCommand.NotifyCanExecuteChanged();FitViewCommand.NotifyCanExecuteChanged();SetViewCommand.NotifyCanExecuteChanged();
         OpenDocumentSettingsCommand.NotifyCanExecuteChanged();
+        SolidOffsetCommand.NotifyCanExecuteChanged();PlanarPushPullCommand.NotifyCanExecuteChanged();DefeatureCommand.NotifyCanExecuteChanged();ContourFilletCommand.NotifyCanExecuteChanged();ContourChamferCommand.NotifyCanExecuteChanged();
         OpenRecoveryCommand.NotifyCanExecuteChanged();
         ManageResourcesCommand.NotifyCanExecuteChanged();
-        NewSketchCommand.NotifyCanExecuteChanged();EditSketchCommand.NotifyCanExecuteChanged();DeleteSketchCommand.NotifyCanExecuteChanged();StartSketchFeatureCommand.NotifyCanExecuteChanged();LocalFeatureCommand.NotifyCanExecuteChanged();HistoryQueryCommand.NotifyCanExecuteChanged();
+        NewSketchCommand.NotifyCanExecuteChanged();EditSketchCommand.NotifyCanExecuteChanged();DeleteSketchCommand.NotifyCanExecuteChanged();StartSketchFeatureCommand.NotifyCanExecuteChanged();LocalFeatureCommand.NotifyCanExecuteChanged();HistoryQueryCommand.NotifyCanExecuteChanged();EditParametersCommand.NotifyCanExecuteChanged();EditDatumsCommand.NotifyCanExecuteChanged();EditRepetitionsCommand.NotifyCanExecuteChanged();EditAssemblyRepetitionsCommand.NotifyCanExecuteChanged();EditHolesCommand.NotifyCanExecuteChanged();EditExtrusionsCommand.NotifyCanExecuteChanged();SweepCommand.NotifyCanExecuteChanged();LoftCommand.NotifyCanExecuteChanged();ShellCommand.NotifyCanExecuteChanged();DraftCommand.NotifyCanExecuteChanged();
     }
-    private void Attach(CadDocumentSession session)
+    private CadDocumentViewModel Attach(CadDocumentSession session)
     {
-        var doc=new CadDocumentViewModel(session,kernel,log,storage,files);Documents.Add(doc);
-        doc.Activated+=OnDocumentActivated;doc.CloseRequested+=OnDocumentCloseRequested;doc.LocalFeatureEditRequested+=OnLocalFeatureEditRequested;
+        var doc=new CadDocumentViewModel(session,kernel,log,storage,files,documentFiles);Documents.Add(doc);
+        doc.Activated+=OnDocumentActivated;doc.CloseRequested+=OnDocumentCloseRequested;doc.LocalFeatureEditRequested+=OnLocalFeatureEditRequested;doc.RepetitionEditRequested+=OnRepetitionEditRequested;doc.AssemblyRepetitionEditRequested+=OnAssemblyRepetitionEditRequested;doc.HoleEditRequested+=OnHoleEditRequested;doc.ExtrusionEditRequested+=OnExtrusionEditRequested;doc.GuidedEditRequested+=OnGuidedEditRequested;doc.FaceFeatureEditRequested+=OnFaceFeatureEditRequested;doc.ContourLocalEditRequested+=OnContourLocalEditRequested;
         session.StatusChanged+=OnDocumentStatus;
         try{_dockLayoutService.OpenDocument(doc);ActiveDocument=doc;doc.IsActive=true;}
         catch
@@ -369,12 +495,13 @@ public partial class MainWindowViewModel : ObservableObject
             try{doc.PermitClose();_dockLayoutService.CloseDocument(doc);}
             finally
             {
-                doc.Detach();doc.Activated-=OnDocumentActivated;doc.CloseRequested-=OnDocumentCloseRequested;doc.LocalFeatureEditRequested-=OnLocalFeatureEditRequested;
+                doc.Detach();doc.Activated-=OnDocumentActivated;doc.CloseRequested-=OnDocumentCloseRequested;doc.LocalFeatureEditRequested-=OnLocalFeatureEditRequested;doc.RepetitionEditRequested-=OnRepetitionEditRequested;doc.AssemblyRepetitionEditRequested-=OnAssemblyRepetitionEditRequested;doc.HoleEditRequested-=OnHoleEditRequested;doc.ExtrusionEditRequested-=OnExtrusionEditRequested;doc.GuidedEditRequested-=OnGuidedEditRequested;doc.FaceFeatureEditRequested-=OnFaceFeatureEditRequested;doc.ContourLocalEditRequested-=OnContourLocalEditRequested;
                 session.StatusChanged-=OnDocumentStatus;Documents.Remove(doc);
                 if(ReferenceEquals(ActiveDocument,doc))ActiveDocument=Documents.LastOrDefault();
             }
             throw;
         }
+        return doc;
     }
     private void OnDocumentActivated(object? sender,EventArgs e)=>ActiveDocument=(CadDocumentViewModel)sender!;
     private async void OnDocumentCloseRequested(object? sender,EventArgs e)
@@ -393,7 +520,7 @@ public partial class MainWindowViewModel : ObservableObject
     private async Task CloseDocumentAsync(CadDocumentViewModel doc)
     {
         doc.PermitClose();_dockLayoutService.CloseDocument(doc);doc.Detach();
-        doc.Activated-=OnDocumentActivated;doc.CloseRequested-=OnDocumentCloseRequested;doc.LocalFeatureEditRequested-=OnLocalFeatureEditRequested;
+        doc.Activated-=OnDocumentActivated;doc.CloseRequested-=OnDocumentCloseRequested;doc.LocalFeatureEditRequested-=OnLocalFeatureEditRequested;doc.RepetitionEditRequested-=OnRepetitionEditRequested;doc.AssemblyRepetitionEditRequested-=OnAssemblyRepetitionEditRequested;doc.HoleEditRequested-=OnHoleEditRequested;doc.ExtrusionEditRequested-=OnExtrusionEditRequested;doc.GuidedEditRequested-=OnGuidedEditRequested;doc.FaceFeatureEditRequested-=OnFaceFeatureEditRequested;doc.ContourLocalEditRequested-=OnContourLocalEditRequested;
         doc.Session.StatusChanged-=OnDocumentStatus;
         await workspace.CloseAsync(doc.Session);Documents.Remove(doc);
         if(ReferenceEquals(ActiveDocument,doc))ActiveDocument=Documents.LastOrDefault();

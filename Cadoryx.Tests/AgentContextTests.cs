@@ -6,6 +6,19 @@ namespace Cadoryx.Tests;
 
 public sealed class AgentContextTests
 {
+    [Theory][InlineData(false)][InlineData(true)]
+    public void UnusedShortHistoryBudgetAdmitsToolsButLongHistoryKeepsItsReserve(bool aggressive)
+    {
+        var tool=new AiToolDefinition("large_tool",new string('x',13000),System.Text.Json.JsonDocument.Parse("{\"type\":\"object\"}").RootElement.Clone());
+        var shortContext=AgentRequestContextBuilder.Build("CAD assistant",[AiChatMessage.User("Current request")],[tool],8192,aggressive);
+        Assert.Single(shortContext.Tools);Assert.Equal("Current request",shortContext.Messages[^1].Content);
+        Assert.True(shortContext.EstimatedPromptTokens<=8192-shortContext.MaxOutputTokens-(aggressive?1280:640));
+        var longContext=AgentRequestContextBuilder.Build("CAD assistant",[AiChatMessage.User(new string('y',15000)),AiChatMessage.User("Current request")],[tool],8192,aggressive);
+        // The large tool fits the normal proportional reserve, but not the retry reserve.
+        if(aggressive)Assert.Empty(longContext.Tools);
+        Assert.Equal("Current request",longContext.Messages[^1].Content);
+        Assert.True(longContext.EstimatedPromptTokens<=8192-longContext.MaxOutputTokens-(aggressive?1280:640));
+    }
     [Fact]
     public void ContextReductionKeepsLatestRequestWithoutOrphanedToolMessages()
     {

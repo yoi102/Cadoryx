@@ -57,7 +57,12 @@ public partial class LocalFeatureWindow:MetroWindow
         if(closeReady)return;e.Cancel=true;if(closing)return;closing=true;
         Editor.SceneChanged-=OnScene;Editor.CloseRequested-=OnClose;
         Host.Dispose();ViewportContainer.Child=null;
-        try{await Editor.DisposeAsync();}finally{closeReady=true;Close();}
+        try{await Editor.DisposeAsync();}
+        finally
+        {
+            closeReady=true;
+            _=Dispatcher.BeginInvoke(System.Windows.Threading.DispatcherPriority.Background,new Action(Close));
+        }
     }
 }
 public sealed class LocalFeatureHost:ILocalFeatureHost

@@ -106,6 +106,9 @@ public sealed class M11TechnicalDrawingTests
         var cyclic=view with{ParentView=view.Id,StaleReason="Missing source"};
         Assert.Throws<CadValidationException>(()=>(document with
         {DrawingSheets=document.DrawingSheets.Add(sheet.Id,sheet with{Views=[cyclic]})}).Validate());
+        var detail=view with{Id=Guid.NewGuid(),Kind=DrawingViewKind.Detail,ParentView=view.Id,
+            DetailCenter=new(0,0),DetailRadius=1,Strokes=[new(DrawingLineKind.SectionHatch,false,[new(0,0),new(1,1)])]};
+        Assert.Throws<CadValidationException>(()=>(sheet with{Views=[view,detail]}).Validate(document.Id));
     }
 
     [Fact] public async Task FourStandardViewsAndSectionUseNativeGeometry()
@@ -188,6 +191,7 @@ public sealed class M11TechnicalDrawingTests
         var document=DocumentSnapshot.Create("Legacy drawing");var sheet=TechnicalDrawingSheet.A4Landscape("A");
         document=document with{DrawingSheets=document.DrawingSheets.Add(sheet.Id,sheet)};
         var path=files.PathFor("legacy-drawing.cadoryx");await storage.SaveAsync(document,assets,path);
+        DrawingAnnotationTests.StripNewFieldsForLegacy(path);
         FormatEvolutionTests.RewriteManifest(path,m=>m with{Sections=m.Sections.Select(s=>
             s.Kind=="drawings"?s with{SchemaVersion=1}:s).ToImmutableArray()});
         using var migrated=await storage.LoadAsync(path,assets);
@@ -209,8 +213,11 @@ public sealed class M11TechnicalDrawingTests
             JsonSerializer.Serialize(output,manifest with{Sections=[..manifest.Sections.Where(s=>s.Kind!="drawings")]},CadJson.Options);
         }
         await Assert.ThrowsAsync<NotSupportedException>(()=>storage.LoadAsync(path,assets));
+        // Emulate the actual legacy four-field point payload before declaring its document version.
+        SketchLegacyPointFixture.Prepare(path);
         FormatEvolutionTests.RewriteManifest(path,m=>m with
-        {Sections=[..m.Sections.Select(s=>s.Kind=="document"?s with{SchemaVersion=19}:s)]});
+        {Sections=[..m.Sections.Where(s=>s.Kind is not ("parameters" or "datums" or "assembly-patterns")).Select(s=>s.Kind=="document"?s with{SchemaVersion=19}:s)]});
+        using(var zip=ZipFile.Open(path,ZipArchiveMode.Update)){zip.GetEntry("sections/parameters.msgpack")!.Delete();zip.GetEntry("sections/datums.msgpack")!.Delete();zip.GetEntry("sections/assembly-patterns.msgpack")!.Delete();}
         using var loaded=await storage.LoadAsync(path,assets);
         Assert.Empty(loaded.Snapshot.DrawingSheets);
         Assert.Contains(loaded.Diagnostics,d=>d.Code=="IO.MIGRATED");

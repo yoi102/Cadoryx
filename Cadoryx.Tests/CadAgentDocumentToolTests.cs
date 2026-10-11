@@ -35,7 +35,8 @@ public sealed class CadAgentDocumentToolTests
             var tools = new CadAgentToolset(new CadCommandLineService(), document);
             var snapshot = session.Snapshot;
             var chosenPath = root.Append(otherSlot);
-            Assert.False(Succeeded(await Call(tools, "cad_command", new { command = "SELECT Bracket" })));
+            Assert.False(Succeeded(await Call(tools, "cad_command", new { command = "SELECT Bracket",
+                documentId = session.Snapshot.Id.ToString(), stateId = session.Snapshot.StateId.ToString() })));
             var request = new { documentId = snapshot.Id.ToString(),
                 stateId = snapshot.StateId.ToString(), path = chosenPath.ToString(),
                 bodyId = body.Id.ToString(), revision = body.Geometry.Revision.ToString() };
@@ -224,7 +225,7 @@ public sealed class CadAgentDocumentToolTests
         try
         {
             var tools = new CadAgentToolset(new CadCommandLineService(), document);
-            Assert.Equal(5, tools.ToolDefinitions.Count);
+        Assert.Equal(12, tools.ToolDefinitions.Count);
             var before = session.Snapshot;
             var sketchInfo = await Call(tools, "cad_inspect", new { area = "sketches" });
             Assert.Contains(sketch.Id.ToString(), sketchInfo);

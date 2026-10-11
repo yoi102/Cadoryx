@@ -461,7 +461,7 @@
     <value>Polygon extrude</value>
   </data>
   <data name="PolygonRevolve" xml:space="preserve">
-    <value>Polygon revolve</value>
+    <value>Revolve</value>
   </data>
   <data name="PositionXYZ" xml:space="preserve">
     <value>Position (X, Y, Z)</value>
@@ -970,8 +970,12 @@
   <data name="SketchCircularHoles" xml:space="preserve">
     <value>Circular through holes (select explicitly)</value>
   </data>
-  <data name="TangentLineCircle" xml:space="preserve"><value>Line-circle tangent</value></data>
-  <data name="AngleBetweenLines" xml:space="preserve"><value>Angle between lines (degrees)</value></data>
+  <data name="TangentLineCircle" xml:space="preserve">
+    <value>Line-circle tangent</value>
+  </data>
+  <data name="AngleBetweenLines" xml:space="preserve">
+    <value>Angle between lines (degrees)</value>
+  </data>
   <data name="AssociateSketch" xml:space="preserve">
     <value>Associate with sketch</value>
   </data>
@@ -1239,59 +1243,165 @@
   <data name="LocalEdgeList" xml:space="preserve">
     <value>Box edges (primary edge is fixed)</value>
   </data>
-  <data name="LocalSourceBody" xml:space="preserve"><value>Source body</value></data>
-  <data name="LocalChainedHint" xml:space="preserve"><value>Pick an edge on this result. For a chamfer, switch to Face and pick its support face.</value></data>
-  <data name="LocalReselectHint" xml:space="preserve"><value>Upstream geometry changed. Reselect an edge on its current result; for a chamfer also pick its support face.</value></data>
-  <data name="LocalExactEdge" xml:space="preserve"><value>Edge #{0}</value></data>
-  <data name="LocalSupportFaceHint" xml:space="preserve"><value>Select a support face</value></data>
-  <data name="LocalSupportFaceSelected" xml:space="preserve"><value>Support face #{0}</value></data>
-  <data name="SketchPolygonHoles" xml:space="preserve"><value>Polygon holes</value></data>
-  <data name="ThreePointArc" xml:space="preserve"><value>Three-point arc segment</value></data>
-  <data name="MixedCurveLoop" xml:space="preserve"><value>Mixed curve loop</value></data>
-  <data name="SketchIslands" xml:space="preserve"><value>Islands inside selected holes</value></data>
-  <data name="QuadraticBezier" xml:space="preserve"><value>Quadratic Bézier region</value></data>
-  <data name="CubicSpline" xml:space="preserve"><value>Cubic B-spline region</value></data>
-  <data name="SplineControlCount" xml:space="preserve"><value>Control points</value></data>
-  <data name="InsertInstance" xml:space="preserve"><value>Insert instance into selected assembly</value></data>
-  <data name="ReplaceInstance" xml:space="preserve"><value>Replace selected instance</value></data>
-  <data name="RemoveInstance" xml:space="preserve"><value>Remove selected instance</value></data>
-  <data name="ReparentInstance" xml:space="preserve"><value>Move to assembly (keep world position)</value></data>
-  <data name="MakeAssemblyIndependent" xml:space="preserve"><value>Make this assembly independent</value></data>
-  <data name="InstanceDefinition" xml:space="preserve"><value>Definition to insert or replace</value></data>
-  <data name="DestinationAssembly" xml:space="preserve"><value>Destination assembly</value></data>
-  <data name="CreateSiblingAssembly" xml:space="preserve"><value>Create assembly beside selection</value></data>
-  <data name="NewAssemblyName" xml:space="preserve"><value>New assembly name</value></data>
-  <data name="MakePartIndependent" xml:space="preserve"><value>Make this part independent</value></data>
-  <data name="OccurrenceName" xml:space="preserve"><value>Instance name (this placement)</value></data>
-  <data name="SharedDefinitionName" xml:space="preserve"><value>Definition name (all instances)</value></data>
-  <data name="RenameOccurrence" xml:space="preserve"><value>Rename instance</value></data>
-  <data name="RenameDefinition" xml:space="preserve"><value>Rename shared definition</value></data>
-  <data name="DefinitionUsageCount" xml:space="preserve"><value>This definition is used by {0} instance(s).</value></data>
-  <data name="PruneUnusedDefinitions" xml:space="preserve"><value>Remove unused definitions</value></data>
-  <data name="AssemblyRelations" xml:space="preserve"><value>Assembly relations</value></data>
-  <data name="AssemblyReference" xml:space="preserve"><value>Reference instance</value></data>
-  <data name="AssemblyDistance" xml:space="preserve"><value>Target distance (mm)</value></data>
-  <data name="AssemblyFix" xml:space="preserve"><value>Fix selected instance</value></data>
-  <data name="AssemblyCoincident" xml:space="preserve"><value>Make local points coincident</value></data>
-  <data name="AssemblyAddDistance" xml:space="preserve"><value>Add local point distance</value></data>
-  <data name="AssemblyAdjust" xml:space="preserve"><value>Adjust second instance</value></data>
-  <data name="AssemblyRetarget" xml:space="preserve"><value>Retarget using selection</value></data>
-  <data name="AssemblyToggle" xml:space="preserve"><value>Enable / disable</value></data>
-  <data name="AssemblyRemove" xml:space="preserve"><value>Remove relation</value></data>
-  <data name="AssemblyApplyDistance" xml:space="preserve"><value>Change distance target</value></data>
-  <data name="AssemblyFixedName" xml:space="preserve"><value>Fixed</value></data>
-  <data name="AssemblyCoincidentName" xml:space="preserve"><value>Coincident</value></data>
-  <data name="AssemblyDistanceName" xml:space="preserve"><value>Distance</value></data>
-  <data name="AssemblyApplyAnchors" xml:space="preserve"><value>Apply local points</value></data>
-  <data name="AssemblyApplyAxes" xml:space="preserve"><value>Apply local axes</value></data>
-  <data name="AssemblyCoaxial" xml:space="preserve"><value>Add coaxial axes</value></data>
-  <data name="AssemblyCoaxialName" xml:space="preserve"><value>Coaxial</value></data>
-  <data name="AssemblyParallel" xml:space="preserve"><value>Add parallel axes</value></data>
-  <data name="AssemblyParallelName" xml:space="preserve"><value>Parallel</value></data>
-  <data name="AssemblyPrimaryAxis" xml:space="preserve"><value>Reference local axis</value></data>
-  <data name="AssemblyPrimaryPoint" xml:space="preserve"><value>Reference local point (mm)</value></data>
-  <data name="AssemblySecondaryAxis" xml:space="preserve"><value>Moving local axis</value></data>
-  <data name="AssemblySecondaryPoint" xml:space="preserve"><value>Moving local point (mm)</value></data>
+  <data name="LocalSourceBody" xml:space="preserve">
+    <value>Source body</value>
+  </data>
+  <data name="LocalChainedHint" xml:space="preserve">
+    <value>Pick an edge on this result. For a chamfer, switch to Face and pick its support face.</value>
+  </data>
+  <data name="LocalReselectHint" xml:space="preserve">
+    <value>Upstream geometry changed. Reselect an edge on its current result; for a chamfer also pick its support face.</value>
+  </data>
+  <data name="LocalExactEdge" xml:space="preserve">
+    <value>Edge #{0}</value>
+  </data>
+  <data name="LocalSupportFaceHint" xml:space="preserve">
+    <value>Select a support face</value>
+  </data>
+  <data name="LocalSupportFaceSelected" xml:space="preserve">
+    <value>Support face #{0}</value>
+  </data>
+  <data name="SketchPolygonHoles" xml:space="preserve">
+    <value>Polygon holes</value>
+  </data>
+  <data name="ThreePointArc" xml:space="preserve">
+    <value>Three-point arc segment</value>
+  </data>
+  <data name="MixedCurveLoop" xml:space="preserve">
+    <value>Mixed curve loop</value>
+  </data>
+  <data name="SketchIslands" xml:space="preserve">
+    <value>Islands inside selected holes</value>
+  </data>
+  <data name="QuadraticBezier" xml:space="preserve">
+    <value>Quadratic Bézier region</value>
+  </data>
+  <data name="CubicSpline" xml:space="preserve">
+    <value>Cubic B-spline</value>
+  </data>
+  <data name="SplineControlCount" xml:space="preserve">
+    <value>Control points</value>
+  </data>
+  <data name="InsertInstance" xml:space="preserve">
+    <value>Insert instance into selected assembly</value>
+  </data>
+  <data name="ReplaceInstance" xml:space="preserve">
+    <value>Replace selected instance</value>
+  </data>
+  <data name="RemoveInstance" xml:space="preserve">
+    <value>Remove selected instance</value>
+  </data>
+  <data name="ReparentInstance" xml:space="preserve">
+    <value>Move to assembly (keep world position)</value>
+  </data>
+  <data name="MakeAssemblyIndependent" xml:space="preserve">
+    <value>Make this assembly independent</value>
+  </data>
+  <data name="InstanceDefinition" xml:space="preserve">
+    <value>Definition to insert or replace</value>
+  </data>
+  <data name="DestinationAssembly" xml:space="preserve">
+    <value>Destination assembly</value>
+  </data>
+  <data name="CreateSiblingAssembly" xml:space="preserve">
+    <value>Create assembly beside selection</value>
+  </data>
+  <data name="NewAssemblyName" xml:space="preserve">
+    <value>New assembly name</value>
+  </data>
+  <data name="MakePartIndependent" xml:space="preserve">
+    <value>Make this part independent</value>
+  </data>
+  <data name="OccurrenceName" xml:space="preserve">
+    <value>Instance name (this placement)</value>
+  </data>
+  <data name="SharedDefinitionName" xml:space="preserve">
+    <value>Definition name (all instances)</value>
+  </data>
+  <data name="RenameOccurrence" xml:space="preserve">
+    <value>Rename instance</value>
+  </data>
+  <data name="RenameDefinition" xml:space="preserve">
+    <value>Rename shared definition</value>
+  </data>
+  <data name="DefinitionUsageCount" xml:space="preserve">
+    <value>This definition is used by {0} instance(s).</value>
+  </data>
+  <data name="PruneUnusedDefinitions" xml:space="preserve">
+    <value>Remove unused definitions</value>
+  </data>
+  <data name="AssemblyRelations" xml:space="preserve">
+    <value>Assembly relations</value>
+  </data>
+  <data name="AssemblyReference" xml:space="preserve">
+    <value>Reference instance</value>
+  </data>
+  <data name="AssemblyDistance" xml:space="preserve">
+    <value>Target distance (mm)</value>
+  </data>
+  <data name="AssemblyFix" xml:space="preserve">
+    <value>Fix selected instance</value>
+  </data>
+  <data name="AssemblyCoincident" xml:space="preserve">
+    <value>Make local points coincident</value>
+  </data>
+  <data name="AssemblyAddDistance" xml:space="preserve">
+    <value>Add local point distance</value>
+  </data>
+  <data name="AssemblyAdjust" xml:space="preserve">
+    <value>Adjust second instance</value>
+  </data>
+  <data name="AssemblyRetarget" xml:space="preserve">
+    <value>Retarget using selection</value>
+  </data>
+  <data name="AssemblyToggle" xml:space="preserve">
+    <value>Enable / disable</value>
+  </data>
+  <data name="AssemblyRemove" xml:space="preserve">
+    <value>Remove relation</value>
+  </data>
+  <data name="AssemblyApplyDistance" xml:space="preserve">
+    <value>Change distance target</value>
+  </data>
+  <data name="AssemblyFixedName" xml:space="preserve">
+    <value>Fixed</value>
+  </data>
+  <data name="AssemblyCoincidentName" xml:space="preserve">
+    <value>Coincident</value>
+  </data>
+  <data name="AssemblyDistanceName" xml:space="preserve">
+    <value>Distance</value>
+  </data>
+  <data name="AssemblyApplyAnchors" xml:space="preserve">
+    <value>Apply local points</value>
+  </data>
+  <data name="AssemblyApplyAxes" xml:space="preserve">
+    <value>Apply local axes</value>
+  </data>
+  <data name="AssemblyCoaxial" xml:space="preserve">
+    <value>Add coaxial axes</value>
+  </data>
+  <data name="AssemblyCoaxialName" xml:space="preserve">
+    <value>Coaxial</value>
+  </data>
+  <data name="AssemblyParallel" xml:space="preserve">
+    <value>Add parallel axes</value>
+  </data>
+  <data name="AssemblyParallelName" xml:space="preserve">
+    <value>Parallel</value>
+  </data>
+  <data name="AssemblyPrimaryAxis" xml:space="preserve">
+    <value>Reference local axis</value>
+  </data>
+  <data name="AssemblyPrimaryPoint" xml:space="preserve">
+    <value>Reference local point (mm)</value>
+  </data>
+  <data name="AssemblySecondaryAxis" xml:space="preserve">
+    <value>Moving local axis</value>
+  </data>
+  <data name="AssemblySecondaryPoint" xml:space="preserve">
+    <value>Moving local point (mm)</value>
+  </data>
   <data name="ExternalPartBrowse" xml:space="preserve">
     <value>Browse…</value>
   </data>
@@ -1337,10 +1447,18 @@
   <data name="AssemblySolveAll" xml:space="preserve">
     <value>Solve assembly relations</value>
   </data>
-  <data name="AssemblyPreviewSolve" xml:space="preserve"><value>Preview assembly positions</value></data>
-  <data name="AssemblyConfirmSolve" xml:space="preserve"><value>Confirm positions</value></data>
-  <data name="AssemblyCancelSolve" xml:space="preserve"><value>Cancel preview</value></data>
-  <data name="AssemblySolvePreviewSummary" xml:space="preserve"><value>{0} Components: {1}; local free motions: {2}; redundant relations: {3}; unanchored groups: {4}.</value></data>
+  <data name="AssemblyPreviewSolve" xml:space="preserve">
+    <value>Preview assembly positions</value>
+  </data>
+  <data name="AssemblyConfirmSolve" xml:space="preserve">
+    <value>Confirm positions</value>
+  </data>
+  <data name="AssemblyCancelSolve" xml:space="preserve">
+    <value>Cancel preview</value>
+  </data>
+  <data name="AssemblySolvePreviewSummary" xml:space="preserve">
+    <value>{0} Components: {1}; local free motions: {2}; redundant relations: {3}; unanchored groups: {4}.</value>
+  </data>
   <data name="DocumentScaleFormat" xml:space="preserve">
     <value>{0} definitions · {1} instances · {2} unique assets ({3:F1} MiB)</value>
   </data>
@@ -1497,185 +1615,1723 @@
   <data name="SectionView" xml:space="preserve">
     <value>Section view</value>
   </data>
-  <data name="CreateSection" xml:space="preserve"><value>Create section geometry</value></data>
-  <data name="InterferenceCheck" xml:space="preserve"><value>Check interference</value></data>
-  <data name="InterferenceHint" xml:space="preserve"><value>Select 2–512 solid instances with broad phase, or 2–32 for all exact distances. Uses document tolerance. Sheets, meshes and mixed compounds are excluded. Overlap is pairwise volume.</value></data>
-  <data name="LocateInterference" xml:space="preserve"><value>Isolate and focus this pair</value></data>
-  <data name="PairContained" xml:space="preserve"><value>Contained</value></data>
-  <data name="PairInterfering" xml:space="preserve"><value>Interfering</value></data>
-  <data name="PairOverlap" xml:space="preserve"><value>Overlap volume</value></data>
-  <data name="PairSeparated" xml:space="preserve"><value>Separated</value></data>
-  <data name="PairSummary" xml:space="preserve"><value>{0} pairs checked; {1} with positive overlap volume.</value></data>
-  <data name="PairTouching" xml:space="preserve"><value>Touching</value></data>
-  <data name="ReviewCalculating" xml:space="preserve"><value>Calculating geometry…</value></data>
-  <data name="SectionCreated" xml:space="preserve"><value>Frozen section created in a new part. Undo, save and STEP/IGES export are available.</value></data>
-  <data name="SectionCurves" xml:space="preserve"><value>Section curves</value></data>
-  <data name="SectionGeometryHint" xml:space="preserve"><value>Intersect 1–256 selected bodies with the axis/offset plane above. Create curves or filled faces (solids only), with optional source association. The slab controls affect display only.</value></data>
-  <data name="RibbonHistory" xml:space="preserve"><value>History</value></data>
-  <data name="RibbonPrimitives" xml:space="preserve"><value>Primitives</value></data>
-  <data name="RibbonProfiles" xml:space="preserve"><value>Profile features</value></data>
-  <data name="RibbonNavigation" xml:space="preserve"><value>Navigation</value></data>
-  <data name="RibbonStandardViews" xml:space="preserve"><value>Standard views</value></data>
-  <data name="RibbonDisplay" xml:space="preserve"><value>Display</value></data>
-  <data name="RibbonLayout" xml:space="preserve"><value>Workspace</value></data>
-  <data name="ViewBack" xml:space="preserve"><value>Back</value></data>
-  <data name="ViewBottom" xml:space="preserve"><value>Bottom</value></data>
-  <data name="ViewLeft" xml:space="preserve"><value>Left</value></data>
-  <data name="ProgressWorking" xml:space="preserve"><value>Working…</value></data>
-  <data name="ProgressCancelling" xml:space="preserve"><value>Cancelling; waiting for the current step to finish…</value></data>
-  <data name="ProgressOpeningFormat" xml:space="preserve"><value>Opening {0}…</value></data>
-  <data name="NotificationCompleted" xml:space="preserve"><value>Completed</value></data>
-  <data name="NotificationInformation" xml:space="preserve"><value>Information</value></data>
-  <data name="NotificationWarning" xml:space="preserve"><value>Warning</value></data>
-  <data name="NotificationError" xml:space="preserve"><value>Operation failed</value></data>
-  <data name="NotificationBackgroundOpening" xml:space="preserve"><value>Opening in background</value></data>
-  <data name="NotificationOpenCancelledFormat" xml:space="preserve"><value>Cancelled opening {0}.</value></data>
-  <data name="NotificationPosition" xml:space="preserve"><value>Notification position</value></data>
-  <data name="NotificationAnchorApplication" xml:space="preserve"><value>Current application window (default)</value></data>
-  <data name="NotificationAnchorDesktop" xml:space="preserve"><value>Windows desktop</value></data>
-<data name="AssociativeSection" xml:space="preserve"><value>Associate with source bodies</value></data>
-<data name="SectionFaces" xml:space="preserve"><value>Create filled section faces (solids)</value></data>
-<data name="UpdateSection" xml:space="preserve"><value>Update section parameters</value></data>
-<data name="DetachSection" xml:space="preserve"><value>Detach association</value></data>
-<data name="ReviewCurrent" xml:space="preserve"><value>Up to date</value></data>
-<data name="EngineeringDimension" xml:space="preserve"><value>Engineering dimensions</value></data>
-<data name="DimensionHint" xml:space="preserve"><value>Dimensions store frozen world points. They do not follow geometry edits. Use measured distance or enter coordinates in mm.</value></data>
-<data name="NewDimension" xml:space="preserve"><value>New dimension</value></data>
-<data name="UseMeasuredDimension" xml:space="preserve"><value>Use measured distance</value></data>
-<data name="AngleDimension" xml:space="preserve"><value>Angle (second point is vertex)</value></data>
-<data name="DimensionPoints" xml:space="preserve"><value>Points: X, Y, Z (mm)</value></data>
-<data name="DimensionFlyout" xml:space="preserve"><value>Dimension offset (mm)</value></data>
-<data name="SaveDimension" xml:space="preserve"><value>Save dimension</value></data>
-<data name="ToggleDimension" xml:space="preserve"><value>Show / hide</value></data>
-<data name="ReviewBookmark" xml:space="preserve"><value>Review views</value></data>
-<data name="SaveBookmark" xml:space="preserve"><value>Save current views</value></data>
-<data name="RestoreBookmark" xml:space="preserve"><value>Restore view</value></data>
-<data name="BroadPhaseCheck" xml:space="preserve"><value>Broad phase (up to 512 solid instances)</value></data>
-<data name="BroadPhaseSummary" xml:space="preserve"><value>{0} separated pairs excluded by bounding boxes</value></data>
-  <data name="EngineeringDelivery" xml:space="preserve"><value>Engineering delivery</value></data>
-  <data name="DeliverySummary" xml:space="preserve"><value>{0} part definitions · {1} instances</value></data>
-  <data name="DeliveryHint" xml:space="preserve"><value>Preview the parts list. — means unknown mass. Values use cached solid volume and material density. The native document always contains the complete model and history. Exchange files omit review annotations.</value></data>
-  <data name="DeliveryVisibleOnly" xml:space="preserve"><value>BOM and exchange: document-visible objects only</value></data>
-  <data name="BomQuantity" xml:space="preserve"><value>Quantity</value></data>
-  <data name="BomMass" xml:space="preserve"><value>Total kg</value></data>
-  <data name="DeliveryOutput" xml:space="preserve"><value>Output</value></data>
-  <data name="DeliveryPackage" xml:space="preserve"><value>Delivery package (.zip)</value></data>
-  <data name="DeliveryCsv" xml:space="preserve"><value>Parts list (.csv)</value></data>
-  <data name="DeliveryHtml" xml:space="preserve"><value>Review report (.html)</value></data>
-  <data name="DeliveryFormats" xml:space="preserve"><value>Package includes native document, BOM and report. Add exchange formats:</value></data>
-  <data name="DeliveryLinear" xml:space="preserve"><value>STL linear deflection (mm)</value></data>
-  <data name="DeliveryAngle" xml:space="preserve"><value>STL angular deflection (°)</value></data>
-  <data name="DeliveryWorking" xml:space="preserve"><value>Preparing delivery. Cancellation waits for the current native export to return.</value></data>
-  <data name="DeliveryCompleted" xml:space="preserve"><value>Delivery created: {0}</value></data>
-  <data name="ViewportLoadingFormat" xml:space="preserve"><value>Loading view {0}/{1}…</value></data>
-  <data name="DocumentCustomPlane" xml:space="preserve"><value>Custom</value></data>
-  <data name="WorkPlaneOrigin" xml:space="preserve"><value>Plane origin (mm)</value></data>
-  <data name="WorkPlaneAngles" xml:space="preserve"><value>Rotation X / Y / Z (degrees)</value></data>
-  <data name="SplineHoles" xml:space="preserve"><value>B-spline holes</value></data>
-  <data name="AutoNestRegions" xml:space="preserve"><value>Detect nested regions</value></data>
-  <data name="NestedRegionsCount" xml:space="preserve"><value>{0} nested sketch regions</value></data>
-  <data name="ViewCubeFront" xml:space="preserve"><value>FR</value></data>
-  <data name="ViewCubeBack" xml:space="preserve"><value>BK</value></data>
-  <data name="ViewCubeLeft" xml:space="preserve"><value>LT</value></data>
-  <data name="ViewCubeRight" xml:space="preserve"><value>RT</value></data>
-  <data name="ViewCubeTop" xml:space="preserve"><value>TOP</value></data>
-  <data name="ViewCubeBottom" xml:space="preserve"><value>BTM</value></data>
-  <data name="SolidHandleHint" xml:space="preserve"><value>Drag the orange handles to change dimensions, then confirm the preview.</value></data>
-  <data name="OccurrenceDragHint" xml:space="preserve"><value>Drag the red, green, or blue viewport handle to move an unconstrained instance. Esc cancels; release commits one undoable move.</value></data>
-  <data name="AssemblyDatumSection" xml:space="preserve"><value>BRep geometric datums</value></data>
-  <data name="AssemblyPickReferenceDatum" xml:space="preserve"><value>Pick reference face or edge</value></data>
-  <data name="AssemblyPickMovingDatum" xml:space="preserve"><value>Pick moving face or edge</value></data>
-  <data name="AssemblyAddDatumRelation" xml:space="preserve"><value>Add geometric relation</value></data>
-  <data name="ExternalPartPreview" xml:space="preserve"><value>Preview dependency chain</value></data>
-  <data name="ExternalPartRelocate" xml:space="preserve"><value>Relocate pinned source</value></data>
-  <data name="AssemblyReselectDatumRelation" xml:space="preserve"><value>Reselect selected relation datums</value></data>
-  <data name="DrawingSheets" xml:space="preserve"><value>Drawing sheets</value></data>
-  <data name="DrawingAddSheet" xml:space="preserve"><value>New sheet</value></data>
-  <data name="DrawingDeleteSheet" xml:space="preserve"><value>Delete sheet</value></data>
-  <data name="DrawingAddView" xml:space="preserve"><value>Add view</value></data>
-  <data name="DrawingEditView" xml:space="preserve"><value>Move / scale view</value></data>
-  <data name="DrawingDeleteView" xml:space="preserve"><value>Delete view</value></data>
-  <data name="DrawingRefresh" xml:space="preserve"><value>Refresh projections</value></data>
-  <data name="DrawingPdf" xml:space="preserve"><value>Export PDF</value></data>
-  <data name="DrawingPrint" xml:space="preserve"><value>Print</value></data>
-  <data name="DrawingPickFirst" xml:space="preserve"><value>Pick first datum</value></data>
-  <data name="DrawingPickSecond" xml:space="preserve"><value>Pick second datum</value></data>
-  <data name="DrawingAddDimension" xml:space="preserve"><value>Add dimension</value></data>
-  <data name="DrawingReselectDimension" xml:space="preserve"><value>Reselect dimension</value></data>
-  <data name="DrawingDeleteDimension" xml:space="preserve"><value>Delete dimension</value></data>
-  <data name="DrawingSelectSource" xml:space="preserve"><value>Source: current selection or whole model</value></data>
-  <data name="DrawingStale" xml:space="preserve"><value>Stale reference: reselect or refresh</value></data>
-  <data name="DrawingSheetProperties" xml:space="preserve"><value>Sheet properties</value></data>
-  <data name="DrawingViewProperties" xml:space="preserve"><value>View position / scale</value></data>
-  <data name="DrawingDimensionProperties" xml:space="preserve"><value>Dimension</value></data>
-  <data name="DrawingStatusPick" xml:space="preserve"><value>Click an analytic face or circular edge in the viewport.</value></data>
-  <data name="DrawingReselectSource" xml:space="preserve"><value>Reselect source</value></data>
-  <data name="DrawingViewFront" xml:space="preserve"><value>Front</value></data>
-  <data name="DrawingViewTop" xml:space="preserve"><value>Top</value></data>
-  <data name="DrawingViewRight" xml:space="preserve"><value>Right</value></data>
-  <data name="DrawingViewIsometric" xml:space="preserve"><value>Isometric</value></data>
-  <data name="DrawingViewSection" xml:space="preserve"><value>Section</value></data>
-  <data name="DrawingViewDetail" xml:space="preserve"><value>Detail</value></data>
-  <data name="DrawingStandard" xml:space="preserve"><value>Drawing convention</value></data>
-  <data name="DrawingDetailCrop" xml:space="preserve"><value>Detail center X/Y and radius (model units)</value></data>
-  <data name="DrawingTolerance" xml:space="preserve"><value>Upper / lower tolerance (model units)</value></data>
-  <data name="DrawingApplyTolerance" xml:space="preserve"><value>Apply tolerance</value></data>
-  <data name="DrawingMeasureLength" xml:space="preserve"><value>Length</value></data>
-  <data name="DrawingMeasureAngle" xml:space="preserve"><value>Angle</value></data>
-  <data name="DrawingMeasureRadius" xml:space="preserve"><value>Radius</value></data>
-  <data name="DrawingMeasureDiameter" xml:space="preserve"><value>Diameter</value></data>
-  <data name="DrawingLinkParent" xml:space="preserve"><value>Link to selected view</value></data>
-  <data name="DrawingApplyDimension" xml:space="preserve"><value>Apply position and color</value></data>
-  <data name="DrawingSectionPlane" xml:space="preserve"><value>Section normal X/Y/Z and offset (mm)</value></data>
-  <data name="DrawingDatumFace" xml:space="preserve"><value>Pick face</value></data>
-  <data name="DrawingDatumEdge" xml:space="preserve"><value>Pick circular edge</value></data>
-  <data name="DrawingZoom" xml:space="preserve"><value>Zoom</value></data>
-  <data name="DrawingTitle" xml:space="preserve"><value>Drawing title</value></data>
-  <data name="DrawingAuthor" xml:space="preserve"><value>Author</value></data>
-  <data name="DrawingPaperSize" xml:space="preserve"><value>Paper size (width × height, mm)</value></data>
-  <data name="DrawingWidth" xml:space="preserve"><value>Width (mm)</value></data>
-  <data name="DrawingHeight" xml:space="preserve"><value>Height (mm)</value></data>
-  <data name="DrawingViewKind" xml:space="preserve"><value>View type</value></data>
-  <data name="DrawingScale" xml:space="preserve"><value>Scale</value></data>
-  <data name="DrawingMeasureKind" xml:space="preserve"><value>Dimension type</value></data>
-  <data name="DrawingDatumKind" xml:space="preserve"><value>Datum type</value></data>
-  <data name="DrawingTextPosition" xml:space="preserve"><value>Text position (X / Y, mm)</value></data>
-  <data name="AssemblyManualCoordinates" xml:space="preserve"><value>Manual coordinates and relations</value></data>
-  <data name="DrawingSheetTab" xml:space="preserve"><value>Sheet</value></data>
-  <data name="DrawingAppearance" xml:space="preserve"><value>Position and color</value></data>
-  <data name="ProfileRegions" xml:space="preserve"><value>Sketch holes and regions</value></data>
-  <data name="BooleanOperations" xml:space="preserve"><value>Boolean operations</value></data>
-  <data name="InstanceStructureActions" xml:space="preserve"><value>Assembly structure</value></data>
-  <data name="ExternalPartActions" xml:space="preserve"><value>External part links</value></data>
-  <data name="AiAssistant" xml:space="preserve"><value>AI Assistant</value></data>
-  <data name="AiAttachFile" xml:space="preserve"><value>Attach image or text file</value></data>
-  <data name="AiCodexExecutable" xml:space="preserve"><value>Codex executable</value></data>
-  <data name="AiCodexModel" xml:space="preserve"><value>Codex model (optional)</value></data>
-  <data name="AiEnableCadTools" xml:space="preserve"><value>Allow CAD tools</value></data>
-  <data name="AiEndpoint" xml:space="preserve"><value>LM Studio endpoint</value></data>
-  <data name="AiLoadModels" xml:space="preserve"><value>Load models</value></data>
-  <data name="AiModel" xml:space="preserve"><value>LM Studio model</value></data>
-  <data name="AiPrompt" xml:space="preserve"><value>Ask the CAD assistant</value></data>
-  <data name="AiProvider" xml:space="preserve"><value>Provider</value></data>
-  <data name="AiReasoning" xml:space="preserve"><value>Reasoning effort</value></data>
-  <data name="AiSend" xml:space="preserve"><value>Send</value></data>
-  <data name="AiSettings" xml:space="preserve"><value>AI settings</value></data>
-  <data name="AiStop" xml:space="preserve"><value>Stop</value></data>
-  <data name="CommandRun" xml:space="preserve"><value>Run command</value></data>
-  <data name="CommandTerminal" xml:space="preserve"><value>Commands</value></data>
-  <data name="SuppressFeature" xml:space="preserve"><value>Suppress feature</value></data>
-  <data name="RestoreFeature" xml:space="preserve"><value>Restore feature</value></data>
-  <data name="RadialMenu" xml:space="preserve"><value>Radial menu</value></data>
-  <data name="RadialEnabled" xml:space="preserve"><value>Enable radial menu on the key below Esc</value></data>
-  <data name="RadialHint" xml:space="preserve"><value>Hold the physical key below Esc (` on US keyboards) to show the menu. Point to an action, use the wheel to switch pages, and release the key to run. Shift, Ctrl and Alt can also select pages 2–4.</value></data>
-  <data name="RadialMiddle" xml:space="preserve"><value>Page 1</value></data>
-  <data name="RadialShift" xml:space="preserve"><value>Page 2</value></data>
-  <data name="RadialControl" xml:space="preserve"><value>Page 3</value></data>
-  <data name="RadialEmpty" xml:space="preserve"><value>Empty</value></data>
-  <data name="RadialAlt" xml:space="preserve"><value>Page 4</value></data>
-  <data name="RadialClear" xml:space="preserve"><value>Drag a slot here to clear it</value></data>
-  <data name="RadialPaletteHint" xml:space="preserve"><value>Drag an action to a sector; drag a sector to the center to clear it.</value></data>
-  <data name="GizmoMove" xml:space="preserve"><value>Move (axes / planes)</value></data>
-  <data name="GizmoRotate" xml:space="preserve"><value>Rotate</value></data>
-  <data name="GizmoScale" xml:space="preserve"><value>Scale primitive</value></data>
+  <data name="CreateSection" xml:space="preserve">
+    <value>Create section geometry</value>
+  </data>
+  <data name="InterferenceCheck" xml:space="preserve">
+    <value>Check interference</value>
+  </data>
+  <data name="InterferenceHint" xml:space="preserve">
+    <value>Select 2–512 solid instances with broad phase, or 2–32 for all exact distances. Uses document tolerance. Sheets, meshes and mixed compounds are excluded. Overlap is pairwise volume.</value>
+  </data>
+  <data name="LocateInterference" xml:space="preserve">
+    <value>Isolate and focus this pair</value>
+  </data>
+  <data name="PairContained" xml:space="preserve">
+    <value>Contained</value>
+  </data>
+  <data name="PairInterfering" xml:space="preserve">
+    <value>Interfering</value>
+  </data>
+  <data name="PairOverlap" xml:space="preserve">
+    <value>Overlap volume</value>
+  </data>
+  <data name="PairSeparated" xml:space="preserve">
+    <value>Separated</value>
+  </data>
+  <data name="PairSummary" xml:space="preserve">
+    <value>{0} pairs checked; {1} with positive overlap volume.</value>
+  </data>
+  <data name="PairTouching" xml:space="preserve">
+    <value>Touching</value>
+  </data>
+  <data name="ReviewCalculating" xml:space="preserve">
+    <value>Calculating geometry…</value>
+  </data>
+  <data name="SectionCreated" xml:space="preserve">
+    <value>Frozen section created in a new part. Undo, save and STEP/IGES export are available.</value>
+  </data>
+  <data name="SectionCurves" xml:space="preserve">
+    <value>Section curves</value>
+  </data>
+  <data name="SectionGeometryHint" xml:space="preserve">
+    <value>Intersect 1–256 selected bodies with the axis/offset plane above. Create curves or filled faces (solids only), with optional source association. The slab controls affect display only.</value>
+  </data>
+  <data name="RibbonHistory" xml:space="preserve">
+    <value>History</value>
+  </data>
+  <data name="RibbonPrimitives" xml:space="preserve">
+    <value>Primitives</value>
+  </data>
+  <data name="RibbonProfiles" xml:space="preserve">
+    <value>Profile features</value>
+  </data>
+  <data name="RibbonNavigation" xml:space="preserve">
+    <value>Navigation</value>
+  </data>
+  <data name="RibbonStandardViews" xml:space="preserve">
+    <value>Standard views</value>
+  </data>
+  <data name="RibbonDisplay" xml:space="preserve">
+    <value>Display</value>
+  </data>
+  <data name="RibbonLayout" xml:space="preserve">
+    <value>Workspace</value>
+  </data>
+  <data name="ViewBack" xml:space="preserve">
+    <value>Back</value>
+  </data>
+  <data name="ViewBottom" xml:space="preserve">
+    <value>Bottom</value>
+  </data>
+  <data name="ViewLeft" xml:space="preserve">
+    <value>Left</value>
+  </data>
+  <data name="ProgressWorking" xml:space="preserve">
+    <value>Working…</value>
+  </data>
+  <data name="ProgressCancelling" xml:space="preserve">
+    <value>Cancelling; waiting for the current step to finish…</value>
+  </data>
+  <data name="ProgressOpeningFormat" xml:space="preserve">
+    <value>Opening {0}…</value>
+  </data>
+  <data name="NotificationCompleted" xml:space="preserve">
+    <value>Completed</value>
+  </data>
+  <data name="NotificationInformation" xml:space="preserve">
+    <value>Information</value>
+  </data>
+  <data name="NotificationWarning" xml:space="preserve">
+    <value>Warning</value>
+  </data>
+  <data name="NotificationError" xml:space="preserve">
+    <value>Operation failed</value>
+  </data>
+  <data name="NotificationBackgroundOpening" xml:space="preserve">
+    <value>Opening in background</value>
+  </data>
+  <data name="NotificationOpenCancelledFormat" xml:space="preserve">
+    <value>Cancelled opening {0}.</value>
+  </data>
+  <data name="NotificationPosition" xml:space="preserve">
+    <value>Notification position</value>
+  </data>
+  <data name="NotificationAnchorApplication" xml:space="preserve">
+    <value>Current application window (default)</value>
+  </data>
+  <data name="NotificationAnchorDesktop" xml:space="preserve">
+    <value>Windows desktop</value>
+  </data>
+  <data name="AssociativeSection" xml:space="preserve">
+    <value>Associate with source bodies</value>
+  </data>
+  <data name="SectionFaces" xml:space="preserve">
+    <value>Create filled section faces (solids)</value>
+  </data>
+  <data name="UpdateSection" xml:space="preserve">
+    <value>Update section parameters</value>
+  </data>
+  <data name="DetachSection" xml:space="preserve">
+    <value>Detach association</value>
+  </data>
+  <data name="ReviewCurrent" xml:space="preserve">
+    <value>Up to date</value>
+  </data>
+  <data name="EngineeringDimension" xml:space="preserve">
+    <value>Engineering dimensions</value>
+  </data>
+  <data name="DimensionHint" xml:space="preserve">
+    <value>Dimensions store frozen world points. They do not follow geometry edits. Use measured distance or enter coordinates in mm.</value>
+  </data>
+  <data name="NewDimension" xml:space="preserve">
+    <value>New dimension</value>
+  </data>
+  <data name="UseMeasuredDimension" xml:space="preserve">
+    <value>Use measured distance</value>
+  </data>
+  <data name="AngleDimension" xml:space="preserve">
+    <value>Angle (second point is vertex)</value>
+  </data>
+  <data name="DimensionPoints" xml:space="preserve">
+    <value>Points: X, Y, Z (mm)</value>
+  </data>
+  <data name="DimensionFlyout" xml:space="preserve">
+    <value>Dimension offset (mm)</value>
+  </data>
+  <data name="SaveDimension" xml:space="preserve">
+    <value>Save dimension</value>
+  </data>
+  <data name="ToggleDimension" xml:space="preserve">
+    <value>Show / hide</value>
+  </data>
+  <data name="ReviewBookmark" xml:space="preserve">
+    <value>Review views</value>
+  </data>
+  <data name="SaveBookmark" xml:space="preserve">
+    <value>Save current views</value>
+  </data>
+  <data name="RestoreBookmark" xml:space="preserve">
+    <value>Restore view</value>
+  </data>
+  <data name="BroadPhaseCheck" xml:space="preserve">
+    <value>Broad phase (up to 512 solid instances)</value>
+  </data>
+  <data name="BroadPhaseSummary" xml:space="preserve">
+    <value>{0} separated pairs excluded by bounding boxes</value>
+  </data>
+  <data name="EngineeringDelivery" xml:space="preserve">
+    <value>Engineering delivery</value>
+  </data>
+  <data name="DeliverySummary" xml:space="preserve">
+    <value>{0} part definitions · {1} instances</value>
+  </data>
+  <data name="DeliveryHint" xml:space="preserve">
+    <value>Preview the parts list. — means unknown mass. Values use cached solid volume and material density. The native document always contains the complete model and history. Exchange files omit review annotations.</value>
+  </data>
+  <data name="DeliveryVisibleOnly" xml:space="preserve">
+    <value>BOM and exchange: document-visible objects only</value>
+  </data>
+  <data name="BomQuantity" xml:space="preserve">
+    <value>Quantity</value>
+  </data>
+  <data name="BomMass" xml:space="preserve">
+    <value>Total kg</value>
+  </data>
+  <data name="DeliveryOutput" xml:space="preserve">
+    <value>Output</value>
+  </data>
+  <data name="DeliveryPackage" xml:space="preserve">
+    <value>Delivery package (.zip)</value>
+  </data>
+  <data name="DeliveryCsv" xml:space="preserve">
+    <value>Parts list (.csv)</value>
+  </data>
+  <data name="DeliveryHtml" xml:space="preserve">
+    <value>Review report (.html)</value>
+  </data>
+  <data name="DeliveryFormats" xml:space="preserve">
+    <value>Package includes native document, BOM and report. Add exchange formats:</value>
+  </data>
+  <data name="DeliveryLinear" xml:space="preserve">
+    <value>STL linear deflection (mm)</value>
+  </data>
+  <data name="DeliveryAngle" xml:space="preserve">
+    <value>STL angular deflection (°)</value>
+  </data>
+  <data name="DeliveryWorking" xml:space="preserve">
+    <value>Preparing delivery. Cancellation waits for the current native export to return.</value>
+  </data>
+  <data name="DeliveryCompleted" xml:space="preserve">
+    <value>Delivery created: {0}</value>
+  </data>
+  <data name="ViewportLoadingFormat" xml:space="preserve">
+    <value>Loading view {0}/{1}…</value>
+  </data>
+  <data name="DocumentCustomPlane" xml:space="preserve">
+    <value>Custom</value>
+  </data>
+  <data name="WorkPlaneOrigin" xml:space="preserve">
+    <value>Plane origin (mm)</value>
+  </data>
+  <data name="WorkPlaneAngles" xml:space="preserve">
+    <value>Rotation X / Y / Z (degrees)</value>
+  </data>
+  <data name="SplineHoles" xml:space="preserve">
+    <value>B-spline holes</value>
+  </data>
+  <data name="AutoNestRegions" xml:space="preserve">
+    <value>Detect nested regions</value>
+  </data>
+  <data name="NestedRegionsCount" xml:space="preserve">
+    <value>{0} nested sketch regions</value>
+  </data>
+  <data name="ViewCubeFront" xml:space="preserve">
+    <value>FR</value>
+  </data>
+  <data name="ViewCubeBack" xml:space="preserve">
+    <value>BK</value>
+  </data>
+  <data name="ViewCubeLeft" xml:space="preserve">
+    <value>LT</value>
+  </data>
+  <data name="ViewCubeRight" xml:space="preserve">
+    <value>RT</value>
+  </data>
+  <data name="ViewCubeTop" xml:space="preserve">
+    <value>TOP</value>
+  </data>
+  <data name="ViewCubeBottom" xml:space="preserve">
+    <value>BTM</value>
+  </data>
+  <data name="SolidHandleHint" xml:space="preserve">
+    <value>Drag the orange handles to change dimensions, then confirm the preview.</value>
+  </data>
+  <data name="OccurrenceDragHint" xml:space="preserve">
+    <value>Drag the red, green, or blue viewport handle to move an unconstrained instance. Esc cancels; release commits one undoable move.</value>
+  </data>
+  <data name="AssemblyDatumSection" xml:space="preserve">
+    <value>BRep geometric datums</value>
+  </data>
+  <data name="AssemblyPickReferenceDatum" xml:space="preserve">
+    <value>Pick reference face or edge</value>
+  </data>
+  <data name="AssemblyPickMovingDatum" xml:space="preserve">
+    <value>Pick moving face or edge</value>
+  </data>
+  <data name="AssemblyAddDatumRelation" xml:space="preserve">
+    <value>Add geometric relation</value>
+  </data>
+  <data name="ExternalPartPreview" xml:space="preserve">
+    <value>Preview dependency chain</value>
+  </data>
+  <data name="ExternalPartRelocate" xml:space="preserve">
+    <value>Relocate pinned source</value>
+  </data>
+  <data name="AssemblyReselectDatumRelation" xml:space="preserve">
+    <value>Reselect selected relation datums</value>
+  </data>
+  <data name="DrawingSheets" xml:space="preserve">
+    <value>Drawing sheets</value>
+  </data>
+  <data name="DrawingAddSheet" xml:space="preserve">
+    <value>New sheet</value>
+  </data>
+  <data name="DrawingDeleteSheet" xml:space="preserve">
+    <value>Delete sheet</value>
+  </data>
+  <data name="DrawingAddView" xml:space="preserve">
+    <value>Add view</value>
+  </data>
+  <data name="DrawingEditView" xml:space="preserve">
+    <value>Move / scale view</value>
+  </data>
+  <data name="DrawingDeleteView" xml:space="preserve">
+    <value>Delete view</value>
+  </data>
+  <data name="DrawingRefresh" xml:space="preserve">
+    <value>Refresh projections</value>
+  </data>
+  <data name="DrawingPdf" xml:space="preserve">
+    <value>Export PDF</value>
+  </data>
+  <data name="DrawingPrint" xml:space="preserve">
+    <value>Print</value>
+  </data>
+  <data name="DrawingPickFirst" xml:space="preserve">
+    <value>Pick first datum</value>
+  </data>
+  <data name="DrawingPickSecond" xml:space="preserve">
+    <value>Pick second datum</value>
+  </data>
+  <data name="DrawingAddDimension" xml:space="preserve">
+    <value>Add dimension</value>
+  </data>
+  <data name="DrawingReselectDimension" xml:space="preserve">
+    <value>Reselect dimension</value>
+  </data>
+  <data name="DrawingDeleteDimension" xml:space="preserve">
+    <value>Delete dimension</value>
+  </data>
+  <data name="DrawingSelectSource" xml:space="preserve">
+    <value>Source: current selection or whole model</value>
+  </data>
+  <data name="DrawingStale" xml:space="preserve">
+    <value>Stale reference: reselect or refresh</value>
+  </data>
+  <data name="DrawingSheetProperties" xml:space="preserve">
+    <value>Sheet properties</value>
+  </data>
+  <data name="DrawingViewProperties" xml:space="preserve">
+    <value>View position / scale</value>
+  </data>
+  <data name="DrawingDimensionProperties" xml:space="preserve">
+    <value>Dimension</value>
+  </data>
+  <data name="DrawingStatusPick" xml:space="preserve">
+    <value>Click an analytic face or circular edge in the viewport.</value>
+  </data>
+  <data name="DrawingReselectSource" xml:space="preserve">
+    <value>Reselect source</value>
+  </data>
+  <data name="DrawingViewFront" xml:space="preserve">
+    <value>Front</value>
+  </data>
+  <data name="DrawingViewTop" xml:space="preserve">
+    <value>Top</value>
+  </data>
+  <data name="DrawingViewRight" xml:space="preserve">
+    <value>Right</value>
+  </data>
+  <data name="DrawingViewIsometric" xml:space="preserve">
+    <value>Isometric</value>
+  </data>
+  <data name="DrawingViewSection" xml:space="preserve">
+    <value>Section</value>
+  </data>
+  <data name="DrawingViewDetail" xml:space="preserve">
+    <value>Detail</value>
+  </data>
+  <data name="DrawingStandard" xml:space="preserve">
+    <value>Drawing convention</value>
+  </data>
+  <data name="DrawingDetailCrop" xml:space="preserve">
+    <value>Detail center X/Y and radius (model units)</value>
+  </data>
+  <data name="DrawingTolerance" xml:space="preserve">
+    <value>Upper / lower tolerance (model units)</value>
+  </data>
+  <data name="DrawingApplyTolerance" xml:space="preserve">
+    <value>Apply tolerance</value>
+  </data>
+  <data name="DrawingMeasureLength" xml:space="preserve">
+    <value>Length</value>
+  </data>
+  <data name="DrawingMeasureAngle" xml:space="preserve">
+    <value>Angle</value>
+  </data>
+  <data name="DrawingMeasureRadius" xml:space="preserve">
+    <value>Radius</value>
+  </data>
+  <data name="DrawingMeasureDiameter" xml:space="preserve">
+    <value>Diameter</value>
+  </data>
+  <data name="DrawingLinkParent" xml:space="preserve">
+    <value>Link to selected view</value>
+  </data>
+  <data name="DrawingApplyDimension" xml:space="preserve">
+    <value>Apply position and color</value>
+  </data>
+  <data name="DrawingSectionPlane" xml:space="preserve">
+    <value>Section normal X/Y/Z and offset (mm)</value>
+  </data>
+  <data name="DrawingDatumFace" xml:space="preserve">
+    <value>Pick face</value>
+  </data>
+  <data name="DrawingDatumEdge" xml:space="preserve">
+    <value>Pick circular edge</value>
+  </data>
+  <data name="DrawingZoom" xml:space="preserve">
+    <value>Zoom</value>
+  </data>
+  <data name="DrawingTitle" xml:space="preserve">
+    <value>Drawing title</value>
+  </data>
+  <data name="DrawingAuthor" xml:space="preserve">
+    <value>Author</value>
+  </data>
+  <data name="DrawingPaperSize" xml:space="preserve">
+    <value>Paper size (width × height, mm)</value>
+  </data>
+  <data name="DrawingWidth" xml:space="preserve">
+    <value>Width (mm)</value>
+  </data>
+  <data name="DrawingHeight" xml:space="preserve">
+    <value>Height (mm)</value>
+  </data>
+  <data name="DrawingViewKind" xml:space="preserve">
+    <value>View type</value>
+  </data>
+  <data name="DrawingScale" xml:space="preserve">
+    <value>Scale</value>
+  </data>
+  <data name="DrawingMeasureKind" xml:space="preserve">
+    <value>Dimension type</value>
+  </data>
+  <data name="DrawingDatumKind" xml:space="preserve">
+    <value>Datum type</value>
+  </data>
+  <data name="DrawingTextPosition" xml:space="preserve">
+    <value>Text position (X / Y, mm)</value>
+  </data>
+  <data name="AssemblyManualCoordinates" xml:space="preserve">
+    <value>Manual coordinates and relations</value>
+  </data>
+  <data name="DrawingSheetTab" xml:space="preserve">
+    <value>Sheet</value>
+  </data>
+  <data name="DrawingAppearance" xml:space="preserve">
+    <value>Position and color</value>
+  </data>
+  <data name="ProfileRegions" xml:space="preserve">
+    <value>Sketch holes and regions</value>
+  </data>
+  <data name="BooleanOperations" xml:space="preserve">
+    <value>Boolean operations</value>
+  </data>
+  <data name="InstanceStructureActions" xml:space="preserve">
+    <value>Assembly structure</value>
+  </data>
+  <data name="ExternalPartActions" xml:space="preserve">
+    <value>External part links</value>
+  </data>
+  <data name="AiAssistant" xml:space="preserve">
+    <value>AI Assistant</value>
+  </data>
+  <data name="AiAttachFile" xml:space="preserve">
+    <value>Attach image or text file</value>
+  </data>
+  <data name="AiCodexExecutable" xml:space="preserve">
+    <value>Codex executable</value>
+  </data>
+  <data name="AiCodexModel" xml:space="preserve">
+    <value>Codex model (optional)</value>
+  </data>
+  <data name="AiEnableCadTools" xml:space="preserve">
+    <value>Allow CAD tools</value>
+  </data>
+  <data name="AiEndpoint" xml:space="preserve">
+    <value>LM Studio endpoint</value>
+  </data>
+  <data name="AiLoadModels" xml:space="preserve">
+    <value>Load models</value>
+  </data>
+  <data name="AiModel" xml:space="preserve">
+    <value>LM Studio model</value>
+  </data>
+  <data name="AiPrompt" xml:space="preserve">
+    <value>Ask the CAD assistant</value>
+  </data>
+  <data name="AiProvider" xml:space="preserve">
+    <value>Provider</value>
+  </data>
+  <data name="AiReasoning" xml:space="preserve">
+    <value>Reasoning effort</value>
+  </data>
+  <data name="AiSend" xml:space="preserve">
+    <value>Send</value>
+  </data>
+  <data name="AiSettings" xml:space="preserve">
+    <value>AI settings</value>
+  </data>
+  <data name="AiStop" xml:space="preserve">
+    <value>Stop</value>
+  </data>
+  <data name="CommandRun" xml:space="preserve">
+    <value>Run command</value>
+  </data>
+  <data name="CommandTerminal" xml:space="preserve">
+    <value>Commands</value>
+  </data>
+  <data name="SuppressFeature" xml:space="preserve">
+    <value>Suppress feature</value>
+  </data>
+  <data name="RestoreFeature" xml:space="preserve">
+    <value>Restore feature</value>
+  </data>
+  <data name="RadialMenu" xml:space="preserve">
+    <value>Radial menu</value>
+  </data>
+  <data name="RadialEnabled" xml:space="preserve">
+    <value>Enable radial menu on the key below Esc</value>
+  </data>
+  <data name="RadialHint" xml:space="preserve">
+    <value>Hold the physical key below Esc (` on US keyboards) to show the menu. Point to an action, use the wheel to switch pages, and release the key to run. Shift, Ctrl and Alt can also select pages 2–4.</value>
+  </data>
+  <data name="RadialMiddle" xml:space="preserve">
+    <value>Page 1</value>
+  </data>
+  <data name="RadialShift" xml:space="preserve">
+    <value>Page 2</value>
+  </data>
+  <data name="RadialControl" xml:space="preserve">
+    <value>Page 3</value>
+  </data>
+  <data name="RadialEmpty" xml:space="preserve">
+    <value>Empty</value>
+  </data>
+  <data name="RadialAlt" xml:space="preserve">
+    <value>Page 4</value>
+  </data>
+  <data name="RadialClear" xml:space="preserve">
+    <value>Drag a slot here to clear it</value>
+  </data>
+  <data name="RadialPaletteHint" xml:space="preserve">
+    <value>Drag an action to a sector; drag a sector to the center to clear it.</value>
+  </data>
+  <data name="GizmoMove" xml:space="preserve">
+    <value>Move (axes / planes)</value>
+  </data>
+  <data name="GizmoRotate" xml:space="preserve">
+    <value>Rotate</value>
+  </data>
+  <data name="GizmoScale" xml:space="preserve">
+    <value>Scale primitive</value>
+  </data>
+  <data name="TrimLine" xml:space="preserve">
+    <value>Trim line</value>
+  </data>
+  <data name="ExtendLine" xml:space="preserve">
+    <value>Extend line</value>
+  </data>
+  <data name="SelectStraightLine" xml:space="preserve">
+    <value>Click a straight sketch line.</value>
+  </data>
+  <data name="TrimLineHint" xml:space="preserve">
+    <value>Click the interval to remove between straight-line intersections. A split invalidates the old line reference; affected constraints are removed. Preview before confirming.</value>
+  </data>
+  <data name="ExtendLineHint" xml:space="preserve">
+    <value>Click near the endpoint to extend to the nearest finite straight-line boundary. Shared endpoints stay in place; affected constraints are removed. Preview before confirming.</value>
+  </data>
+  <data name="LineEditResult" xml:space="preserve">
+    <value>Line edited; {0} affected constraints removed. Preview before confirming.</value>
+  </data>
+  <data name="TrimCurve" xml:space="preserve">
+    <value>Trim curve</value>
+  </data>
+  <data name="ExtendCurve" xml:space="preserve">
+    <value>Extend curve</value>
+  </data>
+  <data name="OffsetCurve" xml:space="preserve">
+    <value>Offset curve</value>
+  </data>
+  <data name="OffsetDistance" xml:space="preserve">
+    <value>Offset (mm)</value>
+  </data>
+  <data name="SelectAnalyticalCurve" xml:space="preserve">
+    <value>Select a line, circle or circular arc.</value>
+  </data>
+  <data name="TrimCurveHint" xml:space="preserve">
+    <value>Click inside the interval to remove between finite intersections. Splits create new curve identities; affected relations are removed. Preview before confirming.</value>
+  </data>
+  <data name="ExtendCurveHint" xml:space="preserve">
+    <value>Click near the endpoint to extend to the nearest finite boundary. Closed curves have no endpoint. Overlapping or ambiguous selections are rejected.</value>
+  </data>
+  <data name="OffsetCurveHint" xml:space="preserve">
+    <value>Set the signed distance and click a curve. Lines and exact curves use the directed left side; direct circle/arc offsets grow the radius. Exact curve offsets stay linked to their source. Preview before confirming.</value>
+  </data>
+  <data name="OffsetCreated" xml:space="preserve">
+    <value>Offset created. Preview before confirming.</value>
+  </data>
+  <data name="CurveEditResult" xml:space="preserve">
+    <value>Curve edited; {0} affected constraints removed. Preview before confirming.</value>
+  </data>
+  <data name="LinkedSketchProjection" xml:space="preserve">
+    <value>Linked sketch projection</value>
+  </data>
+  <data name="ProjectionHint" xml:space="preserve">
+    <value>Select geometry in another sketch of this part. Coordinates follow the source; detach before editing. Oblique circles and arcs retain exact conics. Use Project native edge for solid edges.</value>
+  </data>
+  <data name="ProjectGeometry" xml:space="preserve">
+    <value>Project selected source</value>
+  </data>
+  <data name="DetachProjection" xml:space="preserve">
+    <value>Detach selected projection</value>
+  </data>
+  <data name="SelectProjectionSource" xml:space="preserve">
+    <value>Select geometry from another sketch in the same part.</value>
+  </data>
+  <data name="OffsetLoop" xml:space="preserve">
+    <value>Offset closed loop</value>
+  </data>
+  <data name="OffsetLoopHint" xml:space="preserve">
+    <value>Click an edge of a closed line/arc loop. Positive distance expands, negative contracts. Choose miter, round or bevel corner joins to create an independent loop. Self-intersection, collapse or ambiguous joins are rejected.</value>
+  </data>
+  <data name="MidpointRelation" xml:space="preserve">
+    <value>Point at line midpoint</value>
+  </data>
+  <data name="SymmetryRelation" xml:space="preserve">
+    <value>Points symmetric about line</value>
+  </data>
+  <data name="MidpointHint" xml:space="preserve">
+    <value>Select one point and one line in either order. The point follows the midpoint of the line; axis endpoints cannot be the target.</value>
+  </data>
+  <data name="SymmetryHint" xml:space="preserve">
+    <value>Select two points and one symmetry axis line in any order. The points must differ from the axis endpoints. Preview to solve and inspect local freedom or conflicts.</value>
+  </data>
+  <data name="EndpointTangentRelation" xml:space="preserve">
+    <value>Smooth endpoint tangent</value>
+  </data>
+  <data name="EndpointTangentHint" xml:space="preserve">
+    <value>Select two lines/arcs/Beziers/splines sharing exactly one endpoint; at least one must be curved. Preview to solve a smooth join. Cusps, zero endpoint derivatives and invalid control polygons are rejected.</value>
+  </data>
+  <data name="SketchFillet" xml:space="preserve">
+    <value>Sketch fillet</value>
+  </data>
+  <data name="FilletRadius" xml:space="preserve">
+    <value>Fillet radius (mm)</value>
+  </data>
+  <data name="ApplyFillet" xml:space="preserve">
+    <value>Apply fillet</value>
+  </data>
+  <data name="FilletHint" xml:space="preserve">
+    <value>Click two lines sharing one endpoint, enter the radius and apply. A checked radius option adds a persistent circle-radius constraint. Select linked features explicitly to update their profiles.</value>
+  </data>
+  <data name="FilletResult" xml:space="preserve">
+    <value>Fillet created; removed {0} affected constraints and added two endpoint tangencies.</value>
+  </data>
+  <data name="SketchChamfer" xml:space="preserve">
+    <value>Sketch chamfer</value>
+  </data>
+  <data name="BatchFillet" xml:space="preserve">
+    <value>Multiple fillets</value>
+  </data>
+  <data name="BatchChamfer" xml:space="preserve">
+    <value>Multiple chamfers</value>
+  </data>
+  <data name="ChamferDistances" xml:space="preserve">
+    <value>Distances A / B (mm)</value>
+  </data>
+  <data name="ApplyChamfer" xml:space="preserve">
+    <value>Apply chamfer</value>
+  </data>
+  <data name="ConstrainArcRadius" xml:space="preserve">
+    <value>Constrain radius</value>
+  </data>
+  <data name="ChamferHint" xml:space="preserve">
+    <value>Select two lines in order. Distance A applies to the first line, B to the second.</value>
+  </data>
+  <data name="BatchCornersHint" xml:space="preserve">
+    <value>Click corner points on one straight closed loop, then apply. Batch sides A/B follow the displayed loop traversal. All selected corners succeed or the entire edit is rejected.</value>
+  </data>
+  <data name="ArcRadiusHint" xml:space="preserve">
+    <value>Radius accepts one circle or arc; equal radius accepts two distinct circles or arcs.</value>
+  </data>
+  <data name="CircularRadiusDimension" xml:space="preserve">
+    <value>Circle / arc radius</value>
+  </data>
+  <data name="EqualCircularRadii" xml:space="preserve">
+    <value>Equal circle / arc radii</value>
+  </data>
+  <data name="UpdateCornerProfiles" xml:space="preserve">
+    <value>Update linked corner profiles</value>
+  </data>
+  <data name="CornerProfileHint" xml:space="preserve">
+    <value>Check the linked features to convert their outer loop using these corner edits. Unselected affected profiles block the entire preview. Holes and islands require a separate explicit selection.</value>
+  </data>
+  <data name="CornerSelectionSummary" xml:space="preserve">
+    <value>Selected: {0}; edited corners: {1}; profiles to update: {2}.</value>
+  </data>
+  <data name="CornerEditResult" xml:space="preserve">
+    <value>Removed {0} affected constraints; recorded {1} corner replacements.</value>
+  </data>
+  <data name="CornerBatchSelection" xml:space="preserve">
+    <value>Select 1 to 32 distinct corner points.</value>
+  </data>
+  <data name="CornerBatchLoop" xml:space="preserve">
+    <value>Selected corners must belong to one simple straight closed loop.</value>
+  </data>
+  <data name="CornerDimensionsInvalid" xml:space="preserve">
+    <value>Dimensions must be finite and greater than 1e-7 mm.</value>
+  </data>
+  <data name="CornerSelectLines" xml:space="preserve">
+    <value>Select two distinct straight lines.</value>
+  </data>
+  <data name="CornerConstructionMismatch" xml:space="preserve">
+    <value>Both lines must have the same construction state.</value>
+  </data>
+  <data name="CornerProjectionDriven" xml:space="preserve">
+    <value>Detach the projected line before editing this corner.</value>
+  </data>
+  <data name="CornerUniqueJoint" xml:space="preserve">
+    <value>The two lines must share exactly one endpoint ID.</value>
+  </data>
+  <data name="CornerBranch" xml:space="preserve">
+    <value>The corner point is used by other geometry; detach that branch first.</value>
+  </data>
+  <data name="CornerUnstable" xml:space="preserve">
+    <value>Collinear or nearly collinear lines cannot form a stable corner.</value>
+  </data>
+  <data name="CornerAccuracy" xml:space="preserve">
+    <value>The corner arc cannot be represented accurately at these coordinates.</value>
+  </data>
+  <data name="CornerDuplicate" xml:space="preserve">
+    <value>The same corner cannot occur twice in one edit.</value>
+  </data>
+  <data name="CornerCorrespondenceInvalid" xml:space="preserve">
+    <value>Corner correspondence is stale, changed or ambiguous; undo the intervening edit or reopen and reselect.</value>
+  </data>
+  <data name="CornerProfileSelection" xml:space="preserve">
+    <value>Select an affected linked extrusion or revolution using this sketch.</value>
+  </data>
+  <data name="CornerProfileSingleLoop" xml:space="preserve">
+    <value>Only one outer polygon or mixed loop without holes or islands can be converted.</value>
+  </data>
+  <data name="CornerProfileAdjacency" xml:space="preserve">
+    <value>Boundary adjacency is missing or ambiguous; reselect the profile explicitly.</value>
+  </data>
+  <data name="CornerConsume" xml:space="preserve">
+    <value>Corner {0}: the dimensions consume a line or collapse the corner.</value>
+  </data>
+  <data name="CornerBudgetConsume" xml:space="preserve">
+    <value>Line {0}: combined corner trims consume the line.</value>
+  </data>
+  <data name="DocumentParameters" xml:space="preserve">
+    <value>Document parameters</value>
+  </data>
+  <data name="ParameterScalar" xml:space="preserve">
+    <value>Scalar</value>
+  </data>
+  <data name="ParameterLength" xml:space="preserve">
+    <value>Length</value>
+  </data>
+  <data name="ParameterAngle" xml:space="preserve">
+    <value>Angle</value>
+  </data>
+  <data name="ParameterReference" xml:space="preserve">
+    <value>Reference</value>
+  </data>
+  <data name="ParameterDraftHint" xml:space="preserve">
+    <value>Apply row changes, then preview the entire dependency graph. Confirm commits one atomic edit.</value>
+  </data>
+  <data name="ParameterSelectTarget" xml:space="preserve">
+    <value>Select an existing dimension target.</value>
+  </data>
+  <data name="ParameterInvalidName" xml:space="preserve">
+    <value>Use a unique identifier; names are case insensitive and unit/function names are reserved.</value>
+  </data>
+  <data name="ParameterSelectParameter" xml:space="preserve">
+    <value>Select an expression parameter to drive a dimension.</value>
+  </data>
+  <data name="ParameterBindingMismatch" xml:space="preserve">
+    <value>Only expression parameters with matching dimensions can drive targets.</value>
+  </data>
+  <data name="ParameterAlreadyDriven" xml:space="preserve">
+    <value>This dimension already has a driver. Detach it before rebinding.</value>
+  </data>
+  <data name="ParameterError" xml:space="preserve">
+    <value>Parameter error: {0}</value>
+  </data>
+  <data name="ParameterEvaluating" xml:space="preserve">
+    <value>Evaluating parameters and rebuilding dependent geometry…</value>
+  </data>
+  <data name="ParameterPreviewReady" xml:space="preserve">
+    <value>Parameter preview ready. The document is unchanged until confirmation.</value>
+  </data>
+  <data name="ParameterExpression" xml:space="preserve">
+    <value>Expression</value>
+  </data>
+  <data name="ParameterDimension" xml:space="preserve">
+    <value>Dimension</value>
+  </data>
+  <data name="ParameterValue" xml:space="preserve">
+    <value>Evaluated value</value>
+  </data>
+  <data name="ParameterReferenceMode" xml:space="preserve">
+    <value>Read an existing authored dimension (read only)</value>
+  </data>
+  <data name="ParameterNew" xml:space="preserve">
+    <value>New parameter</value>
+  </data>
+  <data name="ParameterApply" xml:space="preserve">
+    <value>Apply row</value>
+  </data>
+  <data name="ParameterDelete" xml:space="preserve">
+    <value>Delete parameter and its bindings</value>
+  </data>
+  <data name="ParameterBind" xml:space="preserve">
+    <value>Bind selected parameter</value>
+  </data>
+  <data name="ParameterDetach" xml:space="preserve">
+    <value>Detach selected binding</value>
+  </data>
+  <data name="ParameterSyntaxHint" xml:space="preserve">
+    <value>Examples: width / 2 + 3 mm; 90 deg; sin(30 deg). Use explicit units and invariant decimal points. References read recipe/dimension values, not screen measurements. Apply inputs before preview.</value>
+  </data>
+  <data name="DatumPlanes" xml:space="preserve">
+    <value>Associated datum planes</value>
+  </data>
+  <data name="DatumHint" xml:space="preserve">
+    <value>Apply each plane, axis or point recipe before preview. Select sources explicitly; detach retains evaluated geometry.</value>
+  </data>
+  <data name="DatumOffset" xml:space="preserve">
+    <value>Offset plane</value>
+  </data>
+  <data name="DatumMidplane" xml:space="preserve">
+    <value>Midplane</value>
+  </data>
+  <data name="DatumAngle" xml:space="preserve">
+    <value>Angle plane</value>
+  </data>
+  <data name="DatumPrimary" xml:space="preserve">
+    <value>Primary plane source</value>
+  </data>
+  <data name="DatumSecondary" xml:space="preserve">
+    <value>Second source (midplane)</value>
+  </data>
+  <data name="DatumValue" xml:space="preserve">
+    <value>Offset mm / angle degrees</value>
+  </data>
+  <data name="DatumHinge" xml:space="preserve">
+    <value>Hinge in source plane</value>
+  </data>
+  <data name="DatumNew" xml:space="preserve">
+    <value>New datum plane</value>
+  </data>
+  <data name="DatumApply" xml:space="preserve">
+    <value>Apply plane</value>
+  </data>
+  <data name="DatumDelete" xml:space="preserve">
+    <value>Delete plane</value>
+  </data>
+  <data name="DatumBindSketch" xml:space="preserve">
+    <value>Bind selected sketch</value>
+  </data>
+  <data name="DatumDetachSketch" xml:space="preserve">
+    <value>Detach selected sketch</value>
+  </data>
+  <data name="DatumBindWorkPlane" xml:space="preserve">
+    <value>Use selected occurrence as workplane</value>
+  </data>
+  <data name="DatumDetachWorkPlane" xml:space="preserve">
+    <value>Detach workplane</value>
+  </data>
+  <data name="DatumPreviewReady" xml:space="preserve">
+    <value>Datum preview ready. Confirm to commit all dependent geometry.</value>
+  </data>
+  <data name="DatumSelect" xml:space="preserve">
+    <value>Select a part, plane source and binding target.</value>
+  </data>
+  <data name="DatumKind" xml:space="preserve">
+    <value>Plane kind</value>
+  </data>
+  <data name="Repetition" xml:space="preserve">
+    <value>Mirror and patterns</value>
+  </data>
+  <data name="RepetitionMirror" xml:space="preserve">
+    <value>Plane mirror</value>
+  </data>
+  <data name="RepetitionLinear" xml:space="preserve">
+    <value>Linear array</value>
+  </data>
+  <data name="RepetitionCircular" xml:space="preserve">
+    <value>Circular array</value>
+  </data>
+  <data name="RepetitionCompound" xml:space="preserve">
+    <value>Compound copies</value>
+  </data>
+  <data name="RepetitionFused" xml:space="preserve">
+    <value>Fused union</value>
+  </data>
+  <data name="RepetitionHint" xml:space="preserve">
+    <value>Preview exact body copies, then confirm. Array count includes the source. Compound copies preserve overlaps; fused output computes their union.</value>
+  </data>
+  <data name="RepetitionNew" xml:space="preserve">
+    <value>New repetition feature</value>
+  </data>
+  <data name="RepetitionFeature" xml:space="preserve">
+    <value>Create or edit a feature</value>
+  </data>
+  <data name="RepetitionSource" xml:space="preserve">
+    <value>Source body</value>
+  </data>
+  <data name="RepetitionSelectSource" xml:space="preserve">
+    <value>Select a current feature output.</value>
+  </data>
+  <data name="RepetitionSamePart" xml:space="preserve">
+    <value>Select a datum in the source part.</value>
+  </data>
+  <data name="RepetitionCount" xml:space="preserve">
+    <value>Copies (including source): 2–256</value>
+  </data>
+  <data name="RepetitionSpacing" xml:space="preserve">
+    <value>Spacing (mm)</value>
+  </data>
+  <data name="RepetitionAngle" xml:space="preserve">
+    <value>Angular spacing (°)</value>
+  </data>
+  <data name="RepetitionOutput" xml:space="preserve">
+    <value>Output</value>
+  </data>
+  <data name="RepetitionIncludeSource" xml:space="preserve">
+    <value>Mirror: include the source body</value>
+  </data>
+  <data name="RepetitionFullCircle" xml:space="preserve">
+    <value>Circular: distribute evenly over a full circle</value>
+  </data>
+  <data name="RepetitionManualFrame" xml:space="preserve">
+    <value>Manual part-local frame</value>
+  </data>
+  <data name="RepetitionFrame" xml:space="preserve">
+    <value>Associated datum or manual frame</value>
+  </data>
+  <data name="RepetitionFrameHint" xml:space="preserve">
+    <value>Coordinates are local to the part. Mirror plane normal and circular axis use local Z; linear direction uses local X. Rotations are intrinsic X/Y/Z angles in degrees.</value>
+  </data>
+  <data name="RepetitionKind" xml:space="preserve">
+    <value>Repetition kind</value>
+  </data>
+  <data name="Hole" xml:space="preserve">
+    <value>Hole tools</value>
+  </data>
+  <data name="HoleHint" xml:space="preserve">
+    <value>Drill one exact solid along negative frame Z. Preview before confirming.</value>
+  </data>
+  <data name="HolePlain" xml:space="preserve">
+    <value>Plain hole</value>
+  </data>
+  <data name="HoleCounterbore" xml:space="preserve">
+    <value>Counterbore</value>
+  </data>
+  <data name="HoleCountersink" xml:space="preserve">
+    <value>Countersink</value>
+  </data>
+  <data name="HoleFitClose" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="HoleFitNormal" xml:space="preserve">
+    <value>Normal</value>
+  </data>
+  <data name="HoleFitLoose" xml:space="preserve">
+    <value>Loose</value>
+  </data>
+  <data name="HoleNew" xml:space="preserve">
+    <value>New hole feature</value>
+  </data>
+  <data name="HoleManualFrame" xml:space="preserve">
+    <value>Manual frame / detach datum</value>
+  </data>
+  <data name="HoleSelectSource" xml:space="preserve">
+    <value>Select the current output of a source feature.</value>
+  </data>
+  <data name="HoleSamePart" xml:space="preserve">
+    <value>Choose a datum in the source part.</value>
+  </data>
+  <data name="HoleFeature" xml:space="preserve">
+    <value>Create or edit a hole feature</value>
+  </data>
+  <data name="HoleSource" xml:space="preserve">
+    <value>Source solid</value>
+  </data>
+  <data name="HoleHead" xml:space="preserve">
+    <value>Hole type</value>
+  </data>
+  <data name="HoleThrough" xml:space="preserve">
+    <value>Through all (clear for blind depth)</value>
+  </data>
+  <data name="HoleStandard" xml:space="preserve">
+    <value>Use common metric bolt clearance catalog</value>
+  </data>
+  <data name="HoleStandardHint" xml:space="preserve">
+    <value>Common M3–M16 subset, catalog v1. Clear this option to retain the diameter as custom. This is not a threaded hole.</value>
+  </data>
+  <data name="HoleNominal" xml:space="preserve">
+    <value>Nominal bolt size (M)</value>
+  </data>
+  <data name="HoleFit" xml:space="preserve">
+    <value>Clearance class</value>
+  </data>
+  <data name="HoleDiameter" xml:space="preserve">
+    <value>Diameter (mm)</value>
+  </data>
+  <data name="HoleDepth" xml:space="preserve">
+    <value>Blind depth (mm)</value>
+  </data>
+  <data name="HoleHeadDiameter" xml:space="preserve">
+    <value>Head diameter (mm)</value>
+  </data>
+  <data name="HoleHeadDepth" xml:space="preserve">
+    <value>Counterbore depth (mm)</value>
+  </data>
+  <data name="HoleHeadAngle" xml:space="preserve">
+    <value>Countersink included angle (°)</value>
+  </data>
+  <data name="HoleFrame" xml:space="preserve">
+    <value>Entry frame or associated datum</value>
+  </data>
+  <data name="HoleFrameHint" xml:space="preserve">
+    <value>U/V locate the entry on the frame. Drill along negative Z; origin and rotations are part-local. Authored boxes default to their top plane.</value>
+  </data>
+  <data name="ExtrusionAdvanced" xml:space="preserve">
+    <value>Advanced extrusion</value>
+  </data>
+  <data name="ExtrusionHint" xml:space="preserve">
+    <value>Choose a profile, direction and operation; preview before confirming.</value>
+  </data>
+  <data name="ExtrusionNew" xml:space="preserve">
+    <value>New extrusion</value>
+  </data>
+  <data name="ExtrusionDirection" xml:space="preserve">
+    <value>Direction</value>
+  </data>
+  <data name="ExtrusionPositive" xml:space="preserve">
+    <value>Positive Z</value>
+  </data>
+  <data name="ExtrusionNegative" xml:space="preserve">
+    <value>Negative Z</value>
+  </data>
+  <data name="ExtrusionSymmetric" xml:space="preserve">
+    <value>Symmetric (total thickness)</value>
+  </data>
+  <data name="ExtrusionTwoSides" xml:space="preserve">
+    <value>Two distances</value>
+  </data>
+  <data name="ExtrusionDistance" xml:space="preserve">
+    <value>Distance / total thickness (mm)</value>
+  </data>
+  <data name="ExtrusionBackward" xml:space="preserve">
+    <value>Backward distance (mm)</value>
+  </data>
+  <data name="ExtrusionOperation" xml:space="preserve">
+    <value>Operation</value>
+  </data>
+  <data name="ExtrusionNewBody" xml:space="preserve">
+    <value>New body</value>
+  </data>
+  <data name="ExtrusionFuse" xml:space="preserve">
+    <value>Add material</value>
+  </data>
+  <data name="ExtrusionCut" xml:space="preserve">
+    <value>Remove material</value>
+  </data>
+  <data name="ExtrusionTermination" xml:space="preserve">
+    <value>Termination</value>
+  </data>
+  <data name="ExtrusionFixed" xml:space="preserve">
+    <value>Fixed distance</value>
+  </data>
+  <data name="ExtrusionThrough" xml:space="preserve">
+    <value>Directional through</value>
+  </data>
+  <data name="ExtrusionPlane" xml:space="preserve">
+    <value>Plane / associated datum</value>
+  </data>
+  <data name="ExtrusionFace" xml:space="preserve">
+    <value>Exact planar face support plane</value>
+  </data>
+  <data name="ExtrusionFaceHint" xml:space="preserve">
+    <value>Select a face explicitly after loading. Uses its unbounded support plane; a changed source requires reselection.</value>
+  </data>
+  <data name="ExtrusionLoadFaces" xml:space="preserve">
+    <value>Load current faces</value>
+  </data>
+  <data name="ExtrusionProfile" xml:space="preserve">
+    <value>Profile (retained from modeling panel or linked sketch)</value>
+  </data>
+  <data name="ExtrusionStartFrame" xml:space="preserve">
+    <value>Start frame (part-local)</value>
+  </data>
+  <data name="ExtrusionLimitFrame" xml:space="preserve">
+    <value>Limit plane frame (part-local)</value>
+  </data>
+  <data name="ExtrusionSelectLimit" xml:space="preserve">
+    <value>Select a current planar face explicitly.</value>
+  </data>
+  <data name="GuidedSweep" xml:space="preserve">
+    <value>Sweep</value>
+  </data>
+  <data name="GuidedLoft" xml:space="preserve">
+    <value>Loft</value>
+  </data>
+  <data name="GuidedSolid" xml:space="preserve">
+    <value>Solid</value>
+  </data>
+  <data name="GuidedSheet" xml:space="preserve">
+    <value>Surface without end caps</value>
+  </data>
+  <data name="GuidedTransformed" xml:space="preserve">
+    <value>Transform at corners</value>
+  </data>
+  <data name="GuidedRightCorner" xml:space="preserve">
+    <value>Miter corners</value>
+  </data>
+  <data name="GuidedRoundCorner" xml:space="preserve">
+    <value>Round corners</value>
+  </data>
+  <data name="GuidedHint" xml:space="preserve">
+    <value>Choose a section and a directed path for sweep. For loft, assign every boundary at every station in your chosen order.</value>
+  </data>
+  <data name="GuidedStationFormat" xml:space="preserve">
+    <value>({0:G5}, {1:G5}, {2:G5}) mm</value>
+  </data>
+  <data name="GuidedFrozen" xml:space="preserve">
+    <value>Frozen profile</value>
+  </data>
+  <data name="GuidedExistingSection" xml:space="preserve">
+    <value>Existing section</value>
+  </data>
+  <data name="GuidedCurrentSection" xml:space="preserve">
+    <value>Current section</value>
+  </data>
+  <data name="GuidedUnassigned" xml:space="preserve">
+    <value>No profile assigned</value>
+  </data>
+  <data name="GuidedOuter" xml:space="preserve">
+    <value>Outer boundary</value>
+  </data>
+  <data name="GuidedChild" xml:space="preserve">
+    <value>Inner boundary</value>
+  </data>
+  <data name="GuidedPath" xml:space="preserve">
+    <value>Directed path</value>
+  </data>
+  <data name="GuidedChooseSection" xml:space="preserve">
+    <value>Choose a section profile.</value>
+  </data>
+  <data name="GuidedChoosePath" xml:space="preserve">
+    <value>Choose a sketch curve and add it to the directed path.</value>
+  </data>
+  <data name="GuidedDuplicateEdge" xml:space="preserve">
+    <value>This curve is already in the path.</value>
+  </data>
+  <data name="GuidedChooseChannel" xml:space="preserve">
+    <value>Select the parent boundary first.</value>
+  </data>
+  <data name="GuidedChooseAssignment" xml:space="preserve">
+    <value>Select a station, boundary and profile in the same part.</value>
+  </data>
+  <data name="GuidedRemoveLeaf" xml:space="preserve">
+    <value>Remove child boundaries before removing their parent. The outer boundary is required.</value>
+  </data>
+  <data name="GuidedSameStationPlane" xml:space="preserve">
+    <value>Linked boundaries at a station must use the same plane.</value>
+  </data>
+  <data name="GuidedSection" xml:space="preserve">
+    <value>Section profile</value>
+  </data>
+  <data name="GuidedOutput" xml:space="preserve">
+    <value>Output</value>
+  </data>
+  <data name="GuidedCorner" xml:space="preserve">
+    <value>Corner transition</value>
+  </data>
+  <data name="GuidedStations" xml:space="preserve">
+    <value>Ordered stations</value>
+  </data>
+  <data name="GuidedChannels" xml:space="preserve">
+    <value>Boundary correspondence</value>
+  </data>
+  <data name="GuidedAssign" xml:space="preserve">
+    <value>Assign profile</value>
+  </data>
+  <data name="GuidedAddStation" xml:space="preserve">
+    <value>Add station</value>
+  </data>
+  <data name="GuidedAddChild" xml:space="preserve">
+    <value>Add inner boundary</value>
+  </data>
+  <data name="GuidedAddEdge" xml:space="preserve">
+    <value>Append curve</value>
+  </data>
+  <data name="GuidedReverse" xml:space="preserve">
+    <value>Reverse direction</value>
+  </data>
+  <data name="GuidedUp" xml:space="preserve">
+    <value>Move up</value>
+  </data>
+  <data name="GuidedDown" xml:space="preserve">
+    <value>Move down</value>
+  </data>
+  <data name="GuidedDetach" xml:space="preserve">
+    <value>Detach sketch source</value>
+  </data>
+  <data name="GuidedRuled" xml:space="preserve">
+    <value>Ruled loft</value>
+  </data>
+  <data name="GuidedPathHint" xml:space="preserve">
+    <value>Append curves in travel order and set their directions. Place the section origin at the path start with its normal pointing forward.</value>
+  </data>
+  <data name="GuidedLoftHint" xml:space="preserve">
+    <value>Assign the outer profile first, then its holes or islands at each station. Each inner boundary belongs to the selected parent. Linked frames follow their sketches.</value>
+  </data>
+  <data name="FaceAngle" xml:space="preserve"><value>Signed angle (degrees)</value></data>
+  <data name="FaceChooseSource" xml:space="preserve"><value>Choose the current solid source.</value></data>
+  <data name="FaceClear" xml:space="preserve"><value>Clear all faces</value></data>
+  <data name="FaceClosingFaces" xml:space="preserve"><value>Faces to remove</value></data>
+  <data name="FaceDraft" xml:space="preserve"><value>Draft</value></data>
+  <data name="FaceDuplicate" xml:space="preserve"><value>This face is already selected.</value></data>
+  <data name="FaceLinkDatum" xml:space="preserve"><value>Link neutral datum</value></data>
+  <data name="FaceNeutral" xml:space="preserve"><value>Neutral plane: X / Y / Z (mm), Rx / Ry / Rz (degrees)</value></data>
+  <data name="FaceOutward" xml:space="preserve"><value>Offset outward</value></data>
+  <data name="FacePickHint" xml:space="preserve"><value>Select a source, then click its faces. Each draft face keeps its own settings.</value></data>
+  <data name="FacePrograms" xml:space="preserve"><value>Face programs</value></data>
+  <data name="FacePropagation" xml:space="preserve"><value>Propagation</value></data>
+  <data name="FacePull" xml:space="preserve"><value>Pull direction X / Y / Z</value></data>
+  <data name="FaceReplace" xml:space="preserve"><value>Replace selected face</value></data>
+  <data name="FaceReplaceHint" xml:space="preserve"><value>Click the replacement face for the selected program. Its identity and settings will be retained.</value></data>
+  <data name="FaceReselectHint" xml:space="preserve"><value>Source changed. Explicitly replace every old face on the current source.</value></data>
+  <data name="FaceSelectedOnly" xml:space="preserve"><value>Selected face only</value></data>
+  <data name="FaceShell" xml:space="preserve"><value>Shell</value></data>
+  <data name="FaceSource" xml:space="preserve"><value>Current solid source</value></data>
+  <data name="FaceTangentChain" xml:space="preserve"><value>Tangent chain</value></data>
+  <data name="FaceThickness" xml:space="preserve"><value>Wall thickness (mm)</value></data>
+  <data name="FaceDetachDatum" xml:space="preserve"><value>Detach neutral datum</value></data>
+  <data name="FaceNoDatum" xml:space="preserve"><value>Independent neutral plane</value></data>
+  <data name="DatumAngularAxis" xml:space="preserve"><value>Optional angular hinge axis</value></data>
+  <data name="DatumAxes" xml:space="preserve"><value>Datum axes</value></data>
+  <data name="DatumAxisAnalytic" xml:space="preserve"><value>Cylinder / cone / circle axis</value></data>
+  <data name="DatumAxisBasis" xml:space="preserve"><value>Part basis axis</value></data>
+  <data name="DatumAxisIntersection" xml:space="preserve"><value>Intersection of two planes</value></data>
+  <data name="DatumAxisNormal" xml:space="preserve"><value>Plane normal</value></data>
+  <data name="DatumAxisOffset" xml:space="preserve"><value>Along-axis offset (mm)</value></data>
+  <data name="DatumAxisTwoPoints" xml:space="preserve"><value>Through two points</value></data>
+  <data name="DatumCoordinates" xml:space="preserve"><value>Coordinates X / Y / Z (mm)</value></data>
+  <data name="DatumDetach" xml:space="preserve"><value>Detach source; retain evaluated geometry</value></data>
+  <data name="DatumDirection" xml:space="preserve"><value>Independent direction X / Y / Z</value></data>
+  <data name="DatumIndependent" xml:space="preserve"><value>Independent</value></data>
+  <data name="DatumNativeHint" xml:space="preserve"><value>Choose a source, then pick its analytic face or circular edge. Apply the recipe before preview.</value></data>
+  <data name="DatumNativeSource" xml:space="preserve"><value>Exact feature source</value></data>
+  <data name="DatumNone" xml:space="preserve"><value>None</value></data>
+  <data name="DatumPickEdge" xml:space="preserve"><value>Pick circular edge</value></data>
+  <data name="DatumPointAxisPlane" xml:space="preserve"><value>Axis / plane intersection</value></data>
+  <data name="DatumPointCircle" xml:space="preserve"><value>Circular edge center</value></data>
+  <data name="DatumPointMid" xml:space="preserve"><value>Midpoint of two points</value></data>
+  <data name="DatumPointOffset" xml:space="preserve"><value>Offset from point</value></data>
+  <data name="DatumPoints" xml:space="preserve"><value>Datum points</value></data>
+  <data name="DatumPointThreePlanes" xml:space="preserve"><value>Intersection of three planes</value></data>
+  <data name="DatumReverse" xml:space="preserve"><value>Reverse axis direction</value></data>
+  <data name="DatumThird" xml:space="preserve"><value>Third source</value></data>
+  <data name="DatumUseAxisNormal" xml:space="preserve"><value>Use axis and optional point</value></data>
+  <data name="DatumUseFace" xml:space="preserve"><value>Use picked plane with this frame</value></data>
+  <data name="DatumUseIndependent" xml:space="preserve"><value>Use independent plane frame</value></data>
+  <data name="DatumState" xml:space="preserve"><value>State</value></data>
+  <data name="DatumFrameRotation" xml:space="preserve"><value>Frame rotation X / Y / Z (degrees)</value></data>
+  <data name="DatumFirstSource" xml:space="preserve"><value>First source</value></data>
+  <data name="DatumSecondSource" xml:space="preserve"><value>Second source</value></data>
+  <data name="DatumApplyRecipe" xml:space="preserve"><value>Apply recipe</value></data>
+  <data name="DatumToolsHint" xml:space="preserve"><value>Apply each plane, axis or point recipe before preview. Choose exact sources explicitly; detach retains evaluated geometry.</value></data>
+  <data name="DatumToolsTitle" xml:space="preserve"><value>Associated datums</value></data>
+  <data name="RevolveAxis" xml:space="preserve"><value>Revolution axis</value></data>
+  <data name="RevolveLocalAxis" xml:space="preserve"><value>Profile local Z axis</value></data>
+  <data name="RevolveFrozenAxis" xml:space="preserve"><value>Independent evaluated axis</value></data>
+  <data name="RevolveAxisHint" xml:space="preserve"><value>Choose an axis in the profile meridian plane. Curves, holes and nested islands retain their exact shapes; separate islands produce multiple solids. Detach keeps the evaluated axis.</value></data>
+  <data name="FrozenCurveProfile" xml:space="preserve"><value>Exact frozen profile, including its curves, holes and islands; placement and feature dimensions remain editable.</value></data>
+  <data name="DatumConstructionKind" xml:space="preserve"><value>Construction kind</value></data>
+  <data name="RepetitionReplayHole" xml:space="preserve"><value>Replay the seed hole on one target</value></data>
+  <data name="RepetitionReplayHoleHint" xml:space="preserve"><value>Repeat the authored hole at each layout position. Edit its size and head in the seed hole.</value></data>
+  <data name="RepetitionReplaySelectHole" xml:space="preserve"><value>Select the displayed result of an authored hole to replay it.</value></data>
+  <data name="RepetitionReplayExtrusion" xml:space="preserve"><value>Replay the seed material operation on one target</value></data>
+  <data name="RepetitionReplayExtrusionHint" xml:space="preserve"><value>Repeat the seed extrusion's add/remove-material operation. Its profile and local limit move with each copy; through extent adapts to the target. Edit the profile and dimensions in the seed.</value></data>
+  <data name="RepetitionReplaySelectExtrusion" xml:space="preserve"><value>Select the current output of an extrusion that adds or removes material.</value></data>
+  <data name="RepetitionMirrorCount" xml:space="preserve"><value>Mirror positions: reflected copy and optional seed</value></data>
+  <data name="RepetitionIncludeSeed" xml:space="preserve"><value>Mirror: retain the original seed operation</value></data>
+  <data name="AssemblyPattern" xml:space="preserve"><value>Assembly instance arrays</value></data>
+  <data name="AssemblyPatternHint" xml:space="preserve"><value>Count includes the source. Arrays share definitions; mirrors derive exact reflected geometry and retain the assembly hierarchy. Detach the layout before editing generated poses or mirror definitions.</value></data>
+  <data name="AssemblyPatternNew" xml:space="preserve"><value>New instance array</value></data>
+  <data name="AssemblyPatternLayout" xml:space="preserve"><value>Create or edit an instance layout</value></data>
+  <data name="AssemblyPatternSource" xml:space="preserve"><value>Source instance path</value></data>
+  <data name="AssemblyPatternSelectSource" xml:space="preserve"><value>Select an existing source instance.</value></data>
+  <data name="AssemblyPatternManualFrame" xml:space="preserve"><value>Manual parent-assembly frame</value></data>
+  <data name="AssemblyPatternFrameHint" xml:space="preserve"><value>Coordinates are local to the parent assembly: linear direction uses X, circular axis and mirror-plane normal use Z. A source-part datum is transformed by the source pose. Rotations are intrinsic X/Y/Z angles in degrees.</value></data>
+  <data name="AssemblyPatternDetach" xml:space="preserve"><value>Detach layout and preview</value></data>
+  <data name="AssemblyPatternDetachReady" xml:space="preserve"><value>Detach preview ready. Confirm to keep all instances and allow independent pose edits.</value></data>
+  <data name="AssemblyPatternPoseControlled" xml:space="preserve"><value>This instance pose is controlled by its array. Edit or detach the layout to change it.</value></data>
+  <data name="AssemblyMirrorCount" xml:space="preserve"><value>Mirror instances: source and one reflected copy</value></data>
+  <data name="SelectExactSpline" xml:space="preserve"><value>Select one cubic spline.</value></data>
+  <data name="SelectExactCurve" xml:space="preserve"><value>Select one quadratic Bezier or cubic spline.</value></data>
+  <data name="CurveInvalidKnots" xml:space="preserve"><value>Knots must increase, with endpoint multiplicity four and interior multiplicity one to three. The multiplicity sum must match the control count plus four.</value></data>
+  <data name="CurveAmbiguousProjection" xml:space="preserve"><value>Select a point with one nearest curve parameter; for extension, select an endpoint side.</value></data>
+  <data name="CurveNoIntersection" xml:space="preserve"><value>No distinct finite boundary intersects this interval or the declared polynomial continuation.</value></data>
+  <data name="CurvePickInterval" xml:space="preserve"><value>Select inside the removable interval, away from an intersection.</value></data>
+  <data name="CurveTrimBounds" xml:space="preserve"><value>The retained or removed interval must increase within zero to one.</value></data>
+  <data name="CurveExtensionBounds" xml:space="preserve"><value>The polynomial extension amount must be greater than zero and at most four.</value></data>
+  <data name="CurveOverlappingIntervals" xml:space="preserve"><value>Coincident curve intervals are ambiguous. Select distinct finite boundaries.</value></data>
+  <data name="RemoveCurveInterval" xml:space="preserve"><value>Remove interval / split curve</value></data>
+  <data name="SketchPreviewFrozen" xml:space="preserve"><value>{0} feature(s) frozen; previous geometry retained: {1}. Reselect their source before modeling.</value></data>
+  <data name="ExactSplineUnavailable" xml:space="preserve"><value>The current geometry service cannot inspect exact curves.</value></data>
+  <data name="SplineKnotsHint" xml:space="preserve"><value>Knots and multiplicities (decimal point): 0:4; 0.2:1; 1:4</value></data>
+  <data name="ApplySplineKnots" xml:space="preserve"><value>Apply knots</value></data>
+  <data name="SplineNormalizedInterval" xml:space="preserve"><value>Normalized interval to keep (start, end)</value></data>
+  <data name="KeepSplineInterval" xml:space="preserve"><value>Keep exact interval</value></data>
+  <data name="SplineExtendStart" xml:space="preserve"><value>Extend from the start</value></data>
+  <data name="ExtendSplinePolynomial" xml:space="preserve"><value>Continue endpoint polynomial</value></data>
+  <data name="HistoryAfterCursor" xml:space="preserve"><value>After history cursor</value></data>
+  <data name="HistoryCursorFormat" xml:space="preserve"><value>{0}: history cursor {1} / {2}</value></data>
+  <data name="HistoryCursorHint" xml:space="preserve"><value>Viewing intermediate results. Preview a new feature here, or return to the end to edit existing features. Insertion preserves existing downstream references.</value></data>
+  <data name="HistoryEditRequiresEnd" xml:space="preserve"><value>Return to the history end to edit, or explicitly insert a new feature at the current cursor.</value></data>
+  <data name="HistoryExportRequiresEnd" xml:space="preserve"><value>Return to the history end before exporting the complete model.</value></data>
+  <data name="MoveFeatureEarlier" xml:space="preserve"><value>Move feature earlier</value></data>
+  <data name="MoveFeatureLater" xml:space="preserve"><value>Move feature later</value></data>
+  <data name="ReorderFeatures" xml:space="preserve"><value>Reorder feature history</value></data>
+  <data name="ReturnHistoryEnd" xml:space="preserve"><value>Return to history end</value></data>
+  <data name="RollbackAfter" xml:space="preserve"><value>Roll back after this feature</value></data>
+  <data name="RollbackBefore" xml:space="preserve"><value>Roll back before this feature</value></data>
+  <data name="HistoryCursorStale" xml:space="preserve"><value>The history cursor is stale, belongs to another document or is outside the part history.</value></data>
+  <data name="HistoryDependencyFormat" xml:space="preserve"><value>Feature &apos;{0}&apos; must follow &apos;{1}&apos;.</value></data>
+  <data name="HistoryInvalidOrder" xml:space="preserve"><value>History order must contain every feature of the same part exactly once.</value></data>
+  <data name="HistoryNewFeaturesOnly" xml:space="preserve"><value>Insert new features in the selected part. Return to the end to change existing content.</value></data>
+  <data name="HistoryPreserveAuthorData" xml:space="preserve"><value>Cursor insertion cannot change existing parameters, datums, sketches or settings.</value></data>
+  <data name="HistoryPreserveDefinitions" xml:space="preserve"><value>Cursor insertion cannot replace, rename or modify other definitions.</value></data>
+  <data name="HistoryPreserveGraph" xml:space="preserve"><value>Cursor insertion must preserve the existing part and feature graph.</value></data>
+  <data name="AssemblySolveInvalidReference" xml:space="preserve">
+    <value>Reselect stale assembly paths and exact topology anchors.</value>
+  </data>
+  <data name="AssemblySolveLimitExceeded" xml:space="preserve">
+    <value>The supported instance or relation budget was exceeded; no pose was committed.</value>
+  </data>
+  <data name="AssemblySolveSharedParent" xml:space="preserve">
+    <value>Make the shared parent assembly independent before solving.</value>
+  </data>
+  <data name="AssemblySolveTimeBudget" xml:space="preserve">
+    <value>The solver time budget was reached; no pose was committed.</value>
+  </data>
+  <data name="AssemblySolveIterationLimit" xml:space="preserve">
+    <value>The iteration limit was reached; no pose was committed. This does not prove the relations inconsistent.</value>
+  </data>
+  <data name="AssemblySolveSingular" xml:space="preserve">
+    <value>The local Jacobian is singular at this pose; choose another initial pose. No pose was committed.</value>
+  </data>
+  <data name="AssemblySolveNoConvergence" xml:space="preserve">
+    <value>The local solver did not satisfy all relations; no pose was committed. This does not prove the relations inconsistent.</value>
+  </data>
+  <data name="AssemblySolveLocallySatisfied" xml:space="preserve">
+    <value>All relations are locally satisfied. Global uniqueness has not been proved.</value>
+  </data>
+  <data name="AssemblySolveLocalFreedom" xml:space="preserve">
+    <value>Relations are locally satisfied; infinitesimal free motion or rank uncertainty remains. Global uniqueness has not been proved.</value>
+  </data>
+  <data name="AssemblySolvePreviewChanged" xml:space="preserve">
+    <value>The assembly changed; preview again.</value>
+  </data>
+  <data name="AssemblySolvePreviewCanceled" xml:space="preserve">
+    <value>Assembly preview canceled.</value>
+  </data>
+  <data name="AssemblySolveRankUncertain" xml:space="preserve">
+    <value>{0} components have uncertain rank; finite freedom is not proven.</value>
+  </data>
+  <data name="ApplyRegionOffset" xml:space="preserve"><value>Offset selected regions</value></data>
+  <data name="OffsetRegions" xml:space="preserve"><value>Region offset</value></data>
+  <data name="OffsetRegionsHint" xml:space="preserve"><value>Click an edge or circle in each boundary, then apply. Positive distance expands material, shrinks holes and expands islands. Only selected boundaries participate.</value></data>
+  <data name="RegionOffsetCollapse" xml:space="preserve"><value>A boundary cannot be offset at this distance: it collapses, intersects itself, has an ambiguous join or exceeds the corner limit. Reduce the distance.</value></data>
+  <data name="RegionOffsetCreated" xml:space="preserve"><value>Offset complete: {0} boundaries, {1} groups.</value></data>
+  <data name="RegionOffsetDistance" xml:space="preserve"><value>Enter a finite nonzero offset distance.</value></data>
+  <data name="RegionOffsetLimit" xml:space="preserve"><value>Use at most 64 boundaries, 256 selected edges and 12 nesting levels.</value></data>
+  <data name="RegionOffsetSelection" xml:space="preserve"><value>Select non-construction circles or edges in isolated closed line/arc loops.</value></data>
+  <data name="RegionOffsetTopology" xml:space="preserve"><value>Boundaries touch, intersect or change containment. The whole offset was rejected.</value></data>
+  <data name="ExactEllipse" xml:space="preserve"><value>Exact ellipse</value></data>
+  <data name="ExactEllipseHint" xml:space="preserve"><value>Numeric conic: center + cosine axis × cos(u) + sine axis × sin(u). Apply changes fixed dimensions. Detach linked projections before editing.</value></data>
+  <data name="EllipseCenter" xml:space="preserve"><value>Center X / Y (mm)</value></data>
+  <data name="EllipseCosineAxis" xml:space="preserve"><value>Cosine axis X / Y (mm)</value></data>
+  <data name="EllipseSineAxis" xml:space="preserve"><value>Sine axis X / Y (mm)</value></data>
+  <data name="EllipseInterval" xml:space="preserve"><value>Start / sweep (degrees)</value></data>
+  <data name="AddExactEllipse" xml:space="preserve"><value>Add ellipse</value></data>
+  <data name="SelectExactEllipse" xml:space="preserve"><value>Select an exact ellipse.</value></data>
+  <data name="DetachEllipseBeforeEditing" xml:space="preserve"><value>Detach the projection source before editing this ellipse.</value></data>
+  <data name="NativeEdgeProjection" xml:space="preserve"><value>Project native edge</value></data>
+  <data name="NativeEdgeProjectionHint" xml:space="preserve"><value>Select a source feature and one exact line, conic, Bezier or B-spline edge. The projection retains its complete definition and finite interval. Unsupported or collapsed curves are rejected.</value></data>
+  <data name="NativeConicProjectionReady" xml:space="preserve"><value>Exact conic: major {0:G6} mm; minor {1:G6} mm; sweep {2:G6}°</value></data>
+  <data name="NativeLineProjectionReady" xml:space="preserve"><value>Exact finite line projection is ready.</value></data>
+  <data name="NativeProjectionNoSource" xml:space="preserve"><value>This sketch part has no current native feature to select.</value></data>
+  <data name="NativeProjectionUnsupported" xml:space="preserve"><value>The active kernel cannot confirm exact native edge projections.</value></data>
+  <data name="NativeProjectionReady" xml:space="preserve"><value>Verified. Use this projection to add it to the sketch draft.</value></data>
+  <data name="NativeProjectionRejected" xml:space="preserve"><value>Projection rejected: select a current supported exact edge with a finite interval whose copied definition matches the source and remains nondegenerate.</value></data>
+  <data name="SelectNativeProjectionToReplace" xml:space="preserve"><value>First select the existing native projection in the sketch to replace its source explicitly.</value></data>
+  <data name="LinkNativeProjection" xml:space="preserve"><value>Link source; freeze when it changes</value></data>
+  <data name="ReplaceNativeProjection" xml:space="preserve"><value>Replace selected projection source</value></data>
+  <data name="UseEdgeProjection" xml:space="preserve"><value>Use projection</value></data>
+  <data name="NativeProjectionFrozen" xml:space="preserve"><value>Source changed: detach or explicitly reselect.</value></data>
+  <data name="ExactFreeform" xml:space="preserve"><value>Exact freeform curve</value></data>
+  <data name="FreeformDefinitionHint" xml:space="preserve"><value>Keep the copied family, degree, weights, knots, period and finite native interval. Detach a driven source before editing. Numeric lists use a decimal point.</value></data>
+  <data name="FreeformPolesHint" xml:space="preserve"><value>Control points: x,y; x,y</value></data>
+  <data name="FreeformWeightsHint" xml:space="preserve"><value>Weights: w; w (empty means nonrational)</value></data>
+  <data name="FreeformDegree" xml:space="preserve"><value>Degree</value></data>
+  <data name="FreeformPeriodic" xml:space="preserve"><value>Periodic</value></data>
+  <data name="FreeformNativeInterval" xml:space="preserve"><value>Native parameter interval</value></data>
+  <data name="FreeformReverse" xml:space="preserve"><value>Reverse parameter direction</value></data>
+  <data name="NativeFreeformProjectionReady" xml:space="preserve"><value>Exact freeform projection · degree {0}, {1} control points</value></data>
+  <data name="SelectExactFreeform" xml:space="preserve"><value>Select one exact freeform curve.</value></data>
+  <data name="NativeProjectionDriven" xml:space="preserve"><value>Detach the projected source before editing its curve definition.</value></data>
+  <data name="ExposeCurveEndpoints" xml:space="preserve"><value>Expose finite curve endpoints</value></data>
+  <data name="ExactEndpointHint" xml:space="preserve"><value>Select a finite ellipse or freeform curve, then expose its endpoints. Snap new geometry to these points to share boundary identities. Edit the numeric definition to move the endpoints.</value></data>
+  <data name="ExactEndpointProtected" xml:space="preserve"><value>Exact curve endpoints and their anchors follow the numeric definition. Select an open finite curve; edit its definition to move the endpoints.</value></data>
+  <data name="CurveParameterCenterX" xml:space="preserve"><value>Center X</value></data>
+  <data name="CurveParameterCenterY" xml:space="preserve"><value>Center Y</value></data>
+  <data name="CurveParameterCosineX" xml:space="preserve"><value>Cosine axis X</value></data>
+  <data name="CurveParameterCosineY" xml:space="preserve"><value>Cosine axis Y</value></data>
+  <data name="CurveParameterSineX" xml:space="preserve"><value>Sine axis X</value></data>
+  <data name="CurveParameterSineY" xml:space="preserve"><value>Sine axis Y</value></data>
+  <data name="CurveParameterStartAngle" xml:space="preserve"><value>Start angle</value></data>
+  <data name="CurveParameterSweepAngle" xml:space="preserve"><value>Sweep angle</value></data>
+  <data name="CurveParameterPoleX" xml:space="preserve"><value>Control point X</value></data>
+  <data name="CurveParameterPoleY" xml:space="preserve"><value>Control point Y</value></data>
+  <data name="CurveParameterWeight" xml:space="preserve"><value>Weight</value></data>
+  <data name="CurveParameterKnot" xml:space="preserve"><value>Knot</value></data>
+  <data name="CurveParameterFirst" xml:space="preserve"><value>First native parameter</value></data>
+  <data name="CurveParameterLast" xml:space="preserve"><value>Last native parameter</value></data>
+  <data name="FreeformPeriodicIntervalHint" xml:space="preserve"><value>Periodic curves can cross the seam or use a shifted interval of at most one period. Nonperiodic curves must stay inside their original interval.</value></data>
+  <data name="DrawingSectionHatching" xml:space="preserve"><value>Section hatching</value></data>
+  <data name="DrawingHatchDefault" xml:space="preserve"><value>Default material rule</value></data>
+  <data name="DrawingHatchEnabled" xml:space="preserve"><value>Show material hatching</value></data>
+  <data name="DrawingHatchAngle" xml:space="preserve"><value>Angle (degrees)</value></data>
+  <data name="DrawingHatchSpacing" xml:space="preserve"><value>Paper spacing (mm)</value></data>
+  <data name="DrawingHatchAlternate" xml:space="preserve"><value>Alternate source directions</value></data>
+  <data name="DrawingHatchRemoveRule" xml:space="preserve"><value>Remove material override</value></data>
+  <data name="DrawingTemplate" xml:space="preserve"><value>Sheet template</value></data>
+  <data name="DrawingLandscape" xml:space="preserve"><value>Landscape</value></data>
+  <data name="DrawingTitleBlock" xml:space="preserve"><value>Frame and title block</value></data>
+  <data name="DrawingProjectionMethod" xml:space="preserve"><value>Projection method</value></data>
+  <data name="DrawingCaptionLanguage" xml:space="preserve"><value>Printed label language</value></data>
+  <data name="DrawingFrameMargins" xml:space="preserve"><value>Frame margins: left / top / right / bottom (mm)</value></data>
+  <data name="DrawingMarginLeft" xml:space="preserve"><value>Left margin (mm)</value></data>
+  <data name="DrawingMarginTop" xml:space="preserve"><value>Top margin (mm)</value></data>
+  <data name="DrawingMarginRight" xml:space="preserve"><value>Right margin (mm)</value></data>
+  <data name="DrawingMarginBottom" xml:space="preserve"><value>Bottom margin (mm)</value></data>
+  <data name="DrawingNumber" xml:space="preserve"><value>Drawing number</value></data>
+  <data name="DrawingRevision" xml:space="preserve"><value>Revision</value></data>
+  <data name="DrawingOrganization" xml:space="preserve"><value>Organization</value></data>
+  <data name="DrawingSurfaceFinish" xml:space="preserve"><value>Surface finish</value></data>
+  <data name="DrawingGeneralTolerance" xml:space="preserve"><value>General tolerance</value></data>
+  <data name="DrawingDrawnBy" xml:space="preserve"><value>Drawn by</value></data>
+  <data name="DrawingCheckedBy" xml:space="preserve"><value>Checked by</value></data>
+  <data name="DrawingApprovedBy" xml:space="preserve"><value>Approved by</value></data>
+  <data name="DrawingIssueDate" xml:space="preserve"><value>Issue date (yyyy-MM-dd)</value></data>
+  <data name="DrawingLegacyTemplate" xml:space="preserve"><value>Legacy simple frame</value></data>
+  <data name="DrawingCustomPaper" xml:space="preserve"><value>Custom paper</value></data>
+  <data name="DrawingFirstAngle" xml:space="preserve"><value>First angle</value></data>
+  <data name="DrawingThirdAngle" xml:space="preserve"><value>Third angle</value></data>
+  <data name="DrawingAnnotations" xml:space="preserve"><value>Manufacturing annotations</value></data>
+  <data name="DrawingAnnotationType" xml:space="preserve"><value>Annotation type</value></data>
+  <data name="DrawingDatumSymbol" xml:space="preserve"><value>Datum symbol</value></data>
+  <data name="DrawingControlFrame" xml:space="preserve"><value>Feature control frame</value></data>
+  <data name="DrawingBalloon" xml:space="preserve"><value>Assembly balloon</value></data>
+  <data name="DrawingPickAttachment" xml:space="preserve"><value>Pick exact face or edge</value></data>
+  <data name="DrawingAnnotationName" xml:space="preserve"><value>Datum label / item number</value></data>
+  <data name="DrawingCharacteristic" xml:space="preserve"><value>Geometric characteristic</value></data>
+  <data name="DrawingToleranceMm" xml:space="preserve"><value>Tolerance (mm)</value></data>
+  <data name="DrawingOrderedDatums" xml:space="preserve"><value>Ordered datum labels (A,B,C)</value></data>
+  <data name="DrawingDiameterZone" xml:space="preserve"><value>Diameter tolerance zone</value></data>
+  <data name="DrawingTargetSurface" xml:space="preserve"><value>Surface</value></data>
+  <data name="DrawingTargetAxis" xml:space="preserve"><value>Cylindrical axis</value></data>
+  <data name="DrawingConditionNone" xml:space="preserve"><value>No material condition</value></data>
+  <data name="DrawingConditionMaximum" xml:space="preserve"><value>Maximum material condition</value></data>
+  <data name="DrawingConditionLeast" xml:space="preserve"><value>Least material condition</value></data>
+  <data name="DrawingAddAnnotation" xml:space="preserve"><value>Add annotation</value></data>
+  <data name="DrawingApplyAnnotation" xml:space="preserve"><value>Apply / explicitly reselect</value></data>
+  <data name="DrawingMoveAnnotation" xml:space="preserve"><value>Move annotation</value></data>
+  <data name="DrawingRenameDatum" xml:space="preserve"><value>Rename datum</value></data>
+  <data name="DrawingDeleteAnnotation" xml:space="preserve"><value>Delete annotation</value></data>
+  <data name="DrawingPartsTable" xml:space="preserve"><value>Parts table position (mm)</value></data>
+  <data name="DrawingPlacePartsTable" xml:space="preserve"><value>Place parts table</value></data>
+  <data name="DrawingRemovePartsTable" xml:space="preserve"><value>Remove parts table</value></data>
+  <data name="DrawingAnnotationRequirements" xml:space="preserve"><value>Tolerance values are design requirements. The drawing does not certify measured compliance. Quantities count distinct instances represented by this sheet.</value></data>
+  <data name="DrawingCharStraightness" xml:space="preserve"><value>Straightness</value></data>
+  <data name="DrawingCharFlatness" xml:space="preserve"><value>Flatness</value></data>
+  <data name="DrawingCharCircularity" xml:space="preserve"><value>Circularity</value></data>
+  <data name="DrawingCharCylindricity" xml:space="preserve"><value>Cylindricity</value></data>
+  <data name="DrawingCharProfileLine" xml:space="preserve"><value>Line profile</value></data>
+  <data name="DrawingCharProfileSurface" xml:space="preserve"><value>Surface profile</value></data>
+  <data name="DrawingCharParallelism" xml:space="preserve"><value>Parallelism</value></data>
+  <data name="DrawingCharPerpendicularity" xml:space="preserve"><value>Perpendicularity</value></data>
+  <data name="DrawingCharAngularity" xml:space="preserve"><value>Angularity</value></data>
+  <data name="DrawingCharPosition" xml:space="preserve"><value>Position</value></data>
+  <data name="DrawingCharCircularRunout" xml:space="preserve"><value>Circular runout</value></data>
+  <data name="DrawingCharTotalRunout" xml:space="preserve"><value>Total runout</value></data>
+  <data name="DrawingAnnotationTab" xml:space="preserve"><value>Annotations</value></data>
+  <data name="DrawingTemplateLibrary" xml:space="preserve"><value>Template library</value></data>
+  <data name="DrawingSaveTemplate" xml:space="preserve"><value>Save current sheet as new template</value></data>
+  <data name="DrawingReplaceTemplate" xml:space="preserve"><value>Replace selected template</value></data>
+  <data name="DrawingApplyTemplate" xml:space="preserve"><value>Apply selected template</value></data>
+  <data name="DrawingDeleteTemplate" xml:space="preserve"><value>Delete selected template</value></data>
+  <data name="DrawingImportTemplate" xml:space="preserve"><value>Import</value></data>
+  <data name="DrawingExportTemplate" xml:space="preserve"><value>Export</value></data>
+  <data name="DrawingSheetContent" xml:space="preserve"><value>Custom fields and notes</value></data>
+  <data name="DrawingCustomField" xml:space="preserve"><value>Custom field</value></data>
+  <data name="DrawingManufacturingNote" xml:space="preserve"><value>Manufacturing note</value></data>
+  <data name="DrawingFieldCaption" xml:space="preserve"><value>Field caption</value></data>
+  <data name="DrawingContentText" xml:space="preserve"><value>Content (notes support line breaks)</value></data>
+  <data name="DrawingContentPosition" xml:space="preserve"><value>Position (X / Y, mm)</value></data>
+  <data name="DrawingContentSize" xml:space="preserve"><value>Width / field height (mm)</value></data>
+  <data name="DrawingAddSheetContent" xml:space="preserve"><value>Add sheet content</value></data>
+  <data name="DrawingDeleteSheetContent" xml:space="preserve"><value>Delete selected content</value></data>
+  <data name="DrawingFrameZones" xml:space="preserve"><value>Frame zones</value></data>
+  <data name="DrawingZonesEnabled" xml:space="preserve"><value>Show frame zones</value></data>
+  <data name="DrawingZoneCounts" xml:space="preserve"><value>Columns / rows</value></data>
+  <data name="DrawingZonesReverseColumns" xml:space="preserve"><value>Reverse column numbers</value></data>
+  <data name="DrawingZonesReverseRows" xml:space="preserve"><value>Reverse row letters</value></data>
+  <data name="DrawingHoleTable" xml:space="preserve"><value>Hole table</value></data>
+  <data name="DrawingHoleOrigin" xml:space="preserve"><value>Origin in coordinate instance (mm)</value></data>
+  <data name="DrawingHoleAxes" xml:space="preserve"><value>Axis rotation X / Y / Z (degrees)</value></data>
+  <data name="DrawingHoleCreateTable" xml:space="preserve"><value>Create table from current view</value></data>
+  <data name="DrawingHoleApplyTable" xml:space="preserve"><value>Apply name, placement and axes</value></data>
+  <data name="DrawingHoleDeleteTable" xml:space="preserve"><value>Delete hole table</value></data>
+  <data name="DrawingHoleNumber" xml:space="preserve"><value>Hole number</value></data>
+  <data name="DrawingHolePickShaft" xml:space="preserve"><value>Select cylindrical shaft wall</value></data>
+  <data name="DrawingHoleSelected" xml:space="preserve"><value>Cylindrical wall selected; add a row to verify the current hole.</value></data>
+  <data name="DrawingHoleAddRow" xml:space="preserve"><value>Verify and add hole row</value></data>
+  <data name="DrawingHoleReselectRow" xml:space="preserve"><value>Verify and reselect current row</value></data>
+  <data name="DrawingHoleDeleteRow" xml:space="preserve"><value>Delete selected hole row</value></data>
+  <data name="DrawingHoleChooseView" xml:space="preserve"><value>Choose a current drawing view.</value></data>
+  <data name="DrawingHoleChooseRow" xml:space="preserve"><value>Choose a hole row to edit.</value></data>
+  <data name="DrawingHoleRequirements" xml:space="preserve"><value>Origin and axes use the first source instance in this view. Add rows by selecting exact shaft walls. Only complete inward holes with planar openings and a proved bottom are accepted; depth includes the recess. Stale rows require explicit reselection before PDF export.</value></data>
+  <data name="DrawingHoleCoordinatePlane" xml:space="preserve"><value>Coordinate datum plane</value></data>
+  <data name="DrawingHoleCoordinatePoint" xml:space="preserve"><value>Origin datum point</value></data>
+  <data name="DrawingHoleCoordinateAxis" xml:space="preserve"><value>X direction datum axis</value></data>
+  <data name="DrawingHoleReverseX" xml:space="preserve"><value>Reverse X direction</value></data>
+  <data name="DrawingHoleNumericFrame" xml:space="preserve"><value>Numeric origin and axes</value></data>
+  <data name="DrawingHolePlaneOrigin" xml:space="preserve"><value>Use plane origin</value></data>
+  <data name="DrawingHolePlaneX" xml:space="preserve"><value>Use plane X direction</value></data>
+  <data name="DrawingManufacturingDatumType" xml:space="preserve"><value>Manufacturing datum feature</value></data>
+  <data name="DrawingManufacturingSurface" xml:space="preserve"><value>Surface feature</value></data>
+  <data name="DrawingManufacturingSizeAxis" xml:space="preserve"><value>Complete cylindrical size axis</value></data>
+  <data name="DrawingDatumSystemSyntax" xml:space="preserve"><value>A,B,C: primary, secondary, tertiary. A(M)-B(L),C: common primary datum; M/L modify each size datum boundary.</value></data>
+  <data name="DrawingIsoSizeRule" xml:space="preserve"><value>ISO/GB: size and geometry are independent unless a relationship is specified. M/L are explicit material requirements; datum M/L are boundary modifiers.</value></data>
+  <data name="DrawingAsmeSizeRule" xml:space="preserve"><value>ASME: Rule #1 normally governs individual regular features of size. Feature M/L specify material condition; datum M/L specify material boundary.</value></data>
+  <data name="DrawingAttachmentContinued" xml:space="preserve"><value>Attachment continued.</value></data>
+  <data name="DrawingManufacturingMedianPlane" xml:space="preserve"><value>Size median plane</value></data>
+  <data name="DrawingTargetMedianPlane" xml:space="preserve"><value>Size median plane</value></data>
+  <data name="DrawingPickOppositeSizeFace" xml:space="preserve"><value>Select the second original size face</value></data>
+  <data name="DrawingExternalThickness" xml:space="preserve"><value>External thickness</value></data>
+  <data name="DrawingInternalWidth" xml:space="preserve"><value>Internal slot width</value></data>
+  <data name="DrawingPlanarSizeRequirements" xml:space="preserve"><value>Select two original planar faces on the same solid. Complete polygonal prism thickness or rectangular through-slot width must be proved; no diameter symbol is used for a median plane.</value></data>
+  <data name="ExchangeMeasurement" xml:space="preserve"><value>Exchange round-trip measurement (.zip)</value></data>
+  <data name="ExchangeMeasurementHint" xml:space="preserve"><value>Export and re-import with Cadoryx, then compare measured bounds, area, solid volume, hierarchy and color palette. The archive includes the actual files and report. External CAD and per-face style checks are separate.</value></data>
+  <data name="SolidOffset" xml:space="preserve"><value>Solid offset</value></data>
+  <data name="SolidOffsetHint" xml:space="preserve"><value>Choose one whole solid. Positive distance expands it; negative distance shrinks it. Reselect face references on the result; source face colors are not carried across.</value></data>
+  <data name="SolidOffsetDistance" xml:space="preserve"><value>Offset distance (mm)</value></data>
+  <data name="ContourAddRow" xml:space="preserve"><value>Add row</value></data>
+  <data name="ContourChain" xml:space="preserve"><value>Actual native chain</value></data>
+  <data name="ContourChainSummary" xml:space="preserve"><value>Edges: {0} · {1:0.######} mm · {2}</value></data>
+  <data name="ContourChamfer" xml:space="preserve"><value>Contour chamfer</value></data>
+  <data name="ContourClosed" xml:space="preserve"><value>Closed</value></data>
+  <data name="ContourCompletePick" xml:space="preserve"><value>Finish the explicit seed/support selection before previewing.</value></data>
+  <data name="ContourConstant" xml:space="preserve"><value>Constant</value></data>
+  <data name="ContourDegree" xml:space="preserve"><value>Degree</value></data>
+  <data name="ContourEdgeIndex" xml:space="preserve"><value>Edge</value></data>
+  <data name="ContourFillet" xml:space="preserve"><value>Contour fillet</value></data>
+  <data name="ContourFirstDerivative" xml:space="preserve"><value>Start derivative (mm / normalized t)</value></data>
+  <data name="ContourFirstParameter" xml:space="preserve"><value>Start t</value></data>
+  <data name="ContourFirstRadius" xml:space="preserve"><value>Start radius (mm)</value></data>
+  <data name="ContourFirstVertex" xml:space="preserve"><value>Start vertex</value></data>
+  <data name="ContourIdentity" xml:space="preserve"><value>Stable ID</value></data>
+  <data name="ContourKnots" xml:space="preserve"><value>Clamped knots over [0, 1]</value></data>
+  <data name="ContourLastDerivative" xml:space="preserve"><value>End derivative (mm / normalized t)</value></data>
+  <data name="ContourLastParameter" xml:space="preserve"><value>End t</value></data>
+  <data name="ContourLastRadius" xml:space="preserve"><value>End radius (mm)</value></data>
+  <data name="ContourLastVertex" xml:space="preserve"><value>End vertex</value></data>
+  <data name="ContourLaw" xml:space="preserve"><value>Radius law over the whole chain</value></data>
+  <data name="ContourLawHint" xml:space="preserve"><value>The normalized domain covers the entire discovered chain. All radii must stay positive. Parameter bindings retain program and row IDs; detach bindings before removing a driven row or changing its law family.</value></data>
+  <data name="ContourLinear" xml:space="preserve"><value>Linear</value></data>
+  <data name="ContourMoveDown" xml:space="preserve"><value>Move down</value></data>
+  <data name="ContourMoveUp" xml:space="preserve"><value>Move up</value></data>
+  <data name="ContourMultiplicity" xml:space="preserve"><value>Multiplicity</value></data>
+  <data name="ContourOpen" xml:space="preserve"><value>Open</value></data>
+  <data name="ContourOverlap" xml:space="preserve"><value>This native chain overlaps another program. Select a separate contour.</value></data>
+  <data name="ContourParameter" xml:space="preserve"><value>Normalized t</value></data>
+  <data name="ContourPickSeed" xml:space="preserve"><value>Choose a source, then pick an exact edge. The complete native tangent chain receives this program.</value></data>
+  <data name="ContourPickSupport" xml:space="preserve"><value>Pick an adjacent support face on the same source to set the chamfer direction.</value></data>
+  <data name="ContourPoles" xml:space="preserve"><value>Ordered radius control points</value></data>
+  <data name="ContourPrograms" xml:space="preserve"><value>Contour programs</value></data>
+  <data name="ContourRadius" xml:space="preserve"><value>Radius (mm)</value></data>
+  <data name="ContourRemoveRow" xml:space="preserve"><value>Remove row</value></data>
+  <data name="ContourReselect" xml:space="preserve"><value>Reselect program</value></data>
+  <data name="ContourReselectHint" xml:space="preserve"><value>Select each affected program and explicitly reselect its current seed and support face.</value></data>
+  <data name="ContourSampled" xml:space="preserve"><value>Sampled</value></data>
+  <data name="ContourSamples" xml:space="preserve"><value>Samples over [0, 1]</value></data>
+  <data name="ContourSecondDistance" xml:space="preserve"><value>Use two distances</value></data>
+  <data name="ContourSmooth" xml:space="preserve"><value>Smooth Hermite</value></data>
+  <data name="ContourSpline" xml:space="preserve"><value>B-spline</value></data>
+  <data name="ContourClear" xml:space="preserve"><value>Clear all programs</value></data>
+  <data name="FaceDefeature" xml:space="preserve"><value>Remove faces and heal</value></data>
+  <data name="FaceDefeatureHint" xml:space="preserve"><value>Choose all faces of the feature to remove. Confirm only after preview shows one complete healed solid.</value></data>
+  <data name="FaceEditDistance" xml:space="preserve"><value>Signed distance (mm)</value></data>
+  <data name="FaceEditNormal" xml:space="preserve"><value>Outward normal: ({0:0.######}, {1:0.######}, {2:0.######})</value></data>
+  <data name="FaceEditNormalPending" xml:space="preserve"><value>Choose a planar face to confirm its outward normal.</value></data>
+  <data name="FaceEditSelectedFaces" xml:space="preserve"><value>Selected faces</value></data>
+  <data name="FacePushPull" xml:space="preserve"><value>Planar region push/pull</value></data>
+  <data name="FacePushPullHint" xml:space="preserve"><value>Choose one planar face. Its complete finite region and holes are used. Positive distance adds outward; negative distance removes inward.</value></data>
+  <data name="CircularContact" xml:space="preserve"><value>Finite circular contact</value></data>
+  <data name="CircularContactBranch" xml:space="preserve"><value>Contact branch</value></data>
+  <data name="CircularContactHint" xml:space="preserve"><value>Select two curves in A, B order: a line segment and a circle/arc, or two circles/arcs. Choose the directed line side or external/containment branch. The contact must lie on every finite curve.</value></data>
+  <data name="ContactAContainsB" xml:space="preserve"><value>Internal: A contains B</value></data>
+  <data name="ContactApplyBranch" xml:space="preserve"><value>Apply contact branch</value></data>
+  <data name="ContactBContainsA" xml:space="preserve"><value>Internal: B contains A</value></data>
+  <data name="ContactBranchFailure" xml:space="preserve"><value>The selected contact branch cannot be verified. Check radii, circle centers and fixed constraints.</value></data>
+  <data name="ContactExternal" xml:space="preserve"><value>External contact</value></data>
+  <data name="ContactInvalidTargets" xml:space="preserve"><value>Select exactly two line/circular curves and a matching contact branch.</value></data>
+  <data name="ContactLineLeft" xml:space="preserve"><value>Circle left of directed line</value></data>
+  <data name="ContactLineRight" xml:space="preserve"><value>Circle right of directed line</value></data>
+  <data name="ContactOutsideDomain" xml:space="preserve"><value>The supporting curves are tangent, but the contact lies outside the selected segment or arc. Adjust the finite curves.</value></data>
+  <data name="RepetitionStyleConflict" xml:space="preserve"><value>Native contributors have conflicting presentation. Select whole-body presentation or change the layout.</value></data>
+  <data name="RepetitionStyleEvidence" xml:space="preserve"><value>Styled source slots: {0}; copied result slots: {1}; shared contributors: {2}; conflicts: {3}.</value></data>
+  <data name="RepetitionStyleHint" xml:space="preserve"><value>Conflicting colors, layers or materials in fused faces require an explicit whole-body choice. This choice omits subshape assignments.</value></data>
+  <data name="RepetitionStylePolicy" xml:space="preserve"><value>Presentation inheritance</value></data>
+  <data name="RepetitionStyleUnsupported" xml:space="preserve"><value>The source presentation cannot be verified against the complete native map. Check the exact source and select whole-body presentation where appropriate.</value></data>
+  <data name="RepetitionStyleVerified" xml:space="preserve"><value>Preserve verified subshape presentation</value></data>
+  <data name="RepetitionStyleWholeBody" xml:space="preserve"><value>Use source whole-body presentation</value></data>
+  <data name="EndpointCurvatureRelation" xml:space="preserve"><value>Endpoint curvature continuity (G2)</value></data>
+  <data name="EndpointCurvatureHint" xml:space="preserve"><value>Select exactly two line, arc, quadratic Bezier or clamped cubic curves with one shared endpoint ID. Tangents must oppose and signed curvature must match; cusp or degenerate derivatives are rejected.</value></data>
+  <data name="CurvatureOutputFailure" xml:space="preserve"><value>Returned endpoint tangent or curvature is outside tolerance. Adjust fixed points or curve controls.</value></data>
+  <data name="HoleThread" xml:space="preserve"><value>Metric coarse thread</value></data>
+  <data name="HoleThreadHint" xml:space="preserve"><value>Symbolic intent retains pitch and effective depth with a plain pilot hole. Disable clearance intent before choosing a thread.</value></data>
+  <data name="HoleThreadHand" xml:space="preserve"><value>Thread hand</value></data>
+  <data name="HoleThreadRight" xml:space="preserve"><value>Right-hand</value></data>
+  <data name="HoleThreadLeft" xml:space="preserve"><value>Left-hand</value></data>
+  <data name="HoleThreadDepth" xml:space="preserve"><value>Effective thread depth (mm)</value></data>
+  <data name="HoleThreadRepresentation" xml:space="preserve"><value>Thread representation</value></data>
+  <data name="HoleThreadSymbolic" xml:space="preserve"><value>Symbolic pilot hole</value></data>
+  <data name="HoleThreadModeled" xml:space="preserve"><value>Modeled 60 degree tooth groove</value></data>
+  <data name="HoleThreadModeledHint" xml:space="preserve"><value>Cuts a 60 degree groove with a flat root and the selected workshop pilot. Axial length is limited to 1–64 pitches. No tolerance-class compliance is implied.</value></data>
+  <data name="FiniteContactRelation" xml:space="preserve"><value>Finite parameter contact (G1/G2)</value></data>
+  <data name="FiniteContactHint" xml:space="preserve"><value>Select two curves, explicit interior parameters, direction and continuity. Copied exact curves remain fixed.</value></data>
+  <data name="FiniteContactParameters" xml:space="preserve"><value>Normalized parameters A / B (strictly inside 0–1)</value></data>
+  <data name="FiniteContactSameDirection" xml:space="preserve"><value>Same tangent direction</value></data>
+  <data name="FiniteContactOppositeDirection" xml:space="preserve"><value>Opposite tangent directions</value></data>
+  <data name="FiniteContactApply" xml:space="preserve"><value>Apply contact settings</value></data>
+  <data name="ExtrusionSurface" xml:space="preserve"><value>To finite surface</value></data>
+  <data name="ExtrusionSurfaceSupport" xml:space="preserve"><value>Starting support of the exact target</value></data>
+  <data name="ExtrusionSurfaceBranch" xml:space="preserve"><value>Surface intersection branch</value></data>
+  <data name="ExtrusionSurfaceNear" xml:space="preserve"><value>Near intersection (entry)</value></data>
+  <data name="ExtrusionSurfaceFar" xml:space="preserve"><value>Far intersection (exit)</value></data>
+  <data name="ExtrusionSurfaceHint" xml:space="preserve"><value>Select the target starting support and a finite plane, sphere or cylinder. The complete profile must fit the support. Select the entry or exit branch; the finite stop must cover the complete terminal cap. A plane uses the near branch.</value></data>
+  <data name="FiniteContactContinuity" xml:space="preserve">
+    <value>Continuity</value>
+  </data>
+  <data name="FiniteContactG1" xml:space="preserve">
+    <value>G1 · tangent continuity</value>
+  </data>
+  <data name="FiniteContactG2" xml:space="preserve">
+    <value>G2 · curvature continuity</value>
+  </data>
+  <data name="FiniteContactInvalidParameterOrder" xml:space="preserve"><value>Choose parameters strictly inside 0–1 and G1 or G2 continuity. Use endpoint relations at 0 or 1.</value></data>
+  <data name="SlidingContactMode" xml:space="preserve"><value>Contact parameter mode</value></data>
+  <data name="SlidingContactFixed" xml:space="preserve"><value>Keep both parameters fixed</value></data>
+  <data name="SlidingContactSolveA" xml:space="preserve"><value>Solve parameter A</value></data>
+  <data name="SlidingContactSolveB" xml:space="preserve"><value>Solve parameter B</value></data>
+  <data name="SlidingContactSolveBoth" xml:space="preserve"><value>Solve both parameters</value></data>
+  <data name="SlidingContactAuthorsA" xml:space="preserve"><value>A: initial parameter / lower / upper</value></data>
+  <data name="SlidingContactAuthorsB" xml:space="preserve"><value>B: initial parameter / lower / upper</value></data>
+  <data name="SlidingContactResult" xml:space="preserve"><value>Current A / B (automatic results are read-only)</value></data>
+  <data name="SlidingContactHint" xml:space="preserve"><value>Automatic parameters stay strictly inside their explicit bounds. The initial value and bounds remain separate from the solved result.</value></data>
+  <data name="SlidingContactInvalidInterval" xml:space="preserve"><value>The initial parameter and current value must be strictly inside valid bounds between 0 and 1.</value></data>
+  <data name="SlidingContactInvalidMode" xml:space="preserve"><value>Select an explicit parameter mode and provide an initial value and bounds for each automatic parameter.</value></data>
+  <data name="SlidingContactDriverConflict" xml:space="preserve"><value>This parameter has a fixed design driver. Detach that binding explicitly before switching it to automatic solving.</value></data>
+  <data name="SlidingContactDerivativeAmbiguous" xml:space="preserve"><value>The required derivative is not proved at this knot or seam. Choose an unambiguous interior parameter.</value></data>
+  <data name="OffsetJoinLabel" xml:space="preserve">
+    <value>Corner join</value>
+  </data>
+  <data name="OffsetJoinMiter" xml:space="preserve">
+    <value>Miter</value>
+  </data>
+  <data name="OffsetJoinRound" xml:space="preserve">
+    <value>Round</value>
+  </data>
+  <data name="OffsetJoinBevel" xml:space="preserve">
+    <value>Bevel</value>
+  </data>
+  <data name="LoopOffsetFailure" xml:space="preserve">
+    <value>The selected boundary cannot be offset with this distance and corner join. Check closure, branches, collapse and intersections.</value>
+  </data>
+  <data name="ExactAssociatedOffset" xml:space="preserve"><value>Associative exact offset</value></data>
+  <data name="ExactOffsetHint" xml:space="preserve"><value>Select one source curve. The signed distance follows its directed right normal; construction mode creates a reference curve.</value></data>
+  <data name="CreateExactOffset" xml:space="preserve"><value>Create associative offset</value></data>
+  <data name="SelectExactExpression" xml:space="preserve"><value>Select one exact expression curve.</value></data>
+  <data name="ExpressionSourceActive" xml:space="preserve"><value>Source linked; endpoints follow the solved curve.</value></data>
+  <data name="ExpressionSourceFrozen" xml:space="preserve"><value>Source frozen; detach before editing its curve values.</value></data>
+  <data name="ExpressionSourceDetached" xml:space="preserve"><value>Independent curve; source association detached.</value></data>
+  <data name="ApplyExpressionDistance" xml:space="preserve"><value>Apply offset distance</value></data>
+  <data name="FreezeExpression" xml:space="preserve"><value>Freeze source</value></data>
+  <data name="ResumeExpression" xml:space="preserve"><value>Resume source</value></data>
+  <data name="DetachExpression" xml:space="preserve"><value>Detach source</value></data>
+  <data name="AttachAssociativeEndpoints" xml:space="preserve"><value>Attach associative endpoints</value></data>
+  <data name="AssociativeEndpointsHint" xml:space="preserve"><value>Select one expression and optionally two existing points in start/end order. Endpoints remain associated with the curve; they are not fixed anchors.</value></data>
+  <data name="RegionSourceActive" xml:space="preserve"><value>Linked region with {0} segments. Distance, freeze, resume and detach apply to the whole group.</value></data>
+  <data name="RegionSourceFrozen" xml:space="preserve"><value>Frozen region with {0} segments. Resume or detach the whole group before editing.</value></data>
+  <data name="RegionFrozenReason" xml:space="preserve"><value>Region frozen explicitly in the sketch editor</value></data>
+  <data name="RemoveRegionGroup" xml:space="preserve"><value>Delete whole offset region</value></data>
+  <data name="RegionReselectSources" xml:space="preserve"><value>Reselect region sources</value></data>
+  <data name="RegionReselectHint" xml:space="preserve"><value>Explicitly choose a replacement for every source slot in every loop, in traversal order. Preview the complete mapping before applying.</value></data>
+  <data name="RegionReselectLoop" xml:space="preserve"><value>Loop {0}</value></data>
+  <data name="RegionReselectLoopHeader" xml:space="preserve"><value>Loop</value></data>
+  <data name="RegionReselectSource" xml:space="preserve"><value>Current source</value></data>
+  <data name="RegionReselectReplacement" xml:space="preserve"><value>Replacement source</value></data>
+  <data name="RegionReselectIncomplete" xml:space="preserve"><value>Choose a replacement for every source slot before previewing.</value></data>
+  <data name="RegionReselectStale" xml:space="preserve"><value>The sketch changed after this mapping was opened. Close and reopen source selection.</value></data>
+  <data name="RegionReselectPending" xml:space="preserve"><value>Apply or discard the pending numeric edits before reselecting sources.</value></data>
+  <data name="RegionReselectParameterGuard" xml:space="preserve"><value>Detach the region parameter drivers and references before changing its source structure.</value></data>
+  <data name="RegionReselectIncompatible" xml:space="preserve"><value>The complete correspondence could not be proved. The original sketch is unchanged.</value></data>
+  <data name="RegionReselectPreviewReady" xml:space="preserve"><value>Complete correspondence verified. Apply updates the draft in one undo step; confirm the sketch to update the document.</value></data>
+  <data name="RegionReselectSuccess" xml:space="preserve"><value>Region sources updated in the draft. Preview and confirm the sketch to update the document.</value></data>
+  <data name="RegionReselectPreviewOutdated" xml:space="preserve"><value>The mapping changed. The drawing shows the previous preview; preview again before applying.</value></data>
+  <data name="RegionReselectSlot" xml:space="preserve"><value>Slot</value></data>
+  <data name="AiEmptyResponseRetry" xml:space="preserve"><value>The model returned no text or tool call. Retrying once within the current limit.</value></data>
 </root>

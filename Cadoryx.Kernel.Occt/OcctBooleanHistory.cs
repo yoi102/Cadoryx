@@ -29,7 +29,7 @@ public sealed partial class OcctGeometryKernel
             GeometryResult WithoutHistory(string reason)
             {
                 token.ThrowIfCancellationRequested();
-                return new(stored.Geometry,assets.Acquire(stored.Geometry.AssetId),[new("HISTORY.UNSUPPORTED",reason)]);
+                return new(stored.Geometry,GeometryAssetLease.Acquire(stored.Geometry,assets),[new("HISTORY.UNSUPPORTED",reason)]);
             }
             if(!VerifyHistoryRoundtrip(live,result,token))
                 return WithoutHistory("Boolean BRep roundtrip could not preserve verified topology locators.");
@@ -75,7 +75,7 @@ public sealed partial class OcctGeometryKernel
                     sources[i+1].Fingerprint,sources[i+1].Topology.Count)).ToImmutableArray()
             };
             history.Validate();token.ThrowIfCancellationRequested();
-            return new(stored.Geometry,assets.Acquire(stored.Geometry.AssetId)){TopologyHistory=history};
+            return new(stored.Geometry,GeometryAssetLease.Acquire(stored.Geometry,assets)){TopologyHistory=history};
         }
         finally{foreach(var source in sources)source.Dispose();}
     }

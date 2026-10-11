@@ -21,6 +21,7 @@ public sealed class SketchCanvas:FrameworkElement
     private Point? arcMiddle;
     private SketchEntityId? arcMiddleId;
     private readonly List<Point2d> splinePoints=[];
+    private SketchEntityId? splineStartId;
     private SketchEntityId? dragging;
     private Point2d? draggedPosition;
     private SketchEntityId? resizingCircle;
@@ -53,8 +54,12 @@ public sealed class SketchCanvas:FrameworkElement
     public Point2d ToWorld(Point point)=>new((point.X-offset.X)/scale,(offset.Y-point.Y)/scale);
     public void Fit()
     {
-        var sketch=editor?.Sketch;if(sketch is null||sketch.Points.IsEmpty){scale=8;offset=new(80,Math.Max(100,ActualHeight-80));InvalidateVisual();return;}
-        double minX=sketch.Points.Min(p=>p.Position.X),maxX=sketch.Points.Max(p=>p.Position.X),minY=sketch.Points.Min(p=>p.Position.Y),maxY=sketch.Points.Max(p=>p.Position.Y);
+        var sketch=editor?.Sketch;if(sketch is null||sketch.Points.IsEmpty&&sketch.Ellipses.IsEmpty&&sketch.Freeforms.IsEmpty&&sketch.ExpressionCurves.IsEmpty){scale=8;offset=new(80,Math.Max(100,ActualHeight-80));InvalidateVisual();return;}
+        var fitPoints=sketch.Points.Select(p=>p.Position).Concat(sketch.Ellipses.SelectMany(e=>
+            Enumerable.Range(0,97).Select(i=>e.Geometry.At(i/96d)))).Concat(sketch.Freeforms.SelectMany(e=>
+            Enumerable.Range(0,129).Select(i=>e.Geometry.At(i/128d)))).Concat(sketch.ExpressionCurves.SelectMany(e=>
+            Enumerable.Range(0,129).Select(i=>e.Geometry.At(i/128d)))).ToArray();
+        double minX=fitPoints.Min(p=>p.X),maxX=fitPoints.Max(p=>p.X),minY=fitPoints.Min(p=>p.Y),maxY=fitPoints.Max(p=>p.Y);
         foreach(var c in sketch.Circles){var p=sketch.Points.Single(p=>p.Id==c.Center).Position;minX=Math.Min(minX,p.X-c.Radius);maxX=Math.Max(maxX,p.X+c.Radius);minY=Math.Min(minY,p.Y-c.Radius);maxY=Math.Max(maxY,p.Y+c.Radius);}
         var locations=sketch.Points.ToDictionary(p=>p.Id,p=>p.Position);
         foreach(var arc in sketch.Arcs)
@@ -82,7 +87,7 @@ public sealed class SketchCanvas:FrameworkElement
         if(!ReferenceEquals(mixedCacheSketch,s))
         {
             mixedCacheSketch=s;
-            mixedCacheIds=SketchMixedLoops.Find(s).SelectMany(loop=>loop).ToHashSet();
+            mixedCacheIds=SketchMixedLoops.Find(s).Where(loop=>loop.Length>1).SelectMany(loop=>loop).ToHashSet();
         }
         var conflicts=editor.Report?.ConflictingConstraints.ToHashSet()??[];
         var targets=s.Constraints.Where(c=>conflicts.Contains(c.Id)).SelectMany(SketchConstraintEditing.Targets).ToHashSet();
@@ -115,16 +120,58 @@ public sealed class SketchCanvas:FrameworkElement
         foreach(var spline in s.Splines)
         {
             var controls=spline.Controls.Select(id=>points[id]).ToImmutableArray();
-            DrawSpline(dc,controls,PenFor(spline.Id,spline.IsConstruction));
+            DrawSpline(dc,controls,PenFor(spline.Id,spline.IsConstruction),spline.Knots);
             if(!spline.IsConstruction&&!mixedCacheIds.Contains(spline.Id))
                 dc.DrawLine(new Pen(ColorFor(spline.Id),1){DashStyle=DashStyles.Dot},ToScreen(controls[^1]),ToScreen(controls[0]));
+        }
+        foreach(var freeform in s.Freeforms)
+        {
+            var g=new StreamGeometry();using(var context=g.Open())
+            {
+                context.BeginFigure(ToScreen(freeform.Geometry.At(0)),false,false);
+                for(int i=1;i<=128;i++)context.LineTo(ToScreen(freeform.Geometry.At(i/128d)),true,false);
+            }
+            g.Freeze();dc.DrawGeometry(null,PenFor(freeform.Id,freeform.IsConstruction),g);
+            if(!freeform.IsConstruction&&freeform.Endpoints is null)dc.DrawLine(new Pen(ColorFor(freeform.Id),1){DashStyle=DashStyles.Dot},
+                ToScreen(freeform.Geometry.At(1)),ToScreen(freeform.Geometry.At(0)));
+        }
+        foreach(var expression in s.ExpressionCurves)
+        {
+            var g=new StreamGeometry();using(var context=g.Open())
+            {
+                context.BeginFigure(ToScreen(expression.Geometry.At(0)),false,false);
+                for(int i=1;i<=128;i++)context.LineTo(ToScreen(expression.Geometry.At(i/128d)),true,false);
+            }
+            g.Freeze();dc.DrawGeometry(null,PenFor(expression.Id,expression.IsConstruction),g);
+            if(!expression.IsConstruction&&!mixedCacheIds.Contains(expression.Id))
+                dc.DrawLine(new Pen(ColorFor(expression.Id),1){DashStyle=DashStyles.Dot},ToScreen(expression.Geometry.At(1)),ToScreen(expression.Geometry.At(0)));
+        }
+        foreach(var ellipse in s.Ellipses)
+        {
+            var g=new StreamGeometry();using(var context=g.Open())
+            {
+                context.BeginFigure(ToScreen(ellipse.Geometry.At(0)),false,false);
+                for(int i=1;i<=96;i++)context.LineTo(ToScreen(ellipse.Geometry.At(i/96d)),true,false);
+            }
+            g.Freeze();dc.DrawGeometry(null,PenFor(ellipse.Id,ellipse.IsConstruction),g);
+            if(!ellipse.IsConstruction&&ellipse.Endpoints is null&&Math.Abs(Math.Abs(ellipse.Geometry.SweepAngle)-Math.Tau)>1e-10)
+                dc.DrawLine(new Pen(ColorFor(ellipse.Id),1){DashStyle=DashStyles.Dot},ToScreen(ellipse.Geometry.At(1)),ToScreen(ellipse.Geometry.At(0)));
         }
         foreach(var p in s.Points)dc.DrawEllipse(ColorFor(p.Id),null,ToScreen(points[p.Id]),editor.SelectedEntities.Contains(p.Id)?5:3.5,editor.SelectedEntities.Contains(p.Id)?5:3.5);
         foreach(var c in s.Constraints.Where(c=>c.IsEnabled))
         {
             var value=SketchConstraintEditing.Value(c);if(value is null||c is FixPointConstraint)continue;Point anchor;
             var ids=SketchConstraintEditing.Targets(c);
-            if(c is RadiusConstraint r){var circle=s.Circles.Single(x=>x.Id==r.Circle);var center=points[circle.Center];anchor=ToScreen(new(center.X+circle.Radius,center.Y));}
+            if(c is RadiusConstraint r)
+            {
+                if(s.Circles.FirstOrDefault(x=>x.Id==r.Circle) is {} circle)
+                {var center=points[circle.Center];anchor=ToScreen(new(center.X+circle.Radius,center.Y));}
+                else
+                {
+                    var arc=s.Arcs.Single(x=>x.Id==r.Circle);
+                    anchor=ToScreen(SketchArcGeometry.Through(points[arc.Start],points[arc.Middle],points[arc.End]).At(.5));
+                }
+            }
             else if(c is LengthConstraint length){var line=s.Lines.Single(l=>l.Id==length.Line);var a=points[line.Start];var b=points[line.End];anchor=ToScreen(new((a.X+b.X)/2,(a.Y+b.Y)/2));}
             else {var a=points[ids[0]];var b=points[ids[1]];anchor=ToScreen(new((a.X+b.X)/2,(a.Y+b.Y)/2));}
             string prefix=c switch{RadiusConstraint=>"R ",OffsetXConstraint=>"X ",OffsetYConstraint=>"Y ",_=>""};
@@ -156,7 +203,7 @@ public sealed class SketchCanvas:FrameworkElement
             var pen=new Pen(Brushes.White,1){DashStyle=DashStyles.Dash};
             if(proposed.Length>=4)
             {
-                try{DrawSpline(dc,proposed,pen);dc.DrawLine(pen,ToScreen(proposed[^1]),ToScreen(proposed[0]));}
+                try{DrawSpline(dc,proposed,pen,CubicSplineKnotVector.From(CubicSplineDefinition.Uniform(proposed)));dc.DrawLine(pen,ToScreen(proposed[^1]),ToScreen(proposed[0]));}
                 catch(CadValidationException){for(int i=1;i<proposed.Length;i++)dc.DrawLine(pen,ToScreen(proposed[i-1]),ToScreen(proposed[i]));}
             }
             else for(int i=1;i<proposed.Length;i++)dc.DrawLine(pen,ToScreen(proposed[i-1]),ToScreen(proposed[i]));
@@ -184,13 +231,13 @@ public sealed class SketchCanvas:FrameworkElement
         }
         geometry.Freeze();dc.DrawGeometry(null,pen,geometry);
     }
-    private void DrawSpline(DrawingContext dc,ImmutableArray<Point2d> controls,Pen pen)
+    private void DrawSpline(DrawingContext dc,ImmutableArray<Point2d> controls,Pen pen,CubicSplineKnotVector? knots=null)
     {
         var geometry=new StreamGeometry();
         using(var context=geometry.Open())
         {
             context.BeginFigure(ToScreen(controls[0]),false,false);
-            for(int i=1;i<=64;i++)context.LineTo(ToScreen(SketchSplineGeometry.At(controls,i/64d)),true,false);
+            for(int i=1;i<=64;i++)context.LineTo(ToScreen(SketchSplineGeometry.At(controls,i/64d,knots)),true,false);
         }
         geometry.Freeze();dc.DrawGeometry(null,pen,geometry);
     }
@@ -202,47 +249,57 @@ public sealed class SketchCanvas:FrameworkElement
         double grid=editor.GridStep;if(double.IsFinite(grid)&&grid>0)position=new(Math.Round(position.X/grid)*grid,Math.Round(position.Y/grid)*grid);
         return(position,null);
     }
-    private SketchEntityId? Hit(Point at)
+    private SketchEntityId? Hit(Point at,bool geometryOnly=false)
     {
         if(editor is null)return null;var s=editor.Sketch;var p=s.Points.OrderBy(p=>(ToScreen(p.Position)-at).Length).FirstOrDefault();
-        if(p is not null&&(ToScreen(p.Position)-at).Length<9)return p.Id;
+        if(!geometryOnly&&p is not null&&(ToScreen(p.Position)-at).Length<9)return p.Id;
         var points=s.Points.ToDictionary(p=>p.Id,p=>ToScreen(p.Position));
-        foreach(var c in s.Circles)if(Math.Abs((at-points[c.Center]).Length-c.Radius*scale)<7)return c.Id;
+        SketchEntityId? nearest=null;double distance=7;
+        void Consider(SketchEntityId id,double candidate)
+        {if(candidate<distance){nearest=id;distance=candidate;}}
+        void Curve(SketchEntityId id,Func<double,Point2d> evaluate,int segments)
+        {
+            var a=ToScreen(evaluate(0));
+            for(int i=1;i<=segments;i++)
+            {var b=ToScreen(evaluate(i/(double)segments));Consider(id,DistanceToSegment(at,a,b));a=b;}
+        }
+        foreach(var c in s.Circles)Consider(c.Id,Math.Abs((at-points[c.Center]).Length-c.Radius*scale));
         foreach(var arc in s.Arcs)
         {
             var g=SketchArcGeometry.Through(s.Points.Single(p=>p.Id==arc.Start).Position,
                 s.Points.Single(p=>p.Id==arc.Middle).Position,s.Points.Single(p=>p.Id==arc.End).Position);
-            for(int i=0;i<64;i++)
-            {
-                var a=ToScreen(g.At(i/64d));var v=ToScreen(g.At((i+1)/64d))-a;
-                double t=Math.Clamp(Vector.Multiply(at-a,v)/v.LengthSquared,0,1);
-                if((at-(a+t*v)).Length<7)return arc.Id;
-            }
+            Curve(arc.Id,g.At,64);
         }
         foreach(var bezier in s.Beziers)
         {
             var start=s.Points.Single(p=>p.Id==bezier.Start).Position;
             var control=s.Points.Single(p=>p.Id==bezier.Control).Position;
             var end=s.Points.Single(p=>p.Id==bezier.End).Position;
-            for(int i=0;i<64;i++)
-            {
-                var a=ToScreen(SketchBezierGeometry.At(start,control,end,i/64d));
-                var v=ToScreen(SketchBezierGeometry.At(start,control,end,(i+1)/64d))-a;
-                double t=Math.Clamp(Vector.Multiply(at-a,v)/v.LengthSquared,0,1);
-                if((at-(a+t*v)).Length<7)return bezier.Id;
-            }
+            Curve(bezier.Id,t=>SketchBezierGeometry.At(start,control,end,t),64);
         }
         foreach(var spline in s.Splines)
         {
             var controls=spline.Controls.Select(id=>s.Points.Single(p=>p.Id==id).Position).ToImmutableArray();
-            for(int i=0;i<64;i++)
-            {
-                var a=ToScreen(SketchSplineGeometry.At(controls,i/64d));
-                var v=ToScreen(SketchSplineGeometry.At(controls,(i+1)/64d))-a;
-                double t=Math.Clamp(Vector.Multiply(at-a,v)/v.LengthSquared,0,1);
-                if((at-(a+t*v)).Length<7)return spline.Id;
-            }
+            Curve(spline.Id,t=>SketchSplineGeometry.At(controls,t,spline.Knots),64);
         }
+        foreach(var ellipse in s.Ellipses)
+            Curve(ellipse.Id,ellipse.Geometry.At,96);
+        foreach(var freeform in s.Freeforms)
+            Curve(freeform.Id,freeform.Geometry.At,128);
+        foreach(var expression in s.ExpressionCurves)
+            Curve(expression.Id,expression.Geometry.At,128);
+        foreach(var line in s.Lines)Consider(line.Id,DistanceToSegment(at,points[line.Start],points[line.End]));
+        return nearest;
+    }
+    private static double DistanceToSegment(Point at,Point a,Point b)
+    {
+        var v=b-a;double t=v.LengthSquared==0?0:Math.Clamp(Vector.Multiply(at-a,v)/v.LengthSquared,0,1);
+        return (at-(a+t*v)).Length;
+    }
+    private SketchEntityId? HitLine(Point at)
+    {
+        if(editor is null)return null;
+        var s=editor.Sketch;var points=s.Points.ToDictionary(p=>p.Id,p=>ToScreen(p.Position));
         foreach(var l in s.Lines)
         {
             var a=points[l.Start];var v=points[l.End]-a;double t=Math.Clamp(Vector.Multiply(at-a,v)/v.LengthSquared,0,1);
@@ -252,12 +309,41 @@ public sealed class SketchCanvas:FrameworkElement
     }
     protected override void OnMouseDown(MouseButtonEventArgs e)
     {
-        base.OnMouseDown(e);Focus();pointer=e.GetPosition(this);
-        if(e.ChangedButton==MouseButton.Middle){pending=null;pendingId=null;arcMiddle=null;arcMiddleId=null;panning=true;panStart=pointer;CaptureMouse();e.Handled=true;return;}
-        if(e.ChangedButton!=MouseButton.Left||editor is not {CanEdit:true})return;
+        base.OnMouseDown(e);
+        PointerPressed(e.GetPosition(this),e.ChangedButton,Keyboard.Modifiers);
+        if(e.ChangedButton is MouseButton.Left or MouseButton.Middle)e.Handled=true;
+    }
+    internal void PointerPressed(Point position,MouseButton button,ModifierKeys modifiers)
+    {
+        Focus();pointer=position;
+        if(button==MouseButton.Middle){pending=null;pendingId=null;arcMiddle=null;arcMiddleId=null;panning=true;panStart=pointer;CaptureMouse();return;}
+        if(button!=MouseButton.Left||editor is not {CanEdit:true})return;
+        if(editor.Tool is "Fillet" or "Chamfer")
+        {
+            CancelGesture();editor.Select(HitLine(pointer),true);InvalidateVisual();return;
+        }
+        if(editor.Tool is "FilletCorners" or "ChamferCorners")
+        {
+            CancelGesture();var id=Hit(pointer);
+            if(id is {} point&&editor.Sketch.Points.Any(p=>p.Id==point))editor.Select(point,true);
+            InvalidateVisual();return;
+        }
+        if(editor.Tool=="OffsetRegions")
+        {
+            CancelGesture();var id=Hit(pointer,true);if(id is not null)editor.Select(id,true);
+            InvalidateVisual();return;
+        }
+        if(editor.Tool is "TrimCurve" or "ExtendCurve" or "OffsetCurve" or "OffsetLoop")
+        {
+            CancelGesture();editor.EditCurve(Hit(pointer,true),ToWorld(pointer));InvalidateVisual();return;
+        }
+        if(editor.Tool is "TrimLine" or "ExtendLine")
+        {
+            CancelGesture();editor.EditLine(HitLine(pointer),ToWorld(pointer));InvalidateVisual();return;
+        }
         if(editor.Tool=="Select")
         {
-            if((Keyboard.Modifiers&ModifierKeys.Control)==0)
+            if((modifiers&ModifierKeys.Control)==0)
             {
                 var circle=editor.Sketch.Circles.FirstOrDefault(c=>
                 {
@@ -267,10 +353,10 @@ public sealed class SketchCanvas:FrameworkElement
                 if(circle is not null)
                 {
                     editor.Select(circle.Id);resizingCircle=circle.Id;resizedRadius=null;CaptureMouse();
-                    e.Handled=true;InvalidateVisual();return;
+                    InvalidateVisual();return;
                 }
             }
-            var id=Hit(pointer);bool extend=(Keyboard.Modifiers&ModifierKeys.Control)!=0;editor.Select(id,extend);
+            var id=Hit(pointer);bool extend=(modifiers&ModifierKeys.Control)!=0;editor.Select(id,extend);
             if(!extend&&id is {} point&&editor.Sketch.Points.Any(p=>p.Id==point)){dragging=point;draggedPosition=null;CaptureMouse();}
         }
         else
@@ -278,12 +364,13 @@ public sealed class SketchCanvas:FrameworkElement
             var snap=SnapPoint(pointer);
             if(editor.Tool=="SplineRegion")
             {
+                if(splinePoints.Count==0)splineStartId=snap.Id;
                 splinePoints.Add(snap.Position);
-                if(splinePoints.Count==Math.Clamp(editor.SplineControlCount,4,SketchSplineGeometry.MaximumControls))
+                if(splinePoints.Count==Math.Clamp(editor.SplineControlCount,4,CubicSplineDefinition.MaximumControls))
                 {
-                    try{editor.Mutate(d=>d.AddSpline(splinePoints,editor.Construction));}
+                    try{editor.Mutate(d=>d.AddSpline(splinePoints,editor.Construction,splineStartId,snap.Id));}
                     catch(CadValidationException ex){editor.Status=ex.Message;}
-                    splinePoints.Clear();
+                    splinePoints.Clear();splineStartId=null;
                 }
             }
             else if(editor.Tool=="Point")editor.Mutate(d=>d.AddPoint(snap.Position,editor.Construction));
@@ -313,7 +400,7 @@ public sealed class SketchCanvas:FrameworkElement
                 pending=null;pendingId=null;
             }
         }
-        e.Handled=true;InvalidateVisual();
+        InvalidateVisual();
     }
     protected override void OnMouseMove(MouseEventArgs e)
     {
@@ -359,11 +446,11 @@ public sealed class SketchCanvas:FrameworkElement
     protected override void OnMouseWheel(MouseWheelEventArgs e)
     {
         base.OnMouseWheel(e);var at=e.GetPosition(this);var before=ToWorld(at);scale=Math.Clamp(scale*Math.Pow(1.15,e.Delta/120d),0.01,5000);
-        offset=new(at.X-before.X*scale,at.Y+before.Y*scale);pending=null;pendingId=null;arcMiddle=null;arcMiddleId=null;splinePoints.Clear();InvalidateVisual();e.Handled=true;
+        offset=new(at.X-before.X*scale,at.Y+before.Y*scale);pending=null;pendingId=null;arcMiddle=null;arcMiddleId=null;splinePoints.Clear();splineStartId=null;InvalidateVisual();e.Handled=true;
     }
     public bool CancelGesture()
     {
-        bool active=pending is not null||dragging is not null||resizingCircle is not null||panning||splinePoints.Count>0;pending=null;pendingId=null;arcMiddle=null;arcMiddleId=null;splinePoints.Clear();dragging=null;draggedPosition=null;resizingCircle=null;resizedRadius=null;panning=false;
+        bool active=pending is not null||dragging is not null||resizingCircle is not null||panning||splinePoints.Count>0;pending=null;pendingId=null;arcMiddle=null;arcMiddleId=null;splinePoints.Clear();splineStartId=null;dragging=null;draggedPosition=null;resizingCircle=null;resizedRadius=null;panning=false;
         if(IsMouseCaptured)ReleaseMouseCapture();InvalidateVisual();return active;
     }
 }

@@ -2,7 +2,8 @@ using System.Collections.Immutable;
 
 namespace Cadoryx.Db;
 
-/// <summary>Only isolated degree-two line/arc/Bezier/spline components are offered as profiles.</summary>
+/// <summary>Explicit degree-two chains and standalone exact curve profiles.
+/// An isolated open expression follows the existing single-curve closing-chord contract.</summary>
 public static class SketchMixedLoops
 {
     private readonly record struct Edge(SketchEntityId Id,SketchEntityId Start,SketchEntityId End,bool IsCurved);
@@ -13,12 +14,26 @@ public static class SketchMixedLoops
             .Concat(sketch.Arcs.Where(a=>!a.IsConstruction).Select(a=>new Edge(a.Id,a.Start,a.End,true)))
             .Concat(sketch.Beziers.Where(b=>!b.IsConstruction).Select(b=>new Edge(b.Id,b.Start,b.End,true)))
             .Concat(sketch.Splines.Where(s=>!s.IsConstruction).Select(s=>new Edge(s.Id,s.Controls[0],s.Controls[^1],true)))
+            .Concat(sketch.Ellipses.Where(e=>!e.IsConstruction&&e.Endpoints is not null).Select(e=>new Edge(e.Id,e.Endpoints!.Start,e.Endpoints.End,true)))
+            .Concat(sketch.Freeforms.Where(e=>!e.IsConstruction&&e.Endpoints is not null).Select(e=>new Edge(e.Id,e.Endpoints!.Start,e.Endpoints.End,true)))
+            .Concat(sketch.ExpressionCurves.Where(e=>!e.IsConstruction&&e.Endpoints is not null).Select(e=>new Edge(e.Id,e.Endpoints!.Start,e.Endpoints.End,true)))
             .OrderBy(e=>e.Id.Value).ToArray();
         var adjacent=new Dictionary<SketchEntityId,List<Edge>>();
         foreach(var edge in edges)foreach(var endpoint in new[]{edge.Start,edge.End})
         {if(!adjacent.TryGetValue(endpoint,out var list))adjacent[endpoint]=list=[];list.Add(edge);}
         var remaining=edges.Select(e=>e.Id).ToHashSet();
         var loops=ImmutableArray.CreateBuilder<ImmutableArray<SketchEntityId>>();
+        foreach(var e in sketch.Ellipses.Where(e=>!e.IsConstruction&&e.Endpoints is null))loops.Add([e.Id]);
+        foreach(var e in sketch.Freeforms.Where(e=>!e.IsConstruction&&e.Endpoints is null))loops.Add([e.Id]);
+        foreach(var e in sketch.ExpressionCurves.Where(e=>!e.IsConstruction))
+        {
+            var ends=e.Endpoints!;bool closed=double.Hypot(e.Geometry.At(0).X-e.Geometry.At(1).X,e.Geometry.At(0).Y-e.Geometry.At(1).Y)<=1e-7;
+            bool isolated=adjacent[ends.Start].Count==1&&adjacent[ends.End].Count==1;
+            var basis=e.Geometry;while(basis.Basis is {} next)basis=next;var p=basis.Primitive!;
+            bool curved=p.Middle is not null||p.BezierControl is not null||!p.SplineControls.IsEmpty||p.Ellipse is not null||p.Freeform is not null;
+            if(closed||isolated&&curved)
+            {try{SketchProfileBuilder.Mixed(sketch,[e.Id]);loops.Add([e.Id]);}catch(CadValidationException){}}
+        }
         foreach(var seed in edges)
         {
             if(!remaining.Contains(seed.Id))continue;
@@ -29,7 +44,7 @@ public static class SketchMixedLoops
                 foreach(var endpoint in new[]{edge.Start,edge.End})
                     if(vertices.Add(endpoint))foreach(var next in adjacent[endpoint])pending.Enqueue(next);
             }
-            if(component.Count is <3 or >256||!component.Any(e=>e.IsCurved)||vertices.Any(v=>adjacent[v].Count!=2))continue;
+            if(component.Count is <2 or >256||!component.Any(e=>e.IsCurved)||vertices.Any(v=>adjacent[v].Count!=2))continue;
             var ordered=ImmutableArray.CreateBuilder<SketchEntityId>();var used=new HashSet<SketchEntityId>();var at=seed.Start;
             while(used.Count<component.Count)
             {

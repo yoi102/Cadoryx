@@ -1,24 +1,26 @@
 using System.Collections.Immutable;
 using System.Diagnostics;
 using Cadoryx.Db;
+using Strings=Cadoryx.Lang.Strings.Strings;
 
 namespace Cadoryx.Commands;
 
 /// <summary>Bounded simultaneous rigid-pose solve on an isolated document candidate.</summary>
 internal static class AssemblyCycleSolver
 {
-    public static AssemblySolvePlan Plan(DocumentSnapshot document,CancellationToken cancellationToken=default)
+    public static AssemblySolvePlan Plan(DocumentSnapshot document,CancellationToken cancellationToken=default,AssemblySolveOptions? options=null)
     {
+        options??=new();options.Validate();cancellationToken.ThrowIfCancellationRequested();var budget=Stopwatch.StartNew();int iterations=0;
         var relations=document.AssemblyConstraints.Values.Where(c=>c.IsEnabled).OrderBy(c=>c.Id.Value).ToArray();
         var invalid=relations.Where(c=>c.Evaluate(document).Status is AssemblyConstraintStatus.MissingInstance or
             AssemblyConstraintStatus.DefinitionChanged or AssemblyConstraintStatus.TopologyStale or
             AssemblyConstraintStatus.TopologyAnchorUnsupported).Select(c=>c.Id).ToImmutableArray();
-        if(!invalid.IsEmpty)return Fail(invalid,AssemblySolveStatus.StaleOrUnsupported,"Reselect stale assembly paths and topology anchors.");
+        if(!invalid.IsEmpty)return Fail(invalid,AssemblySolveStatus.StaleOrUnsupported,Strings.AssemblySolveInvalidReference,AssemblySolveFailureReason.InvalidReference);
         var paths=relations.SelectMany(c=>c.SecondaryPath is {} b?new[]{c.PrimaryPath,b}:new[]{c.PrimaryPath})
             .Distinct().OrderBy(p=>p.ToString()).ToArray();
-        if(paths.Length>32||relations.Length>128)
+        if(paths.Length>options.MaxInstances||relations.Length>options.MaxRelations)
             return Fail(relations.Select(c=>c.Id).ToImmutableArray(),AssemblySolveStatus.Conflict,
-                "The 32-instance / 128-relation solver limit was exceeded.");
+                Strings.AssemblySolveLimitExceeded,AssemblySolveFailureReason.LimitExceeded);
         var fixedPaths=relations.Where(c=>c.Kind==AssemblyConstraintKind.Fixed).Select(c=>c.PrimaryPath).ToHashSet();
         var groups=Groups(paths,relations);
         var roots=groups.Where(g=>!g.Any(fixedPaths.Contains))
@@ -33,7 +35,7 @@ internal static class AssemblyCycleSolver
         foreach(var path in movable)
             if(!OccurrencePlacement.Resolve(document,path).CanMoveIndependently)
                 return Fail(relations.Select(c=>c.Id).ToImmutableArray(),AssemblySolveStatus.Conflict,
-                    "Make a shared parent assembly independent before solving.");
+                    Strings.AssemblySolveSharedParent,AssemblySolveFailureReason.SharedParent);
         var initial=document.EnumerateOccurrences().ToDictionary(o=>o.Path,o=>o.WorldTransform);
         DocumentSnapshot Candidate(double[] x)
         {
@@ -84,29 +86,28 @@ internal static class AssemblyCycleSolver
             return values.ToArray();
         }
         var x=new double[movable.Length*6];var candidate=Candidate(x);var residual=Residual(candidate);
-        var budget=Stopwatch.StartNew();
         double cost=Cost(residual),damping=0.001;
-        for(int iteration=0;iteration<100&&cost>1e-16&&x.Length>0;iteration++)
+        bool singular=false;
+        for(int iteration=0;iteration<options.MaxIterations&&cost>1e-16&&x.Length>0;iteration++)
         {
+            iterations=iteration+1;
             cancellationToken.ThrowIfCancellationRequested();
-            if(budget.Elapsed>TimeSpan.FromSeconds(5))
+            if(budget.Elapsed>options.Budget)
                 return Fail(relations.Select(c=>c.Id).ToImmutableArray(),AssemblySolveStatus.Conflict,
-                    "Assembly solver time budget was reached; no pose was committed.");
-            var j=Jacobian(x,residual,Candidate,Residual,cancellationToken);var normal=new double[x.Length,x.Length];
-            var gradient=new double[x.Length];
-            for(int row=0;row<residual.Length;row++)for(int col=0;col<x.Length;col++)
-            {
-                gradient[col]+=j[row,col]*residual[row];
-                for(int other=0;other<x.Length;other++)normal[col,other]+=j[row,col]*j[row,other];
-            }
+                    Strings.AssemblySolveTimeBudget,AssemblySolveFailureReason.TimeBudget);
+            var j=Jacobian(x,residual,Candidate,Residual,relations,cancellationToken,budget,options.Budget);
+            if(j is null)return TimeFailure();
+            singular=!j.Cast<double>().Any(value=>Math.Abs(value)>1e-10);
+            if(singular)break;
             bool advanced=false;
             for(int trial=0;trial<10;trial++)
             {
                 cancellationToken.ThrowIfCancellationRequested();
-                var matrix=(double[,])normal.Clone();
-                for(int col=0;col<x.Length;col++)matrix[col,col]+=damping;
-                if(!Solve(matrix,gradient.Select(v=>-v).ToArray(),out var step))break;
-                var next=x.Zip(step,(v,d)=>v+Math.Clamp(d,-20,20)).ToArray();
+                if(budget.Elapsed>options.Budget)return Fail(relations.Select(c=>c.Id).ToImmutableArray(),AssemblySolveStatus.Conflict,
+                    Strings.AssemblySolveTimeBudget,AssemblySolveFailureReason.TimeBudget);
+                var step=AssemblyNumerics.Step(j,residual,damping);
+                if(step.Any(value=>!double.IsFinite(value)))break;
+                var next=x.Select((value,index)=>value+Math.Clamp(step[index],index%6<3?-20:-.35,index%6<3?20:.35)).ToArray();
                 var test=Candidate(next);var testResidual=Residual(test);var testCost=Cost(testResidual);
                 if(testCost<cost-1e-20)
                 {x=next;candidate=test;residual=testResidual;cost=testCost;damping=Math.Max(damping/3,1e-12);advanced=true;break;}
@@ -114,6 +115,8 @@ internal static class AssemblyCycleSolver
             }
             if(!advanced)break;
         }
+        cancellationToken.ThrowIfCancellationRequested();
+        if(budget.Elapsed>options.Budget)return TimeFailure();
         var checks=relations.Select(c=>(Constraint:c,Evaluation:c.Evaluate(candidate))).ToArray();
         var details=checks.Select(v=>new AssemblyRelationResidual(v.Constraint.Id,v.Evaluation.ErrorMm,
             v.Evaluation.AngleErrorRad,v.Evaluation.Status)).ToImmutableArray();
@@ -121,19 +124,24 @@ internal static class AssemblyCycleSolver
             .Select(v=>v.Constraint.Id).ToImmutableArray();
         if(!failing.IsEmpty)
         {
+            var reason=singular?AssemblySolveFailureReason.SingularJacobian:
+                iterations==options.MaxIterations?AssemblySolveFailureReason.IterationLimit:AssemblySolveFailureReason.NoConvergence;
             var failure=Fail(failing,AssemblySolveStatus.Conflict,
-                "The simultaneous candidate did not satisfy all relations; no pose was committed.");
+                singular?Strings.AssemblySolveSingular:reason==AssemblySolveFailureReason.IterationLimit?Strings.AssemblySolveIterationLimit:Strings.AssemblySolveNoConvergence,reason);
             return failure with{Report=failure.Report with{Residuals=details}};
         }
         try {candidate.Validate(validateReviewCache:false);}
         catch(CadValidationException error)
-        {return Fail(relations.Select(c=>c.Id).ToImmutableArray(),AssemblySolveStatus.Conflict,error.Message);}
-        var jacobian=Jacobian(x,residual,Candidate,Residual,cancellationToken);
+        {return Fail(relations.Select(c=>c.Id).ToImmutableArray(),AssemblySolveStatus.Conflict,error.Message,AssemblySolveFailureReason.InvalidCandidate);}
+        var jacobian=Jacobian(x,residual,Candidate,Residual,relations,cancellationToken,budget,options.Budget);
+        if(jacobian is null)return TimeFailure();
         var components=ImmutableArray.CreateBuilder<AssemblyComponentFreedom>();
         var redundant=ImmutableArray.CreateBuilder<AssemblyConstraintId>();
         var relationRows=RelationRows(relations).ToArray();
         foreach(var group in groups)
         {
+            cancellationToken.ThrowIfCancellationRequested();
+            if(budget.Elapsed>options.Budget)return TimeFailure();
             var groupColumns=movable.Select((p,i)=>(p,i)).Where(v=>group.Contains(v.p))
                 .SelectMany(v=>Enumerable.Range(v.i*6,6)).ToArray();
             var groupRows=relationRows.Where(v=>group.Contains(v.Path))
@@ -141,31 +149,39 @@ internal static class AssemblyCycleSolver
             var sub=new double[groupRows.Length,groupColumns.Length];
             for(int row=0;row<groupRows.Length;row++)for(int col=0;col<groupColumns.Length;col++)
                 sub[row,col]=jacobian[groupRows[row],groupColumns[col]];
-            int rank=Rank(sub);
-            var modes=Nullspace(sub,groupColumns,movable);
+            var analysis=AssemblyNumerics.Analyze(sub);int rank=analysis.Rank;
+            var modes=Modes(analysis.Nullspace,groupColumns,movable);
+            bool degenerateDistance=relations.Any(c=>group.Contains(c.PrimaryPath)&&c.Kind==AssemblyConstraintKind.Distance&&c.TargetDistanceMm<1e-10&&c.Evaluate(candidate).ErrorMm<1e-10);
             components.Add(new(group.ToImmutableArray(),rank,groupColumns.Length-rank,
                 Math.Max(0,groupRows.Length-rank),group.Any(fixedPaths.Contains))
-                {RankUncertain=Rank(sub,1e-5)!=rank||modes.Length!=groupColumns.Length-rank,
+                {RankUncertain=analysis.Uncertain||degenerateDistance||modes.Length!=groupColumns.Length-rank,
                     NullspaceModes=modes});
             foreach(var relation in relationRows.Where(v=>group.Contains(v.Path)))
             {
+                cancellationToken.ThrowIfCancellationRequested();
+                if(budget.Elapsed>options.Budget)return Fail(relations.Select(c=>c.Id).ToImmutableArray(),AssemblySolveStatus.Conflict,
+                    Strings.AssemblySolveTimeBudget,AssemblySolveFailureReason.TimeBudget);
                 var reducedRows=groupRows.Where(row=>row<relation.Start||row>=relation.Start+relation.Count).ToArray();
                 var reduced=new double[reducedRows.Length,groupColumns.Length];
                 for(int row=0;row<reducedRows.Length;row++)for(int col=0;col<groupColumns.Length;col++)
                     reduced[row,col]=jacobian[reducedRows[row],groupColumns[col]];
-                if(Rank(reduced)==rank)redundant.Add(relation.Id);
+                if(AssemblyNumerics.Analyze(reduced,includeNullspace:false).Rank==rank)redundant.Add(relation.Id);
             }
         }
         var changed=relations.Where(c=>c.Evaluate(document).Status!=AssemblyConstraintStatus.Satisfied)
             .Select(c=>c.Id).ToImmutableArray();
-        var status=roots.IsEmpty&&components.All(c=>c.LocalFreedom==0)?AssemblySolveStatus.Solved:
+        var status=roots.IsEmpty&&components.All(c=>c.LocalFreedom==0&&!c.RankUncertain)?AssemblySolveStatus.Solved:
             AssemblySolveStatus.UnderConstrained;
+        cancellationToken.ThrowIfCancellationRequested();
+        if(budget.Elapsed>options.Budget)return TimeFailure();
         return new(candidate,new(status,changed,[],roots,status==AssemblySolveStatus.Solved?
-            "All assembly relations are satisfied.":"Relations are satisfied; free motion remains.")
-            {Residuals=details,Components=components.ToImmutable(),RedundantRelations=redundant.ToImmutable()});
+            Strings.AssemblySolveLocallySatisfied:Strings.AssemblySolveLocalFreedom)
+            {Iterations=iterations,ElapsedMs=budget.Elapsed.TotalMilliseconds,Residuals=details,Components=components.ToImmutable(),RedundantRelations=redundant.ToImmutable()});
 
-        AssemblySolvePlan Fail(ImmutableArray<AssemblyConstraintId> ids,AssemblySolveStatus status,string message)=>
-            new(document,new(status,[],ids,[],message));
+        AssemblySolvePlan Fail(ImmutableArray<AssemblyConstraintId> ids,AssemblySolveStatus status,string message,AssemblySolveFailureReason reason)=>
+            new(document,new(status,[],ids,[],message){FailureReason=reason,Iterations=iterations,ElapsedMs=budget.Elapsed.TotalMilliseconds});
+        AssemblySolvePlan TimeFailure()=>Fail(relations.Select(c=>c.Id).ToImmutableArray(),AssemblySolveStatus.Conflict,
+            Strings.AssemblySolveTimeBudget,AssemblySolveFailureReason.TimeBudget);
     }
     private static IEnumerable<(AssemblyConstraintId Id,OccurrencePath Path,int Start,int Count)> RelationRows(AssemblyConstraint[] relations)
     {
@@ -205,93 +221,48 @@ internal static class AssemblyCycleSolver
         return result;
     }
     private static double Cost(double[] residual)=>residual.Sum(v=>v*v);
-    private static double[,] Jacobian(double[] x,double[] baseline,Func<double[],DocumentSnapshot> candidate,
-        Func<DocumentSnapshot,double[]> residual,CancellationToken token)
+    private static double[,]? Jacobian(double[] x,double[] baseline,Func<double[],DocumentSnapshot> candidate,
+        Func<DocumentSnapshot,double[]> residual,AssemblyConstraint[] relations,CancellationToken token,Stopwatch budget,TimeSpan timeBudget)
     {
         var result=new double[baseline.Length,x.Length];
+        var angularRows=RelationRows(relations).Where(row=>relations.Single(c=>c.Id==row.Id) is
+            {Kind:AssemblyConstraintKind.AngleAxes,TargetAngleRad:>1e-8 and <3.141592643589793})
+            .SelectMany(row=>Enumerable.Range(row.Start,row.Count)).ToHashSet();
         for(int col=0;col<x.Length;col++)
         {
             token.ThrowIfCancellationRequested();
-            var shifted=(double[])x.Clone();double step=col%6<3?1e-5:1e-6;shifted[col]+=step;
-            var values=residual(candidate(shifted));
-            for(int row=0;row<baseline.Length;row++)result[row,col]=(values[row]-baseline[row])/step;
-        }
-        return result;
-    }
-    private static int Rank(double[,] source,double tolerance=1e-7)
-    {
-        var matrix=(double[,])source.Clone();int rows=matrix.GetLength(0),cols=matrix.GetLength(1),rank=0;
-        for(int col=0;col<cols&&rank<rows;col++)
-        {
-            int best=rank;for(int row=rank+1;row<rows;row++)
-                if(Math.Abs(matrix[row,col])>Math.Abs(matrix[best,col]))best=row;
-            if(Math.Abs(matrix[best,col])<tolerance)continue;
-            for(int j=col;j<cols;j++)(matrix[rank,j],matrix[best,j])=(matrix[best,j],matrix[rank,j]);
-            double pivot=matrix[rank,col];
-            for(int row=rank+1;row<rows;row++)
-            {double factor=matrix[row,col]/pivot;for(int j=col;j<cols;j++)matrix[row,j]-=factor*matrix[rank,j];}
-            rank++;
-        }
-        return rank;
-    }
-    private static ImmutableArray<ImmutableArray<AssemblyInstanceMotion>> Nullspace(
-        double[,] source,int[] columns,OccurrencePath[] movable)
-    {
-        var matrix=(double[,])source.Clone();int rows=matrix.GetLength(0),cols=matrix.GetLength(1);
-        var pivots=new List<int>();const double tolerance=1e-7;
-        for(int col=0;col<cols&&pivots.Count<rows;col++)
-        {
-            int pivotRow=pivots.Count,best=pivotRow;
-            for(int row=pivotRow+1;row<rows;row++)
-                if(Math.Abs(matrix[row,col])>Math.Abs(matrix[best,col]))best=row;
-            if(Math.Abs(matrix[best,col])<tolerance)continue;
-            for(int j=0;j<cols;j++)(matrix[pivotRow,j],matrix[best,j])=(matrix[best,j],matrix[pivotRow,j]);
-            double pivot=matrix[pivotRow,col];
-            for(int j=0;j<cols;j++)matrix[pivotRow,j]/=pivot;
-            for(int row=0;row<rows;row++)
+            if(budget.Elapsed>timeBudget)return null;
+            var plus=(double[])x.Clone();var minus=(double[])x.Clone();double step=col%6<3?1e-5:1e-6;
+            plus[col]+=step;minus[col]-=step;var forward=residual(candidate(plus));var backward=residual(candidate(minus));
+            for(int row=0;row<baseline.Length;row++)
             {
-                if(row==pivotRow)continue;
-                double factor=matrix[row,col];
-                for(int j=0;j<cols;j++)matrix[row,j]-=factor*matrix[pivotRow,j];
+                double derivative=(forward[row]-backward[row])/(2*step);
+                // Aligned axes at a nonzero angle target have an unsigned-angle cusp.
+                // One directional seed selects a local branch; the report never claims uniqueness.
+                if(angularRows.Contains(row)&&Math.Abs(derivative)<1e-9&&Math.Abs(forward[row]-baseline[row])>step*1e-8)
+                    derivative=(forward[row]-baseline[row])/step;
+                result[row,col]=derivative;
             }
-            pivots.Add(col);
         }
+        token.ThrowIfCancellationRequested();
+        return budget.Elapsed>timeBudget?null:result;
+    }
+    private static ImmutableArray<ImmutableArray<AssemblyInstanceMotion>> Modes(double[][] vectors,int[] columns,OccurrencePath[] movable)
+    {
         var modes=ImmutableArray.CreateBuilder<ImmutableArray<AssemblyInstanceMotion>>();
-        for(int free=0;free<cols;free++)
+        foreach(var vector in vectors)
         {
-            if(pivots.Contains(free))continue;
-            var vector=new double[cols];vector[free]=1;
-            for(int row=0;row<pivots.Count;row++)vector[pivots[row]]=-matrix[row,free];
-            double norm=Math.Sqrt(vector.Sum(v=>v*v));
             var motions=ImmutableArray.CreateBuilder<AssemblyInstanceMotion>();
-            foreach(int instance in columns.Select(c=>c/6).Distinct())
+            foreach(int instance in columns.Select(col=>col/6).Distinct())
             {
                 double Value(int coordinate)
                 {
-                    int local=Array.IndexOf(columns,instance*6+coordinate);
-                    return local<0?0:vector[local]/norm;
+                    int local=Array.IndexOf(columns,instance*6+coordinate);return local<0?0:vector[local];
                 }
-                motions.Add(new(movable[instance],new(Value(0),Value(1),Value(2)),
-                    new(Value(3),Value(4),Value(5))));
+                motions.Add(new(movable[instance],new(Value(0),Value(1),Value(2)),new(Value(3),Value(4),Value(5))));
             }
             modes.Add(motions.ToImmutable());
         }
         return modes.ToImmutable();
-    }
-    private static bool Solve(double[,] a,double[] b,out double[] x)
-    {
-        int n=b.Length;x=new double[n];
-        for(int col=0;col<n;col++)
-        {
-            int best=col;for(int row=col+1;row<n;row++)if(Math.Abs(a[row,col])>Math.Abs(a[best,col]))best=row;
-            if(Math.Abs(a[best,col])<1e-18)return false;
-            for(int k=col;k<n;k++)(a[col,k],a[best,k])=(a[best,k],a[col,k]);
-            (b[col],b[best])=(b[best],b[col]);
-            for(int row=col+1;row<n;row++)
-            {double factor=a[row,col]/a[col,col];for(int k=col;k<n;k++)a[row,k]-=factor*a[col,k];b[row]-=factor*b[col];}
-        }
-        for(int row=n-1;row>=0;row--)
-        {double sum=b[row];for(int col=row+1;col<n;col++)sum-=a[row,col]*x[col];x[row]=sum/a[row,row];}
-        return true;
     }
 }

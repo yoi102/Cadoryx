@@ -25,7 +25,13 @@ internal static class NotificationSmokeRunner
         double originalLeft=main.Left,originalTop=main.Top;
         var originalState=main.WindowState;
         var shown=new List<CadNotification>();
-        void OnShown(CadNotification card)=>shown.Add(card);
+        void Trace(string message)=>File.AppendAllText(Path.Combine(output,"notification-progress.log"),$"{DateTimeOffset.Now:O} {message}{Environment.NewLine}");
+        string State(CadNotification card)=>$"card visible={card.IsVisible}; loaded={card.IsLoaded}; width={card.ActualWidth:R}; closing={card.IsClosing}; completed={card.Handle?.Completion.IsCompleted}; host visible={Window.GetWindow(card)?.IsVisible}; main visible={main.IsVisible}; main state={main.WindowState}";
+        void OnShown(CadNotification card)
+        {
+            shown.Add(card);Trace("shown: "+State(card));
+            card.IsVisibleChanged+=(_,_)=>Trace("visibility changed: "+State(card));
+        }
         notifications.Shown+=OnShown;
         var release=new TaskCompletionSource(TaskCreationOptions.RunContinuationsAsynchronously);
         var entered=new TaskCompletionSource<CancellationToken>(TaskCreationOptions.RunContinuationsAsynchronously);
@@ -40,12 +46,14 @@ internal static class NotificationSmokeRunner
                 foreach(var level in Enum.GetValues<CadMessageLevel>())
                 {
                     int count=shown.Count;
+                    var appearance=System.Diagnostics.Stopwatch.StartNew();Trace($"style dark={dark}; level={level}");
                     log.Add("通知样式验证 · Information / 警告 / エラー",level,"Notification.Smoke");
                     await Idle();
                     Require(shown.Count==count+1,"Message log did not produce a notification.");
                     var card=shown[^1];
                     await Task.Delay(400); // Capture the settled appearance, not the entrance fade.
-                    Require(card.IsVisible&&card.ActualWidth==360,"Custom notification is not visible.");
+                    Trace($"appearance after {appearance.Elapsed.TotalMilliseconds:F1} ms: "+State(card));
+                    Require(card.IsVisible&&card.ActualWidth==360,"Custom notification is not visible: "+State(card)+$"; elapsed={appearance.Elapsed.TotalMilliseconds:F1} ms.");
                     var border=(Border)card.Template.FindName("PART_AnimationRoot",card);
                     Require(border.CornerRadius.TopLeft==12&&border.BorderThickness.Left==1.5&&border.Background is SolidColorBrush,
                         "Rounded themed notification border missing.");

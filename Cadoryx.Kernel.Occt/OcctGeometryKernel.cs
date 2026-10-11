@@ -12,9 +12,22 @@ namespace Cadoryx.Kernel.Occt;
 public sealed partial class OcctGeometryKernel : IGeometryKernel, ITopologyResolver
 {
     private static readonly SemaphoreSlim Queue=new(1,1);
+    private readonly IMetricThreadExecutor? threadExecutor;
+    private readonly INativeDrawingExecutor? drawingExecutor;
+    public OcctGeometryKernel():this(null,null){}
+    public OcctGeometryKernel(IMetricThreadExecutor? threadExecutor):this(threadExecutor,null){}
+    public OcctGeometryKernel(IMetricThreadExecutor? threadExecutor,INativeDrawingExecutor? drawingExecutor)
+        :this(threadExecutor,drawingExecutor,GuidedDocumentEvidencePolicy.LegacyMembers){}
+    public OcctGeometryKernel(IMetricThreadExecutor? threadExecutor,INativeDrawingExecutor? drawingExecutor,
+        GuidedDocumentEvidencePolicy guidedDocumentEvidence)
+    {
+        if(!Enum.IsDefined(guidedDocumentEvidence))throw new ArgumentOutOfRangeException(nameof(guidedDocumentEvidence));
+        this.threadExecutor=threadExecutor;this.drawingExecutor=drawingExecutor;GuidedDocumentEvidence=guidedDocumentEvidence;
+    }
+    public GuidedDocumentEvidencePolicy GuidedDocumentEvidence {get;}
     public string Version=>"OcctSharp "+System.Reflection.CustomAttributeExtensions.GetCustomAttributes<System.Reflection.AssemblyMetadataAttribute>(typeof(OcctGeometryKernel).Assembly)
         .Single(a=>a.Key=="OcctSharpPackageVersion").Value;
-    public bool Supports(GeometryRecipe recipe)=>recipe is BoxRecipe or CylinderRecipe or ImportedRecipe or BooleanRecipe or TransformRecipe or ExtrudeRecipe or RevolveRecipe or LocalFeatureRecipe or HistoryFilletRecipe or HistoryChamferRecipe;
+    public bool Supports(GeometryRecipe recipe)=>recipe is BoxRecipe or CylinderRecipe or ImportedRecipe or BooleanRecipe or TransformRecipe or RepetitionRecipe or HolePatternRecipe or ExtrusionPatternRecipe or HoleRecipe or ShellRecipe or DraftRecipe or SolidOffsetRecipe or ContourLocalRecipe or PlanarPushPullRecipe or DefeatureRecipe or ExtrudeRecipe or SweepRecipe or LoftRecipe or RevolveRecipe or LocalFeatureRecipe or HistoryFilletRecipe or HistoryChamferRecipe;
     private static async Task<T> Run<T>(Func<T> action,CancellationToken token)
     {
         await Queue.WaitAsync(token).ConfigureAwait(false);
@@ -22,10 +35,30 @@ public sealed partial class OcctGeometryKernel : IGeometryKernel, ITopologyResol
         finally{Queue.Release();}
     }
     public Task<GeometryResult> EvaluateAsync(GeometryRecipe recipe,IAssetStore assets,CancellationToken cancellationToken=default)
+        =>EvaluateCore(recipe,assets,false,cancellationToken);
+    public Task<GeometryResult> EvaluateForDocumentAsync(GeometryRecipe recipe,IAssetStore assets,CancellationToken cancellationToken=default)
+        =>EvaluateCore(recipe,assets,true,cancellationToken);
+    private Task<GeometryResult> EvaluateCore(GeometryRecipe recipe,IAssetStore assets,bool retainReferences,CancellationToken cancellationToken)
     {
         recipe.Validate();
         return Run(()=>
         {
+            if(recipe is SweepRecipe or LoftRecipe)
+                return retainReferences&&GuidedDocumentEvidence==GuidedDocumentEvidencePolicy.PreferCurrentOccurrences
+                    ?EvaluateGuidedWithReport(recipe,assets,cancellationToken,false,preferOccurrences:true)
+                    :EvaluateGuidedWithReport(recipe,assets,cancellationToken,retainReferences);
+            if(recipe is RepetitionRecipe repetition)return EvaluateRepetition(repetition,assets,cancellationToken);
+            if(recipe is ImportedRecipe {Source.Source:not null} imported)return EvaluateStyledImport(imported,assets,cancellationToken);
+            if(recipe is HoleRecipe hole)return EvaluateHole(hole,assets,cancellationToken);
+            if(recipe is HolePatternRecipe holePattern)return EvaluateHolePattern(holePattern,assets,cancellationToken);
+            if(recipe is ExtrusionPatternRecipe extrusionPattern)return EvaluateExtrusionPattern(extrusionPattern,assets,cancellationToken);
+            if(recipe is ShellRecipe shell)return EvaluateShell(shell,assets,cancellationToken);
+            if(recipe is DraftRecipe draft)return EvaluateDraft(draft,assets,cancellationToken);
+            if(recipe is SolidOffsetRecipe offset)return EvaluateSolidOffset(offset,assets,cancellationToken);
+            if(recipe is ContourLocalRecipe contour)return EvaluateContourLocal(contour,assets,cancellationToken);
+            if(recipe is PlanarPushPullRecipe pushPull)return EvaluatePlanarPushPull(pushPull,assets,cancellationToken);
+            if(recipe is DefeatureRecipe defeature)return EvaluateDefeature(defeature,assets,cancellationToken);
+            if(recipe is ExtrudeRecipe {Options:not null} extrusion)return EvaluateExtrusion(extrusion,assets,cancellationToken);
             if(recipe is LocalFeatureRecipe local)
             {
                 return EvaluateLocal(local,assets,cancellationToken);
@@ -53,76 +86,30 @@ public sealed partial class OcctGeometryKernel : IGeometryKernel, ITopologyResol
                 }
                 finally{foreach(var shape in shapes)shape.Dispose();}
             }
-            using var result=Create(recipe,assets);
+            using var result=Create(recipe,assets,cancellationToken);
             cancellationToken.ThrowIfCancellationRequested();
-            return OcctGeometryBridge.StoreShape(result,assets);
+            if(recipe is RevolveRecipe&&(!result.GetValidationReport(geometryChecks:true,exact:true).IsValid||
+                !result.GetSelfInterferenceReport().IsClear))
+                throw new CadValidationException("Revolution produced invalid or self-interfering exact geometry.");
+            bool adaptiveVolume=recipe switch
+            {
+                ExtrudeRecipe prism=>prism.Profile.RequiresExactRegionInspection,
+                RevolveRecipe revolution=>revolution.Profile.RequiresExactRegionInspection,
+                _=>false
+            };
+            var stored=OcctGeometryBridge.StoreShape(result,assets,adaptiveVolume:adaptiveVolume);
+            if(recipe is RevolveRecipe&&stored.Geometry.Kind is not (BodyKind.Solid or BodyKind.Compound))
+            {
+                stored.Dispose();throw new CadValidationException("Revolution must produce valid solid material regions.");
+            }
+            return stored;
         },cancellationToken);
     }
-    private static Shape Create(GeometryRecipe recipe,IAssetStore assets)
+    private static Shape Create(GeometryRecipe recipe,IAssetStore assets,CancellationToken token=default,bool canonicalExpressions=false)
     {
         static Shape Place(Shape source,RigidTransform3d placement)
         {
             using(source)using(var transform=OcctGeometryBridge.ToNative(placement))return source.Transformed(transform);
-        }
-        static Shape Profile(SketchProfile profile,bool radial)
-        {
-            if(!profile.BoundaryCurves.IsEmpty)
-            {
-                if(radial)throw new CadValidationException("Mixed-curve profiles are not supported by revolve.");
-                var curves=profile.BoundaryCurves.Select(edge=>
-                {
-                    if(edge.BezierControl is {} control)
-                        return SketchCurve2d.Bezier([new(edge.Start.X,edge.Start.Y),
-                            new(control.X,control.Y),new(edge.End.X,edge.End.Y)]);
-                    if(!edge.SplineControls.IsDefaultOrEmpty)
-                        return SketchCurve2d.BSpline(edge.SplineControls.Select(p=>new SketchPoint2d(p.X,p.Y)).ToArray(),
-                            SketchSplineGeometry.Knots(edge.SplineControls.Length),
-                            SketchSplineGeometry.Multiplicities(edge.SplineControls.Length),SketchSplineGeometry.Degree);
-                    if(edge.Middle is not {} middle)
-                        return SketchCurve2d.Segment(new(edge.Start.X,edge.Start.Y),new(edge.End.X,edge.End.Y));
-                    var arc=SketchArcGeometry.Through(edge.Start,middle,edge.End);
-                    return SketchCurve2d.CircularArc(new(arc.Center.X,arc.Center.Y),arc.Radius,arc.StartAngle,arc.SweepAngle);
-                }).ToArray();
-                var chain=SketchCurveChain2d.Create(curves,requireClosed:true);
-                return SketchProfile2d.Create(chain).CreateFace(SketchPlane.XY);
-            }
-            if(profile.Arc is {} segment)
-            {
-                if(radial)throw new CadValidationException("Arc segment profiles are not supported by revolve.");
-                var geometry=SketchArcGeometry.Through(segment.Start,segment.Middle,segment.End);
-                var arc=SketchCurve2d.CircularArc(new(geometry.Center.X,geometry.Center.Y),geometry.Radius,
-                    geometry.StartAngle,geometry.SweepAngle);
-                var chord=SketchCurve2d.Segment(new(segment.End.X,segment.End.Y),new(segment.Start.X,segment.Start.Y));
-                var chain=SketchCurveChain2d.Create([arc,chord],requireClosed:true);
-                return SketchProfile2d.Create(chain).CreateFace(SketchPlane.XY);
-            }
-            if(profile.Bezier is {} bezier)
-            {
-                if(radial)throw new CadValidationException("Bezier segment profiles are not supported by revolve.");
-                var curve=SketchCurve2d.Bezier([new(bezier.Start.X,bezier.Start.Y),
-                    new(bezier.Control.X,bezier.Control.Y),new(bezier.End.X,bezier.End.Y)]);
-                var chord=SketchCurve2d.Segment(new(bezier.End.X,bezier.End.Y),new(bezier.Start.X,bezier.Start.Y));
-                return SketchProfile2d.Create(SketchCurveChain2d.Create([curve,chord],requireClosed:true)).CreateFace(SketchPlane.XY);
-            }
-            if(profile.Spline is {} spline)
-            {
-                if(radial)throw new CadValidationException("Spline segment profiles are not supported by revolve.");
-                var controls=spline.Controls;
-                var curve=SketchCurve2d.BSpline(controls.Select(p=>new SketchPoint2d(p.X,p.Y)).ToArray(),
-                    SketchSplineGeometry.Knots(controls.Length),SketchSplineGeometry.Multiplicities(controls.Length),
-                    SketchSplineGeometry.Degree);
-                var chord=SketchCurve2d.Segment(new(controls[^1].X,controls[^1].Y),new(controls[0].X,controls[0].Y));
-                return SketchProfile2d.Create(SketchCurveChain2d.Create([curve,chord],requireClosed:true)).CreateFace(SketchPlane.XY);
-            }
-            if(profile.Circle is {} circle)
-            {
-                if(radial)throw new CadValidationException("Circular sketch regions are not supported by revolve.");
-                using var edge=ShapeFactory.CreateCircleEdge(new GpPoint(circle.Center.X,circle.Center.Y,0),new GpPoint(0,0,1),circle.Radius);
-                using var circleWire=ShapeFactory.CreateWire([edge]);
-                return ShapeFactory.CreatePlanarFace(circleWire);
-            }
-            using var wire=ShapeFactory.CreatePolygonWire(profile.Points.Select(p=>radial?new GpPoint(p.X,0,p.Y):new GpPoint(p.X,p.Y,0)).ToArray(),true);
-            return ShapeFactory.CreatePlanarFace(wire);
         }
         switch(recipe)
         {
@@ -130,8 +117,13 @@ public sealed partial class OcctGeometryKernel : IGeometryKernel, ITopologyResol
             case CylinderRecipe c:return Place(ShapeFactory.CreateCylinder(c.Radius,c.Height),c.Placement);
             case ImportedRecipe i:return OcctGeometryBridge.ReadShape(i.Source,assets);
             case TransformRecipe t:return Place(OcctGeometryBridge.ReadShape(t.Source,assets),t.Transform);
+            case SweepRecipe sweep:return BuildSweep(sweep,token);
+            case LoftRecipe loft:return BuildLoft(loft,token);
             case ExtrudeRecipe e:
-                using(var face=Profile(e.Profile,false))using(var direction=GpVec.Create(0,0,e.Distance))
+                if(e.Profile.RequiresExactRegionInspection)
+                    ValidatePlanarRegion(OuterBoundary(e.Profile),HoleBoundaries(e.Profile).ToArray(),
+                        e.Profile.Islands.Select(i=>OuterBoundary(i.Profile)).ToArray(),token);
+                using(var face=OcctSketchProfileGeometry.CreateFace(e.Profile,false,canonicalExpressions))using(var direction=GpVec.Create(0,0,e.Distance))
                 {
                     Shape current=face.Extrude(direction);
                     bool currentOwnedByPieces=false;
@@ -159,7 +151,7 @@ public sealed partial class OcctGeometryKernel : IGeometryKernel, ITopologyResol
                         foreach(var hole in e.Profile.MixedHoles)
                         {
                             double margin=Math.Max(1e-5,Math.Min(1,e.Distance*.1));
-                            using var holeFace=Place(Profile(new SketchProfile([]){BoundaryCurves=hole},false),
+                            using var holeFace=Place(OcctSketchProfileGeometry.CreateFace(new SketchProfile([]){BoundaryCurves=hole},false,canonicalExpressions),
                                 RigidTransform3d.Translate(0,0,-margin));
                             using var holeDirection=GpVec.Create(0,0,e.Distance+2*margin);
                             using var cutter=holeFace.Extrude(holeDirection);
@@ -168,7 +160,7 @@ public sealed partial class OcctGeometryKernel : IGeometryKernel, ITopologyResol
                         foreach(var hole in e.Profile.SplineHoles)
                         {
                             double margin=Math.Max(1e-5,Math.Min(1,e.Distance*.1));
-                            using var holeFace=Place(Profile(new SketchProfile([]){Spline=hole},false),
+                            using var holeFace=Place(OcctSketchProfileGeometry.CreateFace(new SketchProfile([]){Spline=hole},false),
                                 RigidTransform3d.Translate(0,0,-margin));
                             using var holeDirection=GpVec.Create(0,0,e.Distance+2*margin);
                             using var cutter=holeFace.Extrude(holeDirection);
@@ -181,7 +173,7 @@ public sealed partial class OcctGeometryKernel : IGeometryKernel, ITopologyResol
                         {
                             foreach(var island in e.Profile.Islands)
                             {
-                                pieces.Add(Create(new ExtrudeRecipe(island.Profile,e.Distance,RigidTransform3d.Identity),assets));
+                                pieces.Add(Create(new ExtrudeRecipe(island.Profile,e.Distance,RigidTransform3d.Identity),assets,token,canonicalExpressions));
                             }
                             using var compound=ShapeFactory.CreateCompound(pieces);
                             return Place(compound,e.Placement);
@@ -191,8 +183,7 @@ public sealed partial class OcctGeometryKernel : IGeometryKernel, ITopologyResol
                     catch {if(!currentOwnedByPieces)current.Dispose();throw;}
                 }
             case RevolveRecipe r:
-                using(var face=Profile(r.Profile,true))using(var axis=GpAx1.Create(0,0,0,0,0,1))
-                    return Place(face.Revolve(axis,r.AngleRadians),r.Placement);
+                return BuildRevolve(r,token,canonicalExpressions);
             default:throw new NotSupportedException("Unsupported geometry recipe.");
         }
     }
@@ -309,7 +300,33 @@ public sealed partial class OcctGeometryKernel : IGeometryKernel, ITopologyResol
             throw new CadValidationException("Reselect stale feature bindings before export.");
         if(extension is not (".step" or ".stp" or ".iges" or ".igs" or ".stl"))throw new NotSupportedException("Export supports STEP, IGES and STL.");
         if(extension==".stl")return ExportStl(snapshot,assets,path,options,cancellationToken);
-        using var native=XdeDocument.Create();var labels=new Dictionary<DefinitionId,XdeLabel>();
+        using var native=XdeDocument.Create();using var sourceContexts=new ExportStyleContexts(assets);
+        using var unstyled=XdeDocument.Create();using var unstyledTransaction=unstyled.BeginTransaction("Inspect body root locations");
+        var labels=new Dictionary<DefinitionId,XdeLabel>();var expressionConversions=ImmutableArray.CreateBuilder<CadDiagnostic>();
+        XdeLabel BodyLabel(CadBody body,string name)
+        {
+            if(body.Appearance.PreserveSourceStyles&&!body.Appearance.ByLayer&&body.Geometry.Source is {} source)
+            {
+                var original=sourceContexts.Get(source).GetLabel(source.DefinitionEntry);
+                using var location=original.Location;using var transform=location.ToTransform();using var inverse=transform.Inverted();
+                return native.CopyTransformedDefinition(original,inverse,name);
+            }
+            using var shape=ExchangeExpressionShape(snapshot,body,assets,expressionConversions,cancellationToken);
+            // XCAF represents a located shape as a reference plus an unlocated
+            // definition. Passing that reference as a reusable component can
+            // export both the original placement and an unwanted origin copy.
+            // Keep those temporary labels in a separate document, then bake the
+            // exact root location through the existing transformation history.
+            var temporary=unstyled.AddShape(shape,name);using var rootLocation=temporary.Location;XdeLabel label;
+            if(!rootLocation.IsIdentity)
+            {
+                using var placement=rootLocation.ToTransform();
+                label=native.CopyTransformedDefinition(temporary.ReferredShape,placement,name);
+            }
+            else label=native.AddShape(shape,name);
+            label.Color=OcctGeometryBridge.ToXdeColor(body.Appearance.ByLayer?snapshot.Layers[body.LayerId].Argb:body.Appearance.Argb);
+            return label;
+        }
         bool IncludeBody(BodyId id)
         {
             var b=snapshot.Bodies[id];return b.Geometry.Kind!=BodyKind.Empty&&(!options.VisibleOnly||(b.IsVisible&&snapshot.Layers[b.LayerId].IsVisible));
@@ -334,8 +351,7 @@ public sealed partial class OcctGeometryKernel : IGeometryKernel, ITopologyResol
             var bodyIds=definition is PartDefinition p?p.Bodies.Where(IncludeBody).ToArray():[];
             if(definition is PartDefinition && bodyIds.Length==1)
             {
-                var body=snapshot.Bodies[bodyIds[0]];using var shape=OcctGeometryBridge.ReadShape(body.Geometry,assets);
-                label=native.AddShape(shape,definition.Name);label.Color=OcctGeometryBridge.ToXdeColor(body.Appearance.ByLayer?snapshot.Layers[body.LayerId].Argb:body.Appearance.Argb);
+                label=BodyLabel(snapshot.Bodies[bodyIds[0]],definition.Name);
             }
             else
             {
@@ -351,8 +367,7 @@ public sealed partial class OcctGeometryKernel : IGeometryKernel, ITopologyResol
                 else if(definition is PartDefinition part)
                     foreach(var bodyId in bodyIds)
                     {
-                        var body=snapshot.Bodies[bodyId];using var shape=OcctGeometryBridge.ReadShape(body.Geometry,assets);
-                        var child=native.AddShape(shape,body.Name);child.Color=OcctGeometryBridge.ToXdeColor(body.Appearance.ByLayer?snapshot.Layers[body.LayerId].Argb:body.Appearance.Argb);
+                        var body=snapshot.Bodies[bodyId];var child=BodyLabel(body,body.Name);
                         using var identity=TopLocLocation.Identity;native.AddComponent(label,child,identity);
                     }
                 return label;
@@ -363,6 +378,7 @@ public sealed partial class OcctGeometryKernel : IGeometryKernel, ITopologyResol
         {
             Define(snapshot.RootAssemblyId);transaction.Commit();
         }
+        unstyledTransaction.Commit();
         string fullPath=Path.GetFullPath(path);string? directory=Path.GetDirectoryName(fullPath);Directory.CreateDirectory(directory!);
         string temp=Path.Combine(directory!,"."+Guid.NewGuid().ToString("N")+Path.GetExtension(path));
         try
@@ -372,7 +388,11 @@ public sealed partial class OcctGeometryKernel : IGeometryKernel, ITopologyResol
         }
         finally{if(File.Exists(temp))File.Delete(temp);}
         var diagnostics=ImmutableArray.CreateBuilder<CadDiagnostic>();
-        diagnostics.Add(new("EXPORT.METADATA","Exports definitions, placements, names and overall colors. Cadoryx feature history and unsupported source PMI/subshape styles are not transferred."));
+        diagnostics.AddRange(expressionConversions);
+        diagnostics.Add(new("EXPORT.METADATA","Exports definitions, placements, names, overall colors and preserved source subshape colors through exact transformation history. Cadoryx feature history and unsupported source PMI are not transferred."));
+        diagnostics.Add(new("EXPORT.PRESENTATION_LIMITS","Source layers, per-face visibility and physical/PBR materials require separate receiver verification. Preserved surface colors do not prove those attributes survived exchange."));
+        if(HasThreadIntent(snapshot))diagnostics.Add(ThreadExchangeLoss());
+        if(HasExpressionIntent(snapshot))diagnostics.Add(ExpressionExchangeLoss());
         bool iges=extension is ".igs" or ".iges";
         if(iges)diagnostics.Add(new("EXPORT.IGES_SURFACES","The current IGES writer transfers surfaces; a closed solid may reopen as faces without solid volume, and assembly sharing may be flattened. Use STEP or Cadoryx when those semantics must be retained."));
         return new CadExportReport(fullPath,iges?"IGES":"STEP",diagnostics.ToImmutable());
@@ -399,8 +419,16 @@ public sealed partial class OcctGeometryKernel : IGeometryKernel, ITopologyResol
             using var compound=ShapeFactory.CreateCompound(shapes);
             ShapeExchange.WriteStl(compound,temp,new StlWriteOptions(options.LinearDeflectionMm,options.AngularDeflectionRad,options.BinaryStl));
             token.ThrowIfCancellationRequested();File.Move(temp,full,true);
-            return new(full,"STL",[new("EXPORT.STL_SEMANTICS","STL contains a triangulated surface in millimeter coordinates; it has no intrinsic units, assembly names, colors, constraints or feature history.")]);
+            var diagnostics=ImmutableArray.CreateBuilder<CadDiagnostic>();
+            diagnostics.Add(new("EXPORT.STL_SEMANTICS","STL contains a triangulated surface in millimeter coordinates; it has no intrinsic units, assembly names, colors, constraints or feature history."));
+            if(HasThreadIntent(snapshot))diagnostics.Add(ThreadExchangeLoss());
+            if(HasExpressionIntent(snapshot))diagnostics.Add(ExpressionExchangeLoss());
+            return new(full,"STL",diagnostics.ToImmutable());
         }
         finally{foreach(var shape in shapes)shape.Dispose();if(File.Exists(temp))File.Delete(temp);}
     }
+    private static bool HasThreadIntent(DocumentSnapshot document)=>document.Features.Values.Any(f=>
+        f.Recipe is HoleRecipe {Thread:not null} or HolePatternRecipe {Template.Thread:not null});
+    private static CadDiagnostic ThreadExchangeLoss()=>new("EXPORT.THREAD_INTENT",
+        "Thread designation, pitch, hand, profile identity and effective depth are not written as author semantics in this exchange format. Symbolic authoring contains only pilot geometry; modeled authoring contains tooth geometry, triangulated for STL. Save Cadoryx to retain thread intent.");
 }

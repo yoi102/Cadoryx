@@ -45,4 +45,14 @@ public sealed class SectionMigrationTests
         registry.RegisterStep("split",[Old],[New,Extra],_=>[new(New,new byte[6]),new(Extra,new byte[6])]);
         Assert.Throws<InvalidDataException>(()=>registry.Migrate([new(Old,new byte[]{1})],new Dictionary<string,SectionFormat>{{"old",New}},maxSectionBytes:8,maxTotalBytes:10));
     }
+    [Theory][InlineData(65,true)][InlineData(128,true)][InlineData(129,false)]
+    public void BoundedMigrationBudgetAllowsAllCurrentLegacyStepsAndRejectsExcess(int count,bool succeeds)
+    {
+        var registry=new CadSectionMigrationRegistry(false);
+        for(int i=1;i<=count;i++)
+        {var sourceFormat=new SectionFormat("chain",i,"messagepack");var targetFormat=sourceFormat with{Version=i+1};registry.RegisterStep("step"+i,[sourceFormat],[targetFormat],input=>[new(targetFormat,input["chain"].Bytes)]);}
+        var targets=new Dictionary<string,SectionFormat>{{"chain",new("chain",count+1,"messagepack")}};
+        if(succeeds)Assert.Equal(new byte[]{7},registry.Migrate([new(new("chain",1,"messagepack"),new byte[]{7})],targets)["chain"].Bytes.ToArray());
+        else Assert.Throws<NotSupportedException>(()=>registry.Migrate([new(new("chain",1,"messagepack"),new byte[]{7})],targets));
+    }
 }

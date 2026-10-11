@@ -1,5 +1,7 @@
 # 命令行与 AI Agent
 
+2026-10-04 [F5g工程图作者工具](F5_COMPLETE_DRAWING_TOOLS.md)已接入完整既有作者入口、PDF和模板文件；169联合及最终2028/2028全量、Release零警告/错误，12生产DLL绑定测试/探针/冻结证据。四组最终窗口PASS；孔表原多图纸FAIL保留，增加日志后的独立重放PASS，根因及重复性仍未证明。11页矢量PDF逐页检查，真实直径符号缺字已修；Codex八轮PASS，LM Studio两次FAIL。详见artifacts/f5-drawing-verification-1.json；其余A–F继续，第七批G暂缓。
+
 2026-09-27 完善交互。结构沿用 Direct2dCad 的独立命令解析、Agent 对话协议、LM Studio/Codex 连接及停靠 Toolbox 模式；CAD 执行端使用 Cadoryx 的文档会话与三维几何命令。
 
 ## 入口与操作
@@ -23,13 +25,20 @@
 | `TOOL BOX`、`TOOL CYLINDER`、`CANCEL` | 进入鼠标定尺寸的立体建模模式，或取消当前交互 |
 | `BOX name width depth height [x y z]` | 在当前建模目标零件中创建长方体；尺寸与位置均为毫米 |
 | `CYLINDER name radius height [x y z]` | 创建圆柱；尺寸与位置均为毫米 |
+| `PARAMETERS/BINDINGS/TARGETS`、`PARAM` | 参数作者查询、表达式／绑定编辑与原子重算，见 [F5](F5_COMMANDS_AND_PARAMETERS.md) |
+| `TIMELINE`、`HISTORY` | 实际特征顺序、抑制／恢复／重排及会话回滚预览 |
+| `FILE CONTRACT`、`FILE` | 精确快照原生保存、STEP/IGES/STL、BOM/HTML/Package/ExchangeAudit输出、实际字节数/哈希及诊断，见[F5f文件](F5_FILE_AND_PROVIDER_TOOLS.md) |
+| `WORKSPACE CONTRACT/LIST`、`WORKSPACE`（`WS`） | 空工作区也可新建/打开，按完整会话身份激活；终端自动捕获预期工作区状态，见[多文档工具](F5_WORKSPACE_TOOLS.md) |
+| `RECIPES/SKETCH_GEOMETRY/ASSEMBLY_PATTERNS`、`MODEL` | 完整作者查询、十三类契约（含 solid_offset）、创建／编辑／精确重选／解除，`MODEL CONTRACT`分页，见[F5e](F5_COMMON_MODEL_TOOLS.md) |
+| `DATUMS/DATUM_BINDINGS`、`DATUM` | 基准作者／关联查询、平面轴点设置、精确来源分页、删除／解除及草图／工作平面绑定，见 [F5d](F5_ASSOCIATED_DATUM_TOOLS.md) |
+| `SKETCH_OFFSET {JSON}` | 明确草图身份、修订、闭环／区域种子、距离及尖角／圆角／斜角连接，整笔创建独立结果，见 [B17](B17_ANALYTICAL_OFFSET_JOINS_PLAN.md)；当前已实现，最终验收继续 |
 | `CLEAR` | 清除命令面板的显示记录 |
 
-含空格的名称用双引号，例如 `BOX "Bracket 1" 40 20 10 0 0 5`。输入数字使用小数点。建模命令走 `AddBodyCommand` 与文档历史，遵守只读文档、目标零件、图层锁定和内核校验；多零件文档未选目标时会拒绝创建，不会猜测第一个零件。网格修改同样走文档会话；隔离/隐藏调用现有审阅视图的临时显示命令，属于视图状态而非 CAD 文件编辑。命令模块仅管理解析、注册和语法，具体 CAD 行为由 `CadCommandContext` 接到当前文档。输出是当前会话的有界显示记录，最多保留 500 行，不写入 CAD 文件；鼠标悬停、选择移动等高频交互不会逐条打印。尚未提供可持久化、可回放的完整操作审计，也未接入需要文件路径/对话框的 `SAVE`、`EXPORT` 命令或复杂建模全部参数。
+含空格的名称用双引号，例如 `BOX "Bracket 1" 40 20 10 0 0 5`。输入数字使用小数点。建模命令走 `AddBodyCommand` 与文档历史，遵守只读文档、目标零件、图层锁定和内核校验；多零件文档未选目标时会拒绝创建，不会猜测第一个零件。网格修改同样走文档会话；隔离/隐藏调用现有审阅视图的临时显示命令，属于视图状态而非 CAD 文件编辑。命令模块仅管理解析、注册和语法，具体 CAD 行为由 `CadCommandContext` 接到当前文档。输出是当前会话的有界显示记录，最多保留 500 行，不写入 CAD 文件；鼠标悬停、选择移动等高频交互不会逐条打印。尚未提供可持久化、可回放的完整操作审计。保存和交换输出由 `FILE` 承载，多文档由 `WORKSPACE` 承载；工程图作者由 cad_drawing 和 DRAWING 承载，PDF/模板输出由 cad_file 和 FILE 承载。
 
-右侧“AI 助手” Toolbox 默认收起，可用 `Ctrl+Shift+A` 打开。其布局参照 Direct2dCad：顶部连接状态、设置/清空入口，中部按角色区分的消息卡片，底部附件、输入、发送与停止。设置图标打开独立的 MetroWindow，可选择 LM Studio 或 Codex，填写本地模型地址/名称或 Codex 程序路径/模型，保存后发送。设置窗口内修改提供方或模型属于草稿；取消会恢复原值且保留对话，保存并切换连接后才开始新对话。Codex 推理强度为下拉选项：`none`、`minimal`、`low`、`medium`、`high`、`xhigh`，默认 `medium`。LM Studio 默认端点是 `http://localhost:1234/v1`；Codex 使用本机 `codex app-server`，需有可运行的 Codex CLI 与相应登录状态。Enter 发送，Shift+Enter 换行；消息自动滚动，工作中显示进度与停止按钮。支持一次最多五个 PNG/JPEG 图片（每个不超过 8 MB）或 UTF-8 文本/Markdown/CSV/JSON（每个不超过 1 MB）附件，可用回形针按钮添加；输入框内 Ctrl+V 也可粘贴图片或文件，普通文本粘贴保持原样。文件内容随请求发给选定提供方。缺少 LM Studio 模型时，发送会保留输入和附件，提示先选模型。两个提供方的对话都支持取消与清空；切换文档时清空会话及待发送附件，避免将上一文档上下文带到新文档。设置保存在用户本地应用数据目录，不写入 `.cadoryx` 文件。
+右侧“AI 助手” Toolbox 默认收起，可用 `Ctrl+Shift+A` 打开。其布局参照 Direct2dCad：顶部连接状态、设置/清空入口，中部按角色区分的消息卡片，底部附件、输入、发送与停止。设置图标打开独立的 MetroWindow，可选择 LM Studio 或 Codex，填写本地模型地址/名称或 Codex 程序路径/模型，保存后发送。设置窗口内修改提供方或模型属于草稿；取消会恢复原值且保留对话，保存并切换连接后才开始新对话。Codex 推理强度为下拉选项：`none`、`minimal`、`low`、`medium`、`high`、`xhigh`，默认 `medium`。LM Studio 默认端点是 `http://localhost:1234/v1`；Codex 使用本机 `codex app-server`，需有可运行的 Codex CLI 与相应登录状态。Enter 发送，Shift+Enter 换行；消息自动滚动，工作中显示进度与停止按钮。支持一次最多五个 PNG/JPEG 图片（每个不超过 8 MB）或 UTF-8 文本/Markdown/CSV/JSON（每个不超过 1 MB）附件，可用回形针按钮添加；输入框内 Ctrl+V 也可粘贴图片或文件，普通文本粘贴保持原样。文件内容随请求发给选定提供方。缺少 LM Studio 模型时，发送会保留输入和附件，提示先选模型。两个提供方的对话都支持取消与清空；用户主动切换文档时取消旧请求并清空会话及待发送附件；工具成功的新建/打开/激活保留当前对话，后续调用动态读取活动文档并重新校验身份。设置保存在用户本地应用数据目录，不写入 `.cadoryx` 文件。
 
-AI 工具目录现有五个入口：`cad_status`、`cad_command`、`cad_inspect`、`cad_select`、`cad_edit`。`cad_status` 返回活动文档的 `documentId`、`stateId`、实体/零件/特征/草图/图纸/选择数量，以及从命令注册表动态生成的语法清单；无活动文档时明确返回 `active: false`。`cad_command` 只接受已注册的命令，其文本结果适合直接查看或导航。需要精确身份和后续编辑时，使用 `cad_inspect` 的结构化结果：
+AI 工具目录现有十二个入口：`cad_status`、`cad_command`、`cad_inspect`、`cad_select`、`cad_edit`、`cad_parameter`、`cad_history`、`cad_datum`、`cad_model`、`cad_file`、`cad_workspace`、`cad_drawing`。工程图严格作者契约、原始来源查询和 PDF/模板文件见 [F5g工程图工具](F5_COMPLETE_DRAWING_TOOLS.md)。多文档工具及精确会话身份见 [F5f多文档](F5_WORKSPACE_TOOLS.md)。状态、取消和参数工具见 [F5a–c](F5_COMMANDS_AND_PARAMETERS.md)，关联基准作者入口及原始来源分页见 [F5d](F5_ASSOCIATED_DATUM_TOOLS.md)。`cad_status` 返回活动文档的 `documentId`、`stateId`、实体/零件/特征/草图/图纸/选择数量，以及从命令注册表动态生成的语法清单；无活动文档时明确返回 `active: false`。`cad_command` 只接受已注册的命令，其文本结果适合直接查看或导航。需要精确身份和后续编辑时，使用 `cad_inspect` 的结构化结果：
 
 | `cad_inspect.area` | 返回内容 |
 |---|---|
@@ -52,12 +61,20 @@ AI 工具目录现有五个入口：`cad_status`、`cad_command`、`cad_inspect`
 | `create_box`、`create_cylinder` | `name`、Box 的 `width/depth/height` 或 Cylinder 的 `radius/height`；有零件时必须传精确 `partId`，可选 `layerId/materialId` 与 `x/y/z`，单位毫米 | 经内核验证创建形体，返回 `bodyId/featureId/partId`；空文档可自动建立首个零件 |
 | `create_sketch_rectangle` | `partId`、`name`、`x/y/width/height`（毫米） | 在指定零件的局部 XY 平面创建矩形草图并求解；返回草图 ID |
 | `rename_sketch` | 草图 `id`、`revision`、`name` | 经草图求解和关联重算改名 |
+| `offset_sketch_loop` | `sketchId`、`revision`、正好一个种子的 `seeds` 数组、`distanceMm`，可选 `join` | 对隔离直线／圆弧闭环或圆创建独立偏移，返回新作者边界和新草图修订 |
+| `offset_sketch_regions` | `sketchId`、`revision`、所选边界的 `seeds` 数组、`distanceMm`，可选 `join` | 对明确选中的多根／孔岛区域整笔偏移，返回新边界、depth／parent 及 roots |
 | `fix_assembly_instance` | 实例完整 `path`、`name` | 建立固定关系；返回关系 ID |
 | `set_assembly_constraint_enabled`、`set_assembly_distance` | 关系 `id` 与 `enabled` 或 `distanceMm` | 修改指定关系；距离仅适用于距离关系 |
 | `create_drawing_sheet`、`rename_drawing_sheet` | `name`；重命名另需图纸 `id` | 创建 A4 横向图纸或改名 |
 | `add_drawing_view` | `sheetId`、来源实例完整 `path`、`kind`（Front/Top/Right/Isometric）、`name/scale/centerX/centerY` | 投影指定实例并添加关联视图；返回视图 ID |
 
-每个结构化编辑都必须带最近一次查询返回的 `documentId` 和 `stateId`；文档切换或状态变化后拒绝旧请求，须重新查询。形体尺寸限定为正数且不超过 1,000,000 mm，位移绝对值不超过 1,000,000 mm；零件、图层和材料交由会话命令校验，不允许猜测目标零件。实例路径必须与当前文档中的完整路径一致。草图编辑还校验修订。编辑均通过文档会话提交，有撤销记录；内核、求解、投影或验证失败不会发布半成品。`cad_command` 的命令行编辑遵循活动文档自身校验，但不具有结构化编辑的 `stateId` 前置条件；需要精确目标时优先用 `cad_edit`。尚未让 Agent 自行拾取 BRep 面/边或猜测装配基准，也没有向工具开放任意曲线、孔岛、剖切视图和关联尺寸的创建。`SELECT` 只有实体实例名称唯一时才会改变选择。关闭“允许 CAD 工具”后只进行普通对话。Codex app-server 线程使用只读沙盒，CAD 修改通过受限工具和文档会话。AI 回复本身不构成建模成功证据，以工具返回和文档实际状态为准。
+B17 的 `join` 精确接受 `Miter`、`Round`、`Bevel`，省略时沿用 `Miter`；单曲线工具不使用角连接方式。正距离扩大材料，孔向内、岛向外；负距离反向。区域最多 64 个不同边界、12 层嵌套，混合输出最多 256 条边，新增连接也计入预算。`seeds` 输入可含 1–256 项明确作者 ID，同一边界的重复种子只处理一次。自交、接触、塌陷、包含关系变化或无法证明的交点分支整笔拒绝。
+
+终端格式为 `SKETCH_OFFSET {"action":"offset_sketch_loop","sketchId":"<查询所得 GUID>","revision":"<当前修订 GUID>","seeds":["<原闭环边或圆的 GUID>"],"distanceMm":1,"join":"Round"}`；尖括号内容必须替换为当前查询的真实身份。终端自动捕获文档／状态；Agent 调用 `cad_edit` 时还必须带当前 `documentId/stateId`。不要给整个 JSON 再加一层引号，原有 4096 字符命令预算保持。生成点、轮廓、proof、重复字段及额外字段不能由客户端传入。
+
+偏移结果是新的独立作者，没有隐藏偏移配方，源作者和旧实体引用保持。后续建模明确选择返回的新边界ID，结果通过已有约束/参数驱动。一次偏移只提交一笔撤销，只读/关闭/过期/取消/几何失败不发布结果。B17 `.11` 第七冻结2928全量、111原世界BRep、142专项、新36窗口/18工作流及视觉/六相关窗口PASS，本地规划契约已验收，见[B17记录](B17_ANALYTICAL_OFFSET_JOINS_PLAN.md)；物理输入/自由曲线精确偏移另列。
+
+每个结构化编辑都必须带最近一次查询返回的 `documentId` 和 `stateId`；文档切换或状态变化后拒绝旧请求，须重新查询。形体尺寸限定为正数且不超过 1,000,000 mm，位移绝对值不超过 1,000,000 mm；零件、图层和材料交由会话命令校验，不允许猜测目标零件。实例路径必须与当前文档中的完整路径一致。草图编辑还校验修订。编辑均通过文档会话提交，有撤销记录；内核、求解、投影或验证失败不会发布半成品。`cad_command` 在有活动文档时同样要求当前 `documentId/stateId`，在会话锁内复验；HISTORY 字符串入口要求使用带实际预览游标的 `cad_history`。终端上下文自动捕获身份及取消令牌。`cad_datum.inspect_sources` 已开放原始 BRep 全 map 分页、精确面／边身份及解析几何读取，并可显式创建解析关联基准；不允许按几何相似或虚构缓存猜测重绑。[F5e通用建模](F5_COMMON_MODEL_TOOLS.md)已提供十三类作者契约（新增整体实体偏移）、完整曲线／孔岛及精确面重选／解除，170专项、1910全量、同冻结十窗口及实际终端通过；`cad_drawing` 已接入六类视图、四类解析尺寸、制造标注/孔表/图框/模板和刷新；查询提供可复用编辑作者，附着变更必须明确重选，PDF/模板输出由 `cad_file` 执行。`SELECT` 只有实体实例名称唯一时才会改变选择。关闭“允许 CAD 工具”后只进行普通对话。Codex app-server 线程使用只读沙盒，CAD 修改通过受限工具和文档会话。AI 回复本身不构成建模成功证据，以工具返回和文档实际状态为准。
 
 ## 验证与剩余边界
 
@@ -76,3 +93,6 @@ AI 工具目录现有五个入口：`cad_status`、`cad_command`、`cad_inspect`
 随后补充 `drawing_views` 和 `drawing_dimensions` 图纸内部查询，保留原有五个工具入口。真实文档会话测试使用 51 个尺寸验证摘要之外的分页、精确 ID 筛选、错误图纸 ID 拒绝、状态标识及来源/基准身份。验证结果见[自动测试与覆盖率](TEST_COVERAGE.md)；这些测试不代表真实模型调用或图纸窗口交互验收。
 
 本机可复现连接检查：`dotnet run --project tools/AgentConnectionProbe/AgentConnectionProbe.csproj -c Release -- --provider codex --executable <codex.cmd 路径>`，加 `--model <模型> --message <提示>` 可验证对话，加 `--file <txt/png 路径>` 可验证附件，加 `--tool-roundtrip` 可验证动态工具调用；LM Studio 改为 `--provider lmstudio --endpoint <实际服务地址>`，加 `--agent-runner` 可走 UI 使用的 Agent 对话流程。探针只读取模型/发送指定提示与附件，不访问 CAD 文档。2026-09-28 本机 Codex app-server 成功列出 4 个模型，`gpt-5.6-luna` 返回普通对话 `OK`、文本附件校验词 `COBALT42`，从有效的 16×16 红色 PNG 回答 `Red`，并调用 `probe_echo` 返回其工具结果。LM Studio 实际运行在 `http://localhost:15630/v1`（不是设置中的默认 1234 端口）；`prism-ml/bonsai-27b` 的模型发现、普通对话 `OK`、文本附件 `COBALT42`、图片附件 `Red` 均通过，图片也通过 `--agent-runner` 路径。一次无效 PNG 曾使 Codex 回复 `NO_IMAGE`，换成经图像解码检查的有效文件后通过；LM Studio 图片曾在 25 秒内超时、另一次返回空文本，延长探针上限并复测成功，说明本机视觉推理耗时与输出稳定性还需长时间验收。文件对话框及 Ctrl+V 的人工操作、长对话、多 DPI 与其他模型响应质量仍需单独验收。
+
+
+2026-10-04 [F5f多文档工具](F5_WORKSPACE_TOOLS.md)：空工作区新建、原生/交换打开、精确会话激活、动态活动文档和自主切换保留会话完成本地契约；255联合、1974全量、Release零警告／错误及同冻结三窗口PASS，十二生产DLL在测试/探针/发布一致。真实Codex八轮多文档、24 mm³建模/保存/重开/切换通过，资产归零；LM Studio五次多文档尝试仍FAIL（工具遗漏修复后有额外创建/重复新建/空回复），明确保留为未通过。终端真实控件及两张截图视口边界见artifacts/f5-workspace-verification-1.json。完整工程图、LM Studio验收及其余A–F继续，G暂缓。

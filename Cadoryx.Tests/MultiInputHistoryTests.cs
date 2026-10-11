@@ -91,7 +91,7 @@ public sealed class MultiInputHistoryTests
             using var loaded=await storage.LoadAsync(path,assets);var saved=loaded.Snapshot.Features[feature.Id].TopologyHistory!;
             Assert.Equal(recomputed.Features[feature.Id].TopologyHistory!.Entries.ToArray(),saved.Entries.ToArray());
             Assert.Equal(recomputed.Features[feature.Id].TopologyHistory!.AdditionalSources.ToArray(),saved.AdditionalSources.ToArray());
-            Assert.Equal(2,FormatEvolutionTests.Manifest(path).Sections.Single(s=>s.Kind=="history").SchemaVersion);
+            Assert.Equal(CadSectionMigrationRegistry.CurrentFormats["history"].Version,FormatEvolutionTests.Manifest(path).Sections.Single(s=>s.Kind=="history").SchemaVersion);
             var reference=TopologyReference.Box(loaded.Snapshot,source[0].Id,BoxBoundary.YMin);
             Assert.Equal(HistoryResolutionStatus.Unsupported,(await new OcctGeometryKernel().TraceAsync(loaded.Snapshot,reference,feature.Id,assets)).Status);
             kernel.EmitHistory=false;

@@ -46,7 +46,14 @@ public sealed class AddBodyCommand(GeometryRecipe recipe,string name,DefinitionI
         if(destination.IsLocked)throw new CadValidationException(Strings.LayerLocked);
         if(material is {} m&&!initial.Materials.ContainsKey(m))throw new CadValidationException(Strings.SelectMaterial);
         var effective=sketchSource is null?recipe:sketchSource.Resolve(initial,target?.Id??throw new CadValidationException("Select the sketch's part."),recipe);
-        var result=await context.Kernel.EvaluateAsync(effective,context.Assets,cancellationToken).ConfigureAwait(false);
+        foreach(var id in GuidedAuthoringSources.Sketches(effective).Concat(sketchSource is {} selectedProfile?[selectedProfile.SketchId]:[]).Distinct())
+            await SketchNativeProjectionCommands.ConfirmAsync(context,initial.Sketches[id],cancellationToken).ConfigureAwait(false);
+        if(effective is RevolveRecipe {Axis:{Datum:not null}} revolve)
+        {
+            await DatumRecompute.ConfirmAsync(context,initial,cancellationToken).ConfigureAwait(false);
+            effective=revolve.Refresh(initial,target?.Id??throw new CadValidationException("Select the axis's part."));
+        }
+        var result=await context.Kernel.EvaluateForDocumentAsync(effective,context.Assets,cancellationToken).ConfigureAwait(false);
         try
         {
             var doc=context.Snapshot;
@@ -59,7 +66,7 @@ public sealed class AddBodyCommand(GeometryRecipe recipe,string name,DefinitionI
             }
             var body=BodyId.New();var feature=FeatureId.New();
             var b=new CadBody(body,part.Id,name,result.Geometry,feature,layer,new(ByLayer:true),MaterialId:material);
-            var f=new FeatureDefinition(feature,part.Id,name,effective,[],body,result.Geometry,OutputMetadata:BodyOutputMetadata.FromBody(b)){SketchSource=sketchSource};
+            var f=new FeatureDefinition(feature,part.Id,name,effective,[],body,result.Geometry,OutputMetadata:BodyOutputMetadata.FromBody(b)){SketchSource=sketchSource,GuidedModelingReport=result.GuidedModelingReport};
             doc=doc with {Bodies=doc.Bodies.Add(body,b),Features=doc.Features.Add(feature,f),
                 Definitions=doc.Definitions.SetItem(part.Id,part with {Bodies=part.Bodies.Add(body),Features=part.Features.Add(feature)})};
             return new(doc.WithNewState(),[result]);
@@ -86,7 +93,7 @@ public sealed class BooleanCommand(BooleanOperation operation,IEnumerable<BodyId
         if(inputs.Select(x=>x.PartId).Distinct().Count()!=1)throw new CadValidationException("Boolean operands must belong to the same part; edit the part definition first.");
         if(inputs.Any(x=>doc.Layers[x.LayerId].IsLocked))throw new CadValidationException("A selected body is on a locked layer.");
         var recipe=new BooleanRecipe(operation,inputs.Select(x=>x.Geometry).ToImmutableArray());
-        var result=await context.Kernel.EvaluateAsync(recipe,context.Assets,cancellationToken).ConfigureAwait(false);
+        var result=await context.Kernel.EvaluateForDocumentAsync(recipe,context.Assets,cancellationToken).ConfigureAwait(false);
         try
         {
             var part=(PartDefinition)doc.Definitions[inputs[0].PartId];var body=BodyId.New();var fid=FeatureId.New();

@@ -8,6 +8,6 @@
     <Authors>yoiri</Authors>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
-    <OcctSharpVersion>8.0.1-preview.28.cadoryx.handles.gizmo.2</OcctSharpVersion>
+    <OcctSharpVersion>8.0.1-preview.31.cadoryx.curve-inspection.26</OcctSharpVersion>
   </PropertyGroup>
 </Project>

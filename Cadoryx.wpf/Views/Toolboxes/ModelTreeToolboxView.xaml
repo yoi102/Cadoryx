@@ -17,6 +17,12 @@
  </UserControl.Resources>
  <DockPanel Margin="10,8">
   <StackPanel DockPanel.Dock="Top" Margin="0,0,0,8">
+   <StackPanel DataContext="{Binding History}">
+    <TextBlock Text="{Binding CursorSummary}" TextWrapping="Wrap"/>
+    <Button x:Name="ReturnHistoryEndButton" Content="{I18N {x:Static r:LangKeys.ReturnHistoryEnd}}" Command="{Binding ReturnToEndCommand}" Margin="0,4,0,6">
+     <Button.Style><Style TargetType="Button" BasedOn="{StaticResource {x:Type Button}}"><Style.Triggers><DataTrigger Binding="{Binding IsRolledBack}" Value="False"><Setter Property="Visibility" Value="Collapsed"/></DataTrigger></Style.Triggers></Style></Button.Style>
+    </Button>
+   </StackPanel>
    <Grid Margin="0,0,0,6">
     <Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
    <TextBox x:Name="SearchInput" Grid.Column="0" Text="{Binding SearchText,UpdateSourceTrigger=PropertyChanged}"
@@ -130,6 +136,7 @@
         <DataTrigger Binding="{Binding IsSuppressed}" Value="True">
          <Setter Property="Opacity" Value="0.55"/><Setter Property="FontStyle" Value="Italic"/>
         </DataTrigger>
+        <DataTrigger Binding="{Binding IsAfterCursor}" Value="True"><Setter Property="Opacity" Value="0.45"/></DataTrigger>
        </Style.Triggers></Style></TextBlock.Style>
       </TextBlock>
      </DockPanel>

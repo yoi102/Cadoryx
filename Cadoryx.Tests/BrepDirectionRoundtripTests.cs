@@ -32,4 +32,17 @@ public sealed class BrepDirectionRoundtripTests
         string before=Header+"7 0 0 3 6\n"+Circle;
         Assert.False(BrepDirectionRoundtrip.Matches(before,before.Replace("1 0 0 0 1 0","1 1e-17 0 0 1 0")));
     }
+    [Theory][InlineData("1 12.999999999999998 5.5511151231257837e-16 0 -1",true)]
+    [InlineData("1 12.999999999999 0 0 -1",false)][InlineData("1 13 0 1e-17 -1",false)]
+    [InlineData("1 NaN 0 0 -1",false)][InlineData("1 13 0 0 -0.9",false)]
+    public void PlanarParameterLineHasBoundedOriginRoundoffAndExactDirection(string value,bool expected)
+    {
+        string before="CASCADE Topology V3, (c) Open Cascade\nCurve2ds 1\n1 13 0 0 -1\nTShapes 0\n";
+        Assert.Equal(expected,BrepDirectionRoundtrip.Matches(before,before.Replace("1 13 0 0 -1",value)));
+    }
+    [Fact]public void MultilineParameterSplineCannotMasqueradeAsALine()
+    {
+        string before="CASCADE Topology V3, (c) Open Cascade\nCurve2ds 1\n7 0 0 3 6\n1 13 0 0 -1\nTShapes 0\n";
+        Assert.False(BrepDirectionRoundtrip.Matches(before,before.Replace("1 13 0 0 -1","1 12.999999999999998 0 0 -1")));
+    }
 }

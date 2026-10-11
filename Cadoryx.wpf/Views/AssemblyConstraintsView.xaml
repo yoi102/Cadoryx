@@ -3,7 +3,21 @@
  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
  xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
  xmlns:r="clr-namespace:Cadoryx.Lang;assembly=Cadoryx.Lang">
- <Expander Header="{Binding Title}" IsExpanded="False" Margin="0,0,0,16">
+ <UserControl.Resources>
+  <Style TargetType="Button" BasedOn="{StaticResource {x:Type Button}}">
+   <Setter Property="Height" Value="Auto"/>
+   <Setter Property="MinHeight" Value="32"/>
+   <Setter Property="ContentTemplate"><Setter.Value><DataTemplate>
+    <TextBlock Text="{Binding}" TextWrapping="Wrap" TextAlignment="Center"/>
+   </DataTemplate></Setter.Value></Setter>
+  </Style>
+  <Style TargetType="Expander" BasedOn="{StaticResource {x:Type Expander}}">
+   <Setter Property="HeaderTemplate"><Setter.Value><DataTemplate>
+    <TextBlock Text="{Binding}" TextWrapping="Wrap"/>
+   </DataTemplate></Setter.Value></Setter>
+  </Style>
+ </UserControl.Resources>
+ <Expander x:Name="RelationsExpander" Header="{Binding Title}" IsExpanded="False" Margin="0,0,0,16">
   <StackPanel Margin="8,8,8,10">
    <Button x:Name="FixButton" Content="{Binding FixLabel}" Command="{Binding AddFixedCommand}"
            IsEnabled="{Binding CanCreate}" Margin="0,0,0,8"/>
@@ -76,13 +90,13 @@
    </UniformGrid>
    <Separator Margin="0,4,0,8"/>
    <TextBlock Text="{Binding DatumSectionLabel}" FontWeight="SemiBold" Margin="0,0,0,6"/>
-   <ComboBox ItemsSource="{Binding DatumKinds}" SelectedItem="{Binding DatumPickKind}" Margin="0,0,0,6"/>
-   <Button Content="{Binding PickReferenceDatumLabel}" Command="{Binding PickReferenceDatumCommand}" Margin="0,0,0,4"/>
+   <ComboBox x:Name="DatumKindInput" ItemsSource="{Binding DatumKinds}" SelectedItem="{Binding DatumPickKind}" Margin="0,0,0,6"/>
+   <Button x:Name="PickReferenceDatumButton" Content="{Binding PickReferenceDatumLabel}" Command="{Binding PickReferenceDatumCommand}" Margin="0,0,0,4"/>
    <TextBlock Text="{Binding ReferenceDatumLabel}" TextWrapping="Wrap" Opacity="0.7" Margin="0,0,0,6"/>
-   <Button Content="{Binding PickMovingDatumLabel}" Command="{Binding PickMovingDatumCommand}" Margin="0,0,0,4"/>
+   <Button x:Name="PickMovingDatumButton" Content="{Binding PickMovingDatumLabel}" Command="{Binding PickMovingDatumCommand}" Margin="0,0,0,4"/>
    <TextBlock Text="{Binding MovingDatumLabel}" TextWrapping="Wrap" Opacity="0.7" Margin="0,0,0,6"/>
-   <ComboBox ItemsSource="{Binding DatumRelationKinds}" SelectedItem="{Binding DatumRelationKind}" Margin="0,0,0,6"/>
-   <Button Content="{Binding AddDatumRelationLabel}" Command="{Binding AddDatumRelationCommand}" Margin="0,0,0,8"/>
+   <ComboBox x:Name="DatumRelationInput" ItemsSource="{Binding DatumRelationKinds}" SelectedItem="{Binding DatumRelationKind}" Margin="0,0,0,6"/>
+   <Button x:Name="AddDatumRelationButton" Content="{Binding AddDatumRelationLabel}" Command="{Binding AddDatumRelationCommand}" Margin="0,0,0,8"/>
    <Button Content="{Binding ReselectDatumRelationLabel}" Command="{Binding ReselectDatumRelationCommand}"
            IsEnabled="{Binding CanEditSelected}" Margin="0,0,0,8"/>
    <UniformGrid Columns="2" IsEnabled="{Binding CanEditSelected}" Margin="0,0,0,8">
@@ -95,7 +109,7 @@
     <Button x:Name="ToggleButton" Content="{Binding ToggleLabel}" Command="{Binding ToggleCommand}" Margin="0,0,3,0"/>
     <Button x:Name="RemoveButton" Content="{Binding RemoveLabel}" Command="{Binding RemoveCommand}" Margin="3,0,0,0"/>
    </UniformGrid>
-   <TextBlock Text="{Binding Status}" TextWrapping="Wrap" Margin="0,8,0,0"/>
+   <TextBlock x:Name="SolveStatusText" Text="{Binding Status}" TextWrapping="Wrap" Margin="0,8,0,0"/>
   </StackPanel>
  </Expander>
 </UserControl>

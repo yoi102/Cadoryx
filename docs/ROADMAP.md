@@ -1,10 +1,16 @@
 # Cadoryx 实施路线与验收
 
-## 1. 当前实施状态（2026-09-28）
+当前状态（2026-10-11）：按用户要求暂停于[本地提交检查点](AF_CHECKPOINT_2026-10-11.md)，A–F未全部完成，G暂缓。下文保留早期实施基线和设计验收；当前代码与候选证据以[STATUS](STATUS.md)及[A–F跟踪](AF_IMPLEMENTATION_TRACKER.md)为准。旧过程记录见[历史路线快照](history/docs_ROADMAP_BEFORE_CHECKPOINT_20261011.md)。
+
+## 1. 历史实施基线（2026-09-28）
 
 2026-09-11 完成设计文档；2026-09-12 用户已授权构建整体代码架构、按路线实施并补充路线。以下状态持续更新，只有经过对应验收才标记完成。
 
 当前完成范围与未完成事项的短版汇总见[当前进度与剩余工作](STATUS.md)。本文件保留阶段计划和历史验收；旧阶段段落中的“尚未”只反映当时的状态，当前结论以下方状态表及汇总为准。
+
+2026-10-02 B8 本地限定范围完成：精确 Bézier/已有样条、混合闭环、孔和递归岛旋转，关联轴及完整缓存/编辑/存储已接入。锁定包 8.0.1-preview.31.cadoryx.xde-transform.2；document33/features31/assembly-patterns2/datums2/sketches11。28新专项与14旧项联合42/42，最终全量1144/1144、Release零警告/错误；发布b8-20261002-5的B8/桌面/窗口/C1–C4/D1–D3/工程图/PDF同版PASS，十二份空绑定日志、资产归零，18张B8截图逐张检查。首次圆盘指针偏移失败与同版重试通过均保留，原因尚未证明；旋转按钮为WPF自动化，物理指针和外部CAD证据分列。接着[B9精确曲线及编辑](B9_EXACT_CURVES_AND_EDITING_PLAN.md)，整个A–F进行中，G第七批暂缓。见[B8记录](B8_CURVE_AND_REGION_REVOLVE.md)及artifacts/b8-final-verification.json；C3历史见[C3记录](C3_MIRROR_AND_PATTERNS.md)。
+
+2026-10-01 补充：A–F整批请求仍进行中，G实机/安装/交付暂缓。[D3抽壳/拔模](D3_SHELL_DRAFT.md)本地限定范围完成，最终966/966、Release零警告/错误、桌面/C1–C4/D1–D3/图纸/PDF同版PASS（20261001-225615），九份绑定日志空、资产归零及12张截图检查。D3当期document v26/features v27，锁定依赖为不可变的sweep.1；真实桌面指针、外部CAD与硬件证据分列。后续[C2精确来源/轴点](C2_EXTENDED_DATUMS.md)应用及生产窗口已接入，基准轴旋转前988/988和同版联合门禁PASS；基准轴旋转、边界和三语言控件已完成，document28/features28；最终1013/1013、Release零警告/错误、同版联合门禁PASS（20261002-005501），九份空绑定日志和C2最终25张截图检查；全部余项见[A–F跟踪](AF_IMPLEMENTATION_TRACKER.md)。
 
 | 阶段 | 已有代码和证据 | 当前状态 / 剩余 |
 |---|---|---|

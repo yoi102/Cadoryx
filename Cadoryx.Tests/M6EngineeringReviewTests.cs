@@ -107,10 +107,16 @@ public sealed class M6EngineeringReviewTests
         using(var zip=ZipFile.Open(path,ZipArchiveMode.Update))
         {
             var drawings=manifest.Sections.Single(s=>s.Kind=="drawings");zip.GetEntry(drawings.Path)!.Delete();
+            zip.GetEntry("sections/parameters.msgpack")!.Delete();zip.GetEntry("sections/datums.msgpack")!.Delete();
+            zip.GetEntry("sections/assembly-patterns.msgpack")!.Delete();
             zip.GetEntry("manifest.json")!.Delete();using var output=zip.CreateEntry("manifest.json").Open();
-            System.Text.Json.JsonSerializer.Serialize(output,manifest with{Sections=[..manifest.Sections.Where(s=>s.Kind is not ("engineering-review" or "drawings"))
+            System.Text.Json.JsonSerializer.Serialize(output,manifest with{Sections=[..manifest.Sections.Where(s=>s.Kind is not ("engineering-review" or "drawings" or "parameters" or "datums" or "assembly-patterns"))
                 .Select(s=>s.Kind=="document"?s with{SchemaVersion=16}:s)]},CadJson.Options);
         }
+        // The v16 fixture must omit the newly introduced empty expression section.
+        // Emulate the actual legacy four-field point payload before declaring its document version.
+        SketchLegacyPointFixture.Prepare(path);
+        FormatEvolutionTests.RewriteManifest(path,m=>m);
         using var loaded=await new CadDocumentStorage().LoadAsync(path,assets);Assert.Empty(loaded.Snapshot.Dimensions);Assert.Empty(loaded.Snapshot.AssociatedSections);
     }
     [Fact] public async Task SparseAssemblyBroadPhaseReportsPruningWithoutInventedDistances()

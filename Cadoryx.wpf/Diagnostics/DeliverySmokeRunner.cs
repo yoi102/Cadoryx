@@ -36,6 +36,18 @@ internal static class DeliverySmokeRunner
             var manifest=await DocumentDeliveryService.VerifyAsync(Path.Combine(output,"delivery.zip"));
             if(manifest.Files.Length!=8||!manifest.Files.Any(file=>file.Name=="exchange-loss.json"))
                 throw new InvalidOperationException("Incomplete delivery bundle.");
+            await delivery.WriteAsync(before,doc.Session.Assets,Path.Combine(output,"exchange-audit.zip"),
+                new(DeliveryOutput.ExchangeAudit,IncludeIges:true,IncludeStl:true));
+            var measurement=await ExchangeMeasurementService.VerifyAsync(Path.Combine(output,"exchange-audit.zip"));
+            if(measurement.Formats.Length!=3||measurement.StateId!=before.StateId.ToString()||measurement.Basis!=ExchangeMeasuredReport.LocalBasis||
+                before.StateId!=doc.Session.Snapshot.StateId||dirty!=doc.Session.IsDirty)
+                throw new InvalidOperationException("Measured exchange report lost the captured source or changed the document.");
+            await File.WriteAllTextAsync(Path.Combine(output,"exchange-audit-result.json"),System.Text.Json.JsonSerializer.Serialize(new
+            {
+                passed=true,formats=measurement.Formats.Select(f=>f.Format),measurement.StateId,
+                input="WPF output choice bindings and snapshot export API; native SaveFileDialog and physical pointer separate",
+                basis=measurement.Basis
+            }));
             await File.WriteAllTextAsync(Path.Combine(output,"delivery-result.txt"),"PASS: Ribbon command opens owner MetroWindow, BOM preview and options in three languages, cancel preserves document and save point; progress dialog, eight payload files including exchange-loss report and SHA-256 verification.");
         }
         finally{Antelcat.I18N.WPF.I18NExtension.Culture=original;}
@@ -54,6 +66,11 @@ internal static class DeliverySmokeRunner
             if(model.GetOptions().Output!=DeliveryOutput.ReviewHtml||model.VisibleOnly)throw new InvalidOperationException("Delivery option binding failed.");
             window.UpdateLayout();var bitmap=new RenderTargetBitmap((int)window.ActualWidth,(int)window.ActualHeight,96,96,PixelFormats.Pbgra32);bitmap.Render(window);
             var encoder=new PngBitmapEncoder();encoder.Frames.Add(BitmapFrame.Create(bitmap));using var file=File.Create(Path.Combine(output,"delivery-"+language+".png"));encoder.Save(file);
+            window.OutputChoice.SelectedIndex=3;model.IncludeIges=true;model.IncludeStl=true;
+            if(model.GetOptions().Output!=DeliveryOutput.ExchangeAudit||window.OutputChoice.Items.Count!=4)
+                throw new InvalidOperationException("Measured exchange choice is not wired to production options.");
+            await Task.Delay(100);window.UpdateLayout();var auditBitmap=new RenderTargetBitmap((int)window.ActualWidth,(int)window.ActualHeight,96,96,PixelFormats.Pbgra32);auditBitmap.Render(window);
+            var auditEncoder=new PngBitmapEncoder();auditEncoder.Frames.Add(BitmapFrame.Create(auditBitmap));using var auditFile=File.Create(Path.Combine(output,"exchange-audit-"+language+".png"));auditEncoder.Save(auditFile);
         }
         finally{window.Close();}
     }

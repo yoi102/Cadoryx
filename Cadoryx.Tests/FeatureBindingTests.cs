@@ -36,15 +36,20 @@ public sealed class FeatureBindingTests
             var external=manifest.Sections.Single(s=>s.Kind=="external-parts");
             var review=manifest.Sections.Single(s=>s.Kind=="engineering-review");zip.GetEntry(review.Path)!.Delete();
             var drawings=manifest.Sections.Single(s=>s.Kind=="drawings");zip.GetEntry(drawings.Path)!.Delete();
+            zip.GetEntry("sections/parameters.msgpack")!.Delete();zip.GetEntry("sections/datums.msgpack")!.Delete();zip.GetEntry("sections/assembly-patterns.msgpack")!.Delete();
             zip.GetEntry(bindings.Path)!.Delete();zip.GetEntry(external.Path)!.Delete();zip.GetEntry("manifest.json")!.Delete();
             var previous=manifest with{ApplicationVersion="0.4.6",
-                Sections=[..manifest.Sections.Where(s=>s.Kind is not ("feature-bindings" or "external-parts" or "engineering-review" or "drawings")).Select(s=>s.Kind switch
+                Sections=[..manifest.Sections.Where(s=>s.Kind is not ("feature-bindings" or "external-parts" or "engineering-review" or "drawings" or "parameters" or "datums" or "assembly-patterns")).Select(s=>s.Kind switch
                 {
                     "document"=>s with{SchemaVersion=6},"features"=>s with{SchemaVersion=5},_=>s
                 })],
-                RequiredCapabilities=[..manifest.RequiredCapabilities.Where(c=>c is not ("cadoryx.feature-bindings.1" or "cadoryx.external-parts.1" or "cadoryx.engineering-review.1"))]};
+                RequiredCapabilities=[..manifest.RequiredCapabilities.Where(c=>c is not ("cadoryx.feature-bindings.1" or "cadoryx.external-parts.1" or "cadoryx.engineering-review.1" or "cadoryx.document-parameters.1" or "cadoryx.associated-datums.1" or "cadoryx.assembly-patterns.1"))]};
             using var output=zip.CreateEntry("manifest.json").Open();JsonSerializer.Serialize(output,previous,CadJson.Options);
         }
+        // Remove only the new empty required table when emulating the actual v6 document.
+        // Emulate the actual legacy four-field point payload before declaring its document version.
+        SketchLegacyPointFixture.Prepare(path);
+        FormatEvolutionTests.RewriteManifest(path,m=>m);
         using(var loaded=await storage.LoadAsync(path,assets))
         {
             Assert.Contains(loaded.Diagnostics,d=>d.Code=="IO.MIGRATED");

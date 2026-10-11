@@ -4,6 +4,9 @@ namespace Cadoryx.Agent;
 
 public sealed class AgentRunner(IAiChatClient chatClient) : IAgentRunner
 {
+    internal const string EmptyResponseRecoveryInstruction =
+        "Empty reply: use receipts; finish latest request; do not repeat completed edits.";
+
     public async Task<AgentRunResult> RunAsync(
         AgentRunRequest request,
         Func<AgentRunEvent, ValueTask>? reportEvent = null,
@@ -15,11 +18,20 @@ public sealed class AgentRunner(IAiChatClient chatClient) : IAgentRunner
         var availableTools = request.Toolset?.ToolDefinitions ?? [];
         var selectedTools = request.Toolset?.SelectTools(request.UserPrompt) ?? [];
         var contextWindowTokens = NormalizeContextWindow(request.ContextWindowTokens);
+        var emptyRetryUsed = false;
+        var retryEmptyResponse = false;
 
         for (var round = 0; round < request.MaximumToolRounds; round++)
         {
+            cancellationToken.ThrowIfCancellationRequested();
+            // The actual empty reply stays in history. Only the next request gets
+            // this instruction; no user message, receipt or command is invented.
+            var completionRequest = retryEmptyResponse
+                ? request with { SystemPrompt = request.SystemPrompt + "\n" + EmptyResponseRecoveryInstruction }
+                : request;
+            retryEmptyResponse = false;
             var completion = await CompleteWithContextRetryAsync(
-                request,
+                completionRequest,
                 selectedTools,
                 availableTools,
                 contextWindowTokens,
@@ -39,6 +51,14 @@ public sealed class AgentRunner(IAiChatClient chatClient) : IAgentRunner
 
             if (completion.Completion.ToolCalls.Count == 0)
             {
+                if (string.IsNullOrWhiteSpace(completion.Completion.Content) &&
+                    !emptyRetryUsed && round + 1 < request.MaximumToolRounds)
+                {
+                    emptyRetryUsed = true;
+                    retryEmptyResponse = true;
+                    await ReportAsync(reportEvent, new AgentRunEvent(AgentRunEventKind.EmptyResponseRetry));
+                    continue;
+                }
                 return new AgentRunResult(
                     completion.Completion.Model,
                     contextWindowTokens,
@@ -50,6 +70,7 @@ public sealed class AgentRunner(IAiChatClient chatClient) : IAgentRunner
 
             foreach (var toolCall in completion.Completion.ToolCalls)
             {
+                cancellationToken.ThrowIfCancellationRequested();
                 var result = await request.Toolset.ExecuteAsync(toolCall, cancellationToken);
                 request.Conversation.AddToolResult(toolCall, result);
                 await ReportAsync(

@@ -30,6 +30,7 @@ public partial class ViewportPane
     private Stopwatch? cameraClock;
     private CadCamera? cameraFrom,cameraTo;
     private OcctViewport? cameraViewport;
+    internal event Action<CadCamera>? AnimationFramePresented;
     private MainWindowViewModel? main;
     private readonly CadoryxRadialMenuPopup radialMenu = new();
     private CadoryxRadialPage radialPage;
@@ -40,6 +41,7 @@ public partial class ViewportPane
     private long radialWheelLastTick;
     internal int RadialPageNumber=>radialMenu.Page+1;
     internal bool IsRadialPopupOpen=>radialMenu.IsOpen;
+    internal bool IsCameraAnimationActive=>cameraTimer is not null;
     internal CadoryxRadialAction RadialSelectedAction=>radialMenu.SelectedAction;
     internal CadoryxRadialAction LastRadialCompletedAction {get;private set;}
     internal CadoryxRadialAction LastRadialExecutedAction {get;private set;}
@@ -288,6 +290,9 @@ public partial class ViewportPane
     {
         if(document is null||host is null||main is null||!IsLoaded)return;
         ActivatePane();ReviewMenu.IsOpen=false;
+        // A new radial gesture freezes the current view just like native
+        // navigation. A preceding projection can still have queued frames.
+        StopCameraAnimation();
         LastRadialCompletedAction=CadoryxRadialAction.None;
         LastRadialExecutedAction=CadoryxRadialAction.None;
         radialWheelOverride=false;radialWheelAccumulated=0;radialWheelEmitted=0;radialWheelDirection=0;radialWheelLastTick=0;
@@ -427,9 +432,10 @@ public partial class ViewportPane
         try
         {
             double t=Math.Clamp(clock.Elapsed.TotalMilliseconds/320,0,1);
-            if(t>=1){viewport.RestoreCamera(to);viewport.Redraw();StopCameraAnimation();return;}
+            if(t>=1){viewport.RestoreCamera(to);viewport.Redraw();AnimationFramePresented?.Invoke(viewport.CaptureCamera());StopCameraAnimation();return;}
             double eased=t*t*(3-2*t);
             viewport.RestoreCamera(CadCameraAnimation.Interpolate(from,to,eased));viewport.Redraw();
+            AnimationFramePresented?.Invoke(viewport.CaptureCamera());
         }
         catch(Exception ex){StopCameraAnimation();document?.Report(ex);}
     }

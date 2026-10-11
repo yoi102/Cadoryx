@@ -42,7 +42,20 @@ internal static class WindowSmokeRunner
         int exitCode=1;
         try
         {
+            var readyPath=Environment.GetEnvironmentVariable("CADORYX_RADIAL_DESKTOP_READY_PATH");
+            if(!string.IsNullOrEmpty(readyPath))
+            {
+                var activationWait=Stopwatch.StartNew();
+                while(!File.Exists(readyPath))
+                {
+                    Check(activationWait.Elapsed.TotalSeconds<60,"Current radial runner needs confirmed desktop activation within60seconds");
+                    await Task.Delay(50);
+                }
+            }
             window.Activate();await Idle();
+            if(!string.IsNullOrEmpty(readyPath))
+                Check(GetForegroundWindow()==new WindowInteropHelper(window).Handle,
+                    "Explicitly activated radial owner must be foreground before any cursor movement or wheel sampling");
             var vm=(MainWindowViewModel)window.DataContext;
             await RadialMenuGesture(vm,vm.ActiveDocument!,output);
             await File.WriteAllTextAsync(Path.Combine(output,"result.txt"),
@@ -377,6 +390,8 @@ internal static class WindowSmokeRunner
             var viewport=Host(doc).Viewport!;viewport.FitAll();
             Check(viewport.NativeXdeContextCount==doc.Scene.Items.Where(i=>i.Geometry.Source is not null)
                 .Select(i=>(i.Geometry.Source!.ContextAssetId,i.Geometry.Source.Format)).Distinct().Count(),"One XDE context per distinct source asset in this viewport");
+            Check(viewport.NativeSourceCount==doc.Scene.Items.Where(i=>i.PreserveSourceStyles&&i.Geometry.Source is not null)
+                .Select(i=>(i.Geometry.AssetId,i.Geometry.Source,i.Geometry.Format)).Distinct().Count(),"One shared graphics source per immutable styled geometry in this viewport");
             CaptureColors(viewport,output,"source");
             var item=doc.Scene.Items[0];var selection=new SelectionTarget(item.Path,item.BodyId,item.Geometry.Revision);
             doc.Selection.Replace([selection]);await Idle();
@@ -710,12 +725,24 @@ internal static class WindowSmokeRunner
                 }
                 SendMessage(host.Handle,0x100,0xC0,0);
                 Check(host.IsRadialActive&&GetCapture()==host.Handle,"Backtick opens the radial menu and captures pointer");
+                Check(!pane.IsCameraAnimationActive,"Opening radial menu stops preceding camera animation");
+                GetCursorPos(out var immediateCursor);var initialMenuCenter=pane.RadialCenterScreen;
                 await Idle();
                 GetCursorPos(out var cursor);
                 var radialCenter=pane.RadialCenterScreen;
+                var warp=host.LastRadialWarp;
+                File.AppendAllText(Path.Combine(output,"radial-center-observations.jsonl"),JsonSerializer.Serialize(new
+                {page,requestedX=warp.Requested.X,requestedY=warp.Requested.Y,actualX=warp.Actual.X,actualY=warp.Actual.Y,warp.Succeeded,
+                    clip=warp.Clip,warp.ClipAvailable,warp.Dpi,warp.ForegroundPid,
+                    immediateCursorX=immediateCursor.X,immediateCursorY=immediateCursor.Y,initialCenterX=initialMenuCenter.X,initialCenterY=initialMenuCenter.Y,
+                    cursorX=cursor.X,cursorY=cursor.Y,centerX=radialCenter.X,centerY=radialCenter.Y})+Environment.NewLine);
+                // Verify the warp synchronously. Real input may move the cursor while Idle
+                // pumps the dispatcher; that later movement is recorded above, not a failed warp.
+                Check(warp.Succeeded&&Math.Abs(immediateCursor.X-initialMenuCenter.X)<=8&&Math.Abs(immediateCursor.Y-initialMenuCenter.Y)<=8,
+                    $"Opening radial menu moves cursor to its center (immediate cursor {immediateCursor.X},{immediateCursor.Y}; center {initialMenuCenter.X},{initialMenuCenter.Y})");
                 // A transparent Popup can settle a few physical pixels after its first layout.
-                Check(Math.Abs(cursor.X-radialCenter.X)<=8&&Math.Abs(cursor.Y-radialCenter.Y)<=8,
-                    $"Opening radial menu moves cursor to its center (cursor {cursor.X},{cursor.Y}; center {radialCenter.X},{radialCenter.Y})");
+                Check(Math.Abs(initialMenuCenter.X-radialCenter.X)<=8&&Math.Abs(initialMenuCenter.Y-radialCenter.Y)<=8,
+                    $"Radial center remains stable after layout ({initialMenuCenter} -> {radialCenter})");
                 if(key!=0)SendMessage(host.Handle,keyMessage,(nuint)key,0);
                 Check(pane.RadialPageNumber==(int)page+1,$"Radial page {(int)page+1} is displayed");
                 var top=RadialPoint(0,-95);
@@ -881,11 +908,19 @@ internal static class WindowSmokeRunner
                 }
                 while((pane.RadialPageNumber!=expected||visiblePage!=expected)&&
                     clock.ElapsedMilliseconds<400);
+                if(pane.RadialPageNumber!=expected||visiblePage!=expected)
+                {
+                    await File.WriteAllTextAsync(Path.Combine(output,"radial-stationary-wheel-failure.json"),
+                        JsonSerializer.Serialize(new{delta,expected,state=pane.RadialPageNumber,visiblePage,
+                            elapsedMs=clock.Elapsed.TotalMilliseconds,pointerMoves=moves,
+                            foreground=GetForegroundWindow().ToString(),owner=owner.ToString(),
+                            popup=pane.RadialPopupHandle.ToString(),pixels=RadialPixels(pane.RadialVisual)},new JsonSerializerOptions{WriteIndented=true}));
+                }
                 Check(pane.RadialPageNumber==expected&&visiblePage==expected,
                     $"Stationary wheel displays page {expected} within 400 ms (state {pane.RadialPageNumber}, visible {visiblePage})");
                 Check(moves==0,"Stationary wheel rendering must not need a pointer event");
                 observations.Add(new{delta,page=pane.RadialPageNumber,visiblePage,
-                    elapsedMs=clock.Elapsed.TotalMilliseconds,pointerMoves=moves});
+                    elapsedMs=clock.Elapsed.TotalMilliseconds,pointerMoves=moves,foreground=GetForegroundWindow().ToString(),owner=owner.ToString(),pixels=RadialPixels(pane.RadialVisual)});
             }
             int finalPage=pane.RadialPageNumber;
             // A subsequent real selection change must preserve the page that
@@ -906,6 +941,19 @@ internal static class WindowSmokeRunner
             SendMessage(host.Handle,0x101,0xC0,0);
         }
     }
+    private static NativePoint RadialDesktopPixelPoint(FrameworkElement visual,Point logicalScreen)
+    {
+        // WPF PointToScreen follows the window/thread DPI coordinate space;
+        // GetPixel on the desktop DC consumes physical desktop coordinates.
+        // Windows maps the point through the actual popup's DPI awareness and
+        // monitor origin; multiplying absolute screen coordinates is incorrect.
+        var point=new NativePoint{X=(int)Math.Round(logicalScreen.X),Y=(int)Math.Round(logicalScreen.Y)};
+        var source=PresentationSource.FromVisual(visual) as HwndSource;
+        Check(source is not null&&source.Handle!=0,"Radial pixel sampling owns its actual popup HWND");
+        Check(LogicalToPhysicalPointForPerMonitorDPI(source!.Handle,ref point),
+            "Radial indicator converts to physical desktop coordinates");
+        return point;
+    }
     private static int ReadVisibleRadialPage(FrameworkElement visual)
     {
         // Sample the already presented desktop pixels. RenderTargetBitmap,
@@ -921,7 +969,8 @@ internal static class WindowSmokeRunner
             {
                 var indicator=(Border)footer.Children[i];
                 var point=indicator.PointToScreen(new(indicator.ActualWidth/2,4));
-                uint color=GetPixel(dc,(int)Math.Round(point.X),(int)Math.Round(point.Y));
+                var physical=RadialDesktopPixelPoint(visual,point);
+                uint color=GetPixel(dc,physical.X,physical.Y);
                 Check(color!=uint.MaxValue,"Radial indicator is on the visible desktop");
                 int red=(int)(color&255),green=(int)((color>>8)&255),blue=(int)((color>>16)&255);
                 if(red>70&&blue>120&&blue>red+30&&blue>green+50)
@@ -933,6 +982,20 @@ internal static class WindowSmokeRunner
             return visible;
         }
         finally{ReleaseDC(0,dc);}
+    }
+    private static object[] RadialPixels(FrameworkElement visual)
+    {
+        var footer=Enumerable.Range(0,VisualTreeHelper.GetChildrenCount(visual))
+            .Select(i=>VisualTreeHelper.GetChild(visual,i)).OfType<StackPanel>().Single();
+        var dc=GetDC(0);
+        try{return footer.Children.OfType<Border>().Select((indicator,i)=>
+        {
+            var point=indicator.PointToScreen(new(indicator.ActualWidth/2,4));
+            var physical=RadialDesktopPixelPoint(visual,point);
+            var pixel=GetPixel(dc,physical.X,physical.Y);
+            return (object)new{page=i+1,x=physical.X,y=physical.Y,logicalX=point.X,logicalY=point.Y,rgb=pixel.ToString("X8"),
+                windowAtPoint=WindowFromPoint(new(){X=(int)Math.Round(point.X),Y=(int)Math.Round(point.Y)}).ToString()};
+        }).ToArray();}finally{ReleaseDC(0,dc);}
     }
     private static void CaptureRadial(FrameworkElement visual,string path)
     {
@@ -1073,7 +1136,7 @@ internal static class WindowSmokeRunner
             var point=centers[index];viewport.PointerPressed(0,point.X,point.Y,modifiers);viewport.PointerReleased(0,point.X,point.Y,modifiers);
         }
     }
-    private static void CaptureColors(OcctViewport viewport,string output,string name)
+    internal static void CaptureColors(OcctViewport viewport,string output,string name)
     {
         var camera=viewport.CaptureCamera();
         int red=0,green=0,blue=0;
@@ -1114,7 +1177,8 @@ internal static class WindowSmokeRunner
     }
     private static void Camera(CadCamera expected,CadCamera actual)
     {
-        Check((expected.Eye-actual.Eye).Length<1e-6&&(expected.Target-actual.Target).Length<1e-6&&(expected.Up-actual.Up).Length<1e-6&&Math.Abs(expected.Scale-actual.Scale)<1e-6,"Camera eye/target/up/scale preserved");
+        Check((expected.Eye-actual.Eye).Length<1e-6&&(expected.Target-actual.Target).Length<1e-6&&(expected.Up-actual.Up).Length<1e-6&&Math.Abs(expected.Scale-actual.Scale)<1e-6,
+            $"Camera eye/target/up/scale preserved; expected={JsonSerializer.Serialize(expected)}; actual={JsonSerializer.Serialize(actual)}");
     }
     private static async Task WaitForCamera(OcctViewport viewport,CadCamera expected)
     {
@@ -1135,7 +1199,7 @@ internal static class WindowSmokeRunner
             "Camera animation reaches eye/target/up/scale target");
     }
     // Floating AvalonDock content is hosted in a separate HwndSource, outside its Window visual tree.
-    private static OcctViewportHost Host(CadDocumentViewModel doc)=>PresentationSource.CurrentSources.Cast<PresentationSource>()
+    internal static OcctViewportHost Host(CadDocumentViewModel doc)=>PresentationSource.CurrentSources.Cast<PresentationSource>()
         .Where(s=>s.RootVisual is not null).SelectMany(s=>FindHosts(s.RootVisual)).Distinct()
         .Single(h=>ReferenceEquals(h.DataContext,doc)&&h.Viewport is not null);
     private static IEnumerable<OcctViewportHost> FindHosts(DependencyObject root)
@@ -1155,8 +1219,11 @@ internal static class WindowSmokeRunner
     [DllImport("user32.dll")]private static extern nint SendMessage(nint window,uint message,nuint w,nint l);
     [DllImport("user32.dll")][return:MarshalAs(UnmanagedType.Bool)]private static extern bool PostMessage(nint window,uint message,nuint w,nint l);
     [DllImport("user32.dll")]private static extern nint GetDC(nint window);
+    [DllImport("user32.dll")]private static extern nint GetForegroundWindow();
+    [DllImport("user32.dll")]private static extern nint WindowFromPoint(NativePoint point);
     [DllImport("user32.dll")]private static extern int ReleaseDC(nint window,nint dc);
     [DllImport("gdi32.dll")]private static extern uint GetPixel(nint dc,int x,int y);
+    [DllImport("user32.dll")][return:MarshalAs(UnmanagedType.Bool)]private static extern bool LogicalToPhysicalPointForPerMonitorDPI(nint window,ref NativePoint point);
     [DllImport("user32.dll")]private static extern nint SetCapture(nint window);
     [DllImport("user32.dll")]private static extern nint GetCapture();
     [DllImport("user32.dll")][return:MarshalAs(UnmanagedType.Bool)]private static extern bool GetCursorPos(out NativePoint point);

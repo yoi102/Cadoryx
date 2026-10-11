@@ -44,6 +44,32 @@ public sealed record SketchProfileReference(SketchId SketchId,Guid Revision,Immu
     public static SketchProfileReference CreateWithPolygonHoles(CadSketch sketch,IEnumerable<SketchEntityId> outer,
         IEnumerable<IEnumerable<SketchEntityId>> holes)=>new(sketch.Id,sketch.Revision,outer.ToImmutableArray(),null,[],
             holes.Select(h=>h.ToImmutableArray()).ToImmutableArray());
+    /// <summary>Tests explicit author identities only. Split fragments never substitute for a missing boundary.</summary>
+    public bool HasUnavailableEntities(DocumentSnapshot document)
+    {
+        if(!document.Sketches.TryGetValue(SketchId,out var sketch))
+            throw new CadValidationException("The profile source sketch is missing.");
+        if(SketchNativeProjectionGeometry.HasStaleInputs(document,SketchId))return true;
+        var lines=sketch.Lines.Where(c=>!c.IsConstruction).Select(c=>c.Id).ToHashSet();
+        var circles=sketch.Circles.Where(c=>!c.IsConstruction).Select(c=>c.Id).ToHashSet();
+        var splines=sketch.Splines.Where(c=>!c.IsConstruction).Select(c=>c.Id).ToHashSet();
+        var curves=lines.Concat(splines).Concat(sketch.Arcs.Where(c=>!c.IsConstruction).Select(c=>c.Id))
+            .Concat(sketch.Beziers.Where(c=>!c.IsConstruction).Select(c=>c.Id)).Concat(sketch.Ellipses.Where(c=>!c.IsConstruction).Select(c=>c.Id)).Concat(sketch.Freeforms.Where(c=>!c.IsConstruction).Select(c=>c.Id))
+            .Concat(sketch.ExpressionCurves.Where(c=>!c.IsConstruction).Select(c=>c.Id)).ToHashSet();
+        bool Missing(IEnumerable<SketchEntityId> ids,HashSet<SketchEntityId> available)=>ids.Any(id=>!available.Contains(id));
+        bool Region(SketchRegionReference region,int depth)
+        {
+            if(depth>12)throw new CadValidationException("Nested sketch region limit exceeded.");
+            return region.CircleId is {} c&&!circles.Contains(c)||region.SplineId is {} s&&!splines.Contains(s)||
+                Missing(region.PolygonLineIds,lines)||Missing(region.MixedCurveIds,curves)||region.Children.Any(child=>Region(child,depth+1));
+        }
+        return CircleId is {} circle&&!circles.Contains(circle)||SplineId is {} spline&&!splines.Contains(spline)||
+            ArcId is {} arc&&!sketch.Arcs.Any(c=>c.Id==arc&&!c.IsConstruction)||
+            BezierId is {} bezier&&!sketch.Beziers.Any(c=>c.Id==bezier&&!c.IsConstruction)||
+            Missing(Lines,lines)||Missing(MixedBoundaryIds,curves)||Missing(HoleCircleIds.Concat(IslandCircleIds),circles)||
+            Missing(HoleSplineIds,splines)||Missing(PolygonHoleLines.Concat(IslandPolygonLines).SelectMany(c=>c),lines)||
+            Missing(MixedHoleIds.Concat(IslandMixedIds).SelectMany(c=>c),curves)||Regions.Any(r=>Region(r,1));
+    }
     public GeometryRecipe Resolve(DocumentSnapshot document,DefinitionId part,GeometryRecipe recipe,bool refresh=false)
     {
         CadGuard.Id(SketchId);
@@ -56,7 +82,7 @@ public sealed record SketchProfileReference(SketchId SketchId,Guid Revision,Immu
            (SplineId is not null&&(ArcId is not null||!Lines.IsEmpty||!MixedBoundaryIds.IsEmpty))||
            (BezierId is not null&&(!Lines.IsEmpty||SplineId is not null||!MixedBoundaryIds.IsEmpty||!HoleCircleIds.IsDefaultOrEmpty||
                !PolygonHoleLines.IsDefaultOrEmpty||!MixedHoleIds.IsDefaultOrEmpty||!IslandsEmpty))||
-           (!MixedBoundaryIds.IsEmpty&&(!Lines.IsEmpty||MixedBoundaryIds.Length is <3 or >256||
+           (!MixedBoundaryIds.IsEmpty&&(!Lines.IsEmpty||MixedBoundaryIds.Length is <1 or >256||
                MixedBoundaryIds.Distinct().Count()!=MixedBoundaryIds.Length))||
            (!HoleCircleIds.IsDefaultOrEmpty&&(HoleCircleIds.Length>64||HoleCircleIds.Distinct().Count()!=HoleCircleIds.Length||HoleCircleIds.Contains(CircleId??default)))||
            PolygonHoleLines.Length+HoleCircleIds.Length+MixedHoleIds.Length+HoleSplineIds.Length>64||
@@ -66,9 +92,9 @@ public sealed record SketchProfileReference(SketchId SketchId,Guid Revision,Immu
            HoleCircleIds.Concat(IslandCircleIds).Append(CircleId??default).Where(id=>id.Value!=Guid.Empty).Distinct().Count()!=
                HoleCircleIds.Length+IslandCircleIds.Length+(CircleId is null?0:1)||
            PolygonHoleLines.Any(h=>h.IsDefault||h.Length<3||h.Distinct().Count()!=h.Length)||
-           MixedHoleIds.Any(h=>h.IsDefault||h.Length is <3 or >256||h.Distinct().Count()!=h.Length)||
+           MixedHoleIds.Any(h=>h.IsDefault||h.Length is <1 or >256||h.Distinct().Count()!=h.Length)||
            IslandPolygonLines.Any(h=>h.IsDefault||h.Length<3||h.Distinct().Count()!=h.Length)||
-           IslandMixedIds.Any(h=>h.IsDefault||h.Length is <3 or >256||h.Distinct().Count()!=h.Length)||
+           IslandMixedIds.Any(h=>h.IsDefault||h.Length is <1 or >256||h.Distinct().Count()!=h.Length)||
            Lines.Concat(MixedBoundaryIds).Concat(PolygonHoleLines.SelectMany(h=>h)).Concat(MixedHoleIds.SelectMany(h=>h))
                .Concat(IslandPolygonLines.SelectMany(h=>h)).Concat(IslandMixedIds.SelectMany(h=>h))
                .Distinct().Count()!=Lines.Length+MixedBoundaryIds.Length+PolygonHoleLines.Sum(h=>h.Length)+MixedHoleIds.Sum(h=>h.Length)+
@@ -79,6 +105,7 @@ public sealed record SketchProfileReference(SketchId SketchId,Guid Revision,Immu
             throw new CadValidationException("Nested regions cannot be combined with legacy flat hole selections.");
         if(!document.Sketches.TryGetValue(SketchId,out var sketch)||sketch.PartId!=part)
             throw new CadValidationException("The profile sketch is missing or belongs to another part.");
+        if(SketchNativeProjectionGeometry.HasStaleInputs(document,SketchId))throw SketchCurveFailure.Create("NativeProjectionFrozen","Native projection source is stale. Detach or explicitly reselect it.");
         if(!refresh&&Revision!=sketch.Revision)throw new CadValidationException("The feature references an outdated sketch revision.");
         var profile=CircleId is {} circle?SketchProfileBuilder.Circle(sketch,circle):
             ArcId is {} arc?SketchProfileBuilder.ArcSegment(sketch,arc):
@@ -157,7 +184,8 @@ public sealed record SketchProfileReference(SketchId SketchId,Guid Revision,Immu
                     foreach(var islandRef in holeRef.Children)
                     {
                         var island=Boundary(islandRef,depth+1);
-                        SketchMixedProfile.ValidateIslands([Curves(hole)],[Curves(island)]);
+                        if(!hole.RequiresExactRegionInspection&&!island.RequiresExactRegionInspection)
+                            SketchMixedProfile.ValidateIslands([Curves(hole)],[Curves(island)]);
                         island=Populate(island,islandRef.Children,depth+2);
                         parent=parent with{Islands=parent.Islands.Add(Island(island))};
                     }
@@ -169,10 +197,11 @@ public sealed record SketchProfileReference(SketchId SketchId,Guid Revision,Immu
         return recipe switch
         {
             ExtrudeRecipe e=>e with{Profile=profile,Placement=sketch.Plane},
-            RevolveRecipe r when CircleId is null&&ArcId is null&&BezierId is null&&SplineId is null&&MixedBoundaryIds.IsEmpty&&HoleCircleIds.IsDefaultOrEmpty&&MixedHoleIds.IsDefaultOrEmpty&&HoleSplineIds.IsEmpty&&Regions.IsEmpty&&IslandsEmpty=>r with{Profile=profile,Placement=sketch.Plane},
+            RevolveRecipe r=>ValidatedRevolve(r with{Profile=profile,Placement=sketch.Plane}),
             _=>throw new CadValidationException("Only extrusion and revolution can reference a sketch profile.")
         };
     }
+    private static RevolveRecipe ValidatedRevolve(RevolveRecipe recipe){recipe.Validate();return recipe;}
     private bool IslandsEmpty=>IslandCircleIds.IsEmpty&&IslandPolygonLines.IsEmpty&&IslandMixedIds.IsEmpty;
     public void ValidateCache(DocumentSnapshot document,FeatureDefinition feature)
     {
@@ -180,18 +209,17 @@ public sealed record SketchProfileReference(SketchId SketchId,Guid Revision,Immu
         bool matches=(feature.Recipe,resolved) switch
         {
             (ExtrudeRecipe a,ExtrudeRecipe b)=>a.Placement==b.Placement&&a.Profile.Circle==b.Profile.Circle&&a.Profile.Arc==b.Profile.Arc&&a.Profile.Bezier==b.Profile.Bezier&&
-                ((a.Profile.Spline is null&&b.Profile.Spline is null)||
-                 (a.Profile.Spline is not null&&b.Profile.Spline is not null&&a.Profile.Spline.Controls.SequenceEqual(b.Profile.Spline.Controls)))&&
+                CubicSplineRegion.Same(a.Profile.Spline,b.Profile.Spline)&&
                 a.Profile.Points.SequenceEqual(b.Profile.Points)&&SketchMixedProfile.SameLoop(a.Profile.BoundaryCurves,b.Profile.BoundaryCurves)&&
                 a.Profile.Holes.AsSpan().SequenceEqual(b.Profile.Holes.AsSpan())&&a.Profile.PolygonHoles.Length==b.Profile.PolygonHoles.Length&&
                 a.Profile.PolygonHoles.Zip(b.Profile.PolygonHoles).All(pair=>pair.First.SequenceEqual(pair.Second))&&
                 a.Profile.MixedHoles.Length==b.Profile.MixedHoles.Length&&
                 a.Profile.MixedHoles.Zip(b.Profile.MixedHoles).All(pair=>SketchMixedProfile.SameLoop(pair.First,pair.Second))&&
                 a.Profile.SplineHoles.Length==b.Profile.SplineHoles.Length&&
-                a.Profile.SplineHoles.Zip(b.Profile.SplineHoles).All(pair=>pair.First.Controls.SequenceEqual(pair.Second.Controls))&&
+                a.Profile.SplineHoles.Zip(b.Profile.SplineHoles).All(pair=>CubicSplineRegion.Same(pair.First,pair.Second))&&
                 a.Profile.Islands.Length==b.Profile.Islands.Length&&
                 a.Profile.Islands.Zip(b.Profile.Islands).All(pair=>SameIsland(pair.First,pair.Second)),
-            (RevolveRecipe a,RevolveRecipe b)=>a.Placement==b.Placement&&a.Profile.Points.SequenceEqual(b.Profile.Points),
+            (RevolveRecipe a,RevolveRecipe b)=>a.Placement==b.Placement&&SameProfile(a.Profile,b.Profile),
             _=>false
         };
         if(!matches)throw new CadValidationException("Cached feature profile differs from its sketch.");
@@ -199,13 +227,21 @@ public sealed record SketchProfileReference(SketchId SketchId,Guid Revision,Immu
     private static bool SameIsland(SketchIslandRegion a,SketchIslandRegion b)=>
         a.Circle==b.Circle&&a.Points.SequenceEqual(b.Points)&&
         SketchMixedProfile.SameLoop(a.BoundaryCurves,b.BoundaryCurves)&&
-        (a.Spline is null&&b.Spline is null||a.Spline is not null&&b.Spline is not null&&
-            a.Spline.Controls.SequenceEqual(b.Spline.Controls))&&
+        CubicSplineRegion.Same(a.Spline,b.Spline)&&
         a.Holes.SequenceEqual(b.Holes)&&a.PolygonHoles.Length==b.PolygonHoles.Length&&
         a.PolygonHoles.Zip(b.PolygonHoles).All(p=>p.First.SequenceEqual(p.Second))&&
         a.MixedHoles.Length==b.MixedHoles.Length&&
         a.MixedHoles.Zip(b.MixedHoles).All(p=>SketchMixedProfile.SameLoop(p.First,p.Second))&&
         a.SplineHoles.Length==b.SplineHoles.Length&&
-        a.SplineHoles.Zip(b.SplineHoles).All(p=>p.First.Controls.SequenceEqual(p.Second.Controls))&&
+        a.SplineHoles.Zip(b.SplineHoles).All(p=>CubicSplineRegion.Same(p.First,p.Second))&&
+        a.Islands.Length==b.Islands.Length&&a.Islands.Zip(b.Islands).All(p=>SameIsland(p.First,p.Second));
+
+    public static bool SameProfile(SketchProfile a,SketchProfile b)=>
+        a.Circle==b.Circle&&a.Arc==b.Arc&&a.Bezier==b.Bezier&&a.Points.SequenceEqual(b.Points)&&
+        SketchMixedProfile.SameLoop(a.BoundaryCurves,b.BoundaryCurves)&&
+        CubicSplineRegion.Same(a.Spline,b.Spline)&&
+        a.Holes.SequenceEqual(b.Holes)&&a.PolygonHoles.Length==b.PolygonHoles.Length&&a.PolygonHoles.Zip(b.PolygonHoles).All(p=>p.First.SequenceEqual(p.Second))&&
+        a.MixedHoles.Length==b.MixedHoles.Length&&a.MixedHoles.Zip(b.MixedHoles).All(p=>SketchMixedProfile.SameLoop(p.First,p.Second))&&
+        a.SplineHoles.Length==b.SplineHoles.Length&&a.SplineHoles.Zip(b.SplineHoles).All(p=>CubicSplineRegion.Same(p.First,p.Second))&&
         a.Islands.Length==b.Islands.Length&&a.Islands.Zip(b.Islands).All(p=>SameIsland(p.First,p.Second));
 }

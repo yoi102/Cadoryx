@@ -28,15 +28,24 @@ public static class CadCommandLine
         Cadoryx.Cli report INPUT --output REVIEW.html [--all] [--overwrite] [--memory]
         Cadoryx.Cli deliver INPUT --output PACKAGE.zip [--all] [--iges] [--stl] [--no-step] [--linear MM] [--angular RAD] [--overwrite] [--memory]
         Cadoryx.Cli verify-delivery PACKAGE.zip
+        Cadoryx.Cli exchange-audit INPUT --output MEASUREMENT.zip [--all] [--iges] [--stl] [--no-step] [--linear MM] [--angular RAD] [--overwrite] [--memory]
+        Cadoryx.Cli verify-exchange MEASUREMENT.zip
         Cadoryx.Cli drawing-pdf INPUT.cadoryx --output DRAWING.pdf [--overwrite] [--memory]
         INPUT: .cadoryx, .step/.stp, .iges/.igs, .stl; OUTPUT: .cadoryx, .step/.stp, .iges/.igs, .stl.
         Disk assets are the default. --all includes document-hidden bodies on exchange export.
         Exact inspection is limited to 256 visible body instances; two instances include minimum distance.
         Benchmark measures file load, scene construction, first BRep read and verified save, not a rendered frame.
+        Exchange audit exports and re-imports through Cadoryx/OCCT; the archive contains measurements and the actual exchange files. External CAD results are separate.
         Exit: 0 success, 1 operation failure, 2 invalid arguments, 130 cancelled.
         """;
     public static async Task<int> RunAsync(string[] args,TextWriter output,TextWriter error,CancellationToken token=default)
     {
+        if(args is ["verify-exchange",var measurement])
+        {
+            try{var report=await ExchangeMeasurementService.VerifyAsync(measurement,token);await output.WriteLineAsync(JsonSerializer.Serialize(new{verified=true,report},Json));return 0;}
+            catch(OperationCanceledException){return 130;}
+            catch(Exception ex){await error.WriteLineAsync(ex.Message);return 1;}
+        }
         if(args is ["verify-delivery",var package])
         {
             try{var manifest=await DocumentDeliveryService.VerifyAsync(package,token);await output.WriteLineAsync(JsonSerializer.Serialize(new{verified=true,manifest},Json));return 0;}
@@ -62,7 +71,7 @@ public static class CadCommandLine
             }
             using var disk=options.Memory?null:new DiskAssetStore(Path.Combine(Path.GetTempPath(),"Cadoryx","CliAssets"));
             IAssetStore assets=(IAssetStore?)disk??new MemoryAssetStore();
-            var kernel=new OcctGeometryKernel();var storage=new CadDocumentStorage();
+            var kernel=CreateKernel();var storage=new CadDocumentStorage(datumResolver:kernel);
             using var loaded=await Load(options.Input,assets,kernel,storage,token);
             if(options.Command=="drawing-pdf")
             {
@@ -71,9 +80,9 @@ public static class CadCommandLine
                 await output.WriteLineAsync(JsonSerializer.Serialize(new{output=options.Output,
                     sheets=loaded.Snapshot.DrawingSheets.Count},Json));return 0;
             }
-            if(options.Command is "bom" or "report" or "deliver")
+            if(options.Command is "bom" or "report" or "deliver" or "exchange-audit")
             {
-                var mode=options.Command switch{"bom"=>DeliveryOutput.BomCsv,"report"=>DeliveryOutput.ReviewHtml,_=>DeliveryOutput.Package};
+                var mode=options.Command switch{"bom"=>DeliveryOutput.BomCsv,"report"=>DeliveryOutput.ReviewHtml,"exchange-audit"=>DeliveryOutput.ExchangeAudit,_=>DeliveryOutput.Package};
                 var result=await new DocumentDeliveryService(storage,kernel).WriteAsync(loaded.Snapshot,assets,options.Output!,
                     new(mode,!options.All,!options.NoStep,options.Iges,options.Stl,options.Linear,options.Angular),options.Overwrite,token:token);
                 await output.WriteLineAsync(JsonSerializer.Serialize(result,Json));return 0;
@@ -110,6 +119,10 @@ public static class CadCommandLine
         catch(OperationCanceledException){await error.WriteLineAsync("Cancelled.");return 130;}
         catch(Exception ex){await error.WriteLineAsync(ex.Message);return 1;}
     }
+    private static OcctGeometryKernel CreateKernel()=>System.Reflection.Assembly.GetEntryAssembly()?.GetName().Name=="Cadoryx.Cli"
+        ?new(new IsolatedMetricThreadExecutor(Path.Combine(AppContext.BaseDirectory,"Cadoryx.Cli.exe")),
+            new IsolatedDrawingExecutor(Path.Combine(AppContext.BaseDirectory,"Cadoryx.Cli.exe")),
+            GuidedDocumentEvidencePolicy.PreferCurrentOccurrences):new();
     private static Task<LoadedDocument> Load(string path,IAssetStore assets,OcctGeometryKernel kernel,CadDocumentStorage storage,CancellationToken token)=>
         Path.GetExtension(path).Equals(".cadoryx",StringComparison.OrdinalIgnoreCase)?storage.LoadAsync(path,assets,token):kernel.ImportAsync(path,assets,token);
     private static async Task WriteReport(object report,Options options,TextWriter output,CancellationToken token)
@@ -133,7 +146,7 @@ public static class CadCommandLine
         int VisibleBodyInstances,DocumentScaleReport Scale,long? DiskReads);
     private static async Task<object> BenchmarkAsync(Options options,CancellationToken token)
     {
-        string hash=await Hash(options.Input,token);var samples=new List<Sample>();var kernel=new OcctGeometryKernel();var storage=new CadDocumentStorage();
+        string hash=await Hash(options.Input,token);var samples=new List<Sample>();var kernel=CreateKernel();var storage=new CadDocumentStorage(datumResolver:kernel);
         for(int i=0;i<options.Iterations;i++)
         {
             token.ThrowIfCancellationRequested();
@@ -164,7 +177,7 @@ public static class CadCommandLine
     {
         public static Options Parse(string[] args)
         {
-            if(args.Length<2||args[0] is not ("inspect" or "convert" or "benchmark" or "interference" or "bom" or "report" or "deliver" or "drawing-pdf"))throw new ArgumentException("Expected a command and an input file. Use --help.");
+            if(args.Length<2||args[0] is not ("inspect" or "convert" or "benchmark" or "interference" or "bom" or "report" or "deliver" or "drawing-pdf" or "exchange-audit"))throw new ArgumentException("Expected a command and an input file. Use --help.");
             string input=Path.GetFullPath(args[1]);string? output=null;int start=2;
             if(args[0]=="convert")
             {
@@ -181,13 +194,13 @@ public static class CadCommandLine
                     case "--overwrite":overwrite=true;break;
                     case "--memory":memory=true;break;
                     case "--exact" when args[0]=="inspect":exact=true;break;
-                    case "--all" when args[0] is "convert" or "bom" or "report" or "deliver":all=true;break;
-                    case "--iges" when args[0]=="deliver":iges=true;break;
-                    case "--stl" when args[0]=="deliver":stl=true;break;
-                    case "--no-step" when args[0]=="deliver":noStep=true;break;
+                    case "--all" when args[0] is "convert" or "bom" or "report" or "deliver" or "exchange-audit":all=true;break;
+                    case "--iges" when args[0] is "deliver" or "exchange-audit":iges=true;break;
+                    case "--stl" when args[0] is "deliver" or "exchange-audit":stl=true;break;
+                    case "--no-step" when args[0] is "deliver" or "exchange-audit":noStep=true;break;
                     case "--output" when args[0]!="convert":output=Path.GetFullPath(Value());break;
-                    case "--linear" when args[0] is "convert" or "deliver":linear=Number(Value());break;
-                    case "--angular" when args[0] is "convert" or "deliver":angular=Number(Value());break;
+                    case "--linear" when args[0] is "convert" or "deliver" or "exchange-audit":linear=Number(Value());break;
+                    case "--angular" when args[0] is "convert" or "deliver" or "exchange-audit":angular=Number(Value());break;
                     case "--iterations" when args[0]=="benchmark":
                         if(!int.TryParse(Value(),NumberStyles.None,CultureInfo.InvariantCulture,out iterations)||iterations is <1 or >20)throw new ArgumentException("iterations must be 1..20.");break;
                     default:throw new ArgumentException("Unsupported option: "+key);
@@ -199,8 +212,9 @@ public static class CadCommandLine
             if(output is not null&&(StringComparer.OrdinalIgnoreCase.Equals(input,output)))throw new ArgumentException("Input and output must be different files.");
             if(args[0]=="convert"&&!Supported(output!))throw new ArgumentException("Unsupported output extension.");
             if(args[0]=="benchmark"&&output is null)throw new ArgumentException("benchmark requires --output REPORT.json.");
-            if(args[0] is "bom" or "report" or "deliver" or "drawing-pdf"&&output is null)throw new ArgumentException("Delivery requires --output.");
-            var outputExtension=args[0] switch{"bom"=>".csv","report"=>".html","deliver"=>".zip","drawing-pdf"=>".pdf",_=>".json"};
+            if(args[0] is "bom" or "report" or "deliver" or "drawing-pdf" or "exchange-audit"&&output is null)throw new ArgumentException("Delivery requires --output.");
+            if(args[0]=="exchange-audit"&&noStep&&!iges&&!stl)throw new ArgumentException("Exchange audit requires at least one format.");
+            var outputExtension=args[0] switch{"bom"=>".csv","report"=>".html","deliver" or "exchange-audit"=>".zip","drawing-pdf"=>".pdf",_=>".json"};
             if(args[0]!="convert"&&output is not null&&!Path.GetExtension(output).Equals(outputExtension,StringComparison.OrdinalIgnoreCase))throw new ArgumentException("Output must be "+outputExtension);
             new CadExportOptions(linear,angular).Validate();
             return new(args[0],input,output,overwrite,memory,exact,all,linear,angular,iterations,iges,stl,noStep);

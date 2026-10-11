@@ -5,10 +5,17 @@ param(
     [int]$Runs=2,
     [int]$TimeoutSeconds=900,
     [string]$ExpectedSha256='f3773a7f37bd0cb8e717e4be6f1070a72e5c6e7b2f36f26f9501183df8c4c68e',
-    [string]$ExpectedScreenshotSha256='679ce900e0dce29f0401a3eddd0e7befb33c6bbf669334712839f7cea16e4ee6'
+    [string]$ExpectedScreenshotSha256='9bfb8da5262a66a23213c8bd138bbfdb137ac3eabca4fff27294d40fa4f613cb',
+    [int]$ExpectedVisibleInstances=4964,
+    [int]$ExpectedGeometries=1185
 )
 $ErrorActionPreference='Stop'
 if($Runs -lt 1 -or $Runs -gt 10){throw 'Runs must be 1..10.'}
+if($ExpectedVisibleInstances -lt 1 -or $ExpectedGeometries -lt 1){throw 'Expected scene counts must be positive.'}
+# The former 4975/1196 scene contained 11 extra, wrongly located styled roots.
+# The original PCB product tree and all 1185 BRep payloads are byte-identical:
+# artifacts/a3-model-product-tree-1.json. Independent SDK TShape partnership
+# evidence for all 11 roots: a3-model-identity-context-1/exact-partners-2.txt.
 $cadExe=(Resolve-Path -LiteralPath $Executable).Path
 $cadInput=(Resolve-Path -LiteralPath $InputFile).Path
 $actualHash=(Get-FileHash -LiteralPath $cadInput -Algorithm SHA256).Hash.ToLowerInvariant()
@@ -43,8 +50,8 @@ for($i=1;$i -le $Runs;$i++){
         $report=Get-Content -LiteralPath (Join-Path $runOutput 'report.json') -Raw | ConvertFrom-Json
         if($report.sourceSha256 -ne $actualHash){throw "M14 run $i source hash changed."}
         if($null -eq $report.import -or $null -eq $report.scene){throw "M14 run $i has no production import or scene timing."}
-        if($report.visibleInstances -ne 4975 -or $report.scene.VisibleInstances -ne 4975 -or
-           $report.bodies -ne 1196 -or $report.nativeGeometry -ne 1196 -or $report.xdeContexts -ne 1){
+        if($report.visibleInstances -ne $ExpectedVisibleInstances -or $report.scene.VisibleInstances -ne $ExpectedVisibleInstances -or
+           $report.bodies -ne $ExpectedGeometries -or $report.nativeGeometry -ne $ExpectedGeometries -or $report.xdeContexts -ne 1){
             throw "M14 run $i lost instance, geometry, or XDE context data."
         }
         $screenshotHash=(Get-FileHash -LiteralPath (Join-Path $runOutput 'full-scene.png') -Algorithm SHA256).Hash.ToLowerInvariant()
@@ -65,6 +72,7 @@ $hardware=@{
     gpu=@(Get-CimInstance Win32_VideoController | Select-Object Name,DriverVersion)
     physicalMemoryBytes=(Get-CimInstance Win32_ComputerSystem).TotalPhysicalMemory
     cacheCondition='OS file cache, antivirus, and concurrent load were not controlled'
+    expectedVisibleInstances=$ExpectedVisibleInstances;expectedGeometries=$ExpectedGeometries
     runs=$reports
 }
 $hardware | ConvertTo-Json -Depth 6 | Set-Content -LiteralPath (Join-Path $cadOutput 'summary.json') -Encoding utf8

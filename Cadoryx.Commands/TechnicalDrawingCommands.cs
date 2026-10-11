@@ -15,11 +15,12 @@ public static class TechnicalDrawingCommands
         });
 
     public static ICadDocumentCommand EditSheet(Guid id,string name,double widthMm,double heightMm,
-        LengthUnit unit,string title,string? author,DrawingStandard? standard=null)=>new EditDocumentCommand("Edit drawing sheet",document=>
+        LengthUnit unit,string title,string? author,DrawingStandard? standard=null,
+        DrawingSheetTemplate? template=null,bool useLegacyTemplate=false)=>new EditDocumentCommand("Edit drawing sheet",document=>
     {
         var current=document.DrawingSheets[id];var updated=current with
             {Name=name,WidthMm=widthMm,HeightMm=heightMm,Unit=unit,Title=title,Author=author,
-                Standard=standard??current.Standard};
+                Standard=standard??current.Standard,Template=useLegacyTemplate?null:template??current.Template};
         updated.Validate(document.Id);
         return document with{DrawingSheets=document.DrawingSheets.SetItem(id,updated)};
     });
@@ -29,9 +30,10 @@ public static class TechnicalDrawingCommands
 
     public static ICadDocumentCommand AddView(Guid sheetId,Guid viewId,string name,DrawingViewKind kind,
         Point2d centerMm,double scale,OccurrencePath? sourcePath=null,Guid? parentView=null,
-        Vector3d? sectionNormal=null,double sectionOffsetMm=0,Point2d? detailCenter=null,double detailRadius=0)=>
+        Vector3d? sectionNormal=null,double sectionOffsetMm=0,Point2d? detailCenter=null,double detailRadius=0,
+        DrawingSectionHatching? hatching=null)=>
         new AddDrawingViewCommand(sheetId,viewId,name,kind,centerMm,scale,sourcePath,parentView,sectionNormal,sectionOffsetMm,
-            detailCenter,detailRadius);
+            detailCenter,detailRadius,hatching);
 
     public static ICadDocumentCommand EditView(Guid sheetId,Guid viewId,Point2d centerMm,double scale)=>
         new EditDocumentCommand("Edit drawing view",document=>
@@ -43,7 +45,8 @@ public static class TechnicalDrawingCommands
                !double.IsFinite(centerMm.X)||!double.IsFinite(centerMm.Y))
                 throw new CadValidationException("Invalid drawing view placement.");
             var views=sheet.Views.ToBuilder();
-            views[index]=old with{CenterMm=centerMm,Scale=scale};
+            views[index]=old with{CenterMm=centerMm,Scale=scale,
+                StaleReason=old.Kind==DrawingViewKind.Section&&scale!=old.Scale?"Refresh requested":old.StaleReason};
             void MoveChildren(Guid parent,Point2d previous,Point2d next,double ratio)
             {
                 for(int i=0;i<views.Count;i++)
@@ -64,13 +67,50 @@ public static class TechnicalDrawingCommands
     public static ICadDocumentCommand ReselectView(Guid sheetId,Guid viewId,OccurrencePath? sourcePath)=>
         new ReselectDrawingViewCommand(sheetId,viewId,sourcePath);
 
+    /// <summary>Edits complete view author data without changing its kind, parent or selected sources.</summary>
+    public static ICadDocumentCommand EditViewAuthor(Guid sheetId,Guid viewId,string name,Point2d centerMm,double scale,
+        Vector3d? sectionNormal,double sectionOffsetMm,Point2d? detailCenter,double detailRadius,DrawingSectionHatching? hatching)=>
+        new EditDocumentCommand("Edit drawing view author",document=>
+        {
+            var sheet=document.DrawingSheets[sheetId];var index=sheet.Views.FindIndex(v=>v.Id==viewId);
+            if(index<0)throw new CadValidationException("Drawing view is missing.");
+            var old=sheet.Views[index];var next=old with{Name=name,CenterMm=centerMm,Scale=scale,SectionNormal=sectionNormal,
+                SectionOffsetMm=sectionOffsetMm,DetailCenter=detailCenter,DetailRadius=detailRadius,Hatching=hatching};
+            next.Validate(document.Id);
+            if(hatching is not null&&hatching.Materials.Any(rule=>!document.Materials.ContainsKey(rule.Material)))
+                throw new CadValidationException("Hatch material is missing.");
+            if(next==old)return document;
+            bool projectionChanged=scale!=old.Scale&&old.Kind==DrawingViewKind.Section||sectionNormal!=old.SectionNormal||
+                sectionOffsetMm!=old.SectionOffsetMm||hatching!=old.Hatching;
+            var views=sheet.Views.ToBuilder();views[index]=projectionChanged?next with{StaleReason="Refresh requested"}:next;
+            void MoveChildren(Guid parent,Point2d previous,Point2d current,double ratio)
+            {
+                for(int i=0;i<views.Count;i++)
+                {
+                    var child=views[i];if(child.ParentView!=parent)continue;
+                    var position=new Point2d(current.X+(child.CenterMm.X-previous.X)*ratio,current.Y+(child.CenterMm.Y-previous.Y)*ratio);
+                    views[i]=child with{CenterMm=position,Scale=child.Scale*ratio};
+                    MoveChildren(child.Id,child.CenterMm,position,ratio);
+                }
+            }
+            MoveChildren(viewId,old.CenterMm,centerMm,scale/old.Scale);
+            var updated=sheet with{Views=views.ToImmutable()};updated.Validate(document.Id);
+            return document with{DrawingSheets=document.DrawingSheets.SetItem(sheetId,updated)};
+        });
+
     public static ICadDocumentCommand DeleteView(Guid sheetId,Guid viewId)=>
         new EditDocumentCommand("Delete drawing view",document=>
         {
             var sheet=document.DrawingSheets[sheetId];
             if(sheet.Views.Any(v=>v.ParentView==viewId))throw new CadValidationException("Delete dependent views first.");
+            var removedDatums=sheet.DatumSymbols.Where(d=>d.ViewId==viewId).Select(d=>d.Id).ToHashSet();
+            if(sheet.ControlFrames.Any(f=>f.ViewId!=viewId&&f.ReferencedDatumIds.Any(removedDatums.Contains)))
+                throw new CadValidationException("Delete control frames that consume datums on this view first.");
             return document with{DrawingSheets=document.DrawingSheets.SetItem(sheetId,sheet with
-            {Views=[..sheet.Views.Where(v=>v.Id!=viewId)],Dimensions=[..sheet.Dimensions.Where(d=>d.ViewId!=viewId)]})};
+            {Views=[..sheet.Views.Where(v=>v.Id!=viewId)],Dimensions=[..sheet.Dimensions.Where(d=>d.ViewId!=viewId)],
+                DatumSymbols=[..sheet.DatumSymbols.Where(d=>d.ViewId!=viewId)],
+                ControlFrames=[..sheet.ControlFrames.Where(f=>f.ViewId!=viewId)],Balloons=[..sheet.Balloons.Where(b=>b.ViewId!=viewId)],
+                HoleTables=[..sheet.HoleTables.Where(t=>t.ViewId!=viewId)]})};
         });
 
     public static ICadDocumentCommand AddDimension(Guid sheetId,TechnicalDrawingDimension dimension)=>
@@ -114,6 +154,20 @@ public static class TechnicalDrawingCommands
         document with{DrawingSheets=document.DrawingSheets.ToImmutableDictionary(pair=>pair.Key,pair=>pair.Value with
             {Views=[..pair.Value.Views.Select(v=>v with{StaleReason="Refresh requested"})]})});
 
+    public static ICadDocumentCommand SetSectionHatching(Guid sheetId,Guid viewId,DrawingSectionHatching settings)=>
+        new EditDocumentCommand("Edit section hatching",document=>
+        {
+            settings.Validate();
+            if(settings.Materials.Any(rule=>!document.Materials.ContainsKey(rule.Material)))
+                throw new CadValidationException("A hatch rule references a missing material.");
+            var sheet=document.DrawingSheets[sheetId];var index=sheet.Views.FindIndex(v=>v.Id==viewId);
+            if(index<0||sheet.Views[index].Kind!=DrawingViewKind.Section)
+                throw new CadValidationException("Select the base section view to edit its hatch rules.");
+            var view=sheet.Views[index] with{Hatching=settings,StaleReason="Refresh requested"};
+            return document with{DrawingSheets=document.DrawingSheets.SetItem(sheetId,
+                sheet with{Views=sheet.Views.SetItem(index,view)})};
+        });
+
     private sealed class ReselectDrawingViewCommand(Guid sheetId,Guid viewId,OccurrencePath? path):ICadDocumentCommand
     {
         public string Name=>"Reselect drawing view source";
@@ -127,7 +181,8 @@ public static class TechnicalDrawingCommands
                 throw new CadValidationException("Reselect the parent projection of a detail view.");
             var kernel=context.Kernel as ITechnicalDrawingKernel??throw new NotSupportedException("Drawing kernel unavailable.");
             var projection=await kernel.ProjectAsync(inputs,existing.Kind,existing.SectionNormal,
-                existing.SectionOffsetMm,context.Assets,token).ConfigureAwait(false);
+                existing.SectionOffsetMm,context.Assets,token,sectionHatchPatterns:
+                DrawingInputs.HatchPatterns(doc,inputs,existing,existing.Scale)).ConfigureAwait(false);
             var view=existing with{Sources=[..inputs.Select(i=>DrawingInputs.Source(doc,i))],
                 Strokes=projection.Strokes,StaleReason=null};
             var dimensions=sheet.Dimensions.Select(d=>d.ViewId==viewId?d with
@@ -139,13 +194,19 @@ public static class TechnicalDrawingCommands
 
     private sealed class AddDrawingViewCommand(Guid sheetId,Guid viewId,string name,DrawingViewKind kind,
         Point2d center,double scale,OccurrencePath? sourcePath,Guid? parentView,
-        Vector3d? normal,double offset,Point2d? detailCenter,double detailRadius):ICadDocumentCommand
+        Vector3d? normal,double offset,Point2d? detailCenter,double detailRadius,DrawingSectionHatching? hatching):ICadDocumentCommand
     {
         public string Name=>"Create drawing view";
         public async Task<PreparedDocumentEdit> PrepareAsync(DocumentCommandContext context,CancellationToken token)
         {
             var document=context.Snapshot;var sheet=document.DrawingSheets[sheetId];
             if(sheet.Views.Any(v=>v.Id==viewId))throw new CadValidationException("Drawing view ID already exists.");
+            if(hatching is not null)
+            {
+                hatching.Validate();
+                if(kind!=DrawingViewKind.Section||hatching.Materials.Any(rule=>!document.Materials.ContainsKey(rule.Material)))
+                    throw new CadValidationException("Invalid section hatch owner or material.");
+            }
             TechnicalDrawingView view;
             if(kind==DrawingViewKind.Detail)
             {
@@ -153,16 +214,22 @@ public static class TechnicalDrawingCommands
                     throw new CadValidationException("Select a parent projection for the detail view.");
                 if(parent.Kind==DrawingViewKind.Detail||parent.StaleReason is not null)
                     throw new CadValidationException("Detail views require a current base projection.");
-                view=new(viewId,name,kind,parentView,center,scale,parent.Sources,parent.Strokes,null)
+                var detailStrokes=await DrawingInputs.DetailStrokesAsync(context,document,parent,scale,token).ConfigureAwait(false);
+                view=new(viewId,name,kind,parentView,center,scale,parent.Sources,detailStrokes,null)
                     {DetailCenter=detailCenter,DetailRadius=detailRadius};
             }
             else
             {
                 var inputs=DrawingInputs.Capture(document,sourcePath);
                 var kernel=context.Kernel as ITechnicalDrawingKernel??throw new NotSupportedException("Drawing kernel unavailable.");
-                var projection=await kernel.ProjectAsync(inputs,kind,normal,offset,context.Assets,token).ConfigureAwait(false);
+                if(!double.IsFinite(scale)||scale is <.0001 or >10000)
+                    throw new CadValidationException("Invalid drawing view scale.");
                 view=new(viewId,name,kind,parentView,center,scale,
-                    [..inputs.Select(i=>DrawingInputs.Source(document,i))],projection.Strokes,null,normal,offset);
+                    [..inputs.Select(i=>DrawingInputs.Source(document,i))],[],null,normal,offset){Hatching=hatching};
+                view.Validate(document.Id);
+                var projection=await kernel.ProjectAsync(inputs,kind,normal,offset,context.Assets,token,
+                    sectionHatchPatterns:DrawingInputs.HatchPatterns(document,inputs,view,scale)).ConfigureAwait(false);
+                view=view with{Strokes=projection.Strokes};
             }
             var updated=sheet with{Views=sheet.Views.Add(view)};updated.Validate(document.Id);
             return new((document with{DrawingSheets=document.DrawingSheets.SetItem(sheetId,updated)}).WithNewState());
@@ -193,6 +260,37 @@ public static class TechnicalDrawingCommands
 
 internal static class DrawingInputs
 {
+    internal static SectionHatchPattern[] HatchPatterns(DocumentSnapshot document,IReadOnlyList<GeometryInstance> inputs,
+        TechnicalDrawingView section,double scale)
+    {
+        var settings=section.Hatching??DrawingSectionHatching.Automatic;
+        settings.Validate();
+        return inputs.Select((input,index)=>
+        {
+            var style=settings.ForSource(document.Bodies[input.BodyId].MaterialId,index);
+            return new SectionHatchPattern(style.AngleDegrees,style.SpacingMm/scale,style.Enabled);
+        }).ToArray();
+    }
+
+    internal static async Task<ImmutableArray<DrawingStroke>> DetailStrokesAsync(DocumentCommandContext context,
+        DocumentSnapshot document,TechnicalDrawingView parent,double scale,CancellationToken token)
+    {
+        if(!double.IsFinite(scale)||scale is <.0001 or >10000)
+            throw new CadValidationException("Invalid drawing view scale.");
+        if(parent.Kind!=DrawingViewKind.Section)return parent.Strokes;
+        var inputs=new List<GeometryInstance>();
+        foreach(var source in parent.Sources)
+        {
+            if(!Resolve(document,source,out var input)||input is null)
+                throw new CadValidationException("A detail section source is missing or stale.");
+            inputs.Add(input);
+        }
+        var kernel=context.Kernel as ITechnicalDrawingKernel??throw new NotSupportedException("Drawing kernel unavailable.");
+        var projection=await kernel.ProjectAsync(inputs,parent.Kind,parent.SectionNormal,parent.SectionOffsetMm,
+            context.Assets,token,sectionHatchPatterns:HatchPatterns(document,inputs,parent,scale)).ConfigureAwait(false);
+        return projection.Strokes;
+    }
+
     public static ImmutableArray<GeometryInstance> Capture(DocumentSnapshot document,OccurrencePath? path)
     {
         if(path is not null&&path.DocumentId!=document.Id)throw new CadValidationException("Drawing source belongs to another document.");

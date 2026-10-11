@@ -69,7 +69,7 @@ public sealed partial class OcctGeometryKernel
         return FinishLocal(recipe.Source,source,ContourChamferRecipe.Create(source,[program]).Build(source),assets,token);
     }
 
-    private GeometryResult FinishLocal(GeometryAssetRef sourceGeometry,RepairSnapshot source,LocalFeatureResult operation,IAssetStore assets,CancellationToken token)
+    private GeometryResult FinishLocal(GeometryAssetRef sourceGeometry,RepairSnapshot source,LocalFeatureResult operation,IAssetStore assets,CancellationToken token,IReadOnlyList<RepairSnapshot>? derivedTools=null)
     {
         using(operation)
         {
@@ -81,7 +81,7 @@ public sealed partial class OcctGeometryKernel
         GeometryResult WithoutHistory(string reason)
         {
             token.ThrowIfCancellationRequested();
-            return new(stored.Geometry,assets.Acquire(stored.Geometry.AssetId),[new("HISTORY.UNSUPPORTED",reason)]);
+            return new(stored.Geometry,GeometryAssetLease.Acquire(stored.Geometry,assets),[new("HISTORY.UNSUPPORTED",reason)]);
         }
         // BRep may normalize representation (notably chamfer p-curves). Verify each
         // full-map slot after normalization; no nearest match or index fallback.
@@ -91,7 +91,7 @@ public sealed partial class OcctGeometryKernel
         {
             token.ThrowIfCancellationRequested();
             using var a=live.CopySubshape(t.Selection);using var b=result.CopySubshape(result.Select(t.Selection.Index));
-            if(!BrepDirectionRoundtrip.Matches(CanonicalBrep(a),CanonicalBrep(b)))return WithoutHistory("A topology locator could not be verified after BRep axis normalization; automatic history propagation is disabled.");
+            if(!BrepDirectionRoundtrip.Matches(CanonicalBrep(a),CanonicalBrep(b)))return WithoutHistory($"Topology locator {t.Selection.Index} ({t.Kind}) could not be verified after BRep axis normalization; automatic history propagation is disabled.");
         }
         if(operation.Diagnostics.HasComposedHistory||!operation.Diagnostics.GroupSupport.HasFlag(LocalFeatureGroupSupport.Evolution))
             throw new CadValidationException("Unsupported local history provenance.");
@@ -105,10 +105,15 @@ public sealed partial class OcctGeometryKernel
                 LocalFeatureHistoryKind.Unmapped=>TopologyEvolution.Unmapped,_=>null
             };
             if(evolution is null)continue;
-            if(h.Source is not {} s||s.PlanId!=operation.PlanId||s.ArgumentIndex!=0||s.TopologyIndex<0||s.TopologyIndex>=source.Topology.Count||source.Topology[s.TopologyIndex].Kind!=s.Kind)
+            if(h.Source is not {} s||s.PlanId!=operation.PlanId||s.ArgumentIndex<0||s.ArgumentIndex>(derivedTools?.Count??0))
                 throw new CadValidationException("Invalid native history source.");
+            var origin=s.ArgumentIndex==0?source:derivedTools![s.ArgumentIndex-1];
+            if(s.TopologyIndex<0||s.TopologyIndex>=origin.Topology.Count||origin.Topology[s.TopologyIndex].Kind!=s.Kind)throw new CadValidationException("Invalid native history source topology.");
             var target=h.ResultTopologyIndex;
             if(target is {} index&&(index<0||index>=result.Topology.Count))throw new CadValidationException("Invalid native history result.");
+            // A face-derived prism is reproducible author data, not another feature dependency.
+            // Validate its native provenance, then retain only the real document source mapping.
+            if(s.ArgumentIndex!=0)continue;
             // Native generated shapes that do not reach the final map cannot be followed.
             var relation=target is null&&evolution is TopologyEvolution.Generated or TopologyEvolution.Modified or TopologyEvolution.Unchanged?TopologyEvolution.Unmapped:evolution.Value;
             entries.Add(new(s.TopologyIndex,HistoryKind(s.Kind),relation,target,target is {} i?HistoryKind(result.Topology[i].Kind):null));
@@ -118,7 +123,7 @@ public sealed partial class OcctGeometryKernel
         var history=new TopologyHistory(sourceGeometry.Revision,sourceGeometry.AssetId,stored.Geometry.Revision,stored.Geometry.AssetId,
             HistoryAdapterVersion,source.Fingerprint,result.Fingerprint,source.Topology.Count,result.Topology.Count,entries.Distinct().ToImmutableArray());
         history.Validate();token.ThrowIfCancellationRequested();
-        return new(stored.Geometry,assets.Acquire(stored.Geometry.AssetId)){TopologyHistory=history};
+        return new(stored.Geometry,GeometryAssetLease.Acquire(stored.Geometry,assets)){TopologyHistory=history};
         }
     }
 

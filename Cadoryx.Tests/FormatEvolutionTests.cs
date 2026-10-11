@@ -168,7 +168,30 @@ public sealed class FormatEvolutionTests
     internal static CadManifest Manifest(string path){using var zip=ZipFile.OpenRead(path);return ReadManifest(zip);}
     private static CadManifest ReadManifest(ZipArchive zip){using var s=zip.GetEntry("manifest.json")!.Open();return JsonSerializer.Deserialize<CadManifest>(s,CadJson.Options)!;}
     internal static void RewriteManifest(string path,Func<CadManifest,CadManifest> edit)
-    {using var zip=ZipFile.Open(path,ZipArchiveMode.Update);var m=edit(ReadManifest(zip));zip.GetEntry("manifest.json")!.Delete();using var stream=zip.CreateEntry("manifest.json").Open();JsonSerializer.Serialize(stream,m,CadJson.Options);}
+    {
+        using var zip=ZipFile.Open(path,ZipArchiveMode.Update);var m=edit(ReadManifest(zip));
+        // Explicit old fixtures omit the new required table only when it is empty.
+        // Nonempty group authors stay intact and must fail a legacy declaration.
+        if(m.Sections.SingleOrDefault(s=>s.Kind=="document") is {SchemaVersion:<58}&&m.Sections.SingleOrDefault(s=>s.Kind=="sketch-regions") is {} regions)
+        {
+            PackSketchRegionSection value;using(var input=zip.GetEntry(regions.Path)!.Open())value=MessagePackSerializer.Deserialize<PackSketchRegionSection>(input);
+            if(regions.Encoding=="messagepack"&&regions.SchemaVersion==value.Version&&value.Version==SketchRegionSectionStorage.SchemaVersion&&value.Sketches.Length==0)
+            {zip.GetEntry(regions.Path)!.Delete();m=m with{Sections=m.Sections.Remove(regions),RequiredCapabilities=m.RequiredCapabilities.Remove("cadoryx.associative-expression-regions.1")};}
+        }
+        // Tests declaring an older document cannot retain its newly introduced empty required table.
+        // Nonempty expression payloads remain intact, so spoofed legacy authors are still rejected.
+        if(m.Sections.SingleOrDefault(s=>s.Kind=="document") is {SchemaVersion:<53}&&m.Sections.SingleOrDefault(s=>s.Kind=="sketch-expressions") is {} expressions)
+        {
+            PackSketchExpressionSection value;using(var input=zip.GetEntry(expressions.Path)!.Open())value=MessagePackSerializer.Deserialize<PackSketchExpressionSection>(input);
+            if(expressions.Encoding=="messagepack"&&expressions.SchemaVersion==value.SchemaVersion&&
+               (value.SchemaVersion is 2 or 3 or SketchExpressionSectionStorage.SchemaVersion)&&value.Sketches.Length==0)
+            {
+                zip.GetEntry(expressions.Path)!.Delete();m=m with{Sections=m.Sections.Remove(expressions),
+                    RequiredCapabilities=m.RequiredCapabilities.Remove("cadoryx.exact-sketch-expressions.1")};
+            }
+        }
+        zip.GetEntry("manifest.json")!.Delete();using var stream=zip.CreateEntry("manifest.json").Open();JsonSerializer.Serialize(stream,m,CadJson.Options);
+    }
     internal static void RewriteSection(string path,string kind,Func<byte[],byte[]> edit)
     {
         using var zip=ZipFile.Open(path,ZipArchiveMode.Update);var m=ReadManifest(zip);var s=m.Sections.Single(s=>s.Kind==kind);byte[] bytes;

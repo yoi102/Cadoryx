@@ -1,6 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <ItemGroup>
     <ProjectReference Include="../Cadoryx.Db/Cadoryx.Db.csproj" />
+    <ProjectReference Include="../Cadoryx.Kernel.Abstractions/Cadoryx.Kernel.Abstractions.csproj" />
     <PackageReference Include="MathNet.Numerics" Version="[5.0.0]" />
   </ItemGroup>
 </Project>

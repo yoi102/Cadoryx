@@ -16,6 +16,8 @@ public partial class SketchEditorWindow:MetroWindow
     public SketchEditorWindow(SketchEditorViewModel editor)
     {
         Editor=editor;InitializeComponent();DataContext=editor;
+        Editor.NativeProjectionHost=new SketchNativeProjectionHost(this);
+        Editor.RegionSourceSelectionHost=new SketchRegionSourceSelectionHost(this);
         editor.CloseRequested+=OnCloseRequested;editor.DrawingChanged+=OnDrawingChanged;Closing+=OnClosing;PreviewKeyDown+=OnKey;
         Loaded+=(_,_)=>Canvas.Fit();
     }
@@ -30,7 +32,7 @@ public partial class SketchEditorWindow:MetroWindow
     {
         if(syncing||!IsLoaded)return;
         // Collection rebuild removals must not erase the independent model selection.
-        if(e.AddedItems.Count==0)return;
+        if(e.AddedItems.Count==0&&(Editor.Tool!="OffsetRegions"||e.RemovedItems.Cast<SketchEntityItem>().Any(item=>!Editor.Entities.Contains(item))))return;
         var ids=EntityList.SelectedItems.Cast<SketchEntityItem>().Select(x=>x.Id).ToArray();Editor.Select(null);foreach(var id in ids)Editor.SelectedEntities.Add(id);
     }
     private async void OnKey(object sender,KeyEventArgs e)
@@ -41,12 +43,17 @@ public partial class SketchEditorWindow:MetroWindow
         {if(e.Key==Key.Z){Editor.UndoCommand.Execute(null);e.Handled=true;}if(e.Key==Key.Y){Editor.RedoCommand.Execute(null);e.Handled=true;}}
         else if(e.Key==Key.Delete&&Keyboard.FocusedElement==Canvas){Editor.DeleteEntitiesCommand.Execute(null);e.Handled=true;}
     }
-    private void OnCloseRequested(object? sender,EventArgs e)=>Close();
+    private void OnCloseRequested(object? sender,EventArgs e){if(!closing)Close();}
     private async void OnClosing(object? sender,CancelEventArgs e)
     {
         if(closeReady)return;e.Cancel=true;if(closing)return;closing=true;Canvas.CancelGesture();
         try{await Editor.DisposeAsync();}
-        finally{Editor.CloseRequested-=OnCloseRequested;Editor.DrawingChanged-=OnDrawingChanged;closeReady=true;Close();}
+        finally
+        {
+            Editor.CloseRequested-=OnCloseRequested;Editor.DrawingChanged-=OnDrawingChanged;closeReady=true;
+            // Disposal can complete synchronously; leave the active Closing event before closing again.
+            _=Dispatcher.BeginInvoke(System.Windows.Threading.DispatcherPriority.Background,new Action(Close));
+        }
     }
 }
 

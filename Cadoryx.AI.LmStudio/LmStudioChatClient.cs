@@ -123,7 +123,7 @@ public sealed class LmStudioChatClient(HttpClient httpClient) : IAiChatClient
         new("function", new ToolFunctionPayload(
             definition.Name,
             definition.Description,
-            definition.Parameters));
+            ToolSchemaPresentation.Create(definition.Parameters)));
 
     private static IReadOnlyList<AiToolCall> ParseToolCalls(JsonElement message)
     {

@@ -19,17 +19,20 @@
  <Grid Margin="16">
   <Grid.RowDefinitions><RowDefinition Height="Auto"/><RowDefinition Height="*"/><RowDefinition Height="Auto"/></Grid.RowDefinitions>
   <DockPanel Margin="0,0,0,12" LastChildFill="False">
-   <StackPanel DockPanel.Dock="Left" Orientation="Horizontal">
+   <StackPanel x:Name="AuthorActions" DockPanel.Dock="Left" Orientation="Horizontal">
     <Button x:Name="AddSheetButton" Content="{I18N {x:Static r:LangKeys.DrawingAddSheet}}" Click="AddSheet" Margin="0,0,8,0"/>
     <Button x:Name="AddViewButton" Content="{I18N {x:Static r:LangKeys.DrawingAddView}}" Click="AddView"/>
    </StackPanel>
-   <StackPanel DockPanel.Dock="Right" Orientation="Horizontal">
+   <Button x:Name="CancelCalculationButton" DockPanel.Dock="Right" Content="{I18N {x:Static r:LangKeys.Cancel}}"
+           Click="CancelCalculation" Visibility="Collapsed" Margin="8,0,0,0"
+           AutomationProperties.AutomationId="DrawingCancelCalculation"/>
+   <StackPanel x:Name="OutputActions" DockPanel.Dock="Right" Orientation="Horizontal">
     <Button Content="{I18N {x:Static r:LangKeys.DrawingRefresh}}" Click="RefreshViews" Style="{StaticResource SecondaryAction}" Margin="0,0,8,0"/>
     <Button Content="{I18N {x:Static r:LangKeys.DrawingPdf}}" Click="ExportPdf" Margin="0,0,8,0"/>
     <Button Content="{I18N {x:Static r:LangKeys.DrawingPrint}}" Click="Print" Style="{StaticResource SecondaryAction}"/>
    </StackPanel>
   </DockPanel>
-  <Grid Grid.Row="1">
+  <Grid x:Name="DrawingWorkspace" Grid.Row="1">
    <Grid.ColumnDefinitions><ColumnDefinition Width="180"/><ColumnDefinition Width="*"/><ColumnDefinition Width="340"/></Grid.ColumnDefinitions>
    <Grid Grid.Column="0" Margin="0,0,12,0">
     <Grid.RowDefinitions><RowDefinition Height="Auto"/><RowDefinition Height="150"/><RowDefinition Height="Auto"/><RowDefinition Height="*"/></Grid.RowDefinitions>
@@ -50,8 +53,9 @@
     </StackPanel>
    </Grid>
    <TabControl x:Name="InspectorTabs" Grid.Column="2" AutomationProperties.AutomationId="DrawingInspectorTabs">
+    <TabControl.ItemContainerStyle><Style TargetType="TabItem" BasedOn="{StaticResource {x:Type TabItem}}"><Setter Property="Padding" Value="4,6"/><Setter Property="MinWidth" Value="0"/><Setter Property="Width" Value="64"/><Setter Property="HeaderTemplate"><Setter.Value><DataTemplate><Viewbox MaxWidth="56" MaxHeight="16" StretchDirection="DownOnly"><TextBlock Text="{Binding}" FontSize="11" HorizontalAlignment="Center"/></Viewbox></DataTemplate></Setter.Value></Setter></Style></TabControl.ItemContainerStyle>
     <TabItem Header="{I18N {x:Static r:LangKeys.DrawingSheetTab}}">
-     <ScrollViewer VerticalScrollBarVisibility="Auto" Padding="8,10,0,0">
+     <ScrollViewer x:Name="SheetInspectorScroll" VerticalScrollBarVisibility="Auto" Padding="8,10,0,0">
       <StackPanel>
        <TextBlock Text="{I18N {x:Static r:LangKeys.Name}}" Style="{StaticResource FieldLabel}"/>
        <TextBox x:Name="SheetName" AutomationProperties.AutomationId="DrawingSheetName"/>
@@ -63,11 +67,81 @@
        <ComboBox x:Name="UnitChoice" AutomationProperties.AutomationId="DrawingUnit"/>
        <TextBlock Text="{I18N {x:Static r:LangKeys.DrawingStandard}}" Style="{StaticResource FieldLabel}"/>
        <ComboBox x:Name="StandardChoice" AutomationProperties.AutomationId="DrawingStandard"/>
+       <TextBlock Text="{I18N {x:Static r:LangKeys.DrawingTemplate}}" Style="{StaticResource FieldLabel}"/>
+       <ComboBox x:Name="PaperPresetChoice" DisplayMemberPath="Name" SelectionChanged="PaperFormatChanged"/>
+       <CheckBox x:Name="LandscapeCheck" Content="{I18N {x:Static r:LangKeys.DrawingLandscape}}" IsChecked="True" Checked="PaperOrientationChanged" Unchecked="PaperOrientationChanged" Margin="0,10,0,0"/>
        <TextBlock Text="{I18N {x:Static r:LangKeys.DrawingPaperSize}}" Style="{StaticResource FieldLabel}"/>
        <UniformGrid Columns="2">
         <TextBox x:Name="PaperWidth" ToolTip="{I18N {x:Static r:LangKeys.DrawingWidth}}" AutomationProperties.Name="{I18N {x:Static r:LangKeys.DrawingWidth}}" Margin="0,0,4,0"/>
         <TextBox x:Name="PaperHeight" ToolTip="{I18N {x:Static r:LangKeys.DrawingHeight}}" AutomationProperties.Name="{I18N {x:Static r:LangKeys.DrawingHeight}}" Margin="4,0,0,0"/>
        </UniformGrid>
+       <Expander x:Name="TitleBlockOptions" Header="{I18N {x:Static r:LangKeys.DrawingTitleBlock}}" Margin="0,12,0,0">
+        <StackPanel Margin="8,8,8,10">
+         <TextBlock Text="{I18N {x:Static r:LangKeys.DrawingProjectionMethod}}" Style="{StaticResource FieldLabel}"/>
+         <ComboBox x:Name="ProjectionChoice" DisplayMemberPath="Name"/>
+         <TextBlock Text="{I18N {x:Static r:LangKeys.DrawingCaptionLanguage}}" Style="{StaticResource FieldLabel}"/>
+         <ComboBox x:Name="CaptionLanguageChoice" DisplayMemberPath="Name"/>
+         <TextBlock Text="{I18N {x:Static r:LangKeys.DrawingFrameMargins}}" Style="{StaticResource FieldLabel}"/>
+         <UniformGrid Columns="4">
+          <TextBox x:Name="MarginLeft" Text="20" ToolTip="{I18N {x:Static r:LangKeys.DrawingMarginLeft}}" Margin="0,0,4,0"/>
+          <TextBox x:Name="MarginTop" Text="10" ToolTip="{I18N {x:Static r:LangKeys.DrawingMarginTop}}" Margin="0,0,4,0"/>
+          <TextBox x:Name="MarginRight" Text="10" ToolTip="{I18N {x:Static r:LangKeys.DrawingMarginRight}}" Margin="0,0,4,0"/>
+          <TextBox x:Name="MarginBottom" Text="10" ToolTip="{I18N {x:Static r:LangKeys.DrawingMarginBottom}}"/>
+         </UniformGrid>
+         <TextBlock Text="{I18N {x:Static r:LangKeys.DrawingNumber}}" Style="{StaticResource FieldLabel}"/><TextBox x:Name="DrawingNumberText"/>
+         <TextBlock Text="{I18N {x:Static r:LangKeys.DrawingRevision}}" Style="{StaticResource FieldLabel}"/><TextBox x:Name="RevisionText"/>
+         <TextBlock Text="{I18N {x:Static r:LangKeys.DrawingOrganization}}" Style="{StaticResource FieldLabel}"/><TextBox x:Name="OrganizationText"/>
+         <TextBlock Text="{I18N {x:Static r:LangKeys.Material}}" Style="{StaticResource FieldLabel}"/><TextBox x:Name="TitleMaterialText"/>
+         <TextBlock Text="{I18N {x:Static r:LangKeys.DrawingSurfaceFinish}}" Style="{StaticResource FieldLabel}"/><TextBox x:Name="SurfaceFinishText"/>
+         <TextBlock Text="{I18N {x:Static r:LangKeys.DrawingGeneralTolerance}}" Style="{StaticResource FieldLabel}"/><TextBox x:Name="GeneralToleranceText"/>
+         <TextBlock Text="{I18N {x:Static r:LangKeys.DrawingDrawnBy}}" Style="{StaticResource FieldLabel}"/><TextBox x:Name="DrawnByText"/>
+         <TextBlock Text="{I18N {x:Static r:LangKeys.DrawingCheckedBy}}" Style="{StaticResource FieldLabel}"/><TextBox x:Name="CheckedByText"/>
+         <TextBlock Text="{I18N {x:Static r:LangKeys.DrawingApprovedBy}}" Style="{StaticResource FieldLabel}"/><TextBox x:Name="ApprovedByText"/>
+         <TextBlock Text="{I18N {x:Static r:LangKeys.DrawingIssueDate}}" Style="{StaticResource FieldLabel}"/><TextBox x:Name="IssueDateText"/>
+        </StackPanel>
+       </Expander>
+       <Expander x:Name="TemplateLibraryOptions" Header="{I18N {x:Static r:LangKeys.DrawingTemplateLibrary}}" Margin="0,12,0,0">
+        <StackPanel Margin="8,8,8,10">
+         <ComboBox x:Name="TemplateLibraryChoice" DisplayMemberPath="Name" SelectionChanged="TemplateLibrarySelected"/>
+         <TextBlock Text="{I18N {x:Static r:LangKeys.Name}}" Style="{StaticResource FieldLabel}"/>
+         <TextBox x:Name="TemplateLibraryName"/>
+         <Button x:Name="SaveTemplateButton" Content="{I18N {x:Static r:LangKeys.DrawingSaveTemplate}}" Click="SaveTemplate" Margin="0,10,0,0"/>
+         <Button x:Name="ReplaceTemplateButton" Content="{I18N {x:Static r:LangKeys.DrawingReplaceTemplate}}" Click="ReplaceTemplate" Style="{StaticResource SecondaryAction}"/>
+         <Button x:Name="ApplyTemplateButton" Content="{I18N {x:Static r:LangKeys.DrawingApplyTemplate}}" Click="ApplyLibraryTemplate" Margin="0,8,0,0"/>
+         <Button x:Name="DeleteTemplateButton" Content="{I18N {x:Static r:LangKeys.DrawingDeleteTemplate}}" Click="DeleteLibraryTemplate" Style="{StaticResource SecondaryAction}"/>
+         <UniformGrid Columns="2" Margin="0,8,0,0">
+          <Button Content="{I18N {x:Static r:LangKeys.DrawingImportTemplate}}" Click="ImportTemplate" Style="{StaticResource SecondaryAction}"/>
+          <Button x:Name="ExportTemplateButton" Content="{I18N {x:Static r:LangKeys.DrawingExportTemplate}}" Click="ExportTemplate" Style="{StaticResource SecondaryAction}"/>
+         </UniformGrid>
+        </StackPanel>
+       </Expander>
+       <Expander x:Name="SheetContentOptions" Header="{I18N {x:Static r:LangKeys.DrawingSheetContent}}" Margin="0,12,0,0">
+        <StackPanel Margin="8,8,8,10">
+         <ListBox x:Name="SheetContentList" DisplayMemberPath="Name" Height="95" SelectionChanged="SheetContentSelected"/>
+         <ComboBox x:Name="SheetContentKind" DisplayMemberPath="Name" SelectionChanged="SheetContentKindChanged" Margin="0,10,0,0"/>
+         <TextBlock Text="{I18N {x:Static r:LangKeys.DrawingFieldCaption}}" Style="{StaticResource FieldLabel}"/>
+         <TextBox x:Name="SheetContentCaption"/>
+         <TextBlock Text="{I18N {x:Static r:LangKeys.DrawingContentText}}" Style="{StaticResource FieldLabel}"/>
+         <TextBox x:Name="SheetContentText" AcceptsReturn="True" TextWrapping="Wrap" MinHeight="65" MaxHeight="160" VerticalScrollBarVisibility="Auto"/>
+         <TextBlock Text="{I18N {x:Static r:LangKeys.DrawingContentPosition}}" Style="{StaticResource FieldLabel}"/>
+         <UniformGrid Columns="2"><TextBox x:Name="SheetContentX" Text="30" Margin="0,0,4,0" ToolTip="X"/><TextBox x:Name="SheetContentY" Text="110" ToolTip="Y"/></UniformGrid>
+         <TextBlock Text="{I18N {x:Static r:LangKeys.DrawingContentSize}}" Style="{StaticResource FieldLabel}"/>
+         <UniformGrid Columns="2"><TextBox x:Name="SheetContentWidth" Text="70" Margin="0,0,4,0"/><TextBox x:Name="SheetContentHeight" Text="12"/></UniformGrid>
+         <Button x:Name="AddSheetContentButton" Content="{I18N {x:Static r:LangKeys.DrawingAddSheetContent}}" Click="AddSheetContent" Margin="0,12,0,0"/>
+         <Button x:Name="ApplySheetContentButton" Content="{I18N {x:Static r:LangKeys.Apply}}" Click="ApplySheetContent" Style="{StaticResource SecondaryAction}"/>
+         <Button x:Name="DeleteSheetContentButton" Content="{I18N {x:Static r:LangKeys.DrawingDeleteSheetContent}}" Click="DeleteSheetContent" Style="{StaticResource SecondaryAction}"/>
+        </StackPanel>
+       </Expander>
+       <Expander x:Name="FrameZonesOptions" Header="{I18N {x:Static r:LangKeys.DrawingFrameZones}}" Margin="0,12,0,0">
+        <StackPanel Margin="8,8,8,10">
+         <CheckBox x:Name="FrameZonesEnabled" Content="{I18N {x:Static r:LangKeys.DrawingZonesEnabled}}"/>
+         <TextBlock Text="{I18N {x:Static r:LangKeys.DrawingZoneCounts}}" Style="{StaticResource FieldLabel}"/>
+         <UniformGrid Columns="2"><TextBox x:Name="FrameZoneColumns" Text="8" Margin="0,0,4,0"/><TextBox x:Name="FrameZoneRows" Text="6"/></UniformGrid>
+         <CheckBox x:Name="FrameZonesReverseColumns" Content="{I18N {x:Static r:LangKeys.DrawingZonesReverseColumns}}" Margin="0,10,0,0"/>
+         <CheckBox x:Name="FrameZonesReverseRows" Content="{I18N {x:Static r:LangKeys.DrawingZonesReverseRows}}" Margin="0,10,0,0"/>
+         <Button x:Name="ApplyFrameZonesButton" Content="{I18N {x:Static r:LangKeys.Apply}}" Click="ApplyFrameZones" Margin="0,12,0,0"/>
+        </StackPanel>
+       </Expander>
        <Button x:Name="ApplySheetButton" Content="{I18N {x:Static r:LangKeys.Apply}}" Click="ApplySheet" Margin="0,16,0,0"/>
        <Button Content="{I18N {x:Static r:LangKeys.DrawingDeleteSheet}}" Click="DeleteSheet" Style="{StaticResource SecondaryAction}" Margin="0,12,0,0"/>
       </StackPanel>
@@ -87,6 +161,25 @@
          <TextBox x:Name="SectionOffset" Text="15" ToolTip="{I18N {x:Static r:LangKeys.SectionOffset}}" AutomationProperties.Name="{I18N {x:Static r:LangKeys.SectionOffset}}"/>
         </UniformGrid>
        </Expander>
+       <Expander x:Name="HatchOptions" Header="{I18N {x:Static r:LangKeys.DrawingSectionHatching}}" Margin="0,8,0,0" Visibility="Collapsed">
+        <StackPanel Margin="8,8,8,10">
+         <ComboBox x:Name="HatchMaterialChoice" DisplayMemberPath="Name" SelectionChanged="HatchMaterialChanged"/>
+         <CheckBox x:Name="HatchEnabled" Content="{I18N {x:Static r:LangKeys.DrawingHatchEnabled}}" IsChecked="True" Margin="0,10,0,0"/>
+         <UniformGrid Columns="2" Margin="0,8,0,0">
+          <StackPanel Margin="0,0,4,0">
+           <TextBlock Text="{I18N {x:Static r:LangKeys.DrawingHatchAngle}}" Style="{StaticResource FieldLabel}"/>
+           <TextBox x:Name="HatchAngle" Text="45"/>
+          </StackPanel>
+          <StackPanel Margin="4,0,0,0">
+           <TextBlock Text="{I18N {x:Static r:LangKeys.DrawingHatchSpacing}}" Style="{StaticResource FieldLabel}"/>
+           <TextBox x:Name="HatchSpacing" Text="2.5"/>
+          </StackPanel>
+         </UniformGrid>
+         <CheckBox x:Name="HatchAlternate" Content="{I18N {x:Static r:LangKeys.DrawingHatchAlternate}}" IsChecked="True" Margin="0,10,0,0"/>
+         <Button x:Name="ApplyHatchButton" Content="{I18N {x:Static r:LangKeys.Apply}}" Click="ApplyHatching" Margin="0,12,0,0"/>
+         <Button x:Name="RemoveHatchRuleButton" Content="{I18N {x:Static r:LangKeys.DrawingHatchRemoveRule}}" Click="RemoveHatchRule" Style="{StaticResource SecondaryAction}" Margin="0,8,0,0"/>
+        </StackPanel>
+       </Expander>
        <Expander x:Name="DetailOptions" Header="{I18N {x:Static r:LangKeys.DrawingDetailCrop}}" Margin="0,8,0,0" Visibility="Collapsed">
         <UniformGrid Columns="3" Margin="8,8,8,10">
          <TextBox x:Name="DetailX" Text="0" ToolTip="X" AutomationProperties.Name="X" Margin="0,0,4,0"/>
@@ -100,9 +193,9 @@
         <TextBox x:Name="ViewY" ToolTip="Y" AutomationProperties.Name="Y" Margin="0,0,4,0"/>
         <TextBox x:Name="ViewScale" ToolTip="{I18N {x:Static r:LangKeys.DrawingScale}}" AutomationProperties.Name="{I18N {x:Static r:LangKeys.DrawingScale}}"/>
        </UniformGrid>
-       <Button Content="{I18N {x:Static r:LangKeys.DrawingEditView}}" Click="EditView" Margin="0,14,0,0"/>
+       <Button x:Name="EditViewButton" Content="{I18N {x:Static r:LangKeys.DrawingEditView}}" Click="EditView" Margin="0,14,0,0"/>
        <TextBlock Text="{I18N {x:Static r:LangKeys.DrawingSelectSource}}" TextWrapping="Wrap" Opacity="0.72" Margin="0,16,0,6"/>
-       <Button Content="{I18N {x:Static r:LangKeys.DrawingReselectSource}}" Click="ReselectView" Style="{StaticResource SecondaryAction}"/>
+       <Button x:Name="ReselectViewSourceButton" Content="{I18N {x:Static r:LangKeys.DrawingReselectSource}}" Click="ReselectView" Style="{StaticResource SecondaryAction}"/>
        <Button Content="{I18N {x:Static r:LangKeys.DrawingDeleteView}}" Click="DeleteView" Style="{StaticResource SecondaryAction}" Margin="0,12,0,0"/>
       </StackPanel>
      </ScrollViewer>
@@ -140,6 +233,84 @@
        </Expander>
        <Button Content="{I18N {x:Static r:LangKeys.DrawingReselectDimension}}" Click="ReselectDimension" Style="{StaticResource SecondaryAction}" Margin="0,8,0,0"/>
        <Button Content="{I18N {x:Static r:LangKeys.DrawingDeleteDimension}}" Click="DeleteDimension" Style="{StaticResource SecondaryAction}" Margin="0,8,0,0"/>
+      </StackPanel>
+     </ScrollViewer>
+    </TabItem>
+    <TabItem Header="{I18N {x:Static r:LangKeys.DrawingAnnotationTab}}">
+     <ScrollViewer x:Name="AnnotationInspectorScroll" VerticalScrollBarVisibility="Auto" Padding="8,10,0,0">
+      <StackPanel>
+       <ListBox x:Name="AnnotationList" Height="105" DisplayMemberPath="Name" SelectionChanged="AnnotationChanged"/>
+       <TextBlock Text="{I18N {x:Static r:LangKeys.DrawingAnnotationType}}" Style="{StaticResource FieldLabel}"/><ComboBox x:Name="AnnotationType" DisplayMemberPath="Name"/>
+       <StackPanel x:Name="ManufacturingDatumPanel"><TextBlock Text="{I18N {x:Static r:LangKeys.DrawingManufacturingDatumType}}" Style="{StaticResource FieldLabel}"/><ComboBox x:Name="ManufacturingDatumType" DisplayMemberPath="Name"/></StackPanel>
+       <TextBlock Text="{I18N {x:Static r:LangKeys.DrawingDatumKind}}" Style="{StaticResource FieldLabel}"/><ComboBox x:Name="AnnotationDatumKind" DisplayMemberPath="Name"/>
+       <Button x:Name="PickAnnotationButton" Content="{I18N {x:Static r:LangKeys.DrawingPickAttachment}}" Click="PickAnnotation" Margin="0,12,0,4"/>
+       <Button Content="{I18N {x:Static r:LangKeys.Cancel}}" Click="CancelAnnotationPick" Style="{StaticResource SecondaryAction}"/>
+       <TextBlock x:Name="AnnotationEvidence" Text="—" TextWrapping="Wrap"/>
+       <StackPanel x:Name="PlanarSizePanel" Visibility="Collapsed">
+        <ComboBox x:Name="PlanarSizeKind" DisplayMemberPath="Name" Margin="0,8,0,0"/>
+        <Button x:Name="PickOppositeAnnotationButton" Content="{I18N {x:Static r:LangKeys.DrawingPickOppositeSizeFace}}" Click="PickOppositeAnnotation" Margin="0,8,0,4"/>
+        <TextBlock x:Name="OppositeAnnotationEvidence" Text="—" TextWrapping="Wrap"/>
+        <TextBlock x:Name="PlanarSizeEvidence" Text="—" TextWrapping="Wrap" Margin="0,6,0,0"/>
+        <TextBlock Text="{I18N {x:Static r:LangKeys.DrawingPlanarSizeRequirements}}" TextWrapping="Wrap" Margin="0,6,0,0" Opacity="0.8"/>
+       </StackPanel>
+       <TextBlock Text="{I18N {x:Static r:LangKeys.DrawingAnnotationName}}" Style="{StaticResource FieldLabel}"/><TextBox x:Name="AnnotationName" Text="A"/>
+       <TextBlock Text="{I18N {x:Static r:LangKeys.DrawingTextPosition}}" Style="{StaticResource FieldLabel}"/>
+       <UniformGrid Columns="2"><TextBox x:Name="AnnotationX" Text="40" Margin="0,0,4,0"/><TextBox x:Name="AnnotationY" Text="40"/></UniformGrid>
+       <Expander x:Name="ControlFrameOptions" Header="{I18N {x:Static r:LangKeys.DrawingControlFrame}}" Margin="0,12,0,0">
+        <StackPanel Margin="8,8,8,10">
+         <TextBlock Text="{I18N {x:Static r:LangKeys.DrawingCharacteristic}}" Style="{StaticResource FieldLabel}"/><ComboBox x:Name="Characteristic" DisplayMemberPath="Name"/>
+         <TextBlock Text="{I18N {x:Static r:LangKeys.DrawingToleranceMm}}" Style="{StaticResource FieldLabel}"/><TextBox x:Name="AnnotationTolerance" Text="0.1"/>
+         <ComboBox x:Name="ToleranceTarget" DisplayMemberPath="Name" Margin="0,10,0,0"/>
+         <CheckBox x:Name="DiameterZone" Content="{I18N {x:Static r:LangKeys.DrawingDiameterZone}}" Margin="0,10,0,0"/>
+         <ComboBox x:Name="MaterialCondition" DisplayMemberPath="Name" Margin="0,10,0,0"/>
+         <TextBlock Text="{I18N {x:Static r:LangKeys.DrawingOrderedDatums}}" Style="{StaticResource FieldLabel}"/><TextBox x:Name="OrderedDatums"/>
+         <TextBlock Text="{I18N {x:Static r:LangKeys.DrawingDatumSystemSyntax}}" TextWrapping="Wrap" Margin="0,6,0,0" Opacity="0.8"/>
+         <TextBlock x:Name="ManufacturingStandardRule" TextWrapping="Wrap" Margin="0,6,0,0" Opacity="0.8"/>
+        </StackPanel>
+       </Expander>
+       <Button x:Name="AddAnnotationButton" Content="{I18N {x:Static r:LangKeys.DrawingAddAnnotation}}" Click="AddAnnotation" Margin="0,12,0,0"/>
+       <Button x:Name="ApplyAnnotationButton" Content="{I18N {x:Static r:LangKeys.DrawingApplyAnnotation}}" Click="ApplyAnnotation" Style="{StaticResource SecondaryAction}"/>
+       <Button Content="{I18N {x:Static r:LangKeys.DrawingMoveAnnotation}}" Click="MoveAnnotation" Style="{StaticResource SecondaryAction}"/>
+       <Button x:Name="RenameAnnotationDatumButton" Content="{I18N {x:Static r:LangKeys.DrawingRenameDatum}}" Click="RenameAnnotationDatum" Style="{StaticResource SecondaryAction}"/>
+       <Button x:Name="DeleteAnnotationButton" Content="{I18N {x:Static r:LangKeys.DrawingDeleteAnnotation}}" Click="DeleteAnnotation" Style="{StaticResource SecondaryAction}"/>
+       <TextBlock Text="{I18N {x:Static r:LangKeys.DrawingPartsTable}}" Style="{StaticResource FieldLabel}"/>
+       <UniformGrid Columns="2"><TextBox x:Name="PartsTableX" Text="30" Margin="0,0,4,0"/><TextBox x:Name="PartsTableY" Text="115"/></UniformGrid>
+       <Button x:Name="PartsTableButton" Content="{I18N {x:Static r:LangKeys.DrawingPlacePartsTable}}" Click="PlacePartsTable" Style="{StaticResource SecondaryAction}"/>
+       <Button Content="{I18N {x:Static r:LangKeys.DrawingRemovePartsTable}}" Click="RemovePartsTable" Style="{StaticResource SecondaryAction}"/>
+       <TextBlock Text="{I18N {x:Static r:LangKeys.DrawingAnnotationRequirements}}" TextWrapping="Wrap" Margin="0,12,0,12" Opacity="0.72"/>
+      </StackPanel>
+     </ScrollViewer>
+    </TabItem>
+    <TabItem x:Name="HoleTableTab" Header="{I18N {x:Static r:LangKeys.DrawingHoleTable}}">
+     <ScrollViewer x:Name="HoleInspectorScroll" VerticalScrollBarVisibility="Auto" Padding="8,10,0,0">
+      <StackPanel>
+       <ListBox x:Name="HoleTableList" Height="70" DisplayMemberPath="Name" SelectionChanged="HoleTableChanged"/>
+       <TextBlock Text="{I18N {x:Static r:LangKeys.Name}}" Style="{StaticResource FieldLabel}"/><TextBox x:Name="HoleTableName" Text="{I18N {x:Static r:LangKeys.DrawingHoleTable}}"/>
+       <TextBlock Text="{I18N {x:Static r:LangKeys.DrawingTextPosition}}" Style="{StaticResource FieldLabel}"/>
+       <UniformGrid Columns="2"><TextBox x:Name="HoleTableX" Text="25" ToolTip="X"/><TextBox x:Name="HoleTableY" Text="90" ToolTip="Y"/></UniformGrid>
+       <TextBlock Text="{I18N {x:Static r:LangKeys.DrawingHoleCoordinatePlane}}" Style="{StaticResource FieldLabel}"/>
+       <ComboBox x:Name="HoleCoordinatePlaneChoice" DisplayMemberPath="Name" SelectedValuePath="Id" SelectionChanged="HoleCoordinatePlaneChanged"/>
+       <TextBlock Text="{I18N {x:Static r:LangKeys.DrawingHoleCoordinatePoint}}" Style="{StaticResource FieldLabel}"/>
+       <ComboBox x:Name="HoleCoordinateOriginChoice" DisplayMemberPath="Name" SelectedValuePath="Id"/>
+       <TextBlock Text="{I18N {x:Static r:LangKeys.DrawingHoleCoordinateAxis}}" Style="{StaticResource FieldLabel}"/>
+       <ComboBox x:Name="HoleCoordinateAxisChoice" DisplayMemberPath="Name" SelectedValuePath="Id"/>
+       <CheckBox x:Name="HoleCoordinateReverseX" Content="{I18N {x:Static r:LangKeys.DrawingHoleReverseX}}" Margin="0,8,0,8"/>
+       <TextBlock Text="{I18N {x:Static r:LangKeys.DrawingHoleOrigin}}" Style="{StaticResource FieldLabel}"/>
+       <UniformGrid Columns="3"><TextBox x:Name="HoleOriginX" Text="0" ToolTip="X"/><TextBox x:Name="HoleOriginY" Text="0" ToolTip="Y"/><TextBox x:Name="HoleOriginZ" Text="0" ToolTip="Z"/></UniformGrid>
+       <TextBlock Text="{I18N {x:Static r:LangKeys.DrawingHoleAxes}}" Style="{StaticResource FieldLabel}"/>
+       <UniformGrid Columns="3"><TextBox x:Name="HoleAxisX" Text="0" ToolTip="X"/><TextBox x:Name="HoleAxisY" Text="0" ToolTip="Y"/><TextBox x:Name="HoleAxisZ" Text="0" ToolTip="Z"/></UniformGrid>
+       <Button x:Name="CreateHoleTableButton" Content="{I18N {x:Static r:LangKeys.DrawingHoleCreateTable}}" Click="CreateHoleTable" Margin="0,10,0,0"/>
+       <Button x:Name="ApplyHoleTableButton" Content="{I18N {x:Static r:LangKeys.DrawingHoleApplyTable}}" Click="ApplyHoleTable" Style="{StaticResource SecondaryAction}"/>
+       <Button x:Name="DeleteHoleTableButton" Content="{I18N {x:Static r:LangKeys.DrawingHoleDeleteTable}}" Click="DeleteHoleTable" Style="{StaticResource SecondaryAction}"/>
+       <ListBox x:Name="HoleRowList" Height="90" DisplayMemberPath="Number" SelectionChanged="HoleRowChanged" Margin="0,12,0,0"/>
+       <TextBlock Text="{I18N {x:Static r:LangKeys.DrawingHoleNumber}}" Style="{StaticResource FieldLabel}"/><TextBox x:Name="HoleNumber" Text="1"/>
+       <Button x:Name="PickHoleButton" Content="{I18N {x:Static r:LangKeys.DrawingHolePickShaft}}" Click="PickHole" Margin="0,10,0,0"/>
+       <Button x:Name="CancelHolePickButton" Content="{I18N {x:Static r:LangKeys.Cancel}}" Click="CancelHolePick" Style="{StaticResource SecondaryAction}"/>
+       <TextBlock x:Name="HoleEvidence" Text="—" TextWrapping="Wrap"/>
+       <Button x:Name="AddHoleRowButton" Content="{I18N {x:Static r:LangKeys.DrawingHoleAddRow}}" Click="AddHoleRow" Margin="0,10,0,0"/>
+       <Button x:Name="ReselectHoleRowButton" Content="{I18N {x:Static r:LangKeys.DrawingHoleReselectRow}}" Click="ReselectHoleRow" Style="{StaticResource SecondaryAction}"/>
+       <Button x:Name="DeleteHoleRowButton" Content="{I18N {x:Static r:LangKeys.DrawingHoleDeleteRow}}" Click="DeleteHoleRow" Style="{StaticResource SecondaryAction}"/>
+       <TextBlock Text="{I18N {x:Static r:LangKeys.DrawingHoleRequirements}}" TextWrapping="Wrap" Margin="0,12,0,12" Opacity="0.72"/>
       </StackPanel>
      </ScrollViewer>
     </TabItem>

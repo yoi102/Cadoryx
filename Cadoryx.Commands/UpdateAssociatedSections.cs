@@ -9,14 +9,19 @@ public static class UpdateAssociatedSections
     public static async Task<PreparedDocumentEdit> PrepareCommandAsync(ICadDocumentCommand command,DocumentCommandContext context,CancellationToken token)
     {
         var original=await command.PrepareAsync(context,token).ConfigureAwait(false);
-        PreparedDocumentEdit? reviewed=null;
+        if(command is CommitPreparedDocumentCommand)return original;
+        PreparedDocumentEdit? reviewed=null,parameterized=null,mirrored=null;
         try
         {
-            reviewed=await PrepareAsync(context,original.Snapshot,token).ConfigureAwait(false);
+            parameterized=command is IParameterEditCommand?new(original.Snapshot):await ParameterRecompute.PrepareAsync(context,original.Snapshot,token).ConfigureAwait(false);
+            var arrays=AssemblyRepetitionUpdate.Apply(context.Snapshot,parameterized.Snapshot,token,mirrorsReady:false);
+            mirrored=await AssemblyMirrorUpdate.PrepareAsync(context,arrays,token).ConfigureAwait(false);
+            var instanced=AssemblyRepetitionUpdate.Apply(context.Snapshot,mirrored.Snapshot,token);
+            reviewed=await PrepareAsync(context,instanced,token).ConfigureAwait(false);
             var drawing=await UpdateTechnicalDrawings.PrepareAsync(context,reviewed.Snapshot,token).ConfigureAwait(false);
-            return new(drawing.Snapshot,[original,reviewed,drawing]);
+            return new(drawing.Snapshot,[original,parameterized,mirrored,reviewed,drawing]);
         }
-        catch{reviewed?.Dispose();original.Dispose();throw;}
+        catch{reviewed?.Dispose();mirrored?.Dispose();parameterized?.Dispose();original.Dispose();throw;}
     }
     public static async Task<PreparedDocumentEdit> PrepareAsync(DocumentCommandContext context,DocumentSnapshot next,CancellationToken token)
     {
@@ -70,13 +75,13 @@ public static class UpdateAssociatedSections
                     if(result.Geometry.Kind==BodyKind.Empty)reason="The current plane no longer intersects the source. Previous section retained.";
                     else
                     {
-                        feature=feature with{Recipe=new ImportedRecipe(result.Geometry),Result=result.Geometry,IsStale=false,TopologyHistory=null};
+                        feature=feature with{Recipe=new ImportedRecipe(result.Geometry),Result=result.Geometry,IsStale=false,TopologyHistory=null,RepetitionPresentation=null,GuidedModelingReport=null};
                         next=next with{Features=next.Features.SetItem(feature.Id,feature),Bodies=next.Bodies.SetItem(output.Id,output with{Geometry=result.Geometry}),
                             AssociatedSections=next.AssociatedSections.SetItem(feature.Id,section with{StaleReason=null,
                                 Sources=[..inputs.Select((i,index)=>section.Sources[index] with{Revision=i.Geometry.Revision,Asset=i.Geometry.AssetId,Transform=i.WorldTransform})]})};
                     }
                 }
-                if(reason is not null)next=next with{Features=next.Features.SetItem(feature.Id,feature with{IsStale=true,TopologyHistory=null}),
+                if(reason is not null)next=next with{Features=next.Features.SetItem(feature.Id,feature with{IsStale=true,TopologyHistory=null,RepetitionPresentation=null}),
                     AssociatedSections=next.AssociatedSections.SetItem(feature.Id,section with{StaleReason=reason})};
             }
             return new(next,resources);

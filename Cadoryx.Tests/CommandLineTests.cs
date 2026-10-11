@@ -155,7 +155,7 @@ public sealed class CommandLineTests
         public IReadOnlyList<string> ListDrawings(int limit) => ["Sheet"];
         public IReadOnlyList<string> ListOccurrences(int limit) => ["Part instance"];
         public string ScaleSummary => "Definitions: 1 | instances: 1 | features: 1 | assets: 1 (1024 bytes)";
-        public Task SetGridAsync(bool? visible = null, double? spacingMm = null, bool? snap = null)
+        public Task SetGridAsync(bool? visible = null, double? spacingMm = null, bool? snap = null, CancellationToken cancellationToken = default)
         { Grid = Grid with { Visible = visible ?? Grid.Visible, SpacingMm = spacingMm ?? Grid.SpacingMm, Snap = snap ?? Grid.Snap }; return Task.CompletedTask; }
         public void SetDisplayMode(string mode) => DisplayMode = mode.ToUpperInvariant();
         public CadCommandResult IsolateSelection() { filtered = true; return new(true, "Selection isolated."); }
@@ -164,8 +164,8 @@ public sealed class CommandLineTests
         public CadCommandResult FocusSelection() => new(true, "Selection focused.");
         public CadCommandResult SelectBody(string exactName) => exactName == "bracket"
             ? new(true, "Selected: bracket") : new(false, "Cannot select: name is ambiguous.");
-        public Task UndoAsync() { EditCount++; return Task.CompletedTask; }
-        public Task RedoAsync() => Task.CompletedTask;
+        public Task UndoAsync(CancellationToken cancellationToken = default) { EditCount++; return Task.CompletedTask; }
+        public Task RedoAsync(CancellationToken cancellationToken = default) => Task.CompletedTask;
         public void Fit() => FitCount++;
         public void SetView(string direction) => View = direction;
         public void ClearSelection() => ClearCount++;
@@ -176,9 +176,9 @@ public sealed class CommandLineTests
             InteractiveTool = null;
             return true;
         }
-        public Task CreateBoxAsync(string name, double width, double depth, double height, double x, double y, double z)
+        public Task CreateBoxAsync(string name, double width, double depth, double height, double x, double y, double z, CancellationToken cancellationToken = default)
         { CreatedName = name; EditCount++; return Task.CompletedTask; }
-        public Task CreateCylinderAsync(string name, double radius, double height, double x, double y, double z)
+        public Task CreateCylinderAsync(string name, double radius, double height, double x, double y, double z, CancellationToken cancellationToken = default)
         { CreatedName = name; EditCount++; return Task.CompletedTask; }
     }
 }

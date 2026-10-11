@@ -5,12 +5,12 @@ namespace Cadoryx.Sketching;
 
 public enum SketchSolveStatus { UnderConstrained, FullyConstrained, Inconsistent, DidNotConverge, InvalidInput, LimitExceeded }
 public sealed record SketchSolveOptions(double LinearToleranceMm=1e-7,double AngularTolerance=1e-9,int MaxIterations=80,
-    int MaxVariables=256,int MaxEquations=512)
+    int MaxVariables=256,int MaxEquations=512,double CurvatureTolerancePerMm=1e-7)
 {
     public void Validate()
     {
-        CadGuard.Positive(LinearToleranceMm,AngularTolerance);
-        if(MaxIterations is <1 or >500||MaxVariables is <1 or >512||MaxEquations is <1 or >1024||AngularTolerance>1e-3)
+        CadGuard.Positive(LinearToleranceMm,AngularTolerance,CurvatureTolerancePerMm);
+        if(MaxIterations is <1 or >500||MaxVariables is <1 or >512||MaxEquations is <1 or >1024||AngularTolerance>1e-3||CurvatureTolerancePerMm>1e-3)
             throw new CadValidationException("Invalid sketch solve limits.");
     }
 }

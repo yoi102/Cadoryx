@@ -85,13 +85,18 @@ public sealed class OcctViewportHost(IAssetStore assets) : HwndHost
         RadialStarted?.Invoke(this,center);
         return true;
     }
+    internal (System.Windows.Point Requested,System.Windows.Point Actual,bool Succeeded,System.Windows.Rect Clip,bool ClipAvailable,uint Dpi,int ForegroundPid) LastRadialWarp {get;private set;}
     internal System.Windows.Point WarpRadialCursor(System.Windows.Point screenPoint)
     {
         if(!radialActive||hwnd==0)return screenPoint;
         var point=new Point{x=(int)Math.Round(screenPoint.X),y=(int)Math.Round(screenPoint.Y)};
-        Native.SetCursorPos(point.x,point.y);
+        bool clipAvailable=Native.GetClipCursor(out var clip);
+        Native.GetWindowThreadProcessId(Native.GetForegroundWindow(),out int foregroundPid);
+        bool succeeded=Native.SetCursorPos(point.x,point.y);
         if(!Native.GetCursorPos(out var actual))actual=point;
         point=actual;
+        LastRadialWarp=(screenPoint,new(actual.x,actual.y),succeeded,
+            new(clip.Left,clip.Top,Math.Max(0,clip.Right-clip.Left),Math.Max(0,clip.Bottom-clip.Top)),clipAvailable,Native.GetDpiForWindow(hwnd),foregroundPid);
         Native.ScreenToClient(hwnd,ref point);
         contextX=point.x;contextY=point.y;
         return new(actual.x,actual.y);
@@ -303,6 +308,8 @@ public sealed class OcctViewportHost(IAssetStore assets) : HwndHost
         [DllImport("user32.dll")]internal static extern short GetKeyState(int key);
         [DllImport("user32.dll",SetLastError=true)][return:MarshalAs(UnmanagedType.Bool)]internal static extern bool TrackMouseEvent(ref TrackMouseEventInfo info);
         [DllImport("user32.dll")][return:MarshalAs(UnmanagedType.Bool)]internal static extern bool GetCursorPos(out Point point);
+        [DllImport("user32.dll")][return:MarshalAs(UnmanagedType.Bool)]internal static extern bool GetClipCursor(out Rect rect);
+        [DllImport("user32.dll")]internal static extern uint GetDpiForWindow(nint hwnd);
         [DllImport("user32.dll")][return:MarshalAs(UnmanagedType.Bool)]internal static extern bool ShowWindow(nint hwnd,int command);
     }
 }

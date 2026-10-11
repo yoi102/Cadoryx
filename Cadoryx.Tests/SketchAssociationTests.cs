@@ -55,14 +55,17 @@ public sealed class SketchAssociationTests
         await Assert.ThrowsAsync<CadValidationException>(()=>session.ExecuteAsync(new UpsertSketchCommand(SketchCommandTests.Resize(sketch,60),solver)));
         Assert.Same(before,session.Snapshot);Assert.Equal(calls,kernel.Calls);
     }
-    [Fact] public async Task InvalidProfileDeletionStaleRevisionAndCrossPartReferencesAreRejected()
+    [Fact] public async Task BoundaryDeletionFreezesWhileSketchDeletionStaleRevisionAndCrossPartReferencesReject()
     {
         var (initial,part)=SketchCommandTests.Document();var assets=new MemoryAssetStore();await using var session=new CadDocumentSession(initial,assets,new OcctGeometryKernel(),new InlineSessionDispatcher());
         var solver=new ManagedSketchConstraintSolver();var draft=SketchTestData.Rectangle(part);await session.ExecuteAsync(new UpsertSketchCommand(draft,solver));var s=session.Snapshot.Sketches[draft.Id];await session.ExecuteAsync(Extrude(s,5));var before=session.Snapshot;
         await Assert.ThrowsAsync<CadValidationException>(()=>session.ExecuteAsync(new RemoveSketchCommand(s.Id)));
         await Assert.ThrowsAsync<CadValidationException>(()=>session.ExecuteAsync(new UpsertSketchCommand(draft,solver)));
         var broken=s with{Lines=s.Lines.RemoveAt(0),Constraints=s.Constraints.Where(c=>!SketchConstraintEditing.Targets(c).Contains(s.Lines[0].Id)).ToImmutableArray()};
-        await Assert.ThrowsAsync<CadValidationException>(()=>session.ExecuteAsync(new UpsertSketchCommand(broken,solver)));Assert.Same(before,session.Snapshot);
+        await session.ExecuteAsync(new UpsertSketchCommand(broken,solver));session.Snapshot.Validate();
+        Assert.True(session.Snapshot.Features.Values.Single().IsStale);
+        Assert.Equal(before.Features.Values.Single().Result,session.Snapshot.Features.Values.Single().Result);
+        await session.UndoAsync();Assert.Same(before,session.Snapshot);
         var f=before.Features.Values.Single();Assert.Throws<CadValidationException>(()=>(before with{Features=before.Features.SetItem(f.Id,f with{SketchSource=f.SketchSource! with{Revision=Guid.NewGuid()}})}).Validate());
         var other=DefinitionId.New();await session.ExecuteAsync(ResourceCommands.AddPart(other,"Other"));
         await Assert.ThrowsAsync<CadValidationException>(()=>session.ExecuteAsync(new AddBodyCommand(f.Recipe,"Wrong part",other,sketchSource:f.SketchSource)));

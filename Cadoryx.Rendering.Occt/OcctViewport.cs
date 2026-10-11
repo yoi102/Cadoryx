@@ -8,7 +8,7 @@ namespace Cadoryx.Rendering.Occt;
 public sealed record LocalTopologyPick((BoxBoundary First,BoxBoundary? Second)? Box,ExactTopologySelection? Exact);
 public sealed record AssemblyDatumPick(OccurrencePath Path,BodyId Body,int FullTopologyIndex,
     string Fingerprint,TopologyKind Kind);
-public sealed record SceneSubmissionProfile(double ResourceMs,double DisplayMs,double TransformMs,double DisplayModeMs,double RedrawMs);
+public sealed record SceneSubmissionProfile(double ResourceMs,double DisplayMs,double TransformMs,double DisplayModeMs,double RedrawMs,double SourceMs=0);
 
 /// <summary>UI-thread-owned OCCT scene adapter. Its source geometry is independent of worker inputs.</summary>
 public sealed partial class OcctViewport : ICadViewport
@@ -17,22 +17,24 @@ public sealed partial class OcctViewport : ICadViewport
     private readonly IAssetStore assets;
     private readonly Dictionary<(OccurrencePath,BodyId),Entry> entries=[];
     // A revision identifies a modeling result; identical BRep bytes in different parts can share one native shape.
-    private readonly Dictionary<(AssetId Asset,XdeSourceRef? Source,AssetFormat? Format),GeometryResource> geometry=[];
+    private readonly Dictionary<(AssetId Asset,XdeSourceRef? Source,AssetFormat? Format,SerializedGeometryReferences? Members,SerializedGeometryOccurrences? Occurrences),GeometryResource> geometry=[];
     private readonly Dictionary<(AssetId Asset,AssetFormat? Format),XdeContextResource> xdeContexts=[];
     private CadScene? progressiveScene;
     private int progressiveCount;
-    private long progressiveResourceTicks,progressiveDisplayTicks,progressiveTransformTicks,progressiveModeTicks,progressiveRedrawTicks;
+    private long progressiveResourceTicks,progressiveDisplayTicks,progressiveTransformTicks,progressiveModeTicks,progressiveRedrawTicks,progressiveSourceTicks;
     public SceneSubmissionProfile SubmissionProfile=>new(
         System.Diagnostics.Stopwatch.GetElapsedTime(0,progressiveResourceTicks).TotalMilliseconds,
         System.Diagnostics.Stopwatch.GetElapsedTime(0,progressiveDisplayTicks).TotalMilliseconds,
         System.Diagnostics.Stopwatch.GetElapsedTime(0,progressiveTransformTicks).TotalMilliseconds,
         System.Diagnostics.Stopwatch.GetElapsedTime(0,progressiveModeTicks).TotalMilliseconds,
-        System.Diagnostics.Stopwatch.GetElapsedTime(0,progressiveRedrawTicks).TotalMilliseconds);
+        System.Diagnostics.Stopwatch.GetElapsedTime(0,progressiveRedrawTicks).TotalMilliseconds,
+        System.Diagnostics.Stopwatch.GetElapsedTime(0,progressiveSourceTicks).TotalMilliseconds);
     private HashSet<(OccurrencePath,BodyId)> highlighted=[];
     private int pressedButtons;
     private int lastX,lastY;
     private int pressX,pressY;
     private bool selectionClick;
+    private bool selectionDragAllowed;
     private bool cubeClick;
     private bool cubeHovered;
     private ViewerPresentation? preview;
@@ -56,6 +58,7 @@ public sealed partial class OcctViewport : ICadViewport
     public int VisibleBodyCount=>entries.Count;
     public int NativeGeometryCount=>geometry.Count;
     public int NativeXdeContextCount=>xdeContexts.Count;
+    public int NativeSourceCount=>geometry.Values.Count(resource=>resource.HasSharedSource);
     public void SetSection(SectionView section)
     {
         var equations=section.Planes();var staged=new List<ViewerClipPlane>();
@@ -80,7 +83,7 @@ public sealed partial class OcctViewport : ICadViewport
     public event EventHandler<LocalTopologyPick>? LocalTopologySelected;
     public event EventHandler<(int X,int Y,bool Click)>? ConstructionPointer;
     public event EventHandler? NavigationStarted;
-    public void SetConstructionMode(bool enabled){constructing=enabled;if(!enabled)SetConstructionGhost(null);viewer.ClearSelection();}
+    public void SetConstructionMode(bool enabled){CancelSelectionRectangleGesture();constructing=enabled;if(!enabled)SetConstructionGhost(null);viewer.ClearSelection();}
     public bool TryWorkplanePoint(int x,int y,double spacing,bool snap,out Vector3d point) =>
         TryWorkplanePoint(x,y,spacing,snap,new DocumentWorkPlaneSettings(),out point);
     public bool TryWorkplanePoint(int x,int y,double spacing,bool snap,DocumentWorkPlaneSettings plane,out Vector3d point)
@@ -269,9 +272,7 @@ public sealed partial class OcctViewport : ICadViewport
     }
     private static Shape CreateProfileGhost(SketchProfile profile,double? distance,double? angle)
     {
-        using var wire=ShapeFactory.CreatePolygonWire(profile.Points.Select(p=>
-            angle is null?new GpPoint(p.X,p.Y,0):new GpPoint(p.X,0,p.Y)).ToArray(),true);
-        using var face=ShapeFactory.CreatePlanarFace(wire);
+        using var face=OcctSketchProfileGeometry.CreateFace(profile,angle is not null);
         if(distance is {} length)
         {
             using var direction=GpVec.Create(0,0,length);
@@ -286,7 +287,8 @@ public sealed partial class OcctViewport : ICadViewport
     private TopologyKind? assemblyDatumSelection;
     public void SetAssemblyDatumSelection(TopologyKind? kind)
     {
-        bool presentationChanged=(assemblyDatumSelection is null)!=(kind is null);
+        CancelSelectionRectangleGesture();
+        bool presentationChanged=exactSelectionSource is null&&(assemblyDatumSelection is null)!=(kind is null);
         assemblyDatumSelection=kind;viewer.ClearSelection();
         if(presentationChanged)
         {
@@ -306,11 +308,35 @@ public sealed partial class OcctViewport : ICadViewport
         viewer.ClearSelection();
         viewer.Redraw();
     }
-    public void SetExactSelectionSource(DocumentId document,FeatureId feature)=>exactSelectionSource=(document,feature);
-    public void ClearExactSelectionSource()=>exactSelectionSource=null;
+    public void SetExactSelectionSource(DocumentId document,FeatureId feature)
+    {
+        CancelSelectionRectangleGesture();
+        bool changed=exactSelectionSource is null&&assemblyDatumSelection is null;
+        exactSelectionSource=(document,feature);if(changed)RefreshExactPresentations();
+    }
+    public void ClearExactSelectionSource()
+    {
+        CancelSelectionRectangleGesture();
+        bool changed=exactSelectionSource is not null&&assemblyDatumSelection is null;
+        exactSelectionSource=null;if(changed)RefreshExactPresentations();
+    }
+    private void RefreshExactPresentations()
+    {
+        var replacements=new Dictionary<(OccurrencePath,BodyId),Entry>();
+        try
+        {
+            foreach(var (key,entry) in entries)replacements.Add(key,entry with{Presentation=CreatePresentation(entry.Item,entry.Geometry,highlighted.Contains(key))});
+        }
+        catch{foreach(var replacement in replacements.Values)replacement.Presentation.Dispose();throw;}
+        foreach(var entry in entries.Values)entry.Presentation.Dispose();entries.Clear();foreach(var pair in replacements)entries.Add(pair.Key,pair.Value);
+        viewer.ClearSelection();viewer.Redraw();
+    }
     public void SetBoxSelection(BoxRecipe? box,TopologyKind? kind)
     {
+        CancelSelectionRectangleGesture();
         selectionBox=box;selectionKind=kind;viewer.ClearSelection();
+        // Thin curved edges need a usable screen-space target; exact BRep identity is still verified after picking.
+        viewer.SetPixelTolerance(kind==TopologyKind.Edge?8:2);
         foreach(var entry in entries.Values)entry.Presentation.SetSelectionKind(kind is null?null:kind==TopologyKind.Face?ShapeKind.Face:ShapeKind.Edge);
     }
     public void HighlightBoxSelection(TopologyReference? reference)=>HighlightBoxSelections(reference is null?[]:[reference]);
@@ -321,7 +347,8 @@ public sealed partial class OcctViewport : ICadViewport
         {
             entry.Presentation.ClearAllSubshapeOverrides();
             if(selected.Length==0||selectionBox is not {} box)continue;
-            using var topology=entry.Geometry.Shape.GetTopologyAdjacency(ShapeKind.Edge,ShapeKind.Face);
+            var displayShape=exactSelectionSource is not null||assemblyDatumSelection is not null?entry.Geometry.GetBindingShape():entry.Geometry.Shape;
+            using var topology=displayShape.GetTopologyAdjacency(ShapeKind.Edge,ShapeKind.Face);
             foreach(var reference in selected)
             {
                 var parts=reference.Kind==TopologyKind.Face?topology.Ancestors:topology.Items;
@@ -340,15 +367,18 @@ public sealed partial class OcctViewport : ICadViewport
         foreach(var entry in entries.Values)
         {
             var chosen=selections.Where(s=>s.Revision==entry.Item.Geometry.Revision&&s.Asset==entry.Item.Geometry.AssetId).ToArray();
+            if(exactSelectionSource is not null&&(selectionBox is null||chosen.Length>0))entry.Presentation.ClearAllSubshapeOverrides();
             if(chosen.Length==0)continue;
-            using var map=RepairSnapshot.Create(entry.Geometry.Shape);
+            var binding=entry.Geometry.GetBindingShape();
+            using var map=RepairSnapshot.Create(binding);
             foreach(var exact in chosen)
             {
-                if(map.Fingerprint!=exact.Fingerprint||exact.FullTopologyIndex>=map.Topology.Count)continue;
-                var parts=entry.Geometry.Shape.GetSubShapes(exact.Kind==HistoryShapeKind.Edge?ShapeKind.Edge:ShapeKind.Face);
+                if(entry.Geometry.BindingFingerprint!=exact.Fingerprint||exact.FullTopologyIndex>=map.Topology.Count||
+                    exact.FullTopologyIndex>=entry.Geometry.BindingKinds.Length||entry.Geometry.BindingKinds[exact.FullTopologyIndex]!=map.Topology[exact.FullTopologyIndex].Kind)continue;
+                var parts=binding.GetSubShapes(exact.Kind==HistoryShapeKind.Edge?ShapeKind.Edge:ShapeKind.Face);
                 try
                 {
-                    foreach(var part in parts.Where(part=>RepairSnapshot.FindTopologyIndex(entry.Geometry.Shape,part)==exact.FullTopologyIndex))
+                    foreach(var part in parts.Where(part=>RepairSnapshot.FindTopologyIndex(binding,part)==exact.FullTopologyIndex))
                     {
                         entry.Presentation.SetSubshapeColor(part,new(1,0.65,0));
                         if(exact.Kind==HistoryShapeKind.Edge)entry.Presentation.SetSubshapeWidth(part,4);
@@ -377,6 +407,7 @@ public sealed partial class OcctViewport : ICadViewport
     public void SetScene(CadScene scene)
     {
         ObjectDisposedException.ThrowIf(disposed,this);
+        CancelSelectionRectangleGesture();
         FinishOccurrenceHandle(false);ClearOccurrenceHandles();
         AbortProgressiveScene();
         var staged=new Dictionary<(OccurrencePath,BodyId),Entry>();
@@ -401,12 +432,13 @@ public sealed partial class OcctViewport : ICadViewport
     public void BeginProgressiveScene(CadScene scene)
     {
         ObjectDisposedException.ThrowIf(disposed,this);
+        CancelSelectionRectangleGesture();
         FinishOccurrenceHandle(false);ClearOccurrenceHandles();
         ArgumentNullException.ThrowIfNull(scene);
         AbortProgressiveScene();
         if(entries.Count!=0)throw new InvalidOperationException("Progressive scene loading requires an empty viewport.");
         progressiveScene=scene;progressiveCount=0;
-        progressiveResourceTicks=progressiveDisplayTicks=progressiveTransformTicks=progressiveModeTicks=progressiveRedrawTicks=0;
+        progressiveResourceTicks=progressiveDisplayTicks=progressiveTransformTicks=progressiveModeTicks=progressiveRedrawTicks=progressiveSourceTicks=0;
     }
     /// <summary>Adds at most maxItems or one time budget worth of objects; returns the committed count.</summary>
     public int AppendProgressiveScene(int maxItems,TimeSpan budget,bool redraw)
@@ -460,7 +492,8 @@ public sealed partial class OcctViewport : ICadViewport
     }
     private GeometryResource Resource(GeometryAssetRef reference)
     {
-        var key=(reference.AssetId,reference.Source,reference.Format);
+        reference.Validate();
+        var key=(reference.AssetId,reference.Source,reference.Format,reference.SerializedReferences,reference.SerializedOccurrences);
         if(geometry.TryGetValue(key,out var resource))return resource;
         resource=new(reference,assets,Context);geometry.Add(key,resource);return resource;
     }
@@ -472,22 +505,31 @@ public sealed partial class OcctViewport : ICadViewport
     }
     private ViewerPresentation CreatePresentation(SceneItem item,GeometryResource resource,bool selected)
     {
-        bool binding=assemblyDatumSelection is not null;
+        bool binding=assemblyDatumSelection is not null||exactSelectionSource is not null;
         bool sourceStyles=item.PreserveSourceStyles&&!selected&&resource.Label is not null&&!binding;
+        long transformStart=System.Diagnostics.Stopwatch.GetTimestamp();
+        using var transform=OcctGeometryBridge.ToNative(!binding&&resource.Label is not null?
+            item.WorldTransform*resource.SourceLocationInverse:item.WorldTransform);
+        if(progressiveScene is not null)progressiveTransformTicks+=System.Diagnostics.Stopwatch.GetTimestamp()-transformStart;
+        ViewerSource? sharedSource=null;
+        if(sourceStyles)
+        {
+            long sourceStart=System.Diagnostics.Stopwatch.GetTimestamp();
+            sharedSource=resource.GetSharedSource(viewer);
+            if(progressiveScene is not null)progressiveSourceTicks+=System.Diagnostics.Stopwatch.GetTimestamp()-sourceStart;
+        }
         long displayStart=System.Diagnostics.Stopwatch.GetTimestamp();
-        var presentation=sourceStyles?viewer.Display(resource.Label!):viewer.Display(
+        var presentation=sharedSource is not null?viewer.Display(sharedSource,transform):viewer.Display(
             binding?resource.GetBindingShape():resource.Shape);
         long displayEnd=System.Diagnostics.Stopwatch.GetTimestamp();
         if(progressiveScene is not null)progressiveDisplayTicks+=displayEnd-displayStart;
         try
         {
-            long transformStart=System.Diagnostics.Stopwatch.GetTimestamp();
-            using var transform=OcctGeometryBridge.ToNative(!binding&&resource.Label is not null?
-                item.WorldTransform*resource.SourceLocationInverse:item.WorldTransform);
-            presentation.SetTransform(transform);
-            if(progressiveScene is not null)progressiveTransformTicks+=System.Diagnostics.Stopwatch.GetTimestamp()-transformStart;
             if(!sourceStyles)
             {
+                transformStart=System.Diagnostics.Stopwatch.GetTimestamp();
+                presentation.SetTransform(transform);
+                if(progressiveScene is not null)progressiveTransformTicks+=System.Diagnostics.Stopwatch.GetTimestamp()-transformStart;
                 var color=OcctGeometryBridge.ToXdeColor(selected?0xFFFF6B0Au:item.Argb);
                 presentation.SetColor(new(color.Red,color.Green,color.Blue));presentation.SetTransparency(1-color.Alpha);
             }
@@ -528,6 +570,7 @@ public sealed partial class OcctViewport : ICadViewport
     }
     public void FitAll()
     {
+        CancelSelectionRectangleGesture();
         workGrid?.Dispose();workGrid=null;
         foreach(var presentation in originPresentations)presentation.Dispose();originPresentations.Clear();
         constructionGhost?.Dispose();constructionGhost=null;
@@ -535,7 +578,7 @@ public sealed partial class OcctViewport : ICadViewport
         RefreshHandlesForCamera();
     }
     public void SetProjection(CadProjection projection)
-    {viewer.SetProjection(ToViewerProjection(projection));RefreshHandlesForCamera();}
+    {CancelSelectionRectangleGesture();viewer.SetProjection(ToViewerProjection(projection));RefreshHandlesForCamera();}
     public CadCamera CaptureProjectionTarget(CadProjection projection)
     {
         var current=CaptureCamera();
@@ -588,7 +631,7 @@ public sealed partial class OcctViewport : ICadViewport
     {
         mode=displayMode;foreach(var e in entries.Values)e.Presentation.SetDisplayMode(mode==CadDisplayMode.Shaded?ViewerDisplayMode.Shaded:ViewerDisplayMode.Wireframe);viewer.Redraw();
     }
-    public void Resize(){viewer.Resize();RefreshWorkGridScale();RefreshHandlesForCamera();}
+    public void Resize(){CancelSelectionRectangleGesture();viewer.Resize();RefreshWorkGridScale();RefreshHandlesForCamera();}
     public void Redraw()=>viewer.Redraw();
     public bool HasPointerCapture=>pressedButtons!=0;
     public void PointerMoved(int x,int y,int buttons,int modifiers)
@@ -602,12 +645,15 @@ public sealed partial class OcctViewport : ICadViewport
         var navigationButtons=buttons&pressedButtons;
         viewer.Input.PointerMoved(x,y,(ViewerPointerButtons)navigationButtons,(ViewerModifierKeys)modifiers);
         if(navigationButtons!=0)RefreshHandlesForCamera();
+        UpdateSelectionRectangle(x,y,buttons);
         UpdateCubeHover(x,y);
     }
     public void PointerPressed(int button,int x,int y,int modifiers)
     {
         NavigationStarted?.Invoke(this,EventArgs.Empty);
+        if(ClearSelectionRectangle())viewer.Redraw();
         lastX=x;lastY=y;pressedButtons|=1<<button;
+        selectionDragAllowed=button==0&&pressedButtons==1;
         if(button==0&&viewer.HitViewCubeControl(x,y) is not null)
         {cubeClick=true;pressX=x;pressY=y;selectionClick=true;return;}
         if(button==0&&!constructing&&modifiers==0&&TryStartSolidHandle(x,y))
@@ -621,6 +667,10 @@ public sealed partial class OcctViewport : ICadViewport
     public void PointerReleased(int button,int x,int y,int modifiers)
     {
         if((pressedButtons&(1<<button))==0)return; // Late release after capture loss must not clear model selection.
+        bool rectangleSelection=button==0&&selectionDragAllowed&&pressedButtons==1&&!constructing&&!cubeClick&&!selectionClick&&
+            Math.Abs(x-pressX)>2&&Math.Abs(y-pressY)>2;
+        if(button==0)selectionDragAllowed=false;
+        if(ClearSelectionRectangle())viewer.Redraw();
         pressedButtons&=~(1<<button);lastX=x;lastY=y;
         if(button==0&&dragOccurrence is not null)
         {MoveOccurrenceHandle(x,y);FinishOccurrenceHandle(true);return;}
@@ -638,10 +688,11 @@ public sealed partial class OcctViewport : ICadViewport
         }
         if(constructing&&button==0){ConstructionPointer?.Invoke(this,(x,y,true));return;}
         var selected=viewer.Input.PointerReleased(Button(button),x,y);
+        if(rectangleSelection)selected=viewer.SelectRectangle(pressX,pressY,x,y);
         RefreshWorkGridScale();
         RefreshHandlesForCamera();
-        bool clicked=button==0&&selectionClick;selectionClick=false;
-        if(!clicked)return;
+        bool selectionGesture=button==0&&(selectionClick||rectangleSelection);selectionClick=false;
+        if(!selectionGesture)return;
         if(assemblyDatumSelection is {} datumKind)
         {
             var picked=viewer.GetSelectedItems();
@@ -691,14 +742,21 @@ public sealed partial class OcctViewport : ICadViewport
                 if(exactSelectionSource is {} owner&&pickedItems.Count==1&&entries.Count==1)
                 {
                     var entry=entries.Values.Single();
-                    using var map=RepairSnapshot.Create(entry.Geometry.Shape);
-                    int index=RepairSnapshot.FindTopologyIndex(entry.Geometry.Shape,pickedItems[0].Shape);
-                    if(index>=0&&index<map.Topology.Count&&map.Topology[index].Kind==pickedItems[0].Shape.Kind)
+                    var binding=entry.Geometry.GetBindingShape();
+                    using var map=RepairSnapshot.Create(binding);
+                    int index=RepairSnapshot.FindTopologyIndex(binding,pickedItems[0].Shape);
+                    if(index<0)System.Diagnostics.Trace.WriteLine($"Exact topology pick rejected: binding={binding.Kind}, selected={pickedItems[0].Shape.Kind}, index={index}.");
+                    if(index>=0&&index<map.Topology.Count&&index<entry.Geometry.BindingKinds.Length&&
+                        map.Topology[index].Kind==pickedItems[0].Shape.Kind&&entry.Geometry.BindingKinds[index]==pickedItems[0].Shape.Kind)
                         exact=new(owner.Document,owner.Feature,entry.Item.Geometry.Revision,entry.Item.Geometry.AssetId,
-                            map.Fingerprint,index,kind==TopologyKind.Edge?HistoryShapeKind.Edge:HistoryShapeKind.Face,
+                            entry.Geometry.BindingFingerprint,index,kind==TopologyKind.Edge?HistoryShapeKind.Edge:HistoryShapeKind.Face,
                             OcctGeometryKernel.HistoryAdapterVersion);
                 }
-                if(exactSelectionSource is not null)LocalTopologySelected?.Invoke(this,new(value,exact));
+                if(exactSelectionSource is not null)
+                {
+                    if(exact is null)System.Diagnostics.Trace.WriteLine($"Exact topology selection unavailable: items={pickedItems.Count}, entries={entries.Count}, requested={kind}.");
+                    LocalTopologySelected?.Invoke(this,new(value,exact));
+                }
                 else BoxSubshapeSelected?.Invoke(this,value);
             }
             finally{foreach(var item in pickedItems)item.Dispose();}
@@ -715,17 +773,20 @@ public sealed partial class OcctViewport : ICadViewport
     }
     public void CancelInput()
     {
+        bool rectangleShown=ClearSelectionRectangle();
         FinishOccurrenceHandle(false);
         FinishSolidHandle(false);
         var released=(pressedButtons&4)!=0?ViewerPointerButton.Right:ViewerPointerButton.Middle;
-        pressedButtons=0;selectionClick=false;cubeClick=false;
+        pressedButtons=0;selectionClick=false;selectionDragAllowed=false;cubeClick=false;
         // preview.26 clears any pressed button on release. Neither navigation button selects.
         viewer.Input.PointerReleased(released,lastX,lastY);
+        if(rectangleShown)viewer.Redraw();
     }
     public void ClearSelection()=>viewer.ClearSelection();
     public void MouseWheel(int delta,int x,int y,int modifiers)
     {
         NavigationStarted?.Invoke(this,EventArgs.Empty);
+        CancelSelectionRectangleGesture();
         viewer.Input.MouseWheel(delta,x,y,(ViewerModifierKeys)modifiers);
         RefreshWorkGridScale();
         RefreshHandlesForCamera();
@@ -738,6 +799,7 @@ public sealed partial class OcctViewport : ICadViewport
     }
     public void RestoreCamera(CadCamera c)
     {
+        CancelSelectionRectangleGesture();
         viewer.Rendering.SetCamera(new(new(c.Eye.X,c.Eye.Y,c.Eye.Z),new(c.Target.X,c.Target.Y,c.Target.Z),new(c.Up.X,c.Up.Y,c.Up.Z),
             c.Aspect,c.Scale,c.FieldOfViewY,c.NearPlane,c.FarPlane,c.Perspective,c.AutoFitDepth));
         RefreshWorkGridScale();
@@ -758,6 +820,7 @@ public sealed partial class OcctViewport : ICadViewport
     public void Dispose()
     {
         if(disposed)return;
+        ClearSelectionRectangle();
         FinishOccurrenceHandle(false);ClearOccurrenceHandles();
         FinishSolidHandle(false);ClearSolidHandles();
         AbortProgressiveScene();
@@ -775,6 +838,8 @@ public sealed partial class OcctViewport : ICadViewport
         private readonly GeometryAssetRef reference;
         private readonly IAssetStore assets;
         private Shape? bindingShape;
+        private ViewerSource? sharedSource;
+        public bool HasSharedSource=>sharedSource is not null;
         public XdeContextResource? SourceContext {get;}
         public Shape Shape {get;}
         public string BindingFingerprint {get;private set;}="";
@@ -784,11 +849,15 @@ public sealed partial class OcctViewport : ICadViewport
         public GeometryResource(GeometryAssetRef reference,IAssetStore assets,Func<XdeSourceRef,XdeContextResource> context)
         {
             this.reference=reference;this.assets=assets;
-            lease=assets.Acquire(reference.AssetId);
+            lease=GeometryAssetLease.Acquire(reference,assets);
             try
             {
                 if(reference.Source is {} source)
                 {
+                    // Source styling does not excuse invalid declared boundary evidence.
+                    // Validate actual native decoding before constructing the XDE presentation.
+                    if(reference.SerializedReferences is not null||reference.SerializedOccurrences is not null)
+                    {using var checkedBoundary=OcctGeometryBridge.ReadShape(reference,assets);}
                     SourceContext=context(source);Label=SourceContext.Document.GetLabel(source.DefinitionEntry);
                     Shape=Label.Shape;using var location=Label.Location;using var t=location.ToTransform();
                     SourceLocationInverse=OcctGeometryBridge.FromNative(t).Inverse();
@@ -810,7 +879,11 @@ public sealed partial class OcctViewport : ICadViewport
             }
             catch{created.Dispose();throw;}
         }
-        public void Dispose(){bindingShape?.Dispose();Shape.Dispose();lease.Dispose();}
+        // The cache includes declared member/occurrence descriptors as well as immutable
+        // BRep/XDE assets; resource ownership retains every boundary asset until pruning.
+        public ViewerSource GetSharedSource(OcctViewer owner)
+            =>sharedSource??=Label is {} label?owner.CreateSource(label):owner.CreateSource(Shape);
+        public void Dispose(){sharedSource?.Dispose();bindingShape?.Dispose();Shape.Dispose();lease.Dispose();}
     }
     private sealed class XdeContextResource : IDisposable
     {

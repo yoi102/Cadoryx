@@ -23,6 +23,8 @@ public partial class AiAssistantToolboxViewModel : CadToolboxViewModelBase, IDis
     private readonly ICadCommandLineService commands;
     private AgentConversation conversation = new();
     private CadDocumentViewModel? document;
+    private CadWorkspaceAuthoring? workspace;
+    internal void BindWorkspace(CadWorkspaceAuthoring value) => workspace = value;
     private CancellationTokenSource? running;
     private Task resetTask = Task.CompletedTask;
     private CancellationTokenSource? modelsCancellation;
@@ -68,8 +70,15 @@ public partial class AiAssistantToolboxViewModel : CadToolboxViewModelBase, IDis
     public void Bind(CadDocumentViewModel? value)
     {
         if (ReferenceEquals(document, value)) return;
+        if (workspace?.IsTransitioning == true)
+        {
+            document = value;
+            Messages.Add(new CadChatEntry("System", value is null ? "No active document." : $"Active document: {value.Session.Snapshot.Name}"));
+            return;
+        }
         running?.Cancel(); conversationVersion++; document = value; conversation = new AgentConversation();
         resetTask = codex.ResetConversationAsync();
+        ConnectionStatus = "Ready";
         Attachments.Clear();
         Messages.Clear();
         Messages.Add(new CadChatEntry("System", value is null ? "No active document." : $"Active document: {value.Session.Snapshot.Name}"));
@@ -239,7 +248,7 @@ public partial class AiAssistantToolboxViewModel : CadToolboxViewModelBase, IDis
         try
         {
             await resetTask;
-            var toolset = settings.EnableCadTools ? new CadAgentToolset(commands, selectedDocument) : null;
+            var toolset = settings.EnableCadTools ? new CadAgentToolset(commands, selectedDocument, workspace) : null;
             var context = selectedDocument is null || selectedDocument.IsDetached ? "No active document." :
                 $"Active document: {selectedDocument.Session.Snapshot.Name}; bodies: {selectedDocument.Session.Snapshot.Bodies.Count}; selected: {selectedDocument.Selection.Items.Length}.";
             if (settings.Provider == AiAssistantProvider.Codex)
@@ -283,11 +292,12 @@ public partial class AiAssistantToolboxViewModel : CadToolboxViewModelBase, IDis
             AgentRunEventKind.AssistantMessage => entry.Content,
             AgentRunEventKind.ToolResult => $"{entry.ToolName}: {entry.Content}",
             AgentRunEventKind.ContextReduced => "Context was shortened to fit the model window.",
+            AgentRunEventKind.EmptyResponseRetry => Strings.AiEmptyResponseRetry,
             _ => null
         };
         if (!string.IsNullOrWhiteSpace(content))
         {
-            void Add() { if (version != conversationVersion) return; Messages.Add(new CadChatEntry(entry.Kind == AgentRunEventKind.ToolResult ? "Tool" : "Assistant", content)); while (Messages.Count > 200) Messages.RemoveAt(0); }
+            void Add() { if (version != conversationVersion) return; Messages.Add(new CadChatEntry(entry.Kind == AgentRunEventKind.ToolResult ? "Tool" : entry.Kind == AgentRunEventKind.EmptyResponseRetry ? "System" : "Assistant", content)); while (Messages.Count > 200) Messages.RemoveAt(0); }
             if (uiContext is null || ReferenceEquals(SynchronizationContext.Current, uiContext)) Add();
             else uiContext.Post(_ => Add(), null);
         }

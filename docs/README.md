@@ -1,8 +1,6 @@
-# Cadoryx
+# Cadoryx 文档入口
 
-基于 WPF / .NET 10 和 OcctSharp 的桌面 3D CAD。窗口布局沿用 Direct2dCad 的 Ribbon、可停靠工具箱、多文档区域和状态栏；建模数据按三维零件、装配实例、特征和精确 BRep 重新设计。
-
-想知道目前做到哪里、哪些仍未实现或尚未验收，请先看[当前进度与剩余工作](STATUS.md)。M0–M13 的限定功能已有对应本机证据；M14 性能目标仍未达成，M15 已推进样条和多来源 STEP 精确检查但尚未完成。新机器交付验收也尚未完成。
+2026-10-11，status196：**按用户要求暂停于本地提交检查点；A–F未全部完成，G暂缓。** 当前应用source1000/SDK26与隔离候选分列，详见[当前状态](STATUS.md)、[暂停检查点](AF_CHECKPOINT_2026-10-11.md)和[A–F跟踪](AF_IMPLEMENTATION_TRACKER.md)。旧重复过程记录见[历史入口快照](history/docs_README_BEFORE_CHECKPOINT_20261011.md)。
 
 ## 设计入口
 
@@ -19,7 +17,31 @@
 | [局部结果精确拓扑](EXACT_LOCAL_TOPOLOGY.md) | B2d1–d4 生成边/面拾取、结果倒角、精确绑定和冻结重选 |
 | [视口鼠标建模](VIEWPORT_CONSTRUCTION.md) | XY 工作网格、显示/间距/吸附设置、基础形体鼠标尺寸与预览 |
 | [实施路线与验收](ROADMAP.md) | 每个阶段的交付、验证及本轮完成边界 |
-| [当前进度与剩余工作](STATUS.md) | M0–M15 结论、功能缺口、环境与发布门禁 |
+| [当前进度与剩余工作](STATUS.md) | M0–M17 结论、功能缺口、环境与发布门禁 |
+| [3D CAD 能力缺口与后续实施建议](CAD_PRODUCT_GAPS.md) | 当前产品能力、24 项缺口、建议优先级/实施批次与完成标准 |
+| [B1 草图编辑与解析曲线旋转](B1_SKETCH_EDIT_AND_REVOLVE.md) | 直线修剪/延伸、约束与引用规则、解析曲线旋转、features v22 和本机验证 |
+| [B2 解析曲线编辑、偏移与投影](B2_CURVE_EDIT_OFFSET_PROJECTION.md) | 直线/圆/弧编辑、独立偏移、草图关联投影、驱动重算及 sketches v7 |
+| [B3 闭合轮廓偏移与基本关系](B3_LOOP_OFFSET_AND_BASIC_RELATIONS.md) | 单闭环解析尖角偏移、中点/对称约束、局部求解及 sketches v8 |
+| [B4 曲线端点平滑相切](B4_ENDPOINT_TANGENCY.md) | 直线—圆弧/圆弧—圆弧唯一共享端点、显式平滑分支、解析求解及 sketches v9 |
+| [B5 Bézier 与样条端点平滑相切](B5_PARAMETRIC_ENDPOINT_TANGENCY.md) | 有限曲线端点 G1、样条首尾身份捕捉、控制多边形拒绝及 sketches v10 |
+| [B6 指定半径草图圆角](B6_SKETCH_FILLET.md) | 两共享端点直线解析裁剪、G1 关系、约束清理、旧轮廓阻断与本机证据 |
+| [B7 草图收尾](B7_SKETCH_FINISHING.md) | 圆弧尺寸、倒角、多角编辑、显式轮廓更新和三语言验收 |
+| [A–F 全部实施跟踪](AF_IMPLEMENTATION_TRACKER.md) | 前六大批授权范围、实现与验收状态；第七批暂缓 |
+| [B18 原生历史来源及最终目标](B18_GUIDED_HISTORY_DOMAINS.md) | 独立SDK24实际来源/目标成员、1210两配置及私有锁包验证；完整历史与应用接入待办 |
+| [B18 同图原生保存桥](B18_NATIVE_SERIALIZED_REFERENCE_PLAN.md) | 七种图/278原生引用机制验证、同图与独立解码边界，以及SDK/资产守卫后续要求 |
+| [C1 参数表达式](C1_PARAMETER_EXPRESSIONS.md) | 命名/单位、依赖循环、设计值驱动/参考、原子重算和三语言参数窗口 |
+| [C2 关联基准面](C2_ASSOCIATED_DATUMS.md) | 持久平面/来源、参数/草图/工作平面关联、原子重算及验收 |
+| [C3 镜像与阵列](C3_MIRROR_AND_PATTERNS.md) | 结果副本、完整独立化、单基体孔重放1046/1046及同版门禁；草图加/去料重放1068/1068与同版门禁PASS；装配实例核心54联合PASS、窗口验收中 |
+| [C3 起始规划](C3_MIRROR_AND_PATTERN_PLAN.md) | 结果复制、特征重放与装配实例的边界 |
+| [C4 标准孔](C4_STANDARD_HOLES.md) | 统一孔型、常用间隙尺寸、入口方向、参数/基准和真实验收边界 |
+| [D1 高级拉伸](D1_ADVANCED_EXTRUSION.md) | 正反/对称/双向、加料/去料、贯穿及精确平面终止、原子重算/文件/生产编辑 |
+| [D2 扫掠放样实施契约](D2_SWEEP_LOFT_PLAN.md) | 有序路径/截面、实体与表面、联合依赖、失败及原生自干涉验证要求 |
+| [D2 当前实施记录](D2_SWEEP_LOFT.md) | 几何、来源、存储和生产窗口已接入；44专项及三语言实际控件通过 |
+| [D3 当前实施记录](D3_SHELL_DRAFT.md) | 本地限定范围及最终联合门禁完成：专项46/46、全量966/966、Release0/0；真实指针另列 |
+| [C2 扩展基准实施](C2_EXTENDED_DATUMS.md) | 平面/轴/点、原始精确资产、冻结重选、基准轴旋转和document28；最终1013/1013与同版联合门禁PASS |
+| [C2 精确来源/轴点补全契约](C2_EXTENDED_DATUMS_PLAN.md) | 完整G09范围；精确来源/轴点/相交已接入，余项和证据见实施记录 |
+| [D3 抽壳/拔模契约](D3_SHELL_DRAFT_PLAN.md) | 锁定消费者43/43、精确去除面/逐面程序、原子失败与生产编辑要求 |
+| [D 实体扩展契约](D1_ENTITY_EXTENSION_PLAN.md) | 拉伸方向/终止、扫掠放样、抽壳拔模及锁定包消费证据 |
 | [自动测试与覆盖率](TEST_COVERAGE.md) | xUnit 覆盖率口径、按模块结果、复现脚本及补测重点 |
 | [M10–M11 与交付验收规划](M10_M11_DELIVERY_PLAN.md) | 完整装配、二维工程图、安装器与环境的范围、数据结构和验收门槛 |
 | [M10 完整装配](M10_ASSEMBLY.md) | 解析 BRep 基准、闭环求解、自由度/冗余、跨文档依赖与本机验收 |
@@ -73,7 +95,7 @@ M4-T1-H1 建立局部算法历史证据、八节存储和诊断解析，其当�
 
 M4-T1 已实现 Box 六面/十二边语义引用与持久化；M4-T2 接通 MetroWindow 面/边拾取、失效重选和单边圆角/倒角预览确认；M4-T3-A/B1 增加既有局部特征参数编辑及单边双距离倒角。支持边界见 [拓扑引用基础](TOPOLOGY_REFERENCES.md)和 [局部建模](LOCAL_FEATURES.md)。
 
-`.cadoryx` 采用 ZIP 容器、JSON 清单、MessagePack 3.1.8 数字键 DTO 和独立 BRep/XDE 资产。当前十三节为 features/document v20、structure v3、presentation/history/feature-bindings/drawings v2、sketches v6、geometry/topology/history-queries/external-parts/engineering-review v1；旧文件沿显式迁移链升级，v19→v20 生成空图纸节，drawings v1→v2 迁移新增制图惯例、公差与局部视图字段。资产目录记录媒体类型、编码/格式版本和内核来源。模型数据不直接序列化 ViewModel 或 native 对象。
+`.cadoryx` 采用 ZIP 容器、JSON 清单、MessagePack 3.1.8 数字键 DTO 和独立 BRep/XDE 资产。当前十三节为 features v21、document v20、structure v3、presentation/history/feature-bindings/drawings v2、sketches v6、geometry/topology/history-queries/external-parts/engineering-review v1；旧文件沿显式迁移链升级，features v20→v21 增加特征抑制状态，document v19→v20 生成空图纸节，drawings v1→v2 迁移新增制图惯例、公差与局部视图字段。资产目录记录媒体类型、编码/格式版本和内核来源。模型数据不直接序列化 ViewModel 或 native 对象。
 
 | 格式 | 读取 | 写入 | 用途 |
 |---|---|---|---|
@@ -86,7 +108,7 @@ M4-T1 已实现 Box 六面/十二边语义引用与持久化；M4-T2 接通 Metr
 
 ## 构建与验证
 
-需要 Windows x64、.NET SDK 10.0.401 和可用 OpenGL 桌面环境。`NuGet.Config` 使用相邻 OcctSharp 内层 `artifacts/packages` 作为本地源；当前固定本地开发包 `8.0.1-preview.28.cadoryx.assembly.partner.1`。该版本未公开发布，移植时需提供同版本托管／原生包或从相邻 OcctSharp 源码构建。H2-B2 的历史构建说明见[接入目录](../integrations/occtsharp-boolean-history/README.md)。
+需要 Windows x64、.NET SDK 10.0.401 和可用 OpenGL 桌面环境。`NuGet.Config` 使用相邻 OcctSharp 内层 `artifacts/packages` 作为本地源；当前固定本地开发包 `8.0.1-preview.28.cadoryx.handles.gizmo.2`，以 `Directory.Build.props` 和项目 lock 文件为准。该版本未公开发布，移植时需提供同版本托管／原生包或从相邻 OcctSharp 源码构建。H2-B2 的历史构建说明见[接入目录](../integrations/occtsharp-boolean-history/README.md)。
 
 ```powershell
 dotnet build Cadoryx.slnx -c Release
@@ -117,3 +139,18 @@ dotnet run --project Cadoryx.wpf -c Release
 # 许可与签名
 
 - [Cadoryx MIT 许可与本地测试签名](LICENSING_AND_TEST_SIGNING.md)
+
+具名模板库/跨文档文件与作者图纸内容见[F3b](F3B_TEMPLATE_LIBRARY.md)。
+
+当前有效制造孔表、原生尺寸/邻接证明与保存重验见[F3c](F3C_CURRENT_MANUFACTURING_HOLE_TABLES.md)；关联C2坐标系见F3d；进一步制造规则继续。
+
+孔表关联C2基准、失效/解除与制图比例见[F3d](F3D_ASSOCIATED_HOLE_COORDINATES.md)；完整圆柱尺寸、有类型及有序/共同制造基准、存储重验和最新1597全量/五窗口/三语言PDF证据见[F3e记录](F3E_TYPED_DATUM_SYSTEMS.md)；进一步尺寸类型/规则与新特征附着历史继续。
+
+原始附着见[F3f记录](F3F_ORIGINAL_ATTACHMENT_HISTORY.md)，沉孔/沉头及含种子孔阵列组合见[F3g](F3G_COMPOSED_DRILLING_HISTORY.md)：1658全量/七窗口、27截图/12矢量PDF，history3/drawings11。[F3h完整棱柱/矩形槽双面尺寸与中面](F3H_PLANAR_SIZE_FEATURES.md)随后完成28专项/1683全量/八窗口、33截图/15矢量PDF，drawings12。[F4交换实测与FreeCAD往返](F4_MEASURED_EXCHANGE.md)随后完成87联合/1722全量、四窗口、19截图/10矢量PDF、30外部读取/20回传。完整外部元数据仍未验收；接着[F5命令与AI](F5_COMMAND_AND_AGENT_PLAN.md)，整个A–F继续，G暂缓。
+
+- [B18 稳定关联端点与本批证据](B18_ASSOCIATIVE_ENDPOINTS.md)
+- [B18 下一阶段作者消费者](B18_EXPRESSION_AUTHORING_COMPLETION_PLAN.md)
+
+- [B18 整组区域的明确来源重选](B18_EXPRESSION_REGION_RESELECTION.md)
+
+- [B18实时表达式链提供的生成点耦合](B18_LIVE_EXPRESSION_POINT_COUPLING_PLAN.md)：八文件及270场景只通过语法，须编译/运行、完整回归及生产窗口，原直接点/独立拒绝保持。

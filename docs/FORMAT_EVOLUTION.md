@@ -1,5 +1,7 @@
 # M3-V：格式演进与存储基准
 
+2026-10-07 当前连接作者格式为 writer **0.7.8**、document **60**、`sketch-regions` **JSON2 / MessagePack3**，仍18分区。完整有向连接表、旧算法空表语义、严格固定中间格式迁移、SameValues/独立原生replay、C1守卫与来源重选已接入；当前完整Release4129/4129和两配置相关2402/2402通过，同构建三语言窗口及通用窗口/圆盘已验。相切动态求解仍待接入，正式求解器保持lm-svd.14。详见[当前连接语义、迁移和证据](B18_REGION_CONNECTION_BRANCHES.md)。本页后续数字保留各自历史阶段背景。
+
 实施与验证日期：2026-09-12。当前存储使用 MessagePack 3.1.8、OcctSharp 8.0.1-preview.26、OCCT 8.0.1。本阶段完成资产格式目录、跨编码/跨节迁移、固定旧文件兼容和存储测量；完整 M3 的文件系统故障矩阵仍未完成。
 
 M4-S1 后续更新：当前格式已在此基线上增加 sketches v1，将 document 提升为 v3，写出六节和 applicationVersion=0.3.0。本文以下协议与性能数字保留为 M3-V 的历史验收记录；当前草图迁移和证据见 [SKETCH_FOUNDATION](SKETCH_FOUNDATION.md)。

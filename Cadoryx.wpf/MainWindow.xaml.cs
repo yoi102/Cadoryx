@@ -35,6 +35,7 @@ public partial class MainWindow
     {
         InitializeComponent();
         _viewModel = viewModel;
+        _viewModel.InitializeWorkspaceTools();
         _viewModel.TechnicalDrawingRequested+=OnTechnicalDrawingRequested;
         _toolboxLayoutPersistence = toolboxLayoutPersistence;
         DataContext = _viewModel;

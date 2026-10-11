@@ -37,7 +37,7 @@
                         <Button Content="{I18N {x:Static r:LangKeys.NoMaterial}}" Command="{Binding Document.ClearCreationMaterialCommand}"/>
                     </StackPanel>
                 </Expander>
-                <ComboBox SelectedValue="{Binding Document.ToolKind}"
+                <ComboBox x:Name="ModelingToolInput" SelectedValue="{Binding Document.ToolKind}"
                           SelectedValuePath="Tag"
                           Margin="0,0,0,8">
                     <ComboBoxItem Content="{I18N {x:Static r:LangKeys.Box}}" Tag="Box" />
@@ -54,10 +54,10 @@
                     <StackPanel IsEnabled="{Binding Document.IsCreating}">
                         <CheckBox Content="{I18N {x:Static r:LangKeys.AssociateSketch}}" IsChecked="{Binding Document.UseLinkedSketch}" IsEnabled="{Binding Document.CanChangeSketchAssociation}" Margin="0,0,0,6"/>
                         <TextBlock Text="{I18N {x:Static r:LangKeys.SourceSketchLoop}}"/>
-                        <ComboBox ItemsSource="{Binding Document.SketchProfiles}" SelectedItem="{Binding Document.SelectedSketchProfile}" DisplayMemberPath="Label" IsEnabled="{Binding Document.CanChooseSketchProfile}" Margin="0,4,0,8"/>
-                        <Expander Header="{I18N {x:Static r:LangKeys.ProfileRegions}}" IsEnabled="{Binding Document.CanChooseSketchHoles}" Margin="0,0,0,10">
+                        <ComboBox x:Name="SketchProfileInput" ItemsSource="{Binding Document.SketchProfiles}" SelectedItem="{Binding Document.SelectedSketchProfile}" DisplayMemberPath="Label" IsEnabled="{Binding Document.CanChooseSketchProfile}" Margin="0,4,0,8"/>
+                        <Expander x:Name="ProfileRegionsExpander" Header="{I18N {x:Static r:LangKeys.ProfileRegions}}" IsEnabled="{Binding Document.CanChooseSketchHoles}" Margin="0,0,0,10">
                          <StackPanel Margin="8,8,8,10">
-                            <Button Content="{I18N {x:Static r:LangKeys.AutoNestRegions}}"
+                            <Button x:Name="AutoNestRegionsButton" Content="{I18N {x:Static r:LangKeys.AutoNestRegions}}"
                                     Command="{Binding Document.AutoNestSketchRegionsCommand}" Margin="0,0,0,4"/>
                             <TextBlock Text="{Binding Document.AutoNestStatus}" TextWrapping="Wrap" Margin="0,0,0,6"/>
                             <TextBlock Text="{I18N {x:Static r:LangKeys.SketchCircularHoles}}" Margin="0,0,0,4"/>
@@ -104,11 +104,11 @@
                     <TextBlock Text="{Binding Document.ProfileInputHint}" TextWrapping="Wrap" Opacity="0.7" Margin="0,0,0,8"/>
                 </StackPanel>
                 <TextBlock Text="{I18N {x:Static r:LangKeys.Name}}" />
-                <TextBox Text="{Binding Document.ObjectName, UpdateSourceTrigger=PropertyChanged}"
+                <TextBox x:Name="ModelingNameInput" Text="{Binding Document.ObjectName, UpdateSourceTrigger=PropertyChanged}"
                          Margin="0,2,0,8" />
 
                 <TextBlock Text="{I18N {x:Static r:LangKeys.SizeXRadius}}" />
-                <mah:NumericUpDown Value="{Binding Document.SizeX, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                <mah:NumericUpDown x:Name="ModelingSizeXInput" Value="{Binding Document.SizeX, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                    Minimum="0.001"
                                    Margin="0,2,0,8" />
 
@@ -118,13 +118,13 @@
                                    Margin="0,2,0,8" />
 
                 <TextBlock Text="{I18N {x:Static r:LangKeys.SizeZDistance}}" />
-                <mah:NumericUpDown Value="{Binding Document.SizeZ, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                <mah:NumericUpDown x:Name="ModelingSizeZInput" Value="{Binding Document.SizeZ, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                    Minimum="0.001"
                                    Margin="0,2,0,8" />
 
                 <TextBlock Text="{I18N {x:Static r:LangKeys.PositionXYZ}}" />
                 <UniformGrid Columns="3" Margin="0,2,0,8" IsEnabled="{Binding Document.IsFrozenProfile}">
-                    <mah:NumericUpDown Value="{Binding Document.PositionX, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                    <mah:NumericUpDown x:Name="ModelingPositionXInput" Value="{Binding Document.PositionX, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                        HideUpDownButtons="True" />
                     <mah:NumericUpDown Value="{Binding Document.PositionY, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                        HideUpDownButtons="True" />
@@ -132,13 +132,25 @@
                                        HideUpDownButtons="True" />
                 </UniformGrid>
 
+                <StackPanel Margin="0,2,0,8">
+                    <StackPanel.Style><Style TargetType="StackPanel"><Setter Property="Visibility" Value="Collapsed" />
+                        <Style.Triggers><DataTrigger Binding="{Binding Document.IsRevolveTool}" Value="True"><Setter Property="Visibility" Value="Visible" /></DataTrigger></Style.Triggers>
+                    </Style></StackPanel.Style>
+                    <TextBlock Text="{I18N {x:Static r:LangKeys.RevolveAxis}}" />
+                    <ComboBox x:Name="RevolveAxisInput" ItemsSource="{Binding Document.RevolveAxes}" SelectedItem="{Binding Document.SelectedRevolveAxis}" DisplayMemberPath="Label" Margin="0,2,0,4" />
+                    <TextBlock Text="{I18N {x:Static r:LangKeys.RevolveAxisHint}}" TextWrapping="Wrap" Margin="0,0,0,4" />
+                    <WrapPanel>
+                        <Button x:Name="UseLocalRevolveAxisButton" Content="{I18N {x:Static r:LangKeys.RevolveLocalAxis}}" Command="{Binding Document.UseLocalRevolveAxisCommand}" Margin="0,0,4,0" />
+                        <Button x:Name="DetachRevolveAxisButton" Content="{I18N {x:Static r:LangKeys.DatumDetach}}" Command="{Binding Document.DetachRevolveAxisCommand}" IsEnabled="{Binding Document.CanDetachRevolveAxis}" />
+                    </WrapPanel>
+                </StackPanel>
                 <TextBlock Text="{I18N {x:Static r:LangKeys.RotationAngle}}" />
-                <mah:NumericUpDown Value="{Binding Document.AngleDegrees, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                <mah:NumericUpDown x:Name="RevolveAngleInput" Value="{Binding Document.AngleDegrees, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                    Minimum="0.01"
                                    Maximum="360"
                                    Margin="0,2,0,8" />
 
-                <Expander IsEnabled="{Binding Document.IsFrozenProfile}" Header="{I18N {x:Static r:LangKeys.ExtrudeRevolveProfile}}"
+                <Expander IsEnabled="{Binding Document.CanEditProfilePoints}" Header="{I18N {x:Static r:LangKeys.ExtrudeRevolveProfile}}"
                           Margin="0,0,0,8">
                     <StackPanel Margin="8,8,8,10">
                         <TextBlock Text="{I18N {x:Static r:LangKeys.ProfileInstruction}}"
@@ -166,15 +178,15 @@
                     </StackPanel>
                 </Expander>
 
-                <Button Content="{I18N {x:Static r:LangKeys.CalculatePreview}}"
+                <Button x:Name="ModelingPreviewButton" Content="{I18N {x:Static r:LangKeys.CalculatePreview}}"
                         Command="{Binding Document.PreviewCommand}"
                         Margin="0,4" />
                 <UniformGrid Columns="2">
-                    <Button Content="{I18N {x:Static r:LangKeys.Confirm}}"
+                    <Button x:Name="ModelingConfirmButton" Content="{I18N {x:Static r:LangKeys.Confirm}}"
                             Command="{Binding Document.ConfirmCommand}"
                             IsEnabled="{Binding Document.HasPreview}"
                             Margin="0,4,4,4" />
-                    <Button Content="{I18N {x:Static r:LangKeys.Cancel}}"
+                    <Button x:Name="ModelingCancelButton" Content="{I18N {x:Static r:LangKeys.Cancel}}"
                             Command="{Binding Document.CancelCommand}"
                             Margin="4,4,0,4" />
                 </UniformGrid>
@@ -201,7 +213,7 @@
                  </StackPanel>
                 </Expander>
 
-                <TextBlock Text="{Binding Document.ToolStatus}"
+                <TextBlock x:Name="ModelingStatusText" Text="{Binding Document.ToolStatus}"
                            TextWrapping="Wrap"
                            Margin="0,12" />
             </StackPanel>

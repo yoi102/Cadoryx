@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup><OutputType>Exe</OutputType><PlatformTarget>x64</PlatformTarget><RuntimeIdentifier>win-x64</RuntimeIdentifier></PropertyGroup>
+  <Target Name="RequireFrozenApplication" BeforeTargets="ResolveReferences" Condition="'$(FrozenCadoryx)'==''"><Error Text="Pass -p:FrozenCadoryx=absolute frozen candidate; this consumer must not rebuild Cadoryx." /></Target>
+  <ItemGroup>
+    <Reference Include="Cadoryx.Db"><HintPath>$(FrozenCadoryx)/Cadoryx.Db.dll</HintPath></Reference>
+    <Reference Include="Cadoryx.Commands"><HintPath>$(FrozenCadoryx)/Cadoryx.Commands.dll</HintPath></Reference>
+    <Reference Include="Cadoryx.Editor"><HintPath>$(FrozenCadoryx)/Cadoryx.Editor.dll</HintPath></Reference>
+    <Reference Include="Cadoryx.Kernel.Abstractions"><HintPath>$(FrozenCadoryx)/Cadoryx.Kernel.Abstractions.dll</HintPath></Reference>
+    <Reference Include="Cadoryx.Kernel.Occt"><HintPath>$(FrozenCadoryx)/Cadoryx.Kernel.Occt.dll</HintPath></Reference>
+    <Reference Include="Cadoryx.IO"><HintPath>$(FrozenCadoryx)/Cadoryx.IO.dll</HintPath></Reference>
+    <Reference Include="Cadoryx.Sketching"><HintPath>$(FrozenCadoryx)/Cadoryx.Sketching.dll</HintPath></Reference>
+    <Reference Include="Cadoryx.Lang"><HintPath>$(FrozenCadoryx)/Cadoryx.Lang.dll</HintPath></Reference>
+    <PackageReference Include="MathNet.Numerics" Version="5.0.0" />
+    <PackageReference Include="MessagePack" Version="3.1.8" />
+    <PackageReference Include="PDFsharp" Version="6.2.4" />
+    <PackageReference Include="OcctSharp" Version="[$(OcctSharpVersion)]" />
+    <PackageReference Include="OcctSharp.Native.win-x64" Version="[$(OcctSharpVersion)]" />
+  </ItemGroup>
+</Project>

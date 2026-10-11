@@ -8,6 +8,20 @@
   <ListBox x:Name="OutputList" Grid.Row="0" ItemsSource="{Binding Entries}"
            BorderThickness="0" ScrollViewer.HorizontalScrollBarVisibility="Disabled"
            VirtualizingPanel.IsVirtualizing="True" VirtualizingPanel.VirtualizationMode="Recycling">
+   <ListBox.ItemContainerStyle><Style TargetType="ListBoxItem">
+    <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+    <Setter Property="Padding" Value="0"/>
+    <Setter Property="Background" Value="Transparent"/>
+    <Setter Property="Template"><Setter.Value><ControlTemplate TargetType="ListBoxItem">
+     <Border Background="{TemplateBinding Background}" Padding="{TemplateBinding Padding}" SnapsToDevicePixels="True">
+      <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"/>
+     </Border>
+    </ControlTemplate></Setter.Value></Setter>
+    <Style.Triggers>
+     <Trigger Property="IsMouseOver" Value="True"><Setter Property="Background" Value="#223E5288"/></Trigger>
+     <Trigger Property="IsSelected" Value="True"><Setter Property="Background" Value="#334B6CB7"/></Trigger>
+    </Style.Triggers>
+   </Style></ListBox.ItemContainerStyle>
    <ListBox.ItemTemplate><DataTemplate>
     <Grid Margin="2,3"><Grid.ColumnDefinitions><ColumnDefinition Width="62"/><ColumnDefinition Width="54"/><ColumnDefinition Width="*"/></Grid.ColumnDefinitions>
      <TextBlock Text="{Binding Timestamp,StringFormat={}{0:HH:mm:ss}}" Opacity="0.55" FontSize="11"/>
@@ -28,7 +42,7 @@
   <ListBox x:Name="SuggestionList" Grid.Row="1" ItemsSource="{Binding Suggestions}"
            SelectedItem="{Binding SelectedSuggestion,Mode=TwoWay}" MaxHeight="105" Margin="3,2"
            BorderThickness="0" MouseLeftButtonUp="OnSuggestionMouseUp"/>
-  <Grid Grid.Row="2" Margin="3,4"><Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
+  <Grid Grid.Row="2" Margin="3,4"><Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/><ColumnDefinition Width="Auto"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
    <TextBox x:Name="CommandInput" Text="{Binding CommandText,UpdateSourceTrigger=PropertyChanged}"
             AutomationProperties.Name="{I18N {x:Static r:LangKeys.CommandTerminal}}" KeyDown="OnCommandKeyDown"/>
    <Button Grid.Column="1" Command="{Binding ExecuteCommand}" ToolTip="{I18N {x:Static r:LangKeys.CommandRun}}"
@@ -36,7 +50,12 @@
            Style="{StaticResource MaterialDesignFlatButton}" Width="32" Height="32" Padding="0">
     <md:PackIcon Kind="ArrowRight" Width="18" Height="18"/>
    </Button>
-   <Button Grid.Column="2" Command="{Binding ClearCommand}" ToolTip="{I18N {x:Static r:LangKeys.ClearMessages}}"
+   <Button Grid.Column="2" Command="{Binding ExecuteCancelCommand}" ToolTip="{I18N {x:Static r:LangKeys.Cancel}}"
+           AutomationProperties.Name="{I18N {x:Static r:LangKeys.Cancel}}"
+           Style="{StaticResource MaterialDesignFlatButton}" Width="32" Height="32" Padding="0">
+    <md:PackIcon Kind="StopCircleOutline" Width="18" Height="18"/>
+   </Button>
+   <Button Grid.Column="3" Command="{Binding ClearCommand}" ToolTip="{I18N {x:Static r:LangKeys.ClearMessages}}"
            Style="{StaticResource MaterialDesignFlatButton}" Width="32" Height="32" Padding="0">
     <md:PackIcon Kind="DeleteSweepOutline" Width="17" Height="17"/>
    </Button>

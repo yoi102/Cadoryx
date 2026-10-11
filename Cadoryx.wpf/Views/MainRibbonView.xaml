@@ -302,6 +302,33 @@
                                                  Width="20"
                                                  Height="20" />
                                 </Button>
+                                <Button Command="{Binding EditParametersCommand}" AutomationProperties.AutomationId="EditDocumentParameters" ToolTip="{I18N {x:Static r:LangKeys.DocumentParameters}}">
+                                    <md:PackIcon Kind="FunctionVariant" Width="20" Height="20"/>
+                                </Button>
+                                <Button Command="{Binding EditDatumsCommand}" AutomationProperties.AutomationId="EditDatumPlanes" ToolTip="{I18N {x:Static r:LangKeys.DatumPlanes}}">
+                                    <md:PackIcon Kind="AxisArrow" Width="20" Height="20"/>
+                                </Button>
+                                <Button Command="{Binding EditRepetitionsCommand}" AutomationProperties.AutomationId="EditRepetitions" ToolTip="{I18N {x:Static r:LangKeys.Repetition}}">
+                                    <md:PackIcon Kind="ContentCopy" Width="20" Height="20"/>
+                                </Button>
+                                <Button Command="{Binding EditAssemblyRepetitionsCommand}" AutomationProperties.AutomationId="EditAssemblyRepetitions" ToolTip="{I18N {x:Static r:LangKeys.AssemblyPattern}}">
+                                    <md:PackIcon Kind="ContentDuplicate" Width="20" Height="20"/>
+                                </Button>
+                                <Button Command="{Binding EditHolesCommand}" AutomationProperties.AutomationId="EditHoles" ToolTip="{I18N {x:Static r:LangKeys.Hole}}">
+                                    <md:PackIcon Kind="CircleOutline" Width="20" Height="20"/>
+                                </Button>
+                                <Button Command="{Binding EditExtrusionsCommand}" AutomationProperties.AutomationId="EditExtrusions" ToolTip="{I18N {x:Static r:LangKeys.ExtrusionAdvanced}}">
+                                    <md:PackIcon Kind="ArrowExpandVertical" Width="20" Height="20"/>
+                                </Button>
+                                <Button Command="{Binding SweepCommand}" AutomationProperties.AutomationId="Sweep" ToolTip="{I18N {x:Static r:LangKeys.GuidedSweep}}"><md:PackIcon Kind="VectorCurve" Width="20" Height="20"/></Button>
+                                <Button Command="{Binding ShellCommand}" AutomationProperties.AutomationId="Shell" ToolTip="{I18N {x:Static r:LangKeys.FaceShell}}"><md:PackIcon Kind="CubeOutline" Width="20" Height="20"/></Button>
+                                <Button Command="{Binding DraftCommand}" AutomationProperties.AutomationId="Draft" ToolTip="{I18N {x:Static r:LangKeys.FaceDraft}}"><md:PackIcon Kind="AngleAcute" Width="20" Height="20"/></Button>
+                                <Button Command="{Binding SolidOffsetCommand}" AutomationProperties.AutomationId="SolidOffset" ToolTip="{I18N {x:Static r:LangKeys.SolidOffset}}"><md:PackIcon Kind="ArrowExpandAll" Width="20" Height="20"/></Button>
+                                <Button Command="{Binding PlanarPushPullCommand}" AutomationProperties.AutomationId="PlanarPushPull" ToolTip="{I18N {x:Static r:LangKeys.FacePushPull}}"><md:PackIcon Kind="ArrowUpDown" Width="20" Height="20"/></Button>
+                                <Button Command="{Binding DefeatureCommand}" AutomationProperties.AutomationId="Defeature" ToolTip="{I18N {x:Static r:LangKeys.FaceDefeature}}"><md:PackIcon Kind="Eraser" Width="20" Height="20"/></Button>
+                                <Button Command="{Binding ContourFilletCommand}" AutomationProperties.AutomationId="ContourFillet" ToolTip="{I18N {x:Static r:LangKeys.ContourFillet}}"><md:PackIcon Kind="VectorCurve" Width="20" Height="20"/></Button>
+                                <Button Command="{Binding ContourChamferCommand}" AutomationProperties.AutomationId="ContourChamfer" ToolTip="{I18N {x:Static r:LangKeys.ContourChamfer}}"><md:PackIcon Kind="AngleAcute" Width="20" Height="20"/></Button>
+                                <Button Command="{Binding LoftCommand}" AutomationProperties.AutomationId="Loft" ToolTip="{I18N {x:Static r:LangKeys.GuidedLoft}}"><md:PackIcon Kind="LayersOutline" Width="20" Height="20"/></Button>
                             </StackPanel>
                         </HeaderedContentControl>
                     </StackPanel>

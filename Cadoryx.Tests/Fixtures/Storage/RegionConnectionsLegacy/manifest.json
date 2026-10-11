@@ -1,0 +1,118 @@
+{
+  "writer": "0.7.7",
+  "document": 59,
+  "json": 1,
+  "messagePack": 2,
+  "algorithm": "cadoryx.expression-region-offset.1",
+  "cases": [
+    {
+      "label": "empty",
+      "sketch": "6e4578ba-a2b4-45a7-b277-70e25cbd957c",
+      "document": "4097b349-ec42-459e-8f55-cffc70fe7cc5",
+      "groups": 0,
+      "cadoryx": {
+        "file": "empty.cadoryx",
+        "sha256": "AA5FCC3BD9FB20DD669E2E5EB6227CA8958F24E59F901B8308421B5B3CB6039F"
+      },
+      "json": {
+        "file": "empty.json",
+        "sha256": "A3B303726065CC72BFD3305996555EC70FC346C972A5C2843DF2807B39146B59"
+      },
+      "messagePack": {
+        "file": "empty.msgpack",
+        "sha256": "2FF6516E138A7F95DF94744323B2CA96B24AE9B095742186226B935912820C22"
+      }
+    },
+    {
+      "label": "miter",
+      "sketch": "1311c274-17fb-405f-ae14-e97fdc7829e8",
+      "document": "dfe8020a-48d6-4dd3-8072-810b6aa4b5f6",
+      "groups": 1,
+      "cadoryx": {
+        "file": "miter.cadoryx",
+        "sha256": "B87951BD48BB93BB4C06CB2B5E93CDC7332B36B71CD631D5F950BAD23361ED16"
+      },
+      "json": {
+        "file": "miter.json",
+        "sha256": "86305C4AB18B69A1F25637487ABAC319C3282B041E934EFCD025BA67485E617F"
+      },
+      "messagePack": {
+        "file": "miter.msgpack",
+        "sha256": "37C1B900744DAAE0C1DEA57D444FA3A70A0C20F4F2DAC000DC22C9B2C3FB13EF"
+      }
+    },
+    {
+      "label": "round",
+      "sketch": "18976c7b-be3e-4de4-befc-29ffd78c4494",
+      "document": "72c1883d-b1ab-4b8d-a2ec-671eb6689119",
+      "groups": 1,
+      "cadoryx": {
+        "file": "round.cadoryx",
+        "sha256": "D3C069BBC3C154EFA32F83C31C5628F00F4177AA08F6F13123C53C15DC7CE75D"
+      },
+      "json": {
+        "file": "round.json",
+        "sha256": "4A9E75CB42539FD2E3C654203F38EBB5CEB967B79BA4F38673BD81F14B25C6F5"
+      },
+      "messagePack": {
+        "file": "round.msgpack",
+        "sha256": "31586165156EDD6A515FB3A8BE1995B546837EAC67C412D914669688417F9941"
+      }
+    },
+    {
+      "label": "bevel",
+      "sketch": "728bda96-a775-4f9e-8aa5-13304a23211d",
+      "document": "a4998f8a-0ab7-4801-88ac-b39b71e36ac3",
+      "groups": 1,
+      "cadoryx": {
+        "file": "bevel.cadoryx",
+        "sha256": "E77D40EBF625DECD817CE31535E5C994AD77B97E4869E743A9F5C0205D74D7FE"
+      },
+      "json": {
+        "file": "bevel.json",
+        "sha256": "CD4AD2A3CC7E9BA82776DC0EE9E32462251A7C96A3385C90622CD2363894D731"
+      },
+      "messagePack": {
+        "file": "bevel.msgpack",
+        "sha256": "C1992940837FF20DD68FB8C0ACDECFE35D53B01B0719579AA211F73185FD4D17"
+      }
+    },
+    {
+      "label": "tangent-capsule",
+      "sketch": "9b5fcc2b-503d-445a-bad0-77f7fa8a6ddc",
+      "document": "7d25bfc1-fac8-4f4d-85de-b36a3d8a14ed",
+      "groups": 1,
+      "cadoryx": {
+        "file": "tangent-capsule.cadoryx",
+        "sha256": "2482FB363F58A0078E934D62183135106DE1939A914C049D832E367269D112D2"
+      },
+      "json": {
+        "file": "tangent-capsule.json",
+        "sha256": "48A0DA8CF3AFCE4AE68CDF8B153F0910AC36CF6DAAF69D1D94F1E588EDBA3F69"
+      },
+      "messagePack": {
+        "file": "tangent-capsule.msgpack",
+        "sha256": "57D697B8B11AD8AADE0CCB0ACF1162FE925B85FB03AD8C1A172B6EB765A68372"
+      }
+    },
+    {
+      "label": "circle",
+      "sketch": "52afdc00-bbab-4bd7-8dca-68dc7aa4ed8c",
+      "document": "17f3c404-8479-4e06-a7b2-0ba4e602803c",
+      "groups": 1,
+      "cadoryx": {
+        "file": "circle.cadoryx",
+        "sha256": "D725EA4CF335F590144339278214ECB3D901061BFE52887FB8C6163E3A405E38"
+      },
+      "json": {
+        "file": "circle.json",
+        "sha256": "1FD5BA4253600550D0FF1BCC944712F3BFAB4AA9F4CD97ED3FE67F6936EBE193"
+      },
+      "messagePack": {
+        "file": "circle.msgpack",
+        "sha256": "C2C481116A255FE78CA9B70CEFDBE23791FC3FB4E39313484FBCEF9E36D37B97"
+      }
+    }
+  ],
+  "origin": "Actual legacy writer saved and production-reopened before the schema change; no bytes were rewritten."
+}

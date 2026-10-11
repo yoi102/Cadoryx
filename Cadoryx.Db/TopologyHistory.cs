@@ -3,9 +3,9 @@ using System.Collections.Immutable;
 namespace Cadoryx.Db;
 
 public enum HistoryShapeKind { Face=0, Edge=1, Vertex=2 }
-public enum TopologyEvolution { Unchanged=0, Modified=1, Generated=2, Deleted=3, Unmapped=4 }
+public enum TopologyEvolution { Unchanged=0, Modified=1, Generated=2, Deleted=3, Unmapped=4, Ambiguous=5, GeneratedOnly=6 }
 public sealed record TopologyHistoryEntry(int SourceIndex,HistoryShapeKind SourceKind,TopologyEvolution Evolution,
-    int? ResultIndex,HistoryShapeKind? ResultKind,int SourceArgument=0);
+    int? ResultIndex,HistoryShapeKind? ResultKind,int SourceArgument=0,Guid? CopyId=null,bool PathAmbiguous=false);
 public sealed record TopologyHistorySource(GeometryRevisionId Revision,AssetId Asset,string Fingerprint,int TopologyCount);
 
 /// <summary>Indices belong only to these exact assets and the declared adapter's full topology map.
@@ -24,7 +24,7 @@ public sealed record TopologyHistory(GeometryRevisionId SourceRevision,AssetId S
     {
         CadGuard.Id(SourceRevision);CadGuard.Id(ResultRevision);SourceAsset.Validate();ResultAsset.Validate();CadGuard.Name(AdapterVersion);
         static bool Hash(string s)=>s is {Length:64}&&s.All(Uri.IsHexDigit);
-        if(SchemaVersion is not (1 or 2)||AdditionalSources.IsDefault||AdditionalSources.Length>255||SchemaVersion==1&&!AdditionalSources.IsEmpty||
+        if(SchemaVersion is not (1 or 2 or 3 or 4)||AdditionalSources.IsDefault||AdditionalSources.Length>255||(SchemaVersion is 1 or 3 or 4)&&!AdditionalSources.IsEmpty||
             !Hash(SourceFingerprint)||!Hash(ResultFingerprint)||SourceCount is <1 or >100000||ResultCount is <1 or >100000||
             Entries.IsDefaultOrEmpty||Entries.Length>100000||Entries.Distinct().Count()!=Entries.Length)
             throw new CadValidationException("Invalid topology history contract.");
@@ -41,7 +41,9 @@ public sealed record TopologyHistory(GeometryRevisionId SourceRevision,AssetId S
             if(e.SourceArgument<0||e.SourceArgument>=ArgumentCount||e.SourceIndex<0||e.SourceIndex>=GetSource(e.SourceArgument).TopologyCount||!Enum.IsDefined(e.SourceKind)||!Enum.IsDefined(e.Evolution)||
                 e.ResultIndex.HasValue!=e.ResultKind.HasValue||e.ResultIndex is {} i&&(i<0||i>=ResultCount)||
                 e.ResultKind is {} k&&!Enum.IsDefined(k)||
-                (e.Evolution is TopologyEvolution.Deleted or TopologyEvolution.Unmapped)==e.ResultIndex.HasValue)
+                (SchemaVersion==4?e.CopyId is null||e.CopyId==Guid.Empty:e.CopyId is not null||e.PathAmbiguous)||
+                SchemaVersion<3&&e.Evolution is TopologyEvolution.Ambiguous or TopologyEvolution.GeneratedOnly||
+                (e.Evolution is TopologyEvolution.Deleted or TopologyEvolution.Unmapped or TopologyEvolution.Ambiguous or TopologyEvolution.GeneratedOnly)==e.ResultIndex.HasValue)
                 throw new CadValidationException("Invalid topology history entry.");
         }
         if(Entries.GroupBy(e=>(e.SourceArgument,e.SourceIndex)).Any(g=>g.Select(e=>e.SourceKind).Distinct().Count()!=1)||
@@ -51,11 +53,21 @@ public sealed record TopologyHistory(GeometryRevisionId SourceRevision,AssetId S
     public void ValidateFor(FeatureDefinition feature)
     {
         Validate();
-        if(feature.Recipe is not (LocalFeatureRecipe or HistoryFilletRecipe or HistoryChamferRecipe or BooleanRecipe)||
+        if(feature.Recipe is not (LocalFeatureRecipe or HistoryFilletRecipe or HistoryChamferRecipe or ContourLocalRecipe or PlanarPushPullRecipe or BooleanRecipe or DraftRecipe or HoleRecipe or HolePatternRecipe {Layout.IncludeSource:true} or RepetitionRecipe)||
             feature.Recipe is BooleanRecipe&&SchemaVersion!=2||
+            (feature.Recipe is HoleRecipe {Head:not HoleHead.Plain} or HolePatternRecipe)&&SchemaVersion!=3||
+            SchemaVersion==3&&feature.Recipe is not (HoleRecipe or HolePatternRecipe)||
+            (feature.Recipe is RepetitionRecipe)!=(SchemaVersion==4)||
             ResultRevision!=feature.Result.Revision||ResultAsset!=feature.Result.AssetId)
             throw new CadValidationException("Topology history belongs to different geometry.");
-        var inputs=feature.Recipe.AssetInputs.ToArray();
+        if(feature.Recipe is RepetitionRecipe repetition&&
+            (!Entries.Select(e=>e.CopyId!.Value).ToHashSet().SetEquals(repetition.CopyIds)||
+             Entries.GroupBy(e=>e.CopyId).Any(g=>!g.Select(e=>(e.SourceIndex,e.SourceKind)).ToHashSet()
+                 .SetEquals(Entries.Select(e=>(e.SourceIndex,e.SourceKind))))))
+            throw new CadValidationException("Repetition history must account for the exact authored copy identities and every source slot.");
+        // A replay template is authoring data. With the seed included, only the seed
+        // result is the physical operand whose native topology is consumed.
+        var inputs=feature.Recipe is HolePatternRecipe pattern?new[]{pattern.Source}:feature.Recipe.AssetInputs.ToArray();
         if(inputs.Length!=ArgumentCount||feature.Inputs.Length!=ArgumentCount)throw new CadValidationException("Topology history input count differs from feature dependencies.");
         for(int i=0;i<inputs.Length;i++)
         {

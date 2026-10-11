@@ -23,7 +23,7 @@ public sealed class PolygonSketchHoleTests
         Assert.Throws<CadValidationException>(()=>(new SketchProfile(Outer) with{PolygonHoles=[[new(0,4),new(3,4),new(3,8),new(0,8)]]}).Validate());
         Assert.Throws<CadValidationException>(()=>(new SketchProfile(Outer) with{PolygonHoles=[Inner,[new(8,8),new(9,8),new(9,9),new(8,9)]]}).Validate());
         Assert.Throws<CadValidationException>(()=>(new SketchProfile(Outer) with{PolygonHoles=[Inner],Holes=[new(new(8,8),1)]}).Validate());
-        Assert.Throws<CadValidationException>(()=>new RevolveRecipe(new SketchProfile(Outer) with{PolygonHoles=[Inner]},1,RigidTransform3d.Identity).Validate());
+        new RevolveRecipe(new SketchProfile(Outer) with{PolygonHoles=[Inner]},1,RigidTransform3d.Identity).Validate();
     }
 
     [Fact] public async Task ExactPolygonHoleCanBeSelectedReboundPersistedAndExported()

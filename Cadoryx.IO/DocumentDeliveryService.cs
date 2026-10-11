@@ -19,6 +19,8 @@ public sealed class DocumentDeliveryService(IDocumentStorage storage,IGeometryKe
     public async Task<DeliveryResult> WriteAsync(DocumentSnapshot snapshot,IAssetStore assets,string path,DeliveryOptions options,
         bool overwrite=false,IProgress<DeliveryProgress>? progress=null,CancellationToken token=default)
     {
+        if(options.Output==DeliveryOutput.ExchangeAudit)
+            return await new ExchangeMeasurementService(kernel).WriteAsync(snapshot,assets,path,options,overwrite,progress,token).ConfigureAwait(false);
         options.Validate();token.ThrowIfCancellationRequested();
         path=Path.GetFullPath(path);var ext=options.Output switch{DeliveryOutput.Package=>".zip",DeliveryOutput.BomCsv=>".csv",_=>".html"};
         if(!Path.GetExtension(path).Equals(ext,StringComparison.OrdinalIgnoreCase))throw new CadValidationException("Expected delivery extension "+ext);

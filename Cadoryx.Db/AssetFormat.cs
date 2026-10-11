@@ -6,6 +6,8 @@ public sealed record AssetFormat(string MediaType,string Encoding,int FormatVers
 {
     public const string BRepMediaType="application/vnd.opencascade.brep";
     public const string XdeMediaType="application/vnd.opencascade.xde";
+    public const string ReferenceTableMediaType="application/vnd.cadoryx.occt-reference-table";
+    public const string OccurrenceTableMediaType="application/vnd.cadoryx.occt-occurrence-table";
     public static AssetFormat Opaque {get;}=new("application/octet-stream","opaque",1);
     public void Validate()
     {

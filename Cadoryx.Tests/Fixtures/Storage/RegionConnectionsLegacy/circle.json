@@ -1,0 +1,148 @@
+{
+  "version": 1,
+  "sketches": [
+    {
+      "sketch": "52afdc00-bbab-4bd7-8dca-68dc7aa4ed8c",
+      "groups": [
+        {
+          "id": "6df40b01-31d7-42e4-83ea-0a83825b5ef0",
+          "sources": [
+            [
+              {
+                "entity": "8af37013-7c83-474a-8af3-e08f81b30c09",
+                "kind": 2,
+                "geometry": {
+                  "schemaVersion": 1,
+                  "nodes": [
+                    {
+                      "kind": 1,
+                      "basisIndex": -1,
+                      "primitive": {
+                        "start": [
+                          7,
+                          -2
+                        ],
+                        "end": [
+                          7,
+                          -2.000000000000001
+                        ],
+                        "middle": null,
+                        "bezierControl": null,
+                        "splineControls": null,
+                        "splineKnots": null,
+                        "ellipse": {
+                          "center": [
+                            3,
+                            -2
+                          ],
+                          "cosine": [
+                            4,
+                            0
+                          ],
+                          "sine": [
+                            0,
+                            4
+                          ],
+                          "startAngle": 0,
+                          "sweepAngle": 6.283185307179586
+                        },
+                        "freeform": null
+                      },
+                      "signedOffset": 0,
+                      "firstParameter": 0,
+                      "lastParameter": 6.283185307179586,
+                      "reversed": false
+                    }
+                  ]
+                },
+                "reversed": false
+              }
+            ]
+          ],
+          "distance": 0.1,
+          "join": 0,
+          "loops": [
+            {
+              "depth": 0,
+              "parent": null,
+              "reversed": false,
+              "outputs": [
+                {
+                  "curve": "fd926b4d-dd02-49e4-bdc0-22868601908b",
+                  "endpoints": {
+                    "start": "aea66d1f-35b8-450d-b211-3e02bf229619",
+                    "end": "40c1496b-0574-4f36-9bef-eedb40444cf8",
+                    "startEquation": "0830ad68-33f6-4346-b07f-04f24f079723",
+                    "endEquation": "16680ed6-2987-44fd-aead-668c57090d91"
+                  },
+                  "role": 0,
+                  "sources": [
+                    0
+                  ],
+                  "basisDepth": 1,
+                  "reversed": false,
+                  "geometry": {
+                    "schemaVersion": 1,
+                    "nodes": [
+                      {
+                        "kind": 1,
+                        "basisIndex": -1,
+                        "primitive": {
+                          "start": [
+                            7,
+                            -2
+                          ],
+                          "end": [
+                            7,
+                            -2.000000000000001
+                          ],
+                          "middle": null,
+                          "bezierControl": null,
+                          "splineControls": null,
+                          "splineKnots": null,
+                          "ellipse": {
+                            "center": [
+                              3,
+                              -2
+                            ],
+                            "cosine": [
+                              4,
+                              0
+                            ],
+                            "sine": [
+                              0,
+                              4
+                            ],
+                            "startAngle": 0,
+                            "sweepAngle": 6.283185307179586
+                          },
+                          "freeform": null
+                        },
+                        "signedOffset": 0,
+                        "firstParameter": 0,
+                        "lastParameter": 6.283185307179586,
+                        "reversed": false
+                      },
+                      {
+                        "kind": 2,
+                        "basisIndex": 0,
+                        "primitive": null,
+                        "signedOffset": 0.1,
+                        "firstParameter": 0,
+                        "lastParameter": 6.283185307179586,
+                        "reversed": false
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          ],
+          "frozen": false,
+          "reason": null,
+          "algorithm": "cadoryx.expression-region-offset.1"
+        }
+      ]
+    }
+  ]
+}

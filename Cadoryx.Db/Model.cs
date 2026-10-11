@@ -6,9 +6,21 @@ namespace Cadoryx.Db;
 // Persisted MessagePack values: append new values; never reorder or reuse a number.
 public enum BodyKind { Solid=0, Sheet=1, Wire=2, Compound=3, Mesh=4, Empty=5 }
 public sealed record XdeSourceRef(AssetId ContextAssetId,string DefinitionEntry,AssetFormat? Format=null);
-public sealed record GeometryAssetRef(AssetId AssetId, GeometryRevisionId Revision, BodyKind Kind, Bounds3d Bounds, double VolumeMm3, XdeSourceRef? Source = null,AssetFormat? Format=null)
+/// <summary>Stored native reference bytes. No original-source or composed-history proof is persisted.</summary>
+public sealed record SerializedGeometryReferences(AssetId TableAssetId,int SchemaVersion=1,AssetFormat? Format=null)
 {
-    public void Validate() { AssetId.Validate(); CadGuard.Id(Revision); Bounds.Validate(); CadGuard.Finite(VolumeMm3); Format?.Validate(); if(VolumeMm3<0 || !Enum.IsDefined(Kind)) throw new CadValidationException("Invalid geometry metadata."); if(Source is {} s){s.ContextAssetId.Validate();s.Format?.Validate();if(string.IsNullOrWhiteSpace(s.DefinitionEntry))throw new CadValidationException("Invalid XDE source entry.");} }
+    public void Validate(){TableAssetId.Validate();Format?.Validate();if(SchemaVersion!=1)throw new CadValidationException("Unsupported serialized geometry reference schema.");}
+}
+/// <summary>Complete current containment paths; stored bytes never prove original capture or composed history.</summary>
+public sealed record SerializedGeometryOccurrences(AssetId TableAssetId,int SchemaVersion=1,AssetFormat? Format=null)
+{
+    public void Validate(){TableAssetId.Validate();Format?.Validate();if(SchemaVersion!=1)throw new CadValidationException("Unsupported serialized geometry occurrence schema.");}
+}
+public sealed record GeometryAssetRef(AssetId AssetId, GeometryRevisionId Revision, BodyKind Kind, Bounds3d Bounds, double VolumeMm3, XdeSourceRef? Source = null,AssetFormat? Format=null,
+    SerializedGeometryReferences? SerializedReferences=null,SerializedGeometryOccurrences? SerializedOccurrences=null)
+{
+    public void Validate() { AssetId.Validate(); CadGuard.Id(Revision); Bounds.Validate(); CadGuard.Finite(VolumeMm3); Format?.Validate(); SerializedReferences?.Validate(); SerializedOccurrences?.Validate(); if(VolumeMm3<0 || !Enum.IsDefined(Kind)) throw new CadValidationException("Invalid geometry metadata."); if(SerializedReferences is not null&&SerializedOccurrences is not null)throw new CadValidationException("Independent native reference captures cannot share one declared BRep."); if(Source is {} s){s.ContextAssetId.Validate();s.Format?.Validate();if(string.IsNullOrWhiteSpace(s.DefinitionEntry))throw new CadValidationException("Invalid XDE source entry.");} }
+    public IEnumerable<AssetId> BoundaryAssets()=>SerializedReferences is {} references?[AssetId,references.TableAssetId]:SerializedOccurrences is {} occurrences?[AssetId,occurrences.TableAssetId]:[AssetId];
 }
 public sealed record CadAppearance(uint Argb = 0xFF86ACC5, bool ByLayer = false, bool PreserveSourceStyles = false);
 public sealed record CadLayer(LayerId Id, string Name, uint Argb = 0xFF86ACC5, bool IsVisible = true, bool IsLocked = false);

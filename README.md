@@ -1,6 +1,10 @@
 # Cadoryx
 
+2026-10-11：当前开发按用户要求暂停于本地提交检查点；A–F尚未全部完成，G实机、安装及交付暂缓。当前应用与隔离候选的结果分列于[暂停检查点](docs/AF_CHECKPOINT_2026-10-11.md)及[当前状态](docs/STATUS.md)。
+
 WPF / .NET 10 桌面 3D CAD，使用 OcctSharp NuGet。当前已接通基础建模、草图与装配、模型审阅、双视口、大模型按需资产读取和分批显示、BOM/HTML/ZIP 工程交付，以及关联二维工程图。原生文档使用 MessagePack + BRep/XDE 资产；STEP、IGES、STL 均可导入和导出。各阶段实际范围和交付验收边界见[当前进度](docs/STATUS.md)与[M11 工程图](docs/M11_TECHNICAL_DRAWINGS.md)。
+
+[交换往返实测](docs/F4_MEASURED_EXCHANGE.md)及各建模、工程图和命令工具有明确的本地限定契约；剩余范围见[产品缺口与七批规划](docs/CAD_PRODUCT_GAPS.md)和[A–F实施跟踪](docs/AF_IMPLEMENTATION_TRACKER.md)。
 
 - [文档入口](docs/README.md)
 - [当前代码实现与使用方式](docs/IMPLEMENTATION.md)
@@ -13,6 +17,7 @@ WPF / .NET 10 桌面 3D CAD，使用 OcctSharp NuGet。当前已接通基础建�
 - [文件打开进度与快速取消](docs/PROGRESS_DIALOG.md)
 - [消息通知与位置设置](docs/NOTIFICATIONS.md)
 - [零件、图层/材料与实例位置](docs/RESOURCES_AND_INSTANCES.md)
+- [扩展关联基准与旋转轴实施](docs/C2_EXTENDED_DATUMS.md)
 - [格式演进、旧文件迁移与存储基准](docs/FORMAT_EVOLUTION.md)
 - [草图模型、约束求解与持久化基础](docs/SKETCH_FOUNDATION.md)
 - [草图编辑器与关联特征使用说明](docs/SKETCH_EDITOR.md)
@@ -49,3 +54,7 @@ M13 提供自包含 Windows x64 MSI 与可复跑的安装/卸载验收脚本；�
 # License
 
 Cadoryx source code is available under the [MIT License](LICENSE). Bundled third-party components retain their own licenses; see the included `licenses` directory and package notices.
+
+- [C4 孔工具、常用尺寸及当前验证](docs/C4_STANDARD_HOLES.md)
+- [D1 高级拉伸方向、操作和平面终止](docs/D1_ADVANCED_EXTRUSION.md)
+- [D2 扫掠／放样：生产编辑、来源和持久化](docs/D2_SWEEP_LOFT.md)

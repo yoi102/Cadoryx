@@ -14,7 +14,25 @@ internal static class AssetCatalog
             token.ThrowIfCancellationRequested();
             Add(geometry.AssetId,geometry.Format,false);
             if(geometry.Source is {} source)Add(source.ContextAssetId,source.Format,true);
+            if(geometry.SerializedReferences is {} references)
+            {
+                geometryIds.Add(references.TableAssetId);
+                using var lease=assets.Acquire(references.TableAssetId);var format=references.Format??AssetFormatPolicy.Inspect(lease.Content.Span);
+                AssetFormatPolicy.RequireReferenceTable(format);
+                if(metadata.TryGetValue(references.TableAssetId,out var old)&&old!=format)throw new InvalidDataException("Conflicting reference-table role.");
+                metadata[references.TableAssetId]=format;
+                SerializedReferenceAssetPolicy.VerifyGeometry(geometry,assets);
+            }
+            if(geometry.SerializedOccurrences is {} occurrences)
+            {
+                geometryIds.Add(occurrences.TableAssetId);
+                using var lease=assets.Acquire(occurrences.TableAssetId);var format=occurrences.Format??AssetFormatPolicy.Inspect(lease.Content.Span);
+                AssetFormatPolicy.RequireOccurrenceTable(format);
+                if(metadata.TryGetValue(occurrences.TableAssetId,out var old)&&old!=format)throw new InvalidDataException("Conflicting occurrence-table role.");
+                metadata[occurrences.TableAssetId]=format;SerializedOccurrenceAssetPolicy.VerifyGeometry(geometry,assets);
+            }
         }
+        foreach(var id in snapshot.DrawingHistoryAssets())if(!metadata.ContainsKey(id))Add(id,null,false);
         void Add(AssetId id,AssetFormat? supplied,bool xde)
         {
             geometryIds.Add(id);

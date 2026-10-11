@@ -1,4 +1,8 @@
 using Cadoryx.Cli;
+if(args is ["--native-drawing-worker",var drawingDirectory])
+    return await Cadoryx.Kernel.Occt.IsolatedDrawingExecutor.RunWorkerAsync(drawingDirectory);
+if(args is ["--native-thread-worker",var threadDirectory])
+    return await Cadoryx.Kernel.Occt.IsolatedMetricThreadExecutor.RunWorkerAsync(threadDirectory);
 using var cancellation=new CancellationTokenSource();
 Console.CancelKeyPress+=(_,e)=>{e.Cancel=true;cancellation.Cancel();};
 // Opt-in lifecycle diagnostic for the published-process gate; never used by ordinary CLI commands.

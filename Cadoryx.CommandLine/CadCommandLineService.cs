@@ -3,11 +3,38 @@ using System.Text;
 namespace Cadoryx.CommandLine;
 
 public sealed record CadCommandDescriptor(string Name, string Aliases, string Syntax, string Description);
-public sealed record CadCommandResult(bool Success, string Message, bool ClearOutput = false);
+public sealed record CadCommandResult(bool Success, string Message, bool ClearOutput = false, bool IsCancelled = false);
 public sealed record CadGridState(bool Visible, double SpacingMm, bool Snap);
 
 public interface ICadCommandContext
 {
+    Task<CadCommandResult> ReselectSketchRegionSourcesAsync(string requestJson,CancellationToken cancellationToken=default)=>
+        Task.FromResult(new CadCommandResult(false,"Whole-region source reselection is unavailable in this context."));
+    Task<CadCommandResult> OffsetSketchAsync(string requestJson,CancellationToken cancellationToken=default)=>
+        Task.FromResult(new CadCommandResult(false,"Sketch offset is unavailable in this context."));
+    void ValidateInvocation() { }
+    CadCommandResult InspectAuthoring(string area, int offset, int limit, Guid? partId = null) =>
+        new(false, "Authoring inspection is unavailable in this context.");
+    Task<CadCommandResult> EditParameterAsync(CadParameterEditRequest request, CancellationToken cancellationToken = default) =>
+        Task.FromResult(new CadCommandResult(false, "Parameter editing is unavailable in this context."));
+    Task<CadCommandResult> EditTimelineAsync(CadTimelineEditRequest request, CancellationToken cancellationToken = default) =>
+        Task.FromResult(new CadCommandResult(false, "History editing is unavailable in this context."));
+    Task<CadCommandResult> EditDatumAsync(string requestJson, CancellationToken cancellationToken = default) =>
+        Task.FromResult(new CadCommandResult(false, "Datum authoring is unavailable in this context."));
+    Task<CadCommandResult> EditModelAsync(string requestJson,CancellationToken cancellationToken=default)=>
+        Task.FromResult(new CadCommandResult(false,"Model authoring is unavailable in this context."));
+    Task<CadCommandResult> EditSketchContactAsync(string requestJson,CancellationToken cancellationToken=default)=>
+        Task.FromResult(new CadCommandResult(false,"Sketch contact authoring is unavailable in this context."));
+    Task<CadCommandResult> EditSketchCurvatureAsync(string requestJson,CancellationToken cancellationToken=default)=>
+        Task.FromResult(new CadCommandResult(false,"Sketch curvature authoring is unavailable in this context."));
+    Task<CadCommandResult> EditSketchFiniteContactAsync(string requestJson,CancellationToken cancellationToken=default)=>
+        Task.FromResult(new CadCommandResult(false,"Finite contact authoring is unavailable in this context."));
+    CadCommandResult InspectModelContract(string type,int offset=0,int limit=1)=>new(false,"Model contracts are unavailable in this context.");
+    Task<CadCommandResult> WriteFileAsync(string requestJson, CancellationToken cancellationToken=default)=>
+        Task.FromResult(new CadCommandResult(false,"File output is unavailable in this context."));
+    CadCommandResult InspectFileContract()=>new(false,"File contracts are unavailable in this context.");
+    Task<CadCommandResult> EditDrawingAsync(string requestJson,CancellationToken cancellationToken=default)=>
+        Task.FromResult(new CadCommandResult(false,"Drawing authoring is unavailable in this context."));
     string DocumentName { get; }
     int BodyCount { get; }
     int SelectionCount { get; }
@@ -25,7 +52,7 @@ public interface ICadCommandContext
     IReadOnlyList<string> ListOccurrences(int limit);
     string ScaleSummary { get; }
     CadGridState Grid { get; }
-    Task SetGridAsync(bool? visible = null, double? spacingMm = null, bool? snap = null);
+    Task SetGridAsync(bool? visible = null, double? spacingMm = null, bool? snap = null, CancellationToken cancellationToken = default);
     string DisplayMode { get; }
     void SetDisplayMode(string mode);
     CadCommandResult IsolateSelection();
@@ -33,31 +60,34 @@ public interface ICadCommandContext
     CadCommandResult ShowAll();
     CadCommandResult FocusSelection();
     CadCommandResult SelectBody(string exactName);
-    Task UndoAsync();
-    Task RedoAsync();
+    Task UndoAsync(CancellationToken cancellationToken = default);
+    Task RedoAsync(CancellationToken cancellationToken = default);
     void Fit();
     void SetView(string direction);
     void ClearSelection();
     void StartInteractiveTool(string kind);
     bool CancelInteractiveTool();
-    Task CreateBoxAsync(string name, double width, double depth, double height, double x, double y, double z);
-    Task CreateCylinderAsync(string name, double radius, double height, double x, double y, double z);
+    Task CreateBoxAsync(string name, double width, double depth, double height, double x, double y, double z, CancellationToken cancellationToken = default);
+    Task CreateCylinderAsync(string name, double radius, double height, double x, double y, double z, CancellationToken cancellationToken = default);
 }
 
 public interface ICadCommandLineService
 {
     IReadOnlyList<CadCommandDescriptor> Commands { get; }
     IReadOnlyList<string> Complete(string prefix, int limit = 12);
-    Task<CadCommandResult> ExecuteAsync(string input, ICadCommandContext? context);
+    Task<CadCommandResult> ExecuteAsync(string input, ICadCommandContext? context, CancellationToken cancellationToken = default);
+    Task<CadCommandResult> ExecuteAsync(string input, ICadCommandContext? context,
+        ICadWorkspaceCommandContext? workspace, CancellationToken cancellationToken = default) => ExecuteAsync(input, context, cancellationToken);
 }
 
-public sealed class CadCommandLineService : ICadCommandLineService
+public sealed partial class CadCommandLineService : ICadCommandLineService
 {
-    private readonly List<(CadCommandDescriptor Descriptor, Func<string[], ICadCommandContext?, Task<CadCommandResult>> Run)> commands = [];
+    private readonly List<(CadCommandDescriptor Descriptor, Func<string[], ICadCommandContext?, CancellationToken, Task<CadCommandResult>> Run)> commands = [];
     private readonly Dictionary<string, int> lookup = new(StringComparer.OrdinalIgnoreCase);
 
     public CadCommandLineService()
     {
+        RegisterAuthoringCommands();
         Register("HELP", "?", "HELP [command]", "List commands or show syntax.", (args, _) =>
         {
             if (args.Length > 1) return Done(false, "Usage: HELP [command]");
@@ -94,17 +124,17 @@ public sealed class CadCommandLineService : ICadCommandLineService
             if (args.Length != 1 || args[0].Length > 200) return Done(false, "Usage: SELECT exact-name");
             return Task.FromResult(context!.SelectBody(args[0]));
         });
-        Register("UNDO", "U", "UNDO", "Undo the last document edit.", async (args, context) =>
+        Register("UNDO", "U", "UNDO", "Undo the last document edit.", async (args, context, token) =>
         {
             if (args.Length != 0) return new(false, "Usage: UNDO");
             if (!context!.CanUndo) return new(false, "Nothing to undo.");
-            await context.UndoAsync(); return new(true, "Undo completed.");
+            await context.UndoAsync(token); return new(true, "Undo completed.");
         });
-        Register("REDO", "", "REDO", "Redo the last undone edit.", async (args, context) =>
+        Register("REDO", "", "REDO", "Redo the last undone edit.", async (args, context, token) =>
         {
             if (args.Length != 0) return new(false, "Usage: REDO");
             if (!context!.CanRedo) return new(false, "Nothing to redo.");
-            await context.RedoAsync(); return new(true, "Redo completed.");
+            await context.RedoAsync(token); return new(true, "Redo completed.");
         });
         Register("FIT", "ZE", "FIT", "Fit visible geometry to the viewport.", (args, context) =>
         {
@@ -138,19 +168,19 @@ public sealed class CadCommandLineService : ICadCommandLineService
             context!.SetDisplayMode(args[0]);
             return Done(true, $"Display: {context.DisplayMode}");
         });
-        Register("GRID", "", "GRID [ON|OFF|SPACING mm|SNAP ON|OFF]", "Show or edit the current document grid.", async (args, context) =>
+        Register("GRID", "", "GRID [ON|OFF|SPACING mm|SNAP ON|OFF]", "Show or edit the current document grid.", async (args, context, token) =>
         {
             if (args.Length == 0) return new(true, GridMessage(context!.Grid));
             if (args.Length == 1 && TryOnOff(args[0], out var visible))
-                await context!.SetGridAsync(visible: visible);
+                await context!.SetGridAsync(visible: visible, cancellationToken: token);
             else if (args.Length == 2 && args[0].Equals("SNAP", StringComparison.OrdinalIgnoreCase) &&
                 TryOnOff(args[1], out var snap))
-                await context!.SetGridAsync(snap: snap);
+                await context!.SetGridAsync(snap: snap, cancellationToken: token);
             else if (args.Length == 2 && args[0].Equals("SPACING", StringComparison.OrdinalIgnoreCase) &&
                 double.TryParse(args[1], System.Globalization.NumberStyles.Float,
                     System.Globalization.CultureInfo.InvariantCulture, out var spacing) &&
                 double.IsFinite(spacing) && spacing is >= 0.1 and <= 1000)
-                await context!.SetGridAsync(spacingMm: spacing);
+                await context!.SetGridAsync(spacingMm: spacing, cancellationToken: token);
             else return new(false, "Usage: GRID [ON|OFF|SPACING mm|SNAP ON|OFF] (spacing 0.1–1000 mm)");
             return new(true, GridMessage(context!.Grid));
         });
@@ -168,16 +198,16 @@ public sealed class CadCommandLineService : ICadCommandLineService
                 ? Done(true, "Construction cancelled.")
                 : Done(false, "No interactive construction is active.");
         });
-        Register("BOX", "B", "BOX name width depth height [x y z]", "Create a box in the selected part, dimensions in mm.", async (args, context) =>
+        Register("BOX", "B", "BOX name width depth height [x y z]", "Create a box in the selected part, dimensions in mm.", async (args, context, token) =>
         {
             if (!TryPrimitive(args, 3, out var name, out var values)) return new(false, "Usage: BOX name width depth height [x y z]");
-            await context!.CreateBoxAsync(name, values[0], values[1], values[2], values[3], values[4], values[5]);
+            await context!.CreateBoxAsync(name, values[0], values[1], values[2], values[3], values[4], values[5], token);
             return new(true, $"Box created: {name}");
         });
-        Register("CYLINDER", "CYL", "CYLINDER name radius height [x y z]", "Create a cylinder in the selected part, dimensions in mm.", async (args, context) =>
+        Register("CYLINDER", "CYL", "CYLINDER name radius height [x y z]", "Create a cylinder in the selected part, dimensions in mm.", async (args, context, token) =>
         {
             if (!TryPrimitive(args, 2, out var name, out var values)) return new(false, "Usage: CYLINDER name radius height [x y z]");
-            await context!.CreateCylinderAsync(name, values[0], values[1], values[3], values[4], values[5]);
+            await context!.CreateCylinderAsync(name, values[0], values[1], values[3], values[4], values[5], token);
             return new(true, $"Cylinder created: {name}");
         });
     }
@@ -195,8 +225,13 @@ public sealed class CadCommandLineService : ICadCommandLineService
         .Where(x => x.Descriptor.Name.StartsWith(prefix.Trim(), StringComparison.OrdinalIgnoreCase))
         .Select(x => x.Descriptor.Name).Take(Math.Clamp(limit, 1, 50)).ToArray();
 
-    public async Task<CadCommandResult> ExecuteAsync(string input, ICadCommandContext? context)
+    public async Task<CadCommandResult> ExecuteAsync(string input, ICadCommandContext? context, CancellationToken cancellationToken = default)
+        => await ExecuteAsync(input, context, null, cancellationToken);
+
+    public async Task<CadCommandResult> ExecuteAsync(string input, ICadCommandContext? context,
+        ICadWorkspaceCommandContext? workspace, CancellationToken cancellationToken = default)
     {
+        if (cancellationToken.IsCancellationRequested) return new(false, "Command cancelled.", IsCancelled: true);
         if (input is null || input.Length > 4096) return new(false, "Command is empty or too long.");
         string[] tokens;
         try { tokens = Tokenize(input); }
@@ -204,14 +239,34 @@ public sealed class CadCommandLineService : ICadCommandLineService
         if (tokens.Length == 0) return new(false, "Enter a command. Type HELP for a list.");
         if (!lookup.TryGetValue(tokens[0], out var index)) return new(false, $"Unknown command: {tokens[0]}. Type HELP.");
         var command = commands[index];
+        if (command.Descriptor.Name == "WORKSPACE")
+        {
+            if (workspace is null) return new(false, "Workspace authoring is unavailable in this context.");
+            try
+            {
+                cancellationToken.ThrowIfCancellationRequested();
+                var args = tokens[1..];
+                var request = args.Length == 1 ? args[0] : "";
+                if (request.Equals("LIST", StringComparison.OrdinalIgnoreCase)) request = "{\"action\":\"list\"}";
+                else if (request.Equals("CONTRACT", StringComparison.OrdinalIgnoreCase)) request = "{\"action\":\"contract\"}";
+                if (!request.StartsWith('{')) return new(false, "Usage: WORKSPACE LIST | CONTRACT | {action-specific JSON}");
+                return await workspace.ExecuteWorkspaceAsync(request, cancellationToken);
+            }
+            catch (OperationCanceledException) { return new(false, "Command cancelled.", IsCancelled: true); }
+            catch (Exception e) { return new(false, e.Message); }
+        }
         if (context is null && command.Descriptor.Name is not ("HELP" or "CLEAR")) return new(false, "No active document.");
-        try { return await command.Run(tokens[1..], context); }
-        catch (OperationCanceledException) { return new(false, "Command cancelled."); }
+        try { cancellationToken.ThrowIfCancellationRequested(); context?.ValidateInvocation(); return await command.Run(tokens[1..], context, cancellationToken); }
+        catch (OperationCanceledException) { return new(false, "Command cancelled.", IsCancelled: true); }
         catch (Exception e) { return new(false, e.Message); }
     }
 
     public static string[] Tokenize(string input)
     {
+        // Author JSON is one argument. Preserve quotes, spaces and nested fields.
+        var trimmed=input.TrimStart();var boundary=trimmed.IndexOfAny([' ', '\t', '\r', '\n']);
+        if(boundary>0&&(trimmed[..boundary].Equals("DATUM",StringComparison.OrdinalIgnoreCase)||trimmed[..boundary].Equals("MODEL",StringComparison.OrdinalIgnoreCase)||trimmed[..boundary].Equals("DRAWING",StringComparison.OrdinalIgnoreCase)||trimmed[..boundary].Equals("FILE",StringComparison.OrdinalIgnoreCase)||trimmed[..boundary].Equals("WORKSPACE",StringComparison.OrdinalIgnoreCase)||trimmed[..boundary].Equals("WS",StringComparison.OrdinalIgnoreCase)||trimmed[..boundary].Equals("SKETCH_CONTACT",StringComparison.OrdinalIgnoreCase)||trimmed[..boundary].Equals("SKETCH_CURVATURE",StringComparison.OrdinalIgnoreCase)||trimmed[..boundary].Equals("SKETCH_FINITE_CONTACT",StringComparison.OrdinalIgnoreCase)||trimmed[..boundary].Equals("SKETCH_OFFSET",StringComparison.OrdinalIgnoreCase)||trimmed[..boundary].Equals("SKETCH_REGION_SOURCES",StringComparison.OrdinalIgnoreCase))&&
+            trimmed[(boundary+1)..].TrimStart().StartsWith('{'))return [trimmed[..boundary],trimmed[(boundary+1)..].Trim()];
         var result = new List<string>(); var current = new StringBuilder(); bool quoted = false;
         foreach (char ch in input)
         {
@@ -245,7 +300,11 @@ public sealed class CadCommandLineService : ICadCommandLineService
     }
 
     private void Register(string name, string aliases, string syntax, string description,
-        Func<string[], ICadCommandContext?, Task<CadCommandResult>> run)
+        Func<string[], ICadCommandContext?, Task<CadCommandResult>> run) =>
+        Register(name, aliases, syntax, description, (args, context, _) => run(args, context));
+
+    private void Register(string name, string aliases, string syntax, string description,
+        Func<string[], ICadCommandContext?, CancellationToken, Task<CadCommandResult>> run)
     {
         int index = commands.Count; var descriptor = new CadCommandDescriptor(name, aliases, syntax, description);
         foreach (var key in new[] { name }.Concat(aliases.Split(',', StringSplitOptions.TrimEntries | StringSplitOptions.RemoveEmptyEntries)))

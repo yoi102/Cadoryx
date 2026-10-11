@@ -83,14 +83,26 @@ public sealed class ExchangeFixtureTests
             Assert.Contains(report.Diagnostics,d=>d.Code=="EXPORT.METADATA");
             if(extension=="iges")Assert.Contains(report.Diagnostics,d=>d.Code=="EXPORT.IGES_SURFACES");
             using var result=await kernel.ImportAsync(path,assets);
-            var points=new List<Vector3d>();
+            var points=new List<Vector3d>();var preservedColors=new HashSet<uint>();
             foreach(var item in CadScene.FromDocument(result.Snapshot).Items)
             {
                 var b=item.Geometry.Bounds;
                 foreach(double x in new[]{b.Min.X,b.Max.X})foreach(double y in new[]{b.Min.Y,b.Max.Y})foreach(double z in new[]{b.Min.Z,b.Max.Z})
                     points.Add(item.WorldTransform.Apply(new(x,y,z)));
-                Assert.Equal(0xFFFF0000u,item.Argb);
+                if(extension=="step")Assert.Equal(0xFFFF0000u,item.Argb);
+                var reference=Assert.IsType<XdeSourceRef>(item.Geometry.Source);
+                using var context=OcctGeometryBridge.ReadContext(reference.ContextAssetId,assets,reference.Format);
+                var styles=context.GetLabel(reference.DefinitionEntry).GetPresentationStyles();
+                try
+                {
+                    foreach(var style in styles)
+                        if(style.EffectiveColor is {} color)preservedColors.Add(OcctGeometryBridge.ToArgb(color));
+                }
+                finally{foreach(var style in styles)style.Dispose();}
             }
+            // IGES writes separate styled faces, so there need not be one overall
+            // label color. Verify the transferred face styles instead of the UI fallback.
+            Assert.Contains(0xFFFF0000u,preservedColors);Assert.Contains(0xFF00FF00u,preservedColors);Assert.Contains(0xFF0000FFu,preservedColors);
             Near(new(-35,5,-10),new(points.Min(p=>p.X),points.Min(p=>p.Y),points.Min(p=>p.Z)));
             Near(new(100,200,0),new(points.Max(p=>p.X),points.Max(p=>p.Y),points.Max(p=>p.Z)));
         }

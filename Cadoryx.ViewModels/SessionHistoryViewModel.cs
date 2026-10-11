@@ -11,6 +11,10 @@ public partial class SessionHistoryViewModel : ObservableObject,IDisposable
     [ObservableProperty] private int entryLimit;
     [ObservableProperty] private double assetBudgetMiB;
     public DocumentHistoryUsage Usage {get;private set;}
+    public bool IsRolledBack=>document.Session.IsRolledBack;
+    public string CursorSummary=>document.Session.FeatureCursor is {} cursor?
+        string.Format(Strings.HistoryCursorFormat,document.Session.Snapshot.Definitions[cursor.Part].Name,cursor.Position,
+            ((Cadoryx.Db.PartDefinition)document.Session.Snapshot.Definitions[cursor.Part]).Features.Length):"";
     public string Summary=>string.Format(Strings.ResourceManager.GetString("HistoryUsageFormat",Strings.Culture)!,
         Usage.UndoEntries,Usage.RedoEntries,Usage.AdditionalAssetBytes/1048576d);
     public SessionHistoryViewModel(CadDocumentViewModel document)
@@ -19,7 +23,11 @@ public partial class SessionHistoryViewModel : ObservableObject,IDisposable
         document.Session.StatusChanged+=OnStatus;
     }
     private void OnStatus(object? sender,EventArgs e)=>Refresh();
-    public void Refresh(){Usage=document.Session.HistoryUsage;OnPropertyChanged(nameof(Usage));OnPropertyChanged(nameof(Summary));}
+    public void Refresh(){Usage=document.Session.HistoryUsage;OnPropertyChanged(nameof(Usage));OnPropertyChanged(nameof(Summary));OnPropertyChanged(nameof(IsRolledBack));OnPropertyChanged(nameof(CursorSummary));}
+    [RelayCommand] private async Task ReturnToEndAsync()
+    {
+        try{await document.Session.ReturnToHistoryEndAsync();}catch(Exception ex){document.Report(ex);}
+    }
     [RelayCommand] private async Task ApplyAsync()
     {
         try

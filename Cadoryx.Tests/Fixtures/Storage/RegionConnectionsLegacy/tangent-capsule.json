@@ -1,0 +1,391 @@
+{
+  "version": 1,
+  "sketches": [
+    {
+      "sketch": "9b5fcc2b-503d-445a-bad0-77f7fa8a6ddc",
+      "groups": [
+        {
+          "id": "3491eaf7-27b7-44e4-85d0-a1d4fed431ce",
+          "sources": [
+            [
+              {
+                "entity": "f0225ba0-dcaf-4d6b-bab2-edb2fad98dfe",
+                "kind": 1,
+                "geometry": {
+                  "schemaVersion": 1,
+                  "nodes": [
+                    {
+                      "kind": 1,
+                      "basisIndex": -1,
+                      "primitive": {
+                        "start": [
+                          0,
+                          -2
+                        ],
+                        "end": [
+                          8,
+                          -2
+                        ],
+                        "middle": null,
+                        "bezierControl": null,
+                        "splineControls": null,
+                        "splineKnots": null,
+                        "ellipse": null,
+                        "freeform": null
+                      },
+                      "signedOffset": 0,
+                      "firstParameter": 0,
+                      "lastParameter": 8,
+                      "reversed": false
+                    }
+                  ]
+                },
+                "reversed": false
+              },
+              {
+                "entity": "623bca09-3ea0-47dd-9296-80a227384854",
+                "kind": 3,
+                "geometry": {
+                  "schemaVersion": 1,
+                  "nodes": [
+                    {
+                      "kind": 1,
+                      "basisIndex": -1,
+                      "primitive": {
+                        "start": [
+                          8,
+                          -2
+                        ],
+                        "end": [
+                          8,
+                          2
+                        ],
+                        "middle": [
+                          10,
+                          0
+                        ],
+                        "bezierControl": null,
+                        "splineControls": null,
+                        "splineKnots": null,
+                        "ellipse": null,
+                        "freeform": null
+                      },
+                      "signedOffset": 0,
+                      "firstParameter": -1.5707963267948966,
+                      "lastParameter": 1.5707963267948966,
+                      "reversed": false
+                    }
+                  ]
+                },
+                "reversed": false
+              },
+              {
+                "entity": "89fcc56f-3e38-48bf-b0b7-abc90aba7ee1",
+                "kind": 1,
+                "geometry": {
+                  "schemaVersion": 1,
+                  "nodes": [
+                    {
+                      "kind": 1,
+                      "basisIndex": -1,
+                      "primitive": {
+                        "start": [
+                          8,
+                          2
+                        ],
+                        "end": [
+                          0,
+                          2
+                        ],
+                        "middle": null,
+                        "bezierControl": null,
+                        "splineControls": null,
+                        "splineKnots": null,
+                        "ellipse": null,
+                        "freeform": null
+                      },
+                      "signedOffset": 0,
+                      "firstParameter": 0,
+                      "lastParameter": 8,
+                      "reversed": false
+                    }
+                  ]
+                },
+                "reversed": false
+              },
+              {
+                "entity": "477e879d-bfd6-425e-8f6a-c141916d68e2",
+                "kind": 3,
+                "geometry": {
+                  "schemaVersion": 1,
+                  "nodes": [
+                    {
+                      "kind": 1,
+                      "basisIndex": -1,
+                      "primitive": {
+                        "start": [
+                          0,
+                          2
+                        ],
+                        "end": [
+                          0,
+                          -2
+                        ],
+                        "middle": [
+                          -2,
+                          0
+                        ],
+                        "bezierControl": null,
+                        "splineControls": null,
+                        "splineKnots": null,
+                        "ellipse": null,
+                        "freeform": null
+                      },
+                      "signedOffset": 0,
+                      "firstParameter": 1.5707963267948966,
+                      "lastParameter": 4.71238898038469,
+                      "reversed": false
+                    }
+                  ]
+                },
+                "reversed": false
+              }
+            ]
+          ],
+          "distance": 0.1,
+          "join": 0,
+          "loops": [
+            {
+              "depth": 0,
+              "parent": null,
+              "reversed": false,
+              "outputs": [
+                {
+                  "curve": "2c1896ea-da2b-4cfa-87ab-b4398eb15d3f",
+                  "endpoints": {
+                    "start": "51addad4-e86e-489d-91cf-b2508600f2a8",
+                    "end": "f12ba105-ba7e-418a-87e8-4ded492d74d5",
+                    "startEquation": "a2a5920f-eabb-41ac-826f-1fd84fef86d8",
+                    "endEquation": "0bc44cd6-58ae-4f75-8082-2343a5a28299"
+                  },
+                  "role": 0,
+                  "sources": [
+                    0
+                  ],
+                  "basisDepth": 1,
+                  "reversed": false,
+                  "geometry": {
+                    "schemaVersion": 1,
+                    "nodes": [
+                      {
+                        "kind": 1,
+                        "basisIndex": -1,
+                        "primitive": {
+                          "start": [
+                            0,
+                            -2
+                          ],
+                          "end": [
+                            8,
+                            -2
+                          ],
+                          "middle": null,
+                          "bezierControl": null,
+                          "splineControls": null,
+                          "splineKnots": null,
+                          "ellipse": null,
+                          "freeform": null
+                        },
+                        "signedOffset": 0,
+                        "firstParameter": 0,
+                        "lastParameter": 8,
+                        "reversed": false
+                      },
+                      {
+                        "kind": 2,
+                        "basisIndex": 0,
+                        "primitive": null,
+                        "signedOffset": 0.1,
+                        "firstParameter": 0,
+                        "lastParameter": 8,
+                        "reversed": false
+                      }
+                    ]
+                  }
+                },
+                {
+                  "curve": "8c69f011-673b-4238-92aa-812ff1c21a72",
+                  "endpoints": {
+                    "start": "f12ba105-ba7e-418a-87e8-4ded492d74d5",
+                    "end": "19d10ea3-81ba-4ddc-a9bd-b399ff759f15",
+                    "startEquation": "d3a29d17-519d-4c60-af7c-a991c066b6c0",
+                    "endEquation": "01a860b8-b597-4cc6-9f52-c191dff87ecc"
+                  },
+                  "role": 0,
+                  "sources": [
+                    1
+                  ],
+                  "basisDepth": 1,
+                  "reversed": false,
+                  "geometry": {
+                    "schemaVersion": 1,
+                    "nodes": [
+                      {
+                        "kind": 1,
+                        "basisIndex": -1,
+                        "primitive": {
+                          "start": [
+                            8,
+                            -2
+                          ],
+                          "end": [
+                            8,
+                            2
+                          ],
+                          "middle": [
+                            10,
+                            0
+                          ],
+                          "bezierControl": null,
+                          "splineControls": null,
+                          "splineKnots": null,
+                          "ellipse": null,
+                          "freeform": null
+                        },
+                        "signedOffset": 0,
+                        "firstParameter": -1.5707963267948966,
+                        "lastParameter": 1.5707963267948966,
+                        "reversed": false
+                      },
+                      {
+                        "kind": 2,
+                        "basisIndex": 0,
+                        "primitive": null,
+                        "signedOffset": 0.1,
+                        "firstParameter": -1.5707963267948966,
+                        "lastParameter": 1.5707963267948966,
+                        "reversed": false
+                      }
+                    ]
+                  }
+                },
+                {
+                  "curve": "8295d0f0-1830-4b1e-ba68-ce3f9935d55d",
+                  "endpoints": {
+                    "start": "19d10ea3-81ba-4ddc-a9bd-b399ff759f15",
+                    "end": "c4d96268-d8ae-413a-8dcd-bb041400a08e",
+                    "startEquation": "98a2d75f-3cde-4dcd-be31-b88331317201",
+                    "endEquation": "ff15b251-be8c-4b72-b7f7-ebc66647a19d"
+                  },
+                  "role": 0,
+                  "sources": [
+                    2
+                  ],
+                  "basisDepth": 1,
+                  "reversed": false,
+                  "geometry": {
+                    "schemaVersion": 1,
+                    "nodes": [
+                      {
+                        "kind": 1,
+                        "basisIndex": -1,
+                        "primitive": {
+                          "start": [
+                            8,
+                            2
+                          ],
+                          "end": [
+                            0,
+                            2
+                          ],
+                          "middle": null,
+                          "bezierControl": null,
+                          "splineControls": null,
+                          "splineKnots": null,
+                          "ellipse": null,
+                          "freeform": null
+                        },
+                        "signedOffset": 0,
+                        "firstParameter": 0,
+                        "lastParameter": 8,
+                        "reversed": false
+                      },
+                      {
+                        "kind": 2,
+                        "basisIndex": 0,
+                        "primitive": null,
+                        "signedOffset": 0.1,
+                        "firstParameter": 0,
+                        "lastParameter": 8,
+                        "reversed": false
+                      }
+                    ]
+                  }
+                },
+                {
+                  "curve": "f47ec848-1502-4ebf-81e1-44b78b63b6fc",
+                  "endpoints": {
+                    "start": "c4d96268-d8ae-413a-8dcd-bb041400a08e",
+                    "end": "51addad4-e86e-489d-91cf-b2508600f2a8",
+                    "startEquation": "7230bd01-6394-4a2f-8e2c-975b83b7edfa",
+                    "endEquation": "5c01b6a3-d4d9-4c3b-b142-8c94199e986a"
+                  },
+                  "role": 0,
+                  "sources": [
+                    3
+                  ],
+                  "basisDepth": 1,
+                  "reversed": false,
+                  "geometry": {
+                    "schemaVersion": 1,
+                    "nodes": [
+                      {
+                        "kind": 1,
+                        "basisIndex": -1,
+                        "primitive": {
+                          "start": [
+                            0,
+                            2
+                          ],
+                          "end": [
+                            0,
+                            -2
+                          ],
+                          "middle": [
+                            -2,
+                            0
+                          ],
+                          "bezierControl": null,
+                          "splineControls": null,
+                          "splineKnots": null,
+                          "ellipse": null,
+                          "freeform": null
+                        },
+                        "signedOffset": 0,
+                        "firstParameter": 1.5707963267948966,
+                        "lastParameter": 4.71238898038469,
+                        "reversed": false
+                      },
+                      {
+                        "kind": 2,
+                        "basisIndex": 0,
+                        "primitive": null,
+                        "signedOffset": 0.1,
+                        "firstParameter": 1.5707963267948966,
+                        "lastParameter": 4.71238898038469,
+                        "reversed": false
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          ],
+          "frozen": false,
+          "reason": null,
+          "algorithm": "cadoryx.expression-region-offset.1"
+        }
+      ]
+    }
+  ]
+}

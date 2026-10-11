@@ -17,7 +17,8 @@ public sealed record PackHistorySource([property:Key(0)] Guid Revision,[property
     [property:Key(2)] string Fingerprint,[property:Key(3)] int TopologyCount);
 [MessagePackObject]
 public sealed record PackHistoryEntry([property:Key(0)] int Source,[property:Key(1)] int SourceKind,
-    [property:Key(2)] int Evolution,[property:Key(3)] int? Result,[property:Key(4)] int? ResultKind,[property:Key(5)] int SourceArgument=0);
+    [property:Key(2)] int Evolution,[property:Key(3)] int? Result,[property:Key(4)] int? ResultKind,[property:Key(5)] int SourceArgument=0,
+    [property:Key(6)] Guid? CopyId=null,[property:Key(7)] bool PathAmbiguous=false);
 
 internal static partial class MessagePackSections
 {
@@ -27,7 +28,7 @@ internal static partial class MessagePackSections
             var h=f.TopologyHistory!;
             return new PackHistory(f.Id.Value,h.SourceRevision.Value,h.SourceAsset.Sha256,h.ResultRevision.Value,h.ResultAsset.Sha256,h.AdapterVersion,
                 h.SourceFingerprint,h.ResultFingerprint,h.SourceCount,h.ResultCount,h.Entries.Select(e=>new PackHistoryEntry(e.SourceIndex,(int)e.SourceKind,
-                    (int)e.Evolution,e.ResultIndex,e.ResultKind is {} k?(int)k:null,e.SourceArgument)).ToArray(),h.SchemaVersion,
+                    (int)e.Evolution,e.ResultIndex,e.ResultKind is {} k?(int)k:null,e.SourceArgument,e.CopyId,e.PathAmbiguous)).ToArray(),h.SchemaVersion,
                 h.AdditionalSources.Select(s=>new PackHistorySource(s.Revision.Value,s.Asset.Sha256,s.Fingerprint,s.TopologyCount)).ToArray());
         }).ToArray()));
 
@@ -41,7 +42,7 @@ internal static partial class MessagePackSections
             if(h.AdditionalSources is null)throw new InvalidDataException("Missing history source table.");
             var history=new TopologyHistory(new(h.SourceRevision),new(h.SourceAsset),new(h.ResultRevision),new(h.ResultAsset),h.Adapter,
                 h.SourceFingerprint,h.ResultFingerprint,h.SourceCount,h.ResultCount,h.Entries.Select(e=>new TopologyHistoryEntry(e.Source,
-                    (HistoryShapeKind)e.SourceKind,(TopologyEvolution)e.Evolution,e.Result,e.ResultKind is {} k?(HistoryShapeKind)k:null,e.SourceArgument)).ToImmutableArray(),h.Version)
+                    (HistoryShapeKind)e.SourceKind,(TopologyEvolution)e.Evolution,e.Result,e.ResultKind is {} k?(HistoryShapeKind)k:null,e.SourceArgument,e.CopyId,e.PathAmbiguous)).ToImmutableArray(),h.Version)
             {AdditionalSources=h.AdditionalSources.Select(s=>new TopologyHistorySource(new(s.Revision),new(s.Asset),s.Fingerprint,s.TopologyCount)).ToImmutableArray()};
             history.ValidateFor(feature);result[id]=feature with{TopologyHistory=history};
         }
@@ -50,8 +51,24 @@ internal static partial class MessagePackSections
     internal static byte[] UpgradeHistorySources(ReadOnlyMemory<byte> bytes)
     {
         var old=Read<PackHistories>(bytes);
-        if(old.Histories.Any(h=>h.Version!=1||h.AdditionalSources is {Length:>0}||h.Entries.Any(e=>e.SourceArgument!=0)))
+        if(old.Histories.Any(h=>h.Version!=1||h.AdditionalSources is {Length:>0}||h.Entries.Any(e=>e.SourceArgument!=0||e.Evolution is <0 or >4||e.CopyId is not null||e.PathAmbiguous)))
             throw new InvalidDataException("History v1 cannot contain multiple source arguments.");
         return Serialize(new PackHistories(old.Histories.Select(h=>h with{AdditionalSources=[]}).ToArray()));
+    }
+    internal static byte[] UpgradeComposedHistory(ReadOnlyMemory<byte> bytes)
+    {
+        var old=Read<PackHistories>(bytes);
+        if(old.Histories.Any(h=>h.Version is not (1 or 2)||h.Entries.Any(e=>e.Evolution is <0 or >4||e.CopyId is not null||e.PathAmbiguous)))
+            throw new InvalidDataException("History v2 cannot contain composed history or its terminal states.");
+        // Preserve the native witnesses and their original adapters. Migrating the
+        // section envelope does not authorize rewriting any old algorithm evidence.
+        return bytes.ToArray();
+    }
+    internal static byte[] UpgradeMulticopyHistory(ReadOnlyMemory<byte> bytes)
+    {
+        var old=Read<PackHistories>(bytes);
+        if(old.Histories.Any(h=>h.Version is not (1 or 2 or 3)||h.Entries.Any(e=>e.CopyId is not null||e.PathAmbiguous)))
+            throw new InvalidDataException("History v3 cannot contain multicopy provenance.");
+        return bytes.ToArray();
     }
 }

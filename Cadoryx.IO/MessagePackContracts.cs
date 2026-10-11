@@ -101,7 +101,11 @@ public sealed record PackGeometry(
     [property: Key(4)] double[] Max,
     [property: Key(5)] double Volume,
     [property: Key(6)] string? ContextHash,
-    [property: Key(7)] string? Entry);
+    [property: Key(7)] string? Entry,
+    [property: Key(8)] PackSerializedGeometryReferences? SerializedReferences=null);
+
+[MessagePackObject]
+public sealed record PackSerializedGeometryReferences([property:Key(0)] string TableHash,[property:Key(1)] int SchemaVersion);
 
 [MessagePackObject]
 public sealed record PackAppearance(
@@ -155,7 +159,67 @@ public sealed record PackRecipe(
     [property: Key(9)] PackMixedCurve[][]? MixedHoles=null,
     [property: Key(10)] PackIsland[]? Islands=null,
     [property: Key(11)] double[][]? SplineControls=null,
-    [property: Key(12)] double[][][]? SplineHoles=null);
+    [property: Key(12)] double[][][]? SplineHoles=null,
+    [property: Key(13)] PackRepetition? Repetition=null,
+    [property: Key(14)] PackHole? Hole=null,
+    [property: Key(15)] PackExtrusion? Extrusion=null,
+    [property: Key(16)] PackGuidedAuthoring? Guided=null,[property: Key(17)] PackFaceFeature? FaceFeature=null,
+    [property: Key(18)] PackRevolveAxis? RevolveAxis=null,[property:Key(19)] PackHolePattern? HolePattern=null,
+    [property:Key(20)] PackExtrusionPattern? ExtrusionPattern=null,
+    [property:Key(21)] PackSplineKnots? SplineKnots=null,[property:Key(22)] PackSplineKnots?[]? SplineHoleKnots=null,
+    [property:Key(23)] PackContourLocal? ContourLocal=null,[property:Key(24)] PackFaceEdit? FaceEdit=null);
+
+[MessagePackObject]
+public sealed record PackExtrusionPattern([property:Key(0)] Guid Seed,[property:Key(1)] PackRepetition Layout,
+    [property:Key(2)] PackRecipe Template);
+
+[MessagePackObject]
+public sealed record PackHolePattern([property:Key(0)] Guid Seed,[property:Key(1)] PackRepetition Layout,
+    [property:Key(2)] PackHole Hole,[property:Key(3)] PackTransform HoleFrame);
+
+[MessagePackObject]
+public sealed record PackRevolveAxis([property:Key(0)] double[] Point,[property:Key(1)] double[] Direction,
+    [property:Key(2)] Guid? Datum,[property:Key(3)] Guid? DatumRevision);
+
+[MessagePackObject]
+public sealed record PackGuidedAuthoring([property:Key(0)] PackSweep? Sweep=null,[property:Key(1)] PackLoft? Loft=null);
+[MessagePackObject]
+public sealed record PackSweep([property:Key(0)] PackRecipe Section,[property:Key(1)] PackTransform Frame,
+    [property:Key(2)] PackMixedCurve[] Path,[property:Key(3)] PackTransform PathFrame,
+    [property:Key(4)] int Output,[property:Key(5)] int Corner,
+    [property:Key(6)] PackSketchProfileReference? SectionSource=null,[property:Key(7)] PackSketchPathReference? PathSource=null);
+[MessagePackObject]
+public sealed record PackLoft([property:Key(0)] PackTransform[] Stations,[property:Key(1)] PackLoftChannel[] Channels,
+    [property:Key(2)] int Output,[property:Key(3)] bool Ruled);
+[MessagePackObject]
+public sealed record PackLoftChannel([property:Key(0)] Guid Id,[property:Key(1)] Guid? Parent,[property:Key(2)] PackRecipe[] Profiles,
+    [property:Key(3)] PackSketchProfileReference?[]? Sources=null);
+[MessagePackObject]
+public sealed record PackSketchPathReference([property:Key(0)] Guid Sketch,[property:Key(1)] Guid Revision,[property:Key(2)] Guid[] Entities,[property:Key(3)] bool[] Reverse);
+
+[MessagePackObject]
+public sealed record PackExtrusion([property:Key(0)] int Side,[property:Key(1)] double Backward,
+    [property:Key(2)] int Operation,[property:Key(3)] int Termination,[property:Key(4)] PackTransform? Plane,
+    [property:Key(5)] Guid? Datum,[property:Key(6)] Guid? DatumRevision,[property:Key(7)] PackExactTopologySelection? Face,
+    [property:Key(8)] PackExactTopologySelection? Support=null,[property:Key(9)] int? SurfaceBranch=null);
+
+[MessagePackObject]
+public sealed record PackHole([property:Key(0)] double U,[property:Key(1)] double V,[property:Key(2)] double Diameter,
+    [property:Key(3)] bool Through,[property:Key(4)] double Depth,[property:Key(5)] int Head,
+    [property:Key(6)] double HeadDiameter,[property:Key(7)] double HeadDepth,[property:Key(8)] double HeadAngle,
+    [property:Key(9)] int? NominalMm,[property:Key(10)] int? Fit,[property:Key(11)] string? Catalog,
+    [property:Key(12)] Guid? Datum,[property:Key(13)] Guid? DatumRevision,[property:Key(14)] PackMetricThread? Thread=null);
+
+[MessagePackObject]
+public sealed record PackMetricThread([property:Key(0)] string Catalog,[property:Key(1)] int NominalMm,
+    [property:Key(2)] double PitchMm,[property:Key(3)] int Hand,[property:Key(4)] bool Through,
+    [property:Key(5)] double DepthMm,[property:Key(6)] int Representation,[property:Key(7)] string? Profile=null);
+
+[MessagePackObject]
+public sealed record PackRepetition([property:Key(0)] int Kind,[property:Key(1)] int Count,[property:Key(2)] double Step,
+    [property:Key(3)] Guid[] CopyIds,[property:Key(4)] int Output,[property:Key(5)] bool IncludeSource,
+    [property:Key(6)] bool FullCircle,[property:Key(7)] Guid? Datum,[property:Key(8)] Guid? DatumRevision,
+    [property:Key(9)] int? StylePolicy=null);
 
 [MessagePackObject]
 public sealed record PackCircularHole([property:Key(0)] double X,[property:Key(1)] double Y,[property:Key(2)] double Radius);
@@ -164,7 +228,9 @@ public sealed record PackPolygonHole([property:Key(0)] double[][] Vertices);
 [MessagePackObject]
 public sealed record PackMixedCurve([property:Key(0)] double[] Start,[property:Key(1)] double[] End,
     [property:Key(2)] double[]? Middle,[property:Key(3)] double[]? BezierControl=null,
-    [property:Key(4)] double[][]? SplineControls=null);
+    [property:Key(4)] double[][]? SplineControls=null,[property:Key(5)] PackSplineKnots? SplineKnots=null,
+    [property:Key(6)] PackEllipseGeometry? Ellipse=null,[property:Key(7)] PackFreeformGeometry? Freeform=null,
+    [property:Key(8)] PackSketchCurveExpression? Expression=null);
 [MessagePackObject]
 public sealed record PackIsland([property:Key(0)] double[][] Points,[property:Key(1)] PackCircularHole? Circle=null,
     [property:Key(2)] PackMixedCurve[]? MixedCurves=null,
@@ -173,7 +239,11 @@ public sealed record PackIsland([property:Key(0)] double[][] Points,[property:Ke
     [property:Key(5)] PackPolygonHole[]? PolygonHoles=null,
     [property:Key(6)] PackMixedCurve[][]? MixedHoles=null,
     [property:Key(7)] double[][][]? SplineHoles=null,
-    [property:Key(8)] PackIsland[]? Islands=null);
+    [property:Key(8)] PackIsland[]? Islands=null,[property:Key(9)] PackSplineKnots? SplineKnots=null,
+    [property:Key(10)] PackSplineKnots?[]? SplineHoleKnots=null);
+
+[MessagePackObject]
+public sealed record PackSplineKnots([property:Key(0)] double[] Knots,[property:Key(1)] int[] Multiplicities);
 
 [MessagePackObject]
 public sealed record PackLayer(

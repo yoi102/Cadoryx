@@ -3,7 +3,7 @@ using System.Collections.Immutable;
 namespace Cadoryx.Db;
 
 public enum DrawingViewKind { Front,Top,Right,Isometric,Section,Detail }
-public enum DrawingLineKind { Sharp,Smooth,Sewn,Outline,Isoparameter }
+public enum DrawingLineKind { Sharp,Smooth,Sewn,Outline,Isoparameter,SectionHatch }
 public enum DrawingMeasureKind { Length,Angle,Radius,Diameter }
 public enum DrawingStandard { ISO,GB,ASME }
 
@@ -15,6 +15,8 @@ public sealed record DrawingStroke(DrawingLineKind Kind,bool Hidden,ImmutableArr
         if(!Enum.IsDefined(Kind)||Points.IsDefault||Points.Length is <2 or >4096||
            Points.Any(p=>!double.IsFinite(p.X)||!double.IsFinite(p.Y)||Math.Abs(p.X)>1e9||Math.Abs(p.Y)>1e9))
             throw new CadValidationException("Invalid drawing polyline.");
+        if(Kind==DrawingLineKind.SectionHatch&&(Hidden||Closed||Points.Length!=2))
+            throw new CadValidationException("A section hatch must be one visible straight segment.");
     }
 }
 
@@ -38,6 +40,7 @@ public sealed record TechnicalDrawingView(Guid Id,string Name,DrawingViewKind Ki
     /// <summary>Detail coordinates and radius are in the parent projection's model units.</summary>
     public Point2d? DetailCenter {get;init;}
     public double DetailRadius {get;init;}
+    public DrawingSectionHatching? Hatching {get;init;}
     public void Validate(DocumentId document)
     {
         if(Id==Guid.Empty||!Enum.IsDefined(Kind)||ParentView==Id||
@@ -49,6 +52,11 @@ public sealed record TechnicalDrawingView(Guid Id,string Name,DrawingViewKind Ki
             throw new CadValidationException("Invalid drawing view.");
         if(StaleReason is {Length:>2048})throw new CadValidationException("Drawing diagnostic is too long.");
         CadGuard.Name(Name);
+        if(Hatching is not null)
+        {
+            if(Kind!=DrawingViewKind.Section)throw new CadValidationException("Only a base section view owns hatch settings.");
+            Hatching.Validate();
+        }
         if(Kind==DrawingViewKind.Section)
         {
             if(SectionNormal is not {} normal||Math.Abs(normal.Length-1)>1e-8)
@@ -73,6 +81,9 @@ public sealed record TechnicalDrawingView(Guid Id,string Name,DrawingViewKind Ki
         if(Sources.Select(s=>(s.Path,s.Body)).Distinct().Count()!=Sources.Length)
             throw new CadValidationException("Duplicate drawing source.");
         foreach(var line in Strokes)line.Validate();
+        if(Kind is not (DrawingViewKind.Section or DrawingViewKind.Detail)&&
+            Strokes.Any(line=>line.Kind==DrawingLineKind.SectionHatch))
+            throw new CadValidationException("Section hatching needs a section view or its detail view.");
     }
 }
 
@@ -103,6 +114,12 @@ public sealed record TechnicalDrawingSheet(Guid Id,string Name,double WidthMm,do
     ImmutableArray<TechnicalDrawingDimension> Dimensions,string Title="",string? Author=null)
 {
     public DrawingStandard Standard {get;init;}=DrawingStandard.ISO;
+    public DrawingSheetTemplate? Template {get;init;}
+    public ImmutableArray<DrawingDatumSymbol> DatumSymbols {get;init;}=[];
+    public ImmutableArray<DrawingFeatureControlFrame> ControlFrames {get;init;}=[];
+    public ImmutableArray<DrawingAssemblyBalloon> Balloons {get;init;}=[];
+    public ImmutableArray<DrawingHoleTable> HoleTables {get;init;}=[];
+    public Point2d? PartsTablePositionMm {get;init;}
     public static TechnicalDrawingSheet A4Landscape(string name)=>
         new(Guid.NewGuid(),name,297,210,LengthUnit.Millimeter,[],[],name);
 
@@ -114,6 +131,9 @@ public sealed record TechnicalDrawingSheet(Guid Id,string Name,double WidthMm,do
            !Enum.IsDefined(Standard))
             throw new CadValidationException("Invalid drawing sheet.");
         CadGuard.Name(Name);CadGuard.Name(Title);
+        Template?.Validate(WidthMm,HeightMm);
+        if(Template is not null&&(Title.Length>96||Title.Any(char.IsControl)||Author is {Length:>28}))
+            throw new CadValidationException("Manufacturing title is limited to 96 printable characters and author to 28.");
         if(Author is {Length:>256})throw new CadValidationException("Drawing author is too long.");
         var ids=new HashSet<Guid>();
         foreach(var view in Views)
@@ -123,6 +143,8 @@ public sealed record TechnicalDrawingSheet(Guid Id,string Name,double WidthMm,do
         foreach(var view in Views.Where(v=>v.Kind==DrawingViewKind.Detail))
         {
             var parent=Views.Single(v=>v.Id==view.ParentView);
+            if(parent.Kind!=DrawingViewKind.Section&&view.Strokes.Any(s=>s.Kind==DrawingLineKind.SectionHatch))
+                throw new CadValidationException("A hatched detail must belong to a section view.");
             if(parent.Kind==DrawingViewKind.Detail||parent.Sources.Length!=view.Sources.Length||
                parent.Sources.Where((source,index)=>
                    !source.Path.Equals(view.Sources[index].Path)||source.Body!=view.Sources[index].Body||
@@ -138,6 +160,45 @@ public sealed record TechnicalDrawingSheet(Guid Id,string Name,double WidthMm,do
             if(!dimensions.Add(dimension.Id)||!ids.Contains(dimension.ViewId))
                 throw new CadValidationException("Invalid drawing dimension owner.");
         }
+        if(DatumSymbols.IsDefault||ControlFrames.IsDefault||Balloons.IsDefault||HoleTables.IsDefault||
+           DatumSymbols.Length>256||ControlFrames.Length>512||Balloons.Length>512||HoleTables.Length>16)
+            throw new CadValidationException("Invalid manufacturing annotation arrays.");
+        var annotationIds=new HashSet<Guid>();
+        void Owner(Guid id,Guid view)
+        {
+            if(!annotationIds.Add(id)||!ids.Contains(view))throw new CadValidationException("Invalid manufacturing annotation owner or duplicate ID.");
+        }
+        foreach(var datum in DatumSymbols){if(datum is null)throw new CadValidationException("Missing datum symbol.");datum.Validate(document);Owner(datum.Id,datum.ViewId);}
+        if(DatumSymbols.Select(d=>d.Name).Distinct(StringComparer.Ordinal).Count()!=DatumSymbols.Length)
+            throw new CadValidationException("Datum labels must be unique on a sheet.");
+        foreach(var frame in ControlFrames)
+        {
+            if(frame is null)throw new CadValidationException("Missing control frame.");frame.Validate(document);Owner(frame.Id,frame.ViewId);
+            DrawingManufacturingRules.Validate(this,frame);
+        }
+        foreach(var balloon in Balloons){if(balloon is null)throw new CadValidationException("Missing balloon.");balloon.Validate(document);Owner(balloon.Id,balloon.ViewId);}
+        foreach(var holeTable in HoleTables)
+        {
+            if(holeTable is null)throw new CadValidationException("Missing hole table.");holeTable.Validate(document);Owner(holeTable.Id,holeTable.ViewId);
+            foreach(var row in holeTable.Rows)if(!annotationIds.Add(row.Id))throw new CadValidationException("Duplicate manufacturing hole row ID.");
+            var p=holeTable.PositionMm;double height=7*(holeTable.Rows.Length+2);
+            var m=Template?.Margins??new DrawingFrameMargins(0,0,0,0);
+            if(p.X<m.Left||p.Y<m.Top||p.X+150>WidthMm-m.Right||p.Y+height>HeightMm-m.Bottom||
+                Template is not null&&p.X+150>WidthMm-m.Right-180&&p.Y+height>HeightMm-m.Bottom-72)
+                throw new CadValidationException("Hole table must fit inside the frame and outside the reserved title block.");
+            bool Overlaps(Point2d other,double w,double h)=>p.X<other.X+w-1e-8&&p.X+150>other.X+1e-8&&p.Y<other.Y+h-1e-8&&p.Y+height>other.Y+1e-8;
+            if(HoleTables.Any(t=>t.Id!=holeTable.Id&&Overlaps(t.PositionMm,150,7*(t.Rows.Length+2)))||
+                Template is {} content&&(content.CustomFields.Any(f=>Overlaps(f.PositionMm,f.WidthMm,f.HeightMm))||
+                    content.Notes.Any(n=>Overlaps(n.PositionMm,n.WidthMm,Math.Max(8,n.Text.Split('\n').Length*4+2))))||
+                PartsTablePositionMm is {} parts&&Overlaps(parts,70,7*(Balloons.Select(b=>b.ItemNumber).Distinct().Count()+1)))
+                throw new CadValidationException("Hole tables must not overlap other tables, custom fields or manufacturing notes.");
+        }
+        if(Balloons.GroupBy(b=>b.ItemNumber).Any(g=>g.Select(b=>b.Source.DefinitionId).Distinct().Count()!=1)||
+           Balloons.GroupBy(b=>b.Source.DefinitionId).Any(g=>g.Select(b=>b.ItemNumber).Distinct().Count()!=1)||
+           Balloons.Select(b=>(b.ViewId,b.Source.Path)).Distinct().Count()!=Balloons.Length)
+            throw new CadValidationException("Assembly item numbers must identify one explicit definition; one balloon per occurrence per view.");
+        if(PartsTablePositionMm is {} table&&(!double.IsFinite(table.X)||!double.IsFinite(table.Y)||table.X<0||table.Y<0||table.X+70>WidthMm||table.Y+7*(Balloons.Select(b=>b.ItemNumber).Distinct().Count()+1)>HeightMm))
+            throw new CadValidationException("Parts table must fit on the physical sheet.");
         bool ParentCycle(Guid id)
         {
             var seen=new HashSet<Guid>();

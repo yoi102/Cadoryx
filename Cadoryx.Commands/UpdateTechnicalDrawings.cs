@@ -24,7 +24,24 @@ public static class UpdateTechnicalDrawings
                     var parent=views.FirstOrDefault(v=>v.Id==view.ParentView);
                     if(parent is null||parent.StaleReason is not null)
                         views.Add(view with{StaleReason="Parent drawing projection is stale."});
-                    else views.Add(view with{Sources=parent.Sources,Strokes=parent.Strokes,StaleReason=null});
+                    else if(parent.Kind!=DrawingViewKind.Section)
+                        views.Add(view with{Sources=parent.Sources,Strokes=parent.Strokes,StaleReason=null});
+                    else
+                    {
+                        var oldSheet=context.Snapshot.DrawingSheets.GetValueOrDefault(sheet.Id);
+                        var oldView=oldSheet?.Views.FirstOrDefault(v=>v.Id==view.Id);
+                        var oldParent=oldSheet?.Views.FirstOrDefault(v=>v.Id==parent.Id);
+                        bool rebuild=view.StaleReason is not null||oldView is null||oldView.Scale!=view.Scale||
+                            oldParent is null||oldParent.Strokes!=parent.Strokes;
+                        if(!rebuild)views.Add(view with{Sources=parent.Sources,StaleReason=null});
+                        else try
+                        {
+                            var strokes=await DrawingInputs.DetailStrokesAsync(context,next,parent,view.Scale,token).ConfigureAwait(false);
+                            views.Add(view with{Sources=parent.Sources,Strokes=strokes,StaleReason=null});
+                        }
+                        catch(Exception error) when(error is not OperationCanceledException)
+                        {views.Add(view with{StaleReason="Detail section projection failed: "+error.Message});}
+                    }
                     continue;
                 }
                 var inputs=new List<GeometryInstance>();string? problem=null;
@@ -39,12 +56,15 @@ public static class UpdateTechnicalDrawings
                 bool changed=view.StaleReason is not null||inputs.Where((input,index)=>
                     input.Geometry.AssetId!=view.Sources[index].Asset||
                     input.Geometry.Revision!=view.Sources[index].Revision||
-                    input.WorldTransform!=view.Sources[index].WorldTransform).Any();
+                    input.WorldTransform!=view.Sources[index].WorldTransform||
+                    view.Kind==DrawingViewKind.Section&&
+                        context.Snapshot.Bodies.GetValueOrDefault(input.BodyId)?.MaterialId!=next.Bodies[input.BodyId].MaterialId).Any();
                 if(!changed){views.Add(view);continue;}
                 try
                 {
                     var projection=await kernel.ProjectAsync(inputs,view.Kind,view.SectionNormal,
-                        view.SectionOffsetMm,context.Assets,token).ConfigureAwait(false);
+                        view.SectionOffsetMm,context.Assets,token,sectionHatchPatterns:
+                        DrawingInputs.HatchPatterns(next,inputs,view,view.Scale)).ConfigureAwait(false);
                     views.Add(view with{Sources=[..inputs.Select(i=>DrawingInputs.Source(next,i))],
                         Strokes=projection.Strokes,StaleReason=null});
                 }
@@ -70,7 +90,10 @@ public static class UpdateTechnicalDrawings
                 catch(Exception error) when(error is not OperationCanceledException)
                 {dimensions.Add(dimension with{StaleReason="Dimension reference is stale: "+error.Message});}
             }
-            sheets[sheet.Id]=sheet with{Views=resolvedViews,Dimensions=dimensions.ToImmutable()};
+            var annotated=await UpdateDrawingAnnotations.PrepareAsync(
+                new(next,context.Generation,context.Assets,context.Kernel),
+                sheet with{Views=resolvedViews,Dimensions=dimensions.ToImmutable()},token).ConfigureAwait(false);
+            sheets[sheet.Id]=await DrawingHoleTableCommands.UpdateAsync(new(next,context.Generation,context.Assets,context.Kernel),annotated,token).ConfigureAwait(false);
         }
         return new(next with{DrawingSheets=sheets.ToImmutable()});
     }

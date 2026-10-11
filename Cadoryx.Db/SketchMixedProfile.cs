@@ -1,4 +1,5 @@
 using System.Collections.Immutable;
+using System.Text.Json.Serialization;
 
 namespace Cadoryx.Db;
 
@@ -7,6 +8,13 @@ public sealed record SketchBoundaryCurve(Point2d Start,Point2d End,Point2d? Midd
 {
     public Point2d? BezierControl {get;init;}
     public ImmutableArray<Point2d> SplineControls {get;init;}=[];
+    public CubicSplineKnotVector? SplineKnots {get;init;}
+    public SketchEllipseGeometry? Ellipse {get;init;}
+    public SketchFreeformGeometry? Freeform {get;init;}
+    public SketchCurveExpressionGeometry? Expression {get;init;}
+    [JsonIgnore] public CubicSplineDefinition SplineDefinition=>CubicSplineKnotVector.Definition(SplineControls,SplineKnots);
+    public SketchBoundaryCurve Reversed()=>this with{Start=End,End=Start,
+        SplineControls=SplineControls.Reverse().ToImmutableArray(),SplineKnots=SplineKnots?.Reverse(),Ellipse=Ellipse?.Reversed(),Freeform=Freeform?.Reverse(),Expression=Expression?.Reverse()};
 }
 
 /// <summary>Exact, bounded line/arc loops. Curves stay ordered and directed.</summary>
@@ -19,13 +27,16 @@ public static class SketchMixedProfile
         if(curve.BezierControl is {} control)
             return Enumerable.Range(0,129).Select(i=>SketchBezierGeometry.At(curve.Start,control,curve.End,i/128d)).ToArray();
         if(!curve.SplineControls.IsDefaultOrEmpty)
-            return Enumerable.Range(0,129).Select(i=>SketchSplineGeometry.At(curve.SplineControls,i/128d)).ToArray();
+            return Enumerable.Range(0,129).Select(i=>SketchSplineGeometry.At(curve.SplineControls,i/128d,curve.SplineKnots)).ToArray();
         return [curve.Start,curve.End];
     }
     public static bool Same(SketchBoundaryCurve a,SketchBoundaryCurve b)=>
-        a.Start==b.Start&&a.End==b.End&&a.Middle==b.Middle&&a.BezierControl==b.BezierControl&&
+        a.Start==b.Start&&a.End==b.End&&a.Middle==b.Middle&&a.BezierControl==b.BezierControl&&a.Ellipse==b.Ellipse&&SketchFreeformGeometry.Same(a.Freeform,b.Freeform)&&
+        (a.Expression is null?b.Expression is null:b.Expression is {} expression&&a.Expression.SameValues(expression))&&
         (a.SplineControls.IsDefaultOrEmpty?ImmutableArray<Point2d>.Empty:a.SplineControls)
-            .SequenceEqual(b.SplineControls.IsDefaultOrEmpty?ImmutableArray<Point2d>.Empty:b.SplineControls);
+            .SequenceEqual(b.SplineControls.IsDefaultOrEmpty?ImmutableArray<Point2d>.Empty:b.SplineControls)&&
+        (a.SplineControls.IsDefaultOrEmpty?a.SplineKnots is null&&b.SplineKnots is null:
+            CubicSplineKnotVector.Same(a.SplineControls,a.SplineKnots,b.SplineControls,b.SplineKnots));
     public static bool SameLoop(ImmutableArray<SketchBoundaryCurve> a,ImmutableArray<SketchBoundaryCurve> b)=>
         a.Length==b.Length&&a.Zip(b).All(pair=>Same(pair.First,pair.Second));
 
@@ -44,6 +55,8 @@ public static class SketchMixedProfile
     public static void ValidateHoles(ImmutableArray<SketchBoundaryCurve> outer,
         ImmutableArray<ImmutableArray<SketchBoundaryCurve>> holes)
     {
+        if(outer.Concat(holes.SelectMany(h=>h)).Any(c=>c.Ellipse is not null||c.Freeform is not null||c.Expression is not null))
+            throw new CadValidationException("Validate copied conic/freeform holes with the exact native region service.");
         foreach(var hole in holes)
         {
             if(Touch(outer,hole)||!Contains(outer,InteriorProbe(hole)))
@@ -59,6 +72,8 @@ public static class SketchMixedProfile
     public static void ValidateIslands(ImmutableArray<ImmutableArray<SketchBoundaryCurve>> holes,
         ImmutableArray<ImmutableArray<SketchBoundaryCurve>> islands)
     {
+        if(holes.Concat(islands).SelectMany(h=>h).Any(c=>c.Ellipse is not null||c.Freeform is not null||c.Expression is not null))
+            throw new CadValidationException("Validate copied conic/freeform islands with the exact native region service.");
         foreach(var island in islands)
         {
             int parents=holes.Count(h=>!Touch(h,island)&&Contains(h,InteriorProbe(island)));
@@ -81,8 +96,10 @@ public static class SketchMixedProfile
 
     private static bool Touch(ImmutableArray<SketchBoundaryCurve> a,ImmutableArray<SketchBoundaryCurve> b)=>
         a.Any(first=>b.Any(second=>Intersections(first,second).Any()));
-    public static bool Touches(ImmutableArray<SketchBoundaryCurve> a,ImmutableArray<SketchBoundaryCurve> b)=>Touch(a,b);
+    public static bool Touches(ImmutableArray<SketchBoundaryCurve> a,ImmutableArray<SketchBoundaryCurve> b)=>
+        a.Concat(b).Any(c=>c.Ellipse is not null||c.Freeform is not null||c.Expression is not null)?throw new CadValidationException("Classify copied curves with the exact native region service."):Touch(a,b);
     public static bool StrictlyContains(ImmutableArray<SketchBoundaryCurve> outer,ImmutableArray<SketchBoundaryCurve> inner)=>
+        outer.Concat(inner).Any(c=>c.Ellipse is not null||c.Freeform is not null||c.Expression is not null)?throw new CadValidationException("Classify copied curves with the exact native region service."):
         !Touch(outer,inner)&&Contains(outer,InteriorProbe(inner));
 
     private static bool Contains(ImmutableArray<SketchBoundaryCurve> boundary,Point2d point)
@@ -126,20 +143,42 @@ public static class SketchMixedProfile
 
     public static void Validate(ImmutableArray<SketchBoundaryCurve> curves)
     {
-        if(curves.IsDefault||curves.Length is <3 or >256||!curves.Any(c=>c.Middle is not null||HasFree(c)))
+        if(curves.IsDefault||curves.Length is <1 or >256||curves.Length<3&&!curves.Any(c=>c.Ellipse is not null||c.Freeform is not null||c.Expression is not null)||!curves.Any(c=>c.Middle is not null||HasFree(c)||c.Ellipse is not null||c.Freeform is not null||c.Expression is not null))
             throw new CadValidationException("A mixed profile requires a curved edge and three boundary curves.");
         for(int i=0;i<curves.Length;i++)
         {
             var curve=curves[i];var next=curves[(i+1)%curves.Length];
             CadGuard.Finite(curve.Start.X,curve.Start.Y,curve.End.X,curve.End.Y);
-            if(curve.SplineControls.IsDefault||
+            if(curve.SplineControls.IsDefault)throw new CadValidationException("Uninitialized boundary spline controls.");
+            if(curve.Expression is {} expression)
+            {
+                expression.Validate();
+                if(curve.Freeform is not null||curve.Ellipse is not null||curve.Middle is not null||curve.BezierControl is not null||!curve.SplineControls.IsEmpty||curve.SplineKnots is not null||
+                    Distance(curve.Start,expression.At(0))>Tolerance||Distance(curve.End,expression.At(1))>Tolerance)
+                    throw new CadValidationException("Invalid owned expression boundary.");
+            }
+            if(curve.Freeform is {} freeform)
+            {
+                freeform.Validate();
+                if(curve.Ellipse is not null||curve.Middle is not null||curve.BezierControl is not null||!curve.SplineControls.IsEmpty||curve.SplineKnots is not null||
+                   Distance(curve.Start,freeform.At(0))>Tolerance||Distance(curve.End,freeform.At(1))>Tolerance)
+                    throw new CadValidationException("Invalid copied freeform boundary.");
+            }
+            if(curve.Ellipse is {} ellipse)
+            {
+                ellipse.Validate();
+                if(curve.Middle is not null||curve.BezierControl is not null||!curve.SplineControls.IsEmpty||
+                    Distance(curve.Start,ellipse.At(0))>Tolerance||Distance(curve.End,ellipse.At(1))>Tolerance)
+                    throw new CadValidationException("Invalid exact ellipse boundary.");
+            }
+            if(curve.SplineControls.IsDefault||curve.SplineKnots is not null&&curve.SplineControls.IsEmpty||
                (curve.Middle is not null&&(curve.BezierControl is not null||!curve.SplineControls.IsEmpty))||
                (curve.BezierControl is not null&&!curve.SplineControls.IsEmpty))
                 throw new CadValidationException("A mixed edge must have exactly one curve representation.");
             if(curve.BezierControl is {} control)SketchBezierGeometry.Validate(curve.Start,control,curve.End);
             if(!curve.SplineControls.IsEmpty)
             {
-                SketchSplineGeometry.Validate(curve.SplineControls);
+                SketchSplineGeometry.Validate(curve.SplineControls,curve.SplineKnots);
                 if(Distance(curve.Start,curve.SplineControls[0])>Tolerance||
                    Distance(curve.End,curve.SplineControls[^1])>Tolerance)
                     throw new CadValidationException("Spline controls do not match the mixed edge endpoints.");
@@ -148,11 +187,14 @@ public static class SketchMixedProfile
             {
                 _=SketchArcGeometry.Through(curve.Start,middle,curve.End);
             }
-            else if(Distance(curve.Start,curve.End)<=Tolerance)
+            else if(!HasFree(curve)&&curve.Ellipse is null&&curve.Freeform is null&&curve.Expression is null&&Distance(curve.Start,curve.End)<=Tolerance)
                 throw new CadValidationException("Mixed profile contains a zero-length line.");
             if(Distance(curve.End,next.Start)>Tolerance)
                 throw new CadValidationException("Mixed boundary curves do not form a closed chain.");
         }
+        // New author curves are checked as exact BRep regions by the kernel.
+        // A display tessellation cannot prove their topology or area.
+        if(curves.Any(c=>c.SplineKnots is not null||c.Ellipse is not null||c.Freeform is not null||c.Expression is not null))return;
         double area=0;
         foreach(var curve in curves)
         {
@@ -242,16 +284,19 @@ public static class SketchMixedProfile
     private static IEnumerable<Point2d> ArcLine(SketchBoundaryCurve arcCurve,SketchBoundaryCurve line)
     {
         var arc=SketchArcGeometry.Through(arcCurve.Start,arcCurve.Middle!.Value,arcCurve.End);
-        var d=Subtract(line.End,line.Start);var f=Subtract(line.Start,arc.Center);
-        double a=Cross(d,new(-d.Y,d.X)); // squared length
-        double b=2*(f.X*d.X+f.Y*d.Y),c=f.X*f.X+f.Y*f.Y-arc.Radius*arc.Radius;
-        double discriminant=b*b-4*a*c;
-        if(discriminant < -Tolerance*a)yield break;
-        double root=Math.Sqrt(Math.Max(0,discriminant));
-        foreach(double t in new[]{(-b-root)/(2*a),(-b+root)/(2*a)})
+        var direction=Subtract(line.End,line.Start);double length=Length(direction);
+        double dx=direction.X/length,dy=direction.Y/length;
+        double along=(arc.Center.X-line.Start.X)*dx+(arc.Center.Y-line.Start.Y)*dy;
+        var foot=new Point2d(line.Start.X+along*dx,line.Start.Y+along*dy);double distance=Distance(foot,arc.Center);
+        if(distance>arc.Radius+Tolerance)yield break;
+        // A tiny positive discriminant at an exact tangent used to create two false intersections.
+        double half=Math.Abs(distance-arc.Radius)<=1e-12*Math.Max(1,arc.Radius)?0:
+            Math.Sqrt(Math.Max(0,(arc.Radius-distance)*(arc.Radius+distance)));
+        foreach(double offset in half==0?new[]{0d}:new[]{-half,half})
         {
+            double t=(along+offset)/length;
             if(t < -Tolerance||t > 1+Tolerance)continue;
-            var hit=new Point2d(line.Start.X+t*d.X,line.Start.Y+t*d.Y);
+            var hit=new Point2d(foot.X+offset*dx,foot.Y+offset*dy);
             if(OnArc(hit,arc))yield return hit;
         }
     }

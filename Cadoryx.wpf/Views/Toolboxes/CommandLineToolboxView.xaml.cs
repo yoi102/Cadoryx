@@ -57,6 +57,7 @@ public partial class CommandLineToolboxView : UserControl
         }
         else if (e.Key == Key.Up) { if (model.Suggestions.Count > 0) model.SelectSuggestion(-1); else model.PreviousCommand.Execute(null); e.Handled = true; }
         else if (e.Key == Key.Down) { if (model.Suggestions.Count > 0) model.SelectSuggestion(1); else model.NextCommand.Execute(null); e.Handled = true; }
+        else if (e.Key == Key.Escape && model.IsRunning) { model.ExecuteCommand.Cancel(); e.Handled = true; }
         else if (e.Key == Key.Escape && model.Suggestions.Count > 0) { model.CommandText += " "; e.Handled = true; }
     }
 }

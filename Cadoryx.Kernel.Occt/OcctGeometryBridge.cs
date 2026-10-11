@@ -12,11 +12,137 @@ public static class OcctGeometryBridge
         double VolumeMs,double WriteMs,double StageMs);
     public static Shape ReadShape(GeometryAssetRef geometry,IAssetStore assets)
     {
+        geometry.Validate();
+        if(geometry.SerializedOccurrences is not null)
+        {
+            using var graph=ReadOccurrenceShape(geometry,assets);
+            // Resolve creates a separate native root handle before the query owner is released.
+            return graph.Resolve([]);
+        }
+        if(geometry.SerializedReferences is not null)
+        {
+            var graph=ReadReferencedShape(geometry,assets);
+            // Transfer the root to the caller. Members own separate handles into this same graph.
+            foreach(var member in graph.Members)member.Dispose();
+            return graph.Root;
+        }
         using var lease=assets.Acquire(geometry.AssetId);using var files=new KernelFiles();
         var format=geometry.Format??AssetFormatPolicy.Inspect(lease.Content.Span);
         AssetFormatPolicy.RequireBRep(format);AssetFormatPolicy.VerifyPayload(format,lease.Content.Span);
         var path=files.PathFor("input.brep");File.WriteAllBytes(path,lease.Content.ToArray());
         return ShapeExchange.ReadBrep(path);
+    }
+    /// <summary>Root and members belong to this one decoded graph. File import never proves original capture.</summary>
+    public static BrepReferenceRestoreResult ReadReferencedShape(GeometryAssetRef geometry,IAssetStore assets)
+    {
+        geometry.Validate();var references=geometry.SerializedReferences??throw new CadValidationException("No stored native reference evidence; explicitly select the current graph.");
+        using var boundary=assets.Acquire(geometry.AssetId);using var table=assets.Acquire(references.TableAssetId);
+        var referenceFormat=references.Format??AssetFormatPolicy.Inspect(table.Content.Span);
+        AssetFormatPolicy.RequireReferenceTable(referenceFormat);AssetFormatPolicy.VerifyPayload(referenceFormat,table.Content.Span);
+        var format=geometry.Format??AssetFormatPolicy.Inspect(boundary.Content.Span);
+        AssetFormatPolicy.RequireBRep(format);AssetFormatPolicy.VerifyPayload(format,boundary.Content.Span);
+        SerializedReferenceAssetPolicy.VerifyBinding(boundary.Content.Span,table.Content.Span);
+        return BrepReferenceSnapshot.Open(boundary.Content.Span,table.Content.Span).Restore();
+    }
+    public static int FindDecodedReferenceIndex(BrepReferenceRestoreResult graph,int referenceIndex)
+    {
+        ArgumentNullException.ThrowIfNull(graph);
+        if((uint)referenceIndex>=(uint)graph.Members.Count)throw new ArgumentOutOfRangeException(nameof(referenceIndex));
+        int actual=RepairSnapshot.FindTopologyIndex(graph.Root,graph.Members[referenceIndex]);
+        if(actual<0||actual!=graph.Report.Rows[referenceIndex].DecodedTopologyIndex)
+            throw new CadValidationException("Stored reference is not an actual member of this decoded root.");
+        return actual;
+    }
+    public static BrepOccurrenceRestoreResult ReadOccurrenceShape(GeometryAssetRef geometry,IAssetStore assets,CancellationToken token=default)
+    {
+        token.ThrowIfCancellationRequested();geometry.Validate();
+        var occurrences=geometry.SerializedOccurrences??throw new CadValidationException("No complete stored current occurrence graph; explicitly select current geometry.");
+        using var boundary=assets.Acquire(geometry.AssetId);using var table=assets.Acquire(occurrences.TableAssetId);
+        var format=geometry.Format??AssetFormatPolicy.Inspect(boundary.Content.Span);
+        AssetFormatPolicy.RequireBRep(format);AssetFormatPolicy.VerifyPayload(format,boundary.Content.Span);
+        var tableFormat=occurrences.Format??AssetFormatPolicy.Inspect(table.Content.Span);
+        AssetFormatPolicy.RequireOccurrenceTable(tableFormat);AssetFormatPolicy.VerifyPayload(tableFormat,table.Content.Span);
+        SerializedOccurrenceAssetPolicy.VerifyBinding(boundary.Content.Span,table.Content.Span);
+        return BrepOccurrenceSnapshot.Open(boundary.Content.Span,table.Content.Span,token).Restore(token);
+    }
+    /// <summary>Explicit current selection only. Context labels guard freshness; actual paths are verified by the native decoder.</summary>
+    public static Shape ResolveCurrentOccurrence(Cadoryx.Db.DocumentSnapshot current,DocumentId expectedDocument,BodyId body,
+        GeometryAssetRef expected,IReadOnlyList<int> path,IAssetStore assets,CancellationToken token=default)
+    {
+        token.ThrowIfCancellationRequested();expected.Validate();
+        if(current.Id!=expectedDocument||!current.Bodies.TryGetValue(body,out var selected)||selected.Geometry!=expected||
+            selected.Producer is {} producer&&(!current.Features.TryGetValue(producer,out var feature)||feature.IsStale||feature.IsSuppressed))
+            throw new CadValidationException("Occurrence selection is foreign or stale; select the current body explicitly.");
+        using var graph=ReadOccurrenceShape(expected,assets,token);var member=graph.Resolve(path);
+        try{token.ThrowIfCancellationRequested();return member;}catch{member.Dispose();throw;}
+    }
+    /// <summary>The primary BRep and complete table are produced by one native Capture. No proof flag is persisted.</summary>
+    public static GeometryResult StoreShapeWithOccurrences(Shape shape,IAssetStore assets,CancellationToken token=default,
+        Action<BrepOccurrenceReport>? captureEvidence=null)
+    {
+        token.ThrowIfCancellationRequested();var snapshot=BrepOccurrenceSnapshot.Capture(shape,token);
+        return StoreCapturedOccurrences(shape,snapshot,assets,token,captureEvidence);
+    }
+    /// <summary>Optional current-path evidence for already valid geometry. Only capture rejection permits
+    /// ordinary geometry; asset staging, callbacks, disposal and cancellation failures still propagate.</summary>
+    public static GeometryResult StoreShapeWithPreferredOccurrences(Shape shape,IAssetStore assets,CancellationToken token=default,
+        Action<BrepOccurrenceReport>? captureEvidence=null)
+    {
+        ArgumentNullException.ThrowIfNull(shape);ArgumentNullException.ThrowIfNull(assets);token.ThrowIfCancellationRequested();
+        if(!shape.IsValid)throw new CadValidationException("Cannot retain invalid geometry as an occurrence capture fallback.");
+        BrepOccurrenceSnapshot snapshot;
+        try{snapshot=BrepOccurrenceSnapshot.Capture(shape,token);}
+        catch(ArgumentException error)
+        {
+            // SDK26 uses InvalidArgument for bounded row/depth/byte rejection. It also
+            // covers other capture rejections, so preserve the actual reason and do not
+            // label every rejection as a budget failure or publish a partial table.
+            token.ThrowIfCancellationRequested();using var ordinary=StoreShape(shape,assets);
+            token.ThrowIfCancellationRequested();return new(ordinary.Geometry,GeometryAssetLease.Acquire(ordinary.Geometry,assets),
+                [new("MODELING.OCCURRENCE_CAPTURE_UNAVAILABLE","Complete current occurrence capture was unavailable: "+error.Message+
+                    " Geometry was retained without an occurrence table; explicitly select its decoded graph.")]);
+        }
+        return StoreCapturedOccurrences(shape,snapshot,assets,token,captureEvidence);
+    }
+    private static GeometryResult StoreCapturedOccurrences(Shape shape,BrepOccurrenceSnapshot snapshot,IAssetStore assets,
+        CancellationToken token,Action<BrepOccurrenceReport>? captureEvidence)
+    {
+        // Both callers capture this actual shape once immediately before entering.
+        // The primary boundary and table remain from that same snapshot; metadata
+        // serialization is temporary and is never used as the table's boundary.
+        using var metadata=StoreShape(shape,assets);IAssetLease? boundary=null,table=null;
+        try
+        {
+            token.ThrowIfCancellationRequested();boundary=assets.Stage(snapshot.CopyBrepBytes());table=assets.Stage(snapshot.CopyOccurrenceTable());
+            var geometry=metadata.Geometry with{AssetId=boundary.Id,SerializedOccurrences=new(table.Id,Format:AssetFormatPolicy.CurrentOccurrenceTable)};
+            geometry.Validate();SerializedOccurrenceAssetPolicy.VerifyBinding(boundary.Content.Span,table.Content.Span);
+            token.ThrowIfCancellationRequested();captureEvidence?.Invoke(snapshot.Report);token.ThrowIfCancellationRequested();
+            var owned=GeometryAssetLease.Own(boundary,table);boundary=null;table=null;return new(geometry,owned);
+        }
+        finally{boundary?.Dispose();table?.Dispose();}
+    }
+    /// <summary>Captures borrowed native members while the actual source root is alive. No proof flags enter storage.</summary>
+    public static GeometryResult StoreShapeWithReferences(Shape shape,IEnumerable<Shape> references,IAssetStore assets,
+        CancellationToken token=default,Action<BrepReferenceReport>? captureEvidence=null)
+    {
+        token.ThrowIfCancellationRequested();var snapshot=BrepReferenceSnapshot.Capture(shape,references);
+        token.ThrowIfCancellationRequested();using var metadata=StoreShape(shape,assets);
+        return StoreCapturedReferences(metadata.Geometry,snapshot,assets,token,captureEvidence);
+    }
+    internal static GeometryResult StoreCapturedReferences(GeometryAssetRef metadata,BrepReferenceSnapshot snapshot,IAssetStore assets,
+        CancellationToken token,Action<BrepReferenceReport>? captureEvidence=null)
+    {
+        IAssetLease? boundary=null,table=null;
+        try
+        {
+            boundary=assets.Stage(snapshot.CopyBrepBytes());table=assets.Stage(snapshot.CopyReferenceTable());
+            var geometry=metadata with{AssetId=boundary.Id,SerializedReferences=new(table.Id,Format:AssetFormatPolicy.CurrentReferenceTable)};
+            geometry.Validate();SerializedReferenceAssetPolicy.VerifyBinding(boundary.Content.Span,table.Content.Span);
+            token.ThrowIfCancellationRequested();captureEvidence?.Invoke(snapshot.Report);
+            var owned=GeometryAssetLease.Own(boundary,table);boundary=null;table=null;
+            return new(geometry,owned);
+        }
+        finally{boundary?.Dispose();table?.Dispose();}
     }
     public static XdeDocument ReadContext(AssetId id,IAssetStore assets,AssetFormat? declaredFormat=null)
     {
@@ -25,7 +151,7 @@ public static class OcctGeometryBridge
         var path=files.PathFor("context.xbf");File.WriteAllBytes(path,lease.Content.ToArray());
         return XdeDocument.Open(path);
     }
-    public static GeometryResult StoreShape(Shape shape,IAssetStore assets,Action<ShapeStoreTiming>? timing=null)
+    public static GeometryResult StoreShape(Shape shape,IAssetStore assets,Action<ShapeStoreTiming>? timing=null,bool adaptiveVolume=false)
     {
         long start=Stopwatch.GetTimestamp();
         var summary=shape.GetTopologySummary();var counts=summary.UniqueCounts;
@@ -38,7 +164,11 @@ public static class OcctGeometryBridge
         var kind=empty?BodyKind.Empty:counts.SolidCount==1?BodyKind.Solid:counts.SolidCount>1?BodyKind.Compound:counts.FaceCount>0?BodyKind.Sheet:BodyKind.Wire;
         var box=empty?new Bounds3d(Vector3d.Zero,Vector3d.Zero):Bounds(shape.GetBoundingBox());
         double boundsMs=Stopwatch.GetElapsedTime(start).TotalMilliseconds;start=Stopwatch.GetTimestamp();
-        double volume=counts.SolidCount>0?Math.Abs(shape.InspectProperties(InspectionPropertyKind.Volume).Mass):0;
+        // Authored exact freeform profiles need adaptive quadrature; fixed integration
+        // can misreport a valid elliptical offset prism's persisted volume.
+        double volume=counts.SolidCount>0?Math.Abs(adaptiveVolume?
+            shape.InspectAdaptiveProperties(InspectionPropertyKind.Volume,1e-11).Properties.Mass:
+            shape.InspectProperties(InspectionPropertyKind.Volume).Mass):0;
         double volumeMs=Stopwatch.GetElapsedTime(start).TotalMilliseconds;start=Stopwatch.GetTimestamp();
         using var files=new KernelFiles();var path=files.PathFor("result.brep");ShapeExchange.WriteBrep(shape,path);
         double writeMs=Stopwatch.GetElapsedTime(start).TotalMilliseconds;start=Stopwatch.GetTimestamp();

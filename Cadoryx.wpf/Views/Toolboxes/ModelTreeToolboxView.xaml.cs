@@ -78,13 +78,29 @@ public partial class ModelTreeToolboxView
     {
         if(e.OriginalSource is not DependencyObject source||DataContext is not ModelTreeToolboxViewModel vm)return;
         var row=FindTreeRow(source);
+        if(row?.DataContext is ModelTreeItemViewModel {Path:not null,Target:null,Feature:null,Sketch:null} occurrence)
+        {
+            var arrayMenu=new ContextMenu();var array=new MenuItem{Header=Strings.AssemblyPattern};
+            array.Click+=(_,_)=>vm.EditAssemblyRepetition(occurrence);arrayMenu.Items.Add(array);row.ContextMenu=arrayMenu;return;
+        }
         if(row?.DataContext is not ModelTreeItemViewModel {Feature:{}} feature)return;
+        row.ContextMenu=CreateFeatureMenu(feature);
+    }
+    internal ContextMenu CreateFeatureMenu(ModelTreeItemViewModel feature)
+    {
+        var vm=(ModelTreeToolboxViewModel)DataContext;
         var suppressed=feature.IsSuppressed;
         var menu=new ContextMenu();
         var action=new MenuItem{Header=Strings.ResourceManager.GetString(suppressed?"RestoreFeature":"SuppressFeature",Strings.Culture)};
         action.Click+=async (_,_)=>await vm.SetFeatureSuppressionAsync(feature,!suppressed);
         menu.Items.Add(action);
-        row.ContextMenu=menu;
+        var before=new MenuItem{Header=Strings.RollbackBefore};before.Click+=async (_,_)=>await vm.RollbackAtFeatureAsync(feature,false);menu.Items.Add(before);
+        var after=new MenuItem{Header=Strings.RollbackAfter};after.Click+=async (_,_)=>await vm.RollbackAtFeatureAsync(feature,true);menu.Items.Add(after);
+        var end=new MenuItem{Header=Strings.ReturnHistoryEnd};end.Click+=async (_,_)=>await vm.History!.ReturnToEndCommand.ExecuteAsync(null);menu.Items.Add(end);
+        menu.Items.Add(new Separator());
+        var earlier=new MenuItem{Header=Strings.MoveFeatureEarlier};earlier.Click+=async (_,_)=>await vm.MoveFeatureAsync(feature,-1);menu.Items.Add(earlier);
+        var later=new MenuItem{Header=Strings.MoveFeatureLater};later.Click+=async (_,_)=>await vm.MoveFeatureAsync(feature,1);menu.Items.Add(later);
+        return menu;
     }
     private static TreeViewItem? FindTreeRow(DependencyObject source)
     {

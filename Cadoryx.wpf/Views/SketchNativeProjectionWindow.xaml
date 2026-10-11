@@ -1,0 +1,26 @@
+<mah:MetroWindow x:Class="Cadoryx.wpf.Views.SketchNativeProjectionWindow"
+ xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+ xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+ xmlns:r="clr-namespace:Cadoryx.Lang;assembly=Cadoryx.Lang"
+ Style="{StaticResource Cadoryx.DialogWindowStyle}" Title="{Binding Title}"
+ Width="1120" Height="740" MinWidth="850" MinHeight="570" WindowStartupLocation="CenterOwner">
+ <Grid Margin="12">
+  <Grid.RowDefinitions><RowDefinition/><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/></Grid.RowDefinitions>
+  <Grid.ColumnDefinitions><ColumnDefinition/><ColumnDefinition Width="310"/></Grid.ColumnDefinitions>
+  <Border x:Name="ViewportContainer" Margin="0,0,14,0"/>
+  <StackPanel Grid.Column="1">
+   <TextBlock Text="{I18N {x:Static r:LangKeys.NativeEdgeProjectionHint}}" TextWrapping="Wrap" Margin="0,0,0,12"/>
+   <ComboBox x:Name="NativeSourcePicker" ItemsSource="{Binding Sources}" SelectedItem="{Binding SelectedSource}" DisplayMemberPath="Label" Margin="0,0,0,12"/>
+   <CheckBox x:Name="LinkProjectionInput" Content="{I18N {x:Static r:LangKeys.LinkNativeProjection}}" IsChecked="{Binding Linked}" Margin="0,0,0,10"/>
+   <CheckBox x:Name="ReplaceProjectionInput" Content="{I18N {x:Static r:LangKeys.ReplaceNativeProjection}}" IsChecked="{Binding ReplaceSelected}" IsEnabled="{Binding CanReplace}" Margin="0,0,0,10"/>
+   <TextBlock x:Name="CurveSummaryText" Text="{Binding CurveSummary}" TextWrapping="Wrap" Margin="0,4"/>
+   <Button x:Name="FitButton" Content="{I18N {x:Static r:LangKeys.Fit}}" Click="OnFit" HorizontalAlignment="Left" Margin="0,12,0,0"/>
+  </StackPanel>
+  <TextBlock x:Name="StatusText" Grid.Row="1" Grid.ColumnSpan="2" Text="{Binding Status}" TextWrapping="Wrap" Margin="0,10"/>
+  <StackPanel Grid.Row="2" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Right">
+   <Button x:Name="UseProjectionButton" Content="{I18N {x:Static r:LangKeys.UseEdgeProjection}}" Command="{Binding UseCommand}" Margin="0,0,8,0"/>
+   <Button x:Name="CancelButton" Content="{I18N {x:Static r:LangKeys.Cancel}}" Command="{Binding CancelCommand}"/>
+  </StackPanel>
+ </Grid>
+</mah:MetroWindow>

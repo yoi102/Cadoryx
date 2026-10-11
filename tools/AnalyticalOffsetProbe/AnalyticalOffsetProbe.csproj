@@ -1,0 +1,10 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <OffsetFrozenDir Condition="'$(OffsetFrozenDir)' == ''">../../artifacts/b16-core-build-6/bin/Cadoryx.Tests/release</OffsetFrozenDir>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Cadoryx.Db"><HintPath>$(OffsetFrozenDir)/Cadoryx.Db.dll</HintPath></Reference>
+    <Reference Include="Cadoryx.Editor"><HintPath>$(OffsetFrozenDir)/Cadoryx.Editor.dll</HintPath></Reference>
+  </ItemGroup>
+</Project>

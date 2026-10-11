@@ -35,7 +35,8 @@ internal static class AgentRequestContextBuilder
         var systemMessage = AiChatMessage.System(systemPrompt);
         var systemTokens = EstimateMessageTokens(systemMessage);
         var availableToolTokens = Math.Max(0, promptBudget - systemTokens - MinimumHistoryTokens);
-        var selectedTools = FitTools(tools, availableToolTokens, promptBudget, aggressive);
+        var historyTokens = conversation.Sum(EstimateMessageTokens);
+        var selectedTools = FitTools(tools, availableToolTokens, promptBudget, historyTokens, aggressive);
         var fixedTokens = systemTokens + selectedTools.Sum(EstimateToolTokens);
         var historyBudget = Math.Max(0, promptBudget - fixedTokens);
         var history = SelectHistory(
@@ -56,14 +57,18 @@ internal static class AgentRequestContextBuilder
         IReadOnlyList<AiToolDefinition> tools,
         int availableTokens,
         int totalPromptBudget,
+        int historyTokens,
         bool aggressive)
     {
         if (tools.Count == 0 || availableTokens <= 0)
             return [];
 
-        var fixedBudget = Math.Min(
-            availableTokens,
-            (int)(totalPromptBudget * (aggressive ? 0.58 : 0.68)));
+        // A short conversation does not need the full proportional history reserve. Keep the
+        // safety/output budgets and minimum history, but make unused space available to tools.
+        // Long conversations retain the existing proportional budget and history compaction.
+        var fixedBudget = Math.Min(availableTokens, Math.Max(
+            (int)(totalPromptBudget * (aggressive ? 0.58 : 0.68)),
+            availableTokens - Math.Max(0, historyTokens - MinimumHistoryTokens)));
         var result = new List<AiToolDefinition>(tools.Count);
         var used = 0;
         foreach (var tool in tools)
@@ -85,8 +90,14 @@ internal static class AgentRequestContextBuilder
         if (conversation.Count == 0)
             return [];
 
+        var protectedCallId = AgentSuccessfulActionReceipt.FindLatestCompleteExchange(conversation);
+        var uniqueCalls = conversation.Where(message => message.Role == AiChatRole.Assistant)
+            .SelectMany(message => message.ToolCalls ?? []).GroupBy(call => call.Id, StringComparer.Ordinal)
+            .Where(group => group.Count() == 1).ToDictionary(group => group.Key, group => group.Single(), StringComparer.Ordinal);
+
         var compacted = NormalizeToolMessages(conversation
-                .Select(message => CompactMessage(message, maximumToolResultCharacters))
+                .Select(message => CompactMessage(message, maximumToolResultCharacters,
+                    message.ToolCallId is { } id ? uniqueCalls.GetValueOrDefault(id) : null))
                 .ToArray())
             .ToArray();
         var turnStarts = compacted
@@ -110,11 +121,23 @@ internal static class AgentRequestContextBuilder
         }
 
         var selected = compacted[selectedStart..].ToList();
-        TrimHistoryToBudget(selected, tokenBudget);
+        TrimHistoryToBudget(selected, tokenBudget, protectedCallId);
+        if (protectedCallId is not null && !AgentSuccessfulActionReceipt.ContainsExchange(selected, protectedCallId))
+        {
+            // This is context-compaction metadata, not a replacement tool receipt.
+            var marker = AiChatMessage.System(AgentSuccessfulActionReceipt.OmittedExchangeMarker);
+            var markerCost = EstimateMessageTokens(marker);
+            if (markerCost <= tokenBudget)
+            {
+                TrimHistoryToBudget(selected, tokenBudget - markerCost);
+                var user = selected.FindIndex(message => message.Role == AiChatRole.User);
+                selected.Insert(user >= 0 ? user + 1 : 0, marker);
+            }
+        }
         return NormalizeToolMessages(selected);
     }
 
-    private static void TrimHistoryToBudget(List<AiChatMessage> selected, int tokenBudget)
+    private static void TrimHistoryToBudget(List<AiChatMessage> selected, int tokenBudget, string? protectedCallId = null)
     {
         while (selected.Count > 0 && selected.Sum(EstimateMessageTokens) > tokenBudget)
         {
@@ -125,7 +148,12 @@ internal static class AgentRequestContextBuilder
                 continue;
             }
 
-            var assistant = selected.FindIndex(1, message => message.Role == AiChatRole.Assistant);
+            var assistant = selected.FindIndex(1, message => message.Role == AiChatRole.Assistant &&
+                (protectedCallId is null || message.ToolCalls?.Any(call => call.Id == protectedCallId) != true));
+            // When the complete protected exchange cannot fit even on its own,
+            // retain the original bounded fallback and report its omission.
+            if (assistant < 0)
+                assistant = selected.FindIndex(1, message => message.Role == AiChatRole.Assistant);
             if (assistant >= 0)
             {
                 RemoveAssistantExchange(selected, assistant);
@@ -217,7 +245,7 @@ internal static class AgentRequestContextBuilder
         return NormalizeToolMessages(result);
     }
 
-    private static AiChatMessage CompactMessage(AiChatMessage message, int maximumToolResultCharacters)
+    private static AiChatMessage CompactMessage(AiChatMessage message, int maximumToolResultCharacters, AiToolCall? actualCall = null)
     {
         if (message.Role != AiChatRole.Tool ||
             string.IsNullOrEmpty(message.Content) ||
@@ -229,9 +257,9 @@ internal static class AgentRequestContextBuilder
         var suffix = "\n[tool result truncated to fit the model context window]";
         return message with
         {
-            Content = string.Concat(
-                message.Content.AsSpan(0, maximumToolResultCharacters - suffix.Length),
-                suffix)
+            Content = AgentToolResultCompactor.TryCompactNativeSelectionPage(message.Content, maximumToolResultCharacters, out var page, actualCall)
+                ? page
+                : string.Concat(message.Content.AsSpan(0, maximumToolResultCharacters - suffix.Length), suffix)
         };
     }
 

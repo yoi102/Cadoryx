@@ -3,7 +3,7 @@ using System.Collections.Immutable;
 namespace Cadoryx.Db;
 
 public sealed record DrawingPageLine(Point2d A,Point2d B,bool Hidden,double WidthMm);
-public sealed record DrawingPageLabel(Point2d Position,string Text,double SizeMm,uint Argb=0xFF202020);
+public sealed record DrawingPageLabel(Point2d Position,string Text,double SizeMm,uint Argb=0xFF202020,double? MaxWidthMm=null);
 public sealed record DrawingPageLayout(double WidthMm,double HeightMm,
     ImmutableArray<DrawingPageLine> Lines,ImmutableArray<DrawingPageLabel> Labels)
 {
@@ -14,6 +14,9 @@ public sealed record DrawingPageLayout(double WidthMm,double HeightMm,
         var viewOrigins=new Dictionary<Guid,Point2d>();
         void Add(double x1,double y1,double x2,double y2,double width=.18)=>
             lines.Add(new(new(x1,y1),new(x2,y2),false,width));
+        if(sheet.Template is {} template)DrawingManufacturingLayout.Add(sheet,template,pageNumber,pageCount,lines,labels);
+        else
+        {
         Add(8,8,sheet.WidthMm-8,8,.35);Add(sheet.WidthMm-8,8,sheet.WidthMm-8,sheet.HeightMm-8,.35);
         Add(sheet.WidthMm-8,sheet.HeightMm-8,8,sheet.HeightMm-8,.35);Add(8,sheet.HeightMm-8,8,8,.35);
         double titleTop=sheet.HeightMm-29,titleLeft=Math.Max(10,sheet.WidthMm-105);
@@ -25,6 +28,7 @@ public sealed record DrawingPageLayout(double WidthMm,double HeightMm,
         labels.Add(new(new(titleLeft+3,titleTop+11),
             $"{sheet.Standard} · {(sheet.Standard==DrawingStandard.ASME?"third-angle":"first-angle")}",2.2));
         if(!string.IsNullOrWhiteSpace(sheet.Author))labels.Add(new(new(10,sheet.HeightMm-11),sheet.Author,2.4));
+        }
         foreach(var view in sheet.Views)
         {
             if(view.Strokes.IsDefaultOrEmpty)continue;
@@ -62,7 +66,7 @@ public sealed record DrawingPageLayout(double WidthMm,double HeightMm,
             }
             labels.Add(new(new(view.CenterMm.X,Math.Max(10,view.CenterMm.Y+
                 (view.Kind==DrawingViewKind.Detail?view.DetailRadius*2:maxY-minY)*view.Scale/2+4)),
-                $"{view.Name}  1:{1/view.Scale:G4}"+(view.StaleReason is null?"":"  [STALE]"),2.6));
+                $"{view.Name}  {DrawingScale.Format(view.Scale)}"+(view.StaleReason is null?"":"  [STALE]"),2.6));
         }
         foreach(var dimension in sheet.Dimensions)
         {
@@ -95,6 +99,8 @@ public sealed record DrawingPageLayout(double WidthMm,double HeightMm,
             labels.Add(new(dimension.TextPositionMm,prefix+amount.ToString("0.###",System.Globalization.CultureInfo.InvariantCulture)+tolerance+value+
                 (dimension.StaleReason is null?"":" [STALE]"),3,dimension.Argb));
         }
+        DrawingAnnotationLayout.Add(sheet,viewOrigins,lines,labels);
+        DrawingHoleTableLayout.Add(sheet,viewOrigins,lines,labels);
         return new(sheet.WidthMm,sheet.HeightMm,lines.ToImmutable(),labels.ToImmutable());
     }
     private static (Point2d A,Point2d B)? ClipDetail(TechnicalDrawingView view,Point2d a,Point2d b)
@@ -118,10 +124,11 @@ public sealed record DrawingPageLayout(double WidthMm,double HeightMm,
         DrawingLineKind.Sharp=>.23,
         DrawingLineKind.Smooth=>.16,
         DrawingLineKind.Sewn=>.13,
+        DrawingLineKind.SectionHatch=>.13,
         _=>.1
     };
 
-    private static Point2d ProjectDatum(TechnicalDrawingView view,Vector3d point)
+    internal static Point2d ProjectDatum(TechnicalDrawingView view,Vector3d point)
     {
         var direction=view.Kind switch
         {

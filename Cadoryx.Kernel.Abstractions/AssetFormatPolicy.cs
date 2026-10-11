@@ -8,8 +8,32 @@ namespace Cadoryx.Kernel.Abstractions;
 /// <summary>Managed checks before native decoding. Unknown provenance is never replaced with today's kernel.</summary>
 public static class AssetFormatPolicy
 {
-    public static AssetFormat CurrentBRep {get;}=new(AssetFormat.BRepMediaType,"brep-ascii",3,"OCCT","8.0.1","OcctSharp","8.0.1-preview.28.cadoryx.viewcube.2");
-    public static AssetFormat CurrentXde {get;}=new(AssetFormat.XdeMediaType,"binxcaf",12,"OCCT","8.0.1","OcctSharp","8.0.1-preview.28.cadoryx.viewcube.2");
+    private static string CurrentWriterVersion=>System.Reflection.CustomAttributeExtensions.GetCustomAttributes<System.Reflection.AssemblyMetadataAttribute>(typeof(AssetFormatPolicy).Assembly)
+        .Single(a=>a.Key=="OcctSharpPackageVersion").Value??throw new InvalidOperationException("Missing native writer package metadata.");
+    public static AssetFormat CurrentBRep {get;}=new(AssetFormat.BRepMediaType,"brep-ascii",3,"OCCT","8.0.1","OcctSharp",CurrentWriterVersion);
+    public static AssetFormat CurrentXde {get;}=new(AssetFormat.XdeMediaType,"binxcaf",12,"OCCT","8.0.1","OcctSharp",CurrentWriterVersion);
+    public static AssetFormat CurrentReferenceTable {get;}=new(AssetFormat.ReferenceTableMediaType,"occt-reference-table",1,"OCCT","8.0.1","OcctSharp",CurrentWriterVersion);
+    public static AssetFormat CurrentOccurrenceTable {get;}=new(AssetFormat.OccurrenceTableMediaType,"occt-occurrence-table",1,"OCCT","8.0.1","OcctSharp",CurrentWriterVersion);
+    public static void RequireOccurrenceTable(AssetFormat format)
+    {
+        format.Validate();RequireKernel(format);
+        if(format.MediaType!=AssetFormat.OccurrenceTableMediaType||format.Encoding!="occt-occurrence-table"||format.FormatVersion!=1)
+            throw new NotSupportedException("Unsupported native occurrence table format.");
+    }
+    public static void RequireReferenceTable(AssetFormat format)
+    {
+        format.Validate();RequireKernel(format);
+        if(format.MediaType!=AssetFormat.ReferenceTableMediaType||format.Encoding!="occt-reference-table"||format.FormatVersion!=1)
+            throw new NotSupportedException("Unsupported native reference table format.");
+    }
+    public static void RequireRole(AssetFormat format,string role)
+    {
+        if(role==AssetFormat.BRepMediaType)RequireBRep(format);
+        else if(role==AssetFormat.XdeMediaType)RequireXde(format);
+        else if(role==AssetFormat.ReferenceTableMediaType)RequireReferenceTable(format);
+        else if(role==AssetFormat.OccurrenceTableMediaType)RequireOccurrenceTable(format);
+        else throw new NotSupportedException("Unsupported native asset role.");
+    }
     public static void RequireBRep(AssetFormat format)
     {
         format.Validate();RequireKernel(format);
@@ -30,6 +54,8 @@ public static class AssetFormatPolicy
     public static AssetFormat Inspect(ReadOnlySpan<byte> bytes)
     {
         var prefix=bytes[..Math.Min(bytes.Length,4096)];
+        if(prefix.StartsWith("OCRREF25"u8))return new(AssetFormat.ReferenceTableMediaType,"occt-reference-table",1,"OCCT");
+        if(prefix.StartsWith("OCROCC26"u8))return new(AssetFormat.OccurrenceTableMediaType,"occt-occurrence-table",1,"OCCT");
         if(prefix.StartsWith("DBRep_DrawableShape"u8))
         {
             string text=Encoding.ASCII.GetString(prefix);const string marker="CASCADE Topology V";
@@ -56,6 +82,20 @@ public static class AssetFormatPolicy
     public static void VerifyPayload(AssetFormat declared,ReadOnlySpan<byte> bytes)
     {
         declared.Validate();
+        if(declared.MediaType==AssetFormat.OccurrenceTableMediaType)
+        {
+            RequireOccurrenceTable(declared);
+            if(bytes.Length is <80 or >SerializedOccurrenceAssetPolicy.MaximumBytes||!bytes.StartsWith("OCROCC26"u8)||
+                BinaryPrimitives.ReadInt32LittleEndian(bytes.Slice(8,4))!=1)throw new InvalidDataException("Malformed native occurrence table header.");
+            return;
+        }
+        if(declared.MediaType==AssetFormat.ReferenceTableMediaType)
+        {
+            RequireReferenceTable(declared);
+            if(bytes.Length is <72 or >SerializedReferenceAssetPolicy.MaximumBytes||!bytes.StartsWith("OCRREF25"u8)||
+                BinaryPrimitives.ReadInt32LittleEndian(bytes.Slice(8,4))!=1)throw new InvalidDataException("Malformed native reference table header.");
+            return;
+        }
         if(declared.MediaType is not (AssetFormat.BRepMediaType or AssetFormat.XdeMediaType))return;
         if(declared.MediaType==AssetFormat.BRepMediaType)RequireBRep(declared);else RequireXde(declared);
         var actual=Inspect(bytes);

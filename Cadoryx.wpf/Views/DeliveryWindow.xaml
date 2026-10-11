@@ -31,10 +31,16 @@
       <ComboBoxItem Content="{I18N {x:Static r:LangKeys.DeliveryPackage}}"/>
       <ComboBoxItem Content="{I18N {x:Static r:LangKeys.DeliveryCsv}}"/>
       <ComboBoxItem Content="{I18N {x:Static r:LangKeys.DeliveryHtml}}"/>
+      <ComboBoxItem Content="{I18N {x:Static r:LangKeys.ExchangeMeasurement}}"/>
      </ComboBox>
      <StackPanel>
-      <StackPanel.Style><Style TargetType="StackPanel"><Setter Property="Visibility" Value="Collapsed"/><Style.Triggers><DataTrigger Binding="{Binding OutputIndex}" Value="0"><Setter Property="Visibility" Value="Visible"/></DataTrigger></Style.Triggers></Style></StackPanel.Style>
-      <TextBlock Text="{I18N {x:Static r:LangKeys.DeliveryFormats}}" TextWrapping="Wrap"/>
+      <StackPanel.Style><Style TargetType="StackPanel"><Setter Property="Visibility" Value="Collapsed"/><Style.Triggers><DataTrigger Binding="{Binding OutputIndex}" Value="0"><Setter Property="Visibility" Value="Visible"/></DataTrigger><DataTrigger Binding="{Binding OutputIndex}" Value="3"><Setter Property="Visibility" Value="Visible"/></DataTrigger></Style.Triggers></Style></StackPanel.Style>
+      <TextBlock Text="{I18N {x:Static r:LangKeys.ExchangeMeasurementHint}}" TextWrapping="Wrap" Margin="0,0,0,12">
+       <TextBlock.Style><Style TargetType="TextBlock"><Setter Property="Visibility" Value="Collapsed"/><Style.Triggers><DataTrigger Binding="{Binding OutputIndex}" Value="3"><Setter Property="Visibility" Value="Visible"/></DataTrigger></Style.Triggers></Style></TextBlock.Style>
+      </TextBlock>
+      <TextBlock Text="{I18N {x:Static r:LangKeys.DeliveryFormats}}" TextWrapping="Wrap">
+       <TextBlock.Style><Style TargetType="TextBlock"><Setter Property="Visibility" Value="Collapsed"/><Style.Triggers><DataTrigger Binding="{Binding OutputIndex}" Value="0"><Setter Property="Visibility" Value="Visible"/></DataTrigger></Style.Triggers></Style></TextBlock.Style>
+      </TextBlock>
       <CheckBox Content="STEP" IsChecked="{Binding IncludeStep}" Margin="0,8"/>
       <CheckBox Content="IGES" IsChecked="{Binding IncludeIges}" Margin="0,8"/>
       <CheckBox Content="STL" IsChecked="{Binding IncludeStl}" Margin="0,8"/>

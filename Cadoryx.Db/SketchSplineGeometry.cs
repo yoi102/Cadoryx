@@ -8,6 +8,12 @@ public static class SketchSplineGeometry
     public const int Degree=3;
     public const int MaximumControls=16;
 
+    public static void Validate(ImmutableArray<Point2d> controls,CubicSplineKnotVector? knots)
+    {
+        if(knots is null)Validate(controls);
+        else knots.WithControls(controls).Validate();
+    }
+
     public static void Validate(ImmutableArray<Point2d> controls)
     {
         if(controls.IsDefault||controls.Length is <4 or >MaximumControls)
@@ -41,8 +47,9 @@ public static class SketchSplineGeometry
     }
     public static int[] Multiplicities(int count)=>Knots(count).Select((_,i)=>i==0||i==count-3?4:1).ToArray();
 
-    public static Point2d At(ImmutableArray<Point2d> controls,double t)
+    public static Point2d At(ImmutableArray<Point2d> controls,double t,CubicSplineKnotVector? authorKnots=null)
     {
+        if(authorKnots is not null)return authorKnots.WithControls(controls).Evaluate(t).Point;
         Validate(controls);
         if(!double.IsFinite(t))throw new CadValidationException("Spline parameter must be finite.");
         t=Math.Clamp(t,0,1);
@@ -67,13 +74,13 @@ public static class SketchSplineGeometry
     /// <summary>A conservative validation contour; modeling still uses the exact B-spline.</summary>
     public static ImmutableArray<SketchBoundaryCurve> ValidationBoundary(CubicSplineRegion region)
     {
-        Validate(region.Controls);
+        Validate(region.Controls,region.Knots);
         const int segments=128;
         var curves=ImmutableArray.CreateBuilder<SketchBoundaryCurve>(segments+1);
         var previous=region.Controls[0];
         for(int i=1;i<=segments;i++)
         {
-            var next=At(region.Controls,i/(double)segments);
+            var next=At(region.Controls,i/(double)segments,region.Knots);
             curves.Add(new(previous,next));previous=next;
         }
         curves.Add(new(previous,region.Controls[0]));

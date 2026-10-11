@@ -62,7 +62,7 @@ public sealed class SketchAngularConstraintTests
         var assets=new MemoryAssetStore();await using var session=new CadDocumentSession(initial,assets,new OcctGeometryKernel(),new InlineSessionDispatcher());
         await session.ExecuteAsync(new UpsertSketchCommand(SketchTestData.Rectangle(part),new ManagedSketchConstraintSolver()));
         await session.SaveAsync(new CadDocumentStorage(),files.PathFor("old-sketch.cadoryx"));
-        FormatEvolutionTests.RewriteManifest(files.PathFor("old-sketch.cadoryx"),m=>m with{Sections=m.Sections.Select(s=>s.Kind=="sketches"?s with{SchemaVersion=2}:s).ToImmutableArray()});
+        SketchLegacyPointFixture.Prepare(files.PathFor("old-sketch.cadoryx"));FormatEvolutionTests.RewriteManifest(files.PathFor("old-sketch.cadoryx"),m=>m with{Sections=m.Sections.Select(s=>s.Kind=="sketches"?s with{SchemaVersion=2}:s).ToImmutableArray()});
         using var loaded=await new CadDocumentStorage().LoadAsync(files.PathFor("old-sketch.cadoryx"),assets);
         Assert.Single(loaded.Snapshot.Sketches);
     }

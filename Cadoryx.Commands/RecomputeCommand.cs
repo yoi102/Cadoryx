@@ -13,10 +13,66 @@ public sealed class RecomputeCommand(FeatureId featureId,GeometryRecipe recipe,S
         if(FeatureSuppression.Blocked(doc).Contains(featureId))
             throw new CadValidationException("Restore the suppressed feature chain before editing its parameters.");
         if(original.Recipe.GetType()!=recipe.GetType())throw new CadValidationException("Changing feature kind requires a new identity.");
+        if(recipe is SolidOffsetRecipe offset&&(original.Inputs.Length!=1||offset.Source!=doc.Features[original.Inputs[0]].Result))
+            throw new CadValidationException("Solid offset editing retains its exact whole source identity. Inspect the current source again.");
+        if(recipe is ContourLocalRecipe contour)
+        {
+            contour.Validate();
+            if(original.Inputs.Length!=1||contour.Programs[0].Seed.FeatureId!=original.Inputs[0]||contour.Source!=doc.Features[original.Inputs[0]].Result)
+                throw new CadValidationException("Contour editing retains its exact whole source identity. Reselect a changed source explicitly.");
+        }
+        if(recipe is RevolveRecipe {Axis:{Datum:not null} axis})
+        {
+            var expected=axis.Refresh(doc,original.PartId);
+            if(expected.DatumRevision!=axis.DatumRevision||!axis.SameLineValues(expected))
+                throw new CadValidationException("Edit or detach the driven revolution axis first.");
+        }
+        if(original.Recipe is ExtrudeRecipe previousExtrusion&&recipe is ExtrudeRecipe changedExtrusion)
+        {
+            if((previousExtrusion.Options?.Operation??ExtrusionOperation.NewBody)!=(changedExtrusion.Options?.Operation??ExtrusionOperation.NewBody))
+                throw new CadValidationException("Changing extrusion operation requires a new feature identity.");
+            if(previousExtrusion.Options is {Datum:not null} oldOptions&&changedExtrusion.Options is {} changedOptions&&oldOptions.Datum==changedOptions.Datum&&
+                oldOptions.LimitPlane is {} a&&changedOptions.LimitPlane is {} b&&!DatumPlanes.SameFrame(a,b))
+                throw new CadValidationException("Edit or detach the driven extrusion limit datum first.");
+        }
+        if(original.Recipe is HoleRecipe oldHole&&recipe is HoleRecipe hole&&oldHole.Datum is not null&&
+            oldHole.Datum==hole.Datum&&!DatumPlanes.SameFrame(oldHole.Frame,hole.Frame))
+            throw new CadValidationException("Hole frame is driven by a datum; edit or explicitly detach its datum first.");
+        if(original.Recipe is RepetitionRecipe previous&&recipe is RepetitionRecipe repetition)
+        {
+            repetition.Validate();
+            if(previous.Kind!=repetition.Kind||previous.IncludeSource!=repetition.IncludeSource||
+                !previous.CopyIds.Take(Math.Min(previous.Count,repetition.Count)).SequenceEqual(repetition.CopyIds.Take(Math.Min(previous.Count,repetition.Count))))
+                throw new CadValidationException("Changing repetition kind or surviving copy identity requires a new feature.");
+            if(previous.Datum is not null&&previous.Datum==repetition.Datum&&!DatumPlanes.SameFrame(previous.Frame,repetition.Frame))
+                throw new CadValidationException("Repetition frame is driven by a datum; edit or explicitly detach its datum first.");
+        }
+        if(original.Recipe is HolePatternRecipe oldPattern&&recipe is HolePatternRecipe pattern)
+        {
+            pattern.Validate();var oldLayout=oldPattern.Layout;var current=pattern.Layout;
+            if(oldPattern.Seed!=pattern.Seed||oldPattern.Template!=pattern.Template||oldLayout.Kind!=current.Kind||oldLayout.IncludeSource!=current.IncludeSource||
+                !oldLayout.CopyIds.Take(Math.Min(oldLayout.Count,current.Count)).SequenceEqual(current.CopyIds.Take(Math.Min(oldLayout.Count,current.Count))))
+                throw new CadValidationException("Edit the seed hole; changing replay source, kind or surviving identity requires a new feature.");
+            if(oldLayout.Datum is not null&&oldLayout.Datum==current.Datum&&!DatumPlanes.SameFrame(oldLayout.Frame,current.Frame))
+                throw new CadValidationException("Replay layout is datum-driven; edit or explicitly detach the datum first.");
+        }
+        if(original.Recipe is ExtrusionPatternRecipe oldExtrusionPattern&&recipe is ExtrusionPatternRecipe extrusionPattern)
+        {
+            extrusionPattern.Validate();var before=oldExtrusionPattern.Layout;var after=extrusionPattern.Layout;
+            if(oldExtrusionPattern.Seed!=extrusionPattern.Seed||!oldExtrusionPattern.SameTemplate(extrusionPattern.Template)||before.Kind!=after.Kind||before.IncludeSource!=after.IncludeSource||
+                !before.CopyIds.Take(Math.Min(before.Count,after.Count)).SequenceEqual(after.CopyIds.Take(Math.Min(before.Count,after.Count))))
+                throw new CadValidationException("Edit the extrusion seed; changing replay source, kind or surviving identity requires a new feature.");
+            if(before.Datum is not null&&before.Datum==after.Datum&&!DatumPlanes.SameFrame(before.Frame,after.Frame))
+                throw new CadValidationException("Replay layout is datum-driven; edit or explicitly detach the datum first.");
+        }
+        if(original.Recipe is DraftRecipe oldDraft&&recipe is DraftRecipe changedDraft)
+            foreach(var p in changedDraft.Programs)
+                if(oldDraft.Programs.FirstOrDefault(o=>o.Id==p.Id) is {Datum:not null} earlier&&earlier.Datum==p.Datum&&!DatumPlanes.SameFrame(earlier.NeutralPlane,p.NeutralPlane))
+                    throw new CadValidationException("Draft neutral plane is driven by a datum; edit or explicitly detach its datum first.");
         if(replacementSketchSource is not null)
         {
-            if(original.SketchSource is null||recipe is not ExtrudeRecipe)
-                throw new CadValidationException("Only an existing linked extrusion can change sketch source.");
+            if(original.SketchSource is null||recipe is not (ExtrudeRecipe or RevolveRecipe))
+                throw new CadValidationException("Only an existing linked extrusion or revolution can change sketch source.");
             replacementSketchSource.Resolve(doc,original.PartId,recipe);
         }
         return FeatureRecompute.PrepareAsync(context,[featureId],new Dictionary<FeatureId,GeometryRecipe>{{featureId,recipe}},cancellationToken,
@@ -47,32 +103,46 @@ internal static class FeatureRecompute
 {
     internal static async Task<PreparedDocumentEdit> PrepareAsync(DocumentCommandContext context,IEnumerable<FeatureId> roots,
         IReadOnlyDictionary<FeatureId,GeometryRecipe>? replacements,CancellationToken cancellationToken,
-        IReadOnlyDictionary<FeatureId,SketchProfileReference>? sketchSourceReplacements=null,bool reconcileOutputs=false)
+        IReadOnlyDictionary<FeatureId,SketchProfileReference>? sketchSourceReplacements=null,bool reconcileOutputs=false,
+        DocumentSnapshot? geometryBaseline=null)
     {
-        var doc=context.Snapshot;var pending=roots.ToHashSet();
+        var doc=context.Snapshot;geometryBaseline??=doc;var pending=roots.ToHashSet();var authorRoots=pending.ToHashSet();
+        var unchangedGeometry=new HashSet<FeatureId>();
+        if(replacements is not null)foreach(var (id,recipe) in replacements)doc=doc with{Features=doc.Features.SetItem(id,doc.Features[id] with{Recipe=recipe})};
+        var dependencies=DatumPlanes.FeatureDependencies(doc);
+        await DatumRecompute.ConfirmAsync(context,doc,cancellationToken).ConfigureAwait(false);
         bool added;
-        do {added=false;foreach(var f in doc.Features.Values)if(f.Inputs.Any(pending.Contains))added|=pending.Add(f.Id);}while(added);
+        do {added=false;foreach(var f in doc.Features.Values)if(dependencies[f.Id].Any(pending.Contains))added|=pending.Add(f.Id);}while(added);
         if(pending.Any(id=>doc.Features[id].IsSuppressed&&doc.AssociatedSections.ContainsKey(id)))
             throw new CadValidationException("Detach the associated section before suppressing its feature.");
         if(pending.Any(id=>doc.Bodies.TryGetValue(doc.Features[id].OutputBodyId,out var body)?doc.Layers[body.LayerId].IsLocked:
             doc.Features[id].OutputMetadata is {} metadata&&doc.Layers[metadata.Layer].IsLocked))
             throw new CadValidationException(Strings.LayerLocked);
         var done=new HashSet<FeatureId>();var resources=new List<IDisposable>();
+        var confirmedSketches=new HashSet<SketchId>();
         try
         {
             while(done.Count<pending.Count)
             {
-                var f=doc.Features.Values.FirstOrDefault(f=>pending.Contains(f.Id)&&!done.Contains(f.Id)&&f.Inputs.All(x=>!pending.Contains(x)||done.Contains(x)))
+                var f=doc.Features.Values.FirstOrDefault(f=>pending.Contains(f.Id)&&!done.Contains(f.Id)&&dependencies[f.Id].All(x=>!pending.Contains(x)||done.Contains(x)))
                     ??throw new CadValidationException("Cyclic recompute graph.");
                 cancellationToken.ThrowIfCancellationRequested();
                 void Freeze()
                 {
-                    doc=doc with{Features=doc.Features.SetItem(f.Id,f with{IsStale=true,TopologyHistory=null})};
+                    doc=doc with{Features=doc.Features.SetItem(f.Id,f with{IsStale=true,TopologyHistory=null,RepetitionPresentation=null})};
                     done.Add(f.Id);
                 }
                 if(f.IsSuppressed||f.Inputs.Any(input=>doc.Features[input].IsStale)){Freeze();continue;}
+                if(!doc.Datums.IsEmpty)doc=DatumRecompute.RefreshPlanes(doc);
+                if(DatumPlanes.HasStaleInput(doc,f.Id)){Freeze();continue;}
                 GeometryRecipe current=replacements?.GetValueOrDefault(f.Id)??f.Recipe;
                 var sketchSource=sketchSourceReplacements?.GetValueOrDefault(f.Id)??f.SketchSource;
+                if(sketchSource?.HasUnavailableEntities(doc)==true||GuidedAuthoringSources.HasUnavailableEntities(doc,current))
+                {Freeze();continue;}
+                foreach(var id in GuidedAuthoringSources.Sketches(current).Concat(sketchSource is {} selected?[selected.SketchId]:[]))
+                    if(confirmedSketches.Add(id))await SketchNativeProjectionCommands.ConfirmAsync(context with{Snapshot=doc},doc.Sketches[id],cancellationToken).ConfigureAwait(false);
+                current=GuidedAuthoringSources.Refresh(doc,f.PartId,current);
+                if(current is RevolveRecipe revolve)current=revolve.Refresh(doc,f.PartId);
                 if(sketchSource is not null)
                 {
                     current=sketchSource.Resolve(doc,f.PartId,current,refresh:true);
@@ -82,6 +152,29 @@ internal static class FeatureRecompute
                     current=boolean with {Inputs=f.Inputs.Select(id=>doc.Features[id].Result).ToImmutableArray()};
                 if(current is TransformRecipe transform && f.Inputs.Length==1)
                     current=transform with {Source=doc.Features[f.Inputs[0]].Result};
+                if(current is SolidOffsetRecipe offset&&f.Inputs.Length==1)
+                    current=offset with{Source=doc.Features[f.Inputs[0]].Result};
+                if(current is RepetitionRecipe repetition&&f.Inputs.Length==1)
+                    current=(repetition with{Source=doc.Features[f.Inputs[0]].Result}).Refresh(doc,f.PartId);
+                if(current is HoleRecipe hole&&f.Inputs.Length==1)
+                    current=(hole with{Source=doc.Features[f.Inputs[0]].Result}).Refresh(doc,f.PartId);
+                if(current is HolePatternRecipe pattern)current=pattern.Refresh(doc,f.PartId);
+                if(current is ExtrusionPatternRecipe extrusionPattern)current=extrusionPattern.Refresh(doc,f.PartId);
+                if(current is ContourLocalRecipe contourRecipe&&!contourRecipe.HasCurrentSource(doc)){Freeze();continue;}
+                if(current is ShellRecipe or DraftRecipe or PlanarPushPullRecipe or DefeatureRecipe)
+                {
+                    if(!FaceFeatureRecipes.HasCurrentSource(doc,current)){Freeze();continue;}
+                    if(current is DraftRecipe draft)current=draft.Refresh(doc,f.PartId);
+                    await FaceFeatureCommandGuard.ConfirmAsync(context with{Snapshot=doc},current,cancellationToken);
+                }
+                if(current is ExtrudeRecipe {Options:{} extrusionOptions} extrusion)
+                {
+                    if(!extrusionOptions.HasCurrentFace(doc)){Freeze();continue;}
+                    if(f.Inputs.Length==1)extrusionOptions=extrusionOptions with{Source=doc.Features[f.Inputs[0]].Result};
+                    current=extrusion with{Options=extrusionOptions.Refresh(doc,f.PartId)};
+                    if(extrusionOptions.LimitFace is {} face)await AddExtrusionCommand.ConfirmLimitAsync(context with{Snapshot=doc},face,cancellationToken);
+                    if(extrusionOptions.SupportFace is {} support)await AddExtrusionCommand.ConfirmLimitAsync(context with{Snapshot=doc},support,cancellationToken);
+                }
                 if(current is LocalFeatureRecipe local&&f.Inputs.Length==1)
                     current=local with{Source=doc.Features[f.Inputs[0]].Result,Box=doc.Features[f.Inputs[0]].Recipe as BoxRecipe??throw new CadValidationException("Local feature requires a box source.")};
                 if(current is HistoryFilletRecipe or HistoryChamferRecipe)
@@ -105,9 +198,21 @@ internal static class FeatureRecompute
                         _=>current
                     };
                 }
-                var result=await context.Kernel.EvaluateAsync(current,context.Assets,cancellationToken).ConfigureAwait(false);
+                var before=geometryBaseline.Features.GetValueOrDefault(f.Id);
+                bool symbolicChange=before is not null&&SameSymbolicHoleGeometry(before.Recipe,current);
+                bool unchangedDependent=!authorRoots.Contains(f.Id)&&dependencies[f.Id].Where(pending.Contains).Any()&&
+                    dependencies[f.Id].Where(pending.Contains).All(unchangedGeometry.Contains)&&before?.Recipe==current;
+                if(before is {IsStale:false,IsSuppressed:false}&&f.Result==before.Result&&sketchSource==before.SketchSource&&
+                    (symbolicChange||unchangedDependent))
+                {
+                    // Symbolic intent adds no BRep geometry. Keep the exact original shape/history;
+                    // rebuilding an equivalent shape would invalidate its original attachments.
+                    current.Validate();doc=doc with{Features=doc.Features.SetItem(f.Id,f with{Recipe=current})};
+                    unchangedGeometry.Add(f.Id);done.Add(f.Id);continue;
+                }
+                var result=await context.Kernel.EvaluateForDocumentAsync(current,context.Assets,cancellationToken).ConfigureAwait(false);
                 resources.Add(result);
-                doc=doc with {Features=doc.Features.SetItem(f.Id,f with {Recipe=current,Result=result.Geometry,SketchSource=sketchSource,TopologyHistory=result.TopologyHistory,IsStale=false})};
+                doc=doc with {Features=doc.Features.SetItem(f.Id,f with {Recipe=current,Result=result.Geometry,SketchSource=sketchSource,TopologyHistory=result.TopologyHistory,RepetitionPresentation=result.RepetitionPresentation,GuidedModelingReport=result.GuidedModelingReport,IsStale=false})};
                 var part=(PartDefinition)doc.Definitions[f.PartId];
                 bool terminal=!doc.Features.Values.Any(other=>other.Inputs.Contains(f.Id));
                 if(doc.Bodies.TryGetValue(f.OutputBodyId,out var body))
@@ -136,10 +241,21 @@ internal static class FeatureRecompute
                 }while(added);
                 doc=ReconcileFeatureBodies(doc,touched);
             }
+            if(pending.Count>0&&!doc.Datums.IsEmpty)doc=DatumRecompute.Refresh(doc,new HashSet<SketchId>());
             return new(doc.WithNewState(),resources);
         }
         catch{foreach(var resource in resources)resource.Dispose();throw;}
     }
+
+    private static bool SameSymbolicHoleGeometry(GeometryRecipe before,GeometryRecipe after)=> (before,after) switch
+    {
+        (HoleRecipe a,HoleRecipe b)=>a.Thread?.Representation!=ThreadHoleRepresentation.Modeled&&b.Thread?.Representation!=ThreadHoleRepresentation.Modeled&&
+            a.Thread!=b.Thread&&(a with{Thread=null})==(b with{Thread=null}),
+        (HolePatternRecipe a,HolePatternRecipe b)=>a.Template.Thread?.Representation!=ThreadHoleRepresentation.Modeled&&b.Template.Thread?.Representation!=ThreadHoleRepresentation.Modeled&&
+            a.Template.Thread!=b.Template.Thread&&
+            (a with{Template=a.Template with{Thread=null}})==(b with{Template=b.Template with{Thread=null}}),
+        _=>false
+    };
 
     private static DocumentSnapshot ReconcileFeatureBodies(DocumentSnapshot document,HashSet<FeatureId> touched)
     {

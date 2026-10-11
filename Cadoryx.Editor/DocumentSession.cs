@@ -30,6 +30,8 @@ public sealed class CadDocumentSession : IAsyncDisposable
     private readonly List<HistoryEntry> undo=[];
     private readonly List<HistoryEntry> redo=[];
     private DocumentSnapshot snapshot;
+    private DocumentSnapshot? historyView;
+    private FeatureCursor? featureCursor;
     private DocumentAssetLease currentLease;
     private DocumentStateId? savedState;
     private long generation;
@@ -49,6 +51,9 @@ public sealed class CadDocumentSession : IAsyncDisposable
     public event EventHandler<Exception>? ObserverFailed;
     public string? FilePath { get; private set; }
     public DocumentSnapshot Snapshot {get{lock(gate)return snapshot;}}
+    public DocumentSnapshot DisplaySnapshot {get{lock(gate)return historyView??snapshot;}}
+    public FeatureCursor? FeatureCursor {get{lock(gate)return featureCursor;}}
+    public bool IsRolledBack {get{lock(gate)return featureCursor is not null;}}
     public long Generation {get{lock(gate)return generation;}}
     public bool IsDirty {get{lock(gate)return snapshot.StateId!=savedState;}}
     public bool CanUndo {get{lock(gate)return !closing&&undo.Count>0;}}
@@ -65,21 +70,44 @@ public sealed class CadDocumentSession : IAsyncDisposable
     {
         lock(gate){ThrowIfClosing();return new(snapshot,new(snapshot,Assets),snapshot.StateId!=savedState,FilePath);}
     }
-    public async Task ExecuteAsync(ICadDocumentCommand command,CancellationToken cancellationToken=default)
+    public Task RollbackFeaturesAsync(DefinitionId part,int position)=>RollbackFeaturesAsync(part,position,CancellationToken.None);
+    public Task RollbackFeaturesAsync(DefinitionId part,int position,CancellationToken token,DocumentHistoryExpectation? expectation=null)=>dispatcher.InvokeAsync(()=>
+    {
+        lock(gate)
+        {
+            token.ThrowIfCancellationRequested();ThrowIfClosing();expectation?.Validate(snapshot,featureCursor);
+            var cursor=new FeatureCursor(snapshot.StateId,part,position);
+            var view=FeatureTimeline.Preview(snapshot,cursor);
+            if(position==((PartDefinition)snapshot.Definitions[part]).Features.Length){featureCursor=null;historyView=null;}
+            else{featureCursor=cursor;historyView=view;}
+            generation++;
+        }
+        Notify(StatusChanged);
+    });
+    public Task ReturnToHistoryEndAsync()=>ReturnToHistoryEndAsync(CancellationToken.None);
+    public Task ReturnToHistoryEndAsync(CancellationToken token,DocumentHistoryExpectation? expectation=null)=>dispatcher.InvokeAsync(()=>
+    {
+        lock(gate){token.ThrowIfCancellationRequested();ThrowIfClosing();expectation?.Validate(snapshot,featureCursor);if(featureCursor is null)return;featureCursor=null;historyView=null;generation++;}
+        Notify(StatusChanged);
+    });
+    public Task ExecuteAsync(ICadDocumentCommand command,CancellationToken cancellationToken=default)=>ExecuteAsync(command,cancellationToken,null);
+    public async Task ExecuteAsync(ICadDocumentCommand command,CancellationToken cancellationToken,DocumentCommandExpectation? expectation)
     {
         DocumentCommandContext context;DocumentAssetLease inputLease;
         using var linked=CancellationTokenSource.CreateLinkedTokenSource(cancellationToken,lifetime.Token);
         lock(gate)
         {
-            ThrowIfClosing();if(!snapshot.Extensions.IsDefaultOrEmpty)throw new NotSupportedException("This document contains unsupported extension data and is read-only.");inputLease=new(snapshot,Assets);
+            linked.Token.ThrowIfCancellationRequested();expectation?.Validate(snapshot);
+            ThrowIfClosing();if(!snapshot.Extensions.IsDefaultOrEmpty)throw new NotSupportedException("This document contains unsupported extension data and is read-only.");
+            if(featureCursor is not null&&(command is not IFeatureCursorCommand cursorCommand||cursorCommand.Cursor!=featureCursor))
+                throw new CadValidationException(Cadoryx.Lang.Strings.Strings.HistoryEditRequiresEnd);
+            inputLease=new(snapshot,Assets);
             context=new(snapshot,generation,Assets,kernel);StartOperation();
         }
         try
         {
             using(inputLease)
-            using(var prepared=await command.PrepareAsync(context,linked.Token).ConfigureAwait(false))
-            using(var reviewed=await UpdateAssociatedSections.PrepareAsync(context,prepared.Snapshot,linked.Token).ConfigureAwait(false))
-            using(var drawn=await UpdateTechnicalDrawings.PrepareAsync(context,reviewed.Snapshot,linked.Token).ConfigureAwait(false))
+            using(var drawn=await UpdateAssociatedSections.PrepareCommandAsync(command,context,linked.Token).ConfigureAwait(false))
             {
                 linked.Token.ThrowIfCancellationRequested();drawn.Snapshot.Validate();
                 await dispatcher.InvokeAsync(()=>
@@ -91,12 +119,15 @@ public sealed class CadDocumentSession : IAsyncDisposable
                         linked.Token.ThrowIfCancellationRequested();ThrowIfClosing();
                         if(context.Generation!=generation||context.Snapshot.Id!=snapshot.Id)throw new StaleDocumentException();
                         var next=drawn.Snapshot;
+                        if(featureCursor is not null)next=FeatureTimeline.CompleteInsertion(snapshot,next,featureCursor);
+                        next.Validate();
                         if(ReferenceEquals(next,snapshot)||next.StateId==snapshot.StateId)return;
                         if(next.Id!=snapshot.Id)throw new CadValidationException("A command cannot replace document identity.");
                         using var candidate=new CommitResources(snapshot,next,Assets);
                         var entry=candidate.CreateEntry(command.Name);
                         var nextLease=candidate.TakeCurrentLease();
                         var previous=snapshot;snapshot=next;generation++;
+                        featureCursor=null;historyView=null;
                         currentLease.Dispose();currentLease=nextLease;
                         foreach(var old in redo)old.Dispose();redo.Clear();
                         undo.Add(entry);TrimHistory();
@@ -115,16 +146,19 @@ public sealed class CadDocumentSession : IAsyncDisposable
     }
     public Task UndoAsync()=>MoveHistoryAsync(undo,redo,false);
     public Task RedoAsync()=>MoveHistoryAsync(redo,undo,true);
-    private Task MoveHistoryAsync(List<HistoryEntry> from,List<HistoryEntry> to,bool forward)=>dispatcher.InvokeAsync(()=>
+    public Task UndoAsync(CancellationToken token,DocumentCommandExpectation? expectation=null)=>MoveHistoryAsync(undo,redo,false,token,expectation);
+    public Task RedoAsync(CancellationToken token,DocumentCommandExpectation? expectation=null)=>MoveHistoryAsync(redo,undo,true,token,expectation);
+    private Task MoveHistoryAsync(List<HistoryEntry> from,List<HistoryEntry> to,bool forward,CancellationToken token=default,DocumentCommandExpectation? expectation=null)=>dispatcher.InvokeAsync(()=>
     {
         DocumentChangeSet? change=null;
         CadDocumentCommandActivity? activity=null;
         lock(gate)
         {
+            token.ThrowIfCancellationRequested();expectation?.Validate(snapshot);
             ThrowIfClosing();if(from.Count==0)return;
             var entry=from[^1];var next=forward?entry.After:entry.Before;
             var lease=new DocumentAssetLease(next,Assets);var previous=snapshot;
-            from.RemoveAt(from.Count-1);to.Add(entry);snapshot=next;generation++;
+            from.RemoveAt(from.Count-1);to.Add(entry);snapshot=next;featureCursor=null;historyView=null;generation++;
             currentLease.Dispose();currentLease=lease;
             TrimHistory();
             change=DocumentChangeSet.Between(previous,next,generation);
@@ -199,6 +233,39 @@ public sealed class CadDocumentSession : IAsyncDisposable
             }).ConfigureAwait(false);
         }
         finally {if(entered)saveQueue.Release();lock(gate)EndOperation();}
+    }
+    public async Task<DocumentFileReceipt> WriteFileAsync(IDocumentFileService files, DocumentFileRequest request,
+        DocumentCommandExpectation expectation, CancellationToken cancellationToken = default)
+    {
+        using var linked = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken, lifetime.Token);
+        lock (gate) { linked.Token.ThrowIfCancellationRequested(); ThrowIfClosing(); expectation.Validate(snapshot); StartOperation(); }
+        bool entered = false;
+        try
+        {
+            await saveQueue.WaitAsync(linked.Token).ConfigureAwait(false); entered = true;
+            DocumentCapture capture;
+            lock (gate)
+            {
+                linked.Token.ThrowIfCancellationRequested(); ThrowIfClosing(); expectation.Validate(snapshot);
+                if (featureCursor is not null && request.Kind != "save")
+                    throw new CadValidationException(Cadoryx.Lang.Strings.Strings.HistoryExportRequiresEnd);
+                capture = new(snapshot, new(snapshot, Assets), snapshot.StateId != savedState, FilePath);
+            }
+            using (capture)
+            {
+                var receipt = await files.WriteAsync(capture.Snapshot, Assets, request, linked.Token).ConfigureAwait(false);
+                if (receipt.DocumentId != capture.Snapshot.Id || receipt.StateId != capture.Snapshot.StateId ||
+                    receipt.Kind != request.Kind || !string.Equals(receipt.Path, Path.GetFullPath(request.Path), StringComparison.OrdinalIgnoreCase))
+                    throw new InvalidOperationException("File service returned an inconsistent receipt.");
+                if (request.Kind == "save") await dispatcher.InvokeAsync(() =>
+                {
+                    lock (gate) { if (closing) return; FilePath = receipt.Path; savedState = capture.Snapshot.StateId; }
+                    Notify(StatusChanged);
+                }).ConfigureAwait(false);
+                return receipt;
+            }
+        }
+        finally { if (entered) saveQueue.Release(); lock (gate) EndOperation(); }
     }
     public ValueTask DisposeAsync()
     {

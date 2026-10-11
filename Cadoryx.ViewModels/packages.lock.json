@@ -123,6 +123,7 @@
         "type": "Project",
         "dependencies": {
           "Cadoryx.Db": "[1.0.0, )",
+          "Cadoryx.Kernel.Abstractions": "[1.0.0, )",
           "MathNet.Numerics": "[5.0.0, 5.0.0]"
         }
       },

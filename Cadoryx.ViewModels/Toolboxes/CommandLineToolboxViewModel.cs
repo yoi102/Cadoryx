@@ -18,6 +18,8 @@ public partial class CommandLineToolboxViewModel : CadToolboxViewModelBase
     private readonly ICadMessageLog log;
     private readonly SynchronizationContext? uiContext = SynchronizationContext.Current;
     private CadDocumentViewModel? document;
+    private CadWorkspaceAuthoring? workspace;
+    internal void BindWorkspace(CadWorkspaceAuthoring value) => workspace = value;
     private bool executingInput;
     private readonly List<string> history = [];
     private int historyIndex;
@@ -42,6 +44,7 @@ public partial class CommandLineToolboxViewModel : CadToolboxViewModelBase
     public void Bind(CadDocumentViewModel? value)
     {
         if (ReferenceEquals(document, value)) return;
+        if (IsRunning && workspace?.IsTransitioning != true) ExecuteCommand.Cancel();
         if (document is not null) document.Session.CommandCommitted -= OnCommandCommitted;
         document = value;
         if (document is not null) document.Session.CommandCommitted += OnCommandCommitted;
@@ -108,8 +111,8 @@ public partial class CommandLineToolboxViewModel : CadToolboxViewModelBase
     [RelayCommand]
     private void Clear() => Entries.Clear();
 
-    [RelayCommand]
-    private async Task ExecuteAsync()
+    [RelayCommand(IncludeCancelCommand = true)]
+    private async Task ExecuteAsync(CancellationToken cancellationToken)
     {
         if (IsRunning || string.IsNullOrWhiteSpace(CommandText)) return;
         var input = CommandText.Trim(); CommandText = "";
@@ -122,7 +125,8 @@ public partial class CommandLineToolboxViewModel : CadToolboxViewModelBase
             var selectedDocument = document;
             var result = await service.ExecuteAsync(input,
                 selectedDocument is null || selectedDocument.IsDetached || selectedDocument.IsClosingRequested
-                    ? null : new CadCommandContext(selectedDocument));
+                    ? null : new CadCommandContext(selectedDocument),
+                workspace is null ? null : new CadWorkspaceCommandContext(workspace), cancellationToken);
             if (result.ClearOutput) Entries.Clear();
             else if (!string.IsNullOrWhiteSpace(result.Message)) Add(result.Success ? "Output" : "Error", result.Message);
         }

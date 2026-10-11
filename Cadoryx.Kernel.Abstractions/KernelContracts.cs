@@ -8,6 +8,8 @@ public sealed class GeometryResult(GeometryAssetRef geometry,IAssetLease lease,I
 {
     public GeometryAssetRef Geometry { get; }=geometry;
     public TopologyHistory? TopologyHistory {get;init;}
+    public RepetitionPresentationEvidence? RepetitionPresentation {get;init;}
+    public GuidedModelingReport? GuidedModelingReport {get;init;}
     public ImmutableArray<CadDiagnostic> Diagnostics { get; }=diagnostics.IsDefault?[]:diagnostics;
     public void Dispose()=>lease.Dispose();
 }
@@ -23,6 +25,9 @@ public interface IGeometryKernel
     string Version { get; }
     bool Supports(GeometryRecipe recipe);
     Task<GeometryResult> EvaluateAsync(GeometryRecipe recipe,IAssetStore assets,CancellationToken cancellationToken=default);
+    /// <summary>Evaluates a result intended for document retention. Optional persistent evidence must not burden transient previews.</summary>
+    Task<GeometryResult> EvaluateForDocumentAsync(GeometryRecipe recipe,IAssetStore assets,CancellationToken cancellationToken=default)
+        =>EvaluateAsync(recipe,assets,cancellationToken);
     Task<LoadedDocument> ImportAsync(string path,IAssetStore assets,CancellationToken cancellationToken=default);
     Task ExportAsync(DocumentSnapshot snapshot,IAssetStore assets,string path,CancellationToken cancellationToken=default);
     Task<CadExportReport> ExportAsync(DocumentSnapshot snapshot,IAssetStore assets,string path,CadExportOptions options,CancellationToken cancellationToken=default);

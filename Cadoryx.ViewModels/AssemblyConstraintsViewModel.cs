@@ -39,7 +39,12 @@ public partial class AssemblyConstraintsViewModel : ObservableObject, IDisposabl
     [ObservableProperty] private string solvePreviewSummary="";
     private AssemblyDatumReference? referenceDatum,movingDatum;
     private DocumentStateId? solvePreviewState;
+    private long solvePreviewGeneration;
     private CancellationTokenSource? solvePreviewCancellation;
+    private AssemblySolveCommands.PreparedAssemblySolveCommand? preparedSolve;
+    private bool disposed;
+    public AssemblySolveReport? LastSolveReport {get;private set;}
+    public void RefreshLanguage(){OnPropertyChanged(string.Empty);Refresh(this,EventArgs.Empty);}
     private bool pickingReference;
     public event EventHandler<TopologyKind?>? DatumPickRequested;
     public IReadOnlyList<TopologyKind> DatumKinds {get;}=[TopologyKind.Face,TopologyKind.Edge];
@@ -92,7 +97,8 @@ public partial class AssemblyConstraintsViewModel : ObservableObject, IDisposabl
     private void Refresh(object? sender,EventArgs e)
     {
         var snapshot=document.Session.Snapshot;
-        if(HasSolvePreview&&solvePreviewState!=snapshot.StateId)CancelSolvePreview();
+        if((HasSolvePreview&&(solvePreviewState!=snapshot.StateId||solvePreviewGeneration!=document.Session.Generation))||
+            document.IsClosingRequested||document.Session.IsClosing)CancelSolvePreview();
         if(referenceDatum is {} first&&!first.IsCurrent(snapshot,first.Path,first.DefinitionId))
         {referenceDatum=null;ReferenceDatumLabel="—";}
         if(movingDatum is {} second&&!second.IsCurrent(snapshot,second.Path,second.DefinitionId))
@@ -258,41 +264,51 @@ public partial class AssemblyConstraintsViewModel : ObservableObject, IDisposabl
     }
     [RelayCommand] private async Task PreviewSolveAsync()
     {
-        if(IsBusy||document.IsReadOnly||document.IsClosingRequested||document.IsWorking||document.HasPreview)return;
+        if(disposed||IsBusy||document.IsReadOnly||document.IsClosingRequested||document.IsWorking||document.HasPreview)return;
+        if(document.Session.IsRolledBack){Status=Strings.HistoryEditRequiresEnd;return;}
         CancelSolvePreview();
-        var snapshot=document.Session.Snapshot;
+        using var capture=document.Session.Capture();var snapshot=capture.Snapshot;
+        var generation=document.Session.Generation;
         using var cancel=new CancellationTokenSource();solvePreviewCancellation=cancel;IsBusy=true;
         try
         {
-            var plan=await Task.Run(()=>AssemblySolveCommands.Plan(snapshot,cancel.Token),cancel.Token);
-            if(cancel.IsCancellationRequested||document.Session.Snapshot.StateId!=snapshot.StateId)
-            {Status="The document changed; preview the assembly again.";return;}
+            var plan=await AssemblySolveCommands.PreparePreviewAsync(new(snapshot,generation,
+                document.Session.Assets,document.GeometryKernel),cancel.Token);
+            if(disposed||cancel.IsCancellationRequested||document.IsClosingRequested||document.Session.Snapshot.StateId!=snapshot.StateId||
+                document.Session.Generation!=generation)
+            {Status=Strings.AssemblySolvePreviewChanged;return;}
             var report=plan.Report;
+            LastSolveReport=report;
             SolvePreviewSummary=string.Format(Label("AssemblySolvePreviewSummary",
                     "{0} Components: {1}; local free motions: {2}; redundant relations: {3}; unanchored groups: {4}."),
                 report.Explanation,report.Components.Length,report.Components.Sum(c=>c.LocalFreedom),
                 report.RedundantRelations.Length,report.UnanchoredRoots.Length);
+            if(report.Components.Any(c=>c.RankUncertain))SolvePreviewSummary+=" "+
+                string.Format(Strings.AssemblySolveRankUncertain,report.Components.Count(c=>c.RankUncertain));
             Status=SolvePreviewSummary;
             if(report.Status is AssemblySolveStatus.Conflict or AssemblySolveStatus.StaleOrUnsupported)return;
             document.SetAssemblyPreview(plan.Candidate);
-            solvePreviewState=snapshot.StateId;HasSolvePreview=true;
+            preparedSolve=plan;solvePreviewState=snapshot.StateId;solvePreviewGeneration=generation;HasSolvePreview=true;
         }
-        catch(OperationCanceledException){Status="Assembly preview canceled.";}
+        catch(OperationCanceledException){Status=Strings.AssemblySolvePreviewCanceled;}
         catch(Exception error){Status=error.Message;document.Report(error);}
         finally{if(ReferenceEquals(solvePreviewCancellation,cancel))solvePreviewCancellation=null;IsBusy=false;}
     }
     [RelayCommand] private async Task ConfirmSolveAsync()
     {
-        if(!HasSolvePreview||solvePreviewState!=document.Session.Snapshot.StateId)
-        {CancelSolvePreview();Status="The assembly changed; preview again.";return;}
+        if(disposed||IsBusy||document.IsReadOnly||document.IsClosingRequested||!HasSolvePreview||
+            solvePreviewState!=document.Session.Snapshot.StateId||solvePreviewGeneration!=document.Session.Generation||
+            preparedSolve is not {} prepared)
+        {CancelSolvePreview();Status=Strings.AssemblySolvePreviewChanged;return;}
         CancelSolvePreview();
-        await SolveAllAsync(); // Rechecks current BRep evidence and recomputes before committing.
+        await ExecuteAsync(prepared);
+        if(Status=="")Status=prepared.Report.Explanation;
     }
     [RelayCommand] private void CancelSolvePreview()
     {
         solvePreviewCancellation?.Cancel();
         if(HasSolvePreview)document.SetAssemblyPreview(null);
-        solvePreviewState=null;HasSolvePreview=false;SolvePreviewSummary="";
+        preparedSolve=null;solvePreviewState=null;HasSolvePreview=false;SolvePreviewSummary="";
     }
     [RelayCommand] private async Task RetargetAsync()
     {
@@ -320,7 +336,7 @@ public partial class AssemblyConstraintsViewModel : ObservableObject, IDisposabl
         finally{IsBusy=false;}
     }
     public void Dispose()
-    {CancelSolvePreview();document.Selection.Changed-=Refresh;document.SceneChanged-=Refresh;document.PropertyChanged-=OnDocumentProperty;}
+    {disposed=true;CancelSolvePreview();document.Selection.Changed-=Refresh;document.SceneChanged-=Refresh;document.PropertyChanged-=OnDocumentProperty;}
 }
 
 public sealed record AssemblyConstraintRow(AssemblyConstraintId Id,string Name,AssemblyConstraintKind Kind,bool IsEnabled,

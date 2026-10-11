@@ -145,6 +145,7 @@ public static class AssemblyOccurrenceCommands
                 throw new CadValidationException("Only assembly definitions can be made independent here.");
             var counts=document.EnumerateOccurrences().GroupBy(o=>o.DefinitionId).ToDictionary(g=>g.Key,g=>g.Count());
             var definitions=document.Definitions;
+            var remap=new OccurrenceIdentityRemap(document,path);
             var ids=path.Slots.ToArray();
             var ownerId=document.RootAssemblyId;
             DefinitionId parentOwner=default;ComponentSlotId parentSlot=default;
@@ -156,6 +157,7 @@ public static class AssemblyOccurrenceCommands
                 {
                     var newId=DefinitionId.New();
                     var replacements=owner.Children.ToDictionary(s=>s.Id,s=>ComponentSlotId.New());
+                    remap.Add(depth,replacements,ownerId,newId);
                     var clone=owner with{Id=newId,Children=owner.Children.Select(s=>s with{Id=replacements[s.Id]}).ToImmutableArray()};
                     definitions=definitions.Add(newId,clone);
                     var parent=(AssemblyDefinition)definitions[parentOwner];
@@ -172,7 +174,9 @@ public static class AssemblyOccurrenceCommands
             if(counts.GetValueOrDefault(ownerId)>1)
             {
                 var newId=DefinitionId.New();
-                var clone=selectedDefinition with{Id=newId,Children=selectedDefinition.Children.Select(s=>s with{Id=ComponentSlotId.New()}).ToImmutableArray()};
+                var replacements=selectedDefinition.Children.ToDictionary(s=>s.Id,s=>ComponentSlotId.New());
+                remap.Add(ids.Length,replacements,ownerId,newId);
+                var clone=selectedDefinition with{Id=newId,Children=selectedDefinition.Children.Select(s=>s with{Id=replacements[s.Id]}).ToImmutableArray()};
                 definitions=definitions.Add(newId,clone);
                 var parent=(AssemblyDefinition)definitions[parentOwner];
                 int index=parent.Children.FindIndex(s=>s.Id==parentSlot);
@@ -181,7 +185,7 @@ public static class AssemblyOccurrenceCommands
             }
             ResultPath=new(document.Id,ids);
             return Task.FromResult(new PreparedDocumentEdit(ReferenceEquals(definitions,document.Definitions)
-                ?document:(document with{Definitions=definitions}).WithNewState()));
+                ?document:remap.Apply(document with{Definitions=definitions}).WithNewState()));
         }
     }
 }

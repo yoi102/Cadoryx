@@ -5,7 +5,14 @@
     <RuntimeIdentifier>win-x64</RuntimeIdentifier>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="../../Cadoryx.Kernel.Occt/NativeHoleInspector.cs" Link="NativeHoleInspector.cs" />
+    <Compile Include="../../Cadoryx.Kernel.Occt/NativePlanarSizeInspector.cs" Link="NativePlanarSizeInspector.cs" />
+    <Compile Include="../../Cadoryx.Kernel.Occt/BrepDirectionRoundtrip.cs" Link="BrepDirectionRoundtrip.cs" />
     <PackageReference Include="OcctSharp" Version="[$(OcctSharpVersion)]" />
     <PackageReference Include="OcctSharp.Native.win-x64" Version="[$(OcctSharpVersion)]" />
+    <None Include="../../Cadoryx.Tests/Fixtures/Exchange/minipc3-spline-pcurve-solid.brep" Link="Fixtures/minipc3-spline-pcurve-solid.brep" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="../../Cadoryx.Tests/Fixtures/Exchange/minipc3-moment-cancellation-solid.brep" Link="Fixtures/minipc3-moment-cancellation-solid.brep" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="../../Cadoryx.Tests/Fixtures/Exchange/minipc3-many-faces-solid.brep" Link="Fixtures/minipc3-many-faces-solid.brep" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="../../Cadoryx.Tests/Fixtures/Exchange/minipc3-difficult-trim-solid.brep" Link="Fixtures/minipc3-difficult-trim-solid.brep" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
 </Project>

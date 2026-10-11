@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup><OutputType>Exe</OutputType><PlatformTarget>x64</PlatformTarget><RuntimeIdentifier>win-x64</RuntimeIdentifier></PropertyGroup>
+  <Target Name="RequireFrozenApplication" BeforeTargets="ResolveReferences" Condition="'$(FrozenCadoryx)'==''"><Error Text="Pass -p:FrozenCadoryx=absolute frozen candidate; this consumer must not rebuild Cadoryx." /></Target>
+  <ItemGroup>
+    <Compile Include="../AnalyticalOffsetProbe/ProposedSketchLoopOffset.cs" Link="ProposedSketchLoopOffset.cs" />
+    <Compile Include="../AnalyticalOffsetProbe/ProposedSketchRegionOffset.cs" Link="ProposedSketchRegionOffset.cs" />
+    <Reference Include="Cadoryx.Db"><HintPath>$(FrozenCadoryx)/Cadoryx.Db.dll</HintPath></Reference>
+    <Reference Include="Cadoryx.Commands"><HintPath>$(FrozenCadoryx)/Cadoryx.Commands.dll</HintPath></Reference>
+    <Reference Include="Cadoryx.Editor"><HintPath>$(FrozenCadoryx)/Cadoryx.Editor.dll</HintPath></Reference>
+    <Reference Include="Cadoryx.Kernel.Abstractions"><HintPath>$(FrozenCadoryx)/Cadoryx.Kernel.Abstractions.dll</HintPath></Reference>
+    <Reference Include="Cadoryx.Kernel.Occt"><HintPath>$(FrozenCadoryx)/Cadoryx.Kernel.Occt.dll</HintPath></Reference>
+    <PackageReference Include="MathNet.Numerics" Version="5.0.0" />
+    <PackageReference Include="OcctSharp" Version="[$(OcctSharpVersion)]" />
+    <PackageReference Include="OcctSharp.Native.win-x64" Version="[$(OcctSharpVersion)]" />
+  </ItemGroup>
+</Project>

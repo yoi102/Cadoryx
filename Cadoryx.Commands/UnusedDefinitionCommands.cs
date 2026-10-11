@@ -44,6 +44,7 @@ public static class UnusedDefinitionCommands
                 foreach(var slot in assembly.Children)Visit(slot.DefinitionId);
         }
         Visit(document.RootAssemblyId);
+        foreach(var pattern in document.AssemblyPatterns.Values)Visit(pattern.Owner);
         var protectedFeatures=document.TopologyReferences.Values.Select(r=>r.FeatureId)
             .Concat(document.HistoryQueries.Values.SelectMany(q=>new[]{q.Source.FeatureId,q.TargetFeatureId})).ToHashSet();
         bool changed;

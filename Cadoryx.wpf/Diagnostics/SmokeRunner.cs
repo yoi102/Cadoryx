@@ -23,8 +23,12 @@ internal static class SmokeRunner
         using var listener=new TextWriterTraceListener(bindingOutput);
         PresentationTraceSources.DataBindingSource.Listeners.Add(listener);
         PresentationTraceSources.DataBindingSource.Switch.Level=SourceLevels.Error;
+        string stage="initialization";bool expectedClose=false;
+        void Stage(string value){stage=value;File.AppendAllText(Path.Combine(output,"progress.log"),$"{DateTimeOffset.Now:O} {value}{Environment.NewLine}");}
+        window.Closed+=(_,_)=>Stage($"main window closed; expected={expectedClose}; during "+stage);
         try
         {
+            Stage("viewport and progressive input");
             await Idle();var vm=(MainWindowViewModel)window.DataContext;
             var first=vm.ActiveDocument??throw new InvalidOperationException("No active dock document.");
             first.StartTool("Box");await first.PreviewCommand.ExecuteAsync(null);
@@ -53,17 +57,17 @@ internal static class SmokeRunner
             if(pane.IsSceneLoading||viewport.VisibleBodyCount!=ordinary.Items.Length||viewport.NativeGeometryCount!=1)
                 throw new InvalidOperationException("Cancelling a partial viewport load did not restore the original scene.");
             if(vm.ModelTree.Items.Count==0)throw new InvalidOperationException("Model tree was not updated.");
-            await WorkspaceToolsSmokeRunner.RunAsync(window,vm,output);
-            await ReviewToolsSmokeRunner.RunAsync(window,vm,output);
-            await SectionAnalysisSmokeRunner.RunAsync(window,vm,services,output);
-            await EngineeringReviewSmokeRunner.RunAsync(window,vm,services,output);
-            await DeliverySmokeRunner.RunAsync(window,vm,services,output);
+            Stage("workspace tools");await WorkspaceToolsSmokeRunner.RunAsync(window,vm,output);
+            Stage("review tools");await ReviewToolsSmokeRunner.RunAsync(window,vm,output);
+            Stage("section analysis");await SectionAnalysisSmokeRunner.RunAsync(window,vm,services,output);
+            Stage("engineering review");await EngineeringReviewSmokeRunner.RunAsync(window,vm,services,output);
+            Stage("delivery tools");await DeliverySmokeRunner.RunAsync(window,vm,services,output);
             var storage=services.GetRequiredService<IDocumentStorage>();var kernel=services.GetRequiredService<IGeometryKernel>();
             await first.Session.SaveAsync(storage,Path.Combine(output,"smoke.cadoryx"));
             foreach(var ext in new[]{"step","iges","stl"})await kernel.ExportAsync(first.Session.Snapshot,first.Session.Assets,Path.Combine(output,"smoke."+ext));
-            await ProgressDialogSmokeRunner.RunAsync(window,vm,services,output);
+            Stage("progress and notification dialogs");await ProgressDialogSmokeRunner.RunAsync(window,vm,services,output);
             await NotificationSmokeRunner.RunAsync(services,output);
-            await ExchangeImportSmokeRunner.RunAsync(vm,services,output);
+            Stage("exchange import");await ExchangeImportSmokeRunner.RunAsync(vm,services,output);
             await vm.OpenPathAsync(Path.Combine(output,"smoke.step"));await Idle();
             var imported=vm.ActiveDocument!;
             if(ReferenceEquals(first,imported)||imported.Session.Snapshot.Bodies.Count==0)throw new InvalidOperationException("Exchange document failed to open.");
@@ -73,16 +77,16 @@ internal static class SmokeRunner
             first.IsActive=true;await Idle();
             if(!ReferenceEquals(vm.ActiveDocument,first))throw new InvalidOperationException("Dock activation did not route to the first document.");
             await first.Session.UndoAsync();await first.Session.RedoAsync();await Idle();
-            await ResourceSmokeRunner.RunAsync(window,vm,storage,output);
-            await SketchSmokeRunner.RunAsync(window,services,output);
-            await TopologySmokeRunner.RunAsync(services,output);
-            await HistorySmokeRunner.RunAsync(services,output);
-            await LocalFeatureSmokeRunner.RunAsync(window,services,output);
-            await CommandAndAgentSmokeRunner.RunAsync(window,vm,output);
+            Stage("resources");await ResourceSmokeRunner.RunAsync(window,vm,storage,output);
+            Stage("sketch");await SketchSmokeRunner.RunAsync(window,services,output);
+            Stage("topology");await TopologySmokeRunner.RunAsync(services,output);
+            Stage("history");await HistorySmokeRunner.RunAsync(services,output);
+            Stage("local feature window");await LocalFeatureSmokeRunner.RunAsync(window,services,output);
+            Stage("command and agent windows");await CommandAndAgentSmokeRunner.RunAsync(window,vm,services,output);
             OcctViewportHost.SuspendAll(true);await Idle();OcctViewportHost.SuspendAll(false);await Idle();
             var bitmap=new RenderTargetBitmap((int)window.ActualWidth,(int)window.ActualHeight,96,96,PixelFormats.Pbgra32);bitmap.Render(window);
             var encoder=new PngBitmapEncoder();encoder.Frames.Add(BitmapFrame.Create(bitmap));using(var file=File.Create(Path.Combine(output,"shell.png")))encoder.Save(file);
-            if(!await vm.CloseAllAsync())throw new InvalidOperationException("Documents did not close cleanly.");
+            Stage("close documents");if(!await vm.CloseAllAsync())throw new InvalidOperationException("Documents did not close cleanly.");
             await ExchangeImportSmokeRunner.RunShutdownAsync(vm,services,output);
             await ((App)System.Windows.Application.Current).StopRecoveryAsync();
             await Idle();
@@ -90,12 +94,12 @@ internal static class SmokeRunner
             if(assets!=0)throw new InvalidOperationException($"{assets} assets remain after document close.");
             listener.Flush();bindingOutput.Flush();
             await File.WriteAllTextAsync(Path.Combine(output,"result.txt"),"PASS: native viewport, progressive first-frame feedback/input/cancel, preview/commit, tree, STEP import, document switching, undo/redo, MessagePack save, STEP/IGES/STL export, resource dialog and density bindings, target part/layer/material creation, instance position bindings, visibility, DialogHost dialogs, three-language layouts, modal airspace suspension, sketch solver/undo/redo/conflict/serialization and real frozen-profile extrusion, zero remaining assets.");
-            window.CloseAfterSmoke();
+            expectedClose=true;window.CloseAfterSmoke();
         }
         catch(Exception ex)
         {
-            await File.WriteAllTextAsync(Path.Combine(output,"result.txt"),"FAIL: "+ex);
-            System.Windows.Application.Current.Shutdown(1);
+            Stage("failed during "+stage);await File.WriteAllTextAsync(Path.Combine(output,"result.txt"),"FAIL: "+stage+" / "+ex);
+            expectedClose=true;System.Windows.Application.Current.Shutdown(1);
         }
         finally{PresentationTraceSources.DataBindingSource.Listeners.Remove(listener);}
     }

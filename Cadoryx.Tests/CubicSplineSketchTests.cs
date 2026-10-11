@@ -37,9 +37,14 @@ public sealed class CubicSplineSketchTests
         var after=session.Snapshot;Assert.True(after.Features[feature.Id].Result.VolumeMm3>feature.Result.VolumeMm3);
         await session.UndoAsync();Assert.Same(before,session.Snapshot);
         await session.RedoAsync();Assert.Same(after,session.Snapshot);
+        var legal=after.Sketches[sketch.Id];var legalPoint=legal.Points.Single(p=>p.Id==spline.Controls[2]);
+        // A control across the chord can still define a simple, positive-area curve.
+        await session.ExecuteAsync(new UpsertSketchCommand(legal with
+        {Points=legal.Points.Replace(legalPoint,legalPoint with{Position=new(5,-2)})},solver));
+        await session.UndoAsync();Assert.Same(after,session.Snapshot);
         var illegal=after.Sketches[sketch.Id];var point=illegal.Points.Single(p=>p.Id==spline.Controls[2]);
         await Assert.ThrowsAnyAsync<Exception>(()=>session.ExecuteAsync(new UpsertSketchCommand(illegal with
-        {Points=illegal.Points.Replace(point,point with{Position=new(5,-2)})},solver)));
+        {Points=illegal.Points.Replace(point,point with{Position=new(5,-20)})},solver)));
         Assert.Same(after,session.Snapshot);
         foreach(var ext in new[]{"step","iges","stl"})
         {
@@ -79,7 +84,7 @@ public sealed class CubicSplineSketchTests
         var sketch=SketchTestData.Rectangle(part);
         document=document with{Sketches=document.Sketches.Add(sketch.Id,sketch)};
         var path=files.PathFor("previous.cadoryx");await storage.SaveAsync(document,assets,path);
-        FormatEvolutionTests.RewriteManifest(path,m=>m with{Sections=m.Sections.Select(s=>s.Kind switch
+        SketchLegacyPointFixture.Prepare(path);FormatEvolutionTests.RewriteManifest(path,m=>m with{Sections=m.Sections.Select(s=>s.Kind switch
         {"features"=>s with{SchemaVersion=18},"sketches"=>s with{SchemaVersion=5},_=>s}).ToImmutableArray()});
         using(var migrated=await storage.LoadAsync(path,assets))
         {
@@ -92,7 +97,7 @@ public sealed class CubicSplineSketchTests
         Assert.Empty(current.Diagnostics);
         var manifest=FormatEvolutionTests.Manifest(path);
         Assert.Equal(CadSectionMigrationRegistry.CurrentFormats["features"].Version,manifest.Sections.Single(s=>s.Kind=="features").SchemaVersion);
-        Assert.Equal(6,manifest.Sections.Single(s=>s.Kind=="sketches").SchemaVersion);
+        Assert.Equal(CadSectionMigrationRegistry.CurrentFormats["sketches"].Version,manifest.Sections.Single(s=>s.Kind=="sketches").SchemaVersion);
     }
 
     [Fact] public async Task FourSixAndSixteenControlSplineProfilesBuildAndRoundtrip()

@@ -6,8 +6,20 @@ using Cadoryx.Rendering;
 
 namespace Cadoryx.ViewModels.Toolboxes;
 
-internal sealed class CadCommandContext(CadDocumentViewModel document) : ICadCommandContext
+internal sealed partial class CadCommandContext(CadDocumentViewModel document, DocumentCommandExpectation? expected = null) : ICadCommandContext
 {
+    private readonly DocumentCommandExpectation expectation = expected ?? DocumentCommandExpectation.Capture(document.Session.Snapshot);
+    private readonly FeatureCursor? capturedCursor = document.Session.FeatureCursor;
+    public void ValidateInvocation()
+    {
+        if (document.IsDetached || document.IsClosingRequested) throw new InvalidOperationException("The active document is closing or detached.");
+        expectation.Validate(document.Session.Snapshot);
+    }
+    private void EnsureEditable()
+    {
+        ValidateInvocation();
+        if (document.IsReadOnly) throw new InvalidOperationException("The active document cannot be edited.");
+    }
     public string DocumentName => document.Session.Snapshot.Name;
     public int BodyCount => document.Session.Snapshot.Bodies.Count;
     public int SelectionCount => document.Selection.Items.Length > 0 ? document.Selection.Items.Length :
@@ -55,11 +67,10 @@ internal sealed class CadCommandContext(CadDocumentViewModel document) : ICadCom
         }
     }
     public CadGridState Grid => new(document.GridVisible, document.GridSpacingMm, document.SnapToGrid);
-    public Task SetGridAsync(bool? visible = null, double? spacingMm = null, bool? snap = null)
+    public Task SetGridAsync(bool? visible = null, double? spacingMm = null, bool? snap = null, CancellationToken cancellationToken = default)
     {
-        if (document.IsDetached || document.IsReadOnly || document.IsClosingRequested)
-            throw new InvalidOperationException("The active document cannot be edited.");
-        return document.SetGridAsync(visible, spacingMm, snap);
+        EnsureEditable();
+        return document.SetGridAsync(visible, spacingMm, snap, cancellationToken, expectation);
     }
     public string DisplayMode => document.CurrentDisplayMode.ToString().ToUpperInvariant();
     public void SetDisplayMode(string mode) => document.SetDisplay(
@@ -119,8 +130,10 @@ internal sealed class CadCommandContext(CadDocumentViewModel document) : ICadCom
             }
         }
     }
-    public Task UndoAsync() => document.Session.UndoAsync();
-    public Task RedoAsync() => document.Session.RedoAsync();
+    public Task UndoAsync(CancellationToken cancellationToken = default)
+    { EnsureEditable(); return document.Session.UndoAsync(cancellationToken, expectation); }
+    public Task RedoAsync(CancellationToken cancellationToken = default)
+    { EnsureEditable(); return document.Session.RedoAsync(cancellationToken, expectation); }
     public void Fit() => document.FitView();
     public void SetView(string direction) => document.SetView(direction.ToUpperInvariant() switch
     {
@@ -144,15 +157,14 @@ internal sealed class CadCommandContext(CadDocumentViewModel document) : ICadCom
         document.CancelViewportConstruction();
         return true;
     }
-    public Task CreateBoxAsync(string name, double width, double depth, double height, double x, double y, double z) =>
-        CreateAsync(new BoxRecipe(width, depth, height, RigidTransform3d.Translate(x, y, z)), name);
-    public Task CreateCylinderAsync(string name, double radius, double height, double x, double y, double z) =>
-        CreateAsync(new CylinderRecipe(radius, height, RigidTransform3d.Translate(x, y, z)), name);
-    private Task CreateAsync(GeometryRecipe recipe, string name)
+    public Task CreateBoxAsync(string name, double width, double depth, double height, double x, double y, double z, CancellationToken cancellationToken = default) =>
+        CreateAsync(new BoxRecipe(width, depth, height, RigidTransform3d.Translate(x, y, z)), name, cancellationToken);
+    public Task CreateCylinderAsync(string name, double radius, double height, double x, double y, double z, CancellationToken cancellationToken = default) =>
+        CreateAsync(new CylinderRecipe(radius, height, RigidTransform3d.Translate(x, y, z)), name, cancellationToken);
+    private Task CreateAsync(GeometryRecipe recipe, string name, CancellationToken cancellationToken)
     {
-        if (document.IsDetached || document.IsReadOnly || document.IsClosingRequested)
-            throw new InvalidOperationException("The active document cannot be edited.");
+        EnsureEditable();
         return document.Session.ExecuteAsync(new AddBodyCommand(recipe, name,
-            document.SelectedTargetPart, document.SelectedCreationLayer, document.SelectedCreationMaterial));
+            document.SelectedTargetPart, document.SelectedCreationLayer, document.SelectedCreationMaterial), cancellationToken, expectation);
     }
 }

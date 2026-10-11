@@ -35,7 +35,7 @@ public sealed class AiAssistantTests
     public async Task CadAgentToolsetUsesBoundedCommandCatalog()
     {
         var tools = new CadAgentToolset(new CadCommandLineService(), null);
-        Assert.Equal(5, tools.ToolDefinitions.Count);
+        Assert.Equal(12, tools.ToolDefinitions.Count);
         Assert.Contains("\"active\":false", await tools.ExecuteAsync(new AiToolCall("1", "cad_status", "{}"), default));
         Assert.Contains("\"success\":true", await tools.ExecuteAsync(new AiToolCall("2", "cad_command", "{\"command\":\"HELP\"}"), default));
         Assert.Contains("\"success\":false", await tools.ExecuteAsync(new AiToolCall("3", "cad_command", "{\"command\":\"BOX Demo 1 2 3\"}"), default));
@@ -50,10 +50,41 @@ public sealed class AiAssistantTests
         var context = AgentRequestContextBuilder.Build("CAD assistant",
             [AiChatMessage.User("Select the exact bracket instance")], tools.ToolDefinitions,
             AiAssistantSettings.DefaultContextWindowTokens);
+        Assert.True(context.Tools.Count==tools.ToolDefinitions.Count,"Default context omitted tools: "+string.Join(",",context.Tools.Select(t=>t.Name))+"; costs="+
+            string.Join(", ",tools.ToolDefinitions.Select(tool=>tool.Name+"="+AgentRequestContextBuilder.EstimateToolTokens(tool))));
 
         Assert.Contains(context.Tools, tool => tool.Name == "cad_inspect");
         Assert.Contains(context.Tools, tool => tool.Name == "cad_select");
         Assert.Contains(context.Tools, tool => tool.Name == "cad_edit");
+        Assert.Contains(context.Tools, tool => tool.Name == "cad_parameter");
+        Assert.Contains(context.Tools, tool => tool.Name == "cad_history");
+        Assert.True(context.Tools.Any(tool=>tool.Name=="cad_model"),"Default context omitted common modeling: "+string.Join(", ",tools.ToolDefinitions.Select(tool=>tool.Name+"="+AgentRequestContextBuilder.EstimateToolTokens(tool))));
+        Assert.True(context.Tools.Any(tool => tool.Name == "cad_datum"),"Default context omitted datum authoring: "+
+            string.Join(", ",tools.ToolDefinitions.Select(tool=>tool.Name+"="+AgentRequestContextBuilder.EstimateToolTokens(tool))));
+        Assert.Equal("Select the exact bracket instance",context.Messages[^1].Content);
+        Assert.True(context.EstimatedPromptTokens<=AiAssistantSettings.DefaultContextWindowTokens-context.MaxOutputTokens-640);
+    }
+
+    [Theory]
+    [InlineData("Use cad_file contract then save", "cad_file")]
+    [InlineData("帮我保存这份文档", "cad_file")]
+    [InlineData("切换文档，使用列表中的完整身份", "cad_workspace")]
+    [InlineData("创建关联基准平面", "cad_datum")]
+    [InlineData("Use cad_model to sweep", "cad_model")]
+    public void LongContextKeepsRequestedToolAndInspection(string prompt, string required)
+    {
+        var tools = new CadAgentToolset(new CadCommandLineService(), null);
+        var history = new List<AiChatMessage>();
+        for (int i = 0; i < 12; i++) { history.Add(AiChatMessage.User("Old request " + new string('x', 500))); history.Add(AiChatMessage.Assistant("Old answer " + new string('y', 500), [])); }
+        history.Add(AiChatMessage.User(prompt));
+        foreach (var aggressive in new[] { false, true })
+        {
+            var context = AgentRequestContextBuilder.Build("CAD assistant", history, tools.SelectTools(prompt, aggressive), AiAssistantSettings.DefaultContextWindowTokens, aggressive);
+            Assert.Contains(context.Tools, tool => tool.Name == required);
+            Assert.Contains(context.Tools, tool => tool.Name == "cad_status");
+            Assert.Contains(context.Tools, tool => tool.Name == "cad_inspect");
+            Assert.Equal(prompt, context.Messages[^1].Content);
+        }
     }
 
     [Fact]
@@ -131,7 +162,13 @@ public sealed class AiAssistantTests
             x.GetProperty("text").GetString()!.Contains("part contents"));
         Assert.Contains(parts.EnumerateArray(), x => x.GetProperty("type").GetString() == "image_url" &&
             x.GetProperty("image_url").GetProperty("url").GetString() == "data:image/png;base64,AA==");
-        Assert.Equal(5, root.GetProperty("tools").GetArrayLength());
+        Assert.Equal(12, root.GetProperty("tools").GetArrayLength());
+        var wireTools=root.GetProperty("tools").EnumerateArray().Select(t=>t.GetProperty("function")).ToArray();
+        var modelSchema=wireTools.Single(t=>t.GetProperty("name").GetString()=="cad_model").GetProperty("parameters");
+        Assert.Equal("string",modelSchema.GetProperty("properties").GetProperty("authorJson").GetProperty("type").GetString());
+        Assert.Contains(modelSchema.GetProperty("properties").GetProperty("action").GetProperty("enum").EnumerateArray(),v=>v.GetString()=="create");
+        Assert.Contains(modelSchema.GetProperty("required").EnumerateArray(),v=>v.GetString()=="action");
+        Assert.False(modelSchema.TryGetProperty("oneOf",out _));Assert.DoesNotContain("$ref",modelSchema.GetRawText());
     }
 
     [Fact]
@@ -218,7 +255,7 @@ public sealed class AiAssistantTests
     {
         public IReadOnlyList<CadCommandDescriptor> Commands => [];
         public IReadOnlyList<string> Complete(string prefix, int limit = 12) => [];
-        public Task<CadCommandResult> ExecuteAsync(string input, ICadCommandContext? context)
+        public Task<CadCommandResult> ExecuteAsync(string input, ICadCommandContext? context, CancellationToken cancellationToken = default)
         {
             cancellation.Cancel();
             return Task.FromResult(new CadCommandResult(true, "Committed."));

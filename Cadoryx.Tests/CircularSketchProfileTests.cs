@@ -61,7 +61,7 @@ public sealed class CircularSketchProfileTests
             Assert.Throws<CadValidationException>(()=>(square with{Holes=[hole]}).Validate());
         Assert.Throws<CadValidationException>(()=>(square with{Holes=[new(new(5,5),3),new(new(11,5),3)]}).Validate());
         Assert.Throws<CadValidationException>(()=>(SketchProfile.FromCircle(new(0,0),10) with{Holes=[new(new(8,0),2)]}).Validate());
-        Assert.Throws<CadValidationException>(()=>new RevolveRecipe(square with{Holes=[new(new(5,5),1)]},1,RigidTransform3d.Identity).Validate());
+        new RevolveRecipe(square with{Holes=[new(new(5,5),1)]},1,RigidTransform3d.Identity).Validate();
     }
 
     [Fact] public async Task ExactThroughHolesHaveCorrectVolumesAndExports()
@@ -123,7 +123,12 @@ public sealed class CircularSketchProfileTests
         {
             document.SelectedTargetPart=part;document.StartSketchFeature("Extrude");
             Assert.Contains(document.SketchProfiles,p=>!p.Source.HoleCircleIds.IsDefaultOrEmpty&&p.Source.HoleCircleIds.Length==2);
-            document.StartSketchFeature("Revolve");Assert.DoesNotContain(document.SketchProfiles,p=>!p.Source.HoleCircleIds.IsDefaultOrEmpty);
+            document.StartSketchFeature("Revolve");
+            var revolved=document.SketchProfiles.Single(p=>p.Source.HoleCircleIds.Length==2);
+            document.SelectedSketchProfile=revolved;document.AngleDegrees=180;
+            await document.PreviewCommand.ExecuteAsync(null);Assert.True(document.HasPreview,document.ToolStatus);
+            Assert.Equal(4000*Math.PI-180*Math.PI*Math.PI,document.PreviewGeometry!.VolumeMm3,3);
+            document.CancelCommand.Execute(null);Assert.Same(after,session.Snapshot);
             document.EditFeature(feature.Id);
             Assert.True(document.CanChooseSketchProfile);
             Assert.False(document.CanChangeSketchAssociation);

@@ -20,10 +20,17 @@ public partial class TechnicalDrawingWindow
     private readonly CadDocumentViewModel document;
     private AssemblyDatumReference? first,second;
     private bool pickingFirst;
+    private CancellationTokenSource? calculation;
+    private bool closed;
+    internal bool IsCalculating=>calculation is not null||annotationPreparing;
     private sealed record ViewChoice(DrawingViewKind Kind,string Name);
     private sealed record MeasureChoiceItem(DrawingMeasureKind Kind,string Name);
     private sealed record DatumChoice(TopologyKind Kind,string Name);
     private sealed record UnitChoiceItem(LengthUnit Unit,string Name);
+    private sealed record HatchRuleChoice(MaterialId? Material,string Name);
+    private sealed record PaperChoiceItem(DrawingPaperFormat? Paper,string Name);
+    private sealed record ProjectionChoiceItem(DrawingProjectionMethod Method,string Name);
+    private sealed record CaptionChoiceItem(DrawingCaptionLanguage Language,string Name);
     public TechnicalDrawingWindow(CadDocumentViewModel document)
     {
         InitializeComponent();this.document=document;
@@ -40,12 +47,24 @@ public partial class TechnicalDrawingWindow
             new UnitChoiceItem(LengthUnit.Inch,"in")};UnitChoice.DisplayMemberPath="Name";
         UnitChoice.SelectedIndex=0;
         StandardChoice.ItemsSource=Enum.GetValues<DrawingStandard>();StandardChoice.SelectedIndex=0;
+        PaperPresetChoice.ItemsSource=new[]{new PaperChoiceItem(null,Cadoryx.Lang.Strings.Strings.DrawingLegacyTemplate)}
+            .Concat(Enum.GetValues<DrawingPaperFormat>().Select(p=>new PaperChoiceItem(p,
+                p==DrawingPaperFormat.Custom?Cadoryx.Lang.Strings.Strings.DrawingCustomPaper:p.ToString()))).ToArray();
+        ProjectionChoice.ItemsSource=new[]{new ProjectionChoiceItem(DrawingProjectionMethod.FirstAngle,Cadoryx.Lang.Strings.Strings.DrawingFirstAngle),
+            new ProjectionChoiceItem(DrawingProjectionMethod.ThirdAngle,Cadoryx.Lang.Strings.Strings.DrawingThirdAngle)};
+        CaptionLanguageChoice.ItemsSource=new[]{new CaptionChoiceItem(DrawingCaptionLanguage.English,"English"),
+            new CaptionChoiceItem(DrawingCaptionLanguage.Chinese,"中文"),new CaptionChoiceItem(DrawingCaptionLanguage.Japanese,"日本語")};
+        ProjectionChoice.SelectedIndex=0;CaptionLanguageChoice.SelectedIndex=0;
+        InitializeAnnotations();
+        InitializeHoles();
         document.Session.Changed+=OnDocumentChanged;
         document.Detaching+=OnDocumentDetaching;
         document.DrawingDatumPicked+=OnDatumPicked;
         document.DrawingDatumPickFailed+=OnDatumFailed;
         Closed+=(_,_)=>
         {
+            closed=true;
+            calculation?.Cancel();
             document.CancelDrawingDatumPick();
             document.Session.Changed-=OnDocumentChanged;
             document.Detaching-=OnDocumentDetaching;
@@ -58,9 +77,15 @@ public partial class TechnicalDrawingWindow
     private TechnicalDrawingView? View=>ViewList.SelectedItem as TechnicalDrawingView;
     private TechnicalDrawingDimension? Dimension=>DimensionList.SelectedItem as TechnicalDrawingDimension;
     private void OnDocumentDetaching(object? sender,EventArgs e)=>Close();
-    private void OnDocumentChanged(object? sender,DocumentChangeSet change)=>Dispatcher.Invoke(RenderBook);
+    private void OnDocumentChanged(object? sender,DocumentChangeSet change)=>Dispatcher.Invoke(()=>{if(!closed)RenderBook();});
     private void RenderBook()
     {
+        var hatchMaterial=(HatchMaterialChoice.SelectedItem as HatchRuleChoice)?.Material;
+        HatchMaterialChoice.ItemsSource=new[]{new HatchRuleChoice(null,
+            Cadoryx.Lang.Strings.Strings.DrawingHatchDefault)}.Concat(document.Session.Snapshot.Materials.Values
+            .OrderBy(m=>m.Name).Select(m=>new HatchRuleChoice(m.Id,m.Name))).ToArray();
+        HatchMaterialChoice.SelectedItem=HatchMaterialChoice.Items.OfType<HatchRuleChoice>()
+            .FirstOrDefault(r=>r.Material==hatchMaterial)??HatchMaterialChoice.Items[0];
         var sheetId=Sheet?.Id;var viewId=View?.Id;var dimensionId=Dimension?.Id;
         var sheets=document.Session.Snapshot.DrawingSheets.Values.OrderBy(s=>s.Name,StringComparer.CurrentCulture).ToArray();
         SheetList.ItemsSource=sheets;
@@ -73,9 +98,17 @@ public partial class TechnicalDrawingWindow
             DimensionList.SelectedItem=sheet.Dimensions.FirstOrDefault(d=>d.Id==dimensionId);
             ShowPage(sheet,Array.FindIndex(sheets,s=>s.Id==sheet.Id)+1,sheets.Length);
             Status.Text=sheet.Views.FirstOrDefault(v=>v.StaleReason is not null)?.StaleReason??
-                sheet.Dimensions.FirstOrDefault(d=>d.StaleReason is not null)?.StaleReason??string.Empty;
+                sheet.Dimensions.FirstOrDefault(d=>d.StaleReason is not null)?.StaleReason??
+                sheet.DatumSymbols.FirstOrDefault(d=>d.StaleReason is not null)?.StaleReason??
+                sheet.ControlFrames.FirstOrDefault(f=>f.StaleReason is not null)?.StaleReason??
+                sheet.Balloons.FirstOrDefault(b=>b.StaleReason is not null)?.StaleReason??
+                sheet.HoleTables.FirstOrDefault(t=>t.StaleReason is not null)?.StaleReason??
+                sheet.HoleTables.SelectMany(t=>t.Rows).FirstOrDefault(r=>r.StaleReason is not null)?.StaleReason??string.Empty;
         }
         else{ViewList.ItemsSource=null;DimensionList.ItemsSource=null;PaperHost.Child=null;}
+        RenderAnnotations();
+        RenderTemplateLibrary();
+        RenderHoles();
         UpdateActions();
     }
     private void UpdateActions()
@@ -85,6 +118,9 @@ public partial class TechnicalDrawingWindow
         PickFirstButton.IsEnabled=View is not null;
         PickSecondButton.IsEnabled=View is not null;
         AddDimensionButton.IsEnabled=View is not null;
+        ApplyHatchButton.IsEnabled=View?.Kind==DrawingViewKind.Section;
+        RemoveHatchRuleButton.IsEnabled=ApplyHatchButton.IsEnabled&&
+            (HatchMaterialChoice.SelectedItem as HatchRuleChoice)?.Material is not null;
     }
     private void SheetChanged(object sender,SelectionChangedEventArgs e)
     {
@@ -93,6 +129,19 @@ public partial class TechnicalDrawingWindow
         SheetName.Text=sheet.Name;SheetTitle.Text=sheet.Title;SheetAuthor.Text=sheet.Author??"";
         UnitChoice.SelectedItem=UnitChoice.Items.OfType<UnitChoiceItem>().First(item=>item.Unit==sheet.Unit);
         StandardChoice.SelectedItem=sheet.Standard;
+        PaperPresetChoice.SelectedItem=PaperPresetChoice.Items.OfType<PaperChoiceItem>().Single(p=>p.Paper==sheet.Template?.Paper);
+        LandscapeCheck.IsChecked=sheet.Template?.Landscape??sheet.WidthMm>=sheet.HeightMm;
+        var template=sheet.Template;var margins=template?.Margins??new DrawingFrameMargins();
+        ProjectionChoice.SelectedItem=ProjectionChoice.Items.OfType<ProjectionChoiceItem>().Single(p=>
+            p.Method==(template?.Projection??(sheet.Standard==DrawingStandard.ASME?DrawingProjectionMethod.ThirdAngle:DrawingProjectionMethod.FirstAngle)));
+        CaptionLanguageChoice.SelectedItem=CaptionLanguageChoice.Items.OfType<CaptionChoiceItem>().Single(p=>
+            p.Language==(template?.Language??DrawingCaptionLanguage.English));
+        MarginLeft.Text=margins.Left.ToString(CultureInfo.CurrentCulture);MarginTop.Text=margins.Top.ToString(CultureInfo.CurrentCulture);
+        MarginRight.Text=margins.Right.ToString(CultureInfo.CurrentCulture);MarginBottom.Text=margins.Bottom.ToString(CultureInfo.CurrentCulture);
+        var titleBlock=template?.TitleBlock??new DrawingTitleBlock();
+        DrawingNumberText.Text=titleBlock.DrawingNumber;RevisionText.Text=titleBlock.Revision;OrganizationText.Text=titleBlock.Organization;
+        TitleMaterialText.Text=titleBlock.Material;SurfaceFinishText.Text=titleBlock.SurfaceFinish;GeneralToleranceText.Text=titleBlock.GeneralTolerance;
+        DrawnByText.Text=titleBlock.DrawnBy;CheckedByText.Text=titleBlock.CheckedBy;ApprovedByText.Text=titleBlock.ApprovedBy;IssueDateText.Text=titleBlock.IssueDate;
         PaperWidth.Text=sheet.WidthMm.ToString(CultureInfo.CurrentCulture);
         PaperHeight.Text=sheet.HeightMm.ToString(CultureInfo.CurrentCulture);
         ViewList.ItemsSource=sheet.Views;DimensionList.ItemsSource=sheet.Dimensions;
@@ -109,15 +158,19 @@ public partial class TechnicalDrawingWindow
         }
         var sheets=document.Session.Snapshot.DrawingSheets.Values.OrderBy(s=>s.Name,StringComparer.CurrentCulture).ToArray();
         ShowPage(sheet,Math.Max(1,Array.FindIndex(sheets,s=>s.Id==sheet.Id)+1),sheets.Length);
+        RenderTemplateLibrary();
         UpdateActions();
     }
     private void ViewChanged(object sender,SelectionChangedEventArgs e)
     {
+        annotationGeneration++;
+        RefreshHoleDatumChoices();
         if(View is not {} view)return;
         if(ViewList.IsKeyboardFocusWithin||ViewList.IsMouseOver)InspectorTabs.SelectedIndex=1;
         ViewX.Text=view.CenterMm.X.ToString(CultureInfo.CurrentCulture);
         ViewY.Text=view.CenterMm.Y.ToString(CultureInfo.CurrentCulture);
         ViewScale.Text=view.Scale.ToString(CultureInfo.CurrentCulture);
+        LoadHatchStyle();
         KindChoice.SelectedItem=KindChoice.Items.OfType<ViewChoice>().First(choice=>choice.Kind==view.Kind);
         if(view.DetailCenter is {} focus)
         {
@@ -132,6 +185,7 @@ public partial class TechnicalDrawingWindow
         if(SectionOptions is null)return;
         SectionOptions.Visibility=(KindChoice.SelectedItem as ViewChoice)?.Kind==DrawingViewKind.Section?
             Visibility.Visible:Visibility.Collapsed;
+        HatchOptions.Visibility=SectionOptions.Visibility;
         DetailOptions.Visibility=(KindChoice.SelectedItem as ViewChoice)?.Kind==DrawingViewKind.Detail?
             Visibility.Visible:Visibility.Collapsed;
     }
@@ -179,17 +233,48 @@ public partial class TechnicalDrawingWindow
         if(Sheet is {} sheet&&Dimension is {} dimension)
             await ExecuteAsync(TechnicalDrawingCommands.MoveDimension(sheet.Id,dimension.Id,point));
     }
-    private async Task ExecuteAsync(ICadDocumentCommand command)
+    private Task ExecuteAsync(ICadDocumentCommand command)=>ExecutePreparedAsync(_=>Task.FromResult(command));
+    private async Task ExecutePreparedAsync(Func<CancellationToken,Task<ICadDocumentCommand>> prepare)
     {
-        try{IsEnabled=false;Status.Text="…";await document.Session.ExecuteAsync(command);RenderBook();}
-        catch(Exception error){Status.Text=error.Message;}
-        finally{IsEnabled=true;}
+        if(closed||calculation is not null)return;
+        using var cancel=new CancellationTokenSource();calculation=cancel;
+        AuthorActions.IsEnabled=OutputActions.IsEnabled=DrawingWorkspace.IsEnabled=false;
+        CancelCalculationButton.IsEnabled=true;CancelCalculationButton.Visibility=Visibility.Visible;
+        try
+        {
+            Status.Text="…";
+            var command=await prepare(cancel.Token);
+            cancel.Token.ThrowIfCancellationRequested();
+            await document.Session.ExecuteAsync(command,cancel.Token);
+            if(!closed)RenderBook();
+        }
+        catch(OperationCanceledException) when(cancel.IsCancellationRequested)
+        {if(!closed)Status.Text=Cadoryx.Lang.Strings.Strings.CanceledStatus;}
+        catch(Exception error){if(!closed)Status.Text=error.Message;}
+        finally
+        {
+            calculation=null;
+            if(!closed)
+            {
+                AuthorActions.IsEnabled=OutputActions.IsEnabled=DrawingWorkspace.IsEnabled=true;
+                CancelCalculationButton.Visibility=Visibility.Collapsed;
+                UpdateActions();
+            }
+        }
+    }
+    private void CancelCalculation(object sender,RoutedEventArgs e)
+    {
+        if(calculation is null)return;
+        CancelCalculationButton.IsEnabled=false;
+        calculation.Cancel();
     }
     private async void AddSheet(object sender,RoutedEventArgs e)
     {
         InspectorTabs.SelectedIndex=0;
         await ExecuteAsync(TechnicalDrawingCommands.AddSheet(
-            TechnicalDrawingSheet.A4Landscape($"Sheet {document.Session.Snapshot.DrawingSheets.Count+1}")));
+            DrawingSheetTemplate.Create($"Sheet {document.Session.Snapshot.DrawingSheets.Count+1}",
+                language:CultureInfo.CurrentUICulture.TwoLetterISOLanguageName switch
+                    {"zh"=>DrawingCaptionLanguage.Chinese,"ja"=>DrawingCaptionLanguage.Japanese,_=>DrawingCaptionLanguage.English})));
     }
     private async void DeleteSheet(object sender,RoutedEventArgs e)
     {if(Sheet is {} sheet)await ExecuteAsync(TechnicalDrawingCommands.DeleteSheet(sheet.Id));}
@@ -197,9 +282,27 @@ public partial class TechnicalDrawingWindow
     {
         try{if(Sheet is {} sheet)await ExecuteAsync(TechnicalDrawingCommands.EditSheet(sheet.Id,SheetName.Text,
             Number(PaperWidth),Number(PaperHeight),((UnitChoiceItem)UnitChoice.SelectedItem).Unit,SheetTitle.Text,SheetAuthor.Text,
-            (DrawingStandard)StandardChoice.SelectedItem));}
+            (DrawingStandard)StandardChoice.SelectedItem,ReadTemplate(),
+            useLegacyTemplate:(PaperPresetChoice.SelectedItem as PaperChoiceItem)?.Paper is null));}
         catch(Exception error){Status.Text=error.Message;}
     }
+    private void PaperFormatChanged(object sender,SelectionChangedEventArgs e)=>SetPresetPaperSize();
+    private void PaperOrientationChanged(object sender,RoutedEventArgs e)=>SetPresetPaperSize();
+    private void SetPresetPaperSize()
+    {
+        if(PaperWidth is null||PaperPresetChoice.SelectedItem is not PaperChoiceItem {Paper:{} paper}||paper==DrawingPaperFormat.Custom)return;
+        var size=DrawingSheetTemplate.PaperSize(paper,LandscapeCheck.IsChecked==true);
+        PaperWidth.Text=size.Width.ToString(CultureInfo.CurrentCulture);PaperHeight.Text=size.Height.ToString(CultureInfo.CurrentCulture);
+    }
+    private DrawingSheetTemplate? ReadTemplate()=>
+        (PaperPresetChoice.SelectedItem as PaperChoiceItem)?.Paper is {} paper?
+        new(paper,LandscapeCheck.IsChecked==true,((ProjectionChoiceItem)ProjectionChoice.SelectedItem).Method,
+            ((CaptionChoiceItem)CaptionLanguageChoice.SelectedItem).Language,
+            new(Number(MarginLeft),Number(MarginTop),Number(MarginRight),Number(MarginBottom)),
+            new(DrawingNumberText.Text,RevisionText.Text,OrganizationText.Text,TitleMaterialText.Text,
+                SurfaceFinishText.Text,GeneralToleranceText.Text,DrawnByText.Text,CheckedByText.Text,
+                ApprovedByText.Text,IssueDateText.Text))
+        {CustomFields=Sheet?.Template?.CustomFields??[],Notes=Sheet?.Template?.Notes??[],Zones=Sheet?.Template?.Zones}:null;
     private async void AddView(object sender,RoutedEventArgs e)
     {
         if(Sheet is not {} sheet)return;
@@ -218,7 +321,8 @@ public partial class TechnicalDrawingWindow
                 $"{kind} {sheet.Views.Length+1}",kind,center,scale,document.Selection.Occurrence,
                 parentView:parent,sectionNormal:normal,sectionOffsetMm:kind==DrawingViewKind.Section?Number(SectionOffset):0,
                 detailCenter:kind==DrawingViewKind.Detail?new(Number(DetailX),Number(DetailY)):null,
-                detailRadius:kind==DrawingViewKind.Detail?Number(DetailRadius):0));
+                detailRadius:kind==DrawingViewKind.Detail?Number(DetailRadius):0,
+                hatching:kind==DrawingViewKind.Section?ReadHatching():null));
         }
         catch(Exception error){Status.Text=error.Message;}
     }
@@ -227,6 +331,43 @@ public partial class TechnicalDrawingWindow
         try{if(Sheet is {} sheet&&View is {} view)await ExecuteAsync(TechnicalDrawingCommands.EditView(
             sheet.Id,view.Id,new(Number(ViewX),Number(ViewY)),Number(ViewScale)));}
         catch(Exception error){Status.Text=error.Message;}
+    }
+    private void LoadHatchStyle()
+    {
+        if(HatchAngle is null||HatchMaterialChoice.SelectedItem is not HatchRuleChoice choice)return;
+        var settings=View?.Hatching??DrawingSectionHatching.Automatic;
+        var style=settings.Materials.FirstOrDefault(r=>r.Material==choice.Material)?.Style??settings.Default;
+        HatchAngle.Text=style.AngleDegrees.ToString(CultureInfo.CurrentCulture);
+        HatchSpacing.Text=style.SpacingMm.ToString(CultureInfo.CurrentCulture);
+        HatchEnabled.IsChecked=style.Enabled;HatchAlternate.IsChecked=settings.AlternateSources;
+        HatchAlternate.IsEnabled=choice.Material is null;
+    }
+    private void HatchMaterialChanged(object sender,SelectionChangedEventArgs e)
+    {LoadHatchStyle();if(document is not null)UpdateActions();}
+    private DrawingSectionHatching ReadHatching()
+    {
+        var settings=View?.Hatching??DrawingSectionHatching.Automatic;
+        var style=new DrawingHatchStyle(Number(HatchAngle),Number(HatchSpacing),HatchEnabled.IsChecked==true);
+        style.Validate();
+        return (HatchMaterialChoice.SelectedItem as HatchRuleChoice)?.Material is {} material?
+            settings with{Materials=[..settings.Materials.Where(r=>r.Material!=material),new(material,style)]}:
+            settings with{Default=style,AlternateSources=HatchAlternate.IsChecked==true};
+    }
+    private async void ApplyHatching(object sender,RoutedEventArgs e)
+    {
+        try{if(Sheet is {} sheet&&View is {} view)
+            await ExecuteAsync(TechnicalDrawingCommands.SetSectionHatching(sheet.Id,view.Id,ReadHatching()));}
+        catch(Exception error){Status.Text=error.Message;}
+    }
+    private async void RemoveHatchRule(object sender,RoutedEventArgs e)
+    {
+        if(Sheet is {} sheet&&View is {} view&&
+            (HatchMaterialChoice.SelectedItem as HatchRuleChoice)?.Material is {} material)
+        {
+            var settings=view.Hatching??DrawingSectionHatching.Automatic;
+            await ExecuteAsync(TechnicalDrawingCommands.SetSectionHatching(sheet.Id,view.Id,
+                settings with{Materials=[..settings.Materials.Where(r=>r.Material!=material)]}));
+        }
     }
     private async void ReselectView(object sender,RoutedEventArgs e)
     {if(Sheet is {} sheet&&View is {} view)await ExecuteAsync(TechnicalDrawingCommands.ReselectView(sheet.Id,view.Id,document.Selection.Occurrence));}
@@ -281,7 +422,10 @@ public partial class TechnicalDrawingWindow
     private static void EnsureCurrent(DocumentSnapshot snapshot)
     {
         if(snapshot.DrawingSheets.Values.SelectMany(s=>s.Views).Any(v=>v.StaleReason is not null)||
-           snapshot.DrawingSheets.Values.SelectMany(s=>s.Dimensions).Any(d=>d.StaleReason is not null))
+           snapshot.DrawingSheets.Values.SelectMany(s=>s.Dimensions).Any(d=>d.StaleReason is not null)||
+           snapshot.DrawingSheets.Values.Any(s=>s.DatumSymbols.Any(d=>d.StaleReason is not null)||
+               s.ControlFrames.Any(f=>f.StaleReason is not null)||s.Balloons.Any(b=>b.StaleReason is not null)||
+               s.HoleTables.Any(t=>t.StaleReason is not null||t.Rows.Any(r=>r.StaleReason is not null))))
             throw new CadValidationException("Refresh or reselect stale drawing references before delivery.");
     }
     private void ExportPdf(object sender,RoutedEventArgs e)

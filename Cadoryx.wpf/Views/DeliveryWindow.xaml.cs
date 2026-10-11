@@ -18,7 +18,7 @@ public partial class DeliveryWindow
         try
         {
             var options=((DeliveryViewModel)DataContext).GetOptions();
-            var ext=options.Output switch{DeliveryOutput.Package=>"zip",DeliveryOutput.BomCsv=>"csv",_=>"html"};
+            var ext=options.Output switch{DeliveryOutput.Package or DeliveryOutput.ExchangeAudit=>"zip",DeliveryOutput.BomCsv=>"csv",_=>"html"};
             var picker=new SaveFileDialog{Title=Strings.EngineeringDelivery,FileName=string.Concat(documentName.Select(c=>Path.GetInvalidFileNameChars().Contains(c)?'_':c)),
                 DefaultExt="."+ext,Filter=$"{ext.ToUpperInvariant()}|*.{ext}",AddExtension=true,OverwritePrompt=true};
             if(picker.ShowDialog(this)!=true)return;

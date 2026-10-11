@@ -3,4 +3,5 @@
   <ItemGroup><AssemblyMetadata Include="OcctSharpPackageVersion" Value="$(OcctSharpVersion)" /></ItemGroup>
   <ItemGroup><ProjectReference Include="../Cadoryx.Kernel.Abstractions/Cadoryx.Kernel.Abstractions.csproj" /></ItemGroup>
   <ItemGroup><PackageReference Include="OcctSharp" Version="[$(OcctSharpVersion)]" /></ItemGroup>
+  <ItemGroup><InternalsVisibleTo Include="Cadoryx.Tests" /></ItemGroup>
 </Project>

@@ -27,7 +27,7 @@ public partial class PropertiesToolboxViewModel:CadToolboxViewModelBase
     public ObservableCollection<CadLayer> Layers {get;}=[];
     public ObservableCollection<PropertyRowViewModel> Properties {get;}=[];
     public ObservableCollection<PropertyRowViewModel> Measurements {get;}=[];
-    public void RefreshLanguage()=>Refresh(this,EventArgs.Empty);
+    public void RefreshLanguage(){document?.AssemblyConstraints.RefreshLanguage();Refresh(this,EventArgs.Empty);}
     public PropertiesToolboxViewModel(IToolboxIconProvider iconProvider):base("toolbox.properties",Strings.Properties,DockZone.RightTop,"",true)
     {
         ArgumentNullException.ThrowIfNull(iconProvider);

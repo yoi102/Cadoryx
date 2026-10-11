@@ -89,9 +89,10 @@ public partial class InstancePlacementViewModel : ObservableObject, IDisposable
             Definitions.Clear();Parents.Clear();
             if(path is null){Context=Strings.SelectInstance;return;}
             var snapshot=document.Session.Snapshot;var resolved=OccurrencePlacement.Resolve(snapshot,path);
-            InstanceName=resolved.Slot.Name;Context=resolved.CanMoveIndependently?Strings.InstanceLocalCoordinates:Strings.SharedParentMoveBlocked;
+            bool generated=AssemblyRepetitions.ControlsPose(snapshot,path);
+            InstanceName=resolved.Slot.Name;Context=generated?Strings.AssemblyPatternPoseControlled:resolved.CanMoveIndependently?Strings.InstanceLocalCoordinates:Strings.SharedParentMoveBlocked;
             bool editable=!document.IsReadOnly&&!document.IsClosingRequested&&!document.Session.IsClosing;
-            CanMove=resolved.CanMoveIndependently&&editable;
+            CanMove=resolved.CanMoveIndependently&&editable&&!generated;
             bool assembly=snapshot.Definitions[resolved.Slot.DefinitionId] is AssemblyDefinition;
             bool part=snapshot.Definitions[resolved.Slot.DefinitionId] is PartDefinition;
             var occurrences=snapshot.EnumerateOccurrences().ToArray();
@@ -101,8 +102,8 @@ public partial class InstancePlacementViewModel : ObservableObject, IDisposable
             DefinitionScope=string.Format(Label("DefinitionUsageCount","This definition is used by {0} instance(s)."),count);
             CanInsertChild=assembly&&count==1&&editable;
             CanLinkExternal=CanInsertChild&&document.ExternalPartStorage is not null;
-            CanMakeIndependent=assembly&&count>1&&editable;
-            CanMakePartIndependent=part&&count>1&&editable;
+            CanMakeIndependent=assembly&&count>1&&editable&&!generated;
+            CanMakePartIndependent=part&&count>1&&editable&&!generated;
             CanRenameDefinition=editable;
             CanPruneUnused=editable&&UnusedDefinitionCommands.CountRemovable(snapshot)>0;
             if(snapshot.ExternalParts.TryGetValue(resolved.Slot.DefinitionId,out var external))

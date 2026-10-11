@@ -1,0 +1,107 @@
+<mah:MetroWindow x:Class="Cadoryx.wpf.Views.ContourLocalEditorWindow"
+ xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+ xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+ xmlns:r="clr-namespace:Cadoryx.Lang;assembly=Cadoryx.Lang"
+ Style="{StaticResource Cadoryx.DialogWindowStyle}" Title="{Binding Title}"
+ Width="1320" Height="850" MinWidth="1000" MinHeight="650" WindowStartupLocation="CenterOwner">
+ <mah:MetroWindow.Resources>
+  <BooleanToVisibilityConverter x:Key="VisibleIf"/>
+  <Style x:Key="RowButton" TargetType="Button" BasedOn="{StaticResource {x:Type Button}}"><Setter Property="Margin" Value="0,4,6,4"/></Style>
+  <Style x:Key="Number" TargetType="mah:NumericUpDown"><Setter Property="Margin" Value="0,4,0,8"/><Setter Property="StringFormat" Value="0.######"/></Style>
+  <Style x:Key="ChainHeader" TargetType="DataGridColumnHeader" BasedOn="{StaticResource {x:Type DataGridColumnHeader}}"><Setter Property="ContentTemplate"><Setter.Value><DataTemplate><TextBlock Text="{Binding}" TextWrapping="Wrap" MaxWidth="70"/></DataTemplate></Setter.Value></Setter></Style>
+ </mah:MetroWindow.Resources>
+ <Grid Margin="12">
+  <Grid.RowDefinitions><RowDefinition/><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/></Grid.RowDefinitions>
+  <Grid.ColumnDefinitions><ColumnDefinition/><ColumnDefinition Width="480"/></Grid.ColumnDefinitions>
+  <Border x:Name="ViewportContainer" Margin="0,0,14,0"/>
+  <ScrollViewer x:Name="EditorScroll" Grid.Column="1" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+   <StackPanel>
+    <TextBlock Text="{Binding Hint}" TextWrapping="Wrap" Margin="0,0,0,10"/>
+    <TextBlock Text="{I18N {x:Static r:LangKeys.FaceSource}}"/>
+    <ComboBox x:Name="SourcePicker" ItemsSource="{Binding Sources}" SelectedItem="{Binding SelectedSource}" DisplayMemberPath="Label" IsEnabled="{Binding CanChooseSource}" Margin="0,4,0,10"/>
+    <StackPanel IsEnabled="{Binding CanEdit}">
+     <TextBlock Text="{I18N {x:Static r:LangKeys.ContourPrograms}}"/>
+     <ListBox x:Name="ProgramList" ItemsSource="{Binding Programs}" SelectedItem="{Binding SelectedProgram}" DisplayMemberPath="Label" Height="90" Margin="0,4,0,6"/>
+     <WrapPanel>
+      <Button x:Name="ReselectButton" Content="{I18N {x:Static r:LangKeys.ContourReselect}}" Command="{Binding ReselectProgramCommand}" Style="{StaticResource RowButton}"/>
+      <Button x:Name="RemoveProgramButton" Content="{I18N {x:Static r:LangKeys.ContourRemoveRow}}" Command="{Binding RemoveProgramCommand}" Style="{StaticResource RowButton}"/>
+      <Button x:Name="ClearProgramsButton" Content="{I18N {x:Static r:LangKeys.ContourClear}}" Command="{Binding ClearProgramsCommand}" Style="{StaticResource RowButton}"/>
+      <Button Content="{I18N {x:Static r:LangKeys.ContourMoveUp}}" Command="{Binding MoveProgramUpCommand}" Style="{StaticResource RowButton}"/>
+      <Button Content="{I18N {x:Static r:LangKeys.ContourMoveDown}}" Command="{Binding MoveProgramDownCommand}" Style="{StaticResource RowButton}"/>
+     </WrapPanel>
+     <StackPanel DataContext="{Binding SelectedProgram}">
+      <StackPanel.Style><Style TargetType="StackPanel"><Style.Triggers><DataTrigger Binding="{Binding}" Value="{x:Null}"><Setter Property="Visibility" Value="Collapsed"/></DataTrigger></Style.Triggers></Style></StackPanel.Style>
+      <TextBlock Text="{I18N {x:Static r:LangKeys.ContourChain}}" Margin="0,8,0,4"/>
+      <TextBlock x:Name="ChainSummary" Text="{Binding ChainLabel}" TextWrapping="Wrap" Margin="0,0,0,6"/>
+      <DataGrid x:Name="ChainGrid" ItemsSource="{Binding ChainMembers}" AutoGenerateColumns="False" ColumnHeaderStyle="{StaticResource ChainHeader}" IsReadOnly="True" CanUserAddRows="False" CanUserDeleteRows="False" Height="140" Margin="0,0,0,10">
+       <DataGrid.Columns>
+        <DataGridTextColumn Header="{I18N {x:Static r:LangKeys.ContourEdgeIndex}}" Binding="{Binding EdgeIndex}" Width="*"/>
+        <DataGridTextColumn Header="{I18N {x:Static r:LangKeys.ContourFirstVertex}}" Binding="{Binding FirstVertex}" Width="*"/>
+        <DataGridTextColumn Header="{I18N {x:Static r:LangKeys.ContourLastVertex}}" Binding="{Binding LastVertex}" Width="*"/>
+        <DataGridTextColumn Header="{I18N {x:Static r:LangKeys.ContourFirstParameter}}" Binding="{Binding FirstParameter,StringFormat=0.###}" Width="*"/>
+        <DataGridTextColumn Header="{I18N {x:Static r:LangKeys.ContourLastParameter}}" Binding="{Binding LastParameter,StringFormat=0.###}" Width="*"/>
+       </DataGrid.Columns>
+      </DataGrid>
+      <StackPanel Visibility="{Binding DataContext.IsFillet,RelativeSource={RelativeSource AncestorType=mah:MetroWindow},Converter={StaticResource VisibleIf}}">
+       <TextBlock Text="{I18N {x:Static r:LangKeys.ContourLaw}}"/>
+       <ComboBox x:Name="LawPicker" ItemsSource="{Binding DataContext.Laws,RelativeSource={RelativeSource AncestorType=mah:MetroWindow}}" SelectedValuePath="Value" DisplayMemberPath="Label" SelectedValue="{Binding LawKind}" Margin="0,4,0,10"/>
+       <StackPanel Visibility="{Binding IsConstant,Converter={StaticResource VisibleIf}}">
+        <TextBlock Text="{I18N {x:Static r:LangKeys.ContourRadius}}"/><mah:NumericUpDown x:Name="RadiusInput" Value="{Binding Radius,UpdateSourceTrigger=PropertyChanged}" Minimum="0" Maximum="100000" Style="{StaticResource Number}"/>
+       </StackPanel>
+       <StackPanel Visibility="{Binding HasEnds,Converter={StaticResource VisibleIf}}">
+        <TextBlock Text="{I18N {x:Static r:LangKeys.ContourFirstRadius}}"/><mah:NumericUpDown x:Name="FirstRadiusInput" Value="{Binding FirstRadius,UpdateSourceTrigger=PropertyChanged}" Minimum="0" Maximum="100000" Style="{StaticResource Number}"/>
+        <TextBlock Text="{I18N {x:Static r:LangKeys.ContourLastRadius}}"/><mah:NumericUpDown x:Name="LastRadiusInput" Value="{Binding LastRadius,UpdateSourceTrigger=PropertyChanged}" Minimum="0" Maximum="100000" Style="{StaticResource Number}"/>
+       </StackPanel>
+       <StackPanel Visibility="{Binding IsSmooth,Converter={StaticResource VisibleIf}}">
+        <TextBlock Text="{I18N {x:Static r:LangKeys.ContourFirstDerivative}}"/><mah:NumericUpDown x:Name="FirstDerivativeInput" Value="{Binding FirstDerivative,UpdateSourceTrigger=PropertyChanged}" Minimum="-100000" Maximum="100000" Style="{StaticResource Number}"/>
+        <TextBlock Text="{I18N {x:Static r:LangKeys.ContourLastDerivative}}"/><mah:NumericUpDown x:Name="LastDerivativeInput" Value="{Binding LastDerivative,UpdateSourceTrigger=PropertyChanged}" Minimum="-100000" Maximum="100000" Style="{StaticResource Number}"/>
+       </StackPanel>
+       <StackPanel Visibility="{Binding IsSampled,Converter={StaticResource VisibleIf}}">
+        <TextBlock Text="{I18N {x:Static r:LangKeys.ContourSamples}}"/>
+        <DataGrid x:Name="SampleGrid" ItemsSource="{Binding Samples}" SelectedItem="{Binding SelectedSample}" AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" Height="145" Margin="0,4,0,4">
+         <DataGrid.Columns>
+          <DataGridTextColumn Header="{I18N {x:Static r:LangKeys.ContourIdentity}}" Binding="{Binding Identity}" IsReadOnly="True" Width="*"/>
+          <DataGridTextColumn Header="{I18N {x:Static r:LangKeys.ContourParameter}}" Binding="{Binding Parameter,UpdateSourceTrigger=PropertyChanged}" Width="*"/>
+          <DataGridTextColumn Header="{I18N {x:Static r:LangKeys.ContourRadius}}" Binding="{Binding Radius,UpdateSourceTrigger=PropertyChanged}" Width="*"/>
+         </DataGrid.Columns>
+        </DataGrid>
+        <WrapPanel><Button x:Name="AddSampleButton" Content="{I18N {x:Static r:LangKeys.ContourAddRow}}" Command="{Binding AddSampleCommand}" Style="{StaticResource RowButton}"/><Button x:Name="RemoveSampleButton" Content="{I18N {x:Static r:LangKeys.ContourRemoveRow}}" Command="{Binding RemoveSampleCommand}" Style="{StaticResource RowButton}"/></WrapPanel>
+       </StackPanel>
+       <StackPanel Visibility="{Binding IsSpline,Converter={StaticResource VisibleIf}}">
+        <TextBlock Text="{I18N {x:Static r:LangKeys.ContourDegree}}"/><mah:NumericUpDown x:Name="DegreeInput" Value="{Binding Degree,UpdateSourceTrigger=PropertyChanged}" Minimum="1" Maximum="8" Interval="1" StringFormat="0" Style="{StaticResource Number}"/>
+        <TextBlock Text="{I18N {x:Static r:LangKeys.ContourPoles}}"/>
+        <DataGrid x:Name="PoleGrid" ItemsSource="{Binding Poles}" SelectedItem="{Binding SelectedPole}" AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" Height="160" Margin="0,4,0,4">
+         <DataGrid.Columns><DataGridTextColumn Header="{I18N {x:Static r:LangKeys.ContourIdentity}}" Binding="{Binding Identity}" IsReadOnly="True" Width="*"/><DataGridTextColumn Header="{I18N {x:Static r:LangKeys.ContourRadius}}" Binding="{Binding Radius,UpdateSourceTrigger=PropertyChanged}" Width="*"/></DataGrid.Columns>
+        </DataGrid>
+        <WrapPanel><Button Content="{I18N {x:Static r:LangKeys.ContourAddRow}}" Command="{Binding AddPoleCommand}" Style="{StaticResource RowButton}"/><Button Content="{I18N {x:Static r:LangKeys.ContourRemoveRow}}" Command="{Binding RemovePoleCommand}" Style="{StaticResource RowButton}"/><Button Content="{I18N {x:Static r:LangKeys.ContourMoveUp}}" Command="{Binding MovePoleUpCommand}" Style="{StaticResource RowButton}"/><Button Content="{I18N {x:Static r:LangKeys.ContourMoveDown}}" Command="{Binding MovePoleDownCommand}" Style="{StaticResource RowButton}"/></WrapPanel>
+        <TextBlock Text="{I18N {x:Static r:LangKeys.ContourKnots}}"/>
+        <DataGrid x:Name="KnotGrid" ItemsSource="{Binding Knots}" SelectedItem="{Binding SelectedKnot}" AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" Height="110" Margin="0,4,0,4">
+         <DataGrid.Columns><DataGridTextColumn Header="{I18N {x:Static r:LangKeys.ContourParameter}}" Binding="{Binding Parameter,UpdateSourceTrigger=PropertyChanged}" Width="*"/><DataGridTextColumn Header="{I18N {x:Static r:LangKeys.ContourMultiplicity}}" Binding="{Binding Multiplicity,UpdateSourceTrigger=PropertyChanged}" Width="*"/></DataGrid.Columns>
+        </DataGrid>
+        <WrapPanel><Button Content="{I18N {x:Static r:LangKeys.ContourAddRow}}" Command="{Binding AddKnotCommand}" Style="{StaticResource RowButton}"/><Button Content="{I18N {x:Static r:LangKeys.ContourRemoveRow}}" Command="{Binding RemoveKnotCommand}" Style="{StaticResource RowButton}"/></WrapPanel>
+       </StackPanel>
+       <TextBlock Text="{I18N {x:Static r:LangKeys.ContourLawHint}}" TextWrapping="Wrap" Margin="0,6,0,10"/>
+      </StackPanel>
+      <StackPanel Visibility="{Binding DataContext.IsChamfer,RelativeSource={RelativeSource AncestorType=mah:MetroWindow},Converter={StaticResource VisibleIf}}">
+       <TextBlock Text="{Binding SupportLabel}" Margin="0,0,0,6"/>
+       <TextBlock Text="{I18N {x:Static r:LangKeys.ChamferDistances}}"/><mah:NumericUpDown x:Name="DistanceInput" Value="{Binding Distance,UpdateSourceTrigger=PropertyChanged}" Minimum="0" Maximum="100000" Style="{StaticResource Number}"/>
+       <CheckBox x:Name="SecondDistanceCheck" Content="{I18N {x:Static r:LangKeys.ContourSecondDistance}}" IsChecked="{Binding UseSecondDistance}" Margin="0,0,0,8"/>
+       <mah:NumericUpDown x:Name="SecondDistanceInput" Value="{Binding SecondDistance,UpdateSourceTrigger=PropertyChanged}" Minimum="0" Maximum="100000" Visibility="{Binding UseSecondDistance,Converter={StaticResource VisibleIf}}" Style="{StaticResource Number}"/>
+      </StackPanel>
+     </StackPanel>
+     <TextBlock Text="{I18N {x:Static r:LangKeys.Name}}" Margin="0,8,0,4"/><TextBox x:Name="NameInput" Text="{Binding ObjectName,UpdateSourceTrigger=PropertyChanged}"/>
+    </StackPanel>
+   </StackPanel>
+  </ScrollViewer>
+  <TextBlock Grid.Row="1" Grid.ColumnSpan="2" Text="{Binding Status}" TextWrapping="Wrap" Margin="0,10,0,6"/>
+  <DockPanel Grid.Row="2" Grid.ColumnSpan="2" LastChildFill="False">
+   <Button DockPanel.Dock="Left" Content="{I18N {x:Static r:LangKeys.Fit}}" Click="OnFit" Style="{StaticResource RowButton}"/>
+   <StackPanel DockPanel.Dock="Right" Orientation="Horizontal">
+    <Button x:Name="PreviewButton" Content="{I18N {x:Static r:LangKeys.SolveAndPreview}}" Command="{Binding PreviewCommand}" MinWidth="100" Style="{StaticResource RowButton}"/>
+    <Button x:Name="ConfirmButton" Content="{I18N {x:Static r:LangKeys.Confirm}}" Command="{Binding ConfirmCommand}" MinWidth="100" Style="{StaticResource RowButton}"/>
+    <Button x:Name="CancelButton" Content="{I18N {x:Static r:LangKeys.Cancel}}" Command="{Binding CancelCommand}" MinWidth="100" Style="{StaticResource RowButton}"/>
+   </StackPanel>
+  </DockPanel>
+ </Grid>
+</mah:MetroWindow>

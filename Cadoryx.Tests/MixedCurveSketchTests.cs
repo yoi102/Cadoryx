@@ -34,7 +34,7 @@ public sealed class MixedCurveSketchTests
         var profile=SketchProfileBuilder.Mixed(draft.Value,loop);
         Assert.Equal(4,profile.BoundaryCurves.Length);
         Assert.Single(profile.BoundaryCurves.Where(c=>c.Middle is not null));
-        Assert.Throws<CadValidationException>(()=>new RevolveRecipe(profile,Math.PI,RigidTransform3d.Identity).Validate());
+        new RevolveRecipe(profile,Math.PI,RigidTransform3d.Identity).Validate();
         var arc=draft.Value.Arcs.Single();draft.SetConstruction([arc.Id],true);
         Assert.Empty(SketchMixedLoops.Find(draft.Value));draft.Undo();
         Assert.Single(SketchMixedLoops.Find(draft.Value));
@@ -89,7 +89,10 @@ public sealed class MixedCurveSketchTests
             document.SelectedSketchProfile=document.SketchProfiles.Single(p=>p.Source.MixedBoundaryIds.SequenceEqual(loop));
             Assert.True(document.CanChooseSketchHoles);
             document.StartSketchFeature("Revolve");
-            Assert.DoesNotContain(document.SketchProfiles,p=>!p.Source.MixedBoundaryIds.IsEmpty);
+            document.SelectedSketchProfile=document.SketchProfiles.Single(p=>p.Source.MixedBoundaryIds.SequenceEqual(loop));
+            // An explicit custom axis can make this shape legal, so selection stays available.
+            // Preview against the implicit Z still rejects the edited major arc crossing it.
+            await document.PreviewCommand.ExecuteAsync(null);Assert.False(document.HasPreview);Assert.Same(after,session.Snapshot);
         }
         finally{document.Detach();}
         foreach(var ext in new[]{"step","iges","stl"})

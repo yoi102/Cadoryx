@@ -27,16 +27,14 @@ internal static class RibbonNavigationSmokeRunner
         Require(ribbon.FocusButton.Command==doc.Review.FocusCommand&&ribbon.FitButton.Command==workspace.FitViewCommand,"Ribbon navigation binding");
         var focus=primary.CaptureFocusTarget(SceneEnvelope.Measure([item])!.Value);
         var start=focus with{Scale=focus.Scale*3};primary.RestoreCamera(start);doc.Review.ActivePane=0;
-        ribbon.FocusButton.Command.Execute(null);Same(start,primary.CaptureCamera(),"Focus must not jump before first animation frame");
-        await Task.Delay(110);Between(primary.CaptureCamera().Scale,focus.Scale,start.Scale,"Scale-only focus animation");
+        await IntermediateFrame(panes[0],()=>{ribbon.FocusButton.Command.Execute(null);Same(start,primary.CaptureCamera(),"Focus must not jump before first animation frame");},focus.Scale,start.Scale,"Scale-only focus animation",output);
         await Task.Delay(360);Same(focus,primary.CaptureCamera(),"Focus final camera");
         var fit=primary.CaptureFitTarget();start=fit with{Scale=fit.Scale*3};primary.RestoreCamera(start);
-        ribbon.FitButton.Command.Execute(null);Same(start,primary.CaptureCamera(),"Fit must not present destination before animation");
-        await Task.Delay(110);Between(primary.CaptureCamera().Scale,fit.Scale,start.Scale,"Fit intermediate frame");
+        await IntermediateFrame(panes[0],()=>{ribbon.FitButton.Command.Execute(null);Same(start,primary.CaptureCamera(),"Fit must not present destination before animation");},fit.Scale,start.Scale,"Fit intermediate frame",output);
         var interrupted=primary.CaptureCamera();ribbon.FocusButton.Command.Execute(null);
         Same(interrupted,primary.CaptureCamera(),"Retarget starts at current frame");await Task.Delay(380);
         Same(primary.CaptureFocusTarget(SceneEnvelope.Measure([item])!.Value),primary.CaptureCamera(),"Retarget completion");
-        primary.RestoreCamera(start);ribbon.FitButton.Command.Execute(null);await Task.Delay(100);
+        primary.RestoreCamera(start);await IntermediateFrame(panes[0],()=>ribbon.FitButton.Command.Execute(null),fit.Scale,start.Scale,"Fit before wheel cancellation",output);
         primary.MouseWheel(120,150,150,0);var navigated=primary.CaptureCamera();await Task.Delay(380);
         Same(navigated,primary.CaptureCamera(),"Wheel cancels animation");
 
@@ -76,6 +74,24 @@ internal static class RibbonNavigationSmokeRunner
         await File.WriteAllTextAsync(Path.Combine(output,"ribbon-navigation-result.txt"),"PASS: Ribbon routing, scale-only focus and fit intermediate frames, no initial jump, retarget and wheel cancellation, right-up menu, click jitter, drag return, capture loss, Escape, isolate/hide/show, active secondary pane, no document mutation.");
     }
     private static void Between(double value,double a,double b,string message)=>Require(value>Math.Min(a,b)+1e-5&&value<Math.Max(a,b)-1e-5,message);
+    private static async Task IntermediateFrame(ViewportPane pane,Action begin,double a,double b,string label,string output)
+    {
+        var completion=new TaskCompletionSource<double>(TaskCreationOptions.RunContinuationsAsynchronously);
+        var clock=System.Diagnostics.Stopwatch.StartNew();var samples=new List<(double Ms,double Scale)>();
+        void Observe(CadCamera camera)
+        {
+            samples.Add((clock.Elapsed.TotalMilliseconds,camera.Scale));
+            if(camera.Scale>Math.Min(a,b)+1e-5&&camera.Scale<Math.Max(a,b)-1e-5)completion.TrySetResult(camera.Scale);
+        }
+        pane.AnimationFramePresented+=Observe;
+        try{begin();Between(await completion.Task.WaitAsync(TimeSpan.FromSeconds(2)),a,b,label);}
+        finally
+        {
+            pane.AnimationFramePresented-=Observe;
+            await File.AppendAllTextAsync(Path.Combine(output,"animation-frames.jsonl"),System.Text.Json.JsonSerializer.Serialize(new{label,start=a,end=b,
+                frames=samples.Select(s=>new{elapsedMs=s.Ms,scale=s.Scale}).ToArray()})+Environment.NewLine);
+        }
+    }
     private static void Same(CadCamera a,CadCamera b,string message)=>Require((a.Eye-b.Eye).Length<1e-5&&(a.Target-b.Target).Length<1e-5&&(a.Up-b.Up).Length<1e-5&&Math.Abs(a.Scale-b.Scale)<1e-5,$"{message}: eye delta={(a.Eye-b.Eye).Length}, target delta={(a.Target-b.Target).Length}, scale={a.Scale}/{b.Scale}");
     private static void Require(bool value,string message){if(!value)throw new InvalidOperationException(message);}
     private static async Task Idle(){await Application.Current.Dispatcher.InvokeAsync(()=>{},DispatcherPriority.ApplicationIdle);await Task.Delay(100);}

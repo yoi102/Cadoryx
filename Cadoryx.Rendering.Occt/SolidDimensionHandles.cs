@@ -39,12 +39,18 @@ public static class SolidDimensionHandles
     private static IReadOnlyList<SolidDimensionHandle> RevolveHandles(RevolveRecipe recipe,
         Func<SolidDimension,Vector3d,Vector3d,double,SolidDimensionHandle> at)
     {
-        var radial=recipe.Profile.Points.OrderByDescending(p=>Math.Abs(p.X)).FirstOrDefault();
-        double radius=Math.Abs(radial.X);
-        if(radius<0.001)return [];
+        var profile=recipe.Profile;
+        var candidates=profile.Circle is {} circle?new[]{new Point2d(circle.Center.X+circle.Radius,circle.Center.Y)}:
+            profile.Arc is {} arc?new[]{arc.Start,arc.Middle,arc.End}:
+            !profile.BoundaryCurves.IsEmpty?profile.BoundaryCurves.SelectMany(c=>c.Middle is {} m?new[]{c.Start,m,c.End}:new[]{c.Start,c.End}).ToArray():profile.Points.ToArray();
+        var line=recipe.Axis?.InMeridian(recipe.Placement)??(Vector3d.Zero,Vector3d.UnitZ);
+        Vector3d Radial(Point2d p){var delta=new Vector3d(p.X,0,p.Y)-line.Item1;return delta-line.Item2*delta.Dot(line.Item2);}
+        var selected=candidates.OrderByDescending(p=>Radial(p).Length).FirstOrDefault();
+        var radius=Radial(selected);if(radius.Length<0.001)return [];
+        var original=new Vector3d(selected.X,0,selected.Y);var center=original-radius;
+        var rotated=Quaterniond.FromAxisAngle(line.Item2,recipe.AngleRadians).Rotate(radius);
+        var point=center+rotated;var tangent=line.Item2.Cross(rotated);
         double angle=recipe.AngleRadians;
-        var point=new Vector3d(radial.X*Math.Cos(angle),radial.X*Math.Sin(angle),radial.Y);
-        var tangent=new Vector3d(-radial.X*Math.Sin(angle),radial.X*Math.Cos(angle),0);
         return [at(SolidDimension.RevolveAngle,point,tangent,angle)];
     }
 

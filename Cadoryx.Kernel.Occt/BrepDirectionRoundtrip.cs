@@ -2,7 +2,7 @@ using System.Globalization;
 
 namespace Cadoryx.Kernel.Occt;
 
-/// <summary>Checks only known unit-axis fields in OCCT text BRep V3. This is a
+/// <summary>Checks known unit axes and 2D line parameter roundoff in OCCT text BRep V3. This is a
 /// roundtrip witness for the same indexed graph, never a shape matching function.</summary>
 public static class BrepDirectionRoundtrip
 {
@@ -23,13 +23,28 @@ public static class BrepDirectionRoundtrip
                 if(!x.SequenceEqual(y)||!int.TryParse(x[1],out int count)||count<0)return false;
                 section=x[0];continue;
             }
-            bool record=section=="Curves"&&((x.Length==7&&x[0]=="1")||(x.Length==14&&x[0]=="2")||
+            bool parameterLine=section=="Curve2ds"&&x.Length==5&&x[0]=="1";
+            bool record=parameterLine||section=="Curves"&&((x.Length==7&&x[0]=="1")||(x.Length==14&&x[0]=="2")||
                 (x.Length==15&&x[0]=="3")||(x.Length==3&&x[0]=="8"))||
                 section=="Surfaces"&&((x.Length==13&&x[0]=="1")||(x.Length==14&&x[0]=="2"));
             // An unsupported/multiline record closes the section for tolerant comparison.
             // Never interpret control-point or connectivity rows as analytic records.
             if(!record)section="";
             if(x.SequenceEqual(y))continue;
+            if(parameterLine)
+            {
+                // BRep writes on the same indexed graph can reconstruct a planar
+                // p-curve origin from its located surface. Only the two parameter
+                // coordinates may differ by machine roundoff; direction, all 3D
+                // geometry, intervals and connectivity remain exact. This never
+                // searches another graph or supplies a replacement topology slot.
+                if(x[0]!=y[0]||x[3]!=y[3]||x[4]!=y[4]||!Number(x[3],out double dx)||!Number(x[4],out double dy)||
+                    Math.Abs(dx*dx+dy*dy-1)>AxisRoundoff*4)return false;
+                for(int column=1;column<=2;column++)
+                    if(!Number(x[column],out double u)||!Number(y[column],out double v)||
+                        Math.Abs(u-v)>AxisRoundoff/2*Math.Max(1,Math.Max(Math.Abs(u),Math.Abs(v))))return false;
+                continue;
+            }
             // Circle/ellipse axes are three unit vectors after an exact origin.
             // Only single-line analytic records with an exact arity are supported.
             bool axes=record&&section=="Curves"&&((x[0]=="2"&&x.Length==14)||(x[0]=="3"&&x.Length==15))||

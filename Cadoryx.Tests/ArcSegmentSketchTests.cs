@@ -31,7 +31,7 @@ public sealed class ArcSegmentSketchTests
         Assert.Equal(new Point2d(5,6),SketchProfileBuilder.ArcSegment(draft.Value,arc.Id).Arc!.Middle);
         Assert.Throws<CadValidationException>(()=>draft.MovePoint(arc.Middle,new(5,0)));
         Assert.Equal(new Point2d(5,6),draft.Value.Points.Single(p=>p.Id==arc.Middle).Position);
-        Assert.Throws<CadValidationException>(()=>new RevolveRecipe(profile,Math.PI,RigidTransform3d.Identity).Validate());
+        new RevolveRecipe(profile,Math.PI,RigidTransform3d.Identity).Validate(); // Axis contact is at the chord endpoint only.
     }
 
     [Fact] public async Task ExactArcSegmentExtrudesRecomputesPersistsAndExports()

@@ -10,6 +10,12 @@
       },
       "cadoryx.db": {
         "type": "Project"
+      },
+      "cadoryx.kernel.abstractions": {
+        "type": "Project",
+        "dependencies": {
+          "Cadoryx.Db": "[1.0.0, )"
+        }
       }
     }
   }

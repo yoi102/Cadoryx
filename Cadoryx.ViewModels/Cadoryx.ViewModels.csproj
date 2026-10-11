@@ -33,6 +33,7 @@
 
   <ItemGroup>
     <InternalsVisibleTo Include="Cadoryx.Tests" />
+    <InternalsVisibleTo Include="CadAgentWorkflowProbe" />
   </ItemGroup>
 
 </Project>

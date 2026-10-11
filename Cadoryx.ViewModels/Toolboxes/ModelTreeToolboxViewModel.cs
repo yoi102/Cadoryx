@@ -49,7 +49,7 @@ public partial class ModelTreeToolboxViewModel : CadToolboxViewModelBase
             n.Kind!=Strings.FeatureHistory)
             .Select(n=>n.Path!).ToHashSet();
         Items.Clear();occurrenceNodes.Clear();if(document is null)return;
-        var snapshot=document.Session.Snapshot;var root=(AssemblyDefinition)snapshot.Definitions[snapshot.RootAssemblyId];
+        var snapshot=document.Session.DisplaySnapshot;var root=(AssemblyDefinition)snapshot.Definitions[snapshot.RootAssemblyId];
         var rootPath=new OccurrencePath(snapshot.Id,[]);
         foreach(var slot in root.Children)Items.Add(OccurrenceNode(snapshot,slot,rootPath.Append(slot.Id)));
         foreach(var path in expanded.OrderBy(p=>p.Slots.Length))
@@ -67,7 +67,7 @@ public partial class ModelTreeToolboxViewModel : CadToolboxViewModelBase
     [RelayCommand] private async Task SearchAsync()
     {
         InvalidateSearch();if(document is not {} doc||string.IsNullOrWhiteSpace(SearchText))return;
-        var snapshot=doc.Session.Snapshot;var query=SearchText;
+        var snapshot=doc.Session.DisplaySnapshot;var query=SearchText;
         using var cancel=new CancellationTokenSource();searchCancellation=cancel;
         try
         {
@@ -102,7 +102,7 @@ public partial class ModelTreeToolboxViewModel : CadToolboxViewModelBase
         try
         {
             // Reject stale/foreign paths before materializing any row.
-            var snapshot=document.Session.Snapshot;var definition=ModelTreeSearch.ResolveDefinition(snapshot,path);
+            var snapshot=document.Session.DisplaySnapshot;var definition=ModelTreeSearch.ResolveDefinition(snapshot,path);
             if(body is not null&&(!body.Path.Equals(path)||!snapshot.Bodies.TryGetValue(body.BodyId,out var b)||
                 b.PartId!=definition||b.Geometry.Revision!=body.GeometryRevision))return null;
             revealing=true;
@@ -146,8 +146,9 @@ public partial class ModelTreeToolboxViewModel : CadToolboxViewModelBase
                 yield return new ModelTreeItemViewModel(Strings.FeatureHistory,Strings.FeatureHistory,path:path,
                     loadChildren:()=>part.Features.Select(fid=>
                     {
-                        var f=snapshot.Features[fid];return new ModelTreeItemViewModel(f.Name,RecipeText(f.Recipe),
-                            null,fid,path,isSuppressed:f.IsSuppressed);
+                        var f=snapshot.Features[fid];bool beyond=document?.Session.FeatureCursor is {} cursor&&cursor.Part==part.Id&&part.Features.IndexOf(fid)>=cursor.Position;
+                        return new ModelTreeItemViewModel(f.Name,RecipeText(f.Recipe)+(f.IsStale?" · "+Strings.Stale:"")+(beyond?" · "+Strings.HistoryAfterCursor:""),
+                            null,fid,path,isSuppressed:f.IsSuppressed,isAfterCursor:beyond);
                     }));
             foreach(var sketch in snapshot.Sketches.Values.Where(s=>s.PartId==part.Id).OrderBy(s=>s.Name))
                 yield return new ModelTreeItemViewModel(sketch.Name,Strings.Sketch,path:path,sketch:sketch.Id);
@@ -164,6 +165,10 @@ public partial class ModelTreeToolboxViewModel : CadToolboxViewModelBase
         if(document is null||item.Target is not {} target)return;
         document.Selection.Replace(item.IsChecked?document.Selection.Items.Add(target):document.Selection.Items.Remove(target));
     }
+    public void EditAssemblyRepetition(ModelTreeItemViewModel row)
+    {
+        if(row.Path is {} path&&row.Target is null&&row.Feature is null&&row.Sketch is null)document?.EditAssemblyRepetition(path);
+    }
     public async Task SetFeatureSuppressionAsync(ModelTreeItemViewModel row,bool suppressed)
     {
         if(document is not {} doc||row.Feature is not {} id||doc.IsClosingRequested)return;
@@ -172,6 +177,28 @@ public partial class ModelTreeToolboxViewModel : CadToolboxViewModelBase
             if(!doc.Session.Snapshot.Features.TryGetValue(id,out var feature)||feature.IsSuppressed!=row.IsSuppressed)
                 throw new CadValidationException("Feature changed; refresh the model tree.");
             await doc.Session.ExecuteAsync(new SetFeatureSuppressionCommand(id,suppressed));
+        }
+        catch(Exception ex){doc.Report(ex);}
+    }
+    public async Task RollbackAtFeatureAsync(ModelTreeItemViewModel row,bool after)
+    {
+        if(document is not {} doc||row.Feature is not {} id)return;
+        try
+        {
+            var f=doc.Session.Snapshot.Features[id];var part=(PartDefinition)doc.Session.Snapshot.Definitions[f.PartId];
+            await doc.Session.RollbackFeaturesAsync(part.Id,part.Features.IndexOf(id)+(after?1:0));
+        }
+        catch(Exception ex){doc.Report(ex);}
+    }
+    public async Task MoveFeatureAsync(ModelTreeItemViewModel row,int direction)
+    {
+        if(document is not {} doc||row.Feature is not {} id)return;
+        try
+        {
+            var f=doc.Session.Snapshot.Features[id];var part=(PartDefinition)doc.Session.Snapshot.Definitions[f.PartId];
+            int index=part.Features.IndexOf(id),destination=index+direction;if(destination<0||destination>=part.Features.Length)return;
+            var order=part.Features.RemoveAt(index).Insert(destination,id);
+            await doc.Session.ExecuteAsync(new ReorderFeaturesCommand(part.Id,order));
         }
         catch(Exception ex){doc.Report(ex);}
     }
@@ -227,6 +254,9 @@ public partial class ModelTreeToolboxViewModel : CadToolboxViewModelBase
             _=>Strings.Modeling
         },
         ImportedRecipe=>Strings.Import,
+        RepetitionRecipe repetition=>Strings.Repetition+" · "+(repetition.StylePolicy==RepetitionStylePolicy.WholeBody?Strings.RepetitionStyleWholeBody:Strings.RepetitionStyleVerified),
+        HolePatternRecipe=>Strings.RepetitionReplayHole,
+        ExtrusionPatternRecipe=>Strings.RepetitionReplayExtrusion,
         TransformRecipe=>Strings.Transform,
         ExtrudeRecipe=>Strings.Extrude,
         RevolveRecipe=>Strings.Revolve,
@@ -235,7 +265,7 @@ public partial class ModelTreeToolboxViewModel : CadToolboxViewModelBase
 }
 public partial class ModelTreeItemViewModel(string name,string kind,SelectionTarget? target=null,FeatureId? feature=null,
     OccurrencePath? path=null,SketchId? sketch=null,Func<IEnumerable<ModelTreeItemViewModel>>? loadChildren=null,
-    bool isSuppressed=false):ObservableObject
+    bool isSuppressed=false,bool isAfterCursor=false):ObservableObject
 {
     private Func<IEnumerable<ModelTreeItemViewModel>>? loader=loadChildren;
     public string Name {get;}=name;
@@ -243,6 +273,7 @@ public partial class ModelTreeItemViewModel(string name,string kind,SelectionTar
     public SelectionTarget? Target {get;}=target;
     public FeatureId? Feature {get;}=feature;
     public bool IsSuppressed {get;}=isSuppressed;
+    public bool IsAfterCursor {get;}=isAfterCursor;
     public SketchId? Sketch {get;}=sketch;
     public OccurrencePath? Path {get;}=path??target?.Path;
     public bool CanCheck=>Target is not null;

@@ -21,7 +21,7 @@ public static class OccurrenceDrag
 
     public static bool CanMove(DocumentSnapshot snapshot,OccurrencePath path)
     {
-        if(!OccurrencePlacement.Resolve(snapshot,path).CanMoveIndependently)return false;
+        if(!OccurrencePlacement.Resolve(snapshot,path).CanMoveIndependently||AssemblyRepetitions.ControlsPose(snapshot,path))return false;
         return !snapshot.AssemblyConstraints.Values.Any(c=>c.IsEnabled&&
             (Contains(path,c.PrimaryPath)||c.SecondaryPath is {} secondary&&Contains(path,secondary)));
     }

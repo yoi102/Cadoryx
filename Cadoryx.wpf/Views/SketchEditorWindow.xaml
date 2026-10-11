@@ -9,7 +9,7 @@
     <Grid Margin="12">
         <Grid.RowDefinitions><RowDefinition Height="Auto"/><RowDefinition/><RowDefinition Height="Auto"/><RowDefinition Height="Auto"/></Grid.RowDefinitions>
         <WrapPanel Margin="0,0,0,10">
-            <ComboBox x:Name="ToolPicker" Width="170" ItemsSource="{Binding Tools}" DisplayMemberPath="Label" SelectedValuePath="Key" SelectedValue="{Binding Tool}"/>
+            <ComboBox x:Name="ToolPicker" Width="220" ItemsSource="{Binding Tools}" DisplayMemberPath="Label" SelectedValuePath="Key" SelectedValue="{Binding Tool}"/>
             <StackPanel Orientation="Horizontal" Margin="10,0,0,0" VerticalAlignment="Center">
                 <StackPanel.Style>
                     <Style TargetType="StackPanel">
@@ -18,14 +18,41 @@
                     </Style>
                 </StackPanel.Style>
                 <TextBlock Text="{I18N {x:Static r:LangKeys.SplineControlCount}}" VerticalAlignment="Center" Margin="0,0,6,0"/>
-                <mah:NumericUpDown Width="72" Minimum="4" Maximum="16" Interval="1" Value="{Binding SplineControlCount}"/>
+                <mah:NumericUpDown x:Name="SplineControlCountInput" Width="84" Minimum="4" Maximum="1024" Interval="1" Value="{Binding SplineControlCount}"/>
             </StackPanel>
             <CheckBox Content="{I18N {x:Static r:LangKeys.ConstructionGeometry}}" IsChecked="{Binding Construction}" Margin="12,0" VerticalAlignment="Center"/>
+            <StackPanel Orientation="Horizontal" Margin="10,0,0,0" VerticalAlignment="Center">
+                <StackPanel.Style><Style TargetType="StackPanel"><Setter Property="Visibility" Value="Collapsed"/><Style.Triggers><DataTrigger Binding="{Binding Tool}" Value="OffsetCurve"><Setter Property="Visibility" Value="Visible"/></DataTrigger><DataTrigger Binding="{Binding Tool}" Value="OffsetLoop"><Setter Property="Visibility" Value="Visible"/></DataTrigger><DataTrigger Binding="{Binding Tool}" Value="OffsetRegions"><Setter Property="Visibility" Value="Visible"/></DataTrigger></Style.Triggers></Style></StackPanel.Style>
+                <TextBlock Text="{I18N {x:Static r:LangKeys.OffsetDistance}}" VerticalAlignment="Center" Margin="0,0,6,0"/>
+                <mah:NumericUpDown x:Name="OffsetDistanceInput" Width="90" Value="{Binding OffsetDistance}"/>
+                <StackPanel Orientation="Horizontal" Margin="6,0,0,0">
+                    <StackPanel.Style><Style TargetType="StackPanel"><Setter Property="Visibility" Value="Collapsed"/><Style.Triggers><DataTrigger Binding="{Binding Tool}" Value="OffsetLoop"><Setter Property="Visibility" Value="Visible"/></DataTrigger><DataTrigger Binding="{Binding Tool}" Value="OffsetRegions"><Setter Property="Visibility" Value="Visible"/></DataTrigger></Style.Triggers></Style></StackPanel.Style>
+                    <TextBlock Text="{I18N {x:Static r:LangKeys.OffsetJoinLabel}}" VerticalAlignment="Center" Margin="0,0,6,0"/>
+                    <ComboBox x:Name="OffsetJoinPicker" Width="100" ItemsSource="{Binding OffsetJoins}" DisplayMemberPath="Label" SelectedValuePath="Key" SelectedValue="{Binding OffsetJoin}"/>
+                </StackPanel>
+                <Button x:Name="ApplyRegionOffsetButton" Content="{I18N {x:Static r:LangKeys.ApplyRegionOffset}}" Command="{Binding ApplyRegionOffsetCommand}" Margin="6,0,0,0">
+                    <Button.Style><Style TargetType="Button" BasedOn="{StaticResource {x:Type Button}}"><Setter Property="Visibility" Value="Collapsed"/><Style.Triggers><DataTrigger Binding="{Binding Tool}" Value="OffsetRegions"><Setter Property="Visibility" Value="Visible"/></DataTrigger></Style.Triggers></Style></Button.Style>
+                </Button>
+            </StackPanel>
             <CheckBox Content="{I18N {x:Static r:LangKeys.SnapGridEndpoints}}" IsChecked="{Binding Snap}" Margin="0,0,6,0" VerticalAlignment="Center"/>
+            <StackPanel Orientation="Horizontal" Margin="0,0,10,0">
+                <StackPanel.Style><Style TargetType="StackPanel"><Setter Property="Visibility" Value="Collapsed"/><Style.Triggers><DataTrigger Binding="{Binding Tool}" Value="Fillet"><Setter Property="Visibility" Value="Visible"/></DataTrigger><DataTrigger Binding="{Binding Tool}" Value="FilletCorners"><Setter Property="Visibility" Value="Visible"/></DataTrigger></Style.Triggers></Style></StackPanel.Style>
+                <TextBlock Text="{I18N {x:Static r:LangKeys.FilletRadius}}" VerticalAlignment="Center" Margin="0,0,6,0"/>
+                <mah:NumericUpDown x:Name="FilletRadiusInput" Width="90" Value="{Binding FilletRadius}"/>
+                <Button x:Name="ApplyFilletButton" Content="{I18N {x:Static r:LangKeys.ApplyFillet}}" Command="{Binding ApplyFilletCommand}" Margin="6,0,0,0"/>
+                <CheckBox x:Name="ConstrainRadiusCheck" Content="{I18N {x:Static r:LangKeys.ConstrainArcRadius}}" IsChecked="{Binding ConstrainFilletRadius}" Margin="6,0,0,0" VerticalAlignment="Center"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0,0,10,0">
+                <StackPanel.Style><Style TargetType="StackPanel"><Setter Property="Visibility" Value="Collapsed"/><Style.Triggers><DataTrigger Binding="{Binding Tool}" Value="Chamfer"><Setter Property="Visibility" Value="Visible"/></DataTrigger><DataTrigger Binding="{Binding Tool}" Value="ChamferCorners"><Setter Property="Visibility" Value="Visible"/></DataTrigger></Style.Triggers></Style></StackPanel.Style>
+                <TextBlock Text="{I18N {x:Static r:LangKeys.ChamferDistances}}" VerticalAlignment="Center" Margin="0,0,6,0"/>
+                <mah:NumericUpDown x:Name="ChamferDistanceAInput" Width="85" Value="{Binding ChamferDistanceA}"/>
+                <mah:NumericUpDown x:Name="ChamferDistanceBInput" Width="85" Value="{Binding ChamferDistanceB}" Margin="4,0,0,0"/>
+                <Button x:Name="ApplyChamferButton" Content="{I18N {x:Static r:LangKeys.ApplyChamfer}}" Command="{Binding ApplyChamferCommand}" Margin="6,0,0,0"/>
+            </StackPanel>
             <mah:NumericUpDown Width="90" Value="{Binding GridStep}" Minimum="0.001" Maximum="100000"/>
             <Button Content="{I18N {x:Static r:LangKeys.FitSketch}}" Click="OnFit" Margin="10,0"/>
-            <Button Content="{I18N {x:Static r:LangKeys.Undo}}" Command="{Binding UndoCommand}" Margin="0,0,8,0"/>
-            <Button Content="{I18N {x:Static r:LangKeys.Redo}}" Command="{Binding RedoCommand}"/>
+            <Button x:Name="UndoButton" Content="{I18N {x:Static r:LangKeys.Undo}}" Command="{Binding UndoCommand}" Margin="0,0,8,0"/>
+            <Button x:Name="RedoButton" Content="{I18N {x:Static r:LangKeys.Redo}}" Command="{Binding RedoCommand}"/>
         </WrapPanel>
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions><ColumnDefinition/><ColumnDefinition Width="12"/><ColumnDefinition Width="340"/></Grid.ColumnDefinitions>
@@ -36,35 +63,163 @@
                     <StackPanel IsEnabled="{Binding CanChangePlane}">
                         <TextBlock Text="{I18N {x:Static r:LangKeys.PartPlane}}"/><ComboBox ItemsSource="{Binding Planes}" SelectedItem="{Binding Plane}" Margin="0,4,0,6"/>
                         <TextBlock Text="{I18N {x:Static r:LangKeys.PlaneOrigin}}"/><UniformGrid Columns="3" Margin="0,4,0,8">
-                            <mah:NumericUpDown Value="{Binding OriginX}" HideUpDownButtons="True"/><mah:NumericUpDown Value="{Binding OriginY}" HideUpDownButtons="True"/><mah:NumericUpDown Value="{Binding OriginZ}" HideUpDownButtons="True"/>
+                            <mah:NumericUpDown Value="{Binding OriginX}" HideUpDownButtons="True"/><mah:NumericUpDown Value="{Binding OriginY}" HideUpDownButtons="True"/><mah:NumericUpDown x:Name="OriginZInput" Value="{Binding OriginZ}" HideUpDownButtons="True"/>
                         </UniformGrid>
                     </StackPanel>
-                    <Expander Header="{I18N {x:Static r:LangKeys.Geometry}}" IsExpanded="False">
+                    <Expander x:Name="GeometrySection" Header="{I18N {x:Static r:LangKeys.Geometry}}" IsExpanded="False">
                         <StackPanel Margin="0,6,0,8">
                             <ListBox x:Name="EntityList" ItemsSource="{Binding Entities}" DisplayMemberPath="Label" SelectionMode="Extended" SelectionChanged="OnEntitySelection" Height="110"/>
                             <TextBlock Text="{I18N {x:Static r:LangKeys.SelectedCoordinates}}" TextWrapping="Wrap" Margin="0,6,0,4"/>
                             <UniformGrid Columns="3"><mah:NumericUpDown IsEnabled="{Binding HasSelectedPoint}" Value="{Binding PointX}" HideUpDownButtons="True"/><mah:NumericUpDown IsEnabled="{Binding HasSelectedPoint}" Value="{Binding PointY}" HideUpDownButtons="True"/><mah:NumericUpDown IsEnabled="{Binding HasSelectedCircle}" Value="{Binding CircleRadius}" Minimum="0.00001" HideUpDownButtons="True"/></UniformGrid>
                             <Button Content="{I18N {x:Static r:LangKeys.ApplyCoordinates}}" Command="{Binding ApplyCoordinatesCommand}" Margin="0,6,0,4"/>
-                            <Button Content="{I18N {x:Static r:LangKeys.ConstructionGeometry}}" Command="{Binding ToggleConstructionCommand}" Margin="0,0,0,4"/>
-                            <Button Content="{I18N {x:Static r:LangKeys.DeleteSelected}}" Command="{Binding DeleteEntitiesCommand}"/>
+                            <Button x:Name="ToggleConstructionButton" Content="{I18N {x:Static r:LangKeys.ConstructionGeometry}}" Command="{Binding ToggleConstructionCommand}" Margin="0,0,0,4"/>
+                            <Button x:Name="DeleteEntitiesButton" Content="{I18N {x:Static r:LangKeys.DeleteSelected}}" Command="{Binding DeleteEntitiesCommand}"/>
+                              <StackPanel x:Name="ExactSplineInputs" IsEnabled="{Binding HasSelectedSpline}" Margin="0,10,0,0">
+                                  <TextBlock Text="{I18N {x:Static r:LangKeys.SplineKnotsHint}}" TextWrapping="Wrap"/>
+                                  <TextBox x:Name="SplineKnotsInput" Text="{Binding SplineKnotsText, UpdateSourceTrigger=PropertyChanged}" TextWrapping="Wrap" AcceptsReturn="True" MaxHeight="120" VerticalScrollBarVisibility="Auto" Margin="0,4,0,4"/>
+                                  <Button x:Name="ApplySplineKnotsButton" Content="{I18N {x:Static r:LangKeys.ApplySplineKnots}}" Command="{Binding ApplySplineKnotsCommand}"/>
+                              </StackPanel>
+                              <StackPanel x:Name="ExactCurveIntervalInputs" IsEnabled="{Binding HasSelectedExactCurve}">
+                                  <TextBlock Text="{I18N {x:Static r:LangKeys.SplineNormalizedInterval}}" Margin="0,8,0,4" TextWrapping="Wrap"/>
+                                  <UniformGrid Columns="2"><mah:NumericUpDown x:Name="SplineFirstInput" Minimum="0" Maximum="1" Interval="0.05" Value="{Binding SplineFirstParameter}"/><mah:NumericUpDown x:Name="SplineLastInput" Minimum="0" Maximum="1" Interval="0.05" Value="{Binding SplineLastParameter}"/></UniformGrid>
+                                  <Button x:Name="KeepSplineIntervalButton" Content="{I18N {x:Static r:LangKeys.KeepSplineInterval}}" Command="{Binding KeepSplineIntervalCommand}" Margin="0,4,0,4"/>
+                                  <Button x:Name="RemoveCurveIntervalButton" Content="{I18N {x:Static r:LangKeys.RemoveCurveInterval}}" Command="{Binding RemoveCurveIntervalCommand}" Margin="0,0,0,4"/>
+                                  <CheckBox Content="{I18N {x:Static r:LangKeys.SplineExtendStart}}" IsChecked="{Binding SplineExtendStart}"/>
+                                  <mah:NumericUpDown x:Name="SplineExtensionInput" Minimum="0.000001" Maximum="4" Interval="0.1" Value="{Binding SplineExtensionAmount}" Margin="0,4,0,4"/>
+                                  <Button x:Name="ExtendSplinePolynomialButton" Content="{I18N {x:Static r:LangKeys.ExtendSplinePolynomial}}" Command="{Binding ExtendSplinePolynomialCommand}"/>
+                              </StackPanel>
+                        </StackPanel>
+                    </Expander>
+                    <Expander x:Name="EllipseSection" Header="{I18N {x:Static r:LangKeys.ExactEllipse}}" Margin="0,8,0,4">
+                        <StackPanel Margin="0,6,0,4">
+                            <TextBlock Text="{I18N {x:Static r:LangKeys.ExactEllipseHint}}" TextWrapping="Wrap"/>
+                            <TextBlock Text="{I18N {x:Static r:LangKeys.EllipseCenter}}" Margin="0,6,0,2"/>
+                            <UniformGrid Columns="2"><mah:NumericUpDown x:Name="EllipseCenterXInput" StringFormat="0.######" Value="{Binding EllipseCenterX}"/><mah:NumericUpDown x:Name="EllipseCenterYInput" StringFormat="0.######" Value="{Binding EllipseCenterY}"/></UniformGrid>
+                            <TextBlock Text="{I18N {x:Static r:LangKeys.EllipseCosineAxis}}" Margin="0,6,0,2"/>
+                            <UniformGrid Columns="2"><mah:NumericUpDown x:Name="EllipseCosineXInput" StringFormat="0.######" Value="{Binding EllipseCosineX}"/><mah:NumericUpDown x:Name="EllipseCosineYInput" StringFormat="0.######" Value="{Binding EllipseCosineY}"/></UniformGrid>
+                            <TextBlock Text="{I18N {x:Static r:LangKeys.EllipseSineAxis}}" Margin="0,6,0,2"/>
+                            <UniformGrid Columns="2"><mah:NumericUpDown x:Name="EllipseSineXInput" StringFormat="0.######" Value="{Binding EllipseSineX}"/><mah:NumericUpDown x:Name="EllipseSineYInput" StringFormat="0.######" Value="{Binding EllipseSineY}"/></UniformGrid>
+                            <TextBlock Text="{I18N {x:Static r:LangKeys.EllipseInterval}}" Margin="0,6,0,2"/>
+                            <UniformGrid Columns="2"><mah:NumericUpDown x:Name="EllipseStartInput" StringFormat="0.######" Value="{Binding EllipseStartDegrees}"/><mah:NumericUpDown x:Name="EllipseSweepInput" StringFormat="0.######" Value="{Binding EllipseSweepDegrees}"/></UniformGrid>
+                            <WrapPanel Margin="0,6"><Button x:Name="AddEllipseButton" Content="{I18N {x:Static r:LangKeys.AddExactEllipse}}" Command="{Binding AddEllipseCommand}" Margin="0,0,6,0"/><Button x:Name="ApplyEllipseButton" Content="{I18N {x:Static r:LangKeys.ApplyValue}}" Command="{Binding ApplyEllipseCommand}" IsEnabled="{Binding HasSelectedEllipse}"/></WrapPanel>
+                        </StackPanel>
+                    </Expander>
+                    <Expander x:Name="FreeformSection" Header="{I18N {x:Static r:LangKeys.ExactFreeform}}" Margin="0,8,0,4">
+                        <StackPanel IsEnabled="{Binding HasSelectedFreeform}" Margin="0,6,0,4">
+                            <TextBlock Text="{I18N {x:Static r:LangKeys.FreeformDefinitionHint}}" TextWrapping="Wrap"/>
+                            <TextBlock Text="{I18N {x:Static r:LangKeys.FreeformPolesHint}}" Margin="0,6,0,2" TextWrapping="Wrap"/>
+                            <TextBox x:Name="FreeformPolesInput" Text="{Binding FreeformPolesText, UpdateSourceTrigger=PropertyChanged}" AcceptsReturn="True" TextWrapping="Wrap" MaxHeight="120" VerticalScrollBarVisibility="Auto"/>
+                            <TextBlock Text="{I18N {x:Static r:LangKeys.FreeformWeightsHint}}" Margin="0,6,0,2" TextWrapping="Wrap"/>
+                            <TextBox x:Name="FreeformWeightsInput" Text="{Binding FreeformWeightsText, UpdateSourceTrigger=PropertyChanged}" TextWrapping="Wrap"/>
+                            <TextBlock Text="{I18N {x:Static r:LangKeys.SplineKnotsHint}}" Margin="0,6,0,2" TextWrapping="Wrap"/>
+                            <TextBox x:Name="FreeformKnotsInput" Text="{Binding FreeformKnotsText, UpdateSourceTrigger=PropertyChanged}" AcceptsReturn="True" TextWrapping="Wrap" MaxHeight="100" VerticalScrollBarVisibility="Auto"/>
+                            <TextBlock Text="{I18N {x:Static r:LangKeys.FreeformDegree}}" Margin="0,6,0,2"/>
+                            <mah:NumericUpDown x:Name="FreeformDegreeInput" Minimum="1" Maximum="25" Interval="1" Value="{Binding FreeformDegree}"/>
+                            <CheckBox x:Name="FreeformPeriodicInput" Content="{I18N {x:Static r:LangKeys.FreeformPeriodic}}" IsChecked="{Binding FreeformPeriodic}" Margin="0,4,0,0"/>
+                            <TextBlock Text="{I18N {x:Static r:LangKeys.FreeformNativeInterval}}" Margin="0,6,0,2"/>
+                            <TextBlock Text="{I18N {x:Static r:LangKeys.FreeformPeriodicIntervalHint}}" TextWrapping="Wrap" Margin="0,0,0,4"/>
+                            <UniformGrid Columns="2"><mah:NumericUpDown x:Name="FreeformFirstInput" StringFormat="0.######" Value="{Binding FreeformFirstParameter}"/><mah:NumericUpDown x:Name="FreeformLastInput" StringFormat="0.######" Value="{Binding FreeformLastParameter}"/></UniformGrid>
+                            <CheckBox x:Name="FreeformReverseInput" Content="{I18N {x:Static r:LangKeys.FreeformReverse}}" IsChecked="{Binding FreeformReversed}" Margin="0,4,0,0"/>
+                            <Button x:Name="ApplyFreeformButton" Content="{I18N {x:Static r:LangKeys.ApplyValue}}" Command="{Binding ApplyFreeformCommand}" Margin="0,6,0,0"/>
+                        </StackPanel>
+                    </Expander>
+                    <Expander x:Name="ExpressionSection" Header="{I18N {x:Static r:LangKeys.ExactAssociatedOffset}}" Margin="0,8,0,4">
+                        <StackPanel Margin="0,6,0,4">
+                            <TextBlock Text="{I18N {x:Static r:LangKeys.ExactOffsetHint}}" TextWrapping="Wrap"/>
+                            <mah:NumericUpDown x:Name="ExactOffsetDistanceInput" Value="{Binding OffsetDistance}" StringFormat="0.######" Margin="0,4"/>
+                            <Button x:Name="CreateExactOffsetButton" Content="{I18N {x:Static r:LangKeys.CreateExactOffset}}" Command="{Binding CreateExactOffsetCommand}"/>
+                            <TextBlock Text="{Binding ExpressionSourceStatus}" TextWrapping="Wrap" Margin="0,6,0,4"/>
+                            <StackPanel IsEnabled="{Binding HasSelectedExpression}">
+                                <mah:NumericUpDown x:Name="ExpressionDistanceInput" IsEnabled="{Binding CanEditExpressionDistance}" Value="{Binding ExpressionDistance}" StringFormat="0.######"/>
+                                <Button x:Name="ApplyExpressionDistanceButton" Content="{I18N {x:Static r:LangKeys.ApplyExpressionDistance}}" Command="{Binding ApplyExpressionDistanceCommand}" IsEnabled="{Binding CanEditExpressionDistance}" Margin="0,4"/>
+                                <Button x:Name="ReverseExpressionButton" Content="{I18N {x:Static r:LangKeys.FreeformReverse}}" Command="{Binding ReverseExpressionCommand}" IsEnabled="{Binding CanEditIndividualExpression}"/>
+                                <TextBlock Text="{I18N {x:Static r:LangKeys.SplineNormalizedInterval}}" TextWrapping="Wrap" Margin="0,6,0,4"/>
+                                <UniformGrid Columns="2" IsEnabled="{Binding CanEditIndividualExpression}"><mah:NumericUpDown x:Name="ExpressionFirstInput" Minimum="0" Maximum="1" Interval="0.05" Value="{Binding ExpressionFirstParameter}"/><mah:NumericUpDown x:Name="ExpressionLastInput" Minimum="0" Maximum="1" Interval="0.05" Value="{Binding ExpressionLastParameter}"/></UniformGrid>
+                                <Button x:Name="KeepExpressionIntervalButton" Content="{I18N {x:Static r:LangKeys.KeepSplineInterval}}" Command="{Binding KeepExpressionIntervalCommand}" Margin="0,4" IsEnabled="{Binding CanEditIndividualExpression}"/>
+                                <WrapPanel><Button x:Name="FreezeExpressionButton" Content="{I18N {x:Static r:LangKeys.FreezeExpression}}" Command="{Binding FreezeExpressionCommand}"/><Button x:Name="ResumeExpressionButton" Content="{I18N {x:Static r:LangKeys.ResumeExpression}}" Command="{Binding ResumeExpressionCommand}"/><Button x:Name="DetachExpressionButton" Content="{I18N {x:Static r:LangKeys.DetachExpression}}" Command="{Binding DetachExpressionCommand}"/></WrapPanel>
+                                <Button x:Name="RemoveRegionButton" Content="{I18N {x:Static r:LangKeys.RemoveRegionGroup}}" Command="{Binding RemoveRegionCommand}" IsEnabled="{Binding HasSelectedRegion}" Margin="0,4"/>
+                                <Button x:Name="ReselectRegionSourcesButton" Content="{I18N {x:Static r:LangKeys.RegionReselectSources}}" Command="{Binding ReselectRegionSourcesCommand}" Margin="0,4"/>
+                            </StackPanel>
+                            <TextBlock Text="{I18N {x:Static r:LangKeys.AssociativeEndpointsHint}}" TextWrapping="Wrap" Margin="0,8,0,4"/>
+                            <Button x:Name="AttachAssociativeEndpointsButton" Content="{I18N {x:Static r:LangKeys.AttachAssociativeEndpoints}}" Command="{Binding AttachAssociativeEndpointsCommand}"/>
+                        </StackPanel>
+                    </Expander>
+                    <Expander x:Name="ProjectionSection" Header="{I18N {x:Static r:LangKeys.LinkedSketchProjection}}" Margin="0,8,0,4">
+                        <StackPanel Margin="0,6,0,4">
+                            <TextBlock Text="{I18N {x:Static r:LangKeys.ProjectionHint}}" TextWrapping="Wrap" Margin="0,0,0,6"/>
+                            <ComboBox x:Name="ProjectionSourcePicker" ItemsSource="{Binding ProjectionSources}" DisplayMemberPath="Label" SelectedItem="{Binding SelectedProjectionSource}"/>
+                            <Button x:Name="ProjectGeometryButton" Content="{I18N {x:Static r:LangKeys.ProjectGeometry}}" Command="{Binding ProjectGeometryCommand}" Margin="0,6,0,4"/>
+                            <Button x:Name="DetachProjectionButton" Content="{I18N {x:Static r:LangKeys.DetachProjection}}" Command="{Binding DetachProjectionCommand}"/>
+                            <Button x:Name="ProjectNativeEdgeButton" Content="{I18N {x:Static r:LangKeys.NativeEdgeProjection}}" Command="{Binding ProjectNativeEdgeCommand}" Margin="0,6,0,0"/>
+                            <TextBlock Text="{I18N {x:Static r:LangKeys.ExactEndpointHint}}" TextWrapping="Wrap" Margin="0,8,0,4"/>
+                            <Button x:Name="ExposeCurveEndpointsButton" Content="{I18N {x:Static r:LangKeys.ExposeCurveEndpoints}}" Command="{Binding ExposeCurveEndpointsCommand}"/>
+                        </StackPanel>
+                    </Expander>
+                    <Expander x:Name="CornerProfilesSection" Header="{I18N {x:Static r:LangKeys.UpdateCornerProfiles}}" Margin="0,8,0,4">
+                        <StackPanel Margin="0,6,0,4">
+                            <TextBlock Text="{I18N {x:Static r:LangKeys.CornerProfileHint}}" TextWrapping="Wrap"/>
+                            <ItemsControl x:Name="CornerProfileList" ItemsSource="{Binding FeatureProfileUpdates}"><ItemsControl.ItemTemplate><DataTemplate><CheckBox Content="{Binding Label}" IsChecked="{Binding IsSelected}" Margin="0,4"/></DataTemplate></ItemsControl.ItemTemplate></ItemsControl>
+                            <TextBlock Text="{Binding CornerSelectionSummary}" TextWrapping="Wrap" Margin="0,6,0,0"/>
                         </StackPanel>
                     </Expander>
                     <TextBlock Text="{I18N {x:Static r:LangKeys.ConstraintsDimensions}}" FontSize="16" Margin="0,6"/>
-                    <ListBox x:Name="ConstraintList" ItemsSource="{Binding Constraints}" DisplayMemberPath="Label" SelectedItem="{Binding SelectedConstraint}" Height="145" HorizontalContentAlignment="Stretch"/>
+                    <ListBox x:Name="ConstraintList" ItemsSource="{Binding Constraints}" SelectedItem="{Binding SelectedConstraint}" Height="145" HorizontalContentAlignment="Stretch" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                        <ListBox.ItemTemplate><DataTemplate><TextBlock Text="{Binding Label}" TextWrapping="Wrap" ToolTip="{Binding Label}"/></DataTemplate></ListBox.ItemTemplate>
+                    </ListBox>
                     <TextBlock Text="{I18N {x:Static r:LangKeys.ConstraintValue}}" TextWrapping="Wrap" Margin="0,8,0,4"/>
                     <UniformGrid Columns="2"><mah:NumericUpDown x:Name="DimensionInput" Value="{Binding DimensionValue,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/><mah:NumericUpDown Value="{Binding DimensionY}"/></UniformGrid>
                     <WrapPanel Margin="0,6"><Button Content="{I18N {x:Static r:LangKeys.ApplyValue}}" Command="{Binding ApplyDimensionCommand}" Margin="0,0,6,4"/><Button Content="{I18N {x:Static r:LangKeys.ToggleConstraint}}" Command="{Binding ToggleConstraintCommand}" Margin="0,0,0,4"/></WrapPanel>
                     <Button Content="{I18N {x:Static r:LangKeys.DeleteSelected}}" Command="{Binding DeleteConstraintCommand}" Margin="0,0,0,8"/>
-                    <ComboBox ItemsSource="{Binding ConstraintKinds}" SelectedValue="{Binding ConstraintKind}" SelectedValuePath="Key" DisplayMemberPath="Label"/>
-                    <Button Content="{I18N {x:Static r:LangKeys.AddConstraint}}" Command="{Binding AddConstraintCommand}" Margin="0,6,0,0"/>
+                    <ComboBox x:Name="ConstraintKindPicker" ItemsSource="{Binding ConstraintKinds}" SelectedValue="{Binding ConstraintKind}" SelectedValuePath="Key" DisplayMemberPath="Label"/>
+                    <TextBlock Text="{Binding ConstraintSelectionHint}" TextWrapping="Wrap" Margin="0,4,0,0"/>
+                    <StackPanel Margin="0,6,0,0">
+                        <StackPanel.Style><Style TargetType="StackPanel"><Setter Property="Visibility" Value="Collapsed"/><Style.Triggers><DataTrigger Binding="{Binding ShowContactBranch}" Value="True"><Setter Property="Visibility" Value="Visible"/></DataTrigger></Style.Triggers></Style></StackPanel.Style>
+                        <TextBlock Text="{I18N {x:Static r:LangKeys.CircularContactBranch}}" Margin="0,0,0,4"/>
+                        <ComboBox x:Name="ContactBranchPicker" ItemsSource="{Binding ContactBranches}" SelectedValue="{Binding ContactBranch}" SelectedValuePath="Key" DisplayMemberPath="Label"/>
+                        <Button x:Name="ApplyContactBranchButton" Content="{I18N {x:Static r:LangKeys.ContactApplyBranch}}" Command="{Binding ApplyContactBranchCommand}" Margin="0,4,0,0"/>
+                    </StackPanel>
+                    <Button x:Name="AddConstraintButton" Content="{I18N {x:Static r:LangKeys.AddConstraint}}" Command="{Binding AddConstraintCommand}" Margin="0,6,0,0"/>
+                    <StackPanel x:Name="FiniteContactInputs" Margin="0,6,0,0">
+                        <StackPanel.Style><Style TargetType="StackPanel"><Setter Property="Visibility" Value="Collapsed"/><Style.Triggers><DataTrigger Binding="{Binding ShowFiniteContact}" Value="True"><Setter Property="Visibility" Value="Visible"/></DataTrigger></Style.Triggers></Style></StackPanel.Style>
+                        <TextBlock Text="{I18N {x:Static r:LangKeys.SlidingContactMode}}" TextWrapping="Wrap"/>
+                        <ComboBox x:Name="ContactParameterModePicker" ItemsSource="{Binding FiniteContactParameterModes}" SelectedValue="{Binding ContactParameterMode}" SelectedValuePath="Key" DisplayMemberPath="Label" Margin="0,4,0,4"/>
+                        <TextBlock Text="{I18N {x:Static r:LangKeys.SlidingContactResult}}" TextWrapping="Wrap"/>
+                        <UniformGrid Columns="2" Margin="0,4,0,4">
+                            <mah:NumericUpDown x:Name="ContactParameterAInput" IsEnabled="{Binding ContactParameterAWritable}" Value="{Binding ContactParameterA,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" StringFormat="0.########" ToolTip="{Binding ContactParameterA}" ToolTipService.ShowOnDisabled="True" Minimum="0" Maximum="1" Interval="0.01"/>
+                            <mah:NumericUpDown x:Name="ContactParameterBInput" IsEnabled="{Binding ContactParameterBWritable}" Value="{Binding ContactParameterB,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" StringFormat="0.########" ToolTip="{Binding ContactParameterB}" ToolTipService.ShowOnDisabled="True" Minimum="0" Maximum="1" Interval="0.01"/>
+                        </UniformGrid>
+                        <StackPanel x:Name="SlidingContactAInputs" Margin="0,4,0,4">
+                            <StackPanel.Style><Style TargetType="StackPanel"><Setter Property="Visibility" Value="Collapsed"/><Style.Triggers><DataTrigger Binding="{Binding HasSlidingContactA}" Value="True"><Setter Property="Visibility" Value="Visible"/></DataTrigger></Style.Triggers></Style></StackPanel.Style>
+                            <TextBlock Text="{I18N {x:Static r:LangKeys.SlidingContactAuthorsA}}" TextWrapping="Wrap"/>
+                            <UniformGrid Columns="3" Margin="0,4,0,0">
+                                <mah:NumericUpDown x:Name="ContactSeedAInput" Value="{Binding ContactSeedA,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Minimum="0" Maximum="1" Interval="0.01"/>
+                                <mah:NumericUpDown x:Name="ContactLowerAInput" Value="{Binding ContactLowerA,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Minimum="0" Maximum="1" Interval="0.01"/>
+                                <mah:NumericUpDown x:Name="ContactUpperAInput" Value="{Binding ContactUpperA,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Minimum="0" Maximum="1" Interval="0.01"/>
+                            </UniformGrid>
+                        </StackPanel>
+                        <StackPanel x:Name="SlidingContactBInputs" Margin="0,4,0,4">
+                            <StackPanel.Style><Style TargetType="StackPanel"><Setter Property="Visibility" Value="Collapsed"/><Style.Triggers><DataTrigger Binding="{Binding HasSlidingContactB}" Value="True"><Setter Property="Visibility" Value="Visible"/></DataTrigger></Style.Triggers></Style></StackPanel.Style>
+                            <TextBlock Text="{I18N {x:Static r:LangKeys.SlidingContactAuthorsB}}" TextWrapping="Wrap"/>
+                            <UniformGrid Columns="3" Margin="0,4,0,0">
+                                <mah:NumericUpDown x:Name="ContactSeedBInput" Value="{Binding ContactSeedB,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Minimum="0" Maximum="1" Interval="0.01"/>
+                                <mah:NumericUpDown x:Name="ContactLowerBInput" Value="{Binding ContactLowerB,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Minimum="0" Maximum="1" Interval="0.01"/>
+                                <mah:NumericUpDown x:Name="ContactUpperBInput" Value="{Binding ContactUpperB,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Minimum="0" Maximum="1" Interval="0.01"/>
+                            </UniformGrid>
+                        </StackPanel>
+                        <TextBlock Text="{I18N {x:Static r:LangKeys.SlidingContactHint}}" TextWrapping="Wrap" Margin="0,0,0,4"/>
+                        <ComboBox x:Name="FiniteContactBranchPicker" ItemsSource="{Binding FiniteContactBranches}" SelectedValue="{Binding FiniteContactBranch}" SelectedValuePath="Key" DisplayMemberPath="Label"/>
+                        <TextBlock Text="{I18N {x:Static r:LangKeys.FiniteContactContinuity}}" TextWrapping="Wrap" Margin="0,4,0,0"/>
+                        <ComboBox x:Name="FiniteContactContinuityPicker" ItemsSource="{Binding FiniteContactContinuities}" SelectedValue="{Binding ContactContinuity}" SelectedValuePath="Key" DisplayMemberPath="Label"/>
+                        <Button x:Name="ApplyFiniteContactButton" Content="{I18N {x:Static r:LangKeys.FiniteContactApply}}" Command="{Binding ApplyFiniteContactCommand}" Margin="0,4,0,0"/>
+                    </StackPanel>
                 </StackPanel>
             </ScrollViewer>
         </Grid>
-        <StackPanel Grid.Row="2" Margin="0,8,0,0"><TextBlock Text="{Binding Status}" TextWrapping="Wrap" Foreground="{DynamicResource MahApps.Brushes.Accent}"/><TextBlock Text="{I18N {x:Static r:LangKeys.SketchHint}}" TextWrapping="Wrap" Opacity="0.7" Margin="0,4"/></StackPanel>
+        <StackPanel Grid.Row="2" Margin="0,8,0,0"><TextBlock Text="{Binding Status}" TextWrapping="Wrap" Foreground="{DynamicResource MahApps.Brushes.Accent}"/><TextBlock Text="{Binding LineEditingHint}" TextWrapping="Wrap" Opacity="0.7" Margin="0,4"/></StackPanel>
         <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,8,0,0">
             <Button x:Name="PreviewButton" Content="{I18N {x:Static r:LangKeys.SolveAndPreview}}" Command="{Binding PreviewCommand}" Margin="0,0,8,0"/>
             <Button x:Name="ConfirmButton" Content="{I18N {x:Static r:LangKeys.Confirm}}" Command="{Binding ConfirmCommand}" Margin="0,0,8,0"/>
-            <Button Content="{I18N {x:Static r:LangKeys.Cancel}}" Command="{Binding CancelCommand}"/>
+            <Button x:Name="CancelButton" Content="{I18N {x:Static r:LangKeys.Cancel}}" Command="{Binding CancelCommand}"/>
         </StackPanel>
     </Grid>
 </mah:MetroWindow>

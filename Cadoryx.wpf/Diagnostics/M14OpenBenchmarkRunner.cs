@@ -65,6 +65,7 @@ internal static class M14OpenBenchmarkRunner
                 fullSceneFromClickMs=completeMs,import,scene,definitions=doc.Session.Snapshot.Definitions.Count,
                 bodies=doc.Session.Snapshot.Bodies.Count,visibleInstances=scene.VisibleInstances,
                 xdeContexts=viewport.NativeXdeContextCount,nativeGeometry=viewport.NativeGeometryCount,
+                nativeSources=viewport.NativeSourceCount,
                 submissionProfile=viewport.SubmissionProfile,
                 deferredAssets=(services.GetRequiredService<IAssetStore>() as DiskAssetStore)?.DeferredCount,
                 assetsAtFullScene=stats.Count,privateBytes=Process.GetCurrentProcess().PrivateMemorySize64,

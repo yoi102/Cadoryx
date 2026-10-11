@@ -40,6 +40,8 @@ public sealed class DrawingSheetCanvas : FrameworkElement
                 new Typeface("Segoe UI"),label.SizeMm*PixelsPerMm,
                 new SolidColorBrush(Color.FromArgb((byte)(label.Argb>>24),(byte)(label.Argb>>16),
                     (byte)(label.Argb>>8),(byte)label.Argb)),1);
+            if(label.MaxWidthMm is {} maxWidth&&text.WidthIncludingTrailingWhitespace>maxWidth*PixelsPerMm)
+                text.SetFontSize(label.SizeMm*PixelsPerMm*maxWidth*PixelsPerMm/text.WidthIncludingTrailingWhitespace);
             dc.DrawText(text,new(label.Position.X*PixelsPerMm,label.Position.Y*PixelsPerMm-text.Baseline));
         }
         dc.Pop();
