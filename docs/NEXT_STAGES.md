@@ -1,8 +1,12 @@
 # Cadoryx 后续工作规划
 
-2026-10-11，status196：**按用户要求暂停于本地提交检查点；A–F未全部完成，G暂缓。** 当前应用source1000/SDK26保持，最新隔离证据、SDK29长路径失败和恢复顺序见[暂停检查点](AF_CHECKPOINT_2026-10-11.md)。
+2026-10-12，status209：**A–F 继续推进，尚未全部完成；G 实机、安装及交付暂缓。** 生产仍为 source1000 / SDK26，SDK30基线1063修订5及最新隔离source1068尚未合入。修订5两配置完整6467/6467已独立通过，原Bonsai两场景实际失败。隔离source1068/solver19的原59加新6共65项为41通过/24导出失败；36个正例均在2次迭代完成求解及导出前检查，原预算保持。完整6532、生产窗口与合入仍待验。实时结果见[状态页](STATUS.md)，大批完成标准保持[产品规划第4、5节](CAD_PRODUCT_GAPS.md#4-推荐怎么做下一步)。
 
-恢复时先完成SDK29短路径语义构建/消费者、1058完整6451与原模型工程图复验、1059真实WPF24和剩余键鼠验收，再考虑候选生产合入。继续保留原预算、公差、失败和身份守卫；底层封装通过生成器承接。旧过程记录见[历史规划快照](https://github.com/yoi102/Cadoryx/blob/69268920d83071734f3ddf226d2d89df21109a6e/docs/history/docs_NEXT_STAGES_BEFORE_CHECKPOINT_20261011.md)。
+当前[Release完整6467/6467](../artifacts/af-sdk30-history-identity-draft-5/full6467-release-1-verification.json)与[Debug完整6467/6467](../artifacts/af-sdk30-history-identity-draft-5/full6467-debug-1-verification.json)均独立通过，零失败/跳过、原用例名称及实际SDK30/native62保持。[原Bonsai两个实际结果](../artifacts/af-sdk30-history-identity-draft-5/provider-both-1-exit.json)均失败：工程图在创建阶段缺少成功收据，跨文档第八轮超原16工具轮预算；不修改提示、身份守卫或预算。当前1066的相关980失败后，[最终应用准备](../artifacts/b18-single-loop-mixed-joints-draft-2/final-app-after-baseline-1-exit.json)按原门禁停止，未启动1066发布或桌面。已发布1063只作基线，不能代替后续修正候选的最终验收；原24和新36须绑定最终载荷后重编译/实际运行。
+
+当前[原WPF24及主壳状态栏36验收程序](A5_MAIN_STATUS_RECOVERY_ACCEPTANCE.md)均已编译、引用载荷已验，运行尚未开始。原24的C#逐字节保持、48保存/52整图及30秒预算不变；新36通过真实生产MainWindow、实际原生失效/绘制消息核对三种语言和两个活动pane的状态绑定、文档历史与144整图。首轮空引用编译失败保留，未调用私有恢复或写状态文本；原上下文/GPU故障仍未验。
+
+[B18重基1066](../artifacts/b18-single-loop-mixed-joints-draft-2/pipeline-after-provider-1-exit.json)两配置构建零警告/错误、发现原6467加59的6526，各17托管已独立通过。原Release相关980实际为953通过/27失败：42混合原生案例中有求解不收敛、非圆/直线偏移导出拒绝和独立源面积精度超限；原日志/TRX保留。Debug相关980及两配置完整6526未运行，未证明全部42或B18完成。两个窗口辅助程序及原窗口/性能条件保持；未控制键鼠。下一步先诊断修复，保留原矩阵、公差和256变量/512方程/80迭代，再验完整门禁。
 
 ## A5之后继续的A–F能力
 

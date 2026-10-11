@@ -1,11 +1,61 @@
 # 当前状态
 
-2026-10-11，status196：**按用户要求暂停于本地提交检查点；A–F 未全部完成，G 实机、安装及交付继续暂缓。** 正式已验子批次保持 **A4 / B17 / C5 / D5 / E4 / F5g**，限定契约的完成不代表整个大批完成。
+2026-10-12，status209：**A–F 继续推进，尚未全部完成；G 实机、安装及交付暂缓。** 生产仍为 source1000 / SDK26，SDK30基线1063修订5及最新隔离source1068尚未合入。修订5两配置完整6467/6467已独立通过，原Bonsai两场景实际失败。隔离source1068/solver19的原59加新6共65项为41通过/24导出失败；36个正例均在2次迭代完成求解及导出前检查，原预算保持。完整6532、生产窗口与合入仍待验。大批完成标准保持[产品规划第4、5节](CAD_PRODUCT_GAPS.md#4-推荐怎么做下一步)。
+
+当前[Release完整6467/6467](../artifacts/af-sdk30-history-identity-draft-5/full6467-release-1-verification.json)与[Debug完整6467/6467](../artifacts/af-sdk30-history-identity-draft-5/full6467-debug-1-verification.json)均独立通过，零失败/跳过、原用例名称及实际SDK30/native62保持。[原Bonsai两个实际结果](../artifacts/af-sdk30-history-identity-draft-5/provider-both-1-exit.json)均失败：工程图在创建阶段缺少成功收据，跨文档第八轮超原16工具轮预算；不修改提示、身份守卫或预算。当前1066的相关980失败后，[最终应用准备](../artifacts/b18-single-loop-mixed-joints-draft-2/final-app-after-baseline-1-exit.json)按原门禁停止，未启动1066发布或桌面。已发布1063只作基线，不能代替后续修正候选的最终验收；原24和新36须绑定最终载荷后重编译/实际运行。
+
+当前[原WPF24及主壳状态栏36验收程序](A5_MAIN_STATUS_RECOVERY_ACCEPTANCE.md)均已编译、引用载荷已验，运行尚未开始。原24的C#逐字节保持、48保存/52整图及30秒预算不变；新36通过真实生产MainWindow、实际原生失效/绘制消息核对三种语言和两个活动pane的状态绑定、文档历史与144整图。首轮空引用编译失败保留，未调用私有恢复或写状态文本；原上下文/GPU故障仍未验。
+
+原1063修订2完整Release6460/6467、7失败，修订3相关156/165及修订4相关164/165的原日志/TRX全部保留。修订5只进一步精简三个说明文件；原工具选择算法、8192上下文、16工具轮、1024输出、640/1280安全区及6000/2400结果预算保持。[原相关165双配置](../artifacts/af-sdk30-history-identity-draft-5/agent-related-both-1-verification.json)、[Release全部91](../artifacts/af-sdk30-history-identity-draft-5/focused-release-1-verification.json)和[Debug全部91](../artifacts/af-sdk30-history-identity-draft-5/focused-debug-1-verification.json)均独立通过；这些专项只证明各自范围；当前完整两配置已独立通过，原模型和生产窗口仍未通过。
+
+[B18重基1066](../artifacts/b18-single-loop-mixed-joints-draft-2/pipeline-after-provider-1-exit.json)两配置构建零警告/错误、发现原6467加59的6526，各17托管已独立通过。原Release相关980实际为953通过/27失败：42混合原生案例中有求解不收敛、非圆/直线偏移导出拒绝和独立源面积精度超限；原日志/TRX保留。Debug相关980及两配置完整6526未运行，未证明全部42或B18完成。两个窗口辅助程序及原窗口/性能条件保持；未控制键鼠。下一步先诊断修复，保留原矩阵、公差和256变量/512方程/80迭代，再验完整门禁。
+
+[source1068求解候选](../artifacts/b18-prescribed-author-draft-4/focused-1-verification.json)只对端点关系中全部作者坐标都有明确唯一FixPoint的系统保留精确值；实际表达式端点提供者不进入该扩展，全部变量/方程/完整Jacobian与最终原生Refresh/ValidateSolved保持。原36正例均2次迭代完成，原17和新增6冲突/关系拒绝通过；原65为41通过/24导出失败。首版把CurveGenerated来源标志误当实际提供者，未启用优化的原失败保留；修订4按真实提供者ID区分。原6526测试源码逐字节保持，[Release发现6532](../artifacts/b18-prescribed-author-draft-4/inventory-release-6532-1-verification.json)仅增6；Debug、相关986和完整6532未运行，部分来源驱动及一般混合求解仍未证明。
+
+[实际SDK30精确STEP探针](../artifacts/b18-mixed-diagnostic-draft-3/raw-step-1-verification.json)两个样条场景均在原生WriteStep失败，返回IFSelect_RetError/status2；部分文件各含4个空的SURFACE_OF_LINEAR_EXTRUSION基曲线引用，无OFFSET_CURVE_3D。这证明放开应用守卫不能解决导出，部分文件不作产品输出。下一步从生成器输入/模板补精确转换及完整图引用、实际重读验证；已有不支持freeform的拒绝断言不改，没有修改上游或生成产物。
+
+[待合入源码补丁](../capability-evidence/AF_PENDING_SOURCE1068.patch)和[恢复说明](../capability-evidence/AF_PENDING_SOURCE1068.json)保存完整1068候选相对当前生产的56个现有修改、39个真实新文件，973个已有文件保持；1000个生产来源SHA已复核，补丁通过Git索引应用检查但尚未应用。只将NuGet.Config本机绝对feed规范为指向同一14包的根相对路径，不含缓存或二进制。当前生产仍1000/SDK26，提交检查点不代表A–F完成。
+
+[材质82工具](../artifacts/af-sdk30-history-identity-draft-5/material82-tools-preparation-1.json)已按当前SDK30身份派生，保留原82断言、346整图、30托管/62原生和每例零资产规则；消费者尚未准备、编译或运行。当前应用组件bin完整，发布准备无需补36份旧输出，最小恢复清单为0；SDK/native仍由原包目标处理。
+
+[最新清理](../artifacts/storage-prune-20261011-5-verification.json)另删4682份已被取代的SDK29与失败修订3/4编译文件、1.489 GB，12614份保留文件哈希复核一致、Git状态未变；[随后完整测量](../artifacts/storage-audit-20261011-5-after.json)为14.244 GB/13.266 GiB。清理期间当前构建新增产物，不能将总占用变化作为删除量；旧候选重放须重新编译。源文件、模型、原失败/TRX、截图、包和故障转储均保留，没有停止进程或修改其他仓库/全局缓存。
+
+[本轮另删4371份旧bin/obj及消费者输出、2.409 GB](../artifacts/storage-prune-20261011-4-verification.json)，8626份保留来源/载荷/结果哈希复核一致；[完整目录核验](../artifacts/storage-prune-20261011-4-storage.json)为13.310 GB / 12.396 GiB，无漏扫和错误（核验时快照，后续构建另计）。旧1063修订2和B18草案1重放前需要重编译；源文件、原失败/TRX、模型/截图/包及当前进程保持。
+
+以下保存较早阶段证据；其中当时“运行中/排队”不代表当前任务仍活跃，当前队列以本页顶端和实际进程/终态文件为准。
 
 当前应用代码为 **source1000 的视口缓存/租约修复基线，SDK26**。本次收尾逐文件核对原构建清单的 1000 个 SHA-256，全部一致；Release、Debug 各 5909 项完整回归及圆盘/综合窗口证据属于该基线。生产性能第二轮 6800.2534 ms 超过原 6482 ms 目标，失败仍保留。
 
-隔离 source1057 / SDK27 的 Release、Debug 各 6448 项完整回归已通过；原 Bonsai 跨文档八轮通过，工程图在第三轮缺少尺寸创建成功收据，仍失败。导航修订 source1058 的两配置构建零警告/错误、各 528 项相关测试已通过；**完整 6451 项、模型复验及生产合入尚未进行**。
+隔离 source1057 / SDK27 的 Release、Debug 各 6448 项完整回归已通过；原 Bonsai 跨文档八轮通过，工程图在第三轮缺少尺寸创建成功收据，仍失败。导航修订 source1058 的两配置构建零警告/错误、各 528 项相关测试已通过；**[Release、Debug完整6451](../artifacts/f5-native-read-navigation-draft-2/full6451-both-1-verification.json)均独立核验6451/6451、零失败/跳过，原6448与新3案例完整保持**。[第二轮模型夹具发布](../artifacts/f5-native-read-navigation-draft-2/provider-build-2-verification.json)改为读取已验实际程序集，原提示、断言、模型和预算保持；[原Bonsai两个场景均实际执行并失败](../artifacts/f5-native-read-navigation-draft-2/provider-both-2-exit.json)。工程图反复查询时遗漏documentId/stateId；跨文档两次open虽保留最新workspaceStateId，却把最新list.expected中的activeSessionId/documentId/stateId全改成null，严格守卫正确拒绝。后续改进工具说明和结果导航，再按原16工具轮、8192上下文及6000/2400结果预算复验，不自动补身份或改验收提示。
 
-SDK29 的生成器两配置各 218 项测试和两次一致生成已通过，保留原 175 份输出、增加 3 份支持胶水；原生构建在 CMake 编译器探测阶段因长路径失败，尚未进入产品 C++ 编译。SDK29 包/消费者、WPF 自动恢复 24 场景及物理 GPU 故障仍待验。
+SDK29 的生成器两配置各 218 项测试和两次一致生成已通过，保留原 175 份输出、增加 3 份支持胶水。恢复时重新核对1034份输入及生成来源，短路径的实际两配置原生/托管构建均已通过，托管各0警告/0错误；[独立构建及兼容审计](../../OcctSharp/OcctSharp/artifacts/cadoryx-a5-render-health-generated-29-draft-2/native-managed-build-2-verification.json)确认原61依赖哈希、实际13/62载荷、原API/导出和175份生成输出保持，Debug使用自身原生DLL。发现清单各1286条与SDK28一致，六个动态方法实际展开后原完整范围仍为1358，不削减案例。
+
+[SDK29两配置实际原生专项12、完整1358及20份整图](../../OcctSharp/OcctSharp/artifacts/cadoryx-a5-render-health-generated-29-draft-2/runtime-both-3-exit.json)均已通过；各完整320 PNG逐字节匹配已直接查看的前轮整图。普通路径核验在260/261字符处误报三份夹具不存在的原失败仍保留；扩展路径确认205份运行文件哈希，短运行目录逐文件复制/核对。Debug使用自身实际原生DLL，原1358案例完整保持。实际上下文缺失/无效、物理GPU移除和主壳状态栏仍NOT RUN；G暂缓。
 
 具体证据、清理结果与恢复顺序见[暂停检查点](AF_CHECKPOINT_2026-10-11.md)；各批剩余范围见[A–F 跟踪](AF_IMPLEMENTATION_TRACKER.md)和[产品规划第 4 节](CAD_PRODUCT_GAPS.md#4-推荐怎么做下一步)。历史过程记录见[Git历史索引](history/README.md)；33份工作目录副本已清理，原文仍可从已推送的固定提交查看。
+
+[SDK29私有14包](../../OcctSharp/OcctSharp/artifacts/cadoryx-a5-render-health-generated-29-draft-2/pack14-2-verification.json)、[短路径公开消费者两配置](../../OcctSharp/OcctSharp/artifacts/cadoryx-a5-render-health-generated-29-draft-2/public-consumer-2-verification.json)及[60份完整图像](../../OcctSharp/OcctSharp/artifacts/cadoryx-a5-render-health-generated-29-draft-2/public-images-2-verification.json)均已通过。独立新缓存保持原42/28/32/初始显示10/健康5及寿命、线程断言，原生文件由包自动复制；没有手工补DLL或重打已验14包。268字符旧缓存失败及首轮审计读取旧stderr的失败保留，原15份冻结工具保持。
+
+source1059实际语义编译发现`OcctViewer.IsDisposed`为内部API。组合[source1060](../artifacts/af-sdk29-navigation-recovery-draft-3/build-both-1-verification.json)已合入1058导航，改用公开健康读取和准确OcctViewer对象名的释放异常观察；不扩大SDK公共API，不吞其他释放或错误线程异常。两配置编译均0警告/0错误，原6451发现清单一致，实际共享17/SDK13/native62已验。**[Release、Debug实际完整6451/6451](../artifacts/af-sdk29-navigation-recovery-draft-3/full6451-both-1-verification.json)均已独立核验，零失败/跳过、原6448与导航3及实际13/62保持。当前picker、性能、主壳窗口及生产合入仍是独立门禁。**
+
+[真实WPF恢复24](../artifacts/a5-sdk29-wpf-recovery-consumer-draft-3/runtime-4-verification-5.json)及[48保存/52完整图像](../artifacts/a5-sdk29-wpf-recovery-consumer-draft-3/runtime-4-whole-images-1-verification.json)已独立通过，两个唯一完整画面均直接查看。保留原24场景矩阵、所有运行断言、900秒观察预算和原始2字节stderr；[写入方式的正反对照](../artifacts/a5-sdk29-wpf-recovery-consumer-draft-3/stderr-writer-proof-1.json)证明空流被Set-Content添加CRLF，严格逆转换后原始stderr0，未重跑或改写通过的24案例。这证明完成/渐进、单/双pane、presentation-loss/owner-disposed的恢复及取消/清理失败路径；实际上下文和物理GPU故障分别待验。
+
+缓存补充清理已[独立核验](../artifacts/storage-cleanup-20261011-followup-verification.json)：另删2404份重复/可重建文件、0.96 GiB；随后[再清理5份过期生成文件](../artifacts/storage-cleanup-20261011-extra-verification.json)、324.51 MiB。此前[重复组件清理](../artifacts/storage-duplicates-20261011-verification.json)另删2154份同哈希编译副本、2.39 GB，复核时整个Cadoryx目录14.495 GB/13.50 GiB；11435份保留文件哈希、1384份Git工作文件、147份包归档、生产1000及最新1060/WPF24候选保持。旧独立组件重跑前重新编译，应用/测试载荷保留；后续构建另计。两个不足1 KiB的临时长路径IO夹具因自动审批拒绝删除暂留，非产品阻塞。
+
+此前候选构建后目录约18.10 GB；[此前重复副本清理](../artifacts/storage-refresh-20261011-verification.json)再删1436份组件bin中的同哈希DLL/PDB/EXE、1.594 GB，完整测量剩余16.504 GB/15.371 GiB。9220份保留文件哈希、1384份Git工作文件、209份包归档和生产1000/候选1060/1061/1063的源码及应用/测试/Controls载荷均保持。运行中及排队任务未停止；源码、模型、日志、截图、TRX、故障转储和此前拒绝删除的IO夹具未选入。未来重新构建独立组件即可恢复这些bin副本；目录占用随后续构建另计。
+
+2026-10-11最新[磁盘清理核验](../artifacts/storage-prune-20261011-3-verification.json)：本轮从19.976 GB清至**13.945 GB/12.987 GiB**，删除9275份文件、6.036 GB，无删除失败。只删被新候选取代的SDK27/导航/身份/删除面旧编译输出与当前组件bin中有同哈希保留副本的DLL/PDB/EXE；保留所有源文件、模型、截图、日志、TRX、故障转储及长路径IO夹具。10210份保留文件哈希、1384份Git工作文件和209份包归档在文档更新前复核一致；生产source1000及当前1060/1063/1066源码、应用/测试/Controls/CLI/provider和SDK29 WPF消费者保持，原完整回归及两组排队任务未中断，未重跑产品测试。首轮清单因普通路径读取两个超长IO夹具失败，在删除前停止；修订后将它们留在完整扩展路径保留审计中。旧候选及清掉的组件副本重放前须重新编译；占用为核验时快照，后续构建另计。
+
+E5删除面完整历史的SDK30隔离候选已从生成器模板实现，不修改生成产物。[两配置生成器230](../../OcctSharp/OcctSharp/artifacts/cadoryx-e5-defeature-history-generated-30-draft-1/generator-build-tests-3-verification.json)、[标准入口连续两轮生成](../../OcctSharp/OcctSharp/artifacts/cadoryx-e5-defeature-history-generated-30-draft-1/standard-generation-3-verification.json)、[实际两配置原生/托管与兼容审计](../../OcctSharp/OcctSharp/artifacts/cadoryx-e5-defeature-history-generated-30-draft-1/native-managed-build-2-verification.json)均通过。原178份生成输出、26040个声明ID和61份依赖保持，新增4份模板胶水；真实forwarder生成器4176→4177，仅加DefeatureHistoryModeling，导出仅增1、公共API仅增3，无移除。ABI1.88/bridge0.96.0，原互操作及首轮旧版本fixture失败保留。
+
+[两配置实际focused12及完整1370](../../OcctSharp/OcctSharp/artifacts/cadoryx-e5-defeature-history-generated-30-draft-1/runtime-both-2-exit.json)均通过；原1358和新增12完整保持。[私有14包内容](../../OcctSharp/OcctSharp/artifacts/cadoryx-e5-defeature-history-generated-30-draft-1/pack14-1-verification.json)已验；[SDK30干净消费者两配置](../../OcctSharp/OcctSharp/artifacts/cadoryx-e5-defeature-history-generated-30-draft-1/public-consumer-1-verification.json)和[60完整320图像](../../OcctSharp/OcctSharp/artifacts/cadoryx-e5-defeature-history-generated-30-draft-1/public-images-1-verification.json)已独立核验：保留原42/28/32/initial10/health5及原12删除面案例的完整断言，唯一facade PackageReference传递私有14包，包targets自动复制并观察实际native62；全部60整图与已验SDK29逐字节一致。**Cadoryx删除面完整历史/持久化/后继/图纸接入仍未实际验收，E5未完成**；未证明的逐面样式继续明确不支持，多路径、分裂/合并不猜测重绑。
+
+应用隔离[source1061/SDK30两配置语义构建](../artifacts/e5-defeature-app-draft-1/build-both-1-verification.json)已独立通过，均0警告/0错误，原6451加5新案例的6456发现清单一致，实际共享17/SDK13/native62保持已验包哈希。只允许具备明确删除集合、完整Face/Edge/Vertex来源、准确plan/operand和最终序列化成员证明的Defeature组合历史；其他组合操作仍拒绝。新专用适配器为schema1，语义与精确入口均要求原生重放；删除来源报告Deleted，逐面样式仍明确不支持。仅修订旧两案例原“无历史”的预期，要求实际Deleted历史，其余原测试保持。**[全部PlanarFaceEditingTests专项两配置各84](../artifacts/e5-defeature-app-draft-1/focused-after-public-1-exit.json)已独立通过，原79及新增5实际保持；后继/保存/图纸的更新候选另验，生产未合入。**
+
+最新隔离[source1063/SDK30构建审计](../artifacts/af-sdk30-history-identity-draft-1/build-both-1-verification.json)已通过：两配置0警告/0错误、完整保留原6456并发现新增11共6467，实际17/13/62与包一致。新增删除面持久化/后继/图纸及伪造拒绝7例、真实传输层身份说明4例；工程图与workspace只改字段说明，运行身份守卫及原模型/提示/预算保持。**首轮Release指导专项实际9/12、3失败**：[原始运行](../artifacts/af-sdk30-history-identity-draft-1/managed-guidance-release-1/runtime.trx)保留；较长身份说明让严格8192上下文只留下11个工具。原生持久化、完整6467及原Bonsai复验未运行，生产未合入。
+
+[1063修订2两配置构建](../artifacts/af-sdk30-history-identity-draft-2/build-both-1-verification.json)和[两配置实际指导12](../artifacts/af-sdk30-history-identity-draft-2/managed-guidance-both-1-exit.json)已通过，原6456+11发现6467保持，实际17/13/62一致。仅精简重复说明，保留完整照抄list.expected、原有IDs/nulls、非contract工程图身份及全部12工具；原1063测试、运行守卫、8192/1024/640/1280和6000/2400预算未改，raw stderr0。[Release](../artifacts/af-sdk30-history-identity-draft-2/focused-release-1-verification.json)、[Debug](../artifacts/af-sdk30-history-identity-draft-2/focused-debug-1-verification.json)全部91个PlanarFaceEditingTests（原84和新增7）均已独立通过，实际SDK30/native62、原断言、删除来源拒绝、保存重开、后继圆角、工程图/PDF/STEP和3类伪造拒绝保持。完整6467的Release已由原队列启动，Debug在其后，完整门禁仍未通过。
+
+[原Bonsai消费者构建](../artifacts/af-sdk30-history-identity-draft-2/provider-build-1-verification.json)已验共享16/SDK13/native62；全部原C#提示/断言逐字节保持，只调整项目引用路径和SDK30私有依赖。原模型在既定本地endpoint可用；[两原场景队列](../artifacts/af-sdk30-history-identity-draft-2/provider-after-native-1-start.json)要求前述两配置各91和6467实际通过后再开始推理。模型、8轮场景、16工具轮、原预算与严格身份条件保持；传输审计保留原结构/参数/原生/输出/资产断言，并核对每条说明等于冻结源码。**模型推理尚未开始、应用未合入，A–F未全部完成。**
+
+B18同环混合接头隔离[source1066两配置构建](../artifacts/b18-single-loop-mixed-joints-draft-1/build-both-3-verification.json)均0警告/0错误；原6467加新增59发现6526，实际17/13/62一致。仅在同一环含其他原生接头时，按完整来源槽/身份/方向、真实共享端点和启用G1/G2逐接头证明自然边界，返回完整Source Scalar梯度；不把混合环整体延迟，也不绕过其原生交点/桥接或最终Refresh/ValidateSolved。全自然组及原跨组守卫、求解预算与全部原6467源码保持。两次测试编译夹具错误保留；[两配置实际托管17](../artifacts/b18-single-loop-mixed-joints-draft-1/managed-boundary-both-1-exit.json)通过，覆盖身份别名/失效证明/方向/旧表拒绝和所有源坐标/参数（含0/1边界）的独立解析列。**17项不证明混合环求解完成**。圆弧G1/样条G1/G2×镜像×正负距离×三种连接的36真实原生案例及6拒绝案例，包含原预算求解、独立面积/周长/体积、一笔undo/redo、保存重开与STEP；已连同原相关用例组成各980相关和完整6526的[串行队列](../artifacts/b18-single-loop-mixed-joints-draft-1/native-after-bonsai-1-start.json)，等待原Bonsai两个场景实际结果后运行。当前未启动该原生矩阵；C1参数/同环生产窗口、其余关系及全过程仍待验，B18/A–F未完成。

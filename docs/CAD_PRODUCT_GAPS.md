@@ -1,6 +1,14 @@
 # 3D CAD 产品缺口与实施规划
 
-2026-10-11，status196：**按用户要求暂停于本地提交检查点。A–F 未全部完成；G 第七批暂缓。** 当前结果见[暂停检查点](AF_CHECKPOINT_2026-10-11.md)，旧重复过程记录见[截至 status195 的规划快照](https://github.com/yoi102/Cadoryx/blob/69268920d83071734f3ddf226d2d89df21109a6e/docs/history/CAD_PRODUCT_GAPS_THROUGH_STATUS195_20261011.md)。第 4 节七大批和第 5 节验收条件保持。
+2026-10-12，status209：**A–F 继续推进，尚未全部完成；G 实机、安装及交付暂缓。** 生产仍为 source1000 / SDK26，SDK30基线1063修订5及最新隔离source1068尚未合入。修订5两配置完整6467/6467已独立通过，原Bonsai两场景实际失败。隔离source1068/solver19的原59加新6共65项为41通过/24导出失败；36个正例均在2次迭代完成求解及导出前检查，原预算保持。完整6532、生产窗口与合入仍待验。实时结果见[状态页](STATUS.md)，大批完成标准保持[产品规划第4、5节](CAD_PRODUCT_GAPS.md#4-推荐怎么做下一步)。
+
+当前[Release完整6467/6467](../artifacts/af-sdk30-history-identity-draft-5/full6467-release-1-verification.json)与[Debug完整6467/6467](../artifacts/af-sdk30-history-identity-draft-5/full6467-debug-1-verification.json)均独立通过，零失败/跳过、原用例名称及实际SDK30/native62保持。[原Bonsai两个实际结果](../artifacts/af-sdk30-history-identity-draft-5/provider-both-1-exit.json)均失败：工程图在创建阶段缺少成功收据，跨文档第八轮超原16工具轮预算；不修改提示、身份守卫或预算。当前1066的相关980失败后，[最终应用准备](../artifacts/b18-single-loop-mixed-joints-draft-2/final-app-after-baseline-1-exit.json)按原门禁停止，未启动1066发布或桌面。已发布1063只作基线，不能代替后续修正候选的最终验收；原24和新36须绑定最终载荷后重编译/实际运行。
+
+当前[原WPF24及主壳状态栏36验收程序](A5_MAIN_STATUS_RECOVERY_ACCEPTANCE.md)均已编译、引用载荷已验，运行尚未开始。原24的C#逐字节保持、48保存/52整图及30秒预算不变；新36通过真实生产MainWindow、实际原生失效/绘制消息核对三种语言和两个活动pane的状态绑定、文档历史与144整图。首轮空引用编译失败保留，未调用私有恢复或写状态文本；原上下文/GPU故障仍未验。
+
+[B18重基1066](../artifacts/b18-single-loop-mixed-joints-draft-2/pipeline-after-provider-1-exit.json)两配置构建零警告/错误、发现原6467加59的6526，各17托管已独立通过。原Release相关980实际为953通过/27失败：42混合原生案例中有求解不收敛、非圆/直线偏移导出拒绝和独立源面积精度超限；原日志/TRX保留。Debug相关980及两配置完整6526未运行，未证明全部42或B18完成。两个窗口辅助程序及原窗口/性能条件保持；未控制键鼠。下一步先诊断修复，保留原矩阵、公差和256变量/512方程/80迭代，再验完整门禁。
+
+以下G01–G24及第4、5节保持原范围；较早运行状态为历史，不能替代当前门禁。
 
 ## 1. 当前处于什么位置
 
@@ -11,7 +19,7 @@ Cadoryx 已建立参数化零件、装配实例、精确 BRep、关联重算和�
 1. **把已有操作做稳定、可重复验收**：真实键鼠与输入法、预览提交、选择与引用、保存恢复、大模型等待，以及设备环境。
 2. **扩展已有工具的覆盖范围**：继续收敛草图复杂关系、曲线偏移/投影、任意曲面、引用历史、制造规则与外部交换；已经完成的限定契约见第 2 节与 A–F 跟踪。
 
-M14–M17 已记录的待办主要关注性能、精确建模边界、工程交付与环境。它们还没有覆盖上述全部机械 CAD 工具。本文将额外工具列为**产品建议待办**；用户已授权完成第 4 节 A–F，G 第七批延期；当前按用户要求暂停于本地提交检查点；恢复任务和未验收门禁见 [A–F 总实施跟踪](AF_IMPLEMENTATION_TRACKER.md)。B1–B7 是 B 大批的子任务，并不代表七个产品批次均完成。
+M14–M17 已记录的待办主要关注性能、精确建模边界、工程交付与环境。它们还没有覆盖上述全部机械 CAD 工具。本文将额外工具列为**产品建议待办**；用户已授权完成第 4 节 A–F，G 第七批延期；当前恢复 A–F；实施任务和未验收门禁见 [A–F 总实施跟踪](AF_IMPLEMENTATION_TRACKER.md)。B1–B7 是 B 大批的子任务，并不代表七个产品批次均完成。
 
 ## 2. 已有能力及准确边界
 
@@ -116,7 +124,7 @@ M14–M17 已记录的待办主要关注性能、精确建模边界、工程交�
 
 | 证据方向 | 当前可以引用什么 | 仍要取得什么 |
 |---|---|---|
-| 最新代码回归 | 当前应用1000/SDK26两配置各5909已验；[隔离1057两配置各6448](../artifacts/f5-inspection-role-feedback-draft-1/full6448-both-1-verification.json)完整通过；[导航1058两配置构建及各528专项](../artifacts/f5-native-read-navigation-draft-2/build-focused-both-1-verification.json)通过 | 1058完整6451、供应商与生产合入待验；SDK29原生长路径失败，托管/测试/包/消费者/WPF24尚未运行。A–F暂停，G暂缓 |
+| 最新代码回归 | 当前应用1000/SDK26两配置各5909已验；[隔离1057两配置各6448](../artifacts/f5-inspection-role-feedback-draft-1/full6448-both-1-verification.json)完整通过；[导航1058两配置各6451](../artifacts/f5-native-read-navigation-draft-2/full6451-both-1-verification.json)完整通过、零失败/跳过；SDK29两配置各12/1358/20整图、14包及干净消费者/60整图通过。组合1060两配置构建0、两配置完整6451/6451均已验；[WPF24/48保存/52整图](../artifacts/a5-sdk29-wpf-recovery-consumer-draft-3/runtime-4-whole-images-1-verification.json)独立通过。E5生成器230、实际两配置原生托管/各12及1370/私有14包/干净消费者两配置/60整图通过。1063修订2两配置构建0及实际指导各12/12保持全部工具和原预算，原Bonsai消费者构建16/13/62已验 | 组合1060当前窗口/性能和生产合入继续；实际上下文/GPU故障待验。SDK30应用删除面两配置各84/91、保存/后继/图纸专项已验，完整6467继续。B18同环候选两配置托管各17已验，原生42/相关980/完整6526待验。原Bonsai两场景实际复验均失败，继续改进工具说明/身份导航，保持原模型、提示、预算与守卫。原失败和诊断保持；当前进度见[STATUS](STATUS.md)。A–F继续，G暂缓 |
 | 自动覆盖率 | [TEST_COVERAGE](TEST_COVERAGE.md) 记录 618 测试时生产程序集行 67.0%、分支 66.2% | 以新快照重测并补关键行为；WPF 界面和 OCCT 原生代码不在这些 xUnit 百分比内 |
 | 性能 | [隔离1056两fresh进程各20双视口周期与生产Open](../artifacts/af-merged-performance-verification-2.json)通过，完整提交4.752/5.061秒满足6482ms；原完整788×411整图保持。生产缓存修复版6800.2534ms失败保留 | 当前候选生产接入、自动WPF/设备失效恢复待验；导入仍占主要时间，CPU提交计时不证明物理屏幕或输入延迟 |
 | 厂商兼容 | [M15](M15_PRECISION_AND_ASSEMBLY.md) 的 CATIA V5、Open CASCADE、CoCreate、SolidWorks 读取/精确检查；ODA 样本被拒绝 | 不同来源的单位/层级/样式/PMI对照，以及外部 CAD 实际往返；为拒绝样本提供诊断或受控兼容方案 |

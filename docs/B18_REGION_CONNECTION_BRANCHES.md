@@ -1,5 +1,21 @@
 # B18 区域连接分支
 
+2026-10-12，status209：**A–F 继续推进，尚未全部完成；G 实机、安装及交付暂缓。** 生产仍为 source1000 / SDK26，SDK30基线1063修订5及最新隔离source1068尚未合入。修订5两配置完整6467/6467已独立通过，原Bonsai两场景实际失败。隔离source1068/solver19的原59加新6共65项为41通过/24导出失败；36个正例均在2次迭代完成求解及导出前检查，原预算保持。完整6532、生产窗口与合入仍待验。实时结果见[状态页](STATUS.md)，大批完成标准保持[产品规划第4、5节](CAD_PRODUCT_GAPS.md#4-推荐怎么做下一步)。
+
+当前[Release完整6467/6467](../artifacts/af-sdk30-history-identity-draft-5/full6467-release-1-verification.json)与[Debug完整6467/6467](../artifacts/af-sdk30-history-identity-draft-5/full6467-debug-1-verification.json)均独立通过，零失败/跳过、原用例名称及实际SDK30/native62保持。[原Bonsai两个实际结果](../artifacts/af-sdk30-history-identity-draft-5/provider-both-1-exit.json)均失败：工程图在创建阶段缺少成功收据，跨文档第八轮超原16工具轮预算；不修改提示、身份守卫或预算。当前1066的相关980失败后，[最终应用准备](../artifacts/b18-single-loop-mixed-joints-draft-2/final-app-after-baseline-1-exit.json)按原门禁停止，未启动1066发布或桌面。已发布1063只作基线，不能代替后续修正候选的最终验收；原24和新36须绑定最终载荷后重编译/实际运行。
+
+当前[原WPF24及主壳状态栏36验收程序](A5_MAIN_STATUS_RECOVERY_ACCEPTANCE.md)均已编译、引用载荷已验，运行尚未开始。原24的C#逐字节保持、48保存/52整图及30秒预算不变；新36通过真实生产MainWindow、实际原生失效/绘制消息核对三种语言和两个活动pane的状态绑定、文档历史与144整图。首轮空引用编译失败保留，未调用私有恢复或写状态文本；原上下文/GPU故障仍未验。
+
+[B18重基1066](../artifacts/b18-single-loop-mixed-joints-draft-2/pipeline-after-provider-1-exit.json)两配置构建零警告/错误、发现原6467加59的6526，各17托管已独立通过。原Release相关980实际为953通过/27失败：42混合原生案例中有求解不收敛、非圆/直线偏移导出拒绝和独立源面积精度超限；原日志/TRX保留。Debug相关980及两配置完整6526未运行，未证明全部42或B18完成。两个窗口辅助程序及原窗口/性能条件保持；未控制键鼠。下一步先诊断修复，保留原矩阵、公差和256变量/512方程/80迭代，再验完整门禁。
+
+[source1068求解候选](../artifacts/b18-prescribed-author-draft-4/focused-1-verification.json)只对端点关系中全部作者坐标都有明确唯一FixPoint的系统保留精确值；实际表达式端点提供者不进入该扩展，全部变量/方程/完整Jacobian与最终原生Refresh/ValidateSolved保持。原36正例均2次迭代完成，原17和新增6冲突/关系拒绝通过；原65为41通过/24导出失败。首版把CurveGenerated来源标志误当实际提供者，未启用优化的原失败保留；修订4按真实提供者ID区分。原6526测试源码逐字节保持，[Release发现6532](../artifacts/b18-prescribed-author-draft-4/inventory-release-6532-1-verification.json)仅增6；Debug、相关986和完整6532未运行，部分来源驱动及一般混合求解仍未证明。
+
+[实际SDK30精确STEP探针](../artifacts/b18-mixed-diagnostic-draft-3/raw-step-1-verification.json)两个样条场景均在原生WriteStep失败，返回IFSelect_RetError/status2；部分文件各含4个空的SURFACE_OF_LINEAR_EXTRUSION基曲线引用，无OFFSET_CURVE_3D。这证明放开应用守卫不能解决导出，部分文件不作产品输出。下一步从生成器输入/模板补精确转换及完整图引用、实际重读验证；已有不支持freeform的拒绝断言不改，没有修改上游或生成产物。
+
+[待合入源码补丁](../capability-evidence/AF_PENDING_SOURCE1068.patch)和[恢复说明](../capability-evidence/AF_PENDING_SOURCE1068.json)保存完整1068候选相对当前生产的56个现有修改、39个真实新文件，973个已有文件保持；1000个生产来源SHA已复核，补丁通过Git索引应用检查但尚未应用。只将NuGet.Config本机绝对feed规范为指向同一14包的根相对路径，不含缓存或二进制。当前生产仍1000/SDK26，提交检查点不代表A–F完成。
+
+下述status104及更早证据保留为历史；草案1的17托管通过不能证明当前草案2的混合原生求解完成。
+
 2026-10-08 **status104 当前972/SDK22/solver17真实曲面交换139及相关1113，Release/Debug各1252个不重复用例通过、零失败/跳过，实际62原生及完整载荷逐项绑定。每配置保留128生产保存档案/128实测STEP或IGES包；包围盒改用六个原生外侧平面距离见证，保留原1e-5阈值，最大回读差3.0554e-6mm；源模型独立体积最大差7.6517e-8，原1e-7保持；STEP体积最大回读差2.4152e-11，IGES面表示仍NotComparable。STEP声明改为生成BRep，明确建模近似、无逐结果证明和作者语义损失；精确棱柱分支不误报。原128夹具失败、20包围盒失败及4距离守卫失败均保留。两配置构建零警告/错误，5381清单保留原5242；当前完整5381/完整Debug尚无通过终态。此前967的24窗口/111图和圆盘7次分列；当前972通用窗口/材质/性能及外部曲面CAD未验。逐结果精度/保守原生历史、间接表达式、混合接头和其余A–F继续；正式已验仍A4/B17/C5/D5/E4/F5g，G暂缓。** 见[当前139两配置](../artifacts/b18-curved-exchange-verification-2.json)、[当前相关1113两配置](../artifacts/b18-curved-exchange-related-verification-1.json)、[交换测量说明](B18_CURVED_EXCHANGE.md)及[下一批历史证明规划](B18_GUIDED_HISTORY_PROVENANCE_PLAN.md)。
 
 此前2026-10-08 **status102 SDK22/solver17真实曲线消费者的24个三语言生产窗口、24份保存关闭重开文件及111张完整PNG已审计通过：87原图保留，另24图通过正式选择结果实体和Ribbon聚焦补足倾斜场景可见性；59唯一图直接审阅，52图完整字节复用。实际截面/路径/通道选择、错误反向姿态拒绝、预览确认取消、C1参数Apply/Bind/Preview/Confirm及未应用输入守卫、来源ID/修订/端点、单次撤销重做、原生体积/有效性/自交/单实体、空bindings与零资产保持。当前967圆盘7次静止桌面像素换页34.879–52.967ms通过、0指针事件，后续移鼠不改页；原400ms/180s与准备60s保持，实体硬件滚轮未验。两配置构建零警告/错误；原17共享应用/13SDK/62原生及两配置104测试程序集不变，只增加选择性诊断入口和修正诊断像素DPI/前台守卫。相同生产965的完整Release4498、两配置曲线80/原144、Debug相关2759及新增关联104两配置已验；4602清单保留原4498，完整4602/完整Debug未跑。首轮关联夹具失败、初始空文档保存提示中止和原FitAll小模型图均保留，不归因于用户关闭窗口。writer0.7.8/document60/18分区、表达式JSON3-MP4和全部草图/装配预算不变。迟发竞争、真实交换/损失与保守原生历史、当前通用窗口/材质/性能及其他A–F继续；正式已验仍A4/B17/C5/D5/E4/F5g，G暂缓。** 见[当前24窗口/111图/24文件](../artifacts/b18-curved-window-verification-2.json)、[当前圆盘7次](../artifacts/b18-current967-radial-verification-1.json)、[关联104两配置](../artifacts/b18-curved-association-verification-2.json)、[完整4498](../artifacts/b18-curved-consumer-full-verification-1.json)和[接续规划](B18_CURVED_CONSUMERS_NEXT_PLAN.md)。

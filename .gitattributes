@@ -3,6 +3,9 @@
 ###############################################################################
 * text=auto
 
+# Keep recovery patches byte-stable for their recorded SHA-256.
+capability-evidence/*.patch text eol=lf whitespace=-blank-at-eol
+
 ###############################################################################
 # Set default behavior for command prompt diff.
 #

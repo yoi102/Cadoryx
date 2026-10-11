@@ -1,0 +1,189 @@
+{
+  "recordedAt": "2026-10-11T14:57:49.402759+00:00",
+  "state": "RECOVERABLE_PENDING_SOURCE_PATCH_NOT_APPLIED_OR_PRODUCT_COMPLETION",
+  "baseCommit": "dcbc94831108b991a8ff0daeeaff0f21761fb1fa",
+  "productionSource1000ShaVerified": true,
+  "source1068Preparation": {
+    "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\b18-prescribed-author-draft-4\\preparation-2.json",
+    "sha256": "1B1F9695A75E06D26A0812C9EDBB096FBE03A3D5B1E9AFB8160F3CE8BD28CFD9"
+  },
+  "candidateWorkspace": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\b18-prescribed-author-draft-4\\workspace-1",
+  "patch": {
+    "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\capability-evidence\\AF_PENDING_SOURCE1068.patch",
+    "sha256": "93283B3C450A8247FBECD3C5E009138EE850660E0E81E423DB2DDC532D46F02D",
+    "bytes": 581618
+  },
+  "changedExisting": [
+    "Cadoryx.Agent/AgentRunner.cs",
+    "Cadoryx.Agent/AgentToolResultCompactor.cs",
+    "Cadoryx.Cli/CadCommandLine.cs",
+    "Cadoryx.Cli/packages.lock.json",
+    "Cadoryx.CommandLine/CadAuthoringCommands.cs",
+    "Cadoryx.CommandLine/CadCommandLineService.cs",
+    "Cadoryx.Commands/ResourceCommands.cs",
+    "Cadoryx.Db/DocumentSnapshot.cs",
+    "Cadoryx.Db/Model.cs",
+    "Cadoryx.Db/TopologyHistory.cs",
+    "Cadoryx.IO/AssetCatalog.cs",
+    "Cadoryx.IO/CadDocumentStorage.cs",
+    "Cadoryx.IO/SectionMigrations.cs",
+    "Cadoryx.Kernel.Abstractions/AssetFormatPolicy.cs",
+    "Cadoryx.Kernel.Abstractions/SketchRegionEvaluationContext.cs",
+    "Cadoryx.Kernel.Occt/OcctFaceEditing.cs",
+    "Cadoryx.Kernel.Occt/OcctHistoryResolver.cs",
+    "Cadoryx.Kernel.Occt/OcctLocalHistory.cs",
+    "Cadoryx.Kernel.Occt/packages.lock.json",
+    "Cadoryx.Lang/Strings/Strings.Designer.cs",
+    "Cadoryx.Lang/Strings/Strings.ja-JP.resx",
+    "Cadoryx.Lang/Strings/Strings.resx",
+    "Cadoryx.Lang/Strings/Strings.zh-CN.resx",
+    "Cadoryx.Rendering.Occt/OcctViewport.RectangleFeedback.cs",
+    "Cadoryx.Rendering.Occt/OcctViewport.cs",
+    "Cadoryx.Rendering.Occt/OcctViewportDimensions.cs",
+    "Cadoryx.Rendering.Occt/OcctViewportOccurrenceHandles.cs",
+    "Cadoryx.Rendering.Occt/OcctViewportSolidHandles.cs",
+    "Cadoryx.Rendering.Occt/packages.lock.json",
+    "Cadoryx.Rendering/Scene.cs",
+    "Cadoryx.Sketching/ManagedSketchConstraintSolver.cs",
+    "Cadoryx.Sketching/SketchEquationSystem.Regions.cs",
+    "Cadoryx.Sketching/SketchEquationSystem.cs",
+    "Cadoryx.Sketching/SketchExpressionDifferentials.Regions.cs",
+    "Cadoryx.Sketching/SketchRegionSolveChart.cs",
+    "Cadoryx.Tests/PlanarFaceEditingTests.cs",
+    "Cadoryx.Tests/packages.lock.json",
+    "Cadoryx.ViewModels/CadDocumentViewModel.cs",
+    "Cadoryx.ViewModels/DocumentResourcesViewModel.cs",
+    "Cadoryx.ViewModels/MainWindowViewModel.cs",
+    "Cadoryx.ViewModels/Toolboxes/CadAgentDocumentTools.cs",
+    "Cadoryx.ViewModels/Toolboxes/CadAgentDrawingTools.cs",
+    "Cadoryx.ViewModels/Toolboxes/CadAgentFileTools.cs",
+    "Cadoryx.ViewModels/Toolboxes/CadAgentToolset.cs",
+    "Cadoryx.ViewModels/Toolboxes/CadAgentWorkspaceTools.cs",
+    "Cadoryx.ViewModels/Toolboxes/CadAuthoringInspection.cs",
+    "Cadoryx.ViewModels/Toolboxes/CadDrawingInspection.cs",
+    "Cadoryx.ViewModels/Toolboxes/CadWorkspaceAuthoring.cs",
+    "Cadoryx.wpf/App.xaml.cs",
+    "Cadoryx.wpf/Controls/OcctViewportHost.cs",
+    "Cadoryx.wpf/Views/Dialogs/DocumentResourcesDialog.xaml",
+    "Cadoryx.wpf/Views/ViewportPane.xaml.cs",
+    "Cadoryx.wpf/packages.lock.json",
+    "Cadoryx.wpf/runtime-baseline.json",
+    "Directory.Build.props",
+    "NuGet.Config"
+  ],
+  "newFiles": [
+    "Cadoryx.Cli/CadMaterialCli.cs",
+    "Cadoryx.CommandLine/CadMaterialCommands.cs",
+    "Cadoryx.Commands/MaterialResourceCommand.cs",
+    "Cadoryx.Commands/SetMaterialTextureCommand.cs",
+    "Cadoryx.Db/CadTexturePayload.cs",
+    "Cadoryx.Db/MaterialAppearance.cs",
+    "Cadoryx.Editor/CadMaterialAuthoringService.cs",
+    "Cadoryx.IO/MaterialAppearanceSectionStorage.cs",
+    "Cadoryx.Rendering.Occt/CadViewportGraphicsFault.cs",
+    "Cadoryx.Rendering.Occt/MaterialAppearance.cs",
+    "Cadoryx.Rendering.Occt/OcctViewport.Cleanup.cs",
+    "Cadoryx.Sketching/SketchEquationSystem.PrescribedAuthors.cs",
+    "Cadoryx.Sketching/SketchRegionLivePointCouplingProof.cs",
+    "Cadoryx.Sketching/SketchRegionSolveChart.LivePointCoupling.cs",
+    "Cadoryx.Sketching/SketchRegionSolveChart.NaturalJoints.cs",
+    "Cadoryx.Tests/AgentControlOnlyResponseTests.cs",
+    "Cadoryx.Tests/AgentIdentityFieldPresentationTests.cs",
+    "Cadoryx.Tests/DrawingInspectionTypeFeedbackTests.cs",
+    "Cadoryx.Tests/FileIdentityFeedbackTests.cs",
+    "Cadoryx.Tests/InspectionRoleFeedbackTests.cs",
+    "Cadoryx.Tests/MaterialAgentSelectionTests.cs",
+    "Cadoryx.Tests/MaterialAuthoringTests.cs",
+    "Cadoryx.Tests/MaterialCliTests.cs",
+    "Cadoryx.Tests/NativeOmittedGeometryReadTests.cs",
+    "Cadoryx.Tests/NativeReadNavigationWireTests.cs",
+    "Cadoryx.Tests/PlanarFaceEditingDefeatureHistoryTests.cs",
+    "Cadoryx.Tests/PlanarFaceEditingDefeaturePersistenceTests.cs",
+    "Cadoryx.Tests/ProviderIdentityReinspectionTests.cs",
+    "Cadoryx.Tests/SketchRegionLivePointCoupledTests.cs",
+    "Cadoryx.Tests/SketchRegionPrescribedAuthorRejectionTests.cs",
+    "Cadoryx.Tests/SketchRegionSingleLoopMixedNativeTests.cs",
+    "Cadoryx.Tests/SketchRegionSingleLoopNaturalBoundaryTests.cs",
+    "Cadoryx.Tests/WorkspaceIdentityFeedbackTests.cs",
+    "Cadoryx.ViewModels/MaterialAppearanceEditorViewModel.cs",
+    "Cadoryx.ViewModels/Toolboxes/CadMaterialAuthoring.cs",
+    "Cadoryx.wpf/Services/Dialogs/MaterialTextureImportService.cs",
+    "Cadoryx.wpf/Views/Dialogs/MaterialAppearanceEditor.xaml",
+    "Cadoryx.wpf/Views/Dialogs/MaterialAppearanceEditor.xaml.cs",
+    "Cadoryx.wpf/Views/ViewportPane.GraphicsRecovery.cs"
+  ],
+  "unchangedExisting": 973,
+  "feedNormalization": "Only NuGet.Config absolute local feed to root-relative equivalent; same immutable14 packages below",
+  "feedPackages": [
+    {
+      "name": "OcctSharp.8.0.1-preview.31.cadoryx.generated-defeature-history.30.nupkg",
+      "sha256": "2C9467A40F13A52CABBE51C4516BE5582E50B4E3F270C3AB83AE9DF184A8A87A"
+    },
+    {
+      "name": "OcctSharp.DataExchange.8.0.1-preview.31.cadoryx.generated-defeature-history.30.nupkg",
+      "sha256": "FDE7A8C683F5C41947535BC612A1466A57E73799D54BDDFC14ADBBDD747BBC9E"
+    },
+    {
+      "name": "OcctSharp.Documents.8.0.1-preview.31.cadoryx.generated-defeature-history.30.nupkg",
+      "sha256": "6CDEB7347E0525287A061CCA314F1AC1BA746C58DC772330695C635310991CF6"
+    },
+    {
+      "name": "OcctSharp.Draw.8.0.1-preview.31.cadoryx.generated-defeature-history.30.nupkg",
+      "sha256": "84242DEE7E0A6B7C70422694777A5742536EA91AA6322D23F1B8B97ED07D84D1"
+    },
+    {
+      "name": "OcctSharp.Foundation.8.0.1-preview.31.cadoryx.generated-defeature-history.30.nupkg",
+      "sha256": "FDB6C55C532B213E9F607346FB4B24E7A91D115E3FA0C597FFAAB88F50769045"
+    },
+    {
+      "name": "OcctSharp.Geometry.8.0.1-preview.31.cadoryx.generated-defeature-history.30.nupkg",
+      "sha256": "8F003C10728DDE787A97A03D501F0336BCFD50CD298EE26EB3ED81CFB362A03C"
+    },
+    {
+      "name": "OcctSharp.IVtk.8.0.1-preview.31.cadoryx.generated-defeature-history.30.nupkg",
+      "sha256": "6CFA57F3F1C2521971C12FDC8C29155A18CB5D97991E5F2089569FE618166172"
+    },
+    {
+      "name": "OcctSharp.Mesh.8.0.1-preview.31.cadoryx.generated-defeature-history.30.nupkg",
+      "sha256": "076E42D4742F7D54AD25F856761B115A744EDE86350365A2E5070629A52EE452"
+    },
+    {
+      "name": "OcctSharp.MeshData.8.0.1-preview.31.cadoryx.generated-defeature-history.30.nupkg",
+      "sha256": "44054C9EA8419CD13B66B4A4A476661AF7A2704BD9271640AE1F48B91D85D258"
+    },
+    {
+      "name": "OcctSharp.Modeling.8.0.1-preview.31.cadoryx.generated-defeature-history.30.nupkg",
+      "sha256": "D95118575E67A2328FD669BC8E5C3067453789456312B86CDA876F69E012E615"
+    },
+    {
+      "name": "OcctSharp.Native.win-x64.8.0.1-preview.31.cadoryx.generated-defeature-history.30.nupkg",
+      "sha256": "8F7ED4E9F50ADD86B4A18F06897401AD56ACCD5BB244443E91CBF94C9A0D0FBB"
+    },
+    {
+      "name": "OcctSharp.Runtime.8.0.1-preview.31.cadoryx.generated-defeature-history.30.nupkg",
+      "sha256": "167A94B89F3FBE1103617258B8FA631D422FA513B4B0769EB03E28FC5847B776"
+    },
+    {
+      "name": "OcctSharp.Visualization.8.0.1-preview.31.cadoryx.generated-defeature-history.30.nupkg",
+      "sha256": "8454B2AA6A91E9239337F93F168910BAC6098D49BCFB74A5359955DC40646010"
+    },
+    {
+      "name": "OcctSharp.Xde.8.0.1-preview.31.cadoryx.generated-defeature-history.30.nupkg",
+      "sha256": "2EB3E8590466DA9DFC112211836D29ABBDDBB158514E9664D6DE44F7EA18E8EF"
+    }
+  ],
+  "focusedEvidence": {
+    "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\b18-prescribed-author-draft-4\\focused-1-verification.json",
+    "sha256": "4D33BF08EA631702E38D7C2A0C9B287BAFFEF475885091A0775F79021ED409FF"
+  },
+  "original6526AndNew6Discovered": true,
+  "full6532": "NOT_RUN",
+  "Debug": "NOT_RUN",
+  "originalBonsaiBoth": "FAIL",
+  "exports24": "FAIL",
+  "rawStepExactOffsetProbe": "FAIL_NULL_BASIS_REFERENCES",
+  "currentWindowMaterialPerformance": "NOT_RUN",
+  "appliedToProduction": false,
+  "AF": "ACTIVE",
+  "G": "USER_DEFERRED"
+}
