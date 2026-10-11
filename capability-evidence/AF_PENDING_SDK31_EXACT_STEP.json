@@ -1,0 +1,39 @@
+{
+  "recordedAt": "2026-10-12T01:19:12.914927+09:00",
+  "state": "VERIFIED_SDK31_GENERATOR239_BOTH_EXACT_STEP_GRAPH36_GREEN36_NEGATIVE3_DEFAULT_MASS_AND_BOUNDARY25_FAIL_NOT_PRODUCT_ACCEPTANCE",
+  "baseline": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-e5-defeature-history-generated-30-draft-1\\workspace-1\\OcctSharp",
+  "candidate": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-1\\workspace-1\\OcctSharp",
+  "patch": {
+    "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\capability-evidence\\AF_PENDING_SDK31_EXACT_STEP.patch",
+    "sha256": "26C32B9B427A2C7871E341756AE58B34031321E3F7867A0158AE3E47D61ADF8D",
+    "bytes": 29584
+  },
+  "changedBaselineInputs": [
+    "src/OcctSharp.Generator/OcctSharp.Generator.csproj",
+    "src/OcctSharp.Generator/Program.cs",
+    "src/OcctSharp.Generator/Discovery/DiscoveryConfiguration.cs",
+    "config/generation.json"
+  ],
+  "newInputsAndGeneratedOutputs": [
+    "src/OcctSharp.Generator/Emission/ExchangeSupportWorkflowEmitter.cs",
+    "src/OcctSharp.Generator/Emission/step-exact-offset-header.txt",
+    "src/OcctSharp.Generator/Emission/step-exact-offset-native.txt",
+    "src/OcctSharp.Generator/Emission/step-exact-offset-contract.json",
+    "tests/OcctSharp.Generator.Tests/ExchangeSupportWorkflowEmitterTests.cs",
+    "src/OcctSharp.Native/generated/DataExchange/OcctSharp.ExactStepOffsets.Generated.h",
+    "src/OcctSharp.Native/generated/DataExchange/OcctSharp.ExactStepOffsets.Generated.cpp"
+  ],
+  "productionApplied": false,
+  "AF": "ACTIVE",
+  "G": "USER_DEFERRED",
+  "verification": {
+    "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-1\\generator-native-probe-2-verification.json",
+    "sha256": "FA4F2B2189C2354C23AB137F6F643A0C9197A7D6C4F765B9FA52E780AA92398B"
+  },
+  "patchApplyCheck": {
+    "state": "PASS_GIT_NO_INDEX_CHECK_ONLY_NOT_APPLIED",
+    "checkedBaseline": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-e5-defeature-history-generated-30-draft-1\\workspace-1\\OcctSharp",
+    "exitCode": 0,
+    "recordedAt": "2026-10-11T16:23:26.2806892+00:00"
+  }
+}

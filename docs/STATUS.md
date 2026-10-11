@@ -1,6 +1,8 @@
 # 当前状态
 
-2026-10-12，status209：**A–F 继续推进，尚未全部完成；G 实机、安装及交付暂缓。** 生产仍为 source1000 / SDK26，SDK30基线1063修订5及最新隔离source1068尚未合入。修订5两配置完整6467/6467已独立通过，原Bonsai两场景实际失败。隔离source1068/solver19的原59加新6共65项为41通过/24导出失败；36个正例均在2次迭代完成求解及导出前检查，原预算保持。完整6532、生产窗口与合入仍待验。大批完成标准保持[产品规划第4、5节](CAD_PRODUCT_GAPS.md#4-推荐怎么做下一步)。
+2026-10-12，status211：**A–F 继续推进，尚未全部完成；G 实机、安装及交付暂缓，清理按用户要求停止。** 生产仍source1000 / SDK26，最新应用候选仍source1068 / SDK30，65项仍41通过/24导出失败。SDK31草案已从生成器修复负周期顶点到边测距：两配置生成器各248、实际两配置原生/托管构建及专项各134通过，62份实际原生路径/哈希保持，原182输出/26040声明ID/41174导出保持。原36例产品积分与双向边界均满足原1e-7，旧原生探针11/25失败保留。非毫米单位、实际shape/XDE写入、SDK包及完整1382、应用原65/相关986/完整6532、最终窗口/性能/材质、原Bonsai及生产合入仍待完成。大批完成标准保持[产品规划第4、5节](CAD_PRODUCT_GAPS.md#4-推荐怎么做下一步)。
+
+[B18精确STEP与测距记录](B18_EXACT_STEP_OFFSET_REPAIR.md)已更正误判：负周期源边中点对源模型自身也被OCCT测为0.07654 mm，真实周期等价平移后为零。新增生成测距支持保留原形状/范围/pcurve与原见证所有权，240解析案例及原36边界通过，双向最大差5.08e-12 mm。未修改的产品原始边界积分按公开逐面契约复核36例，往返体积/面积最大差2.23e-9 mm³ / 4.35e-9 mm²，并核对独立作者体积；普通GProps诊断误差不能代替产品入口。新公开12项通过，冻结SDK30桥的同载荷12项全部复现失败；扩展两配置各134/134实际观察native62。长路径5失败保留，短路径原夹具/断言不变。一般周期内部边/面极值仍须补充，不能扩大测距完成范围。[第二版恢复补丁](../capability-evidence/AF_PENDING_SDK31_EXACT_STEP_V2.patch)已在独立副本重放26文件逐字节一致，原应用守卫/断言及公共上游保持，包和应用尚未接入。
 
 当前[Release完整6467/6467](../artifacts/af-sdk30-history-identity-draft-5/full6467-release-1-verification.json)与[Debug完整6467/6467](../artifacts/af-sdk30-history-identity-draft-5/full6467-debug-1-verification.json)均独立通过，零失败/跳过、原用例名称及实际SDK30/native62保持。[原Bonsai两个实际结果](../artifacts/af-sdk30-history-identity-draft-5/provider-both-1-exit.json)均失败：工程图在创建阶段缺少成功收据，跨文档第八轮超原16工具轮预算；不修改提示、身份守卫或预算。当前1066的相关980失败后，[最终应用准备](../artifacts/b18-single-loop-mixed-joints-draft-2/final-app-after-baseline-1-exit.json)按原门禁停止，未启动1066发布或桌面。已发布1063只作基线，不能代替后续修正候选的最终验收；原24和新36须绑定最终载荷后重编译/实际运行。
 
@@ -12,7 +14,7 @@
 
 [source1068求解候选](../artifacts/b18-prescribed-author-draft-4/focused-1-verification.json)只对端点关系中全部作者坐标都有明确唯一FixPoint的系统保留精确值；实际表达式端点提供者不进入该扩展，全部变量/方程/完整Jacobian与最终原生Refresh/ValidateSolved保持。原36正例均2次迭代完成，原17和新增6冲突/关系拒绝通过；原65为41通过/24导出失败。首版把CurveGenerated来源标志误当实际提供者，未启用优化的原失败保留；修订4按真实提供者ID区分。原6526测试源码逐字节保持，[Release发现6532](../artifacts/b18-prescribed-author-draft-4/inventory-release-6532-1-verification.json)仅增6；Debug、相关986和完整6532未运行，部分来源驱动及一般混合求解仍未证明。
 
-[实际SDK30精确STEP探针](../artifacts/b18-mixed-diagnostic-draft-3/raw-step-1-verification.json)两个样条场景均在原生WriteStep失败，返回IFSelect_RetError/status2；部分文件各含4个空的SURFACE_OF_LINEAR_EXTRUSION基曲线引用，无OFFSET_CURVE_3D。这证明放开应用守卫不能解决导出，部分文件不作产品输出。下一步从生成器输入/模板补精确转换及完整图引用、实际重读验证；已有不支持freeform的拒绝断言不改，没有修改上游或生成产物。
+[实际SDK30精确STEP探针](../artifacts/b18-mixed-diagnostic-draft-3/raw-step-1-verification.json)两个样条场景均在原生WriteStep失败，返回IFSelect_RetError/status2；部分文件各含4个空的SURFACE_OF_LINEAR_EXTRUSION基曲线引用，无OFFSET_CURVE_3D。这证明放开应用守卫不能解决导出，部分文件不作产品输出。当前生成器草案的图引用修复及仍失败的几何门禁见本页顶部和[B18修复记录](B18_EXACT_STEP_OFFSET_REPAIR.md)；原失败、不支持freeform的拒绝断言、已有文件/作者树/资产条件保持，公共上游未修改。
 
 [待合入源码补丁](../capability-evidence/AF_PENDING_SOURCE1068.patch)和[恢复说明](../capability-evidence/AF_PENDING_SOURCE1068.json)保存完整1068候选相对当前生产的56个现有修改、39个真实新文件，973个已有文件保持；1000个生产来源SHA已复核，补丁通过Git索引应用检查但尚未应用。只将NuGet.Config本机绝对feed规范为指向同一14包的根相对路径，不含缓存或二进制。当前生产仍1000/SDK26，提交检查点不代表A–F完成。
 
