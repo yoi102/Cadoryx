@@ -1,0 +1,1544 @@
+{
+  "recordedAt": "2026-10-11T22:33:44.557181+00:00",
+  "state": "PASS_COMPENSATED_MOMENTS_STRICT_ROOT12_PUBLIC16_FULL1622_BOTH_ACTUAL_NATIVE62_NOT_PRODUCT",
+  "candidate": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-7\\workspace-1\\OcctSharp",
+  "configurations": {
+    "Release": {
+      "generatorPassed": 248,
+      "publicPassed": 16,
+      "fullPassed": 1622,
+      "failed": 0,
+      "skipped": 0,
+      "original1606NamesAndSourcesRetained": true,
+      "public": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-7\\moment-public-release-1\\exit.json",
+        "sha256": "F66D29435C9C45A0A051CC2FDEB60E173A1FF561DA9A2734404088CA58424726"
+      },
+      "full": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-7\\moment-full-release-1\\exit.json",
+        "sha256": "E03DDC2C36A8976854F8C762071C23F269D033A721F6A52F326A6C257E49ED74"
+      },
+      "nativeBridge": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-7\\workspace-1\\OcctSharp\\artifacts\\native\\Release\\OcctSharp.Native.dll",
+        "sha256": "EAD6C6F057630E9DB60FB670CBFA2DCD65BB1664CE3855DBE7CDBE2E265B6000"
+      },
+      "exports": 41176,
+      "priorExportNamesAndOrderIdentical": true,
+      "old61Dependencies": [
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-7\\workspace-1\\OcctSharp\\artifacts\\native\\Release\\avcodec-57.dll",
+          "sha256": "4D7A6A2CFF37C782CE1A3C74FA83EBBEBCC43DFC774E3F497A406C84C1458C7E"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-7\\workspace-1\\OcctSharp\\artifacts\\native\\Release\\avformat-57.dll",
+          "sha256": "297D3207DD0E6325DAB7A080472A4FD2F743CFC53861615B4DC96B91227CD3AF"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-7\\workspace-1\\OcctSharp\\artifacts\\native\\Release\\avutil-55.dll",
+          "sha256": "BE7C03FF47618916D16AF446E2F7C00E48F2FF8934C6ACE4C0D0E3D804732E8E"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-7\\workspace-1\\OcctSharp\\artifacts\\native\\Release\\FreeImage.dll",
+          "sha256": "4594BD0538F7F6B05148B00996FF36DDFEDEF8D66910E931503DCFEBF8EFE1DB"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-7\\workspace-1\\OcctSharp\\artifacts\\native\\Release\\freetype.dll",
+          "sha256": "637621E4AE51B496B8A86F9B053050D5AF2BA999EA0680BBFE3D5DF91F976C75"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-7\\workspace-1\\OcctSharp\\artifacts\\native\\Release\\jemalloc.dll",
+          "sha256": "EA0CFCF6A12BB3863961074547C958FD978AA3F800244CC4FE2847B127C4DF5E"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-7\\workspace-1\\OcctSharp\\artifacts\\native\\Release\\openvr_api.dll",
+          "sha256": "71DB78E77E577DB6D0666C25437695D42CEAFB9C7F8DA94FBE765525B8E2F5F2"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-7\\workspace-1\\OcctSharp\\artifacts\\native\\Release\\swscale-4.dll",
+          "sha256": "67BCFFB3CCDAEBF2BBD3149542D92DD9430ABFDFF1D7B79B3A529AF712926412"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-7\\workspace-1\\OcctSharp\\artifacts\\native\\Release\\tbb12.dll",
+          "sha256": "887888A0C2FFE7F64718D4EEA2A10CE41C68DEC1A954DB3A62646ADEEE66C0AD"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-7\\workspace-1\\OcctSharp\\artifacts\\native\\Release\\TKBin.dll",
+          "sha256": "B27B08FFBE07C1FACA441897E6D807062D01F453BD847175CAE999B15AD31D96"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-7\\workspace-1\\OcctSharp\\artifacts\\native\\Release\\TKBinL.dll",
+          "sha256": "A8A87E784C6AD97DAF773926A106E8904ABEF77AE30CAD602DD236A0FE376378"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-7\\workspace-1\\OcctSharp\\artifacts\\native\\Release\\TKBinTObj.dll",
+          "sha256": "F482E7F3A3526150C537E3DD6CDDDBD6B4E38B29C62AC3CF3F81D9E97A296EAB"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-7\\workspace-1\\OcctSharp\\artifacts\\native\\Release\\TKBinXCAF.dll",
+          "sha256": "BE1F35F341A9BC1EF26DB6721AFE727747CC97053A86ADA5A51C03E4C43EBA3A"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-7\\workspace-1\\OcctSharp\\artifacts\\native\\Release\\TKBO.dll",
+          "sha256": "41F837935BCC65882ACD73295EF65CA13D47B018ACDCB6093FAF47804B96D0C5"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-7\\workspace-1\\OcctSharp\\artifacts\\native\\Release\\TKBool.dll",
+          "sha256": "FA76C5374AE85E1649F27DA41ED0B45EC36C68C413ACE84554198CF39D11DAFD"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-7\\workspace-1\\OcctSharp\\artifacts\\native\\Release\\TKBRep.dll",
+          "sha256": "A511C8CF51178CF881C3BA0B54287DCECE6DED03CF3DE99E6FABF2A2D5152207"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-7\\workspace-1\\OcctSharp\\artifacts\\native\\Release\\TKCAF.dll",
+          "sha256": "E78FD6196F7356FFA541A015CB6DF481E9999D8E813E2D7A5D914CA6205614AE"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-7\\workspace-1\\OcctSharp\\artifacts\\native\\Release\\TKCDF.dll",
+          "sha256": "9BCCAB992DA8F4069CB4020A064D67DF507309CA679AD20BB97A9B5FB0797A3A"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-7\\workspace-1\\OcctSharp\\artifacts\\native\\Release\\TKD3DHost.dll",
+          "sha256": "0EB1591D44FFF265C3870865013C7FCBDE9F9B7DF79903ED0116AC1C93DE10BE"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-7\\workspace-1\\OcctSharp\\artifacts\\native\\Release\\TKDE.dll",
+          "sha256": "2F0E1C9BD86C367B36DC7519502B095DE0DEE910D1F86B5B39BA962790A0D0C5"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-7\\workspace-1\\OcctSharp\\artifacts\\native\\Release\\TKDECascade.dll",
+          "sha256": "6E65801F138067283CA2355F7E43FF5BF30502E0CB6F782F33245E7B5096F5A1"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-7\\workspace-1\\OcctSharp\\artifacts\\native\\Release\\TKDEGLTF.dll",
+          "sha256": "636F0E11859C256774B1004617E643D5EFDC415F993A464D73A82F4618CC902A"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-7\\workspace-1\\OcctSharp\\artifacts\\native\\Release\\TKDEIGES.dll",
+          "sha256": "3D16433A5CA16D36DFDFE168AF7F7C0645093CDC6C80CA38A157BC84769E43F9"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-7\\workspace-1\\OcctSharp\\artifacts\\native\\Release\\TKDEOBJ.dll",
+          "sha256": "C09644DE8F5AFEA74C531054F713132823F0020F28A889229AE2E762D8CA121D"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-7\\workspace-1\\OcctSharp\\artifacts\\native\\Release\\TKDEPLY.dll",
+          "sha256": "35DAFA5EFACF1DFECCB3E01D560547630142B4C52FFAC5CE4CAE726DFBD31262"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-7\\workspace-1\\OcctSharp\\artifacts\\native\\Release\\TKDESTEP.dll",
+          "sha256": "DC010933AEF4481083D21F77ADFAEE6ACEADE87D5F454AD5F4743F07A00B4DF6"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-7\\workspace-1\\OcctSharp\\artifacts\\native\\Release\\TKDESTL.dll",
+          "sha256": "68488A4FD4B3C426123BD9969F5E42DD335A89CEA2FFA4E147452653F1BB63A1"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-7\\workspace-1\\OcctSharp\\artifacts\\native\\Release\\TKDEVRML.dll",
+          "sha256": "7F30F93D81398A61F5E52997494C43ABFABD868009273B4492B1E2B8DD105F7A"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-7\\workspace-1\\OcctSharp\\artifacts\\native\\Release\\TKernel.dll",
+          "sha256": "3ECBC7F193EBB746CC88A81E03EB603D24FDF03470B346551698F45D4FAEB7B4"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-7\\workspace-1\\OcctSharp\\artifacts\\native\\Release\\TKExpress.dll",
+          "sha256": "2535B5993A42E41C6E35E5EA50574953D0BC5705EAE70D596C1194E5B9C8E872"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-7\\workspace-1\\OcctSharp\\artifacts\\native\\Release\\TKFeat.dll",
+          "sha256": "05F968C96DD0C170463B09F0121DB70E3DB720250634959C91C42396F9437141"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-7\\workspace-1\\OcctSharp\\artifacts\\native\\Release\\TKFillet.dll",
+          "sha256": "6ACCA10E58155ECAA1621DCECF395463C6560D4A3B63729BD7688ED7B15A38F5"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-7\\workspace-1\\OcctSharp\\artifacts\\native\\Release\\TKG2d.dll",
+          "sha256": "0D87A20363CFB66F7862FBC9AA7234059D13712B3A0D7E6B35CBB0172810A93C"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-7\\workspace-1\\OcctSharp\\artifacts\\native\\Release\\TKG3d.dll",
+          "sha256": "8A13921267C5839C0D8D4395DAE33FC5C1F80F8D03C0D8C0CEB153AA3DA35C6C"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-7\\workspace-1\\OcctSharp\\artifacts\\native\\Release\\TKGeomAlgo.dll",
+          "sha256": "154E047A29217C0FAF101EC0B8119D6D327E89560CD82CB18D17EC48D508883B"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-7\\workspace-1\\OcctSharp\\artifacts\\native\\Release\\TKGeomBase.dll",
+          "sha256": "6BD91D22B6A893884BA74FEC8C352F68BCF0F79096D00F52119D4810EF42567E"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-7\\workspace-1\\OcctSharp\\artifacts\\native\\Release\\TKHelix.dll",
+          "sha256": "B95F60B662FFF3BBDC7A768AA1DF664468187C3638AC562B5C87C8B9C6808DFF"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-7\\workspace-1\\OcctSharp\\artifacts\\native\\Release\\TKHLR.dll",
+          "sha256": "499F63A9335A17F8D2903DB1D56E27EE2DEAD324E35EFE46E2A9FAC8A8BF6F89"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-7\\workspace-1\\OcctSharp\\artifacts\\native\\Release\\TKLCAF.dll",
+          "sha256": "C51A1DA060562BA8855C02A091D849A575459FEE3ED80543358F9113871DAF9D"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-7\\workspace-1\\OcctSharp\\artifacts\\native\\Release\\TKMath.dll",
+          "sha256": "2C41EFC32C025D1E7753548498027AA240D315B455BF36130432EA23E5860A2A"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-7\\workspace-1\\OcctSharp\\artifacts\\native\\Release\\TKMesh.dll",
+          "sha256": "143337A5BF7128B7D5F50B33129D70EE4B4E9669F9166D89AF732444A221F95F"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-7\\workspace-1\\OcctSharp\\artifacts\\native\\Release\\TKMeshVS.dll",
+          "sha256": "7CF4CEC11EC0B9A7AFF012442A9E868932B74848E46CAA79DC091175A18DD9DD"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-7\\workspace-1\\OcctSharp\\artifacts\\native\\Release\\TKOffset.dll",
+          "sha256": "B3145BF379A12F46C68B206966679252CB36C0616C1A3D73D572033CB3EFCF8F"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-7\\workspace-1\\OcctSharp\\artifacts\\native\\Release\\TKOpenGl.dll",
+          "sha256": "8C47BB81B4D9F712E557864A67A31637DFF74D83D92B83AEE6960A673CBA07E7"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-7\\workspace-1\\OcctSharp\\artifacts\\native\\Release\\TKPrim.dll",
+          "sha256": "37DE279166407566D7FFF2DD063638FDF1F8DC89C0D030E550AA4868585F49DD"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-7\\workspace-1\\OcctSharp\\artifacts\\native\\Release\\TKRWMesh.dll",
+          "sha256": "49A61A27309032C374ED78ED205DC89860C4D5D510A7160AE4A5CF85CC7DAC1C"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-7\\workspace-1\\OcctSharp\\artifacts\\native\\Release\\TKService.dll",
+          "sha256": "B16E5AEB5213D9586A606C6443246C0D77CE52B117A54A4E523FD9E0BB41AAE6"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-7\\workspace-1\\OcctSharp\\artifacts\\native\\Release\\TKShHealing.dll",
+          "sha256": "91E87BD3E5A3267C4A2D97B171EA05FA21FE1B78A2B905F7CF7E3CF19F5CD43E"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-7\\workspace-1\\OcctSharp\\artifacts\\native\\Release\\TKStd.dll",
+          "sha256": "7366BFDEF0BE23AE8C0D9FD7AB1676CCC4F8CCD7DEFC53ADD1B4BDC3E91F5660"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-7\\workspace-1\\OcctSharp\\artifacts\\native\\Release\\TKStdL.dll",
+          "sha256": "4EE319E9CD1D1DFF7337B1F03EC8FB2CCBAD0AE0AB8A18FA8EBBF2DBB3113B61"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-7\\workspace-1\\OcctSharp\\artifacts\\native\\Release\\TKTObj.dll",
+          "sha256": "B1491D455B088B13BC332260804DBE53E7FBF8E495A3271759C14334CD3A1196"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-7\\workspace-1\\OcctSharp\\artifacts\\native\\Release\\TKTopAlgo.dll",
+          "sha256": "6690CE35FCF32BD2C379D12A21ABDE6BAF023087F3EEFBCCC5AE40E416B0B107"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-7\\workspace-1\\OcctSharp\\artifacts\\native\\Release\\TKV3d.dll",
+          "sha256": "5356773B60EAF73345AE6822369EB8B721A9D18EABA925491870E24CBA651BD9"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-7\\workspace-1\\OcctSharp\\artifacts\\native\\Release\\TKVCAF.dll",
+          "sha256": "94948F34AD0696D0D4CA404DA4369B348B0B3C1241EEE1E42DAD87353E5629BF"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-7\\workspace-1\\OcctSharp\\artifacts\\native\\Release\\TKXCAF.dll",
+          "sha256": "64095FF4FFA3BDD41BD17FFFDC39F9490CE34C2EF59AAB427C71DEAA6F3B791A"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-7\\workspace-1\\OcctSharp\\artifacts\\native\\Release\\TKXMesh.dll",
+          "sha256": "302BFC3CB41C8EF00548A974C28F86BD194D6267FA31F080227D8D765BC8E9D3"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-7\\workspace-1\\OcctSharp\\artifacts\\native\\Release\\TKXml.dll",
+          "sha256": "9904AAF0435D24E7B89BA094FCB96708942A33B4DFD88241968CE6054B3AF811"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-7\\workspace-1\\OcctSharp\\artifacts\\native\\Release\\TKXmlL.dll",
+          "sha256": "7477A1A138630480D9D42CBAF04637322CD96DCA19880694DEC6A60C77532BCC"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-7\\workspace-1\\OcctSharp\\artifacts\\native\\Release\\TKXmlTObj.dll",
+          "sha256": "689187644BA9103F9288B2BC22208998A933F68CFE19D9B259EBD78DE58FE939"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-7\\workspace-1\\OcctSharp\\artifacts\\native\\Release\\TKXmlXCAF.dll",
+          "sha256": "CECC1712C731DCC0DDC4E855FBFF9EC8D159F83141FB0E5C010A2ECDFB0CEE13"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-7\\workspace-1\\OcctSharp\\artifacts\\native\\Release\\TKXSBase.dll",
+          "sha256": "3978FEC70540BD0B369FF01263BA341E01A57E308F5EA1788B5DC56B1A851AA7"
+        }
+      ],
+      "shortFiles": 425,
+      "nativeRoot12Passed": 12,
+      "nativeRoot12": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-7\\moment-root-runtime-release-2-exit.json",
+        "sha256": "E9AD7CC70FD4E098A49F8C334F40E9C457026080E22110772854FAB51BE95230"
+      },
+      "shared108Passed": 108,
+      "shared108": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-7\\shared-candidate-runtime-release-2-exit.json",
+        "sha256": "B98EF8273E36446BE55D4D0388017F5E6689DEEF6044E9378697FE1785C53582"
+      },
+      "actualNative62": {
+        "TKTObj.dll": {
+          "sha256": "B1491D455B088B13BC332260804DBE53E7FBF8E495A3271759C14334CD3A1196",
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-pcurve-r7\\occt\\TKTObj.dll",
+          "processId": 15468
+        },
+        "avcodec-57.dll": {
+          "sha256": "4D7A6A2CFF37C782CE1A3C74FA83EBBEBCC43DFC774E3F497A406C84C1458C7E",
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-pcurve-r7\\occt\\avcodec-57.dll",
+          "processId": 15468
+        },
+        "TKBRep.dll": {
+          "sha256": "A511C8CF51178CF881C3BA0B54287DCECE6DED03CF3DE99E6FABF2A2D5152207",
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-pcurve-r7\\occt\\TKBRep.dll",
+          "processId": 15468
+        },
+        "TKRWMesh.dll": {
+          "sha256": "49A61A27309032C374ED78ED205DC89860C4D5D510A7160AE4A5CF85CC7DAC1C",
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-pcurve-r7\\occt\\TKRWMesh.dll",
+          "processId": 15468
+        },
+        "TKXSBase.dll": {
+          "sha256": "3978FEC70540BD0B369FF01263BA341E01A57E308F5EA1788B5DC56B1A851AA7",
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-pcurve-r7\\occt\\TKXSBase.dll",
+          "processId": 15468
+        },
+        "TKernel.dll": {
+          "sha256": "3ECBC7F193EBB746CC88A81E03EB603D24FDF03470B346551698F45D4FAEB7B4",
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-pcurve-r7\\occt\\TKernel.dll",
+          "processId": 15468
+        },
+        "TKMesh.dll": {
+          "sha256": "143337A5BF7128B7D5F50B33129D70EE4B4E9669F9166D89AF732444A221F95F",
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-pcurve-r7\\occt\\TKMesh.dll",
+          "processId": 15468
+        },
+        "swscale-4.dll": {
+          "sha256": "67BCFFB3CCDAEBF2BBD3149542D92DD9430ABFDFF1D7B79B3A529AF712926412",
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-pcurve-r7\\occt\\swscale-4.dll",
+          "processId": 15468
+        },
+        "TKDEPLY.dll": {
+          "sha256": "35DAFA5EFACF1DFECCB3E01D560547630142B4C52FFAC5CE4CAE726DFBD31262",
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-pcurve-r7\\occt\\TKDEPLY.dll",
+          "processId": 15468
+        },
+        "jemalloc.dll": {
+          "sha256": "EA0CFCF6A12BB3863961074547C958FD978AA3F800244CC4FE2847B127C4DF5E",
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-pcurve-r7\\occt\\jemalloc.dll",
+          "processId": 15468
+        },
+        "TKG2d.dll": {
+          "sha256": "0D87A20363CFB66F7862FBC9AA7234059D13712B3A0D7E6B35CBB0172810A93C",
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-pcurve-r7\\occt\\TKG2d.dll",
+          "processId": 15468
+        },
+        "TKGeomAlgo.dll": {
+          "sha256": "154E047A29217C0FAF101EC0B8119D6D327E89560CD82CB18D17EC48D508883B",
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-pcurve-r7\\occt\\TKGeomAlgo.dll",
+          "processId": 15468
+        },
+        "TKBinTObj.dll": {
+          "sha256": "F482E7F3A3526150C537E3DD6CDDDBD6B4E38B29C62AC3CF3F81D9E97A296EAB",
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-pcurve-r7\\occt\\TKBinTObj.dll",
+          "processId": 15468
+        },
+        "TKBool.dll": {
+          "sha256": "FA76C5374AE85E1649F27DA41ED0B45EC36C68C413ACE84554198CF39D11DAFD",
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-pcurve-r7\\occt\\TKBool.dll",
+          "processId": 15468
+        },
+        "TKCAF.dll": {
+          "sha256": "E78FD6196F7356FFA541A015CB6DF481E9999D8E813E2D7A5D914CA6205614AE",
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-pcurve-r7\\occt\\TKCAF.dll",
+          "processId": 15468
+        },
+        "TKV3d.dll": {
+          "sha256": "5356773B60EAF73345AE6822369EB8B721A9D18EABA925491870E24CBA651BD9",
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-pcurve-r7\\occt\\TKV3d.dll",
+          "processId": 15468
+        },
+        "TKXmlXCAF.dll": {
+          "sha256": "CECC1712C731DCC0DDC4E855FBFF9EC8D159F83141FB0E5C010A2ECDFB0CEE13",
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-pcurve-r7\\occt\\TKXmlXCAF.dll",
+          "processId": 15468
+        },
+        "TKVCAF.dll": {
+          "sha256": "94948F34AD0696D0D4CA404DA4369B348B0B3C1241EEE1E42DAD87353E5629BF",
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-pcurve-r7\\occt\\TKVCAF.dll",
+          "processId": 15468
+        },
+        "TKShHealing.dll": {
+          "sha256": "91E87BD3E5A3267C4A2D97B171EA05FA21FE1B78A2B905F7CF7E3CF19F5CD43E",
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-pcurve-r7\\occt\\TKShHealing.dll",
+          "processId": 15468
+        },
+        "TKDEOBJ.dll": {
+          "sha256": "C09644DE8F5AFEA74C531054F713132823F0020F28A889229AE2E762D8CA121D",
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-pcurve-r7\\occt\\TKDEOBJ.dll",
+          "processId": 15468
+        },
+        "TKTopAlgo.dll": {
+          "sha256": "6690CE35FCF32BD2C379D12A21ABDE6BAF023087F3EEFBCCC5AE40E416B0B107",
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-pcurve-r7\\occt\\TKTopAlgo.dll",
+          "processId": 15468
+        },
+        "TKService.dll": {
+          "sha256": "B16E5AEB5213D9586A606C6443246C0D77CE52B117A54A4E523FD9E0BB41AAE6",
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-pcurve-r7\\occt\\TKService.dll",
+          "processId": 15468
+        },
+        "avutil-55.dll": {
+          "sha256": "BE7C03FF47618916D16AF446E2F7C00E48F2FF8934C6ACE4C0D0E3D804732E8E",
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-pcurve-r7\\occt\\avutil-55.dll",
+          "processId": 15468
+        },
+        "TKExpress.dll": {
+          "sha256": "2535B5993A42E41C6E35E5EA50574953D0BC5705EAE70D596C1194E5B9C8E872",
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-pcurve-r7\\occt\\TKExpress.dll",
+          "processId": 15468
+        },
+        "TKHelix.dll": {
+          "sha256": "B95F60B662FFF3BBDC7A768AA1DF664468187C3638AC562B5C87C8B9C6808DFF",
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-pcurve-r7\\occt\\TKHelix.dll",
+          "processId": 15468
+        },
+        "TKDEIGES.dll": {
+          "sha256": "3D16433A5CA16D36DFDFE168AF7F7C0645093CDC6C80CA38A157BC84769E43F9",
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-pcurve-r7\\occt\\TKDEIGES.dll",
+          "processId": 15468
+        },
+        "TKStd.dll": {
+          "sha256": "7366BFDEF0BE23AE8C0D9FD7AB1676CCC4F8CCD7DEFC53ADD1B4BDC3E91F5660",
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-pcurve-r7\\occt\\TKStd.dll",
+          "processId": 15468
+        },
+        "tbb12.dll": {
+          "sha256": "887888A0C2FFE7F64718D4EEA2A10CE41C68DEC1A954DB3A62646ADEEE66C0AD",
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-pcurve-r7\\occt\\tbb12.dll",
+          "processId": 15468
+        },
+        "TKFeat.dll": {
+          "sha256": "05F968C96DD0C170463B09F0121DB70E3DB720250634959C91C42396F9437141",
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-pcurve-r7\\occt\\TKFeat.dll",
+          "processId": 15468
+        },
+        "FreeImage.dll": {
+          "sha256": "4594BD0538F7F6B05148B00996FF36DDFEDEF8D66910E931503DCFEBF8EFE1DB",
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-pcurve-r7\\occt\\FreeImage.dll",
+          "processId": 15468
+        },
+        "TKGeomBase.dll": {
+          "sha256": "6BD91D22B6A893884BA74FEC8C352F68BCF0F79096D00F52119D4810EF42567E",
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-pcurve-r7\\occt\\TKGeomBase.dll",
+          "processId": 15468
+        },
+        "avformat-57.dll": {
+          "sha256": "297D3207DD0E6325DAB7A080472A4FD2F743CFC53861615B4DC96B91227CD3AF",
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-pcurve-r7\\occt\\avformat-57.dll",
+          "processId": 15468
+        },
+        "TKG3d.dll": {
+          "sha256": "8A13921267C5839C0D8D4395DAE33FC5C1F80F8D03C0D8C0CEB153AA3DA35C6C",
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-pcurve-r7\\occt\\TKG3d.dll",
+          "processId": 15468
+        },
+        "TKDEGLTF.dll": {
+          "sha256": "636F0E11859C256774B1004617E643D5EFDC415F993A464D73A82F4618CC902A",
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-pcurve-r7\\occt\\TKDEGLTF.dll",
+          "processId": 15468
+        },
+        "TKDEVRML.dll": {
+          "sha256": "7F30F93D81398A61F5E52997494C43ABFABD868009273B4492B1E2B8DD105F7A",
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-pcurve-r7\\occt\\TKDEVRML.dll",
+          "processId": 15468
+        },
+        "openvr_api.dll": {
+          "sha256": "71DB78E77E577DB6D0666C25437695D42CEAFB9C7F8DA94FBE765525B8E2F5F2",
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-pcurve-r7\\occt\\openvr_api.dll",
+          "processId": 15468
+        },
+        "TKMeshVS.dll": {
+          "sha256": "7CF4CEC11EC0B9A7AFF012442A9E868932B74848E46CAA79DC091175A18DD9DD",
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-pcurve-r7\\occt\\TKMeshVS.dll",
+          "processId": 15468
+        },
+        "TKXCAF.dll": {
+          "sha256": "64095FF4FFA3BDD41BD17FFFDC39F9490CE34C2EF59AAB427C71DEAA6F3B791A",
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-pcurve-r7\\occt\\TKXCAF.dll",
+          "processId": 15468
+        },
+        "TKOpenGl.dll": {
+          "sha256": "8C47BB81B4D9F712E557864A67A31637DFF74D83D92B83AEE6960A673CBA07E7",
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-pcurve-r7\\occt\\TKOpenGl.dll",
+          "processId": 15468
+        },
+        "TKXMesh.dll": {
+          "sha256": "302BFC3CB41C8EF00548A974C28F86BD194D6267FA31F080227D8D765BC8E9D3",
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-pcurve-r7\\occt\\TKXMesh.dll",
+          "processId": 15468
+        },
+        "TKLCAF.dll": {
+          "sha256": "C51A1DA060562BA8855C02A091D849A575459FEE3ED80543358F9113871DAF9D",
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-pcurve-r7\\occt\\TKLCAF.dll",
+          "processId": 15468
+        },
+        "TKDE.dll": {
+          "sha256": "2F0E1C9BD86C367B36DC7519502B095DE0DEE910D1F86B5B39BA962790A0D0C5",
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-pcurve-r7\\occt\\TKDE.dll",
+          "processId": 15468
+        },
+        "TKCDF.dll": {
+          "sha256": "9BCCAB992DA8F4069CB4020A064D67DF507309CA679AD20BB97A9B5FB0797A3A",
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-pcurve-r7\\occt\\TKCDF.dll",
+          "processId": 15468
+        },
+        "TKStdL.dll": {
+          "sha256": "4EE319E9CD1D1DFF7337B1F03EC8FB2CCBAD0AE0AB8A18FA8EBBF2DBB3113B61",
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-pcurve-r7\\occt\\TKStdL.dll",
+          "processId": 15468
+        },
+        "TKDECascade.dll": {
+          "sha256": "6E65801F138067283CA2355F7E43FF5BF30502E0CB6F782F33245E7B5096F5A1",
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-pcurve-r7\\occt\\TKDECascade.dll",
+          "processId": 15468
+        },
+        "TKD3DHost.dll": {
+          "sha256": "0EB1591D44FFF265C3870865013C7FCBDE9F9B7DF79903ED0116AC1C93DE10BE",
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-pcurve-r7\\occt\\TKD3DHost.dll",
+          "processId": 15468
+        },
+        "freetype.dll": {
+          "sha256": "637621E4AE51B496B8A86F9B053050D5AF2BA999EA0680BBFE3D5DF91F976C75",
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-pcurve-r7\\occt\\freetype.dll",
+          "processId": 15468
+        },
+        "TKBin.dll": {
+          "sha256": "B27B08FFBE07C1FACA441897E6D807062D01F453BD847175CAE999B15AD31D96",
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-pcurve-r7\\occt\\TKBin.dll",
+          "processId": 15468
+        },
+        "TKDESTL.dll": {
+          "sha256": "68488A4FD4B3C426123BD9969F5E42DD335A89CEA2FFA4E147452653F1BB63A1",
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-pcurve-r7\\occt\\TKDESTL.dll",
+          "processId": 15468
+        },
+        "OcctSharp.Native.dll": {
+          "sha256": "EAD6C6F057630E9DB60FB670CBFA2DCD65BB1664CE3855DBE7CDBE2E265B6000",
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-pcurve-r7\\occt\\OcctSharp.Native.dll",
+          "processId": 15468
+        },
+        "TKBinL.dll": {
+          "sha256": "A8A87E784C6AD97DAF773926A106E8904ABEF77AE30CAD602DD236A0FE376378",
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-pcurve-r7\\occt\\TKBinL.dll",
+          "processId": 15468
+        },
+        "TKXml.dll": {
+          "sha256": "9904AAF0435D24E7B89BA094FCB96708942A33B4DFD88241968CE6054B3AF811",
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-pcurve-r7\\occt\\TKXml.dll",
+          "processId": 15468
+        },
+        "TKPrim.dll": {
+          "sha256": "37DE279166407566D7FFF2DD063638FDF1F8DC89C0D030E550AA4868585F49DD",
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-pcurve-r7\\occt\\TKPrim.dll",
+          "processId": 15468
+        },
+        "TKBO.dll": {
+          "sha256": "41F837935BCC65882ACD73295EF65CA13D47B018ACDCB6093FAF47804B96D0C5",
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-pcurve-r7\\occt\\TKBO.dll",
+          "processId": 15468
+        },
+        "TKFillet.dll": {
+          "sha256": "6ACCA10E58155ECAA1621DCECF395463C6560D4A3B63729BD7688ED7B15A38F5",
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-pcurve-r7\\occt\\TKFillet.dll",
+          "processId": 15468
+        },
+        "TKDESTEP.dll": {
+          "sha256": "DC010933AEF4481083D21F77ADFAEE6ACEADE87D5F454AD5F4743F07A00B4DF6",
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-pcurve-r7\\occt\\TKDESTEP.dll",
+          "processId": 15468
+        },
+        "TKOffset.dll": {
+          "sha256": "B3145BF379A12F46C68B206966679252CB36C0616C1A3D73D572033CB3EFCF8F",
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-pcurve-r7\\occt\\TKOffset.dll",
+          "processId": 15468
+        },
+        "TKXmlL.dll": {
+          "sha256": "7477A1A138630480D9D42CBAF04637322CD96DCA19880694DEC6A60C77532BCC",
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-pcurve-r7\\occt\\TKXmlL.dll",
+          "processId": 15468
+        },
+        "TKBinXCAF.dll": {
+          "sha256": "BE1F35F341A9BC1EF26DB6721AFE727747CC97053A86ADA5A51C03E4C43EBA3A",
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-pcurve-r7\\occt\\TKBinXCAF.dll",
+          "processId": 15468
+        },
+        "TKMath.dll": {
+          "sha256": "2C41EFC32C025D1E7753548498027AA240D315B455BF36130432EA23E5860A2A",
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-pcurve-r7\\occt\\TKMath.dll",
+          "processId": 15468
+        },
+        "TKHLR.dll": {
+          "sha256": "499F63A9335A17F8D2903DB1D56E27EE2DEAD324E35EFE46E2A9FAC8A8BF6F89",
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-pcurve-r7\\occt\\TKHLR.dll",
+          "processId": 15468
+        },
+        "TKXmlTObj.dll": {
+          "sha256": "689187644BA9103F9288B2BC22208998A933F68CFE19D9B259EBD78DE58FE939",
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-pcurve-r7\\occt\\TKXmlTObj.dll",
+          "processId": 15468
+        }
+      }
+    },
+    "Debug": {
+      "generatorPassed": 248,
+      "publicPassed": 16,
+      "fullPassed": 1622,
+      "failed": 0,
+      "skipped": 0,
+      "original1606NamesAndSourcesRetained": true,
+      "public": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-7\\moment-public-debug-1\\exit.json",
+        "sha256": "7D6088DEF402B174ED8F5743DF06D5DE010E536F8FB34E81C905A8F6E3C6CAA4"
+      },
+      "full": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-7\\moment-full-debug-1\\exit.json",
+        "sha256": "7557E7E5AC2AC1043EDB6CC9F98C1B9F5AAAEA0A1232737EF525DFECE03F22FE"
+      },
+      "nativeBridge": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-7\\workspace-1\\OcctSharp\\artifacts\\native\\Debug\\OcctSharp.Native.dll",
+        "sha256": "BDCE5B37720336801AEB3690045FD431B6444C9B19CFEB74B374E084DE3C70F4"
+      },
+      "exports": 41176,
+      "priorExportNamesAndOrderIdentical": true,
+      "old61Dependencies": [
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-7\\workspace-1\\OcctSharp\\artifacts\\native\\Debug\\avcodec-57.dll",
+          "sha256": "4D7A6A2CFF37C782CE1A3C74FA83EBBEBCC43DFC774E3F497A406C84C1458C7E"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-7\\workspace-1\\OcctSharp\\artifacts\\native\\Debug\\avformat-57.dll",
+          "sha256": "297D3207DD0E6325DAB7A080472A4FD2F743CFC53861615B4DC96B91227CD3AF"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-7\\workspace-1\\OcctSharp\\artifacts\\native\\Debug\\avutil-55.dll",
+          "sha256": "BE7C03FF47618916D16AF446E2F7C00E48F2FF8934C6ACE4C0D0E3D804732E8E"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-7\\workspace-1\\OcctSharp\\artifacts\\native\\Debug\\FreeImage.dll",
+          "sha256": "4594BD0538F7F6B05148B00996FF36DDFEDEF8D66910E931503DCFEBF8EFE1DB"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-7\\workspace-1\\OcctSharp\\artifacts\\native\\Debug\\freetype.dll",
+          "sha256": "637621E4AE51B496B8A86F9B053050D5AF2BA999EA0680BBFE3D5DF91F976C75"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-7\\workspace-1\\OcctSharp\\artifacts\\native\\Debug\\jemalloc.dll",
+          "sha256": "6E57FD7C9562DB5EEF41E09C656C2A80B594C3956FE2E341244742367C0F242C"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-7\\workspace-1\\OcctSharp\\artifacts\\native\\Debug\\openvr_api.dll",
+          "sha256": "71DB78E77E577DB6D0666C25437695D42CEAFB9C7F8DA94FBE765525B8E2F5F2"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-7\\workspace-1\\OcctSharp\\artifacts\\native\\Debug\\swscale-4.dll",
+          "sha256": "67BCFFB3CCDAEBF2BBD3149542D92DD9430ABFDFF1D7B79B3A529AF712926412"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-7\\workspace-1\\OcctSharp\\artifacts\\native\\Debug\\tbb12_debug.dll",
+          "sha256": "5B839800B212EC6120C01E28877073ACD2E44EB835DBC5D542C251FE7087F002"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-7\\workspace-1\\OcctSharp\\artifacts\\native\\Debug\\TKBin.dll",
+          "sha256": "EF43F7F2CEA73EDD0F400F8410D3C2A4988217BCD703F7E2EA2D3668C1D6193B"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-7\\workspace-1\\OcctSharp\\artifacts\\native\\Debug\\TKBinL.dll",
+          "sha256": "537AAF5CBDF7420A4421A2A205A65A8474C28C323555759CB8F9672B6401DEC4"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-7\\workspace-1\\OcctSharp\\artifacts\\native\\Debug\\TKBinTObj.dll",
+          "sha256": "5D572965C136B1A607300B8E23FAA756C398C8AC3616177C331BEFF612EF8DB0"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-7\\workspace-1\\OcctSharp\\artifacts\\native\\Debug\\TKBinXCAF.dll",
+          "sha256": "2A8B8854F0B8D9D1AD66FBBBB9ECA78A9AFA0FCB5411D750B0DA79BF938D2F18"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-7\\workspace-1\\OcctSharp\\artifacts\\native\\Debug\\TKBO.dll",
+          "sha256": "18B699F422DA61A23AAFFD00AAC71A1CFA88F25F6D2DEEFEE44DC5051F1B18BE"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-7\\workspace-1\\OcctSharp\\artifacts\\native\\Debug\\TKBool.dll",
+          "sha256": "48E6EEDCAE0130E54746C495A9BAE08CF8E1B68E6E2C190BF121A8915FA3F945"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-7\\workspace-1\\OcctSharp\\artifacts\\native\\Debug\\TKBRep.dll",
+          "sha256": "F7E29DBDB5E4A7EAB5FB73B786E29685DFCFDDE0FC718C1D140C2EB15505E4C8"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-7\\workspace-1\\OcctSharp\\artifacts\\native\\Debug\\TKCAF.dll",
+          "sha256": "F1AA4678BD87BD8CA8884ADFFD3711A419AA1A84359DE48C5288F2254F145265"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-7\\workspace-1\\OcctSharp\\artifacts\\native\\Debug\\TKCDF.dll",
+          "sha256": "EB19AE6DEC65F38E26AD06DBB149DC7685B0F3BDE589FC728160C555EAEA3773"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-7\\workspace-1\\OcctSharp\\artifacts\\native\\Debug\\TKD3DHost.dll",
+          "sha256": "D9CAC02DB93BD66E07664AEDB87E41042B38B69214CE48E84B65E6BD0454E62B"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-7\\workspace-1\\OcctSharp\\artifacts\\native\\Debug\\TKDE.dll",
+          "sha256": "1FFB1E5D60437FA8AA7808D63D80E1E6F3DDC662C4801B86AB7ECA0361D49206"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-7\\workspace-1\\OcctSharp\\artifacts\\native\\Debug\\TKDECascade.dll",
+          "sha256": "F08160B00343734B3065F927B3434CF5B1FA92E97081E98B5B97DBF8E05E0394"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-7\\workspace-1\\OcctSharp\\artifacts\\native\\Debug\\TKDEGLTF.dll",
+          "sha256": "AA4622ED043ECFCEF8E30C4A6DEF7090869CDF756186748853A2E3A007931EA0"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-7\\workspace-1\\OcctSharp\\artifacts\\native\\Debug\\TKDEIGES.dll",
+          "sha256": "FDB22777BBA1CCA582BA042BD0F8E1003A8236921F12191A111997ADEF0B3631"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-7\\workspace-1\\OcctSharp\\artifacts\\native\\Debug\\TKDEOBJ.dll",
+          "sha256": "3756984BF4D47937BF9F4B5AAF3E9E904990209B4E0B938740C503117EE32A98"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-7\\workspace-1\\OcctSharp\\artifacts\\native\\Debug\\TKDEPLY.dll",
+          "sha256": "8E1CBF0DB5044B349EDF268AF0305004050AF37EE333D7A580F2C0FE59F123D8"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-7\\workspace-1\\OcctSharp\\artifacts\\native\\Debug\\TKDESTEP.dll",
+          "sha256": "6EF695BB6BDCE0CA65814422E78124B312BFCBDB1161D35ECD5E1BBD23DFB759"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-7\\workspace-1\\OcctSharp\\artifacts\\native\\Debug\\TKDESTL.dll",
+          "sha256": "32D409AD838486C353777449B8492FC6FF8E09E6D0340683FDAFA288D94DD631"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-7\\workspace-1\\OcctSharp\\artifacts\\native\\Debug\\TKDEVRML.dll",
+          "sha256": "65EC2F919148205C588DF8B8DA1B28EA2433EEB55BBCAB58C065923E9EFB31C4"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-7\\workspace-1\\OcctSharp\\artifacts\\native\\Debug\\TKernel.dll",
+          "sha256": "87992A614FC25899181BBD93B208C81D6C7B3EA11821125B9BA4F74E56C2889D"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-7\\workspace-1\\OcctSharp\\artifacts\\native\\Debug\\TKExpress.dll",
+          "sha256": "B2C2AF1E7A1E453A194D577F8EB2A3C94E09F122155D82C27D4B2A3C1CF74784"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-7\\workspace-1\\OcctSharp\\artifacts\\native\\Debug\\TKFeat.dll",
+          "sha256": "AC69DB734499BC67D108142B861FD03F5CB3B17156306E7A0AF03053FDE619CC"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-7\\workspace-1\\OcctSharp\\artifacts\\native\\Debug\\TKFillet.dll",
+          "sha256": "97AC7FD17984210AF081C75C513BE2C5E0140E070F1528AF2FAA5EDE00F8B1CE"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-7\\workspace-1\\OcctSharp\\artifacts\\native\\Debug\\TKG2d.dll",
+          "sha256": "2D270096940C8F1DF937FE8953816ABF010C4C3AB2FC1A5B71826199389E171E"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-7\\workspace-1\\OcctSharp\\artifacts\\native\\Debug\\TKG3d.dll",
+          "sha256": "1FA4A3216715BAB85C540328D6260101689491A5C87517A883F74D4E941D8A0E"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-7\\workspace-1\\OcctSharp\\artifacts\\native\\Debug\\TKGeomAlgo.dll",
+          "sha256": "F85343E526442D188549DE8040ADF1A917E5915932223C936B3395A383A82B62"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-7\\workspace-1\\OcctSharp\\artifacts\\native\\Debug\\TKGeomBase.dll",
+          "sha256": "D271DBDF83536887CB2708AB27D9058D444E0421DEAF6E2338E59E93704059C4"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-7\\workspace-1\\OcctSharp\\artifacts\\native\\Debug\\TKHelix.dll",
+          "sha256": "5101E1F9FFD0273A72F0EB47F69E1B7A86F2B7961A9824D1E0EF7C0C56BED8C0"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-7\\workspace-1\\OcctSharp\\artifacts\\native\\Debug\\TKHLR.dll",
+          "sha256": "EAEAE780AC74EDC45FECFF45411ABD347DDC18BF296EDD7D2EC1AC2FC7622995"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-7\\workspace-1\\OcctSharp\\artifacts\\native\\Debug\\TKLCAF.dll",
+          "sha256": "F33C61A5EB306573BF00ADDEA5AAB56BFB8E1C54B71453D06F51108ED7F1BE46"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-7\\workspace-1\\OcctSharp\\artifacts\\native\\Debug\\TKMath.dll",
+          "sha256": "B8CE65040509F6799423657100A8A58D6ED87D6572EDAF0B26986E4B80B2FBBC"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-7\\workspace-1\\OcctSharp\\artifacts\\native\\Debug\\TKMesh.dll",
+          "sha256": "5EC5749FDCF0538B8FFEE8580A85A53036331CFB568E171FB840ADE3198EFC60"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-7\\workspace-1\\OcctSharp\\artifacts\\native\\Debug\\TKMeshVS.dll",
+          "sha256": "863C6363B1B7C4DDFF4F1E57C33BC75E300F944A08C3A7F458B3FE00FAC1DD2E"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-7\\workspace-1\\OcctSharp\\artifacts\\native\\Debug\\TKOffset.dll",
+          "sha256": "81B7C5914C61709EF1254A309FBA919C47F3FD4C77AD4B562EA72C032249887F"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-7\\workspace-1\\OcctSharp\\artifacts\\native\\Debug\\TKOpenGl.dll",
+          "sha256": "B8EC1D5A254EC2DE0077C7C0AF854B2B96A554AC4B8F033FC1B54E9E9F2020BD"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-7\\workspace-1\\OcctSharp\\artifacts\\native\\Debug\\TKPrim.dll",
+          "sha256": "EB6687863D5ABF6E1DFBB84A48FEDD27DAFEA9F3147C9EB9F23D3617F6E7D621"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-7\\workspace-1\\OcctSharp\\artifacts\\native\\Debug\\TKRWMesh.dll",
+          "sha256": "681996F72E9B5E2D78690DDBCA9388AC5F7E65340B27A2443191208A4CE9041D"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-7\\workspace-1\\OcctSharp\\artifacts\\native\\Debug\\TKService.dll",
+          "sha256": "9FC8F2BC467CBFD795D22373153EA98D99D9527DCD718B9F7CE89A4837983917"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-7\\workspace-1\\OcctSharp\\artifacts\\native\\Debug\\TKShHealing.dll",
+          "sha256": "6577C6EA43E24CD108DEA3BC33E067FD10965660144F36A0F91F6DBBDAF7DC88"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-7\\workspace-1\\OcctSharp\\artifacts\\native\\Debug\\TKStd.dll",
+          "sha256": "501FEB8D2E2A64023CDFB13503B66EF6A68D4E6B1A959FB3AE683E6C7DFAB951"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-7\\workspace-1\\OcctSharp\\artifacts\\native\\Debug\\TKStdL.dll",
+          "sha256": "C45947C1F025F8E8FAF1ED15A155FF106207906EA30626FE5CAC585760A6B0B0"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-7\\workspace-1\\OcctSharp\\artifacts\\native\\Debug\\TKTObj.dll",
+          "sha256": "AD7B872F505BCA36BA5331E62FD7C9BA1348B322B1B300D70E021616E7BB6460"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-7\\workspace-1\\OcctSharp\\artifacts\\native\\Debug\\TKTopAlgo.dll",
+          "sha256": "2E50CBF494204E85B4D745EB321C1BFA498ADE33DD7E5A8F7770786AA80AEB80"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-7\\workspace-1\\OcctSharp\\artifacts\\native\\Debug\\TKV3d.dll",
+          "sha256": "7037670FC50A54AB964D3EE10D0C56B4CC1F7DCB8B190504D597A71FA6EAA1C4"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-7\\workspace-1\\OcctSharp\\artifacts\\native\\Debug\\TKVCAF.dll",
+          "sha256": "E2CD60634BBF923118215BEACA4A2F075C7233CB4D0C8384980B56F556D1143D"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-7\\workspace-1\\OcctSharp\\artifacts\\native\\Debug\\TKXCAF.dll",
+          "sha256": "6B788F83460C82780CF6C8D7739C62413D6BA2038688A2DD444C72409DAD8DD7"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-7\\workspace-1\\OcctSharp\\artifacts\\native\\Debug\\TKXMesh.dll",
+          "sha256": "B392646130F4FF5EB5ACC6F65B1CA76283E8A6FC77D7D57834A8EAC8FBB652BE"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-7\\workspace-1\\OcctSharp\\artifacts\\native\\Debug\\TKXml.dll",
+          "sha256": "9CB120882CBFDB544690B6F2968BD2C18A9A67CAE8ADC929FF40C0FA3BADA8EF"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-7\\workspace-1\\OcctSharp\\artifacts\\native\\Debug\\TKXmlL.dll",
+          "sha256": "EE80D170FDE1BAD5D584E03A7EB35EBA3CA7EE60EAAB5FB5988E120E3769C30C"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-7\\workspace-1\\OcctSharp\\artifacts\\native\\Debug\\TKXmlTObj.dll",
+          "sha256": "F0984B10FC3BB469C4713AB71E430E369B16642F5F1527CDD54E36F28870E2F8"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-7\\workspace-1\\OcctSharp\\artifacts\\native\\Debug\\TKXmlXCAF.dll",
+          "sha256": "CA1AEEB8218847ED4A2F3A0DC3C7076E51ECA3A680385D187ED177B7388A98AE"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-7\\workspace-1\\OcctSharp\\artifacts\\native\\Debug\\TKXSBase.dll",
+          "sha256": "25FBFB1C7AB44C9E04C885AAFB1C4763133F0039E58BA21B2FD7CA7070D24104"
+        }
+      ],
+      "shortFiles": 425,
+      "nativeRoot12Passed": 12,
+      "nativeRoot12": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-7\\moment-root-runtime-debug-2-exit.json",
+        "sha256": "C4727C92ADBC6804A472BD1391D3259CC126CD09496A4A6679A0DBA32CACBD6E"
+      },
+      "shared108Passed": 108,
+      "shared108": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-7\\shared-candidate-runtime-debug-2-exit.json",
+        "sha256": "4B2F27B51A4A38EEF00523A059E64F7E14FC71BCC246F59880B44D143EB6C8C4"
+      },
+      "actualNative62": {
+        "FreeImage.dll": {
+          "sha256": "4594BD0538F7F6B05148B00996FF36DDFEDEF8D66910E931503DCFEBF8EFE1DB",
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-pcurve-d7\\occt\\FreeImage.dll",
+          "processId": 41312
+        },
+        "TKTObj.dll": {
+          "sha256": "AD7B872F505BCA36BA5331E62FD7C9BA1348B322B1B300D70E021616E7BB6460",
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-pcurve-d7\\occt\\TKTObj.dll",
+          "processId": 41312
+        },
+        "jemalloc.dll": {
+          "sha256": "6E57FD7C9562DB5EEF41E09C656C2A80B594C3956FE2E341244742367C0F242C",
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-pcurve-d7\\occt\\jemalloc.dll",
+          "processId": 41312
+        },
+        "avformat-57.dll": {
+          "sha256": "297D3207DD0E6325DAB7A080472A4FD2F743CFC53861615B4DC96B91227CD3AF",
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-pcurve-d7\\occt\\avformat-57.dll",
+          "processId": 41312
+        },
+        "TKDE.dll": {
+          "sha256": "1FFB1E5D60437FA8AA7808D63D80E1E6F3DDC662C4801B86AB7ECA0361D49206",
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-pcurve-d7\\occt\\TKDE.dll",
+          "processId": 41312
+        },
+        "TKExpress.dll": {
+          "sha256": "B2C2AF1E7A1E453A194D577F8EB2A3C94E09F122155D82C27D4B2A3C1CF74784",
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-pcurve-d7\\occt\\TKExpress.dll",
+          "processId": 41312
+        },
+        "openvr_api.dll": {
+          "sha256": "71DB78E77E577DB6D0666C25437695D42CEAFB9C7F8DA94FBE765525B8E2F5F2",
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-pcurve-d7\\occt\\openvr_api.dll",
+          "processId": 41312
+        },
+        "avutil-55.dll": {
+          "sha256": "BE7C03FF47618916D16AF446E2F7C00E48F2FF8934C6ACE4C0D0E3D804732E8E",
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-pcurve-d7\\occt\\avutil-55.dll",
+          "processId": 41312
+        },
+        "TKXMesh.dll": {
+          "sha256": "B392646130F4FF5EB5ACC6F65B1CA76283E8A6FC77D7D57834A8EAC8FBB652BE",
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-pcurve-d7\\occt\\TKXMesh.dll",
+          "processId": 41312
+        },
+        "TKMeshVS.dll": {
+          "sha256": "863C6363B1B7C4DDFF4F1E57C33BC75E300F944A08C3A7F458B3FE00FAC1DD2E",
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-pcurve-d7\\occt\\TKMeshVS.dll",
+          "processId": 41312
+        },
+        "TKXCAF.dll": {
+          "sha256": "6B788F83460C82780CF6C8D7739C62413D6BA2038688A2DD444C72409DAD8DD7",
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-pcurve-d7\\occt\\TKXCAF.dll",
+          "processId": 41312
+        },
+        "tbb12_debug.dll": {
+          "sha256": "5B839800B212EC6120C01E28877073ACD2E44EB835DBC5D542C251FE7087F002",
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-pcurve-d7\\occt\\tbb12_debug.dll",
+          "processId": 41312
+        },
+        "TKD3DHost.dll": {
+          "sha256": "D9CAC02DB93BD66E07664AEDB87E41042B38B69214CE48E84B65E6BD0454E62B",
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-pcurve-d7\\occt\\TKD3DHost.dll",
+          "processId": 41312
+        },
+        "TKHelix.dll": {
+          "sha256": "5101E1F9FFD0273A72F0EB47F69E1B7A86F2B7961A9824D1E0EF7C0C56BED8C0",
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-pcurve-d7\\occt\\TKHelix.dll",
+          "processId": 41312
+        },
+        "TKRWMesh.dll": {
+          "sha256": "681996F72E9B5E2D78690DDBCA9388AC5F7E65340B27A2443191208A4CE9041D",
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-pcurve-d7\\occt\\TKRWMesh.dll",
+          "processId": 41312
+        },
+        "TKBinL.dll": {
+          "sha256": "537AAF5CBDF7420A4421A2A205A65A8474C28C323555759CB8F9672B6401DEC4",
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-pcurve-d7\\occt\\TKBinL.dll",
+          "processId": 41312
+        },
+        "TKHLR.dll": {
+          "sha256": "EAEAE780AC74EDC45FECFF45411ABD347DDC18BF296EDD7D2EC1AC2FC7622995",
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-pcurve-d7\\occt\\TKHLR.dll",
+          "processId": 41312
+        },
+        "TKDECascade.dll": {
+          "sha256": "F08160B00343734B3065F927B3434CF5B1FA92E97081E98B5B97DBF8E05E0394",
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-pcurve-d7\\occt\\TKDECascade.dll",
+          "processId": 41312
+        },
+        "freetype.dll": {
+          "sha256": "637621E4AE51B496B8A86F9B053050D5AF2BA999EA0680BBFE3D5DF91F976C75",
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-pcurve-d7\\occt\\freetype.dll",
+          "processId": 41312
+        },
+        "TKXSBase.dll": {
+          "sha256": "25FBFB1C7AB44C9E04C885AAFB1C4763133F0039E58BA21B2FD7CA7070D24104",
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-pcurve-d7\\occt\\TKXSBase.dll",
+          "processId": 41312
+        },
+        "TKDEVRML.dll": {
+          "sha256": "65EC2F919148205C588DF8B8DA1B28EA2433EEB55BBCAB58C065923E9EFB31C4",
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-pcurve-d7\\occt\\TKDEVRML.dll",
+          "processId": 41312
+        },
+        "TKG3d.dll": {
+          "sha256": "1FA4A3216715BAB85C540328D6260101689491A5C87517A883F74D4E941D8A0E",
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-pcurve-d7\\occt\\TKG3d.dll",
+          "processId": 41312
+        },
+        "TKXmlL.dll": {
+          "sha256": "EE80D170FDE1BAD5D584E03A7EB35EBA3CA7EE60EAAB5FB5988E120E3769C30C",
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-pcurve-d7\\occt\\TKXmlL.dll",
+          "processId": 41312
+        },
+        "TKBin.dll": {
+          "sha256": "EF43F7F2CEA73EDD0F400F8410D3C2A4988217BCD703F7E2EA2D3668C1D6193B",
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-pcurve-d7\\occt\\TKBin.dll",
+          "processId": 41312
+        },
+        "TKOffset.dll": {
+          "sha256": "81B7C5914C61709EF1254A309FBA919C47F3FD4C77AD4B562EA72C032249887F",
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-pcurve-d7\\occt\\TKOffset.dll",
+          "processId": 41312
+        },
+        "TKMath.dll": {
+          "sha256": "B8CE65040509F6799423657100A8A58D6ED87D6572EDAF0B26986E4B80B2FBBC",
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-pcurve-d7\\occt\\TKMath.dll",
+          "processId": 41312
+        },
+        "TKService.dll": {
+          "sha256": "9FC8F2BC467CBFD795D22373153EA98D99D9527DCD718B9F7CE89A4837983917",
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-pcurve-d7\\occt\\TKService.dll",
+          "processId": 41312
+        },
+        "TKGeomBase.dll": {
+          "sha256": "D271DBDF83536887CB2708AB27D9058D444E0421DEAF6E2338E59E93704059C4",
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-pcurve-d7\\occt\\TKGeomBase.dll",
+          "processId": 41312
+        },
+        "TKG2d.dll": {
+          "sha256": "2D270096940C8F1DF937FE8953816ABF010C4C3AB2FC1A5B71826199389E171E",
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-pcurve-d7\\occt\\TKG2d.dll",
+          "processId": 41312
+        },
+        "TKStdL.dll": {
+          "sha256": "C45947C1F025F8E8FAF1ED15A155FF106207906EA30626FE5CAC585760A6B0B0",
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-pcurve-d7\\occt\\TKStdL.dll",
+          "processId": 41312
+        },
+        "TKDESTL.dll": {
+          "sha256": "32D409AD838486C353777449B8492FC6FF8E09E6D0340683FDAFA288D94DD631",
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-pcurve-d7\\occt\\TKDESTL.dll",
+          "processId": 41312
+        },
+        "TKTopAlgo.dll": {
+          "sha256": "2E50CBF494204E85B4D745EB321C1BFA498ADE33DD7E5A8F7770786AA80AEB80",
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-pcurve-d7\\occt\\TKTopAlgo.dll",
+          "processId": 41312
+        },
+        "TKXmlXCAF.dll": {
+          "sha256": "CA1AEEB8218847ED4A2F3A0DC3C7076E51ECA3A680385D187ED177B7388A98AE",
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-pcurve-d7\\occt\\TKXmlXCAF.dll",
+          "processId": 41312
+        },
+        "TKCDF.dll": {
+          "sha256": "EB19AE6DEC65F38E26AD06DBB149DC7685B0F3BDE589FC728160C555EAEA3773",
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-pcurve-d7\\occt\\TKCDF.dll",
+          "processId": 41312
+        },
+        "TKLCAF.dll": {
+          "sha256": "F33C61A5EB306573BF00ADDEA5AAB56BFB8E1C54B71453D06F51108ED7F1BE46",
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-pcurve-d7\\occt\\TKLCAF.dll",
+          "processId": 41312
+        },
+        "TKBinTObj.dll": {
+          "sha256": "5D572965C136B1A607300B8E23FAA756C398C8AC3616177C331BEFF612EF8DB0",
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-pcurve-d7\\occt\\TKBinTObj.dll",
+          "processId": 41312
+        },
+        "TKFeat.dll": {
+          "sha256": "AC69DB734499BC67D108142B861FD03F5CB3B17156306E7A0AF03053FDE619CC",
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-pcurve-d7\\occt\\TKFeat.dll",
+          "processId": 41312
+        },
+        "TKV3d.dll": {
+          "sha256": "7037670FC50A54AB964D3EE10D0C56B4CC1F7DCB8B190504D597A71FA6EAA1C4",
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-pcurve-d7\\occt\\TKV3d.dll",
+          "processId": 41312
+        },
+        "TKShHealing.dll": {
+          "sha256": "6577C6EA43E24CD108DEA3BC33E067FD10965660144F36A0F91F6DBBDAF7DC88",
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-pcurve-d7\\occt\\TKShHealing.dll",
+          "processId": 41312
+        },
+        "TKBool.dll": {
+          "sha256": "48E6EEDCAE0130E54746C495A9BAE08CF8E1B68E6E2C190BF121A8915FA3F945",
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-pcurve-d7\\occt\\TKBool.dll",
+          "processId": 41312
+        },
+        "TKMesh.dll": {
+          "sha256": "5EC5749FDCF0538B8FFEE8580A85A53036331CFB568E171FB840ADE3198EFC60",
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-pcurve-d7\\occt\\TKMesh.dll",
+          "processId": 41312
+        },
+        "TKDEGLTF.dll": {
+          "sha256": "AA4622ED043ECFCEF8E30C4A6DEF7090869CDF756186748853A2E3A007931EA0",
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-pcurve-d7\\occt\\TKDEGLTF.dll",
+          "processId": 41312
+        },
+        "TKGeomAlgo.dll": {
+          "sha256": "F85343E526442D188549DE8040ADF1A917E5915932223C936B3395A383A82B62",
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-pcurve-d7\\occt\\TKGeomAlgo.dll",
+          "processId": 41312
+        },
+        "TKDEIGES.dll": {
+          "sha256": "FDB22777BBA1CCA582BA042BD0F8E1003A8236921F12191A111997ADEF0B3631",
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-pcurve-d7\\occt\\TKDEIGES.dll",
+          "processId": 41312
+        },
+        "TKDEPLY.dll": {
+          "sha256": "8E1CBF0DB5044B349EDF268AF0305004050AF37EE333D7A580F2C0FE59F123D8",
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-pcurve-d7\\occt\\TKDEPLY.dll",
+          "processId": 41312
+        },
+        "TKVCAF.dll": {
+          "sha256": "E2CD60634BBF923118215BEACA4A2F075C7233CB4D0C8384980B56F556D1143D",
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-pcurve-d7\\occt\\TKVCAF.dll",
+          "processId": 41312
+        },
+        "TKFillet.dll": {
+          "sha256": "97AC7FD17984210AF081C75C513BE2C5E0140E070F1528AF2FAA5EDE00F8B1CE",
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-pcurve-d7\\occt\\TKFillet.dll",
+          "processId": 41312
+        },
+        "TKPrim.dll": {
+          "sha256": "EB6687863D5ABF6E1DFBB84A48FEDD27DAFEA9F3147C9EB9F23D3617F6E7D621",
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-pcurve-d7\\occt\\TKPrim.dll",
+          "processId": 41312
+        },
+        "TKBO.dll": {
+          "sha256": "18B699F422DA61A23AAFFD00AAC71A1CFA88F25F6D2DEEFEE44DC5051F1B18BE",
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-pcurve-d7\\occt\\TKBO.dll",
+          "processId": 41312
+        },
+        "avcodec-57.dll": {
+          "sha256": "4D7A6A2CFF37C782CE1A3C74FA83EBBEBCC43DFC774E3F497A406C84C1458C7E",
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-pcurve-d7\\occt\\avcodec-57.dll",
+          "processId": 41312
+        },
+        "TKernel.dll": {
+          "sha256": "87992A614FC25899181BBD93B208C81D6C7B3EA11821125B9BA4F74E56C2889D",
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-pcurve-d7\\occt\\TKernel.dll",
+          "processId": 41312
+        },
+        "OcctSharp.Native.dll": {
+          "sha256": "BDCE5B37720336801AEB3690045FD431B6444C9B19CFEB74B374E084DE3C70F4",
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-pcurve-d7\\occt\\OcctSharp.Native.dll",
+          "processId": 41312
+        },
+        "TKCAF.dll": {
+          "sha256": "F1AA4678BD87BD8CA8884ADFFD3711A419AA1A84359DE48C5288F2254F145265",
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-pcurve-d7\\occt\\TKCAF.dll",
+          "processId": 41312
+        },
+        "TKStd.dll": {
+          "sha256": "501FEB8D2E2A64023CDFB13503B66EF6A68D4E6B1A959FB3AE683E6C7DFAB951",
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-pcurve-d7\\occt\\TKStd.dll",
+          "processId": 41312
+        },
+        "TKBinXCAF.dll": {
+          "sha256": "2A8B8854F0B8D9D1AD66FBBBB9ECA78A9AFA0FCB5411D750B0DA79BF938D2F18",
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-pcurve-d7\\occt\\TKBinXCAF.dll",
+          "processId": 41312
+        },
+        "TKOpenGl.dll": {
+          "sha256": "B8EC1D5A254EC2DE0077C7C0AF854B2B96A554AC4B8F033FC1B54E9E9F2020BD",
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-pcurve-d7\\occt\\TKOpenGl.dll",
+          "processId": 41312
+        },
+        "TKDESTEP.dll": {
+          "sha256": "6EF695BB6BDCE0CA65814422E78124B312BFCBDB1161D35ECD5E1BBD23DFB759",
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-pcurve-d7\\occt\\TKDESTEP.dll",
+          "processId": 41312
+        },
+        "TKXml.dll": {
+          "sha256": "9CB120882CBFDB544690B6F2968BD2C18A9A67CAE8ADC929FF40C0FA3BADA8EF",
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-pcurve-d7\\occt\\TKXml.dll",
+          "processId": 41312
+        },
+        "swscale-4.dll": {
+          "sha256": "67BCFFB3CCDAEBF2BBD3149542D92DD9430ABFDFF1D7B79B3A529AF712926412",
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-pcurve-d7\\occt\\swscale-4.dll",
+          "processId": 41312
+        },
+        "TKDEOBJ.dll": {
+          "sha256": "3756984BF4D47937BF9F4B5AAF3E9E904990209B4E0B938740C503117EE32A98",
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-pcurve-d7\\occt\\TKDEOBJ.dll",
+          "processId": 41312
+        },
+        "TKBRep.dll": {
+          "sha256": "F7E29DBDB5E4A7EAB5FB73B786E29685DFCFDDE0FC718C1D140C2EB15505E4C8",
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-pcurve-d7\\occt\\TKBRep.dll",
+          "processId": 41312
+        },
+        "TKXmlTObj.dll": {
+          "sha256": "F0984B10FC3BB469C4713AB71E430E369B16642F5F1527CDD54E36F28870E2F8",
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-pcurve-d7\\occt\\TKXmlTObj.dll",
+          "processId": 41312
+        }
+      }
+    }
+  },
+  "algorithm": {
+    "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-7\\workspace-1\\OcctSharp\\src\\OcctSharp.Native\\src\\Modeling\\InspectionIntegration.cpp",
+    "sha256": "068DD348674E763DBC8CDF8E73D9559E23C60F063D80A0B5DA23D145888D9FA1"
+  },
+  "numericalOnlyCompensatedAccumulation": true,
+  "originalGaussNodesToleranceAndBudgetsUnchanged": true,
+  "strictVolumeLimitMm3": 1e-07,
+  "baselineControl": {
+    "terminal": {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-7\\moment-control-release-1\\exit.json",
+      "sha256": "F1C8B8A47E888A96E95B00FE4278A6BBE1ED6813F3919A6A4F2D222C85C22EA3"
+    },
+    "passed": 12,
+    "failed": 4,
+    "failedNames": [
+      "OcctSharp.Runtime.Tests.ExactSharedStepUnitsTests.WholeFileAndReportedReadersKeepThreeStrictIndependentSolids(circle: True, reverse: False)",
+      "OcctSharp.Runtime.Tests.ExactSharedStepUnitsTests.WholeFileAndReportedReadersKeepThreeStrictIndependentSolids(circle: True, reverse: True)",
+      "OcctSharp.Runtime.Tests.ExactSharedStepUnitsTests.SharedActualRootsKeepUnitsOrderRepeatedTransferAndOwnedLifetime(circle: True, system: 1, reverse: False)",
+      "OcctSharp.Runtime.Tests.ExactSharedStepUnitsTests.SharedActualRootsKeepUnitsOrderRepeatedTransferAndOwnedLifetime(circle: True, system: 1, reverse: True)"
+    ],
+    "onlyDifferentFile": "occt/OcctSharp.Native.dll",
+    "actualNative62": {
+      "TKV3d.dll": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-moment-control-r7\\occt\\TKV3d.dll",
+        "processId": 17540,
+        "sha256": "5356773B60EAF73345AE6822369EB8B721A9D18EABA925491870E24CBA651BD9"
+      },
+      "openvr_api.dll": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-moment-control-r7\\occt\\openvr_api.dll",
+        "processId": 17540,
+        "sha256": "71DB78E77E577DB6D0666C25437695D42CEAFB9C7F8DA94FBE765525B8E2F5F2"
+      },
+      "TKXmlL.dll": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-moment-control-r7\\occt\\TKXmlL.dll",
+        "processId": 17540,
+        "sha256": "7477A1A138630480D9D42CBAF04637322CD96DCA19880694DEC6A60C77532BCC"
+      },
+      "TKernel.dll": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-moment-control-r7\\occt\\TKernel.dll",
+        "processId": 17540,
+        "sha256": "3ECBC7F193EBB746CC88A81E03EB603D24FDF03470B346551698F45D4FAEB7B4"
+      },
+      "TKG2d.dll": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-moment-control-r7\\occt\\TKG2d.dll",
+        "processId": 17540,
+        "sha256": "0D87A20363CFB66F7862FBC9AA7234059D13712B3A0D7E6B35CBB0172810A93C"
+      },
+      "TKGeomAlgo.dll": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-moment-control-r7\\occt\\TKGeomAlgo.dll",
+        "processId": 17540,
+        "sha256": "154E047A29217C0FAF101EC0B8119D6D327E89560CD82CB18D17EC48D508883B"
+      },
+      "TKDEGLTF.dll": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-moment-control-r7\\occt\\TKDEGLTF.dll",
+        "processId": 17540,
+        "sha256": "636F0E11859C256774B1004617E643D5EFDC415F993A464D73A82F4618CC902A"
+      },
+      "TKDESTEP.dll": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-moment-control-r7\\occt\\TKDESTEP.dll",
+        "processId": 17540,
+        "sha256": "DC010933AEF4481083D21F77ADFAEE6ACEADE87D5F454AD5F4743F07A00B4DF6"
+      },
+      "avcodec-57.dll": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-moment-control-r7\\occt\\avcodec-57.dll",
+        "processId": 17540,
+        "sha256": "4D7A6A2CFF37C782CE1A3C74FA83EBBEBCC43DFC774E3F497A406C84C1458C7E"
+      },
+      "TKStdL.dll": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-moment-control-r7\\occt\\TKStdL.dll",
+        "processId": 17540,
+        "sha256": "4EE319E9CD1D1DFF7337B1F03EC8FB2CCBAD0AE0AB8A18FA8EBBF2DBB3113B61"
+      },
+      "FreeImage.dll": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-moment-control-r7\\occt\\FreeImage.dll",
+        "processId": 17540,
+        "sha256": "4594BD0538F7F6B05148B00996FF36DDFEDEF8D66910E931503DCFEBF8EFE1DB"
+      },
+      "freetype.dll": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-moment-control-r7\\occt\\freetype.dll",
+        "processId": 17540,
+        "sha256": "637621E4AE51B496B8A86F9B053050D5AF2BA999EA0680BBFE3D5DF91F976C75"
+      },
+      "TKDECascade.dll": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-moment-control-r7\\occt\\TKDECascade.dll",
+        "processId": 17540,
+        "sha256": "6E65801F138067283CA2355F7E43FF5BF30502E0CB6F782F33245E7B5096F5A1"
+      },
+      "TKDESTL.dll": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-moment-control-r7\\occt\\TKDESTL.dll",
+        "processId": 17540,
+        "sha256": "68488A4FD4B3C426123BD9969F5E42DD335A89CEA2FFA4E147452653F1BB63A1"
+      },
+      "TKLCAF.dll": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-moment-control-r7\\occt\\TKLCAF.dll",
+        "processId": 17540,
+        "sha256": "C51A1DA060562BA8855C02A091D849A575459FEE3ED80543358F9113871DAF9D"
+      },
+      "TKBin.dll": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-moment-control-r7\\occt\\TKBin.dll",
+        "processId": 17540,
+        "sha256": "B27B08FFBE07C1FACA441897E6D807062D01F453BD847175CAE999B15AD31D96"
+      },
+      "TKD3DHost.dll": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-moment-control-r7\\occt\\TKD3DHost.dll",
+        "processId": 17540,
+        "sha256": "0EB1591D44FFF265C3870865013C7FCBDE9F9B7DF79903ED0116AC1C93DE10BE"
+      },
+      "TKMath.dll": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-moment-control-r7\\occt\\TKMath.dll",
+        "processId": 17540,
+        "sha256": "2C41EFC32C025D1E7753548498027AA240D315B455BF36130432EA23E5860A2A"
+      },
+      "TKCAF.dll": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-moment-control-r7\\occt\\TKCAF.dll",
+        "processId": 17540,
+        "sha256": "E78FD6196F7356FFA541A015CB6DF481E9999D8E813E2D7A5D914CA6205614AE"
+      },
+      "TKFeat.dll": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-moment-control-r7\\occt\\TKFeat.dll",
+        "processId": 17540,
+        "sha256": "05F968C96DD0C170463B09F0121DB70E3DB720250634959C91C42396F9437141"
+      },
+      "TKHelix.dll": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-moment-control-r7\\occt\\TKHelix.dll",
+        "processId": 17540,
+        "sha256": "B95F60B662FFF3BBDC7A768AA1DF664468187C3638AC562B5C87C8B9C6808DFF"
+      },
+      "avformat-57.dll": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-moment-control-r7\\occt\\avformat-57.dll",
+        "processId": 17540,
+        "sha256": "297D3207DD0E6325DAB7A080472A4FD2F743CFC53861615B4DC96B91227CD3AF"
+      },
+      "TKExpress.dll": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-moment-control-r7\\occt\\TKExpress.dll",
+        "processId": 17540,
+        "sha256": "2535B5993A42E41C6E35E5EA50574953D0BC5705EAE70D596C1194E5B9C8E872"
+      },
+      "TKXCAF.dll": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-moment-control-r7\\occt\\TKXCAF.dll",
+        "processId": 17540,
+        "sha256": "64095FF4FFA3BDD41BD17FFFDC39F9490CE34C2EF59AAB427C71DEAA6F3B791A"
+      },
+      "TKXmlTObj.dll": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-moment-control-r7\\occt\\TKXmlTObj.dll",
+        "processId": 17540,
+        "sha256": "689187644BA9103F9288B2BC22208998A933F68CFE19D9B259EBD78DE58FE939"
+      },
+      "TKCDF.dll": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-moment-control-r7\\occt\\TKCDF.dll",
+        "processId": 17540,
+        "sha256": "9BCCAB992DA8F4069CB4020A064D67DF507309CA679AD20BB97A9B5FB0797A3A"
+      },
+      "TKXmlXCAF.dll": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-moment-control-r7\\occt\\TKXmlXCAF.dll",
+        "processId": 17540,
+        "sha256": "CECC1712C731DCC0DDC4E855FBFF9EC8D159F83141FB0E5C010A2ECDFB0CEE13"
+      },
+      "OcctSharp.Native.dll": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-moment-control-r7\\occt\\OcctSharp.Native.dll",
+        "processId": 17540,
+        "sha256": "43F51CBB454FE760CC6E8113BB887DD60E1AEC985B6154A804627D9C19685DD4"
+      },
+      "TKDEPLY.dll": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-moment-control-r7\\occt\\TKDEPLY.dll",
+        "processId": 17540,
+        "sha256": "35DAFA5EFACF1DFECCB3E01D560547630142B4C52FFAC5CE4CAE726DFBD31262"
+      },
+      "TKDEOBJ.dll": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-moment-control-r7\\occt\\TKDEOBJ.dll",
+        "processId": 17540,
+        "sha256": "C09644DE8F5AFEA74C531054F713132823F0020F28A889229AE2E762D8CA121D"
+      },
+      "TKVCAF.dll": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-moment-control-r7\\occt\\TKVCAF.dll",
+        "processId": 17540,
+        "sha256": "94948F34AD0696D0D4CA404DA4369B348B0B3C1241EEE1E42DAD87353E5629BF"
+      },
+      "TKOpenGl.dll": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-moment-control-r7\\occt\\TKOpenGl.dll",
+        "processId": 17540,
+        "sha256": "8C47BB81B4D9F712E557864A67A31637DFF74D83D92B83AEE6960A673CBA07E7"
+      },
+      "TKBO.dll": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-moment-control-r7\\occt\\TKBO.dll",
+        "processId": 17540,
+        "sha256": "41F837935BCC65882ACD73295EF65CA13D47B018ACDCB6093FAF47804B96D0C5"
+      },
+      "TKXSBase.dll": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-moment-control-r7\\occt\\TKXSBase.dll",
+        "processId": 17540,
+        "sha256": "3978FEC70540BD0B369FF01263BA341E01A57E308F5EA1788B5DC56B1A851AA7"
+      },
+      "TKBinTObj.dll": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-moment-control-r7\\occt\\TKBinTObj.dll",
+        "processId": 17540,
+        "sha256": "F482E7F3A3526150C537E3DD6CDDDBD6B4E38B29C62AC3CF3F81D9E97A296EAB"
+      },
+      "tbb12.dll": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-moment-control-r7\\occt\\tbb12.dll",
+        "processId": 17540,
+        "sha256": "887888A0C2FFE7F64718D4EEA2A10CE41C68DEC1A954DB3A62646ADEEE66C0AD"
+      },
+      "TKHLR.dll": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-moment-control-r7\\occt\\TKHLR.dll",
+        "processId": 17540,
+        "sha256": "499F63A9335A17F8D2903DB1D56E27EE2DEAD324E35EFE46E2A9FAC8A8BF6F89"
+      },
+      "TKMesh.dll": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-moment-control-r7\\occt\\TKMesh.dll",
+        "processId": 17540,
+        "sha256": "143337A5BF7128B7D5F50B33129D70EE4B4E9669F9166D89AF732444A221F95F"
+      },
+      "swscale-4.dll": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-moment-control-r7\\occt\\swscale-4.dll",
+        "processId": 17540,
+        "sha256": "67BCFFB3CCDAEBF2BBD3149542D92DD9430ABFDFF1D7B79B3A529AF712926412"
+      },
+      "TKBinL.dll": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-moment-control-r7\\occt\\TKBinL.dll",
+        "processId": 17540,
+        "sha256": "A8A87E784C6AD97DAF773926A106E8904ABEF77AE30CAD602DD236A0FE376378"
+      },
+      "TKDEVRML.dll": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-moment-control-r7\\occt\\TKDEVRML.dll",
+        "processId": 17540,
+        "sha256": "7F30F93D81398A61F5E52997494C43ABFABD868009273B4492B1E2B8DD105F7A"
+      },
+      "TKTopAlgo.dll": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-moment-control-r7\\occt\\TKTopAlgo.dll",
+        "processId": 17540,
+        "sha256": "6690CE35FCF32BD2C379D12A21ABDE6BAF023087F3EEFBCCC5AE40E416B0B107"
+      },
+      "TKXMesh.dll": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-moment-control-r7\\occt\\TKXMesh.dll",
+        "processId": 17540,
+        "sha256": "302BFC3CB41C8EF00548A974C28F86BD194D6267FA31F080227D8D765BC8E9D3"
+      },
+      "TKMeshVS.dll": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-moment-control-r7\\occt\\TKMeshVS.dll",
+        "processId": 17540,
+        "sha256": "7CF4CEC11EC0B9A7AFF012442A9E868932B74848E46CAA79DC091175A18DD9DD"
+      },
+      "avutil-55.dll": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-moment-control-r7\\occt\\avutil-55.dll",
+        "processId": 17540,
+        "sha256": "BE7C03FF47618916D16AF446E2F7C00E48F2FF8934C6ACE4C0D0E3D804732E8E"
+      },
+      "TKBRep.dll": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-moment-control-r7\\occt\\TKBRep.dll",
+        "processId": 17540,
+        "sha256": "A511C8CF51178CF881C3BA0B54287DCECE6DED03CF3DE99E6FABF2A2D5152207"
+      },
+      "TKDE.dll": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-moment-control-r7\\occt\\TKDE.dll",
+        "processId": 17540,
+        "sha256": "2F0E1C9BD86C367B36DC7519502B095DE0DEE910D1F86B5B39BA962790A0D0C5"
+      },
+      "TKGeomBase.dll": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-moment-control-r7\\occt\\TKGeomBase.dll",
+        "processId": 17540,
+        "sha256": "6BD91D22B6A893884BA74FEC8C352F68BCF0F79096D00F52119D4810EF42567E"
+      },
+      "TKTObj.dll": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-moment-control-r7\\occt\\TKTObj.dll",
+        "processId": 17540,
+        "sha256": "B1491D455B088B13BC332260804DBE53E7FBF8E495A3271759C14334CD3A1196"
+      },
+      "jemalloc.dll": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-moment-control-r7\\occt\\jemalloc.dll",
+        "processId": 17540,
+        "sha256": "EA0CFCF6A12BB3863961074547C958FD978AA3F800244CC4FE2847B127C4DF5E"
+      },
+      "TKRWMesh.dll": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-moment-control-r7\\occt\\TKRWMesh.dll",
+        "processId": 17540,
+        "sha256": "49A61A27309032C374ED78ED205DC89860C4D5D510A7160AE4A5CF85CC7DAC1C"
+      },
+      "TKBinXCAF.dll": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-moment-control-r7\\occt\\TKBinXCAF.dll",
+        "processId": 17540,
+        "sha256": "BE1F35F341A9BC1EF26DB6721AFE727747CC97053A86ADA5A51C03E4C43EBA3A"
+      },
+      "TKFillet.dll": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-moment-control-r7\\occt\\TKFillet.dll",
+        "processId": 17540,
+        "sha256": "6ACCA10E58155ECAA1621DCECF395463C6560D4A3B63729BD7688ED7B15A38F5"
+      },
+      "TKOffset.dll": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-moment-control-r7\\occt\\TKOffset.dll",
+        "processId": 17540,
+        "sha256": "B3145BF379A12F46C68B206966679252CB36C0616C1A3D73D572033CB3EFCF8F"
+      },
+      "TKBool.dll": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-moment-control-r7\\occt\\TKBool.dll",
+        "processId": 17540,
+        "sha256": "FA76C5374AE85E1649F27DA41ED0B45EC36C68C413ACE84554198CF39D11DAFD"
+      },
+      "TKG3d.dll": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-moment-control-r7\\occt\\TKG3d.dll",
+        "processId": 17540,
+        "sha256": "8A13921267C5839C0D8D4395DAE33FC5C1F80F8D03C0D8C0CEB153AA3DA35C6C"
+      },
+      "TKStd.dll": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-moment-control-r7\\occt\\TKStd.dll",
+        "processId": 17540,
+        "sha256": "7366BFDEF0BE23AE8C0D9FD7AB1676CCC4F8CCD7DEFC53ADD1B4BDC3E91F5660"
+      },
+      "TKShHealing.dll": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-moment-control-r7\\occt\\TKShHealing.dll",
+        "processId": 17540,
+        "sha256": "91E87BD3E5A3267C4A2D97B171EA05FA21FE1B78A2B905F7CF7E3CF19F5CD43E"
+      },
+      "TKXml.dll": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-moment-control-r7\\occt\\TKXml.dll",
+        "processId": 17540,
+        "sha256": "9904AAF0435D24E7B89BA094FCB96708942A33B4DFD88241968CE6054B3AF811"
+      },
+      "TKPrim.dll": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-moment-control-r7\\occt\\TKPrim.dll",
+        "processId": 17540,
+        "sha256": "37DE279166407566D7FFF2DD063638FDF1F8DC89C0D030E550AA4868585F49DD"
+      },
+      "TKDEIGES.dll": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-moment-control-r7\\occt\\TKDEIGES.dll",
+        "processId": 17540,
+        "sha256": "3D16433A5CA16D36DFDFE168AF7F7C0645093CDC6C80CA38A157BC84769E43F9"
+      },
+      "TKService.dll": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-moment-control-r7\\occt\\TKService.dll",
+        "processId": 17540,
+        "sha256": "B16E5AEB5213D9586A606C6443246C0D77CE52B117A54A4E523FD9E0BB41AAE6"
+      }
+    }
+  },
+  "generatedOutputsUnchanged": 186,
+  "stableIdsUnchanged": 26040,
+  "recovery": {
+    "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\capability-evidence\\AF_PENDING_SDK31_EXACT_STEP_V10.json",
+    "sha256": "F89DB73AA4272C9F26790A4EF04111C40D97E0E5C4EC2EB346547BA39954A67B"
+  },
+  "replayFiles": 255,
+  "prematureSharedProbeLoadFailure": {
+    "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-7\\shared-candidate-runtime-release-1-exit.json",
+    "sha256": "B7DE0969FEB0CE27F384C3EA1AEF907559B0DD559ECF5D921FFB0963CED2AB64"
+  },
+  "independentStockStepStrict": "FAIL_RETAINED",
+  "private14Packages": "NOT_RUN",
+  "cleanConsumer": "NOT_RUN",
+  "applicationSource1068": "NOT_INTEGRATED",
+  "originalApplication65": "41 PASS / 24 EXPORT FAIL",
+  "production": "source1000 / SDK26",
+  "AF": "ACTIVE",
+  "G": "USER_DEFERRED",
+  "cleanup": false,
+  "desktopInputStarted": false
+}
