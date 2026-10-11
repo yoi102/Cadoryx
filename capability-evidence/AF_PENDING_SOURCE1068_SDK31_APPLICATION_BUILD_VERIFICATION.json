@@ -1,0 +1,66 @@
+{
+  "recordedAt": "2026-10-11T23:29:51.872979+00:00",
+  "state": "PASS_DEPENDENCY_ONLY_APP_BOTH_BUILD0_DISCOVERY_AND_ACTUAL_SOURCE_RECOVERY_RUNTIME_PENDING",
+  "fullLocalBuildProof": {
+    "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af-sdk31-application-draft-1\\build-both-1-verification.json",
+    "sha256": "567A608AD125CFC633F98A8686FB669C7C056A4A141068A3BAB78990A88E903E"
+  },
+  "privateSdkProof": {
+    "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\capability-evidence\\AF_PRIVATE_SDK31_PACKAGE_CONSUMER_VERIFICATION.json",
+    "sha256": "49358C99F69832FBF154A28AF0270914F52604B9031975C459562388257570CC"
+  },
+  "sourceRecovery": {
+    "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\capability-evidence\\AF_PENDING_SOURCE1068_SDK31_DEPENDENCY_V2.json",
+    "sha256": "A3930A9EDB2C1CABABBAB242CA4D62354581725946C823F801E68BFD810BC1DA"
+  },
+  "sourceCount": 1068,
+  "candidateSourceAggregateSha256": "902829405CC91A734656271EF64C3242C9D1DF8970A8BBB55DDB1936B19A298D",
+  "actualDependencyChanges": [
+    "Cadoryx.Cli/packages.lock.json",
+    "Cadoryx.Kernel.Occt/packages.lock.json",
+    "Cadoryx.Rendering.Occt/packages.lock.json",
+    "Cadoryx.Tests/packages.lock.json",
+    "Cadoryx.wpf/packages.lock.json",
+    "Directory.Build.props",
+    "NuGet.Config"
+  ],
+  "originalBehaviorAndAllTestSourcesByteIdentical": true,
+  "configurations": {
+    "Release": {
+      "buildExit": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af-sdk31-application-draft-1\\build-release-1-exit.json",
+        "sha256": "674F3EF5649BE06B3AE0E68D508A5BE50936003B5C171F2D5BEB331EA34DD196"
+      },
+      "allOriginalTestsDiscovered": 6532,
+      "relatedOriginalTestsDiscovered": 986,
+      "appAndTestNative62AndManaged13PackageHashesMatch": true,
+      "runtimeTerminal": "PENDING_EXISTING_SCHEDULED_JOB"
+    },
+    "Debug": {
+      "buildExit": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af-sdk31-application-draft-1\\build-debug-1-exit.json",
+        "sha256": "6D2D6F7F6A445FFB2278480E6D323EC49C97C4BC2B6CDB4A576CA69AF4BA36FD"
+      },
+      "allOriginalTestsDiscovered": 6532,
+      "relatedOriginalTestsDiscovered": 986,
+      "appAndTestNative62AndManaged13PackageHashesMatch": true,
+      "runtimeTerminal": "PENDING_EXISTING_SCHEDULED_JOB"
+    }
+  },
+  "version": "8.0.1-preview.31.cadoryx.exact-step.31",
+  "abi": "1.89",
+  "bridge": "0.97.0",
+  "realRuntime": "PENDING_SCHEDULED_ORIGINAL65_986_6532_BOTH_CONFIGURATIONS_WAITING_EXISTING_NATIVE_LANE",
+  "originalSdk30Focused65": {
+    "passed": 41,
+    "failed": 24,
+    "skipped": 0
+  },
+  "externalStrictStockReader": "FAIL_RETAINED",
+  "applicationExportGuardChanged": false,
+  "productionApplied": false,
+  "desktopInputStarted": false,
+  "cleanup": false,
+  "AF": "ACTIVE",
+  "G": "USER_DEFERRED"
+}

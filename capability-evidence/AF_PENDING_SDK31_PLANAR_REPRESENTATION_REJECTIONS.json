@@ -1,0 +1,639 @@
+{
+  "recordedAt": "2026-10-11T23:26:33.054105+00:00",
+  "state": "DIAGNOSTIC_COMPLETE_ALL_THREE_EXACT_REPRESENTATIONS_REJECTED_BY_UNMODIFIED_EXTERNAL_STRICT_READER",
+  "fixedOcctCommit": "b8f597c677811d1f9f4d8a97f5ae2825c0353a42",
+  "pinnedSourceLimitation": {
+    "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\capability-evidence\\AF_PENDING_SDK31_STOCK_PLANAR_PCURVE_LIMITATION.json",
+    "sha256": "BF5DBB1ED51B175685F1DC6F0072A9E33260CE60F62150AD67D63A6E2C9353A0"
+  },
+  "fixture": {
+    "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\tests\\OcctSharp.Runtime.Tests\\Fixtures\\b18-exact-step\\spline-g1-mirrored-inward-Bevel.brep",
+    "sha256": "B74ABBF44809F93AA28FA4F6349241F2B8882D8BB92A1B40EC3D859EB3260D51"
+  },
+  "trackedDiagnosticSources": [
+    {
+      "original": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\sdk31-planar-equivalence-probe-1\\planar-step.cpp",
+        "sha256": "BD8178103C6A7B7E0204407D4C357E7BBE18BBB5DF69C7878FB473C185850230"
+      },
+      "tracked": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\capability-evidence\\diagnostics\\sdk31-planar-representation-rejections\\sdk31-planar-equivalence-probe-1-planar-step.cpp",
+        "sha256": "BD8178103C6A7B7E0204407D4C357E7BBE18BBB5DF69C7878FB473C185850230"
+      }
+    },
+    {
+      "original": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\sdk31-planar-equivalence-probe-1\\CMakeLists.txt",
+        "sha256": "A4BF4A3C387DCB7A181A2B81CE86054CECB324D38C17C37224C47E3AF9A45BC7"
+      },
+      "tracked": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\capability-evidence\\diagnostics\\sdk31-planar-representation-rejections\\sdk31-planar-equivalence-probe-1-CMakeLists.txt",
+        "sha256": "A4BF4A3C387DCB7A181A2B81CE86054CECB324D38C17C37224C47E3AF9A45BC7"
+      }
+    },
+    {
+      "original": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\sdk31-planar-direct-curve-probe-2\\planar-step.cpp",
+        "sha256": "3090F527411DCAD5D284DA20F7A4532D3861E668FC0FACA22D218D2ABF785CC6"
+      },
+      "tracked": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\capability-evidence\\diagnostics\\sdk31-planar-representation-rejections\\sdk31-planar-direct-curve-probe-2-planar-step.cpp",
+        "sha256": "3090F527411DCAD5D284DA20F7A4532D3861E668FC0FACA22D218D2ABF785CC6"
+      }
+    },
+    {
+      "original": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\sdk31-planar-direct-curve-probe-2\\CMakeLists.txt",
+        "sha256": "A4BF4A3C387DCB7A181A2B81CE86054CECB324D38C17C37224C47E3AF9A45BC7"
+      },
+      "tracked": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\capability-evidence\\diagnostics\\sdk31-planar-representation-rejections\\sdk31-planar-direct-curve-probe-2-CMakeLists.txt",
+        "sha256": "A4BF4A3C387DCB7A181A2B81CE86054CECB324D38C17C37224C47E3AF9A45BC7"
+      }
+    },
+    {
+      "original": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\sdk31-planar-extrusion-probe-3\\planar-step.cpp",
+        "sha256": "AFDB853573515A900C8AAB7847AC74D931A728F392CB8E0A5ECDBAC9F2BA030B"
+      },
+      "tracked": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\capability-evidence\\diagnostics\\sdk31-planar-representation-rejections\\sdk31-planar-extrusion-probe-3-planar-step.cpp",
+        "sha256": "AFDB853573515A900C8AAB7847AC74D931A728F392CB8E0A5ECDBAC9F2BA030B"
+      }
+    },
+    {
+      "original": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\sdk31-planar-extrusion-probe-3\\CMakeLists.txt",
+        "sha256": "A4BF4A3C387DCB7A181A2B81CE86054CECB324D38C17C37224C47E3AF9A45BC7"
+      },
+      "tracked": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\capability-evidence\\diagnostics\\sdk31-planar-representation-rejections\\sdk31-planar-extrusion-probe-3-CMakeLists.txt",
+        "sha256": "A4BF4A3C387DCB7A181A2B81CE86054CECB324D38C17C37224C47E3AF9A45BC7"
+      }
+    }
+  ],
+  "writerReaderPairs": [
+    {
+      "probe": "sdk31-planar-equivalence-probe-1",
+      "configuration": "Release",
+      "mode": 0,
+      "writerExit": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\sdk31-planar-equivalence-probe-1\\writer-release-0-1-exit.json",
+        "sha256": "66D6F4E6A279605DC6DC4EC324F8F0117D0EB1AFC472E6EB4EE9C4981DF42494"
+      },
+      "stockExit": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\sdk31-planar-equivalence-probe-1\\stock-release-0-1-exit.json",
+        "sha256": "965396D066A63B21CDA11042FC1176709A725631F61EB9A57188F1BC0612D31E"
+      },
+      "writerLog": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\sdk31-planar-equivalence-probe-1\\writer-release-0-1.log",
+        "sha256": "79EC41FE2699FCE518A05B360F32BB39899600C1B9E4C27CF8636CEEEF8E8CCB"
+      },
+      "stockLog": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\sdk31-planar-equivalence-probe-1\\stock-release-0-1.log",
+        "sha256": "2F28D1A795395FB91378C89502790ACE502FF5D4518463B3CD5929276006B67D"
+      },
+      "step": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\sdk31-planar-equivalence-probe-1\\writer-release-0-1.step",
+        "sha256": "8E6A4AFF886156B89ADF9BE5F0FE02E12B17A9133F9A0B03F611A2469912A7D4"
+      },
+      "stockExecutable": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-4\\probe-build-1\\Release\\ExactStepStockReader.exe",
+        "sha256": "30145EFE0B9AAE92C46DFAE74EAEDA3B8C3314CE669C0C1CD4EAD9AEDCF1F1D7"
+      },
+      "writerActualModules": 23,
+      "stockActualModules": 23,
+      "strictValid": false,
+      "maximumCurveSurfaceDeltaMm": 6.993286712306907e-07,
+      "privateCopyStrictValid": true,
+      "authorBrepKept": true,
+      "exactSurfacePointAndDerivativeSampleDelta": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "probe": "sdk31-planar-equivalence-probe-1",
+      "configuration": "Release",
+      "mode": 1,
+      "writerExit": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\sdk31-planar-equivalence-probe-1\\writer-release-1-1-exit.json",
+        "sha256": "CE34AD9E0AE87E3CD4411FA85EB6C382B94E2CD0AB3D75AA78B72D0A6C5DCA9A"
+      },
+      "stockExit": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\sdk31-planar-equivalence-probe-1\\stock-release-1-1-exit.json",
+        "sha256": "01A8F11124C0424746991362C55484DFCA29A19E490FB07CEDBDF91100180D2D"
+      },
+      "writerLog": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\sdk31-planar-equivalence-probe-1\\writer-release-1-1.log",
+        "sha256": "8E761E50DF0B56B9F6D248B8BE1DCD31ED3BA8689A3BE5163D242C9BF49B424C"
+      },
+      "stockLog": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\sdk31-planar-equivalence-probe-1\\stock-release-1-1.log",
+        "sha256": "3599508D734B5CED04775C509B024F861D63F9750D2287B8DCCAC07594F03742"
+      },
+      "step": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\sdk31-planar-equivalence-probe-1\\writer-release-1-1.step",
+        "sha256": "882F94D847C7A9E6E542A55A3806B72754714BFEB207477FEE905624A88FDF97"
+      },
+      "stockExecutable": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-4\\probe-build-1\\Release\\ExactStepStockReader.exe",
+        "sha256": "30145EFE0B9AAE92C46DFAE74EAEDA3B8C3314CE669C0C1CD4EAD9AEDCF1F1D7"
+      },
+      "writerActualModules": 23,
+      "stockActualModules": 23,
+      "strictValid": false,
+      "maximumCurveSurfaceDeltaMm": 0.00050451192404268,
+      "privateCopyStrictValid": true,
+      "authorBrepKept": true,
+      "exactSurfacePointAndDerivativeSampleDelta": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "probe": "sdk31-planar-equivalence-probe-1",
+      "configuration": "Debug",
+      "mode": 0,
+      "writerExit": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\sdk31-planar-equivalence-probe-1\\writer-debug-0-1-exit.json",
+        "sha256": "EB00ED358E2E4619ED4FA44448BEF672485FF2758FF6E900F740BA0C66B9FBB4"
+      },
+      "stockExit": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\sdk31-planar-equivalence-probe-1\\stock-debug-0-1-exit.json",
+        "sha256": "148A6BFDB485BC08E5160918CF8063F79FB411F82C707D577940F9054F8B6458"
+      },
+      "writerLog": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\sdk31-planar-equivalence-probe-1\\writer-debug-0-1.log",
+        "sha256": "0AF0A8905B548DE3DA0548077FA70883C0FEDC29613526E4A20E88A13C95DFE6"
+      },
+      "stockLog": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\sdk31-planar-equivalence-probe-1\\stock-debug-0-1.log",
+        "sha256": "007AE19F8B0F8E3FCD1147D14CAD21FE3914601D5D55A7BDC5B14024D4B76F3D"
+      },
+      "step": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\sdk31-planar-equivalence-probe-1\\writer-debug-0-1.step",
+        "sha256": "DD2260432D983CD4512CA5E3BCEBBE2D6EA0C4A9CB1DD210336F5A82D18DDC21"
+      },
+      "stockExecutable": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-4\\probe-build-1\\Debug\\ExactStepStockReader.exe",
+        "sha256": "D6CFDB236D06EEC4F09EF7B9B1AB4A3EC8B5487954BE0B2A27A4484BDF7225AF"
+      },
+      "writerActualModules": 26,
+      "stockActualModules": 23,
+      "strictValid": false,
+      "maximumCurveSurfaceDeltaMm": 6.993286712306907e-07,
+      "privateCopyStrictValid": true,
+      "authorBrepKept": true,
+      "exactSurfacePointAndDerivativeSampleDelta": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "probe": "sdk31-planar-equivalence-probe-1",
+      "configuration": "Debug",
+      "mode": 1,
+      "writerExit": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\sdk31-planar-equivalence-probe-1\\writer-debug-1-1-exit.json",
+        "sha256": "EDB787676D191714180F115415176654BAE99EF2D4B1FD8C6CFEF31872591E6F"
+      },
+      "stockExit": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\sdk31-planar-equivalence-probe-1\\stock-debug-1-1-exit.json",
+        "sha256": "8DC4E45D42EC2B01A8AE52AF43005B87B058FB8C12441B2AB1685A8A1C09F7A0"
+      },
+      "writerLog": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\sdk31-planar-equivalence-probe-1\\writer-debug-1-1.log",
+        "sha256": "517E2784CB493454EF058A3E99BED6DFFE37729554AE992556AF9F9E77B85F8A"
+      },
+      "stockLog": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\sdk31-planar-equivalence-probe-1\\stock-debug-1-1.log",
+        "sha256": "EB0DFD05E7DB809BCD29BB4B2010DE1340D22E2BF6B3E7FA4FD6A350E310F9E6"
+      },
+      "step": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\sdk31-planar-equivalence-probe-1\\writer-debug-1-1.step",
+        "sha256": "FB641796D9270EC1CF5CB2555DEB98CE2525071F58C34AF08B2EBBD880E79C96"
+      },
+      "stockExecutable": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-4\\probe-build-1\\Debug\\ExactStepStockReader.exe",
+        "sha256": "D6CFDB236D06EEC4F09EF7B9B1AB4A3EC8B5487954BE0B2A27A4484BDF7225AF"
+      },
+      "writerActualModules": 26,
+      "stockActualModules": 23,
+      "strictValid": false,
+      "maximumCurveSurfaceDeltaMm": 0.00050451192404268,
+      "privateCopyStrictValid": true,
+      "authorBrepKept": true,
+      "exactSurfacePointAndDerivativeSampleDelta": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "probe": "sdk31-planar-direct-curve-probe-2",
+      "configuration": "Release",
+      "mode": 0,
+      "writerExit": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\sdk31-planar-direct-curve-probe-2\\writer-release-0-1-exit.json",
+        "sha256": "F64085903822CFA1566552DFDA00B9E929AA0C297A04997CB36FF58AB517F353"
+      },
+      "stockExit": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\sdk31-planar-direct-curve-probe-2\\stock-release-0-1-exit.json",
+        "sha256": "7447C0D23B103181A336365C77FD4AEBA24BD668263CF85ADCE35010AB4243F2"
+      },
+      "writerLog": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\sdk31-planar-direct-curve-probe-2\\writer-release-0-1.log",
+        "sha256": "ADB787F34C1FF5124B43406FF800A16197ABAF91835390869DD46661CF575C46"
+      },
+      "stockLog": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\sdk31-planar-direct-curve-probe-2\\stock-release-0-1.log",
+        "sha256": "F83F83DB89CD0BEFCC156C4F88CB00F99821BB4B4D2ACD38ACD86AC81A16680F"
+      },
+      "step": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\sdk31-planar-direct-curve-probe-2\\writer-release-0-1.step",
+        "sha256": "D341D1648CED10573DFE6DE002D300B7B63099E1170D9148E2F6DC40642A5094"
+      },
+      "stockExecutable": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-4\\probe-build-1\\Release\\ExactStepStockReader.exe",
+        "sha256": "30145EFE0B9AAE92C46DFAE74EAEDA3B8C3314CE669C0C1CD4EAD9AEDCF1F1D7"
+      },
+      "writerActualModules": 23,
+      "stockActualModules": 23,
+      "strictValid": false,
+      "maximumCurveSurfaceDeltaMm": 6.993286712306907e-07,
+      "privateCopyStrictValid": true,
+      "authorBrepKept": true,
+      "exactSurfacePointAndDerivativeSampleDelta": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "probe": "sdk31-planar-direct-curve-probe-2",
+      "configuration": "Release",
+      "mode": 1,
+      "writerExit": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\sdk31-planar-direct-curve-probe-2\\writer-release-1-1-exit.json",
+        "sha256": "C7ACFD85D1B5789390E291973E28D33E6C1DEF64FBDF329024C7BD37286A7AF1"
+      },
+      "stockExit": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\sdk31-planar-direct-curve-probe-2\\stock-release-1-1-exit.json",
+        "sha256": "BCDCFE1DB8AB478D854855FF08924D06C0FB760D78FB715995082DE98FA51AE9"
+      },
+      "writerLog": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\sdk31-planar-direct-curve-probe-2\\writer-release-1-1.log",
+        "sha256": "F429E28762C26878A8079B0A13E7E427B97BDDFEB17666C3DC46DE5187844036"
+      },
+      "stockLog": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\sdk31-planar-direct-curve-probe-2\\stock-release-1-1.log",
+        "sha256": "301ACC548E80E981D43071A65314A346DB271CBA4AA15C77E4980F5B36566359"
+      },
+      "step": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\sdk31-planar-direct-curve-probe-2\\writer-release-1-1.step",
+        "sha256": "7B9810F9C80289128CA73EF92B03F2E08B2765D488C89E1AC3FD70511D30A9CD"
+      },
+      "stockExecutable": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-4\\probe-build-1\\Release\\ExactStepStockReader.exe",
+        "sha256": "30145EFE0B9AAE92C46DFAE74EAEDA3B8C3314CE669C0C1CD4EAD9AEDCF1F1D7"
+      },
+      "writerActualModules": 23,
+      "stockActualModules": 23,
+      "strictValid": false,
+      "maximumCurveSurfaceDeltaMm": 0.00050451192404268,
+      "privateCopyStrictValid": true,
+      "authorBrepKept": true,
+      "exactSurfacePointAndDerivativeSampleDelta": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "probe": "sdk31-planar-direct-curve-probe-2",
+      "configuration": "Release",
+      "mode": 2,
+      "writerExit": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\sdk31-planar-direct-curve-probe-2\\writer-release-2-1-exit.json",
+        "sha256": "7B0CF864ABEA1358D5B77FAD5530CE37D7CE48D8074D7A29DD4B2650F43867A8"
+      },
+      "stockExit": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\sdk31-planar-direct-curve-probe-2\\stock-release-2-1-exit.json",
+        "sha256": "48AA3A72069A831248B0CEE0AA464F2D9EB615E8526A00ADB3FA14BA9F16EA99"
+      },
+      "writerLog": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\sdk31-planar-direct-curve-probe-2\\writer-release-2-1.log",
+        "sha256": "53AD75C1E82C38174B4A51DBBE28680F7FCC59A19B88A9D44E6B49C3E92F3540"
+      },
+      "stockLog": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\sdk31-planar-direct-curve-probe-2\\stock-release-2-1.log",
+        "sha256": "89737970DEB48951F248C457A1B7DAAF22A04172BF03BD6D4EA6CA04DD35588E"
+      },
+      "step": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\sdk31-planar-direct-curve-probe-2\\writer-release-2-1.step",
+        "sha256": "25DFC95D96721FA808675ACC0F8F5B406472702C9075498363E0A08576007E94"
+      },
+      "stockExecutable": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-4\\probe-build-1\\Release\\ExactStepStockReader.exe",
+        "sha256": "30145EFE0B9AAE92C46DFAE74EAEDA3B8C3314CE669C0C1CD4EAD9AEDCF1F1D7"
+      },
+      "writerActualModules": 23,
+      "stockActualModules": 23,
+      "strictValid": false,
+      "maximumCurveSurfaceDeltaMm": 0.00050451192404268,
+      "privateCopyStrictValid": true,
+      "authorBrepKept": true,
+      "exactSurfacePointAndDerivativeSampleDelta": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "probe": "sdk31-planar-direct-curve-probe-2",
+      "configuration": "Debug",
+      "mode": 0,
+      "writerExit": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\sdk31-planar-direct-curve-probe-2\\writer-debug-0-1-exit.json",
+        "sha256": "36A703C17C8C56A51FC257D4CFF4CB1E43257E2560BF7A31E5C2317EF7484988"
+      },
+      "stockExit": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\sdk31-planar-direct-curve-probe-2\\stock-debug-0-1-exit.json",
+        "sha256": "AF270394D4E3468C69B5C71AAEDA36157170A0563E96A5BE29514F5527780272"
+      },
+      "writerLog": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\sdk31-planar-direct-curve-probe-2\\writer-debug-0-1.log",
+        "sha256": "57A672BE002EB20D9530528566ABB8928A7FB137963EBB4D3E3DA97F6C42AB12"
+      },
+      "stockLog": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\sdk31-planar-direct-curve-probe-2\\stock-debug-0-1.log",
+        "sha256": "989DF4A0DE0AB2EF45AFC833F06852002B1379489D78F6FBD2D54190EBC919BB"
+      },
+      "step": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\sdk31-planar-direct-curve-probe-2\\writer-debug-0-1.step",
+        "sha256": "DFBE4A8FAF7E1E36A0C45EAC8FF95EB736097CB4FBC15E255A4BD220F614F700"
+      },
+      "stockExecutable": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-4\\probe-build-1\\Debug\\ExactStepStockReader.exe",
+        "sha256": "D6CFDB236D06EEC4F09EF7B9B1AB4A3EC8B5487954BE0B2A27A4484BDF7225AF"
+      },
+      "writerActualModules": 26,
+      "stockActualModules": 23,
+      "strictValid": false,
+      "maximumCurveSurfaceDeltaMm": 6.993286712306907e-07,
+      "privateCopyStrictValid": true,
+      "authorBrepKept": true,
+      "exactSurfacePointAndDerivativeSampleDelta": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "probe": "sdk31-planar-direct-curve-probe-2",
+      "configuration": "Debug",
+      "mode": 1,
+      "writerExit": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\sdk31-planar-direct-curve-probe-2\\writer-debug-1-1-exit.json",
+        "sha256": "A9BE93C8DB66DB52499606A4CCBB6FA5608E5B741B85FAB88848631E30C1CCBB"
+      },
+      "stockExit": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\sdk31-planar-direct-curve-probe-2\\stock-debug-1-1-exit.json",
+        "sha256": "FA5A10EA949BD2AA4CF382BF16BE69EBAEED25435FD76C072D8DFDCB81601BD5"
+      },
+      "writerLog": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\sdk31-planar-direct-curve-probe-2\\writer-debug-1-1.log",
+        "sha256": "F32B1E7C83E206A165375D11433EC38F2834BD14DFA5800BCBEE9BBABD5B7F5E"
+      },
+      "stockLog": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\sdk31-planar-direct-curve-probe-2\\stock-debug-1-1.log",
+        "sha256": "7282288732939B321A81F7EEA3517D3D11CB0182C65F220DFE8C9A5FDC47C1D0"
+      },
+      "step": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\sdk31-planar-direct-curve-probe-2\\writer-debug-1-1.step",
+        "sha256": "57ACF5A13BC8F4E15419809D286194EBD9F459CD44DF58D7D08E5AE5740E2B20"
+      },
+      "stockExecutable": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-4\\probe-build-1\\Debug\\ExactStepStockReader.exe",
+        "sha256": "D6CFDB236D06EEC4F09EF7B9B1AB4A3EC8B5487954BE0B2A27A4484BDF7225AF"
+      },
+      "writerActualModules": 26,
+      "stockActualModules": 23,
+      "strictValid": false,
+      "maximumCurveSurfaceDeltaMm": 0.00050451192404268,
+      "privateCopyStrictValid": true,
+      "authorBrepKept": true,
+      "exactSurfacePointAndDerivativeSampleDelta": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "probe": "sdk31-planar-direct-curve-probe-2",
+      "configuration": "Debug",
+      "mode": 2,
+      "writerExit": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\sdk31-planar-direct-curve-probe-2\\writer-debug-2-1-exit.json",
+        "sha256": "1E70633F9D98FD70148A971B8F450E84B88099A6A368C6EEE99203863E662C52"
+      },
+      "stockExit": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\sdk31-planar-direct-curve-probe-2\\stock-debug-2-1-exit.json",
+        "sha256": "E9B6C613984C8396A834AF1F6E607FD013CB13735B4E36EB469C26A0CFBC1D99"
+      },
+      "writerLog": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\sdk31-planar-direct-curve-probe-2\\writer-debug-2-1.log",
+        "sha256": "E25DD5C046CEA33978FC84A9609D5327303DAA33F677623B25D68568C06A7775"
+      },
+      "stockLog": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\sdk31-planar-direct-curve-probe-2\\stock-debug-2-1.log",
+        "sha256": "CB2CDFBCC21ABAE770E9935B578F1F67F41154FD84AA9A1D8F0B396D6A78C135"
+      },
+      "step": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\sdk31-planar-direct-curve-probe-2\\writer-debug-2-1.step",
+        "sha256": "E1BC03CFB63F0D5445CA0FAC11B061192584AB34422E4A83B70F48250DAEF5BE"
+      },
+      "stockExecutable": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-4\\probe-build-1\\Debug\\ExactStepStockReader.exe",
+        "sha256": "D6CFDB236D06EEC4F09EF7B9B1AB4A3EC8B5487954BE0B2A27A4484BDF7225AF"
+      },
+      "writerActualModules": 26,
+      "stockActualModules": 23,
+      "strictValid": false,
+      "maximumCurveSurfaceDeltaMm": 0.00050451192404268,
+      "privateCopyStrictValid": true,
+      "authorBrepKept": true,
+      "exactSurfacePointAndDerivativeSampleDelta": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "probe": "sdk31-planar-extrusion-probe-3",
+      "configuration": "Release",
+      "mode": 0,
+      "writerExit": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\sdk31-planar-extrusion-probe-3\\writer-release-0-1-exit.json",
+        "sha256": "474939C16714D2FF3D6D42534EB2F6E3B246A9972A75F041596F4477CD86967C"
+      },
+      "stockExit": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\sdk31-planar-extrusion-probe-3\\stock-release-0-1-exit.json",
+        "sha256": "68F6777AF6DE4362BD242CBABB1234BE02E4C85B56B808287A9B20C400D4281A"
+      },
+      "writerLog": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\sdk31-planar-extrusion-probe-3\\writer-release-0-1.log",
+        "sha256": "4F8132515D3DDAD2B210B7272026A41F41B5383A0C98840D78A9EAEDA8C6F275"
+      },
+      "stockLog": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\sdk31-planar-extrusion-probe-3\\stock-release-0-1.log",
+        "sha256": "EC52F671625B42D9CEDBA5F1B409161555FAF20FBA65C6E7B002C3556C883B2C"
+      },
+      "step": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\sdk31-planar-extrusion-probe-3\\writer-release-0-1.step",
+        "sha256": "78202DC62DF05BBB274165AB8968D1D443442FA23E91BBD517C1AC8D911E66F2"
+      },
+      "stockExecutable": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-4\\probe-build-1\\Release\\ExactStepStockReader.exe",
+        "sha256": "30145EFE0B9AAE92C46DFAE74EAEDA3B8C3314CE669C0C1CD4EAD9AEDCF1F1D7"
+      },
+      "writerActualModules": 23,
+      "stockActualModules": 23,
+      "strictValid": false,
+      "maximumCurveSurfaceDeltaMm": 6.993286712306907e-07,
+      "privateCopyStrictValid": true,
+      "authorBrepKept": true,
+      "exactSurfacePointAndDerivativeSampleDelta": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "probe": "sdk31-planar-extrusion-probe-3",
+      "configuration": "Release",
+      "mode": 3,
+      "writerExit": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\sdk31-planar-extrusion-probe-3\\writer-release-3-1-exit.json",
+        "sha256": "C18319A015B96BA584278B577077248EC57E4A435D036D6DEB6672F625690FE7"
+      },
+      "stockExit": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\sdk31-planar-extrusion-probe-3\\stock-release-3-1-exit.json",
+        "sha256": "6A39E3A9560B0F302F31D1C1F5F8C4272C6B1B883CEC8F31BB0D40D0B8E0F0D3"
+      },
+      "writerLog": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\sdk31-planar-extrusion-probe-3\\writer-release-3-1.log",
+        "sha256": "341160023AB3AAD33C3584FBA1AD1294D7F6A348060D9597B0308AE061DB6A39"
+      },
+      "stockLog": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\sdk31-planar-extrusion-probe-3\\stock-release-3-1.log",
+        "sha256": "CD8D5FDA32BBF1C0C9E9E66C7D7066D510E9CBD7FA8A911F4F1B78F25FDFF58F"
+      },
+      "step": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\sdk31-planar-extrusion-probe-3\\writer-release-3-1.step",
+        "sha256": "522AD98B3D24445C25C753E28CB691ABAAABAB36639A11B0F69ECEFCADFC8B27"
+      },
+      "stockExecutable": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-4\\probe-build-1\\Release\\ExactStepStockReader.exe",
+        "sha256": "30145EFE0B9AAE92C46DFAE74EAEDA3B8C3314CE669C0C1CD4EAD9AEDCF1F1D7"
+      },
+      "writerActualModules": 23,
+      "stockActualModules": 23,
+      "strictValid": false,
+      "maximumCurveSurfaceDeltaMm": 0.0005045119240426584,
+      "privateCopyStrictValid": true,
+      "authorBrepKept": true,
+      "exactSurfacePointAndDerivativeSampleDelta": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "probe": "sdk31-planar-extrusion-probe-3",
+      "configuration": "Debug",
+      "mode": 0,
+      "writerExit": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\sdk31-planar-extrusion-probe-3\\writer-debug-0-1-exit.json",
+        "sha256": "A700073615C53ECBC1B9B74B1939E86321435ABD953FFFD521BEB39A0265324F"
+      },
+      "stockExit": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\sdk31-planar-extrusion-probe-3\\stock-debug-0-1-exit.json",
+        "sha256": "4FDF3B38F65F812AF55B911C245B93C381F6E389E39F15EBDA8B7DD0ED0A821B"
+      },
+      "writerLog": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\sdk31-planar-extrusion-probe-3\\writer-debug-0-1.log",
+        "sha256": "16C93510494C91C2391C63D27E4BBAF7CF976046C5E44E8B5B9F52C77C99200F"
+      },
+      "stockLog": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\sdk31-planar-extrusion-probe-3\\stock-debug-0-1.log",
+        "sha256": "701DD0F2480CFBC0E0FA85CB45FB7CEADD25404AA9DFCA73ED7D4D0DAE640D16"
+      },
+      "step": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\sdk31-planar-extrusion-probe-3\\writer-debug-0-1.step",
+        "sha256": "4FFE2DDCCC826798B1C3753B8CA6221D9919BEB6488D041ACD264C3D22E61589"
+      },
+      "stockExecutable": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-4\\probe-build-1\\Debug\\ExactStepStockReader.exe",
+        "sha256": "D6CFDB236D06EEC4F09EF7B9B1AB4A3EC8B5487954BE0B2A27A4484BDF7225AF"
+      },
+      "writerActualModules": 26,
+      "stockActualModules": 23,
+      "strictValid": false,
+      "maximumCurveSurfaceDeltaMm": 6.993286712306907e-07,
+      "privateCopyStrictValid": true,
+      "authorBrepKept": true,
+      "exactSurfacePointAndDerivativeSampleDelta": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "probe": "sdk31-planar-extrusion-probe-3",
+      "configuration": "Debug",
+      "mode": 3,
+      "writerExit": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\sdk31-planar-extrusion-probe-3\\writer-debug-3-1-exit.json",
+        "sha256": "FA14A0F7D49E8CA1773A6E4F7C12572F9918323C6B3DE871C37E73AA75312660"
+      },
+      "stockExit": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\sdk31-planar-extrusion-probe-3\\stock-debug-3-1-exit.json",
+        "sha256": "ACC42D1424553CC1DC9BB14E5645122681DE2C0B1D11247ECCC9BC6BA5501774"
+      },
+      "writerLog": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\sdk31-planar-extrusion-probe-3\\writer-debug-3-1.log",
+        "sha256": "990661561AE02930D6FA52140B9C88738B8BBE3D8B732D6C571CB59F9327C667"
+      },
+      "stockLog": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\sdk31-planar-extrusion-probe-3\\stock-debug-3-1.log",
+        "sha256": "75932D4B3E6523751DFAC6E4E884EEDFB04B3335BD6BCB471DD60A4C860570D8"
+      },
+      "step": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\sdk31-planar-extrusion-probe-3\\writer-debug-3-1.step",
+        "sha256": "F3452C67A2E0A5C2B6273617C7950A7087F862C661BC4EA4AD789D1BE96BEB48"
+      },
+      "stockExecutable": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-4\\probe-build-1\\Debug\\ExactStepStockReader.exe",
+        "sha256": "D6CFDB236D06EEC4F09EF7B9B1AB4A3EC8B5487954BE0B2A27A4484BDF7225AF"
+      },
+      "writerActualModules": 26,
+      "stockActualModules": 23,
+      "strictValid": false,
+      "maximumCurveSurfaceDeltaMm": 0.0005045119240426584,
+      "privateCopyStrictValid": true,
+      "authorBrepKept": true,
+      "exactSurfacePointAndDerivativeSampleDelta": [
+        0.0,
+        0.0
+      ]
+    }
+  ],
+  "modeDefinitions": {
+    "0": "Unmodified SDK31 exact-offset writer",
+    "1": "Degree1 tensor-product plane, original UV knots, exact existing pcurves/ranges",
+    "2": "Mode1 with STEP edges referencing existing exact 3D curves directly",
+    "3": "Exact infinite extrusion of plane X-axis line along Y, original UV, direct3D edges"
+  },
+  "conclusion": "All alternatives preserve the author and exact private surface, but the unmodified stock reader still creates inaccurate cap pcurves. No mode is accepted for product integration. Mathematical representation equivalence and internal reader success do not satisfy the external strict gate.",
+  "toleranceChanged": false,
+  "fittingInProbe": false,
+  "productOrGeneratorSourceModified": false,
+  "applicationExportGuardChanged": false,
+  "publicUpstreamModified": false,
+  "desktopInputStarted": false,
+  "cleanup": false,
+  "AF": "ACTIVE",
+  "G": "USER_DEFERRED"
+}

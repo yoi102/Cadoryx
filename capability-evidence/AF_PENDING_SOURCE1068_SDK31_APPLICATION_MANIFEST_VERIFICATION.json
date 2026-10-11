@@ -1,0 +1,173 @@
+{
+  "recordedAt": "2026-10-11T23:34:00.865634+00:00",
+  "state": "PASS_SOURCE1068_SDK31_RUNTIME_MANIFEST_FOUR_IDENTITY_FIELDS_BOTH_BUILD0_ORIGINAL_DISCOVERY_AND_EXACT_RECOVERY",
+  "preparation": {
+    "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af-sdk31-application-draft-2\\preparation-1.json",
+    "sha256": "8C9D91750AB31CBBC82480B96F306CE45B4173E2A3F17CB947ABC7B32E08FD7B"
+  },
+  "parentDependencyBuild": {
+    "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af-sdk31-application-draft-1\\build-both-1-verification.json",
+    "sha256": "567A608AD125CFC633F98A8686FB669C7C056A4A141068A3BAB78990A88E903E"
+  },
+  "parentDependencyRecovery": {
+    "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\capability-evidence\\AF_PENDING_SOURCE1068_SDK31_DEPENDENCY_V2.json",
+    "sha256": "A3930A9EDB2C1CABABBAB242CA4D62354581725946C823F801E68BFD810BC1DA"
+  },
+  "candidate": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af-sdk31-application-draft-2\\workspace-1",
+  "sourceCount": 1068,
+  "changedSource": "Cadoryx.wpf/runtime-baseline.json",
+  "beforeManifest": {
+    "application": "Cadoryx",
+    "documentWriterVersion": "0.7.8",
+    "framework": "net10.0-windows",
+    "runtime": "win-x64",
+    "occtSharpPackage": "8.0.1-preview.31.cadoryx.generated-defeature-history.30",
+    "nativeSha256": "51688ec759362bb8a611cc0cf6eccd2d4535040ef9a38e8493eb8ade4237fb59",
+    "occtVersion": "8.0.1",
+    "messagePackPackage": "3.1.8",
+    "containerVersion": 1,
+    "sectionVersions": {
+      "document": 60,
+      "assembly-patterns": 2,
+      "datums": 2,
+      "parameters": 3,
+      "structure": 3,
+      "features": 43,
+      "engineering-review": 1,
+      "drawings": 14,
+      "presentation": 2,
+      "geometry": 2,
+      "sketches": 22,
+      "sketch-expressions": 4,
+      "topology": 1,
+      "history": 4,
+      "history-queries": 1,
+      "feature-bindings": 2,
+      "external-parts": 1,
+      "sketch-regions": 3
+    },
+    "coreSectionEncoding": "messagepack",
+    "nativeAbi": "1.88",
+    "bridgeVersion": "0.96.0",
+    "occurrenceDocumentWriterVersion": "0.7.9"
+  },
+  "afterManifest": {
+    "application": "Cadoryx",
+    "documentWriterVersion": "0.7.8",
+    "framework": "net10.0-windows",
+    "runtime": "win-x64",
+    "occtSharpPackage": "8.0.1-preview.31.cadoryx.exact-step.31",
+    "nativeSha256": "2f3c5864033000b8ed7370166246f4892e111238e7d577a5b4c515b96d9f48a1",
+    "occtVersion": "8.0.1",
+    "messagePackPackage": "3.1.8",
+    "containerVersion": 1,
+    "sectionVersions": {
+      "document": 60,
+      "assembly-patterns": 2,
+      "datums": 2,
+      "parameters": 3,
+      "structure": 3,
+      "features": 43,
+      "engineering-review": 1,
+      "drawings": 14,
+      "presentation": 2,
+      "geometry": 2,
+      "sketches": 22,
+      "sketch-expressions": 4,
+      "topology": 1,
+      "history": 4,
+      "history-queries": 1,
+      "feature-bindings": 2,
+      "external-parts": 1,
+      "sketch-regions": 3
+    },
+    "coreSectionEncoding": "messagepack",
+    "nativeAbi": "1.89",
+    "bridgeVersion": "0.97.0",
+    "occurrenceDocumentWriterVersion": "0.7.9"
+  },
+  "changedIdentityFields": [
+    "occtSharpPackage",
+    "nativeSha256",
+    "nativeAbi",
+    "bridgeVersion"
+  ],
+  "allOtherSourceAndTestBytesPreserved": true,
+  "configurations": {
+    "Release": {
+      "build": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af-sdk31-application-draft-2\\build-release-1-exit.json",
+        "sha256": "0C27540CC29605686DFB892C5BFA25D659835C00B11FC6487B091AF63778ECBD"
+      },
+      "inventory": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af-sdk31-application-draft-2\\inventory-release-1-exit.json",
+        "sha256": "27434C32A2F737458B03026306F012267CC4AAC6ADD7F75F95070743D5883653"
+      },
+      "original6532NamesUnchanged": true,
+      "related986NamesUnchanged": true,
+      "outputManifest": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af-sdk31-application-draft-2\\workspace-1\\Cadoryx.wpf\\bin\\Release\\net10.0-windows\\win-x64\\runtime-baseline.json",
+        "sha256": "A05C9695FA7B1B877C6F9294B7F48B2390ADE5BFFAA6BA58C85EF9CDE4893F21"
+      },
+      "testAssembly": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af-sdk31-application-draft-2\\workspace-1\\Cadoryx.Tests\\bin\\Release\\net10.0\\Cadoryx.Tests.dll",
+        "sha256": "0B6565F34707F748354544D3AE3C7EDD2B6038C776585B00CC6E418A5134A8CB"
+      },
+      "managed13AndNative62MatchIndependentPrivatePackage": true,
+      "actualRuntime": "NOT_RUN_FOR_THIS_FINAL_MANIFEST_FORK"
+    },
+    "Debug": {
+      "build": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af-sdk31-application-draft-2\\build-debug-1-exit.json",
+        "sha256": "0FAF02DCBB57403C169ACBA5C4B7767AE6ED455B68F15266235CDF6F642406DE"
+      },
+      "inventory": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af-sdk31-application-draft-2\\inventory-debug-1-exit.json",
+        "sha256": "B1074C5DD72982B49074D7BC09C5F95801B55890C0452056756909F30AF90227"
+      },
+      "original6532NamesUnchanged": true,
+      "related986NamesUnchanged": true,
+      "outputManifest": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af-sdk31-application-draft-2\\workspace-1\\Cadoryx.wpf\\bin\\Debug\\net10.0-windows\\win-x64\\runtime-baseline.json",
+        "sha256": "A05C9695FA7B1B877C6F9294B7F48B2390ADE5BFFAA6BA58C85EF9CDE4893F21"
+      },
+      "testAssembly": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af-sdk31-application-draft-2\\workspace-1\\Cadoryx.Tests\\bin\\Debug\\net10.0\\Cadoryx.Tests.dll",
+        "sha256": "DA44CE77A7706D66C010A1A614FF6F01F1D8908D3F84B69BD7734C2C139797EA"
+      },
+      "managed13AndNative62MatchIndependentPrivatePackage": true,
+      "actualRuntime": "NOT_RUN_FOR_THIS_FINAL_MANIFEST_FORK"
+    }
+  },
+  "patch": {
+    "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\capability-evidence\\AF_PENDING_SOURCE1068_SDK31_MANIFEST.patch",
+    "sha256": "89DD4DFF0A9B48B550C51444D1E15EF1751260CBBF782D2384ACF48895FE3B28",
+    "bytes": 1428
+  },
+  "manifestReplay": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af-sdk31-application-draft-2\\manifest-recovery-replay-1",
+  "all1068ReplayVerified": true,
+  "replayChecks": [
+    {
+      "args": [
+        "--check"
+      ],
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "args": [],
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": ""
+    }
+  ],
+  "originalRuntimeDraft1": "ALREADY_QUEUED_AND_FROZEN_NOT_RESTARTED_OR_CLAIMED_AS_FINAL_DRAFT2_RUNTIME",
+  "finalManifestForkRuntime": "NOT_RUN",
+  "applicationExportGuardChanged": false,
+  "productionApplied": false,
+  "cleanup": false,
+  "desktopInputStarted": false,
+  "AF": "ACTIVE",
+  "G": "USER_DEFERRED"
+}
