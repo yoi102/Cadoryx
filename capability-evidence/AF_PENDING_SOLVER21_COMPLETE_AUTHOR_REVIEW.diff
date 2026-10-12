@@ -1,0 +1,27 @@
+--- a/Cadoryx.Sketching/ManagedSketchConstraintSolver.cs
++++ b/Cadoryx.Sketching/ManagedSketchConstraintSolver.cs
+@@ -13,7 +13,7 @@
+     public ManagedSketchConstraintSolver():this(null){}
+     public ManagedSketchConstraintSolver(IExactSketchExpressionRegions? regions,ISketchExpressionRegionVerifier? regionVerifier=null)
+     {this.regions=regions;this.regionVerifier=regionVerifier;}
+-    public string Version=>"cadoryx.sketch.lm-svd.19";
++    public string Version=>"cadoryx.sketch.lm-svd.21";
+     public Task<SketchSolveReport> SolveAsync(CadSketch sketch,SketchSolveOptions? options=null,CancellationToken cancellationToken=default)
+         =>Task.Run(()=>Solve(sketch,options??new(),cancellationToken),cancellationToken);
+ 
+--- a/Cadoryx.Sketching/SketchEquationSystem.PrescribedAuthors.cs
++++ b/Cadoryx.Sketching/SketchEquationSystem.PrescribedAuthors.cs
+@@ -19,6 +19,13 @@
+         var fixedPoints=fixes.GroupBy(c=>c.Point)
+             .Where(g=>g.Select(c=>c.Position).Distinct().Count()==1).Select(g=>g.Key).ToHashSet();
+         if(fixedPoints.Count==0)return false;
++        // Endpoint relations alone do not prove every region source fixed.
++        // A primitive may consume a live generated endpoint from another author;
++        // retain the full coupled solve whenever that dependency is not prescribed.
++        if(sketch.RegionOffsets.Where(g=>!g.IsFrozen).SelectMany(g=>g.Sources)
++            .SelectMany(loop=>loop).Any(source=>!Complete(source.Entity)))return false;
++        if(sketch.ExpressionCurves.Where(c=>c.Source is {IsFrozen:false})
++            .Any(c=>!Complete(c.Source!.Entity)))return false;
+         return enabled.All(c=>c switch
+         {
+             FixPointConstraint fix=>fixedPoints.Contains(fix.Point),

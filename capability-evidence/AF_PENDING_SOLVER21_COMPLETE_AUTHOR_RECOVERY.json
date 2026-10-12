@@ -1,0 +1,59 @@
+{
+  "recordedAt": "2026-10-12T00:40:16.700430+00:00",
+  "state": "PASS_TWO_SOURCE_BYTE_PATCH_REPLAY_ALL1070_BUILD_BOTH_RUNTIME_PENDING",
+  "candidate": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\b18-prescribed-complete-authors-draft-2\\workspace-1",
+  "sourceCount": 1070,
+  "build": {
+    "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\b18-prescribed-complete-authors-draft-2\\build-both-1-verification.json",
+    "sha256": "65D4F6D45122E1A480158A0BABE18CEC04BDB48E83CB1B1DFA9DCC1B6DFDAEDA"
+  },
+  "patch": {
+    "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\capability-evidence\\AF_PENDING_SOLVER21_COMPLETE_AUTHOR.patch",
+    "sha256": "BA9D781741209690E6EBE219900702481181923972C321ACE037AB8105646B3E",
+    "bytes": 14511
+  },
+  "sourceChanges": [
+    {
+      "path": "Cadoryx.Sketching/ManagedSketchConstraintSolver.cs",
+      "beforeSha256": "F4C785196358676D6CA34CC4D53F76129929402F22791DE4FB56F55262954BCA",
+      "afterSha256": "5EBDAA8EE12901B0D6D2A73D949F02077CF3877762718E5AB861502BE29F4844"
+    },
+    {
+      "path": "Cadoryx.Sketching/SketchEquationSystem.PrescribedAuthors.cs",
+      "beforeSha256": "B13D04FCD9EE872554327B05DC4683EB6E31DD34EB7FD8C43EDB351C9C5BB19D",
+      "afterSha256": "ED7732D2E4A791552F68E870BA097111EC59E57A85517A94DC78E51A9B9BD1FF"
+    }
+  ],
+  "recoveryBase": {
+    "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\capability-evidence\\AF_PENDING_DRAWING_SOURCE_PATH_FEEDBACK_VERIFICATION.json",
+    "sha256": "4D24355B877DEB8A7C37905EF17CAC9CFCB63BF4EBB8EEA9E8EAB3771532C929"
+  },
+  "replay": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\b18-prescribed-complete-authors-draft-2\\source-recovery-replay-1",
+  "replayChecks": [
+    {
+      "args": [
+        "--check"
+      ],
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "args": [],
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": ""
+    }
+  ],
+  "all1070ReplayVerified": true,
+  "original6556TestsAndAssertionsUnchanged": true,
+  "iteration80Variables256Equations512AndOriginalTolerancesUnchanged": true,
+  "generatedPointProjectionAdded": false,
+  "applicationExportGuardChanged": false,
+  "publicUpstreamModified": false,
+  "productionApplied": false,
+  "cleanup": false,
+  "desktopInputStarted": false,
+  "AF": "ACTIVE",
+  "G": "USER_DEFERRED"
+}
