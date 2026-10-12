@@ -1,0 +1,19 @@
+{
+  "pid": 14356,
+  "G": "USER_DEFERRED",
+  "AF": "ACTIVE",
+  "recordedAt": "2026-10-12T05:32:47.8432322+00:00",
+  "actualWindowsStarted": false,
+  "queueStart": {
+    "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\d6-sdk30-window-host-1\\queue-start-1.json",
+    "sha256": "A70FB2B4203A39B3496041B7048A5114F0CFCE1B939BC3F0507C65A00C78F906"
+  },
+  "state": "SOURCE_FROZEN_QUEUE_LIVE_WAIT_ALL_EXISTING_RUNTIME_TERMINALS_BEFORE_COMPILE",
+  "cleanup": false,
+  "actualCompilationPassed": false,
+  "productionApplied": false,
+  "preparation": {
+    "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\d6-sdk30-window-host-1\\preparation-1.json",
+    "sha256": "5B690A72B7B52E5B8CC1EA383056BA4E12BE8BEAF7F3EEDE7C961A7A74CA9399"
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "recordedAt": "2026-10-12T05:30:41.176887+00:00",
+  "state": "SDK30_SOURCE1066_WINDOW_OBSERVER_SOURCE_FROZEN_NOT_COMPILED_NOT_RUN",
+  "candidateBuild": {
+    "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\d6-sdk30-production-integration-1\\build-both-1-verification.json",
+    "sha256": "70A1D360B3762720B9AF7F70D3BCBFE006DEF9CAEC7A6EB1F1ACCA5483E09367"
+  },
+  "sourceCount": 1066,
+  "sdkVersion": "8.0.1-preview.31.cadoryx.generated-defeature-history.30",
+  "source": [
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\d6-sdk30-window-host-1\\WindowHost.cs",
+      "sha256": "202B3B85032D0647BE3833EF91FA4B873F69705A43C14EC533D76AB5F6943D03"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\d6-sdk30-window-host-1\\WindowHost.csproj",
+      "sha256": "FE254D7793A20CCBFB5D9BDFFE26C82BCACC56803595EB36C85EBDCA7306CE16"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\d6-sdk30-window-host-1\\build-audit.py",
+      "sha256": "C5AE5E493EFB8AC218F0FA6AF764FB244F78D9079EC6F03A7E180F4D17EA8DD0"
+    }
+  ],
+  "priorSdk31ObserverBuild": {
+    "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\capability-evidence\\AF_PENDING_D6_WINDOW_OBSERVER_V3_BUILD_VERIFICATION.json",
+    "sha256": "5DB4795A2554355E433474EE69762B2B3E1B375F2538AA97A1306144935A7200"
+  },
+  "sameObserverCsAndProjectBytes": true,
+  "runner": {
+    "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\capability-evidence\\diagnostics\\d6-sdk30-integration\\build-window-after-queue.ps1",
+    "sha256": "85FFC9A5B2D58825A8A501C6775666CF59D93E2D591B0D8A88C5A55B3FFB2A43"
+  },
+  "matrixCount": 36,
+  "readinessSeconds": 30,
+  "perWindowSeconds": 300,
+  "allTenOriginalRuntimeQueueTerminalsRequiredBeforeCompile": true,
+  "sdk30FullBothPassRequiredBeforeCompile": true,
+  "fixturesGeneratedUnderSdk31ActualSdk30LoadAndPreviewRequired": true,
+  "compilationStarted": false,
+  "actualWindowsStarted": false,
+  "actualWindowsPassed": false,
+  "productionApplied": false,
+  "cleanup": false,
+  "AF": "ACTIVE",
+  "G": "USER_DEFERRED"
+}
