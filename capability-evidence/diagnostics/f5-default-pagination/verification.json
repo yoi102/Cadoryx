@@ -1,0 +1,183 @@
+{
+  "recordedAt": "2026-10-12T16:22:08.198566+00:00",
+  "state": "MANAGED_DEFAULT_PAGE_PAIRING_FIXED_BOTH_CONFIGURATIONS",
+  "changedApplicationFiles": [
+    {
+      "path": "Cadoryx.Agent/AgentNativeReadContinuation.cs",
+      "sha256": "1E191C15D6B1FD350FAFA75F3FAAF22988F685594CF6D6E3FC812C91CE693A9E"
+    }
+  ],
+  "permanentTests": [
+    {
+      "path": "Cadoryx.Tests/NativeReadDefaultPaginationTests.cs",
+      "sha256": "D6FC221CDCEFB0610DAD392C79AFA9B1B6D65256390E13BE490542433B99F26B"
+    }
+  ],
+  "sourceFiles": [
+    {
+      "name": "AgentContextTests.cs",
+      "baselineSha256": "7C83C03F17522EE65A53BA170D2C230658C8E8B66BD783F144B3F508D394E31E",
+      "fixedSha256": "7C83C03F17522EE65A53BA170D2C230658C8E8B66BD783F144B3F508D394E31E"
+    },
+    {
+      "name": "AgentContracts.cs",
+      "baselineSha256": "4A2A3B9BAF5D1EAF7818BE67B00233399FE041233C94852302DC0EFC39628DC0",
+      "fixedSha256": "4A2A3B9BAF5D1EAF7818BE67B00233399FE041233C94852302DC0EFC39628DC0"
+    },
+    {
+      "name": "AgentNativeReadContinuation.cs",
+      "baselineSha256": "334C8E9AD796EE4F2DA8FFEBEBD3362E9D5C40ADABAE32F0E4A0140B72FF6CEE",
+      "fixedSha256": "1E191C15D6B1FD350FAFA75F3FAAF22988F685594CF6D6E3FC812C91CE693A9E"
+    },
+    {
+      "name": "AgentRequestContextBuilder.cs",
+      "baselineSha256": "FAB2FB014820708AAA4731B8F78C8A5FE95D33F70C8A6F060CEB91207DF2C309",
+      "fixedSha256": "FAB2FB014820708AAA4731B8F78C8A5FE95D33F70C8A6F060CEB91207DF2C309"
+    },
+    {
+      "name": "AgentRunner.cs",
+      "baselineSha256": "BB253D1AED7A0DB2AD803D238955C6E82BEEC82B0348F86B8A19E10CFD87BF8F",
+      "fixedSha256": "BB253D1AED7A0DB2AD803D238955C6E82BEEC82B0348F86B8A19E10CFD87BF8F"
+    },
+    {
+      "name": "AgentSuccessfulActionReceipt.cs",
+      "baselineSha256": "4C5E5A856569584B754FFFBAEF76DE05FAC715029234055ADA927514B1569A54",
+      "fixedSha256": "4C5E5A856569584B754FFFBAEF76DE05FAC715029234055ADA927514B1569A54"
+    },
+    {
+      "name": "AgentToolResultCompactor.cs",
+      "baselineSha256": "E53D28A3CC529CE68EB79872C3364E44BCD82E5C401536BFB38CC468CDD42A85",
+      "fixedSha256": "E53D28A3CC529CE68EB79872C3364E44BCD82E5C401536BFB38CC468CDD42A85"
+    },
+    {
+      "name": "AiAssistantSettings.cs",
+      "baselineSha256": "97962C8128B405694AF1D0E5A6ED4FFD857F999B0AD654E9A40366DB69398676",
+      "fixedSha256": "97962C8128B405694AF1D0E5A6ED4FFD857F999B0AD654E9A40366DB69398676"
+    },
+    {
+      "name": "AiChatContracts.cs",
+      "baselineSha256": "6DDD719451C9864578E891F7D4870173AE776CFF059DED44FAFD5D4D73C6AB98",
+      "fixedSha256": "6DDD719451C9864578E891F7D4870173AE776CFF059DED44FAFD5D4D73C6AB98"
+    },
+    {
+      "name": "NativeReadDefaultPaginationTests.cs",
+      "baselineSha256": "D6FC221CDCEFB0610DAD392C79AFA9B1B6D65256390E13BE490542433B99F26B",
+      "fixedSha256": "D6FC221CDCEFB0610DAD392C79AFA9B1B6D65256390E13BE490542433B99F26B"
+    }
+  ],
+  "gates": [
+    {
+      "variant": "baseline",
+      "configuration": "release",
+      "passed": 16,
+      "failed": 5,
+      "skipped": 0,
+      "failedNames": [
+        "Cadoryx.Tests.NativeReadDefaultPaginationTests.AReceiptFromAnotherPageCannotInventContinuationForAnOmittedParameter(offset: 0, limit: 50, explicitOffset: False, explicitLimit: False)",
+        "Cadoryx.Tests.NativeReadDefaultPaginationTests.AReceiptFromAnotherPageCannotInventContinuationForAnOmittedParameter(offset: 0, limit: 50, explicitOffset: True, explicitLimit: False)",
+        "Cadoryx.Tests.NativeReadDefaultPaginationTests.AReceiptFromAnotherPageCannotInventContinuationForAnOmittedParameter(offset: 37, limit: 8, explicitOffset: False, explicitLimit: False)",
+        "Cadoryx.Tests.NativeReadDefaultPaginationTests.AReceiptFromAnotherPageCannotInventContinuationForAnOmittedParameter(offset: 37, limit: 8, explicitOffset: False, explicitLimit: True)",
+        "Cadoryx.Tests.NativeReadDefaultPaginationTests.AReceiptFromAnotherPageCannotInventContinuationForAnOmittedParameter(offset: 37, limit: 50, explicitOffset: False, explicitLimit: False)"
+      ],
+      "trx": {
+        "path": "capability-evidence/diagnostics/f5-default-pagination/baseline-release.trx",
+        "sha256": "C96DEFFD05F0E729E530025ADC330205AC9CDFEE4D0F8656EA21DDB8A4436D19"
+      },
+      "testBinary": {
+        "path": "artifacts/f5-default-pagination-1/baseline/bin/Release/net10.0/ManagedPagination.Tests.dll",
+        "sha256": "87854C1B2BA2CD29C5832370CD34E281538B5685A87BCC837BF77D51CD91650E"
+      }
+    },
+    {
+      "variant": "baseline",
+      "configuration": "debug",
+      "passed": 16,
+      "failed": 5,
+      "skipped": 0,
+      "failedNames": [
+        "Cadoryx.Tests.NativeReadDefaultPaginationTests.AReceiptFromAnotherPageCannotInventContinuationForAnOmittedParameter(offset: 37, limit: 8, explicitOffset: False, explicitLimit: False)",
+        "Cadoryx.Tests.NativeReadDefaultPaginationTests.AReceiptFromAnotherPageCannotInventContinuationForAnOmittedParameter(offset: 37, limit: 50, explicitOffset: False, explicitLimit: False)",
+        "Cadoryx.Tests.NativeReadDefaultPaginationTests.AReceiptFromAnotherPageCannotInventContinuationForAnOmittedParameter(offset: 0, limit: 50, explicitOffset: True, explicitLimit: False)",
+        "Cadoryx.Tests.NativeReadDefaultPaginationTests.AReceiptFromAnotherPageCannotInventContinuationForAnOmittedParameter(offset: 37, limit: 8, explicitOffset: False, explicitLimit: True)",
+        "Cadoryx.Tests.NativeReadDefaultPaginationTests.AReceiptFromAnotherPageCannotInventContinuationForAnOmittedParameter(offset: 0, limit: 50, explicitOffset: False, explicitLimit: False)"
+      ],
+      "trx": {
+        "path": "capability-evidence/diagnostics/f5-default-pagination/baseline-debug.trx",
+        "sha256": "2282D090284C3DE669EECEF03102283A8CC81443D32E46016E3EA6661C417753"
+      },
+      "testBinary": {
+        "path": "artifacts/f5-default-pagination-1/baseline/bin/Debug/net10.0/ManagedPagination.Tests.dll",
+        "sha256": "1FCAA757B5728A1FF68C14928E9D6F83FF0F43BBB41654939255136C95DB618C"
+      }
+    },
+    {
+      "variant": "fixed",
+      "configuration": "release",
+      "passed": 21,
+      "failed": 0,
+      "skipped": 0,
+      "failedNames": [],
+      "trx": {
+        "path": "capability-evidence/diagnostics/f5-default-pagination/fixed-release.trx",
+        "sha256": "429A44E71E14BB6F94B81E0AB2F6962F5E59883036973A0CB4CE91846E1AADAF"
+      },
+      "testBinary": {
+        "path": "artifacts/f5-default-pagination-1/fixed/bin/Release/net10.0/ManagedPagination.Tests.dll",
+        "sha256": "B0A278CCCE62BACFF86A0E72CB9B61F98EF8EFE037E2A88FB67C42AA2EF72385"
+      }
+    },
+    {
+      "variant": "fixed",
+      "configuration": "debug",
+      "passed": 21,
+      "failed": 0,
+      "skipped": 0,
+      "failedNames": [],
+      "trx": {
+        "path": "capability-evidence/diagnostics/f5-default-pagination/fixed-debug.trx",
+        "sha256": "13D00B99FC1B3FD32525DC9390D4C2266B5B5AFFD8F61E6C4161128D974BD580"
+      },
+      "testBinary": {
+        "path": "artifacts/f5-default-pagination-1/fixed/bin/Debug/net10.0/ManagedPagination.Tests.dll",
+        "sha256": "796F421EEA4EE49BB694FDFE9C32ADBDED6C33C80FCB62BD9EBD632631EB3D30"
+      }
+    }
+  ],
+  "productionAgentBuilds": [
+    {
+      "configuration": "Release",
+      "log": {
+        "path": "capability-evidence/diagnostics/f5-default-pagination/production-agent-build-release.log",
+        "sha256": "B030B9CE0D640C5C804B2CF4E246CC0C3C5408FAF3EA098DC1B586C6CE7FF308"
+      },
+      "exitCode": 0
+    },
+    {
+      "configuration": "Debug",
+      "log": {
+        "path": "capability-evidence/diagnostics/f5-default-pagination/production-agent-build-debug.log",
+        "sha256": "87F0DB8E24F13C41F5D9FFBF593D415E484E4A45ADDAA257D5C157F8BDA6709D"
+      },
+      "exitCode": 0
+    }
+  ],
+  "originalContextTests": 5,
+  "newTests": 16,
+  "productionDefaultsSource": {
+    "path": "artifacts/public85-final1073-1/workspace/Cadoryx.ViewModels/Toolboxes/CadDrawingInspection.cs",
+    "sha256": "D9ACB1C36F5758089D84D585171CA4EB6AEBD9402054A34022B70D2307183A2A"
+  },
+  "productionDefaults": {
+    "offset": 0,
+    "limit": 8
+  },
+  "occtPackageOrRuntimeChanged": false,
+  "frozenSource1073Changed": false,
+  "nativeOrDesktopInputExecutedByThisCheck": false,
+  "providerWorkflowAccepted": false,
+  "AFComplete": false,
+  "deferred": [
+    "G",
+    "Cadoryx cleanup"
+  ]
+}

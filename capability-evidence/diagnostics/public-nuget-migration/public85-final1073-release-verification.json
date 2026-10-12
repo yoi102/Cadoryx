@@ -1,0 +1,207 @@
+{
+  "recordedAt": "2026-10-12T16:24:25.871666+00:00",
+  "state": "PUBLIC85_FINAL1073_RELEASE6619_EXECUTED_ORIGINAL24_STEP_FAILURES_REMAIN",
+  "configuration": "Release",
+  "version": "8.0.1-preview.85",
+  "total": 6619,
+  "passed": 6595,
+  "failed": 24,
+  "skipped": 0,
+  "original6556NamesRetained": true,
+  "added63Names": [
+    "Cadoryx.Tests.FiniteSurfaceNewBodyTests.FreeStartingPlaneBuildsCompleteFiniteMaterialWithoutConsumingAnyOriginalBody(kind: \"cylinder\", negative: False, transform: 0, start: 5)",
+    "Cadoryx.Tests.FiniteSurfaceNewBodyTests.FreeStartingPlaneBuildsCompleteFiniteMaterialWithoutConsumingAnyOriginalBody(kind: \"cylinder\", negative: False, transform: 0, start: 6)",
+    "Cadoryx.Tests.FiniteSurfaceNewBodyTests.FreeStartingPlaneBuildsCompleteFiniteMaterialWithoutConsumingAnyOriginalBody(kind: \"cylinder\", negative: False, transform: 1, start: 5)",
+    "Cadoryx.Tests.FiniteSurfaceNewBodyTests.FreeStartingPlaneBuildsCompleteFiniteMaterialWithoutConsumingAnyOriginalBody(kind: \"cylinder\", negative: False, transform: 1, start: 6)",
+    "Cadoryx.Tests.FiniteSurfaceNewBodyTests.FreeStartingPlaneBuildsCompleteFiniteMaterialWithoutConsumingAnyOriginalBody(kind: \"cylinder\", negative: False, transform: 2, start: 5)",
+    "Cadoryx.Tests.FiniteSurfaceNewBodyTests.FreeStartingPlaneBuildsCompleteFiniteMaterialWithoutConsumingAnyOriginalBody(kind: \"cylinder\", negative: False, transform: 2, start: 6)",
+    "Cadoryx.Tests.FiniteSurfaceNewBodyTests.FreeStartingPlaneBuildsCompleteFiniteMaterialWithoutConsumingAnyOriginalBody(kind: \"cylinder\", negative: True, transform: 0, start: 5)",
+    "Cadoryx.Tests.FiniteSurfaceNewBodyTests.FreeStartingPlaneBuildsCompleteFiniteMaterialWithoutConsumingAnyOriginalBody(kind: \"cylinder\", negative: True, transform: 0, start: 6)",
+    "Cadoryx.Tests.FiniteSurfaceNewBodyTests.FreeStartingPlaneBuildsCompleteFiniteMaterialWithoutConsumingAnyOriginalBody(kind: \"cylinder\", negative: True, transform: 1, start: 5)",
+    "Cadoryx.Tests.FiniteSurfaceNewBodyTests.FreeStartingPlaneBuildsCompleteFiniteMaterialWithoutConsumingAnyOriginalBody(kind: \"cylinder\", negative: True, transform: 1, start: 6)",
+    "Cadoryx.Tests.FiniteSurfaceNewBodyTests.FreeStartingPlaneBuildsCompleteFiniteMaterialWithoutConsumingAnyOriginalBody(kind: \"cylinder\", negative: True, transform: 2, start: 5)",
+    "Cadoryx.Tests.FiniteSurfaceNewBodyTests.FreeStartingPlaneBuildsCompleteFiniteMaterialWithoutConsumingAnyOriginalBody(kind: \"cylinder\", negative: True, transform: 2, start: 6)",
+    "Cadoryx.Tests.FiniteSurfaceNewBodyTests.FreeStartingPlaneBuildsCompleteFiniteMaterialWithoutConsumingAnyOriginalBody(kind: \"plane\", negative: False, transform: 0, start: 5)",
+    "Cadoryx.Tests.FiniteSurfaceNewBodyTests.FreeStartingPlaneBuildsCompleteFiniteMaterialWithoutConsumingAnyOriginalBody(kind: \"plane\", negative: False, transform: 0, start: 6)",
+    "Cadoryx.Tests.FiniteSurfaceNewBodyTests.FreeStartingPlaneBuildsCompleteFiniteMaterialWithoutConsumingAnyOriginalBody(kind: \"plane\", negative: False, transform: 1, start: 5)",
+    "Cadoryx.Tests.FiniteSurfaceNewBodyTests.FreeStartingPlaneBuildsCompleteFiniteMaterialWithoutConsumingAnyOriginalBody(kind: \"plane\", negative: False, transform: 1, start: 6)",
+    "Cadoryx.Tests.FiniteSurfaceNewBodyTests.FreeStartingPlaneBuildsCompleteFiniteMaterialWithoutConsumingAnyOriginalBody(kind: \"plane\", negative: False, transform: 2, start: 5)",
+    "Cadoryx.Tests.FiniteSurfaceNewBodyTests.FreeStartingPlaneBuildsCompleteFiniteMaterialWithoutConsumingAnyOriginalBody(kind: \"plane\", negative: False, transform: 2, start: 6)",
+    "Cadoryx.Tests.FiniteSurfaceNewBodyTests.FreeStartingPlaneBuildsCompleteFiniteMaterialWithoutConsumingAnyOriginalBody(kind: \"plane\", negative: True, transform: 0, start: 5)",
+    "Cadoryx.Tests.FiniteSurfaceNewBodyTests.FreeStartingPlaneBuildsCompleteFiniteMaterialWithoutConsumingAnyOriginalBody(kind: \"plane\", negative: True, transform: 0, start: 6)",
+    "Cadoryx.Tests.FiniteSurfaceNewBodyTests.FreeStartingPlaneBuildsCompleteFiniteMaterialWithoutConsumingAnyOriginalBody(kind: \"plane\", negative: True, transform: 1, start: 5)",
+    "Cadoryx.Tests.FiniteSurfaceNewBodyTests.FreeStartingPlaneBuildsCompleteFiniteMaterialWithoutConsumingAnyOriginalBody(kind: \"plane\", negative: True, transform: 1, start: 6)",
+    "Cadoryx.Tests.FiniteSurfaceNewBodyTests.FreeStartingPlaneBuildsCompleteFiniteMaterialWithoutConsumingAnyOriginalBody(kind: \"plane\", negative: True, transform: 2, start: 5)",
+    "Cadoryx.Tests.FiniteSurfaceNewBodyTests.FreeStartingPlaneBuildsCompleteFiniteMaterialWithoutConsumingAnyOriginalBody(kind: \"plane\", negative: True, transform: 2, start: 6)",
+    "Cadoryx.Tests.FiniteSurfaceNewBodyTests.FreeStartingPlaneBuildsCompleteFiniteMaterialWithoutConsumingAnyOriginalBody(kind: \"sphere\", negative: False, transform: 0, start: 5)",
+    "Cadoryx.Tests.FiniteSurfaceNewBodyTests.FreeStartingPlaneBuildsCompleteFiniteMaterialWithoutConsumingAnyOriginalBody(kind: \"sphere\", negative: False, transform: 0, start: 6)",
+    "Cadoryx.Tests.FiniteSurfaceNewBodyTests.FreeStartingPlaneBuildsCompleteFiniteMaterialWithoutConsumingAnyOriginalBody(kind: \"sphere\", negative: False, transform: 1, start: 5)",
+    "Cadoryx.Tests.FiniteSurfaceNewBodyTests.FreeStartingPlaneBuildsCompleteFiniteMaterialWithoutConsumingAnyOriginalBody(kind: \"sphere\", negative: False, transform: 1, start: 6)",
+    "Cadoryx.Tests.FiniteSurfaceNewBodyTests.FreeStartingPlaneBuildsCompleteFiniteMaterialWithoutConsumingAnyOriginalBody(kind: \"sphere\", negative: False, transform: 2, start: 5)",
+    "Cadoryx.Tests.FiniteSurfaceNewBodyTests.FreeStartingPlaneBuildsCompleteFiniteMaterialWithoutConsumingAnyOriginalBody(kind: \"sphere\", negative: False, transform: 2, start: 6)",
+    "Cadoryx.Tests.FiniteSurfaceNewBodyTests.FreeStartingPlaneBuildsCompleteFiniteMaterialWithoutConsumingAnyOriginalBody(kind: \"sphere\", negative: True, transform: 0, start: 5)",
+    "Cadoryx.Tests.FiniteSurfaceNewBodyTests.FreeStartingPlaneBuildsCompleteFiniteMaterialWithoutConsumingAnyOriginalBody(kind: \"sphere\", negative: True, transform: 0, start: 6)",
+    "Cadoryx.Tests.FiniteSurfaceNewBodyTests.FreeStartingPlaneBuildsCompleteFiniteMaterialWithoutConsumingAnyOriginalBody(kind: \"sphere\", negative: True, transform: 1, start: 5)",
+    "Cadoryx.Tests.FiniteSurfaceNewBodyTests.FreeStartingPlaneBuildsCompleteFiniteMaterialWithoutConsumingAnyOriginalBody(kind: \"sphere\", negative: True, transform: 1, start: 6)",
+    "Cadoryx.Tests.FiniteSurfaceNewBodyTests.FreeStartingPlaneBuildsCompleteFiniteMaterialWithoutConsumingAnyOriginalBody(kind: \"sphere\", negative: True, transform: 2, start: 5)",
+    "Cadoryx.Tests.FiniteSurfaceNewBodyTests.FreeStartingPlaneBuildsCompleteFiniteMaterialWithoutConsumingAnyOriginalBody(kind: \"sphere\", negative: True, transform: 2, start: 6)",
+    "Cadoryx.Tests.FiniteSurfaceNewBodyTests.HeldExactNewBodyCannotPublishOrRetainPrivateSeedAfterLateCancelCloseOrGenerationChange(kind: \"cancel\")",
+    "Cadoryx.Tests.FiniteSurfaceNewBodyTests.HeldExactNewBodyCannotPublishOrRetainPrivateSeedAfterLateCancelCloseOrGenerationChange(kind: \"close\")",
+    "Cadoryx.Tests.FiniteSurfaceNewBodyTests.HeldExactNewBodyCannotPublishOrRetainPrivateSeedAfterLateCancelCloseOrGenerationChange(kind: \"generation\")",
+    "Cadoryx.Tests.FiniteSurfaceNewBodyTests.HolesAndRecursiveIslandKeepEveryDisconnectedMaterialSolid(island: False, negative: False)",
+    "Cadoryx.Tests.FiniteSurfaceNewBodyTests.HolesAndRecursiveIslandKeepEveryDisconnectedMaterialSolid(island: False, negative: True)",
+    "Cadoryx.Tests.FiniteSurfaceNewBodyTests.HolesAndRecursiveIslandKeepEveryDisconnectedMaterialSolid(island: True, negative: False)",
+    "Cadoryx.Tests.FiniteSurfaceNewBodyTests.HolesAndRecursiveIslandKeepEveryDisconnectedMaterialSolid(island: True, negative: True)",
+    "Cadoryx.Tests.FiniteSurfaceNewBodyTests.IncompleteOrForeignAuthorIsRejectedAtomicallyAndCannotLeavePrivateSeedAssets(fault: \"far-plane\")",
+    "Cadoryx.Tests.FiniteSurfaceNewBodyTests.IncompleteOrForeignAuthorIsRejectedAtomicallyAndCannotLeavePrivateSeedAssets(fault: \"fingerprint\")",
+    "Cadoryx.Tests.FiniteSurfaceNewBodyTests.IncompleteOrForeignAuthorIsRejectedAtomicallyAndCannotLeavePrivateSeedAssets(fault: \"foreign-document\")",
+    "Cadoryx.Tests.FiniteSurfaceNewBodyTests.IncompleteOrForeignAuthorIsRejectedAtomicallyAndCannotLeavePrivateSeedAssets(fault: \"small\")",
+    "Cadoryx.Tests.FiniteSurfaceNewBodyTests.IncompleteOrForeignAuthorIsRejectedAtomicallyAndCannotLeavePrivateSeedAssets(fault: \"source\")",
+    "Cadoryx.Tests.FiniteSurfaceNewBodyTests.IncompleteOrForeignAuthorIsRejectedAtomicallyAndCannotLeavePrivateSeedAssets(fault: \"support\")",
+    "Cadoryx.Tests.FiniteSurfaceNewBodyTests.IncompleteOrForeignAuthorIsRejectedAtomicallyAndCannotLeavePrivateSeedAssets(fault: \"target\")",
+    "Cadoryx.Tests.FiniteSurfaceNewBodyTests.IncompleteOrForeignAuthorIsRejectedAtomicallyAndCannotLeavePrivateSeedAssets(fault: \"wrong-direction\")",
+    "Cadoryx.Tests.FiniteSurfaceNewBodyTests.IndependentPartOwnsItsExplicitLimitAndDoesNotRebindWhenOriginalLimitMoves",
+    "Cadoryx.Tests.FiniteSurfaceNewBodyTests.LimitRevisionFreezesOriginalResultUntilCallerExplicitlyReselectsCurrentFace",
+    "Cadoryx.Tests.FiniteSurfaceNewBodyTests.LinkedRadiusParameterUpdatesNewMaterialAndDrawingAndRejectsIncompleteFiniteDomainAtomically",
+    "Cadoryx.Tests.FiniteSurfaceNewBodyTests.OriginalFiniteFuseProgramDoesNotAcquireNewBodyCapability",
+    "Cadoryx.Tests.FiniteSurfaceNewBodyTests.ProductionEditorCanPreviewFreeFrameWithoutSupportAndKeepsExplicitLimitSelection(negative: False)",
+    "Cadoryx.Tests.FiniteSurfaceNewBodyTests.ProductionEditorCanPreviewFreeFrameWithoutSupportAndKeepsExplicitLimitSelection(negative: True)",
+    "Cadoryx.Tests.FiniteSurfaceNewBodyTests.SameVolumeLocatedElsewhereCannotPassIndependentMaterialReplay",
+    "Cadoryx.Tests.FiniteSurfaceNewBodyTests.StoredIndependentAuthorRequiresExplicitCapabilityAndExactReplay(kind: \"cylinder\")",
+    "Cadoryx.Tests.FiniteSurfaceNewBodyTests.StoredIndependentAuthorRequiresExplicitCapabilityAndExactReplay(kind: \"island\")",
+    "Cadoryx.Tests.FiniteSurfaceNewBodyTests.StoredIndependentAuthorRequiresExplicitCapabilityAndExactReplay(kind: \"plane\")",
+    "Cadoryx.Tests.FiniteSurfaceNewBodyTests.StoredIndependentAuthorRequiresExplicitCapabilityAndExactReplay(kind: \"sphere\")",
+    "Cadoryx.Tests.FiniteSurfaceNewBodyTests.StructuredAuthorRetainsFreeFrameAndNeverInfersTargetOrSupport"
+  ],
+  "newFailureNamesComparedWithOriginal6556": [],
+  "originalFailureNamesNowPassed": [
+    "Cadoryx.Tests.AgentEmptyResponseRecoveryTests.RecoveryDirectiveRetainsAllTwelveToolsWithTheOriginalDefaultBudgets(aggressive: True)"
+  ],
+  "failureDetails": [
+    {
+      "name": "Cadoryx.Tests.SketchRegionSingleLoopMixedNativeTests.SameLoopNaturalAndNativeConnectionsMoveInOneOriginalBudgetAndBuildTheExactSolid(kind: \"spline-g1\", mirror: False, distance: -0.10000000000000001, join: Bevel)",
+      "message": "Cadoryx.Db.CadValidationException : This expression profile has no proven exact circle/line exchange representation. Save Cadoryx to retain the exact offset; this export does not approximate curves."
+    },
+    {
+      "name": "Cadoryx.Tests.SketchRegionSingleLoopMixedNativeTests.SameLoopNaturalAndNativeConnectionsMoveInOneOriginalBudgetAndBuildTheExactSolid(kind: \"spline-g1\", mirror: False, distance: -0.10000000000000001, join: Miter)",
+      "message": "Cadoryx.Db.CadValidationException : This expression profile has no proven exact circle/line exchange representation. Save Cadoryx to retain the exact offset; this export does not approximate curves."
+    },
+    {
+      "name": "Cadoryx.Tests.SketchRegionSingleLoopMixedNativeTests.SameLoopNaturalAndNativeConnectionsMoveInOneOriginalBudgetAndBuildTheExactSolid(kind: \"spline-g1\", mirror: False, distance: -0.10000000000000001, join: Round)",
+      "message": "Cadoryx.Db.CadValidationException : This expression profile has no proven exact circle/line exchange representation. Save Cadoryx to retain the exact offset; this export does not approximate curves."
+    },
+    {
+      "name": "Cadoryx.Tests.SketchRegionSingleLoopMixedNativeTests.SameLoopNaturalAndNativeConnectionsMoveInOneOriginalBudgetAndBuildTheExactSolid(kind: \"spline-g1\", mirror: False, distance: 0.10000000000000001, join: Bevel)",
+      "message": "Cadoryx.Db.CadValidationException : This expression profile has no proven exact circle/line exchange representation. Save Cadoryx to retain the exact offset; this export does not approximate curves."
+    },
+    {
+      "name": "Cadoryx.Tests.SketchRegionSingleLoopMixedNativeTests.SameLoopNaturalAndNativeConnectionsMoveInOneOriginalBudgetAndBuildTheExactSolid(kind: \"spline-g1\", mirror: False, distance: 0.10000000000000001, join: Miter)",
+      "message": "Cadoryx.Db.CadValidationException : This expression profile has no proven exact circle/line exchange representation. Save Cadoryx to retain the exact offset; this export does not approximate curves."
+    },
+    {
+      "name": "Cadoryx.Tests.SketchRegionSingleLoopMixedNativeTests.SameLoopNaturalAndNativeConnectionsMoveInOneOriginalBudgetAndBuildTheExactSolid(kind: \"spline-g1\", mirror: False, distance: 0.10000000000000001, join: Round)",
+      "message": "Cadoryx.Db.CadValidationException : This expression profile has no proven exact circle/line exchange representation. Save Cadoryx to retain the exact offset; this export does not approximate curves."
+    },
+    {
+      "name": "Cadoryx.Tests.SketchRegionSingleLoopMixedNativeTests.SameLoopNaturalAndNativeConnectionsMoveInOneOriginalBudgetAndBuildTheExactSolid(kind: \"spline-g1\", mirror: True, distance: -0.10000000000000001, join: Bevel)",
+      "message": "Cadoryx.Db.CadValidationException : This expression profile has no proven exact circle/line exchange representation. Save Cadoryx to retain the exact offset; this export does not approximate curves."
+    },
+    {
+      "name": "Cadoryx.Tests.SketchRegionSingleLoopMixedNativeTests.SameLoopNaturalAndNativeConnectionsMoveInOneOriginalBudgetAndBuildTheExactSolid(kind: \"spline-g1\", mirror: True, distance: -0.10000000000000001, join: Miter)",
+      "message": "Cadoryx.Db.CadValidationException : This expression profile has no proven exact circle/line exchange representation. Save Cadoryx to retain the exact offset; this export does not approximate curves."
+    },
+    {
+      "name": "Cadoryx.Tests.SketchRegionSingleLoopMixedNativeTests.SameLoopNaturalAndNativeConnectionsMoveInOneOriginalBudgetAndBuildTheExactSolid(kind: \"spline-g1\", mirror: True, distance: -0.10000000000000001, join: Round)",
+      "message": "Cadoryx.Db.CadValidationException : This expression profile has no proven exact circle/line exchange representation. Save Cadoryx to retain the exact offset; this export does not approximate curves."
+    },
+    {
+      "name": "Cadoryx.Tests.SketchRegionSingleLoopMixedNativeTests.SameLoopNaturalAndNativeConnectionsMoveInOneOriginalBudgetAndBuildTheExactSolid(kind: \"spline-g1\", mirror: True, distance: 0.10000000000000001, join: Bevel)",
+      "message": "Cadoryx.Db.CadValidationException : This expression profile has no proven exact circle/line exchange representation. Save Cadoryx to retain the exact offset; this export does not approximate curves."
+    },
+    {
+      "name": "Cadoryx.Tests.SketchRegionSingleLoopMixedNativeTests.SameLoopNaturalAndNativeConnectionsMoveInOneOriginalBudgetAndBuildTheExactSolid(kind: \"spline-g1\", mirror: True, distance: 0.10000000000000001, join: Miter)",
+      "message": "Cadoryx.Db.CadValidationException : This expression profile has no proven exact circle/line exchange representation. Save Cadoryx to retain the exact offset; this export does not approximate curves."
+    },
+    {
+      "name": "Cadoryx.Tests.SketchRegionSingleLoopMixedNativeTests.SameLoopNaturalAndNativeConnectionsMoveInOneOriginalBudgetAndBuildTheExactSolid(kind: \"spline-g1\", mirror: True, distance: 0.10000000000000001, join: Round)",
+      "message": "Cadoryx.Db.CadValidationException : This expression profile has no proven exact circle/line exchange representation. Save Cadoryx to retain the exact offset; this export does not approximate curves."
+    },
+    {
+      "name": "Cadoryx.Tests.SketchRegionSingleLoopMixedNativeTests.SameLoopNaturalAndNativeConnectionsMoveInOneOriginalBudgetAndBuildTheExactSolid(kind: \"spline-g2\", mirror: False, distance: -0.10000000000000001, join: Bevel)",
+      "message": "Cadoryx.Db.CadValidationException : This expression profile has no proven exact circle/line exchange representation. Save Cadoryx to retain the exact offset; this export does not approximate curves."
+    },
+    {
+      "name": "Cadoryx.Tests.SketchRegionSingleLoopMixedNativeTests.SameLoopNaturalAndNativeConnectionsMoveInOneOriginalBudgetAndBuildTheExactSolid(kind: \"spline-g2\", mirror: False, distance: -0.10000000000000001, join: Miter)",
+      "message": "Cadoryx.Db.CadValidationException : This expression profile has no proven exact circle/line exchange representation. Save Cadoryx to retain the exact offset; this export does not approximate curves."
+    },
+    {
+      "name": "Cadoryx.Tests.SketchRegionSingleLoopMixedNativeTests.SameLoopNaturalAndNativeConnectionsMoveInOneOriginalBudgetAndBuildTheExactSolid(kind: \"spline-g2\", mirror: False, distance: -0.10000000000000001, join: Round)",
+      "message": "Cadoryx.Db.CadValidationException : This expression profile has no proven exact circle/line exchange representation. Save Cadoryx to retain the exact offset; this export does not approximate curves."
+    },
+    {
+      "name": "Cadoryx.Tests.SketchRegionSingleLoopMixedNativeTests.SameLoopNaturalAndNativeConnectionsMoveInOneOriginalBudgetAndBuildTheExactSolid(kind: \"spline-g2\", mirror: False, distance: 0.10000000000000001, join: Bevel)",
+      "message": "Cadoryx.Db.CadValidationException : This expression profile has no proven exact circle/line exchange representation. Save Cadoryx to retain the exact offset; this export does not approximate curves."
+    },
+    {
+      "name": "Cadoryx.Tests.SketchRegionSingleLoopMixedNativeTests.SameLoopNaturalAndNativeConnectionsMoveInOneOriginalBudgetAndBuildTheExactSolid(kind: \"spline-g2\", mirror: False, distance: 0.10000000000000001, join: Miter)",
+      "message": "Cadoryx.Db.CadValidationException : This expression profile has no proven exact circle/line exchange representation. Save Cadoryx to retain the exact offset; this export does not approximate curves."
+    },
+    {
+      "name": "Cadoryx.Tests.SketchRegionSingleLoopMixedNativeTests.SameLoopNaturalAndNativeConnectionsMoveInOneOriginalBudgetAndBuildTheExactSolid(kind: \"spline-g2\", mirror: False, distance: 0.10000000000000001, join: Round)",
+      "message": "Cadoryx.Db.CadValidationException : This expression profile has no proven exact circle/line exchange representation. Save Cadoryx to retain the exact offset; this export does not approximate curves."
+    },
+    {
+      "name": "Cadoryx.Tests.SketchRegionSingleLoopMixedNativeTests.SameLoopNaturalAndNativeConnectionsMoveInOneOriginalBudgetAndBuildTheExactSolid(kind: \"spline-g2\", mirror: True, distance: -0.10000000000000001, join: Bevel)",
+      "message": "Cadoryx.Db.CadValidationException : This expression profile has no proven exact circle/line exchange representation. Save Cadoryx to retain the exact offset; this export does not approximate curves."
+    },
+    {
+      "name": "Cadoryx.Tests.SketchRegionSingleLoopMixedNativeTests.SameLoopNaturalAndNativeConnectionsMoveInOneOriginalBudgetAndBuildTheExactSolid(kind: \"spline-g2\", mirror: True, distance: -0.10000000000000001, join: Miter)",
+      "message": "Cadoryx.Db.CadValidationException : This expression profile has no proven exact circle/line exchange representation. Save Cadoryx to retain the exact offset; this export does not approximate curves."
+    },
+    {
+      "name": "Cadoryx.Tests.SketchRegionSingleLoopMixedNativeTests.SameLoopNaturalAndNativeConnectionsMoveInOneOriginalBudgetAndBuildTheExactSolid(kind: \"spline-g2\", mirror: True, distance: -0.10000000000000001, join: Round)",
+      "message": "Cadoryx.Db.CadValidationException : This expression profile has no proven exact circle/line exchange representation. Save Cadoryx to retain the exact offset; this export does not approximate curves."
+    },
+    {
+      "name": "Cadoryx.Tests.SketchRegionSingleLoopMixedNativeTests.SameLoopNaturalAndNativeConnectionsMoveInOneOriginalBudgetAndBuildTheExactSolid(kind: \"spline-g2\", mirror: True, distance: 0.10000000000000001, join: Bevel)",
+      "message": "Cadoryx.Db.CadValidationException : This expression profile has no proven exact circle/line exchange representation. Save Cadoryx to retain the exact offset; this export does not approximate curves."
+    },
+    {
+      "name": "Cadoryx.Tests.SketchRegionSingleLoopMixedNativeTests.SameLoopNaturalAndNativeConnectionsMoveInOneOriginalBudgetAndBuildTheExactSolid(kind: \"spline-g2\", mirror: True, distance: 0.10000000000000001, join: Miter)",
+      "message": "Cadoryx.Db.CadValidationException : This expression profile has no proven exact circle/line exchange representation. Save Cadoryx to retain the exact offset; this export does not approximate curves."
+    },
+    {
+      "name": "Cadoryx.Tests.SketchRegionSingleLoopMixedNativeTests.SameLoopNaturalAndNativeConnectionsMoveInOneOriginalBudgetAndBuildTheExactSolid(kind: \"spline-g2\", mirror: True, distance: 0.10000000000000001, join: Round)",
+      "message": "Cadoryx.Db.CadValidationException : This expression profile has no proven exact circle/line exchange representation. Save Cadoryx to retain the exact offset; this export does not approximate curves."
+    }
+  ],
+  "freeze": {
+    "path": "artifacts/public85-runtime-acceptance-1/freeze.json",
+    "sha256": "03FC0E531BBF4E8B059755CEE41673368F218D7464F3F61B4EB1185BFA5409F8"
+  },
+  "terminal": {
+    "path": "artifacts/public85-runtime-acceptance-1/full6619-release-1/exit.json",
+    "sha256": "BA19C2FA1AFD666A7764428ADF7F1DFB28BBA04DA1790EAA0C01A9C77BEAD620"
+  },
+  "trx": {
+    "path": "artifacts/public85-runtime-acceptance-1/full6619-release-1/runtime.trx",
+    "sha256": "68A5F42E274704621C8B06BAF4B5C777E73A20B68F042FFF0014821E54240F9E"
+  },
+  "loadedNative": {
+    "path": "artifacts/public85-runtime-acceptance-1/full6619-release-1/loaded-native.json",
+    "sha256": "E25F9E9B4E03BBEB8928A9D6CA0EE0CB0EF3932D7A143B09C6E3406BD3A3B611"
+  },
+  "original6556Trx": {
+    "path": "artifacts/b18-prescribed-complete-authors-draft-2/full6556-release-2/runtime.trx",
+    "sha256": "049827919A90EB193760B1DF8F3CB7201AA16600E1C62CFFD397379FBE9C6D85"
+  },
+  "native62ActualPathsAndHashesMatchPublicPayload": true,
+  "sourceAndCompleteReleaseBinaryPayloadMatchFreeze": true,
+  "source1073AppliedToProduction": false,
+  "debugComplete": false,
+  "originalAssertionsTolerancesAndBudgetsChanged": false,
+  "desktopPerformanceAndExternalProviderAccepted": false,
+  "cleanup": false,
+  "AF": "ACTIVE",
+  "G": "USER_DEFERRED"
+}

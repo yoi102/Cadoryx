@@ -1,5 +1,9 @@
 # 3D CAD 产品缺口与实施规划
 
+2026-10-13，status235：A–F继续，尚未全部完成。[最终1073/public85 Release完整6619](../capability-evidence/diagnostics/public-nuget-migration/public85-final1073-release-verification.json)实际6595通过/24失败/零跳过，原用例与实际native62核验准确；原AI恢复预算失败已通过，原严格STEP24仍待修复，Debug正在串行运行，最终1073未合入生产。[F5默认分页配对](F5_DEFAULT_PAGE_QUERY_MATCHING.md)已修复当前生产源码，两配置独立21/21，但不是原模型工作流或全部产品验收。开发阶段需要新封装/重编译时可用本地精确版本OcctSharp NuGet，接近收尾再统一公开包；Cadoryx仍不用vcpkg。G与Cadoryx清理暂缓。
+
+以下status234及更早为历史检查点，当前进度以status235和[STATUS](STATUS.md)为准。
+
 2026-10-13，status234：[检查点6](../capability-evidence/AF_PENDING_PUBLIC_NUGET_CHECKPOINT6.json)核对Cadoryx公开迁移提交 `820e53f` 已推送到origin/master；OcctSharp实现/资格 `587cadd` 及清理收尾 `3e1f49a` 已推送，远端HEAD一致、SDK工作树干净。SDK清理117个可重建缓存目标、37,663,196,524逻辑字节（35.08GiB），最终包/运行时/许可/来源/证据保留；Cadoryx未清理。SDK优先时段已结束，最终source1073/public85的Release完整6619正在运行、实际native62来源/哈希准确，随后Debug6619；独立审计已排队，要求保留原6556名称及新增63、原断言/公差/预算、两配置完整TRX和实际加载载荷。已复现部分原严格STEP导出拒绝；本轮全量尚无终态，不算通过。A–F继续，G暂缓。
 
 以下status233及更早记录保留当时状态；当前进度以status234为准。

@@ -24,10 +24,11 @@ internal sealed record AgentNativeReadContinuation(string DocumentId, string Sta
                 !Text(args, "path", out var path) || path.Length > 8192 ||
                 !Text(args, "bodyId", out var body) || !Identity(body) ||
                 !Text(args, "revision", out var revision) || !Identity(revision)) return null;
-            if (args.TryGetProperty("offset", out var offset) &&
-                (!offset.TryGetInt32(out var offsetValue) || offsetValue != receipt.GetProperty("offset").GetInt32())) return null;
-            if (args.TryGetProperty("limit", out var limit) &&
-                (!limit.TryGetInt32(out var limitValue) || limitValue != receipt.GetProperty("limit").GetInt32())) return null;
+            // Omitted parameters still describe a specific production query:
+            // CadDrawingInspection uses offset 0 and limit 8. A receipt from a
+            // different page must not supply navigation for that query.
+            if (!PageParameterMatches(args, receipt, "offset", 0) ||
+                !PageParameterMatches(args, receipt, "limit", 8)) return null;
             // Verify every actual selection that exposes its query context. No
             // coordinate, fingerprint, count or topology index supplies an ID.
             var selectionSeen = false;
@@ -52,6 +53,13 @@ internal sealed record AgentNativeReadContinuation(string DocumentId, string Sta
         limit = Math.Min(originalLimit, Math.Max(1, retainedItems))
     };
     private static bool Identity(string value) => Guid.TryParseExact(value, "D", out var id) && id != Guid.Empty;
+    private static bool PageParameterMatches(JsonElement args, JsonElement receipt, string name, int defaultValue)
+    {
+        var requested = defaultValue;
+        if (args.TryGetProperty(name, out var value) &&
+            (value.ValueKind != JsonValueKind.Number || !value.TryGetInt32(out requested))) return false;
+        return receipt.GetProperty(name).GetInt32() == requested;
+    }
     private static bool SameIdentity(string value, JsonElement other) => Identity(value) && other.ValueKind == JsonValueKind.String &&
         Guid.TryParseExact(other.GetString(), "D", out var id) && Guid.Parse(value) == id;
     private static bool Text(JsonElement root, string name, out string value)

@@ -1,5 +1,15 @@
 # OcctSharp 必要 API 迁移与公开 NuGet 接入
 
+## 当前开发策略（2026-10-13 用户更新）
+
+A–F 开发期间，若确需新增 OcctSharp 封装或重新编译 SDK，可以消费本地 NuGet。已有公开 Preview.85 能满足的功能继续使用当前包；当前冻结的 source1073/public85 回归保持原身份。新 SDK 应使用独立、精确的开发版本，统一整个包族及锁文件，保存生成器输入、实际托管/原生载荷和消费验证；不能覆盖同版本包或将本地验证记录算作公开恢复通过。新增封装仍从生成器配置、模板和类型映射迁移，不手改生成产物。
+
+接近 A–F 收尾时，再将受测包族发布并统一切回公开 NuGet，重新执行公开恢复、锁文件及实际运行门禁。开发阶段不要求每次 SDK 增量都公开发布，严格公开验证脚本仍只接受公开源。Cadoryx 不使用 vcpkg；它仅消费 NuGet，vcpkg 仍属于 OcctSharp 的构建入口。G 和 Cadoryx 清理继续暂缓。
+
+## 已完成的公开迁移检查点
+
+2026-10-13，status235运行增量：[最终1073 Release完整6619](../capability-evidence/diagnostics/public-nuget-migration/public85-final1073-release-verification.json)实际6595通过、24失败、零跳过；原6556和新增63名称保持，原AI恢复预算失败已通过，失败仅为原严格STEP24。冻结来源、完整Release二进制及实际native62路径/哈希准确。Debug已串行开始，尚无终态；这不是两配置或整个A–F通过。SDK仍使用公开Preview.85，本次尚不需要切换本地包。
+
 2026-10-13，status234。必要生成器 API 已迁移，公开 Preview.85 完整14包已发布；两个上游真实公开消费者和 Cadoryx 两组50项目的公开恢复/两配置编译通过。Cadoryx 当前生产已切换到公开 `8.0.1-preview.85`，根目录50项目/120阶段/两配置60次编译已通过，公开包能力55/55及native62通过；最终source1073完整6619两配置原生回归已开始，最终 A–F 产品验收仍待完成。所有既有公差、断言、工具预算保持，G及Cadoryx清理暂缓。
 
 - [公开恢复](../capability-evidence/diagnostics/public-nuget-migration/public85-remote-restore-verification.json)：fresh cache、仅nuget.org、普通/锁定恢复、14份签名包和完整native62磁盘载荷匹配受测清单，bridge SHA256 `D44F3F272386EA2CC87E7107AB2E3375D8100283872372F1FBC234A3B4E38CB3`、ABI `1.118`、bridge `0.133.0`。

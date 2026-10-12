@@ -1,5 +1,11 @@
 # A–F 全量实施跟踪
 
+2026-10-13，status235：[source1073/public85 Release完整6619](../capability-evidence/diagnostics/public-nuget-migration/public85-final1073-release-verification.json)实际6595通过/24失败/零跳过，原6556及新增63名称保持，只有原严格STEP24失败，原十二工具恢复预算失败已通过。冻结源码/Release完整载荷及实际native62核验通过；Debug正在串行运行，最终1073仍未合入生产。[F5默认分页配对](F5_DEFAULT_PAGE_QUERY_MATCHING.md)另进入当前生产源码，两配置独立21/21，旧版各16/5；不替代冻结候选/原Bonsai/窗口验收。SDK会话仅准备STEP误差分段探针，无已验证修复，A–F尚未全部完成；G及Cadoryx清理暂缓。
+
+以下status234及更早记录保留当时状态；当前进度以status235为准。
+
+2026-10-13 用户更新：继续 A–F；开发期需要新封装/重编译可使用本地精确版本 OcctSharp NuGet，接近收尾再统一切回公开包。当前冻结的 Preview.85 完整回归保持来源与预算；G 和 Cadoryx 清理暂缓。详见[开发策略](OCCT_PUBLIC_NUGET_MIGRATION.md#当前开发策略2026-10-13-用户更新)。
+
 2026-10-13，status234：[检查点6](../capability-evidence/AF_PENDING_PUBLIC_NUGET_CHECKPOINT6.json)核对Cadoryx公开迁移提交 `820e53f` 已推送到origin/master；OcctSharp实现/资格 `587cadd` 及清理收尾 `3e1f49a` 已推送，远端HEAD一致、SDK工作树干净。SDK清理117个可重建缓存目标、37,663,196,524逻辑字节（35.08GiB），最终包/运行时/许可/来源/证据保留；Cadoryx未清理。SDK优先时段已结束，最终source1073/public85的Release完整6619正在运行、实际native62来源/哈希准确，随后Debug6619；独立审计已排队，要求保留原6556名称及新增63、原断言/公差/预算、两配置完整TRX和实际加载载荷。已复现部分原严格STEP导出拒绝；本轮全量尚无终态，不算通过。A–F继续，G暂缓。
 
 以下status233及更早记录保留当时状态；当前进度以status234为准。

@@ -1,0 +1,281 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TestRun id="921dbd44-aab1-404c-a349-821fe213ccee" name="yoiri@YOIRI 2026-10-13 01:20:12" runUser="YOIRI\yoiri" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Times creation="2026-10-13T01:20:12.4485867+09:00" queuing="2026-10-13T01:20:12.4485868+09:00" start="2026-10-13T01:20:11.4897639+09:00" finish="2026-10-13T01:20:12.5920340+09:00" />
+  <TestSettings name="default" id="a83b2b4d-fa52-4479-9b8d-14775aff6a9e">
+    <Deployment runDeploymentRoot="yoiri_YOIRI_2026-10-13_01_20_12" />
+  </TestSettings>
+  <Results>
+    <UnitTestResult executionId="2aece933-fe8b-4b58-9c76-68be6a3bb16b" testId="e37ec842-ec05-8f56-ec67-2319372d2b89" testName="Cadoryx.Tests.NativeReadDefaultPaginationTests.AReceiptFromAnotherPageCannotInventContinuationForAnOmittedParameter(offset: 37, limit: 8, explicitOffset: False, explicitLimit: False)" computerName="YOIRI" duration="00:00:00.0191289" startTime="2026-10-13T01:20:12.4301968+09:00" endTime="2026-10-13T01:20:12.4354431+09:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="2aece933-fe8b-4b58-9c76-68be6a3bb16b">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.Equal() Failure: Strings differ&#xD;
+                                  ↓ (pos 286)&#xD;
+Expected: ···""retainedItemCount":2,"omittedItemCount":"···&#xD;
+Actual:   ···""retainedItemCount":1,"omittedItemCount":"···&#xD;
+                                  ↑ (pos 286)</Message>
+          <StackTrace>   at Cadoryx.Tests.NativeReadDefaultPaginationTests.AReceiptFromAnotherPageCannotInventContinuationForAnOmittedParameter(Int32 offset, Int32 limit, Boolean explicitOffset, Boolean explicitLimit) in C:\Users\yoiri\source\repos\Cadoryx\artifacts\f5-default-pagination-1\baseline\NativeReadDefaultPaginationTests.cs:line 50&#xD;
+   at System.Reflection.MethodBaseInvoker.InterpretedInvoke_Method(Object obj, IntPtr* args)&#xD;
+   at System.Reflection.MethodBaseInvoker.InvokeDirectByRefWithFewArgs(Object obj, Span`1 copyOfArgs, BindingFlags invokeAttr)</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="6f31ac48-a536-4c4a-a057-492f5d338d06" testId="e0b61c07-ab9f-58d0-3715-9fcdf9de42da" testName="Cadoryx.Tests.NativeReadDefaultPaginationTests.AReceiptFromAnotherPageCannotInventContinuationForAnOmittedParameter(offset: 37, limit: 50, explicitOffset: False, explicitLimit: False)" computerName="YOIRI" duration="00:00:00.0024958" startTime="2026-10-13T01:20:12.4405933+09:00" endTime="2026-10-13T01:20:12.4428298+09:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="6f31ac48-a536-4c4a-a057-492f5d338d06">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.Equal() Failure: Strings differ&#xD;
+                                  ↓ (pos 288)&#xD;
+Expected: ···""retainedItemCount":2,"omittedItemCount":"···&#xD;
+Actual:   ···""retainedItemCount":1,"omittedItemCount":"···&#xD;
+                                  ↑ (pos 288)</Message>
+          <StackTrace>   at Cadoryx.Tests.NativeReadDefaultPaginationTests.AReceiptFromAnotherPageCannotInventContinuationForAnOmittedParameter(Int32 offset, Int32 limit, Boolean explicitOffset, Boolean explicitLimit) in C:\Users\yoiri\source\repos\Cadoryx\artifacts\f5-default-pagination-1\baseline\NativeReadDefaultPaginationTests.cs:line 50&#xD;
+   at InvokeStub_NativeReadDefaultPaginationTests.AReceiptFromAnotherPageCannotInventContinuationForAnOmittedParameter(Object, Span`1)&#xD;
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="a8da7893-ed19-4bcc-b2bf-b8df50f04e09" testId="bb26c071-e39a-fb0e-f18b-99259e70c3d4" testName="Cadoryx.Tests.NativeReadDefaultPaginationTests.AReceiptFromAnotherPageCannotInventContinuationForAnOmittedParameter(offset: 0, limit: 50, explicitOffset: True, explicitLimit: False)" computerName="YOIRI" duration="00:00:00.0043371" startTime="2026-10-13T01:20:12.4388883+09:00" endTime="2026-10-13T01:20:12.4395875+09:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="a8da7893-ed19-4bcc-b2bf-b8df50f04e09">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.Equal() Failure: Strings differ&#xD;
+                                  ↓ (pos 287)&#xD;
+Expected: ···""retainedItemCount":2,"omittedItemCount":"···&#xD;
+Actual:   ···""retainedItemCount":1,"omittedItemCount":"···&#xD;
+                                  ↑ (pos 287)</Message>
+          <StackTrace>   at Cadoryx.Tests.NativeReadDefaultPaginationTests.AReceiptFromAnotherPageCannotInventContinuationForAnOmittedParameter(Int32 offset, Int32 limit, Boolean explicitOffset, Boolean explicitLimit) in C:\Users\yoiri\source\repos\Cadoryx\artifacts\f5-default-pagination-1\baseline\NativeReadDefaultPaginationTests.cs:line 50&#xD;
+   at InvokeStub_NativeReadDefaultPaginationTests.AReceiptFromAnotherPageCannotInventContinuationForAnOmittedParameter(Object, Span`1)&#xD;
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="9b19aec0-52d1-41c2-8d6a-5da78a740a33" testId="fe1ea4e2-4835-2992-6876-c049a67aa6b2" testName="Cadoryx.Tests.AgentContextTests.ContextWindowRetryDoesNotCommitAnUnsuccessfulAssistantTurn" computerName="YOIRI" duration="00:00:00.0108120" startTime="2026-10-13T01:20:12.4303013+09:00" endTime="2026-10-13T01:20:12.4303268+09:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="9b19aec0-52d1-41c2-8d6a-5da78a740a33" />
+    <UnitTestResult executionId="77eb7f25-7e78-42d4-9c46-90484f18bf32" testId="6d23f580-f4a8-cb3f-196a-dd3b9c42ad84" testName="Cadoryx.Tests.AgentContextTests.ContextReductionKeepsLatestRequestWithoutOrphanedToolMessages" computerName="YOIRI" duration="00:00:00.0040717" startTime="2026-10-13T01:20:12.4087492+09:00" endTime="2026-10-13T01:20:12.4302255+09:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="77eb7f25-7e78-42d4-9c46-90484f18bf32" />
+    <UnitTestResult executionId="d1896c03-24cc-42eb-b55b-4eff287a8ff8" testId="48f8fb8c-2d19-583f-c32c-1efc14c68cd7" testName="Cadoryx.Tests.NativeReadDefaultPaginationTests.OmittedAndExplicitDefaultsPairWithTheSameProductionPage(explicitOffset: True, explicitLimit: True)" computerName="YOIRI" duration="00:00:00.0003330" startTime="2026-10-13T01:20:12.4534358+09:00" endTime="2026-10-13T01:20:12.4534554+09:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="d1896c03-24cc-42eb-b55b-4eff287a8ff8" />
+    <UnitTestResult executionId="f5c07b3b-70d8-49b0-93bc-fcf44af53176" testId="a917c7e7-1fa8-8119-a18f-a18d6a8a75d6" testName="Cadoryx.Tests.NativeReadDefaultPaginationTests.ExplicitNonDefaultPagesStillProduceTheirOwnContinuation" computerName="YOIRI" duration="00:00:00.0064243" startTime="2026-10-13T01:20:12.4506369+09:00" endTime="2026-10-13T01:20:12.4519558+09:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="f5c07b3b-70d8-49b0-93bc-fcf44af53176" />
+    <UnitTestResult executionId="a4ee1bd9-d4ba-4ac8-bcb5-5a8b835d6caa" testId="b595ee01-3c74-ebda-1dc8-e89080d92eb8" testName="Cadoryx.Tests.AgentContextTests.UnusedShortHistoryBudgetAdmitsToolsButLongHistoryKeepsItsReserve(aggressive: False)" computerName="YOIRI" duration="00:00:00.0004640" startTime="2026-10-13T01:20:12.4062107+09:00" endTime="2026-10-13T01:20:12.4062577+09:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="a4ee1bd9-d4ba-4ac8-bcb5-5a8b835d6caa" />
+    <UnitTestResult executionId="cf7432a9-67b1-497b-99e1-e9ae5ead0562" testId="7b1c5f68-f950-0fbf-411d-58c92d75364b" testName="Cadoryx.Tests.NativeReadDefaultPaginationTests.InvalidExplicitParametersDoNotFallBackToDefaults(field: &quot;limit&quot;, value: &quot;\&quot;8\&quot;&quot;)" computerName="YOIRI" duration="00:00:00.0001377" startTime="2026-10-13T01:20:12.4298810+09:00" endTime="2026-10-13T01:20:12.4299220+09:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="cf7432a9-67b1-497b-99e1-e9ae5ead0562" />
+    <UnitTestResult executionId="49b8ab59-95ff-48ba-ac14-13a3536e3b8b" testId="623bcc00-3f64-50f5-0ff7-6bf1fe4c86b3" testName="Cadoryx.Tests.AgentContextTests.OversizedLatestRequestIsTrimmedAndKeepsItsEnding" computerName="YOIRI" duration="00:00:00.0080777" startTime="2026-10-13T01:20:12.4071524+09:00" endTime="2026-10-13T01:20:12.4086107+09:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="49b8ab59-95ff-48ba-ac14-13a3536e3b8b" />
+    <UnitTestResult executionId="bc705268-e02c-440e-bde9-d11fad5bbe83" testId="7a6f9949-88b6-912d-b40b-21bac88b4f10" testName="Cadoryx.Tests.AgentContextTests.UnusedShortHistoryBudgetAdmitsToolsButLongHistoryKeepsItsReserve(aggressive: True)" computerName="YOIRI" duration="00:00:00.0954117" startTime="2026-10-13T01:20:12.3000043+09:00" endTime="2026-10-13T01:20:12.3998650+09:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="bc705268-e02c-440e-bde9-d11fad5bbe83" />
+    <UnitTestResult executionId="1e88d12b-c8b6-42a9-bac8-a6d5e3acea23" testId="e1a35acb-4893-83f8-b750-3b11e05badcf" testName="Cadoryx.Tests.NativeReadDefaultPaginationTests.AReceiptFromAnotherPageCannotInventContinuationForAnOmittedParameter(offset: 37, limit: 8, explicitOffset: False, explicitLimit: True)" computerName="YOIRI" duration="00:00:00.0006356" startTime="2026-10-13T01:20:12.4399346+09:00" endTime="2026-10-13T01:20:12.4402731+09:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="1e88d12b-c8b6-42a9-bac8-a6d5e3acea23">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.Equal() Failure: Strings differ&#xD;
+                                  ↓ (pos 286)&#xD;
+Expected: ···""retainedItemCount":2,"omittedItemCount":"···&#xD;
+Actual:   ···""retainedItemCount":1,"omittedItemCount":"···&#xD;
+                                  ↑ (pos 286)</Message>
+          <StackTrace>   at Cadoryx.Tests.NativeReadDefaultPaginationTests.AReceiptFromAnotherPageCannotInventContinuationForAnOmittedParameter(Int32 offset, Int32 limit, Boolean explicitOffset, Boolean explicitLimit) in C:\Users\yoiri\source\repos\Cadoryx\artifacts\f5-default-pagination-1\baseline\NativeReadDefaultPaginationTests.cs:line 50&#xD;
+   at InvokeStub_NativeReadDefaultPaginationTests.AReceiptFromAnotherPageCannotInventContinuationForAnOmittedParameter(Object, Span`1)&#xD;
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="0a72f7fc-bc94-49f8-862b-538a1ff35549" testId="44669702-056b-5f68-3204-13148960b89c" testName="Cadoryx.Tests.NativeReadDefaultPaginationTests.InvalidExplicitParametersDoNotFallBackToDefaults(field: &quot;offset&quot;, value: &quot;\&quot;0\&quot;&quot;)" computerName="YOIRI" duration="00:00:00.0001432" startTime="2026-10-13T01:20:12.4109898+09:00" endTime="2026-10-13T01:20:12.4110538+09:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="0a72f7fc-bc94-49f8-862b-538a1ff35549" />
+    <UnitTestResult executionId="38655cb9-43d7-4710-b647-c464154bc81f" testId="c43cb95a-2818-0a29-c16f-24d3fa537df9" testName="Cadoryx.Tests.NativeReadDefaultPaginationTests.InvalidExplicitParametersDoNotFallBackToDefaults(field: &quot;offset&quot;, value: &quot;0.5&quot;)" computerName="YOIRI" duration="00:00:00.0001528" startTime="2026-10-13T01:20:12.4105859+09:00" endTime="2026-10-13T01:20:12.4107160+09:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="38655cb9-43d7-4710-b647-c464154bc81f" />
+    <UnitTestResult executionId="1f5803e1-df63-4696-a724-6d2a62141129" testId="b43ba817-54f3-bca9-28da-ef5ce9e9ef90" testName="Cadoryx.Tests.NativeReadDefaultPaginationTests.InvalidExplicitParametersDoNotFallBackToDefaults(field: &quot;offset&quot;, value: &quot;null&quot;)" computerName="YOIRI" duration="00:00:00.0001531" startTime="2026-10-13T01:20:12.4107597+09:00" endTime="2026-10-13T01:20:12.4108873+09:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="1f5803e1-df63-4696-a724-6d2a62141129" />
+    <UnitTestResult executionId="0490778d-6e65-45fa-935f-277dd4e4568f" testId="ea6eaaef-02f1-1dfa-c099-56f6383f13fb" testName="Cadoryx.Tests.NativeReadDefaultPaginationTests.OmittedAndExplicitDefaultsPairWithTheSameProductionPage(explicitOffset: False, explicitLimit: True)" computerName="YOIRI" duration="00:00:00.0001359" startTime="2026-10-13T01:20:12.4535370+09:00" endTime="2026-10-13T01:20:12.4535550+09:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="0490778d-6e65-45fa-935f-277dd4e4568f" />
+    <UnitTestResult executionId="01d2e514-ddf3-464c-95b3-7170d035c557" testId="e930d149-8f64-eee5-ae0d-9c670f63b347" testName="Cadoryx.Tests.NativeReadDefaultPaginationTests.InvalidExplicitParametersDoNotFallBackToDefaults(field: &quot;limit&quot;, value: &quot;null&quot;)" computerName="YOIRI" duration="00:00:00.1071520" startTime="2026-10-13T01:20:12.3008900+09:00" endTime="2026-10-13T01:20:12.4101649+09:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="01d2e514-ddf3-464c-95b3-7170d035c557" />
+    <UnitTestResult executionId="d76a9215-0209-40d4-ab8b-4ea478632cd0" testId="bb010ddc-ef8d-eea1-b284-e952d5d331a2" testName="Cadoryx.Tests.NativeReadDefaultPaginationTests.InvalidExplicitParametersDoNotFallBackToDefaults(field: &quot;limit&quot;, value: &quot;8.5&quot;)" computerName="YOIRI" duration="00:00:00.0003389" startTime="2026-10-13T01:20:12.4102172+09:00" endTime="2026-10-13T01:20:12.4105387+09:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="d76a9215-0209-40d4-ab8b-4ea478632cd0" />
+    <UnitTestResult executionId="7c100fb9-6de5-4a65-90a2-d916d86f83ae" testId="66465d5b-c5ce-73f3-cba8-0eb7edf9cd80" testName="Cadoryx.Tests.NativeReadDefaultPaginationTests.OmittedAndExplicitDefaultsPairWithTheSameProductionPage(explicitOffset: True, explicitLimit: False)" computerName="YOIRI" duration="00:00:00.0001528" startTime="2026-10-13T01:20:12.4534877+09:00" endTime="2026-10-13T01:20:12.4535052+09:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="7c100fb9-6de5-4a65-90a2-d916d86f83ae" />
+    <UnitTestResult executionId="ee8e51c9-a213-409e-bb9d-c9f53fd68170" testId="932b60a7-771b-5c36-8ef4-9e67374702a5" testName="Cadoryx.Tests.NativeReadDefaultPaginationTests.AReceiptFromAnotherPageCannotInventContinuationForAnOmittedParameter(offset: 0, limit: 50, explicitOffset: False, explicitLimit: False)" computerName="YOIRI" duration="00:00:00.0025741" startTime="2026-10-13T01:20:12.4431394+09:00" endTime="2026-10-13T01:20:12.4454880+09:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="ee8e51c9-a213-409e-bb9d-c9f53fd68170">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.Equal() Failure: Strings differ&#xD;
+                                  ↓ (pos 287)&#xD;
+Expected: ···""retainedItemCount":2,"omittedItemCount":"···&#xD;
+Actual:   ···""retainedItemCount":1,"omittedItemCount":"···&#xD;
+                                  ↑ (pos 287)</Message>
+          <StackTrace>   at Cadoryx.Tests.NativeReadDefaultPaginationTests.AReceiptFromAnotherPageCannotInventContinuationForAnOmittedParameter(Int32 offset, Int32 limit, Boolean explicitOffset, Boolean explicitLimit) in C:\Users\yoiri\source\repos\Cadoryx\artifacts\f5-default-pagination-1\baseline\NativeReadDefaultPaginationTests.cs:line 50&#xD;
+   at InvokeStub_NativeReadDefaultPaginationTests.AReceiptFromAnotherPageCannotInventContinuationForAnOmittedParameter(Object, Span`1)&#xD;
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="a77588c2-4ab6-4a7f-b7ea-e237158bcbf4" testId="b70f259c-93a3-94a2-910f-02e71a7ca84d" testName="Cadoryx.Tests.NativeReadDefaultPaginationTests.OmittedAndExplicitDefaultsPairWithTheSameProductionPage(explicitOffset: False, explicitLimit: False)" computerName="YOIRI" duration="00:00:00.0008728" startTime="2026-10-13T01:20:12.4533452+09:00" endTime="2026-10-13T01:20:12.4533787+09:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="a77588c2-4ab6-4a7f-b7ea-e237158bcbf4" />
+  </Results>
+  <TestDefinitions>
+    <UnitTest name="Cadoryx.Tests.AgentContextTests.UnusedShortHistoryBudgetAdmitsToolsButLongHistoryKeepsItsReserve(aggressive: False)" storage="c:\users\yoiri\source\repos\cadoryx\artifacts\f5-default-pagination-1\baseline\bin\debug\net10.0\managedpagination.tests.dll" id="b595ee01-3c74-ebda-1dc8-e89080d92eb8">
+      <Execution id="a4ee1bd9-d4ba-4ac8-bcb5-5a8b835d6caa" />
+      <TestMethod codeBase="C:\Users\yoiri\source\repos\Cadoryx\artifacts\f5-default-pagination-1\baseline\bin\Debug\net10.0\ManagedPagination.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Cadoryx.Tests.AgentContextTests" name="UnusedShortHistoryBudgetAdmitsToolsButLongHistoryKeepsItsReserve" />
+    </UnitTest>
+    <UnitTest name="Cadoryx.Tests.NativeReadDefaultPaginationTests.OmittedAndExplicitDefaultsPairWithTheSameProductionPage(explicitOffset: True, explicitLimit: False)" storage="c:\users\yoiri\source\repos\cadoryx\artifacts\f5-default-pagination-1\baseline\bin\debug\net10.0\managedpagination.tests.dll" id="66465d5b-c5ce-73f3-cba8-0eb7edf9cd80">
+      <Execution id="7c100fb9-6de5-4a65-90a2-d916d86f83ae" />
+      <TestMethod codeBase="C:\Users\yoiri\source\repos\Cadoryx\artifacts\f5-default-pagination-1\baseline\bin\Debug\net10.0\ManagedPagination.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Cadoryx.Tests.NativeReadDefaultPaginationTests" name="OmittedAndExplicitDefaultsPairWithTheSameProductionPage" />
+    </UnitTest>
+    <UnitTest name="Cadoryx.Tests.NativeReadDefaultPaginationTests.InvalidExplicitParametersDoNotFallBackToDefaults(field: &quot;offset&quot;, value: &quot;null&quot;)" storage="c:\users\yoiri\source\repos\cadoryx\artifacts\f5-default-pagination-1\baseline\bin\debug\net10.0\managedpagination.tests.dll" id="b43ba817-54f3-bca9-28da-ef5ce9e9ef90">
+      <Execution id="1f5803e1-df63-4696-a724-6d2a62141129" />
+      <TestMethod codeBase="C:\Users\yoiri\source\repos\Cadoryx\artifacts\f5-default-pagination-1\baseline\bin\Debug\net10.0\ManagedPagination.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Cadoryx.Tests.NativeReadDefaultPaginationTests" name="InvalidExplicitParametersDoNotFallBackToDefaults" />
+    </UnitTest>
+    <UnitTest name="Cadoryx.Tests.NativeReadDefaultPaginationTests.OmittedAndExplicitDefaultsPairWithTheSameProductionPage(explicitOffset: False, explicitLimit: True)" storage="c:\users\yoiri\source\repos\cadoryx\artifacts\f5-default-pagination-1\baseline\bin\debug\net10.0\managedpagination.tests.dll" id="ea6eaaef-02f1-1dfa-c099-56f6383f13fb">
+      <Execution id="0490778d-6e65-45fa-935f-277dd4e4568f" />
+      <TestMethod codeBase="C:\Users\yoiri\source\repos\Cadoryx\artifacts\f5-default-pagination-1\baseline\bin\Debug\net10.0\ManagedPagination.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Cadoryx.Tests.NativeReadDefaultPaginationTests" name="OmittedAndExplicitDefaultsPairWithTheSameProductionPage" />
+    </UnitTest>
+    <UnitTest name="Cadoryx.Tests.NativeReadDefaultPaginationTests.AReceiptFromAnotherPageCannotInventContinuationForAnOmittedParameter(offset: 37, limit: 8, explicitOffset: False, explicitLimit: True)" storage="c:\users\yoiri\source\repos\cadoryx\artifacts\f5-default-pagination-1\baseline\bin\debug\net10.0\managedpagination.tests.dll" id="e1a35acb-4893-83f8-b750-3b11e05badcf">
+      <Execution id="1e88d12b-c8b6-42a9-bac8-a6d5e3acea23" />
+      <TestMethod codeBase="C:\Users\yoiri\source\repos\Cadoryx\artifacts\f5-default-pagination-1\baseline\bin\Debug\net10.0\ManagedPagination.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Cadoryx.Tests.NativeReadDefaultPaginationTests" name="AReceiptFromAnotherPageCannotInventContinuationForAnOmittedParameter" />
+    </UnitTest>
+    <UnitTest name="Cadoryx.Tests.NativeReadDefaultPaginationTests.InvalidExplicitParametersDoNotFallBackToDefaults(field: &quot;limit&quot;, value: &quot;\&quot;8\&quot;&quot;)" storage="c:\users\yoiri\source\repos\cadoryx\artifacts\f5-default-pagination-1\baseline\bin\debug\net10.0\managedpagination.tests.dll" id="7b1c5f68-f950-0fbf-411d-58c92d75364b">
+      <Execution id="cf7432a9-67b1-497b-99e1-e9ae5ead0562" />
+      <TestMethod codeBase="C:\Users\yoiri\source\repos\Cadoryx\artifacts\f5-default-pagination-1\baseline\bin\Debug\net10.0\ManagedPagination.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Cadoryx.Tests.NativeReadDefaultPaginationTests" name="InvalidExplicitParametersDoNotFallBackToDefaults" />
+    </UnitTest>
+    <UnitTest name="Cadoryx.Tests.NativeReadDefaultPaginationTests.InvalidExplicitParametersDoNotFallBackToDefaults(field: &quot;limit&quot;, value: &quot;null&quot;)" storage="c:\users\yoiri\source\repos\cadoryx\artifacts\f5-default-pagination-1\baseline\bin\debug\net10.0\managedpagination.tests.dll" id="e930d149-8f64-eee5-ae0d-9c670f63b347">
+      <Execution id="01d2e514-ddf3-464c-95b3-7170d035c557" />
+      <TestMethod codeBase="C:\Users\yoiri\source\repos\Cadoryx\artifacts\f5-default-pagination-1\baseline\bin\Debug\net10.0\ManagedPagination.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Cadoryx.Tests.NativeReadDefaultPaginationTests" name="InvalidExplicitParametersDoNotFallBackToDefaults" />
+    </UnitTest>
+    <UnitTest name="Cadoryx.Tests.AgentContextTests.UnusedShortHistoryBudgetAdmitsToolsButLongHistoryKeepsItsReserve(aggressive: True)" storage="c:\users\yoiri\source\repos\cadoryx\artifacts\f5-default-pagination-1\baseline\bin\debug\net10.0\managedpagination.tests.dll" id="7a6f9949-88b6-912d-b40b-21bac88b4f10">
+      <Execution id="bc705268-e02c-440e-bde9-d11fad5bbe83" />
+      <TestMethod codeBase="C:\Users\yoiri\source\repos\Cadoryx\artifacts\f5-default-pagination-1\baseline\bin\Debug\net10.0\ManagedPagination.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Cadoryx.Tests.AgentContextTests" name="UnusedShortHistoryBudgetAdmitsToolsButLongHistoryKeepsItsReserve" />
+    </UnitTest>
+    <UnitTest name="Cadoryx.Tests.NativeReadDefaultPaginationTests.OmittedAndExplicitDefaultsPairWithTheSameProductionPage(explicitOffset: False, explicitLimit: False)" storage="c:\users\yoiri\source\repos\cadoryx\artifacts\f5-default-pagination-1\baseline\bin\debug\net10.0\managedpagination.tests.dll" id="b70f259c-93a3-94a2-910f-02e71a7ca84d">
+      <Execution id="a77588c2-4ab6-4a7f-b7ea-e237158bcbf4" />
+      <TestMethod codeBase="C:\Users\yoiri\source\repos\Cadoryx\artifacts\f5-default-pagination-1\baseline\bin\Debug\net10.0\ManagedPagination.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Cadoryx.Tests.NativeReadDefaultPaginationTests" name="OmittedAndExplicitDefaultsPairWithTheSameProductionPage" />
+    </UnitTest>
+    <UnitTest name="Cadoryx.Tests.AgentContextTests.OversizedLatestRequestIsTrimmedAndKeepsItsEnding" storage="c:\users\yoiri\source\repos\cadoryx\artifacts\f5-default-pagination-1\baseline\bin\debug\net10.0\managedpagination.tests.dll" id="623bcc00-3f64-50f5-0ff7-6bf1fe4c86b3">
+      <Execution id="49b8ab59-95ff-48ba-ac14-13a3536e3b8b" />
+      <TestMethod codeBase="C:\Users\yoiri\source\repos\Cadoryx\artifacts\f5-default-pagination-1\baseline\bin\Debug\net10.0\ManagedPagination.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Cadoryx.Tests.AgentContextTests" name="OversizedLatestRequestIsTrimmedAndKeepsItsEnding" />
+    </UnitTest>
+    <UnitTest name="Cadoryx.Tests.NativeReadDefaultPaginationTests.OmittedAndExplicitDefaultsPairWithTheSameProductionPage(explicitOffset: True, explicitLimit: True)" storage="c:\users\yoiri\source\repos\cadoryx\artifacts\f5-default-pagination-1\baseline\bin\debug\net10.0\managedpagination.tests.dll" id="48f8fb8c-2d19-583f-c32c-1efc14c68cd7">
+      <Execution id="d1896c03-24cc-42eb-b55b-4eff287a8ff8" />
+      <TestMethod codeBase="C:\Users\yoiri\source\repos\Cadoryx\artifacts\f5-default-pagination-1\baseline\bin\Debug\net10.0\ManagedPagination.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Cadoryx.Tests.NativeReadDefaultPaginationTests" name="OmittedAndExplicitDefaultsPairWithTheSameProductionPage" />
+    </UnitTest>
+    <UnitTest name="Cadoryx.Tests.NativeReadDefaultPaginationTests.InvalidExplicitParametersDoNotFallBackToDefaults(field: &quot;offset&quot;, value: &quot;0.5&quot;)" storage="c:\users\yoiri\source\repos\cadoryx\artifacts\f5-default-pagination-1\baseline\bin\debug\net10.0\managedpagination.tests.dll" id="c43cb95a-2818-0a29-c16f-24d3fa537df9">
+      <Execution id="38655cb9-43d7-4710-b647-c464154bc81f" />
+      <TestMethod codeBase="C:\Users\yoiri\source\repos\Cadoryx\artifacts\f5-default-pagination-1\baseline\bin\Debug\net10.0\ManagedPagination.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Cadoryx.Tests.NativeReadDefaultPaginationTests" name="InvalidExplicitParametersDoNotFallBackToDefaults" />
+    </UnitTest>
+    <UnitTest name="Cadoryx.Tests.AgentContextTests.ContextWindowRetryDoesNotCommitAnUnsuccessfulAssistantTurn" storage="c:\users\yoiri\source\repos\cadoryx\artifacts\f5-default-pagination-1\baseline\bin\debug\net10.0\managedpagination.tests.dll" id="fe1ea4e2-4835-2992-6876-c049a67aa6b2">
+      <Execution id="9b19aec0-52d1-41c2-8d6a-5da78a740a33" />
+      <TestMethod codeBase="C:\Users\yoiri\source\repos\Cadoryx\artifacts\f5-default-pagination-1\baseline\bin\Debug\net10.0\ManagedPagination.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Cadoryx.Tests.AgentContextTests" name="ContextWindowRetryDoesNotCommitAnUnsuccessfulAssistantTurn" />
+    </UnitTest>
+    <UnitTest name="Cadoryx.Tests.NativeReadDefaultPaginationTests.ExplicitNonDefaultPagesStillProduceTheirOwnContinuation" storage="c:\users\yoiri\source\repos\cadoryx\artifacts\f5-default-pagination-1\baseline\bin\debug\net10.0\managedpagination.tests.dll" id="a917c7e7-1fa8-8119-a18f-a18d6a8a75d6">
+      <Execution id="f5c07b3b-70d8-49b0-93bc-fcf44af53176" />
+      <TestMethod codeBase="C:\Users\yoiri\source\repos\Cadoryx\artifacts\f5-default-pagination-1\baseline\bin\Debug\net10.0\ManagedPagination.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Cadoryx.Tests.NativeReadDefaultPaginationTests" name="ExplicitNonDefaultPagesStillProduceTheirOwnContinuation" />
+    </UnitTest>
+    <UnitTest name="Cadoryx.Tests.NativeReadDefaultPaginationTests.AReceiptFromAnotherPageCannotInventContinuationForAnOmittedParameter(offset: 0, limit: 50, explicitOffset: True, explicitLimit: False)" storage="c:\users\yoiri\source\repos\cadoryx\artifacts\f5-default-pagination-1\baseline\bin\debug\net10.0\managedpagination.tests.dll" id="bb26c071-e39a-fb0e-f18b-99259e70c3d4">
+      <Execution id="a8da7893-ed19-4bcc-b2bf-b8df50f04e09" />
+      <TestMethod codeBase="C:\Users\yoiri\source\repos\Cadoryx\artifacts\f5-default-pagination-1\baseline\bin\Debug\net10.0\ManagedPagination.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Cadoryx.Tests.NativeReadDefaultPaginationTests" name="AReceiptFromAnotherPageCannotInventContinuationForAnOmittedParameter" />
+    </UnitTest>
+    <UnitTest name="Cadoryx.Tests.NativeReadDefaultPaginationTests.AReceiptFromAnotherPageCannotInventContinuationForAnOmittedParameter(offset: 37, limit: 50, explicitOffset: False, explicitLimit: False)" storage="c:\users\yoiri\source\repos\cadoryx\artifacts\f5-default-pagination-1\baseline\bin\debug\net10.0\managedpagination.tests.dll" id="e0b61c07-ab9f-58d0-3715-9fcdf9de42da">
+      <Execution id="6f31ac48-a536-4c4a-a057-492f5d338d06" />
+      <TestMethod codeBase="C:\Users\yoiri\source\repos\Cadoryx\artifacts\f5-default-pagination-1\baseline\bin\Debug\net10.0\ManagedPagination.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Cadoryx.Tests.NativeReadDefaultPaginationTests" name="AReceiptFromAnotherPageCannotInventContinuationForAnOmittedParameter" />
+    </UnitTest>
+    <UnitTest name="Cadoryx.Tests.NativeReadDefaultPaginationTests.AReceiptFromAnotherPageCannotInventContinuationForAnOmittedParameter(offset: 0, limit: 50, explicitOffset: False, explicitLimit: False)" storage="c:\users\yoiri\source\repos\cadoryx\artifacts\f5-default-pagination-1\baseline\bin\debug\net10.0\managedpagination.tests.dll" id="932b60a7-771b-5c36-8ef4-9e67374702a5">
+      <Execution id="ee8e51c9-a213-409e-bb9d-c9f53fd68170" />
+      <TestMethod codeBase="C:\Users\yoiri\source\repos\Cadoryx\artifacts\f5-default-pagination-1\baseline\bin\Debug\net10.0\ManagedPagination.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Cadoryx.Tests.NativeReadDefaultPaginationTests" name="AReceiptFromAnotherPageCannotInventContinuationForAnOmittedParameter" />
+    </UnitTest>
+    <UnitTest name="Cadoryx.Tests.NativeReadDefaultPaginationTests.InvalidExplicitParametersDoNotFallBackToDefaults(field: &quot;limit&quot;, value: &quot;8.5&quot;)" storage="c:\users\yoiri\source\repos\cadoryx\artifacts\f5-default-pagination-1\baseline\bin\debug\net10.0\managedpagination.tests.dll" id="bb010ddc-ef8d-eea1-b284-e952d5d331a2">
+      <Execution id="d76a9215-0209-40d4-ab8b-4ea478632cd0" />
+      <TestMethod codeBase="C:\Users\yoiri\source\repos\Cadoryx\artifacts\f5-default-pagination-1\baseline\bin\Debug\net10.0\ManagedPagination.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Cadoryx.Tests.NativeReadDefaultPaginationTests" name="InvalidExplicitParametersDoNotFallBackToDefaults" />
+    </UnitTest>
+    <UnitTest name="Cadoryx.Tests.AgentContextTests.ContextReductionKeepsLatestRequestWithoutOrphanedToolMessages" storage="c:\users\yoiri\source\repos\cadoryx\artifacts\f5-default-pagination-1\baseline\bin\debug\net10.0\managedpagination.tests.dll" id="6d23f580-f4a8-cb3f-196a-dd3b9c42ad84">
+      <Execution id="77eb7f25-7e78-42d4-9c46-90484f18bf32" />
+      <TestMethod codeBase="C:\Users\yoiri\source\repos\Cadoryx\artifacts\f5-default-pagination-1\baseline\bin\Debug\net10.0\ManagedPagination.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Cadoryx.Tests.AgentContextTests" name="ContextReductionKeepsLatestRequestWithoutOrphanedToolMessages" />
+    </UnitTest>
+    <UnitTest name="Cadoryx.Tests.NativeReadDefaultPaginationTests.InvalidExplicitParametersDoNotFallBackToDefaults(field: &quot;offset&quot;, value: &quot;\&quot;0\&quot;&quot;)" storage="c:\users\yoiri\source\repos\cadoryx\artifacts\f5-default-pagination-1\baseline\bin\debug\net10.0\managedpagination.tests.dll" id="44669702-056b-5f68-3204-13148960b89c">
+      <Execution id="0a72f7fc-bc94-49f8-862b-538a1ff35549" />
+      <TestMethod codeBase="C:\Users\yoiri\source\repos\Cadoryx\artifacts\f5-default-pagination-1\baseline\bin\Debug\net10.0\ManagedPagination.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Cadoryx.Tests.NativeReadDefaultPaginationTests" name="InvalidExplicitParametersDoNotFallBackToDefaults" />
+    </UnitTest>
+    <UnitTest name="Cadoryx.Tests.NativeReadDefaultPaginationTests.AReceiptFromAnotherPageCannotInventContinuationForAnOmittedParameter(offset: 37, limit: 8, explicitOffset: False, explicitLimit: False)" storage="c:\users\yoiri\source\repos\cadoryx\artifacts\f5-default-pagination-1\baseline\bin\debug\net10.0\managedpagination.tests.dll" id="e37ec842-ec05-8f56-ec67-2319372d2b89">
+      <Execution id="2aece933-fe8b-4b58-9c76-68be6a3bb16b" />
+      <TestMethod codeBase="C:\Users\yoiri\source\repos\Cadoryx\artifacts\f5-default-pagination-1\baseline\bin\Debug\net10.0\ManagedPagination.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Cadoryx.Tests.NativeReadDefaultPaginationTests" name="AReceiptFromAnotherPageCannotInventContinuationForAnOmittedParameter" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestEntries>
+    <TestEntry testId="e37ec842-ec05-8f56-ec67-2319372d2b89" executionId="2aece933-fe8b-4b58-9c76-68be6a3bb16b" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="e0b61c07-ab9f-58d0-3715-9fcdf9de42da" executionId="6f31ac48-a536-4c4a-a057-492f5d338d06" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="bb26c071-e39a-fb0e-f18b-99259e70c3d4" executionId="a8da7893-ed19-4bcc-b2bf-b8df50f04e09" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="fe1ea4e2-4835-2992-6876-c049a67aa6b2" executionId="9b19aec0-52d1-41c2-8d6a-5da78a740a33" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="6d23f580-f4a8-cb3f-196a-dd3b9c42ad84" executionId="77eb7f25-7e78-42d4-9c46-90484f18bf32" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="48f8fb8c-2d19-583f-c32c-1efc14c68cd7" executionId="d1896c03-24cc-42eb-b55b-4eff287a8ff8" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="a917c7e7-1fa8-8119-a18f-a18d6a8a75d6" executionId="f5c07b3b-70d8-49b0-93bc-fcf44af53176" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="b595ee01-3c74-ebda-1dc8-e89080d92eb8" executionId="a4ee1bd9-d4ba-4ac8-bcb5-5a8b835d6caa" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="7b1c5f68-f950-0fbf-411d-58c92d75364b" executionId="cf7432a9-67b1-497b-99e1-e9ae5ead0562" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="623bcc00-3f64-50f5-0ff7-6bf1fe4c86b3" executionId="49b8ab59-95ff-48ba-ac14-13a3536e3b8b" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="7a6f9949-88b6-912d-b40b-21bac88b4f10" executionId="bc705268-e02c-440e-bde9-d11fad5bbe83" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="e1a35acb-4893-83f8-b750-3b11e05badcf" executionId="1e88d12b-c8b6-42a9-bac8-a6d5e3acea23" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="44669702-056b-5f68-3204-13148960b89c" executionId="0a72f7fc-bc94-49f8-862b-538a1ff35549" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="c43cb95a-2818-0a29-c16f-24d3fa537df9" executionId="38655cb9-43d7-4710-b647-c464154bc81f" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="b43ba817-54f3-bca9-28da-ef5ce9e9ef90" executionId="1f5803e1-df63-4696-a724-6d2a62141129" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="ea6eaaef-02f1-1dfa-c099-56f6383f13fb" executionId="0490778d-6e65-45fa-935f-277dd4e4568f" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="e930d149-8f64-eee5-ae0d-9c670f63b347" executionId="01d2e514-ddf3-464c-95b3-7170d035c557" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="bb010ddc-ef8d-eea1-b284-e952d5d331a2" executionId="d76a9215-0209-40d4-ab8b-4ea478632cd0" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="66465d5b-c5ce-73f3-cba8-0eb7edf9cd80" executionId="7c100fb9-6de5-4a65-90a2-d916d86f83ae" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="932b60a7-771b-5c36-8ef4-9e67374702a5" executionId="ee8e51c9-a213-409e-bb9d-c9f53fd68170" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="b70f259c-93a3-94a2-910f-02e71a7ca84d" executionId="a77588c2-4ab6-4a7f-b7ea-e237158bcbf4" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <ResultSummary outcome="Failed">
+    <Counters total="21" executed="21" passed="16" failed="5" error="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+    <Output>
+      <StdOut>[xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v3.1.5+1b188a7b0a (64-bit .NET 10.0.12)&#xD;
+[xUnit.net 00:00:00.23]   Discovering: ManagedPagination.Tests&#xD;
+[xUnit.net 00:00:00.26]   Discovered:  ManagedPagination.Tests&#xD;
+[xUnit.net 00:00:00.28]   Starting:    ManagedPagination.Tests&#xD;
+[xUnit.net 00:00:00.43]       Assert.Equal() Failure: Strings differ&#xD;
+[xUnit.net 00:00:00.43]                                         ↓ (pos 286)&#xD;
+[xUnit.net 00:00:00.43]       Expected: ···""retainedItemCount":2,"omittedItemCount":"···&#xD;
+[xUnit.net 00:00:00.43]       Actual:   ···""retainedItemCount":1,"omittedItemCount":"···&#xD;
+[xUnit.net 00:00:00.43]                                         ↑ (pos 286)&#xD;
+[xUnit.net 00:00:00.43]       Stack Trace:&#xD;
+[xUnit.net 00:00:00.43]         C:\Users\yoiri\source\repos\Cadoryx\artifacts\f5-default-pagination-1\baseline\NativeReadDefaultPaginationTests.cs(50,0): at Cadoryx.Tests.NativeReadDefaultPaginationTests.AReceiptFromAnotherPageCannotInventContinuationForAnOmittedParameter(Int32 offset, Int32 limit, Boolean explicitOffset, Boolean explicitLimit)&#xD;
+[xUnit.net 00:00:00.43]            at System.Reflection.MethodBaseInvoker.InterpretedInvoke_Method(Object obj, IntPtr* args)&#xD;
+[xUnit.net 00:00:00.43]            at System.Reflection.MethodBaseInvoker.InvokeDirectByRefWithFewArgs(Object obj, Span`1 copyOfArgs, BindingFlags invokeAttr)&#xD;
+[xUnit.net 00:00:00.43]       Assert.Equal() Failure: Strings differ&#xD;
+[xUnit.net 00:00:00.43]                                         ↓ (pos 287)&#xD;
+[xUnit.net 00:00:00.43]       Expected: ···""retainedItemCount":2,"omittedItemCount":"···&#xD;
+[xUnit.net 00:00:00.43]       Actual:   ···""retainedItemCount":1,"omittedItemCount":"···&#xD;
+[xUnit.net 00:00:00.43]                                         ↑ (pos 287)&#xD;
+[xUnit.net 00:00:00.43]       Stack Trace:&#xD;
+[xUnit.net 00:00:00.43]         C:\Users\yoiri\source\repos\Cadoryx\artifacts\f5-default-pagination-1\baseline\NativeReadDefaultPaginationTests.cs(50,0): at Cadoryx.Tests.NativeReadDefaultPaginationTests.AReceiptFromAnotherPageCannotInventContinuationForAnOmittedParameter(Int32 offset, Int32 limit, Boolean explicitOffset, Boolean explicitLimit)&#xD;
+[xUnit.net 00:00:00.43]            at InvokeStub_NativeReadDefaultPaginationTests.AReceiptFromAnotherPageCannotInventContinuationForAnOmittedParameter(Object, Span`1)&#xD;
+[xUnit.net 00:00:00.43]            at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)&#xD;
+[xUnit.net 00:00:00.43]       Assert.Equal() Failure: Strings differ&#xD;
+[xUnit.net 00:00:00.43]                                         ↓ (pos 286)&#xD;
+[xUnit.net 00:00:00.43]       Expected: ···""retainedItemCount":2,"omittedItemCount":"···&#xD;
+[xUnit.net 00:00:00.43]       Actual:   ···""retainedItemCount":1,"omittedItemCount":"···&#xD;
+[xUnit.net 00:00:00.43]                                         ↑ (pos 286)&#xD;
+[xUnit.net 00:00:00.43]       Stack Trace:&#xD;
+[xUnit.net 00:00:00.43]         C:\Users\yoiri\source\repos\Cadoryx\artifacts\f5-default-pagination-1\baseline\NativeReadDefaultPaginationTests.cs(50,0): at Cadoryx.Tests.NativeReadDefaultPaginationTests.AReceiptFromAnotherPageCannotInventContinuationForAnOmittedParameter(Int32 offset, Int32 limit, Boolean explicitOffset, Boolean explicitLimit)&#xD;
+[xUnit.net 00:00:00.43]            at InvokeStub_NativeReadDefaultPaginationTests.AReceiptFromAnotherPageCannotInventContinuationForAnOmittedParameter(Object, Span`1)&#xD;
+[xUnit.net 00:00:00.43]            at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)&#xD;
+[xUnit.net 00:00:00.43]       Assert.Equal() Failure: Strings differ&#xD;
+[xUnit.net 00:00:00.43]                                         ↓ (pos 288)&#xD;
+[xUnit.net 00:00:00.43]       Expected: ···""retainedItemCount":2,"omittedItemCount":"···&#xD;
+[xUnit.net 00:00:00.43]       Actual:   ···""retainedItemCount":1,"omittedItemCount":"···&#xD;
+[xUnit.net 00:00:00.43]                                         ↑ (pos 288)&#xD;
+[xUnit.net 00:00:00.43]       Stack Trace:&#xD;
+[xUnit.net 00:00:00.43]         C:\Users\yoiri\source\repos\Cadoryx\artifacts\f5-default-pagination-1\baseline\NativeReadDefaultPaginationTests.cs(50,0): at Cadoryx.Tests.NativeReadDefaultPaginationTests.AReceiptFromAnotherPageCannotInventContinuationForAnOmittedParameter(Int32 offset, Int32 limit, Boolean explicitOffset, Boolean explicitLimit)&#xD;
+[xUnit.net 00:00:00.43]            at InvokeStub_NativeReadDefaultPaginationTests.AReceiptFromAnotherPageCannotInventContinuationForAnOmittedParameter(Object, Span`1)&#xD;
+[xUnit.net 00:00:00.43]            at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)&#xD;
+[xUnit.net 00:00:00.44]       Assert.Equal() Failure: Strings differ&#xD;
+[xUnit.net 00:00:00.44]                                         ↓ (pos 287)&#xD;
+[xUnit.net 00:00:00.44]       Expected: ···""retainedItemCount":2,"omittedItemCount":"···&#xD;
+[xUnit.net 00:00:00.44]       Actual:   ···""retainedItemCount":1,"omittedItemCount":"···&#xD;
+[xUnit.net 00:00:00.44]                                         ↑ (pos 287)&#xD;
+[xUnit.net 00:00:00.44]       Stack Trace:&#xD;
+[xUnit.net 00:00:00.44]         C:\Users\yoiri\source\repos\Cadoryx\artifacts\f5-default-pagination-1\baseline\NativeReadDefaultPaginationTests.cs(50,0): at Cadoryx.Tests.NativeReadDefaultPaginationTests.AReceiptFromAnotherPageCannotInventContinuationForAnOmittedParameter(Int32 offset, Int32 limit, Boolean explicitOffset, Boolean explicitLimit)&#xD;
+[xUnit.net 00:00:00.44]            at InvokeStub_NativeReadDefaultPaginationTests.AReceiptFromAnotherPageCannotInventContinuationForAnOmittedParameter(Object, Span`1)&#xD;
+[xUnit.net 00:00:00.44]            at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)&#xD;
+[xUnit.net 00:00:00.45]   Finished:    ManagedPagination.Tests&#xD;
+</StdOut>
+    </Output>
+    <RunInfos>
+      <RunInfo computerName="YOIRI" outcome="Error" timestamp="2026-10-13T01:20:12.4520372+09:00">
+        <Text>[xUnit.net 00:00:00.43]     Cadoryx.Tests.NativeReadDefaultPaginationTests.AReceiptFromAnotherPageCannotInventContinuationForAnOmittedParameter(offset: 37, limit: 8, explicitOffset: False, explicitLimit: False) [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="YOIRI" outcome="Error" timestamp="2026-10-13T01:20:12.4522678+09:00">
+        <Text>[xUnit.net 00:00:00.43]     Cadoryx.Tests.NativeReadDefaultPaginationTests.AReceiptFromAnotherPageCannotInventContinuationForAnOmittedParameter(offset: 0, limit: 50, explicitOffset: True, explicitLimit: False) [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="YOIRI" outcome="Error" timestamp="2026-10-13T01:20:12.4522930+09:00">
+        <Text>[xUnit.net 00:00:00.43]     Cadoryx.Tests.NativeReadDefaultPaginationTests.AReceiptFromAnotherPageCannotInventContinuationForAnOmittedParameter(offset: 37, limit: 8, explicitOffset: False, explicitLimit: True) [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="YOIRI" outcome="Error" timestamp="2026-10-13T01:20:12.4523140+09:00">
+        <Text>[xUnit.net 00:00:00.43]     Cadoryx.Tests.NativeReadDefaultPaginationTests.AReceiptFromAnotherPageCannotInventContinuationForAnOmittedParameter(offset: 37, limit: 50, explicitOffset: False, explicitLimit: False) [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="YOIRI" outcome="Error" timestamp="2026-10-13T01:20:12.4523308+09:00">
+        <Text>[xUnit.net 00:00:00.44]     Cadoryx.Tests.NativeReadDefaultPaginationTests.AReceiptFromAnotherPageCannotInventContinuationForAnOmittedParameter(offset: 0, limit: 50, explicitOffset: False, explicitLimit: False) [FAIL]</Text>
+      </RunInfo>
+    </RunInfos>
+  </ResultSummary>
+</TestRun>
