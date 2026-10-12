@@ -1,0 +1,42 @@
+{
+  "state": "PUBLISHED_VERIFIED",
+  "packageVersion": "8.0.1-preview.85",
+  "nativeAbi": "1.118",
+  "bridgeVersion": "0.133.0",
+  "packages": 14,
+  "source": "https://api.nuget.org/v3/index.json",
+  "releaseBridgeSha256": "D44F3F272386EA2CC87E7107AB2E3375D8100283872372F1FBC234A3B4E38CB3",
+  "publicationReceiptSha256": "6E3DF3C5895BCA3CFCA7C559A2C246C6296B7276C74F7AFC94BF66C71E2783B8",
+  "authorSigning": "NOT RUN",
+  "repositorySigning": "PASS",
+  "consumerSdk": "10.0.401",
+  "vcpkgProvider": "Independent qualification; not the published payload",
+  "recordedUtc": "2026-10-12T10:14:06.6614732+00:00",
+  "gates": [
+    {
+      "sha256": "CDA2F5FE6690005448E846CF60CFEED7481E1C1D22D82D3F32077FC75D482FF8",
+      "state": "PASS",
+      "evidence": "local-delivery.json"
+    },
+    {
+      "sha256": "E3795FDFA5BE60A6E0945991C9C6BBBEEF75484679CB4B8A6493EF8B3414B56C",
+      "state": "PASS",
+      "evidence": "final-payload-equivalence.json"
+    },
+    {
+      "sha256": "6F582F4539D1D9153F8D94900E193B58D6822AA1B4AAC64A4955AD14896C6880",
+      "state": "PASS",
+      "evidence": "remote-package-identities.json"
+    },
+    {
+      "sha256": "90A5181C48128FFC2FFD3B4DE824A22A0BCAAF45BD3C9369E31EE75BF7AC5517",
+      "state": "PASS",
+      "evidence": "remote-signatures.json"
+    },
+    {
+      "sha256": "E04484F1408CC93910D4142FA8163B2D2AAA319176A3CC7EEBA730706538E722",
+      "state": "PASS",
+      "evidence": "remote-consumers.json"
+    }
+  ]
+}

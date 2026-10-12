@@ -1,0 +1,17 @@
+{
+  "recordedAt": "2026-10-12T15:53:56.841101+00:00",
+  "state": "PUBLIC85_PRIORITY_WORK_COMPLETE_NATIVE_LANE_RETURNED_TO_AF_PUBLIC_CANDIDATE_REGRESSION",
+  "requesterThread": "01a0f7b3-ff5f-7cb0-bff9-a5caad1a49b0",
+  "version": "8.0.1-preview.85",
+  "publisherCommit": "3e1f49a086387ea165920ad9e5cf343264682959",
+  "cadoryxMigrationCommit": "820e53fa5b0175227229e3cf4ecdac44f1ba2c72",
+  "productionRootBuild50Passed": true,
+  "publicCapability55Passed": true,
+  "originalMaximumWaitHours": 6,
+  "originalScopesOrTestBudgetsChanged": false,
+  "oldIncompleteConsumersMarkedPassed": false,
+  "currentFull6619Interrupted": false,
+  "currentAFRuntime": "artifacts/public85-runtime-acceptance-1",
+  "AF": "ACTIVE",
+  "G": "USER_DEFERRED"
+}

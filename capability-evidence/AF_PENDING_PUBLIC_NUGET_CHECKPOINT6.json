@@ -1,0 +1,43 @@
+{
+  "recordedAt": "2026-10-12T15:59:16.586677+00:00",
+  "state": "PUBLIC85_MIGRATION_COMMITTED_PUSHED_SDK_CLEANUP_VERIFIED_AF_PUBLIC6619_RUNTIME_AND_AUDITOR_ACTIVE",
+  "cadoryxMigrationCommit": "820e53fa5b0175227229e3cf4ecdac44f1ba2c72",
+  "publisherFinalCommit": "3e1f49a086387ea165920ad9e5cf343264682959",
+  "publisherCompletion": {
+    "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\capability-evidence\\diagnostics\\public-nuget-migration\\publisher-final-completion.json",
+    "sha256": "90C28AA27D8EBB44604A02BB2E2D894C2F06C5A091F024169BC3B32FE2D2D7A7"
+  },
+  "publisherCleanup": {
+    "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\capability-evidence\\diagnostics\\public-nuget-migration\\publisher-final-cleanup-result.json",
+    "sha256": "B93CD5A86CB78B47EB1259835DA0462993C335EA95DEE1E3DE041B5145872E21"
+  },
+  "publisherCleanupLogicalBytes": 37663196524,
+  "publisherCleanupTargets": 117,
+  "CadoryxCleanupPerformed": false,
+  "nativePackageSupported": true,
+  "nativePackageDeprecated": false,
+  "CadoryxRequiresVcpkg": false,
+  "publicPriorityReleased": {
+    "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\capability-evidence\\diagnostics\\public-nuget-migration\\public85-priority-released.json",
+    "sha256": "1F08F09CE53C09EF4D71F36A64352C41983D385C1F524811309A8AA7499561AB"
+  },
+  "source1073RuntimeFreeze": {
+    "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\capability-evidence\\diagnostics\\public-nuget-migration\\public85-final1073-runtime-freeze.json",
+    "sha256": "03FC0E531BBF4E8B059755CEE41673368F218D7464F3F61B4EB1185BFA5409F8"
+  },
+  "releaseActualLoadedNative": {
+    "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\capability-evidence\\diagnostics\\public-nuget-migration\\public85-final1073-release-running-loaded-native.json",
+    "sha256": "E25F9E9B4E03BBEB8928A9D6CA0EE0CB0EF3932D7A143B09C6E3406BD3A3B611"
+  },
+  "observedReleaseRuntimeNativeDlls": 62,
+  "releaseRuntimeState": "RUNNING",
+  "debugRuntimeState": "QUEUED_AFTER_RELEASE",
+  "expectedTestsPerConfiguration": 6619,
+  "independentAuditQueued": true,
+  "bothFullRuntimeCompleted": false,
+  "originalFailureRecordsOrAssertionsChanged": false,
+  "finalSource1073Applied": false,
+  "desktopInputStarted": false,
+  "AF": "ACTIVE",
+  "G": "USER_DEFERRED"
+}

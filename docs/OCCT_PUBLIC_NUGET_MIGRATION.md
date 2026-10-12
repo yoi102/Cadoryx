@@ -1,6 +1,6 @@
 # OcctSharp 必要 API 迁移与公开 NuGet 接入
 
-2026-10-13，status233。必要生成器 API 已迁移，公开 Preview.85 完整14包已发布；两个上游真实公开消费者和 Cadoryx 两组50项目的公开恢复/两配置编译通过。Cadoryx 当前生产已切换到公开 `8.0.1-preview.85`，根目录50项目/120阶段/两配置60次编译已通过，公开包能力55/55及native62通过；最终source1073完整6619两配置原生回归已开始，最终 A–F 产品验收仍待完成。所有既有公差、断言、工具预算保持，G及Cadoryx清理暂缓。
+2026-10-13，status234。必要生成器 API 已迁移，公开 Preview.85 完整14包已发布；两个上游真实公开消费者和 Cadoryx 两组50项目的公开恢复/两配置编译通过。Cadoryx 当前生产已切换到公开 `8.0.1-preview.85`，根目录50项目/120阶段/两配置60次编译已通过，公开包能力55/55及native62通过；最终source1073完整6619两配置原生回归已开始，最终 A–F 产品验收仍待完成。所有既有公差、断言、工具预算保持，G及Cadoryx清理暂缓。
 
 - [公开恢复](../capability-evidence/diagnostics/public-nuget-migration/public85-remote-restore-verification.json)：fresh cache、仅nuget.org、普通/锁定恢复、14份签名包和完整native62磁盘载荷匹配受测清单，bridge SHA256 `D44F3F272386EA2CC87E7107AB2E3375D8100283872372F1FBC234A3B4E38CB3`、ABI `1.118`、bridge `0.133.0`。
 - [最终source1073及工具](../capability-evidence/diagnostics/public-nuget-migration/public85-final1073-verification.json)：稳定SDK10.0.401，50项目、120阶段、60次零警告/错误编译，应用/测试代码和断言保持；221类型/696成员集合与原SDK31逐项一致，未合入生产或执行原生代码。
@@ -14,6 +14,8 @@
 vcpkg独立profile首次Runtime2253/2255的2个媒体时间失败保留；固定FFmpeg依赖后已独立核验Release及实际Debug-native各2255/2255、零失败/跳过，每配置磁盘84DLL/22许可证；Release实际观察84模块、Debug仅观察40模块且全部路径/哈希准确，Debug不证明所有84模块被观察加载。公开85仍使用独立受测的预编译native62，不能混用两profile的DLL数、哈希或运行结论。
 
 [检查点5](../capability-evidence/AF_PENDING_PUBLIC_NUGET_CHECKPOINT5.json)保存生产实际恢复/编译、55场景包能力及vcpkg两配置完整TRX/载荷/实际加载核验；这些证据不代替最终A–F完整回归、窗口和外部提供方。
+
+Cadoryx迁移提交 `820e53f` 已推送到origin/master；SDK收尾 `3e1f49a` 已推送，源码构建还原及公开分发工作完成。SDK删除117个可重建缓存目标、35.08GiB逻辑文件量，最终包、运行时、许可证、日志和证明保留；Cadoryx未清理。[检查点6](../capability-evidence/AF_PENDING_PUBLIC_NUGET_CHECKPOINT6.json)保存远端提交/清理核验与当前6619原生回归冻结载荷。Release已观察全部62原生模块匹配公开包，完整回归仍在执行；随后Debug及独立逐名/原断言/载荷审计，失败不会记为通过。
 
 ## 历史检查点
 

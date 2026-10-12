@@ -1,0 +1,18 @@
+{
+  "state": "PASS",
+  "commit": "3e1f49a086387ea165920ad9e5cf343264682959",
+  "originMain": "3e1f49a086387ea165920ad9e5cf343264682959",
+  "worktreeClean": true,
+  "cleanupSha256": "B93CD5A86CB78B47EB1259835DA0462993C335EA95DEE1E3DE041B5145872E21",
+  "cleanupLogicalBytes": 37663196524,
+  "localPackagesPreserved": 14,
+  "signedPackagesPreserved": 14,
+  "publicRuntimePreserved": 62,
+  "vcpkgReleaseRuntimePreserved": 84,
+  "vcpkgDebugRuntimePreserved": 84,
+  "vcpkgQualificationSha256": "38BEB34A59633310AA35DE2C1B4D6C1E50782386757472E78B8123497DF22001",
+  "publicDeliverySha256": "EDB1DE3EAF8BA8DE6406DEB3117B8DA3322F6B94397E71E0F41CC3F391F43623",
+  "recordedUtc": "2026-10-13T00:51:20.9170192+09:00",
+  "serverMain": "3e1f49a086387ea165920ad9e5cf343264682959",
+  "preservedRuntimeHashesRecheckedAfterDeletion": true
+}

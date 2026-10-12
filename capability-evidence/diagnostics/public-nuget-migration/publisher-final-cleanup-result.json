@@ -1,0 +1,598 @@
+{
+  "state": "PASS",
+  "targets": [
+    {
+      "path": "C:\\Users\\yoiri\\.cache\\occtsharp-dependencies\\vcpkg-e456309\\buildtrees\\brotli",
+      "bytes": 25523721,
+      "files": 376
+    },
+    {
+      "path": "C:\\Users\\yoiri\\.cache\\occtsharp-dependencies\\vcpkg-e456309\\buildtrees\\bzip2",
+      "bytes": 11440003,
+      "files": 166
+    },
+    {
+      "path": "C:\\Users\\yoiri\\.cache\\occtsharp-dependencies\\vcpkg-e456309\\buildtrees\\detect_compiler",
+      "bytes": 1105091,
+      "files": 27
+    },
+    {
+      "path": "C:\\Users\\yoiri\\.cache\\occtsharp-dependencies\\vcpkg-e456309\\buildtrees\\egl-registry",
+      "bytes": 7169289,
+      "files": 395
+    },
+    {
+      "path": "C:\\Users\\yoiri\\.cache\\occtsharp-dependencies\\vcpkg-e456309\\buildtrees\\ffmpeg",
+      "bytes": 985248411,
+      "files": 20076
+    },
+    {
+      "path": "C:\\Users\\yoiri\\.cache\\occtsharp-dependencies\\vcpkg-e456309\\buildtrees\\ffmpeg-bin2c",
+      "bytes": 92405168,
+      "files": 10462
+    },
+    {
+      "path": "C:\\Users\\yoiri\\.cache\\occtsharp-dependencies\\vcpkg-e456309\\buildtrees\\freeimage",
+      "bytes": 119325029,
+      "files": 744
+    },
+    {
+      "path": "C:\\Users\\yoiri\\.cache\\occtsharp-dependencies\\vcpkg-e456309\\buildtrees\\freetype",
+      "bytes": 41301574,
+      "files": 931
+    },
+    {
+      "path": "C:\\Users\\yoiri\\.cache\\occtsharp-dependencies\\vcpkg-e456309\\buildtrees\\hwloc",
+      "bytes": 116737235,
+      "files": 1755
+    },
+    {
+      "path": "C:\\Users\\yoiri\\.cache\\occtsharp-dependencies\\vcpkg-e456309\\buildtrees\\imath",
+      "bytes": 15461580,
+      "files": 514
+    },
+    {
+      "path": "C:\\Users\\yoiri\\.cache\\occtsharp-dependencies\\vcpkg-e456309\\buildtrees\\jxrlib",
+      "bytes": 17560614,
+      "files": 216
+    },
+    {
+      "path": "C:\\Users\\yoiri\\.cache\\occtsharp-dependencies\\vcpkg-e456309\\buildtrees\\lcms",
+      "bytes": 35916441,
+      "files": 584
+    },
+    {
+      "path": "C:\\Users\\yoiri\\.cache\\occtsharp-dependencies\\vcpkg-e456309\\buildtrees\\libdeflate",
+      "bytes": 7558206,
+      "files": 201
+    },
+    {
+      "path": "C:\\Users\\yoiri\\.cache\\occtsharp-dependencies\\vcpkg-e456309\\buildtrees\\libjpeg-turbo",
+      "bytes": 60783067,
+      "files": 1275
+    },
+    {
+      "path": "C:\\Users\\yoiri\\.cache\\occtsharp-dependencies\\vcpkg-e456309\\buildtrees\\liblzma",
+      "bytes": 26415515,
+      "files": 756
+    },
+    {
+      "path": "C:\\Users\\yoiri\\.cache\\occtsharp-dependencies\\vcpkg-e456309\\buildtrees\\libpng",
+      "bytes": 19619161,
+      "files": 749
+    },
+    {
+      "path": "C:\\Users\\yoiri\\.cache\\occtsharp-dependencies\\vcpkg-e456309\\buildtrees\\libraw",
+      "bytes": 312895085,
+      "files": 687
+    },
+    {
+      "path": "C:\\Users\\yoiri\\.cache\\occtsharp-dependencies\\vcpkg-e456309\\buildtrees\\libspng",
+      "bytes": 7172993,
+      "files": 351
+    },
+    {
+      "path": "C:\\Users\\yoiri\\.cache\\occtsharp-dependencies\\vcpkg-e456309\\buildtrees\\libwebp",
+      "bytes": 41574218,
+      "files": 850
+    },
+    {
+      "path": "C:\\Users\\yoiri\\.cache\\occtsharp-dependencies\\vcpkg-e456309\\buildtrees\\opencascade",
+      "bytes": 12926718313,
+      "files": 62185
+    },
+    {
+      "path": "C:\\Users\\yoiri\\.cache\\occtsharp-dependencies\\vcpkg-e456309\\buildtrees\\opengl",
+      "bytes": 2677,
+      "files": 2
+    },
+    {
+      "path": "C:\\Users\\yoiri\\.cache\\occtsharp-dependencies\\vcpkg-e456309\\buildtrees\\opengl-registry",
+      "bytes": 182914779,
+      "files": 1358
+    },
+    {
+      "path": "C:\\Users\\yoiri\\.cache\\occtsharp-dependencies\\vcpkg-e456309\\buildtrees\\openjpeg",
+      "bytes": 24590998,
+      "files": 617
+    },
+    {
+      "path": "C:\\Users\\yoiri\\.cache\\occtsharp-dependencies\\vcpkg-e456309\\buildtrees\\openjph",
+      "bytes": 31044772,
+      "files": 343
+    },
+    {
+      "path": "C:\\Users\\yoiri\\.cache\\occtsharp-dependencies\\vcpkg-e456309\\buildtrees\\pkgconf",
+      "bytes": 21310694,
+      "files": 965
+    },
+    {
+      "path": "C:\\Users\\yoiri\\.cache\\occtsharp-dependencies\\vcpkg-e456309\\buildtrees\\rapidjson",
+      "bytes": 7301110,
+      "files": 381
+    },
+    {
+      "path": "C:\\Users\\yoiri\\.cache\\occtsharp-dependencies\\vcpkg-e456309\\buildtrees\\tbb",
+      "bytes": 139522008,
+      "files": 1918
+    },
+    {
+      "path": "C:\\Users\\yoiri\\.cache\\occtsharp-dependencies\\vcpkg-e456309\\buildtrees\\tiff",
+      "bytes": 35076650,
+      "files": 876
+    },
+    {
+      "path": "C:\\Users\\yoiri\\.cache\\occtsharp-dependencies\\vcpkg-e456309\\buildtrees\\vcpkg-cmake",
+      "bytes": 2358,
+      "files": 2
+    },
+    {
+      "path": "C:\\Users\\yoiri\\.cache\\occtsharp-dependencies\\vcpkg-e456309\\buildtrees\\vcpkg-cmake-config",
+      "bytes": 1397,
+      "files": 2
+    },
+    {
+      "path": "C:\\Users\\yoiri\\.cache\\occtsharp-dependencies\\vcpkg-e456309\\buildtrees\\vcpkg-cmake-get-vars",
+      "bytes": 1977,
+      "files": 2
+    },
+    {
+      "path": "C:\\Users\\yoiri\\.cache\\occtsharp-dependencies\\vcpkg-e456309\\buildtrees\\vcpkg-pkgconfig-get-modules",
+      "bytes": 1147,
+      "files": 2
+    },
+    {
+      "path": "C:\\Users\\yoiri\\.cache\\occtsharp-dependencies\\vcpkg-e456309\\buildtrees\\vcpkg-tool-meson",
+      "bytes": 4282,
+      "files": 14
+    },
+    {
+      "path": "C:\\Users\\yoiri\\.cache\\occtsharp-dependencies\\vcpkg-e456309\\buildtrees\\versioning_",
+      "bytes": 623366,
+      "files": 211
+    },
+    {
+      "path": "C:\\Users\\yoiri\\.cache\\occtsharp-dependencies\\vcpkg-e456309\\buildtrees\\zlib",
+      "bytes": 10983569,
+      "files": 391
+    },
+    {
+      "path": "C:\\Users\\yoiri\\.cache\\occtsharp-dependencies\\vcpkg-e456309\\packages",
+      "bytes": 2519023606,
+      "files": 9343
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-public-sdk85\\remote-consumers-13727bf3bce943c0908b489e5b94d3c4\\http-cache",
+      "bytes": 679632,
+      "files": 5
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-public-sdk85\\remote-consumers-13727bf3bce943c0908b489e5b94d3c4\\packages",
+      "bytes": 411924958,
+      "files": 1877
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-public-sdk85\\remote-consumers-13727bf3bce943c0908b489e5b94d3c4\\source\\tests\\OcctSharp.ModuleConsumer\\bin",
+      "bytes": 141121792,
+      "files": 307
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-public-sdk85\\remote-consumers-13727bf3bce943c0908b489e5b94d3c4\\source\\tests\\OcctSharp.ModuleConsumer\\obj",
+      "bytes": 1118654,
+      "files": 23
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-public-sdk85\\remote-consumers-13727bf3bce943c0908b489e5b94d3c4\\source\\tests\\OcctSharp.PackageConsumer\\bin",
+      "bytes": 142934187,
+      "files": 310
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-public-sdk85\\remote-consumers-13727bf3bce943c0908b489e5b94d3c4\\source\\tests\\OcctSharp.PackageConsumer\\obj",
+      "bytes": 1442787,
+      "files": 23
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-public-sdk85\\remote-consumers-907e04f2745040d6ba3f6d11a060442b\\http-cache",
+      "bytes": 11279,
+      "files": 2
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-public-sdk85\\remote-consumers-baea5477e5484a5cbb53cf69e9770e05\\http-cache",
+      "bytes": 679632,
+      "files": 5
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-public-sdk85\\remote-consumers-baea5477e5484a5cbb53cf69e9770e05\\packages",
+      "bytes": 215062449,
+      "files": 762
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-public-sdk85\\remote-consumers-baea5477e5484a5cbb53cf69e9770e05\\source\\tests\\OcctSharp.ModuleConsumer\\bin",
+      "bytes": 141121270,
+      "files": 307
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-public-sdk85\\remote-consumers-baea5477e5484a5cbb53cf69e9770e05\\source\\tests\\OcctSharp.ModuleConsumer\\obj",
+      "bytes": 1116382,
+      "files": 23
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-public-sdk85\\remote-consumers-baea5477e5484a5cbb53cf69e9770e05\\source\\tests\\OcctSharp.PackageConsumer\\bin",
+      "bytes": 142933526,
+      "files": 310
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-public-sdk85\\remote-consumers-baea5477e5484a5cbb53cf69e9770e05\\source\\tests\\OcctSharp.PackageConsumer\\obj",
+      "bytes": 1440515,
+      "files": 23
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-public-sdk85\\remote-consumers-f56f64d6b6984fbea13dce0c87cfa6ee\\http-cache",
+      "bytes": 679632,
+      "files": 5
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-public-sdk85\\remote-consumers-f56f64d6b6984fbea13dce0c87cfa6ee\\packages",
+      "bytes": 411924958,
+      "files": 1877
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-public-sdk85\\remote-consumers-f56f64d6b6984fbea13dce0c87cfa6ee\\source\\tests\\OcctSharp.ModuleConsumer\\bin",
+      "bytes": 141121792,
+      "files": 307
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-public-sdk85\\remote-consumers-f56f64d6b6984fbea13dce0c87cfa6ee\\source\\tests\\OcctSharp.ModuleConsumer\\obj",
+      "bytes": 1118538,
+      "files": 23
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-public-sdk85\\remote-consumers-f56f64d6b6984fbea13dce0c87cfa6ee\\source\\tests\\OcctSharp.PackageConsumer\\bin",
+      "bytes": 142934187,
+      "files": 310
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-public-sdk85\\remote-consumers-f56f64d6b6984fbea13dce0c87cfa6ee\\source\\tests\\OcctSharp.PackageConsumer\\obj",
+      "bytes": 1442671,
+      "files": 23
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\package-consumer-mirror2-preserved\\packages",
+      "bytes": 196486793,
+      "files": 392
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\package-consumer\\packages",
+      "bytes": 214698119,
+      "files": 748
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\package-staging",
+      "bytes": 293971163,
+      "files": 90
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\build\\native-vs18",
+      "bytes": 4718799122,
+      "files": 909
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\build\\vcpkg-native85-media2\\ALL_BUILD.dir",
+      "bytes": 0,
+      "files": 0
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\build\\vcpkg-native85-media2\\CMakeFiles",
+      "bytes": 2281491,
+      "files": 32
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\build\\vcpkg-native85-media2\\generation",
+      "bytes": 170544709,
+      "files": 403
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\build\\vcpkg-native85-media2\\src",
+      "bytes": 4262598611,
+      "files": 841
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\build\\vcpkg-native85-media2\\x64",
+      "bytes": 107396,
+      "files": 20
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\build\\vcpkg-native85-media2\\ZERO_CHECK.dir",
+      "bytes": 0,
+      "files": 0
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\build\\vcpkg-native85\\ALL_BUILD.dir",
+      "bytes": 0,
+      "files": 0
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\build\\vcpkg-native85\\CMakeFiles",
+      "bytes": 2348518,
+      "files": 32
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\build\\vcpkg-native85\\generation",
+      "bytes": 170543977,
+      "files": 403
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\build\\vcpkg-native85\\src",
+      "bytes": 4304085730,
+      "files": 841
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\build\\vcpkg-native85\\x64",
+      "bytes": 83194,
+      "files": 20
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\build\\vcpkg-native85\\ZERO_CHECK.dir",
+      "bytes": 0,
+      "files": 0
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\samples\\OcctSharp.Samples\\bin",
+      "bytes": 542177718,
+      "files": 216
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\samples\\OcctSharp.Samples\\obj",
+      "bytes": 931178,
+      "files": 39
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\samples\\OcctSharpViewer.Wpf\\bin",
+      "bytes": 542468808,
+      "files": 218
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\samples\\OcctSharpViewer.Wpf\\obj",
+      "bytes": 1074091,
+      "files": 91
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.DataExchange\\bin",
+      "bytes": 104011786,
+      "files": 60
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.DataExchange\\obj",
+      "bytes": 73195509,
+      "files": 38
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Documents\\bin",
+      "bytes": 45955178,
+      "files": 42
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Documents\\obj",
+      "bytes": 13212333,
+      "files": 38
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Draw\\bin",
+      "bytes": 107994708,
+      "files": 72
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Draw\\obj",
+      "bytes": 2085194,
+      "files": 38
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Foundation\\bin",
+      "bytes": 4415090,
+      "files": 18
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Foundation\\obj",
+      "bytes": 7357193,
+      "files": 38
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Generator\\bin",
+      "bytes": 259751016,
+      "files": 18
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Generator\\obj",
+      "bytes": 16052669,
+      "files": 39
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Geometry\\bin",
+      "bytes": 23847446,
+      "files": 24
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Geometry\\obj",
+      "bytes": 30895397,
+      "files": 38
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.IVtk\\bin",
+      "bytes": 62327634,
+      "files": 60
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.IVtk\\obj",
+      "bytes": 442521,
+      "files": 38
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Mesh\\bin",
+      "bytes": 40195978,
+      "files": 42
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Mesh\\obj",
+      "bytes": 2847554,
+      "files": 38
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.MeshData\\bin",
+      "bytes": 24433508,
+      "files": 30
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.MeshData\\obj",
+      "bytes": 1136223,
+      "files": 38
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Modeling\\bin",
+      "bytes": 38620572,
+      "files": 36
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Modeling\\obj",
+      "bytes": 24218841,
+      "files": 38
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native.win-x64\\bin",
+      "bytes": 32356,
+      "files": 6
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native.win-x64\\obj",
+      "bytes": 116610,
+      "files": 32
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Runtime\\bin",
+      "bytes": 96288,
+      "files": 12
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Runtime\\obj",
+      "bytes": 182086,
+      "files": 38
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Visualization\\bin",
+      "bytes": 62244854,
+      "files": 54
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Visualization\\obj",
+      "bytes": 25945056,
+      "files": 38
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Xde\\bin",
+      "bytes": 106980846,
+      "files": 66
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Xde\\obj",
+      "bytes": 5383964,
+      "files": 38
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp\\bin",
+      "bytes": 111495486,
+      "files": 84
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp\\obj",
+      "bytes": 6143810,
+      "files": 38
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\tests\\OcctSharp.Consumer.Guards\\bin",
+      "bytes": 161664189,
+      "files": 108
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\tests\\OcctSharp.Consumer.Guards\\obj",
+      "bytes": 647187,
+      "files": 22
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\tests\\OcctSharp.Generator.Tests\\bin",
+      "bytes": 271739100,
+      "files": 190
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\tests\\OcctSharp.Generator.Tests\\obj",
+      "bytes": 1816147,
+      "files": 37
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\tests\\OcctSharp.ModuleConsumer\\bin",
+      "bytes": 140988550,
+      "files": 307
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\tests\\OcctSharp.ModuleConsumer\\obj",
+      "bytes": 934512,
+      "files": 23
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\tests\\OcctSharp.PackageConsumer\\bin",
+      "bytes": 142761346,
+      "files": 310
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\tests\\OcctSharp.PackageConsumer\\obj",
+      "bytes": 1215660,
+      "files": 23
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\tests\\OcctSharp.Runtime.Tests\\bin",
+      "bytes": 563096780,
+      "files": 888
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\tests\\OcctSharp.Runtime.Tests\\obj",
+      "bytes": 7459595,
+      "files": 37
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\tools\\OcctSharp.ApiTool\\bin",
+      "bytes": 410310,
+      "files": 10
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\tools\\OcctSharp.ApiTool\\obj",
+      "bytes": 499879,
+      "files": 35
+    }
+  ],
+  "bytes": 37663196524,
+  "retainedReparseTrees": [
+    "C:\\Users\\yoiri\\.cache\\occtsharp-dependencies\\vcpkg-e456309\\buildtrees\\jasper",
+    "C:\\Users\\yoiri\\.cache\\occtsharp-dependencies\\vcpkg-e456309\\buildtrees\\openexr",
+    "C:\\Users\\yoiri\\.cache\\occtsharp-dependencies\\vcpkg-e456309\\buildtrees\\zstd"
+  ],
+  "preserved": "Source/fixtures/private preparations/final14 packages/signed remote packages/logs/receipts/public62 runtime/vcpkg installed prefixes/configuration runtime manifests+DLLs+licenses",
+  "recordedUtc": "2026-10-12T15:49:48.5386934+00:00"
+}

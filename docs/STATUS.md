@@ -1,5 +1,9 @@
 # 当前状态
 
+2026-10-13，status234：[检查点6](../capability-evidence/AF_PENDING_PUBLIC_NUGET_CHECKPOINT6.json)核对Cadoryx公开迁移提交 `820e53f` 已推送到origin/master；OcctSharp实现/资格 `587cadd` 及清理收尾 `3e1f49a` 已推送，远端HEAD一致、SDK工作树干净。SDK清理117个可重建缓存目标、37,663,196,524逻辑字节（35.08GiB），最终包/运行时/许可/来源/证据保留；Cadoryx未清理。SDK优先时段已结束，最终source1073/public85的Release完整6619正在运行、实际native62来源/哈希准确，随后Debug6619；独立审计已排队，要求保留原6556名称及新增63、原断言/公差/预算、两配置完整TRX和实际加载载荷。已复现部分原严格STEP导出拒绝；本轮全量尚无终态，不算通过。A–F继续，G暂缓。
+
+以下status233及更早记录保留当时状态；当前进度以status234为准。
+
 2026-10-13，status233：[检查点5](../capability-evidence/AF_PENDING_PUBLIC_NUGET_CHECKPOINT5.json)确认公开 Preview.85 已实际应用生产，仅nuget.org、稳定SDK10.0.401，生产根50项目/120阶段/Release及Debug共60次编译均零警告/错误；30份SDK锁/412引用和六个输出的13托管/62原生DLL匹配公开包。实际公开能力探针55/55通过。vcpkg独立profile两配置各完整2255/2255、零失败/跳过，磁盘84DLL/22许可证；Release实际观察84模块、Debug实际观察40模块及桥的路径/哈希准确，Debug不证明全部84加载。最终source1073公开85完整6619两配置回归已开始，原严格STEP24、工具预算及实际窗口/性能/提供方门禁仍保持，最终1073尚未合入生产。Cadoryx不需要vcpkg；Native.win-x64继续受支持、不弃用。A–F继续，G及Cadoryx清理暂缓。
 
 以下status232及更早记录保留当时状态；当前结论以status233为准。

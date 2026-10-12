@@ -1,0 +1,16 @@
+{
+  "snapshotsOnly": true,
+  "restoreSnapshotsToOriginalExecutablePathsBeforeReproduction": true,
+  "scripts": [
+    {
+      "originalExecutablePath": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\audit-public85-native-full-both-1.py",
+      "snapshot": "audit-public85-native-full-both-1.py",
+      "sha256": "536FB05FD4BA70CC541AD12B94BA89BC7FDFA4F2E94B2E2D5D91D697F8BB67DA"
+    },
+    {
+      "originalExecutablePath": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\watch-public85-native-full-both-1.ps1",
+      "snapshot": "watch-public85-native-full-both-1.ps1",
+      "sha256": "2CB31982F176F7F5574F4409A9139CE2EC4D655B1818B669F3E90FAED1CAE933"
+    }
+  ]
+}
