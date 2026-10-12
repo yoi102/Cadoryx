@@ -1,0 +1,12 @@
+{
+  "reservationSha256": "01A5EE764B52688DBCA51BD8F328F5EEA7CA065C95ADA43F72D6C1FC05C35D5B",
+  "frozenRunGateAndQueueChanged": false,
+  "originalHelperSha256": "94C541CE68A61F977EEB2C960010052BC24B97BB64A9DA0FD837785533568837",
+  "originalBudgetsChanged": false,
+  "productSourcesChanged": false,
+  "currentConsumerStopped": false,
+  "recordedAt": "2026-10-12T06:00:37.8110745+00:00",
+  "newHelperSha256": "B5E2E77AFE7E6BFC0B6DE64EB1FF84230CDAF00E2BF49A6FCBA5E3C410F9E8C5",
+  "cleanup": false,
+  "oldPreview83ReservationChanged": false
+}

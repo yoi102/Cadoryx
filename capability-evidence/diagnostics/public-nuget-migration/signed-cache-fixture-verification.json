@@ -1,0 +1,23 @@
+{
+  "originalPublicArchiveSha256": "387A6E166A56556018A493C176AA9DB6710C4D8B12379B818D18D3A0FB8E13F6",
+  "cases": [
+    {
+      "scenario": "valid-repository-signed-archive",
+      "passed": true
+    },
+    {
+      "rejected": true,
+      "scenario": "wrong-signed-content-lock"
+    },
+    {
+      "rejected": true,
+      "scenario": "tampered-signed-archive"
+    }
+  ],
+  "count": 3,
+  "state": "PASS_ACTUAL_SIGNED_PACKAGE_ARCHIVE_CONTENT_HASH_AND_TAMPER_REJECTIONS_NOT_RUNTIME",
+  "nativeCodeExecuted": false,
+  "scriptSha256": "A0D65030723B0A1AF7CD6E74CCAA962679C3222EB8EA23FCF31646D63E23EC24",
+  "originalPublicArchive": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\public85-remote-restore-2\\packages\\occtsharp.native.win-x64\\8.0.1-preview.85\\occtsharp.native.win-x64.8.0.1-preview.85.nupkg",
+  "cleanup": false
+}

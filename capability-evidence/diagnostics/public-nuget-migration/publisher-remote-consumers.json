@@ -1,0 +1,1408 @@
+{
+  "state": "PASS",
+  "packageVersion": "8.0.1-preview.85",
+  "source": "https://api.nuget.org/v3/index.json",
+  "sdkVersion": "10.0.401",
+  "freshPackageCache": true,
+  "freshHttpCache": true,
+  "runDirectory": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-public-sdk85\\remote-consumers-baea5477e5484a5cbb53cf69e9770e05",
+  "packagesVerified": 14,
+  "consumers": [
+    {
+      "consumer": "PackageConsumer",
+      "state": "PASS",
+      "nativeDlls": 62,
+      "nativeHashesExact": true,
+      "facadePresent": true
+    },
+    {
+      "consumer": "ModuleConsumer",
+      "state": "PASS",
+      "nativeDlls": 62,
+      "nativeHashesExact": true,
+      "facadePresent": false
+    }
+  ],
+  "sourceInputs": [
+    {
+      "path": "Directory.Build.props",
+      "sha256": "F34E4B6AB14758776D303076F396FDEEFD8400BA7B8FBECD6AD2604BC7AE7EA7"
+    },
+    {
+      "path": "Directory.Build.targets",
+      "sha256": "563D69336C481F0A26C68D551DE558866130795C37EE8675858103A84D311103"
+    },
+    {
+      "path": "Directory.Packages.props",
+      "sha256": "E748BEF23863E94145CA929514DF8876CACD8B285637C0E44635E6702F6093F7"
+    },
+    {
+      "path": "global.json",
+      "sha256": "B54F95CCC7A0A2199F7F2CE71CEF88C853E633B5F6D0C492095CD16BBF4D8506"
+    },
+    {
+      "path": "tests/Fixtures/ConfiguredStep/fidelity.json",
+      "sha256": "E674BFA068647BD41B3B584AF7C6F89CDAF3BB52AFEF330037A9FD20147CDD07"
+    },
+    {
+      "path": "tests/Fixtures/LocalStep/assembly.step",
+      "sha256": "F8EC193DD43CB4A8504D4A643EA864577A4939F593854795DC6FDE0225027BA0"
+    },
+    {
+      "path": "tests/Fixtures/LocalStep/piece_part.stp",
+      "sha256": "973A8621C57946A93E37F83A053ED75C6765AB129B10CD4CE42F6968DEFE28D7"
+    },
+    {
+      "path": "tests/Fixtures/LocalStep/roots.step",
+      "sha256": "D85D5C7787E341D236D8C16CCAC656689390090B898EFAFB90F1257F8A32822E"
+    },
+    {
+      "path": "tests/Fixtures/LocatedAssembly/bad-depth.xbf",
+      "sha256": "E0A8129D9E022AB7E5F14EE959438FF9F8BF63AFC4CCB7B612CE694A207794D4"
+    },
+    {
+      "path": "tests/Fixtures/LocatedAssembly/bad-expanded.xbf",
+      "sha256": "008A18F1763EF8E282D19C7F5FDD3D586000DABC51BEBE8A3B226C6AB42433A2"
+    },
+    {
+      "path": "tests/Fixtures/LocatedAssembly/budget-oracle.json",
+      "sha256": "F1244071AE8AAE33DF9702F1A0181D587352A36DD903964B798A5FD542951E23"
+    },
+    {
+      "path": "tests/Fixtures/LocatedAssembly/located.xbf",
+      "sha256": "E75B7FF5526F6C7D93CF79E425CF051BED40AF4DCBE2A20E04825286C556249D"
+    },
+    {
+      "path": "tests/Fixtures/LocatedAssembly/oracle.json",
+      "sha256": "443324C0DA2C2CA1B8917F95A2A3027F27AA1FD9E1FABB40E106626C8D10C3B9"
+    },
+    {
+      "path": "tests/Fixtures/OwnedMeshResources/fixture-identity.json",
+      "sha256": "1560BBE5FAF0C6C10806930D333B5B3FCA7E2ADB8F91A24DC690737934D35FF7"
+    },
+    {
+      "path": "tests/Fixtures/OwnedMeshResources/images/色块.png",
+      "sha256": "E6D66889131220F931FDDFB05730D647A0992456C63AE0A8154B4AE32FF219EF"
+    },
+    {
+      "path": "tests/Fixtures/OwnedMeshResources/materials/textures/色块.png",
+      "sha256": "E6D66889131220F931FDDFB05730D647A0992456C63AE0A8154B4AE32FF219EF"
+    },
+    {
+      "path": "tests/Fixtures/OwnedMeshResources/materials/材料.mtl",
+      "sha256": "C2EF6260CD83FB4F00C969A3CBFDE27BCC34643C77B42F6CBE946A4188E179D7"
+    },
+    {
+      "path": "tests/Fixtures/OwnedMeshResources/parts/嵌入.bin",
+      "sha256": "ECA2304E94B9FBECB50A8EF30013E86A561FE892869248E0D7A8E456DE1EE255"
+    },
+    {
+      "path": "tests/Fixtures/OwnedMeshResources/parts/网格.bin",
+      "sha256": "A762FC39AD8CCE92D9034F888C5DDB7FD0289FE8AB2BA657E99B8CC303ABE718"
+    },
+    {
+      "path": "tests/Fixtures/OwnedMeshResources/嵌入.gltf",
+      "sha256": "97CCAEEF758E022986BD877AB3CF28D0E4558173F1D119CE405597A16CF30F8E"
+    },
+    {
+      "path": "tests/Fixtures/OwnedMeshResources/嵌套.gltf",
+      "sha256": "4C8630D5BA00A8BAE6389912DD5054D2869BB7E5A3E8A2CBDA44D3584482DBED"
+    },
+    {
+      "path": "tests/Fixtures/OwnedMeshResources/嵌套.obj",
+      "sha256": "968D3FC8B2BB23A80D951F6239168CC428C4280436A1F26D903C5D521AB68EE9"
+    },
+    {
+      "path": "tests/OcctSharp.ModuleConsumer/OcctSharp.ModuleConsumer.csproj",
+      "sha256": "EE6E3D113439FB0033DECB51A20A33F60BB5D1506AF04C6A7148274A71F455A6"
+    },
+    {
+      "path": "tests/OcctSharp.ModuleConsumer/Program.cs",
+      "sha256": "049CCC92CFCFD6E02A7D8B5C3113BDEB930B2C683817F11D7616D4712963ABA2"
+    },
+    {
+      "path": "tests/OcctSharp.PackageConsumer/OcctSharp.PackageConsumer.csproj",
+      "sha256": "243FCB927C0020F847D1FBF5F6E6982508832385AF8937BAEF06DEFAB7D9EBA5"
+    },
+    {
+      "path": "tests/OcctSharp.PackageConsumer/Program.cs",
+      "sha256": "87808C68BDF7A8FF3603542DD76D4674ED60FC3398559F424E8157240628B09C"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b17-large-offset/translated-rotated-Round-0.01-False-original.brep",
+      "sha256": "A2B79CD7017F3D234237F2B32BD20077A9DFAD78D5066B1D864C2694EDB93FED"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b17-large-offset/translated-rotated-Round-0.01-False-reflected.brep",
+      "sha256": "9ABF098E65C7266C3ECA9A39F4A81918DC346351D777FD943FF5E0D7452CC198"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b17-large-offset/translated-rotated-Round-0.01-False-translated.brep",
+      "sha256": "4DF96A85838DBA97C4DC6D637D773A271798FC4BC762AFA696463D8915EB4280"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b17-large-offset/translated-rotated-Round-0.01-True-original.brep",
+      "sha256": "8AAFD86C3BDD054278D79E1C9D7BDCF918DBE8B36742D777DD372CF1334CE076"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b17-large-offset/translated-rotated-Round-0.01-True-reflected.brep",
+      "sha256": "F56D669FD212C8E39EF9EC154DF57618439739DA262E69B6A2121716B7FF309F"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b17-large-offset/translated-rotated-Round-0.01-True-translated.brep",
+      "sha256": "C905212196BBB100BA8B64C18FC416FF76BB62BC68C9DFB58ED9BCA62E245B73"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b17-large-offset/translated-rotated-Round-1-False-original.brep",
+      "sha256": "C50CFDAE5C878E68CF3AD041DC81C92DD2B79A30449202B987B1DC50DAC7146B"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b17-large-offset/translated-rotated-Round-1-False-reflected.brep",
+      "sha256": "AFB12543EA2542FF4EA33C39B1FE931F8D5E4C0D81660DD751C58499F133A58A"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b17-large-offset/translated-rotated-Round-1-False-translated.brep",
+      "sha256": "A4B67EDB2409254C822E558D3049FB04C8C76E7E193758205FEF9556D621424B"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b17-large-offset/translated-rotated-Round-1-True-original.brep",
+      "sha256": "D3C8A442EF7026CB85BBD291197E3EDFB476EFA58BE24F15568F59B7BFD9108E"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b17-large-offset/translated-rotated-Round-1-True-reflected.brep",
+      "sha256": "32A9103863A98620E5A62ED4E6546DEC054D79C4EEDE9B58A3C35E905BF571F9"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b17-large-offset/translated-rotated-Round-1-True-translated.brep",
+      "sha256": "487E497A3B399322BAEBF4351C53A5F91EC75E252B8C8E6B9C56D2F72DFC581D"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-exact-step/arc-g1-mirrored-inward-Bevel.brep",
+      "sha256": "93E953A0CA6A822ED1B631CC08FBABADB4E9208C866B052B7AF3EF1CF6FFB15C"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-exact-step/spline-g1-mirrored-inward-Bevel.brep",
+      "sha256": "B74ABBF44809F93AA28FA4F6349241F2B8882D8BB92A1B40EC3D859EB3260D51"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-exact-step/spline-g1-normal-outward-Round.brep",
+      "sha256": "F6471A7DD44F950AD43B8000D68A703173D940915FCAFEE26D2198E5FD5A713C"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-exact-step/spline-g2-normal-outward-Round.brep",
+      "sha256": "F6471A7DD44F950AD43B8000D68A703173D940915FCAFEE26D2198E5FD5A713C"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-distance/arc-g1-normal-outward-Round.brep",
+      "sha256": "1AFCBC87FEF9ECFF7B7D05070D544A04869D2A885C490532F03E6323203C23FB"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-distance/spline-g1-normal-outward-Round.brep",
+      "sha256": "F6471A7DD44F950AD43B8000D68A703173D940915FCAFEE26D2198E5FD5A713C"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-distance/spline-g2-normal-outward-Round.brep",
+      "sha256": "F6471A7DD44F950AD43B8000D68A703173D940915FCAFEE26D2198E5FD5A713C"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/circle-circle-0-a.brep",
+      "sha256": "B98B16D81F7015DA7AEE1D26EB88F92E27FAE610CDEB82EDC141E8025DB03686"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/circle-circle-0-b.brep",
+      "sha256": "5EE4A049804C9E8D93E84EAE3DAC3319E6A972D77B0C90E8DC06773B1E013249"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/circle-circle-1-a.brep",
+      "sha256": "30DF6B8D1ABF5C0D9B00FE3476BE1CC9131DB5E6B179118A25A0E2231588565F"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/circle-circle-1-b.brep",
+      "sha256": "BF2DD015BC4890245CC6CEBFBBEF7A7FFD148EAC436FF4B5D5872FAC864650EB"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/circle-circle-2-a.brep",
+      "sha256": "D8A85679E946F2F5A3FF8D0BB7C37D046A5B0EBE8F07BB11115D666EC33E4580"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/circle-circle-2-b.brep",
+      "sha256": "E7F3FCF9683473AB986CB83D5F1766543D6BF009C8B68A55D244AAF42E3B3DAB"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/circle-circle-3-a.brep",
+      "sha256": "F043A536FE234EA76CE493DD5944DD9410648FEEF232561A274E8E947F42D084"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/circle-circle-3-b.brep",
+      "sha256": "4EC7AEAB9EAEE08704DA5D3FF866282121F682DCD7E09DDBA72EAA4A6EB277B5"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/circle-circle-4-a.brep",
+      "sha256": "7CAFC945194B18F9A7727EB1D08B944402D8BA78E7859C0F8778EE88B6AD4B8A"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/circle-circle-4-b.brep",
+      "sha256": "8CF5775830D8935B36AAA4E835AF43253D608AD309903D2EA1E5DD0B6CEEBA03"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/circle-circle-5-a.brep",
+      "sha256": "17BFBDDBF3EE6D419ADD6C1F208A8E1DA8A65746C1E25999CF5EB6C6B7DC88EF"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/circle-circle-5-b.brep",
+      "sha256": "F1E30D06A0A6AB3F9CA90816CE18B9F5D535C767874D7995FFB8DB1475E39750"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/circle-circle-6-a.brep",
+      "sha256": "CAA0CD9D1A1278C5B7CB81DFCE83A3C33C97DE76DFFB23FC59528CECF991D81A"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/circle-circle-6-b.brep",
+      "sha256": "95BE85FC8A9C06BA96D609DD017BBC25DF27841101731C062F697D8F9A0B8BC4"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/circle-circle-7-a.brep",
+      "sha256": "9D1C7DF92450903AEC48E70E55BF60C6F225C11B1E4DEC28365665F66E1422BE"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/circle-circle-7-b.brep",
+      "sha256": "533E1EE3B2C3E986DDCA6407C121791E727F5CBA530BEEAD05105A2D05D20A05"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/circle-plane-0-a.brep",
+      "sha256": "B98B16D81F7015DA7AEE1D26EB88F92E27FAE610CDEB82EDC141E8025DB03686"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/circle-plane-0-b.brep",
+      "sha256": "A91758B8F0FACF6E97FC765A70ACD8061B26EC4C25680935DFF350DFE5F32F5D"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/circle-plane-1-a.brep",
+      "sha256": "30DF6B8D1ABF5C0D9B00FE3476BE1CC9131DB5E6B179118A25A0E2231588565F"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/circle-plane-1-b.brep",
+      "sha256": "A91758B8F0FACF6E97FC765A70ACD8061B26EC4C25680935DFF350DFE5F32F5D"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/circle-plane-2-a.brep",
+      "sha256": "D8A85679E946F2F5A3FF8D0BB7C37D046A5B0EBE8F07BB11115D666EC33E4580"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/circle-plane-2-b.brep",
+      "sha256": "A91758B8F0FACF6E97FC765A70ACD8061B26EC4C25680935DFF350DFE5F32F5D"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/circle-plane-3-a.brep",
+      "sha256": "F043A536FE234EA76CE493DD5944DD9410648FEEF232561A274E8E947F42D084"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/circle-plane-3-b.brep",
+      "sha256": "A91758B8F0FACF6E97FC765A70ACD8061B26EC4C25680935DFF350DFE5F32F5D"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/circle-plane-4-a.brep",
+      "sha256": "7CAFC945194B18F9A7727EB1D08B944402D8BA78E7859C0F8778EE88B6AD4B8A"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/circle-plane-4-b.brep",
+      "sha256": "A91758B8F0FACF6E97FC765A70ACD8061B26EC4C25680935DFF350DFE5F32F5D"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/circle-plane-5-a.brep",
+      "sha256": "17BFBDDBF3EE6D419ADD6C1F208A8E1DA8A65746C1E25999CF5EB6C6B7DC88EF"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/circle-plane-5-b.brep",
+      "sha256": "ABB27611A08201D86A58AB16092A26F621654518AC519B19C05D452E08C01033"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/circle-plane-6-a.brep",
+      "sha256": "CAA0CD9D1A1278C5B7CB81DFCE83A3C33C97DE76DFFB23FC59528CECF991D81A"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/circle-plane-6-b.brep",
+      "sha256": "ABB27611A08201D86A58AB16092A26F621654518AC519B19C05D452E08C01033"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/circle-plane-7-a.brep",
+      "sha256": "9D1C7DF92450903AEC48E70E55BF60C6F225C11B1E4DEC28365665F66E1422BE"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/circle-plane-7-b.brep",
+      "sha256": "ABB27611A08201D86A58AB16092A26F621654518AC519B19C05D452E08C01033"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/ellipse-line-0-a.brep",
+      "sha256": "A3902772EE8C883F7D40FF56D4C044F257A74705F5D7E3AF87977052A2536C74"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/ellipse-line-0-b.brep",
+      "sha256": "478E30DAADAA4EAAA49CA9548FCAA2A404C164BB6BFC0DE583D64954907E87D9"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/ellipse-line-1-a.brep",
+      "sha256": "9950A389321BF53D6B46FA78C0865FF9ADADF7654E63344F6E744303763AA3CC"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/ellipse-line-1-b.brep",
+      "sha256": "478E30DAADAA4EAAA49CA9548FCAA2A404C164BB6BFC0DE583D64954907E87D9"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/ellipse-line-2-a.brep",
+      "sha256": "B10B3DCEDF79C7A0F90813B50218F58AF7BB9B6A098EAC4388413AA5604610E4"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/ellipse-line-2-b.brep",
+      "sha256": "478E30DAADAA4EAAA49CA9548FCAA2A404C164BB6BFC0DE583D64954907E87D9"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/ellipse-line-3-a.brep",
+      "sha256": "5E7D7E04520C9487732052A2C2C844C3A7C5F0201F3A307D291EA122C6654271"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/ellipse-line-3-b.brep",
+      "sha256": "478E30DAADAA4EAAA49CA9548FCAA2A404C164BB6BFC0DE583D64954907E87D9"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/ellipse-line-4-a.brep",
+      "sha256": "A8995C27E030DCCE7CE52E26FB16148605FF3AC27B7893E5E1CA4BFE2EB1D1D5"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/ellipse-line-4-b.brep",
+      "sha256": "478E30DAADAA4EAAA49CA9548FCAA2A404C164BB6BFC0DE583D64954907E87D9"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/ellipse-line-5-a.brep",
+      "sha256": "F9A2224F51271B3098DA8191B933ECE45EFA1580FE6C6A1C26DC7D3A3BA6BD3D"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/ellipse-line-5-b.brep",
+      "sha256": "9AAA2F5D9B572CB0B717826E3B974A7D90F3AAC218A2FC8C81778D1970B3AF90"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/ellipse-line-6-a.brep",
+      "sha256": "7CCA4473F81C5EAED6DE731CC139BF77CA5508147AE2EEA73B824AA1967488C1"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/ellipse-line-6-b.brep",
+      "sha256": "9AAA2F5D9B572CB0B717826E3B974A7D90F3AAC218A2FC8C81778D1970B3AF90"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/ellipse-line-7-a.brep",
+      "sha256": "63FB8D0B221C906AA54AD0A3094145AD0E65FAC6B6A5D9D5B51B59D60639CB2D"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/ellipse-line-7-b.brep",
+      "sha256": "9AAA2F5D9B572CB0B717826E3B974A7D90F3AAC218A2FC8C81778D1970B3AF90"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/ellipse-plane-0-a.brep",
+      "sha256": "A3902772EE8C883F7D40FF56D4C044F257A74705F5D7E3AF87977052A2536C74"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/ellipse-plane-0-b.brep",
+      "sha256": "A91758B8F0FACF6E97FC765A70ACD8061B26EC4C25680935DFF350DFE5F32F5D"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/ellipse-plane-1-a.brep",
+      "sha256": "9950A389321BF53D6B46FA78C0865FF9ADADF7654E63344F6E744303763AA3CC"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/ellipse-plane-1-b.brep",
+      "sha256": "A91758B8F0FACF6E97FC765A70ACD8061B26EC4C25680935DFF350DFE5F32F5D"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/ellipse-plane-2-a.brep",
+      "sha256": "B10B3DCEDF79C7A0F90813B50218F58AF7BB9B6A098EAC4388413AA5604610E4"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/ellipse-plane-2-b.brep",
+      "sha256": "A91758B8F0FACF6E97FC765A70ACD8061B26EC4C25680935DFF350DFE5F32F5D"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/ellipse-plane-3-a.brep",
+      "sha256": "5E7D7E04520C9487732052A2C2C844C3A7C5F0201F3A307D291EA122C6654271"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/ellipse-plane-3-b.brep",
+      "sha256": "A91758B8F0FACF6E97FC765A70ACD8061B26EC4C25680935DFF350DFE5F32F5D"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/ellipse-plane-4-a.brep",
+      "sha256": "A8995C27E030DCCE7CE52E26FB16148605FF3AC27B7893E5E1CA4BFE2EB1D1D5"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/ellipse-plane-4-b.brep",
+      "sha256": "A91758B8F0FACF6E97FC765A70ACD8061B26EC4C25680935DFF350DFE5F32F5D"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/ellipse-plane-5-a.brep",
+      "sha256": "F9A2224F51271B3098DA8191B933ECE45EFA1580FE6C6A1C26DC7D3A3BA6BD3D"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/ellipse-plane-5-b.brep",
+      "sha256": "ABB27611A08201D86A58AB16092A26F621654518AC519B19C05D452E08C01033"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/ellipse-plane-6-a.brep",
+      "sha256": "7CCA4473F81C5EAED6DE731CC139BF77CA5508147AE2EEA73B824AA1967488C1"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/ellipse-plane-6-b.brep",
+      "sha256": "ABB27611A08201D86A58AB16092A26F621654518AC519B19C05D452E08C01033"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/ellipse-plane-7-a.brep",
+      "sha256": "63FB8D0B221C906AA54AD0A3094145AD0E65FAC6B6A5D9D5B51B59D60639CB2D"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/ellipse-plane-7-b.brep",
+      "sha256": "ABB27611A08201D86A58AB16092A26F621654518AC519B19C05D452E08C01033"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/line-nurbs-torus-0-a.brep",
+      "sha256": "978C32E86706E784EB3268BF28C0D5B3022DED75167089049056F36E33A7A6E2"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/line-nurbs-torus-0-b.brep",
+      "sha256": "736A9D30AB1A74B41B8DE5294A23B88B61FF39E30A35E78FC61433610D4EE930"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/line-nurbs-torus-1-a.brep",
+      "sha256": "978C32E86706E784EB3268BF28C0D5B3022DED75167089049056F36E33A7A6E2"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/line-nurbs-torus-1-b.brep",
+      "sha256": "68912521A2B884119742DB0CE5377FA42AAF3600CDF22D7C62AB8C4DD4CA6EF4"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/line-nurbs-torus-2-a.brep",
+      "sha256": "978C32E86706E784EB3268BF28C0D5B3022DED75167089049056F36E33A7A6E2"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/line-nurbs-torus-2-b.brep",
+      "sha256": "BECCF43A545ACC47D88604510E87CAAC82A5D34DDAEDB3E3D30F1F1EC0E0B397"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/line-nurbs-torus-3-a.brep",
+      "sha256": "978C32E86706E784EB3268BF28C0D5B3022DED75167089049056F36E33A7A6E2"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/line-nurbs-torus-3-b.brep",
+      "sha256": "8FAB78516E9978E86ABD965507F009B2CA5A6457F16DBAE78F9767F5906E5B95"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/line-nurbs-torus-4-a.brep",
+      "sha256": "978C32E86706E784EB3268BF28C0D5B3022DED75167089049056F36E33A7A6E2"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/line-nurbs-torus-4-b.brep",
+      "sha256": "001BA4E90203C3F420D86CF6047CED0749C8CB6D2C60BB49E07E48331384F1A9"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/line-nurbs-torus-5-a.brep",
+      "sha256": "50B63815A8AF5474F70D66C20645EEEC3F7D5530231A4A6E46A9A21281C40E05"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/line-nurbs-torus-5-b.brep",
+      "sha256": "04A380A574CBD43FC314D996601D30DF067171075A2EC747845F20A0D312C9FB"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/line-nurbs-torus-6-a.brep",
+      "sha256": "50B63815A8AF5474F70D66C20645EEEC3F7D5530231A4A6E46A9A21281C40E05"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/line-nurbs-torus-6-b.brep",
+      "sha256": "E7BB03A5AA1FDB62464644D297BCB7AD0C06A1CB88295A0A38992BDC9CEAB12F"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/line-nurbs-torus-7-a.brep",
+      "sha256": "50B63815A8AF5474F70D66C20645EEEC3F7D5530231A4A6E46A9A21281C40E05"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/line-nurbs-torus-7-b.brep",
+      "sha256": "AE8316299580CADABF00C92581F39CC3A61640F035CCA59446B2A0EF03E14E27"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/line-torus-0-a.brep",
+      "sha256": "978C32E86706E784EB3268BF28C0D5B3022DED75167089049056F36E33A7A6E2"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/line-torus-0-b.brep",
+      "sha256": "33C740F70D0797E124DD3B6A628205A5935865DDE3CA750D960447D5FEBB33DB"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/line-torus-1-a.brep",
+      "sha256": "978C32E86706E784EB3268BF28C0D5B3022DED75167089049056F36E33A7A6E2"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/line-torus-1-b.brep",
+      "sha256": "BD41C15C498E85FE972B2BA672F56E1C76F58CFBE709E2CE383A60BD84D224A1"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/line-torus-2-a.brep",
+      "sha256": "978C32E86706E784EB3268BF28C0D5B3022DED75167089049056F36E33A7A6E2"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/line-torus-2-b.brep",
+      "sha256": "6663FF4D80B40488EC692864153F319C379AC129963905642B4F61BDEBEEC15E"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/line-torus-3-a.brep",
+      "sha256": "978C32E86706E784EB3268BF28C0D5B3022DED75167089049056F36E33A7A6E2"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/line-torus-3-b.brep",
+      "sha256": "09C7849E5FBC9D28774D772E5F7F418162B589C6F208CFF7EB9BA5818C23B41C"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/line-torus-4-a.brep",
+      "sha256": "978C32E86706E784EB3268BF28C0D5B3022DED75167089049056F36E33A7A6E2"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/line-torus-4-b.brep",
+      "sha256": "54BFF1168DF4C5F41784AE7466E9A1B93862B3BD40D55D5BE58A60BD23C82DF5"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/line-torus-5-a.brep",
+      "sha256": "50B63815A8AF5474F70D66C20645EEEC3F7D5530231A4A6E46A9A21281C40E05"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/line-torus-5-b.brep",
+      "sha256": "7796C4184354A26EDB21C446A8B88779BBA7BEB9D75887C3AA745DEECDE0E145"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/line-torus-6-a.brep",
+      "sha256": "50B63815A8AF5474F70D66C20645EEEC3F7D5530231A4A6E46A9A21281C40E05"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/line-torus-6-b.brep",
+      "sha256": "84600B8D37DA29FBC8B736817EA85AB9CE20EE57509D62CAE23B800D55EA9953"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/line-torus-7-a.brep",
+      "sha256": "50B63815A8AF5474F70D66C20645EEEC3F7D5530231A4A6E46A9A21281C40E05"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/line-torus-7-b.brep",
+      "sha256": "DF0A231ADC3FAAB41C911C32157C0328C57534606B3DE4B2B016A87C659F6EE2"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/nurbs-circle-circle-0-a.brep",
+      "sha256": "D60EED74919F469C96DF0654D4A41A294962DD781632B40ECB48D507C746065E"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/nurbs-circle-circle-0-b.brep",
+      "sha256": "93056E6BE9CFFE62323BEA54866D5A7700AA86E8BD99008E6D6938880023F04D"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/nurbs-circle-circle-1-a.brep",
+      "sha256": "DCE5E4187BD7771CCB5F81DEA1BB46456E51D8ADB75BC9213DEAD08261D9AD09"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/nurbs-circle-circle-1-b.brep",
+      "sha256": "98485FB5DAF273320D4FD3A7C7DA444A19D5DF6BD432533B561DB85A764D976E"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/nurbs-circle-circle-2-a.brep",
+      "sha256": "79E419EEE709F411CBC0D9A424E65181C8D943E122D50292E98F0B7B6510A8FC"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/nurbs-circle-circle-2-b.brep",
+      "sha256": "D28AD61F6F49073099B122D022527495890118D944B8C0F51C923A857E20AF8B"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/nurbs-circle-circle-3-a.brep",
+      "sha256": "FFE27E46D50F7C32AC2F8EF0FD93C173C6676C7D5E2D75078164068F00F24F2F"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/nurbs-circle-circle-3-b.brep",
+      "sha256": "59D016DC2954B57AC4687EC4070F737D06B6C39377EDF9617C1A9A4EB1A6B1EE"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/nurbs-circle-circle-4-a.brep",
+      "sha256": "CCCDAC552A4ECA0BFDBA6A9F6D5F1CA04227800AF73498E26D98C64900281EBD"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/nurbs-circle-circle-4-b.brep",
+      "sha256": "15496889A5B04B6818FB9172CDD4DD9E9119770D76F9D5F80DB1A6AC9FD950B9"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/nurbs-circle-circle-5-a.brep",
+      "sha256": "EB6E963BECBCB6E2C09598890B7807C712296C9120204353157290F651ABCFFC"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/nurbs-circle-circle-5-b.brep",
+      "sha256": "D80DE64C87D0078DAC5AE6439B446744C995A2D6C8A00BB8ABD8A0AC8ABAF884"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/nurbs-circle-circle-6-a.brep",
+      "sha256": "E745F7BFA8017B6706A22ADB8B72E5CA4F48D70FC1ED37489C075EAE6EEF275C"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/nurbs-circle-circle-6-b.brep",
+      "sha256": "B2E46E3EA59A95DA4E961199781B6F54BD7A3E4B143F031DD7809C0F77E5023D"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/nurbs-circle-circle-7-a.brep",
+      "sha256": "A90F87500646BE7D61D046DA01B8E92FFC7F678AFFCD2BADDA73D9D0C5CCBEFF"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/nurbs-circle-circle-7-b.brep",
+      "sha256": "C83BD95BB75F5E639083D2515BA92778353F130A260B46CEF2E83F0851F8F120"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/nurbs-circle-plane-0-a.brep",
+      "sha256": "D60EED74919F469C96DF0654D4A41A294962DD781632B40ECB48D507C746065E"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/nurbs-circle-plane-0-b.brep",
+      "sha256": "A91758B8F0FACF6E97FC765A70ACD8061B26EC4C25680935DFF350DFE5F32F5D"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/nurbs-circle-plane-1-a.brep",
+      "sha256": "DCE5E4187BD7771CCB5F81DEA1BB46456E51D8ADB75BC9213DEAD08261D9AD09"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/nurbs-circle-plane-1-b.brep",
+      "sha256": "A91758B8F0FACF6E97FC765A70ACD8061B26EC4C25680935DFF350DFE5F32F5D"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/nurbs-circle-plane-2-a.brep",
+      "sha256": "79E419EEE709F411CBC0D9A424E65181C8D943E122D50292E98F0B7B6510A8FC"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/nurbs-circle-plane-2-b.brep",
+      "sha256": "A91758B8F0FACF6E97FC765A70ACD8061B26EC4C25680935DFF350DFE5F32F5D"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/nurbs-circle-plane-3-a.brep",
+      "sha256": "FFE27E46D50F7C32AC2F8EF0FD93C173C6676C7D5E2D75078164068F00F24F2F"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/nurbs-circle-plane-3-b.brep",
+      "sha256": "A91758B8F0FACF6E97FC765A70ACD8061B26EC4C25680935DFF350DFE5F32F5D"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/nurbs-circle-plane-4-a.brep",
+      "sha256": "CCCDAC552A4ECA0BFDBA6A9F6D5F1CA04227800AF73498E26D98C64900281EBD"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/nurbs-circle-plane-4-b.brep",
+      "sha256": "A91758B8F0FACF6E97FC765A70ACD8061B26EC4C25680935DFF350DFE5F32F5D"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/nurbs-circle-plane-5-a.brep",
+      "sha256": "EB6E963BECBCB6E2C09598890B7807C712296C9120204353157290F651ABCFFC"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/nurbs-circle-plane-5-b.brep",
+      "sha256": "ABB27611A08201D86A58AB16092A26F621654518AC519B19C05D452E08C01033"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/nurbs-circle-plane-6-a.brep",
+      "sha256": "E745F7BFA8017B6706A22ADB8B72E5CA4F48D70FC1ED37489C075EAE6EEF275C"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/nurbs-circle-plane-6-b.brep",
+      "sha256": "ABB27611A08201D86A58AB16092A26F621654518AC519B19C05D452E08C01033"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/nurbs-circle-plane-7-a.brep",
+      "sha256": "A90F87500646BE7D61D046DA01B8E92FFC7F678AFFCD2BADDA73D9D0C5CCBEFF"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/nurbs-circle-plane-7-b.brep",
+      "sha256": "ABB27611A08201D86A58AB16092A26F621654518AC519B19C05D452E08C01033"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/nurbs-torus-torus-0-a.brep",
+      "sha256": "736A9D30AB1A74B41B8DE5294A23B88B61FF39E30A35E78FC61433610D4EE930"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/nurbs-torus-torus-0-b.brep",
+      "sha256": "853F6293FD2282DEEABEB448B0AE5AE324F4BCDC8705EEEDB725B6276DD3A0B4"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/nurbs-torus-torus-1-a.brep",
+      "sha256": "68912521A2B884119742DB0CE5377FA42AAF3600CDF22D7C62AB8C4DD4CA6EF4"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/nurbs-torus-torus-1-b.brep",
+      "sha256": "D1D302B954D8E1864C8B8906C330EF19996B88553ED3AF7823E466BAD11647AC"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/nurbs-torus-torus-2-a.brep",
+      "sha256": "BECCF43A545ACC47D88604510E87CAAC82A5D34DDAEDB3E3D30F1F1EC0E0B397"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/nurbs-torus-torus-2-b.brep",
+      "sha256": "B5E58AD26DD754029735C64EECB09397A048F74A7FCB9E34AFC3F496E1809E65"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/nurbs-torus-torus-3-a.brep",
+      "sha256": "8FAB78516E9978E86ABD965507F009B2CA5A6457F16DBAE78F9767F5906E5B95"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/nurbs-torus-torus-3-b.brep",
+      "sha256": "FD34057A3B0329564C77228516FFACEBD65B136186286A883868F1D37ACDBD4B"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/nurbs-torus-torus-4-a.brep",
+      "sha256": "001BA4E90203C3F420D86CF6047CED0749C8CB6D2C60BB49E07E48331384F1A9"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/nurbs-torus-torus-4-b.brep",
+      "sha256": "0FA21EB9A3B7CFE9F74A24F90FA795C1FD2E6D6ABE98F2C49DF1F2AA127B797F"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/nurbs-torus-torus-5-a.brep",
+      "sha256": "04A380A574CBD43FC314D996601D30DF067171075A2EC747845F20A0D312C9FB"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/nurbs-torus-torus-5-b.brep",
+      "sha256": "D7CBA7EFC516DBED3FF4D754C4C26E0474E37F17F8AADB0E5257DC4F0F6200EC"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/nurbs-torus-torus-6-a.brep",
+      "sha256": "E7BB03A5AA1FDB62464644D297BCB7AD0C06A1CB88295A0A38992BDC9CEAB12F"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/nurbs-torus-torus-6-b.brep",
+      "sha256": "7C90179F3B0E5C178119936A086CF3643AAB93D0F4163547939B0A49964C807D"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/nurbs-torus-torus-7-a.brep",
+      "sha256": "AE8316299580CADABF00C92581F39CC3A61640F035CCA59446B2A0EF03E14E27"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/nurbs-torus-torus-7-b.brep",
+      "sha256": "298C5BFBEA3516642A2EAAF0640EE0CAA979845E90589175D722E1098A0210E1"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/point-nurbs-torus-0-a.brep",
+      "sha256": "63D224730DF6C99D29E797F1CE4C128DE2A8AE31CEFAA34425CB9019FFC27FFC"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/point-nurbs-torus-0-b.brep",
+      "sha256": "736A9D30AB1A74B41B8DE5294A23B88B61FF39E30A35E78FC61433610D4EE930"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/point-nurbs-torus-1-a.brep",
+      "sha256": "63D224730DF6C99D29E797F1CE4C128DE2A8AE31CEFAA34425CB9019FFC27FFC"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/point-nurbs-torus-1-b.brep",
+      "sha256": "68912521A2B884119742DB0CE5377FA42AAF3600CDF22D7C62AB8C4DD4CA6EF4"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/point-nurbs-torus-2-a.brep",
+      "sha256": "63D224730DF6C99D29E797F1CE4C128DE2A8AE31CEFAA34425CB9019FFC27FFC"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/point-nurbs-torus-2-b.brep",
+      "sha256": "BECCF43A545ACC47D88604510E87CAAC82A5D34DDAEDB3E3D30F1F1EC0E0B397"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/point-nurbs-torus-3-a.brep",
+      "sha256": "63D224730DF6C99D29E797F1CE4C128DE2A8AE31CEFAA34425CB9019FFC27FFC"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/point-nurbs-torus-3-b.brep",
+      "sha256": "8FAB78516E9978E86ABD965507F009B2CA5A6457F16DBAE78F9767F5906E5B95"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/point-nurbs-torus-4-a.brep",
+      "sha256": "63D224730DF6C99D29E797F1CE4C128DE2A8AE31CEFAA34425CB9019FFC27FFC"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/point-nurbs-torus-4-b.brep",
+      "sha256": "001BA4E90203C3F420D86CF6047CED0749C8CB6D2C60BB49E07E48331384F1A9"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/point-nurbs-torus-5-a.brep",
+      "sha256": "E07C908291BEE5D40E41ACA96AE7345BAA4CD015EC72BE3DD6A4E51E10E2F282"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/point-nurbs-torus-5-b.brep",
+      "sha256": "04A380A574CBD43FC314D996601D30DF067171075A2EC747845F20A0D312C9FB"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/point-nurbs-torus-6-a.brep",
+      "sha256": "E07C908291BEE5D40E41ACA96AE7345BAA4CD015EC72BE3DD6A4E51E10E2F282"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/point-nurbs-torus-6-b.brep",
+      "sha256": "E7BB03A5AA1FDB62464644D297BCB7AD0C06A1CB88295A0A38992BDC9CEAB12F"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/point-nurbs-torus-7-a.brep",
+      "sha256": "E07C908291BEE5D40E41ACA96AE7345BAA4CD015EC72BE3DD6A4E51E10E2F282"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/point-nurbs-torus-7-b.brep",
+      "sha256": "AE8316299580CADABF00C92581F39CC3A61640F035CCA59446B2A0EF03E14E27"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/point-torus-0-a.brep",
+      "sha256": "63D224730DF6C99D29E797F1CE4C128DE2A8AE31CEFAA34425CB9019FFC27FFC"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/point-torus-0-b.brep",
+      "sha256": "33C740F70D0797E124DD3B6A628205A5935865DDE3CA750D960447D5FEBB33DB"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/point-torus-1-a.brep",
+      "sha256": "63D224730DF6C99D29E797F1CE4C128DE2A8AE31CEFAA34425CB9019FFC27FFC"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/point-torus-1-b.brep",
+      "sha256": "BD41C15C498E85FE972B2BA672F56E1C76F58CFBE709E2CE383A60BD84D224A1"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/point-torus-2-a.brep",
+      "sha256": "63D224730DF6C99D29E797F1CE4C128DE2A8AE31CEFAA34425CB9019FFC27FFC"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/point-torus-2-b.brep",
+      "sha256": "6663FF4D80B40488EC692864153F319C379AC129963905642B4F61BDEBEEC15E"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/point-torus-3-a.brep",
+      "sha256": "63D224730DF6C99D29E797F1CE4C128DE2A8AE31CEFAA34425CB9019FFC27FFC"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/point-torus-3-b.brep",
+      "sha256": "09C7849E5FBC9D28774D772E5F7F418162B589C6F208CFF7EB9BA5818C23B41C"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/point-torus-4-a.brep",
+      "sha256": "63D224730DF6C99D29E797F1CE4C128DE2A8AE31CEFAA34425CB9019FFC27FFC"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/point-torus-4-b.brep",
+      "sha256": "54BFF1168DF4C5F41784AE7466E9A1B93862B3BD40D55D5BE58A60BD23C82DF5"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/point-torus-5-a.brep",
+      "sha256": "E07C908291BEE5D40E41ACA96AE7345BAA4CD015EC72BE3DD6A4E51E10E2F282"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/point-torus-5-b.brep",
+      "sha256": "7796C4184354A26EDB21C446A8B88779BBA7BEB9D75887C3AA745DEECDE0E145"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/point-torus-6-a.brep",
+      "sha256": "E07C908291BEE5D40E41ACA96AE7345BAA4CD015EC72BE3DD6A4E51E10E2F282"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/point-torus-6-b.brep",
+      "sha256": "84600B8D37DA29FBC8B736817EA85AB9CE20EE57509D62CAE23B800D55EA9953"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/point-torus-7-a.brep",
+      "sha256": "E07C908291BEE5D40E41ACA96AE7345BAA4CD015EC72BE3DD6A4E51E10E2F282"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/point-torus-7-b.brep",
+      "sha256": "DF0A231ADC3FAAB41C911C32157C0328C57534606B3DE4B2B016A87C659F6EE2"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/sphere-sphere-0-a.brep",
+      "sha256": "14099D09878BB7A605468815ADD15D5DAB09A9AC5D0F5292E3B9E5B67CAF3469"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/sphere-sphere-0-b.brep",
+      "sha256": "A900F541B560001DF482E079F2C13A9ECA20CDCB1BE6850A762B6C55D111FA72"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/sphere-sphere-1-a.brep",
+      "sha256": "CB53E08934A7D5A0EC3A32FF0EBACB115338467A299AF934A421648E07513E86"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/sphere-sphere-1-b.brep",
+      "sha256": "FD1B7D8BDF51C0A023F4F76E6A906E7C6C2A9AE948A52DDF8B74DA658E509D46"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/sphere-sphere-2-a.brep",
+      "sha256": "8A8604E6482CE53CAC76EA1FC5D666F3649B2BF6706C73FEAF993A1D69AA8266"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/sphere-sphere-2-b.brep",
+      "sha256": "3BF0DC46CDF43F74CD276799847B480F1AF26F97482D97282B22C279C96BA4FC"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/sphere-sphere-3-a.brep",
+      "sha256": "02FB40EA486E44D8BC632049ECC625C79CE6D8321B0C2154BA0134AC998D6C80"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/sphere-sphere-3-b.brep",
+      "sha256": "20384AE3EE21911024C5FBCC8A1E7A88C7E0CDE55BF265262564D0E073759B4A"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/sphere-sphere-4-a.brep",
+      "sha256": "BC04BA92259BA9CFEB34AB4C13D12A30B62A84E492D37FE6E96E17D20053B697"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/sphere-sphere-4-b.brep",
+      "sha256": "D6CC5C78A0EDFFF1B402C78687101D755930DD13D991670EEC924193936CB6A8"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/sphere-sphere-5-a.brep",
+      "sha256": "E7C68F9580FA5DC18F41F5CE73C8B087325F935DA0B6467B6BC089EA0C3D2831"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/sphere-sphere-5-b.brep",
+      "sha256": "9D1EF7D79C25B60628AF144152D8C8CC3EB9918D3A52EC7ECADE7E91537C68F1"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/sphere-sphere-6-a.brep",
+      "sha256": "4338DC7C24774BCF5296B3163A8559F177FE74E2B24AB8E8EB227DE8E8A4D7B2"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/sphere-sphere-6-b.brep",
+      "sha256": "763CEEEA81C2EADDEEDC5ED0E31CA3811F7139408B258515E0850B6DC8CCD4A9"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/sphere-sphere-7-a.brep",
+      "sha256": "025393BD39C3BCDFAC7CCDC63AC91D8EEC28926B463835E7C591B3F1C9D146A0"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/sphere-sphere-7-b.brep",
+      "sha256": "BA68A7F72E1F53E6F5A77A84A46ED32C82AC3A8FAA90A30143154940841D3ED5"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/torus-torus-0-a.brep",
+      "sha256": "33C740F70D0797E124DD3B6A628205A5935865DDE3CA750D960447D5FEBB33DB"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/torus-torus-0-b.brep",
+      "sha256": "EC46493F5879B3141581B381CB745662DAC5AC7474CEEFA5E91912D72C0BD47B"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/torus-torus-1-a.brep",
+      "sha256": "BD41C15C498E85FE972B2BA672F56E1C76F58CFBE709E2CE383A60BD84D224A1"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/torus-torus-1-b.brep",
+      "sha256": "31FF475FF5560E0A6241934AAC337EC2C3B0F7C7ECE8F2CB3CCFBFFA1761845B"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/torus-torus-2-a.brep",
+      "sha256": "6663FF4D80B40488EC692864153F319C379AC129963905642B4F61BDEBEEC15E"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/torus-torus-2-b.brep",
+      "sha256": "1F8E4764B4E4195D1DCECD7CB025B48A4CA6ECAFA812C13727DF0B7BF90B2EF2"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/torus-torus-3-a.brep",
+      "sha256": "09C7849E5FBC9D28774D772E5F7F418162B589C6F208CFF7EB9BA5818C23B41C"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/torus-torus-3-b.brep",
+      "sha256": "89884B060AA12AE59DEF320EF4CF7FD5ED04087B7A8787A9B42E5F3FA0C2F0EE"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/torus-torus-4-a.brep",
+      "sha256": "54BFF1168DF4C5F41784AE7466E9A1B93862B3BD40D55D5BE58A60BD23C82DF5"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/torus-torus-4-b.brep",
+      "sha256": "0D821361E88C315FE2C60C8A879D8EB9C44DF28157089EB0D3B4E461C6748B55"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/torus-torus-5-a.brep",
+      "sha256": "7796C4184354A26EDB21C446A8B88779BBA7BEB9D75887C3AA745DEECDE0E145"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/torus-torus-5-b.brep",
+      "sha256": "498872BC57FFB318C90B4618615CB1ED304E8157F1D7A9453420C8A003A01C43"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/torus-torus-6-a.brep",
+      "sha256": "84600B8D37DA29FBC8B736817EA85AB9CE20EE57509D62CAE23B800D55EA9953"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/torus-torus-6-b.brep",
+      "sha256": "65F80055568DFD75C98E90640FCAA1DBA13052686F174C8CE1419F8AC8ED7B81"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/torus-torus-7-a.brep",
+      "sha256": "DF0A231ADC3FAAB41C911C32157C0328C57534606B3DE4B2B016A87C659F6EE2"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-periodic-interior/torus-torus-7-b.brep",
+      "sha256": "AA62477065F821F966BE0D540D842E5D3265725A8F4CD1BB03C2A0202AAEE9E3"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-shared-units/authors.json",
+      "sha256": "6178DF513DE089C4D5D2C904DBD261EA456A30190ACBB9A170C498E97E0F11A3"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-shared-units/circle-1.000000-0.step",
+      "sha256": "80AE910BC78D85255893837C61CCA61C8EB00BB07D7EB7A389218D59D4D15A89"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-shared-units/circle-1.000000-1.step",
+      "sha256": "A9AF1FE6CFF3F09820EC9F9139C654A77933D4D77922B7F3731DF903C490D25F"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-shared-units/line-1.000000-0.step",
+      "sha256": "C6DB814041CB58880CA7A94206A9539B78C2C4061F8B8B0AD4A45B0A50D97A80"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/b18-shared-units/line-1.000000-1.step",
+      "sha256": "2A7915413AC2832C574114DF7D7F5E0F9335185CBB4E9FAD7D46304F55ADE9C0"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/minipc3-difficult-trim-solid.brep",
+      "sha256": "F58C54E9A1052685595DD0D19B0869F95DDABBAC0C0D279F8E92279D3317C46E"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/minipc3-many-faces-solid.brep",
+      "sha256": "08DE662B2B91349E09E93C0AAD998743B6100828169D5AD56160D7B5A50B7F58"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/minipc3-moment-cancellation-solid.brep",
+      "sha256": "0CE6C5ED2CEEC126A4CB73B69377179130FB51C8761EC75EBD17D7C0DFD74558"
+    },
+    {
+      "path": "tests/OcctSharp.Runtime.Tests/Fixtures/minipc3-periodic-pcurve-solid.brep",
+      "sha256": "475C57DC10C8603522C3523ABB2BCF373F80AA6214D8B1D4C6CC116B03CB604C"
+    },
+    {
+      "path": "tests/Shared/BatchAAReferenceWorkflow.cs",
+      "sha256": "E9AED086F417A4AC8C8423B8B0DBD5CA6BC474A12E07EDA1E1A883060A26A013"
+    },
+    {
+      "path": "tests/Shared/BatchABOwnedWorkflow.cs",
+      "sha256": "88C6B34872120CB6EEFA0CB343FAEDF17F1EA87B3567A7AB8317420B226B2CD5"
+    },
+    {
+      "path": "tests/Shared/BatchACOwnedUtilityWorkflow.cs",
+      "sha256": "A274C561A28719FD1C3ABCE78708C0FE63CE7D396CCF1813C8277617C124437B"
+    },
+    {
+      "path": "tests/Shared/BatchADOwnedDataWorkflow.cs",
+      "sha256": "2A67797C52770FE1DD9CF501FBF96E9C3A25D8BEC3851FB15CC1E59AEDA6722F"
+    },
+    {
+      "path": "tests/Shared/BatchAEExchangeScalarWorkflow.cs",
+      "sha256": "1561BF954F7F53BBDD9BDBF654666C36560E846E7ACE38449BED3DB73811DD41"
+    },
+    {
+      "path": "tests/Shared/BatchAFCopiedCollectionsWorkflow.cs",
+      "sha256": "6ED1143066C3EC9E16CAFC20C5D09A95917D8D58E39B27F4BE77ED78E10B16DC"
+    },
+    {
+      "path": "tests/Shared/BatchAGSurfaceInterpolationWorkflow.cs",
+      "sha256": "4AA3080041AA34D82CBCF7306B552432C8E02A0ADEB3EA445A51B2A395540A3F"
+    },
+    {
+      "path": "tests/Shared/BatchAHBulkAnalysisWorkflow.cs",
+      "sha256": "316800C19B788EDA020B268AAF278474260F394D4D08C0871AA1E08D2A149A60"
+    },
+    {
+      "path": "tests/Shared/BatchAITopologyExchangeWorkflow.cs",
+      "sha256": "A1FA0ADE5835C67B5F36AFD7D463789AAEA74668D27BF0D03D1A4621B8EA7D4E"
+    },
+    {
+      "path": "tests/Shared/BatchAJRepairWorkspaceWorkflow.cs",
+      "sha256": "5BD469590E322A0CF49B3605B6927097793C61AF4180E8447B351E49EEED4A93"
+    },
+    {
+      "path": "tests/Shared/BatchAKTransferRecordsWorkflow.cs",
+      "sha256": "71FF70FD67E9EADCEA8A7DAB4DC79EF91926AEE596243552442D6101A79604F0"
+    },
+    {
+      "path": "tests/Shared/BatchALNumericWorkflow.cs",
+      "sha256": "0251FABE8B07339EF00EBD72413225A6B7CE67350D449CD9B59BE39A785AEA17"
+    },
+    {
+      "path": "tests/Shared/BatchAMSplineWorkflow.cs",
+      "sha256": "D3DFB250E8B13DB0BB0202E5E08D3BC70F4A107F942342F150B76363F6B053A7"
+    },
+    {
+      "path": "tests/Shared/BatchANWriterWorkflow.cs",
+      "sha256": "9EE54EBD8A15CC60B5933FD0C870152CB976E131877F47786D52C06C5EE88DA0"
+    },
+    {
+      "path": "tests/Shared/BatchAPModelingWorkflow.cs",
+      "sha256": "D7DBF334D1760CE6456E9ED040ED0E788ADE6A19D366D66BB9BEC6DF02EA6DA6"
+    },
+    {
+      "path": "tests/Shared/BatchAQHatchingWorkflow.cs",
+      "sha256": "F099D3DEA488EB7EF6AE51B44463ADE6C03F121B1730BF803EC9C509F2AC2024"
+    },
+    {
+      "path": "tests/Shared/BatchARMeshWorkflow.cs",
+      "sha256": "2775B0D9D1BBE4297C3C36522A0B6E5230E1B6AD9EFBBF050825EDFA30515CEB"
+    },
+    {
+      "path": "tests/Shared/BatchASDocumentWorkflow.cs",
+      "sha256": "4571F50C4EB91589C3639A5FBDC75186BF6B966F4DF49983C1691B841B124279"
+    },
+    {
+      "path": "tests/Shared/BatchATExchangeWorkflow.cs",
+      "sha256": "DACCCD4B3928F1B194C327A3FA46F65D5AC0C4F2BE1D15A8C62EE16E656B7B43"
+    },
+    {
+      "path": "tests/Shared/BatchAUDesktopCapture.cs",
+      "sha256": "8CB277594F349BC73ACDA8DD2CDDC22F5CECD164DD256C9673D0440C62BB9512"
+    },
+    {
+      "path": "tests/Shared/BatchAUIntegratedWorkflow.cs",
+      "sha256": "BB120894D9DFCB334B1EFBE1625EC608FAB63BBCEF1EADA9D58627DEB0C4AE72"
+    },
+    {
+      "path": "tests/Shared/BatchAUVisibleWindow.cs",
+      "sha256": "75C72D0BEC00D8BE2A0AAD476EA886B35C7B76857A0A09AB9657A0274FD56B23"
+    },
+    {
+      "path": "tests/Shared/BatchAVFoundationWorkflow.cs",
+      "sha256": "4935FA4D1634BFC62A3DCAF6415558F5C20E4283CB02083DA87D0796C431141C"
+    },
+    {
+      "path": "tests/Shared/BatchAWGeometryWorkflow.cs",
+      "sha256": "152CD672446A22D2C30ECEE8BB4036DD2AD179CB721A9FAB9B3FC5DF849F0F46"
+    },
+    {
+      "path": "tests/Shared/BatchAXMetadataWorkflow.cs",
+      "sha256": "51C2D5B00535B9F6462420E74BCD9A0E9320FAA040F678B45005CD7BE8C9708B"
+    },
+    {
+      "path": "tests/Shared/BatchAYBoundaryWorkflow.cs",
+      "sha256": "539ACA047B63C584F7881456C1B7D67D35BF77734342A8A88FA73DF087D3C728"
+    },
+    {
+      "path": "tests/Shared/BatchAZDiagnosticWorkflow.cs",
+      "sha256": "F01A8530BCEEAB79FF95EC64C5D2A545E1F109C6591E1E73950B0484D72FDE6F"
+    },
+    {
+      "path": "tests/Shared/BatchBAAssemblyWorkflow.cs",
+      "sha256": "0FB16F38C068741045B1253EEB31FFDACC9D1A7C38CDB2C553C7B14F5E3EE1AC"
+    },
+    {
+      "path": "tests/Shared/BatchBBSamplingWorkflow.cs",
+      "sha256": "FBFE974111BEE354F70D4601E92CD802661D8E6874F46DB579E02816B4E42E97"
+    },
+    {
+      "path": "tests/Shared/BatchBCAssociationWorkflow.cs",
+      "sha256": "7ECF35AB2A4F54B13689343357B854E741DF5EFA3205066F10839BF4F015784C"
+    },
+    {
+      "path": "tests/Shared/BatchBDExchangeWorkflow.cs",
+      "sha256": "7A0376AD810B15BE132708400B661D1D8BC204764A241275E4819B66A31D0466"
+    },
+    {
+      "path": "tests/Shared/BatchBEMeshWorkflow.cs",
+      "sha256": "DBA7EDC29D975E8A7DA34B43D12918CDF0474B9CA176F17ABBDB3B7C0C7B0CD4"
+    },
+    {
+      "path": "tests/Shared/BatchBFNumericWorkflow.cs",
+      "sha256": "9FE4AB00673AC56022C4CCED96CD0C64126641FCCBA88B448AA30DAF70426EF8"
+    },
+    {
+      "path": "tests/Shared/BatchBGModelingWorkflow.cs",
+      "sha256": "B2CAE4E968221A62B0B36D6E8E9A89E65DE45CD8184A2F9DD4F65C03E2FBAC81"
+    },
+    {
+      "path": "tests/Shared/BatchBHIntersectionWorkflow.cs",
+      "sha256": "9959B1195D81FCBD133A9AD293C0FE150372DABB63A8414F4D1C589D82110F82"
+    },
+    {
+      "path": "tests/Shared/BatchBICollectionWorkflow.cs",
+      "sha256": "E9703DECB644E20B280EF49C8A4CFA5C8AA9A72E1A376BE73A5EFD94BBC3291E"
+    },
+    {
+      "path": "tests/Shared/BatchBJLocalStepWorkflow.cs",
+      "sha256": "C8C58FD035B4285FFDBFA73008EC6C400AED0DFC5147910FC272B066C30AC454"
+    },
+    {
+      "path": "tests/Shared/BatchBKConfiguredMeshWorkflow.cs",
+      "sha256": "B283AAA9E5AA12EF1593B2B5863F26176D0A3E4719C28F38FC62E61CAE02F249"
+    },
+    {
+      "path": "tests/Shared/BatchBKRawMeshViewer.cs",
+      "sha256": "4FB251C55B2100CDB8C4CCAA836F6750463149A21E1E1B34EB4A4B1DE62989A4"
+    },
+    {
+      "path": "tests/Shared/BatchBKWireChecks.cs",
+      "sha256": "7807F88068F5B739091A7EC24D7CB2EBD153C33F6E417577B7C0139FBA0985D0"
+    },
+    {
+      "path": "tests/Shared/BatchBLConstructionWorkflow.cs",
+      "sha256": "A01F0AB7633A60E38229AF58E406203E1D9038777EDDF943F7387A549EE452FD"
+    },
+    {
+      "path": "tests/Shared/BatchBMFiniteExtremaWorkflow.cs",
+      "sha256": "18E8E108077BB949F06EEC31AC004884D756DC9EC9A7D4B6B898EE5F0E0B9DAF"
+    },
+    {
+      "path": "tests/Shared/BatchBNBoundedTextWorkflow.cs",
+      "sha256": "CCB904A9C997BF027190E6A6574368FD690E8AB1F427FB34C57FE1D548E095B2"
+    },
+    {
+      "path": "tests/Shared/BatchBOMeshProximityWorkflow.cs",
+      "sha256": "463E35EC7E622926A24CDD1F00DF7C8C9FA7E3A0FD3FD793B19A233104568CE5"
+    },
+    {
+      "path": "tests/Shared/BatchBPLocalExportWorkflow.cs",
+      "sha256": "071EC9E11FB947D146D94DD0CAC5916566D667A5856FD83F9C84F6647CFCA74D"
+    },
+    {
+      "path": "tests/Shared/BatchBPRawSourceDocument.cs",
+      "sha256": "2C1ED8E217B741832F7B71CB57BBB7BE9334A6F21B214A9D1A30B58B11310996"
+    },
+    {
+      "path": "tests/Shared/BatchBQRawAssemblyViewer.cs",
+      "sha256": "B1F80FA57EF4B2EBD7D4E7B2AE8214F844CD17545EF789AA7D35443EC194F928"
+    },
+    {
+      "path": "tests/Shared/BatchBQWholeRoundWorkflow.cs",
+      "sha256": "831A8810C680AEE45888A15EB8D600173D519AAC8881D2A61F6E690703647F13"
+    },
+    {
+      "path": "tests/Shared/BatchBRCompatibilityWorkflow.cs",
+      "sha256": "CD79ED68CE1337F89A8C839115449E0CE424E875C01559F583AF6E3E27C0249B"
+    },
+    {
+      "path": "tests/Shared/BatchBTCoupledConstraintWorkflow.cs",
+      "sha256": "FD2D734111F745802416BB5CE1E26E2C2C29F4196B8FA872E4ECDF463FD9FF47"
+    },
+    {
+      "path": "tests/Shared/BatchBUUnitWorkflow.cs",
+      "sha256": "C7E31191DAEC7A6DCC38E7E10DE91D4CA6AEDE8E6438C1B971BF1DA4E08F7FC7"
+    },
+    {
+      "path": "tests/Shared/BatchBVPeriodicProjectionWorkflow.cs",
+      "sha256": "B0823B56DB298D4F84B7533E009D16558655E955A4DA0696090ABFE375A9EE5D"
+    },
+    {
+      "path": "tests/Shared/BatchBWNonuniformFittingWorkflow.cs",
+      "sha256": "E42F5D19649131F6414601BA8200A55B37F98E156668E5F8D6FD51B6E40FB57B"
+    },
+    {
+      "path": "tests/Shared/BatchBXRawTopologyViewer.cs",
+      "sha256": "93361A1799F852A6B6507E719DE00530C3C4216D31BAA724573A32BBC0D3DD25"
+    },
+    {
+      "path": "tests/Shared/BatchBXTypedTopologyWorkflow.cs",
+      "sha256": "5672801226677163C7C6500E49EBD96E8A24D7BE0E319F4CADEEF04648F389A5"
+    },
+    {
+      "path": "tests/Shared/BatchBYBooleanRepairWorkflow.cs",
+      "sha256": "5D10F2C43A220B4839216CC9FFEC710FB5C3B73E06AFC7287C3B47D7DA4DE7EF"
+    },
+    {
+      "path": "tests/Shared/BatchBYRawTopologyViewer.cs",
+      "sha256": "A8D411503F5F8120456EA2D72A8FCCC09FBBE7BE02F668D6DF3B2D2E5C42EC24"
+    },
+    {
+      "path": "tests/Shared/BatchBZLocalFeatureWorkflow.cs",
+      "sha256": "B7740948D4DED340654D568330A23360B536E62353C4FB4AC9A375F8610C94F3"
+    },
+    {
+      "path": "tests/Shared/BatchBZRawTopologyViewer.cs",
+      "sha256": "A9C7166F84ECAB375C6731B6A14AC5501FACCD9FF4B4E1D1A984D2B92EA71C0C"
+    },
+    {
+      "path": "tests/Shared/BatchCAMeshWorkflow.cs",
+      "sha256": "907521C680FA8DD3FCDB34C228E36896195471972BE24F261BAA81044CDFFFF8"
+    },
+    {
+      "path": "tests/Shared/BatchCARawMeshViewer.cs",
+      "sha256": "D1A77C545B6DFE45B50089A372C25A531895CACF822622C69070C4C0DF443102"
+    },
+    {
+      "path": "tests/Shared/BatchCBDocumentWorkflow.cs",
+      "sha256": "D9ABDEAC8AE268A839CA2D6A34B5D20F086F8E50A0CBBD777DA9F4084AEA9B9B"
+    },
+    {
+      "path": "tests/Shared/BatchCBRawDocumentViewer.cs",
+      "sha256": "74FCCDB03CED226BB5B29AE05183DA1CF514792BD47F34A9EB71B358F43DA14A"
+    },
+    {
+      "path": "tests/Shared/BatchCCLocatedAssemblyWorkflow.cs",
+      "sha256": "E3400D7B838E7ED97016044DDA73B1CEAF54FA5A712A8DF8E173C3B77813D478"
+    },
+    {
+      "path": "tests/Shared/BatchCCRawAssemblyViewer.cs",
+      "sha256": "55D328549550770F4A37084341C6D48734697FC0F599830AE3FCBCB3A0DEE88E"
+    },
+    {
+      "path": "tests/Shared/BatchCDStepWorkflow.cs",
+      "sha256": "E08199C0095A2F0557F20B7E069688B22952767FE3677C19CB6FC5EAAAE4F4DE"
+    },
+    {
+      "path": "tests/Shared/BatchCEExchangeWorkflow.cs",
+      "sha256": "0C2E81EE7E3EF9817C8B0296454215DE47F0F247E03514C37C66CA67C8F4ED65"
+    },
+    {
+      "path": "tests/Shared/BatchPSurfaceWorkflow.cs",
+      "sha256": "779C0A9DC8A9A8325F63474CC6BD9A89FFA8236BBDE75402DA58BB83992696B5"
+    },
+    {
+      "path": "tests/Shared/BatchQRepairWorkflow.cs",
+      "sha256": "A72C8C87B3617C9DE641B728A955C916FF848D7AADDF117DA6D9C0874C955024"
+    },
+    {
+      "path": "tests/Shared/BatchRMeshWorkflow.cs",
+      "sha256": "24DA2C4B0363F3A333A4669314FAD407A28148F4448899D6BC9836BD87D44575"
+    },
+    {
+      "path": "tests/Shared/BatchSGuidedWorkflow.cs",
+      "sha256": "DB7D5CC5C4E9A08A3D514948BE7AB114395BFC43A25CE3236669EC4FB4D0466C"
+    },
+    {
+      "path": "tests/Shared/BatchTParametricWorkflow.cs",
+      "sha256": "E18035CDB1F5A9805300793FEB9FC9CA7218221520F7F2E172DB3DD65068383A"
+    },
+    {
+      "path": "tests/Shared/BatchULocalFeatureWorkflow.cs",
+      "sha256": "DDAC86D742F14FFD899C6D518E4BAB71BE56A5FADB20186156018BB0A54C880C"
+    },
+    {
+      "path": "tests/Shared/BatchVRegionWorkflow.cs",
+      "sha256": "A37ED636C60EE1FD10B808D3F2FE9E0DD9701E987650A13D4F5332C57A62B24B"
+    },
+    {
+      "path": "tests/Shared/BatchWReviewWorkflow.cs",
+      "sha256": "1B752873541F671AA82BF7F56BA7DB59E566A7EC32AC291A8FADCF2677278168"
+    },
+    {
+      "path": "tests/Shared/BatchXProjectionWorkflow.cs",
+      "sha256": "D085DAA1C9133D83C687E9B6BE0941B685919B7A8FA1DB377609CE3276B849F1"
+    },
+    {
+      "path": "tests/Shared/BatchYGeometryWorkflow.cs",
+      "sha256": "FF652CFD1AFAF287625B31E6C3228B4D67D293107CB07D66DC6BF3F878439DD7"
+    },
+    {
+      "path": "tests/Shared/BatchZValueWorkflow.cs",
+      "sha256": "56ADE802703886ADF4B2244E3A5463CC525A4F92E48E7C499AF070A63CFE1C21"
+    },
+    {
+      "path": "tests/Shared/Preview85ConsumerWorkflow.cs",
+      "sha256": "0553A7A52DBB690DB13040F5CA558386B678F56CE4202D54AA62BC160C6E3E30"
+    }
+  ],
+  "resolvedSourceChecks": [
+    {
+      "consumer": "PackageConsumer",
+      "sources": [
+        "https://api.nuget.org/v3/index.json"
+      ]
+    },
+    {
+      "consumer": "ModuleConsumer",
+      "sources": [
+        "https://api.nuget.org/v3/index.json"
+      ]
+    }
+  ],
+  "implicitLibraryPacksDisabled": true,
+  "nugetContentHashesVerified": 14
+}

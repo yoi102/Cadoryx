@@ -1,0 +1,11 @@
+{
+  "reason": "OcctCapabilityProbe Verify.ps1 reads the restored NuGet cache through this repository helper",
+  "state": "PREPARED_EXACT_TOOL_SCRIPT_DEPENDENCY_NOT_RUNTIME_ACCEPTANCE",
+  "files": [
+    {
+      "origin": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\scripts\\nuget-package-cache.ps1",
+      "path": "scripts/nuget-package-cache.ps1",
+      "sha256": "9A7FF88E2EEB94EF6304D54F2F84B1FA16BB49AA27496B382FBE60350BE3E7BC"
+    }
+  ]
+}

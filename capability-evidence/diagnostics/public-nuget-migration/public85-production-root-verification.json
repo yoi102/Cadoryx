@@ -1,0 +1,960 @@
+{
+  "recordedAt": "2026-10-12T15:42:59.616152+00:00",
+  "state": "PASS_PUBLIC_CURRENT_PRODUCTION_AND_TOOLS_50_PROJECTS_TWO_BUILDS_30_LOCKS_EXACT_PUBLIC_PAYLOAD_RUNTIME_NOT_RUN",
+  "version": "8.0.1-preview.85",
+  "preparation": {
+    "path": "artifacts\\public85-production-root-1\\preparation.json",
+    "sha256": "A949B43E7BC7583343C0C372C1B15E4C6DF967A19850038FB9F0E8089D76F23F"
+  },
+  "terminal": {
+    "path": "artifacts\\public85-production-root-1\\exit.json",
+    "sha256": "51E13325B5313DB7682D78E361403B0BC3A41FFE9FC0491405F107D852240E7E"
+  },
+  "publicRestore": {
+    "path": "artifacts\\public85-production-root-1\\public-restore-verification.json",
+    "sha256": "5E2EC06CB6AEC745B37AA1BD48A44CDDBE3A7E1D94CCB622778BC5FB46C1ADA4"
+  },
+  "inputFiles": 1142,
+  "supportInputs": {
+    "path": "artifacts\\public85-production-root-1\\support-inputs.json",
+    "sha256": "ACA66A740BDE44FC5A81FF059E4AA014BE278ADD908FF092D2227B8ED950F469"
+  },
+  "source1073Retained": false,
+  "applicationTestAndProbeCodeOrAssertionsChanged": false,
+  "changedFiles": [
+    "Cadoryx.Cli/packages.lock.json",
+    "Cadoryx.Kernel.Occt/packages.lock.json",
+    "Cadoryx.Rendering.Occt/packages.lock.json",
+    "Cadoryx.Tests/packages.lock.json",
+    "Cadoryx.wpf/packages.lock.json",
+    "Cadoryx.wpf/runtime-baseline.json",
+    "Directory.Build.props",
+    "NuGet.Config",
+    "integrations/occtsharp-boolean-history/Consumer/packages.lock.json",
+    "tools/AnalyticalOffsetNativeProbe/packages.lock.json",
+    "tools/AnalyticalOffsetProbe/AnalyticalOffsetProbe.csproj",
+    "tools/BoundedThreadDrawingProbe/packages.lock.json",
+    "tools/CadAgentWorkflowProbe/packages.lock.json",
+    "tools/EndpointCurvatureProbe/EndpointCurvatureProbe.csproj",
+    "tools/EndpointCurvatureProbe/packages.lock.json",
+    "tools/ExchangeFixtures/packages.lock.json",
+    "tools/FiniteContactProbe/packages.lock.json",
+    "tools/FiniteSurfaceProbe/packages.lock.json",
+    "tools/M10AssemblyProbe/packages.lock.json",
+    "tools/MixedContactGeometryProbe/packages.lock.json",
+    "tools/MixedContactProbe/packages.lock.json",
+    "tools/ModeledThreadDrawingProbe/packages.lock.json",
+    "tools/MulticopyExchangeProbe/MulticopyExchangeProbe.csproj",
+    "tools/MulticopyExchangeProbe/packages.lock.json",
+    "tools/MulticopyHistoryProbe/MulticopyHistoryProbe.csproj",
+    "tools/MulticopyHistoryProbe/packages.lock.json",
+    "tools/OcctCapabilityProbe/packages.lock.json",
+    "tools/OffsetWorkflowProbe/packages.lock.json",
+    "tools/SketchProbe/packages.lock.json",
+    "tools/SlidingContactGeometryProbe/packages.lock.json",
+    "tools/SlidingContactProbe/packages.lock.json",
+    "tools/StorageBench/packages.lock.json",
+    "tools/SurfaceTerminationProbe/packages.lock.json",
+    "tools/ThreadDrawingProbe/ThreadDrawingProbe.csproj",
+    "tools/ThreadDrawingProbe/packages.lock.json",
+    "tools/ThreadHelixProbe/ThreadHelixProbe.csproj",
+    "tools/ThreadHelixProbe/packages.lock.json",
+    "tools/ThreadHoleProbe/ThreadHoleProbe.csproj",
+    "tools/ThreadHoleProbe/packages.lock.json",
+    "tools/ThreadProjectionProbe/packages.lock.json",
+    "tools/ViewerCapabilityProbe/packages.lock.json"
+  ],
+  "projects": 50,
+  "stages": 120,
+  "sdkVersion": "10.0.401",
+  "resolvedSources": [
+    {
+      "project": "Cadoryx.AI.Contracts/Cadoryx.AI.Contracts.csproj",
+      "assetsSha256": "A9EF0681C8730B91497104E40A2FD72324108D5447A600B91DBC529D462B1733",
+      "sources": [
+        "https://api.nuget.org/v3/index.json"
+      ]
+    },
+    {
+      "project": "Cadoryx.AI.LmStudio/Cadoryx.AI.LmStudio.csproj",
+      "assetsSha256": "C6B4C7CD502A451502427827C23E6B006E04BDF837D062CE5C585F9D0E7348D7",
+      "sources": [
+        "https://api.nuget.org/v3/index.json"
+      ]
+    },
+    {
+      "project": "Cadoryx.Agent.Codex/Cadoryx.Agent.Codex.csproj",
+      "assetsSha256": "EFC5C15A160906123D7AA7828DBE530524A89349454966869305A3D79235808F",
+      "sources": [
+        "https://api.nuget.org/v3/index.json"
+      ]
+    },
+    {
+      "project": "Cadoryx.Agent/Cadoryx.Agent.csproj",
+      "assetsSha256": "B376DFAF7BA22B7A10362AE176B07925A7D811EA85041BC8A6AC52608506CA87",
+      "sources": [
+        "https://api.nuget.org/v3/index.json"
+      ]
+    },
+    {
+      "project": "Cadoryx.Cli/Cadoryx.Cli.csproj",
+      "assetsSha256": "C19D539C554162F1C0BAA5F26C6F5E825BC22AE400DF8EA66C7E45C3084E02A2",
+      "sources": [
+        "https://api.nuget.org/v3/index.json"
+      ]
+    },
+    {
+      "project": "Cadoryx.CommandLine/Cadoryx.CommandLine.csproj",
+      "assetsSha256": "D92371A09E9296D00AFA49BD9C51A2A86159AFA2A36F48FFAACBA35514835A0A",
+      "sources": [
+        "https://api.nuget.org/v3/index.json"
+      ]
+    },
+    {
+      "project": "Cadoryx.Commands/Cadoryx.Commands.csproj",
+      "assetsSha256": "1E7AF4FE03509792E5EBD9A6C607B1F7BC6E8F9AF6B95591B4CE64399D808781",
+      "sources": [
+        "https://api.nuget.org/v3/index.json"
+      ]
+    },
+    {
+      "project": "Cadoryx.Db/Cadoryx.Db.csproj",
+      "assetsSha256": "C3F21D0915397A95A54C0C3C16A19BAFA68541B5D2F0FB321F846BCECE41058C",
+      "sources": [
+        "https://api.nuget.org/v3/index.json"
+      ]
+    },
+    {
+      "project": "Cadoryx.Editor/Cadoryx.Editor.csproj",
+      "assetsSha256": "EDDC165FFF2BE1F18209F94D2D26306A2C630C208C03EB1CEB47ED9875584F0B",
+      "sources": [
+        "https://api.nuget.org/v3/index.json"
+      ]
+    },
+    {
+      "project": "Cadoryx.IO/Cadoryx.IO.csproj",
+      "assetsSha256": "F678DC50A56273730C205A6C518A269B934D183D2551870156D57C38E522E685",
+      "sources": [
+        "https://api.nuget.org/v3/index.json"
+      ]
+    },
+    {
+      "project": "Cadoryx.Kernel.Abstractions/Cadoryx.Kernel.Abstractions.csproj",
+      "assetsSha256": "74F87EE0BD95087F75AC7CC319C53237DC083D7CAA943655C8808F8FC70AFF78",
+      "sources": [
+        "https://api.nuget.org/v3/index.json"
+      ]
+    },
+    {
+      "project": "Cadoryx.Kernel.Occt/Cadoryx.Kernel.Occt.csproj",
+      "assetsSha256": "0032E809B471EA994535924A50F22CA2A3A10F86FF7026409CE1C6E5CEE93CCD",
+      "sources": [
+        "https://api.nuget.org/v3/index.json"
+      ]
+    },
+    {
+      "project": "Cadoryx.Lang/Cadoryx.Lang.csproj",
+      "assetsSha256": "4F49ECE5B8992636E57BB43E5C70879B0192D2E0DB00FD7A295AA1799B5CB6A6",
+      "sources": [
+        "https://api.nuget.org/v3/index.json"
+      ]
+    },
+    {
+      "project": "Cadoryx.Rendering.Occt/Cadoryx.Rendering.Occt.csproj",
+      "assetsSha256": "04D45069C3AAB8FA6A167FF2D63E8D11C12A8EA4192908C7EB1FEF2FF58E3E9C",
+      "sources": [
+        "https://api.nuget.org/v3/index.json"
+      ]
+    },
+    {
+      "project": "Cadoryx.Rendering/Cadoryx.Rendering.csproj",
+      "assetsSha256": "A92E2A410F43BA51CA1AEE64FC5B4C5B72467D23547056ECC4A0C8A05717688E",
+      "sources": [
+        "https://api.nuget.org/v3/index.json"
+      ]
+    },
+    {
+      "project": "Cadoryx.Sketching/Cadoryx.Sketching.csproj",
+      "assetsSha256": "EE08C1E1068BEE65B7934C4640D2F5E3532809C7DB090FD137A6352885026651",
+      "sources": [
+        "https://api.nuget.org/v3/index.json"
+      ]
+    },
+    {
+      "project": "Cadoryx.Tests/Cadoryx.Tests.csproj",
+      "assetsSha256": "2EDC4A149304D5DBF50CB4D4AA0138046CFFC28B441D4E96AB5D90FF7EF86815",
+      "sources": [
+        "https://api.nuget.org/v3/index.json"
+      ]
+    },
+    {
+      "project": "Cadoryx.ViewModels.Services/Cadoryx.ViewModels.Services.csproj",
+      "assetsSha256": "20C4C1DE7552A33EB1C8374A99A0E8B3092E88DD79A5F89D96A644FEBCEF5CC2",
+      "sources": [
+        "https://api.nuget.org/v3/index.json"
+      ]
+    },
+    {
+      "project": "Cadoryx.ViewModels/Cadoryx.ViewModels.csproj",
+      "assetsSha256": "C675E6DAB230D930F6739F7838FCD0915F0B2D52B8B0E96D4F2DE9994DE37266",
+      "sources": [
+        "https://api.nuget.org/v3/index.json"
+      ]
+    },
+    {
+      "project": "Cadoryx.wpf.Controls/Cadoryx.wpf.Controls.csproj",
+      "assetsSha256": "1AB95729DB326D97187A7BAC7778733AD700D8291E6CCD65095DC6DC6217D594",
+      "sources": [
+        "https://api.nuget.org/v3/index.json"
+      ]
+    },
+    {
+      "project": "Cadoryx.wpf/Cadoryx.wpf.csproj",
+      "assetsSha256": "46301DFABD5D26FD1A55F2141FD61CD04DB25FDC2EA5E2E4AFEBB724C6EB5762",
+      "sources": [
+        "https://api.nuget.org/v3/index.json"
+      ]
+    },
+    {
+      "project": "integrations/occtsharp-boolean-history/Consumer/Consumer.csproj",
+      "assetsSha256": "1198E53B591910DBB14067587541C405DDA7AAE14601AFCABD44663E28963464",
+      "sources": [
+        "https://api.nuget.org/v3/index.json"
+      ]
+    },
+    {
+      "project": "tools/AgentConnectionProbe/AgentConnectionProbe.csproj",
+      "assetsSha256": "552E665836C35E53D55CABA5909E7889507BBA47E38BEECF31C5EC965ADC53D0",
+      "sources": [
+        "https://api.nuget.org/v3/index.json"
+      ]
+    },
+    {
+      "project": "tools/AnalyticalOffsetNativeProbe/AnalyticalOffsetNativeProbe.csproj",
+      "assetsSha256": "DBB6F05B7E553BE83B6B5BE7B664282E92BA27E49165760DB16DC76385CC851E",
+      "sources": [
+        "https://api.nuget.org/v3/index.json"
+      ]
+    },
+    {
+      "project": "tools/AnalyticalOffsetProbe/AnalyticalOffsetProbe.csproj",
+      "assetsSha256": "99A2155F463074A1F336DFB702247649A5F2A3DF013BDCBAE167AB0066FC5DA3",
+      "sources": [
+        "https://api.nuget.org/v3/index.json"
+      ]
+    },
+    {
+      "project": "tools/BoundedThreadDrawingProbe/BoundedThreadDrawingProbe.csproj",
+      "assetsSha256": "0429076DE66B0D4A65B90EB00FD988BD520BD5513317E966375E9BBC5A333DC7",
+      "sources": [
+        "https://api.nuget.org/v3/index.json"
+      ]
+    },
+    {
+      "project": "tools/CadAgentWorkflowProbe/CadAgentWorkflowProbe.csproj",
+      "assetsSha256": "871618D9FEE6FD3CF2C5CEF17AF851E80814208BD5E4DD9B28A02E2D9CC545FD",
+      "sources": [
+        "https://api.nuget.org/v3/index.json"
+      ]
+    },
+    {
+      "project": "tools/EndpointCurvatureProbe/EndpointCurvatureProbe.csproj",
+      "assetsSha256": "6D86F266F374545A70FA44A90552DD806DB65CB0186B1DE578CFA4C1DC33CFA5",
+      "sources": [
+        "https://api.nuget.org/v3/index.json"
+      ]
+    },
+    {
+      "project": "tools/ExchangeFixtures/ExchangeFixtures.csproj",
+      "assetsSha256": "1742A3BCDD3BF01A7A1ADAB6BBBD94DD9B80B14410C377C690EBD6A7D3FF6A3B",
+      "sources": [
+        "https://api.nuget.org/v3/index.json"
+      ]
+    },
+    {
+      "project": "tools/FiniteContactProbe/FiniteContactProbe.csproj",
+      "assetsSha256": "580CE49FD2D8C07CF11A2143BA21E4476273062BFA4280189E736746095093F6",
+      "sources": [
+        "https://api.nuget.org/v3/index.json"
+      ]
+    },
+    {
+      "project": "tools/FiniteSurfaceProbe/FiniteSurfaceProbe.csproj",
+      "assetsSha256": "3296CDD0634D6292435D05A5870DE078A65EFBFE0419CE0E7A222A731C9520E8",
+      "sources": [
+        "https://api.nuget.org/v3/index.json"
+      ]
+    },
+    {
+      "project": "tools/M10AssemblyProbe/M10AssemblyProbe.csproj",
+      "assetsSha256": "6CE4127B448A83F4EACDEB3E1483683CF8730FED161756F6E3D7559047249188",
+      "sources": [
+        "https://api.nuget.org/v3/index.json"
+      ]
+    },
+    {
+      "project": "tools/MixedContactGeometryProbe/MixedContactGeometryProbe.csproj",
+      "assetsSha256": "A967A7E05E76855F21A002958E4719393752100D1DA99740228C3D30EFE0E2B7",
+      "sources": [
+        "https://api.nuget.org/v3/index.json"
+      ]
+    },
+    {
+      "project": "tools/MixedContactProbe/MixedContactProbe.csproj",
+      "assetsSha256": "E5E2132146AE8F0990032DC9F2886E00FF50F17A5EFC9B0232DD65F3048C8EAD",
+      "sources": [
+        "https://api.nuget.org/v3/index.json"
+      ]
+    },
+    {
+      "project": "tools/ModeledThreadDrawingProbe/ModeledThreadDrawingProbe.csproj",
+      "assetsSha256": "BA6C191FCF417FD1EC0053A905E15E5A3AA96AA8A98364AD6471A60C11528146",
+      "sources": [
+        "https://api.nuget.org/v3/index.json"
+      ]
+    },
+    {
+      "project": "tools/MulticopyExchangeProbe/MulticopyExchangeProbe.csproj",
+      "assetsSha256": "41D2C4A7A41A93B9BAAF1B1299EC6D9186C7546C6DCB37D24D6CF80F653BD5BE",
+      "sources": [
+        "https://api.nuget.org/v3/index.json"
+      ]
+    },
+    {
+      "project": "tools/MulticopyHistoryProbe/MulticopyHistoryProbe.csproj",
+      "assetsSha256": "663E6D4EAD9F3E352D92B712D91C235292B37C914CA9C213A4E427757661517F",
+      "sources": [
+        "https://api.nuget.org/v3/index.json"
+      ]
+    },
+    {
+      "project": "tools/OcctApiUsageAudit/OcctApiUsageAudit.csproj",
+      "assetsSha256": "C83E11538D93667F1540DCB4986BEE745C3F7FD54C1D37FB70598BA952D08E56",
+      "sources": [
+        "https://api.nuget.org/v3/index.json"
+      ]
+    },
+    {
+      "project": "tools/OcctCapabilityProbe/OcctCapabilityProbe.csproj",
+      "assetsSha256": "867EE66AC88A43F38176AC6004C595A875CCD23709486636B5AAF881EC87118F",
+      "sources": [
+        "https://api.nuget.org/v3/index.json"
+      ]
+    },
+    {
+      "project": "tools/OffsetWorkflowProbe/OffsetWorkflowProbe.csproj",
+      "assetsSha256": "760CCF5B8B2AC74EF069F4A600B548539AB5C03B5764B4BA0596FE2592262E4F",
+      "sources": [
+        "https://api.nuget.org/v3/index.json"
+      ]
+    },
+    {
+      "project": "tools/SketchProbe/SketchProbe.csproj",
+      "assetsSha256": "8555D96CCD63D1EE899F9805874B9628FDF74CBE833DD63CE38C17751DB24A2D",
+      "sources": [
+        "https://api.nuget.org/v3/index.json"
+      ]
+    },
+    {
+      "project": "tools/SlidingContactGeometryProbe/SlidingContactGeometryProbe.csproj",
+      "assetsSha256": "C49425D5B4ADC420D70B722E955D8AC40B517824B221758D7766D4080BBCC1B4",
+      "sources": [
+        "https://api.nuget.org/v3/index.json"
+      ]
+    },
+    {
+      "project": "tools/SlidingContactProbe/SlidingContactProbe.csproj",
+      "assetsSha256": "2E57004109E5B1F1A06CFEA56BD7EED8B51135AB274A329ED06472E354586FAB",
+      "sources": [
+        "https://api.nuget.org/v3/index.json"
+      ]
+    },
+    {
+      "project": "tools/StorageBench/StorageBench.csproj",
+      "assetsSha256": "60768C4DA8EEF2006A7741B0EAF672007FCC32F2299209A6F9E9A849D3FCE5BB",
+      "sources": [
+        "https://api.nuget.org/v3/index.json"
+      ]
+    },
+    {
+      "project": "tools/SurfaceTerminationProbe/SurfaceTerminationProbe.csproj",
+      "assetsSha256": "552757454DE48FC35EDF4564D7AEFFFE8E3D76F2C448235485D9AEF138239535",
+      "sources": [
+        "https://api.nuget.org/v3/index.json"
+      ]
+    },
+    {
+      "project": "tools/ThreadDrawingProbe/ThreadDrawingProbe.csproj",
+      "assetsSha256": "0439AC5A4601F4D0493D85757F05EAB813A12091983F178F9F643BA316E2CA2F",
+      "sources": [
+        "https://api.nuget.org/v3/index.json"
+      ]
+    },
+    {
+      "project": "tools/ThreadHelixProbe/ThreadHelixProbe.csproj",
+      "assetsSha256": "3143314758D4EFFC73C1D91B62303ADAF2A7E50E8B7FFF25CD6C785EEEE28A1C",
+      "sources": [
+        "https://api.nuget.org/v3/index.json"
+      ]
+    },
+    {
+      "project": "tools/ThreadHoleProbe/ThreadHoleProbe.csproj",
+      "assetsSha256": "0567D11A876ACACA4762E759B139E2A9E60FA5DCACEA7B304D798B1890124A4A",
+      "sources": [
+        "https://api.nuget.org/v3/index.json"
+      ]
+    },
+    {
+      "project": "tools/ThreadProjectionProbe/ThreadProjectionProbe.csproj",
+      "assetsSha256": "1B0DB76A100BF013387C756161888D4B8A45F90C6804D28CDF1D2681E484B333",
+      "sources": [
+        "https://api.nuget.org/v3/index.json"
+      ]
+    },
+    {
+      "project": "tools/ViewerCapabilityProbe/ViewerCapabilityProbe.csproj",
+      "assetsSha256": "39156FC7558D8573B0899DF830F52527F30F9C0AC4CFCC34DF2FB7C62CF6147A",
+      "sources": [
+        "https://api.nuget.org/v3/index.json"
+      ]
+    }
+  ],
+  "sdkLocks": [
+    {
+      "path": "Cadoryx.Cli/packages.lock.json",
+      "sdkReferences": 14,
+      "sha256": "6758B58C51744040EA42A0D034922ECB0B019E1BCA867FD4C576099892DF13C2"
+    },
+    {
+      "path": "Cadoryx.Kernel.Occt/packages.lock.json",
+      "sdkReferences": 14,
+      "sha256": "AC55D43E4CB93183B8DC8CC2C453ABD01A71C2B1442605FBF1B0E32915EE13A7"
+    },
+    {
+      "path": "Cadoryx.Rendering.Occt/packages.lock.json",
+      "sdkReferences": 14,
+      "sha256": "74EB738E8CC965A1B519C01970565E78E07B449D9B99212E87EF138503BFC014"
+    },
+    {
+      "path": "Cadoryx.Tests/packages.lock.json",
+      "sdkReferences": 14,
+      "sha256": "CCBB81DBC687F5EA831407CD675DA2823F963EA749FC90C98D3D52B53B3D87D1"
+    },
+    {
+      "path": "Cadoryx.wpf/packages.lock.json",
+      "sdkReferences": 14,
+      "sha256": "537A1C04E07CF856443FBD11BAB6F4920CB00CE504224001142FAEF98E95D959"
+    },
+    {
+      "path": "integrations/occtsharp-boolean-history/Consumer/packages.lock.json",
+      "sdkReferences": 6,
+      "sha256": "853FAEFA4A3BC635FECD3EF752222F841EAE5F3650E8F56B96FD79781CA92C43"
+    },
+    {
+      "path": "tools/AnalyticalOffsetNativeProbe/packages.lock.json",
+      "sdkReferences": 14,
+      "sha256": "25F51D0FD4DA7A68F829974EF3BB559EA30C4E874C9798464515287425B2D225"
+    },
+    {
+      "path": "tools/BoundedThreadDrawingProbe/packages.lock.json",
+      "sdkReferences": 14,
+      "sha256": "2BF41F23E5DA32AD069D3E909BB19B1830FA1B28F39783A7DA812F5E830D1569"
+    },
+    {
+      "path": "tools/CadAgentWorkflowProbe/packages.lock.json",
+      "sdkReferences": 14,
+      "sha256": "76ED57A3E1C2E438AA00326A84CC7DC3244A7D649E81938C29E9C6395753EDDC"
+    },
+    {
+      "path": "tools/EndpointCurvatureProbe/packages.lock.json",
+      "sdkReferences": 14,
+      "sha256": "AF5907ED193CBE437548884D921BBA8D5D94EA22CB1D1BEFCFB4B9F46543A27A"
+    },
+    {
+      "path": "tools/ExchangeFixtures/packages.lock.json",
+      "sdkReferences": 14,
+      "sha256": "FA5463DF11F7E53A139B4E1E6453FACA936BD702E89CC59F56D44C7AF75B1EE2"
+    },
+    {
+      "path": "tools/FiniteContactProbe/packages.lock.json",
+      "sdkReferences": 14,
+      "sha256": "4FD249CAC37E668BBB74787D460E0EE711E67181FF0394E7A6F6310065B89F80"
+    },
+    {
+      "path": "tools/FiniteSurfaceProbe/packages.lock.json",
+      "sdkReferences": 14,
+      "sha256": "4FD249CAC37E668BBB74787D460E0EE711E67181FF0394E7A6F6310065B89F80"
+    },
+    {
+      "path": "tools/M10AssemblyProbe/packages.lock.json",
+      "sdkReferences": 14,
+      "sha256": "63E2AF95F8F8F95FD1E4E33F1E0921542839F2F1AD784803D083FC0A80CA4C5C"
+    },
+    {
+      "path": "tools/MixedContactGeometryProbe/packages.lock.json",
+      "sdkReferences": 14,
+      "sha256": "AF5907ED193CBE437548884D921BBA8D5D94EA22CB1D1BEFCFB4B9F46543A27A"
+    },
+    {
+      "path": "tools/MixedContactProbe/packages.lock.json",
+      "sdkReferences": 14,
+      "sha256": "4FD249CAC37E668BBB74787D460E0EE711E67181FF0394E7A6F6310065B89F80"
+    },
+    {
+      "path": "tools/ModeledThreadDrawingProbe/packages.lock.json",
+      "sdkReferences": 14,
+      "sha256": "2BF41F23E5DA32AD069D3E909BB19B1830FA1B28F39783A7DA812F5E830D1569"
+    },
+    {
+      "path": "tools/MulticopyExchangeProbe/packages.lock.json",
+      "sdkReferences": 14,
+      "sha256": "AF5907ED193CBE437548884D921BBA8D5D94EA22CB1D1BEFCFB4B9F46543A27A"
+    },
+    {
+      "path": "tools/MulticopyHistoryProbe/packages.lock.json",
+      "sdkReferences": 14,
+      "sha256": "AF5907ED193CBE437548884D921BBA8D5D94EA22CB1D1BEFCFB4B9F46543A27A"
+    },
+    {
+      "path": "tools/OcctCapabilityProbe/packages.lock.json",
+      "sdkReferences": 14,
+      "sha256": "AF5907ED193CBE437548884D921BBA8D5D94EA22CB1D1BEFCFB4B9F46543A27A"
+    },
+    {
+      "path": "tools/OffsetWorkflowProbe/packages.lock.json",
+      "sdkReferences": 14,
+      "sha256": "4FD249CAC37E668BBB74787D460E0EE711E67181FF0394E7A6F6310065B89F80"
+    },
+    {
+      "path": "tools/SlidingContactGeometryProbe/packages.lock.json",
+      "sdkReferences": 14,
+      "sha256": "AF5907ED193CBE437548884D921BBA8D5D94EA22CB1D1BEFCFB4B9F46543A27A"
+    },
+    {
+      "path": "tools/SlidingContactProbe/packages.lock.json",
+      "sdkReferences": 14,
+      "sha256": "4FD249CAC37E668BBB74787D460E0EE711E67181FF0394E7A6F6310065B89F80"
+    },
+    {
+      "path": "tools/StorageBench/packages.lock.json",
+      "sdkReferences": 14,
+      "sha256": "B84EA769AE10F11B83858A5614DCF9C990C01FF365B58D5F8E70801BBCAA984F"
+    },
+    {
+      "path": "tools/SurfaceTerminationProbe/packages.lock.json",
+      "sdkReferences": 14,
+      "sha256": "AF5907ED193CBE437548884D921BBA8D5D94EA22CB1D1BEFCFB4B9F46543A27A"
+    },
+    {
+      "path": "tools/ThreadDrawingProbe/packages.lock.json",
+      "sdkReferences": 14,
+      "sha256": "2BF41F23E5DA32AD069D3E909BB19B1830FA1B28F39783A7DA812F5E830D1569"
+    },
+    {
+      "path": "tools/ThreadHelixProbe/packages.lock.json",
+      "sdkReferences": 14,
+      "sha256": "AF5907ED193CBE437548884D921BBA8D5D94EA22CB1D1BEFCFB4B9F46543A27A"
+    },
+    {
+      "path": "tools/ThreadHoleProbe/packages.lock.json",
+      "sdkReferences": 14,
+      "sha256": "AF5907ED193CBE437548884D921BBA8D5D94EA22CB1D1BEFCFB4B9F46543A27A"
+    },
+    {
+      "path": "tools/ThreadProjectionProbe/packages.lock.json",
+      "sdkReferences": 14,
+      "sha256": "AF5907ED193CBE437548884D921BBA8D5D94EA22CB1D1BEFCFB4B9F46543A27A"
+    },
+    {
+      "path": "tools/ViewerCapabilityProbe/packages.lock.json",
+      "sdkReferences": 14,
+      "sha256": "AF5907ED193CBE437548884D921BBA8D5D94EA22CB1D1BEFCFB4B9F46543A27A"
+    }
+  ],
+  "directSdkReferences": [
+    {
+      "project": "Cadoryx.Cli/Cadoryx.Cli.csproj",
+      "package": "OcctSharp.Native.win-x64"
+    },
+    {
+      "project": "Cadoryx.Kernel.Occt/Cadoryx.Kernel.Occt.csproj",
+      "package": "OcctSharp"
+    },
+    {
+      "project": "Cadoryx.Tests/Cadoryx.Tests.csproj",
+      "package": "OcctSharp.Native.win-x64"
+    },
+    {
+      "project": "Cadoryx.wpf/Cadoryx.wpf.csproj",
+      "package": "OcctSharp.Native.win-x64"
+    },
+    {
+      "project": "integrations/occtsharp-boolean-history/Consumer/Consumer.csproj",
+      "package": "OcctSharp.Modeling"
+    },
+    {
+      "project": "integrations/occtsharp-boolean-history/Consumer/Consumer.csproj",
+      "package": "OcctSharp.Native.win-x64"
+    },
+    {
+      "project": "tools/AnalyticalOffsetNativeProbe/AnalyticalOffsetNativeProbe.csproj",
+      "package": "OcctSharp"
+    },
+    {
+      "project": "tools/AnalyticalOffsetNativeProbe/AnalyticalOffsetNativeProbe.csproj",
+      "package": "OcctSharp.Native.win-x64"
+    },
+    {
+      "project": "tools/BoundedThreadDrawingProbe/BoundedThreadDrawingProbe.csproj",
+      "package": "OcctSharp"
+    },
+    {
+      "project": "tools/BoundedThreadDrawingProbe/BoundedThreadDrawingProbe.csproj",
+      "package": "OcctSharp.Native.win-x64"
+    },
+    {
+      "project": "tools/CadAgentWorkflowProbe/CadAgentWorkflowProbe.csproj",
+      "package": "OcctSharp.Native.win-x64"
+    },
+    {
+      "project": "tools/EndpointCurvatureProbe/EndpointCurvatureProbe.csproj",
+      "package": "OcctSharp"
+    },
+    {
+      "project": "tools/EndpointCurvatureProbe/EndpointCurvatureProbe.csproj",
+      "package": "OcctSharp.Native.win-x64"
+    },
+    {
+      "project": "tools/ExchangeFixtures/ExchangeFixtures.csproj",
+      "package": "OcctSharp"
+    },
+    {
+      "project": "tools/ExchangeFixtures/ExchangeFixtures.csproj",
+      "package": "OcctSharp.Native.win-x64"
+    },
+    {
+      "project": "tools/FiniteContactProbe/FiniteContactProbe.csproj",
+      "package": "OcctSharp"
+    },
+    {
+      "project": "tools/FiniteContactProbe/FiniteContactProbe.csproj",
+      "package": "OcctSharp.Native.win-x64"
+    },
+    {
+      "project": "tools/FiniteSurfaceProbe/FiniteSurfaceProbe.csproj",
+      "package": "OcctSharp"
+    },
+    {
+      "project": "tools/FiniteSurfaceProbe/FiniteSurfaceProbe.csproj",
+      "package": "OcctSharp.Native.win-x64"
+    },
+    {
+      "project": "tools/MixedContactGeometryProbe/MixedContactGeometryProbe.csproj",
+      "package": "OcctSharp"
+    },
+    {
+      "project": "tools/MixedContactGeometryProbe/MixedContactGeometryProbe.csproj",
+      "package": "OcctSharp.Native.win-x64"
+    },
+    {
+      "project": "tools/MixedContactProbe/MixedContactProbe.csproj",
+      "package": "OcctSharp"
+    },
+    {
+      "project": "tools/MixedContactProbe/MixedContactProbe.csproj",
+      "package": "OcctSharp.Native.win-x64"
+    },
+    {
+      "project": "tools/ModeledThreadDrawingProbe/ModeledThreadDrawingProbe.csproj",
+      "package": "OcctSharp"
+    },
+    {
+      "project": "tools/ModeledThreadDrawingProbe/ModeledThreadDrawingProbe.csproj",
+      "package": "OcctSharp.Native.win-x64"
+    },
+    {
+      "project": "tools/MulticopyExchangeProbe/MulticopyExchangeProbe.csproj",
+      "package": "OcctSharp"
+    },
+    {
+      "project": "tools/MulticopyExchangeProbe/MulticopyExchangeProbe.csproj",
+      "package": "OcctSharp.Native.win-x64"
+    },
+    {
+      "project": "tools/MulticopyHistoryProbe/MulticopyHistoryProbe.csproj",
+      "package": "OcctSharp"
+    },
+    {
+      "project": "tools/MulticopyHistoryProbe/MulticopyHistoryProbe.csproj",
+      "package": "OcctSharp.Native.win-x64"
+    },
+    {
+      "project": "tools/OcctCapabilityProbe/OcctCapabilityProbe.csproj",
+      "package": "OcctSharp"
+    },
+    {
+      "project": "tools/OcctCapabilityProbe/OcctCapabilityProbe.csproj",
+      "package": "OcctSharp.Native.win-x64"
+    },
+    {
+      "project": "tools/OffsetWorkflowProbe/OffsetWorkflowProbe.csproj",
+      "package": "OcctSharp"
+    },
+    {
+      "project": "tools/OffsetWorkflowProbe/OffsetWorkflowProbe.csproj",
+      "package": "OcctSharp.Native.win-x64"
+    },
+    {
+      "project": "tools/SlidingContactGeometryProbe/SlidingContactGeometryProbe.csproj",
+      "package": "OcctSharp"
+    },
+    {
+      "project": "tools/SlidingContactGeometryProbe/SlidingContactGeometryProbe.csproj",
+      "package": "OcctSharp.Native.win-x64"
+    },
+    {
+      "project": "tools/SlidingContactProbe/SlidingContactProbe.csproj",
+      "package": "OcctSharp"
+    },
+    {
+      "project": "tools/SlidingContactProbe/SlidingContactProbe.csproj",
+      "package": "OcctSharp.Native.win-x64"
+    },
+    {
+      "project": "tools/StorageBench/StorageBench.csproj",
+      "package": "OcctSharp.Native.win-x64"
+    },
+    {
+      "project": "tools/SurfaceTerminationProbe/SurfaceTerminationProbe.csproj",
+      "package": "OcctSharp"
+    },
+    {
+      "project": "tools/SurfaceTerminationProbe/SurfaceTerminationProbe.csproj",
+      "package": "OcctSharp.Native.win-x64"
+    },
+    {
+      "project": "tools/ThreadDrawingProbe/ThreadDrawingProbe.csproj",
+      "package": "OcctSharp"
+    },
+    {
+      "project": "tools/ThreadDrawingProbe/ThreadDrawingProbe.csproj",
+      "package": "OcctSharp.Native.win-x64"
+    },
+    {
+      "project": "tools/ThreadHelixProbe/ThreadHelixProbe.csproj",
+      "package": "OcctSharp"
+    },
+    {
+      "project": "tools/ThreadHelixProbe/ThreadHelixProbe.csproj",
+      "package": "OcctSharp.Native.win-x64"
+    },
+    {
+      "project": "tools/ThreadHoleProbe/ThreadHoleProbe.csproj",
+      "package": "OcctSharp"
+    },
+    {
+      "project": "tools/ThreadHoleProbe/ThreadHoleProbe.csproj",
+      "package": "OcctSharp.Native.win-x64"
+    },
+    {
+      "project": "tools/ThreadProjectionProbe/ThreadProjectionProbe.csproj",
+      "package": "OcctSharp"
+    },
+    {
+      "project": "tools/ThreadProjectionProbe/ThreadProjectionProbe.csproj",
+      "package": "OcctSharp.Native.win-x64"
+    },
+    {
+      "project": "tools/ViewerCapabilityProbe/ViewerCapabilityProbe.csproj",
+      "package": "OcctSharp"
+    },
+    {
+      "project": "tools/ViewerCapabilityProbe/ViewerCapabilityProbe.csproj",
+      "package": "OcctSharp.Native.win-x64"
+    }
+  ],
+  "packages": {
+    "OcctSharp": {
+      "contentHash": "Kq698+WLgr8b4aGCZA5QP2FBb14Y+Qc0QB/V8ZGDrMsfvTNfDRDSjjYJo6jGGotIo4uZzSOGw9ZdyW9gBRK1XQ==",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\public85-production-root-1\\fresh-packages\\occtsharp\\8.0.1-preview.85\\occtsharp.8.0.1-preview.85.nupkg",
+      "sha256": "9045064006E2ADB018BB358D9EDB5F77340AE118AA15B702D2DDACA40BB0F8DF"
+    },
+    "OcctSharp.DataExchange": {
+      "contentHash": "y8bZFI6BS57Jv6Ur2L6CUfZMoka/QA/8elL21FCQYjQmLtp0ihTvFXD6PnPH7SSZuiZpo0bmy5gZES6Ajgur1Q==",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\public85-production-root-1\\fresh-packages\\occtsharp.dataexchange\\8.0.1-preview.85\\occtsharp.dataexchange.8.0.1-preview.85.nupkg",
+      "sha256": "D90C9B106CE736FADC50769F389548A914FBEF6C5DD73DA6E0CE5C86B272F2B9"
+    },
+    "OcctSharp.Documents": {
+      "contentHash": "WQx9bdL7wgKvo9S/z1g0A1Wev8kz6DWlx0LFJiFgJchQOBQRvEnOpEwCqVQitPwfp9dbdr9Iy9QQZkZDBT+wDA==",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\public85-production-root-1\\fresh-packages\\occtsharp.documents\\8.0.1-preview.85\\occtsharp.documents.8.0.1-preview.85.nupkg",
+      "sha256": "DC738BD0F5E9712E711C51FC23AAE6481364A18EB913451A9F2DCA726C5FADA5"
+    },
+    "OcctSharp.Draw": {
+      "contentHash": "iQPQnatgolRm8RusZAEYZwrudzUq63CeE8PJnlVxic4rzPJ63pnLKy2rjvJGWnPbBZAf5PIaov2pEb0F1Nosxg==",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\public85-production-root-1\\fresh-packages\\occtsharp.draw\\8.0.1-preview.85\\occtsharp.draw.8.0.1-preview.85.nupkg",
+      "sha256": "BCDBC8DDE26E20547058FB0A5D19FFCAD5EB090129DB0279EBAE20A3A3135D79"
+    },
+    "OcctSharp.Foundation": {
+      "contentHash": "Lf7urSm2XXpjdTf6496hTcwDsVoQKzBIEuCvt7KNKahIxzqa7ug1Z/xJzJj19gRi3yfEUaVk5whjzylVMeGm6g==",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\public85-production-root-1\\fresh-packages\\occtsharp.foundation\\8.0.1-preview.85\\occtsharp.foundation.8.0.1-preview.85.nupkg",
+      "sha256": "B53605EEAC3C34D4432FB68CC65137669F4E25A89ECFF46C862ED01249E28845"
+    },
+    "OcctSharp.Geometry": {
+      "contentHash": "s8V+BNwu2pSh/LrFPO5wcJq8F2pfwzS8N7bHWenLToKmqV8uHwkvzrzncffvfQZFxfqlcpJ9u6t34DO7AecDrg==",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\public85-production-root-1\\fresh-packages\\occtsharp.geometry\\8.0.1-preview.85\\occtsharp.geometry.8.0.1-preview.85.nupkg",
+      "sha256": "8C569567C0D660F7BA41478CB58DF031E4E04B89A2C579F64248FA2F2D01467E"
+    },
+    "OcctSharp.IVtk": {
+      "contentHash": "hHyujzAlmYNcztR7rikN2IgESD4SciqhtPlLrb+G1GcWjttieIgg7U95nW+cyP1KUFOrmY41+daw26BPQyOeMg==",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\public85-production-root-1\\fresh-packages\\occtsharp.ivtk\\8.0.1-preview.85\\occtsharp.ivtk.8.0.1-preview.85.nupkg",
+      "sha256": "08C341F3C2F9B7C3E6806E613846EC5B16F5868D3BB8A81ECEE84985ABF1FC61"
+    },
+    "OcctSharp.Mesh": {
+      "contentHash": "MICH2caIIiwzMOEGUR96Y0OTHbaMSwmbjY1Bg7z/DOz8dY1DhcdhauVDZQPnQobNieouarc4wjZgSWCBdD0Txg==",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\public85-production-root-1\\fresh-packages\\occtsharp.mesh\\8.0.1-preview.85\\occtsharp.mesh.8.0.1-preview.85.nupkg",
+      "sha256": "907561CBF7C159B3BE929844DF50D455C6EFFFBD9C60356E698D8BB80CEC52FB"
+    },
+    "OcctSharp.MeshData": {
+      "contentHash": "mtPBjhYfDk50DpJuJ4yt1xlAvY67CBCPn4Zvnj03Fzj6/qarjXFPA146hDCpUVYBl7hAdrJCv9vlkWZsf402Mw==",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\public85-production-root-1\\fresh-packages\\occtsharp.meshdata\\8.0.1-preview.85\\occtsharp.meshdata.8.0.1-preview.85.nupkg",
+      "sha256": "257DEC77B089591BC1E68AD33EB5FCA813C68CCDE96B1500C18FCBEB32D89692"
+    },
+    "OcctSharp.Modeling": {
+      "contentHash": "ldravbY9KjqXVgCDomBlsQBQXfOKYzDq1Sxvpm1vEU2LQNs3/MU3068pXMw5FHkzQPaZyLWTul57W6eI0HdZ2A==",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\public85-production-root-1\\fresh-packages\\occtsharp.modeling\\8.0.1-preview.85\\occtsharp.modeling.8.0.1-preview.85.nupkg",
+      "sha256": "F440CF994881C3DFE44E46941767FF26D2C0043831FAE7309D9D62A8C041616B"
+    },
+    "OcctSharp.Native.win-x64": {
+      "contentHash": "/wJ1dXOaq600VfsAsltyNVdjfyVKmaMCTc2BIhXXyH/cJrhVqwL0gcI1+sL0X8dpu92+weBQ2ZafqCu+xAiXcg==",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\public85-production-root-1\\fresh-packages\\occtsharp.native.win-x64\\8.0.1-preview.85\\occtsharp.native.win-x64.8.0.1-preview.85.nupkg",
+      "sha256": "387A6E166A56556018A493C176AA9DB6710C4D8B12379B818D18D3A0FB8E13F6"
+    },
+    "OcctSharp.Runtime": {
+      "contentHash": "hmTPhHP2XWm65vKzf9IRB1TfIuk6HiB/iYIpiOWTqNhwMiycs66GEpVtbnNDG1PS0cAsqYoArJm+RX51ACOrOA==",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\public85-production-root-1\\fresh-packages\\occtsharp.runtime\\8.0.1-preview.85\\occtsharp.runtime.8.0.1-preview.85.nupkg",
+      "sha256": "587CC29D9B644491D958E91FED9B02EC8B064E68C677A49645340574F0E44F18"
+    },
+    "OcctSharp.Visualization": {
+      "contentHash": "3HlL4udgic+lVM6SDCYn0+MwL+ejlAytzmhWzkKfOer1JVTyhvsi+7mbhlPIegb0U3jByUC5oJLt9DE6Hr4MFQ==",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\public85-production-root-1\\fresh-packages\\occtsharp.visualization\\8.0.1-preview.85\\occtsharp.visualization.8.0.1-preview.85.nupkg",
+      "sha256": "1FBB0E169EDDFA492F8D12D9DC16B4A44FE7CC82D7ED5F3CAD5F2273A6FFDE57"
+    },
+    "OcctSharp.Xde": {
+      "contentHash": "vEfiUWatDr9ecCYfRycnvflfNDVm+lmn5KtjEj53XcgozN047Yt+QPtJtqcFIKNJ/c3+g2FNMFtaMZNeF1ytXQ==",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\public85-production-root-1\\fresh-packages\\occtsharp.xde\\8.0.1-preview.85\\occtsharp.xde.8.0.1-preview.85.nupkg",
+      "sha256": "C19C49295156C5412DE3DC31EC6FBACF4C1432430E1EB928C81A55BE0C9609EA"
+    }
+  },
+  "existingNonSdkVersionsOrHashesChanged": false,
+  "parentIoClosureAddedToTwoStaleToolLocks": [
+    {
+      "lock": "tools/SketchProbe/packages.lock.json",
+      "package": "Microsoft.Extensions.DependencyInjection.Abstractions",
+      "resolved": "8.0.2",
+      "contentHash": "3iE7UF7MQkCv1cxzCahz+Y/guQbTqieyxyaWKhrRO91itI9cOKO76OHeQDahqG4MmW5umr3CcCvGmK92lWNlbg=="
+    },
+    {
+      "lock": "tools/SketchProbe/packages.lock.json",
+      "package": "Microsoft.Extensions.Logging.Abstractions",
+      "resolved": "8.0.3",
+      "contentHash": "dL0QGToTxggRLMYY4ZYX5AMwBb+byQBd/5dMiZE07Nv73o6I5Are3C7eQTh7K2+A4ct0PVISSr7TZANbiNb2yQ=="
+    },
+    {
+      "lock": "tools/SketchProbe/packages.lock.json",
+      "package": "PDFsharp",
+      "resolved": "6.2.4",
+      "contentHash": "GhTr9F1uOYXHCIEOB5PXIgqn5a8WLsJL2m0eewTA0IvY1j6N4HGXHKKmEyB90/N6vrjmYamf41V9zbmdW2HY3g=="
+    },
+    {
+      "lock": "tools/SketchProbe/packages.lock.json",
+      "package": "System.Security.Cryptography.Pkcs",
+      "resolved": "8.0.1",
+      "contentHash": "CoCRHFym33aUSf/NtWSVSZa99dkd0Hm7OCZUxORBjRB16LNhIEOf8THPqzIYlvKM0nNDAPTRBa1FxEECrgaxxA=="
+    },
+    {
+      "lock": "tools/StorageBench/packages.lock.json",
+      "package": "Microsoft.Extensions.DependencyInjection.Abstractions",
+      "resolved": "8.0.2",
+      "contentHash": "3iE7UF7MQkCv1cxzCahz+Y/guQbTqieyxyaWKhrRO91itI9cOKO76OHeQDahqG4MmW5umr3CcCvGmK92lWNlbg=="
+    },
+    {
+      "lock": "tools/StorageBench/packages.lock.json",
+      "package": "Microsoft.Extensions.Logging.Abstractions",
+      "resolved": "8.0.3",
+      "contentHash": "dL0QGToTxggRLMYY4ZYX5AMwBb+byQBd/5dMiZE07Nv73o6I5Are3C7eQTh7K2+A4ct0PVISSr7TZANbiNb2yQ=="
+    },
+    {
+      "lock": "tools/StorageBench/packages.lock.json",
+      "package": "PDFsharp",
+      "resolved": "6.2.4",
+      "contentHash": "GhTr9F1uOYXHCIEOB5PXIgqn5a8WLsJL2m0eewTA0IvY1j6N4HGXHKKmEyB90/N6vrjmYamf41V9zbmdW2HY3g=="
+    },
+    {
+      "lock": "tools/StorageBench/packages.lock.json",
+      "package": "System.Security.Cryptography.Pkcs",
+      "resolved": "8.0.1",
+      "contentHash": "CoCRHFym33aUSf/NtWSVSZa99dkd0Hm7OCZUxORBjRB16LNhIEOf8THPqzIYlvKM0nNDAPTRBa1FxEECrgaxxA=="
+    }
+  ],
+  "payloads": [
+    {
+      "configuration": "Release",
+      "project": "Cadoryx.wpf",
+      "directory": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\Cadoryx.wpf\\bin\\Release\\net10.0-windows\\win-x64",
+      "sdk13MatchesPublicPackage": true,
+      "nativeDlls": 62,
+      "nativeMatchesPublisher": true
+    },
+    {
+      "configuration": "Release",
+      "project": "Cadoryx.Tests",
+      "directory": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\Cadoryx.Tests\\bin\\Release\\net10.0",
+      "sdk13MatchesPublicPackage": true,
+      "nativeDlls": 62,
+      "nativeMatchesPublisher": true
+    },
+    {
+      "configuration": "Release",
+      "project": "Cadoryx.Cli",
+      "directory": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\Cadoryx.Cli\\bin\\Release\\net10.0",
+      "sdk13MatchesPublicPackage": true,
+      "nativeDlls": 62,
+      "nativeMatchesPublisher": true
+    },
+    {
+      "configuration": "Debug",
+      "project": "Cadoryx.wpf",
+      "directory": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\Cadoryx.wpf\\bin\\Debug\\net10.0-windows\\win-x64",
+      "sdk13MatchesPublicPackage": true,
+      "nativeDlls": 62,
+      "nativeMatchesPublisher": true
+    },
+    {
+      "configuration": "Debug",
+      "project": "Cadoryx.Tests",
+      "directory": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\Cadoryx.Tests\\bin\\Debug\\net10.0",
+      "sdk13MatchesPublicPackage": true,
+      "nativeDlls": 62,
+      "nativeMatchesPublisher": true
+    },
+    {
+      "configuration": "Debug",
+      "project": "Cadoryx.Cli",
+      "directory": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\Cadoryx.Cli\\bin\\Debug\\net10.0",
+      "sdk13MatchesPublicPackage": true,
+      "nativeDlls": 62,
+      "nativeMatchesPublisher": true
+    }
+  ],
+  "compiledUsage": {
+    "path": "artifacts\\public85-production-root-1\\compiled-occt-usage.json",
+    "sha256": "0BA975027F2CCF2E572951AC350081ACB8B6AED978BAE55354519890AC34F699"
+  },
+  "typeCount": 207,
+  "memberCount": 661,
+  "runtimeExecuted": false,
+  "productionApplied": false,
+  "cleanup": false,
+  "AF": "ACTIVE",
+  "G": "USER_DEFERRED"
+}

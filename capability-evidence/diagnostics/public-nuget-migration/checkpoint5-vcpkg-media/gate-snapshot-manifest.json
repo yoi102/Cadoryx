@@ -1,0 +1,64 @@
+{
+  "gates": [
+    {
+      "sha256": "1BF868B5331F92E9EFBF30FC1DB0FAD3981BEC8E224B8431FD13B9155091A917",
+      "state": "PASS",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-public-sdk85\\vcpkg-media-empty-restore.json",
+      "snapshot": "gate-01-cadoryx-public-sdk85-vcpkg-media-empty-restore.json"
+    },
+    {
+      "sha256": "2AA3029239186C9120624C572C6F17037AF5579E70283DCCE645462C0B125F37",
+      "state": "PASS",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-public-sdk85\\vcpkg-media-native-exports.json",
+      "snapshot": "gate-02-cadoryx-public-sdk85-vcpkg-media-native-exports.json"
+    },
+    {
+      "sha256": "055C0A935EB61016351DFE6DAC6DD579BDCF0EAE19C445E278AE0D89F345F04C",
+      "state": "PASS",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-public-sdk85\\vcpkg-media-closure-tests\\result.json",
+      "snapshot": "gate-03-vcpkg-media-closure-tests-result.json"
+    },
+    {
+      "sha256": "34691491BFDF7CCA7A7B35B7F189260E69BC3D0F2304E3532AD51FF5038C119C",
+      "state": "PASS",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-public-sdk85\\dependency-entry-tests-final-sdk10\\result.json",
+      "snapshot": "gate-04-dependency-entry-tests-final-sdk10-result.json"
+    },
+    {
+      "sha256": "83B0BE36C9DCF1EA78A50706719540C9063B8A5DD1F686E8F1642EE040F9AB55",
+      "state": "PASS",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-public-sdk85\\vcpkg-media-runtime-release\\result.json",
+      "snapshot": "gate-05-vcpkg-media-runtime-release-result.json"
+    },
+    {
+      "sha256": "DBB20F017FB5E4EC002811EE1DFC699B67C9B368CCCBAA04436254DBBA102E2D",
+      "state": "PASS",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-public-sdk85\\vcpkg-media-runtime-debug\\result.json",
+      "snapshot": "gate-06-vcpkg-media-runtime-debug-result.json"
+    },
+    {
+      "sha256": "ED1066D62299879C84E188935756D9999085A90258E60340CD1199FC2BE422E5",
+      "state": "BUILD_PASS_RUNTIME_NOT_RUN",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\build\\vcpkg-native85-media2\\runtime-manifest-Release.json",
+      "snapshot": "gate-07-vcpkg-native85-media2-runtime-manifest-Release.json"
+    },
+    {
+      "sha256": "7914267BA67CA0A2A607B21870BE49351927A1ADD9830CE3E84EC43FAD633A15",
+      "state": "PASS",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\build\\vcpkg-native85-media2\\runtime-evidence\\Release\\provenance.json",
+      "snapshot": "gate-08-Release-provenance.json"
+    },
+    {
+      "sha256": "224F98CCD3DB52F6CC735E4D756E6085F4AFFCDCD492758995A0BFBDD3069D3C",
+      "state": "BUILD_PASS_RUNTIME_NOT_RUN",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\build\\vcpkg-native85-media2\\runtime-manifest-Debug.json",
+      "snapshot": "gate-09-vcpkg-native85-media2-runtime-manifest-Debug.json"
+    },
+    {
+      "sha256": "4323C21F2D0766E3A9AC3C6DF3AF9EE5665A443FD1234F1D250D95E844A43ED2",
+      "state": "PASS",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\build\\vcpkg-native85-media2\\runtime-evidence\\Debug\\provenance.json",
+      "snapshot": "gate-10-Debug-provenance.json"
+    }
+  ]
+}

@@ -1,0 +1,90 @@
+{
+  "state": "SUBMITTED",
+  "version": "8.0.1-preview.85",
+  "packages": [
+    {
+      "name": "OcctSharp.Native.win-x64.8.0.1-preview.85.nupkg",
+      "sha256": "BF28E7143BA598237DC55B4623ADF669285B1930F431C48F90590D4F9692556C",
+      "httpStatus": 201,
+      "submittedUtc": "2026-10-12T09:36:49.8810383+00:00"
+    },
+    {
+      "name": "OcctSharp.Runtime.8.0.1-preview.85.nupkg",
+      "sha256": "C2C34618E74688F4770EB23F128C081EE8094245F92B3DB0ABC431948FFE7841",
+      "httpStatus": 201,
+      "submittedUtc": "2026-10-12T09:36:50.6670023+00:00"
+    },
+    {
+      "name": "OcctSharp.Foundation.8.0.1-preview.85.nupkg",
+      "sha256": "C5F2E9675001676C45F7FCA9C137EF2CE40EC803162B8705C1CB3B32BB0EAA1C",
+      "httpStatus": 201,
+      "submittedUtc": "2026-10-12T09:36:51.5379369+00:00"
+    },
+    {
+      "name": "OcctSharp.Geometry.8.0.1-preview.85.nupkg",
+      "sha256": "E27E68CE821FC8A35F61B077422EAB16308AB5B1EE6FE70665D9EEC8D3668293",
+      "httpStatus": 201,
+      "submittedUtc": "2026-10-12T09:36:53.0606074+00:00"
+    },
+    {
+      "name": "OcctSharp.MeshData.8.0.1-preview.85.nupkg",
+      "sha256": "2C80BC4E5C11A959A913160806CE4AF10267826B3DAED541906FB1F8F6B1937B",
+      "httpStatus": 201,
+      "submittedUtc": "2026-10-12T09:36:53.8991719+00:00"
+    },
+    {
+      "name": "OcctSharp.Modeling.8.0.1-preview.85.nupkg",
+      "sha256": "D0E58CC30C4B0B99B85F3077C3C4E449549B3BC018787A877DB80F8903822821",
+      "httpStatus": 201,
+      "submittedUtc": "2026-10-12T09:36:55.5655415+00:00"
+    },
+    {
+      "name": "OcctSharp.Mesh.8.0.1-preview.85.nupkg",
+      "sha256": "09AE8B9560E5010D6C8DE66E774F6B92A6DB9FA92F540D18CC46F0C5C20C898D",
+      "httpStatus": 201,
+      "submittedUtc": "2026-10-12T09:36:56.4242836+00:00"
+    },
+    {
+      "name": "OcctSharp.Documents.8.0.1-preview.85.nupkg",
+      "sha256": "E5E5EC41A2CE01839CD8F8F116C2D4454812C5893B366DD8004FB9F23F10B951",
+      "httpStatus": 201,
+      "submittedUtc": "2026-10-12T09:36:57.4570078+00:00"
+    },
+    {
+      "name": "OcctSharp.Visualization.8.0.1-preview.85.nupkg",
+      "sha256": "115690B2F5DCC639C692D3E7BD07588FE82C925F11B3A7F0A1AC135C153264FB",
+      "httpStatus": 201,
+      "submittedUtc": "2026-10-12T09:36:58.8515917+00:00"
+    },
+    {
+      "name": "OcctSharp.DataExchange.8.0.1-preview.85.nupkg",
+      "sha256": "D7FB07F4D7BA0F0BD47D93BB9263884292384F6AE3C7B2E331AE17FF0AEC6DD9",
+      "httpStatus": 201,
+      "submittedUtc": "2026-10-12T09:37:01.5843795+00:00"
+    },
+    {
+      "name": "OcctSharp.Xde.8.0.1-preview.85.nupkg",
+      "sha256": "AD65025BA3AA3A56A4649EAA196546BBACFA7E2E0D053CEFE27EAD7E649B751F",
+      "httpStatus": 201,
+      "submittedUtc": "2026-10-12T09:37:02.4937512+00:00"
+    },
+    {
+      "name": "OcctSharp.IVtk.8.0.1-preview.85.nupkg",
+      "sha256": "FA643730D6E945ADAA3B001CBCFA6E7858181DC1EA15A363742DAB23473A7796",
+      "httpStatus": 201,
+      "submittedUtc": "2026-10-12T09:37:03.2852975+00:00"
+    },
+    {
+      "name": "OcctSharp.Draw.8.0.1-preview.85.nupkg",
+      "sha256": "64ECAE125849D4FBE6711C429EA247F92F8317ACCE3C5EE350798DB02856F57F",
+      "httpStatus": 201,
+      "submittedUtc": "2026-10-12T09:37:04.0301551+00:00"
+    },
+    {
+      "name": "OcctSharp.8.0.1-preview.85.nupkg",
+      "sha256": "073262F801223E20BFBB68F00254943BC55D3B96B8E709F25A79A8DA27D8FACA",
+      "httpStatus": 201,
+      "submittedUtc": "2026-10-12T09:37:06.8781564+00:00"
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "count": 6,
+  "recordedAt": "2026-10-12T10:05:57.1490331+00:00",
+  "publicSdkAccepted": false,
+  "cleanup": false,
+  "cases": [
+    {
+      "passed": true,
+      "name": "EXACT_LOCKED_ARCHIVE"
+    },
+    {
+      "name": "WRONG_LOCK_VERSION",
+      "rejected": true
+    },
+    {
+      "name": "ASSETS_LOCK_HASH_MISMATCH",
+      "rejected": true
+    },
+    {
+      "name": "FOREIGN_CACHE_PATH",
+      "rejected": true
+    },
+    {
+      "name": "NUPKG_BYTES_MISMATCH",
+      "rejected": true
+    },
+    {
+      "name": "MISSING_CACHED_ARCHIVE",
+      "rejected": true
+    }
+  ],
+  "state": "PASS_LOCKED_PACKAGE_CACHE_RESOLUTION_SIX_SYNTHETIC_CASES",
+  "nativeCodeExecuted": false
+}

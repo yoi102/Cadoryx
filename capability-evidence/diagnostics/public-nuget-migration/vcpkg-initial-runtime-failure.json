@@ -1,0 +1,51 @@
+{
+  "recordedAt": "2026-10-12T09:16:09.985308+00:00",
+  "state": "FIRST_VCPKG_RELEASE_FULL_RUNTIME2253_OF2255_FAILED_NOT_DELIVERED",
+  "configuration": "Release",
+  "passed": 2253,
+  "failed": 2,
+  "skipped": 0,
+  "failures": [
+    {
+      "name": "OcctSharp.Runtime.Tests.BatchXProjectionTests.Signed64BitTimeValuesPreserveSignAndExceed32BitRange(value: 5000000000, seconds: 5000)",
+      "message": "Assert.Equal() Failure: Values differ\r\nExpected: 5000\r\nActual:   0",
+      "stack": "   at OcctSharp.Runtime.Tests.BatchXProjectionTests.Signed64BitTimeValuesPreserveSignAndExceed32BitRange(Int64 value, Double seconds) in C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\tests\\OcctSharp.Runtime.Tests\\BatchXProjectionTests.cs:line 33\r\n   at InvokeStub_BatchXProjectionTests.Signed64BitTimeValuesPreserveSignAndExceed32BitRange(Object, Span`1)\r\n   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)"
+    },
+    {
+      "name": "OcctSharp.Runtime.Tests.BatchXProjectionTests.Signed64BitTimeValuesPreserveSignAndExceed32BitRange(value: -5000000000, seconds: -5000)",
+      "message": "Assert.Equal() Failure: Values differ\r\nExpected: -5000\r\nActual:   0",
+      "stack": "   at OcctSharp.Runtime.Tests.BatchXProjectionTests.Signed64BitTimeValuesPreserveSignAndExceed32BitRange(Int64 value, Double seconds) in C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\tests\\OcctSharp.Runtime.Tests\\BatchXProjectionTests.cs:line 33\r\n   at System.RuntimeMethodHandle.InvokeMethod(ObjectHandleOnStack target, Void** arguments, ObjectHandleOnStack sig, BOOL isConstructor, ObjectHandleOnStack result)\r\n   at System.Reflection.MethodBaseInvoker.InterpretedInvoke_Method(Object obj, IntPtr* args)\r\n   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)"
+    }
+  ],
+  "trx": {
+    "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-public-sdk85\\vcpkg-runtime-release\\run-959c8cb8fa084c52962913a179b92456\\vcpkg-runtime.trx",
+    "sha256": "1FB53DA42FFECC5941AC70122876B98646E9E69D18C1CD320E05A931704EE291"
+  },
+  "stdout": {
+    "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-public-sdk85\\vcpkg-runtime-release\\run-959c8cb8fa084c52962913a179b92456\\runtime.stdout.log",
+    "sha256": "1BDA7E917C0C02AA190CE76C7DCD7021FAFDD4D0548308B3F3B872E82A5B0CAF"
+  },
+  "stderr": {
+    "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-public-sdk85\\vcpkg-runtime-release\\run-959c8cb8fa084c52962913a179b92456\\runtime.stderr.log",
+    "sha256": "F8BC89545835C4B43E4335D757EBF25228F48F2C1EC058313E9CD889660B20B3"
+  },
+  "intendedNativeManifest": {
+    "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\build\\vcpkg-native85\\runtime-manifest-Release.json",
+    "sha256": "57CF77156D046E56CEDBD3A82EB1811106DD52CFDD692F1E24E0AB9E95F01A84"
+  },
+  "isolatedDiskPayloadMatchesManifest": true,
+  "successfulLoadedModuleReportAvailable": false,
+  "occtSource": {
+    "path": "C:\\Users\\yoiri\\.cache\\occtsharp-dependencies\\vcpkg-e456309\\buildtrees\\opencascade\\src\\V8_0_1-2f604eca2a.clean\\src\\Visualization\\TKService\\Media\\Media_FormatContext.cxx",
+    "sha256": "F34AB9993D8A215AF4AEEA089C73FD8F12F195FDF13C75D62EE479CFDF56DBB7"
+  },
+  "formatUnitsToSecondsSource": "double Media_FormatContext::FormatUnitsToSeconds(int64_t theTimeUnits)\n{\n#ifdef HAVE_FFMPEG\n  return (theTimeUnits != AV_NOPTS_VALUE) ? (ST_AV_TIME_BASE_D * theTimeUnits) : 0.0;\n#else\n  (void)theTimeUnits;\n  return 0.0;\n#endif\n}\n\n",
+  "providerFfmpegDisabled": true,
+  "originalAssertionsChanged": false,
+  "publicPrecompiledProviderResultIsSeparate": true,
+  "CadoryxRequiresVcpkg": false,
+  "productionApplied": false,
+  "cleanup": false,
+  "AF": "ACTIVE",
+  "G": "USER_DEFERRED"
+}

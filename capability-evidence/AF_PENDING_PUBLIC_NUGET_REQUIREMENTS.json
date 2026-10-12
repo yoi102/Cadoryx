@@ -1,0 +1,86 @@
+{
+  "recordedAt": "2026-10-12T06:06:37.860002+00:00",
+  "state": "USER_AUTHORIZED_REQUIRED_API_MIGRATION_PUBLIC_NUGET_CONSUMPTION_COMMIT_PUSH_IN_PROGRESS",
+  "upstreamThread": "01a0f7b3-ff5f-7cb0-bff9-a5caad1a49b0",
+  "upstreamThreadTitle": "\u91cd\u65b0\u68b3\u7406\u9879\u76ee\u8fdb\u5ea6\u4e0e\u89c4\u5212",
+  "userPriority": "Necessary generated OCCT API migration, public NuGet publication, Cadoryx public-only consumption, commit/push.",
+  "tentativeVersion": "8.0.1-preview.85",
+  "tentativeAbi": "1.118",
+  "publicationConfirmed": false,
+  "compiledReferenceEvidence": {
+    "1073": {
+      "usage": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\capability-evidence\\diagnostics\\public-nuget-migration\\source1073-occt-usage.json",
+        "sha256": "02FFB265591F9CFD6B01FEE8236EA10F7FCE75B7D0CC5AD4FC0552EB8E1AA17D"
+      },
+      "candidateBuild": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\d6-finite-newbody-draft-4\\build-both-1-verification.json",
+        "sha256": "1B6463EDFC0339ECE0E044C714932424BC98D826F502A57CDF730DA17CD7D68D"
+      },
+      "assemblyFileCount": 38,
+      "uniqueBinaryCount": 21,
+      "typeCount": 221,
+      "memberCount": 696,
+      "applicationAndIncludedDiagnosticMemberCount": 634,
+      "testOnlyMemberCount": 62,
+      "directNativeImportCount": 0
+    },
+    "1066": {
+      "usage": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\capability-evidence\\diagnostics\\public-nuget-migration\\source1066-occt-usage.json",
+        "sha256": "60B72FE0D3032E279C169D14ABC3F959ED5827B99316795315D9BB1BEDB2F6F9"
+      },
+      "candidateBuild": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\d6-sdk30-production-integration-1\\build-both-1-verification.json",
+        "sha256": "70A1D360B3762720B9AF7F70D3BCBFE006DEF9CAEC7A6EB1F1ACCA5483E09367"
+      },
+      "assemblyFileCount": 38,
+      "uniqueBinaryCount": 21,
+      "typeCount": 221,
+      "memberCount": 696,
+      "applicationAndIncludedDiagnosticMemberCount": 634,
+      "testOnlyMemberCount": 62,
+      "directNativeImportCount": 0
+    }
+  },
+  "bothCandidateTypeAndMemberSetsEqual": true,
+  "staticReferencesProveRuntimeOrFutureCapabilityCoverage": false,
+  "upstreamReportedAdmission": [
+    "AuthoringInputCopy / HistoryDomains",
+    "DefeatureHistoryModeling",
+    "initial DisplayInMode"
+  ],
+  "upstreamReportedBehaviorDelta": [
+    "exact offset STEP graph and unit/shared-context copies",
+    "periodic exact distance",
+    "compensated inspection moments"
+  ],
+  "originalExternalStrictStepFailuresRemainRequired": true,
+  "allAFScopeRetained": true,
+  "packageCacheHelperFixtureVerification": {
+    "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\capability-evidence\\diagnostics\\public-nuget-migration\\package-cache-fixture-verification.json",
+    "sha256": "CF5084E7763D45FEAA4E1788A4BB7A656CCC4ACB7A93F0A09BB0033445FE1DB2"
+  },
+  "publicOnlyRestoreAndPublishedNativePayloadVerification": "NOT_RUN_PENDING_PUBLICATION",
+  "productionPackageChanged": false,
+  "currentProductionPackage": "8.0.1-preview.31.cadoryx.curve-inspection.26",
+  "prioritySchedulingPreparation": {
+    "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\capability-evidence\\diagnostics\\public-nuget-migration\\priority-preparation.json",
+    "sha256": "97C5D975B0972EEE1BF20FDA2891D2A303DF6C1790FADCB66CD39606EC1997F4"
+  },
+  "currentFull6556ReleasePreserved": true,
+  "originalTestAndCommandBudgetsChanged": false,
+  "sdk30Full6530Both": [
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\d6-sdk30-production-integration-1\\full6530-release-1-verification.json",
+      "sha256": "FFBD702F105083B02A99E3038B9D9AFFA237AA51F91D241C31E6F79907E74638"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\d6-sdk30-production-integration-1\\full6530-debug-1-verification.json",
+      "sha256": "903942D1F7E037563B6A192E39A9521C4C4C88EF765BE1717EB11ED57ED10D14"
+    }
+  ],
+  "cleanupInCadoryx": false,
+  "AF": "ACTIVE",
+  "G": "USER_DEFERRED"
+}

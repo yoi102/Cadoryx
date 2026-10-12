@@ -1,0 +1,53 @@
+{
+  "publicMetadataIsSynthetic": true,
+  "recordedAt": "2026-10-12T06:54:15.0024277+00:00",
+  "nativeCodeExecuted": false,
+  "publicRestoreRun": false,
+  "count": 7,
+  "state": "PASS_SYNTHETIC_PUBLIC_CONSUMER_METADATA_FIXTURES_NOT_PUBLIC_RESTORE_OR_RUNTIME",
+  "scriptSha256": "6AB73338557C44E7376BB322C3E8B3D0A76FA29456BD994F550D2B5A6F1F8A31",
+  "fixtures": [
+    {
+      "passed": true,
+      "accepted": true,
+      "scenario": "consistent-public-metadata",
+      "rejection": null
+    },
+    {
+      "passed": true,
+      "accepted": false,
+      "scenario": "wrong-lock-hash",
+      "rejection": "Consumer lock differs from public package bytes: Consumer/packages.lock.json / OcctSharp"
+    },
+    {
+      "passed": true,
+      "accepted": false,
+      "scenario": "private-lock-version",
+      "rejection": "Consumer lock differs from public package bytes: Consumer/packages.lock.json / OcctSharp"
+    },
+    {
+      "passed": true,
+      "accepted": false,
+      "scenario": "private-direct-reference",
+      "rejection": "Consumer must use the shared exact SDK version: Consumer/Consumer.csproj / OcctSharp"
+    },
+    {
+      "passed": true,
+      "accepted": false,
+      "scenario": "missing-direct-lock-entry",
+      "rejection": "Direct SDK reference absent from consumer lock: Consumer/Consumer.csproj / OcctSharp"
+    },
+    {
+      "passed": true,
+      "accepted": false,
+      "scenario": "local-package-source",
+      "rejection": "Production configuration must use only nuget.org"
+    },
+    {
+      "passed": true,
+      "accepted": false,
+      "scenario": "stale-abi",
+      "rejection": "Runtime baseline ABI or bridge version differs from the publisher-tested manifest"
+    }
+  ]
+}

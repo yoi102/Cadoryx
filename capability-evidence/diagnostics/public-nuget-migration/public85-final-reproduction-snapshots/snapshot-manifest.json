@@ -1,0 +1,46 @@
+{
+  "snapshotsOnly": true,
+  "restoreSnapshotsToOriginalExecutablePathsBeforeReproduction": true,
+  "scripts": [
+    {
+      "originalExecutablePath": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\prepare-public85-final1073-1.py",
+      "snapshot": "prepare-public85-final1073-1.py",
+      "sha256": "B80CF1778417E1CFA2E08B2497340415C3B2FEBB5112B6D3D5A3654EF6E833C4"
+    },
+    {
+      "originalExecutablePath": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\prepare-public85-production-tools-final-1.py",
+      "snapshot": "prepare-public85-production-tools-final-1.py",
+      "sha256": "94FC1050F85BA62ADDDE0ABCE0FE5C4F9F8E6D12D9E6E46AAC7AAA9FA44FE9CD"
+    },
+    {
+      "originalExecutablePath": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\run-public85-final1073-1.ps1",
+      "snapshot": "run-public85-final1073-1.ps1",
+      "sha256": "EEDDF5E119E113FBE5DF3197987E6003B50179FAB98AF2EDD19F14A15B81FE02"
+    },
+    {
+      "originalExecutablePath": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\audit-public85-final1073-1.py",
+      "snapshot": "audit-public85-final1073-1.py",
+      "sha256": "EA38CF464A4FE21AD59F585EB1AFFEA23C1FD486EB04A12AEE5690D299052187"
+    },
+    {
+      "originalExecutablePath": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\apply-public85-production-configuration.py",
+      "snapshot": "apply-public85-production-configuration.py",
+      "sha256": "2BBECF69E5B77773026251817905989A3FB0F3E5461491335FC8C96C8882B898"
+    },
+    {
+      "originalExecutablePath": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\run-public85-production-root-1.ps1",
+      "snapshot": "run-public85-production-root-1.ps1",
+      "sha256": "B6185F19CD1837597E8C7CA7341E0FCDD3A793CD567AFAD0A57484738C7B9A1D"
+    },
+    {
+      "originalExecutablePath": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\run-public85-native-gate-1.ps1",
+      "snapshot": "run-public85-native-gate-1.ps1",
+      "sha256": "105046BDA0C422E77C25307157F4C7B2E8048F2951DB5EDF00B27E8743FC771B"
+    },
+    {
+      "originalExecutablePath": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\run-public85-native-full-both-1.ps1",
+      "snapshot": "run-public85-native-full-both-1.ps1",
+      "sha256": "EB7EBA49581AFB1E93FBB1FD1994956ECBCE94FB1D16BDB97EC43075C285ACCA"
+    }
+  ]
+}

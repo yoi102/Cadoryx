@@ -1,5 +1,7 @@
 # OcctSharp 对 Cadoryx 的能力核查
 
+2026-10-13：生产已切换公开 `8.0.1-preview.85`，只配置nuget.org；[实际包能力55/55](../capability-evidence/diagnostics/public-nuget-migration/public85-production-capability-result.json)和62份包内原生DLL核验通过，bridge0.133.0/ABI1.118。生成器迁移与公开消费者见[公开迁移](OCCT_PUBLIC_NUGET_MIGRATION.md)。`OcctSharp.Native.win-x64`继续受支持，Cadoryx不需要vcpkg；下方私有版本及手写描述是历史记录，当前A–F全量、窗口及性能验收另行推进。
+
 2026-10-01 C2扩展起步：新增任意位姿的精确平面/圆柱/圆锥解析轴及独立值探针，当前锁定 `.cadoryx.modeling.sweep.1` 消费44/44、62 DLL哈希匹配（`artifacts/occt-capability-20261001-225922`）；包能力足以继续应用关联来源/轴/点实现，不能把探针当成应用功能完成。D3历史锁定消费仍为43/43；当前扩展计划见 [C2补全](C2_EXTENDED_DATUMS_PLAN.md)。
 
 2026-09-24 M4-S3s–x：闭合直线孔复用锁定包的 `ShapeFactory.CreatePolygonWire`、`CreatePlanarFace`、`Shape.Extrude` 与 `Shape.Cut`。独立 NuGet 消费新增真实 20×20 mm 外形与 4×4 mm 多边形通孔，验证 10 mm 拉伸的 3,840 mm³ 体积；`artifacts/occt-capability-m4s3-polygon-holes` 为 23/23 场景、62/62 原生 DLL 与包载荷一致。草图孔环引用、严格区域校验、features v13 与建模 UI 均属 Cadoryx 应用层，本轮无需新增 OcctSharp 绑定。范围见[多边形草图通孔](POLYGON_SKETCH_HOLES.md)。

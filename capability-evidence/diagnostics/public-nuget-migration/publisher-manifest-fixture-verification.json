@@ -1,0 +1,51 @@
+{
+  "sourceSha256": "2FEB7AA4A6963C995F04861B49C8088FFA52A7F248AC12DBC748FC7BA59C4B7B",
+  "recordedAt": "2026-10-12T06:48:37.5526694+00:00",
+  "count": 8,
+  "publicRestoreRun": false,
+  "fixtures": [
+    {
+      "nativeCount": 62,
+      "scenario": "actual-publisher-manifest",
+      "passed": true
+    },
+    {
+      "rejected": true,
+      "scenario": "wrong-version",
+      "passed": true
+    },
+    {
+      "rejected": true,
+      "scenario": "missing-abi",
+      "passed": true
+    },
+    {
+      "rejected": true,
+      "scenario": "duplicate-dll",
+      "passed": true
+    },
+    {
+      "rejected": true,
+      "scenario": "traversal-path",
+      "passed": true
+    },
+    {
+      "rejected": true,
+      "scenario": "invalid-sha256",
+      "passed": true
+    },
+    {
+      "rejected": true,
+      "scenario": "zero-size",
+      "passed": true
+    },
+    {
+      "rejected": true,
+      "scenario": "different-bridge",
+      "passed": true
+    }
+  ],
+  "nativeCodeExecuted": false,
+  "source": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\runtime\\win-x64\\runtime-manifest.json",
+  "state": "PASS_NATIVE_MANIFEST_METADATA_FIXTURES_NOT_PUBLIC_RESTORE_OR_RUNTIME"
+}

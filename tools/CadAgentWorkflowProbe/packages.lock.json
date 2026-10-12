@@ -4,9 +4,9 @@
     "net10.0": {
       "OcctSharp.Native.win-x64": {
         "type": "Direct",
-        "requested": "[8.0.1-preview.31.cadoryx.curve-inspection.25, 8.0.1-preview.31.cadoryx.curve-inspection.25]",
-        "resolved": "8.0.1-preview.31.cadoryx.curve-inspection.25",
-        "contentHash": "YHPmNq8wBGbPdbdEWAe3fuN3UG9RBvLfWnSM57CPQCQsVlebTjnx6BRdMYH6ZMCz6T4oNX0zgpuatLsBYl0JEg=="
+        "requested": "[8.0.1-preview.85, 8.0.1-preview.85]",
+        "resolved": "8.0.1-preview.85",
+        "contentHash": "/wJ1dXOaq600VfsAsltyNVdjfyVKmaMCTc2BIhXXyH/cJrhVqwL0gcI1+sL0X8dpu92+weBQ2ZafqCu+xAiXcg=="
       },
       "Antelcat.I18N.SourceGenerators": {
         "type": "Transitive",
@@ -93,155 +93,155 @@
       },
       "OcctSharp": {
         "type": "Transitive",
-        "resolved": "8.0.1-preview.31.cadoryx.curve-inspection.25",
-        "contentHash": "xrgJnIbd9HraZzswCaHbl1ejO7qXJHLZQJLk6ArCLDIY5qonaMLRKgDROqRv0aTPPuzYV7oqFpXTZnX++C70eA==",
+        "resolved": "8.0.1-preview.85",
+        "contentHash": "Kq698+WLgr8b4aGCZA5QP2FBb14Y+Qc0QB/V8ZGDrMsfvTNfDRDSjjYJo6jGGotIo4uZzSOGw9ZdyW9gBRK1XQ==",
         "dependencies": {
-          "OcctSharp.DataExchange": "8.0.1-preview.31.cadoryx.curve-inspection.25",
-          "OcctSharp.Documents": "8.0.1-preview.31.cadoryx.curve-inspection.25",
-          "OcctSharp.Draw": "8.0.1-preview.31.cadoryx.curve-inspection.25",
-          "OcctSharp.Foundation": "8.0.1-preview.31.cadoryx.curve-inspection.25",
-          "OcctSharp.Geometry": "8.0.1-preview.31.cadoryx.curve-inspection.25",
-          "OcctSharp.IVtk": "8.0.1-preview.31.cadoryx.curve-inspection.25",
-          "OcctSharp.Mesh": "8.0.1-preview.31.cadoryx.curve-inspection.25",
-          "OcctSharp.MeshData": "8.0.1-preview.31.cadoryx.curve-inspection.25",
-          "OcctSharp.Modeling": "8.0.1-preview.31.cadoryx.curve-inspection.25",
-          "OcctSharp.Runtime": "8.0.1-preview.31.cadoryx.curve-inspection.25",
-          "OcctSharp.Visualization": "8.0.1-preview.31.cadoryx.curve-inspection.25",
-          "OcctSharp.Xde": "8.0.1-preview.31.cadoryx.curve-inspection.25"
+          "OcctSharp.DataExchange": "[8.0.1-preview.85]",
+          "OcctSharp.Documents": "[8.0.1-preview.85]",
+          "OcctSharp.Draw": "[8.0.1-preview.85]",
+          "OcctSharp.Foundation": "[8.0.1-preview.85]",
+          "OcctSharp.Geometry": "[8.0.1-preview.85]",
+          "OcctSharp.IVtk": "[8.0.1-preview.85]",
+          "OcctSharp.Mesh": "[8.0.1-preview.85]",
+          "OcctSharp.MeshData": "[8.0.1-preview.85]",
+          "OcctSharp.Modeling": "[8.0.1-preview.85]",
+          "OcctSharp.Runtime": "[8.0.1-preview.85]",
+          "OcctSharp.Visualization": "[8.0.1-preview.85]",
+          "OcctSharp.Xde": "[8.0.1-preview.85]"
         }
       },
       "OcctSharp.DataExchange": {
         "type": "Transitive",
-        "resolved": "8.0.1-preview.31.cadoryx.curve-inspection.25",
-        "contentHash": "dOSNhlASorNUsK7WxxRNWPn50pKJ2VBUGhGizbGyanHUEmmMjVn9JwPKg2AHaWxBfrg4URaOqQCeTQ1S6Sm9wQ==",
+        "resolved": "8.0.1-preview.85",
+        "contentHash": "y8bZFI6BS57Jv6Ur2L6CUfZMoka/QA/8elL21FCQYjQmLtp0ihTvFXD6PnPH7SSZuiZpo0bmy5gZES6Ajgur1Q==",
         "dependencies": {
-          "OcctSharp.Documents": "8.0.1-preview.31.cadoryx.curve-inspection.25",
-          "OcctSharp.Foundation": "8.0.1-preview.31.cadoryx.curve-inspection.25",
-          "OcctSharp.Geometry": "8.0.1-preview.31.cadoryx.curve-inspection.25",
-          "OcctSharp.Mesh": "8.0.1-preview.31.cadoryx.curve-inspection.25",
-          "OcctSharp.MeshData": "8.0.1-preview.31.cadoryx.curve-inspection.25",
-          "OcctSharp.Modeling": "8.0.1-preview.31.cadoryx.curve-inspection.25",
-          "OcctSharp.Runtime": "8.0.1-preview.31.cadoryx.curve-inspection.25",
-          "OcctSharp.Visualization": "8.0.1-preview.31.cadoryx.curve-inspection.25"
+          "OcctSharp.Documents": "[8.0.1-preview.85]",
+          "OcctSharp.Foundation": "[8.0.1-preview.85]",
+          "OcctSharp.Geometry": "[8.0.1-preview.85]",
+          "OcctSharp.Mesh": "[8.0.1-preview.85]",
+          "OcctSharp.MeshData": "[8.0.1-preview.85]",
+          "OcctSharp.Modeling": "[8.0.1-preview.85]",
+          "OcctSharp.Runtime": "[8.0.1-preview.85]",
+          "OcctSharp.Visualization": "[8.0.1-preview.85]"
         }
       },
       "OcctSharp.Documents": {
         "type": "Transitive",
-        "resolved": "8.0.1-preview.31.cadoryx.curve-inspection.25",
-        "contentHash": "fl6ouzcdE4lN/ZUlzbe9NypxxTV0P6XLe/tmBjtWPsnDNerfQY2SUjFlYtJ8Lba+bClMRdhxxNYSEKYSK9OcCA==",
+        "resolved": "8.0.1-preview.85",
+        "contentHash": "WQx9bdL7wgKvo9S/z1g0A1Wev8kz6DWlx0LFJiFgJchQOBQRvEnOpEwCqVQitPwfp9dbdr9Iy9QQZkZDBT+wDA==",
         "dependencies": {
-          "OcctSharp.Foundation": "8.0.1-preview.31.cadoryx.curve-inspection.25",
-          "OcctSharp.Geometry": "8.0.1-preview.31.cadoryx.curve-inspection.25",
-          "OcctSharp.MeshData": "8.0.1-preview.31.cadoryx.curve-inspection.25",
-          "OcctSharp.Modeling": "8.0.1-preview.31.cadoryx.curve-inspection.25",
-          "OcctSharp.Runtime": "8.0.1-preview.31.cadoryx.curve-inspection.25"
+          "OcctSharp.Foundation": "[8.0.1-preview.85]",
+          "OcctSharp.Geometry": "[8.0.1-preview.85]",
+          "OcctSharp.MeshData": "[8.0.1-preview.85]",
+          "OcctSharp.Modeling": "[8.0.1-preview.85]",
+          "OcctSharp.Runtime": "[8.0.1-preview.85]"
         }
       },
       "OcctSharp.Draw": {
         "type": "Transitive",
-        "resolved": "8.0.1-preview.31.cadoryx.curve-inspection.25",
-        "contentHash": "lxR8abkk+Zo+ng/eWi5djvvhipKLXQ1ivsBTZszpqZDqlovGXyRFG3xNXGNkfIKiETmQKO1mZ0P7p1r3ODjwsw==",
+        "resolved": "8.0.1-preview.85",
+        "contentHash": "iQPQnatgolRm8RusZAEYZwrudzUq63CeE8PJnlVxic4rzPJ63pnLKy2rjvJGWnPbBZAf5PIaov2pEb0F1Nosxg==",
         "dependencies": {
-          "OcctSharp.Runtime": "8.0.1-preview.31.cadoryx.curve-inspection.25",
-          "OcctSharp.Visualization": "8.0.1-preview.31.cadoryx.curve-inspection.25",
-          "OcctSharp.Xde": "8.0.1-preview.31.cadoryx.curve-inspection.25"
+          "OcctSharp.Runtime": "[8.0.1-preview.85]",
+          "OcctSharp.Visualization": "[8.0.1-preview.85]",
+          "OcctSharp.Xde": "[8.0.1-preview.85]"
         }
       },
       "OcctSharp.Foundation": {
         "type": "Transitive",
-        "resolved": "8.0.1-preview.31.cadoryx.curve-inspection.25",
-        "contentHash": "YsWcqLDKSryUB9ApnN2CboIg7+wzOW4mGLcUil5K0MD9eplJuTictHGZF4V/QRc3K0xSkFDVODxq5uo5KDSf7Q==",
+        "resolved": "8.0.1-preview.85",
+        "contentHash": "Lf7urSm2XXpjdTf6496hTcwDsVoQKzBIEuCvt7KNKahIxzqa7ug1Z/xJzJj19gRi3yfEUaVk5whjzylVMeGm6g==",
         "dependencies": {
-          "OcctSharp.Runtime": "8.0.1-preview.31.cadoryx.curve-inspection.25"
+          "OcctSharp.Runtime": "[8.0.1-preview.85]"
         }
       },
       "OcctSharp.Geometry": {
         "type": "Transitive",
-        "resolved": "8.0.1-preview.31.cadoryx.curve-inspection.25",
-        "contentHash": "XBzf3T7dLZYON++salhCerRgQLwZN3BMClZFqGBoW2DjxL1DcRAd70IexMJnbgOHXwjtJalT9iDlSpXzW5HszA==",
+        "resolved": "8.0.1-preview.85",
+        "contentHash": "s8V+BNwu2pSh/LrFPO5wcJq8F2pfwzS8N7bHWenLToKmqV8uHwkvzrzncffvfQZFxfqlcpJ9u6t34DO7AecDrg==",
         "dependencies": {
-          "OcctSharp.Foundation": "8.0.1-preview.31.cadoryx.curve-inspection.25",
-          "OcctSharp.Runtime": "8.0.1-preview.31.cadoryx.curve-inspection.25"
+          "OcctSharp.Foundation": "[8.0.1-preview.85]",
+          "OcctSharp.Runtime": "[8.0.1-preview.85]"
         }
       },
       "OcctSharp.IVtk": {
         "type": "Transitive",
-        "resolved": "8.0.1-preview.31.cadoryx.curve-inspection.25",
-        "contentHash": "IuyVUGSQQe4V3xWzw5H0xaI8oo0TgTOFlm0wcfWhWPrHQ4HwLNKjvpVbNv0OilKOWqW9eTV9rOPCImkBnxiMWA==",
+        "resolved": "8.0.1-preview.85",
+        "contentHash": "hHyujzAlmYNcztR7rikN2IgESD4SciqhtPlLrb+G1GcWjttieIgg7U95nW+cyP1KUFOrmY41+daw26BPQyOeMg==",
         "dependencies": {
-          "OcctSharp.Runtime": "8.0.1-preview.31.cadoryx.curve-inspection.25",
-          "OcctSharp.Visualization": "8.0.1-preview.31.cadoryx.curve-inspection.25"
+          "OcctSharp.Runtime": "[8.0.1-preview.85]",
+          "OcctSharp.Visualization": "[8.0.1-preview.85]"
         }
       },
       "OcctSharp.Mesh": {
         "type": "Transitive",
-        "resolved": "8.0.1-preview.31.cadoryx.curve-inspection.25",
-        "contentHash": "gIWkmXswZV+/AIE1R6MZwYLYis+2OKE75z5ZV3eq28YuTU5zZgFC5uMfIMymVZWzpyk6GxIlipO9vEb/WXqKqw==",
+        "resolved": "8.0.1-preview.85",
+        "contentHash": "MICH2caIIiwzMOEGUR96Y0OTHbaMSwmbjY1Bg7z/DOz8dY1DhcdhauVDZQPnQobNieouarc4wjZgSWCBdD0Txg==",
         "dependencies": {
-          "OcctSharp.Foundation": "8.0.1-preview.31.cadoryx.curve-inspection.25",
-          "OcctSharp.Geometry": "8.0.1-preview.31.cadoryx.curve-inspection.25",
-          "OcctSharp.MeshData": "8.0.1-preview.31.cadoryx.curve-inspection.25",
-          "OcctSharp.Modeling": "8.0.1-preview.31.cadoryx.curve-inspection.25",
-          "OcctSharp.Runtime": "8.0.1-preview.31.cadoryx.curve-inspection.25"
+          "OcctSharp.Foundation": "[8.0.1-preview.85]",
+          "OcctSharp.Geometry": "[8.0.1-preview.85]",
+          "OcctSharp.MeshData": "[8.0.1-preview.85]",
+          "OcctSharp.Modeling": "[8.0.1-preview.85]",
+          "OcctSharp.Runtime": "[8.0.1-preview.85]"
         }
       },
       "OcctSharp.MeshData": {
         "type": "Transitive",
-        "resolved": "8.0.1-preview.31.cadoryx.curve-inspection.25",
-        "contentHash": "Xdy7WcLnszDWlo9npjI5gZ+Ji0+vFak1fJSyqjhUeO/bpwuRrsvsUu8HPEb+epJoy5FJvlwnZn9sj7dSN8tnMg==",
+        "resolved": "8.0.1-preview.85",
+        "contentHash": "mtPBjhYfDk50DpJuJ4yt1xlAvY67CBCPn4Zvnj03Fzj6/qarjXFPA146hDCpUVYBl7hAdrJCv9vlkWZsf402Mw==",
         "dependencies": {
-          "OcctSharp.Foundation": "8.0.1-preview.31.cadoryx.curve-inspection.25",
-          "OcctSharp.Geometry": "8.0.1-preview.31.cadoryx.curve-inspection.25",
-          "OcctSharp.Runtime": "8.0.1-preview.31.cadoryx.curve-inspection.25"
+          "OcctSharp.Foundation": "[8.0.1-preview.85]",
+          "OcctSharp.Geometry": "[8.0.1-preview.85]",
+          "OcctSharp.Runtime": "[8.0.1-preview.85]"
         }
       },
       "OcctSharp.Modeling": {
         "type": "Transitive",
-        "resolved": "8.0.1-preview.31.cadoryx.curve-inspection.25",
-        "contentHash": "QzKa8HUBI5XDpYcSQaWfdEbX/aswHjtLUqUrdhpXF8EYv05xI5LetnnB/sNXuZ4VFXAr5hnHIN8xnNJJ//FnQA==",
+        "resolved": "8.0.1-preview.85",
+        "contentHash": "ldravbY9KjqXVgCDomBlsQBQXfOKYzDq1Sxvpm1vEU2LQNs3/MU3068pXMw5FHkzQPaZyLWTul57W6eI0HdZ2A==",
         "dependencies": {
-          "OcctSharp.Foundation": "8.0.1-preview.31.cadoryx.curve-inspection.25",
-          "OcctSharp.Geometry": "8.0.1-preview.31.cadoryx.curve-inspection.25",
-          "OcctSharp.MeshData": "8.0.1-preview.31.cadoryx.curve-inspection.25",
-          "OcctSharp.Runtime": "8.0.1-preview.31.cadoryx.curve-inspection.25"
+          "OcctSharp.Foundation": "[8.0.1-preview.85]",
+          "OcctSharp.Geometry": "[8.0.1-preview.85]",
+          "OcctSharp.MeshData": "[8.0.1-preview.85]",
+          "OcctSharp.Runtime": "[8.0.1-preview.85]"
         }
       },
       "OcctSharp.Runtime": {
         "type": "Transitive",
-        "resolved": "8.0.1-preview.31.cadoryx.curve-inspection.25",
-        "contentHash": "0Jxb4avLM+LGfsITUib2r0g2PFc7kHKAohFQriwbLM0E99ndwRGf4o9n9UVisYQhbYQIC/XmK79QhhIEKmoVqA==",
+        "resolved": "8.0.1-preview.85",
+        "contentHash": "hmTPhHP2XWm65vKzf9IRB1TfIuk6HiB/iYIpiOWTqNhwMiycs66GEpVtbnNDG1PS0cAsqYoArJm+RX51ACOrOA==",
         "dependencies": {
-          "OcctSharp.Native.win-x64": "8.0.1-preview.31.cadoryx.curve-inspection.25"
+          "OcctSharp.Native.win-x64": "[8.0.1-preview.85]"
         }
       },
       "OcctSharp.Visualization": {
         "type": "Transitive",
-        "resolved": "8.0.1-preview.31.cadoryx.curve-inspection.25",
-        "contentHash": "ookkAd1RPkW0eCHhSkqmJBjJ9aO9QszrRx7cdehqUbhnNAPx+9gQ1XhSoeXT4q/7eCNbFLWpEVgblX0HSQdl3g==",
+        "resolved": "8.0.1-preview.85",
+        "contentHash": "3HlL4udgic+lVM6SDCYn0+MwL+ejlAytzmhWzkKfOer1JVTyhvsi+7mbhlPIegb0U3jByUC5oJLt9DE6Hr4MFQ==",
         "dependencies": {
-          "OcctSharp.Documents": "8.0.1-preview.31.cadoryx.curve-inspection.25",
-          "OcctSharp.Foundation": "8.0.1-preview.31.cadoryx.curve-inspection.25",
-          "OcctSharp.Geometry": "8.0.1-preview.31.cadoryx.curve-inspection.25",
-          "OcctSharp.Mesh": "8.0.1-preview.31.cadoryx.curve-inspection.25",
-          "OcctSharp.MeshData": "8.0.1-preview.31.cadoryx.curve-inspection.25",
-          "OcctSharp.Modeling": "8.0.1-preview.31.cadoryx.curve-inspection.25",
-          "OcctSharp.Runtime": "8.0.1-preview.31.cadoryx.curve-inspection.25"
+          "OcctSharp.Documents": "[8.0.1-preview.85]",
+          "OcctSharp.Foundation": "[8.0.1-preview.85]",
+          "OcctSharp.Geometry": "[8.0.1-preview.85]",
+          "OcctSharp.Mesh": "[8.0.1-preview.85]",
+          "OcctSharp.MeshData": "[8.0.1-preview.85]",
+          "OcctSharp.Modeling": "[8.0.1-preview.85]",
+          "OcctSharp.Runtime": "[8.0.1-preview.85]"
         }
       },
       "OcctSharp.Xde": {
         "type": "Transitive",
-        "resolved": "8.0.1-preview.31.cadoryx.curve-inspection.25",
-        "contentHash": "HkOnVvt/mLEMdpzP91VzbZlD77EzVY3zvLH4aAD7tkkSUs6H7zRLFBiYzf+CNYxOSS9WYG+iarhOF+jfvSl3Rw==",
+        "resolved": "8.0.1-preview.85",
+        "contentHash": "vEfiUWatDr9ecCYfRycnvflfNDVm+lmn5KtjEj53XcgozN047Yt+QPtJtqcFIKNJ/c3+g2FNMFtaMZNeF1ytXQ==",
         "dependencies": {
-          "OcctSharp.DataExchange": "8.0.1-preview.31.cadoryx.curve-inspection.25",
-          "OcctSharp.Documents": "8.0.1-preview.31.cadoryx.curve-inspection.25",
-          "OcctSharp.Foundation": "8.0.1-preview.31.cadoryx.curve-inspection.25",
-          "OcctSharp.Geometry": "8.0.1-preview.31.cadoryx.curve-inspection.25",
-          "OcctSharp.Mesh": "8.0.1-preview.31.cadoryx.curve-inspection.25",
-          "OcctSharp.MeshData": "8.0.1-preview.31.cadoryx.curve-inspection.25",
-          "OcctSharp.Modeling": "8.0.1-preview.31.cadoryx.curve-inspection.25",
-          "OcctSharp.Runtime": "8.0.1-preview.31.cadoryx.curve-inspection.25",
-          "OcctSharp.Visualization": "8.0.1-preview.31.cadoryx.curve-inspection.25"
+          "OcctSharp.DataExchange": "[8.0.1-preview.85]",
+          "OcctSharp.Documents": "[8.0.1-preview.85]",
+          "OcctSharp.Foundation": "[8.0.1-preview.85]",
+          "OcctSharp.Geometry": "[8.0.1-preview.85]",
+          "OcctSharp.Mesh": "[8.0.1-preview.85]",
+          "OcctSharp.MeshData": "[8.0.1-preview.85]",
+          "OcctSharp.Modeling": "[8.0.1-preview.85]",
+          "OcctSharp.Runtime": "[8.0.1-preview.85]",
+          "OcctSharp.Visualization": "[8.0.1-preview.85]"
         }
       },
       "PDFsharp": {
@@ -319,7 +319,7 @@
         "type": "Project",
         "dependencies": {
           "Cadoryx.Kernel.Abstractions": "[1.0.0, )",
-          "OcctSharp": "[8.0.1-preview.31.cadoryx.curve-inspection.25, 8.0.1-preview.31.cadoryx.curve-inspection.25]"
+          "OcctSharp": "[8.0.1-preview.85, 8.0.1-preview.85]"
         }
       },
       "cadoryx.lang": {

@@ -1,0 +1,634 @@
+{
+  "state": "PASS",
+  "configuration": "Debug",
+  "provider": "vcpkg-occt801-d3d-media-original-headers-v2",
+  "tests": 2255,
+  "runnerSdk": "10.0.401",
+  "nativeDlls": 84,
+  "nativeManifestSha256": "224F98CCD3DB52F6CC735E4D756E6085F4AFFCDCD492758995A0BFBDD3069D3C",
+  "runDirectory": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-public-sdk85\\vcpkg-media-runtime-debug\\run-2ded7dcb2d9e4c938e47095542fecf37",
+  "files": [
+    {
+      "path": "occt/avcodec-63.dll",
+      "size": 19660288,
+      "sha256": "24302F1AD0E470BF7E844F4B558B3F3706B5F952AD151DAB261B0C49E04BD26B"
+    },
+    {
+      "path": "occt/avformat-63.dll",
+      "size": 3682816,
+      "sha256": "47654A33F75F67EFD1BB6C9EDE565DCAF7B4208FD3A8C74CAFB48EA2DD1B278A"
+    },
+    {
+      "path": "occt/avutil-61.dll",
+      "size": 1236480,
+      "sha256": "477215A472CB400DF4B293347D6AE3CB74B8B2A66D3BB0FDAE630F14BBA1CA84"
+    },
+    {
+      "path": "occt/brotlicommon.dll",
+      "size": 207872,
+      "sha256": "89A254EB80F36240D3802F407136B0F970F2ACC83632F532815CBE5AEA914357"
+    },
+    {
+      "path": "occt/brotlidec.dll",
+      "size": 131072,
+      "sha256": "3803FEBA3DF216C3A3F265F393B1BF9FD21B7DB384D3D9A2022D8F680CBFEC3C"
+    },
+    {
+      "path": "occt/bz2d.dll",
+      "size": 188416,
+      "sha256": "75DFC3B1C524AFB134728230908F7F9A49C6564C538600FC76C5575BE61E3C42"
+    },
+    {
+      "path": "occt/deflate.dll",
+      "size": 217600,
+      "sha256": "3F4DF52B46D55B43C8BEA6D491B23097C686AE61F6AE9E0F726F4E5939B1756B"
+    },
+    {
+      "path": "occt/FreeImaged.dll",
+      "size": 3258880,
+      "sha256": "71B4EACB69D5AE6687F6A6C2AD3B061A3F617C7750D74D06DFBBD8CA600F0547"
+    },
+    {
+      "path": "occt/freetyped.dll",
+      "size": 1550848,
+      "sha256": "893B317140D05BCD07DE79302B647EA78E6D81C06C3A82ED2585B7D126CD26A6"
+    },
+    {
+      "path": "occt/Iex-3_5_d.dll",
+      "size": 1209856,
+      "sha256": "E6A8FDEAC2D6E28A02CD280E6ACDB905A92284FEA826208E6D5229C8046AA8CE"
+    },
+    {
+      "path": "occt/IlmThread-3_5_d.dll",
+      "size": 176640,
+      "sha256": "AA34890A235269A10CC3118A014F7E2BFE6A5D771207815E4727B18A97EFC3AB"
+    },
+    {
+      "path": "occt/Imath-3_2_d.dll",
+      "size": 531456,
+      "sha256": "51444258CF5046E1DBAEBC28345B02E560DBC060A9A4734DC1DE70EE5F23589D"
+    },
+    {
+      "path": "occt/jpeg62.dll",
+      "size": 1459200,
+      "sha256": "7FDA3ACDC6FE81BBD41716A02369C7946FAB1F9BA32EF27A700BFD6FEC8C941A"
+    },
+    {
+      "path": "occt/lcms2-2.dll",
+      "size": 600576,
+      "sha256": "8878B8015A6A5DD9FACA2F826B5BF06D28F7371C9CBA5CE5AFB9C94DD6BD7093"
+    },
+    {
+      "path": "occt/liblzma.dll",
+      "size": 570368,
+      "sha256": "C262106036FF4DD87F34C7DB1DA5E78CE833635EF9027ADF13C46F0137A6D32E"
+    },
+    {
+      "path": "occt/libpng16d.dll",
+      "size": 427520,
+      "sha256": "4390FA3CC9AF9E4EB1324DB8A27DE5B3ABE8C01125574751E85C21112DCF06BD"
+    },
+    {
+      "path": "occt/libsharpyuv.dll",
+      "size": 82432,
+      "sha256": "30C59C38261062320CE9F9F9B49857C2D6642FC6DCE79FC05EAEF41B2F0B18E7"
+    },
+    {
+      "path": "occt/libwebp.dll",
+      "size": 927232,
+      "sha256": "629F1C52B4296CEAEAAF75073DC714E2BAE852B4ACD5E8BE0E04EEF63BACD89E"
+    },
+    {
+      "path": "occt/libwebpdecoder.dll",
+      "size": 440832,
+      "sha256": "58FC8996909B092E0775E2CA57CEAF6D6431D5F6E3F3EB81BD017BBF8E0F5B91"
+    },
+    {
+      "path": "occt/libwebpmux.dll",
+      "size": 167936,
+      "sha256": "57B80CFDE019D39EBF26319843FFC34ADC0096335B9D2E655C4A952248B581EF"
+    },
+    {
+      "path": "occt/OcctSharp.Native.dll",
+      "size": 161370112,
+      "sha256": "281F2E4BE9A8E580A7B5EBF62ADF3811E22A95818E9D29D90F99206C5652FC28"
+    },
+    {
+      "path": "occt/OpenEXR-3_5_d.dll",
+      "size": 3345920,
+      "sha256": "E65EF9FBEA319BC68200830B73B9DD8148F47863044BF6EF5BD1F425C9E1C66A"
+    },
+    {
+      "path": "occt/OpenEXRCore-3_5_d.dll",
+      "size": 865792,
+      "sha256": "7B86C28B08FF1DD7D5EAFFEDDC95D61B8321E50580C32CA046EC43559F73105A"
+    },
+    {
+      "path": "occt/openjp2.dll",
+      "size": 1064960,
+      "sha256": "0B72FF9FC8179FA125C4F086DF491D3C522436F324B441DC52333411531F47E4"
+    },
+    {
+      "path": "occt/openjph.0.32d.dll",
+      "size": 1637376,
+      "sha256": "B90CAEE27B0318B5439BB592B950DAEE0CC8CA82BCE55A180987A914A6CD4333"
+    },
+    {
+      "path": "occt/rawd.dll",
+      "size": 3113472,
+      "sha256": "850C79E1AE1A16D1BA2D89B20DC9723753318200EB3EA030AA5908F28A56CB20"
+    },
+    {
+      "path": "occt/swresample-7.dll",
+      "size": 196608,
+      "sha256": "51D388218BA8DDB54D3D38FA3357F00B5C5E67E590321101D9052F848D51E744"
+    },
+    {
+      "path": "occt/swscale-10.dll",
+      "size": 1651200,
+      "sha256": "B123D3586730BE743697DEF6E28EF4A23AACFDEB5D63F7745FD97A4312D766D1"
+    },
+    {
+      "path": "occt/tbb12_debug.dll",
+      "size": 1626624,
+      "sha256": "EB759047A35862A0BCA54CD031E4D227EC6F1A37E45E5DD893FD5B8BDA950F91"
+    },
+    {
+      "path": "occt/tiffd.dll",
+      "size": 1187840,
+      "sha256": "E25BFBF2D03FCF139D12C4DE90D4DBC75F053303E1004C67BA7273B284D0AC28"
+    },
+    {
+      "path": "occt/TKBin.dll",
+      "size": 303616,
+      "sha256": "455D4A00AA7AD3BBD698D720F532D654FBE757D0BCBDCED6EEB58531E42D7476"
+    },
+    {
+      "path": "occt/TKBinL.dll",
+      "size": 686592,
+      "sha256": "A3EF9DD1B5017B77BF3FF602EC5868CB818597D4F050513E155FA5AE813D852E"
+    },
+    {
+      "path": "occt/TKBinTObj.dll",
+      "size": 167424,
+      "sha256": "FC94E07A778F1894413EAC86D4433FE3601092FA964F0D637B1F2F7D35F0022E"
+    },
+    {
+      "path": "occt/TKBinXCAF.dll",
+      "size": 320512,
+      "sha256": "72DF488AE5792A447D03379C595EA7502292E0071CD0393663A144ADF8396E03"
+    },
+    {
+      "path": "occt/TKBO.dll",
+      "size": 4470272,
+      "sha256": "316AB110D2D25746AF1AAE56BB2CCA148559D2330D7451DEB4CB3959883A8A04"
+    },
+    {
+      "path": "occt/TKBool.dll",
+      "size": 6319104,
+      "sha256": "143E4DD0CB4C774A9D678E015A634F4BF3FB77CCCFF79CE5B3515CB583E1CCF0"
+    },
+    {
+      "path": "occt/TKBRep.dll",
+      "size": 6153216,
+      "sha256": "287D68481E02592B8F53897DE371C097F499979BA0C80D797E17D5197953A8A4"
+    },
+    {
+      "path": "occt/TKCAF.dll",
+      "size": 1016832,
+      "sha256": "FEC0A31B1095D92A0B5EF7407FAB7614F7E5689DBD386CEB1473E143DE5BA952"
+    },
+    {
+      "path": "occt/TKCDF.dll",
+      "size": 692224,
+      "sha256": "2B0D46E1F93E943BA555E9358607ED5B36DA11BBA65927879EBF3C104B2BCD9A"
+    },
+    {
+      "path": "occt/TKD3DHost.dll",
+      "size": 179200,
+      "sha256": "535E88033159970F7E86F4B104778EDE1BC4067194CDFC617E97EC0F929527A9"
+    },
+    {
+      "path": "occt/TKDE.dll",
+      "size": 401408,
+      "sha256": "D9F03DC5C560F2E1A0F408310878C05F826B624AC1EB5E758DDC1E1E4C4A30A6"
+    },
+    {
+      "path": "occt/TKDECascade.dll",
+      "size": 240640,
+      "sha256": "931C12DC323AC00B476177834CD5BA74ECFFB465D76B7BF127B2B079411E85F4"
+    },
+    {
+      "path": "occt/TKDEGLTF.dll",
+      "size": 1203712,
+      "sha256": "A3D4B6E8040FBFC8A93088D0348D4693876484F7398BA5812695138CE6787C67"
+    },
+    {
+      "path": "occt/TKDEIGES.dll",
+      "size": 6754816,
+      "sha256": "1684AAC7CE01D76583780E46CE6043C778A35268987360610ACD97DB913B3F7F"
+    },
+    {
+      "path": "occt/TKDEOBJ.dll",
+      "size": 584704,
+      "sha256": "CF6BE86AA662B4A87818403ED01B9CB66E58F244D27C5F3186DF075B9C80E333"
+    },
+    {
+      "path": "occt/TKDEPLY.dll",
+      "size": 279040,
+      "sha256": "C4E9942129726BA368E72BA54B88C1EBBBC2B2A66786B6D8C56DFCF096C2F2F0"
+    },
+    {
+      "path": "occt/TKDESTEP.dll",
+      "size": 15139840,
+      "sha256": "0B55E7902FBF25D382E18ED292C1908305EAB0BFA347F80F784D8896B1A54202"
+    },
+    {
+      "path": "occt/TKDESTL.dll",
+      "size": 355840,
+      "sha256": "E539E0F05A79FFAA5A8FA649049D2C376674F63BCC0A3C50FAD42A92540A3ECA"
+    },
+    {
+      "path": "occt/TKDEVRML.dll",
+      "size": 1310208,
+      "sha256": "4C225E3D0365E2B74BE25F0E4F8E0AB1429E508DD3B7BC77BA01882F988067B7"
+    },
+    {
+      "path": "occt/TKernel.dll",
+      "size": 2947584,
+      "sha256": "64DD6EA69E62A7BDE1D93504D89E5E2CD1ED57FB74DF45D3102A3CA5B2DA51A1"
+    },
+    {
+      "path": "occt/TKExpress.dll",
+      "size": 837120,
+      "sha256": "324A0A5D7DC97FB0031BE35F565F87AE3CEC1C1CA783E4C7C8C0554BA68307E3"
+    },
+    {
+      "path": "occt/TKFeat.dll",
+      "size": 1806848,
+      "sha256": "7A8CE794A5D396C140CF5B9D897A17260AC0331F0C46BE783935CCDBC3EE9B72"
+    },
+    {
+      "path": "occt/TKFillet.dll",
+      "size": 4681216,
+      "sha256": "DF16F06997AA479DD4BFAEF3579B50A0448018A93A46F233CFAE08A2112210E4"
+    },
+    {
+      "path": "occt/TKG2d.dll",
+      "size": 1126400,
+      "sha256": "6A0FCF3670D22CF568905CD8024ED0479A26A87696C1DF962AB1BDD3BB9C77E8"
+    },
+    {
+      "path": "occt/TKG3d.dll",
+      "size": 3156992,
+      "sha256": "31959A5985421070ACC8DED5370D9F935EFA5FD1F06BD7B82AAB6EC413E373F9"
+    },
+    {
+      "path": "occt/TKGeomAlgo.dll",
+      "size": 9766400,
+      "sha256": "F4DF23EF3C239BBCA747A5DEF0D6E173D09D51448EA0261435D2DEEFB134E148"
+    },
+    {
+      "path": "occt/TKGeomBase.dll",
+      "size": 9465856,
+      "sha256": "901A12D73E8EFCB1340888D307B1994F6789B10A5B4FF3C75E92B9B780E91D97"
+    },
+    {
+      "path": "occt/TKHelix.dll",
+      "size": 230400,
+      "sha256": "FAF95919435C63A8A93E1B2766BD99D12C5F84065E6EDF6CC5E100C8077E1F26"
+    },
+    {
+      "path": "occt/TKHLR.dll",
+      "size": 2317312,
+      "sha256": "C2030D9F99D6990BE7C7E30100F29C632DAE2CFA23DAB495D5A50B1379B2F4F6"
+    },
+    {
+      "path": "occt/TKLCAF.dll",
+      "size": 1555968,
+      "sha256": "D5756144FC07E926F9E86D594B0B3ED1082B728FDD66FFF6305C7D2814DB6CA0"
+    },
+    {
+      "path": "occt/TKMath.dll",
+      "size": 4540416,
+      "sha256": "7E4B609EA61EF1FA74901C4ABC2D3B16E166632A1FDB6CAEA89A43303A44395B"
+    },
+    {
+      "path": "occt/TKMesh.dll",
+      "size": 2027008,
+      "sha256": "069FC434F70B2723B9E726583A319EE25627C8AD9A9A633DCE66E028CEAE3464"
+    },
+    {
+      "path": "occt/TKMeshVS.dll",
+      "size": 785920,
+      "sha256": "27B0D1FEAE09713FC507E0B425E463960343E385EFBEAB1A8ECE6F451F864789"
+    },
+    {
+      "path": "occt/TKOffset.dll",
+      "size": 3214848,
+      "sha256": "011C1A2D2224C07F55E4C5E4988B75D47BF46F9762C7E32F588BCA623A7B0B36"
+    },
+    {
+      "path": "occt/TKOpenGl.dll",
+      "size": 3073536,
+      "sha256": "52798D61F0F3BFDC3A64498861BCAB5D49D1AA6645157520BBEFD2B81FC36BF0"
+    },
+    {
+      "path": "occt/TKPrim.dll",
+      "size": 730112,
+      "sha256": "19E539A81C0709A56B5148B2AEB1E5C077FAD6F7C0F85C2585D6A529900A38ED"
+    },
+    {
+      "path": "occt/TKRWMesh.dll",
+      "size": 480768,
+      "sha256": "139AC5914A5883B76C018BEB3FEBEA7C15B10686045374081AFB4CD291C324C8"
+    },
+    {
+      "path": "occt/TKService.dll",
+      "size": 2505728,
+      "sha256": "0A63D76024730CEE8014F98746BD4844ABF2F2AB3CBBEBA0A0888CBCBDBF5EFC"
+    },
+    {
+      "path": "occt/TKShHealing.dll",
+      "size": 5509632,
+      "sha256": "A711207206A6681629476D976C6765BBE7634FA47CA3E8CAA9A6073A64C9FF8B"
+    },
+    {
+      "path": "occt/TKStd.dll",
+      "size": 1757184,
+      "sha256": "5B87F71D62368FE9E1BA54878735B4E4C39A16719FFF971F9F63D61690CD36A5"
+    },
+    {
+      "path": "occt/TKStdL.dll",
+      "size": 701440,
+      "sha256": "7A4BD5B3073B235E85A8DA9D122A633CE9B64ACC0ACB496B68E556112FF45E7D"
+    },
+    {
+      "path": "occt/TKTObj.dll",
+      "size": 521728,
+      "sha256": "B500EF2A9CA85B38798AC5ADB1CE5194E00B2CF35C73FCAC266629BDAAC56422"
+    },
+    {
+      "path": "occt/TKTopAlgo.dll",
+      "size": 5190656,
+      "sha256": "3DFBACF4C08DF1EF1AFCF098BB4E6D7E4A216F4A250A2351232BE6C868557233"
+    },
+    {
+      "path": "occt/TKV3d.dll",
+      "size": 6038016,
+      "sha256": "ACB4923FBE75E48F04B2ABAAFDA8CDFEEF9FD6683D51C2FC8F8947DC104C871C"
+    },
+    {
+      "path": "occt/TKVCAF.dll",
+      "size": 545280,
+      "sha256": "17DC8C83537ACD13EDCA269ED30590C7911A4DD04D78295B982879A225542B12"
+    },
+    {
+      "path": "occt/TKXCAF.dll",
+      "size": 1746432,
+      "sha256": "60E557D768DDABE5BF0E6F439EADBFF7CC99DAE2D883E96BEFD5469B919671A7"
+    },
+    {
+      "path": "occt/TKXMesh.dll",
+      "size": 79360,
+      "sha256": "C80ED5783D3B0738FFA1CA9F46BEA1300C583DA787B91439047B88CD40EF9430"
+    },
+    {
+      "path": "occt/TKXml.dll",
+      "size": 410112,
+      "sha256": "26D31973AFF1797A713B8CCF02F66C63C97BAB1ABA0D455BD482166311CAC71D"
+    },
+    {
+      "path": "occt/TKXmlL.dll",
+      "size": 872960,
+      "sha256": "E116E134006A144386CCB06E2045EAB25DA44A7D676D76A57F2EE2A237AA4793"
+    },
+    {
+      "path": "occt/TKXmlTObj.dll",
+      "size": 167424,
+      "sha256": "DDC5ECBDA4015A309DA6DE695744B905308A0A9BB7E20606BAF4B244EB559573"
+    },
+    {
+      "path": "occt/TKXmlXCAF.dll",
+      "size": 392192,
+      "sha256": "1DEC8795A96748007FA387837E7FBF9A562B98A9991F1A032A0BC8618D291E07"
+    },
+    {
+      "path": "occt/TKXSBase.dll",
+      "size": 3471360,
+      "sha256": "710B47FBF3907F1829CBB615305AAF9A9D941E4E3967F4BE11EC8197AAE84248"
+    },
+    {
+      "path": "occt/zd.dll",
+      "size": 211968,
+      "sha256": "C4F3A751E73EF9BB93ECF8ABD3025526E6F5316C90B60E5ED149E23635BA7812"
+    },
+    {
+      "path": "occt/zstd.dll",
+      "size": 1916416,
+      "sha256": "390EA37D057140FA68E49120016CA27AF66A8CB08DD75A0A52DA2FEB6E0F4F57"
+    }
+  ],
+  "loadedNativeModules": [
+    {
+      "name": "TKMeshVS.dll",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-public-sdk85\\vcpkg-media-runtime-debug\\run-2ded7dcb2d9e4c938e47095542fecf37\\occt\\TKMeshVS.dll",
+      "sha256": "27B0D1FEAE09713FC507E0B425E463960343E385EFBEAB1A8ECE6F451F864789"
+    },
+    {
+      "name": "TKXMesh.dll",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-public-sdk85\\vcpkg-media-runtime-debug\\run-2ded7dcb2d9e4c938e47095542fecf37\\occt\\TKXMesh.dll",
+      "sha256": "C80ED5783D3B0738FFA1CA9F46BEA1300C583DA787B91439047B88CD40EF9430"
+    },
+    {
+      "name": "TKBRep.dll",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-public-sdk85\\vcpkg-media-runtime-debug\\run-2ded7dcb2d9e4c938e47095542fecf37\\occt\\TKBRep.dll",
+      "sha256": "287D68481E02592B8F53897DE371C097F499979BA0C80D797E17D5197953A8A4"
+    },
+    {
+      "name": "TKXmlL.dll",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-public-sdk85\\vcpkg-media-runtime-debug\\run-2ded7dcb2d9e4c938e47095542fecf37\\occt\\TKXmlL.dll",
+      "sha256": "E116E134006A144386CCB06E2045EAB25DA44A7D676D76A57F2EE2A237AA4793"
+    },
+    {
+      "name": "TKMath.dll",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-public-sdk85\\vcpkg-media-runtime-debug\\run-2ded7dcb2d9e4c938e47095542fecf37\\occt\\TKMath.dll",
+      "sha256": "7E4B609EA61EF1FA74901C4ABC2D3B16E166632A1FDB6CAEA89A43303A44395B"
+    },
+    {
+      "name": "TKMesh.dll",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-public-sdk85\\vcpkg-media-runtime-debug\\run-2ded7dcb2d9e4c938e47095542fecf37\\occt\\TKMesh.dll",
+      "sha256": "069FC434F70B2723B9E726583A319EE25627C8AD9A9A633DCE66E028CEAE3464"
+    },
+    {
+      "name": "TKG2d.dll",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-public-sdk85\\vcpkg-media-runtime-debug\\run-2ded7dcb2d9e4c938e47095542fecf37\\occt\\TKG2d.dll",
+      "sha256": "6A0FCF3670D22CF568905CD8024ED0479A26A87696C1DF962AB1BDD3BB9C77E8"
+    },
+    {
+      "name": "TKDE.dll",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-public-sdk85\\vcpkg-media-runtime-debug\\run-2ded7dcb2d9e4c938e47095542fecf37\\occt\\TKDE.dll",
+      "sha256": "D9F03DC5C560F2E1A0F408310878C05F826B624AC1EB5E758DDC1E1E4C4A30A6"
+    },
+    {
+      "name": "TKService.dll",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-public-sdk85\\vcpkg-media-runtime-debug\\run-2ded7dcb2d9e4c938e47095542fecf37\\occt\\TKService.dll",
+      "sha256": "0A63D76024730CEE8014F98746BD4844ABF2F2AB3CBBEBA0A0888CBCBDBF5EFC"
+    },
+    {
+      "name": "TKV3d.dll",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-public-sdk85\\vcpkg-media-runtime-debug\\run-2ded7dcb2d9e4c938e47095542fecf37\\occt\\TKV3d.dll",
+      "sha256": "ACB4923FBE75E48F04B2ABAAFDA8CDFEEF9FD6683D51C2FC8F8947DC104C871C"
+    },
+    {
+      "name": "TKCAF.dll",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-public-sdk85\\vcpkg-media-runtime-debug\\run-2ded7dcb2d9e4c938e47095542fecf37\\occt\\TKCAF.dll",
+      "sha256": "FEC0A31B1095D92A0B5EF7407FAB7614F7E5689DBD386CEB1473E143DE5BA952"
+    },
+    {
+      "name": "TKPrim.dll",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-public-sdk85\\vcpkg-media-runtime-debug\\run-2ded7dcb2d9e4c938e47095542fecf37\\occt\\TKPrim.dll",
+      "sha256": "19E539A81C0709A56B5148B2AEB1E5C077FAD6F7C0F85C2585D6A529900A38ED"
+    },
+    {
+      "name": "TKHelix.dll",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-public-sdk85\\vcpkg-media-runtime-debug\\run-2ded7dcb2d9e4c938e47095542fecf37\\occt\\TKHelix.dll",
+      "sha256": "FAF95919435C63A8A93E1B2766BD99D12C5F84065E6EDF6CC5E100C8077E1F26"
+    },
+    {
+      "name": "TKHLR.dll",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-public-sdk85\\vcpkg-media-runtime-debug\\run-2ded7dcb2d9e4c938e47095542fecf37\\occt\\TKHLR.dll",
+      "sha256": "C2030D9F99D6990BE7C7E30100F29C632DAE2CFA23DAB495D5A50B1379B2F4F6"
+    },
+    {
+      "name": "TKXml.dll",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-public-sdk85\\vcpkg-media-runtime-debug\\run-2ded7dcb2d9e4c938e47095542fecf37\\occt\\TKXml.dll",
+      "sha256": "26D31973AFF1797A713B8CCF02F66C63C97BAB1ABA0D455BD482166311CAC71D"
+    },
+    {
+      "name": "TKOpenGl.dll",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-public-sdk85\\vcpkg-media-runtime-debug\\run-2ded7dcb2d9e4c938e47095542fecf37\\occt\\TKOpenGl.dll",
+      "sha256": "52798D61F0F3BFDC3A64498861BCAB5D49D1AA6645157520BBEFD2B81FC36BF0"
+    },
+    {
+      "name": "TKVCAF.dll",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-public-sdk85\\vcpkg-media-runtime-debug\\run-2ded7dcb2d9e4c938e47095542fecf37\\occt\\TKVCAF.dll",
+      "sha256": "17DC8C83537ACD13EDCA269ED30590C7911A4DD04D78295B982879A225542B12"
+    },
+    {
+      "name": "TKGeomAlgo.dll",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-public-sdk85\\vcpkg-media-runtime-debug\\run-2ded7dcb2d9e4c938e47095542fecf37\\occt\\TKGeomAlgo.dll",
+      "sha256": "F4DF23EF3C239BBCA747A5DEF0D6E173D09D51448EA0261435D2DEEFB134E148"
+    },
+    {
+      "name": "TKTopAlgo.dll",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-public-sdk85\\vcpkg-media-runtime-debug\\run-2ded7dcb2d9e4c938e47095542fecf37\\occt\\TKTopAlgo.dll",
+      "sha256": "3DFBACF4C08DF1EF1AFCF098BB4E6D7E4A216F4A250A2351232BE6C868557233"
+    },
+    {
+      "name": "TKernel.dll",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-public-sdk85\\vcpkg-media-runtime-debug\\run-2ded7dcb2d9e4c938e47095542fecf37\\occt\\TKernel.dll",
+      "sha256": "64DD6EA69E62A7BDE1D93504D89E5E2CD1ED57FB74DF45D3102A3CA5B2DA51A1"
+    },
+    {
+      "name": "TKFeat.dll",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-public-sdk85\\vcpkg-media-runtime-debug\\run-2ded7dcb2d9e4c938e47095542fecf37\\occt\\TKFeat.dll",
+      "sha256": "7A8CE794A5D396C140CF5B9D897A17260AC0331F0C46BE783935CCDBC3EE9B72"
+    },
+    {
+      "name": "TKBinL.dll",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-public-sdk85\\vcpkg-media-runtime-debug\\run-2ded7dcb2d9e4c938e47095542fecf37\\occt\\TKBinL.dll",
+      "sha256": "A3EF9DD1B5017B77BF3FF602EC5868CB818597D4F050513E155FA5AE813D852E"
+    },
+    {
+      "name": "TKG3d.dll",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-public-sdk85\\vcpkg-media-runtime-debug\\run-2ded7dcb2d9e4c938e47095542fecf37\\occt\\TKG3d.dll",
+      "sha256": "31959A5985421070ACC8DED5370D9F935EFA5FD1F06BD7B82AAB6EC413E373F9"
+    },
+    {
+      "name": "TKOffset.dll",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-public-sdk85\\vcpkg-media-runtime-debug\\run-2ded7dcb2d9e4c938e47095542fecf37\\occt\\TKOffset.dll",
+      "sha256": "011C1A2D2224C07F55E4C5E4988B75D47BF46F9762C7E32F588BCA623A7B0B36"
+    },
+    {
+      "name": "TKCDF.dll",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-public-sdk85\\vcpkg-media-runtime-debug\\run-2ded7dcb2d9e4c938e47095542fecf37\\occt\\TKCDF.dll",
+      "sha256": "2B0D46E1F93E943BA555E9358607ED5B36DA11BBA65927879EBF3C104B2BCD9A"
+    },
+    {
+      "name": "TKBinTObj.dll",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-public-sdk85\\vcpkg-media-runtime-debug\\run-2ded7dcb2d9e4c938e47095542fecf37\\occt\\TKBinTObj.dll",
+      "sha256": "FC94E07A778F1894413EAC86D4433FE3601092FA964F0D637B1F2F7D35F0022E"
+    },
+    {
+      "name": "TKFillet.dll",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-public-sdk85\\vcpkg-media-runtime-debug\\run-2ded7dcb2d9e4c938e47095542fecf37\\occt\\TKFillet.dll",
+      "sha256": "DF16F06997AA479DD4BFAEF3579B50A0448018A93A46F233CFAE08A2112210E4"
+    },
+    {
+      "name": "TKStd.dll",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-public-sdk85\\vcpkg-media-runtime-debug\\run-2ded7dcb2d9e4c938e47095542fecf37\\occt\\TKStd.dll",
+      "sha256": "5B87F71D62368FE9E1BA54878735B4E4C39A16719FFF971F9F63D61690CD36A5"
+    },
+    {
+      "name": "TKShHealing.dll",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-public-sdk85\\vcpkg-media-runtime-debug\\run-2ded7dcb2d9e4c938e47095542fecf37\\occt\\TKShHealing.dll",
+      "sha256": "A711207206A6681629476D976C6765BBE7634FA47CA3E8CAA9A6073A64C9FF8B"
+    },
+    {
+      "name": "OcctSharp.Native.dll",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-public-sdk85\\vcpkg-media-runtime-debug\\run-2ded7dcb2d9e4c938e47095542fecf37\\occt\\OcctSharp.Native.dll",
+      "sha256": "281F2E4BE9A8E580A7B5EBF62ADF3811E22A95818E9D29D90F99206C5652FC28"
+    },
+    {
+      "name": "TKXmlTObj.dll",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-public-sdk85\\vcpkg-media-runtime-debug\\run-2ded7dcb2d9e4c938e47095542fecf37\\occt\\TKXmlTObj.dll",
+      "sha256": "DDC5ECBDA4015A309DA6DE695744B905308A0A9BB7E20606BAF4B244EB559573"
+    },
+    {
+      "name": "TKBool.dll",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-public-sdk85\\vcpkg-media-runtime-debug\\run-2ded7dcb2d9e4c938e47095542fecf37\\occt\\TKBool.dll",
+      "sha256": "143E4DD0CB4C774A9D678E015A634F4BF3FB77CCCFF79CE5B3515CB583E1CCF0"
+    },
+    {
+      "name": "TKTObj.dll",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-public-sdk85\\vcpkg-media-runtime-debug\\run-2ded7dcb2d9e4c938e47095542fecf37\\occt\\TKTObj.dll",
+      "sha256": "B500EF2A9CA85B38798AC5ADB1CE5194E00B2CF35C73FCAC266629BDAAC56422"
+    },
+    {
+      "name": "TKExpress.dll",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-public-sdk85\\vcpkg-media-runtime-debug\\run-2ded7dcb2d9e4c938e47095542fecf37\\occt\\TKExpress.dll",
+      "sha256": "324A0A5D7DC97FB0031BE35F565F87AE3CEC1C1CA783E4C7C8C0554BA68307E3"
+    },
+    {
+      "name": "TKGeomBase.dll",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-public-sdk85\\vcpkg-media-runtime-debug\\run-2ded7dcb2d9e4c938e47095542fecf37\\occt\\TKGeomBase.dll",
+      "sha256": "901A12D73E8EFCB1340888D307B1994F6789B10A5B4FF3C75E92B9B780E91D97"
+    },
+    {
+      "name": "TKLCAF.dll",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-public-sdk85\\vcpkg-media-runtime-debug\\run-2ded7dcb2d9e4c938e47095542fecf37\\occt\\TKLCAF.dll",
+      "sha256": "D5756144FC07E926F9E86D594B0B3ED1082B728FDD66FFF6305C7D2814DB6CA0"
+    },
+    {
+      "name": "TKStdL.dll",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-public-sdk85\\vcpkg-media-runtime-debug\\run-2ded7dcb2d9e4c938e47095542fecf37\\occt\\TKStdL.dll",
+      "sha256": "7A4BD5B3073B235E85A8DA9D122A633CE9B64ACC0ACB496B68E556112FF45E7D"
+    },
+    {
+      "name": "TKBO.dll",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-public-sdk85\\vcpkg-media-runtime-debug\\run-2ded7dcb2d9e4c938e47095542fecf37\\occt\\TKBO.dll",
+      "sha256": "316AB110D2D25746AF1AAE56BB2CCA148559D2330D7451DEB4CB3959883A8A04"
+    },
+    {
+      "name": "TKD3DHost.dll",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-public-sdk85\\vcpkg-media-runtime-debug\\run-2ded7dcb2d9e4c938e47095542fecf37\\occt\\TKD3DHost.dll",
+      "sha256": "535E88033159970F7E86F4B104778EDE1BC4067194CDFC617E97EC0F929527A9"
+    },
+    {
+      "name": "TKBin.dll",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-public-sdk85\\vcpkg-media-runtime-debug\\run-2ded7dcb2d9e4c938e47095542fecf37\\occt\\TKBin.dll",
+      "sha256": "455D4A00AA7AD3BBD698D720F532D654FBE757D0BCBDCED6EEB58531E42D7476"
+    }
+  ]
+}

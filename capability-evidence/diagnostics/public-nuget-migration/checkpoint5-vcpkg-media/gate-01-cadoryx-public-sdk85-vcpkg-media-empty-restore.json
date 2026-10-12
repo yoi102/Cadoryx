@@ -1,0 +1,63 @@
+{
+  "state": "PASS",
+  "provider": "vcpkg-occt801-d3d-media-original-headers-v2",
+  "registryCommit": "e456309491fd875487bf02b8a0dca76c1b1b00cc",
+  "triplet": "x64-windows",
+  "installRoot": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-public-sdk85\\vcpkg-media-clean-3",
+  "sdkView": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-public-sdk85\\vcpkg-media-clean-3\\occtsharp-sdk",
+  "vcpkgRoot": "C:\\Users\\yoiri\\.cache\\occtsharp-dependencies\\vcpkg-e456309",
+  "vcpkgVersion": "vcpkg package management program version 2026-09-26-51bf87ca6e9bf3e622d84ff323bd202ab1ca0c0b\r\n\r\nSee LICENSE.txt for license information.",
+  "statusSha256": "A121E69B44EADD185E1A5FBADE00D499BC0FEE5DCB871DA0F9BDAFAE2C8C0460",
+  "sdkHeaders": 7478,
+  "supplementedHeaders": 183,
+  "sdkHeaderManifestSha256": "0ADCF1699DB9237DEC2A981662560C42A8B8DDF1031F6264DE16475AFA4C7759",
+  "requiredEmpty": true,
+  "binaryCacheDisabled": true,
+  "recordedUtc": "2026-10-12T10:12:34.0176947+00:00",
+  "inputs": [
+    {
+      "path": "generator-header-supplement.json",
+      "sha256": "FDCCB7BF9C84C0EE43082C2748887BB373F41CD04790448DADD3274A6CF51A91"
+    },
+    {
+      "path": "overlays/opencascade/0001-cmake-keep-build-use-vcpkg-explicit.patch",
+      "sha256": "AB02CF8EF340F072C11ED55234CD5CB7BA28886274BBD972C3281E1E398CE0C8"
+    },
+    {
+      "path": "overlays/opencascade/0002-cmake-load-exported-package-dependencies.patch",
+      "sha256": "6FC25EEAE364F512ACC782439B2A32E34DFF300182D47458F6368A0022C89656"
+    },
+    {
+      "path": "overlays/opencascade/0003-image-remove-freeimage-msvc-autolink.patch",
+      "sha256": "F2065BF71E6998E8E19E51CCD1C536743F0174EBBD29EE9C594CA73A8F5BC140"
+    },
+    {
+      "path": "overlays/opencascade/0004-cmake-add-additional-path-extraction-for-OpenCASCADE.patch",
+      "sha256": "6095AF0C53581C0D9491DD6AC7334204EB035C88FE8A5664B3D26A9D78F27D0A"
+    },
+    {
+      "path": "overlays/opencascade/0005-drop-bin-letter.patch",
+      "sha256": "7899E9DE1BA917C9910FE0129A24CD56F9A37FC9F9123074E67CA1FB1B500BF2"
+    },
+    {
+      "path": "overlays/opencascade/portfile.cmake",
+      "sha256": "9EB20BAA943902E0CCCCCBD4C3EFC512B2B3AE5B2CF0A629C100D3D5F92F03E9"
+    },
+    {
+      "path": "overlays/opencascade/vcpkg.json",
+      "sha256": "07FB40372E7E273D316697B02EBCE21B049F0ECF0CC1477F527247C4D99D8E5C"
+    },
+    {
+      "path": "provider.json",
+      "sha256": "C5F1A9639F68B467841E32959FCBA19174E97FF80A79377148C7B35F149D7F99"
+    },
+    {
+      "path": "vcpkg-configuration.json",
+      "sha256": "0E61B4D4ACC817B1EA82187BB05E5177A4F1987466D86A7DFD02C4A047E60245"
+    },
+    {
+      "path": "vcpkg.json",
+      "sha256": "B92A22719EDFFBD8494C8ED6383821150881375142A319862EDD29FF62545CC6"
+    }
+  ]
+}

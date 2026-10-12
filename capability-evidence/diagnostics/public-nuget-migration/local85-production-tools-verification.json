@@ -1,0 +1,1350 @@
+{
+  "recordedAt": "2026-10-12T08:08:11.840957+00:00",
+  "state": "PASS_ISOLATED_PRODUCTION_AND29_CONSUMERS_50_PROJECTS_TWO_BUILDS_LOCAL85_SHARED_VERSION30_LOCKS_NO_RUNTIME_OR_PUBLIC_ACCEPTANCE",
+  "version": "8.0.1-preview.85",
+  "preparation": {
+    "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\local85-production-tools-1\\preparation.json",
+    "sha256": "483B4657AB2568266F9F4EE637B84B89DD05098A97703E463609379E032FE079"
+  },
+  "localSdkProof": {
+    "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\public-occt-preview85-consumer1073-1\\verification.json",
+    "sha256": "9A316E6B5D0F49F62174B02CE3FA8124C380E67A8D6FC448832FD050DDB4A381"
+  },
+  "totalProjects": 50,
+  "standaloneConsumers": 29,
+  "stages": [
+    {
+      "recordedAt": "2026-10-12T07:51:00.8775678+00:00",
+      "target": "Cadoryx.slnx",
+      "stage": "restore",
+      "log": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\local85-production-tools-1\\solution-restore.log",
+      "exitCode": 0
+    },
+    {
+      "recordedAt": "2026-10-12T07:51:02.0321303+00:00",
+      "target": "Cadoryx.slnx",
+      "stage": "restore-locked",
+      "log": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\local85-production-tools-1\\solution-restore-locked.log",
+      "exitCode": 0
+    },
+    {
+      "recordedAt": "2026-10-12T07:51:19.3891257+00:00",
+      "target": "Cadoryx.slnx",
+      "stage": "Release",
+      "log": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\local85-production-tools-1\\solution-release.log",
+      "exitCode": 0
+    },
+    {
+      "recordedAt": "2026-10-12T07:51:34.5702206+00:00",
+      "target": "Cadoryx.slnx",
+      "stage": "Debug",
+      "log": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\local85-production-tools-1\\solution-debug.log",
+      "exitCode": 0
+    },
+    {
+      "recordedAt": "2026-10-12T07:51:35.3704929+00:00",
+      "target": "integrations/occtsharp-boolean-history/Consumer/Consumer.csproj",
+      "stage": "restore",
+      "log": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\local85-production-tools-1\\Consumer-restore.log",
+      "exitCode": 0
+    },
+    {
+      "recordedAt": "2026-10-12T07:51:36.1989786+00:00",
+      "target": "integrations/occtsharp-boolean-history/Consumer/Consumer.csproj",
+      "stage": "restore-locked",
+      "log": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\local85-production-tools-1\\Consumer-restore-locked.log",
+      "exitCode": 0
+    },
+    {
+      "recordedAt": "2026-10-12T07:51:37.1097686+00:00",
+      "target": "integrations/occtsharp-boolean-history/Consumer/Consumer.csproj",
+      "stage": "Release",
+      "log": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\local85-production-tools-1\\Consumer-release.log",
+      "exitCode": 0
+    },
+    {
+      "recordedAt": "2026-10-12T07:51:38.0058008+00:00",
+      "target": "integrations/occtsharp-boolean-history/Consumer/Consumer.csproj",
+      "stage": "Debug",
+      "log": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\local85-production-tools-1\\Consumer-debug.log",
+      "exitCode": 0
+    },
+    {
+      "recordedAt": "2026-10-12T07:51:38.8588064+00:00",
+      "target": "tools/AgentConnectionProbe/AgentConnectionProbe.csproj",
+      "stage": "restore",
+      "log": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\local85-production-tools-1\\AgentConnectionProbe-restore.log",
+      "exitCode": 0
+    },
+    {
+      "recordedAt": "2026-10-12T07:51:39.7103463+00:00",
+      "target": "tools/AgentConnectionProbe/AgentConnectionProbe.csproj",
+      "stage": "restore-locked",
+      "log": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\local85-production-tools-1\\AgentConnectionProbe-restore-locked.log",
+      "exitCode": 0
+    },
+    {
+      "recordedAt": "2026-10-12T07:51:40.9462324+00:00",
+      "target": "tools/AgentConnectionProbe/AgentConnectionProbe.csproj",
+      "stage": "Release",
+      "log": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\local85-production-tools-1\\AgentConnectionProbe-release.log",
+      "exitCode": 0
+    },
+    {
+      "recordedAt": "2026-10-12T07:51:42.1276124+00:00",
+      "target": "tools/AgentConnectionProbe/AgentConnectionProbe.csproj",
+      "stage": "Debug",
+      "log": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\local85-production-tools-1\\AgentConnectionProbe-debug.log",
+      "exitCode": 0
+    },
+    {
+      "attempt": 3,
+      "exitCode": 0,
+      "frozenApp": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\public-occt-preview85-consumer1073-1\\workspace\\Cadoryx.wpf\\bin\\Release\\net10.0-windows\\win-x64",
+      "recordedAt": "2026-10-12T07:56:07.9203410+00:00",
+      "log": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\local85-production-tools-1\\AnalyticalOffsetNativeProbe-restore-3.log",
+      "target": "tools/AnalyticalOffsetNativeProbe/AnalyticalOffsetNativeProbe.csproj",
+      "stage": "restore"
+    },
+    {
+      "attempt": 3,
+      "exitCode": 0,
+      "frozenApp": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\public-occt-preview85-consumer1073-1\\workspace\\Cadoryx.wpf\\bin\\Release\\net10.0-windows\\win-x64",
+      "recordedAt": "2026-10-12T07:56:08.8396934+00:00",
+      "log": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\local85-production-tools-1\\AnalyticalOffsetNativeProbe-restore-locked-3.log",
+      "target": "tools/AnalyticalOffsetNativeProbe/AnalyticalOffsetNativeProbe.csproj",
+      "stage": "restore-locked"
+    },
+    {
+      "attempt": 3,
+      "exitCode": 0,
+      "frozenApp": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\public-occt-preview85-consumer1073-1\\workspace\\Cadoryx.wpf\\bin\\Release\\net10.0-windows\\win-x64",
+      "recordedAt": "2026-10-12T07:56:10.6533261+00:00",
+      "log": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\local85-production-tools-1\\AnalyticalOffsetNativeProbe-release-3.log",
+      "target": "tools/AnalyticalOffsetNativeProbe/AnalyticalOffsetNativeProbe.csproj",
+      "stage": "Release"
+    },
+    {
+      "attempt": 3,
+      "exitCode": 0,
+      "frozenApp": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\public-occt-preview85-consumer1073-1\\workspace\\Cadoryx.wpf\\bin\\Debug\\net10.0-windows\\win-x64",
+      "recordedAt": "2026-10-12T07:56:12.6536371+00:00",
+      "log": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\local85-production-tools-1\\AnalyticalOffsetNativeProbe-debug-3.log",
+      "target": "tools/AnalyticalOffsetNativeProbe/AnalyticalOffsetNativeProbe.csproj",
+      "stage": "Debug"
+    },
+    {
+      "attempt": 4,
+      "exitCode": 0,
+      "recordedAt": "2026-10-12T07:57:49.2051100+00:00",
+      "log": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\local85-production-tools-1\\AnalyticalOffsetProbe-restore-4.log",
+      "frozenApp": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\public-occt-preview85-consumer1073-1\\workspace\\Cadoryx.wpf\\bin\\Release\\net10.0-windows\\win-x64",
+      "target": "tools/AnalyticalOffsetProbe/AnalyticalOffsetProbe.csproj",
+      "stage": "restore"
+    },
+    {
+      "attempt": 4,
+      "exitCode": 0,
+      "recordedAt": "2026-10-12T07:57:50.0009869+00:00",
+      "log": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\local85-production-tools-1\\AnalyticalOffsetProbe-restore-locked-4.log",
+      "frozenApp": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\public-occt-preview85-consumer1073-1\\workspace\\Cadoryx.wpf\\bin\\Release\\net10.0-windows\\win-x64",
+      "target": "tools/AnalyticalOffsetProbe/AnalyticalOffsetProbe.csproj",
+      "stage": "restore-locked"
+    },
+    {
+      "attempt": 4,
+      "exitCode": 0,
+      "recordedAt": "2026-10-12T07:57:51.2356366+00:00",
+      "log": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\local85-production-tools-1\\AnalyticalOffsetProbe-release-4.log",
+      "frozenApp": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\public-occt-preview85-consumer1073-1\\workspace\\Cadoryx.wpf\\bin\\Release\\net10.0-windows\\win-x64",
+      "target": "tools/AnalyticalOffsetProbe/AnalyticalOffsetProbe.csproj",
+      "stage": "Release"
+    },
+    {
+      "attempt": 4,
+      "exitCode": 0,
+      "recordedAt": "2026-10-12T07:57:52.4409911+00:00",
+      "log": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\local85-production-tools-1\\AnalyticalOffsetProbe-debug-4.log",
+      "frozenApp": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\public-occt-preview85-consumer1073-1\\workspace\\Cadoryx.wpf\\bin\\Debug\\net10.0-windows\\win-x64",
+      "target": "tools/AnalyticalOffsetProbe/AnalyticalOffsetProbe.csproj",
+      "stage": "Debug"
+    },
+    {
+      "attempt": 4,
+      "exitCode": 0,
+      "recordedAt": "2026-10-12T07:57:53.4087774+00:00",
+      "log": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\local85-production-tools-1\\BoundedThreadDrawingProbe-restore-4.log",
+      "frozenApp": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\public-occt-preview85-consumer1073-1\\workspace\\Cadoryx.wpf\\bin\\Release\\net10.0-windows\\win-x64",
+      "target": "tools/BoundedThreadDrawingProbe/BoundedThreadDrawingProbe.csproj",
+      "stage": "restore"
+    },
+    {
+      "attempt": 4,
+      "exitCode": 0,
+      "recordedAt": "2026-10-12T07:57:54.5003751+00:00",
+      "log": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\local85-production-tools-1\\BoundedThreadDrawingProbe-restore-locked-4.log",
+      "frozenApp": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\public-occt-preview85-consumer1073-1\\workspace\\Cadoryx.wpf\\bin\\Release\\net10.0-windows\\win-x64",
+      "target": "tools/BoundedThreadDrawingProbe/BoundedThreadDrawingProbe.csproj",
+      "stage": "restore-locked"
+    },
+    {
+      "attempt": 4,
+      "exitCode": 0,
+      "recordedAt": "2026-10-12T07:57:56.2386784+00:00",
+      "log": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\local85-production-tools-1\\BoundedThreadDrawingProbe-release-4.log",
+      "frozenApp": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\public-occt-preview85-consumer1073-1\\workspace\\Cadoryx.wpf\\bin\\Release\\net10.0-windows\\win-x64",
+      "target": "tools/BoundedThreadDrawingProbe/BoundedThreadDrawingProbe.csproj",
+      "stage": "Release"
+    },
+    {
+      "attempt": 4,
+      "exitCode": 0,
+      "recordedAt": "2026-10-12T07:57:57.8781098+00:00",
+      "log": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\local85-production-tools-1\\BoundedThreadDrawingProbe-debug-4.log",
+      "frozenApp": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\public-occt-preview85-consumer1073-1\\workspace\\Cadoryx.wpf\\bin\\Debug\\net10.0-windows\\win-x64",
+      "target": "tools/BoundedThreadDrawingProbe/BoundedThreadDrawingProbe.csproj",
+      "stage": "Debug"
+    },
+    {
+      "attempt": 4,
+      "exitCode": 0,
+      "recordedAt": "2026-10-12T07:57:59.1072019+00:00",
+      "log": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\local85-production-tools-1\\CadAgentWorkflowProbe-restore-4.log",
+      "frozenApp": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\public-occt-preview85-consumer1073-1\\workspace\\Cadoryx.wpf\\bin\\Release\\net10.0-windows\\win-x64",
+      "target": "tools/CadAgentWorkflowProbe/CadAgentWorkflowProbe.csproj",
+      "stage": "restore"
+    },
+    {
+      "attempt": 4,
+      "exitCode": 0,
+      "recordedAt": "2026-10-12T07:58:00.4880840+00:00",
+      "log": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\local85-production-tools-1\\CadAgentWorkflowProbe-restore-locked-4.log",
+      "frozenApp": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\public-occt-preview85-consumer1073-1\\workspace\\Cadoryx.wpf\\bin\\Release\\net10.0-windows\\win-x64",
+      "target": "tools/CadAgentWorkflowProbe/CadAgentWorkflowProbe.csproj",
+      "stage": "restore-locked"
+    },
+    {
+      "attempt": 4,
+      "exitCode": 0,
+      "recordedAt": "2026-10-12T07:58:02.8278062+00:00",
+      "log": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\local85-production-tools-1\\CadAgentWorkflowProbe-release-4.log",
+      "frozenApp": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\public-occt-preview85-consumer1073-1\\workspace\\Cadoryx.wpf\\bin\\Release\\net10.0-windows\\win-x64",
+      "target": "tools/CadAgentWorkflowProbe/CadAgentWorkflowProbe.csproj",
+      "stage": "Release"
+    },
+    {
+      "attempt": 4,
+      "exitCode": 0,
+      "recordedAt": "2026-10-12T07:58:05.1315204+00:00",
+      "log": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\local85-production-tools-1\\CadAgentWorkflowProbe-debug-4.log",
+      "frozenApp": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\public-occt-preview85-consumer1073-1\\workspace\\Cadoryx.wpf\\bin\\Debug\\net10.0-windows\\win-x64",
+      "target": "tools/CadAgentWorkflowProbe/CadAgentWorkflowProbe.csproj",
+      "stage": "Debug"
+    },
+    {
+      "attempt": 4,
+      "exitCode": 0,
+      "recordedAt": "2026-10-12T07:58:06.0498103+00:00",
+      "log": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\local85-production-tools-1\\EndpointCurvatureProbe-restore-4.log",
+      "frozenApp": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\public-occt-preview85-consumer1073-1\\workspace\\Cadoryx.wpf\\bin\\Release\\net10.0-windows\\win-x64",
+      "target": "tools/EndpointCurvatureProbe/EndpointCurvatureProbe.csproj",
+      "stage": "restore"
+    },
+    {
+      "attempt": 4,
+      "exitCode": 0,
+      "recordedAt": "2026-10-12T07:58:06.9430803+00:00",
+      "log": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\local85-production-tools-1\\EndpointCurvatureProbe-restore-locked-4.log",
+      "frozenApp": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\public-occt-preview85-consumer1073-1\\workspace\\Cadoryx.wpf\\bin\\Release\\net10.0-windows\\win-x64",
+      "target": "tools/EndpointCurvatureProbe/EndpointCurvatureProbe.csproj",
+      "stage": "restore-locked"
+    },
+    {
+      "attempt": 4,
+      "exitCode": 0,
+      "recordedAt": "2026-10-12T07:58:07.9908307+00:00",
+      "log": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\local85-production-tools-1\\EndpointCurvatureProbe-release-4.log",
+      "frozenApp": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\public-occt-preview85-consumer1073-1\\workspace\\Cadoryx.wpf\\bin\\Release\\net10.0-windows\\win-x64",
+      "target": "tools/EndpointCurvatureProbe/EndpointCurvatureProbe.csproj",
+      "stage": "Release"
+    },
+    {
+      "attempt": 4,
+      "exitCode": 0,
+      "recordedAt": "2026-10-12T07:58:09.0288061+00:00",
+      "log": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\local85-production-tools-1\\EndpointCurvatureProbe-debug-4.log",
+      "frozenApp": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\public-occt-preview85-consumer1073-1\\workspace\\Cadoryx.wpf\\bin\\Debug\\net10.0-windows\\win-x64",
+      "target": "tools/EndpointCurvatureProbe/EndpointCurvatureProbe.csproj",
+      "stage": "Debug"
+    },
+    {
+      "attempt": 4,
+      "exitCode": 0,
+      "recordedAt": "2026-10-12T07:58:09.9327252+00:00",
+      "log": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\local85-production-tools-1\\ExchangeFixtures-restore-4.log",
+      "frozenApp": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\public-occt-preview85-consumer1073-1\\workspace\\Cadoryx.wpf\\bin\\Release\\net10.0-windows\\win-x64",
+      "target": "tools/ExchangeFixtures/ExchangeFixtures.csproj",
+      "stage": "restore"
+    },
+    {
+      "attempt": 4,
+      "exitCode": 0,
+      "recordedAt": "2026-10-12T07:58:10.9891586+00:00",
+      "log": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\local85-production-tools-1\\ExchangeFixtures-restore-locked-4.log",
+      "frozenApp": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\public-occt-preview85-consumer1073-1\\workspace\\Cadoryx.wpf\\bin\\Release\\net10.0-windows\\win-x64",
+      "target": "tools/ExchangeFixtures/ExchangeFixtures.csproj",
+      "stage": "restore-locked"
+    },
+    {
+      "attempt": 4,
+      "exitCode": 0,
+      "recordedAt": "2026-10-12T07:58:12.0640331+00:00",
+      "log": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\local85-production-tools-1\\ExchangeFixtures-release-4.log",
+      "frozenApp": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\public-occt-preview85-consumer1073-1\\workspace\\Cadoryx.wpf\\bin\\Release\\net10.0-windows\\win-x64",
+      "target": "tools/ExchangeFixtures/ExchangeFixtures.csproj",
+      "stage": "Release"
+    },
+    {
+      "attempt": 4,
+      "exitCode": 0,
+      "recordedAt": "2026-10-12T07:58:13.1036867+00:00",
+      "log": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\local85-production-tools-1\\ExchangeFixtures-debug-4.log",
+      "frozenApp": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\public-occt-preview85-consumer1073-1\\workspace\\Cadoryx.wpf\\bin\\Debug\\net10.0-windows\\win-x64",
+      "target": "tools/ExchangeFixtures/ExchangeFixtures.csproj",
+      "stage": "Debug"
+    },
+    {
+      "attempt": 4,
+      "exitCode": 0,
+      "recordedAt": "2026-10-12T07:58:14.0601527+00:00",
+      "log": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\local85-production-tools-1\\FiniteContactProbe-restore-4.log",
+      "frozenApp": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\public-occt-preview85-consumer1073-1\\workspace\\Cadoryx.wpf\\bin\\Release\\net10.0-windows\\win-x64",
+      "target": "tools/FiniteContactProbe/FiniteContactProbe.csproj",
+      "stage": "restore"
+    },
+    {
+      "attempt": 4,
+      "exitCode": 0,
+      "recordedAt": "2026-10-12T07:58:14.9625691+00:00",
+      "log": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\local85-production-tools-1\\FiniteContactProbe-restore-locked-4.log",
+      "frozenApp": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\public-occt-preview85-consumer1073-1\\workspace\\Cadoryx.wpf\\bin\\Release\\net10.0-windows\\win-x64",
+      "target": "tools/FiniteContactProbe/FiniteContactProbe.csproj",
+      "stage": "restore-locked"
+    },
+    {
+      "attempt": 4,
+      "exitCode": 0,
+      "recordedAt": "2026-10-12T07:58:16.1403869+00:00",
+      "log": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\local85-production-tools-1\\FiniteContactProbe-release-4.log",
+      "frozenApp": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\public-occt-preview85-consumer1073-1\\workspace\\Cadoryx.wpf\\bin\\Release\\net10.0-windows\\win-x64",
+      "target": "tools/FiniteContactProbe/FiniteContactProbe.csproj",
+      "stage": "Release"
+    },
+    {
+      "attempt": 4,
+      "exitCode": 0,
+      "recordedAt": "2026-10-12T07:58:17.2793362+00:00",
+      "log": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\local85-production-tools-1\\FiniteContactProbe-debug-4.log",
+      "frozenApp": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\public-occt-preview85-consumer1073-1\\workspace\\Cadoryx.wpf\\bin\\Debug\\net10.0-windows\\win-x64",
+      "target": "tools/FiniteContactProbe/FiniteContactProbe.csproj",
+      "stage": "Debug"
+    },
+    {
+      "attempt": 4,
+      "exitCode": 0,
+      "recordedAt": "2026-10-12T07:58:18.1754604+00:00",
+      "log": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\local85-production-tools-1\\FiniteSurfaceProbe-restore-4.log",
+      "frozenApp": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\public-occt-preview85-consumer1073-1\\workspace\\Cadoryx.wpf\\bin\\Release\\net10.0-windows\\win-x64",
+      "target": "tools/FiniteSurfaceProbe/FiniteSurfaceProbe.csproj",
+      "stage": "restore"
+    },
+    {
+      "attempt": 4,
+      "exitCode": 0,
+      "recordedAt": "2026-10-12T07:58:19.1288267+00:00",
+      "log": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\local85-production-tools-1\\FiniteSurfaceProbe-restore-locked-4.log",
+      "frozenApp": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\public-occt-preview85-consumer1073-1\\workspace\\Cadoryx.wpf\\bin\\Release\\net10.0-windows\\win-x64",
+      "target": "tools/FiniteSurfaceProbe/FiniteSurfaceProbe.csproj",
+      "stage": "restore-locked"
+    },
+    {
+      "attempt": 4,
+      "exitCode": 0,
+      "recordedAt": "2026-10-12T07:58:20.2560165+00:00",
+      "log": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\local85-production-tools-1\\FiniteSurfaceProbe-release-4.log",
+      "frozenApp": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\public-occt-preview85-consumer1073-1\\workspace\\Cadoryx.wpf\\bin\\Release\\net10.0-windows\\win-x64",
+      "target": "tools/FiniteSurfaceProbe/FiniteSurfaceProbe.csproj",
+      "stage": "Release"
+    },
+    {
+      "attempt": 4,
+      "exitCode": 0,
+      "recordedAt": "2026-10-12T07:58:21.5157680+00:00",
+      "log": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\local85-production-tools-1\\FiniteSurfaceProbe-debug-4.log",
+      "frozenApp": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\public-occt-preview85-consumer1073-1\\workspace\\Cadoryx.wpf\\bin\\Debug\\net10.0-windows\\win-x64",
+      "target": "tools/FiniteSurfaceProbe/FiniteSurfaceProbe.csproj",
+      "stage": "Debug"
+    },
+    {
+      "attempt": 4,
+      "exitCode": 0,
+      "recordedAt": "2026-10-12T07:58:22.5829933+00:00",
+      "log": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\local85-production-tools-1\\M10AssemblyProbe-restore-4.log",
+      "frozenApp": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\public-occt-preview85-consumer1073-1\\workspace\\Cadoryx.wpf\\bin\\Release\\net10.0-windows\\win-x64",
+      "target": "tools/M10AssemblyProbe/M10AssemblyProbe.csproj",
+      "stage": "restore"
+    },
+    {
+      "attempt": 4,
+      "exitCode": 0,
+      "recordedAt": "2026-10-12T07:58:23.5292008+00:00",
+      "log": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\local85-production-tools-1\\M10AssemblyProbe-restore-locked-4.log",
+      "frozenApp": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\public-occt-preview85-consumer1073-1\\workspace\\Cadoryx.wpf\\bin\\Release\\net10.0-windows\\win-x64",
+      "target": "tools/M10AssemblyProbe/M10AssemblyProbe.csproj",
+      "stage": "restore-locked"
+    },
+    {
+      "attempt": 4,
+      "exitCode": 0,
+      "recordedAt": "2026-10-12T07:58:24.8546437+00:00",
+      "log": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\local85-production-tools-1\\M10AssemblyProbe-release-4.log",
+      "frozenApp": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\public-occt-preview85-consumer1073-1\\workspace\\Cadoryx.wpf\\bin\\Release\\net10.0-windows\\win-x64",
+      "target": "tools/M10AssemblyProbe/M10AssemblyProbe.csproj",
+      "stage": "Release"
+    },
+    {
+      "attempt": 4,
+      "exitCode": 0,
+      "recordedAt": "2026-10-12T07:58:26.1720185+00:00",
+      "log": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\local85-production-tools-1\\M10AssemblyProbe-debug-4.log",
+      "frozenApp": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\public-occt-preview85-consumer1073-1\\workspace\\Cadoryx.wpf\\bin\\Debug\\net10.0-windows\\win-x64",
+      "target": "tools/M10AssemblyProbe/M10AssemblyProbe.csproj",
+      "stage": "Debug"
+    },
+    {
+      "attempt": 4,
+      "exitCode": 0,
+      "recordedAt": "2026-10-12T07:58:27.0736086+00:00",
+      "log": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\local85-production-tools-1\\MixedContactGeometryProbe-restore-4.log",
+      "frozenApp": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\public-occt-preview85-consumer1073-1\\workspace\\Cadoryx.wpf\\bin\\Release\\net10.0-windows\\win-x64",
+      "target": "tools/MixedContactGeometryProbe/MixedContactGeometryProbe.csproj",
+      "stage": "restore"
+    },
+    {
+      "attempt": 4,
+      "exitCode": 0,
+      "recordedAt": "2026-10-12T07:58:28.0509556+00:00",
+      "log": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\local85-production-tools-1\\MixedContactGeometryProbe-restore-locked-4.log",
+      "frozenApp": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\public-occt-preview85-consumer1073-1\\workspace\\Cadoryx.wpf\\bin\\Release\\net10.0-windows\\win-x64",
+      "target": "tools/MixedContactGeometryProbe/MixedContactGeometryProbe.csproj",
+      "stage": "restore-locked"
+    },
+    {
+      "attempt": 4,
+      "exitCode": 0,
+      "recordedAt": "2026-10-12T07:58:29.1676403+00:00",
+      "log": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\local85-production-tools-1\\MixedContactGeometryProbe-release-4.log",
+      "frozenApp": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\public-occt-preview85-consumer1073-1\\workspace\\Cadoryx.wpf\\bin\\Release\\net10.0-windows\\win-x64",
+      "target": "tools/MixedContactGeometryProbe/MixedContactGeometryProbe.csproj",
+      "stage": "Release"
+    },
+    {
+      "attempt": 4,
+      "exitCode": 0,
+      "recordedAt": "2026-10-12T07:58:30.2395844+00:00",
+      "log": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\local85-production-tools-1\\MixedContactGeometryProbe-debug-4.log",
+      "frozenApp": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\public-occt-preview85-consumer1073-1\\workspace\\Cadoryx.wpf\\bin\\Debug\\net10.0-windows\\win-x64",
+      "target": "tools/MixedContactGeometryProbe/MixedContactGeometryProbe.csproj",
+      "stage": "Debug"
+    },
+    {
+      "attempt": 4,
+      "exitCode": 0,
+      "recordedAt": "2026-10-12T07:58:31.2404216+00:00",
+      "log": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\local85-production-tools-1\\MixedContactProbe-restore-4.log",
+      "frozenApp": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\public-occt-preview85-consumer1073-1\\workspace\\Cadoryx.wpf\\bin\\Release\\net10.0-windows\\win-x64",
+      "target": "tools/MixedContactProbe/MixedContactProbe.csproj",
+      "stage": "restore"
+    },
+    {
+      "attempt": 4,
+      "exitCode": 0,
+      "recordedAt": "2026-10-12T07:58:32.2722349+00:00",
+      "log": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\local85-production-tools-1\\MixedContactProbe-restore-locked-4.log",
+      "frozenApp": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\public-occt-preview85-consumer1073-1\\workspace\\Cadoryx.wpf\\bin\\Release\\net10.0-windows\\win-x64",
+      "target": "tools/MixedContactProbe/MixedContactProbe.csproj",
+      "stage": "restore-locked"
+    },
+    {
+      "attempt": 4,
+      "exitCode": 0,
+      "recordedAt": "2026-10-12T07:58:33.4983367+00:00",
+      "log": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\local85-production-tools-1\\MixedContactProbe-release-4.log",
+      "frozenApp": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\public-occt-preview85-consumer1073-1\\workspace\\Cadoryx.wpf\\bin\\Release\\net10.0-windows\\win-x64",
+      "target": "tools/MixedContactProbe/MixedContactProbe.csproj",
+      "stage": "Release"
+    },
+    {
+      "attempt": 4,
+      "exitCode": 0,
+      "recordedAt": "2026-10-12T07:58:34.6953075+00:00",
+      "log": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\local85-production-tools-1\\MixedContactProbe-debug-4.log",
+      "frozenApp": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\public-occt-preview85-consumer1073-1\\workspace\\Cadoryx.wpf\\bin\\Debug\\net10.0-windows\\win-x64",
+      "target": "tools/MixedContactProbe/MixedContactProbe.csproj",
+      "stage": "Debug"
+    },
+    {
+      "attempt": 4,
+      "exitCode": 0,
+      "recordedAt": "2026-10-12T07:58:35.6803333+00:00",
+      "log": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\local85-production-tools-1\\ModeledThreadDrawingProbe-restore-4.log",
+      "frozenApp": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\public-occt-preview85-consumer1073-1\\workspace\\Cadoryx.wpf\\bin\\Release\\net10.0-windows\\win-x64",
+      "target": "tools/ModeledThreadDrawingProbe/ModeledThreadDrawingProbe.csproj",
+      "stage": "restore"
+    },
+    {
+      "attempt": 4,
+      "exitCode": 0,
+      "recordedAt": "2026-10-12T07:58:36.6037849+00:00",
+      "log": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\local85-production-tools-1\\ModeledThreadDrawingProbe-restore-locked-4.log",
+      "frozenApp": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\public-occt-preview85-consumer1073-1\\workspace\\Cadoryx.wpf\\bin\\Release\\net10.0-windows\\win-x64",
+      "target": "tools/ModeledThreadDrawingProbe/ModeledThreadDrawingProbe.csproj",
+      "stage": "restore-locked"
+    },
+    {
+      "attempt": 4,
+      "exitCode": 0,
+      "recordedAt": "2026-10-12T07:58:37.8403544+00:00",
+      "log": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\local85-production-tools-1\\ModeledThreadDrawingProbe-release-4.log",
+      "frozenApp": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\public-occt-preview85-consumer1073-1\\workspace\\Cadoryx.wpf\\bin\\Release\\net10.0-windows\\win-x64",
+      "target": "tools/ModeledThreadDrawingProbe/ModeledThreadDrawingProbe.csproj",
+      "stage": "Release"
+    },
+    {
+      "attempt": 4,
+      "exitCode": 0,
+      "recordedAt": "2026-10-12T07:58:39.1853580+00:00",
+      "log": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\local85-production-tools-1\\ModeledThreadDrawingProbe-debug-4.log",
+      "frozenApp": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\public-occt-preview85-consumer1073-1\\workspace\\Cadoryx.wpf\\bin\\Debug\\net10.0-windows\\win-x64",
+      "target": "tools/ModeledThreadDrawingProbe/ModeledThreadDrawingProbe.csproj",
+      "stage": "Debug"
+    },
+    {
+      "attempt": 4,
+      "exitCode": 0,
+      "recordedAt": "2026-10-12T07:58:40.2047551+00:00",
+      "log": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\local85-production-tools-1\\MulticopyExchangeProbe-restore-4.log",
+      "frozenApp": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\public-occt-preview85-consumer1073-1\\workspace\\Cadoryx.wpf\\bin\\Release\\net10.0-windows\\win-x64",
+      "target": "tools/MulticopyExchangeProbe/MulticopyExchangeProbe.csproj",
+      "stage": "restore"
+    },
+    {
+      "attempt": 4,
+      "exitCode": 0,
+      "recordedAt": "2026-10-12T07:58:41.1122262+00:00",
+      "log": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\local85-production-tools-1\\MulticopyExchangeProbe-restore-locked-4.log",
+      "frozenApp": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\public-occt-preview85-consumer1073-1\\workspace\\Cadoryx.wpf\\bin\\Release\\net10.0-windows\\win-x64",
+      "target": "tools/MulticopyExchangeProbe/MulticopyExchangeProbe.csproj",
+      "stage": "restore-locked"
+    },
+    {
+      "attempt": 4,
+      "exitCode": 0,
+      "recordedAt": "2026-10-12T07:58:42.2112726+00:00",
+      "log": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\local85-production-tools-1\\MulticopyExchangeProbe-release-4.log",
+      "frozenApp": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\public-occt-preview85-consumer1073-1\\workspace\\Cadoryx.wpf\\bin\\Release\\net10.0-windows\\win-x64",
+      "target": "tools/MulticopyExchangeProbe/MulticopyExchangeProbe.csproj",
+      "stage": "Release"
+    },
+    {
+      "attempt": 4,
+      "exitCode": 0,
+      "recordedAt": "2026-10-12T07:58:43.3820094+00:00",
+      "log": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\local85-production-tools-1\\MulticopyExchangeProbe-debug-4.log",
+      "frozenApp": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\public-occt-preview85-consumer1073-1\\workspace\\Cadoryx.wpf\\bin\\Debug\\net10.0-windows\\win-x64",
+      "target": "tools/MulticopyExchangeProbe/MulticopyExchangeProbe.csproj",
+      "stage": "Debug"
+    },
+    {
+      "attempt": 4,
+      "exitCode": 0,
+      "recordedAt": "2026-10-12T07:58:44.3054468+00:00",
+      "log": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\local85-production-tools-1\\MulticopyHistoryProbe-restore-4.log",
+      "frozenApp": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\public-occt-preview85-consumer1073-1\\workspace\\Cadoryx.wpf\\bin\\Release\\net10.0-windows\\win-x64",
+      "target": "tools/MulticopyHistoryProbe/MulticopyHistoryProbe.csproj",
+      "stage": "restore"
+    },
+    {
+      "attempt": 4,
+      "exitCode": 0,
+      "recordedAt": "2026-10-12T07:58:45.2680209+00:00",
+      "log": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\local85-production-tools-1\\MulticopyHistoryProbe-restore-locked-4.log",
+      "frozenApp": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\public-occt-preview85-consumer1073-1\\workspace\\Cadoryx.wpf\\bin\\Release\\net10.0-windows\\win-x64",
+      "target": "tools/MulticopyHistoryProbe/MulticopyHistoryProbe.csproj",
+      "stage": "restore-locked"
+    },
+    {
+      "attempt": 4,
+      "exitCode": 0,
+      "recordedAt": "2026-10-12T07:58:46.4320146+00:00",
+      "log": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\local85-production-tools-1\\MulticopyHistoryProbe-release-4.log",
+      "frozenApp": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\public-occt-preview85-consumer1073-1\\workspace\\Cadoryx.wpf\\bin\\Release\\net10.0-windows\\win-x64",
+      "target": "tools/MulticopyHistoryProbe/MulticopyHistoryProbe.csproj",
+      "stage": "Release"
+    },
+    {
+      "attempt": 4,
+      "exitCode": 0,
+      "recordedAt": "2026-10-12T07:58:47.5777972+00:00",
+      "log": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\local85-production-tools-1\\MulticopyHistoryProbe-debug-4.log",
+      "frozenApp": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\public-occt-preview85-consumer1073-1\\workspace\\Cadoryx.wpf\\bin\\Debug\\net10.0-windows\\win-x64",
+      "target": "tools/MulticopyHistoryProbe/MulticopyHistoryProbe.csproj",
+      "stage": "Debug"
+    },
+    {
+      "attempt": 4,
+      "exitCode": 0,
+      "recordedAt": "2026-10-12T07:58:48.3822599+00:00",
+      "log": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\local85-production-tools-1\\OcctApiUsageAudit-restore-4.log",
+      "frozenApp": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\public-occt-preview85-consumer1073-1\\workspace\\Cadoryx.wpf\\bin\\Release\\net10.0-windows\\win-x64",
+      "target": "tools/OcctApiUsageAudit/OcctApiUsageAudit.csproj",
+      "stage": "restore"
+    },
+    {
+      "attempt": 4,
+      "exitCode": 0,
+      "recordedAt": "2026-10-12T07:58:49.1599568+00:00",
+      "log": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\local85-production-tools-1\\OcctApiUsageAudit-restore-locked-4.log",
+      "frozenApp": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\public-occt-preview85-consumer1073-1\\workspace\\Cadoryx.wpf\\bin\\Release\\net10.0-windows\\win-x64",
+      "target": "tools/OcctApiUsageAudit/OcctApiUsageAudit.csproj",
+      "stage": "restore-locked"
+    },
+    {
+      "attempt": 4,
+      "exitCode": 0,
+      "recordedAt": "2026-10-12T07:58:50.0872724+00:00",
+      "log": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\local85-production-tools-1\\OcctApiUsageAudit-release-4.log",
+      "frozenApp": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\public-occt-preview85-consumer1073-1\\workspace\\Cadoryx.wpf\\bin\\Release\\net10.0-windows\\win-x64",
+      "target": "tools/OcctApiUsageAudit/OcctApiUsageAudit.csproj",
+      "stage": "Release"
+    },
+    {
+      "attempt": 4,
+      "exitCode": 0,
+      "recordedAt": "2026-10-12T07:58:51.1054802+00:00",
+      "log": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\local85-production-tools-1\\OcctApiUsageAudit-debug-4.log",
+      "frozenApp": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\public-occt-preview85-consumer1073-1\\workspace\\Cadoryx.wpf\\bin\\Debug\\net10.0-windows\\win-x64",
+      "target": "tools/OcctApiUsageAudit/OcctApiUsageAudit.csproj",
+      "stage": "Debug"
+    },
+    {
+      "attempt": 4,
+      "exitCode": 0,
+      "recordedAt": "2026-10-12T07:58:52.0041893+00:00",
+      "log": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\local85-production-tools-1\\OcctCapabilityProbe-restore-4.log",
+      "frozenApp": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\public-occt-preview85-consumer1073-1\\workspace\\Cadoryx.wpf\\bin\\Release\\net10.0-windows\\win-x64",
+      "target": "tools/OcctCapabilityProbe/OcctCapabilityProbe.csproj",
+      "stage": "restore"
+    },
+    {
+      "attempt": 4,
+      "exitCode": 0,
+      "recordedAt": "2026-10-12T07:58:52.8856342+00:00",
+      "log": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\local85-production-tools-1\\OcctCapabilityProbe-restore-locked-4.log",
+      "frozenApp": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\public-occt-preview85-consumer1073-1\\workspace\\Cadoryx.wpf\\bin\\Release\\net10.0-windows\\win-x64",
+      "target": "tools/OcctCapabilityProbe/OcctCapabilityProbe.csproj",
+      "stage": "restore-locked"
+    },
+    {
+      "attempt": 4,
+      "exitCode": 0,
+      "recordedAt": "2026-10-12T07:58:54.1882816+00:00",
+      "log": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\local85-production-tools-1\\OcctCapabilityProbe-release-4.log",
+      "frozenApp": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\public-occt-preview85-consumer1073-1\\workspace\\Cadoryx.wpf\\bin\\Release\\net10.0-windows\\win-x64",
+      "target": "tools/OcctCapabilityProbe/OcctCapabilityProbe.csproj",
+      "stage": "Release"
+    },
+    {
+      "attempt": 4,
+      "exitCode": 0,
+      "recordedAt": "2026-10-12T07:58:55.4947669+00:00",
+      "log": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\local85-production-tools-1\\OcctCapabilityProbe-debug-4.log",
+      "frozenApp": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\public-occt-preview85-consumer1073-1\\workspace\\Cadoryx.wpf\\bin\\Debug\\net10.0-windows\\win-x64",
+      "target": "tools/OcctCapabilityProbe/OcctCapabilityProbe.csproj",
+      "stage": "Debug"
+    },
+    {
+      "attempt": 4,
+      "exitCode": 0,
+      "recordedAt": "2026-10-12T07:58:56.4174761+00:00",
+      "log": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\local85-production-tools-1\\OffsetWorkflowProbe-restore-4.log",
+      "frozenApp": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\public-occt-preview85-consumer1073-1\\workspace\\Cadoryx.wpf\\bin\\Release\\net10.0-windows\\win-x64",
+      "target": "tools/OffsetWorkflowProbe/OffsetWorkflowProbe.csproj",
+      "stage": "restore"
+    },
+    {
+      "attempt": 4,
+      "exitCode": 0,
+      "recordedAt": "2026-10-12T07:58:57.3170593+00:00",
+      "log": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\local85-production-tools-1\\OffsetWorkflowProbe-restore-locked-4.log",
+      "frozenApp": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\public-occt-preview85-consumer1073-1\\workspace\\Cadoryx.wpf\\bin\\Release\\net10.0-windows\\win-x64",
+      "target": "tools/OffsetWorkflowProbe/OffsetWorkflowProbe.csproj",
+      "stage": "restore-locked"
+    },
+    {
+      "attempt": 4,
+      "exitCode": 0,
+      "recordedAt": "2026-10-12T07:58:58.4559502+00:00",
+      "log": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\local85-production-tools-1\\OffsetWorkflowProbe-release-4.log",
+      "frozenApp": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\public-occt-preview85-consumer1073-1\\workspace\\Cadoryx.wpf\\bin\\Release\\net10.0-windows\\win-x64",
+      "target": "tools/OffsetWorkflowProbe/OffsetWorkflowProbe.csproj",
+      "stage": "Release"
+    },
+    {
+      "attempt": 4,
+      "exitCode": 0,
+      "recordedAt": "2026-10-12T07:58:59.5460452+00:00",
+      "log": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\local85-production-tools-1\\OffsetWorkflowProbe-debug-4.log",
+      "frozenApp": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\public-occt-preview85-consumer1073-1\\workspace\\Cadoryx.wpf\\bin\\Debug\\net10.0-windows\\win-x64",
+      "target": "tools/OffsetWorkflowProbe/OffsetWorkflowProbe.csproj",
+      "stage": "Debug"
+    },
+    {
+      "attempt": 4,
+      "exitCode": 0,
+      "recordedAt": "2026-10-12T07:59:00.5237541+00:00",
+      "log": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\local85-production-tools-1\\SketchProbe-restore-4.log",
+      "frozenApp": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\public-occt-preview85-consumer1073-1\\workspace\\Cadoryx.wpf\\bin\\Release\\net10.0-windows\\win-x64",
+      "target": "tools/SketchProbe/SketchProbe.csproj",
+      "stage": "restore"
+    },
+    {
+      "attempt": 4,
+      "exitCode": 0,
+      "recordedAt": "2026-10-12T07:59:01.4670010+00:00",
+      "log": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\local85-production-tools-1\\SketchProbe-restore-locked-4.log",
+      "frozenApp": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\public-occt-preview85-consumer1073-1\\workspace\\Cadoryx.wpf\\bin\\Release\\net10.0-windows\\win-x64",
+      "target": "tools/SketchProbe/SketchProbe.csproj",
+      "stage": "restore-locked"
+    },
+    {
+      "attempt": 4,
+      "exitCode": 0,
+      "recordedAt": "2026-10-12T07:59:02.7134183+00:00",
+      "log": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\local85-production-tools-1\\SketchProbe-release-4.log",
+      "frozenApp": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\public-occt-preview85-consumer1073-1\\workspace\\Cadoryx.wpf\\bin\\Release\\net10.0-windows\\win-x64",
+      "target": "tools/SketchProbe/SketchProbe.csproj",
+      "stage": "Release"
+    },
+    {
+      "attempt": 4,
+      "exitCode": 0,
+      "recordedAt": "2026-10-12T07:59:03.9896690+00:00",
+      "log": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\local85-production-tools-1\\SketchProbe-debug-4.log",
+      "frozenApp": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\public-occt-preview85-consumer1073-1\\workspace\\Cadoryx.wpf\\bin\\Debug\\net10.0-windows\\win-x64",
+      "target": "tools/SketchProbe/SketchProbe.csproj",
+      "stage": "Debug"
+    },
+    {
+      "attempt": 4,
+      "exitCode": 0,
+      "recordedAt": "2026-10-12T07:59:04.8761865+00:00",
+      "log": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\local85-production-tools-1\\SlidingContactGeometryProbe-restore-4.log",
+      "frozenApp": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\public-occt-preview85-consumer1073-1\\workspace\\Cadoryx.wpf\\bin\\Release\\net10.0-windows\\win-x64",
+      "target": "tools/SlidingContactGeometryProbe/SlidingContactGeometryProbe.csproj",
+      "stage": "restore"
+    },
+    {
+      "attempt": 4,
+      "exitCode": 0,
+      "recordedAt": "2026-10-12T07:59:05.7346256+00:00",
+      "log": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\local85-production-tools-1\\SlidingContactGeometryProbe-restore-locked-4.log",
+      "frozenApp": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\public-occt-preview85-consumer1073-1\\workspace\\Cadoryx.wpf\\bin\\Release\\net10.0-windows\\win-x64",
+      "target": "tools/SlidingContactGeometryProbe/SlidingContactGeometryProbe.csproj",
+      "stage": "restore-locked"
+    },
+    {
+      "attempt": 4,
+      "exitCode": 0,
+      "recordedAt": "2026-10-12T07:59:06.7558846+00:00",
+      "log": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\local85-production-tools-1\\SlidingContactGeometryProbe-release-4.log",
+      "frozenApp": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\public-occt-preview85-consumer1073-1\\workspace\\Cadoryx.wpf\\bin\\Release\\net10.0-windows\\win-x64",
+      "target": "tools/SlidingContactGeometryProbe/SlidingContactGeometryProbe.csproj",
+      "stage": "Release"
+    },
+    {
+      "attempt": 4,
+      "exitCode": 0,
+      "recordedAt": "2026-10-12T07:59:07.8219001+00:00",
+      "log": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\local85-production-tools-1\\SlidingContactGeometryProbe-debug-4.log",
+      "frozenApp": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\public-occt-preview85-consumer1073-1\\workspace\\Cadoryx.wpf\\bin\\Debug\\net10.0-windows\\win-x64",
+      "target": "tools/SlidingContactGeometryProbe/SlidingContactGeometryProbe.csproj",
+      "stage": "Debug"
+    },
+    {
+      "attempt": 4,
+      "exitCode": 0,
+      "recordedAt": "2026-10-12T07:59:08.7413462+00:00",
+      "log": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\local85-production-tools-1\\SlidingContactProbe-restore-4.log",
+      "frozenApp": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\public-occt-preview85-consumer1073-1\\workspace\\Cadoryx.wpf\\bin\\Release\\net10.0-windows\\win-x64",
+      "target": "tools/SlidingContactProbe/SlidingContactProbe.csproj",
+      "stage": "restore"
+    },
+    {
+      "attempt": 4,
+      "exitCode": 0,
+      "recordedAt": "2026-10-12T07:59:09.6384202+00:00",
+      "log": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\local85-production-tools-1\\SlidingContactProbe-restore-locked-4.log",
+      "frozenApp": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\public-occt-preview85-consumer1073-1\\workspace\\Cadoryx.wpf\\bin\\Release\\net10.0-windows\\win-x64",
+      "target": "tools/SlidingContactProbe/SlidingContactProbe.csproj",
+      "stage": "restore-locked"
+    },
+    {
+      "attempt": 4,
+      "exitCode": 0,
+      "recordedAt": "2026-10-12T07:59:10.9256774+00:00",
+      "log": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\local85-production-tools-1\\SlidingContactProbe-release-4.log",
+      "frozenApp": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\public-occt-preview85-consumer1073-1\\workspace\\Cadoryx.wpf\\bin\\Release\\net10.0-windows\\win-x64",
+      "target": "tools/SlidingContactProbe/SlidingContactProbe.csproj",
+      "stage": "Release"
+    },
+    {
+      "attempt": 4,
+      "exitCode": 0,
+      "recordedAt": "2026-10-12T07:59:12.1866672+00:00",
+      "log": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\local85-production-tools-1\\SlidingContactProbe-debug-4.log",
+      "frozenApp": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\public-occt-preview85-consumer1073-1\\workspace\\Cadoryx.wpf\\bin\\Debug\\net10.0-windows\\win-x64",
+      "target": "tools/SlidingContactProbe/SlidingContactProbe.csproj",
+      "stage": "Debug"
+    },
+    {
+      "attempt": 4,
+      "exitCode": 0,
+      "recordedAt": "2026-10-12T07:59:13.2013275+00:00",
+      "log": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\local85-production-tools-1\\StorageBench-restore-4.log",
+      "frozenApp": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\public-occt-preview85-consumer1073-1\\workspace\\Cadoryx.wpf\\bin\\Release\\net10.0-windows\\win-x64",
+      "target": "tools/StorageBench/StorageBench.csproj",
+      "stage": "restore"
+    },
+    {
+      "attempt": 4,
+      "exitCode": 0,
+      "recordedAt": "2026-10-12T07:59:14.1341547+00:00",
+      "log": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\local85-production-tools-1\\StorageBench-restore-locked-4.log",
+      "frozenApp": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\public-occt-preview85-consumer1073-1\\workspace\\Cadoryx.wpf\\bin\\Release\\net10.0-windows\\win-x64",
+      "target": "tools/StorageBench/StorageBench.csproj",
+      "stage": "restore-locked"
+    },
+    {
+      "attempt": 4,
+      "exitCode": 0,
+      "recordedAt": "2026-10-12T07:59:15.5278417+00:00",
+      "log": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\local85-production-tools-1\\StorageBench-release-4.log",
+      "frozenApp": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\public-occt-preview85-consumer1073-1\\workspace\\Cadoryx.wpf\\bin\\Release\\net10.0-windows\\win-x64",
+      "target": "tools/StorageBench/StorageBench.csproj",
+      "stage": "Release"
+    },
+    {
+      "attempt": 4,
+      "exitCode": 0,
+      "recordedAt": "2026-10-12T07:59:16.9145882+00:00",
+      "log": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\local85-production-tools-1\\StorageBench-debug-4.log",
+      "frozenApp": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\public-occt-preview85-consumer1073-1\\workspace\\Cadoryx.wpf\\bin\\Debug\\net10.0-windows\\win-x64",
+      "target": "tools/StorageBench/StorageBench.csproj",
+      "stage": "Debug"
+    },
+    {
+      "attempt": 4,
+      "exitCode": 0,
+      "recordedAt": "2026-10-12T07:59:17.8502419+00:00",
+      "log": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\local85-production-tools-1\\SurfaceTerminationProbe-restore-4.log",
+      "frozenApp": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\public-occt-preview85-consumer1073-1\\workspace\\Cadoryx.wpf\\bin\\Release\\net10.0-windows\\win-x64",
+      "target": "tools/SurfaceTerminationProbe/SurfaceTerminationProbe.csproj",
+      "stage": "restore"
+    },
+    {
+      "attempt": 4,
+      "exitCode": 0,
+      "recordedAt": "2026-10-12T07:59:18.7339441+00:00",
+      "log": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\local85-production-tools-1\\SurfaceTerminationProbe-restore-locked-4.log",
+      "frozenApp": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\public-occt-preview85-consumer1073-1\\workspace\\Cadoryx.wpf\\bin\\Release\\net10.0-windows\\win-x64",
+      "target": "tools/SurfaceTerminationProbe/SurfaceTerminationProbe.csproj",
+      "stage": "restore-locked"
+    },
+    {
+      "attempt": 4,
+      "exitCode": 0,
+      "recordedAt": "2026-10-12T07:59:19.7118974+00:00",
+      "log": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\local85-production-tools-1\\SurfaceTerminationProbe-release-4.log",
+      "frozenApp": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\public-occt-preview85-consumer1073-1\\workspace\\Cadoryx.wpf\\bin\\Release\\net10.0-windows\\win-x64",
+      "target": "tools/SurfaceTerminationProbe/SurfaceTerminationProbe.csproj",
+      "stage": "Release"
+    },
+    {
+      "attempt": 4,
+      "exitCode": 0,
+      "recordedAt": "2026-10-12T07:59:20.6927984+00:00",
+      "log": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\local85-production-tools-1\\SurfaceTerminationProbe-debug-4.log",
+      "frozenApp": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\public-occt-preview85-consumer1073-1\\workspace\\Cadoryx.wpf\\bin\\Debug\\net10.0-windows\\win-x64",
+      "target": "tools/SurfaceTerminationProbe/SurfaceTerminationProbe.csproj",
+      "stage": "Debug"
+    },
+    {
+      "attempt": 4,
+      "exitCode": 0,
+      "recordedAt": "2026-10-12T07:59:21.6584577+00:00",
+      "log": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\local85-production-tools-1\\ThreadDrawingProbe-restore-4.log",
+      "frozenApp": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\public-occt-preview85-consumer1073-1\\workspace\\Cadoryx.wpf\\bin\\Release\\net10.0-windows\\win-x64",
+      "target": "tools/ThreadDrawingProbe/ThreadDrawingProbe.csproj",
+      "stage": "restore"
+    },
+    {
+      "attempt": 4,
+      "exitCode": 0,
+      "recordedAt": "2026-10-12T07:59:22.5675092+00:00",
+      "log": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\local85-production-tools-1\\ThreadDrawingProbe-restore-locked-4.log",
+      "frozenApp": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\public-occt-preview85-consumer1073-1\\workspace\\Cadoryx.wpf\\bin\\Release\\net10.0-windows\\win-x64",
+      "target": "tools/ThreadDrawingProbe/ThreadDrawingProbe.csproj",
+      "stage": "restore-locked"
+    },
+    {
+      "attempt": 4,
+      "exitCode": 0,
+      "recordedAt": "2026-10-12T07:59:23.6865460+00:00",
+      "log": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\local85-production-tools-1\\ThreadDrawingProbe-release-4.log",
+      "frozenApp": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\public-occt-preview85-consumer1073-1\\workspace\\Cadoryx.wpf\\bin\\Release\\net10.0-windows\\win-x64",
+      "target": "tools/ThreadDrawingProbe/ThreadDrawingProbe.csproj",
+      "stage": "Release"
+    },
+    {
+      "attempt": 4,
+      "exitCode": 0,
+      "recordedAt": "2026-10-12T07:59:24.8278489+00:00",
+      "log": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\local85-production-tools-1\\ThreadDrawingProbe-debug-4.log",
+      "frozenApp": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\public-occt-preview85-consumer1073-1\\workspace\\Cadoryx.wpf\\bin\\Debug\\net10.0-windows\\win-x64",
+      "target": "tools/ThreadDrawingProbe/ThreadDrawingProbe.csproj",
+      "stage": "Debug"
+    },
+    {
+      "attempt": 4,
+      "exitCode": 0,
+      "recordedAt": "2026-10-12T07:59:25.8842268+00:00",
+      "log": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\local85-production-tools-1\\ThreadHelixProbe-restore-4.log",
+      "frozenApp": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\public-occt-preview85-consumer1073-1\\workspace\\Cadoryx.wpf\\bin\\Release\\net10.0-windows\\win-x64",
+      "target": "tools/ThreadHelixProbe/ThreadHelixProbe.csproj",
+      "stage": "restore"
+    },
+    {
+      "attempt": 4,
+      "exitCode": 0,
+      "recordedAt": "2026-10-12T07:59:26.8100207+00:00",
+      "log": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\local85-production-tools-1\\ThreadHelixProbe-restore-locked-4.log",
+      "frozenApp": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\public-occt-preview85-consumer1073-1\\workspace\\Cadoryx.wpf\\bin\\Release\\net10.0-windows\\win-x64",
+      "target": "tools/ThreadHelixProbe/ThreadHelixProbe.csproj",
+      "stage": "restore-locked"
+    },
+    {
+      "attempt": 4,
+      "exitCode": 0,
+      "recordedAt": "2026-10-12T07:59:27.9030937+00:00",
+      "log": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\local85-production-tools-1\\ThreadHelixProbe-release-4.log",
+      "frozenApp": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\public-occt-preview85-consumer1073-1\\workspace\\Cadoryx.wpf\\bin\\Release\\net10.0-windows\\win-x64",
+      "target": "tools/ThreadHelixProbe/ThreadHelixProbe.csproj",
+      "stage": "Release"
+    },
+    {
+      "attempt": 4,
+      "exitCode": 0,
+      "recordedAt": "2026-10-12T07:59:28.9764302+00:00",
+      "log": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\local85-production-tools-1\\ThreadHelixProbe-debug-4.log",
+      "frozenApp": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\public-occt-preview85-consumer1073-1\\workspace\\Cadoryx.wpf\\bin\\Debug\\net10.0-windows\\win-x64",
+      "target": "tools/ThreadHelixProbe/ThreadHelixProbe.csproj",
+      "stage": "Debug"
+    },
+    {
+      "attempt": 4,
+      "exitCode": 0,
+      "recordedAt": "2026-10-12T07:59:29.8798353+00:00",
+      "log": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\local85-production-tools-1\\ThreadHoleProbe-restore-4.log",
+      "frozenApp": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\public-occt-preview85-consumer1073-1\\workspace\\Cadoryx.wpf\\bin\\Release\\net10.0-windows\\win-x64",
+      "target": "tools/ThreadHoleProbe/ThreadHoleProbe.csproj",
+      "stage": "restore"
+    },
+    {
+      "attempt": 4,
+      "exitCode": 0,
+      "recordedAt": "2026-10-12T07:59:30.7756824+00:00",
+      "log": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\local85-production-tools-1\\ThreadHoleProbe-restore-locked-4.log",
+      "frozenApp": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\public-occt-preview85-consumer1073-1\\workspace\\Cadoryx.wpf\\bin\\Release\\net10.0-windows\\win-x64",
+      "target": "tools/ThreadHoleProbe/ThreadHoleProbe.csproj",
+      "stage": "restore-locked"
+    },
+    {
+      "attempt": 4,
+      "exitCode": 0,
+      "recordedAt": "2026-10-12T07:59:31.9013464+00:00",
+      "log": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\local85-production-tools-1\\ThreadHoleProbe-release-4.log",
+      "frozenApp": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\public-occt-preview85-consumer1073-1\\workspace\\Cadoryx.wpf\\bin\\Release\\net10.0-windows\\win-x64",
+      "target": "tools/ThreadHoleProbe/ThreadHoleProbe.csproj",
+      "stage": "Release"
+    },
+    {
+      "attempt": 4,
+      "exitCode": 0,
+      "recordedAt": "2026-10-12T07:59:33.0087285+00:00",
+      "log": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\local85-production-tools-1\\ThreadHoleProbe-debug-4.log",
+      "frozenApp": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\public-occt-preview85-consumer1073-1\\workspace\\Cadoryx.wpf\\bin\\Debug\\net10.0-windows\\win-x64",
+      "target": "tools/ThreadHoleProbe/ThreadHoleProbe.csproj",
+      "stage": "Debug"
+    },
+    {
+      "attempt": 4,
+      "exitCode": 0,
+      "recordedAt": "2026-10-12T07:59:33.8808350+00:00",
+      "log": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\local85-production-tools-1\\ThreadProjectionProbe-restore-4.log",
+      "frozenApp": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\public-occt-preview85-consumer1073-1\\workspace\\Cadoryx.wpf\\bin\\Release\\net10.0-windows\\win-x64",
+      "target": "tools/ThreadProjectionProbe/ThreadProjectionProbe.csproj",
+      "stage": "restore"
+    },
+    {
+      "attempt": 4,
+      "exitCode": 0,
+      "recordedAt": "2026-10-12T07:59:34.7808974+00:00",
+      "log": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\local85-production-tools-1\\ThreadProjectionProbe-restore-locked-4.log",
+      "frozenApp": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\public-occt-preview85-consumer1073-1\\workspace\\Cadoryx.wpf\\bin\\Release\\net10.0-windows\\win-x64",
+      "target": "tools/ThreadProjectionProbe/ThreadProjectionProbe.csproj",
+      "stage": "restore-locked"
+    },
+    {
+      "attempt": 4,
+      "exitCode": 0,
+      "recordedAt": "2026-10-12T07:59:35.8271460+00:00",
+      "log": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\local85-production-tools-1\\ThreadProjectionProbe-release-4.log",
+      "frozenApp": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\public-occt-preview85-consumer1073-1\\workspace\\Cadoryx.wpf\\bin\\Release\\net10.0-windows\\win-x64",
+      "target": "tools/ThreadProjectionProbe/ThreadProjectionProbe.csproj",
+      "stage": "Release"
+    },
+    {
+      "attempt": 4,
+      "exitCode": 0,
+      "recordedAt": "2026-10-12T07:59:36.8303662+00:00",
+      "log": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\local85-production-tools-1\\ThreadProjectionProbe-debug-4.log",
+      "frozenApp": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\public-occt-preview85-consumer1073-1\\workspace\\Cadoryx.wpf\\bin\\Debug\\net10.0-windows\\win-x64",
+      "target": "tools/ThreadProjectionProbe/ThreadProjectionProbe.csproj",
+      "stage": "Debug"
+    },
+    {
+      "attempt": 4,
+      "exitCode": 0,
+      "recordedAt": "2026-10-12T07:59:37.7481873+00:00",
+      "log": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\local85-production-tools-1\\ViewerCapabilityProbe-restore-4.log",
+      "frozenApp": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\public-occt-preview85-consumer1073-1\\workspace\\Cadoryx.wpf\\bin\\Release\\net10.0-windows\\win-x64",
+      "target": "tools/ViewerCapabilityProbe/ViewerCapabilityProbe.csproj",
+      "stage": "restore"
+    },
+    {
+      "attempt": 4,
+      "exitCode": 0,
+      "recordedAt": "2026-10-12T07:59:38.6759132+00:00",
+      "log": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\local85-production-tools-1\\ViewerCapabilityProbe-restore-locked-4.log",
+      "frozenApp": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\public-occt-preview85-consumer1073-1\\workspace\\Cadoryx.wpf\\bin\\Release\\net10.0-windows\\win-x64",
+      "target": "tools/ViewerCapabilityProbe/ViewerCapabilityProbe.csproj",
+      "stage": "restore-locked"
+    },
+    {
+      "attempt": 4,
+      "exitCode": 0,
+      "recordedAt": "2026-10-12T07:59:39.6697369+00:00",
+      "log": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\local85-production-tools-1\\ViewerCapabilityProbe-release-4.log",
+      "frozenApp": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\public-occt-preview85-consumer1073-1\\workspace\\Cadoryx.wpf\\bin\\Release\\net10.0-windows\\win-x64",
+      "target": "tools/ViewerCapabilityProbe/ViewerCapabilityProbe.csproj",
+      "stage": "Release"
+    },
+    {
+      "attempt": 4,
+      "exitCode": 0,
+      "recordedAt": "2026-10-12T07:59:40.7239044+00:00",
+      "log": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\local85-production-tools-1\\ViewerCapabilityProbe-debug-4.log",
+      "frozenApp": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\public-occt-preview85-consumer1073-1\\workspace\\Cadoryx.wpf\\bin\\Debug\\net10.0-windows\\win-x64",
+      "target": "tools/ViewerCapabilityProbe/ViewerCapabilityProbe.csproj",
+      "stage": "Debug"
+    }
+  ],
+  "changedConfigurationFiles": [
+    "Cadoryx.Cli/packages.lock.json",
+    "Cadoryx.Kernel.Occt/packages.lock.json",
+    "Cadoryx.Rendering.Occt/packages.lock.json",
+    "Cadoryx.Tests/packages.lock.json",
+    "Cadoryx.wpf/packages.lock.json",
+    "Cadoryx.wpf/runtime-baseline.json",
+    "Directory.Build.props",
+    "NuGet.Config",
+    "integrations/occtsharp-boolean-history/Consumer/packages.lock.json",
+    "tools/AnalyticalOffsetNativeProbe/packages.lock.json",
+    "tools/AnalyticalOffsetProbe/AnalyticalOffsetProbe.csproj",
+    "tools/BoundedThreadDrawingProbe/packages.lock.json",
+    "tools/CadAgentWorkflowProbe/packages.lock.json",
+    "tools/EndpointCurvatureProbe/EndpointCurvatureProbe.csproj",
+    "tools/EndpointCurvatureProbe/packages.lock.json",
+    "tools/ExchangeFixtures/packages.lock.json",
+    "tools/FiniteContactProbe/packages.lock.json",
+    "tools/FiniteSurfaceProbe/packages.lock.json",
+    "tools/M10AssemblyProbe/packages.lock.json",
+    "tools/MixedContactGeometryProbe/packages.lock.json",
+    "tools/MixedContactProbe/packages.lock.json",
+    "tools/ModeledThreadDrawingProbe/packages.lock.json",
+    "tools/MulticopyExchangeProbe/MulticopyExchangeProbe.csproj",
+    "tools/MulticopyExchangeProbe/packages.lock.json",
+    "tools/MulticopyHistoryProbe/MulticopyHistoryProbe.csproj",
+    "tools/MulticopyHistoryProbe/packages.lock.json",
+    "tools/OcctCapabilityProbe/packages.lock.json",
+    "tools/OffsetWorkflowProbe/packages.lock.json",
+    "tools/SketchProbe/packages.lock.json",
+    "tools/SlidingContactGeometryProbe/packages.lock.json",
+    "tools/SlidingContactProbe/packages.lock.json",
+    "tools/StorageBench/packages.lock.json",
+    "tools/SurfaceTerminationProbe/packages.lock.json",
+    "tools/ThreadDrawingProbe/ThreadDrawingProbe.csproj",
+    "tools/ThreadDrawingProbe/packages.lock.json",
+    "tools/ThreadHelixProbe/ThreadHelixProbe.csproj",
+    "tools/ThreadHelixProbe/packages.lock.json",
+    "tools/ThreadHoleProbe/ThreadHoleProbe.csproj",
+    "tools/ThreadHoleProbe/packages.lock.json",
+    "tools/ThreadProjectionProbe/packages.lock.json",
+    "tools/ViewerCapabilityProbe/packages.lock.json"
+  ],
+  "applicationTestAndProbeCodeOrAssertionsChanged": false,
+  "sdkConsumerLocks": [
+    {
+      "path": "Cadoryx.Cli/packages.lock.json",
+      "sha256": "C7D75A14DBF4D0356256B6F7EE1F0C2508D03FB89B3560169C809135AEE81F18",
+      "sdkReferences": 14
+    },
+    {
+      "path": "Cadoryx.Kernel.Occt/packages.lock.json",
+      "sha256": "4D335A279C2F24932FC8C2C4FDD3082233C57782665CC0BA9578EFAC063842A3",
+      "sdkReferences": 14
+    },
+    {
+      "path": "Cadoryx.Rendering.Occt/packages.lock.json",
+      "sha256": "4F3540FBF5BAC12D83CE390C504E957524C098451B177AD954034F80D5BAF60A",
+      "sdkReferences": 14
+    },
+    {
+      "path": "Cadoryx.Tests/packages.lock.json",
+      "sha256": "DAF6EAAFB80746FA08F818CC90B753AFE3A7DCC36BD3863F4D1BD32D38B12841",
+      "sdkReferences": 14
+    },
+    {
+      "path": "Cadoryx.wpf/packages.lock.json",
+      "sha256": "597B056ED14E5BD38F9BEE1E61DA2A0BA54F7C6BA69B749765556B8BB1C6305D",
+      "sdkReferences": 14
+    },
+    {
+      "path": "integrations/occtsharp-boolean-history/Consumer/packages.lock.json",
+      "sha256": "D4A70EE5C0847B13E6EFEC04ABAE07C63617D16C13A3DDA635E48B468757CCF9",
+      "sdkReferences": 6
+    },
+    {
+      "path": "tools/AnalyticalOffsetNativeProbe/packages.lock.json",
+      "sha256": "1336F64D868AA4E2C26BFCEDBF388A8C234689A0501624D4AC2763B7738EFDE9",
+      "sdkReferences": 14
+    },
+    {
+      "path": "tools/BoundedThreadDrawingProbe/packages.lock.json",
+      "sha256": "B58F87F7E52B5A55F9E1F6DFCCF0C09AC564C1E7AB018129325866C8644298C1",
+      "sdkReferences": 14
+    },
+    {
+      "path": "tools/CadAgentWorkflowProbe/packages.lock.json",
+      "sha256": "C224FD6AD292A884157AD698D435B6256E716E9E91DC40F3E38F3DA538C8B889",
+      "sdkReferences": 14
+    },
+    {
+      "path": "tools/EndpointCurvatureProbe/packages.lock.json",
+      "sha256": "87F478D72A083E930D4C4C69EDCBEC7E4B5A9FEC1FBB695DF48853D5FBD531BD",
+      "sdkReferences": 14
+    },
+    {
+      "path": "tools/ExchangeFixtures/packages.lock.json",
+      "sha256": "B2778E1079B8E850144DEDD50FE60DC898A875F5B6A3E742AACBD682F7838799",
+      "sdkReferences": 14
+    },
+    {
+      "path": "tools/FiniteContactProbe/packages.lock.json",
+      "sha256": "76C828582ABBFA7C7E5CAAE0325519576DB2B9E05AE857F828C331DC7A02EBB6",
+      "sdkReferences": 14
+    },
+    {
+      "path": "tools/FiniteSurfaceProbe/packages.lock.json",
+      "sha256": "76C828582ABBFA7C7E5CAAE0325519576DB2B9E05AE857F828C331DC7A02EBB6",
+      "sdkReferences": 14
+    },
+    {
+      "path": "tools/M10AssemblyProbe/packages.lock.json",
+      "sha256": "533E5DD29485DF2E384DB6548526F0175C4A77A5D3D9F2E76E0E8D1E96434D1E",
+      "sdkReferences": 14
+    },
+    {
+      "path": "tools/MixedContactGeometryProbe/packages.lock.json",
+      "sha256": "87F478D72A083E930D4C4C69EDCBEC7E4B5A9FEC1FBB695DF48853D5FBD531BD",
+      "sdkReferences": 14
+    },
+    {
+      "path": "tools/MixedContactProbe/packages.lock.json",
+      "sha256": "76C828582ABBFA7C7E5CAAE0325519576DB2B9E05AE857F828C331DC7A02EBB6",
+      "sdkReferences": 14
+    },
+    {
+      "path": "tools/ModeledThreadDrawingProbe/packages.lock.json",
+      "sha256": "B58F87F7E52B5A55F9E1F6DFCCF0C09AC564C1E7AB018129325866C8644298C1",
+      "sdkReferences": 14
+    },
+    {
+      "path": "tools/MulticopyExchangeProbe/packages.lock.json",
+      "sha256": "87F478D72A083E930D4C4C69EDCBEC7E4B5A9FEC1FBB695DF48853D5FBD531BD",
+      "sdkReferences": 14
+    },
+    {
+      "path": "tools/MulticopyHistoryProbe/packages.lock.json",
+      "sha256": "87F478D72A083E930D4C4C69EDCBEC7E4B5A9FEC1FBB695DF48853D5FBD531BD",
+      "sdkReferences": 14
+    },
+    {
+      "path": "tools/OcctCapabilityProbe/packages.lock.json",
+      "sha256": "87F478D72A083E930D4C4C69EDCBEC7E4B5A9FEC1FBB695DF48853D5FBD531BD",
+      "sdkReferences": 14
+    },
+    {
+      "path": "tools/OffsetWorkflowProbe/packages.lock.json",
+      "sha256": "76C828582ABBFA7C7E5CAAE0325519576DB2B9E05AE857F828C331DC7A02EBB6",
+      "sdkReferences": 14
+    },
+    {
+      "path": "tools/SlidingContactGeometryProbe/packages.lock.json",
+      "sha256": "87F478D72A083E930D4C4C69EDCBEC7E4B5A9FEC1FBB695DF48853D5FBD531BD",
+      "sdkReferences": 14
+    },
+    {
+      "path": "tools/SlidingContactProbe/packages.lock.json",
+      "sha256": "76C828582ABBFA7C7E5CAAE0325519576DB2B9E05AE857F828C331DC7A02EBB6",
+      "sdkReferences": 14
+    },
+    {
+      "path": "tools/StorageBench/packages.lock.json",
+      "sha256": "C77B4176BF080C3DB33FBBC623296C88F074B9222F9EDAA7CB0A76BBD5FFB307",
+      "sdkReferences": 14
+    },
+    {
+      "path": "tools/SurfaceTerminationProbe/packages.lock.json",
+      "sha256": "87F478D72A083E930D4C4C69EDCBEC7E4B5A9FEC1FBB695DF48853D5FBD531BD",
+      "sdkReferences": 14
+    },
+    {
+      "path": "tools/ThreadDrawingProbe/packages.lock.json",
+      "sha256": "B58F87F7E52B5A55F9E1F6DFCCF0C09AC564C1E7AB018129325866C8644298C1",
+      "sdkReferences": 14
+    },
+    {
+      "path": "tools/ThreadHelixProbe/packages.lock.json",
+      "sha256": "87F478D72A083E930D4C4C69EDCBEC7E4B5A9FEC1FBB695DF48853D5FBD531BD",
+      "sdkReferences": 14
+    },
+    {
+      "path": "tools/ThreadHoleProbe/packages.lock.json",
+      "sha256": "87F478D72A083E930D4C4C69EDCBEC7E4B5A9FEC1FBB695DF48853D5FBD531BD",
+      "sdkReferences": 14
+    },
+    {
+      "path": "tools/ThreadProjectionProbe/packages.lock.json",
+      "sha256": "87F478D72A083E930D4C4C69EDCBEC7E4B5A9FEC1FBB695DF48853D5FBD531BD",
+      "sdkReferences": 14
+    },
+    {
+      "path": "tools/ViewerCapabilityProbe/packages.lock.json",
+      "sha256": "87F478D72A083E930D4C4C69EDCBEC7E4B5A9FEC1FBB695DF48853D5FBD531BD",
+      "sdkReferences": 14
+    }
+  ],
+  "existingNonSdkPackageVersionsAndHashesChanged": false,
+  "existingParentIoClosureAddedToTwoStaleToolLocks": [
+    {
+      "lock": "tools/SketchProbe/packages.lock.json",
+      "package": "Microsoft.Extensions.DependencyInjection.Abstractions",
+      "resolved": "8.0.2",
+      "contentHash": "3iE7UF7MQkCv1cxzCahz+Y/guQbTqieyxyaWKhrRO91itI9cOKO76OHeQDahqG4MmW5umr3CcCvGmK92lWNlbg==",
+      "reason": "Existing Cadoryx.IO PDFsharp closure missing from stale tool lock; no existing version changed"
+    },
+    {
+      "lock": "tools/SketchProbe/packages.lock.json",
+      "package": "Microsoft.Extensions.Logging.Abstractions",
+      "resolved": "8.0.3",
+      "contentHash": "dL0QGToTxggRLMYY4ZYX5AMwBb+byQBd/5dMiZE07Nv73o6I5Are3C7eQTh7K2+A4ct0PVISSr7TZANbiNb2yQ==",
+      "reason": "Existing Cadoryx.IO PDFsharp closure missing from stale tool lock; no existing version changed"
+    },
+    {
+      "lock": "tools/SketchProbe/packages.lock.json",
+      "package": "PDFsharp",
+      "resolved": "6.2.4",
+      "contentHash": "GhTr9F1uOYXHCIEOB5PXIgqn5a8WLsJL2m0eewTA0IvY1j6N4HGXHKKmEyB90/N6vrjmYamf41V9zbmdW2HY3g==",
+      "reason": "Existing Cadoryx.IO PDFsharp closure missing from stale tool lock; no existing version changed"
+    },
+    {
+      "lock": "tools/SketchProbe/packages.lock.json",
+      "package": "System.Security.Cryptography.Pkcs",
+      "resolved": "8.0.1",
+      "contentHash": "CoCRHFym33aUSf/NtWSVSZa99dkd0Hm7OCZUxORBjRB16LNhIEOf8THPqzIYlvKM0nNDAPTRBa1FxEECrgaxxA==",
+      "reason": "Existing Cadoryx.IO PDFsharp closure missing from stale tool lock; no existing version changed"
+    },
+    {
+      "lock": "tools/StorageBench/packages.lock.json",
+      "package": "Microsoft.Extensions.DependencyInjection.Abstractions",
+      "resolved": "8.0.2",
+      "contentHash": "3iE7UF7MQkCv1cxzCahz+Y/guQbTqieyxyaWKhrRO91itI9cOKO76OHeQDahqG4MmW5umr3CcCvGmK92lWNlbg==",
+      "reason": "Existing Cadoryx.IO PDFsharp closure missing from stale tool lock; no existing version changed"
+    },
+    {
+      "lock": "tools/StorageBench/packages.lock.json",
+      "package": "Microsoft.Extensions.Logging.Abstractions",
+      "resolved": "8.0.3",
+      "contentHash": "dL0QGToTxggRLMYY4ZYX5AMwBb+byQBd/5dMiZE07Nv73o6I5Are3C7eQTh7K2+A4ct0PVISSr7TZANbiNb2yQ==",
+      "reason": "Existing Cadoryx.IO PDFsharp closure missing from stale tool lock; no existing version changed"
+    },
+    {
+      "lock": "tools/StorageBench/packages.lock.json",
+      "package": "PDFsharp",
+      "resolved": "6.2.4",
+      "contentHash": "GhTr9F1uOYXHCIEOB5PXIgqn5a8WLsJL2m0eewTA0IvY1j6N4HGXHKKmEyB90/N6vrjmYamf41V9zbmdW2HY3g==",
+      "reason": "Existing Cadoryx.IO PDFsharp closure missing from stale tool lock; no existing version changed"
+    },
+    {
+      "lock": "tools/StorageBench/packages.lock.json",
+      "package": "System.Security.Cryptography.Pkcs",
+      "resolved": "8.0.1",
+      "contentHash": "CoCRHFym33aUSf/NtWSVSZa99dkd0Hm7OCZUxORBjRB16LNhIEOf8THPqzIYlvKM0nNDAPTRBa1FxEECrgaxxA==",
+      "reason": "Existing Cadoryx.IO PDFsharp closure missing from stale tool lock; no existing version changed"
+    }
+  ],
+  "configurationFixes": [
+    "Six old explicit SDK versions now use shared OcctSharpVersion",
+    "ThreadDrawingProbe uses explicit FrozenCadoryx instead of an old build directory",
+    "AnalyticalOffsetProbe uses explicit frozen payload and references required Kernel.Abstractions"
+  ],
+  "priorFailedAttemptsRetained": [
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\local85-production-tools-1\\failure.json",
+      "sha256": "4A35CEED333D167773D2494F77ACBE9EFF8D6E4BC765D9B0CC95507D51CDCD3A"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\local85-production-tools-1\\failure-2.json",
+      "sha256": "942E367A589775161F50928ECF290F34447CC7FDEADE64978328630B294563D6"
+    }
+  ],
+  "runtimeExecuted": false,
+  "publicationConfirmed": false,
+  "publicSourceOnly": false,
+  "productionApplied": false,
+  "cleanup": false,
+  "AF": "ACTIVE",
+  "G": "USER_DEFERRED"
+}

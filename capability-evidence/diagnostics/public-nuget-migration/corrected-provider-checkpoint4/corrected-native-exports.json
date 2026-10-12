@@ -1,0 +1,20 @@
+{
+  "state": "PASS",
+  "baselineCount": 41498,
+  "currentCount": 41509,
+  "removed": 0,
+  "added": [
+    "??_FInterface_FloatWriter@@QEAAXXZ",
+    "??_FInterface_LineBuffer@@QEAAXXZ",
+    "occtsharp_authoring_copy_report_argument",
+    "occtsharp_authoring_copy_report_info",
+    "occtsharp_authoring_copy_report_row",
+    "occtsharp_authoring_history_domain_info",
+    "occtsharp_authoring_history_domain_row",
+    "occtsharp_defeature_topology_history",
+    "occtsharp_viewer_display_shape_in_mode",
+    "occtsharp_viewer_display_xde_label_in_mode",
+    "occtsharp_viewer_source_display_in_mode"
+  ],
+  "debugMatchesRelease": true
+}

@@ -1,5 +1,15 @@
 # 3D CAD 产品缺口与实施规划
 
+2026-10-13，status233：[检查点5](../capability-evidence/AF_PENDING_PUBLIC_NUGET_CHECKPOINT5.json)确认公开 Preview.85 已实际应用生产，仅nuget.org、稳定SDK10.0.401，生产根50项目/120阶段/Release及Debug共60次编译均零警告/错误；30份SDK锁/412引用和六个输出的13托管/62原生DLL匹配公开包。实际公开能力探针55/55通过。vcpkg独立profile两配置各完整2255/2255、零失败/跳过，磁盘84DLL/22许可证；Release实际观察84模块、Debug实际观察40模块及桥的路径/哈希准确，Debug不证明全部84加载。最终source1073公开85完整6619两配置回归已开始，原严格STEP24、工具预算及实际窗口/性能/提供方门禁仍保持，最终1073尚未合入生产。Cadoryx不需要vcpkg；Native.win-x64继续受支持、不弃用。A–F继续，G及Cadoryx清理暂缓。
+
+以下status232及更早记录保留当时状态；当前结论以status233为准。
+
+2026-10-13，status232：公开 `8.0.1-preview.85` 完整14包已发布并完成签名/远端身份核验；Cadoryx 两组隔离消费者各50项目、120恢复/编译阶段、60次两配置编译通过，最终1073的221类型/696成员集合保持，当前生产为207/661。已将生产41份配置/锁及baseline切换到公开85，正式30份SDK锁/412引用通过核验；正在生产根用全新缓存完成恢复和两配置编译，原生运行尚未开始。[生产应用收据](../capability-evidence/diagnostics/public-nuget-migration/public85-production-applied.json)与[生产消费锁](../capability-evidence/diagnostics/public-nuget-migration/public85-production-locks-verification.json)已保存。Cadoryx 不用vcpkg；`OcctSharp.Native.win-x64` 继续提供原生运行时，无替代包或弃用计划，不标记过时。vcpkg第二profile的Release完整2255通过已由上游报告，Debug实际原生验证正在进行，独立证据待接收。A–F继续，最终全量/窗口/性能/提供方和原严格STEP24/AI预算失败仍待收敛；G及Cadoryx清理暂缓。
+
+以下status231及更早记录保留当时状态；当前结论以status232为准。
+
+2026-10-12，status226：用户要求先完成OcctSharp必要API的生成器封装/迁移并公开发布NuGet，随后Cadoryx切换公开包、提交推送；[前置计划及验收](OCCT_PUBLIC_NUGET_MIGRATION.md)保持第4、5节和G01–G24全部范围。上游会话准备85/ABI1.118/bridge0.133.0，尚未公开发布或生产接入；静态221类型/696成员引用不等于能力完成。SDK30两配置完整6530均通过，当前solver21 Release继续运行，后续等待上游时段。G及Cadoryx清理暂缓；用户新授权的OcctSharp编译缓存清理和`.gitignore`纳入上游任务。
+
 2026-10-12，status225增量：[D6/SDK30 Release完整6530/6530](../capability-evidence/AF_PENDING_D6_SDK30_INTEGRATION_FULL_RELEASE.json)已通过，零失败/跳过、实际native62与冻结来源/原名称再次核验；Debug全量运行中。生产接入、真实窗口及其余A–F门禁仍待验，第4、5节和G01–G24范围保持，G及清理暂缓。
 
 2026-10-12，status225：**A–F继续，G和清理暂缓，尚未全部完成。** [D6/SDK30生产组合](D6_SDK30_PRODUCTION_INTEGRATION.md)source1066两配置构建0警告/错误，发现6530，各有限曲面99/99与原AI/工程图165/165及实际native62通过；完整6530正在验证，随后续solver21原6556与最终D6的6619两配置。修订5窗口观察器已修正模态调用顺序并编译，36真实创建/编辑场景仍NOT RUN。[原source1070提供方](../capability-evidence/AF_PENDING_F5_SOURCE1070_FULL_PROVIDER_VERIFICATION.json)跨文档8轮通过、工程图失败；完整6556各6432/124，不能当最终1073门禁通过。[精确插结点14组](B18_EXACT_KNOT_SUBDIVISION_DIAGNOSTIC.md)全部拒绝，严格STEP和外部完整几何等价仍待解决。生产仍1000/SDK26，正式已验仍A4/B17/C5/D5/E4/F5g；[检查点](../capability-evidence/AF_PENDING_STATUS225_CONTINUATION_CHECKPOINT.json)记录真实范围，不缩减第4、5节与G01–G24。以下status224及更早为历史。

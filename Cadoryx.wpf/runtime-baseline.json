@@ -3,8 +3,8 @@
   "documentWriterVersion": "0.7.8",
   "framework": "net10.0-windows",
   "runtime": "win-x64",
-  "occtSharpPackage": "8.0.1-preview.31.cadoryx.curve-inspection.26",
-  "nativeSha256": "0990d60c1a1d5eecfb9ca563c163829e43406e82244a2f17cbd1ee13a85d405f",
+  "occtSharpPackage": "8.0.1-preview.85",
+  "nativeSha256": "d44f3f272386ea2cc87e7107ab2e3375d8100283872372f1fbc234a3b4e38cb3",
   "occtVersion": "8.0.1",
   "messagePackPackage": "3.1.8",
   "containerVersion": 1,
@@ -29,7 +29,7 @@
     "sketch-regions": 3
   },
   "coreSectionEncoding": "messagepack",
-  "nativeAbi": "1.85",
-  "bridgeVersion": "0.93.0",
+  "nativeAbi": "1.118",
+  "bridgeVersion": "0.133.0",
   "occurrenceDocumentWriterVersion": "0.7.9"
 }

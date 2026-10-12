@@ -1,0 +1,17 @@
+{
+  "state": "PASS",
+  "checks": [
+    "in-repository registry checkout",
+    "clean restore rejects existing contents",
+    "invalid concurrency",
+    "build rejects unqualified provider",
+    "runtime rejects unqualified build",
+    "runtime rejects missing native payload",
+    "runtime rejects modified native payload",
+    "header recovery rejects different source archive"
+  ],
+  "count": 8,
+  "fixture": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-public-sdk85\\dependency-entry-tests-final-sdk10\\ee6c1e8e173149f4b98f4d679fcdc507",
+  "networkUsed": false,
+  "nativeBuildStarted": false
+}

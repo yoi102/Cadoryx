@@ -17,7 +17,9 @@ $cadDependencies=@($cadLock.dependencies.PSObject.Properties | ForEach-Object {$
 if($cadDependencies.Count -eq 0 -or @($cadDependencies | Where-Object {$_.Value.resolved -ne $cadVersion}).Count){throw 'Mixed OcctSharp versions.'}
 
 # Check actual nupkg payloads, not an earlier build tree or PATH-installed runtime.
-$cadPackage=Join-Path $cadRoot "../OcctSharp/OcctSharp/artifacts/packages/OcctSharp.Native.win-x64.$cadVersion.nupkg"
+. (Join-Path $cadRoot 'scripts/nuget-package-cache.ps1')
+$cadResolvedPackage=Get-CadoryxLockedPackageArchive -AssetsPath (Join-Path $PSScriptRoot 'obj/project.assets.json') -LockPath (Join-Path $PSScriptRoot 'packages.lock.json') -PackageId 'OcctSharp.Native.win-x64' -Version $cadVersion
+$cadPackage=$cadResolvedPackage.archivePath
 $cadArchive=[IO.Compression.ZipFile]::OpenRead([IO.Path]::GetFullPath($cadPackage))
 $cadPayload=@()
 try{

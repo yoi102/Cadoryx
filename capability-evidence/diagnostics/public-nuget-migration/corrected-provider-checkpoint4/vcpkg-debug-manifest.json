@@ -1,0 +1,412 @@
+{
+  "schemaVersion": "1.0",
+  "platform": "windows",
+  "architecture": "x64",
+  "packageVersion": "8.0.1-preview.85",
+  "occtVersion": "8.0.1",
+  "nativeAbi": "1.118",
+  "bridgeVersion": "0.133.0",
+  "provider": "vcpkg-occt801-d3d-original-headers-v1",
+  "configuration": "Debug",
+  "files": [
+    {
+      "path": "occt/brotlicommon.dll",
+      "size": 207872,
+      "sha256": "0B3A582B079A0E28F4E7B0D98F058A9F0CB80DAEACACB82499C6D1494F91A0C2"
+    },
+    {
+      "path": "occt/brotlidec.dll",
+      "size": 131072,
+      "sha256": "5CEF4F86B829BE0D69155F90A8A37809A8DC6F5D173B8651110B3E411B044AB0"
+    },
+    {
+      "path": "occt/bz2d.dll",
+      "size": 188416,
+      "sha256": "CE2D904E4CCF42366286F753941A0944B74B7D5826A0E6F4E6ADB25BFF3246B1"
+    },
+    {
+      "path": "occt/deflate.dll",
+      "size": 217600,
+      "sha256": "F41D6907CC06A3C963A844FDA96E82BB1EC5F050EC21C021FB6D8C59C50B4D29"
+    },
+    {
+      "path": "occt/FreeImaged.dll",
+      "size": 3258880,
+      "sha256": "01D1BD2ADEFA6ADAEE8C1526A601230A00C64E2AE7C8285D9671992FB5499222"
+    },
+    {
+      "path": "occt/freetyped.dll",
+      "size": 1550848,
+      "sha256": "67D0FB27B7CF693FE6E12B8A2983DBEDC12D9A4081D22072352F4BDAA4ACF3DD"
+    },
+    {
+      "path": "occt/Iex-3_5_d.dll",
+      "size": 1209856,
+      "sha256": "5A2BD4001D16733328ABA1C461FF01F635A593ECBDADA810AB46EB35B993082F"
+    },
+    {
+      "path": "occt/IlmThread-3_5_d.dll",
+      "size": 176640,
+      "sha256": "2EDA7EE9CFF5FE59A4F1FA73BCBB62E2B2D3C076928153D6F0D6D67B75431C0C"
+    },
+    {
+      "path": "occt/Imath-3_2_d.dll",
+      "size": 531456,
+      "sha256": "CA9040A67051C0341C3DB726A84E21CE3BF9C1D02C9A5BCCFF10C8D01C2B2D4E"
+    },
+    {
+      "path": "occt/jpeg62.dll",
+      "size": 1459200,
+      "sha256": "15466A5C330E99F4719AF8F6E7E39D569A82BC34C78E2CC3FC0685F8DC69FE84"
+    },
+    {
+      "path": "occt/lcms2-2.dll",
+      "size": 600576,
+      "sha256": "37235CDBBAF0EA9D855C17FEC1AB9DC3CD4A298A743A8B42B5E8D32E14BC0B12"
+    },
+    {
+      "path": "occt/liblzma.dll",
+      "size": 570368,
+      "sha256": "7968B280459513A07378F3A76D5E6C26C6FAAFF829A5BDA717379F4B9419CC00"
+    },
+    {
+      "path": "occt/libpng16d.dll",
+      "size": 427520,
+      "sha256": "F2D723B9E74F743C50ECE3D64FFE9E060D11FE8D8FDB7396CFBABA37E88483B7"
+    },
+    {
+      "path": "occt/libsharpyuv.dll",
+      "size": 82432,
+      "sha256": "84DFDEFDED23947F0EF5AD3BD79435EDFB1CBF658AF53D19AFF26E18C6C929AF"
+    },
+    {
+      "path": "occt/libwebp.dll",
+      "size": 927232,
+      "sha256": "8EA4F9D759C9886B3AF89FD4972E29EFE1476BD336CD0C3E0942F588F6813F7C"
+    },
+    {
+      "path": "occt/libwebpdecoder.dll",
+      "size": 440832,
+      "sha256": "2A352185998AAC8A37C57CB98C3E707D7018A1959DC9AC346760DC2809242F9C"
+    },
+    {
+      "path": "occt/libwebpmux.dll",
+      "size": 167936,
+      "sha256": "A2D03586375811987566D66FBA6E894645ABC3DFB35A2A5966C76A72F7F77164"
+    },
+    {
+      "path": "occt/OcctSharp.Native.dll",
+      "size": 161369600,
+      "sha256": "D4ABADE1AD343C7C87925C5531711A733CB04DB607ED692A445C90C5B2B73553"
+    },
+    {
+      "path": "occt/OpenEXR-3_5_d.dll",
+      "size": 3345920,
+      "sha256": "E2C6352106B63B89E932C4755C8712760F0C5FE1A1764F4BF768E9CEDAC5DC09"
+    },
+    {
+      "path": "occt/OpenEXRCore-3_5_d.dll",
+      "size": 865792,
+      "sha256": "AAA74268B2F887EE804BD9D3E94488C52BC1B40DD7C5252BE7E1F6DA040AC8E9"
+    },
+    {
+      "path": "occt/openjp2.dll",
+      "size": 1064960,
+      "sha256": "8E3182824E00C68540AD575EA59EB03F5505D7CE3102E10A41C38738FCB841D7"
+    },
+    {
+      "path": "occt/openjph.0.32d.dll",
+      "size": 1637376,
+      "sha256": "A5AFCBDCDECAEE8562E9CE944519BA7401C3530F0F5AB1C2E11B0193C7C51B4D"
+    },
+    {
+      "path": "occt/rawd.dll",
+      "size": 3113472,
+      "sha256": "6A80DF4061B429BF82DD0B9ABF7BD4E076387E389D8FD4C29E162DC23F2D533A"
+    },
+    {
+      "path": "occt/tbb12_debug.dll",
+      "size": 1626624,
+      "sha256": "4B7ECC99F508086755EF53FAC26077EACA30AFB5397E5CC36FA65605045E279B"
+    },
+    {
+      "path": "occt/tiffd.dll",
+      "size": 1187840,
+      "sha256": "93C0F44D71AC1C58B8EC089C49BF5F95DDAA18E63BA9A8AE536D3D1F3410BE46"
+    },
+    {
+      "path": "occt/TKBin.dll",
+      "size": 303616,
+      "sha256": "52FFAF1E09EFA0BEC0E6A884BCF2FDA4D2948ECC2385A88AE37EFF7EF21B4375"
+    },
+    {
+      "path": "occt/TKBinL.dll",
+      "size": 686592,
+      "sha256": "72FE84B9525117EB4456D4F1D69C80F0C7B3716DBE33AFE7CE27483E3B008089"
+    },
+    {
+      "path": "occt/TKBinTObj.dll",
+      "size": 167424,
+      "sha256": "03CB1318486AB783EB0C7F48DF298A89D5F39DFB078115296DBD0B980B198941"
+    },
+    {
+      "path": "occt/TKBinXCAF.dll",
+      "size": 320512,
+      "sha256": "04AB78D13B8EF043628E11D3C6421A01A4C1CCA1269446D3AE743E561C4426FF"
+    },
+    {
+      "path": "occt/TKBO.dll",
+      "size": 4470272,
+      "sha256": "4CE90314CAAA8EE7E5693FE27078FE8EC5C7F345A40B16AE96578BDBB3C1B381"
+    },
+    {
+      "path": "occt/TKBool.dll",
+      "size": 6319104,
+      "sha256": "587071A0810773B86FA68BDC7C593C6C10494649FD93CC087B136BD547E227E8"
+    },
+    {
+      "path": "occt/TKBRep.dll",
+      "size": 6153216,
+      "sha256": "7A7ED746E86EFB65E3F23FFF2740ED44D8E88DA6EC77DE70BF93641A28671CC4"
+    },
+    {
+      "path": "occt/TKCAF.dll",
+      "size": 1016832,
+      "sha256": "D12B809A154E346ABD49EFACF316E4C76CECE5FE820AE5DB3401155A9FD87A9A"
+    },
+    {
+      "path": "occt/TKCDF.dll",
+      "size": 692224,
+      "sha256": "B12BECF391DDA7F9FDE13D67E9C3890E79D1F2E3003E84BF89F4D33FAADFBF13"
+    },
+    {
+      "path": "occt/TKD3DHost.dll",
+      "size": 179200,
+      "sha256": "027AAAE955D03BAF61750D4A82EEA7A4C08BD33F83BE4E349ED2D02286427B97"
+    },
+    {
+      "path": "occt/TKDE.dll",
+      "size": 401408,
+      "sha256": "6E3DD55C62299D7AB9EFE9987A7F242B978AB484088BB84F87F6C0465B229975"
+    },
+    {
+      "path": "occt/TKDECascade.dll",
+      "size": 240640,
+      "sha256": "58BA55302F4BDC5CA419FFC1549C04921FBADD6E2ADB2309C9B366F11199A0A0"
+    },
+    {
+      "path": "occt/TKDEGLTF.dll",
+      "size": 1203712,
+      "sha256": "815180380B4D1DF0D5E4CD7938500B176A7FAB320C6B95632570A635D0851C5B"
+    },
+    {
+      "path": "occt/TKDEIGES.dll",
+      "size": 6754816,
+      "sha256": "1EC6CA7F2729BB199EF4F58FB814ECD1F0167BC3195F8A7A40378276D24B032A"
+    },
+    {
+      "path": "occt/TKDEOBJ.dll",
+      "size": 584704,
+      "sha256": "CF3E1D7124E1706A8D01825A890C26C48DF1E1B7E7BB44892E9D6BEE743E6090"
+    },
+    {
+      "path": "occt/TKDEPLY.dll",
+      "size": 279040,
+      "sha256": "E15ED46910BB8C88A0A09155608E32426A441ED07A061C366BD02805429FC6C1"
+    },
+    {
+      "path": "occt/TKDESTEP.dll",
+      "size": 15139840,
+      "sha256": "FE8836DC1B0D7FF0A12F7BC39702A80C8CE61E63F63AF4A19D4909690C746C24"
+    },
+    {
+      "path": "occt/TKDESTL.dll",
+      "size": 355840,
+      "sha256": "4D22D360D1DE3DC7522B16E5D9D9434619FD469CE9A4D6DE6B980744EFAC3FE5"
+    },
+    {
+      "path": "occt/TKDEVRML.dll",
+      "size": 1310208,
+      "sha256": "374A6A585318446D51B473806564816104768DBE0DCB8A72E04E105985593C7B"
+    },
+    {
+      "path": "occt/TKernel.dll",
+      "size": 2947584,
+      "sha256": "0DC7057BB2D30839167B64A0E0EC31B42FC8BCF3C943D0C7402BD87D4218ADE3"
+    },
+    {
+      "path": "occt/TKExpress.dll",
+      "size": 837120,
+      "sha256": "D48001558F1D4EA24DC5AA9E4E9CED399778A56C9C15C424949CB1A7D7A194A8"
+    },
+    {
+      "path": "occt/TKFeat.dll",
+      "size": 1806848,
+      "sha256": "A4F926C004E7F362A9591256374BC2091E8120F2293CD7B0FF5400B093C64CB6"
+    },
+    {
+      "path": "occt/TKFillet.dll",
+      "size": 4681216,
+      "sha256": "42561FF858AAC06762695317E94E19DAB40C80E1ADA15F44B3A3B9620676A978"
+    },
+    {
+      "path": "occt/TKG2d.dll",
+      "size": 1126400,
+      "sha256": "2FFD1AA717ED654F8080047D3942BC3C86BD96CE2658A21EF34E400D0C81071F"
+    },
+    {
+      "path": "occt/TKG3d.dll",
+      "size": 3156992,
+      "sha256": "472627624D5B9796BF8CED4FC171A3EB06C166338260FFB452921E850BEEDB75"
+    },
+    {
+      "path": "occt/TKGeomAlgo.dll",
+      "size": 9766400,
+      "sha256": "AE55C2E909D4E39CFEE7B9F68102399B5598E3D34872175ECD24CC20219F1290"
+    },
+    {
+      "path": "occt/TKGeomBase.dll",
+      "size": 9465856,
+      "sha256": "0F30627E0E5EAAE0B757087D9E793415A1470BE4A1C537190F885193E005D029"
+    },
+    {
+      "path": "occt/TKHelix.dll",
+      "size": 230400,
+      "sha256": "CF48EAC10002D098B6CDD0AF81A42679F0F16ED3CD0924E1E7EF43EA628A9F31"
+    },
+    {
+      "path": "occt/TKHLR.dll",
+      "size": 2317312,
+      "sha256": "C482F0BF23716FCC35A4D6031B3632DE4CA59EEE3961EFAAD31C00EFD662C0CB"
+    },
+    {
+      "path": "occt/TKLCAF.dll",
+      "size": 1555968,
+      "sha256": "B2ADD7ECC8EA6D62FBBE030A7F98C27D1025DB17B6C984010EFE68E1886A828C"
+    },
+    {
+      "path": "occt/TKMath.dll",
+      "size": 4540416,
+      "sha256": "57F9781935755C080E19668E164B2DC0E061EE63771A183629985EE5203664B8"
+    },
+    {
+      "path": "occt/TKMesh.dll",
+      "size": 2027008,
+      "sha256": "0325D757F54392992FA0DE6979E66C8C0A393561D6A975314325C85DEC809825"
+    },
+    {
+      "path": "occt/TKMeshVS.dll",
+      "size": 785920,
+      "sha256": "FA199205AD0B717228B9D3EFF67CF1B19DCF7F99741F51E8675CC6FCC55F2679"
+    },
+    {
+      "path": "occt/TKOffset.dll",
+      "size": 3214848,
+      "sha256": "6764E492691A6A06D90C596A852E90CD19FC079E69536C0928A24BE243855EC8"
+    },
+    {
+      "path": "occt/TKOpenGl.dll",
+      "size": 3073536,
+      "sha256": "CD5E9CB60F36CD42D09835B8E0DDE8F22729EED901199770FAA83B2C096F5A7B"
+    },
+    {
+      "path": "occt/TKPrim.dll",
+      "size": 730112,
+      "sha256": "B287ACEE3E7400363AA1865553DE52DCE4CF83142B2CFD9F4AE8C29EF2109948"
+    },
+    {
+      "path": "occt/TKRWMesh.dll",
+      "size": 480768,
+      "sha256": "8353DB9D2858F12B1B1F31D337C308265D35D23E7661AE7859D8939A7EC6D0A1"
+    },
+    {
+      "path": "occt/TKService.dll",
+      "size": 2458112,
+      "sha256": "343920C161AE7A9C13E247610FB2C9DB9B42D4A0B0B877A361EBEDEAA578F9BE"
+    },
+    {
+      "path": "occt/TKShHealing.dll",
+      "size": 5509632,
+      "sha256": "CD0FE67E6D42C0C9C83A383D5067D45F1DEE908FDECBAFB0E562EC726EB7F026"
+    },
+    {
+      "path": "occt/TKStd.dll",
+      "size": 1757184,
+      "sha256": "FFFEAA9AB300D29CDBDFF23BB94AA6831C750700C603C11445EEA4A09048770B"
+    },
+    {
+      "path": "occt/TKStdL.dll",
+      "size": 701440,
+      "sha256": "4E55046DDBDDD1CAA6A1C66C877F4A34AFFCA581FAAC47442843026C35DB3F15"
+    },
+    {
+      "path": "occt/TKTObj.dll",
+      "size": 521728,
+      "sha256": "4C3EDC4D2AC9A32FBA1095092B8891FAE6E2589D397BB671534E3E2ADC6C2A0C"
+    },
+    {
+      "path": "occt/TKTopAlgo.dll",
+      "size": 5190656,
+      "sha256": "4351272E2DED7CFFBF83EC1DB0E8E9678964369B68B4C7D16E640CEE1312CBD1"
+    },
+    {
+      "path": "occt/TKV3d.dll",
+      "size": 6038016,
+      "sha256": "1624CD13BAAF465258357A57391EBD287E4D27866876A79FB3C537004B3A3F2A"
+    },
+    {
+      "path": "occt/TKVCAF.dll",
+      "size": 545280,
+      "sha256": "950F4F45B20F355E3A8AD0A8BCCFDF707C2E38927417972CFBD0310AA56355AD"
+    },
+    {
+      "path": "occt/TKXCAF.dll",
+      "size": 1746432,
+      "sha256": "2F2C409A6DD1DFF1C2AF80F1915A5A3D15D539B8073A1352C04CA1F45A160868"
+    },
+    {
+      "path": "occt/TKXMesh.dll",
+      "size": 79360,
+      "sha256": "60AA478D85BBB9890178DD09589CC8AF662A21A16234751B9C78E37811ABC5BE"
+    },
+    {
+      "path": "occt/TKXml.dll",
+      "size": 410112,
+      "sha256": "427A9313197F7F799D3618308FCA7DE0679AE0F72E5BD545762E01AF5B070739"
+    },
+    {
+      "path": "occt/TKXmlL.dll",
+      "size": 872960,
+      "sha256": "0ED6C7B06D3322654D1C29454C0C3133243B8B69B1F9B2699F9A2B17AA8022E9"
+    },
+    {
+      "path": "occt/TKXmlTObj.dll",
+      "size": 167424,
+      "sha256": "ECDB710DAA4CBDDA9A72A12F1BC77CF39888B0B232667D328F2D4CDE5A2C5DC8"
+    },
+    {
+      "path": "occt/TKXmlXCAF.dll",
+      "size": 392192,
+      "sha256": "C22137E648DA0981251FCBE0F15166C46982B7EAF4DF38E4B4D432DD0ABAF4A1"
+    },
+    {
+      "path": "occt/TKXSBase.dll",
+      "size": 3471360,
+      "sha256": "2E34D4EA6D92820F099D1DD7B55AC3CF7158611139BB7496F82BEDB65441B0DE"
+    },
+    {
+      "path": "occt/zd.dll",
+      "size": 211968,
+      "sha256": "1E5794F068F52BE58EE742FD6FB5D9CA0D9DD5BC6C3A7AC34DAE135AC2A6EE14"
+    },
+    {
+      "path": "occt/zstd.dll",
+      "size": 1916416,
+      "sha256": "DD35B0DC2D497B1FE946C58ACC0FD66F6A4CEC3342D550626E82584B031010F3"
+    }
+  ],
+  "generationChecked": true,
+  "generationExecuted": true,
+  "generatedManifestSha256": "EB97291E0667FB9EE9AFE33E8383BFD92F797E52A1A91D880CE071121E4002A6",
+  "state": "BUILD_PASS_RUNTIME_NOT_RUN"
+}

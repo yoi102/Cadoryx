@@ -1,0 +1,92 @@
+{
+  "authorSigning": "NOT RUN",
+  "packages": [
+    {
+      "name": "OcctSharp.8.0.1-preview.85.nupkg",
+      "log": "OcctSharp\\artifacts\\cadoryx-public-sdk85\\remote-packages\\OcctSharp.8.0.1-preview.85.nupkg.verify.log",
+      "state": "PASS",
+      "sha256": "9045064006E2ADB018BB358D9EDB5F77340AE118AA15B702D2DDACA40BB0F8DF"
+    },
+    {
+      "name": "OcctSharp.DataExchange.8.0.1-preview.85.nupkg",
+      "log": "OcctSharp\\artifacts\\cadoryx-public-sdk85\\remote-packages\\OcctSharp.DataExchange.8.0.1-preview.85.nupkg.verify.log",
+      "state": "PASS",
+      "sha256": "D90C9B106CE736FADC50769F389548A914FBEF6C5DD73DA6E0CE5C86B272F2B9"
+    },
+    {
+      "name": "OcctSharp.Documents.8.0.1-preview.85.nupkg",
+      "log": "OcctSharp\\artifacts\\cadoryx-public-sdk85\\remote-packages\\OcctSharp.Documents.8.0.1-preview.85.nupkg.verify.log",
+      "state": "PASS",
+      "sha256": "DC738BD0F5E9712E711C51FC23AAE6481364A18EB913451A9F2DCA726C5FADA5"
+    },
+    {
+      "name": "OcctSharp.Draw.8.0.1-preview.85.nupkg",
+      "log": "OcctSharp\\artifacts\\cadoryx-public-sdk85\\remote-packages\\OcctSharp.Draw.8.0.1-preview.85.nupkg.verify.log",
+      "state": "PASS",
+      "sha256": "BCDBC8DDE26E20547058FB0A5D19FFCAD5EB090129DB0279EBAE20A3A3135D79"
+    },
+    {
+      "name": "OcctSharp.Foundation.8.0.1-preview.85.nupkg",
+      "log": "OcctSharp\\artifacts\\cadoryx-public-sdk85\\remote-packages\\OcctSharp.Foundation.8.0.1-preview.85.nupkg.verify.log",
+      "state": "PASS",
+      "sha256": "B53605EEAC3C34D4432FB68CC65137669F4E25A89ECFF46C862ED01249E28845"
+    },
+    {
+      "name": "OcctSharp.Geometry.8.0.1-preview.85.nupkg",
+      "log": "OcctSharp\\artifacts\\cadoryx-public-sdk85\\remote-packages\\OcctSharp.Geometry.8.0.1-preview.85.nupkg.verify.log",
+      "state": "PASS",
+      "sha256": "8C569567C0D660F7BA41478CB58DF031E4E04B89A2C579F64248FA2F2D01467E"
+    },
+    {
+      "name": "OcctSharp.IVtk.8.0.1-preview.85.nupkg",
+      "log": "OcctSharp\\artifacts\\cadoryx-public-sdk85\\remote-packages\\OcctSharp.IVtk.8.0.1-preview.85.nupkg.verify.log",
+      "state": "PASS",
+      "sha256": "08C341F3C2F9B7C3E6806E613846EC5B16F5868D3BB8A81ECEE84985ABF1FC61"
+    },
+    {
+      "name": "OcctSharp.Mesh.8.0.1-preview.85.nupkg",
+      "log": "OcctSharp\\artifacts\\cadoryx-public-sdk85\\remote-packages\\OcctSharp.Mesh.8.0.1-preview.85.nupkg.verify.log",
+      "state": "PASS",
+      "sha256": "907561CBF7C159B3BE929844DF50D455C6EFFFBD9C60356E698D8BB80CEC52FB"
+    },
+    {
+      "name": "OcctSharp.MeshData.8.0.1-preview.85.nupkg",
+      "log": "OcctSharp\\artifacts\\cadoryx-public-sdk85\\remote-packages\\OcctSharp.MeshData.8.0.1-preview.85.nupkg.verify.log",
+      "state": "PASS",
+      "sha256": "257DEC77B089591BC1E68AD33EB5FCA813C68CCDE96B1500C18FCBEB32D89692"
+    },
+    {
+      "name": "OcctSharp.Modeling.8.0.1-preview.85.nupkg",
+      "log": "OcctSharp\\artifacts\\cadoryx-public-sdk85\\remote-packages\\OcctSharp.Modeling.8.0.1-preview.85.nupkg.verify.log",
+      "state": "PASS",
+      "sha256": "F440CF994881C3DFE44E46941767FF26D2C0043831FAE7309D9D62A8C041616B"
+    },
+    {
+      "name": "OcctSharp.Native.win-x64.8.0.1-preview.85.nupkg",
+      "log": "OcctSharp\\artifacts\\cadoryx-public-sdk85\\remote-packages\\OcctSharp.Native.win-x64.8.0.1-preview.85.nupkg.verify.log",
+      "state": "PASS",
+      "sha256": "387A6E166A56556018A493C176AA9DB6710C4D8B12379B818D18D3A0FB8E13F6"
+    },
+    {
+      "name": "OcctSharp.Runtime.8.0.1-preview.85.nupkg",
+      "log": "OcctSharp\\artifacts\\cadoryx-public-sdk85\\remote-packages\\OcctSharp.Runtime.8.0.1-preview.85.nupkg.verify.log",
+      "state": "PASS",
+      "sha256": "587CC29D9B644491D958E91FED9B02EC8B064E68C677A49645340574F0E44F18"
+    },
+    {
+      "name": "OcctSharp.Visualization.8.0.1-preview.85.nupkg",
+      "log": "OcctSharp\\artifacts\\cadoryx-public-sdk85\\remote-packages\\OcctSharp.Visualization.8.0.1-preview.85.nupkg.verify.log",
+      "state": "PASS",
+      "sha256": "1FBB0E169EDDFA492F8D12D9DC16B4A44FE7CC82D7ED5F3CAD5F2273A6FFDE57"
+    },
+    {
+      "name": "OcctSharp.Xde.8.0.1-preview.85.nupkg",
+      "log": "OcctSharp\\artifacts\\cadoryx-public-sdk85\\remote-packages\\OcctSharp.Xde.8.0.1-preview.85.nupkg.verify.log",
+      "state": "PASS",
+      "sha256": "C19C49295156C5412DE3DC31EC6FBACF4C1432430E1EB928C81A55BE0C9609EA"
+    }
+  ],
+  "count": 14,
+  "state": "PASS",
+  "repositorySigning": "VERIFIED"
+}

@@ -25,6 +25,8 @@ capability-evidence/diagnostics/af-status225-continuation/* -text whitespace=cr-
 capability-evidence/AF_PENDING_F5_DRAWING_RECOVERY_CONTEXT_*.json -text whitespace=cr-at-eol
 capability-evidence/AF_PENDING_STATUS225_*.json -text whitespace=cr-at-eol
 capability-evidence/AF_PENDING_D6_SDK30_INTEGRATION_REVIEW.diff -text whitespace=cr-at-eol,-blank-at-eol
+capability-evidence/AF_PENDING_PUBLIC_NUGET_*.json -text whitespace=cr-at-eol
+capability-evidence/diagnostics/public-nuget-migration/** -text whitespace=cr-at-eol
 
 ###############################################################################
 # Set default behavior for command prompt diff.

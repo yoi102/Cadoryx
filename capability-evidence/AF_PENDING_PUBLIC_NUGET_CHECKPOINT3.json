@@ -1,0 +1,78 @@
+{
+  "recordedAt": "2026-10-12T06:57:53.603663+00:00",
+  "state": "USER_AUTHORIZED_VCPKG_RESTORE_BUILD_ADDED_PUBLIC_CONSUMER_PREPARATION_CONTINUES",
+  "previousCheckpoint": {
+    "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\capability-evidence\\AF_PENDING_PUBLIC_NUGET_CHECKPOINT2.json",
+    "sha256": "8F399566196F8DD765E245C9B73B284A8642572BF28A984C8FACEBED41348406"
+  },
+  "checkpoint2ExactScriptSnapshots": [
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\capability-evidence\\diagnostics\\public-nuget-migration\\public-scripts-before-native-manifest\\verify-public-occt-restore.ps1",
+      "sha256": "3E52934DB103E45C489ED20698F0A807506877AC4B649E8102CF8A14C4ED9C4F"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\capability-evidence\\diagnostics\\public-nuget-migration\\public-scripts-before-native-manifest\\verify-public-occt-locks-checkpoint2.ps1",
+      "sha256": "7ED6EE2EAC16B029E6C9D0CC956ECA1549947DD8DAE54C0EACF7280E3564DB19"
+    }
+  ],
+  "currentConsumerScripts": [
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\scripts\\nuget-package-cache.ps1",
+      "sha256": "9A7FF88E2EEB94EF6304D54F2F84B1FA16BB49AA27496B382FBE60350BE3E7BC"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\scripts\\verify-public-occt-restore.ps1",
+      "sha256": "FC7723BD383AEE2C353D0F99E0656876AEDA3F98F0C7D0BE315E5CB7211CF6A9"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\scripts\\verify-public-occt-locks.ps1",
+      "sha256": "6AB73338557C44E7376BB322C3E8B3D0A76FA29456BD994F550D2B5A6F1F8A31"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\scripts\\verify-publisher-native-manifest.ps1",
+      "sha256": "26D00367FA27D201C3E00F5B64277A64DBECD190615AE32D38D099002F2BA9A7"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\scripts\\verify-public-occt-lock-fixtures.ps1",
+      "sha256": "7543020386D097284401FECC5E3DD3D23C4C7C97EB83C4110EE7011E8B03A56D"
+    }
+  ],
+  "publisherNativeManifestMetadataFixtures": {
+    "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\capability-evidence\\diagnostics\\public-nuget-migration\\publisher-manifest-fixture-verification.json",
+    "sha256": "B9C2927F7D80332AAF0428D8773411F21FF855EEB235E4672586EB21E55AD1F0"
+  },
+  "syntheticConsumerMetadataFixtures": {
+    "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\capability-evidence\\diagnostics\\public-nuget-migration\\public-lock-fixture-verification.json",
+    "sha256": "3B883E024BA8DF6B534344480C28CC20C5078F733BCBE64459739BCF02A2B9DA"
+  },
+  "pinnedVcpkgReadOnlyAudit": {
+    "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\capability-evidence\\diagnostics\\public-nuget-migration\\vcpkg-baseline-audit.json",
+    "sha256": "CF25AB5F42778E57266821DD4A2800B577CE53E0A690BD63A36C319CF11D6D96"
+  },
+  "upstreamDependencyBuildOwner": "01a0f7b3-ff5f-7cb0-bff9-a5caad1a49b0",
+  "upstreamReportedSdk85": {
+    "generatorPassed": 410,
+    "nativeReleaseCompiled": true,
+    "runtimePassed": 2251,
+    "runtimeFailed": 4,
+    "runtimeTotal": 2255,
+    "note": "CB/CC visible-selection repaint assertions remain under diagnosis; no tolerance/assertion relaxation."
+  },
+  "priorityLeaseBefore": {
+    "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\capability-evidence\\diagnostics\\public-nuget-migration\\priority-lease-before-extension1.json",
+    "sha256": "01A5EE764B52688DBCA51BD8F328F5EEA7CA065C95ADA43F72D6C1FC05C35D5B"
+  },
+  "priorityLeaseAfter": {
+    "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\capability-evidence\\diagnostics\\public-nuget-migration\\priority-lease-after-extension1.json",
+    "sha256": "1B85934D79974E57415E178E2C291F2A7F98B55C5AB2FDCC31A4BF66750D577E"
+  },
+  "originalSchedulingMaximumHours": 6,
+  "originalConsumersStopped": false,
+  "publicConsumersActuallyRun": false,
+  "vcpkgRestoreOrBuildActuallyRun": false,
+  "publicationConfirmed": false,
+  "productionPackageChanged": false,
+  "cleanupInCadoryx": false,
+  "AF": "ACTIVE",
+  "G": "USER_DEFERRED"
+}

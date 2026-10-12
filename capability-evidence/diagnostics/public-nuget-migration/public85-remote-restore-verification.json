@@ -1,0 +1,418 @@
+{
+  "configSha256": "4A306A666C61434D55145B932F9CE1E73149BF1A9E600708045C89ED0DDCBFFC",
+  "source": "https://api.nuget.org/v3/index.json",
+  "publisherRuntimeManifestSha256": "C7989B6724B0C0EF6963642CD22EBC05D216171EC97D3DA5D0F7FBB2C2DF625F",
+  "G": "USER_DEFERRED",
+  "stages": [
+    {
+      "exitCode": 0,
+      "stage": "restore"
+    },
+    {
+      "exitCode": 0,
+      "stage": "restore-locked"
+    }
+  ],
+  "AF": "ACTIVE",
+  "runtimePassed": false,
+  "packages": [
+    {
+      "sha256": "9045064006E2ADB018BB358D9EDB5F77340AE118AA15B702D2DDACA40BB0F8DF",
+      "id": "OcctSharp",
+      "signatureVerified": true,
+      "archive": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\public85-remote-restore-2\\packages\\occtsharp\\8.0.1-preview.85\\occtsharp.8.0.1-preview.85.nupkg",
+      "source": "https://api.nuget.org/v3/index.json",
+      "archiveSha512": "fC6y/M6827AretAKB/ki2O6lfl/KagpT93MX4tOYX8pvPlPTuTy5LLKwW59etyx3P59sNOsnXO2FzdKbp5op/Q==",
+      "contentHash": "Kq698+WLgr8b4aGCZA5QP2FBb14Y+Qc0QB/V8ZGDrMsfvTNfDRDSjjYJo6jGGotIo4uZzSOGw9ZdyW9gBRK1XQ==",
+      "version": "8.0.1-preview.85"
+    },
+    {
+      "sha256": "D90C9B106CE736FADC50769F389548A914FBEF6C5DD73DA6E0CE5C86B272F2B9",
+      "id": "OcctSharp.DataExchange",
+      "signatureVerified": true,
+      "archive": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\public85-remote-restore-2\\packages\\occtsharp.dataexchange\\8.0.1-preview.85\\occtsharp.dataexchange.8.0.1-preview.85.nupkg",
+      "source": "https://api.nuget.org/v3/index.json",
+      "archiveSha512": "40Yrw7gVOVUGwlygTFPPHkiD82+4/NX91dfshLL4EXJ6dR0oyS2K18ftuHkuSowfX0quwaQp7Hs+Jz0AhRswag==",
+      "contentHash": "y8bZFI6BS57Jv6Ur2L6CUfZMoka/QA/8elL21FCQYjQmLtp0ihTvFXD6PnPH7SSZuiZpo0bmy5gZES6Ajgur1Q==",
+      "version": "8.0.1-preview.85"
+    },
+    {
+      "sha256": "DC738BD0F5E9712E711C51FC23AAE6481364A18EB913451A9F2DCA726C5FADA5",
+      "id": "OcctSharp.Documents",
+      "signatureVerified": true,
+      "archive": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\public85-remote-restore-2\\packages\\occtsharp.documents\\8.0.1-preview.85\\occtsharp.documents.8.0.1-preview.85.nupkg",
+      "source": "https://api.nuget.org/v3/index.json",
+      "archiveSha512": "Zt9XgtFU31LgCeBcwaDytqC+sosmnvmJUp8r8kHEt8u59+kgucENvdQ2jV8J7Z0QbNzD6LkTdG+aIH6KHWu9FA==",
+      "contentHash": "WQx9bdL7wgKvo9S/z1g0A1Wev8kz6DWlx0LFJiFgJchQOBQRvEnOpEwCqVQitPwfp9dbdr9Iy9QQZkZDBT+wDA==",
+      "version": "8.0.1-preview.85"
+    },
+    {
+      "sha256": "BCDBC8DDE26E20547058FB0A5D19FFCAD5EB090129DB0279EBAE20A3A3135D79",
+      "id": "OcctSharp.Draw",
+      "signatureVerified": true,
+      "archive": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\public85-remote-restore-2\\packages\\occtsharp.draw\\8.0.1-preview.85\\occtsharp.draw.8.0.1-preview.85.nupkg",
+      "source": "https://api.nuget.org/v3/index.json",
+      "archiveSha512": "0AHRekX36we/X4uLrhU+kKexS5+QLBztaNokXlS6L8E1UFhcd8y+PKDddEaxPHencmW4ylX+qyDBF8jAqE1EUA==",
+      "contentHash": "iQPQnatgolRm8RusZAEYZwrudzUq63CeE8PJnlVxic4rzPJ63pnLKy2rjvJGWnPbBZAf5PIaov2pEb0F1Nosxg==",
+      "version": "8.0.1-preview.85"
+    },
+    {
+      "sha256": "B53605EEAC3C34D4432FB68CC65137669F4E25A89ECFF46C862ED01249E28845",
+      "id": "OcctSharp.Foundation",
+      "signatureVerified": true,
+      "archive": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\public85-remote-restore-2\\packages\\occtsharp.foundation\\8.0.1-preview.85\\occtsharp.foundation.8.0.1-preview.85.nupkg",
+      "source": "https://api.nuget.org/v3/index.json",
+      "archiveSha512": "4WAFyXpeySRCWid7D3dd8D3qDLOS6Lx48bRlrotzAU2DV7FEipgUKStjQCWtwAu0PnVotImLQPUdy+tvxs4xDg==",
+      "contentHash": "Lf7urSm2XXpjdTf6496hTcwDsVoQKzBIEuCvt7KNKahIxzqa7ug1Z/xJzJj19gRi3yfEUaVk5whjzylVMeGm6g==",
+      "version": "8.0.1-preview.85"
+    },
+    {
+      "sha256": "8C569567C0D660F7BA41478CB58DF031E4E04B89A2C579F64248FA2F2D01467E",
+      "id": "OcctSharp.Geometry",
+      "signatureVerified": true,
+      "archive": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\public85-remote-restore-2\\packages\\occtsharp.geometry\\8.0.1-preview.85\\occtsharp.geometry.8.0.1-preview.85.nupkg",
+      "source": "https://api.nuget.org/v3/index.json",
+      "archiveSha512": "P9hDacI07CWQ9B1SGSvYKRQpnDanm2YycLINjv3ra1dVfX/BbOuVAaEPVjkEozf/FOV6n32IQ2nXUbOEdP0+xA==",
+      "contentHash": "s8V+BNwu2pSh/LrFPO5wcJq8F2pfwzS8N7bHWenLToKmqV8uHwkvzrzncffvfQZFxfqlcpJ9u6t34DO7AecDrg==",
+      "version": "8.0.1-preview.85"
+    },
+    {
+      "sha256": "08C341F3C2F9B7C3E6806E613846EC5B16F5868D3BB8A81ECEE84985ABF1FC61",
+      "id": "OcctSharp.IVtk",
+      "signatureVerified": true,
+      "archive": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\public85-remote-restore-2\\packages\\occtsharp.ivtk\\8.0.1-preview.85\\occtsharp.ivtk.8.0.1-preview.85.nupkg",
+      "source": "https://api.nuget.org/v3/index.json",
+      "archiveSha512": "6oD+8i6zcPm1CJ5I5KIBNP/dD1oOv41SyyMYV9nBGmTZHhuiyGHOpY9BPsHTxOMDzdlw5DLkwtOPPqD2z4n49g==",
+      "contentHash": "hHyujzAlmYNcztR7rikN2IgESD4SciqhtPlLrb+G1GcWjttieIgg7U95nW+cyP1KUFOrmY41+daw26BPQyOeMg==",
+      "version": "8.0.1-preview.85"
+    },
+    {
+      "sha256": "907561CBF7C159B3BE929844DF50D455C6EFFFBD9C60356E698D8BB80CEC52FB",
+      "id": "OcctSharp.Mesh",
+      "signatureVerified": true,
+      "archive": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\public85-remote-restore-2\\packages\\occtsharp.mesh\\8.0.1-preview.85\\occtsharp.mesh.8.0.1-preview.85.nupkg",
+      "source": "https://api.nuget.org/v3/index.json",
+      "archiveSha512": "eipxVPo/5hi7g0GDurzGvA6rpa0ZlXq5K9EHcmKFOiMKpvApV2dVRAOl20+/MmamEKw30AqLVAQ0Iq5Pwm4FYA==",
+      "contentHash": "MICH2caIIiwzMOEGUR96Y0OTHbaMSwmbjY1Bg7z/DOz8dY1DhcdhauVDZQPnQobNieouarc4wjZgSWCBdD0Txg==",
+      "version": "8.0.1-preview.85"
+    },
+    {
+      "sha256": "257DEC77B089591BC1E68AD33EB5FCA813C68CCDE96B1500C18FCBEB32D89692",
+      "id": "OcctSharp.MeshData",
+      "signatureVerified": true,
+      "archive": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\public85-remote-restore-2\\packages\\occtsharp.meshdata\\8.0.1-preview.85\\occtsharp.meshdata.8.0.1-preview.85.nupkg",
+      "source": "https://api.nuget.org/v3/index.json",
+      "archiveSha512": "uoMMif4dQz0NQYyE+gcy9bNMr5g8A4VbzWxBFk3rFDfaG2RNPxwgAA3M209Y3zbGKEfKv/Nx9Ncvf1oeCk7zNg==",
+      "contentHash": "mtPBjhYfDk50DpJuJ4yt1xlAvY67CBCPn4Zvnj03Fzj6/qarjXFPA146hDCpUVYBl7hAdrJCv9vlkWZsf402Mw==",
+      "version": "8.0.1-preview.85"
+    },
+    {
+      "sha256": "F440CF994881C3DFE44E46941767FF26D2C0043831FAE7309D9D62A8C041616B",
+      "id": "OcctSharp.Modeling",
+      "signatureVerified": true,
+      "archive": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\public85-remote-restore-2\\packages\\occtsharp.modeling\\8.0.1-preview.85\\occtsharp.modeling.8.0.1-preview.85.nupkg",
+      "source": "https://api.nuget.org/v3/index.json",
+      "archiveSha512": "QpIHnchZZm6jRimzaxq09ErR2duXBCwYFl+wTmfMySNj2r7CnASBxhcQDjUPz8W7dwuDieI9g18Qi8VDsFepIA==",
+      "contentHash": "ldravbY9KjqXVgCDomBlsQBQXfOKYzDq1Sxvpm1vEU2LQNs3/MU3068pXMw5FHkzQPaZyLWTul57W6eI0HdZ2A==",
+      "version": "8.0.1-preview.85"
+    },
+    {
+      "sha256": "387A6E166A56556018A493C176AA9DB6710C4D8B12379B818D18D3A0FB8E13F6",
+      "id": "OcctSharp.Native.win-x64",
+      "signatureVerified": true,
+      "archive": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\public85-remote-restore-2\\packages\\occtsharp.native.win-x64\\8.0.1-preview.85\\occtsharp.native.win-x64.8.0.1-preview.85.nupkg",
+      "source": "https://api.nuget.org/v3/index.json",
+      "archiveSha512": "Oa5IMm5cKUNY0kxmBZrRR2BysW/of0ZKADql2nh8+XdMv6ZJURlqagO8DpfsCNMpWPcwBQyzPEP8kHtslsx+fQ==",
+      "contentHash": "/wJ1dXOaq600VfsAsltyNVdjfyVKmaMCTc2BIhXXyH/cJrhVqwL0gcI1+sL0X8dpu92+weBQ2ZafqCu+xAiXcg==",
+      "version": "8.0.1-preview.85"
+    },
+    {
+      "sha256": "587CC29D9B644491D958E91FED9B02EC8B064E68C677A49645340574F0E44F18",
+      "id": "OcctSharp.Runtime",
+      "signatureVerified": true,
+      "archive": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\public85-remote-restore-2\\packages\\occtsharp.runtime\\8.0.1-preview.85\\occtsharp.runtime.8.0.1-preview.85.nupkg",
+      "source": "https://api.nuget.org/v3/index.json",
+      "archiveSha512": "+526ndscgc3LEuVNgkS9TQob//gUM+CMt3qgtGm2BPPoa7rAnKSKxZZguyEuP7gZyvf/bQdkT1YQOhDxgrNCrw==",
+      "contentHash": "hmTPhHP2XWm65vKzf9IRB1TfIuk6HiB/iYIpiOWTqNhwMiycs66GEpVtbnNDG1PS0cAsqYoArJm+RX51ACOrOA==",
+      "version": "8.0.1-preview.85"
+    },
+    {
+      "sha256": "1FBB0E169EDDFA492F8D12D9DC16B4A44FE7CC82D7ED5F3CAD5F2273A6FFDE57",
+      "id": "OcctSharp.Visualization",
+      "signatureVerified": true,
+      "archive": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\public85-remote-restore-2\\packages\\occtsharp.visualization\\8.0.1-preview.85\\occtsharp.visualization.8.0.1-preview.85.nupkg",
+      "source": "https://api.nuget.org/v3/index.json",
+      "archiveSha512": "FJMRMlfV1QxfqppjXGG9qu1x6/Ogw/wGez3nhwWdX9vsTfXjsa67XR0ocQRkrNcmx7zKPogJnkpj/HABFMJhnQ==",
+      "contentHash": "3HlL4udgic+lVM6SDCYn0+MwL+ejlAytzmhWzkKfOer1JVTyhvsi+7mbhlPIegb0U3jByUC5oJLt9DE6Hr4MFQ==",
+      "version": "8.0.1-preview.85"
+    },
+    {
+      "sha256": "C19C49295156C5412DE3DC31EC6FBACF4C1432430E1EB928C81A55BE0C9609EA",
+      "id": "OcctSharp.Xde",
+      "signatureVerified": true,
+      "archive": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\public85-remote-restore-2\\packages\\occtsharp.xde\\8.0.1-preview.85\\occtsharp.xde.8.0.1-preview.85.nupkg",
+      "source": "https://api.nuget.org/v3/index.json",
+      "archiveSha512": "1cSQceD0a+Qj9/yxGM8AKe4B7EnzuA/FtG6JMGqyVivls9WNMhHHetzAs5KDBa3ZNkOuiz0BBfwkxW25Uxsg3Q==",
+      "contentHash": "vEfiUWatDr9ecCYfRycnvflfNDVm+lmn5KtjEj53XcgozN047Yt+QPtJtqcFIKNJ/c3+g2FNMFtaMZNeF1ytXQ==",
+      "version": "8.0.1-preview.85"
+    }
+  ],
+  "nativeAbi": "1.118",
+  "productionApplied": false,
+  "bridgeVersion": "0.133.0",
+  "state": "PASS_FRESH_PUBLIC_ONLY_14_PACKAGE_LOCKED_RESTORE_EXACT_NATIVE_DISK_PAYLOAD_RUNTIME_NOT_RUN",
+  "cleanup": false,
+  "recordedAt": "2026-10-12T10:09:17.2228051+00:00",
+  "lockSha256": "AF5907ED193CBE437548884D921BBA8D5D94EA22CB1D1BEFCFB4B9F46543A27A",
+  "native": [
+    {
+      "sha256": "4594BD0538F7F6B05148B00996FF36DDFEDEF8D66910E931503DCFEBF8EFE1DB",
+      "name": "FreeImage.dll"
+    },
+    {
+      "sha256": "D44F3F272386EA2CC87E7107AB2E3375D8100283872372F1FBC234A3B4E38CB3",
+      "name": "OcctSharp.Native.dll"
+    },
+    {
+      "sha256": "41F837935BCC65882ACD73295EF65CA13D47B018ACDCB6093FAF47804B96D0C5",
+      "name": "TKBO.dll"
+    },
+    {
+      "sha256": "A511C8CF51178CF881C3BA0B54287DCECE6DED03CF3DE99E6FABF2A2D5152207",
+      "name": "TKBRep.dll"
+    },
+    {
+      "sha256": "B27B08FFBE07C1FACA441897E6D807062D01F453BD847175CAE999B15AD31D96",
+      "name": "TKBin.dll"
+    },
+    {
+      "sha256": "A8A87E784C6AD97DAF773926A106E8904ABEF77AE30CAD602DD236A0FE376378",
+      "name": "TKBinL.dll"
+    },
+    {
+      "sha256": "F482E7F3A3526150C537E3DD6CDDDBD6B4E38B29C62AC3CF3F81D9E97A296EAB",
+      "name": "TKBinTObj.dll"
+    },
+    {
+      "sha256": "BE1F35F341A9BC1EF26DB6721AFE727747CC97053A86ADA5A51C03E4C43EBA3A",
+      "name": "TKBinXCAF.dll"
+    },
+    {
+      "sha256": "FA76C5374AE85E1649F27DA41ED0B45EC36C68C413ACE84554198CF39D11DAFD",
+      "name": "TKBool.dll"
+    },
+    {
+      "sha256": "E78FD6196F7356FFA541A015CB6DF481E9999D8E813E2D7A5D914CA6205614AE",
+      "name": "TKCAF.dll"
+    },
+    {
+      "sha256": "9BCCAB992DA8F4069CB4020A064D67DF507309CA679AD20BB97A9B5FB0797A3A",
+      "name": "TKCDF.dll"
+    },
+    {
+      "sha256": "0EB1591D44FFF265C3870865013C7FCBDE9F9B7DF79903ED0116AC1C93DE10BE",
+      "name": "TKD3DHost.dll"
+    },
+    {
+      "sha256": "2F0E1C9BD86C367B36DC7519502B095DE0DEE910D1F86B5B39BA962790A0D0C5",
+      "name": "TKDE.dll"
+    },
+    {
+      "sha256": "6E65801F138067283CA2355F7E43FF5BF30502E0CB6F782F33245E7B5096F5A1",
+      "name": "TKDECascade.dll"
+    },
+    {
+      "sha256": "636F0E11859C256774B1004617E643D5EFDC415F993A464D73A82F4618CC902A",
+      "name": "TKDEGLTF.dll"
+    },
+    {
+      "sha256": "3D16433A5CA16D36DFDFE168AF7F7C0645093CDC6C80CA38A157BC84769E43F9",
+      "name": "TKDEIGES.dll"
+    },
+    {
+      "sha256": "C09644DE8F5AFEA74C531054F713132823F0020F28A889229AE2E762D8CA121D",
+      "name": "TKDEOBJ.dll"
+    },
+    {
+      "sha256": "35DAFA5EFACF1DFECCB3E01D560547630142B4C52FFAC5CE4CAE726DFBD31262",
+      "name": "TKDEPLY.dll"
+    },
+    {
+      "sha256": "DC010933AEF4481083D21F77ADFAEE6ACEADE87D5F454AD5F4743F07A00B4DF6",
+      "name": "TKDESTEP.dll"
+    },
+    {
+      "sha256": "68488A4FD4B3C426123BD9969F5E42DD335A89CEA2FFA4E147452653F1BB63A1",
+      "name": "TKDESTL.dll"
+    },
+    {
+      "sha256": "7F30F93D81398A61F5E52997494C43ABFABD868009273B4492B1E2B8DD105F7A",
+      "name": "TKDEVRML.dll"
+    },
+    {
+      "sha256": "2535B5993A42E41C6E35E5EA50574953D0BC5705EAE70D596C1194E5B9C8E872",
+      "name": "TKExpress.dll"
+    },
+    {
+      "sha256": "05F968C96DD0C170463B09F0121DB70E3DB720250634959C91C42396F9437141",
+      "name": "TKFeat.dll"
+    },
+    {
+      "sha256": "6ACCA10E58155ECAA1621DCECF395463C6560D4A3B63729BD7688ED7B15A38F5",
+      "name": "TKFillet.dll"
+    },
+    {
+      "sha256": "0D87A20363CFB66F7862FBC9AA7234059D13712B3A0D7E6B35CBB0172810A93C",
+      "name": "TKG2d.dll"
+    },
+    {
+      "sha256": "8A13921267C5839C0D8D4395DAE33FC5C1F80F8D03C0D8C0CEB153AA3DA35C6C",
+      "name": "TKG3d.dll"
+    },
+    {
+      "sha256": "154E047A29217C0FAF101EC0B8119D6D327E89560CD82CB18D17EC48D508883B",
+      "name": "TKGeomAlgo.dll"
+    },
+    {
+      "sha256": "6BD91D22B6A893884BA74FEC8C352F68BCF0F79096D00F52119D4810EF42567E",
+      "name": "TKGeomBase.dll"
+    },
+    {
+      "sha256": "499F63A9335A17F8D2903DB1D56E27EE2DEAD324E35EFE46E2A9FAC8A8BF6F89",
+      "name": "TKHLR.dll"
+    },
+    {
+      "sha256": "B95F60B662FFF3BBDC7A768AA1DF664468187C3638AC562B5C87C8B9C6808DFF",
+      "name": "TKHelix.dll"
+    },
+    {
+      "sha256": "C51A1DA060562BA8855C02A091D849A575459FEE3ED80543358F9113871DAF9D",
+      "name": "TKLCAF.dll"
+    },
+    {
+      "sha256": "2C41EFC32C025D1E7753548498027AA240D315B455BF36130432EA23E5860A2A",
+      "name": "TKMath.dll"
+    },
+    {
+      "sha256": "143337A5BF7128B7D5F50B33129D70EE4B4E9669F9166D89AF732444A221F95F",
+      "name": "TKMesh.dll"
+    },
+    {
+      "sha256": "7CF4CEC11EC0B9A7AFF012442A9E868932B74848E46CAA79DC091175A18DD9DD",
+      "name": "TKMeshVS.dll"
+    },
+    {
+      "sha256": "B3145BF379A12F46C68B206966679252CB36C0616C1A3D73D572033CB3EFCF8F",
+      "name": "TKOffset.dll"
+    },
+    {
+      "sha256": "8C47BB81B4D9F712E557864A67A31637DFF74D83D92B83AEE6960A673CBA07E7",
+      "name": "TKOpenGl.dll"
+    },
+    {
+      "sha256": "37DE279166407566D7FFF2DD063638FDF1F8DC89C0D030E550AA4868585F49DD",
+      "name": "TKPrim.dll"
+    },
+    {
+      "sha256": "49A61A27309032C374ED78ED205DC89860C4D5D510A7160AE4A5CF85CC7DAC1C",
+      "name": "TKRWMesh.dll"
+    },
+    {
+      "sha256": "B16E5AEB5213D9586A606C6443246C0D77CE52B117A54A4E523FD9E0BB41AAE6",
+      "name": "TKService.dll"
+    },
+    {
+      "sha256": "91E87BD3E5A3267C4A2D97B171EA05FA21FE1B78A2B905F7CF7E3CF19F5CD43E",
+      "name": "TKShHealing.dll"
+    },
+    {
+      "sha256": "7366BFDEF0BE23AE8C0D9FD7AB1676CCC4F8CCD7DEFC53ADD1B4BDC3E91F5660",
+      "name": "TKStd.dll"
+    },
+    {
+      "sha256": "4EE319E9CD1D1DFF7337B1F03EC8FB2CCBAD0AE0AB8A18FA8EBBF2DBB3113B61",
+      "name": "TKStdL.dll"
+    },
+    {
+      "sha256": "B1491D455B088B13BC332260804DBE53E7FBF8E495A3271759C14334CD3A1196",
+      "name": "TKTObj.dll"
+    },
+    {
+      "sha256": "6690CE35FCF32BD2C379D12A21ABDE6BAF023087F3EEFBCCC5AE40E416B0B107",
+      "name": "TKTopAlgo.dll"
+    },
+    {
+      "sha256": "5356773B60EAF73345AE6822369EB8B721A9D18EABA925491870E24CBA651BD9",
+      "name": "TKV3d.dll"
+    },
+    {
+      "sha256": "94948F34AD0696D0D4CA404DA4369B348B0B3C1241EEE1E42DAD87353E5629BF",
+      "name": "TKVCAF.dll"
+    },
+    {
+      "sha256": "64095FF4FFA3BDD41BD17FFFDC39F9490CE34C2EF59AAB427C71DEAA6F3B791A",
+      "name": "TKXCAF.dll"
+    },
+    {
+      "sha256": "302BFC3CB41C8EF00548A974C28F86BD194D6267FA31F080227D8D765BC8E9D3",
+      "name": "TKXMesh.dll"
+    },
+    {
+      "sha256": "3978FEC70540BD0B369FF01263BA341E01A57E308F5EA1788B5DC56B1A851AA7",
+      "name": "TKXSBase.dll"
+    },
+    {
+      "sha256": "9904AAF0435D24E7B89BA094FCB96708942A33B4DFD88241968CE6054B3AF811",
+      "name": "TKXml.dll"
+    },
+    {
+      "sha256": "7477A1A138630480D9D42CBAF04637322CD96DCA19880694DEC6A60C77532BCC",
+      "name": "TKXmlL.dll"
+    },
+    {
+      "sha256": "689187644BA9103F9288B2BC22208998A933F68CFE19D9B259EBD78DE58FE939",
+      "name": "TKXmlTObj.dll"
+    },
+    {
+      "sha256": "CECC1712C731DCC0DDC4E855FBFF9EC8D159F83141FB0E5C010A2ECDFB0CEE13",
+      "name": "TKXmlXCAF.dll"
+    },
+    {
+      "sha256": "3ECBC7F193EBB746CC88A81E03EB603D24FDF03470B346551698F45D4FAEB7B4",
+      "name": "TKernel.dll"
+    },
+    {
+      "sha256": "4D7A6A2CFF37C782CE1A3C74FA83EBBEBCC43DFC774E3F497A406C84C1458C7E",
+      "name": "avcodec-57.dll"
+    },
+    {
+      "sha256": "297D3207DD0E6325DAB7A080472A4FD2F743CFC53861615B4DC96B91227CD3AF",
+      "name": "avformat-57.dll"
+    },
+    {
+      "sha256": "BE7C03FF47618916D16AF446E2F7C00E48F2FF8934C6ACE4C0D0E3D804732E8E",
+      "name": "avutil-55.dll"
+    },
+    {
+      "sha256": "637621E4AE51B496B8A86F9B053050D5AF2BA999EA0680BBFE3D5DF91F976C75",
+      "name": "freetype.dll"
+    },
+    {
+      "sha256": "EA0CFCF6A12BB3863961074547C958FD978AA3F800244CC4FE2847B127C4DF5E",
+      "name": "jemalloc.dll"
+    },
+    {
+      "sha256": "71DB78E77E577DB6D0666C25437695D42CEAFB9C7F8DA94FBE765525B8E2F5F2",
+      "name": "openvr_api.dll"
+    },
+    {
+      "sha256": "67BCFFB3CCDAEBF2BBD3149542D92DD9430ABFDFF1D7B79B3A529AF712926412",
+      "name": "swscale-4.dll"
+    },
+    {
+      "sha256": "887888A0C2FFE7F64718D4EEA2A10CE41C68DEC1A954DB3A62646ADEEE66C0AD",
+      "name": "tbb12.dll"
+    }
+  ],
+  "version": "8.0.1-preview.85"
+}

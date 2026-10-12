@@ -1,0 +1,7 @@
+VSTest version 18.7.0 (x64)
+
+Starting test execution, please wait...
+A total of 1 test files matched the specified pattern.
+Results File: C:\Users\yoiri\source\repos\OcctSharp\OcctSharp\artifacts\cadoryx-public-sdk85\vcpkg-media-runtime-debug\run-2ded7dcb2d9e4c938e47095542fecf37\vcpkg-runtime.trx
+
+Passed!  - Failed:     0, Passed:  2255, Skipped:     0, Total:  2255, Duration: 5 m 35 s - OcctSharp.Runtime.Tests.dll (net10.0)

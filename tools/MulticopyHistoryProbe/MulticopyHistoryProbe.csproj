@@ -3,11 +3,10 @@
     <OutputType>Exe</OutputType>
     <PlatformTarget>x64</PlatformTarget>
     <RuntimeIdentifier>win-x64</RuntimeIdentifier>
-    <MulticopySdkVersion>8.0.1-preview.31.cadoryx.curve-inspection.9</MulticopySdkVersion>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="OcctSharp" Version="[$(MulticopySdkVersion)]" />
-    <PackageReference Include="OcctSharp.Native.win-x64" Version="[$(MulticopySdkVersion)]" />
+    <PackageReference Include="OcctSharp" Version="[$(OcctSharpVersion)]" />
+    <PackageReference Include="OcctSharp.Native.win-x64" Version="[$(OcctSharpVersion)]" />
     <Compile Include="../../Cadoryx.Kernel.Occt/BrepDirectionRoundtrip.cs" Link="BrepDirectionRoundtrip.cs" />
   </ItemGroup>
 </Project>

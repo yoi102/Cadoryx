@@ -1,0 +1,13 @@
+{
+  "AF": "ACTIVE",
+  "requesterThread": "01a0f7b3-ff5f-7cb0-bff9-a5caad1a49b0",
+  "until": "2026-10-12T09:00:37.7937216+00:00",
+  "cleanup": false,
+  "originalMaximumWaitHours": 6,
+  "originalScopesChanged": false,
+  "recordedAt": "2026-10-12T06:00:37.7921823+00:00",
+  "currentDependency": "artifacts/b18-prescribed-complete-authors-draft-2/full6556-release-2/exit.json",
+  "purpose": "User-prioritized necessary generated OCCT API migration and public NuGet delivery",
+  "state": "HOLD_ONLY_NEXT_CAD_NATIVE_CONSUMER_CURRENT_FULL6556_RELEASE_UNINTERRUPTED",
+  "originalTestAndNativeBudgetsChanged": false
+}

@@ -1,0 +1,13 @@
+{
+  "state": "PASS",
+  "cases": [
+    "fresh exact closure",
+    "repeat accepts only exact installed copies",
+    "configuration-specific DLL set",
+    "foreign prefix rejected",
+    "modified copied DLL rejected",
+    "restored exact closure"
+  ],
+  "nativeDlls": 84,
+  "fixture": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-public-sdk85\\vcpkg-media-closure-tests\\698fc805bdb34144b1ff4cec1d3480da"
+}

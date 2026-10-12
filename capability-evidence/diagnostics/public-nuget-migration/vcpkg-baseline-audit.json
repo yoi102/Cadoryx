@@ -1,0 +1,59 @@
+{
+  "nativeRuntimeAcceptance": false,
+  "vcpkgBaseline": "e456309491fd875487bf02b8a0dca76c1b1b00cc",
+  "vcpkgToolRelease": "2026-09-26",
+  "occtCommit": "b8f597c677811d1f9f4d8a97f5ae2825c0353a42",
+  "sourceArchiveSha512": "bbe7099071cbf5397940ebc6e66ec05f8023d5e5aae6142870e14b93aa6f8f94c30980ef421e717f0fbfbc23b3520c3ccfe8a939c4caba3ccbf325060e26eb52",
+  "vcpkgRestoreRun": false,
+  "vcpkgBuildRun": false,
+  "publicationConfirmed": false,
+  "occtVersion": "8.0.1",
+  "state": "PINNED_VCPKG_OCCT_SOURCE_AND_DEPENDENCY_REGISTRY_AUDIT_RESTORE_BUILD_NOT_RUN",
+  "versions": [
+    {
+      "name": "opencascade",
+      "version": "8.0.1",
+      "portVersion": 0
+    },
+    {
+      "name": "freetype",
+      "version": "2.14.3",
+      "portVersion": 0
+    },
+    {
+      "name": "freeimage",
+      "version": "3.18.0",
+      "portVersion": 27
+    },
+    {
+      "name": "tbb",
+      "version": "2023.1.0",
+      "portVersion": 0
+    },
+    {
+      "name": "rapidjson",
+      "version": "2025-02-26",
+      "portVersion": 1
+    },
+    {
+      "name": "opengl",
+      "version": "2022-12-04",
+      "portVersion": 3
+    },
+    {
+      "name": "vcpkg-cmake",
+      "version": "2025-08-07",
+      "portVersion": 0
+    },
+    {
+      "name": "vcpkg-cmake-config",
+      "version": "2026-07-21",
+      "portVersion": 0
+    }
+  ],
+  "AF": "ACTIVE",
+  "publicBuildEntryOwner": "01a0f7b3-ff5f-7cb0-bff9-a5caad1a49b0",
+  "occtPortTree": "03ee9b71f9ce479ebafeab28f92182d13c779553",
+  "recordedAt": "2026-10-12T06:49:30.7614808+00:00",
+  "occtTagObject": "c5605924864829ce8c1e1477f976ffb3880538a8"
+}

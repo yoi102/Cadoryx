@@ -1,10 +1,12 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <OffsetFrozenDir Condition="'$(OffsetFrozenDir)' == ''">../../artifacts/b16-core-build-6/bin/Cadoryx.Tests/release</OffsetFrozenDir>
+    <OffsetFrozenDir Condition="'$(OffsetFrozenDir)' == ''">$(FrozenCadoryx)</OffsetFrozenDir>
   </PropertyGroup>
+  <Target Name="RequireFrozenApplication" BeforeTargets="ResolveReferences" Condition="'$(OffsetFrozenDir)'==''"><Error Text="Pass -p:OffsetFrozenDir=absolute frozen candidate or -p:FrozenCadoryx; this consumer must not rebuild Cadoryx." /></Target>
   <ItemGroup>
     <Reference Include="Cadoryx.Db"><HintPath>$(OffsetFrozenDir)/Cadoryx.Db.dll</HintPath></Reference>
     <Reference Include="Cadoryx.Editor"><HintPath>$(OffsetFrozenDir)/Cadoryx.Editor.dll</HintPath></Reference>
+    <Reference Include="Cadoryx.Kernel.Abstractions"><HintPath>$(OffsetFrozenDir)/Cadoryx.Kernel.Abstractions.dll</HintPath></Reference>
   </ItemGroup>
 </Project>

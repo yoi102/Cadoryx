@@ -1,0 +1,19 @@
+{
+  "source": "https://api.nuget.org/v3/index.json",
+  "completedStages": [
+    {
+      "stage": "restore",
+      "exitCode": 0
+    },
+    {
+      "stage": "restore-locked",
+      "exitCode": 0
+    }
+  ],
+  "runtimePassed": false,
+  "version": "8.0.1-preview.85",
+  "recordedAt": "2026-10-12T10:03:41.2100243+00:00",
+  "AF": "ACTIVE",
+  "cleanup": false,
+  "error": "Restore used an unexpected source"
+}

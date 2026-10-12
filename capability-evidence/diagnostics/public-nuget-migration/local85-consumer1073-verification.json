@@ -1,0 +1,256 @@
+{
+  "recordedAt": "2026-10-12T07:25:47.615297+00:00",
+  "state": "PASS_ISOLATED_SOURCE1073_LOCAL14_BOTH_COMPILES_ALL_ORIGINAL_CODE_AND_ASSERTIONS_SDK13_NATIVE62_DISK_AND221_696_REFERENCE_SETS_RUNTIME_NOT_RUN",
+  "version": "8.0.1-preview.85",
+  "preparation": {
+    "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\public-occt-preview85-consumer1073-1\\preparation.json",
+    "sha256": "BA8EAFF3CA0DA571EA527E4522B283F2F52A2E171EDC2AB7DDAE2762029C3917"
+  },
+  "terminal": {
+    "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\public-occt-preview85-consumer1073-1\\exit.json",
+    "sha256": "6446543F974E0BA5BA35FB0B7C16324F49BC391FCE519B409F77247AFC67110D"
+  },
+  "publisherRuntimeManifest": {
+    "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\public-occt-preview85-consumer1073-1\\publisher-runtime-manifest.json",
+    "sha256": "616CE23D6C6E2B8673CE1453E8D014EEB23A70456D036B494CEFCA5D57AFCA3E"
+  },
+  "nativeBridgeSha256": "D7AF1A2118EE5C13AC789EAFDB85EE264009F291953C0987BC4E4B90255F9E02",
+  "sourcePayloadCount": 1073,
+  "applicationAndTestCodeOrAssertionsChanged": false,
+  "changedFiles": [
+    "Cadoryx.Cli/packages.lock.json",
+    "Cadoryx.Kernel.Occt/packages.lock.json",
+    "Cadoryx.Rendering.Occt/packages.lock.json",
+    "Cadoryx.Tests/packages.lock.json",
+    "Cadoryx.wpf/packages.lock.json",
+    "Cadoryx.wpf/runtime-baseline.json",
+    "Directory.Build.props",
+    "NuGet.Config"
+  ],
+  "unrelatedDependencyVersionsAndHashesChanged": false,
+  "locks": [
+    {
+      "path": "Cadoryx.AI.Contracts/packages.lock.json",
+      "sha256": "A4364D81A6DE2707D66FBCED18FBBC926C882AB96E1D1AEBBB17E871285B9D75",
+      "sdkReferences": 0
+    },
+    {
+      "path": "Cadoryx.AI.LmStudio/packages.lock.json",
+      "sha256": "60D5B7778750656C74DF3BD2EEFBA7B7A84EFEBB800569FF1BD96263A0378E16",
+      "sdkReferences": 0
+    },
+    {
+      "path": "Cadoryx.Agent.Codex/packages.lock.json",
+      "sha256": "B77646DFC7042A6A61D6194F17B8CD177E1F369E9C21C7996FA1F2B405EF8596",
+      "sdkReferences": 0
+    },
+    {
+      "path": "Cadoryx.Agent/packages.lock.json",
+      "sha256": "60D5B7778750656C74DF3BD2EEFBA7B7A84EFEBB800569FF1BD96263A0378E16",
+      "sdkReferences": 0
+    },
+    {
+      "path": "Cadoryx.Cli/packages.lock.json",
+      "sha256": "C7D75A14DBF4D0356256B6F7EE1F0C2508D03FB89B3560169C809135AEE81F18",
+      "sdkReferences": 14
+    },
+    {
+      "path": "Cadoryx.CommandLine/packages.lock.json",
+      "sha256": "A4364D81A6DE2707D66FBCED18FBBC926C882AB96E1D1AEBBB17E871285B9D75",
+      "sdkReferences": 0
+    },
+    {
+      "path": "Cadoryx.Commands/packages.lock.json",
+      "sha256": "2BBBAAC841ADB708DA62F6F4EF08A818C001E6EE999FD4B142F1DD020BF859C8",
+      "sdkReferences": 0
+    },
+    {
+      "path": "Cadoryx.Db/packages.lock.json",
+      "sha256": "A4364D81A6DE2707D66FBCED18FBBC926C882AB96E1D1AEBBB17E871285B9D75",
+      "sdkReferences": 0
+    },
+    {
+      "path": "Cadoryx.Editor/packages.lock.json",
+      "sha256": "A226007D2FAA245850082E6B7A845C8BCFF132C76035A289E1359C21A8198DC6",
+      "sdkReferences": 0
+    },
+    {
+      "path": "Cadoryx.IO/packages.lock.json",
+      "sha256": "25330ABD565A46C3BD441FA4481133BADE9E6DD6DB4FD01529A0BE1BA33CE3B6",
+      "sdkReferences": 0
+    },
+    {
+      "path": "Cadoryx.Kernel.Abstractions/packages.lock.json",
+      "sha256": "29A60E9D5CC5ED1818C4BD296EF286D2D3702654AF5641CF9D04357A87669396",
+      "sdkReferences": 0
+    },
+    {
+      "path": "Cadoryx.Kernel.Occt/packages.lock.json",
+      "sha256": "4D335A279C2F24932FC8C2C4FDD3082233C57782665CC0BA9578EFAC063842A3",
+      "sdkReferences": 14
+    },
+    {
+      "path": "Cadoryx.Lang/packages.lock.json",
+      "sha256": "DDE5E66D19CA78E5BF183902E270655E5434633845C96B2B5D53D26736A6996F",
+      "sdkReferences": 0
+    },
+    {
+      "path": "Cadoryx.Rendering.Occt/packages.lock.json",
+      "sha256": "4F3540FBF5BAC12D83CE390C504E957524C098451B177AD954034F80D5BAF60A",
+      "sdkReferences": 14
+    },
+    {
+      "path": "Cadoryx.Rendering/packages.lock.json",
+      "sha256": "29A60E9D5CC5ED1818C4BD296EF286D2D3702654AF5641CF9D04357A87669396",
+      "sdkReferences": 0
+    },
+    {
+      "path": "Cadoryx.Sketching/packages.lock.json",
+      "sha256": "5FC44C873410E7AA4558713546F045C832585ED7B45C0827DC9E76599CDD3BD2",
+      "sdkReferences": 0
+    },
+    {
+      "path": "Cadoryx.Tests/packages.lock.json",
+      "sha256": "DAF6EAAFB80746FA08F818CC90B753AFE3A7DCC36BD3863F4D1BD32D38B12841",
+      "sdkReferences": 14
+    },
+    {
+      "path": "Cadoryx.ViewModels.Services/packages.lock.json",
+      "sha256": "A4364D81A6DE2707D66FBCED18FBBC926C882AB96E1D1AEBBB17E871285B9D75",
+      "sdkReferences": 0
+    },
+    {
+      "path": "Cadoryx.ViewModels/packages.lock.json",
+      "sha256": "5A36EB913F6193F81C75FA51A321B1C65F5EC4DC5067BE8E27BF08AD3EC64AE1",
+      "sdkReferences": 0
+    },
+    {
+      "path": "Cadoryx.wpf.Controls/packages.lock.json",
+      "sha256": "531D4CF71E5420C1C03DA4C06778BA2A212C7058A3882E7A3A873AE2F811511E",
+      "sdkReferences": 0
+    },
+    {
+      "path": "Cadoryx.wpf/packages.lock.json",
+      "sha256": "597B056ED14E5BD38F9BEE1E61DA2A0BA54F7C6BA69B749765556B8BB1C6305D",
+      "sdkReferences": 14
+    }
+  ],
+  "packages": {
+    "OcctSharp": {
+      "sha256": "551992FE49682B2B96EA9670F095E5695953331377BCF3027D4FC890EB2CCB51",
+      "contentHash": "etBT0fMi9J5Kk5PI+KaW95SJgpbk6Z81uMFAlHpp4fegPPNMhw82lM4TAqT6sCHIGmML5VioeJixgkdAhX9H/w=="
+    },
+    "OcctSharp.DataExchange": {
+      "sha256": "24E7F2D44E20B44194F725B640E2257DA37A78CE60F3FEB5F09699CBD995F399",
+      "contentHash": "xGjrFIDNaJXb4RKvJrgS18TycSVxgwRVZmy0yj48U6hQlgTk+0m+dpTgET+c/+W4jkdiU4rnKLgyyJ/d9je5ig=="
+    },
+    "OcctSharp.Documents": {
+      "sha256": "CD6CDC5611C81D6F2F665ACF1AF8143295600D162C48F7A2A33C00F72276796A",
+      "contentHash": "hQHpbuRohbB/CsI9CsPBYl/6k7QR5nrpUaXif9hv5omuuXPSMKStjUxid24QA8VwBpm5o04fiOQ6HkVXgksKEA=="
+    },
+    "OcctSharp.Draw": {
+      "sha256": "F6DAC0A214C9F411452924AF9F4C28F905E17885BF69E2A8EC80EA61539FD368",
+      "contentHash": "OspjE7ucafSDKafDhISGMA10JhWUuzqwiin4yT6kONDsL2JdSFxHNXkKcwnG9ZUomQYuZuBdeDEgJJaKh6NCNw=="
+    },
+    "OcctSharp.Foundation": {
+      "sha256": "8DD5915AED1375325BCFF0322C87CAA17E00ACE463B4CBE5031E3804699E9E7A",
+      "contentHash": "ChnXMNnbiJoGjiwFmsiweV/6NL4ihCkbs4SVcCXLThNn4gwtefQhndyOMbIKBY+eX3Ywn+0uujQQLPXxwkHgyw=="
+    },
+    "OcctSharp.Geometry": {
+      "sha256": "FE7E508E881A3B470128C87176BA0FC9A8E39F2E6CB4097348552D9A94831953",
+      "contentHash": "4B9NJ2cbOoWci9w59CIbJEMmaFU9h1wfs7CV9Ksw3+k3n3FNCcJUJ+LG2jOLcAs2BEW8XnHNXpZVtDs3uu5etw=="
+    },
+    "OcctSharp.IVtk": {
+      "sha256": "11A685BAB562945D8FE491120A3B59990BFFB34D05D102E24CD7A206609ABB54",
+      "contentHash": "uedYSwUTtJVzbhNkh5Wxzh0wMfpx8ivbnTPV3oGp+YYWHcrW95uiornhBiCC51IGmiG+hh3WdCU8Fj1xs1L9vA=="
+    },
+    "OcctSharp.Mesh": {
+      "sha256": "FF53500B736021A0C9D71F582EB869F502F0F5BEB0D914D931BC2DC120BC75CE",
+      "contentHash": "QjLOKUKKQubz8R8lz//c36QwMDdcTarHb8zeS/Y3rolvkqDSfilFxnddHHFcyI4U8iCEaUTil+7XfI8jyFxLjA=="
+    },
+    "OcctSharp.MeshData": {
+      "sha256": "86A3A01AC48A85642E44FA86AAA3863A800E6A5D4DD7CA87785B02890D15EB20",
+      "contentHash": "g3zZGKU9nibxZPRBgo7TyDVyYxtSZdHK+VWZG8Z1V6Kvb9vX20UOXyMDe0Pd+dwPgGxQuBO2u8mPwlAMdvF0pA=="
+    },
+    "OcctSharp.Modeling": {
+      "sha256": "7177E0E29480DCAB9ABEA20C1EA2996109C61BB62D771A8CF7D090694A389A5B",
+      "contentHash": "m32uvpYdrBVVIHMiftiflpHfYikC2BTLdzq+zwRz3zd86uWmTREc6deUxDqcmUm1AIp2AfN/qr1d9Bx0gM5i+A=="
+    },
+    "OcctSharp.Native.win-x64": {
+      "sha256": "BF45460A1FEB77C86FD9CFC492D905480F1166C32EDA781D5BA1540FA10554A8",
+      "contentHash": "4P8JCmyzmHsKStZmigmd5T3rDtuuMSzU8gxjEDU8ZgD6tY4UdZ0Ee5ExiOj2wOnPi4YkxEzFmKCkoIlWa5AudQ=="
+    },
+    "OcctSharp.Runtime": {
+      "sha256": "79B06BF5E3452F1E1C0161544DA003A9AABF118E817977C3700618EE58DEB081",
+      "contentHash": "T7vzlCr4eLYW8uH3o6yFNmZSwIkqH6bZZnH77tiGQ1P4IymFxxlq5MGpjwTboAgmR1jAfwcvBVe1DSr1td3tcQ=="
+    },
+    "OcctSharp.Visualization": {
+      "sha256": "D3D7D21B1F3EF75195A5F770826C3A5C482FE08953148AD6AF14E212B6E6A93A",
+      "contentHash": "xDxBTFJUHfTfKbBQbBZLsMYr13Ruj6PgcvoyGfCoipuIjBOm0mYVNJrRjjNGkf4cVuM3BvdI8KNgnEHztszybA=="
+    },
+    "OcctSharp.Xde": {
+      "sha256": "F536E34EA16CB324A4D3EECBDE5565460179CB1CFAEB2B4ACA6746AE877A8BE8",
+      "contentHash": "drsgX82lmvAj4c828FlTgW9uMxkAya7Gizr2Iy/y1nF8wntOdf2HzkDj85fOwQ/W1TTQg6SenuOgdLS/8dxMXQ=="
+    }
+  },
+  "payloads": [
+    {
+      "configuration": "Release",
+      "project": "Cadoryx.wpf",
+      "directory": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\public-occt-preview85-consumer1073-1\\workspace\\Cadoryx.wpf\\bin\\Release\\net10.0-windows\\win-x64",
+      "managed13MatchesPackages": true,
+      "native62MatchesPublisherManifest": true
+    },
+    {
+      "configuration": "Release",
+      "project": "Cadoryx.Tests",
+      "directory": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\public-occt-preview85-consumer1073-1\\workspace\\Cadoryx.Tests\\bin\\Release\\net10.0",
+      "managed13MatchesPackages": true,
+      "native62MatchesPublisherManifest": true
+    },
+    {
+      "configuration": "Release",
+      "project": "Cadoryx.Cli",
+      "directory": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\public-occt-preview85-consumer1073-1\\workspace\\Cadoryx.Cli\\bin\\Release\\net10.0",
+      "managed13MatchesPackages": true,
+      "native62MatchesPublisherManifest": true
+    },
+    {
+      "configuration": "Debug",
+      "project": "Cadoryx.wpf",
+      "directory": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\public-occt-preview85-consumer1073-1\\workspace\\Cadoryx.wpf\\bin\\Debug\\net10.0-windows\\win-x64",
+      "managed13MatchesPackages": true,
+      "native62MatchesPublisherManifest": true
+    },
+    {
+      "configuration": "Debug",
+      "project": "Cadoryx.Tests",
+      "directory": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\public-occt-preview85-consumer1073-1\\workspace\\Cadoryx.Tests\\bin\\Debug\\net10.0",
+      "managed13MatchesPackages": true,
+      "native62MatchesPublisherManifest": true
+    },
+    {
+      "configuration": "Debug",
+      "project": "Cadoryx.Cli",
+      "directory": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\public-occt-preview85-consumer1073-1\\workspace\\Cadoryx.Cli\\bin\\Debug\\net10.0",
+      "managed13MatchesPackages": true,
+      "native62MatchesPublisherManifest": true
+    }
+  ],
+  "compiledUsage": {
+    "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\public-occt-preview85-consumer1073-1\\compiled-occt-usage.json",
+    "sha256": "741BB5436EE261458446980740DA84FF25156087FF63415603A6FE08D02938FE"
+  },
+  "actualAssemblyFiles": 76,
+  "typeCount": 221,
+  "memberCount": 696,
+  "originalTypeAndMemberReferenceSetsEqual": true,
+  "runtimeExecuted": false,
+  "publicationConfirmed": false,
+  "publicSourceOnly": false,
+  "vcpkgProfileAccepted": false,
+  "productionApplied": false,
+  "cleanup": false,
+  "AF": "ACTIVE",
+  "G": "USER_DEFERRED"
+}

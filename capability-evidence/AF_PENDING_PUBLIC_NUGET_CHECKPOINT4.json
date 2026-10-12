@@ -1,0 +1,102 @@
+{
+  "recordedAt": "2026-10-12T09:09:41.165283+00:00",
+  "state": "CORRECTED_PUBLIC_PROVIDER_FULL_LOCAL_GATES_AND_VCPKG_BOTH_COMPILES_PROVENANCE_AUDITED_PUBLICATION_NOT_RUN",
+  "version": "8.0.1-preview.85",
+  "nativeAbi": "1.118",
+  "bridgeVersion": "0.133.0",
+  "finalPublicBridgeSha256": "D44F3F272386EA2CC87E7107AB2E3375D8100283872372F1FBC234A3B4E38CB3",
+  "publicNativeDlls": 62,
+  "priorBridgeD7IsHistoricalOnly": true,
+  "correctedColdPassed": true,
+  "publicBothGenerator410Runtime2255": true,
+  "actualDebugRuntime2255And62LoadedModulesPassed": true,
+  "vcpkg": [
+    {
+      "configuration": "Release",
+      "generationChecked": true,
+      "nativeDlls": 79,
+      "licenses": 21,
+      "runtimePassed": false
+    },
+    {
+      "configuration": "Debug",
+      "generationChecked": true,
+      "nativeDlls": 79,
+      "licenses": 21,
+      "runtimePassed": false
+    }
+  ],
+  "references": {
+    "public-release-full": {
+      "path": "capability-evidence/diagnostics/public-nuget-migration/corrected-provider-checkpoint4/public-release-full.json",
+      "sha256": "66D947C7F4AD5FAFB74B26590F76B355BAE1F40135625DFDE05C1B12B2731332",
+      "origin": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-public-sdk85\\template-fix-release-full.json"
+    },
+    "public-debug-full": {
+      "path": "capability-evidence/diagnostics/public-nuget-migration/corrected-provider-checkpoint4/public-debug-full.json",
+      "sha256": "C1D9C7AF7CEB0C90FE976BB66FB206866623766CFC2007EAC5E9D4B4CC050352",
+      "origin": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-public-sdk85\\template-fix-debug-full.json"
+    },
+    "corrected-cold": {
+      "path": "capability-evidence/diagnostics/public-nuget-migration/corrected-provider-checkpoint4/corrected-cold.json",
+      "sha256": "2799C7377A5AC77D3BC86794B6DA9FAA995F126E07D5B9553EBC954917EDD581",
+      "origin": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-public-sdk85\\template-fix-cold.json"
+    },
+    "corrected-native-exports": {
+      "path": "capability-evidence/diagnostics/public-nuget-migration/corrected-provider-checkpoint4/corrected-native-exports.json",
+      "sha256": "1EE1EB67307AACC8E06E217D6AED6609D9724402EFD25EA6460584AA42E6F16E",
+      "origin": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-public-sdk85\\template-fix-native-exports.json"
+    },
+    "public-actual-debug": {
+      "path": "capability-evidence/diagnostics/public-nuget-migration/corrected-provider-checkpoint4/public-actual-debug.json",
+      "sha256": "14978AFF80F5C1FD98546C598A8F52F4F75F24FEE15BAA79DD799A64EA847FD7",
+      "origin": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-public-sdk85\\template-fix-actual-debug\\result.json"
+    },
+    "public-actual-debug-loaded": {
+      "path": "capability-evidence/diagnostics/public-nuget-migration/corrected-provider-checkpoint4/public-actual-debug-loaded.json",
+      "sha256": "20F5D64F1891F3B8028DB56D6FD75D1E4CB3CACA9CF2AB8003DF1D0EF0FE59FF",
+      "origin": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-public-sdk85\\template-fix-actual-debug-loaded-modules.json"
+    },
+    "final-public-runtime-manifest": {
+      "path": "capability-evidence/diagnostics/public-nuget-migration/corrected-provider-checkpoint4/final-public-runtime-manifest.json",
+      "sha256": "C7989B6724B0C0EF6963642CD22EBC05D216171EC97D3DA5D0F7FBB2C2DF625F",
+      "origin": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\runtime\\win-x64\\runtime-manifest.json"
+    },
+    "vcpkg-release-manifest": {
+      "path": "capability-evidence/diagnostics/public-nuget-migration/corrected-provider-checkpoint4/vcpkg-release-manifest.json",
+      "sha256": "57CF77156D046E56CEDBD3A82EB1811106DD52CFDD692F1E24E0AB9E95F01A84",
+      "origin": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\build\\vcpkg-native85\\runtime-manifest-Release.json"
+    },
+    "vcpkg-release-provenance": {
+      "path": "capability-evidence/diagnostics/public-nuget-migration/corrected-provider-checkpoint4/vcpkg-release-provenance.json",
+      "sha256": "67869AACE03FB80F08C83ACBAA2F0B7C9AA53FA20C62C947A0A8E870800DFE91",
+      "origin": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\build\\vcpkg-native85\\runtime-evidence\\Release\\provenance.json"
+    },
+    "vcpkg-debug-manifest": {
+      "path": "capability-evidence/diagnostics/public-nuget-migration/corrected-provider-checkpoint4/vcpkg-debug-manifest.json",
+      "sha256": "57FAB142A0C474B85AF1365AEA7950AEB35169F121A6B44697459172575CEBEB",
+      "origin": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\build\\vcpkg-native85\\runtime-manifest-Debug.json"
+    },
+    "vcpkg-debug-provenance": {
+      "path": "capability-evidence/diagnostics/public-nuget-migration/corrected-provider-checkpoint4/vcpkg-debug-provenance.json",
+      "sha256": "C9CB62194B6FA1E0F4EE411A58E4167F63054BCE276C1C1FBE9ECFB80296A70F",
+      "origin": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\build\\vcpkg-native85\\runtime-evidence\\Debug\\provenance.json"
+    }
+  },
+  "preparedPublicConsumer": {
+    "path": "artifacts/public85-final1073-1/preparation.json",
+    "sha256": "5B91E5531D6704DAC5731C1F97E313457C4D9D26808FF8868CE13643A76073BC",
+    "sourceAndToolInputs": 1186,
+    "helperInputs": 1,
+    "projects": 50
+  },
+  "finalRepackAccepted": false,
+  "publicationConfirmed": false,
+  "freshPublicRestorePassed": false,
+  "vcpkgRuntimePassed": false,
+  "productionApplied": false,
+  "CadoryxRequiresVcpkg": false,
+  "cleanup": false,
+  "AF": "ACTIVE",
+  "G": "USER_DEFERRED"
+}

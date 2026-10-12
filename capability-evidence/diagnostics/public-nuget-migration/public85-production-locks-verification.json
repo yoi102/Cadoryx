@@ -1,0 +1,415 @@
+{
+  "version": "8.0.1-preview.85",
+  "directReferences": [
+    {
+      "package": "OcctSharp.Native.win-x64",
+      "project": "Cadoryx.Cli/Cadoryx.Cli.csproj",
+      "versionExpression": "[$(OcctSharpVersion)]"
+    },
+    {
+      "package": "OcctSharp",
+      "project": "Cadoryx.Kernel.Occt/Cadoryx.Kernel.Occt.csproj",
+      "versionExpression": "[$(OcctSharpVersion)]"
+    },
+    {
+      "package": "OcctSharp.Native.win-x64",
+      "project": "Cadoryx.Tests/Cadoryx.Tests.csproj",
+      "versionExpression": "[$(OcctSharpVersion)]"
+    },
+    {
+      "package": "OcctSharp.Native.win-x64",
+      "project": "Cadoryx.wpf/Cadoryx.wpf.csproj",
+      "versionExpression": "[$(OcctSharpVersion)]"
+    },
+    {
+      "package": "OcctSharp.Modeling",
+      "project": "integrations/occtsharp-boolean-history/Consumer/Consumer.csproj",
+      "versionExpression": "[$(OcctSharpVersion)]"
+    },
+    {
+      "package": "OcctSharp.Native.win-x64",
+      "project": "integrations/occtsharp-boolean-history/Consumer/Consumer.csproj",
+      "versionExpression": "[$(OcctSharpVersion)]"
+    },
+    {
+      "package": "OcctSharp",
+      "project": "tools/AnalyticalOffsetNativeProbe/AnalyticalOffsetNativeProbe.csproj",
+      "versionExpression": "[$(OcctSharpVersion)]"
+    },
+    {
+      "package": "OcctSharp.Native.win-x64",
+      "project": "tools/AnalyticalOffsetNativeProbe/AnalyticalOffsetNativeProbe.csproj",
+      "versionExpression": "[$(OcctSharpVersion)]"
+    },
+    {
+      "package": "OcctSharp",
+      "project": "tools/BoundedThreadDrawingProbe/BoundedThreadDrawingProbe.csproj",
+      "versionExpression": "[$(OcctSharpVersion)]"
+    },
+    {
+      "package": "OcctSharp.Native.win-x64",
+      "project": "tools/BoundedThreadDrawingProbe/BoundedThreadDrawingProbe.csproj",
+      "versionExpression": "[$(OcctSharpVersion)]"
+    },
+    {
+      "package": "OcctSharp.Native.win-x64",
+      "project": "tools/CadAgentWorkflowProbe/CadAgentWorkflowProbe.csproj",
+      "versionExpression": "[$(OcctSharpVersion)]"
+    },
+    {
+      "package": "OcctSharp",
+      "project": "tools/EndpointCurvatureProbe/EndpointCurvatureProbe.csproj",
+      "versionExpression": "[$(OcctSharpVersion)]"
+    },
+    {
+      "package": "OcctSharp.Native.win-x64",
+      "project": "tools/EndpointCurvatureProbe/EndpointCurvatureProbe.csproj",
+      "versionExpression": "[$(OcctSharpVersion)]"
+    },
+    {
+      "package": "OcctSharp",
+      "project": "tools/ExchangeFixtures/ExchangeFixtures.csproj",
+      "versionExpression": "[$(OcctSharpVersion)]"
+    },
+    {
+      "package": "OcctSharp.Native.win-x64",
+      "project": "tools/ExchangeFixtures/ExchangeFixtures.csproj",
+      "versionExpression": "[$(OcctSharpVersion)]"
+    },
+    {
+      "package": "OcctSharp",
+      "project": "tools/FiniteContactProbe/FiniteContactProbe.csproj",
+      "versionExpression": "[$(OcctSharpVersion)]"
+    },
+    {
+      "package": "OcctSharp.Native.win-x64",
+      "project": "tools/FiniteContactProbe/FiniteContactProbe.csproj",
+      "versionExpression": "[$(OcctSharpVersion)]"
+    },
+    {
+      "package": "OcctSharp",
+      "project": "tools/FiniteSurfaceProbe/FiniteSurfaceProbe.csproj",
+      "versionExpression": "[$(OcctSharpVersion)]"
+    },
+    {
+      "package": "OcctSharp.Native.win-x64",
+      "project": "tools/FiniteSurfaceProbe/FiniteSurfaceProbe.csproj",
+      "versionExpression": "[$(OcctSharpVersion)]"
+    },
+    {
+      "package": "OcctSharp",
+      "project": "tools/MixedContactGeometryProbe/MixedContactGeometryProbe.csproj",
+      "versionExpression": "[$(OcctSharpVersion)]"
+    },
+    {
+      "package": "OcctSharp.Native.win-x64",
+      "project": "tools/MixedContactGeometryProbe/MixedContactGeometryProbe.csproj",
+      "versionExpression": "[$(OcctSharpVersion)]"
+    },
+    {
+      "package": "OcctSharp",
+      "project": "tools/MixedContactProbe/MixedContactProbe.csproj",
+      "versionExpression": "[$(OcctSharpVersion)]"
+    },
+    {
+      "package": "OcctSharp.Native.win-x64",
+      "project": "tools/MixedContactProbe/MixedContactProbe.csproj",
+      "versionExpression": "[$(OcctSharpVersion)]"
+    },
+    {
+      "package": "OcctSharp",
+      "project": "tools/ModeledThreadDrawingProbe/ModeledThreadDrawingProbe.csproj",
+      "versionExpression": "[$(OcctSharpVersion)]"
+    },
+    {
+      "package": "OcctSharp.Native.win-x64",
+      "project": "tools/ModeledThreadDrawingProbe/ModeledThreadDrawingProbe.csproj",
+      "versionExpression": "[$(OcctSharpVersion)]"
+    },
+    {
+      "package": "OcctSharp",
+      "project": "tools/MulticopyExchangeProbe/MulticopyExchangeProbe.csproj",
+      "versionExpression": "[$(OcctSharpVersion)]"
+    },
+    {
+      "package": "OcctSharp.Native.win-x64",
+      "project": "tools/MulticopyExchangeProbe/MulticopyExchangeProbe.csproj",
+      "versionExpression": "[$(OcctSharpVersion)]"
+    },
+    {
+      "package": "OcctSharp",
+      "project": "tools/MulticopyHistoryProbe/MulticopyHistoryProbe.csproj",
+      "versionExpression": "[$(OcctSharpVersion)]"
+    },
+    {
+      "package": "OcctSharp.Native.win-x64",
+      "project": "tools/MulticopyHistoryProbe/MulticopyHistoryProbe.csproj",
+      "versionExpression": "[$(OcctSharpVersion)]"
+    },
+    {
+      "package": "OcctSharp",
+      "project": "tools/OcctCapabilityProbe/OcctCapabilityProbe.csproj",
+      "versionExpression": "[$(OcctSharpVersion)]"
+    },
+    {
+      "package": "OcctSharp.Native.win-x64",
+      "project": "tools/OcctCapabilityProbe/OcctCapabilityProbe.csproj",
+      "versionExpression": "[$(OcctSharpVersion)]"
+    },
+    {
+      "package": "OcctSharp",
+      "project": "tools/OffsetWorkflowProbe/OffsetWorkflowProbe.csproj",
+      "versionExpression": "[$(OcctSharpVersion)]"
+    },
+    {
+      "package": "OcctSharp.Native.win-x64",
+      "project": "tools/OffsetWorkflowProbe/OffsetWorkflowProbe.csproj",
+      "versionExpression": "[$(OcctSharpVersion)]"
+    },
+    {
+      "package": "OcctSharp",
+      "project": "tools/SlidingContactGeometryProbe/SlidingContactGeometryProbe.csproj",
+      "versionExpression": "[$(OcctSharpVersion)]"
+    },
+    {
+      "package": "OcctSharp.Native.win-x64",
+      "project": "tools/SlidingContactGeometryProbe/SlidingContactGeometryProbe.csproj",
+      "versionExpression": "[$(OcctSharpVersion)]"
+    },
+    {
+      "package": "OcctSharp",
+      "project": "tools/SlidingContactProbe/SlidingContactProbe.csproj",
+      "versionExpression": "[$(OcctSharpVersion)]"
+    },
+    {
+      "package": "OcctSharp.Native.win-x64",
+      "project": "tools/SlidingContactProbe/SlidingContactProbe.csproj",
+      "versionExpression": "[$(OcctSharpVersion)]"
+    },
+    {
+      "package": "OcctSharp.Native.win-x64",
+      "project": "tools/StorageBench/StorageBench.csproj",
+      "versionExpression": "[$(OcctSharpVersion)]"
+    },
+    {
+      "package": "OcctSharp",
+      "project": "tools/SurfaceTerminationProbe/SurfaceTerminationProbe.csproj",
+      "versionExpression": "[$(OcctSharpVersion)]"
+    },
+    {
+      "package": "OcctSharp.Native.win-x64",
+      "project": "tools/SurfaceTerminationProbe/SurfaceTerminationProbe.csproj",
+      "versionExpression": "[$(OcctSharpVersion)]"
+    },
+    {
+      "package": "OcctSharp",
+      "project": "tools/ThreadDrawingProbe/ThreadDrawingProbe.csproj",
+      "versionExpression": "[$(OcctSharpVersion)]"
+    },
+    {
+      "package": "OcctSharp.Native.win-x64",
+      "project": "tools/ThreadDrawingProbe/ThreadDrawingProbe.csproj",
+      "versionExpression": "[$(OcctSharpVersion)]"
+    },
+    {
+      "package": "OcctSharp",
+      "project": "tools/ThreadHelixProbe/ThreadHelixProbe.csproj",
+      "versionExpression": "[$(OcctSharpVersion)]"
+    },
+    {
+      "package": "OcctSharp.Native.win-x64",
+      "project": "tools/ThreadHelixProbe/ThreadHelixProbe.csproj",
+      "versionExpression": "[$(OcctSharpVersion)]"
+    },
+    {
+      "package": "OcctSharp",
+      "project": "tools/ThreadHoleProbe/ThreadHoleProbe.csproj",
+      "versionExpression": "[$(OcctSharpVersion)]"
+    },
+    {
+      "package": "OcctSharp.Native.win-x64",
+      "project": "tools/ThreadHoleProbe/ThreadHoleProbe.csproj",
+      "versionExpression": "[$(OcctSharpVersion)]"
+    },
+    {
+      "package": "OcctSharp",
+      "project": "tools/ThreadProjectionProbe/ThreadProjectionProbe.csproj",
+      "versionExpression": "[$(OcctSharpVersion)]"
+    },
+    {
+      "package": "OcctSharp.Native.win-x64",
+      "project": "tools/ThreadProjectionProbe/ThreadProjectionProbe.csproj",
+      "versionExpression": "[$(OcctSharpVersion)]"
+    },
+    {
+      "package": "OcctSharp",
+      "project": "tools/ViewerCapabilityProbe/ViewerCapabilityProbe.csproj",
+      "versionExpression": "[$(OcctSharpVersion)]"
+    },
+    {
+      "package": "OcctSharp.Native.win-x64",
+      "project": "tools/ViewerCapabilityProbe/ViewerCapabilityProbe.csproj",
+      "versionExpression": "[$(OcctSharpVersion)]"
+    }
+  ],
+  "lockReferences": 412,
+  "publicVerificationSha256": "5E2EC06CB6AEC745B37AA1BD48A44CDDBE3A7E1D94CCB622778BC5FB46C1ADA4",
+  "runtimePassed": false,
+  "state": "PASS_PUBLIC_SOURCE_SHARED_VERSION_ALL_ACTIVE_LOCKS_AND_DISK_BASELINE_RUNTIME_NOT_RUN",
+  "locks": [
+    {
+      "sha256": "6758B58C51744040EA42A0D034922ECB0B019E1BCA867FD4C576099892DF13C2",
+      "references": 14,
+      "path": "Cadoryx.Cli/packages.lock.json"
+    },
+    {
+      "sha256": "AC55D43E4CB93183B8DC8CC2C453ABD01A71C2B1442605FBF1B0E32915EE13A7",
+      "references": 14,
+      "path": "Cadoryx.Kernel.Occt/packages.lock.json"
+    },
+    {
+      "sha256": "74EB738E8CC965A1B519C01970565E78E07B449D9B99212E87EF138503BFC014",
+      "references": 14,
+      "path": "Cadoryx.Rendering.Occt/packages.lock.json"
+    },
+    {
+      "sha256": "CCBB81DBC687F5EA831407CD675DA2823F963EA749FC90C98D3D52B53B3D87D1",
+      "references": 14,
+      "path": "Cadoryx.Tests/packages.lock.json"
+    },
+    {
+      "sha256": "537A1C04E07CF856443FBD11BAB6F4920CB00CE504224001142FAEF98E95D959",
+      "references": 14,
+      "path": "Cadoryx.wpf/packages.lock.json"
+    },
+    {
+      "sha256": "853FAEFA4A3BC635FECD3EF752222F841EAE5F3650E8F56B96FD79781CA92C43",
+      "references": 6,
+      "path": "integrations/occtsharp-boolean-history/Consumer/packages.lock.json"
+    },
+    {
+      "sha256": "25F51D0FD4DA7A68F829974EF3BB559EA30C4E874C9798464515287425B2D225",
+      "references": 14,
+      "path": "tools/AnalyticalOffsetNativeProbe/packages.lock.json"
+    },
+    {
+      "sha256": "2BF41F23E5DA32AD069D3E909BB19B1830FA1B28F39783A7DA812F5E830D1569",
+      "references": 14,
+      "path": "tools/BoundedThreadDrawingProbe/packages.lock.json"
+    },
+    {
+      "sha256": "76ED57A3E1C2E438AA00326A84CC7DC3244A7D649E81938C29E9C6395753EDDC",
+      "references": 14,
+      "path": "tools/CadAgentWorkflowProbe/packages.lock.json"
+    },
+    {
+      "sha256": "AF5907ED193CBE437548884D921BBA8D5D94EA22CB1D1BEFCFB4B9F46543A27A",
+      "references": 14,
+      "path": "tools/EndpointCurvatureProbe/packages.lock.json"
+    },
+    {
+      "sha256": "FA5463DF11F7E53A139B4E1E6453FACA936BD702E89CC59F56D44C7AF75B1EE2",
+      "references": 14,
+      "path": "tools/ExchangeFixtures/packages.lock.json"
+    },
+    {
+      "sha256": "4FD249CAC37E668BBB74787D460E0EE711E67181FF0394E7A6F6310065B89F80",
+      "references": 14,
+      "path": "tools/FiniteContactProbe/packages.lock.json"
+    },
+    {
+      "sha256": "4FD249CAC37E668BBB74787D460E0EE711E67181FF0394E7A6F6310065B89F80",
+      "references": 14,
+      "path": "tools/FiniteSurfaceProbe/packages.lock.json"
+    },
+    {
+      "sha256": "63E2AF95F8F8F95FD1E4E33F1E0921542839F2F1AD784803D083FC0A80CA4C5C",
+      "references": 14,
+      "path": "tools/M10AssemblyProbe/packages.lock.json"
+    },
+    {
+      "sha256": "AF5907ED193CBE437548884D921BBA8D5D94EA22CB1D1BEFCFB4B9F46543A27A",
+      "references": 14,
+      "path": "tools/MixedContactGeometryProbe/packages.lock.json"
+    },
+    {
+      "sha256": "4FD249CAC37E668BBB74787D460E0EE711E67181FF0394E7A6F6310065B89F80",
+      "references": 14,
+      "path": "tools/MixedContactProbe/packages.lock.json"
+    },
+    {
+      "sha256": "2BF41F23E5DA32AD069D3E909BB19B1830FA1B28F39783A7DA812F5E830D1569",
+      "references": 14,
+      "path": "tools/ModeledThreadDrawingProbe/packages.lock.json"
+    },
+    {
+      "sha256": "AF5907ED193CBE437548884D921BBA8D5D94EA22CB1D1BEFCFB4B9F46543A27A",
+      "references": 14,
+      "path": "tools/MulticopyExchangeProbe/packages.lock.json"
+    },
+    {
+      "sha256": "AF5907ED193CBE437548884D921BBA8D5D94EA22CB1D1BEFCFB4B9F46543A27A",
+      "references": 14,
+      "path": "tools/MulticopyHistoryProbe/packages.lock.json"
+    },
+    {
+      "sha256": "AF5907ED193CBE437548884D921BBA8D5D94EA22CB1D1BEFCFB4B9F46543A27A",
+      "references": 14,
+      "path": "tools/OcctCapabilityProbe/packages.lock.json"
+    },
+    {
+      "sha256": "4FD249CAC37E668BBB74787D460E0EE711E67181FF0394E7A6F6310065B89F80",
+      "references": 14,
+      "path": "tools/OffsetWorkflowProbe/packages.lock.json"
+    },
+    {
+      "sha256": "AF5907ED193CBE437548884D921BBA8D5D94EA22CB1D1BEFCFB4B9F46543A27A",
+      "references": 14,
+      "path": "tools/SlidingContactGeometryProbe/packages.lock.json"
+    },
+    {
+      "sha256": "4FD249CAC37E668BBB74787D460E0EE711E67181FF0394E7A6F6310065B89F80",
+      "references": 14,
+      "path": "tools/SlidingContactProbe/packages.lock.json"
+    },
+    {
+      "sha256": "B84EA769AE10F11B83858A5614DCF9C990C01FF365B58D5F8E70801BBCAA984F",
+      "references": 14,
+      "path": "tools/StorageBench/packages.lock.json"
+    },
+    {
+      "sha256": "AF5907ED193CBE437548884D921BBA8D5D94EA22CB1D1BEFCFB4B9F46543A27A",
+      "references": 14,
+      "path": "tools/SurfaceTerminationProbe/packages.lock.json"
+    },
+    {
+      "sha256": "2BF41F23E5DA32AD069D3E909BB19B1830FA1B28F39783A7DA812F5E830D1569",
+      "references": 14,
+      "path": "tools/ThreadDrawingProbe/packages.lock.json"
+    },
+    {
+      "sha256": "AF5907ED193CBE437548884D921BBA8D5D94EA22CB1D1BEFCFB4B9F46543A27A",
+      "references": 14,
+      "path": "tools/ThreadHelixProbe/packages.lock.json"
+    },
+    {
+      "sha256": "AF5907ED193CBE437548884D921BBA8D5D94EA22CB1D1BEFCFB4B9F46543A27A",
+      "references": 14,
+      "path": "tools/ThreadHoleProbe/packages.lock.json"
+    },
+    {
+      "sha256": "AF5907ED193CBE437548884D921BBA8D5D94EA22CB1D1BEFCFB4B9F46543A27A",
+      "references": 14,
+      "path": "tools/ThreadProjectionProbe/packages.lock.json"
+    },
+    {
+      "sha256": "AF5907ED193CBE437548884D921BBA8D5D94EA22CB1D1BEFCFB4B9F46543A27A",
+      "references": 14,
+      "path": "tools/ViewerCapabilityProbe/packages.lock.json"
+    }
+  ],
+  "publicVerification": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\public85-remote-restore-2\\verification.json",
+  "G": "USER_DEFERRED",
+  "recordedAt": "2026-10-12T15:38:27.5697338+00:00",
+  "AF": "ACTIVE"
+}

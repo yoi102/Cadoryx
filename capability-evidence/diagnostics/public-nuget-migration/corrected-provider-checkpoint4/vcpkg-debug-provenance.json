@@ -1,0 +1,754 @@
+{
+  "state": "PASS",
+  "provider": "vcpkg-occt801-d3d-original-headers-v1",
+  "configuration": "Debug",
+  "registryCommit": "e456309491fd875487bf02b8a0dca76c1b1b00cc",
+  "providerSha256": "E70681C53D2BAB375514B2513C064094C2458A158A0D7330EAE4FD4CE7B5AA10",
+  "statusSha256": "1B97E1C64D88F1EB9A5810C9D0262AC1E3EEFC8F7B2C8625BDE6F54435934DE8",
+  "nativeManifestSha256": "57FAB142A0C474B85AF1365AEA7950AEB35169F121A6B44697459172575CEBEB",
+  "nativeFiles": [
+    {
+      "name": "brotlicommon.dll",
+      "sha256": "0B3A582B079A0E28F4E7B0D98F058A9F0CB80DAEACACB82499C6D1494F91A0C2",
+      "port": "brotli",
+      "version": "1.2.0"
+    },
+    {
+      "name": "brotlidec.dll",
+      "sha256": "5CEF4F86B829BE0D69155F90A8A37809A8DC6F5D173B8651110B3E411B044AB0",
+      "port": "brotli",
+      "version": "1.2.0"
+    },
+    {
+      "name": "bz2d.dll",
+      "sha256": "CE2D904E4CCF42366286F753941A0944B74B7D5826A0E6F4E6ADB25BFF3246B1",
+      "port": "bzip2",
+      "version": "1.0.8"
+    },
+    {
+      "name": "deflate.dll",
+      "sha256": "F41D6907CC06A3C963A844FDA96E82BB1EC5F050EC21C021FB6D8C59C50B4D29",
+      "port": "libdeflate",
+      "version": "1.26"
+    },
+    {
+      "name": "FreeImaged.dll",
+      "sha256": "01D1BD2ADEFA6ADAEE8C1526A601230A00C64E2AE7C8285D9671992FB5499222",
+      "port": "freeimage",
+      "version": "3.18.0"
+    },
+    {
+      "name": "freetyped.dll",
+      "sha256": "67D0FB27B7CF693FE6E12B8A2983DBEDC12D9A4081D22072352F4BDAA4ACF3DD",
+      "port": "freetype",
+      "version": "2.14.3"
+    },
+    {
+      "name": "Iex-3_5_d.dll",
+      "sha256": "5A2BD4001D16733328ABA1C461FF01F635A593ECBDADA810AB46EB35B993082F",
+      "port": "openexr",
+      "version": "3.5.2"
+    },
+    {
+      "name": "IlmThread-3_5_d.dll",
+      "sha256": "2EDA7EE9CFF5FE59A4F1FA73BCBB62E2B2D3C076928153D6F0D6D67B75431C0C",
+      "port": "openexr",
+      "version": "3.5.2"
+    },
+    {
+      "name": "Imath-3_2_d.dll",
+      "sha256": "CA9040A67051C0341C3DB726A84E21CE3BF9C1D02C9A5BCCFF10C8D01C2B2D4E",
+      "port": "imath",
+      "version": "3.2.3"
+    },
+    {
+      "name": "jpeg62.dll",
+      "sha256": "15466A5C330E99F4719AF8F6E7E39D569A82BC34C78E2CC3FC0685F8DC69FE84",
+      "port": "libjpeg-turbo",
+      "version": "3.2.0"
+    },
+    {
+      "name": "lcms2-2.dll",
+      "sha256": "37235CDBBAF0EA9D855C17FEC1AB9DC3CD4A298A743A8B42B5E8D32E14BC0B12",
+      "port": "lcms",
+      "version": "2.19.1"
+    },
+    {
+      "name": "liblzma.dll",
+      "sha256": "7968B280459513A07378F3A76D5E6C26C6FAAFF829A5BDA717379F4B9419CC00",
+      "port": "liblzma",
+      "version": "5.8.4"
+    },
+    {
+      "name": "libpng16d.dll",
+      "sha256": "F2D723B9E74F743C50ECE3D64FFE9E060D11FE8D8FDB7396CFBABA37E88483B7",
+      "port": "libpng",
+      "version": "1.6.59"
+    },
+    {
+      "name": "libsharpyuv.dll",
+      "sha256": "84DFDEFDED23947F0EF5AD3BD79435EDFB1CBF658AF53D19AFF26E18C6C929AF",
+      "port": "libwebp",
+      "version": "1.6.0"
+    },
+    {
+      "name": "libwebp.dll",
+      "sha256": "8EA4F9D759C9886B3AF89FD4972E29EFE1476BD336CD0C3E0942F588F6813F7C",
+      "port": "libwebp",
+      "version": "1.6.0"
+    },
+    {
+      "name": "libwebpdecoder.dll",
+      "sha256": "2A352185998AAC8A37C57CB98C3E707D7018A1959DC9AC346760DC2809242F9C",
+      "port": "libwebp",
+      "version": "1.6.0"
+    },
+    {
+      "name": "libwebpmux.dll",
+      "sha256": "A2D03586375811987566D66FBA6E894645ABC3DFB35A2A5966C76A72F7F77164",
+      "port": "libwebp",
+      "version": "1.6.0"
+    },
+    {
+      "name": "OcctSharp.Native.dll",
+      "sha256": "D4ABADE1AD343C7C87925C5531711A733CB04DB607ED692A445C90C5B2B73553",
+      "port": "OcctSharp",
+      "version": "0.133.0"
+    },
+    {
+      "name": "OpenEXR-3_5_d.dll",
+      "sha256": "E2C6352106B63B89E932C4755C8712760F0C5FE1A1764F4BF768E9CEDAC5DC09",
+      "port": "openexr",
+      "version": "3.5.2"
+    },
+    {
+      "name": "OpenEXRCore-3_5_d.dll",
+      "sha256": "AAA74268B2F887EE804BD9D3E94488C52BC1B40DD7C5252BE7E1F6DA040AC8E9",
+      "port": "openexr",
+      "version": "3.5.2"
+    },
+    {
+      "name": "openjp2.dll",
+      "sha256": "8E3182824E00C68540AD575EA59EB03F5505D7CE3102E10A41C38738FCB841D7",
+      "port": "openjpeg",
+      "version": "2.5.4"
+    },
+    {
+      "name": "openjph.0.32d.dll",
+      "sha256": "A5AFCBDCDECAEE8562E9CE944519BA7401C3530F0F5AB1C2E11B0193C7C51B4D",
+      "port": "openjph",
+      "version": "0.32.0"
+    },
+    {
+      "name": "rawd.dll",
+      "sha256": "6A80DF4061B429BF82DD0B9ABF7BD4E076387E389D8FD4C29E162DC23F2D533A",
+      "port": "libraw",
+      "version": "0.22.2"
+    },
+    {
+      "name": "tbb12_debug.dll",
+      "sha256": "4B7ECC99F508086755EF53FAC26077EACA30AFB5397E5CC36FA65605045E279B",
+      "port": "tbb",
+      "version": "2023.1.0"
+    },
+    {
+      "name": "tiffd.dll",
+      "sha256": "93C0F44D71AC1C58B8EC089C49BF5F95DDAA18E63BA9A8AE536D3D1F3410BE46",
+      "port": "tiff",
+      "version": "4.7.2"
+    },
+    {
+      "name": "TKBin.dll",
+      "sha256": "52FFAF1E09EFA0BEC0E6A884BCF2FDA4D2948ECC2385A88AE37EFF7EF21B4375",
+      "port": "opencascade",
+      "version": "8.0.1"
+    },
+    {
+      "name": "TKBinL.dll",
+      "sha256": "72FE84B9525117EB4456D4F1D69C80F0C7B3716DBE33AFE7CE27483E3B008089",
+      "port": "opencascade",
+      "version": "8.0.1"
+    },
+    {
+      "name": "TKBinTObj.dll",
+      "sha256": "03CB1318486AB783EB0C7F48DF298A89D5F39DFB078115296DBD0B980B198941",
+      "port": "opencascade",
+      "version": "8.0.1"
+    },
+    {
+      "name": "TKBinXCAF.dll",
+      "sha256": "04AB78D13B8EF043628E11D3C6421A01A4C1CCA1269446D3AE743E561C4426FF",
+      "port": "opencascade",
+      "version": "8.0.1"
+    },
+    {
+      "name": "TKBO.dll",
+      "sha256": "4CE90314CAAA8EE7E5693FE27078FE8EC5C7F345A40B16AE96578BDBB3C1B381",
+      "port": "opencascade",
+      "version": "8.0.1"
+    },
+    {
+      "name": "TKBool.dll",
+      "sha256": "587071A0810773B86FA68BDC7C593C6C10494649FD93CC087B136BD547E227E8",
+      "port": "opencascade",
+      "version": "8.0.1"
+    },
+    {
+      "name": "TKBRep.dll",
+      "sha256": "7A7ED746E86EFB65E3F23FFF2740ED44D8E88DA6EC77DE70BF93641A28671CC4",
+      "port": "opencascade",
+      "version": "8.0.1"
+    },
+    {
+      "name": "TKCAF.dll",
+      "sha256": "D12B809A154E346ABD49EFACF316E4C76CECE5FE820AE5DB3401155A9FD87A9A",
+      "port": "opencascade",
+      "version": "8.0.1"
+    },
+    {
+      "name": "TKCDF.dll",
+      "sha256": "B12BECF391DDA7F9FDE13D67E9C3890E79D1F2E3003E84BF89F4D33FAADFBF13",
+      "port": "opencascade",
+      "version": "8.0.1"
+    },
+    {
+      "name": "TKD3DHost.dll",
+      "sha256": "027AAAE955D03BAF61750D4A82EEA7A4C08BD33F83BE4E349ED2D02286427B97",
+      "port": "opencascade",
+      "version": "8.0.1"
+    },
+    {
+      "name": "TKDE.dll",
+      "sha256": "6E3DD55C62299D7AB9EFE9987A7F242B978AB484088BB84F87F6C0465B229975",
+      "port": "opencascade",
+      "version": "8.0.1"
+    },
+    {
+      "name": "TKDECascade.dll",
+      "sha256": "58BA55302F4BDC5CA419FFC1549C04921FBADD6E2ADB2309C9B366F11199A0A0",
+      "port": "opencascade",
+      "version": "8.0.1"
+    },
+    {
+      "name": "TKDEGLTF.dll",
+      "sha256": "815180380B4D1DF0D5E4CD7938500B176A7FAB320C6B95632570A635D0851C5B",
+      "port": "opencascade",
+      "version": "8.0.1"
+    },
+    {
+      "name": "TKDEIGES.dll",
+      "sha256": "1EC6CA7F2729BB199EF4F58FB814ECD1F0167BC3195F8A7A40378276D24B032A",
+      "port": "opencascade",
+      "version": "8.0.1"
+    },
+    {
+      "name": "TKDEOBJ.dll",
+      "sha256": "CF3E1D7124E1706A8D01825A890C26C48DF1E1B7E7BB44892E9D6BEE743E6090",
+      "port": "opencascade",
+      "version": "8.0.1"
+    },
+    {
+      "name": "TKDEPLY.dll",
+      "sha256": "E15ED46910BB8C88A0A09155608E32426A441ED07A061C366BD02805429FC6C1",
+      "port": "opencascade",
+      "version": "8.0.1"
+    },
+    {
+      "name": "TKDESTEP.dll",
+      "sha256": "FE8836DC1B0D7FF0A12F7BC39702A80C8CE61E63F63AF4A19D4909690C746C24",
+      "port": "opencascade",
+      "version": "8.0.1"
+    },
+    {
+      "name": "TKDESTL.dll",
+      "sha256": "4D22D360D1DE3DC7522B16E5D9D9434619FD469CE9A4D6DE6B980744EFAC3FE5",
+      "port": "opencascade",
+      "version": "8.0.1"
+    },
+    {
+      "name": "TKDEVRML.dll",
+      "sha256": "374A6A585318446D51B473806564816104768DBE0DCB8A72E04E105985593C7B",
+      "port": "opencascade",
+      "version": "8.0.1"
+    },
+    {
+      "name": "TKernel.dll",
+      "sha256": "0DC7057BB2D30839167B64A0E0EC31B42FC8BCF3C943D0C7402BD87D4218ADE3",
+      "port": "opencascade",
+      "version": "8.0.1"
+    },
+    {
+      "name": "TKExpress.dll",
+      "sha256": "D48001558F1D4EA24DC5AA9E4E9CED399778A56C9C15C424949CB1A7D7A194A8",
+      "port": "opencascade",
+      "version": "8.0.1"
+    },
+    {
+      "name": "TKFeat.dll",
+      "sha256": "A4F926C004E7F362A9591256374BC2091E8120F2293CD7B0FF5400B093C64CB6",
+      "port": "opencascade",
+      "version": "8.0.1"
+    },
+    {
+      "name": "TKFillet.dll",
+      "sha256": "42561FF858AAC06762695317E94E19DAB40C80E1ADA15F44B3A3B9620676A978",
+      "port": "opencascade",
+      "version": "8.0.1"
+    },
+    {
+      "name": "TKG2d.dll",
+      "sha256": "2FFD1AA717ED654F8080047D3942BC3C86BD96CE2658A21EF34E400D0C81071F",
+      "port": "opencascade",
+      "version": "8.0.1"
+    },
+    {
+      "name": "TKG3d.dll",
+      "sha256": "472627624D5B9796BF8CED4FC171A3EB06C166338260FFB452921E850BEEDB75",
+      "port": "opencascade",
+      "version": "8.0.1"
+    },
+    {
+      "name": "TKGeomAlgo.dll",
+      "sha256": "AE55C2E909D4E39CFEE7B9F68102399B5598E3D34872175ECD24CC20219F1290",
+      "port": "opencascade",
+      "version": "8.0.1"
+    },
+    {
+      "name": "TKGeomBase.dll",
+      "sha256": "0F30627E0E5EAAE0B757087D9E793415A1470BE4A1C537190F885193E005D029",
+      "port": "opencascade",
+      "version": "8.0.1"
+    },
+    {
+      "name": "TKHelix.dll",
+      "sha256": "CF48EAC10002D098B6CDD0AF81A42679F0F16ED3CD0924E1E7EF43EA628A9F31",
+      "port": "opencascade",
+      "version": "8.0.1"
+    },
+    {
+      "name": "TKHLR.dll",
+      "sha256": "C482F0BF23716FCC35A4D6031B3632DE4CA59EEE3961EFAAD31C00EFD662C0CB",
+      "port": "opencascade",
+      "version": "8.0.1"
+    },
+    {
+      "name": "TKLCAF.dll",
+      "sha256": "B2ADD7ECC8EA6D62FBBE030A7F98C27D1025DB17B6C984010EFE68E1886A828C",
+      "port": "opencascade",
+      "version": "8.0.1"
+    },
+    {
+      "name": "TKMath.dll",
+      "sha256": "57F9781935755C080E19668E164B2DC0E061EE63771A183629985EE5203664B8",
+      "port": "opencascade",
+      "version": "8.0.1"
+    },
+    {
+      "name": "TKMesh.dll",
+      "sha256": "0325D757F54392992FA0DE6979E66C8C0A393561D6A975314325C85DEC809825",
+      "port": "opencascade",
+      "version": "8.0.1"
+    },
+    {
+      "name": "TKMeshVS.dll",
+      "sha256": "FA199205AD0B717228B9D3EFF67CF1B19DCF7F99741F51E8675CC6FCC55F2679",
+      "port": "opencascade",
+      "version": "8.0.1"
+    },
+    {
+      "name": "TKOffset.dll",
+      "sha256": "6764E492691A6A06D90C596A852E90CD19FC079E69536C0928A24BE243855EC8",
+      "port": "opencascade",
+      "version": "8.0.1"
+    },
+    {
+      "name": "TKOpenGl.dll",
+      "sha256": "CD5E9CB60F36CD42D09835B8E0DDE8F22729EED901199770FAA83B2C096F5A7B",
+      "port": "opencascade",
+      "version": "8.0.1"
+    },
+    {
+      "name": "TKPrim.dll",
+      "sha256": "B287ACEE3E7400363AA1865553DE52DCE4CF83142B2CFD9F4AE8C29EF2109948",
+      "port": "opencascade",
+      "version": "8.0.1"
+    },
+    {
+      "name": "TKRWMesh.dll",
+      "sha256": "8353DB9D2858F12B1B1F31D337C308265D35D23E7661AE7859D8939A7EC6D0A1",
+      "port": "opencascade",
+      "version": "8.0.1"
+    },
+    {
+      "name": "TKService.dll",
+      "sha256": "343920C161AE7A9C13E247610FB2C9DB9B42D4A0B0B877A361EBEDEAA578F9BE",
+      "port": "opencascade",
+      "version": "8.0.1"
+    },
+    {
+      "name": "TKShHealing.dll",
+      "sha256": "CD0FE67E6D42C0C9C83A383D5067D45F1DEE908FDECBAFB0E562EC726EB7F026",
+      "port": "opencascade",
+      "version": "8.0.1"
+    },
+    {
+      "name": "TKStd.dll",
+      "sha256": "FFFEAA9AB300D29CDBDFF23BB94AA6831C750700C603C11445EEA4A09048770B",
+      "port": "opencascade",
+      "version": "8.0.1"
+    },
+    {
+      "name": "TKStdL.dll",
+      "sha256": "4E55046DDBDDD1CAA6A1C66C877F4A34AFFCA581FAAC47442843026C35DB3F15",
+      "port": "opencascade",
+      "version": "8.0.1"
+    },
+    {
+      "name": "TKTObj.dll",
+      "sha256": "4C3EDC4D2AC9A32FBA1095092B8891FAE6E2589D397BB671534E3E2ADC6C2A0C",
+      "port": "opencascade",
+      "version": "8.0.1"
+    },
+    {
+      "name": "TKTopAlgo.dll",
+      "sha256": "4351272E2DED7CFFBF83EC1DB0E8E9678964369B68B4C7D16E640CEE1312CBD1",
+      "port": "opencascade",
+      "version": "8.0.1"
+    },
+    {
+      "name": "TKV3d.dll",
+      "sha256": "1624CD13BAAF465258357A57391EBD287E4D27866876A79FB3C537004B3A3F2A",
+      "port": "opencascade",
+      "version": "8.0.1"
+    },
+    {
+      "name": "TKVCAF.dll",
+      "sha256": "950F4F45B20F355E3A8AD0A8BCCFDF707C2E38927417972CFBD0310AA56355AD",
+      "port": "opencascade",
+      "version": "8.0.1"
+    },
+    {
+      "name": "TKXCAF.dll",
+      "sha256": "2F2C409A6DD1DFF1C2AF80F1915A5A3D15D539B8073A1352C04CA1F45A160868",
+      "port": "opencascade",
+      "version": "8.0.1"
+    },
+    {
+      "name": "TKXMesh.dll",
+      "sha256": "60AA478D85BBB9890178DD09589CC8AF662A21A16234751B9C78E37811ABC5BE",
+      "port": "opencascade",
+      "version": "8.0.1"
+    },
+    {
+      "name": "TKXml.dll",
+      "sha256": "427A9313197F7F799D3618308FCA7DE0679AE0F72E5BD545762E01AF5B070739",
+      "port": "opencascade",
+      "version": "8.0.1"
+    },
+    {
+      "name": "TKXmlL.dll",
+      "sha256": "0ED6C7B06D3322654D1C29454C0C3133243B8B69B1F9B2699F9A2B17AA8022E9",
+      "port": "opencascade",
+      "version": "8.0.1"
+    },
+    {
+      "name": "TKXmlTObj.dll",
+      "sha256": "ECDB710DAA4CBDDA9A72A12F1BC77CF39888B0B232667D328F2D4CDE5A2C5DC8",
+      "port": "opencascade",
+      "version": "8.0.1"
+    },
+    {
+      "name": "TKXmlXCAF.dll",
+      "sha256": "C22137E648DA0981251FCBE0F15166C46982B7EAF4DF38E4B4D432DD0ABAF4A1",
+      "port": "opencascade",
+      "version": "8.0.1"
+    },
+    {
+      "name": "TKXSBase.dll",
+      "sha256": "2E34D4EA6D92820F099D1DD7B55AC3CF7158611139BB7496F82BEDB65441B0DE",
+      "port": "opencascade",
+      "version": "8.0.1"
+    },
+    {
+      "name": "zd.dll",
+      "sha256": "1E5794F068F52BE58EE742FD6FB5D9CA0D9DD5BC6C3A7AC34DAE135AC2A6EE14",
+      "port": "zlib",
+      "version": "1.3.2"
+    },
+    {
+      "name": "zstd.dll",
+      "sha256": "DD35B0DC2D497B1FE946C58ACC0FD66F6A4CEC3342D550626E82584B031010F3",
+      "port": "zstd",
+      "version": "1.5.7"
+    }
+  ],
+  "licenses": [
+    {
+      "port": "brotli",
+      "path": "licenses/brotli.txt",
+      "sha256": "3D180008E36922A4E8DAEC11C34C7AF264FED5962D07924AEA928C38E8663C94"
+    },
+    {
+      "port": "bzip2",
+      "path": "licenses/bzip2.txt",
+      "sha256": "C6DBBF828498BE844A89EAA3B84ADBAB3199E342EB5CB2ED2F0D4BA7EC0F38A3"
+    },
+    {
+      "port": "freeimage",
+      "path": "licenses/freeimage.txt",
+      "sha256": "0BB9A3123297C73AE6E19C70459FB0E58F313F67CA63176FD43F8E77668B8243"
+    },
+    {
+      "port": "freetype",
+      "path": "licenses/freetype.txt",
+      "sha256": "CF82ED29473C1FD8E137FD34250F89EEBF2BEE9E126FA004286DD25495D5C654"
+    },
+    {
+      "port": "imath",
+      "path": "licenses/imath.txt",
+      "sha256": "C20236D3B39FD20EBA8E3D1FB3B892A5483DF2E7D8D61BF43F165D3FAC22F601"
+    },
+    {
+      "port": "lcms",
+      "path": "licenses/lcms.txt",
+      "sha256": "6DBD60437F8EF91D8DE1F08AD75882547FD4931BFCC3566A0735F28DB1484D31"
+    },
+    {
+      "port": "libdeflate",
+      "path": "licenses/libdeflate.txt",
+      "sha256": "4AD69099CB4374836FD27583D9991E2838CD86B6E4666AB26B2D32582C91E73A"
+    },
+    {
+      "port": "libjpeg-turbo",
+      "path": "licenses/libjpeg-turbo.txt",
+      "sha256": "BA6BCEEBCBA0FDD35488477C2CCA8C4632CE82C74DBFBC87D886CE6FC4433579"
+    },
+    {
+      "port": "liblzma",
+      "path": "licenses/liblzma.txt",
+      "sha256": "616A3AD264CE29B8F1CB97E53037B139D406899CA8D1F799651E17BFA09830B8"
+    },
+    {
+      "port": "libpng",
+      "path": "licenses/libpng.txt",
+      "sha256": "BDB0A645EA18C60507D0368379B1AC5474B92255FCC2D115E07486A7672BA526"
+    },
+    {
+      "port": "libraw",
+      "path": "licenses/libraw.txt",
+      "sha256": "F707D1D8E1A9A485CDED69569B010CD42F5AEC97C56EA07729955035395C6990"
+    },
+    {
+      "port": "libwebp",
+      "path": "licenses/libwebp.txt",
+      "sha256": "050B5BA2C8EB0BD3B996E12EF79312A1C62237F2DE1B3C609843F00BB74744F3"
+    },
+    {
+      "port": "OcctSharp",
+      "path": "licenses/OcctSharp.txt",
+      "sha256": "8E7CE332937E05B2F75C10EBEEED4982F395EC34D9574B13CA964756C2F81AC0"
+    },
+    {
+      "port": "opencascade",
+      "path": "licenses/opencascade.txt",
+      "sha256": "DAF20A5C88365363C22B0879E80463E54D185D70295886B91CC1B4EDF115F879"
+    },
+    {
+      "port": "openexr",
+      "path": "licenses/openexr.txt",
+      "sha256": "84853C91D4C2E0310741D4773469D98BB93E61029608E0BA0882A3FFFDF330BD"
+    },
+    {
+      "port": "openjpeg",
+      "path": "licenses/openjpeg.txt",
+      "sha256": "A6AF136F3E15038A666B61F376612A07D9A4E48CB7C01ADBF3E33B3F14AB49B6"
+    },
+    {
+      "port": "openjph",
+      "path": "licenses/openjph.txt",
+      "sha256": "5DDF5177863DFC9AB65FA129D587DB651241F00E21ED2427B218BEA997591F98"
+    },
+    {
+      "port": "tbb",
+      "path": "licenses/tbb.txt",
+      "sha256": "C71D239DF91726FC519C6EB72D318EC65820627232B2F796219E87DCF35D0AB4"
+    },
+    {
+      "port": "tiff",
+      "path": "licenses/tiff.txt",
+      "sha256": "0E27C2382D7B8147972BBB746E04059A1152C8D0FDA9D03EF1399D1A433C4ADE"
+    },
+    {
+      "port": "zlib",
+      "path": "licenses/zlib.txt",
+      "sha256": "E32FF4E00D9D94930537635291DA39E7E612703334BF6FDE8C7F1686FE8A45A2"
+    },
+    {
+      "port": "zstd",
+      "path": "licenses/zstd.txt",
+      "sha256": "434DCA949C6DA7C500413AEF694539FE37F867DD1A94D83D4ED1D260194E2660"
+    }
+  ],
+  "installedPorts": [
+    {
+      "name": "zstd",
+      "version": "1.5.7",
+      "portVersion": "0"
+    },
+    {
+      "name": "freetype",
+      "version": "2.14.3",
+      "portVersion": "0"
+    },
+    {
+      "name": "freeimage",
+      "version": "3.18.0",
+      "portVersion": "27"
+    },
+    {
+      "name": "jasper",
+      "version": "4.2.9",
+      "portVersion": "0"
+    },
+    {
+      "name": "tiff",
+      "version": "4.7.2",
+      "portVersion": "0"
+    },
+    {
+      "name": "rapidjson",
+      "version": "2025-02-26",
+      "portVersion": "1"
+    },
+    {
+      "name": "bzip2",
+      "version": "1.0.8",
+      "portVersion": "6"
+    },
+    {
+      "name": "vcpkg-cmake-config",
+      "version": "2026-07-21",
+      "portVersion": "0"
+    },
+    {
+      "name": "lcms",
+      "version": "2.19.1",
+      "portVersion": "1"
+    },
+    {
+      "name": "openexr",
+      "version": "3.5.2",
+      "portVersion": "0"
+    },
+    {
+      "name": "opencascade",
+      "version": "8.0.1",
+      "portVersion": "0"
+    },
+    {
+      "name": "opengl-registry",
+      "version": "2026-08-03",
+      "portVersion": "0"
+    },
+    {
+      "name": "libjpeg-turbo",
+      "version": "3.2.0",
+      "portVersion": "1"
+    },
+    {
+      "name": "libdeflate",
+      "version": "1.26",
+      "portVersion": "0"
+    },
+    {
+      "name": "openjph",
+      "version": "0.32.0",
+      "portVersion": "1"
+    },
+    {
+      "name": "brotli",
+      "version": "1.2.0",
+      "portVersion": "0"
+    },
+    {
+      "name": "zlib",
+      "version": "1.3.2",
+      "portVersion": "2"
+    },
+    {
+      "name": "liblzma",
+      "version": "5.8.4",
+      "portVersion": "0"
+    },
+    {
+      "name": "openjpeg",
+      "version": "2.5.4",
+      "portVersion": "0"
+    },
+    {
+      "name": "hwloc",
+      "version": "2.11.2",
+      "portVersion": "0"
+    },
+    {
+      "name": "vcpkg-tool-meson",
+      "version": "1.9.0",
+      "portVersion": "10"
+    },
+    {
+      "name": "vcpkg-cmake",
+      "version": "2025-08-07",
+      "portVersion": "0"
+    },
+    {
+      "name": "libraw",
+      "version": "0.22.2",
+      "portVersion": "0"
+    },
+    {
+      "name": "vcpkg-cmake-get-vars",
+      "version": "2025-05-29",
+      "portVersion": "0"
+    },
+    {
+      "name": "libspng",
+      "version": "0.7.4",
+      "portVersion": "1"
+    },
+    {
+      "name": "jxrlib",
+      "version": "2019.10.9",
+      "portVersion": "7"
+    },
+    {
+      "name": "opengl",
+      "version": "2022-12-04",
+      "portVersion": "3"
+    },
+    {
+      "name": "libwebp",
+      "version": "1.6.0",
+      "portVersion": "3"
+    },
+    {
+      "name": "libpng",
+      "version": "1.6.59",
+      "portVersion": "0"
+    },
+    {
+      "name": "imath",
+      "version": "3.2.3",
+      "portVersion": "0"
+    },
+    {
+      "name": "tbb",
+      "version": "2023.1.0",
+      "portVersion": "0"
+    },
+    {
+      "name": "egl-registry",
+      "version": "2025-05-27",
+      "portVersion": "0"
+    }
+  ]
+}

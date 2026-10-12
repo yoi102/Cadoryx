@@ -8,6 +8,7 @@
     <Authors>yoiri</Authors>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
-    <OcctSharpVersion>8.0.1-preview.31.cadoryx.curve-inspection.26</OcctSharpVersion>
+    <DisableImplicitLibraryPacksFolder>true</DisableImplicitLibraryPacksFolder>
+    <OcctSharpVersion>8.0.1-preview.85</OcctSharpVersion>
   </PropertyGroup>
 </Project>

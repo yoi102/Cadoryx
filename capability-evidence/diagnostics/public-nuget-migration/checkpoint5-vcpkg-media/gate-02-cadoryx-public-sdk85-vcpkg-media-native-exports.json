@@ -1,0 +1,8 @@
+{
+  "state": "PASS",
+  "baselineCount": 41509,
+  "currentCount": 41509,
+  "removed": 0,
+  "added": [],
+  "debugMatchesRelease": true
+}

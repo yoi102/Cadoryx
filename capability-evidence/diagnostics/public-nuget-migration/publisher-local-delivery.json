@@ -1,0 +1,164 @@
+{
+  "schemaVersion": "1.0",
+  "state": "PASS",
+  "packageVersion": "8.0.1-preview.85",
+  "nativeAbi": "1.118",
+  "bridgeVersion": "0.133.0",
+  "releaseBridgeSha256": "D44F3F272386EA2CC87E7107AB2E3375D8100283872372F1FBC234A3B4E38CB3",
+  "generatedOutputs": 399,
+  "generatedBindings": 28020,
+  "forwarders": 4472,
+  "publicApiBaselineSignatures": 59287,
+  "publicApiSignatures": 59391,
+  "publicApiAdded": 104,
+  "publicApiRemoved": 0,
+  "nativeExports": 41509,
+  "inventoryDeclarations": 116366,
+  "parserExclusions": 28,
+  "newRawDeclarationCredit": 0,
+  "sourceSnapshotSha256": "BADB62C6D5561DE7A49DCA9EE132A93AFFD88AB6B09478254CF47F31AA4BEFBC",
+  "validationPolicy": "Equivalent independently executed full delivery gates; unified release-check entry was not replayed.",
+  "vcpkgQualification": "Independent provider; see provider-specific receipts. Public packages use the precompiled62-DLL provider.",
+  "gates": [
+    {
+      "id": "release-full",
+      "state": "PASS",
+      "evidence": "template-fix-release-full.json",
+      "sha256": "66D947C7F4AD5FAFB74B26590F76B355BAE1F40135625DFDE05C1B12B2731332"
+    },
+    {
+      "id": "debug-full",
+      "state": "PASS",
+      "evidence": "template-fix-debug-full.json",
+      "sha256": "C1D9C7AF7CEB0C90FE976BB66FB206866623766CFC2007EAC5E9D4B4CC050352"
+    },
+    {
+      "id": "actual-debug",
+      "state": "PASS",
+      "evidence": "template-fix-actual-debug/result.json",
+      "sha256": "14978AFF80F5C1FD98546C598A8F52F4F75F24FEE15BAA79DD799A64EA847FD7"
+    },
+    {
+      "id": "actual-debug-loaded-modules",
+      "state": "PASS",
+      "evidence": "template-fix-actual-debug-loaded-modules.json",
+      "sha256": "20F5D64F1891F3B8028DB56D6FD75D1E4CB3CACA9CF2AB8003DF1D0EF0FE59FF"
+    },
+    {
+      "id": "cold-regeneration",
+      "state": "PASS",
+      "evidence": "template-fix-cold.json",
+      "sha256": "2799C7377A5AC77D3BC86794B6DA9FAA995F126E07D5B9553EBC954917EDD581"
+    },
+    {
+      "id": "native-exports",
+      "state": "PASS",
+      "evidence": "template-fix-native-exports.json",
+      "sha256": "1EE1EB67307AACC8E06E217D6AED6609D9724402EFD25EA6460584AA42E6F16E"
+    },
+    {
+      "id": "clean-package-consumers",
+      "state": "PASS",
+      "evidence": "template-fix-package-consumers.json",
+      "sha256": "46C331381DB921110FA9AB9C7D3B6594588F0F07856CCA0B53D32E9D53EE5BC5"
+    },
+    {
+      "id": "generated-freshness-sample",
+      "state": "PASS",
+      "evidence": "template-fix-support-gates.json",
+      "sha256": "998A24AF9D246C7AFF702660790FB33B02C40F14AFEE67DE89F95F428C1DFEEA"
+    },
+    {
+      "id": "dependency-entry-rejections",
+      "state": "PASS",
+      "evidence": "dependency-entry-tests-final/result.json",
+      "sha256": "FFD22526B926D9C2CD7F8B132940EAC0F1D1E9425A2ABA9EA622744A8DD1B76C"
+    },
+    {
+      "id": "package-content",
+      "state": "PASS",
+      "evidence": "template-fix-package-content.json",
+      "sha256": "254A5A3379F7F356944C48E44FDA658018E540793CA3F749E3FD5EE2BC74C98A"
+    }
+  ],
+  "packages": [
+    {
+      "name": "OcctSharp.Native.win-x64.8.0.1-preview.85.nupkg",
+      "sha256": "BF28E7143BA598237DC55B4623ADF669285B1930F431C48F90590D4F9692556C"
+    },
+    {
+      "name": "OcctSharp.Runtime.8.0.1-preview.85.nupkg",
+      "sha256": "C2C34618E74688F4770EB23F128C081EE8094245F92B3DB0ABC431948FFE7841"
+    },
+    {
+      "name": "OcctSharp.Foundation.8.0.1-preview.85.nupkg",
+      "sha256": "C5F2E9675001676C45F7FCA9C137EF2CE40EC803162B8705C1CB3B32BB0EAA1C"
+    },
+    {
+      "name": "OcctSharp.Geometry.8.0.1-preview.85.nupkg",
+      "sha256": "E27E68CE821FC8A35F61B077422EAB16308AB5B1EE6FE70665D9EEC8D3668293"
+    },
+    {
+      "name": "OcctSharp.MeshData.8.0.1-preview.85.nupkg",
+      "sha256": "2C80BC4E5C11A959A913160806CE4AF10267826B3DAED541906FB1F8F6B1937B"
+    },
+    {
+      "name": "OcctSharp.Modeling.8.0.1-preview.85.nupkg",
+      "sha256": "D0E58CC30C4B0B99B85F3077C3C4E449549B3BC018787A877DB80F8903822821"
+    },
+    {
+      "name": "OcctSharp.Mesh.8.0.1-preview.85.nupkg",
+      "sha256": "09AE8B9560E5010D6C8DE66E774F6B92A6DB9FA92F540D18CC46F0C5C20C898D"
+    },
+    {
+      "name": "OcctSharp.Documents.8.0.1-preview.85.nupkg",
+      "sha256": "E5E5EC41A2CE01839CD8F8F116C2D4454812C5893B366DD8004FB9F23F10B951"
+    },
+    {
+      "name": "OcctSharp.Visualization.8.0.1-preview.85.nupkg",
+      "sha256": "115690B2F5DCC639C692D3E7BD07588FE82C925F11B3A7F0A1AC135C153264FB"
+    },
+    {
+      "name": "OcctSharp.DataExchange.8.0.1-preview.85.nupkg",
+      "sha256": "D7FB07F4D7BA0F0BD47D93BB9263884292384F6AE3C7B2E331AE17FF0AEC6DD9"
+    },
+    {
+      "name": "OcctSharp.Xde.8.0.1-preview.85.nupkg",
+      "sha256": "AD65025BA3AA3A56A4649EAA196546BBACFA7E2E0D053CEFE27EAD7E649B751F"
+    },
+    {
+      "name": "OcctSharp.IVtk.8.0.1-preview.85.nupkg",
+      "sha256": "FA643730D6E945ADAA3B001CBCFA6E7858181DC1EA15A363742DAB23473A7796"
+    },
+    {
+      "name": "OcctSharp.Draw.8.0.1-preview.85.nupkg",
+      "sha256": "64ECAE125849D4FBE6711C429EA247F92F8317ACCE3C5EE350798DB02856F57F"
+    },
+    {
+      "name": "OcctSharp.8.0.1-preview.85.nupkg",
+      "sha256": "073262F801223E20BFBB68F00254943BC55D3B96B8E709F25A79A8DA27D8FACA"
+    }
+  ],
+  "externalGates": [
+    {
+      "id": "hosted-ci",
+      "evidence": "No hosted run inspected or dispatched.",
+      "state": "NOT RUN"
+    },
+    {
+      "id": "author-signing",
+      "evidence": "No author signing performed; NuGet repository signatures verified separately.",
+      "state": "NOT RUN"
+    },
+    {
+      "id": "physical-mixed-dpi-rdp-gpu",
+      "evidence": "Physical platform acceptance remains separate.",
+      "state": "NOT RUN"
+    },
+    {
+      "id": "nuget-publication",
+      "evidence": "Publication and remote-consumer receipts are separate.",
+      "state": "NOT RUN"
+    }
+  ]
+}

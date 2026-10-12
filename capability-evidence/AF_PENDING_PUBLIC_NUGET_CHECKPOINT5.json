@@ -1,0 +1,76 @@
+{
+  "recordedAt": "2026-10-12T15:47:01.603141+00:00",
+  "state": "PUBLIC85_PRODUCTION_APPLIED_ROOT50_PROJECTS_BOTH_BUILDS_AND_CAPABILITY55_PASS_FINAL_AF_RUNTIME_RUNNING",
+  "publicVersion": "8.0.1-preview.85",
+  "rootBuild": {
+    "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\capability-evidence\\diagnostics\\public-nuget-migration\\public85-production-root-verification.json",
+    "sha256": "E99945F32BC8FF3D436DDF0BA879BE1C8B11B92DD01881EB8E9076170AF61F31"
+  },
+  "productionApplied": {
+    "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\capability-evidence\\diagnostics\\public-nuget-migration\\public85-production-applied.json",
+    "sha256": "077423E07E0CD1EDD6FF6CA88B0823A08E513561D3FFF173A927670D6A75A576"
+  },
+  "locks": {
+    "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\capability-evidence\\diagnostics\\public-nuget-migration\\public85-production-locks-verification.json",
+    "sha256": "7AC0F89D0BB25015C77033B18F906C36E4B62084C3FACC7C5261632DC8BF20C4"
+  },
+  "capability55": {
+    "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\capability-evidence\\diagnostics\\public-nuget-migration\\public85-production-capability-result.json",
+    "sha256": "2CA8FE812CDED5F71EFD06D9336BFDBE46C6F8EC652C02664A95A72FF6A0B1F3"
+  },
+  "capabilityPackage": {
+    "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\capability-evidence\\diagnostics\\public-nuget-migration\\public85-production-capability-package-audit.json",
+    "sha256": "DECB94D08861B395A83426E0BDA821DA061D0B149CF1CC52C42DC256AB1CCDC0"
+  },
+  "vcpkgConfigurations": [
+    {
+      "configuration": "Release",
+      "tests": 2255,
+      "passed": 2255,
+      "failed": 0,
+      "skipped": 0,
+      "nativeDiskDlls": 84,
+      "observedNativeModules": 84,
+      "allObservedPathsAndHashesMatchActualConfiguration": true,
+      "all84Observed": true,
+      "result": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-public-sdk85\\vcpkg-media-runtime-release\\result.json",
+        "sha256": "83B0BE36C9DCF1EA78A50706719540C9063B8A5DD1F686E8F1642EE040F9AB55"
+      },
+      "trx": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-public-sdk85\\vcpkg-media-runtime-release\\run-c0c58c8b7c034419b9b0d96b50b14355\\vcpkg-runtime.trx",
+        "sha256": "AFDFFF585D398F73F8E0A8F01F40436A461D1692B11D116518EE9BAB3996611C"
+      }
+    },
+    {
+      "configuration": "Debug",
+      "tests": 2255,
+      "passed": 2255,
+      "failed": 0,
+      "skipped": 0,
+      "nativeDiskDlls": 84,
+      "observedNativeModules": 40,
+      "allObservedPathsAndHashesMatchActualConfiguration": true,
+      "all84Observed": false,
+      "result": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-public-sdk85\\vcpkg-media-runtime-debug\\result.json",
+        "sha256": "DBB20F017FB5E4EC002811EE1DFC699B67C9B368CCCBAA04436254DBBA102E2D"
+      },
+      "trx": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-public-sdk85\\vcpkg-media-runtime-debug\\run-2ded7dcb2d9e4c938e47095542fecf37\\vcpkg-runtime.trx",
+        "sha256": "256B9082FB80EA08C0228CB9E1E50100AD672BB9041DA794066AD6FEC9E9C53B"
+      }
+    }
+  ],
+  "vcpkgDebugModuleObservationIsPartial": true,
+  "publishedNativeDlls": 62,
+  "vcpkgNativeDiskDlls": 84,
+  "nativePackageDeprecated": false,
+  "CadoryxRequiresVcpkg": false,
+  "finalSource1073Applied": false,
+  "finalSource1073Runtime": "RUNNING_RELEASE_THEN_DEBUG_6619_EACH",
+  "desktopInputStarted": false,
+  "cleanup": false,
+  "AF": "ACTIVE",
+  "G": "USER_DEFERRED"
+}

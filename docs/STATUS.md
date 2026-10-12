@@ -1,5 +1,31 @@
 # 当前状态
 
+2026-10-13，status233：[检查点5](../capability-evidence/AF_PENDING_PUBLIC_NUGET_CHECKPOINT5.json)确认公开 Preview.85 已实际应用生产，仅nuget.org、稳定SDK10.0.401，生产根50项目/120阶段/Release及Debug共60次编译均零警告/错误；30份SDK锁/412引用和六个输出的13托管/62原生DLL匹配公开包。实际公开能力探针55/55通过。vcpkg独立profile两配置各完整2255/2255、零失败/跳过，磁盘84DLL/22许可证；Release实际观察84模块、Debug实际观察40模块及桥的路径/哈希准确，Debug不证明全部84加载。最终source1073公开85完整6619两配置回归已开始，原严格STEP24、工具预算及实际窗口/性能/提供方门禁仍保持，最终1073尚未合入生产。Cadoryx不需要vcpkg；Native.win-x64继续受支持、不弃用。A–F继续，G及Cadoryx清理暂缓。
+
+以下status232及更早记录保留当时状态；当前结论以status233为准。
+
+2026-10-13，status232：公开 `8.0.1-preview.85` 完整14包已发布并完成签名/远端身份核验；Cadoryx 两组隔离消费者各50项目、120恢复/编译阶段、60次两配置编译通过，最终1073的221类型/696成员集合保持，当前生产为207/661。已将生产41份配置/锁及baseline切换到公开85，正式30份SDK锁/412引用通过核验；正在生产根用全新缓存完成恢复和两配置编译，原生运行尚未开始。[生产应用收据](../capability-evidence/diagnostics/public-nuget-migration/public85-production-applied.json)与[生产消费锁](../capability-evidence/diagnostics/public-nuget-migration/public85-production-locks-verification.json)已保存。Cadoryx 不用vcpkg；`OcctSharp.Native.win-x64` 继续提供原生运行时，无替代包或弃用计划，不标记过时。vcpkg第二profile的Release完整2255通过已由上游报告，Debug实际原生验证正在进行，独立证据待接收。A–F继续，最终全量/窗口/性能/提供方和原严格STEP24/AI预算失败仍待收敛；G及Cadoryx清理暂缓。
+
+以下status231及更早记录保留当时状态；当前结论以status232为准。
+
+2026-10-12，status231：[检查点4](../capability-evidence/AF_PENDING_PUBLIC_NUGET_CHECKPOINT4.json)独立核验OcctSharp生成器模板补齐8个TopoDS头后的两配置完整Generator410/Runtime2255、实际Debug2255/native62加载和修正冷源完整回归，全部通过；最终公开桥改为`D44F3F272386EA2CC87E7107AB2E3375D8100283872372F1FBC234A3B4E38CB3`，旧D7及先前本地包仅作历史。vcpkg完整7478头、两配置桥及399生成文件对照通过，每配置79DLL/21许可证来源与哈希已验；实际vcpkg Runtime待验。最终14包重包/远端发布/公开消费者未确认，生产仍SDK26。Cadoryx只用NuGet、不用vcpkg；1186源/工具输入加1辅助脚本、50项目公开消费者已准备，A–F继续，G和Cadoryx清理暂缓。
+
+当前进度以status231为准；以下保留历史检查点。
+
+status231运行增量：vcpkg首次Release Runtime2253/2255、2失败、零跳过。[原失败核验](../capability-evidence/diagnostics/public-nuget-migration/vcpkg-initial-runtime-failure.json)绑定完整TRX、79份隔离DLL及固定OCCT源码；媒体时间函数因FFmpeg关闭返回零，正在修正依赖配置，原断言保持。该轮没有成功加载模块报告，不宣称vcpkg运行通过；公开预编译provider结果保持独立。
+
+2026-10-12，status230：OcctSharp固定vcpkg入口及生成支持已提交`c3caed2`；空目录、禁二进制缓存的源码恢复通过，OCCT Release/Debug均编完。首次桥生成解析因默认端口缺少Draw头文件报错，正在补齐固定源的完整头文件入口；vcpkg桥/生成一致性/实际运行尚未通过，旧provider证据保持独立。旧provider冷源生成/编译/完整回归已通过。Cadoryx当前生产及工具隔离验证已完成50项目、两配置60次零警告/错误构建、30份SDK锁统一本地85；最终source1073及工具的公开消费者已准备1186输入/50项目，仅9配置变化，旧本地证明被入口拒绝。详见[公开迁移当前进度](OCCT_PUBLIC_NUGET_MIGRATION.md)。公开发布及生产切换未确认，生产仍SDK26；A–F继续，G及Cadoryx清理暂缓。
+
+以下status229及更早记录保留当时状态，当前进度以status230为准。
+
+2026-10-12，status229：隔离source1073实际接入本地Preview85候选，普通/锁定fresh-cache恢复及两配置完整solution编译均通过、零警告/错误。[独立核验](../capability-evidence/diagnostics/public-nuget-migration/local85-consumer1073-verification.json)确认应用/测试源码和原断言未变，21份锁SDK14版本/字节匹配、其他依赖未变；六个WPF/Tests/CLI输出各SDK13/native62匹配受测清单，76个重新编译DLL文件的221类型/696成员集合与原SDK31逐项相同。没有原生执行、公开源恢复或生产合入。上游旧provider Release全量2255/2255及实际Debug-native2255/2255、native62核验已通过；旧失败保留，测试窗口现在固定主显示器，不能作为跨显示器验收或宣称原生重绘根因已修复。vcpkg独立恢复正在从源码编译OCCT，桥构建/运行/生成一致性仍待验；公开发布未确认，生产仍SDK26。A–F继续，G及Cadoryx清理暂缓。
+
+2026-10-12，status228：按用户新增要求，OcctSharp将增加固定vcpkg基线的环境还原入口；官方8.0.1端口源提交与原SDK一致，依赖/安装布局/profile身份需独立验证，上游统一接手构建与生成器接入。[检查点3](../capability-evidence/AF_PENDING_PUBLIC_NUGET_CHECKPOINT3.json)保存固定registry审计、原脚本字节、8个发布方清单及7个合成消费锁夹具。公开恢复门禁绑定发布方受测完整DLL集合/逐文件SHA256，baseline同时核对ABI/bridgeVersion；元数据夹具不代表公开恢复或vcpkg构建通过。上游85生成器410/410、原生Release已编译，Runtime2251/2255的四个CB/CC选择重绘断言仍在诊断；新vcpkg实际恢复/编译和NuGet公开发布尚未完成。优先预约原子延长至20:00 JST，原6h调度上限保持，生产仍SDK26，A–F继续，G及Cadoryx清理暂缓。
+
+2026-10-12，status227：原solver21 Release完整6556 attempt2于15:25:42 JST结束，6531通过、25失败、零跳过；24严格STEP拒绝及1工具预算断言保持，[检查点2](../capability-evidence/AF_PENDING_PUBLIC_NUGET_CHECKPOINT2.json)绑定原始构建/运行/实际native证据。实际消费者退出后已将验证时段交给上游，OcctSharp开始必要API重生成/编译/回归。公开恢复门禁要求精确14包ID；新增全部消费锁门禁，实际清点30份SDK锁、50个直接包引用，旧工具12处版本表达式需统一。两个公开门禁仅语法核验，实际未运行；未确认公开发布或生产接入，生产仍私有SDK26。A–F继续，G及Cadoryx清理暂缓；OcctSharp清理与忽略规则由上游处理。
+
+2026-10-12，status226：按用户新优先顺序，先在OcctSharp补齐必要生成器API与行为，再公开发布NuGet，随后Cadoryx只消费公开包并提交推送。[公开迁移计划](OCCT_PUBLIC_NUGET_MIGRATION.md)与[精确引用证据](../capability-evidence/AF_PENDING_PUBLIC_NUGET_REQUIREMENTS.json)已保存；上游会话已核对人类原始授权，准备Preview.85/ABI1.118/bridge0.133.0，目前尚未发布或接入。两个候选各221类型/696成员静态引用集合一致，其中634应用/诊断、62仅测试；不作运行或完整能力覆盖率。能力验收已改为从锁定恢复的缓存核验nupkg，六个元数据夹具与真实私有缓存解析通过；仅公开14包/native62恢复脚本已准备，实际NOT RUN。SDK30两配置完整6530均通过；当前solver21 Release不被中断，后续未启动消费者等待上游优先时段。原范围、公差与预算保持，生产仍私有SDK26，A–F继续、G及Cadoryx清理暂缓；OcctSharp清理/`.gitignore`已按用户新授权交由该会话处理。
+
 2026-10-12，status225增量：[D6/SDK30 Release完整6530](../capability-evidence/AF_PENDING_D6_SDK30_INTEGRATION_FULL_RELEASE.json)实际6530/6530、零失败/跳过。原用例名称、source1066、完整运行载荷与实际native62已再次复核；运行13:37–14:15 JST。Debug完整6530已进入运行，后续solver21/最终D6全量和真实窗口仍待验。生产仍1000/SDK26，A–F继续，G和本任务清理暂缓；下方“完整6530正在运行”更新为仅Debug尚在运行。
 
 2026-10-12，status225：**A–F继续；G和清理暂缓，生产仍source1000/SDK26。** [D6/SDK30生产组合](D6_SDK30_PRODUCTION_INTEGRATION.md)的source1066两配置完整构建零警告/错误，原6467+新63发现6530；Release/Debug各有限曲面99/99、原AI及工程图165/165，实际native62及冻结来源已独立核验。[功能证据](../capability-evidence/AF_PENDING_D6_SDK30_INTEGRATION_FUNCTIONAL.json)不代替完整6530、真实窗口及生产合入。

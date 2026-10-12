@@ -4,55 +4,55 @@
     "net10.0": {
       "OcctSharp.Modeling": {
         "type": "Direct",
-        "requested": "[8.0.1-preview.28.cadoryx.viewcube.4, 8.0.1-preview.28.cadoryx.viewcube.4]",
-        "resolved": "8.0.1-preview.28.cadoryx.viewcube.4",
-        "contentHash": "Pirr/vPYfcP97Q90+pHldv/Ghgve0xl4WU71VERtzVlqQ/MjOgMe7evVJpY7Rn/2bSXUZdbU5NeeeqALyl7mlA==",
+        "requested": "[8.0.1-preview.85, 8.0.1-preview.85]",
+        "resolved": "8.0.1-preview.85",
+        "contentHash": "ldravbY9KjqXVgCDomBlsQBQXfOKYzDq1Sxvpm1vEU2LQNs3/MU3068pXMw5FHkzQPaZyLWTul57W6eI0HdZ2A==",
         "dependencies": {
-          "OcctSharp.Foundation": "8.0.1-preview.28.cadoryx.viewcube.4",
-          "OcctSharp.Geometry": "8.0.1-preview.28.cadoryx.viewcube.4",
-          "OcctSharp.MeshData": "8.0.1-preview.28.cadoryx.viewcube.4",
-          "OcctSharp.Runtime": "8.0.1-preview.28.cadoryx.viewcube.4"
+          "OcctSharp.Foundation": "[8.0.1-preview.85]",
+          "OcctSharp.Geometry": "[8.0.1-preview.85]",
+          "OcctSharp.MeshData": "[8.0.1-preview.85]",
+          "OcctSharp.Runtime": "[8.0.1-preview.85]"
         }
       },
       "OcctSharp.Native.win-x64": {
         "type": "Direct",
-        "requested": "[8.0.1-preview.28.cadoryx.viewcube.4, 8.0.1-preview.28.cadoryx.viewcube.4]",
-        "resolved": "8.0.1-preview.28.cadoryx.viewcube.4",
-        "contentHash": "SavHBrjzp0xR2zhy31QBmIC4KTiyXar2at21F5qXotWBAnC5L+fC39cDtHmDNkf0D1YzkFoUv5uHBfEB3xW2pg=="
+        "requested": "[8.0.1-preview.85, 8.0.1-preview.85]",
+        "resolved": "8.0.1-preview.85",
+        "contentHash": "/wJ1dXOaq600VfsAsltyNVdjfyVKmaMCTc2BIhXXyH/cJrhVqwL0gcI1+sL0X8dpu92+weBQ2ZafqCu+xAiXcg=="
       },
       "OcctSharp.Foundation": {
         "type": "Transitive",
-        "resolved": "8.0.1-preview.28.cadoryx.viewcube.4",
-        "contentHash": "T0kTw3nFI/v5EUZnldSG80jYTWhmZ5TpUpF2bIZPgChBCk7QG9GGN+A3IM3t8Hi5E2eT9+eb0L9JmgdSaZa8eA==",
+        "resolved": "8.0.1-preview.85",
+        "contentHash": "Lf7urSm2XXpjdTf6496hTcwDsVoQKzBIEuCvt7KNKahIxzqa7ug1Z/xJzJj19gRi3yfEUaVk5whjzylVMeGm6g==",
         "dependencies": {
-          "OcctSharp.Runtime": "8.0.1-preview.28.cadoryx.viewcube.4"
+          "OcctSharp.Runtime": "[8.0.1-preview.85]"
         }
       },
       "OcctSharp.Geometry": {
         "type": "Transitive",
-        "resolved": "8.0.1-preview.28.cadoryx.viewcube.4",
-        "contentHash": "b3rVDK6BxKVGm742/0EKwPZ6NdKw1+OqhGBC77XasjKqA5cEe0IbPtjMpD9eP7MrgTPFoKGqQoE0zaKl5F+jlA==",
+        "resolved": "8.0.1-preview.85",
+        "contentHash": "s8V+BNwu2pSh/LrFPO5wcJq8F2pfwzS8N7bHWenLToKmqV8uHwkvzrzncffvfQZFxfqlcpJ9u6t34DO7AecDrg==",
         "dependencies": {
-          "OcctSharp.Foundation": "8.0.1-preview.28.cadoryx.viewcube.4",
-          "OcctSharp.Runtime": "8.0.1-preview.28.cadoryx.viewcube.4"
+          "OcctSharp.Foundation": "[8.0.1-preview.85]",
+          "OcctSharp.Runtime": "[8.0.1-preview.85]"
         }
       },
       "OcctSharp.MeshData": {
         "type": "Transitive",
-        "resolved": "8.0.1-preview.28.cadoryx.viewcube.4",
-        "contentHash": "jW1MhXeMOUL1qt2etd5vB0D7ZsEaAuodoVE5UwmvTXnbSK6DoMMT8T+Km2MA5k7SdpN6s0/AZ+UZFf6KXfKxdA==",
+        "resolved": "8.0.1-preview.85",
+        "contentHash": "mtPBjhYfDk50DpJuJ4yt1xlAvY67CBCPn4Zvnj03Fzj6/qarjXFPA146hDCpUVYBl7hAdrJCv9vlkWZsf402Mw==",
         "dependencies": {
-          "OcctSharp.Foundation": "8.0.1-preview.28.cadoryx.viewcube.4",
-          "OcctSharp.Geometry": "8.0.1-preview.28.cadoryx.viewcube.4",
-          "OcctSharp.Runtime": "8.0.1-preview.28.cadoryx.viewcube.4"
+          "OcctSharp.Foundation": "[8.0.1-preview.85]",
+          "OcctSharp.Geometry": "[8.0.1-preview.85]",
+          "OcctSharp.Runtime": "[8.0.1-preview.85]"
         }
       },
       "OcctSharp.Runtime": {
         "type": "Transitive",
-        "resolved": "8.0.1-preview.28.cadoryx.viewcube.4",
-        "contentHash": "TugRAuOtWTUS4lpOw22lolDgvjaQwZA8MX5zX8mpisfkl/eTgpzaQW+RTtMICbQfJUhJYjXX94rbmkgW6y7XrA==",
+        "resolved": "8.0.1-preview.85",
+        "contentHash": "hmTPhHP2XWm65vKzf9IRB1TfIuk6HiB/iYIpiOWTqNhwMiycs66GEpVtbnNDG1PS0cAsqYoArJm+RX51ACOrOA==",
         "dependencies": {
-          "OcctSharp.Native.win-x64": "8.0.1-preview.28.cadoryx.viewcube.4"
+          "OcctSharp.Native.win-x64": "[8.0.1-preview.85]"
         }
       }
     },
