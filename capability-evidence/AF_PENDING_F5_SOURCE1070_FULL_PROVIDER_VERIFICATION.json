@@ -1,0 +1,746 @@
+{
+  "recordedAt": "2026-10-12T04:13:26.979342+00:00",
+  "state": "ORIGINAL_SOURCE1070_FULL6556_BOTH_AND_BONSAI_BOTH_ACTUALLY_RUN_FAILURES_RETAINED",
+  "build": {
+    "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\f5-drawing-source-path-feedback-draft-2\\provider-build-1-verification.json",
+    "sha256": "74F696E29F63BAC277DBD5AD7F5FFA1CD0790DBBFAE30F781FA099C4F187C33A"
+  },
+  "providerSuite": {
+    "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\f5-drawing-source-path-feedback-draft-2\\provider-both-1-exit.json",
+    "sha256": "FAFF3AF4A13210C0CB85FAC92BB9E86236636C09FFFBBA07F932B4929137473B"
+  },
+  "full6556Both": [
+    {
+      "configuration": "Release",
+      "passed": 6432,
+      "failed": 124,
+      "skipped": 0,
+      "audit": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\f5-drawing-source-path-feedback-draft-2\\full6556-release-1-verification.json",
+        "sha256": "2DD85534C41A2D02C361D53ECBA2567DF1F936D3CF9D1ED423334C0FC1730461"
+      },
+      "allFailuresPreviouslyIdentified": true
+    },
+    {
+      "configuration": "Debug",
+      "passed": 6432,
+      "failed": 124,
+      "skipped": 0,
+      "audit": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\f5-drawing-source-path-feedback-draft-2\\full6556-debug-1-verification.json",
+        "sha256": "BB141732AC28CEB797E4BF80B47FF1F20E4B97B3CB8C9A727CB0B550BAA8A608"
+      },
+      "allFailuresPreviouslyIdentified": true
+    }
+  ],
+  "provider": [
+    {
+      "scenario": "drawing",
+      "passed": false,
+      "terminal": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\f5-drawing-source-path-feedback-draft-2\\lmstudio-drawing-1-exit.json",
+        "sha256": "E00BFA719C7C3E704C5327F2FA7FD63056639B5CF9FEEE8B4C99FC2F67F99083"
+      },
+      "result": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\f5-drawing-source-path-feedback-draft-2\\lmstudio-drawing-1\\result.json",
+        "sha256": "80277042CBAF3BA9A82820713D26656BA0DA3C94B012AD8E490705F7E532B464"
+      },
+      "actualNative": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\f5-drawing-source-path-feedback-draft-2\\lmstudio-drawing-1-loaded-native.json",
+        "sha256": "B3C6A4C31F866AC38DF5CD57C3EEC8BDDC77D14299855DC8905E4995F9A55F5B"
+      },
+      "toolCalls": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\f5-drawing-source-path-feedback-draft-2\\lmstudio-drawing-1\\tool-calls.json",
+        "sha256": "1F3A6C10E7379F0D60323A3EE1C912CFA2992B87ECB76C33E58D1BAB8F67A956"
+      },
+      "turns": [
+        {
+          "turn": 1,
+          "elapsedMs": 46458,
+          "toolCalls": 4,
+          "stateId": "7cb5e094-80f0-4c48-8c9c-910694a05765",
+          "historyMessages": 10
+        },
+        {
+          "turn": 2,
+          "elapsedMs": 39799,
+          "toolCalls": 7,
+          "stateId": "03f4d6b1-970e-499c-abb2-8cc0c397c5a8",
+          "historyMessages": 26
+        }
+      ],
+      "assetsAfterClose": 0,
+      "failure": "Requested cad_drawing.create lacks an answer and successful production receipt.",
+      "actualSdk31Native62": true,
+      "drawingActions": [
+        {
+          "arguments": {
+            "action": "create",
+            "documentId": "a92c1297-886d-434d-8fea-df0e03f42e2d",
+            "stateId": "ed23c005-879d-487f-a2e6-99d71eb75586",
+            "type": "sheet",
+            "authorJson": "{\"name\":\"Provider Drawing\",\"widthMm\":297,\"heightMm\":210,\"unit\":\"Millimeter\",\"title\":\"Provider Drawing\",\"standard\":\"ISO\"}"
+          },
+          "result": {
+            "success": true,
+            "action": "create",
+            "changed": true,
+            "id": "38b76652-62b1-4cc5-aa88-6ddcb2a4b569",
+            "documentId": "a92c1297-886d-434d-8fea-df0e03f42e2d",
+            "stateId": "7cb5e094-80f0-4c48-8c9c-910694a05765",
+            "createdIds": [
+              "38b76652-62b1-4cc5-aa88-6ddcb2a4b569"
+            ]
+          }
+        },
+        {
+          "arguments": {
+            "action": "create",
+            "documentId": "a92c1297-886d-434d-8fea-df0e03f42e2d",
+            "stateId": "7cb5e094-80f0-4c48-8c9c-910694a05765",
+            "type": "view",
+            "sheetId": "38b76652-62b1-4cc5-aa88-6ddcb2a4b569",
+            "authorJson": "{\"name\":\"Top\",\"kind\":\"Top\",\"centerMm\":{\"x\":80,\"y\":60},\"scale\":2}"
+          },
+          "result": {
+            "success": true,
+            "action": "create",
+            "changed": true,
+            "id": "f1357385-f65b-4644-9f17-20f6eadc35a4",
+            "documentId": "a92c1297-886d-434d-8fea-df0e03f42e2d",
+            "stateId": "03f4d6b1-970e-499c-abb2-8cc0c397c5a8",
+            "createdIds": [
+              "f1357385-f65b-4644-9f17-20f6eadc35a4"
+            ]
+          }
+        },
+        {
+          "arguments": {
+            "action": "contract"
+          },
+          "result": {
+            "success": true,
+            "types": [
+              "sheet",
+              "view",
+              "dimension",
+              "datum",
+              "control_frame",
+              "balloon",
+              "hole_table",
+              "field",
+              "note",
+              "parts_table",
+              "zones",
+              "template"
+            ],
+            "actions": [
+              "contract",
+              "inspect",
+              "inspect_sources",
+              "create",
+              "edit",
+              "reselect",
+              "delete",
+              "set_parts_table",
+              "set_zones",
+              "refresh",
+              "save_template",
+              "apply_template",
+              "import_template",
+              "detach_coordinates"
+            ],
+            "identity": "Copy exact documentId/stateId. create omits id; server assigns every new object/row ID. edit preserves owner/type/sources; attachment changes require reselect. Terminal captures current identity.",
+            "inspection": "inspect requires type; sheetId filters sheets or owns child types. Pagination offset 0..100000, limit 1..50 (default 8). Returned edit is reusable. Templates use save_template/apply_template/import_template; cad_file.template_export writes the native detached format.",
+            "selection": "inspect_sources requires full path/bodyId/revision; includes imported bodies without a feature. Copy selection, never synthesize cached anchors or geometry. History origins remain stored and reverified.",
+            "units": "Sheet positions in mm; dimension angles in degrees; selected body geometry in occurrence-local mm. Hatching angles in degrees. Explicit frame origin/normal/u is part-local.",
+            "limits": "Request 131072 chars, authorJson 65536, terminal 4096. No native evidence/stroke/value/quantity/cache input. PDF via cad_file.pdf requires every view/dimension/annotation/hole row current.",
+            "behavior": "Changes use production history; cancellation/old state/closing before commit retain authors. Read-only and rollback reject writes. Refresh never guesses a missing history. PDF creation does not prove external standard compliance."
+          }
+        },
+        {
+          "arguments": {
+            "action": "inspect_sources",
+            "documentId": "a92c1297-886d-434d-8fea-df0e03f42e2d",
+            "path": "a92c1297-886d-434d-8fea-df0e03f42e2d/412b0915-0956-4595-be8c-7f4b0ab459ef",
+            "bodyId": "3f164909-f1ac-4571-b533-c45d2118b4f1",
+            "revision": "e6b93c2c-b008-4e86-b0ba-d31d42ba4ff9",
+            "limit": 50
+          },
+          "result": {
+            "success": false,
+            "message": "Invalid drawing arguments for action=inspect_sources. Missing or invalid: stateId. contract accepts only action/type; other actions require exact documentId/stateId from cad_status. inspect requires type, documentId and stateId together. Outer name is only save_template; create/edit names belong in authorJson.",
+            "missingOrInvalid": [
+              "stateId"
+            ],
+            "unexpectedArguments": [],
+            "allowedArguments": [
+              "action",
+              "documentId",
+              "stateId",
+              "path",
+              "bodyId",
+              "revision",
+              "offset",
+              "limit"
+            ],
+            "identitySource": {
+              "toolName": "cad_status",
+              "arguments": {}
+            },
+            "identityRole": "Copy documentId/stateId from the active cad_status response, not an item, body, sheet or source selection. Read current state before explicitly submitting the drawing request again. No identities were supplied or filled in automatically."
+          }
+        },
+        {
+          "arguments": {
+            "action": "inspect_sources",
+            "documentId": "a92c1297-886d-434d-8fea-df0e03f42e2d",
+            "path": "a92c1297-886d-434d-8fea-df0e03f42e2d/412b0915-0956-4595-be8c-7f4b0ab459ef",
+            "bodyId": "3f164909-f1ac-4571-b533-c45d2118b4f1",
+            "revision": "e6b93c2c-b008-4e86-b0ba-d31d42ba4ff9",
+            "limit": 50,
+            "stateId": "03f4d6b1-970e-499c-abb2-8cc0c397c5a8"
+          },
+          "result": {
+            "success": true,
+            "action": "inspect_sources",
+            "documentId": "a92c1297-886d-434d-8fea-df0e03f42e2d",
+            "stateId": "03f4d6b1-970e-499c-abb2-8cc0c397c5a8",
+            "offset": 0,
+            "limit": 50,
+            "total": 45,
+            "hasMore": false,
+            "items": [
+              {
+                "index": 0,
+                "kind": "Compound",
+                "diagnostic": "Select an original face or edge."
+              },
+              {
+                "index": 1,
+                "kind": "Solid",
+                "diagnostic": "Select an original face or edge."
+              },
+              {
+                "index": 2,
+                "kind": "Shell",
+                "diagnostic": "Select an original face or edge."
+              },
+              {
+                "index": 3,
+                "kind": "Face",
+                "selection": {
+                  "path": "a92c1297-886d-434d-8fea-df0e03f42e2d/412b0915-0956-4595-be8c-7f4b0ab459ef",
+                  "bodyId": "3f164909-f1ac-4571-b533-c45d2118b4f1",
+                  "revision": "e6b93c2c-b008-4e86-b0ba-d31d42ba4ff9",
+                  "asset": "20bad286545c0db06d38143f3d5a79fca15f18eca98f7adb88c492013233b45f",
+                  "fingerprint": "7F270420AD41CD525D3DC661E225D82B195F5C421B8D904BF45FF3495B60CCD9",
+                  "index": 3
+                },
+                "geometry": "PlaneFace"
+              },
+              {
+                "index": 4,
+                "kind": "Wire",
+                "diagnostic": "Select an original face or edge."
+              },
+              {
+                "index": 5,
+                "kind": "Edge",
+                "selection": {
+                  "path": "a92c1297-886d-434d-8fea-df0e03f42e2d/412b0915-0956-4595-be8c-7f4b0ab459ef",
+                  "bodyId": "3f164909-f1ac-4571-b533-c45d2118b4f1",
+                  "revision": "e6b93c2c-b008-4e86-b0ba-d31d42ba4ff9",
+                  "asset": "20bad286545c0db06d38143f3d5a79fca15f18eca98f7adb88c492013233b45f",
+                  "fingerprint": "7F270420AD41CD525D3DC661E225D82B195F5C421B8D904BF45FF3495B60CCD9",
+                  "index": 5
+                },
+                "geometry": "LineEdge"
+              },
+              {
+                "index": 6,
+                "kind": "Vertex",
+                "diagnostic": "Select an original face or edge."
+              },
+              {
+                "index": 7,
+                "kind": "Vertex",
+                "diagnostic": "Select an original face or edge."
+              },
+              {
+                "index": 8,
+                "kind": "Edge",
+                "selection": {
+                  "path": "a92c1297-886d-434d-8fea-df0e03f42e2d/412b0915-0956-4595-be8c-7f4b0ab459ef",
+                  "bodyId": "3f164909-f1ac-4571-b533-c45d2118b4f1",
+                  "revision": "e6b93c2c-b008-4e86-b0ba-d31d42ba4ff9",
+                  "asset": "20bad286545c0db06d38143f3d5a79fca15f18eca98f7adb88c492013233b45f",
+                  "fingerprint": "7F270420AD41CD525D3DC661E225D82B195F5C421B8D904BF45FF3495B60CCD9",
+                  "index": 8
+                },
+                "geometry": "LineEdge"
+              },
+              {
+                "index": 9,
+                "kind": "Vertex",
+                "diagnostic": "Select an original face or edge."
+              },
+              {
+                "index": 10,
+                "kind": "Edge",
+                "selection": {
+                  "path": "a92c1297-886d-434d-8fea-df0e03f42e2d/412b0915-0956-4595-be8c-7f4b0ab459ef",
+                  "bodyId": "3f164909-f1ac-4571-b533-c45d2118b4f1",
+                  "revision": "e6b93c2c-b008-4e86-b0ba-d31d42ba4ff9",
+                  "asset": "20bad286545c0db06d38143f3d5a79fca15f18eca98f7adb88c492013233b45f",
+                  "fingerprint": "7F270420AD41CD525D3DC661E225D82B195F5C421B8D904BF45FF3495B60CCD9",
+                  "index": 10
+                },
+                "geometry": "LineEdge"
+              },
+              {
+                "index": 11,
+                "kind": "Vertex",
+                "diagnostic": "Select an original face or edge."
+              },
+              {
+                "index": 12,
+                "kind": "Edge",
+                "selection": {
+                  "path": "a92c1297-886d-434d-8fea-df0e03f42e2d/412b0915-0956-4595-be8c-7f4b0ab459ef",
+                  "bodyId": "3f164909-f1ac-4571-b533-c45d2118b4f1",
+                  "revision": "e6b93c2c-b008-4e86-b0ba-d31d42ba4ff9",
+                  "asset": "20bad286545c0db06d38143f3d5a79fca15f18eca98f7adb88c492013233b45f",
+                  "fingerprint": "7F270420AD41CD525D3DC661E225D82B195F5C421B8D904BF45FF3495B60CCD9",
+                  "index": 12
+                },
+                "geometry": "LineEdge"
+              },
+              {
+                "index": 13,
+                "kind": "Face",
+                "selection": {
+                  "path": "a92c1297-886d-434d-8fea-df0e03f42e2d/412b0915-0956-4595-be8c-7f4b0ab459ef",
+                  "bodyId": "3f164909-f1ac-4571-b533-c45d2118b4f1",
+                  "revision": "e6b93c2c-b008-4e86-b0ba-d31d42ba4ff9",
+                  "asset": "20bad286545c0db06d38143f3d5a79fca15f18eca98f7adb88c492013233b45f",
+                  "fingerprint": "7F270420AD41CD525D3DC661E225D82B195F5C421B8D904BF45FF3495B60CCD9",
+                  "index": 13
+                },
+                "geometry": "PlaneFace"
+              },
+              {
+                "index": 14,
+                "kind": "Wire",
+                "diagnostic": "Select an original face or edge."
+              },
+              {
+                "index": 15,
+                "kind": "Edge",
+                "selection": {
+                  "path": "a92c1297-886d-434d-8fea-df0e03f42e2d/412b0915-0956-4595-be8c-7f4b0ab459ef",
+                  "bodyId": "3f164909-f1ac-4571-b533-c45d2118b4f1",
+                  "revision": "e6b93c2c-b008-4e86-b0ba-d31d42ba4ff9",
+                  "asset": "20bad286545c0db06d38143f3d5a79fca15f18eca98f7adb88c492013233b45f",
+                  "fingerprint": "7F270420AD41CD525D3DC661E225D82B195F5C421B8D904BF45FF3495B60CCD9",
+                  "index": 15
+                },
+                "geometry": "LineEdge"
+              },
+              {
+                "index": 16,
+                "kind": "Vertex",
+                "diagnostic": "Select an original face or edge."
+              },
+              {
+                "index": 17,
+                "kind": "Edge",
+                "selection": {
+                  "path": "a92c1297-886d-434d-8fea-df0e03f42e2d/412b0915-0956-4595-be8c-7f4b0ab459ef",
+                  "bodyId": "3f164909-f1ac-4571-b533-c45d2118b4f1",
+                  "revision": "e6b93c2c-b008-4e86-b0ba-d31d42ba4ff9",
+                  "asset": "20bad286545c0db06d38143f3d5a79fca15f18eca98f7adb88c492013233b45f",
+                  "fingerprint": "7F270420AD41CD525D3DC661E225D82B195F5C421B8D904BF45FF3495B60CCD9",
+                  "index": 17
+                },
+                "geometry": "LineEdge"
+              },
+              {
+                "index": 18,
+                "kind": "Vertex",
+                "diagnostic": "Select an original face or edge."
+              },
+              {
+                "index": 19,
+                "kind": "Edge",
+                "selection": {
+                  "path": "a92c1297-886d-434d-8fea-df0e03f42e2d/412b0915-0956-4595-be8c-7f4b0ab459ef",
+                  "bodyId": "3f164909-f1ac-4571-b533-c45d2118b4f1",
+                  "revision": "e6b93c2c-b008-4e86-b0ba-d31d42ba4ff9",
+                  "asset": "20bad286545c0db06d38143f3d5a79fca15f18eca98f7adb88c492013233b45f",
+                  "fingerprint": "7F270420AD41CD525D3DC661E225D82B195F5C421B8D904BF45FF3495B60CCD9",
+                  "index": 19
+                },
+                "geometry": "LineEdge"
+              },
+              {
+                "index": 20,
+                "kind": "Face",
+                "selection": {
+                  "path": "a92c1297-886d-434d-8fea-df0e03f42e2d/412b0915-0956-4595-be8c-7f4b0ab459ef",
+                  "bodyId": "3f164909-f1ac-4571-b533-c45d2118b4f1",
+                  "revision": "e6b93c2c-b008-4e86-b0ba-d31d42ba4ff9",
+                  "asset": "20bad286545c0db06d38143f3d5a79fca15f18eca98f7adb88c492013233b45f",
+                  "fingerprint": "7F270420AD41CD525D3DC661E225D82B195F5C421B8D904BF45FF3495B60CCD9",
+                  "index": 20
+                },
+                "geometry": "PlaneFace"
+              },
+              {
+                "index": 21,
+                "kind": "Wire",
+                "diagnostic": "Select an original face or edge."
+              },
+              {
+                "index": 22,
+                "kind": "Edge",
+                "selection": {
+                  "path": "a92c1297-886d-434d-8fea-df0e03f42e2d/412b0915-0956-4595-be8c-7f4b0ab459ef",
+                  "bodyId": "3f164909-f1ac-4571-b533-c45d2118b4f1",
+                  "revision": "e6b93c2c-b008-4e86-b0ba-d31d42ba4ff9",
+                  "asset": "20bad286545c0db06d38143f3d5a79fca15f18eca98f7adb88c492013233b45f",
+                  "fingerprint": "7F270420AD41CD525D3DC661E225D82B195F5C421B8D904BF45FF3495B60CCD9",
+                  "index": 22
+                },
+                "geometry": "LineEdge"
+              },
+              {
+                "index": 23,
+                "kind": "Vertex",
+                "diagnostic": "Select an original face or edge."
+              },
+              {
+                "index": 24,
+                "kind": "Edge",
+                "selection": {
+                  "path": "a92c1297-886d-434d-8fea-df0e03f42e2d/412b0915-0956-4595-be8c-7f4b0ab459ef",
+                  "bodyId": "3f164909-f1ac-4571-b533-c45d2118b4f1",
+                  "revision": "e6b93c2c-b008-4e86-b0ba-d31d42ba4ff9",
+                  "asset": "20bad286545c0db06d38143f3d5a79fca15f18eca98f7adb88c492013233b45f",
+                  "fingerprint": "7F270420AD41CD525D3DC661E225D82B195F5C421B8D904BF45FF3495B60CCD9",
+                  "index": 24
+                },
+                "geometry": "LineEdge"
+              },
+              {
+                "index": 25,
+                "kind": "Wire",
+                "diagnostic": "Select an original face or edge."
+              },
+              {
+                "index": 26,
+                "kind": "Edge",
+                "selection": {
+                  "path": "a92c1297-886d-434d-8fea-df0e03f42e2d/412b0915-0956-4595-be8c-7f4b0ab459ef",
+                  "bodyId": "3f164909-f1ac-4571-b533-c45d2118b4f1",
+                  "revision": "e6b93c2c-b008-4e86-b0ba-d31d42ba4ff9",
+                  "asset": "20bad286545c0db06d38143f3d5a79fca15f18eca98f7adb88c492013233b45f",
+                  "fingerprint": "7F270420AD41CD525D3DC661E225D82B195F5C421B8D904BF45FF3495B60CCD9",
+                  "index": 26
+                },
+                "geometry": "CircleEdge"
+              },
+              {
+                "index": 27,
+                "kind": "Vertex",
+                "diagnostic": "Select an original face or edge."
+              },
+              {
+                "index": 28,
+                "kind": "Face",
+                "selection": {
+                  "path": "a92c1297-886d-434d-8fea-df0e03f42e2d/412b0915-0956-4595-be8c-7f4b0ab459ef",
+                  "bodyId": "3f164909-f1ac-4571-b533-c45d2118b4f1",
+                  "revision": "e6b93c2c-b008-4e86-b0ba-d31d42ba4ff9",
+                  "asset": "20bad286545c0db06d38143f3d5a79fca15f18eca98f7adb88c492013233b45f",
+                  "fingerprint": "7F270420AD41CD525D3DC661E225D82B195F5C421B8D904BF45FF3495B60CCD9",
+                  "index": 28
+                },
+                "geometry": "PlaneFace"
+              },
+              {
+                "index": 29,
+                "kind": "Wire",
+                "diagnostic": "Select an original face or edge."
+              },
+              {
+                "index": 30,
+                "kind": "Edge",
+                "selection": {
+                  "path": "a92c1297-886d-434d-8fea-df0e03f42e2d/412b0915-0956-4595-be8c-7f4b0ab459ef",
+                  "bodyId": "3f164909-f1ac-4571-b533-c45d2118b4f1",
+                  "revision": "e6b93c2c-b008-4e86-b0ba-d31d42ba4ff9",
+                  "asset": "20bad286545c0db06d38143f3d5a79fca15f18eca98f7adb88c492013233b45f",
+                  "fingerprint": "7F270420AD41CD525D3DC661E225D82B195F5C421B8D904BF45FF3495B60CCD9",
+                  "index": 30
+                },
+                "geometry": "LineEdge"
+              },
+              {
+                "index": 31,
+                "kind": "Vertex",
+                "diagnostic": "Select an original face or edge."
+              },
+              {
+                "index": 32,
+                "kind": "Edge",
+                "selection": {
+                  "path": "a92c1297-886d-434d-8fea-df0e03f42e2d/412b0915-0956-4595-be8c-7f4b0ab459ef",
+                  "bodyId": "3f164909-f1ac-4571-b533-c45d2118b4f1",
+                  "revision": "e6b93c2c-b008-4e86-b0ba-d31d42ba4ff9",
+                  "asset": "20bad286545c0db06d38143f3d5a79fca15f18eca98f7adb88c492013233b45f",
+                  "fingerprint": "7F270420AD41CD525D3DC661E225D82B195F5C421B8D904BF45FF3495B60CCD9",
+                  "index": 32
+                },
+                "geometry": "LineEdge"
+              },
+              {
+                "index": 33,
+                "kind": "Face",
+                "selection": {
+                  "path": "a92c1297-886d-434d-8fea-df0e03f42e2d/412b0915-0956-4595-be8c-7f4b0ab459ef",
+                  "bodyId": "3f164909-f1ac-4571-b533-c45d2118b4f1",
+                  "revision": "e6b93c2c-b008-4e86-b0ba-d31d42ba4ff9",
+                  "asset": "20bad286545c0db06d38143f3d5a79fca15f18eca98f7adb88c492013233b45f",
+                  "fingerprint": "7F270420AD41CD525D3DC661E225D82B195F5C421B8D904BF45FF3495B60CCD9",
+                  "index": 33
+                },
+                "geometry": "PlaneFace"
+              },
+              {
+                "index": 34,
+                "kind": "Wire",
+                "diagnostic": "Select an original face or edge."
+              },
+              {
+                "index": 35,
+                "kind": "Edge",
+                "selection": {
+                  "path": "a92c1297-886d-434d-8fea-df0e03f42e2d/412b0915-0956-4595-be8c-7f4b0ab459ef",
+                  "bodyId": "3f164909-f1ac-4571-b533-c45d2118b4f1",
+                  "revision": "e6b93c2c-b008-4e86-b0ba-d31d42ba4ff9",
+                  "asset": "20bad286545c0db06d38143f3d5a79fca15f18eca98f7adb88c492013233b45f",
+                  "fingerprint": "7F270420AD41CD525D3DC661E225D82B195F5C421B8D904BF45FF3495B60CCD9",
+                  "index": 35
+                },
+                "geometry": "LineEdge"
+              },
+              {
+                "index": 36,
+                "kind": "Face",
+                "selection": {
+                  "path": "a92c1297-886d-434d-8fea-df0e03f42e2d/412b0915-0956-4595-be8c-7f4b0ab459ef",
+                  "bodyId": "3f164909-f1ac-4571-b533-c45d2118b4f1",
+                  "revision": "e6b93c2c-b008-4e86-b0ba-d31d42ba4ff9",
+                  "asset": "20bad286545c0db06d38143f3d5a79fca15f18eca98f7adb88c492013233b45f",
+                  "fingerprint": "7F270420AD41CD525D3DC661E225D82B195F5C421B8D904BF45FF3495B60CCD9",
+                  "index": 36
+                },
+                "geometry": "PlaneFace"
+              },
+              {
+                "index": 37,
+                "kind": "Wire",
+                "diagnostic": "Select an original face or edge."
+              },
+              {
+                "index": 38,
+                "kind": "Face",
+                "selection": {
+                  "path": "a92c1297-886d-434d-8fea-df0e03f42e2d/412b0915-0956-4595-be8c-7f4b0ab459ef",
+                  "bodyId": "3f164909-f1ac-4571-b533-c45d2118b4f1",
+                  "revision": "e6b93c2c-b008-4e86-b0ba-d31d42ba4ff9",
+                  "asset": "20bad286545c0db06d38143f3d5a79fca15f18eca98f7adb88c492013233b45f",
+                  "fingerprint": "7F270420AD41CD525D3DC661E225D82B195F5C421B8D904BF45FF3495B60CCD9",
+                  "index": 38
+                },
+                "geometry": "CylinderFace"
+              },
+              {
+                "index": 39,
+                "kind": "Wire",
+                "diagnostic": "Select an original face or edge."
+              },
+              {
+                "index": 40,
+                "kind": "Edge",
+                "selection": {
+                  "path": "a92c1297-886d-434d-8fea-df0e03f42e2d/412b0915-0956-4595-be8c-7f4b0ab459ef",
+                  "bodyId": "3f164909-f1ac-4571-b533-c45d2118b4f1",
+                  "revision": "e6b93c2c-b008-4e86-b0ba-d31d42ba4ff9",
+                  "asset": "20bad286545c0db06d38143f3d5a79fca15f18eca98f7adb88c492013233b45f",
+                  "fingerprint": "7F270420AD41CD525D3DC661E225D82B195F5C421B8D904BF45FF3495B60CCD9",
+                  "index": 40
+                },
+                "geometry": "LineEdge"
+              },
+              {
+                "index": 41,
+                "kind": "Vertex",
+                "diagnostic": "Select an original face or edge."
+              },
+              {
+                "index": 42,
+                "kind": "Edge",
+                "selection": {
+                  "path": "a92c1297-886d-434d-8fea-df0e03f42e2d/412b0915-0956-4595-be8c-7f4b0ab459ef",
+                  "bodyId": "3f164909-f1ac-4571-b533-c45d2118b4f1",
+                  "revision": "e6b93c2c-b008-4e86-b0ba-d31d42ba4ff9",
+                  "asset": "20bad286545c0db06d38143f3d5a79fca15f18eca98f7adb88c492013233b45f",
+                  "fingerprint": "7F270420AD41CD525D3DC661E225D82B195F5C421B8D904BF45FF3495B60CCD9",
+                  "index": 42
+                },
+                "geometry": "CircleEdge"
+              },
+              {
+                "index": 43,
+                "kind": "Face",
+                "selection": {
+                  "path": "a92c1297-886d-434d-8fea-df0e03f42e2d/412b0915-0956-4595-be8c-7f4b0ab459ef",
+                  "bodyId": "3f164909-f1ac-4571-b533-c45d2118b4f1",
+                  "revision": "e6b93c2c-b008-4e86-b0ba-d31d42ba4ff9",
+                  "asset": "20bad286545c0db06d38143f3d5a79fca15f18eca98f7adb88c492013233b45f",
+                  "fingerprint": "7F270420AD41CD525D3DC661E225D82B195F5C421B8D904BF45FF3495B60CCD9",
+                  "index": 43
+                },
+                "geometry": "PlaneFace"
+              },
+              {
+                "index": 44,
+                "kind": "Wire",
+                "diagnostic": "Select an original face or edge."
+              }
+            ]
+          }
+        }
+      ],
+      "finalReply": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\f5-drawing-source-path-feedback-draft-2\\lmstudio-drawing-1\\response-018.json",
+        "sha256": "6E1FB6F55D4961EE73C3F1276CD860C1211715DBC6838675556DFA4FB1BB7087"
+      },
+      "finalRequest": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\f5-drawing-source-path-feedback-draft-2\\lmstudio-drawing-1\\request-018.json",
+        "sha256": "488CA2BAD31B8C9E42E5D7AEBC1D76AD1200D08BC9C0C5E19DAFAA0B79560307"
+      },
+      "controlOnlyReplyRetained": true,
+      "finalRecoverySelectedToolCount": 10,
+      "sheetAndViewSucceededDimensionStillMissing": true
+    },
+    {
+      "scenario": "workspace",
+      "passed": true,
+      "terminal": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\f5-drawing-source-path-feedback-draft-2\\lmstudio-workspace-1-exit.json",
+        "sha256": "1D99F96FC3DA06463C4412B747390A3D5A395FF2D3461841C1C9A1D093B78EFE"
+      },
+      "result": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\f5-drawing-source-path-feedback-draft-2\\lmstudio-workspace-1\\result.json",
+        "sha256": "C23E081EA02B1098502AD1DB2A41444FF94604EDFA5E5A9331484BD1457FB678"
+      },
+      "actualNative": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\f5-drawing-source-path-feedback-draft-2\\lmstudio-workspace-1-loaded-native.json",
+        "sha256": "53CB94A6620D480907F49697324B9DEF1F473C0FC0590E115F0254E6274D6D16"
+      },
+      "toolCalls": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\f5-drawing-source-path-feedback-draft-2\\lmstudio-workspace-1\\tool-calls.json",
+        "sha256": "347C9D552F1ADAB43F1FB42DB5193487B1C23CA9133CB59E51E2940D5D39D7C6"
+      },
+      "turns": [
+        {
+          "turn": 1,
+          "elapsedMs": 24807,
+          "toolCalls": 4,
+          "activeSessionId": "b339ee60-110e-4913-b25f-b606bf602fff",
+          "documents": 1,
+          "historyMessages": 10
+        },
+        {
+          "turn": 2,
+          "elapsedMs": 19663,
+          "toolCalls": 5,
+          "activeSessionId": "b339ee60-110e-4913-b25f-b606bf602fff",
+          "documents": 1,
+          "historyMessages": 22
+        },
+        {
+          "turn": 3,
+          "elapsedMs": 24275,
+          "toolCalls": 4,
+          "activeSessionId": "b339ee60-110e-4913-b25f-b606bf602fff",
+          "documents": 1,
+          "historyMessages": 32
+        },
+        {
+          "turn": 4,
+          "elapsedMs": 25873,
+          "toolCalls": 6,
+          "activeSessionId": "e4cb6679-431c-4043-9d11-672ecf17532e",
+          "documents": 2,
+          "historyMessages": 46
+        },
+        {
+          "turn": 5,
+          "elapsedMs": 63283,
+          "toolCalls": 9,
+          "activeSessionId": "b339ee60-110e-4913-b25f-b606bf602fff",
+          "documents": 2,
+          "historyMessages": 67
+        },
+        {
+          "turn": 6,
+          "elapsedMs": 61380,
+          "toolCalls": 12,
+          "activeSessionId": "b339ee60-110e-4913-b25f-b606bf602fff",
+          "documents": 2,
+          "historyMessages": 93
+        },
+        {
+          "turn": 7,
+          "elapsedMs": 40093,
+          "toolCalls": 4,
+          "activeSessionId": "9732feca-7a9c-47e6-8124-a9f7cb6fd5b9",
+          "documents": 3,
+          "historyMessages": 103
+        },
+        {
+          "turn": 8,
+          "elapsedMs": 50021,
+          "toolCalls": 6,
+          "activeSessionId": "e4cb6679-431c-4043-9d11-672ecf17532e",
+          "documents": 3,
+          "historyMessages": 117
+        }
+      ],
+      "assetsAfterClose": 0,
+      "failure": null,
+      "actualSdk31Native62": true,
+      "saved": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\f5-drawing-source-path-feedback-draft-2\\lmstudio-workspace-1\\workspace-provider-saved.cadoryx",
+        "sha256": "688A9B390E8AF72A10A433F13E3CF7AE323B50E27F3A5E1D31B6DBA733E8F26A"
+      }
+    }
+  ],
+  "contextLength": 8192,
+  "maxToolRounds": 16,
+  "model": "prism-ml/bonsai-27b",
+  "originalCSharpPromptsAndAssertionsPreserved": true,
+  "nativeHashCaptureMatchesFrozen62": true,
+  "nativeDllHashesRecomputedDuringAggregateAudit": false,
+  "finalSource1073Acceptance": false,
+  "physicalPointerVerified": false,
+  "performanceAcceptance": false,
+  "productionApplied": false,
+  "cleanup": false,
+  "AF": "ACTIVE",
+  "G": "USER_DEFERRED"
+}

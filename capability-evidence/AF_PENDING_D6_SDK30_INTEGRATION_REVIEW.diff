@@ -1,0 +1,577 @@
+--- a/Cadoryx.Db/ExtrusionOptions.cs
++++ b/Cadoryx.Db/ExtrusionOptions.cs
+@@ -21,11 +21,10 @@
+             (Termination==ExtrusionTermination.Plane)!=(LimitPlane is not null)||
+             (Termination is ExtrusionTermination.PlanarFace or ExtrusionTermination.FiniteSurface)!=(LimitFace is not null)||
+             (LimitFace is null)!=(LimitGeometry is null)||LimitFace is {Kind:not HistoryShapeKind.Face}||
+-            (Termination==ExtrusionTermination.FiniteSurface)!=(SupportFace is not null)||
++            (Termination==ExtrusionTermination.FiniteSurface&&Operation!=ExtrusionOperation.NewBody)!=(SupportFace is not null)||
+             (Termination==ExtrusionTermination.FiniteSurface)!=(SurfaceBranch is not null)||
+             SupportFace is {Kind:not HistoryShapeKind.Face}||SurfaceBranch is {} branch&&!Enum.IsDefined(branch)||
+             SupportFace is {} support&&(Source is null||support.Asset!=Source.AssetId||support.Revision!=Source.Revision)||
+-            Termination==ExtrusionTermination.FiniteSurface&&Operation==ExtrusionOperation.NewBody||
+             (Datum is null)!=(DatumRevision is null)||Datum==Guid.Empty||DatumRevision==Guid.Empty||
+             Datum is not null&&Termination!=ExtrusionTermination.Plane||
+             Termination!=ExtrusionTermination.Distance&&distance!=0||
+--- a/Cadoryx.IO/CadDocumentStorage.cs
++++ b/Cadoryx.IO/CadDocumentStorage.cs
+@@ -14,7 +14,8 @@
+     private readonly StorageLimits limits=limits??new();
+     private static readonly HashSet<string> KnownSections=CadSectionMigrationRegistry.CurrentFormats.Keys.Append(GuidedModelingReportStorage.Kind).Append(OccurrenceReferenceSectionStorage.Kind).Append(MaterialAppearanceSectionStorage.Kind).ToHashSet();
+     private static readonly string[] Capabilities=["cadoryx.core.1","occt.brep.1","cadoryx.geometry-table.1","cadoryx.asset-catalog.1","cadoryx.sketches.1","cadoryx.sketch-point-origins.1","cadoryx.sketch-association.1","cadoryx.topology-references.1","cadoryx.local-box-edge.1","cadoryx.local-chamfer-two-distances.1","cadoryx.local-multi-edge.1","cadoryx.local-variable-radius.1","cadoryx.bound-variable-radius.1","cadoryx.topology-history.1","cadoryx.topology-history.2","cadoryx.topology-history.3","cadoryx.multicopy-history.1","cadoryx.multicopy-presentation.1","cadoryx.composed-drilling-history.1","cadoryx.history-queries.1","cadoryx.feature-bindings.1","cadoryx.exact-local-selection.1","cadoryx.bound-local-chamfer.1","cadoryx.circular-sketch-profile.1","cadoryx.circular-sketch-holes.1","cadoryx.sketch-angular-constraints.1","cadoryx.polygon-sketch-holes.1","cadoryx.assembly-constraints.1","cadoryx.external-parts.1","cadoryx.engineering-review.1","cadoryx.technical-drawings.1","cadoryx.analytical-revolve.1","cadoryx.sketch-projection.1","cadoryx.sketch-basic-relations.1","cadoryx.sketch-endpoint-tangency.1","cadoryx.sketch-parametric-tangency.1","cadoryx.sketch-arc-radius.1","cadoryx.sketch-circular-contact.1","cadoryx.sketch-endpoint-curvature.1","cadoryx.sketch-finite-parametric-contact.1","cadoryx.sketch-mixed-finite-continuity.1","cadoryx.sketch-sliding-contact-parameters.1","cadoryx.document-parameters.1","cadoryx.associated-datums.1","cadoryx.result-repetition.1","cadoryx.standard-holes.1","cadoryx.thread-hole-intent.1","cadoryx.metric-thread-solid.1","cadoryx.metric-thread-proof.1","cadoryx.advanced-extrusion.1","cadoryx.finite-surface-extrusion.1","cadoryx.guided-authoring.1","cadoryx.face-features.1","cadoryx.solid-offset.1","cadoryx.contour-local.1","cadoryx.face-editing.1","cadoryx.extended-datums.1","cadoryx.revolve-axis.1","cadoryx.hole-replay.1","cadoryx.extrusion-replay.1","cadoryx.assembly-patterns.1","cadoryx.assembly-mirrors.1","cadoryx.curved-region-revolve.1","cadoryx.exact-sketch-conics.1","cadoryx.native-edge-projection.1","cadoryx.exact-sketch-freeforms.1","cadoryx.exact-sketch-endpoints.1","cadoryx.exact-curve-parameters.1","cadoryx.periodic-native-intervals.1","cadoryx.section-hatching.1","cadoryx.section-hatch-rules.1","cadoryx.manufacturing-templates.1","cadoryx.manufacturing-annotations.1","cadoryx.drawing-template-library.1","cadoryx.current-hole-tables.1","cadoryx.hole-datum-coordinates.1","cadoryx.typed-manufacturing-datums.1","cadoryx.original-attachment-history.1","cadoryx.planar-manufacturing-sizes.1"];
+-    private static readonly string[] CurrentCapabilities=[..Capabilities,"cadoryx.exact-sketch-expressions.1","cadoryx.exact-expression-profiles.1","cadoryx.exact-expression-contacts.1","cadoryx.associative-expression-endpoints.1","cadoryx.associative-expression-regions.1","cadoryx.region-offset-parameters.1","cadoryx.region-offset-connections.1",GuidedModelingReportStorage.Capability,"cadoryx.native-reference-tables.1",OccurrenceReferenceSectionStorage.Capability,MaterialAppearanceSectionStorage.Capability];
++    public const string FiniteSurfaceNewBodyCapability="cadoryx.finite-surface-new-body.1";
++    private static readonly string[] CurrentCapabilities=[..Capabilities,"cadoryx.exact-sketch-expressions.1","cadoryx.exact-expression-profiles.1","cadoryx.exact-expression-contacts.1","cadoryx.associative-expression-endpoints.1","cadoryx.associative-expression-regions.1","cadoryx.region-offset-parameters.1","cadoryx.region-offset-connections.1",GuidedModelingReportStorage.Capability,"cadoryx.native-reference-tables.1",OccurrenceReferenceSectionStorage.Capability,MaterialAppearanceSectionStorage.Capability,FiniteSurfaceNewBodyCapability];
+     public async Task SaveAsync(DocumentSnapshot snapshot,IAssetStore assets,string path,CancellationToken cancellationToken=default)
+     {
+         cancellationToken.ThrowIfCancellationRequested();
+@@ -98,11 +99,13 @@
+                 {
+                     using var lease=assets.Acquire(asset.Id);await WriteEntry(zip,asset.Path,lease.Content,token);
+                 }
+-                var manifest=new CadManifest("Cadoryx",1,snapshot.Id,snapshot.StateId,hasMaterialAppearances?"0.7.10":hasOccurrenceTables?"0.7.9":"0.7.8",sections.ToImmutable(),catalog.ToImmutableArray(),
++                bool hasFiniteNewBody=snapshot.Features.Values.Any(f=>f.Recipe is ExtrudeRecipe {Options:{Termination:ExtrusionTermination.FiniteSurface,Operation:ExtrusionOperation.NewBody}});
++                var manifest=new CadManifest("Cadoryx",1,snapshot.Id,snapshot.StateId,hasFiniteNewBody?"0.7.11":hasMaterialAppearances?"0.7.10":hasOccurrenceTables?"0.7.9":"0.7.8",sections.ToImmutable(),catalog.ToImmutableArray(),
+                     [..CurrentCapabilities.Where(c=>(c!=GuidedModelingReportStorage.Capability||hasGuidedReports)&&
+                         (c!="cadoryx.native-reference-tables.1"||hasReferenceTables)&&
+                         (c!=OccurrenceReferenceSectionStorage.Capability||hasOccurrenceTables)&&
+-                        (c!=MaterialAppearanceSectionStorage.Capability||hasMaterialAppearances))],1);
++                        (c!=MaterialAppearanceSectionStorage.Capability||hasMaterialAppearances)&&
++                        (c!=FiniteSurfaceNewBodyCapability||hasFiniteNewBody))],1);
+                 await WriteEntry(zip,"manifest.json",JsonSerializer.SerializeToUtf8Bytes(manifest,CadJson.Options),token);
+             }
+             await stream.FlushAsync(token);stream.Flush(true);
+@@ -253,6 +256,9 @@
+             snapshot=Malformed(()=>MessagePackSections.AttachEngineeringReview(core["engineering-review"].Bytes,snapshot));
+             snapshot=snapshot with{DrawingSheets=drawings.DrawingSheets,DrawingTemplates=drawings.DrawingTemplates};
+             if(includesOccurrences)snapshot=Malformed(()=>OccurrenceReferenceSectionStorage.Attach(snapshot,occurrenceDeclarations,formats));
++            if(snapshot.Features.Values.Any(f=>f.Recipe is ExtrudeRecipe {Options:{Termination:ExtrusionTermination.FiniteSurface,Operation:ExtrusionOperation.NewBody}})&&
++                !manifest.RequiredCapabilities.Contains(FiniteSurfaceNewBodyCapability))
++                throw new InvalidDataException("Finite surface new-body author requires its explicit capability declaration.");
+             Malformed(()=>{snapshot.Validate();return true;});using var verify=new DocumentAssetLease(snapshot,assets);
+             foreach(var geometry in snapshot.ReferencedGeometry().DistinctBy(g=>g.Revision))
+             {
+--- a/Cadoryx.Kernel.Occt/OcctExtrusionGeometry.cs
++++ b/Cadoryx.Kernel.Occt/OcctExtrusionGeometry.cs
+@@ -36,7 +36,8 @@
+             if(map.Topology.Count(t=>t.Kind==ShapeKind.Solid)!=1)
+                 throw new CadValidationException("Select exactly one solid target for extrusion.");
+         }
+-        if(options.Termination==ExtrusionTermination.FiniteSurface)return EvaluateFiniteSurfaceExtrusion(recipe,source!,assets,token);
++        if(options.Termination==ExtrusionTermination.FiniteSurface)return options.Operation==ExtrusionOperation.NewBody?
++            EvaluateFiniteSurfaceNewBody(recipe,assets,token):EvaluateFiniteSurfaceExtrusion(recipe,source!,assets,token);
+         RigidTransform3d? limit=options.LimitPlane;
+         if(options.LimitFace is {} selection)
+         {
+--- a/Cadoryx.Kernel.Occt/OcctFiniteSurfaceExtrusion.cs
++++ b/Cadoryx.Kernel.Occt/OcctFiniteSurfaceExtrusion.cs
+@@ -32,11 +32,13 @@
+         if(recipe.Options?.Termination!=ExtrusionTermination.FiniteSurface)throw new CadValidationException("Expected a finite surface extrusion recipe.");
+         return Run(()=>
+         {
+-            using var source=OcctGeometryBridge.ReadShape(recipe.Options.Source!,assets);
+-            using var replay=EvaluateFiniteSurfaceExtrusion(recipe,source,assets,token);
++            using var source=recipe.Options.Source is {} input?OcctGeometryBridge.ReadShape(input,assets):null;
++            using var replay=recipe.Options.Operation==ExtrusionOperation.NewBody?EvaluateFiniteSurfaceNewBody(recipe,assets,token):
++                EvaluateFiniteSurfaceExtrusion(recipe,source!,assets,token);
+             if(result.Kind==BodyKind.Empty)return true; // Suppressed result has no material to compare.
+             using var expected=OcctGeometryBridge.ReadShape(replay.Geometry,assets);
+-            using var actual=OcctGeometryBridge.ReadShape(result,assets);using var valid=CopyOffsetSolid(actual,token);
++            using var actual=OcctGeometryBridge.ReadShape(result,assets);using var valid=recipe.Options.Operation==ExtrusionOperation.NewBody?
++                CopyFiniteSurfaceMaterial(actual,token):CopyOffsetSolid(actual,token);
+             using var intersection=expected.Common(actual);
+             double expectedVolume=AuthoringMeasure(expected,InspectionPropertyKind.Volume),actualVolume=AuthoringMeasure(actual,InspectionPropertyKind.Volume);
+             double tolerance=Math.Max(1e-6,expectedVolume*1e-9);
+@@ -46,7 +48,7 @@
+             return true;
+         },token);
+     }
+-    private GeometryResult EvaluateFiniteSurfaceExtrusion(ExtrudeRecipe recipe,Shape source,IAssetStore assets,CancellationToken token)
++    private GeometryResult EvaluateFiniteSurfaceExtrusion(ExtrudeRecipe recipe,Shape source,IAssetStore assets,CancellationToken token,bool extractNewBody=false)
+     {
+         var options=recipe.Options!;
+         using var accepted=CopyOffsetSolid(source,token);
+@@ -153,7 +155,8 @@
+                     throw new CadValidationException("Native surface extrusion changed its exact source representation.");
+                 using(var check=RepairSnapshot.Create(stopSource))if(check.Fingerprint!=stopMap.Fingerprint)
+                     throw new CadValidationException("Native surface extrusion changed its original finite stop representation.");
+-                token.ThrowIfCancellationRequested();using var stored=OcctGeometryBridge.StoreShape(result,assets);
++                token.ThrowIfCancellationRequested();using var material=extractNewBody?CopyFiniteSurfaceMaterial(delta,token):null;
++                using var stored=OcctGeometryBridge.StoreShape(material??result,assets);
+                 return new(stored.Geometry,GeometryAssetLease.Acquire(stored.Geometry,assets),
+                     [new("HISTORY.UNSUPPORTED","Limited prism aggregate argument history does not prove a complete original-to-final topology map; reselect final topology explicitly."),
+                      new("STYLE.UNSUPPORTED","New surface extrusion faces have no proved per-face style correspondence.")]);
+--- a/Cadoryx.Kernel.Occt/OcctFiniteSurfaceNewBody.cs
++++ b/Cadoryx.Kernel.Occt/OcctFiniteSurfaceNewBody.cs
+@@ -0,0 +1,59 @@
++using Cadoryx.Db;
++using Cadoryx.Kernel.Abstractions;
++using OcctSharp;
++
++namespace Cadoryx.Kernel.Occt;
++
++public sealed partial class OcctGeometryKernel
++{
++    private GeometryResult EvaluateFiniteSurfaceNewBody(ExtrudeRecipe recipe,IAssetStore assets,CancellationToken token)
++    {
++        recipe.Validate();var options=recipe.Options!;
++        if(options.Operation!=ExtrusionOperation.NewBody||options.Termination!=ExtrusionTermination.FiniteSurface)
++            throw new CadValidationException("Expected an independent finite surface extrusion.");
++        // The existing native Until builder needs a base and a member support.
++        // Use one private exact box strictly behind the authored starting plane.
++        // Only its proved added material becomes the independent output. Native
++        // failure or any finite-domain proof failure has no alternate path.
++        using var unit=Create(new ExtrudeRecipe(recipe.Profile,1,recipe.Placement),assets,token);
++        var bounds=SurfaceFrameBounds(unit,recipe.Placement);
++        var placement=recipe.Placement*RigidTransform3d.Translate(bounds.Min.X-1,bounds.Min.Y-1,
++            options.Side==ExtrusionSide.Positive?-1:0);
++        using var seed=Create(new BoxRecipe(bounds.Max.X-bounds.Min.X+2,bounds.Max.Y-bounds.Min.Y+2,1,placement),assets,token);
++        using var staged=OcctGeometryBridge.StoreShape(seed,assets);using var map=RepairSnapshot.Create(seed);
++        var faces=seed.GetFaces();
++        try
++        {
++            var support=faces.Single(f=>FiniteSurfaceIsProfilePlane(f,recipe.Placement,0));
++            int index=RepairSnapshot.FindTopologyIndex(seed,support);
++            var selection=new ExactTopologySelection(options.LimitFace!.DocumentId,FeatureId.New(),staged.Geometry.Revision,
++                staged.Geometry.AssetId,map.Fingerprint,index,HistoryShapeKind.Face,HistoryAdapterVersion);
++            var internalRecipe=recipe with{Options=options with{Operation=ExtrusionOperation.Fuse,Source=staged.Geometry,SupportFace=selection}};
++            internalRecipe.Validate();token.ThrowIfCancellationRequested();
++            return EvaluateFiniteSurfaceExtrusion(internalRecipe,seed,assets,token,extractNewBody:true);
++        }
++        finally{foreach(var face in faces)face.Dispose();}
++    }
++
++    private static Shape CopyFiniteSurfaceMaterial(Shape shape,CancellationToken token)
++    {
++        token.ThrowIfCancellationRequested();
++        if(shape.Kind==ShapeKind.Solid){RequireFaceFeatureSolid(shape,token);return shape.Clone();}
++        var summary=shape.GetTopologySummary();
++        if(shape.Kind!=ShapeKind.Compound||summary.UniqueCounts.SolidCount<1||
++            summary.UniqueCounts.SolidCount!=summary.OccurrenceCounts.SolidCount||summary.UniqueCounts.CompSolidCount!=0||
++            !shape.GetValidationReport(true,true).IsValid||!shape.GetSelfInterferenceReport().IsClear)
++            throw new CadValidationException("Independent finite surface material must contain complete noninterfering exact solids.");
++        var solids=shape.GetSubShapes(ShapeKind.Solid);
++        try
++        {
++            foreach(var solid in solids){token.ThrowIfCancellationRequested();RequireFaceFeatureSolid(solid,token);}
++            using var covered=ShapeFactory.CreateCompound(solids);var cover=covered.GetTopologySummary();
++            if(summary.UniqueCounts with{CompoundCount=0}!=cover.UniqueCounts with{CompoundCount=0}||
++                summary.OccurrenceCounts with{CompoundCount=0}!=cover.OccurrenceCounts with{CompoundCount=0})
++                throw new CadValidationException("Independent finite surface material has repeated or loose topology outside its complete solids.");
++            return shape.Clone();
++        }
++        finally{foreach(var solid in solids)solid.Dispose();}
++    }
++}
+--- a/Cadoryx.Tests/FiniteSurfaceNewBodyLifecycleTests.cs
++++ b/Cadoryx.Tests/FiniteSurfaceNewBodyLifecycleTests.cs
+@@ -0,0 +1,152 @@
++using Cadoryx.Commands;
++using Cadoryx.Db;
++using Cadoryx.Editor;
++using Cadoryx.IO;
++using Cadoryx.Kernel.Abstractions;
++using Cadoryx.Kernel.Occt;
++using Cadoryx.Sketching;
++using Cadoryx.ViewModels;
++using Cadoryx.ViewModels.Services.Platform.Notifications;
++using DocumentSnapshot=Cadoryx.Db.DocumentSnapshot;
++using Xunit;
++
++namespace Cadoryx.Tests;
++
++public sealed partial class FiniteSurfaceNewBodyTests
++{
++    private static async Task MoveLimit(CadDocumentSession session,MemoryAssetStore assets,FeatureId id)
++    {
++        using var shape=OcctGeometryBridge.ReadShape(session.Snapshot.Features[id].Result,assets);
++        using var transform=OcctGeometryBridge.ToNative(RigidTransform3d.Translate(0,0,1));using var moved=shape.Transformed(transform);
++        using var stored=OcctGeometryBridge.StoreShape(moved,assets);
++        await session.ExecuteAsync(new RecomputeCommand(id,new ImportedRecipe(stored.Geometry)));
++    }
++    [Fact]
++    public async Task LimitRevisionFreezesOriginalResultUntilCallerExplicitlyReselectsCurrentFace()
++    {
++        var assets=new MemoryAssetStore();var kernel=new OcctGeometryKernel();
++        await using(var session=new CadDocumentSession(DocumentSnapshot.Create("Independent limit revision"),assets,kernel,new InlineSessionDispatcher()))
++        {
++            var recipe=await Seed(session,assets,"plane");var limit=recipe.Options!.LimitFace!.FeatureId;var part=session.Snapshot.Features[limit].PartId;
++            await session.ExecuteAsync(new AddExtrusionCommand(recipe,"Independent",part));var feature=session.Snapshot.Features.Values.Single(f=>f.Recipe is ExtrudeRecipe);
++            await MoveLimit(session,assets,limit);var frozen=session.Snapshot;
++            Assert.True(frozen.Features[feature.Id].IsStale);Assert.Equal(feature.Result,frozen.Features[feature.Id].Result);
++            Assert.Equal(recipe.Options,((ExtrudeRecipe)frozen.Features[feature.Id].Recipe).Options);
++            var source=frozen.Features[limit];var selection=FiniteSurfaceExtrusionTests.Pick(frozen,limit,assets,_=>true);
++            var explicitRecipe=recipe with{Options=recipe.Options with{LimitFace=selection,LimitGeometry=source.Result}};
++            await session.ExecuteAsync(new RecomputeCommand(feature.Id,explicitRecipe));var accepted=session.Snapshot;
++            Assert.False(accepted.Features[feature.Id].IsStale);Assert.Empty(accepted.Features[feature.Id].Inputs);
++            Assert.InRange(Math.Abs(112-accepted.Features[feature.Id].Result.VolumeMm3),0,1e-5);
++            await session.UndoAsync();Assert.Same(frozen,session.Snapshot);await session.RedoAsync();Assert.Same(accepted,session.Snapshot);
++        }
++        Assert.Equal(0,assets.Count);Assert.Equal(0,assets.SizeBytes);
++    }
++    [Fact]
++    public async Task SameVolumeLocatedElsewhereCannotPassIndependentMaterialReplay()
++    {
++        var assets=new MemoryAssetStore();var kernel=new OcctGeometryKernel();
++        await using(var session=new CadDocumentSession(DocumentSnapshot.Create("Independent foreign result"),assets,kernel,new InlineSessionDispatcher()))
++        {
++            var recipe=await Seed(session,assets,"plane");
++            using var foreign=await kernel.EvaluateAsync(new BoxRecipe(4,4,6,RigidTransform3d.Translate(100,0,0)),assets);
++            Assert.InRange(Math.Abs(Expected("plane",6)-foreign.Geometry.VolumeMm3),0,1e-7);
++            int count=assets.Count;await Assert.ThrowsAsync<CadValidationException>(()=>kernel.ConfirmFiniteSurfaceExtrusionAsync(recipe,foreign.Geometry,assets));Assert.Equal(count,assets.Count);
++        }
++        Assert.Equal(0,assets.Count);Assert.Equal(0,assets.SizeBytes);
++    }
++    [Fact]
++    public async Task IndependentPartOwnsItsExplicitLimitAndDoesNotRebindWhenOriginalLimitMoves()
++    {
++        var assets=new MemoryAssetStore();var kernel=new OcctGeometryKernel();using var files=new TestFiles();var storage=new CadDocumentStorage(surfaceExtrusionResolver:kernel);
++        await using(var session=new CadDocumentSession(DocumentSnapshot.Create("Cloned independent finite"),assets,kernel,new InlineSessionDispatcher()))
++        {
++            var recipe=await Seed(session,assets,"plane");var limit=recipe.Options!.LimitFace!.FeatureId;var part=session.Snapshot.Features[limit].PartId;
++            await session.ExecuteAsync(new AddExtrusionCommand(recipe,"Independent",part));var original=session.Snapshot.Features.Values.Single(f=>f.Recipe is ExtrudeRecipe);
++            var root=new OccurrencePath(session.Snapshot.Id,[]);var slot=ComponentSlotId.New();
++            await session.ExecuteAsync(AssemblyOccurrenceCommands.Insert(root,part,slot,"Clone",RigidTransform3d.Translate(50,0,0)));
++            var clone=AssemblyOccurrenceCommands.MakePartIndependent(root.Append(slot));await session.ExecuteAsync(clone);
++            var copied=session.Snapshot.Features.Values.Single(f=>f.PartId==clone.ResultPartId&&f.Recipe is ExtrudeRecipe);
++            var options=((ExtrudeRecipe)copied.Recipe).Options!;Assert.Null(options.Source);Assert.Null(options.SupportFace);Assert.Empty(copied.Inputs);
++            Assert.NotEqual(limit,options.LimitFace!.FeatureId);Assert.Equal(copied.PartId,session.Snapshot.Features[options.LimitFace.FeatureId].PartId);
++            await MoveLimit(session,assets,limit);Assert.True(session.Snapshot.Features[original.Id].IsStale);Assert.False(session.Snapshot.Features[copied.Id].IsStale);
++            Assert.Equal(copied.Result,session.Snapshot.Features[copied.Id].Result);string file=files.PathFor("cloned-newbody.cadoryx");await session.SaveAsync(storage,file);
++            using var loaded=await storage.LoadAsync(file,assets);loaded.Snapshot.Validate();Assert.True(loaded.Snapshot.Features[original.Id].IsStale);Assert.False(loaded.Snapshot.Features[copied.Id].IsStale);
++        }
++        Assert.Equal(0,assets.Count);Assert.Equal(0,assets.SizeBytes);
++    }
++    [Fact]
++    public async Task LinkedRadiusParameterUpdatesNewMaterialAndDrawingAndRejectsIncompleteFiniteDomainAtomically()
++    {
++        var assets=new MemoryAssetStore();var kernel=new OcctGeometryKernel();using var files=new TestFiles();var storage=new CadDocumentStorage(surfaceExtrusionResolver:kernel);
++        await using(var session=new CadDocumentSession(DocumentSnapshot.Create("Driven independent cap"),assets,kernel,new InlineSessionDispatcher()))
++        {
++            var recipe=await Seed(session,assets,"plane");var part=session.Snapshot.Features[recipe.Options!.LimitFace!.FeatureId].PartId;
++            var draft=new SketchDraft(CadSketch.Create(part,"Independent circle",recipe.Placement));draft.AddCircle(new(5,5),2);
++            await session.ExecuteAsync(new UpsertSketchCommand(draft.Value,new ManagedSketchConstraintSolver()));var sketch=session.Snapshot.Sketches[draft.Value.Id];
++            var reference=SketchProfileReference.CreateCircle(sketch,sketch.Circles.Single().Id);
++            await session.ExecuteAsync(new AddExtrusionCommand(recipe with{Profile=SketchProfile.FromCircle(new(5,5),2)},"Linked independent",part,sketchSource:reference));
++            var feature=session.Snapshot.Features.Values.Single(f=>f.Recipe is ExtrudeRecipe);var sheet=TechnicalDrawingSheet.A4Landscape("Independent driver");
++            await session.ExecuteAsync(TechnicalDrawingCommands.AddSheet(sheet));await session.ExecuteAsync(TechnicalDrawingCommands.AddView(sheet.Id,Guid.NewGuid(),"Top",DrawingViewKind.Top,new(100,100),1));
++            var radius=new CadParameter(Guid.NewGuid(),"radius",ParameterDimension.Length,"3 mm");
++            var book=new ParameterBook([radius],[new(Guid.NewGuid(),radius.Id,ParameterTarget.Sketch(sketch.Id,sketch.Constraints.OfType<RadiusConstraint>().Single().Id))]);
++            var before=session.Snapshot;await session.ExecuteAsync(new SetParametersCommand(book));var driven=session.Snapshot;
++            Assert.Empty(driven.Features[feature.Id].Inputs);Assert.InRange(Math.Abs(54*Math.PI-driven.Features[feature.Id].Result.VolumeMm3),0,1e-5);
++            var view=driven.DrawingSheets[sheet.Id].Views.Single();Assert.Null(view.StaleReason);Assert.NotEmpty(view.Strokes);
++            Assert.Contains(view.Sources,s=>s.Feature==feature.Id&&s.Revision==driven.Features[feature.Id].Result.Revision);
++            int count=assets.Count;var history=session.HistoryUsage;await Assert.ThrowsAsync<CadValidationException>(()=>session.ExecuteAsync(new SetParametersCommand(book with{Parameters=[radius with{Expression="6 mm"}]})));
++            Assert.Same(driven,session.Snapshot);Assert.Equal(count,assets.Count);Assert.Equal(history,session.HistoryUsage);
++            await session.UndoAsync();Assert.Same(before,session.Snapshot);await session.RedoAsync();Assert.Same(driven,session.Snapshot);
++            string file=files.PathFor("driven-newbody.cadoryx");await session.SaveAsync(storage,file);
++            using(var loaded=await storage.LoadAsync(file,assets))
++            await using(var reopened=new CadDocumentSession(loaded.Snapshot,assets,kernel,new InlineSessionDispatcher()))
++            {
++                await reopened.ExecuteAsync(new SetParametersCommand(book with{Parameters=[radius with{Expression="2.5 mm"}]}));
++                Assert.InRange(Math.Abs(37.5*Math.PI-reopened.Snapshot.Features[feature.Id].Result.VolumeMm3),0,1e-5);
++                Assert.Null(reopened.Snapshot.DrawingSheets[sheet.Id].Views.Single().StaleReason);
++            }
++        }
++        Assert.Equal(0,assets.Count);Assert.Equal(0,assets.SizeBytes);
++    }
++    [Theory][InlineData("cancel")][InlineData("close")][InlineData("generation")]
++    public async Task HeldExactNewBodyCannotPublishOrRetainPrivateSeedAfterLateCancelCloseOrGenerationChange(string kind)
++    {
++        var assets=new MemoryAssetStore();var native=new OcctGeometryKernel();
++        await using(var session=new CadDocumentSession(DocumentSnapshot.Create("Late independent finite"),assets,native,new InlineSessionDispatcher()))
++        {
++            var recipe=await Seed(session,assets,"plane");var part=session.Snapshot.Features[recipe.Options!.LimitFace!.FeatureId].PartId;
++            await session.ExecuteAsync(new AddExtrusionCommand(recipe,"Independent",part));var feature=session.Snapshot.Features.Values.Single(f=>f.Recipe is ExtrudeRecipe);
++            var document=new CadDocumentViewModel(session,native,new CadMessageLog());var gate=new HeldNewBodyKernel(native);var editor=new ExtrusionEditorViewModel(document,gate,feature.Id);
++            editor.StartZ=6.5;
++            var before=session.Snapshot;int count=assets.Count;Task pending=editor.PreviewCommand.ExecuteAsync(null);Task? close=null;
++            try
++            {
++                await gate.Entered.Task.WaitAsync(TimeSpan.FromSeconds(15));
++                Assert.InRange(Math.Abs(88-gate.CompletedVolume),0,1e-5);
++                // Exactly one completed candidate remains; its private seed has
++                // already been released before this externally held native result.
++                Assert.Equal(count+1,assets.Count);
++                if(kind=="close")close=editor.DisposeAsync().AsTask();
++                else if(kind=="generation")
++                {await session.ExecuteAsync(new AddBodyCommand(new BoxRecipe(1,1,1,RigidTransform3d.Translate(50,0,0)),"Concurrent edit",part));before=session.Snapshot;count++;Assert.True(editor.IsStale);}
++                else editor.CancelCommand.Execute(null);
++                gate.Release.TrySetResult();await pending.WaitAsync(TimeSpan.FromSeconds(15));if(close is not null)await close.WaitAsync(TimeSpan.FromSeconds(5));
++                Assert.False(editor.CanConfirm);Assert.Null(document.PreviewScene);Assert.Same(before,session.Snapshot);Assert.Equal(count,assets.Count);
++            }
++            finally{gate.Release.TrySetResult();await pending;await editor.DisposeAsync();document.Detach();}
++        }
++        Assert.Equal(0,assets.Count);Assert.Equal(0,assets.SizeBytes);
++    }
++    private sealed class HeldNewBodyKernel(OcctGeometryKernel native):IGeometryKernel,IExactTopologyResolver
++    {
++        internal TaskCompletionSource Entered {get;}=new(TaskCreationOptions.RunContinuationsAsynchronously);
++        internal TaskCompletionSource Release {get;}=new(TaskCreationOptions.RunContinuationsAsynchronously);
++        internal double CompletedVolume {get;private set;}
++        public string Version=>native.Version;public bool Supports(GeometryRecipe recipe)=>native.Supports(recipe);
++        public async Task<GeometryResult> EvaluateAsync(GeometryRecipe recipe,IAssetStore assets,CancellationToken token=default)
++        {var result=await native.EvaluateAsync(recipe,assets,CancellationToken.None);CompletedVolume=result.Geometry.VolumeMm3;Entered.TrySetResult();await Release.Task;return result;}
++        public Task ConfirmAsync(DocumentSnapshot snapshot,ExactTopologySelection selection,IAssetStore assets,CancellationToken token=default)=>native.ConfirmAsync(snapshot,selection,assets,token);
++        public Task<LoadedDocument> ImportAsync(string path,IAssetStore assets,CancellationToken token=default)=>native.ImportAsync(path,assets,token);
++        public Task ExportAsync(DocumentSnapshot snapshot,IAssetStore assets,string path,CancellationToken token=default)=>native.ExportAsync(snapshot,assets,path,token);
++        public Task<CadExportReport> ExportAsync(DocumentSnapshot snapshot,IAssetStore assets,string path,CadExportOptions options,CancellationToken token=default)=>native.ExportAsync(snapshot,assets,path,options,token);
++    }
++}
+--- a/Cadoryx.Tests/FiniteSurfaceNewBodyTests.cs
++++ b/Cadoryx.Tests/FiniteSurfaceNewBodyTests.cs
+@@ -0,0 +1,191 @@
++using System.Collections.Immutable;
++using System.Text.Json;
++using Cadoryx.Commands;
++using Cadoryx.Db;
++using Cadoryx.Editor;
++using Cadoryx.IO;
++using Cadoryx.Kernel.Abstractions;
++using Cadoryx.Kernel.Occt;
++using Cadoryx.CommandLine;
++using Cadoryx.ViewModels;
++using Cadoryx.ViewModels.Services.Platform.Notifications;
++using Cadoryx.ViewModels.Toolboxes;
++using OcctSharp;
++using Xunit;
++using DocumentSnapshot=Cadoryx.Db.DocumentSnapshot;
++
++namespace Cadoryx.Tests;
++
++[Collection("ModelAgentNativeGates")]
++public sealed partial class FiniteSurfaceNewBodyTests
++{
++    public static IEnumerable<object[]> Cases()=>from kind in new[]{"plane","sphere","cylinder"}
++        from negative in new[]{false,true} from transform in new[]{0,1,2} from start in new[]{5d,6d}
++        select new object[]{kind,negative,transform,start};
++    private static RigidTransform3d Outer(int transform)=>transform switch
++    {
++        1=>new(new(17,-9,3),Quaterniond.FromEulerDegrees(18,27,-35)),
++        2=>new(new(500,-40,80),Quaterniond.FromAxisAngle(new(1,0,0),Math.PI)),
++        _=>RigidTransform3d.Identity
++    };
++    private static async Task<ExtrudeRecipe> Seed(CadDocumentSession session,MemoryAssetStore assets,string kind,bool negative=false,int transform=0,double start=6)
++    {
++        var outer=Outer(transform);var recipe=await FiniteSurfaceExtrusionTests.Seed(session,assets,kind,outer);
++        var frame=outer*(negative?new RigidTransform3d(new(0,10,start),Quaterniond.FromAxisAngle(new(1,0,0),Math.PI)):RigidTransform3d.Translate(0,0,start));
++        return recipe with{Placement=frame,Options=recipe.Options! with{Operation=ExtrusionOperation.NewBody,Source=null,SupportFace=null,
++            Side=negative?ExtrusionSide.Negative:ExtrusionSide.Positive}};
++    }
++    private static double Expected(string kind,double start)=>kind switch
++    {
++        "sphere"=>Math.PI*4*(18-start)-2*Math.PI/3*(216-Math.Pow(32,1.5)),
++        "cylinder"=>4*(4*(18-start)-(2*Math.Sqrt(32)+36*Math.Asin(1d/3))),
++        _=>16*(12-start)
++    };
++    [Theory,MemberData(nameof(Cases))]
++    public async Task FreeStartingPlaneBuildsCompleteFiniteMaterialWithoutConsumingAnyOriginalBody(string kind,bool negative,int transform,double start)
++    {
++        var assets=new MemoryAssetStore();var kernel=new OcctGeometryKernel();
++        await using(var session=new CadDocumentSession(DocumentSnapshot.Create("Independent finite material"),assets,kernel,new InlineSessionDispatcher()))
++        {
++            var recipe=await Seed(session,assets,kind,negative,transform,start);var before=session.Snapshot;
++            var part=before.Features[recipe.Options!.LimitFace!.FeatureId].PartId;
++            await session.ExecuteAsync(new AddExtrusionCommand(recipe,"Free finite",part));var accepted=session.Snapshot;
++            var feature=Assert.Single(accepted.Features.Values,f=>!before.Features.ContainsKey(f.Id));
++            Assert.Empty(feature.Inputs);Assert.Null(recipe.Options.Source);Assert.Null(recipe.Options.SupportFace);
++            Assert.Equal(before.Bodies.Count+1,accepted.Bodies.Count);
++            foreach(var body in before.Bodies)Assert.Equal(body.Value,accepted.Bodies[body.Key]);
++            foreach(var original in before.Features)Assert.Equal(original.Value,accepted.Features[original.Key]);
++            Assert.InRange(Math.Abs(Expected(kind,start)-feature.Result.VolumeMm3),0,1e-5);
++            using(var shape=OcctGeometryBridge.ReadShape(feature.Result,assets))
++            {Assert.True(shape.GetValidationReport(true,true).IsValid);Assert.True(shape.GetSelfInterferenceReport().IsClear);Assert.Equal(1,shape.GetTopologySummary().UniqueCounts.SolidCount);}
++            await kernel.ConfirmFiniteSurfaceExtrusionAsync(recipe,feature.Result,assets);accepted.Validate();
++            await session.UndoAsync();Assert.Same(before,session.Snapshot);await session.RedoAsync();Assert.Same(accepted,session.Snapshot);
++        }
++        Assert.Equal(0,assets.Count);Assert.Equal(0,assets.SizeBytes);
++    }
++    [Theory][InlineData(false,false)][InlineData(false,true)][InlineData(true,false)][InlineData(true,true)]
++    public async Task HolesAndRecursiveIslandKeepEveryDisconnectedMaterialSolid(bool island,bool negative)
++    {
++        var assets=new MemoryAssetStore();var kernel=new OcctGeometryKernel();
++        await using(var session=new CadDocumentSession(DocumentSnapshot.Create("Independent island"),assets,kernel,new InlineSessionDispatcher()))
++        {
++            var recipe=await Seed(session,assets,"plane",negative);var profile=SketchProfile.FromCircle(new(5,5),2) with{Holes=[new(new(5,5),1)]};
++            if(island)profile=profile with{Islands=[new([],new(new(5,5),.5))]};recipe=recipe with{Profile=profile};
++            await session.ExecuteAsync(new AddExtrusionCommand(recipe,"Island",session.Snapshot.Features[recipe.Options!.LimitFace!.FeatureId].PartId));
++            var feature=session.Snapshot.Features.Values.Single(f=>f.Recipe is ExtrudeRecipe);
++            Assert.InRange(Math.Abs((island?3.25:3)*Math.PI*6-feature.Result.VolumeMm3),0,1e-5);
++            using var shape=OcctGeometryBridge.ReadShape(feature.Result,assets);Assert.Equal(island?2:1,shape.GetTopologySummary().UniqueCounts.SolidCount);
++            await kernel.ConfirmFiniteSurfaceExtrusionAsync(recipe,feature.Result,assets);
++        }
++        Assert.Equal(0,assets.Count);Assert.Equal(0,assets.SizeBytes);
++    }
++    [Theory][InlineData("small")][InlineData("support")][InlineData("source")][InlineData("wrong-direction")][InlineData("far-plane")][InlineData("foreign-document")][InlineData("fingerprint")][InlineData("target")]
++    public async Task IncompleteOrForeignAuthorIsRejectedAtomicallyAndCannotLeavePrivateSeedAssets(string fault)
++    {
++        var assets=new MemoryAssetStore();var kernel=new OcctGeometryKernel();
++        await using(var session=new CadDocumentSession(DocumentSnapshot.Create("Rejected new finite"),assets,kernel,new InlineSessionDispatcher()))
++        {
++            var recipe=await Seed(session,assets,fault=="small"?"small":"plane");var options=recipe.Options!;
++            var original=session.Snapshot.Features.Values.Single(f=>f.Name=="Target");
++            recipe=fault switch
++            {
++                "support"=>recipe with{Options=options with{SupportFace=FiniteSurfaceExtrusionTests.Pick(session.Snapshot,original.Id,assets,f=>f.GetBoundingBox().Minimum.Z>4.999)}},
++                "source"=>recipe with{Options=options with{Source=original.Result}},
++                "wrong-direction"=>recipe with{Options=options with{Side=ExtrusionSide.Negative}},
++                "far-plane"=>recipe with{Options=options with{SurfaceBranch=ExtrusionSurfaceBranch.Far}},
++                "foreign-document"=>recipe with{Options=options with{LimitFace=options.LimitFace! with{DocumentId=DocumentId.New()}}},
++                "fingerprint"=>recipe with{Options=options with{LimitFace=options.LimitFace! with{Fingerprint=new string('0',64)}}},
++                _=>recipe
++            };
++            var before=session.Snapshot;int count=assets.Count;long bytes=assets.SizeBytes;var history=session.HistoryUsage;
++            await Assert.ThrowsAsync<CadValidationException>(()=>session.ExecuteAsync(new AddExtrusionCommand(recipe,"Rejected",original.PartId,
++                fault=="target"?session.Snapshot.Bodies.Values.Single(b=>b.Producer==original.Id).Id:null)));
++            Assert.Same(before,session.Snapshot);Assert.Equal(count,assets.Count);Assert.Equal(bytes,assets.SizeBytes);Assert.Equal(history,session.HistoryUsage);
++        }
++        Assert.Equal(0,assets.Count);
++    }
++    [Theory][InlineData("plane")][InlineData("sphere")][InlineData("cylinder")][InlineData("island")]
++    public async Task StoredIndependentAuthorRequiresExplicitCapabilityAndExactReplay(string kind)
++    {
++        using var files=new TestFiles();var assets=new MemoryAssetStore();var kernel=new OcctGeometryKernel();var storage=new CadDocumentStorage(surfaceExtrusionResolver:kernel);
++        await using(var session=new CadDocumentSession(DocumentSnapshot.Create("Stored independent finite"),assets,kernel,new InlineSessionDispatcher()))
++        {
++            var recipe=await Seed(session,assets,kind=="island"?"plane":kind);
++            if(kind=="island")recipe=recipe with{Profile=SketchProfile.FromCircle(new(5,5),2) with{Holes=[new(new(5,5),1)],Islands=[new([],new(new(5,5),.5))]}};
++            await session.ExecuteAsync(new AddExtrusionCommand(recipe,"Stored independent",session.Snapshot.Features[recipe.Options!.LimitFace!.FeatureId].PartId));
++            var feature=session.Snapshot.Features.Values.Single(f=>f.Recipe is ExtrudeRecipe);string path=files.PathFor("independent.cadoryx");await session.SaveAsync(storage,path);
++            Assert.Contains(CadDocumentStorage.FiniteSurfaceNewBodyCapability,FormatEvolutionTests.Manifest(path).RequiredCapabilities);
++            using(var loaded=await storage.LoadAsync(path,assets))
++            {
++                loaded.Snapshot.Validate();var restored=(ExtrudeRecipe)loaded.Snapshot.Features[feature.Id].Recipe;
++                Assert.Equal(recipe.Options,restored.Options);Assert.Equal(recipe.Placement,restored.Placement);
++                Assert.Equal(JsonSerializer.Serialize(CadModelJson.Write(recipe.Profile),CadJson.Options),
++                    JsonSerializer.Serialize(CadModelJson.Write(restored.Profile),CadJson.Options));
++                Assert.Equal(feature.Result,loaded.Snapshot.Features[feature.Id].Result);Assert.Empty(loaded.Snapshot.Features[feature.Id].Inputs);
++            }
++            FormatEvolutionTests.RewriteManifest(path,m=>m with{RequiredCapabilities=m.RequiredCapabilities.Remove(CadDocumentStorage.FiniteSurfaceNewBodyCapability)});
++            int count=assets.Count;long bytes=assets.SizeBytes;await Assert.ThrowsAsync<System.IO.InvalidDataException>(()=>storage.LoadAsync(path,assets));Assert.Equal(count,assets.Count);Assert.Equal(bytes,assets.SizeBytes);
++        }
++        Assert.Equal(0,assets.Count);Assert.Equal(0,assets.SizeBytes);
++    }
++    [Fact]
++    public async Task OriginalFiniteFuseProgramDoesNotAcquireNewBodyCapability()
++    {
++        using var files=new TestFiles();var assets=new MemoryAssetStore();var kernel=new OcctGeometryKernel();var storage=new CadDocumentStorage(surfaceExtrusionResolver:kernel);
++        await using(var session=new CadDocumentSession(DocumentSnapshot.Create("Original finite contract"),assets,kernel,new InlineSessionDispatcher()))
++        {
++            var recipe=await FiniteSurfaceExtrusionTests.Seed(session,assets,"plane");var target=session.Snapshot.Bodies.Values.Single(b=>b.Geometry==recipe.Options!.Source);
++            await session.ExecuteAsync(new AddExtrusionCommand(recipe,"Original",target.PartId,target.Id));string path=files.PathFor("original.cadoryx");await session.SaveAsync(storage,path);
++            Assert.DoesNotContain(CadDocumentStorage.FiniteSurfaceNewBodyCapability,FormatEvolutionTests.Manifest(path).RequiredCapabilities);
++        }
++        Assert.Equal(0,assets.Count);
++    }
++    [Theory][InlineData(false)][InlineData(true)]
++    public async Task ProductionEditorCanPreviewFreeFrameWithoutSupportAndKeepsExplicitLimitSelection(bool negative)
++    {
++        var assets=new MemoryAssetStore();var kernel=new OcctGeometryKernel();
++        await using(var session=new CadDocumentSession(DocumentSnapshot.Create("Independent finite editor"),assets,kernel,new InlineSessionDispatcher()))
++        {
++            var recipe=await Seed(session,assets,"plane",negative);var part=session.Snapshot.Features[recipe.Options!.LimitFace!.FeatureId].PartId;
++            await session.ExecuteAsync(new AddExtrusionCommand(recipe,"Independent",part));var feature=session.Snapshot.Features.Values.Single(f=>f.Recipe is ExtrudeRecipe);
++            var doc=new CadDocumentViewModel(session,kernel,new CadMessageLog());
++            try
++            {
++                await using var editor=new ExtrusionEditorViewModel(doc,kernel,feature.Id);Assert.False(editor.CanChooseSupport);Assert.Null(editor.SelectedSupport);
++                await editor.LoadFacesCommand.ExecuteAsync(null);Assert.Null(editor.SelectedSurface);Assert.Null(editor.SelectedSupport);
++                var before=session.Snapshot;await editor.PreviewCommand.ExecuteAsync(null);Assert.False(editor.CanConfirm);Assert.Same(before,session.Snapshot);
++                editor.SelectedSurface=editor.Surfaces.Single(s=>s.Limit.Selection==recipe.Options.LimitFace);
++                await editor.PreviewCommand.ExecuteAsync(null);Assert.True(editor.CanConfirm,editor.Status);Assert.Same(before,session.Snapshot);
++                editor.SurfaceBranch=ExtrusionSurfaceBranch.Far;Assert.False(editor.CanConfirm);Assert.Null(doc.PreviewScene);
++                await editor.PreviewCommand.ExecuteAsync(null);Assert.False(editor.CanConfirm);Assert.Same(before,session.Snapshot);
++                editor.SurfaceBranch=ExtrusionSurfaceBranch.Near;await editor.PreviewCommand.ExecuteAsync(null);Assert.True(editor.CanConfirm,editor.Status);
++            }
++            finally{doc.Detach();}
++        }
++        Assert.Equal(0,assets.Count);Assert.Equal(0,assets.SizeBytes);
++    }
++    [Fact]
++    public async Task StructuredAuthorRetainsFreeFrameAndNeverInfersTargetOrSupport()
++    {
++        var assets=new MemoryAssetStore();var kernel=new OcctGeometryKernel();
++        await using(var session=new CadDocumentSession(DocumentSnapshot.Create("Independent finite tool"),assets,kernel,new InlineSessionDispatcher()))
++        {
++            var recipe=await Seed(session,assets,"plane");var before=session.Snapshot;var part=before.Features[recipe.Options!.LimitFace!.FeatureId].PartId;
++            var doc=new CadDocumentViewModel(session,kernel,new CadMessageLog());
++            try
++            {
++                var tools=new CadAgentToolset(new CadCommandLineService(),doc);
++                var author=new{type="extrude",section=new{profile=CadModelJson.Write(recipe.Profile),frame=new{origin=new[]{0d,0,6},normal=new[]{0d,0,1},u=new[]{1d,0,0}}},
++                    operation="NewBody",termination="FiniteSurface",side="Positive",limitFace=CadDatumJson.Selection(recipe.Options.LimitFace!),surfaceBranch="Near"};
++                string result=await tools.ExecuteAsync(new("independent-finite","cad_model",JsonSerializer.Serialize(new{action="create",documentId=before.Id.ToString(),stateId=before.StateId.ToString(),
++                    partId=part.ToString(),name="Independent tool",authorJson=JsonSerializer.Serialize(author,CadJson.Options)})),default);
++                using(var parsed=JsonDocument.Parse(result))Assert.True(parsed.RootElement.GetProperty("success").GetBoolean(),result);
++                var feature=session.Snapshot.Features.Values.Single(f=>f.Recipe is ExtrudeRecipe);Assert.Empty(feature.Inputs);
++                var restored=(ExtrudeRecipe)feature.Recipe;Assert.Equal(recipe.Options,restored.Options);Assert.Equal(recipe.Placement,restored.Placement);
++                var inspected=CadModelAuthoring.Author(session.Snapshot,feature);Assert.Equal("NewBody",inspected["operation"]);Assert.False(inspected.ContainsKey("input"));Assert.False(inspected.ContainsKey("supportFace"));
++            }
++            finally{doc.Detach();}
++        }
++        Assert.Equal(0,assets.Count);Assert.Equal(0,assets.SizeBytes);
++    }
++}
+--- a/Cadoryx.ViewModels/ExtrusionEditorViewModel.cs
++++ b/Cadoryx.ViewModels/ExtrusionEditorViewModel.cs
+@@ -61,6 +61,7 @@
+     public bool CanConfirm=>CanEdit&&prepared is not null;
+     public bool IsNew=>SelectedFeature?.Value is null;
+     public bool CanChooseTarget=>IsNew&&Operation!=ExtrusionOperation.NewBody;
++    public bool CanChooseSupport=>CanEdit&&Termination==ExtrusionTermination.FiniteSurface&&Operation!=ExtrusionOperation.NewBody;
+     public bool CanChooseProfile=>IsNew||SelectedFeature?.Value is {} id&&baseline.Snapshot.Features[id].SketchSource is not null;
+     public bool CanSetDistance=>Termination==ExtrusionTermination.Distance;
+     public bool CanSetBackward=>CanSetDistance&&Side==ExtrusionSide.TwoSides;
+@@ -140,13 +141,13 @@
+     protected override void OnPropertyChanged(PropertyChangedEventArgs e)
+     {
+         base.OnPropertyChanged(e);
+-        if(e.PropertyName is nameof(CanEdit) or nameof(CanConfirm) or nameof(IsNew) or nameof(CanChooseTarget) or nameof(CanChooseProfile) or nameof(CanSetDistance) or nameof(CanSetBackward) or nameof(CanSetStart) or nameof(CanSetLimit) or nameof(SourceDescription) or nameof(Status))return;
++        if(e.PropertyName is nameof(CanEdit) or nameof(CanConfirm) or nameof(IsNew) or nameof(CanChooseTarget) or nameof(CanChooseSupport) or nameof(CanChooseProfile) or nameof(CanSetDistance) or nameof(CanSetBackward) or nameof(CanSetStart) or nameof(CanSetLimit) or nameof(SourceDescription) or nameof(Status))return;
+         if(e.PropertyName is nameof(IsWorking) or nameof(IsStale)){Notify();return;}
+         if(!loading)Invalidate();Notify();
+     }
+     private void Notify()
+     {
+-        foreach(var name in new[]{nameof(CanEdit),nameof(CanConfirm),nameof(IsNew),nameof(CanChooseTarget),nameof(CanChooseProfile),nameof(CanSetDistance),nameof(CanSetBackward),nameof(CanSetStart),nameof(CanSetLimit),nameof(SourceDescription)})OnPropertyChanged(name);
++        foreach(var name in new[]{nameof(CanEdit),nameof(CanConfirm),nameof(IsNew),nameof(CanChooseTarget),nameof(CanChooseSupport),nameof(CanChooseProfile),nameof(CanSetDistance),nameof(CanSetBackward),nameof(CanSetStart),nameof(CanSetLimit),nameof(SourceDescription)})OnPropertyChanged(name);
+         PreviewCommand.NotifyCanExecuteChanged();ConfirmCommand.NotifyCanExecuteChanged();LoadFacesCommand.NotifyCanExecuteChanged();
+     }
+     private void Invalidate(){cancellation?.Cancel();prepared?.Dispose();prepared=null;document.SetSketchPreview(null);OnPropertyChanged(nameof(CanConfirm));ConfirmCommand.NotifyCanExecuteChanged();}
+@@ -167,12 +168,12 @@
+         {
+             var selected=SelectedSurface?.Limit??throw new CadValidationException(Strings.ExtrusionSelectLimit);
+             face=new(selected.Selection,selected.Geometry);
+-            if(SelectedSupport?.Limit.Geometry!=source)throw new CadValidationException(Strings.ExtrusionSurfaceSupport);
++            if(Operation!=ExtrusionOperation.NewBody&&SelectedSupport?.Limit.Geometry!=source)throw new CadValidationException(Strings.ExtrusionSurfaceSupport);
+         }
+         var plane=Termination==ExtrusionTermination.Plane?datum?.Frame??new RigidTransform3d(new(LimitX,LimitY,LimitZ),Quaterniond.FromEulerDegrees(LimitRx,LimitRy,LimitRz)):(RigidTransform3d?)null;
+         var frame=new RigidTransform3d(new(StartX,StartY,StartZ),Quaterniond.FromEulerDegrees(StartRx,StartRy,StartRz));
+         var recipe=new ExtrudeRecipe(old.Profile,CanSetDistance?Distance:0,frame,new(Side,CanSetBackward?Backward:0,Operation,source,Termination,plane,datum?.Id,datum?.Revision,face?.Selection,face?.Geometry,
+-            Termination==ExtrusionTermination.FiniteSurface?SelectedSupport?.Limit.Selection:null,Termination==ExtrusionTermination.FiniteSurface?SurfaceBranch:null));
++            Termination==ExtrusionTermination.FiniteSurface&&Operation!=ExtrusionOperation.NewBody?SelectedSupport?.Limit.Selection:null,Termination==ExtrusionTermination.FiniteSurface?SurfaceBranch:null));
+         if(edit?.SketchSource is not null&&SelectedProfile?.Source is null)
+             throw new CadValidationException("Select an explicit replacement profile for the linked extrusion.");
+         return edit is null?new AddExtrusionCommand(recipe,ObjectName.Trim(),part,target?.Id,SelectedProfile?.Source):
+--- a/Cadoryx.ViewModels/Toolboxes/CadModelContract.cs
++++ b/Cadoryx.ViewModels/Toolboxes/CadModelContract.cs
+@@ -106,7 +106,7 @@
+                 schemaComplete=offset==0&&selected.Count==names.Length,definitionNames=names,schema,units=new{length="mm",angle="rad"},coordinateSpace=type=="assembly_pattern"?"parent_local":"part_local",
+                 contract="Merge $defs from successive pages into the same root schema. Every response stays below the normal tool-result limit. References may resolve in other pages. Source branches accept exact IDs/revisions only; production geometry and dependency constraints still apply.",
+                 defaults="Extrude NewBody/Positive/Distance, backward 0. Hole through=true/Plain, depth/head dimensions 0. Repetition Compound/includeSource=true/step=0/fullCircle=false. Guided Solid/Transformed/ruled=false.",
+-                constraints="Extrude Fuse/Cut requires input, NewBody forbids it; Plane needs limit, PlanarFace needs limitFace, other companions forbidden. Planar push/pull uses the finite face including holes and signed outward distance; native normal is discovered, optional normal must agree. Defeature requires every selected face removed and one complete healed solid. Loft sections match ordered station frames. Edited channel/program IDs are explicit; omitted copy IDs preserve survivors. Use explicit detach actions."},CadAuthoringInspection.JsonOptions);
++                constraints="Extrude: Fuse/Cut needs input; NewBody forbids input/supportFace. Plane needs limit; PlanarFace needs limitFace; FiniteSurface needs limitFace/surfaceBranch and Fuse/Cut supportFace. Other companions forbidden. Planar push/pull uses finite face incl holes and signed outward distance; discover native normal, explicit normal must agree. Defeature removes every selected face into one healed solid. Loft sections follow ordered station frames. Edits require channel/program IDs; omitted copy IDs keep survivors. Use explicit detach actions."},CadAuthoringInspection.JsonOptions);
+         }
+         var json=Serialize();while(json.Length>5500&&selected.Count>1){selected.RemoveAt(selected.Count-1);json=Serialize();}
+         if(json.Length>5500)throw new NotSupportedException("This author contract definition exceeds the tool-result page budget.");return json;
+--- a/Cadoryx.wpf/Views/ExtrusionEditorWindow.xaml
++++ b/Cadoryx.wpf/Views/ExtrusionEditorWindow.xaml
+@@ -66,7 +66,7 @@
+      <TextBlock Text="{I18N {x:Static r:LangKeys.ExtrusionSurfaceHint}}" TextWrapping="Wrap" Margin="0,4,0,8"/>
+      <Button x:Name="LoadSurfacesButton" Content="{I18N {x:Static r:LangKeys.ExtrusionLoadFaces}}" Command="{Binding LoadFacesCommand}" HorizontalAlignment="Left"/>
+      <TextBlock Text="{I18N {x:Static r:LangKeys.ExtrusionSurfaceSupport}}" Margin="0,8,0,4"/>
+-     <ComboBox x:Name="SupportPicker" ItemsSource="{Binding Supports}" SelectedItem="{Binding SelectedSupport}" DisplayMemberPath="Label" Margin="0,0,0,12"/>
++     <ComboBox x:Name="SupportPicker" IsEnabled="{Binding CanChooseSupport}" ItemsSource="{Binding Supports}" SelectedItem="{Binding SelectedSupport}" DisplayMemberPath="Label" Margin="0,0,0,12"/>
+      <TextBlock Text="{I18N {x:Static r:LangKeys.ExtrusionSurface}}" Margin="0,0,0,4"/>
+      <ComboBox x:Name="SurfacePicker" ItemsSource="{Binding Surfaces}" SelectedItem="{Binding SelectedSurface}" DisplayMemberPath="Label" Margin="0,0,0,12"/>
+      <TextBlock Text="{I18N {x:Static r:LangKeys.ExtrusionSurfaceBranch}}" Margin="0,0,0,4"/>

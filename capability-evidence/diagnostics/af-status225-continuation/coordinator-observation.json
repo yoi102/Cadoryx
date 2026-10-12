@@ -1,0 +1,128 @@
+{
+  "recordedAt": "2026-10-12T04:32:19.912413+00:00",
+  "state": "ORIGINAL_COORDINATORS_ABSENT_WITHOUT_TERMINALS_OR_RUNTIME_OUTPUT",
+  "processes": [
+    {
+      "ProcessId": 53332,
+      "Name": "dotnet.exe",
+      "CommandLine": "\"C:\\Program Files\\dotnet\\dotnet.exe\" \"C:\\Program Files\\dotnet\\sdk\\10.0.401\\MSBuild.dll\" /noautoresponse /nologo /nodemode:1 /nodeReuse:true /low:false"
+    },
+    {
+      "ProcessId": 46540,
+      "Name": "dotnet.exe",
+      "CommandLine": "\"C:\\Program Files\\dotnet\\dotnet.exe\" \"C:\\Program Files\\dotnet\\sdk\\10.0.401\\MSBuild.dll\" /noautoresponse /nologo /nodemode:1 /nodeReuse:true /low:false"
+    },
+    {
+      "ProcessId": 55560,
+      "Name": "dotnet.exe",
+      "CommandLine": "\"C:\\Program Files\\dotnet\\dotnet.exe\" \"C:\\Program Files\\dotnet\\sdk\\10.0.401\\MSBuild.dll\" /noautoresponse /nologo /nodemode:1 /nodeReuse:true /low:false"
+    },
+    {
+      "ProcessId": 20836,
+      "Name": "dotnet.exe",
+      "CommandLine": "\"C:\\Program Files\\dotnet\\dotnet.exe\" \"C:\\Program Files\\dotnet\\sdk\\10.0.401\\MSBuild.dll\" /noautoresponse /nologo /nodemode:1 /nodeReuse:true /low:false"
+    },
+    {
+      "ProcessId": 68448,
+      "Name": "dotnet.exe",
+      "CommandLine": "\"C:\\Program Files\\dotnet\\dotnet.exe\" \"C:\\Program Files\\dotnet\\sdk\\10.0.401\\MSBuild.dll\" /noautoresponse /nologo /nodemode:1 /nodeReuse:true /low:false"
+    },
+    {
+      "ProcessId": 59540,
+      "Name": "dotnet.exe",
+      "CommandLine": "\"C:\\Program Files\\dotnet\\dotnet.exe\" \"C:\\Program Files\\dotnet\\sdk\\10.0.401\\MSBuild.dll\" /noautoresponse /nologo /nodemode:1 /nodeReuse:true /low:false"
+    },
+    {
+      "ProcessId": 45940,
+      "Name": "dotnet.exe",
+      "CommandLine": "\"C:\\Program Files\\dotnet\\dotnet.exe\" \"C:\\Program Files\\dotnet\\sdk\\10.0.401\\MSBuild.dll\" /noautoresponse /nologo /nodemode:1 /nodeReuse:true /low:false"
+    },
+    {
+      "ProcessId": 8100,
+      "Name": "dotnet.exe",
+      "CommandLine": "\"C:\\Program Files\\dotnet\\dotnet.exe\" \"C:\\Program Files\\dotnet\\sdk\\10.0.401\\MSBuild.dll\" /noautoresponse /nologo /nodemode:1 /nodeReuse:true /low:false"
+    },
+    {
+      "ProcessId": 20748,
+      "Name": "dotnet.exe",
+      "CommandLine": "\"C:\\Program Files\\dotnet\\dotnet.exe\" \"C:\\Program Files\\dotnet\\sdk\\10.0.401\\MSBuild.dll\" /noautoresponse /nologo /nodemode:1 /nodeReuse:true /low:false"
+    },
+    {
+      "ProcessId": 61052,
+      "Name": "dotnet.exe",
+      "CommandLine": "\"C:\\Program Files\\dotnet\\dotnet.exe\" \"C:\\Program Files\\dotnet\\sdk\\10.0.401\\MSBuild.dll\" /noautoresponse /nologo /nodemode:1 /nodeReuse:true /low:false"
+    },
+    {
+      "ProcessId": 43964,
+      "Name": "dotnet.exe",
+      "CommandLine": "\"C:\\Program Files\\dotnet\\dotnet.exe\" \"C:\\Program Files\\dotnet\\sdk\\10.0.401\\MSBuild.dll\" /noautoresponse /nologo /nodemode:1 /nodeReuse:true /low:false"
+    },
+    {
+      "ProcessId": 19744,
+      "Name": "dotnet.exe",
+      "CommandLine": "\"C:\\Program Files\\dotnet\\dotnet.exe\" \"C:\\Program Files\\dotnet\\sdk\\10.0.401\\MSBuild.dll\" /noautoresponse /nologo /nodemode:1 /nodeReuse:true /low:false"
+    },
+    {
+      "ProcessId": 20760,
+      "Name": "dotnet.exe",
+      "CommandLine": "\"C:\\Program Files\\dotnet\\dotnet.exe\" \"C:\\Program Files\\dotnet\\sdk\\10.0.401\\MSBuild.dll\" /noautoresponse /nologo /nodemode:1 /nodeReuse:true /low:false"
+    },
+    {
+      "ProcessId": 56952,
+      "Name": "dotnet.exe",
+      "CommandLine": "\"C:\\Program Files\\dotnet\\dotnet.exe\" \"C:\\Program Files\\dotnet\\sdk\\10.0.401\\MSBuild.dll\" /noautoresponse /nologo /nodemode:1 /nodeReuse:true /low:false"
+    },
+    {
+      "ProcessId": 16016,
+      "Name": "dotnet.exe",
+      "CommandLine": "\"C:\\Program Files\\dotnet\\dotnet.exe\" \"C:\\Program Files\\dotnet\\sdk\\10.0.401\\MSBuild.dll\" /noautoresponse /nologo /nodemode:1 /nodeReuse:true /low:false"
+    },
+    {
+      "ProcessId": 64416,
+      "Name": "dotnet.exe",
+      "CommandLine": "\"C:\\Program Files\\dotnet\\dotnet.exe\" \"C:\\Program Files\\dotnet\\sdk\\10.0.401\\MSBuild.dll\" /noautoresponse /nologo /nodemode:1 /nodeReuse:true /low:false"
+    },
+    {
+      "ProcessId": 26056,
+      "Name": "dotnet.exe",
+      "CommandLine": "\"C:\\Program Files\\dotnet\\dotnet.exe\" \"C:\\Program Files\\dotnet\\sdk\\10.0.401\\MSBuild.dll\" /noautoresponse /nologo /nodemode:1 /nodeReuse:true /low:false"
+    },
+    {
+      "ProcessId": 29092,
+      "Name": "dotnet.exe",
+      "CommandLine": "\"C:\\Program Files\\dotnet\\dotnet.exe\" \"C:\\Program Files\\dotnet\\sdk\\10.0.401\\MSBuild.dll\" /noautoresponse /nologo /nodemode:1 /nodeReuse:true /low:false"
+    },
+    {
+      "ProcessId": 23648,
+      "Name": "dotnet.exe",
+      "CommandLine": "\"C:\\Program Files\\dotnet\\dotnet.exe\" \"C:\\Program Files\\dotnet\\sdk\\10.0.401\\MSBuild.dll\" /noautoresponse /nologo /nodemode:1 /nodeReuse:true /low:false"
+    },
+    {
+      "ProcessId": 61160,
+      "Name": "dotnet.exe",
+      "CommandLine": "\"C:\\Program Files\\dotnet\\dotnet.exe\" \"C:\\Program Files\\dotnet\\sdk\\10.0.401\\MSBuild.dll\" /noautoresponse /nologo /nodemode:1 /nodeReuse:true /low:false"
+    },
+    {
+      "ProcessId": 24796,
+      "Name": "pwsh.exe",
+      "CommandLine": "\"C:\\Users\\yoiri\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\powershell\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& 'C:/Users/yoiri/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe' -X utf8 artifacts/prepare-af-continuation-status225-1.py\""
+    },
+    {
+      "ProcessId": 21424,
+      "Name": "pwsh.exe",
+      "CommandLine": "\"C:\\Users\\yoiri\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\powershell\\pwsh.exe\" -Command \"try { [Console]::OutputEncoding=[System.Text.Encoding]::UTF8 } catch {}\n& 'C:/Users/yoiri/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe' -X utf8 capability-evidence/diagnostics/d6-sdk30-integration/build-audit.py\""
+    },
+    {
+      "ProcessId": 40200,
+      "Name": "pwsh.exe",
+      "CommandLine": "C:/Users/yoiri/.cache/codex-runtimes/codex-primary-runtime/dependencies/native/powershell/pwsh.exe -NoProfile -Command \"Get-CimInstance Win32_Process | Where-Object { $_.Name -match 'pwsh|testhost|Cadoryx|OcctSharp|dotnet' } | Select-Object ProcessId,Name,CommandLine | ConvertTo-Json -Depth 3\""
+    }
+  ],
+  "emptyFirstSolverReleaseDirectory": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\b18-prescribed-complete-authors-draft-2\\full6556-release-1",
+  "cause": "UNKNOWN",
+  "noRunningJobStopped": true,
+  "originalEvidencePreserved": true,
+  "recoveryRequiresFreshAttempt": true,
+  "cleanup": false,
+  "AF": "ACTIVE"
+}

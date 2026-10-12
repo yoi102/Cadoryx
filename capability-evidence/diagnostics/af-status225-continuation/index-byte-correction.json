@@ -1,0 +1,11 @@
+{
+  "correction": "Exact review diff marked -text, then only that file renormalized from existing working bytes",
+  "secondFailure": "Ordinary git add reused existing index content after attribute correction",
+  "cleanup": false,
+  "verification": "27FF8A3AE8266E6917F330D4387529C5062B5DEBADECD374A844E9BDDEC6EEBD",
+  "recordedAt": "2026-10-12T04:44:30.0598941+00:00",
+  "productSourcesChanged": false,
+  "firstFailure": "SDK30 review diff normalized CRLF to LF in Git index; working copy and its recorded hash unchanged",
+  "recordedHashesChanged": false,
+  "originalEvidenceDeleted": false
+}

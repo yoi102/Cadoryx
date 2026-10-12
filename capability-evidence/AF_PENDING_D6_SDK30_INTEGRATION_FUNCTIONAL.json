@@ -1,0 +1,74 @@
+{
+  "recordedAt": "2026-10-12T04:39:06.158006+00:00",
+  "state": "SOURCE1066_SDK30_BOTH_FINITE99_AND_ORIGINAL_AGENT165_ACTUALLY_PASS_FULL6530_PENDING",
+  "sourceCount": 1066,
+  "inventoryCount": 6530,
+  "sdkVersion": "8.0.1-preview.31.cadoryx.generated-defeature-history.30",
+  "build": {
+    "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\d6-sdk30-production-integration-1\\build-both-1-verification.json",
+    "sha256": "70A1D360B3762720B9AF7F70D3BCBFE006DEF9CAEC7A6EB1F1ACCA5483E09367"
+  },
+  "sourceAndRecovery": {
+    "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\capability-evidence\\AF_PENDING_D6_SDK30_INTEGRATION_SOURCE.json",
+    "sha256": "F7A9614DE812010D46A05508C69F4E4B6F8576845D7EFB0839E10A4731E904FD"
+  },
+  "matrices": [
+    {
+      "configuration": "Release",
+      "group": "finite99",
+      "count": 99,
+      "passed": 99,
+      "failed": 0,
+      "skipped": 0,
+      "audit": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\d6-sdk30-production-integration-1\\finite99-release-1-verification.json",
+        "sha256": "E6390EF0A177CF8BFB2582568D7072D774C32CA5D942A2FECD42265C4A299C3C"
+      }
+    },
+    {
+      "configuration": "Release",
+      "group": "agent165",
+      "count": 165,
+      "passed": 165,
+      "failed": 0,
+      "skipped": 0,
+      "audit": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\d6-sdk30-production-integration-1\\agent165-release-1-verification.json",
+        "sha256": "62F03077053DD94F120C861224CBCB87E783A7C66D6C83438FCC4B29652059CD"
+      }
+    },
+    {
+      "configuration": "Debug",
+      "group": "finite99",
+      "count": 99,
+      "passed": 99,
+      "failed": 0,
+      "skipped": 0,
+      "audit": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\d6-sdk30-production-integration-1\\finite99-debug-1-verification.json",
+        "sha256": "26C78E68C5291F1D6FC8AAA6105A0B47A47FFDB7115E8BC82980DB831108055D"
+      }
+    },
+    {
+      "configuration": "Debug",
+      "group": "agent165",
+      "count": 165,
+      "passed": 165,
+      "failed": 0,
+      "skipped": 0,
+      "audit": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\d6-sdk30-production-integration-1\\agent165-debug-1-verification.json",
+        "sha256": "DED2FDF54B2CBD512833C22D85A9D5E7B5326CCDE3B68D52229701681C7B0EBE"
+      }
+    }
+  ],
+  "actualLoadedNative62Audited": true,
+  "actualWindowsPassed": false,
+  "full6530Passed": false,
+  "sdk31CandidateReplaced": false,
+  "productionApplied": false,
+  "originalBudgetsChanged": false,
+  "cleanup": false,
+  "AF": "ACTIVE",
+  "G": "USER_DEFERRED"
+}

@@ -1,0 +1,488 @@
+{
+  "recordedAt": "2026-10-12T04:12:10.559723+00:00",
+  "state": "ALL14_EXACT_KNOT_WRITER_CASES_REJECTED_BY_FULL_ORIGINAL_GEOMETRY_SCOPE",
+  "writerMatrix": {
+    "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-exact-knot-subdivision-2\\both-1-exit.json",
+    "sha256": "4B85C90FA36429CF29101BDFF3EC960C1F64B0D72DD6B91278974EB38B843554"
+  },
+  "coverageMatrix": {
+    "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-exact-knot-coverage-3\\both-1-exit.json",
+    "sha256": "DC8885066C6822BD3ED66193D8842D5B9481ABBB6B27F89B76B72FB063CDCB31"
+  },
+  "originalStrictRepresentationProof": {
+    "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\capability-evidence\\AF_PENDING_SDK31_PLANAR_REPRESENTATION_REJECTIONS.json",
+    "sha256": "F5E717EFA81F4829B93E87F9E072BE00EA482D7E75A3F15D9C6660158B82E245"
+  },
+  "cases": [
+    {
+      "configuration": "Release",
+      "segments": 0,
+      "multiplicity": 0,
+      "writer": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-exact-knot-subdivision-2\\writer-release-0-0-1-exit.json",
+        "sha256": "7A9A4B9F8FF64C99392B54F3D45E680F3CA140B754271BB7B455B1A452310C69"
+      },
+      "originalFrozenStockReader": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-exact-knot-subdivision-2\\stock-release-0-0-1-exit.json",
+        "sha256": "07EB73A30D14C2E3EB04D76712AB65BCB4CB8BF430DFDFA89916631C0BD118F1"
+      },
+      "completeScopeReader": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-exact-knot-coverage-3\\coverage-release-0-0-1-exit.json",
+        "sha256": "710D34D58C3F17B53A6B18DE7458E98897BF0B0BD4678E51F60DAE84BB8EA014"
+      },
+      "step": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-exact-knot-subdivision-2\\writer-release-0-0-1.step",
+        "sha256": "1591F172BC618D5C2F4F4052A2CD8046331EB9AFBB03D76573778AFF3C4EBD38"
+      },
+      "writerSummary": [
+        "EXACT_KNOT_OFFSETS=0 INSERTED_KNOTS=0 POINT_DELTA=0 DERIVATIVE_DELTA=0 SOURCE_KEPT=1 FACES=6 EDGES=12"
+      ],
+      "coverageSummary": [
+        "COVERAGE SOURCE_SOLIDS=1 SOURCE_FACES=6 SOURCE_EDGES=12 SOURCE_VERTICES=8 SOLIDS=1 FACES=6 EDGES=12 VERTICES=8 COMPLETE=1",
+        "COMPLETE_CHECK EDGE_USES=24 MAX_DELTA=6.9932867123069075e-07 STRICT_VALID=0 SOURCE_VOLUME=139.93821470840629 VOLUME=139.93821470618016 VOLUME_ERROR=2.2261303911363939e-09"
+      ],
+      "reason": "ORIGINAL_STRICT_PCURVE_ERROR_REMAINS",
+      "productAccepted": false
+    },
+    {
+      "configuration": "Release",
+      "segments": 4,
+      "multiplicity": 2,
+      "writer": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-exact-knot-subdivision-2\\writer-release-4-2-1-exit.json",
+        "sha256": "6902B282B53AE6291B4ECA302CF85DCB8F7C9514E12B8221C2C3BAC739C4FEED"
+      },
+      "originalFrozenStockReader": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-exact-knot-subdivision-2\\stock-release-4-2-1-exit.json",
+        "sha256": "40DC02C8DB8F91F8ED85654A43B05CE80679B7D9AF078EF83A02B50CDBB59E4A"
+      },
+      "completeScopeReader": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-exact-knot-coverage-3\\coverage-release-4-2-1-exit.json",
+        "sha256": "390B3DF357087FEDE77CCF28BA42DD18CFF29B453C1A6746AF784E0135DBFA9C"
+      },
+      "step": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-exact-knot-subdivision-2\\writer-release-4-2-1.step",
+        "sha256": "95E6151EBD871E4D07C23525DB4BD9C01CDBD631AD969B5F17686EA4A50A3869"
+      },
+      "writerSummary": [
+        "EXACT_KNOT_OFFSETS=3 INSERTED_KNOTS=0 POINT_DELTA=1.7901808365247238e-15 DERIVATIVE_DELTA=5.4930801582266845e-15 SOURCE_KEPT=1 FACES=6 EDGES=12"
+      ],
+      "coverageSummary": [
+        "COVERAGE SOURCE_SOLIDS=1 SOURCE_FACES=6 SOURCE_EDGES=12 SOURCE_VERTICES=8 SOLIDS=1 FACES=6 EDGES=12 VERTICES=8 COMPLETE=1",
+        "COMPLETE_CHECK EDGE_USES=24 MAX_DELTA=6.993307852557258e-07 STRICT_VALID=0 SOURCE_VOLUME=139.93821470840629 VOLUME=139.93821470618417 VOLUME_ERROR=2.2221229301067069e-09"
+      ],
+      "reason": "ORIGINAL_STRICT_PCURVE_ERROR_REMAINS",
+      "productAccepted": false
+    },
+    {
+      "configuration": "Release",
+      "segments": 8,
+      "multiplicity": 2,
+      "writer": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-exact-knot-subdivision-2\\writer-release-8-2-1-exit.json",
+        "sha256": "C680DE9745FC37DA9B60FA66888F3D36C23924EDEB67AE465B8E2B9670A15591"
+      },
+      "originalFrozenStockReader": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-exact-knot-subdivision-2\\stock-release-8-2-1-exit.json",
+        "sha256": "39009D2EBAAFD4C6BA52DE92B4FC0315BC996A2E30C764E9D7D96F2EE84067E1"
+      },
+      "completeScopeReader": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-exact-knot-coverage-3\\coverage-release-8-2-1-exit.json",
+        "sha256": "246D194084E1A446D4B90DBD7845774C19A830C6D39078D29A6A38E49977E763"
+      },
+      "step": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-exact-knot-subdivision-2\\writer-release-8-2-1.step",
+        "sha256": "08150B4AF59413919E9963C0E3B9C4DA7B1E53D316D0D76BA8BCB7B5BD7D736B"
+      },
+      "writerSummary": [
+        "EXACT_KNOT_OFFSETS=3 INSERTED_KNOTS=12 POINT_DELTA=1.831026719408895e-15 DERIVATIVE_DELTA=1.1234667099445444e-14 SOURCE_KEPT=1 FACES=6 EDGES=12"
+      ],
+      "coverageSummary": [
+        "COVERAGE SOURCE_SOLIDS=1 SOURCE_FACES=6 SOURCE_EDGES=12 SOURCE_VERTICES=8 SOLIDS=1 FACES=6 EDGES=12 VERTICES=8 COMPLETE=1",
+        "COMPLETE_CHECK EDGE_USES=24 MAX_DELTA=6.9933283956173682e-07 STRICT_VALID=0 SOURCE_VOLUME=139.93821470840629 VOLUME=139.938214706189 VOLUME_ERROR=2.2172912395035382e-09"
+      ],
+      "reason": "ORIGINAL_STRICT_PCURVE_ERROR_REMAINS",
+      "productAccepted": false
+    },
+    {
+      "configuration": "Release",
+      "segments": 16,
+      "multiplicity": 2,
+      "writer": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-exact-knot-subdivision-2\\writer-release-16-2-1-exit.json",
+        "sha256": "9091E4E966D421825D22833FECBBB3A37DC92D216FD7B3B31110E760963B876F"
+      },
+      "originalFrozenStockReader": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-exact-knot-subdivision-2\\stock-release-16-2-1-exit.json",
+        "sha256": "7A5B2252C32F81EB11EEA79DE5F16102DEBB8AC47870C8123524CAACE2CACF49"
+      },
+      "completeScopeReader": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-exact-knot-coverage-3\\coverage-release-16-2-1-exit.json",
+        "sha256": "A670EB5178DCF9308EADAB758D579749F7A9A1574659D7B4B9F676E2880402CF"
+      },
+      "step": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-exact-knot-subdivision-2\\writer-release-16-2-1.step",
+        "sha256": "FD8E817417186EA54F76C7648696755440589FC773740B4DCE7BFEBCF89ECE97"
+      },
+      "writerSummary": [
+        "EXACT_KNOT_OFFSETS=3 INSERTED_KNOTS=36 POINT_DELTA=1.8971499361070188e-15 DERIVATIVE_DELTA=2.7708462173248621e-14 SOURCE_KEPT=1 FACES=6 EDGES=12"
+      ],
+      "coverageSummary": [
+        "COVERAGE SOURCE_SOLIDS=1 SOURCE_FACES=6 SOURCE_EDGES=12 SOURCE_VERTICES=8 SOLIDS=1 FACES=6 EDGES=12 VERTICES=8 COMPLETE=1",
+        "COMPLETE_CHECK EDGE_USES=24 MAX_DELTA=6.9932853802846348e-07 STRICT_VALID=0 SOURCE_VOLUME=139.93821470840629 VOLUME=139.93821470615171 VOLUME_ERROR=2.2545805222762283e-09"
+      ],
+      "reason": "ORIGINAL_STRICT_PCURVE_ERROR_REMAINS",
+      "productAccepted": false
+    },
+    {
+      "configuration": "Release",
+      "segments": 4,
+      "multiplicity": 3,
+      "writer": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-exact-knot-subdivision-2\\writer-release-4-3-1-exit.json",
+        "sha256": "043B8F6AE1FA8F6269B702D381D850E6583CBAA3A3891015AC0BCD15A90745F2"
+      },
+      "originalFrozenStockReader": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-exact-knot-subdivision-2\\stock-release-4-3-1-exit.json",
+        "sha256": "C260DD36662288F978A9A407BE437E783B5C6367BCBFAC6930E76FCB0A4832AD"
+      },
+      "completeScopeReader": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-exact-knot-coverage-3\\coverage-release-4-3-1-exit.json",
+        "sha256": "65FDEF1DFAF38B98B36805AC2E6B0E2BB5E4A26A89701A717B819E946511987D"
+      },
+      "step": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-exact-knot-subdivision-2\\writer-release-4-3-1.step",
+        "sha256": "6F59D339B2580F9E0EDD8EF2C9342F8D761B2F1C1C49D2741F88F38D1B3197A3"
+      },
+      "writerSummary": [
+        "EXACT_KNOT_OFFSETS=3 INSERTED_KNOTS=0 POINT_DELTA=1.7901808365247238e-15 DERIVATIVE_DELTA=1.0658141036401503e-14 SOURCE_KEPT=1 FACES=6 EDGES=12"
+      ],
+      "coverageSummary": [
+        "COVERAGE SOURCE_SOLIDS=1 SOURCE_FACES=6 SOURCE_EDGES=12 SOURCE_VERTICES=8 SOLIDS=0 FACES=0 EDGES=0 VERTICES=0 COMPLETE=0",
+        "FAIL=Transferred STEP shape lacks the complete original solid/face/edge/vertex scope; an empty valid compound is not an equivalent model"
+      ],
+      "reason": "EMPTY_MODEL_REJECTED_DESPITE_ORIGINAL_READER_EXIT0",
+      "productAccepted": false
+    },
+    {
+      "configuration": "Release",
+      "segments": 8,
+      "multiplicity": 3,
+      "writer": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-exact-knot-subdivision-2\\writer-release-8-3-1-exit.json",
+        "sha256": "4CB7FE9DC67336ACB4F68D550CA0671FFAEF42EFEAEAC3AD26D987579B61B7AD"
+      },
+      "originalFrozenStockReader": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-exact-knot-subdivision-2\\stock-release-8-3-1-exit.json",
+        "sha256": "FF59D07568CFB5D4E69E70618B8AB662128AE7DED683982C553616BEBD6CDB2F"
+      },
+      "completeScopeReader": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-exact-knot-coverage-3\\coverage-release-8-3-1-exit.json",
+        "sha256": "96DC4838ADAC485EDB33714A019CA846C4AFED8773282A9B89F52BAB6591E792"
+      },
+      "step": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-exact-knot-subdivision-2\\writer-release-8-3-1.step",
+        "sha256": "31FDD3BCABA3FA17069AAF21650D67378E15D50EB50CCF208EBAA15279815D88"
+      },
+      "writerSummary": [
+        "EXACT_KNOT_OFFSETS=3 INSERTED_KNOTS=12 POINT_DELTA=1.7901808365247238e-15 DERIVATIVE_DELTA=2.1541760083527534e-14 SOURCE_KEPT=1 FACES=6 EDGES=12"
+      ],
+      "coverageSummary": [
+        "COVERAGE SOURCE_SOLIDS=1 SOURCE_FACES=6 SOURCE_EDGES=12 SOURCE_VERTICES=8 SOLIDS=0 FACES=0 EDGES=0 VERTICES=0 COMPLETE=0",
+        "FAIL=Transferred STEP shape lacks the complete original solid/face/edge/vertex scope; an empty valid compound is not an equivalent model"
+      ],
+      "reason": "EMPTY_MODEL_REJECTED_DESPITE_ORIGINAL_READER_EXIT0",
+      "productAccepted": false
+    },
+    {
+      "configuration": "Release",
+      "segments": 16,
+      "multiplicity": 3,
+      "writer": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-exact-knot-subdivision-2\\writer-release-16-3-1-exit.json",
+        "sha256": "8913C5FD581A53EBACE428507192A46408729E4037DC0B93F942C1C69794C0B1"
+      },
+      "originalFrozenStockReader": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-exact-knot-subdivision-2\\stock-release-16-3-1-exit.json",
+        "sha256": "1885A45C84BF5353951758393556CBFE05FC5543BD4E5D0AD8B4F39DCFED618B"
+      },
+      "completeScopeReader": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-exact-knot-coverage-3\\coverage-release-16-3-1-exit.json",
+        "sha256": "114B5F4DA5C59502F83C90C4013B029B1290E5335808C30C06DF64FBDB82C162"
+      },
+      "step": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-exact-knot-subdivision-2\\writer-release-16-3-1.step",
+        "sha256": "1E020318CEBA1C64D806241D1D29B4DE2233F36792E0DC32694879963ACD06E2"
+      },
+      "writerSummary": [
+        "EXACT_KNOT_OFFSETS=3 INSERTED_KNOTS=36 POINT_DELTA=1.831026719408895e-15 DERIVATIVE_DELTA=4.302167940556016e-14 SOURCE_KEPT=1 FACES=6 EDGES=12"
+      ],
+      "coverageSummary": [
+        "COVERAGE SOURCE_SOLIDS=1 SOURCE_FACES=6 SOURCE_EDGES=12 SOURCE_VERTICES=8 SOLIDS=0 FACES=0 EDGES=0 VERTICES=0 COMPLETE=0",
+        "FAIL=Transferred STEP shape lacks the complete original solid/face/edge/vertex scope; an empty valid compound is not an equivalent model"
+      ],
+      "reason": "EMPTY_MODEL_REJECTED_DESPITE_ORIGINAL_READER_EXIT0",
+      "productAccepted": false
+    },
+    {
+      "configuration": "Debug",
+      "segments": 0,
+      "multiplicity": 0,
+      "writer": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-exact-knot-subdivision-2\\writer-debug-0-0-1-exit.json",
+        "sha256": "460323C3A249EC7E01E4A5CB7BABA03806C0F041ED8FF5039EC8F77EF44E4E49"
+      },
+      "originalFrozenStockReader": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-exact-knot-subdivision-2\\stock-debug-0-0-1-exit.json",
+        "sha256": "7CA6FABEDCFAE10CBCD12931101B4632379D494D2507D1C150FA585513B842CE"
+      },
+      "completeScopeReader": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-exact-knot-coverage-3\\coverage-debug-0-0-1-exit.json",
+        "sha256": "70F32BA8E91B8DEFB6AC12286A41572F4423C7D83E0AD412067E0230F5E37B60"
+      },
+      "step": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-exact-knot-subdivision-2\\writer-debug-0-0-1.step",
+        "sha256": "A6EC80DB74B030A033188B8104B03B83E2106CA23BC82E8D36F8362B68B31908"
+      },
+      "writerSummary": [
+        "EXACT_KNOT_OFFSETS=0 INSERTED_KNOTS=0 POINT_DELTA=0 DERIVATIVE_DELTA=0 SOURCE_KEPT=1 FACES=6 EDGES=12"
+      ],
+      "coverageSummary": [
+        "COVERAGE SOURCE_SOLIDS=1 SOURCE_FACES=6 SOURCE_EDGES=12 SOURCE_VERTICES=8 SOLIDS=1 FACES=6 EDGES=12 VERTICES=8 COMPLETE=1",
+        "COMPLETE_CHECK EDGE_USES=24 MAX_DELTA=6.9932867123069075e-07 STRICT_VALID=0 SOURCE_VOLUME=139.93821470840629 VOLUME=139.93821470618016 VOLUME_ERROR=2.2261303911363939e-09"
+      ],
+      "reason": "ORIGINAL_STRICT_PCURVE_ERROR_REMAINS",
+      "productAccepted": false
+    },
+    {
+      "configuration": "Debug",
+      "segments": 4,
+      "multiplicity": 2,
+      "writer": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-exact-knot-subdivision-2\\writer-debug-4-2-1-exit.json",
+        "sha256": "9FA37010A52D5C7C028F23709996D7C03DE8DE4EA194EEE95CBF5FF9D984FA3A"
+      },
+      "originalFrozenStockReader": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-exact-knot-subdivision-2\\stock-debug-4-2-1-exit.json",
+        "sha256": "A50F67E5490CEB81D9CB474984A16BDC5C5922BC4B0174F106F1C8AD2D5248E3"
+      },
+      "completeScopeReader": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-exact-knot-coverage-3\\coverage-debug-4-2-1-exit.json",
+        "sha256": "C6C7F4A2F3923E551F0A0FBF5691F31445F577029A550BCD3EA435DB44DA9EF7"
+      },
+      "step": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-exact-knot-subdivision-2\\writer-debug-4-2-1.step",
+        "sha256": "095199399EC3CC693059AC9D12E2C1A04EEB48447469F8753F236E8EF6079716"
+      },
+      "writerSummary": [
+        "EXACT_KNOT_OFFSETS=3 INSERTED_KNOTS=0 POINT_DELTA=1.7901808365247238e-15 DERIVATIVE_DELTA=5.4930801582266845e-15 SOURCE_KEPT=1 FACES=6 EDGES=12"
+      ],
+      "coverageSummary": [
+        "COVERAGE SOURCE_SOLIDS=1 SOURCE_FACES=6 SOURCE_EDGES=12 SOURCE_VERTICES=8 SOLIDS=1 FACES=6 EDGES=12 VERTICES=8 COMPLETE=1",
+        "COMPLETE_CHECK EDGE_USES=24 MAX_DELTA=6.993307852557258e-07 STRICT_VALID=0 SOURCE_VOLUME=139.93821470840629 VOLUME=139.93821470618417 VOLUME_ERROR=2.2221229301067069e-09"
+      ],
+      "reason": "ORIGINAL_STRICT_PCURVE_ERROR_REMAINS",
+      "productAccepted": false
+    },
+    {
+      "configuration": "Debug",
+      "segments": 8,
+      "multiplicity": 2,
+      "writer": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-exact-knot-subdivision-2\\writer-debug-8-2-1-exit.json",
+        "sha256": "B0A6CAEBDC3A0FB33E636FC15973A4B958E868C6663D7AC9CBCD33274778135B"
+      },
+      "originalFrozenStockReader": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-exact-knot-subdivision-2\\stock-debug-8-2-1-exit.json",
+        "sha256": "53EDB851462BCAA2B82FF179350A89BDA2C48BB4CD3E5B5D9CC9605E744DFD81"
+      },
+      "completeScopeReader": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-exact-knot-coverage-3\\coverage-debug-8-2-1-exit.json",
+        "sha256": "825D238062DD77D2597B9655155AB9CD25C36AB6B4EBC316252819FEE25F8001"
+      },
+      "step": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-exact-knot-subdivision-2\\writer-debug-8-2-1.step",
+        "sha256": "516F22ED998442343F5883739040A9972FED870F1AB67679A895FD3AD0EF3CAF"
+      },
+      "writerSummary": [
+        "EXACT_KNOT_OFFSETS=3 INSERTED_KNOTS=12 POINT_DELTA=1.831026719408895e-15 DERIVATIVE_DELTA=1.1234667099445444e-14 SOURCE_KEPT=1 FACES=6 EDGES=12"
+      ],
+      "coverageSummary": [
+        "COVERAGE SOURCE_SOLIDS=1 SOURCE_FACES=6 SOURCE_EDGES=12 SOURCE_VERTICES=8 SOLIDS=1 FACES=6 EDGES=12 VERTICES=8 COMPLETE=1",
+        "COMPLETE_CHECK EDGE_USES=24 MAX_DELTA=6.9933283956173682e-07 STRICT_VALID=0 SOURCE_VOLUME=139.93821470840629 VOLUME=139.938214706189 VOLUME_ERROR=2.2172912395035382e-09"
+      ],
+      "reason": "ORIGINAL_STRICT_PCURVE_ERROR_REMAINS",
+      "productAccepted": false
+    },
+    {
+      "configuration": "Debug",
+      "segments": 16,
+      "multiplicity": 2,
+      "writer": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-exact-knot-subdivision-2\\writer-debug-16-2-1-exit.json",
+        "sha256": "4E1B0ADF08CD297AB0F28F61DF2C6C1EB4F898309C3FAB81C85CEFF6A2C1A779"
+      },
+      "originalFrozenStockReader": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-exact-knot-subdivision-2\\stock-debug-16-2-1-exit.json",
+        "sha256": "45483F2EF2EBDB436FC1B1AE5E1FB03FF2EA391A14A18916C46AC49695925E69"
+      },
+      "completeScopeReader": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-exact-knot-coverage-3\\coverage-debug-16-2-1-exit.json",
+        "sha256": "C1AA2A00C38615A176405011FB11D44DD685EBC1D77FCABA4D4EE4E3BDDDB48F"
+      },
+      "step": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-exact-knot-subdivision-2\\writer-debug-16-2-1.step",
+        "sha256": "D452968D1A65A284A199F42FAE1F7C6D80AB2B2A2E462588E28C3365B9725E29"
+      },
+      "writerSummary": [
+        "EXACT_KNOT_OFFSETS=3 INSERTED_KNOTS=36 POINT_DELTA=1.8971499361070188e-15 DERIVATIVE_DELTA=2.7708462173248621e-14 SOURCE_KEPT=1 FACES=6 EDGES=12"
+      ],
+      "coverageSummary": [
+        "COVERAGE SOURCE_SOLIDS=1 SOURCE_FACES=6 SOURCE_EDGES=12 SOURCE_VERTICES=8 SOLIDS=1 FACES=6 EDGES=12 VERTICES=8 COMPLETE=1",
+        "COMPLETE_CHECK EDGE_USES=24 MAX_DELTA=6.9932853802846348e-07 STRICT_VALID=0 SOURCE_VOLUME=139.93821470840629 VOLUME=139.93821470615171 VOLUME_ERROR=2.2545805222762283e-09"
+      ],
+      "reason": "ORIGINAL_STRICT_PCURVE_ERROR_REMAINS",
+      "productAccepted": false
+    },
+    {
+      "configuration": "Debug",
+      "segments": 4,
+      "multiplicity": 3,
+      "writer": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-exact-knot-subdivision-2\\writer-debug-4-3-1-exit.json",
+        "sha256": "C76A951FB0C4433766332B31C08CEC7FB5BE1216E88B57AE2E00656E3FCF1FB6"
+      },
+      "originalFrozenStockReader": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-exact-knot-subdivision-2\\stock-debug-4-3-1-exit.json",
+        "sha256": "0E5156869E784A0DB4EFDB04FCDA1B89CDD62D9E766CA2CD397D2B30E6214D52"
+      },
+      "completeScopeReader": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-exact-knot-coverage-3\\coverage-debug-4-3-1-exit.json",
+        "sha256": "A8236C3D9CFB12D2CC482C3389CF99F38ED47BC568F265B28F7F5E848B1D0793"
+      },
+      "step": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-exact-knot-subdivision-2\\writer-debug-4-3-1.step",
+        "sha256": "1DD30C39768E9B1947B7B4FE37F6900ABA4C863CB14F01CCDF4F2ED32D593954"
+      },
+      "writerSummary": [
+        "EXACT_KNOT_OFFSETS=3 INSERTED_KNOTS=0 POINT_DELTA=1.7901808365247238e-15 DERIVATIVE_DELTA=1.0658141036401503e-14 SOURCE_KEPT=1 FACES=6 EDGES=12"
+      ],
+      "coverageSummary": [
+        "COVERAGE SOURCE_SOLIDS=1 SOURCE_FACES=6 SOURCE_EDGES=12 SOURCE_VERTICES=8 SOLIDS=0 FACES=0 EDGES=0 VERTICES=0 COMPLETE=0",
+        "FAIL=Transferred STEP shape lacks the complete original solid/face/edge/vertex scope; an empty valid compound is not an equivalent model"
+      ],
+      "reason": "EMPTY_MODEL_REJECTED_DESPITE_ORIGINAL_READER_EXIT0",
+      "productAccepted": false
+    },
+    {
+      "configuration": "Debug",
+      "segments": 8,
+      "multiplicity": 3,
+      "writer": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-exact-knot-subdivision-2\\writer-debug-8-3-1-exit.json",
+        "sha256": "C9217ADCE22436ED5036176E9B72FE0E9B34B48FCDD2219CEE010997D080DD2A"
+      },
+      "originalFrozenStockReader": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-exact-knot-subdivision-2\\stock-debug-8-3-1-exit.json",
+        "sha256": "49783A99DEECB4CF8328E73CD04AE394A820058D4235B700DBAA243357D7172A"
+      },
+      "completeScopeReader": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-exact-knot-coverage-3\\coverage-debug-8-3-1-exit.json",
+        "sha256": "9BD78C52D95F395C058845D2BB308355A4E427CD7CEE1D9F08EB98A4DCC797C9"
+      },
+      "step": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-exact-knot-subdivision-2\\writer-debug-8-3-1.step",
+        "sha256": "EAC0BBDAC0BEFEBBE69429F1D61F4FC7F2B9CFA7AF25BAF2A0DCD1EED892863D"
+      },
+      "writerSummary": [
+        "EXACT_KNOT_OFFSETS=3 INSERTED_KNOTS=12 POINT_DELTA=1.7901808365247238e-15 DERIVATIVE_DELTA=2.1541760083527534e-14 SOURCE_KEPT=1 FACES=6 EDGES=12"
+      ],
+      "coverageSummary": [
+        "COVERAGE SOURCE_SOLIDS=1 SOURCE_FACES=6 SOURCE_EDGES=12 SOURCE_VERTICES=8 SOLIDS=0 FACES=0 EDGES=0 VERTICES=0 COMPLETE=0",
+        "FAIL=Transferred STEP shape lacks the complete original solid/face/edge/vertex scope; an empty valid compound is not an equivalent model"
+      ],
+      "reason": "EMPTY_MODEL_REJECTED_DESPITE_ORIGINAL_READER_EXIT0",
+      "productAccepted": false
+    },
+    {
+      "configuration": "Debug",
+      "segments": 16,
+      "multiplicity": 3,
+      "writer": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-exact-knot-subdivision-2\\writer-debug-16-3-1-exit.json",
+        "sha256": "E2162BCF44F7E76D75BB9358CCBD1E29A6A4B8D30B4438F84FD27A6253CACA81"
+      },
+      "originalFrozenStockReader": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-exact-knot-subdivision-2\\stock-debug-16-3-1-exit.json",
+        "sha256": "FBDCBF3FAF5FE7BF0CE2C1B2ED9464469F548976BD451431958CE283AD420EE0"
+      },
+      "completeScopeReader": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-exact-knot-coverage-3\\coverage-debug-16-3-1-exit.json",
+        "sha256": "8FAEB99AF9D8531F3A4187148375C29549C9B6B14519E857BC14E848F0D26623"
+      },
+      "step": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-exact-knot-subdivision-2\\writer-debug-16-3-1.step",
+        "sha256": "7A6C43842A338DFE58B05945CA5CBB6D1B657B181E2D8436BA4D064513A8646A"
+      },
+      "writerSummary": [
+        "EXACT_KNOT_OFFSETS=3 INSERTED_KNOTS=36 POINT_DELTA=1.831026719408895e-15 DERIVATIVE_DELTA=4.302167940556016e-14 SOURCE_KEPT=1 FACES=6 EDGES=12"
+      ],
+      "coverageSummary": [
+        "COVERAGE SOURCE_SOLIDS=1 SOURCE_FACES=6 SOURCE_EDGES=12 SOURCE_VERTICES=8 SOLIDS=0 FACES=0 EDGES=0 VERTICES=0 COMPLETE=0",
+        "FAIL=Transferred STEP shape lacks the complete original solid/face/edge/vertex scope; an empty valid compound is not an equivalent model"
+      ],
+      "reason": "EMPTY_MODEL_REJECTED_DESPITE_ORIGINAL_READER_EXIT0",
+      "productAccepted": false
+    }
+  ],
+  "completeShapeFailures": 6,
+  "originalStrictFailures": 8,
+  "productCasesAccepted": 0,
+  "generatedWriterSourceUnchanged": [
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\src\\OcctSharp.Native\\generated\\DataExchange\\OcctSharp.ExactStepOffsets.Generated.cpp",
+      "sha256": "31569798B8090D18C231B53648944BE5D671E1015F8D844F9B92FCA811B03DD3"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\src\\OcctSharp.Native\\generated\\DataExchange\\OcctSharp.ExactStepOffsets.Generated.h",
+      "sha256": "ECFE320993AD4138DB6985784ACC4614FD1C84CCDEAF5A978F7A48AB00CEC579"
+    }
+  ],
+  "actualToolkitHashesCapturedAtExecutionAndMatchFrozenConfigBaseline": true,
+  "initialAggregateAuditFailure": "Stock-reader-only baseline did not list three Debug binary toolkits loaded by the writer. Corrected only the baseline union to use the original frozen writer and stock-reader module records; executions and assertions unchanged.",
+  "nativeDllHashesRecomputedAtAggregateAudit": false,
+  "source": [
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\capability-evidence\\diagnostics\\sdk31-exact-knot-subdivision\\knot-step.cpp",
+      "sha256": "30FD33E7D7A5B0B983DC17C909241E3A8602EE34EE2E285B531D611F7D6C26D9"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\capability-evidence\\diagnostics\\sdk31-exact-knot-subdivision\\stock-shape-coverage.cpp",
+      "sha256": "6AD3858889B3B1DF1DB0E7CC51754E336C357873150492546BCDE71D71E40873"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\capability-evidence\\diagnostics\\sdk31-exact-knot-subdivision\\CMakeLists.txt",
+      "sha256": "E3B8E6DDDDF5F482134AE61DD5ACBE19B05EEEB5718E919F022B0684FB712D61"
+    }
+  ],
+  "firstCompilerWarningRetained": {
+    "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-exact-knot-subdivision-1\\build-release-1.log",
+    "sha256": "2F6E12E2B0C3977959F7B24571E929060FAFEAE5BA4D0CB0E96ED2B89C15EC16"
+  },
+  "firstCompilerSourceRetained": {
+    "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\sdk31-exact-knot-subdivision-1\\knot-step.cpp",
+    "sha256": "0FBF94874D34856DA9EFEABDF704FDC4AF573AA1EC7184DDF63484D2A6559BB1"
+  },
+  "originalFrozenReaderModified": false,
+  "occtReaderImplementationModified": false,
+  "newCoverageWrapperIsAdditionalDiagnostic": true,
+  "fittingUsed": false,
+  "toleranceRaised": false,
+  "applicationExportGuardChanged": false,
+  "newNativeBindingsAdded": false,
+  "publicUpstreamModified": false,
+  "productionApplied": false,
+  "cleanup": false,
+  "AF": "ACTIVE",
+  "G": "USER_DEFERRED"
+}

@@ -1,5 +1,7 @@
 # 3D CAD 产品缺口与实施规划
 
+2026-10-12，status225：**A–F继续，G和清理暂缓，尚未全部完成。** [D6/SDK30生产组合](D6_SDK30_PRODUCTION_INTEGRATION.md)source1066两配置构建0警告/错误，发现6530，各有限曲面99/99与原AI/工程图165/165及实际native62通过；完整6530正在验证，随后续solver21原6556与最终D6的6619两配置。修订5窗口观察器已修正模态调用顺序并编译，36真实创建/编辑场景仍NOT RUN。[原source1070提供方](../capability-evidence/AF_PENDING_F5_SOURCE1070_FULL_PROVIDER_VERIFICATION.json)跨文档8轮通过、工程图失败；完整6556各6432/124，不能当最终1073门禁通过。[精确插结点14组](B18_EXACT_KNOT_SUBDIVISION_DIAGNOSTIC.md)全部拒绝，严格STEP和外部完整几何等价仍待解决。生产仍1000/SDK26，正式已验仍A4/B17/C5/D5/E4/F5g；[检查点](../capability-evidence/AF_PENDING_STATUS225_CONTINUATION_CHECKPOINT.json)记录真实范围，不缩减第4、5节与G01–G24。以下status224及更早为历史。
+
 2026-10-12，status224：**A–F继续，G及清理暂缓。** [D6新实体与自由起始平面](D6_FINITE_SURFACE_NEW_BODY.md)隔离source1073 / SDK31已实现，两配置构建0、原6556+新63发现6619，最终各有限曲面99/99及AI/工程图189/189、实际native62/完整1073恢复重放通过。完整6619已排队，实际窗口、性能、提供方及生产接入待验；生产仍source1000/SDK26，正式已验子批仍A4/B17/C5/D5/E4/F5g。原严格STEP24拒绝及其余第4、5节范围保持；以下status223及更早是历史检查点。
 
 2026-10-12，status223：**A–F 继续推进，尚未全部完成；G 实机、安装及交付暂缓，清理保持停止。** 隔离source1070 / SDK31 / solver21收紧完整作者处方守卫；两配置完整solution构建零警告/错误，原6556来源/名称保持。原986功能专项两配置各962通过/24失败，原99精度失败全部消除、原306耦合正例全部通过；F5路径及上下文两配置各29/29。剩余24仍为原精确STEP导出拒绝，守卫、公差、迭代预算保持。两文件字节补丁已实际重放全部1070；完整6556两配置已排队，当前未运行，生产仍source1000 / SDK26。原全量和Bonsai队列保持，不以旧载荷或本轮功能诊断代替最终窗口/材质/性能及提供方验收。详情见[完整作者守卫记录](B18_COMPLETE_AUTHOR_SOLVER_GUARD.md)与[独立功能审计](../capability-evidence/AF_PENDING_SOLVER21_COMPLETE_AUTHOR_FUNCTIONAL.json)。

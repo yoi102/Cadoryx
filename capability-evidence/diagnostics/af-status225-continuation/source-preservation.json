@@ -1,0 +1,128 @@
+{
+  "recordedAt": "2026-10-12T04:39:06.129897+00:00",
+  "source": [
+    {
+      "saved": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\capability-evidence\\diagnostics\\af-status225-continuation\\lane-wait.ps1",
+        "sha256": "94C541CE68A61F977EEB2C960010052BC24B97BB64A9DA0FD837785533568837"
+      },
+      "original": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\wait-cad-native-consumers-idle-1.ps1",
+        "sha256": "94C541CE68A61F977EEB2C960010052BC24B97BB64A9DA0FD837785533568837"
+      }
+    },
+    {
+      "saved": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\capability-evidence\\diagnostics\\af-status225-continuation\\lane-assert.ps1",
+        "sha256": "F9B8C4418AC8348D9988F69C9A3788FE3CBC1B77DF2E2C0A2C72A27D3CF970F1"
+      },
+      "original": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\assert-cad-native-consumers-idle-2.ps1",
+        "sha256": "F9B8C4418AC8348D9988F69C9A3788FE3CBC1B77DF2E2C0A2C72A27D3CF970F1"
+      }
+    },
+    {
+      "saved": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\capability-evidence\\diagnostics\\af-status225-continuation\\native-binding-helper.ps1",
+        "sha256": "E6FD62C51F31158514EA9E83870485D9BCC3E2273D5B2260B052281CD91DE1CC"
+      },
+      "original": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\a5-native-binding-helper-1.ps1",
+        "sha256": "E6FD62C51F31158514EA9E83870485D9BCC3E2273D5B2260B052281CD91DE1CC"
+      }
+    },
+    {
+      "saved": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\capability-evidence\\diagnostics\\af-status225-continuation\\window-revision4.cs",
+        "sha256": "6A60F94A9ED962CCD918435985652C558C242ECA7A3F676546115DD62953B3A7"
+      },
+      "original": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\d6-window-host-4\\WindowHost.cs",
+        "sha256": "6A60F94A9ED962CCD918435985652C558C242ECA7A3F676546115DD62953B3A7"
+      }
+    },
+    {
+      "saved": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\capability-evidence\\diagnostics\\af-status225-continuation\\window-revision4-build.ps1",
+        "sha256": "47EA2A4D96B8C59CE6D41820AD7B41C032622D8F1FB78FB38CDC28C24E248E70"
+      },
+      "original": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\run-d6-window-host-build-after-reservation-4.ps1",
+        "sha256": "47EA2A4D96B8C59CE6D41820AD7B41C032622D8F1FB78FB38CDC28C24E248E70"
+      }
+    },
+    {
+      "saved": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\capability-evidence\\diagnostics\\af-status225-continuation\\window-revision5-build.ps1",
+        "sha256": "DBA56006E1C2BBA8335416EFF5F1C9C81768D55A7AA0AF47B3FB782BC5B13A35"
+      },
+      "original": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\run-d6-window-host-build-after-reservation-5.ps1",
+        "sha256": "DBA56006E1C2BBA8335416EFF5F1C9C81768D55A7AA0AF47B3FB782BC5B13A35"
+      }
+    },
+    {
+      "saved": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\capability-evidence\\diagnostics\\af-status225-continuation\\prepare-continuation.py",
+        "sha256": "E0BA614580F669A80C42033AEE1C9845DB6AE588DF41900BDDA5E7130ACA9BB4"
+      },
+      "original": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\prepare-af-continuation-status225-1.py",
+        "sha256": "E0BA614580F669A80C42033AEE1C9845DB6AE588DF41900BDDA5E7130ACA9BB4"
+      }
+    },
+    {
+      "saved": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\capability-evidence\\diagnostics\\af-status225-continuation\\drawing-request018-audit.py",
+        "sha256": "062F2FC6127B8653B60C009448AF3F0C34711137DF07B47A9B9D2490B54A2787"
+      },
+      "original": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\audit-f5-drawing-request018-1.py",
+        "sha256": "062F2FC6127B8653B60C009448AF3F0C34711137DF07B47A9B9D2490B54A2787"
+      }
+    },
+    {
+      "saved": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\capability-evidence\\diagnostics\\af-status225-continuation\\f5-full-provider-audit.py",
+        "sha256": "6AE97210914BA937AE67280BB9C43182E7F7AB96A78A4234D416263FAAA3592F"
+      },
+      "original": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\audit-f5-source1070-full-provider-1.py",
+        "sha256": "6AE97210914BA937AE67280BB9C43182E7F7AB96A78A4234D416263FAAA3592F"
+      }
+    },
+    {
+      "saved": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\capability-evidence\\diagnostics\\af-status225-continuation\\sdk30-source-prepare.py",
+        "sha256": "19D663C48276D527845B1DAD6D850BCD3F25BAC36B4F9ECD111ED667ACAE3AAD"
+      },
+      "original": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\prepare-d6-sdk30-integration-1.py",
+        "sha256": "19D663C48276D527845B1DAD6D850BCD3F25BAC36B4F9ECD111ED667ACAE3AAD"
+      }
+    },
+    {
+      "saved": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\capability-evidence\\diagnostics\\af-status225-continuation\\sdk30-source-save.py",
+        "sha256": "C6FBBF6A9C66B9389277A062CD66025C37F1F20B890EB9084A9DA2A6887350C6"
+      },
+      "original": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\save-d6-sdk30-integration-source-1.py",
+        "sha256": "C6FBBF6A9C66B9389277A062CD66025C37F1F20B890EB9084A9DA2A6887350C6"
+      }
+    },
+    {
+      "saved": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\capability-evidence\\diagnostics\\af-status225-continuation\\sdk30-build.ps1",
+        "sha256": "F734456832C28B58355C6DDB5FD13ED2EDE8AC50CF45ED98934CFB95CCDFA279"
+      },
+      "original": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\run-d6-sdk30-integration-build-1.ps1",
+        "sha256": "F734456832C28B58355C6DDB5FD13ED2EDE8AC50CF45ED98934CFB95CCDFA279"
+      }
+    }
+  ],
+  "originalQueuedFilesChanged": false,
+  "productSourcesChangedByScheduling": false,
+  "cleanup": false
+}

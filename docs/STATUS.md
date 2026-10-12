@@ -1,5 +1,15 @@
 # 当前状态
 
+2026-10-12，status225：**A–F继续；G和清理暂缓，生产仍source1000/SDK26。** [D6/SDK30生产组合](D6_SDK30_PRODUCTION_INTEGRATION.md)的source1066两配置完整构建零警告/错误，原6467+新63发现6530；Release/Debug各有限曲面99/99、原AI及工程图165/165，实际native62及冻结来源已独立核验。[功能证据](../capability-evidence/AF_PENDING_D6_SDK30_INTEGRATION_FUNCTIONAL.json)不代替完整6530、真实窗口及生产合入。
+
+最终source1073/SDK31的[窗口观察器修订5](../capability-evidence/AF_PENDING_D6_WINDOW_OBSERVER_V3_BUILD_VERIFICATION.json)修正同步`ShowDialog()`使观察循环迟到的问题：先排入生产开窗请求，再观察模态消息循环，关闭后等待生产请求完成。两配置编译零警告/错误，应用/core/SDK13/native62磁盘载荷一致；创建/编辑×三语言×六几何共36场景及原六状态、30/300秒条件保持，**实际窗口未运行**。修订4来源和原等待脚本保留。Computer Use初始化和只读窗口枚举成功，没有注入键鼠；开始桌面验收前仍会提示。
+
+[原source1070/solver19完整6556与提供方](../capability-evidence/AF_PENDING_F5_SOURCE1070_FULL_PROVIDER_VERIFICATION.json)已结束：两配置各6432通过/124失败，全部为原123几何/导出失败及已知工具预算1失败；原Bonsai跨文档8轮通过、关闭后资产0，工程图仍未创建dimension，最终为无工具的控制帧回复。[最终恢复上下文诊断](../capability-evidence/AF_PENDING_F5_DRAWING_RECOVERY_CONTEXT_DIAGNOSTIC_V2.json)确认完整来源11334字符被分页为5890，柱面完整选择未进入该页；保留续读提示，模型未完成续读。不能据此断言根因或放宽身份/预算，也不能用旧source1070结果代替最终1073提供方门禁。
+
+[精确插结点14组诊断](B18_EXACT_KNOT_SUBDIVISION_DIAGNOSTIC.md)全部拒绝：8组完整形体仍超原严格pcurve公差，6组旧读取器的“零误差/有效”实际是空几何，完整形体复核已拒绝。未采用方案、拟合、提高公差、改变生成器或公共上游。原三个协调进程已消失且无运行终态，原因未确认，空的首个solver Release目录保持；新独立队列先验SDK30完整6530两配置，再续solver21原6556两配置新attempt2，最后D6完整6619两配置。SDK30 Release全量正在运行，其余待顺序执行。[检查点](../capability-evidence/AF_PENDING_STATUS225_CONTINUATION_CHECKPOINT.json)保存冻结脚本、实际专项与队列证据；全部A–F及第4、5节范围保持。
+
+以下status224及更早保留历史当时状态，当前状态以status225为准。
+
 2026-10-12，status224：**A–F继续，G及清理暂缓。** [D6有限曲面新实体与自由起始平面](D6_FINITE_SURFACE_NEW_BODY.md)在隔离source1073 / SDK31 / solver21完成实现；两配置完整solution构建0警告/错误，原6556+新63共6619保持。最终Release/Debug各有限曲面99/99、AI及工程图189/189，实际native62已独立核验。新实体无Source/SupportFace/targetBody，复用现有Until和完整有限域证明后只保存已证delta；新条件能力及精确重放、引用冻结/明确重选、取消/关闭/generation资产释放已验，没有新增Occt封装或修改公共上游。原source1070和D6第二草案各189的188/1失败保留；仅精简两处重复schema说明，将成本5606降至5596，原激进预算5597和全部守卫保持。短恢复场景余量1 token，不宣称任意长会话都保留12工具。
 
 [功能汇总](../capability-evidence/AF_PENDING_D6_FINITE_NEWBODY_FUNCTIONAL.json)绑定两配置矩阵、原生16前提、原失败、恢复链及完整1073重放；[11文件补丁](../capability-evidence/AF_PENDING_D6_FINITE_NEWBODY.patch)与[可读差异](../capability-evidence/AF_PENDING_D6_FINITE_NEWBODY_REVIEW.diff)已保存。最终6619两配置已排在原solver21全量终态之后，当前尚未运行；实际WPF窗口、提供方、性能及生产接入仍待验。生产仍source1000 / SDK26，B18原严格STEP24拒绝及外部端盖误差继续；正式已验子批仍A4/B17/C5/D5/E4/F5g，不能把专项或提交当A–F完成。以下status223及更早保留历史当时状态，当前候选以本条为准。

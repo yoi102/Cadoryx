@@ -1,0 +1,141 @@
+{
+  "recordedAt": "2026-10-12T04:37:03.091155+00:00",
+  "state": "FINAL_RECOVERY_REQUEST_AND_ACTUAL_NATIVE_SELECTION_CONTENT_AUDITED_PROVIDER_STILL_FAILED",
+  "request": {
+    "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\f5-drawing-source-path-feedback-draft-2\\lmstudio-drawing-1\\request-018.json",
+    "sha256": "488CA2BAD31B8C9E42E5D7AEBC1D76AD1200D08BC9C0C5E19DAFAA0B79560307"
+  },
+  "actualToolCalls": {
+    "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\f5-drawing-source-path-feedback-draft-2\\lmstudio-drawing-1\\tool-calls.json",
+    "sha256": "1F3A6C10E7379F0D60323A3EE1C912CFA2992B87ECB76C33E58D1BAB8F67A956"
+  },
+  "providerResult": {
+    "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\f5-drawing-source-path-feedback-draft-2\\lmstudio-drawing-1\\result.json",
+    "sha256": "80277042CBAF3BA9A82820713D26656BA0DA3C94B012AD8E490705F7E532B464"
+  },
+  "messages": [
+    {
+      "index": 0,
+      "role": 0,
+      "characters": 248,
+      "jsonParseError": "Expecting value: line 1 column 1 (char 0)",
+      "jsonKeys": null,
+      "containsCylinderGeometry": false,
+      "containsExactCylinderSelection": false,
+      "containsTruncationMarker": false,
+      "toolCallId": null
+    },
+    {
+      "index": 1,
+      "role": 1,
+      "characters": 615,
+      "jsonParseError": "Expecting value: line 1 column 1 (char 0)",
+      "jsonKeys": null,
+      "containsCylinderGeometry": true,
+      "containsExactCylinderSelection": false,
+      "containsTruncationMarker": false,
+      "toolCallId": null
+    },
+    {
+      "index": 2,
+      "role": 2,
+      "characters": 0,
+      "jsonParseError": "Expecting value: line 1 column 1 (char 0)",
+      "jsonKeys": null,
+      "containsCylinderGeometry": false,
+      "containsExactCylinderSelection": false,
+      "containsTruncationMarker": false,
+      "toolCallId": null
+    },
+    {
+      "index": 3,
+      "role": 3,
+      "characters": 807,
+      "jsonParseError": null,
+      "jsonKeys": [
+        "success",
+        "message",
+        "missingOrInvalid",
+        "unexpectedArguments",
+        "allowedArguments",
+        "identitySource",
+        "identityRole"
+      ],
+      "containsCylinderGeometry": false,
+      "containsExactCylinderSelection": false,
+      "containsTruncationMarker": false,
+      "toolCallId": "vVDcbZ5GhpRm69M1gLJNcXZPZc6ViWV1"
+    },
+    {
+      "index": 4,
+      "role": 2,
+      "characters": 0,
+      "jsonParseError": "Expecting value: line 1 column 1 (char 0)",
+      "jsonKeys": null,
+      "containsCylinderGeometry": false,
+      "containsExactCylinderSelection": false,
+      "containsTruncationMarker": false,
+      "toolCallId": null
+    },
+    {
+      "index": 5,
+      "role": 3,
+      "characters": 5890,
+      "jsonParseError": null,
+      "jsonKeys": [
+        "success",
+        "action",
+        "documentId",
+        "stateId",
+        "offset",
+        "limit",
+        "total",
+        "hasMore",
+        "contextPage",
+        "items"
+      ],
+      "containsCylinderGeometry": true,
+      "containsExactCylinderSelection": false,
+      "containsTruncationMarker": false,
+      "toolCallId": "Gz5l5mwA32xJlJr3fW1Gim0Uuim07snp"
+    },
+    {
+      "index": 6,
+      "role": 2,
+      "characters": 0,
+      "jsonParseError": "Expecting value: line 1 column 1 (char 0)",
+      "jsonKeys": null,
+      "containsCylinderGeometry": false,
+      "containsExactCylinderSelection": false,
+      "containsTruncationMarker": false,
+      "toolCallId": null
+    }
+  ],
+  "actualSourceCharacters": 11334,
+  "actualSourceItemCount": 45,
+  "actualCylinderItemIndex": 38,
+  "actualCylinderSelection": {
+    "path": "a92c1297-886d-434d-8fea-df0e03f42e2d/412b0915-0956-4595-be8c-7f4b0ab459ef",
+    "bodyId": "3f164909-f1ac-4571-b533-c45d2118b4f1",
+    "revision": "e6b93c2c-b008-4e86-b0ba-d31d42ba4ff9",
+    "asset": "20bad286545c0db06d38143f3d5a79fca15f18eca98f7adb88c492013233b45f",
+    "fingerprint": "7F270420AD41CD525D3DC661E225D82B195F5C421B8D904BF45FF3495B60CCD9",
+    "index": 38
+  },
+  "actualCylinderPresentInFinalRequest": true,
+  "exactCylinderSelectionPresentInFinalRequest": false,
+  "requestMessageCount": 7,
+  "requestToolCount": 10,
+  "selectionInferredOrResubmitted": false,
+  "productChanged": false,
+  "originalBudgetsChanged": false,
+  "comparison": "Parsed JSON selection objects, not serialized substring ordering/escaping.",
+  "firstSubstringComparisonPreserved": {
+    "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\capability-evidence\\AF_PENDING_F5_DRAWING_RECOVERY_CONTEXT_DIAGNOSTIC.json",
+    "sha256": "110E77F6F8950372A0DE94578033A17F1C5B94125A08E562FA661D3DEAB63E12"
+  },
+  "rootCauseProven": false,
+  "providerPassed": false,
+  "cleanup": false,
+  "AF": "ACTIVE"
+}

@@ -1,0 +1,101 @@
+{
+  "recordedAt": "2026-10-12T04:39:06.176039+00:00",
+  "state": "A_F_CONTINUES_D6_SDK30_FOCUSED_RUNTIME_PASS_MODAL_OBSERVER_COMPILED_FULL_QUEUE_RUNNING",
+  "coordinatorObservation": {
+    "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\capability-evidence\\diagnostics\\af-status225-continuation\\coordinator-observation.json",
+    "sha256": "B3FCB67C28171AABC8AC351F82BB502CF142BE6DBA4F2F318826E72D837903CC"
+  },
+  "sourcePreservation": {
+    "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\capability-evidence\\diagnostics\\af-status225-continuation\\source-preservation.json",
+    "sha256": "A914DFC8DAB3052E8AD9A29C1FC0FD355853B978719F8A0EE8E6EEE6C75B3B4C"
+  },
+  "runtimeQueueStart": {
+    "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af-status225-runtime-queue-1\\start.json",
+    "sha256": "A3CC0AD47A12EAEE13CB86FBAFDC0FF6A660B374F215FC0B08835FE8A3F27B84"
+  },
+  "runtimeQueuePreparation": {
+    "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af-status225-runtime-queue-1\\preparation.json",
+    "sha256": "1DA8836CC2828C505683F0F3ACE95385C5F14F4558E677AD6CE7F6B3CC04F169"
+  },
+  "runtimeQueueProgressSnapshot": {
+    "gates": [
+      {
+        "auditSha256": "E6390EF0A177CF8BFB2582568D7072D774C32CA5D942A2FECD42265C4A299C3C",
+        "audit": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\d6-sdk30-production-integration-1\\finite99-release-1-verification.json",
+        "draft": "d6-sdk30-production-integration-1",
+        "attempt": 1,
+        "exitCode": 0,
+        "terminal": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\d6-sdk30-production-integration-1\\finite99-release-1\\exit.json",
+        "group": "finite99",
+        "terminalSha256": "D63F266628F65EA884E8DA35C1092A34CB7F5E700B22073558AD0B1D3EDACA99",
+        "configuration": "Release"
+      },
+      {
+        "auditSha256": "26C78E68C5291F1D6FC8AAA6105A0B47A47FFDB7115E8BC82980DB831108055D",
+        "audit": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\d6-sdk30-production-integration-1\\finite99-debug-1-verification.json",
+        "draft": "d6-sdk30-production-integration-1",
+        "attempt": 1,
+        "exitCode": 0,
+        "terminal": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\d6-sdk30-production-integration-1\\finite99-debug-1\\exit.json",
+        "group": "finite99",
+        "terminalSha256": "E7FF1602CD63C4CFAF176465ABA194C60227173104DE56419C94C3367E7DD03D",
+        "configuration": "Debug"
+      },
+      {
+        "auditSha256": "62F03077053DD94F120C861224CBCB87E783A7C66D6C83438FCC4B29652059CD",
+        "audit": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\d6-sdk30-production-integration-1\\agent165-release-1-verification.json",
+        "draft": "d6-sdk30-production-integration-1",
+        "attempt": 1,
+        "exitCode": 0,
+        "terminal": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\d6-sdk30-production-integration-1\\agent165-release-1\\exit.json",
+        "group": "agent165",
+        "terminalSha256": "61399E90B628BE31D822F0CE59150C3482BE3DED7F079D46C362B37E804BC5F1",
+        "configuration": "Release"
+      },
+      {
+        "auditSha256": "DED2FDF54B2CBD512833C22D85A9D5E7B5326CCDE3B68D52229701681C7B0EBE",
+        "audit": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\d6-sdk30-production-integration-1\\agent165-debug-1-verification.json",
+        "draft": "d6-sdk30-production-integration-1",
+        "attempt": 1,
+        "exitCode": 0,
+        "terminal": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\d6-sdk30-production-integration-1\\agent165-debug-1\\exit.json",
+        "group": "agent165",
+        "terminalSha256": "5579A35A72B3296AAE8B87BC47A3057628ABDFA5E9A86525CE780F46110D6085",
+        "configuration": "Debug"
+      }
+    ],
+    "cleanup": false,
+    "recordedAt": "2026-10-12T04:37:46.4022557+00:00",
+    "AF": "ACTIVE"
+  },
+  "sdk30Functional": {
+    "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\capability-evidence\\AF_PENDING_D6_SDK30_INTEGRATION_FUNCTIONAL.json",
+    "sha256": "724D3DD4B2F01E559EE669FD474C6FE126D57D15C045FB087F64984E9AFB88DB"
+  },
+  "sdk31ModalObserverBuild": {
+    "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\capability-evidence\\AF_PENDING_D6_WINDOW_OBSERVER_V3_BUILD_VERIFICATION.json",
+    "sha256": "5DB4795A2554355E433474EE69762B2B3E1B375F2538AA97A1306144935A7200"
+  },
+  "priorF5FullProvider": {
+    "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\capability-evidence\\AF_PENDING_F5_SOURCE1070_FULL_PROVIDER_VERIFICATION.json",
+    "sha256": "160A2551CFCAC3242103EA93D8BEDCBF1DEF85B8F81143B01D64E450536017A4"
+  },
+  "finalDrawingContext": {
+    "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\capability-evidence\\AF_PENDING_F5_DRAWING_RECOVERY_CONTEXT_DIAGNOSTIC_V2.json",
+    "sha256": "879BEC70E3308A1DBBC093286953737A2CB98D19FFB56982F737F28C721C497B"
+  },
+  "exactKnotRejections": {
+    "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\capability-evidence\\AF_PENDING_SDK31_EXACT_KNOT_SUBDIVISION_REJECTIONS.json",
+    "sha256": "B5827101AD5C18098538DC26D1D24AE2A3CE8360AA5345E224538BAF33A7170A"
+  },
+  "publicUpstreamModified": false,
+  "newNativeBindingAdded": false,
+  "productionApplied": false,
+  "fullRuntimeQueueComplete": false,
+  "actualWindowsPassed": false,
+  "performanceAcceptance": false,
+  "desktopInputStarted": false,
+  "cleanup": false,
+  "AF": "ACTIVE",
+  "G": "USER_DEFERRED"
+}

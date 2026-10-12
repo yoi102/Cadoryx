@@ -15,6 +15,16 @@ capability-evidence/AF_PENDING_SOLVER21_*.diff text eol=lf whitespace=-blank-at-
 capability-evidence/AF_PENDING_D6_*.json -text whitespace=cr-at-eol
 capability-evidence/AF_PENDING_D6_*.diff text eol=lf whitespace=-blank-at-eol
 capability-evidence/diagnostics/d6-finite-newbody/* -text whitespace=cr-at-eol
+capability-evidence/AF_PENDING_D6_*.patch text eol=lf whitespace=-blank-at-eol,-blank-at-eof
+capability-evidence/AF_PENDING_F5_SOURCE1070_*.json -text whitespace=cr-at-eol
+capability-evidence/AF_PENDING_SDK31_EXACT_KNOT_*.json -text whitespace=cr-at-eol
+capability-evidence/diagnostics/d6-window-acceptance/* -text whitespace=cr-at-eol
+capability-evidence/diagnostics/sdk31-exact-knot-subdivision/* -text whitespace=cr-at-eol
+capability-evidence/diagnostics/d6-sdk30-integration/* -text whitespace=cr-at-eol
+capability-evidence/diagnostics/af-status225-continuation/* -text whitespace=cr-at-eol
+capability-evidence/AF_PENDING_F5_DRAWING_RECOVERY_CONTEXT_*.json -text whitespace=cr-at-eol
+capability-evidence/AF_PENDING_STATUS225_*.json -text whitespace=cr-at-eol
+capability-evidence/AF_PENDING_D6_SDK30_INTEGRATION_REVIEW.diff -text whitespace=cr-at-eol,-blank-at-eol
 
 ###############################################################################
 # Set default behavior for command prompt diff.

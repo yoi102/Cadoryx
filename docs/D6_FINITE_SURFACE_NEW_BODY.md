@@ -1,5 +1,7 @@
 # D6 有限曲面新实体与自由起始平面
 
+2026-10-12，status225补充：[修订5窗口观察器](../capability-evidence/AF_PENDING_D6_WINDOW_OBSERVER_V3_BUILD_VERIFICATION.json)引用最终1073/SDK31，两配置编译0警告/错误并核验磁盘载荷，实际窗口尚未运行。创建/编辑双阶段三语言×六几何共36矩阵保持；创建版缺`SketchDraft`命名空间的失败、修订4同步开窗源码及原队列均保留。修订5先排入开窗请求，观察器在`ShowDialog()`模态循环内运行，关闭后等待生产请求完成，原六状态及30/300秒限制不变。[SDK30组合候选](D6_SDK30_PRODUCTION_INTEGRATION.md)source1066两配置构建0、原6467+新63发现6530，实际各99/99和165/165及native62已验；完整6530和后续solver21原6556/最终D6完整6619按新独立队列顺序执行，不替代其他A–F范围或生产合入。
+
 2026-10-12，status224。隔离 source1073 / SDK31 / solver21 已完成新实体实现和两配置专项验证；完整回归、真实窗口及生产合入尚未完成。正式已验子批仍为 D5；A–F 继续，G 与清理暂缓。
 
 ## 作者与几何契约
@@ -24,7 +26,7 @@
 | 最终AI/工程图专项 | Release/Debug各189/189，原名称、断言、预算保持 | 同上 |
 | 恢复补丁 | 11来源文件；独立应用并逐一复核全部1073哈希 | [恢复说明](../capability-evidence/AF_PENDING_D6_FINITE_NEWBODY_RECOVERY.json)、[可读差异](../capability-evidence/AF_PENDING_D6_FINITE_NEWBODY_REVIEW.diff)、[字节补丁](../capability-evidence/AF_PENDING_D6_FINITE_NEWBODY.patch) |
 | 实际窗口样本准备 | 六份平面/球面/柱面×正反向文件已生成、保存、重开；section全哈希、creator/能力及native62独立通过，资产归零 | [夹具审计](../capability-evidence/AF_PENDING_D6_WINDOW_FIXTURES_VERIFICATION.json) |
-| 完整6619两配置 | 已排在原solver21全量终态之后，尚未运行 | [队列准备](../artifacts/d6-finite-newbody-draft-4/full-queue-preparation-1.json) |
+| 完整6619两配置 | 原协调进程已消失且无终态；新队列在SDK30完整6530与solver21原6556之后执行，尚未运行 | [续接检查点](../capability-evidence/AF_PENDING_STATUS225_CONTINUATION_CHECKPOINT.json) |
 | 实际WPF窗口、提供方及性能 | NOT RUN | 不以ViewModel或专项代替 |
 
 应用 Debug 使用私有包内 Release native。前提探针另有真正 Debug toolkit 的证据，两者分别记录。63个新案例包括生产 ViewModel，但不证明实际WPF窗口。
@@ -41,7 +43,7 @@
 
 收齐最终6619两配置及独立运行载荷审计，再验证实际编辑器选择、预览、确认/取消、树编辑及保存重开。生产仍 source1000 / SDK26，当前补丁未应用；恢复时先按solver21恢复链构造source1070/SDK31，再应用本11文件补丁。不能直接把本补丁当作SDK26生产增量。
 
-窗口验收按六份样本在中/英/日各运行，共18场景；先核对最终WPF/应用/SDK载荷与冻结候选，再在本任务创建的窗口打开样本。通过实际树编辑、方向/起始平面/终止类型控件验证新实体不要求目标或支撑面；加载面清空选择，缺少明确终止面时拒绝预览，明确重选Near后才允许预览/确认。改变Far使候选失效，不能把Near结果当Far；取消和关窗保持作者与历史。最后核验确认、撤销/重做、保存/重开及独立原生读回。以 computer-use 实际窗口观察和输入记录验收；渲染截图、ViewModel专项或文件夹具不替代真实控件证据。开始前提示用户，不能关闭其他窗口或停止原有队列。
+窗口验收按创建/编辑两个阶段、六份样本在中/英/日各运行，共36场景，各样本覆盖确认/取消/关闭；先核对最终WPF/应用/SDK载荷与冻结候选，再在本任务创建的窗口打开样本。通过真实创建命令、树编辑及方向/起始平面/终止类型控件验证新实体不要求目标或支撑面；球面创建经真实profile控件选择准备好的圆草图。加载面清空选择，缺少明确终止面时拒绝预览，明确重选Near后才允许预览/确认。改变Far使候选失效，不能把Near结果当Far；取消和关窗保持作者与历史。最后核验确认、撤销/重做、保存/重开及独立原生读回。以computer-use实际窗口观察和输入记录验收；渲染截图、ViewModel专项或文件夹具不替代真实控件证据。开始前提示用户，不能关闭其他窗口或停止原有队列。
 
 夹具首次编译的构造参数错误仅修为具名 `surfaceExtrusionResolver`，原失败来源及日志保留；成功轮同时按字段比较重开作者，避免把集合的对象引用相等当持久化相等。夹具与恢复源码在本地保存，没有控制桌面或清理记录。
 
