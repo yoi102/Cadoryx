@@ -1,6 +1,8 @@
 # 3D CAD 产品缺口与实施规划
 
-2026-10-12，status209：**A–F 继续推进，尚未全部完成；G 实机、安装及交付暂缓。** 生产仍为 source1000 / SDK26，SDK30基线1063修订5及最新隔离source1068尚未合入。修订5两配置完整6467/6467已独立通过，原Bonsai两场景实际失败。隔离source1068/solver19的原59加新6共65项为41通过/24导出失败；36个正例均在2次迭代完成求解及导出前检查，原预算保持。完整6532、生产窗口与合入仍待验。实时结果见[状态页](STATUS.md)，大批完成标准保持[产品规划第4、5节](CAD_PRODUCT_GAPS.md#4-推荐怎么做下一步)。
+2026-10-12，status222：**A–F 继续推进，尚未全部完成；G 实机、安装及交付暂缓，清理保持停止。** 隔离source1070 / SDK31新增工程图来源路径的只读引导，原身份/路径/原生来源守卫及工具算法和预算保持；两配置完整solution构建零警告/错误，发现原6532加24的6556项。两配置各29托管案例通过，同一测试载荷换旧ViewModels各19通过/10失败，全部1070来源实际重放一致。原Bonsai两场景程序按原提示/断言/模型及8192/16预算已重建，16应用/13SDK/62原生磁盘载荷核验通过；本轮实际提供方、189相关/6556全量及原生拓扑尚未运行。此前SDK31应用65/986/6532活作业仍等待其他原生测试，后续1070及提供方顺序排队，不重启活作业。SDK31身份/包/消费者证据保持，独立原版OCCT的严格STEP端盖读回仍失败；生产仍source1000 / SDK26，窗口/实际材质UI/性能、一般混合/C1、制造交换和原Bonsai等继续按[产品规划第4、5节](CAD_PRODUCT_GAPS.md#4-推荐怎么做下一步)推进。
+
+原status209及更早记录以下保留当时状态；当前证据以[STATUS](STATUS.md)和[A–F跟踪](AF_IMPLEMENTATION_TRACKER.md)为准，第4、5节及G01–G24范围保持。
 
 当前[Release完整6467/6467](../artifacts/af-sdk30-history-identity-draft-5/full6467-release-1-verification.json)与[Debug完整6467/6467](../artifacts/af-sdk30-history-identity-draft-5/full6467-debug-1-verification.json)均独立通过，零失败/跳过、原用例名称及实际SDK30/native62保持。[原Bonsai两个实际结果](../artifacts/af-sdk30-history-identity-draft-5/provider-both-1-exit.json)均失败：工程图在创建阶段缺少成功收据，跨文档第八轮超原16工具轮预算；不修改提示、身份守卫或预算。当前1066的相关980失败后，[最终应用准备](../artifacts/b18-single-loop-mixed-joints-draft-2/final-app-after-baseline-1-exit.json)按原门禁停止，未启动1066发布或桌面。已发布1063只作基线，不能代替后续修正候选的最终验收；原24和新36须绑定最终载荷后重编译/实际运行。
 

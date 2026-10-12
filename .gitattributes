@@ -9,6 +9,7 @@ capability-evidence/*.patch text eol=lf whitespace=-blank-at-eol,-blank-at-eof
 # Preserve the new SDK31 evidence hashes across Windows checkouts.
 capability-evidence/AF_PENDING_SOURCE1068_SDK31_*.json -text whitespace=cr-at-eol
 capability-evidence/AF_PENDING_SDK31_PLANAR_REPRESENTATION_REJECTIONS.json -text whitespace=cr-at-eol
+capability-evidence/AF_PENDING_DRAWING_SOURCE_PATH_*.json -text whitespace=cr-at-eol
 
 ###############################################################################
 # Set default behavior for command prompt diff.

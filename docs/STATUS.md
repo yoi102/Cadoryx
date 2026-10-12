@@ -1,6 +1,12 @@
 # 当前状态
 
-2026-10-12，status221：**A–F 继续推进，尚未全部完成；G 实机、安装及交付暂缓，清理保持停止。** 应用source1068已在隔离副本接入SDK31独立身份，两配置完整solution构建零警告/错误，发现原6532项及相关986项；原测试、求解器、导出守卫逐字节保持。七个依赖文件更新，草案2另修正运行时清单四个身份字段并完成两配置编译核验，14锁定包/13托管/62原生载荷一致；完整1068来源已由Git基础、原源码补丁及新字节恢复补丁实际重放。原65/986/6532的两配置运行已安排，当前等待其他原生测试，不把编译或发现当作运行通过。SDK31原两配置各248生成器/252新增公开/1622全量、14包/干净消费者/60整图证据保持。三种精确平面表示的14组读写均被独立原版OCCT严格读回拒绝，未采用到产品。生产仍source1000 / SDK26；原source1068 / SDK30的65项仍41通过/24导出失败。实际材质UI/窗口/性能、一般混合/C1、制造交换和原Bonsai等继续按[产品规划第4、5节](CAD_PRODUCT_GAPS.md#4-推荐怎么做下一步)推进。
+2026-10-12，status222：**A–F 继续推进，尚未全部完成；G 实机、安装及交付暂缓，清理保持停止。** 隔离source1070 / SDK31新增工程图来源路径的只读引导，原身份/路径/原生来源守卫及工具算法和预算保持；两配置完整solution构建零警告/错误，发现原6532加24的6556项。两配置各29托管案例通过，同一测试载荷换旧ViewModels各19通过/10失败，全部1070来源实际重放一致。原Bonsai两场景程序按原提示/断言/模型及8192/16预算已重建，16应用/13SDK/62原生磁盘载荷核验通过；本轮实际提供方、189相关/6556全量及原生拓扑尚未运行。此前SDK31应用65/986/6532活作业仍等待其他原生测试，后续1070及提供方顺序排队，不重启活作业。SDK31身份/包/消费者证据保持，独立原版OCCT的严格STEP端盖读回仍失败；生产仍source1000 / SDK26，窗口/实际材质UI/性能、一般混合/C1、制造交换和原Bonsai等继续按[产品规划第4、5节](CAD_PRODUCT_GAPS.md#4-推荐怎么做下一步)推进。
+
+[F5工程图来源路径引导](F5_DRAWING_SOURCE_PATH_GUIDANCE.md)针对原Bonsai将单个实例槽ID误当完整path的实际失败，保留原拒绝并提供未执行的occurrences/bodies读取请求。schema明确完整occurrences.items[].path；旧文档/状态、关闭/取消、缺失/超长输入、完整路径的实体/修订及原检查器自身错误保持，不推断选择或自动重绑。[独立核验](../capability-evidence/AF_PENDING_DRAWING_SOURCE_PATH_FEEDBACK_VERIFICATION.json)绑定source1070两配置build0、原6532/986名称保持、新增24及各29托管检查；同载荷只换旧ViewModels均19/10，确认八条路径和两条schema引导原本缺失。第一版各26检查与旧16/10对照保留，第二版只增三个合法路径分派/实体身份守卫案例，原21断言逐字节保持。
+
+[四文件恢复补丁](../capability-evidence/AF_PENDING_DRAWING_SOURCE_PATH_FEEDBACK.patch)在已验SDK31应用清单恢复副本上实际应用，全部1070来源哈希一致，原作者、求解器、STEP守卫和公共上游保持。[原Bonsai程序构建核验](../capability-evidence/AF_PENDING_DRAWING_SOURCE_PATH_PROVIDER_BUILD_VERIFICATION.json)保留原三份C#流程/提示/断言和相同模型、8192/16预算；当前16应用/13SDK/62原生磁盘载荷及锁定14包通过。原165加新24的189相关、完整6556两配置及实际Bonsai两场景已顺序排队，当前NOT RUN，不把托管29或磁盘载荷核验当作这些门禁通过。此前source1068 SDK31活作业也没有终态；A–F剩余全部范围继续，清理未执行。
+
+以下status221及更早内容保留当时状态；本轮1070与原提供方构建以以上证据为准。
 
 [SDK31应用依赖接入核验](../capability-evidence/AF_PENDING_SOURCE1068_SDK31_APPLICATION_BUILD_VERIFICATION.json)绑定原1068来源、两配置完整构建和测试发现；只改变Directory.Build.props、NuGet.Config及五份packages.lock.json，非Occt依赖版本/contentHash保持。应用与测试目录中14包/13托管/62原生均匹配独立私有包；应用Debug仍消费包内Release原生，真正Debug-native1622另有SDK证据。原65、相关986和完整6532的两配置门禁按顺序排队，尚无本轮运行终态；不得引用旧SDK30运行结果代替。草案1的runtime-baseline.json保留SDK30身份，未作为最终候选；[草案2身份清单修复与核验](../capability-evidence/AF_PENDING_SOURCE1068_SDK31_APPLICATION_MANIFEST_VERIFICATION.json)只更新包名、ABI1.89、bridge0.97.0及已验包内Release原生桥哈希。完整两配置再次构建零警告/错误，原6532/986用例名称及其他1067来源字节保持，实际输出清单与13托管/62原生包载荷一致。独立来源副本与[清单补丁](../capability-evidence/AF_PENDING_SOURCE1068_SDK31_MANIFEST.patch)再次重放全部1068哈希一致；先依次应用原source1068、新SDK31字节依赖补丁，再应用清单补丁。草案2实际运行仍NOT RUN，已排队的草案1没有停止、修改或重启，其未来结果也不能代替草案2最终窗口/材质/性能验收。
 

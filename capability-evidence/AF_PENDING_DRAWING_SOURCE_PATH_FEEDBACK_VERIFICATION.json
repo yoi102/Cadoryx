@@ -1,0 +1,375 @@
+{
+  "recordedAt": "2026-10-11T23:49:37.162666+00:00",
+  "state": "PASS_SOURCE1070_DRAWING_PATH_DISCOVERY_EXACT_GUARDS_BOTH29_AND_OLD_COUNTER10_RECOVERY_ALL1070",
+  "preparation": {
+    "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\f5-drawing-source-path-feedback-draft-2\\preparation-1.json",
+    "sha256": "F5F2151D40A3E900D7088E8BA622E8EED5C5ED23897695A5906018A460CED9C5"
+  },
+  "candidate": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\f5-drawing-source-path-feedback-draft-2\\workspace-1",
+  "sourceCount": 1070,
+  "changedBehaviorSources": [
+    "Cadoryx.ViewModels/Toolboxes/CadAgentDrawingTools.cs",
+    "Cadoryx.ViewModels/Toolboxes/CadDrawingInspection.cs"
+  ],
+  "newTestSources": [
+    "Cadoryx.Tests/DrawingSourcePathFeedbackTests.cs",
+    "Cadoryx.Tests/DrawingSourcePathDispatchTests.cs"
+  ],
+  "allOriginal6532TestsAndPrevious21AssertionsPreserved": true,
+  "configurations": {
+    "Release": {
+      "build": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\f5-drawing-source-path-feedback-draft-2\\build-release-1-exit.json",
+        "sha256": "D811FA2E7E65C2C765DECFB499F2D3CE5CBF43532442E7B3A7EE7D9A69CA945E"
+      },
+      "discovered": 6556,
+      "original6532NamesPreserved": true,
+      "related986NamesPreserved": true,
+      "newManaged24AndOriginalContext5": {
+        "terminal": {
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\f5-drawing-source-path-feedback-draft-2\\managed29-release-1\\exit.json",
+          "sha256": "73DD63DA3552DA84C65293B13A3834265B0C83A296694AF208A9319082E913AC"
+        },
+        "trx": {
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\f5-drawing-source-path-feedback-draft-2\\managed29-release-1\\runtime.trx",
+          "sha256": "CD2B3027AAB701772275CBC474DE8D8B8D81662374392B835BBDC0FD92D43D99"
+        },
+        "count": 29,
+        "passed": 29,
+        "failed": 0,
+        "skipped": 0,
+        "names": [
+          "Cadoryx.Tests.DrawingSourcePathDispatchTests.ValidFullPathKeepsBodyAndRevisionGuardsBeforeInspectorWithoutInventingReplacementSources(identity: \"bodyId\")",
+          "Cadoryx.Tests.DrawingSourcePathFeedbackTests.InvalidPathsReturnDiscoveryOnlyWithoutNativeCallsOrDocumentChanges(fault: \"foreign\")",
+          "Cadoryx.Tests.DrawingSourcePathFeedbackTests.InvalidPathsReturnDiscoveryOnlyWithoutNativeCallsOrDocumentChanges(fault: \"document\")",
+          "Cadoryx.Tests.DrawingSourcePathDispatchTests.ValidFullPathKeepsBodyAndRevisionGuardsBeforeInspectorWithoutInventingReplacementSources(identity: \"revision\")",
+          "Cadoryx.Tests.AgentContextTests.UnusedShortHistoryBudgetAdmitsToolsButLongHistoryKeepsItsReserve(aggressive: True)",
+          "Cadoryx.Tests.AgentContextTests.ContextReductionKeepsLatestRequestWithoutOrphanedToolMessages",
+          "Cadoryx.Tests.AgentContextTests.OversizedLatestRequestIsTrimmedAndKeepsItsEnding",
+          "Cadoryx.Tests.DrawingSourcePathFeedbackTests.MissingOrInvalidStringRetainsInputGuardWithoutSourceDiscovery(fault: \"omitted\")",
+          "Cadoryx.Tests.DrawingSourcePathFeedbackTests.MissingOrInvalidStringRetainsInputGuardWithoutSourceDiscovery(fault: \"null\")",
+          "Cadoryx.Tests.DrawingSourcePathFeedbackTests.MissingOrInvalidStringRetainsInputGuardWithoutSourceDiscovery(fault: \"empty\")",
+          "Cadoryx.Tests.DrawingSourcePathFeedbackTests.InvalidPathsReturnDiscoveryOnlyWithoutNativeCallsOrDocumentChanges(fault: \"empty-slot\")",
+          "Cadoryx.Tests.DrawingSourcePathFeedbackTests.InvalidPathsReturnDiscoveryOnlyWithoutNativeCallsOrDocumentChanges(fault: \"too-deep\")",
+          "Cadoryx.Tests.DrawingSourcePathFeedbackTests.ForeignIdentityRejectsBeforePathDiscoveryWithoutDisclosure(identity: \"stateId\", fault: \"leaf\")",
+          "Cadoryx.Tests.DrawingSourcePathFeedbackTests.MissingOrInvalidStringRetainsInputGuardWithoutSourceDiscovery(fault: \"oversize\")",
+          "Cadoryx.Tests.DrawingSourcePathFeedbackTests.ForeignIdentityRejectsBeforePathDiscoveryWithoutDisclosure(identity: \"documentId\", fault: \"foreign\")",
+          "Cadoryx.Tests.DrawingSourcePathFeedbackTests.ForeignIdentityRejectsBeforePathDiscoveryWithoutDisclosure(identity: \"documentId\", fault: \"leaf\")",
+          "Cadoryx.Tests.DrawingSourcePathFeedbackTests.InvalidPathsReturnDiscoveryOnlyWithoutNativeCallsOrDocumentChanges(fault: \"zero-slot\")",
+          "Cadoryx.Tests.AgentContextTests.UnusedShortHistoryBudgetAdmitsToolsButLongHistoryKeepsItsReserve(aggressive: False)",
+          "Cadoryx.Tests.DrawingSourcePathFeedbackTests.PreCancelledRequestDoesNotParseOrProvideSourceDiscovery(fault: \"foreign\")",
+          "Cadoryx.Tests.DrawingSourcePathFeedbackTests.ExplicitPathSourceFitsOriginalTwelveToolsAndContextBudgets(aggressive: False)",
+          "Cadoryx.Tests.AgentContextTests.ContextWindowRetryDoesNotCommitAnUnsuccessfulAssistantTurn",
+          "Cadoryx.Tests.DrawingSourcePathDispatchTests.ValidFullPathReachesOriginalInspectorAndDoesNotConvertItsBodyFailureIntoPathGuidance",
+          "Cadoryx.Tests.DrawingSourcePathFeedbackTests.InvalidPathsReturnDiscoveryOnlyWithoutNativeCallsOrDocumentChanges(fault: \"leaf\")",
+          "Cadoryx.Tests.DrawingSourcePathFeedbackTests.ExplicitPathSourceFitsOriginalTwelveToolsAndContextBudgets(aggressive: True)",
+          "Cadoryx.Tests.DrawingSourcePathFeedbackTests.ForeignIdentityRejectsBeforePathDiscoveryWithoutDisclosure(identity: \"stateId\", fault: \"foreign\")",
+          "Cadoryx.Tests.DrawingSourcePathFeedbackTests.DetachedDocumentRetainsOriginalGuardWithoutSourceDiscovery",
+          "Cadoryx.Tests.DrawingSourcePathFeedbackTests.PreCancelledRequestDoesNotParseOrProvideSourceDiscovery(fault: \"leaf\")",
+          "Cadoryx.Tests.DrawingSourcePathFeedbackTests.InvalidPathsReturnDiscoveryOnlyWithoutNativeCallsOrDocumentChanges(fault: \"missing-slot\")",
+          "Cadoryx.Tests.DrawingSourcePathFeedbackTests.InvalidPathsReturnDiscoveryOnlyWithoutNativeCallsOrDocumentChanges(fault: \"malformed-slot\")"
+        ],
+        "failureMessages": []
+      },
+      "same29OldViewModelsCounter": {
+        "terminal": {
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\f5-drawing-source-path-feedback-draft-2\\counter29-release-1\\exit.json",
+          "sha256": "A1F5DC34A9B80C9C45BB712E113450CD22B25F87E1620956F1D4A9EE24765983"
+        },
+        "trx": {
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\f5-drawing-source-path-feedback-draft-2\\counter29-release-1\\runtime.trx",
+          "sha256": "27C7E91E1FC3E6848F47BDCF045D41639F777F17842D9DBF3B0BABB8696F6D8C"
+        },
+        "count": 29,
+        "passed": 19,
+        "failed": 10,
+        "skipped": 0,
+        "names": [
+          "Cadoryx.Tests.DrawingSourcePathFeedbackTests.ForeignIdentityRejectsBeforePathDiscoveryWithoutDisclosure(identity: \"documentId\", fault: \"foreign\")",
+          "Cadoryx.Tests.DrawingSourcePathFeedbackTests.MissingOrInvalidStringRetainsInputGuardWithoutSourceDiscovery(fault: \"oversize\")",
+          "Cadoryx.Tests.AgentContextTests.OversizedLatestRequestIsTrimmedAndKeepsItsEnding",
+          "Cadoryx.Tests.DrawingSourcePathFeedbackTests.InvalidPathsReturnDiscoveryOnlyWithoutNativeCallsOrDocumentChanges(fault: \"zero-slot\")",
+          "Cadoryx.Tests.DrawingSourcePathFeedbackTests.ForeignIdentityRejectsBeforePathDiscoveryWithoutDisclosure(identity: \"stateId\", fault: \"leaf\")",
+          "Cadoryx.Tests.DrawingSourcePathFeedbackTests.MissingOrInvalidStringRetainsInputGuardWithoutSourceDiscovery(fault: \"empty\")",
+          "Cadoryx.Tests.DrawingSourcePathFeedbackTests.DetachedDocumentRetainsOriginalGuardWithoutSourceDiscovery",
+          "Cadoryx.Tests.AgentContextTests.ContextWindowRetryDoesNotCommitAnUnsuccessfulAssistantTurn",
+          "Cadoryx.Tests.DrawingSourcePathDispatchTests.ValidFullPathReachesOriginalInspectorAndDoesNotConvertItsBodyFailureIntoPathGuidance",
+          "Cadoryx.Tests.DrawingSourcePathFeedbackTests.MissingOrInvalidStringRetainsInputGuardWithoutSourceDiscovery(fault: \"omitted\")",
+          "Cadoryx.Tests.AgentContextTests.UnusedShortHistoryBudgetAdmitsToolsButLongHistoryKeepsItsReserve(aggressive: True)",
+          "Cadoryx.Tests.DrawingSourcePathFeedbackTests.PreCancelledRequestDoesNotParseOrProvideSourceDiscovery(fault: \"leaf\")",
+          "Cadoryx.Tests.DrawingSourcePathFeedbackTests.InvalidPathsReturnDiscoveryOnlyWithoutNativeCallsOrDocumentChanges(fault: \"foreign\")",
+          "Cadoryx.Tests.DrawingSourcePathFeedbackTests.ExplicitPathSourceFitsOriginalTwelveToolsAndContextBudgets(aggressive: False)",
+          "Cadoryx.Tests.AgentContextTests.UnusedShortHistoryBudgetAdmitsToolsButLongHistoryKeepsItsReserve(aggressive: False)",
+          "Cadoryx.Tests.DrawingSourcePathFeedbackTests.ForeignIdentityRejectsBeforePathDiscoveryWithoutDisclosure(identity: \"documentId\", fault: \"leaf\")",
+          "Cadoryx.Tests.DrawingSourcePathFeedbackTests.InvalidPathsReturnDiscoveryOnlyWithoutNativeCallsOrDocumentChanges(fault: \"leaf\")",
+          "Cadoryx.Tests.DrawingSourcePathFeedbackTests.InvalidPathsReturnDiscoveryOnlyWithoutNativeCallsOrDocumentChanges(fault: \"too-deep\")",
+          "Cadoryx.Tests.AgentContextTests.ContextReductionKeepsLatestRequestWithoutOrphanedToolMessages",
+          "Cadoryx.Tests.DrawingSourcePathFeedbackTests.InvalidPathsReturnDiscoveryOnlyWithoutNativeCallsOrDocumentChanges(fault: \"malformed-slot\")",
+          "Cadoryx.Tests.DrawingSourcePathDispatchTests.ValidFullPathKeepsBodyAndRevisionGuardsBeforeInspectorWithoutInventingReplacementSources(identity: \"revision\")",
+          "Cadoryx.Tests.DrawingSourcePathFeedbackTests.ForeignIdentityRejectsBeforePathDiscoveryWithoutDisclosure(identity: \"stateId\", fault: \"foreign\")",
+          "Cadoryx.Tests.DrawingSourcePathFeedbackTests.MissingOrInvalidStringRetainsInputGuardWithoutSourceDiscovery(fault: \"null\")",
+          "Cadoryx.Tests.DrawingSourcePathFeedbackTests.InvalidPathsReturnDiscoveryOnlyWithoutNativeCallsOrDocumentChanges(fault: \"empty-slot\")",
+          "Cadoryx.Tests.DrawingSourcePathFeedbackTests.InvalidPathsReturnDiscoveryOnlyWithoutNativeCallsOrDocumentChanges(fault: \"missing-slot\")",
+          "Cadoryx.Tests.DrawingSourcePathFeedbackTests.InvalidPathsReturnDiscoveryOnlyWithoutNativeCallsOrDocumentChanges(fault: \"document\")",
+          "Cadoryx.Tests.DrawingSourcePathFeedbackTests.ExplicitPathSourceFitsOriginalTwelveToolsAndContextBudgets(aggressive: True)",
+          "Cadoryx.Tests.DrawingSourcePathDispatchTests.ValidFullPathKeepsBodyAndRevisionGuardsBeforeInspectorWithoutInventingReplacementSources(identity: \"bodyId\")",
+          "Cadoryx.Tests.DrawingSourcePathFeedbackTests.PreCancelledRequestDoesNotParseOrProvideSourceDiscovery(fault: \"foreign\")"
+        ],
+        "failureMessages": [
+          {
+            "name": "Cadoryx.Tests.DrawingSourcePathFeedbackTests.InvalidPathsReturnDiscoveryOnlyWithoutNativeCallsOrDocumentChanges(fault: \"zero-slot\")",
+            "message": "System.Collections.Generic.KeyNotFoundException : The given key was not present in the dictionary."
+          },
+          {
+            "name": "Cadoryx.Tests.DrawingSourcePathFeedbackTests.InvalidPathsReturnDiscoveryOnlyWithoutNativeCallsOrDocumentChanges(fault: \"foreign\")",
+            "message": "System.Collections.Generic.KeyNotFoundException : The given key was not present in the dictionary."
+          },
+          {
+            "name": "Cadoryx.Tests.DrawingSourcePathFeedbackTests.ExplicitPathSourceFitsOriginalTwelveToolsAndContextBudgets(aggressive: False)",
+            "message": "System.Collections.Generic.KeyNotFoundException : The given key was not present in the dictionary."
+          },
+          {
+            "name": "Cadoryx.Tests.DrawingSourcePathFeedbackTests.InvalidPathsReturnDiscoveryOnlyWithoutNativeCallsOrDocumentChanges(fault: \"leaf\")",
+            "message": "System.Collections.Generic.KeyNotFoundException : The given key was not present in the dictionary."
+          },
+          {
+            "name": "Cadoryx.Tests.DrawingSourcePathFeedbackTests.InvalidPathsReturnDiscoveryOnlyWithoutNativeCallsOrDocumentChanges(fault: \"too-deep\")",
+            "message": "System.Collections.Generic.KeyNotFoundException : The given key was not present in the dictionary."
+          },
+          {
+            "name": "Cadoryx.Tests.DrawingSourcePathFeedbackTests.InvalidPathsReturnDiscoveryOnlyWithoutNativeCallsOrDocumentChanges(fault: \"malformed-slot\")",
+            "message": "System.Collections.Generic.KeyNotFoundException : The given key was not present in the dictionary."
+          },
+          {
+            "name": "Cadoryx.Tests.DrawingSourcePathFeedbackTests.InvalidPathsReturnDiscoveryOnlyWithoutNativeCallsOrDocumentChanges(fault: \"empty-slot\")",
+            "message": "System.Collections.Generic.KeyNotFoundException : The given key was not present in the dictionary."
+          },
+          {
+            "name": "Cadoryx.Tests.DrawingSourcePathFeedbackTests.InvalidPathsReturnDiscoveryOnlyWithoutNativeCallsOrDocumentChanges(fault: \"missing-slot\")",
+            "message": "System.Collections.Generic.KeyNotFoundException : The given key was not present in the dictionary."
+          },
+          {
+            "name": "Cadoryx.Tests.DrawingSourcePathFeedbackTests.InvalidPathsReturnDiscoveryOnlyWithoutNativeCallsOrDocumentChanges(fault: \"document\")",
+            "message": "System.Collections.Generic.KeyNotFoundException : The given key was not present in the dictionary."
+          },
+          {
+            "name": "Cadoryx.Tests.DrawingSourcePathFeedbackTests.ExplicitPathSourceFitsOriginalTwelveToolsAndContextBudgets(aggressive: True)",
+            "message": "System.Collections.Generic.KeyNotFoundException : The given key was not present in the dictionary."
+          }
+        ]
+      },
+      "counterOnlyReplacedModule": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af-sdk31-application-draft-2\\workspace-1\\Cadoryx.Tests\\bin\\Release\\net10.0\\Cadoryx.ViewModels.dll",
+        "sha256": "7B445209F589C2491B4108EA2919F7AC4AF8B0C0FA3550CB0EFA6F33BD8598B8"
+      },
+      "applicationPackageManaged13Native62AndManifestMatch": true
+    },
+    "Debug": {
+      "build": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\f5-drawing-source-path-feedback-draft-2\\build-debug-1-exit.json",
+        "sha256": "8C99A08389FB66DC0C254CA476C0260C8254665B41FFDCE93B2AFD05A36C1FDC"
+      },
+      "discovered": 6556,
+      "original6532NamesPreserved": true,
+      "related986NamesPreserved": true,
+      "newManaged24AndOriginalContext5": {
+        "terminal": {
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\f5-drawing-source-path-feedback-draft-2\\managed29-debug-1\\exit.json",
+          "sha256": "76EE381F57184F45EC01F06ED293ABC94188BE114AD18E9F4AE11524EE8BE848"
+        },
+        "trx": {
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\f5-drawing-source-path-feedback-draft-2\\managed29-debug-1\\runtime.trx",
+          "sha256": "D6C37404E57D9D6E14B38E86AC404019AC2AFEA8201DD1CB0CF9506F46B7CB27"
+        },
+        "count": 29,
+        "passed": 29,
+        "failed": 0,
+        "skipped": 0,
+        "names": [
+          "Cadoryx.Tests.DrawingSourcePathDispatchTests.ValidFullPathReachesOriginalInspectorAndDoesNotConvertItsBodyFailureIntoPathGuidance",
+          "Cadoryx.Tests.DrawingSourcePathFeedbackTests.MissingOrInvalidStringRetainsInputGuardWithoutSourceDiscovery(fault: \"empty\")",
+          "Cadoryx.Tests.DrawingSourcePathFeedbackTests.InvalidPathsReturnDiscoveryOnlyWithoutNativeCallsOrDocumentChanges(fault: \"zero-slot\")",
+          "Cadoryx.Tests.DrawingSourcePathFeedbackTests.MissingOrInvalidStringRetainsInputGuardWithoutSourceDiscovery(fault: \"omitted\")",
+          "Cadoryx.Tests.DrawingSourcePathDispatchTests.ValidFullPathKeepsBodyAndRevisionGuardsBeforeInspectorWithoutInventingReplacementSources(identity: \"revision\")",
+          "Cadoryx.Tests.DrawingSourcePathFeedbackTests.ExplicitPathSourceFitsOriginalTwelveToolsAndContextBudgets(aggressive: True)",
+          "Cadoryx.Tests.DrawingSourcePathFeedbackTests.InvalidPathsReturnDiscoveryOnlyWithoutNativeCallsOrDocumentChanges(fault: \"malformed-slot\")",
+          "Cadoryx.Tests.DrawingSourcePathFeedbackTests.ExplicitPathSourceFitsOriginalTwelveToolsAndContextBudgets(aggressive: False)",
+          "Cadoryx.Tests.DrawingSourcePathFeedbackTests.InvalidPathsReturnDiscoveryOnlyWithoutNativeCallsOrDocumentChanges(fault: \"empty-slot\")",
+          "Cadoryx.Tests.DrawingSourcePathFeedbackTests.MissingOrInvalidStringRetainsInputGuardWithoutSourceDiscovery(fault: \"null\")",
+          "Cadoryx.Tests.DrawingSourcePathFeedbackTests.ForeignIdentityRejectsBeforePathDiscoveryWithoutDisclosure(identity: \"documentId\", fault: \"leaf\")",
+          "Cadoryx.Tests.DrawingSourcePathFeedbackTests.InvalidPathsReturnDiscoveryOnlyWithoutNativeCallsOrDocumentChanges(fault: \"leaf\")",
+          "Cadoryx.Tests.DrawingSourcePathFeedbackTests.PreCancelledRequestDoesNotParseOrProvideSourceDiscovery(fault: \"leaf\")",
+          "Cadoryx.Tests.DrawingSourcePathFeedbackTests.ForeignIdentityRejectsBeforePathDiscoveryWithoutDisclosure(identity: \"documentId\", fault: \"foreign\")",
+          "Cadoryx.Tests.DrawingSourcePathFeedbackTests.ForeignIdentityRejectsBeforePathDiscoveryWithoutDisclosure(identity: \"stateId\", fault: \"leaf\")",
+          "Cadoryx.Tests.DrawingSourcePathFeedbackTests.InvalidPathsReturnDiscoveryOnlyWithoutNativeCallsOrDocumentChanges(fault: \"foreign\")",
+          "Cadoryx.Tests.DrawingSourcePathFeedbackTests.DetachedDocumentRetainsOriginalGuardWithoutSourceDiscovery",
+          "Cadoryx.Tests.DrawingSourcePathFeedbackTests.InvalidPathsReturnDiscoveryOnlyWithoutNativeCallsOrDocumentChanges(fault: \"missing-slot\")",
+          "Cadoryx.Tests.DrawingSourcePathFeedbackTests.InvalidPathsReturnDiscoveryOnlyWithoutNativeCallsOrDocumentChanges(fault: \"document\")",
+          "Cadoryx.Tests.DrawingSourcePathDispatchTests.ValidFullPathKeepsBodyAndRevisionGuardsBeforeInspectorWithoutInventingReplacementSources(identity: \"bodyId\")",
+          "Cadoryx.Tests.DrawingSourcePathFeedbackTests.MissingOrInvalidStringRetainsInputGuardWithoutSourceDiscovery(fault: \"oversize\")",
+          "Cadoryx.Tests.AgentContextTests.ContextReductionKeepsLatestRequestWithoutOrphanedToolMessages",
+          "Cadoryx.Tests.DrawingSourcePathFeedbackTests.PreCancelledRequestDoesNotParseOrProvideSourceDiscovery(fault: \"foreign\")",
+          "Cadoryx.Tests.AgentContextTests.UnusedShortHistoryBudgetAdmitsToolsButLongHistoryKeepsItsReserve(aggressive: True)",
+          "Cadoryx.Tests.AgentContextTests.UnusedShortHistoryBudgetAdmitsToolsButLongHistoryKeepsItsReserve(aggressive: False)",
+          "Cadoryx.Tests.AgentContextTests.ContextWindowRetryDoesNotCommitAnUnsuccessfulAssistantTurn",
+          "Cadoryx.Tests.AgentContextTests.OversizedLatestRequestIsTrimmedAndKeepsItsEnding",
+          "Cadoryx.Tests.DrawingSourcePathFeedbackTests.ForeignIdentityRejectsBeforePathDiscoveryWithoutDisclosure(identity: \"stateId\", fault: \"foreign\")",
+          "Cadoryx.Tests.DrawingSourcePathFeedbackTests.InvalidPathsReturnDiscoveryOnlyWithoutNativeCallsOrDocumentChanges(fault: \"too-deep\")"
+        ],
+        "failureMessages": []
+      },
+      "same29OldViewModelsCounter": {
+        "terminal": {
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\f5-drawing-source-path-feedback-draft-2\\counter29-debug-1\\exit.json",
+          "sha256": "60F3D66F8874AC2D8F6521A0619CF95ED6074D3D53E8C6E0E43ACB2358274913"
+        },
+        "trx": {
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\f5-drawing-source-path-feedback-draft-2\\counter29-debug-1\\runtime.trx",
+          "sha256": "9669FCACB96FC7DFB38E066722AAFC8DD097489F450D1E6F91F15350F86595A8"
+        },
+        "count": 29,
+        "passed": 19,
+        "failed": 10,
+        "skipped": 0,
+        "names": [
+          "Cadoryx.Tests.DrawingSourcePathFeedbackTests.InvalidPathsReturnDiscoveryOnlyWithoutNativeCallsOrDocumentChanges(fault: \"zero-slot\")",
+          "Cadoryx.Tests.DrawingSourcePathFeedbackTests.ForeignIdentityRejectsBeforePathDiscoveryWithoutDisclosure(identity: \"documentId\", fault: \"leaf\")",
+          "Cadoryx.Tests.AgentContextTests.OversizedLatestRequestIsTrimmedAndKeepsItsEnding",
+          "Cadoryx.Tests.AgentContextTests.ContextReductionKeepsLatestRequestWithoutOrphanedToolMessages",
+          "Cadoryx.Tests.AgentContextTests.ContextWindowRetryDoesNotCommitAnUnsuccessfulAssistantTurn",
+          "Cadoryx.Tests.DrawingSourcePathFeedbackTests.InvalidPathsReturnDiscoveryOnlyWithoutNativeCallsOrDocumentChanges(fault: \"leaf\")",
+          "Cadoryx.Tests.DrawingSourcePathDispatchTests.ValidFullPathKeepsBodyAndRevisionGuardsBeforeInspectorWithoutInventingReplacementSources(identity: \"bodyId\")",
+          "Cadoryx.Tests.DrawingSourcePathFeedbackTests.MissingOrInvalidStringRetainsInputGuardWithoutSourceDiscovery(fault: \"empty\")",
+          "Cadoryx.Tests.DrawingSourcePathFeedbackTests.InvalidPathsReturnDiscoveryOnlyWithoutNativeCallsOrDocumentChanges(fault: \"empty-slot\")",
+          "Cadoryx.Tests.DrawingSourcePathFeedbackTests.MissingOrInvalidStringRetainsInputGuardWithoutSourceDiscovery(fault: \"omitted\")",
+          "Cadoryx.Tests.DrawingSourcePathFeedbackTests.ExplicitPathSourceFitsOriginalTwelveToolsAndContextBudgets(aggressive: True)",
+          "Cadoryx.Tests.DrawingSourcePathFeedbackTests.InvalidPathsReturnDiscoveryOnlyWithoutNativeCallsOrDocumentChanges(fault: \"foreign\")",
+          "Cadoryx.Tests.DrawingSourcePathFeedbackTests.PreCancelledRequestDoesNotParseOrProvideSourceDiscovery(fault: \"leaf\")",
+          "Cadoryx.Tests.DrawingSourcePathFeedbackTests.InvalidPathsReturnDiscoveryOnlyWithoutNativeCallsOrDocumentChanges(fault: \"malformed-slot\")",
+          "Cadoryx.Tests.DrawingSourcePathFeedbackTests.InvalidPathsReturnDiscoveryOnlyWithoutNativeCallsOrDocumentChanges(fault: \"missing-slot\")",
+          "Cadoryx.Tests.DrawingSourcePathDispatchTests.ValidFullPathKeepsBodyAndRevisionGuardsBeforeInspectorWithoutInventingReplacementSources(identity: \"revision\")",
+          "Cadoryx.Tests.AgentContextTests.UnusedShortHistoryBudgetAdmitsToolsButLongHistoryKeepsItsReserve(aggressive: True)",
+          "Cadoryx.Tests.DrawingSourcePathFeedbackTests.InvalidPathsReturnDiscoveryOnlyWithoutNativeCallsOrDocumentChanges(fault: \"document\")",
+          "Cadoryx.Tests.DrawingSourcePathFeedbackTests.ForeignIdentityRejectsBeforePathDiscoveryWithoutDisclosure(identity: \"stateId\", fault: \"leaf\")",
+          "Cadoryx.Tests.DrawingSourcePathFeedbackTests.InvalidPathsReturnDiscoveryOnlyWithoutNativeCallsOrDocumentChanges(fault: \"too-deep\")",
+          "Cadoryx.Tests.DrawingSourcePathFeedbackTests.MissingOrInvalidStringRetainsInputGuardWithoutSourceDiscovery(fault: \"null\")",
+          "Cadoryx.Tests.DrawingSourcePathFeedbackTests.ExplicitPathSourceFitsOriginalTwelveToolsAndContextBudgets(aggressive: False)",
+          "Cadoryx.Tests.DrawingSourcePathFeedbackTests.PreCancelledRequestDoesNotParseOrProvideSourceDiscovery(fault: \"foreign\")",
+          "Cadoryx.Tests.DrawingSourcePathFeedbackTests.ForeignIdentityRejectsBeforePathDiscoveryWithoutDisclosure(identity: \"documentId\", fault: \"foreign\")",
+          "Cadoryx.Tests.AgentContextTests.UnusedShortHistoryBudgetAdmitsToolsButLongHistoryKeepsItsReserve(aggressive: False)",
+          "Cadoryx.Tests.DrawingSourcePathDispatchTests.ValidFullPathReachesOriginalInspectorAndDoesNotConvertItsBodyFailureIntoPathGuidance",
+          "Cadoryx.Tests.DrawingSourcePathFeedbackTests.DetachedDocumentRetainsOriginalGuardWithoutSourceDiscovery",
+          "Cadoryx.Tests.DrawingSourcePathFeedbackTests.ForeignIdentityRejectsBeforePathDiscoveryWithoutDisclosure(identity: \"stateId\", fault: \"foreign\")",
+          "Cadoryx.Tests.DrawingSourcePathFeedbackTests.MissingOrInvalidStringRetainsInputGuardWithoutSourceDiscovery(fault: \"oversize\")"
+        ],
+        "failureMessages": [
+          {
+            "name": "Cadoryx.Tests.DrawingSourcePathFeedbackTests.InvalidPathsReturnDiscoveryOnlyWithoutNativeCallsOrDocumentChanges(fault: \"zero-slot\")",
+            "message": "System.Collections.Generic.KeyNotFoundException : The given key was not present in the dictionary."
+          },
+          {
+            "name": "Cadoryx.Tests.DrawingSourcePathFeedbackTests.InvalidPathsReturnDiscoveryOnlyWithoutNativeCallsOrDocumentChanges(fault: \"leaf\")",
+            "message": "System.Collections.Generic.KeyNotFoundException : The given key was not present in the dictionary."
+          },
+          {
+            "name": "Cadoryx.Tests.DrawingSourcePathFeedbackTests.InvalidPathsReturnDiscoveryOnlyWithoutNativeCallsOrDocumentChanges(fault: \"empty-slot\")",
+            "message": "System.Collections.Generic.KeyNotFoundException : The given key was not present in the dictionary."
+          },
+          {
+            "name": "Cadoryx.Tests.DrawingSourcePathFeedbackTests.ExplicitPathSourceFitsOriginalTwelveToolsAndContextBudgets(aggressive: True)",
+            "message": "System.Collections.Generic.KeyNotFoundException : The given key was not present in the dictionary."
+          },
+          {
+            "name": "Cadoryx.Tests.DrawingSourcePathFeedbackTests.InvalidPathsReturnDiscoveryOnlyWithoutNativeCallsOrDocumentChanges(fault: \"foreign\")",
+            "message": "System.Collections.Generic.KeyNotFoundException : The given key was not present in the dictionary."
+          },
+          {
+            "name": "Cadoryx.Tests.DrawingSourcePathFeedbackTests.InvalidPathsReturnDiscoveryOnlyWithoutNativeCallsOrDocumentChanges(fault: \"malformed-slot\")",
+            "message": "System.Collections.Generic.KeyNotFoundException : The given key was not present in the dictionary."
+          },
+          {
+            "name": "Cadoryx.Tests.DrawingSourcePathFeedbackTests.InvalidPathsReturnDiscoveryOnlyWithoutNativeCallsOrDocumentChanges(fault: \"missing-slot\")",
+            "message": "System.Collections.Generic.KeyNotFoundException : The given key was not present in the dictionary."
+          },
+          {
+            "name": "Cadoryx.Tests.DrawingSourcePathFeedbackTests.InvalidPathsReturnDiscoveryOnlyWithoutNativeCallsOrDocumentChanges(fault: \"document\")",
+            "message": "System.Collections.Generic.KeyNotFoundException : The given key was not present in the dictionary."
+          },
+          {
+            "name": "Cadoryx.Tests.DrawingSourcePathFeedbackTests.InvalidPathsReturnDiscoveryOnlyWithoutNativeCallsOrDocumentChanges(fault: \"too-deep\")",
+            "message": "System.Collections.Generic.KeyNotFoundException : The given key was not present in the dictionary."
+          },
+          {
+            "name": "Cadoryx.Tests.DrawingSourcePathFeedbackTests.ExplicitPathSourceFitsOriginalTwelveToolsAndContextBudgets(aggressive: False)",
+            "message": "System.Collections.Generic.KeyNotFoundException : The given key was not present in the dictionary."
+          }
+        ]
+      },
+      "counterOnlyReplacedModule": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af-sdk31-application-draft-2\\workspace-1\\Cadoryx.Tests\\bin\\Debug\\net10.0\\Cadoryx.ViewModels.dll",
+        "sha256": "40C3674B4AB2D40E3FFE6BC6E11E707C0C821CDC325EDF2CF0247ACADC4B3ADE"
+      },
+      "applicationPackageManaged13Native62AndManifestMatch": true
+    }
+  },
+  "patch": {
+    "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\capability-evidence\\AF_PENDING_DRAWING_SOURCE_PATH_FEEDBACK.patch",
+    "sha256": "03600F6A0574F88A2BA59768A4E5503E7ABA096C01BCC5EEB523B982BDA4FC64",
+    "bytes": 24905
+  },
+  "recoveryBase": {
+    "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\capability-evidence\\AF_PENDING_SOURCE1068_SDK31_APPLICATION_MANIFEST_VERIFICATION.json",
+    "sha256": "E63A171AA0EAA11609E11DB2FB505C37C528417D9664BC9B050A8EA8CA15CEE2"
+  },
+  "sourceChanges": [
+    {
+      "path": "Cadoryx.Tests/DrawingSourcePathDispatchTests.cs",
+      "beforeSha256": null,
+      "afterSha256": "B01C1C7F58ECD1A559E296CF1A632EE216738E847819532ADF10F63C4F1A7937"
+    },
+    {
+      "path": "Cadoryx.Tests/DrawingSourcePathFeedbackTests.cs",
+      "beforeSha256": null,
+      "afterSha256": "F2607B081492F2633EAD19651183B3F6A480D9B9380522F262552126D167BD6A"
+    },
+    {
+      "path": "Cadoryx.ViewModels/Toolboxes/CadAgentDrawingTools.cs",
+      "beforeSha256": "BF174DCD83A36031CC7ACD19552FB273A2106CBE255020A43A7D71FF6F48E3AF",
+      "afterSha256": "18587A8BBC8EB0FDA6824815BB7CD7A6D732ADFD6C1C309CE93BB7BEC221F1D2"
+    },
+    {
+      "path": "Cadoryx.ViewModels/Toolboxes/CadDrawingInspection.cs",
+      "beforeSha256": "E9C2FA8E550D9B137E2DEF57C12D7F88E683A20C32FFFB0389A64A8289A5593A",
+      "afterSha256": "D9ACB1C36F5758089D84D585171CA4EB6AEBD9402054A34022B70D2307183A2A"
+    }
+  ],
+  "replay": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\f5-drawing-source-path-feedback-draft-2\\source-recovery-replay-1",
+  "replayChecks": [
+    {
+      "args": [
+        "--check"
+      ],
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "args": [],
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": ""
+    }
+  ],
+  "all1070ReplayVerified": true,
+  "scope": "Read-only invalid-path guidance, valid-path dispatch and original identity/input/cancellation/context guards; managed fixtures. No new topology identity or automatic retry/rebinding.",
+  "nativeTopologyAcceptance": "NOT_RUN",
+  "originalBonsaiBoth": "NOT_RUN_FOR_THIS_CANDIDATE_OLD_FAILURES_RETAINED",
+  "full6556": "NOT_RUN",
+  "originalModelPromptsContext8192Tools16AndSelectionAlgorithmUnchanged": true,
+  "applicationExportGuardChanged": false,
+  "productionApplied": false,
+  "desktopInputStarted": false,
+  "cleanup": false,
+  "AF": "ACTIVE",
+  "G": "USER_DEFERRED"
+}
