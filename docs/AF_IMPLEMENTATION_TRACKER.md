@@ -1,5 +1,7 @@
 # A–F 全量实施跟踪
 
+2026-10-12，status225增量：[D6/SDK30 Release全量6530/6530](../capability-evidence/AF_PENDING_D6_SDK30_INTEGRATION_FULL_RELEASE.json)通过，零失败/跳过；完整来源/名称和实际native62再次复核。Debug全量正在运行，solver21原6556及最终1073的6619仍按队列续接；真实窗口、提供方、性能与生产接入没有因此通过。生产仍1000/SDK26，A–F继续，G和清理暂缓。
+
 2026-10-12，status225：**A–F继续；G及清理暂缓。** [D6/SDK30组合](D6_SDK30_PRODUCTION_INTEGRATION.md)source1066两配置build0警告/错误，发现原6467+63=6530，实际各有限曲面99/99、原AI/工程图165/165及native62已独立核验；完整6530正在新独立队列运行，之后续solver21原6556两配置新attempt2和最终1073的6619两配置。[检查点](../capability-evidence/AF_PENDING_STATUS225_CONTINUATION_CHECKPOINT.json)保留原无终态/空目录和新冻结运行器；原三个协调进程已消失，未推断中断原因，也未覆盖旧证据。
 
 [窗口观察器修订5](../capability-evidence/AF_PENDING_D6_WINDOW_OBSERVER_V3_BUILD_VERIFICATION.json)已修正模态调用顺序并通过两配置编译/磁盘载荷审计；36个创建/编辑三语言场景、六状态及30/300秒保持，实际WPF尚未运行。[旧source1070完整6556](../capability-evidence/AF_PENDING_F5_SOURCE1070_FULL_PROVIDER_VERIFICATION.json)两配置各6432/124；其原跨文档Bonsai8轮通过，工程图仍失败，不能替代最终1073提供方验收。[精确插结点14组](B18_EXACT_KNOT_SUBDIVISION_DIAGNOSTIC.md)全部拒绝，包含6个旧读取器空几何假阳性。生产仍1000/SDK26，正式已验子批仍A4/B17/C5/D5/E4/F5g，第4、5节及G01–G24全部范围保持；以下status224及更早为历史。

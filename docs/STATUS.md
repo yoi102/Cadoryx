@@ -1,5 +1,7 @@
 # 当前状态
 
+2026-10-12，status225增量：[D6/SDK30 Release完整6530](../capability-evidence/AF_PENDING_D6_SDK30_INTEGRATION_FULL_RELEASE.json)实际6530/6530、零失败/跳过。原用例名称、source1066、完整运行载荷与实际native62已再次复核；运行13:37–14:15 JST。Debug完整6530已进入运行，后续solver21/最终D6全量和真实窗口仍待验。生产仍1000/SDK26，A–F继续，G和本任务清理暂缓；下方“完整6530正在运行”更新为仅Debug尚在运行。
+
 2026-10-12，status225：**A–F继续；G和清理暂缓，生产仍source1000/SDK26。** [D6/SDK30生产组合](D6_SDK30_PRODUCTION_INTEGRATION.md)的source1066两配置完整构建零警告/错误，原6467+新63发现6530；Release/Debug各有限曲面99/99、原AI及工程图165/165，实际native62及冻结来源已独立核验。[功能证据](../capability-evidence/AF_PENDING_D6_SDK30_INTEGRATION_FUNCTIONAL.json)不代替完整6530、真实窗口及生产合入。
 
 最终source1073/SDK31的[窗口观察器修订5](../capability-evidence/AF_PENDING_D6_WINDOW_OBSERVER_V3_BUILD_VERIFICATION.json)修正同步`ShowDialog()`使观察循环迟到的问题：先排入生产开窗请求，再观察模态消息循环，关闭后等待生产请求完成。两配置编译零警告/错误，应用/core/SDK13/native62磁盘载荷一致；创建/编辑×三语言×六几何共36场景及原六状态、30/300秒条件保持，**实际窗口未运行**。修订4来源和原等待脚本保留。Computer Use初始化和只读窗口枚举成功，没有注入键鼠；开始桌面验收前仍会提示。

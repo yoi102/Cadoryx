@@ -1,0 +1,44 @@
+{
+  "recordedAt": "2026-10-12T05:18:51.548184+00:00",
+  "state": "PASS_SOURCE1066_SDK30_RELEASE_FULL6530_DEBUG_FULL_AND_REAL_WINDOWS_PENDING",
+  "sourceCount": 1066,
+  "sdkVersion": "8.0.1-preview.31.cadoryx.generated-defeature-history.30",
+  "count": 6530,
+  "passed": 6530,
+  "failed": 0,
+  "skipped": 0,
+  "audit": {
+    "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\d6-sdk30-production-integration-1\\full6530-release-1-verification.json",
+    "sha256": "FFBD702F105083B02A99E3038B9D9AFFA237AA51F91D241C31E6F79907E74638"
+  },
+  "build": {
+    "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\d6-sdk30-production-integration-1\\build-both-1-verification.json",
+    "sha256": "70A1D360B3762720B9AF7F70D3BCBFE006DEF9CAEC7A6EB1F1ACCA5483E09367"
+  },
+  "terminal": {
+    "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\d6-sdk30-production-integration-1\\full6530-release-1\\exit.json",
+    "sha256": "8E1D33B49D9EBDA15FFA801DC0BBA06DA0D1EF0B4E1274C3A78278D1856F3701"
+  },
+  "trx": {
+    "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\d6-sdk30-production-integration-1\\full6530-release-1\\runtime.trx",
+    "sha256": "FCFFC028EC9F62B0FBD0D1AE97BBD10F6B6C5E0C5D31A9E0716D7227C92165B9"
+  },
+  "loadedNative": {
+    "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\d6-sdk30-production-integration-1\\full6530-release-1\\loaded-native.json",
+    "sha256": "56BA0CD08057FCAFCD91E1B65C2D93769EF310733E67A842D9086E5CB741DE6D"
+  },
+  "loadedNativeCount": 62,
+  "started": "2026-10-12T04:37:48.9619722+00:00",
+  "completed": "2026-10-12T05:15:00.3257921+00:00",
+  "frozenSourceAndRuntimeRechecked": true,
+  "allOriginalNamesAndAssertionsUnchanged": true,
+  "originalBudgetsChanged": false,
+  "debugFullPassed": false,
+  "actualWindowsPassed": false,
+  "sdk31FullOrProviderAccepted": false,
+  "performanceAcceptance": false,
+  "productionApplied": false,
+  "cleanup": false,
+  "AF": "ACTIVE",
+  "G": "USER_DEFERRED"
+}

@@ -1,5 +1,7 @@
 # D6 与 SDK30 生产集成候选
 
+2026-10-12，status225增量：[Release完整6530/6530](../capability-evidence/AF_PENDING_D6_SDK30_INTEGRATION_FULL_RELEASE.json)通过，零失败/跳过；原名称、全部source1066及运行载荷、实际native62路径/哈希再次核验。Debug全量正在运行，后续实际36窗口和生产接入尚未完成；不以本单配置通过代替两配置或窗口门禁。
+
 2026-10-12，status225。A–F继续，G及清理暂缓。本候选source1066/SDK30已完成两配置完整solution构建0警告/错误，发现原6467+新63=6530；Release/Debug各有限曲面99/99、原AI及工程图165/165，实际native62和全部冻结来源已独立核验。完整6530正在运行，实际窗口和生产合入尚未完成；生产仍source1000/SDK26。[功能汇总](../capability-evidence/AF_PENDING_D6_SDK30_INTEGRATION_FUNCTIONAL.json)记录这些边界。
 
 基线为 source1063 / SDK30 修订5，其两配置完整6467/6467已有独立证据。D6改动涉及的七个原文件，与最终source1073/SDK31候选的D6修改前提逐字节相同，因此直接移植七个改动及三个新文件；全部10文件与已验D6来源保持。原6467测试来源及新增63断言未改，期望发现6530，有限曲面专项仍99。SDK30已有的工程图schema和全部预算保持；本候选没有带入SDK31依赖、B18新增混合作者或F5路径说明修订，也没有取消或修改原SDK31候选及其队列。
