@@ -1,0 +1,107 @@
+{
+  "recordedAt": "2026-10-12T01:48:51.535608+00:00",
+  "state": "PASS_D6_ELEVEN_SOURCE_BYTE_PATCH_REPLAY_ALL1073_RUNTIME_SEPARATE",
+  "candidate": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\d6-finite-newbody-draft-4\\workspace-1",
+  "sourceCount": 1073,
+  "build": {
+    "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\d6-finite-newbody-draft-4\\build-both-1-verification.json",
+    "sha256": "1B6463EDFC0339ECE0E044C714932424BC98D826F502A57CDF730DA17CD7D68D"
+  },
+  "patch": {
+    "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\capability-evidence\\AF_PENDING_D6_FINITE_NEWBODY.patch",
+    "sha256": "0B777F4822FFB223A0068EE88DF7B80028E91DA57030F131DD2AFCB48C43FC96",
+    "bytes": 96184
+  },
+  "reviewDiff": {
+    "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\capability-evidence\\AF_PENDING_D6_FINITE_NEWBODY_REVIEW.diff",
+    "sha256": "F658FF3F46C1F6B43347A886E8DAA1DB978A361187980576ADA70B9D17138CB2"
+  },
+  "sourceChanges": [
+    {
+      "path": "Cadoryx.Db/ExtrusionOptions.cs",
+      "beforeSha256": "322BA4E54F4F3A409A8AE8947DD1CAF22652064D3E089B3F8B6E2DD0986E1629",
+      "afterSha256": "E212EA4F2DEEF58F1CE37A4CF8163164789E88AD44609D228C471DFC80C3E5E3"
+    },
+    {
+      "path": "Cadoryx.IO/CadDocumentStorage.cs",
+      "beforeSha256": "19F46C949076045A16010F1F05F4717355EF0A8C36A9D007931658FC49A8CFCE",
+      "afterSha256": "BD2802A3978587C47A2A14F0CDD6BB24E46C1F0F5884B03E7AC564924BF0FCC0"
+    },
+    {
+      "path": "Cadoryx.Kernel.Occt/OcctExtrusionGeometry.cs",
+      "beforeSha256": "15FA69CB9B849DD4640139487BC7B265BD57D55F8D1FA97412C4E62ADDF0CD6D",
+      "afterSha256": "FCD285273C15FC8DBA4C30D7165D01D377772F9C82C7542D6290A2731CE0CC82"
+    },
+    {
+      "path": "Cadoryx.Kernel.Occt/OcctFiniteSurfaceExtrusion.cs",
+      "beforeSha256": "AD4353222EEF9F65608C9CF40B4ECF672270145DCA80E7F4D1BE32814DEA10C2",
+      "afterSha256": "DDAD1E03DA472A42C5674B070741531AEA5E625FA0365AE629A0E8C0C7E479F1"
+    },
+    {
+      "path": "Cadoryx.Kernel.Occt/OcctFiniteSurfaceNewBody.cs",
+      "beforeSha256": null,
+      "afterSha256": "E564520C243F0A0502293CEE08CC9A78D675DA3307DEAE9361BEF51F0DC9B1FB"
+    },
+    {
+      "path": "Cadoryx.Tests/FiniteSurfaceNewBodyLifecycleTests.cs",
+      "beforeSha256": null,
+      "afterSha256": "2887AD95F2BDF9979108E3C895FB80FDCF7A83534066F7C00605724F44DF65D9"
+    },
+    {
+      "path": "Cadoryx.Tests/FiniteSurfaceNewBodyTests.cs",
+      "beforeSha256": null,
+      "afterSha256": "46F10717280F69BE170F69E48B88305F43B127554A9047E3B8D63C31AC7CC26A"
+    },
+    {
+      "path": "Cadoryx.ViewModels/ExtrusionEditorViewModel.cs",
+      "beforeSha256": "C7F39320EADD838C97A661D63D51342D08B5AFD27F00CD3DE434FA02F9BED864",
+      "afterSha256": "0F498581A08FE6154B06B2A642C71987CB49612E48B3B531DE6C1506EF500639"
+    },
+    {
+      "path": "Cadoryx.ViewModels/Toolboxes/CadAgentDrawingTools.cs",
+      "beforeSha256": "18587A8BBC8EB0FDA6824815BB7CD7A6D732ADFD6C1C309CE93BB7BEC221F1D2",
+      "afterSha256": "8BDF58300CEAEF1967360659B2CFD1B22404F11F013B5CFB90A736A620FEDCD1"
+    },
+    {
+      "path": "Cadoryx.ViewModels/Toolboxes/CadModelContract.cs",
+      "beforeSha256": "2AF587260DE255F5AE2E00FC027BB14E0F85B023CD800FE9B3D0F83CE11DFBF1",
+      "afterSha256": "CDC41D43CD966EBF368EAEE6B6FC5E91D19F47098520278DC1364F049F0F3018"
+    },
+    {
+      "path": "Cadoryx.wpf/Views/ExtrusionEditorWindow.xaml",
+      "beforeSha256": "2AFD4AEF78D358D9167DB033CA7B1C6AD01EA9BD100CD6BB62CE05697166E65E",
+      "afterSha256": "2413EA5690D04053CB5C7123A2B2F3068A4CE74EF947DBC29F337BF6D23FA43F"
+    }
+  ],
+  "recoveryBase": {
+    "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\capability-evidence\\AF_PENDING_SOLVER21_COMPLETE_AUTHOR_RECOVERY.json",
+    "sha256": "C12A8444BFCB21076DB485BEBD15F0626BCF9C11BF3B4EC840FAB1A0F8FB0B92"
+  },
+  "replay": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\d6-finite-newbody-draft-4\\source-recovery-replay-1",
+  "replayChecks": [
+    {
+      "args": [
+        "--check"
+      ],
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "args": [],
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": ""
+    }
+  ],
+  "all1073ReplayVerified": true,
+  "original6556AndNew63TestsAndAssertionsUnchanged": true,
+  "nativeBindingsAdded": false,
+  "applicationExportGuardChanged": false,
+  "publicUpstreamModified": false,
+  "productionApplied": false,
+  "cleanup": false,
+  "desktopInputStarted": false,
+  "AF": "ACTIVE",
+  "G": "USER_DEFERRED"
+}

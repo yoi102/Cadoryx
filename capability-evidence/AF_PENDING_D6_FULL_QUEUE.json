@@ -1,0 +1,66 @@
+{
+  "recordedAt": "2026-10-12T02:04:44.953574+00:00",
+  "state": "FINAL_SOURCE1073_FULL6619_COORDINATOR_STARTED_WAITING_FOR_ORIGINAL_SOLVER21",
+  "preparation": {
+    "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\d6-finite-newbody-draft-4\\full-queue-preparation-1.json",
+    "sha256": "6C63C3D7D1CBEB18AE959CB8D5C0B022B0CFFD6ED818CFE5AC32C5EB45325E57"
+  },
+  "actualCoordinatorObservation": {
+    "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\d6-finite-newbody-draft-4\\full-queue-start-1.json",
+    "sha256": "A24649B685F056CC9087629C6ACCD4F393BB81562FB06D6CF2418E534066C394"
+  },
+  "processIdAtObservation": 69172,
+  "commandLineAtObservation": "\"C:\\Users\\yoiri\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\powershell\\pwsh.exe\" -NoProfile -File artifacts/run-d6-full6619-after-solver21-1.ps1",
+  "preservedScripts": [
+    {
+      "key": "coordinator",
+      "original": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\run-d6-full6619-after-solver21-1.ps1",
+        "sha256": "E938BA0EF9AD9DEF3F4B3E7954FCBC43267EB3F4C8D7E231E547136D0B9A484F"
+      },
+      "savedSource": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\capability-evidence\\diagnostics\\d6-finite-newbody\\full-after-solver21.ps1",
+        "sha256": "E938BA0EF9AD9DEF3F4B3E7954FCBC43267EB3F4C8D7E231E547136D0B9A484F"
+      }
+    },
+    {
+      "key": "gate",
+      "original": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\run-d6-full6619-gate-1.ps1",
+        "sha256": "41B6818FD8BC68FF63C942ACEA9ACB18237232A98EF080F9810BECD044CC67F3"
+      },
+      "savedSource": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\capability-evidence\\diagnostics\\d6-finite-newbody\\full-gate.ps1",
+        "sha256": "41B6818FD8BC68FF63C942ACEA9ACB18237232A98EF080F9810BECD044CC67F3"
+      }
+    },
+    {
+      "key": "audit",
+      "original": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\verify-d6-full-runtime-1.py",
+        "sha256": "668E4207E2B82A80465591EE0EE74F6DFA0B741E55EC3D27DFF95FA438474D2E"
+      },
+      "savedSource": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\capability-evidence\\diagnostics\\d6-finite-newbody\\full-runtime-audit.py",
+        "sha256": "668E4207E2B82A80465591EE0EE74F6DFA0B741E55EC3D27DFF95FA438474D2E"
+      }
+    }
+  ],
+  "functionalAuditSource": {
+    "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\capability-evidence\\diagnostics\\d6-finite-newbody\\final-functional-audit.py",
+    "sha256": "85D18937F10046BDFC94B9ECC44780146EA472BF49BA96C116DFF84ACCFB84C9"
+  },
+  "dependency": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\b18-prescribed-complete-authors-draft-2\\full-both-1-exit.json",
+  "configurations": [
+    "Release",
+    "Debug"
+  ],
+  "expectedCountEach": 6619,
+  "full6619Passed": false,
+  "actualWpfWindowsPassed": false,
+  "productionApplied": false,
+  "cleanup": false,
+  "desktopInputStarted": false,
+  "AF": "ACTIVE",
+  "G": "USER_DEFERRED"
+}

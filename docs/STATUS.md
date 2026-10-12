@@ -1,5 +1,11 @@
 # 当前状态
 
+2026-10-12，status224：**A–F继续，G及清理暂缓。** [D6有限曲面新实体与自由起始平面](D6_FINITE_SURFACE_NEW_BODY.md)在隔离source1073 / SDK31 / solver21完成实现；两配置完整solution构建0警告/错误，原6556+新63共6619保持。最终Release/Debug各有限曲面99/99、AI及工程图189/189，实际native62已独立核验。新实体无Source/SupportFace/targetBody，复用现有Until和完整有限域证明后只保存已证delta；新条件能力及精确重放、引用冻结/明确重选、取消/关闭/generation资产释放已验，没有新增Occt封装或修改公共上游。原source1070和D6第二草案各189的188/1失败保留；仅精简两处重复schema说明，将成本5606降至5596，原激进预算5597和全部守卫保持。短恢复场景余量1 token，不宣称任意长会话都保留12工具。
+
+[功能汇总](../capability-evidence/AF_PENDING_D6_FINITE_NEWBODY_FUNCTIONAL.json)绑定两配置矩阵、原生16前提、原失败、恢复链及完整1073重放；[11文件补丁](../capability-evidence/AF_PENDING_D6_FINITE_NEWBODY.patch)与[可读差异](../capability-evidence/AF_PENDING_D6_FINITE_NEWBODY_REVIEW.diff)已保存。最终6619两配置已排在原solver21全量终态之后，当前尚未运行；实际WPF窗口、提供方、性能及生产接入仍待验。生产仍source1000 / SDK26，B18原严格STEP24拒绝及外部端盖误差继续；正式已验子批仍A4/B17/C5/D5/E4/F5g，不能把专项或提交当A–F完成。以下status223及更早保留历史当时状态，当前候选以本条为准。
+
+[D6六份实际窗口夹具](../capability-evidence/AF_PENDING_D6_WINDOW_FIXTURES_VERIFICATION.json)已用最终1073/SDK31创建、保存和重开，平面/球面/柱面×正反向、原实体保持、自由frame/明确Near作者及独立解析体积通过。全部section哈希、document60/features43、新能力/creator及实际native62核验，资产归零；首次夹具构造参数编译错误保留，只修夹具，未改产品或提高门禁。18场景三语言真实窗口计划见D6记录；当前未启动桌面输入。
+
 2026-10-12，status223：**A–F 继续推进，尚未全部完成；G 实机、安装及交付暂缓，清理保持停止。** 隔离source1070 / SDK31 / solver21收紧完整作者处方守卫；两配置完整solution构建零警告/错误，原6556来源/名称保持。原986功能专项两配置各962通过/24失败，原99精度失败全部消除、原306耦合正例全部通过；F5路径及上下文两配置各29/29。剩余24仍为原精确STEP导出拒绝，守卫、公差、迭代预算保持。两文件字节补丁已实际重放全部1070；完整6556两配置已排队，当前未运行，生产仍source1000 / SDK26。原全量和Bonsai队列保持，不以旧载荷或本轮功能诊断代替最终窗口/材质/性能及提供方验收。详情见[完整作者守卫记录](B18_COMPLETE_AUTHOR_SOLVER_GUARD.md)与[独立功能审计](../capability-evidence/AF_PENDING_SOLVER21_COMPLETE_AUTHOR_FUNCTIONAL.json)。
 
 [F5工程图来源路径引导](F5_DRAWING_SOURCE_PATH_GUIDANCE.md)针对原Bonsai将单个实例槽ID误当完整path的实际失败，保留原拒绝并提供未执行的occurrences/bodies读取请求。schema明确完整occurrences.items[].path；旧文档/状态、关闭/取消、缺失/超长输入、完整路径的实体/修订及原检查器自身错误保持，不推断选择或自动重绑。[独立核验](../capability-evidence/AF_PENDING_DRAWING_SOURCE_PATH_FEEDBACK_VERIFICATION.json)绑定source1070两配置build0、原6532/986名称保持、新增24及各29托管检查；同载荷只换旧ViewModels均19/10，确认八条路径和两条schema引导原本缺失。第一版各26检查与旧16/10对照保留，第二版只增三个合法路径分派/实体身份守卫案例，原21断言逐字节保持。

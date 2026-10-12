@@ -1,0 +1,1338 @@
+{
+  "recordedAt": "2026-10-12T01:53:47.515983+00:00",
+  "state": "PASS_D6_FINAL_SOURCE1073_BOTH_FINITE99_AND_AGENT189_FULL_DESKTOP_PRODUCTION_SEPARATE",
+  "candidate": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\d6-finite-newbody-draft-4\\workspace-1",
+  "build": {
+    "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\d6-finite-newbody-draft-4\\build-both-1-verification.json",
+    "sha256": "1B6463EDFC0339ECE0E044C714932424BC98D826F502A57CDF730DA17CD7D68D"
+  },
+  "sourceCount": 1073,
+  "inventoryCount": 6619,
+  "original6556Preserved": true,
+  "new63Preserved": true,
+  "originalAndNewTestSourcesUnchangedFromDraft2": true,
+  "functionalMatrix": [
+    {
+      "configuration": "Release",
+      "group": "finite99",
+      "passed": 99,
+      "failed": 0,
+      "audit": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\d6-finite-newbody-draft-4\\finite99-release-1-verification.json",
+        "sha256": "EEBE44B0C37B7A8D3D91E2BC806573175DAEAA13CB315888CAD23DFA74D29469"
+      },
+      "actualNative62": true,
+      "names": [
+        "Cadoryx.Tests.FiniteSurfaceExtrusionTests.RotatedTranslatedOriginalSupportsRetainExactIndependentVolumes(kind: \"plane\")",
+        "Cadoryx.Tests.FiniteSurfaceExtrusionTests.RotatedTranslatedOriginalSupportsRetainExactIndependentVolumes(kind: \"sphere\")",
+        "Cadoryx.Tests.FiniteSurfaceExtrusionTests.RotatedTranslatedOriginalSupportsRetainExactIndependentVolumes(kind: \"cylinder\")",
+        "Cadoryx.Tests.FiniteSurfaceExtrusionTests.RotatedTranslatedOriginalSupportsRetainExactIndependentVolumes(kind: \"reverse\")",
+        "Cadoryx.Tests.FiniteSurfaceExtrusionTests.RotatedTranslatedOriginalSupportsRetainExactIndependentVolumes(kind: \"cut\")",
+        "Cadoryx.Tests.FiniteSurfaceExtrusionTests.ExplicitFarCannotSilentlyAcceptNearCap(kind: \"sphere\")",
+        "Cadoryx.Tests.FiniteSurfaceExtrusionTests.ExplicitFarCannotSilentlyAcceptNearCap(kind: \"cylinder\")",
+        "Cadoryx.Tests.FiniteSurfaceExtrusionTests.TangencyMissingDirectionalIntersectionAndUnsupportedTypeCannotPublishMaterial(kind: \"tangent\")",
+        "Cadoryx.Tests.FiniteSurfaceExtrusionTests.TangencyMissingDirectionalIntersectionAndUnsupportedTypeCannotPublishMaterial(kind: \"miss\")",
+        "Cadoryx.Tests.FiniteSurfaceExtrusionTests.TangencyMissingDirectionalIntersectionAndUnsupportedTypeCannotPublishMaterial(kind: \"unsupported\")",
+        "Cadoryx.Tests.FiniteSurfaceExtrusionTests.LinkedCircleParameterDrivesFiniteCapAndDrawingAtomicallyAcrossReopen",
+        "Cadoryx.Tests.FiniteSurfaceExtrusionTests.IndependentPartOwnsBothExactSelectionsAndSurvivesOriginalSourceFreeze",
+        "Cadoryx.Tests.FiniteSurfaceExtrusionTests.SuppressionReplayAndPrecancelKeepExactAuthorAndMaterial",
+        "Cadoryx.Tests.FiniteSurfaceExtrusionTests.ChangedStopFreezesOldAuthorUntilExplicitSelectionAndCanStoreBothStates",
+        "Cadoryx.Tests.FiniteSurfaceExtrusionTests.HeldExactNativeSurfaceResultCannotPublishAfterCancelCloseOrGenerationChange(kind: \"cancel\")",
+        "Cadoryx.Tests.FiniteSurfaceExtrusionTests.HeldExactNativeSurfaceResultCannotPublishAfterCancelCloseOrGenerationChange(kind: \"close\")",
+        "Cadoryx.Tests.FiniteSurfaceExtrusionTests.HeldExactNativeSurfaceResultCannotPublishAfterCancelCloseOrGenerationChange(kind: \"generation\")",
+        "Cadoryx.Tests.FiniteSurfaceExtrusionTests.NegativeDirectionalFuseAndCutPreserveAuthoredVolumes(kind: \"reverse\", expected: 612)",
+        "Cadoryx.Tests.FiniteSurfaceExtrusionTests.NegativeDirectionalFuseAndCutPreserveAuthoredVolumes(kind: \"cut\", expected: 1872)",
+        "Cadoryx.Tests.FiniteSurfaceExtrusionTests.InvalidSurfaceAuthorCannotChangeStateOrRetainAssets(kind: \"missing-support\")",
+        "Cadoryx.Tests.FiniteSurfaceExtrusionTests.InvalidSurfaceAuthorCannotChangeStateOrRetainAssets(kind: \"missing-branch\")",
+        "Cadoryx.Tests.FiniteSurfaceExtrusionTests.InvalidSurfaceAuthorCannotChangeStateOrRetainAssets(kind: \"far-plane\")",
+        "Cadoryx.Tests.FiniteSurfaceExtrusionTests.InvalidSurfaceAuthorCannotChangeStateOrRetainAssets(kind: \"foreign-support\")",
+        "Cadoryx.Tests.FiniteSurfaceExtrusionTests.InvalidSurfaceAuthorCannotChangeStateOrRetainAssets(kind: \"wrong-start\")",
+        "Cadoryx.Tests.FiniteSurfaceExtrusionTests.InvalidSurfaceAuthorCannotChangeStateOrRetainAssets(kind: \"wrong-direction\")",
+        "Cadoryx.Tests.FiniteSurfaceExtrusionTests.ExactSupportRevisionChangeFreezesAndRequiresExplicitNewSelection",
+        "Cadoryx.Tests.FiniteSurfaceExtrusionTests.StorageRequiresReplayAndIndependentLegacySectionGuard",
+        "Cadoryx.Tests.FiniteSurfaceExtrusionTests.StoredSameVolumeForeignMaterialFailsExactReplay",
+        "Cadoryx.Tests.FiniteSurfaceExtrusionTests.ProductionEditorEnumeratesExplicitChoicesAndBranchChangeInvalidatesPreview",
+        "Cadoryx.Tests.FiniteSurfaceExtrusionTests.StructuredSurfaceAuthorPreservesBothSelectionsAndExplicitBranch",
+        "Cadoryx.Tests.FiniteSurfaceExtrusionTests.ExactFiniteCapsMatchIndependentAnalyticVolumesAndUndo(kind: \"plane\")",
+        "Cadoryx.Tests.FiniteSurfaceExtrusionTests.ExactFiniteCapsMatchIndependentAnalyticVolumesAndUndo(kind: \"sphere\")",
+        "Cadoryx.Tests.FiniteSurfaceExtrusionTests.ExactFiniteCapsMatchIndependentAnalyticVolumesAndUndo(kind: \"cylinder\")",
+        "Cadoryx.Tests.FiniteSurfaceExtrusionTests.NativeSuccessOnUndersizedPlaneCannotBeAcceptedAsFiniteTermination",
+        "Cadoryx.Tests.FiniteSurfaceExtrusionTests.ExactHoleAndRecursiveIslandDomainsAreRetained(island: False)",
+        "Cadoryx.Tests.FiniteSurfaceExtrusionTests.ExactHoleAndRecursiveIslandDomainsAreRetained(island: True)",
+        "Cadoryx.Tests.FiniteSurfaceNewBodyTests.LimitRevisionFreezesOriginalResultUntilCallerExplicitlyReselectsCurrentFace",
+        "Cadoryx.Tests.FiniteSurfaceNewBodyTests.SameVolumeLocatedElsewhereCannotPassIndependentMaterialReplay",
+        "Cadoryx.Tests.FiniteSurfaceNewBodyTests.IndependentPartOwnsItsExplicitLimitAndDoesNotRebindWhenOriginalLimitMoves",
+        "Cadoryx.Tests.FiniteSurfaceNewBodyTests.LinkedRadiusParameterUpdatesNewMaterialAndDrawingAndRejectsIncompleteFiniteDomainAtomically",
+        "Cadoryx.Tests.FiniteSurfaceNewBodyTests.HeldExactNewBodyCannotPublishOrRetainPrivateSeedAfterLateCancelCloseOrGenerationChange(kind: \"cancel\")",
+        "Cadoryx.Tests.FiniteSurfaceNewBodyTests.HeldExactNewBodyCannotPublishOrRetainPrivateSeedAfterLateCancelCloseOrGenerationChange(kind: \"close\")",
+        "Cadoryx.Tests.FiniteSurfaceNewBodyTests.HeldExactNewBodyCannotPublishOrRetainPrivateSeedAfterLateCancelCloseOrGenerationChange(kind: \"generation\")",
+        "Cadoryx.Tests.FiniteSurfaceNewBodyTests.FreeStartingPlaneBuildsCompleteFiniteMaterialWithoutConsumingAnyOriginalBody(kind: \"plane\", negative: False, transform: 0, start: 5)",
+        "Cadoryx.Tests.FiniteSurfaceNewBodyTests.FreeStartingPlaneBuildsCompleteFiniteMaterialWithoutConsumingAnyOriginalBody(kind: \"plane\", negative: False, transform: 0, start: 6)",
+        "Cadoryx.Tests.FiniteSurfaceNewBodyTests.FreeStartingPlaneBuildsCompleteFiniteMaterialWithoutConsumingAnyOriginalBody(kind: \"plane\", negative: False, transform: 1, start: 5)",
+        "Cadoryx.Tests.FiniteSurfaceNewBodyTests.FreeStartingPlaneBuildsCompleteFiniteMaterialWithoutConsumingAnyOriginalBody(kind: \"plane\", negative: False, transform: 1, start: 6)",
+        "Cadoryx.Tests.FiniteSurfaceNewBodyTests.FreeStartingPlaneBuildsCompleteFiniteMaterialWithoutConsumingAnyOriginalBody(kind: \"plane\", negative: False, transform: 2, start: 5)",
+        "Cadoryx.Tests.FiniteSurfaceNewBodyTests.FreeStartingPlaneBuildsCompleteFiniteMaterialWithoutConsumingAnyOriginalBody(kind: \"plane\", negative: False, transform: 2, start: 6)",
+        "Cadoryx.Tests.FiniteSurfaceNewBodyTests.FreeStartingPlaneBuildsCompleteFiniteMaterialWithoutConsumingAnyOriginalBody(kind: \"plane\", negative: True, transform: 0, start: 5)",
+        "Cadoryx.Tests.FiniteSurfaceNewBodyTests.FreeStartingPlaneBuildsCompleteFiniteMaterialWithoutConsumingAnyOriginalBody(kind: \"plane\", negative: True, transform: 0, start: 6)",
+        "Cadoryx.Tests.FiniteSurfaceNewBodyTests.FreeStartingPlaneBuildsCompleteFiniteMaterialWithoutConsumingAnyOriginalBody(kind: \"plane\", negative: True, transform: 1, start: 5)",
+        "Cadoryx.Tests.FiniteSurfaceNewBodyTests.FreeStartingPlaneBuildsCompleteFiniteMaterialWithoutConsumingAnyOriginalBody(kind: \"plane\", negative: True, transform: 1, start: 6)",
+        "Cadoryx.Tests.FiniteSurfaceNewBodyTests.FreeStartingPlaneBuildsCompleteFiniteMaterialWithoutConsumingAnyOriginalBody(kind: \"plane\", negative: True, transform: 2, start: 5)",
+        "Cadoryx.Tests.FiniteSurfaceNewBodyTests.FreeStartingPlaneBuildsCompleteFiniteMaterialWithoutConsumingAnyOriginalBody(kind: \"plane\", negative: True, transform: 2, start: 6)",
+        "Cadoryx.Tests.FiniteSurfaceNewBodyTests.FreeStartingPlaneBuildsCompleteFiniteMaterialWithoutConsumingAnyOriginalBody(kind: \"sphere\", negative: False, transform: 0, start: 5)",
+        "Cadoryx.Tests.FiniteSurfaceNewBodyTests.FreeStartingPlaneBuildsCompleteFiniteMaterialWithoutConsumingAnyOriginalBody(kind: \"sphere\", negative: False, transform: 0, start: 6)",
+        "Cadoryx.Tests.FiniteSurfaceNewBodyTests.FreeStartingPlaneBuildsCompleteFiniteMaterialWithoutConsumingAnyOriginalBody(kind: \"sphere\", negative: False, transform: 1, start: 5)",
+        "Cadoryx.Tests.FiniteSurfaceNewBodyTests.FreeStartingPlaneBuildsCompleteFiniteMaterialWithoutConsumingAnyOriginalBody(kind: \"sphere\", negative: False, transform: 1, start: 6)",
+        "Cadoryx.Tests.FiniteSurfaceNewBodyTests.FreeStartingPlaneBuildsCompleteFiniteMaterialWithoutConsumingAnyOriginalBody(kind: \"sphere\", negative: False, transform: 2, start: 5)",
+        "Cadoryx.Tests.FiniteSurfaceNewBodyTests.FreeStartingPlaneBuildsCompleteFiniteMaterialWithoutConsumingAnyOriginalBody(kind: \"sphere\", negative: False, transform: 2, start: 6)",
+        "Cadoryx.Tests.FiniteSurfaceNewBodyTests.FreeStartingPlaneBuildsCompleteFiniteMaterialWithoutConsumingAnyOriginalBody(kind: \"sphere\", negative: True, transform: 0, start: 5)",
+        "Cadoryx.Tests.FiniteSurfaceNewBodyTests.FreeStartingPlaneBuildsCompleteFiniteMaterialWithoutConsumingAnyOriginalBody(kind: \"sphere\", negative: True, transform: 0, start: 6)",
+        "Cadoryx.Tests.FiniteSurfaceNewBodyTests.FreeStartingPlaneBuildsCompleteFiniteMaterialWithoutConsumingAnyOriginalBody(kind: \"sphere\", negative: True, transform: 1, start: 5)",
+        "Cadoryx.Tests.FiniteSurfaceNewBodyTests.FreeStartingPlaneBuildsCompleteFiniteMaterialWithoutConsumingAnyOriginalBody(kind: \"sphere\", negative: True, transform: 1, start: 6)",
+        "Cadoryx.Tests.FiniteSurfaceNewBodyTests.FreeStartingPlaneBuildsCompleteFiniteMaterialWithoutConsumingAnyOriginalBody(kind: \"sphere\", negative: True, transform: 2, start: 5)",
+        "Cadoryx.Tests.FiniteSurfaceNewBodyTests.FreeStartingPlaneBuildsCompleteFiniteMaterialWithoutConsumingAnyOriginalBody(kind: \"sphere\", negative: True, transform: 2, start: 6)",
+        "Cadoryx.Tests.FiniteSurfaceNewBodyTests.FreeStartingPlaneBuildsCompleteFiniteMaterialWithoutConsumingAnyOriginalBody(kind: \"cylinder\", negative: False, transform: 0, start: 5)",
+        "Cadoryx.Tests.FiniteSurfaceNewBodyTests.FreeStartingPlaneBuildsCompleteFiniteMaterialWithoutConsumingAnyOriginalBody(kind: \"cylinder\", negative: False, transform: 0, start: 6)",
+        "Cadoryx.Tests.FiniteSurfaceNewBodyTests.FreeStartingPlaneBuildsCompleteFiniteMaterialWithoutConsumingAnyOriginalBody(kind: \"cylinder\", negative: False, transform: 1, start: 5)",
+        "Cadoryx.Tests.FiniteSurfaceNewBodyTests.FreeStartingPlaneBuildsCompleteFiniteMaterialWithoutConsumingAnyOriginalBody(kind: \"cylinder\", negative: False, transform: 1, start: 6)",
+        "Cadoryx.Tests.FiniteSurfaceNewBodyTests.FreeStartingPlaneBuildsCompleteFiniteMaterialWithoutConsumingAnyOriginalBody(kind: \"cylinder\", negative: False, transform: 2, start: 5)",
+        "Cadoryx.Tests.FiniteSurfaceNewBodyTests.FreeStartingPlaneBuildsCompleteFiniteMaterialWithoutConsumingAnyOriginalBody(kind: \"cylinder\", negative: False, transform: 2, start: 6)",
+        "Cadoryx.Tests.FiniteSurfaceNewBodyTests.FreeStartingPlaneBuildsCompleteFiniteMaterialWithoutConsumingAnyOriginalBody(kind: \"cylinder\", negative: True, transform: 0, start: 5)",
+        "Cadoryx.Tests.FiniteSurfaceNewBodyTests.FreeStartingPlaneBuildsCompleteFiniteMaterialWithoutConsumingAnyOriginalBody(kind: \"cylinder\", negative: True, transform: 0, start: 6)",
+        "Cadoryx.Tests.FiniteSurfaceNewBodyTests.FreeStartingPlaneBuildsCompleteFiniteMaterialWithoutConsumingAnyOriginalBody(kind: \"cylinder\", negative: True, transform: 1, start: 5)",
+        "Cadoryx.Tests.FiniteSurfaceNewBodyTests.FreeStartingPlaneBuildsCompleteFiniteMaterialWithoutConsumingAnyOriginalBody(kind: \"cylinder\", negative: True, transform: 1, start: 6)",
+        "Cadoryx.Tests.FiniteSurfaceNewBodyTests.FreeStartingPlaneBuildsCompleteFiniteMaterialWithoutConsumingAnyOriginalBody(kind: \"cylinder\", negative: True, transform: 2, start: 5)",
+        "Cadoryx.Tests.FiniteSurfaceNewBodyTests.FreeStartingPlaneBuildsCompleteFiniteMaterialWithoutConsumingAnyOriginalBody(kind: \"cylinder\", negative: True, transform: 2, start: 6)",
+        "Cadoryx.Tests.FiniteSurfaceNewBodyTests.HolesAndRecursiveIslandKeepEveryDisconnectedMaterialSolid(island: False, negative: False)",
+        "Cadoryx.Tests.FiniteSurfaceNewBodyTests.HolesAndRecursiveIslandKeepEveryDisconnectedMaterialSolid(island: False, negative: True)",
+        "Cadoryx.Tests.FiniteSurfaceNewBodyTests.HolesAndRecursiveIslandKeepEveryDisconnectedMaterialSolid(island: True, negative: False)",
+        "Cadoryx.Tests.FiniteSurfaceNewBodyTests.HolesAndRecursiveIslandKeepEveryDisconnectedMaterialSolid(island: True, negative: True)",
+        "Cadoryx.Tests.FiniteSurfaceNewBodyTests.IncompleteOrForeignAuthorIsRejectedAtomicallyAndCannotLeavePrivateSeedAssets(fault: \"small\")",
+        "Cadoryx.Tests.FiniteSurfaceNewBodyTests.IncompleteOrForeignAuthorIsRejectedAtomicallyAndCannotLeavePrivateSeedAssets(fault: \"support\")",
+        "Cadoryx.Tests.FiniteSurfaceNewBodyTests.IncompleteOrForeignAuthorIsRejectedAtomicallyAndCannotLeavePrivateSeedAssets(fault: \"source\")",
+        "Cadoryx.Tests.FiniteSurfaceNewBodyTests.IncompleteOrForeignAuthorIsRejectedAtomicallyAndCannotLeavePrivateSeedAssets(fault: \"wrong-direction\")",
+        "Cadoryx.Tests.FiniteSurfaceNewBodyTests.IncompleteOrForeignAuthorIsRejectedAtomicallyAndCannotLeavePrivateSeedAssets(fault: \"far-plane\")",
+        "Cadoryx.Tests.FiniteSurfaceNewBodyTests.IncompleteOrForeignAuthorIsRejectedAtomicallyAndCannotLeavePrivateSeedAssets(fault: \"foreign-document\")",
+        "Cadoryx.Tests.FiniteSurfaceNewBodyTests.IncompleteOrForeignAuthorIsRejectedAtomicallyAndCannotLeavePrivateSeedAssets(fault: \"fingerprint\")",
+        "Cadoryx.Tests.FiniteSurfaceNewBodyTests.IncompleteOrForeignAuthorIsRejectedAtomicallyAndCannotLeavePrivateSeedAssets(fault: \"target\")",
+        "Cadoryx.Tests.FiniteSurfaceNewBodyTests.StoredIndependentAuthorRequiresExplicitCapabilityAndExactReplay(kind: \"plane\")",
+        "Cadoryx.Tests.FiniteSurfaceNewBodyTests.StoredIndependentAuthorRequiresExplicitCapabilityAndExactReplay(kind: \"sphere\")",
+        "Cadoryx.Tests.FiniteSurfaceNewBodyTests.StoredIndependentAuthorRequiresExplicitCapabilityAndExactReplay(kind: \"cylinder\")",
+        "Cadoryx.Tests.FiniteSurfaceNewBodyTests.StoredIndependentAuthorRequiresExplicitCapabilityAndExactReplay(kind: \"island\")",
+        "Cadoryx.Tests.FiniteSurfaceNewBodyTests.OriginalFiniteFuseProgramDoesNotAcquireNewBodyCapability",
+        "Cadoryx.Tests.FiniteSurfaceNewBodyTests.ProductionEditorCanPreviewFreeFrameWithoutSupportAndKeepsExplicitLimitSelection(negative: False)",
+        "Cadoryx.Tests.FiniteSurfaceNewBodyTests.ProductionEditorCanPreviewFreeFrameWithoutSupportAndKeepsExplicitLimitSelection(negative: True)",
+        "Cadoryx.Tests.FiniteSurfaceNewBodyTests.StructuredAuthorRetainsFreeFrameAndNeverInfersTargetOrSupport"
+      ]
+    },
+    {
+      "configuration": "Release",
+      "group": "agent189",
+      "passed": 189,
+      "failed": 0,
+      "audit": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\d6-finite-newbody-draft-4\\agent189-release-1-verification.json",
+        "sha256": "1CA27F42101503F7EAC7CF79DF4C6B02991C74A4389B7C1BF9AB2B317D85E937"
+      },
+      "actualNative62": true,
+      "names": [
+        "Cadoryx.Tests.AgentEmptyResponseRecoveryTests.OrdinaryAnswerDoesNotAddARequestOrRetryInstruction",
+        "Cadoryx.Tests.AgentEmptyResponseRecoveryTests.EmptyReplyIsRetainedAndOneRealAnswerCanRecoverWithinTheBudget(empty: null)",
+        "Cadoryx.Tests.AgentEmptyResponseRecoveryTests.EmptyReplyIsRetainedAndOneRealAnswerCanRecoverWithinTheBudget(empty: \"\")",
+        "Cadoryx.Tests.AgentEmptyResponseRecoveryTests.EmptyReplyIsRetainedAndOneRealAnswerCanRecoverWithinTheBudget(empty: \" \\t\\n\")",
+        "Cadoryx.Tests.AgentEmptyResponseRecoveryTests.TwoEmptyRepliesStopWithoutInventingAnAnswerOrUsingAllRemainingRounds(rounds: 2)",
+        "Cadoryx.Tests.AgentEmptyResponseRecoveryTests.TwoEmptyRepliesStopWithoutInventingAnAnswerOrUsingAllRemainingRounds(rounds: 16)",
+        "Cadoryx.Tests.AgentEmptyResponseRecoveryTests.LastAvailableRoundDoesNotRetry",
+        "Cadoryx.Tests.AgentEmptyResponseRecoveryTests.CancellationAtTheRetryEventPreventsAnotherRequest",
+        "Cadoryx.Tests.AgentEmptyResponseRecoveryTests.RealProviderErrorsAreNotRetriedAsEmptyReplies(afterEmpty: False)",
+        "Cadoryx.Tests.AgentEmptyResponseRecoveryTests.RealProviderErrorsAreNotRetriedAsEmptyReplies(afterEmpty: True)",
+        "Cadoryx.Tests.AgentEmptyResponseRecoveryTests.NativeCommittedToolReceiptSurvivesEmptyReplyWithoutRepeatingTheEdit",
+        "Cadoryx.Tests.AgentEmptyResponseRecoveryTests.ARecoveryToolCallConsumesTheLastRoundInsteadOfGettingAnExtraFinalRound",
+        "Cadoryx.Tests.AgentEmptyResponseRecoveryTests.RetryInstructionIsTemporaryAndASecondEmptyReplyCannotTriggerAnotherRecovery",
+        "Cadoryx.Tests.AgentEmptyResponseRecoveryTests.LatestUserAndAttachedDataRemainUserContentInShortAndLongHistory(longHistory: False)",
+        "Cadoryx.Tests.AgentEmptyResponseRecoveryTests.LatestUserAndAttachedDataRemainUserContentInShortAndLongHistory(longHistory: True)",
+        "Cadoryx.Tests.AgentEmptyResponseRecoveryTests.RecoveryDirectiveRetainsAllTwelveToolsWithTheOriginalDefaultBudgets(aggressive: False)",
+        "Cadoryx.Tests.AgentEmptyResponseRecoveryTests.RecoveryDirectiveRetainsAllTwelveToolsWithTheOriginalDefaultBudgets(aggressive: True)",
+        "Cadoryx.Tests.AgentEmptyResponseRecoveryTests.ContextOverflowDuringRecoveryRetainsBothDistinctEventsAndOriginalLimits",
+        "Cadoryx.Tests.AgentEmptyResponseRecoveryTests.ToolboxDisplaysLocalizedRecoveryAsSystemStatusAndGenuineAnswerAsAssistant(culture: \"en-US\")",
+        "Cadoryx.Tests.AgentEmptyResponseRecoveryTests.ToolboxDisplaysLocalizedRecoveryAsSystemStatusAndGenuineAnswerAsAssistant(culture: \"zh-CN\")",
+        "Cadoryx.Tests.AgentEmptyResponseRecoveryTests.ToolboxDisplaysLocalizedRecoveryAsSystemStatusAndGenuineAnswerAsAssistant(culture: \"ja-JP\")",
+        "Cadoryx.Tests.AgentIdentityFieldPresentationTests.DrawingIdentityRequirementSurvivesActualWirePresentation",
+        "Cadoryx.Tests.AgentIdentityFieldPresentationTests.NullableWorkspaceFieldsExplainExactActiveIdentityOnTheWire",
+        "Cadoryx.Tests.AgentIdentityFieldPresentationTests.IdentityHintsRetainEveryToolAndOriginal8192OutputSafetyBudget(aggressive: False)",
+        "Cadoryx.Tests.AgentIdentityFieldPresentationTests.IdentityHintsRetainEveryToolAndOriginal8192OutputSafetyBudget(aggressive: True)",
+        "Cadoryx.Tests.AgentSuccessfulActionReceiptTests.LongReadsRetainTheLatestSuccessfulExchangeAndEveryOriginalTool(aggressive: False)",
+        "Cadoryx.Tests.AgentSuccessfulActionReceiptTests.LongReadsRetainTheLatestSuccessfulExchangeAndEveryOriginalTool(aggressive: True)",
+        "Cadoryx.Tests.AgentSuccessfulActionReceiptTests.ActualWorkspaceChangeFlagsHaveTheSameBoundedRetention(receipt: \"{\\\"success\\\":true,\\\"workspaceChanged\\\":true,\\\"sess\"\u00b7\u00b7\u00b7)",
+        "Cadoryx.Tests.AgentSuccessfulActionReceiptTests.ActualWorkspaceChangeFlagsHaveTheSameBoundedRetention(receipt: \"{\\\"success\\\":true,\\\"changed\\\":false,\\\"workspaceCha\"\u00b7\u00b7\u00b7)",
+        "Cadoryx.Tests.AgentSuccessfulActionReceiptTests.FailuresNoOpsMalformedAndClaimedSuccessCannotPinAnExchange(receipt: \"{\\\"success\\\":false,\\\"changed\\\":true}\")",
+        "Cadoryx.Tests.AgentSuccessfulActionReceiptTests.FailuresNoOpsMalformedAndClaimedSuccessCannotPinAnExchange(receipt: \"{\\\"success\\\":true,\\\"changed\\\":false}\")",
+        "Cadoryx.Tests.AgentSuccessfulActionReceiptTests.FailuresNoOpsMalformedAndClaimedSuccessCannotPinAnExchange(receipt: \"{\\\"success\\\":true,\\\"published\\\":true}\")",
+        "Cadoryx.Tests.AgentSuccessfulActionReceiptTests.FailuresNoOpsMalformedAndClaimedSuccessCannotPinAnExchange(receipt: \"{\\\"success\\\":\\\"true\\\",\\\"changed\\\":true}\")",
+        "Cadoryx.Tests.AgentSuccessfulActionReceiptTests.FailuresNoOpsMalformedAndClaimedSuccessCannotPinAnExchange(receipt: \"{\\\"success\\\":true,\\\"changed\\\":\\\"true\\\"}\")",
+        "Cadoryx.Tests.AgentSuccessfulActionReceiptTests.FailuresNoOpsMalformedAndClaimedSuccessCannotPinAnExchange(receipt: \"{\\\"success\\\":true,\\\"changed\\\":true,\\\"workspaceChan\"\u00b7\u00b7\u00b7)",
+        "Cadoryx.Tests.AgentSuccessfulActionReceiptTests.FailuresNoOpsMalformedAndClaimedSuccessCannotPinAnExchange(receipt: \"{\\\"success\\\":true,\\\"changed\\\":true,\\\"success\\\":fal\"\u00b7\u00b7\u00b7)",
+        "Cadoryx.Tests.AgentSuccessfulActionReceiptTests.FailuresNoOpsMalformedAndClaimedSuccessCannotPinAnExchange(receipt: \"{\\\"result\\\":{\\\"success\\\":true,\\\"changed\\\":true}}\")",
+        "Cadoryx.Tests.AgentSuccessfulActionReceiptTests.FailuresNoOpsMalformedAndClaimedSuccessCannotPinAnExchange(receipt: \"{\\\"success\\\":true,\\\"changed\\\":true\")",
+        "Cadoryx.Tests.AgentSuccessfulActionReceiptTests.FailuresNoOpsMalformedAndClaimedSuccessCannotPinAnExchange(receipt: \"I successfully created an object; changed=true\")",
+        "Cadoryx.Tests.AgentSuccessfulActionReceiptTests.MultiToolRoundKeepsEveryPairedResultAndOriginalOrder(aggressive: False)",
+        "Cadoryx.Tests.AgentSuccessfulActionReceiptTests.MultiToolRoundKeepsEveryPairedResultAndOriginalOrder(aggressive: True)",
+        "Cadoryx.Tests.AgentSuccessfulActionReceiptTests.IncompleteOrAmbiguousExchangesCannotBePinned(invalid: \"missing\")",
+        "Cadoryx.Tests.AgentSuccessfulActionReceiptTests.IncompleteOrAmbiguousExchangesCannotBePinned(invalid: \"reused\")",
+        "Cadoryx.Tests.AgentSuccessfulActionReceiptTests.IncompleteOrAmbiguousExchangesCannotBePinned(invalid: \"duplicate-result\")",
+        "Cadoryx.Tests.AgentSuccessfulActionReceiptTests.IncompleteOrAmbiguousExchangesCannotBePinned(invalid: \"no-user\")",
+        "Cadoryx.Tests.AgentSuccessfulActionReceiptTests.NewUserTurnDoesNotPermanentlyPinAnOldMutationOrAddAWarning",
+        "Cadoryx.Tests.AgentSuccessfulActionReceiptTests.OnlyTheLatestGenuineMutationIsReservedWithoutReorderingHistory",
+        "Cadoryx.Tests.AgentSuccessfulActionReceiptTests.ExchangeThatCannotFitIsOmittedAsAWholeWithTruthfulContextMetadata(aggressive: False)",
+        "Cadoryx.Tests.AgentSuccessfulActionReceiptTests.ExchangeThatCannotFitIsOmittedAsAWholeWithTruthfulContextMetadata(aggressive: True)",
+        "Cadoryx.Tests.AgentSuccessfulActionReceiptTests.OversizedReceiptsKeepTheOriginalCharacterLimitAndExplicitTruncation(aggressive: False, maximum: 6000)",
+        "Cadoryx.Tests.AgentSuccessfulActionReceiptTests.OversizedReceiptsKeepTheOriginalCharacterLimitAndExplicitTruncation(aggressive: True, maximum: 2400)",
+        "Cadoryx.Tests.AgentSuccessfulActionReceiptTests.RealNativeSheetReceiptSurvivesActualSourceReadsWithoutAdditionalEdits(aggressive: False)",
+        "Cadoryx.Tests.AgentSuccessfulActionReceiptTests.RealNativeSheetReceiptSurvivesActualSourceReadsWithoutAdditionalEdits(aggressive: True)",
+        "Cadoryx.Tests.DrawingAgentTests.DiscoverableStrictContractsAndDefaultContextKeepAllTwelveTools",
+        "Cadoryx.Tests.DrawingAgentTests.CompleteViewAuthorsPreserveSourcesCopyNoOpUndoStorageAndNativeProjection(kind: \"Front\")",
+        "Cadoryx.Tests.DrawingAgentTests.CompleteViewAuthorsPreserveSourcesCopyNoOpUndoStorageAndNativeProjection(kind: \"Top\")",
+        "Cadoryx.Tests.DrawingAgentTests.CompleteViewAuthorsPreserveSourcesCopyNoOpUndoStorageAndNativeProjection(kind: \"Right\")",
+        "Cadoryx.Tests.DrawingAgentTests.CompleteViewAuthorsPreserveSourcesCopyNoOpUndoStorageAndNativeProjection(kind: \"Isometric\")",
+        "Cadoryx.Tests.DrawingAgentTests.CompleteViewAuthorsPreserveSourcesCopyNoOpUndoStorageAndNativeProjection(kind: \"Section\")",
+        "Cadoryx.Tests.DrawingAgentTests.CompleteViewAuthorsPreserveSourcesCopyNoOpUndoStorageAndNativeProjection(kind: \"Detail\")",
+        "Cadoryx.Tests.DrawingAgentTests.DimensionsUseActualAnalyticEvidenceAndCannotChangeTheirCachedValue(kind: \"Length\")",
+        "Cadoryx.Tests.DrawingAgentTests.DimensionsUseActualAnalyticEvidenceAndCannotChangeTheirCachedValue(kind: \"Angle\")",
+        "Cadoryx.Tests.DrawingAgentTests.DimensionsUseActualAnalyticEvidenceAndCannotChangeTheirCachedValue(kind: \"Radius\")",
+        "Cadoryx.Tests.DrawingAgentTests.DimensionsUseActualAnalyticEvidenceAndCannotChangeTheirCachedValue(kind: \"Diameter\")",
+        "Cadoryx.Tests.DrawingAgentTests.ManufacturingAuthorsRebuildNativeProofsAndKeepOriginalSources(type: \"datum\", target: \"Surface\")",
+        "Cadoryx.Tests.DrawingAgentTests.ManufacturingAuthorsRebuildNativeProofsAndKeepOriginalSources(type: \"datum\", target: \"CylinderSizeAxis\")",
+        "Cadoryx.Tests.DrawingAgentTests.ManufacturingAuthorsRebuildNativeProofsAndKeepOriginalSources(type: \"control_frame\", target: \"Surface\")",
+        "Cadoryx.Tests.DrawingAgentTests.ManufacturingAuthorsRebuildNativeProofsAndKeepOriginalSources(type: \"control_frame\", target: \"Axis\")",
+        "Cadoryx.Tests.DrawingAgentTests.ManufacturingAuthorsRebuildNativeProofsAndKeepOriginalSources(type: \"balloon\", target: \"Surface\")",
+        "Cadoryx.Tests.DrawingAgentTests.MedianPlaneAuthorRequiresIndependentOppositeFaceAndActualFiniteDomainProof(type: \"datum\")",
+        "Cadoryx.Tests.DrawingAgentTests.MedianPlaneAuthorRequiresIndependentOppositeFaceAndActualFiniteDomainProof(type: \"control_frame\")",
+        "Cadoryx.Tests.DrawingAgentTests.SheetContentLibraryImportExportNativeSaveAndVectorPdfShareCapturedReceipts",
+        "Cadoryx.Tests.DrawingAgentTests.HoleTablesRebuildEveryRowAndRequireExplicitCoordinateDetach(associated: False)",
+        "Cadoryx.Tests.DrawingAgentTests.HoleTablesRebuildEveryRowAndRequireExplicitCoordinateDetach(associated: True)",
+        "Cadoryx.Tests.DrawingAgentTests.InvalidDrawingRequestsPreserveAuthorsHistoryAndAssets(failure: \"state\")",
+        "Cadoryx.Tests.DrawingAgentTests.InvalidDrawingRequestsPreserveAuthorsHistoryAndAssets(failure: \"document\")",
+        "Cadoryx.Tests.DrawingAgentTests.InvalidDrawingRequestsPreserveAuthorsHistoryAndAssets(failure: \"owner\")",
+        "Cadoryx.Tests.DrawingAgentTests.InvalidDrawingRequestsPreserveAuthorsHistoryAndAssets(failure: \"kind\")",
+        "Cadoryx.Tests.DrawingAgentTests.InvalidDrawingRequestsPreserveAuthorsHistoryAndAssets(failure: \"source\")",
+        "Cadoryx.Tests.DrawingAgentTests.InvalidDrawingRequestsPreserveAuthorsHistoryAndAssets(failure: \"unknown\")",
+        "Cadoryx.Tests.DrawingAgentTests.InvalidDrawingRequestsPreserveAuthorsHistoryAndAssets(failure: \"duplicate\")",
+        "Cadoryx.Tests.DrawingAgentTests.InvalidDrawingRequestsPreserveAuthorsHistoryAndAssets(failure: \"numeric-enum\")",
+        "Cadoryx.Tests.DrawingAgentTests.InvalidDrawingRequestsPreserveAuthorsHistoryAndAssets(failure: \"cache\")",
+        "Cadoryx.Tests.DrawingAgentTests.InvalidDrawingRequestsPreserveAuthorsHistoryAndAssets(failure: \"null-name\")",
+        "Cadoryx.Tests.DrawingAgentTests.InvalidDrawingRequestsPreserveAuthorsHistoryAndAssets(failure: \"scale\")",
+        "Cadoryx.Tests.DrawingAgentTests.InvalidDrawingRequestsPreserveAuthorsHistoryAndAssets(failure: \"budget\")",
+        "Cadoryx.Tests.DrawingAgentTests.InvalidDrawingRequestsPreserveAuthorsHistoryAndAssets(failure: \"readonly\")",
+        "Cadoryx.Tests.DrawingAgentTests.InvalidDrawingRequestsPreserveAuthorsHistoryAndAssets(failure: \"rollback\")",
+        "Cadoryx.Tests.DrawingAgentTests.InvalidDrawingRequestsPreserveAuthorsHistoryAndAssets(failure: \"closing\")",
+        "Cadoryx.Tests.DrawingAgentTests.TerminalRawAuthorsQuotesPaginationAndBadOwnersUseTheProductionContract",
+        "Cadoryx.Tests.DrawingAgentTests.StaleReferencesAndWrongPdfInputsCannotReplaceExistingFiles",
+        "Cadoryx.Tests.DrawingAgentTests.SectionHatchAuthorEditsReprojectDetailsWithIndependentPaperSpacingAndNoOpCopies",
+        "Cadoryx.Tests.DrawingAgentTests.OrderedDatumSystemsKeepStableBindingsAndDependencyDeletionGuards",
+        "Cadoryx.Tests.DrawingAgentTests.ExplicitNullContentOperationsAreIdempotentAndDoNotAddHistory(type: \"parts\")",
+        "Cadoryx.Tests.DrawingAgentTests.ExplicitNullContentOperationsAreIdempotentAndDoNotAddHistory(type: \"zones\")",
+        "Cadoryx.Tests.DrawingAgentTests.SelectionProofCannotBeReplacedByClientCachesOrForeignNativeIdentity(failure: \"revision\")",
+        "Cadoryx.Tests.DrawingAgentTests.SelectionProofCannotBeReplacedByClientCachesOrForeignNativeIdentity(failure: \"asset\")",
+        "Cadoryx.Tests.DrawingAgentTests.SelectionProofCannotBeReplacedByClientCachesOrForeignNativeIdentity(failure: \"fingerprint\")",
+        "Cadoryx.Tests.DrawingAgentTests.SelectionProofCannotBeReplacedByClientCachesOrForeignNativeIdentity(failure: \"index\")",
+        "Cadoryx.Tests.DrawingAgentTests.SelectionProofCannotBeReplacedByClientCachesOrForeignNativeIdentity(failure: \"body\")",
+        "Cadoryx.Tests.DrawingAgentTests.SelectionProofCannotBeReplacedByClientCachesOrForeignNativeIdentity(failure: \"path\")",
+        "Cadoryx.Tests.DrawingAgentTests.SelectionProofCannotBeReplacedByClientCachesOrForeignNativeIdentity(failure: \"anchor\")",
+        "Cadoryx.Tests.DrawingAgentTests.ImportedBodyWithoutProducerHasToolSelectableOriginalTopology",
+        "Cadoryx.Tests.DrawingAgentTests.ExactHistoryContinuationSurvivesCopiedEditAndNativeSaveWhileChangedOriginFreezes",
+        "Cadoryx.Tests.DrawingAgentTests.LateNativeProjectionCannotCommitAfterCancellationCloseOrOldState(failure: \"cancel\")",
+        "Cadoryx.Tests.DrawingAgentTests.LateNativeProjectionCannotCommitAfterCancellationCloseOrOldState(failure: \"close\")",
+        "Cadoryx.Tests.DrawingAgentTests.LateNativeProjectionCannotCommitAfterCancellationCloseOrOldState(failure: \"state\")",
+        "Cadoryx.Tests.DrawingAgentTests.FailedProjectionGateSetupCannotBlockCleanup",
+        "Cadoryx.Tests.DrawingContractRequestGuideTests.EveryExplicitDeclaredTypeProducesOneExactExecutableReadOnlyExample(type: \"sheet\")",
+        "Cadoryx.Tests.DrawingContractRequestGuideTests.EveryExplicitDeclaredTypeProducesOneExactExecutableReadOnlyExample(type: \"view\")",
+        "Cadoryx.Tests.DrawingContractRequestGuideTests.EveryExplicitDeclaredTypeProducesOneExactExecutableReadOnlyExample(type: \"dimension\")",
+        "Cadoryx.Tests.DrawingContractRequestGuideTests.EveryExplicitDeclaredTypeProducesOneExactExecutableReadOnlyExample(type: \"datum\")",
+        "Cadoryx.Tests.DrawingContractRequestGuideTests.EveryExplicitDeclaredTypeProducesOneExactExecutableReadOnlyExample(type: \"control_frame\")",
+        "Cadoryx.Tests.DrawingContractRequestGuideTests.EveryExplicitDeclaredTypeProducesOneExactExecutableReadOnlyExample(type: \"balloon\")",
+        "Cadoryx.Tests.DrawingContractRequestGuideTests.EveryExplicitDeclaredTypeProducesOneExactExecutableReadOnlyExample(type: \"hole_table\")",
+        "Cadoryx.Tests.DrawingContractRequestGuideTests.EveryExplicitDeclaredTypeProducesOneExactExecutableReadOnlyExample(type: \"field\")",
+        "Cadoryx.Tests.DrawingContractRequestGuideTests.EveryExplicitDeclaredTypeProducesOneExactExecutableReadOnlyExample(type: \"note\")",
+        "Cadoryx.Tests.DrawingContractRequestGuideTests.EveryExplicitDeclaredTypeProducesOneExactExecutableReadOnlyExample(type: \"template\")",
+        "Cadoryx.Tests.DrawingContractRequestGuideTests.EveryExplicitDeclaredTypeProducesOneExactExecutableReadOnlyExample(type: \"parts_table\")",
+        "Cadoryx.Tests.DrawingContractRequestGuideTests.EveryExplicitDeclaredTypeProducesOneExactExecutableReadOnlyExample(type: \"zones\")",
+        "Cadoryx.Tests.DrawingContractRequestGuideTests.AnUnspecifiedOrInvalidTypeOffersTheWholeActualCatalogWithoutSelectingOne(variant: \"missing\")",
+        "Cadoryx.Tests.DrawingContractRequestGuideTests.AnUnspecifiedOrInvalidTypeOffersTheWholeActualCatalogWithoutSelectingOne(variant: \"unknown\")",
+        "Cadoryx.Tests.DrawingContractRequestGuideTests.AnUnspecifiedOrInvalidTypeOffersTheWholeActualCatalogWithoutSelectingOne(variant: \"nonstring\")",
+        "Cadoryx.Tests.DrawingContractRequestGuideTests.DuplicateTypeDoesNotSelectTheLastValueAndStillRejectsTheOriginalRequest",
+        "Cadoryx.Tests.DrawingContractRequestGuideTests.NonContractActionsKeepTheirOriginalIdentityErrorWithoutReadSuggestions",
+        "Cadoryx.Tests.DrawingContractRequestGuideTests.ForeignNamesAndInstructionLikeValuesCannotBecomeSuggestedCommandsOrIdentities",
+        "Cadoryx.Tests.DrawingContractRequestGuideTests.PreCancellationStillStopsBeforeAnyDiagnosticOrExecution",
+        "Cadoryx.Tests.DrawingContractRequestGuideTests.ARejectedLiveContractAndItsExplicitReadExampleCannotChangeTheRealViewOrHistory",
+        "Cadoryx.Tests.DrawingContractRequestGuideTests.LeadingContractGuideRetainsEveryDefaultToolAndOriginalOutputSafetyBudgets(aggressive: False)",
+        "Cadoryx.Tests.DrawingContractRequestGuideTests.LeadingContractGuideRetainsEveryDefaultToolAndOriginalOutputSafetyBudgets(aggressive: True)",
+        "Cadoryx.Tests.DrawingInspectionTypeFeedbackTests.InvalidInspectionTypeIsRejectedForEmptyAndPopulatedDocumentsWithoutChangingHistory(fault: \"omitted\", hasSheet: False)",
+        "Cadoryx.Tests.DrawingInspectionTypeFeedbackTests.InvalidInspectionTypeIsRejectedForEmptyAndPopulatedDocumentsWithoutChangingHistory(fault: \"omitted\", hasSheet: True)",
+        "Cadoryx.Tests.DrawingInspectionTypeFeedbackTests.InvalidInspectionTypeIsRejectedForEmptyAndPopulatedDocumentsWithoutChangingHistory(fault: \"null\", hasSheet: False)",
+        "Cadoryx.Tests.DrawingInspectionTypeFeedbackTests.InvalidInspectionTypeIsRejectedForEmptyAndPopulatedDocumentsWithoutChangingHistory(fault: \"null\", hasSheet: True)",
+        "Cadoryx.Tests.DrawingInspectionTypeFeedbackTests.InvalidInspectionTypeIsRejectedForEmptyAndPopulatedDocumentsWithoutChangingHistory(fault: \"empty\", hasSheet: False)",
+        "Cadoryx.Tests.DrawingInspectionTypeFeedbackTests.InvalidInspectionTypeIsRejectedForEmptyAndPopulatedDocumentsWithoutChangingHistory(fault: \"empty\", hasSheet: True)",
+        "Cadoryx.Tests.DrawingInspectionTypeFeedbackTests.InvalidInspectionTypeIsRejectedForEmptyAndPopulatedDocumentsWithoutChangingHistory(fault: \"unknown\", hasSheet: False)",
+        "Cadoryx.Tests.DrawingInspectionTypeFeedbackTests.InvalidInspectionTypeIsRejectedForEmptyAndPopulatedDocumentsWithoutChangingHistory(fault: \"unknown\", hasSheet: True)",
+        "Cadoryx.Tests.DrawingInspectionTypeFeedbackTests.InvalidInspectionTypeIsRejectedForEmptyAndPopulatedDocumentsWithoutChangingHistory(fault: \"parts_table\", hasSheet: False)",
+        "Cadoryx.Tests.DrawingInspectionTypeFeedbackTests.InvalidInspectionTypeIsRejectedForEmptyAndPopulatedDocumentsWithoutChangingHistory(fault: \"parts_table\", hasSheet: True)",
+        "Cadoryx.Tests.DrawingInspectionTypeFeedbackTests.InvalidInspectionTypeIsRejectedForEmptyAndPopulatedDocumentsWithoutChangingHistory(fault: \"zones\", hasSheet: False)",
+        "Cadoryx.Tests.DrawingInspectionTypeFeedbackTests.InvalidInspectionTypeIsRejectedForEmptyAndPopulatedDocumentsWithoutChangingHistory(fault: \"zones\", hasSheet: True)",
+        "Cadoryx.Tests.DrawingInspectionTypeFeedbackTests.ForeignDocumentOrStateIsRejectedBeforeTypeGuidanceWithoutDisclosure(fault: \"omitted\", foreignDocument: False)",
+        "Cadoryx.Tests.DrawingInspectionTypeFeedbackTests.ForeignDocumentOrStateIsRejectedBeforeTypeGuidanceWithoutDisclosure(fault: \"omitted\", foreignDocument: True)",
+        "Cadoryx.Tests.DrawingInspectionTypeFeedbackTests.ForeignDocumentOrStateIsRejectedBeforeTypeGuidanceWithoutDisclosure(fault: \"null\", foreignDocument: False)",
+        "Cadoryx.Tests.DrawingInspectionTypeFeedbackTests.ForeignDocumentOrStateIsRejectedBeforeTypeGuidanceWithoutDisclosure(fault: \"null\", foreignDocument: True)",
+        "Cadoryx.Tests.DrawingInspectionTypeFeedbackTests.ForeignDocumentOrStateIsRejectedBeforeTypeGuidanceWithoutDisclosure(fault: \"empty\", foreignDocument: False)",
+        "Cadoryx.Tests.DrawingInspectionTypeFeedbackTests.ForeignDocumentOrStateIsRejectedBeforeTypeGuidanceWithoutDisclosure(fault: \"empty\", foreignDocument: True)",
+        "Cadoryx.Tests.DrawingInspectionTypeFeedbackTests.ForeignDocumentOrStateIsRejectedBeforeTypeGuidanceWithoutDisclosure(fault: \"unknown\", foreignDocument: False)",
+        "Cadoryx.Tests.DrawingInspectionTypeFeedbackTests.ForeignDocumentOrStateIsRejectedBeforeTypeGuidanceWithoutDisclosure(fault: \"unknown\", foreignDocument: True)",
+        "Cadoryx.Tests.DrawingInspectionTypeFeedbackTests.ForeignDocumentOrStateIsRejectedBeforeTypeGuidanceWithoutDisclosure(fault: \"parts_table\", foreignDocument: False)",
+        "Cadoryx.Tests.DrawingInspectionTypeFeedbackTests.ForeignDocumentOrStateIsRejectedBeforeTypeGuidanceWithoutDisclosure(fault: \"parts_table\", foreignDocument: True)",
+        "Cadoryx.Tests.DrawingInspectionTypeFeedbackTests.ForeignDocumentOrStateIsRejectedBeforeTypeGuidanceWithoutDisclosure(fault: \"zones\", foreignDocument: False)",
+        "Cadoryx.Tests.DrawingInspectionTypeFeedbackTests.ForeignDocumentOrStateIsRejectedBeforeTypeGuidanceWithoutDisclosure(fault: \"zones\", foreignDocument: True)",
+        "Cadoryx.Tests.DrawingInspectionTypeFeedbackTests.PreCancelledInspectionDoesNotReturnGuidanceOrReadAuthors(providedType: False)",
+        "Cadoryx.Tests.DrawingInspectionTypeFeedbackTests.PreCancelledInspectionDoesNotReturnGuidanceOrReadAuthors(providedType: True)",
+        "Cadoryx.Tests.DrawingInspectionTypeFeedbackTests.CallerExplicitlyChoosesReturnedTypeAndRetriesWithItsExactIdentityPair",
+        "Cadoryx.Tests.DrawingInspectionTypeFeedbackTests.DefaultTwelveToolsAnd8192ContextBudgetKeepTheExplicitInspectionRequirement(aggressive: False)",
+        "Cadoryx.Tests.DrawingInspectionTypeFeedbackTests.DefaultTwelveToolsAnd8192ContextBudgetKeepTheExplicitInspectionRequirement(aggressive: True)",
+        "Cadoryx.Tests.DrawingInspectionTypeFeedbackTests.UnknownOuterFieldKeepsItsOriginalPreExecutionRejectionWithoutTypeSubstitution",
+        "Cadoryx.Tests.DrawingSourcePathDispatchTests.ValidFullPathReachesOriginalInspectorAndDoesNotConvertItsBodyFailureIntoPathGuidance",
+        "Cadoryx.Tests.DrawingSourcePathDispatchTests.ValidFullPathKeepsBodyAndRevisionGuardsBeforeInspectorWithoutInventingReplacementSources(identity: \"bodyId\")",
+        "Cadoryx.Tests.DrawingSourcePathDispatchTests.ValidFullPathKeepsBodyAndRevisionGuardsBeforeInspectorWithoutInventingReplacementSources(identity: \"revision\")",
+        "Cadoryx.Tests.DrawingSourcePathFeedbackTests.InvalidPathsReturnDiscoveryOnlyWithoutNativeCallsOrDocumentChanges(fault: \"leaf\")",
+        "Cadoryx.Tests.DrawingSourcePathFeedbackTests.InvalidPathsReturnDiscoveryOnlyWithoutNativeCallsOrDocumentChanges(fault: \"document\")",
+        "Cadoryx.Tests.DrawingSourcePathFeedbackTests.InvalidPathsReturnDiscoveryOnlyWithoutNativeCallsOrDocumentChanges(fault: \"foreign\")",
+        "Cadoryx.Tests.DrawingSourcePathFeedbackTests.InvalidPathsReturnDiscoveryOnlyWithoutNativeCallsOrDocumentChanges(fault: \"empty-slot\")",
+        "Cadoryx.Tests.DrawingSourcePathFeedbackTests.InvalidPathsReturnDiscoveryOnlyWithoutNativeCallsOrDocumentChanges(fault: \"zero-slot\")",
+        "Cadoryx.Tests.DrawingSourcePathFeedbackTests.InvalidPathsReturnDiscoveryOnlyWithoutNativeCallsOrDocumentChanges(fault: \"malformed-slot\")",
+        "Cadoryx.Tests.DrawingSourcePathFeedbackTests.InvalidPathsReturnDiscoveryOnlyWithoutNativeCallsOrDocumentChanges(fault: \"missing-slot\")",
+        "Cadoryx.Tests.DrawingSourcePathFeedbackTests.InvalidPathsReturnDiscoveryOnlyWithoutNativeCallsOrDocumentChanges(fault: \"too-deep\")",
+        "Cadoryx.Tests.DrawingSourcePathFeedbackTests.ForeignIdentityRejectsBeforePathDiscoveryWithoutDisclosure(identity: \"documentId\", fault: \"leaf\")",
+        "Cadoryx.Tests.DrawingSourcePathFeedbackTests.ForeignIdentityRejectsBeforePathDiscoveryWithoutDisclosure(identity: \"stateId\", fault: \"leaf\")",
+        "Cadoryx.Tests.DrawingSourcePathFeedbackTests.ForeignIdentityRejectsBeforePathDiscoveryWithoutDisclosure(identity: \"documentId\", fault: \"foreign\")",
+        "Cadoryx.Tests.DrawingSourcePathFeedbackTests.ForeignIdentityRejectsBeforePathDiscoveryWithoutDisclosure(identity: \"stateId\", fault: \"foreign\")",
+        "Cadoryx.Tests.DrawingSourcePathFeedbackTests.PreCancelledRequestDoesNotParseOrProvideSourceDiscovery(fault: \"leaf\")",
+        "Cadoryx.Tests.DrawingSourcePathFeedbackTests.PreCancelledRequestDoesNotParseOrProvideSourceDiscovery(fault: \"foreign\")",
+        "Cadoryx.Tests.DrawingSourcePathFeedbackTests.DetachedDocumentRetainsOriginalGuardWithoutSourceDiscovery",
+        "Cadoryx.Tests.DrawingSourcePathFeedbackTests.MissingOrInvalidStringRetainsInputGuardWithoutSourceDiscovery(fault: \"omitted\")",
+        "Cadoryx.Tests.DrawingSourcePathFeedbackTests.MissingOrInvalidStringRetainsInputGuardWithoutSourceDiscovery(fault: \"null\")",
+        "Cadoryx.Tests.DrawingSourcePathFeedbackTests.MissingOrInvalidStringRetainsInputGuardWithoutSourceDiscovery(fault: \"empty\")",
+        "Cadoryx.Tests.DrawingSourcePathFeedbackTests.MissingOrInvalidStringRetainsInputGuardWithoutSourceDiscovery(fault: \"oversize\")",
+        "Cadoryx.Tests.DrawingSourcePathFeedbackTests.ExplicitPathSourceFitsOriginalTwelveToolsAndContextBudgets(aggressive: False)",
+        "Cadoryx.Tests.DrawingSourcePathFeedbackTests.ExplicitPathSourceFitsOriginalTwelveToolsAndContextBudgets(aggressive: True)",
+        "Cadoryx.Tests.ToolPresentationTests.EveryProductionActionIsVisibleWithExpandedNativeIdentityFields",
+        "Cadoryx.Tests.ToolPresentationTests.ForeignMissingAndRecursiveReferencesAreRejected(input: \"{\\\"$ref\\\":\\\"https://example.com/schema\\\"}\")",
+        "Cadoryx.Tests.ToolPresentationTests.ForeignMissingAndRecursiveReferencesAreRejected(input: \"{\\\"$ref\\\":\\\"#/$defs/missing\\\"}\")",
+        "Cadoryx.Tests.ToolPresentationTests.ForeignMissingAndRecursiveReferencesAreRejected(input: \"{\\\"$defs\\\":{\\\"self\\\":{\\\"$ref\\\":\\\"#/$defs/self\\\"}},\"\u00b7\u00b7\u00b7)",
+        "Cadoryx.Tests.ToolPresentationTests.OptionalAndNullableCursorPropertiesRemainVisible"
+      ]
+    },
+    {
+      "configuration": "Debug",
+      "group": "finite99",
+      "passed": 99,
+      "failed": 0,
+      "audit": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\d6-finite-newbody-draft-4\\finite99-debug-1-verification.json",
+        "sha256": "E325BBB8CF019E7FFAD7E37DB834CF3791F00126724BA7672DBA5E63D4F29E7E"
+      },
+      "actualNative62": true,
+      "names": [
+        "Cadoryx.Tests.FiniteSurfaceExtrusionTests.RotatedTranslatedOriginalSupportsRetainExactIndependentVolumes(kind: \"plane\")",
+        "Cadoryx.Tests.FiniteSurfaceExtrusionTests.RotatedTranslatedOriginalSupportsRetainExactIndependentVolumes(kind: \"sphere\")",
+        "Cadoryx.Tests.FiniteSurfaceExtrusionTests.RotatedTranslatedOriginalSupportsRetainExactIndependentVolumes(kind: \"cylinder\")",
+        "Cadoryx.Tests.FiniteSurfaceExtrusionTests.RotatedTranslatedOriginalSupportsRetainExactIndependentVolumes(kind: \"reverse\")",
+        "Cadoryx.Tests.FiniteSurfaceExtrusionTests.RotatedTranslatedOriginalSupportsRetainExactIndependentVolumes(kind: \"cut\")",
+        "Cadoryx.Tests.FiniteSurfaceExtrusionTests.ExplicitFarCannotSilentlyAcceptNearCap(kind: \"sphere\")",
+        "Cadoryx.Tests.FiniteSurfaceExtrusionTests.ExplicitFarCannotSilentlyAcceptNearCap(kind: \"cylinder\")",
+        "Cadoryx.Tests.FiniteSurfaceExtrusionTests.TangencyMissingDirectionalIntersectionAndUnsupportedTypeCannotPublishMaterial(kind: \"tangent\")",
+        "Cadoryx.Tests.FiniteSurfaceExtrusionTests.TangencyMissingDirectionalIntersectionAndUnsupportedTypeCannotPublishMaterial(kind: \"miss\")",
+        "Cadoryx.Tests.FiniteSurfaceExtrusionTests.TangencyMissingDirectionalIntersectionAndUnsupportedTypeCannotPublishMaterial(kind: \"unsupported\")",
+        "Cadoryx.Tests.FiniteSurfaceExtrusionTests.LinkedCircleParameterDrivesFiniteCapAndDrawingAtomicallyAcrossReopen",
+        "Cadoryx.Tests.FiniteSurfaceExtrusionTests.IndependentPartOwnsBothExactSelectionsAndSurvivesOriginalSourceFreeze",
+        "Cadoryx.Tests.FiniteSurfaceExtrusionTests.SuppressionReplayAndPrecancelKeepExactAuthorAndMaterial",
+        "Cadoryx.Tests.FiniteSurfaceExtrusionTests.ChangedStopFreezesOldAuthorUntilExplicitSelectionAndCanStoreBothStates",
+        "Cadoryx.Tests.FiniteSurfaceExtrusionTests.HeldExactNativeSurfaceResultCannotPublishAfterCancelCloseOrGenerationChange(kind: \"cancel\")",
+        "Cadoryx.Tests.FiniteSurfaceExtrusionTests.HeldExactNativeSurfaceResultCannotPublishAfterCancelCloseOrGenerationChange(kind: \"close\")",
+        "Cadoryx.Tests.FiniteSurfaceExtrusionTests.HeldExactNativeSurfaceResultCannotPublishAfterCancelCloseOrGenerationChange(kind: \"generation\")",
+        "Cadoryx.Tests.FiniteSurfaceExtrusionTests.NegativeDirectionalFuseAndCutPreserveAuthoredVolumes(kind: \"reverse\", expected: 612)",
+        "Cadoryx.Tests.FiniteSurfaceExtrusionTests.NegativeDirectionalFuseAndCutPreserveAuthoredVolumes(kind: \"cut\", expected: 1872)",
+        "Cadoryx.Tests.FiniteSurfaceExtrusionTests.InvalidSurfaceAuthorCannotChangeStateOrRetainAssets(kind: \"missing-support\")",
+        "Cadoryx.Tests.FiniteSurfaceExtrusionTests.InvalidSurfaceAuthorCannotChangeStateOrRetainAssets(kind: \"missing-branch\")",
+        "Cadoryx.Tests.FiniteSurfaceExtrusionTests.InvalidSurfaceAuthorCannotChangeStateOrRetainAssets(kind: \"far-plane\")",
+        "Cadoryx.Tests.FiniteSurfaceExtrusionTests.InvalidSurfaceAuthorCannotChangeStateOrRetainAssets(kind: \"foreign-support\")",
+        "Cadoryx.Tests.FiniteSurfaceExtrusionTests.InvalidSurfaceAuthorCannotChangeStateOrRetainAssets(kind: \"wrong-start\")",
+        "Cadoryx.Tests.FiniteSurfaceExtrusionTests.InvalidSurfaceAuthorCannotChangeStateOrRetainAssets(kind: \"wrong-direction\")",
+        "Cadoryx.Tests.FiniteSurfaceExtrusionTests.ExactSupportRevisionChangeFreezesAndRequiresExplicitNewSelection",
+        "Cadoryx.Tests.FiniteSurfaceExtrusionTests.StorageRequiresReplayAndIndependentLegacySectionGuard",
+        "Cadoryx.Tests.FiniteSurfaceExtrusionTests.StoredSameVolumeForeignMaterialFailsExactReplay",
+        "Cadoryx.Tests.FiniteSurfaceExtrusionTests.ProductionEditorEnumeratesExplicitChoicesAndBranchChangeInvalidatesPreview",
+        "Cadoryx.Tests.FiniteSurfaceExtrusionTests.StructuredSurfaceAuthorPreservesBothSelectionsAndExplicitBranch",
+        "Cadoryx.Tests.FiniteSurfaceExtrusionTests.ExactFiniteCapsMatchIndependentAnalyticVolumesAndUndo(kind: \"plane\")",
+        "Cadoryx.Tests.FiniteSurfaceExtrusionTests.ExactFiniteCapsMatchIndependentAnalyticVolumesAndUndo(kind: \"sphere\")",
+        "Cadoryx.Tests.FiniteSurfaceExtrusionTests.ExactFiniteCapsMatchIndependentAnalyticVolumesAndUndo(kind: \"cylinder\")",
+        "Cadoryx.Tests.FiniteSurfaceExtrusionTests.NativeSuccessOnUndersizedPlaneCannotBeAcceptedAsFiniteTermination",
+        "Cadoryx.Tests.FiniteSurfaceExtrusionTests.ExactHoleAndRecursiveIslandDomainsAreRetained(island: False)",
+        "Cadoryx.Tests.FiniteSurfaceExtrusionTests.ExactHoleAndRecursiveIslandDomainsAreRetained(island: True)",
+        "Cadoryx.Tests.FiniteSurfaceNewBodyTests.LimitRevisionFreezesOriginalResultUntilCallerExplicitlyReselectsCurrentFace",
+        "Cadoryx.Tests.FiniteSurfaceNewBodyTests.SameVolumeLocatedElsewhereCannotPassIndependentMaterialReplay",
+        "Cadoryx.Tests.FiniteSurfaceNewBodyTests.IndependentPartOwnsItsExplicitLimitAndDoesNotRebindWhenOriginalLimitMoves",
+        "Cadoryx.Tests.FiniteSurfaceNewBodyTests.LinkedRadiusParameterUpdatesNewMaterialAndDrawingAndRejectsIncompleteFiniteDomainAtomically",
+        "Cadoryx.Tests.FiniteSurfaceNewBodyTests.HeldExactNewBodyCannotPublishOrRetainPrivateSeedAfterLateCancelCloseOrGenerationChange(kind: \"cancel\")",
+        "Cadoryx.Tests.FiniteSurfaceNewBodyTests.HeldExactNewBodyCannotPublishOrRetainPrivateSeedAfterLateCancelCloseOrGenerationChange(kind: \"close\")",
+        "Cadoryx.Tests.FiniteSurfaceNewBodyTests.HeldExactNewBodyCannotPublishOrRetainPrivateSeedAfterLateCancelCloseOrGenerationChange(kind: \"generation\")",
+        "Cadoryx.Tests.FiniteSurfaceNewBodyTests.FreeStartingPlaneBuildsCompleteFiniteMaterialWithoutConsumingAnyOriginalBody(kind: \"plane\", negative: False, transform: 0, start: 5)",
+        "Cadoryx.Tests.FiniteSurfaceNewBodyTests.FreeStartingPlaneBuildsCompleteFiniteMaterialWithoutConsumingAnyOriginalBody(kind: \"plane\", negative: False, transform: 0, start: 6)",
+        "Cadoryx.Tests.FiniteSurfaceNewBodyTests.FreeStartingPlaneBuildsCompleteFiniteMaterialWithoutConsumingAnyOriginalBody(kind: \"plane\", negative: False, transform: 1, start: 5)",
+        "Cadoryx.Tests.FiniteSurfaceNewBodyTests.FreeStartingPlaneBuildsCompleteFiniteMaterialWithoutConsumingAnyOriginalBody(kind: \"plane\", negative: False, transform: 1, start: 6)",
+        "Cadoryx.Tests.FiniteSurfaceNewBodyTests.FreeStartingPlaneBuildsCompleteFiniteMaterialWithoutConsumingAnyOriginalBody(kind: \"plane\", negative: False, transform: 2, start: 5)",
+        "Cadoryx.Tests.FiniteSurfaceNewBodyTests.FreeStartingPlaneBuildsCompleteFiniteMaterialWithoutConsumingAnyOriginalBody(kind: \"plane\", negative: False, transform: 2, start: 6)",
+        "Cadoryx.Tests.FiniteSurfaceNewBodyTests.FreeStartingPlaneBuildsCompleteFiniteMaterialWithoutConsumingAnyOriginalBody(kind: \"plane\", negative: True, transform: 0, start: 5)",
+        "Cadoryx.Tests.FiniteSurfaceNewBodyTests.FreeStartingPlaneBuildsCompleteFiniteMaterialWithoutConsumingAnyOriginalBody(kind: \"plane\", negative: True, transform: 0, start: 6)",
+        "Cadoryx.Tests.FiniteSurfaceNewBodyTests.FreeStartingPlaneBuildsCompleteFiniteMaterialWithoutConsumingAnyOriginalBody(kind: \"plane\", negative: True, transform: 1, start: 5)",
+        "Cadoryx.Tests.FiniteSurfaceNewBodyTests.FreeStartingPlaneBuildsCompleteFiniteMaterialWithoutConsumingAnyOriginalBody(kind: \"plane\", negative: True, transform: 1, start: 6)",
+        "Cadoryx.Tests.FiniteSurfaceNewBodyTests.FreeStartingPlaneBuildsCompleteFiniteMaterialWithoutConsumingAnyOriginalBody(kind: \"plane\", negative: True, transform: 2, start: 5)",
+        "Cadoryx.Tests.FiniteSurfaceNewBodyTests.FreeStartingPlaneBuildsCompleteFiniteMaterialWithoutConsumingAnyOriginalBody(kind: \"plane\", negative: True, transform: 2, start: 6)",
+        "Cadoryx.Tests.FiniteSurfaceNewBodyTests.FreeStartingPlaneBuildsCompleteFiniteMaterialWithoutConsumingAnyOriginalBody(kind: \"sphere\", negative: False, transform: 0, start: 5)",
+        "Cadoryx.Tests.FiniteSurfaceNewBodyTests.FreeStartingPlaneBuildsCompleteFiniteMaterialWithoutConsumingAnyOriginalBody(kind: \"sphere\", negative: False, transform: 0, start: 6)",
+        "Cadoryx.Tests.FiniteSurfaceNewBodyTests.FreeStartingPlaneBuildsCompleteFiniteMaterialWithoutConsumingAnyOriginalBody(kind: \"sphere\", negative: False, transform: 1, start: 5)",
+        "Cadoryx.Tests.FiniteSurfaceNewBodyTests.FreeStartingPlaneBuildsCompleteFiniteMaterialWithoutConsumingAnyOriginalBody(kind: \"sphere\", negative: False, transform: 1, start: 6)",
+        "Cadoryx.Tests.FiniteSurfaceNewBodyTests.FreeStartingPlaneBuildsCompleteFiniteMaterialWithoutConsumingAnyOriginalBody(kind: \"sphere\", negative: False, transform: 2, start: 5)",
+        "Cadoryx.Tests.FiniteSurfaceNewBodyTests.FreeStartingPlaneBuildsCompleteFiniteMaterialWithoutConsumingAnyOriginalBody(kind: \"sphere\", negative: False, transform: 2, start: 6)",
+        "Cadoryx.Tests.FiniteSurfaceNewBodyTests.FreeStartingPlaneBuildsCompleteFiniteMaterialWithoutConsumingAnyOriginalBody(kind: \"sphere\", negative: True, transform: 0, start: 5)",
+        "Cadoryx.Tests.FiniteSurfaceNewBodyTests.FreeStartingPlaneBuildsCompleteFiniteMaterialWithoutConsumingAnyOriginalBody(kind: \"sphere\", negative: True, transform: 0, start: 6)",
+        "Cadoryx.Tests.FiniteSurfaceNewBodyTests.FreeStartingPlaneBuildsCompleteFiniteMaterialWithoutConsumingAnyOriginalBody(kind: \"sphere\", negative: True, transform: 1, start: 5)",
+        "Cadoryx.Tests.FiniteSurfaceNewBodyTests.FreeStartingPlaneBuildsCompleteFiniteMaterialWithoutConsumingAnyOriginalBody(kind: \"sphere\", negative: True, transform: 1, start: 6)",
+        "Cadoryx.Tests.FiniteSurfaceNewBodyTests.FreeStartingPlaneBuildsCompleteFiniteMaterialWithoutConsumingAnyOriginalBody(kind: \"sphere\", negative: True, transform: 2, start: 5)",
+        "Cadoryx.Tests.FiniteSurfaceNewBodyTests.FreeStartingPlaneBuildsCompleteFiniteMaterialWithoutConsumingAnyOriginalBody(kind: \"sphere\", negative: True, transform: 2, start: 6)",
+        "Cadoryx.Tests.FiniteSurfaceNewBodyTests.FreeStartingPlaneBuildsCompleteFiniteMaterialWithoutConsumingAnyOriginalBody(kind: \"cylinder\", negative: False, transform: 0, start: 5)",
+        "Cadoryx.Tests.FiniteSurfaceNewBodyTests.FreeStartingPlaneBuildsCompleteFiniteMaterialWithoutConsumingAnyOriginalBody(kind: \"cylinder\", negative: False, transform: 0, start: 6)",
+        "Cadoryx.Tests.FiniteSurfaceNewBodyTests.FreeStartingPlaneBuildsCompleteFiniteMaterialWithoutConsumingAnyOriginalBody(kind: \"cylinder\", negative: False, transform: 1, start: 5)",
+        "Cadoryx.Tests.FiniteSurfaceNewBodyTests.FreeStartingPlaneBuildsCompleteFiniteMaterialWithoutConsumingAnyOriginalBody(kind: \"cylinder\", negative: False, transform: 1, start: 6)",
+        "Cadoryx.Tests.FiniteSurfaceNewBodyTests.FreeStartingPlaneBuildsCompleteFiniteMaterialWithoutConsumingAnyOriginalBody(kind: \"cylinder\", negative: False, transform: 2, start: 5)",
+        "Cadoryx.Tests.FiniteSurfaceNewBodyTests.FreeStartingPlaneBuildsCompleteFiniteMaterialWithoutConsumingAnyOriginalBody(kind: \"cylinder\", negative: False, transform: 2, start: 6)",
+        "Cadoryx.Tests.FiniteSurfaceNewBodyTests.FreeStartingPlaneBuildsCompleteFiniteMaterialWithoutConsumingAnyOriginalBody(kind: \"cylinder\", negative: True, transform: 0, start: 5)",
+        "Cadoryx.Tests.FiniteSurfaceNewBodyTests.FreeStartingPlaneBuildsCompleteFiniteMaterialWithoutConsumingAnyOriginalBody(kind: \"cylinder\", negative: True, transform: 0, start: 6)",
+        "Cadoryx.Tests.FiniteSurfaceNewBodyTests.FreeStartingPlaneBuildsCompleteFiniteMaterialWithoutConsumingAnyOriginalBody(kind: \"cylinder\", negative: True, transform: 1, start: 5)",
+        "Cadoryx.Tests.FiniteSurfaceNewBodyTests.FreeStartingPlaneBuildsCompleteFiniteMaterialWithoutConsumingAnyOriginalBody(kind: \"cylinder\", negative: True, transform: 1, start: 6)",
+        "Cadoryx.Tests.FiniteSurfaceNewBodyTests.FreeStartingPlaneBuildsCompleteFiniteMaterialWithoutConsumingAnyOriginalBody(kind: \"cylinder\", negative: True, transform: 2, start: 5)",
+        "Cadoryx.Tests.FiniteSurfaceNewBodyTests.FreeStartingPlaneBuildsCompleteFiniteMaterialWithoutConsumingAnyOriginalBody(kind: \"cylinder\", negative: True, transform: 2, start: 6)",
+        "Cadoryx.Tests.FiniteSurfaceNewBodyTests.HolesAndRecursiveIslandKeepEveryDisconnectedMaterialSolid(island: False, negative: False)",
+        "Cadoryx.Tests.FiniteSurfaceNewBodyTests.HolesAndRecursiveIslandKeepEveryDisconnectedMaterialSolid(island: False, negative: True)",
+        "Cadoryx.Tests.FiniteSurfaceNewBodyTests.HolesAndRecursiveIslandKeepEveryDisconnectedMaterialSolid(island: True, negative: False)",
+        "Cadoryx.Tests.FiniteSurfaceNewBodyTests.HolesAndRecursiveIslandKeepEveryDisconnectedMaterialSolid(island: True, negative: True)",
+        "Cadoryx.Tests.FiniteSurfaceNewBodyTests.IncompleteOrForeignAuthorIsRejectedAtomicallyAndCannotLeavePrivateSeedAssets(fault: \"small\")",
+        "Cadoryx.Tests.FiniteSurfaceNewBodyTests.IncompleteOrForeignAuthorIsRejectedAtomicallyAndCannotLeavePrivateSeedAssets(fault: \"support\")",
+        "Cadoryx.Tests.FiniteSurfaceNewBodyTests.IncompleteOrForeignAuthorIsRejectedAtomicallyAndCannotLeavePrivateSeedAssets(fault: \"source\")",
+        "Cadoryx.Tests.FiniteSurfaceNewBodyTests.IncompleteOrForeignAuthorIsRejectedAtomicallyAndCannotLeavePrivateSeedAssets(fault: \"wrong-direction\")",
+        "Cadoryx.Tests.FiniteSurfaceNewBodyTests.IncompleteOrForeignAuthorIsRejectedAtomicallyAndCannotLeavePrivateSeedAssets(fault: \"far-plane\")",
+        "Cadoryx.Tests.FiniteSurfaceNewBodyTests.IncompleteOrForeignAuthorIsRejectedAtomicallyAndCannotLeavePrivateSeedAssets(fault: \"foreign-document\")",
+        "Cadoryx.Tests.FiniteSurfaceNewBodyTests.IncompleteOrForeignAuthorIsRejectedAtomicallyAndCannotLeavePrivateSeedAssets(fault: \"fingerprint\")",
+        "Cadoryx.Tests.FiniteSurfaceNewBodyTests.IncompleteOrForeignAuthorIsRejectedAtomicallyAndCannotLeavePrivateSeedAssets(fault: \"target\")",
+        "Cadoryx.Tests.FiniteSurfaceNewBodyTests.StoredIndependentAuthorRequiresExplicitCapabilityAndExactReplay(kind: \"plane\")",
+        "Cadoryx.Tests.FiniteSurfaceNewBodyTests.StoredIndependentAuthorRequiresExplicitCapabilityAndExactReplay(kind: \"sphere\")",
+        "Cadoryx.Tests.FiniteSurfaceNewBodyTests.StoredIndependentAuthorRequiresExplicitCapabilityAndExactReplay(kind: \"cylinder\")",
+        "Cadoryx.Tests.FiniteSurfaceNewBodyTests.StoredIndependentAuthorRequiresExplicitCapabilityAndExactReplay(kind: \"island\")",
+        "Cadoryx.Tests.FiniteSurfaceNewBodyTests.OriginalFiniteFuseProgramDoesNotAcquireNewBodyCapability",
+        "Cadoryx.Tests.FiniteSurfaceNewBodyTests.ProductionEditorCanPreviewFreeFrameWithoutSupportAndKeepsExplicitLimitSelection(negative: False)",
+        "Cadoryx.Tests.FiniteSurfaceNewBodyTests.ProductionEditorCanPreviewFreeFrameWithoutSupportAndKeepsExplicitLimitSelection(negative: True)",
+        "Cadoryx.Tests.FiniteSurfaceNewBodyTests.StructuredAuthorRetainsFreeFrameAndNeverInfersTargetOrSupport"
+      ]
+    },
+    {
+      "configuration": "Debug",
+      "group": "agent189",
+      "passed": 189,
+      "failed": 0,
+      "audit": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\d6-finite-newbody-draft-4\\agent189-debug-1-verification.json",
+        "sha256": "D904A6F7C88A3D3B09CD1C9D60A266FC815EA8D2062FEA4B7EA8ABB33B4C6920"
+      },
+      "actualNative62": true,
+      "names": [
+        "Cadoryx.Tests.AgentEmptyResponseRecoveryTests.OrdinaryAnswerDoesNotAddARequestOrRetryInstruction",
+        "Cadoryx.Tests.AgentEmptyResponseRecoveryTests.EmptyReplyIsRetainedAndOneRealAnswerCanRecoverWithinTheBudget(empty: null)",
+        "Cadoryx.Tests.AgentEmptyResponseRecoveryTests.EmptyReplyIsRetainedAndOneRealAnswerCanRecoverWithinTheBudget(empty: \"\")",
+        "Cadoryx.Tests.AgentEmptyResponseRecoveryTests.EmptyReplyIsRetainedAndOneRealAnswerCanRecoverWithinTheBudget(empty: \" \\t\\n\")",
+        "Cadoryx.Tests.AgentEmptyResponseRecoveryTests.TwoEmptyRepliesStopWithoutInventingAnAnswerOrUsingAllRemainingRounds(rounds: 2)",
+        "Cadoryx.Tests.AgentEmptyResponseRecoveryTests.TwoEmptyRepliesStopWithoutInventingAnAnswerOrUsingAllRemainingRounds(rounds: 16)",
+        "Cadoryx.Tests.AgentEmptyResponseRecoveryTests.LastAvailableRoundDoesNotRetry",
+        "Cadoryx.Tests.AgentEmptyResponseRecoveryTests.CancellationAtTheRetryEventPreventsAnotherRequest",
+        "Cadoryx.Tests.AgentEmptyResponseRecoveryTests.RealProviderErrorsAreNotRetriedAsEmptyReplies(afterEmpty: False)",
+        "Cadoryx.Tests.AgentEmptyResponseRecoveryTests.RealProviderErrorsAreNotRetriedAsEmptyReplies(afterEmpty: True)",
+        "Cadoryx.Tests.AgentEmptyResponseRecoveryTests.NativeCommittedToolReceiptSurvivesEmptyReplyWithoutRepeatingTheEdit",
+        "Cadoryx.Tests.AgentEmptyResponseRecoveryTests.ARecoveryToolCallConsumesTheLastRoundInsteadOfGettingAnExtraFinalRound",
+        "Cadoryx.Tests.AgentEmptyResponseRecoveryTests.RetryInstructionIsTemporaryAndASecondEmptyReplyCannotTriggerAnotherRecovery",
+        "Cadoryx.Tests.AgentEmptyResponseRecoveryTests.LatestUserAndAttachedDataRemainUserContentInShortAndLongHistory(longHistory: False)",
+        "Cadoryx.Tests.AgentEmptyResponseRecoveryTests.LatestUserAndAttachedDataRemainUserContentInShortAndLongHistory(longHistory: True)",
+        "Cadoryx.Tests.AgentEmptyResponseRecoveryTests.RecoveryDirectiveRetainsAllTwelveToolsWithTheOriginalDefaultBudgets(aggressive: False)",
+        "Cadoryx.Tests.AgentEmptyResponseRecoveryTests.RecoveryDirectiveRetainsAllTwelveToolsWithTheOriginalDefaultBudgets(aggressive: True)",
+        "Cadoryx.Tests.AgentEmptyResponseRecoveryTests.ContextOverflowDuringRecoveryRetainsBothDistinctEventsAndOriginalLimits",
+        "Cadoryx.Tests.AgentEmptyResponseRecoveryTests.ToolboxDisplaysLocalizedRecoveryAsSystemStatusAndGenuineAnswerAsAssistant(culture: \"en-US\")",
+        "Cadoryx.Tests.AgentEmptyResponseRecoveryTests.ToolboxDisplaysLocalizedRecoveryAsSystemStatusAndGenuineAnswerAsAssistant(culture: \"zh-CN\")",
+        "Cadoryx.Tests.AgentEmptyResponseRecoveryTests.ToolboxDisplaysLocalizedRecoveryAsSystemStatusAndGenuineAnswerAsAssistant(culture: \"ja-JP\")",
+        "Cadoryx.Tests.AgentIdentityFieldPresentationTests.DrawingIdentityRequirementSurvivesActualWirePresentation",
+        "Cadoryx.Tests.AgentIdentityFieldPresentationTests.NullableWorkspaceFieldsExplainExactActiveIdentityOnTheWire",
+        "Cadoryx.Tests.AgentIdentityFieldPresentationTests.IdentityHintsRetainEveryToolAndOriginal8192OutputSafetyBudget(aggressive: False)",
+        "Cadoryx.Tests.AgentIdentityFieldPresentationTests.IdentityHintsRetainEveryToolAndOriginal8192OutputSafetyBudget(aggressive: True)",
+        "Cadoryx.Tests.AgentSuccessfulActionReceiptTests.LongReadsRetainTheLatestSuccessfulExchangeAndEveryOriginalTool(aggressive: False)",
+        "Cadoryx.Tests.AgentSuccessfulActionReceiptTests.LongReadsRetainTheLatestSuccessfulExchangeAndEveryOriginalTool(aggressive: True)",
+        "Cadoryx.Tests.AgentSuccessfulActionReceiptTests.ActualWorkspaceChangeFlagsHaveTheSameBoundedRetention(receipt: \"{\\\"success\\\":true,\\\"workspaceChanged\\\":true,\\\"sess\"\u00b7\u00b7\u00b7)",
+        "Cadoryx.Tests.AgentSuccessfulActionReceiptTests.ActualWorkspaceChangeFlagsHaveTheSameBoundedRetention(receipt: \"{\\\"success\\\":true,\\\"changed\\\":false,\\\"workspaceCha\"\u00b7\u00b7\u00b7)",
+        "Cadoryx.Tests.AgentSuccessfulActionReceiptTests.FailuresNoOpsMalformedAndClaimedSuccessCannotPinAnExchange(receipt: \"{\\\"success\\\":false,\\\"changed\\\":true}\")",
+        "Cadoryx.Tests.AgentSuccessfulActionReceiptTests.FailuresNoOpsMalformedAndClaimedSuccessCannotPinAnExchange(receipt: \"{\\\"success\\\":true,\\\"changed\\\":false}\")",
+        "Cadoryx.Tests.AgentSuccessfulActionReceiptTests.FailuresNoOpsMalformedAndClaimedSuccessCannotPinAnExchange(receipt: \"{\\\"success\\\":true,\\\"published\\\":true}\")",
+        "Cadoryx.Tests.AgentSuccessfulActionReceiptTests.FailuresNoOpsMalformedAndClaimedSuccessCannotPinAnExchange(receipt: \"{\\\"success\\\":\\\"true\\\",\\\"changed\\\":true}\")",
+        "Cadoryx.Tests.AgentSuccessfulActionReceiptTests.FailuresNoOpsMalformedAndClaimedSuccessCannotPinAnExchange(receipt: \"{\\\"success\\\":true,\\\"changed\\\":\\\"true\\\"}\")",
+        "Cadoryx.Tests.AgentSuccessfulActionReceiptTests.FailuresNoOpsMalformedAndClaimedSuccessCannotPinAnExchange(receipt: \"{\\\"success\\\":true,\\\"changed\\\":true,\\\"workspaceChan\"\u00b7\u00b7\u00b7)",
+        "Cadoryx.Tests.AgentSuccessfulActionReceiptTests.FailuresNoOpsMalformedAndClaimedSuccessCannotPinAnExchange(receipt: \"{\\\"success\\\":true,\\\"changed\\\":true,\\\"success\\\":fal\"\u00b7\u00b7\u00b7)",
+        "Cadoryx.Tests.AgentSuccessfulActionReceiptTests.FailuresNoOpsMalformedAndClaimedSuccessCannotPinAnExchange(receipt: \"{\\\"result\\\":{\\\"success\\\":true,\\\"changed\\\":true}}\")",
+        "Cadoryx.Tests.AgentSuccessfulActionReceiptTests.FailuresNoOpsMalformedAndClaimedSuccessCannotPinAnExchange(receipt: \"{\\\"success\\\":true,\\\"changed\\\":true\")",
+        "Cadoryx.Tests.AgentSuccessfulActionReceiptTests.FailuresNoOpsMalformedAndClaimedSuccessCannotPinAnExchange(receipt: \"I successfully created an object; changed=true\")",
+        "Cadoryx.Tests.AgentSuccessfulActionReceiptTests.MultiToolRoundKeepsEveryPairedResultAndOriginalOrder(aggressive: False)",
+        "Cadoryx.Tests.AgentSuccessfulActionReceiptTests.MultiToolRoundKeepsEveryPairedResultAndOriginalOrder(aggressive: True)",
+        "Cadoryx.Tests.AgentSuccessfulActionReceiptTests.IncompleteOrAmbiguousExchangesCannotBePinned(invalid: \"missing\")",
+        "Cadoryx.Tests.AgentSuccessfulActionReceiptTests.IncompleteOrAmbiguousExchangesCannotBePinned(invalid: \"reused\")",
+        "Cadoryx.Tests.AgentSuccessfulActionReceiptTests.IncompleteOrAmbiguousExchangesCannotBePinned(invalid: \"duplicate-result\")",
+        "Cadoryx.Tests.AgentSuccessfulActionReceiptTests.IncompleteOrAmbiguousExchangesCannotBePinned(invalid: \"no-user\")",
+        "Cadoryx.Tests.AgentSuccessfulActionReceiptTests.NewUserTurnDoesNotPermanentlyPinAnOldMutationOrAddAWarning",
+        "Cadoryx.Tests.AgentSuccessfulActionReceiptTests.OnlyTheLatestGenuineMutationIsReservedWithoutReorderingHistory",
+        "Cadoryx.Tests.AgentSuccessfulActionReceiptTests.ExchangeThatCannotFitIsOmittedAsAWholeWithTruthfulContextMetadata(aggressive: False)",
+        "Cadoryx.Tests.AgentSuccessfulActionReceiptTests.ExchangeThatCannotFitIsOmittedAsAWholeWithTruthfulContextMetadata(aggressive: True)",
+        "Cadoryx.Tests.AgentSuccessfulActionReceiptTests.OversizedReceiptsKeepTheOriginalCharacterLimitAndExplicitTruncation(aggressive: False, maximum: 6000)",
+        "Cadoryx.Tests.AgentSuccessfulActionReceiptTests.OversizedReceiptsKeepTheOriginalCharacterLimitAndExplicitTruncation(aggressive: True, maximum: 2400)",
+        "Cadoryx.Tests.AgentSuccessfulActionReceiptTests.RealNativeSheetReceiptSurvivesActualSourceReadsWithoutAdditionalEdits(aggressive: False)",
+        "Cadoryx.Tests.AgentSuccessfulActionReceiptTests.RealNativeSheetReceiptSurvivesActualSourceReadsWithoutAdditionalEdits(aggressive: True)",
+        "Cadoryx.Tests.DrawingAgentTests.DiscoverableStrictContractsAndDefaultContextKeepAllTwelveTools",
+        "Cadoryx.Tests.DrawingAgentTests.CompleteViewAuthorsPreserveSourcesCopyNoOpUndoStorageAndNativeProjection(kind: \"Front\")",
+        "Cadoryx.Tests.DrawingAgentTests.CompleteViewAuthorsPreserveSourcesCopyNoOpUndoStorageAndNativeProjection(kind: \"Top\")",
+        "Cadoryx.Tests.DrawingAgentTests.CompleteViewAuthorsPreserveSourcesCopyNoOpUndoStorageAndNativeProjection(kind: \"Right\")",
+        "Cadoryx.Tests.DrawingAgentTests.CompleteViewAuthorsPreserveSourcesCopyNoOpUndoStorageAndNativeProjection(kind: \"Isometric\")",
+        "Cadoryx.Tests.DrawingAgentTests.CompleteViewAuthorsPreserveSourcesCopyNoOpUndoStorageAndNativeProjection(kind: \"Section\")",
+        "Cadoryx.Tests.DrawingAgentTests.CompleteViewAuthorsPreserveSourcesCopyNoOpUndoStorageAndNativeProjection(kind: \"Detail\")",
+        "Cadoryx.Tests.DrawingAgentTests.DimensionsUseActualAnalyticEvidenceAndCannotChangeTheirCachedValue(kind: \"Length\")",
+        "Cadoryx.Tests.DrawingAgentTests.DimensionsUseActualAnalyticEvidenceAndCannotChangeTheirCachedValue(kind: \"Angle\")",
+        "Cadoryx.Tests.DrawingAgentTests.DimensionsUseActualAnalyticEvidenceAndCannotChangeTheirCachedValue(kind: \"Radius\")",
+        "Cadoryx.Tests.DrawingAgentTests.DimensionsUseActualAnalyticEvidenceAndCannotChangeTheirCachedValue(kind: \"Diameter\")",
+        "Cadoryx.Tests.DrawingAgentTests.ManufacturingAuthorsRebuildNativeProofsAndKeepOriginalSources(type: \"datum\", target: \"Surface\")",
+        "Cadoryx.Tests.DrawingAgentTests.ManufacturingAuthorsRebuildNativeProofsAndKeepOriginalSources(type: \"datum\", target: \"CylinderSizeAxis\")",
+        "Cadoryx.Tests.DrawingAgentTests.ManufacturingAuthorsRebuildNativeProofsAndKeepOriginalSources(type: \"control_frame\", target: \"Surface\")",
+        "Cadoryx.Tests.DrawingAgentTests.ManufacturingAuthorsRebuildNativeProofsAndKeepOriginalSources(type: \"control_frame\", target: \"Axis\")",
+        "Cadoryx.Tests.DrawingAgentTests.ManufacturingAuthorsRebuildNativeProofsAndKeepOriginalSources(type: \"balloon\", target: \"Surface\")",
+        "Cadoryx.Tests.DrawingAgentTests.MedianPlaneAuthorRequiresIndependentOppositeFaceAndActualFiniteDomainProof(type: \"datum\")",
+        "Cadoryx.Tests.DrawingAgentTests.MedianPlaneAuthorRequiresIndependentOppositeFaceAndActualFiniteDomainProof(type: \"control_frame\")",
+        "Cadoryx.Tests.DrawingAgentTests.SheetContentLibraryImportExportNativeSaveAndVectorPdfShareCapturedReceipts",
+        "Cadoryx.Tests.DrawingAgentTests.HoleTablesRebuildEveryRowAndRequireExplicitCoordinateDetach(associated: False)",
+        "Cadoryx.Tests.DrawingAgentTests.HoleTablesRebuildEveryRowAndRequireExplicitCoordinateDetach(associated: True)",
+        "Cadoryx.Tests.DrawingAgentTests.InvalidDrawingRequestsPreserveAuthorsHistoryAndAssets(failure: \"state\")",
+        "Cadoryx.Tests.DrawingAgentTests.InvalidDrawingRequestsPreserveAuthorsHistoryAndAssets(failure: \"document\")",
+        "Cadoryx.Tests.DrawingAgentTests.InvalidDrawingRequestsPreserveAuthorsHistoryAndAssets(failure: \"owner\")",
+        "Cadoryx.Tests.DrawingAgentTests.InvalidDrawingRequestsPreserveAuthorsHistoryAndAssets(failure: \"kind\")",
+        "Cadoryx.Tests.DrawingAgentTests.InvalidDrawingRequestsPreserveAuthorsHistoryAndAssets(failure: \"source\")",
+        "Cadoryx.Tests.DrawingAgentTests.InvalidDrawingRequestsPreserveAuthorsHistoryAndAssets(failure: \"unknown\")",
+        "Cadoryx.Tests.DrawingAgentTests.InvalidDrawingRequestsPreserveAuthorsHistoryAndAssets(failure: \"duplicate\")",
+        "Cadoryx.Tests.DrawingAgentTests.InvalidDrawingRequestsPreserveAuthorsHistoryAndAssets(failure: \"numeric-enum\")",
+        "Cadoryx.Tests.DrawingAgentTests.InvalidDrawingRequestsPreserveAuthorsHistoryAndAssets(failure: \"cache\")",
+        "Cadoryx.Tests.DrawingAgentTests.InvalidDrawingRequestsPreserveAuthorsHistoryAndAssets(failure: \"null-name\")",
+        "Cadoryx.Tests.DrawingAgentTests.InvalidDrawingRequestsPreserveAuthorsHistoryAndAssets(failure: \"scale\")",
+        "Cadoryx.Tests.DrawingAgentTests.InvalidDrawingRequestsPreserveAuthorsHistoryAndAssets(failure: \"budget\")",
+        "Cadoryx.Tests.DrawingAgentTests.InvalidDrawingRequestsPreserveAuthorsHistoryAndAssets(failure: \"readonly\")",
+        "Cadoryx.Tests.DrawingAgentTests.InvalidDrawingRequestsPreserveAuthorsHistoryAndAssets(failure: \"rollback\")",
+        "Cadoryx.Tests.DrawingAgentTests.InvalidDrawingRequestsPreserveAuthorsHistoryAndAssets(failure: \"closing\")",
+        "Cadoryx.Tests.DrawingAgentTests.TerminalRawAuthorsQuotesPaginationAndBadOwnersUseTheProductionContract",
+        "Cadoryx.Tests.DrawingAgentTests.StaleReferencesAndWrongPdfInputsCannotReplaceExistingFiles",
+        "Cadoryx.Tests.DrawingAgentTests.SectionHatchAuthorEditsReprojectDetailsWithIndependentPaperSpacingAndNoOpCopies",
+        "Cadoryx.Tests.DrawingAgentTests.OrderedDatumSystemsKeepStableBindingsAndDependencyDeletionGuards",
+        "Cadoryx.Tests.DrawingAgentTests.ExplicitNullContentOperationsAreIdempotentAndDoNotAddHistory(type: \"parts\")",
+        "Cadoryx.Tests.DrawingAgentTests.ExplicitNullContentOperationsAreIdempotentAndDoNotAddHistory(type: \"zones\")",
+        "Cadoryx.Tests.DrawingAgentTests.SelectionProofCannotBeReplacedByClientCachesOrForeignNativeIdentity(failure: \"revision\")",
+        "Cadoryx.Tests.DrawingAgentTests.SelectionProofCannotBeReplacedByClientCachesOrForeignNativeIdentity(failure: \"asset\")",
+        "Cadoryx.Tests.DrawingAgentTests.SelectionProofCannotBeReplacedByClientCachesOrForeignNativeIdentity(failure: \"fingerprint\")",
+        "Cadoryx.Tests.DrawingAgentTests.SelectionProofCannotBeReplacedByClientCachesOrForeignNativeIdentity(failure: \"index\")",
+        "Cadoryx.Tests.DrawingAgentTests.SelectionProofCannotBeReplacedByClientCachesOrForeignNativeIdentity(failure: \"body\")",
+        "Cadoryx.Tests.DrawingAgentTests.SelectionProofCannotBeReplacedByClientCachesOrForeignNativeIdentity(failure: \"path\")",
+        "Cadoryx.Tests.DrawingAgentTests.SelectionProofCannotBeReplacedByClientCachesOrForeignNativeIdentity(failure: \"anchor\")",
+        "Cadoryx.Tests.DrawingAgentTests.ImportedBodyWithoutProducerHasToolSelectableOriginalTopology",
+        "Cadoryx.Tests.DrawingAgentTests.ExactHistoryContinuationSurvivesCopiedEditAndNativeSaveWhileChangedOriginFreezes",
+        "Cadoryx.Tests.DrawingAgentTests.LateNativeProjectionCannotCommitAfterCancellationCloseOrOldState(failure: \"cancel\")",
+        "Cadoryx.Tests.DrawingAgentTests.LateNativeProjectionCannotCommitAfterCancellationCloseOrOldState(failure: \"close\")",
+        "Cadoryx.Tests.DrawingAgentTests.LateNativeProjectionCannotCommitAfterCancellationCloseOrOldState(failure: \"state\")",
+        "Cadoryx.Tests.DrawingAgentTests.FailedProjectionGateSetupCannotBlockCleanup",
+        "Cadoryx.Tests.DrawingContractRequestGuideTests.EveryExplicitDeclaredTypeProducesOneExactExecutableReadOnlyExample(type: \"sheet\")",
+        "Cadoryx.Tests.DrawingContractRequestGuideTests.EveryExplicitDeclaredTypeProducesOneExactExecutableReadOnlyExample(type: \"view\")",
+        "Cadoryx.Tests.DrawingContractRequestGuideTests.EveryExplicitDeclaredTypeProducesOneExactExecutableReadOnlyExample(type: \"dimension\")",
+        "Cadoryx.Tests.DrawingContractRequestGuideTests.EveryExplicitDeclaredTypeProducesOneExactExecutableReadOnlyExample(type: \"datum\")",
+        "Cadoryx.Tests.DrawingContractRequestGuideTests.EveryExplicitDeclaredTypeProducesOneExactExecutableReadOnlyExample(type: \"control_frame\")",
+        "Cadoryx.Tests.DrawingContractRequestGuideTests.EveryExplicitDeclaredTypeProducesOneExactExecutableReadOnlyExample(type: \"balloon\")",
+        "Cadoryx.Tests.DrawingContractRequestGuideTests.EveryExplicitDeclaredTypeProducesOneExactExecutableReadOnlyExample(type: \"hole_table\")",
+        "Cadoryx.Tests.DrawingContractRequestGuideTests.EveryExplicitDeclaredTypeProducesOneExactExecutableReadOnlyExample(type: \"field\")",
+        "Cadoryx.Tests.DrawingContractRequestGuideTests.EveryExplicitDeclaredTypeProducesOneExactExecutableReadOnlyExample(type: \"note\")",
+        "Cadoryx.Tests.DrawingContractRequestGuideTests.EveryExplicitDeclaredTypeProducesOneExactExecutableReadOnlyExample(type: \"template\")",
+        "Cadoryx.Tests.DrawingContractRequestGuideTests.EveryExplicitDeclaredTypeProducesOneExactExecutableReadOnlyExample(type: \"parts_table\")",
+        "Cadoryx.Tests.DrawingContractRequestGuideTests.EveryExplicitDeclaredTypeProducesOneExactExecutableReadOnlyExample(type: \"zones\")",
+        "Cadoryx.Tests.DrawingContractRequestGuideTests.AnUnspecifiedOrInvalidTypeOffersTheWholeActualCatalogWithoutSelectingOne(variant: \"missing\")",
+        "Cadoryx.Tests.DrawingContractRequestGuideTests.AnUnspecifiedOrInvalidTypeOffersTheWholeActualCatalogWithoutSelectingOne(variant: \"unknown\")",
+        "Cadoryx.Tests.DrawingContractRequestGuideTests.AnUnspecifiedOrInvalidTypeOffersTheWholeActualCatalogWithoutSelectingOne(variant: \"nonstring\")",
+        "Cadoryx.Tests.DrawingContractRequestGuideTests.DuplicateTypeDoesNotSelectTheLastValueAndStillRejectsTheOriginalRequest",
+        "Cadoryx.Tests.DrawingContractRequestGuideTests.NonContractActionsKeepTheirOriginalIdentityErrorWithoutReadSuggestions",
+        "Cadoryx.Tests.DrawingContractRequestGuideTests.ForeignNamesAndInstructionLikeValuesCannotBecomeSuggestedCommandsOrIdentities",
+        "Cadoryx.Tests.DrawingContractRequestGuideTests.PreCancellationStillStopsBeforeAnyDiagnosticOrExecution",
+        "Cadoryx.Tests.DrawingContractRequestGuideTests.ARejectedLiveContractAndItsExplicitReadExampleCannotChangeTheRealViewOrHistory",
+        "Cadoryx.Tests.DrawingContractRequestGuideTests.LeadingContractGuideRetainsEveryDefaultToolAndOriginalOutputSafetyBudgets(aggressive: False)",
+        "Cadoryx.Tests.DrawingContractRequestGuideTests.LeadingContractGuideRetainsEveryDefaultToolAndOriginalOutputSafetyBudgets(aggressive: True)",
+        "Cadoryx.Tests.DrawingInspectionTypeFeedbackTests.InvalidInspectionTypeIsRejectedForEmptyAndPopulatedDocumentsWithoutChangingHistory(fault: \"omitted\", hasSheet: False)",
+        "Cadoryx.Tests.DrawingInspectionTypeFeedbackTests.InvalidInspectionTypeIsRejectedForEmptyAndPopulatedDocumentsWithoutChangingHistory(fault: \"omitted\", hasSheet: True)",
+        "Cadoryx.Tests.DrawingInspectionTypeFeedbackTests.InvalidInspectionTypeIsRejectedForEmptyAndPopulatedDocumentsWithoutChangingHistory(fault: \"null\", hasSheet: False)",
+        "Cadoryx.Tests.DrawingInspectionTypeFeedbackTests.InvalidInspectionTypeIsRejectedForEmptyAndPopulatedDocumentsWithoutChangingHistory(fault: \"null\", hasSheet: True)",
+        "Cadoryx.Tests.DrawingInspectionTypeFeedbackTests.InvalidInspectionTypeIsRejectedForEmptyAndPopulatedDocumentsWithoutChangingHistory(fault: \"empty\", hasSheet: False)",
+        "Cadoryx.Tests.DrawingInspectionTypeFeedbackTests.InvalidInspectionTypeIsRejectedForEmptyAndPopulatedDocumentsWithoutChangingHistory(fault: \"empty\", hasSheet: True)",
+        "Cadoryx.Tests.DrawingInspectionTypeFeedbackTests.InvalidInspectionTypeIsRejectedForEmptyAndPopulatedDocumentsWithoutChangingHistory(fault: \"unknown\", hasSheet: False)",
+        "Cadoryx.Tests.DrawingInspectionTypeFeedbackTests.InvalidInspectionTypeIsRejectedForEmptyAndPopulatedDocumentsWithoutChangingHistory(fault: \"unknown\", hasSheet: True)",
+        "Cadoryx.Tests.DrawingInspectionTypeFeedbackTests.InvalidInspectionTypeIsRejectedForEmptyAndPopulatedDocumentsWithoutChangingHistory(fault: \"parts_table\", hasSheet: False)",
+        "Cadoryx.Tests.DrawingInspectionTypeFeedbackTests.InvalidInspectionTypeIsRejectedForEmptyAndPopulatedDocumentsWithoutChangingHistory(fault: \"parts_table\", hasSheet: True)",
+        "Cadoryx.Tests.DrawingInspectionTypeFeedbackTests.InvalidInspectionTypeIsRejectedForEmptyAndPopulatedDocumentsWithoutChangingHistory(fault: \"zones\", hasSheet: False)",
+        "Cadoryx.Tests.DrawingInspectionTypeFeedbackTests.InvalidInspectionTypeIsRejectedForEmptyAndPopulatedDocumentsWithoutChangingHistory(fault: \"zones\", hasSheet: True)",
+        "Cadoryx.Tests.DrawingInspectionTypeFeedbackTests.ForeignDocumentOrStateIsRejectedBeforeTypeGuidanceWithoutDisclosure(fault: \"omitted\", foreignDocument: False)",
+        "Cadoryx.Tests.DrawingInspectionTypeFeedbackTests.ForeignDocumentOrStateIsRejectedBeforeTypeGuidanceWithoutDisclosure(fault: \"omitted\", foreignDocument: True)",
+        "Cadoryx.Tests.DrawingInspectionTypeFeedbackTests.ForeignDocumentOrStateIsRejectedBeforeTypeGuidanceWithoutDisclosure(fault: \"null\", foreignDocument: False)",
+        "Cadoryx.Tests.DrawingInspectionTypeFeedbackTests.ForeignDocumentOrStateIsRejectedBeforeTypeGuidanceWithoutDisclosure(fault: \"null\", foreignDocument: True)",
+        "Cadoryx.Tests.DrawingInspectionTypeFeedbackTests.ForeignDocumentOrStateIsRejectedBeforeTypeGuidanceWithoutDisclosure(fault: \"empty\", foreignDocument: False)",
+        "Cadoryx.Tests.DrawingInspectionTypeFeedbackTests.ForeignDocumentOrStateIsRejectedBeforeTypeGuidanceWithoutDisclosure(fault: \"empty\", foreignDocument: True)",
+        "Cadoryx.Tests.DrawingInspectionTypeFeedbackTests.ForeignDocumentOrStateIsRejectedBeforeTypeGuidanceWithoutDisclosure(fault: \"unknown\", foreignDocument: False)",
+        "Cadoryx.Tests.DrawingInspectionTypeFeedbackTests.ForeignDocumentOrStateIsRejectedBeforeTypeGuidanceWithoutDisclosure(fault: \"unknown\", foreignDocument: True)",
+        "Cadoryx.Tests.DrawingInspectionTypeFeedbackTests.ForeignDocumentOrStateIsRejectedBeforeTypeGuidanceWithoutDisclosure(fault: \"parts_table\", foreignDocument: False)",
+        "Cadoryx.Tests.DrawingInspectionTypeFeedbackTests.ForeignDocumentOrStateIsRejectedBeforeTypeGuidanceWithoutDisclosure(fault: \"parts_table\", foreignDocument: True)",
+        "Cadoryx.Tests.DrawingInspectionTypeFeedbackTests.ForeignDocumentOrStateIsRejectedBeforeTypeGuidanceWithoutDisclosure(fault: \"zones\", foreignDocument: False)",
+        "Cadoryx.Tests.DrawingInspectionTypeFeedbackTests.ForeignDocumentOrStateIsRejectedBeforeTypeGuidanceWithoutDisclosure(fault: \"zones\", foreignDocument: True)",
+        "Cadoryx.Tests.DrawingInspectionTypeFeedbackTests.PreCancelledInspectionDoesNotReturnGuidanceOrReadAuthors(providedType: False)",
+        "Cadoryx.Tests.DrawingInspectionTypeFeedbackTests.PreCancelledInspectionDoesNotReturnGuidanceOrReadAuthors(providedType: True)",
+        "Cadoryx.Tests.DrawingInspectionTypeFeedbackTests.CallerExplicitlyChoosesReturnedTypeAndRetriesWithItsExactIdentityPair",
+        "Cadoryx.Tests.DrawingInspectionTypeFeedbackTests.DefaultTwelveToolsAnd8192ContextBudgetKeepTheExplicitInspectionRequirement(aggressive: False)",
+        "Cadoryx.Tests.DrawingInspectionTypeFeedbackTests.DefaultTwelveToolsAnd8192ContextBudgetKeepTheExplicitInspectionRequirement(aggressive: True)",
+        "Cadoryx.Tests.DrawingInspectionTypeFeedbackTests.UnknownOuterFieldKeepsItsOriginalPreExecutionRejectionWithoutTypeSubstitution",
+        "Cadoryx.Tests.DrawingSourcePathDispatchTests.ValidFullPathReachesOriginalInspectorAndDoesNotConvertItsBodyFailureIntoPathGuidance",
+        "Cadoryx.Tests.DrawingSourcePathDispatchTests.ValidFullPathKeepsBodyAndRevisionGuardsBeforeInspectorWithoutInventingReplacementSources(identity: \"bodyId\")",
+        "Cadoryx.Tests.DrawingSourcePathDispatchTests.ValidFullPathKeepsBodyAndRevisionGuardsBeforeInspectorWithoutInventingReplacementSources(identity: \"revision\")",
+        "Cadoryx.Tests.DrawingSourcePathFeedbackTests.InvalidPathsReturnDiscoveryOnlyWithoutNativeCallsOrDocumentChanges(fault: \"leaf\")",
+        "Cadoryx.Tests.DrawingSourcePathFeedbackTests.InvalidPathsReturnDiscoveryOnlyWithoutNativeCallsOrDocumentChanges(fault: \"document\")",
+        "Cadoryx.Tests.DrawingSourcePathFeedbackTests.InvalidPathsReturnDiscoveryOnlyWithoutNativeCallsOrDocumentChanges(fault: \"foreign\")",
+        "Cadoryx.Tests.DrawingSourcePathFeedbackTests.InvalidPathsReturnDiscoveryOnlyWithoutNativeCallsOrDocumentChanges(fault: \"empty-slot\")",
+        "Cadoryx.Tests.DrawingSourcePathFeedbackTests.InvalidPathsReturnDiscoveryOnlyWithoutNativeCallsOrDocumentChanges(fault: \"zero-slot\")",
+        "Cadoryx.Tests.DrawingSourcePathFeedbackTests.InvalidPathsReturnDiscoveryOnlyWithoutNativeCallsOrDocumentChanges(fault: \"malformed-slot\")",
+        "Cadoryx.Tests.DrawingSourcePathFeedbackTests.InvalidPathsReturnDiscoveryOnlyWithoutNativeCallsOrDocumentChanges(fault: \"missing-slot\")",
+        "Cadoryx.Tests.DrawingSourcePathFeedbackTests.InvalidPathsReturnDiscoveryOnlyWithoutNativeCallsOrDocumentChanges(fault: \"too-deep\")",
+        "Cadoryx.Tests.DrawingSourcePathFeedbackTests.ForeignIdentityRejectsBeforePathDiscoveryWithoutDisclosure(identity: \"documentId\", fault: \"leaf\")",
+        "Cadoryx.Tests.DrawingSourcePathFeedbackTests.ForeignIdentityRejectsBeforePathDiscoveryWithoutDisclosure(identity: \"stateId\", fault: \"leaf\")",
+        "Cadoryx.Tests.DrawingSourcePathFeedbackTests.ForeignIdentityRejectsBeforePathDiscoveryWithoutDisclosure(identity: \"documentId\", fault: \"foreign\")",
+        "Cadoryx.Tests.DrawingSourcePathFeedbackTests.ForeignIdentityRejectsBeforePathDiscoveryWithoutDisclosure(identity: \"stateId\", fault: \"foreign\")",
+        "Cadoryx.Tests.DrawingSourcePathFeedbackTests.PreCancelledRequestDoesNotParseOrProvideSourceDiscovery(fault: \"leaf\")",
+        "Cadoryx.Tests.DrawingSourcePathFeedbackTests.PreCancelledRequestDoesNotParseOrProvideSourceDiscovery(fault: \"foreign\")",
+        "Cadoryx.Tests.DrawingSourcePathFeedbackTests.DetachedDocumentRetainsOriginalGuardWithoutSourceDiscovery",
+        "Cadoryx.Tests.DrawingSourcePathFeedbackTests.MissingOrInvalidStringRetainsInputGuardWithoutSourceDiscovery(fault: \"omitted\")",
+        "Cadoryx.Tests.DrawingSourcePathFeedbackTests.MissingOrInvalidStringRetainsInputGuardWithoutSourceDiscovery(fault: \"null\")",
+        "Cadoryx.Tests.DrawingSourcePathFeedbackTests.MissingOrInvalidStringRetainsInputGuardWithoutSourceDiscovery(fault: \"empty\")",
+        "Cadoryx.Tests.DrawingSourcePathFeedbackTests.MissingOrInvalidStringRetainsInputGuardWithoutSourceDiscovery(fault: \"oversize\")",
+        "Cadoryx.Tests.DrawingSourcePathFeedbackTests.ExplicitPathSourceFitsOriginalTwelveToolsAndContextBudgets(aggressive: False)",
+        "Cadoryx.Tests.DrawingSourcePathFeedbackTests.ExplicitPathSourceFitsOriginalTwelveToolsAndContextBudgets(aggressive: True)",
+        "Cadoryx.Tests.ToolPresentationTests.EveryProductionActionIsVisibleWithExpandedNativeIdentityFields",
+        "Cadoryx.Tests.ToolPresentationTests.ForeignMissingAndRecursiveReferencesAreRejected(input: \"{\\\"$ref\\\":\\\"https://example.com/schema\\\"}\")",
+        "Cadoryx.Tests.ToolPresentationTests.ForeignMissingAndRecursiveReferencesAreRejected(input: \"{\\\"$ref\\\":\\\"#/$defs/missing\\\"}\")",
+        "Cadoryx.Tests.ToolPresentationTests.ForeignMissingAndRecursiveReferencesAreRejected(input: \"{\\\"$defs\\\":{\\\"self\\\":{\\\"$ref\\\":\\\"#/$defs/self\\\"}},\"\u00b7\u00b7\u00b7)",
+        "Cadoryx.Tests.ToolPresentationTests.OptionalAndNullableCursorPropertiesRemainVisible"
+      ]
+    }
+  ],
+  "recovery": {
+    "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\capability-evidence\\AF_PENDING_D6_FINITE_NEWBODY_RECOVERY.json",
+    "sha256": "211DB84608B949A5D68DF8E124F0DAB956CDE616E67E1EBF167D702346176C9D"
+  },
+  "whole1073ReplayRechecked": true,
+  "existingFeedNormalization": {
+    "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\capability-evidence\\AF_PENDING_SOURCE1068_SDK31_DEPENDENCY_V2.json",
+    "sha256": "A3930A9EDB2C1CABABBAB242CA4D62354581725946C823F801E68BFD810BC1DA"
+  },
+  "initialAuditFailure": "First aggregate audit compared normalized NuGet.Config directly to the original absolute feed hash; it stopped before writing. Corrected only the audit to use the existing V2 normalization; no candidate or runtime changed.",
+  "nativePrerequisite": {
+    "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\capability-evidence\\AF_PENDING_D6_NEWBODY_NATIVE_PREREQUISITE.json",
+    "sha256": "027B4428F8B92EE8DBCD44423B5082103D56F20AB4CCC3E3CFC6F6AFA0415C1E"
+  },
+  "nativePrerequisiteRecords": 16,
+  "priorNativeFailedDiagnosticsRetained": [
+    {
+      "draft": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\d6-finite-newbody-native-probe-1",
+      "failed": 32,
+      "terminals": [
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\d6-finite-newbody-native-probe-1\\runtime-debug-cylinder-1-0-1-exit.json",
+          "sha256": "ED3CEC8FEEF326312EB5010A4058BF3EBB2ACB9795817B49B767404611DCAC94"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\d6-finite-newbody-native-probe-1\\runtime-debug-cylinder-1-1-1-exit.json",
+          "sha256": "A3D00577CB2E2B822602DA5864C95BB9EF46227865997C473F009A55B09475C0"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\d6-finite-newbody-native-probe-1\\runtime-debug-cylinder-2-0-1-exit.json",
+          "sha256": "2142B2D675E416AAFB7EA5647009E6F851C81CE6B05D031F202C9B8419DB767F"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\d6-finite-newbody-native-probe-1\\runtime-debug-cylinder-2-1-1-exit.json",
+          "sha256": "35D9EE78C2F929196DA90F3412BAED73A65D6555F2B093AA4BC7018862497C05"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\d6-finite-newbody-native-probe-1\\runtime-debug-plane-1-0-1-exit.json",
+          "sha256": "48EA691B911B5318EA167475579CDD64475FEDB1CD9AF6B1635E2A9A10E3D919"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\d6-finite-newbody-native-probe-1\\runtime-debug-plane-1-1-1-exit.json",
+          "sha256": "FAE2FEC3F2FCD4CA9F08AC01C010725170F79461DC4951E0F53EB57BB93F3A2A"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\d6-finite-newbody-native-probe-1\\runtime-debug-plane-2-0-1-exit.json",
+          "sha256": "127275FA82C6C338FCF35A89CF36303DD84723761020E8B945A7FF5257A80B57"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\d6-finite-newbody-native-probe-1\\runtime-debug-plane-2-1-1-exit.json",
+          "sha256": "B92D79DFAB1EBDD5D2454FBFD2F51C95DE2306912CD28B16DB2904E9D26985CB"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\d6-finite-newbody-native-probe-1\\runtime-debug-small-1-0-1-exit.json",
+          "sha256": "A8B8BAFDF623C6DAFB6C7E9C921678B18BA1BB7EC63BFD38E15089EFD1B3BDBD"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\d6-finite-newbody-native-probe-1\\runtime-debug-small-1-1-1-exit.json",
+          "sha256": "4220A161C4BC0B8929BC7E8FF0D9FCB01223454ABF0F6C963FC1C42BA31DE337"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\d6-finite-newbody-native-probe-1\\runtime-debug-small-2-0-1-exit.json",
+          "sha256": "868FF00554B0F57A23BA6A80A7A4FB4BBF7120121BF53CE04DEA331C82F998A8"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\d6-finite-newbody-native-probe-1\\runtime-debug-small-2-1-1-exit.json",
+          "sha256": "189FA63FF596EA982235908D47512E25D5EF67375B10AFB8F9297175DF3379FC"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\d6-finite-newbody-native-probe-1\\runtime-debug-sphere-1-0-1-exit.json",
+          "sha256": "16116CFE22D71995E46538CB14D39010581E0665DB0A63CD2C1E85866DFDE587"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\d6-finite-newbody-native-probe-1\\runtime-debug-sphere-1-1-1-exit.json",
+          "sha256": "7650FD383C47D37CABE7468E14B5CE2ACFBDD13949D134D0486EE093D332391D"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\d6-finite-newbody-native-probe-1\\runtime-debug-sphere-2-0-1-exit.json",
+          "sha256": "57FB276A863D35F438788BE6D1745DA6D2269E5EF7BEA9BC58E92A5435BE354B"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\d6-finite-newbody-native-probe-1\\runtime-debug-sphere-2-1-1-exit.json",
+          "sha256": "C28667166114222128EEF2D80D8C805FBE1FA50941FFC1CC470660DAB70F586D"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\d6-finite-newbody-native-probe-1\\runtime-release-cylinder-1-0-1-exit.json",
+          "sha256": "16C3A9157278B243A625BD031F8152987F68E34C8091BEEF94E0DEBAFFBC7F15"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\d6-finite-newbody-native-probe-1\\runtime-release-cylinder-1-1-1-exit.json",
+          "sha256": "C98921A3835AD4703A9E4216ED44F891D8F27A6E590295A66191E789EA46CCD7"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\d6-finite-newbody-native-probe-1\\runtime-release-cylinder-2-0-1-exit.json",
+          "sha256": "EF6C587003CC841DAE145527DF0AC4FB8815A992034DEFEE5CED93E9864F34FA"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\d6-finite-newbody-native-probe-1\\runtime-release-cylinder-2-1-1-exit.json",
+          "sha256": "3789F603FD23A32442603A127A51950865C1BE54CBDC337F33284FE05AA513B2"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\d6-finite-newbody-native-probe-1\\runtime-release-plane-1-0-1-exit.json",
+          "sha256": "B0E71DAA5D768871662DF2C9A62DBF5E3FE8BD879442B475BE0F915B4B3C1957"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\d6-finite-newbody-native-probe-1\\runtime-release-plane-1-1-1-exit.json",
+          "sha256": "915533C26EBAAA63E59D9FDB9E6542BDA6AB8DFBD54BD92ADAE574AEABE0128E"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\d6-finite-newbody-native-probe-1\\runtime-release-plane-2-0-1-exit.json",
+          "sha256": "FEE382E7A649934DE73B31BF853F0CFF518C5C981AC070F3BE74F08E20573279"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\d6-finite-newbody-native-probe-1\\runtime-release-plane-2-1-1-exit.json",
+          "sha256": "B347905E7E852DDC1901874C68754476D09C2F705C289685197E074DA29A1E3E"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\d6-finite-newbody-native-probe-1\\runtime-release-small-1-0-1-exit.json",
+          "sha256": "7BC3015843505835C4CD2759F6BE3FC75FCE490C1920BE0C2DB3ADC7FD0CF615"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\d6-finite-newbody-native-probe-1\\runtime-release-small-1-1-1-exit.json",
+          "sha256": "D64D8EFAE37D8C7D2805EDC8E3AE825A40303DBC50BAEB5942DC13B7267860A0"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\d6-finite-newbody-native-probe-1\\runtime-release-small-2-0-1-exit.json",
+          "sha256": "DA0D789CD55169FC18EF72B8A39841195C0D40EAA37E08A14DD1F89934C104B3"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\d6-finite-newbody-native-probe-1\\runtime-release-small-2-1-1-exit.json",
+          "sha256": "EF36494D94D5D569D9EDAAE509DB8C76C0C066CE512EE7F2056F99DE909F9AE0"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\d6-finite-newbody-native-probe-1\\runtime-release-sphere-1-0-1-exit.json",
+          "sha256": "DDE7F391C2C2E39BB933D343E520751261226E392BB18ACB5FDE15CD323F47D6"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\d6-finite-newbody-native-probe-1\\runtime-release-sphere-1-1-1-exit.json",
+          "sha256": "7C52C6EC9261958103B4C4EFAB49EBAC5176FC382BADBC4EF7B56BBE56DB2AAE"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\d6-finite-newbody-native-probe-1\\runtime-release-sphere-2-0-1-exit.json",
+          "sha256": "087709C1739F3E7615F7699275B1F31401A629ACBFDFCFE997FFF6008C8D7D92"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\d6-finite-newbody-native-probe-1\\runtime-release-sphere-2-1-1-exit.json",
+          "sha256": "02A5BEE26FF2DDE37CE60FB8C39F0D399C2109B6720C494C9051C9CE0B0511E2"
+        }
+      ]
+    },
+    {
+      "draft": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\d6-finite-newbody-native-probe-2",
+      "failed": 16,
+      "terminals": [
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\d6-finite-newbody-native-probe-2\\runtime-debug-cylinder-1-0-1-exit.json",
+          "sha256": "911382203866D80E7C3FE61BA9BA0D52C723EB09720DC5447E4D46EA29D2DFF7"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\d6-finite-newbody-native-probe-2\\runtime-debug-cylinder-1-1-1-exit.json",
+          "sha256": "5E7E2B0717DA187D29BB3C0789660DD139DCF8359413A60C0127BD3D802C8635"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\d6-finite-newbody-native-probe-2\\runtime-debug-plane-1-0-1-exit.json",
+          "sha256": "F115B0489BCBFE54DD0AA18689409E109274DD8C964F789EBF04D9AEC327F04E"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\d6-finite-newbody-native-probe-2\\runtime-debug-plane-1-1-1-exit.json",
+          "sha256": "3F7E1F50786ED5AEBCE768EAD069210C8B19B8DAFE962C408712D647A6BE4452"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\d6-finite-newbody-native-probe-2\\runtime-debug-small-1-0-1-exit.json",
+          "sha256": "E1DC3B382F9223A04C01382C12BF50DF0B10AF9930F352D3CC864CE359D317AB"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\d6-finite-newbody-native-probe-2\\runtime-debug-small-1-1-1-exit.json",
+          "sha256": "ECE212C0427B9A2001145F3FCD00BE9D034F195F5152D5A4A1FFAD09326D36D3"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\d6-finite-newbody-native-probe-2\\runtime-debug-sphere-1-0-1-exit.json",
+          "sha256": "06B7AF7EA28A4363C2D587A54A21553C4EDEA614E72949698C77F32D6EF4B2EB"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\d6-finite-newbody-native-probe-2\\runtime-debug-sphere-1-1-1-exit.json",
+          "sha256": "1775DE259DDA4E3973EE45100AC399DEC97C96BB17EFBDC0496CD8B325794A09"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\d6-finite-newbody-native-probe-2\\runtime-release-cylinder-1-0-1-exit.json",
+          "sha256": "6C6BA7C992E61252315A7ADA2D2489442D49ECAD53A8964E24EE77115D38518A"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\d6-finite-newbody-native-probe-2\\runtime-release-cylinder-1-1-1-exit.json",
+          "sha256": "3EDC192BBF4A573C565B5C54E28680EB8B86851B84775B80326F8F28307C9631"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\d6-finite-newbody-native-probe-2\\runtime-release-plane-1-0-1-exit.json",
+          "sha256": "90BEF1A08FDD06A5A34DD0F594A75FBA6C4C1EF5BD06A2CD275748BBEC13451F"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\d6-finite-newbody-native-probe-2\\runtime-release-plane-1-1-1-exit.json",
+          "sha256": "07550FC2094779EF40D2E99F19E4B882DEBF677C20D898E678582351E1872E13"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\d6-finite-newbody-native-probe-2\\runtime-release-small-1-0-1-exit.json",
+          "sha256": "A29C176A0AFB2709EB47D36C0A5AA4949BB44F7444E98F9163A8F6D208D25F3D"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\d6-finite-newbody-native-probe-2\\runtime-release-small-1-1-1-exit.json",
+          "sha256": "6604B3D364C0592097ED10F7FB5188DE2892FBB550A90F216008BA81FC60C399"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\d6-finite-newbody-native-probe-2\\runtime-release-sphere-1-0-1-exit.json",
+          "sha256": "2F8E11DCC8E98D7B11841CFCF3ABA947ED2600BA628CD1595D9BA44AA1C139D8"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\d6-finite-newbody-native-probe-2\\runtime-release-sphere-1-1-1-exit.json",
+          "sha256": "3511D08947601EBE72C3F157A19A7F2996B56428C313A82CBBF32933D07037F1"
+        }
+      ]
+    }
+  ],
+  "priorAgentRecoveryFailuresRetained": [
+    {
+      "configuration": "Release",
+      "candidate": "d6-finite-newbody-draft-2",
+      "audit": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\d6-finite-newbody-draft-2\\agent189-release-1-verification.json",
+        "sha256": "D84C9825F00CE0D10B187636EE1D418971D5B693E47DF6EAD86BA8D2A18A63B8"
+      },
+      "failures": [
+        {
+          "name": "Cadoryx.Tests.AgentEmptyResponseRecoveryTests.RecoveryDirectiveRetainsAllTwelveToolsWithTheOriginalDefaultBudgets(aggressive: True)",
+          "message": "Assert.Equal() Failure: Values differ\r\nExpected: 12\r\nActual:   11",
+          "stack": "   at Cadoryx.Tests.AgentEmptyResponseRecoveryTests.RecoveryDirectiveRetainsAllTwelveToolsWithTheOriginalDefaultBudgets(Boolean aggressive) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\d6-finite-newbody-draft-2\\workspace-1\\Cadoryx.Tests\\AgentEmptyResponseRecoveryTests.cs:line 137\r\n   at InvokeStub_AgentEmptyResponseRecoveryTests.RecoveryDirectiveRetainsAllTwelveToolsWithTheOriginalDefaultBudgets(Object, Span`1)\r\n   at System.Reflection.MethodBaseInvoker.InvokeWithOneArg(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)"
+        }
+      ]
+    },
+    {
+      "configuration": "Release",
+      "candidate": "f5-drawing-source-path-feedback-draft-2",
+      "audit": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\f5-drawing-source-path-feedback-draft-2\\agent189-release-1-verification.json",
+        "sha256": "12B56FDBBFAA3BDA5E5AD183FDBA39F7BF6942B9434F57F542338F0CBA3599F3"
+      },
+      "failures": [
+        {
+          "name": "Cadoryx.Tests.AgentEmptyResponseRecoveryTests.RecoveryDirectiveRetainsAllTwelveToolsWithTheOriginalDefaultBudgets(aggressive: True)",
+          "message": "Assert.Equal() Failure: Values differ\r\nExpected: 12\r\nActual:   11",
+          "stack": "   at Cadoryx.Tests.AgentEmptyResponseRecoveryTests.RecoveryDirectiveRetainsAllTwelveToolsWithTheOriginalDefaultBudgets(Boolean aggressive) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\f5-drawing-source-path-feedback-draft-2\\workspace-1\\Cadoryx.Tests\\AgentEmptyResponseRecoveryTests.cs:line 137\r\n   at InvokeStub_AgentEmptyResponseRecoveryTests.RecoveryDirectiveRetainsAllTwelveToolsWithTheOriginalDefaultBudgets(Object, Span`1)\r\n   at System.Reflection.MethodBaseInvoker.InvokeWithOneArg(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)"
+        }
+      ]
+    },
+    {
+      "configuration": "Debug",
+      "candidate": "d6-finite-newbody-draft-2",
+      "audit": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\d6-finite-newbody-draft-2\\agent189-debug-1-verification.json",
+        "sha256": "1131A66422C32622E869722C99A8370D2BE417BBE6E293602FF63CE43AF952BF"
+      },
+      "failures": [
+        {
+          "name": "Cadoryx.Tests.AgentEmptyResponseRecoveryTests.RecoveryDirectiveRetainsAllTwelveToolsWithTheOriginalDefaultBudgets(aggressive: True)",
+          "message": "Assert.Equal() Failure: Values differ\r\nExpected: 12\r\nActual:   11",
+          "stack": "   at Cadoryx.Tests.AgentEmptyResponseRecoveryTests.RecoveryDirectiveRetainsAllTwelveToolsWithTheOriginalDefaultBudgets(Boolean aggressive) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\d6-finite-newbody-draft-2\\workspace-1\\Cadoryx.Tests\\AgentEmptyResponseRecoveryTests.cs:line 137\r\n   at InvokeStub_AgentEmptyResponseRecoveryTests.RecoveryDirectiveRetainsAllTwelveToolsWithTheOriginalDefaultBudgets(Object, Span`1)\r\n   at System.Reflection.RuntimeMethodInfo.Invoke(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)"
+        }
+      ]
+    },
+    {
+      "configuration": "Debug",
+      "candidate": "f5-drawing-source-path-feedback-draft-2",
+      "audit": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\f5-drawing-source-path-feedback-draft-2\\agent189-debug-1-verification.json",
+        "sha256": "70F8D6FCE692C9D2C7930D464D5F556CB65462EFC5E6099024EE63A21220628A"
+      },
+      "failures": [
+        {
+          "name": "Cadoryx.Tests.AgentEmptyResponseRecoveryTests.RecoveryDirectiveRetainsAllTwelveToolsWithTheOriginalDefaultBudgets(aggressive: True)",
+          "message": "Assert.Equal() Failure: Values differ\r\nExpected: 12\r\nActual:   11",
+          "stack": "   at Cadoryx.Tests.AgentEmptyResponseRecoveryTests.RecoveryDirectiveRetainsAllTwelveToolsWithTheOriginalDefaultBudgets(Boolean aggressive) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\f5-drawing-source-path-feedback-draft-2\\workspace-1\\Cadoryx.Tests\\AgentEmptyResponseRecoveryTests.cs:line 137\r\n   at InvokeStub_AgentEmptyResponseRecoveryTests.RecoveryDirectiveRetainsAllTwelveToolsWithTheOriginalDefaultBudgets(Object, Span`1)\r\n   at System.Reflection.RuntimeMethodInfo.Invoke(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)"
+        }
+      ]
+    }
+  ],
+  "actualToolBudgetDiagnostic": {
+    "before": {
+      "rows": [
+        {
+          "aggressive": false,
+          "selected": [
+            "cad_drawing",
+            "cad_status",
+            "cad_inspect",
+            "cad_command",
+            "cad_select",
+            "cad_workspace",
+            "cad_file",
+            "cad_history",
+            "cad_edit",
+            "cad_parameter",
+            "cad_model",
+            "cad_datum"
+          ],
+          "fitted": [
+            "cad_drawing",
+            "cad_status",
+            "cad_inspect",
+            "cad_command",
+            "cad_select",
+            "cad_workspace",
+            "cad_file",
+            "cad_history",
+            "cad_edit",
+            "cad_parameter",
+            "cad_model",
+            "cad_datum"
+          ],
+          "system": 35,
+          "history": 28,
+          "maxOutput": 1024,
+          "availableToolTokens": 6237,
+          "totalToolCost": 5606,
+          "overflow": -631,
+          "costs": [
+            {
+              "name": "cad_drawing",
+              "cost": 455
+            },
+            {
+              "name": "cad_status",
+              "cost": 53
+            },
+            {
+              "name": "cad_inspect",
+              "cost": 250
+            },
+            {
+              "name": "cad_command",
+              "cost": 113
+            },
+            {
+              "name": "cad_select",
+              "cost": 123
+            },
+            {
+              "name": "cad_workspace",
+              "cost": 405
+            },
+            {
+              "name": "cad_file",
+              "cost": 406
+            },
+            {
+              "name": "cad_history",
+              "cost": 512
+            },
+            {
+              "name": "cad_edit",
+              "cost": 677
+            },
+            {
+              "name": "cad_parameter",
+              "cost": 835
+            },
+            {
+              "name": "cad_model",
+              "cost": 835
+            },
+            {
+              "name": "cad_datum",
+              "cost": 942
+            }
+          ],
+          "estimatedPrompt": 5669,
+          "originalBudgetsAndAlgorithmUnchanged": true
+        },
+        {
+          "aggressive": true,
+          "selected": [
+            "cad_drawing",
+            "cad_status",
+            "cad_inspect",
+            "cad_command",
+            "cad_select",
+            "cad_workspace",
+            "cad_file",
+            "cad_history",
+            "cad_edit",
+            "cad_parameter",
+            "cad_model",
+            "cad_datum"
+          ],
+          "fitted": [
+            "cad_drawing",
+            "cad_status",
+            "cad_inspect",
+            "cad_command",
+            "cad_select",
+            "cad_workspace",
+            "cad_file",
+            "cad_history",
+            "cad_edit",
+            "cad_parameter",
+            "cad_model"
+          ],
+          "system": 35,
+          "history": 28,
+          "maxOutput": 1024,
+          "availableToolTokens": 5597,
+          "totalToolCost": 5606,
+          "overflow": 9,
+          "costs": [
+            {
+              "name": "cad_drawing",
+              "cost": 455
+            },
+            {
+              "name": "cad_status",
+              "cost": 53
+            },
+            {
+              "name": "cad_inspect",
+              "cost": 250
+            },
+            {
+              "name": "cad_command",
+              "cost": 113
+            },
+            {
+              "name": "cad_select",
+              "cost": 123
+            },
+            {
+              "name": "cad_workspace",
+              "cost": 405
+            },
+            {
+              "name": "cad_file",
+              "cost": 406
+            },
+            {
+              "name": "cad_history",
+              "cost": 512
+            },
+            {
+              "name": "cad_edit",
+              "cost": 677
+            },
+            {
+              "name": "cad_parameter",
+              "cost": 835
+            },
+            {
+              "name": "cad_model",
+              "cost": 835
+            },
+            {
+              "name": "cad_datum",
+              "cost": 942
+            }
+          ],
+          "estimatedPrompt": 4727,
+          "originalBudgetsAndAlgorithmUnchanged": true
+        }
+      ],
+      "output": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\f5-tool-budget-diagnostic-1\\runtime-2.log",
+        "sha256": "56D34E4F088F76CA9603FD873ACBE5A122E61BA7E1A6B2465AA36884EA1EEE1E"
+      },
+      "terminal": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\f5-tool-budget-diagnostic-1\\runtime-2-exit.json",
+        "sha256": "4B0F06CF70C3B98B6F3F5CD6F11FE649EC83F06FB98FDD9BF09898010B8A8D57"
+      }
+    },
+    "after": {
+      "rows": [
+        {
+          "aggressive": false,
+          "selected": [
+            "cad_drawing",
+            "cad_status",
+            "cad_inspect",
+            "cad_command",
+            "cad_select",
+            "cad_workspace",
+            "cad_file",
+            "cad_history",
+            "cad_edit",
+            "cad_parameter",
+            "cad_model",
+            "cad_datum"
+          ],
+          "fitted": [
+            "cad_drawing",
+            "cad_status",
+            "cad_inspect",
+            "cad_command",
+            "cad_select",
+            "cad_workspace",
+            "cad_file",
+            "cad_history",
+            "cad_edit",
+            "cad_parameter",
+            "cad_model",
+            "cad_datum"
+          ],
+          "system": 35,
+          "history": 28,
+          "maxOutput": 1024,
+          "availableToolTokens": 6237,
+          "totalToolCost": 5596,
+          "overflow": -641,
+          "costs": [
+            {
+              "name": "cad_drawing",
+              "cost": 445
+            },
+            {
+              "name": "cad_status",
+              "cost": 53
+            },
+            {
+              "name": "cad_inspect",
+              "cost": 250
+            },
+            {
+              "name": "cad_command",
+              "cost": 113
+            },
+            {
+              "name": "cad_select",
+              "cost": 123
+            },
+            {
+              "name": "cad_workspace",
+              "cost": 405
+            },
+            {
+              "name": "cad_file",
+              "cost": 406
+            },
+            {
+              "name": "cad_history",
+              "cost": 512
+            },
+            {
+              "name": "cad_edit",
+              "cost": 677
+            },
+            {
+              "name": "cad_parameter",
+              "cost": 835
+            },
+            {
+              "name": "cad_model",
+              "cost": 835
+            },
+            {
+              "name": "cad_datum",
+              "cost": 942
+            }
+          ],
+          "estimatedPrompt": 5659,
+          "originalBudgetsAndAlgorithmUnchanged": true
+        },
+        {
+          "aggressive": true,
+          "selected": [
+            "cad_drawing",
+            "cad_status",
+            "cad_inspect",
+            "cad_command",
+            "cad_select",
+            "cad_workspace",
+            "cad_file",
+            "cad_history",
+            "cad_edit",
+            "cad_parameter",
+            "cad_model",
+            "cad_datum"
+          ],
+          "fitted": [
+            "cad_drawing",
+            "cad_status",
+            "cad_inspect",
+            "cad_command",
+            "cad_select",
+            "cad_workspace",
+            "cad_file",
+            "cad_history",
+            "cad_edit",
+            "cad_parameter",
+            "cad_model",
+            "cad_datum"
+          ],
+          "system": 35,
+          "history": 28,
+          "maxOutput": 1024,
+          "availableToolTokens": 5597,
+          "totalToolCost": 5596,
+          "overflow": -1,
+          "costs": [
+            {
+              "name": "cad_drawing",
+              "cost": 445
+            },
+            {
+              "name": "cad_status",
+              "cost": 53
+            },
+            {
+              "name": "cad_inspect",
+              "cost": 250
+            },
+            {
+              "name": "cad_command",
+              "cost": 113
+            },
+            {
+              "name": "cad_select",
+              "cost": 123
+            },
+            {
+              "name": "cad_workspace",
+              "cost": 405
+            },
+            {
+              "name": "cad_file",
+              "cost": 406
+            },
+            {
+              "name": "cad_history",
+              "cost": 512
+            },
+            {
+              "name": "cad_edit",
+              "cost": 677
+            },
+            {
+              "name": "cad_parameter",
+              "cost": 835
+            },
+            {
+              "name": "cad_model",
+              "cost": 835
+            },
+            {
+              "name": "cad_datum",
+              "cost": 942
+            }
+          ],
+          "estimatedPrompt": 5659,
+          "originalBudgetsAndAlgorithmUnchanged": true
+        }
+      ],
+      "output": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\f5-tool-budget-diagnostic-1\\runtime-3.log",
+        "sha256": "1B916B050C2AB8E661DB522B2281EACF996578FE47E7A5405C0DDEAD45671DFF"
+      },
+      "terminal": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\f5-tool-budget-diagnostic-1\\runtime-3-exit.json",
+        "sha256": "A33CAECC24A21F5F27C971175C3641FA2F9BD24C609155F0537E5F99324ED4B2"
+      }
+    }
+  },
+  "toolAlgorithmAndBudgetsUnchanged": true,
+  "shortRecoveryAggressiveMarginTokens": 1,
+  "arbitraryLongConversationsTwelveToolsGuaranteed": false,
+  "capability": "cadoryx.finite-surface-new-body.1",
+  "documentSection": 60,
+  "featuresSection": 43,
+  "newCapabilityCreator": "0.7.11",
+  "applicationDebugUsesPackageReleaseNative": true,
+  "prerequisiteDebugUsesRealDebugToolkit": true,
+  "supportedLimits": [
+    "plane",
+    "sphere",
+    "cylinder"
+  ],
+  "start": "explicit planar rigid frame",
+  "nativeFailureFallback": false,
+  "newNativeBindingsAdded": false,
+  "applicationExportGuardChanged": false,
+  "publicUpstreamModified": false,
+  "full6619": "NOT_RUN",
+  "actualWpfWindows": "NOT_RUN",
+  "provider": "NOT_RUN",
+  "performanceAcceptance": false,
+  "productionApplied": false,
+  "productionSourceCount": 1000,
+  "productionSdk": 26,
+  "cleanup": false,
+  "desktopInputStarted": false,
+  "AF": "ACTIVE",
+  "G": "USER_DEFERRED"
+}

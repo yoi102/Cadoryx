@@ -1,0 +1,1566 @@
+{
+  "recordedAt": "2026-10-12T01:45:44.400626+00:00",
+  "state": "PASS_BOTH_NATIVE_CONFIGS_12_POSITIVE_MATERIAL_AND4_UNDERSIZED_FINITE_DOMAIN_REJECTIONS",
+  "sdk": {
+    "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\capability-evidence\\AF_PRIVATE_SDK31_PACKAGE_CONSUMER_VERIFICATION.json",
+    "sha256": "49358C99F69832FBF154A28AF0270914F52604B9031975C459562388257570CC"
+  },
+  "trackedDiagnosticSources": [
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\capability-evidence\\diagnostics\\d6-finite-newbody\\CMakeLists.txt",
+      "sha256": "A9DAB76E16090C25DC4FCCC59F83F6BDAD74ED00B1C2B67AB93D58EC63AF42BE"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\capability-evidence\\diagnostics\\d6-finite-newbody\\finite-standalone.cpp",
+      "sha256": "1660D6000DE6B60021E17B1503E9B0F207DD3E011DD2C0BB83ECA63DB6920525"
+    }
+  ],
+  "records": [
+    {
+      "configuration": "Release",
+      "kind": "plane",
+      "syntheticSeed": false,
+      "terminal": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\d6-finite-newbody-native-probe-3\\runtime-release-plane-1-0-1-exit.json",
+        "sha256": "877638B9DBAFD53752303D44EC0D86066B97C7C4A0F3FC83E5921951F00A4553"
+      },
+      "volume": 112.00000000000003,
+      "expected": 112.0,
+      "error": 2.842170943040401e-14,
+      "capArea": 16.0,
+      "capOutside": 0.0,
+      "sourceBrepBytePreserved": true,
+      "nativeModules": [
+        {
+          "name": "TKMath.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Release\\TKMath.dll",
+          "sha256": "2C41EFC32C025D1E7753548498027AA240D315B455BF36130432EA23E5860A2A"
+        },
+        {
+          "name": "TKernel.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Release\\TKernel.dll",
+          "sha256": "3ECBC7F193EBB746CC88A81E03EB603D24FDF03470B346551698F45D4FAEB7B4"
+        },
+        {
+          "name": "TKBRep.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Release\\TKBRep.dll",
+          "sha256": "A511C8CF51178CF881C3BA0B54287DCECE6DED03CF3DE99E6FABF2A2D5152207"
+        },
+        {
+          "name": "TKGeomBase.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Release\\TKGeomBase.dll",
+          "sha256": "6BD91D22B6A893884BA74FEC8C352F68BCF0F79096D00F52119D4810EF42567E"
+        },
+        {
+          "name": "TKTopAlgo.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Release\\TKTopAlgo.dll",
+          "sha256": "6690CE35FCF32BD2C379D12A21ABDE6BAF023087F3EEFBCCC5AE40E416B0B107"
+        },
+        {
+          "name": "TKPrim.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Release\\TKPrim.dll",
+          "sha256": "37DE279166407566D7FFF2DD063638FDF1F8DC89C0D030E550AA4868585F49DD"
+        },
+        {
+          "name": "TKBO.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Release\\TKBO.dll",
+          "sha256": "41F837935BCC65882ACD73295EF65CA13D47B018ACDCB6093FAF47804B96D0C5"
+        },
+        {
+          "name": "TKBool.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Release\\TKBool.dll",
+          "sha256": "FA76C5374AE85E1649F27DA41ED0B45EC36C68C413ACE84554198CF39D11DAFD"
+        },
+        {
+          "name": "TKFeat.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Release\\TKFeat.dll",
+          "sha256": "05F968C96DD0C170463B09F0121DB70E3DB720250634959C91C42396F9437141"
+        },
+        {
+          "name": "TKG2d.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Release\\TKG2d.dll",
+          "sha256": "0D87A20363CFB66F7862FBC9AA7234059D13712B3A0D7E6B35CBB0172810A93C"
+        },
+        {
+          "name": "TKG3d.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Release\\TKG3d.dll",
+          "sha256": "8A13921267C5839C0D8D4395DAE33FC5C1F80F8D03C0D8C0CEB153AA3DA35C6C"
+        },
+        {
+          "name": "TKGeomAlgo.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Release\\TKGeomAlgo.dll",
+          "sha256": "154E047A29217C0FAF101EC0B8119D6D327E89560CD82CB18D17EC48D508883B"
+        },
+        {
+          "name": "TKShHealing.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Release\\TKShHealing.dll",
+          "sha256": "91E87BD3E5A3267C4A2D97B171EA05FA21FE1B78A2B905F7CF7E3CF19F5CD43E"
+        }
+      ],
+      "undersizedFaceRejectedByFiniteCoverage": false
+    },
+    {
+      "configuration": "Release",
+      "kind": "plane",
+      "syntheticSeed": true,
+      "terminal": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\d6-finite-newbody-native-probe-3\\runtime-release-plane-1-1-1-exit.json",
+        "sha256": "10ADABAE99E3B4C78AC1992BFFAA6071A3F0ECF98048044CC2284EF5C56B4B7A"
+      },
+      "volume": 112.00000000000003,
+      "expected": 112.0,
+      "error": 2.842170943040401e-14,
+      "capArea": 16.0,
+      "capOutside": 0.0,
+      "sourceBrepBytePreserved": true,
+      "nativeModules": [
+        {
+          "name": "TKMath.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Release\\TKMath.dll",
+          "sha256": "2C41EFC32C025D1E7753548498027AA240D315B455BF36130432EA23E5860A2A"
+        },
+        {
+          "name": "TKernel.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Release\\TKernel.dll",
+          "sha256": "3ECBC7F193EBB746CC88A81E03EB603D24FDF03470B346551698F45D4FAEB7B4"
+        },
+        {
+          "name": "TKGeomBase.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Release\\TKGeomBase.dll",
+          "sha256": "6BD91D22B6A893884BA74FEC8C352F68BCF0F79096D00F52119D4810EF42567E"
+        },
+        {
+          "name": "TKBRep.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Release\\TKBRep.dll",
+          "sha256": "A511C8CF51178CF881C3BA0B54287DCECE6DED03CF3DE99E6FABF2A2D5152207"
+        },
+        {
+          "name": "TKTopAlgo.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Release\\TKTopAlgo.dll",
+          "sha256": "6690CE35FCF32BD2C379D12A21ABDE6BAF023087F3EEFBCCC5AE40E416B0B107"
+        },
+        {
+          "name": "TKPrim.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Release\\TKPrim.dll",
+          "sha256": "37DE279166407566D7FFF2DD063638FDF1F8DC89C0D030E550AA4868585F49DD"
+        },
+        {
+          "name": "TKBO.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Release\\TKBO.dll",
+          "sha256": "41F837935BCC65882ACD73295EF65CA13D47B018ACDCB6093FAF47804B96D0C5"
+        },
+        {
+          "name": "TKBool.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Release\\TKBool.dll",
+          "sha256": "FA76C5374AE85E1649F27DA41ED0B45EC36C68C413ACE84554198CF39D11DAFD"
+        },
+        {
+          "name": "TKFeat.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Release\\TKFeat.dll",
+          "sha256": "05F968C96DD0C170463B09F0121DB70E3DB720250634959C91C42396F9437141"
+        },
+        {
+          "name": "TKG3d.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Release\\TKG3d.dll",
+          "sha256": "8A13921267C5839C0D8D4395DAE33FC5C1F80F8D03C0D8C0CEB153AA3DA35C6C"
+        },
+        {
+          "name": "TKG2d.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Release\\TKG2d.dll",
+          "sha256": "0D87A20363CFB66F7862FBC9AA7234059D13712B3A0D7E6B35CBB0172810A93C"
+        },
+        {
+          "name": "TKGeomAlgo.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Release\\TKGeomAlgo.dll",
+          "sha256": "154E047A29217C0FAF101EC0B8119D6D327E89560CD82CB18D17EC48D508883B"
+        },
+        {
+          "name": "TKShHealing.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Release\\TKShHealing.dll",
+          "sha256": "91E87BD3E5A3267C4A2D97B171EA05FA21FE1B78A2B905F7CF7E3CF19F5CD43E"
+        }
+      ],
+      "undersizedFaceRejectedByFiniteCoverage": false
+    },
+    {
+      "configuration": "Release",
+      "kind": "sphere",
+      "syntheticSeed": false,
+      "terminal": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\d6-finite-newbody-native-probe-3\\runtime-release-sphere-1-0-1-exit.json",
+        "sha256": "C131678D1FC7A1DF79A21CFC898DE7018372650A1EC76B591DC5D154FDE1533F"
+      },
+      "volume": 90.09948659258475,
+      "expected": 90.09948659258632,
+      "error": 1.5631940186722204e-12,
+      "capArea": 12.936290026861956,
+      "capOutside": 0.0,
+      "sourceBrepBytePreserved": true,
+      "nativeModules": [
+        {
+          "name": "TKGeomBase.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Release\\TKGeomBase.dll",
+          "sha256": "6BD91D22B6A893884BA74FEC8C352F68BCF0F79096D00F52119D4810EF42567E"
+        },
+        {
+          "name": "TKBRep.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Release\\TKBRep.dll",
+          "sha256": "A511C8CF51178CF881C3BA0B54287DCECE6DED03CF3DE99E6FABF2A2D5152207"
+        },
+        {
+          "name": "TKernel.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Release\\TKernel.dll",
+          "sha256": "3ECBC7F193EBB746CC88A81E03EB603D24FDF03470B346551698F45D4FAEB7B4"
+        },
+        {
+          "name": "TKMath.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Release\\TKMath.dll",
+          "sha256": "2C41EFC32C025D1E7753548498027AA240D315B455BF36130432EA23E5860A2A"
+        },
+        {
+          "name": "TKPrim.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Release\\TKPrim.dll",
+          "sha256": "37DE279166407566D7FFF2DD063638FDF1F8DC89C0D030E550AA4868585F49DD"
+        },
+        {
+          "name": "TKTopAlgo.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Release\\TKTopAlgo.dll",
+          "sha256": "6690CE35FCF32BD2C379D12A21ABDE6BAF023087F3EEFBCCC5AE40E416B0B107"
+        },
+        {
+          "name": "TKBO.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Release\\TKBO.dll",
+          "sha256": "41F837935BCC65882ACD73295EF65CA13D47B018ACDCB6093FAF47804B96D0C5"
+        },
+        {
+          "name": "TKBool.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Release\\TKBool.dll",
+          "sha256": "FA76C5374AE85E1649F27DA41ED0B45EC36C68C413ACE84554198CF39D11DAFD"
+        },
+        {
+          "name": "TKFeat.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Release\\TKFeat.dll",
+          "sha256": "05F968C96DD0C170463B09F0121DB70E3DB720250634959C91C42396F9437141"
+        },
+        {
+          "name": "TKG2d.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Release\\TKG2d.dll",
+          "sha256": "0D87A20363CFB66F7862FBC9AA7234059D13712B3A0D7E6B35CBB0172810A93C"
+        },
+        {
+          "name": "TKG3d.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Release\\TKG3d.dll",
+          "sha256": "8A13921267C5839C0D8D4395DAE33FC5C1F80F8D03C0D8C0CEB153AA3DA35C6C"
+        },
+        {
+          "name": "TKGeomAlgo.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Release\\TKGeomAlgo.dll",
+          "sha256": "154E047A29217C0FAF101EC0B8119D6D327E89560CD82CB18D17EC48D508883B"
+        },
+        {
+          "name": "TKShHealing.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Release\\TKShHealing.dll",
+          "sha256": "91E87BD3E5A3267C4A2D97B171EA05FA21FE1B78A2B905F7CF7E3CF19F5CD43E"
+        }
+      ],
+      "undersizedFaceRejectedByFiniteCoverage": false
+    },
+    {
+      "configuration": "Release",
+      "kind": "sphere",
+      "syntheticSeed": true,
+      "terminal": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\d6-finite-newbody-native-probe-3\\runtime-release-sphere-1-1-1-exit.json",
+        "sha256": "FF36098AFF09A40890CEDFF0BE0BCFB13D1999CB4918DDC552A1CC0BC60657BF"
+      },
+      "volume": 90.09948659258474,
+      "expected": 90.09948659258632,
+      "error": 1.5774048733874224e-12,
+      "capArea": 12.936290026861956,
+      "capOutside": 0.0,
+      "sourceBrepBytePreserved": true,
+      "nativeModules": [
+        {
+          "name": "TKGeomBase.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Release\\TKGeomBase.dll",
+          "sha256": "6BD91D22B6A893884BA74FEC8C352F68BCF0F79096D00F52119D4810EF42567E"
+        },
+        {
+          "name": "TKBRep.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Release\\TKBRep.dll",
+          "sha256": "A511C8CF51178CF881C3BA0B54287DCECE6DED03CF3DE99E6FABF2A2D5152207"
+        },
+        {
+          "name": "TKMath.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Release\\TKMath.dll",
+          "sha256": "2C41EFC32C025D1E7753548498027AA240D315B455BF36130432EA23E5860A2A"
+        },
+        {
+          "name": "TKernel.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Release\\TKernel.dll",
+          "sha256": "3ECBC7F193EBB746CC88A81E03EB603D24FDF03470B346551698F45D4FAEB7B4"
+        },
+        {
+          "name": "TKTopAlgo.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Release\\TKTopAlgo.dll",
+          "sha256": "6690CE35FCF32BD2C379D12A21ABDE6BAF023087F3EEFBCCC5AE40E416B0B107"
+        },
+        {
+          "name": "TKPrim.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Release\\TKPrim.dll",
+          "sha256": "37DE279166407566D7FFF2DD063638FDF1F8DC89C0D030E550AA4868585F49DD"
+        },
+        {
+          "name": "TKBO.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Release\\TKBO.dll",
+          "sha256": "41F837935BCC65882ACD73295EF65CA13D47B018ACDCB6093FAF47804B96D0C5"
+        },
+        {
+          "name": "TKBool.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Release\\TKBool.dll",
+          "sha256": "FA76C5374AE85E1649F27DA41ED0B45EC36C68C413ACE84554198CF39D11DAFD"
+        },
+        {
+          "name": "TKFeat.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Release\\TKFeat.dll",
+          "sha256": "05F968C96DD0C170463B09F0121DB70E3DB720250634959C91C42396F9437141"
+        },
+        {
+          "name": "TKG2d.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Release\\TKG2d.dll",
+          "sha256": "0D87A20363CFB66F7862FBC9AA7234059D13712B3A0D7E6B35CBB0172810A93C"
+        },
+        {
+          "name": "TKG3d.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Release\\TKG3d.dll",
+          "sha256": "8A13921267C5839C0D8D4395DAE33FC5C1F80F8D03C0D8C0CEB153AA3DA35C6C"
+        },
+        {
+          "name": "TKGeomAlgo.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Release\\TKGeomAlgo.dll",
+          "sha256": "154E047A29217C0FAF101EC0B8119D6D327E89560CD82CB18D17EC48D508883B"
+        },
+        {
+          "name": "TKShHealing.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Release\\TKShHealing.dll",
+          "sha256": "91E87BD3E5A3267C4A2D97B171EA05FA21FE1B78A2B905F7CF7E3CF19F5CD43E"
+        }
+      ],
+      "undersizedFaceRejectedByFiniteCoverage": false
+    },
+    {
+      "configuration": "Release",
+      "kind": "cylinder",
+      "syntheticSeed": false,
+      "terminal": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\d6-finite-newbody-native-probe-3\\runtime-release-cylinder-1-0-1-exit.json",
+        "sha256": "2E7280ECEEA71ABE6FAFEC31445E8B021621F23DDEBD39A7C2B1580174092859"
+      },
+      "volume": 113.80865104266742,
+      "expected": 113.8086510426674,
+      "error": 1.4210854715202004e-14,
+      "capArea": 16.312171653797854,
+      "capOutside": 0.0,
+      "sourceBrepBytePreserved": true,
+      "nativeModules": [
+        {
+          "name": "TKGeomBase.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Release\\TKGeomBase.dll",
+          "sha256": "6BD91D22B6A893884BA74FEC8C352F68BCF0F79096D00F52119D4810EF42567E"
+        },
+        {
+          "name": "TKBRep.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Release\\TKBRep.dll",
+          "sha256": "A511C8CF51178CF881C3BA0B54287DCECE6DED03CF3DE99E6FABF2A2D5152207"
+        },
+        {
+          "name": "TKernel.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Release\\TKernel.dll",
+          "sha256": "3ECBC7F193EBB746CC88A81E03EB603D24FDF03470B346551698F45D4FAEB7B4"
+        },
+        {
+          "name": "TKMath.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Release\\TKMath.dll",
+          "sha256": "2C41EFC32C025D1E7753548498027AA240D315B455BF36130432EA23E5860A2A"
+        },
+        {
+          "name": "TKTopAlgo.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Release\\TKTopAlgo.dll",
+          "sha256": "6690CE35FCF32BD2C379D12A21ABDE6BAF023087F3EEFBCCC5AE40E416B0B107"
+        },
+        {
+          "name": "TKPrim.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Release\\TKPrim.dll",
+          "sha256": "37DE279166407566D7FFF2DD063638FDF1F8DC89C0D030E550AA4868585F49DD"
+        },
+        {
+          "name": "TKBO.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Release\\TKBO.dll",
+          "sha256": "41F837935BCC65882ACD73295EF65CA13D47B018ACDCB6093FAF47804B96D0C5"
+        },
+        {
+          "name": "TKBool.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Release\\TKBool.dll",
+          "sha256": "FA76C5374AE85E1649F27DA41ED0B45EC36C68C413ACE84554198CF39D11DAFD"
+        },
+        {
+          "name": "TKFeat.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Release\\TKFeat.dll",
+          "sha256": "05F968C96DD0C170463B09F0121DB70E3DB720250634959C91C42396F9437141"
+        },
+        {
+          "name": "TKG2d.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Release\\TKG2d.dll",
+          "sha256": "0D87A20363CFB66F7862FBC9AA7234059D13712B3A0D7E6B35CBB0172810A93C"
+        },
+        {
+          "name": "TKG3d.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Release\\TKG3d.dll",
+          "sha256": "8A13921267C5839C0D8D4395DAE33FC5C1F80F8D03C0D8C0CEB153AA3DA35C6C"
+        },
+        {
+          "name": "TKGeomAlgo.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Release\\TKGeomAlgo.dll",
+          "sha256": "154E047A29217C0FAF101EC0B8119D6D327E89560CD82CB18D17EC48D508883B"
+        },
+        {
+          "name": "TKShHealing.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Release\\TKShHealing.dll",
+          "sha256": "91E87BD3E5A3267C4A2D97B171EA05FA21FE1B78A2B905F7CF7E3CF19F5CD43E"
+        }
+      ],
+      "undersizedFaceRejectedByFiniteCoverage": false
+    },
+    {
+      "configuration": "Release",
+      "kind": "cylinder",
+      "syntheticSeed": true,
+      "terminal": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\d6-finite-newbody-native-probe-3\\runtime-release-cylinder-1-1-1-exit.json",
+        "sha256": "8A0A3D0D7C9E401FBE7980A81B2C11FBED8E0CFDECAAC94D202AB55B4E95297B"
+      },
+      "volume": 113.80865104266742,
+      "expected": 113.8086510426674,
+      "error": 1.4210854715202004e-14,
+      "capArea": 16.312171653797854,
+      "capOutside": 0.0,
+      "sourceBrepBytePreserved": true,
+      "nativeModules": [
+        {
+          "name": "TKGeomBase.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Release\\TKGeomBase.dll",
+          "sha256": "6BD91D22B6A893884BA74FEC8C352F68BCF0F79096D00F52119D4810EF42567E"
+        },
+        {
+          "name": "TKMath.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Release\\TKMath.dll",
+          "sha256": "2C41EFC32C025D1E7753548498027AA240D315B455BF36130432EA23E5860A2A"
+        },
+        {
+          "name": "TKernel.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Release\\TKernel.dll",
+          "sha256": "3ECBC7F193EBB746CC88A81E03EB603D24FDF03470B346551698F45D4FAEB7B4"
+        },
+        {
+          "name": "TKBRep.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Release\\TKBRep.dll",
+          "sha256": "A511C8CF51178CF881C3BA0B54287DCECE6DED03CF3DE99E6FABF2A2D5152207"
+        },
+        {
+          "name": "TKTopAlgo.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Release\\TKTopAlgo.dll",
+          "sha256": "6690CE35FCF32BD2C379D12A21ABDE6BAF023087F3EEFBCCC5AE40E416B0B107"
+        },
+        {
+          "name": "TKPrim.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Release\\TKPrim.dll",
+          "sha256": "37DE279166407566D7FFF2DD063638FDF1F8DC89C0D030E550AA4868585F49DD"
+        },
+        {
+          "name": "TKBO.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Release\\TKBO.dll",
+          "sha256": "41F837935BCC65882ACD73295EF65CA13D47B018ACDCB6093FAF47804B96D0C5"
+        },
+        {
+          "name": "TKBool.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Release\\TKBool.dll",
+          "sha256": "FA76C5374AE85E1649F27DA41ED0B45EC36C68C413ACE84554198CF39D11DAFD"
+        },
+        {
+          "name": "TKFeat.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Release\\TKFeat.dll",
+          "sha256": "05F968C96DD0C170463B09F0121DB70E3DB720250634959C91C42396F9437141"
+        },
+        {
+          "name": "TKG2d.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Release\\TKG2d.dll",
+          "sha256": "0D87A20363CFB66F7862FBC9AA7234059D13712B3A0D7E6B35CBB0172810A93C"
+        },
+        {
+          "name": "TKG3d.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Release\\TKG3d.dll",
+          "sha256": "8A13921267C5839C0D8D4395DAE33FC5C1F80F8D03C0D8C0CEB153AA3DA35C6C"
+        },
+        {
+          "name": "TKGeomAlgo.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Release\\TKGeomAlgo.dll",
+          "sha256": "154E047A29217C0FAF101EC0B8119D6D327E89560CD82CB18D17EC48D508883B"
+        },
+        {
+          "name": "TKShHealing.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Release\\TKShHealing.dll",
+          "sha256": "91E87BD3E5A3267C4A2D97B171EA05FA21FE1B78A2B905F7CF7E3CF19F5CD43E"
+        }
+      ],
+      "undersizedFaceRejectedByFiniteCoverage": false
+    },
+    {
+      "configuration": "Release",
+      "kind": "small",
+      "syntheticSeed": false,
+      "terminal": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\d6-finite-newbody-native-probe-3\\runtime-release-small-1-0-1-exit.json",
+        "sha256": "3B00494079FB846F7FB5AF82076229DBBF68778A4B2A23C372C69F075196E6F5"
+      },
+      "volume": 768.0000128000001,
+      "expected": 112.0,
+      "error": 656.0000128000001,
+      "capArea": 0.0,
+      "capOutside": 0.0,
+      "sourceBrepBytePreserved": true,
+      "nativeModules": [
+        {
+          "name": "TKMath.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Release\\TKMath.dll",
+          "sha256": "2C41EFC32C025D1E7753548498027AA240D315B455BF36130432EA23E5860A2A"
+        },
+        {
+          "name": "TKernel.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Release\\TKernel.dll",
+          "sha256": "3ECBC7F193EBB746CC88A81E03EB603D24FDF03470B346551698F45D4FAEB7B4"
+        },
+        {
+          "name": "TKBRep.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Release\\TKBRep.dll",
+          "sha256": "A511C8CF51178CF881C3BA0B54287DCECE6DED03CF3DE99E6FABF2A2D5152207"
+        },
+        {
+          "name": "TKGeomBase.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Release\\TKGeomBase.dll",
+          "sha256": "6BD91D22B6A893884BA74FEC8C352F68BCF0F79096D00F52119D4810EF42567E"
+        },
+        {
+          "name": "TKPrim.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Release\\TKPrim.dll",
+          "sha256": "37DE279166407566D7FFF2DD063638FDF1F8DC89C0D030E550AA4868585F49DD"
+        },
+        {
+          "name": "TKTopAlgo.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Release\\TKTopAlgo.dll",
+          "sha256": "6690CE35FCF32BD2C379D12A21ABDE6BAF023087F3EEFBCCC5AE40E416B0B107"
+        },
+        {
+          "name": "TKBO.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Release\\TKBO.dll",
+          "sha256": "41F837935BCC65882ACD73295EF65CA13D47B018ACDCB6093FAF47804B96D0C5"
+        },
+        {
+          "name": "TKFeat.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Release\\TKFeat.dll",
+          "sha256": "05F968C96DD0C170463B09F0121DB70E3DB720250634959C91C42396F9437141"
+        },
+        {
+          "name": "TKBool.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Release\\TKBool.dll",
+          "sha256": "FA76C5374AE85E1649F27DA41ED0B45EC36C68C413ACE84554198CF39D11DAFD"
+        },
+        {
+          "name": "TKG3d.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Release\\TKG3d.dll",
+          "sha256": "8A13921267C5839C0D8D4395DAE33FC5C1F80F8D03C0D8C0CEB153AA3DA35C6C"
+        },
+        {
+          "name": "TKG2d.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Release\\TKG2d.dll",
+          "sha256": "0D87A20363CFB66F7862FBC9AA7234059D13712B3A0D7E6B35CBB0172810A93C"
+        },
+        {
+          "name": "TKGeomAlgo.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Release\\TKGeomAlgo.dll",
+          "sha256": "154E047A29217C0FAF101EC0B8119D6D327E89560CD82CB18D17EC48D508883B"
+        },
+        {
+          "name": "TKShHealing.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Release\\TKShHealing.dll",
+          "sha256": "91E87BD3E5A3267C4A2D97B171EA05FA21FE1B78A2B905F7CF7E3CF19F5CD43E"
+        }
+      ],
+      "undersizedFaceRejectedByFiniteCoverage": true
+    },
+    {
+      "configuration": "Release",
+      "kind": "small",
+      "syntheticSeed": true,
+      "terminal": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\d6-finite-newbody-native-probe-3\\runtime-release-small-1-1-1-exit.json",
+        "sha256": "F07AC2CDA9C55CE5A990D02E810008AD622A0F5CA914B3B37AED0B732FFD59C6"
+      },
+      "volume": 576.0000128000001,
+      "expected": 112.0,
+      "error": 464.00001280000015,
+      "capArea": 0.0,
+      "capOutside": 0.0,
+      "sourceBrepBytePreserved": true,
+      "nativeModules": [
+        {
+          "name": "TKGeomBase.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Release\\TKGeomBase.dll",
+          "sha256": "6BD91D22B6A893884BA74FEC8C352F68BCF0F79096D00F52119D4810EF42567E"
+        },
+        {
+          "name": "TKernel.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Release\\TKernel.dll",
+          "sha256": "3ECBC7F193EBB746CC88A81E03EB603D24FDF03470B346551698F45D4FAEB7B4"
+        },
+        {
+          "name": "TKBRep.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Release\\TKBRep.dll",
+          "sha256": "A511C8CF51178CF881C3BA0B54287DCECE6DED03CF3DE99E6FABF2A2D5152207"
+        },
+        {
+          "name": "TKMath.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Release\\TKMath.dll",
+          "sha256": "2C41EFC32C025D1E7753548498027AA240D315B455BF36130432EA23E5860A2A"
+        },
+        {
+          "name": "TKPrim.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Release\\TKPrim.dll",
+          "sha256": "37DE279166407566D7FFF2DD063638FDF1F8DC89C0D030E550AA4868585F49DD"
+        },
+        {
+          "name": "TKTopAlgo.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Release\\TKTopAlgo.dll",
+          "sha256": "6690CE35FCF32BD2C379D12A21ABDE6BAF023087F3EEFBCCC5AE40E416B0B107"
+        },
+        {
+          "name": "TKBO.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Release\\TKBO.dll",
+          "sha256": "41F837935BCC65882ACD73295EF65CA13D47B018ACDCB6093FAF47804B96D0C5"
+        },
+        {
+          "name": "TKBool.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Release\\TKBool.dll",
+          "sha256": "FA76C5374AE85E1649F27DA41ED0B45EC36C68C413ACE84554198CF39D11DAFD"
+        },
+        {
+          "name": "TKFeat.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Release\\TKFeat.dll",
+          "sha256": "05F968C96DD0C170463B09F0121DB70E3DB720250634959C91C42396F9437141"
+        },
+        {
+          "name": "TKG2d.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Release\\TKG2d.dll",
+          "sha256": "0D87A20363CFB66F7862FBC9AA7234059D13712B3A0D7E6B35CBB0172810A93C"
+        },
+        {
+          "name": "TKG3d.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Release\\TKG3d.dll",
+          "sha256": "8A13921267C5839C0D8D4395DAE33FC5C1F80F8D03C0D8C0CEB153AA3DA35C6C"
+        },
+        {
+          "name": "TKGeomAlgo.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Release\\TKGeomAlgo.dll",
+          "sha256": "154E047A29217C0FAF101EC0B8119D6D327E89560CD82CB18D17EC48D508883B"
+        },
+        {
+          "name": "TKShHealing.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Release\\TKShHealing.dll",
+          "sha256": "91E87BD3E5A3267C4A2D97B171EA05FA21FE1B78A2B905F7CF7E3CF19F5CD43E"
+        }
+      ],
+      "undersizedFaceRejectedByFiniteCoverage": true
+    },
+    {
+      "configuration": "Debug",
+      "kind": "plane",
+      "syntheticSeed": false,
+      "terminal": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\d6-finite-newbody-native-probe-3\\runtime-debug-plane-1-0-1-exit.json",
+        "sha256": "045F7368E3DB9B76B88ADF63D668BEC40B3ACFE41250739B492B3D35CF52C2FB"
+      },
+      "volume": 112.00000000000003,
+      "expected": 112.0,
+      "error": 2.842170943040401e-14,
+      "capArea": 16.0,
+      "capOutside": 0.0,
+      "sourceBrepBytePreserved": true,
+      "nativeModules": [
+        {
+          "name": "TKernel.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Debug\\TKernel.dll",
+          "sha256": "87992A614FC25899181BBD93B208C81D6C7B3EA11821125B9BA4F74E56C2889D"
+        },
+        {
+          "name": "TKMath.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Debug\\TKMath.dll",
+          "sha256": "B8CE65040509F6799423657100A8A58D6ED87D6572EDAF0B26986E4B80B2FBBC"
+        },
+        {
+          "name": "TKBRep.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Debug\\TKBRep.dll",
+          "sha256": "F7E29DBDB5E4A7EAB5FB73B786E29685DFCFDDE0FC718C1D140C2EB15505E4C8"
+        },
+        {
+          "name": "TKGeomBase.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Debug\\TKGeomBase.dll",
+          "sha256": "D271DBDF83536887CB2708AB27D9058D444E0421DEAF6E2338E59E93704059C4"
+        },
+        {
+          "name": "TKTopAlgo.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Debug\\TKTopAlgo.dll",
+          "sha256": "2E50CBF494204E85B4D745EB321C1BFA498ADE33DD7E5A8F7770786AA80AEB80"
+        },
+        {
+          "name": "TKPrim.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Debug\\TKPrim.dll",
+          "sha256": "EB6687863D5ABF6E1DFBB84A48FEDD27DAFEA9F3147C9EB9F23D3617F6E7D621"
+        },
+        {
+          "name": "TKBool.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Debug\\TKBool.dll",
+          "sha256": "48E6EEDCAE0130E54746C495A9BAE08CF8E1B68E6E2C190BF121A8915FA3F945"
+        },
+        {
+          "name": "TKBO.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Debug\\TKBO.dll",
+          "sha256": "18B699F422DA61A23AAFFD00AAC71A1CFA88F25F6D2DEEFEE44DC5051F1B18BE"
+        },
+        {
+          "name": "TKFeat.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Debug\\TKFeat.dll",
+          "sha256": "AC69DB734499BC67D108142B861FD03F5CB3B17156306E7A0AF03053FDE619CC"
+        },
+        {
+          "name": "TKG2d.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Debug\\TKG2d.dll",
+          "sha256": "2D270096940C8F1DF937FE8953816ABF010C4C3AB2FC1A5B71826199389E171E"
+        },
+        {
+          "name": "TKG3d.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Debug\\TKG3d.dll",
+          "sha256": "1FA4A3216715BAB85C540328D6260101689491A5C87517A883F74D4E941D8A0E"
+        },
+        {
+          "name": "TKGeomAlgo.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Debug\\TKGeomAlgo.dll",
+          "sha256": "F85343E526442D188549DE8040ADF1A917E5915932223C936B3395A383A82B62"
+        },
+        {
+          "name": "TKShHealing.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Debug\\TKShHealing.dll",
+          "sha256": "6577C6EA43E24CD108DEA3BC33E067FD10965660144F36A0F91F6DBBDAF7DC88"
+        }
+      ],
+      "undersizedFaceRejectedByFiniteCoverage": false
+    },
+    {
+      "configuration": "Debug",
+      "kind": "plane",
+      "syntheticSeed": true,
+      "terminal": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\d6-finite-newbody-native-probe-3\\runtime-debug-plane-1-1-1-exit.json",
+        "sha256": "AF0DEA66A8DC117794A2A61ED369CA20EF0A3ED1EE72D18D0D07FDB914D91414"
+      },
+      "volume": 112.00000000000003,
+      "expected": 112.0,
+      "error": 2.842170943040401e-14,
+      "capArea": 16.0,
+      "capOutside": 0.0,
+      "sourceBrepBytePreserved": true,
+      "nativeModules": [
+        {
+          "name": "TKMath.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Debug\\TKMath.dll",
+          "sha256": "B8CE65040509F6799423657100A8A58D6ED87D6572EDAF0B26986E4B80B2FBBC"
+        },
+        {
+          "name": "TKernel.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Debug\\TKernel.dll",
+          "sha256": "87992A614FC25899181BBD93B208C81D6C7B3EA11821125B9BA4F74E56C2889D"
+        },
+        {
+          "name": "TKBRep.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Debug\\TKBRep.dll",
+          "sha256": "F7E29DBDB5E4A7EAB5FB73B786E29685DFCFDDE0FC718C1D140C2EB15505E4C8"
+        },
+        {
+          "name": "TKGeomBase.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Debug\\TKGeomBase.dll",
+          "sha256": "D271DBDF83536887CB2708AB27D9058D444E0421DEAF6E2338E59E93704059C4"
+        },
+        {
+          "name": "TKTopAlgo.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Debug\\TKTopAlgo.dll",
+          "sha256": "2E50CBF494204E85B4D745EB321C1BFA498ADE33DD7E5A8F7770786AA80AEB80"
+        },
+        {
+          "name": "TKPrim.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Debug\\TKPrim.dll",
+          "sha256": "EB6687863D5ABF6E1DFBB84A48FEDD27DAFEA9F3147C9EB9F23D3617F6E7D621"
+        },
+        {
+          "name": "TKBO.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Debug\\TKBO.dll",
+          "sha256": "18B699F422DA61A23AAFFD00AAC71A1CFA88F25F6D2DEEFEE44DC5051F1B18BE"
+        },
+        {
+          "name": "TKBool.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Debug\\TKBool.dll",
+          "sha256": "48E6EEDCAE0130E54746C495A9BAE08CF8E1B68E6E2C190BF121A8915FA3F945"
+        },
+        {
+          "name": "TKFeat.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Debug\\TKFeat.dll",
+          "sha256": "AC69DB734499BC67D108142B861FD03F5CB3B17156306E7A0AF03053FDE619CC"
+        },
+        {
+          "name": "TKG2d.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Debug\\TKG2d.dll",
+          "sha256": "2D270096940C8F1DF937FE8953816ABF010C4C3AB2FC1A5B71826199389E171E"
+        },
+        {
+          "name": "TKG3d.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Debug\\TKG3d.dll",
+          "sha256": "1FA4A3216715BAB85C540328D6260101689491A5C87517A883F74D4E941D8A0E"
+        },
+        {
+          "name": "TKGeomAlgo.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Debug\\TKGeomAlgo.dll",
+          "sha256": "F85343E526442D188549DE8040ADF1A917E5915932223C936B3395A383A82B62"
+        },
+        {
+          "name": "TKShHealing.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Debug\\TKShHealing.dll",
+          "sha256": "6577C6EA43E24CD108DEA3BC33E067FD10965660144F36A0F91F6DBBDAF7DC88"
+        }
+      ],
+      "undersizedFaceRejectedByFiniteCoverage": false
+    },
+    {
+      "configuration": "Debug",
+      "kind": "sphere",
+      "syntheticSeed": false,
+      "terminal": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\d6-finite-newbody-native-probe-3\\runtime-debug-sphere-1-0-1-exit.json",
+        "sha256": "BF72366D946FD963A9A0EAF01BB9D7E317CB91B694EECF5B26575A0DEAED3E0D"
+      },
+      "volume": 90.09948659258475,
+      "expected": 90.09948659258632,
+      "error": 1.5631940186722204e-12,
+      "capArea": 12.936290026861956,
+      "capOutside": 0.0,
+      "sourceBrepBytePreserved": true,
+      "nativeModules": [
+        {
+          "name": "TKernel.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Debug\\TKernel.dll",
+          "sha256": "87992A614FC25899181BBD93B208C81D6C7B3EA11821125B9BA4F74E56C2889D"
+        },
+        {
+          "name": "TKMath.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Debug\\TKMath.dll",
+          "sha256": "B8CE65040509F6799423657100A8A58D6ED87D6572EDAF0B26986E4B80B2FBBC"
+        },
+        {
+          "name": "TKBRep.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Debug\\TKBRep.dll",
+          "sha256": "F7E29DBDB5E4A7EAB5FB73B786E29685DFCFDDE0FC718C1D140C2EB15505E4C8"
+        },
+        {
+          "name": "TKGeomBase.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Debug\\TKGeomBase.dll",
+          "sha256": "D271DBDF83536887CB2708AB27D9058D444E0421DEAF6E2338E59E93704059C4"
+        },
+        {
+          "name": "TKPrim.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Debug\\TKPrim.dll",
+          "sha256": "EB6687863D5ABF6E1DFBB84A48FEDD27DAFEA9F3147C9EB9F23D3617F6E7D621"
+        },
+        {
+          "name": "TKTopAlgo.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Debug\\TKTopAlgo.dll",
+          "sha256": "2E50CBF494204E85B4D745EB321C1BFA498ADE33DD7E5A8F7770786AA80AEB80"
+        },
+        {
+          "name": "TKBO.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Debug\\TKBO.dll",
+          "sha256": "18B699F422DA61A23AAFFD00AAC71A1CFA88F25F6D2DEEFEE44DC5051F1B18BE"
+        },
+        {
+          "name": "TKBool.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Debug\\TKBool.dll",
+          "sha256": "48E6EEDCAE0130E54746C495A9BAE08CF8E1B68E6E2C190BF121A8915FA3F945"
+        },
+        {
+          "name": "TKFeat.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Debug\\TKFeat.dll",
+          "sha256": "AC69DB734499BC67D108142B861FD03F5CB3B17156306E7A0AF03053FDE619CC"
+        },
+        {
+          "name": "TKG2d.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Debug\\TKG2d.dll",
+          "sha256": "2D270096940C8F1DF937FE8953816ABF010C4C3AB2FC1A5B71826199389E171E"
+        },
+        {
+          "name": "TKG3d.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Debug\\TKG3d.dll",
+          "sha256": "1FA4A3216715BAB85C540328D6260101689491A5C87517A883F74D4E941D8A0E"
+        },
+        {
+          "name": "TKGeomAlgo.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Debug\\TKGeomAlgo.dll",
+          "sha256": "F85343E526442D188549DE8040ADF1A917E5915932223C936B3395A383A82B62"
+        },
+        {
+          "name": "TKShHealing.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Debug\\TKShHealing.dll",
+          "sha256": "6577C6EA43E24CD108DEA3BC33E067FD10965660144F36A0F91F6DBBDAF7DC88"
+        }
+      ],
+      "undersizedFaceRejectedByFiniteCoverage": false
+    },
+    {
+      "configuration": "Debug",
+      "kind": "sphere",
+      "syntheticSeed": true,
+      "terminal": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\d6-finite-newbody-native-probe-3\\runtime-debug-sphere-1-1-1-exit.json",
+        "sha256": "B72EB9A518F908C2CB64FAA2BB37ECACC3722A2F09EE09AD8BB4DAF6F5EEAFB0"
+      },
+      "volume": 90.09948659258474,
+      "expected": 90.09948659258632,
+      "error": 1.5774048733874224e-12,
+      "capArea": 12.936290026861956,
+      "capOutside": 0.0,
+      "sourceBrepBytePreserved": true,
+      "nativeModules": [
+        {
+          "name": "TKGeomBase.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Debug\\TKGeomBase.dll",
+          "sha256": "D271DBDF83536887CB2708AB27D9058D444E0421DEAF6E2338E59E93704059C4"
+        },
+        {
+          "name": "TKernel.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Debug\\TKernel.dll",
+          "sha256": "87992A614FC25899181BBD93B208C81D6C7B3EA11821125B9BA4F74E56C2889D"
+        },
+        {
+          "name": "TKMath.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Debug\\TKMath.dll",
+          "sha256": "B8CE65040509F6799423657100A8A58D6ED87D6572EDAF0B26986E4B80B2FBBC"
+        },
+        {
+          "name": "TKBRep.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Debug\\TKBRep.dll",
+          "sha256": "F7E29DBDB5E4A7EAB5FB73B786E29685DFCFDDE0FC718C1D140C2EB15505E4C8"
+        },
+        {
+          "name": "TKPrim.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Debug\\TKPrim.dll",
+          "sha256": "EB6687863D5ABF6E1DFBB84A48FEDD27DAFEA9F3147C9EB9F23D3617F6E7D621"
+        },
+        {
+          "name": "TKTopAlgo.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Debug\\TKTopAlgo.dll",
+          "sha256": "2E50CBF494204E85B4D745EB321C1BFA498ADE33DD7E5A8F7770786AA80AEB80"
+        },
+        {
+          "name": "TKBool.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Debug\\TKBool.dll",
+          "sha256": "48E6EEDCAE0130E54746C495A9BAE08CF8E1B68E6E2C190BF121A8915FA3F945"
+        },
+        {
+          "name": "TKBO.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Debug\\TKBO.dll",
+          "sha256": "18B699F422DA61A23AAFFD00AAC71A1CFA88F25F6D2DEEFEE44DC5051F1B18BE"
+        },
+        {
+          "name": "TKFeat.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Debug\\TKFeat.dll",
+          "sha256": "AC69DB734499BC67D108142B861FD03F5CB3B17156306E7A0AF03053FDE619CC"
+        },
+        {
+          "name": "TKG3d.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Debug\\TKG3d.dll",
+          "sha256": "1FA4A3216715BAB85C540328D6260101689491A5C87517A883F74D4E941D8A0E"
+        },
+        {
+          "name": "TKG2d.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Debug\\TKG2d.dll",
+          "sha256": "2D270096940C8F1DF937FE8953816ABF010C4C3AB2FC1A5B71826199389E171E"
+        },
+        {
+          "name": "TKGeomAlgo.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Debug\\TKGeomAlgo.dll",
+          "sha256": "F85343E526442D188549DE8040ADF1A917E5915932223C936B3395A383A82B62"
+        },
+        {
+          "name": "TKShHealing.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Debug\\TKShHealing.dll",
+          "sha256": "6577C6EA43E24CD108DEA3BC33E067FD10965660144F36A0F91F6DBBDAF7DC88"
+        }
+      ],
+      "undersizedFaceRejectedByFiniteCoverage": false
+    },
+    {
+      "configuration": "Debug",
+      "kind": "cylinder",
+      "syntheticSeed": false,
+      "terminal": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\d6-finite-newbody-native-probe-3\\runtime-debug-cylinder-1-0-1-exit.json",
+        "sha256": "73A626A35D56671C7DA11C875849A0CF7BEE8AA9DA969C70F762BBEBAA78940F"
+      },
+      "volume": 113.80865104266742,
+      "expected": 113.8086510426674,
+      "error": 1.4210854715202004e-14,
+      "capArea": 16.312171653797854,
+      "capOutside": 0.0,
+      "sourceBrepBytePreserved": true,
+      "nativeModules": [
+        {
+          "name": "TKernel.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Debug\\TKernel.dll",
+          "sha256": "87992A614FC25899181BBD93B208C81D6C7B3EA11821125B9BA4F74E56C2889D"
+        },
+        {
+          "name": "TKMath.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Debug\\TKMath.dll",
+          "sha256": "B8CE65040509F6799423657100A8A58D6ED87D6572EDAF0B26986E4B80B2FBBC"
+        },
+        {
+          "name": "TKGeomBase.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Debug\\TKGeomBase.dll",
+          "sha256": "D271DBDF83536887CB2708AB27D9058D444E0421DEAF6E2338E59E93704059C4"
+        },
+        {
+          "name": "TKBRep.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Debug\\TKBRep.dll",
+          "sha256": "F7E29DBDB5E4A7EAB5FB73B786E29685DFCFDDE0FC718C1D140C2EB15505E4C8"
+        },
+        {
+          "name": "TKTopAlgo.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Debug\\TKTopAlgo.dll",
+          "sha256": "2E50CBF494204E85B4D745EB321C1BFA498ADE33DD7E5A8F7770786AA80AEB80"
+        },
+        {
+          "name": "TKBO.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Debug\\TKBO.dll",
+          "sha256": "18B699F422DA61A23AAFFD00AAC71A1CFA88F25F6D2DEEFEE44DC5051F1B18BE"
+        },
+        {
+          "name": "TKPrim.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Debug\\TKPrim.dll",
+          "sha256": "EB6687863D5ABF6E1DFBB84A48FEDD27DAFEA9F3147C9EB9F23D3617F6E7D621"
+        },
+        {
+          "name": "TKBool.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Debug\\TKBool.dll",
+          "sha256": "48E6EEDCAE0130E54746C495A9BAE08CF8E1B68E6E2C190BF121A8915FA3F945"
+        },
+        {
+          "name": "TKFeat.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Debug\\TKFeat.dll",
+          "sha256": "AC69DB734499BC67D108142B861FD03F5CB3B17156306E7A0AF03053FDE619CC"
+        },
+        {
+          "name": "TKG3d.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Debug\\TKG3d.dll",
+          "sha256": "1FA4A3216715BAB85C540328D6260101689491A5C87517A883F74D4E941D8A0E"
+        },
+        {
+          "name": "TKG2d.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Debug\\TKG2d.dll",
+          "sha256": "2D270096940C8F1DF937FE8953816ABF010C4C3AB2FC1A5B71826199389E171E"
+        },
+        {
+          "name": "TKGeomAlgo.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Debug\\TKGeomAlgo.dll",
+          "sha256": "F85343E526442D188549DE8040ADF1A917E5915932223C936B3395A383A82B62"
+        },
+        {
+          "name": "TKShHealing.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Debug\\TKShHealing.dll",
+          "sha256": "6577C6EA43E24CD108DEA3BC33E067FD10965660144F36A0F91F6DBBDAF7DC88"
+        }
+      ],
+      "undersizedFaceRejectedByFiniteCoverage": false
+    },
+    {
+      "configuration": "Debug",
+      "kind": "cylinder",
+      "syntheticSeed": true,
+      "terminal": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\d6-finite-newbody-native-probe-3\\runtime-debug-cylinder-1-1-1-exit.json",
+        "sha256": "9247168B8BF3F539E15488C1255C65BEFD08368EF6C97149ECABD4CBD1B4F40E"
+      },
+      "volume": 113.80865104266742,
+      "expected": 113.8086510426674,
+      "error": 1.4210854715202004e-14,
+      "capArea": 16.312171653797854,
+      "capOutside": 0.0,
+      "sourceBrepBytePreserved": true,
+      "nativeModules": [
+        {
+          "name": "TKMath.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Debug\\TKMath.dll",
+          "sha256": "B8CE65040509F6799423657100A8A58D6ED87D6572EDAF0B26986E4B80B2FBBC"
+        },
+        {
+          "name": "TKernel.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Debug\\TKernel.dll",
+          "sha256": "87992A614FC25899181BBD93B208C81D6C7B3EA11821125B9BA4F74E56C2889D"
+        },
+        {
+          "name": "TKBRep.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Debug\\TKBRep.dll",
+          "sha256": "F7E29DBDB5E4A7EAB5FB73B786E29685DFCFDDE0FC718C1D140C2EB15505E4C8"
+        },
+        {
+          "name": "TKGeomBase.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Debug\\TKGeomBase.dll",
+          "sha256": "D271DBDF83536887CB2708AB27D9058D444E0421DEAF6E2338E59E93704059C4"
+        },
+        {
+          "name": "TKPrim.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Debug\\TKPrim.dll",
+          "sha256": "EB6687863D5ABF6E1DFBB84A48FEDD27DAFEA9F3147C9EB9F23D3617F6E7D621"
+        },
+        {
+          "name": "TKTopAlgo.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Debug\\TKTopAlgo.dll",
+          "sha256": "2E50CBF494204E85B4D745EB321C1BFA498ADE33DD7E5A8F7770786AA80AEB80"
+        },
+        {
+          "name": "TKBO.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Debug\\TKBO.dll",
+          "sha256": "18B699F422DA61A23AAFFD00AAC71A1CFA88F25F6D2DEEFEE44DC5051F1B18BE"
+        },
+        {
+          "name": "TKBool.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Debug\\TKBool.dll",
+          "sha256": "48E6EEDCAE0130E54746C495A9BAE08CF8E1B68E6E2C190BF121A8915FA3F945"
+        },
+        {
+          "name": "TKFeat.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Debug\\TKFeat.dll",
+          "sha256": "AC69DB734499BC67D108142B861FD03F5CB3B17156306E7A0AF03053FDE619CC"
+        },
+        {
+          "name": "TKG2d.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Debug\\TKG2d.dll",
+          "sha256": "2D270096940C8F1DF937FE8953816ABF010C4C3AB2FC1A5B71826199389E171E"
+        },
+        {
+          "name": "TKG3d.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Debug\\TKG3d.dll",
+          "sha256": "1FA4A3216715BAB85C540328D6260101689491A5C87517A883F74D4E941D8A0E"
+        },
+        {
+          "name": "TKGeomAlgo.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Debug\\TKGeomAlgo.dll",
+          "sha256": "F85343E526442D188549DE8040ADF1A917E5915932223C936B3395A383A82B62"
+        },
+        {
+          "name": "TKShHealing.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Debug\\TKShHealing.dll",
+          "sha256": "6577C6EA43E24CD108DEA3BC33E067FD10965660144F36A0F91F6DBBDAF7DC88"
+        }
+      ],
+      "undersizedFaceRejectedByFiniteCoverage": false
+    },
+    {
+      "configuration": "Debug",
+      "kind": "small",
+      "syntheticSeed": false,
+      "terminal": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\d6-finite-newbody-native-probe-3\\runtime-debug-small-1-0-1-exit.json",
+        "sha256": "42B028CD9572884BFA263E2084F70D82E7775D1A544599CABEACDC907CAC3F03"
+      },
+      "volume": 768.0000128000001,
+      "expected": 112.0,
+      "error": 656.0000128000001,
+      "capArea": 0.0,
+      "capOutside": 0.0,
+      "sourceBrepBytePreserved": true,
+      "nativeModules": [
+        {
+          "name": "TKMath.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Debug\\TKMath.dll",
+          "sha256": "B8CE65040509F6799423657100A8A58D6ED87D6572EDAF0B26986E4B80B2FBBC"
+        },
+        {
+          "name": "TKGeomBase.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Debug\\TKGeomBase.dll",
+          "sha256": "D271DBDF83536887CB2708AB27D9058D444E0421DEAF6E2338E59E93704059C4"
+        },
+        {
+          "name": "TKernel.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Debug\\TKernel.dll",
+          "sha256": "87992A614FC25899181BBD93B208C81D6C7B3EA11821125B9BA4F74E56C2889D"
+        },
+        {
+          "name": "TKBRep.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Debug\\TKBRep.dll",
+          "sha256": "F7E29DBDB5E4A7EAB5FB73B786E29685DFCFDDE0FC718C1D140C2EB15505E4C8"
+        },
+        {
+          "name": "TKTopAlgo.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Debug\\TKTopAlgo.dll",
+          "sha256": "2E50CBF494204E85B4D745EB321C1BFA498ADE33DD7E5A8F7770786AA80AEB80"
+        },
+        {
+          "name": "TKBO.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Debug\\TKBO.dll",
+          "sha256": "18B699F422DA61A23AAFFD00AAC71A1CFA88F25F6D2DEEFEE44DC5051F1B18BE"
+        },
+        {
+          "name": "TKPrim.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Debug\\TKPrim.dll",
+          "sha256": "EB6687863D5ABF6E1DFBB84A48FEDD27DAFEA9F3147C9EB9F23D3617F6E7D621"
+        },
+        {
+          "name": "TKBool.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Debug\\TKBool.dll",
+          "sha256": "48E6EEDCAE0130E54746C495A9BAE08CF8E1B68E6E2C190BF121A8915FA3F945"
+        },
+        {
+          "name": "TKFeat.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Debug\\TKFeat.dll",
+          "sha256": "AC69DB734499BC67D108142B861FD03F5CB3B17156306E7A0AF03053FDE619CC"
+        },
+        {
+          "name": "TKG3d.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Debug\\TKG3d.dll",
+          "sha256": "1FA4A3216715BAB85C540328D6260101689491A5C87517A883F74D4E941D8A0E"
+        },
+        {
+          "name": "TKG2d.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Debug\\TKG2d.dll",
+          "sha256": "2D270096940C8F1DF937FE8953816ABF010C4C3AB2FC1A5B71826199389E171E"
+        },
+        {
+          "name": "TKGeomAlgo.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Debug\\TKGeomAlgo.dll",
+          "sha256": "F85343E526442D188549DE8040ADF1A917E5915932223C936B3395A383A82B62"
+        },
+        {
+          "name": "TKShHealing.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Debug\\TKShHealing.dll",
+          "sha256": "6577C6EA43E24CD108DEA3BC33E067FD10965660144F36A0F91F6DBBDAF7DC88"
+        }
+      ],
+      "undersizedFaceRejectedByFiniteCoverage": true
+    },
+    {
+      "configuration": "Debug",
+      "kind": "small",
+      "syntheticSeed": true,
+      "terminal": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\d6-finite-newbody-native-probe-3\\runtime-debug-small-1-1-1-exit.json",
+        "sha256": "F85852F74786BB2FCF84B690D631F21A695CA36E4C060A7EC9B59CEEF404904B"
+      },
+      "volume": 576.0000128000001,
+      "expected": 112.0,
+      "error": 464.00001280000015,
+      "capArea": 0.0,
+      "capOutside": 0.0,
+      "sourceBrepBytePreserved": true,
+      "nativeModules": [
+        {
+          "name": "TKMath.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Debug\\TKMath.dll",
+          "sha256": "B8CE65040509F6799423657100A8A58D6ED87D6572EDAF0B26986E4B80B2FBBC"
+        },
+        {
+          "name": "TKernel.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Debug\\TKernel.dll",
+          "sha256": "87992A614FC25899181BBD93B208C81D6C7B3EA11821125B9BA4F74E56C2889D"
+        },
+        {
+          "name": "TKGeomBase.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Debug\\TKGeomBase.dll",
+          "sha256": "D271DBDF83536887CB2708AB27D9058D444E0421DEAF6E2338E59E93704059C4"
+        },
+        {
+          "name": "TKBRep.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Debug\\TKBRep.dll",
+          "sha256": "F7E29DBDB5E4A7EAB5FB73B786E29685DFCFDDE0FC718C1D140C2EB15505E4C8"
+        },
+        {
+          "name": "TKTopAlgo.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Debug\\TKTopAlgo.dll",
+          "sha256": "2E50CBF494204E85B4D745EB321C1BFA498ADE33DD7E5A8F7770786AA80AEB80"
+        },
+        {
+          "name": "TKBO.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Debug\\TKBO.dll",
+          "sha256": "18B699F422DA61A23AAFFD00AAC71A1CFA88F25F6D2DEEFEE44DC5051F1B18BE"
+        },
+        {
+          "name": "TKPrim.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Debug\\TKPrim.dll",
+          "sha256": "EB6687863D5ABF6E1DFBB84A48FEDD27DAFEA9F3147C9EB9F23D3617F6E7D621"
+        },
+        {
+          "name": "TKFeat.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Debug\\TKFeat.dll",
+          "sha256": "AC69DB734499BC67D108142B861FD03F5CB3B17156306E7A0AF03053FDE619CC"
+        },
+        {
+          "name": "TKBool.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Debug\\TKBool.dll",
+          "sha256": "48E6EEDCAE0130E54746C495A9BAE08CF8E1B68E6E2C190BF121A8915FA3F945"
+        },
+        {
+          "name": "TKG3d.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Debug\\TKG3d.dll",
+          "sha256": "1FA4A3216715BAB85C540328D6260101689491A5C87517A883F74D4E941D8A0E"
+        },
+        {
+          "name": "TKG2d.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Debug\\TKG2d.dll",
+          "sha256": "2D270096940C8F1DF937FE8953816ABF010C4C3AB2FC1A5B71826199389E171E"
+        },
+        {
+          "name": "TKGeomAlgo.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Debug\\TKGeomAlgo.dll",
+          "sha256": "F85343E526442D188549DE8040ADF1A917E5915932223C936B3395A383A82B62"
+        },
+        {
+          "name": "TKShHealing.dll",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\cadoryx-exact-offset-step-generated-31-draft-8\\workspace-1\\OcctSharp\\artifacts\\native\\Debug\\TKShHealing.dll",
+          "sha256": "6577C6EA43E24CD108DEA3BC33E067FD10965660144F36A0F91F6DBBDAF7DC88"
+        }
+      ],
+      "undersizedFaceRejectedByFiniteCoverage": true
+    }
+  ],
+  "priorFailedDiagnosticsRetained": [
+    {
+      "draft": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\d6-finite-newbody-native-probe-1",
+      "failed": 32,
+      "terminals": [
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\d6-finite-newbody-native-probe-1\\runtime-debug-cylinder-1-0-1-exit.json",
+          "sha256": "ED3CEC8FEEF326312EB5010A4058BF3EBB2ACB9795817B49B767404611DCAC94"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\d6-finite-newbody-native-probe-1\\runtime-debug-cylinder-1-1-1-exit.json",
+          "sha256": "A3D00577CB2E2B822602DA5864C95BB9EF46227865997C473F009A55B09475C0"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\d6-finite-newbody-native-probe-1\\runtime-debug-cylinder-2-0-1-exit.json",
+          "sha256": "2142B2D675E416AAFB7EA5647009E6F851C81CE6B05D031F202C9B8419DB767F"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\d6-finite-newbody-native-probe-1\\runtime-debug-cylinder-2-1-1-exit.json",
+          "sha256": "35D9EE78C2F929196DA90F3412BAED73A65D6555F2B093AA4BC7018862497C05"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\d6-finite-newbody-native-probe-1\\runtime-debug-plane-1-0-1-exit.json",
+          "sha256": "48EA691B911B5318EA167475579CDD64475FEDB1CD9AF6B1635E2A9A10E3D919"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\d6-finite-newbody-native-probe-1\\runtime-debug-plane-1-1-1-exit.json",
+          "sha256": "FAE2FEC3F2FCD4CA9F08AC01C010725170F79461DC4951E0F53EB57BB93F3A2A"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\d6-finite-newbody-native-probe-1\\runtime-debug-plane-2-0-1-exit.json",
+          "sha256": "127275FA82C6C338FCF35A89CF36303DD84723761020E8B945A7FF5257A80B57"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\d6-finite-newbody-native-probe-1\\runtime-debug-plane-2-1-1-exit.json",
+          "sha256": "B92D79DFAB1EBDD5D2454FBFD2F51C95DE2306912CD28B16DB2904E9D26985CB"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\d6-finite-newbody-native-probe-1\\runtime-debug-small-1-0-1-exit.json",
+          "sha256": "A8B8BAFDF623C6DAFB6C7E9C921678B18BA1BB7EC63BFD38E15089EFD1B3BDBD"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\d6-finite-newbody-native-probe-1\\runtime-debug-small-1-1-1-exit.json",
+          "sha256": "4220A161C4BC0B8929BC7E8FF0D9FCB01223454ABF0F6C963FC1C42BA31DE337"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\d6-finite-newbody-native-probe-1\\runtime-debug-small-2-0-1-exit.json",
+          "sha256": "868FF00554B0F57A23BA6A80A7A4FB4BBF7120121BF53CE04DEA331C82F998A8"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\d6-finite-newbody-native-probe-1\\runtime-debug-small-2-1-1-exit.json",
+          "sha256": "189FA63FF596EA982235908D47512E25D5EF67375B10AFB8F9297175DF3379FC"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\d6-finite-newbody-native-probe-1\\runtime-debug-sphere-1-0-1-exit.json",
+          "sha256": "16116CFE22D71995E46538CB14D39010581E0665DB0A63CD2C1E85866DFDE587"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\d6-finite-newbody-native-probe-1\\runtime-debug-sphere-1-1-1-exit.json",
+          "sha256": "7650FD383C47D37CABE7468E14B5CE2ACFBDD13949D134D0486EE093D332391D"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\d6-finite-newbody-native-probe-1\\runtime-debug-sphere-2-0-1-exit.json",
+          "sha256": "57FB276A863D35F438788BE6D1745DA6D2269E5EF7BEA9BC58E92A5435BE354B"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\d6-finite-newbody-native-probe-1\\runtime-debug-sphere-2-1-1-exit.json",
+          "sha256": "C28667166114222128EEF2D80D8C805FBE1FA50941FFC1CC470660DAB70F586D"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\d6-finite-newbody-native-probe-1\\runtime-release-cylinder-1-0-1-exit.json",
+          "sha256": "16C3A9157278B243A625BD031F8152987F68E34C8091BEEF94E0DEBAFFBC7F15"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\d6-finite-newbody-native-probe-1\\runtime-release-cylinder-1-1-1-exit.json",
+          "sha256": "C98921A3835AD4703A9E4216ED44F891D8F27A6E590295A66191E789EA46CCD7"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\d6-finite-newbody-native-probe-1\\runtime-release-cylinder-2-0-1-exit.json",
+          "sha256": "EF6C587003CC841DAE145527DF0AC4FB8815A992034DEFEE5CED93E9864F34FA"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\d6-finite-newbody-native-probe-1\\runtime-release-cylinder-2-1-1-exit.json",
+          "sha256": "3789F603FD23A32442603A127A51950865C1BE54CBDC337F33284FE05AA513B2"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\d6-finite-newbody-native-probe-1\\runtime-release-plane-1-0-1-exit.json",
+          "sha256": "B0E71DAA5D768871662DF2C9A62DBF5E3FE8BD879442B475BE0F915B4B3C1957"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\d6-finite-newbody-native-probe-1\\runtime-release-plane-1-1-1-exit.json",
+          "sha256": "915533C26EBAAA63E59D9FDB9E6542BDA6AB8DFBD54BD92ADAE574AEABE0128E"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\d6-finite-newbody-native-probe-1\\runtime-release-plane-2-0-1-exit.json",
+          "sha256": "FEE382E7A649934DE73B31BF853F0CFF518C5C981AC070F3BE74F08E20573279"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\d6-finite-newbody-native-probe-1\\runtime-release-plane-2-1-1-exit.json",
+          "sha256": "B347905E7E852DDC1901874C68754476D09C2F705C289685197E074DA29A1E3E"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\d6-finite-newbody-native-probe-1\\runtime-release-small-1-0-1-exit.json",
+          "sha256": "7BC3015843505835C4CD2759F6BE3FC75FCE490C1920BE0C2DB3ADC7FD0CF615"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\d6-finite-newbody-native-probe-1\\runtime-release-small-1-1-1-exit.json",
+          "sha256": "D64D8EFAE37D8C7D2805EDC8E3AE825A40303DBC50BAEB5942DC13B7267860A0"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\d6-finite-newbody-native-probe-1\\runtime-release-small-2-0-1-exit.json",
+          "sha256": "DA0D789CD55169FC18EF72B8A39841195C0D40EAA37E08A14DD1F89934C104B3"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\d6-finite-newbody-native-probe-1\\runtime-release-small-2-1-1-exit.json",
+          "sha256": "EF36494D94D5D569D9EDAAE509DB8C76C0C066CE512EE7F2056F99DE909F9AE0"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\d6-finite-newbody-native-probe-1\\runtime-release-sphere-1-0-1-exit.json",
+          "sha256": "DDE7F391C2C2E39BB933D343E520751261226E392BB18ACB5FDE15CD323F47D6"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\d6-finite-newbody-native-probe-1\\runtime-release-sphere-1-1-1-exit.json",
+          "sha256": "7C52C6EC9261958103B4C4EFAB49EBAC5176FC382BADBC4EF7B56BBE56DB2AAE"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\d6-finite-newbody-native-probe-1\\runtime-release-sphere-2-0-1-exit.json",
+          "sha256": "087709C1739F3E7615F7699275B1F31401A629ACBFDFCFE997FFF6008C8D7D92"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\d6-finite-newbody-native-probe-1\\runtime-release-sphere-2-1-1-exit.json",
+          "sha256": "02A5BEE26FF2DDE37CE60FB8C39F0D399C2109B6720C494C9051C9CE0B0511E2"
+        }
+      ]
+    },
+    {
+      "draft": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\d6-finite-newbody-native-probe-2",
+      "failed": 16,
+      "terminals": [
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\d6-finite-newbody-native-probe-2\\runtime-debug-cylinder-1-0-1-exit.json",
+          "sha256": "911382203866D80E7C3FE61BA9BA0D52C723EB09720DC5447E4D46EA29D2DFF7"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\d6-finite-newbody-native-probe-2\\runtime-debug-cylinder-1-1-1-exit.json",
+          "sha256": "5E7E2B0717DA187D29BB3C0789660DD139DCF8359413A60C0127BD3D802C8635"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\d6-finite-newbody-native-probe-2\\runtime-debug-plane-1-0-1-exit.json",
+          "sha256": "F115B0489BCBFE54DD0AA18689409E109274DD8C964F789EBF04D9AEC327F04E"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\d6-finite-newbody-native-probe-2\\runtime-debug-plane-1-1-1-exit.json",
+          "sha256": "3F7E1F50786ED5AEBCE768EAD069210C8B19B8DAFE962C408712D647A6BE4452"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\d6-finite-newbody-native-probe-2\\runtime-debug-small-1-0-1-exit.json",
+          "sha256": "E1DC3B382F9223A04C01382C12BF50DF0B10AF9930F352D3CC864CE359D317AB"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\d6-finite-newbody-native-probe-2\\runtime-debug-small-1-1-1-exit.json",
+          "sha256": "ECE212C0427B9A2001145F3FCD00BE9D034F195F5152D5A4A1FFAD09326D36D3"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\d6-finite-newbody-native-probe-2\\runtime-debug-sphere-1-0-1-exit.json",
+          "sha256": "06B7AF7EA28A4363C2D587A54A21553C4EDEA614E72949698C77F32D6EF4B2EB"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\d6-finite-newbody-native-probe-2\\runtime-debug-sphere-1-1-1-exit.json",
+          "sha256": "1775DE259DDA4E3973EE45100AC399DEC97C96BB17EFBDC0496CD8B325794A09"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\d6-finite-newbody-native-probe-2\\runtime-release-cylinder-1-0-1-exit.json",
+          "sha256": "6C6BA7C992E61252315A7ADA2D2489442D49ECAD53A8964E24EE77115D38518A"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\d6-finite-newbody-native-probe-2\\runtime-release-cylinder-1-1-1-exit.json",
+          "sha256": "3EDC192BBF4A573C565B5C54E28680EB8B86851B84775B80326F8F28307C9631"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\d6-finite-newbody-native-probe-2\\runtime-release-plane-1-0-1-exit.json",
+          "sha256": "90BEF1A08FDD06A5A34DD0F594A75FBA6C4C1EF5BD06A2CD275748BBEC13451F"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\d6-finite-newbody-native-probe-2\\runtime-release-plane-1-1-1-exit.json",
+          "sha256": "07550FC2094779EF40D2E99F19E4B882DEBF677C20D898E678582351E1872E13"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\d6-finite-newbody-native-probe-2\\runtime-release-small-1-0-1-exit.json",
+          "sha256": "A29C176A0AFB2709EB47D36C0A5AA4949BB44F7444E98F9163A8F6D208D25F3D"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\d6-finite-newbody-native-probe-2\\runtime-release-small-1-1-1-exit.json",
+          "sha256": "6604B3D364C0592097ED10F7FB5188DE2892FBB550A90F216008BA81FC60C399"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\d6-finite-newbody-native-probe-2\\runtime-release-sphere-1-0-1-exit.json",
+          "sha256": "2F8E11DCC8E98D7B11841CFCF3ABA947ED2600BA628CD1595D9BA44AA1C139D8"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\d6-finite-newbody-native-probe-2\\runtime-release-sphere-1-1-1-exit.json",
+          "sha256": "3511D08947601EBE72C3F157A19A7F2996B56428C313A82CBBF32933D07037F1"
+        }
+      ]
+    }
+  ],
+  "rawFuse2RejectedNotProductApi": true,
+  "wholeGraphCopyAndFreeBookkeepingRoundtrip": true,
+  "fittingUsed": false,
+  "toleranceChanged": false,
+  "newNativeBindingAdded": false,
+  "productImplementationModified": false,
+  "performanceAcceptance": false,
+  "publicUpstreamModified": false,
+  "productionApplied": false,
+  "cleanup": false,
+  "AF": "ACTIVE",
+  "G": "USER_DEFERRED"
+}
