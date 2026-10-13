@@ -1,0 +1,7 @@
+{
+  "recordedAt": "2026-10-13T10:31:07.1166849+00:00",
+  "reason": "Freeze provider and WPF to one shared build after documentation changed Git informational revision",
+  "ownedQueuePid": 11304,
+  "nativeStarted": false,
+  "fullCoordinatorPreserved": 3096
+}

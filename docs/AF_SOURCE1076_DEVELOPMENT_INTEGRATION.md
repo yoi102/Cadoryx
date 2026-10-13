@@ -8,13 +8,13 @@
 
 [合入后生产根核验](../capability-evidence/diagnostics/af1076-public85/production-root-verification.json)确认锁定恢复、完整solution两配置编译及各6652发现成功；生产根与受测候选来源一致，两个WPF/两个Tests输出各13个托管SDK与62个原生文件匹配公开父载荷。`global.json`格式不同但解析值完全相同，稳定SDK10.0.401；首次合入收据的字节等同性断言失败已记录，没有重新复制或篡改SDK选择。
 
-合入后生产根尚未运行完整6652或重新运行原生专项；455属于冻结候选的实际运行证据。父1073完整6619两配置各6595通过/24原严格STEP失败，不能替代1076全量通过。更早本地专项、工程图/窗口/性能证明仍按各自来源区分。
+合入后生产根[Release完整6652](../capability-evidence/diagnostics/af1076-root-full/release-verification.json)已实际执行并核验：6628通过/原24严格STEP失败/零跳过，没有新增失败，原6619及新33保持，实际native62准确。Debug在原协调的空闲检查退出后只续跑缺失配置，仍待终态；455属于冻结候选此前专项证据。父1073两配置6595/24不能代替1076两配置结果。更早本地专项、工程图/窗口/性能证明仍按各自来源区分。
 
 当前未关闭的门禁：
 
 - B18 / F交换：原24严格STEP拒绝保持。精确mapped-scale两个最小方案[独立接收核验](../capability-evidence/diagnostics/exact-step-mapped-scale/receipt-verification.json)均strict BRep FAIL，未采用、未修改生成器或公共包；上游继续定位具体BRep状态及坐标系。
 - D6：原36窗口矩阵保持。ResourceAssembly与缺失工作进程两项宿主启动问题已修复；[第三版实际首例](../capability-evidence/diagnostics/af1074-public85/window-startup-and-trace-verification.json)打开生产模态窗口后取消，六状态轨迹未完成，不能计通过。辅助源码已保存在 `tools/CadFiniteSurfaceWindowProbe`，没有为自动化修改生产窗口。
-- F5提供方：1074原多文档8轮PASS、工程图第三轮工具预算FAIL；[1075实际两场景](../capability-evidence/diagnostics/af1075-public85/provider-runtime-verification.json)工程图第二轮失败、多文档第六轮预算失败，关闭后资产0，实际native62匹配。两场景均未触发完整条目上下文。1076尚未原模型复验；新历史恢复测试不能替代模型工作流通过。
+- F5提供方：[1076原两场景](../capability-evidence/diagnostics/af1076-public85/provider-runtime-verification.json)实际多文档8轮PASS/资产0，工程图第三轮缺尺寸创建收据FAIL；完整柱面条目在真实请求可用，不等于制造工作流通过。新历史恢复没有在此次多文档调用，不据此推断因果。1077最终WPF与探针共享16载荷已核对，实际模型仍排队；新历史恢复测试不能替代模型工作流通过。
 - A：真实材质UI、完整性能与图形故障验收继续。C/E组合生产源码现已合入，后续更广输入、关联边界和装配范围仍保持。
 - D/F：更广曲面输入、制造规则、交换层级/共享/逐面色/PMI及完整等价继续，不能以当前限定作者契约取代整体规划。
 

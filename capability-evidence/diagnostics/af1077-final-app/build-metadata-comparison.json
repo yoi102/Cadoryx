@@ -1,0 +1,14 @@
+[
+  {
+    "relative": "provider/Cadoryx.AI.Contracts.dll",
+    "informationalVersion": "1.0.0\u002B6c16c57a56c7d10c0adcde2342c247b18e74b67f"
+  },
+  {
+    "relative": "provider2/Cadoryx.AI.Contracts.dll",
+    "informationalVersion": "1.0.0\u002Bf0cc31cb5a643481e2c10ba083aead698caf9f4b"
+  },
+  {
+    "relative": "workspace/Cadoryx.wpf/bin/Release/net10.0-windows/win-x64/Cadoryx.AI.Contracts.dll",
+    "informationalVersion": "1.0.0\u002Bf0cc31cb5a643481e2c10ba083aead698caf9f4b"
+  }
+]

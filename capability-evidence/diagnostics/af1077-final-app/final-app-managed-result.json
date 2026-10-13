@@ -1,0 +1,1043 @@
+{
+  "recordedAt": "2026-10-13T10:31:13.1082132+00:00",
+  "rows": [
+    {
+      "config": "Release",
+      "typeName": "AgentIdentityFieldPresentationTests",
+      "methodName": "DrawingIdentityRequirementSurvivesActualWirePresentation",
+      "args": [],
+      "outcome": "Passed",
+      "elapsedMs": 92
+    },
+    {
+      "config": "Release",
+      "typeName": "ToolPresentationTests",
+      "methodName": "EveryProductionActionIsVisibleWithExpandedNativeIdentityFields",
+      "args": [],
+      "outcome": "Passed",
+      "elapsedMs": 35
+    },
+    {
+      "config": "Release",
+      "typeName": "ToolPresentationTests",
+      "methodName": "OptionalAndNullableCursorPropertiesRemainVisible",
+      "args": [],
+      "outcome": "Passed",
+      "elapsedMs": 3
+    },
+    {
+      "config": "Release",
+      "typeName": "DrawingAgentTests",
+      "methodName": "DiscoverableStrictContractsAndDefaultContextKeepAllTwelveTools",
+      "args": [],
+      "outcome": "Passed",
+      "elapsedMs": 82
+    },
+    {
+      "config": "Release",
+      "typeName": "DrawingContractRequestGuideTests",
+      "methodName": "LeadingContractGuideRetainsEveryDefaultToolAndOriginalOutputSafetyBudgets",
+      "args": [
+        false
+      ],
+      "outcome": "Passed",
+      "elapsedMs": 3
+    },
+    {
+      "config": "Release",
+      "typeName": "DrawingInspectionTypeFeedbackTests",
+      "methodName": "DefaultTwelveToolsAnd8192ContextBudgetKeepTheExplicitInspectionRequirement",
+      "args": [
+        false
+      ],
+      "outcome": "Passed",
+      "elapsedMs": 3
+    },
+    {
+      "config": "Release",
+      "typeName": "DrawingSourcePathFeedbackTests",
+      "methodName": "ExplicitPathSourceFitsOriginalTwelveToolsAndContextBudgets",
+      "args": [
+        false
+      ],
+      "outcome": "Passed",
+      "elapsedMs": 1
+    },
+    {
+      "config": "Release",
+      "typeName": "AgentIdentityFieldPresentationTests",
+      "methodName": "IdentityHintsRetainEveryToolAndOriginal8192OutputSafetyBudget",
+      "args": [
+        false
+      ],
+      "outcome": "Passed",
+      "elapsedMs": 0
+    },
+    {
+      "config": "Release",
+      "typeName": "AgentEmptyResponseRecoveryTests",
+      "methodName": "RecoveryDirectiveRetainsAllTwelveToolsWithTheOriginalDefaultBudgets",
+      "args": [
+        false
+      ],
+      "outcome": "Passed",
+      "elapsedMs": 0
+    },
+    {
+      "config": "Release",
+      "typeName": "AgentSuccessfulActionReceiptTests",
+      "methodName": "LongReadsRetainTheLatestSuccessfulExchangeAndEveryOriginalTool",
+      "args": [
+        false
+      ],
+      "outcome": "Passed",
+      "elapsedMs": 48
+    },
+    {
+      "config": "Release",
+      "typeName": "DrawingContractRequestGuideTests",
+      "methodName": "LeadingContractGuideRetainsEveryDefaultToolAndOriginalOutputSafetyBudgets",
+      "args": [
+        true
+      ],
+      "outcome": "Passed",
+      "elapsedMs": 0
+    },
+    {
+      "config": "Release",
+      "typeName": "DrawingInspectionTypeFeedbackTests",
+      "methodName": "DefaultTwelveToolsAnd8192ContextBudgetKeepTheExplicitInspectionRequirement",
+      "args": [
+        true
+      ],
+      "outcome": "Passed",
+      "elapsedMs": 0
+    },
+    {
+      "config": "Release",
+      "typeName": "DrawingSourcePathFeedbackTests",
+      "methodName": "ExplicitPathSourceFitsOriginalTwelveToolsAndContextBudgets",
+      "args": [
+        true
+      ],
+      "outcome": "Passed",
+      "elapsedMs": 0
+    },
+    {
+      "config": "Release",
+      "typeName": "AgentIdentityFieldPresentationTests",
+      "methodName": "IdentityHintsRetainEveryToolAndOriginal8192OutputSafetyBudget",
+      "args": [
+        true
+      ],
+      "outcome": "Passed",
+      "elapsedMs": 0
+    },
+    {
+      "config": "Release",
+      "typeName": "AgentEmptyResponseRecoveryTests",
+      "methodName": "RecoveryDirectiveRetainsAllTwelveToolsWithTheOriginalDefaultBudgets",
+      "args": [
+        true
+      ],
+      "outcome": "Passed",
+      "elapsedMs": 0
+    },
+    {
+      "config": "Release",
+      "typeName": "AgentSuccessfulActionReceiptTests",
+      "methodName": "LongReadsRetainTheLatestSuccessfulExchangeAndEveryOriginalTool",
+      "args": [
+        true
+      ],
+      "outcome": "Passed",
+      "elapsedMs": 5
+    },
+    {
+      "config": "Release",
+      "typeName": "DrawingActionFeedbackTests",
+      "methodName": "ContractExplainsItsExactFieldSetWithoutRequiringDocumentIdentity",
+      "args": [
+        "documentId"
+      ],
+      "outcome": "Passed",
+      "elapsedMs": 5
+    },
+    {
+      "config": "Release",
+      "typeName": "DrawingActionFeedbackTests",
+      "methodName": "ContractExplainsItsExactFieldSetWithoutRequiringDocumentIdentity",
+      "args": [
+        "stateId"
+      ],
+      "outcome": "Passed",
+      "elapsedMs": 0
+    },
+    {
+      "config": "Release",
+      "typeName": "DrawingActionFeedbackTests",
+      "methodName": "ContractExplainsItsExactFieldSetWithoutRequiringDocumentIdentity",
+      "args": [
+        "sheetId"
+      ],
+      "outcome": "Passed",
+      "elapsedMs": 0
+    },
+    {
+      "config": "Release",
+      "typeName": "DrawingActionFeedbackTests",
+      "methodName": "ContractExplainsItsExactFieldSetWithoutRequiringDocumentIdentity",
+      "args": [
+        "name"
+      ],
+      "outcome": "Passed",
+      "elapsedMs": 0
+    },
+    {
+      "config": "Release",
+      "typeName": "DrawingActionFeedbackTests",
+      "methodName": "MissingIdentityPairIsReportedTogetherForEveryNonContractAction",
+      "args": [
+        "inspect"
+      ],
+      "outcome": "Passed",
+      "elapsedMs": 3
+    },
+    {
+      "config": "Release",
+      "typeName": "DrawingActionFeedbackTests",
+      "methodName": "MissingIdentityPairIsReportedTogetherForEveryNonContractAction",
+      "args": [
+        "inspect_sources"
+      ],
+      "outcome": "Passed",
+      "elapsedMs": 0
+    },
+    {
+      "config": "Release",
+      "typeName": "DrawingActionFeedbackTests",
+      "methodName": "MissingIdentityPairIsReportedTogetherForEveryNonContractAction",
+      "args": [
+        "create"
+      ],
+      "outcome": "Passed",
+      "elapsedMs": 0
+    },
+    {
+      "config": "Release",
+      "typeName": "DrawingActionFeedbackTests",
+      "methodName": "MissingIdentityPairIsReportedTogetherForEveryNonContractAction",
+      "args": [
+        "edit"
+      ],
+      "outcome": "Passed",
+      "elapsedMs": 0
+    },
+    {
+      "config": "Release",
+      "typeName": "DrawingActionFeedbackTests",
+      "methodName": "MissingIdentityPairIsReportedTogetherForEveryNonContractAction",
+      "args": [
+        "reselect"
+      ],
+      "outcome": "Passed",
+      "elapsedMs": 0
+    },
+    {
+      "config": "Release",
+      "typeName": "DrawingActionFeedbackTests",
+      "methodName": "MissingIdentityPairIsReportedTogetherForEveryNonContractAction",
+      "args": [
+        "delete"
+      ],
+      "outcome": "Passed",
+      "elapsedMs": 0
+    },
+    {
+      "config": "Release",
+      "typeName": "DrawingActionFeedbackTests",
+      "methodName": "MissingIdentityPairIsReportedTogetherForEveryNonContractAction",
+      "args": [
+        "set_parts_table"
+      ],
+      "outcome": "Passed",
+      "elapsedMs": 0
+    },
+    {
+      "config": "Release",
+      "typeName": "DrawingActionFeedbackTests",
+      "methodName": "MissingIdentityPairIsReportedTogetherForEveryNonContractAction",
+      "args": [
+        "set_zones"
+      ],
+      "outcome": "Passed",
+      "elapsedMs": 0
+    },
+    {
+      "config": "Release",
+      "typeName": "DrawingActionFeedbackTests",
+      "methodName": "MissingIdentityPairIsReportedTogetherForEveryNonContractAction",
+      "args": [
+        "save_template"
+      ],
+      "outcome": "Passed",
+      "elapsedMs": 0
+    },
+    {
+      "config": "Release",
+      "typeName": "DrawingActionFeedbackTests",
+      "methodName": "MissingIdentityPairIsReportedTogetherForEveryNonContractAction",
+      "args": [
+        "apply_template"
+      ],
+      "outcome": "Passed",
+      "elapsedMs": 0
+    },
+    {
+      "config": "Release",
+      "typeName": "DrawingActionFeedbackTests",
+      "methodName": "MissingIdentityPairIsReportedTogetherForEveryNonContractAction",
+      "args": [
+        "import_template"
+      ],
+      "outcome": "Passed",
+      "elapsedMs": 0
+    },
+    {
+      "config": "Release",
+      "typeName": "DrawingActionFeedbackTests",
+      "methodName": "MissingIdentityPairIsReportedTogetherForEveryNonContractAction",
+      "args": [
+        "detach_coordinates"
+      ],
+      "outcome": "Passed",
+      "elapsedMs": 0
+    },
+    {
+      "config": "Release",
+      "typeName": "DrawingActionFeedbackTests",
+      "methodName": "MissingIdentityPairIsReportedTogetherForEveryNonContractAction",
+      "args": [
+        "refresh"
+      ],
+      "outcome": "Passed",
+      "elapsedMs": 0
+    },
+    {
+      "config": "Release",
+      "typeName": "DrawingContractRequestGuideTests",
+      "methodName": "EveryExplicitDeclaredTypeProducesOneExactExecutableReadOnlyExample",
+      "args": [
+        "sheet"
+      ],
+      "outcome": "Passed",
+      "elapsedMs": 10
+    },
+    {
+      "config": "Release",
+      "typeName": "DrawingContractRequestGuideTests",
+      "methodName": "EveryExplicitDeclaredTypeProducesOneExactExecutableReadOnlyExample",
+      "args": [
+        "view"
+      ],
+      "outcome": "Passed",
+      "elapsedMs": 0
+    },
+    {
+      "config": "Release",
+      "typeName": "DrawingContractRequestGuideTests",
+      "methodName": "EveryExplicitDeclaredTypeProducesOneExactExecutableReadOnlyExample",
+      "args": [
+        "dimension"
+      ],
+      "outcome": "Passed",
+      "elapsedMs": 0
+    },
+    {
+      "config": "Release",
+      "typeName": "DrawingContractRequestGuideTests",
+      "methodName": "EveryExplicitDeclaredTypeProducesOneExactExecutableReadOnlyExample",
+      "args": [
+        "datum"
+      ],
+      "outcome": "Passed",
+      "elapsedMs": 0
+    },
+    {
+      "config": "Release",
+      "typeName": "DrawingContractRequestGuideTests",
+      "methodName": "EveryExplicitDeclaredTypeProducesOneExactExecutableReadOnlyExample",
+      "args": [
+        "control_frame"
+      ],
+      "outcome": "Passed",
+      "elapsedMs": 0
+    },
+    {
+      "config": "Release",
+      "typeName": "DrawingContractRequestGuideTests",
+      "methodName": "EveryExplicitDeclaredTypeProducesOneExactExecutableReadOnlyExample",
+      "args": [
+        "balloon"
+      ],
+      "outcome": "Passed",
+      "elapsedMs": 0
+    },
+    {
+      "config": "Release",
+      "typeName": "DrawingContractRequestGuideTests",
+      "methodName": "EveryExplicitDeclaredTypeProducesOneExactExecutableReadOnlyExample",
+      "args": [
+        "hole_table"
+      ],
+      "outcome": "Passed",
+      "elapsedMs": 0
+    },
+    {
+      "config": "Release",
+      "typeName": "DrawingContractRequestGuideTests",
+      "methodName": "EveryExplicitDeclaredTypeProducesOneExactExecutableReadOnlyExample",
+      "args": [
+        "field"
+      ],
+      "outcome": "Passed",
+      "elapsedMs": 0
+    },
+    {
+      "config": "Release",
+      "typeName": "DrawingContractRequestGuideTests",
+      "methodName": "EveryExplicitDeclaredTypeProducesOneExactExecutableReadOnlyExample",
+      "args": [
+        "note"
+      ],
+      "outcome": "Passed",
+      "elapsedMs": 0
+    },
+    {
+      "config": "Release",
+      "typeName": "DrawingContractRequestGuideTests",
+      "methodName": "EveryExplicitDeclaredTypeProducesOneExactExecutableReadOnlyExample",
+      "args": [
+        "template"
+      ],
+      "outcome": "Passed",
+      "elapsedMs": 0
+    },
+    {
+      "config": "Release",
+      "typeName": "DrawingContractRequestGuideTests",
+      "methodName": "EveryExplicitDeclaredTypeProducesOneExactExecutableReadOnlyExample",
+      "args": [
+        "parts_table"
+      ],
+      "outcome": "Passed",
+      "elapsedMs": 0
+    },
+    {
+      "config": "Release",
+      "typeName": "DrawingContractRequestGuideTests",
+      "methodName": "EveryExplicitDeclaredTypeProducesOneExactExecutableReadOnlyExample",
+      "args": [
+        "zones"
+      ],
+      "outcome": "Passed",
+      "elapsedMs": 0
+    },
+    {
+      "config": "Debug",
+      "typeName": "AgentIdentityFieldPresentationTests",
+      "methodName": "DrawingIdentityRequirementSurvivesActualWirePresentation",
+      "args": [],
+      "outcome": "Passed",
+      "elapsedMs": 284
+    },
+    {
+      "config": "Debug",
+      "typeName": "ToolPresentationTests",
+      "methodName": "EveryProductionActionIsVisibleWithExpandedNativeIdentityFields",
+      "args": [],
+      "outcome": "Passed",
+      "elapsedMs": 17
+    },
+    {
+      "config": "Debug",
+      "typeName": "ToolPresentationTests",
+      "methodName": "OptionalAndNullableCursorPropertiesRemainVisible",
+      "args": [],
+      "outcome": "Passed",
+      "elapsedMs": 0
+    },
+    {
+      "config": "Debug",
+      "typeName": "DrawingAgentTests",
+      "methodName": "DiscoverableStrictContractsAndDefaultContextKeepAllTwelveTools",
+      "args": [],
+      "outcome": "Passed",
+      "elapsedMs": 158
+    },
+    {
+      "config": "Debug",
+      "typeName": "DrawingContractRequestGuideTests",
+      "methodName": "LeadingContractGuideRetainsEveryDefaultToolAndOriginalOutputSafetyBudgets",
+      "args": [
+        false
+      ],
+      "outcome": "Passed",
+      "elapsedMs": 1
+    },
+    {
+      "config": "Debug",
+      "typeName": "DrawingInspectionTypeFeedbackTests",
+      "methodName": "DefaultTwelveToolsAnd8192ContextBudgetKeepTheExplicitInspectionRequirement",
+      "args": [
+        false
+      ],
+      "outcome": "Passed",
+      "elapsedMs": 1
+    },
+    {
+      "config": "Debug",
+      "typeName": "DrawingSourcePathFeedbackTests",
+      "methodName": "ExplicitPathSourceFitsOriginalTwelveToolsAndContextBudgets",
+      "args": [
+        false
+      ],
+      "outcome": "Passed",
+      "elapsedMs": 0
+    },
+    {
+      "config": "Debug",
+      "typeName": "AgentIdentityFieldPresentationTests",
+      "methodName": "IdentityHintsRetainEveryToolAndOriginal8192OutputSafetyBudget",
+      "args": [
+        false
+      ],
+      "outcome": "Passed",
+      "elapsedMs": 0
+    },
+    {
+      "config": "Debug",
+      "typeName": "AgentEmptyResponseRecoveryTests",
+      "methodName": "RecoveryDirectiveRetainsAllTwelveToolsWithTheOriginalDefaultBudgets",
+      "args": [
+        false
+      ],
+      "outcome": "Passed",
+      "elapsedMs": 0
+    },
+    {
+      "config": "Debug",
+      "typeName": "AgentSuccessfulActionReceiptTests",
+      "methodName": "LongReadsRetainTheLatestSuccessfulExchangeAndEveryOriginalTool",
+      "args": [
+        false
+      ],
+      "outcome": "Passed",
+      "elapsedMs": 36
+    },
+    {
+      "config": "Debug",
+      "typeName": "DrawingContractRequestGuideTests",
+      "methodName": "LeadingContractGuideRetainsEveryDefaultToolAndOriginalOutputSafetyBudgets",
+      "args": [
+        true
+      ],
+      "outcome": "Passed",
+      "elapsedMs": 0
+    },
+    {
+      "config": "Debug",
+      "typeName": "DrawingInspectionTypeFeedbackTests",
+      "methodName": "DefaultTwelveToolsAnd8192ContextBudgetKeepTheExplicitInspectionRequirement",
+      "args": [
+        true
+      ],
+      "outcome": "Passed",
+      "elapsedMs": 0
+    },
+    {
+      "config": "Debug",
+      "typeName": "DrawingSourcePathFeedbackTests",
+      "methodName": "ExplicitPathSourceFitsOriginalTwelveToolsAndContextBudgets",
+      "args": [
+        true
+      ],
+      "outcome": "Passed",
+      "elapsedMs": 0
+    },
+    {
+      "config": "Debug",
+      "typeName": "AgentIdentityFieldPresentationTests",
+      "methodName": "IdentityHintsRetainEveryToolAndOriginal8192OutputSafetyBudget",
+      "args": [
+        true
+      ],
+      "outcome": "Passed",
+      "elapsedMs": 0
+    },
+    {
+      "config": "Debug",
+      "typeName": "AgentEmptyResponseRecoveryTests",
+      "methodName": "RecoveryDirectiveRetainsAllTwelveToolsWithTheOriginalDefaultBudgets",
+      "args": [
+        true
+      ],
+      "outcome": "Passed",
+      "elapsedMs": 0
+    },
+    {
+      "config": "Debug",
+      "typeName": "AgentSuccessfulActionReceiptTests",
+      "methodName": "LongReadsRetainTheLatestSuccessfulExchangeAndEveryOriginalTool",
+      "args": [
+        true
+      ],
+      "outcome": "Passed",
+      "elapsedMs": 2
+    },
+    {
+      "config": "Debug",
+      "typeName": "DrawingActionFeedbackTests",
+      "methodName": "ContractExplainsItsExactFieldSetWithoutRequiringDocumentIdentity",
+      "args": [
+        "documentId"
+      ],
+      "outcome": "Passed",
+      "elapsedMs": 1
+    },
+    {
+      "config": "Debug",
+      "typeName": "DrawingActionFeedbackTests",
+      "methodName": "ContractExplainsItsExactFieldSetWithoutRequiringDocumentIdentity",
+      "args": [
+        "stateId"
+      ],
+      "outcome": "Passed",
+      "elapsedMs": 0
+    },
+    {
+      "config": "Debug",
+      "typeName": "DrawingActionFeedbackTests",
+      "methodName": "ContractExplainsItsExactFieldSetWithoutRequiringDocumentIdentity",
+      "args": [
+        "sheetId"
+      ],
+      "outcome": "Passed",
+      "elapsedMs": 0
+    },
+    {
+      "config": "Debug",
+      "typeName": "DrawingActionFeedbackTests",
+      "methodName": "ContractExplainsItsExactFieldSetWithoutRequiringDocumentIdentity",
+      "args": [
+        "name"
+      ],
+      "outcome": "Passed",
+      "elapsedMs": 0
+    },
+    {
+      "config": "Debug",
+      "typeName": "DrawingActionFeedbackTests",
+      "methodName": "MissingIdentityPairIsReportedTogetherForEveryNonContractAction",
+      "args": [
+        "inspect"
+      ],
+      "outcome": "Passed",
+      "elapsedMs": 1
+    },
+    {
+      "config": "Debug",
+      "typeName": "DrawingActionFeedbackTests",
+      "methodName": "MissingIdentityPairIsReportedTogetherForEveryNonContractAction",
+      "args": [
+        "inspect_sources"
+      ],
+      "outcome": "Passed",
+      "elapsedMs": 0
+    },
+    {
+      "config": "Debug",
+      "typeName": "DrawingActionFeedbackTests",
+      "methodName": "MissingIdentityPairIsReportedTogetherForEveryNonContractAction",
+      "args": [
+        "create"
+      ],
+      "outcome": "Passed",
+      "elapsedMs": 0
+    },
+    {
+      "config": "Debug",
+      "typeName": "DrawingActionFeedbackTests",
+      "methodName": "MissingIdentityPairIsReportedTogetherForEveryNonContractAction",
+      "args": [
+        "edit"
+      ],
+      "outcome": "Passed",
+      "elapsedMs": 0
+    },
+    {
+      "config": "Debug",
+      "typeName": "DrawingActionFeedbackTests",
+      "methodName": "MissingIdentityPairIsReportedTogetherForEveryNonContractAction",
+      "args": [
+        "reselect"
+      ],
+      "outcome": "Passed",
+      "elapsedMs": 0
+    },
+    {
+      "config": "Debug",
+      "typeName": "DrawingActionFeedbackTests",
+      "methodName": "MissingIdentityPairIsReportedTogetherForEveryNonContractAction",
+      "args": [
+        "delete"
+      ],
+      "outcome": "Passed",
+      "elapsedMs": 0
+    },
+    {
+      "config": "Debug",
+      "typeName": "DrawingActionFeedbackTests",
+      "methodName": "MissingIdentityPairIsReportedTogetherForEveryNonContractAction",
+      "args": [
+        "set_parts_table"
+      ],
+      "outcome": "Passed",
+      "elapsedMs": 0
+    },
+    {
+      "config": "Debug",
+      "typeName": "DrawingActionFeedbackTests",
+      "methodName": "MissingIdentityPairIsReportedTogetherForEveryNonContractAction",
+      "args": [
+        "set_zones"
+      ],
+      "outcome": "Passed",
+      "elapsedMs": 0
+    },
+    {
+      "config": "Debug",
+      "typeName": "DrawingActionFeedbackTests",
+      "methodName": "MissingIdentityPairIsReportedTogetherForEveryNonContractAction",
+      "args": [
+        "save_template"
+      ],
+      "outcome": "Passed",
+      "elapsedMs": 0
+    },
+    {
+      "config": "Debug",
+      "typeName": "DrawingActionFeedbackTests",
+      "methodName": "MissingIdentityPairIsReportedTogetherForEveryNonContractAction",
+      "args": [
+        "apply_template"
+      ],
+      "outcome": "Passed",
+      "elapsedMs": 0
+    },
+    {
+      "config": "Debug",
+      "typeName": "DrawingActionFeedbackTests",
+      "methodName": "MissingIdentityPairIsReportedTogetherForEveryNonContractAction",
+      "args": [
+        "import_template"
+      ],
+      "outcome": "Passed",
+      "elapsedMs": 0
+    },
+    {
+      "config": "Debug",
+      "typeName": "DrawingActionFeedbackTests",
+      "methodName": "MissingIdentityPairIsReportedTogetherForEveryNonContractAction",
+      "args": [
+        "detach_coordinates"
+      ],
+      "outcome": "Passed",
+      "elapsedMs": 0
+    },
+    {
+      "config": "Debug",
+      "typeName": "DrawingActionFeedbackTests",
+      "methodName": "MissingIdentityPairIsReportedTogetherForEveryNonContractAction",
+      "args": [
+        "refresh"
+      ],
+      "outcome": "Passed",
+      "elapsedMs": 0
+    },
+    {
+      "config": "Debug",
+      "typeName": "DrawingContractRequestGuideTests",
+      "methodName": "EveryExplicitDeclaredTypeProducesOneExactExecutableReadOnlyExample",
+      "args": [
+        "sheet"
+      ],
+      "outcome": "Passed",
+      "elapsedMs": 2
+    },
+    {
+      "config": "Debug",
+      "typeName": "DrawingContractRequestGuideTests",
+      "methodName": "EveryExplicitDeclaredTypeProducesOneExactExecutableReadOnlyExample",
+      "args": [
+        "view"
+      ],
+      "outcome": "Passed",
+      "elapsedMs": 0
+    },
+    {
+      "config": "Debug",
+      "typeName": "DrawingContractRequestGuideTests",
+      "methodName": "EveryExplicitDeclaredTypeProducesOneExactExecutableReadOnlyExample",
+      "args": [
+        "dimension"
+      ],
+      "outcome": "Passed",
+      "elapsedMs": 0
+    },
+    {
+      "config": "Debug",
+      "typeName": "DrawingContractRequestGuideTests",
+      "methodName": "EveryExplicitDeclaredTypeProducesOneExactExecutableReadOnlyExample",
+      "args": [
+        "datum"
+      ],
+      "outcome": "Passed",
+      "elapsedMs": 0
+    },
+    {
+      "config": "Debug",
+      "typeName": "DrawingContractRequestGuideTests",
+      "methodName": "EveryExplicitDeclaredTypeProducesOneExactExecutableReadOnlyExample",
+      "args": [
+        "control_frame"
+      ],
+      "outcome": "Passed",
+      "elapsedMs": 0
+    },
+    {
+      "config": "Debug",
+      "typeName": "DrawingContractRequestGuideTests",
+      "methodName": "EveryExplicitDeclaredTypeProducesOneExactExecutableReadOnlyExample",
+      "args": [
+        "balloon"
+      ],
+      "outcome": "Passed",
+      "elapsedMs": 0
+    },
+    {
+      "config": "Debug",
+      "typeName": "DrawingContractRequestGuideTests",
+      "methodName": "EveryExplicitDeclaredTypeProducesOneExactExecutableReadOnlyExample",
+      "args": [
+        "hole_table"
+      ],
+      "outcome": "Passed",
+      "elapsedMs": 0
+    },
+    {
+      "config": "Debug",
+      "typeName": "DrawingContractRequestGuideTests",
+      "methodName": "EveryExplicitDeclaredTypeProducesOneExactExecutableReadOnlyExample",
+      "args": [
+        "field"
+      ],
+      "outcome": "Passed",
+      "elapsedMs": 0
+    },
+    {
+      "config": "Debug",
+      "typeName": "DrawingContractRequestGuideTests",
+      "methodName": "EveryExplicitDeclaredTypeProducesOneExactExecutableReadOnlyExample",
+      "args": [
+        "note"
+      ],
+      "outcome": "Passed",
+      "elapsedMs": 0
+    },
+    {
+      "config": "Debug",
+      "typeName": "DrawingContractRequestGuideTests",
+      "methodName": "EveryExplicitDeclaredTypeProducesOneExactExecutableReadOnlyExample",
+      "args": [
+        "template"
+      ],
+      "outcome": "Passed",
+      "elapsedMs": 0
+    },
+    {
+      "config": "Debug",
+      "typeName": "DrawingContractRequestGuideTests",
+      "methodName": "EveryExplicitDeclaredTypeProducesOneExactExecutableReadOnlyExample",
+      "args": [
+        "parts_table"
+      ],
+      "outcome": "Passed",
+      "elapsedMs": 0
+    },
+    {
+      "config": "Debug",
+      "typeName": "DrawingContractRequestGuideTests",
+      "methodName": "EveryExplicitDeclaredTypeProducesOneExactExecutableReadOnlyExample",
+      "args": [
+        "zones"
+      ],
+      "outcome": "Passed",
+      "elapsedMs": 0
+    }
+  ],
+  "configurations": [
+    {
+      "config": "Release",
+      "raw": "{\u0022type\u0022:\u0022object\u0022,\u0022properties\u0022:{\u0022action\u0022:{\u0022type\u0022:\u0022string\u0022,\u0022description\u0022:\u0022contract:action/type only. Else IDs required (inspect_sources too).\u0022,\u0022enum\u0022:[\u0022contract\u0022,\u0022inspect\u0022,\u0022inspect_sources\u0022,\u0022create\u0022,\u0022edit\u0022,\u0022reselect\u0022,\u0022delete\u0022,\u0022set_parts_table\u0022,\u0022set_zones\u0022,\u0022refresh\u0022,\u0022save_template\u0022,\u0022apply_template\u0022,\u0022import_template\u0022,\u0022detach_coordinates\u0022]},\u0022type\u0022:{\u0022type\u0022:\u0022string\u0022,\u0022enum\u0022:[\u0022sheet\u0022,\u0022view\u0022,\u0022dimension\u0022,\u0022datum\u0022,\u0022control_frame\u0022,\u0022balloon\u0022,\u0022hole_table\u0022,\u0022field\u0022,\u0022note\u0022,\u0022template\u0022,\u0022parts_table\u0022,\u0022zones\u0022],\u0022description\u0022:\u0022Required for inspect.\u0022},\u0022documentId\u0022:{\u0022type\u0022:\u0022string\u0022,\u0022format\u0022:\u0022uuid\u0022,\u0022description\u0022:\u0022REQUIRED except contract: cad_status.documentId.\u0022},\u0022stateId\u0022:{\u0022type\u0022:\u0022string\u0022,\u0022format\u0022:\u0022uuid\u0022,\u0022description\u0022:\u0022REQUIRED except contract: cad_status.stateId.\u0022},\u0022sheetId\u0022:{\u0022type\u0022:\u0022string\u0022,\u0022format\u0022:\u0022uuid\u0022},\u0022id\u0022:{\u0022type\u0022:\u0022string\u0022,\u0022format\u0022:\u0022uuid\u0022},\u0022name\u0022:{\u0022type\u0022:\u0022string\u0022,\u0022maxLength\u0022:64,\u0022description\u0022:\u0022save_template only; else authorJson.\u0022},\u0022path\u0022:{\u0022type\u0022:\u0022string\u0022,\u0022maxLength\u0022:8192,\u0022description\u0022:\u0022Full occurrences.items[].path\u0022},\u0022bodyId\u0022:{\u0022type\u0022:\u0022string\u0022,\u0022format\u0022:\u0022uuid\u0022},\u0022revision\u0022:{\u0022type\u0022:\u0022string\u0022,\u0022format\u0022:\u0022uuid\u0022},\u0022authorJson\u0022:{\u0022type\u0022:\u0022string\u0022,\u0022minLength\u0022:2,\u0022maxLength\u0022:65536},\u0022offset\u0022:{\u0022type\u0022:\u0022integer\u0022,\u0022minimum\u0022:0,\u0022maximum\u0022:100000},\u0022limit\u0022:{\u0022type\u0022:\u0022integer\u0022,\u0022minimum\u0022:1,\u0022maximum\u0022:50}},\u0022required\u0022:[\u0022action\u0022],\u0022additionalProperties\u0022:false}",
+      "wire": "{\u0022type\u0022:\u0022object\u0022,\u0022properties\u0022:{\u0022action\u0022:{\u0022type\u0022:\u0022string\u0022,\u0022description\u0022:\u0022contract:action/type only. Else IDs required (inspect_sources too).\u0022,\u0022enum\u0022:[\u0022contract\u0022,\u0022inspect\u0022,\u0022inspect_sources\u0022,\u0022create\u0022,\u0022edit\u0022,\u0022reselect\u0022,\u0022delete\u0022,\u0022set_parts_table\u0022,\u0022set_zones\u0022,\u0022refresh\u0022,\u0022save_template\u0022,\u0022apply_template\u0022,\u0022import_template\u0022,\u0022detach_coordinates\u0022]},\u0022type\u0022:{\u0022type\u0022:\u0022string\u0022,\u0022enum\u0022:[\u0022sheet\u0022,\u0022view\u0022,\u0022dimension\u0022,\u0022datum\u0022,\u0022control_frame\u0022,\u0022balloon\u0022,\u0022hole_table\u0022,\u0022field\u0022,\u0022note\u0022,\u0022template\u0022,\u0022parts_table\u0022,\u0022zones\u0022],\u0022description\u0022:\u0022Required for inspect.\u0022},\u0022documentId\u0022:{\u0022type\u0022:\u0022string\u0022,\u0022format\u0022:\u0022uuid\u0022,\u0022description\u0022:\u0022REQUIRED except contract: cad_status.documentId.\u0022},\u0022stateId\u0022:{\u0022type\u0022:\u0022string\u0022,\u0022format\u0022:\u0022uuid\u0022,\u0022description\u0022:\u0022REQUIRED except contract: cad_status.stateId.\u0022},\u0022sheetId\u0022:{\u0022type\u0022:\u0022string\u0022,\u0022format\u0022:\u0022uuid\u0022},\u0022id\u0022:{\u0022type\u0022:\u0022string\u0022,\u0022format\u0022:\u0022uuid\u0022},\u0022name\u0022:{\u0022type\u0022:\u0022string\u0022,\u0022maxLength\u0022:64,\u0022description\u0022:\u0022save_template only; else authorJson.\u0022},\u0022path\u0022:{\u0022type\u0022:\u0022string\u0022,\u0022maxLength\u0022:8192,\u0022description\u0022:\u0022Full occurrences.items[].path\u0022},\u0022bodyId\u0022:{\u0022type\u0022:\u0022string\u0022,\u0022format\u0022:\u0022uuid\u0022},\u0022revision\u0022:{\u0022type\u0022:\u0022string\u0022,\u0022format\u0022:\u0022uuid\u0022},\u0022authorJson\u0022:{\u0022type\u0022:\u0022string\u0022,\u0022minLength\u0022:2,\u0022maxLength\u0022:65536},\u0022offset\u0022:{\u0022type\u0022:\u0022integer\u0022,\u0022minimum\u0022:0,\u0022maximum\u0022:100000},\u0022limit\u0022:{\u0022type\u0022:\u0022integer\u0022,\u0022minimum\u0022:1,\u0022maximum\u0022:50}},\u0022required\u0022:[\u0022action\u0022],\u0022additionalProperties\u0022:false}",
+      "nativeModules": [],
+      "assemblies": [
+        {
+          "name": "Cadoryx.Tests",
+          "informationalVersion": "1.0.0\u002B8a6ab8407ce2d83aee45794a782a2afce233d672",
+          "location": "C:/Users/yoiri/source/repos/Cadoryx\\Cadoryx.Tests/bin\\Release\\net10.0\\Cadoryx.Tests.dll",
+          "sha256": "BD7B57285AB318D002D4A8787D57C807069BD18736B53688B1CAD5EFF1D00664"
+        },
+        {
+          "name": "Cadoryx.ViewModels",
+          "informationalVersion": "1.0.0\u002Bf0cc31cb5a643481e2c10ba083aead698caf9f4b",
+          "location": "C:/Users/yoiri/source/repos/Cadoryx\\artifacts/af1077-drawing-action-1\\workspace/Cadoryx.wpf/bin\\Release\\net10.0-windows/win-x64\\Cadoryx.ViewModels.dll",
+          "sha256": "AA73E6E80D08691CFF45B24624D308E8B627F0417ADD276EB4A7350CEA8E0C81"
+        },
+        {
+          "name": "Cadoryx.AI.LmStudio",
+          "informationalVersion": "1.0.0\u002Bf0cc31cb5a643481e2c10ba083aead698caf9f4b",
+          "location": "C:/Users/yoiri/source/repos/Cadoryx\\artifacts/af1077-drawing-action-1\\workspace/Cadoryx.wpf/bin\\Release\\net10.0-windows/win-x64\\Cadoryx.AI.LmStudio.dll",
+          "sha256": "BE9F45B18379988543C3C543F9B3221C8C9FC2A2F63D4C23B7548613CE011D25"
+        },
+        {
+          "name": "Cadoryx.Agent",
+          "informationalVersion": "1.0.0\u002Bf0cc31cb5a643481e2c10ba083aead698caf9f4b",
+          "location": "C:/Users/yoiri/source/repos/Cadoryx\\artifacts/af1077-drawing-action-1\\workspace/Cadoryx.wpf/bin\\Release\\net10.0-windows/win-x64\\Cadoryx.Agent.dll",
+          "sha256": "DF065E4592608D380C844696190E2DD208A1F8F4CF3B0C8CD6EE4B29B7025EE6"
+        },
+        {
+          "name": "Cadoryx.AI.Contracts",
+          "informationalVersion": "1.0.0\u002Bf0cc31cb5a643481e2c10ba083aead698caf9f4b",
+          "location": "C:/Users/yoiri/source/repos/Cadoryx\\artifacts/af1077-drawing-action-1\\workspace/Cadoryx.wpf/bin\\Release\\net10.0-windows/win-x64\\Cadoryx.AI.Contracts.dll",
+          "sha256": "3D39B0EDF629217E74C6E702BDDFD13E84F8B0BB9880C0A654C64844107FD11C"
+        },
+        {
+          "name": "Cadoryx.Db",
+          "informationalVersion": "1.0.0\u002Bf0cc31cb5a643481e2c10ba083aead698caf9f4b",
+          "location": "C:/Users/yoiri/source/repos/Cadoryx\\artifacts/af1077-drawing-action-1\\workspace/Cadoryx.wpf/bin\\Release\\net10.0-windows/win-x64\\Cadoryx.Db.dll",
+          "sha256": "9D991CF0A0062C07ED6F972AE5FA90FD31C804D29DFC6184039EF60C880BB963"
+        },
+        {
+          "name": "Cadoryx.Editor",
+          "informationalVersion": "1.0.0\u002Bf0cc31cb5a643481e2c10ba083aead698caf9f4b",
+          "location": "C:/Users/yoiri/source/repos/Cadoryx\\artifacts/af1077-drawing-action-1\\workspace/Cadoryx.wpf/bin\\Release\\net10.0-windows/win-x64\\Cadoryx.Editor.dll",
+          "sha256": "43442B5742E2414805B0C7EA91913339B287210CA038DC60352290C44840624E"
+        },
+        {
+          "name": "Cadoryx.CommandLine",
+          "informationalVersion": "1.0.0\u002Bf0cc31cb5a643481e2c10ba083aead698caf9f4b",
+          "location": "C:/Users/yoiri/source/repos/Cadoryx\\artifacts/af1077-drawing-action-1\\workspace/Cadoryx.wpf/bin\\Release\\net10.0-windows/win-x64\\Cadoryx.CommandLine.dll",
+          "sha256": "8EB48F23037E9DCC53DF2732ECCED0B71084BEB6E0700F51CEFBCA2A4AD56F33"
+        },
+        {
+          "name": "Cadoryx.Rendering",
+          "informationalVersion": "1.0.0\u002Bf0cc31cb5a643481e2c10ba083aead698caf9f4b",
+          "location": "C:/Users/yoiri/source/repos/Cadoryx\\artifacts/af1077-drawing-action-1\\workspace/Cadoryx.wpf/bin\\Release\\net10.0-windows/win-x64\\Cadoryx.Rendering.dll",
+          "sha256": "2809568C7C62C9FEB969B3BFFD12F0219355E2468DAF545CDF812D7E30B88444"
+        },
+        {
+          "name": "Cadoryx.Commands",
+          "informationalVersion": "1.0.0\u002Bf0cc31cb5a643481e2c10ba083aead698caf9f4b",
+          "location": "C:/Users/yoiri/source/repos/Cadoryx\\artifacts/af1077-drawing-action-1\\workspace/Cadoryx.wpf/bin\\Release\\net10.0-windows/win-x64\\Cadoryx.Commands.dll",
+          "sha256": "572C0359ABA083593BB80451640B45A5A9BC06557CED965A7269DEBF0D7DEB91"
+        },
+        {
+          "name": "Cadoryx.Kernel.Abstractions",
+          "informationalVersion": "1.0.0\u002Bf0cc31cb5a643481e2c10ba083aead698caf9f4b",
+          "location": "C:/Users/yoiri/source/repos/Cadoryx\\artifacts/af1077-drawing-action-1\\workspace/Cadoryx.wpf/bin\\Release\\net10.0-windows/win-x64\\Cadoryx.Kernel.Abstractions.dll",
+          "sha256": "6781E04CAA574FF09023ECE14BE4AAF8C0805FCDD8E1219E31BAC04F23C31573"
+        }
+      ]
+    },
+    {
+      "config": "Debug",
+      "raw": "{\u0022type\u0022:\u0022object\u0022,\u0022properties\u0022:{\u0022action\u0022:{\u0022type\u0022:\u0022string\u0022,\u0022description\u0022:\u0022contract:action/type only. Else IDs required (inspect_sources too).\u0022,\u0022enum\u0022:[\u0022contract\u0022,\u0022inspect\u0022,\u0022inspect_sources\u0022,\u0022create\u0022,\u0022edit\u0022,\u0022reselect\u0022,\u0022delete\u0022,\u0022set_parts_table\u0022,\u0022set_zones\u0022,\u0022refresh\u0022,\u0022save_template\u0022,\u0022apply_template\u0022,\u0022import_template\u0022,\u0022detach_coordinates\u0022]},\u0022type\u0022:{\u0022type\u0022:\u0022string\u0022,\u0022enum\u0022:[\u0022sheet\u0022,\u0022view\u0022,\u0022dimension\u0022,\u0022datum\u0022,\u0022control_frame\u0022,\u0022balloon\u0022,\u0022hole_table\u0022,\u0022field\u0022,\u0022note\u0022,\u0022template\u0022,\u0022parts_table\u0022,\u0022zones\u0022],\u0022description\u0022:\u0022Required for inspect.\u0022},\u0022documentId\u0022:{\u0022type\u0022:\u0022string\u0022,\u0022format\u0022:\u0022uuid\u0022,\u0022description\u0022:\u0022REQUIRED except contract: cad_status.documentId.\u0022},\u0022stateId\u0022:{\u0022type\u0022:\u0022string\u0022,\u0022format\u0022:\u0022uuid\u0022,\u0022description\u0022:\u0022REQUIRED except contract: cad_status.stateId.\u0022},\u0022sheetId\u0022:{\u0022type\u0022:\u0022string\u0022,\u0022format\u0022:\u0022uuid\u0022},\u0022id\u0022:{\u0022type\u0022:\u0022string\u0022,\u0022format\u0022:\u0022uuid\u0022},\u0022name\u0022:{\u0022type\u0022:\u0022string\u0022,\u0022maxLength\u0022:64,\u0022description\u0022:\u0022save_template only; else authorJson.\u0022},\u0022path\u0022:{\u0022type\u0022:\u0022string\u0022,\u0022maxLength\u0022:8192,\u0022description\u0022:\u0022Full occurrences.items[].path\u0022},\u0022bodyId\u0022:{\u0022type\u0022:\u0022string\u0022,\u0022format\u0022:\u0022uuid\u0022},\u0022revision\u0022:{\u0022type\u0022:\u0022string\u0022,\u0022format\u0022:\u0022uuid\u0022},\u0022authorJson\u0022:{\u0022type\u0022:\u0022string\u0022,\u0022minLength\u0022:2,\u0022maxLength\u0022:65536},\u0022offset\u0022:{\u0022type\u0022:\u0022integer\u0022,\u0022minimum\u0022:0,\u0022maximum\u0022:100000},\u0022limit\u0022:{\u0022type\u0022:\u0022integer\u0022,\u0022minimum\u0022:1,\u0022maximum\u0022:50}},\u0022required\u0022:[\u0022action\u0022],\u0022additionalProperties\u0022:false}",
+      "wire": "{\u0022type\u0022:\u0022object\u0022,\u0022properties\u0022:{\u0022action\u0022:{\u0022type\u0022:\u0022string\u0022,\u0022description\u0022:\u0022contract:action/type only. Else IDs required (inspect_sources too).\u0022,\u0022enum\u0022:[\u0022contract\u0022,\u0022inspect\u0022,\u0022inspect_sources\u0022,\u0022create\u0022,\u0022edit\u0022,\u0022reselect\u0022,\u0022delete\u0022,\u0022set_parts_table\u0022,\u0022set_zones\u0022,\u0022refresh\u0022,\u0022save_template\u0022,\u0022apply_template\u0022,\u0022import_template\u0022,\u0022detach_coordinates\u0022]},\u0022type\u0022:{\u0022type\u0022:\u0022string\u0022,\u0022enum\u0022:[\u0022sheet\u0022,\u0022view\u0022,\u0022dimension\u0022,\u0022datum\u0022,\u0022control_frame\u0022,\u0022balloon\u0022,\u0022hole_table\u0022,\u0022field\u0022,\u0022note\u0022,\u0022template\u0022,\u0022parts_table\u0022,\u0022zones\u0022],\u0022description\u0022:\u0022Required for inspect.\u0022},\u0022documentId\u0022:{\u0022type\u0022:\u0022string\u0022,\u0022format\u0022:\u0022uuid\u0022,\u0022description\u0022:\u0022REQUIRED except contract: cad_status.documentId.\u0022},\u0022stateId\u0022:{\u0022type\u0022:\u0022string\u0022,\u0022format\u0022:\u0022uuid\u0022,\u0022description\u0022:\u0022REQUIRED except contract: cad_status.stateId.\u0022},\u0022sheetId\u0022:{\u0022type\u0022:\u0022string\u0022,\u0022format\u0022:\u0022uuid\u0022},\u0022id\u0022:{\u0022type\u0022:\u0022string\u0022,\u0022format\u0022:\u0022uuid\u0022},\u0022name\u0022:{\u0022type\u0022:\u0022string\u0022,\u0022maxLength\u0022:64,\u0022description\u0022:\u0022save_template only; else authorJson.\u0022},\u0022path\u0022:{\u0022type\u0022:\u0022string\u0022,\u0022maxLength\u0022:8192,\u0022description\u0022:\u0022Full occurrences.items[].path\u0022},\u0022bodyId\u0022:{\u0022type\u0022:\u0022string\u0022,\u0022format\u0022:\u0022uuid\u0022},\u0022revision\u0022:{\u0022type\u0022:\u0022string\u0022,\u0022format\u0022:\u0022uuid\u0022},\u0022authorJson\u0022:{\u0022type\u0022:\u0022string\u0022,\u0022minLength\u0022:2,\u0022maxLength\u0022:65536},\u0022offset\u0022:{\u0022type\u0022:\u0022integer\u0022,\u0022minimum\u0022:0,\u0022maximum\u0022:100000},\u0022limit\u0022:{\u0022type\u0022:\u0022integer\u0022,\u0022minimum\u0022:1,\u0022maximum\u0022:50}},\u0022required\u0022:[\u0022action\u0022],\u0022additionalProperties\u0022:false}",
+      "nativeModules": [],
+      "assemblies": [
+        {
+          "name": "Cadoryx.Tests",
+          "informationalVersion": "1.0.0\u002B8a6ab8407ce2d83aee45794a782a2afce233d672",
+          "location": "C:/Users/yoiri/source/repos/Cadoryx\\Cadoryx.Tests/bin\\Debug\\net10.0\\Cadoryx.Tests.dll",
+          "sha256": "4912DD9D7B76A0357BD1CA125674BC66B5BDBCD3027A0B97F29246FB7FD9B95A"
+        },
+        {
+          "name": "Cadoryx.ViewModels",
+          "informationalVersion": "1.0.0\u002Bf0cc31cb5a643481e2c10ba083aead698caf9f4b",
+          "location": "C:/Users/yoiri/source/repos/Cadoryx\\artifacts/af1077-drawing-action-1\\workspace/Cadoryx.wpf/bin\\Debug\\net10.0-windows/win-x64\\Cadoryx.ViewModels.dll",
+          "sha256": "0A9C4F1C4A96AA22C5684DF56DCF967CD31E9C9FF2FE9002DA486D36DBBB3C3E"
+        },
+        {
+          "name": "Cadoryx.AI.LmStudio",
+          "informationalVersion": "1.0.0\u002Bf0cc31cb5a643481e2c10ba083aead698caf9f4b",
+          "location": "C:/Users/yoiri/source/repos/Cadoryx\\artifacts/af1077-drawing-action-1\\workspace/Cadoryx.wpf/bin\\Debug\\net10.0-windows/win-x64\\Cadoryx.AI.LmStudio.dll",
+          "sha256": "74E90BC4FBBEFF5CC3E937C1A4FDA9D61997B6C95CBBFF56190FCC71BBE41DD3"
+        },
+        {
+          "name": "Cadoryx.Agent",
+          "informationalVersion": "1.0.0\u002Bf0cc31cb5a643481e2c10ba083aead698caf9f4b",
+          "location": "C:/Users/yoiri/source/repos/Cadoryx\\artifacts/af1077-drawing-action-1\\workspace/Cadoryx.wpf/bin\\Debug\\net10.0-windows/win-x64\\Cadoryx.Agent.dll",
+          "sha256": "E321C8F5A448303D2E9B31FA9848F2FE9AB7D91FD33DB632C4142C589F2C5690"
+        },
+        {
+          "name": "Cadoryx.AI.Contracts",
+          "informationalVersion": "1.0.0\u002Bf0cc31cb5a643481e2c10ba083aead698caf9f4b",
+          "location": "C:/Users/yoiri/source/repos/Cadoryx\\artifacts/af1077-drawing-action-1\\workspace/Cadoryx.wpf/bin\\Debug\\net10.0-windows/win-x64\\Cadoryx.AI.Contracts.dll",
+          "sha256": "96DBDABF83E86098CC14292FCCDFA1E3B078D71714A15046D802498B5060C703"
+        },
+        {
+          "name": "Cadoryx.Db",
+          "informationalVersion": "1.0.0\u002Bf0cc31cb5a643481e2c10ba083aead698caf9f4b",
+          "location": "C:/Users/yoiri/source/repos/Cadoryx\\artifacts/af1077-drawing-action-1\\workspace/Cadoryx.wpf/bin\\Debug\\net10.0-windows/win-x64\\Cadoryx.Db.dll",
+          "sha256": "DB21E75E2D2B08872569CABCFD5475FE55F982B2F6797752D70CD3251C08D507"
+        },
+        {
+          "name": "Cadoryx.Editor",
+          "informationalVersion": "1.0.0\u002Bf0cc31cb5a643481e2c10ba083aead698caf9f4b",
+          "location": "C:/Users/yoiri/source/repos/Cadoryx\\artifacts/af1077-drawing-action-1\\workspace/Cadoryx.wpf/bin\\Debug\\net10.0-windows/win-x64\\Cadoryx.Editor.dll",
+          "sha256": "9444E0CD179B033263E512DE70847169742B0C49B292CB569A939762E27B467B"
+        },
+        {
+          "name": "Cadoryx.CommandLine",
+          "informationalVersion": "1.0.0\u002Bf0cc31cb5a643481e2c10ba083aead698caf9f4b",
+          "location": "C:/Users/yoiri/source/repos/Cadoryx\\artifacts/af1077-drawing-action-1\\workspace/Cadoryx.wpf/bin\\Debug\\net10.0-windows/win-x64\\Cadoryx.CommandLine.dll",
+          "sha256": "32C0F11FDC1DCF1D4BB854C4000B6E67C069A232E203DC5022AA063DC3554E4D"
+        },
+        {
+          "name": "Cadoryx.Rendering",
+          "informationalVersion": "1.0.0\u002Bf0cc31cb5a643481e2c10ba083aead698caf9f4b",
+          "location": "C:/Users/yoiri/source/repos/Cadoryx\\artifacts/af1077-drawing-action-1\\workspace/Cadoryx.wpf/bin\\Debug\\net10.0-windows/win-x64\\Cadoryx.Rendering.dll",
+          "sha256": "3CF74BAF6DE95C0760B8E54A0E7C7C9F753894C2F5B0C59509D85258CDF6DA59"
+        },
+        {
+          "name": "Cadoryx.Commands",
+          "informationalVersion": "1.0.0\u002Bf0cc31cb5a643481e2c10ba083aead698caf9f4b",
+          "location": "C:/Users/yoiri/source/repos/Cadoryx\\artifacts/af1077-drawing-action-1\\workspace/Cadoryx.wpf/bin\\Debug\\net10.0-windows/win-x64\\Cadoryx.Commands.dll",
+          "sha256": "16DCD57A4FE951E13DD17C0C96F5254C0C9EE9722B0E6248D6FDE3853ED8E507"
+        },
+        {
+          "name": "Cadoryx.Kernel.Abstractions",
+          "informationalVersion": "1.0.0\u002Bf0cc31cb5a643481e2c10ba083aead698caf9f4b",
+          "location": "C:/Users/yoiri/source/repos/Cadoryx\\artifacts/af1077-drawing-action-1\\workspace/Cadoryx.wpf/bin\\Debug\\net10.0-windows/win-x64\\Cadoryx.Kernel.Abstractions.dll",
+          "sha256": "B5F7EFD6799C0415FB9FF84AA9E12C0727CD056FCF1EB7A84381FD09A7A5C6C3"
+        }
+      ]
+    }
+  ],
+  "scope": "Original compiled assertions invoked directly, actual candidate ViewModels; not a full xunit run",
+  "productionApplied": false,
+  "modelWorkflow": "NOT RUN",
+  "nativeJobs": 0
+}

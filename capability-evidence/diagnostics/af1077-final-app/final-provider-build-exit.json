@@ -1,0 +1,18 @@
+{
+  "actualProviderRun": false,
+  "productionApplied": false,
+  "referencesRebuilt": false,
+  "stages": [
+    {
+      "exitCode": 0,
+      "stage": "restore",
+      "log": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1077-drawing-action-1\\final-provider-restore.log"
+    },
+    {
+      "exitCode": 0,
+      "stage": "publish",
+      "log": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1077-drawing-action-1\\final-provider-publish.log"
+    }
+  ],
+  "nativeJobs": 0
+}

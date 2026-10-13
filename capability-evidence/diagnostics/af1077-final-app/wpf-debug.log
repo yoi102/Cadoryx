@@ -1,0 +1,25 @@
+  Cadoryx.AI.Contracts -> C:\Users\yoiri\source\repos\Cadoryx\artifacts\af1077-drawing-action-1\workspace\Cadoryx.AI.Contracts\bin\Debug\net10.0\Cadoryx.AI.Contracts.dll
+  Cadoryx.ViewModels.Services -> C:\Users\yoiri\source\repos\Cadoryx\artifacts\af1077-drawing-action-1\workspace\Cadoryx.ViewModels.Services\bin\Debug\net10.0\Cadoryx.ViewModels.Services.dll
+  Cadoryx.CommandLine -> C:\Users\yoiri\source\repos\Cadoryx\artifacts\af1077-drawing-action-1\workspace\Cadoryx.CommandLine\bin\Debug\net10.0\Cadoryx.CommandLine.dll
+  Cadoryx.AI.LmStudio -> C:\Users\yoiri\source\repos\Cadoryx\artifacts\af1077-drawing-action-1\workspace\Cadoryx.AI.LmStudio\bin\Debug\net10.0\Cadoryx.AI.LmStudio.dll
+  Cadoryx.Agent -> C:\Users\yoiri\source\repos\Cadoryx\artifacts\af1077-drawing-action-1\workspace\Cadoryx.Agent\bin\Debug\net10.0\Cadoryx.Agent.dll
+  Cadoryx.wpf.Controls -> C:\Users\yoiri\source\repos\Cadoryx\artifacts\af1077-drawing-action-1\workspace\Cadoryx.wpf.Controls\bin\Debug\net10.0-windows\Cadoryx.wpf.Controls.dll
+  Cadoryx.Agent.Codex -> C:\Users\yoiri\source\repos\Cadoryx\artifacts\af1077-drawing-action-1\workspace\Cadoryx.Agent.Codex\bin\Debug\net10.0\Cadoryx.Agent.Codex.dll
+  Cadoryx.Db -> C:\Users\yoiri\source\repos\Cadoryx\artifacts\af1077-drawing-action-1\workspace\Cadoryx.Db\bin\Debug\net10.0\Cadoryx.Db.dll
+  Cadoryx.Rendering -> C:\Users\yoiri\source\repos\Cadoryx\artifacts\af1077-drawing-action-1\workspace\Cadoryx.Rendering\bin\Debug\net10.0\Cadoryx.Rendering.dll
+  Cadoryx.Kernel.Abstractions -> C:\Users\yoiri\source\repos\Cadoryx\artifacts\af1077-drawing-action-1\workspace\Cadoryx.Kernel.Abstractions\bin\Debug\net10.0\Cadoryx.Kernel.Abstractions.dll
+  Cadoryx.Sketching -> C:\Users\yoiri\source\repos\Cadoryx\artifacts\af1077-drawing-action-1\workspace\Cadoryx.Sketching\bin\Debug\net10.0\Cadoryx.Sketching.dll
+  Cadoryx.Lang -> C:\Users\yoiri\source\repos\Cadoryx\artifacts\af1077-drawing-action-1\workspace\Cadoryx.Lang\bin\Debug\net10.0\Cadoryx.Lang.dll
+  Cadoryx.Commands -> C:\Users\yoiri\source\repos\Cadoryx\artifacts\af1077-drawing-action-1\workspace\Cadoryx.Commands\bin\Debug\net10.0\Cadoryx.Commands.dll
+  Cadoryx.Kernel.Occt -> C:\Users\yoiri\source\repos\Cadoryx\artifacts\af1077-drawing-action-1\workspace\Cadoryx.Kernel.Occt\bin\Debug\net10.0\Cadoryx.Kernel.Occt.dll
+  Cadoryx.Editor -> C:\Users\yoiri\source\repos\Cadoryx\artifacts\af1077-drawing-action-1\workspace\Cadoryx.Editor\bin\Debug\net10.0\Cadoryx.Editor.dll
+  Cadoryx.Rendering.Occt -> C:\Users\yoiri\source\repos\Cadoryx\artifacts\af1077-drawing-action-1\workspace\Cadoryx.Rendering.Occt\bin\Debug\net10.0\Cadoryx.Rendering.Occt.dll
+  Cadoryx.IO -> C:\Users\yoiri\source\repos\Cadoryx\artifacts\af1077-drawing-action-1\workspace\Cadoryx.IO\bin\Debug\net10.0\Cadoryx.IO.dll
+  Cadoryx.ViewModels -> C:\Users\yoiri\source\repos\Cadoryx\artifacts\af1077-drawing-action-1\workspace\Cadoryx.ViewModels\bin\Debug\net10.0\Cadoryx.ViewModels.dll
+  Cadoryx.wpf -> C:\Users\yoiri\source\repos\Cadoryx\artifacts\af1077-drawing-action-1\workspace\Cadoryx.wpf\bin\Debug\net10.0-windows\win-x64\Cadoryx.wpf.dll
+
+Build succeeded.
+    0 Warning(s)
+    0 Error(s)
+
+Time Elapsed 00:00:21.64

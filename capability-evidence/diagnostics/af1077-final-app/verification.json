@@ -1,0 +1,702 @@
+{
+  "recordedAt": "2026-10-13T10:38:56.670508+00:00",
+  "state": "AF1077_FINAL_WPF_BOTH0_ACTUAL_APP45_BOTH_PROVIDER16_BYTE_EQUAL_NOT_RUNTIME_ACCEPTANCE",
+  "sourceInputs": 1189,
+  "changed": [
+    "Cadoryx.ViewModels/Toolboxes/CadAgentDrawingTools.cs"
+  ],
+  "original6652TestSourcesRetained": true,
+  "actualApplicationOriginalAssertionsPerConfiguration": 45,
+  "fullXunitRun": false,
+  "nativeJobs": 0,
+  "sharedApplication16": [
+    {
+      "name": "Cadoryx.Agent.Codex.dll",
+      "sha256": "627628BD60D8DECFCE85C5FE5A734A41D93AB58F5870CAA7A773C15099A88E70"
+    },
+    {
+      "name": "Cadoryx.Agent.dll",
+      "sha256": "DF065E4592608D380C844696190E2DD208A1F8F4CF3B0C8CD6EE4B29B7025EE6"
+    },
+    {
+      "name": "Cadoryx.AI.Contracts.dll",
+      "sha256": "3D39B0EDF629217E74C6E702BDDFD13E84F8B0BB9880C0A654C64844107FD11C"
+    },
+    {
+      "name": "Cadoryx.AI.LmStudio.dll",
+      "sha256": "BE9F45B18379988543C3C543F9B3221C8C9FC2A2F63D4C23B7548613CE011D25"
+    },
+    {
+      "name": "Cadoryx.CommandLine.dll",
+      "sha256": "8EB48F23037E9DCC53DF2732ECCED0B71084BEB6E0700F51CEFBCA2A4AD56F33"
+    },
+    {
+      "name": "Cadoryx.Commands.dll",
+      "sha256": "572C0359ABA083593BB80451640B45A5A9BC06557CED965A7269DEBF0D7DEB91"
+    },
+    {
+      "name": "Cadoryx.Db.dll",
+      "sha256": "9D991CF0A0062C07ED6F972AE5FA90FD31C804D29DFC6184039EF60C880BB963"
+    },
+    {
+      "name": "Cadoryx.Editor.dll",
+      "sha256": "43442B5742E2414805B0C7EA91913339B287210CA038DC60352290C44840624E"
+    },
+    {
+      "name": "Cadoryx.IO.dll",
+      "sha256": "82D619C2D8925CECF671F5590092029B2061165F0494E1BCB4EEA50150DAF592"
+    },
+    {
+      "name": "Cadoryx.Kernel.Abstractions.dll",
+      "sha256": "6781E04CAA574FF09023ECE14BE4AAF8C0805FCDD8E1219E31BAC04F23C31573"
+    },
+    {
+      "name": "Cadoryx.Kernel.Occt.dll",
+      "sha256": "9DC1671883058426DE852D1F13B981E4D44FE3D4DAFD83C6BFAD6C4D78A0196D"
+    },
+    {
+      "name": "Cadoryx.Lang.dll",
+      "sha256": "6A099AEC0AF8E0D7907C8C1FE4BAB30903008D63D6F8C1C4FEEFDF9FE8CFAF01"
+    },
+    {
+      "name": "Cadoryx.Rendering.dll",
+      "sha256": "2809568C7C62C9FEB969B3BFFD12F0219355E2468DAF545CDF812D7E30B88444"
+    },
+    {
+      "name": "Cadoryx.Sketching.dll",
+      "sha256": "31C7775C60EC96E3D3B150CA721FC8C00B5FBDDD4B3C744BE3A27BA57AD12367"
+    },
+    {
+      "name": "Cadoryx.ViewModels.dll",
+      "sha256": "AA73E6E80D08691CFF45B24624D308E8B627F0417ADD276EB4A7350CEA8E0C81"
+    },
+    {
+      "name": "Cadoryx.ViewModels.Services.dll",
+      "sha256": "8A9E991489B7C7797FFB15A28611120503868FB20AF7C8AEE4B671319DF0A38F"
+    }
+  ],
+  "provider": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1077-drawing-action-1\\provider2",
+  "providerPayload": [
+    {
+      "path": "Antelcat.I18N.Abstractions.dll",
+      "sha256": "D15D9C608AB78A7597B7505F1B280825A8D311DD33D4F4AEC194EA5453B60E2B"
+    },
+    {
+      "path": "AvalonDock.Core.dll",
+      "sha256": "F5F4A314A92AA573551C0DEC2C5D8D2092F3875DF63A4FC5B1E29FC1428B8317"
+    },
+    {
+      "path": "AvalonDock.Mvvm.CommunityToolkit.dll",
+      "sha256": "C4BC5A797D690B27C15D68308BB1524DD217AC11D5B3E4E8FD8CB661CB28A34C"
+    },
+    {
+      "path": "AvalonDock.Mvvm.dll",
+      "sha256": "187ED652DABA9DDBA49EF280CDFA281EA164F14FDA5C339E3327B02AA4E9EA23"
+    },
+    {
+      "path": "CadAgentWorkflowProbe.deps.json",
+      "sha256": "C2034E703815D6A4F47740B7E7D82E50942B2F818787EB45FD3C0708705E3D7A"
+    },
+    {
+      "path": "CadAgentWorkflowProbe.dll",
+      "sha256": "90985145F1C282111222F1421509928E9546CC2EB863F1ED2C94AAE3F814753B"
+    },
+    {
+      "path": "CadAgentWorkflowProbe.exe",
+      "sha256": "0DD68568173F8CB587C7D08E07DA0A089EF40289F78DB3116E7152AC961F3E20"
+    },
+    {
+      "path": "CadAgentWorkflowProbe.pdb",
+      "sha256": "4B05403F53770A94C8FAF6C7FC509634305E1406370C7B051C4976C23D512B57"
+    },
+    {
+      "path": "CadAgentWorkflowProbe.runtimeconfig.json",
+      "sha256": "7B0B415355489E6E5287F5F55643DC8B23C1B8730DE6ED62E1886A0C3714E21B"
+    },
+    {
+      "path": "Cadoryx.Agent.Codex.dll",
+      "sha256": "627628BD60D8DECFCE85C5FE5A734A41D93AB58F5870CAA7A773C15099A88E70"
+    },
+    {
+      "path": "Cadoryx.Agent.Codex.pdb",
+      "sha256": "C3CBC5FC172F5F67542084BDFABF0AE29B0000D11B6EF1E5630319A7F033984E"
+    },
+    {
+      "path": "Cadoryx.Agent.dll",
+      "sha256": "DF065E4592608D380C844696190E2DD208A1F8F4CF3B0C8CD6EE4B29B7025EE6"
+    },
+    {
+      "path": "Cadoryx.Agent.pdb",
+      "sha256": "379A6D9AFE75D59819A459FC2E184C72A12B7C09F68F212D83DDF3981AFE1A9A"
+    },
+    {
+      "path": "Cadoryx.AI.Contracts.dll",
+      "sha256": "3D39B0EDF629217E74C6E702BDDFD13E84F8B0BB9880C0A654C64844107FD11C"
+    },
+    {
+      "path": "Cadoryx.AI.Contracts.pdb",
+      "sha256": "4768905926CCEF2685A9C8FCB2061A9AAA8EA7EB9C3CBEFD77338ABB2561074E"
+    },
+    {
+      "path": "Cadoryx.AI.LmStudio.dll",
+      "sha256": "BE9F45B18379988543C3C543F9B3221C8C9FC2A2F63D4C23B7548613CE011D25"
+    },
+    {
+      "path": "Cadoryx.AI.LmStudio.pdb",
+      "sha256": "B6067E22E77130803C7F0805804A31F0B3BD43E975D3FAECC7F5FAA8411CA69C"
+    },
+    {
+      "path": "Cadoryx.CommandLine.dll",
+      "sha256": "8EB48F23037E9DCC53DF2732ECCED0B71084BEB6E0700F51CEFBCA2A4AD56F33"
+    },
+    {
+      "path": "Cadoryx.CommandLine.pdb",
+      "sha256": "F226FCBE069687CDC9497B1271B744B0AC6E3669F80C4B88E267E4A35B016F85"
+    },
+    {
+      "path": "Cadoryx.Commands.dll",
+      "sha256": "572C0359ABA083593BB80451640B45A5A9BC06557CED965A7269DEBF0D7DEB91"
+    },
+    {
+      "path": "Cadoryx.Commands.pdb",
+      "sha256": "7B153400042B7A650479C5BF73E3CDA29F91A375EBF13173ABD060CEC5F21303"
+    },
+    {
+      "path": "Cadoryx.Db.dll",
+      "sha256": "9D991CF0A0062C07ED6F972AE5FA90FD31C804D29DFC6184039EF60C880BB963"
+    },
+    {
+      "path": "Cadoryx.Db.pdb",
+      "sha256": "5D3FBF991643F8741C29290C127546FB0F763B73DFEFBA02350FAA4C888C33EE"
+    },
+    {
+      "path": "Cadoryx.Editor.dll",
+      "sha256": "43442B5742E2414805B0C7EA91913339B287210CA038DC60352290C44840624E"
+    },
+    {
+      "path": "Cadoryx.Editor.pdb",
+      "sha256": "22E6721534AA4BA72967CD5095E44D58A3DE6AD69EDA49DF32946533CA93095F"
+    },
+    {
+      "path": "Cadoryx.IO.dll",
+      "sha256": "82D619C2D8925CECF671F5590092029B2061165F0494E1BCB4EEA50150DAF592"
+    },
+    {
+      "path": "Cadoryx.IO.pdb",
+      "sha256": "0595A0E197720788E96BE65EE2AF3E1747D1F6F812475598F6F242DF29665791"
+    },
+    {
+      "path": "Cadoryx.Kernel.Abstractions.dll",
+      "sha256": "6781E04CAA574FF09023ECE14BE4AAF8C0805FCDD8E1219E31BAC04F23C31573"
+    },
+    {
+      "path": "Cadoryx.Kernel.Abstractions.pdb",
+      "sha256": "9D195CD8BCE61A99B9C043DC3862ECFD10DE86ABE1407441139B8A1BB8484877"
+    },
+    {
+      "path": "Cadoryx.Kernel.Occt.dll",
+      "sha256": "9DC1671883058426DE852D1F13B981E4D44FE3D4DAFD83C6BFAD6C4D78A0196D"
+    },
+    {
+      "path": "Cadoryx.Kernel.Occt.pdb",
+      "sha256": "D648B936FF9C12AC64705A8E9F0A3A8AD3B26D1DC9E11C73CC24491E5054C1EA"
+    },
+    {
+      "path": "Cadoryx.Lang.dll",
+      "sha256": "6A099AEC0AF8E0D7907C8C1FE4BAB30903008D63D6F8C1C4FEEFDF9FE8CFAF01"
+    },
+    {
+      "path": "Cadoryx.Lang.pdb",
+      "sha256": "6E0446A6D26368C2D5DC2F464933B8E8725DCDEADAEFC4A208CDB4733A7D2D66"
+    },
+    {
+      "path": "Cadoryx.Rendering.dll",
+      "sha256": "2809568C7C62C9FEB969B3BFFD12F0219355E2468DAF545CDF812D7E30B88444"
+    },
+    {
+      "path": "Cadoryx.Rendering.pdb",
+      "sha256": "708CFB74BE542573B35EDEC0BEF74E8F076718A22321DABC62707C541D1693F1"
+    },
+    {
+      "path": "Cadoryx.Sketching.dll",
+      "sha256": "31C7775C60EC96E3D3B150CA721FC8C00B5FBDDD4B3C744BE3A27BA57AD12367"
+    },
+    {
+      "path": "Cadoryx.Sketching.pdb",
+      "sha256": "D4C0C737C7D26267668B18D4E20C561FF35861B8C6450023B43DBC3BD7C26054"
+    },
+    {
+      "path": "Cadoryx.ViewModels.dll",
+      "sha256": "AA73E6E80D08691CFF45B24624D308E8B627F0417ADD276EB4A7350CEA8E0C81"
+    },
+    {
+      "path": "Cadoryx.ViewModels.pdb",
+      "sha256": "343F877349A0D79E4C2DB06D650155A43F6EB8FF3A0897ABD038152F8BEF87F2"
+    },
+    {
+      "path": "Cadoryx.ViewModels.Services.dll",
+      "sha256": "8A9E991489B7C7797FFB15A28611120503868FB20AF7C8AEE4B671319DF0A38F"
+    },
+    {
+      "path": "Cadoryx.ViewModels.Services.pdb",
+      "sha256": "C9B25F4320F23714C1AC0592D7C4D9F6F97DE8BEFBF9C5825F8C40B22E5A9BAF"
+    },
+    {
+      "path": "CommunityToolkit.Mvvm.dll",
+      "sha256": "19B2144FED9600D58A742A5A4A5FD7B10D4D0D2C2E79F5D8019307CF5657044F"
+    },
+    {
+      "path": "ja-JP/Cadoryx.Lang.resources.dll",
+      "sha256": "E90DC0F9AB9C03DD26F730CDA4D32B69E56218D63CA33F5D3FCE7C8EE9722968"
+    },
+    {
+      "path": "MathNet.Numerics.dll",
+      "sha256": "83B41A608E438409D6520D01124F52F57409E229791C0E074E315ACE7D9F4134"
+    },
+    {
+      "path": "MessagePack.Annotations.dll",
+      "sha256": "BBA53A8B44184FCE30178502149ADA027185E17F4156BAF2DC38AD6C1550CDD6"
+    },
+    {
+      "path": "MessagePack.dll",
+      "sha256": "DA7762A5931644CBC6C3A44E274A75510117A70D07C48FB71E512E99E69939CC"
+    },
+    {
+      "path": "MessagePipe.dll",
+      "sha256": "2F9B6BDD3DEE25985E2FEEE4B1AE5B9C91AF725819E7553871C673DD4D54E6ED"
+    },
+    {
+      "path": "Microsoft.Extensions.DependencyInjection.Abstractions.dll",
+      "sha256": "E51900ED49BA1FCC758D4C404E945B12A2B6E28C6F5610CC6B21907E792E08C5"
+    },
+    {
+      "path": "Microsoft.Extensions.Logging.Abstractions.dll",
+      "sha256": "BB853130F5AFAF335BE7858D661F8212EC653835100F5A4E3AA2C66A4D4F685D"
+    },
+    {
+      "path": "Microsoft.NET.StringTools.dll",
+      "sha256": "E51C8678FD602A21C249B369E833966019935132476F9434DA896BEF808BA3B1"
+    },
+    {
+      "path": "occt/avcodec-57.dll",
+      "sha256": "4D7A6A2CFF37C782CE1A3C74FA83EBBEBCC43DFC774E3F497A406C84C1458C7E"
+    },
+    {
+      "path": "occt/avformat-57.dll",
+      "sha256": "297D3207DD0E6325DAB7A080472A4FD2F743CFC53861615B4DC96B91227CD3AF"
+    },
+    {
+      "path": "occt/avutil-55.dll",
+      "sha256": "BE7C03FF47618916D16AF446E2F7C00E48F2FF8934C6ACE4C0D0E3D804732E8E"
+    },
+    {
+      "path": "occt/FreeImage.dll",
+      "sha256": "4594BD0538F7F6B05148B00996FF36DDFEDEF8D66910E931503DCFEBF8EFE1DB"
+    },
+    {
+      "path": "occt/freetype.dll",
+      "sha256": "637621E4AE51B496B8A86F9B053050D5AF2BA999EA0680BBFE3D5DF91F976C75"
+    },
+    {
+      "path": "occt/jemalloc.dll",
+      "sha256": "EA0CFCF6A12BB3863961074547C958FD978AA3F800244CC4FE2847B127C4DF5E"
+    },
+    {
+      "path": "occt/OcctSharp.Native.dll",
+      "sha256": "D44F3F272386EA2CC87E7107AB2E3375D8100283872372F1FBC234A3B4E38CB3"
+    },
+    {
+      "path": "occt/openvr_api.dll",
+      "sha256": "71DB78E77E577DB6D0666C25437695D42CEAFB9C7F8DA94FBE765525B8E2F5F2"
+    },
+    {
+      "path": "occt/swscale-4.dll",
+      "sha256": "67BCFFB3CCDAEBF2BBD3149542D92DD9430ABFDFF1D7B79B3A529AF712926412"
+    },
+    {
+      "path": "occt/tbb12.dll",
+      "sha256": "887888A0C2FFE7F64718D4EEA2A10CE41C68DEC1A954DB3A62646ADEEE66C0AD"
+    },
+    {
+      "path": "occt/TKBin.dll",
+      "sha256": "B27B08FFBE07C1FACA441897E6D807062D01F453BD847175CAE999B15AD31D96"
+    },
+    {
+      "path": "occt/TKBinL.dll",
+      "sha256": "A8A87E784C6AD97DAF773926A106E8904ABEF77AE30CAD602DD236A0FE376378"
+    },
+    {
+      "path": "occt/TKBinTObj.dll",
+      "sha256": "F482E7F3A3526150C537E3DD6CDDDBD6B4E38B29C62AC3CF3F81D9E97A296EAB"
+    },
+    {
+      "path": "occt/TKBinXCAF.dll",
+      "sha256": "BE1F35F341A9BC1EF26DB6721AFE727747CC97053A86ADA5A51C03E4C43EBA3A"
+    },
+    {
+      "path": "occt/TKBO.dll",
+      "sha256": "41F837935BCC65882ACD73295EF65CA13D47B018ACDCB6093FAF47804B96D0C5"
+    },
+    {
+      "path": "occt/TKBool.dll",
+      "sha256": "FA76C5374AE85E1649F27DA41ED0B45EC36C68C413ACE84554198CF39D11DAFD"
+    },
+    {
+      "path": "occt/TKBRep.dll",
+      "sha256": "A511C8CF51178CF881C3BA0B54287DCECE6DED03CF3DE99E6FABF2A2D5152207"
+    },
+    {
+      "path": "occt/TKCAF.dll",
+      "sha256": "E78FD6196F7356FFA541A015CB6DF481E9999D8E813E2D7A5D914CA6205614AE"
+    },
+    {
+      "path": "occt/TKCDF.dll",
+      "sha256": "9BCCAB992DA8F4069CB4020A064D67DF507309CA679AD20BB97A9B5FB0797A3A"
+    },
+    {
+      "path": "occt/TKD3DHost.dll",
+      "sha256": "0EB1591D44FFF265C3870865013C7FCBDE9F9B7DF79903ED0116AC1C93DE10BE"
+    },
+    {
+      "path": "occt/TKDE.dll",
+      "sha256": "2F0E1C9BD86C367B36DC7519502B095DE0DEE910D1F86B5B39BA962790A0D0C5"
+    },
+    {
+      "path": "occt/TKDECascade.dll",
+      "sha256": "6E65801F138067283CA2355F7E43FF5BF30502E0CB6F782F33245E7B5096F5A1"
+    },
+    {
+      "path": "occt/TKDEGLTF.dll",
+      "sha256": "636F0E11859C256774B1004617E643D5EFDC415F993A464D73A82F4618CC902A"
+    },
+    {
+      "path": "occt/TKDEIGES.dll",
+      "sha256": "3D16433A5CA16D36DFDFE168AF7F7C0645093CDC6C80CA38A157BC84769E43F9"
+    },
+    {
+      "path": "occt/TKDEOBJ.dll",
+      "sha256": "C09644DE8F5AFEA74C531054F713132823F0020F28A889229AE2E762D8CA121D"
+    },
+    {
+      "path": "occt/TKDEPLY.dll",
+      "sha256": "35DAFA5EFACF1DFECCB3E01D560547630142B4C52FFAC5CE4CAE726DFBD31262"
+    },
+    {
+      "path": "occt/TKDESTEP.dll",
+      "sha256": "DC010933AEF4481083D21F77ADFAEE6ACEADE87D5F454AD5F4743F07A00B4DF6"
+    },
+    {
+      "path": "occt/TKDESTL.dll",
+      "sha256": "68488A4FD4B3C426123BD9969F5E42DD335A89CEA2FFA4E147452653F1BB63A1"
+    },
+    {
+      "path": "occt/TKDEVRML.dll",
+      "sha256": "7F30F93D81398A61F5E52997494C43ABFABD868009273B4492B1E2B8DD105F7A"
+    },
+    {
+      "path": "occt/TKernel.dll",
+      "sha256": "3ECBC7F193EBB746CC88A81E03EB603D24FDF03470B346551698F45D4FAEB7B4"
+    },
+    {
+      "path": "occt/TKExpress.dll",
+      "sha256": "2535B5993A42E41C6E35E5EA50574953D0BC5705EAE70D596C1194E5B9C8E872"
+    },
+    {
+      "path": "occt/TKFeat.dll",
+      "sha256": "05F968C96DD0C170463B09F0121DB70E3DB720250634959C91C42396F9437141"
+    },
+    {
+      "path": "occt/TKFillet.dll",
+      "sha256": "6ACCA10E58155ECAA1621DCECF395463C6560D4A3B63729BD7688ED7B15A38F5"
+    },
+    {
+      "path": "occt/TKG2d.dll",
+      "sha256": "0D87A20363CFB66F7862FBC9AA7234059D13712B3A0D7E6B35CBB0172810A93C"
+    },
+    {
+      "path": "occt/TKG3d.dll",
+      "sha256": "8A13921267C5839C0D8D4395DAE33FC5C1F80F8D03C0D8C0CEB153AA3DA35C6C"
+    },
+    {
+      "path": "occt/TKGeomAlgo.dll",
+      "sha256": "154E047A29217C0FAF101EC0B8119D6D327E89560CD82CB18D17EC48D508883B"
+    },
+    {
+      "path": "occt/TKGeomBase.dll",
+      "sha256": "6BD91D22B6A893884BA74FEC8C352F68BCF0F79096D00F52119D4810EF42567E"
+    },
+    {
+      "path": "occt/TKHelix.dll",
+      "sha256": "B95F60B662FFF3BBDC7A768AA1DF664468187C3638AC562B5C87C8B9C6808DFF"
+    },
+    {
+      "path": "occt/TKHLR.dll",
+      "sha256": "499F63A9335A17F8D2903DB1D56E27EE2DEAD324E35EFE46E2A9FAC8A8BF6F89"
+    },
+    {
+      "path": "occt/TKLCAF.dll",
+      "sha256": "C51A1DA060562BA8855C02A091D849A575459FEE3ED80543358F9113871DAF9D"
+    },
+    {
+      "path": "occt/TKMath.dll",
+      "sha256": "2C41EFC32C025D1E7753548498027AA240D315B455BF36130432EA23E5860A2A"
+    },
+    {
+      "path": "occt/TKMesh.dll",
+      "sha256": "143337A5BF7128B7D5F50B33129D70EE4B4E9669F9166D89AF732444A221F95F"
+    },
+    {
+      "path": "occt/TKMeshVS.dll",
+      "sha256": "7CF4CEC11EC0B9A7AFF012442A9E868932B74848E46CAA79DC091175A18DD9DD"
+    },
+    {
+      "path": "occt/TKOffset.dll",
+      "sha256": "B3145BF379A12F46C68B206966679252CB36C0616C1A3D73D572033CB3EFCF8F"
+    },
+    {
+      "path": "occt/TKOpenGl.dll",
+      "sha256": "8C47BB81B4D9F712E557864A67A31637DFF74D83D92B83AEE6960A673CBA07E7"
+    },
+    {
+      "path": "occt/TKPrim.dll",
+      "sha256": "37DE279166407566D7FFF2DD063638FDF1F8DC89C0D030E550AA4868585F49DD"
+    },
+    {
+      "path": "occt/TKRWMesh.dll",
+      "sha256": "49A61A27309032C374ED78ED205DC89860C4D5D510A7160AE4A5CF85CC7DAC1C"
+    },
+    {
+      "path": "occt/TKService.dll",
+      "sha256": "B16E5AEB5213D9586A606C6443246C0D77CE52B117A54A4E523FD9E0BB41AAE6"
+    },
+    {
+      "path": "occt/TKShHealing.dll",
+      "sha256": "91E87BD3E5A3267C4A2D97B171EA05FA21FE1B78A2B905F7CF7E3CF19F5CD43E"
+    },
+    {
+      "path": "occt/TKStd.dll",
+      "sha256": "7366BFDEF0BE23AE8C0D9FD7AB1676CCC4F8CCD7DEFC53ADD1B4BDC3E91F5660"
+    },
+    {
+      "path": "occt/TKStdL.dll",
+      "sha256": "4EE319E9CD1D1DFF7337B1F03EC8FB2CCBAD0AE0AB8A18FA8EBBF2DBB3113B61"
+    },
+    {
+      "path": "occt/TKTObj.dll",
+      "sha256": "B1491D455B088B13BC332260804DBE53E7FBF8E495A3271759C14334CD3A1196"
+    },
+    {
+      "path": "occt/TKTopAlgo.dll",
+      "sha256": "6690CE35FCF32BD2C379D12A21ABDE6BAF023087F3EEFBCCC5AE40E416B0B107"
+    },
+    {
+      "path": "occt/TKV3d.dll",
+      "sha256": "5356773B60EAF73345AE6822369EB8B721A9D18EABA925491870E24CBA651BD9"
+    },
+    {
+      "path": "occt/TKVCAF.dll",
+      "sha256": "94948F34AD0696D0D4CA404DA4369B348B0B3C1241EEE1E42DAD87353E5629BF"
+    },
+    {
+      "path": "occt/TKXCAF.dll",
+      "sha256": "64095FF4FFA3BDD41BD17FFFDC39F9490CE34C2EF59AAB427C71DEAA6F3B791A"
+    },
+    {
+      "path": "occt/TKXMesh.dll",
+      "sha256": "302BFC3CB41C8EF00548A974C28F86BD194D6267FA31F080227D8D765BC8E9D3"
+    },
+    {
+      "path": "occt/TKXml.dll",
+      "sha256": "9904AAF0435D24E7B89BA094FCB96708942A33B4DFD88241968CE6054B3AF811"
+    },
+    {
+      "path": "occt/TKXmlL.dll",
+      "sha256": "7477A1A138630480D9D42CBAF04637322CD96DCA19880694DEC6A60C77532BCC"
+    },
+    {
+      "path": "occt/TKXmlTObj.dll",
+      "sha256": "689187644BA9103F9288B2BC22208998A933F68CFE19D9B259EBD78DE58FE939"
+    },
+    {
+      "path": "occt/TKXmlXCAF.dll",
+      "sha256": "CECC1712C731DCC0DDC4E855FBFF9EC8D159F83141FB0E5C010A2ECDFB0CEE13"
+    },
+    {
+      "path": "occt/TKXSBase.dll",
+      "sha256": "3978FEC70540BD0B369FF01263BA341E01A57E308F5EA1788B5DC56B1A851AA7"
+    },
+    {
+      "path": "OcctSharp.DataExchange.dll",
+      "sha256": "09AA814F1CF85C9E5C308C63CAB67B9B382A7A9FE027B8566EDFFCF377783C93"
+    },
+    {
+      "path": "OcctSharp.dll",
+      "sha256": "79AC434DA1670C400EC3426E7DADB0E9C5EA49300B4C8F36CA9EDB6708BBF9EB"
+    },
+    {
+      "path": "OcctSharp.Documents.dll",
+      "sha256": "FB89877B0727B8738C8B01DFFC3BFC36BB9307CB7FA141B80A7EE5FF79D9E9B4"
+    },
+    {
+      "path": "OcctSharp.Draw.dll",
+      "sha256": "6D795A34997F36365104F086CCA88539AFB6C5FACAD01F319F9BAB09F8B7ABA8"
+    },
+    {
+      "path": "OcctSharp.Foundation.dll",
+      "sha256": "CCAA24C810FD3B07AD9809575B9E39DDA7B26E019E5BAF2AC75CC4E05458E3D9"
+    },
+    {
+      "path": "OcctSharp.Geometry.dll",
+      "sha256": "F2BE38B987402F64F7562314DE7F6895E6E98F18F7C85D5DADA2D8718B8E6F4E"
+    },
+    {
+      "path": "OcctSharp.IVtk.dll",
+      "sha256": "991DA801CAD7B4B50A4C304EF21DEB24D4400A505865C850F02D334E0E1CE839"
+    },
+    {
+      "path": "OcctSharp.Mesh.dll",
+      "sha256": "88D3A18696E9DF890AC982DF37B78E40D65D58C8FBBA33DC6BD0EE678E359D8D"
+    },
+    {
+      "path": "OcctSharp.MeshData.dll",
+      "sha256": "20935E674051B8739AD15D2AEFF91E6378C1232A4F6410EBDC1269791F009FEC"
+    },
+    {
+      "path": "OcctSharp.Modeling.dll",
+      "sha256": "701A161A8CA4AE755B56569B2CB2A6FC433337FFD5A3198BA9B0EA969D1DE9CB"
+    },
+    {
+      "path": "OcctSharp.Runtime.dll",
+      "sha256": "91507D321F81721FAABBD279E0A6A946448519D7390C6DDD9DB52B1D7C1885FA"
+    },
+    {
+      "path": "OcctSharp.Visualization.dll",
+      "sha256": "A630F3BF970CEF9D1E4991A8CE5FD5A7F3A7E184E3B525E2A9591D32CDA9E86E"
+    },
+    {
+      "path": "OcctSharp.Xde.dll",
+      "sha256": "F230064610E79DC76AA29CF8F9AC4293D84C629977F3C96E13EF610E1BC095F5"
+    },
+    {
+      "path": "PdfSharp.BarCodes.dll",
+      "sha256": "BAFC4175AFAEF8629C6122CAB01E90C8F8CDF72E2B957D328C42229D12D02FDD"
+    },
+    {
+      "path": "PdfSharp.Charting.dll",
+      "sha256": "FCE1973D6474160E736112B215410244310F47983853FD5AFD776086A7392469"
+    },
+    {
+      "path": "PdfSharp.Cryptography.dll",
+      "sha256": "25FC17414785592CA4CDC5EFD93F2A9C245812A97CB66B986A63112F61552944"
+    },
+    {
+      "path": "PdfSharp.dll",
+      "sha256": "1A77754D9B06C077F339EB33C0CDEF28927AE8EE46ECCA84E7874B15DABC85A1"
+    },
+    {
+      "path": "PdfSharp.Quality.dll",
+      "sha256": "3F88EC2601D13607EC81A8F7CBC14BD710FF10E2730626FFECE48C86098DF0D1"
+    },
+    {
+      "path": "PdfSharp.Shared.dll",
+      "sha256": "4B21196CF18CB3B971EC02D1F66F2DA0D98D77AA5ED5767754F5DE2CF36CB737"
+    },
+    {
+      "path": "PdfSharp.Snippets.dll",
+      "sha256": "B8191AAC4339B25DD54BE0BC61206B873C69A4D0150EA9F16FDCECFC0F1907A4"
+    },
+    {
+      "path": "PdfSharp.System.dll",
+      "sha256": "5E8DC5ED655D223BE9F9B5B3DFECADB607B00E695C34C60AAC4E037AF9E557E6"
+    },
+    {
+      "path": "PdfSharp.WPFonts.dll",
+      "sha256": "35A3AE0D7EE749E77A6DB7C938AC2C41684D50A792B069E3A3723E9FDD6AAFD3"
+    },
+    {
+      "path": "runtimes/win/lib/net8.0/System.Security.Cryptography.Pkcs.dll",
+      "sha256": "D8E4B733FBAEC1FE0E808FD6391479F190B170DF03E309C5F07DC85445447D22"
+    },
+    {
+      "path": "System.Security.Cryptography.Pkcs.dll",
+      "sha256": "E2352938ED4F664F770A5C98EF067CB145304456D014D2C311D725C95C8A21A9"
+    },
+    {
+      "path": "zh-CN/Cadoryx.Lang.resources.dll",
+      "sha256": "8AB42ABF703E0E0F5D326EFD10E0ACF3F281D6F85EBFC7E57A961FBE29248FE4"
+    }
+  ],
+  "originalProviderSource3": [
+    {
+      "name": "Program.cs",
+      "sha256": "ECDE64BA427AB24667EC274D06B59404E37675BCD08447DFAE0EB62D62602346"
+    },
+    {
+      "name": "DrawingProviderProbe.cs",
+      "sha256": "8BCF923185714028CDC865D774460FA56F73F86BE858F67186A9B4DC19D3BE72"
+    },
+    {
+      "name": "WorkspaceProviderProbe.cs",
+      "sha256": "C46829DFDEA0342806F184BB1B894E0FB7002FF3C0928A00C6F484F1EC42C0CB"
+    }
+  ],
+  "publicSDK13Native62DiskMatch": true,
+  "performanceFreeze": {
+    "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1077-drawing-action-1\\performance-freeze.json",
+    "sha256": "A34D06D7EC810C990085E51CBD73D8E6097CC0D0E8759BBE3E8AADDC46C30C7D"
+  },
+  "originalSourceAndPerformanceConditionsUnchanged": true,
+  "modelWorkflow": "NOT RUN",
+  "actualPerformanceRun": false,
+  "productionApplied": false,
+  "originalProviderMetadataDifferenceObserved": true,
+  "references": [
+    {
+      "path": "performance-freeze.json",
+      "sha256": "A34D06D7EC810C990085E51CBD73D8E6097CC0D0E8759BBE3E8AADDC46C30C7D"
+    },
+    {
+      "path": "wpf-build-exit.json",
+      "sha256": "9426BC08A8D810195B9B9E715E1217D4008A7F047A1A8D5E13F45C74DAE9B86B"
+    },
+    {
+      "path": "wpf-release.log",
+      "sha256": "C1B01902A075A42C46E5AB9632EF46F4BED07E011440C9DFE94527421A009DC4"
+    },
+    {
+      "path": "wpf-debug.log",
+      "sha256": "0DD1A73E53C7505BC148E1581A41CDC279D3E28FC1878D76429E600CACA8BAD4"
+    },
+    {
+      "path": "final-app-managed-result.json",
+      "sha256": "9DF0EDD18A3EF23B61D86E3E7E74A58DC15FEDA8C51CB4BFB087C4CCBE1EA65F"
+    },
+    {
+      "path": "final-provider-build-exit.json",
+      "sha256": "EDAC58411047E203B10DA8259F91B5676A41415602F5B4D995F546F42F2D5640"
+    },
+    {
+      "path": "final-provider-publish.log",
+      "sha256": "54161E0D0F39D04E49471C4C2F02BAB60F6EA872EA2E733010D4DD5D52A50FFA"
+    },
+    {
+      "path": "build-metadata-comparison.json",
+      "sha256": "209863C3B8BB278EBFAD1D9503ACAEAF0B96F6377F3711254AB9579F73B06381"
+    },
+    {
+      "path": "provider-queue-2-stopped-before-native.json",
+      "sha256": "5A115B80F375F85D8604B4671A5CE92A197CF122A86BD43C0DA8E38CF1A33226"
+    },
+    {
+      "path": "audit.py",
+      "sha256": "2E17C4153EC4DD1B407589ABA9B4F2FD107E0B717C9F7FD8308EE535A00A6477"
+    },
+    {
+      "path": "ManagedFinalAppProbe.cs",
+      "sha256": "58A89CFEF452491AC4E3F8F6163B882ADF7DDB8C6FE793857104508E0EF697B9"
+    }
+  ],
+  "AFComplete": false,
+  "cleanup": false,
+  "G": "USER_DEFERRED"
+}

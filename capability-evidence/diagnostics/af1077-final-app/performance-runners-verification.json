@@ -1,0 +1,33 @@
+{
+  "state": "RUNNERS_PREPARED_NOT_EXECUTED",
+  "originalDirectRuntimeBodyRetained": true,
+  "originalProductionOpenRuntimeBodyRetained": true,
+  "identityPrerequisiteUpdatedToFrozenPublic85FinalApp": true,
+  "original24STEPFailuresNotCountedAsAccepted": true,
+  "nativeJobs": 0,
+  "performanceRun": false,
+  "scripts": [
+    {
+      "path": "artifacts\\run-af1077-direct-1.ps1",
+      "sha256": "826CDF743CB6BB46FABA017CC3A64F4971F652847B62DFC253066D573E0003C6"
+    },
+    {
+      "path": "artifacts\\run-af1077-production-open-1.ps1",
+      "sha256": "829E1330E171BD92C1B85E4A24AB00E09A2734D52927E03B89E0D35E682426E7"
+    },
+    {
+      "path": "artifacts\\assert-af1077-performance-ready-1.ps1",
+      "sha256": "527799D9373E2D33224A7653A290310A178398FCB03E1A10E6E07B1F33A9A72E"
+    }
+  ],
+  "originalScripts": [
+    {
+      "path": "artifacts\\run-af1063r5-direct-1.ps1",
+      "sha256": "1D603AF81EEE319CBFCCE027DEBADF504FB1705F33220B4C1776DA430C88ED0D"
+    },
+    {
+      "path": "artifacts\\run-af1063r5-production-open-2.ps1",
+      "sha256": "7101885DD51FC830AF73482B44BC1373DD4B705D22D5DAA7DCB8637E3090D5AE"
+    }
+  ]
+}

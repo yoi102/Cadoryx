@@ -1,0 +1,22 @@
+{
+  "productionApplied": false,
+  "nativeJobs": 0,
+  "stages": [
+    {
+      "stage": "restore",
+      "log": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1077-drawing-action-1\\wpf-restore.log",
+      "exitCode": 0
+    },
+    {
+      "stage": "Release",
+      "log": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1077-drawing-action-1\\wpf-release.log",
+      "exitCode": 0
+    },
+    {
+      "stage": "Debug",
+      "log": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1077-drawing-action-1\\wpf-debug.log",
+      "exitCode": 0
+    }
+  ],
+  "actualPerformanceRun": false
+}

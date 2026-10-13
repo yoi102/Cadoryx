@@ -1,0 +1,100 @@
+{
+  "recordedAt": "2026-10-13T10:37:29.858318+00:00",
+  "state": "AF1076_ROOT_RELEASE_FULL6652_VERIFIED_6628_PASS_24_ORIGINAL_FAILURES",
+  "total": 6652,
+  "passed": 6628,
+  "failed": 24,
+  "skipped": 0,
+  "parent6619NamesRetained": true,
+  "added33Names": [
+    "Cadoryx.Tests.HistoryCursorFeedbackTests.StaleHistoryReceiptProvidesAReadOnlyExactCursorRecoveryWithoutApplyingTheEdit(scenario: \"changed-author-state\")",
+    "Cadoryx.Tests.HistoryCursorFeedbackTests.StaleHistoryReceiptProvidesAReadOnlyExactCursorRecoveryWithoutApplyingTheEdit(scenario: \"changed-preview-position\")",
+    "Cadoryx.Tests.HistoryCursorFeedbackTests.StaleHistoryReceiptProvidesAReadOnlyExactCursorRecoveryWithoutApplyingTheEdit(scenario: \"foreign-document\")",
+    "Cadoryx.Tests.HistoryCursorFeedbackTests.StaleHistoryReceiptProvidesAReadOnlyExactCursorRecoveryWithoutApplyingTheEdit(scenario: \"invented-cursor-at-end\")",
+    "Cadoryx.Tests.NativeCompleteSourceContextTests.ACompleteReceiptRemainsByteIdenticalWithoutContextMetadata",
+    "Cadoryx.Tests.NativeCompleteSourceContextTests.BothOriginalBudgetsRetainCompletePrefixRowsAndEveryAdditionalRowHasItsActualPosition(budget: 2400)",
+    "Cadoryx.Tests.NativeCompleteSourceContextTests.BothOriginalBudgetsRetainCompletePrefixRowsAndEveryAdditionalRowHasItsActualPosition(budget: 6000)",
+    "Cadoryx.Tests.NativeCompleteSourceContextTests.CompleteCapturedCylinderRowSurvivesTheOriginalNormalBudgetWithoutAnInventedSelection",
+    "Cadoryx.Tests.NativeCompleteSourceContextTests.UnpairedOrMismatchedQueriesCannotExposeAdditionalNativeSelections(fault: \"bodyId\")",
+    "Cadoryx.Tests.NativeCompleteSourceContextTests.UnpairedOrMismatchedQueriesCannotExposeAdditionalNativeSelections(fault: \"documentId\")",
+    "Cadoryx.Tests.NativeCompleteSourceContextTests.UnpairedOrMismatchedQueriesCannotExposeAdditionalNativeSelections(fault: \"limit\")",
+    "Cadoryx.Tests.NativeCompleteSourceContextTests.UnpairedOrMismatchedQueriesCannotExposeAdditionalNativeSelections(fault: \"no-call\")",
+    "Cadoryx.Tests.NativeCompleteSourceContextTests.UnpairedOrMismatchedQueriesCannotExposeAdditionalNativeSelections(fault: \"offset\")",
+    "Cadoryx.Tests.NativeCompleteSourceContextTests.UnpairedOrMismatchedQueriesCannotExposeAdditionalNativeSelections(fault: \"path\")",
+    "Cadoryx.Tests.NativeCompleteSourceContextTests.UnpairedOrMismatchedQueriesCannotExposeAdditionalNativeSelections(fault: \"revision\")",
+    "Cadoryx.Tests.NativeCompleteSourceContextTests.UnpairedOrMismatchedQueriesCannotExposeAdditionalNativeSelections(fault: \"stateId\")",
+    "Cadoryx.Tests.NativeCompleteSourceContextTests.UnpairedOrMismatchedQueriesCannotExposeAdditionalNativeSelections(fault: \"unknown\")",
+    "Cadoryx.Tests.NativeReadDefaultPaginationTests.AReceiptFromAnotherPageCannotInventContinuationForAnOmittedParameter(offset: 0, limit: 50, explicitOffset: False, explicitLimit: False)",
+    "Cadoryx.Tests.NativeReadDefaultPaginationTests.AReceiptFromAnotherPageCannotInventContinuationForAnOmittedParameter(offset: 0, limit: 50, explicitOffset: True, explicitLimit: False)",
+    "Cadoryx.Tests.NativeReadDefaultPaginationTests.AReceiptFromAnotherPageCannotInventContinuationForAnOmittedParameter(offset: 37, limit: 50, explicitOffset: False, explicitLimit: False)",
+    "Cadoryx.Tests.NativeReadDefaultPaginationTests.AReceiptFromAnotherPageCannotInventContinuationForAnOmittedParameter(offset: 37, limit: 8, explicitOffset: False, explicitLimit: False)",
+    "Cadoryx.Tests.NativeReadDefaultPaginationTests.AReceiptFromAnotherPageCannotInventContinuationForAnOmittedParameter(offset: 37, limit: 8, explicitOffset: False, explicitLimit: True)",
+    "Cadoryx.Tests.NativeReadDefaultPaginationTests.ExplicitNonDefaultPagesStillProduceTheirOwnContinuation",
+    "Cadoryx.Tests.NativeReadDefaultPaginationTests.InvalidExplicitParametersDoNotFallBackToDefaults(field: \"limit\", value: \"8.5\")",
+    "Cadoryx.Tests.NativeReadDefaultPaginationTests.InvalidExplicitParametersDoNotFallBackToDefaults(field: \"limit\", value: \"\\\"8\\\"\")",
+    "Cadoryx.Tests.NativeReadDefaultPaginationTests.InvalidExplicitParametersDoNotFallBackToDefaults(field: \"limit\", value: \"null\")",
+    "Cadoryx.Tests.NativeReadDefaultPaginationTests.InvalidExplicitParametersDoNotFallBackToDefaults(field: \"offset\", value: \"0.5\")",
+    "Cadoryx.Tests.NativeReadDefaultPaginationTests.InvalidExplicitParametersDoNotFallBackToDefaults(field: \"offset\", value: \"\\\"0\\\"\")",
+    "Cadoryx.Tests.NativeReadDefaultPaginationTests.InvalidExplicitParametersDoNotFallBackToDefaults(field: \"offset\", value: \"null\")",
+    "Cadoryx.Tests.NativeReadDefaultPaginationTests.OmittedAndExplicitDefaultsPairWithTheSameProductionPage(explicitOffset: False, explicitLimit: False)",
+    "Cadoryx.Tests.NativeReadDefaultPaginationTests.OmittedAndExplicitDefaultsPairWithTheSameProductionPage(explicitOffset: False, explicitLimit: True)",
+    "Cadoryx.Tests.NativeReadDefaultPaginationTests.OmittedAndExplicitDefaultsPairWithTheSameProductionPage(explicitOffset: True, explicitLimit: False)",
+    "Cadoryx.Tests.NativeReadDefaultPaginationTests.OmittedAndExplicitDefaultsPairWithTheSameProductionPage(explicitOffset: True, explicitLimit: True)"
+  ],
+  "failures": [
+    "Cadoryx.Tests.SketchRegionSingleLoopMixedNativeTests.SameLoopNaturalAndNativeConnectionsMoveInOneOriginalBudgetAndBuildTheExactSolid(kind: \"spline-g1\", mirror: False, distance: -0.10000000000000001, join: Bevel)",
+    "Cadoryx.Tests.SketchRegionSingleLoopMixedNativeTests.SameLoopNaturalAndNativeConnectionsMoveInOneOriginalBudgetAndBuildTheExactSolid(kind: \"spline-g1\", mirror: False, distance: -0.10000000000000001, join: Miter)",
+    "Cadoryx.Tests.SketchRegionSingleLoopMixedNativeTests.SameLoopNaturalAndNativeConnectionsMoveInOneOriginalBudgetAndBuildTheExactSolid(kind: \"spline-g1\", mirror: False, distance: -0.10000000000000001, join: Round)",
+    "Cadoryx.Tests.SketchRegionSingleLoopMixedNativeTests.SameLoopNaturalAndNativeConnectionsMoveInOneOriginalBudgetAndBuildTheExactSolid(kind: \"spline-g1\", mirror: False, distance: 0.10000000000000001, join: Bevel)",
+    "Cadoryx.Tests.SketchRegionSingleLoopMixedNativeTests.SameLoopNaturalAndNativeConnectionsMoveInOneOriginalBudgetAndBuildTheExactSolid(kind: \"spline-g1\", mirror: False, distance: 0.10000000000000001, join: Miter)",
+    "Cadoryx.Tests.SketchRegionSingleLoopMixedNativeTests.SameLoopNaturalAndNativeConnectionsMoveInOneOriginalBudgetAndBuildTheExactSolid(kind: \"spline-g1\", mirror: False, distance: 0.10000000000000001, join: Round)",
+    "Cadoryx.Tests.SketchRegionSingleLoopMixedNativeTests.SameLoopNaturalAndNativeConnectionsMoveInOneOriginalBudgetAndBuildTheExactSolid(kind: \"spline-g1\", mirror: True, distance: -0.10000000000000001, join: Bevel)",
+    "Cadoryx.Tests.SketchRegionSingleLoopMixedNativeTests.SameLoopNaturalAndNativeConnectionsMoveInOneOriginalBudgetAndBuildTheExactSolid(kind: \"spline-g1\", mirror: True, distance: -0.10000000000000001, join: Miter)",
+    "Cadoryx.Tests.SketchRegionSingleLoopMixedNativeTests.SameLoopNaturalAndNativeConnectionsMoveInOneOriginalBudgetAndBuildTheExactSolid(kind: \"spline-g1\", mirror: True, distance: -0.10000000000000001, join: Round)",
+    "Cadoryx.Tests.SketchRegionSingleLoopMixedNativeTests.SameLoopNaturalAndNativeConnectionsMoveInOneOriginalBudgetAndBuildTheExactSolid(kind: \"spline-g1\", mirror: True, distance: 0.10000000000000001, join: Bevel)",
+    "Cadoryx.Tests.SketchRegionSingleLoopMixedNativeTests.SameLoopNaturalAndNativeConnectionsMoveInOneOriginalBudgetAndBuildTheExactSolid(kind: \"spline-g1\", mirror: True, distance: 0.10000000000000001, join: Miter)",
+    "Cadoryx.Tests.SketchRegionSingleLoopMixedNativeTests.SameLoopNaturalAndNativeConnectionsMoveInOneOriginalBudgetAndBuildTheExactSolid(kind: \"spline-g1\", mirror: True, distance: 0.10000000000000001, join: Round)",
+    "Cadoryx.Tests.SketchRegionSingleLoopMixedNativeTests.SameLoopNaturalAndNativeConnectionsMoveInOneOriginalBudgetAndBuildTheExactSolid(kind: \"spline-g2\", mirror: False, distance: -0.10000000000000001, join: Bevel)",
+    "Cadoryx.Tests.SketchRegionSingleLoopMixedNativeTests.SameLoopNaturalAndNativeConnectionsMoveInOneOriginalBudgetAndBuildTheExactSolid(kind: \"spline-g2\", mirror: False, distance: -0.10000000000000001, join: Miter)",
+    "Cadoryx.Tests.SketchRegionSingleLoopMixedNativeTests.SameLoopNaturalAndNativeConnectionsMoveInOneOriginalBudgetAndBuildTheExactSolid(kind: \"spline-g2\", mirror: False, distance: -0.10000000000000001, join: Round)",
+    "Cadoryx.Tests.SketchRegionSingleLoopMixedNativeTests.SameLoopNaturalAndNativeConnectionsMoveInOneOriginalBudgetAndBuildTheExactSolid(kind: \"spline-g2\", mirror: False, distance: 0.10000000000000001, join: Bevel)",
+    "Cadoryx.Tests.SketchRegionSingleLoopMixedNativeTests.SameLoopNaturalAndNativeConnectionsMoveInOneOriginalBudgetAndBuildTheExactSolid(kind: \"spline-g2\", mirror: False, distance: 0.10000000000000001, join: Miter)",
+    "Cadoryx.Tests.SketchRegionSingleLoopMixedNativeTests.SameLoopNaturalAndNativeConnectionsMoveInOneOriginalBudgetAndBuildTheExactSolid(kind: \"spline-g2\", mirror: False, distance: 0.10000000000000001, join: Round)",
+    "Cadoryx.Tests.SketchRegionSingleLoopMixedNativeTests.SameLoopNaturalAndNativeConnectionsMoveInOneOriginalBudgetAndBuildTheExactSolid(kind: \"spline-g2\", mirror: True, distance: -0.10000000000000001, join: Bevel)",
+    "Cadoryx.Tests.SketchRegionSingleLoopMixedNativeTests.SameLoopNaturalAndNativeConnectionsMoveInOneOriginalBudgetAndBuildTheExactSolid(kind: \"spline-g2\", mirror: True, distance: -0.10000000000000001, join: Miter)",
+    "Cadoryx.Tests.SketchRegionSingleLoopMixedNativeTests.SameLoopNaturalAndNativeConnectionsMoveInOneOriginalBudgetAndBuildTheExactSolid(kind: \"spline-g2\", mirror: True, distance: -0.10000000000000001, join: Round)",
+    "Cadoryx.Tests.SketchRegionSingleLoopMixedNativeTests.SameLoopNaturalAndNativeConnectionsMoveInOneOriginalBudgetAndBuildTheExactSolid(kind: \"spline-g2\", mirror: True, distance: 0.10000000000000001, join: Bevel)",
+    "Cadoryx.Tests.SketchRegionSingleLoopMixedNativeTests.SameLoopNaturalAndNativeConnectionsMoveInOneOriginalBudgetAndBuildTheExactSolid(kind: \"spline-g2\", mirror: True, distance: 0.10000000000000001, join: Miter)",
+    "Cadoryx.Tests.SketchRegionSingleLoopMixedNativeTests.SameLoopNaturalAndNativeConnectionsMoveInOneOriginalBudgetAndBuildTheExactSolid(kind: \"spline-g2\", mirror: True, distance: 0.10000000000000001, join: Round)"
+  ],
+  "newFailureNames": [],
+  "actualNative62Matched": true,
+  "originalStrictSTEPGateChanged": false,
+  "allPassed": false,
+  "Debug": "RESUMED_WITH_SAME_FROZEN_SOURCE_AND_BINARIES_NOT_TERMINAL",
+  "references": [
+    {
+      "path": "capability-evidence/diagnostics/af1076-root-full/release-runtime.trx",
+      "sha256": "8E779212EA2A28B68B8BD6FB8C979A912ED2C881438DB645587DB96DBD5A0373"
+    },
+    {
+      "path": "capability-evidence/diagnostics/af1076-root-full/release-loaded-native.json",
+      "sha256": "5CE569530E736BCF516F4873C95B4BC5F8690C47A5055CBCFCF036B6D721061A"
+    },
+    {
+      "path": "capability-evidence/diagnostics/af1076-root-full/release-exit.json",
+      "sha256": "BF6E476C260BDFA27569A90C4DBA7C6FF5F25C54708754CBBFCA0198F9419E12"
+    },
+    {
+      "path": "capability-evidence/diagnostics/af1076-root-full/release-stdout.log",
+      "sha256": "EBBF61A3A755D5CDCA117C3630E2A30282FBE7FF00BBCF72973046C179A586C3"
+    },
+    {
+      "path": "capability-evidence/diagnostics/af1076-root-full/release-stderr.log",
+      "sha256": "CD2F41AB8F88D5317E1122817C8F0AED82F20161FE7CDFDFD877B877C4045A83"
+    }
+  ],
+  "AFComplete": false,
+  "cleanup": false,
+  "G": "USER_DEFERRED"
+}

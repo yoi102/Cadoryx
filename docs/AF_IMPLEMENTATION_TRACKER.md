@@ -1,6 +1,6 @@
 # A–F 全量实施跟踪
 
-2026-10-13，status240：[1077隔离动作字段修正](F5_ACTION_FIELDS_AND_FEEDBACK_PLAN.md)保持原schema长度、上下文成本、解析和原6652来源，两配置VM构建0、原编译托管断言各45通过；原模型验收已编译并由实际进程等待当前完整6652终态后串行执行。生产1076与原全量作业保持、没有模型或全量新终态。上游CJ–CQ整体迁移继续，新API可优先插入；A–F范围完整保留，G/清理暂缓。详见[STATUS](STATUS.md)。
+2026-10-13，status241：[生产根Release6652](../capability-evidence/diagnostics/af1076-root-full/release-verification.json)实际6628通过/原24 STEP失败/零跳过、无新增失败及native62准确；原协调空闲检查退出后只续跑尚未开始的Debug，Release没有重跑。1077最终WPF两配置build0、实际WPF载荷的原编译断言各45通过，provider2共享16逐字节一致；原模型队列实际等待Debug终态，原性能正文已适配并保留预算/完整PNG，仍未运行。生产1076、其他A–F门禁及SDK CJ–CQ整体迁移继续，G/清理暂缓。详见[STATUS](STATUS.md)。
 
 2026-10-13，status239：1076原模型两场景已实际结束，多文档8轮PASS/资产0，工程图第三轮FAIL；实际native62准确。完整CylinderFace原条目已进入三个实际HTTP请求，原查询/位置/5786字符和工具可用性已验，不算尺寸工作流通过；新游标恢复在本次多文档没有被调用。生产根完整6652 Release实际运行，Debug串行待验，未报告最终总数。SDK状态诊断已接收，原两个端盖边InvalidCurveOnSurface(8)、面UnorientableShape(27)及原exact标志保持；缺12上下文的初版日志不是通过证据，没有可采用修复。原A–F全部范围继续，G/清理暂缓；详见[STATUS](STATUS.md)。
 

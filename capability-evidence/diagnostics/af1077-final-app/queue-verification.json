@@ -1,0 +1,42 @@
+{
+  "nativeStarted": false,
+  "queueCreated": "2026-10-13T19:40:47.36027+09:00",
+  "performanceStarted": false,
+  "recordedAt": "2026-10-13T10:51:40.6527441+00:00",
+  "debugCoordinatorPid": 25028,
+  "originalNativeGuardRetainedWaitsOnObservedLiveHandles": true,
+  "queuePid": 42676,
+  "files": [
+    {
+      "sha256": "58AD21A061B8AE33AD760F959BD5700742E1424B6C517B3B2AF57F4E7CB88DA7",
+      "path": "provider-after-debug-3.ps1"
+    },
+    {
+      "sha256": "7C6C55C3BDA4EB036A9976460F6B10B0ACE07CCA12048C55582DC37C75156778",
+      "path": "wait-native-consumers-idle-1.ps1"
+    },
+    {
+      "sha256": "EE390E6AB6FB635BBDAF9DEC04DBDF4D251E8FD4164714CB47E74E22CBC013FD",
+      "path": "provider2-queue-3-start.json"
+    },
+    {
+      "sha256": "826CDF743CB6BB46FABA017CC3A64F4971F652847B62DFC253066D573E0003C6",
+      "path": "run-direct-1.ps1"
+    },
+    {
+      "sha256": "829E1330E171BD92C1B85E4A24AB00E09A2734D52927E03B89E0D35E682426E7",
+      "path": "run-production-open-1.ps1"
+    },
+    {
+      "sha256": "527799D9373E2D33224A7653A290310A178398FCB03E1A10E6E07B1F33A9A72E",
+      "path": "assert-performance-ready-1.ps1"
+    },
+    {
+      "sha256": "786EABB3ED3989A848E0F44A35632FEE39F34E923BCE1BE2CC2C161E1BADBDCC",
+      "path": "performance-runners-verification.json"
+    }
+  ],
+  "modelWorkflow": "NOT RUN",
+  "state": "FINAL_PROVIDER_QUEUED_BEHIND_ACTUAL_DEBUG_COORDINATOR",
+  "debugCoordinatorCreated": "2026-10-13T19:34:42.638973+09:00"
+}
