@@ -63,8 +63,8 @@ assert result['actualAbsentOrInvalidContext'] == 'NOT_RUN'
 out = draft / 'runtime-1-verification.json'
 assert not out.exists()
 record = dict(recordedAt=datetime.datetime.now(datetime.timezone.utc).isoformat(),
-    state='PASS_LOCAL86_SOURCE1081_MAIN_STATUS_RECOVERY36_NATIVE62_144_FULL_IMAGES_PENDING_DIRECT_REVIEW',
-    fixture=ref(fixture_path), application=app['build'], fullBoth6830=full_proofs,
+    state='PASS_LOCAL87CU1_CURRENT_F5_D7_MAIN_STATUS_RECOVERY36_NATIVE62_144_FULL_IMAGES_PENDING_DIRECT_REVIEW',
+    fixture=ref(fixture_path), application=app['build'], fullBoth7117=full_proofs,
     terminal=ref(terminal_path), result=ref(result_path), binding=ref(binding_path),
     cases=sorted(expected), passed=36, failed=0, frames=frames, mainStatusBindingVerified=True,
     actualProductionNativeLossAndOtherPaneVerified=True, observationsBeforeFixtureFallback=True,
@@ -74,4 +74,4 @@ record = dict(recordedAt=datetime.datetime.now(datetime.timezone.utc).isoformat(
     physicalGpuRemoval=False, desktopInputStarted=False, productionApplied=False, publiclyPublished=False,
     AFComplete=False, G='USER_DEFERRED')
 out.write_text(json.dumps(record, indent=2)+'\n', encoding='utf-8')
-print('PASS current1081/local86 main status36/native62/model-history/144 whole images; direct review remains separate.')
+print('PASS currentF5D7/local87cu1 main status36/native62/model-history/144 whole images; direct review remains separate.')

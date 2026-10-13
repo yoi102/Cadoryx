@@ -16,7 +16,7 @@ The viewport executable takes one fresh output directory. The status library is
 a .NET startup hook for the supplied production executable, using its existing
 `--a5-recovery-status-smoke <fresh-output>` argument and memory asset store.
 The current coordinated runner is
-`capability-evidence/diagnostics/af1081-local86/run-recovery.ps1`; it verifies the
+`tools/CurrentCadCandidate/run-recovery.ps1`; it verifies the
 completed regression gate, candidate and fixture hashes, actual loaded native
 modules, raw logs and original deadlines before accepting a process result.
 

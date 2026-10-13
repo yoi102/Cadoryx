@@ -6,8 +6,8 @@ $taskAll=Get-Content (Join-Path $taskDraft 'performance-freeze.json') -Raw|Conve
 Assert-CurrentSdkNativeReturn -TaskRoot $taskRoot
 if($taskAll.state -cne 'CURRENT_F5_D7_EXACT87CU1_PERFORMANCE_PREPARED_NOT_RUNTIME'){throw 'CurrentF5D7 application required'}
 foreach($taskRow in $taskAll.sourcePayload){if((Get-FileHash (Join-Path $taskDraft ('workspace/'+$taskRow.path))).Hash -cne $taskRow.sha256){throw 'Final candidate source differs'}}
-$taskFull=Get-Content (Join-Path $taskRoot 'capability-evidence/diagnostics/af1082-f5-d7-local87cu1/full-verification.json') -Raw|ConvertFrom-Json -DateKind String
-if($taskFull.originalStrictSTEPGateChanged -or $taskFull.configurations.Count -ne 2 -or @($taskFull.configurations|Where-Object {$_.total -ne 7117 -or $_.failed -ne 24 -or $_.skipped -ne 0 -or $_.newFailureNames.Count -ne 0 -or !$_.actualNative62Matched}).Count -ne 0){throw 'Full frozen regression scope differs; inspect before performance use'}
+& 'C:/Users/yoiri/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe' -X utf8 (Join-Path $PSScriptRoot 'require-full-gate.py')
+if($LASTEXITCODE -ne 0){throw 'Current full7117 actual evidence gate failed'}
 $taskProvider=Get-Content (Join-Path $taskDraft 'provider-both-exit.json') -Raw|ConvertFrom-Json -DateKind String
 if($taskProvider.scenarios.Count -ne 2){throw 'Both original model scenarios must actually finish before this native stage'}
 $taskFreeze=@($taskAll.configurations|Where-Object configuration -CEQ 'Release')[0]

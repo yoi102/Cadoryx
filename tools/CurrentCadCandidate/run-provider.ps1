@@ -10,8 +10,8 @@ $taskTerminal=Join-Path $taskDraft 'provider-both-exit.json'
 $taskFreezePath=Join-Path $taskDraft 'provider-runtime-freeze.json'
 if((Test-Path $taskTerminal)-or(Test-Path $taskFreezePath)){throw 'Immutable provider runtime exists; inspect its handle'}
 if(!(Test-Path (Join-Path $taskDraft 'sdk-native-return.json'))){throw 'SDK native lane not handed back'}
-$taskAudit=Get-Content (Join-Path $taskRoot 'capability-evidence/diagnostics/af1082-f5-d7-local87cu1/full-verification.json') -Raw|ConvertFrom-Json -DateKind String
-if($taskAudit.configurations.Count -ne 2 -or @($taskAudit.configurations|Where-Object {$_.total -ne 7117 -or $_.failed -ne 24 -or $_.skipped -ne 0 -or $_.newFailureNames.Count -ne 0 -or !$_.actualNative62Matched}).Count -ne 0){throw 'Final full7117 scope or failures changed'}
+& 'C:/Users/yoiri/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe' -X utf8 (Join-Path $PSScriptRoot 'require-full-gate.py')
+if($LASTEXITCODE -ne 0){throw 'Current full7117 actual evidence gate failed'}
 foreach($taskRow in $taskProof.sourcePayload){if((Get-FileHash -LiteralPath (Join-Path $taskProof.workspace $taskRow.path)).Hash -cne $taskRow.sha256){throw 'CurrentF5D7 source drift'}}
 foreach($taskRow in $taskProof.providerPayload){if((Get-FileHash -LiteralPath (Join-Path $taskProvider $taskRow.path)).Hash -cne $taskRow.sha256){throw 'Final provider payload drift'}}
 foreach($taskRow in $taskOriginalSources){if((Get-FileHash -LiteralPath (Join-Path $taskRoot $taskRow.path)).Hash -cne $taskRow.sha256){throw 'Original prompts/assertions differ'}}

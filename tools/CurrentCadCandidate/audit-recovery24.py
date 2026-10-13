@@ -99,13 +99,13 @@ for row in images:
 output = draft / 'runtime-1-verification.json'
 assert not output.exists()
 record = dict(recordedAt=datetime.datetime.now(datetime.timezone.utc).isoformat(),
-    state='PASS_LOCAL86_SOURCE1081_ORIGINAL_WPF24_NATIVE62_HISTORY_SAVE48_IMAGES52_PENDING_DIRECT_REVIEW',
+    state='PASS_LOCAL87CU1_CURRENT_F5_D7_ORIGINAL_WPF24_NATIVE62_HISTORY_SAVE48_IMAGES52_PENDING_DIRECT_REVIEW',
     preparation=ref(prep_path), fixture=ref(fixture_path), semanticBuild=app['build'],
-    fullBoth6830=full_proofs, terminal=ref(terminal_path), result=ref(result_path), binding=ref(binding_path),
+    fullBoth7117=full_proofs, terminal=ref(terminal_path), result=ref(result_path), binding=ref(binding_path),
     rawStderrBytes=0, cases=cases, images=images, saves=saves, uniqueWholeImages=list(unique.values()),
     originalProgramByteIdentical=True, original24CaseAssertionsAnd30sLimitsRetained=True,
     newWholeImageReview='PENDING_DIRECT_REVIEW_EVERY_UNIQUE_FULL_FRAME', actualAbsentOrInvalidContext='NOT_RUN',
     physicalGpuRemoval='NOT_RUN', mainShellStatusBar='SEPARATE_MAIN36_REQUIRED', productionApplied=False,
     publiclyPublished=False, desktopInputStarted=False, AFComplete=False, G='USER_DEFERRED')
 output.write_text(json.dumps(record, indent=2)+'\n', encoding='utf-8')
-print('PASS current1081/local86 original24/native62/48 saves/52 whole images; direct image review remains separate.')
+print('PASS currentF5D7/local87cu1 original24/native62/48 saves/52 whole images; direct image review remains separate.')

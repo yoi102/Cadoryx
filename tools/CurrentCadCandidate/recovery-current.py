@@ -2,6 +2,7 @@
 from pathlib import Path
 import hashlib
 import json
+import runpy
 
 ROOT = Path(__file__).resolve().parents[2]
 a = ROOT / 'artifacts'
@@ -11,6 +12,7 @@ def sha(p): return hashlib.sha256(p.read_bytes()).hexdigest().upper()
 def ref(p): return {'path': str(p.resolve()), 'sha256': sha(p)}
 
 def accepted_app(label):
+    runpy.run_path(str(Path(__file__).with_name('require-full-gate.py')))
     freeze_path = DRAFT / 'freeze.json'; freeze = read(freeze_path)
     full_path = ROOT / 'capability-evidence/diagnostics/af1082-f5-d7-local87cu1/full-verification.json'
     full = read(full_path)
