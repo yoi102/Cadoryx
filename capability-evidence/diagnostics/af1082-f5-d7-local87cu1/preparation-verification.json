@@ -1,0 +1,48 @@
+{
+  "recordedAt": "2026-10-13T20:31:16.887897+00:00",
+  "state": "LATEST_F5_D7_EXACT87CU1_1200INPUT_BOTH_BUILD0_ACTUAL7117_DISCOVERY_NOT_RUNTIME",
+  "freeze": {
+    "path": "artifacts/af1082-f5-d7-local87cu1-1/freeze.json",
+    "sha256": "67B761151A6CCF780C60D772FA3C732037649E5F333A1DAC6DDB425C913DDF0E"
+  },
+  "preparation": {
+    "path": "artifacts/af1082-f5-d7-local87cu1-1/preparation.json",
+    "sha256": "C8E2E3244D4BCB4AD6534B8D28E00C4E6100F656BEEE210FE94FA3E323E3D44B"
+  },
+  "build": {
+    "path": "artifacts/af1082-f5-d7-local87cu1-1/build-exit.json",
+    "sha256": "C00998A9619AB58B69457FF122A58BB61861431A3488BCCE2D87EA45590912F6"
+  },
+  "locks": {
+    "path": "artifacts/af1082-f5-d7-local87cu1-1/locks.json",
+    "sha256": "A80E7D0C71584DC15C3D3AE7D4088C3EE81B574557297DCFF2121EFF393A49DA"
+  },
+  "inputs": 1200,
+  "projects": 50,
+  "bothActualTestDiscovery": 7117,
+  "allOriginal6991NamesAndNew126": true,
+  "nonOcctDependenciesUnchanged": true,
+  "lockCount": 50,
+  "sdkReferences": 412,
+  "sdk13Native62BothDiskMatched": true,
+  "providerShared16Matched": true,
+  "hosts": {
+    "path": "capability-evidence/diagnostics/af1082-f5-d7-local87cu1/hosts-verification.json",
+    "sha256": "1643ECBCC15251C0C627FB66DE2ACC7BA947DB6A90BF54897E12E40643107B0A"
+  },
+  "followups": {
+    "path": "artifacts/af1082-f5-d7-local87cu1-1/followup-preparation.json",
+    "sha256": "FB6853D7B769040FB322696F5975D61210CAD64F6037AE27BF6402218E0199F8"
+  },
+  "performance": {
+    "path": "artifacts/af1082-f5-d7-local87cu1-1/performance-freeze.json",
+    "sha256": "1AF2AB47FD2446852A6E33851C57734420B8B6EC9C96A48D11805BD3CCB4CF6B"
+  },
+  "fullCurrentRuntimeStarted": false,
+  "actualDesktopWindowMaterialPerformanceOrProvider": false,
+  "productionStillPublic85": true,
+  "D7ProductionApplied": false,
+  "AFComplete": false,
+  "G": "USER_DEFERRED",
+  "cleanup": false
+}

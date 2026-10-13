@@ -1,0 +1,11 @@
+$ErrorActionPreference='Stop'
+$taskRoot=[IO.Path]::GetFullPath((Join-Path $PSScriptRoot '../..'))
+$taskReturn=Join-Path $taskRoot 'artifacts/af1082-f5-d7-local87cu1-1/sdk-native-return.json'
+if(!(Test-Path $taskReturn)){throw 'Current SDK native reservation has not been explicitly returned; do not start7117'}
+$taskReceipt=Get-Content $taskReturn -Raw|ConvertFrom-Json -DateKind String
+if(!$taskReceipt.sdkExplicitNativeReturnReceived -or !$taskReceipt.rootMayStartCurrent7117 -or $taskReceipt.acceptedFrozenPackageVersion -cne '8.0.1-preview.87.cu1'){
+ throw 'Current native reservation return does not authorize this exact immutable candidate'
+}
+. (Join-Path $taskRoot 'artifacts/assert-cad-native-consumers-idle-2.ps1')
+$null=Assert-CadNativeConsumersIdle
+& (Join-Path $PSScriptRoot 'run-full.ps1')
