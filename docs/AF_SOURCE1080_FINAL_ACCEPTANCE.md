@@ -1,5 +1,7 @@
 # A–F source1080 最终验收载荷与原生执行接续
 
+2026-10-13接续：生产已修正为[1081主窗口失败回滚](AF_MAIN_WINDOW_ATTACHMENT_RECOVERY.md)，预计6830及最终模型/性能/窗口仍待运行；以下1080冻结仅作历史，不能作为最新源码验收。[精确本地86](../capability-evidence/diagnostics/local-sdk86-received/verification.json)已独立接收并冻结feed，SDK明确交还原生时段，当前生产仍公开85、86尚未应用。旧1080 runner未激活，须按1081及选定SDK重新构造最终载荷，原预算/模型/矩阵/公差保持。
+
 2026-10-13。当前开发源码为1080，仍使用公开OcctSharp Preview.85。此前命令目录、错误图纸类型和终端成功状态修正均已合入并推送。[当前冻结证据](../capability-evidence/diagnostics/af1080-final-ready/verification.json)保存1192来源，完整solution两配置零警告/错误，实际最终WPF每配置208编译断言直接调用通过。真实模型探针的16共享程序集与Release应用逐字节一致，SDK13/native62磁盘匹配公开包。
 
 原1076两配置6652各6628通过/原24严格STEP失败仍是历史全量证据。1080预计6815尚未完整发现/运行；当前托管208不是完整xunit，不证明真实模型、性能或窗口通过。76实际程序集的221 OCCT类型/696成员逐项保持原1073集合，零直接原生导入只是静态消费边界证据，不代表SDK能力覆盖率或动态正确性。

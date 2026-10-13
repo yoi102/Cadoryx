@@ -1,0 +1,515 @@
+{
+  "recordedAt": "2026-10-13T13:25:49.600240+00:00",
+  "state": "AF1081_MAIN_WINDOW_ATTACHMENT_RECOVERY_MANAGED_PRODUCTION_VERIFIED",
+  "configurations": [
+    {
+      "configuration": "Release",
+      "originalAssertions": 208,
+      "newFailureCases": 15,
+      "oldVersionPassed": 208,
+      "oldVersionFailed": 15,
+      "candidatePassed": 223,
+      "nativeModulesLoaded": 0,
+      "actualWpfViewModelsMatched": true,
+      "diskNative62StillPublic85": true,
+      "buildLogs": [
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1081-attachment-candidate-build-release-3.log",
+          "sha256": "ED06303405E8F29B998BAFCD42CA756E3520EC592D278BAEEB3711482CF690E2"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1081-attachment-wpf-build-release-1.log",
+          "sha256": "33B17D4828240812384063641035009FFF642166F74AD90528153127E17880B1"
+        }
+      ],
+      "candidateAssemblies": [
+        {
+          "name": "Cadoryx.Tests",
+          "location": "C:/Users/yoiri/source/repos/Cadoryx\\Cadoryx.Tests/bin\\Release\\net10.0\\Cadoryx.Tests.dll",
+          "sha256": "207065F6B25608D2CC45F9B1980B416E4518541F61799C91206E0E87523C5814"
+        },
+        {
+          "name": "Cadoryx.ViewModels",
+          "location": "C:/Users/yoiri/source/repos/Cadoryx\\Cadoryx.ViewModels/bin\\Release\\net10.0\\Cadoryx.ViewModels.dll",
+          "sha256": "F9306A785782BD9B968B6A83D0C80FECE911C83B296BF8F13E25F3AFA0F380B7"
+        },
+        {
+          "name": "Cadoryx.AI.LmStudio",
+          "location": "C:/Users/yoiri/source/repos/Cadoryx\\Cadoryx.ViewModels/bin\\Release\\net10.0\\Cadoryx.AI.LmStudio.dll",
+          "sha256": "B99C506D9DDEE0F66C4AACAC057A6ED5D6B091D0AD60C8A7FC072280BA652987"
+        },
+        {
+          "name": "Cadoryx.Agent",
+          "location": "C:/Users/yoiri/source/repos/Cadoryx\\Cadoryx.ViewModels/bin\\Release\\net10.0\\Cadoryx.Agent.dll",
+          "sha256": "877D0FAC2B3BE48D22E58342043449401DFC77FBC7B2EDD86D342F40E6BD0D80"
+        },
+        {
+          "name": "Cadoryx.AI.Contracts",
+          "location": "C:/Users/yoiri/source/repos/Cadoryx\\Cadoryx.ViewModels/bin\\Release\\net10.0\\Cadoryx.AI.Contracts.dll",
+          "sha256": "62255C5558FBF4A5859B5A7658911D3E78A11721449D35D0CCDAB0CB0038D445"
+        },
+        {
+          "name": "Cadoryx.Db",
+          "location": "C:/Users/yoiri/source/repos/Cadoryx\\Cadoryx.ViewModels/bin\\Release\\net10.0\\Cadoryx.Db.dll",
+          "sha256": "8528893BE0D635A081B23A7152D31CC3CC786A1282F35D9D93CF0F6AB8ABB5C9"
+        },
+        {
+          "name": "Cadoryx.Editor",
+          "location": "C:/Users/yoiri/source/repos/Cadoryx\\Cadoryx.ViewModels/bin\\Release\\net10.0\\Cadoryx.Editor.dll",
+          "sha256": "5DF2E2DC5C85C15C838E34C09750340D4C7710FE89B8861B22D0894608FB6EC3"
+        },
+        {
+          "name": "Cadoryx.CommandLine",
+          "location": "C:/Users/yoiri/source/repos/Cadoryx\\Cadoryx.ViewModels/bin\\Release\\net10.0\\Cadoryx.CommandLine.dll",
+          "sha256": "DD9DF5BC296A48C9B456BCBA135683514949AD6FD4B0CFACA08B6C82DCB2815F"
+        },
+        {
+          "name": "Cadoryx.Rendering",
+          "location": "C:/Users/yoiri/source/repos/Cadoryx\\Cadoryx.ViewModels/bin\\Release\\net10.0\\Cadoryx.Rendering.dll",
+          "sha256": "C3F5F345EE3CE9708806EB46B6B4499BE5574A6C361E01C00A7288847E0A75F1"
+        },
+        {
+          "name": "Cadoryx.Commands",
+          "location": "C:/Users/yoiri/source/repos/Cadoryx\\Cadoryx.ViewModels/bin\\Release\\net10.0\\Cadoryx.Commands.dll",
+          "sha256": "5D71B84C8281C9FD65161B8FA7291EE56D666272056418B3688BC9DF8C20440B"
+        },
+        {
+          "name": "Cadoryx.Kernel.Abstractions",
+          "location": "C:/Users/yoiri/source/repos/Cadoryx\\Cadoryx.ViewModels/bin\\Release\\net10.0\\Cadoryx.Kernel.Abstractions.dll",
+          "sha256": "E605C87A0C413C07FB26A960D8046A1A8ACC9BCF744854F6B47459CF3E2E27E9"
+        },
+        {
+          "name": "Cadoryx.ViewModels.Services",
+          "location": "C:/Users/yoiri/source/repos/Cadoryx\\Cadoryx.ViewModels/bin\\Release\\net10.0\\Cadoryx.ViewModels.Services.dll",
+          "sha256": "D5DBB1703E671AC8D4259CCE0F662083DDE8682DDAB67D1181700E054CB04CE1"
+        },
+        {
+          "name": "Cadoryx.Lang",
+          "location": "C:/Users/yoiri/source/repos/Cadoryx\\Cadoryx.ViewModels/bin\\Release\\net10.0\\Cadoryx.Lang.dll",
+          "sha256": "A6ADD7AC6975517F053689C00A8A630F84D7B7D65DD7CAD915D090D1509F60DB"
+        },
+        {
+          "name": "Cadoryx.Sketching",
+          "location": "C:/Users/yoiri/source/repos/Cadoryx\\Cadoryx.ViewModels/bin\\Release\\net10.0\\Cadoryx.Sketching.dll",
+          "sha256": "328005A434754699FD3BAF82300F6A6546EDC4F7FA2B1B30EFD09E1394602033"
+        },
+        {
+          "name": "Cadoryx.IO",
+          "location": "C:/Users/yoiri/source/repos/Cadoryx\\Cadoryx.Tests/bin\\Release\\net10.0\\Cadoryx.IO.dll",
+          "sha256": "9FA48676CECE648B89EF584F5A4D3D02BF26D4ACE48A053A61E8551F9F1B6F43"
+        },
+        {
+          "name": "Cadoryx.Agent.Codex",
+          "location": "C:/Users/yoiri/source/repos/Cadoryx\\Cadoryx.ViewModels/bin\\Release\\net10.0\\Cadoryx.Agent.Codex.dll",
+          "sha256": "6391885C082D2600012D262EDEFDE70D41B5823BF3E9BB80DEAFA8B49AFCCCFA"
+        }
+      ],
+      "originalFailureSummaries": [
+        {
+          "method": "FailedProductionAttachmentPreservesOriginalActiveDocumentAndReleasesCandidate",
+          "args": [
+            "new",
+            "open"
+          ],
+          "error": "System.MissingMethodException: Method not found: 'CommunityToolkit.Mvvm.Input.IAsyncRelayCommand Cadoryx.ViewModels.MainWindowViewModel.get_NewCommand()'."
+        },
+        {
+          "method": "FailedProductionAttachmentPreservesOriginalActiveDocumentAndReleasesCandidate",
+          "args": [
+            "new",
+            "activate"
+          ],
+          "error": "System.MissingMethodException: Method not found: 'CommunityToolkit.Mvvm.Input.IAsyncRelayCommand Cadoryx.ViewModels.MainWindowViewModel.get_NewCommand()'."
+        },
+        {
+          "method": "FailedProductionAttachmentPreservesOriginalActiveDocumentAndReleasesCandidate",
+          "args": [
+            "new",
+            "collection"
+          ],
+          "error": "System.MissingMethodException: Method not found: 'CommunityToolkit.Mvvm.Input.IAsyncRelayCommand Cadoryx.ViewModels.MainWindowViewModel.get_NewCommand()'."
+        },
+        {
+          "method": "FailedProductionAttachmentPreservesOriginalActiveDocumentAndReleasesCandidate",
+          "args": [
+            "native",
+            "open"
+          ],
+          "error": "System.MissingMethodException: Method not found: 'CommunityToolkit.Mvvm.Input.IAsyncRelayCommand Cadoryx.ViewModels.MainWindowViewModel.get_NewCommand()'."
+        },
+        {
+          "method": "FailedProductionAttachmentPreservesOriginalActiveDocumentAndReleasesCandidate",
+          "args": [
+            "native",
+            "activate"
+          ],
+          "error": "System.MissingMethodException: Method not found: 'CommunityToolkit.Mvvm.Input.IAsyncRelayCommand Cadoryx.ViewModels.MainWindowViewModel.get_NewCommand()'."
+        },
+        {
+          "method": "FailedProductionAttachmentPreservesOriginalActiveDocumentAndReleasesCandidate",
+          "args": [
+            "native",
+            "collection"
+          ],
+          "error": "System.MissingMethodException: Method not found: 'CommunityToolkit.Mvvm.Input.IAsyncRelayCommand Cadoryx.ViewModels.MainWindowViewModel.get_NewCommand()'."
+        },
+        {
+          "method": "FailedProductionAttachmentPreservesOriginalActiveDocumentAndReleasesCandidate",
+          "args": [
+            "exchange",
+            "open"
+          ],
+          "error": "System.MissingMethodException: Method not found: 'CommunityToolkit.Mvvm.Input.IAsyncRelayCommand Cadoryx.ViewModels.MainWindowViewModel.get_NewCommand()'."
+        },
+        {
+          "method": "FailedProductionAttachmentPreservesOriginalActiveDocumentAndReleasesCandidate",
+          "args": [
+            "exchange",
+            "activate"
+          ],
+          "error": "System.MissingMethodException: Method not found: 'CommunityToolkit.Mvvm.Input.IAsyncRelayCommand Cadoryx.ViewModels.MainWindowViewModel.get_NewCommand()'."
+        },
+        {
+          "method": "FailedProductionAttachmentPreservesOriginalActiveDocumentAndReleasesCandidate",
+          "args": [
+            "exchange",
+            "collection"
+          ],
+          "error": "System.MissingMethodException: Method not found: 'CommunityToolkit.Mvvm.Input.IAsyncRelayCommand Cadoryx.ViewModels.MainWindowViewModel.get_NewCommand()'."
+        },
+        {
+          "method": "ImplicitNewFailureFromEmptyWorkspaceIsReportedWithoutStartingAConstructor",
+          "args": [
+            "new",
+            "open"
+          ],
+          "error": "System.MissingMethodException: Method not found: 'CommunityToolkit.Mvvm.Input.IAsyncRelayCommand`1<System.String> Cadoryx.ViewModels.MainWindowViewModel.get_StartToolCommand()'."
+        },
+        {
+          "method": "ImplicitNewFailureFromEmptyWorkspaceIsReportedWithoutStartingAConstructor",
+          "args": [
+            "new",
+            "activate"
+          ],
+          "error": "System.MissingMethodException: Method not found: 'CommunityToolkit.Mvvm.Input.IAsyncRelayCommand`1<System.String> Cadoryx.ViewModels.MainWindowViewModel.get_StartToolCommand()'."
+        },
+        {
+          "method": "ImplicitNewFailureFromEmptyWorkspaceIsReportedWithoutStartingAConstructor",
+          "args": [
+            "start_tool",
+            "open"
+          ],
+          "error": "System.MissingMethodException: Method not found: 'CommunityToolkit.Mvvm.Input.IAsyncRelayCommand`1<System.String> Cadoryx.ViewModels.MainWindowViewModel.get_StartToolCommand()'."
+        },
+        {
+          "method": "ImplicitNewFailureFromEmptyWorkspaceIsReportedWithoutStartingAConstructor",
+          "args": [
+            "start_tool",
+            "activate"
+          ],
+          "error": "System.MissingMethodException: Method not found: 'CommunityToolkit.Mvvm.Input.IAsyncRelayCommand`1<System.String> Cadoryx.ViewModels.MainWindowViewModel.get_StartToolCommand()'."
+        },
+        {
+          "method": "ImplicitNewFailureFromEmptyWorkspaceIsReportedWithoutStartingAConstructor",
+          "args": [
+            "sketch",
+            "open"
+          ],
+          "error": "System.MissingMethodException: Method not found: 'CommunityToolkit.Mvvm.Input.IAsyncRelayCommand`1<System.String> Cadoryx.ViewModels.MainWindowViewModel.get_StartToolCommand()'."
+        },
+        {
+          "method": "ImplicitNewFailureFromEmptyWorkspaceIsReportedWithoutStartingAConstructor",
+          "args": [
+            "sketch",
+            "activate"
+          ],
+          "error": "System.MissingMethodException: Method not found: 'CommunityToolkit.Mvvm.Input.IAsyncRelayCommand`1<System.String> Cadoryx.ViewModels.MainWindowViewModel.get_StartToolCommand()'."
+        }
+      ]
+    },
+    {
+      "configuration": "Debug",
+      "originalAssertions": 208,
+      "newFailureCases": 15,
+      "oldVersionPassed": 208,
+      "oldVersionFailed": 15,
+      "candidatePassed": 223,
+      "nativeModulesLoaded": 0,
+      "actualWpfViewModelsMatched": true,
+      "diskNative62StillPublic85": true,
+      "buildLogs": [
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1081-attachment-candidate-build-debug-2.log",
+          "sha256": "20A792DA23FB87A1EEB7465B2320B2775F6E254E423F1731677F1A122793414D"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1081-attachment-wpf-build-debug-1.log",
+          "sha256": "9E7718F6CD7E466148928693AC17EB227263F1868434F6C887A434D1A753B630"
+        }
+      ],
+      "candidateAssemblies": [
+        {
+          "name": "Cadoryx.Tests",
+          "location": "C:/Users/yoiri/source/repos/Cadoryx\\Cadoryx.Tests/bin\\Debug\\net10.0\\Cadoryx.Tests.dll",
+          "sha256": "5A9D8A56BAF704262DFDCA54AE02ABE86190623D1EBA89ECF435A21863B19352"
+        },
+        {
+          "name": "Cadoryx.ViewModels",
+          "location": "C:/Users/yoiri/source/repos/Cadoryx\\Cadoryx.ViewModels/bin\\Debug\\net10.0\\Cadoryx.ViewModels.dll",
+          "sha256": "5E6AA7E0FCA8A59909EEFDBF14D994EACD3AE488EFE0264F9503C84D9FD688FC"
+        },
+        {
+          "name": "Cadoryx.AI.LmStudio",
+          "location": "C:/Users/yoiri/source/repos/Cadoryx\\Cadoryx.ViewModels/bin\\Debug\\net10.0\\Cadoryx.AI.LmStudio.dll",
+          "sha256": "23A9DECE934DCDF7F70294CB34EC3DB8153AEBDDECE4A0B65722924EB23BB249"
+        },
+        {
+          "name": "Cadoryx.Agent",
+          "location": "C:/Users/yoiri/source/repos/Cadoryx\\Cadoryx.ViewModels/bin\\Debug\\net10.0\\Cadoryx.Agent.dll",
+          "sha256": "AE91A90DF790E4188D6126B50DE310EB708FC6F52D076CBC0EBE520B22079356"
+        },
+        {
+          "name": "Cadoryx.AI.Contracts",
+          "location": "C:/Users/yoiri/source/repos/Cadoryx\\Cadoryx.ViewModels/bin\\Debug\\net10.0\\Cadoryx.AI.Contracts.dll",
+          "sha256": "BD1B22AE649ADCC3D8F9197E826F0866A3821C30C63D04FFC7B5A1636D96773F"
+        },
+        {
+          "name": "Cadoryx.Db",
+          "location": "C:/Users/yoiri/source/repos/Cadoryx\\Cadoryx.ViewModels/bin\\Debug\\net10.0\\Cadoryx.Db.dll",
+          "sha256": "9CBB408E3AA8689CE571BAE75812F1303412FC09F5109BF5134DE453DECEB60B"
+        },
+        {
+          "name": "Cadoryx.Editor",
+          "location": "C:/Users/yoiri/source/repos/Cadoryx\\Cadoryx.ViewModels/bin\\Debug\\net10.0\\Cadoryx.Editor.dll",
+          "sha256": "09D009589B0DC1531476A010E27FA63E8CF3DD9B5D3BC788F961C59FF956E7CE"
+        },
+        {
+          "name": "Cadoryx.CommandLine",
+          "location": "C:/Users/yoiri/source/repos/Cadoryx\\Cadoryx.ViewModels/bin\\Debug\\net10.0\\Cadoryx.CommandLine.dll",
+          "sha256": "900C8F4C2E05C9DF7C1EDC298FE98444C056BEA8D1035C3A22094F519BAA9EF9"
+        },
+        {
+          "name": "Cadoryx.Rendering",
+          "location": "C:/Users/yoiri/source/repos/Cadoryx\\Cadoryx.ViewModels/bin\\Debug\\net10.0\\Cadoryx.Rendering.dll",
+          "sha256": "9B5660336726DD3FFD73A9528413F4C07B412E3A5D67D0B0721FFF6F3A0EA4AE"
+        },
+        {
+          "name": "Cadoryx.Commands",
+          "location": "C:/Users/yoiri/source/repos/Cadoryx\\Cadoryx.ViewModels/bin\\Debug\\net10.0\\Cadoryx.Commands.dll",
+          "sha256": "51BC0E5691773098914691FE03F5DD78DAF83F4097BCC7AEA5B8474A0DC1971E"
+        },
+        {
+          "name": "Cadoryx.Kernel.Abstractions",
+          "location": "C:/Users/yoiri/source/repos/Cadoryx\\Cadoryx.ViewModels/bin\\Debug\\net10.0\\Cadoryx.Kernel.Abstractions.dll",
+          "sha256": "BC9754CCB71815C5C8175E32723ACD06BBA64595892E2521587532F98AC4D9D1"
+        },
+        {
+          "name": "Cadoryx.ViewModels.Services",
+          "location": "C:/Users/yoiri/source/repos/Cadoryx\\Cadoryx.ViewModels/bin\\Debug\\net10.0\\Cadoryx.ViewModels.Services.dll",
+          "sha256": "8B20870244CB4DDD319971924460FD2F5A171A0078A238B33B26FD97D1E597E0"
+        },
+        {
+          "name": "Cadoryx.Lang",
+          "location": "C:/Users/yoiri/source/repos/Cadoryx\\Cadoryx.ViewModels/bin\\Debug\\net10.0\\Cadoryx.Lang.dll",
+          "sha256": "84A6C6E699D714A02C2C71B749C9D481B7E1E4CEA6C5E654991F5667AD63EC5F"
+        },
+        {
+          "name": "Cadoryx.Sketching",
+          "location": "C:/Users/yoiri/source/repos/Cadoryx\\Cadoryx.ViewModels/bin\\Debug\\net10.0\\Cadoryx.Sketching.dll",
+          "sha256": "2D78C8F1B72C67EF41DFF2C0F3C8E6B2712823C8AEB1D50ABCE4BA932A2A0687"
+        },
+        {
+          "name": "Cadoryx.IO",
+          "location": "C:/Users/yoiri/source/repos/Cadoryx\\Cadoryx.Tests/bin\\Debug\\net10.0\\Cadoryx.IO.dll",
+          "sha256": "75D9BBE33FE3B9815478EB1FC4BBF99414077F1DC4B06B7D217F777C58618D5C"
+        },
+        {
+          "name": "Cadoryx.Agent.Codex",
+          "location": "C:/Users/yoiri/source/repos/Cadoryx\\Cadoryx.ViewModels/bin\\Debug\\net10.0\\Cadoryx.Agent.Codex.dll",
+          "sha256": "BE3CA15945027CD243399AF1D618EA69AEF11DB3516DA0B6428C9D4D70D096EB"
+        }
+      ],
+      "originalFailureSummaries": [
+        {
+          "method": "FailedProductionAttachmentPreservesOriginalActiveDocumentAndReleasesCandidate",
+          "args": [
+            "new",
+            "open"
+          ],
+          "error": "System.MissingMethodException: Method not found: 'CommunityToolkit.Mvvm.Input.IAsyncRelayCommand Cadoryx.ViewModels.MainWindowViewModel.get_NewCommand()'."
+        },
+        {
+          "method": "FailedProductionAttachmentPreservesOriginalActiveDocumentAndReleasesCandidate",
+          "args": [
+            "new",
+            "activate"
+          ],
+          "error": "System.MissingMethodException: Method not found: 'CommunityToolkit.Mvvm.Input.IAsyncRelayCommand Cadoryx.ViewModels.MainWindowViewModel.get_NewCommand()'."
+        },
+        {
+          "method": "FailedProductionAttachmentPreservesOriginalActiveDocumentAndReleasesCandidate",
+          "args": [
+            "new",
+            "collection"
+          ],
+          "error": "System.MissingMethodException: Method not found: 'CommunityToolkit.Mvvm.Input.IAsyncRelayCommand Cadoryx.ViewModels.MainWindowViewModel.get_NewCommand()'."
+        },
+        {
+          "method": "FailedProductionAttachmentPreservesOriginalActiveDocumentAndReleasesCandidate",
+          "args": [
+            "native",
+            "open"
+          ],
+          "error": "System.MissingMethodException: Method not found: 'CommunityToolkit.Mvvm.Input.IAsyncRelayCommand Cadoryx.ViewModels.MainWindowViewModel.get_NewCommand()'."
+        },
+        {
+          "method": "FailedProductionAttachmentPreservesOriginalActiveDocumentAndReleasesCandidate",
+          "args": [
+            "native",
+            "activate"
+          ],
+          "error": "System.MissingMethodException: Method not found: 'CommunityToolkit.Mvvm.Input.IAsyncRelayCommand Cadoryx.ViewModels.MainWindowViewModel.get_NewCommand()'."
+        },
+        {
+          "method": "FailedProductionAttachmentPreservesOriginalActiveDocumentAndReleasesCandidate",
+          "args": [
+            "native",
+            "collection"
+          ],
+          "error": "System.MissingMethodException: Method not found: 'CommunityToolkit.Mvvm.Input.IAsyncRelayCommand Cadoryx.ViewModels.MainWindowViewModel.get_NewCommand()'."
+        },
+        {
+          "method": "FailedProductionAttachmentPreservesOriginalActiveDocumentAndReleasesCandidate",
+          "args": [
+            "exchange",
+            "open"
+          ],
+          "error": "System.MissingMethodException: Method not found: 'CommunityToolkit.Mvvm.Input.IAsyncRelayCommand Cadoryx.ViewModels.MainWindowViewModel.get_NewCommand()'."
+        },
+        {
+          "method": "FailedProductionAttachmentPreservesOriginalActiveDocumentAndReleasesCandidate",
+          "args": [
+            "exchange",
+            "activate"
+          ],
+          "error": "System.MissingMethodException: Method not found: 'CommunityToolkit.Mvvm.Input.IAsyncRelayCommand Cadoryx.ViewModels.MainWindowViewModel.get_NewCommand()'."
+        },
+        {
+          "method": "FailedProductionAttachmentPreservesOriginalActiveDocumentAndReleasesCandidate",
+          "args": [
+            "exchange",
+            "collection"
+          ],
+          "error": "System.MissingMethodException: Method not found: 'CommunityToolkit.Mvvm.Input.IAsyncRelayCommand Cadoryx.ViewModels.MainWindowViewModel.get_NewCommand()'."
+        },
+        {
+          "method": "ImplicitNewFailureFromEmptyWorkspaceIsReportedWithoutStartingAConstructor",
+          "args": [
+            "new",
+            "open"
+          ],
+          "error": "System.MissingMethodException: Method not found: 'CommunityToolkit.Mvvm.Input.IAsyncRelayCommand`1<System.String> Cadoryx.ViewModels.MainWindowViewModel.get_StartToolCommand()'."
+        },
+        {
+          "method": "ImplicitNewFailureFromEmptyWorkspaceIsReportedWithoutStartingAConstructor",
+          "args": [
+            "new",
+            "activate"
+          ],
+          "error": "System.MissingMethodException: Method not found: 'CommunityToolkit.Mvvm.Input.IAsyncRelayCommand`1<System.String> Cadoryx.ViewModels.MainWindowViewModel.get_StartToolCommand()'."
+        },
+        {
+          "method": "ImplicitNewFailureFromEmptyWorkspaceIsReportedWithoutStartingAConstructor",
+          "args": [
+            "start_tool",
+            "open"
+          ],
+          "error": "System.MissingMethodException: Method not found: 'CommunityToolkit.Mvvm.Input.IAsyncRelayCommand`1<System.String> Cadoryx.ViewModels.MainWindowViewModel.get_StartToolCommand()'."
+        },
+        {
+          "method": "ImplicitNewFailureFromEmptyWorkspaceIsReportedWithoutStartingAConstructor",
+          "args": [
+            "start_tool",
+            "activate"
+          ],
+          "error": "System.MissingMethodException: Method not found: 'CommunityToolkit.Mvvm.Input.IAsyncRelayCommand`1<System.String> Cadoryx.ViewModels.MainWindowViewModel.get_StartToolCommand()'."
+        },
+        {
+          "method": "ImplicitNewFailureFromEmptyWorkspaceIsReportedWithoutStartingAConstructor",
+          "args": [
+            "sketch",
+            "open"
+          ],
+          "error": "System.MissingMethodException: Method not found: 'CommunityToolkit.Mvvm.Input.IAsyncRelayCommand`1<System.String> Cadoryx.ViewModels.MainWindowViewModel.get_StartToolCommand()'."
+        },
+        {
+          "method": "ImplicitNewFailureFromEmptyWorkspaceIsReportedWithoutStartingAConstructor",
+          "args": [
+            "sketch",
+            "activate"
+          ],
+          "error": "System.MissingMethodException: Method not found: 'CommunityToolkit.Mvvm.Input.IAsyncRelayCommand`1<System.String> Cadoryx.ViewModels.MainWindowViewModel.get_StartToolCommand()'."
+        }
+      ]
+    }
+  ],
+  "productionSource": 1081,
+  "productionPackage": "8.0.1-preview.85",
+  "sourceInputsExpected": 1193,
+  "oldInputsUnchangedExceptMainWindow": 1191,
+  "sourceChanges": [
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\Cadoryx.ViewModels\\MainWindowViewModel.cs",
+      "sha256": "8485D2057E4E87F439965489C474D189F28A3D5D72740F52494CE4B9A131F152"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\Cadoryx.Tests\\MainWindowAttachmentFailureTests.cs",
+      "sha256": "A4B8B44AB344B605CEBDA24667B4195344756DC74068E59F71B364FC2FF437AB"
+    }
+  ],
+  "expectedFullTestCount": 6830,
+  "actualFullDiscovery": false,
+  "actualFullRuntime": false,
+  "compiledAssertionInvocationNotFullXunit": true,
+  "exchangeFixture": "Native serialized empty author behind an importer stub; importer dispatch/lifetime only, not STEP geometry acceptance",
+  "fixtureFailuresPreserved": "Missing Anchorables, retained asset without extension, initial compile namespaces corrected; original failures retained",
+  "excludedCandidateResult1": "First candidate compile failed at an old New() call; subsequent probe read old binaries, not accepted as candidate validation",
+  "evidence": [
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1081-attachment-1\\baseline-result.json",
+      "sha256": "E21375A9E5A71F3268319E6D6EFA3FB2A619D11696A5C73ABC721742D26CBE17"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1081-attachment-1\\baseline-result-2.json",
+      "sha256": "47D27C3CB6927DE816669C28D5C3D3910D68A6EBFEBA74804DF282C2B1752F94"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1081-attachment-1\\baseline-result-3.json",
+      "sha256": "7515C6E4505AAD360A72E1A2B4BD37E5424835F57DAF3CC809824CCDB0E3C71A"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1081-attachment-1\\baseline-result-final.json",
+      "sha256": "5D23739AC68E79F8AC44133248F224A68EF87BC8D618601E3E1D23BEDE8E0EE5"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1081-attachment-1\\candidate-result-1.json",
+      "sha256": "F924E4FA48052A78FC9D7F499B8E300C015B452AAE89EA450B764C7A3877E18C"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1081-attachment-1\\candidate-result-2.json",
+      "sha256": "CF50AF12AC1987C3D95EC50B26667DC0C5DF88BE215665ADC7A615B951A90D76"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1081-attachment-1\\candidate-result-final.json",
+      "sha256": "2F949ED2429BC31A68CD39CC83D67BFDD1AEEBDC9322620A93A2D7E02B5D6A25"
+    }
+  ],
+  "full1080PreparationIsHistorical": true,
+  "nextFinalPayloadRequires1081SourceAndSelectedSdk": true,
+  "nativeGeometry": "NOT RUN",
+  "modelWorkflow": "NOT RUN",
+  "physicalDesktop": "NOT RUN",
+  "AF": "ACTIVE",
+  "G": "USER_DEFERRED",
+  "cleanup": false
+}

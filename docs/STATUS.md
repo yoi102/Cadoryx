@@ -1,5 +1,9 @@
 # 当前状态
 
+2026-10-13，status248：[主窗口候选失败回滚1081](AF_MAIN_WINDOW_ATTACHMENT_RECOVERY.md)已修正普通new/open候选会话和资产泄漏、激活失败恢复原活动文档及空工作区隐式新建。新增15在原1080两配置各15失败，当前各223（原208+新15）托管编译断言通过；Tests依赖图及WPF两配置build0，实际WPF ViewModels哈希匹配，原1192仅MainWindow改变加一份测试，原生加载0。预计6830尚未完整发现/运行，1080原验收准备仅作历史。SDK [本地86独立接收](../capability-evidence/diagnostics/local-sdk86-received/verification.json)2050来源、25交付文件、14包/精确依赖/13托管/62native/11license匹配并冻结feed；SDK明确交还时段，实际消费者空闲已记录，未启动新native。当前生产1081/公开85，86未应用；接下来用最新源码/选定SDK统一门禁，原STEP24/模型/性能/窗口及A–F全部范围继续，G/清理暂缓。
+
+当前结论以status248为准；以下保留历史。
+
 2026-10-13，status247：[GuidedSweep/AppSweep调用范围审查](AF_GUIDED_SWEEP_APPSWEEP_CALL_CHAIN.md)完成，13份来源/哈希和固定OCCT直接调用已记录；当前曲线扫掠及螺纹经PipeShell→BRepFill_Sweep→GeomFill_Sweep，全局近似分支用SweepFunction/Approx_SweepApproximation。另一GeomFill_Pipe::ApproxSurf明确使用已知缺陷类；不据此证明完整传递闭包、公开85实际加载DLL安全或算法已修复。现有SDK会话已收到继续整体迁移及按需优先API的用户授权；上游报告冷源首轮2253/2255、原CC/CB窗口输入2失败，根同载荷定向5通过，完整冷源复验/86包消费者仍在进行，独立交付未接收、native lane未交还。开发仍1080/公开85，最终6815/原模型/性能/窗口NOT RUN；A–F全部范围和原STEP24保持，G/清理暂缓。
 
 当前进度以status247和1080最终验收记录为准；以下保留历史。

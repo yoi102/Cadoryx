@@ -1,0 +1,805 @@
+{
+  "recordedAt": "2026-10-13T13:22:52.732238+00:00",
+  "state": "LOCAL86_DELIVERY_FILES_SOURCES_PACKAGES_VERIFIED_NOT_CADORYX_CONSUMPTION",
+  "version": "8.0.1-preview.86",
+  "publiclyPublished": false,
+  "productionApplied": false,
+  "sourceFilesMatched": 2050,
+  "gatesMatched": 25,
+  "packages": [
+    {
+      "id": "OcctSharp.Native.win-x64",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\packages\\OcctSharp.Native.win-x64.8.0.1-preview.86.nupkg",
+      "sha256": "256815D636B89D494FD1CAE040F3FFBCF5BB90EB16D181E5ED4128B2579B88EC",
+      "dependencies": []
+    },
+    {
+      "id": "OcctSharp.Runtime",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\packages\\OcctSharp.Runtime.8.0.1-preview.86.nupkg",
+      "sha256": "81EDC88BE5C08D044FBE3EE08C41F59F24468D8A5CE18FC61D720764AE27CC5D",
+      "dependencies": [
+        {
+          "id": "OcctSharp.Native.win-x64",
+          "version": "[8.0.1-preview.86]",
+          "exclude": "Build,Analyzers"
+        }
+      ]
+    },
+    {
+      "id": "OcctSharp.Foundation",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\packages\\OcctSharp.Foundation.8.0.1-preview.86.nupkg",
+      "sha256": "867D4BF57F2FE524FF09FEA39AF045804C937BC4FFD1D3A7E2549DDA803F9BB5",
+      "dependencies": [
+        {
+          "id": "OcctSharp.Runtime",
+          "version": "[8.0.1-preview.86]",
+          "exclude": "Build,Analyzers"
+        }
+      ]
+    },
+    {
+      "id": "OcctSharp.Geometry",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\packages\\OcctSharp.Geometry.8.0.1-preview.86.nupkg",
+      "sha256": "05EBFA6CE50720BD6B36162C23570563F26C4B243C978902B59BBCF5F914150D",
+      "dependencies": [
+        {
+          "id": "OcctSharp.Foundation",
+          "version": "[8.0.1-preview.86]",
+          "exclude": "Build,Analyzers"
+        },
+        {
+          "id": "OcctSharp.Runtime",
+          "version": "[8.0.1-preview.86]",
+          "exclude": "Build,Analyzers"
+        }
+      ]
+    },
+    {
+      "id": "OcctSharp.MeshData",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\packages\\OcctSharp.MeshData.8.0.1-preview.86.nupkg",
+      "sha256": "29AF115ECD564B2B184C55BC1371F3A47A140CFB7A6B2EB92AE896BB8FE56DD4",
+      "dependencies": [
+        {
+          "id": "OcctSharp.Foundation",
+          "version": "[8.0.1-preview.86]",
+          "exclude": "Build,Analyzers"
+        },
+        {
+          "id": "OcctSharp.Geometry",
+          "version": "[8.0.1-preview.86]",
+          "exclude": "Build,Analyzers"
+        },
+        {
+          "id": "OcctSharp.Runtime",
+          "version": "[8.0.1-preview.86]",
+          "exclude": "Build,Analyzers"
+        }
+      ]
+    },
+    {
+      "id": "OcctSharp.Modeling",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\packages\\OcctSharp.Modeling.8.0.1-preview.86.nupkg",
+      "sha256": "5FA38483611ED32E2C310501527B64C3863AADF1E87E4C1DD003B8789254A3D5",
+      "dependencies": [
+        {
+          "id": "OcctSharp.Foundation",
+          "version": "[8.0.1-preview.86]",
+          "exclude": "Build,Analyzers"
+        },
+        {
+          "id": "OcctSharp.Geometry",
+          "version": "[8.0.1-preview.86]",
+          "exclude": "Build,Analyzers"
+        },
+        {
+          "id": "OcctSharp.MeshData",
+          "version": "[8.0.1-preview.86]",
+          "exclude": "Build,Analyzers"
+        },
+        {
+          "id": "OcctSharp.Runtime",
+          "version": "[8.0.1-preview.86]",
+          "exclude": "Build,Analyzers"
+        }
+      ]
+    },
+    {
+      "id": "OcctSharp.Mesh",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\packages\\OcctSharp.Mesh.8.0.1-preview.86.nupkg",
+      "sha256": "5F11C7126D6BA449E78BF92C8CC642278F1ECC8F2E167784B1DFB9DCE071F7E6",
+      "dependencies": [
+        {
+          "id": "OcctSharp.Foundation",
+          "version": "[8.0.1-preview.86]",
+          "exclude": "Build,Analyzers"
+        },
+        {
+          "id": "OcctSharp.Geometry",
+          "version": "[8.0.1-preview.86]",
+          "exclude": "Build,Analyzers"
+        },
+        {
+          "id": "OcctSharp.MeshData",
+          "version": "[8.0.1-preview.86]",
+          "exclude": "Build,Analyzers"
+        },
+        {
+          "id": "OcctSharp.Modeling",
+          "version": "[8.0.1-preview.86]",
+          "exclude": "Build,Analyzers"
+        },
+        {
+          "id": "OcctSharp.Runtime",
+          "version": "[8.0.1-preview.86]",
+          "exclude": "Build,Analyzers"
+        }
+      ]
+    },
+    {
+      "id": "OcctSharp.Documents",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\packages\\OcctSharp.Documents.8.0.1-preview.86.nupkg",
+      "sha256": "8371DD917D8E3A10AC6CCD370BEE2EDC1D18E4BFC5B525A37A9CFFA97F180D89",
+      "dependencies": [
+        {
+          "id": "OcctSharp.Foundation",
+          "version": "[8.0.1-preview.86]",
+          "exclude": "Build,Analyzers"
+        },
+        {
+          "id": "OcctSharp.Geometry",
+          "version": "[8.0.1-preview.86]",
+          "exclude": "Build,Analyzers"
+        },
+        {
+          "id": "OcctSharp.MeshData",
+          "version": "[8.0.1-preview.86]",
+          "exclude": "Build,Analyzers"
+        },
+        {
+          "id": "OcctSharp.Modeling",
+          "version": "[8.0.1-preview.86]",
+          "exclude": "Build,Analyzers"
+        },
+        {
+          "id": "OcctSharp.Runtime",
+          "version": "[8.0.1-preview.86]",
+          "exclude": "Build,Analyzers"
+        }
+      ]
+    },
+    {
+      "id": "OcctSharp.Visualization",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\packages\\OcctSharp.Visualization.8.0.1-preview.86.nupkg",
+      "sha256": "1AE3471ABDBB893C8A4CBD3C8A9C81121CA39EBA48A296B284AD0A651171AC61",
+      "dependencies": [
+        {
+          "id": "OcctSharp.Documents",
+          "version": "[8.0.1-preview.86]",
+          "exclude": "Build,Analyzers"
+        },
+        {
+          "id": "OcctSharp.Foundation",
+          "version": "[8.0.1-preview.86]",
+          "exclude": "Build,Analyzers"
+        },
+        {
+          "id": "OcctSharp.Geometry",
+          "version": "[8.0.1-preview.86]",
+          "exclude": "Build,Analyzers"
+        },
+        {
+          "id": "OcctSharp.MeshData",
+          "version": "[8.0.1-preview.86]",
+          "exclude": "Build,Analyzers"
+        },
+        {
+          "id": "OcctSharp.Mesh",
+          "version": "[8.0.1-preview.86]",
+          "exclude": "Build,Analyzers"
+        },
+        {
+          "id": "OcctSharp.Modeling",
+          "version": "[8.0.1-preview.86]",
+          "exclude": "Build,Analyzers"
+        },
+        {
+          "id": "OcctSharp.Runtime",
+          "version": "[8.0.1-preview.86]",
+          "exclude": "Build,Analyzers"
+        }
+      ]
+    },
+    {
+      "id": "OcctSharp.DataExchange",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\packages\\OcctSharp.DataExchange.8.0.1-preview.86.nupkg",
+      "sha256": "F433189C5805CA920599478A09F0011F58C25C951DFE113E247F180924440108",
+      "dependencies": [
+        {
+          "id": "OcctSharp.Documents",
+          "version": "[8.0.1-preview.86]",
+          "exclude": "Build,Analyzers"
+        },
+        {
+          "id": "OcctSharp.Foundation",
+          "version": "[8.0.1-preview.86]",
+          "exclude": "Build,Analyzers"
+        },
+        {
+          "id": "OcctSharp.Geometry",
+          "version": "[8.0.1-preview.86]",
+          "exclude": "Build,Analyzers"
+        },
+        {
+          "id": "OcctSharp.MeshData",
+          "version": "[8.0.1-preview.86]",
+          "exclude": "Build,Analyzers"
+        },
+        {
+          "id": "OcctSharp.Mesh",
+          "version": "[8.0.1-preview.86]",
+          "exclude": "Build,Analyzers"
+        },
+        {
+          "id": "OcctSharp.Modeling",
+          "version": "[8.0.1-preview.86]",
+          "exclude": "Build,Analyzers"
+        },
+        {
+          "id": "OcctSharp.Runtime",
+          "version": "[8.0.1-preview.86]",
+          "exclude": "Build,Analyzers"
+        },
+        {
+          "id": "OcctSharp.Visualization",
+          "version": "[8.0.1-preview.86]",
+          "exclude": "Build,Analyzers"
+        }
+      ]
+    },
+    {
+      "id": "OcctSharp.Xde",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\packages\\OcctSharp.Xde.8.0.1-preview.86.nupkg",
+      "sha256": "D26CAF61B6CAAF913B0C74B05DA09AD861B7CC0CC18F38467D0BA69ECBA25ED7",
+      "dependencies": [
+        {
+          "id": "OcctSharp.DataExchange",
+          "version": "[8.0.1-preview.86]",
+          "exclude": "Build,Analyzers"
+        },
+        {
+          "id": "OcctSharp.Documents",
+          "version": "[8.0.1-preview.86]",
+          "exclude": "Build,Analyzers"
+        },
+        {
+          "id": "OcctSharp.Foundation",
+          "version": "[8.0.1-preview.86]",
+          "exclude": "Build,Analyzers"
+        },
+        {
+          "id": "OcctSharp.Geometry",
+          "version": "[8.0.1-preview.86]",
+          "exclude": "Build,Analyzers"
+        },
+        {
+          "id": "OcctSharp.MeshData",
+          "version": "[8.0.1-preview.86]",
+          "exclude": "Build,Analyzers"
+        },
+        {
+          "id": "OcctSharp.Mesh",
+          "version": "[8.0.1-preview.86]",
+          "exclude": "Build,Analyzers"
+        },
+        {
+          "id": "OcctSharp.Modeling",
+          "version": "[8.0.1-preview.86]",
+          "exclude": "Build,Analyzers"
+        },
+        {
+          "id": "OcctSharp.Runtime",
+          "version": "[8.0.1-preview.86]",
+          "exclude": "Build,Analyzers"
+        },
+        {
+          "id": "OcctSharp.Visualization",
+          "version": "[8.0.1-preview.86]",
+          "exclude": "Build,Analyzers"
+        }
+      ]
+    },
+    {
+      "id": "OcctSharp.IVtk",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\packages\\OcctSharp.IVtk.8.0.1-preview.86.nupkg",
+      "sha256": "054973BB0141114EDA0C9E925BBBBE7BDC81DA8DFA6B64B26CA640F6D409268C",
+      "dependencies": [
+        {
+          "id": "OcctSharp.Runtime",
+          "version": "[8.0.1-preview.86]",
+          "exclude": "Build,Analyzers"
+        },
+        {
+          "id": "OcctSharp.Visualization",
+          "version": "[8.0.1-preview.86]",
+          "exclude": "Build,Analyzers"
+        }
+      ]
+    },
+    {
+      "id": "OcctSharp.Draw",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\packages\\OcctSharp.Draw.8.0.1-preview.86.nupkg",
+      "sha256": "B5E8CA5A8CD173F65436E15BF3BFA3B75362F04C9510F56A148A2A5B6989EA6D",
+      "dependencies": [
+        {
+          "id": "OcctSharp.Runtime",
+          "version": "[8.0.1-preview.86]",
+          "exclude": "Build,Analyzers"
+        },
+        {
+          "id": "OcctSharp.Visualization",
+          "version": "[8.0.1-preview.86]",
+          "exclude": "Build,Analyzers"
+        },
+        {
+          "id": "OcctSharp.Xde",
+          "version": "[8.0.1-preview.86]",
+          "exclude": "Build,Analyzers"
+        }
+      ]
+    },
+    {
+      "id": "OcctSharp",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\packages\\OcctSharp.8.0.1-preview.86.nupkg",
+      "sha256": "0C391A2D720E6744402B7FB6230F955A8D776E1688AEE6E39C3103377412F7C4",
+      "dependencies": [
+        {
+          "id": "OcctSharp.DataExchange",
+          "version": "[8.0.1-preview.86]",
+          "exclude": "Build,Analyzers"
+        },
+        {
+          "id": "OcctSharp.Documents",
+          "version": "[8.0.1-preview.86]",
+          "exclude": "Build,Analyzers"
+        },
+        {
+          "id": "OcctSharp.Draw",
+          "version": "[8.0.1-preview.86]",
+          "exclude": "Build,Analyzers"
+        },
+        {
+          "id": "OcctSharp.Foundation",
+          "version": "[8.0.1-preview.86]",
+          "exclude": "Build,Analyzers"
+        },
+        {
+          "id": "OcctSharp.Geometry",
+          "version": "[8.0.1-preview.86]",
+          "exclude": "Build,Analyzers"
+        },
+        {
+          "id": "OcctSharp.IVtk",
+          "version": "[8.0.1-preview.86]",
+          "exclude": "Build,Analyzers"
+        },
+        {
+          "id": "OcctSharp.MeshData",
+          "version": "[8.0.1-preview.86]",
+          "exclude": "Build,Analyzers"
+        },
+        {
+          "id": "OcctSharp.Mesh",
+          "version": "[8.0.1-preview.86]",
+          "exclude": "Build,Analyzers"
+        },
+        {
+          "id": "OcctSharp.Modeling",
+          "version": "[8.0.1-preview.86]",
+          "exclude": "Build,Analyzers"
+        },
+        {
+          "id": "OcctSharp.Runtime",
+          "version": "[8.0.1-preview.86]",
+          "exclude": "Build,Analyzers"
+        },
+        {
+          "id": "OcctSharp.Visualization",
+          "version": "[8.0.1-preview.86]",
+          "exclude": "Build,Analyzers"
+        },
+        {
+          "id": "OcctSharp.Xde",
+          "version": "[8.0.1-preview.86]",
+          "exclude": "Build,Analyzers"
+        }
+      ]
+    }
+  ],
+  "managed13": [
+    {
+      "package": "OcctSharp.Runtime",
+      "entry": "lib/net10.0/OcctSharp.Runtime.dll",
+      "sha256": "5F215B6FDD15B6503595A6DD99768B2BF250628E8661EFAEEF1FAB0E0A6FA2E7"
+    },
+    {
+      "package": "OcctSharp.Foundation",
+      "entry": "lib/net10.0/OcctSharp.Foundation.dll",
+      "sha256": "D9676AD1DC09BB150FA690059BA646D557AF3FE19DE602B72E62681ABD8BC6A3"
+    },
+    {
+      "package": "OcctSharp.Geometry",
+      "entry": "lib/net10.0/OcctSharp.Geometry.dll",
+      "sha256": "9F6F45D2CC48A7B6F36675FC66F63C2D19567E58DE4970707BD5F24CB6030237"
+    },
+    {
+      "package": "OcctSharp.MeshData",
+      "entry": "lib/net10.0/OcctSharp.MeshData.dll",
+      "sha256": "1AF1CEE82621438450FDAF3885090D22A80D53E2AD76748025BD89F763E6B074"
+    },
+    {
+      "package": "OcctSharp.Modeling",
+      "entry": "lib/net10.0/OcctSharp.Modeling.dll",
+      "sha256": "B59D10A58DF6F5584E3BAA1FE2B214EFEF0D63E93C6611E7BD74867985579C60"
+    },
+    {
+      "package": "OcctSharp.Mesh",
+      "entry": "lib/net10.0/OcctSharp.Mesh.dll",
+      "sha256": "A20C6A09CB1687D3EABA165237995FF0D0DE18B8CB2A530D47B156E49E09077F"
+    },
+    {
+      "package": "OcctSharp.Documents",
+      "entry": "lib/net10.0/OcctSharp.Documents.dll",
+      "sha256": "3E0CD827E736E2E5BDC367D34764B982CF751065FD47345550F4D605045032B2"
+    },
+    {
+      "package": "OcctSharp.Visualization",
+      "entry": "lib/net10.0/OcctSharp.Visualization.dll",
+      "sha256": "9AF6222DD9186BB9A3C47845B9E42EB872D16678426EDC098EED197BF62618ED"
+    },
+    {
+      "package": "OcctSharp.DataExchange",
+      "entry": "lib/net10.0/OcctSharp.DataExchange.dll",
+      "sha256": "6F906262C8681371E748C7AB326E6C6C7B0A91B1255195269EB315EB3D71CD18"
+    },
+    {
+      "package": "OcctSharp.Xde",
+      "entry": "lib/net10.0/OcctSharp.Xde.dll",
+      "sha256": "51A113C2801DDFE5CF7940FBBCFD00F0993849941D6F6B22239ED42D00E5323C"
+    },
+    {
+      "package": "OcctSharp.IVtk",
+      "entry": "lib/net10.0/OcctSharp.IVtk.dll",
+      "sha256": "E7908539F39DEA07D7BB4610CAC1C8BA7A2313733816D32F42761B3A492AAEF2"
+    },
+    {
+      "package": "OcctSharp.Draw",
+      "entry": "lib/net10.0/OcctSharp.Draw.dll",
+      "sha256": "3275FC4940464472DA3FD667349FFF7A4BBE3C267F91F20CDAA2267DED314C6C"
+    },
+    {
+      "package": "OcctSharp",
+      "entry": "lib/net10.0/OcctSharp.dll",
+      "sha256": "0B7F0238C599D411AD1896DC468E12E0DEC9F4989D570C77E4214903F1EBD1A2"
+    }
+  ],
+  "native62": [
+    {
+      "entry": "buildTransitive/win-x64/occt/FreeImage.dll",
+      "sha256": "4594BD0538F7F6B05148B00996FF36DDFEDEF8D66910E931503DCFEBF8EFE1DB"
+    },
+    {
+      "entry": "buildTransitive/win-x64/occt/OcctSharp.Native.dll",
+      "sha256": "045EF9E158FB6C9A74CB238E1BA183629E9430D889666DC57E6076010EF7AA23"
+    },
+    {
+      "entry": "buildTransitive/win-x64/occt/TKBO.dll",
+      "sha256": "41F837935BCC65882ACD73295EF65CA13D47B018ACDCB6093FAF47804B96D0C5"
+    },
+    {
+      "entry": "buildTransitive/win-x64/occt/TKBRep.dll",
+      "sha256": "A511C8CF51178CF881C3BA0B54287DCECE6DED03CF3DE99E6FABF2A2D5152207"
+    },
+    {
+      "entry": "buildTransitive/win-x64/occt/TKBin.dll",
+      "sha256": "B27B08FFBE07C1FACA441897E6D807062D01F453BD847175CAE999B15AD31D96"
+    },
+    {
+      "entry": "buildTransitive/win-x64/occt/TKBinL.dll",
+      "sha256": "A8A87E784C6AD97DAF773926A106E8904ABEF77AE30CAD602DD236A0FE376378"
+    },
+    {
+      "entry": "buildTransitive/win-x64/occt/TKBinTObj.dll",
+      "sha256": "F482E7F3A3526150C537E3DD6CDDDBD6B4E38B29C62AC3CF3F81D9E97A296EAB"
+    },
+    {
+      "entry": "buildTransitive/win-x64/occt/TKBinXCAF.dll",
+      "sha256": "BE1F35F341A9BC1EF26DB6721AFE727747CC97053A86ADA5A51C03E4C43EBA3A"
+    },
+    {
+      "entry": "buildTransitive/win-x64/occt/TKBool.dll",
+      "sha256": "FA76C5374AE85E1649F27DA41ED0B45EC36C68C413ACE84554198CF39D11DAFD"
+    },
+    {
+      "entry": "buildTransitive/win-x64/occt/TKCAF.dll",
+      "sha256": "E78FD6196F7356FFA541A015CB6DF481E9999D8E813E2D7A5D914CA6205614AE"
+    },
+    {
+      "entry": "buildTransitive/win-x64/occt/TKCDF.dll",
+      "sha256": "9BCCAB992DA8F4069CB4020A064D67DF507309CA679AD20BB97A9B5FB0797A3A"
+    },
+    {
+      "entry": "buildTransitive/win-x64/occt/TKD3DHost.dll",
+      "sha256": "0EB1591D44FFF265C3870865013C7FCBDE9F9B7DF79903ED0116AC1C93DE10BE"
+    },
+    {
+      "entry": "buildTransitive/win-x64/occt/TKDE.dll",
+      "sha256": "2F0E1C9BD86C367B36DC7519502B095DE0DEE910D1F86B5B39BA962790A0D0C5"
+    },
+    {
+      "entry": "buildTransitive/win-x64/occt/TKDECascade.dll",
+      "sha256": "6E65801F138067283CA2355F7E43FF5BF30502E0CB6F782F33245E7B5096F5A1"
+    },
+    {
+      "entry": "buildTransitive/win-x64/occt/TKDEGLTF.dll",
+      "sha256": "636F0E11859C256774B1004617E643D5EFDC415F993A464D73A82F4618CC902A"
+    },
+    {
+      "entry": "buildTransitive/win-x64/occt/TKDEIGES.dll",
+      "sha256": "3D16433A5CA16D36DFDFE168AF7F7C0645093CDC6C80CA38A157BC84769E43F9"
+    },
+    {
+      "entry": "buildTransitive/win-x64/occt/TKDEOBJ.dll",
+      "sha256": "C09644DE8F5AFEA74C531054F713132823F0020F28A889229AE2E762D8CA121D"
+    },
+    {
+      "entry": "buildTransitive/win-x64/occt/TKDEPLY.dll",
+      "sha256": "35DAFA5EFACF1DFECCB3E01D560547630142B4C52FFAC5CE4CAE726DFBD31262"
+    },
+    {
+      "entry": "buildTransitive/win-x64/occt/TKDESTEP.dll",
+      "sha256": "DC010933AEF4481083D21F77ADFAEE6ACEADE87D5F454AD5F4743F07A00B4DF6"
+    },
+    {
+      "entry": "buildTransitive/win-x64/occt/TKDESTL.dll",
+      "sha256": "68488A4FD4B3C426123BD9969F5E42DD335A89CEA2FFA4E147452653F1BB63A1"
+    },
+    {
+      "entry": "buildTransitive/win-x64/occt/TKDEVRML.dll",
+      "sha256": "7F30F93D81398A61F5E52997494C43ABFABD868009273B4492B1E2B8DD105F7A"
+    },
+    {
+      "entry": "buildTransitive/win-x64/occt/TKExpress.dll",
+      "sha256": "2535B5993A42E41C6E35E5EA50574953D0BC5705EAE70D596C1194E5B9C8E872"
+    },
+    {
+      "entry": "buildTransitive/win-x64/occt/TKFeat.dll",
+      "sha256": "05F968C96DD0C170463B09F0121DB70E3DB720250634959C91C42396F9437141"
+    },
+    {
+      "entry": "buildTransitive/win-x64/occt/TKFillet.dll",
+      "sha256": "6ACCA10E58155ECAA1621DCECF395463C6560D4A3B63729BD7688ED7B15A38F5"
+    },
+    {
+      "entry": "buildTransitive/win-x64/occt/TKG2d.dll",
+      "sha256": "0D87A20363CFB66F7862FBC9AA7234059D13712B3A0D7E6B35CBB0172810A93C"
+    },
+    {
+      "entry": "buildTransitive/win-x64/occt/TKG3d.dll",
+      "sha256": "8A13921267C5839C0D8D4395DAE33FC5C1F80F8D03C0D8C0CEB153AA3DA35C6C"
+    },
+    {
+      "entry": "buildTransitive/win-x64/occt/TKGeomAlgo.dll",
+      "sha256": "154E047A29217C0FAF101EC0B8119D6D327E89560CD82CB18D17EC48D508883B"
+    },
+    {
+      "entry": "buildTransitive/win-x64/occt/TKGeomBase.dll",
+      "sha256": "6BD91D22B6A893884BA74FEC8C352F68BCF0F79096D00F52119D4810EF42567E"
+    },
+    {
+      "entry": "buildTransitive/win-x64/occt/TKHLR.dll",
+      "sha256": "499F63A9335A17F8D2903DB1D56E27EE2DEAD324E35EFE46E2A9FAC8A8BF6F89"
+    },
+    {
+      "entry": "buildTransitive/win-x64/occt/TKHelix.dll",
+      "sha256": "B95F60B662FFF3BBDC7A768AA1DF664468187C3638AC562B5C87C8B9C6808DFF"
+    },
+    {
+      "entry": "buildTransitive/win-x64/occt/TKLCAF.dll",
+      "sha256": "C51A1DA060562BA8855C02A091D849A575459FEE3ED80543358F9113871DAF9D"
+    },
+    {
+      "entry": "buildTransitive/win-x64/occt/TKMath.dll",
+      "sha256": "2C41EFC32C025D1E7753548498027AA240D315B455BF36130432EA23E5860A2A"
+    },
+    {
+      "entry": "buildTransitive/win-x64/occt/TKMesh.dll",
+      "sha256": "143337A5BF7128B7D5F50B33129D70EE4B4E9669F9166D89AF732444A221F95F"
+    },
+    {
+      "entry": "buildTransitive/win-x64/occt/TKMeshVS.dll",
+      "sha256": "7CF4CEC11EC0B9A7AFF012442A9E868932B74848E46CAA79DC091175A18DD9DD"
+    },
+    {
+      "entry": "buildTransitive/win-x64/occt/TKOffset.dll",
+      "sha256": "B3145BF379A12F46C68B206966679252CB36C0616C1A3D73D572033CB3EFCF8F"
+    },
+    {
+      "entry": "buildTransitive/win-x64/occt/TKOpenGl.dll",
+      "sha256": "8C47BB81B4D9F712E557864A67A31637DFF74D83D92B83AEE6960A673CBA07E7"
+    },
+    {
+      "entry": "buildTransitive/win-x64/occt/TKPrim.dll",
+      "sha256": "37DE279166407566D7FFF2DD063638FDF1F8DC89C0D030E550AA4868585F49DD"
+    },
+    {
+      "entry": "buildTransitive/win-x64/occt/TKRWMesh.dll",
+      "sha256": "49A61A27309032C374ED78ED205DC89860C4D5D510A7160AE4A5CF85CC7DAC1C"
+    },
+    {
+      "entry": "buildTransitive/win-x64/occt/TKService.dll",
+      "sha256": "B16E5AEB5213D9586A606C6443246C0D77CE52B117A54A4E523FD9E0BB41AAE6"
+    },
+    {
+      "entry": "buildTransitive/win-x64/occt/TKShHealing.dll",
+      "sha256": "91E87BD3E5A3267C4A2D97B171EA05FA21FE1B78A2B905F7CF7E3CF19F5CD43E"
+    },
+    {
+      "entry": "buildTransitive/win-x64/occt/TKStd.dll",
+      "sha256": "7366BFDEF0BE23AE8C0D9FD7AB1676CCC4F8CCD7DEFC53ADD1B4BDC3E91F5660"
+    },
+    {
+      "entry": "buildTransitive/win-x64/occt/TKStdL.dll",
+      "sha256": "4EE319E9CD1D1DFF7337B1F03EC8FB2CCBAD0AE0AB8A18FA8EBBF2DBB3113B61"
+    },
+    {
+      "entry": "buildTransitive/win-x64/occt/TKTObj.dll",
+      "sha256": "B1491D455B088B13BC332260804DBE53E7FBF8E495A3271759C14334CD3A1196"
+    },
+    {
+      "entry": "buildTransitive/win-x64/occt/TKTopAlgo.dll",
+      "sha256": "6690CE35FCF32BD2C379D12A21ABDE6BAF023087F3EEFBCCC5AE40E416B0B107"
+    },
+    {
+      "entry": "buildTransitive/win-x64/occt/TKV3d.dll",
+      "sha256": "5356773B60EAF73345AE6822369EB8B721A9D18EABA925491870E24CBA651BD9"
+    },
+    {
+      "entry": "buildTransitive/win-x64/occt/TKVCAF.dll",
+      "sha256": "94948F34AD0696D0D4CA404DA4369B348B0B3C1241EEE1E42DAD87353E5629BF"
+    },
+    {
+      "entry": "buildTransitive/win-x64/occt/TKXCAF.dll",
+      "sha256": "64095FF4FFA3BDD41BD17FFFDC39F9490CE34C2EF59AAB427C71DEAA6F3B791A"
+    },
+    {
+      "entry": "buildTransitive/win-x64/occt/TKXMesh.dll",
+      "sha256": "302BFC3CB41C8EF00548A974C28F86BD194D6267FA31F080227D8D765BC8E9D3"
+    },
+    {
+      "entry": "buildTransitive/win-x64/occt/TKXSBase.dll",
+      "sha256": "3978FEC70540BD0B369FF01263BA341E01A57E308F5EA1788B5DC56B1A851AA7"
+    },
+    {
+      "entry": "buildTransitive/win-x64/occt/TKXml.dll",
+      "sha256": "9904AAF0435D24E7B89BA094FCB96708942A33B4DFD88241968CE6054B3AF811"
+    },
+    {
+      "entry": "buildTransitive/win-x64/occt/TKXmlL.dll",
+      "sha256": "7477A1A138630480D9D42CBAF04637322CD96DCA19880694DEC6A60C77532BCC"
+    },
+    {
+      "entry": "buildTransitive/win-x64/occt/TKXmlTObj.dll",
+      "sha256": "689187644BA9103F9288B2BC22208998A933F68CFE19D9B259EBD78DE58FE939"
+    },
+    {
+      "entry": "buildTransitive/win-x64/occt/TKXmlXCAF.dll",
+      "sha256": "CECC1712C731DCC0DDC4E855FBFF9EC8D159F83141FB0E5C010A2ECDFB0CEE13"
+    },
+    {
+      "entry": "buildTransitive/win-x64/occt/TKernel.dll",
+      "sha256": "3ECBC7F193EBB746CC88A81E03EB603D24FDF03470B346551698F45D4FAEB7B4"
+    },
+    {
+      "entry": "buildTransitive/win-x64/occt/avcodec-57.dll",
+      "sha256": "4D7A6A2CFF37C782CE1A3C74FA83EBBEBCC43DFC774E3F497A406C84C1458C7E"
+    },
+    {
+      "entry": "buildTransitive/win-x64/occt/avformat-57.dll",
+      "sha256": "297D3207DD0E6325DAB7A080472A4FD2F743CFC53861615B4DC96B91227CD3AF"
+    },
+    {
+      "entry": "buildTransitive/win-x64/occt/avutil-55.dll",
+      "sha256": "BE7C03FF47618916D16AF446E2F7C00E48F2FF8934C6ACE4C0D0E3D804732E8E"
+    },
+    {
+      "entry": "buildTransitive/win-x64/occt/freetype.dll",
+      "sha256": "637621E4AE51B496B8A86F9B053050D5AF2BA999EA0680BBFE3D5DF91F976C75"
+    },
+    {
+      "entry": "buildTransitive/win-x64/occt/jemalloc.dll",
+      "sha256": "EA0CFCF6A12BB3863961074547C958FD978AA3F800244CC4FE2847B127C4DF5E"
+    },
+    {
+      "entry": "buildTransitive/win-x64/occt/openvr_api.dll",
+      "sha256": "71DB78E77E577DB6D0666C25437695D42CEAFB9C7F8DA94FBE765525B8E2F5F2"
+    },
+    {
+      "entry": "buildTransitive/win-x64/occt/swscale-4.dll",
+      "sha256": "67BCFFB3CCDAEBF2BBD3149542D92DD9430ABFDFF1D7B79B3A529AF712926412"
+    },
+    {
+      "entry": "buildTransitive/win-x64/occt/tbb12.dll",
+      "sha256": "887888A0C2FFE7F64718D4EEA2A10CE41C68DEC1A954DB3A62646ADEEE66C0AD"
+    }
+  ],
+  "licenseEntriesObserved": [
+    {
+      "package": "OcctSharp.Native.win-x64",
+      "entry": "licenses/THIRD_PARTY_NOTICES.md",
+      "sha256": "60F0BA2018C6B822D641CC2DFFDDF3736BC0D830993C6A685C4410DFCA585B86"
+    },
+    {
+      "package": "OcctSharp.Native.win-x64",
+      "entry": "licenses/ffmpeg/COPYING.LGPLv2.1",
+      "sha256": "B634AB5640E258563C536E658CAD87080553DF6F34F62269A21D554844E58BFE"
+    },
+    {
+      "package": "OcctSharp.Native.win-x64",
+      "entry": "licenses/freeimage/license-fi.txt",
+      "sha256": "0BB9A3123297C73AE6E19C70459FB0E58F313F67CA63176FD43F8E77668B8243"
+    },
+    {
+      "package": "OcctSharp.Native.win-x64",
+      "entry": "licenses/freeimage/license-gplv2.txt",
+      "sha256": "D51615A1A47F1DDBB027920D60D3FC30A00E1284C795A47857883E641349FADF"
+    },
+    {
+      "package": "OcctSharp.Native.win-x64",
+      "entry": "licenses/freeimage/license-gplv3.txt",
+      "sha256": "084BE110E3E8757D8E6945CDA1FBC7E5073BBE688DC19B92C0D8440155D8E282"
+    },
+    {
+      "package": "OcctSharp.Native.win-x64",
+      "entry": "licenses/freetype/LICENSE.TXT",
+      "sha256": "2E3BBB7D7C5C396368DD0853A790EC29CE5B8647163DDE42A0493FB0D6556B2B"
+    },
+    {
+      "package": "OcctSharp.Native.win-x64",
+      "entry": "licenses/jemalloc/copyright",
+      "sha256": "E1812A56F610D7D2FB42527FEF8F7857927BC732A3476E8E1999C1F677F69518"
+    },
+    {
+      "package": "OcctSharp.Native.win-x64",
+      "entry": "licenses/occt/LICENSE_LGPL_21.txt",
+      "sha256": "E237FA56668030E928551DDD60F05DF5FE957F75EAB874BBD017E085ED722E7C"
+    },
+    {
+      "package": "OcctSharp.Native.win-x64",
+      "entry": "licenses/occt/OCCT_LGPL_EXCEPTION.txt",
+      "sha256": "04580A884EA6CEA294402649FF7B5CBB167D47462D1340A4ED33E550DB10A81B"
+    },
+    {
+      "package": "OcctSharp.Native.win-x64",
+      "entry": "licenses/onetbb/LICENSE.txt",
+      "sha256": "C71D239DF91726FC519C6EB72D318EC65820627232B2F796219E87DCF35D0AB4"
+    },
+    {
+      "package": "OcctSharp.Native.win-x64",
+      "entry": "licenses/openvr/LICENSE",
+      "sha256": "F56FF606104D4EF18E617921A75C73AD73B5A1A1D70C69590C29DE16919E04AD"
+    }
+  ],
+  "immutableReceivedFeed": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\local-sdk86-received-1\\feed",
+  "deliveryPath": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\batch-cq\\delivery-result.json",
+  "deliverySha256": "57DBE296F1AF29B3364D3080B0D982787B064ECEA53A4DBE763AE40070A93161",
+  "inputManifestPath": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\packages\\package-inputs.8.0.1-preview.86.json",
+  "inputManifestSha256": "68767DF12046AD9EC4929367AB9E7A526F1C07AFDCACAFE52850B4B539CE6964",
+  "sourceFreezePath": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\batch-cj\\final-source-identities.json",
+  "sourceFreezeSha256": "77786B18F9BDEF3F334C1FA833B21BF19A5E81F4315B78978CBAD56DFBA07D96",
+  "nativeRuntimeStartedHere": false,
+  "CadoryxFinalGate": "NOT RUN",
+  "priorColdWindowFailures": "Preserved; repeat passed, cause not proved; no viewer repair claim",
+  "AF": "ACTIVE",
+  "G": "USER_DEFERRED",
+  "cleanup": false
+}

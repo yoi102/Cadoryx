@@ -208,7 +208,8 @@ public partial class MainWindowViewModel : ObservableObject
     }
 
     [RelayCommand(CanExecute=nameof(CanStartOperation))]
-    private void New(){if(!IsShuttingDown)Attach(workspace.Create(string.Format(Strings.UntitledDocumentFormat,Documents.Count+1)));}
+    private async Task NewAsync()=>await RunAsync(async()=>
+        await AttachOwnedAsync(workspace.Create(string.Format(Strings.UntitledDocumentFormat,Documents.Count+1))));
 
     [RelayCommand(CanExecute=nameof(CanOpenFile))]
     private async Task OpenFileAsync()
@@ -237,7 +238,7 @@ public partial class MainWindowViewModel : ObservableObject
                 while(IsBusy||closingDocuments.Count>0)await Task.Delay(50,cancellation);
                 cancellation.ThrowIfCancellationRequested();
                 if(IsShuttingDown)throw new OperationCanceledException(cancellation);
-                Attach(workspace.Attach(loaded.Snapshot));
+                await AttachOwnedAsync(workspace.Attach(loaded.Snapshot));
                 foreach(var diagnostic in loaded.Diagnostics)log.Add(diagnostic.Message,CadMessageLevel.Information,diagnostic.Code);
                 StatusText=string.Format(Strings.OpenedFormat,Path.GetFileName(path));
             },string.Format(Strings.ProgressOpeningFormat,Path.GetFileName(path)),token);
@@ -256,7 +257,7 @@ public partial class MainWindowViewModel : ObservableObject
             using var loaded=await Task.Run(()=>storage.LoadAsync(path,assets,token),token);
             // Cancellation can race with a completed read; only commit an uncancelled result.
             token.ThrowIfCancellationRequested();
-            Attach(workspace.Attach(loaded.Snapshot,Path.GetFullPath(path)));
+            await AttachOwnedAsync(workspace.Attach(loaded.Snapshot,Path.GetFullPath(path)));
             foreach(var diagnostic in loaded.Diagnostics)log.Add(diagnostic.Message,CadMessageLevel.Information,diagnostic.Code);
             StatusText=string.Format(Strings.OpenedFormat,Path.GetFileName(path));
         },canCancel:true,message:string.Format(Strings.ProgressOpeningFormat,Path.GetFileName(path)));
@@ -311,9 +312,9 @@ public partial class MainWindowViewModel : ObservableObject
         doc.SetView(viewName switch{"Front"=>CadProjection.Front,"Top"=>CadProjection.Top,"Right"=>CadProjection.Right,"Back"=>CadProjection.Back,"Bottom"=>CadProjection.Bottom,"Left"=>CadProjection.Left,_=>CadProjection.Axonometric});
         CommandLine.RecordAction($"View: {viewName}");
     }
-    [RelayCommand] private void StartTool(string kind)
+    [RelayCommand] private async Task StartToolAsync(string kind)
     {
-        if(ActiveDocument is null)New();
+        if(ActiveDocument is null)await NewAsync();
         ActiveDocument?.StartTool(kind);
         if(ActiveDocument?.IsViewportConstructing==true)CommandLine.RecordAction($"Tool active: {kind}");
     }
@@ -324,7 +325,7 @@ public partial class MainWindowViewModel : ObservableObject
     }
     [RelayCommand(CanExecute=nameof(CanStartOperation))] private async Task NewSketchAsync()
     {
-        if(ActiveDocument is null)New();if(ActiveDocument is not {} doc||doc.IsReadOnly)return;
+        if(ActiveDocument is null)await NewAsync();if(ActiveDocument is not {} doc||doc.IsReadOnly)return;
         var part=doc.SelectedTargetPart??Cadoryx.Db.DefinitionId.New();
         var workPlane=doc.WorkPlaneSettings;
         var link=doc.Session.Snapshot.Datums.WorkPlane;
@@ -486,10 +487,11 @@ public partial class MainWindowViewModel : ObservableObject
     }
     private CadDocumentViewModel Attach(CadDocumentSession session)
     {
-        var doc=new CadDocumentViewModel(session,kernel,log,storage,files,documentFiles);Documents.Add(doc);
+        var previousActive=ActiveDocument;
+        var doc=new CadDocumentViewModel(session,kernel,log,storage,files,documentFiles);
         doc.Activated+=OnDocumentActivated;doc.CloseRequested+=OnDocumentCloseRequested;doc.LocalFeatureEditRequested+=OnLocalFeatureEditRequested;doc.RepetitionEditRequested+=OnRepetitionEditRequested;doc.AssemblyRepetitionEditRequested+=OnAssemblyRepetitionEditRequested;doc.HoleEditRequested+=OnHoleEditRequested;doc.ExtrusionEditRequested+=OnExtrusionEditRequested;doc.GuidedEditRequested+=OnGuidedEditRequested;doc.FaceFeatureEditRequested+=OnFaceFeatureEditRequested;doc.ContourLocalEditRequested+=OnContourLocalEditRequested;
         session.StatusChanged+=OnDocumentStatus;
-        try{_dockLayoutService.OpenDocument(doc);ActiveDocument=doc;doc.IsActive=true;}
+        try{Documents.Add(doc);_dockLayoutService.OpenDocument(doc);ActiveDocument=doc;doc.IsActive=true;}
         catch
         {
             // A failed dock attachment must not leave a view model observing a discarded recovery candidate.
@@ -498,11 +500,19 @@ public partial class MainWindowViewModel : ObservableObject
             {
                 doc.Detach();doc.Activated-=OnDocumentActivated;doc.CloseRequested-=OnDocumentCloseRequested;doc.LocalFeatureEditRequested-=OnLocalFeatureEditRequested;doc.RepetitionEditRequested-=OnRepetitionEditRequested;doc.AssemblyRepetitionEditRequested-=OnAssemblyRepetitionEditRequested;doc.HoleEditRequested-=OnHoleEditRequested;doc.ExtrusionEditRequested-=OnExtrusionEditRequested;doc.GuidedEditRequested-=OnGuidedEditRequested;doc.FaceFeatureEditRequested-=OnFaceFeatureEditRequested;doc.ContourLocalEditRequested-=OnContourLocalEditRequested;
                 session.StatusChanged-=OnDocumentStatus;Documents.Remove(doc);
-                if(ReferenceEquals(ActiveDocument,doc))ActiveDocument=Documents.LastOrDefault();
+                if(ReferenceEquals(ActiveDocument,doc))ActiveDocument=previousActive is null||Documents.Contains(previousActive)&&!previousActive.IsDetached?
+                    previousActive:Documents.LastOrDefault();
             }
             throw;
         }
         return doc;
+    }
+    // Manual new/open own the freshly attached session until the dock accepts it.
+    // Workspace tools and recovery already have their own candidate ownership guards.
+    private async Task<CadDocumentViewModel> AttachOwnedAsync(CadDocumentSession candidate)
+    {
+        try{return Attach(candidate);}
+        catch{await workspace.CloseAsync(candidate);throw;}
     }
     private void OnDocumentActivated(object? sender,EventArgs e)=>ActiveDocument=(CadDocumentViewModel)sender!;
     private async void OnDocumentCloseRequested(object? sender,EventArgs e)
