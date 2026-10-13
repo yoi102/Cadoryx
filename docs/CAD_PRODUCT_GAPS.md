@@ -1,5 +1,7 @@
 # 3D CAD 产品缺口与实施规划
 
+2026-10-14，status255：D7第三版保留完整144新增/99原有及全部公差，[两配置实际243](../capability-evidence/diagnostics/d7-analytic-branch/revision3-verification.json)各207通过/36失败，原99及此前Far覆盖36均通过；剩36同名孔/岛起始材料偏差保持失败，两配置终态已审计，候选未合入。原生线框完整材料helper两配置已编译，但等待SDK标准生成PlanarWireFaces.Create的runtime/精确本地NuGet后才接评估，不窄化原曲线范围、不将托管编译当能力完成。SDK133源码资格已交回；第三版现已结束，根再次实际空闲核查后明确交还约30分钟，优先SDK完整面入口及精确包资格；尚无新包接收。生产1082/公开85、原24STEP精确延期及A–F全部范围保持，G/清理暂缓；正式已验子批仍A4/B17/C5/D5/E4/F5g。当前以[STATUS](STATUS.md)和实际终态为准。
+
 2026-10-14，status254：[工程图旧入口路径反馈1082](AF_DRAWING_LEGACY_VIEW_PATH.md)已合入，两配置各49/49，原正常原生创建保留、实际native62匹配公开85，Tests及WPF build0；当前预计6847全量/真实模型未重跑。原1081/86完整6830各6806通过/原24精确延期失败保持。[原模型实际终态审计](../capability-evidence/diagnostics/af1081-local86/provider-verification.json)为工程图1/8、工作区5/8均失败，原预算/来源/native保持；旧预启动hold已结束。D7隔离候选两配置修订1各168/243通过、修订2各171/243通过；原99均通过，但72失败仍待修正，两修订均未合入，不代表D完成。正式已验子批仍A4/B17/C5/D5/E4/F5g；恢复、窗口、材质、性能及其他A–F继续，第4、5节范围保持，G/清理暂缓。当前以[STATUS](STATUS.md)和实际终态为准，以下均为历史。
 
 2026-10-14，status253：[当前1081/本地86两配置完整6830](../capability-evidence/diagnostics/af1081-local86/full-verification.json)各6806通过/原24延期失败/零跳过，无新增失败，原名称及native62准确；Debug已补齐终态。[Far90两配置修订6](../capability-evidence/diagnostics/af1081-local86/far90-runtime-6-verification.json)各72通过/18失败，所有原始source/stop BRep字节保持；18为原生raw-full-near体积错误，完整Near/Far私有裁剪及孔岛/负例有各自通过记录，不代表Far产品完成。模型预启动协调25052实际hold，根已明确交还SDK CX25/CY8约30分钟资格时段，模型、恢复、窗口和性能仍待验；源版本/原第4、5节A–F范围保持，G/清理暂缓。最新以[STATUS](STATUS.md)和实际终态为准，以下均为历史。
@@ -157,7 +159,7 @@ M14–M17 已记录的待办主要关注性能、精确建模边界、工程交�
 
 2026-10-14执行顺序更新：原24项严格STEP失败按用户授权单独延期，不等待其修复即可继续其他批次。其他功能、实际窗口、模型、性能及交换门禁继续执行；延期不等于完成，也不降低原第5节完成标准。
 
-当前正式已验子批保持 **A4 / B17 / C5 / D5 / E4 / F5g**。[B17解析偏移连接](B17_ANALYTICAL_OFFSET_JOINS_PLAN.md)已完成解析直线/圆弧/圆闭环与孔岛的限定本地契约；后续B18、A5及其余A–F仍有未完成项。生产源码1081包括完整1076组合、命令目录/工程图类型与终端状态反馈、主窗口候选失败回滚，仍使用公开Preview.85。[1081/本地86候选](AF_SOURCE1081_LOCAL86_ACCEPTANCE.md)两配置实际发现6830，完整回归正在运行；1076两配置各455专项及生产根各6652完整回归仅作为历史证据，其原24严格STEP失败保持。当前模型、性能、窗口及其余产品门禁继续，G暂缓。
+当前正式已验子批保持 **A4 / B17 / C5 / D5 / E4 / F5g**。[B17解析偏移连接](B17_ANALYTICAL_OFFSET_JOINS_PLAN.md)已完成解析直线/圆弧/圆闭环与孔岛的限定本地契约；后续B18、A5及其余A–F仍有未完成项。生产源码1082已加入[工程图旧视图路径反馈](AF_DRAWING_LEGACY_VIEW_PATH.md)，仍使用公开Preview.85；两配置聚焦49/49及最终WPF build0，当前预计6847全量及模型重跑未执行。[1081/本地86完整6830两配置](../capability-evidence/diagnostics/af1081-local86/full-verification.json)已终态，各6806通过/原24精确延期失败/零跳过，无新增失败；不得替代当前1082完整验收。原模型两场景均失败、最新性能和窗口仍待验。D7候选尚未合入；全部第4、5节范围保持，G暂缓。
 
 建议优先把“简单机械零件设计 → 装配 → 关联工程图 → 交换/安装交付”做成可靠闭环。下面是实施批次建议，不是新增阶段的完成声明，也不包含未经确定的工期。
 
@@ -192,7 +194,7 @@ M14–M17 已记录的待办主要关注性能、精确建模边界、工程交�
 
 | 证据方向 | 当前可以引用什么 | 仍要取得什么 |
 |---|---|---|
-| 最新代码回归 | 生产1081/公开85，包括[主窗口失败回滚](AF_MAIN_WINDOW_ATTACHMENT_RECOVERY.md)；[本地86 Release完整6830](../capability-evidence/diagnostics/af1081-local86/release-full-verification.json)6806通过/原24失败/零跳过，无新增失败，原6652名称、新178及实际native62准确；Debug已串行运行。两配置build0/实际发现6830保持 | Debug完整终态、当前原模型、性能及实际窗口仍待验；不能以Release替代两配置或真实工作流。A5原24/36已持久化、两配置publish0，原运行断言与D6窗口36保持未运行；原STEP24/AppSweep及A–F全部范围继续，G暂缓 |
+| 最新代码回归 | 生产1082/公开85，[旧视图路径反馈](AF_DRAWING_LEGACY_VIEW_PATH.md)两配置各49/49，Tests及最终WPF build0；此前[1081/本地86完整6830两配置](../capability-evidence/diagnostics/af1081-local86/full-verification.json)各6806通过/原24精确延期失败/零跳过，无新增失败、实际native62准确，已经完整终态 | 当前预计6847全量、模型重跑、性能及实际窗口仍待验；旧源码的完整回归不能替代当前验收。A5原24/36与D6窗口36运行断言保持，实际未运行；STEP24延期不豁免其他失败，第4、5节A–F全部范围继续，G暂缓 |
 | 自动覆盖率 | [TEST_COVERAGE](TEST_COVERAGE.md) 记录 618 测试时生产程序集行 67.0%、分支 66.2% | 以新快照重测并补关键行为；WPF 界面和 OCCT 原生代码不在这些 xUnit 百分比内 |
 | 性能 | [隔离1056两fresh进程各20双视口周期与生产Open](../artifacts/af-merged-performance-verification-2.json)通过，完整提交4.752/5.061秒满足6482ms；原完整788×411整图保持。生产缓存修复版6800.2534ms失败保留 | 当前候选生产接入、自动WPF/设备失效恢复待验；导入仍占主要时间，CPU提交计时不证明物理屏幕或输入延迟 |
 | 厂商兼容 | [M15](M15_PRECISION_AND_ASSEMBLY.md) 的 CATIA V5、Open CASCADE、CoCreate、SolidWorks 读取/精确检查；ODA 样本被拒绝 | 不同来源的单位/层级/样式/PMI对照，以及外部 CAD 实际往返；为拒绝样本提供诊断或受控兼容方案 |

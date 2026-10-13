@@ -1,0 +1,362 @@
+{
+  "recordedAt": "2026-10-13T18:31:32.788967+00:00",
+  "state": "D7_REVISION3_BOUNDARY_ONLY_BOTH_ACTUAL243_FOCUSED_TESTS_INDEPENDENTLY_AUDITED",
+  "freeze": {
+    "path": "artifacts/d7-analytic-branch-draft-3/freeze.json",
+    "sha256": "5B20163FEC66451242778C053377818A6FBFC83191B8D1074ABEDEEBB0F0757F"
+  },
+  "suite": {
+    "path": "artifacts/d7-analytic-branch-draft-3/focused-both-exit.json",
+    "sha256": "C701AEBABF488ECA20E6936A6849FEAB8C58FCAA106E29E116C5500498692E38"
+  },
+  "unchangedBaseline": {
+    "path": "artifacts/d7-analytic-branch-draft-1/focused-verification.json",
+    "sha256": "7A9FC5537522B11AD94DE82F20BEA3E1BFD01C19572BA1656C214EED0594140A"
+  },
+  "configurations": [
+    {
+      "configuration": "Release",
+      "total": 243,
+      "passed": 207,
+      "failed": 36,
+      "skipped": 0,
+      "failures": [
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"cylinder\", pose: 2, material: \"hole\", operation: Cut, branch: Far)",
+          "message": "Cadoryx.Db.CadValidationException : Starting material faces do not account for the complete exact unit prism, including every hole and island: area=11.9999994, volume=11.99999979999999, starts=1."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"cylinder\", pose: 0, material: \"hole\", operation: Fuse, branch: Far)",
+          "message": "Cadoryx.Db.CadValidationException : Starting material faces do not account for the complete exact unit prism, including every hole and island: area=11.9999994, volume=11.999999800000001, starts=1."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"cylinder\", pose: 1, material: \"hole\", operation: Cut, branch: Far)",
+          "message": "Cadoryx.Db.CadValidationException : Starting material faces do not account for the complete exact unit prism, including every hole and island: area=11.9999994, volume=11.9999998, starts=1."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"cylinder\", pose: 1, material: \"island\", operation: NewBody, branch: Near)",
+          "message": "Cadoryx.Db.CadValidationException : Starting material faces do not account for the complete exact unit prism, including every hole and island: area=12.9999994, volume=12.999999800000001, starts=2."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"cylinder\", pose: 1, material: \"hole\", operation: Cut, branch: Near)",
+          "message": "Cadoryx.Db.CadValidationException : Starting material faces do not account for the complete exact unit prism, including every hole and island: area=11.9999994, volume=11.9999998, starts=1."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"cylinder\", pose: 0, material: \"island\", operation: Fuse, branch: Far)",
+          "message": "Cadoryx.Db.CadValidationException : Starting material faces do not account for the complete exact unit prism, including every hole and island: area=12.9999994, volume=12.999999800000001, starts=2."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"cylinder\", pose: 0, material: \"island\", operation: Fuse, branch: Near)",
+          "message": "Cadoryx.Db.CadValidationException : Starting material faces do not account for the complete exact unit prism, including every hole and island: area=12.9999994, volume=12.999999800000001, starts=2."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"cylinder\", pose: 2, material: \"hole\", operation: NewBody, branch: Far)",
+          "message": "Cadoryx.Db.CadValidationException : Starting material faces do not account for the complete exact unit prism, including every hole and island: area=11.9999994, volume=11.9999998, starts=1."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"cylinder\", pose: 0, material: \"island\", operation: Cut, branch: Near)",
+          "message": "Cadoryx.Db.CadValidationException : Starting material faces do not account for the complete exact unit prism, including every hole and island: area=12.9999994, volume=12.999999800000001, starts=2."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"cylinder\", pose: 1, material: \"island\", operation: NewBody, branch: Far)",
+          "message": "Cadoryx.Db.CadValidationException : Starting material faces do not account for the complete exact unit prism, including every hole and island: area=12.9999994, volume=12.999999800000001, starts=2."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"cylinder\", pose: 2, material: \"island\", operation: Cut, branch: Near)",
+          "message": "Cadoryx.Db.CadValidationException : Starting material faces do not account for the complete exact unit prism, including every hole and island: area=12.9999994, volume=12.99999979999999, starts=2."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"cylinder\", pose: 0, material: \"hole\", operation: Cut, branch: Near)",
+          "message": "Cadoryx.Db.CadValidationException : Starting material faces do not account for the complete exact unit prism, including every hole and island: area=11.9999994, volume=11.999999800000001, starts=1."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"cylinder\", pose: 1, material: \"hole\", operation: NewBody, branch: Far)",
+          "message": "Cadoryx.Db.CadValidationException : Starting material faces do not account for the complete exact unit prism, including every hole and island: area=11.9999994, volume=11.999999800000001, starts=1."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"cylinder\", pose: 2, material: \"island\", operation: NewBody, branch: Far)",
+          "message": "Cadoryx.Db.CadValidationException : Starting material faces do not account for the complete exact unit prism, including every hole and island: area=12.9999994, volume=12.9999998, starts=2."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"cylinder\", pose: 0, material: \"island\", operation: Cut, branch: Far)",
+          "message": "Cadoryx.Db.CadValidationException : Starting material faces do not account for the complete exact unit prism, including every hole and island: area=12.9999994, volume=12.999999800000001, starts=2."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"cylinder\", pose: 2, material: \"island\", operation: Fuse, branch: Near)",
+          "message": "Cadoryx.Db.CadValidationException : Starting material faces do not account for the complete exact unit prism, including every hole and island: area=12.9999994, volume=12.9999998, starts=2."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"cylinder\", pose: 1, material: \"hole\", operation: NewBody, branch: Near)",
+          "message": "Cadoryx.Db.CadValidationException : Starting material faces do not account for the complete exact unit prism, including every hole and island: area=11.9999994, volume=11.999999800000001, starts=1."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"cylinder\", pose: 2, material: \"hole\", operation: NewBody, branch: Near)",
+          "message": "Cadoryx.Db.CadValidationException : Starting material faces do not account for the complete exact unit prism, including every hole and island: area=11.9999994, volume=11.9999998, starts=1."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"cylinder\", pose: 1, material: \"hole\", operation: Fuse, branch: Near)",
+          "message": "Cadoryx.Db.CadValidationException : Starting material faces do not account for the complete exact unit prism, including every hole and island: area=11.9999994, volume=11.999999800000001, starts=1."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"cylinder\", pose: 0, material: \"hole\", operation: Fuse, branch: Near)",
+          "message": "Cadoryx.Db.CadValidationException : Starting material faces do not account for the complete exact unit prism, including every hole and island: area=11.9999994, volume=11.999999800000001, starts=1."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"cylinder\", pose: 0, material: \"island\", operation: NewBody, branch: Near)",
+          "message": "Cadoryx.Db.CadValidationException : Starting material faces do not account for the complete exact unit prism, including every hole and island: area=12.9999994, volume=12.999999800000001, starts=2."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"cylinder\", pose: 1, material: \"hole\", operation: Fuse, branch: Far)",
+          "message": "Cadoryx.Db.CadValidationException : Starting material faces do not account for the complete exact unit prism, including every hole and island: area=11.9999994, volume=11.999999800000001, starts=1."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"cylinder\", pose: 1, material: \"island\", operation: Fuse, branch: Near)",
+          "message": "Cadoryx.Db.CadValidationException : Starting material faces do not account for the complete exact unit prism, including every hole and island: area=12.9999994, volume=12.999999800000001, starts=2."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"cylinder\", pose: 2, material: \"hole\", operation: Fuse, branch: Near)",
+          "message": "Cadoryx.Db.CadValidationException : Starting material faces do not account for the complete exact unit prism, including every hole and island: area=11.9999994, volume=11.9999998, starts=1."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"cylinder\", pose: 1, material: \"island\", operation: Cut, branch: Near)",
+          "message": "Cadoryx.Db.CadValidationException : Starting material faces do not account for the complete exact unit prism, including every hole and island: area=12.9999994, volume=12.9999998, starts=2."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"cylinder\", pose: 0, material: \"hole\", operation: Cut, branch: Far)",
+          "message": "Cadoryx.Db.CadValidationException : Starting material faces do not account for the complete exact unit prism, including every hole and island: area=11.9999994, volume=11.999999800000001, starts=1."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"cylinder\", pose: 1, material: \"island\", operation: Fuse, branch: Far)",
+          "message": "Cadoryx.Db.CadValidationException : Starting material faces do not account for the complete exact unit prism, including every hole and island: area=12.9999994, volume=12.999999800000001, starts=2."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"cylinder\", pose: 2, material: \"island\", operation: Cut, branch: Far)",
+          "message": "Cadoryx.Db.CadValidationException : Starting material faces do not account for the complete exact unit prism, including every hole and island: area=12.9999994, volume=12.99999979999999, starts=2."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"cylinder\", pose: 2, material: \"island\", operation: Fuse, branch: Far)",
+          "message": "Cadoryx.Db.CadValidationException : Starting material faces do not account for the complete exact unit prism, including every hole and island: area=12.9999994, volume=12.9999998, starts=2."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"cylinder\", pose: 0, material: \"hole\", operation: NewBody, branch: Near)",
+          "message": "Cadoryx.Db.CadValidationException : Starting material faces do not account for the complete exact unit prism, including every hole and island: area=11.9999994, volume=11.999999800000001, starts=1."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"cylinder\", pose: 2, material: \"hole\", operation: Fuse, branch: Far)",
+          "message": "Cadoryx.Db.CadValidationException : Starting material faces do not account for the complete exact unit prism, including every hole and island: area=11.9999994, volume=11.9999998, starts=1."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"cylinder\", pose: 2, material: \"hole\", operation: Cut, branch: Near)",
+          "message": "Cadoryx.Db.CadValidationException : Starting material faces do not account for the complete exact unit prism, including every hole and island: area=11.9999994, volume=11.99999979999999, starts=1."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"cylinder\", pose: 0, material: \"hole\", operation: NewBody, branch: Far)",
+          "message": "Cadoryx.Db.CadValidationException : Starting material faces do not account for the complete exact unit prism, including every hole and island: area=11.9999994, volume=11.999999800000001, starts=1."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"cylinder\", pose: 0, material: \"island\", operation: NewBody, branch: Far)",
+          "message": "Cadoryx.Db.CadValidationException : Starting material faces do not account for the complete exact unit prism, including every hole and island: area=12.9999994, volume=12.999999800000001, starts=2."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"cylinder\", pose: 1, material: \"island\", operation: Cut, branch: Far)",
+          "message": "Cadoryx.Db.CadValidationException : Starting material faces do not account for the complete exact unit prism, including every hole and island: area=12.9999994, volume=12.9999998, starts=2."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"cylinder\", pose: 2, material: \"island\", operation: NewBody, branch: Near)",
+          "message": "Cadoryx.Db.CadValidationException : Starting material faces do not account for the complete exact unit prism, including every hole and island: area=12.9999994, volume=12.9999998, starts=2."
+        }
+      ],
+      "old99Failures": [],
+      "actualNative62Matched": true,
+      "trx": {
+        "path": "artifacts/d7-analytic-branch-draft-3/candidate-release-runtime-1/runtime.trx",
+        "sha256": "ACB5A9464AA4BB2E7975704EEB0AABD69CC32DD0C74D0EDA8FC07268345488DC"
+      },
+      "binding": {
+        "path": "artifacts/d7-analytic-branch-draft-3/candidate-release-runtime-1/loaded-native.json",
+        "sha256": "4AB3B0E6EFBBF6EAD6BD64BAE5381334A38D721C1A9B122E36C81B91D1F1459B"
+      },
+      "terminal": {
+        "path": "artifacts/d7-analytic-branch-draft-3/candidate-release-runtime-1/exit.json",
+        "sha256": "E85B1F3171ABEF587F20D82B99E2C1BE42FE86780CD9AC009CAF6F43906F57CB"
+      }
+    },
+    {
+      "configuration": "Debug",
+      "total": 243,
+      "passed": 207,
+      "failed": 36,
+      "skipped": 0,
+      "failures": [
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"cylinder\", pose: 0, material: \"island\", operation: Fuse, branch: Near)",
+          "message": "Cadoryx.Db.CadValidationException : Starting material faces do not account for the complete exact unit prism, including every hole and island: area=12.9999994, volume=12.999999800000001, starts=2."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"cylinder\", pose: 0, material: \"island\", operation: NewBody, branch: Near)",
+          "message": "Cadoryx.Db.CadValidationException : Starting material faces do not account for the complete exact unit prism, including every hole and island: area=12.9999994, volume=12.999999800000001, starts=2."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"cylinder\", pose: 2, material: \"island\", operation: Cut, branch: Near)",
+          "message": "Cadoryx.Db.CadValidationException : Starting material faces do not account for the complete exact unit prism, including every hole and island: area=12.9999994, volume=12.99999979999999, starts=2."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"cylinder\", pose: 2, material: \"island\", operation: NewBody, branch: Far)",
+          "message": "Cadoryx.Db.CadValidationException : Starting material faces do not account for the complete exact unit prism, including every hole and island: area=12.9999994, volume=12.9999998, starts=2."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"cylinder\", pose: 0, material: \"island\", operation: Cut, branch: Near)",
+          "message": "Cadoryx.Db.CadValidationException : Starting material faces do not account for the complete exact unit prism, including every hole and island: area=12.9999994, volume=12.999999800000001, starts=2."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"cylinder\", pose: 0, material: \"hole\", operation: Fuse, branch: Near)",
+          "message": "Cadoryx.Db.CadValidationException : Starting material faces do not account for the complete exact unit prism, including every hole and island: area=11.9999994, volume=11.999999800000001, starts=1."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"cylinder\", pose: 0, material: \"hole\", operation: NewBody, branch: Far)",
+          "message": "Cadoryx.Db.CadValidationException : Starting material faces do not account for the complete exact unit prism, including every hole and island: area=11.9999994, volume=11.999999800000001, starts=1."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"cylinder\", pose: 1, material: \"island\", operation: NewBody, branch: Far)",
+          "message": "Cadoryx.Db.CadValidationException : Starting material faces do not account for the complete exact unit prism, including every hole and island: area=12.9999994, volume=12.999999800000001, starts=2."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"cylinder\", pose: 0, material: \"island\", operation: Fuse, branch: Far)",
+          "message": "Cadoryx.Db.CadValidationException : Starting material faces do not account for the complete exact unit prism, including every hole and island: area=12.9999994, volume=12.999999800000001, starts=2."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"cylinder\", pose: 0, material: \"hole\", operation: Cut, branch: Near)",
+          "message": "Cadoryx.Db.CadValidationException : Starting material faces do not account for the complete exact unit prism, including every hole and island: area=11.9999994, volume=11.999999800000001, starts=1."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"cylinder\", pose: 2, material: \"hole\", operation: Cut, branch: Far)",
+          "message": "Cadoryx.Db.CadValidationException : Starting material faces do not account for the complete exact unit prism, including every hole and island: area=11.9999994, volume=11.99999979999999, starts=1."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"cylinder\", pose: 1, material: \"hole\", operation: Fuse, branch: Near)",
+          "message": "Cadoryx.Db.CadValidationException : Starting material faces do not account for the complete exact unit prism, including every hole and island: area=11.9999994, volume=11.999999800000001, starts=1."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"cylinder\", pose: 2, material: \"hole\", operation: NewBody, branch: Near)",
+          "message": "Cadoryx.Db.CadValidationException : Starting material faces do not account for the complete exact unit prism, including every hole and island: area=11.9999994, volume=11.9999998, starts=1."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"cylinder\", pose: 2, material: \"hole\", operation: Fuse, branch: Far)",
+          "message": "Cadoryx.Db.CadValidationException : Starting material faces do not account for the complete exact unit prism, including every hole and island: area=11.9999994, volume=11.9999998, starts=1."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"cylinder\", pose: 1, material: \"island\", operation: Cut, branch: Far)",
+          "message": "Cadoryx.Db.CadValidationException : Starting material faces do not account for the complete exact unit prism, including every hole and island: area=12.9999994, volume=12.9999998, starts=2."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"cylinder\", pose: 1, material: \"island\", operation: NewBody, branch: Near)",
+          "message": "Cadoryx.Db.CadValidationException : Starting material faces do not account for the complete exact unit prism, including every hole and island: area=12.9999994, volume=12.999999800000001, starts=2."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"cylinder\", pose: 1, material: \"hole\", operation: Cut, branch: Far)",
+          "message": "Cadoryx.Db.CadValidationException : Starting material faces do not account for the complete exact unit prism, including every hole and island: area=11.9999994, volume=11.9999998, starts=1."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"cylinder\", pose: 1, material: \"hole\", operation: Fuse, branch: Far)",
+          "message": "Cadoryx.Db.CadValidationException : Starting material faces do not account for the complete exact unit prism, including every hole and island: area=11.9999994, volume=11.999999800000001, starts=1."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"cylinder\", pose: 1, material: \"hole\", operation: NewBody, branch: Near)",
+          "message": "Cadoryx.Db.CadValidationException : Starting material faces do not account for the complete exact unit prism, including every hole and island: area=11.9999994, volume=11.999999800000001, starts=1."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"cylinder\", pose: 1, material: \"island\", operation: Cut, branch: Near)",
+          "message": "Cadoryx.Db.CadValidationException : Starting material faces do not account for the complete exact unit prism, including every hole and island: area=12.9999994, volume=12.9999998, starts=2."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"cylinder\", pose: 2, material: \"hole\", operation: Fuse, branch: Near)",
+          "message": "Cadoryx.Db.CadValidationException : Starting material faces do not account for the complete exact unit prism, including every hole and island: area=11.9999994, volume=11.9999998, starts=1."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"cylinder\", pose: 1, material: \"island\", operation: Fuse, branch: Far)",
+          "message": "Cadoryx.Db.CadValidationException : Starting material faces do not account for the complete exact unit prism, including every hole and island: area=12.9999994, volume=12.999999800000001, starts=2."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"cylinder\", pose: 1, material: \"island\", operation: Fuse, branch: Near)",
+          "message": "Cadoryx.Db.CadValidationException : Starting material faces do not account for the complete exact unit prism, including every hole and island: area=12.9999994, volume=12.999999800000001, starts=2."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"cylinder\", pose: 2, material: \"island\", operation: Fuse, branch: Near)",
+          "message": "Cadoryx.Db.CadValidationException : Starting material faces do not account for the complete exact unit prism, including every hole and island: area=12.9999994, volume=12.9999998, starts=2."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"cylinder\", pose: 2, material: \"island\", operation: Cut, branch: Far)",
+          "message": "Cadoryx.Db.CadValidationException : Starting material faces do not account for the complete exact unit prism, including every hole and island: area=12.9999994, volume=12.99999979999999, starts=2."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"cylinder\", pose: 0, material: \"island\", operation: NewBody, branch: Far)",
+          "message": "Cadoryx.Db.CadValidationException : Starting material faces do not account for the complete exact unit prism, including every hole and island: area=12.9999994, volume=12.999999800000001, starts=2."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"cylinder\", pose: 2, material: \"island\", operation: NewBody, branch: Near)",
+          "message": "Cadoryx.Db.CadValidationException : Starting material faces do not account for the complete exact unit prism, including every hole and island: area=12.9999994, volume=12.9999998, starts=2."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"cylinder\", pose: 2, material: \"hole\", operation: Cut, branch: Near)",
+          "message": "Cadoryx.Db.CadValidationException : Starting material faces do not account for the complete exact unit prism, including every hole and island: area=11.9999994, volume=11.99999979999999, starts=1."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"cylinder\", pose: 0, material: \"hole\", operation: Fuse, branch: Far)",
+          "message": "Cadoryx.Db.CadValidationException : Starting material faces do not account for the complete exact unit prism, including every hole and island: area=11.9999994, volume=11.999999800000001, starts=1."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"cylinder\", pose: 1, material: \"hole\", operation: NewBody, branch: Far)",
+          "message": "Cadoryx.Db.CadValidationException : Starting material faces do not account for the complete exact unit prism, including every hole and island: area=11.9999994, volume=11.999999800000001, starts=1."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"cylinder\", pose: 2, material: \"island\", operation: Fuse, branch: Far)",
+          "message": "Cadoryx.Db.CadValidationException : Starting material faces do not account for the complete exact unit prism, including every hole and island: area=12.9999994, volume=12.9999998, starts=2."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"cylinder\", pose: 2, material: \"hole\", operation: NewBody, branch: Far)",
+          "message": "Cadoryx.Db.CadValidationException : Starting material faces do not account for the complete exact unit prism, including every hole and island: area=11.9999994, volume=11.9999998, starts=1."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"cylinder\", pose: 0, material: \"hole\", operation: NewBody, branch: Near)",
+          "message": "Cadoryx.Db.CadValidationException : Starting material faces do not account for the complete exact unit prism, including every hole and island: area=11.9999994, volume=11.999999800000001, starts=1."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"cylinder\", pose: 1, material: \"hole\", operation: Cut, branch: Near)",
+          "message": "Cadoryx.Db.CadValidationException : Starting material faces do not account for the complete exact unit prism, including every hole and island: area=11.9999994, volume=11.9999998, starts=1."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"cylinder\", pose: 0, material: \"island\", operation: Cut, branch: Far)",
+          "message": "Cadoryx.Db.CadValidationException : Starting material faces do not account for the complete exact unit prism, including every hole and island: area=12.9999994, volume=12.999999800000001, starts=2."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"cylinder\", pose: 0, material: \"hole\", operation: Cut, branch: Far)",
+          "message": "Cadoryx.Db.CadValidationException : Starting material faces do not account for the complete exact unit prism, including every hole and island: area=11.9999994, volume=11.999999800000001, starts=1."
+        }
+      ],
+      "old99Failures": [],
+      "actualNative62Matched": true,
+      "trx": {
+        "path": "artifacts/d7-analytic-branch-draft-3/candidate-debug-runtime-1/runtime.trx",
+        "sha256": "088A35227543A40BD1BA2EEED86B0077EB2E8E13770A869442956B1BB6133279"
+      },
+      "binding": {
+        "path": "artifacts/d7-analytic-branch-draft-3/candidate-debug-runtime-1/loaded-native.json",
+        "sha256": "54ABCBE85AF9E10C5F87E35528628D5F6C03776C3985598FFAADE276EC7423C6"
+      },
+      "terminal": {
+        "path": "artifacts/d7-analytic-branch-draft-3/candidate-debug-runtime-1/exit.json",
+        "sha256": "800824134C8202515B358EBE4AFF4EE32C20634C7142CE9A5A9B1E087165C4F9"
+      }
+    }
+  ],
+  "candidateFocusedPassed": false,
+  "whole6974RegressionExecuted": false,
+  "geometryBudgetsChanged": false,
+  "originalRaw90FailuresChanged": false,
+  "originalStrictSTEP24Changed": false,
+  "completeStartHelperWired": false,
+  "newPlanarWireFaceAPIReceived": false,
+  "productionApplied": false,
+  "actualWindowExecuted": false,
+  "AFComplete": false
+}

@@ -1,0 +1,101 @@
+{
+  "recordedAt": "2026-10-13T18:10:59.307295+00:00",
+  "state": "D7_REVISION3_COMPLETE_BOUNDARY_AND_ORIGINAL_WIRE_MATERIAL_COMPILED_NOT_RUNTIME",
+  "sourcePayloadMatched": 1193,
+  "parent": {
+    "path": "artifacts/af1081-local86-1/freeze.json",
+    "sha256": "622BFC6BD268C2349A0A74F3B1504B382A4472B555224D9B29CB7FA4F1B3E9A3"
+  },
+  "source": [
+    {
+      "path": "tools/FiniteSurfaceBranchCandidate/revision3/Directory.Build.props",
+      "sha256": "939A67E00767A85A7850DEB18C2157FDEA59E30B8E37E40ABC691F176126DE33"
+    },
+    {
+      "path": "tools/FiniteSurfaceBranchCandidate/revision3/KernelBranchCandidate.csproj",
+      "sha256": "8B0C082EFE8EDBC54DA999B6772FCD5F19A5ADE840C5ACE4C0F942B86016DD9B"
+    },
+    {
+      "path": "tools/FiniteSurfaceBranchCandidate/revision3/OcctFiniteSurfaceBoundaryCoverage.cs",
+      "sha256": "BBCFB09976CBEE1D974773217DE900FCAEF8009467B5FE29B8DE8E3C3FEE16B6"
+    },
+    {
+      "path": "tools/FiniteSurfaceBranchCandidate/revision3/OcctFiniteSurfaceBranchDomain.cs",
+      "sha256": "55C311874A2CC64EB47FF6FCCC57A8D5844B7B1F74561A118C335F4BDE014D96"
+    },
+    {
+      "path": "tools/FiniteSurfaceBranchCandidate/revision3/OcctFiniteSurfaceExtrusion.Candidate.cs",
+      "sha256": "5995A9344A056C6F290522AD1CC0D8233DA6310166814757C18546225FC8BBC1"
+    },
+    {
+      "path": "tools/FiniteSurfaceBranchCandidate/revision3/OcctFiniteSurfaceStartMaterial.cs",
+      "sha256": "7077BB9FD4E05760F284A2938F3096238D80A8E48C2818F7CCCFC0F7F66E8E48"
+    }
+  ],
+  "configurations": [
+    {
+      "configuration": "Release",
+      "kernel": {
+        "path": "artifacts/d7-analytic-branch-draft-3/kernel-release-3/Cadoryx.Kernel.Occt.dll",
+        "sha256": "494EB327E130F683CEE4C7A10E58886FA0BA045781A80D73234BCF15F343E241"
+      },
+      "build": {
+        "path": "artifacts/d7-analytic-branch-draft-3/build-release-3-exit.json",
+        "sha256": "CA4FEC1A419960970EEDA32FCFCB2F90ACDA3A276ADCDF22C3C7D2D840E7BEFC"
+      },
+      "log": {
+        "path": "artifacts/d7-analytic-branch-draft-3/build-release-3.log",
+        "sha256": "B32603A4F33AC5FD77114DB799974F19AB673D3E2B66DC7B49B48D404324B996"
+      }
+    },
+    {
+      "configuration": "Debug",
+      "kernel": {
+        "path": "artifacts/d7-analytic-branch-draft-3/kernel-debug-3/Cadoryx.Kernel.Occt.dll",
+        "sha256": "91A60648492C76D15687E38D8C1682EA6F27CC6B5BDFBCFB1E95B32C039C7DD5"
+      },
+      "build": {
+        "path": "artifacts/d7-analytic-branch-draft-3/build-debug-3-exit.json",
+        "sha256": "DEC75B67B745DEE0F3A296D55C147DEA8232E625337DC54E830B64CCAB7A0E32"
+      },
+      "log": {
+        "path": "artifacts/d7-analytic-branch-draft-3/build-debug-3.log",
+        "sha256": "C5434B0316055003AB714C459894F3766FD740B2289DF605B638381D4FF6FB1C"
+      }
+    }
+  ],
+  "missingWireSetFaceAPI": {
+    "method": "ShapeFactory.CreatePlanarFace(Shape,IReadOnlyList<Shape>)",
+    "CS1501Actual": true,
+    "sdk": "8.0.1-preview.86",
+    "source": {
+      "path": "artifacts/d7-native-wire-face-api-1/Probe.cs",
+      "sha256": "73535135981E852B402FAAE2663037AE4CB824EE31E1EB99ACCCDB7543B66E8F"
+    },
+    "project": {
+      "path": "artifacts/d7-native-wire-face-api-1/Probe.csproj",
+      "sha256": "87BA4C47813BC2459CD95726C0483D74A4AF472129F531E6FCB5E3EFBE594D54"
+    },
+    "build": {
+      "path": "artifacts/d7-native-wire-face-api-1/build.log",
+      "sha256": "3E498F17B9FF7FBFD4814BE525371FD94593DD57D4848ECDBD23E70743C8F9AE"
+    },
+    "terminal": {
+      "path": "artifacts/d7-native-wire-face-api-1/exit.json",
+      "sha256": "11164B748910C7165A0D787BD50CD1301ACDB32F4768EF86B6774B68DF86DF3B"
+    }
+  },
+  "existingGeneratedShapeReversedCompiledBoth": true,
+  "curveRepresentationsRebuiltOrNarrowed": false,
+  "recursiveIslandsIncluded": true,
+  "completeStartHelperWired": false,
+  "runtimeExecuted": false,
+  "geometryBudgetsChanged": false,
+  "productionApplied": false,
+  "SDKNativeLane": "SDK_OWNS_UNTIL_EXPLICIT_RETURN",
+  "original144And99TestsChanged": false,
+  "originalSTEP24DeferralChanged": false,
+  "AFComplete": false,
+  "G": "USER_DEFERRED",
+  "cleanup": false
+}
