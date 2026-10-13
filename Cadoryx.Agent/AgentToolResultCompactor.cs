@@ -36,14 +36,19 @@ internal static class AgentToolResultCompactor
 
             var continuation = AgentNativeReadContinuation.FromActualQuery(actualCall, root, items);
 
+            bool includeOmittedGeometryReads = true;
+            bool includeCompleteSourceItems = true;
             string Page(int retained)
             {
-                var page = root.EnumerateObject().ToDictionary(p => p.Name, p => (object)p.Value, StringComparer.Ordinal);
-                page["items"] = items[..retained];
+                var page = root.EnumerateObject().Where(p => p.Name != "items")
+                    .ToDictionary(p => p.Name, p => (object)p.Value, StringComparer.Ordinal);
                 if (retained < items.Length)
                 {
                     var context = new Dictionary<string, object>
                     {
+                    // Original hasMore describes the native query, while this
+                    // context still omits complete rows. Keep both explicit.
+                    ["hasMore"] = true, ["queryHasMore"] = root.GetProperty("hasMore"),
                     ["originalItemCount"] = items.Length, ["retainedItemCount"] = retained, ["omittedItemCount"] = items.Length - retained,
                     ["nextOffset"] = offset + retained,
                     ["message"] = retained == 0
@@ -54,22 +59,68 @@ internal static class AgentToolResultCompactor
                     {
                         context["toolName"] = actualCall!.Name;
                         context["nextRequest"] = continuation.NextRequest(offset + retained, limit, retained);
+                        // Discovery hints contain native-returned geometry labels and
+                        // result-page positions only. They are never topology selections.
+                        // Request the actual row before supplying a selection to an edit.
+                        var omittedRows = items.Select((item, position) => (item, position))
+                            .Where(row => row.position >= retained && row.item.TryGetProperty("selection", out var selection) &&
+                                selection.ValueKind == JsonValueKind.Object && row.item.TryGetProperty("geometry", out var geometry) &&
+                                geometry.ValueKind == JsonValueKind.String && geometry.GetString() is
+                                    ("GeneralFace" or "PlaneFace" or "CylinderFace" or "GeneralEdge" or "LineEdge" or "CircleEdge") &&
+                                row.item.TryGetProperty("kind",out var kind) && kind.ValueKind == JsonValueKind.String &&
+                                kind.GetString() == (geometry.GetString()!.EndsWith("Face",StringComparison.Ordinal) ? "Face" : "Edge"))
+                            .GroupBy(row => row.item.GetProperty("geometry").GetString(), StringComparer.Ordinal)
+                            .Take(8).Select(group => group.First())
+                            .ToArray();
+                        var omittedReads = omittedRows.Select(row => new { geometry = row.item.GetProperty("geometry").GetString(), offset = offset + row.position, limit = 1 }).ToArray();
                         context["requestNote"] = "Read-only continuation copied from this successful query. Not executed; stale identities still reject.";
+                        if (includeOmittedGeometryReads && omittedReads.Length > 0 && offset + items.Length <= 100001)
+                        {
+                            context["omittedGeometryReads"] = omittedReads;
+                            context["requestNote"] = "Read-only continuation copied from this successful query. Not executed; stale identities still reject. Omitted geometry hints are result positions, not selections: copy the nextRequest identity and use a hinted offset/limit to inspect a desired row before authoring.";
+                        }
+                        if (includeCompleteSourceItems && offset + items.Length <= 100001)
+                        {
+                            var prefixKinds = items[..retained].Where(item => item.TryGetProperty("geometry", out var geometry) && geometry.ValueKind == JsonValueKind.String)
+                                .Select(item => item.GetProperty("geometry").GetString()).ToHashSet(StringComparer.Ordinal);
+                            var additional = omittedRows.Where(row => !prefixKinds.Contains(row.item.GetProperty("geometry").GetString()))
+                                .Select(row => new { offset = offset + row.position, item = row.item }).ToArray();
+                            if (additional.Length > 0)
+                            {
+                                // Copy complete original rows from this actual query.
+                                // They supplement the prefix; they never select or author.
+                                context["completeSourceItems"] = additional;
+                                context["includedItemCount"] = retained + additional.Length;
+                                context["remainingOmittedItemCount"] = items.Length - retained - additional.Length;
+                                context["completeSourceItemsNote"] = "Additional complete rows from this same successful read, with original result positions. No selection or edit was executed. retainedItemCount/omittedItemCount describe only the contiguous items prefix; remainingOmittedItemCount accounts for these additional rows. nextRequest still starts after the prefix.";
+                            }
+                        }
                     }
                     page["contextPage"] = context;
                 }
+                // Put read navigation ahead of lengthy topology rows. Neither
+                // query identities nor original rows are rewritten or executed.
+                page["items"] = items[..retained];
                 return JsonSerializer.Serialize(page);
             }
             var full = Page(items.Length);
             if (full.Length <= maximumCharacters) { compacted = full; return true; }
             var smallest = Page(0);
             if (smallest.Length > maximumCharacters) return false;
-            var low = 0; var high = items.Length; compacted = smallest;
-            while (low < high)
+            // Discovery metadata must never prevent a complete original item
+            // from fitting. Prefer actual selectors over optional discovery hints.
+            if (items.Length > 0 && Page(1).Length > maximumCharacters)
+                includeCompleteSourceItems = false;
+            if (items.Length > 0 && Page(1).Length > maximumCharacters)
+                includeOmittedGeometryReads = false;
+            // Optional rows/hints disappear when their kind enters the prefix,
+            // so serialized sizes need not be monotonic. At most 50 candidates
+            // are possible; choose the longest complete prefix that fits.
+            compacted = smallest;
+            for (var retained = items.Length - 1; retained > 0; retained--)
             {
-                var middle = (low + high + 1) / 2; var candidate = Page(middle);
-                if (candidate.Length <= maximumCharacters) { low = middle; compacted = candidate; }
-                else high = middle - 1;
+                var candidate = Page(retained);
+                if (candidate.Length <= maximumCharacters) { compacted = candidate; break; }
             }
             return true;
         }

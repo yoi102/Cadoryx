@@ -1,0 +1,158 @@
+{
+  "recordedAt": "2026-10-13T07:43:13.950394+00:00",
+  "state": "INDEPENDENTLY_RECEIVED_MAPPED_SCALE_BOTH_REJECTED_STRICT_BREP_FAIL",
+  "upstreamAudit": {
+    "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-mapped-scale-static\\native-minimum\\run-c72fe1fca6cb44bc9765cdbb95fa7504\\independent-audit.json",
+    "sha256": "83A1AD86C44C4530E4AE18F78B5B7325D95094B87502233B41308968821A4BD1"
+  },
+  "allReferencedFilesVerified": [
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-mapped-scale-static\\native-minimum\\run-c72fe1fca6cb44bc9765cdbb95fa7504\\writer-1.jsonl",
+      "sha256": "BBE4FA82E4509C193FF556AED364C12E6B7817D6CCFEF840953B7106A3808248"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-mapped-scale-static\\native-minimum\\run-c72fe1fca6cb44bc9765cdbb95fa7504\\factor-1.tsv",
+      "sha256": "641049F9C37061FBF3425826AC63F6E497D536CF467B653035F4F765626E57CC"
+    },
+    {
+      "sha256": "4A8E519B33E1E1B29BB7B30090FFFA8AC90D166F3F0B10791302F31043634802",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-mapped-scale-static\\native-minimum\\run-c72fe1fca6cb44bc9765cdbb95fa7504\\case-1.json"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-mapped-scale-static\\native-minimum\\run-c72fe1fca6cb44bc9765cdbb95fa7504\\factor-1.step",
+      "sha256": "B0F160A9A30C036F6B622168B342545042514CAB0CA65A176EBDCE64029270F2"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-mapped-scale-static\\native-minimum\\run-c72fe1fca6cb44bc9765cdbb95fa7504\\reader-1.jsonl",
+      "sha256": "E725E6A0413DF2986F97B0B64B65B011707A98B2C38B0A8F32E9481BDC3D3A76"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-mapped-scale-static\\native-minimum\\run-c72fe1fca6cb44bc9765cdbb95fa7504\\writer-1024.jsonl",
+      "sha256": "6503D9E4199DC8412047B3AB6856896EBA558C41DC092F540A63BF17132E8DCD"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-mapped-scale-static\\native-minimum\\run-c72fe1fca6cb44bc9765cdbb95fa7504\\factor-1024.tsv",
+      "sha256": "13648348568E059705E3D2EE8CCD7496CB541BD0D88BCF251E071B605BC1B171"
+    },
+    {
+      "sha256": "ED43BF78E99FC6696E95ED78BFBAFC8EBAAA48AFBEAC1C3C8C7425E5DA912C14",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-mapped-scale-static\\native-minimum\\run-c72fe1fca6cb44bc9765cdbb95fa7504\\case-1024.json"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-mapped-scale-static\\native-minimum\\run-c72fe1fca6cb44bc9765cdbb95fa7504\\factor-1024.step",
+      "sha256": "BDC312C4C6624913E085DD246B25FA3B679680203E20C610BB4A9C477A1ABD5D"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-mapped-scale-static\\native-minimum\\run-c72fe1fca6cb44bc9765cdbb95fa7504\\reader-1024.jsonl",
+      "sha256": "CA2CF36F4C0CF051985D2E0662553B94B7A6AD3E4C72CA18E17D9FF05C8A2FB3"
+    },
+    {
+      "sha256": "C17A01B9169868545E2FA912874B944202F70CA23F47815798E4ECC5DD9A05F0",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-mapped-scale-static\\native-minimum\\run-c72fe1fca6cb44bc9765cdbb95fa7504\\MappedScaleWriter.exe"
+    },
+    {
+      "sha256": "C2D94DEA754C5C842D013371BCD8A7C3EBC05536549A2CA6D7245D80339391C3",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-mapped-scale-static\\native-minimum\\run-c72fe1fca6cb44bc9765cdbb95fa7504\\MappedScaleReader.exe"
+    },
+    {
+      "sha256": "AD9889AEA0E97692E6343B0DEA0FA1D00D43CC62A8A58DB10202C77C751F39D7",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-mapped-scale-static\\native-minimum\\run-c72fe1fca6cb44bc9765cdbb95fa7504\\both-result.json"
+    },
+    {
+      "sha256": "FC72ACF3F64B3027B679D9910CD7E0363A9838185D27AE3E8534D63504622A8D",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\DataExchange\\OcctSharp.ExactStepOffsets.Generated.cpp"
+    },
+    {
+      "sha256": "C52EF795DF48FCCDEA30517F5E9163698FAA4CFF7E9F63C6DA8BD049D9D770D0",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\tools\\ExactStepMappedScaleProbe\\audit-minimum.ps1"
+    },
+    {
+      "sha256": "0F8BD009C63B512E4BFD259515712FF937E798625C1B4DCE728F3138E635F9CA",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\tools\\ExactStepMappedScaleProbe\\CMakeLists.txt"
+    },
+    {
+      "sha256": "BD13C76CDD673E2C1E9339E5DAB5584FB3D09EC90450DEFC1E8470EBFCACAA73",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\tools\\ExactStepMappedScaleProbe\\common.hxx"
+    },
+    {
+      "sha256": "8708A1D93A6C0985D820166930E98B0A60C0F4B681B1115281C2D17E87C81698",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\tools\\ExactStepMappedScaleProbe\\MappedScaleReader.cpp"
+    },
+    {
+      "sha256": "8B9098CCC083186936FC9064DC5C18B08C4BDBFEB9919F8BF1D65FCA12B43170",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\tools\\ExactStepMappedScaleProbe\\MappedScaleWriter.cpp"
+    },
+    {
+      "sha256": "631C935949D6E79D88C0D01A754C7975FA653A9B620C23A82C1C86EAB0CC886A",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\tools\\ExactStepMappedScaleProbe\\run-minimum.ps1"
+    }
+  ],
+  "cases": [
+    {
+      "factor": 1,
+      "summary": {
+        "kind": "summary",
+        "factor": 1,
+        "strictOriginalBrep": false,
+        "topologySame": true,
+        "authorAndImportKept": true,
+        "edgeUses": 24,
+        "continuousAuthorCurveMax": 0,
+        "sampledSurfaceMax": 0,
+        "physical101PcurveMax": 6.993286966934169e-07,
+        "continuousPhysicalPcurveMax": 7.729902040298176e-07,
+        "rawReportedToleranceChanged": true,
+        "maxEffectiveToleranceIncrease": 2.2460026467606993e-07,
+        "sourceVolume": 139.9382147084063,
+        "targetVolume": 139.93821469785752,
+        "sourceVolumeEps": 2.810631905550909e-16,
+        "targetVolumeEps": 4.554698445531046e-12,
+        "sourceVolumeCalibrated": false,
+        "volumeDelta": 1.0548774298513308e-08,
+        "areaDelta": 2.1097520175317186e-08,
+        "physicalChecksPassed": false,
+        "gate": 1e-07,
+        "continuousKernelIsCertifiedBound": false,
+        "standardScaleSemanticsIndependentlyProved": false,
+        "productAccepted": false
+      }
+    },
+    {
+      "factor": 1024,
+      "summary": {
+        "kind": "summary",
+        "factor": 1024,
+        "strictOriginalBrep": false,
+        "topologySame": true,
+        "authorAndImportKept": true,
+        "edgeUses": 24,
+        "continuousAuthorCurveMax": 0,
+        "sampledSurfaceMax": 0,
+        "physical101PcurveMax": 6.265368696855181e-10,
+        "continuousPhysicalPcurveMax": 1.4236254946239222e-09,
+        "rawReportedToleranceChanged": true,
+        "maxEffectiveToleranceIncrease": 0,
+        "sourceVolume": 139.9382147084063,
+        "targetVolume": 139.9382147083555,
+        "sourceVolumeEps": 2.810631905550909e-16,
+        "targetVolumeEps": 1.2709432621651352e-15,
+        "sourceVolumeCalibrated": false,
+        "volumeDelta": 5.078959475213196e-11,
+        "areaDelta": 1.0157918950426392e-10,
+        "physicalChecksPassed": false,
+        "gate": 1e-07,
+        "continuousKernelIsCertifiedBound": false,
+        "standardScaleSemanticsIndependentlyProved": false,
+        "productAccepted": false
+      }
+    }
+  ],
+  "stockModuleCountsPerWriterReader": 32,
+  "originalStrictBrepGateClosed": false,
+  "original24ApplicationTestsRerun": false,
+  "generatorOrPublicSdkChanged": false,
+  "localNugetCreated": false,
+  "AFComplete": false,
+  "cleanup": false,
+  "G": "USER_DEFERRED"
+}

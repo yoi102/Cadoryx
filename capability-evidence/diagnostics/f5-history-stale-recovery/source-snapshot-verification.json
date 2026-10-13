@@ -1,0 +1,41 @@
+{
+  "recordedAt": "2026-10-13T08:01:16.885403+00:00",
+  "originalVerification": {
+    "path": "capability-evidence/diagnostics/f5-history-stale-recovery/verification.json",
+    "sha256": "D7C823D062DF9063C383FFCD7C784F610D8789332A752BCAE11DDFE2F4A885D5"
+  },
+  "state": "PREINTEGRATION_PRODUCTION261_SOURCES_FROZEN_AFTER_DEVELOPMENT_MERGE",
+  "sources": [
+    {
+      "originalReference": {
+        "path": "Cadoryx.ViewModels/Toolboxes/CadAgentHistoryTools.cs",
+        "sha256": "DE478BD2FE180B84784A29B404801BEAFCF2121BDD3B9C5A2E47413A22E9A353"
+      },
+      "snapshot": {
+        "path": "capability-evidence/diagnostics/f5-history-stale-recovery/CadAgentHistoryTools.cs.txt",
+        "sha256": "DE478BD2FE180B84784A29B404801BEAFCF2121BDD3B9C5A2E47413A22E9A353"
+      }
+    },
+    {
+      "originalReference": {
+        "path": "Cadoryx.ViewModels/Toolboxes/CadAuthoringInspection.cs",
+        "sha256": "EE2EAC47FFE329EC11722A9A7490D193FBB07330D5314A95D17630431652568A"
+      },
+      "snapshot": {
+        "path": "capability-evidence/diagnostics/f5-history-stale-recovery/CadAuthoringInspection.cs.txt",
+        "sha256": "EE2EAC47FFE329EC11722A9A7490D193FBB07330D5314A95D17630431652568A"
+      }
+    },
+    {
+      "originalReference": {
+        "path": "Cadoryx.Tests/HistoryCursorFeedbackTests.cs",
+        "sha256": "D33C090ACC8CCFD5C1A2B4E6CC21D5E2E0EF13E7307DBD368101545B7FD68FAA"
+      },
+      "snapshot": {
+        "path": "capability-evidence/diagnostics/f5-history-stale-recovery/HistoryCursorFeedbackTests.cs.txt",
+        "sha256": "D33C090ACC8CCFD5C1A2B4E6CC21D5E2E0EF13E7307DBD368101545B7FD68FAA"
+      }
+    }
+  ],
+  "reason": "The complete candidate also brings previously validated inspection messages. Preserve the exact production-before-integration source tested by the earlier261 results; current development input identity is recorded separately."
+}

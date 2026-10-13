@@ -1,4 +1,5 @@
 using Cadoryx.Db;
+using System.Collections.Immutable;
 using Cadoryx.Kernel.Abstractions;
 using OcctSharp;
 using DocumentSnapshot=Cadoryx.Db.DocumentSnapshot;
@@ -78,19 +79,22 @@ public sealed partial class OcctGeometryKernel:IFaceEditResolver
         ConfirmFaceFeatureMap(map,recipe.Faces);var members=source.GetFaces();
         try
         {
-            var faces=recipe.Faces.Select(f=>ExactFaceMember(source,members,f.FullTopologyIndex)).ToArray();
-            using var built=FeatureModeling.Defeature(source,faces,FaceEditOptions);
-            if(!built.Diagnostics.Succeeded)throw new CadValidationException("Native face removal did not complete: "+built.Diagnostics.StageMessage);
-            // These indices identify supplied arguments (source=0, selected faces=1..N),
-            // not slots in the source topology map. A changed root fingerprint alone
-            // cannot prove that every requested face was removed.
-            for(int i=0;i<faces.Length;i++)
-                if(!built.DeletedSourceIndices.Contains(i+1))throw new CadValidationException("Native history did not confirm removal of every selected face; partial and no-op results are rejected.");
+            foreach(var face in recipe.Faces)_=ExactFaceMember(source,members,face.FullTopologyIndex);
+            var selections=recipe.Faces.Select(face=>map.Select(face.FullTopologyIndex)).ToArray();
+            using var built=DefeatureHistoryModeling.Build(map,selections,FaceEditOptions.UnifyResult);
+            if(!built.Diagnostics.AlgorithmDone||!built.Diagnostics.ShapeIsValid)
+                throw new CadValidationException("Native face removal did not complete: "+built.Diagnostics.Message);
+            var removed=recipe.Faces.Select(face=>face.FullTopologyIndex).ToImmutableArray();
+            foreach(var index in removed)
+            {
+                var rows=built.History.Where(row=>row.Source is {} origin&&origin.ArgumentIndex==0&&origin.TopologyIndex==index).ToArray();
+                if(rows.Length==0||rows.Any(row=>row.Kind!=LocalFeatureHistoryKind.Deleted||row.Shape is not null||row.ResultTopologyIndex is not null))
+                    throw new CadValidationException("Native full-subshape history did not confirm removal of every selected face; partial and no-op results are rejected.");
+            }
             using var valid=CopyOffsetSolid(built.RequireShape(),token);using var final=RepairSnapshot.Create(valid);
             if(final.Fingerprint==map.Fingerprint)throw new CadValidationException("Face removal produced no verified geometric change.");
             using(var unchanged=RepairSnapshot.Create(source))if(unchanged.Fingerprint!=map.Fingerprint)throw new CadValidationException("Native face removal mutated its source representation.");
-            using var stored=OcctGeometryBridge.StoreShape(valid,assets);token.ThrowIfCancellationRequested();
-            return new(stored.Geometry,GeometryAssetLease.Acquire(stored.Geometry,assets),[new("HISTORY.UNSUPPORTED","Defeaturing reports aggregate argument history without a full source-subshape locator; select final topology explicitly."),new("STYLE.UNSUPPORTED","Removed and healed faces have no verified source style correspondence.")]);
+            return FinishLocal(recipe.Source,map,built,assets,token,defeatureEvidence:new(removed));
         }
         finally{foreach(var member in members)member.Dispose();}
     }

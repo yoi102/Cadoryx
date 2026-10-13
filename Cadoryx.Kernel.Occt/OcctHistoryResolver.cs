@@ -107,7 +107,7 @@ public sealed partial class OcctGeometryKernel : ITopologyHistoryResolver,IExact
                     var feature=snapshot.Features[step.Feature];var history=feature.TopologyHistory;
                     HistoryResolution Stop(HistoryResolutionStatus status,string? code=null)=>Annotate(HistoryFailure(status,code),feature.Id);
                     if(feature.IsStale)return Stop(HistoryResolutionStatus.Stale);
-                    if(feature.Recipe is not (LocalFeatureRecipe or HistoryFilletRecipe or HistoryChamferRecipe or ContourLocalRecipe or PlanarPushPullRecipe or BooleanRecipe or DraftRecipe or HoleRecipe or HolePatternRecipe {Layout.IncludeSource:true} or RepetitionRecipe)||history is null)return Stop(HistoryResolutionStatus.Unsupported,"MISSING_HISTORY");
+                    if(feature.Recipe is not (LocalFeatureRecipe or HistoryFilletRecipe or HistoryChamferRecipe or ContourLocalRecipe or PlanarPushPullRecipe or DefeatureRecipe or BooleanRecipe or DraftRecipe or HoleRecipe or HolePatternRecipe {Layout.IncludeSource:true} or RepetitionRecipe)||history is null)return Stop(HistoryResolutionStatus.Unsupported,"MISSING_HISTORY");
                     if(history.ResultRevision!=feature.Result.Revision||history.ResultAsset!=feature.Result.AssetId)return Stop(HistoryResolutionStatus.Stale);
                     try{history.ValidateFor(feature);}
                     catch(CadValidationException){return Stop(HistoryResolutionStatus.Unsupported,"INVALID_HISTORY");}
@@ -115,6 +115,7 @@ public sealed partial class OcctGeometryKernel : ITopologyHistoryResolver,IExact
                     bool multicopy=history.SchemaVersion==4;
                     bool adapterVerified=multicopy?IsRepetitionHistoryAdapter(history.AdapterVersion):
                         composed?history.AdapterVersion==ComposedHoleHistoryAdapterVersion:
+                        feature.Recipe is DefeatureRecipe?history.AdapterVersion==DefeatureHistoryAdapterVersion:
                         feature.Recipe is BooleanRecipe?history.AdapterVersion==BooleanHistoryAdapterVersion:
                         history.AdapterVersion==HistoryAdapterVersion||history.AdapterVersion==PreviousAxisHistoryAdapterVersion||history.AdapterVersion==LegacyHistoryAdapterVersion;
                     if(!adapterVerified)return Stop(HistoryResolutionStatus.Unsupported,"UNVERIFIED_ADAPTER");
@@ -122,7 +123,7 @@ public sealed partial class OcctGeometryKernel : ITopologyHistoryResolver,IExact
                     mapCount+=1+history.ArgumentCount-(previous is null?0:1);
                     // The legacy semantic entrance must also replay a composed map.
                     // A final flattened map alone cannot prove its internal stages.
-                    bool replayRequired=requireReplay||composed||multicopy;
+                    bool replayRequired=requireReplay||composed||multicopy||feature.Recipe is DefeatureRecipe;
                     if(replayRequired)mapCount+=multicopy?4*((RepetitionRecipe)feature.Recipe).Count:
                         composed?8*DrillingStageCount(feature.Recipe):history.ArgumentCount+2;
                     slots+=history.ResultCount;
@@ -210,6 +211,7 @@ public sealed partial class OcctGeometryKernel : ITopologyHistoryResolver,IExact
             HistoryChamferRecipe chamfer=>EvaluateHistoryChamfer(chamfer,assets,token),
             ContourLocalRecipe contour=>EvaluateContourLocal(contour,assets,token),
             PlanarPushPullRecipe pushPull=>EvaluatePlanarPushPull(pushPull,assets,token),
+            DefeatureRecipe defeature=>EvaluateDefeature(defeature,assets,token),
             HoleRecipe hole=>EvaluateHole(hole,assets,token),
             HolePatternRecipe {Layout.IncludeSource:true} pattern=>EvaluateHolePattern(pattern,assets,token),
             DraftRecipe draft=>EvaluateDraft(draft,assets,token),

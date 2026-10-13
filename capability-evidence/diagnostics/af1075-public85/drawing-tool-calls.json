@@ -1,0 +1,112 @@
+[
+  {
+    "Name": "cad_workspace",
+    "ArgumentsJson": "{\u0022action\u0022:\u0022list\u0022,\u0022expected\u0022:{\u0022workspaceStateId\u0022:\u002200000000-0000-0000-0000-000000000000\u0022,\u0022activeSessionId\u0022:null,\u0022documentId\u0022:null,\u0022stateId\u0022:null}}",
+    "result": "{\u0022success\u0022:false,\u0022message\u0022:\u0022Workspace authoring is unavailable in this context.\u0022}"
+  },
+  {
+    "Name": "cad_status",
+    "ArgumentsJson": "{}",
+    "result": "{\u0022active\u0022:true,\u0022name\u0022:\u0022Synthetic drawing provider\u0022,\u0022documentId\u0022:\u00226c4855d6-a9f4-4c93-859d-c36d56d1d9ba\u0022,\u0022stateId\u0022:\u00225206918c-e5c8-4c57-825d-700114ceebb3\u0022,\u0022bodies\u0022:1,\u0022parts\u0022:1,\u0022features\u0022:2,\u0022sketches\u0022:0,\u0022drawings\u0022:0,\u0022selected\u0022:0,\u0022commands\u0022:[\u0022HISTORY SUPPRESS|RESTORE feature-id revision | REORDER part-id feature-ids... | ROLLBACK part-id position | END\u0022,\u0022DATUM CONTRACT | {action-specific JSON} | DELETE|DETACH id revision | BIND_SKETCH|UNBIND_SKETCH sketch-id sketch-revision datum-id datum-revision | BIND_WORKPLANE|UNBIND_WORKPLANE datum-id datum-revision exact-path | SOURCES feature-id revision [offset limit]\u0022,\u0022MODEL {action,partId/name or id/revision,author JSON} | CONTRACT recipe-type [offset limit]\u0022,\u0022DRAWING CONTRACT [type] | DRAWING {action,type,sheetId,id,author}\u0022,\u0022FILE CONTRACT | {action:save/export/report/pdf/template_export,path,overwrite?,options?,id?}\u0022,\u0022MATERIAL {action-specific JSON}\u0022,\u0022WORKSPACE LIST | CONTRACT | {action:new/open/activate,name?/path?/target?}\u0022,\u0022SKETCH_REGION_SOURCES {action:reselect_region_sources,sketchId,revision,id,sources}\u0022,\u0022SKETCH_OFFSET {action,sketchId,revision,seeds,distanceMm,optional join}\u0022,\u0022SKETCH_FINITE_CONTACT {action-specific JSON}\u0022,\u0022SKETCH_CURVATURE {action,id,revision,curveA,curveB,optional constraintId/enabled}\u0022,\u0022SKETCH_CONTACT {action,id,revision,curveA,curveB,branch,optional constraintId/enabled}\u0022,\u0022PARAMETERS [offset limit]\u0022,\u0022BINDINGS [offset limit]\u0022,\u0022TARGETS [offset limit]\u0022,\u0022DATUMS [offset limit]\u0022,\u0022DATUM_BINDINGS [offset limit]\u0022,\u0022RECIPES [offset limit]\u0022,\u0022SKETCH_GEOMETRY [offset limit]\u0022,\u0022ASSEMBLY_PATTERNS [offset limit]\u0022,\u0022TIMELINE part-id [offset limit]\u0022,\u0022PARAM SET NEW|id name SCALAR|LENGTH|ANGLE \\u0022expression\\u0022 | DELETE id | BIND parameter-id kind owner-id property [companion-id [index]] | UNBIND binding-id | RECOMPUTE\u0022,\u0022HELP [command]\u0022,\u0022CLEAR\u0022,\u0022STATUS\u0022,\u0022STATS\u0022,\u0022LIST\u0022,\u0022FIND name\u0022,\u0022SELECTION\u0022,\u0022PARTS\u0022,\u0022FEATURES\u0022,\u0022LAYERS\u0022,\u0022MATERIALS\u0022,\u0022SKETCHES\u0022,\u0022DRAWINGS\u0022,\u0022OCCURRENCES\u0022,\u0022SELECT exact-name\u0022,\u0022UNDO\u0022,\u0022REDO\u0022,\u0022FIT\u0022,\u0022VIEW TOP|FRONT|RIGHT|BACK|LEFT|BOTTOM|ISO\u0022,\u0022DESELECT\u0022,\u0022FOCUS\u0022,\u0022ISOLATE\u0022,\u0022HIDE\u0022,\u0022SHOWALL\u0022,\u0022DISPLAY [SHADED|WIREFRAME]\u0022,\u0022GRID [ON|OFF|SPACING mm|SNAP ON|OFF]\u0022,\u0022TOOL BOX|CYLINDER\u0022,\u0022CANCEL\u0022,\u0022BOX name width depth height [x y z]\u0022,\u0022CYLINDER name radius height [x y z]\u0022]}"
+  },
+  {
+    "Name": "cad_inspect",
+    "ArgumentsJson": "{\u0022area\u0022:\u0022drawings\u0022}",
+    "result": "{\u0022success\u0022:true,\u0022documentId\u0022:\u00226c4855d6-a9f4-4c93-859d-c36d56d1d9ba\u0022,\u0022stateId\u0022:\u00225206918c-e5c8-4c57-825d-700114ceebb3\u0022,\u0022area\u0022:\u0022drawings\u0022,\u0022total\u0022:0,\u0022offset\u0022:0,\u0022limit\u0022:50,\u0022hasMore\u0022:false,\u0022items\u0022:[]}"
+  },
+  {
+    "Name": "cad_drawing",
+    "ArgumentsJson": "{\u0022action\u0022:\u0022create\u0022,\u0022documentId\u0022:\u00226c4855d6-a9f4-4c93-859d-c36d56d1d9ba\u0022,\u0022stateId\u0022:\u00225206918c-e5c8-4c57-825d-700114ceebb3\u0022,\u0022name\u0022:\u0022Provider Drawing\u0022,\u0022authorJson\u0022:\u0022{\\\u0022type\\\u0022:\\\u0022sheet\\\u0022,\\\u0022widthMm\\\u0022:297,\\\u0022heightMm\\\u0022:210,\\\u0022unit\\\u0022:\\\u0022Millimeter\\\u0022,\\\u0022title\\\u0022:\\\u0022Provider Drawing\\\u0022,\\\u0022standard\\\u0022:\\\u0022ISO\\\u0022}\u0022}",
+    "result": "{\u0022success\u0022:false,\u0022message\u0022:\u0022Invalid drawing arguments for action=create. Unknown or duplicate: name. contract accepts only action/type; other actions require exact documentId/stateId from cad_status. inspect requires type, documentId and stateId together. Outer name is only save_template; create/edit names belong in authorJson.\u0022,\u0022missingOrInvalid\u0022:[],\u0022unexpectedArguments\u0022:[\u0022name\u0022],\u0022allowedArguments\u0022:[\u0022action\u0022,\u0022documentId\u0022,\u0022stateId\u0022,\u0022type\u0022,\u0022sheetId\u0022,\u0022id\u0022,\u0022authorJson\u0022]}"
+  },
+  {
+    "Name": "cad_drawing",
+    "ArgumentsJson": "{\u0022action\u0022:\u0022create\u0022,\u0022documentId\u0022:\u00226c4855d6-a9f4-4c93-859d-c36d56d1d9ba\u0022,\u0022stateId\u0022:\u00225206918c-e5c8-4c57-825d-700114ceebb3\u0022,\u0022authorJson\u0022:\u0022{\\\u0022type\\\u0022:\\\u0022sheet\\\u0022,\\\u0022name\\\u0022:\\\u0022Provider Drawing\\\u0022,\\\u0022widthMm\\\u0022:297,\\\u0022heightMm\\\u0022:210,\\\u0022unit\\\u0022:\\\u0022Millimeter\\\u0022,\\\u0022title\\\u0022:\\\u0022Provider Drawing\\\u0022,\\\u0022standard\\\u0022:\\\u0022ISO\\\u0022}\u0022}",
+    "result": "{\u0022success\u0022:false,\u0022message\u0022:\u0022Missing drawing object type.\u0022}"
+  },
+  {
+    "Name": "cad_drawing",
+    "ArgumentsJson": "{\u0022action\u0022:\u0022create\u0022,\u0022documentId\u0022:\u00226c4855d6-a9f4-4c93-859d-c36d56d1d9ba\u0022,\u0022stateId\u0022:\u00225206918c-e5c8-4c57-825d-700114ceebb3\u0022,\u0022type\u0022:\u0022sheet\u0022,\u0022authorJson\u0022:\u0022{\\\u0022name\\\u0022:\\\u0022Provider Drawing\\\u0022,\\\u0022widthMm\\\u0022:297,\\\u0022heightMm\\\u0022:210,\\\u0022unit\\\u0022:\\\u0022Millimeter\\\u0022,\\\u0022title\\\u0022:\\\u0022Provider Drawing\\\u0022,\\\u0022standard\\\u0022:\\\u0022ISO\\\u0022}\u0022}",
+    "result": "{\u0022success\u0022:true,\u0022action\u0022:\u0022create\u0022,\u0022changed\u0022:true,\u0022id\u0022:\u002289012a39-dff5-4d71-9159-43670f03dadf\u0022,\u0022documentId\u0022:\u00226c4855d6-a9f4-4c93-859d-c36d56d1d9ba\u0022,\u0022stateId\u0022:\u00227c3a5f15-f0c2-4d0d-a655-d8749d1a947e\u0022,\u0022createdIds\u0022:[\u002289012a39-dff5-4d71-9159-43670f03dadf\u0022]}"
+  },
+  {
+    "Name": "cad_status",
+    "ArgumentsJson": "{}",
+    "result": "{\u0022active\u0022:true,\u0022name\u0022:\u0022Synthetic drawing provider\u0022,\u0022documentId\u0022:\u00226c4855d6-a9f4-4c93-859d-c36d56d1d9ba\u0022,\u0022stateId\u0022:\u00227c3a5f15-f0c2-4d0d-a655-d8749d1a947e\u0022,\u0022bodies\u0022:1,\u0022parts\u0022:1,\u0022features\u0022:2,\u0022sketches\u0022:0,\u0022drawings\u0022:1,\u0022selected\u0022:0,\u0022commands\u0022:[\u0022HISTORY SUPPRESS|RESTORE feature-id revision | REORDER part-id feature-ids... | ROLLBACK part-id position | END\u0022,\u0022DATUM CONTRACT | {action-specific JSON} | DELETE|DETACH id revision | BIND_SKETCH|UNBIND_SKETCH sketch-id sketch-revision datum-id datum-revision | BIND_WORKPLANE|UNBIND_WORKPLANE datum-id datum-revision exact-path | SOURCES feature-id revision [offset limit]\u0022,\u0022MODEL {action,partId/name or id/revision,author JSON} | CONTRACT recipe-type [offset limit]\u0022,\u0022DRAWING CONTRACT [type] | DRAWING {action,type,sheetId,id,author}\u0022,\u0022FILE CONTRACT | {action:save/export/report/pdf/template_export,path,overwrite?,options?,id?}\u0022,\u0022MATERIAL {action-specific JSON}\u0022,\u0022WORKSPACE LIST | CONTRACT | {action:new/open/activate,name?/path?/target?}\u0022,\u0022SKETCH_REGION_SOURCES {action:reselect_region_sources,sketchId,revision,id,sources}\u0022,\u0022SKETCH_OFFSET {action,sketchId,revision,seeds,distanceMm,optional join}\u0022,\u0022SKETCH_FINITE_CONTACT {action-specific JSON}\u0022,\u0022SKETCH_CURVATURE {action,id,revision,curveA,curveB,optional constraintId/enabled}\u0022,\u0022SKETCH_CONTACT {action,id,revision,curveA,curveB,branch,optional constraintId/enabled}\u0022,\u0022PARAMETERS [offset limit]\u0022,\u0022BINDINGS [offset limit]\u0022,\u0022TARGETS [offset limit]\u0022,\u0022DATUMS [offset limit]\u0022,\u0022DATUM_BINDINGS [offset limit]\u0022,\u0022RECIPES [offset limit]\u0022,\u0022SKETCH_GEOMETRY [offset limit]\u0022,\u0022ASSEMBLY_PATTERNS [offset limit]\u0022,\u0022TIMELINE part-id [offset limit]\u0022,\u0022PARAM SET NEW|id name SCALAR|LENGTH|ANGLE \\u0022expression\\u0022 | DELETE id | BIND parameter-id kind owner-id property [companion-id [index]] | UNBIND binding-id | RECOMPUTE\u0022,\u0022HELP [command]\u0022,\u0022CLEAR\u0022,\u0022STATUS\u0022,\u0022STATS\u0022,\u0022LIST\u0022,\u0022FIND name\u0022,\u0022SELECTION\u0022,\u0022PARTS\u0022,\u0022FEATURES\u0022,\u0022LAYERS\u0022,\u0022MATERIALS\u0022,\u0022SKETCHES\u0022,\u0022DRAWINGS\u0022,\u0022OCCURRENCES\u0022,\u0022SELECT exact-name\u0022,\u0022UNDO\u0022,\u0022REDO\u0022,\u0022FIT\u0022,\u0022VIEW TOP|FRONT|RIGHT|BACK|LEFT|BOTTOM|ISO\u0022,\u0022DESELECT\u0022,\u0022FOCUS\u0022,\u0022ISOLATE\u0022,\u0022HIDE\u0022,\u0022SHOWALL\u0022,\u0022DISPLAY [SHADED|WIREFRAME]\u0022,\u0022GRID [ON|OFF|SPACING mm|SNAP ON|OFF]\u0022,\u0022TOOL BOX|CYLINDER\u0022,\u0022CANCEL\u0022,\u0022BOX name width depth height [x y z]\u0022,\u0022CYLINDER name radius height [x y z]\u0022]}"
+  },
+  {
+    "Name": "cad_inspect",
+    "ArgumentsJson": "{\u0022area\u0022:\u0022drawings\u0022}",
+    "result": "{\u0022success\u0022:true,\u0022documentId\u0022:\u00226c4855d6-a9f4-4c93-859d-c36d56d1d9ba\u0022,\u0022stateId\u0022:\u00227c3a5f15-f0c2-4d0d-a655-d8749d1a947e\u0022,\u0022area\u0022:\u0022drawings\u0022,\u0022total\u0022:1,\u0022offset\u0022:0,\u0022limit\u0022:50,\u0022hasMore\u0022:false,\u0022items\u0022:[{\u0022id\u0022:\u002289012a39-dff5-4d71-9159-43670f03dadf\u0022,\u0022name\u0022:\u0022Provider Drawing\u0022,\u0022widthMm\u0022:297,\u0022heightMm\u0022:210,\u0022unit\u0022:\u0022Millimeter\u0022,\u0022viewTotal\u0022:0,\u0022dimensionTotal\u0022:0,\u0022views\u0022:[],\u0022dimensions\u0022:[]}]}"
+  },
+  {
+    "Name": "cad_status",
+    "ArgumentsJson": "{}",
+    "result": "{\u0022active\u0022:true,\u0022name\u0022:\u0022Synthetic drawing provider\u0022,\u0022documentId\u0022:\u00226c4855d6-a9f4-4c93-859d-c36d56d1d9ba\u0022,\u0022stateId\u0022:\u00227c3a5f15-f0c2-4d0d-a655-d8749d1a947e\u0022,\u0022bodies\u0022:1,\u0022parts\u0022:1,\u0022features\u0022:2,\u0022sketches\u0022:0,\u0022drawings\u0022:1,\u0022selected\u0022:0,\u0022commands\u0022:[\u0022HISTORY SUPPRESS|RESTORE feature-id revision | REORDER part-id feature-ids... | ROLLBACK part-id position | END\u0022,\u0022DATUM CONTRACT | {action-specific JSON} | DELETE|DETACH id revision | BIND_SKETCH|UNBIND_SKETCH sketch-id sketch-revision datum-id datum-revision | BIND_WORKPLANE|UNBIND_WORKPLANE datum-id datum-revision exact-path | SOURCES feature-id revision [offset limit]\u0022,\u0022MODEL {action,partId/name or id/revision,author JSON} | CONTRACT recipe-type [offset limit]\u0022,\u0022DRAWING CONTRACT [type] | DRAWING {action,type,sheetId,id,author}\u0022,\u0022FILE CONTRACT | {action:save/export/report/pdf/template_export,path,overwrite?,options?,id?}\u0022,\u0022MATERIAL {action-specific JSON}\u0022,\u0022WORKSPACE LIST | CONTRACT | {action:new/open/activate,name?/path?/target?}\u0022,\u0022SKETCH_REGION_SOURCES {action:reselect_region_sources,sketchId,revision,id,sources}\u0022,\u0022SKETCH_OFFSET {action,sketchId,revision,seeds,distanceMm,optional join}\u0022,\u0022SKETCH_FINITE_CONTACT {action-specific JSON}\u0022,\u0022SKETCH_CURVATURE {action,id,revision,curveA,curveB,optional constraintId/enabled}\u0022,\u0022SKETCH_CONTACT {action,id,revision,curveA,curveB,branch,optional constraintId/enabled}\u0022,\u0022PARAMETERS [offset limit]\u0022,\u0022BINDINGS [offset limit]\u0022,\u0022TARGETS [offset limit]\u0022,\u0022DATUMS [offset limit]\u0022,\u0022DATUM_BINDINGS [offset limit]\u0022,\u0022RECIPES [offset limit]\u0022,\u0022SKETCH_GEOMETRY [offset limit]\u0022,\u0022ASSEMBLY_PATTERNS [offset limit]\u0022,\u0022TIMELINE part-id [offset limit]\u0022,\u0022PARAM SET NEW|id name SCALAR|LENGTH|ANGLE \\u0022expression\\u0022 | DELETE id | BIND parameter-id kind owner-id property [companion-id [index]] | UNBIND binding-id | RECOMPUTE\u0022,\u0022HELP [command]\u0022,\u0022CLEAR\u0022,\u0022STATUS\u0022,\u0022STATS\u0022,\u0022LIST\u0022,\u0022FIND name\u0022,\u0022SELECTION\u0022,\u0022PARTS\u0022,\u0022FEATURES\u0022,\u0022LAYERS\u0022,\u0022MATERIALS\u0022,\u0022SKETCHES\u0022,\u0022DRAWINGS\u0022,\u0022OCCURRENCES\u0022,\u0022SELECT exact-name\u0022,\u0022UNDO\u0022,\u0022REDO\u0022,\u0022FIT\u0022,\u0022VIEW TOP|FRONT|RIGHT|BACK|LEFT|BOTTOM|ISO\u0022,\u0022DESELECT\u0022,\u0022FOCUS\u0022,\u0022ISOLATE\u0022,\u0022HIDE\u0022,\u0022SHOWALL\u0022,\u0022DISPLAY [SHADED|WIREFRAME]\u0022,\u0022GRID [ON|OFF|SPACING mm|SNAP ON|OFF]\u0022,\u0022TOOL BOX|CYLINDER\u0022,\u0022CANCEL\u0022,\u0022BOX name width depth height [x y z]\u0022,\u0022CYLINDER name radius height [x y z]\u0022]}"
+  },
+  {
+    "Name": "cad_inspect",
+    "ArgumentsJson": "{\u0022area\u0022:\u0022drawings\u0022,\u0022limit\u0022:10}",
+    "result": "{\u0022success\u0022:true,\u0022documentId\u0022:\u00226c4855d6-a9f4-4c93-859d-c36d56d1d9ba\u0022,\u0022stateId\u0022:\u00227c3a5f15-f0c2-4d0d-a655-d8749d1a947e\u0022,\u0022area\u0022:\u0022drawings\u0022,\u0022total\u0022:1,\u0022offset\u0022:0,\u0022limit\u0022:10,\u0022hasMore\u0022:false,\u0022items\u0022:[{\u0022id\u0022:\u002289012a39-dff5-4d71-9159-43670f03dadf\u0022,\u0022name\u0022:\u0022Provider Drawing\u0022,\u0022widthMm\u0022:297,\u0022heightMm\u0022:210,\u0022unit\u0022:\u0022Millimeter\u0022,\u0022viewTotal\u0022:0,\u0022dimensionTotal\u0022:0,\u0022views\u0022:[],\u0022dimensions\u0022:[]}]}"
+  },
+  {
+    "Name": "cad_edit",
+    "ArgumentsJson": "{\u0022action\u0022:\u0022add_drawing_view\u0022,\u0022documentId\u0022:\u00226c4855d6-a9f4-4c93-859d-c36d56d1d9ba\u0022,\u0022stateId\u0022:\u00227c3a5f15-f0c2-4d0d-a655-d8749d1a947e\u0022,\u0022sheetId\u0022:\u002289012a39-dff5-4d71-9159-43670f03dadf\u0022,\u0022kind\u0022:\u0022Top\u0022,\u0022name\u0022:\u0022Top\u0022,\u0022centerX\u0022:80,\u0022centerY\u0022:60,\u0022scale\u0022:2}",
+    "result": "{\u0022success\u0022:false,\u0022message\u0022:\u0022Missing or invalid path.\u0022}"
+  },
+  {
+    "Name": "cad_edit",
+    "ArgumentsJson": "{\u0022action\u0022:\u0022add_drawing_view\u0022,\u0022documentId\u0022:\u00226c4855d6-a9f4-4c93-859d-c36d56d1d9ba\u0022,\u0022stateId\u0022:\u00227c3a5f15-f0c2-4d0d-a655-d8749d1a947e\u0022,\u0022path\u0022:\u0022Top\u0022,\u0022name\u0022:\u0022Top\u0022,\u0022kind\u0022:\u0022Top\u0022,\u0022sheetId\u0022:\u002289012a39-dff5-4d71-9159-43670f03dadf\u0022,\u0022centerX\u0022:80,\u0022centerY\u0022:60,\u0022scale\u0022:2}",
+    "result": "{\u0022success\u0022:false,\u0022message\u0022:\u0022Instance path belongs to another document or is malformed.\u0022}"
+  },
+  {
+    "Name": "cad_edit",
+    "ArgumentsJson": "{\u0022action\u0022:\u0022add_drawing_view\u0022,\u0022documentId\u0022:\u00226c4855d6-a9f4-4c93-859d-c36d56d1d9ba\u0022,\u0022stateId\u0022:\u00227c3a5f15-f0c2-4d0d-a655-d8749d1a947e\u0022,\u0022sheetId\u0022:\u002289012a39-dff5-4d71-9159-43670f03dadf\u0022,\u0022kind\u0022:\u0022Top\u0022,\u0022centerX\u0022:80,\u0022centerY\u0022:60,\u0022scale\u0022:2}",
+    "result": "{\u0022success\u0022:false,\u0022message\u0022:\u0022Missing or invalid path.\u0022}"
+  },
+  {
+    "Name": "cad_edit",
+    "ArgumentsJson": "{\u0022action\u0022:\u0022add_drawing_view\u0022,\u0022documentId\u0022:\u00226c4855d6-a9f4-4c93-859d-c36d56d1d9ba\u0022,\u0022stateId\u0022:\u00227c3a5f15-f0c2-4d0d-a655-d8749d1a947e\u0022,\u0022path\u0022:\u0022Top\u0022,\u0022name\u0022:\u0022Top\u0022,\u0022kind\u0022:\u0022Top\u0022,\u0022sheetId\u0022:\u002289012a39-dff5-4d71-9159-43670f03dadf\u0022,\u0022centerX\u0022:80,\u0022centerY\u0022:60,\u0022scale\u0022:2}",
+    "result": "{\u0022success\u0022:false,\u0022message\u0022:\u0022Instance path belongs to another document or is malformed.\u0022}"
+  },
+  {
+    "Name": "cad_edit",
+    "ArgumentsJson": "{\u0022action\u0022:\u0022add_drawing_view\u0022,\u0022documentId\u0022:\u00226c4855d6-a9f4-4c93-859d-c36d56d1d9ba\u0022,\u0022stateId\u0022:\u00227c3a5f15-f0c2-4d0d-a655-d8749d1a947e\u0022,\u0022name\u0022:\u0022Top\u0022,\u0022kind\u0022:\u0022Top\u0022,\u0022sheetId\u0022:\u002289012a39-dff5-4d71-9159-43670f03dadf\u0022,\u0022centerX\u0022:80,\u0022centerY\u0022:60,\u0022scale\u0022:2}",
+    "result": "{\u0022success\u0022:false,\u0022message\u0022:\u0022Missing or invalid path.\u0022}"
+  },
+  {
+    "Name": "cad_edit",
+    "ArgumentsJson": "{\u0022action\u0022:\u0022add_drawing_view\u0022,\u0022documentId\u0022:\u00226c4855d6-a9f4-4c93-859d-c36d56d1d9ba\u0022,\u0022stateId\u0022:\u00227c3a5f15-f0c2-4d0d-a655-d8749d1a947e\u0022,\u0022path\u0022:\u0022Top\u0022,\u0022name\u0022:\u0022Top\u0022,\u0022kind\u0022:\u0022Top\u0022,\u0022sheetId\u0022:\u002289012a39-dff5-4d71-9159-43670f03dadf\u0022,\u0022centerX\u0022:80,\u0022centerY\u0022:60,\u0022scale\u0022:2}",
+    "result": "{\u0022success\u0022:false,\u0022message\u0022:\u0022Instance path belongs to another document or is malformed.\u0022}"
+  },
+  {
+    "Name": "cad_edit",
+    "ArgumentsJson": "{\u0022action\u0022:\u0022add_drawing_view\u0022,\u0022documentId\u0022:\u00226c4855d6-a9f4-4c93-859d-c36d56d1d9ba\u0022,\u0022stateId\u0022:\u00227c3a5f15-f0c2-4d0d-a655-d8749d1a947e\u0022,\u0022path\u0022:\u0022Top\u0022,\u0022name\u0022:\u0022Top\u0022,\u0022kind\u0022:\u0022Top\u0022,\u0022sheetId\u0022:\u002289012a39-dff5-4d71-9159-43670f03dadf\u0022,\u0022centerX\u0022:80,\u0022centerY\u0022:60,\u0022scale\u0022:2}",
+    "result": "{\u0022success\u0022:false,\u0022message\u0022:\u0022Instance path belongs to another document or is malformed.\u0022}"
+  },
+  {
+    "Name": "cad_edit",
+    "ArgumentsJson": "{\u0022action\u0022:\u0022add_drawing_view\u0022,\u0022documentId\u0022:\u00226c4855d6-a9f4-4c93-859d-c36d56d1d9ba\u0022,\u0022stateId\u0022:\u00227c3a5f15-f0c2-4d0d-a655-d8749d1a947e\u0022,\u0022sheetId\u0022:\u002289012a39-dff5-4d71-9159-43670f03dadf\u0022,\u0022name\u0022:\u0022Top\u0022,\u0022kind\u0022:\u0022Top\u0022,\u0022centerX\u0022:80,\u0022centerY\u0022:60,\u0022scale\u0022:2}",
+    "result": "{\u0022success\u0022:false,\u0022message\u0022:\u0022Missing or invalid path.\u0022}"
+  },
+  {
+    "Name": "cad_edit",
+    "ArgumentsJson": "{\u0022action\u0022:\u0022add_drawing_view\u0022,\u0022documentId\u0022:\u00226c4855d6-a9f4-4c93-859d-c36d56d1d9ba\u0022,\u0022stateId\u0022:\u00227c3a5f15-f0c2-4d0d-a655-d8749d1a947e\u0022,\u0022path\u0022:\u0022Top\u0022,\u0022name\u0022:\u0022Top\u0022,\u0022kind\u0022:\u0022Top\u0022,\u0022sheetId\u0022:\u002289012a39-dff5-4d71-9159-43670f03dadf\u0022,\u0022centerX\u0022:80,\u0022centerY\u0022:60,\u0022scale\u0022:2}",
+    "result": "{\u0022success\u0022:false,\u0022message\u0022:\u0022Instance path belongs to another document or is malformed.\u0022}"
+  },
+  {
+    "Name": "cad_inspect",
+    "ArgumentsJson": "{\u0022area\u0022:\u0022drawings\u0022,\u0022id\u0022:\u002289012a39-dff5-4d71-9159-43670f03dadf\u0022}",
+    "result": "{\u0022success\u0022:true,\u0022documentId\u0022:\u00226c4855d6-a9f4-4c93-859d-c36d56d1d9ba\u0022,\u0022stateId\u0022:\u00227c3a5f15-f0c2-4d0d-a655-d8749d1a947e\u0022,\u0022area\u0022:\u0022drawings\u0022,\u0022total\u0022:1,\u0022offset\u0022:0,\u0022limit\u0022:50,\u0022hasMore\u0022:false,\u0022items\u0022:[{\u0022id\u0022:\u002289012a39-dff5-4d71-9159-43670f03dadf\u0022,\u0022name\u0022:\u0022Provider Drawing\u0022,\u0022widthMm\u0022:297,\u0022heightMm\u0022:210,\u0022unit\u0022:\u0022Millimeter\u0022,\u0022viewTotal\u0022:0,\u0022dimensionTotal\u0022:0,\u0022views\u0022:[],\u0022dimensions\u0022:[]}]}"
+  },
+  {
+    "Name": "cad_edit",
+    "ArgumentsJson": "{\u0022action\u0022:\u0022add_drawing_view\u0022,\u0022documentId\u0022:\u00226c4855d6-a9f4-4c93-859d-c36d56d1d9ba\u0022,\u0022stateId\u0022:\u00227c3a5f15-f0c2-4d0d-a655-d8749d1a947e\u0022}",
+    "result": "{\u0022success\u0022:false,\u0022message\u0022:\u0022Missing or invalid sheetId.\u0022}"
+  },
+  {
+    "Name": "cad_edit",
+    "ArgumentsJson": "{\u0022action\u0022:\u0022add_drawing_view\u0022,\u0022documentId\u0022:\u00226c4855d6-a9f4-4c93-859d-c36d56d1d9ba\u0022,\u0022stateId\u0022:\u00227c3a5f15-f0c2-4d0d-a655-d8749d1a947e\u0022,\u0022sheetId\u0022:\u002289012a39-dff5-4d71-9159-43670f03dadf\u0022,\u0022name\u0022:\u0022Top\u0022,\u0022kind\u0022:\u0022Top\u0022,\u0022centerX\u0022:80,\u0022centerY\u0022:60,\u0022scale\u0022:2}",
+    "result": "{\u0022success\u0022:false,\u0022message\u0022:\u0022Missing or invalid path.\u0022}"
+  }
+]

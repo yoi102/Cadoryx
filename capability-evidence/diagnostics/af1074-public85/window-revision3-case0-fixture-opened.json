@@ -1,0 +1,55 @@
+{
+  "language": "en-US",
+  "route": "confirm",
+  "phase": "create",
+  "label": "plane-positive",
+  "fixture": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\d6-window-fixtures-2\\fixtures-1\\plane-positive.cadoryx",
+  "fixtureSha256": "E3913830ACD00B9E5096E4FF5609A3485CD936709A9C540A277D4661D6E388D4",
+  "documentId": {
+    "Value": "2a2d4128-49ce-4741-a2e4-417caf5a2320"
+  },
+  "baselineStateId": {
+    "Value": "4779e988-d3c9-4bfa-9fdb-665379e3bb4c"
+  },
+  "featureId": {
+    "Value": "55fa3930-0a06-4ada-8de6-9686cf04445c"
+  },
+  "requiredLimit": {
+    "DocumentId": {
+      "Value": "2a2d4128-49ce-4741-a2e4-417caf5a2320"
+    },
+    "FeatureId": {
+      "Value": "762f24c9-a147-49a6-b9be-e0924151f6c8"
+    },
+    "Revision": {
+      "Value": "c8ae8acb-435b-4d38-9509-e7e2fde5d7d7"
+    },
+    "Asset": {
+      "Sha256": "57f6c91de7a628fe925454c646b30dfeedf818c46739658159e521082f004e24"
+    },
+    "Fingerprint": "AE05E3086184CAC43BD280BE592F2DD864A955E82816D1A786BC8AFA37018075",
+    "FullTopologyIndex": 0,
+    "Kind": 0,
+    "AdapterVersion": "OcctSharp 8.0.1-preview.28.cadoryx.h2b2.2 / full-topology-brep-axis-v2",
+    "SchemaVersion": 1
+  },
+  "requiredSide": 0,
+  "requiredFrame": {
+    "Translation": {
+      "X": 0,
+      "Y": 0,
+      "Z": 6
+    },
+    "Rotation": {
+      "X": 0,
+      "Y": 0,
+      "Z": 0,
+      "W": 1
+    }
+  },
+  "requiredCircleProfile": null,
+  "expectedVolumeMm3": 96,
+  "hostDoesNotInjectInput": true,
+  "productionTreeEditEvent": false,
+  "productionCreationCommand": true
+}

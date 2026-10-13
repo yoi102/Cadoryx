@@ -61,6 +61,7 @@ public partial class ExtrusionEditorViewModel:ObservableObject,IAsyncDisposable
     public bool CanConfirm=>CanEdit&&prepared is not null;
     public bool IsNew=>SelectedFeature?.Value is null;
     public bool CanChooseTarget=>IsNew&&Operation!=ExtrusionOperation.NewBody;
+    public bool CanChooseSupport=>CanEdit&&Termination==ExtrusionTermination.FiniteSurface&&Operation!=ExtrusionOperation.NewBody;
     public bool CanChooseProfile=>IsNew||SelectedFeature?.Value is {} id&&baseline.Snapshot.Features[id].SketchSource is not null;
     public bool CanSetDistance=>Termination==ExtrusionTermination.Distance;
     public bool CanSetBackward=>CanSetDistance&&Side==ExtrusionSide.TwoSides;
@@ -140,13 +141,13 @@ public partial class ExtrusionEditorViewModel:ObservableObject,IAsyncDisposable
     protected override void OnPropertyChanged(PropertyChangedEventArgs e)
     {
         base.OnPropertyChanged(e);
-        if(e.PropertyName is nameof(CanEdit) or nameof(CanConfirm) or nameof(IsNew) or nameof(CanChooseTarget) or nameof(CanChooseProfile) or nameof(CanSetDistance) or nameof(CanSetBackward) or nameof(CanSetStart) or nameof(CanSetLimit) or nameof(SourceDescription) or nameof(Status))return;
+        if(e.PropertyName is nameof(CanEdit) or nameof(CanConfirm) or nameof(IsNew) or nameof(CanChooseTarget) or nameof(CanChooseSupport) or nameof(CanChooseProfile) or nameof(CanSetDistance) or nameof(CanSetBackward) or nameof(CanSetStart) or nameof(CanSetLimit) or nameof(SourceDescription) or nameof(Status))return;
         if(e.PropertyName is nameof(IsWorking) or nameof(IsStale)){Notify();return;}
         if(!loading)Invalidate();Notify();
     }
     private void Notify()
     {
-        foreach(var name in new[]{nameof(CanEdit),nameof(CanConfirm),nameof(IsNew),nameof(CanChooseTarget),nameof(CanChooseProfile),nameof(CanSetDistance),nameof(CanSetBackward),nameof(CanSetStart),nameof(CanSetLimit),nameof(SourceDescription)})OnPropertyChanged(name);
+        foreach(var name in new[]{nameof(CanEdit),nameof(CanConfirm),nameof(IsNew),nameof(CanChooseTarget),nameof(CanChooseSupport),nameof(CanChooseProfile),nameof(CanSetDistance),nameof(CanSetBackward),nameof(CanSetStart),nameof(CanSetLimit),nameof(SourceDescription)})OnPropertyChanged(name);
         PreviewCommand.NotifyCanExecuteChanged();ConfirmCommand.NotifyCanExecuteChanged();LoadFacesCommand.NotifyCanExecuteChanged();
     }
     private void Invalidate(){cancellation?.Cancel();prepared?.Dispose();prepared=null;document.SetSketchPreview(null);OnPropertyChanged(nameof(CanConfirm));ConfirmCommand.NotifyCanExecuteChanged();}
@@ -167,12 +168,12 @@ public partial class ExtrusionEditorViewModel:ObservableObject,IAsyncDisposable
         {
             var selected=SelectedSurface?.Limit??throw new CadValidationException(Strings.ExtrusionSelectLimit);
             face=new(selected.Selection,selected.Geometry);
-            if(SelectedSupport?.Limit.Geometry!=source)throw new CadValidationException(Strings.ExtrusionSurfaceSupport);
+            if(Operation!=ExtrusionOperation.NewBody&&SelectedSupport?.Limit.Geometry!=source)throw new CadValidationException(Strings.ExtrusionSurfaceSupport);
         }
         var plane=Termination==ExtrusionTermination.Plane?datum?.Frame??new RigidTransform3d(new(LimitX,LimitY,LimitZ),Quaterniond.FromEulerDegrees(LimitRx,LimitRy,LimitRz)):(RigidTransform3d?)null;
         var frame=new RigidTransform3d(new(StartX,StartY,StartZ),Quaterniond.FromEulerDegrees(StartRx,StartRy,StartRz));
         var recipe=new ExtrudeRecipe(old.Profile,CanSetDistance?Distance:0,frame,new(Side,CanSetBackward?Backward:0,Operation,source,Termination,plane,datum?.Id,datum?.Revision,face?.Selection,face?.Geometry,
-            Termination==ExtrusionTermination.FiniteSurface?SelectedSupport?.Limit.Selection:null,Termination==ExtrusionTermination.FiniteSurface?SurfaceBranch:null));
+            Termination==ExtrusionTermination.FiniteSurface&&Operation!=ExtrusionOperation.NewBody?SelectedSupport?.Limit.Selection:null,Termination==ExtrusionTermination.FiniteSurface?SurfaceBranch:null));
         if(edit?.SketchSource is not null&&SelectedProfile?.Source is null)
             throw new CadValidationException("Select an explicit replacement profile for the linked extrusion.");
         return edit is null?new AddExtrusionCommand(recipe,ObjectName.Trim(),part,target?.Id,SelectedProfile?.Source):

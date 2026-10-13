@@ -3,7 +3,7 @@ using Cadoryx.Db;
 
 namespace Cadoryx.Rendering;
 
-public sealed record SceneItem(OccurrencePath Path,BodyId BodyId,GeometryAssetRef Geometry,RigidTransform3d WorldTransform,uint Argb,bool PreserveSourceStyles=false);
+public sealed record SceneItem(OccurrencePath Path,BodyId BodyId,GeometryAssetRef Geometry,RigidTransform3d WorldTransform,uint Argb,bool PreserveSourceStyles=false,CadMaterialAppearance? MaterialAppearance=null);
 public sealed record CadScene(DocumentId DocumentId,DocumentStateId StateId,ImmutableArray<SceneItem> Items)
 {
     public ImmutableArray<EngineeringDimension> Dimensions {get;init;}=[];
@@ -20,8 +20,12 @@ public sealed record CadScene(DocumentId DocumentId,DocumentStateId StateId,Immu
                 var body=document.Bodies[id];var layer=document.Layers[body.LayerId];
                 if(!body.IsVisible||!layer.IsVisible||body.Geometry.Kind==BodyKind.Empty)continue;
                 var appearance=occurrence.AppearanceOverride??body.Appearance;
-                items.Add(new(occurrence.Path,id,body.Geometry,occurrence.WorldTransform,appearance.ByLayer?layer.Argb:appearance.Argb,
-                    occurrence.AppearanceOverride is null&&!appearance.ByLayer&&appearance.PreserveSourceStyles&&body.Geometry.Source is not null));
+                bool preserve=occurrence.AppearanceOverride is null&&!appearance.ByLayer&&appearance.PreserveSourceStyles&&body.Geometry.Source is not null;
+                var material=occurrence.AppearanceOverride is null&&body.MaterialId is {} materialId?document.Materials[materialId].Appearance:null;
+                if(preserve&&material?.OverrideSourceStyles!=true)material=null;
+                // Keep the XDE presentation (including face visibility). The renderer applies
+                // an explicitly authored material override to that presentation's shading.
+                items.Add(new(occurrence.Path,id,body.Geometry,occurrence.WorldTransform,appearance.ByLayer?layer.Argb:appearance.Argb,preserve,material));
             }
         }
         return new(document.Id,document.StateId,items.ToImmutable()){

@@ -1,5 +1,17 @@
 # 当前状态
 
+2026-10-13，status238：[source1076开发合入](AF_SOURCE1076_DEVELOPMENT_INTEGRATION.md)完成，55个现有更改/44个新文件、1189输入匹配受测候选。生产根锁定恢复、完整solution Release/Debug构建零警告/错误，各实际发现6652，SDK13/native62磁盘匹配公开85。候选两配置各436实际原生专项及19独立线协议共455通过，原6619名称完整保留、新增33、实际native62准确、原激进十二工具预算通过；完整6652及合入后根原生测试尚未执行。[历史显式空游标/过期只读恢复](F5_HISTORY_STALE_RECOVERY.md)生产合入前各261通过。1075原Bonsai工程图第二轮收据FAIL、多文档第六轮工具16 FAIL，资产0且实际native62准确，两场景均未触发completeSourceItems；1076未模型复验。D6宿主两项启动错误已修复，第三版实际窗口取消、六状态轨迹未完成；原36窗口仍未通过。mapped-scale最小两方案已接收且strict BRep均FAIL，未采用，上游继续具体状态/坐标系定位。A–F继续，原STEP24、真实窗口/材质/性能与其余范围保持，G和清理暂缓。
+
+当前进度以status238为准；以下status237及更早为保留的历史检查点。
+
+2026-10-13，status237：[1074原Bonsai实际两场景](../capability-evidence/diagnostics/af1074-public85/provider-runtime-verification.json)结束：多文档原8轮PASS/资产0，工程图第三轮原16工具轮FAIL，实际native62两组准确；失败保留。基于实际完整原生回执增加[F5完整条目上下文](F5_COMPLETE_NATIVE_SOURCE_CONTEXT.md)，两配置34/34、旧版各33/1；1075完整solution两配置build0，实际完整候选Agent二进制两配置34/34，原公开14包不变。预计6648尚未发现/全量执行，原模型未复验，1075未合入生产。首个窗口宿主在输入前ResourceAssembly重复设置崩溃，修订2两配置编译0，实际窗口仍未通过。SDK原版两配置诊断确认3D解码/传输0、完整边使用保持、原101误差6.99e-7与扩展7.29e-7均超原1e-7；正在评估新的精确mapped-scale编码假设，尚无有效修复。A–F继续，原严格STEP24与其他范围保持，G和清理暂缓。
+
+以下status236及更早为历史，当前进度以status237为准。
+
+2026-10-13，status236：[source1074/public85合并候选](AF_SOURCE1074_INTEGRATION.md)已完成锁定恢复及完整solution两配置编译，零警告/错误；实际消费本次完整候选的Agent二进制，两配置各21/21。1187输入只在父1073上覆盖分页配对与隐式源属性、增加一份16案例测试，原6619测试源码保持；预计6635尚未发现/运行。原36窗口场景已绑定本次两配置应用/语言资源及native62磁盘载荷，实际桌面未开始；原Bonsai探针已编译，实际服务15630及原模型已重新加载，工程图工作流正在运行、之后串行多文档。父1073[两配置完整6619审计](../capability-evidence/diagnostics/public-nuget-migration/public85-final1073-full-both-verification.json)各6595通过/24原严格STEP失败/零跳过，无新增失败名称，原AI预算失败已消除、实际native62准确。SDK原版对照两配置原生已结束，正在核对误差分段报告，未取得有效修复。1074未合入生产，不将编译/托管21计成全量/窗口/性能/提供方通过；A–F、原严格STEP24及其余范围继续，G与Cadoryx清理暂缓。
+
+以下status235及更早记录保留当时状态；当前进度以status236为准。
+
 2026-10-13，status235：source1073/public85 的 [Release完整回归](../capability-evidence/diagnostics/public-nuget-migration/public85-final1073-release-verification.json)实际6619项，6595通过、24失败、零跳过；原6556名称及新增63完整保留，无新增失败名称，原AI十二工具恢复预算失败已通过。冻结源码/完整Release输出及实际native62路径/哈希匹配公开包。Debug已串行开始，尚无终态；最终1073未合入生产。当前生产源码另修复[F5默认分页配对](F5_DEFAULT_PAGE_QUERY_MATCHING.md)，两配置独立21/21，旧实现各16/5，生产Agent编译零警告/错误；不计为冻结1073或提供方验收。原24严格STEP拒绝继续由SDK会话准备误差分段对照，尚无已验证修复。A–F继续，G和Cadoryx清理暂缓。
 
 以下status234及更早记录保留当时状态；当前进度以status235为准。

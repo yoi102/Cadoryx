@@ -14,6 +14,8 @@ public sealed record SceneSubmissionProfile(double ResourceMs,double DisplayMs,d
 public sealed partial class OcctViewport : ICadViewport
 {
     private readonly OcctViewer viewer;
+    public CadCamera? LastKnownCamera {get;private set;}
+    public bool HasObservedValidGraphicsContext {get;private set;}
     private readonly IAssetStore assets;
     private readonly Dictionary<(OccurrencePath,BodyId),Entry> entries=[];
     // A revision identifies a modeling result; identical BRep bytes in different parts can share one native shape.
@@ -237,8 +239,10 @@ public sealed partial class OcctViewport : ICadViewport
     }
     private void ClearOriginAxes()
     {
-        foreach(var presentation in originPresentations)presentation.Dispose();originPresentations.Clear();
-        foreach(var (shape,_) in originShapes)shape.Dispose();originShapes.Clear();
+        Exception? failure=null;
+        foreach(var presentation in originPresentations)DisposeOwnedResource(presentation,ref failure);originPresentations.Clear();
+        foreach(var (shape,_) in originShapes)DisposeOwnedResource(shape,ref failure);originShapes.Clear();
+        ThrowCleanupFailure(failure);
     }
     public void SetConstructionGhost(GeometryRecipe? recipe,RigidTransform3d? occurrence=null)
     {
@@ -412,8 +416,12 @@ public sealed partial class OcctViewport : ICadViewport
         AbortProgressiveScene();
         var staged=new Dictionary<(OccurrencePath,BodyId),Entry>();
         var created=new List<ViewerPresentation>();
+        var previousMaterialProfile=viewer.Rendering.GetProfile();
         try
         {
+            // PBR must be active before native appearance creation. Keep a current
+            // PBR pipeline until its old presentations have been removed.
+            if(scene.Items.Any(item=>item.MaterialAppearance?.Shading==CadMaterialShading.Pbr))SetMaterialSceneProfile(scene);
             foreach(var item in scene.Items)
             {
                 var key=(item.Path,item.BodyId);
@@ -423,10 +431,18 @@ public sealed partial class OcctViewport : ICadViewport
                 created.Add(presentation);staged.Add(key,new(item,presentation,resource));
             }
         }
-        catch{foreach(var p in created)p.Dispose();PruneGeometry();viewer.Redraw();throw;}
+        catch(Exception failure)
+        {
+            PreserveGraphicsFailure(failure);
+            Exception? retained=failure;
+            foreach(var p in created)DisposeOwnedResource(p,ref retained);
+            RunCleanup(PruneGeometry,ref retained);
+            RunCleanup(()=>viewer.Rendering.SetProfile(previousMaterialProfile),ref retained);
+            RunCleanup(viewer.Redraw,ref retained);throw;
+        }
         foreach(var (key,entry) in entries)if(!staged.TryGetValue(key,out var replacement)||!ReferenceEquals(entry,replacement))entry.Presentation.Dispose();
         entries.Clear();foreach(var pair in staged)entries.Add(pair.Key,pair.Value);
-        PruneGeometry();SetDimensions(scene);viewer.Redraw();
+        SetMaterialSceneProfile(scene);PruneGeometry();SetDimensions(scene);viewer.Redraw();CacheGraphicsState();
     }
     /// <summary>Starts an initial large scene on the owning UI thread. Later batches may yield to input and paint.</summary>
     public void BeginProgressiveScene(CadScene scene)
@@ -437,6 +453,8 @@ public sealed partial class OcctViewport : ICadViewport
         ArgumentNullException.ThrowIfNull(scene);
         AbortProgressiveScene();
         if(entries.Count!=0)throw new InvalidOperationException("Progressive scene loading requires an empty viewport.");
+        var previousMaterialProfile=viewer.Rendering.GetProfile();SetMaterialSceneProfile(scene);
+        progressiveOriginalMaterialProfile=previousMaterialProfile;
         progressiveScene=scene;progressiveCount=0;
         progressiveResourceTicks=progressiveDisplayTicks=progressiveTransformTicks=progressiveModeTicks=progressiveRedrawTicks=progressiveSourceTicks=0;
     }
@@ -461,34 +479,48 @@ public sealed partial class OcctViewport : ICadViewport
             }
             if(redraw&&added>0)
             {
-                long redrawStart=System.Diagnostics.Stopwatch.GetTimestamp();viewer.Redraw();
+                long redrawStart=System.Diagnostics.Stopwatch.GetTimestamp();viewer.Redraw();CacheGraphicsState();
                 progressiveRedrawTicks+=System.Diagnostics.Stopwatch.GetTimestamp()-redrawStart;
             }
             return progressiveCount;
         }
-        catch{AbortProgressiveScene();throw;}
+        catch(Exception failure){AbortAfterFailure(failure);throw;}
     }
     public void CompleteProgressiveScene()
     {
         ObjectDisposedException.ThrowIf(disposed,this);
         if(progressiveScene is not {} scene||progressiveCount!=scene.Items.Length)
             throw new InvalidOperationException("The progressive scene is incomplete.");
-        try{SetDimensions(scene);viewer.Redraw();progressiveScene=null;progressiveCount=0;}
-        catch{AbortProgressiveScene();throw;}
+        try{SetDimensions(scene);viewer.Redraw();CacheGraphicsState();progressiveScene=null;progressiveCount=0;progressiveOriginalMaterialProfile=null;}
+        catch(Exception failure){AbortAfterFailure(failure);throw;}
     }
     public void AbortProgressiveScene()
     {
         if(progressiveScene is null)return;
         progressiveScene=null;progressiveCount=0;
-        foreach(var entry in entries.Values)entry.Presentation.Dispose();entries.Clear();
-        PruneGeometry();ClearDimensions();viewer.Redraw();
+        Exception? failure=null;
+        foreach(var entry in entries.Values)DisposeOwnedResource(entry.Presentation,ref failure);
+        entries.Clear();
+        RunCleanup(PruneGeometry,ref failure);RunCleanup(ClearDimensions,ref failure);
+        var materialProfile=progressiveOriginalMaterialProfile;progressiveOriginalMaterialProfile=null;
+        if(!disposed)
+        {
+            if(materialProfile is {} profile)RunCleanup(()=>viewer.Rendering.SetProfile(profile),ref failure);
+            RunCleanup(viewer.Redraw,ref failure);
+        }
+        ThrowCleanupFailure(failure);
     }
     private void PruneGeometry()
     {
+        Exception? failure=null;
+        RunCleanup(PruneMaterialTextures,ref failure);
         var used=entries.Values.Select(e=>e.Geometry).ToHashSet();
-        foreach(var key in geometry.Keys.Where(k=>!used.Contains(geometry[k])).ToArray()){geometry[key].Dispose();geometry.Remove(key);}
+        foreach(var key in geometry.Keys.Where(k=>!used.Contains(geometry[k])).ToArray())
+        {DisposeOwnedResource(geometry[key],ref failure);geometry.Remove(key);}
         var usedContexts=geometry.Values.Where(g=>g.SourceContext is not null).Select(g=>g.SourceContext!).ToHashSet();
-        foreach(var key in xdeContexts.Keys.Where(k=>!usedContexts.Contains(xdeContexts[k])).ToArray()){xdeContexts[key].Dispose();xdeContexts.Remove(key);}
+        foreach(var key in xdeContexts.Keys.Where(k=>!usedContexts.Contains(xdeContexts[k])).ToArray())
+        {DisposeOwnedResource(xdeContexts[key],ref failure);xdeContexts.Remove(key);}
+        ThrowCleanupFailure(failure);
     }
     private GeometryResource Resource(GeometryAssetRef reference)
     {
@@ -518,9 +550,12 @@ public sealed partial class OcctViewport : ICadViewport
             sharedSource=resource.GetSharedSource(viewer);
             if(progressiveScene is not null)progressiveSourceTicks+=System.Diagnostics.Stopwatch.GetTimestamp()-sourceStart;
         }
+        long modeStart=System.Diagnostics.Stopwatch.GetTimestamp();
+        var initialMode=mode==CadDisplayMode.Shaded?ViewerDisplayMode.Shaded:ViewerDisplayMode.Wireframe;
+        if(progressiveScene is not null)progressiveModeTicks+=System.Diagnostics.Stopwatch.GetTimestamp()-modeStart;
         long displayStart=System.Diagnostics.Stopwatch.GetTimestamp();
-        var presentation=sharedSource is not null?viewer.Display(sharedSource,transform):viewer.Display(
-            binding?resource.GetBindingShape():resource.Shape);
+        var presentation=sharedSource is not null?viewer.DisplayInMode(sharedSource,transform,initialMode):viewer.DisplayInMode(
+            binding?resource.GetBindingShape():resource.Shape,initialMode);
         long displayEnd=System.Diagnostics.Stopwatch.GetTimestamp();
         if(progressiveScene is not null)progressiveDisplayTicks+=displayEnd-displayStart;
         try
@@ -533,9 +568,8 @@ public sealed partial class OcctViewport : ICadViewport
                 var color=OcctGeometryBridge.ToXdeColor(selected?0xFFFF6B0Au:item.Argb);
                 presentation.SetColor(new(color.Red,color.Green,color.Blue));presentation.SetTransparency(1-color.Alpha);
             }
-            long modeStart=System.Diagnostics.Stopwatch.GetTimestamp();
-            presentation.SetDisplayMode(mode==CadDisplayMode.Shaded?ViewerDisplayMode.Shaded:ViewerDisplayMode.Wireframe);
-            if(progressiveScene is not null)progressiveModeTicks+=System.Diagnostics.Stopwatch.GetTimestamp()-modeStart;
+            if(!selected&&item.MaterialAppearance is {} material)ApplyMaterialAppearance(presentation,material);
+
             if(selectionKind is {} kind)presentation.SetSelectionKind(kind==TopologyKind.Face?ShapeKind.Face:ShapeKind.Edge);
             return presentation;
         }
@@ -575,10 +609,10 @@ public sealed partial class OcctViewport : ICadViewport
         foreach(var presentation in originPresentations)presentation.Dispose();originPresentations.Clear();
         constructionGhost?.Dispose();constructionGhost=null;
         viewer.FitAll();ShowWorkGrid();ShowOriginAxes();RefreshWorkGridScale();
-        RefreshHandlesForCamera();
+        RefreshHandlesForCamera();CacheGraphicsState();
     }
     public void SetProjection(CadProjection projection)
-    {CancelSelectionRectangleGesture();viewer.SetProjection(ToViewerProjection(projection));RefreshHandlesForCamera();}
+    {CancelSelectionRectangleGesture();viewer.SetProjection(ToViewerProjection(projection));RefreshHandlesForCamera();CacheGraphicsState();}
     public CadCamera CaptureProjectionTarget(CadProjection projection)
     {
         var current=CaptureCamera();
@@ -631,8 +665,62 @@ public sealed partial class OcctViewport : ICadViewport
     {
         mode=displayMode;foreach(var e in entries.Values)e.Presentation.SetDisplayMode(mode==CadDisplayMode.Shaded?ViewerDisplayMode.Shaded:ViewerDisplayMode.Wireframe);viewer.Redraw();
     }
-    public void Resize(){CancelSelectionRectangleGesture();viewer.Resize();RefreshWorkGridScale();RefreshHandlesForCamera();}
-    public void Redraw()=>viewer.Redraw();
+    public void Resize(){CancelSelectionRectangleGesture();viewer.Resize();RefreshWorkGridScale();RefreshHandlesForCamera();CacheGraphicsState();}
+    private const string GraphicsObservationKey="Cadoryx.Viewport.GraphicsObservation";
+    private ViewerRenderingHealth ObserveNativeGraphicsHealth()
+    {
+        var health=viewer.GetRenderingHealth();
+        if((health&(ViewerRenderingHealth.ContextUnavailable|ViewerRenderingHealth.ContextInvalid))==0)
+            HasObservedValidGraphicsContext=true;
+        return health;
+    }
+    public bool TryObserveRecoverableGraphicsFault(out CadViewportGraphicsFault observation)
+    {
+        observation=default;
+        if(disposed)return false;
+        try
+        {
+            var health=ObserveNativeGraphicsHealth();
+            observation=new(health,false,HasObservedValidGraphicsContext);return observation.RequiresNewViewer;
+        }
+        catch(ObjectDisposedException failure) when(failure.ObjectName==typeof(OcctViewer).FullName)
+        {
+            observation=new(ViewerRenderingHealth.Healthy,true,HasObservedValidGraphicsContext);return true;
+        }
+    }
+    public bool TryObserveRecoverableGraphicsFault(Exception failure,out CadViewportGraphicsFault observation)
+    {
+        // A cleanup redraw may have consumed a native loss flag. Use the exact
+        // source viewport observation captured before cleanup, if available.
+        if(failure.Data[GraphicsObservationKey] is ValueTuple<OcctViewport,CadViewportGraphicsFault> saved&&
+            ReferenceEquals(saved.Item1,this)&&saved.Item2.RequiresNewViewer)
+        {observation=saved.Item2;return true;}
+        return TryObserveRecoverableGraphicsFault(out observation);
+    }
+    public void PreserveGraphicsFailure(Exception failure)
+    {
+        if(failure.Data[GraphicsObservationKey] is ValueTuple<OcctViewport,CadViewportGraphicsFault> saved&&
+            ReferenceEquals(saved.Item1,this))return;
+        try
+        {
+            if(TryObserveRecoverableGraphicsFault(out var observation))
+                failure.Data[GraphicsObservationKey]=(this,observation);
+        }
+        catch(Exception observing){Exception? retained=failure;RecordCleanupFailure(ref retained,observing);}
+    }
+    private void CacheGraphicsState()
+    {
+        _=CaptureCamera();_=ObserveNativeGraphicsHealth();
+    }
+    public void Redraw()
+    {
+        if(TryObserveRecoverableGraphicsFault(out var observation))
+        {
+            var failure=new CadViewportGraphicsFaultException(observation);
+            failure.Data[GraphicsObservationKey]=(this,observation);throw failure;
+        }
+        viewer.Redraw();CacheGraphicsState();
+    }
     public bool HasPointerCapture=>pressedButtons!=0;
     public void PointerMoved(int x,int y,int buttons,int modifiers)
     {
@@ -644,7 +732,7 @@ public sealed partial class OcctViewport : ICadViewport
         if(Math.Abs(x-pressX)>2||Math.Abs(y-pressY)>2)selectionClick=false;
         var navigationButtons=buttons&pressedButtons;
         viewer.Input.PointerMoved(x,y,(ViewerPointerButtons)navigationButtons,(ViewerModifierKeys)modifiers);
-        if(navigationButtons!=0)RefreshHandlesForCamera();
+        if(navigationButtons!=0){RefreshHandlesForCamera();CacheGraphicsState();}
         UpdateSelectionRectangle(x,y,buttons);
         UpdateCubeHover(x,y);
     }
@@ -662,7 +750,7 @@ public sealed partial class OcctViewport : ICadViewport
         {selectionClick=false;return;}
         if(constructing&&button==0)return;
         pressX=x;pressY=y;selectionClick=button==0;
-        viewer.Input.PointerPressed(Button(button),x,y,(ViewerModifierKeys)modifiers);
+        viewer.Input.PointerPressed(Button(button),x,y,(ViewerModifierKeys)modifiers);CacheGraphicsState();
     }
     public void PointerReleased(int button,int x,int y,int modifiers)
     {
@@ -690,7 +778,7 @@ public sealed partial class OcctViewport : ICadViewport
         var selected=viewer.Input.PointerReleased(Button(button),x,y);
         if(rectangleSelection)selected=viewer.SelectRectangle(pressX,pressY,x,y);
         RefreshWorkGridScale();
-        RefreshHandlesForCamera();
+        RefreshHandlesForCamera();CacheGraphicsState();
         bool selectionGesture=button==0&&(selectionClick||rectangleSelection);selectionClick=false;
         if(!selectionGesture)return;
         if(assemblyDatumSelection is {} datumKind)
@@ -789,12 +877,12 @@ public sealed partial class OcctViewport : ICadViewport
         CancelSelectionRectangleGesture();
         viewer.Input.MouseWheel(delta,x,y,(ViewerModifierKeys)modifiers);
         RefreshWorkGridScale();
-        RefreshHandlesForCamera();
+        RefreshHandlesForCamera();CacheGraphicsState();
     }
     private static ViewerPointerButton Button(int button)=>button switch{0=>ViewerPointerButton.Left,1=>ViewerPointerButton.Middle,_=>ViewerPointerButton.Right};
     public CadCamera CaptureCamera()
     {
-        var c=viewer.Rendering.GetCamera();return new(new(c.Eye.X,c.Eye.Y,c.Eye.Z),new(c.Target.X,c.Target.Y,c.Target.Z),new(c.Up.X,c.Up.Y,c.Up.Z),
+        var c=viewer.Rendering.GetCamera();return LastKnownCamera=new(new(c.Eye.X,c.Eye.Y,c.Eye.Z),new(c.Target.X,c.Target.Y,c.Target.Z),new(c.Up.X,c.Up.Y,c.Up.Z),
             c.Aspect,c.Scale,c.FieldOfViewY,c.NearPlane,c.FarPlane,c.Perspective,c.AutoFitDepth);
     }
     public void RestoreCamera(CadCamera c)
@@ -803,7 +891,7 @@ public sealed partial class OcctViewport : ICadViewport
         viewer.Rendering.SetCamera(new(new(c.Eye.X,c.Eye.Y,c.Eye.Z),new(c.Target.X,c.Target.Y,c.Target.Z),new(c.Up.X,c.Up.Y,c.Up.Z),
             c.Aspect,c.Scale,c.FieldOfViewY,c.NearPlane,c.FarPlane,c.Perspective,c.AutoFitDepth));
         RefreshWorkGridScale();
-        RefreshHandlesForCamera();
+        RefreshHandlesForCamera();CacheGraphicsState();
     }
     private void RefreshHandlesForCamera()
     {
@@ -820,16 +908,25 @@ public sealed partial class OcctViewport : ICadViewport
     public void Dispose()
     {
         if(disposed)return;
-        ClearSelectionRectangle();
-        FinishOccurrenceHandle(false);ClearOccurrenceHandles();
-        FinishSolidHandle(false);ClearSolidHandles();
-        AbortProgressiveScene();
-        ClearDimensions();
-        foreach(var plane in clipPlanes)plane.Dispose();clipPlanes.Clear();
-        preview?.Dispose();previewShape?.Dispose();constructionGhost?.Dispose();constructionShape?.Dispose();workGrid?.Dispose();workGridShape?.Dispose();ClearOriginAxes();
-        foreach(var e in entries.Values)e.Presentation.Dispose();entries.Clear();
-        viewer.Dispose();foreach(var g in geometry.Values)g.Dispose();geometry.Clear();
-        foreach(var context in xdeContexts.Values)context.Dispose();xdeContexts.Clear();disposed=true;
+        // Closing is final before callbacks or cleanup; no teardown redraw is useful.
+        disposed=true;
+        Exception? failure=null;
+        RunCleanup(()=>{ClearSelectionRectangle();},ref failure);
+        RunCleanup(()=>FinishOccurrenceHandle(false),ref failure);RunCleanup(ClearOccurrenceHandles,ref failure);
+        RunCleanup(()=>FinishSolidHandle(false),ref failure);RunCleanup(ClearSolidHandles,ref failure);
+        RunCleanup(AbortProgressiveScene,ref failure);RunCleanup(ClearDimensions,ref failure);
+        progressiveOriginalMaterialProfile=null;
+        foreach(var plane in clipPlanes)DisposeOwnedResource(plane,ref failure);clipPlanes.Clear();
+        DisposeOwnedResource(preview,ref failure);preview=null;DisposeOwnedResource(previewShape,ref failure);previewShape=null;
+        DisposeOwnedResource(constructionGhost,ref failure);constructionGhost=null;DisposeOwnedResource(constructionShape,ref failure);constructionShape=null;
+        DisposeOwnedResource(workGrid,ref failure);workGrid=null;DisposeOwnedResource(workGridShape,ref failure);workGridShape=null;
+        RunCleanup(ClearOriginAxes,ref failure);
+        foreach(var e in entries.Values)DisposeOwnedResource(e.Presentation,ref failure);entries.Clear();
+        foreach(var texture in materialTextures.Values)DisposeOwnedResource(texture,ref failure);materialTextures.Clear();
+        DisposeOwnedResource(viewer,ref failure);
+        foreach(var g in geometry.Values)DisposeOwnedResource(g,ref failure);geometry.Clear();
+        foreach(var context in xdeContexts.Values)DisposeOwnedResource(context,ref failure);xdeContexts.Clear();
+        ThrowCleanupFailure(failure);
     }
     private sealed record Entry(SceneItem Item,ViewerPresentation Presentation,GeometryResource Geometry);
     private sealed class GeometryResource : IDisposable
@@ -883,7 +980,14 @@ public sealed partial class OcctViewport : ICadViewport
         // BRep/XDE assets; resource ownership retains every boundary asset until pruning.
         public ViewerSource GetSharedSource(OcctViewer owner)
             =>sharedSource??=Label is {} label?owner.CreateSource(label):owner.CreateSource(Shape);
-        public void Dispose(){sharedSource?.Dispose();bindingShape?.Dispose();Shape.Dispose();lease.Dispose();}
+        public void Dispose()
+        {
+            Exception? failure=null;
+            DisposeOwnedResource(sharedSource,ref failure);sharedSource=null;
+            DisposeOwnedResource(bindingShape,ref failure);bindingShape=null;
+            DisposeOwnedResource(Shape,ref failure);DisposeOwnedResource(lease,ref failure);
+            ThrowCleanupFailure(failure);
+        }
     }
     private sealed class XdeContextResource : IDisposable
     {
@@ -895,6 +999,10 @@ public sealed partial class OcctViewport : ICadViewport
             try{Document=OcctGeometryBridge.ReadContext(source.ContextAssetId,assets,source.Format);}
             catch{lease.Dispose();throw;}
         }
-        public void Dispose(){Document.Dispose();lease.Dispose();}
+        public void Dispose()
+        {
+            Exception? failure=null;DisposeOwnedResource(Document,ref failure);DisposeOwnedResource(lease,ref failure);
+            ThrowCleanupFailure(failure);
+        }
     }
 }

@@ -13,6 +13,7 @@ internal sealed record CadWorkspaceExpectation(Guid WorkspaceStateId, Guid? Acti
 /// <summary>UI-thread workspace authoring. Only synchronous, committed tool transitions preserve toolbox conversations.</summary>
 internal sealed class CadWorkspaceAuthoring
 {
+    internal const string ExpectationChangedMessage = "Workspace or active document changed. Inspect workspace again.";
     private readonly CadWorkspace workspace;
     private readonly ObservableCollection<CadDocumentViewModel> documents;
     private readonly Func<CadDocumentViewModel?> active;
@@ -45,7 +46,7 @@ internal sealed class CadWorkspaceAuthoring
     }
     private void Validate(CadWorkspaceExpectation expected)
     {
-        if (expected != Capture()) throw new InvalidOperationException("Workspace or active document changed. Inspect workspace again.");
+        if (expected != Capture()) throw new InvalidOperationException(ExpectationChangedMessage);
         if (!available()) throw new InvalidOperationException("Workspace is busy or shutting down.");
         if (active() is { } doc && (doc.IsDetached || doc.IsClosingRequested || doc.Session.IsClosing))
             throw new InvalidOperationException("Active document is closing or detached.");

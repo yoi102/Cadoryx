@@ -66,6 +66,15 @@ internal static class CadAgentHistoryTools
             return await CadTimelineAuthoring.ApplyAsync(document, new(author, cursor), request, token);
         }
         catch (OperationCanceledException) { throw; }
+        catch (StaleDocumentException error)
+        {
+            // A timeline item's position is not the session's current preview cursor.
+            // Return a read-only query, never infer or replace an edit expectation.
+            return JsonSerializer.Serialize(new { success = false, message = error.Message,
+                code = "stale_history_expectation",
+                recovery = new { tool = "cad_inspect", arguments = new { area = "recipes", offset = 0, limit = 1 },
+                    instruction = "Read the root documentId, stateId and cursor from this fresh inspection. Copy cursor exactly, including explicit null at the history end; do not construct it from items[].position. Review the intended action before retrying; reselect any edited feature and its current revision separately." } });
+        }
         catch (Exception error) when (error is JsonException or ArgumentException or InvalidOperationException or CadValidationException or KeyNotFoundException or StaleDocumentException)
         { return JsonSerializer.Serialize(new { success = false, message = error.Message }); }
     }

@@ -1,0 +1,79 @@
+{
+  "recordedAt": "2026-10-13T07:50:53.841783+00:00",
+  "state": "AF1076_FULL_BUILD_BOTH_DISCOVER6652_FOCUSED436_BOTH_ACTUAL_NATIVE62_PASS",
+  "sourcePreparation": {
+    "path": "artifacts/af1076-public85-1/preparation.json",
+    "sha256": "82D3B03F4A9FABA857F5302FA45F004A9C93D3CCE5C02FBA510B8B4E2BCA20DB"
+  },
+  "inputs": 1189,
+  "overrides": [
+    "Cadoryx.ViewModels/Toolboxes/CadAgentHistoryTools.cs",
+    "Cadoryx.ViewModels/Toolboxes/CadAuthoringInspection.cs",
+    "Cadoryx.Tests/HistoryCursorFeedbackTests.cs"
+  ],
+  "publicVersion": "8.0.1-preview.85",
+  "actualDiscoveredPerConfiguration": 6652,
+  "configurationInventoriesIdentical": true,
+  "configurations": [
+    {
+      "configuration": "Release",
+      "total": 436,
+      "passed": 436,
+      "failed": 0,
+      "skipped": 0,
+      "actualNative62Matched": true,
+      "trx": {
+        "path": "capability-evidence/diagnostics/af1076-public85/release-focused.trx",
+        "sha256": "9180AC669BA93FF7037503170E820C521BBE68F6711EA505BDF4848F5C482A1E"
+      },
+      "binding": {
+        "path": "capability-evidence/diagnostics/af1076-public85/release-loaded-native.json",
+        "sha256": "E9E87914311087068CA73738E961C370704E95B906885AAF29F4B45B30E22767"
+      },
+      "newRecoveryCases": [
+        "Cadoryx.Tests.HistoryCursorFeedbackTests.StaleHistoryReceiptProvidesAReadOnlyExactCursorRecoveryWithoutApplyingTheEdit(scenario: \"changed-author-state\")",
+        "Cadoryx.Tests.HistoryCursorFeedbackTests.StaleHistoryReceiptProvidesAReadOnlyExactCursorRecoveryWithoutApplyingTheEdit(scenario: \"changed-preview-position\")",
+        "Cadoryx.Tests.HistoryCursorFeedbackTests.StaleHistoryReceiptProvidesAReadOnlyExactCursorRecoveryWithoutApplyingTheEdit(scenario: \"foreign-document\")",
+        "Cadoryx.Tests.HistoryCursorFeedbackTests.StaleHistoryReceiptProvidesAReadOnlyExactCursorRecoveryWithoutApplyingTheEdit(scenario: \"invented-cursor-at-end\")"
+      ],
+      "originalAggressiveBudgetCases": [
+        "Cadoryx.Tests.AgentEmptyResponseRecoveryTests.RecoveryDirectiveRetainsAllTwelveToolsWithTheOriginalDefaultBudgets(aggressive: False)",
+        "Cadoryx.Tests.AgentEmptyResponseRecoveryTests.RecoveryDirectiveRetainsAllTwelveToolsWithTheOriginalDefaultBudgets(aggressive: True)"
+      ]
+    },
+    {
+      "configuration": "Debug",
+      "total": 436,
+      "passed": 436,
+      "failed": 0,
+      "skipped": 0,
+      "actualNative62Matched": true,
+      "trx": {
+        "path": "capability-evidence/diagnostics/af1076-public85/debug-focused.trx",
+        "sha256": "1C91F43E86CBAC3AEB54297256B8F5C8C1F0B0D562F142DCBA491FDC9128F5D6"
+      },
+      "binding": {
+        "path": "capability-evidence/diagnostics/af1076-public85/debug-loaded-native.json",
+        "sha256": "30AAF49B73B2875596027FB25AC83A09DA30D99C3B5474BB11314BBE6F9E1AD2"
+      },
+      "newRecoveryCases": [
+        "Cadoryx.Tests.HistoryCursorFeedbackTests.StaleHistoryReceiptProvidesAReadOnlyExactCursorRecoveryWithoutApplyingTheEdit(scenario: \"changed-author-state\")",
+        "Cadoryx.Tests.HistoryCursorFeedbackTests.StaleHistoryReceiptProvidesAReadOnlyExactCursorRecoveryWithoutApplyingTheEdit(scenario: \"changed-preview-position\")",
+        "Cadoryx.Tests.HistoryCursorFeedbackTests.StaleHistoryReceiptProvidesAReadOnlyExactCursorRecoveryWithoutApplyingTheEdit(scenario: \"foreign-document\")",
+        "Cadoryx.Tests.HistoryCursorFeedbackTests.StaleHistoryReceiptProvidesAReadOnlyExactCursorRecoveryWithoutApplyingTheEdit(scenario: \"invented-cursor-at-end\")"
+      ],
+      "originalAggressiveBudgetCases": [
+        "Cadoryx.Tests.AgentEmptyResponseRecoveryTests.RecoveryDirectiveRetainsAllTwelveToolsWithTheOriginalDefaultBudgets(aggressive: False)",
+        "Cadoryx.Tests.AgentEmptyResponseRecoveryTests.RecoveryDirectiveRetainsAllTwelveToolsWithTheOriginalDefaultBudgets(aggressive: True)"
+      ]
+    }
+  ],
+  "full6652Executed": false,
+  "originalSTEP24GateClosed": false,
+  "originalProviderWorkflowReplayed": false,
+  "fullCandidateProductionApplied": false,
+  "developmentHistoryFixAppliedToProductionSource": true,
+  "AFComplete": false,
+  "cleanup": false,
+  "G": "USER_DEFERRED"
+}

@@ -1,0 +1,8 @@
+{
+  "recordedAt": "2026-10-13T07:37:01.7884499+00:00",
+  "state": "FAIL_OWNED_D6_WINDOW_OBSERVER",
+  "error": "System.InvalidOperationException: Required actual control trace incomplete.\r\n   at WindowHost.ObserveAsync(App app, String output, String fixture, String language, String route, String phase)\r\n   at WindowHost.\u003C\u003Ec__DisplayClass6_0.\u003C\u003CMain\u003Eb__1\u003Ed.MoveNext() in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1074-public85-1\\window-observer-revision3\\WindowHost.cs:line 54",
+  "desktopInputInjectedByHost": false,
+  "cleanup": false,
+  "AF": "ACTIVE"
+}

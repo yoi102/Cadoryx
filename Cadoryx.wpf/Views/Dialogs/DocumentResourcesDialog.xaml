@@ -3,7 +3,7 @@
  xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
  xmlns:sys="clr-namespace:System;assembly=mscorlib"
  xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls" xmlns:r="clr-namespace:Cadoryx.Lang;assembly=Cadoryx.Lang"
- xmlns:cv="clr-namespace:Cadoryx.wpf.Converters"
+ xmlns:cv="clr-namespace:Cadoryx.wpf.Converters" xmlns:local="clr-namespace:Cadoryx.wpf.Views.Dialogs"
  Width="920" Height="620" MinWidth="820" MinHeight="580"
  Background="{DynamicResource MaterialDesign.Brush.Background}"
  Foreground="{DynamicResource MaterialDesign.Brush.Foreground}">
@@ -44,16 +44,17 @@
    <TabItem Header="{I18N {x:Static r:LangKeys.Materials}}">
     <Grid Margin="0,12"><Grid.ColumnDefinitions><ColumnDefinition Width="*"/><ColumnDefinition Width="340"/></Grid.ColumnDefinitions>
      <ListBox ItemsSource="{Binding Materials}" SelectedItem="{Binding SelectedMaterial}" DisplayMemberPath="Name"/>
-     <StackPanel Grid.Column="1" Margin="20,0,0,0">
+     <ScrollViewer Grid.Column="1" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled"><StackPanel Margin="20,0,12,0">
       <TextBlock Text="{I18N {x:Static r:LangKeys.Name}}"/><TextBox x:Name="MaterialNameInput" Text="{Binding MaterialName,UpdateSourceTrigger=PropertyChanged}" Margin="0,6,0,12"/>
       <TextBlock Text="{I18N {x:Static r:LangKeys.DensityKgPerM3}}"/>
-      <mah:NumericUpDown x:Name="DensityInput" Value="{Binding DensityKgPerM3,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Minimum="0.000001" Margin="0,6,0,12"/>
+      <mah:NumericUpDown x:Name="DensityInput" StringFormat="G15" Value="{Binding DensityKgPerM3,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Minimum="0.000001" Margin="0,6,0,12"/>
       <TextBlock Text="{I18N {x:Static r:LangKeys.MaterialDensityHint}}" TextWrapping="Wrap" Margin="0,0,0,12"/>
       <StackPanel Orientation="Horizontal" Margin="0,0,0,12"><TextBlock Text="{I18N {x:Static r:LangKeys.ReferenceCount}}"/><TextBlock Text="{Binding MaterialReferences}" Margin="8,0,0,0"/></StackPanel>
+      <local:MaterialAppearanceEditor/>
       <Button Content="{I18N {x:Static r:LangKeys.AddMaterial}}" Command="{Binding AddMaterialCommand}" Margin="0,0,0,8"/>
       <UniformGrid Columns="2"><Button Content="{I18N {x:Static r:LangKeys.Apply}}" Command="{Binding ApplyMaterialCommand}" Margin="0,0,4,0"/>
        <Button Content="{I18N {x:Static r:LangKeys.Delete}}" Command="{Binding DeleteMaterialCommand}" Margin="4,0,0,0"/></UniformGrid>
-     </StackPanel>
+     </StackPanel></ScrollViewer>
     </Grid>
    </TabItem>
   </TabControl>

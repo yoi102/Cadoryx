@@ -1,0 +1,7 @@
+{
+  "recordedAt": "2026-10-12T16:48:10.2662759+00:00",
+  "error": "No connection could be made because the target machine actively refused it. (localhost:1234)",
+  "selectedModel": "prism-ml/bonsai-27b",
+  "workflowRequestsExecuted": false,
+  "originalSelectedModelAvailable": false
+}

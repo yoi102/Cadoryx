@@ -12,6 +12,8 @@ public interface ICadCommandContext
         Task.FromResult(new CadCommandResult(false,"Whole-region source reselection is unavailable in this context."));
     Task<CadCommandResult> OffsetSketchAsync(string requestJson,CancellationToken cancellationToken=default)=>
         Task.FromResult(new CadCommandResult(false,"Sketch offset is unavailable in this context."));
+    Task<CadCommandResult> EditMaterialAsync(string requestJson,CancellationToken cancellationToken=default)=>
+        Task.FromResult(new CadCommandResult(false,"Material authoring is unavailable in this context."));
     void ValidateInvocation() { }
     CadCommandResult InspectAuthoring(string area, int offset, int limit, Guid? partId = null) =>
         new(false, "Authoring inspection is unavailable in this context.");
@@ -265,7 +267,7 @@ public sealed partial class CadCommandLineService : ICadCommandLineService
     {
         // Author JSON is one argument. Preserve quotes, spaces and nested fields.
         var trimmed=input.TrimStart();var boundary=trimmed.IndexOfAny([' ', '\t', '\r', '\n']);
-        if(boundary>0&&(trimmed[..boundary].Equals("DATUM",StringComparison.OrdinalIgnoreCase)||trimmed[..boundary].Equals("MODEL",StringComparison.OrdinalIgnoreCase)||trimmed[..boundary].Equals("DRAWING",StringComparison.OrdinalIgnoreCase)||trimmed[..boundary].Equals("FILE",StringComparison.OrdinalIgnoreCase)||trimmed[..boundary].Equals("WORKSPACE",StringComparison.OrdinalIgnoreCase)||trimmed[..boundary].Equals("WS",StringComparison.OrdinalIgnoreCase)||trimmed[..boundary].Equals("SKETCH_CONTACT",StringComparison.OrdinalIgnoreCase)||trimmed[..boundary].Equals("SKETCH_CURVATURE",StringComparison.OrdinalIgnoreCase)||trimmed[..boundary].Equals("SKETCH_FINITE_CONTACT",StringComparison.OrdinalIgnoreCase)||trimmed[..boundary].Equals("SKETCH_OFFSET",StringComparison.OrdinalIgnoreCase)||trimmed[..boundary].Equals("SKETCH_REGION_SOURCES",StringComparison.OrdinalIgnoreCase))&&
+        if(boundary>0&&(trimmed[..boundary].Equals("MATERIAL",StringComparison.OrdinalIgnoreCase)||trimmed[..boundary].Equals("DATUM",StringComparison.OrdinalIgnoreCase)||trimmed[..boundary].Equals("MODEL",StringComparison.OrdinalIgnoreCase)||trimmed[..boundary].Equals("DRAWING",StringComparison.OrdinalIgnoreCase)||trimmed[..boundary].Equals("FILE",StringComparison.OrdinalIgnoreCase)||trimmed[..boundary].Equals("WORKSPACE",StringComparison.OrdinalIgnoreCase)||trimmed[..boundary].Equals("WS",StringComparison.OrdinalIgnoreCase)||trimmed[..boundary].Equals("SKETCH_CONTACT",StringComparison.OrdinalIgnoreCase)||trimmed[..boundary].Equals("SKETCH_CURVATURE",StringComparison.OrdinalIgnoreCase)||trimmed[..boundary].Equals("SKETCH_FINITE_CONTACT",StringComparison.OrdinalIgnoreCase)||trimmed[..boundary].Equals("SKETCH_OFFSET",StringComparison.OrdinalIgnoreCase)||trimmed[..boundary].Equals("SKETCH_REGION_SOURCES",StringComparison.OrdinalIgnoreCase))&&
             trimmed[(boundary+1)..].TrimStart().StartsWith('{'))return [trimmed[..boundary],trimmed[(boundary+1)..].Trim()];
         var result = new List<string>(); var current = new StringBuilder(); bool quoted = false;
         foreach (char ch in input)

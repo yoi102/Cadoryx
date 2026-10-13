@@ -36,7 +36,8 @@ public sealed partial class OcctGeometryKernel:IExtrusionLimitResolver
             if(map.Topology.Count(t=>t.Kind==ShapeKind.Solid)!=1)
                 throw new CadValidationException("Select exactly one solid target for extrusion.");
         }
-        if(options.Termination==ExtrusionTermination.FiniteSurface)return EvaluateFiniteSurfaceExtrusion(recipe,source!,assets,token);
+        if(options.Termination==ExtrusionTermination.FiniteSurface)return options.Operation==ExtrusionOperation.NewBody?
+            EvaluateFiniteSurfaceNewBody(recipe,assets,token):EvaluateFiniteSurfaceExtrusion(recipe,source!,assets,token);
         RigidTransform3d? limit=options.LimitPlane;
         if(options.LimitFace is {} selection)
         {

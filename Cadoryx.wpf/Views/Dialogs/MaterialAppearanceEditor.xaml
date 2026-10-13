@@ -1,0 +1,72 @@
+<UserControl x:Class="Cadoryx.wpf.Views.Dialogs.MaterialAppearanceEditor"
+ xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+ xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls" xmlns:r="clr-namespace:Cadoryx.Lang;assembly=Cadoryx.Lang"
+ xmlns:cv="clr-namespace:Cadoryx.wpf.Converters">
+ <UserControl.Resources>
+  <DataTemplate x:Key="SurfaceEditor">
+   <StackPanel>
+    <TextBlock Text="{I18N {x:Static r:LangKeys.Color}}"/>
+    <mah:ColorPicker SelectedColor="{Binding ColorArgb,Mode=TwoWay,Converter={x:Static cv:UIntColorToMediaColorConverter.Instance}}" IsAlphaChannelVisible="False" Margin="0,6,0,12"/>
+    <UniformGrid Columns="2">
+     <StackPanel Margin="0,0,6,10"><TextBlock Text="{I18N {x:Static r:LangKeys.MaterialOpacity}}"/><mah:NumericUpDown Value="{Binding Alpha,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Minimum="0" Maximum="1" Interval="0.05"/></StackPanel>
+     <StackPanel Margin="6,0,0,10"><TextBlock Text="{I18N {x:Static r:LangKeys.MaterialMetallic}}"/><mah:NumericUpDown Value="{Binding Metallic,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Minimum="0" Maximum="1" Interval="0.05"/></StackPanel>
+     <StackPanel Margin="0,0,6,10"><TextBlock Text="{I18N {x:Static r:LangKeys.MaterialRoughness}}"/><mah:NumericUpDown Value="{Binding Roughness,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Minimum="0" Maximum="1" Interval="0.05"/></StackPanel>
+     <StackPanel Margin="6,0,0,10"><TextBlock Text="{I18N {x:Static r:LangKeys.MaterialRefraction}}"/><mah:NumericUpDown Value="{Binding IndexOfRefraction,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Minimum="1" Maximum="3" Interval="0.05"/></StackPanel>
+    </UniformGrid>
+    <TextBlock Text="{I18N {x:Static r:LangKeys.MaterialEmission}}"/><mah:NumericUpDown Value="{Binding Emission,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Minimum="0" Maximum="100" Interval="0.1" Margin="0,4,0,12"/>
+   </StackPanel>
+  </DataTemplate>
+ </UserControl.Resources>
+ <StackPanel>
+  <CheckBox Content="{I18N {x:Static r:LangKeys.MaterialEnableAppearance}}" IsChecked="{Binding MaterialAppearance.Enabled}" Margin="0,10,0,8"/>
+  <StackPanel DataContext="{Binding MaterialAppearance}" IsEnabled="{Binding Enabled}">
+   <CheckBox Content="{I18N {x:Static r:LangKeys.MaterialOverrideSource}}" IsChecked="{Binding OverrideSourceStyles}" Margin="0,0,0,6"/>
+   <TextBlock Text="{I18N {x:Static r:LangKeys.MaterialSourceStylesHint}}" TextWrapping="Wrap" Margin="0,0,0,12"/>
+   <TextBlock Text="{I18N {x:Static r:LangKeys.MaterialShading}}"/>
+   <ComboBox ItemsSource="{Binding ShadingChoices}" SelectedValue="{Binding Shading}" SelectedValuePath="Value" DisplayMemberPath="Name" Margin="0,4,0,12"/>
+   <ContentControl Content="{Binding Front}" ContentTemplate="{StaticResource SurfaceEditor}"/>
+   <CheckBox Content="{I18N {x:Static r:LangKeys.MaterialSeparateBack}}" IsChecked="{Binding DistinguishSides}" Margin="0,0,0,8"/>
+   <Expander Header="{I18N {x:Static r:LangKeys.MaterialBackFace}}" IsEnabled="{Binding DistinguishSides}" Margin="0,0,0,12">
+    <ContentControl Content="{Binding Back}" ContentTemplate="{StaticResource SurfaceEditor}" Margin="0,8,0,0"/>
+   </Expander>
+   <TextBlock Text="{I18N {x:Static r:LangKeys.MaterialCulling}}"/>
+   <ComboBox ItemsSource="{Binding CullingChoices}" SelectedValue="{Binding Culling}" SelectedValuePath="Value" DisplayMemberPath="Name" Margin="0,4,0,12"/>
+   <TextBlock Text="{I18N {x:Static r:LangKeys.MaterialTransparency}}"/>
+   <ComboBox ItemsSource="{Binding AlphaModeChoices}" SelectedValue="{Binding AlphaMode}" SelectedValuePath="Value" DisplayMemberPath="Name" Margin="0,4,0,12"/>
+   <TextBlock Text="{I18N {x:Static r:LangKeys.MaterialAlphaCutoff}}"/>
+   <mah:NumericUpDown Value="{Binding AlphaCutoff,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Minimum="0" Maximum="1" Interval="0.05" Margin="0,4,0,12"/>
+  </StackPanel>
+  <TextBlock Text="{I18N {x:Static r:LangKeys.MaterialTexture}}"/>
+  <TextBlock Text="{Binding MaterialAppearance.TextureSummary}" Margin="0,4,0,6"/>
+  <UniformGrid Columns="2" Margin="0,0,0,12">
+   <Button Content="{I18N {x:Static r:LangKeys.MaterialImportTexture}}" Command="{Binding ImportMaterialTextureCommand}" Margin="0,0,4,0"/>
+   <Button Content="{I18N {x:Static r:LangKeys.MaterialClearTexture}}" Command="{Binding ClearMaterialTextureCommand}" Margin="4,0,0,0"/>
+  </UniformGrid>
+  <Expander Header="{I18N {x:Static r:LangKeys.MaterialTextureMapping}}" DataContext="{Binding MaterialAppearance}" IsEnabled="{Binding Enabled}" Margin="0,0,0,12">
+   <StackPanel Margin="0,8,0,0">
+    <CheckBox Content="{I18N {x:Static r:LangKeys.MaterialPlanarMapping}}" IsChecked="{Binding Planar}" Margin="0,0,0,8"/>
+    <TextBlock Text="{I18N {x:Static r:LangKeys.MaterialMappingPlanesHint}}" TextWrapping="Wrap" Margin="0,0,0,8"/>
+    <UniformGrid Columns="2" IsEnabled="{Binding Planar}">
+     <StackPanel Margin="0,0,6,8"><TextBlock Text="S · X"/><mah:NumericUpDown Value="{Binding PlaneSA,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/></StackPanel>
+     <StackPanel Margin="6,0,0,8"><TextBlock Text="T · X"/><mah:NumericUpDown Value="{Binding PlaneTA,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/></StackPanel>
+     <StackPanel Margin="0,0,6,8"><TextBlock Text="S · Y"/><mah:NumericUpDown Value="{Binding PlaneSB,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/></StackPanel>
+     <StackPanel Margin="6,0,0,8"><TextBlock Text="T · Y"/><mah:NumericUpDown Value="{Binding PlaneTB,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/></StackPanel>
+     <StackPanel Margin="0,0,6,8"><TextBlock Text="S · Z"/><mah:NumericUpDown Value="{Binding PlaneSC,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/></StackPanel>
+     <StackPanel Margin="6,0,0,8"><TextBlock Text="T · Z"/><mah:NumericUpDown Value="{Binding PlaneTC,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/></StackPanel>
+     <StackPanel Margin="0,0,6,8"><TextBlock Text="S · D"/><mah:NumericUpDown Value="{Binding PlaneSD,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/></StackPanel>
+     <StackPanel Margin="6,0,0,8"><TextBlock Text="T · D"/><mah:NumericUpDown Value="{Binding PlaneTD,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/></StackPanel>
+    </UniformGrid>
+    <UniformGrid Columns="2">
+     <StackPanel Margin="0,0,6,8"><TextBlock Text="{I18N {x:Static r:LangKeys.MaterialScaleS}}"/><mah:NumericUpDown Value="{Binding ScaleS,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/></StackPanel>
+     <StackPanel Margin="6,0,0,8"><TextBlock Text="{I18N {x:Static r:LangKeys.MaterialScaleT}}"/><mah:NumericUpDown Value="{Binding ScaleT,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/></StackPanel>
+     <StackPanel Margin="0,0,6,8"><TextBlock Text="{I18N {x:Static r:LangKeys.MaterialTranslationS}}"/><mah:NumericUpDown Value="{Binding TranslationS,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/></StackPanel>
+     <StackPanel Margin="6,0,0,8"><TextBlock Text="{I18N {x:Static r:LangKeys.MaterialTranslationT}}"/><mah:NumericUpDown Value="{Binding TranslationT,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/></StackPanel>
+    </UniformGrid>
+    <TextBlock Text="{I18N {x:Static r:LangKeys.MaterialRotation}}"/><mah:NumericUpDown Value="{Binding RotationDegrees,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Margin="0,4,0,12"/>
+    <CheckBox Content="{I18N {x:Static r:LangKeys.MaterialRepeat}}" IsChecked="{Binding Repeat}" Margin="0,0,0,8"/>
+    <TextBlock Text="{I18N {x:Static r:LangKeys.MaterialSampling}}"/><ComboBox ItemsSource="{Binding FilterChoices}" SelectedValue="{Binding Filter}" SelectedValuePath="Value" DisplayMemberPath="Name" Margin="0,4,0,12"/>
+    <TextBlock Text="{I18N {x:Static r:LangKeys.MaterialAnisotropy}}"/><ComboBox ItemsSource="{Binding AnisotropyChoices}" SelectedValue="{Binding Anisotropy}" SelectedValuePath="Value" DisplayMemberPath="Name" Margin="0,4,0,12"/>
+   </StackPanel>
+  </Expander>
+ </StackPanel>
+</UserControl>

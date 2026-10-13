@@ -45,7 +45,7 @@ internal sealed partial class SketchEquationSystem
     {
         this.regionContext=regionContext;this.regionToken=regionToken;
         if(!sketch.RegionOffsets.IsEmpty&&regionContext is null)throw new NotSupportedException("Whole-region equations require a complete exact evaluator.");
-        this.sketch=sketch;this.options=options;regionChart=regionContext is null?null:SketchRegionSolveChart.TryCreateForEquations(sketch);lines=sketch.Lines.ToDictionary(l=>l.Id);
+        this.sketch=sketch;this.options=options;regionChart=regionContext is null?null:SketchRegionSolveChart.TryCreateForAllEquations(sketch);lines=sketch.Lines.ToDictionary(l=>l.Id);
         arcs=sketch.Arcs.ToDictionary(a=>a.Id);endpointTangencies=sketch.Constraints.OfType<EndpointTangentConstraint>().Where(c=>c.IsEnabled)
             .Concat(sketch.Constraints.OfType<EndpointCurvatureConstraint>().Where(c=>c.IsEnabled)
                 .Select(c=>new EndpointTangentConstraint(c.Id,c.A,c.B,c.Joint,c.Branch))).ToArray();
@@ -105,11 +105,13 @@ internal sealed partial class SketchEquationSystem
             tangentSigns[t.Id]=(b.X-a.X)*(center.Y-a.Y)-(b.Y-a.Y)*(center.X-a.X)<0?-1:1;
         }
         Initial=initial.ToArray();var groups=ImmutableArray.CreateBuilder<EquationGroup>();int offset=0;
-        // With only endpoint structure and explicit point/circle prescriptions,
-        // those prescribed coordinates cannot need toleranced motion to satisfy
-        // another relation. General contact systems retain the coupled solve.
+        // Fully prescribed endpoint authors have no free source coordinate.
+        // Keep their exact explicit values while solving generated endpoints;
+        // all relation/structural rows and final native replay still remain.
+        // Partially prescribed authors and general contacts retain the coupled solve.
         bool structuralOnly=sketch.ExpressionCurves.Any(c=>c.Endpoints is not null)&&
-            sketch.Constraints.Where(c=>c.IsEnabled).All(c=>c is FixPointConstraint||c is RadiusConstraint r&&radiusIndices.ContainsKey(r.Circle));
+            (sketch.Constraints.Where(c=>c.IsEnabled).All(c=>c is FixPointConstraint||c is RadiusConstraint r&&radiusIndices.ContainsKey(r.Circle))||
+             FullyPrescribedEndpointAuthors(sketch));
         prescribedPoints=sketch.Constraints.OfType<FixPointConstraint>().Where(c=>c.IsEnabled&&structuralOnly)
             .GroupBy(c=>c.Point).Where(g=>g.Select(c=>c.Position).Distinct().Count()==1)
             .ToDictionary(g=>g.Key,g=>g.First().Position);

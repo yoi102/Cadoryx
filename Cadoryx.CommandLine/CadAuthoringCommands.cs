@@ -16,6 +16,7 @@ public sealed partial class CadCommandLineService
         RegisterModelCommands();
         RegisterDrawingCommands();
         RegisterFileCommands();
+        RegisterMaterialCommands();
         RegisterWorkspaceCommands();
         Register("SKETCH_REGION_SOURCES","","SKETCH_REGION_SOURCES {action:reselect_region_sources,sketchId,revision,id,sources}",
             "Explicit complete whole-region source map: id=group GUID, sources=ordered arrays for all loops and slots. Retains only proved author roles and rejects retained region parameters. Uses captured document/state.",async(args,context,token)=>

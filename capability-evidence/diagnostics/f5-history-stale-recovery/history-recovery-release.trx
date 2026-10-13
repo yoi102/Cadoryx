@@ -1,0 +1,406 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TestRun id="e9844e3e-650a-4036-bd33-a58dd64fa5b3" name="yoiri@YOIRI 2026-10-13 16:41:09" runUser="YOIRI\yoiri" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Times creation="2026-10-13T16:41:09.0225424+09:00" queuing="2026-10-13T16:41:09.0225427+09:00" start="2026-10-13T16:41:04.6703499+09:00" finish="2026-10-13T16:41:10.2218225+09:00" />
+  <TestSettings name="default" id="96c8ff30-8aae-4f5a-a52d-ac33a5c48cc2">
+    <Deployment runDeploymentRoot="yoiri_YOIRI_2026-10-13_16_41_09" />
+  </TestSettings>
+  <Results>
+    <UnitTestResult executionId="3eb62173-4c01-44b3-8da3-d02f573135db" testId="42a0d38f-17cf-35fc-d1b2-f9599e312c80" testName="Cadoryx.Tests.HistoryAgentTests.QueuedPreviewRechecksTokenAuthorStateAndCursorUnderTheSessionLock(returnEnd: True, boundary: &quot;cancel&quot;)" computerName="YOIRI" duration="00:00:00.0077270" startTime="2026-10-13T16:41:09.8208881+09:00" endTime="2026-10-13T16:41:09.8288101+09:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="3eb62173-4c01-44b3-8da3-d02f573135db" />
+    <UnitTestResult executionId="66f1d784-529f-4503-a425-57a568bfbf38" testId="d5bbcfb3-5757-2d4d-cadd-bc3eec604128" testName="Cadoryx.Tests.HistoryCursorFeedbackTests.NonObjectCursorIsRejectedWithItsPathAndDoesNotReturnToEnd(cursorJson: &quot;\&quot;not-an-object\&quot;&quot;)" computerName="YOIRI" duration="00:00:00.0048922" startTime="2026-10-13T16:41:10.0784421+09:00" endTime="2026-10-13T16:41:10.0832091+09:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="66f1d784-529f-4503-a425-57a568bfbf38" />
+    <UnitTestResult executionId="44c6fd69-e4df-4f8a-b4f7-b05d50bd9aa7" testId="f70edbcd-5b46-25dc-80a7-e792fade7635" testName="Cadoryx.Tests.HistoryCursorFeedbackTests.InvalidNestedFieldReportsCursorPathsWithoutChangingTheRealPreview(field: &quot;partId&quot;, mutation: &quot;missing&quot;)" computerName="YOIRI" duration="00:00:00.0038502" startTime="2026-10-13T16:41:09.9473042+09:00" endTime="2026-10-13T16:41:09.9513398+09:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="44c6fd69-e4df-4f8a-b4f7-b05d50bd9aa7" />
+    <UnitTestResult executionId="8d1c6ab7-a56a-44e8-b73d-09d91bae1475" testId="a9218381-eadd-ecde-91cd-afb4d39c7438" testName="Cadoryx.Tests.HistoryCursorFeedbackTests.InvalidNestedFieldReportsCursorPathsWithoutChangingTheRealPreview(field: &quot;force&quot;, mutation: &quot;unknown&quot;)" computerName="YOIRI" duration="00:00:00.0053968" startTime="2026-10-13T16:41:09.8974592+09:00" endTime="2026-10-13T16:41:09.9030018+09:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="8d1c6ab7-a56a-44e8-b73d-09d91bae1475" />
+    <UnitTestResult executionId="68701fe4-5e55-402d-a039-8a6bf7cb2890" testId="c6d7ada9-8264-89cb-2d63-53ec31ab93a1" testName="Cadoryx.Tests.HistoryAgentTests.StructuredSuppressionRestoreAndLegalChronologyReuseNativeHistoryAndUndo" computerName="YOIRI" duration="00:00:00.7184389" startTime="2026-10-13T16:41:09.0774626+09:00" endTime="2026-10-13T16:41:09.7958516+09:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="68701fe4-5e55-402d-a039-8a6bf7cb2890" />
+    <UnitTestResult executionId="64b89e41-c2f1-4661-a4f3-6503456a489d" testId="df07aecf-f6f3-ed0c-75b8-4fa5911060c9" testName="Cadoryx.Tests.HistoryCursorFeedbackTests.StaleHistoryReceiptProvidesAReadOnlyExactCursorRecoveryWithoutApplyingTheEdit(scenario: &quot;invented-cursor-at-end&quot;)" computerName="YOIRI" duration="00:00:00.0047977" startTime="2026-10-13T16:41:10.0254114+09:00" endTime="2026-10-13T16:41:10.0302582+09:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="64b89e41-c2f1-4661-a4f3-6503456a489d">
+      <Output>
+        <ErrorInfo>
+          <Message>System.Collections.Generic.KeyNotFoundException : The given key was not present in the dictionary.</Message>
+          <StackTrace>   at System.Text.Json.JsonElement.GetProperty(String propertyName)&#xD;
+   at Cadoryx.Tests.HistoryCursorFeedbackTests.StaleHistoryReceiptProvidesAReadOnlyExactCursorRecoveryWithoutApplyingTheEdit(String scenario) in C:\Users\yoiri\source\repos\Cadoryx\Cadoryx.Tests\HistoryCursorFeedbackTests.cs:line 185&#xD;
+   at Cadoryx.Tests.HistoryCursorFeedbackTests.StaleHistoryReceiptProvidesAReadOnlyExactCursorRecoveryWithoutApplyingTheEdit(String scenario) in C:\Users\yoiri\source\repos\Cadoryx\Cadoryx.Tests\HistoryCursorFeedbackTests.cs:line 194&#xD;
+--- End of stack trace from previous location ---</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="71eca024-fda0-4326-8464-80aad6028ef3" testId="15b320f5-e64a-3e94-468f-6d12341065b1" testName="Cadoryx.Tests.HistoryCursorFeedbackTests.InvalidNestedFieldReportsCursorPathsWithoutChangingTheRealPreview(field: &quot;position&quot;, mutation: &quot;missing&quot;)" computerName="YOIRI" duration="00:00:00.0040530" startTime="2026-10-13T16:41:09.9215895+09:00" endTime="2026-10-13T16:41:09.9258659+09:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="71eca024-fda0-4326-8464-80aad6028ef3" />
+    <UnitTestResult executionId="69e8b879-b377-4ab1-9444-82aceddcc21f" testId="697b4f2e-d2b1-6148-9bf8-70f510604a13" testName="Cadoryx.Tests.HistoryAgentTests.QueuedPreviewRechecksTokenAuthorStateAndCursorUnderTheSessionLock(returnEnd: True, boundary: &quot;cursor&quot;)" computerName="YOIRI" duration="00:00:00.0087379" startTime="2026-10-13T16:41:09.8128933+09:00" endTime="2026-10-13T16:41:09.8207599+09:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="69e8b879-b377-4ab1-9444-82aceddcc21f" />
+    <UnitTestResult executionId="916192db-1ecb-4ff0-bd1e-ca4442674e12" testId="350bfdf4-d89c-8d42-c7a5-6aeecbde8f25" testName="Cadoryx.Tests.HistoryCursorFeedbackTests.InvalidNestedFieldReportsCursorPathsWithoutChangingTheRealPreview(field: &quot;partId&quot;, mutation: &quot;number&quot;)" computerName="YOIRI" duration="00:00:00.0038944" startTime="2026-10-13T16:41:09.9346997+09:00" endTime="2026-10-13T16:41:09.9387418+09:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="916192db-1ecb-4ff0-bd1e-ca4442674e12" />
+    <UnitTestResult executionId="45c586ae-b135-45fa-b599-28c76109ce76" testId="8d70c674-b3f0-d317-e308-da365daf4b17" testName="Cadoryx.Tests.HistoryAgentTests.MalformedPreviewArgumentsPreserveAuthorAndDisplayState(mutation: &quot;position-type&quot;)" computerName="YOIRI" duration="00:00:00.0110557" startTime="2026-10-13T16:41:09.0154626+09:00" endTime="2026-10-13T16:41:09.0235387+09:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="45c586ae-b135-45fa-b599-28c76109ce76" />
+    <UnitTestResult executionId="bb8202d2-2276-4cd4-8671-7bb9834ef0bc" testId="f0207494-e709-83b7-834d-0d3dbba55b50" testName="Cadoryx.Tests.HistoryCursorFeedbackTests.ExplicitNullIsAcceptedOnlyWhenItMatchesTheActualHistoryEnd" computerName="YOIRI" duration="00:00:00.0051839" startTime="2026-10-13T16:41:10.0886120+09:00" endTime="2026-10-13T16:41:10.0939819+09:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="bb8202d2-2276-4cd4-8671-7bb9834ef0bc" />
+    <UnitTestResult executionId="097263a2-f30d-411a-930c-a610db085f8d" testId="ef966f9b-2f4a-f18d-e6e1-d59aa7d8ed05" testName="Cadoryx.Tests.HistoryAgentTests.MalformedPreviewArgumentsPreserveAuthorAndDisplayState(mutation: &quot;cursor-extra&quot;)" computerName="YOIRI" duration="00:00:00.0159820" startTime="2026-10-13T16:41:09.0317957+09:00" endTime="2026-10-13T16:41:09.0481584+09:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="097263a2-f30d-411a-930c-a610db085f8d" />
+    <UnitTestResult executionId="c3acf22c-a180-4384-a6c6-871eb902ca71" testId="278455b9-9551-c694-0b7e-536eb2f6e50f" testName="Cadoryx.Tests.HistoryAgentTests.MalformedPreviewArgumentsPreserveAuthorAndDisplayState(mutation: &quot;foreign-state&quot;)" computerName="YOIRI" duration="00:00:00.0106853" startTime="2026-10-13T16:41:09.0566596+09:00" endTime="2026-10-13T16:41:09.0675320+09:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="c3acf22c-a180-4384-a6c6-871eb902ca71" />
+    <UnitTestResult executionId="bba06b7d-8b49-4acf-a222-d5c173169c5d" testId="ee8f4fbd-9bed-7940-41db-b343a4f5b3cf" testName="Cadoryx.Tests.HistoryAgentTests.QueuedPreviewRechecksTokenAuthorStateAndCursorUnderTheSessionLock(returnEnd: True, boundary: &quot;state&quot;)" computerName="YOIRI" duration="00:00:00.0154321" startTime="2026-10-13T16:41:09.7960463+09:00" endTime="2026-10-13T16:41:09.8116546+09:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="bba06b7d-8b49-4acf-a222-d5c173169c5d" />
+    <UnitTestResult executionId="4ad6e8ae-eb00-49f7-9d0f-62304fb53520" testId="6a3d15ca-534c-f352-9f1a-f3eae6c0e15a" testName="Cadoryx.Tests.HistoryCursorFeedbackTests.InvalidNestedFieldReportsCursorPathsWithoutChangingTheRealPreview(field: &quot;stateId&quot;, mutation: &quot;duplicate&quot;)" computerName="YOIRI" duration="00:00:00.0040660" startTime="2026-10-13T16:41:09.9650943+09:00" endTime="2026-10-13T16:41:09.9693800+09:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="4ad6e8ae-eb00-49f7-9d0f-62304fb53520" />
+    <UnitTestResult executionId="36cb630d-b678-4bf3-bc16-ae59da10ae08" testId="1e3faec1-7853-fc7d-ef46-c5ae32934962" testName="Cadoryx.Tests.HistoryAgentTests.MalformedPreviewArgumentsPreserveAuthorAndDisplayState(mutation: &quot;wrong-part&quot;)" computerName="YOIRI" duration="00:00:00.0085932" startTime="2026-10-13T16:41:09.0676716+09:00" endTime="2026-10-13T16:41:09.0764416+09:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="36cb630d-b678-4bf3-bc16-ae59da10ae08" />
+    <UnitTestResult executionId="f4d5f59d-7c98-4e43-b8b1-8d58b9c1dc53" testId="e76084c1-0b08-fc04-224c-1e01be745cc9" testName="Cadoryx.Tests.HistoryCursorFeedbackTests.InvalidNestedFieldReportsCursorPathsWithoutChangingTheRealPreview(field: &quot;partId&quot;, mutation: &quot;invalid&quot;)" computerName="YOIRI" duration="00:00:00.0047516" startTime="2026-10-13T16:41:09.9514830+09:00" endTime="2026-10-13T16:41:09.9564172+09:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="f4d5f59d-7c98-4e43-b8b1-8d58b9c1dc53" />
+    <UnitTestResult executionId="28ab1f03-8866-44b4-a9ce-7dbd5c3013dd" testId="2e516adb-249b-3fe9-8f64-8812c4c22a85" testName="Cadoryx.Tests.HistoryCursorFeedbackTests.InvalidNestedFieldReportsCursorPathsWithoutChangingTheRealPreview(field: &quot;position&quot;, mutation: &quot;negative&quot;)" computerName="YOIRI" duration="00:00:00.0039522" startTime="2026-10-13T16:41:09.9388608+09:00" endTime="2026-10-13T16:41:09.9429964+09:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="28ab1f03-8866-44b4-a9ce-7dbd5c3013dd" />
+    <UnitTestResult executionId="6d1a4310-4224-42f2-8d18-38a541899ca7" testId="804316d4-8be7-1f14-ee72-df0f7feb1ac0" testName="Cadoryx.Tests.HistoryCursorFeedbackTests.StaleHistoryReceiptProvidesAReadOnlyExactCursorRecoveryWithoutApplyingTheEdit(scenario: &quot;changed-author-state&quot;)" computerName="YOIRI" duration="00:00:00.0085205" startTime="2026-10-13T16:41:10.0306340+09:00" endTime="2026-10-13T16:41:10.0392666+09:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="6d1a4310-4224-42f2-8d18-38a541899ca7">
+      <Output>
+        <ErrorInfo>
+          <Message>System.Collections.Generic.KeyNotFoundException : The given key was not present in the dictionary.</Message>
+          <StackTrace>   at System.Text.Json.JsonElement.GetProperty(String propertyName)&#xD;
+   at Cadoryx.Tests.HistoryCursorFeedbackTests.StaleHistoryReceiptProvidesAReadOnlyExactCursorRecoveryWithoutApplyingTheEdit(String scenario) in C:\Users\yoiri\source\repos\Cadoryx\Cadoryx.Tests\HistoryCursorFeedbackTests.cs:line 185&#xD;
+   at Cadoryx.Tests.HistoryCursorFeedbackTests.StaleHistoryReceiptProvidesAReadOnlyExactCursorRecoveryWithoutApplyingTheEdit(String scenario) in C:\Users\yoiri\source\repos\Cadoryx\Cadoryx.Tests\HistoryCursorFeedbackTests.cs:line 194&#xD;
+--- End of stack trace from previous location ---</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="a4b3a6da-4c3e-406d-90aa-f45d1928d22e" testId="11f94871-4c09-6213-6ce1-3090df20e154" testName="Cadoryx.Tests.HistoryCursorFeedbackTests.InvalidNestedFieldReportsCursorPathsWithoutChangingTheRealPreview(field: &quot;position&quot;, mutation: &quot;null&quot;)" computerName="YOIRI" duration="00:00:00.0041190" startTime="2026-10-13T16:41:09.9171566+09:00" endTime="2026-10-13T16:41:09.9214645+09:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="a4b3a6da-4c3e-406d-90aa-f45d1928d22e" />
+    <UnitTestResult executionId="9bded5b9-f113-402a-8871-9bfa9b817012" testId="4909f71c-84d0-6503-734e-31c95d4ebdf3" testName="Cadoryx.Tests.HistoryCursorFeedbackTests.InvalidNestedFieldReportsCursorPathsWithoutChangingTheRealPreview(field: &quot;position&quot;, mutation: &quot;fraction&quot;)" computerName="YOIRI" duration="00:00:00.0040758" startTime="2026-10-13T16:41:09.9607148+09:00" endTime="2026-10-13T16:41:09.9649774+09:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="9bded5b9-f113-402a-8871-9bfa9b817012" />
+    <UnitTestResult executionId="22ebbe5e-b6e2-4cdc-aa05-7da2193b4aca" testId="4fe0a310-c7ab-25e2-0d6a-a6ede82ace51" testName="Cadoryx.Tests.HistoryCursorFeedbackTests.ExactCursorReturnsToEndButValidStaleCursorCannotBypassTheSessionGuard" computerName="YOIRI" duration="00:00:00.0114223" startTime="2026-10-13T16:41:10.0513775+09:00" endTime="2026-10-13T16:41:10.0631475+09:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="22ebbe5e-b6e2-4cdc-aa05-7da2193b4aca" />
+    <UnitTestResult executionId="5ef3e552-94b1-4d9f-84d4-8390ccfc8a68" testId="43d69054-90d5-d9b6-5a1a-d2c0dcd6a3a1" testName="Cadoryx.Tests.HistoryAgentTests.QueuedPreviewRechecksTokenAuthorStateAndCursorUnderTheSessionLock(returnEnd: False, boundary: &quot;cancel&quot;)" computerName="YOIRI" duration="00:00:00.0074530" startTime="2026-10-13T16:41:09.8428212+09:00" endTime="2026-10-13T16:41:09.8504991+09:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="5ef3e552-94b1-4d9f-84d4-8390ccfc8a68" />
+    <UnitTestResult executionId="9e5c7416-0801-4494-bfc0-7b934dff0fe6" testId="928b77ed-8b06-f1e5-0f72-39c44f296ec5" testName="Cadoryx.Tests.HistoryCursorFeedbackTests.NonObjectCursorIsRejectedWithItsPathAndDoesNotReturnToEnd(cursorJson: &quot;[]&quot;)" computerName="YOIRI" duration="00:00:00.0054176" startTime="2026-10-13T16:41:10.0635203+09:00" endTime="2026-10-13T16:41:10.0688507+09:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="9e5c7416-0801-4494-bfc0-7b934dff0fe6" />
+    <UnitTestResult executionId="3fd4ca55-0573-4c03-84da-1266b2f69878" testId="c3aed692-e56f-306d-3543-1f82feb01750" testName="Cadoryx.Tests.HistoryCursorFeedbackTests.InvalidNestedFieldReportsCursorPathsWithoutChangingTheRealPreview(field: &quot;stateId&quot;, mutation: &quot;number&quot;)" computerName="YOIRI" duration="00:00:00.0041653" startTime="2026-10-13T16:41:09.9034737+09:00" endTime="2026-10-13T16:41:09.9074430+09:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="3fd4ca55-0573-4c03-84da-1266b2f69878" />
+    <UnitTestResult executionId="e2a2937a-5800-42d6-be79-ed501c67776c" testId="e2d36a02-fec1-4b54-94f8-f9d448f4fa91" testName="Cadoryx.Tests.HistoryAgentTests.QueuedPreviewRechecksTokenAuthorStateAndCursorUnderTheSessionLock(returnEnd: False, boundary: &quot;cursor&quot;)" computerName="YOIRI" duration="00:00:00.0067014" startTime="2026-10-13T16:41:09.8289291+09:00" endTime="2026-10-13T16:41:09.8357972+09:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="e2a2937a-5800-42d6-be79-ed501c67776c" />
+    <UnitTestResult executionId="4f6762e7-15e3-4758-857b-eea9be78d207" testId="ce0dd54a-6dcc-f9fa-9554-52c0e8e29a20" testName="Cadoryx.Tests.HistoryCursorFeedbackTests.ForeignCursorStateAndCancelledRequestKeepTheRealCursorAndAssets" computerName="YOIRI" duration="00:00:00.0059828" startTime="2026-10-13T16:41:10.0396803+09:00" endTime="2026-10-13T16:41:10.0455721+09:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="4f6762e7-15e3-4758-857b-eea9be78d207" />
+    <UnitTestResult executionId="ee7d14eb-2584-48da-aee6-e83a963cc551" testId="6b0419dd-26fe-5c5f-cd42-dd48f543e237" testName="Cadoryx.Tests.HistoryCursorFeedbackTests.InvalidNestedFieldReportsCursorPathsWithoutChangingTheRealPreview(field: &quot;stateId&quot;, mutation: &quot;empty&quot;)" computerName="YOIRI" duration="00:00:00.0038981" startTime="2026-10-13T16:41:09.9565385+09:00" endTime="2026-10-13T16:41:09.9605924+09:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="ee7d14eb-2584-48da-aee6-e83a963cc551" />
+    <UnitTestResult executionId="b209686e-cc99-4b84-bd30-5964acd9bd3a" testId="98eac10b-88c1-995b-28d8-6de0c09058db" testName="Cadoryx.Tests.HistoryCursorFeedbackTests.ReturnEndRejectsRootPartIdAndDoesNotMoveItIntoCursor" computerName="YOIRI" duration="00:00:00.0090850" startTime="2026-10-13T16:41:09.8878485+09:00" endTime="2026-10-13T16:41:09.8972843+09:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="b209686e-cc99-4b84-bd30-5964acd9bd3a" />
+    <UnitTestResult executionId="d62c310e-743f-4505-987a-445ea76b0a22" testId="80503556-3f3d-9f23-a798-d129d5afb394" testName="Cadoryx.Tests.HistoryCursorFeedbackTests.RollbackRootPartIdDoesNotSupplyMissingNestedCursorPartId" computerName="YOIRI" duration="00:00:00.0049201" startTime="2026-10-13T16:41:10.0833635+09:00" endTime="2026-10-13T16:41:10.0884640+09:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="d62c310e-743f-4505-987a-445ea76b0a22" />
+    <UnitTestResult executionId="629281c3-2902-476f-8270-587dacb13a01" testId="d6614bd6-6635-4bd7-8cf8-7c5c78414c4f" testName="Cadoryx.Tests.HistoryCursorFeedbackTests.InvalidNestedFieldReportsCursorPathsWithoutChangingTheRealPreview(field: &quot;position&quot;, mutation: &quot;text&quot;)" computerName="YOIRI" duration="00:00:00.0046074" startTime="2026-10-13T16:41:09.9747526+09:00" endTime="2026-10-13T16:41:09.9797325+09:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="629281c3-2902-476f-8270-587dacb13a01" />
+    <UnitTestResult executionId="bd1923a9-e588-401d-9482-8cb5384a7a9f" testId="811e7bc3-bada-f508-22b6-95beace9d952" testName="Cadoryx.Tests.HistoryCursorFeedbackTests.InvalidNestedFieldReportsCursorPathsWithoutChangingTheRealPreview(field: &quot;partId&quot;, mutation: &quot;duplicate&quot;)" computerName="YOIRI" duration="00:00:00.0041443" startTime="2026-10-13T16:41:09.9075584+09:00" endTime="2026-10-13T16:41:09.9119544+09:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="bd1923a9-e588-401d-9482-8cb5384a7a9f" />
+    <UnitTestResult executionId="9648860b-5886-46ed-ae4c-921b7459a6c3" testId="4ca021f5-90b1-1f2c-3e44-21f4b76b9b50" testName="Cadoryx.Tests.HistoryCursorFeedbackTests.MissingCursorIsNotInferredAsNullEvenAtTheActualHistoryEnd" computerName="YOIRI" duration="00:00:00.0052933" startTime="2026-10-13T16:41:10.0457188+09:00" endTime="2026-10-13T16:41:10.0512310+09:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="9648860b-5886-46ed-ae4c-921b7459a6c3" />
+    <UnitTestResult executionId="fd23aa88-8cf4-4ae5-984a-4e76e1c800da" testId="c4ab4433-0c72-9aac-8ae5-a0059b7eba2c" testName="Cadoryx.Tests.HistoryCursorFeedbackTests.StaleHistoryReceiptProvidesAReadOnlyExactCursorRecoveryWithoutApplyingTheEdit(scenario: &quot;changed-preview-position&quot;)" computerName="YOIRI" duration="00:00:00.0141578" startTime="2026-10-13T16:41:10.0137084+09:00" endTime="2026-10-13T16:41:10.0249737+09:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="fd23aa88-8cf4-4ae5-984a-4e76e1c800da">
+      <Output>
+        <ErrorInfo>
+          <Message>System.InvalidOperationException : Sequence contains more than one element</Message>
+          <StackTrace>   at System.Linq.ThrowHelper.ThrowMoreThanOneElementException()&#xD;
+   at System.Linq.Enumerable.TryGetSingle[TSource](IEnumerable`1 source, Boolean&amp; found)&#xD;
+   at System.Linq.Enumerable.Single[TSource](IEnumerable`1 source)&#xD;
+   at Cadoryx.Tests.HistoryCursorFeedbackTests.Fixture.get_Part() in C:\Users\yoiri\source\repos\Cadoryx\Cadoryx.Tests\HistoryCursorFeedbackTests.cs:line 203&#xD;
+   at Cadoryx.Tests.HistoryCursorFeedbackTests.StaleHistoryReceiptProvidesAReadOnlyExactCursorRecoveryWithoutApplyingTheEdit(String scenario) in C:\Users\yoiri\source\repos\Cadoryx\Cadoryx.Tests\HistoryCursorFeedbackTests.cs:line 158&#xD;
+   at Cadoryx.Tests.HistoryCursorFeedbackTests.StaleHistoryReceiptProvidesAReadOnlyExactCursorRecoveryWithoutApplyingTheEdit(String scenario) in C:\Users\yoiri\source\repos\Cadoryx\Cadoryx.Tests\HistoryCursorFeedbackTests.cs:line 194&#xD;
+--- End of stack trace from previous location ---</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="732cf5a3-27c3-4f61-b2cb-8924a56ce004" testId="86d9f3d8-d141-9a14-cb73-f2fa2382c178" testName="Cadoryx.Tests.HistoryAgentTests.TerminalHistoryCapturesThePreviewBoundaryAndUsesExactRevisions" computerName="YOIRI" duration="00:00:00.0169246" startTime="2026-10-13T16:41:09.8506697+09:00" endTime="2026-10-13T16:41:09.8677727+09:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="732cf5a3-27c3-4f61-b2cb-8924a56ce004" />
+    <UnitTestResult executionId="e34b7e8b-6c90-4af4-b290-3a27f68268f9" testId="ca5a67c2-9fb3-a620-d8b2-23a97da2154a" testName="Cadoryx.Tests.HistoryAgentTests.QueuedPreviewRechecksTokenAuthorStateAndCursorUnderTheSessionLock(returnEnd: False, boundary: &quot;state&quot;)" computerName="YOIRI" duration="00:00:00.0066108" startTime="2026-10-13T16:41:09.8359160+09:00" endTime="2026-10-13T16:41:09.8427073+09:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="e34b7e8b-6c90-4af4-b290-3a27f68268f9" />
+    <UnitTestResult executionId="9076e83f-621f-42c1-aa99-0e539b658711" testId="185e35dd-09d5-22fd-3720-aa5d9887d665" testName="Cadoryx.Tests.HistoryCursorFeedbackTests.InvalidNestedFieldReportsCursorPathsWithoutChangingTheRealPreview(field: &quot;position&quot;, mutation: &quot;duplicate&quot;)" computerName="YOIRI" duration="00:00:00.0039220" startTime="2026-10-13T16:41:09.9434658+09:00" endTime="2026-10-13T16:41:09.9471813+09:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="9076e83f-621f-42c1-aa99-0e539b658711" />
+    <UnitTestResult executionId="7e041bb6-cfc6-4464-9db7-d82551c4a11f" testId="d684aacd-7d48-c9c8-78c3-d3878bb0f71b" testName="Cadoryx.Tests.HistoryAgentTests.MalformedPreviewArgumentsPreserveAuthorAndDisplayState(mutation: &quot;position-range&quot;)" computerName="YOIRI" duration="00:00:00.0083322" startTime="2026-10-13T16:41:09.0143023+09:00" endTime="2026-10-13T16:41:09.0144314+09:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="7e041bb6-cfc6-4464-9db7-d82551c4a11f" />
+    <UnitTestResult executionId="a5a3f978-2be3-4521-9a06-7aa7d47f1e6f" testId="f780aadf-136e-659a-04e6-f23a2adf2a89" testName="Cadoryx.Tests.HistoryCursorFeedbackTests.NonObjectCursorIsRejectedWithItsPathAndDoesNotReturnToEnd(cursorJson: &quot;1&quot;)" computerName="YOIRI" duration="00:00:00.0042090" startTime="2026-10-13T16:41:10.0736133+09:00" endTime="2026-10-13T16:41:10.0780074+09:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="a5a3f978-2be3-4521-9a06-7aa7d47f1e6f" />
+    <UnitTestResult executionId="660218aa-ca82-45b0-8ded-739b06bb70db" testId="56b58b0b-e6e6-e330-abe3-bf026fb7e6c5" testName="Cadoryx.Tests.HistoryAgentTests.MalformedPreviewArgumentsPreserveAuthorAndDisplayState(mutation: &quot;unknown&quot;)" computerName="YOIRI" duration="00:00:01.6409128" startTime="2026-10-13T16:41:07.3713814+09:00" endTime="2026-10-13T16:41:09.0031407+09:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="660218aa-ca82-45b0-8ded-739b06bb70db" />
+    <UnitTestResult executionId="c0133224-f053-40e2-8c33-1d0d43192209" testId="341f503a-6e38-3fb8-94de-a9984f5b5503" testName="Cadoryx.Tests.HistoryCursorFeedbackTests.InvalidNestedFieldReportsCursorPathsWithoutChangingTheRealPreview(field: &quot;position&quot;, mutation: &quot;over-budget&quot;)" computerName="YOIRI" duration="00:00:00.0047578" startTime="2026-10-13T16:41:09.9120745+09:00" endTime="2026-10-13T16:41:09.9170179+09:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="c0133224-f053-40e2-8c33-1d0d43192209" />
+    <UnitTestResult executionId="f6351f15-09f4-4ead-a6a8-5c3bb34affc8" testId="e7c55308-026a-160a-53b4-fe17ebebc478" testName="Cadoryx.Tests.HistoryCursorFeedbackTests.InvalidNestedFieldReportsCursorPathsWithoutChangingTheRealPreview(field: &quot;stateId&quot;, mutation: &quot;missing&quot;)" computerName="YOIRI" duration="00:00:00.0040733" startTime="2026-10-13T16:41:09.9303251+09:00" endTime="2026-10-13T16:41:09.9345801+09:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="f6351f15-09f4-4ead-a6a8-5c3bb34affc8" />
+    <UnitTestResult executionId="ad37af61-7d14-4f04-bf03-7c22d22ad844" testId="8c1f1627-e172-4542-167e-76fc0f1dbd5a" testName="Cadoryx.Tests.HistoryCursorFeedbackTests.InvalidNestedFieldReportsCursorPathsWithoutChangingTheRealPreview(field: &quot;stateId&quot;, mutation: &quot;invalid&quot;)" computerName="YOIRI" duration="00:00:00.0046244" startTime="2026-10-13T16:41:09.9695004+09:00" endTime="2026-10-13T16:41:09.9746052+09:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="ad37af61-7d14-4f04-bf03-7c22d22ad844" />
+    <UnitTestResult executionId="807ecc8b-b080-4ef2-8340-72f9c7bee0e6" testId="95f07ca8-1b82-4ddb-e65c-0cd99da8efc7" testName="Cadoryx.Tests.HistoryAgentTests.PreviewHasASeparateCursorIdentityAndCannotBeBypassedByTheCommandTool" computerName="YOIRI" duration="00:00:00.0166986" startTime="2026-10-13T16:41:09.8679263+09:00" endTime="2026-10-13T16:41:09.8848159+09:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="807ecc8b-b080-4ef2-8340-72f9c7bee0e6" />
+    <UnitTestResult executionId="c382488a-89d3-44ed-96a9-1e596ebd3b36" testId="82d589ef-de1f-3b37-1ad6-b75d7f4e4229" testName="Cadoryx.Tests.HistoryCursorFeedbackTests.NonObjectCursorIsRejectedWithItsPathAndDoesNotReturnToEnd(cursorJson: &quot;true&quot;)" computerName="YOIRI" duration="00:00:00.0043152" startTime="2026-10-13T16:41:10.0689662+09:00" endTime="2026-10-13T16:41:10.0734979+09:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="c382488a-89d3-44ed-96a9-1e596ebd3b36" />
+    <UnitTestResult executionId="ac9d54be-4083-4e51-aaed-eff543598ef4" testId="6eacd7c9-032b-c6c8-c539-ddcb8e19bb2e" testName="Cadoryx.Tests.HistoryCursorFeedbackTests.InvalidNestedFieldReportsCursorPathsWithoutChangingTheRealPreview(field: &quot;partId&quot;, mutation: &quot;empty&quot;)" computerName="YOIRI" duration="00:00:00.0040925" startTime="2026-10-13T16:41:09.9259994+09:00" endTime="2026-10-13T16:41:09.9302062+09:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="ac9d54be-4083-4e51-aaed-eff543598ef4" />
+    <UnitTestResult executionId="b8183265-1192-44c5-93af-8e22e241d0fe" testId="8656f54f-4eb6-03e4-757a-c446672bf296" testName="Cadoryx.Tests.HistoryAgentTests.MalformedPreviewArgumentsPreserveAuthorAndDisplayState(mutation: &quot;missing-cursor&quot;)" computerName="YOIRI" duration="00:00:00.0081106" startTime="2026-10-13T16:41:09.0483000+09:00" endTime="2026-10-13T16:41:09.0565350+09:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="b8183265-1192-44c5-93af-8e22e241d0fe" />
+    <UnitTestResult executionId="bbd641d8-81e1-4a3e-b38d-16eb0cdb54a9" testId="a3a0c9ce-2d8b-df60-5038-b1338718203b" testName="Cadoryx.Tests.HistoryAgentTests.MalformedPreviewArgumentsPreserveAuthorAndDisplayState(mutation: &quot;duplicate&quot;)" computerName="YOIRI" duration="00:00:00.0076123" startTime="2026-10-13T16:41:09.0237198+09:00" endTime="2026-10-13T16:41:09.0316584+09:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="bbd641d8-81e1-4a3e-b38d-16eb0cdb54a9" />
+    <UnitTestResult executionId="90728ca8-7402-4fd0-afe2-20c2611fdd35" testId="9ba05c6f-b071-49b9-4020-5df2cb7773da" testName="Cadoryx.Tests.HistoryCursorFeedbackTests.StaleHistoryReceiptProvidesAReadOnlyExactCursorRecoveryWithoutApplyingTheEdit(scenario: &quot;foreign-document&quot;)" computerName="YOIRI" duration="00:00:00.0237037" startTime="2026-10-13T16:41:09.9800361+09:00" endTime="2026-10-13T16:41:10.0100841+09:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="90728ca8-7402-4fd0-afe2-20c2611fdd35">
+      <Output>
+        <ErrorInfo>
+          <Message>System.Collections.Generic.KeyNotFoundException : The given key was not present in the dictionary.</Message>
+          <StackTrace>   at System.Text.Json.JsonElement.GetProperty(String propertyName)&#xD;
+   at Cadoryx.Tests.HistoryCursorFeedbackTests.StaleHistoryReceiptProvidesAReadOnlyExactCursorRecoveryWithoutApplyingTheEdit(String scenario) in C:\Users\yoiri\source\repos\Cadoryx\Cadoryx.Tests\HistoryCursorFeedbackTests.cs:line 185&#xD;
+   at Cadoryx.Tests.HistoryCursorFeedbackTests.StaleHistoryReceiptProvidesAReadOnlyExactCursorRecoveryWithoutApplyingTheEdit(String scenario) in C:\Users\yoiri\source\repos\Cadoryx\Cadoryx.Tests\HistoryCursorFeedbackTests.cs:line 194&#xD;
+--- End of stack trace from previous location ---</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+  </Results>
+  <TestDefinitions>
+    <UnitTest name="Cadoryx.Tests.HistoryAgentTests.MalformedPreviewArgumentsPreserveAuthorAndDisplayState(mutation: &quot;missing-cursor&quot;)" storage="c:\users\yoiri\source\repos\cadoryx\cadoryx.tests\bin\release\net10.0\cadoryx.tests.dll" id="8656f54f-4eb6-03e4-757a-c446672bf296">
+      <Execution id="b8183265-1192-44c5-93af-8e22e241d0fe" />
+      <TestMethod codeBase="C:\Users\yoiri\source\repos\Cadoryx\Cadoryx.Tests\bin\Release\net10.0\Cadoryx.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Cadoryx.Tests.HistoryAgentTests" name="MalformedPreviewArgumentsPreserveAuthorAndDisplayState" />
+    </UnitTest>
+    <UnitTest name="Cadoryx.Tests.HistoryCursorFeedbackTests.InvalidNestedFieldReportsCursorPathsWithoutChangingTheRealPreview(field: &quot;partId&quot;, mutation: &quot;missing&quot;)" storage="c:\users\yoiri\source\repos\cadoryx\cadoryx.tests\bin\release\net10.0\cadoryx.tests.dll" id="f70edbcd-5b46-25dc-80a7-e792fade7635">
+      <Execution id="44c6fd69-e4df-4f8a-b4f7-b05d50bd9aa7" />
+      <TestMethod codeBase="C:\Users\yoiri\source\repos\Cadoryx\Cadoryx.Tests\bin\Release\net10.0\Cadoryx.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Cadoryx.Tests.HistoryCursorFeedbackTests" name="InvalidNestedFieldReportsCursorPathsWithoutChangingTheRealPreview" />
+    </UnitTest>
+    <UnitTest name="Cadoryx.Tests.HistoryCursorFeedbackTests.InvalidNestedFieldReportsCursorPathsWithoutChangingTheRealPreview(field: &quot;stateId&quot;, mutation: &quot;empty&quot;)" storage="c:\users\yoiri\source\repos\cadoryx\cadoryx.tests\bin\release\net10.0\cadoryx.tests.dll" id="6b0419dd-26fe-5c5f-cd42-dd48f543e237">
+      <Execution id="ee7d14eb-2584-48da-aee6-e83a963cc551" />
+      <TestMethod codeBase="C:\Users\yoiri\source\repos\Cadoryx\Cadoryx.Tests\bin\Release\net10.0\Cadoryx.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Cadoryx.Tests.HistoryCursorFeedbackTests" name="InvalidNestedFieldReportsCursorPathsWithoutChangingTheRealPreview" />
+    </UnitTest>
+    <UnitTest name="Cadoryx.Tests.HistoryCursorFeedbackTests.InvalidNestedFieldReportsCursorPathsWithoutChangingTheRealPreview(field: &quot;position&quot;, mutation: &quot;fraction&quot;)" storage="c:\users\yoiri\source\repos\cadoryx\cadoryx.tests\bin\release\net10.0\cadoryx.tests.dll" id="4909f71c-84d0-6503-734e-31c95d4ebdf3">
+      <Execution id="9bded5b9-f113-402a-8871-9bfa9b817012" />
+      <TestMethod codeBase="C:\Users\yoiri\source\repos\Cadoryx\Cadoryx.Tests\bin\Release\net10.0\Cadoryx.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Cadoryx.Tests.HistoryCursorFeedbackTests" name="InvalidNestedFieldReportsCursorPathsWithoutChangingTheRealPreview" />
+    </UnitTest>
+    <UnitTest name="Cadoryx.Tests.HistoryCursorFeedbackTests.InvalidNestedFieldReportsCursorPathsWithoutChangingTheRealPreview(field: &quot;position&quot;, mutation: &quot;null&quot;)" storage="c:\users\yoiri\source\repos\cadoryx\cadoryx.tests\bin\release\net10.0\cadoryx.tests.dll" id="11f94871-4c09-6213-6ce1-3090df20e154">
+      <Execution id="a4b3a6da-4c3e-406d-90aa-f45d1928d22e" />
+      <TestMethod codeBase="C:\Users\yoiri\source\repos\Cadoryx\Cadoryx.Tests\bin\Release\net10.0\Cadoryx.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Cadoryx.Tests.HistoryCursorFeedbackTests" name="InvalidNestedFieldReportsCursorPathsWithoutChangingTheRealPreview" />
+    </UnitTest>
+    <UnitTest name="Cadoryx.Tests.HistoryCursorFeedbackTests.RollbackRootPartIdDoesNotSupplyMissingNestedCursorPartId" storage="c:\users\yoiri\source\repos\cadoryx\cadoryx.tests\bin\release\net10.0\cadoryx.tests.dll" id="80503556-3f3d-9f23-a798-d129d5afb394">
+      <Execution id="d62c310e-743f-4505-987a-445ea76b0a22" />
+      <TestMethod codeBase="C:\Users\yoiri\source\repos\Cadoryx\Cadoryx.Tests\bin\Release\net10.0\Cadoryx.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Cadoryx.Tests.HistoryCursorFeedbackTests" name="RollbackRootPartIdDoesNotSupplyMissingNestedCursorPartId" />
+    </UnitTest>
+    <UnitTest name="Cadoryx.Tests.HistoryCursorFeedbackTests.InvalidNestedFieldReportsCursorPathsWithoutChangingTheRealPreview(field: &quot;partId&quot;, mutation: &quot;invalid&quot;)" storage="c:\users\yoiri\source\repos\cadoryx\cadoryx.tests\bin\release\net10.0\cadoryx.tests.dll" id="e76084c1-0b08-fc04-224c-1e01be745cc9">
+      <Execution id="f4d5f59d-7c98-4e43-b8b1-8d58b9c1dc53" />
+      <TestMethod codeBase="C:\Users\yoiri\source\repos\Cadoryx\Cadoryx.Tests\bin\Release\net10.0\Cadoryx.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Cadoryx.Tests.HistoryCursorFeedbackTests" name="InvalidNestedFieldReportsCursorPathsWithoutChangingTheRealPreview" />
+    </UnitTest>
+    <UnitTest name="Cadoryx.Tests.HistoryAgentTests.TerminalHistoryCapturesThePreviewBoundaryAndUsesExactRevisions" storage="c:\users\yoiri\source\repos\cadoryx\cadoryx.tests\bin\release\net10.0\cadoryx.tests.dll" id="86d9f3d8-d141-9a14-cb73-f2fa2382c178">
+      <Execution id="732cf5a3-27c3-4f61-b2cb-8924a56ce004" />
+      <TestMethod codeBase="C:\Users\yoiri\source\repos\Cadoryx\Cadoryx.Tests\bin\Release\net10.0\Cadoryx.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Cadoryx.Tests.HistoryAgentTests" name="TerminalHistoryCapturesThePreviewBoundaryAndUsesExactRevisions" />
+    </UnitTest>
+    <UnitTest name="Cadoryx.Tests.HistoryCursorFeedbackTests.InvalidNestedFieldReportsCursorPathsWithoutChangingTheRealPreview(field: &quot;force&quot;, mutation: &quot;unknown&quot;)" storage="c:\users\yoiri\source\repos\cadoryx\cadoryx.tests\bin\release\net10.0\cadoryx.tests.dll" id="a9218381-eadd-ecde-91cd-afb4d39c7438">
+      <Execution id="8d1c6ab7-a56a-44e8-b73d-09d91bae1475" />
+      <TestMethod codeBase="C:\Users\yoiri\source\repos\Cadoryx\Cadoryx.Tests\bin\Release\net10.0\Cadoryx.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Cadoryx.Tests.HistoryCursorFeedbackTests" name="InvalidNestedFieldReportsCursorPathsWithoutChangingTheRealPreview" />
+    </UnitTest>
+    <UnitTest name="Cadoryx.Tests.HistoryAgentTests.MalformedPreviewArgumentsPreserveAuthorAndDisplayState(mutation: &quot;cursor-extra&quot;)" storage="c:\users\yoiri\source\repos\cadoryx\cadoryx.tests\bin\release\net10.0\cadoryx.tests.dll" id="ef966f9b-2f4a-f18d-e6e1-d59aa7d8ed05">
+      <Execution id="097263a2-f30d-411a-930c-a610db085f8d" />
+      <TestMethod codeBase="C:\Users\yoiri\source\repos\Cadoryx\Cadoryx.Tests\bin\Release\net10.0\Cadoryx.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Cadoryx.Tests.HistoryAgentTests" name="MalformedPreviewArgumentsPreserveAuthorAndDisplayState" />
+    </UnitTest>
+    <UnitTest name="Cadoryx.Tests.HistoryCursorFeedbackTests.MissingCursorIsNotInferredAsNullEvenAtTheActualHistoryEnd" storage="c:\users\yoiri\source\repos\cadoryx\cadoryx.tests\bin\release\net10.0\cadoryx.tests.dll" id="4ca021f5-90b1-1f2c-3e44-21f4b76b9b50">
+      <Execution id="9648860b-5886-46ed-ae4c-921b7459a6c3" />
+      <TestMethod codeBase="C:\Users\yoiri\source\repos\Cadoryx\Cadoryx.Tests\bin\Release\net10.0\Cadoryx.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Cadoryx.Tests.HistoryCursorFeedbackTests" name="MissingCursorIsNotInferredAsNullEvenAtTheActualHistoryEnd" />
+    </UnitTest>
+    <UnitTest name="Cadoryx.Tests.HistoryCursorFeedbackTests.StaleHistoryReceiptProvidesAReadOnlyExactCursorRecoveryWithoutApplyingTheEdit(scenario: &quot;invented-cursor-at-end&quot;)" storage="c:\users\yoiri\source\repos\cadoryx\cadoryx.tests\bin\release\net10.0\cadoryx.tests.dll" id="df07aecf-f6f3-ed0c-75b8-4fa5911060c9">
+      <Execution id="64b89e41-c2f1-4661-a4f3-6503456a489d" />
+      <TestMethod codeBase="C:\Users\yoiri\source\repos\Cadoryx\Cadoryx.Tests\bin\Release\net10.0\Cadoryx.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Cadoryx.Tests.HistoryCursorFeedbackTests" name="StaleHistoryReceiptProvidesAReadOnlyExactCursorRecoveryWithoutApplyingTheEdit" />
+    </UnitTest>
+    <UnitTest name="Cadoryx.Tests.HistoryCursorFeedbackTests.InvalidNestedFieldReportsCursorPathsWithoutChangingTheRealPreview(field: &quot;partId&quot;, mutation: &quot;number&quot;)" storage="c:\users\yoiri\source\repos\cadoryx\cadoryx.tests\bin\release\net10.0\cadoryx.tests.dll" id="350bfdf4-d89c-8d42-c7a5-6aeecbde8f25">
+      <Execution id="916192db-1ecb-4ff0-bd1e-ca4442674e12" />
+      <TestMethod codeBase="C:\Users\yoiri\source\repos\Cadoryx\Cadoryx.Tests\bin\Release\net10.0\Cadoryx.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Cadoryx.Tests.HistoryCursorFeedbackTests" name="InvalidNestedFieldReportsCursorPathsWithoutChangingTheRealPreview" />
+    </UnitTest>
+    <UnitTest name="Cadoryx.Tests.HistoryAgentTests.MalformedPreviewArgumentsPreserveAuthorAndDisplayState(mutation: &quot;position-range&quot;)" storage="c:\users\yoiri\source\repos\cadoryx\cadoryx.tests\bin\release\net10.0\cadoryx.tests.dll" id="d684aacd-7d48-c9c8-78c3-d3878bb0f71b">
+      <Execution id="7e041bb6-cfc6-4464-9db7-d82551c4a11f" />
+      <TestMethod codeBase="C:\Users\yoiri\source\repos\Cadoryx\Cadoryx.Tests\bin\Release\net10.0\Cadoryx.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Cadoryx.Tests.HistoryAgentTests" name="MalformedPreviewArgumentsPreserveAuthorAndDisplayState" />
+    </UnitTest>
+    <UnitTest name="Cadoryx.Tests.HistoryCursorFeedbackTests.ForeignCursorStateAndCancelledRequestKeepTheRealCursorAndAssets" storage="c:\users\yoiri\source\repos\cadoryx\cadoryx.tests\bin\release\net10.0\cadoryx.tests.dll" id="ce0dd54a-6dcc-f9fa-9554-52c0e8e29a20">
+      <Execution id="4f6762e7-15e3-4758-857b-eea9be78d207" />
+      <TestMethod codeBase="C:\Users\yoiri\source\repos\Cadoryx\Cadoryx.Tests\bin\Release\net10.0\Cadoryx.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Cadoryx.Tests.HistoryCursorFeedbackTests" name="ForeignCursorStateAndCancelledRequestKeepTheRealCursorAndAssets" />
+    </UnitTest>
+    <UnitTest name="Cadoryx.Tests.HistoryCursorFeedbackTests.NonObjectCursorIsRejectedWithItsPathAndDoesNotReturnToEnd(cursorJson: &quot;\&quot;not-an-object\&quot;&quot;)" storage="c:\users\yoiri\source\repos\cadoryx\cadoryx.tests\bin\release\net10.0\cadoryx.tests.dll" id="d5bbcfb3-5757-2d4d-cadd-bc3eec604128">
+      <Execution id="66f1d784-529f-4503-a425-57a568bfbf38" />
+      <TestMethod codeBase="C:\Users\yoiri\source\repos\Cadoryx\Cadoryx.Tests\bin\Release\net10.0\Cadoryx.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Cadoryx.Tests.HistoryCursorFeedbackTests" name="NonObjectCursorIsRejectedWithItsPathAndDoesNotReturnToEnd" />
+    </UnitTest>
+    <UnitTest name="Cadoryx.Tests.HistoryAgentTests.QueuedPreviewRechecksTokenAuthorStateAndCursorUnderTheSessionLock(returnEnd: False, boundary: &quot;cancel&quot;)" storage="c:\users\yoiri\source\repos\cadoryx\cadoryx.tests\bin\release\net10.0\cadoryx.tests.dll" id="43d69054-90d5-d9b6-5a1a-d2c0dcd6a3a1">
+      <Execution id="5ef3e552-94b1-4d9f-84d4-8390ccfc8a68" />
+      <TestMethod codeBase="C:\Users\yoiri\source\repos\Cadoryx\Cadoryx.Tests\bin\Release\net10.0\Cadoryx.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Cadoryx.Tests.HistoryAgentTests" name="QueuedPreviewRechecksTokenAuthorStateAndCursorUnderTheSessionLock" />
+    </UnitTest>
+    <UnitTest name="Cadoryx.Tests.HistoryCursorFeedbackTests.NonObjectCursorIsRejectedWithItsPathAndDoesNotReturnToEnd(cursorJson: &quot;[]&quot;)" storage="c:\users\yoiri\source\repos\cadoryx\cadoryx.tests\bin\release\net10.0\cadoryx.tests.dll" id="928b77ed-8b06-f1e5-0f72-39c44f296ec5">
+      <Execution id="9e5c7416-0801-4494-bfc0-7b934dff0fe6" />
+      <TestMethod codeBase="C:\Users\yoiri\source\repos\Cadoryx\Cadoryx.Tests\bin\Release\net10.0\Cadoryx.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Cadoryx.Tests.HistoryCursorFeedbackTests" name="NonObjectCursorIsRejectedWithItsPathAndDoesNotReturnToEnd" />
+    </UnitTest>
+    <UnitTest name="Cadoryx.Tests.HistoryCursorFeedbackTests.InvalidNestedFieldReportsCursorPathsWithoutChangingTheRealPreview(field: &quot;partId&quot;, mutation: &quot;empty&quot;)" storage="c:\users\yoiri\source\repos\cadoryx\cadoryx.tests\bin\release\net10.0\cadoryx.tests.dll" id="6eacd7c9-032b-c6c8-c539-ddcb8e19bb2e">
+      <Execution id="ac9d54be-4083-4e51-aaed-eff543598ef4" />
+      <TestMethod codeBase="C:\Users\yoiri\source\repos\Cadoryx\Cadoryx.Tests\bin\Release\net10.0\Cadoryx.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Cadoryx.Tests.HistoryCursorFeedbackTests" name="InvalidNestedFieldReportsCursorPathsWithoutChangingTheRealPreview" />
+    </UnitTest>
+    <UnitTest name="Cadoryx.Tests.HistoryCursorFeedbackTests.ExactCursorReturnsToEndButValidStaleCursorCannotBypassTheSessionGuard" storage="c:\users\yoiri\source\repos\cadoryx\cadoryx.tests\bin\release\net10.0\cadoryx.tests.dll" id="4fe0a310-c7ab-25e2-0d6a-a6ede82ace51">
+      <Execution id="22ebbe5e-b6e2-4cdc-aa05-7da2193b4aca" />
+      <TestMethod codeBase="C:\Users\yoiri\source\repos\Cadoryx\Cadoryx.Tests\bin\Release\net10.0\Cadoryx.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Cadoryx.Tests.HistoryCursorFeedbackTests" name="ExactCursorReturnsToEndButValidStaleCursorCannotBypassTheSessionGuard" />
+    </UnitTest>
+    <UnitTest name="Cadoryx.Tests.HistoryCursorFeedbackTests.InvalidNestedFieldReportsCursorPathsWithoutChangingTheRealPreview(field: &quot;stateId&quot;, mutation: &quot;invalid&quot;)" storage="c:\users\yoiri\source\repos\cadoryx\cadoryx.tests\bin\release\net10.0\cadoryx.tests.dll" id="8c1f1627-e172-4542-167e-76fc0f1dbd5a">
+      <Execution id="ad37af61-7d14-4f04-bf03-7c22d22ad844" />
+      <TestMethod codeBase="C:\Users\yoiri\source\repos\Cadoryx\Cadoryx.Tests\bin\Release\net10.0\Cadoryx.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Cadoryx.Tests.HistoryCursorFeedbackTests" name="InvalidNestedFieldReportsCursorPathsWithoutChangingTheRealPreview" />
+    </UnitTest>
+    <UnitTest name="Cadoryx.Tests.HistoryCursorFeedbackTests.InvalidNestedFieldReportsCursorPathsWithoutChangingTheRealPreview(field: &quot;position&quot;, mutation: &quot;negative&quot;)" storage="c:\users\yoiri\source\repos\cadoryx\cadoryx.tests\bin\release\net10.0\cadoryx.tests.dll" id="2e516adb-249b-3fe9-8f64-8812c4c22a85">
+      <Execution id="28ab1f03-8866-44b4-a9ce-7dbd5c3013dd" />
+      <TestMethod codeBase="C:\Users\yoiri\source\repos\Cadoryx\Cadoryx.Tests\bin\Release\net10.0\Cadoryx.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Cadoryx.Tests.HistoryCursorFeedbackTests" name="InvalidNestedFieldReportsCursorPathsWithoutChangingTheRealPreview" />
+    </UnitTest>
+    <UnitTest name="Cadoryx.Tests.HistoryCursorFeedbackTests.InvalidNestedFieldReportsCursorPathsWithoutChangingTheRealPreview(field: &quot;stateId&quot;, mutation: &quot;number&quot;)" storage="c:\users\yoiri\source\repos\cadoryx\cadoryx.tests\bin\release\net10.0\cadoryx.tests.dll" id="c3aed692-e56f-306d-3543-1f82feb01750">
+      <Execution id="3fd4ca55-0573-4c03-84da-1266b2f69878" />
+      <TestMethod codeBase="C:\Users\yoiri\source\repos\Cadoryx\Cadoryx.Tests\bin\Release\net10.0\Cadoryx.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Cadoryx.Tests.HistoryCursorFeedbackTests" name="InvalidNestedFieldReportsCursorPathsWithoutChangingTheRealPreview" />
+    </UnitTest>
+    <UnitTest name="Cadoryx.Tests.HistoryCursorFeedbackTests.InvalidNestedFieldReportsCursorPathsWithoutChangingTheRealPreview(field: &quot;partId&quot;, mutation: &quot;duplicate&quot;)" storage="c:\users\yoiri\source\repos\cadoryx\cadoryx.tests\bin\release\net10.0\cadoryx.tests.dll" id="811e7bc3-bada-f508-22b6-95beace9d952">
+      <Execution id="bd1923a9-e588-401d-9482-8cb5384a7a9f" />
+      <TestMethod codeBase="C:\Users\yoiri\source\repos\Cadoryx\Cadoryx.Tests\bin\Release\net10.0\Cadoryx.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Cadoryx.Tests.HistoryCursorFeedbackTests" name="InvalidNestedFieldReportsCursorPathsWithoutChangingTheRealPreview" />
+    </UnitTest>
+    <UnitTest name="Cadoryx.Tests.HistoryCursorFeedbackTests.NonObjectCursorIsRejectedWithItsPathAndDoesNotReturnToEnd(cursorJson: &quot;true&quot;)" storage="c:\users\yoiri\source\repos\cadoryx\cadoryx.tests\bin\release\net10.0\cadoryx.tests.dll" id="82d589ef-de1f-3b37-1ad6-b75d7f4e4229">
+      <Execution id="c382488a-89d3-44ed-96a9-1e596ebd3b36" />
+      <TestMethod codeBase="C:\Users\yoiri\source\repos\Cadoryx\Cadoryx.Tests\bin\Release\net10.0\Cadoryx.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Cadoryx.Tests.HistoryCursorFeedbackTests" name="NonObjectCursorIsRejectedWithItsPathAndDoesNotReturnToEnd" />
+    </UnitTest>
+    <UnitTest name="Cadoryx.Tests.HistoryAgentTests.MalformedPreviewArgumentsPreserveAuthorAndDisplayState(mutation: &quot;foreign-state&quot;)" storage="c:\users\yoiri\source\repos\cadoryx\cadoryx.tests\bin\release\net10.0\cadoryx.tests.dll" id="278455b9-9551-c694-0b7e-536eb2f6e50f">
+      <Execution id="c3acf22c-a180-4384-a6c6-871eb902ca71" />
+      <TestMethod codeBase="C:\Users\yoiri\source\repos\Cadoryx\Cadoryx.Tests\bin\Release\net10.0\Cadoryx.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Cadoryx.Tests.HistoryAgentTests" name="MalformedPreviewArgumentsPreserveAuthorAndDisplayState" />
+    </UnitTest>
+    <UnitTest name="Cadoryx.Tests.HistoryAgentTests.MalformedPreviewArgumentsPreserveAuthorAndDisplayState(mutation: &quot;unknown&quot;)" storage="c:\users\yoiri\source\repos\cadoryx\cadoryx.tests\bin\release\net10.0\cadoryx.tests.dll" id="56b58b0b-e6e6-e330-abe3-bf026fb7e6c5">
+      <Execution id="660218aa-ca82-45b0-8ded-739b06bb70db" />
+      <TestMethod codeBase="C:\Users\yoiri\source\repos\Cadoryx\Cadoryx.Tests\bin\Release\net10.0\Cadoryx.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Cadoryx.Tests.HistoryAgentTests" name="MalformedPreviewArgumentsPreserveAuthorAndDisplayState" />
+    </UnitTest>
+    <UnitTest name="Cadoryx.Tests.HistoryCursorFeedbackTests.StaleHistoryReceiptProvidesAReadOnlyExactCursorRecoveryWithoutApplyingTheEdit(scenario: &quot;changed-preview-position&quot;)" storage="c:\users\yoiri\source\repos\cadoryx\cadoryx.tests\bin\release\net10.0\cadoryx.tests.dll" id="c4ab4433-0c72-9aac-8ae5-a0059b7eba2c">
+      <Execution id="fd23aa88-8cf4-4ae5-984a-4e76e1c800da" />
+      <TestMethod codeBase="C:\Users\yoiri\source\repos\Cadoryx\Cadoryx.Tests\bin\Release\net10.0\Cadoryx.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Cadoryx.Tests.HistoryCursorFeedbackTests" name="StaleHistoryReceiptProvidesAReadOnlyExactCursorRecoveryWithoutApplyingTheEdit" />
+    </UnitTest>
+    <UnitTest name="Cadoryx.Tests.HistoryAgentTests.QueuedPreviewRechecksTokenAuthorStateAndCursorUnderTheSessionLock(returnEnd: True, boundary: &quot;cursor&quot;)" storage="c:\users\yoiri\source\repos\cadoryx\cadoryx.tests\bin\release\net10.0\cadoryx.tests.dll" id="697b4f2e-d2b1-6148-9bf8-70f510604a13">
+      <Execution id="69e8b879-b377-4ab1-9444-82aceddcc21f" />
+      <TestMethod codeBase="C:\Users\yoiri\source\repos\Cadoryx\Cadoryx.Tests\bin\Release\net10.0\Cadoryx.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Cadoryx.Tests.HistoryAgentTests" name="QueuedPreviewRechecksTokenAuthorStateAndCursorUnderTheSessionLock" />
+    </UnitTest>
+    <UnitTest name="Cadoryx.Tests.HistoryCursorFeedbackTests.StaleHistoryReceiptProvidesAReadOnlyExactCursorRecoveryWithoutApplyingTheEdit(scenario: &quot;changed-author-state&quot;)" storage="c:\users\yoiri\source\repos\cadoryx\cadoryx.tests\bin\release\net10.0\cadoryx.tests.dll" id="804316d4-8be7-1f14-ee72-df0f7feb1ac0">
+      <Execution id="6d1a4310-4224-42f2-8d18-38a541899ca7" />
+      <TestMethod codeBase="C:\Users\yoiri\source\repos\Cadoryx\Cadoryx.Tests\bin\Release\net10.0\Cadoryx.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Cadoryx.Tests.HistoryCursorFeedbackTests" name="StaleHistoryReceiptProvidesAReadOnlyExactCursorRecoveryWithoutApplyingTheEdit" />
+    </UnitTest>
+    <UnitTest name="Cadoryx.Tests.HistoryAgentTests.MalformedPreviewArgumentsPreserveAuthorAndDisplayState(mutation: &quot;duplicate&quot;)" storage="c:\users\yoiri\source\repos\cadoryx\cadoryx.tests\bin\release\net10.0\cadoryx.tests.dll" id="a3a0c9ce-2d8b-df60-5038-b1338718203b">
+      <Execution id="bbd641d8-81e1-4a3e-b38d-16eb0cdb54a9" />
+      <TestMethod codeBase="C:\Users\yoiri\source\repos\Cadoryx\Cadoryx.Tests\bin\Release\net10.0\Cadoryx.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Cadoryx.Tests.HistoryAgentTests" name="MalformedPreviewArgumentsPreserveAuthorAndDisplayState" />
+    </UnitTest>
+    <UnitTest name="Cadoryx.Tests.HistoryCursorFeedbackTests.InvalidNestedFieldReportsCursorPathsWithoutChangingTheRealPreview(field: &quot;stateId&quot;, mutation: &quot;duplicate&quot;)" storage="c:\users\yoiri\source\repos\cadoryx\cadoryx.tests\bin\release\net10.0\cadoryx.tests.dll" id="6a3d15ca-534c-f352-9f1a-f3eae6c0e15a">
+      <Execution id="4ad6e8ae-eb00-49f7-9d0f-62304fb53520" />
+      <TestMethod codeBase="C:\Users\yoiri\source\repos\Cadoryx\Cadoryx.Tests\bin\Release\net10.0\Cadoryx.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Cadoryx.Tests.HistoryCursorFeedbackTests" name="InvalidNestedFieldReportsCursorPathsWithoutChangingTheRealPreview" />
+    </UnitTest>
+    <UnitTest name="Cadoryx.Tests.HistoryCursorFeedbackTests.InvalidNestedFieldReportsCursorPathsWithoutChangingTheRealPreview(field: &quot;stateId&quot;, mutation: &quot;missing&quot;)" storage="c:\users\yoiri\source\repos\cadoryx\cadoryx.tests\bin\release\net10.0\cadoryx.tests.dll" id="e7c55308-026a-160a-53b4-fe17ebebc478">
+      <Execution id="f6351f15-09f4-4ead-a6a8-5c3bb34affc8" />
+      <TestMethod codeBase="C:\Users\yoiri\source\repos\Cadoryx\Cadoryx.Tests\bin\Release\net10.0\Cadoryx.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Cadoryx.Tests.HistoryCursorFeedbackTests" name="InvalidNestedFieldReportsCursorPathsWithoutChangingTheRealPreview" />
+    </UnitTest>
+    <UnitTest name="Cadoryx.Tests.HistoryCursorFeedbackTests.InvalidNestedFieldReportsCursorPathsWithoutChangingTheRealPreview(field: &quot;position&quot;, mutation: &quot;missing&quot;)" storage="c:\users\yoiri\source\repos\cadoryx\cadoryx.tests\bin\release\net10.0\cadoryx.tests.dll" id="15b320f5-e64a-3e94-468f-6d12341065b1">
+      <Execution id="71eca024-fda0-4326-8464-80aad6028ef3" />
+      <TestMethod codeBase="C:\Users\yoiri\source\repos\Cadoryx\Cadoryx.Tests\bin\Release\net10.0\Cadoryx.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Cadoryx.Tests.HistoryCursorFeedbackTests" name="InvalidNestedFieldReportsCursorPathsWithoutChangingTheRealPreview" />
+    </UnitTest>
+    <UnitTest name="Cadoryx.Tests.HistoryAgentTests.QueuedPreviewRechecksTokenAuthorStateAndCursorUnderTheSessionLock(returnEnd: False, boundary: &quot;state&quot;)" storage="c:\users\yoiri\source\repos\cadoryx\cadoryx.tests\bin\release\net10.0\cadoryx.tests.dll" id="ca5a67c2-9fb3-a620-d8b2-23a97da2154a">
+      <Execution id="e34b7e8b-6c90-4af4-b290-3a27f68268f9" />
+      <TestMethod codeBase="C:\Users\yoiri\source\repos\Cadoryx\Cadoryx.Tests\bin\Release\net10.0\Cadoryx.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Cadoryx.Tests.HistoryAgentTests" name="QueuedPreviewRechecksTokenAuthorStateAndCursorUnderTheSessionLock" />
+    </UnitTest>
+    <UnitTest name="Cadoryx.Tests.HistoryAgentTests.MalformedPreviewArgumentsPreserveAuthorAndDisplayState(mutation: &quot;position-type&quot;)" storage="c:\users\yoiri\source\repos\cadoryx\cadoryx.tests\bin\release\net10.0\cadoryx.tests.dll" id="8d70c674-b3f0-d317-e308-da365daf4b17">
+      <Execution id="45c586ae-b135-45fa-b599-28c76109ce76" />
+      <TestMethod codeBase="C:\Users\yoiri\source\repos\Cadoryx\Cadoryx.Tests\bin\Release\net10.0\Cadoryx.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Cadoryx.Tests.HistoryAgentTests" name="MalformedPreviewArgumentsPreserveAuthorAndDisplayState" />
+    </UnitTest>
+    <UnitTest name="Cadoryx.Tests.HistoryCursorFeedbackTests.NonObjectCursorIsRejectedWithItsPathAndDoesNotReturnToEnd(cursorJson: &quot;1&quot;)" storage="c:\users\yoiri\source\repos\cadoryx\cadoryx.tests\bin\release\net10.0\cadoryx.tests.dll" id="f780aadf-136e-659a-04e6-f23a2adf2a89">
+      <Execution id="a5a3f978-2be3-4521-9a06-7aa7d47f1e6f" />
+      <TestMethod codeBase="C:\Users\yoiri\source\repos\Cadoryx\Cadoryx.Tests\bin\Release\net10.0\Cadoryx.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Cadoryx.Tests.HistoryCursorFeedbackTests" name="NonObjectCursorIsRejectedWithItsPathAndDoesNotReturnToEnd" />
+    </UnitTest>
+    <UnitTest name="Cadoryx.Tests.HistoryAgentTests.StructuredSuppressionRestoreAndLegalChronologyReuseNativeHistoryAndUndo" storage="c:\users\yoiri\source\repos\cadoryx\cadoryx.tests\bin\release\net10.0\cadoryx.tests.dll" id="c6d7ada9-8264-89cb-2d63-53ec31ab93a1">
+      <Execution id="68701fe4-5e55-402d-a039-8a6bf7cb2890" />
+      <TestMethod codeBase="C:\Users\yoiri\source\repos\Cadoryx\Cadoryx.Tests\bin\Release\net10.0\Cadoryx.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Cadoryx.Tests.HistoryAgentTests" name="StructuredSuppressionRestoreAndLegalChronologyReuseNativeHistoryAndUndo" />
+    </UnitTest>
+    <UnitTest name="Cadoryx.Tests.HistoryCursorFeedbackTests.InvalidNestedFieldReportsCursorPathsWithoutChangingTheRealPreview(field: &quot;position&quot;, mutation: &quot;duplicate&quot;)" storage="c:\users\yoiri\source\repos\cadoryx\cadoryx.tests\bin\release\net10.0\cadoryx.tests.dll" id="185e35dd-09d5-22fd-3720-aa5d9887d665">
+      <Execution id="9076e83f-621f-42c1-aa99-0e539b658711" />
+      <TestMethod codeBase="C:\Users\yoiri\source\repos\Cadoryx\Cadoryx.Tests\bin\Release\net10.0\Cadoryx.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Cadoryx.Tests.HistoryCursorFeedbackTests" name="InvalidNestedFieldReportsCursorPathsWithoutChangingTheRealPreview" />
+    </UnitTest>
+    <UnitTest name="Cadoryx.Tests.HistoryCursorFeedbackTests.InvalidNestedFieldReportsCursorPathsWithoutChangingTheRealPreview(field: &quot;position&quot;, mutation: &quot;over-budget&quot;)" storage="c:\users\yoiri\source\repos\cadoryx\cadoryx.tests\bin\release\net10.0\cadoryx.tests.dll" id="341f503a-6e38-3fb8-94de-a9984f5b5503">
+      <Execution id="c0133224-f053-40e2-8c33-1d0d43192209" />
+      <TestMethod codeBase="C:\Users\yoiri\source\repos\Cadoryx\Cadoryx.Tests\bin\Release\net10.0\Cadoryx.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Cadoryx.Tests.HistoryCursorFeedbackTests" name="InvalidNestedFieldReportsCursorPathsWithoutChangingTheRealPreview" />
+    </UnitTest>
+    <UnitTest name="Cadoryx.Tests.HistoryCursorFeedbackTests.ReturnEndRejectsRootPartIdAndDoesNotMoveItIntoCursor" storage="c:\users\yoiri\source\repos\cadoryx\cadoryx.tests\bin\release\net10.0\cadoryx.tests.dll" id="98eac10b-88c1-995b-28d8-6de0c09058db">
+      <Execution id="b209686e-cc99-4b84-bd30-5964acd9bd3a" />
+      <TestMethod codeBase="C:\Users\yoiri\source\repos\Cadoryx\Cadoryx.Tests\bin\Release\net10.0\Cadoryx.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Cadoryx.Tests.HistoryCursorFeedbackTests" name="ReturnEndRejectsRootPartIdAndDoesNotMoveItIntoCursor" />
+    </UnitTest>
+    <UnitTest name="Cadoryx.Tests.HistoryAgentTests.MalformedPreviewArgumentsPreserveAuthorAndDisplayState(mutation: &quot;wrong-part&quot;)" storage="c:\users\yoiri\source\repos\cadoryx\cadoryx.tests\bin\release\net10.0\cadoryx.tests.dll" id="1e3faec1-7853-fc7d-ef46-c5ae32934962">
+      <Execution id="36cb630d-b678-4bf3-bc16-ae59da10ae08" />
+      <TestMethod codeBase="C:\Users\yoiri\source\repos\Cadoryx\Cadoryx.Tests\bin\Release\net10.0\Cadoryx.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Cadoryx.Tests.HistoryAgentTests" name="MalformedPreviewArgumentsPreserveAuthorAndDisplayState" />
+    </UnitTest>
+    <UnitTest name="Cadoryx.Tests.HistoryCursorFeedbackTests.StaleHistoryReceiptProvidesAReadOnlyExactCursorRecoveryWithoutApplyingTheEdit(scenario: &quot;foreign-document&quot;)" storage="c:\users\yoiri\source\repos\cadoryx\cadoryx.tests\bin\release\net10.0\cadoryx.tests.dll" id="9ba05c6f-b071-49b9-4020-5df2cb7773da">
+      <Execution id="90728ca8-7402-4fd0-afe2-20c2611fdd35" />
+      <TestMethod codeBase="C:\Users\yoiri\source\repos\Cadoryx\Cadoryx.Tests\bin\Release\net10.0\Cadoryx.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Cadoryx.Tests.HistoryCursorFeedbackTests" name="StaleHistoryReceiptProvidesAReadOnlyExactCursorRecoveryWithoutApplyingTheEdit" />
+    </UnitTest>
+    <UnitTest name="Cadoryx.Tests.HistoryAgentTests.QueuedPreviewRechecksTokenAuthorStateAndCursorUnderTheSessionLock(returnEnd: True, boundary: &quot;cancel&quot;)" storage="c:\users\yoiri\source\repos\cadoryx\cadoryx.tests\bin\release\net10.0\cadoryx.tests.dll" id="42a0d38f-17cf-35fc-d1b2-f9599e312c80">
+      <Execution id="3eb62173-4c01-44b3-8da3-d02f573135db" />
+      <TestMethod codeBase="C:\Users\yoiri\source\repos\Cadoryx\Cadoryx.Tests\bin\Release\net10.0\Cadoryx.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Cadoryx.Tests.HistoryAgentTests" name="QueuedPreviewRechecksTokenAuthorStateAndCursorUnderTheSessionLock" />
+    </UnitTest>
+    <UnitTest name="Cadoryx.Tests.HistoryAgentTests.QueuedPreviewRechecksTokenAuthorStateAndCursorUnderTheSessionLock(returnEnd: True, boundary: &quot;state&quot;)" storage="c:\users\yoiri\source\repos\cadoryx\cadoryx.tests\bin\release\net10.0\cadoryx.tests.dll" id="ee8f4fbd-9bed-7940-41db-b343a4f5b3cf">
+      <Execution id="bba06b7d-8b49-4acf-a222-d5c173169c5d" />
+      <TestMethod codeBase="C:\Users\yoiri\source\repos\Cadoryx\Cadoryx.Tests\bin\Release\net10.0\Cadoryx.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Cadoryx.Tests.HistoryAgentTests" name="QueuedPreviewRechecksTokenAuthorStateAndCursorUnderTheSessionLock" />
+    </UnitTest>
+    <UnitTest name="Cadoryx.Tests.HistoryCursorFeedbackTests.InvalidNestedFieldReportsCursorPathsWithoutChangingTheRealPreview(field: &quot;position&quot;, mutation: &quot;text&quot;)" storage="c:\users\yoiri\source\repos\cadoryx\cadoryx.tests\bin\release\net10.0\cadoryx.tests.dll" id="d6614bd6-6635-4bd7-8cf8-7c5c78414c4f">
+      <Execution id="629281c3-2902-476f-8270-587dacb13a01" />
+      <TestMethod codeBase="C:\Users\yoiri\source\repos\Cadoryx\Cadoryx.Tests\bin\Release\net10.0\Cadoryx.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Cadoryx.Tests.HistoryCursorFeedbackTests" name="InvalidNestedFieldReportsCursorPathsWithoutChangingTheRealPreview" />
+    </UnitTest>
+    <UnitTest name="Cadoryx.Tests.HistoryAgentTests.QueuedPreviewRechecksTokenAuthorStateAndCursorUnderTheSessionLock(returnEnd: False, boundary: &quot;cursor&quot;)" storage="c:\users\yoiri\source\repos\cadoryx\cadoryx.tests\bin\release\net10.0\cadoryx.tests.dll" id="e2d36a02-fec1-4b54-94f8-f9d448f4fa91">
+      <Execution id="e2a2937a-5800-42d6-be79-ed501c67776c" />
+      <TestMethod codeBase="C:\Users\yoiri\source\repos\Cadoryx\Cadoryx.Tests\bin\Release\net10.0\Cadoryx.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Cadoryx.Tests.HistoryAgentTests" name="QueuedPreviewRechecksTokenAuthorStateAndCursorUnderTheSessionLock" />
+    </UnitTest>
+    <UnitTest name="Cadoryx.Tests.HistoryAgentTests.PreviewHasASeparateCursorIdentityAndCannotBeBypassedByTheCommandTool" storage="c:\users\yoiri\source\repos\cadoryx\cadoryx.tests\bin\release\net10.0\cadoryx.tests.dll" id="95f07ca8-1b82-4ddb-e65c-0cd99da8efc7">
+      <Execution id="807ecc8b-b080-4ef2-8340-72f9c7bee0e6" />
+      <TestMethod codeBase="C:\Users\yoiri\source\repos\Cadoryx\Cadoryx.Tests\bin\Release\net10.0\Cadoryx.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Cadoryx.Tests.HistoryAgentTests" name="PreviewHasASeparateCursorIdentityAndCannotBeBypassedByTheCommandTool" />
+    </UnitTest>
+    <UnitTest name="Cadoryx.Tests.HistoryCursorFeedbackTests.ExplicitNullIsAcceptedOnlyWhenItMatchesTheActualHistoryEnd" storage="c:\users\yoiri\source\repos\cadoryx\cadoryx.tests\bin\release\net10.0\cadoryx.tests.dll" id="f0207494-e709-83b7-834d-0d3dbba55b50">
+      <Execution id="bb8202d2-2276-4cd4-8671-7bb9834ef0bc" />
+      <TestMethod codeBase="C:\Users\yoiri\source\repos\Cadoryx\Cadoryx.Tests\bin\Release\net10.0\Cadoryx.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Cadoryx.Tests.HistoryCursorFeedbackTests" name="ExplicitNullIsAcceptedOnlyWhenItMatchesTheActualHistoryEnd" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestEntries>
+    <TestEntry testId="42a0d38f-17cf-35fc-d1b2-f9599e312c80" executionId="3eb62173-4c01-44b3-8da3-d02f573135db" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="d5bbcfb3-5757-2d4d-cadd-bc3eec604128" executionId="66f1d784-529f-4503-a425-57a568bfbf38" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="f70edbcd-5b46-25dc-80a7-e792fade7635" executionId="44c6fd69-e4df-4f8a-b4f7-b05d50bd9aa7" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="a9218381-eadd-ecde-91cd-afb4d39c7438" executionId="8d1c6ab7-a56a-44e8-b73d-09d91bae1475" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="c6d7ada9-8264-89cb-2d63-53ec31ab93a1" executionId="68701fe4-5e55-402d-a039-8a6bf7cb2890" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="df07aecf-f6f3-ed0c-75b8-4fa5911060c9" executionId="64b89e41-c2f1-4661-a4f3-6503456a489d" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="15b320f5-e64a-3e94-468f-6d12341065b1" executionId="71eca024-fda0-4326-8464-80aad6028ef3" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="697b4f2e-d2b1-6148-9bf8-70f510604a13" executionId="69e8b879-b377-4ab1-9444-82aceddcc21f" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="350bfdf4-d89c-8d42-c7a5-6aeecbde8f25" executionId="916192db-1ecb-4ff0-bd1e-ca4442674e12" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="8d70c674-b3f0-d317-e308-da365daf4b17" executionId="45c586ae-b135-45fa-b599-28c76109ce76" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="f0207494-e709-83b7-834d-0d3dbba55b50" executionId="bb8202d2-2276-4cd4-8671-7bb9834ef0bc" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="ef966f9b-2f4a-f18d-e6e1-d59aa7d8ed05" executionId="097263a2-f30d-411a-930c-a610db085f8d" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="278455b9-9551-c694-0b7e-536eb2f6e50f" executionId="c3acf22c-a180-4384-a6c6-871eb902ca71" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="ee8f4fbd-9bed-7940-41db-b343a4f5b3cf" executionId="bba06b7d-8b49-4acf-a222-d5c173169c5d" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="6a3d15ca-534c-f352-9f1a-f3eae6c0e15a" executionId="4ad6e8ae-eb00-49f7-9d0f-62304fb53520" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="1e3faec1-7853-fc7d-ef46-c5ae32934962" executionId="36cb630d-b678-4bf3-bc16-ae59da10ae08" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="e76084c1-0b08-fc04-224c-1e01be745cc9" executionId="f4d5f59d-7c98-4e43-b8b1-8d58b9c1dc53" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="2e516adb-249b-3fe9-8f64-8812c4c22a85" executionId="28ab1f03-8866-44b4-a9ce-7dbd5c3013dd" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="804316d4-8be7-1f14-ee72-df0f7feb1ac0" executionId="6d1a4310-4224-42f2-8d18-38a541899ca7" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="11f94871-4c09-6213-6ce1-3090df20e154" executionId="a4b3a6da-4c3e-406d-90aa-f45d1928d22e" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="4909f71c-84d0-6503-734e-31c95d4ebdf3" executionId="9bded5b9-f113-402a-8871-9bfa9b817012" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="4fe0a310-c7ab-25e2-0d6a-a6ede82ace51" executionId="22ebbe5e-b6e2-4cdc-aa05-7da2193b4aca" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="43d69054-90d5-d9b6-5a1a-d2c0dcd6a3a1" executionId="5ef3e552-94b1-4d9f-84d4-8390ccfc8a68" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="928b77ed-8b06-f1e5-0f72-39c44f296ec5" executionId="9e5c7416-0801-4494-bfc0-7b934dff0fe6" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="c3aed692-e56f-306d-3543-1f82feb01750" executionId="3fd4ca55-0573-4c03-84da-1266b2f69878" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="e2d36a02-fec1-4b54-94f8-f9d448f4fa91" executionId="e2a2937a-5800-42d6-be79-ed501c67776c" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="ce0dd54a-6dcc-f9fa-9554-52c0e8e29a20" executionId="4f6762e7-15e3-4758-857b-eea9be78d207" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="6b0419dd-26fe-5c5f-cd42-dd48f543e237" executionId="ee7d14eb-2584-48da-aee6-e83a963cc551" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="98eac10b-88c1-995b-28d8-6de0c09058db" executionId="b209686e-cc99-4b84-bd30-5964acd9bd3a" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="80503556-3f3d-9f23-a798-d129d5afb394" executionId="d62c310e-743f-4505-987a-445ea76b0a22" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="d6614bd6-6635-4bd7-8cf8-7c5c78414c4f" executionId="629281c3-2902-476f-8270-587dacb13a01" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="811e7bc3-bada-f508-22b6-95beace9d952" executionId="bd1923a9-e588-401d-9482-8cb5384a7a9f" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="4ca021f5-90b1-1f2c-3e44-21f4b76b9b50" executionId="9648860b-5886-46ed-ae4c-921b7459a6c3" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="c4ab4433-0c72-9aac-8ae5-a0059b7eba2c" executionId="fd23aa88-8cf4-4ae5-984a-4e76e1c800da" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="86d9f3d8-d141-9a14-cb73-f2fa2382c178" executionId="732cf5a3-27c3-4f61-b2cb-8924a56ce004" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="ca5a67c2-9fb3-a620-d8b2-23a97da2154a" executionId="e34b7e8b-6c90-4af4-b290-3a27f68268f9" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="185e35dd-09d5-22fd-3720-aa5d9887d665" executionId="9076e83f-621f-42c1-aa99-0e539b658711" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="d684aacd-7d48-c9c8-78c3-d3878bb0f71b" executionId="7e041bb6-cfc6-4464-9db7-d82551c4a11f" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="f780aadf-136e-659a-04e6-f23a2adf2a89" executionId="a5a3f978-2be3-4521-9a06-7aa7d47f1e6f" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="56b58b0b-e6e6-e330-abe3-bf026fb7e6c5" executionId="660218aa-ca82-45b0-8ded-739b06bb70db" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="341f503a-6e38-3fb8-94de-a9984f5b5503" executionId="c0133224-f053-40e2-8c33-1d0d43192209" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="e7c55308-026a-160a-53b4-fe17ebebc478" executionId="f6351f15-09f4-4ead-a6a8-5c3bb34affc8" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="8c1f1627-e172-4542-167e-76fc0f1dbd5a" executionId="ad37af61-7d14-4f04-bf03-7c22d22ad844" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="95f07ca8-1b82-4ddb-e65c-0cd99da8efc7" executionId="807ecc8b-b080-4ef2-8340-72f9c7bee0e6" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="82d589ef-de1f-3b37-1ad6-b75d7f4e4229" executionId="c382488a-89d3-44ed-96a9-1e596ebd3b36" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="6eacd7c9-032b-c6c8-c539-ddcb8e19bb2e" executionId="ac9d54be-4083-4e51-aaed-eff543598ef4" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="8656f54f-4eb6-03e4-757a-c446672bf296" executionId="b8183265-1192-44c5-93af-8e22e241d0fe" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="a3a0c9ce-2d8b-df60-5038-b1338718203b" executionId="bbd641d8-81e1-4a3e-b38d-16eb0cdb54a9" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="9ba05c6f-b071-49b9-4020-5df2cb7773da" executionId="90728ca8-7402-4fd0-afe2-20c2611fdd35" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <ResultSummary outcome="Failed">
+    <Counters total="49" executed="49" passed="45" failed="4" error="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+    <Output>
+      <StdOut>[xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v3.1.5+1b188a7b0a (64-bit .NET 10.0.12)&#xD;
+[xUnit.net 00:00:01.50]   Discovering: Cadoryx.Tests&#xD;
+[xUnit.net 00:00:02.13]   Discovered:  Cadoryx.Tests&#xD;
+[xUnit.net 00:00:02.15]   Starting:    Cadoryx.Tests&#xD;
+[xUnit.net 00:00:04.82]       System.Collections.Generic.KeyNotFoundException : The given key was not present in the dictionary.&#xD;
+[xUnit.net 00:00:04.82]       Stack Trace:&#xD;
+[xUnit.net 00:00:04.82]            at System.Text.Json.JsonElement.GetProperty(String propertyName)&#xD;
+[xUnit.net 00:00:04.82]         C:\Users\yoiri\source\repos\Cadoryx\Cadoryx.Tests\HistoryCursorFeedbackTests.cs(185,0): at Cadoryx.Tests.HistoryCursorFeedbackTests.StaleHistoryReceiptProvidesAReadOnlyExactCursorRecoveryWithoutApplyingTheEdit(String scenario)&#xD;
+[xUnit.net 00:00:04.82]         C:\Users\yoiri\source\repos\Cadoryx\Cadoryx.Tests\HistoryCursorFeedbackTests.cs(194,0): at Cadoryx.Tests.HistoryCursorFeedbackTests.StaleHistoryReceiptProvidesAReadOnlyExactCursorRecoveryWithoutApplyingTheEdit(String scenario)&#xD;
+[xUnit.net 00:00:04.82]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:00:04.84]       System.InvalidOperationException : Sequence contains more than one element&#xD;
+[xUnit.net 00:00:04.84]       Stack Trace:&#xD;
+[xUnit.net 00:00:04.84]            at System.Linq.ThrowHelper.ThrowMoreThanOneElementException()&#xD;
+[xUnit.net 00:00:04.84]            at System.Linq.Enumerable.TryGetSingle[TSource](IEnumerable`1 source, Boolean&amp; found)&#xD;
+[xUnit.net 00:00:04.84]            at System.Linq.Enumerable.Single[TSource](IEnumerable`1 source)&#xD;
+[xUnit.net 00:00:04.84]         C:\Users\yoiri\source\repos\Cadoryx\Cadoryx.Tests\HistoryCursorFeedbackTests.cs(203,0): at Cadoryx.Tests.HistoryCursorFeedbackTests.Fixture.get_Part()&#xD;
+[xUnit.net 00:00:04.84]         C:\Users\yoiri\source\repos\Cadoryx\Cadoryx.Tests\HistoryCursorFeedbackTests.cs(158,0): at Cadoryx.Tests.HistoryCursorFeedbackTests.StaleHistoryReceiptProvidesAReadOnlyExactCursorRecoveryWithoutApplyingTheEdit(String scenario)&#xD;
+[xUnit.net 00:00:04.84]         C:\Users\yoiri\source\repos\Cadoryx\Cadoryx.Tests\HistoryCursorFeedbackTests.cs(194,0): at Cadoryx.Tests.HistoryCursorFeedbackTests.StaleHistoryReceiptProvidesAReadOnlyExactCursorRecoveryWithoutApplyingTheEdit(String scenario)&#xD;
+[xUnit.net 00:00:04.84]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:00:04.84]       System.Collections.Generic.KeyNotFoundException : The given key was not present in the dictionary.&#xD;
+[xUnit.net 00:00:04.84]       Stack Trace:&#xD;
+[xUnit.net 00:00:04.84]            at System.Text.Json.JsonElement.GetProperty(String propertyName)&#xD;
+[xUnit.net 00:00:04.84]         C:\Users\yoiri\source\repos\Cadoryx\Cadoryx.Tests\HistoryCursorFeedbackTests.cs(185,0): at Cadoryx.Tests.HistoryCursorFeedbackTests.StaleHistoryReceiptProvidesAReadOnlyExactCursorRecoveryWithoutApplyingTheEdit(String scenario)&#xD;
+[xUnit.net 00:00:04.84]         C:\Users\yoiri\source\repos\Cadoryx\Cadoryx.Tests\HistoryCursorFeedbackTests.cs(194,0): at Cadoryx.Tests.HistoryCursorFeedbackTests.StaleHistoryReceiptProvidesAReadOnlyExactCursorRecoveryWithoutApplyingTheEdit(String scenario)&#xD;
+[xUnit.net 00:00:04.84]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:00:04.85]       System.Collections.Generic.KeyNotFoundException : The given key was not present in the dictionary.&#xD;
+[xUnit.net 00:00:04.85]       Stack Trace:&#xD;
+[xUnit.net 00:00:04.85]            at System.Text.Json.JsonElement.GetProperty(String propertyName)&#xD;
+[xUnit.net 00:00:04.85]         C:\Users\yoiri\source\repos\Cadoryx\Cadoryx.Tests\HistoryCursorFeedbackTests.cs(185,0): at Cadoryx.Tests.HistoryCursorFeedbackTests.StaleHistoryReceiptProvidesAReadOnlyExactCursorRecoveryWithoutApplyingTheEdit(String scenario)&#xD;
+[xUnit.net 00:00:04.85]         C:\Users\yoiri\source\repos\Cadoryx\Cadoryx.Tests\HistoryCursorFeedbackTests.cs(194,0): at Cadoryx.Tests.HistoryCursorFeedbackTests.StaleHistoryReceiptProvidesAReadOnlyExactCursorRecoveryWithoutApplyingTheEdit(String scenario)&#xD;
+[xUnit.net 00:00:04.85]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:00:04.91]   Finished:    Cadoryx.Tests&#xD;
+</StdOut>
+    </Output>
+    <RunInfos>
+      <RunInfo computerName="YOIRI" outcome="Error" timestamp="2026-10-13T16:41:10.0116275+09:00">
+        <Text>[xUnit.net 00:00:04.82]     Cadoryx.Tests.HistoryCursorFeedbackTests.StaleHistoryReceiptProvidesAReadOnlyExactCursorRecoveryWithoutApplyingTheEdit(scenario: "foreign-document") [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="YOIRI" outcome="Error" timestamp="2026-10-13T16:41:10.0252784+09:00">
+        <Text>[xUnit.net 00:00:04.84]     Cadoryx.Tests.HistoryCursorFeedbackTests.StaleHistoryReceiptProvidesAReadOnlyExactCursorRecoveryWithoutApplyingTheEdit(scenario: "changed-preview-position") [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="YOIRI" outcome="Error" timestamp="2026-10-13T16:41:10.0305503+09:00">
+        <Text>[xUnit.net 00:00:04.84]     Cadoryx.Tests.HistoryCursorFeedbackTests.StaleHistoryReceiptProvidesAReadOnlyExactCursorRecoveryWithoutApplyingTheEdit(scenario: "invented-cursor-at-end") [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="YOIRI" outcome="Error" timestamp="2026-10-13T16:41:10.0395639+09:00">
+        <Text>[xUnit.net 00:00:04.85]     Cadoryx.Tests.HistoryCursorFeedbackTests.StaleHistoryReceiptProvidesAReadOnlyExactCursorRecoveryWithoutApplyingTheEdit(scenario: "changed-author-state") [FAIL]</Text>
+      </RunInfo>
+    </RunInfos>
+  </ResultSummary>
+</TestRun>

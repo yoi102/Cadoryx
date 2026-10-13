@@ -85,9 +85,9 @@ internal static class CadAuthoringInspection
                         occurrenceTransform=work.OccurrenceTransform,frame=CadDatumJson.Frame(new(snapshot.Settings.WorkPlane.Origin,snapshot.Settings.WorkPlane.Rotation))}];
                 break;
             case "timeline":
-                var requested = new DefinitionId(partId ?? throw new ArgumentException("timeline requires an exact partId."));
+                var requested = new DefinitionId(partId ?? throw new ArgumentException("timeline requires an exact partId, not id. Query cad_inspect area=parts without id; copy the chosen items[].id into partId. id is only an optional feature filter within that part."));
                 if (snapshot.Definitions.GetValueOrDefault(requested) is not PartDefinition part)
-                    throw new ArgumentException("Exact partId is not a part definition.");
+                    throw new ArgumentException("Exact partId is not a part definition. Query cad_inspect area=parts without id; explicitly choose a part and copy its items[].id into partId. Do not use documentId, bodyId, featureId or rootAssemblyId.");
                 items = part.Features.Select((featureId, index) => (Feature: snapshot.Features[featureId], Index: index))
                     .Where(f => id is null || f.Feature.Id.Value == id)
                     .Select(f => (object)new { id = f.Feature.Id.ToString(), position = f.Index,
@@ -103,7 +103,10 @@ internal static class CadAuthoringInspection
         return JsonSerializer.Serialize(new { success = true, documentId = snapshot.Id.ToString(), stateId = snapshot.StateId.ToString(),
             area, offset, limit, total = pageTotal??items.Length, hasMore = (long)offset + limit < (pageTotal??items.Length),
             units = new { length = "mm", angle = "rad", scalar = "1" }, authorState = true,
-            rolledBack = cursor is not null, cursor = cursor is null ? null : new { stateId = cursor.State.ToString(), partId = cursor.Part.ToString(), cursor.Position },
+            rolledBack = cursor is not null,
+            // Explicit null is an authoring expectation, not an optional omitted field.
+            cursor = cursor is null ? JsonSerializer.SerializeToElement<object?>(null) :
+                JsonSerializer.SerializeToElement(new { stateId = cursor.State.ToString(), partId = cursor.Part.ToString(), cursor.Position }, JsonOptions),
             items = pageTotal is not null?items:items.Skip(offset).Take(limit).ToArray() }, JsonOptions);
     }
 

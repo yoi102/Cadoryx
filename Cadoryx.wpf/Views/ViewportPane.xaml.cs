@@ -63,7 +63,7 @@ public partial class ViewportPane
     private void Attach()
     {
         if(host is not null||DataContext is not CadDocumentViewModel vm||vm.IsDetached||vm.Session.IsClosing)return;
-        document=vm;host=new(vm.Session.Assets);
+        BeginGraphicsAttachment();document=vm;host=new(vm.Session.Assets);
         main=System.Windows.Application.Current.MainWindow?.DataContext as MainWindowViewModel;
         host.RadialMenuEnabled=main?.ApplicationSettings.RadialMenu.IsEnabled??false;
         if(main is not null)main.PropertyChanged+=OnApplicationSettingsChanged;
@@ -86,9 +86,9 @@ public partial class ViewportPane
     }
     private void OnReady(object? sender,EventArgs e)
     {
-        if(host?.Viewport is not {} viewport||document is not {} vm)return;
+        if(!ReferenceEquals(sender,host)||host?.Viewport is not {} viewport||document is not {} vm)return;
         AttachRadialWindowHook();
-        Guard(()=>{viewport.SetDisplayMode(vm.CurrentDisplayMode);if(IsSecondary&&SavedCamera is null)viewport.SetProjection(CadProjection.Top);if(SavedCamera is {} c)viewport.RestoreCamera(c);viewport.SetBackgroundGradient(vm.BackgroundTopArgb,vm.BackgroundBottomArgb);viewport.SetWorkGrid(vm.GridVisible,vm.GridSpacingMm,vm.WorkPlaneSettings);viewport.SetOriginAxes(vm.OriginSettings);viewport.SetConstructionMode(vm.IsViewportConstructing);viewport.SetSection(vm.Review.Section);viewport.SetViewCubeAppearance(ViewCubeAppearance());viewport.SetViewCubeVisible(main?.ApplicationSettings.Viewport.ShowViewCube??true);ShowScene(vm.Review.Filter(vm.PreviewScene??vm.Scene),SavedCamera is null);});
+        if(!Guard(()=>{viewport.SetDisplayMode(vm.CurrentDisplayMode);if(IsSecondary&&SavedCamera is null)viewport.SetProjection(CadProjection.Top);if(SavedCamera is {} c)viewport.RestoreCamera(c);viewport.SetBackgroundGradient(vm.BackgroundTopArgb,vm.BackgroundBottomArgb);viewport.SetWorkGrid(vm.GridVisible,vm.GridSpacingMm,vm.WorkPlaneSettings);viewport.SetOriginAxes(vm.OriginSettings);viewport.SetConstructionMode(vm.IsViewportConstructing);viewport.SetSection(vm.Review.Section);viewport.SetViewCubeAppearance(ViewCubeAppearance());viewport.SetViewCubeVisible(main?.ApplicationSettings.Viewport.ShowViewCube??true);ShowScene(vm.Review.Filter(vm.PreviewScene??vm.Scene),SavedCamera is null);}))return;
         OnSelection(this,EventArgs.Empty);
         viewport.SelectionChanged+=OnNativeSelection;
         viewport.AssemblyDatumSelected+=OnAssemblyDatumSelected;
@@ -101,35 +101,119 @@ public partial class ViewportPane
         viewport.SolidHandleFinished+=OnSolidHandleFinished;
         viewport.OccurrenceGizmoFinished+=OnOccurrenceGizmoFinished;
         RefreshSolidHandles();
-        RefreshOccurrenceHandles();
+        RefreshOccurrenceHandles();CompleteGraphicsRecovery(viewport);
     }
     private void Detach()
     {
-        CancelSceneLoad();
-        DetachRadialWindowHook();
-        ReviewMenu.IsOpen=false;
-        radialMenu.Close();
-        ReviewMenu.DataContext=null;
-        StopCameraAnimation();
-        if(main is not null){main.PropertyChanged-=OnApplicationSettingsChanged;main=null;}
-        if(document is {} vm)
+        var vm=document;var closing=host;var viewport=closing?.Viewport;
+        var primary=graphicsPrimaryFailure;bool automaticRetirement=retiringGraphicsHost;bool disposedOwner=false;
+        var cleanupFailures=new List<Exception>();
+        void Track(Exception failure)
         {
-            vm.Detaching-=OnDocumentDetaching;vm.Review.ViewChanged-=OnReview;vm.Review.FocusRequested-=OnFocus;
-            vm.AssemblyConstraints.DatumPickRequested-=OnDatumPickRequested;
-            vm.DrawingDatumPickRequested-=OnDatumPickRequested;
-            vm.Review.CaptureCamerasRequested-=OnCaptureCameras;vm.Review.RestoreCamerasRequested-=OnRestoreCameras;
-            vm.SceneChanged-=OnScene;vm.PreviewChanged-=OnPreview;vm.FitRequested-=OnFit;
-            vm.ProjectionRequested-=OnProjection;vm.DisplayModeRequested-=OnDisplay;vm.Selection.Changed-=OnSelection;
-            vm.ViewportSettingsChanged-=OnViewportSettings;vm.PropertyChanged-=OnDocumentProperty;
-            if(host?.Viewport is {} viewport){Guard(()=>SavedCamera=viewport.CaptureCamera());viewport.SelectionChanged-=OnNativeSelection;viewport.AssemblyDatumSelected-=OnAssemblyDatumSelected;viewport.AssemblyDatumPickRejected-=OnAssemblyDatumPickRejected;viewport.ConstructionPointer-=OnConstructionPointer;viewport.NavigationStarted-=OnNavigationStarted;viewport.ViewCubeOrientationRequested-=OnCubeOrientation;viewport.ViewCubeTurnRequested-=OnCubeTurn;viewport.SolidHandleChanged-=OnSolidHandleChanged;viewport.SolidHandleFinished-=OnSolidHandleFinished;viewport.OccurrenceGizmoFinished-=OnOccurrenceGizmoFinished;}
+            cleanupFailures.Add(failure);
+            if(primary is not null)RecordGraphicsRecoveryFailure(primary,failure);
+            else if(cleanupFailures.Count>1)RecordGraphicsRecoveryFailure(cleanupFailures[0],failure);
         }
-        if(host is not null){host.Ready-=OnReady;host.Error-=OnError;host.Destroying-=OnHostDestroying;host.ShortcutPressed-=OnShortcut;host.ContextMenuRequested-=OnContextMenu;host.RadialStarted-=OnRadialStarted;host.RadialMoved-=OnRadialMoved;host.RadialModifiersChanged-=OnRadialModifiersChanged;host.RadialCompleted-=OnRadialCompleted;host.RadialCancelled-=OnRadialCancelled;host.RadialWheel-=OnRadialWheel;HostPanel.Children.Remove(host);host.Dispose();host=null;}
+        void Retire(Action action)
+        {
+            try{action();}
+            catch(Exception failure)
+            {
+                Track(failure);
+                try{vm?.Report(failure);}catch(Exception reporting){Track(reporting);}
+            }
+        }
+        // Teardown continues through every subscription, capture, popup and
+        // native owner even when an earlier operation fails.
+        Retire(EndGraphicsAttachment);
+        if(viewport is not null)Retire(()=>
+            disposedOwner=viewport.TryObserveRecoverableGraphicsFault(out var observation)&&observation.OwnerDisposed);
+        Retire(CancelSceneLoad);Retire(DetachRadialWindowHook);
+        Retire(()=>ReviewMenu.IsOpen=false);Retire(radialMenu.Close);
+        Retire(()=>ReviewMenu.DataContext=null);Retire(StopCameraAnimation);
+        if(main is {} previousMain){main=null;Retire(()=>previousMain.PropertyChanged-=OnApplicationSettingsChanged);}
+        if(vm is not null)
+        {
+            Retire(()=>vm.Detaching-=OnDocumentDetaching);
+            Retire(()=>vm.Review.ViewChanged-=OnReview);
+            Retire(()=>vm.Review.FocusRequested-=OnFocus);
+            Retire(()=>vm.AssemblyConstraints.DatumPickRequested-=OnDatumPickRequested);
+            Retire(()=>vm.DrawingDatumPickRequested-=OnDatumPickRequested);
+            Retire(()=>vm.Review.CaptureCamerasRequested-=OnCaptureCameras);
+            Retire(()=>vm.Review.RestoreCamerasRequested-=OnRestoreCameras);
+            Retire(()=>vm.SceneChanged-=OnScene);
+            Retire(()=>vm.PreviewChanged-=OnPreview);
+            Retire(()=>vm.FitRequested-=OnFit);
+            Retire(()=>vm.ProjectionRequested-=OnProjection);
+            Retire(()=>vm.DisplayModeRequested-=OnDisplay);
+            Retire(()=>vm.Selection.Changed-=OnSelection);
+            Retire(()=>vm.ViewportSettingsChanged-=OnViewportSettings);
+            Retire(()=>vm.PropertyChanged-=OnDocumentProperty);
+        }
+        if(viewport is not null)
+        {
+            Retire(()=>
+            {
+                var camera=disposedOwner?viewport.LastKnownCamera:viewport.CaptureCamera();
+                if(camera is not null)SavedCamera=camera;
+            });
+            Retire(()=>viewport.SelectionChanged-=OnNativeSelection);
+            Retire(()=>viewport.AssemblyDatumSelected-=OnAssemblyDatumSelected);
+            Retire(()=>viewport.AssemblyDatumPickRejected-=OnAssemblyDatumPickRejected);
+            Retire(()=>viewport.ConstructionPointer-=OnConstructionPointer);
+            Retire(()=>viewport.NavigationStarted-=OnNavigationStarted);
+            Retire(()=>viewport.ViewCubeOrientationRequested-=OnCubeOrientation);
+            Retire(()=>viewport.ViewCubeTurnRequested-=OnCubeTurn);
+            Retire(()=>viewport.SolidHandleChanged-=OnSolidHandleChanged);
+            Retire(()=>viewport.SolidHandleFinished-=OnSolidHandleFinished);
+            Retire(()=>viewport.OccurrenceGizmoFinished-=OnOccurrenceGizmoFinished);
+        }
+        if(closing is not null)
+        {
+            host=null;
+            Retire(()=>closing.Ready-=OnReady);
+            Retire(()=>closing.Error-=OnError);
+            Retire(()=>closing.Destroying-=OnHostDestroying);
+            Retire(()=>closing.ShortcutPressed-=OnShortcut);
+            Retire(()=>closing.ContextMenuRequested-=OnContextMenu);
+            Retire(()=>closing.RadialStarted-=OnRadialStarted);
+            Retire(()=>closing.RadialMoved-=OnRadialMoved);
+            Retire(()=>closing.RadialModifiersChanged-=OnRadialModifiersChanged);
+            Retire(()=>closing.RadialCompleted-=OnRadialCompleted);
+            Retire(()=>closing.RadialCancelled-=OnRadialCancelled);
+            Retire(()=>closing.RadialWheel-=OnRadialWheel);
+            Retire(()=>HostPanel.Children.Remove(closing));Retire(closing.Dispose);
+        }
         document=null;
+        if(automaticRetirement)
+        {
+            // An already disposed exact native owner rejects owner operations;
+            // those exceptions remain on the primary error. Every other
+            // teardown failure prevents replacement instead of hiding a leak.
+            bool IsOnlyDisposedOwnerFailure(Exception failure)
+            {
+                var seen=new HashSet<Exception>(ReferenceEqualityComparer.Instance);
+                var pending=new Stack<Exception>();pending.Push(failure);
+                while(pending.TryPop(out var current))
+                {
+                    if(!seen.Add(current))continue;
+                    if(current is not ObjectDisposedException disposed||
+                        disposed.ObjectName!=typeof(OcctSharp.OcctViewer).FullName)return false;
+                    if(current.InnerException is {} inner)pending.Push(inner);
+                    foreach(string key in new[]{"Cadoryx.Rendering.CleanupFailures","Cadoryx.Viewport.GraphicsRecoveryFailures"})
+                        if(current.Data[key] is IEnumerable<Exception> additional)
+                            foreach(var error in additional)pending.Push(error);
+                }
+                return true;
+            }
+            var fatal=cleanupFailures.FirstOrDefault(failure=>!(disposedOwner&&IsOnlyDisposedOwnerFailure(failure)));
+            if(fatal is not null)System.Runtime.ExceptionServices.ExceptionDispatchInfo.Capture(fatal).Throw();
+        }
     }
     private void OnDocumentDetaching(object? sender,EventArgs e)=>Detach();
     private void OnCaptureCameras(object? sender,EventArgs e)=>Guard(()=>{if(host?.Viewport is {} v)SavedCamera=v.CaptureCamera();});
     private void OnRestoreCameras(object? sender,EventArgs e)=>Guard(()=>{if(host?.Viewport is {} v&&SavedCamera is {} c){StopCameraAnimation();v.RestoreCamera(c);v.Redraw();}});
-    private void OnHostDestroying(object? sender,EventArgs e){DetachRadialWindowHook();ReviewMenu.IsOpen=false;radialMenu.Close();StopCameraAnimation();CancelSceneLoad();Guard(()=>{if(document is {} vm&&host?.Viewport is {} viewport)SavedCamera=viewport.CaptureCamera();});}
+    private void OnHostDestroying(object? sender,EventArgs e){DetachRadialWindowHook();ReviewMenu.IsOpen=false;radialMenu.Close();StopCameraAnimation();Guard(CancelSceneLoad);Guard(()=>{if(document is {} vm&&host?.Viewport is {} viewport)SavedCamera=viewport.CaptureCamera();});}
     private void OnScene(object? sender,EventArgs e)=>Guard(()=>{if(document is {} vm){ShowScene(vm.Review.Filter(vm.Scene));RefreshSolidHandles();RefreshOccurrenceHandles();}});
     private void OnPreview(object? sender,EventArgs e)=>Guard(()=>{if(document is {} vm){ShowScene(vm.Review.Filter(vm.PreviewScene??vm.Scene));RefreshSolidHandles();RefreshOccurrenceHandles();}});
     private void OnFit(object? sender,EventArgs e){if(IsActive)Guard(()=>{if(host?.Viewport is {} viewport)StartCameraAnimation(viewport.CaptureFitTarget());});}
@@ -172,13 +256,14 @@ public partial class ViewportPane
             viewport.CompleteProgressiveScene();
             SceneLoadTimed?.Invoke(new(scene.DocumentId,IsSecondary,scene.Items.Length,firstVisibleMs,
                 sceneClock.Elapsed.TotalMilliseconds,batches,redraws,statusUpdates));
-            ClearSceneLoadStatus();RefreshOccurrenceHandles();
+            ClearSceneLoadStatus();RefreshOccurrenceHandles();CompleteGraphicsRecovery(viewport);
         }
         catch(Exception ex)
         {
-            if(version!=sceneLoadVersion)return;
+            if(version!=sceneLoadVersion||!ReferenceEquals(host?.Viewport,viewport))return;
+            viewport.PreserveGraphicsFailure(ex);
             try{viewport.AbortProgressiveScene();}catch(Exception cleanup){document?.Report(cleanup);}
-            ClearSceneLoadStatus();document?.Report(ex);
+            ClearSceneLoadStatus();ReportViewportFailure(ex,host,viewport);
         }
     }
     private void SetSceneLoadStatus(int count,int total)
@@ -195,8 +280,7 @@ public partial class ViewportPane
     private void CancelSceneLoad()
     {
         sceneLoadVersion++;
-        host?.Viewport?.AbortProgressiveScene();
-        ClearSceneLoadStatus();
+        try{host?.Viewport?.AbortProgressiveScene();}finally{ClearSceneLoadStatus();}
     }
     private void OnFocus(object? sender,Bounds3d bounds){if(IsActive)Guard(()=>{if(host?.Viewport is {} viewport)StartCameraAnimation(viewport.CaptureFocusTarget(bounds));});}
     private void ActivatePane(){if(document is {} vm)vm.Review.ActivePane=IsSecondary?1:0;}
@@ -427,7 +511,8 @@ public partial class ViewportPane
     }
     private void OnCameraFrame(object? sender,EventArgs e)
     {
-        if(cameraViewport is not {} viewport||!ReferenceEquals(host?.Viewport,viewport)||cameraFrom is not {} from||cameraTo is not {} to||cameraClock is not {} clock)
+        var sourceHost=host;
+        if(cameraViewport is not {} viewport||!ReferenceEquals(sourceHost?.Viewport,viewport)||cameraFrom is not {} from||cameraTo is not {} to||cameraClock is not {} clock)
         {StopCameraAnimation();return;}
         try
         {
@@ -437,7 +522,7 @@ public partial class ViewportPane
             viewport.RestoreCamera(CadCameraAnimation.Interpolate(from,to,eased));viewport.Redraw();
             AnimationFramePresented?.Invoke(viewport.CaptureCamera());
         }
-        catch(Exception ex){StopCameraAnimation();document?.Report(ex);}
+        catch(Exception ex){StopCameraAnimation();ReportViewportFailure(ex,sourceHost,viewport);}
     }
     private void StopCameraAnimation()
     {
@@ -613,14 +698,14 @@ public partial class ViewportPane
         }
         catch(Exception ex){vm.Report(ex);}
     }
-    private void OnError(object? sender,Exception ex)=>document?.Report(ex);
+    private void OnError(object? sender,Exception ex)=>ReportViewportFailure(ex,sender as OcctViewportHost,(sender as OcctViewportHost)?.Viewport);
     private void OnShortcut(object? sender,int key)
     {
         if(key==27){document?.CancelViewportConstruction();document?.Selection.Replace([]);Guard(()=>host?.Viewport?.ClearSelection());return;}
         if(System.Windows.Application.Current.MainWindow.DataContext is not MainWindowViewModel main)return;
         if(key==83)main.SaveCommand.Execute(null);else if(key==90)main.UndoCommand.Execute(null);else if(key==89)main.RedoCommand.Execute(null);
     }
-    private void Guard(Action action){try{action();}catch(Exception ex){document?.Report(ex);}}
+    private bool Guard(Action action){var sourceHost=host;var sourceViewport=sourceHost?.Viewport;try{action();return true;}catch(Exception ex){ReportViewportFailure(ex,sourceHost,sourceViewport);return false;}}
 }
 
 internal sealed record ProgressiveSceneTiming(DocumentId DocumentId,bool IsSecondary,int VisibleInstances,

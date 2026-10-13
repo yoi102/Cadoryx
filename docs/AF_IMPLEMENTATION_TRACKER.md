@@ -1,5 +1,15 @@
 # A–F 全量实施跟踪
 
+2026-10-13，status238：[完整1076组合已合入开发目录](AF_SOURCE1076_DEVELOPMENT_INTEGRATION.md)，不再是尚未合入的source1000组合。55现有/44新增、1189输入一致，生产根两配置构建0及实际6652发现；候选两配置各455个不同专项通过、实际native62核验。原6619名称完整保留，完整6652及根原生验收尚未运行。新历史回执保留cursor:null、过期仅提示只读重查，合入前生产两配置各261通过；不推断原模型可用。1075原两场景均FAIL且completeSourceItems未触发；D6第三版窗口可启动但实际六状态未完成。SDK mapped-scale两方案严格FAIL，继续定位具体状态。A–F所有原范围继续，G/清理暂缓；下方旧生产/候选状态按历史检查点阅读。
+
+2026-10-13，status237：[原Bonsai1074两场景](../capability-evidence/diagnostics/af1074-public85/provider-runtime-verification.json)实际多文档8轮PASS/资产0、工程图第三轮原16轮FAIL，实际native62准确。新[F5完整原生条目补充](F5_COMPLETE_NATIVE_SOURCE_CONTEXT.md)两配置34/34，旧版各33/1；1075完整solution两配置构建0、实际Agent二进制各34/34，原6635来源保持、新13项、预计6648尚未发现/全量执行。窗口宿主输入前启动失败已定位，修订2编译通过但实际窗口仍未通过。SDK原版诊断仍失败，新的精确mapped-scale假设未验证；原STEP24/窗口/材质/性能/生产集成及其他A–F范围保持，G与清理暂缓。
+
+以下status236及更早为历史；当前进度以status237为准。
+
+2026-10-13，status236：[1074/public85合并候选](AF_SOURCE1074_INTEGRATION.md)完整solution两配置构建0警告/错误，实际完整候选Agent二进制两配置各21/21；原6619测试源码保持，新增16案例，预计6635尚未实际发现/执行。原36窗口与原Bonsai两场景已绑定新应用/SDK载荷，实际桌面未开始；服务当前15630、原模型重新以8192加载，工程图工作流正在实际运行，随后串行多文档。父1073[两配置完整6619](../capability-evidence/diagnostics/public-nuget-migration/public85-final1073-full-both-verification.json)各6595/24/0跳过，原用例保持、无新增失败、原AI预算失败已通过、实际native62准确。SDK原版对照两配置原生已结束，报告待独立接收，无已验证修复。1074未合入生产，原严格STEP24、窗口/材质/性能/提供方与其他A–F范围保持；G及Cadoryx清理暂缓。
+
+以下status235及更早记录为历史；当前进度以status236为准。
+
 2026-10-13，status235：[source1073/public85 Release完整6619](../capability-evidence/diagnostics/public-nuget-migration/public85-final1073-release-verification.json)实际6595通过/24失败/零跳过，原6556及新增63名称保持，只有原严格STEP24失败，原十二工具恢复预算失败已通过。冻结源码/Release完整载荷及实际native62核验通过；Debug正在串行运行，最终1073仍未合入生产。[F5默认分页配对](F5_DEFAULT_PAGE_QUERY_MATCHING.md)另进入当前生产源码，两配置独立21/21，旧版各16/5；不替代冻结候选/原Bonsai/窗口验收。SDK会话仅准备STEP误差分段探针，无已验证修复，A–F尚未全部完成；G及Cadoryx清理暂缓。
 
 以下status234及更早记录保留当时状态；当前进度以status235为准。

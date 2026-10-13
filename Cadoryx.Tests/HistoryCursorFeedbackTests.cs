@@ -141,6 +141,60 @@ public sealed class HistoryCursorFeedbackTests
         await Assert.ThrowsAnyAsync<OperationCanceledException>(() => f.Call("{bad-json", cancel.Token)); f.AssertSame(before);
     }
 
+    [Theory]
+    [InlineData("invented-cursor-at-end")]
+    [InlineData("changed-preview-position")]
+    [InlineData("changed-author-state")]
+    [InlineData("foreign-document")]
+    public async Task StaleHistoryReceiptProvidesAReadOnlyExactCursorRecoveryWithoutApplyingTheEdit(string scenario)
+    {
+        await using var f = await Fixture.Create();
+        var part = f.Part;
+        var args = f.Arguments();
+        if (scenario == "invented-cursor-at-end")
+            args["cursor"] = new JsonObject { ["stateId"] = f.Session.Snapshot.StateId.ToString(), ["partId"] = f.Part.ToString(), ["position"] = 0 };
+        else if (scenario == "changed-preview-position")
+        {
+            await f.Session.ExecuteAsync(new AddBodyCommand(new BoxRecipe(2, 3, 4, RigidTransform3d.Translate(5, 0, 0)), "Second", part));
+            await f.Session.RollbackFeaturesAsync(part, 0);
+            args = f.Arguments();
+            await f.Session.RollbackFeaturesAsync(part, 1);
+        }
+        else if (scenario == "changed-author-state")
+            await f.Session.ExecuteAsync(new AddBodyCommand(new BoxRecipe(2, 3, 4, RigidTransform3d.Translate(5, 0, 0)), "Second", part));
+        else args["documentId"] = Guid.NewGuid().ToString();
+        var before = f.Capture();
+        var rejected = await f.Call(args.ToJsonString());
+        Assert.False(rejected.GetProperty("success").GetBoolean());
+        Assert.Equal("stale_history_expectation", rejected.GetProperty("code").GetString());
+        var recovery = rejected.GetProperty("recovery");
+        Assert.Equal("cad_inspect", recovery.GetProperty("tool").GetString());
+        Assert.Contains("items[].position", recovery.GetProperty("instruction").GetString());
+        f.AssertSame(before);
+        using var inspected = JsonDocument.Parse(await f.Inspect(recovery.GetProperty("arguments").GetRawText()));
+        var current = inspected.RootElement;
+        Assert.True(current.GetProperty("success").GetBoolean());
+        Assert.Equal(f.Session.Snapshot.Id.ToString(), current.GetProperty("documentId").GetString());
+        Assert.Equal(f.Session.Snapshot.StateId.ToString(), current.GetProperty("stateId").GetString());
+        if (f.Session.FeatureCursor is {} cursor)
+        {
+            var value = current.GetProperty("cursor");
+            Assert.Equal(cursor.State.ToString(), value.GetProperty("stateId").GetString());
+            Assert.Equal(cursor.Part.ToString(), value.GetProperty("partId").GetString());
+            Assert.Equal(cursor.Position, value.GetProperty("position").GetInt32());
+        }
+        else Assert.Equal(JsonValueKind.Null, current.GetProperty("cursor").ValueKind);
+        f.AssertSame(before);
+        args["documentId"] = current.GetProperty("documentId").GetString();
+        args["stateId"] = current.GetProperty("stateId").GetString();
+        args["cursor"] = JsonNode.Parse(current.GetProperty("cursor").GetRawText());
+        var accepted = await f.Call(args.ToJsonString());
+        Assert.True(accepted.GetProperty("success").GetBoolean());
+        Assert.False(accepted.GetProperty("changed").GetBoolean());
+        Assert.Same(before.Author, f.Session.Snapshot);
+        Assert.Equal(JsonValueKind.Null, accepted.GetProperty("cursor").ValueKind);
+    }
+
     private sealed record CapturedState(DocumentSnapshot Author, DocumentSnapshot Display, FeatureCursor? Cursor, long Generation,
         DocumentHistoryUsage History, int Assets, bool Dirty);
     private sealed class Fixture : IAsyncDisposable
@@ -173,6 +227,7 @@ public sealed class HistoryCursorFeedbackTests
         {
             using var result = JsonDocument.Parse(await Tools.ExecuteAsync(new(Guid.NewGuid().ToString(), "cad_history", json), token)); return result.RootElement.Clone();
         }
+        internal Task<string> Inspect(string json) => Tools.ExecuteAsync(new("recovery", "cad_inspect", json), default);
         public async ValueTask DisposeAsync() { Document.Detach(); await Session.DisposeAsync(); Assert.Equal(0, Assets.Count); }
     }
 }

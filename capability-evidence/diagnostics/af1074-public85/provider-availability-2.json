@@ -1,0 +1,13 @@
+{
+  "endpoint": "http://127.0.0.1:15630/v1",
+  "loadedModels": [],
+  "serverSettingsChanged": false,
+  "recordedAt": "2026-10-12T16:50:03.5477888+00:00",
+  "workflowRequestsExecuted": false,
+  "originalSelectedModelAvailable": true,
+  "selectedModel": "prism-ml/bonsai-27b",
+  "serverStatus": {
+    "running": true,
+    "port": 15630
+  }
+}

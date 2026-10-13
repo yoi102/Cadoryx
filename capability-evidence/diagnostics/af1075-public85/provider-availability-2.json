@@ -1,0 +1,45 @@
+{
+  "loadedModels": [
+    {
+      "type": "llm",
+      "modelKey": "prism-ml/bonsai-27b",
+      "format": "gguf",
+      "displayName": "Bonsai 27B",
+      "publisher": "prism-ml",
+      "path": "prism-ml/bonsai-27b",
+      "sizeBytes": 4734614604,
+      "indexedModelIdentifier": "prism-ml/bonsai-27b",
+      "deviceIdentifier": null,
+      "paramsString": "27B",
+      "architecture": "qwen35",
+      "quantization": {
+        "name": "Q1_0",
+        "bits": 1
+      },
+      "variants": [
+        "prism-ml/bonsai-27b@q1_0"
+      ],
+      "selectedVariant": "prism-ml/bonsai-27b@q1_0",
+      "identifier": "prism-ml/bonsai-27b",
+      "ttlMs": null,
+      "lastUsedTime": 1791866698241,
+      "vision": true,
+      "trainedForToolUse": true,
+      "maxContextLength": 262144,
+      "contextLength": 8192,
+      "status": "idle",
+      "queued": 0,
+      "parallel": 4
+    }
+  ],
+  "endpoint": "http://127.0.0.1:15630/v1",
+  "serverStatus": {
+    "running": true,
+    "port": 15630
+  },
+  "originalSelectedModelAvailable": true,
+  "recordedAt": "2026-10-13T05:47:15.2812294+00:00",
+  "workflowRequestsExecuted": false,
+  "selectedModel": "prism-ml/bonsai-27b",
+  "serverSettingsChanged": false
+}

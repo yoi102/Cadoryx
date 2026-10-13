@@ -1,0 +1,32 @@
+{
+  "passed": false,
+  "scenario": "drawing",
+  "provider": "lmstudio",
+  "model": "prism-ml/bonsai-27b",
+  "endpoint": "http://127.0.0.1:15630/v1",
+  "transport": "HTTP",
+  "started": "2026-10-13T04:37:33.7358282+00:00",
+  "finished": "2026-10-13T04:40:59.9095467+00:00",
+  "failure": "The model exceeded the maximum number of agent tool rounds.",
+  "turns": [
+    {
+      "turn": 1,
+      "elapsedMs": 32665,
+      "toolCalls": 7,
+      "stateId": "340ba6ef-4a72-49d3-9167-2f937eabe298",
+      "historyMessages": 16
+    },
+    {
+      "turn": 2,
+      "elapsedMs": 60467,
+      "toolCalls": 11,
+      "stateId": "c9351143-00a9-44b1-a5dc-2f5ca0d9b855",
+      "historyMessages": 40
+    }
+  ],
+  "actualProductionTools": true,
+  "assetsAfterClose": 0,
+  "outputs": [],
+  "scope": "Guided eight-turn synthetic workflow; template/control-frame/section/detail covered by local contracts and WPF, not this provider probe.",
+  "physicalPointer": "NOT RUN"
+}

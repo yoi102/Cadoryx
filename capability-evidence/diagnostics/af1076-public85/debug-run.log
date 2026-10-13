@@ -1,0 +1,7 @@
+VSTest version 18.7.0 (x64)
+
+Starting test execution, please wait...
+A total of 1 test files matched the specified pattern.
+Results File: C:\Users\yoiri\source\repos\Cadoryx\artifacts\af1076-public85-1\focused-debug-1\focused.trx
+
+Passed!  - Failed:     0, Passed:   436, Skipped:     0, Total:   436, Duration: 44 s - Cadoryx.Tests.dll (net10.0)

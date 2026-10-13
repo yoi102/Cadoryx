@@ -1,0 +1,1282 @@
+{
+  "step": {
+    "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-mapped-scale-static\\native-minimum\\run-c72fe1fca6cb44bc9765cdbb95fa7504\\factor-1024.step",
+    "sha256": "BDC312C4C6624913E085DD246B25FA3B679680203E20C610BB4A9C477A1ABD5D"
+  },
+  "actualCorrespondence": {
+    "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-mapped-scale-static\\native-minimum\\run-c72fe1fca6cb44bc9765cdbb95fa7504\\factor-1024.tsv",
+    "sha256": "13648348568E059705E3D2EE8CCD7496CB541BD0D88BCF251E071B605BC1B171"
+  },
+  "reader": {
+    "exitCode": 1,
+    "observation": {
+      "log": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-mapped-scale-static\\native-minimum\\run-c72fe1fca6cb44bc9765cdbb95fa7504\\reader-1024.jsonl",
+        "sha256": "CA2CF36F4C0CF051985D2E0662553B94B7A6AD3E4C72CA18E17D9FF05C8A2FB3"
+      },
+      "observedModules": [
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-mapped-scale-static\\native-minimum\\run-c72fe1fca6cb44bc9765cdbb95fa7504\\TKG2d.dll",
+          "sha256": "0D87A20363CFB66F7862FBC9AA7234059D13712B3A0D7E6B35CBB0172810A93C"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-mapped-scale-static\\native-minimum\\run-c72fe1fca6cb44bc9765cdbb95fa7504\\TKernel.dll",
+          "sha256": "3ECBC7F193EBB746CC88A81E03EB603D24FDF03470B346551698F45D4FAEB7B4"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-mapped-scale-static\\native-minimum\\run-c72fe1fca6cb44bc9765cdbb95fa7504\\TKMath.dll",
+          "sha256": "2C41EFC32C025D1E7753548498027AA240D315B455BF36130432EA23E5860A2A"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-mapped-scale-static\\native-minimum\\run-c72fe1fca6cb44bc9765cdbb95fa7504\\TKG3d.dll",
+          "sha256": "8A13921267C5839C0D8D4395DAE33FC5C1F80F8D03C0D8C0CEB153AA3DA35C6C"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-mapped-scale-static\\native-minimum\\run-c72fe1fca6cb44bc9765cdbb95fa7504\\TKGeomBase.dll",
+          "sha256": "6BD91D22B6A893884BA74FEC8C352F68BCF0F79096D00F52119D4810EF42567E"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-mapped-scale-static\\native-minimum\\run-c72fe1fca6cb44bc9765cdbb95fa7504\\TKBRep.dll",
+          "sha256": "A511C8CF51178CF881C3BA0B54287DCECE6DED03CF3DE99E6FABF2A2D5152207"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-mapped-scale-static\\native-minimum\\run-c72fe1fca6cb44bc9765cdbb95fa7504\\TKTopAlgo.dll",
+          "sha256": "6690CE35FCF32BD2C379D12A21ABDE6BAF023087F3EEFBCCC5AE40E416B0B107"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-mapped-scale-static\\native-minimum\\run-c72fe1fca6cb44bc9765cdbb95fa7504\\TKXSBase.dll",
+          "sha256": "3978FEC70540BD0B369FF01263BA341E01A57E308F5EA1788B5DC56B1A851AA7"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-mapped-scale-static\\native-minimum\\run-c72fe1fca6cb44bc9765cdbb95fa7504\\TKDESTEP.dll",
+          "sha256": "DC010933AEF4481083D21F77ADFAEE6ACEADE87D5F454AD5F4743F07A00B4DF6"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-mapped-scale-static\\native-minimum\\run-c72fe1fca6cb44bc9765cdbb95fa7504\\TKGeomAlgo.dll",
+          "sha256": "154E047A29217C0FAF101EC0B8119D6D327E89560CD82CB18D17EC48D508883B"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-mapped-scale-static\\native-minimum\\run-c72fe1fca6cb44bc9765cdbb95fa7504\\tbb12.dll",
+          "sha256": "887888A0C2FFE7F64718D4EEA2A10CE41C68DEC1A954DB3A62646ADEEE66C0AD"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-mapped-scale-static\\native-minimum\\run-c72fe1fca6cb44bc9765cdbb95fa7504\\jemalloc.dll",
+          "sha256": "EA0CFCF6A12BB3863961074547C958FD978AA3F800244CC4FE2847B127C4DF5E"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-mapped-scale-static\\native-minimum\\run-c72fe1fca6cb44bc9765cdbb95fa7504\\TKShHealing.dll",
+          "sha256": "91E87BD3E5A3267C4A2D97B171EA05FA21FE1B78A2B905F7CF7E3CF19F5CD43E"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-mapped-scale-static\\native-minimum\\run-c72fe1fca6cb44bc9765cdbb95fa7504\\TKDE.dll",
+          "sha256": "2F0E1C9BD86C367B36DC7519502B095DE0DEE910D1F86B5B39BA962790A0D0C5"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-mapped-scale-static\\native-minimum\\run-c72fe1fca6cb44bc9765cdbb95fa7504\\TKXCAF.dll",
+          "sha256": "64095FF4FFA3BDD41BD17FFFDC39F9490CE34C2EF59AAB427C71DEAA6F3B791A"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-mapped-scale-static\\native-minimum\\run-c72fe1fca6cb44bc9765cdbb95fa7504\\TKLCAF.dll",
+          "sha256": "C51A1DA060562BA8855C02A091D849A575459FEE3ED80543358F9113871DAF9D"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-mapped-scale-static\\native-minimum\\run-c72fe1fca6cb44bc9765cdbb95fa7504\\TKVCAF.dll",
+          "sha256": "94948F34AD0696D0D4CA404DA4369B348B0B3C1241EEE1E42DAD87353E5629BF"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-mapped-scale-static\\native-minimum\\run-c72fe1fca6cb44bc9765cdbb95fa7504\\TKV3d.dll",
+          "sha256": "5356773B60EAF73345AE6822369EB8B721A9D18EABA925491870E24CBA651BD9"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-mapped-scale-static\\native-minimum\\run-c72fe1fca6cb44bc9765cdbb95fa7504\\TKService.dll",
+          "sha256": "B16E5AEB5213D9586A606C6443246C0D77CE52B117A54A4E523FD9E0BB41AAE6"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-mapped-scale-static\\native-minimum\\run-c72fe1fca6cb44bc9765cdbb95fa7504\\TKCAF.dll",
+          "sha256": "E78FD6196F7356FFA541A015CB6DF481E9999D8E813E2D7A5D914CA6205614AE"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-mapped-scale-static\\native-minimum\\run-c72fe1fca6cb44bc9765cdbb95fa7504\\TKCDF.dll",
+          "sha256": "9BCCAB992DA8F4069CB4020A064D67DF507309CA679AD20BB97A9B5FB0797A3A"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-mapped-scale-static\\native-minimum\\run-c72fe1fca6cb44bc9765cdbb95fa7504\\TKMesh.dll",
+          "sha256": "143337A5BF7128B7D5F50B33129D70EE4B4E9669F9166D89AF732444A221F95F"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-mapped-scale-static\\native-minimum\\run-c72fe1fca6cb44bc9765cdbb95fa7504\\TKHLR.dll",
+          "sha256": "499F63A9335A17F8D2903DB1D56E27EE2DEAD324E35EFE46E2A9FAC8A8BF6F89"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-mapped-scale-static\\native-minimum\\run-c72fe1fca6cb44bc9765cdbb95fa7504\\openvr_api.dll",
+          "sha256": "71DB78E77E577DB6D0666C25437695D42CEAFB9C7F8DA94FBE765525B8E2F5F2"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-mapped-scale-static\\native-minimum\\run-c72fe1fca6cb44bc9765cdbb95fa7504\\FreeImage.dll",
+          "sha256": "4594BD0538F7F6B05148B00996FF36DDFEDEF8D66910E931503DCFEBF8EFE1DB"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-mapped-scale-static\\native-minimum\\run-c72fe1fca6cb44bc9765cdbb95fa7504\\freetype.dll",
+          "sha256": "637621E4AE51B496B8A86F9B053050D5AF2BA999EA0680BBFE3D5DF91F976C75"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-mapped-scale-static\\native-minimum\\run-c72fe1fca6cb44bc9765cdbb95fa7504\\swscale-4.dll",
+          "sha256": "67BCFFB3CCDAEBF2BBD3149542D92DD9430ABFDFF1D7B79B3A529AF712926412"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-mapped-scale-static\\native-minimum\\run-c72fe1fca6cb44bc9765cdbb95fa7504\\avformat-57.dll",
+          "sha256": "297D3207DD0E6325DAB7A080472A4FD2F743CFC53861615B4DC96B91227CD3AF"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-mapped-scale-static\\native-minimum\\run-c72fe1fca6cb44bc9765cdbb95fa7504\\avcodec-57.dll",
+          "sha256": "4D7A6A2CFF37C782CE1A3C74FA83EBBEBCC43DFC774E3F497A406C84C1458C7E"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-mapped-scale-static\\native-minimum\\run-c72fe1fca6cb44bc9765cdbb95fa7504\\avutil-55.dll",
+          "sha256": "BE7C03FF47618916D16AF446E2F7C00E48F2FF8934C6ACE4C0D0E3D804732E8E"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-mapped-scale-static\\native-minimum\\run-c72fe1fca6cb44bc9765cdbb95fa7504\\TKBO.dll",
+          "sha256": "41F837935BCC65882ACD73295EF65CA13D47B018ACDCB6093FAF47804B96D0C5"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-mapped-scale-static\\native-minimum\\run-c72fe1fca6cb44bc9765cdbb95fa7504\\TKPrim.dll",
+          "sha256": "37DE279166407566D7FFF2DD063638FDF1F8DC89C0D030E550AA4868585F49DD"
+        }
+      ],
+      "records": [
+        {
+          "kind": "topology",
+          "label": "author",
+          "rootKind": 2,
+          "compounds": 0,
+          "shells": 1,
+          "solids": 1,
+          "faces": 6,
+          "edges": 12,
+          "vertices": 8
+        },
+        {
+          "kind": "topology",
+          "label": "mapped-import",
+          "rootKind": 2,
+          "compounds": 0,
+          "shells": 1,
+          "solids": 1,
+          "faces": 6,
+          "edges": 12,
+          "vertices": 8
+        },
+        {
+          "kind": "mapping",
+          "storedScale": 1024,
+          "decodedScale": 0.0009765625,
+          "actualInstanceScale": 0.0009765625,
+          "mappedEntity": 728
+        },
+        {
+          "kind": "authorEdge",
+          "ordinal": 1,
+          "stepEntity": 21,
+          "finalEdge": 1,
+          "continuousKernelDelta": 0,
+          "rawTolerance": 1E-07,
+          "effectiveTolerance": 9.765625E-11,
+          "sourceTolerance": 1.00000000888178E-07,
+          "sourceFirst": 0,
+          "sourceLast": 3,
+          "worldFirst": 0,
+          "worldLast": 3072
+        },
+        {
+          "kind": "authorEdge",
+          "ordinal": 2,
+          "stepEntity": 59,
+          "finalEdge": 3,
+          "continuousKernelDelta": 0,
+          "rawTolerance": 1E-07,
+          "effectiveTolerance": 9.765625E-11,
+          "sourceTolerance": 1E-07,
+          "sourceFirst": 0,
+          "sourceLast": 3,
+          "worldFirst": 0,
+          "worldLast": 3072
+        },
+        {
+          "kind": "authorEdge",
+          "ordinal": 3,
+          "stepEntity": 68,
+          "finalEdge": 4,
+          "continuousKernelDelta": 0,
+          "rawTolerance": 1E-07,
+          "effectiveTolerance": 9.765625E-11,
+          "sourceTolerance": 1E-07,
+          "sourceFirst": 0.0999999999999996,
+          "sourceLast": 4.38,
+          "worldFirst": 102.39999999804422,
+          "worldLast": 4485.119999998715
+        },
+        {
+          "kind": "authorEdge",
+          "ordinal": 4,
+          "stepEntity": 32,
+          "finalEdge": 2,
+          "continuousKernelDelta": 0,
+          "rawTolerance": 1E-07,
+          "effectiveTolerance": 9.765625E-11,
+          "sourceTolerance": 1E-07,
+          "sourceFirst": 0.0999999999999996,
+          "sourceLast": 4.38,
+          "worldFirst": 102.39999999804422,
+          "worldLast": 4485.119999998715
+        },
+        {
+          "kind": "authorEdge",
+          "ordinal": 5,
+          "stepEntity": 103,
+          "finalEdge": 5,
+          "continuousKernelDelta": 0,
+          "rawTolerance": 1E-07,
+          "effectiveTolerance": 9.765625E-11,
+          "sourceTolerance": 1.00000000027756E-07,
+          "sourceFirst": 0,
+          "sourceLast": 3,
+          "worldFirst": 0,
+          "worldLast": 3072
+        },
+        {
+          "kind": "authorEdge",
+          "ordinal": 6,
+          "stepEntity": 135,
+          "finalEdge": 7,
+          "continuousKernelDelta": 0,
+          "rawTolerance": 1E-07,
+          "effectiveTolerance": 9.765625E-11,
+          "sourceTolerance": 1E-07,
+          "sourceFirst": 0,
+          "sourceLast": 8.86,
+          "worldFirst": 6.090323231589938E-13,
+          "worldLast": 9072.640000000003
+        },
+        {
+          "kind": "authorEdge",
+          "ordinal": 7,
+          "stepEntity": 114,
+          "finalEdge": 6,
+          "continuousKernelDelta": 0,
+          "rawTolerance": 1E-07,
+          "effectiveTolerance": 9.765625E-11,
+          "sourceTolerance": 1E-07,
+          "sourceFirst": 0,
+          "sourceLast": 8.86,
+          "worldFirst": 6.090323231589938E-13,
+          "worldLast": 9072.640000000003
+        },
+        {
+          "kind": "authorEdge",
+          "ordinal": 8,
+          "stepEntity": 165,
+          "finalEdge": 8,
+          "continuousKernelDelta": 0,
+          "rawTolerance": 1E-07,
+          "effectiveTolerance": 9.765625E-11,
+          "sourceTolerance": 1.00000000111022E-07,
+          "sourceFirst": 0,
+          "sourceLast": 3,
+          "worldFirst": 0,
+          "worldLast": 3072
+        },
+        {
+          "kind": "authorEdge",
+          "ordinal": 9,
+          "stepEntity": 369,
+          "finalEdge": 10,
+          "continuousKernelDelta": 0,
+          "rawTolerance": 4.893393540980725E-07,
+          "effectiveTolerance": 4.778704629863989E-10,
+          "sourceTolerance": 1E-07,
+          "sourceFirst": 0,
+          "sourceLast": 1,
+          "worldFirst": 1.2688361285616197E-16,
+          "worldLast": 1
+        },
+        {
+          "kind": "authorEdge",
+          "ordinal": 10,
+          "stepEntity": 176,
+          "finalEdge": 9,
+          "continuousKernelDelta": 0,
+          "rawTolerance": 4.893393540980725E-07,
+          "effectiveTolerance": 4.778704629863989E-10,
+          "sourceTolerance": 1E-07,
+          "sourceFirst": 0,
+          "sourceLast": 1,
+          "worldFirst": 1.2688361285616197E-16,
+          "worldLast": 1
+        },
+        {
+          "kind": "authorEdge",
+          "ordinal": 11,
+          "stepEntity": 597,
+          "finalEdge": 12,
+          "continuousKernelDelta": 0,
+          "rawTolerance": 1E-07,
+          "effectiveTolerance": 9.765625E-11,
+          "sourceTolerance": 1E-07,
+          "sourceFirst": 0.0999999999999996,
+          "sourceLast": 8.96,
+          "worldFirst": 102.3999999999928,
+          "worldLast": 9175.040000000003
+        },
+        {
+          "kind": "authorEdge",
+          "ordinal": 12,
+          "stepEntity": 576,
+          "finalEdge": 11,
+          "continuousKernelDelta": 0,
+          "rawTolerance": 1E-07,
+          "effectiveTolerance": 9.765625E-11,
+          "sourceTolerance": 1E-07,
+          "sourceFirst": 0.0999999999999996,
+          "sourceLast": 8.96,
+          "worldFirst": 102.3999999999928,
+          "worldLast": 9175.040000000003
+        },
+        {
+          "kind": "authorFace",
+          "ordinal": 1,
+          "stepEntity": 17,
+          "sampledWorldSurfaceDelta": 0
+        },
+        {
+          "kind": "authorFace",
+          "ordinal": 2,
+          "stepEntity": 99,
+          "sampledWorldSurfaceDelta": 0
+        },
+        {
+          "kind": "authorFace",
+          "ordinal": 3,
+          "stepEntity": 161,
+          "sampledWorldSurfaceDelta": 0
+        },
+        {
+          "kind": "authorFace",
+          "ordinal": 4,
+          "stepEntity": 571,
+          "sampledWorldSurfaceDelta": 0
+        },
+        {
+          "kind": "authorFace",
+          "ordinal": 5,
+          "stepEntity": 623,
+          "sampledWorldSurfaceDelta": 0
+        },
+        {
+          "kind": "authorFace",
+          "ordinal": 6,
+          "stepEntity": 630,
+          "sampledWorldSurfaceDelta": 0
+        },
+        {
+          "kind": "edgeUse",
+          "face": 1,
+          "edge": 1,
+          "physical101Delta": 1.7763568394002505E-15,
+          "continuousKernelDelta": 1.7763568394002505E-15
+        },
+        {
+          "kind": "edgeUse",
+          "face": 1,
+          "edge": 2,
+          "physical101Delta": 5.551115123125783E-17,
+          "continuousKernelDelta": 1.7763568394002505E-15
+        },
+        {
+          "kind": "edgeUse",
+          "face": 1,
+          "edge": 3,
+          "physical101Delta": 8.881784197001252E-16,
+          "continuousKernelDelta": 8.881784197001252E-16
+        },
+        {
+          "kind": "edgeUse",
+          "face": 1,
+          "edge": 4,
+          "physical101Delta": 5.551115123125783E-17,
+          "continuousKernelDelta": 1.7763568394002505E-15
+        },
+        {
+          "kind": "edgeUse",
+          "face": 2,
+          "edge": 5,
+          "physical101Delta": 0,
+          "continuousKernelDelta": 0
+        },
+        {
+          "kind": "edgeUse",
+          "face": 2,
+          "edge": 6,
+          "physical101Delta": 4.965068306494546E-16,
+          "continuousKernelDelta": 4.577566798522237E-16
+        },
+        {
+          "kind": "edgeUse",
+          "face": 2,
+          "edge": 1,
+          "physical101Delta": 0,
+          "continuousKernelDelta": 0
+        },
+        {
+          "kind": "edgeUse",
+          "face": 2,
+          "edge": 7,
+          "physical101Delta": 4.965068306494546E-16,
+          "continuousKernelDelta": 4.577566798522237E-16
+        },
+        {
+          "kind": "edgeUse",
+          "face": 3,
+          "edge": 8,
+          "physical101Delta": 0,
+          "continuousKernelDelta": 0
+        },
+        {
+          "kind": "edgeUse",
+          "face": 3,
+          "edge": 9,
+          "physical101Delta": 9.930136612989092E-16,
+          "continuousKernelDelta": 1.1102230246251565E-15
+        },
+        {
+          "kind": "edgeUse",
+          "face": 3,
+          "edge": 5,
+          "physical101Delta": 5.551115123125783E-17,
+          "continuousKernelDelta": 5.551115123125783E-17
+        },
+        {
+          "kind": "edgeUse",
+          "face": 3,
+          "edge": 10,
+          "physical101Delta": 9.189778455511335E-16,
+          "continuousKernelDelta": 1.790180836524724E-15
+        },
+        {
+          "kind": "edgeUse",
+          "face": 4,
+          "edge": 3,
+          "physical101Delta": 0,
+          "continuousKernelDelta": 0
+        },
+        {
+          "kind": "edgeUse",
+          "face": 4,
+          "edge": 11,
+          "physical101Delta": 1.9860273225978185E-15,
+          "continuousKernelDelta": 1.9860273225978185E-15
+        },
+        {
+          "kind": "edgeUse",
+          "face": 4,
+          "edge": 8,
+          "physical101Delta": 0,
+          "continuousKernelDelta": 0
+        },
+        {
+          "kind": "edgeUse",
+          "face": 4,
+          "edge": 12,
+          "physical101Delta": 1.9860273225978185E-15,
+          "continuousKernelDelta": 1.9860273225978185E-15
+        },
+        {
+          "kind": "edgeUse",
+          "face": 5,
+          "edge": 4,
+          "physical101Delta": 1.7336844159698293E-11,
+          "continuousKernelDelta": 1.7338842309932118E-11
+        },
+        {
+          "kind": "edgeUse",
+          "face": 5,
+          "edge": 7,
+          "physical101Delta": 8.450936977909496E-12,
+          "continuousKernelDelta": 8.453763245881172E-12
+        },
+        {
+          "kind": "edgeUse",
+          "face": 5,
+          "edge": 10,
+          "physical101Delta": 6.265368696855181E-10,
+          "continuousKernelDelta": 1.4236254946239222E-09
+        },
+        {
+          "kind": "edgeUse",
+          "face": 5,
+          "edge": 12,
+          "physical101Delta": 6.646526345049227E-12,
+          "continuousKernelDelta": 6.6498986532237545E-12
+        },
+        {
+          "kind": "edgeUse",
+          "face": 6,
+          "edge": 2,
+          "physical101Delta": 1.7336844159698293E-11,
+          "continuousKernelDelta": 1.7338842309932118E-11
+        },
+        {
+          "kind": "edgeUse",
+          "face": 6,
+          "edge": 6,
+          "physical101Delta": 8.450936977909496E-12,
+          "continuousKernelDelta": 8.453763245881172E-12
+        },
+        {
+          "kind": "edgeUse",
+          "face": 6,
+          "edge": 9,
+          "physical101Delta": 6.265368696855181E-10,
+          "continuousKernelDelta": 1.4236254946239222E-09
+        },
+        {
+          "kind": "edgeUse",
+          "face": 6,
+          "edge": 11,
+          "physical101Delta": 6.646526345049227E-12,
+          "continuousKernelDelta": 6.6498986532237545E-12
+        },
+        {
+          "kind": "summary",
+          "factor": 1024,
+          "strictOriginalBrep": false,
+          "topologySame": true,
+          "authorAndImportKept": true,
+          "edgeUses": 24,
+          "continuousAuthorCurveMax": 0,
+          "sampledSurfaceMax": 0,
+          "physical101PcurveMax": 6.265368696855181E-10,
+          "continuousPhysicalPcurveMax": 1.4236254946239222E-09,
+          "rawReportedToleranceChanged": true,
+          "maxEffectiveToleranceIncrease": 0,
+          "sourceVolume": 139.9382147084063,
+          "targetVolume": 139.9382147083555,
+          "sourceVolumeEps": 2.810631905550909E-16,
+          "targetVolumeEps": 1.2709432621651352E-15,
+          "sourceVolumeCalibrated": false,
+          "volumeDelta": 5.078959475213196E-11,
+          "areaDelta": 1.0157918950426392E-10,
+          "physicalChecksPassed": false,
+          "gate": 1E-07,
+          "continuousKernelIsCertifiedBound": false,
+          "standardScaleSemanticsIndependentlyProved": false,
+          "productAccepted": false
+        },
+        {
+          "kind": "module",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-mapped-scale-static\\native-minimum\\run-c72fe1fca6cb44bc9765cdbb95fa7504\\MappedScaleReader.exe"
+        },
+        {
+          "kind": "module",
+          "path": "C:\\WINDOWS\\SYSTEM32\\ntdll.dll"
+        },
+        {
+          "kind": "module",
+          "path": "C:\\WINDOWS\\System32\\KERNEL32.DLL"
+        },
+        {
+          "kind": "module",
+          "path": "C:\\WINDOWS\\System32\\KERNELBASE.dll"
+        },
+        {
+          "kind": "module",
+          "path": "C:\\WINDOWS\\System32\\ucrtbase.dll"
+        },
+        {
+          "kind": "module",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-mapped-scale-static\\native-minimum\\run-c72fe1fca6cb44bc9765cdbb95fa7504\\TKG2d.dll"
+        },
+        {
+          "kind": "module",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-mapped-scale-static\\native-minimum\\run-c72fe1fca6cb44bc9765cdbb95fa7504\\TKernel.dll"
+        },
+        {
+          "kind": "module",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-mapped-scale-static\\native-minimum\\run-c72fe1fca6cb44bc9765cdbb95fa7504\\TKMath.dll"
+        },
+        {
+          "kind": "module",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-mapped-scale-static\\native-minimum\\run-c72fe1fca6cb44bc9765cdbb95fa7504\\TKG3d.dll"
+        },
+        {
+          "kind": "module",
+          "path": "C:\\WINDOWS\\System32\\ADVAPI32.dll"
+        },
+        {
+          "kind": "module",
+          "path": "C:\\WINDOWS\\System32\\msvcrt.dll"
+        },
+        {
+          "kind": "module",
+          "path": "C:\\WINDOWS\\System32\\sechost.dll"
+        },
+        {
+          "kind": "module",
+          "path": "C:\\WINDOWS\\System32\\RPCRT4.dll"
+        },
+        {
+          "kind": "module",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-mapped-scale-static\\native-minimum\\run-c72fe1fca6cb44bc9765cdbb95fa7504\\TKGeomBase.dll"
+        },
+        {
+          "kind": "module",
+          "path": "C:\\WINDOWS\\System32\\USER32.dll"
+        },
+        {
+          "kind": "module",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-mapped-scale-static\\native-minimum\\run-c72fe1fca6cb44bc9765cdbb95fa7504\\TKBRep.dll"
+        },
+        {
+          "kind": "module",
+          "path": "C:\\WINDOWS\\System32\\win32u.dll"
+        },
+        {
+          "kind": "module",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-mapped-scale-static\\native-minimum\\run-c72fe1fca6cb44bc9765cdbb95fa7504\\TKTopAlgo.dll"
+        },
+        {
+          "kind": "module",
+          "path": "C:\\WINDOWS\\System32\\GDI32.dll"
+        },
+        {
+          "kind": "module",
+          "path": "C:\\WINDOWS\\System32\\gdi32full.dll"
+        },
+        {
+          "kind": "module",
+          "path": "C:\\WINDOWS\\System32\\msvcp_win.dll"
+        },
+        {
+          "kind": "module",
+          "path": "C:\\WINDOWS\\SYSTEM32\\MSVCP140.dll"
+        },
+        {
+          "kind": "module",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-mapped-scale-static\\native-minimum\\run-c72fe1fca6cb44bc9765cdbb95fa7504\\TKXSBase.dll"
+        },
+        {
+          "kind": "module",
+          "path": "C:\\WINDOWS\\SYSTEM32\\VCRUNTIME140.dll"
+        },
+        {
+          "kind": "module",
+          "path": "C:\\WINDOWS\\SYSTEM32\\VCRUNTIME140_1.dll"
+        },
+        {
+          "kind": "module",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-mapped-scale-static\\native-minimum\\run-c72fe1fca6cb44bc9765cdbb95fa7504\\TKDESTEP.dll"
+        },
+        {
+          "kind": "module",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-mapped-scale-static\\native-minimum\\run-c72fe1fca6cb44bc9765cdbb95fa7504\\TKGeomAlgo.dll"
+        },
+        {
+          "kind": "module",
+          "path": "C:\\WINDOWS\\SYSTEM32\\WSOCK32.dll"
+        },
+        {
+          "kind": "module",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-mapped-scale-static\\native-minimum\\run-c72fe1fca6cb44bc9765cdbb95fa7504\\tbb12.dll"
+        },
+        {
+          "kind": "module",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-mapped-scale-static\\native-minimum\\run-c72fe1fca6cb44bc9765cdbb95fa7504\\jemalloc.dll"
+        },
+        {
+          "kind": "module",
+          "path": "C:\\WINDOWS\\System32\\WS2_32.dll"
+        },
+        {
+          "kind": "module",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-mapped-scale-static\\native-minimum\\run-c72fe1fca6cb44bc9765cdbb95fa7504\\TKShHealing.dll"
+        },
+        {
+          "kind": "module",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-mapped-scale-static\\native-minimum\\run-c72fe1fca6cb44bc9765cdbb95fa7504\\TKDE.dll"
+        },
+        {
+          "kind": "module",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-mapped-scale-static\\native-minimum\\run-c72fe1fca6cb44bc9765cdbb95fa7504\\TKXCAF.dll"
+        },
+        {
+          "kind": "module",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-mapped-scale-static\\native-minimum\\run-c72fe1fca6cb44bc9765cdbb95fa7504\\TKLCAF.dll"
+        },
+        {
+          "kind": "module",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-mapped-scale-static\\native-minimum\\run-c72fe1fca6cb44bc9765cdbb95fa7504\\TKVCAF.dll"
+        },
+        {
+          "kind": "module",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-mapped-scale-static\\native-minimum\\run-c72fe1fca6cb44bc9765cdbb95fa7504\\TKV3d.dll"
+        },
+        {
+          "kind": "module",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-mapped-scale-static\\native-minimum\\run-c72fe1fca6cb44bc9765cdbb95fa7504\\TKService.dll"
+        },
+        {
+          "kind": "module",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-mapped-scale-static\\native-minimum\\run-c72fe1fca6cb44bc9765cdbb95fa7504\\TKCAF.dll"
+        },
+        {
+          "kind": "module",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-mapped-scale-static\\native-minimum\\run-c72fe1fca6cb44bc9765cdbb95fa7504\\TKCDF.dll"
+        },
+        {
+          "kind": "module",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-mapped-scale-static\\native-minimum\\run-c72fe1fca6cb44bc9765cdbb95fa7504\\TKMesh.dll"
+        },
+        {
+          "kind": "module",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-mapped-scale-static\\native-minimum\\run-c72fe1fca6cb44bc9765cdbb95fa7504\\TKHLR.dll"
+        },
+        {
+          "kind": "module",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-mapped-scale-static\\native-minimum\\run-c72fe1fca6cb44bc9765cdbb95fa7504\\openvr_api.dll"
+        },
+        {
+          "kind": "module",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-mapped-scale-static\\native-minimum\\run-c72fe1fca6cb44bc9765cdbb95fa7504\\FreeImage.dll"
+        },
+        {
+          "kind": "module",
+          "path": "C:\\WINDOWS\\System32\\SHELL32.dll"
+        },
+        {
+          "kind": "module",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-mapped-scale-static\\native-minimum\\run-c72fe1fca6cb44bc9765cdbb95fa7504\\freetype.dll"
+        },
+        {
+          "kind": "module",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-mapped-scale-static\\native-minimum\\run-c72fe1fca6cb44bc9765cdbb95fa7504\\swscale-4.dll"
+        },
+        {
+          "kind": "module",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-mapped-scale-static\\native-minimum\\run-c72fe1fca6cb44bc9765cdbb95fa7504\\avformat-57.dll"
+        },
+        {
+          "kind": "module",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-mapped-scale-static\\native-minimum\\run-c72fe1fca6cb44bc9765cdbb95fa7504\\avcodec-57.dll"
+        },
+        {
+          "kind": "module",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-mapped-scale-static\\native-minimum\\run-c72fe1fca6cb44bc9765cdbb95fa7504\\avutil-55.dll"
+        },
+        {
+          "kind": "module",
+          "path": "C:\\WINDOWS\\SYSTEM32\\WINMM.dll"
+        },
+        {
+          "kind": "module",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-mapped-scale-static\\native-minimum\\run-c72fe1fca6cb44bc9765cdbb95fa7504\\TKBO.dll"
+        },
+        {
+          "kind": "module",
+          "path": "C:\\WINDOWS\\SYSTEM32\\VCOMP140.DLL"
+        },
+        {
+          "kind": "module",
+          "path": "C:\\WINDOWS\\SYSTEM32\\Secur32.dll"
+        },
+        {
+          "kind": "module",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-mapped-scale-static\\native-minimum\\run-c72fe1fca6cb44bc9765cdbb95fa7504\\TKPrim.dll"
+        },
+        {
+          "kind": "module",
+          "path": "C:\\WINDOWS\\SYSTEM32\\SSPICLI.DLL"
+        },
+        {
+          "kind": "module",
+          "path": "C:\\WINDOWS\\System32\\IMM32.DLL"
+        },
+        {
+          "kind": "module",
+          "path": "C:\\Program Files\\Windhawk\\Engine\\1.7.3\\64\\windhawk.dll"
+        },
+        {
+          "kind": "module",
+          "path": "C:\\ProgramData\\Windhawk\\Engine\\Mods\\64\\explorer-details-better-file-sizes_1.6_899239.dll"
+        },
+        {
+          "kind": "module",
+          "path": "C:\\WINDOWS\\System32\\ole32.dll"
+        },
+        {
+          "kind": "module",
+          "path": "C:\\WINDOWS\\System32\\combase.dll"
+        },
+        {
+          "kind": "module",
+          "path": "C:\\WINDOWS\\System32\\OLEAUT32.dll"
+        },
+        {
+          "kind": "module",
+          "path": "C:\\ProgramData\\Windhawk\\Engine\\Mods\\64\\libunwind.whl"
+        },
+        {
+          "kind": "module",
+          "path": "C:\\ProgramData\\Windhawk\\Engine\\Mods\\64\\libc++.whl"
+        },
+        {
+          "kind": "module",
+          "path": "C:\\WINDOWS\\SYSTEM32\\PROPSYS.dll"
+        },
+        {
+          "kind": "module",
+          "path": "C:\\WINDOWS\\SYSTEM32\\windows.storage.dll"
+        }
+      ]
+    }
+  },
+  "writer": {
+    "factor": 1024,
+    "observation": {
+      "log": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-mapped-scale-static\\native-minimum\\run-c72fe1fca6cb44bc9765cdbb95fa7504\\writer-1024.jsonl",
+        "sha256": "6503D9E4199DC8412047B3AB6856896EBA558C41DC092F540A63BF17132E8DCD"
+      },
+      "observedModules": [
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-mapped-scale-static\\native-minimum\\run-c72fe1fca6cb44bc9765cdbb95fa7504\\TKG2d.dll",
+          "sha256": "0D87A20363CFB66F7862FBC9AA7234059D13712B3A0D7E6B35CBB0172810A93C"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-mapped-scale-static\\native-minimum\\run-c72fe1fca6cb44bc9765cdbb95fa7504\\TKernel.dll",
+          "sha256": "3ECBC7F193EBB746CC88A81E03EB603D24FDF03470B346551698F45D4FAEB7B4"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-mapped-scale-static\\native-minimum\\run-c72fe1fca6cb44bc9765cdbb95fa7504\\TKMath.dll",
+          "sha256": "2C41EFC32C025D1E7753548498027AA240D315B455BF36130432EA23E5860A2A"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-mapped-scale-static\\native-minimum\\run-c72fe1fca6cb44bc9765cdbb95fa7504\\TKG3d.dll",
+          "sha256": "8A13921267C5839C0D8D4395DAE33FC5C1F80F8D03C0D8C0CEB153AA3DA35C6C"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-mapped-scale-static\\native-minimum\\run-c72fe1fca6cb44bc9765cdbb95fa7504\\TKBRep.dll",
+          "sha256": "A511C8CF51178CF881C3BA0B54287DCECE6DED03CF3DE99E6FABF2A2D5152207"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-mapped-scale-static\\native-minimum\\run-c72fe1fca6cb44bc9765cdbb95fa7504\\TKTopAlgo.dll",
+          "sha256": "6690CE35FCF32BD2C379D12A21ABDE6BAF023087F3EEFBCCC5AE40E416B0B107"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-mapped-scale-static\\native-minimum\\run-c72fe1fca6cb44bc9765cdbb95fa7504\\TKDESTEP.dll",
+          "sha256": "DC010933AEF4481083D21F77ADFAEE6ACEADE87D5F454AD5F4743F07A00B4DF6"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-mapped-scale-static\\native-minimum\\run-c72fe1fca6cb44bc9765cdbb95fa7504\\TKLCAF.dll",
+          "sha256": "C51A1DA060562BA8855C02A091D849A575459FEE3ED80543358F9113871DAF9D"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-mapped-scale-static\\native-minimum\\run-c72fe1fca6cb44bc9765cdbb95fa7504\\TKXSBase.dll",
+          "sha256": "3978FEC70540BD0B369FF01263BA341E01A57E308F5EA1788B5DC56B1A851AA7"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-mapped-scale-static\\native-minimum\\run-c72fe1fca6cb44bc9765cdbb95fa7504\\TKGeomAlgo.dll",
+          "sha256": "154E047A29217C0FAF101EC0B8119D6D327E89560CD82CB18D17EC48D508883B"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-mapped-scale-static\\native-minimum\\run-c72fe1fca6cb44bc9765cdbb95fa7504\\TKGeomBase.dll",
+          "sha256": "6BD91D22B6A893884BA74FEC8C352F68BCF0F79096D00F52119D4810EF42567E"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-mapped-scale-static\\native-minimum\\run-c72fe1fca6cb44bc9765cdbb95fa7504\\tbb12.dll",
+          "sha256": "887888A0C2FFE7F64718D4EEA2A10CE41C68DEC1A954DB3A62646ADEEE66C0AD"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-mapped-scale-static\\native-minimum\\run-c72fe1fca6cb44bc9765cdbb95fa7504\\jemalloc.dll",
+          "sha256": "EA0CFCF6A12BB3863961074547C958FD978AA3F800244CC4FE2847B127C4DF5E"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-mapped-scale-static\\native-minimum\\run-c72fe1fca6cb44bc9765cdbb95fa7504\\TKDE.dll",
+          "sha256": "2F0E1C9BD86C367B36DC7519502B095DE0DEE910D1F86B5B39BA962790A0D0C5"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-mapped-scale-static\\native-minimum\\run-c72fe1fca6cb44bc9765cdbb95fa7504\\TKXCAF.dll",
+          "sha256": "64095FF4FFA3BDD41BD17FFFDC39F9490CE34C2EF59AAB427C71DEAA6F3B791A"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-mapped-scale-static\\native-minimum\\run-c72fe1fca6cb44bc9765cdbb95fa7504\\TKShHealing.dll",
+          "sha256": "91E87BD3E5A3267C4A2D97B171EA05FA21FE1B78A2B905F7CF7E3CF19F5CD43E"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-mapped-scale-static\\native-minimum\\run-c72fe1fca6cb44bc9765cdbb95fa7504\\TKCDF.dll",
+          "sha256": "9BCCAB992DA8F4069CB4020A064D67DF507309CA679AD20BB97A9B5FB0797A3A"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-mapped-scale-static\\native-minimum\\run-c72fe1fca6cb44bc9765cdbb95fa7504\\TKService.dll",
+          "sha256": "B16E5AEB5213D9586A606C6443246C0D77CE52B117A54A4E523FD9E0BB41AAE6"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-mapped-scale-static\\native-minimum\\run-c72fe1fca6cb44bc9765cdbb95fa7504\\TKCAF.dll",
+          "sha256": "E78FD6196F7356FFA541A015CB6DF481E9999D8E813E2D7A5D914CA6205614AE"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-mapped-scale-static\\native-minimum\\run-c72fe1fca6cb44bc9765cdbb95fa7504\\TKV3d.dll",
+          "sha256": "5356773B60EAF73345AE6822369EB8B721A9D18EABA925491870E24CBA651BD9"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-mapped-scale-static\\native-minimum\\run-c72fe1fca6cb44bc9765cdbb95fa7504\\TKVCAF.dll",
+          "sha256": "94948F34AD0696D0D4CA404DA4369B348B0B3C1241EEE1E42DAD87353E5629BF"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-mapped-scale-static\\native-minimum\\run-c72fe1fca6cb44bc9765cdbb95fa7504\\FreeImage.dll",
+          "sha256": "4594BD0538F7F6B05148B00996FF36DDFEDEF8D66910E931503DCFEBF8EFE1DB"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-mapped-scale-static\\native-minimum\\run-c72fe1fca6cb44bc9765cdbb95fa7504\\openvr_api.dll",
+          "sha256": "71DB78E77E577DB6D0666C25437695D42CEAFB9C7F8DA94FBE765525B8E2F5F2"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-mapped-scale-static\\native-minimum\\run-c72fe1fca6cb44bc9765cdbb95fa7504\\freetype.dll",
+          "sha256": "637621E4AE51B496B8A86F9B053050D5AF2BA999EA0680BBFE3D5DF91F976C75"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-mapped-scale-static\\native-minimum\\run-c72fe1fca6cb44bc9765cdbb95fa7504\\avformat-57.dll",
+          "sha256": "297D3207DD0E6325DAB7A080472A4FD2F743CFC53861615B4DC96B91227CD3AF"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-mapped-scale-static\\native-minimum\\run-c72fe1fca6cb44bc9765cdbb95fa7504\\avcodec-57.dll",
+          "sha256": "4D7A6A2CFF37C782CE1A3C74FA83EBBEBCC43DFC774E3F497A406C84C1458C7E"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-mapped-scale-static\\native-minimum\\run-c72fe1fca6cb44bc9765cdbb95fa7504\\swscale-4.dll",
+          "sha256": "67BCFFB3CCDAEBF2BBD3149542D92DD9430ABFDFF1D7B79B3A529AF712926412"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-mapped-scale-static\\native-minimum\\run-c72fe1fca6cb44bc9765cdbb95fa7504\\avutil-55.dll",
+          "sha256": "BE7C03FF47618916D16AF446E2F7C00E48F2FF8934C6ACE4C0D0E3D804732E8E"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-mapped-scale-static\\native-minimum\\run-c72fe1fca6cb44bc9765cdbb95fa7504\\TKMesh.dll",
+          "sha256": "143337A5BF7128B7D5F50B33129D70EE4B4E9669F9166D89AF732444A221F95F"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-mapped-scale-static\\native-minimum\\run-c72fe1fca6cb44bc9765cdbb95fa7504\\TKBO.dll",
+          "sha256": "41F837935BCC65882ACD73295EF65CA13D47B018ACDCB6093FAF47804B96D0C5"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-mapped-scale-static\\native-minimum\\run-c72fe1fca6cb44bc9765cdbb95fa7504\\TKHLR.dll",
+          "sha256": "499F63A9335A17F8D2903DB1D56E27EE2DEAD324E35EFE46E2A9FAC8A8BF6F89"
+        },
+        {
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-mapped-scale-static\\native-minimum\\run-c72fe1fca6cb44bc9765cdbb95fa7504\\TKPrim.dll",
+          "sha256": "37DE279166407566D7FFF2DD063638FDF1F8DC89C0D030E550AA4868585F49DD"
+        }
+      ],
+      "records": [
+        {
+          "kind": "topology",
+          "label": "author",
+          "rootKind": 2,
+          "compounds": 0,
+          "shells": 1,
+          "solids": 1,
+          "faces": 6,
+          "edges": 12,
+          "vertices": 8
+        },
+        {
+          "kind": "topology",
+          "label": "private-definition",
+          "rootKind": 2,
+          "compounds": 0,
+          "shells": 1,
+          "solids": 1,
+          "faces": 6,
+          "edges": 12,
+          "vertices": 8
+        },
+        {
+          "kind": "writerSummary",
+          "factor": 1024,
+          "storedScale": 1024,
+          "decodedScale": 0.0009765625,
+          "authorKept": true,
+          "geometryFittingUsed": false,
+          "uncertainty": 1E-07,
+          "productAccepted": false
+        },
+        {
+          "kind": "module",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-mapped-scale-static\\native-minimum\\run-c72fe1fca6cb44bc9765cdbb95fa7504\\MappedScaleWriter.exe"
+        },
+        {
+          "kind": "module",
+          "path": "C:\\WINDOWS\\SYSTEM32\\ntdll.dll"
+        },
+        {
+          "kind": "module",
+          "path": "C:\\WINDOWS\\System32\\KERNEL32.DLL"
+        },
+        {
+          "kind": "module",
+          "path": "C:\\WINDOWS\\System32\\KERNELBASE.dll"
+        },
+        {
+          "kind": "module",
+          "path": "C:\\WINDOWS\\System32\\ucrtbase.dll"
+        },
+        {
+          "kind": "module",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-mapped-scale-static\\native-minimum\\run-c72fe1fca6cb44bc9765cdbb95fa7504\\TKG2d.dll"
+        },
+        {
+          "kind": "module",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-mapped-scale-static\\native-minimum\\run-c72fe1fca6cb44bc9765cdbb95fa7504\\TKernel.dll"
+        },
+        {
+          "kind": "module",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-mapped-scale-static\\native-minimum\\run-c72fe1fca6cb44bc9765cdbb95fa7504\\TKMath.dll"
+        },
+        {
+          "kind": "module",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-mapped-scale-static\\native-minimum\\run-c72fe1fca6cb44bc9765cdbb95fa7504\\TKG3d.dll"
+        },
+        {
+          "kind": "module",
+          "path": "C:\\WINDOWS\\System32\\ADVAPI32.dll"
+        },
+        {
+          "kind": "module",
+          "path": "C:\\WINDOWS\\System32\\msvcrt.dll"
+        },
+        {
+          "kind": "module",
+          "path": "C:\\WINDOWS\\System32\\sechost.dll"
+        },
+        {
+          "kind": "module",
+          "path": "C:\\WINDOWS\\System32\\RPCRT4.dll"
+        },
+        {
+          "kind": "module",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-mapped-scale-static\\native-minimum\\run-c72fe1fca6cb44bc9765cdbb95fa7504\\TKBRep.dll"
+        },
+        {
+          "kind": "module",
+          "path": "C:\\WINDOWS\\System32\\USER32.dll"
+        },
+        {
+          "kind": "module",
+          "path": "C:\\WINDOWS\\System32\\win32u.dll"
+        },
+        {
+          "kind": "module",
+          "path": "C:\\WINDOWS\\System32\\GDI32.dll"
+        },
+        {
+          "kind": "module",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-mapped-scale-static\\native-minimum\\run-c72fe1fca6cb44bc9765cdbb95fa7504\\TKTopAlgo.dll"
+        },
+        {
+          "kind": "module",
+          "path": "C:\\WINDOWS\\System32\\gdi32full.dll"
+        },
+        {
+          "kind": "module",
+          "path": "C:\\WINDOWS\\System32\\msvcp_win.dll"
+        },
+        {
+          "kind": "module",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-mapped-scale-static\\native-minimum\\run-c72fe1fca6cb44bc9765cdbb95fa7504\\TKDESTEP.dll"
+        },
+        {
+          "kind": "module",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-mapped-scale-static\\native-minimum\\run-c72fe1fca6cb44bc9765cdbb95fa7504\\TKLCAF.dll"
+        },
+        {
+          "kind": "module",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-mapped-scale-static\\native-minimum\\run-c72fe1fca6cb44bc9765cdbb95fa7504\\TKXSBase.dll"
+        },
+        {
+          "kind": "module",
+          "path": "C:\\WINDOWS\\SYSTEM32\\MSVCP140.dll"
+        },
+        {
+          "kind": "module",
+          "path": "C:\\WINDOWS\\SYSTEM32\\VCRUNTIME140.dll"
+        },
+        {
+          "kind": "module",
+          "path": "C:\\WINDOWS\\SYSTEM32\\VCRUNTIME140_1.dll"
+        },
+        {
+          "kind": "module",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-mapped-scale-static\\native-minimum\\run-c72fe1fca6cb44bc9765cdbb95fa7504\\TKGeomAlgo.dll"
+        },
+        {
+          "kind": "module",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-mapped-scale-static\\native-minimum\\run-c72fe1fca6cb44bc9765cdbb95fa7504\\TKGeomBase.dll"
+        },
+        {
+          "kind": "module",
+          "path": "C:\\WINDOWS\\SYSTEM32\\WSOCK32.dll"
+        },
+        {
+          "kind": "module",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-mapped-scale-static\\native-minimum\\run-c72fe1fca6cb44bc9765cdbb95fa7504\\tbb12.dll"
+        },
+        {
+          "kind": "module",
+          "path": "C:\\WINDOWS\\System32\\WS2_32.dll"
+        },
+        {
+          "kind": "module",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-mapped-scale-static\\native-minimum\\run-c72fe1fca6cb44bc9765cdbb95fa7504\\jemalloc.dll"
+        },
+        {
+          "kind": "module",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-mapped-scale-static\\native-minimum\\run-c72fe1fca6cb44bc9765cdbb95fa7504\\TKDE.dll"
+        },
+        {
+          "kind": "module",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-mapped-scale-static\\native-minimum\\run-c72fe1fca6cb44bc9765cdbb95fa7504\\TKXCAF.dll"
+        },
+        {
+          "kind": "module",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-mapped-scale-static\\native-minimum\\run-c72fe1fca6cb44bc9765cdbb95fa7504\\TKShHealing.dll"
+        },
+        {
+          "kind": "module",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-mapped-scale-static\\native-minimum\\run-c72fe1fca6cb44bc9765cdbb95fa7504\\TKCDF.dll"
+        },
+        {
+          "kind": "module",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-mapped-scale-static\\native-minimum\\run-c72fe1fca6cb44bc9765cdbb95fa7504\\TKService.dll"
+        },
+        {
+          "kind": "module",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-mapped-scale-static\\native-minimum\\run-c72fe1fca6cb44bc9765cdbb95fa7504\\TKCAF.dll"
+        },
+        {
+          "kind": "module",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-mapped-scale-static\\native-minimum\\run-c72fe1fca6cb44bc9765cdbb95fa7504\\TKV3d.dll"
+        },
+        {
+          "kind": "module",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-mapped-scale-static\\native-minimum\\run-c72fe1fca6cb44bc9765cdbb95fa7504\\TKVCAF.dll"
+        },
+        {
+          "kind": "module",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-mapped-scale-static\\native-minimum\\run-c72fe1fca6cb44bc9765cdbb95fa7504\\FreeImage.dll"
+        },
+        {
+          "kind": "module",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-mapped-scale-static\\native-minimum\\run-c72fe1fca6cb44bc9765cdbb95fa7504\\openvr_api.dll"
+        },
+        {
+          "kind": "module",
+          "path": "C:\\WINDOWS\\System32\\SHELL32.dll"
+        },
+        {
+          "kind": "module",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-mapped-scale-static\\native-minimum\\run-c72fe1fca6cb44bc9765cdbb95fa7504\\freetype.dll"
+        },
+        {
+          "kind": "module",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-mapped-scale-static\\native-minimum\\run-c72fe1fca6cb44bc9765cdbb95fa7504\\avformat-57.dll"
+        },
+        {
+          "kind": "module",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-mapped-scale-static\\native-minimum\\run-c72fe1fca6cb44bc9765cdbb95fa7504\\avcodec-57.dll"
+        },
+        {
+          "kind": "module",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-mapped-scale-static\\native-minimum\\run-c72fe1fca6cb44bc9765cdbb95fa7504\\swscale-4.dll"
+        },
+        {
+          "kind": "module",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-mapped-scale-static\\native-minimum\\run-c72fe1fca6cb44bc9765cdbb95fa7504\\avutil-55.dll"
+        },
+        {
+          "kind": "module",
+          "path": "C:\\WINDOWS\\SYSTEM32\\WINMM.dll"
+        },
+        {
+          "kind": "module",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-mapped-scale-static\\native-minimum\\run-c72fe1fca6cb44bc9765cdbb95fa7504\\TKMesh.dll"
+        },
+        {
+          "kind": "module",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-mapped-scale-static\\native-minimum\\run-c72fe1fca6cb44bc9765cdbb95fa7504\\TKBO.dll"
+        },
+        {
+          "kind": "module",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-mapped-scale-static\\native-minimum\\run-c72fe1fca6cb44bc9765cdbb95fa7504\\TKHLR.dll"
+        },
+        {
+          "kind": "module",
+          "path": "C:\\WINDOWS\\SYSTEM32\\VCOMP140.DLL"
+        },
+        {
+          "kind": "module",
+          "path": "C:\\WINDOWS\\SYSTEM32\\Secur32.dll"
+        },
+        {
+          "kind": "module",
+          "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-mapped-scale-static\\native-minimum\\run-c72fe1fca6cb44bc9765cdbb95fa7504\\TKPrim.dll"
+        },
+        {
+          "kind": "module",
+          "path": "C:\\WINDOWS\\SYSTEM32\\SSPICLI.DLL"
+        },
+        {
+          "kind": "module",
+          "path": "C:\\WINDOWS\\System32\\IMM32.DLL"
+        },
+        {
+          "kind": "module",
+          "path": "C:\\Program Files\\Windhawk\\Engine\\1.7.3\\64\\windhawk.dll"
+        },
+        {
+          "kind": "module",
+          "path": "C:\\ProgramData\\Windhawk\\Engine\\Mods\\64\\explorer-details-better-file-sizes_1.6_899239.dll"
+        },
+        {
+          "kind": "module",
+          "path": "C:\\WINDOWS\\System32\\ole32.dll"
+        },
+        {
+          "kind": "module",
+          "path": "C:\\WINDOWS\\System32\\combase.dll"
+        },
+        {
+          "kind": "module",
+          "path": "C:\\WINDOWS\\System32\\OLEAUT32.dll"
+        },
+        {
+          "kind": "module",
+          "path": "C:\\ProgramData\\Windhawk\\Engine\\Mods\\64\\libc++.whl"
+        },
+        {
+          "kind": "module",
+          "path": "C:\\ProgramData\\Windhawk\\Engine\\Mods\\64\\libunwind.whl"
+        },
+        {
+          "kind": "module",
+          "path": "C:\\WINDOWS\\SYSTEM32\\PROPSYS.dll"
+        },
+        {
+          "kind": "module",
+          "path": "C:\\WINDOWS\\SYSTEM32\\windows.storage.dll"
+        }
+      ]
+    },
+    "exitCode": 0
+  },
+  "productAccepted": false,
+  "factor": 1024
+}

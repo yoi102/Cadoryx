@@ -1,0 +1,58 @@
+{
+  "passed": false,
+  "scenario": "workspace",
+  "provider": "lmstudio",
+  "model": "prism-ml/bonsai-27b",
+  "endpoint": "http://127.0.0.1:15630/v1",
+  "transport": "HTTP",
+  "start": "2026-10-13T06:07:38.8001517+00:00",
+  "finish": "2026-10-13T06:10:36.6730479+00:00",
+  "failure": "The model exceeded the maximum number of agent tool rounds.",
+  "turns": [
+    {
+      "turn": 1,
+      "elapsedMs": 13727,
+      "toolCalls": 2,
+      "activeSessionId": "299c9693-fcd0-4c57-b420-4c24270ec4e3",
+      "documents": 1,
+      "historyMessages": 6
+    },
+    {
+      "turn": 2,
+      "elapsedMs": 19520,
+      "toolCalls": 3,
+      "activeSessionId": "299c9693-fcd0-4c57-b420-4c24270ec4e3",
+      "documents": 1,
+      "historyMessages": 14
+    },
+    {
+      "turn": 3,
+      "elapsedMs": 26416,
+      "toolCalls": 4,
+      "activeSessionId": "299c9693-fcd0-4c57-b420-4c24270ec4e3",
+      "documents": 1,
+      "historyMessages": 24
+    },
+    {
+      "turn": 4,
+      "elapsedMs": 17169,
+      "toolCalls": 3,
+      "activeSessionId": "350ffc1a-7d9a-458a-8317-7a8b68ca6c18",
+      "documents": 2,
+      "historyMessages": 32
+    },
+    {
+      "turn": 5,
+      "elapsedMs": 41870,
+      "toolCalls": 4,
+      "activeSessionId": "299c9693-fcd0-4c57-b420-4c24270ec4e3",
+      "documents": 2,
+      "historyMessages": 43
+    }
+  ],
+  "actualProductionTools": true,
+  "assetsAfterClose": 0,
+  "savedSha256": "6f2591e785a3fd63db0904d59b3370ab8a01a0184a35638c795663ee590c742a",
+  "externalDocuments": "Independent synthetic workspace only",
+  "physicalPointer": "NOT RUN"
+}

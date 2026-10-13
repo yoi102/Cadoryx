@@ -38,15 +38,15 @@ public static class ResourceCommands
         if (LayerReferences(doc, id) > 0) throw new CadValidationException(Strings.ResourceInUse);
         return doc with { Layers = doc.Layers.Remove(id) };
     });
-    public static ICadDocumentCommand AddMaterial(CadMaterial value) => new EditDocumentCommand(Strings.AddMaterial, doc =>
+    public static ICadDocumentCommand AddMaterial(CadMaterial value) => new MaterialResourceCommand(Strings.AddMaterial, doc =>
     {
-        Unique(value.Name, doc.Materials.Values.Select(m => m.Name)); CadGuard.Positive(value.DensityKgPerMm3);
+        Unique(value.Name, doc.Materials.Values.Select(m => m.Name)); CadGuard.Positive(value.DensityKgPerMm3); value.Appearance?.Validate();
         return doc with { Materials = doc.Materials.Add(value.Id, value) };
     });
-    public static ICadDocumentCommand UpdateMaterial(CadMaterial value) => new EditDocumentCommand(Strings.EditMaterial, doc =>
+    public static ICadDocumentCommand UpdateMaterial(CadMaterial value) => new MaterialResourceCommand(Strings.EditMaterial, doc =>
     {
         var previous = doc.Materials[value.Id]; Unique(value.Name, doc.Materials.Values.Where(m => m.Id != value.Id).Select(m => m.Name));
-        CadGuard.Positive(value.DensityKgPerMm3);
+        CadGuard.Positive(value.DensityKgPerMm3); value.Appearance?.Validate();
         return previous == value ? doc : doc with { Materials = doc.Materials.SetItem(value.Id, value) };
     });
     public static ICadDocumentCommand DeleteMaterial(MaterialId id) => new EditDocumentCommand(Strings.DeleteMaterial, doc =>

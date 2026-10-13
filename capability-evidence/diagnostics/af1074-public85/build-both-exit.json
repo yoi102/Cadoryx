@@ -1,0 +1,14 @@
+[
+  {
+    "exitCode": 0,
+    "payload": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1074-public85-1\\workspace\\Cadoryx.wpf\\bin\\Release\\net10.0-windows\\win-x64",
+    "configuration": "Release",
+    "log": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1074-public85-1\\window-observer-revision3\\build-Release.log"
+  },
+  {
+    "exitCode": 0,
+    "payload": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1074-public85-1\\workspace\\Cadoryx.wpf\\bin\\Debug\\net10.0-windows\\win-x64",
+    "configuration": "Debug",
+    "log": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1074-public85-1\\window-observer-revision3\\build-Debug.log"
+  }
+]

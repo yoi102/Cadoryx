@@ -1,0 +1,18 @@
+[
+  {
+    "configuration": "Release",
+    "output": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1076-public85-1\\focused-release-1",
+    "exitCode": 0,
+    "started": "2026-10-13T07:47:51.9757234+00:00",
+    "bindingCaptured": true,
+    "completed": "2026-10-13T07:48:36.9204130+00:00"
+  },
+  {
+    "configuration": "Debug",
+    "output": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1076-public85-1\\focused-debug-1",
+    "exitCode": 0,
+    "started": "2026-10-13T07:48:47.1946400+00:00",
+    "bindingCaptured": true,
+    "completed": "2026-10-13T07:49:33.4733429+00:00"
+  }
+]

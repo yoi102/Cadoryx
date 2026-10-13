@@ -28,7 +28,8 @@ public static class AssetFormatPolicy
     }
     public static void RequireRole(AssetFormat format,string role)
     {
-        if(role==AssetFormat.BRepMediaType)RequireBRep(format);
+        if(role==CadTexturePayload.MediaType)CadTexturePayload.RequireFormat(format);
+        else if(role==AssetFormat.BRepMediaType)RequireBRep(format);
         else if(role==AssetFormat.XdeMediaType)RequireXde(format);
         else if(role==AssetFormat.ReferenceTableMediaType)RequireReferenceTable(format);
         else if(role==AssetFormat.OccurrenceTableMediaType)RequireOccurrenceTable(format);
@@ -54,6 +55,7 @@ public static class AssetFormatPolicy
     public static AssetFormat Inspect(ReadOnlySpan<byte> bytes)
     {
         var prefix=bytes[..Math.Min(bytes.Length,4096)];
+        if(prefix.StartsWith("CDXRGBA1"u8)){CadTexturePayload.Verify(bytes);return new(CadTexturePayload.MediaType,"rgba8-envelope",1);}
         if(prefix.StartsWith("OCRREF25"u8))return new(AssetFormat.ReferenceTableMediaType,"occt-reference-table",1,"OCCT");
         if(prefix.StartsWith("OCROCC26"u8))return new(AssetFormat.OccurrenceTableMediaType,"occt-occurrence-table",1,"OCCT");
         if(prefix.StartsWith("DBRep_DrawableShape"u8))
@@ -82,6 +84,7 @@ public static class AssetFormatPolicy
     public static void VerifyPayload(AssetFormat declared,ReadOnlySpan<byte> bytes)
     {
         declared.Validate();
+        if(declared.MediaType==CadTexturePayload.MediaType){CadTexturePayload.RequireFormat(declared);CadTexturePayload.Verify(bytes);return;}
         if(declared.MediaType==AssetFormat.OccurrenceTableMediaType)
         {
             RequireOccurrenceTable(declared);

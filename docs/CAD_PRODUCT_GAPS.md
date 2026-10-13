@@ -1,5 +1,9 @@
 # 3D CAD 产品缺口与实施规划
 
+2026-10-13，status238：A–F继续，尚未全部完成。[完整1076组合源码已合入开发目录](AF_SOURCE1076_DEVELOPMENT_INTEGRATION.md)，55现有/44新文件、1189输入匹配；生产根两配置编译0并实际发现6652。候选两配置各455专项通过、实际native62匹配，原6619名称保持；完整6652、合入后根原生与原模型复验尚未执行。历史检查已修复显式cursor:null与过期只读重查；原STEP24严格拒绝、真实D6窗口/材质/性能及第4、5节其余范围继续。开发阶段确需新封装/重编译时允许本地精确版本OcctSharp NuGet，接近收尾再统一公开包；当前仍公开85，Cadoryx不用vcpkg。G及清理暂缓。
+
+当前进度以status238及[STATUS](STATUS.md)为准；以下为保留的历史检查点。
+
 2026-10-13，status235：A–F继续，尚未全部完成。[最终1073/public85 Release完整6619](../capability-evidence/diagnostics/public-nuget-migration/public85-final1073-release-verification.json)实际6595通过/24失败/零跳过，原用例与实际native62核验准确；原AI恢复预算失败已通过，原严格STEP24仍待修复，Debug正在串行运行，最终1073未合入生产。[F5默认分页配对](F5_DEFAULT_PAGE_QUERY_MATCHING.md)已修复当前生产源码，两配置独立21/21，但不是原模型工作流或全部产品验收。开发阶段需要新封装/重编译时可用本地精确版本OcctSharp NuGet，接近收尾再统一公开包；Cadoryx仍不用vcpkg。G与Cadoryx清理暂缓。
 
 以下status234及更早为历史检查点，当前进度以status235和[STATUS](STATUS.md)为准。

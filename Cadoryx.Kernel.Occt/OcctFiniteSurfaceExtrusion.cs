@@ -32,11 +32,13 @@ public sealed partial class OcctGeometryKernel:IFiniteSurfaceExtrusionResolver
         if(recipe.Options?.Termination!=ExtrusionTermination.FiniteSurface)throw new CadValidationException("Expected a finite surface extrusion recipe.");
         return Run(()=>
         {
-            using var source=OcctGeometryBridge.ReadShape(recipe.Options.Source!,assets);
-            using var replay=EvaluateFiniteSurfaceExtrusion(recipe,source,assets,token);
+            using var source=recipe.Options.Source is {} input?OcctGeometryBridge.ReadShape(input,assets):null;
+            using var replay=recipe.Options.Operation==ExtrusionOperation.NewBody?EvaluateFiniteSurfaceNewBody(recipe,assets,token):
+                EvaluateFiniteSurfaceExtrusion(recipe,source!,assets,token);
             if(result.Kind==BodyKind.Empty)return true; // Suppressed result has no material to compare.
             using var expected=OcctGeometryBridge.ReadShape(replay.Geometry,assets);
-            using var actual=OcctGeometryBridge.ReadShape(result,assets);using var valid=CopyOffsetSolid(actual,token);
+            using var actual=OcctGeometryBridge.ReadShape(result,assets);using var valid=recipe.Options.Operation==ExtrusionOperation.NewBody?
+                CopyFiniteSurfaceMaterial(actual,token):CopyOffsetSolid(actual,token);
             using var intersection=expected.Common(actual);
             double expectedVolume=AuthoringMeasure(expected,InspectionPropertyKind.Volume),actualVolume=AuthoringMeasure(actual,InspectionPropertyKind.Volume);
             double tolerance=Math.Max(1e-6,expectedVolume*1e-9);
@@ -46,7 +48,7 @@ public sealed partial class OcctGeometryKernel:IFiniteSurfaceExtrusionResolver
             return true;
         },token);
     }
-    private GeometryResult EvaluateFiniteSurfaceExtrusion(ExtrudeRecipe recipe,Shape source,IAssetStore assets,CancellationToken token)
+    private GeometryResult EvaluateFiniteSurfaceExtrusion(ExtrudeRecipe recipe,Shape source,IAssetStore assets,CancellationToken token,bool extractNewBody=false)
     {
         var options=recipe.Options!;
         using var accepted=CopyOffsetSolid(source,token);
@@ -153,7 +155,8 @@ public sealed partial class OcctGeometryKernel:IFiniteSurfaceExtrusionResolver
                     throw new CadValidationException("Native surface extrusion changed its exact source representation.");
                 using(var check=RepairSnapshot.Create(stopSource))if(check.Fingerprint!=stopMap.Fingerprint)
                     throw new CadValidationException("Native surface extrusion changed its original finite stop representation.");
-                token.ThrowIfCancellationRequested();using var stored=OcctGeometryBridge.StoreShape(result,assets);
+                token.ThrowIfCancellationRequested();using var material=extractNewBody?CopyFiniteSurfaceMaterial(delta,token):null;
+                using var stored=OcctGeometryBridge.StoreShape(material??result,assets);
                 return new(stored.Geometry,GeometryAssetLease.Acquire(stored.Geometry,assets),
                     [new("HISTORY.UNSUPPORTED","Limited prism aggregate argument history does not prove a complete original-to-final topology map; reselect final topology explicitly."),
                      new("STYLE.UNSUPPORTED","New surface extrusion faces have no proved per-face style correspondence.")]);

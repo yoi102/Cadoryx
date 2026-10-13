@@ -19,6 +19,13 @@ internal static class CadAgentFileTools
             using var parsed = JsonDocument.Parse(call.ArgumentsJson); var args = parsed.RootElement;
             if (RequiredString(args,"action",16)=="contract")
             { RequireFields(args,["action"]); return Contract(); }
+            var missing = new[] { "documentId", "stateId" }.Where(name =>
+                !args.TryGetProperty(name, out var value) || value.ValueKind != JsonValueKind.String ||
+                !Guid.TryParseExact(value.GetString(), "D", out var id) || id == Guid.Empty).ToArray();
+            if (missing.Length > 0)
+                return JsonSerializer.Serialize(new { success = false, message = "Missing or invalid " + missing[0] + ".",
+                    missingOrInvalid = missing, identitySource = new { toolName = "cad_status", arguments = new { } },
+                    nextStep = "Read cad_status and copy its exact documentId and stateId into your original file request. No file write was attempted; never guess or reuse an older state." });
             var expected = new DocumentCommandExpectation(new(RequiredGuid(args,"documentId")),new(RequiredGuid(args,"stateId")));
             return await ApplyAsync(document,expected,args,true,token);
         }

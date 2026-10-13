@@ -1,0 +1,17 @@
+{
+  "model": "prism-ml/bonsai-27b",
+  "scenario": "workspace",
+  "started": "2026-10-13T04:41:00.2746178+00:00",
+  "contextLength": 8192,
+  "endpoint": "http://127.0.0.1:15630/v1",
+  "productionApplied": false,
+  "cleanup": false,
+  "exitCode": 0,
+  "completed": "2026-10-13T04:44:58.3189206+00:00",
+  "candidate": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1074-public85-1\\provider",
+  "maxToolRounds": 16,
+  "originalPerTurnMinutes": 4,
+  "desktopInputStarted": false,
+  "binding": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1074-public85-1\\lmstudio-workspace-1-loaded-native.json",
+  "provider": "lmstudio"
+}

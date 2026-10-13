@@ -14,11 +14,13 @@ using Cadoryx.Rendering;
 namespace Cadoryx.Cli;
 
 /// <summary>Headless CAD operations; no WPF initialization, user dialogs or recovery session.</summary>
-public static class CadCommandLine
+public static partial class CadCommandLine
 {
     private static readonly JsonSerializerOptions Json=new(){WriteIndented=true,PropertyNamingPolicy=JsonNamingPolicy.CamelCase,
         Converters={new JsonStringEnumConverter()}};
     public const string Help="""
+        Cadoryx.Cli material-contract
+        Cadoryx.Cli material INPUT.cadoryx --request REQUEST.json [--output OUTPUT.cadoryx] [--overwrite] [--memory]
         Cadoryx.Cli inspect INPUT [--exact] [--output REPORT.json] [--overwrite] [--memory]
         Cadoryx.Cli convert INPUT OUTPUT [--overwrite] [--all] [--linear MM] [--angular RAD] [--memory]
         Cadoryx.Cli benchmark INPUT --output REPORT.json [--iterations 3] [--overwrite] [--memory]
@@ -40,6 +42,8 @@ public static class CadCommandLine
         """;
     public static async Task<int> RunAsync(string[] args,TextWriter output,TextWriter error,CancellationToken token=default)
     {
+        if(args.Length>0 && args[0] is "material" or "material-contract")
+            return await RunMaterialAsync(args,output,error,token);
         if(args is ["verify-exchange",var measurement])
         {
             try{var report=await ExchangeMeasurementService.VerifyAsync(measurement,token);await output.WriteLineAsync(JsonSerializer.Serialize(new{verified=true,report},Json));return 0;}

@@ -45,6 +45,7 @@ public partial class MainWindowViewModel : ObservableObject
     private readonly IRecoveryStore recoveryStore;
     private readonly IRecoveryDialogService recoveryDialog;
     private readonly IDocumentResourcesDialogService resourcesDialog;
+    private readonly IMaterialTextureImportService? materialTextureImports;
     private readonly ISketchEditorHost sketchEditor;
     private readonly IParameterEditorHost? parameterEditor;
     private readonly IDatumEditorHost? datumEditor;
@@ -83,7 +84,7 @@ public partial class MainWindowViewModel : ObservableObject
     IDocumentStorage storage, ICadFileDialogs files, ICadMessageLog log, ICadNotificationService notifications,
     DocumentRecoveryService recovery, IRecoveryStore recoveryStore, IRecoveryDialogService recoveryDialog, IDocumentResourcesDialogService resourcesDialog,
     ISketchEditorHost sketchEditor,Cadoryx.Sketching.ISketchConstraintSolver sketchSolver,ILocalFeatureHost localFeatureHost,IHistoryQueryHost historyQueryHost,IDocumentSettingsHost documentSettingsHost,
-    IDocumentDeliveryService delivery,IDeliveryHost deliveryHost,IParameterEditorHost? parameterEditor=null,IDatumEditorHost? datumEditor=null,IRepetitionEditorHost? repetitionEditor=null,IHoleEditorHost? holeEditor=null,IExtrusionEditorHost? extrusionEditor=null,IGuidedEditorHost? guidedEditor=null,IFaceFeatureEditorHost? faceFeatureEditor=null,IAssemblyRepetitionEditorHost? assemblyRepetitionEditor=null,IDocumentFileService? documentFiles=null,IContourLocalEditorHost? contourLocalEditor=null
+    IDocumentDeliveryService delivery,IDeliveryHost deliveryHost,IParameterEditorHost? parameterEditor=null,IDatumEditorHost? datumEditor=null,IRepetitionEditorHost? repetitionEditor=null,IHoleEditorHost? holeEditor=null,IExtrusionEditorHost? extrusionEditor=null,IGuidedEditorHost? guidedEditor=null,IFaceFeatureEditorHost? faceFeatureEditor=null,IAssemblyRepetitionEditorHost? assemblyRepetitionEditor=null,IDocumentFileService? documentFiles=null,IContourLocalEditorHost? contourLocalEditor=null,IMaterialTextureImportService? materialTextureImports=null
     )
     {
         this._dockLayoutService = dockLayoutService;
@@ -101,7 +102,7 @@ public partial class MainWindowViewModel : ObservableObject
         this.localFeatureHost=localFeatureHost;
         this.historyQueryHost=historyQueryHost;
         this.documentSettingsHost=documentSettingsHost;
-        this.resourcesDialog=resourcesDialog;
+        this.resourcesDialog=resourcesDialog;this.materialTextureImports=materialTextureImports;
         this.sketchEditor=sketchEditor;this.sketchSolver=sketchSolver;
         this.parameterEditor=parameterEditor;
         this.datumEditor=datumEditor;
@@ -557,7 +558,7 @@ public partial class MainWindowViewModel : ObservableObject
     private async Task ManageResourcesAsync()
     {
         if(ActiveDocument is not {} doc)return;
-        using var model=new DocumentResourcesViewModel(doc);await resourcesDialog.ShowAsync(model);
+        using var model=new DocumentResourcesViewModel(doc,materialTextureImports);await resourcesDialog.ShowAsync(model);
     }
     public async Task CheckForRecoveryAsync()
     {

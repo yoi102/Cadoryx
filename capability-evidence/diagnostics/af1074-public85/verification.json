@@ -1,0 +1,150 @@
+{
+  "recordedAt": "2026-10-12T16:40:02.382115+00:00",
+  "state": "AF1074_PUBLIC85_FULL_SOLUTION_BUILDS_AND_ACTUAL_AGENT21_BOTH_WINDOW_HOST_BUILT_NOT_RUN",
+  "preparation": {
+    "path": "artifacts/af1074-public85-1/preparation.json",
+    "sha256": "48006CBC966E2A00870EE9AB083B75BFD6DDB0218174021794937CAD6AD7870F"
+  },
+  "parentFreeze": {
+    "path": "artifacts/public85-runtime-acceptance-1/freeze.json",
+    "sha256": "03FC0E531BBF4E8B059755CEE41673368F218D7464F3F61B4EB1185BFA5409F8"
+  },
+  "sourceFiles": 1187,
+  "overrides": [
+    "Cadoryx.Agent/AgentNativeReadContinuation.cs",
+    "Directory.Build.props"
+  ],
+  "added": [
+    "Cadoryx.Tests/NativeReadDefaultPaginationTests.cs"
+  ],
+  "builds": [
+    {
+      "log": {
+        "path": "capability-evidence/diagnostics/af1074-public85/restore.log",
+        "sha256": "F650EBE0D5F05890F87558185E9318E36BE40D9770ADCA6EE0DB8D693965F2F5"
+      },
+      "stage": "locked-restore",
+      "exitCode": 0
+    },
+    {
+      "configuration": "Release",
+      "stage": "solution-build",
+      "exitCode": 0,
+      "log": {
+        "path": "capability-evidence/diagnostics/af1074-public85/build-release.log",
+        "sha256": "7A9FE3921C2E63144F42FA0B2AB7283AE0548C8869E0E4894A37F8D82E003660"
+      }
+    },
+    {
+      "configuration": "Debug",
+      "stage": "solution-build",
+      "exitCode": 0,
+      "log": {
+        "path": "capability-evidence/diagnostics/af1074-public85/build-debug.log",
+        "sha256": "F8B2097AC5FED6E8C4D7D87FB4C6D92A4843AEE240CC34E3CE857A443C7D1E92"
+      }
+    }
+  ],
+  "managedChecks": [
+    {
+      "configuration": "Release",
+      "passed": 21,
+      "failed": 0,
+      "skipped": 0,
+      "agentBinary": {
+        "path": "artifacts/af1074-public85-1/workspace/Cadoryx.Agent/bin/Release/net10.0/Cadoryx.Agent.dll",
+        "sha256": "78C73D828E0A212CAA27CD8984BBA180DA1D2AAA5211F3EC6F7DB7C0FB87F3B8"
+      },
+      "contractsBinary": {
+        "path": "artifacts/af1074-public85-1/workspace/Cadoryx.AI.Contracts/bin/Release/net10.0/Cadoryx.AI.Contracts.dll",
+        "sha256": "DFD13718D00FDB5BE6B3BF02C761B502E05C08DF44FD788B5D5DCF7B725ABFDF"
+      },
+      "trx": {
+        "path": "capability-evidence/diagnostics/af1074-public85/managed-release.trx",
+        "sha256": "5C2E18C889C6F8B364C17DC82C9C666CC642794ACC718275E0E476676CF3649A"
+      },
+      "actualIntegratedAgentBinariesConsumed": true,
+      "nativeSdkReferencedOrCopied": false
+    },
+    {
+      "configuration": "Debug",
+      "passed": 21,
+      "failed": 0,
+      "skipped": 0,
+      "agentBinary": {
+        "path": "artifacts/af1074-public85-1/workspace/Cadoryx.Agent/bin/Debug/net10.0/Cadoryx.Agent.dll",
+        "sha256": "F553E6E7137CF266D28CB4FC4662E98DDC7E18028ED071940BD91D97192369FC"
+      },
+      "contractsBinary": {
+        "path": "artifacts/af1074-public85-1/workspace/Cadoryx.AI.Contracts/bin/Debug/net10.0/Cadoryx.AI.Contracts.dll",
+        "sha256": "EBD1377F64AB689F295ADCBB312094089BE948BCB0BF1FF4A9018E67D9C8F334"
+      },
+      "trx": {
+        "path": "capability-evidence/diagnostics/af1074-public85/managed-debug.trx",
+        "sha256": "805F90F519651971E1992AD5BBFEE3C32457F58C3959363B56A5C61AC20249E6"
+      },
+      "actualIntegratedAgentBinariesConsumed": true,
+      "nativeSdkReferencedOrCopied": false
+    }
+  ],
+  "windowObserver": [
+    {
+      "configuration": "Release",
+      "hostBinary": {
+        "path": "artifacts/af1074-public85-1/window-observer/bin/Release/net10.0-windows/win-x64/WindowHost.dll",
+        "sha256": "7D780C4FFFB4A7F4F22C08D0B22470220DB4C487E7F77CB91EE38A93D04FDD3E"
+      },
+      "originalObserverSource": {
+        "path": "artifacts/af1074-public85-1/window-observer/WindowHost.cs",
+        "sha256": "202B3B85032D0647BE3833EF91FA4B873F69705A43C14EC533D76AB5F6943D03"
+      },
+      "hostProject": {
+        "path": "artifacts/af1074-public85-1/window-observer/WindowHost.csproj",
+        "sha256": "FE254D7793A20CCBFB5D9BDFFE26C82BCACC56803595EB36C85EBDCA7306CE16"
+      },
+      "buildLog": {
+        "path": "capability-evidence/diagnostics/af1074-public85/window-build-release.log",
+        "sha256": "8E21786E4A0CC1660E30F69F7AE38166102A31F74580FDFEF0B675E145D14118"
+      },
+      "appManagedDllsCopied": 67,
+      "native62DiskMatchesPublicParentPayload": true,
+      "actualWindowRun": false,
+      "original36ScenariosAndSixStatesAnd30And300SecondsRetained": true
+    },
+    {
+      "configuration": "Debug",
+      "hostBinary": {
+        "path": "artifacts/af1074-public85-1/window-observer/bin/Debug/net10.0-windows/win-x64/WindowHost.dll",
+        "sha256": "259F51209C6406CF072384985C5F2309792DDF178687A2A602537D8E79384B08"
+      },
+      "originalObserverSource": {
+        "path": "artifacts/af1074-public85-1/window-observer/WindowHost.cs",
+        "sha256": "202B3B85032D0647BE3833EF91FA4B873F69705A43C14EC533D76AB5F6943D03"
+      },
+      "hostProject": {
+        "path": "artifacts/af1074-public85-1/window-observer/WindowHost.csproj",
+        "sha256": "FE254D7793A20CCBFB5D9BDFFE26C82BCACC56803595EB36C85EBDCA7306CE16"
+      },
+      "buildLog": {
+        "path": "capability-evidence/diagnostics/af1074-public85/window-build-debug.log",
+        "sha256": "D565C024C2B8A6AB236DE45B449533D5FF8B16F51F86FA936A2D8F4ADE08C6FC"
+      },
+      "appManagedDllsCopied": 67,
+      "native62DiskMatchesPublicParentPayload": true,
+      "actualWindowRun": false,
+      "original36ScenariosAndSixStatesAnd30And300SecondsRetained": true
+    }
+  ],
+  "public14PackageIdentitiesAndContentHashesUnchanged": true,
+  "allOriginal6619TestSourceFilesUnchanged": true,
+  "newCases": 16,
+  "expectedTestsAfterDiscovery": 6635,
+  "actualDiscoveryRun": false,
+  "full6635RuntimeRun": false,
+  "parentDebugRuntimeSeparate": true,
+  "productionApplied": false,
+  "desktopOrPerformanceAccepted": false,
+  "cleanup": false,
+  "AFComplete": false,
+  "G": "USER_DEFERRED"
+}

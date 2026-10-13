@@ -24,7 +24,7 @@ public sealed record GeometryAssetRef(AssetId AssetId, GeometryRevisionId Revisi
 }
 public sealed record CadAppearance(uint Argb = 0xFF86ACC5, bool ByLayer = false, bool PreserveSourceStyles = false);
 public sealed record CadLayer(LayerId Id, string Name, uint Argb = 0xFF86ACC5, bool IsVisible = true, bool IsLocked = false);
-public sealed record CadMaterial(MaterialId Id, string Name, double DensityKgPerMm3);
+public sealed record CadMaterial(MaterialId Id, string Name, double DensityKgPerMm3, CadMaterialAppearance? Appearance = null);
 public sealed record CadBody(BodyId Id, DefinitionId PartId, string Name, GeometryAssetRef Geometry,
     FeatureId? Producer, LayerId LayerId, CadAppearance Appearance, bool IsVisible = true, MaterialId? MaterialId = null);
 public sealed record ComponentSlot(ComponentSlotId Id, DefinitionId DefinitionId, string Name,

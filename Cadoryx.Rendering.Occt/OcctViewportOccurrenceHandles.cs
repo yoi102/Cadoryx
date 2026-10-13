@@ -83,11 +83,13 @@ public sealed partial class OcctViewport
     private void ClearOccurrenceHandles()
     {
         bool hadHandles=occurrenceManipulator is not null;
-        foreach(var original in occurrenceStartTransforms.Values)original.Dispose();
+        Exception? failure=null;
+        foreach(var original in occurrenceStartTransforms.Values)DisposeOwnedResource(original,ref failure);
         occurrenceStartTransforms.Clear();occurrenceWorldMatrix=null;dragManipulatorMode=ViewerManipulatorMode.None;
-        occurrenceManipulator?.Dispose();occurrenceManipulator=null;occurrenceGizmoPresentation=null;
+        DisposeOwnedResource(occurrenceManipulator,ref failure);occurrenceManipulator=null;occurrenceGizmoPresentation=null;
         handleOccurrence=null;occurrenceFocusBody=null;
-        if(hadHandles&&!disposed)viewer.Redraw();
+        if(hadHandles&&!disposed)RunCleanup(viewer.Redraw,ref failure);
+        ThrowCleanupFailure(failure);
     }
 
     private bool TryStartOccurrenceHandle(int x,int y)

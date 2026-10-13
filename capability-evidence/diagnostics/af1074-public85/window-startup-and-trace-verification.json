@@ -1,0 +1,83 @@
+{
+  "recordedAt": "2026-10-13T07:49:13.882714+00:00",
+  "state": "D6_HOST_STARTUP_REPAIRED_ACTUAL_TRACE_CANCELLED_INCOMPLETE",
+  "original36CasesRetained": {
+    "path": "capability-evidence/diagnostics/af1074-public85/window-matrix-preparation.json",
+    "sha256": "85FA8ABBDBBFF807CEB96683F5CED1B017B33DC9C7272CACB6747DBB74B40F22"
+  },
+  "revision1Failure": {
+    "path": "capability-evidence/diagnostics/af1074-public85/window-case0-start-failure.json",
+    "sha256": "36E3061FEEE76F34D8799AA365ACCE5BD237809BCAB6D538952EE544C70CC86A"
+  },
+  "revision2Failure": "Production native worker executable absent from the auxiliary host payload; failed before input.",
+  "revision3StartupSucceeded": true,
+  "payloadChecks": [
+    {
+      "configuration": "Release",
+      "productionFilesMatched": 22,
+      "native62DiskMatched": true,
+      "worker": [
+        {
+          "path": "artifacts/af1074-public85-1/window-observer-revision3/bin/Release/net10.0-windows/win-x64/Cadoryx.wpf.exe",
+          "sha256": "906078CA02EE59C58B2414A859D3B3FC5F237A48E66E48F909C66F58AC77D15B"
+        },
+        {
+          "path": "artifacts/af1074-public85-1/window-observer-revision3/bin/Release/net10.0-windows/win-x64/Cadoryx.wpf.deps.json",
+          "sha256": "52FA8B340F44F88B4F237C02F4C32A75EF7B9A86D227DCE4305322BE13CA0386"
+        },
+        {
+          "path": "artifacts/af1074-public85-1/window-observer-revision3/bin/Release/net10.0-windows/win-x64/Cadoryx.wpf.runtimeconfig.json",
+          "sha256": "42BDF3FF1BC458718481097CB192E129BABE98117BFDCB7DA9CE75BB0AF4FBB8"
+        }
+      ]
+    },
+    {
+      "configuration": "Debug",
+      "productionFilesMatched": 22,
+      "native62DiskMatched": true,
+      "worker": [
+        {
+          "path": "artifacts/af1074-public85-1/window-observer-revision3/bin/Debug/net10.0-windows/win-x64/Cadoryx.wpf.exe",
+          "sha256": "906078CA02EE59C58B2414A859D3B3FC5F237A48E66E48F909C66F58AC77D15B"
+        },
+        {
+          "path": "artifacts/af1074-public85-1/window-observer-revision3/bin/Debug/net10.0-windows/win-x64/Cadoryx.wpf.deps.json",
+          "sha256": "52FA8B340F44F88B4F237C02F4C32A75EF7B9A86D227DCE4305322BE13CA0386"
+        },
+        {
+          "path": "artifacts/af1074-public85-1/window-observer-revision3/bin/Debug/net10.0-windows/win-x64/Cadoryx.wpf.runtimeconfig.json",
+          "sha256": "6334F4E2CA063ECB0D78EC14FACE56F2D9AA8F412419CBA2BEE43EBA3EB80DB6"
+        }
+      ]
+    }
+  ],
+  "actualCase": {
+    "matrixIndex": 0,
+    "phase": "create",
+    "language": "en-US",
+    "fixture": "plane-positive",
+    "requiredRoute": "confirm",
+    "actualRoute": "cancel",
+    "failure": {
+      "path": "capability-evidence/diagnostics/af1074-public85/window-revision3-case0-failure.json",
+      "sha256": "8B8BCC20BE2186ED71592C168C3BBD323970ED67FBDEA176991EC1DD50FED8BD"
+    },
+    "state": {
+      "path": "capability-evidence/diagnostics/af1074-public85/window-revision3-case0-state.json",
+      "sha256": "71A12B66F88D611A4E2E883FA7D75C8972F69F65B4F9BBAAE4395C2A8FD5942A"
+    },
+    "originalSnapshotUnchangedThroughoutObservedTrace": true,
+    "sixTraceStatesCompleted": false,
+    "accepted": false,
+    "inputIssue": "Only owner window returned by Computer Use. Menu opened, but subsequent selection/key input returned focus to owner; one start-frame Y decrement observed. No confirm or preview accepted."
+  },
+  "durableHostSource": {
+    "path": "tools/CadFiniteSurfaceWindowProbe/WindowHost.cs",
+    "sha256": "DF5E898FA9E13FDE83414FEC8E9255E25FB757EA86C8420211B08997C3953112"
+  },
+  "nativeExecutionClaim": "Revision3 reached actual production modal; no completed native geometry/window acceptance.",
+  "original30And300SecondsChanged": false,
+  "productionChangedForAutomation": false,
+  "AFComplete": false,
+  "cleanup": false
+}

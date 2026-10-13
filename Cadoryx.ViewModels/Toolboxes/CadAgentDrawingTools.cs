@@ -10,10 +10,12 @@ internal static class CadAgentDrawingTools
 {
     private static readonly string[] ContractTypes = ["sheet","view","dimension","datum","control_frame","balloon","hole_table","field","note","template","parts_table","zones"];
     internal static readonly string Schema=JsonSerializer.Serialize(new{type="object",properties=new{
-        action=new{type="string",description="contract accepts only action/type. All other actions require documentId/stateId.",@enum=new[]{"contract","inspect","inspect_sources","create","edit","reselect","delete","set_parts_table","set_zones","refresh","save_template","apply_template","import_template","detach_coordinates"}},
-        type=new{type="string",@enum=ContractTypes},documentId=new{type="string",format="uuid"},stateId=new{type="string",format="uuid"},
-        sheetId=new{type="string",format="uuid"},id=new{type="string",format="uuid"},name=new{type="string",maxLength=64,description="Only save_template. Create/edit names belong inside authorJson."},
-        path=new{type="string",maxLength=8192},bodyId=new{type="string",format="uuid"},revision=new{type="string",format="uuid"},
+        action=new{type="string",description="Except contract (inspect_sources too): documentId/stateId required.",@enum=new[]{"contract","inspect","inspect_sources","create","edit","reselect","delete","set_parts_table","set_zones","refresh","save_template","apply_template","import_template","detach_coordinates"}},
+        type=new{type="string",@enum=ContractTypes,description="Required for inspect."},
+        documentId=new{type="string",format="uuid",description="REQUIRED except contract: cad_status.documentId."},
+        stateId=new{type="string",format="uuid",description="REQUIRED except contract: cad_status.stateId."},
+        sheetId=new{type="string",format="uuid"},id=new{type="string",format="uuid"},name=new{type="string",maxLength=64,description="save_template only; else authorJson."},
+        path=new{type="string",maxLength=8192,description="Full occurrences.items[].path"},bodyId=new{type="string",format="uuid"},revision=new{type="string",format="uuid"},
         authorJson=new{type="string",minLength=2,maxLength=65536},offset=new{type="integer",minimum=0,maximum=100000},limit=new{type="integer",minimum=1,maximum=50}},
         required=new[]{"action"},additionalProperties=false});
     // Diagnostic only: never fill, remove or substitute caller fields or identities.
@@ -34,8 +36,13 @@ internal static class CadAgentDrawingTools
             ["message"]="Invalid drawing arguments for action="+action+". "+
                 (missing.Length==0?"":"Missing or invalid: "+string.Join(", ",missing)+". ")+
                 (unexpected.Count==0?"":"Unknown or duplicate: "+string.Join(", ",unexpected)+". ")+
-                "contract accepts only action/type; other actions require exact documentId/stateId from cad_status. Outer name is only save_template; create/edit names belong in authorJson.",
+                "contract accepts only action/type; other actions require exact documentId/stateId from cad_status. inspect requires type, documentId and stateId together. Outer name is only save_template; create/edit names belong in authorJson.",
             ["missingOrInvalid"]=missing,["unexpectedArguments"]=unexpected,["allowedArguments"]=allowed};
+        if(missing.Length>0)
+        {
+            result["identitySource"]=new{toolName="cad_status",arguments=new{}};
+            result["identityRole"]="Copy documentId/stateId from the active cad_status response, not an item, body, sheet or source selection. Read current state before explicitly submitting the drawing request again. No identities were supplied or filled in automatically.";
+        }
         if(action=="contract")
         {
             // These are existing read-only request shapes, never a repaired or

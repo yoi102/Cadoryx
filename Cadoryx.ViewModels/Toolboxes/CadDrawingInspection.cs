@@ -75,7 +75,15 @@ internal static partial class CadDrawingAuthoring
         DrawingFeatureControlFrame f=>f.StaleReason,DrawingAssemblyBalloon b=>b.StaleReason,DrawingHoleTable t=>t.StaleReason,_=>null};
     private static string Inspect(DocumentSnapshot doc,JsonElement args)
     {
-        var type=RequiredString(args,"type",32);var offset=Integer(args,"offset",0,0,100000);var limit=Integer(args,"limit",8,1,50);
+        // ApplyAsync has already checked the exact document/state before this read-only guide.
+        string[] allowedTypes=["sheet","template","view","dimension","datum","control_frame","balloon","hole_table","field","note"];
+        if(!args.TryGetProperty("type",out var requested)||requested.ValueKind!=JsonValueKind.String||
+            !allowedTypes.Contains(requested.GetString(),StringComparer.Ordinal))
+            return JsonSerializer.Serialize(new{success=false,
+                message="Missing or invalid drawing inspection type. inspect requires type, documentId and stateId together; choose the exact object kind from allowedTypes. For sheet/view authors use type=sheet/type=view. contract accepts only action/type, without IDs. No type or identity was supplied automatically.",
+                missingOrInvalid=new[]{"type"},allowedTypes,requiredArguments=new[]{"action","type","documentId","stateId"},
+                contractRequest=new{action="contract"}},CadAuthoringInspection.JsonOptions);
+        var type=requested.GetString()!;var offset=Integer(args,"offset",0,0,100000);var limit=Integer(args,"limit",8,1,50);
         Guid? sheetId=args.TryGetProperty("sheetId",out _)?RequiredGuid(args,"sheetId"):null;
         Guid? id=args.TryGetProperty("id",out _)?RequiredGuid(args,"id"):null;
         var sheets=doc.DrawingSheets.Values.Where(s=>sheetId is null||s.Id==sheetId).OrderBy(s=>s.Id).ToArray();
@@ -108,7 +116,22 @@ internal static partial class CadDrawingAuthoring
     private static async Task<string> InspectSourcesAsync(CadDocumentViewModel document,DocumentCommandExpectation expected,JsonElement args,CancellationToken token)
     {
         using var capture=document.Session.Capture();var doc=capture.Snapshot;expected.Validate(doc);
-        var path=Path(doc,RequiredString(args,"path",8192));var body=new BodyId(RequiredGuid(args,"bodyId"));var revision=new GeometryRevisionId(RequiredGuid(args,"revision"));
+        var pathText=RequiredString(args,"path",8192);
+        OccurrencePath path;
+        try { path=Path(doc,pathText); }
+        catch(ArgumentException error)
+        {
+            // The exact document/state guard precedes this guide. These are
+            // read-only discovery requests, never replacement source identities.
+            return JsonSerializer.Serialize(new{success=false,action="inspect_sources",
+                message=error.Message,rejection="drawing_source_path_invalid",
+                sourceReads=new[]{new{toolName="cad_inspect",arguments=new{area="occurrences",offset=0,limit=8}},
+                    new{toolName="cad_inspect",arguments=new{area="bodies",offset=0,limit=8}}},
+                pathRole="Copy one complete occurrences.items[].path including the document root and every instance slot. A slot, body, feature or definition ID alone is not a path.",
+                bodyRole="Copy bodyId/revision from actual bodies.items[].id/revision for the selected occurrence's definition. Native inspection still validates membership and revision.",
+                nextStep="Read actual sources and fresh cad_status, then explicitly resubmit inspect_sources with exact documentId/stateId/path/bodyId/revision. No source was inferred, repaired, rebound or inspected automatically."},CadAuthoringInspection.JsonOptions);
+        }
+        var body=new BodyId(RequiredGuid(args,"bodyId"));var revision=new GeometryRevisionId(RequiredGuid(args,"revision"));
         var offset=Integer(args,"offset",0,0,100000);var limit=Integer(args,"limit",8,1,50);
         var resolver=document.GeometryKernel as IDrawingTopologyResolver??throw new NotSupportedException("Original drawing inspector unavailable.");
         var page=await resolver.InspectDrawingTopologyAsync(doc,path,body,revision,document.Session.Assets,offset,limit,token);

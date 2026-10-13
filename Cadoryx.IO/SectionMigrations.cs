@@ -30,6 +30,8 @@ public sealed partial class CadSectionMigrationRegistry
                     "document"=>Json<DocumentSection>(input[k]),"structure"=>Json<StructureSection>(input[k]),
                     "features"=>Json<FeaturesSection>(input[k]),"presentation"=>Json<PresentationSection>(input[k]),_=>throw new NotSupportedException(k)
                 };
+                if(dto is PresentationSection presentation&&presentation.Materials.Any(m=>m.Appearance is not null))
+                    throw new InvalidDataException("Legacy presentation cannot embed undeclared material appearances.");
                 return [new(new(k,2,"messagepack"),MessagePackSections.Encode(k,dto))];
             });
         }

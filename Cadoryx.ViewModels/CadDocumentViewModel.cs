@@ -780,7 +780,7 @@ public partial class CadDocumentViewModel : ObservableDocument
                 candidate.Snapshot.Validate();var resultScene=CadScene.FromDocument(candidate.Snapshot);
                 PreviewScene=resultScene with{Items=resultScene.Items.Select(item=>
                     !capture.Snapshot.Bodies.TryGetValue(item.BodyId,out var old)||old.Geometry.Revision!=item.Geometry.Revision
-                        ?item with{Argb=0xFF32CCA0,PreserveSourceStyles=false}:item).ToImmutableArray()};
+                        ?item with{Argb=0xFF32CCA0,PreserveSourceStyles=false,MaterialAppearance=null}:item).ToImmutableArray()};
             }
             catch{candidate.Dispose();throw;}
             prepared=candidate;preparedGeneration=generation;preparedCursor=cursor;

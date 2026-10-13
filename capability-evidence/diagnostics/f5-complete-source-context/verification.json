@@ -1,0 +1,147 @@
+{
+  "recordedAt": "2026-10-13T05:28:50.208781+00:00",
+  "state": "ACTUAL_NATIVE_COMPLETE_ROWS_CONTEXT_BOTH34_PASS_BASELINE_BOTH33_1",
+  "gates": [
+    {
+      "variant": "baseline",
+      "configuration": "release",
+      "passed": 33,
+      "failed": 1,
+      "skipped": 0,
+      "failedNames": [
+        "Cadoryx.Tests.NativeCompleteSourceContextTests.CompleteCapturedCylinderRowSurvivesTheOriginalNormalBudgetWithoutAnInventedSelection"
+      ],
+      "trx": {
+        "path": "capability-evidence/diagnostics/f5-complete-source-context/baseline-release.trx",
+        "sha256": "9D9AEA82D32D353FFA0AB3EA32C0DC2843BC450AEC85EEE3D58B13A229D6AADD"
+      },
+      "testBinary": {
+        "path": "artifacts/f5-complete-source-context-1/baseline/bin/Release/net10.0/ManagedContext.Tests.dll",
+        "sha256": "24E360AAD4ECEFCBA249FBCBF952E672ADD010E052BA81130353305F5FD230E2"
+      }
+    },
+    {
+      "variant": "baseline",
+      "configuration": "debug",
+      "passed": 33,
+      "failed": 1,
+      "skipped": 0,
+      "failedNames": [
+        "Cadoryx.Tests.NativeCompleteSourceContextTests.CompleteCapturedCylinderRowSurvivesTheOriginalNormalBudgetWithoutAnInventedSelection"
+      ],
+      "trx": {
+        "path": "capability-evidence/diagnostics/f5-complete-source-context/baseline-debug.trx",
+        "sha256": "B57F8D562CDC3335C68FFCFDB1CC25E01E1821A3A44B68274EB1BD147C8DD447"
+      },
+      "testBinary": {
+        "path": "artifacts/f5-complete-source-context-1/baseline/bin/Debug/net10.0/ManagedContext.Tests.dll",
+        "sha256": "0CE26E5D6BF3162B782005E23E4A506AD950A0EB5B1E7AC11F7DBBB9F6BF78AA"
+      }
+    },
+    {
+      "variant": "fixed",
+      "configuration": "release",
+      "passed": 34,
+      "failed": 0,
+      "skipped": 0,
+      "failedNames": [],
+      "trx": {
+        "path": "capability-evidence/diagnostics/f5-complete-source-context/fixed-release.trx",
+        "sha256": "036AB828D3909D0943E6213C8DCE035FABACC969DA39500C888759939400209D"
+      },
+      "testBinary": {
+        "path": "artifacts/f5-complete-source-context-1/fixed/bin/Release/net10.0/ManagedContext.Tests.dll",
+        "sha256": "0A3B6D51E33FB5B3B16369ACDFEA3ED3F9A4AB382E9B8842CFAEC9EA18A7C3CA"
+      }
+    },
+    {
+      "variant": "fixed",
+      "configuration": "debug",
+      "passed": 34,
+      "failed": 0,
+      "skipped": 0,
+      "failedNames": [],
+      "trx": {
+        "path": "capability-evidence/diagnostics/f5-complete-source-context/fixed-debug.trx",
+        "sha256": "B3C2BB662D536A403C1AE201D2F8EAD71B8FBDD359D11D7FB148F3E4D6298FA3"
+      },
+      "testBinary": {
+        "path": "artifacts/f5-complete-source-context-1/fixed/bin/Debug/net10.0/ManagedContext.Tests.dll",
+        "sha256": "816F46AF3A9FFAC6B1925E522A325158BF75C9AF48AA6FC3C8B77DAA84CEC4C5"
+      }
+    }
+  ],
+  "sources": {
+    "baseline": {
+      "AgentContextTests.cs": "7C83C03F17522EE65A53BA170D2C230658C8E8B66BD783F144B3F508D394E31E",
+      "AgentContracts.cs": "4A2A3B9BAF5D1EAF7818BE67B00233399FE041233C94852302DC0EFC39628DC0",
+      "AgentNativeReadContinuation.cs": "1E191C15D6B1FD350FAFA75F3FAAF22988F685594CF6D6E3FC812C91CE693A9E",
+      "AgentRequestContextBuilder.cs": "FAB2FB014820708AAA4731B8F78C8A5FE95D33F70C8A6F060CEB91207DF2C309",
+      "AgentRunner.cs": "BB253D1AED7A0DB2AD803D238955C6E82BEEC82B0348F86B8A19E10CFD87BF8F",
+      "AgentSuccessfulActionReceipt.cs": "4C5E5A856569584B754FFFBAEF76DE05FAC715029234055ADA927514B1569A54",
+      "AgentToolResultCompactor.cs": "E53D28A3CC529CE68EB79872C3364E44BCD82E5C401536BFB38CC468CDD42A85",
+      "AiAssistantSettings.cs": "97962C8128B405694AF1D0E5A6ED4FFD857F999B0AD654E9A40366DB69398676",
+      "AiChatContracts.cs": "6DDD719451C9864578E891F7D4870173AE776CFF059DED44FAFD5D4D73C6AB98",
+      "NativeCompleteSourceContextTests.cs": "91CE98AA067C5A92116293405459863037EBFD573CE54E43D32CEF1C14593652",
+      "NativeReadDefaultPaginationTests.cs": "D6FC221CDCEFB0610DAD392C79AFA9B1B6D65256390E13BE490542433B99F26B"
+    },
+    "fixed": {
+      "AgentContextTests.cs": "7C83C03F17522EE65A53BA170D2C230658C8E8B66BD783F144B3F508D394E31E",
+      "AgentContracts.cs": "4A2A3B9BAF5D1EAF7818BE67B00233399FE041233C94852302DC0EFC39628DC0",
+      "AgentNativeReadContinuation.cs": "1E191C15D6B1FD350FAFA75F3FAAF22988F685594CF6D6E3FC812C91CE693A9E",
+      "AgentRequestContextBuilder.cs": "FAB2FB014820708AAA4731B8F78C8A5FE95D33F70C8A6F060CEB91207DF2C309",
+      "AgentRunner.cs": "BB253D1AED7A0DB2AD803D238955C6E82BEEC82B0348F86B8A19E10CFD87BF8F",
+      "AgentSuccessfulActionReceipt.cs": "4C5E5A856569584B754FFFBAEF76DE05FAC715029234055ADA927514B1569A54",
+      "AgentToolResultCompactor.cs": "FFAC212E7ADA13D13F5140680D41771BC3CF33FFAEE8175C9DDB3B030CDB4563",
+      "AiAssistantSettings.cs": "97962C8128B405694AF1D0E5A6ED4FFD857F999B0AD654E9A40366DB69398676",
+      "AiChatContracts.cs": "6DDD719451C9864578E891F7D4870173AE776CFF059DED44FAFD5D4D73C6AB98",
+      "NativeCompleteSourceContextTests.cs": "91CE98AA067C5A92116293405459863037EBFD573CE54E43D32CEF1C14593652",
+      "NativeReadDefaultPaginationTests.cs": "D6FC221CDCEFB0610DAD392C79AFA9B1B6D65256390E13BE490542433B99F26B"
+    }
+  },
+  "original21NamesAndAssertionsRetained": true,
+  "newCases": 13,
+  "captureFixture": {
+    "path": "Cadoryx.Tests/Fixtures/AgentContext/NativeSelectionPage.json",
+    "sha256": "1A9ADFD73CDB0FDCF752532CB468F264A1052DED8319C1A6DD657376A49B21BE"
+  },
+  "captureToolOrdinal": 32,
+  "captureToolCalls": {
+    "path": "artifacts/af1074-public85-1/lmstudio-drawing-1/tool-calls.json",
+    "sha256": "D9E0136F41B404AF7A6A15C65BD0F2D33C05C344D689E329833F8030DDEBB029"
+  },
+  "productionAgentBuilds": [
+    {
+      "configuration": "Release",
+      "exitCode": 0,
+      "log": {
+        "path": "capability-evidence/diagnostics/f5-complete-source-context/production-agent-release.log",
+        "sha256": "AA11A33BA77B44390076986416860BB1DD417A00EB3A3DF31AF4289F581EEF47"
+      }
+    },
+    {
+      "configuration": "Debug",
+      "exitCode": 0,
+      "log": {
+        "path": "capability-evidence/diagnostics/f5-complete-source-context/production-agent-debug.log",
+        "sha256": "62A6EB90D0400A7FDC1C7AFB62F1837B989E0325EC7083F1D36D6AF457E1C54A"
+      }
+    }
+  ],
+  "changedApplication": {
+    "path": "Cadoryx.Agent/AgentToolResultCompactor.cs",
+    "sha256": "FFAC212E7ADA13D13F5140680D41771BC3CF33FFAEE8175C9DDB3B030CDB4563"
+  },
+  "testSource": {
+    "path": "Cadoryx.Tests/NativeCompleteSourceContextTests.cs",
+    "sha256": "91CE98AA067C5A92116293405459863037EBFD573CE54E43D32CEF1C14593652"
+  },
+  "characterBudgets": [
+    6000,
+    2400
+  ],
+  "nativeOrDesktopExecutedByThisCheck": false,
+  "providerWorkflowAcceptedByThisCheck": false,
+  "AFComplete": false,
+  "cleanup": false
+}

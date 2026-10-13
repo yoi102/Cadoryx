@@ -1,0 +1,11 @@
+# F5 同一次原生读取的完整条目补充
+
+2026-10-13。[1074原Bonsai实际验收](../capability-evidence/diagnostics/af1074-public85/provider-runtime-verification.json)中，多文档八轮通过、关闭资产0；工程图第三轮触及原16工具轮，前两轮完成，未创建尺寸。最后实际HTTP请求保留完整20项/5890字符和CylinderFace第38项的续读提示，`cad_drawing`可用；模型反复添加无关`id`、合法读取和查询状态，没有取续页。该记录不证明唯一根因。
+
+新实现保留原连续前缀、分页元数据、真实查询身份和只读续页，再在同一6000/2400字符预算内补充尚未在前缀出现的原生几何类型的完整原条目。每个补充条目都逐字节来自这次实际成功查询，带原结果位置；不推定拓扑索引、不选择实体或执行编辑。`includedItemCount/remainingOmittedItemCount`说明实际补充后的数量，原`retainedItemCount/omittedItemCount`仍描述连续前缀。完整第一项放不下时先撤掉可选补充，不跳过或虚构选择。配对缺失、身份/页参数不符、未知或重复字段仍不给补充；可完整容纳的原回执不改字节。
+
+[托管对照](../capability-evidence/diagnostics/f5-complete-source-context/verification.json)使用实际第32次查询和原响应：修复版Release/Debug各34/34，旧版各33/1，失败正是完整CylinderFace条目缺失；原21项来源/断言保持，新13项检查完整原条目、原位置、两个预算、配对拒绝及原回执字节。当前生产Agent两配置编译零警告/错误。
+
+[1075完整合并候选](../capability-evidence/diagnostics/af1075-public85/verification.json)两配置solution构建0警告/错误，实际消费本次完整候选Agent二进制各34/34，公开14包哈希不变。原6635测试来源保持、新13案例，预计6648尚未发现或实际全量运行。原Bonsai、原8轮提示/8192上下文/1024输出/安全余量/16工具轮仍需真实复验；本地34项不能算工作流通过。1075未合入生产，原严格STEP24、实际窗口/材质/性能及其他A–F范围继续，G与清理暂缓。
+
+窗口第一组在任何键鼠输入前因验收宿主重复设置WPF `Application.ResourceAssembly`退出；[原启动失败](../capability-evidence/diagnostics/af1074-public85/window-case0-start-failure.json)保留。修订2移除多余设置，两配置编译通过，原36场景、六状态及30/300秒保持；实际重新启动与窗口操作仍待完成，未将编译记成窗口通过。

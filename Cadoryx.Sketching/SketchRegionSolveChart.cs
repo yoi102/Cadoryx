@@ -12,8 +12,10 @@ internal sealed partial class SketchRegionSolveChart
     internal bool IsComplete {get;}
     internal SketchRegionPointCouplingProof? PointCouplingProof {get;}
     internal bool IsPointCoupled=>PointCouplingProof is not null;
-    private SketchRegionSolveChart(ImmutableDictionary<Guid,SketchRegionOffsetAuthor> groups,int activeCount,SketchRegionPointCouplingProof? pointCouplingProof=null)
-    {this.groups=groups;GroupIds=groups.Keys.ToImmutableHashSet();IsComplete=groups.Count==activeCount;PointCouplingProof=pointCouplingProof;}
+    internal SketchRegionLivePointCouplingProof? LivePointCouplingProof {get;}
+    internal bool IsLivePointCoupled=>LivePointCouplingProof is not null;
+    private SketchRegionSolveChart(ImmutableDictionary<Guid,SketchRegionOffsetAuthor> groups,int activeCount,SketchRegionPointCouplingProof? pointCouplingProof=null,SketchRegionLivePointCouplingProof? livePointCouplingProof=null)
+    {this.groups=groups;GroupIds=groups.Keys.ToImmutableHashSet();IsComplete=groups.Count==activeCount;PointCouplingProof=pointCouplingProof;LivePointCouplingProof=livePointCouplingProof;}
     internal bool Contains(SketchRegionOffsetAuthor group)=>groups.TryGetValue(group.Id,out var original)&&ReferenceEquals(original,group);
 
     // A mixed solve may defer complete natural groups while retaining the native

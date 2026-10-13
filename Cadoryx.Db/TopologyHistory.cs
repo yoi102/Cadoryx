@@ -53,7 +53,8 @@ public sealed record TopologyHistory(GeometryRevisionId SourceRevision,AssetId S
     public void ValidateFor(FeatureDefinition feature)
     {
         Validate();
-        if(feature.Recipe is not (LocalFeatureRecipe or HistoryFilletRecipe or HistoryChamferRecipe or ContourLocalRecipe or PlanarPushPullRecipe or BooleanRecipe or DraftRecipe or HoleRecipe or HolePatternRecipe {Layout.IncludeSource:true} or RepetitionRecipe)||
+        if(feature.Recipe is not (LocalFeatureRecipe or HistoryFilletRecipe or HistoryChamferRecipe or ContourLocalRecipe or PlanarPushPullRecipe or DefeatureRecipe or BooleanRecipe or DraftRecipe or HoleRecipe or HolePatternRecipe {Layout.IncludeSource:true} or RepetitionRecipe)||
+            feature.Recipe is DefeatureRecipe&&SchemaVersion!=1||
             feature.Recipe is BooleanRecipe&&SchemaVersion!=2||
             (feature.Recipe is HoleRecipe {Head:not HoleHead.Plain} or HolePatternRecipe)&&SchemaVersion!=3||
             SchemaVersion==3&&feature.Recipe is not (HoleRecipe or HolePatternRecipe)||

@@ -1,0 +1,72 @@
+{
+  "recordedAt": "2026-10-13T05:32:36.935438+00:00",
+  "state": "AF1074_ORIGINAL_BONSAI_WORKSPACE8_PASS_DRAWING_TOOL16_FAIL_ACTUAL_NATIVE62_BOTH",
+  "suite": {
+    "path": "artifacts/af1074-public85-1/provider-both-exit.json",
+    "sha256": "8E84A51E67F267AE94E9415E6F8DBC3A341CBDE406792BDFBEF25B3600D6892E"
+  },
+  "freeze": {
+    "path": "artifacts/af1074-public85-1/provider-runtime-freeze.json",
+    "sha256": "59269BC247D633D125CE31A0FA1B9F4966FAE7934AE2128EE9AE2FD58C9F301E"
+  },
+  "scenarios": [
+    {
+      "scenario": "drawing",
+      "passed": false,
+      "completedTurns": 2,
+      "failure": "The model exceeded the maximum number of agent tool rounds.",
+      "assetsAfterClose": 0,
+      "actualNative62Matched": true,
+      "terminal": {
+        "path": "artifacts/af1074-public85-1/lmstudio-drawing-1-exit.json",
+        "sha256": "0EF6C28DA71D03D2F5DC46FB5B888DDC5574D9D1F4F4C9BCE7453B5AE8032CC0"
+      },
+      "result": {
+        "path": "artifacts/af1074-public85-1/lmstudio-drawing-1/result.json",
+        "sha256": "925D843EFF5195B71F59A43AD834E68C502041FE77B7E8D13BB5AACC5375DE26"
+      },
+      "binding": {
+        "path": "artifacts/af1074-public85-1/lmstudio-drawing-1-loaded-native.json",
+        "sha256": "73A3E9CC70AC637D2DD99640116964498F5A2A529EEF346396162DAF8AB46887"
+      }
+    },
+    {
+      "scenario": "workspace",
+      "passed": true,
+      "completedTurns": 8,
+      "failure": null,
+      "assetsAfterClose": 0,
+      "actualNative62Matched": true,
+      "terminal": {
+        "path": "artifacts/af1074-public85-1/lmstudio-workspace-1-exit.json",
+        "sha256": "2232D05D694258EAB8483669697695F63BCED51034123C6631F52298183D3F59"
+      },
+      "result": {
+        "path": "artifacts/af1074-public85-1/lmstudio-workspace-1/result.json",
+        "sha256": "4323082DA793924B6DF3A96C56BA0A6F18A22B035CF230A3B5EAC3D356B62F9F"
+      },
+      "binding": {
+        "path": "artifacts/af1074-public85-1/lmstudio-workspace-1-loaded-native.json",
+        "sha256": "52BE06DD01F7218DF9E06812960C24DCAFA1CFF729A6FE1EA05078EA4F28CCCD"
+      }
+    }
+  ],
+  "drawingFinalRequest": {
+    "path": "artifacts/af1074-public85-1/lmstudio-drawing-1/request-036.json",
+    "sha256": "82E36153493C6D606DEB60A202701C175B54A0090F8476938192FCADE328A9B8"
+  },
+  "drawingActualContext": {
+    "characters": 5890,
+    "completePrefixItems": 20,
+    "cylinderActualPosition": 38,
+    "cylinderReadHintPresent": true,
+    "completeCylinderRowPresent": false,
+    "drawingToolAvailable": true,
+    "rootCauseProven": false
+  },
+  "originalPromptAssertionsAndBudgetsChanged": false,
+  "desktopInputExecuted": false,
+  "productionIntegrationApplied": false,
+  "AFComplete": false,
+  "cleanup": false
+}

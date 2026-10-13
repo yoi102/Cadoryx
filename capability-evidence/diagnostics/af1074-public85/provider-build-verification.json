@@ -1,0 +1,120 @@
+{
+  "recordedAt": "2026-10-12T16:52:54.338189+00:00",
+  "state": "AF1074_PUBLIC85_ORIGINAL_PROVIDER_PROBE_COMPILED_ACTUAL_BONSAI_WORKFLOW_NOT_RUN",
+  "sources": [
+    {
+      "path": "artifacts/af1074-public85-1/workspace/tools/CadAgentWorkflowProbe/Program.cs",
+      "sha256": "ECDE64BA427AB24667EC274D06B59404E37675BCD08447DFAE0EB62D62602346"
+    },
+    {
+      "path": "artifacts/af1074-public85-1/workspace/tools/CadAgentWorkflowProbe/DrawingProviderProbe.cs",
+      "sha256": "8BCF923185714028CDC865D774460FA56F73F86BE858F67186A9B4DC19D3BE72"
+    },
+    {
+      "path": "artifacts/af1074-public85-1/workspace/tools/CadAgentWorkflowProbe/WorkspaceProviderProbe.cs",
+      "sha256": "C46829DFDEA0342806F184BB1B894E0FB7002FF3C0928A00C6F484F1EC42C0CB"
+    }
+  ],
+  "sharedApplication16": [
+    {
+      "path": "artifacts/af1074-public85-1/provider/Cadoryx.Agent.Codex.dll",
+      "sha256": "FD46539391DAC8B48BAB7E5A3900CECA3EA4BEC2C21F605DA4ED65059584318D"
+    },
+    {
+      "path": "artifacts/af1074-public85-1/provider/Cadoryx.Agent.dll",
+      "sha256": "78C73D828E0A212CAA27CD8984BBA180DA1D2AAA5211F3EC6F7DB7C0FB87F3B8"
+    },
+    {
+      "path": "artifacts/af1074-public85-1/provider/Cadoryx.AI.Contracts.dll",
+      "sha256": "DFD13718D00FDB5BE6B3BF02C761B502E05C08DF44FD788B5D5DCF7B725ABFDF"
+    },
+    {
+      "path": "artifacts/af1074-public85-1/provider/Cadoryx.AI.LmStudio.dll",
+      "sha256": "07B7127D58C56EF49616D310E8DB38D67E00DF55EB9B7A75283BC2C6D70B9EB3"
+    },
+    {
+      "path": "artifacts/af1074-public85-1/provider/Cadoryx.CommandLine.dll",
+      "sha256": "74E2DD0567DECE0277BF8382C29E9E40EDD943E96716DB89FA45483B3FA6E9A7"
+    },
+    {
+      "path": "artifacts/af1074-public85-1/provider/Cadoryx.Commands.dll",
+      "sha256": "98F866D1E52EC7A7FF8494C8FAC7F8F3D4D3E06EE0B4BE91D95023516C8DF04B"
+    },
+    {
+      "path": "artifacts/af1074-public85-1/provider/Cadoryx.Db.dll",
+      "sha256": "89940492741CAE15A2D232756D23811FC31CB493C5A52515DC9D17B4A2B1B655"
+    },
+    {
+      "path": "artifacts/af1074-public85-1/provider/Cadoryx.Editor.dll",
+      "sha256": "FEFC54719FE6EDC7B5507483EAD074495E54BC896FED293092BCC80ABC6670A0"
+    },
+    {
+      "path": "artifacts/af1074-public85-1/provider/Cadoryx.IO.dll",
+      "sha256": "3EB7F2A63E6A637B889D8BCBE5EEFB1B3B99EF7AA1B551DA88B87965AD67916E"
+    },
+    {
+      "path": "artifacts/af1074-public85-1/provider/Cadoryx.Kernel.Abstractions.dll",
+      "sha256": "15F204BC40D77872852086F2925CF6D1F492BBCACDFE3FE34ED66FCFD20309F3"
+    },
+    {
+      "path": "artifacts/af1074-public85-1/provider/Cadoryx.Kernel.Occt.dll",
+      "sha256": "273DC2291C1882E1F39D5AAE000D830BC3999834479C6CC3214CE1901BE4918C"
+    },
+    {
+      "path": "artifacts/af1074-public85-1/provider/Cadoryx.Lang.dll",
+      "sha256": "BD24D42A0DD149062559BF43BD7874CDC1E91051C4016A1948148A669D6891B5"
+    },
+    {
+      "path": "artifacts/af1074-public85-1/provider/Cadoryx.Rendering.dll",
+      "sha256": "7FDB06D24692F59CB2E0B4967FB0E8147C29953B925C5D30FD721BD114A73636"
+    },
+    {
+      "path": "artifacts/af1074-public85-1/provider/Cadoryx.Sketching.dll",
+      "sha256": "0438A4B9A578D8231752D74A465CA1B620BA8C93F63C4C37BF586D691E6FFC86"
+    },
+    {
+      "path": "artifacts/af1074-public85-1/provider/Cadoryx.ViewModels.dll",
+      "sha256": "567641798F6765AFF7C6EAC71993CF6E63A9D0F1C3EBDEE41DEEFE16F9A9AE57"
+    },
+    {
+      "path": "artifacts/af1074-public85-1/provider/Cadoryx.ViewModels.Services.dll",
+      "sha256": "E7AAC2008C571899FB9078FCE5BF8119B4C3D8F83C7F5285778AD428ED4497EE"
+    }
+  ],
+  "sdkManaged13MatchPublicParent": true,
+  "native62DiskMatchPublicParent": true,
+  "agentBinaryMatchesActualManaged21Consumer": true,
+  "providerBinary": {
+    "path": "artifacts/af1074-public85-1/provider/CadAgentWorkflowProbe.dll",
+    "sha256": "D1A9C7741DC6F140A1D05F5C5ED4E5AF3E08FAF522D25A75656CD2351D56241A"
+  },
+  "restoreLog": {
+    "path": "capability-evidence/diagnostics/af1074-public85/provider-restore.log",
+    "sha256": "58AED9C0F835E887FC27CE57821AE21BE2A6A2314E089C3464BAEC57E7F9A2AC"
+  },
+  "buildLog": {
+    "path": "capability-evidence/diagnostics/af1074-public85/provider-build.log",
+    "sha256": "7CC46401B09698AFF7B02851D14A0617868BED2DB98E4A33A325E68150601EE3"
+  },
+  "initialDefaultEndpointUnavailable": {
+    "path": "capability-evidence/diagnostics/af1074-public85/provider-availability.json",
+    "sha256": "80852E641FCB69CE7263BE60D2E14821534358799F21E089CE4C6334553A6C20"
+  },
+  "actualServerAndOriginalModelDiscovery": {
+    "path": "capability-evidence/diagnostics/af1074-public85/provider-availability-2.json",
+    "sha256": "0AE94D17352C8874015A20152409CB99BA552E482166F2B4BD9B17DF6F99ABA6"
+  },
+  "actualObservedEndpoint": "http://127.0.0.1:15630/v1",
+  "provider": "lmstudio",
+  "model": "prism-ml/bonsai-27b",
+  "modelLoadedAtDiscovery": false,
+  "originalPromptsAssertionsAndContext8192AndTool16Preserved": true,
+  "originalDrawingAndWorkspaceEightTurnsRequired": true,
+  "actualProviderWorkflowRun": false,
+  "actualNativeBindingsCaptured": false,
+  "serverSettingsChanged": false,
+  "productionApplied": false,
+  "cleanup": false,
+  "AFComplete": false,
+  "G": "USER_DEFERRED"
+}

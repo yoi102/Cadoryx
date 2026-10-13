@@ -1,0 +1,30 @@
+{
+  "workspace": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1076-public85-1\\workspace",
+  "version": "8.0.1-preview.85",
+  "AF": "ACTIVE",
+  "desktopRun": false,
+  "started": "2026-10-13T07:45:25.7753263+00:00",
+  "parentPackageCache": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\public85-final1073-1\\fresh-packages",
+  "completed": "2026-10-13T07:45:57.0648996+00:00",
+  "nativeRun": false,
+  "stages": [
+    {
+      "exitCode": 0,
+      "stage": "locked-restore",
+      "log": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1076-public85-1\\restore.log"
+    },
+    {
+      "exitCode": 0,
+      "stage": "solution-build",
+      "log": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1076-public85-1\\build-release.log",
+      "configuration": "Release"
+    },
+    {
+      "exitCode": 0,
+      "stage": "solution-build",
+      "log": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1076-public85-1\\build-debug.log",
+      "configuration": "Debug"
+    }
+  ],
+  "productionApplied": false
+}

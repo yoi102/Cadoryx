@@ -15,24 +15,28 @@ internal sealed class CadAgentToolset : IAgentToolset
     private readonly SynchronizationContext? uiContext;
     private static readonly IReadOnlyList<AiToolDefinition> Definitions =
     [
-        Define("cad_status", "Read the active CAD document identity, state, size, selection and available commands.",
+        Define("cad_status", "Document IDs/state/size/selection/commands.",
             "{\"type\":\"object\",\"properties\":{},\"additionalProperties\":false}"),
-        Define("cad_workspace", "No document needed. list gives exact expected for new/open/activate; target=sessionId/documentId/stateId. Own transitions keep conversation; user switching cancels. Read contract.", CadAgentWorkspaceTools.Schema),
-        Define("cad_command", "Run cad_status.commands with exact document/state. HISTORY needs cad_history cursor. Pre-commit cancellation rolls back; completed commits succeed.",
+        Define("cad_workspace", "list.expected verbatim; keep IDs/nulls; target separate. User switch cancels.", CadAgentWorkspaceTools.Schema),
+        Define("cad_command", "cad_status.commands, exact document/state. HISTORY:cad_history. Pre-commit cancel rolls back; committed succeeds.",
             "{\"type\":\"object\",\"properties\":{\"command\":{\"type\":\"string\"},\"documentId\":{\"type\":\"string\",\"format\":\"uuid\"},\"stateId\":{\"type\":\"string\",\"format\":\"uuid\"}},\"required\":[\"command\"],\"additionalProperties\":false}"),
-        Define("cad_inspect", "Read IDs/authors, mm/rad. id=object ID, never documentId; model_contract id=type. drawings gives sheet IDs; drawing_views/dimensions needs sheetId; timeline partId. recipes: edits; sketch_geometry: entities/rank.",
+        Define("cad_inspect", "IDs/authors mm/rad; id=object ID, not documentId; model_contract id=type. drawings:sheet IDs; drawing_views/dimensions:sheetId; timeline:partId; recipes:inputs; sketch_geometry:entities/rank.",
             "{\"type\":\"object\",\"properties\":{\"area\":{\"type\":\"string\",\"enum\":[\"document\",\"parts\",\"bodies\",\"features\",\"layers\",\"materials\",\"selection\",\"sketches\",\"occurrences\",\"assembly\",\"drawings\",\"drawing_views\",\"drawing_dimensions\",\"parameters\",\"parameter_bindings\",\"parameter_targets\",\"datums\",\"datum_associations\",\"timeline\",\"recipes\",\"sketch_geometry\",\"model_contract\",\"assembly_patterns\"]},\"id\":{\"type\":\"string\"},\"partId\":{\"type\":\"string\"},\"sheetId\":{\"type\":\"string\"},\"offset\":{\"type\":\"integer\",\"minimum\":0,\"maximum\":100000},\"limit\":{\"type\":\"integer\",\"minimum\":1,\"maximum\":50}},\"required\":[\"area\"],\"additionalProperties\":false}"),
-        Define("cad_parameter", "Atomic mm/rad/scalar. Read state/parameter_targets; copy full IDs. set_expression/reference: omit id for new, keep for edit. References cannot drive; bind rejects existing driver. unbind needs binding id; delete guards users. Returns IDs/state.", CadAgentParameterTools.Schema),
-        Define("cad_history", "Exact documentId/stateId and inspected cursor (null at end); stale cursor rejects. Inspect timeline; suppression needs result revision. Reorder keeps IDs/dependencies/operands at history end. Rollback is session-only. Preview: changed=false, previewChanged/cursor.", CadAgentHistoryTools.Schema),
-        Define("cad_datum", "Create/edit planes, axes and points, part-local mm/rad. Read contract for full schemas; copy datums edit input. New omits id/revision; edits keep owner/type. inspect_sources returns native map slots. Exact revisions/full path; no caches. Delete guards dependents; detach retains values; no-op adds no history.", CadAgentDatumTools.Schema),
-        Define("cad_select", "Select one inspected occurrence/body. Exact documentId/stateId/full path; body also needs bodyId/revision. Reject stale or ambiguous identity.",
+        Define("cad_parameter", "Atomic mm/rad/scalar. Read state/parameter_targets; full IDs. New expression/reference:omit id; edits keep id. References cannot drive; bind rejects drivers; unbind:binding id; delete guards users. Returns IDs/state.", CadAgentParameterTools.Schema),
+        Define("cad_history", "Exact documentId/stateId+cursor(null=end); reject stale. timeline; suppress:result revision. Reorder:IDs/dependencies/operands at history end. Rollback:session only. Preview:changed=false, previewChanged/cursor.", CadAgentHistoryTools.Schema),
+        Define("cad_datum", "Planes/axes/points, part-local mm/rad. Read contract/datums edit input. New:omit id/revision; edit:keep owner/type. inspect_sources:native slots. Exact revisions/full path; no caches. Delete guards users; detach keeps values; no-op:no history.", CadAgentDatumTools.Schema),
+        Define("cad_select", "Exact inspected occurrence/body: documentId/stateId/full path; bodyId/revision for bodies; reject stale/ambiguous.",
             "{\"type\":\"object\",\"properties\":{\"documentId\":{\"type\":\"string\"},\"stateId\":{\"type\":\"string\"},\"path\":{\"type\":\"string\"},\"bodyId\":{\"type\":\"string\"},\"revision\":{\"type\":\"string\"}},\"required\":[\"documentId\",\"stateId\",\"path\"],\"additionalProperties\":false}"),
-        Define("cad_model", "Create/edit production recipes. Read model_contract by type, recipes for edits, sketch_geometry for entities. Exact state/revisions; part-local mm/rad. inspect_contours pages native chains; cad_datum inspect_sources gives seeds. Keep type/operands. set_assembly needs full path; new omits id. Explicit reselect/detach; returns created IDs.",CadAgentModelTools.Schema),
-        Define("cad_file", "Write save/export/report/pdf/template_export. Read contract; exact state/absolute path, explicit overwrite, template id. Receipt: bytes/hash/source/diagnostics. Non-save needs history end; PDF rejects stale references; no undo.", CadAgentFileTools.Schema),
-        Define("cad_drawing", "contract: only action/type, no IDs. inspect returns edits; inspect_sources native selections. documentId/stateId=document/snapshot; sheetId=sheet; id=typed object. Explicit reselect, no caches. PDF: cad_file.",CadAgentDrawingTools.Schema),
-        Define("cad_edit", "Exact document/state, mm. Contact/G2: read sketch_geometry contract, use id/revision. Offset: sketchId/revision, seeds (loop=1), distanceMm, join (default Miter); returns new IDs. No guessed topology.",
+        Define("cad_model", "Recipes:model_contract(type), recipes(edit), sketch_geometry(entities). Exact state/revisions; part-local mm/rad. inspect_contours:native chains; cad_datum inspect_sources:seeds. Keep type/operands. set_assembly:full path. New:omit id. Explicit reselect/detach; returns IDs.",CadAgentModelTools.Schema),
+        Define("cad_file", "save/export/report/pdf/template_export: read contract; exact documentId/stateId, absolute path, explicit overwrite, template id. Receipt:bytes/hash/source/diagnostics. Non-save:history end. PDF rejects stale references; no undo. Report actual path/hash; never claim a rejected or failed file write succeeded.", CadAgentFileTools.Schema),
+        Define("cad_drawing", "contract: only action/type, no IDs. Else latest cad_status.documentId/stateId (inspect_sources too). inspect:type+documentId+stateId. Owner IDs separate; native, no caches. PDF:cad_file.",CadAgentDrawingTools.Schema),
+        Define("cad_edit", "Exact document/state, mm. Contact/G2:sketch_geometry contract, id/revision. Offset:sketchId/revision, seeds(loop=1), distanceMm, join(default Miter). Returns IDs; no guessed topology.",
             "{\"type\":\"object\",\"properties\":{\"action\":{\"type\":\"string\",\"enum\":[\"create_box\",\"create_cylinder\",\"create_sketch_rectangle\",\"rename_sketch\",\"set_sketch_contact\",\"delete_sketch_contact\",\"set_sketch_curvature\",\"delete_sketch_curvature\",\"set_sketch_finite_contact\",\"delete_sketch_finite_contact\",\"offset_sketch_loop\",\"offset_sketch_regions\",\"reselect_region_sources\",\"fix_assembly_instance\",\"set_assembly_constraint_enabled\",\"set_assembly_distance\",\"create_drawing_sheet\",\"rename_drawing_sheet\",\"add_drawing_view\"]},\"documentId\":{\"type\":\"string\"},\"stateId\":{\"type\":\"string\"},\"id\":{\"type\":\"string\"},\"revision\":{\"type\":\"string\"},\"sketchId\":{\"type\":\"string\"},\"sources\":{\"type\":\"array\",\"items\":{\"type\":\"array\",\"items\":{\"type\":\"string\",\"format\":\"uuid\"},\"minItems\":1,\"maxItems\":4096},\"minItems\":1,\"maxItems\":64},\"seeds\":{\"type\":\"array\",\"items\":{\"type\":\"string\"},\"minItems\":1,\"maxItems\":256},\"join\":{\"type\":\"string\",\"enum\":[\"Miter\",\"Round\",\"Bevel\"]},\"constraintId\":{\"type\":\"string\"},\"curveA\":{\"type\":\"string\"},\"curveB\":{\"type\":\"string\"},\"parameterA\":{\"type\":\"number\"},\"parameterB\":{\"type\":\"number\"},\"parameterMode\":{\"type\":\"string\",\"enum\":[\"Fixed\",\"SolveA\",\"SolveB\",\"SolveBoth\"]},\"seedA\":{\"type\":\"number\"},\"lowerA\":{\"type\":\"number\"},\"upperA\":{\"type\":\"number\"},\"seedB\":{\"type\":\"number\"},\"lowerB\":{\"type\":\"number\"},\"upperB\":{\"type\":\"number\"},\"direction\":{\"type\":\"string\",\"enum\":[\"SameDirection\",\"OppositeDirection\"]},\"continuity\":{\"type\":\"string\",\"enum\":[\"G1\",\"G2\"]},\"branch\":{\"type\":\"string\",\"enum\":[\"LineLeft\",\"LineRight\",\"External\",\"AContainsB\",\"BContainsA\"]},\"name\":{\"type\":\"string\"},\"partId\":{\"type\":\"string\"},\"layerId\":{\"type\":\"string\"},\"materialId\":{\"type\":\"string\"},\"path\":{\"type\":\"string\"},\"sheetId\":{\"type\":\"string\"},\"kind\":{\"type\":\"string\",\"enum\":[\"Front\",\"Top\",\"Right\",\"Isometric\"]},\"enabled\":{\"type\":\"boolean\"},\"distanceMm\":{\"type\":\"number\"},\"x\":{\"type\":\"number\"},\"y\":{\"type\":\"number\"},\"z\":{\"type\":\"number\"},\"width\":{\"type\":\"number\"},\"depth\":{\"type\":\"number\"},\"radius\":{\"type\":\"number\"},\"height\":{\"type\":\"number\"},\"scale\":{\"type\":\"number\"},\"centerX\":{\"type\":\"number\"},\"centerY\":{\"type\":\"number\"}},\"required\":[\"action\",\"documentId\",\"stateId\"],\"additionalProperties\":false}")
     ];
+
+    // Optional authoring keeps the original default catalog and its context contract.
+    private static readonly AiToolDefinition MaterialDefinition = Define("cad_material",
+        "Inspect/set complete material profiles and owned texture descriptors. Read contract; exact document/state. assign also needs body/revision. Imported styles require explicit override; pixel imports never persist paths.", CadMaterialAuthoring.Schema);
 
     public CadAgentToolset(ICadCommandLineService commands, CadDocumentViewModel? document, CadWorkspaceAuthoring? workspace = null)
     {
@@ -42,7 +46,8 @@ internal sealed class CadAgentToolset : IAgentToolset
     }
 
     public IReadOnlyList<AiToolDefinition> ToolDefinitions => Definitions;
-    public IReadOnlyList<AiToolDefinition> SelectTools(string prompt, bool aggressive = false) => Definitions
+    public IReadOnlyList<AiToolDefinition> SelectTools(string prompt, bool aggressive = false) =>
+        (Priority(MaterialDefinition.Name, prompt) == 0 ? Definitions.Append(MaterialDefinition) : Definitions)
         .OrderBy(tool => Priority(tool.Name, prompt))
         .ThenBy(tool => tool.Parameters.GetRawText().Length + tool.Description.Length).ToArray();
 
@@ -52,6 +57,7 @@ internal sealed class CadAgentToolset : IAgentToolset
         string[] hints = name switch
         {
             "cad_workspace" => ["新建文档", "打开文件", "切换文档", "激活文档", "workspace", "open document", "new document", "activate document"],
+            "cad_material" => ["材质", "纹理", "金属度", "粗糙度", "material", "texture", "metallic", "roughness", "PBR", "マテリアル", "テクスチャ"],
             "cad_file" => ["保存", "导出", "报告", "save", "export", "report"],
             "cad_drawing" => ["工程图", "图纸", "剖切", "局部视图", "尺寸", "公差", "孔表", "drawing", "dimension", "tolerance", "hatching", "balloon"],
             "cad_datum" => ["基准", "datum"], "cad_parameter" => ["参数", "表达式", "parameter", "expression"],
@@ -99,6 +105,8 @@ internal sealed class CadAgentToolset : IAgentToolset
         }
         if (call.Name is "cad_inspect" or "cad_select" or "cad_edit")
             return await CadAgentDocumentTools.ExecuteAsync(call, document, cancellationToken);
+        if (call.Name == "cad_material")
+            return await CadMaterialAuthoring.ExecuteAsync(call, document, cancellationToken);
         if (call.Name == "cad_parameter")
             return await CadAgentParameterTools.ExecuteAsync(call, document, cancellationToken);
         if (call.Name == "cad_history")

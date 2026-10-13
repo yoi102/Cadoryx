@@ -1,0 +1,89 @@
+{
+  "recordedAt": "2026-10-13T07:52:17.008487+00:00",
+  "state": "PRODUCTION_HISTORY_EXPLICIT_NULL_AND_STALE_READ_ONLY_RECOVERY_261_BOTH_PASS",
+  "sources": [
+    {
+      "path": "Cadoryx.ViewModels/Toolboxes/CadAgentHistoryTools.cs",
+      "sha256": "DE478BD2FE180B84784A29B404801BEAFCF2121BDD3B9C5A2E47413A22E9A353"
+    },
+    {
+      "path": "Cadoryx.ViewModels/Toolboxes/CadAuthoringInspection.cs",
+      "sha256": "EE2EAC47FFE329EC11722A9A7490D193FBB07330D5314A95D17630431652568A"
+    },
+    {
+      "path": "Cadoryx.Tests/HistoryCursorFeedbackTests.cs",
+      "sha256": "D33C090ACC8CCFD5C1A2B4E6CC21D5E2E0EF13E7307DBD368101545B7FD68FAA"
+    }
+  ],
+  "configurations": [
+    {
+      "configuration": "Release",
+      "total": 261,
+      "passed": 261,
+      "failed": 0,
+      "skipped": 0,
+      "trx": {
+        "path": "capability-evidence/diagnostics/f5-history-stale-recovery/release-261.trx",
+        "sha256": "000BD27456EBC129291B51EE8C11F72538AE3618E9627BD7D047188995827629"
+      },
+      "buildAndRuntimeLog": {
+        "path": "capability-evidence/diagnostics/f5-history-stale-recovery/f5-history-stale-recovery-release-3.log",
+        "sha256": "3C1F73F22B22845C7113011F736B6EA693BBB9FFB5C33C933F6204425F7BCF73"
+      },
+      "actualNativeModuleObservationCaptured": false
+    },
+    {
+      "configuration": "Debug",
+      "total": 261,
+      "passed": 261,
+      "failed": 0,
+      "skipped": 0,
+      "trx": {
+        "path": "capability-evidence/diagnostics/f5-history-stale-recovery/debug-261.trx",
+        "sha256": "485906F26DC0D2234A75AF77F2626867A2927F7B7F82A6C8AA54CEBDF62F873F"
+      },
+      "buildAndRuntimeLog": {
+        "path": "capability-evidence/diagnostics/f5-history-stale-recovery/f5-history-stale-recovery-debug-3.log",
+        "sha256": "CCDD58C4E89F7169F72D19F3F0DB7A4BD5EBA0793423CFA68732AED3C42B7FAA"
+      },
+      "actualNativeModuleObservationCaptured": false
+    }
+  ],
+  "initialBuildFailure": {
+    "path": "capability-evidence/diagnostics/f5-history-stale-recovery/f5-history-stale-recovery-release-1.log",
+    "sha256": "83180CC2A3BF1E16566837B32E47BE020504912579A464A25BB2E797C575B022"
+  },
+  "initialNative49": {
+    "trx": {
+      "path": "capability-evidence/diagnostics/f5-history-stale-recovery/history-recovery-release.trx",
+      "sha256": "63A2C6FA78B503F5A3E458DDB9C06094B45DD61674724C477159EFCF7C610291"
+    },
+    "passed": 45,
+    "failed": 4,
+    "failures": [
+      {
+        "name": "Cadoryx.Tests.HistoryCursorFeedbackTests.StaleHistoryReceiptProvidesAReadOnlyExactCursorRecoveryWithoutApplyingTheEdit(scenario: \"invented-cursor-at-end\")",
+        "error": "System.Collections.Generic.KeyNotFoundException : The given key was not present in the dictionary."
+      },
+      {
+        "name": "Cadoryx.Tests.HistoryCursorFeedbackTests.StaleHistoryReceiptProvidesAReadOnlyExactCursorRecoveryWithoutApplyingTheEdit(scenario: \"changed-author-state\")",
+        "error": "System.Collections.Generic.KeyNotFoundException : The given key was not present in the dictionary."
+      },
+      {
+        "name": "Cadoryx.Tests.HistoryCursorFeedbackTests.StaleHistoryReceiptProvidesAReadOnlyExactCursorRecoveryWithoutApplyingTheEdit(scenario: \"changed-preview-position\")",
+        "error": "System.InvalidOperationException : Sequence contains more than one element"
+      },
+      {
+        "name": "Cadoryx.Tests.HistoryCursorFeedbackTests.StaleHistoryReceiptProvidesAReadOnlyExactCursorRecoveryWithoutApplyingTheEdit(scenario: \"foreign-document\")",
+        "error": "System.Collections.Generic.KeyNotFoundException : The given key was not present in the dictionary."
+      }
+    ]
+  },
+  "initialFailuresExplanation": "Three recipes inspections omitted explicit null cursor under WhenWritingNull; one fixture requested Single after adding a second feature. Added a fixture inspection wrapper and captured the part before adding the second feature; original assertions remained.",
+  "realProviderFailuresRetained": "capability-evidence/diagnostics/af1075-public85/provider-runtime-verification.json",
+  "modelWorkflowRepairProven": false,
+  "guardsAutoReboundOrRelaxed": false,
+  "schemaOrCharacterOrTokenOrToolBudgetsChanged": false,
+  "fullAFComplete": false,
+  "cleanup": false
+}

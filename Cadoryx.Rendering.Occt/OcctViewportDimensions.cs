@@ -33,5 +33,10 @@ public sealed partial class OcctViewport
         foreach(var (id,d) in dimensions)if(!staged.TryGetValue(id,out var next)||!ReferenceEquals(d.Native,next.Native))d.Native.Dispose();
         dimensions.Clear();foreach(var pair in staged)dimensions.Add(pair.Key,pair.Value);dimensionFormat=format;
     }
-    private void ClearDimensions(){foreach(var d in dimensions.Values)d.Native.Dispose();dimensions.Clear();dimensionFormat=null;}
+    private void ClearDimensions()
+    {
+        Exception? failure=null;
+        foreach(var d in dimensions.Values)DisposeOwnedResource(d.Native,ref failure);
+        dimensions.Clear();dimensionFormat=null;ThrowCleanupFailure(failure);
+    }
 }

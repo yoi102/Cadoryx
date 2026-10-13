@@ -3312,4 +3312,55 @@
   <data name="RegionReselectPreviewOutdated" xml:space="preserve"><value>对应已改变。图中仍为上一次预览，请重新预览后再应用。</value></data>
   <data name="RegionReselectSlot" xml:space="preserve"><value>槽位</value></data>
   <data name="AiEmptyResponseRetry" xml:space="preserve"><value>模型未返回文字或工具调用，正在原轮数限制内重试一次。</value></data>
+  <data name="MaterialEnableAppearance" xml:space="preserve"><value>使用材质外观</value></data>
+  <data name="MaterialOverrideSource" xml:space="preserve"><value>覆盖导入模型的面样式</value></data>
+  <data name="MaterialSourceStylesHint" xml:space="preserve"><value>勾选后以此材质覆盖导入的面颜色和纹理。实例颜色覆盖优先。</value></data>
+  <data name="MaterialShading" xml:space="preserve"><value>着色方式</value></data>
+  <data name="MaterialOpacity" xml:space="preserve"><value>不透明度</value></data>
+  <data name="MaterialMetallic" xml:space="preserve"><value>金属度</value></data>
+  <data name="MaterialRoughness" xml:space="preserve"><value>粗糙度</value></data>
+  <data name="MaterialRefraction" xml:space="preserve"><value>折射率</value></data>
+  <data name="MaterialEmission" xml:space="preserve"><value>发光强度</value></data>
+  <data name="MaterialSeparateBack" xml:space="preserve"><value>单独设置背面材质</value></data>
+  <data name="MaterialBackFace" xml:space="preserve"><value>背面</value></data>
+  <data name="MaterialCulling" xml:space="preserve"><value>面剔除</value></data>
+  <data name="MaterialTransparency" xml:space="preserve"><value>透明模式</value></data>
+  <data name="MaterialAlphaCutoff" xml:space="preserve"><value>透明遮罩阈值</value></data>
+  <data name="MaterialTexture" xml:space="preserve"><value>颜色纹理</value></data>
+  <data name="MaterialNoTexture" xml:space="preserve"><value>无纹理</value></data>
+  <data name="MaterialImportTexture" xml:space="preserve"><value>导入纹理</value></data>
+  <data name="MaterialClearTexture" xml:space="preserve"><value>清除纹理</value></data>
+  <data name="MaterialTextureFilter" xml:space="preserve"><value>PNG 和 JPEG 图像|*.png;*.jpg;*.jpeg</value></data>
+  <data name="MaterialTextureTooLarge" xml:space="preserve"><value>图像超过支持的文件大小或像素上限。</value></data>
+  <data name="MaterialTextureUnsupported" xml:space="preserve"><value>请选择单张 PNG 或 JPEG 图像。</value></data>
+  <data name="MaterialTextureEditExpired" xml:space="preserve"><value>文档或所选材质已变化，请重新导入纹理。</value></data>
+  <data name="MaterialTextureMapping" xml:space="preserve"><value>纹理映射</value></data>
+  <data name="MaterialPlanarMapping" xml:space="preserve"><value>平面坐标</value></data>
+  <data name="MaterialMappingPlanesHint" xml:space="preserve"><value>S 和 T 在零件坐标中定义独立平面：X、Y、Z 系数和偏移 D。</value></data>
+  <data name="MaterialScaleS" xml:space="preserve"><value>S 缩放</value></data>
+  <data name="MaterialScaleT" xml:space="preserve"><value>T 缩放</value></data>
+  <data name="MaterialTranslationS" xml:space="preserve"><value>S 平移</value></data>
+  <data name="MaterialTranslationT" xml:space="preserve"><value>T 平移</value></data>
+  <data name="MaterialRotation" xml:space="preserve"><value>旋转角度</value></data>
+  <data name="MaterialRepeat" xml:space="preserve"><value>重复纹理</value></data>
+  <data name="MaterialSampling" xml:space="preserve"><value>采样方式</value></data>
+  <data name="MaterialAnisotropy" xml:space="preserve"><value>各向异性质量</value></data>
+  <data name="MaterialAutomatic" xml:space="preserve"><value>自动</value></data>
+  <data name="MaterialDoubleSided" xml:space="preserve"><value>双面</value></data>
+  <data name="MaterialCullBack" xml:space="preserve"><value>剔除背面</value></data>
+  <data name="MaterialCullFront" xml:space="preserve"><value>剔除正面</value></data>
+  <data name="MaterialOpaque" xml:space="preserve"><value>不透明</value></data>
+  <data name="MaterialMask" xml:space="preserve"><value>遮罩</value></data>
+  <data name="MaterialBlend" xml:space="preserve"><value>混合</value></data>
+  <data name="MaterialMaskBlend" xml:space="preserve"><value>遮罩与混合</value></data>
+  <data name="MaterialNearest" xml:space="preserve"><value>最近邻</value></data>
+  <data name="MaterialBilinear" xml:space="preserve"><value>双线性</value></data>
+  <data name="MaterialTrilinear" xml:space="preserve"><value>三线性</value></data>
+  <data name="MaterialAnisotropyOff" xml:space="preserve"><value>关闭</value></data>
+  <data name="MaterialAnisotropyFast" xml:space="preserve"><value>快速</value></data>
+  <data name="MaterialAnisotropyMiddle" xml:space="preserve"><value>中等</value></data>
+  <data name="MaterialAnisotropyQuality" xml:space="preserve"><value>高质量</value></data>
+  <data name="ViewportRecovering" xml:space="preserve"><value>正在恢复视图…</value></data>
+  <data name="ViewportRecoveryFailed" xml:space="preserve"><value>视图恢复失败。</value></data>
+  <data name="ViewportRecoveryDeadline" xml:space="preserve"><value>重建的视口未能在 30 秒内就绪。</value></data>
 </root>

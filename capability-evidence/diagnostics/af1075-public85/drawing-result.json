@@ -1,0 +1,25 @@
+{
+  "passed": false,
+  "scenario": "drawing",
+  "provider": "lmstudio",
+  "model": "prism-ml/bonsai-27b",
+  "endpoint": "http://127.0.0.1:15630/v1",
+  "transport": "HTTP",
+  "started": "2026-10-13T06:05:20.3868243+00:00",
+  "finished": "2026-10-13T06:07:38.3061951+00:00",
+  "failure": "Requested cad_drawing.create lacks an answer and successful production receipt.",
+  "turns": [
+    {
+      "turn": 1,
+      "elapsedMs": 43854,
+      "toolCalls": 8,
+      "stateId": "7c3a5f15-f0c2-4d0d-a655-d8749d1a947e",
+      "historyMessages": 18
+    }
+  ],
+  "actualProductionTools": true,
+  "assetsAfterClose": 0,
+  "outputs": [],
+  "scope": "Guided eight-turn synthetic workflow; template/control-frame/section/detail covered by local contracts and WPF, not this provider probe.",
+  "physicalPointer": "NOT RUN"
+}

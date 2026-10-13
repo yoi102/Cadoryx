@@ -40,9 +40,9 @@ public sealed partial class PlanarFaceEditingTests
     {
         await using var f=await Fixture.Create(bores:bores);var faces=f.SelectMany(s=>s.GetFaceSurfaceSnapshot().SurfaceType==SurfaceGeometryType.Cylinder);
         Assert.Equal(bores,faces.Length);var before=f.Session.Snapshot;string fingerprint=f.Fingerprint();
-        await f.Apply(new DefeatureRecipe(f.Source.Result,faces));var result=f.Edited;Assert.Equal(1800,result.Result.VolumeMm3,4);Assert.Null(result.TopologyHistory);
+        await f.Apply(new DefeatureRecipe(f.Source.Result,faces));var result=f.Edited;Assert.Equal(1800,result.Result.VolumeMm3,4);Assert.NotNull(result.TopologyHistory);
         using(var shape=OcctGeometryBridge.ReadShape(result.Result,f.Assets)){Assert.True(shape.GetValidationReport(true,true).IsValid);Assert.True(shape.GetSelfInterferenceReport().IsClear);Assert.Equal(1,shape.GetTopologySummary().UniqueCounts.SolidCount);}
-        Assert.Equal(fingerprint,f.Fingerprint());var trace=await f.Kernel.TraceExactAsync(f.Session.Snapshot,faces[0],result.Id,f.Assets);Assert.Equal(HistoryResolutionStatus.Unsupported,trace.Status);Assert.Null(trace.Target);
+        Assert.Equal(fingerprint,f.Fingerprint());var trace=await f.Kernel.TraceExactAsync(f.Session.Snapshot,faces[0],result.Id,f.Assets);Assert.Equal(HistoryResolutionStatus.Deleted,trace.Status);Assert.Null(trace.Target);
         var after=f.Session.Snapshot;await f.Session.UndoAsync();Assert.Same(before,f.Session.Snapshot);await f.Session.RedoAsync();Assert.Same(after,f.Session.Snapshot);
     }
     [Fact]public async Task BlindBoreRequiresWallAndFloorAsOneExplicitRemovalSet()

@@ -1,0 +1,15 @@
+{
+  "originalMatrixIndex": 0,
+  "exe": "C:/Users/yoiri/source/repos/Cadoryx/artifacts/af1074-public85-1/window-observer-revision3/bin/Release/net10.0-windows/win-x64/WindowHost.exe",
+  "pid": 9176,
+  "started": "2026-10-13T07:32:33.1419933+00:00",
+  "desktopInput": false,
+  "arguments": [
+    "--d6-newbody-ui-smoke",
+    "C:/Users/yoiri/source/repos/Cadoryx/artifacts/af1074-public85-1/window-create-en-US-plane-positive-3",
+    "C:/Users/yoiri/source/repos/Cadoryx/artifacts/d6-window-fixtures-2/fixtures-1/plane-positive.cadoryx",
+    "en-US",
+    "confirm",
+    "create"
+  ]
+}

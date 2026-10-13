@@ -81,6 +81,54 @@ namespace Cadoryx.Lang.Strings {
         /// <summary>
         ///   查找类似 Add material 的本地化字符串。
         /// </summary>
+        public static string MaterialEnableAppearance => ResourceManager.GetString("MaterialEnableAppearance", resourceCulture)!;
+        public static string MaterialOverrideSource => ResourceManager.GetString("MaterialOverrideSource", resourceCulture)!;
+        public static string MaterialSourceStylesHint => ResourceManager.GetString("MaterialSourceStylesHint", resourceCulture)!;
+        public static string MaterialShading => ResourceManager.GetString("MaterialShading", resourceCulture)!;
+        public static string MaterialOpacity => ResourceManager.GetString("MaterialOpacity", resourceCulture)!;
+        public static string MaterialMetallic => ResourceManager.GetString("MaterialMetallic", resourceCulture)!;
+        public static string MaterialRoughness => ResourceManager.GetString("MaterialRoughness", resourceCulture)!;
+        public static string MaterialRefraction => ResourceManager.GetString("MaterialRefraction", resourceCulture)!;
+        public static string MaterialEmission => ResourceManager.GetString("MaterialEmission", resourceCulture)!;
+        public static string MaterialSeparateBack => ResourceManager.GetString("MaterialSeparateBack", resourceCulture)!;
+        public static string MaterialBackFace => ResourceManager.GetString("MaterialBackFace", resourceCulture)!;
+        public static string MaterialCulling => ResourceManager.GetString("MaterialCulling", resourceCulture)!;
+        public static string MaterialTransparency => ResourceManager.GetString("MaterialTransparency", resourceCulture)!;
+        public static string MaterialAlphaCutoff => ResourceManager.GetString("MaterialAlphaCutoff", resourceCulture)!;
+        public static string MaterialTexture => ResourceManager.GetString("MaterialTexture", resourceCulture)!;
+        public static string MaterialNoTexture => ResourceManager.GetString("MaterialNoTexture", resourceCulture)!;
+        public static string MaterialImportTexture => ResourceManager.GetString("MaterialImportTexture", resourceCulture)!;
+        public static string MaterialClearTexture => ResourceManager.GetString("MaterialClearTexture", resourceCulture)!;
+        public static string MaterialTextureFilter => ResourceManager.GetString("MaterialTextureFilter", resourceCulture)!;
+        public static string MaterialTextureTooLarge => ResourceManager.GetString("MaterialTextureTooLarge", resourceCulture)!;
+        public static string MaterialTextureUnsupported => ResourceManager.GetString("MaterialTextureUnsupported", resourceCulture)!;
+        public static string MaterialTextureEditExpired => ResourceManager.GetString("MaterialTextureEditExpired", resourceCulture)!;
+        public static string MaterialTextureMapping => ResourceManager.GetString("MaterialTextureMapping", resourceCulture)!;
+        public static string MaterialPlanarMapping => ResourceManager.GetString("MaterialPlanarMapping", resourceCulture)!;
+        public static string MaterialMappingPlanesHint => ResourceManager.GetString("MaterialMappingPlanesHint", resourceCulture)!;
+        public static string MaterialScaleS => ResourceManager.GetString("MaterialScaleS", resourceCulture)!;
+        public static string MaterialScaleT => ResourceManager.GetString("MaterialScaleT", resourceCulture)!;
+        public static string MaterialTranslationS => ResourceManager.GetString("MaterialTranslationS", resourceCulture)!;
+        public static string MaterialTranslationT => ResourceManager.GetString("MaterialTranslationT", resourceCulture)!;
+        public static string MaterialRotation => ResourceManager.GetString("MaterialRotation", resourceCulture)!;
+        public static string MaterialRepeat => ResourceManager.GetString("MaterialRepeat", resourceCulture)!;
+        public static string MaterialSampling => ResourceManager.GetString("MaterialSampling", resourceCulture)!;
+        public static string MaterialAnisotropy => ResourceManager.GetString("MaterialAnisotropy", resourceCulture)!;
+        public static string MaterialAutomatic => ResourceManager.GetString("MaterialAutomatic", resourceCulture)!;
+        public static string MaterialDoubleSided => ResourceManager.GetString("MaterialDoubleSided", resourceCulture)!;
+        public static string MaterialCullBack => ResourceManager.GetString("MaterialCullBack", resourceCulture)!;
+        public static string MaterialCullFront => ResourceManager.GetString("MaterialCullFront", resourceCulture)!;
+        public static string MaterialOpaque => ResourceManager.GetString("MaterialOpaque", resourceCulture)!;
+        public static string MaterialMask => ResourceManager.GetString("MaterialMask", resourceCulture)!;
+        public static string MaterialBlend => ResourceManager.GetString("MaterialBlend", resourceCulture)!;
+        public static string MaterialMaskBlend => ResourceManager.GetString("MaterialMaskBlend", resourceCulture)!;
+        public static string MaterialNearest => ResourceManager.GetString("MaterialNearest", resourceCulture)!;
+        public static string MaterialBilinear => ResourceManager.GetString("MaterialBilinear", resourceCulture)!;
+        public static string MaterialTrilinear => ResourceManager.GetString("MaterialTrilinear", resourceCulture)!;
+        public static string MaterialAnisotropyOff => ResourceManager.GetString("MaterialAnisotropyOff", resourceCulture)!;
+        public static string MaterialAnisotropyFast => ResourceManager.GetString("MaterialAnisotropyFast", resourceCulture)!;
+        public static string MaterialAnisotropyMiddle => ResourceManager.GetString("MaterialAnisotropyMiddle", resourceCulture)!;
+        public static string MaterialAnisotropyQuality => ResourceManager.GetString("MaterialAnisotropyQuality", resourceCulture)!;
         public static string AddMaterial {
             get {
                 return ResourceManager.GetString("AddMaterial", resourceCulture);

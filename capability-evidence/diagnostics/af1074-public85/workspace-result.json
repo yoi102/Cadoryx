@@ -1,0 +1,82 @@
+{
+  "passed": true,
+  "scenario": "workspace",
+  "provider": "lmstudio",
+  "model": "prism-ml/bonsai-27b",
+  "endpoint": "http://127.0.0.1:15630/v1",
+  "transport": "HTTP",
+  "start": "2026-10-13T04:41:00.3821725+00:00",
+  "finish": "2026-10-13T04:44:58.2469545+00:00",
+  "failure": null,
+  "turns": [
+    {
+      "turn": 1,
+      "elapsedMs": 12594,
+      "toolCalls": 2,
+      "activeSessionId": "f380f217-ba56-4900-ba37-efea103c330b",
+      "documents": 1,
+      "historyMessages": 6
+    },
+    {
+      "turn": 2,
+      "elapsedMs": 15759,
+      "toolCalls": 2,
+      "activeSessionId": "f380f217-ba56-4900-ba37-efea103c330b",
+      "documents": 1,
+      "historyMessages": 12
+    },
+    {
+      "turn": 3,
+      "elapsedMs": 34069,
+      "toolCalls": 4,
+      "activeSessionId": "f380f217-ba56-4900-ba37-efea103c330b",
+      "documents": 1,
+      "historyMessages": 22
+    },
+    {
+      "turn": 4,
+      "elapsedMs": 13967,
+      "toolCalls": 3,
+      "activeSessionId": "12dd3941-e375-4c94-8a98-6f2e701dcf3d",
+      "documents": 2,
+      "historyMessages": 30
+    },
+    {
+      "turn": 5,
+      "elapsedMs": 43154,
+      "toolCalls": 8,
+      "activeSessionId": "f380f217-ba56-4900-ba37-efea103c330b",
+      "documents": 2,
+      "historyMessages": 48
+    },
+    {
+      "turn": 6,
+      "elapsedMs": 48160,
+      "toolCalls": 9,
+      "activeSessionId": "f380f217-ba56-4900-ba37-efea103c330b",
+      "documents": 2,
+      "historyMessages": 69
+    },
+    {
+      "turn": 7,
+      "elapsedMs": 31116,
+      "toolCalls": 4,
+      "activeSessionId": "3bb169a4-9086-44a7-9c22-b3d15079e309",
+      "documents": 3,
+      "historyMessages": 79
+    },
+    {
+      "turn": 8,
+      "elapsedMs": 38975,
+      "toolCalls": 5,
+      "activeSessionId": "12dd3941-e375-4c94-8a98-6f2e701dcf3d",
+      "documents": 3,
+      "historyMessages": 91
+    }
+  ],
+  "actualProductionTools": true,
+  "assetsAfterClose": 0,
+  "savedSha256": "70814d8327adf763483a842f76ad1cf471761b0bcddac56262dec28c28f0a57e",
+  "externalDocuments": "Independent synthetic workspace only",
+  "physicalPointer": "NOT RUN"
+}

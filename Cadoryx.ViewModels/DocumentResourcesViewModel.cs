@@ -13,6 +13,10 @@ public interface IDocumentResourcesDialogService { Task ShowAsync(DocumentResour
 public partial class DocumentResourcesViewModel : ObservableObject, IDisposable
 {
     private readonly CadDocumentViewModel document;
+    private readonly IMaterialTextureImportService? textureImports;
+    private readonly CancellationTokenSource lifetime=new();
+    private bool disposed;
+    public MaterialAppearanceEditorViewModel MaterialAppearance {get;}=new();
     public string DocumentName => document.Session.Snapshot.Name;
     public ObservableCollection<PartDefinition> Parts {get;}=[];
     public ObservableCollection<CadLayer> Layers {get;}=[];
@@ -29,12 +33,12 @@ public partial class DocumentResourcesViewModel : ObservableObject, IDisposable
     [ObservableProperty] private double densityKgPerM3=7850;
     [ObservableProperty] private string status="";
     [ObservableProperty] private bool isBusy;
-    public bool CanEdit=>!IsBusy&&!document.IsReadOnly&&!document.IsClosingRequested&&!document.Session.IsClosing;
+    public bool CanEdit=>!disposed&&!IsBusy&&!document.IsDetached&&!document.IsReadOnly&&!document.IsClosingRequested&&!document.Session.IsClosing;
     public int LayerReferences=>SelectedLayer is {} layer?ResourceCommands.LayerReferences(document.Session.Snapshot,layer.Id):0;
     public int MaterialReferences=>SelectedMaterial is {} material?ResourceCommands.MaterialReferences(document.Session.Snapshot,material.Id):0;
-    public DocumentResourcesViewModel(CadDocumentViewModel document)
+    public DocumentResourcesViewModel(CadDocumentViewModel document,IMaterialTextureImportService? textureImports=null)
     {
-        this.document=document;document.SceneChanged+=OnScene;document.PropertyChanged+=OnDocumentProperty;Refresh();
+        this.document=document;this.textureImports=textureImports;document.SceneChanged+=OnScene;document.PropertyChanged+=OnDocumentProperty;Refresh();
     }
     private void OnScene(object? sender,EventArgs e)=>Refresh();
     private void OnDocumentProperty(object? sender,System.ComponentModel.PropertyChangedEventArgs e)
@@ -44,7 +48,7 @@ public partial class DocumentResourcesViewModel : ObservableObject, IDisposable
     partial void OnSelectedLayerChanged(CadLayer? value)
     {LayerName=value?.Name??"";LayerArgb=value?.Argb??0xFF86ACC5;LayerVisible=value?.IsVisible??true;LayerLocked=value?.IsLocked??false;OnPropertyChanged(nameof(LayerReferences));}
     partial void OnSelectedMaterialChanged(CadMaterial? value)
-    {MaterialName=value?.Name??"";DensityKgPerM3=value is null?7850:value.DensityKgPerMm3*1e9;OnPropertyChanged(nameof(MaterialReferences));}
+    {MaterialName=value?.Name??"";DensityKgPerM3=value is null?7850:value.DensityKgPerMm3*1e9;MaterialAppearance.Load(value?.Appearance);OnPropertyChanged(nameof(MaterialReferences));}
     private void Refresh()
     {
         var part=SelectedPart?.Id;var layer=SelectedLayer?.Id;var material=SelectedMaterial?.Id;
@@ -83,12 +87,46 @@ public partial class DocumentResourcesViewModel : ObservableObject, IDisposable
     {if(SelectedLayer is {} layer)await RunAsync(ResourceCommands.DeleteLayer(layer.Id));}
     [RelayCommand] private async Task AddMaterialAsync()
     {
-        var value=new CadMaterial(MaterialId.New(),MaterialName.Trim(),DensityKgPerM3/1e9);
-        if(await RunAsync(ResourceCommands.AddMaterial(value)))SelectedMaterial=Materials.First(m=>m.Id==value.Id);
+        try
+        {
+            var value=new CadMaterial(MaterialId.New(),MaterialName.Trim(),DensityKgPerM3/1e9,MaterialAppearance.Build());
+            var command=value.Appearance is not null&&MaterialAppearance.PendingTexture is {} texture?
+                (ICadDocumentCommand)new SetMaterialTextureCommand(value,texture.Width,texture.Height,texture.CopyPixels(),add:true):ResourceCommands.AddMaterial(value);
+            if(await RunAsync(command))SelectedMaterial=Materials.First(m=>m.Id==value.Id);
+        }
+        catch(Exception ex){Status=ex.Message;document.Report(ex);}
     }
     [RelayCommand] private async Task ApplyMaterialAsync()
-    {if(SelectedMaterial is {} material)await RunAsync(ResourceCommands.UpdateMaterial(new(material.Id,MaterialName.Trim(),DensityKgPerM3/1e9)));}
+    {
+        if(SelectedMaterial is not {} material)return;
+        try
+        {
+            var value=new CadMaterial(material.Id,MaterialName.Trim(),DensityKgPerM3/1e9,MaterialAppearance.Build());
+            var command=value.Appearance is not null&&MaterialAppearance.PendingTexture is {} texture?
+                (ICadDocumentCommand)new SetMaterialTextureCommand(value,texture.Width,texture.Height,texture.CopyPixels()):ResourceCommands.UpdateMaterial(value);
+            await RunAsync(command);
+        }
+        catch(Exception ex){Status=ex.Message;document.Report(ex);}
+    }
+    [RelayCommand] private async Task ImportMaterialTextureAsync()
+    {
+        if(!CanEdit||textureImports is null)return;
+        var state=document.Session.Snapshot.StateId;var material=SelectedMaterial?.Id;IsBusy=true;
+        try
+        {
+            var texture=await textureImports.ImportAsync(lifetime.Token);
+            if(texture is null)return;
+            if(disposed||document.IsDetached||document.IsClosingRequested||document.Session.IsClosing)return;
+            if(document.IsReadOnly||document.Session.Snapshot.StateId!=state||SelectedMaterial?.Id!=material)
+                throw new CadValidationException(Strings.MaterialTextureEditExpired);
+            MaterialAppearance.Import(texture);
+        }
+        catch(OperationCanceledException) when(disposed||document.IsClosingRequested||document.Session.IsClosing){}
+        catch(Exception ex){Status=ex.Message;document.Report(ex);}
+        finally{IsBusy=false;}
+    }
+    [RelayCommand] private void ClearMaterialTexture(){if(CanEdit)MaterialAppearance.ClearTexture();}
     [RelayCommand] private async Task DeleteMaterialAsync()
     {if(SelectedMaterial is {} material)await RunAsync(ResourceCommands.DeleteMaterial(material.Id));}
-    public void Dispose(){document.SceneChanged-=OnScene;document.PropertyChanged-=OnDocumentProperty;}
+    public void Dispose(){if(disposed)return;disposed=true;lifetime.Cancel();lifetime.Dispose();document.SceneChanged-=OnScene;document.PropertyChanged-=OnDocumentProperty;OnPropertyChanged(nameof(CanEdit));}
 }

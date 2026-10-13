@@ -1,0 +1,64 @@
+{
+  "recordedAt": "2026-10-13T07:58:19.347718+00:00",
+  "state": "AF1076_DEVELOPMENT_ROOT_INTEGRATED_BUILD_BOTH_DISCOVER6652_PUBLIC_PAYLOAD_MATCH",
+  "integration": {
+    "path": "capability-evidence/diagnostics/af1076-public85/development-source-integration.json",
+    "sha256": "A5B590470064C9216DA0F4EC885F1BE2FD172D608017B4EF081878198FD6A2A3"
+  },
+  "sourceInputsMatchFrozenCandidate": 1189,
+  "buildStages": [
+    {
+      "exitCode": 0,
+      "stage": "locked-restore"
+    },
+    {
+      "configuration": "Release",
+      "exitCode": 0,
+      "stage": "solution-build"
+    },
+    {
+      "configuration": "Debug",
+      "exitCode": 0,
+      "stage": "solution-build"
+    }
+  ],
+  "discoveryPerConfiguration": 6652,
+  "testInventoriesMatchTestedCandidate": true,
+  "payloadChecks": [
+    {
+      "configuration": "Release",
+      "output": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\Cadoryx.Tests\\bin\\Release\\net10.0",
+      "managedSDK13MatchPublicParent": true,
+      "native62DiskMatchPublicParent": true
+    },
+    {
+      "configuration": "Release",
+      "output": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\Cadoryx.wpf\\bin\\Release\\net10.0-windows\\win-x64",
+      "managedSDK13MatchPublicParent": true,
+      "native62DiskMatchPublicParent": true
+    },
+    {
+      "configuration": "Debug",
+      "output": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\Cadoryx.Tests\\bin\\Debug\\net10.0",
+      "managedSDK13MatchPublicParent": true,
+      "native62DiskMatchPublicParent": true
+    },
+    {
+      "configuration": "Debug",
+      "output": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\Cadoryx.wpf\\bin\\Debug\\net10.0-windows\\win-x64",
+      "managedSDK13MatchPublicParent": true,
+      "native62DiskMatchPublicParent": true
+    }
+  ],
+  "productionRootNativeTestsAfterIntegrationRun": false,
+  "candidateFocusedEvidence": {
+    "path": "capability-evidence/diagnostics/af1076-public85/inventory-and-wire-verification.json",
+    "sha256": "9B25E1BD1DE5F9225332C09A42286D99EF1040CA78FBE0BDA41611AA156728CF"
+  },
+  "developmentSourceApplied": true,
+  "full6652Executed": false,
+  "productAcceptanceComplete": false,
+  "AFComplete": false,
+  "cleanup": false,
+  "G": "USER_DEFERRED"
+}

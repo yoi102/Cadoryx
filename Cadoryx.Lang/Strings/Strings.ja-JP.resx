@@ -3312,4 +3312,55 @@
   <data name="RegionReselectPreviewOutdated" xml:space="preserve"><value>対応が変更されました。図は前回のプレビューです。再度プレビューしてから適用してください。</value></data>
   <data name="RegionReselectSlot" xml:space="preserve"><value>順番</value></data>
   <data name="AiEmptyResponseRetry" xml:space="preserve"><value>モデルがテキストもツール呼び出しも返さなかったため、現在の回数制限内で一度だけ再試行します。</value></data>
+  <data name="MaterialEnableAppearance" xml:space="preserve"><value>材質の外観を使用</value></data>
+  <data name="MaterialOverrideSource" xml:space="preserve"><value>読み込んだ面のスタイルを上書き</value></data>
+  <data name="MaterialSourceStylesHint" xml:space="preserve"><value>この設定を有効にすると、読み込んだ面の色とテクスチャを置き換えます。インスタンスの色が優先されます。</value></data>
+  <data name="MaterialShading" xml:space="preserve"><value>シェーディング</value></data>
+  <data name="MaterialOpacity" xml:space="preserve"><value>不透明度</value></data>
+  <data name="MaterialMetallic" xml:space="preserve"><value>金属度</value></data>
+  <data name="MaterialRoughness" xml:space="preserve"><value>粗さ</value></data>
+  <data name="MaterialRefraction" xml:space="preserve"><value>屈折率</value></data>
+  <data name="MaterialEmission" xml:space="preserve"><value>発光強度</value></data>
+  <data name="MaterialSeparateBack" xml:space="preserve"><value>裏面の材質を個別に設定</value></data>
+  <data name="MaterialBackFace" xml:space="preserve"><value>裏面</value></data>
+  <data name="MaterialCulling" xml:space="preserve"><value>面のカリング</value></data>
+  <data name="MaterialTransparency" xml:space="preserve"><value>透明モード</value></data>
+  <data name="MaterialAlphaCutoff" xml:space="preserve"><value>マスクのしきい値</value></data>
+  <data name="MaterialTexture" xml:space="preserve"><value>カラーテクスチャ</value></data>
+  <data name="MaterialNoTexture" xml:space="preserve"><value>テクスチャなし</value></data>
+  <data name="MaterialImportTexture" xml:space="preserve"><value>テクスチャを読み込む</value></data>
+  <data name="MaterialClearTexture" xml:space="preserve"><value>テクスチャを解除</value></data>
+  <data name="MaterialTextureFilter" xml:space="preserve"><value>PNG と JPEG 画像|*.png;*.jpg;*.jpeg</value></data>
+  <data name="MaterialTextureTooLarge" xml:space="preserve"><value>画像が対応するファイルサイズまたは画素数の上限を超えています。</value></data>
+  <data name="MaterialTextureUnsupported" xml:space="preserve"><value>単一の PNG または JPEG 画像を選択してください。</value></data>
+  <data name="MaterialTextureEditExpired" xml:space="preserve"><value>ドキュメントまたは選択した材質が変更されました。テクスチャを再度読み込んでください。</value></data>
+  <data name="MaterialTextureMapping" xml:space="preserve"><value>テクスチャマッピング</value></data>
+  <data name="MaterialPlanarMapping" xml:space="preserve"><value>平面座標</value></data>
+  <data name="MaterialMappingPlanesHint" xml:space="preserve"><value>S と T は部品座標の独立した平面を定義します。X、Y、Z の係数とオフセット D を指定します。</value></data>
+  <data name="MaterialScaleS" xml:space="preserve"><value>S の拡大率</value></data>
+  <data name="MaterialScaleT" xml:space="preserve"><value>T の拡大率</value></data>
+  <data name="MaterialTranslationS" xml:space="preserve"><value>S の移動量</value></data>
+  <data name="MaterialTranslationT" xml:space="preserve"><value>T の移動量</value></data>
+  <data name="MaterialRotation" xml:space="preserve"><value>回転角度</value></data>
+  <data name="MaterialRepeat" xml:space="preserve"><value>テクスチャを繰り返す</value></data>
+  <data name="MaterialSampling" xml:space="preserve"><value>サンプリング</value></data>
+  <data name="MaterialAnisotropy" xml:space="preserve"><value>異方性フィルタの品質</value></data>
+  <data name="MaterialAutomatic" xml:space="preserve"><value>自動</value></data>
+  <data name="MaterialDoubleSided" xml:space="preserve"><value>両面</value></data>
+  <data name="MaterialCullBack" xml:space="preserve"><value>裏面をカリング</value></data>
+  <data name="MaterialCullFront" xml:space="preserve"><value>表面をカリング</value></data>
+  <data name="MaterialOpaque" xml:space="preserve"><value>不透明</value></data>
+  <data name="MaterialMask" xml:space="preserve"><value>マスク</value></data>
+  <data name="MaterialBlend" xml:space="preserve"><value>ブレンド</value></data>
+  <data name="MaterialMaskBlend" xml:space="preserve"><value>マスクとブレンド</value></data>
+  <data name="MaterialNearest" xml:space="preserve"><value>最近傍</value></data>
+  <data name="MaterialBilinear" xml:space="preserve"><value>バイリニア</value></data>
+  <data name="MaterialTrilinear" xml:space="preserve"><value>トライリニア</value></data>
+  <data name="MaterialAnisotropyOff" xml:space="preserve"><value>オフ</value></data>
+  <data name="MaterialAnisotropyFast" xml:space="preserve"><value>高速</value></data>
+  <data name="MaterialAnisotropyMiddle" xml:space="preserve"><value>中</value></data>
+  <data name="MaterialAnisotropyQuality" xml:space="preserve"><value>高品質</value></data>
+  <data name="ViewportRecovering" xml:space="preserve"><value>ビューを復旧しています…</value></data>
+  <data name="ViewportRecoveryFailed" xml:space="preserve"><value>ビューの復旧に失敗しました。</value></data>
+  <data name="ViewportRecoveryDeadline" xml:space="preserve"><value>再作成したビューポートは 30 秒以内に準備完了になりませんでした。</value></data>
 </root>

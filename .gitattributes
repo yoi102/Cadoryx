@@ -16,6 +16,15 @@ capability-evidence/AF_PENDING_D6_*.json -text whitespace=cr-at-eol
 capability-evidence/AF_PENDING_D6_*.diff text eol=lf whitespace=-blank-at-eol
 capability-evidence/diagnostics/d6-finite-newbody/* -text whitespace=cr-at-eol
 capability-evidence/diagnostics/f5-default-pagination/** -text whitespace=cr-at-eol
+capability-evidence/diagnostics/af1074-public85/** -text whitespace=cr-at-eol
+capability-evidence/diagnostics/af1075-public85/** -text whitespace=cr-at-eol
+capability-evidence/diagnostics/f5-complete-source-context/** -text whitespace=cr-at-eol
+capability-evidence/diagnostics/f5-history-stale-recovery/** -text whitespace=cr-at-eol
+capability-evidence/diagnostics/af1076-public85/** -text whitespace=cr-at-eol
+capability-evidence/diagnostics/exact-step-mapped-scale/** -text whitespace=cr-at-eol
+Cadoryx.Tests/Fixtures/AgentContext/** -text whitespace=cr-at-eol
+# Preserve the observer source bytes tied to the actual window attempt.
+tools/CadFiniteSurfaceWindowProbe/WindowHost.cs -text whitespace=cr-at-eol,-blank-at-eof
 capability-evidence/AF_PENDING_D6_*.patch text eol=lf whitespace=-blank-at-eol,-blank-at-eof
 capability-evidence/AF_PENDING_F5_SOURCE1070_*.json -text whitespace=cr-at-eol
 capability-evidence/AF_PENDING_SDK31_EXACT_KNOT_*.json -text whitespace=cr-at-eol

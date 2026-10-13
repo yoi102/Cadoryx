@@ -1,0 +1,25 @@
+{
+  "developmentSourceApplied": true,
+  "stages": [
+    {
+      "exitCode": 0,
+      "stage": "locked-restore"
+    },
+    {
+      "configuration": "Release",
+      "exitCode": 0,
+      "stage": "solution-build"
+    },
+    {
+      "configuration": "Debug",
+      "exitCode": 0,
+      "stage": "solution-build"
+    }
+  ],
+  "G": "USER_DEFERRED",
+  "completed": "2026-10-13T07:56:36.2320367+00:00",
+  "AF": "ACTIVE",
+  "productAcceptanceComplete": false,
+  "started": "2026-10-13T07:55:57.7889275+00:00",
+  "nativeTestsRun": false
+}

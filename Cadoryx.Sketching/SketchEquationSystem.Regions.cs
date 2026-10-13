@@ -18,6 +18,7 @@ internal sealed partial class SketchEquationSystem
         regionToken.ThrowIfCancellationRequested();
         if(evaluatedCoordinates is not null&&x.AsSpan().SequenceEqual(evaluatedCoordinates))return evaluatedSketch!;
         var result=regionChart is null?regionContext.Refresh(Apply(x),regionToken,verify:false):
+            regionChart.IsLivePointCoupled?regionContext.RefreshForDerivedLocalEquations(Apply(x),regionChart.GroupIds,regionChart.DeriveLocalAuthors,regionToken):
             regionContext.RefreshForLocalEquations(Apply(x),regionChart.GroupIds,regionToken);
         evaluatedCoordinates=(double[])x.Clone();evaluatedSketch=result;return result;
     }

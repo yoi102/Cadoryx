@@ -35,8 +35,24 @@ public sealed class SketchRegionEvaluationContext
         return RefreshCore(sketch,cancellationToken,false,false,null,deferredGroups);
     }
 
+    /// <summary>Equation-only live-expression point candidate. The caller owns a
+    /// complete proof for each deferred full natural author. Derived values may
+    /// replace only the declared expression geometry table, never solver points,
+    /// author IDs, connections or persisted region metadata. Do not publish this
+    /// candidate; full Refresh and ValidateSolved remain mandatory at commit.</summary>
+    public CadSketch RefreshForDerivedLocalEquations(CadSketch sketch,IReadOnlySet<Guid> deferredGroups,
+        Func<CadSketch,Guid,ImmutableDictionary<SketchEntityId,SketchCurveExpressionGeometry>> derive,CancellationToken token=default)
+    {
+        ArgumentNullException.ThrowIfNull(deferredGroups);ArgumentNullException.ThrowIfNull(derive);
+        foreach(var id in deferredGroups)
+            if(sketch.RegionOffsets.SingleOrDefault(g=>g.Id==id) is not {IsFrozen:false})
+                throw new CadValidationException("Derived local equations need their exact active natural groups.");
+        return RefreshCore(sketch,token,false,false,null,deferredGroups,derive);
+    }
+
     private CadSketch RefreshCore(CadSketch sketch,CancellationToken cancellationToken,bool synchronizeGeneratedPoints,bool verify,
-        IReadOnlyDictionary<Guid,double>? distanceOverrides,IReadOnlySet<Guid>? deferredGroups)
+        IReadOnlyDictionary<Guid,double>? distanceOverrides,IReadOnlySet<Guid>? deferredGroups,
+        Func<CadSketch,Guid,ImmutableDictionary<SketchEntityId,SketchCurveExpressionGeometry>>? derive=null)
     {
         cancellationToken.ThrowIfCancellationRequested();
         if(distanceOverrides is not null)
@@ -63,7 +79,19 @@ public sealed class SketchRegionEvaluationContext
                 if(synchronizeGeneratedPoints)candidate=Synchronize(candidate,OwnedCurves(candidate,original));
                 continue;
             }
-            if(deferredGroups?.Contains(original.Id)==true)continue;
+            if(deferredGroups?.Contains(original.Id)==true)
+            {
+                if(derive is not null)
+                {
+                    var values=derive(candidate,original.Id);
+                    var ownedOutputIds=original.Loops.SelectMany(l=>l.Outputs).Select(o=>o.Curve).ToHashSet();
+                    if(values.Count!=ownedOutputIds.Count||!ownedOutputIds.SetEquals(values.Keys))
+                        throw new CadValidationException("Derived equations must retain every exact owned output ID.");
+                    foreach(var value in values.Values)value.Validate();
+                    candidate=candidate with{ExpressionCurves=candidate.ExpressionCurves.Select(c=>values.TryGetValue(c.Id,out var geometry)?c with{Geometry=geometry}:c).ToImmutableArray()};
+                }
+                continue;
+            }
             var sources=original.Sources.Select(l=>l.Select(s=>
             {
                 var author=SketchExpressionEntities.Author(candidate,s.Entity);

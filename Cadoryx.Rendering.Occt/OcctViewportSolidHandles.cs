@@ -51,10 +51,11 @@ public sealed partial class OcctViewport
 
     private void ClearSolidHandles()
     {
-        foreach(var (_,shape,presentation) in solidHandles){presentation.Dispose();shape.Dispose();}
-        solidHandles.Clear();
-        solidHandleRecipe=null;
-        if(!disposed)viewer.Redraw();
+        Exception? failure=null;
+        foreach(var (_,shape,presentation) in solidHandles){DisposeOwnedResource(presentation,ref failure);DisposeOwnedResource(shape,ref failure);}
+        solidHandles.Clear();solidHandleRecipe=null;
+        if(!disposed)RunCleanup(viewer.Redraw,ref failure);
+        ThrowCleanupFailure(failure);
     }
     public void UpdateSolidHandlePositions(GeometryRecipe? recipe,RigidTransform3d occurrence)
     {

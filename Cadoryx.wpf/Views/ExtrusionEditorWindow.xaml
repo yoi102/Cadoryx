@@ -66,7 +66,7 @@
      <TextBlock Text="{I18N {x:Static r:LangKeys.ExtrusionSurfaceHint}}" TextWrapping="Wrap" Margin="0,4,0,8"/>
      <Button x:Name="LoadSurfacesButton" Content="{I18N {x:Static r:LangKeys.ExtrusionLoadFaces}}" Command="{Binding LoadFacesCommand}" HorizontalAlignment="Left"/>
      <TextBlock Text="{I18N {x:Static r:LangKeys.ExtrusionSurfaceSupport}}" Margin="0,8,0,4"/>
-     <ComboBox x:Name="SupportPicker" ItemsSource="{Binding Supports}" SelectedItem="{Binding SelectedSupport}" DisplayMemberPath="Label" Margin="0,0,0,12"/>
+     <ComboBox x:Name="SupportPicker" IsEnabled="{Binding CanChooseSupport}" ItemsSource="{Binding Supports}" SelectedItem="{Binding SelectedSupport}" DisplayMemberPath="Label" Margin="0,0,0,12"/>
      <TextBlock Text="{I18N {x:Static r:LangKeys.ExtrusionSurface}}" Margin="0,0,0,4"/>
      <ComboBox x:Name="SurfacePicker" ItemsSource="{Binding Surfaces}" SelectedItem="{Binding SelectedSurface}" DisplayMemberPath="Label" Margin="0,0,0,12"/>
      <TextBlock Text="{I18N {x:Static r:LangKeys.ExtrusionSurfaceBranch}}" Margin="0,0,0,4"/>

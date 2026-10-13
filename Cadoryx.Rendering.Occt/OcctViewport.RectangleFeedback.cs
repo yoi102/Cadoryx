@@ -13,9 +13,10 @@ public sealed partial class OcctViewport
     private bool ClearSelectionRectangle()
     {
         bool shown=HasSelectionRectangle;
-        selectionRectangle?.Dispose();selectionRectangle=null;
-        selectionRectangleShape?.Dispose();selectionRectangleShape=null;
-        selectionRectangleEnd=null;
+        Exception? failure=null;
+        DisposeOwnedResource(selectionRectangle,ref failure);selectionRectangle=null;
+        DisposeOwnedResource(selectionRectangleShape,ref failure);selectionRectangleShape=null;
+        selectionRectangleEnd=null;ThrowCleanupFailure(failure);
         return shown;
     }
 

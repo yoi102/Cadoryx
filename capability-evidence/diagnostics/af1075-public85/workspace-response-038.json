@@ -1,0 +1,11 @@
+{
+  "Content": "",
+  "ToolCalls": [
+    {
+      "Id": "y71e2G6ZcRdD0NP62PcCovFB3x1kzQCw",
+      "Name": "cad_workspace",
+      "ArgumentsJson": "{\u0022action\u0022:\u0022open\u0022,\u0022expected\u0022:{\u0022workspaceStateId\u0022:\u002203306661-d614-4c00-a131-0f3b9f4b1a99\u0022,\u0022activeSessionId\u0022:\u0022299c9693-fcd0-4c57-b420-4c24270ec4e3\u0022,\u0022documentId\u0022:\u00224cee19b1-4992-4833-9741-f2b04ac5536b\u0022,\u0022stateId\u0022:\u0022cd1e9879-e329-4193-8ee4-4889c74fdb3b\u0022},\u0022path\u0022:\u0022C:/Users/yoiri/source/repos/Cadoryx/artifacts/af1075-public85-1/lmstudio-workspace-1/workspace-provider-saved.cadoryx\u0022}"
+    }
+  ],
+  "Model": "prism-ml/bonsai-27b"
+}

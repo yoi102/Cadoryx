@@ -10,6 +10,38 @@ public sealed partial class OcctGeometryKernel
     public const string LegacyHistoryAdapterVersion="OcctSharp 8.0.1-preview.26 / full-topology-brep-v1";
     public const string PreviousAxisHistoryAdapterVersion="OcctSharp 8.0.1-preview.26 / full-topology-brep-axis-v2";
     public const string HistoryAdapterVersion="OcctSharp 8.0.1-preview.28.cadoryx.h2b2.2 / full-topology-brep-axis-v2";
+    public const string DefeatureHistoryAdapterVersion="OcctSharp SDK30 / full-topology-brep-defeature-v1";
+    private sealed record DefeatureHistoryEvidence(ImmutableArray<int> DeletedFaces);
+
+    private static void ConfirmDefeatureHistoryEvidence(RepairSnapshot source,LocalFeatureResult operation,DefeatureHistoryEvidence evidence)
+    {
+        if(operation.Diagnostics.Operation!=OcctSharp.LocalFeatureOperation.Defeature||
+            !operation.Diagnostics.AlgorithmDone||!operation.Diagnostics.ShapeIsValid||
+            !operation.Diagnostics.GroupSupport.HasFlag(LocalFeatureGroupSupport.Evolution)||
+            !Equals(operation.Source,source.Identity)||operation.SourceFingerprint!=source.Fingerprint||
+            evidence.DeletedFaces.IsDefaultOrEmpty||evidence.DeletedFaces.Length>256||
+            evidence.DeletedFaces.Distinct().Count()!=evidence.DeletedFaces.Length)
+            throw new CadValidationException("Unverified defeature history provenance.");
+        var tracked=source.Topology.Where(slot=>slot.Kind is ShapeKind.Face or ShapeKind.Edge or ShapeKind.Vertex)
+            .ToDictionary(slot=>slot.Selection.Index);
+        var covered=new HashSet<int>();
+        foreach(var row in operation.History)
+        {
+            if(row.Source is not {} origin||origin.PlanId!=operation.PlanId||origin.ArgumentIndex!=0||
+                !tracked.TryGetValue(origin.TopologyIndex,out var slot)||origin.Kind!=slot.Kind)
+                throw new CadValidationException("Invalid defeature full-subshape source history.");
+            covered.Add(origin.TopologyIndex);
+        }
+        if(!covered.SetEquals(tracked.Keys))throw new CadValidationException("Defeature history does not account for every source face, edge and vertex.");
+        foreach(var index in evidence.DeletedFaces)
+        {
+            if(!tracked.TryGetValue(index,out var slot)||slot.Kind!=ShapeKind.Face)
+                throw new CadValidationException("Defeature deletion evidence is not an exact source face.");
+            var rows=operation.History.Where(row=>row.Source!.Value.TopologyIndex==index).ToArray();
+            if(rows.Length==0||rows.Any(row=>row.Kind!=LocalFeatureHistoryKind.Deleted||row.Shape is not null||row.ResultTopologyIndex is not null))
+                throw new CadValidationException("Defeature history did not confirm the complete explicit deletion set.");
+        }
+    }
 
     private GeometryResult EvaluateLocal(LocalFeatureRecipe local,IAssetStore assets,CancellationToken token)
     {
@@ -69,11 +101,18 @@ public sealed partial class OcctGeometryKernel
         return FinishLocal(recipe.Source,source,ContourChamferRecipe.Create(source,[program]).Build(source),assets,token);
     }
 
-    private GeometryResult FinishLocal(GeometryAssetRef sourceGeometry,RepairSnapshot source,LocalFeatureResult operation,IAssetStore assets,CancellationToken token,IReadOnlyList<RepairSnapshot>? derivedTools=null)
+    private GeometryResult FinishLocal(GeometryAssetRef sourceGeometry,RepairSnapshot source,LocalFeatureResult operation,IAssetStore assets,CancellationToken token,IReadOnlyList<RepairSnapshot>? derivedTools=null,DefeatureHistoryEvidence? defeatureEvidence=null)
     {
         using(operation)
         {
         token.ThrowIfCancellationRequested();
+        if(defeatureEvidence is not null)
+        {
+            if(derivedTools is not null)throw new CadValidationException("Defeaturing must have one exact source operand.");
+            ConfirmDefeatureHistoryEvidence(source,operation,defeatureEvidence);
+        }
+        ImmutableArray<CadDiagnostic> styleDiagnostics=defeatureEvidence is null?[]:
+            [new("STYLE.UNSUPPORTED","Removed and healed faces have no verified source style correspondence.")];
         using var stored=OcctGeometryBridge.StoreShape(operation.RequireShape(),assets);
         using var reopened=OcctGeometryBridge.ReadShape(stored.Geometry,assets);
         using var result=RepairSnapshot.Create(reopened);
@@ -81,7 +120,7 @@ public sealed partial class OcctGeometryKernel
         GeometryResult WithoutHistory(string reason)
         {
             token.ThrowIfCancellationRequested();
-            return new(stored.Geometry,GeometryAssetLease.Acquire(stored.Geometry,assets),[new("HISTORY.UNSUPPORTED",reason)]);
+            return new(stored.Geometry,GeometryAssetLease.Acquire(stored.Geometry,assets),styleDiagnostics.Add(new("HISTORY.UNSUPPORTED",reason)));
         }
         // BRep may normalize representation (notably chamfer p-curves). Verify each
         // full-map slot after normalization; no nearest match or index fallback.
@@ -93,7 +132,7 @@ public sealed partial class OcctGeometryKernel
             using var a=live.CopySubshape(t.Selection);using var b=result.CopySubshape(result.Select(t.Selection.Index));
             if(!BrepDirectionRoundtrip.Matches(CanonicalBrep(a),CanonicalBrep(b)))return WithoutHistory($"Topology locator {t.Selection.Index} ({t.Kind}) could not be verified after BRep axis normalization; automatic history propagation is disabled.");
         }
-        if(operation.Diagnostics.HasComposedHistory||!operation.Diagnostics.GroupSupport.HasFlag(LocalFeatureGroupSupport.Evolution))
+        if(operation.Diagnostics.HasComposedHistory&&defeatureEvidence is null||!operation.Diagnostics.GroupSupport.HasFlag(LocalFeatureGroupSupport.Evolution))
             throw new CadValidationException("Unsupported local history provenance.");
         var entries=ImmutableArray.CreateBuilder<TopologyHistoryEntry>();
         foreach(var h in operation.History)
@@ -121,9 +160,9 @@ public sealed partial class OcctGeometryKernel
         foreach(var t in source.Topology.Where(t=>t.Kind is ShapeKind.Face or ShapeKind.Edge or ShapeKind.Vertex))
             if(!entries.Any(e=>e.SourceIndex==t.Selection.Index))entries.Add(new(t.Selection.Index,HistoryKind(t.Kind),TopologyEvolution.Unmapped,null,null));
         var history=new TopologyHistory(sourceGeometry.Revision,sourceGeometry.AssetId,stored.Geometry.Revision,stored.Geometry.AssetId,
-            HistoryAdapterVersion,source.Fingerprint,result.Fingerprint,source.Topology.Count,result.Topology.Count,entries.Distinct().ToImmutableArray());
+            defeatureEvidence is null?HistoryAdapterVersion:DefeatureHistoryAdapterVersion,source.Fingerprint,result.Fingerprint,source.Topology.Count,result.Topology.Count,entries.Distinct().ToImmutableArray());
         history.Validate();token.ThrowIfCancellationRequested();
-        return new(stored.Geometry,GeometryAssetLease.Acquire(stored.Geometry,assets)){TopologyHistory=history};
+        return new(stored.Geometry,GeometryAssetLease.Acquire(stored.Geometry,assets),styleDiagnostics){TopologyHistory=history};
         }
     }
 

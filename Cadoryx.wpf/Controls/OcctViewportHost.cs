@@ -170,13 +170,34 @@ public sealed class OcctViewportHost(IAssetStore assets) : HwndHost
     }
     protected override void DestroyWindowCore(HandleRef handle)
     {
-        try{Destroying?.Invoke(this,EventArgs.Empty);}
-        finally
+        Exception? failure=null;
+        void Cleanup(Action action)
         {
-            CancelCapture();radialKeyHeld=false;Viewport?.Dispose();Viewport=null;
-            if(handle.Handle!=0){Hosts.Remove(handle.Handle);Native.DestroyWindow(handle.Handle);}
-            hwnd=0;
+            try{action();}
+            catch(Exception error)
+            {
+                if(failure is null)failure=error;
+                else if(!ReferenceEquals(failure,error))
+                {
+                    const string key="Cadoryx.ViewportHost.CleanupFailures";
+                    if(failure.Data[key] is not List<Exception> additional)
+                    {additional=[];failure.Data[key]=additional;}
+                    additional.Add(error);
+                }
+            }
         }
+        Cleanup(()=>Destroying?.Invoke(this,EventArgs.Empty));
+        contextClick=false;inputSequence++;
+        Cleanup(CancelRadial);radialKeyHeld=false;
+        var closing=Viewport;Viewport=null;
+        // Disposing the renderer cancels its transient handles. Sending another
+        // native pointer release while tearing down a lost viewer is unnecessary.
+        Cleanup(()=>{if(Native.GetCapture()==handle.Handle)Native.ReleaseCapture();});
+        Cleanup(()=>closing?.Dispose());
+        if(handle.Handle!=0)
+        {Hosts.Remove(handle.Handle);Cleanup(()=>{Native.DestroyWindow(handle.Handle);});}
+        hwnd=0;
+        if(failure is not null)System.Runtime.ExceptionServices.ExceptionDispatchInfo.Capture(failure).Throw();
     }
     private static nint Process(nint hwnd,uint message,nuint w,nint l)
     {

@@ -12,9 +12,10 @@ public sealed class CadDocumentStorage(CadSectionMigrationRegistry? migrations=n
 {
     private readonly CadSectionMigrationRegistry registry=migrations??new();
     private readonly StorageLimits limits=limits??new();
-    private static readonly HashSet<string> KnownSections=CadSectionMigrationRegistry.CurrentFormats.Keys.Append(GuidedModelingReportStorage.Kind).Append(OccurrenceReferenceSectionStorage.Kind).ToHashSet();
+    private static readonly HashSet<string> KnownSections=CadSectionMigrationRegistry.CurrentFormats.Keys.Append(GuidedModelingReportStorage.Kind).Append(OccurrenceReferenceSectionStorage.Kind).Append(MaterialAppearanceSectionStorage.Kind).ToHashSet();
     private static readonly string[] Capabilities=["cadoryx.core.1","occt.brep.1","cadoryx.geometry-table.1","cadoryx.asset-catalog.1","cadoryx.sketches.1","cadoryx.sketch-point-origins.1","cadoryx.sketch-association.1","cadoryx.topology-references.1","cadoryx.local-box-edge.1","cadoryx.local-chamfer-two-distances.1","cadoryx.local-multi-edge.1","cadoryx.local-variable-radius.1","cadoryx.bound-variable-radius.1","cadoryx.topology-history.1","cadoryx.topology-history.2","cadoryx.topology-history.3","cadoryx.multicopy-history.1","cadoryx.multicopy-presentation.1","cadoryx.composed-drilling-history.1","cadoryx.history-queries.1","cadoryx.feature-bindings.1","cadoryx.exact-local-selection.1","cadoryx.bound-local-chamfer.1","cadoryx.circular-sketch-profile.1","cadoryx.circular-sketch-holes.1","cadoryx.sketch-angular-constraints.1","cadoryx.polygon-sketch-holes.1","cadoryx.assembly-constraints.1","cadoryx.external-parts.1","cadoryx.engineering-review.1","cadoryx.technical-drawings.1","cadoryx.analytical-revolve.1","cadoryx.sketch-projection.1","cadoryx.sketch-basic-relations.1","cadoryx.sketch-endpoint-tangency.1","cadoryx.sketch-parametric-tangency.1","cadoryx.sketch-arc-radius.1","cadoryx.sketch-circular-contact.1","cadoryx.sketch-endpoint-curvature.1","cadoryx.sketch-finite-parametric-contact.1","cadoryx.sketch-mixed-finite-continuity.1","cadoryx.sketch-sliding-contact-parameters.1","cadoryx.document-parameters.1","cadoryx.associated-datums.1","cadoryx.result-repetition.1","cadoryx.standard-holes.1","cadoryx.thread-hole-intent.1","cadoryx.metric-thread-solid.1","cadoryx.metric-thread-proof.1","cadoryx.advanced-extrusion.1","cadoryx.finite-surface-extrusion.1","cadoryx.guided-authoring.1","cadoryx.face-features.1","cadoryx.solid-offset.1","cadoryx.contour-local.1","cadoryx.face-editing.1","cadoryx.extended-datums.1","cadoryx.revolve-axis.1","cadoryx.hole-replay.1","cadoryx.extrusion-replay.1","cadoryx.assembly-patterns.1","cadoryx.assembly-mirrors.1","cadoryx.curved-region-revolve.1","cadoryx.exact-sketch-conics.1","cadoryx.native-edge-projection.1","cadoryx.exact-sketch-freeforms.1","cadoryx.exact-sketch-endpoints.1","cadoryx.exact-curve-parameters.1","cadoryx.periodic-native-intervals.1","cadoryx.section-hatching.1","cadoryx.section-hatch-rules.1","cadoryx.manufacturing-templates.1","cadoryx.manufacturing-annotations.1","cadoryx.drawing-template-library.1","cadoryx.current-hole-tables.1","cadoryx.hole-datum-coordinates.1","cadoryx.typed-manufacturing-datums.1","cadoryx.original-attachment-history.1","cadoryx.planar-manufacturing-sizes.1"];
-    private static readonly string[] CurrentCapabilities=[..Capabilities,"cadoryx.exact-sketch-expressions.1","cadoryx.exact-expression-profiles.1","cadoryx.exact-expression-contacts.1","cadoryx.associative-expression-endpoints.1","cadoryx.associative-expression-regions.1","cadoryx.region-offset-parameters.1","cadoryx.region-offset-connections.1",GuidedModelingReportStorage.Capability,"cadoryx.native-reference-tables.1",OccurrenceReferenceSectionStorage.Capability];
+    public const string FiniteSurfaceNewBodyCapability="cadoryx.finite-surface-new-body.1";
+    private static readonly string[] CurrentCapabilities=[..Capabilities,"cadoryx.exact-sketch-expressions.1","cadoryx.exact-expression-profiles.1","cadoryx.exact-expression-contacts.1","cadoryx.associative-expression-endpoints.1","cadoryx.associative-expression-regions.1","cadoryx.region-offset-parameters.1","cadoryx.region-offset-connections.1",GuidedModelingReportStorage.Capability,"cadoryx.native-reference-tables.1",OccurrenceReferenceSectionStorage.Capability,MaterialAppearanceSectionStorage.Capability,FiniteSurfaceNewBodyCapability];
     public async Task SaveAsync(DocumentSnapshot snapshot,IAssetStore assets,string path,CancellationToken cancellationToken=default)
     {
         cancellationToken.ThrowIfCancellationRequested();
@@ -72,6 +73,8 @@ public sealed class CadDocumentStorage(CadSectionMigrationRegistry? migrations=n
                 await Section(new(CadSectionMigrationRegistry.CurrentFormats["history"],MessagePackSections.EncodeHistories(snapshot.Features.Values)));
                 await Section(new(CadSectionMigrationRegistry.CurrentFormats["history-queries"],MessagePackSections.EncodeHistoryQueries(snapshot.HistoryQueries.Values)));
                 await Section(new(CadSectionMigrationRegistry.CurrentFormats["feature-bindings"],MessagePackSections.EncodeFeatureBindings(snapshot.Features.Values)));
+                bool hasMaterialAppearances=snapshot.Materials.Values.Any(m=>m.Appearance is not null);
+                if(hasMaterialAppearances)await Section(new(MaterialAppearanceSectionStorage.Format,MaterialAppearanceSectionStorage.Encode(snapshot.Materials.Values)));
                 bool hasGuidedReports=snapshot.Features.Values.Any(f=>f.GuidedModelingReport is not null);
                 bool hasReferenceTables=snapshot.ReferencedGeometry().Any(g=>g.SerializedReferences is not null);
                 bool hasOccurrenceTables=snapshot.ReferencedGeometry().Any(g=>g.SerializedOccurrences is not null);
@@ -96,10 +99,13 @@ public sealed class CadDocumentStorage(CadSectionMigrationRegistry? migrations=n
                 {
                     using var lease=assets.Acquire(asset.Id);await WriteEntry(zip,asset.Path,lease.Content,token);
                 }
-                var manifest=new CadManifest("Cadoryx",1,snapshot.Id,snapshot.StateId,hasOccurrenceTables?"0.7.9":"0.7.8",sections.ToImmutable(),catalog.ToImmutableArray(),
+                bool hasFiniteNewBody=snapshot.Features.Values.Any(f=>f.Recipe is ExtrudeRecipe {Options:{Termination:ExtrusionTermination.FiniteSurface,Operation:ExtrusionOperation.NewBody}});
+                var manifest=new CadManifest("Cadoryx",1,snapshot.Id,snapshot.StateId,hasFiniteNewBody?"0.7.11":hasMaterialAppearances?"0.7.10":hasOccurrenceTables?"0.7.9":"0.7.8",sections.ToImmutable(),catalog.ToImmutableArray(),
                     [..CurrentCapabilities.Where(c=>(c!=GuidedModelingReportStorage.Capability||hasGuidedReports)&&
                         (c!="cadoryx.native-reference-tables.1"||hasReferenceTables)&&
-                        (c!=OccurrenceReferenceSectionStorage.Capability||hasOccurrenceTables))],1);
+                        (c!=OccurrenceReferenceSectionStorage.Capability||hasOccurrenceTables)&&
+                        (c!=MaterialAppearanceSectionStorage.Capability||hasMaterialAppearances)&&
+                        (c!=FiniteSurfaceNewBodyCapability||hasFiniteNewBody))],1);
                 await WriteEntry(zip,"manifest.json",JsonSerializer.SerializeToUtf8Bytes(manifest,CadJson.Options),token);
             }
             await stream.FlushAsync(token);stream.Flush(true);
@@ -161,6 +167,11 @@ public sealed class CadDocumentStorage(CadSectionMigrationRegistry? migrations=n
             !sectionValues.TryGetValue("document",out var occurrenceDocument)||occurrenceDocument.Entry.SchemaVersion<60||referenceGeometry.Entry is null||referenceGeometry.Entry.SchemaVersion<2))
             throw new InvalidDataException("Complete occurrence tables require their capability, required section and supported geometry/document context.");
         var occurrenceDeclarations=includesOccurrences?Malformed(()=>OccurrenceReferenceSectionStorage.Read(occurrenceSection.Bytes,occurrenceSection.Entry.Encoding,occurrenceSection.Entry.SchemaVersion)):[];
+        bool declaresMaterials=manifest.RequiredCapabilities.Contains(MaterialAppearanceSectionStorage.Capability);
+        bool includesMaterials=sectionValues.TryGetValue(MaterialAppearanceSectionStorage.Kind,out var materialSection);
+        if(declaresMaterials!=includesMaterials||includesMaterials&&!materialSection.Entry.Required)
+            throw new InvalidDataException("Material appearances require their declared capability and required section.");
+        var materialDeclarations=includesMaterials?Malformed(()=>MaterialAppearanceSectionStorage.Read(materialSection.Bytes,materialSection.Entry.Encoding,materialSection.Entry.SchemaVersion)):[];
         var core=Migrate(sectionValues.Values.Where(v=>CadSectionMigrationRegistry.CurrentFormats.ContainsKey(v.Entry.Kind)).Select(v=>Payload(v.Entry,v.Bytes)),CadSectionMigrationRegistry.CurrentFormats,cancellationToken);
         if(Malformed(()=>MessagePackSections.HasGeometryReferences(core["geometry"].Bytes))&&
             (!hasReferenceDeclarations||!manifest.RequiredCapabilities.Contains("cadoryx.native-reference-tables.1")))
@@ -169,6 +180,7 @@ public sealed class CadDocumentStorage(CadSectionMigrationRegistry? migrations=n
         if(document.Id!=manifest.DocumentId||document.StateId!=manifest.StateId)throw new InvalidDataException("Manifest/document identity mismatch.");
         var drawings=Malformed(()=>MessagePackSections.AttachDrawings(core["drawings"].Bytes,DocumentSnapshot.Create("Reading drawing assets") with{Id=document.Id}));
         var roles=new Dictionary<AssetId,string>(Malformed(()=>MessagePackSections.RequiredAssetRoles(core["geometry"])));
+        if(includesMaterials)Malformed(()=>{MaterialAppearanceSectionStorage.AddAssetRoles(materialDeclarations,roles);return true;});
         if(includesOccurrences)Malformed(()=>{OccurrenceReferenceSectionStorage.AddAssetRoles(occurrenceDeclarations,core["geometry"].Bytes,roles);return true;});
         foreach(var id in drawings.DrawingHistoryAssets())
         {
@@ -239,10 +251,14 @@ public sealed class CadDocumentStorage(CadSectionMigrationRegistry? migrations=n
                  ExternalParts=Malformed(()=>MessagePackSections.DecodeExternalParts(core["external-parts"].Bytes)),
                  AssemblyConstraints=Malformed(()=>(document.AssemblyConstraints.IsDefault?[]:document.AssemblyConstraints)
                      .ToImmutableDictionary(c=>c.Id))};
+            if(includesMaterials)snapshot=snapshot with{Materials=Malformed(()=>MaterialAppearanceSectionStorage.Attach(materialDeclarations,snapshot.Materials,formats,assets))};
             if(includesGuidedReports)snapshot=snapshot with{Features=Malformed(()=>GuidedModelingReportStorage.Attach(guidedReports.Bytes,guidedReports.Entry.Encoding,guidedReports.Entry.SchemaVersion,snapshot.Features))};
             snapshot=Malformed(()=>MessagePackSections.AttachEngineeringReview(core["engineering-review"].Bytes,snapshot));
             snapshot=snapshot with{DrawingSheets=drawings.DrawingSheets,DrawingTemplates=drawings.DrawingTemplates};
             if(includesOccurrences)snapshot=Malformed(()=>OccurrenceReferenceSectionStorage.Attach(snapshot,occurrenceDeclarations,formats));
+            if(snapshot.Features.Values.Any(f=>f.Recipe is ExtrudeRecipe {Options:{Termination:ExtrusionTermination.FiniteSurface,Operation:ExtrusionOperation.NewBody}})&&
+                !manifest.RequiredCapabilities.Contains(FiniteSurfaceNewBodyCapability))
+                throw new InvalidDataException("Finite surface new-body author requires its explicit capability declaration.");
             Malformed(()=>{snapshot.Validate();return true;});using var verify=new DocumentAssetLease(snapshot,assets);
             foreach(var geometry in snapshot.ReferencedGeometry().DistinctBy(g=>g.Revision))
             {

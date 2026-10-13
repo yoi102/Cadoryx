@@ -1,0 +1,5 @@
+{
+  "Content": "assistant\n\u003Cthink\u003E\n\n\u003C/think\u003E\n\n",
+  "ToolCalls": [],
+  "Model": "prism-ml/bonsai-27b"
+}

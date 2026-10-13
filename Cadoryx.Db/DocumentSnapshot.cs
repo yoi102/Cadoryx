@@ -41,7 +41,8 @@ public sealed record DocumentSnapshot(DocumentId Id,DocumentStateId StateId,stri
         .Concat(Sketches.Values.SelectMany(s=>s.NativeProjections.Select(p=>p.Source)));
     public IEnumerable<AssetId> ReferencedAssets() => ReferencedGeometry()
         .SelectMany(g=>g.Source is {} s?g.BoundaryAssets().Append(s.ContextAssetId):g.BoundaryAssets())
-        .Concat(DrawingHistoryAssets()).Concat(Extensions.IsDefault?[]:Extensions.Select(x=>x.PayloadAssetId)).Concat(RetainedAssets.IsDefault?[]:RetainedAssets).Distinct();
+        .Concat(MaterialTextures().Select(t=>t.AssetId)).Concat(DrawingHistoryAssets()).Concat(Extensions.IsDefault?[]:Extensions.Select(x=>x.PayloadAssetId)).Concat(RetainedAssets.IsDefault?[]:RetainedAssets).Distinct();
+    public IEnumerable<CadTextureRef> MaterialTextures()=>Materials.Values.Select(m=>m.Appearance?.Texture).OfType<CadTextureRef>();
     public IEnumerable<AssetId> DrawingHistoryAssets()=>DrawingSheets.Values.SelectMany(s=>s.DatumSymbols.Select(d=>d.Source)
         .Concat(s.ControlFrames.Select(f=>f.Source)).Concat(s.ControlFrames.SelectMany(f=>f.DatumBindings.Select(b=>b.Source)))
         .Concat(s.Balloons.Select(b=>b.Source)).Concat(s.HoleTables.SelectMany(t=>t.Rows.Select(r=>r.Evidence.Source))))
@@ -195,7 +196,7 @@ public sealed record DocumentSnapshot(DocumentId Id,DocumentStateId StateId,stri
                 throw new CadValidationException("Local feature must reference its current upstream box.");
         }
         foreach(var (id,l) in Layers){CadGuard.Id(id);CadGuard.Name(l.Name);if(id!=l.Id)throw new CadValidationException("Layer key mismatch.");}
-        foreach(var (id,m) in Materials){CadGuard.Id(id);CadGuard.Name(m.Name);CadGuard.Positive(m.DensityKgPerMm3);if(id!=m.Id)throw new CadValidationException("Material key mismatch.");}
+        foreach(var (id,m) in Materials){CadGuard.Id(id);CadGuard.Name(m.Name);CadGuard.Positive(m.DensityKgPerMm3);m.Appearance?.Validate();if(id!=m.Id)throw new CadValidationException("Material key mismatch.");}
         ValidateDag(Definitions.Keys,id=>Definitions[id] is AssemblyDefinition a?a.Children.Select(x=>x.DefinitionId):[]);
         ValidateDag(Features.Keys,id=>Features[id].Inputs);
         if(validateReviewCache)EngineeringReviewValidation.ValidateBindings(this);

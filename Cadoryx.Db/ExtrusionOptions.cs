@@ -21,11 +21,10 @@ public sealed record ExtrusionOptions(ExtrusionSide Side=ExtrusionSide.Positive,
             (Termination==ExtrusionTermination.Plane)!=(LimitPlane is not null)||
             (Termination is ExtrusionTermination.PlanarFace or ExtrusionTermination.FiniteSurface)!=(LimitFace is not null)||
             (LimitFace is null)!=(LimitGeometry is null)||LimitFace is {Kind:not HistoryShapeKind.Face}||
-            (Termination==ExtrusionTermination.FiniteSurface)!=(SupportFace is not null)||
+            (Termination==ExtrusionTermination.FiniteSurface&&Operation!=ExtrusionOperation.NewBody)!=(SupportFace is not null)||
             (Termination==ExtrusionTermination.FiniteSurface)!=(SurfaceBranch is not null)||
             SupportFace is {Kind:not HistoryShapeKind.Face}||SurfaceBranch is {} branch&&!Enum.IsDefined(branch)||
             SupportFace is {} support&&(Source is null||support.Asset!=Source.AssetId||support.Revision!=Source.Revision)||
-            Termination==ExtrusionTermination.FiniteSurface&&Operation==ExtrusionOperation.NewBody||
             (Datum is null)!=(DatumRevision is null)||Datum==Guid.Empty||DatumRevision==Guid.Empty||
             Datum is not null&&Termination!=ExtrusionTermination.Plane||
             Termination!=ExtrusionTermination.Distance&&distance!=0||

@@ -1,0 +1,26 @@
+{
+  "events": [
+    {
+      "TimeCreated": "2026-10-13T14:02:27.0774809+09:00",
+      "Id": 1000,
+      "ProviderName": "Application Error",
+      "Message": "Faulting application name: WindowHost.exe, version: 1.0.0.0, time stamp: 0x6a890000\r\nFaulting module name: KERNELBASE.dll, version: 10.0.26100.9606, time stamp: 0x6b01f9e7\r\nException code: 0xe0434352\r\nFault offset: 0x00000000000c4efa\r\nFaulting process id: 0x3908\r\nFaulting application start time: 0x1DD5AD00A755390\r\nFaulting application path: C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1074-public85-1\\window-observer\\bin\\Release\\net10.0-windows\\win-x64\\WindowHost.exe\r\nFaulting module path: C:\\WINDOWS\\System32\\KERNELBASE.dll\r\nReport Id: 3d547787-fc29-46ae-a01e-7818990e706e\r\nFaulting package full name: \r\nFaulting package-relative application ID: "
+    },
+    {
+      "TimeCreated": "2026-10-13T14:02:26.867072+09:00",
+      "Id": 1026,
+      "ProviderName": ".NET Runtime",
+      "Message": "Application: WindowHost.exe\nCoreCLR Version: 10.0.1226.42308\n.NET Version: 10.0.12\nDescription: The process was terminated due to an unhandled exception.\nException Info: System.InvalidOperationException: The 'ResourceAssembly' property of the 'Application' type cannot be changed after it has been set.\r\n   at System.Windows.Application.set_ResourceAssembly(Assembly value)\r\n   at WindowHost.Main(String[] args) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1074-public85-1\\window-observer\\WindowHost.cs:line 50\n"
+    }
+  ],
+  "sourceSha256": "202B3B85032D0647BE3833EF91FA4B873F69705A43C14EC533D76AB5F6943D03",
+  "state": "OWNED_WINDOW_HOST_FAILED_BEFORE_DESKTOP_INPUT",
+  "source": "artifacts/af1074-public85-1/window-observer/WindowHost.cs",
+  "desktopInputExecuted": false,
+  "recordedAt": "2026-10-13T05:09:25.8452101+00:00",
+  "AFComplete": false,
+  "pid": 14600,
+  "ownedProcessPresent": false,
+  "cleanup": false,
+  "rootCause": "WPF Application.ResourceAssembly setter rejected an already initialized resource assembly"
+}

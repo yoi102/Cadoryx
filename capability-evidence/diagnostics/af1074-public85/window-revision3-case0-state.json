@@ -1,0 +1,25 @@
+{
+  "language": "en-US",
+  "route": "confirm",
+  "phase": "create",
+  "label": "plane-positive",
+  "modalTitle": "Advanced extrusion",
+  "modalVisible": true,
+  "mainTitle": "D6 owned UI acceptance en-US plane-positive create confirm",
+  "evidence": [],
+  "transitions": [
+    {
+      "recordedAt": "2026-10-13T07:32:43.9598971+00:00",
+      "elapsedMs": 0.1694,
+      "IsWorking": false,
+      "SurfaceBranch": 0,
+      "CanConfirm": false,
+      "explicitLimit": null,
+      "originalSnapshotUnchanged": true,
+      "hasPreview": false,
+      "correctPreview": false,
+      "Status": "Choose a profile, direction and operation; preview before confirming.",
+      "evidence": []
+    }
+  ]
+}

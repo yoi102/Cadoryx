@@ -1,0 +1,88 @@
+{
+  "recordedAt": "2026-10-13T05:35:03.252077+00:00",
+  "state": "AF1075_PUBLIC85_FULL_SOLUTION_BOTH_BUILD0_ACTUAL_AGENT34_BOTH_PASS_NATIVE_NOT_RUN",
+  "preparation": {
+    "path": "artifacts/af1075-public85-1/preparation.json",
+    "sha256": "16453A70D3198199B8CFF8C49BD873F95209850235EF676AA18D157182BD0728"
+  },
+  "sourceInputs": 1189,
+  "builds": [
+    {
+      "log": {
+        "path": "capability-evidence/diagnostics/af1075-public85/restore.log",
+        "sha256": "7139B243429995F4047B77547A22B3F65B0200410705AF4F5963E133567B5F5E"
+      },
+      "exitCode": 0,
+      "stage": "locked-restore"
+    },
+    {
+      "log": {
+        "path": "capability-evidence/diagnostics/af1075-public85/build-release.log",
+        "sha256": "032ABC82EDB8264313B32A25AE18B20ECF9C0755A7133398988949B253BCC949"
+      },
+      "configuration": "Release",
+      "stage": "solution-build",
+      "exitCode": 0
+    },
+    {
+      "log": {
+        "path": "capability-evidence/diagnostics/af1075-public85/build-debug.log",
+        "sha256": "E0193F2B64FC344B16EE255D6B4AF54AF3A2D86B86E9989287934A74F3D4B9C3"
+      },
+      "configuration": "Debug",
+      "stage": "solution-build",
+      "exitCode": 0
+    }
+  ],
+  "managedGates": [
+    {
+      "configuration": "Release",
+      "passed": 34,
+      "failed": 0,
+      "skipped": 0,
+      "trx": {
+        "path": "capability-evidence/diagnostics/af1075-public85/managed-release.trx",
+        "sha256": "07EACB10018F0A5C5377D853EA93A466252D926CDF6803BEE968877D1E539AE3"
+      },
+      "actualIntegratedAgent": {
+        "path": "artifacts/af1075-public85-1/workspace/Cadoryx.Agent/bin/Release/net10.0/Cadoryx.Agent.dll",
+        "sha256": "3D9D305475C671FA67E38CB951832DFBB06FA121EBCDA8F162041633F706A655"
+      },
+      "actualIntegratedContracts": {
+        "path": "artifacts/af1075-public85-1/workspace/Cadoryx.AI.Contracts/bin/Release/net10.0/Cadoryx.AI.Contracts.dll",
+        "sha256": "D30161784390269B9BEB2E9544C1F1A4E68441DECB2E393A654F5A3341F4C41B"
+      },
+      "nativeOrOcctReferencesInConsumer": false
+    },
+    {
+      "configuration": "Debug",
+      "passed": 34,
+      "failed": 0,
+      "skipped": 0,
+      "trx": {
+        "path": "capability-evidence/diagnostics/af1075-public85/managed-debug.trx",
+        "sha256": "7D23B39819F615C58C26212FC1E26DB8EE31DE84360D897349C7A182ADFF6789"
+      },
+      "actualIntegratedAgent": {
+        "path": "artifacts/af1075-public85-1/workspace/Cadoryx.Agent/bin/Debug/net10.0/Cadoryx.Agent.dll",
+        "sha256": "8EE68B1CD39542937A4958530A0EF6B4CD67654BA0CF724B85F560058956030D"
+      },
+      "actualIntegratedContracts": {
+        "path": "artifacts/af1075-public85-1/workspace/Cadoryx.AI.Contracts/bin/Debug/net10.0/Cadoryx.AI.Contracts.dll",
+        "sha256": "960E8D5808B694B3065B9A40296638A117C339CE6D4879AF6D7F48910C3EE5D9"
+      },
+      "nativeOrOcctReferencesInConsumer": false
+    }
+  ],
+  "public14PackageContentHashesUnchanged": true,
+  "original6635TestSourcesRetained": true,
+  "newCases": 13,
+  "expectedTestsAfterDiscovery": 6648,
+  "actualDiscoveryRun": false,
+  "actualFull6648Run": false,
+  "providerOrDesktopAccepted": false,
+  "productionIntegrationApplied": false,
+  "AFComplete": false,
+  "cleanup": false,
+  "G": "USER_DEFERRED"
+}

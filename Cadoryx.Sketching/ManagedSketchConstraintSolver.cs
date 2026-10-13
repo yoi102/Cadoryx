@@ -13,7 +13,7 @@ public sealed partial class ManagedSketchConstraintSolver : ISketchConstraintSol
     public ManagedSketchConstraintSolver():this(null){}
     public ManagedSketchConstraintSolver(IExactSketchExpressionRegions? regions,ISketchExpressionRegionVerifier? regionVerifier=null)
     {this.regions=regions;this.regionVerifier=regionVerifier;}
-    public string Version=>"cadoryx.sketch.lm-svd.17";
+    public string Version=>"cadoryx.sketch.lm-svd.21";
     public Task<SketchSolveReport> SolveAsync(CadSketch sketch,SketchSolveOptions? options=null,CancellationToken cancellationToken=default)
         =>Task.Run(()=>Solve(sketch,options??new(),cancellationToken),cancellationToken);
 

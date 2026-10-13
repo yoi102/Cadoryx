@@ -72,7 +72,12 @@ internal static class CadAgentDocumentTools
         if(area=="model_contract")
         {
             CadAgentParameterTools.RequireFields(args,["area","id","offset","limit"]);
-            return CadModelContract.Read(RequiredString(args,"id"),OptionalInt(args,"offset",0,0,100000),OptionalInt(args,"limit",1,1,50));
+            if (!args.TryGetProperty("id", out var typeId) || typeId.ValueKind != JsonValueKind.String ||
+                typeId.GetString() is not { Length: > 0 and <= 256 } type || !CadModelContract.Types.Contains(type, StringComparer.Ordinal))
+                throw new ArgumentException("model_contract requires id=<model type>, not a document, part or feature GUID. " +
+                    "Query cad_inspect with area=model_contract and id set to one exact type: " + string.Join(", ", CadModelContract.Types) +
+                    ". Do not add partId or documentId; this is a read-only author contract.");
+            return CadModelContract.Read(type,OptionalInt(args,"offset",0,0,100000),OptionalInt(args,"limit",1,1,50));
         }
         var id = OptionalGuid(args, "id");
         var partId = OptionalGuid(args, "partId");
@@ -131,7 +136,7 @@ internal static class CadAgentDocumentTools
             "materials" => Page(snapshot, area, snapshot.Materials.Values
                 .Where(x => id is null || x.Id.Value == id)
                 .OrderBy(x => x.Name).ThenBy(x => x.Id.Value)
-                .Select(x => new { id = x.Id.ToString(), x.Name, x.DensityKgPerMm3 }), offset, limit),
+                .Select(x => new { id = x.Id.ToString(), x.Name, x.DensityKgPerMm3, appearance = x.Appearance }), offset, limit),
             "selection" => Page(snapshot, area, document.Selection.Items
                 .Where(x => id is null || x.BodyId.Value == id)
                 .Select(x => new { path = x.Path.ToString(), bodyId = x.BodyId.ToString(),

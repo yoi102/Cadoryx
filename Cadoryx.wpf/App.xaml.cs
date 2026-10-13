@@ -240,6 +240,7 @@ public partial class App : Application
         services.AddSingleton<RecoveryHost>();
         services.AddSingleton<IRecoveryDialogService,RecoveryDialogService>();
         services.AddSingleton<IDocumentResourcesDialogService,DocumentResourcesDialogService>();
+        services.AddSingleton<IMaterialTextureImportService,MaterialTextureImportService>();
         services.AddSingleton<Cadoryx.Editor.CadWorkspace>();
         services.AddSingleton<ICadFileDialogs,CadFileDialogs>();
         services.AddSingleton<Cadoryx.Kernel.Abstractions.IDocumentDeliveryService,Cadoryx.IO.DocumentDeliveryService>();

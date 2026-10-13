@@ -63,11 +63,14 @@ internal sealed partial class SketchExpressionDifferentials
             var current=loop.Outputs[segment];var g=current.Geometry;
             double u=start?(g.Reversed?g.LastParameter:g.FirstParameter):(g.Reversed?g.FirstParameter:g.LastParameter);
             var raw=Parallel(current);
-            if(regionChart?.Contains(group)==true)
+            if(regionChart?.Contains(group)==true||
+                SketchRegionSolveChart.ProvesNaturalBoundary(sketch,group,loopIndex,current.SourceSlots[0],start))
             {
                 // The full natural source bound is a Scalar, including line
                 // length and arc angle sensitivities. Never freeze it to the
                 // previously persisted parameter or its current numeric value.
+                // A proof for this one natural joint does not defer the mixed
+                // loop's native intersections, bridges or final replay.
                 var sourceNode=Author(group.Sources[loopIndex][current.SourceSlots[0]].Entity);
                 return start?(g.Reversed?sourceNode.Last:sourceNode.First):(g.Reversed?sourceNode.First:sourceNode.Last);
             }

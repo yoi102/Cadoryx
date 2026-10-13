@@ -40,7 +40,7 @@ public sealed class AgentRunner(IAiChatClient chatClient) : IAgentRunner
             contextWindowTokens = completion.ContextWindowTokens;
 
             request.Conversation.AddAssistant(completion.Completion);
-            if (!string.IsNullOrWhiteSpace(completion.Completion.Content))
+            if (!IsEmptyOrControlOnly(completion.Completion.Content))
             {
                 await ReportAsync(
                     reportEvent,
@@ -51,7 +51,7 @@ public sealed class AgentRunner(IAiChatClient chatClient) : IAgentRunner
 
             if (completion.Completion.ToolCalls.Count == 0)
             {
-                if (string.IsNullOrWhiteSpace(completion.Completion.Content) &&
+                if (IsEmptyOrControlOnly(completion.Completion.Content) &&
                     !emptyRetryUsed && round + 1 < request.MaximumToolRounds)
                 {
                     emptyRetryUsed = true;
@@ -62,7 +62,7 @@ public sealed class AgentRunner(IAiChatClient chatClient) : IAgentRunner
                 return new AgentRunResult(
                     completion.Completion.Model,
                     contextWindowTokens,
-                    string.IsNullOrWhiteSpace(completion.Completion.Content));
+                    IsEmptyOrControlOnly(completion.Completion.Content));
             }
 
             if (request.Toolset is null)
@@ -83,6 +83,24 @@ public sealed class AgentRunner(IAiChatClient chatClient) : IAgentRunner
         }
 
         throw new InvalidOperationException("The model exceeded the maximum number of agent tool rounds.");
+    }
+
+    private static bool IsEmptyOrControlOnly([System.Diagnostics.CodeAnalysis.NotNullWhen(false)] string? content)
+    {
+        if (string.IsNullOrWhiteSpace(content)) return true;
+        ReadOnlySpan<char> text = content.AsSpan().Trim();
+        if (text.SequenceEqual("assistant")) return true;
+        if (text.StartsWith("assistant\r\n", StringComparison.Ordinal)) text = text[11..].Trim();
+        else if (text.StartsWith("assistant\n", StringComparison.Ordinal)) text = text[10..].Trim();
+        bool sawReasoningBlock = false;
+        while (text.StartsWith("<think>", StringComparison.Ordinal))
+        {
+            int close = text.IndexOf("</think>", StringComparison.Ordinal);
+            if (close < 0) return false;
+            text = text[(close + 8)..].Trim();
+            sawReasoningBlock = true;
+        }
+        return sawReasoningBlock && text.IsEmpty;
     }
 
     private async Task<CompletionAttempt> CompleteWithContextRetryAsync(

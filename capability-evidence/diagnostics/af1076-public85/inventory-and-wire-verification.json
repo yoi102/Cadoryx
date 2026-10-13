@@ -1,0 +1,110 @@
+{
+  "recordedAt": "2026-10-13T07:53:03.220581+00:00",
+  "state": "AF1076_DISCOVER6652_RETAIN6619_AND_DISTINCT455_FOCUSED_BOTH_PASS",
+  "configurations": [
+    {
+      "configuration": "Release",
+      "actualDiscovered": 6652,
+      "parent6619NamesRetained": true,
+      "added33Names": [
+        "Cadoryx.Tests.HistoryCursorFeedbackTests.StaleHistoryReceiptProvidesAReadOnlyExactCursorRecoveryWithoutApplyingTheEdit(scenario: \"changed-author-state\")",
+        "Cadoryx.Tests.HistoryCursorFeedbackTests.StaleHistoryReceiptProvidesAReadOnlyExactCursorRecoveryWithoutApplyingTheEdit(scenario: \"changed-preview-position\")",
+        "Cadoryx.Tests.HistoryCursorFeedbackTests.StaleHistoryReceiptProvidesAReadOnlyExactCursorRecoveryWithoutApplyingTheEdit(scenario: \"foreign-document\")",
+        "Cadoryx.Tests.HistoryCursorFeedbackTests.StaleHistoryReceiptProvidesAReadOnlyExactCursorRecoveryWithoutApplyingTheEdit(scenario: \"invented-cursor-at-end\")",
+        "Cadoryx.Tests.NativeCompleteSourceContextTests.ACompleteReceiptRemainsByteIdenticalWithoutContextMetadata",
+        "Cadoryx.Tests.NativeCompleteSourceContextTests.BothOriginalBudgetsRetainCompletePrefixRowsAndEveryAdditionalRowHasItsActualPosition(budget: 2400)",
+        "Cadoryx.Tests.NativeCompleteSourceContextTests.BothOriginalBudgetsRetainCompletePrefixRowsAndEveryAdditionalRowHasItsActualPosition(budget: 6000)",
+        "Cadoryx.Tests.NativeCompleteSourceContextTests.CompleteCapturedCylinderRowSurvivesTheOriginalNormalBudgetWithoutAnInventedSelection",
+        "Cadoryx.Tests.NativeCompleteSourceContextTests.UnpairedOrMismatchedQueriesCannotExposeAdditionalNativeSelections(fault: \"bodyId\")",
+        "Cadoryx.Tests.NativeCompleteSourceContextTests.UnpairedOrMismatchedQueriesCannotExposeAdditionalNativeSelections(fault: \"documentId\")",
+        "Cadoryx.Tests.NativeCompleteSourceContextTests.UnpairedOrMismatchedQueriesCannotExposeAdditionalNativeSelections(fault: \"limit\")",
+        "Cadoryx.Tests.NativeCompleteSourceContextTests.UnpairedOrMismatchedQueriesCannotExposeAdditionalNativeSelections(fault: \"no-call\")",
+        "Cadoryx.Tests.NativeCompleteSourceContextTests.UnpairedOrMismatchedQueriesCannotExposeAdditionalNativeSelections(fault: \"offset\")",
+        "Cadoryx.Tests.NativeCompleteSourceContextTests.UnpairedOrMismatchedQueriesCannotExposeAdditionalNativeSelections(fault: \"path\")",
+        "Cadoryx.Tests.NativeCompleteSourceContextTests.UnpairedOrMismatchedQueriesCannotExposeAdditionalNativeSelections(fault: \"revision\")",
+        "Cadoryx.Tests.NativeCompleteSourceContextTests.UnpairedOrMismatchedQueriesCannotExposeAdditionalNativeSelections(fault: \"stateId\")",
+        "Cadoryx.Tests.NativeCompleteSourceContextTests.UnpairedOrMismatchedQueriesCannotExposeAdditionalNativeSelections(fault: \"unknown\")",
+        "Cadoryx.Tests.NativeReadDefaultPaginationTests.AReceiptFromAnotherPageCannotInventContinuationForAnOmittedParameter(offset: 0, limit: 50, explicitOffset: False, explicitLimit: False)",
+        "Cadoryx.Tests.NativeReadDefaultPaginationTests.AReceiptFromAnotherPageCannotInventContinuationForAnOmittedParameter(offset: 0, limit: 50, explicitOffset: True, explicitLimit: False)",
+        "Cadoryx.Tests.NativeReadDefaultPaginationTests.AReceiptFromAnotherPageCannotInventContinuationForAnOmittedParameter(offset: 37, limit: 50, explicitOffset: False, explicitLimit: False)",
+        "Cadoryx.Tests.NativeReadDefaultPaginationTests.AReceiptFromAnotherPageCannotInventContinuationForAnOmittedParameter(offset: 37, limit: 8, explicitOffset: False, explicitLimit: False)",
+        "Cadoryx.Tests.NativeReadDefaultPaginationTests.AReceiptFromAnotherPageCannotInventContinuationForAnOmittedParameter(offset: 37, limit: 8, explicitOffset: False, explicitLimit: True)",
+        "Cadoryx.Tests.NativeReadDefaultPaginationTests.ExplicitNonDefaultPagesStillProduceTheirOwnContinuation",
+        "Cadoryx.Tests.NativeReadDefaultPaginationTests.InvalidExplicitParametersDoNotFallBackToDefaults(field: \"limit\", value: \"8.5\")",
+        "Cadoryx.Tests.NativeReadDefaultPaginationTests.InvalidExplicitParametersDoNotFallBackToDefaults(field: \"limit\", value: \"\\\"8\\\"\")",
+        "Cadoryx.Tests.NativeReadDefaultPaginationTests.InvalidExplicitParametersDoNotFallBackToDefaults(field: \"limit\", value: \"null\")",
+        "Cadoryx.Tests.NativeReadDefaultPaginationTests.InvalidExplicitParametersDoNotFallBackToDefaults(field: \"offset\", value: \"0.5\")",
+        "Cadoryx.Tests.NativeReadDefaultPaginationTests.InvalidExplicitParametersDoNotFallBackToDefaults(field: \"offset\", value: \"\\\"0\\\"\")",
+        "Cadoryx.Tests.NativeReadDefaultPaginationTests.InvalidExplicitParametersDoNotFallBackToDefaults(field: \"offset\", value: \"null\")",
+        "Cadoryx.Tests.NativeReadDefaultPaginationTests.OmittedAndExplicitDefaultsPairWithTheSameProductionPage(explicitOffset: False, explicitLimit: False)",
+        "Cadoryx.Tests.NativeReadDefaultPaginationTests.OmittedAndExplicitDefaultsPairWithTheSameProductionPage(explicitOffset: False, explicitLimit: True)",
+        "Cadoryx.Tests.NativeReadDefaultPaginationTests.OmittedAndExplicitDefaultsPairWithTheSameProductionPage(explicitOffset: True, explicitLimit: False)",
+        "Cadoryx.Tests.NativeReadDefaultPaginationTests.OmittedAndExplicitDefaultsPairWithTheSameProductionPage(explicitOffset: True, explicitLimit: True)"
+      ],
+      "focusedNative436AndManagedWire19DistinctPassed": 455,
+      "managedWireTRX": {
+        "path": "capability-evidence/diagnostics/af1076-public85/release-context-wire.trx",
+        "sha256": "27E6D1AFF74A083E206B2D0FD6BC4D2A081FFE25EC3DA30740531C3C2467CF1F"
+      },
+      "originalFullTRX": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\public85-runtime-acceptance-1\\full6619-release-1\\runtime.trx",
+        "sha256": "68A5F42E274704621C8B06BAF4B5C777E73A20B68F042FFF0014821E54240F9E"
+      },
+      "full6652Executed": false
+    },
+    {
+      "configuration": "Debug",
+      "actualDiscovered": 6652,
+      "parent6619NamesRetained": true,
+      "added33Names": [
+        "Cadoryx.Tests.HistoryCursorFeedbackTests.StaleHistoryReceiptProvidesAReadOnlyExactCursorRecoveryWithoutApplyingTheEdit(scenario: \"changed-author-state\")",
+        "Cadoryx.Tests.HistoryCursorFeedbackTests.StaleHistoryReceiptProvidesAReadOnlyExactCursorRecoveryWithoutApplyingTheEdit(scenario: \"changed-preview-position\")",
+        "Cadoryx.Tests.HistoryCursorFeedbackTests.StaleHistoryReceiptProvidesAReadOnlyExactCursorRecoveryWithoutApplyingTheEdit(scenario: \"foreign-document\")",
+        "Cadoryx.Tests.HistoryCursorFeedbackTests.StaleHistoryReceiptProvidesAReadOnlyExactCursorRecoveryWithoutApplyingTheEdit(scenario: \"invented-cursor-at-end\")",
+        "Cadoryx.Tests.NativeCompleteSourceContextTests.ACompleteReceiptRemainsByteIdenticalWithoutContextMetadata",
+        "Cadoryx.Tests.NativeCompleteSourceContextTests.BothOriginalBudgetsRetainCompletePrefixRowsAndEveryAdditionalRowHasItsActualPosition(budget: 2400)",
+        "Cadoryx.Tests.NativeCompleteSourceContextTests.BothOriginalBudgetsRetainCompletePrefixRowsAndEveryAdditionalRowHasItsActualPosition(budget: 6000)",
+        "Cadoryx.Tests.NativeCompleteSourceContextTests.CompleteCapturedCylinderRowSurvivesTheOriginalNormalBudgetWithoutAnInventedSelection",
+        "Cadoryx.Tests.NativeCompleteSourceContextTests.UnpairedOrMismatchedQueriesCannotExposeAdditionalNativeSelections(fault: \"bodyId\")",
+        "Cadoryx.Tests.NativeCompleteSourceContextTests.UnpairedOrMismatchedQueriesCannotExposeAdditionalNativeSelections(fault: \"documentId\")",
+        "Cadoryx.Tests.NativeCompleteSourceContextTests.UnpairedOrMismatchedQueriesCannotExposeAdditionalNativeSelections(fault: \"limit\")",
+        "Cadoryx.Tests.NativeCompleteSourceContextTests.UnpairedOrMismatchedQueriesCannotExposeAdditionalNativeSelections(fault: \"no-call\")",
+        "Cadoryx.Tests.NativeCompleteSourceContextTests.UnpairedOrMismatchedQueriesCannotExposeAdditionalNativeSelections(fault: \"offset\")",
+        "Cadoryx.Tests.NativeCompleteSourceContextTests.UnpairedOrMismatchedQueriesCannotExposeAdditionalNativeSelections(fault: \"path\")",
+        "Cadoryx.Tests.NativeCompleteSourceContextTests.UnpairedOrMismatchedQueriesCannotExposeAdditionalNativeSelections(fault: \"revision\")",
+        "Cadoryx.Tests.NativeCompleteSourceContextTests.UnpairedOrMismatchedQueriesCannotExposeAdditionalNativeSelections(fault: \"stateId\")",
+        "Cadoryx.Tests.NativeCompleteSourceContextTests.UnpairedOrMismatchedQueriesCannotExposeAdditionalNativeSelections(fault: \"unknown\")",
+        "Cadoryx.Tests.NativeReadDefaultPaginationTests.AReceiptFromAnotherPageCannotInventContinuationForAnOmittedParameter(offset: 0, limit: 50, explicitOffset: False, explicitLimit: False)",
+        "Cadoryx.Tests.NativeReadDefaultPaginationTests.AReceiptFromAnotherPageCannotInventContinuationForAnOmittedParameter(offset: 0, limit: 50, explicitOffset: True, explicitLimit: False)",
+        "Cadoryx.Tests.NativeReadDefaultPaginationTests.AReceiptFromAnotherPageCannotInventContinuationForAnOmittedParameter(offset: 37, limit: 50, explicitOffset: False, explicitLimit: False)",
+        "Cadoryx.Tests.NativeReadDefaultPaginationTests.AReceiptFromAnotherPageCannotInventContinuationForAnOmittedParameter(offset: 37, limit: 8, explicitOffset: False, explicitLimit: False)",
+        "Cadoryx.Tests.NativeReadDefaultPaginationTests.AReceiptFromAnotherPageCannotInventContinuationForAnOmittedParameter(offset: 37, limit: 8, explicitOffset: False, explicitLimit: True)",
+        "Cadoryx.Tests.NativeReadDefaultPaginationTests.ExplicitNonDefaultPagesStillProduceTheirOwnContinuation",
+        "Cadoryx.Tests.NativeReadDefaultPaginationTests.InvalidExplicitParametersDoNotFallBackToDefaults(field: \"limit\", value: \"8.5\")",
+        "Cadoryx.Tests.NativeReadDefaultPaginationTests.InvalidExplicitParametersDoNotFallBackToDefaults(field: \"limit\", value: \"\\\"8\\\"\")",
+        "Cadoryx.Tests.NativeReadDefaultPaginationTests.InvalidExplicitParametersDoNotFallBackToDefaults(field: \"limit\", value: \"null\")",
+        "Cadoryx.Tests.NativeReadDefaultPaginationTests.InvalidExplicitParametersDoNotFallBackToDefaults(field: \"offset\", value: \"0.5\")",
+        "Cadoryx.Tests.NativeReadDefaultPaginationTests.InvalidExplicitParametersDoNotFallBackToDefaults(field: \"offset\", value: \"\\\"0\\\"\")",
+        "Cadoryx.Tests.NativeReadDefaultPaginationTests.InvalidExplicitParametersDoNotFallBackToDefaults(field: \"offset\", value: \"null\")",
+        "Cadoryx.Tests.NativeReadDefaultPaginationTests.OmittedAndExplicitDefaultsPairWithTheSameProductionPage(explicitOffset: False, explicitLimit: False)",
+        "Cadoryx.Tests.NativeReadDefaultPaginationTests.OmittedAndExplicitDefaultsPairWithTheSameProductionPage(explicitOffset: False, explicitLimit: True)",
+        "Cadoryx.Tests.NativeReadDefaultPaginationTests.OmittedAndExplicitDefaultsPairWithTheSameProductionPage(explicitOffset: True, explicitLimit: False)",
+        "Cadoryx.Tests.NativeReadDefaultPaginationTests.OmittedAndExplicitDefaultsPairWithTheSameProductionPage(explicitOffset: True, explicitLimit: True)"
+      ],
+      "focusedNative436AndManagedWire19DistinctPassed": 455,
+      "managedWireTRX": {
+        "path": "capability-evidence/diagnostics/af1076-public85/debug-context-wire.trx",
+        "sha256": "093389EB80D26D3E3721D18DDCBB5F56996A3FE738494A22A69BBC8FD713C16C"
+      },
+      "originalFullTRX": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\public85-runtime-acceptance-1\\full6619-debug-1\\runtime.trx",
+        "sha256": "7CF5CAE8DB83438BEA6DA6544907827DE865CAD7022F21CD10B090AD52949F8C"
+      },
+      "full6652Executed": false
+    }
+  ],
+  "originalTestAssertionsChanged": false,
+  "fullCandidateProductionApplied": false,
+  "AFComplete": false,
+  "cleanup": false
+}

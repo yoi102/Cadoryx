@@ -32,6 +32,13 @@ internal static class AssetCatalog
                 metadata[occurrences.TableAssetId]=format;SerializedOccurrenceAssetPolicy.VerifyGeometry(geometry,assets);
             }
         }
+        foreach(var texture in snapshot.MaterialTextures())
+        {
+            token.ThrowIfCancellationRequested();texture.Validate();
+            using var lease=assets.Acquire(texture.AssetId);CadTexturePayload.Verify(texture,lease.Content.Span);
+            if(metadata.TryGetValue(texture.AssetId,out var old)&&old!=texture.Format)throw new InvalidDataException("Conflicting texture format or asset role.");
+            metadata[texture.AssetId]=texture.Format;geometryIds.Add(texture.AssetId);
+        }
         foreach(var id in snapshot.DrawingHistoryAssets())if(!metadata.ContainsKey(id))Add(id,null,false);
         void Add(AssetId id,AssetFormat? supplied,bool xde)
         {

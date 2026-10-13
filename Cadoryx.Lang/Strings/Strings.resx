@@ -3334,4 +3334,55 @@
   <data name="RegionReselectPreviewOutdated" xml:space="preserve"><value>The mapping changed. The drawing shows the previous preview; preview again before applying.</value></data>
   <data name="RegionReselectSlot" xml:space="preserve"><value>Slot</value></data>
   <data name="AiEmptyResponseRetry" xml:space="preserve"><value>The model returned no text or tool call. Retrying once within the current limit.</value></data>
+  <data name="MaterialEnableAppearance" xml:space="preserve"><value>Use material appearance</value></data>
+  <data name="MaterialOverrideSource" xml:space="preserve"><value>Override imported face styles</value></data>
+  <data name="MaterialSourceStylesHint" xml:space="preserve"><value>Imported face colors and textures remain until this option is enabled. An instance color override takes priority.</value></data>
+  <data name="MaterialShading" xml:space="preserve"><value>Shading</value></data>
+  <data name="MaterialOpacity" xml:space="preserve"><value>Opacity</value></data>
+  <data name="MaterialMetallic" xml:space="preserve"><value>Metallic</value></data>
+  <data name="MaterialRoughness" xml:space="preserve"><value>Roughness</value></data>
+  <data name="MaterialRefraction" xml:space="preserve"><value>Index of refraction</value></data>
+  <data name="MaterialEmission" xml:space="preserve"><value>Emission</value></data>
+  <data name="MaterialSeparateBack" xml:space="preserve"><value>Use a separate back material</value></data>
+  <data name="MaterialBackFace" xml:space="preserve"><value>Back face</value></data>
+  <data name="MaterialCulling" xml:space="preserve"><value>Face culling</value></data>
+  <data name="MaterialTransparency" xml:space="preserve"><value>Transparency mode</value></data>
+  <data name="MaterialAlphaCutoff" xml:space="preserve"><value>Mask threshold</value></data>
+  <data name="MaterialTexture" xml:space="preserve"><value>Color texture</value></data>
+  <data name="MaterialNoTexture" xml:space="preserve"><value>No texture</value></data>
+  <data name="MaterialImportTexture" xml:space="preserve"><value>Import texture</value></data>
+  <data name="MaterialClearTexture" xml:space="preserve"><value>Clear texture</value></data>
+  <data name="MaterialTextureFilter" xml:space="preserve"><value>PNG and JPEG images|*.png;*.jpg;*.jpeg</value></data>
+  <data name="MaterialTextureTooLarge" xml:space="preserve"><value>The image exceeds the supported file or pixel budget.</value></data>
+  <data name="MaterialTextureUnsupported" xml:space="preserve"><value>Choose a single PNG or JPEG image.</value></data>
+  <data name="MaterialTextureEditExpired" xml:space="preserve"><value>The document or selected material changed. Import the texture again.</value></data>
+  <data name="MaterialTextureMapping" xml:space="preserve"><value>Texture mapping</value></data>
+  <data name="MaterialPlanarMapping" xml:space="preserve"><value>Planar coordinates</value></data>
+  <data name="MaterialMappingPlanesHint" xml:space="preserve"><value>S and T define independent planes in part coordinates: X, Y, Z and offset D.</value></data>
+  <data name="MaterialScaleS" xml:space="preserve"><value>S scale</value></data>
+  <data name="MaterialScaleT" xml:space="preserve"><value>T scale</value></data>
+  <data name="MaterialTranslationS" xml:space="preserve"><value>S translation</value></data>
+  <data name="MaterialTranslationT" xml:space="preserve"><value>T translation</value></data>
+  <data name="MaterialRotation" xml:space="preserve"><value>Rotation in degrees</value></data>
+  <data name="MaterialRepeat" xml:space="preserve"><value>Repeat texture</value></data>
+  <data name="MaterialSampling" xml:space="preserve"><value>Sampling</value></data>
+  <data name="MaterialAnisotropy" xml:space="preserve"><value>Anisotropy quality</value></data>
+  <data name="MaterialAutomatic" xml:space="preserve"><value>Automatic</value></data>
+  <data name="MaterialDoubleSided" xml:space="preserve"><value>Double sided</value></data>
+  <data name="MaterialCullBack" xml:space="preserve"><value>Cull back faces</value></data>
+  <data name="MaterialCullFront" xml:space="preserve"><value>Cull front faces</value></data>
+  <data name="MaterialOpaque" xml:space="preserve"><value>Opaque</value></data>
+  <data name="MaterialMask" xml:space="preserve"><value>Mask</value></data>
+  <data name="MaterialBlend" xml:space="preserve"><value>Blend</value></data>
+  <data name="MaterialMaskBlend" xml:space="preserve"><value>Mask and blend</value></data>
+  <data name="MaterialNearest" xml:space="preserve"><value>Nearest</value></data>
+  <data name="MaterialBilinear" xml:space="preserve"><value>Bilinear</value></data>
+  <data name="MaterialTrilinear" xml:space="preserve"><value>Trilinear</value></data>
+  <data name="MaterialAnisotropyOff" xml:space="preserve"><value>Off</value></data>
+  <data name="MaterialAnisotropyFast" xml:space="preserve"><value>Fast</value></data>
+  <data name="MaterialAnisotropyMiddle" xml:space="preserve"><value>Medium</value></data>
+  <data name="MaterialAnisotropyQuality" xml:space="preserve"><value>High quality</value></data>
+  <data name="ViewportRecovering" xml:space="preserve"><value>Restoring view…</value></data>
+  <data name="ViewportRecoveryFailed" xml:space="preserve"><value>View recovery failed.</value></data>
+  <data name="ViewportRecoveryDeadline" xml:space="preserve"><value>The replacement viewport did not become ready within 30 seconds.</value></data>
 </root>
