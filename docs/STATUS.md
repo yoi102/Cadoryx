@@ -4,6 +4,8 @@
 
 当前进度以status241为准；以下status239及更早保留历史检查点。status240检查点保留于Git提交f0cc31c。
 
+status241窗口补充：[观察器4](../capability-evidence/diagnostics/af1077-window-observer/verification.json)只增加owner/modal身份、焦点、选择器和起始XYZ诊断，两配置build0，19生产/worker3/SDK13/native62及资源匹配最终1077WPF。原29断言/六状态/36夹具/30与300秒保持，1189冻结生产输入未改；没有注入或开始桌面输入，不计为窗口通过。SDK已完成193根文件语义审计和548直接调用的标准生成准备，32模板调用静态类型证据接入中；调用点不换算成新增声明。当前Debug和原两模型场景完成后先交还上游Release/Debug原生验证时段，性能及窗口不插队；A–F范围保持。
+
 2026-10-13，status239：[1076原Bonsai复验](../capability-evidence/diagnostics/af1076-public85/provider-runtime-verification.json)已终态并核验：多文档原8轮PASS、资产0；工程图完成两轮，第三轮缺少尺寸创建收据FAIL。实际native62两组准确，原三份提示/断言、8192上下文/16工具轮保持。工程图的三个实际wire请求在5786字符内保留完整CylinderFace第38项及CircleEdge第26项，逐条匹配第18次原生成功查询；柱面数据可用性已证，不等于工作流通过。多文档没有调用新游标恢复，不据此证明因果。生产根完整6652 Release已启动并[确认进程实际存活/native62匹配](../capability-evidence/diagnostics/af1076-root-full/running-verification.json)，Debug待串行；原STEP拒绝已复现，尚无终态/总数。SDK[逐边逐面状态诊断](../capability-evidence/diagnostics/exact-step-brep-status/receipt-verification.json)164哈希引用已独立接收：原exact标志true，完整24直接上下文在face5-edge10/face6-edge9给出InvalidCurveOnSurface(8)，两个端盖UnorientableShape(27)；初版迭代日志漏录12上下文，identity/1024未录得不能算NoError。没有精确修复或新包。A–F继续，真实窗口/材质/性能、原STEP24及第4、5节其余范围保持，G和清理暂缓。
 
 当前进度以status239为准；以下status238及更早保留历史检查点。

@@ -1,0 +1,19 @@
+{
+  "productionDialogChanged": false,
+  "desktopInputStarted": false,
+  "stages": [
+    {
+      "exitCode": 0,
+      "log": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1077-drawing-action-1\\window-observer-4-release.log",
+      "candidate": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1077-drawing-action-1\\workspace\\Cadoryx.wpf\\bin\\Release\\net10.0-windows\\win-x64",
+      "configuration": "Release"
+    },
+    {
+      "exitCode": 0,
+      "log": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1077-drawing-action-1\\window-observer-4-debug.log",
+      "candidate": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1077-drawing-action-1\\workspace\\Cadoryx.wpf\\bin\\Debug\\net10.0-windows\\win-x64",
+      "configuration": "Debug"
+    }
+  ],
+  "nativeStarted": false
+}

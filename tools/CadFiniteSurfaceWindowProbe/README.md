@@ -29,3 +29,17 @@ see the retained [startup and trace record](../../capability-evidence/diagnostic
 The current Computer Use surface exposed only the owner window; subsequent
 menu/keyboard input did not reliably target the modal. Do not change the product
 dialog, relax its guards, or count startup as acceptance to work around this.
+
+The observer now records `window-identity.json` and read-only modal/owner activity,
+focused control, open picker states and start X/Y/Z in `state.json`. These fields
+help identify a focus transfer or unintended numeric edit; they do not add input
+or change the six acceptance states. Native handles are diagnostic data only.
+
+After the modal opens, refresh `sky.list_windows()` and choose exactly one
+returned modal window for this owned process. Observe its screenshot and tree
+before a separate input action, then refresh immediately. A popup or focus change
+requires a new observation; use its returned screenshot ID when relevant. If only
+the disabled owner is returned, preserve the trace and stop input instead of
+typing or clicking through the owner. Never manufacture a Computer Use `Window`
+from the observer's native handles. Keyboard navigation on the closed picker can
+be used only after the returned modal and actual focused control are verified.

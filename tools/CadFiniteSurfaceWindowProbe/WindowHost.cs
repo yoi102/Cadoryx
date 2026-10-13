@@ -5,6 +5,8 @@ using System.Security.Cryptography;
 using System.Text.Json;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
+using System.Windows.Interop;
 using System.Windows.Threading;
 using Antelcat.I18N.WPF;
 using Cadoryx.Db;
@@ -120,6 +122,16 @@ internal static class WindowHost
             Require(editor.Operation==ExtrusionOperation.NewBody&&!editor.CanChooseSupport&&editor.SelectedSupport is null,"Editor requires private support.");
             Require(!Control<ComboBox>(host,"SupportPicker").IsEnabled&&!Control<ComboBox>(host,"TargetPicker").IsEnabled,"Production bindings enable a target/support.");
             Require(host.Title==Strings.ExtrusionAdvanced,"Production dialog title is not localized.");
+            object WindowIdentity()=>new
+            {
+                recordedAt=DateTimeOffset.UtcNow,processId=Environment.ProcessId,
+                owner=new{title=mainWindow.Title,nativeHandle=new WindowInteropHelper(mainWindow).Handle.ToInt64(),mainWindow.IsVisible,mainWindow.IsEnabled,mainWindow.IsActive},
+                modal=new{title=host.Title,nativeHandle=new WindowInteropHelper(host).Handle.ToInt64(),host.IsVisible,host.IsEnabled,host.IsActive},
+                actualOwnerConfirmed=host.Owner==mainWindow,
+                nativeHandlesAreDiagnosticsOnly=true,
+                inputTargetRule="Select a unique returned Computer Use modal window. Never construct an input window from these native handles."
+            };
+            Write(output,"window-identity.json",WindowIdentity());
             bool closed=false;host.Closed+=(_,_)=>closed=true;
             var evidence=new HashSet<string>();var transitions=new List<object>();Task? lastPreview=null;string? prior=null;
             var watch=Stopwatch.StartNew();
@@ -144,13 +156,21 @@ internal static class WindowHost
                 }
                 if(editor.SurfaceBranch==ExtrusionSurfaceBranch.Far&&!editor.CanConfirm&&!scene&&unchanged&&evidence.Contains("NEAR_PREVIEW_READY"))
                     evidence.Add("BRANCH_INVALIDATED_READY_PREVIEW");
-                string state=string.Join('|',editor.IsWorking,editor.SurfaceBranch,editor.CanConfirm,editor.SelectedSurface is not null,unchanged,scene,editor.Status,evidence.Count);
+                var focused=Keyboard.FocusedElement as FrameworkElement;
+                string focusedName=focused?.Name??"",focusedType=focused?.GetType().Name??"";
+                bool surfacePickerOpen=Control<ComboBox>(host,"SurfacePicker").IsDropDownOpen,
+                    branchPickerOpen=Control<ComboBox>(host,"SurfaceBranchPicker").IsDropDownOpen;
+                string state=string.Join('|',editor.IsWorking,editor.SurfaceBranch,editor.CanConfirm,editor.SelectedSurface is not null,unchanged,scene,editor.Status,evidence.Count,
+                    host.IsVisible,host.IsActive,mainWindow.IsActive,focusedName,focusedType,surfacePickerOpen,branchPickerOpen,editor.StartX,editor.StartY,editor.StartZ);
                 if(state!=prior)
                 {
                     prior=state;transitions.Add(new{recordedAt=DateTimeOffset.UtcNow,elapsedMs=watch.Elapsed.TotalMilliseconds,
                         editor.IsWorking,editor.SurfaceBranch,editor.CanConfirm,explicitLimit=editor.SelectedSurface?.Limit.Selection,
-                        originalSnapshotUnchanged=unchanged,hasPreview=scene,correctPreview,editor.Status,evidence=evidence.Order().ToArray()});
-                    Write(output,"state.json",new{language,route,phase,label,modalTitle=host.Title,modalVisible=host.IsVisible,mainTitle=mainWindow.Title,evidence=evidence.Order().ToArray(),transitions});
+                        originalSnapshotUnchanged=unchanged,hasPreview=scene,correctPreview,editor.Status,evidence=evidence.Order().ToArray(),
+                        modalActive=host.IsActive,ownerActive=mainWindow.IsActive,focusedName,focusedType,surfacePickerOpen,branchPickerOpen,
+                        start=new{editor.StartX,editor.StartY,editor.StartZ}});
+                    Write(output,"state.json",new{language,route,phase,label,modalTitle=host.Title,modalVisible=host.IsVisible,mainTitle=mainWindow.Title,
+                        windowIdentity=WindowIdentity(),evidence=evidence.Order().ToArray(),transitions});
                 }
                 await Task.Delay(70);
             }
