@@ -1,0 +1,113 @@
+{
+  "recordedAt": "2026-10-13T12:38:12.804797+00:00",
+  "state": "AF1080_FINAL_SOURCE_APP_PROVIDER_PERFORMANCE_WINDOW_PREPARED_NOT_NATIVE_RUNTIME",
+  "baseHead": "fc7abc7390c657fb7d966d9d57bfd3487ec3ed13",
+  "sourceInputs": 1192,
+  "fullSolutionReleaseAndDebugBuild0": true,
+  "actualFinalWpfCompiledAssertionsEach": 208,
+  "directAssertionInvocationNotFullXunit": true,
+  "providerApplicationShared16ByteIdentical": true,
+  "publicSDK13Native62DiskMatched": true,
+  "originalModelPromptAndAssertionSources": [
+    {
+      "path": "artifacts/af1080-final-1/workspace/tools/CadAgentWorkflowProbe/Program.cs",
+      "sha256": "ECDE64BA427AB24667EC274D06B59404E37675BCD08447DFAE0EB62D62602346"
+    },
+    {
+      "path": "artifacts/af1080-final-1/workspace/tools/CadAgentWorkflowProbe/DrawingProviderProbe.cs",
+      "sha256": "8BCF923185714028CDC865D774460FA56F73F86BE858F67186A9B4DC19D3BE72"
+    },
+    {
+      "path": "artifacts/af1080-final-1/workspace/tools/CadAgentWorkflowProbe/WorkspaceProviderProbe.cs",
+      "sha256": "C46829DFDEA0342806F184BB1B894E0FB7002FF3C0928A00C6F484F1EC42C0CB"
+    }
+  ],
+  "metadataAudit": {
+    "path": "capability-evidence/diagnostics/af1080-final-ready/occt-api-usage.json",
+    "sha256": "464ECB276C4557E9EC6656429CB53EC5FC80B49535AA83B3A56B58C10E2254F5"
+  },
+  "metadataAuditSummary": "76 assemblies;221 OCCT types;696 members;0 direct native imports",
+  "expectedFullTestCount": 6815,
+  "actualFullDiscovery": false,
+  "actualFullRuntime": false,
+  "actualModelRun": false,
+  "originalDirectRuns": 2,
+  "originalCycles": 20,
+  "targetMs": 6482,
+  "directTimeoutSeconds": 1800,
+  "originalProductionOpenRuns": 2,
+  "productionOpenTimeoutSeconds": 900,
+  "fullImageSize": [
+    788,
+    411
+  ],
+  "actualPerformanceRun": false,
+  "D6Original36Matrix": true,
+  "D6Original29RequireCalls": true,
+  "D6OriginalSixStatesAnd30And300Seconds": true,
+  "actualDesktopRun": false,
+  "nativeLane": "OcctSharp still owns lane; final package and explicit handoff not yet received",
+  "runnersDoNotLaunchWithoutNativeLaneHandoff": true,
+  "public85FrozenPreparationDoesNotProveFutureLocal86Integration": true,
+  "productionSourceApplied": true,
+  "productionDialogChanged": false,
+  "nativeJobsStarted": 0,
+  "evidence": [
+    {
+      "path": "capability-evidence/diagnostics/af1080-final-ready/preparation.json",
+      "sha256": "2FA1FC5959915A1863B42B030E2B8DC0B5B3E02B33F1D5C8186953291D0DCCB1"
+    },
+    {
+      "path": "capability-evidence/diagnostics/af1080-final-ready/freeze.json",
+      "sha256": "758ED1F4EF652F006BE1C325E0AFA91416686205B1F4044BFAC38CBF4A398CBC"
+    },
+    {
+      "path": "capability-evidence/diagnostics/af1080-final-ready/performance-freeze.json",
+      "sha256": "24288CABB84B1590C0B9C38A569FF61A3A599C11FD8BB878959759AC4B782A48"
+    },
+    {
+      "path": "capability-evidence/diagnostics/af1080-final-ready/final-app-managed-result.json",
+      "sha256": "E97A982D352825A9CBBAAFE8505FAFC35830334934FF6F5EAAE0DDD4DFBED632"
+    },
+    {
+      "path": "capability-evidence/diagnostics/af1080-final-ready/occt-api-usage.json",
+      "sha256": "464ECB276C4557E9EC6656429CB53EC5FC80B49535AA83B3A56B58C10E2254F5"
+    },
+    {
+      "path": "capability-evidence/diagnostics/af1080-final-ready/runners-verification.json",
+      "sha256": "F48F2BB14C8421554B315510C071D0489FB01720B0310824302A21397960A609"
+    },
+    {
+      "path": "capability-evidence/diagnostics/af1080-final-ready/build-exit.json",
+      "sha256": "1C2BC073D4E0F3BEF6615134EDFFF226818C07FAAFF5AB8F2108C574BD226D85"
+    },
+    {
+      "path": "capability-evidence/diagnostics/af1080-final-ready/restore.log",
+      "sha256": "0CB654D7203B8FFD6A5D11D997E3FA141D815263D7F4D1FB7C51830E3E3BE0DC"
+    },
+    {
+      "path": "capability-evidence/diagnostics/af1080-final-ready/release.log",
+      "sha256": "DC8773D196D506ABA63BB6BE0016B632FCC20DBDE97B988DA5B675F84A277423"
+    },
+    {
+      "path": "capability-evidence/diagnostics/af1080-final-ready/debug.log",
+      "sha256": "A5C590038AE334F7102F60EC9B2A39E14B5BF42CC5B08FCA223565739F6CEBAF"
+    },
+    {
+      "path": "capability-evidence/diagnostics/af1080-final-ready/provider-restore.log",
+      "sha256": "A264CE66CBB9D217601D3D58D7102D693928AB69B5B0771B52DE9FC7D98E2BDA"
+    },
+    {
+      "path": "capability-evidence/diagnostics/af1080-final-ready/provider-publish.log",
+      "sha256": "F5A156984410BA2384E46FC7F6BF42191B8B10B28F83E1191C77605E56B7041A"
+    }
+  ],
+  "AFComplete": false,
+  "G": "USER_DEFERRED",
+  "cleanup": false,
+  "occtType221AndMember696SetsMatchOriginal1073": true,
+  "occtReferenceBaseline": {
+    "path": "capability-evidence/diagnostics/public-nuget-migration/source1073-occt-usage.json",
+    "sha256": "02FFB265591F9CFD6B01FEE8236EA10F7FCE75B7D0CC5AD4FC0552EB8E1AA17D"
+  }
+}

@@ -1,0 +1,496 @@
+{
+  "recordedAt": "2026-10-13T12:34:54.485922+00:00",
+  "state": "D6_FINAL1080_OBSERVER_BOTH_BUILD0_READ_ONLY_FOCUS_DIAGNOSTICS_NOT_WINDOW_ACCEPTANCE",
+  "originalRequireCallsRetained": 29,
+  "originalEvidenceAddCallsRetained": 5,
+  "originalSixStatesAnd30And300SecondsRetained": true,
+  "configurations": [
+    {
+      "configuration": "Release",
+      "productionAssembliesMatched": 19,
+      "workerExeAndConfigurationMatched": true,
+      "sdk13Native62DiskMatched": true,
+      "host": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1080-final-1\\window-observer-1\\bin\\Release\\net10.0-windows\\win-x64",
+      "binarySha256": "45ECC09488611176B7BA9D5D8FA922E5672A9345712FCF7C7AA486FDA25606E1"
+    },
+    {
+      "configuration": "Debug",
+      "productionAssembliesMatched": 19,
+      "workerExeAndConfigurationMatched": true,
+      "sdk13Native62DiskMatched": true,
+      "host": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1080-final-1\\window-observer-1\\bin\\Debug\\net10.0-windows\\win-x64",
+      "binarySha256": "3DC6D187114A88D711F5D207E4FE14E9CD62E805CC3AE0D95E5E9B71F7340367"
+    }
+  ],
+  "original36MatrixAndExactFixturesRetained": true,
+  "matrix": [
+    {
+      "phase": "create",
+      "language": "en-US",
+      "label": "plane-positive",
+      "route": "confirm",
+      "fixture": {
+        "path": "C:/Users/yoiri/source/repos/Cadoryx/artifacts/d6-window-fixtures-2/fixtures-1\\plane-positive.cadoryx",
+        "sha256": "E3913830ACD00B9E5096E4FF5609A3485CD936709A9C540A277D4661D6E388D4"
+      },
+      "output": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1080-final-1\\window-create-en-US-plane-positive-1",
+      "state": "NOT RUN"
+    },
+    {
+      "phase": "create",
+      "language": "en-US",
+      "label": "plane-negative",
+      "route": "confirm",
+      "fixture": {
+        "path": "C:/Users/yoiri/source/repos/Cadoryx/artifacts/d6-window-fixtures-2/fixtures-1\\plane-negative.cadoryx",
+        "sha256": "A647C24EDD13DCE28C51213EA3DEDC48748804858C85824AF3C812E7B2062B0B"
+      },
+      "output": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1080-final-1\\window-create-en-US-plane-negative-1",
+      "state": "NOT RUN"
+    },
+    {
+      "phase": "create",
+      "language": "en-US",
+      "label": "sphere-positive",
+      "route": "cancel",
+      "fixture": {
+        "path": "C:/Users/yoiri/source/repos/Cadoryx/artifacts/d6-window-fixtures-2/fixtures-1\\sphere-positive.cadoryx",
+        "sha256": "1E4F348EC6B0D50E56ECAC012C46E6F81CB1B727E5E39E7ADFB8577CEDAEA009"
+      },
+      "output": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1080-final-1\\window-create-en-US-sphere-positive-1",
+      "state": "NOT RUN"
+    },
+    {
+      "phase": "create",
+      "language": "en-US",
+      "label": "sphere-negative",
+      "route": "cancel",
+      "fixture": {
+        "path": "C:/Users/yoiri/source/repos/Cadoryx/artifacts/d6-window-fixtures-2/fixtures-1\\sphere-negative.cadoryx",
+        "sha256": "FEB3EC21B88BB45AB4A54CA1809BCFB541BADB647F88B2E5F3474E0AE2C17C3C"
+      },
+      "output": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1080-final-1\\window-create-en-US-sphere-negative-1",
+      "state": "NOT RUN"
+    },
+    {
+      "phase": "create",
+      "language": "en-US",
+      "label": "cylinder-positive",
+      "route": "close",
+      "fixture": {
+        "path": "C:/Users/yoiri/source/repos/Cadoryx/artifacts/d6-window-fixtures-2/fixtures-1\\cylinder-positive.cadoryx",
+        "sha256": "0635FD58B4239A7ADA78BA442639365689BBB63ED349FF1A794ADE89D1DE085E"
+      },
+      "output": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1080-final-1\\window-create-en-US-cylinder-positive-1",
+      "state": "NOT RUN"
+    },
+    {
+      "phase": "create",
+      "language": "en-US",
+      "label": "cylinder-negative",
+      "route": "close",
+      "fixture": {
+        "path": "C:/Users/yoiri/source/repos/Cadoryx/artifacts/d6-window-fixtures-2/fixtures-1\\cylinder-negative.cadoryx",
+        "sha256": "062C49C5AB91A0E449E4D21C351B49158DDC79BD37BB972CDF6788490B599128"
+      },
+      "output": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1080-final-1\\window-create-en-US-cylinder-negative-1",
+      "state": "NOT RUN"
+    },
+    {
+      "phase": "create",
+      "language": "zh-CN",
+      "label": "plane-positive",
+      "route": "cancel",
+      "fixture": {
+        "path": "C:/Users/yoiri/source/repos/Cadoryx/artifacts/d6-window-fixtures-2/fixtures-1\\plane-positive.cadoryx",
+        "sha256": "E3913830ACD00B9E5096E4FF5609A3485CD936709A9C540A277D4661D6E388D4"
+      },
+      "output": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1080-final-1\\window-create-zh-CN-plane-positive-1",
+      "state": "NOT RUN"
+    },
+    {
+      "phase": "create",
+      "language": "zh-CN",
+      "label": "plane-negative",
+      "route": "cancel",
+      "fixture": {
+        "path": "C:/Users/yoiri/source/repos/Cadoryx/artifacts/d6-window-fixtures-2/fixtures-1\\plane-negative.cadoryx",
+        "sha256": "A647C24EDD13DCE28C51213EA3DEDC48748804858C85824AF3C812E7B2062B0B"
+      },
+      "output": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1080-final-1\\window-create-zh-CN-plane-negative-1",
+      "state": "NOT RUN"
+    },
+    {
+      "phase": "create",
+      "language": "zh-CN",
+      "label": "sphere-positive",
+      "route": "close",
+      "fixture": {
+        "path": "C:/Users/yoiri/source/repos/Cadoryx/artifacts/d6-window-fixtures-2/fixtures-1\\sphere-positive.cadoryx",
+        "sha256": "1E4F348EC6B0D50E56ECAC012C46E6F81CB1B727E5E39E7ADFB8577CEDAEA009"
+      },
+      "output": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1080-final-1\\window-create-zh-CN-sphere-positive-1",
+      "state": "NOT RUN"
+    },
+    {
+      "phase": "create",
+      "language": "zh-CN",
+      "label": "sphere-negative",
+      "route": "close",
+      "fixture": {
+        "path": "C:/Users/yoiri/source/repos/Cadoryx/artifacts/d6-window-fixtures-2/fixtures-1\\sphere-negative.cadoryx",
+        "sha256": "FEB3EC21B88BB45AB4A54CA1809BCFB541BADB647F88B2E5F3474E0AE2C17C3C"
+      },
+      "output": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1080-final-1\\window-create-zh-CN-sphere-negative-1",
+      "state": "NOT RUN"
+    },
+    {
+      "phase": "create",
+      "language": "zh-CN",
+      "label": "cylinder-positive",
+      "route": "confirm",
+      "fixture": {
+        "path": "C:/Users/yoiri/source/repos/Cadoryx/artifacts/d6-window-fixtures-2/fixtures-1\\cylinder-positive.cadoryx",
+        "sha256": "0635FD58B4239A7ADA78BA442639365689BBB63ED349FF1A794ADE89D1DE085E"
+      },
+      "output": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1080-final-1\\window-create-zh-CN-cylinder-positive-1",
+      "state": "NOT RUN"
+    },
+    {
+      "phase": "create",
+      "language": "zh-CN",
+      "label": "cylinder-negative",
+      "route": "confirm",
+      "fixture": {
+        "path": "C:/Users/yoiri/source/repos/Cadoryx/artifacts/d6-window-fixtures-2/fixtures-1\\cylinder-negative.cadoryx",
+        "sha256": "062C49C5AB91A0E449E4D21C351B49158DDC79BD37BB972CDF6788490B599128"
+      },
+      "output": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1080-final-1\\window-create-zh-CN-cylinder-negative-1",
+      "state": "NOT RUN"
+    },
+    {
+      "phase": "create",
+      "language": "ja-JP",
+      "label": "plane-positive",
+      "route": "close",
+      "fixture": {
+        "path": "C:/Users/yoiri/source/repos/Cadoryx/artifacts/d6-window-fixtures-2/fixtures-1\\plane-positive.cadoryx",
+        "sha256": "E3913830ACD00B9E5096E4FF5609A3485CD936709A9C540A277D4661D6E388D4"
+      },
+      "output": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1080-final-1\\window-create-ja-JP-plane-positive-1",
+      "state": "NOT RUN"
+    },
+    {
+      "phase": "create",
+      "language": "ja-JP",
+      "label": "plane-negative",
+      "route": "close",
+      "fixture": {
+        "path": "C:/Users/yoiri/source/repos/Cadoryx/artifacts/d6-window-fixtures-2/fixtures-1\\plane-negative.cadoryx",
+        "sha256": "A647C24EDD13DCE28C51213EA3DEDC48748804858C85824AF3C812E7B2062B0B"
+      },
+      "output": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1080-final-1\\window-create-ja-JP-plane-negative-1",
+      "state": "NOT RUN"
+    },
+    {
+      "phase": "create",
+      "language": "ja-JP",
+      "label": "sphere-positive",
+      "route": "confirm",
+      "fixture": {
+        "path": "C:/Users/yoiri/source/repos/Cadoryx/artifacts/d6-window-fixtures-2/fixtures-1\\sphere-positive.cadoryx",
+        "sha256": "1E4F348EC6B0D50E56ECAC012C46E6F81CB1B727E5E39E7ADFB8577CEDAEA009"
+      },
+      "output": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1080-final-1\\window-create-ja-JP-sphere-positive-1",
+      "state": "NOT RUN"
+    },
+    {
+      "phase": "create",
+      "language": "ja-JP",
+      "label": "sphere-negative",
+      "route": "confirm",
+      "fixture": {
+        "path": "C:/Users/yoiri/source/repos/Cadoryx/artifacts/d6-window-fixtures-2/fixtures-1\\sphere-negative.cadoryx",
+        "sha256": "FEB3EC21B88BB45AB4A54CA1809BCFB541BADB647F88B2E5F3474E0AE2C17C3C"
+      },
+      "output": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1080-final-1\\window-create-ja-JP-sphere-negative-1",
+      "state": "NOT RUN"
+    },
+    {
+      "phase": "create",
+      "language": "ja-JP",
+      "label": "cylinder-positive",
+      "route": "cancel",
+      "fixture": {
+        "path": "C:/Users/yoiri/source/repos/Cadoryx/artifacts/d6-window-fixtures-2/fixtures-1\\cylinder-positive.cadoryx",
+        "sha256": "0635FD58B4239A7ADA78BA442639365689BBB63ED349FF1A794ADE89D1DE085E"
+      },
+      "output": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1080-final-1\\window-create-ja-JP-cylinder-positive-1",
+      "state": "NOT RUN"
+    },
+    {
+      "phase": "create",
+      "language": "ja-JP",
+      "label": "cylinder-negative",
+      "route": "cancel",
+      "fixture": {
+        "path": "C:/Users/yoiri/source/repos/Cadoryx/artifacts/d6-window-fixtures-2/fixtures-1\\cylinder-negative.cadoryx",
+        "sha256": "062C49C5AB91A0E449E4D21C351B49158DDC79BD37BB972CDF6788490B599128"
+      },
+      "output": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1080-final-1\\window-create-ja-JP-cylinder-negative-1",
+      "state": "NOT RUN"
+    },
+    {
+      "phase": "edit",
+      "language": "en-US",
+      "label": "plane-positive",
+      "route": "confirm",
+      "fixture": {
+        "path": "C:/Users/yoiri/source/repos/Cadoryx/artifacts/d6-window-fixtures-2/fixtures-1\\plane-positive.cadoryx",
+        "sha256": "E3913830ACD00B9E5096E4FF5609A3485CD936709A9C540A277D4661D6E388D4"
+      },
+      "output": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1080-final-1\\window-edit-en-US-plane-positive-1",
+      "state": "NOT RUN"
+    },
+    {
+      "phase": "edit",
+      "language": "en-US",
+      "label": "plane-negative",
+      "route": "confirm",
+      "fixture": {
+        "path": "C:/Users/yoiri/source/repos/Cadoryx/artifacts/d6-window-fixtures-2/fixtures-1\\plane-negative.cadoryx",
+        "sha256": "A647C24EDD13DCE28C51213EA3DEDC48748804858C85824AF3C812E7B2062B0B"
+      },
+      "output": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1080-final-1\\window-edit-en-US-plane-negative-1",
+      "state": "NOT RUN"
+    },
+    {
+      "phase": "edit",
+      "language": "en-US",
+      "label": "sphere-positive",
+      "route": "cancel",
+      "fixture": {
+        "path": "C:/Users/yoiri/source/repos/Cadoryx/artifacts/d6-window-fixtures-2/fixtures-1\\sphere-positive.cadoryx",
+        "sha256": "1E4F348EC6B0D50E56ECAC012C46E6F81CB1B727E5E39E7ADFB8577CEDAEA009"
+      },
+      "output": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1080-final-1\\window-edit-en-US-sphere-positive-1",
+      "state": "NOT RUN"
+    },
+    {
+      "phase": "edit",
+      "language": "en-US",
+      "label": "sphere-negative",
+      "route": "cancel",
+      "fixture": {
+        "path": "C:/Users/yoiri/source/repos/Cadoryx/artifacts/d6-window-fixtures-2/fixtures-1\\sphere-negative.cadoryx",
+        "sha256": "FEB3EC21B88BB45AB4A54CA1809BCFB541BADB647F88B2E5F3474E0AE2C17C3C"
+      },
+      "output": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1080-final-1\\window-edit-en-US-sphere-negative-1",
+      "state": "NOT RUN"
+    },
+    {
+      "phase": "edit",
+      "language": "en-US",
+      "label": "cylinder-positive",
+      "route": "close",
+      "fixture": {
+        "path": "C:/Users/yoiri/source/repos/Cadoryx/artifacts/d6-window-fixtures-2/fixtures-1\\cylinder-positive.cadoryx",
+        "sha256": "0635FD58B4239A7ADA78BA442639365689BBB63ED349FF1A794ADE89D1DE085E"
+      },
+      "output": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1080-final-1\\window-edit-en-US-cylinder-positive-1",
+      "state": "NOT RUN"
+    },
+    {
+      "phase": "edit",
+      "language": "en-US",
+      "label": "cylinder-negative",
+      "route": "close",
+      "fixture": {
+        "path": "C:/Users/yoiri/source/repos/Cadoryx/artifacts/d6-window-fixtures-2/fixtures-1\\cylinder-negative.cadoryx",
+        "sha256": "062C49C5AB91A0E449E4D21C351B49158DDC79BD37BB972CDF6788490B599128"
+      },
+      "output": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1080-final-1\\window-edit-en-US-cylinder-negative-1",
+      "state": "NOT RUN"
+    },
+    {
+      "phase": "edit",
+      "language": "zh-CN",
+      "label": "plane-positive",
+      "route": "cancel",
+      "fixture": {
+        "path": "C:/Users/yoiri/source/repos/Cadoryx/artifacts/d6-window-fixtures-2/fixtures-1\\plane-positive.cadoryx",
+        "sha256": "E3913830ACD00B9E5096E4FF5609A3485CD936709A9C540A277D4661D6E388D4"
+      },
+      "output": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1080-final-1\\window-edit-zh-CN-plane-positive-1",
+      "state": "NOT RUN"
+    },
+    {
+      "phase": "edit",
+      "language": "zh-CN",
+      "label": "plane-negative",
+      "route": "cancel",
+      "fixture": {
+        "path": "C:/Users/yoiri/source/repos/Cadoryx/artifacts/d6-window-fixtures-2/fixtures-1\\plane-negative.cadoryx",
+        "sha256": "A647C24EDD13DCE28C51213EA3DEDC48748804858C85824AF3C812E7B2062B0B"
+      },
+      "output": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1080-final-1\\window-edit-zh-CN-plane-negative-1",
+      "state": "NOT RUN"
+    },
+    {
+      "phase": "edit",
+      "language": "zh-CN",
+      "label": "sphere-positive",
+      "route": "close",
+      "fixture": {
+        "path": "C:/Users/yoiri/source/repos/Cadoryx/artifacts/d6-window-fixtures-2/fixtures-1\\sphere-positive.cadoryx",
+        "sha256": "1E4F348EC6B0D50E56ECAC012C46E6F81CB1B727E5E39E7ADFB8577CEDAEA009"
+      },
+      "output": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1080-final-1\\window-edit-zh-CN-sphere-positive-1",
+      "state": "NOT RUN"
+    },
+    {
+      "phase": "edit",
+      "language": "zh-CN",
+      "label": "sphere-negative",
+      "route": "close",
+      "fixture": {
+        "path": "C:/Users/yoiri/source/repos/Cadoryx/artifacts/d6-window-fixtures-2/fixtures-1\\sphere-negative.cadoryx",
+        "sha256": "FEB3EC21B88BB45AB4A54CA1809BCFB541BADB647F88B2E5F3474E0AE2C17C3C"
+      },
+      "output": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1080-final-1\\window-edit-zh-CN-sphere-negative-1",
+      "state": "NOT RUN"
+    },
+    {
+      "phase": "edit",
+      "language": "zh-CN",
+      "label": "cylinder-positive",
+      "route": "confirm",
+      "fixture": {
+        "path": "C:/Users/yoiri/source/repos/Cadoryx/artifacts/d6-window-fixtures-2/fixtures-1\\cylinder-positive.cadoryx",
+        "sha256": "0635FD58B4239A7ADA78BA442639365689BBB63ED349FF1A794ADE89D1DE085E"
+      },
+      "output": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1080-final-1\\window-edit-zh-CN-cylinder-positive-1",
+      "state": "NOT RUN"
+    },
+    {
+      "phase": "edit",
+      "language": "zh-CN",
+      "label": "cylinder-negative",
+      "route": "confirm",
+      "fixture": {
+        "path": "C:/Users/yoiri/source/repos/Cadoryx/artifacts/d6-window-fixtures-2/fixtures-1\\cylinder-negative.cadoryx",
+        "sha256": "062C49C5AB91A0E449E4D21C351B49158DDC79BD37BB972CDF6788490B599128"
+      },
+      "output": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1080-final-1\\window-edit-zh-CN-cylinder-negative-1",
+      "state": "NOT RUN"
+    },
+    {
+      "phase": "edit",
+      "language": "ja-JP",
+      "label": "plane-positive",
+      "route": "close",
+      "fixture": {
+        "path": "C:/Users/yoiri/source/repos/Cadoryx/artifacts/d6-window-fixtures-2/fixtures-1\\plane-positive.cadoryx",
+        "sha256": "E3913830ACD00B9E5096E4FF5609A3485CD936709A9C540A277D4661D6E388D4"
+      },
+      "output": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1080-final-1\\window-edit-ja-JP-plane-positive-1",
+      "state": "NOT RUN"
+    },
+    {
+      "phase": "edit",
+      "language": "ja-JP",
+      "label": "plane-negative",
+      "route": "close",
+      "fixture": {
+        "path": "C:/Users/yoiri/source/repos/Cadoryx/artifacts/d6-window-fixtures-2/fixtures-1\\plane-negative.cadoryx",
+        "sha256": "A647C24EDD13DCE28C51213EA3DEDC48748804858C85824AF3C812E7B2062B0B"
+      },
+      "output": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1080-final-1\\window-edit-ja-JP-plane-negative-1",
+      "state": "NOT RUN"
+    },
+    {
+      "phase": "edit",
+      "language": "ja-JP",
+      "label": "sphere-positive",
+      "route": "confirm",
+      "fixture": {
+        "path": "C:/Users/yoiri/source/repos/Cadoryx/artifacts/d6-window-fixtures-2/fixtures-1\\sphere-positive.cadoryx",
+        "sha256": "1E4F348EC6B0D50E56ECAC012C46E6F81CB1B727E5E39E7ADFB8577CEDAEA009"
+      },
+      "output": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1080-final-1\\window-edit-ja-JP-sphere-positive-1",
+      "state": "NOT RUN"
+    },
+    {
+      "phase": "edit",
+      "language": "ja-JP",
+      "label": "sphere-negative",
+      "route": "confirm",
+      "fixture": {
+        "path": "C:/Users/yoiri/source/repos/Cadoryx/artifacts/d6-window-fixtures-2/fixtures-1\\sphere-negative.cadoryx",
+        "sha256": "FEB3EC21B88BB45AB4A54CA1809BCFB541BADB647F88B2E5F3474E0AE2C17C3C"
+      },
+      "output": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1080-final-1\\window-edit-ja-JP-sphere-negative-1",
+      "state": "NOT RUN"
+    },
+    {
+      "phase": "edit",
+      "language": "ja-JP",
+      "label": "cylinder-positive",
+      "route": "cancel",
+      "fixture": {
+        "path": "C:/Users/yoiri/source/repos/Cadoryx/artifacts/d6-window-fixtures-2/fixtures-1\\cylinder-positive.cadoryx",
+        "sha256": "0635FD58B4239A7ADA78BA442639365689BBB63ED349FF1A794ADE89D1DE085E"
+      },
+      "output": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1080-final-1\\window-edit-ja-JP-cylinder-positive-1",
+      "state": "NOT RUN"
+    },
+    {
+      "phase": "edit",
+      "language": "ja-JP",
+      "label": "cylinder-negative",
+      "route": "cancel",
+      "fixture": {
+        "path": "C:/Users/yoiri/source/repos/Cadoryx/artifacts/d6-window-fixtures-2/fixtures-1\\cylinder-negative.cadoryx",
+        "sha256": "062C49C5AB91A0E449E4D21C351B49158DDC79BD37BB972CDF6788490B599128"
+      },
+      "output": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1080-final-1\\window-edit-ja-JP-cylinder-negative-1",
+      "state": "NOT RUN"
+    }
+  ],
+  "productionDialogChanged": false,
+  "hostInjectsInput": false,
+  "actualDesktopRun": false,
+  "inputTargetMustComeFromReturnedComputerUseWindow": true,
+  "nativeHandlesDiagnosticsOnly": true,
+  "nativeLane": "After SDK actually hands back the native lane and final1080 prerequisites; no desktop input queued",
+  "references": [
+    {
+      "path": "WindowHost.cs",
+      "sha256": "70569AE9DE756D882E960E5F4EC032B75838A8C1B541733FDA2246B206F5005E"
+    },
+    {
+      "path": "README.md",
+      "sha256": "50442BA85391CF0BF82594032CF58A742777904D2571C69FB21972E2F35CAEEC"
+    },
+    {
+      "path": "build-exit.json",
+      "sha256": "0921E4599E0ABEE446AF0A6D64706B5453849D9BEBFE746C8105FB90AF3843F5"
+    },
+    {
+      "path": "audit.py",
+      "sha256": "6E9A4D26585567E7EC12E58D3566BDABC1FE55E52FFB237268303158BFC2D5F0"
+    },
+    {
+      "path": "release-build.log",
+      "sha256": "DB9D2EC764DB2FB8402314C10542EAA016C4086F4C36FED0D7DB243C835056BB"
+    },
+    {
+      "path": "debug-build.log",
+      "sha256": "F816CE28A3EF7828B6627A2E5BBE0E9EE5641E081E9AFD2E14F7C5722AB2AF00"
+    }
+  ],
+  "AFComplete": false,
+  "cleanup": false,
+  "G": "USER_DEFERRED",
+  "productionSourceInputsUnchanged": 1192
+}

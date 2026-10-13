@@ -1,5 +1,9 @@
 # 3D CAD 产品缺口与实施规划
 
+2026-10-13，status246：[1080最终验收准备](../capability-evidence/diagnostics/af1080-final-ready/verification.json)完成：1192来源保持，完整solution Release/Debug build0，实际最终WPF各208编译断言通过，provider16共享逐字节一致，SDK13/native62磁盘匹配公开85。76实际编译程序集的221类型/696成员集合与原1073逐项相同、零直接native imports；元数据不算能力/运行验收。原模型三份来源、6815全量、公差/预算、两fresh各20周期/6482ms/1800秒、生产Open900秒及完整788×411 PNG保持，实际均NOT RUN。[D6最新宿主](../capability-evidence/diagnostics/af1080-window-observer/verification.json)两配置build0、19生产/worker/SDK13/native62及资源一致，原36矩阵/29断言/六状态/30和300秒不变，桌面未开始。SDK仍占用native lane，包86待交付；不先启动85全量再重复86。[AppSweep归档诊断接收](../capability-evidence/diagnostics/appsweep-upstream/verification.json)五哈希及18源码匹配，归档两配置记录Z0/期望Z3；367原辅助输入匹配、172变化/16缺失，旧二进制完整来源未重认证，probe退出0表示复现缺陷，不能算修复或应用受影响证明。A–F全部范围及原STEP24继续，G/清理暂缓。
+
+当前进度以status246为准；以下status245及更早保留历史。
+
 2026-10-13，status245：[终端工程图收据1080](../capability-evidence/diagnostics/af1080-drawing-terminal-result/verification.json)已合入：终端CadCommandResult.Success采用生产JSON收据success，拒绝类型/inspection不再包装成成功；保留原消息、身份/游标与事务。新50项旧1079每配置30通过/20复现成功状态错误；候选和合入后根各208/208（原158+新50）托管断言直接调用通过，Tests依赖图/WPF两配置build0、SDK13/native62磁盘匹配公开85，无原生加载。当前源码1080/公开85；预计6815尚未完整发现/运行，原模型及最终性能/窗口未验，原STEP24未修复。SDK报告Release2255/2255，精确迁移594 Manual→Emitted加4 Blocked→Emitted，Debug/实际原生/包消费者继续、证据尚待独立接收；Cadoryx保持原生空闲。A–F全部范围继续，G/清理暂缓。
 
 当前结论以status245为准；以下status244及更早是保留历史。

@@ -1,0 +1,33 @@
+{
+  "stages": [
+    {
+      "log": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1080-final-1\\restore.log",
+      "exitCode": 0,
+      "stage": "restore"
+    },
+    {
+      "log": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1080-final-1\\release.log",
+      "exitCode": 0,
+      "stage": "Release"
+    },
+    {
+      "log": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1080-final-1\\debug.log",
+      "exitCode": 0,
+      "stage": "Debug"
+    },
+    {
+      "log": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1080-final-1\\provider-restore.log",
+      "exitCode": 0,
+      "stage": "provider-restore"
+    },
+    {
+      "log": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1080-final-1\\provider-publish.log",
+      "exitCode": 0,
+      "stage": "provider-publish"
+    }
+  ],
+  "nativeJobs": 0,
+  "actualFullTestRun": false,
+  "productionApplied": true,
+  "actualProviderRun": false
+}

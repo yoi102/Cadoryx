@@ -1,0 +1,19 @@
+{
+  "nativeStarted": false,
+  "desktopInputStarted": false,
+  "productionDialogChanged": false,
+  "stages": [
+    {
+      "candidate": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1080-final-1\\workspace\\Cadoryx.wpf\\bin\\Release\\net10.0-windows\\win-x64",
+      "log": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1080-final-1\\window-observer-1-release.log",
+      "exitCode": 0,
+      "configuration": "Release"
+    },
+    {
+      "candidate": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1080-final-1\\workspace\\Cadoryx.wpf\\bin\\Debug\\net10.0-windows\\win-x64",
+      "log": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1080-final-1\\window-observer-1-debug.log",
+      "exitCode": 0,
+      "configuration": "Debug"
+    }
+  ]
+}

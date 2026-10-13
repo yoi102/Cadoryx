@@ -1,0 +1,2520 @@
+{
+  "recordedAt": "2026-10-13T12:28:04.013550+00:00",
+  "state": "UPSTREAM_APPSWEEP_ARCHIVED_SOURCE_LOGS_BOUND_BINARY_PROVENANCE_PARTIAL_NOT_REPAIR",
+  "sdkSourceCommit": "b8f597c677811d1f9f4d8a97f5ae2825c0353a42",
+  "upstreamRoot": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp",
+  "diagnosticFiles": [
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\batch-bw\\appsweep-readonly-probe.cpp",
+      "sha256": "358F16A71717961210D5AAB04177FFCA1FD615AA2709F2CF30E8DA663282F24A"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\batch-bw\\appsweep-readonly-release.log",
+      "sha256": "44817BEADE5C0A8A8C24CE324835163869EF574E88E7A265EDCE570B00843748"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\batch-bw\\appsweep-readonly-debug.log",
+      "sha256": "B0D779C343917D90CBA458DC0F2EC6851C03DEC71F12AAF89B080C741355384F"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\batch-bw\\auxiliary-inputs.json",
+      "sha256": "F7983DF2374FF956931C3613A14ADB51ABC0999DA869DA7F9ECD1632BE3225AF"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\batch-bw\\read-only-preaudit.json",
+      "sha256": "BA2922926FCD980DC9967AF0DC3FB5AC95288A895013E2F882A4C9C3BC543377"
+    }
+  ],
+  "nativeSourceRows": [
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\batch-bw\\sdk\\GeomFill_SectionGenerator.hxx",
+      "sha256": "1FCFE9B862A89E51FEA7FA84381A8B6709567B56A33E6067D0B3BA657D9BDDA3"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\batch-bw\\sdk\\GeomFill_SectionGenerator.cxx",
+      "sha256": "B8B75F344E60BBD35E27C721BF7C4A0497ACC0BCDFF45D8BD8547C65D78AB3D2"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\batch-bw\\sdk\\GeomFill_AppSurf.hxx",
+      "sha256": "F6B33922620549230D7316C6C982584C9FD24F0372CD8B2C1B65337D8E98CE57"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\batch-bw\\sdk\\GeomFill_AppSurf_0.cxx",
+      "sha256": "9D4582EF9F9EC80DB148ED72257E73C6697B56108D153D21DE42CC2344EA5599"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\batch-bw\\sdk\\GeomFill_SweepSectionGenerator.hxx",
+      "sha256": "96C7525DFF13C841C4537EA773E5323EE4CC390D363A6114AB5941F22FE6F288"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\batch-bw\\sdk\\GeomFill_SweepSectionGenerator.cxx",
+      "sha256": "6C8308E7640DAA4E7A8BCF8957E9E04238FF4865A96F1C7456047AA93C1FA13A"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\batch-bw\\sdk\\GeomFill_SweepSectionGenerator.lxx",
+      "sha256": "A75BC1C6DBBEB492F331CB6D2AD34AD77AF606BFB47CFEB70014620D3B9FDD5E"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\batch-bw\\sdk\\GeomFill_AppSweep.hxx",
+      "sha256": "7C5F58F4AB0ABBC815961DCF475C81796866446C288C04FAC28055DAAF50D89C"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\batch-bw\\sdk\\GeomFill_AppSweep_0.cxx",
+      "sha256": "A789303EFDB221ED0DA50FA145292C66E4F28B4C49DB061EDD924E5A31291A12"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\batch-bw\\sdk\\GeomAPI_PointsToBSpline.hxx",
+      "sha256": "C60E48909FB7A0156A6CACDE41FFB350798D81DDD21B6584E9BE58F06020C32B"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\batch-bw\\sdk\\GeomAPI_PointsToBSpline.cxx",
+      "sha256": "030D72FBD8201976E9E647B8B9E38A763F02024E87C781A104E45AF9C5A561B9"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\batch-bw\\sdk\\GeomAPI_PointsToBSplineSurface.hxx",
+      "sha256": "F38AD23ECA4AD1F85147DEEBC4A9F96AD109BD567EB00649ACF597DF97FFBDD5"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\batch-bw\\sdk\\GeomAPI_PointsToBSplineSurface.cxx",
+      "sha256": "3636933FB6C5F953A07F2755B8F004C6EFDF6313D9162432E71D096452A7925B"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\batch-bw\\sdk\\GeomFill_BSplineCurves.hxx",
+      "sha256": "5F453F0A5E2ABC152EE04CB6DD45756EF1A0426439590E92DEEF5E6B5E7238B3"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\batch-bw\\sdk\\GeomFill_BSplineCurves.cxx",
+      "sha256": "962CEA9626B5345675AF9B25E7782A6DD41AA66B6CCDD9812429513B31FD58CF"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\batch-bw\\sdk\\GeomFill_BezierCurves.hxx",
+      "sha256": "178D8E4EE403AC26F5BBD1934EC48074AB2D90D2F1627EF77AF8EA57358A5852"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\batch-bw\\sdk\\GeomFill_BezierCurves.cxx",
+      "sha256": "6177C3C4A360541740D17690E21AEB615DE56BFBA2F6F1B90974FC7D250C61ED"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\batch-bw\\sdk\\AppBlend_AppSurf.gxx",
+      "sha256": "E0AFA90FECE4B63FDB3F0BB80148AB3E175D837D6B0BDD2BA2CA0839633EB044"
+    }
+  ],
+  "matchingAuxiliaryInputs": [
+    {
+      "sha256": "9F1B529A3CD599B1ADB271A2C6AE7123021AC8A603575DFDEDEA9412CCA052A5",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\batch-bw\\api-current.json"
+    },
+    {
+      "sha256": "5DA8BC95BAC770B35289B6E867B1FA5FB85C3CCB02F5F3F043463CD6DF7D46F2",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\batch-bw\\api-diff.json"
+    },
+    {
+      "sha256": "358F16A71717961210D5AAB04177FFCA1FD615AA2709F2CF30E8DA663282F24A",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\batch-bw\\appsweep-readonly-probe.cpp"
+    },
+    {
+      "sha256": "022E137AE9126AE4D2B09D46AF7000B755C1155921D1C314EF2B0DDEAC145D3D",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\batch-bw\\auxiliary.log"
+    },
+    {
+      "sha256": "F7AC99C3469946D763454E66C56866BF384F1B799B782192D202CAF18771C120",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\batch-bw\\auxiliary.ps1"
+    },
+    {
+      "sha256": "5BAE0E4029E708778C3ACAA8CD0FBB0B178F619113A1C21F87944703B8E51566",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\batch-bw\\native-exports.json"
+    },
+    {
+      "sha256": "E0AFA90FECE4B63FDB3F0BB80148AB3E175D837D6B0BDD2BA2CA0839633EB044",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\batch-bw\\sdk\\AppBlend_AppSurf.gxx"
+    },
+    {
+      "sha256": "030D72FBD8201976E9E647B8B9E38A763F02024E87C781A104E45AF9C5A561B9",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\batch-bw\\sdk\\GeomAPI_PointsToBSpline.cxx"
+    },
+    {
+      "sha256": "C60E48909FB7A0156A6CACDE41FFB350798D81DDD21B6584E9BE58F06020C32B",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\batch-bw\\sdk\\GeomAPI_PointsToBSpline.hxx"
+    },
+    {
+      "sha256": "3636933FB6C5F953A07F2755B8F004C6EFDF6313D9162432E71D096452A7925B",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\batch-bw\\sdk\\GeomAPI_PointsToBSplineSurface.cxx"
+    },
+    {
+      "sha256": "F38AD23ECA4AD1F85147DEEBC4A9F96AD109BD567EB00649ACF597DF97FFBDD5",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\batch-bw\\sdk\\GeomAPI_PointsToBSplineSurface.hxx"
+    },
+    {
+      "sha256": "9D4582EF9F9EC80DB148ED72257E73C6697B56108D153D21DE42CC2344EA5599",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\batch-bw\\sdk\\GeomFill_AppSurf_0.cxx"
+    },
+    {
+      "sha256": "F6B33922620549230D7316C6C982584C9FD24F0372CD8B2C1B65337D8E98CE57",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\batch-bw\\sdk\\GeomFill_AppSurf.hxx"
+    },
+    {
+      "sha256": "A789303EFDB221ED0DA50FA145292C66E4F28B4C49DB061EDD924E5A31291A12",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\batch-bw\\sdk\\GeomFill_AppSweep_0.cxx"
+    },
+    {
+      "sha256": "7C5F58F4AB0ABBC815961DCF475C81796866446C288C04FAC28055DAAF50D89C",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\batch-bw\\sdk\\GeomFill_AppSweep.hxx"
+    },
+    {
+      "sha256": "6177C3C4A360541740D17690E21AEB615DE56BFBA2F6F1B90974FC7D250C61ED",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\batch-bw\\sdk\\GeomFill_BezierCurves.cxx"
+    },
+    {
+      "sha256": "178D8E4EE403AC26F5BBD1934EC48074AB2D90D2F1627EF77AF8EA57358A5852",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\batch-bw\\sdk\\GeomFill_BezierCurves.hxx"
+    },
+    {
+      "sha256": "962CEA9626B5345675AF9B25E7782A6DD41AA66B6CCDD9812429513B31FD58CF",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\batch-bw\\sdk\\GeomFill_BSplineCurves.cxx"
+    },
+    {
+      "sha256": "5F453F0A5E2ABC152EE04CB6DD45756EF1A0426439590E92DEEF5E6B5E7238B3",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\batch-bw\\sdk\\GeomFill_BSplineCurves.hxx"
+    },
+    {
+      "sha256": "B8B75F344E60BBD35E27C721BF7C4A0497ACC0BCDFF45D8BD8547C65D78AB3D2",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\batch-bw\\sdk\\GeomFill_SectionGenerator.cxx"
+    },
+    {
+      "sha256": "1FCFE9B862A89E51FEA7FA84381A8B6709567B56A33E6067D0B3BA657D9BDDA3",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\batch-bw\\sdk\\GeomFill_SectionGenerator.hxx"
+    },
+    {
+      "sha256": "6C8308E7640DAA4E7A8BCF8957E9E04238FF4865A96F1C7456047AA93C1FA13A",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\batch-bw\\sdk\\GeomFill_SweepSectionGenerator.cxx"
+    },
+    {
+      "sha256": "96C7525DFF13C841C4537EA773E5323EE4CC390D363A6114AB5941F22FE6F288",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\batch-bw\\sdk\\GeomFill_SweepSectionGenerator.hxx"
+    },
+    {
+      "sha256": "A75BC1C6DBBEB492F331CB6D2AD34AD77AF606BFB47CFEB70014620D3B9FDD5E",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\batch-bw\\sdk\\GeomFill_SweepSectionGenerator.lxx"
+    },
+    {
+      "sha256": "4ACA12164F7DEE0B58CC4C5AD265BDF297A3899C11E29D2EB6763808F5163BC7",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\batch-bw\\sdk\\source-identity.json"
+    },
+    {
+      "sha256": "60819543FE368EF19ACF4D1A91AC1CE74B1AF3BC3F91A120AA12F962DEA7C2E1",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\batch-bw\\two-section-sdk-probe.cpp"
+    },
+    {
+      "sha256": "CF0DB900E55F3904C03F76A18CFDF81A48B1F2C010979FDD9EB95606630204CC",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\batch-bw\\verify-appsweep-readonly.ps1"
+    },
+    {
+      "sha256": "D0783017C3728061A95556E9FA1B99F2219BBBA2E7D6BE27025541D90CE2B443",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\batch-bw\\verify-fitting-adapters.ps1"
+    },
+    {
+      "sha256": "235A4242D83E6E1BFB776154DB0AAF5F91FC1173B6BA248436F17502D51241E3",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\batch-bw\\verify-inputs.ps1"
+    },
+    {
+      "sha256": "DE675A16551274EC9E4DBA1DFE843A6161AB8F683CFDD8CA844E521C4B421507",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\batch-bw\\verify-payloads.ps1"
+    },
+    {
+      "sha256": "D34B5A021B618A11FADA09779B7093C4CF9CB75356D23DFC5D343975FEF63933",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\batch-bw\\verify-two-section-sdk.ps1"
+    },
+    {
+      "sha256": "4D7A6A2CFF37C782CE1A3C74FA83EBBEBCC43DFC774E3F497A406C84C1458C7E",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\native\\Debug\\avcodec-57.dll"
+    },
+    {
+      "sha256": "297D3207DD0E6325DAB7A080472A4FD2F743CFC53861615B4DC96B91227CD3AF",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\native\\Debug\\avformat-57.dll"
+    },
+    {
+      "sha256": "BE7C03FF47618916D16AF446E2F7C00E48F2FF8934C6ACE4C0D0E3D804732E8E",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\native\\Debug\\avutil-55.dll"
+    },
+    {
+      "sha256": "4594BD0538F7F6B05148B00996FF36DDFEDEF8D66910E931503DCFEBF8EFE1DB",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\native\\Debug\\FreeImage.dll"
+    },
+    {
+      "sha256": "637621E4AE51B496B8A86F9B053050D5AF2BA999EA0680BBFE3D5DF91F976C75",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\native\\Debug\\freetype.dll"
+    },
+    {
+      "sha256": "6E57FD7C9562DB5EEF41E09C656C2A80B594C3956FE2E341244742367C0F242C",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\native\\Debug\\jemalloc.dll"
+    },
+    {
+      "sha256": "71DB78E77E577DB6D0666C25437695D42CEAFB9C7F8DA94FBE765525B8E2F5F2",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\native\\Debug\\openvr_api.dll"
+    },
+    {
+      "sha256": "67BCFFB3CCDAEBF2BBD3149542D92DD9430ABFDFF1D7B79B3A529AF712926412",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\native\\Debug\\swscale-4.dll"
+    },
+    {
+      "sha256": "5B839800B212EC6120C01E28877073ACD2E44EB835DBC5D542C251FE7087F002",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\native\\Debug\\tbb12_debug.dll"
+    },
+    {
+      "sha256": "EF43F7F2CEA73EDD0F400F8410D3C2A4988217BCD703F7E2EA2D3668C1D6193B",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\native\\Debug\\TKBin.dll"
+    },
+    {
+      "sha256": "537AAF5CBDF7420A4421A2A205A65A8474C28C323555759CB8F9672B6401DEC4",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\native\\Debug\\TKBinL.dll"
+    },
+    {
+      "sha256": "5D572965C136B1A607300B8E23FAA756C398C8AC3616177C331BEFF612EF8DB0",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\native\\Debug\\TKBinTObj.dll"
+    },
+    {
+      "sha256": "2A8B8854F0B8D9D1AD66FBBBB9ECA78A9AFA0FCB5411D750B0DA79BF938D2F18",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\native\\Debug\\TKBinXCAF.dll"
+    },
+    {
+      "sha256": "18B699F422DA61A23AAFFD00AAC71A1CFA88F25F6D2DEEFEE44DC5051F1B18BE",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\native\\Debug\\TKBO.dll"
+    },
+    {
+      "sha256": "48E6EEDCAE0130E54746C495A9BAE08CF8E1B68E6E2C190BF121A8915FA3F945",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\native\\Debug\\TKBool.dll"
+    },
+    {
+      "sha256": "F7E29DBDB5E4A7EAB5FB73B786E29685DFCFDDE0FC718C1D140C2EB15505E4C8",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\native\\Debug\\TKBRep.dll"
+    },
+    {
+      "sha256": "F1AA4678BD87BD8CA8884ADFFD3711A419AA1A84359DE48C5288F2254F145265",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\native\\Debug\\TKCAF.dll"
+    },
+    {
+      "sha256": "EB19AE6DEC65F38E26AD06DBB149DC7685B0F3BDE589FC728160C555EAEA3773",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\native\\Debug\\TKCDF.dll"
+    },
+    {
+      "sha256": "D9CAC02DB93BD66E07664AEDB87E41042B38B69214CE48E84B65E6BD0454E62B",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\native\\Debug\\TKD3DHost.dll"
+    },
+    {
+      "sha256": "1FFB1E5D60437FA8AA7808D63D80E1E6F3DDC662C4801B86AB7ECA0361D49206",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\native\\Debug\\TKDE.dll"
+    },
+    {
+      "sha256": "F08160B00343734B3065F927B3434CF5B1FA92E97081E98B5B97DBF8E05E0394",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\native\\Debug\\TKDECascade.dll"
+    },
+    {
+      "sha256": "AA4622ED043ECFCEF8E30C4A6DEF7090869CDF756186748853A2E3A007931EA0",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\native\\Debug\\TKDEGLTF.dll"
+    },
+    {
+      "sha256": "FDB22777BBA1CCA582BA042BD0F8E1003A8236921F12191A111997ADEF0B3631",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\native\\Debug\\TKDEIGES.dll"
+    },
+    {
+      "sha256": "3756984BF4D47937BF9F4B5AAF3E9E904990209B4E0B938740C503117EE32A98",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\native\\Debug\\TKDEOBJ.dll"
+    },
+    {
+      "sha256": "8E1CBF0DB5044B349EDF268AF0305004050AF37EE333D7A580F2C0FE59F123D8",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\native\\Debug\\TKDEPLY.dll"
+    },
+    {
+      "sha256": "6EF695BB6BDCE0CA65814422E78124B312BFCBDB1161D35ECD5E1BBD23DFB759",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\native\\Debug\\TKDESTEP.dll"
+    },
+    {
+      "sha256": "32D409AD838486C353777449B8492FC6FF8E09E6D0340683FDAFA288D94DD631",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\native\\Debug\\TKDESTL.dll"
+    },
+    {
+      "sha256": "65EC2F919148205C588DF8B8DA1B28EA2433EEB55BBCAB58C065923E9EFB31C4",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\native\\Debug\\TKDEVRML.dll"
+    },
+    {
+      "sha256": "87992A614FC25899181BBD93B208C81D6C7B3EA11821125B9BA4F74E56C2889D",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\native\\Debug\\TKernel.dll"
+    },
+    {
+      "sha256": "B2C2AF1E7A1E453A194D577F8EB2A3C94E09F122155D82C27D4B2A3C1CF74784",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\native\\Debug\\TKExpress.dll"
+    },
+    {
+      "sha256": "AC69DB734499BC67D108142B861FD03F5CB3B17156306E7A0AF03053FDE619CC",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\native\\Debug\\TKFeat.dll"
+    },
+    {
+      "sha256": "97AC7FD17984210AF081C75C513BE2C5E0140E070F1528AF2FAA5EDE00F8B1CE",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\native\\Debug\\TKFillet.dll"
+    },
+    {
+      "sha256": "2D270096940C8F1DF937FE8953816ABF010C4C3AB2FC1A5B71826199389E171E",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\native\\Debug\\TKG2d.dll"
+    },
+    {
+      "sha256": "1FA4A3216715BAB85C540328D6260101689491A5C87517A883F74D4E941D8A0E",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\native\\Debug\\TKG3d.dll"
+    },
+    {
+      "sha256": "F85343E526442D188549DE8040ADF1A917E5915932223C936B3395A383A82B62",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\native\\Debug\\TKGeomAlgo.dll"
+    },
+    {
+      "sha256": "D271DBDF83536887CB2708AB27D9058D444E0421DEAF6E2338E59E93704059C4",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\native\\Debug\\TKGeomBase.dll"
+    },
+    {
+      "sha256": "5101E1F9FFD0273A72F0EB47F69E1B7A86F2B7961A9824D1E0EF7C0C56BED8C0",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\native\\Debug\\TKHelix.dll"
+    },
+    {
+      "sha256": "EAEAE780AC74EDC45FECFF45411ABD347DDC18BF296EDD7D2EC1AC2FC7622995",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\native\\Debug\\TKHLR.dll"
+    },
+    {
+      "sha256": "F33C61A5EB306573BF00ADDEA5AAB56BFB8E1C54B71453D06F51108ED7F1BE46",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\native\\Debug\\TKLCAF.dll"
+    },
+    {
+      "sha256": "B8CE65040509F6799423657100A8A58D6ED87D6572EDAF0B26986E4B80B2FBBC",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\native\\Debug\\TKMath.dll"
+    },
+    {
+      "sha256": "5EC5749FDCF0538B8FFEE8580A85A53036331CFB568E171FB840ADE3198EFC60",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\native\\Debug\\TKMesh.dll"
+    },
+    {
+      "sha256": "863C6363B1B7C4DDFF4F1E57C33BC75E300F944A08C3A7F458B3FE00FAC1DD2E",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\native\\Debug\\TKMeshVS.dll"
+    },
+    {
+      "sha256": "81B7C5914C61709EF1254A309FBA919C47F3FD4C77AD4B562EA72C032249887F",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\native\\Debug\\TKOffset.dll"
+    },
+    {
+      "sha256": "B8EC1D5A254EC2DE0077C7C0AF854B2B96A554AC4B8F033FC1B54E9E9F2020BD",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\native\\Debug\\TKOpenGl.dll"
+    },
+    {
+      "sha256": "EB6687863D5ABF6E1DFBB84A48FEDD27DAFEA9F3147C9EB9F23D3617F6E7D621",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\native\\Debug\\TKPrim.dll"
+    },
+    {
+      "sha256": "681996F72E9B5E2D78690DDBCA9388AC5F7E65340B27A2443191208A4CE9041D",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\native\\Debug\\TKRWMesh.dll"
+    },
+    {
+      "sha256": "9FC8F2BC467CBFD795D22373153EA98D99D9527DCD718B9F7CE89A4837983917",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\native\\Debug\\TKService.dll"
+    },
+    {
+      "sha256": "6577C6EA43E24CD108DEA3BC33E067FD10965660144F36A0F91F6DBBDAF7DC88",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\native\\Debug\\TKShHealing.dll"
+    },
+    {
+      "sha256": "501FEB8D2E2A64023CDFB13503B66EF6A68D4E6B1A959FB3AE683E6C7DFAB951",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\native\\Debug\\TKStd.dll"
+    },
+    {
+      "sha256": "C45947C1F025F8E8FAF1ED15A155FF106207906EA30626FE5CAC585760A6B0B0",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\native\\Debug\\TKStdL.dll"
+    },
+    {
+      "sha256": "AD7B872F505BCA36BA5331E62FD7C9BA1348B322B1B300D70E021616E7BB6460",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\native\\Debug\\TKTObj.dll"
+    },
+    {
+      "sha256": "2E50CBF494204E85B4D745EB321C1BFA498ADE33DD7E5A8F7770786AA80AEB80",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\native\\Debug\\TKTopAlgo.dll"
+    },
+    {
+      "sha256": "7037670FC50A54AB964D3EE10D0C56B4CC1F7DCB8B190504D597A71FA6EAA1C4",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\native\\Debug\\TKV3d.dll"
+    },
+    {
+      "sha256": "E2CD60634BBF923118215BEACA4A2F075C7233CB4D0C8384980B56F556D1143D",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\native\\Debug\\TKVCAF.dll"
+    },
+    {
+      "sha256": "6B788F83460C82780CF6C8D7739C62413D6BA2038688A2DD444C72409DAD8DD7",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\native\\Debug\\TKXCAF.dll"
+    },
+    {
+      "sha256": "B392646130F4FF5EB5ACC6F65B1CA76283E8A6FC77D7D57834A8EAC8FBB652BE",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\native\\Debug\\TKXMesh.dll"
+    },
+    {
+      "sha256": "9CB120882CBFDB544690B6F2968BD2C18A9A67CAE8ADC929FF40C0FA3BADA8EF",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\native\\Debug\\TKXml.dll"
+    },
+    {
+      "sha256": "EE80D170FDE1BAD5D584E03A7EB35EBA3CA7EE60EAAB5FB5988E120E3769C30C",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\native\\Debug\\TKXmlL.dll"
+    },
+    {
+      "sha256": "F0984B10FC3BB469C4713AB71E430E369B16642F5F1527CDD54E36F28870E2F8",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\native\\Debug\\TKXmlTObj.dll"
+    },
+    {
+      "sha256": "CA1AEEB8218847ED4A2F3A0DC3C7076E51ECA3A680385D187ED177B7388A98AE",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\native\\Debug\\TKXmlXCAF.dll"
+    },
+    {
+      "sha256": "25FBFB1C7AB44C9E04C885AAFB1C4763133F0039E58BA21B2FD7CA7070D24104",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\native\\Debug\\TKXSBase.dll"
+    },
+    {
+      "sha256": "4D7A6A2CFF37C782CE1A3C74FA83EBBEBCC43DFC774E3F497A406C84C1458C7E",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\native\\Release\\avcodec-57.dll"
+    },
+    {
+      "sha256": "297D3207DD0E6325DAB7A080472A4FD2F743CFC53861615B4DC96B91227CD3AF",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\native\\Release\\avformat-57.dll"
+    },
+    {
+      "sha256": "BE7C03FF47618916D16AF446E2F7C00E48F2FF8934C6ACE4C0D0E3D804732E8E",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\native\\Release\\avutil-55.dll"
+    },
+    {
+      "sha256": "4594BD0538F7F6B05148B00996FF36DDFEDEF8D66910E931503DCFEBF8EFE1DB",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\native\\Release\\FreeImage.dll"
+    },
+    {
+      "sha256": "637621E4AE51B496B8A86F9B053050D5AF2BA999EA0680BBFE3D5DF91F976C75",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\native\\Release\\freetype.dll"
+    },
+    {
+      "sha256": "EA0CFCF6A12BB3863961074547C958FD978AA3F800244CC4FE2847B127C4DF5E",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\native\\Release\\jemalloc.dll"
+    },
+    {
+      "sha256": "71DB78E77E577DB6D0666C25437695D42CEAFB9C7F8DA94FBE765525B8E2F5F2",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\native\\Release\\openvr_api.dll"
+    },
+    {
+      "sha256": "67BCFFB3CCDAEBF2BBD3149542D92DD9430ABFDFF1D7B79B3A529AF712926412",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\native\\Release\\swscale-4.dll"
+    },
+    {
+      "sha256": "887888A0C2FFE7F64718D4EEA2A10CE41C68DEC1A954DB3A62646ADEEE66C0AD",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\native\\Release\\tbb12.dll"
+    },
+    {
+      "sha256": "B27B08FFBE07C1FACA441897E6D807062D01F453BD847175CAE999B15AD31D96",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\native\\Release\\TKBin.dll"
+    },
+    {
+      "sha256": "A8A87E784C6AD97DAF773926A106E8904ABEF77AE30CAD602DD236A0FE376378",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\native\\Release\\TKBinL.dll"
+    },
+    {
+      "sha256": "F482E7F3A3526150C537E3DD6CDDDBD6B4E38B29C62AC3CF3F81D9E97A296EAB",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\native\\Release\\TKBinTObj.dll"
+    },
+    {
+      "sha256": "BE1F35F341A9BC1EF26DB6721AFE727747CC97053A86ADA5A51C03E4C43EBA3A",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\native\\Release\\TKBinXCAF.dll"
+    },
+    {
+      "sha256": "41F837935BCC65882ACD73295EF65CA13D47B018ACDCB6093FAF47804B96D0C5",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\native\\Release\\TKBO.dll"
+    },
+    {
+      "sha256": "FA76C5374AE85E1649F27DA41ED0B45EC36C68C413ACE84554198CF39D11DAFD",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\native\\Release\\TKBool.dll"
+    },
+    {
+      "sha256": "A511C8CF51178CF881C3BA0B54287DCECE6DED03CF3DE99E6FABF2A2D5152207",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\native\\Release\\TKBRep.dll"
+    },
+    {
+      "sha256": "E78FD6196F7356FFA541A015CB6DF481E9999D8E813E2D7A5D914CA6205614AE",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\native\\Release\\TKCAF.dll"
+    },
+    {
+      "sha256": "9BCCAB992DA8F4069CB4020A064D67DF507309CA679AD20BB97A9B5FB0797A3A",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\native\\Release\\TKCDF.dll"
+    },
+    {
+      "sha256": "0EB1591D44FFF265C3870865013C7FCBDE9F9B7DF79903ED0116AC1C93DE10BE",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\native\\Release\\TKD3DHost.dll"
+    },
+    {
+      "sha256": "2F0E1C9BD86C367B36DC7519502B095DE0DEE910D1F86B5B39BA962790A0D0C5",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\native\\Release\\TKDE.dll"
+    },
+    {
+      "sha256": "6E65801F138067283CA2355F7E43FF5BF30502E0CB6F782F33245E7B5096F5A1",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\native\\Release\\TKDECascade.dll"
+    },
+    {
+      "sha256": "636F0E11859C256774B1004617E643D5EFDC415F993A464D73A82F4618CC902A",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\native\\Release\\TKDEGLTF.dll"
+    },
+    {
+      "sha256": "3D16433A5CA16D36DFDFE168AF7F7C0645093CDC6C80CA38A157BC84769E43F9",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\native\\Release\\TKDEIGES.dll"
+    },
+    {
+      "sha256": "C09644DE8F5AFEA74C531054F713132823F0020F28A889229AE2E762D8CA121D",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\native\\Release\\TKDEOBJ.dll"
+    },
+    {
+      "sha256": "35DAFA5EFACF1DFECCB3E01D560547630142B4C52FFAC5CE4CAE726DFBD31262",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\native\\Release\\TKDEPLY.dll"
+    },
+    {
+      "sha256": "DC010933AEF4481083D21F77ADFAEE6ACEADE87D5F454AD5F4743F07A00B4DF6",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\native\\Release\\TKDESTEP.dll"
+    },
+    {
+      "sha256": "68488A4FD4B3C426123BD9969F5E42DD335A89CEA2FFA4E147452653F1BB63A1",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\native\\Release\\TKDESTL.dll"
+    },
+    {
+      "sha256": "7F30F93D81398A61F5E52997494C43ABFABD868009273B4492B1E2B8DD105F7A",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\native\\Release\\TKDEVRML.dll"
+    },
+    {
+      "sha256": "3ECBC7F193EBB746CC88A81E03EB603D24FDF03470B346551698F45D4FAEB7B4",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\native\\Release\\TKernel.dll"
+    },
+    {
+      "sha256": "2535B5993A42E41C6E35E5EA50574953D0BC5705EAE70D596C1194E5B9C8E872",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\native\\Release\\TKExpress.dll"
+    },
+    {
+      "sha256": "05F968C96DD0C170463B09F0121DB70E3DB720250634959C91C42396F9437141",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\native\\Release\\TKFeat.dll"
+    },
+    {
+      "sha256": "6ACCA10E58155ECAA1621DCECF395463C6560D4A3B63729BD7688ED7B15A38F5",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\native\\Release\\TKFillet.dll"
+    },
+    {
+      "sha256": "0D87A20363CFB66F7862FBC9AA7234059D13712B3A0D7E6B35CBB0172810A93C",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\native\\Release\\TKG2d.dll"
+    },
+    {
+      "sha256": "8A13921267C5839C0D8D4395DAE33FC5C1F80F8D03C0D8C0CEB153AA3DA35C6C",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\native\\Release\\TKG3d.dll"
+    },
+    {
+      "sha256": "154E047A29217C0FAF101EC0B8119D6D327E89560CD82CB18D17EC48D508883B",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\native\\Release\\TKGeomAlgo.dll"
+    },
+    {
+      "sha256": "6BD91D22B6A893884BA74FEC8C352F68BCF0F79096D00F52119D4810EF42567E",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\native\\Release\\TKGeomBase.dll"
+    },
+    {
+      "sha256": "B95F60B662FFF3BBDC7A768AA1DF664468187C3638AC562B5C87C8B9C6808DFF",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\native\\Release\\TKHelix.dll"
+    },
+    {
+      "sha256": "499F63A9335A17F8D2903DB1D56E27EE2DEAD324E35EFE46E2A9FAC8A8BF6F89",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\native\\Release\\TKHLR.dll"
+    },
+    {
+      "sha256": "C51A1DA060562BA8855C02A091D849A575459FEE3ED80543358F9113871DAF9D",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\native\\Release\\TKLCAF.dll"
+    },
+    {
+      "sha256": "2C41EFC32C025D1E7753548498027AA240D315B455BF36130432EA23E5860A2A",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\native\\Release\\TKMath.dll"
+    },
+    {
+      "sha256": "143337A5BF7128B7D5F50B33129D70EE4B4E9669F9166D89AF732444A221F95F",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\native\\Release\\TKMesh.dll"
+    },
+    {
+      "sha256": "7CF4CEC11EC0B9A7AFF012442A9E868932B74848E46CAA79DC091175A18DD9DD",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\native\\Release\\TKMeshVS.dll"
+    },
+    {
+      "sha256": "B3145BF379A12F46C68B206966679252CB36C0616C1A3D73D572033CB3EFCF8F",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\native\\Release\\TKOffset.dll"
+    },
+    {
+      "sha256": "8C47BB81B4D9F712E557864A67A31637DFF74D83D92B83AEE6960A673CBA07E7",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\native\\Release\\TKOpenGl.dll"
+    },
+    {
+      "sha256": "37DE279166407566D7FFF2DD063638FDF1F8DC89C0D030E550AA4868585F49DD",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\native\\Release\\TKPrim.dll"
+    },
+    {
+      "sha256": "49A61A27309032C374ED78ED205DC89860C4D5D510A7160AE4A5CF85CC7DAC1C",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\native\\Release\\TKRWMesh.dll"
+    },
+    {
+      "sha256": "B16E5AEB5213D9586A606C6443246C0D77CE52B117A54A4E523FD9E0BB41AAE6",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\native\\Release\\TKService.dll"
+    },
+    {
+      "sha256": "91E87BD3E5A3267C4A2D97B171EA05FA21FE1B78A2B905F7CF7E3CF19F5CD43E",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\native\\Release\\TKShHealing.dll"
+    },
+    {
+      "sha256": "7366BFDEF0BE23AE8C0D9FD7AB1676CCC4F8CCD7DEFC53ADD1B4BDC3E91F5660",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\native\\Release\\TKStd.dll"
+    },
+    {
+      "sha256": "4EE319E9CD1D1DFF7337B1F03EC8FB2CCBAD0AE0AB8A18FA8EBBF2DBB3113B61",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\native\\Release\\TKStdL.dll"
+    },
+    {
+      "sha256": "B1491D455B088B13BC332260804DBE53E7FBF8E495A3271759C14334CD3A1196",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\native\\Release\\TKTObj.dll"
+    },
+    {
+      "sha256": "6690CE35FCF32BD2C379D12A21ABDE6BAF023087F3EEFBCCC5AE40E416B0B107",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\native\\Release\\TKTopAlgo.dll"
+    },
+    {
+      "sha256": "5356773B60EAF73345AE6822369EB8B721A9D18EABA925491870E24CBA651BD9",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\native\\Release\\TKV3d.dll"
+    },
+    {
+      "sha256": "94948F34AD0696D0D4CA404DA4369B348B0B3C1241EEE1E42DAD87353E5629BF",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\native\\Release\\TKVCAF.dll"
+    },
+    {
+      "sha256": "64095FF4FFA3BDD41BD17FFFDC39F9490CE34C2EF59AAB427C71DEAA6F3B791A",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\native\\Release\\TKXCAF.dll"
+    },
+    {
+      "sha256": "302BFC3CB41C8EF00548A974C28F86BD194D6267FA31F080227D8D765BC8E9D3",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\native\\Release\\TKXMesh.dll"
+    },
+    {
+      "sha256": "9904AAF0435D24E7B89BA094FCB96708942A33B4DFD88241968CE6054B3AF811",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\native\\Release\\TKXml.dll"
+    },
+    {
+      "sha256": "7477A1A138630480D9D42CBAF04637322CD96DCA19880694DEC6A60C77532BCC",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\native\\Release\\TKXmlL.dll"
+    },
+    {
+      "sha256": "689187644BA9103F9288B2BC22208998A933F68CFE19D9B259EBD78DE58FE939",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\native\\Release\\TKXmlTObj.dll"
+    },
+    {
+      "sha256": "CECC1712C731DCC0DDC4E855FBFF9EC8D159F83141FB0E5C010A2ECDFB0CEE13",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\native\\Release\\TKXmlXCAF.dll"
+    },
+    {
+      "sha256": "3978FEC70540BD0B369FF01263BA341E01A57E308F5EA1788B5DC56B1A851AA7",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\native\\Release\\TKXSBase.dll"
+    },
+    {
+      "sha256": "B5FD3870446F219E948D44C997D64560A87152686C31B880798AF85912054545",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\eng\\verify-geometric-value-abi.ps1"
+    },
+    {
+      "sha256": "4269EA717A9CB9D6ACD248023921D0452865C8DCF21FB9D1A8B4DE17C0F5C6C6",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\eng\\verify-native-exports.ps1"
+    },
+    {
+      "sha256": "F3B6E0708BFE4B352EE4EAE1FFF49CFB774C34852C504F830EE65E6DD19C23B8",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\eng\\verify-native-private-headers.ps1"
+    },
+    {
+      "sha256": "84440726AE220B4BDE7A785BDA21B5FF25915FA74532692144F30B400BB2C8C8",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\eng\\verify-nonuniform-filling-buffers.ps1"
+    },
+    {
+      "sha256": "5FDF1756D2B0D7507ABD219BA6CA49A8434F4FD929FD83CDC7C24CC8EDF3A8AD",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\eng\\verify-owned-value-abi.ps1"
+    },
+    {
+      "sha256": "8744AABAA583CE1383DEE75439D7360AAA67412FCD28AA93AE2649E8DDFE9B27",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\DataExchange\\OcctSharp.DataExchange.ExchangeRoots.Generated.h"
+    },
+    {
+      "sha256": "04C58B3A1D8B17C8DBED3E0FA6F9BF959B6D3B120554181ED5C042711C6291C8",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\DataExchange\\OcctSharp.DataExchange.ExchangeSessions.Generated.cpp"
+    },
+    {
+      "sha256": "D358E77069B8D278129A9E83F0097B05058DF5AF308F1EEA7246DB11758D1BD4",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\DataExchange\\OcctSharp.DataExchange.ExchangeSessions.Generated.h"
+    },
+    {
+      "sha256": "943E481FAE796C244C86C8DA26328E523027A7EBD596F1CE3D6E45523337CC5B",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\DataExchange\\OcctSharp.DataExchange.OwnedValues.Generated.cpp"
+    },
+    {
+      "sha256": "71FB0C42BA32E51E2C2C532DB7154FD7FC28406FDF8B7234053F11A518F45639",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\DataExchange\\OcctSharp.DataExchange.OwnedValues.Generated.h"
+    },
+    {
+      "sha256": "37447E79B55F3E18C05BC3B8AE7DB54C1CEAEFBD35DFB06BCB57A31B91201775",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\DataExchange\\OcctSharp.DataExchange.ReferenceOperations.Generated.h"
+    },
+    {
+      "sha256": "917B8B98B5F60F910A877FBACAD1656EC1E7A78A93FA887DF8FD6DE84CC5E806",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\DataExchange\\OcctSharp.DataExchange.SharedHandles.Generated.h"
+    },
+    {
+      "sha256": "217649DE706DCA26BB598ABC8A52B7B753484B3806790E8FFFDED8C9A8FF37CB",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\DataExchange\\OcctSharp.DataExchange.TopologyExchange.Generated.cpp"
+    },
+    {
+      "sha256": "083721DE7F8F9A507F8B8EE4DAAC651AADDC45045F7CC633879099439A9A4FBE",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\DataExchange\\OcctSharp.DataExchange.TopologyExchange.Generated.h"
+    },
+    {
+      "sha256": "19EC5E21391E78946B489F9E576D6CB0D5139EACD4E9BE5A3FDF5E9D986C8EEF",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\DataExchange\\OcctSharp.DataExchange.TransferRecords.Generated.h"
+    },
+    {
+      "sha256": "629FAF1D3A7215E6D6A974F6BE496A59A0176F7B339123315F41E071D2A0BAF6",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\DataExchange\\OcctSharp.DataExchange.Values.Generated.cpp"
+    },
+    {
+      "sha256": "6C7D816701C5A774EB5318184E5220CE0839935CC3EAC994706C3474A1825862",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\DataExchange\\OcctSharp.DataExchange.Values.Generated.h"
+    },
+    {
+      "sha256": "1490EB87A1B5F75C493EC732CA6233B96520F74E8375362B7A2536CB4E9BC33C",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\DataExchange\\OcctSharp.DataExchange.WriterDiagnostics.Generated.h"
+    },
+    {
+      "sha256": "F0853DA10D320648324154F9664C481D8630B8E5B5DFFEAFD0B8B02C5819FE7B",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\Documents\\OcctSharp.Documents.DirectCollectionPersistence.Generated.hxx"
+    },
+    {
+      "sha256": "93DE178F027A861680956C5831C47591B04B44F61FB10AE617DAA24221EE9A7D",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\Documents\\OcctSharp.Documents.DirectCollections.Generated.cpp"
+    },
+    {
+      "sha256": "D1755B903D4AC130B79B4D025520481357698E10F3C869C6FB2C0760ED56B19E",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\Documents\\OcctSharp.Documents.DirectCollections.Generated.h"
+    },
+    {
+      "sha256": "632BDF2C074CB8FBA3C5D1B1A1E5659CB1EF5179A3CC786D7F8A112826E15E2D",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\Documents\\OcctSharp.Documents.DocumentProjections.Generated.cpp"
+    },
+    {
+      "sha256": "DB591F2972A17C65D5326DF4637000175576F18D6F20482A5885FAF4208A704C",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\Documents\\OcctSharp.Documents.DocumentProjections.Generated.h"
+    },
+    {
+      "sha256": "560CAF483ABB7434F7E24E303A783CCD6252DF3DADE9810BD9E1852CE337362A",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\Documents\\OcctSharp.Documents.OwnedValues.Generated.cpp"
+    },
+    {
+      "sha256": "03A5B023581B9A637323FB7438F30B8BD143BB81632C7E7747CB2C63F4E103C8",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\Documents\\OcctSharp.Documents.OwnedValues.Generated.h"
+    },
+    {
+      "sha256": "67F45842B375800D6BB16E549095559A70F38A59F9FB0DE7C726878C2A47E075",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\Documents\\OcctSharp.Documents.ProjectionSupport.Generated.hxx"
+    },
+    {
+      "sha256": "70F44B278E145F4F3A8BC866E89602C9A2E953DB8A5ACE8B6ABC75C4E9FCB2D9",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\Documents\\OcctSharp.Documents.ReferenceOperations.Generated.h"
+    },
+    {
+      "sha256": "C85DD17EB3A4476F39A519A561208B03AE37B6DABB9113F57EB446B902BDB8A3",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\Documents\\OcctSharp.Documents.SharedHandles.Generated.h"
+    },
+    {
+      "sha256": "470C2830ED0BB146D545FC87E71EE9EDF325C6C647AE0B607789FFCFF361E631",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\Documents\\OcctSharp.Documents.Values.Generated.cpp"
+    },
+    {
+      "sha256": "DA821D8581DE1CA7047183542CA8461FCFDBC8C11A05D1A69CEEE783B1477759",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\Documents\\OcctSharp.Documents.Values.Generated.h"
+    },
+    {
+      "sha256": "BFE471FE15DFE8457FFB3290961FA23C945FAC9E987BCF15878E33053688FE74",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\Draw\\OcctSharp.Draw.SharedHandles.Generated.cpp"
+    },
+    {
+      "sha256": "34F1855A00E9080F7A54CC50F4CC983C5D147AFCF292BE5D73729CA2DB63FBA9",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\Draw\\OcctSharp.Draw.SharedHandles.Generated.h"
+    },
+    {
+      "sha256": "22C0141FE0DD82EB152A4D2F6081A16C06313B07DBFF09A5D77495C73E3563A9",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\Foundation\\OcctSharp.Foundation.BoundedTextTransforms.Generated.cpp"
+    },
+    {
+      "sha256": "67E07B7B4FCE55143805BB5E2C10FF42EAC41736A5F20F18AB9390B3A7A86353",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\Foundation\\OcctSharp.Foundation.BoundedTextTransforms.Generated.h"
+    },
+    {
+      "sha256": "6CF19F98A0080365FA72F49D591F578E2B5F4A12561771314CE8A0042559D0A8",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\Foundation\\OcctSharp.Foundation.CopiedCollections.Generated.h"
+    },
+    {
+      "sha256": "7E4C12308DACB0062D63CFE65898C2F40F5B8FC6D8B4A7D07E811AA54A4C3DA0",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\Foundation\\OcctSharp.Foundation.CopiedSupport.Generated.hxx"
+    },
+    {
+      "sha256": "F2752E1B8D6220B926185D2C76C7538C43C7D2516637C105EC1E419FA2B33BA0",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\Foundation\\OcctSharp.Foundation.FoundationDiagnostics.Generated.cpp"
+    },
+    {
+      "sha256": "8ABC7118291DAC07B9B33BE6023339D276058747DDE9E256EBA97DB279020FDE",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\Foundation\\OcctSharp.Foundation.FoundationDiagnostics.Generated.h"
+    },
+    {
+      "sha256": "ECA4320927969A2F2314FDED42D3BDB6F031E3604D1ACA518A5DDEC817283EAC",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\Foundation\\OcctSharp.Foundation.FoundationValues.Generated.cpp"
+    },
+    {
+      "sha256": "0D97CFCB64CAC89B6EBFC6671D74C797710F3FC05B236C5DCC485E8B4520EAB8",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\Foundation\\OcctSharp.Foundation.FoundationValues.Generated.h"
+    },
+    {
+      "sha256": "77CE8CE11DEBF7BCB9347BDA221B05FE72C56142DE3D329BA759CAD3AB01B49A",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\Foundation\\OcctSharp.Foundation.GeometryValues.Generated.h"
+    },
+    {
+      "sha256": "D939799FCEBA89B47FA11E4026A8EECB37373C1842D8B36A4FD2DB7B71B25046",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\Foundation\\OcctSharp.Foundation.GridCollections.Generated.h"
+    },
+    {
+      "sha256": "421E4844C7C22112B247EA3506BC3B087BC0AFC78C117FF3B34819B406899489",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\Foundation\\OcctSharp.Foundation.LegacyCollections.Generated.cpp"
+    },
+    {
+      "sha256": "0A00DD251AC0A073C3AEA0F9F579F4F01639E67AE1470F8C9CDD0ED7747B623E",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\Foundation\\OcctSharp.Foundation.LegacyText.Generated.cpp"
+    },
+    {
+      "sha256": "4447825293ACF209F8F8547713E72F08ED16648D3DCBD82113D5F4FEC3C6D45D",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\Foundation\\OcctSharp.Foundation.LegacyTransient.Generated.cpp"
+    },
+    {
+      "sha256": "325FFD57D616BB5884AA75BE42D2E829168CD7FC60AB9D34F7AD52DE23834388",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\Foundation\\OcctSharp.Foundation.NumericMatrices.Generated.cpp"
+    },
+    {
+      "sha256": "031CE266B13015E89FFC9AD9034AE08AE01C1184E4D1EA9CFB1FB3F754859138",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\Foundation\\OcctSharp.Foundation.NumericMatrices.Generated.h"
+    },
+    {
+      "sha256": "381ED8DAF07DBE8916FC3F74E7428243CB9368869A2E7CD899AA04B357E7F043",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\Foundation\\OcctSharp.Foundation.NumericResults.Generated.cpp"
+    },
+    {
+      "sha256": "022AA41E9CC412C2336D0BC266AB21D345723E16D30A366C6B6654C6A0E6F738",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\Foundation\\OcctSharp.Foundation.NumericResults.Generated.h"
+    },
+    {
+      "sha256": "803C3BB7E72FDB1AD7EF173B6C9F5962043CB114227F30988D8B63775B9CB91C",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\Foundation\\OcctSharp.Foundation.OwnedValues.Generated.cpp"
+    },
+    {
+      "sha256": "A716BFD78277D96DFBBCBB7FB35820BC1C39DF21F2F0D5AD28A7F6854999C168",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\Foundation\\OcctSharp.Foundation.OwnedValues.Generated.h"
+    },
+    {
+      "sha256": "6D096C42DA51C44D92089E3ED8D50BA66CFC0B91C8DB97976B0BA9D6385E5AC0",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\Foundation\\OcctSharp.Foundation.ReferenceOperations.Generated.cpp"
+    },
+    {
+      "sha256": "652465C68D871B427DEF39BFFAFD764AB9BE9BB7DFF114FAED5E29BB08C644AF",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\Foundation\\OcctSharp.Foundation.ReferenceOperations.Generated.h"
+    },
+    {
+      "sha256": "5ABA414CC75D9383809137F9B137F730BCA9354EE4D20285655BA96C31241A65",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\Foundation\\OcctSharp.Foundation.SharedHandles.Generated.cpp"
+    },
+    {
+      "sha256": "BBC4CDD3EA8862AAC6F3336567947C7620A1181ADF6AEDEB2D16D1883B846B35",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\Foundation\\OcctSharp.Foundation.SharedHandles.Generated.h"
+    },
+    {
+      "sha256": "CC6948BFC576B12EC82EAE7672A0068CC647E793ED64480EFCB815AC2635CADF",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\Foundation\\OcctSharp.Foundation.Values.Generated.cpp"
+    },
+    {
+      "sha256": "A60AF54E430D0F4DC254012A90A8E9B282CC36540EB9F6E011FE80F22BC4C10F",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\Foundation\\OcctSharp.Foundation.Values.Generated.h"
+    },
+    {
+      "sha256": "7A72505AD5BC72F5AB40C9A59F445B9959CF595290094644E15B1A01B825A332",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\Foundation\\OcctSharp.Foundation.WorkflowResultSupport.Generated.hxx"
+    },
+    {
+      "sha256": "FD6B90E123B2251FF1A8EA1C118FFA5B086C377BC6B9FFD2036181DE954C07BC",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\Geometry\\OcctSharp.Geometry.BulkOperations.Generated.cpp"
+    },
+    {
+      "sha256": "8C4F45C04406095620E256F3BB9C6C2D9BDBF2C364FF35D3CEF1143315B3F0F0",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\Geometry\\OcctSharp.Geometry.BulkOperations.Generated.h"
+    },
+    {
+      "sha256": "758337C9ECFB0369B5F1963844E427EB7A1301C85484B08E011B06E371F4FE62",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\Geometry\\OcctSharp.Geometry.CollectionOperations.Generated.h"
+    },
+    {
+      "sha256": "4E7DE8764A9C43E1E298926C54415C632A01E957E8DB924EF620DD04977C3068",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\Geometry\\OcctSharp.Geometry.CoupledConstraints.Generated.h"
+    },
+    {
+      "sha256": "F10F324A996421D6A98CBEEF171263D3085683660ACCBCC8B16987761BB00DBA",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\Geometry\\OcctSharp.Geometry.CurveCollections.Generated.cpp"
+    },
+    {
+      "sha256": "51B47993DA160399163EC51864C5C867C4E36355E7E02DD562442B3F8E57435A",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\Geometry\\OcctSharp.Geometry.CurveCollections.Generated.h"
+    },
+    {
+      "sha256": "5D100F86E97BD4D8627DFDBD3EFECC7F08C4BE609E259B90C5288B5593A03824",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\Geometry\\OcctSharp.Geometry.CurveSampling.Generated.h"
+    },
+    {
+      "sha256": "D0638860E1971E20EAED9F58A89D7ADB11A6044D047CC3884286DB7CE178FFD3",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\Geometry\\OcctSharp.Geometry.FillingWorkspaces.Generated.h"
+    },
+    {
+      "sha256": "3C5728C8366A4588AE434A2A87B7122678C349AC616D876809BCF5FF67912F31",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\Geometry\\OcctSharp.Geometry.FiniteExtrema.Generated.h"
+    },
+    {
+      "sha256": "60A7FD6705913AE75CCC951C6887C06AA40969A215057EC32B32BCC52B00C52C",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\Geometry\\OcctSharp.Geometry.FittingAdapters.Generated.hxx"
+    },
+    {
+      "sha256": "3C218E8A5966831460135FE29CA808E7BFA809ADC108FD63477434E8BB399639",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\Geometry\\OcctSharp.Geometry.GridOperations.Generated.h"
+    },
+    {
+      "sha256": "D0B896B073D1D2ACF67AEBCE9DD85F46BA1271016732705C0FC7275C5E003DE3",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\Geometry\\OcctSharp.Geometry.HatchingWorkspaces.Generated.h"
+    },
+    {
+      "sha256": "1F2EBBC8B4456CB5847C47044779812B86868CD9A120AEA06ABA102E221B4706",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\Geometry\\OcctSharp.Geometry.LegacyKnotBuffers.Generated.cpp"
+    },
+    {
+      "sha256": "CC1C780B39DFB6BB4C2EE75D91885C8F3A33D7D7F317743D084697BBB98A5300",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\Geometry\\OcctSharp.Geometry.LegacyKnotBuffers.Generated.h"
+    },
+    {
+      "sha256": "24E2ABEAF31C6DD147194AAB900A979C881215C285C4EBC25A14C46680CEB410",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\Geometry\\OcctSharp.Geometry.OwnedValues.Generated.h"
+    },
+    {
+      "sha256": "67EBCB350FDFB6AAF2E3F976F38694A9568EB272C4A0BC46C227E55A0D81C2E3",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\Geometry\\OcctSharp.Geometry.ProjectionAdapters.Generated.hxx"
+    },
+    {
+      "sha256": "117D27DC6996BC0EAD42ED6E8EB6F8440EA8741B0AF897DCA2E396C3D265EC47",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\Geometry\\OcctSharp.Geometry.ReferenceOperations.Generated.h"
+    },
+    {
+      "sha256": "B958347EBF6ECEA1899B55F13E14C589FDD12A5184556B9FA2D90BBEB3E7A262",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\Geometry\\OcctSharp.Geometry.SharedHandles.Generated.h"
+    },
+    {
+      "sha256": "10A2A8B759F5CE3A2DFCC1D81F7E8A737BB94F41891AEBF8A5E7BF856661B526",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\Geometry\\OcctSharp.Geometry.SplineWorkspaces.Generated.h"
+    },
+    {
+      "sha256": "5DDA11B34CB08815FEC1780555928C367246A0ACA423C191D3F52BB20FF724E5",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\Geometry\\OcctSharp.Geometry.SurfaceIntersections.Generated.h"
+    },
+    {
+      "sha256": "6CD711E40821DE73791CC24F0EE6CCF02CDDC79AA2C6548C77F0A1794ACAD68B",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\Geometry\\OcctSharp.Geometry.ValueOperations.Generated.h"
+    },
+    {
+      "sha256": "0F8A86597E1B80CFC0A0C4C2D70943D4EC3AA72B1724416667F0635373337DDA",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\Geometry\\OcctSharp.Geometry.Values.Generated.h"
+    },
+    {
+      "sha256": "2D8BFB3952AD4C28FF915B717A63D3E8D1775E98610DF1865CEC14DD6FDC78E7",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\IVtk\\OcctSharp.IVtk.SharedHandles.Generated.cpp"
+    },
+    {
+      "sha256": "B47D5BAFBE3C811C689A5C4D78922E0AB743207A8116D6534859EE36B17B8829",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\IVtk\\OcctSharp.IVtk.SharedHandles.Generated.h"
+    },
+    {
+      "sha256": "6FDA4DB0DF969F77CEB818C92B00541322887009D877143EAB2D3BF22ABB906A",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\Mesh\\OcctSharp.Mesh.MeshBoundaryDiagnostics.Generated.h"
+    },
+    {
+      "sha256": "6C783C44BC7A15BEE8DAD4BE1D9828E1C5C4DAADBC19525D6FF006DC76708725",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\Mesh\\OcctSharp.Mesh.MeshingWorkspaces.Generated.h"
+    },
+    {
+      "sha256": "0B06FF561EF93C215D12D1E1DCC358DA2929FEEEB05E73795826DAA26BCB00BE",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\Mesh\\OcctSharp.Mesh.MeshProximity.Generated.h"
+    },
+    {
+      "sha256": "CBCEAC78479B435F3F2235582E008C4AF38BF31F365B7C0373583AA845334C84",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\Mesh\\OcctSharp.Mesh.OwnedValues.Generated.cpp"
+    },
+    {
+      "sha256": "AB2A816769A32DCFB61A4B379C0F93E0554FFC22E83B40518E83215B9DA8574E",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\Mesh\\OcctSharp.Mesh.OwnedValues.Generated.h"
+    },
+    {
+      "sha256": "61863CAA476424229F5A89C38F13B45F874FE675F9BC054F25262911DAA1E1EA",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\Mesh\\OcctSharp.Mesh.ReferenceOperations.Generated.h"
+    },
+    {
+      "sha256": "952F09ABAA017C8B5E9CB0A971280787CFE0248172CB319858BC661AC37C10C7",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\Mesh\\OcctSharp.Mesh.SharedHandles.Generated.cpp"
+    },
+    {
+      "sha256": "F0288BA237394F1EF9766A8A1021F2CD183A9BA4E0E650139A9C9A138EAB9224",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\Mesh\\OcctSharp.Mesh.SharedHandles.Generated.h"
+    },
+    {
+      "sha256": "50AE999CF0435567420652D78756741FF0F2B2341EF98971535A7A41AF739381",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\Mesh\\OcctSharp.Mesh.Values.Generated.cpp"
+    },
+    {
+      "sha256": "DBCDD1DFBE15DC4E1A907C7352ECAFFE30DE28C0253F8D6A0792DFDE3013E66C",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\Mesh\\OcctSharp.Mesh.Values.Generated.h"
+    },
+    {
+      "sha256": "8A121EB05E88947F34815AC51B5AA9BA92279C062DE5E1CE5D60B6278C979C16",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\MeshData\\OcctSharp.MeshData.OwnedValues.Generated.cpp"
+    },
+    {
+      "sha256": "C705A22684140D14B139D12B986CAE9EED301334AF47450C0B841ACF66FFA4F9",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\MeshData\\OcctSharp.MeshData.OwnedValues.Generated.h"
+    },
+    {
+      "sha256": "41764A45DC0A63387A489DB701837DB7B4BFB5359923EE12E4F815AC4FB82A5E",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\MeshData\\OcctSharp.MeshData.PolyDataWorkspaces.Generated.h"
+    },
+    {
+      "sha256": "D90C136C6603D4E49C7EAECEC27AB5A13A622FDF749AB2E21708B20ED536747E",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\MeshData\\OcctSharp.MeshData.PolygonBoundary.Generated.h"
+    },
+    {
+      "sha256": "2EE79B8573D81EAB7DFB3E528BDAE0BF70F93B95754A2351328F4D7ADB7018E1",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\MeshData\\OcctSharp.MeshData.ReferenceOperations.Generated.cpp"
+    },
+    {
+      "sha256": "0345059388686615D413B1D6A61C2AEDE03DFF1F3D5E90C92A3F954A274E6D44",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\MeshData\\OcctSharp.MeshData.ReferenceOperations.Generated.h"
+    },
+    {
+      "sha256": "8FE946BCACF26449E5105583C86B75FD5232FF5C34ED6A7835F61593616C8AE1",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\MeshData\\OcctSharp.MeshData.SharedHandles.Generated.h"
+    },
+    {
+      "sha256": "4D380118F5D9DEEA685CA4E3C5688FDCE75A5EC90A6A092434CB323AEE57D045",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\Modeling\\OcctSharp.Modeling.AssemblyDiagnostics.Generated.h"
+    },
+    {
+      "sha256": "4BF938A1BFD8B69C3728BBB6F3FD802044ACC81AA7B4165058481E9193D5AF31",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\Modeling\\OcctSharp.Modeling.ModelingBuilders.Generated.h"
+    },
+    {
+      "sha256": "0F0E110D692604EF9373D175280466AD4808BC2555A4135FA7F35B0AF1CA97B0",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\Modeling\\OcctSharp.Modeling.ModelingResults.Generated.h"
+    },
+    {
+      "sha256": "02B98A0332FEC9C39FD6D6D5C1A7C150AC04A9F065A88EAC810D5379F844B2BE",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\Modeling\\OcctSharp.Modeling.OwnedValues.Generated.h"
+    },
+    {
+      "sha256": "4B9AA5A549E9703C52A29708C7A7BA83A93C793F4272EC34FF7B0E395EAAFED2",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\Modeling\\OcctSharp.Modeling.RayResults.Generated.h"
+    },
+    {
+      "sha256": "FC1C043CCCF40D5A3A8FE4D05E78BBBBC7B6652EADD77A931E4E0BC6833B5D31",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\Modeling\\OcctSharp.Modeling.ReferenceOperations.Generated.h"
+    },
+    {
+      "sha256": "4880720181F114DBD7230110270AB03D5CD8B9CA8B18888F44074E6B6CF51807",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\Modeling\\OcctSharp.Modeling.Repairsegments.Generated.cpp"
+    },
+    {
+      "sha256": "0D4A4F5685D578C7566C6444D76D71CE4F44FECC9CE0F567B98AB7038050A6F0",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\Modeling\\OcctSharp.Modeling.RepairWorkspaces.Generated.h"
+    },
+    {
+      "sha256": "3780CC1F50A465981287AA5C6DCC4125F29AE3ECD0C409801553E39E1F6CD36D",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\Modeling\\OcctSharp.Modeling.SharedHandles.Generated.h"
+    },
+    {
+      "sha256": "FE331F495EED1DC5C55BCA32337A22A762F9B947AFAB4A4B4AC4E114D0356869",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\Modeling\\OcctSharp.Modeling.Topology.Generated.cpp"
+    },
+    {
+      "sha256": "570AA04AEBE7172B72495C4AFC481EF1E736EB657501BDB106D2A8DDCA5D4BC9",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\Modeling\\OcctSharp.Modeling.Topology.Generated.h"
+    },
+    {
+      "sha256": "0DD9513ED03D965BE7C4A2C1AB4697F1C502BD03B3ED03DB9F5D6A8732434AD1",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\Modeling\\OcctSharp.Modeling.TopologyAssembly.Generated.h"
+    },
+    {
+      "sha256": "8EA25688E5B06F6060FB473BB18BB42F2B192107F09792504166C690495F4290",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\Modeling\\OcctSharp.Modeling.TopologyExchange.Generated.h"
+    },
+    {
+      "sha256": "89FC6D1A9C120E3223F2CB3FF2D93B8E7E2331065B1A82D03B193BE46F737F58",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\Modeling\\OcctSharp.Modeling.Values.Generated.h"
+    },
+    {
+      "sha256": "BBA65E6DEA2EA9F88EF0FBF4C70C793FB0C0A5F31A42A65714DAF49148531826",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\Runtime\\OcctSharp.Runtime.OwnedSupport.Generated.cpp"
+    },
+    {
+      "sha256": "4A40782D69B85DD1A65CA5C8E8271F24F7F3037692EDE465B723FC8F377F5D66",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\Runtime\\OcctSharp.Runtime.OwnedSupport.Generated.hxx"
+    },
+    {
+      "sha256": "FD3C7598B63C8975E8ACD8038885274AB694D9B581686660DB982D15DCBE2ED0",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\Runtime\\OcctSharp.Runtime.SharedSupport.Generated.hxx"
+    },
+    {
+      "sha256": "87850F5B7675A8B390BA043D4459387F70B45D051338D308F8D4759C9CB54255",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\Visualization\\OcctSharp.Visualization.OwnedValues.Generated.cpp"
+    },
+    {
+      "sha256": "E9162D3C4F6E7591CBAE76AE33C862252901C8FB95CBB397A0B796AC2E77BC7F",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\Visualization\\OcctSharp.Visualization.OwnedValues.Generated.h"
+    },
+    {
+      "sha256": "9FCD5DD07401329794973C912D4E6C52FB632821367FAA140667596EDD8E18C0",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\Visualization\\OcctSharp.Visualization.ReferenceOperations.Generated.cpp"
+    },
+    {
+      "sha256": "E9288A3298439EFB9B28889DD00D92B03B411F10714C5708979CF2A6F828CDF8",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\Visualization\\OcctSharp.Visualization.ReferenceOperations.Generated.h"
+    },
+    {
+      "sha256": "9EC1FBB2895600F873B503C345D3EA166EFA617A2295D210DF3C9313B9A11290",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\Visualization\\OcctSharp.Visualization.SelectionWorkspaces.Generated.h"
+    },
+    {
+      "sha256": "BB23A648702046EAA3295767ED814F1FC11FD31BD55A0E6D6FFC1809EB9E1C0D",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\Visualization\\OcctSharp.Visualization.SharedHandles.Generated.cpp"
+    },
+    {
+      "sha256": "3A5E590A9F97AD22D96392A9E37D61E97A1501F8B07A70DD4AE64ADAF2991FBC",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\Visualization\\OcctSharp.Visualization.SharedHandles.Generated.h"
+    },
+    {
+      "sha256": "66C0C970BA45B5B048949CC7095398ADFA119C414CAE264B625A44373E06D350",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\Visualization\\OcctSharp.Visualization.Values.Generated.cpp"
+    },
+    {
+      "sha256": "AACFE468D3C5CE8597382A1AD62528B9B4DCA94207C8622E5A3CEFAB010AE53B",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\Visualization\\OcctSharp.Visualization.Values.Generated.h"
+    },
+    {
+      "sha256": "095B2CB5A7D682CF84D1749C54D98A2274D2F9E9AE4CEF155F394AE0F6F21501",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\Xde\\OcctSharp.Xde.ColorPersistenceSupport.Generated.hxx"
+    },
+    {
+      "sha256": "AD4C1050565BAF307789F2BDA30DA90E77947A9C8E14F568E6F45ACA22BB1B44",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\Xde\\OcctSharp.Xde.DocumentAssociations.Generated.cpp"
+    },
+    {
+      "sha256": "C5948B2DE0049923819E9C8A282F0DCB5A808A5FBABFEF3D0C86E1E259873BFF",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\Xde\\OcctSharp.Xde.DocumentAssociations.Generated.h"
+    },
+    {
+      "sha256": "85C9DFB1248435AE2223E5E172D023FC02F39A2D0995767CA996C063219AB166",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\Xde\\OcctSharp.Xde.DocumentLifetimeSupport.Generated.hxx"
+    },
+    {
+      "sha256": "8B9F96AACFCCCFBCFC46861BE20FF423A3522C0B2F13BA115628734B65A5419A",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\Xde\\OcctSharp.Xde.LocalStepAssembly.Generated.h"
+    },
+    {
+      "sha256": "7EA20B616B6EB4E9A594FA939A1F81C6DA7374C2867FB0748031DE62420E3310",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\Xde\\OcctSharp.Xde.LocalStepExport.Generated.h"
+    },
+    {
+      "sha256": "A8F2902D21C1D6FA3CC303ADAEF0A336B720746DE14F6C97E44AC792AFDF2EB2",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\Xde\\OcctSharp.Xde.LocalStepExportWriter.Generated.hxx"
+    },
+    {
+      "sha256": "E8138E4773E8A44A9586BF2C8EC3598E02FBC65BB6FAE1514F01FDBB5E8A1FFF",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\Xde\\OcctSharp.Xde.OwnedValues.Generated.cpp"
+    },
+    {
+      "sha256": "E157961C408BFB4BB878109C64FA3E24530E192D0C3B1968E72E9973372280F9",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\Xde\\OcctSharp.Xde.OwnedValues.Generated.h"
+    },
+    {
+      "sha256": "222DAC7BF9FCA94E5A2D4E15744582F10E10EBF24943035C8EEDB9E918790ED4",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\Xde\\OcctSharp.Xde.ReferenceOperations.Generated.cpp"
+    },
+    {
+      "sha256": "3C7C6EAAAB7F7B2CD55D60655CAE2EC1B6650915060D7E565DD8BEEC773065A9",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\Xde\\OcctSharp.Xde.ReferenceOperations.Generated.h"
+    },
+    {
+      "sha256": "F3E54358D7DD031CF359AF952DDF7CC37AAFAADD76504C4798075EB0D84CF59C",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\Xde\\OcctSharp.Xde.SharedHandles.Generated.h"
+    },
+    {
+      "sha256": "BB86AB7334D6F962FF1758946339AF314AAD983CF4D372FCCD189BC25DE07A97",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\Xde\\OcctSharp.Xde.Values.Generated.cpp"
+    },
+    {
+      "sha256": "E6241A89B80C077AC8B75BF0A8C09568D34C21AF2D597079E4DF2E58F360E5A2",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\Xde\\OcctSharp.Xde.Values.Generated.h"
+    },
+    {
+      "sha256": "611DE71B5B11143486E6C55CA8A8C0CBA9C4EAA999B859AD1C3D09B923E36324",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\Xde\\OcctSharp.Xde.XdeAttributeProjections.Generated.cpp"
+    },
+    {
+      "sha256": "447E252D5D3330D26319F37C7B226AFC270A1607221B53B9BB731021BFEEE679",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\Xde\\OcctSharp.Xde.XdeAttributeProjections.Generated.h"
+    },
+    {
+      "sha256": "3B60D7D8603417699A1538CCA74967A582F68863A85E4764E75F1C94346CC907",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\Xde\\OcctSharp.Xde.XdeMetadata.Generated.cpp"
+    },
+    {
+      "sha256": "8BF9CB0141703548A4F0515B336A3D2AE808BB901814AA2085A9C1D3C43249CC",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\Xde\\OcctSharp.Xde.XdeMetadata.Generated.h"
+    },
+    {
+      "sha256": "5E12C8E81DC6F0D66BC98CF8D8CBF344C8553698BCBAC163CA876738B0FECC65",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\include\\OcctSharp.Native.Authoring.h"
+    },
+    {
+      "sha256": "C8498A22F15FD175EEE473771029D0B921DDDF60D38155CB0B4423116AB11A12",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\include\\OcctSharp.Native.h"
+    },
+    {
+      "sha256": "32CBC524C1025A7ACD53DDBAB275A64DC251891AAC107CFB31C372ADEF5F751B",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\include\\OcctSharp.Native.Internal.hxx"
+    },
+    {
+      "sha256": "2B8B376C57C86E4D54F2DF9E4A2A6DB0A5805C99B9DF6D517427B25F4618C568",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\include\\OcctSharp.Native.LocalFeatures.h"
+    },
+    {
+      "sha256": "56424FE43B92C57650FB229D470FD2A6EA11DBC9AC61608BE4578CBB047C8AC7",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\include\\OcctSharp.Native.Mesh.h"
+    },
+    {
+      "sha256": "439007319CFBD4AD86B354A0FD31FC823CD00699CA89563FF09CBAFBC50BB4EE",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\include\\OcctSharp.Native.Parametric.h"
+    },
+    {
+      "sha256": "B58FF460CEFA0A598FE82904F8F2826E7BA871FB6CE77300135E8F3D4EDA1BD0",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\include\\OcctSharp.Native.Regions.h"
+    },
+    {
+      "sha256": "F64AD2C6FE86BE17B609D4E00279616769DF3088E3935705920F4165E7BA7DC4",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\include\\OcctSharp.Native.Rendering.h"
+    },
+    {
+      "sha256": "70180A20C87DE1DAF5120D41C06F126DD6CE11F81F3B12D9AA51188ACDF22CE1",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\include\\OcctSharp.Native.Repair.h"
+    },
+    {
+      "sha256": "77E804A1F4B4814F2FAE65E86BFBB071118C380C05A5BFA1F88470D08CF6EEBD",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\include\\OcctSharp.Native.Surface.h"
+    },
+    {
+      "sha256": "BA6B3C2A4BCEDBC1CE1BFD1A894AE09AD9AE413953AED417BBF009E4E3E83235",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\include\\OcctSharp.SketchInspection.h"
+    },
+    {
+      "sha256": "266C95C24570DCE556CAFD568E9DA8F45B15C3F2C7000118EDA896C3E5860965",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\src\\Documents\\Lifecycle.hxx"
+    },
+    {
+      "sha256": "8A1FE228F2EE56CD2875C01BBD8ED9E93281DA1F89A81DFBF859634E98E7F8FA",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\src\\Documents\\NamedDataPersistence.hxx"
+    },
+    {
+      "sha256": "FDDD19655C363E5E62A8E2E7E80B4A136EADCBA84A072E63CEBB2F94E47A7ED0",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\src\\Documents\\Parametric.hxx"
+    },
+    {
+      "sha256": "ACC52FD78B180AA84C0FD7DE975F41BBE86BC50E0A7B8BD19AB740501B505933",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\src\\Documents\\State.hxx"
+    },
+    {
+      "sha256": "0A0F2A2884D260D201DDD35BF0447594F3DAB8D9C33862317EE87BDC4F4FE89F",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\src\\Exchange\\IgesExportCopy.hxx"
+    },
+    {
+      "sha256": "5192B34196DC3008419FB7DB08366EDAC9BC21C55530AFE7BA7BAE24FAE6154B",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\src\\Foundation\\Collections.hxx"
+    },
+    {
+      "sha256": "A0FD8F47031A0CCABF5CC75EE8B9A4E141C15F15821B6E97C4777A33B0E08CF1",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\src\\Foundation\\Text.hxx"
+    },
+    {
+      "sha256": "630AF0C34152828C27657AF18097BB84B666703D083DC975CA70661CF9D73F03",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\src\\Foundation\\Transient.hxx"
+    },
+    {
+      "sha256": "6EA285446F8AD87C3242731E19D31668877EA557B58B0FDAD899E35D155B22B2",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\src\\Geometry\\Conversions.hxx"
+    },
+    {
+      "sha256": "EFFBAF8D718C6658864CB14B1ED91AE68B135F6184B21D43D518791F5115EAA2",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\src\\Geometry\\Transforms.hxx"
+    },
+    {
+      "sha256": "8E129FE6CF3265D69E8AB2AC4E4F5430DDFD0771319A53D87423FE1450DD08B5",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\src\\Mesh\\MeshAuthoring.hxx"
+    },
+    {
+      "sha256": "0F68957A4FBAAC502EF2D863B3E23B2F3363F4C6CCF95C6914F1BA5D6E35888B",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\src\\Mesh\\Triangulation.hxx"
+    },
+    {
+      "sha256": "6D8ECED5B086A257D3E9883A3B071B8C7F00607B976332AB6BD054FCF8305493",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\src\\Modeling\\Drawing.hxx"
+    },
+    {
+      "sha256": "419B293962F05266F1F25E5FE31299EEA44F2C68A42B8E786358A6F7AB9FD96E",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\src\\Modeling\\Freeform.hxx"
+    },
+    {
+      "sha256": "01AC6A5E0C45292FFF8E0904E78702D8193799CC4DD8C8C4E3FCB4050E9A0CD7",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\src\\Modeling\\Properties.hxx"
+    },
+    {
+      "sha256": "374ED89A855EFD30C6F1EFD40D8937644051129576F17885D9DD4EF842DE1040",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\src\\Modeling\\Regions.hxx"
+    },
+    {
+      "sha256": "AA8A65EBABCFB79D12BE8A508D24C669954FEBD6C83B6C4050816DE2F9335129",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\src\\Modeling\\Repair.hxx"
+    },
+    {
+      "sha256": "F21B42B8A9090B3F752685604285DD31CABD2AAAB5D91CAD258E2C6CEE39FA55",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\src\\Modeling\\ScalarLaws.hxx"
+    },
+    {
+      "sha256": "8C455CCB105DA238A123D86A759850D4BD05753AFC42292606005C05426E8850",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\src\\Modeling\\Sketch.hxx"
+    },
+    {
+      "sha256": "6E5FA91EBA77E3BA89705D224A0916F25370494BF01EEB102D885F9B857EA0E7",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\src\\Modeling\\Topology.hxx"
+    },
+    {
+      "sha256": "D605F436B4239353F51010BA6073DEF77E80379CAF7FE1A31C869DCCF3DFE2FA",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\src\\Runtime\\Error.cpp"
+    },
+    {
+      "sha256": "F623D219E1502B659639981096689D2C6146E8CA556377267C65479F921AA44F",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\src\\Runtime\\Error.hxx"
+    },
+    {
+      "sha256": "1CECD5ED2022D359FE2D1901197C260A018D34E16EB911E29E7E0DA70D29A83C",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\src\\Runtime\\Registry.cpp"
+    },
+    {
+      "sha256": "964A9C2F6B8156546A4EBDF6D07886F5A81577BE9C6E9A2A95BA71CEBC0CF094",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\src\\Runtime\\Registry.hxx"
+    },
+    {
+      "sha256": "335ED6F4946C35CCB9DCD5C669171FB692B66824B76BAEA159C32F0C67162B8F",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\src\\Runtime\\Shape.cpp"
+    },
+    {
+      "sha256": "61356C219441E2C2D59457B96CA9B4486283B0313ABA747EAF801B89C8921F7C",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\src\\Runtime\\Shape.hxx"
+    },
+    {
+      "sha256": "144F5C844E7CEF6F930A66511FEB6AA880079A5D45E4E446E31821112BC14D26",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\src\\Runtime\\Validation.cpp"
+    },
+    {
+      "sha256": "26AF5CC0DCF88A0612ADFDC177F231D892E7BE214EA94047C7720D771690BE85",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\src\\Runtime\\Validation.hxx"
+    },
+    {
+      "sha256": "F289BC22C1F4E9B7C33A4F1B1347D6201BC5377F08849216FFB299EFCEFDC0C0",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\src\\Surfaces\\ConstraintResiduals.hxx"
+    },
+    {
+      "sha256": "63C2B1E37145D0B85315F21125B4980597AF2B946F52133048AFFCC46AE3F80A",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\src\\Visualization\\Clipping.hxx"
+    },
+    {
+      "sha256": "1B942515DCA80EBD5F5C41A32E7116CADCA6497EB7DE8CFE7F7C9AEA1EFB05B6",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\src\\Visualization\\Dimensions.hxx"
+    },
+    {
+      "sha256": "B84F93B7357313FB5839927E5FC521387B246BA452AD52801379811C672651EA",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\src\\Visualization\\Manipulators.hxx"
+    },
+    {
+      "sha256": "C868CA727C3488DBC39C5F7D5AFD1FADA31F44DE723CFF34AA18FA94753232ED",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\src\\Visualization\\Navigation.hxx"
+    },
+    {
+      "sha256": "097BAC29EA62478D281D9E41974B5047199F5267E885AD0FDDE6788669F984BC",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\src\\Visualization\\RepairReview.cpp"
+    },
+    {
+      "sha256": "E506F3574361ECB01DCD8EA16441E8269317154F3337D433B3347A1580F335F3",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\src\\Visualization\\Selection.hxx"
+    },
+    {
+      "sha256": "5F1BC70F209FB2C02414E80D21952085E614CAAC5A1E808925DC535007594683",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\src\\Xde\\Document.hxx"
+    },
+    {
+      "sha256": "168126AE3DBA709F0911571FEF234B3F83D68C49F406E7A2F7DE8A6E3CA5C6C5",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\src\\Xde\\Metadata.hxx"
+    },
+    {
+      "sha256": "395CC6FF699BEDCAFB1BAC22462EA3476780265421B1CA0A70EA3ABED8663B7C",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\src\\Xde\\Pmi.hxx"
+    },
+    {
+      "sha256": "80120628DDD45940ED023F81ED11146561A82C4BAF7B7592431D25F867CBDB3B",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\src\\Xde\\SavedViews.hxx"
+    },
+    {
+      "sha256": "87B2AD5743AFBA9DF87B04382FA6F72957D65C464A21787071442804F4EB8778",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\src\\Xde\\Structure.hxx"
+    },
+    {
+      "sha256": "20B60FB7CC431DD54328D7D381A046446575FE8A957E270396715DCD619196AD",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\tests\\native\\bounded-text-buffer-tests.c"
+    },
+    {
+      "sha256": "486CDCAFA0AFE7C78C25C984B19B09FFDEDD437E6CC8F96D8D2D55E508CF2A4E",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\tests\\native\\configured-mesh-buffer-tests.c"
+    },
+    {
+      "sha256": "60F30930F927D33D9F1C1B1B2BB94F1284A01B6727B877DE7FB955EE9695589D",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\tests\\native\\direct-collection-buffer-tests.c"
+    },
+    {
+      "sha256": "A68308BE5A6E313A77F1C359970091CDBE209FCB9085A6237B8809CED9D3A32F",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\tests\\native\\finite-extrema-buffer-tests.c"
+    },
+    {
+      "sha256": "3F0E7336D2AD9AE8BB80B981DA3E41FF1C8C34317ACBBA45573FA86DDACD0A17",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\tests\\native\\FittingAdapterEquivalenceTests.cpp"
+    },
+    {
+      "sha256": "C48A9FDE663040095BE9F8A071FC8C1A52907F87C690C54F580E3125973AB863",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\tests\\native\\GeometryValueProjectionTests.cpp"
+    },
+    {
+      "sha256": "293650030924C0C5499C4C7C98C6BE3F9FBC2324539B83640A03740499600CCA",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\tests\\native\\intersection-result-buffer-tests.c"
+    },
+    {
+      "sha256": "494270BB51D47BC5828994BC5256B411F61AF90CB1A5035A372696372BB6F15D",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\tests\\native\\local-step-buffer-tests.c"
+    },
+    {
+      "sha256": "B6BAC9855DA551B32D128ADE5663042E09E7595F850D2CC454820656B903AF16",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\tests\\native\\local-step-export-buffer-tests.c"
+    },
+    {
+      "sha256": "FDFDA377D2239D4FCB79106CA890E21979C9CC97513F7E277BC196345EA35ED4",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\tests\\native\\mesh-proximity-buffer-tests.c"
+    },
+    {
+      "sha256": "19E54D162B3E3C1E393A577214866982B2A7FB6C5A34F73A6222DDDC18BC61A3",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\tests\\native\\modeling-result-buffer-tests.c"
+    },
+    {
+      "sha256": "150E7E459F96452DC2D83E346CA96D0F54A53E3526A9192C929129F35E38B9A1",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\tests\\native\\nonuniform-filling-buffer-tests.c"
+    },
+    {
+      "sha256": "100B5EF781A4853B964C8BB12988D6C4C4DB63F93F8E3998A709B9765DC1D32D",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\tests\\native\\numeric-result-buffer-tests.c"
+    },
+    {
+      "sha256": "6B72E4B2F627C09F14868BC5B62440E1BDEC8334A8C2C134E63D3D521BFF6171",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\tests\\native\\OwnedValueRegistryTests.cpp"
+    },
+    {
+      "sha256": "B9D879D88FC9BB206BFA43E46FB45CC1C9E91583D7C6F01072818A1E29630532",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\tests\\native\\parameterized-construction-buffer-tests.c"
+    },
+    {
+      "sha256": "7EF1FAF6D86A440D66AD6515856EB3F904F1828CD320C34DB1CA45966BD11E76",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\tests\\native\\ProjectionAdapterEquivalenceTests.cpp"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\batch-bw\\legacy-baseline-result.json",
+      "sha256": "45034AE9DD874AA2ED3B5832B0436DC05B412E1688323C96D6073D1467D9F860"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\batch-bw\\legacy-baseline-runtime.log",
+      "sha256": "8EBDF465F97681D8E0849EB6F05A5F1238B859D1C461C75ACD60304A1A8D0AFE"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\batch-bw\\legacy-preview71-debug\\Program.cs",
+      "sha256": "0C8F8DA4CB66C5F99874B3DE4B8B46790346C18C32A2B499B95DA46A79D437E7"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\batch-bw\\verify-legacy-baseline.ps1",
+      "sha256": "2B03FB1F44340598E078B49896379FD871D5C98A01524A906C05B44D2D7AD255"
+    }
+  ],
+  "changedAuxiliaryInputs": [
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\native\\Debug\\OcctSharp.Native.dll",
+      "expectedSha256": "50E9D22BD6A26E404BEED1DA99DD3F3209DD251001EF60D102A858FB55019749",
+      "currentSha256": "78E9414027599D5E7CEB378F0FE73093A8BA2E56A681076B95D898EAAC86D5AA"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\native\\Release\\OcctSharp.Native.dll",
+      "expectedSha256": "E7E8F7420FBB18C82EA001578B94243166B82D139A4E4D3AF6E85D244B46686B",
+      "currentSha256": "045EF9E158FB6C9A74CB238E1BA183629E9430D889666DC57E6076010EF7AA23"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Generator\\bin\\Release\\net10.0\\win-x64\\OcctSharp.Generator.dll",
+      "expectedSha256": "925BD7D0F97BEA9BA5ECAF019D139B1FA9566D8C80AA4838E63E15E074468933",
+      "currentSha256": "05CAA5922F04E9C941788DABED9BF93285D9531508823B4D32EFA9732C97194E"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\CMakeLists.txt",
+      "expectedSha256": "60E496DE4CA2D0927C5B62D5D951C5C06D7FD75EE63A5F0901E326CD14954CB6",
+      "currentSha256": "A34550CB54AD8F4E7488EFDFF6AFA3C257709CA38CE2F842558FAF6404B7FC65"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\DataExchange\\OcctSharp.DataExchange.ExchangeRoots.Generated.cpp",
+      "expectedSha256": "9497AD40EC1D360326AB25BF5D3C7F27A271BAF9DE3E5E8E03711D0E91BCE265",
+      "currentSha256": "0EBDDBD8634FB91FEFEE8A2062856C02E3908E347350D2B2BA455107E40364D5"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\DataExchange\\OcctSharp.DataExchange.ReferenceOperations.Generated.cpp",
+      "expectedSha256": "39CE4AEA60FFA0595CCDB7E4263CDBAA0CB46A5B01A552AA8BF151812C7C64F0",
+      "currentSha256": "3FA3C21EAA1C56C4E5A89E739278F7F2E4DC0711C7D0BD1E9FC47ECEEA9B47F1"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\DataExchange\\OcctSharp.DataExchange.SharedHandles.Generated.cpp",
+      "expectedSha256": "FDE48FAD6B133E53A92D11C78D5D3FBCEB7CC98C4F64123E7C19A27EE82CDDAD",
+      "currentSha256": "C48A8A026F99AD3E1D03DA821FC12BE2E32C7F13A10A04D36227C347EC735FEF"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\DataExchange\\OcctSharp.DataExchange.TransferRecords.Generated.cpp",
+      "expectedSha256": "DDC4125BF0B7970DE47DA1A10762C4D08C34343982E8F50405CC69E946E23DA5",
+      "currentSha256": "6EEEB259DEA0FEBEF2473E76B06438BAC4C0F3C95F04B9435089170446B109A2"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\DataExchange\\OcctSharp.DataExchange.WriterDiagnostics.Generated.cpp",
+      "expectedSha256": "E5A2C0DC82D981EA46E89787483F8077EED88EC20647CF08A2D3040336B6A849",
+      "currentSha256": "A6EB6AEDCA0C154CB19BC63AADC6D4C49CADAB089F441F1F1361024CBBCB0ED7"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\Documents\\OcctSharp.Documents.ReferenceOperations.Generated.cpp",
+      "expectedSha256": "2830FC0FE1577A0D82B305F2F6C7CF2FD3D8F6805CC483D2CCB81097A5A09CAB",
+      "currentSha256": "1BD896DF124FE86145794C715CB6CA6D9E1928AFF1EF3BB2D28C9248EB2A4607"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\Documents\\OcctSharp.Documents.SharedHandles.Generated.cpp",
+      "expectedSha256": "FD296F036AAD3A3A8BB25C9698A554B107675DDD02B07BA135F98B5F27E3F84D",
+      "currentSha256": "DEFC199A4E9BD2F8956B1E7FA13E8AFE5752CD3BE86D0C6D2FAD7007D5B6499A"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\Foundation\\OcctSharp.Foundation.CopiedCollections.Generated.cpp",
+      "expectedSha256": "145664772C68EDAB5C1C54395FA4AC0006B2C57358583394FA32C26297D20C3A",
+      "currentSha256": "3690A76DECAE6BFAC4954BF0C2A8AC624A37D5EFB36ED68D7F82A9ED9D86D8F6"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\Foundation\\OcctSharp.Foundation.GridCollections.Generated.cpp",
+      "expectedSha256": "5577ADA5561FFB2A137A62DFE5807994EDC87B2077DAADC1CEC24E338ABF1678",
+      "currentSha256": "6A498E2727BD958A8D9EBA21E5572D7D388F95B72FF09E4FCCBB5A3CF45AAB88"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\Foundation\\OcctSharp.Foundation.GridSupport.Generated.hxx",
+      "expectedSha256": "BFDBAB81150B7CF8EEEE49614EC8D546FCADFBC664EF9A627081468A5DFDBB11",
+      "currentSha256": "86CE35EB97CAA831E8ED4E17210168A35BB52A23B8698F394BC91D6C20F3D1F4"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\Geometry\\OcctSharp.Geometry.CollectionOperations.Generated.cpp",
+      "expectedSha256": "0AC5DDA50304E36DA8D253BE3E5891AB81B602C90E5F9D7E37F248C2266A0451",
+      "currentSha256": "BD85FF48443D50CCEA01EEA4296B82E44C54BCC64D1DCA4CDAC3D9605B0D8715"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\Geometry\\OcctSharp.Geometry.CoupledConstraints.Generated.cpp",
+      "expectedSha256": "4D30338233AAD4ADF1A02FB0D7F422AD0F89005E5D4EECDA9CE19A65FBA010E0",
+      "currentSha256": "6A6A5C84CC57019EFC51DB7D2FD89C4982C20D779AD3B2B5551B3444DA03DDE5"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\Geometry\\OcctSharp.Geometry.CurveSampling.Generated.cpp",
+      "expectedSha256": "66E6E5F81D06EC6E07820654AEA4CCD5FA414DE03FAEBA77BFFA0527D8865C65",
+      "currentSha256": "E489C06F41824CD14ED28369B71F171792B6A3DAA433C34E1AE4321D6AECE051"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\Geometry\\OcctSharp.Geometry.FillingWorkspaces.Generated.cpp",
+      "expectedSha256": "361597924B35651908256BF9035587D83A1EFAD5EA7B817323785FA3D4FFEA9D",
+      "currentSha256": "02E5E520660969A10C1C588480620DF85D999A1B0B78F55737C3ED5BDCCBA9E4"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\Geometry\\OcctSharp.Geometry.FiniteExtrema.Generated.cpp",
+      "expectedSha256": "C53B4B2D9EFC0E967A97EE51F640FA9DCA6C472A04F1C690A01E404D7E9A6431",
+      "currentSha256": "900B36686F1D64D11081F0BB4636A50A69D2362644BB1C0060B4AF3C9C4145A6"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\Geometry\\OcctSharp.Geometry.GridOperations.Generated.cpp",
+      "expectedSha256": "C50EE249A90933BA0D0AA2FBB03EB32C795567E377BE61CC5568E30330067A2B",
+      "currentSha256": "745354D89E2827D10A0B368E80D0544C782296D62A2346AEEA3F83183EAD0BAB"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\Geometry\\OcctSharp.Geometry.HatchingWorkspaces.Generated.cpp",
+      "expectedSha256": "4EE17D3BF74E96E760BE04790F2281A6A63D8643AB6BA983BF0E897FF2920051",
+      "currentSha256": "1286701E1873C2F33A353F8BDE06A2818EFE5F823C2C037D72DA333592E94DBE"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\Geometry\\OcctSharp.Geometry.OwnedValues.Generated.cpp",
+      "expectedSha256": "777506AADFD6D97DFA9E914779ECF35C73531E511A0CBC236D3EAA5134E90182",
+      "currentSha256": "40029EC958207E014DA3A46670C272699943A41EE920D883FED791CFC60D9F6E"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\Geometry\\OcctSharp.Geometry.ReferenceOperations.Generated.cpp",
+      "expectedSha256": "0950F3A29F68F46DE48B822819B8E30818592A6C4BF43722309327983ECB3532",
+      "currentSha256": "7AB3D3C91FAF62BCC31D9BD038345D7F83A736887FF32612C4D14CF411270414"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\Geometry\\OcctSharp.Geometry.SharedHandles.Generated.cpp",
+      "expectedSha256": "6AFA46B9ACE3305C82A8BBAB6BD70302C0CA528751275DADF894A201A7072C90",
+      "currentSha256": "0DA961C51F3782539FF14E7DFF99A12ACE10F4858A156C81CF16A5919F4CF91C"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\Geometry\\OcctSharp.Geometry.SplineWorkspaces.Generated.cpp",
+      "expectedSha256": "22CEC6AAA155425CC82ECB695B90794AC65F90FFE01994139721D81BC89AE83E",
+      "currentSha256": "262E9A0415BE02C2889A5103709DEB3C91EC0D0C971F2D14384752CCFA5C9B36"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\Geometry\\OcctSharp.Geometry.SurfaceIntersections.Generated.cpp",
+      "expectedSha256": "E9A2D2E7B6CCD12252A742F465833FBC6994FB6A0D1A51DD0E40C9106A79D385",
+      "currentSha256": "13B6AC2C8693669D871C5614E8AAB5E9E629B596DEA7A2308CDCE8AF2C21F33B"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\Geometry\\OcctSharp.Geometry.ValueOperations.Generated.cpp",
+      "expectedSha256": "08740BFFCCEC198B913A27AF994DDEA8BA2BB65FC73E03561C131489603252A0",
+      "currentSha256": "0E78113FC8AA68D2C494930718EECA996AD4ED96607E188BD87B970B7A4BBE48"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\Geometry\\OcctSharp.Geometry.Values.Generated.cpp",
+      "expectedSha256": "F34817747101E535B871DA35CDEC3A778957C1384B3314F8D654BE9952ABDBA9",
+      "currentSha256": "FDA9FFCF68C415FE13B21C0CFF38F7C59679DFCDEBE203A210B944997D36C84D"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\Mesh\\OcctSharp.Mesh.MeshBoundaryDiagnostics.Generated.cpp",
+      "expectedSha256": "EDA971F1324A97ECD896C477F30B16E56E59F170D18E658A608BD921976C6E39",
+      "currentSha256": "8B4CA60A4295EAEAAF0F1D7A82A0C236C8FCF40473AD4FEB3057FB5975A27370"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\Mesh\\OcctSharp.Mesh.MeshingWorkspaces.Generated.cpp",
+      "expectedSha256": "8F972C068AAABA8FBEE03CE92D22F5C7B2172446BA255AB6B4F871C16ABC61C9",
+      "currentSha256": "47BC94A912AC46F04A05BE990D9377E66D9690DD6726D28F6A20C9D22555FC2F"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\Mesh\\OcctSharp.Mesh.MeshProximity.Generated.cpp",
+      "expectedSha256": "F19ADC04CD51CD32628E1C054ED749C9F3C12B43205F051E30C20687FDA73F16",
+      "currentSha256": "79F732822D0D0BDD52740CADE29CAAEF7E47EF6480EFA1CD9F8765A60455D5FB"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\Mesh\\OcctSharp.Mesh.ReferenceOperations.Generated.cpp",
+      "expectedSha256": "6194D404B558A39F66710BB4DD466900F2229D40696763D03DC8A7D311FD8710",
+      "currentSha256": "8808ED4C5AFA0D5E0FC727472CA3A5930C7B0EC791D34C1047BC91197BE56987"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\MeshData\\OcctSharp.MeshData.PolyDataWorkspaces.Generated.cpp",
+      "expectedSha256": "1B17715504B5BE10F6ECECC02CD6146980DC112B54A98629EC8D4DDF5788D3A0",
+      "currentSha256": "617AF4701261C79F140E7D83904CF75CAFE2575CA924D08D700EBA0F1170D61C"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\MeshData\\OcctSharp.MeshData.PolygonBoundary.Generated.cpp",
+      "expectedSha256": "CDD2C6C9CC7236182CAEE37034A055BDE656CDD746499D3D05FD8B2C2783E297",
+      "currentSha256": "75C1BB620D95A9CFD4033119F5353C657C20D660BB87012817F15A3CA904D869"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\MeshData\\OcctSharp.MeshData.SharedHandles.Generated.cpp",
+      "expectedSha256": "A814F04259CE5FDA7B1F4BFA7F6FB725155B85F7E381B13151CBCDA14DE7DB08",
+      "currentSha256": "B6788370C40BA85A22D8FC00068994FC8288D04D9456D6D2EA440040812BA60F"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\Modeling\\OcctSharp.Modeling.AssemblyDiagnostics.Generated.cpp",
+      "expectedSha256": "97B8256DE12B5F62B49A649FDDF90E0B1E1A5F829B35B2685639C45BA94334AD",
+      "currentSha256": "58F6201462DD01D6EA2FA35D624359433731225319F18D75F73E2E5406349E08"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\Modeling\\OcctSharp.Modeling.ModelingBuilders.Generated.cpp",
+      "expectedSha256": "7B3080395F7E4F3E8761A18ED6904DE9E337278C56FFCE958ADAB6BAE92BC3C0",
+      "currentSha256": "78A535427120E44A475E03E7859A7AB277DB361A122FFDD7C6FA985A6E733F84"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\Modeling\\OcctSharp.Modeling.ModelingResults.Generated.cpp",
+      "expectedSha256": "1936B61F57956EF5109E34F2ECDD5F1D4565CF8ACBCAFF874B83E8AD1565D9EF",
+      "currentSha256": "737AB18FD4B326119E68B6E8DDF9C7ACC97F54E2E2CCAC973F5AA5A0EEDAA082"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\Modeling\\OcctSharp.Modeling.OwnedValues.Generated.cpp",
+      "expectedSha256": "49A852D195DDA79048440A18F12DA9BB12A93DD3616823F23522BB4F89B65DAB",
+      "currentSha256": "4AD48D79945837B5322F3EE1248836444FC71FCF6F5EE32E61E3D0A18EEF04DA"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\Modeling\\OcctSharp.Modeling.ParameterizedConstruction.Generated.cpp",
+      "expectedSha256": "632A1F4D1A4CCCC9DF18AED0051087E80D113DA4158BCF965DD71AA9AF866934",
+      "currentSha256": "6E05F9FC335AC632B10FBF60A557E0709A4E1F71EFE9821DDFDCCFAC0169B1F1"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\Modeling\\OcctSharp.Modeling.ParameterizedConstruction.Generated.h",
+      "expectedSha256": "11929BF30E736FFEBB06A0FE63B2FE854575AFD67D5AB06FC6C10AFD796506D0",
+      "currentSha256": "52AF6430E34C00529C67AA8BD933E2AD391F7FF2E32A9EB30CBC2F5651B1A4F8"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\Modeling\\OcctSharp.Modeling.RayResults.Generated.cpp",
+      "expectedSha256": "5195FF3576F996A3B6993C24EB81A670A392207DCDC63A36304FFDEE64460151",
+      "currentSha256": "D3DEFCCA218226B5370BBAB945BCCC44F3A3B26A472A023B24C8E7F42E65AF77"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\Modeling\\OcctSharp.Modeling.ReferenceOperations.Generated.cpp",
+      "expectedSha256": "308F560EABDD25A495E19081CB532465DA0B0F6C073C0ED512338DB229AB49ED",
+      "currentSha256": "EA939429495556DC35E11D039A97962C2FB89FFAB4A174FC937AB7182975713C"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\Modeling\\OcctSharp.Modeling.Repairdiagnostics.Generated.cpp",
+      "expectedSha256": "AE3905986FA028BCC064729156EACB25535A0562B3B528D3184BF5C9764E0AE6",
+      "currentSha256": "E49C19EA69311E65F59279874E6FFC8621616AD2CAA0023489083EFC04F1D8FF"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\Modeling\\OcctSharp.Modeling.Repairreplacement.Generated.cpp",
+      "expectedSha256": "4300F8F0F079AD3B9CE350015FF1E7247357DAA3A2DD44F3A44E97E35443874E",
+      "currentSha256": "572C4B552F8BB18F132C5DD6F916A32F46D296381C925DCA4C7286E8D0CA189E"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\Modeling\\OcctSharp.Modeling.Repairsessions.Generated.cpp",
+      "expectedSha256": "7725BC16BA3EFCD37E3E9380E3211BA67DF0BEACC77872E644F23AE86C57642D",
+      "currentSha256": "B17425F89D10248D6D9BDF1897EE5BB2F08AFA82FAF4ABDEC481D10F14F35ACA"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\Modeling\\OcctSharp.Modeling.RepairSupport.Generated.hxx",
+      "expectedSha256": "E0177EFC268B7045A36F4510A8DEE9BCF6D407C16AAD5D84C1A0A6325DEFF2C5",
+      "currentSha256": "F4D17FAEC74AB68D2140EA29B932F5EFE494524BE6D75A93155D42F78A5B70CF"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\Modeling\\OcctSharp.Modeling.Repairwiredata.Generated.cpp",
+      "expectedSha256": "0512FE8317228B599ABA9DF33FF78A377D4F92FECCB03218B1F32C44A9A9A6BE",
+      "currentSha256": "34D374969805FE379CF3D4EFABDB148A7F0733C7DEF55F2AA3A40789F8011678"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\Modeling\\OcctSharp.Modeling.SharedHandles.Generated.cpp",
+      "expectedSha256": "A3CACD9D8622D739214C270756600470782A72A1A0DDBF68F60E6CAB32B7BBBA",
+      "currentSha256": "BFF8E26277B9084BC8F6BCCA76FB9996BC2CA5FBB39A64E29C6BE5EC3DA4B76E"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\Modeling\\OcctSharp.Modeling.TopologyAssembly.Generated.cpp",
+      "expectedSha256": "E41A2523E9EA51B0DBAF90C56032EE7E06BEB4DEC725A1287CB6000005653F68",
+      "currentSha256": "D4D2412799DE6C3E22E14C414531AA164EE4FE22B5801D17996A4BAD0FB7C826"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\Modeling\\OcctSharp.Modeling.TopologyCollectionsSupport.Generated.hxx",
+      "expectedSha256": "5177821716E84A321D0FDB78B8ACA7667571BF8B57372CCD8862AEE8F229A7AB",
+      "currentSha256": "2E9BAF18A7EC27ACA5AA42DB772F733F204ECF48372A291FB56070B4784882B1"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\Modeling\\OcctSharp.Modeling.TopologyExchange.Generated.cpp",
+      "expectedSha256": "51B9F299C5564EA75759CCBF364974E9762E636666B98AD70FF6BC1F1EF29731",
+      "currentSha256": "90CC60D9A6522CE2576EBE2A57D0EA5E8E1BF16F283974D9731433C2681A2AD2"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\Modeling\\OcctSharp.Modeling.Values.Generated.cpp",
+      "expectedSha256": "DECC1CCBEB5316D152A66CAE09C526EEDF6796515071CE2D7F49341EBD0371B7",
+      "currentSha256": "BE3A2403FD00CF65D6AE295DCD5E2CA79789F5381ED67A3E4339BCA78A1F0DFD"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\Visualization\\OcctSharp.Visualization.SelectionWorkspaces.Generated.cpp",
+      "expectedSha256": "FF5FA4594D67DDA859388FCE905B204A6A49FE0553320800BF25D85AF4049EE3",
+      "currentSha256": "2854D742721575253420ECEC23F0865DBA7563C76ACA6AC8A0B2E03D812639D4"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\Xde\\OcctSharp.Xde.LocalStepAssembly.Generated.cpp",
+      "expectedSha256": "BEC7920DB97A706C159E21D89EC9E6A0BD51D2147CD8AB908EEC5BC48B43B3C6",
+      "currentSha256": "0B8BC86A32F02D35B6E46AB99AE4907F7504B4CE32CED6A9B5E6A3FA188B76B9"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\Xde\\OcctSharp.Xde.LocalStepExport.Generated.cpp",
+      "expectedSha256": "5884E50533DDAF166DB81F8B3C7C51EF38D9A195558726D2E12C86F2B4825A77",
+      "currentSha256": "DF24281B87A090282C7C7AD7E1CD6875677A1E61A87E2180AC7C871DFC9C7019"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\Xde\\OcctSharp.Xde.LocalStepExportWriter.Generated.cpp",
+      "expectedSha256": "7D7AD3708CEA36A8E560DA45F8C96948F778E8A6EAE8FC1FD65C362F8F835B9A",
+      "currentSha256": "8FD3BF41A56D81E890F812BD5C966419A789712DDE9F814FBE4FEAA05971BED6"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\Xde\\OcctSharp.Xde.MeshExchangeConfig.Generated.cpp",
+      "expectedSha256": "A711D49338BAB52F91808456B186F34A58283C84E61525609E0A4B7C6A2B097B",
+      "currentSha256": "97A30F9965C444542D4F0BC4098FBCDBA527FF0E6AC2CFB2474369EC365220B1"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\Xde\\OcctSharp.Xde.MeshExchangeConfig.Generated.h",
+      "expectedSha256": "5C4EC152C58913FEC4A154D742A3947053ED5664AB4DB4F83479CD0799F4B9FC",
+      "currentSha256": "1B86D548CDDBAB8316337BF013B4CD2DB5FA9368E94BA54DDB6C0DD364DEA86D"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\Xde\\OcctSharp.Xde.SharedHandles.Generated.cpp",
+      "expectedSha256": "169CC2D62911488AFFFAE5AAFB8160F5F6683F41F5A61E9D95A5089FF4BD79FC",
+      "currentSha256": "8898C26319C24E4B3897FD170282BCAD57111C0FF00FB522A5E3BBB54A5F76E0"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\Xde\\OcctSharp.Xde.StepCaf.Generated.cpp",
+      "expectedSha256": "CDBA370CECF662F49177A573343AA319CD0C170EFBF258C7EA1F6653697FE98F",
+      "currentSha256": "F846CC2AB253A96CEBCC98BA95ADD765BE28346013CAD8D7DC9D59FCC2ADFE36"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\generated\\Xde\\OcctSharp.Xde.StepCaf.Generated.h",
+      "expectedSha256": "405493ACEE29BD6B57BD7C14C93A6C3572A7A608F0AF9732BC1E6591641218CE",
+      "currentSha256": "D2F6A23FE630B416E13F14E9CC32BF62E02C1123CDF345C58B49B6F749D0584B"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\src\\Documents\\FunctionGraph.cpp",
+      "expectedSha256": "09D3AE2EE699C8877B1D412E60C2ED8B8949ED60351B0F7787B18336950274B0",
+      "currentSha256": "70C517BCF35D77FCD799EA0C5DF6487698F0DD05C2A1F510552DA8D9C2FC141A"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\src\\Documents\\Lifecycle.cpp",
+      "expectedSha256": "CD801C6EFF7064E3758ED5F019756F5EE9E6CFB8A8FAE124D1FF1E68CABCAFD4",
+      "currentSha256": "04001C6FCB5489045D774140A1452CD2E92A5760131F69CBD11146EC2ED0561E"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\src\\Documents\\NamedDataPersistence.cpp",
+      "expectedSha256": "6E8FD492A484817538CC57379C66D6ECD96075663C69CD17C7A23D1680B3930F",
+      "currentSha256": "05CB4712E6993406F1520DB54130BCDA3D8E488CD9320D6441FE24405BDE5706"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\src\\Documents\\ParametricRelocation.cpp",
+      "expectedSha256": "23DC2E5F274159AC27CF38364489BF8FBAF068DEAE749C331D0DE38559078C40",
+      "currentSha256": "8D32EA50EFDFACC6A464BB2F566FDEDB6CE47374C355D212CABD3959C5336EE3"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\src\\Documents\\ParametricState.cpp",
+      "expectedSha256": "95F9B1C4CA5A7BD69A602E5A8DD3F2AC42C5CDB189F103DC2A6910BD1F697D03",
+      "currentSha256": "AEB3FB5E9E54CAD0EAA4CD34968FB8C0923C0AF7D73F1190BB98A8FFC4F323E0"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\src\\Documents\\State.cpp",
+      "expectedSha256": "AA6000173ACA82C2F04DE0E68B6356C79B5A555C2E0DE14BDB68799E537A1536",
+      "currentSha256": "DC32E53EBA96B48FCACF16538BD2BF9E537ABDF306E1DE272A07ABAF7FA6FED3"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\src\\Documents\\TopologyNaming.cpp",
+      "expectedSha256": "BCC2372B32439E0C8A3AF7D77B18653C091987072DB9868400EA437C79171344",
+      "currentSha256": "F426AADD3ED01AD6C5680DFA97D241E762757CBE7259813F407711F64D8457CB"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\src\\Exchange\\IgesExportCopy.cpp",
+      "expectedSha256": "12E8ACC4B4CC241AB2B57E75607C1BD61EBCAE5B92D22B5CAF8BF2D8A1E980F5",
+      "currentSha256": "59A44F0B6EC53D7E00CE431DD3F33E83A79B4F08530A544DB7944097B7F50E45"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\src\\Exchange\\MeshExchange.cpp",
+      "expectedSha256": "15123E3D694F337FC46174A71946B5ABF0BC3FBD85B08EFFE32D4447230196B7",
+      "currentSha256": "384F87EF190A159A9DB2A99328BC6D0EB6A2E8243206A698D8764EA79AC10A22"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\src\\Exchange\\ShapeExchange.cpp",
+      "expectedSha256": "A311D6AE853103FAF90B4F7C7D349209CD918E6A2EC00DD8AEAAABF500CFC0C1",
+      "currentSha256": "C322373FBC6890B0E7CCF3D46FAC78C3E4CDB2D3D17C9A9A10D521FAA0C2F07A"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\src\\Exchange\\ShapeExchange.hxx",
+      "expectedSha256": "A1BFE492FC26BA9C42F154F8C5111E60262AC29E2ADB8F2DEF941B9DA33BA112",
+      "currentSha256": "086AC666A77A72B663B8766BCCD9260EDDA7241DE812F948C262AD0494DF44EA"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\src\\Exchange\\StepAssembly.cpp",
+      "expectedSha256": "E621F2A7DFFA14D063CE75360493DFDCAF142A48B4BE99A2AFFCF056A01F3FAA",
+      "currentSha256": "0A1CBEC6967A1C4482D093F13110EF5B938695089D523034115AB6E504438F1B"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\src\\Exchange\\XdeExchange.cpp",
+      "expectedSha256": "F145A666BA6C5A9BE260E2C15C71F1F1EACE46AA41F7D5CDDF5790C8DA7BB842",
+      "currentSha256": "5F5E2F1D033FA331BD7ED638FC1598E2FE417380DEB56D80899FA59E2E8F9E48"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\src\\Exchange\\XdeExchange.hxx",
+      "expectedSha256": "D80C7B0172F03632B2825CB5A51709FFC7C1FBA955340D83F4E303C80541D964",
+      "currentSha256": "2E4C04A67E0BE2072C2332C459B77831E034C6CD19FD2A547F69C6A896CEABED"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\src\\Geometry\\Conversions.cpp",
+      "expectedSha256": "EA7F3BC070A0F80E039D75E1685B50225094D38B91CA431BFEE94462A8FD9F75",
+      "currentSha256": "58E0B56F3AC31E200D7FDE553ABEEC9D4F89565547B4F15EBD45AE5E33454ABD"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\src\\Geometry\\Transforms.cpp",
+      "expectedSha256": "C0F3434AE559D73DE0539972CE5F515FDA76C6DC99922E692BC1E72DA9177DCF",
+      "currentSha256": "BC4ACE012556C07D12FC684ACDCA9D2E0001C58CCF97DFFAFB098F33E66F15A5"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\src\\Geometry\\Values.cpp",
+      "expectedSha256": "A58D7DC0E5EC22BD9C27D846CFFBCC6F34DF853F3C9E9D1118BE6FE5BFA87F32",
+      "currentSha256": "AF746B12B3F9CFFD974D9863BF2A7B7FDED757AA24DB501697A7FB3374ADF9CD"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\src\\Mesh\\MeshAuthoring.cpp",
+      "expectedSha256": "D7E73F36189F221DECDC972093E139F960B0FEDD47AC8F6D2748C408D622C067",
+      "currentSha256": "B489048330D2D1C9ECFC8FD20F1E4D25D1470DDABF5557F99DD092B665000CD3"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\src\\Mesh\\MeshEditing.cpp",
+      "expectedSha256": "4D6641418D9A9F0B8369EE67BF6ACA652026CD00C3C847C7A42A50E657D32700",
+      "currentSha256": "E70CFEF64130B082DD3BFB9DD0911005A1EEFBED70D75ED06C2BAE4D9D3D5A90"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\src\\Mesh\\MeshTopology.cpp",
+      "expectedSha256": "95FEB2CA27619909949E17CB4AA8091AAF1326B302FF66951971E08E4DAD2E28",
+      "currentSha256": "1BD1E20B9C777A982F2A06B7149FEA0BAB03AE58D19D10F896501F340B8F79A4"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\src\\Mesh\\Triangulation.cpp",
+      "expectedSha256": "922ECDDA11A9A5F9154D80A69C23229889210BCB344687E573417F9EC3DA49DE",
+      "currentSha256": "3391B2D1132B48C2C32C54E93FDD1964ACD89399181824C64ECEDD15B9A0DADD"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\src\\Modeling\\BooleanTopologyHistory.cpp",
+      "expectedSha256": "C9FF26ABEC16F930A4461F79401894A783FBD8C6CEABC064BE811F034D31A08F",
+      "currentSha256": "21DF485437ACBC5CF06527093C2597E2F6D831B2AA6BAD35F252052C505426FC"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\src\\Modeling\\ChamferContours.cpp",
+      "expectedSha256": "EC4EB7FBAEA89A68643C380C94171176FDD11AAB8DCDF991069C01225166F902",
+      "currentSha256": "BA4651BC9F0E37854DC1CE412384FE2BB5BBA69538165135CDE790518C9A47EE"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\src\\Modeling\\Construction.cpp",
+      "expectedSha256": "489D09FCC051F112EB1F7145E83E8379D7638EB1BA70C72F6AAF022245014635",
+      "currentSha256": "FDD3E69FDF6D0905A0982D0B04A44E498F3475ED48077AB5FA0474F10181CB82"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\src\\Modeling\\ContourFinishing.cpp",
+      "expectedSha256": "9F438FE39F2FE2C4724B7E45376DA05ECD3A0255A4576287100682A1F6944635",
+      "currentSha256": "D5AB78FF38847D032AD402EB39B594D47BD447A32866D096035C73C7AD6D53B6"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\src\\Modeling\\ContourPrograms.hxx",
+      "expectedSha256": "E98FBADB170042E06ED1657D5CBE14970546922B66943103F702D0C5E43AF866",
+      "currentSha256": "117605DB96C56DA3D483221C5C43FE64D11F728129C48121D5AEC803A148D1D3"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\src\\Modeling\\Drawing.cpp",
+      "expectedSha256": "423F391451949DB055CBDDED7A414D636B5F242161E704DAB4660F855976C048",
+      "currentSha256": "C94389AB4890FD4C8F9FD1580AA4BB5435F4BAC53E04ADC9AB5E7A0B9A90D4A2"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\src\\Modeling\\Features.cpp",
+      "expectedSha256": "1FF0E42E379B3E4271B6295DCA3D8F79B9C58603BBFFE0E4822C409C24A198A3",
+      "currentSha256": "2FB84F132A16C2B850B113AD276DE9DCEF24668004D1359171C5E2D813BF7078"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\src\\Modeling\\Features.hxx",
+      "expectedSha256": "E4057ECE8379DE27F91E93D0F6DE26F2896E29847D6840AECA2DDB90CCCC9A93",
+      "currentSha256": "A05998FCC3ED9F04345CEE43E0EEB453BF6BD4CA76093C7A99D7A984160DA192"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\src\\Modeling\\Freeform.cpp",
+      "expectedSha256": "CAD8F1088061B856B4D4B7BE92D0982E72921EEAF8A18C38AAC373DE6ACAD425",
+      "currentSha256": "394F87AEDAA39B3BF3FBEB4470C2F7C88149C3C84A6C7F2936AC4BA4E6FB560B"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\src\\Modeling\\GeometryInspection.cpp",
+      "expectedSha256": "4F14314626C32D3EA9A13553280B12228A93CB6BE4016B06F06EB25E4D8C61BF",
+      "currentSha256": "EEBD458245983542A585D6631FB511471A2C08A203A0396B3C3C6902C23FBC6D"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\src\\Modeling\\GuidedAuthoring.hxx",
+      "expectedSha256": "191C294DCB9E63A8CFD1018A584F1C3F78B62F15DB1379BB4B510B0286B49812",
+      "currentSha256": "A45AF3888743C856E5219BAB0AA2E5932A3BA2CD056D55647902A87B0CC03B2F"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\src\\Modeling\\GuidedLoft.cpp",
+      "expectedSha256": "A9ADCB26ADC7AC0E5E50EDE94FDFFB0FC9D1EB08B1330086F6F5301A04C15EF5",
+      "currentSha256": "54902789931CA50854CB890B0409B50F84D1A1D4BF02DA39A499B6DA79EFE584"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\src\\Modeling\\GuidedSweep.cpp",
+      "expectedSha256": "9ABB30ABFEE7099D2A5B5C1ED35124EFC4068894992EA6AC43A131B033811321",
+      "currentSha256": "DB69A3CFE7FFE33C9DF5AC3480AB60D4F51A92951DDADFF981CE610A98D2BDFD"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\src\\Modeling\\Inspection.cpp",
+      "expectedSha256": "524811FAA7D28416AEFE020DC18398E767D43F4C73C5EF5AB874638506B8165F",
+      "currentSha256": "6B60891DD9E507A180FB859ACFB666C57FDFDD1AB2BC18D7A2637D00F3BC726F"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\src\\Modeling\\Inspection.hxx",
+      "expectedSha256": "02DAEE4FFEA1687FE99712640A4F779D39801C6EF05A16D28239DAE51CBA914A",
+      "currentSha256": "C619C471A6EF0562FC14A888A33AB16D7DD8A0731A5923286CE6EBE4286F67F4"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\src\\Modeling\\InspectionIntegration.cpp",
+      "expectedSha256": "90DBE17CC5FF9C0A69DA9DE14B5BE02AF1D776CEE41348F249033AC0DD020B1D",
+      "currentSha256": "05E54A59E69520FA667A54423999DB914AF3EA128E7773580DC63B4252198818"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\src\\Modeling\\LimitedPrisms.cpp",
+      "expectedSha256": "4CA2088FD3941CDA2D4C2C4EE028107D4FA7A7A89A381226F1363901B5F65B33",
+      "currentSha256": "E348CD4B4F1922F397E3B337419CE5A4DD5C20AD7A4350959E1A93042C99A16C"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\src\\Modeling\\LimitedSweeps.cpp",
+      "expectedSha256": "2C7EA395E5A0458F068DCB768E2F7AC732B8A8BFEBB32AF9DE58563378BF5141",
+      "currentSha256": "5B20BA8943CA07596FFAA0D68239163479F53E03D3C250DEF815FD2FCC1320AF"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\src\\Modeling\\LocalDraft.cpp",
+      "expectedSha256": "67D22B6243A3E91C4690851CC5BDFB7DBC672702F082539E5CEE8C26C0A7491F",
+      "currentSha256": "9E8774D29CEEE917942E84444212A0C656E2FD4D0574978E92F0FC5437EC44D9"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\src\\Modeling\\LocalFeatureData.cpp",
+      "expectedSha256": "AF3648B516A04F7B34E5F5F8C60B6ADD71DEF456E22D21722AF5AC3B4FC29FDA",
+      "currentSha256": "002B4B14A8657B22632CC5532EB3BACBBE1B376496AA809B47E2FDFF1FE96358"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\src\\Modeling\\LocalFeatures.hxx",
+      "expectedSha256": "CD15DEAE21BC3D329F24C4461306A28DDFD07838FC5D75CC25769B72E3CB6304",
+      "currentSha256": "28FE655F958C699BBF97FD03CC39C7853957998BA9F2F3D6371C489DEB04F703"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\src\\Modeling\\LocalHoles.cpp",
+      "expectedSha256": "906E0CC254F52909836B2F1F44283A2C70C0C7CFB5A84D416693B6EB48FF028D",
+      "currentSha256": "DF5B59A10A12963465508EA14562C59647090838D213A59F2A619B8DB3D01D0A"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\src\\Modeling\\Operations.cpp",
+      "expectedSha256": "54314ED1DD677872C8AECADA3B53BB7A3C98BE2196BE5CBCC43ADFA6F9E26B69",
+      "currentSha256": "7D794A9054CD131CB88A576E52EB85F2DD7E1D2715C51E35FAB9F9C9102A19F3"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\src\\Modeling\\ParametricTransform.cpp",
+      "expectedSha256": "1B2ED9238DD06A8A0F09E7D0630D696580E96EE181A58FBFD9CAAB8ABC3666B7",
+      "currentSha256": "E0685E38D46BEC558F3841F32D3BD4145C9F47A7BCEA0A4614D9E4F18C829441"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\src\\Modeling\\PartitionRegions.cpp",
+      "expectedSha256": "4A607E195B340C642BD040D622A8BBFC652F1DCF3BBA5991C6818435525226A3",
+      "currentSha256": "4E64D6D5B241C9C5288768D0625AFFF6291DE4619C883995A1A1B4B681414E10"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\src\\Modeling\\Properties.cpp",
+      "expectedSha256": "FAFBE8DB0F9AA968D74D8659BD6AC3D99266920B1F0959F5FF8217A072E51935",
+      "currentSha256": "EBB8B11F9D9CB46830275DB0A66BE12C1A4A027ACA2D2E386124B2B87C3A1C02"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\src\\Modeling\\RegionInspection.cpp",
+      "expectedSha256": "79CDF1590B05DD80313C36072CC3A6FE6A42413C923FEFEE65B6BC6B36FE6607",
+      "currentSha256": "4BD895664F0D90710B3D2265A24EE601C80305F179EDDCB8860A454024470171"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\src\\Modeling\\RepairBoundaries.cpp",
+      "expectedSha256": "E5F3C919573B28A13EC9BC1F486236D4759A32849E4AD101AA32046ABB9A19DB",
+      "currentSha256": "9FACCB6E134D2FB0DF4B3AB918EF68534DD09828B118822D103393CF9893D562"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\src\\Modeling\\RepairData.cpp",
+      "expectedSha256": "6CC55E90B92BFBE518E281918C556F906082CBF47C595A9571D52A42CF654DD9",
+      "currentSha256": "F8BB45324372B9399E043BEA5D81413E2624D2EF2C491A996E51257B4931F001"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\src\\Modeling\\RepairDiagnostics.cpp",
+      "expectedSha256": "AFE11E3C41A97F7B429C42A6FFF0A9DAB4B009B6EF88C805CB3F25537F583E59",
+      "currentSha256": "BF18A83545D7F9C1C9598D41EC3AC934F70CC98EC0EF73DC1B7EC081B14B8B48"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\src\\Modeling\\RepairExecution.cpp",
+      "expectedSha256": "FFF2E8A5B5041BB0135C78E8F6E272AE704C5CA8950B77DEE9CD580ABE32FF55",
+      "currentSha256": "A77209A5C05D6FA57C003FF9BD2D98C60A8AB9BF9ECBF667E132E5F8E9C295AE"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\src\\Modeling\\RepairFixers.cpp",
+      "expectedSha256": "637E2D0D1442873B8CCCF667344CC971E28951427FB7CB4DD1BD464A41A8EB71",
+      "currentSha256": "0AEF6181AB99866F4252105625E0870A423155F3FA3B4EA6842F1B4D73293C30"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\src\\Modeling\\RepairSewing.cpp",
+      "expectedSha256": "70D94599EC3C2FCFCEFAD0C60EC698CC5372059E7367CB12F86E5FE209D5EBB4",
+      "currentSha256": "6AA8B80CF61CC868360CCFCEB2160C36FA00EBAE6DA1B9FE6267FCE254AE9045"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\src\\Modeling\\RibSlotFeatures.cpp",
+      "expectedSha256": "26E2BEB401FFEC26080AA4BD84419D7DE6327AF7597CD524B3605E303C2AE9E3",
+      "currentSha256": "F4EFA9F1E1D0F4C76A6E1984D10EF864719E49575F716A1510FA71CB4B501747"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\src\\Modeling\\ScalarLaws.cpp",
+      "expectedSha256": "74E30C054C6D79BA7EF5690DAEA43B50936325B61659DC8C3887B5E0A4CB4F3D",
+      "currentSha256": "7A6DEF32CAE4040AF5384AF1E9A9259992179198D4053DF54E2C428492CC92B7"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\src\\Modeling\\ShapeTopologyHistory.cpp",
+      "expectedSha256": "D663383085C4C1DEA68F15AD156E836B64A61ACBC151FDA8352D074D1D8CDB21",
+      "currentSha256": "3A65B88ECC1CC803C01EA49F683C96B070293F805E839A099B24F337C4E7D5A7"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\src\\Modeling\\Sketch.cpp",
+      "expectedSha256": "BB7CEEF0CCC016EE367ABED884048CE1195359BD4CFBE6EF3B68CE0C64F779AB",
+      "currentSha256": "E7F7614C1D39164AD2A34DFB65DE0F091F3E7D9F7761553688CA199657BD6343"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\src\\Modeling\\SketchIntersectionInspection.cpp",
+      "expectedSha256": "A8FC3FAEA7E1AD192E767D501AD0DE0B66FAB29AC416A78E02D01554D9B4D0CC",
+      "currentSha256": "DA6EFDECA5A9E27D7B2D6CE30D576F07A43BC7176DEE20D1817256D2762FAAC8"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\src\\Modeling\\Topology.cpp",
+      "expectedSha256": "710139C0591C5980F210FB17D978983B873CF3C500D508648E4ABD056AAA37EB",
+      "currentSha256": "CC9A6BB217405B2EC12C8BAE881B2910E788A336CBC688EB58904704636D58FE"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\src\\Modeling\\TopologyNormalization.cpp",
+      "expectedSha256": "AD4968262F5871007863A4F2CCE3D150D85030CD66EDA61AFD41C5DDCDD081F1",
+      "currentSha256": "776E2B60D0A49CB53579AD88BA16854BA232DE095BEEBE44252A4EA545C3000D"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\src\\Modeling\\VolumeConstruction.cpp",
+      "expectedSha256": "3EDB403A68F44623924865DC354951DB5D1A4EBABD4445FD5B4173B63CF7A760",
+      "currentSha256": "A32505003E02C4D2B0135F4234E3E05D4A474EA0EF4BCF4BC0F566FDE5BE26EB"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\src\\Runtime\\Abi.cpp",
+      "expectedSha256": "ADA78F5F92775E9C995DACDFEFC1083DDC57BB34083ADAC6280FA198D1485454",
+      "currentSha256": "FA6652C3AA52E8F7C38175B7038F8594920C6D29BD6C1C88FF345A2A3B620EE9"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\src\\Surfaces\\ConstrainedFilling.cpp",
+      "expectedSha256": "30AA2FED8600AE6C95CED1FE4A4ACA4AE12DEAE05C70F0CE84F6CDB5F8AC28CE",
+      "currentSha256": "B2116AC4CA4E47DA6CE9AAB427438FE2525F449CCAA20A56EFD0839B9F1AAECB"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\src\\Surfaces\\ConstraintContinuity.cpp",
+      "expectedSha256": "1B57DDF749D031438103F7031CDFA5480F590E48A8B39D03D6CD968069EB774B",
+      "currentSha256": "7311123BCFC211C0E65FBF8D3FAB6468FE2E0793C1A41C4BAC8E1A856E9CB829"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\src\\Surfaces\\ConstraintResiduals.cpp",
+      "expectedSha256": "1B1572740E106AB3513F82D92E8200652BD99955241ABAEFBF601F53D9D315FB",
+      "currentSha256": "27AA6E6AB2DF5CE5160B30D05FE6571DAA648831BE04156BA84F2113600749C4"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\src\\Surfaces\\PatchConversion.cpp",
+      "expectedSha256": "F53F09B7F662C7E5403955960A3301DC8FAAC419D4FBA5AF704C834E75C177DE",
+      "currentSha256": "8ACBD331EF502F93E01B28DE2A0901E454560E377652FCD4EBB47082DE47C644"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\src\\Surfaces\\SurfaceCommon.hxx",
+      "expectedSha256": "B727551995B01F96E945662AA6572CB8019E100B08FFE568770585B95ECDD1DC",
+      "currentSha256": "F255C0D1482073C7E25D47AE09357C6F84B7E46062BBB2939932A003C18A74D3"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\src\\Surfaces\\SurfaceCurves.cpp",
+      "expectedSha256": "34DF3D2790CA5A8ED41D92E00B911DED19DED97ACCC1EF3093700DFFC0344D65",
+      "currentSha256": "1C1AB31FA28B97912E82E688DB25D27890B9BC2CD042DFB792945FD7D1C28DCB"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\src\\Surfaces\\SurfaceInspection.cpp",
+      "expectedSha256": "125B9562AE52D3B118A7F21EAB1F04B8B4B2DA019C1BF506A0448969AF1E111C",
+      "currentSha256": "DC74817707F9F3A47B121BD212BE003F86689BC318C2851DB4AB0C7B56C96C0A"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\src\\Surfaces\\SurfaceTopology.cpp",
+      "expectedSha256": "7625C417566B9AF8B0E33EED90094B7973F4DD2929F07266EB992153137724AD",
+      "currentSha256": "08673E1570D820353591E7BE965330577B266F11FE364CD6CE2C8474E8C4C1B8"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\src\\Visualization\\Appearance.cpp",
+      "expectedSha256": "865E8833758E2BE435A5250B6F68FD3C4EF15102FA022F28F349088098B43814",
+      "currentSha256": "7CDCC258B8D3D8B5CD675DF51C450A7C261CFB8CB04F5333D67C80315093455D"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\src\\Visualization\\Clipping.cpp",
+      "expectedSha256": "345B6A0BAE2DFA5437B493097AC7561E5E50CCAEAE2B26B3D32C39913F97C1C8",
+      "currentSha256": "5699C664AAF26E25E196E87A379201D12FBC4A7E33C95D0FAD161D77040D6BE4"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\src\\Visualization\\Context.cpp",
+      "expectedSha256": "5075E36C04BF3990F231CE85D02DF33DC11BB2E0EF443767042DFEA595CCA90C",
+      "currentSha256": "1F2FA9B2AB225A63558A748A7631926B69C7076EF710A931AC1D5C962788AE98"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\src\\Visualization\\Context.hxx",
+      "expectedSha256": "C8604E2554E193E2423BC467E8326B41ED29CD3248A043F060231F13643EE427",
+      "currentSha256": "C6F0B589EA1CD5FF5D375C0399C3D1A65D2677524DA360E4ADA480FFEF66EB58"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\src\\Visualization\\Dimensions.cpp",
+      "expectedSha256": "36CDB9F254022816A1E7F817AC7339430C8EACCA9D554A528084876F37B9F3C1",
+      "currentSha256": "C968D07349AD7168289E00F7DD713C9BD6BA601B332F1BEE22127670BEA14F59"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\src\\Visualization\\Environments.cpp",
+      "expectedSha256": "3DC4A3BE417FED268630E63FD4877B0C6E6C3145CE9193BC430A2DD5A518715E",
+      "currentSha256": "A4B2A3CA1E0ACAB103E6A2ADE8233C12870E14EB3FB25FE1E6E2D5D2D61C20EF"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\src\\Visualization\\FrameCapture.cpp",
+      "expectedSha256": "B6FE0D8836A59D62A8B3C6BF04C11A83071FDE7BD459A56604CE8B1FDBC32BCE",
+      "currentSha256": "DB8AEB64A4E37EF14F2BB592185DF3076FC09E313B436016F180F1138816E0DB"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\src\\Visualization\\Lighting.cpp",
+      "expectedSha256": "6819B608059A29B2FD48AF53DF03BDFC2B40BD0861B764ACB58029E6549FC032",
+      "currentSha256": "CDE05214C3A4F6144087C4F5E95F187A1D42E0A551E0422185F74E9646F558E1"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\src\\Visualization\\Manipulators.cpp",
+      "expectedSha256": "91AFC039CB179BED4C6BF74A759AA80EB61106294B20E819B79A2D87ACA58165",
+      "currentSha256": "4AB5A8E0441D98628DFBAE5E04B21C1B4F336EDE5AD44470AC8B531685A51B7E"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\src\\Visualization\\Navigation.cpp",
+      "expectedSha256": "BCF35DBB8AA13AF7613EE02965BD7BB40B8E1DCA9AC78E50945E34B076595D06",
+      "currentSha256": "C3381679955CF126F0E6732090DA4D7921D211F319B464AF14907B3A18BAF950"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\src\\Visualization\\Presentations.cpp",
+      "expectedSha256": "3357AD48FC008F08B963CE8C100CB4492C79799B19BD1F4A48D83428B4B7B5B4",
+      "currentSha256": "B6BC8FA25014BFE1BCC3F8C3AA2681CDA3542D92ECAF1DCE29F3260420876F21"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\src\\Visualization\\Presentations.hxx",
+      "expectedSha256": "9C87B50D779C8E3721B98E548363239DE290E8103069107B0E9640CF2C6A7E8A",
+      "currentSha256": "5AE1FA9F2DED599E7C50C8D830BBFF06C2A2F39DF731BA08836653225D6634EF"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\src\\Visualization\\RenderProfiles.cpp",
+      "expectedSha256": "4D2FF46AE3B85392FEA1E113DC2F19F89B6212D31825D63759A3ECD56D9A92A7",
+      "currentSha256": "560D8AF23B205B498ED4EBAE62494E2ACE7FDEA51E42C9F72B7F1591CA2A3C74"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\src\\Visualization\\RenderResources.hxx",
+      "expectedSha256": "8A322623C8364B1F058B57FC4A26065B2E3D68E5325E56D88CB4DE8B6832C365",
+      "currentSha256": "98A292CA8D3264AD0EDE6917BB2A0EAF5E8655EB7A6503CF7DB0A488E018E542"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\src\\Visualization\\ReviewCamera.cpp",
+      "expectedSha256": "939FCAC463D7CE9D616F47DA8E4B129C91F85C5A680DFD85B2BA2B1EE6D7E3BD",
+      "currentSha256": "D1BAC177C3D6AB33A935E9CC4E9C3D27CEAEB85718444F1D2D4CB676D7C22289"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\src\\Visualization\\Selection.cpp",
+      "expectedSha256": "E1C8B0614E8011450B37D5EA5FD92E617B3D2618AAD70D66B7CA806D046B3A25",
+      "currentSha256": "7564DF4A2AA9C5FD29211E3AA64F88744FF96F7895C637C9749DFBFB02CA0BC9"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\src\\Visualization\\Textures.cpp",
+      "expectedSha256": "0E4F6A344B83080C32B5BF3C621D9F308BAB7AEA9CE179961B35EE8739EC8BD8",
+      "currentSha256": "F8406705003F5827088592347808715B19AFBCB5B556C7C701FBCF51E377C4ED"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\src\\Xde\\Document.cpp",
+      "expectedSha256": "8984A7F187004C1C429E54A114C67780E95212FE71785CAF493BA8C5FE0B845C",
+      "currentSha256": "2998C3A1255DD526F0446032E25855A2ACD1318A68A42B8D44B92131EF7AEA97"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\src\\Xde\\Metadata.cpp",
+      "expectedSha256": "CBC7AB3016AA3035C862719B00418277757EB10669F08CC5D0786EC4DAA03971",
+      "currentSha256": "31145DB902E7E45A670618167424DFB943F563214435478DA076872AC6DF3D4B"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\src\\Xde\\Pmi.cpp",
+      "expectedSha256": "EA5FDF9A92600E7BA82859E028589AAED9F4D41850D484CC5E3F8C22F4DEAECC",
+      "currentSha256": "493D19FAE3224838F117F64E1A54A683860CEF8C2E02E58E894A482C7F1EB6C4"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\src\\Xde\\PresentationMetadata.cpp",
+      "expectedSha256": "3E827F32D6D5C465206DE812AD209F3B16C9BBD6039A4615C486238AED6B508E",
+      "currentSha256": "1A45784581516A09BEBBC7E3BAF7CB5D6E415A82B53CD74D2BDFE495AD12B4E7"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\src\\Xde\\RepairPublication.cpp",
+      "expectedSha256": "8FD4CA01620FA1262C7DFB08DDD47DB95330382A34F3C9208A1C1023C21EB68D",
+      "currentSha256": "C454054F6D854F7E429D876E46B8E537F6186172EECA3251764CEE66AEB2C8E2"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\src\\Xde\\SavedViews.cpp",
+      "expectedSha256": "36A5827465BF34E5F508D98BC294704E24DB745C9FFC279EE8E151952F00AE51",
+      "currentSha256": "F866FFF346BDD608DF600B5314949EF3A01B9B18C183BAC51B837817AF7F39BC"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\src\\Xde\\Structure.cpp",
+      "expectedSha256": "DD107820F683ECC91954B92DF51A12FD4B83B2AD82DCB1C9CF4B039A5A48DB7B",
+      "currentSha256": "D2E9F95E32960040FA5DC11EDFF56D3E1FD3D514B16934978D3D91CACD327AC1"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\src\\Xde\\TransformedCopy.cpp",
+      "expectedSha256": "54109AFB6FE13D9595D8C16AF9FAE7C976157D26798D3332574A268382BE066E",
+      "currentSha256": "4587330584EAADD6C746FE7718E8BEA64D55B715309E906F22C5ED29CE07CAF7"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp\\bin\\Release\\net10.0\\win-x64\\OcctSharp.DataExchange.dll",
+      "expectedSha256": "B218E38806EBF170AF71F255B3B53B3B682979CF566EB2C50A4DC63119754FC7",
+      "currentSha256": "6F906262C8681371E748C7AB326E6C6C7B0A91B1255195269EB315EB3D71CD18"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp\\bin\\Release\\net10.0\\win-x64\\OcctSharp.dll",
+      "expectedSha256": "BB8E29C1EABFE0BAD88D4CD323C0CB48D4D968CDF9C906C131EAAA639552C465",
+      "currentSha256": "0B7F0238C599D411AD1896DC468E12E0DEC9F4989D570C77E4214903F1EBD1A2"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp\\bin\\Release\\net10.0\\win-x64\\OcctSharp.Documents.dll",
+      "expectedSha256": "106BB1ABFC380A73BA123B1FC9165DCC79B3381C6CA052B974887382827DC0B0",
+      "currentSha256": "3E0CD827E736E2E5BDC367D34764B982CF751065FD47345550F4D605045032B2"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp\\bin\\Release\\net10.0\\win-x64\\OcctSharp.Draw.dll",
+      "expectedSha256": "C65BCDF6E3839975DE4277CAB4DAD73AC3BB71858A85B696F8EB77D53CBA311E",
+      "currentSha256": "3275FC4940464472DA3FD667349FFF7A4BBE3C267F91F20CDAA2267DED314C6C"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp\\bin\\Release\\net10.0\\win-x64\\OcctSharp.Foundation.dll",
+      "expectedSha256": "FB2BE875383BEA661204BDD0B6597AE93F086F3070DF3389498490DCAC547AC6",
+      "currentSha256": "D9676AD1DC09BB150FA690059BA646D557AF3FE19DE602B72E62681ABD8BC6A3"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp\\bin\\Release\\net10.0\\win-x64\\OcctSharp.Geometry.dll",
+      "expectedSha256": "C369C9DE59473ABC0B443DD900C0BCBF6430289626B869711E79CFA50D783D17",
+      "currentSha256": "9F6F45D2CC48A7B6F36675FC66F63C2D19567E58DE4970707BD5F24CB6030237"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp\\bin\\Release\\net10.0\\win-x64\\OcctSharp.IVtk.dll",
+      "expectedSha256": "F249D8E4B3026028FCE78DB64CF1FF89D3202D60994CCBAB91557152DB2B8971",
+      "currentSha256": "E7908539F39DEA07D7BB4610CAC1C8BA7A2313733816D32F42761B3A492AAEF2"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp\\bin\\Release\\net10.0\\win-x64\\OcctSharp.Mesh.dll",
+      "expectedSha256": "910A4B5DE3AF8AAE070AFE898CE38D1F38FFD79D3DFFBB6C4C32853827EC4696",
+      "currentSha256": "A20C6A09CB1687D3EABA165237995FF0D0DE18B8CB2A530D47B156E49E09077F"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp\\bin\\Release\\net10.0\\win-x64\\OcctSharp.MeshData.dll",
+      "expectedSha256": "2BCE6148F8041D5536B864AFAB636B3A260FA3B7DE4AE6372CBE95A31B0592C7",
+      "currentSha256": "1AF1CEE82621438450FDAF3885090D22A80D53E2AD76748025BD89F763E6B074"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp\\bin\\Release\\net10.0\\win-x64\\OcctSharp.Modeling.dll",
+      "expectedSha256": "A43C9D1AA7252F18D4F05F0FEBF83487625F35102B1427A3923A8517A7BE79C4",
+      "currentSha256": "B59D10A58DF6F5584E3BAA1FE2B214EFEF0D63E93C6611E7BD74867985579C60"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp\\bin\\Release\\net10.0\\win-x64\\OcctSharp.Native.win-x64.dll",
+      "expectedSha256": "E78FC42B8668D77F66136D3F4DFB670A8A4DE82B13E39FA364377874BB1886E0",
+      "currentSha256": "84143411E6A35E43D7BBE574934363B675D0D80E2BD6926F0E3D105411F2ADC3"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp\\bin\\Release\\net10.0\\win-x64\\OcctSharp.Runtime.dll",
+      "expectedSha256": "77259DA6BD425786481E92F7F5BABDAFB7F94E93750CEFD22495839C3B175EA3",
+      "currentSha256": "5F215B6FDD15B6503595A6DD99768B2BF250628E8661EFAEEF1FAB0E0A6FA2E7"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp\\bin\\Release\\net10.0\\win-x64\\OcctSharp.Visualization.dll",
+      "expectedSha256": "0970293B0E3CE6ADA4462CA6F2A2429B5F44EC86F4B773415115F1BC7405656A",
+      "currentSha256": "9AF6222DD9186BB9A3C47845B9E42EB872D16678426EDC098EED197BF62618ED"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp\\bin\\Release\\net10.0\\win-x64\\OcctSharp.Xde.dll",
+      "expectedSha256": "A011D7F943FA6C43CC50BD3CAC81459739752AEF59C73BA50C1612BC4D65D7E6",
+      "currentSha256": "51A113C2801DDFE5CF7940FBBCFD00F0993849941D6F6B22239ED42D00E5323C"
+    }
+  ],
+  "missingAuxiliaryInputs": [
+    {
+      "sha256": "CFA864D6A0BD097AD5FAEF6EF9D0C521AA474E81CF07E994FD62A561A08876C2",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\src\\Modeling\\GuidedInputs.cpp"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\batch-bw\\legacy-preview71-debug\\bin\\Release\\net10.0\\win-x64\\Baseline.dll",
+      "sha256": "2D42C6B54D4FC936C9E50031082BC45A04024095D1F9A61394D10D521E263D48"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\batch-bw\\legacy-preview71-debug\\bin\\Release\\net10.0\\win-x64\\OcctSharp.DataExchange.dll",
+      "sha256": "2DB189ACD37AA14EB71B046679D059867A6B9FFEC56BF1F9259F12376C3C66E5"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\batch-bw\\legacy-preview71-debug\\bin\\Release\\net10.0\\win-x64\\OcctSharp.dll",
+      "sha256": "6975FBF21FDB98CB5CF124C50760DEC9FDE6A9CE0D8545396EA782AEA78B6B42"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\batch-bw\\legacy-preview71-debug\\bin\\Release\\net10.0\\win-x64\\OcctSharp.Documents.dll",
+      "sha256": "EEEC731B4D29C861842A0B9208FEE57DF849E3C9B0AC4EBB6BA4A51333F2331A"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\batch-bw\\legacy-preview71-debug\\bin\\Release\\net10.0\\win-x64\\OcctSharp.Draw.dll",
+      "sha256": "A20C95B7C27E6E57AF8396F22D54357A7A6D402DFA495CA0B04C74EE86CEE48A"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\batch-bw\\legacy-preview71-debug\\bin\\Release\\net10.0\\win-x64\\OcctSharp.Foundation.dll",
+      "sha256": "FCD232A5893373338961920E602D3E2F398669A7A6BA6DA024ACC6E312000D1F"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\batch-bw\\legacy-preview71-debug\\bin\\Release\\net10.0\\win-x64\\OcctSharp.Geometry.dll",
+      "sha256": "79E51C7F8696DE4F2E0E5D7313DCFA8BD96F50765A245E5C1ACD49661FA15457"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\batch-bw\\legacy-preview71-debug\\bin\\Release\\net10.0\\win-x64\\OcctSharp.IVtk.dll",
+      "sha256": "F6F66FAB7BC6CB75A3BF6CC79E5ACB2C25B93BCC2724351EBBC9DF740B758EAF"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\batch-bw\\legacy-preview71-debug\\bin\\Release\\net10.0\\win-x64\\OcctSharp.Mesh.dll",
+      "sha256": "1BF891938D241CB7FE39A241B3C1873E2380124421064C1B220631A1A7A1F172"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\batch-bw\\legacy-preview71-debug\\bin\\Release\\net10.0\\win-x64\\OcctSharp.MeshData.dll",
+      "sha256": "B73B08D09395B53C8DEA3779ABE0D0A9980F2BF17F512340F659275D195D8EE9"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\batch-bw\\legacy-preview71-debug\\bin\\Release\\net10.0\\win-x64\\OcctSharp.Modeling.dll",
+      "sha256": "C6B4DFDE36B64B7DBABAF460FD0364B6865A2CB201AC95B085B0E62FFC13C9EF"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\batch-bw\\legacy-preview71-debug\\bin\\Release\\net10.0\\win-x64\\OcctSharp.Native.win-x64.dll",
+      "sha256": "A8BB764BEEE74BDC14A13133E022A34D3B9556EC4D1FF3BCAEC943A3157A4DC9"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\batch-bw\\legacy-preview71-debug\\bin\\Release\\net10.0\\win-x64\\OcctSharp.Runtime.dll",
+      "sha256": "071382DFEF4E1C89D9603363033F1F9E43D766F1A23EEB3837A648C6E4803FAD"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\batch-bw\\legacy-preview71-debug\\bin\\Release\\net10.0\\win-x64\\OcctSharp.Visualization.dll",
+      "sha256": "12DF0120FC6E4FDD102667C4A1AB4DD58FF386E27CCF85B6D89F7C3CC15C1387"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\batch-bw\\legacy-preview71-debug\\bin\\Release\\net10.0\\win-x64\\OcctSharp.Xde.dll",
+      "sha256": "E6DE94DF3BA3C17E464AC0888DE319A7E230D3BF2287C1B0302C9554E8E1424B"
+    }
+  ],
+  "allOriginalBinaryProvenanceRecertified": false,
+  "archivedReleaseAndDebugLogsRecordDefect": true,
+  "expectedFinalZ": 3,
+  "actualFinalZ": 0,
+  "sections": 21,
+  "probeExitZeroMeansDefectReproducedNotFixed": true,
+  "cadoryxDirectAuthoringSource": {
+    "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\Cadoryx.Kernel.Occt\\OcctGuidedAuthoringGeometry.cs",
+    "sha256": "B967C8B63A346A70AEB4F837F87628E8F81621631BAE054BE4DB950A780588A7"
+  },
+  "cadoryxDirectBranches": [
+    "proven line uses prism Extrude",
+    "curve uses GuidedSweepPlan.Create"
+  ],
+  "internalCallChainAffectedOrUnaffected": "NOT PROVEN",
+  "AppSurfEquivalentToAllAppSweep": false,
+  "newSDKApiRequirement": "NOT PROVEN",
+  "newNativeJobs": 0,
+  "repair": false,
+  "AFComplete": false
+}

@@ -1,0 +1,35 @@
+{
+  "state": "PREPARED_NOT_EXECUTED",
+  "directRuntimeBodyUnchanged": true,
+  "productionOpenRuntimeBodyUnchanged": true,
+  "nativeLaneHandoffMandatory": true,
+  "full6815": "NOT RUN",
+  "realModel": "NOT RUN",
+  "performance": "NOT RUN",
+  "scripts": [
+    {
+      "path": "artifacts/run-af1080-final-full-both-1.ps1",
+      "sha256": "9BD9ACCD32EF981E40ABEDC536A5A089EE070159BE1E7E482C6A952DCC01E642"
+    },
+    {
+      "path": "artifacts/audit-af1080-final-full-1.py",
+      "sha256": "B76A75CA9970B3541BF46EEC0F4E950036974EBC6A87D4EDEDAF9265E78A50CA"
+    },
+    {
+      "path": "artifacts/run-af1080-final-provider-both-1.ps1",
+      "sha256": "58AACB1DAA019A27FA9C0F73E083ED561E62F7C3A5785E740FA5700360B2C887"
+    },
+    {
+      "path": "artifacts/assert-af1080-performance-ready-1.ps1",
+      "sha256": "69785CA2815606B4E162DD7E16141E34CF1929A683CD26F89E1C6AAC79938DB9"
+    },
+    {
+      "path": "artifacts/run-af1080-direct-1.ps1",
+      "sha256": "F4BC2BD0870E16F4DA889261E71A9E30273C53E5385B332B5F943ADF97C08EFB"
+    },
+    {
+      "path": "artifacts/run-af1080-production-open-1.ps1",
+      "sha256": "671D0C31C190B4F830212E3CFF38B8153187FE21DAA29F61671EF3909727C473"
+    }
+  ]
+}

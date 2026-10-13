@@ -1,0 +1,3 @@
+appsweep-readonly-probe.cpp
+   Creating library C:\Users\yoiri\source\repos\OcctSharp\OcctSharp\artifacts\batch-bw\appsweep-Debug\AppSweepReadonlyProbe.lib and object C:\Users\yoiri\source\repos\OcctSharp\OcctSharp\artifacts\batch-bw\appsweep-Debug\AppSweepReadonlyProbe.exp
+Pinned AppSweep section defect reproduced: expected final translation Z=3; actual=0; sections=21. No product implementation or migration credit.

@@ -1,0 +1,229 @@
+{
+  "state": "READ_ONLY_PREAUDIT_NOT_ADMITTED_NOT_IMPLEMENTED",
+  "implementationWaitsFor": "BV delivery-result.json PASS",
+  "sdkSourceCommit": "b8f597c677811d1f9f4d8a97f5ae2825c0353a42",
+  "sourceFiles": [
+    {
+      "path": "src/ModelingAlgorithms/TKGeomAlgo/GeomFill/GeomFill_SectionGenerator.hxx",
+      "localName": "GeomFill_SectionGenerator.hxx",
+      "sha256": "1FCFE9B862A89E51FEA7FA84381A8B6709567B56A33E6067D0B3BA657D9BDDA3"
+    },
+    {
+      "path": "src/ModelingAlgorithms/TKGeomAlgo/GeomFill/GeomFill_SectionGenerator.cxx",
+      "localName": "GeomFill_SectionGenerator.cxx",
+      "sha256": "B8B75F344E60BBD35E27C721BF7C4A0497ACC0BCDFF45D8BD8547C65D78AB3D2"
+    },
+    {
+      "path": "src/ModelingAlgorithms/TKGeomAlgo/GeomFill/GeomFill_AppSurf.hxx",
+      "localName": "GeomFill_AppSurf.hxx",
+      "sha256": "F6B33922620549230D7316C6C982584C9FD24F0372CD8B2C1B65337D8E98CE57"
+    },
+    {
+      "path": "src/ModelingAlgorithms/TKGeomAlgo/GeomFill/GeomFill_AppSurf_0.cxx",
+      "localName": "GeomFill_AppSurf_0.cxx",
+      "sha256": "9D4582EF9F9EC80DB148ED72257E73C6697B56108D153D21DE42CC2344EA5599"
+    },
+    {
+      "path": "src/ModelingAlgorithms/TKGeomAlgo/GeomFill/GeomFill_SweepSectionGenerator.hxx",
+      "localName": "GeomFill_SweepSectionGenerator.hxx",
+      "sha256": "96C7525DFF13C841C4537EA773E5323EE4CC390D363A6114AB5941F22FE6F288"
+    },
+    {
+      "path": "src/ModelingAlgorithms/TKGeomAlgo/GeomFill/GeomFill_SweepSectionGenerator.cxx",
+      "localName": "GeomFill_SweepSectionGenerator.cxx",
+      "sha256": "6C8308E7640DAA4E7A8BCF8957E9E04238FF4865A96F1C7456047AA93C1FA13A"
+    },
+    {
+      "path": "src/ModelingAlgorithms/TKGeomAlgo/GeomFill/GeomFill_SweepSectionGenerator.lxx",
+      "localName": "GeomFill_SweepSectionGenerator.lxx",
+      "sha256": "A75BC1C6DBBEB492F331CB6D2AD34AD77AF606BFB47CFEB70014620D3B9FDD5E"
+    },
+    {
+      "path": "src/ModelingAlgorithms/TKGeomAlgo/GeomFill/GeomFill_AppSweep.hxx",
+      "localName": "GeomFill_AppSweep.hxx",
+      "sha256": "7C5F58F4AB0ABBC815961DCF475C81796866446C288C04FAC28055DAAF50D89C"
+    },
+    {
+      "path": "src/ModelingAlgorithms/TKGeomAlgo/GeomFill/GeomFill_AppSweep_0.cxx",
+      "localName": "GeomFill_AppSweep_0.cxx",
+      "sha256": "A789303EFDB221ED0DA50FA145292C66E4F28B4C49DB061EDD924E5A31291A12"
+    },
+    {
+      "path": "src/ModelingAlgorithms/TKGeomAlgo/GeomAPI/GeomAPI_PointsToBSpline.hxx",
+      "localName": "GeomAPI_PointsToBSpline.hxx",
+      "sha256": "C60E48909FB7A0156A6CACDE41FFB350798D81DDD21B6584E9BE58F06020C32B"
+    },
+    {
+      "path": "src/ModelingAlgorithms/TKGeomAlgo/GeomAPI/GeomAPI_PointsToBSpline.cxx",
+      "localName": "GeomAPI_PointsToBSpline.cxx",
+      "sha256": "030D72FBD8201976E9E647B8B9E38A763F02024E87C781A104E45AF9C5A561B9"
+    },
+    {
+      "path": "src/ModelingAlgorithms/TKGeomAlgo/GeomAPI/GeomAPI_PointsToBSplineSurface.hxx",
+      "localName": "GeomAPI_PointsToBSplineSurface.hxx",
+      "sha256": "F38AD23ECA4AD1F85147DEEBC4A9F96AD109BD567EB00649ACF597DF97FFBDD5"
+    },
+    {
+      "path": "src/ModelingAlgorithms/TKGeomAlgo/GeomAPI/GeomAPI_PointsToBSplineSurface.cxx",
+      "localName": "GeomAPI_PointsToBSplineSurface.cxx",
+      "sha256": "3636933FB6C5F953A07F2755B8F004C6EFDF6313D9162432E71D096452A7925B"
+    },
+    {
+      "path": "src/ModelingAlgorithms/TKGeomAlgo/GeomFill/GeomFill_BSplineCurves.hxx",
+      "localName": "GeomFill_BSplineCurves.hxx",
+      "sha256": "5F453F0A5E2ABC152EE04CB6DD45756EF1A0426439590E92DEEF5E6B5E7238B3"
+    },
+    {
+      "path": "src/ModelingAlgorithms/TKGeomAlgo/GeomFill/GeomFill_BSplineCurves.cxx",
+      "localName": "GeomFill_BSplineCurves.cxx",
+      "sha256": "962CEA9626B5345675AF9B25E7782A6DD41AA66B6CCDD9812429513B31FD58CF"
+    },
+    {
+      "path": "src/ModelingAlgorithms/TKGeomAlgo/GeomFill/GeomFill_BezierCurves.hxx",
+      "localName": "GeomFill_BezierCurves.hxx",
+      "sha256": "178D8E4EE403AC26F5BBD1934EC48074AB2D90D2F1627EF77AF8EA57358A5852"
+    },
+    {
+      "path": "src/ModelingAlgorithms/TKGeomAlgo/GeomFill/GeomFill_BezierCurves.cxx",
+      "localName": "GeomFill_BezierCurves.cxx",
+      "sha256": "6177C3C4A360541740D17690E21AEB615DE56BFBA2F6F1B90974FC7D250C61ED"
+    },
+    {
+      "path": "src/ModelingAlgorithms/TKGeomAlgo/AppBlend/AppBlend_AppSurf.gxx",
+      "localName": "AppBlend_AppSurf.gxx",
+      "sha256": "E0AFA90FECE4B63FDB3F0BB80148AB3E175D837D6B0BDD2BA2CA0839633EB044"
+    }
+  ],
+  "existingSetParam": [
+    {
+      "stableId": "c:@S@GeomFill_SectionGenerator@F@SetParam#&1$@N@opencascade@S@handle>#$@S@NCollection_HArray1>#d#",
+      "nativeName": "GeomFill_SectionGenerator::SetParam",
+      "signature": "GeomFill_SectionGenerator::SetParam: void (const occ::handle<NCollection_HArray1<double>> &)",
+      "guard": "AWPrivateGeometry",
+      "reason": "Private copied workflow prerequisite; no borrowed output escapes."
+    }
+  ],
+  "manualCandidates": [
+    {
+      "stableId": "c:@S@GeomAPI_PointsToBSpline@F@Curve#1",
+      "nativeName": "GeomAPI_PointsToBSpline::Curve",
+      "signature": "GeomAPI_PointsToBSpline::Curve: const occ::handle<Geom_BSplineCurve> &() const",
+      "state": "Manual"
+    },
+    {
+      "stableId": "c:@S@GeomAPI_PointsToBSpline@F@GeomAPI_PointsToBSpline#&1$@S@NCollection_Array1>#$@S@gp_Pnt#I#I#$@E@GeomAbs_Shape#d#",
+      "nativeName": "GeomAPI_PointsToBSpline::GeomAPI_PointsToBSpline",
+      "signature": "GeomAPI_PointsToBSpline::GeomAPI_PointsToBSpline: void (const NCollection_Array1<gp_Pnt> &, const int, const int, const GeomAbs_Shape, const double)",
+      "state": "Manual"
+    },
+    {
+      "stableId": "c:@S@GeomAPI_PointsToBSpline@F@IsDone#1",
+      "nativeName": "GeomAPI_PointsToBSpline::IsDone",
+      "signature": "GeomAPI_PointsToBSpline::IsDone: bool () const",
+      "state": "Manual"
+    },
+    {
+      "stableId": "c:@S@GeomAPI_PointsToBSplineSurface@F@GeomAPI_PointsToBSplineSurface#",
+      "nativeName": "GeomAPI_PointsToBSplineSurface::GeomAPI_PointsToBSplineSurface",
+      "signature": "GeomAPI_PointsToBSplineSurface::GeomAPI_PointsToBSplineSurface: void ()",
+      "state": "Manual"
+    },
+    {
+      "stableId": "c:@S@GeomAPI_PointsToBSplineSurface@F@Init#&1$@S@NCollection_Array2>#$@S@gp_Pnt#I#I#$@E@GeomAbs_Shape#d#",
+      "nativeName": "GeomAPI_PointsToBSplineSurface::Init",
+      "signature": "GeomAPI_PointsToBSplineSurface::Init: void (const NCollection_Array2<gp_Pnt> &, const int, const int, const GeomAbs_Shape, const double)",
+      "state": "Manual"
+    },
+    {
+      "stableId": "c:@S@GeomAPI_PointsToBSplineSurface@F@Interpolate#&1$@S@NCollection_Array2>#$@S@gp_Pnt#b#",
+      "nativeName": "GeomAPI_PointsToBSplineSurface::Interpolate",
+      "signature": "GeomAPI_PointsToBSplineSurface::Interpolate: void (const NCollection_Array2<gp_Pnt> &, const bool)",
+      "state": "Manual"
+    },
+    {
+      "stableId": "c:@S@GeomAPI_PointsToBSplineSurface@F@IsDone#1",
+      "nativeName": "GeomAPI_PointsToBSplineSurface::IsDone",
+      "signature": "GeomAPI_PointsToBSplineSurface::IsDone: bool () const",
+      "state": "Manual"
+    },
+    {
+      "stableId": "c:@S@GeomAPI_PointsToBSplineSurface@F@Surface#1",
+      "nativeName": "GeomAPI_PointsToBSplineSurface::Surface",
+      "signature": "GeomAPI_PointsToBSplineSurface::Surface: const occ::handle<Geom_BSplineSurface> &() const",
+      "state": "Manual"
+    },
+    {
+      "stableId": "c:@S@GeomFill_BSplineCurves@F@GeomFill_BSplineCurves#",
+      "nativeName": "GeomFill_BSplineCurves::GeomFill_BSplineCurves",
+      "signature": "GeomFill_BSplineCurves::GeomFill_BSplineCurves: void ()",
+      "state": "Manual"
+    },
+    {
+      "stableId": "c:@S@GeomFill_BSplineCurves@F@Init#&1$@N@opencascade@S@handle>#$@S@Geom_BSplineCurve#S0_#$@E@GeomFill_FillingStyle#",
+      "nativeName": "GeomFill_BSplineCurves::Init",
+      "signature": "GeomFill_BSplineCurves::Init: void (const occ::handle<Geom_BSplineCurve> &, const occ::handle<Geom_BSplineCurve> &, const GeomFill_FillingStyle)",
+      "state": "Manual"
+    },
+    {
+      "stableId": "c:@S@GeomFill_BSplineCurves@F@Init#&1$@N@opencascade@S@handle>#$@S@Geom_BSplineCurve#S0_#S0_#$@E@GeomFill_FillingStyle#",
+      "nativeName": "GeomFill_BSplineCurves::Init",
+      "signature": "GeomFill_BSplineCurves::Init: void (const occ::handle<Geom_BSplineCurve> &, const occ::handle<Geom_BSplineCurve> &, const occ::handle<Geom_BSplineCurve> &, const GeomFill_FillingStyle)",
+      "state": "Manual"
+    },
+    {
+      "stableId": "c:@S@GeomFill_BSplineCurves@F@Init#&1$@N@opencascade@S@handle>#$@S@Geom_BSplineCurve#S0_#S0_#S0_#$@E@GeomFill_FillingStyle#",
+      "nativeName": "GeomFill_BSplineCurves::Init",
+      "signature": "GeomFill_BSplineCurves::Init: void (const occ::handle<Geom_BSplineCurve> &, const occ::handle<Geom_BSplineCurve> &, const occ::handle<Geom_BSplineCurve> &, const occ::handle<Geom_BSplineCurve> &, const GeomFill_FillingStyle)",
+      "state": "Manual"
+    },
+    {
+      "stableId": "c:@S@GeomFill_BSplineCurves@F@Surface#1",
+      "nativeName": "GeomFill_BSplineCurves::Surface",
+      "signature": "GeomFill_BSplineCurves::Surface: const occ::handle<Geom_BSplineSurface> &() const",
+      "state": "Manual"
+    },
+    {
+      "stableId": "c:@S@GeomFill_BezierCurves@F@GeomFill_BezierCurves#",
+      "nativeName": "GeomFill_BezierCurves::GeomFill_BezierCurves",
+      "signature": "GeomFill_BezierCurves::GeomFill_BezierCurves: void ()",
+      "state": "Manual"
+    },
+    {
+      "stableId": "c:@S@GeomFill_BezierCurves@F@Init#&1$@N@opencascade@S@handle>#$@S@Geom_BezierCurve#S0_#$@E@GeomFill_FillingStyle#",
+      "nativeName": "GeomFill_BezierCurves::Init",
+      "signature": "GeomFill_BezierCurves::Init: void (const occ::handle<Geom_BezierCurve> &, const occ::handle<Geom_BezierCurve> &, const GeomFill_FillingStyle)",
+      "state": "Manual"
+    },
+    {
+      "stableId": "c:@S@GeomFill_BezierCurves@F@Init#&1$@N@opencascade@S@handle>#$@S@Geom_BezierCurve#S0_#S0_#$@E@GeomFill_FillingStyle#",
+      "nativeName": "GeomFill_BezierCurves::Init",
+      "signature": "GeomFill_BezierCurves::Init: void (const occ::handle<Geom_BezierCurve> &, const occ::handle<Geom_BezierCurve> &, const occ::handle<Geom_BezierCurve> &, const GeomFill_FillingStyle)",
+      "state": "Manual"
+    },
+    {
+      "stableId": "c:@S@GeomFill_BezierCurves@F@Init#&1$@N@opencascade@S@handle>#$@S@Geom_BezierCurve#S0_#S0_#S0_#$@E@GeomFill_FillingStyle#",
+      "nativeName": "GeomFill_BezierCurves::Init",
+      "signature": "GeomFill_BezierCurves::Init: void (const occ::handle<Geom_BezierCurve> &, const occ::handle<Geom_BezierCurve> &, const occ::handle<Geom_BezierCurve> &, const occ::handle<Geom_BezierCurve> &, const GeomFill_FillingStyle)",
+      "state": "Manual"
+    },
+    {
+      "stableId": "c:@S@GeomFill_BezierCurves@F@Surface#1",
+      "nativeName": "GeomFill_BezierCurves::Surface",
+      "signature": "GeomFill_BezierCurves::Surface: const occ::handle<Geom_BezierSurface> &() const",
+      "state": "Manual"
+    }
+  ],
+  "callers": [
+    {
+      "path": "src/OcctSharp.Native/src/Modeling/Freeform.cpp",
+      "sha256": "27E451DEC7D1C77B04B00997DAF9C5C09AE774E59D7DE5EB09F15FDBE8DEB61E"
+    },
+    {
+      "path": "src/OcctSharp.Native/src/Surfaces/PatchConversion.cpp",
+      "sha256": "467ACAE498E7AA44DA4D0E3553D90D84627310D00DB954B86C20CE616BF50120"
+    }
+  ],
+  "consumerGap": "Current generated Loft always assigns uniform section parameters. Nonuniform physical sections need explicit coupled parameters to avoid a misleading parameter-to-section mapping.",
+  "proposedOutcome": "Bounded copied nonuniform loft parameters, supported modes verified separately, value/derivative/domain diagnostics, independent topology and actual STEP workflow",
+  "AppSweep": "Pinned source omits TR=Rot*Trans on ordinary tangent branches. Isolated current Release probe reproduced expected final translationZ3 versus actual0 across21 sections. Existing AppSurf safe sweep retained; no AppSweep migration credit without validated SDK fix."
+}
