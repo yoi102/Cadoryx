@@ -1,0 +1,625 @@
+{
+  "recordedAt": "2026-10-13T15:56:03.690254+00:00",
+  "state": "LOCAL86_SOURCE1081_FULL6830_BOTH_ACTUALLY_EXECUTED_AND_VERIFIED",
+  "freeze": {
+    "path": "artifacts/af1081-local86-1/freeze.json",
+    "sha256": "622BFC6BD268C2349A0A74F3B1504B382A4472B555224D9B29CB7FA4F1B3E9A3"
+  },
+  "suite": {
+    "path": "artifacts/af1081-local86-1/full-both-exit.json",
+    "sha256": "E9443DC9F89CF48012C28C04931F7EB2998A1EF0E4E4A8223BF8D028F2B7EAAB"
+  },
+  "baseHead": "58a9bda1d71034e5f228704d654a30dd0bf01225",
+  "configurations": [
+    {
+      "configuration": "Release",
+      "total": 6830,
+      "passed": 6806,
+      "failed": 24,
+      "skipped": 0,
+      "parent6652NamesRetained": true,
+      "added178Names": [
+        "Cadoryx.Tests.AgentCommandCatalogTests.CatalogFilteringUsesExactCaseInsensitiveNamesAndDoesNotRemoveOtherCommands",
+        "Cadoryx.Tests.AgentCommandCatalogTests.DedicatedCommandsRemainRejectedBeforeDelegation(command: \"HISTORY END\", tool: \"cad_history\")",
+        "Cadoryx.Tests.AgentCommandCatalogTests.DedicatedCommandsRemainRejectedBeforeDelegation(command: \"WORKSPACE LIST\", tool: \"cad_workspace\")",
+        "Cadoryx.Tests.AgentCommandCatalogTests.DedicatedCommandsRemainRejectedBeforeDelegation(command: \"WS LIST\", tool: \"cad_workspace\")",
+        "Cadoryx.Tests.AgentCommandCatalogTests.DedicatedCommandsRemainRejectedBeforeDelegation(command: \"\\\"HISTORY\\\" END\", tool: \"cad_history\")",
+        "Cadoryx.Tests.AgentCommandCatalogTests.DedicatedCommandsRemainRejectedBeforeDelegation(command: \"\\\"WS\\\" LIST\", tool: \"cad_workspace\")",
+        "Cadoryx.Tests.AgentCommandCatalogTests.DedicatedCommandsRemainRejectedBeforeDelegation(command: \"history END\", tool: \"cad_history\")",
+        "Cadoryx.Tests.AgentCommandCatalogTests.DedicatedCommandsRemainRejectedBeforeDelegation(command: \"workspace LIST\", tool: \"cad_workspace\")",
+        "Cadoryx.Tests.AgentCommandCatalogTests.DedicatedCommandsRemainRejectedBeforeDelegation(command: \"ws LIST\", tool: \"cad_workspace\")",
+        "Cadoryx.Tests.AgentCommandCatalogTests.StatusSeparatesDedicatedRoutesFromCallableCommandsWithoutChangingDocument(state: \"active\")",
+        "Cadoryx.Tests.AgentCommandCatalogTests.StatusSeparatesDedicatedRoutesFromCallableCommandsWithoutChangingDocument(state: \"detached\")",
+        "Cadoryx.Tests.AgentCommandCatalogTests.StatusSeparatesDedicatedRoutesFromCallableCommandsWithoutChangingDocument(state: \"none\")",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.DetachedDocumentIsRejectedBeforeGuidance(action: \"create\")",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.DetachedDocumentIsRejectedBeforeGuidance(action: \"delete\")",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.DetachedDocumentIsRejectedBeforeGuidance(action: \"edit\")",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.DetachedDocumentIsRejectedBeforeGuidance(action: \"reselect\")",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.ExactDocumentAndStateGuardsPrecedeInvalidTypeGuidance(action: \"create\", foreignDocument: False)",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.ExactDocumentAndStateGuardsPrecedeInvalidTypeGuidance(action: \"create\", foreignDocument: True)",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.ExactDocumentAndStateGuardsPrecedeInvalidTypeGuidance(action: \"delete\", foreignDocument: False)",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.ExactDocumentAndStateGuardsPrecedeInvalidTypeGuidance(action: \"delete\", foreignDocument: True)",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.ExactDocumentAndStateGuardsPrecedeInvalidTypeGuidance(action: \"edit\", foreignDocument: False)",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.ExactDocumentAndStateGuardsPrecedeInvalidTypeGuidance(action: \"edit\", foreignDocument: True)",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.ExactDocumentAndStateGuardsPrecedeInvalidTypeGuidance(action: \"reselect\", foreignDocument: False)",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.ExactDocumentAndStateGuardsPrecedeInvalidTypeGuidance(action: \"reselect\", foreignDocument: True)",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.ExplicitCallerChoosesTheExistingSheetContractCreatesAndDeletesThroughOriginalHistory",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.InvalidMutationTypesIdentifyTheTypeBeforeOwnerOrObjectLookupAndLeaveHistoryUnchanged(action: \"create\", fault: \"empty\", populated: False)",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.InvalidMutationTypesIdentifyTheTypeBeforeOwnerOrObjectLookupAndLeaveHistoryUnchanged(action: \"create\", fault: \"empty\", populated: True)",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.InvalidMutationTypesIdentifyTheTypeBeforeOwnerOrObjectLookupAndLeaveHistoryUnchanged(action: \"create\", fault: \"feature\", populated: False)",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.InvalidMutationTypesIdentifyTheTypeBeforeOwnerOrObjectLookupAndLeaveHistoryUnchanged(action: \"create\", fault: \"feature\", populated: True)",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.InvalidMutationTypesIdentifyTheTypeBeforeOwnerOrObjectLookupAndLeaveHistoryUnchanged(action: \"create\", fault: \"null\", populated: False)",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.InvalidMutationTypesIdentifyTheTypeBeforeOwnerOrObjectLookupAndLeaveHistoryUnchanged(action: \"create\", fault: \"null\", populated: True)",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.InvalidMutationTypesIdentifyTheTypeBeforeOwnerOrObjectLookupAndLeaveHistoryUnchanged(action: \"create\", fault: \"number\", populated: False)",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.InvalidMutationTypesIdentifyTheTypeBeforeOwnerOrObjectLookupAndLeaveHistoryUnchanged(action: \"create\", fault: \"number\", populated: True)",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.InvalidMutationTypesIdentifyTheTypeBeforeOwnerOrObjectLookupAndLeaveHistoryUnchanged(action: \"create\", fault: \"omitted\", populated: False)",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.InvalidMutationTypesIdentifyTheTypeBeforeOwnerOrObjectLookupAndLeaveHistoryUnchanged(action: \"create\", fault: \"omitted\", populated: True)",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.InvalidMutationTypesIdentifyTheTypeBeforeOwnerOrObjectLookupAndLeaveHistoryUnchanged(action: \"create\", fault: \"parts_table\", populated: False)",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.InvalidMutationTypesIdentifyTheTypeBeforeOwnerOrObjectLookupAndLeaveHistoryUnchanged(action: \"create\", fault: \"parts_table\", populated: True)",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.InvalidMutationTypesIdentifyTheTypeBeforeOwnerOrObjectLookupAndLeaveHistoryUnchanged(action: \"create\", fault: \"wrong-case\", populated: False)",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.InvalidMutationTypesIdentifyTheTypeBeforeOwnerOrObjectLookupAndLeaveHistoryUnchanged(action: \"create\", fault: \"wrong-case\", populated: True)",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.InvalidMutationTypesIdentifyTheTypeBeforeOwnerOrObjectLookupAndLeaveHistoryUnchanged(action: \"create\", fault: \"zones\", populated: False)",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.InvalidMutationTypesIdentifyTheTypeBeforeOwnerOrObjectLookupAndLeaveHistoryUnchanged(action: \"create\", fault: \"zones\", populated: True)",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.InvalidMutationTypesIdentifyTheTypeBeforeOwnerOrObjectLookupAndLeaveHistoryUnchanged(action: \"delete\", fault: \"empty\", populated: False)",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.InvalidMutationTypesIdentifyTheTypeBeforeOwnerOrObjectLookupAndLeaveHistoryUnchanged(action: \"delete\", fault: \"empty\", populated: True)",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.InvalidMutationTypesIdentifyTheTypeBeforeOwnerOrObjectLookupAndLeaveHistoryUnchanged(action: \"delete\", fault: \"feature\", populated: False)",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.InvalidMutationTypesIdentifyTheTypeBeforeOwnerOrObjectLookupAndLeaveHistoryUnchanged(action: \"delete\", fault: \"feature\", populated: True)",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.InvalidMutationTypesIdentifyTheTypeBeforeOwnerOrObjectLookupAndLeaveHistoryUnchanged(action: \"delete\", fault: \"null\", populated: False)",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.InvalidMutationTypesIdentifyTheTypeBeforeOwnerOrObjectLookupAndLeaveHistoryUnchanged(action: \"delete\", fault: \"null\", populated: True)",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.InvalidMutationTypesIdentifyTheTypeBeforeOwnerOrObjectLookupAndLeaveHistoryUnchanged(action: \"delete\", fault: \"number\", populated: False)",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.InvalidMutationTypesIdentifyTheTypeBeforeOwnerOrObjectLookupAndLeaveHistoryUnchanged(action: \"delete\", fault: \"number\", populated: True)",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.InvalidMutationTypesIdentifyTheTypeBeforeOwnerOrObjectLookupAndLeaveHistoryUnchanged(action: \"delete\", fault: \"omitted\", populated: False)",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.InvalidMutationTypesIdentifyTheTypeBeforeOwnerOrObjectLookupAndLeaveHistoryUnchanged(action: \"delete\", fault: \"omitted\", populated: True)",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.InvalidMutationTypesIdentifyTheTypeBeforeOwnerOrObjectLookupAndLeaveHistoryUnchanged(action: \"delete\", fault: \"parts_table\", populated: False)",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.InvalidMutationTypesIdentifyTheTypeBeforeOwnerOrObjectLookupAndLeaveHistoryUnchanged(action: \"delete\", fault: \"parts_table\", populated: True)",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.InvalidMutationTypesIdentifyTheTypeBeforeOwnerOrObjectLookupAndLeaveHistoryUnchanged(action: \"delete\", fault: \"wrong-case\", populated: False)",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.InvalidMutationTypesIdentifyTheTypeBeforeOwnerOrObjectLookupAndLeaveHistoryUnchanged(action: \"delete\", fault: \"wrong-case\", populated: True)",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.InvalidMutationTypesIdentifyTheTypeBeforeOwnerOrObjectLookupAndLeaveHistoryUnchanged(action: \"delete\", fault: \"zones\", populated: False)",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.InvalidMutationTypesIdentifyTheTypeBeforeOwnerOrObjectLookupAndLeaveHistoryUnchanged(action: \"delete\", fault: \"zones\", populated: True)",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.InvalidMutationTypesIdentifyTheTypeBeforeOwnerOrObjectLookupAndLeaveHistoryUnchanged(action: \"edit\", fault: \"empty\", populated: False)",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.InvalidMutationTypesIdentifyTheTypeBeforeOwnerOrObjectLookupAndLeaveHistoryUnchanged(action: \"edit\", fault: \"empty\", populated: True)",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.InvalidMutationTypesIdentifyTheTypeBeforeOwnerOrObjectLookupAndLeaveHistoryUnchanged(action: \"edit\", fault: \"feature\", populated: False)",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.InvalidMutationTypesIdentifyTheTypeBeforeOwnerOrObjectLookupAndLeaveHistoryUnchanged(action: \"edit\", fault: \"feature\", populated: True)",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.InvalidMutationTypesIdentifyTheTypeBeforeOwnerOrObjectLookupAndLeaveHistoryUnchanged(action: \"edit\", fault: \"null\", populated: False)",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.InvalidMutationTypesIdentifyTheTypeBeforeOwnerOrObjectLookupAndLeaveHistoryUnchanged(action: \"edit\", fault: \"null\", populated: True)",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.InvalidMutationTypesIdentifyTheTypeBeforeOwnerOrObjectLookupAndLeaveHistoryUnchanged(action: \"edit\", fault: \"number\", populated: False)",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.InvalidMutationTypesIdentifyTheTypeBeforeOwnerOrObjectLookupAndLeaveHistoryUnchanged(action: \"edit\", fault: \"number\", populated: True)",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.InvalidMutationTypesIdentifyTheTypeBeforeOwnerOrObjectLookupAndLeaveHistoryUnchanged(action: \"edit\", fault: \"omitted\", populated: False)",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.InvalidMutationTypesIdentifyTheTypeBeforeOwnerOrObjectLookupAndLeaveHistoryUnchanged(action: \"edit\", fault: \"omitted\", populated: True)",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.InvalidMutationTypesIdentifyTheTypeBeforeOwnerOrObjectLookupAndLeaveHistoryUnchanged(action: \"edit\", fault: \"parts_table\", populated: False)",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.InvalidMutationTypesIdentifyTheTypeBeforeOwnerOrObjectLookupAndLeaveHistoryUnchanged(action: \"edit\", fault: \"parts_table\", populated: True)",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.InvalidMutationTypesIdentifyTheTypeBeforeOwnerOrObjectLookupAndLeaveHistoryUnchanged(action: \"edit\", fault: \"wrong-case\", populated: False)",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.InvalidMutationTypesIdentifyTheTypeBeforeOwnerOrObjectLookupAndLeaveHistoryUnchanged(action: \"edit\", fault: \"wrong-case\", populated: True)",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.InvalidMutationTypesIdentifyTheTypeBeforeOwnerOrObjectLookupAndLeaveHistoryUnchanged(action: \"edit\", fault: \"zones\", populated: False)",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.InvalidMutationTypesIdentifyTheTypeBeforeOwnerOrObjectLookupAndLeaveHistoryUnchanged(action: \"edit\", fault: \"zones\", populated: True)",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.InvalidMutationTypesIdentifyTheTypeBeforeOwnerOrObjectLookupAndLeaveHistoryUnchanged(action: \"reselect\", fault: \"empty\", populated: False)",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.InvalidMutationTypesIdentifyTheTypeBeforeOwnerOrObjectLookupAndLeaveHistoryUnchanged(action: \"reselect\", fault: \"empty\", populated: True)",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.InvalidMutationTypesIdentifyTheTypeBeforeOwnerOrObjectLookupAndLeaveHistoryUnchanged(action: \"reselect\", fault: \"feature\", populated: False)",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.InvalidMutationTypesIdentifyTheTypeBeforeOwnerOrObjectLookupAndLeaveHistoryUnchanged(action: \"reselect\", fault: \"feature\", populated: True)",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.InvalidMutationTypesIdentifyTheTypeBeforeOwnerOrObjectLookupAndLeaveHistoryUnchanged(action: \"reselect\", fault: \"null\", populated: False)",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.InvalidMutationTypesIdentifyTheTypeBeforeOwnerOrObjectLookupAndLeaveHistoryUnchanged(action: \"reselect\", fault: \"null\", populated: True)",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.InvalidMutationTypesIdentifyTheTypeBeforeOwnerOrObjectLookupAndLeaveHistoryUnchanged(action: \"reselect\", fault: \"number\", populated: False)",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.InvalidMutationTypesIdentifyTheTypeBeforeOwnerOrObjectLookupAndLeaveHistoryUnchanged(action: \"reselect\", fault: \"number\", populated: True)",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.InvalidMutationTypesIdentifyTheTypeBeforeOwnerOrObjectLookupAndLeaveHistoryUnchanged(action: \"reselect\", fault: \"omitted\", populated: False)",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.InvalidMutationTypesIdentifyTheTypeBeforeOwnerOrObjectLookupAndLeaveHistoryUnchanged(action: \"reselect\", fault: \"omitted\", populated: True)",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.InvalidMutationTypesIdentifyTheTypeBeforeOwnerOrObjectLookupAndLeaveHistoryUnchanged(action: \"reselect\", fault: \"parts_table\", populated: False)",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.InvalidMutationTypesIdentifyTheTypeBeforeOwnerOrObjectLookupAndLeaveHistoryUnchanged(action: \"reselect\", fault: \"parts_table\", populated: True)",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.InvalidMutationTypesIdentifyTheTypeBeforeOwnerOrObjectLookupAndLeaveHistoryUnchanged(action: \"reselect\", fault: \"wrong-case\", populated: False)",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.InvalidMutationTypesIdentifyTheTypeBeforeOwnerOrObjectLookupAndLeaveHistoryUnchanged(action: \"reselect\", fault: \"wrong-case\", populated: True)",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.InvalidMutationTypesIdentifyTheTypeBeforeOwnerOrObjectLookupAndLeaveHistoryUnchanged(action: \"reselect\", fault: \"zones\", populated: False)",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.InvalidMutationTypesIdentifyTheTypeBeforeOwnerOrObjectLookupAndLeaveHistoryUnchanged(action: \"reselect\", fault: \"zones\", populated: True)",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.LibraryTemplatesAreRejectedBeforeOwnerLookupForOrdinaryAuthoring(action: \"create\")",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.LibraryTemplatesAreRejectedBeforeOwnerLookupForOrdinaryAuthoring(action: \"edit\")",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.LibraryTemplatesAreRejectedBeforeOwnerLookupForOrdinaryAuthoring(action: \"reselect\")",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.PreCancelledMutationDoesNotParseOrReturnGuidance(action: \"create\")",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.PreCancelledMutationDoesNotParseOrReturnGuidance(action: \"delete\")",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.PreCancelledMutationDoesNotParseOrReturnGuidance(action: \"edit\")",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.PreCancelledMutationDoesNotParseOrReturnGuidance(action: \"reselect\")",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.ReselectOnlyAdvertisesObjectsWithAnExistingAttachmentContract(type: \"field\")",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.ReselectOnlyAdvertisesObjectsWithAnExistingAttachmentContract(type: \"note\")",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.ReselectOnlyAdvertisesObjectsWithAnExistingAttachmentContract(type: \"sheet\")",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.UnexpectedOuterFieldsKeepTheOriginalPreExecutionRejection(action: \"create\")",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.UnexpectedOuterFieldsKeepTheOriginalPreExecutionRejection(action: \"delete\")",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.UnexpectedOuterFieldsKeepTheOriginalPreExecutionRejection(action: \"edit\")",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.UnexpectedOuterFieldsKeepTheOriginalPreExecutionRejection(action: \"reselect\")",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.ValidDeleteTypesStillRequireExactOwnerAndObjectIds(type: \"balloon\")",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.ValidDeleteTypesStillRequireExactOwnerAndObjectIds(type: \"control_frame\")",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.ValidDeleteTypesStillRequireExactOwnerAndObjectIds(type: \"datum\")",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.ValidDeleteTypesStillRequireExactOwnerAndObjectIds(type: \"dimension\")",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.ValidDeleteTypesStillRequireExactOwnerAndObjectIds(type: \"field\")",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.ValidDeleteTypesStillRequireExactOwnerAndObjectIds(type: \"hole_table\")",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.ValidDeleteTypesStillRequireExactOwnerAndObjectIds(type: \"note\")",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.ValidDeleteTypesStillRequireExactOwnerAndObjectIds(type: \"sheet\")",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.ValidDeleteTypesStillRequireExactOwnerAndObjectIds(type: \"template\")",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.ValidDeleteTypesStillRequireExactOwnerAndObjectIds(type: \"view\")",
+        "Cadoryx.Tests.DrawingTerminalReceiptTests.ActualTerminalCreateAndDeleteRemainSuccessfulWithOneCommitAndOriginalUndoRedo(direct: False)",
+        "Cadoryx.Tests.DrawingTerminalReceiptTests.ActualTerminalCreateAndDeleteRemainSuccessfulWithOneCommitAndOriginalUndoRedo(direct: True)",
+        "Cadoryx.Tests.DrawingTerminalReceiptTests.EveryExistingReadOnlyContractStillReturnsTerminalSuccess(type: \"balloon\", direct: False)",
+        "Cadoryx.Tests.DrawingTerminalReceiptTests.EveryExistingReadOnlyContractStillReturnsTerminalSuccess(type: \"balloon\", direct: True)",
+        "Cadoryx.Tests.DrawingTerminalReceiptTests.EveryExistingReadOnlyContractStillReturnsTerminalSuccess(type: \"control_frame\", direct: False)",
+        "Cadoryx.Tests.DrawingTerminalReceiptTests.EveryExistingReadOnlyContractStillReturnsTerminalSuccess(type: \"control_frame\", direct: True)",
+        "Cadoryx.Tests.DrawingTerminalReceiptTests.EveryExistingReadOnlyContractStillReturnsTerminalSuccess(type: \"datum\", direct: False)",
+        "Cadoryx.Tests.DrawingTerminalReceiptTests.EveryExistingReadOnlyContractStillReturnsTerminalSuccess(type: \"datum\", direct: True)",
+        "Cadoryx.Tests.DrawingTerminalReceiptTests.EveryExistingReadOnlyContractStillReturnsTerminalSuccess(type: \"dimension\", direct: False)",
+        "Cadoryx.Tests.DrawingTerminalReceiptTests.EveryExistingReadOnlyContractStillReturnsTerminalSuccess(type: \"dimension\", direct: True)",
+        "Cadoryx.Tests.DrawingTerminalReceiptTests.EveryExistingReadOnlyContractStillReturnsTerminalSuccess(type: \"field\", direct: False)",
+        "Cadoryx.Tests.DrawingTerminalReceiptTests.EveryExistingReadOnlyContractStillReturnsTerminalSuccess(type: \"field\", direct: True)",
+        "Cadoryx.Tests.DrawingTerminalReceiptTests.EveryExistingReadOnlyContractStillReturnsTerminalSuccess(type: \"hole_table\", direct: False)",
+        "Cadoryx.Tests.DrawingTerminalReceiptTests.EveryExistingReadOnlyContractStillReturnsTerminalSuccess(type: \"hole_table\", direct: True)",
+        "Cadoryx.Tests.DrawingTerminalReceiptTests.EveryExistingReadOnlyContractStillReturnsTerminalSuccess(type: \"note\", direct: False)",
+        "Cadoryx.Tests.DrawingTerminalReceiptTests.EveryExistingReadOnlyContractStillReturnsTerminalSuccess(type: \"note\", direct: True)",
+        "Cadoryx.Tests.DrawingTerminalReceiptTests.EveryExistingReadOnlyContractStillReturnsTerminalSuccess(type: \"parts_table\", direct: False)",
+        "Cadoryx.Tests.DrawingTerminalReceiptTests.EveryExistingReadOnlyContractStillReturnsTerminalSuccess(type: \"parts_table\", direct: True)",
+        "Cadoryx.Tests.DrawingTerminalReceiptTests.EveryExistingReadOnlyContractStillReturnsTerminalSuccess(type: \"sheet\", direct: False)",
+        "Cadoryx.Tests.DrawingTerminalReceiptTests.EveryExistingReadOnlyContractStillReturnsTerminalSuccess(type: \"sheet\", direct: True)",
+        "Cadoryx.Tests.DrawingTerminalReceiptTests.EveryExistingReadOnlyContractStillReturnsTerminalSuccess(type: \"template\", direct: False)",
+        "Cadoryx.Tests.DrawingTerminalReceiptTests.EveryExistingReadOnlyContractStillReturnsTerminalSuccess(type: \"template\", direct: True)",
+        "Cadoryx.Tests.DrawingTerminalReceiptTests.EveryExistingReadOnlyContractStillReturnsTerminalSuccess(type: \"view\", direct: False)",
+        "Cadoryx.Tests.DrawingTerminalReceiptTests.EveryExistingReadOnlyContractStillReturnsTerminalSuccess(type: \"view\", direct: True)",
+        "Cadoryx.Tests.DrawingTerminalReceiptTests.EveryExistingReadOnlyContractStillReturnsTerminalSuccess(type: \"zones\", direct: False)",
+        "Cadoryx.Tests.DrawingTerminalReceiptTests.EveryExistingReadOnlyContractStillReturnsTerminalSuccess(type: \"zones\", direct: True)",
+        "Cadoryx.Tests.DrawingTerminalReceiptTests.EveryExistingReadOnlyContractStillReturnsTerminalSuccess(type: null, direct: False)",
+        "Cadoryx.Tests.DrawingTerminalReceiptTests.EveryExistingReadOnlyContractStillReturnsTerminalSuccess(type: null, direct: True)",
+        "Cadoryx.Tests.DrawingTerminalReceiptTests.TerminalSuccessMatchesAnActualRejectedProductionDrawingReceipt(action: \"create\", hasType: False, direct: False)",
+        "Cadoryx.Tests.DrawingTerminalReceiptTests.TerminalSuccessMatchesAnActualRejectedProductionDrawingReceipt(action: \"create\", hasType: False, direct: True)",
+        "Cadoryx.Tests.DrawingTerminalReceiptTests.TerminalSuccessMatchesAnActualRejectedProductionDrawingReceipt(action: \"create\", hasType: True, direct: False)",
+        "Cadoryx.Tests.DrawingTerminalReceiptTests.TerminalSuccessMatchesAnActualRejectedProductionDrawingReceipt(action: \"create\", hasType: True, direct: True)",
+        "Cadoryx.Tests.DrawingTerminalReceiptTests.TerminalSuccessMatchesAnActualRejectedProductionDrawingReceipt(action: \"delete\", hasType: False, direct: False)",
+        "Cadoryx.Tests.DrawingTerminalReceiptTests.TerminalSuccessMatchesAnActualRejectedProductionDrawingReceipt(action: \"delete\", hasType: False, direct: True)",
+        "Cadoryx.Tests.DrawingTerminalReceiptTests.TerminalSuccessMatchesAnActualRejectedProductionDrawingReceipt(action: \"delete\", hasType: True, direct: False)",
+        "Cadoryx.Tests.DrawingTerminalReceiptTests.TerminalSuccessMatchesAnActualRejectedProductionDrawingReceipt(action: \"delete\", hasType: True, direct: True)",
+        "Cadoryx.Tests.DrawingTerminalReceiptTests.TerminalSuccessMatchesAnActualRejectedProductionDrawingReceipt(action: \"edit\", hasType: False, direct: False)",
+        "Cadoryx.Tests.DrawingTerminalReceiptTests.TerminalSuccessMatchesAnActualRejectedProductionDrawingReceipt(action: \"edit\", hasType: False, direct: True)",
+        "Cadoryx.Tests.DrawingTerminalReceiptTests.TerminalSuccessMatchesAnActualRejectedProductionDrawingReceipt(action: \"edit\", hasType: True, direct: False)",
+        "Cadoryx.Tests.DrawingTerminalReceiptTests.TerminalSuccessMatchesAnActualRejectedProductionDrawingReceipt(action: \"edit\", hasType: True, direct: True)",
+        "Cadoryx.Tests.DrawingTerminalReceiptTests.TerminalSuccessMatchesAnActualRejectedProductionDrawingReceipt(action: \"inspect\", hasType: False, direct: False)",
+        "Cadoryx.Tests.DrawingTerminalReceiptTests.TerminalSuccessMatchesAnActualRejectedProductionDrawingReceipt(action: \"inspect\", hasType: False, direct: True)",
+        "Cadoryx.Tests.DrawingTerminalReceiptTests.TerminalSuccessMatchesAnActualRejectedProductionDrawingReceipt(action: \"inspect\", hasType: True, direct: False)",
+        "Cadoryx.Tests.DrawingTerminalReceiptTests.TerminalSuccessMatchesAnActualRejectedProductionDrawingReceipt(action: \"inspect\", hasType: True, direct: True)",
+        "Cadoryx.Tests.DrawingTerminalReceiptTests.TerminalSuccessMatchesAnActualRejectedProductionDrawingReceipt(action: \"reselect\", hasType: False, direct: False)",
+        "Cadoryx.Tests.DrawingTerminalReceiptTests.TerminalSuccessMatchesAnActualRejectedProductionDrawingReceipt(action: \"reselect\", hasType: False, direct: True)",
+        "Cadoryx.Tests.DrawingTerminalReceiptTests.TerminalSuccessMatchesAnActualRejectedProductionDrawingReceipt(action: \"reselect\", hasType: True, direct: False)",
+        "Cadoryx.Tests.DrawingTerminalReceiptTests.TerminalSuccessMatchesAnActualRejectedProductionDrawingReceipt(action: \"reselect\", hasType: True, direct: True)",
+        "Cadoryx.Tests.DrawingTerminalReceiptTests.UnknownFieldsRetainOriginalTerminalFailureInsteadOfBeingRepaired(direct: False)",
+        "Cadoryx.Tests.DrawingTerminalReceiptTests.UnknownFieldsRetainOriginalTerminalFailureInsteadOfBeingRepaired(direct: True)",
+        "Cadoryx.Tests.MainWindowAttachmentFailureTests.FailedProductionAttachmentPreservesOriginalActiveDocumentAndReleasesCandidate(entry: \"exchange\", failure: \"activate\")",
+        "Cadoryx.Tests.MainWindowAttachmentFailureTests.FailedProductionAttachmentPreservesOriginalActiveDocumentAndReleasesCandidate(entry: \"exchange\", failure: \"collection\")",
+        "Cadoryx.Tests.MainWindowAttachmentFailureTests.FailedProductionAttachmentPreservesOriginalActiveDocumentAndReleasesCandidate(entry: \"exchange\", failure: \"open\")",
+        "Cadoryx.Tests.MainWindowAttachmentFailureTests.FailedProductionAttachmentPreservesOriginalActiveDocumentAndReleasesCandidate(entry: \"native\", failure: \"activate\")",
+        "Cadoryx.Tests.MainWindowAttachmentFailureTests.FailedProductionAttachmentPreservesOriginalActiveDocumentAndReleasesCandidate(entry: \"native\", failure: \"collection\")",
+        "Cadoryx.Tests.MainWindowAttachmentFailureTests.FailedProductionAttachmentPreservesOriginalActiveDocumentAndReleasesCandidate(entry: \"native\", failure: \"open\")",
+        "Cadoryx.Tests.MainWindowAttachmentFailureTests.FailedProductionAttachmentPreservesOriginalActiveDocumentAndReleasesCandidate(entry: \"new\", failure: \"activate\")",
+        "Cadoryx.Tests.MainWindowAttachmentFailureTests.FailedProductionAttachmentPreservesOriginalActiveDocumentAndReleasesCandidate(entry: \"new\", failure: \"collection\")",
+        "Cadoryx.Tests.MainWindowAttachmentFailureTests.FailedProductionAttachmentPreservesOriginalActiveDocumentAndReleasesCandidate(entry: \"new\", failure: \"open\")",
+        "Cadoryx.Tests.MainWindowAttachmentFailureTests.ImplicitNewFailureFromEmptyWorkspaceIsReportedWithoutStartingAConstructor(entry: \"new\", failure: \"activate\")",
+        "Cadoryx.Tests.MainWindowAttachmentFailureTests.ImplicitNewFailureFromEmptyWorkspaceIsReportedWithoutStartingAConstructor(entry: \"new\", failure: \"open\")",
+        "Cadoryx.Tests.MainWindowAttachmentFailureTests.ImplicitNewFailureFromEmptyWorkspaceIsReportedWithoutStartingAConstructor(entry: \"sketch\", failure: \"activate\")",
+        "Cadoryx.Tests.MainWindowAttachmentFailureTests.ImplicitNewFailureFromEmptyWorkspaceIsReportedWithoutStartingAConstructor(entry: \"sketch\", failure: \"open\")",
+        "Cadoryx.Tests.MainWindowAttachmentFailureTests.ImplicitNewFailureFromEmptyWorkspaceIsReportedWithoutStartingAConstructor(entry: \"start_tool\", failure: \"activate\")",
+        "Cadoryx.Tests.MainWindowAttachmentFailureTests.ImplicitNewFailureFromEmptyWorkspaceIsReportedWithoutStartingAConstructor(entry: \"start_tool\", failure: \"open\")"
+      ],
+      "failures": [
+        {
+          "name": "Cadoryx.Tests.SketchRegionSingleLoopMixedNativeTests.SameLoopNaturalAndNativeConnectionsMoveInOneOriginalBudgetAndBuildTheExactSolid(kind: \"spline-g2\", mirror: True, distance: 0.10000000000000001, join: Bevel)",
+          "error": "Cadoryx.Db.CadValidationException : This expression profile has no proven exact circle/line exchange representation. Save Cadoryx to retain the exact offset; this export does not approximate curves."
+        },
+        {
+          "name": "Cadoryx.Tests.SketchRegionSingleLoopMixedNativeTests.SameLoopNaturalAndNativeConnectionsMoveInOneOriginalBudgetAndBuildTheExactSolid(kind: \"spline-g2\", mirror: False, distance: 0.10000000000000001, join: Miter)",
+          "error": "Cadoryx.Db.CadValidationException : This expression profile has no proven exact circle/line exchange representation. Save Cadoryx to retain the exact offset; this export does not approximate curves."
+        },
+        {
+          "name": "Cadoryx.Tests.SketchRegionSingleLoopMixedNativeTests.SameLoopNaturalAndNativeConnectionsMoveInOneOriginalBudgetAndBuildTheExactSolid(kind: \"spline-g2\", mirror: False, distance: -0.10000000000000001, join: Round)",
+          "error": "Cadoryx.Db.CadValidationException : This expression profile has no proven exact circle/line exchange representation. Save Cadoryx to retain the exact offset; this export does not approximate curves."
+        },
+        {
+          "name": "Cadoryx.Tests.SketchRegionSingleLoopMixedNativeTests.SameLoopNaturalAndNativeConnectionsMoveInOneOriginalBudgetAndBuildTheExactSolid(kind: \"spline-g2\", mirror: False, distance: 0.10000000000000001, join: Round)",
+          "error": "Cadoryx.Db.CadValidationException : This expression profile has no proven exact circle/line exchange representation. Save Cadoryx to retain the exact offset; this export does not approximate curves."
+        },
+        {
+          "name": "Cadoryx.Tests.SketchRegionSingleLoopMixedNativeTests.SameLoopNaturalAndNativeConnectionsMoveInOneOriginalBudgetAndBuildTheExactSolid(kind: \"spline-g1\", mirror: True, distance: -0.10000000000000001, join: Bevel)",
+          "error": "Cadoryx.Db.CadValidationException : This expression profile has no proven exact circle/line exchange representation. Save Cadoryx to retain the exact offset; this export does not approximate curves."
+        },
+        {
+          "name": "Cadoryx.Tests.SketchRegionSingleLoopMixedNativeTests.SameLoopNaturalAndNativeConnectionsMoveInOneOriginalBudgetAndBuildTheExactSolid(kind: \"spline-g2\", mirror: False, distance: -0.10000000000000001, join: Miter)",
+          "error": "Cadoryx.Db.CadValidationException : This expression profile has no proven exact circle/line exchange representation. Save Cadoryx to retain the exact offset; this export does not approximate curves."
+        },
+        {
+          "name": "Cadoryx.Tests.SketchRegionSingleLoopMixedNativeTests.SameLoopNaturalAndNativeConnectionsMoveInOneOriginalBudgetAndBuildTheExactSolid(kind: \"spline-g1\", mirror: False, distance: 0.10000000000000001, join: Bevel)",
+          "error": "Cadoryx.Db.CadValidationException : This expression profile has no proven exact circle/line exchange representation. Save Cadoryx to retain the exact offset; this export does not approximate curves."
+        },
+        {
+          "name": "Cadoryx.Tests.SketchRegionSingleLoopMixedNativeTests.SameLoopNaturalAndNativeConnectionsMoveInOneOriginalBudgetAndBuildTheExactSolid(kind: \"spline-g1\", mirror: False, distance: -0.10000000000000001, join: Bevel)",
+          "error": "Cadoryx.Db.CadValidationException : This expression profile has no proven exact circle/line exchange representation. Save Cadoryx to retain the exact offset; this export does not approximate curves."
+        },
+        {
+          "name": "Cadoryx.Tests.SketchRegionSingleLoopMixedNativeTests.SameLoopNaturalAndNativeConnectionsMoveInOneOriginalBudgetAndBuildTheExactSolid(kind: \"spline-g2\", mirror: False, distance: 0.10000000000000001, join: Bevel)",
+          "error": "Cadoryx.Db.CadValidationException : This expression profile has no proven exact circle/line exchange representation. Save Cadoryx to retain the exact offset; this export does not approximate curves."
+        },
+        {
+          "name": "Cadoryx.Tests.SketchRegionSingleLoopMixedNativeTests.SameLoopNaturalAndNativeConnectionsMoveInOneOriginalBudgetAndBuildTheExactSolid(kind: \"spline-g2\", mirror: True, distance: 0.10000000000000001, join: Round)",
+          "error": "Cadoryx.Db.CadValidationException : This expression profile has no proven exact circle/line exchange representation. Save Cadoryx to retain the exact offset; this export does not approximate curves."
+        },
+        {
+          "name": "Cadoryx.Tests.SketchRegionSingleLoopMixedNativeTests.SameLoopNaturalAndNativeConnectionsMoveInOneOriginalBudgetAndBuildTheExactSolid(kind: \"spline-g2\", mirror: True, distance: -0.10000000000000001, join: Miter)",
+          "error": "Cadoryx.Db.CadValidationException : This expression profile has no proven exact circle/line exchange representation. Save Cadoryx to retain the exact offset; this export does not approximate curves."
+        },
+        {
+          "name": "Cadoryx.Tests.SketchRegionSingleLoopMixedNativeTests.SameLoopNaturalAndNativeConnectionsMoveInOneOriginalBudgetAndBuildTheExactSolid(kind: \"spline-g1\", mirror: False, distance: -0.10000000000000001, join: Round)",
+          "error": "Cadoryx.Db.CadValidationException : This expression profile has no proven exact circle/line exchange representation. Save Cadoryx to retain the exact offset; this export does not approximate curves."
+        },
+        {
+          "name": "Cadoryx.Tests.SketchRegionSingleLoopMixedNativeTests.SameLoopNaturalAndNativeConnectionsMoveInOneOriginalBudgetAndBuildTheExactSolid(kind: \"spline-g1\", mirror: True, distance: -0.10000000000000001, join: Round)",
+          "error": "Cadoryx.Db.CadValidationException : This expression profile has no proven exact circle/line exchange representation. Save Cadoryx to retain the exact offset; this export does not approximate curves."
+        },
+        {
+          "name": "Cadoryx.Tests.SketchRegionSingleLoopMixedNativeTests.SameLoopNaturalAndNativeConnectionsMoveInOneOriginalBudgetAndBuildTheExactSolid(kind: \"spline-g2\", mirror: True, distance: 0.10000000000000001, join: Miter)",
+          "error": "Cadoryx.Db.CadValidationException : This expression profile has no proven exact circle/line exchange representation. Save Cadoryx to retain the exact offset; this export does not approximate curves."
+        },
+        {
+          "name": "Cadoryx.Tests.SketchRegionSingleLoopMixedNativeTests.SameLoopNaturalAndNativeConnectionsMoveInOneOriginalBudgetAndBuildTheExactSolid(kind: \"spline-g1\", mirror: False, distance: 0.10000000000000001, join: Round)",
+          "error": "Cadoryx.Db.CadValidationException : This expression profile has no proven exact circle/line exchange representation. Save Cadoryx to retain the exact offset; this export does not approximate curves."
+        },
+        {
+          "name": "Cadoryx.Tests.SketchRegionSingleLoopMixedNativeTests.SameLoopNaturalAndNativeConnectionsMoveInOneOriginalBudgetAndBuildTheExactSolid(kind: \"spline-g1\", mirror: True, distance: 0.10000000000000001, join: Bevel)",
+          "error": "Cadoryx.Db.CadValidationException : This expression profile has no proven exact circle/line exchange representation. Save Cadoryx to retain the exact offset; this export does not approximate curves."
+        },
+        {
+          "name": "Cadoryx.Tests.SketchRegionSingleLoopMixedNativeTests.SameLoopNaturalAndNativeConnectionsMoveInOneOriginalBudgetAndBuildTheExactSolid(kind: \"spline-g2\", mirror: True, distance: -0.10000000000000001, join: Round)",
+          "error": "Cadoryx.Db.CadValidationException : This expression profile has no proven exact circle/line exchange representation. Save Cadoryx to retain the exact offset; this export does not approximate curves."
+        },
+        {
+          "name": "Cadoryx.Tests.SketchRegionSingleLoopMixedNativeTests.SameLoopNaturalAndNativeConnectionsMoveInOneOriginalBudgetAndBuildTheExactSolid(kind: \"spline-g1\", mirror: True, distance: -0.10000000000000001, join: Miter)",
+          "error": "Cadoryx.Db.CadValidationException : This expression profile has no proven exact circle/line exchange representation. Save Cadoryx to retain the exact offset; this export does not approximate curves."
+        },
+        {
+          "name": "Cadoryx.Tests.SketchRegionSingleLoopMixedNativeTests.SameLoopNaturalAndNativeConnectionsMoveInOneOriginalBudgetAndBuildTheExactSolid(kind: \"spline-g1\", mirror: True, distance: 0.10000000000000001, join: Round)",
+          "error": "Cadoryx.Db.CadValidationException : This expression profile has no proven exact circle/line exchange representation. Save Cadoryx to retain the exact offset; this export does not approximate curves."
+        },
+        {
+          "name": "Cadoryx.Tests.SketchRegionSingleLoopMixedNativeTests.SameLoopNaturalAndNativeConnectionsMoveInOneOriginalBudgetAndBuildTheExactSolid(kind: \"spline-g2\", mirror: False, distance: -0.10000000000000001, join: Bevel)",
+          "error": "Cadoryx.Db.CadValidationException : This expression profile has no proven exact circle/line exchange representation. Save Cadoryx to retain the exact offset; this export does not approximate curves."
+        },
+        {
+          "name": "Cadoryx.Tests.SketchRegionSingleLoopMixedNativeTests.SameLoopNaturalAndNativeConnectionsMoveInOneOriginalBudgetAndBuildTheExactSolid(kind: \"spline-g1\", mirror: False, distance: 0.10000000000000001, join: Miter)",
+          "error": "Cadoryx.Db.CadValidationException : This expression profile has no proven exact circle/line exchange representation. Save Cadoryx to retain the exact offset; this export does not approximate curves."
+        },
+        {
+          "name": "Cadoryx.Tests.SketchRegionSingleLoopMixedNativeTests.SameLoopNaturalAndNativeConnectionsMoveInOneOriginalBudgetAndBuildTheExactSolid(kind: \"spline-g1\", mirror: False, distance: -0.10000000000000001, join: Miter)",
+          "error": "Cadoryx.Db.CadValidationException : This expression profile has no proven exact circle/line exchange representation. Save Cadoryx to retain the exact offset; this export does not approximate curves."
+        },
+        {
+          "name": "Cadoryx.Tests.SketchRegionSingleLoopMixedNativeTests.SameLoopNaturalAndNativeConnectionsMoveInOneOriginalBudgetAndBuildTheExactSolid(kind: \"spline-g1\", mirror: True, distance: 0.10000000000000001, join: Miter)",
+          "error": "Cadoryx.Db.CadValidationException : This expression profile has no proven exact circle/line exchange representation. Save Cadoryx to retain the exact offset; this export does not approximate curves."
+        },
+        {
+          "name": "Cadoryx.Tests.SketchRegionSingleLoopMixedNativeTests.SameLoopNaturalAndNativeConnectionsMoveInOneOriginalBudgetAndBuildTheExactSolid(kind: \"spline-g2\", mirror: True, distance: -0.10000000000000001, join: Bevel)",
+          "error": "Cadoryx.Db.CadValidationException : This expression profile has no proven exact circle/line exchange representation. Save Cadoryx to retain the exact offset; this export does not approximate curves."
+        }
+      ],
+      "newFailureNames": [],
+      "originalFailuresNowPassed": [],
+      "actualNative62Matched": true,
+      "trx": {
+        "path": "artifacts/af1081-local86-1/full6830-release-1/runtime.trx",
+        "sha256": "A42B91DBD7606E512E440F9D3142007CF99780C32330C710D9A2C05F1BC0ACA6"
+      },
+      "binding": {
+        "path": "artifacts/af1081-local86-1/full6830-release-1/loaded-native.json",
+        "sha256": "B99340484D513F00D9A08ACF9EA9BA71FC2FC27F6E6456D7AA07F89F30664BDC"
+      },
+      "exit": {
+        "path": "artifacts/af1081-local86-1/full6830-release-1/exit.json",
+        "sha256": "0998CED79D96EC153A6376E20A227532BF5A4008C0DFD6B1856349D74CFEB67B"
+      }
+    },
+    {
+      "configuration": "Debug",
+      "total": 6830,
+      "passed": 6806,
+      "failed": 24,
+      "skipped": 0,
+      "parent6652NamesRetained": true,
+      "added178Names": [
+        "Cadoryx.Tests.AgentCommandCatalogTests.CatalogFilteringUsesExactCaseInsensitiveNamesAndDoesNotRemoveOtherCommands",
+        "Cadoryx.Tests.AgentCommandCatalogTests.DedicatedCommandsRemainRejectedBeforeDelegation(command: \"HISTORY END\", tool: \"cad_history\")",
+        "Cadoryx.Tests.AgentCommandCatalogTests.DedicatedCommandsRemainRejectedBeforeDelegation(command: \"WORKSPACE LIST\", tool: \"cad_workspace\")",
+        "Cadoryx.Tests.AgentCommandCatalogTests.DedicatedCommandsRemainRejectedBeforeDelegation(command: \"WS LIST\", tool: \"cad_workspace\")",
+        "Cadoryx.Tests.AgentCommandCatalogTests.DedicatedCommandsRemainRejectedBeforeDelegation(command: \"\\\"HISTORY\\\" END\", tool: \"cad_history\")",
+        "Cadoryx.Tests.AgentCommandCatalogTests.DedicatedCommandsRemainRejectedBeforeDelegation(command: \"\\\"WS\\\" LIST\", tool: \"cad_workspace\")",
+        "Cadoryx.Tests.AgentCommandCatalogTests.DedicatedCommandsRemainRejectedBeforeDelegation(command: \"history END\", tool: \"cad_history\")",
+        "Cadoryx.Tests.AgentCommandCatalogTests.DedicatedCommandsRemainRejectedBeforeDelegation(command: \"workspace LIST\", tool: \"cad_workspace\")",
+        "Cadoryx.Tests.AgentCommandCatalogTests.DedicatedCommandsRemainRejectedBeforeDelegation(command: \"ws LIST\", tool: \"cad_workspace\")",
+        "Cadoryx.Tests.AgentCommandCatalogTests.StatusSeparatesDedicatedRoutesFromCallableCommandsWithoutChangingDocument(state: \"active\")",
+        "Cadoryx.Tests.AgentCommandCatalogTests.StatusSeparatesDedicatedRoutesFromCallableCommandsWithoutChangingDocument(state: \"detached\")",
+        "Cadoryx.Tests.AgentCommandCatalogTests.StatusSeparatesDedicatedRoutesFromCallableCommandsWithoutChangingDocument(state: \"none\")",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.DetachedDocumentIsRejectedBeforeGuidance(action: \"create\")",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.DetachedDocumentIsRejectedBeforeGuidance(action: \"delete\")",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.DetachedDocumentIsRejectedBeforeGuidance(action: \"edit\")",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.DetachedDocumentIsRejectedBeforeGuidance(action: \"reselect\")",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.ExactDocumentAndStateGuardsPrecedeInvalidTypeGuidance(action: \"create\", foreignDocument: False)",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.ExactDocumentAndStateGuardsPrecedeInvalidTypeGuidance(action: \"create\", foreignDocument: True)",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.ExactDocumentAndStateGuardsPrecedeInvalidTypeGuidance(action: \"delete\", foreignDocument: False)",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.ExactDocumentAndStateGuardsPrecedeInvalidTypeGuidance(action: \"delete\", foreignDocument: True)",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.ExactDocumentAndStateGuardsPrecedeInvalidTypeGuidance(action: \"edit\", foreignDocument: False)",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.ExactDocumentAndStateGuardsPrecedeInvalidTypeGuidance(action: \"edit\", foreignDocument: True)",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.ExactDocumentAndStateGuardsPrecedeInvalidTypeGuidance(action: \"reselect\", foreignDocument: False)",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.ExactDocumentAndStateGuardsPrecedeInvalidTypeGuidance(action: \"reselect\", foreignDocument: True)",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.ExplicitCallerChoosesTheExistingSheetContractCreatesAndDeletesThroughOriginalHistory",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.InvalidMutationTypesIdentifyTheTypeBeforeOwnerOrObjectLookupAndLeaveHistoryUnchanged(action: \"create\", fault: \"empty\", populated: False)",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.InvalidMutationTypesIdentifyTheTypeBeforeOwnerOrObjectLookupAndLeaveHistoryUnchanged(action: \"create\", fault: \"empty\", populated: True)",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.InvalidMutationTypesIdentifyTheTypeBeforeOwnerOrObjectLookupAndLeaveHistoryUnchanged(action: \"create\", fault: \"feature\", populated: False)",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.InvalidMutationTypesIdentifyTheTypeBeforeOwnerOrObjectLookupAndLeaveHistoryUnchanged(action: \"create\", fault: \"feature\", populated: True)",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.InvalidMutationTypesIdentifyTheTypeBeforeOwnerOrObjectLookupAndLeaveHistoryUnchanged(action: \"create\", fault: \"null\", populated: False)",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.InvalidMutationTypesIdentifyTheTypeBeforeOwnerOrObjectLookupAndLeaveHistoryUnchanged(action: \"create\", fault: \"null\", populated: True)",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.InvalidMutationTypesIdentifyTheTypeBeforeOwnerOrObjectLookupAndLeaveHistoryUnchanged(action: \"create\", fault: \"number\", populated: False)",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.InvalidMutationTypesIdentifyTheTypeBeforeOwnerOrObjectLookupAndLeaveHistoryUnchanged(action: \"create\", fault: \"number\", populated: True)",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.InvalidMutationTypesIdentifyTheTypeBeforeOwnerOrObjectLookupAndLeaveHistoryUnchanged(action: \"create\", fault: \"omitted\", populated: False)",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.InvalidMutationTypesIdentifyTheTypeBeforeOwnerOrObjectLookupAndLeaveHistoryUnchanged(action: \"create\", fault: \"omitted\", populated: True)",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.InvalidMutationTypesIdentifyTheTypeBeforeOwnerOrObjectLookupAndLeaveHistoryUnchanged(action: \"create\", fault: \"parts_table\", populated: False)",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.InvalidMutationTypesIdentifyTheTypeBeforeOwnerOrObjectLookupAndLeaveHistoryUnchanged(action: \"create\", fault: \"parts_table\", populated: True)",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.InvalidMutationTypesIdentifyTheTypeBeforeOwnerOrObjectLookupAndLeaveHistoryUnchanged(action: \"create\", fault: \"wrong-case\", populated: False)",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.InvalidMutationTypesIdentifyTheTypeBeforeOwnerOrObjectLookupAndLeaveHistoryUnchanged(action: \"create\", fault: \"wrong-case\", populated: True)",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.InvalidMutationTypesIdentifyTheTypeBeforeOwnerOrObjectLookupAndLeaveHistoryUnchanged(action: \"create\", fault: \"zones\", populated: False)",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.InvalidMutationTypesIdentifyTheTypeBeforeOwnerOrObjectLookupAndLeaveHistoryUnchanged(action: \"create\", fault: \"zones\", populated: True)",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.InvalidMutationTypesIdentifyTheTypeBeforeOwnerOrObjectLookupAndLeaveHistoryUnchanged(action: \"delete\", fault: \"empty\", populated: False)",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.InvalidMutationTypesIdentifyTheTypeBeforeOwnerOrObjectLookupAndLeaveHistoryUnchanged(action: \"delete\", fault: \"empty\", populated: True)",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.InvalidMutationTypesIdentifyTheTypeBeforeOwnerOrObjectLookupAndLeaveHistoryUnchanged(action: \"delete\", fault: \"feature\", populated: False)",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.InvalidMutationTypesIdentifyTheTypeBeforeOwnerOrObjectLookupAndLeaveHistoryUnchanged(action: \"delete\", fault: \"feature\", populated: True)",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.InvalidMutationTypesIdentifyTheTypeBeforeOwnerOrObjectLookupAndLeaveHistoryUnchanged(action: \"delete\", fault: \"null\", populated: False)",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.InvalidMutationTypesIdentifyTheTypeBeforeOwnerOrObjectLookupAndLeaveHistoryUnchanged(action: \"delete\", fault: \"null\", populated: True)",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.InvalidMutationTypesIdentifyTheTypeBeforeOwnerOrObjectLookupAndLeaveHistoryUnchanged(action: \"delete\", fault: \"number\", populated: False)",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.InvalidMutationTypesIdentifyTheTypeBeforeOwnerOrObjectLookupAndLeaveHistoryUnchanged(action: \"delete\", fault: \"number\", populated: True)",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.InvalidMutationTypesIdentifyTheTypeBeforeOwnerOrObjectLookupAndLeaveHistoryUnchanged(action: \"delete\", fault: \"omitted\", populated: False)",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.InvalidMutationTypesIdentifyTheTypeBeforeOwnerOrObjectLookupAndLeaveHistoryUnchanged(action: \"delete\", fault: \"omitted\", populated: True)",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.InvalidMutationTypesIdentifyTheTypeBeforeOwnerOrObjectLookupAndLeaveHistoryUnchanged(action: \"delete\", fault: \"parts_table\", populated: False)",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.InvalidMutationTypesIdentifyTheTypeBeforeOwnerOrObjectLookupAndLeaveHistoryUnchanged(action: \"delete\", fault: \"parts_table\", populated: True)",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.InvalidMutationTypesIdentifyTheTypeBeforeOwnerOrObjectLookupAndLeaveHistoryUnchanged(action: \"delete\", fault: \"wrong-case\", populated: False)",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.InvalidMutationTypesIdentifyTheTypeBeforeOwnerOrObjectLookupAndLeaveHistoryUnchanged(action: \"delete\", fault: \"wrong-case\", populated: True)",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.InvalidMutationTypesIdentifyTheTypeBeforeOwnerOrObjectLookupAndLeaveHistoryUnchanged(action: \"delete\", fault: \"zones\", populated: False)",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.InvalidMutationTypesIdentifyTheTypeBeforeOwnerOrObjectLookupAndLeaveHistoryUnchanged(action: \"delete\", fault: \"zones\", populated: True)",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.InvalidMutationTypesIdentifyTheTypeBeforeOwnerOrObjectLookupAndLeaveHistoryUnchanged(action: \"edit\", fault: \"empty\", populated: False)",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.InvalidMutationTypesIdentifyTheTypeBeforeOwnerOrObjectLookupAndLeaveHistoryUnchanged(action: \"edit\", fault: \"empty\", populated: True)",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.InvalidMutationTypesIdentifyTheTypeBeforeOwnerOrObjectLookupAndLeaveHistoryUnchanged(action: \"edit\", fault: \"feature\", populated: False)",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.InvalidMutationTypesIdentifyTheTypeBeforeOwnerOrObjectLookupAndLeaveHistoryUnchanged(action: \"edit\", fault: \"feature\", populated: True)",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.InvalidMutationTypesIdentifyTheTypeBeforeOwnerOrObjectLookupAndLeaveHistoryUnchanged(action: \"edit\", fault: \"null\", populated: False)",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.InvalidMutationTypesIdentifyTheTypeBeforeOwnerOrObjectLookupAndLeaveHistoryUnchanged(action: \"edit\", fault: \"null\", populated: True)",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.InvalidMutationTypesIdentifyTheTypeBeforeOwnerOrObjectLookupAndLeaveHistoryUnchanged(action: \"edit\", fault: \"number\", populated: False)",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.InvalidMutationTypesIdentifyTheTypeBeforeOwnerOrObjectLookupAndLeaveHistoryUnchanged(action: \"edit\", fault: \"number\", populated: True)",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.InvalidMutationTypesIdentifyTheTypeBeforeOwnerOrObjectLookupAndLeaveHistoryUnchanged(action: \"edit\", fault: \"omitted\", populated: False)",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.InvalidMutationTypesIdentifyTheTypeBeforeOwnerOrObjectLookupAndLeaveHistoryUnchanged(action: \"edit\", fault: \"omitted\", populated: True)",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.InvalidMutationTypesIdentifyTheTypeBeforeOwnerOrObjectLookupAndLeaveHistoryUnchanged(action: \"edit\", fault: \"parts_table\", populated: False)",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.InvalidMutationTypesIdentifyTheTypeBeforeOwnerOrObjectLookupAndLeaveHistoryUnchanged(action: \"edit\", fault: \"parts_table\", populated: True)",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.InvalidMutationTypesIdentifyTheTypeBeforeOwnerOrObjectLookupAndLeaveHistoryUnchanged(action: \"edit\", fault: \"wrong-case\", populated: False)",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.InvalidMutationTypesIdentifyTheTypeBeforeOwnerOrObjectLookupAndLeaveHistoryUnchanged(action: \"edit\", fault: \"wrong-case\", populated: True)",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.InvalidMutationTypesIdentifyTheTypeBeforeOwnerOrObjectLookupAndLeaveHistoryUnchanged(action: \"edit\", fault: \"zones\", populated: False)",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.InvalidMutationTypesIdentifyTheTypeBeforeOwnerOrObjectLookupAndLeaveHistoryUnchanged(action: \"edit\", fault: \"zones\", populated: True)",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.InvalidMutationTypesIdentifyTheTypeBeforeOwnerOrObjectLookupAndLeaveHistoryUnchanged(action: \"reselect\", fault: \"empty\", populated: False)",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.InvalidMutationTypesIdentifyTheTypeBeforeOwnerOrObjectLookupAndLeaveHistoryUnchanged(action: \"reselect\", fault: \"empty\", populated: True)",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.InvalidMutationTypesIdentifyTheTypeBeforeOwnerOrObjectLookupAndLeaveHistoryUnchanged(action: \"reselect\", fault: \"feature\", populated: False)",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.InvalidMutationTypesIdentifyTheTypeBeforeOwnerOrObjectLookupAndLeaveHistoryUnchanged(action: \"reselect\", fault: \"feature\", populated: True)",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.InvalidMutationTypesIdentifyTheTypeBeforeOwnerOrObjectLookupAndLeaveHistoryUnchanged(action: \"reselect\", fault: \"null\", populated: False)",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.InvalidMutationTypesIdentifyTheTypeBeforeOwnerOrObjectLookupAndLeaveHistoryUnchanged(action: \"reselect\", fault: \"null\", populated: True)",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.InvalidMutationTypesIdentifyTheTypeBeforeOwnerOrObjectLookupAndLeaveHistoryUnchanged(action: \"reselect\", fault: \"number\", populated: False)",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.InvalidMutationTypesIdentifyTheTypeBeforeOwnerOrObjectLookupAndLeaveHistoryUnchanged(action: \"reselect\", fault: \"number\", populated: True)",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.InvalidMutationTypesIdentifyTheTypeBeforeOwnerOrObjectLookupAndLeaveHistoryUnchanged(action: \"reselect\", fault: \"omitted\", populated: False)",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.InvalidMutationTypesIdentifyTheTypeBeforeOwnerOrObjectLookupAndLeaveHistoryUnchanged(action: \"reselect\", fault: \"omitted\", populated: True)",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.InvalidMutationTypesIdentifyTheTypeBeforeOwnerOrObjectLookupAndLeaveHistoryUnchanged(action: \"reselect\", fault: \"parts_table\", populated: False)",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.InvalidMutationTypesIdentifyTheTypeBeforeOwnerOrObjectLookupAndLeaveHistoryUnchanged(action: \"reselect\", fault: \"parts_table\", populated: True)",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.InvalidMutationTypesIdentifyTheTypeBeforeOwnerOrObjectLookupAndLeaveHistoryUnchanged(action: \"reselect\", fault: \"wrong-case\", populated: False)",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.InvalidMutationTypesIdentifyTheTypeBeforeOwnerOrObjectLookupAndLeaveHistoryUnchanged(action: \"reselect\", fault: \"wrong-case\", populated: True)",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.InvalidMutationTypesIdentifyTheTypeBeforeOwnerOrObjectLookupAndLeaveHistoryUnchanged(action: \"reselect\", fault: \"zones\", populated: False)",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.InvalidMutationTypesIdentifyTheTypeBeforeOwnerOrObjectLookupAndLeaveHistoryUnchanged(action: \"reselect\", fault: \"zones\", populated: True)",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.LibraryTemplatesAreRejectedBeforeOwnerLookupForOrdinaryAuthoring(action: \"create\")",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.LibraryTemplatesAreRejectedBeforeOwnerLookupForOrdinaryAuthoring(action: \"edit\")",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.LibraryTemplatesAreRejectedBeforeOwnerLookupForOrdinaryAuthoring(action: \"reselect\")",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.PreCancelledMutationDoesNotParseOrReturnGuidance(action: \"create\")",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.PreCancelledMutationDoesNotParseOrReturnGuidance(action: \"delete\")",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.PreCancelledMutationDoesNotParseOrReturnGuidance(action: \"edit\")",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.PreCancelledMutationDoesNotParseOrReturnGuidance(action: \"reselect\")",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.ReselectOnlyAdvertisesObjectsWithAnExistingAttachmentContract(type: \"field\")",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.ReselectOnlyAdvertisesObjectsWithAnExistingAttachmentContract(type: \"note\")",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.ReselectOnlyAdvertisesObjectsWithAnExistingAttachmentContract(type: \"sheet\")",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.UnexpectedOuterFieldsKeepTheOriginalPreExecutionRejection(action: \"create\")",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.UnexpectedOuterFieldsKeepTheOriginalPreExecutionRejection(action: \"delete\")",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.UnexpectedOuterFieldsKeepTheOriginalPreExecutionRejection(action: \"edit\")",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.UnexpectedOuterFieldsKeepTheOriginalPreExecutionRejection(action: \"reselect\")",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.ValidDeleteTypesStillRequireExactOwnerAndObjectIds(type: \"balloon\")",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.ValidDeleteTypesStillRequireExactOwnerAndObjectIds(type: \"control_frame\")",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.ValidDeleteTypesStillRequireExactOwnerAndObjectIds(type: \"datum\")",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.ValidDeleteTypesStillRequireExactOwnerAndObjectIds(type: \"dimension\")",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.ValidDeleteTypesStillRequireExactOwnerAndObjectIds(type: \"field\")",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.ValidDeleteTypesStillRequireExactOwnerAndObjectIds(type: \"hole_table\")",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.ValidDeleteTypesStillRequireExactOwnerAndObjectIds(type: \"note\")",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.ValidDeleteTypesStillRequireExactOwnerAndObjectIds(type: \"sheet\")",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.ValidDeleteTypesStillRequireExactOwnerAndObjectIds(type: \"template\")",
+        "Cadoryx.Tests.DrawingMutationTypeFeedbackTests.ValidDeleteTypesStillRequireExactOwnerAndObjectIds(type: \"view\")",
+        "Cadoryx.Tests.DrawingTerminalReceiptTests.ActualTerminalCreateAndDeleteRemainSuccessfulWithOneCommitAndOriginalUndoRedo(direct: False)",
+        "Cadoryx.Tests.DrawingTerminalReceiptTests.ActualTerminalCreateAndDeleteRemainSuccessfulWithOneCommitAndOriginalUndoRedo(direct: True)",
+        "Cadoryx.Tests.DrawingTerminalReceiptTests.EveryExistingReadOnlyContractStillReturnsTerminalSuccess(type: \"balloon\", direct: False)",
+        "Cadoryx.Tests.DrawingTerminalReceiptTests.EveryExistingReadOnlyContractStillReturnsTerminalSuccess(type: \"balloon\", direct: True)",
+        "Cadoryx.Tests.DrawingTerminalReceiptTests.EveryExistingReadOnlyContractStillReturnsTerminalSuccess(type: \"control_frame\", direct: False)",
+        "Cadoryx.Tests.DrawingTerminalReceiptTests.EveryExistingReadOnlyContractStillReturnsTerminalSuccess(type: \"control_frame\", direct: True)",
+        "Cadoryx.Tests.DrawingTerminalReceiptTests.EveryExistingReadOnlyContractStillReturnsTerminalSuccess(type: \"datum\", direct: False)",
+        "Cadoryx.Tests.DrawingTerminalReceiptTests.EveryExistingReadOnlyContractStillReturnsTerminalSuccess(type: \"datum\", direct: True)",
+        "Cadoryx.Tests.DrawingTerminalReceiptTests.EveryExistingReadOnlyContractStillReturnsTerminalSuccess(type: \"dimension\", direct: False)",
+        "Cadoryx.Tests.DrawingTerminalReceiptTests.EveryExistingReadOnlyContractStillReturnsTerminalSuccess(type: \"dimension\", direct: True)",
+        "Cadoryx.Tests.DrawingTerminalReceiptTests.EveryExistingReadOnlyContractStillReturnsTerminalSuccess(type: \"field\", direct: False)",
+        "Cadoryx.Tests.DrawingTerminalReceiptTests.EveryExistingReadOnlyContractStillReturnsTerminalSuccess(type: \"field\", direct: True)",
+        "Cadoryx.Tests.DrawingTerminalReceiptTests.EveryExistingReadOnlyContractStillReturnsTerminalSuccess(type: \"hole_table\", direct: False)",
+        "Cadoryx.Tests.DrawingTerminalReceiptTests.EveryExistingReadOnlyContractStillReturnsTerminalSuccess(type: \"hole_table\", direct: True)",
+        "Cadoryx.Tests.DrawingTerminalReceiptTests.EveryExistingReadOnlyContractStillReturnsTerminalSuccess(type: \"note\", direct: False)",
+        "Cadoryx.Tests.DrawingTerminalReceiptTests.EveryExistingReadOnlyContractStillReturnsTerminalSuccess(type: \"note\", direct: True)",
+        "Cadoryx.Tests.DrawingTerminalReceiptTests.EveryExistingReadOnlyContractStillReturnsTerminalSuccess(type: \"parts_table\", direct: False)",
+        "Cadoryx.Tests.DrawingTerminalReceiptTests.EveryExistingReadOnlyContractStillReturnsTerminalSuccess(type: \"parts_table\", direct: True)",
+        "Cadoryx.Tests.DrawingTerminalReceiptTests.EveryExistingReadOnlyContractStillReturnsTerminalSuccess(type: \"sheet\", direct: False)",
+        "Cadoryx.Tests.DrawingTerminalReceiptTests.EveryExistingReadOnlyContractStillReturnsTerminalSuccess(type: \"sheet\", direct: True)",
+        "Cadoryx.Tests.DrawingTerminalReceiptTests.EveryExistingReadOnlyContractStillReturnsTerminalSuccess(type: \"template\", direct: False)",
+        "Cadoryx.Tests.DrawingTerminalReceiptTests.EveryExistingReadOnlyContractStillReturnsTerminalSuccess(type: \"template\", direct: True)",
+        "Cadoryx.Tests.DrawingTerminalReceiptTests.EveryExistingReadOnlyContractStillReturnsTerminalSuccess(type: \"view\", direct: False)",
+        "Cadoryx.Tests.DrawingTerminalReceiptTests.EveryExistingReadOnlyContractStillReturnsTerminalSuccess(type: \"view\", direct: True)",
+        "Cadoryx.Tests.DrawingTerminalReceiptTests.EveryExistingReadOnlyContractStillReturnsTerminalSuccess(type: \"zones\", direct: False)",
+        "Cadoryx.Tests.DrawingTerminalReceiptTests.EveryExistingReadOnlyContractStillReturnsTerminalSuccess(type: \"zones\", direct: True)",
+        "Cadoryx.Tests.DrawingTerminalReceiptTests.EveryExistingReadOnlyContractStillReturnsTerminalSuccess(type: null, direct: False)",
+        "Cadoryx.Tests.DrawingTerminalReceiptTests.EveryExistingReadOnlyContractStillReturnsTerminalSuccess(type: null, direct: True)",
+        "Cadoryx.Tests.DrawingTerminalReceiptTests.TerminalSuccessMatchesAnActualRejectedProductionDrawingReceipt(action: \"create\", hasType: False, direct: False)",
+        "Cadoryx.Tests.DrawingTerminalReceiptTests.TerminalSuccessMatchesAnActualRejectedProductionDrawingReceipt(action: \"create\", hasType: False, direct: True)",
+        "Cadoryx.Tests.DrawingTerminalReceiptTests.TerminalSuccessMatchesAnActualRejectedProductionDrawingReceipt(action: \"create\", hasType: True, direct: False)",
+        "Cadoryx.Tests.DrawingTerminalReceiptTests.TerminalSuccessMatchesAnActualRejectedProductionDrawingReceipt(action: \"create\", hasType: True, direct: True)",
+        "Cadoryx.Tests.DrawingTerminalReceiptTests.TerminalSuccessMatchesAnActualRejectedProductionDrawingReceipt(action: \"delete\", hasType: False, direct: False)",
+        "Cadoryx.Tests.DrawingTerminalReceiptTests.TerminalSuccessMatchesAnActualRejectedProductionDrawingReceipt(action: \"delete\", hasType: False, direct: True)",
+        "Cadoryx.Tests.DrawingTerminalReceiptTests.TerminalSuccessMatchesAnActualRejectedProductionDrawingReceipt(action: \"delete\", hasType: True, direct: False)",
+        "Cadoryx.Tests.DrawingTerminalReceiptTests.TerminalSuccessMatchesAnActualRejectedProductionDrawingReceipt(action: \"delete\", hasType: True, direct: True)",
+        "Cadoryx.Tests.DrawingTerminalReceiptTests.TerminalSuccessMatchesAnActualRejectedProductionDrawingReceipt(action: \"edit\", hasType: False, direct: False)",
+        "Cadoryx.Tests.DrawingTerminalReceiptTests.TerminalSuccessMatchesAnActualRejectedProductionDrawingReceipt(action: \"edit\", hasType: False, direct: True)",
+        "Cadoryx.Tests.DrawingTerminalReceiptTests.TerminalSuccessMatchesAnActualRejectedProductionDrawingReceipt(action: \"edit\", hasType: True, direct: False)",
+        "Cadoryx.Tests.DrawingTerminalReceiptTests.TerminalSuccessMatchesAnActualRejectedProductionDrawingReceipt(action: \"edit\", hasType: True, direct: True)",
+        "Cadoryx.Tests.DrawingTerminalReceiptTests.TerminalSuccessMatchesAnActualRejectedProductionDrawingReceipt(action: \"inspect\", hasType: False, direct: False)",
+        "Cadoryx.Tests.DrawingTerminalReceiptTests.TerminalSuccessMatchesAnActualRejectedProductionDrawingReceipt(action: \"inspect\", hasType: False, direct: True)",
+        "Cadoryx.Tests.DrawingTerminalReceiptTests.TerminalSuccessMatchesAnActualRejectedProductionDrawingReceipt(action: \"inspect\", hasType: True, direct: False)",
+        "Cadoryx.Tests.DrawingTerminalReceiptTests.TerminalSuccessMatchesAnActualRejectedProductionDrawingReceipt(action: \"inspect\", hasType: True, direct: True)",
+        "Cadoryx.Tests.DrawingTerminalReceiptTests.TerminalSuccessMatchesAnActualRejectedProductionDrawingReceipt(action: \"reselect\", hasType: False, direct: False)",
+        "Cadoryx.Tests.DrawingTerminalReceiptTests.TerminalSuccessMatchesAnActualRejectedProductionDrawingReceipt(action: \"reselect\", hasType: False, direct: True)",
+        "Cadoryx.Tests.DrawingTerminalReceiptTests.TerminalSuccessMatchesAnActualRejectedProductionDrawingReceipt(action: \"reselect\", hasType: True, direct: False)",
+        "Cadoryx.Tests.DrawingTerminalReceiptTests.TerminalSuccessMatchesAnActualRejectedProductionDrawingReceipt(action: \"reselect\", hasType: True, direct: True)",
+        "Cadoryx.Tests.DrawingTerminalReceiptTests.UnknownFieldsRetainOriginalTerminalFailureInsteadOfBeingRepaired(direct: False)",
+        "Cadoryx.Tests.DrawingTerminalReceiptTests.UnknownFieldsRetainOriginalTerminalFailureInsteadOfBeingRepaired(direct: True)",
+        "Cadoryx.Tests.MainWindowAttachmentFailureTests.FailedProductionAttachmentPreservesOriginalActiveDocumentAndReleasesCandidate(entry: \"exchange\", failure: \"activate\")",
+        "Cadoryx.Tests.MainWindowAttachmentFailureTests.FailedProductionAttachmentPreservesOriginalActiveDocumentAndReleasesCandidate(entry: \"exchange\", failure: \"collection\")",
+        "Cadoryx.Tests.MainWindowAttachmentFailureTests.FailedProductionAttachmentPreservesOriginalActiveDocumentAndReleasesCandidate(entry: \"exchange\", failure: \"open\")",
+        "Cadoryx.Tests.MainWindowAttachmentFailureTests.FailedProductionAttachmentPreservesOriginalActiveDocumentAndReleasesCandidate(entry: \"native\", failure: \"activate\")",
+        "Cadoryx.Tests.MainWindowAttachmentFailureTests.FailedProductionAttachmentPreservesOriginalActiveDocumentAndReleasesCandidate(entry: \"native\", failure: \"collection\")",
+        "Cadoryx.Tests.MainWindowAttachmentFailureTests.FailedProductionAttachmentPreservesOriginalActiveDocumentAndReleasesCandidate(entry: \"native\", failure: \"open\")",
+        "Cadoryx.Tests.MainWindowAttachmentFailureTests.FailedProductionAttachmentPreservesOriginalActiveDocumentAndReleasesCandidate(entry: \"new\", failure: \"activate\")",
+        "Cadoryx.Tests.MainWindowAttachmentFailureTests.FailedProductionAttachmentPreservesOriginalActiveDocumentAndReleasesCandidate(entry: \"new\", failure: \"collection\")",
+        "Cadoryx.Tests.MainWindowAttachmentFailureTests.FailedProductionAttachmentPreservesOriginalActiveDocumentAndReleasesCandidate(entry: \"new\", failure: \"open\")",
+        "Cadoryx.Tests.MainWindowAttachmentFailureTests.ImplicitNewFailureFromEmptyWorkspaceIsReportedWithoutStartingAConstructor(entry: \"new\", failure: \"activate\")",
+        "Cadoryx.Tests.MainWindowAttachmentFailureTests.ImplicitNewFailureFromEmptyWorkspaceIsReportedWithoutStartingAConstructor(entry: \"new\", failure: \"open\")",
+        "Cadoryx.Tests.MainWindowAttachmentFailureTests.ImplicitNewFailureFromEmptyWorkspaceIsReportedWithoutStartingAConstructor(entry: \"sketch\", failure: \"activate\")",
+        "Cadoryx.Tests.MainWindowAttachmentFailureTests.ImplicitNewFailureFromEmptyWorkspaceIsReportedWithoutStartingAConstructor(entry: \"sketch\", failure: \"open\")",
+        "Cadoryx.Tests.MainWindowAttachmentFailureTests.ImplicitNewFailureFromEmptyWorkspaceIsReportedWithoutStartingAConstructor(entry: \"start_tool\", failure: \"activate\")",
+        "Cadoryx.Tests.MainWindowAttachmentFailureTests.ImplicitNewFailureFromEmptyWorkspaceIsReportedWithoutStartingAConstructor(entry: \"start_tool\", failure: \"open\")"
+      ],
+      "failures": [
+        {
+          "name": "Cadoryx.Tests.SketchRegionSingleLoopMixedNativeTests.SameLoopNaturalAndNativeConnectionsMoveInOneOriginalBudgetAndBuildTheExactSolid(kind: \"spline-g2\", mirror: False, distance: -0.10000000000000001, join: Round)",
+          "error": "Cadoryx.Db.CadValidationException : This expression profile has no proven exact circle/line exchange representation. Save Cadoryx to retain the exact offset; this export does not approximate curves."
+        },
+        {
+          "name": "Cadoryx.Tests.SketchRegionSingleLoopMixedNativeTests.SameLoopNaturalAndNativeConnectionsMoveInOneOriginalBudgetAndBuildTheExactSolid(kind: \"spline-g1\", mirror: False, distance: 0.10000000000000001, join: Round)",
+          "error": "Cadoryx.Db.CadValidationException : This expression profile has no proven exact circle/line exchange representation. Save Cadoryx to retain the exact offset; this export does not approximate curves."
+        },
+        {
+          "name": "Cadoryx.Tests.SketchRegionSingleLoopMixedNativeTests.SameLoopNaturalAndNativeConnectionsMoveInOneOriginalBudgetAndBuildTheExactSolid(kind: \"spline-g2\", mirror: False, distance: -0.10000000000000001, join: Bevel)",
+          "error": "Cadoryx.Db.CadValidationException : This expression profile has no proven exact circle/line exchange representation. Save Cadoryx to retain the exact offset; this export does not approximate curves."
+        },
+        {
+          "name": "Cadoryx.Tests.SketchRegionSingleLoopMixedNativeTests.SameLoopNaturalAndNativeConnectionsMoveInOneOriginalBudgetAndBuildTheExactSolid(kind: \"spline-g2\", mirror: True, distance: 0.10000000000000001, join: Round)",
+          "error": "Cadoryx.Db.CadValidationException : This expression profile has no proven exact circle/line exchange representation. Save Cadoryx to retain the exact offset; this export does not approximate curves."
+        },
+        {
+          "name": "Cadoryx.Tests.SketchRegionSingleLoopMixedNativeTests.SameLoopNaturalAndNativeConnectionsMoveInOneOriginalBudgetAndBuildTheExactSolid(kind: \"spline-g1\", mirror: True, distance: 0.10000000000000001, join: Miter)",
+          "error": "Cadoryx.Db.CadValidationException : This expression profile has no proven exact circle/line exchange representation. Save Cadoryx to retain the exact offset; this export does not approximate curves."
+        },
+        {
+          "name": "Cadoryx.Tests.SketchRegionSingleLoopMixedNativeTests.SameLoopNaturalAndNativeConnectionsMoveInOneOriginalBudgetAndBuildTheExactSolid(kind: \"spline-g1\", mirror: True, distance: -0.10000000000000001, join: Bevel)",
+          "error": "Cadoryx.Db.CadValidationException : This expression profile has no proven exact circle/line exchange representation. Save Cadoryx to retain the exact offset; this export does not approximate curves."
+        },
+        {
+          "name": "Cadoryx.Tests.SketchRegionSingleLoopMixedNativeTests.SameLoopNaturalAndNativeConnectionsMoveInOneOriginalBudgetAndBuildTheExactSolid(kind: \"spline-g2\", mirror: False, distance: 0.10000000000000001, join: Round)",
+          "error": "Cadoryx.Db.CadValidationException : This expression profile has no proven exact circle/line exchange representation. Save Cadoryx to retain the exact offset; this export does not approximate curves."
+        },
+        {
+          "name": "Cadoryx.Tests.SketchRegionSingleLoopMixedNativeTests.SameLoopNaturalAndNativeConnectionsMoveInOneOriginalBudgetAndBuildTheExactSolid(kind: \"spline-g1\", mirror: False, distance: -0.10000000000000001, join: Bevel)",
+          "error": "Cadoryx.Db.CadValidationException : This expression profile has no proven exact circle/line exchange representation. Save Cadoryx to retain the exact offset; this export does not approximate curves."
+        },
+        {
+          "name": "Cadoryx.Tests.SketchRegionSingleLoopMixedNativeTests.SameLoopNaturalAndNativeConnectionsMoveInOneOriginalBudgetAndBuildTheExactSolid(kind: \"spline-g2\", mirror: True, distance: 0.10000000000000001, join: Miter)",
+          "error": "Cadoryx.Db.CadValidationException : This expression profile has no proven exact circle/line exchange representation. Save Cadoryx to retain the exact offset; this export does not approximate curves."
+        },
+        {
+          "name": "Cadoryx.Tests.SketchRegionSingleLoopMixedNativeTests.SameLoopNaturalAndNativeConnectionsMoveInOneOriginalBudgetAndBuildTheExactSolid(kind: \"spline-g2\", mirror: False, distance: 0.10000000000000001, join: Bevel)",
+          "error": "Cadoryx.Db.CadValidationException : This expression profile has no proven exact circle/line exchange representation. Save Cadoryx to retain the exact offset; this export does not approximate curves."
+        },
+        {
+          "name": "Cadoryx.Tests.SketchRegionSingleLoopMixedNativeTests.SameLoopNaturalAndNativeConnectionsMoveInOneOriginalBudgetAndBuildTheExactSolid(kind: \"spline-g1\", mirror: False, distance: -0.10000000000000001, join: Miter)",
+          "error": "Cadoryx.Db.CadValidationException : This expression profile has no proven exact circle/line exchange representation. Save Cadoryx to retain the exact offset; this export does not approximate curves."
+        },
+        {
+          "name": "Cadoryx.Tests.SketchRegionSingleLoopMixedNativeTests.SameLoopNaturalAndNativeConnectionsMoveInOneOriginalBudgetAndBuildTheExactSolid(kind: \"spline-g2\", mirror: True, distance: 0.10000000000000001, join: Bevel)",
+          "error": "Cadoryx.Db.CadValidationException : This expression profile has no proven exact circle/line exchange representation. Save Cadoryx to retain the exact offset; this export does not approximate curves."
+        },
+        {
+          "name": "Cadoryx.Tests.SketchRegionSingleLoopMixedNativeTests.SameLoopNaturalAndNativeConnectionsMoveInOneOriginalBudgetAndBuildTheExactSolid(kind: \"spline-g2\", mirror: True, distance: -0.10000000000000001, join: Miter)",
+          "error": "Cadoryx.Db.CadValidationException : This expression profile has no proven exact circle/line exchange representation. Save Cadoryx to retain the exact offset; this export does not approximate curves."
+        },
+        {
+          "name": "Cadoryx.Tests.SketchRegionSingleLoopMixedNativeTests.SameLoopNaturalAndNativeConnectionsMoveInOneOriginalBudgetAndBuildTheExactSolid(kind: \"spline-g2\", mirror: False, distance: -0.10000000000000001, join: Miter)",
+          "error": "Cadoryx.Db.CadValidationException : This expression profile has no proven exact circle/line exchange representation. Save Cadoryx to retain the exact offset; this export does not approximate curves."
+        },
+        {
+          "name": "Cadoryx.Tests.SketchRegionSingleLoopMixedNativeTests.SameLoopNaturalAndNativeConnectionsMoveInOneOriginalBudgetAndBuildTheExactSolid(kind: \"spline-g1\", mirror: False, distance: 0.10000000000000001, join: Miter)",
+          "error": "Cadoryx.Db.CadValidationException : This expression profile has no proven exact circle/line exchange representation. Save Cadoryx to retain the exact offset; this export does not approximate curves."
+        },
+        {
+          "name": "Cadoryx.Tests.SketchRegionSingleLoopMixedNativeTests.SameLoopNaturalAndNativeConnectionsMoveInOneOriginalBudgetAndBuildTheExactSolid(kind: \"spline-g1\", mirror: False, distance: 0.10000000000000001, join: Bevel)",
+          "error": "Cadoryx.Db.CadValidationException : This expression profile has no proven exact circle/line exchange representation. Save Cadoryx to retain the exact offset; this export does not approximate curves."
+        },
+        {
+          "name": "Cadoryx.Tests.SketchRegionSingleLoopMixedNativeTests.SameLoopNaturalAndNativeConnectionsMoveInOneOriginalBudgetAndBuildTheExactSolid(kind: \"spline-g1\", mirror: True, distance: 0.10000000000000001, join: Round)",
+          "error": "Cadoryx.Db.CadValidationException : This expression profile has no proven exact circle/line exchange representation. Save Cadoryx to retain the exact offset; this export does not approximate curves."
+        },
+        {
+          "name": "Cadoryx.Tests.SketchRegionSingleLoopMixedNativeTests.SameLoopNaturalAndNativeConnectionsMoveInOneOriginalBudgetAndBuildTheExactSolid(kind: \"spline-g2\", mirror: True, distance: -0.10000000000000001, join: Bevel)",
+          "error": "Cadoryx.Db.CadValidationException : This expression profile has no proven exact circle/line exchange representation. Save Cadoryx to retain the exact offset; this export does not approximate curves."
+        },
+        {
+          "name": "Cadoryx.Tests.SketchRegionSingleLoopMixedNativeTests.SameLoopNaturalAndNativeConnectionsMoveInOneOriginalBudgetAndBuildTheExactSolid(kind: \"spline-g1\", mirror: False, distance: -0.10000000000000001, join: Round)",
+          "error": "Cadoryx.Db.CadValidationException : This expression profile has no proven exact circle/line exchange representation. Save Cadoryx to retain the exact offset; this export does not approximate curves."
+        },
+        {
+          "name": "Cadoryx.Tests.SketchRegionSingleLoopMixedNativeTests.SameLoopNaturalAndNativeConnectionsMoveInOneOriginalBudgetAndBuildTheExactSolid(kind: \"spline-g1\", mirror: True, distance: -0.10000000000000001, join: Miter)",
+          "error": "Cadoryx.Db.CadValidationException : This expression profile has no proven exact circle/line exchange representation. Save Cadoryx to retain the exact offset; this export does not approximate curves."
+        },
+        {
+          "name": "Cadoryx.Tests.SketchRegionSingleLoopMixedNativeTests.SameLoopNaturalAndNativeConnectionsMoveInOneOriginalBudgetAndBuildTheExactSolid(kind: \"spline-g2\", mirror: False, distance: 0.10000000000000001, join: Miter)",
+          "error": "Cadoryx.Db.CadValidationException : This expression profile has no proven exact circle/line exchange representation. Save Cadoryx to retain the exact offset; this export does not approximate curves."
+        },
+        {
+          "name": "Cadoryx.Tests.SketchRegionSingleLoopMixedNativeTests.SameLoopNaturalAndNativeConnectionsMoveInOneOriginalBudgetAndBuildTheExactSolid(kind: \"spline-g1\", mirror: True, distance: 0.10000000000000001, join: Bevel)",
+          "error": "Cadoryx.Db.CadValidationException : This expression profile has no proven exact circle/line exchange representation. Save Cadoryx to retain the exact offset; this export does not approximate curves."
+        },
+        {
+          "name": "Cadoryx.Tests.SketchRegionSingleLoopMixedNativeTests.SameLoopNaturalAndNativeConnectionsMoveInOneOriginalBudgetAndBuildTheExactSolid(kind: \"spline-g1\", mirror: True, distance: -0.10000000000000001, join: Round)",
+          "error": "Cadoryx.Db.CadValidationException : This expression profile has no proven exact circle/line exchange representation. Save Cadoryx to retain the exact offset; this export does not approximate curves."
+        },
+        {
+          "name": "Cadoryx.Tests.SketchRegionSingleLoopMixedNativeTests.SameLoopNaturalAndNativeConnectionsMoveInOneOriginalBudgetAndBuildTheExactSolid(kind: \"spline-g2\", mirror: True, distance: -0.10000000000000001, join: Round)",
+          "error": "Cadoryx.Db.CadValidationException : This expression profile has no proven exact circle/line exchange representation. Save Cadoryx to retain the exact offset; this export does not approximate curves."
+        }
+      ],
+      "newFailureNames": [],
+      "originalFailuresNowPassed": [],
+      "actualNative62Matched": true,
+      "trx": {
+        "path": "artifacts/af1081-local86-1/full6830-debug-2/runtime.trx",
+        "sha256": "6E19B9690F11F27EA815CABACA47DBA8025B2FFD2BED61F38F78BF105C21FD93"
+      },
+      "binding": {
+        "path": "artifacts/af1081-local86-1/full6830-debug-2/loaded-native.json",
+        "sha256": "019172B619CCEE30010B6A57880703BEBF2E49493E714FA2D32CD5E35A4F5275"
+      },
+      "exit": {
+        "path": "artifacts/af1081-local86-1/full6830-debug-2/exit.json",
+        "sha256": "960BBD7C96D5E62398449A644866DA6059B454E63ADC2767BEAC4E018219F6BF"
+      }
+    }
+  ],
+  "allPassed": false,
+  "originalStrictSTEPGateChanged": false,
+  "productionApplied": false,
+  "publiclyPublished": false,
+  "desktopOrModelGateProven": false,
+  "AFComplete": false,
+  "G": "USER_DEFERRED",
+  "cleanup": false
+}

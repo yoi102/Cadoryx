@@ -50,3 +50,19 @@ new regression failures or changed payloads; it never restarts another job.
 The user's exact 24 deferred STEP failures remain failed results, listed in
 `step24-user-deferral.json`; no parameterized method or other exchange case is
 excluded. This follow-up does not control desktop input or run performance tests.
+
+The model runner additionally observes a requested SDK CX/CY qualification
+transition before native model launch. A request is not a grant: the root must
+observe the complete Far terminal, the live provider hold, and actual native
+idle state before sending an explicit SDK grant. Only explicit SDK return plus
+fresh idle and frozen-payload checks can resume the original model scenarios.
+
+Revision 5 stopped in the fifth case when destructive Common added edge
+representations to the original selected stop. Revision 6 uses existing
+`RepairSnapshot.CopyShape()` with independent construction and coverage copies;
+TopoDS `Clone()` alone shares TShape. Original BRep byte checks remain mandatory.
+Both revision 6 configurations completed 90 cases: 72 passed and 18 raw-full-near
+volume checks failed. Their failures and all old outputs remain recorded; the
+complete prerequisite is not passed and no product adoption is claimed.
+Use revision argument `6` with both Python auditors and `-Revision 6` with the
+coordinated runner/grant checker to preserve the original revision 5 evidence.

@@ -61,7 +61,14 @@ foreach(string scenario in new[]{"raw-full-near","clip-full-near","clip-full-far
             using var localBox=ShapeFactory.CreateBox(16,16,8);
             using var boxTranslation=OcctGeometryBridge.ToNative(placement*RigidTransform3d.Translate(-3,-3,far?18:10));
             using var box=localBox.Transformed(boxTranslation);
-            using var effective=clip?stop.Common(box):stop.Clone();
+            // TopoDS Clone retains the original TShape. Common may add edge
+            // representations even when the intersection has no material.
+            // Isolate both construction and coverage operations with the existing
+            // exact geometry/topology copier; neither copy supplies user identity.
+            using var selectedStopSnapshot=RepairSnapshot.Create(stop);
+            using var branchStop=selectedStopSnapshot.CopyShape();
+            using var coverageStop=selectedStopSnapshot.CopyShape();
+            using var effective=clip?branchStop.Common(box):branchStop.Clone();
             var effectiveFaces=effective.GetFaces();
             double effectiveArea;
             try{effectiveArea=effectiveFaces.Sum(Area);}finally{foreach(var f in effectiveFaces)f.Dispose();}
@@ -101,7 +108,7 @@ foreach(string scenario in new[]{"raw-full-near","clip-full-near","clip-full-far
                 {
                     var type=face.GetFaceSurfaceSnapshot().SurfaceType;
                     if(type!=(kind=="sphere"?SurfaceGeometryType.Sphere:SurfaceGeometryType.Cylinder))continue;
-                    double area=Area(face);using var covered=face.Common(stop);
+                    double area=Area(face);using var covered=face.Common(coverageStop);
                     Require(Math.Abs(FaceArea(covered)-area)<=Math.Max(1e-7,area*1e-9),"Original finite face only partly covers a cap.");
                     using var local=face.Transformed(inverse);var bounds=local.GetBoundingBox();
                     Require(far?bounds.Minimum.Z>18+1e-6:bounds.Maximum.Z<18-1e-6,"Cap uses the wrong branch or reaches directional tangency.");
@@ -125,6 +132,8 @@ foreach(string scenario in new[]{"raw-full-near","clip-full-near","clip-full-far
         {
             ShapeExchange.WriteBrep(basis,Path.Combine(folder,"source-after.brep"));
             ShapeExchange.WriteBrep(stop,Path.Combine(folder,"stop-after.brep"));
+            File.WriteAllText(Path.Combine(output,"partial-result.json"),JsonSerializer.Serialize(new
+            {planned=90,actual=rows.Count,failures,complete=false,rows},new JsonSerializerOptions{WriteIndented=true}));
             Require(Hash(Path.Combine(folder,"source-before.brep"))==Hash(Path.Combine(folder,"source-after.brep")),"Source representation mutated.");
             Require(Hash(Path.Combine(folder,"stop-before.brep"))==Hash(Path.Combine(folder,"stop-after.brep")),"Original selected stop mutated.");
         }

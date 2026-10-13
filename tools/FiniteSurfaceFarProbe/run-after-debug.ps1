@@ -1,11 +1,14 @@
+[CmdletBinding()]
+param([ValidateSet(5,6)][int]$Revision=5)
 $ErrorActionPreference='Stop'
 $taskRoot='C:/Users/yoiri/source/repos/Cadoryx'
 $taskDraft=Join-Path $taskRoot 'artifacts/af1081-local86-1'
 $taskEvidence=Join-Path $taskRoot 'capability-evidence/diagnostics/af1081-local86'
-$taskProof=Get-Content (Join-Path $taskEvidence 'far90-build-verification.json') -Raw|ConvertFrom-Json -DateKind String
+$taskProofName=if($Revision -eq 5){'far90-build-verification.json'}else{'far90-build-'+$Revision+'-verification.json'}
+$taskProof=Get-Content (Join-Path $taskEvidence $taskProofName) -Raw|ConvertFrom-Json -DateKind String
 $taskDebug=Get-Content (Join-Path $taskDraft 'debug-resume-coordinator-1-start.json') -Raw|ConvertFrom-Json -DateKind String
 $taskAuditPath=Join-Path $taskEvidence 'full-verification.json'
-$taskState=Join-Path $taskDraft 'far90-followup-state.json'
+$taskState=Join-Path $taskDraft $(if($Revision -eq 5){'far90-followup-state.json'}else{'far90-followup-state-'+$Revision+'.json'})
 if(Test-Path $taskState){throw 'Follow-up exists; inspect its actual handle'}
 function Save-FollowupState([string]$state){
  [ordered]@{recordedAt=[DateTimeOffset]::UtcNow.ToString('o');coordinatorPid=$PID;state=$state;AFComplete=$false;desktopInputStarted=$false}|ConvertTo-Json|Set-Content $taskState
@@ -35,7 +38,7 @@ foreach($taskBuild in $taskProof.builds){
  $taskIdle=@(Assert-CadNativeConsumersIdle)
  foreach($taskInput in $taskProof.sourceInputs){if((Get-FileHash (Join-Path $taskRoot $taskInput.path)).Hash -cne $taskInput.sha256){throw 'Far90 source changed after build'}}
  foreach($taskRow in $taskBuild.payload){if((Get-FileHash (Join-Path $taskBuild.folder $taskRow.path)).Hash -cne $taskRow.sha256){throw 'Far90 built payload changed'}}
- $taskOutput=Join-Path $taskDraft ('far-prerequisite/runtime-'+$taskBuild.configuration.ToLower()+'-5')
+ $taskOutput=Join-Path $taskDraft ('far-prerequisite/runtime-'+$taskBuild.configuration.ToLower()+'-'+$Revision)
  if(Test-Path $taskOutput){throw 'Preserve an existing run'}
  $taskInfo=[Diagnostics.ProcessStartInfo]::new((Get-Command dotnet).Source)
  $taskInfo.WorkingDirectory=$taskRoot;$taskInfo.UseShellExecute=$false;$taskInfo.CreateNoWindow=$true;$taskInfo.WindowStyle='Hidden'
@@ -55,7 +58,7 @@ foreach($taskBuild in $taskProof.builds){
  if(!(Test-Path (Join-Path $taskOutput 'result.json'))){throw 'Far90 has no complete result; preserve partial evidence'}
  Get-Content ($taskOutput+'.log') -Tail 2
 }
-& 'C:/Users/yoiri/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe' -X utf8 (Join-Path $taskRoot 'tools/FiniteSurfaceFarProbe/audit-runtime.py')
+& 'C:/Users/yoiri/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe' -X utf8 (Join-Path $taskRoot 'tools/FiniteSurfaceFarProbe/audit-runtime.py') $Revision
 if($LASTEXITCODE -ne 0){throw 'Far90 runtime audit failed; preserve all output'}
 Save-FollowupState 'FAR90_RUNTIME_AUDITED_STARTING_ORIGINAL_MODEL_SCENARIOS'
 $taskIdle=@(Assert-CadNativeConsumersIdle)

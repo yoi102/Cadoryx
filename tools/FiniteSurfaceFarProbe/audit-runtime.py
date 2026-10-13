@@ -4,10 +4,13 @@ from pathlib import Path
 import hashlib
 import json
 import math
+import sys
 
 ROOT = Path(__file__).resolve().parents[2]
 OUT = ROOT / 'capability-evidence/diagnostics/af1081-local86'
 DRAFT = ROOT / 'artifacts/af1081-local86-1'
+REV = int(sys.argv[1]) if len(sys.argv) == 2 else 5
+assert REV in [5, 6]
 
 def read(path):
     return json.loads(path.read_text(encoding='utf-8-sig'))
@@ -18,7 +21,7 @@ def sha(path):
 def ref(path):
     return {'path': path.relative_to(ROOT).as_posix(), 'sha256': sha(path)}
 
-proof_path = OUT / 'far90-build-verification.json'
+proof_path = OUT / ('far90-build-verification.json' if REV == 5 else f'far90-build-{REV}-verification.json')
 proof = read(proof_path)
 freeze = read(ROOT / proof['candidateFreeze']['path'])
 assert sha(ROOT / proof['candidateFreeze']['path']) == proof['candidateFreeze']['sha256']
@@ -31,7 +34,7 @@ for build in proof['builds']:
     binary = Path(build['folder'])
     for row in build['payload']:
         assert sha(binary / row['path']) == row['sha256']
-    folder = DRAFT / f'far-prerequisite/runtime-{config.lower()}-5'
+    folder = DRAFT / f'far-prerequisite/runtime-{config.lower()}-{REV}'
     raw = read(folder / 'result.json')
     terminal = read(folder / 'exit.json')
     rows = {r['name']: r for r in raw['rows']}
@@ -87,7 +90,7 @@ for build in proof['builds']:
                     'originalSourceAndStopBrepBytesPreserved': True,
                     'result': ref(folder / 'result.json'), 'terminal': ref(folder / 'exit.json')})
 
-target = OUT / 'far90-runtime-verification.json'
+target = OUT / ('far90-runtime-verification.json' if REV == 5 else f'far90-runtime-{REV}-verification.json')
 assert not target.exists(), 'Preserve the original runtime audit.'
 result = {'recordedAt': datetime.now(timezone.utc).isoformat(),
           'state': 'STRICT_FAR90_BOTH_ACTUALLY_EXECUTED',

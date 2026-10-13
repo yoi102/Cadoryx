@@ -1,5 +1,7 @@
 # A–F 全量实施跟踪
 
+2026-10-14，status253：当前1081/本地86[两配置完整6830](../capability-evidence/diagnostics/af1081-local86/full-verification.json)各6806通过/原24延期失败/零跳过，原名称、实际native62及零新增失败已核对。[Far90修订6](../capability-evidence/diagnostics/af1081-local86/far90-runtime-6-verification.json)各72/18失败，原始BRep不变性修正已验；18个raw-full-near原生体积错误继续保留，尚未接入产品。模型协调25052在真实预启动hold，根经完整终态和实际空闲检查已明确交还SDK CX/CY约30分钟资格时段；SDK明确返回后续原模型。恢复/性能/D6及材质窗口和全部其他A–F继续，G/清理暂缓。以下为历史，当前见[STATUS](STATUS.md)。
+
 2026-10-14，status252：[Far90两配置构建/载荷审计](../capability-evidence/diagnostics/af1081-local86/far90-build-verification.json)通过，严格预算、原30名称、孔与递归岛完整范围保持；运行和产品接入尚未完成。[串行跟进](../tools/FiniteSurfaceFarProbe/run-after-debug.ps1)实际协调14204等待重跑Debug协调50296的完整审计，随后依次运行两配置Far90及原模型工作流，异常保留证据并停止。原24严格STEP失败单独延期，不等待修复、不记作通过；A–F其他功能/窗口/性能及交换范围继续。最新状态见[STATUS](STATUS.md)，下方均保留历史。
 
 2026-10-14，status251：原24项严格STEP失败已按用户授权[单独延期](../capability-evidence/diagnostics/af1081-local86/step24-user-deferral.json)，名称与原历史两配置逐项一致；保留失败与严格断言，不延期其他交换问题。原Debug作业已实际中断且缺完整结果；SDK明确交回时段后核对消费者空闲，只重跑缺终态Debug6830，保留已完成Release6806/24/0和旧日志。当前`full6830-debug-2`实际进程已核对，尚未终态。完整Far孔岛前提90项、模型/性能/恢复/D6/材质真实窗口及其他A–F继续；不将工具构建或SDK开发验证作为产品验收。生产1081/公开85、本地86仅隔离候选。最新状态以[STATUS](STATUS.md)与实际收据为准；下方均为历史，G/清理暂缓。

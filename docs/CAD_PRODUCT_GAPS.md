@@ -1,5 +1,7 @@
 # 3D CAD 产品缺口与实施规划
 
+2026-10-14，status253：[当前1081/本地86两配置完整6830](../capability-evidence/diagnostics/af1081-local86/full-verification.json)各6806通过/原24延期失败/零跳过，无新增失败，原名称及native62准确；Debug已补齐终态。[Far90两配置修订6](../capability-evidence/diagnostics/af1081-local86/far90-runtime-6-verification.json)各72通过/18失败，所有原始source/stop BRep字节保持；18为原生raw-full-near体积错误，完整Near/Far私有裁剪及孔岛/负例有各自通过记录，不代表Far产品完成。模型预启动协调25052实际hold，根已明确交还SDK CX25/CY8约30分钟资格时段，模型、恢复、窗口和性能仍待验；源版本/原第4、5节A–F范围保持，G/清理暂缓。最新以[STATUS](STATUS.md)和实际终态为准，以下均为历史。
+
 2026-10-14，status251：用户允许[精确24项原有严格STEP失败延期修复](../capability-evidence/diagnostics/af1081-local86/step24-user-deferral.json)，继续其余A–F；它们仍是已知失败，不能记作通过或延伸为其他交换问题的豁免。Release6830已核对6806通过/原24失败/零跳过。原Debug进程已消失且缺终态，SDK明确交回时段、实际空闲核查后只重跑冻结Debug，输出`full6830-debug-2`；尚未完整验收。恢复、模型、性能、D6/材质实际窗口与完整90项孔岛Far前提仍待验；SDK最新55声明仅开发验证。生产1081/公开85、本地86仍隔离候选；第4、5节A–F范围保持，G/清理暂缓。当前以[STATUS](STATUS.md)及实际终态为准，以下记录保留历史。
 
 2026-10-13，status250：[1081/本地86 Release完整6830](../capability-evidence/diagnostics/af1081-local86/release-full-verification.json)实际6806通过/原24失败/零跳过，原名称与新178及native62准确、无新增失败；Debug串行运行中。原24/36恢复工具已持久化并两配置publish0，实际恢复/整图审阅、原模型/性能/36 D6窗口未运行；模型队列在两配置结束后等待SDK验证时段明确交回。生产仍公开85、本地86仅候选。A–F全部范围/STEP24/AppSweep保持，G/清理暂缓。

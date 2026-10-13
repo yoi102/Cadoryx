@@ -21,6 +21,24 @@ if($taskAudit.configurations.Count -ne 2 -or @($taskAudit.configurations|Where-O
 foreach($taskRow in $taskProof.sourcePayload){if((Get-FileHash -LiteralPath (Join-Path $taskProof.workspace $taskRow.path)).Hash -cne $taskRow.sha256){throw 'Frozen1081 source drift'}}
 foreach($taskRow in $taskProof.providerPayload){if((Get-FileHash -LiteralPath (Join-Path $taskProvider $taskRow.path)).Hash -cne $taskRow.sha256){throw 'Final provider payload drift'}}
 foreach($taskRow in $taskOriginalSources){if((Get-FileHash -LiteralPath (Join-Path $taskRoot $taskRow.path)).Hash -cne $taskRow.sha256){throw 'Original prompts/assertions differ'}}
+# A requested SDK qualification slot begins only after the preceding native
+# prerequisite has actually ended. The root task records the explicit grant and
+# return independently; this coordinator cannot grant a slot from intent alone.
+$taskTransitionHold=Join-Path $taskDraft 'provider-sdk-transition-hold.json'
+$taskTransitionReturn=Join-Path $taskDraft 'provider-sdk-transition-return.json'
+if(Test-Path $taskTransitionHold){
+ $taskTransition=Get-Content $taskTransitionHold -Raw|ConvertFrom-Json -DateKind String
+ if($taskTransition.candidatePackage -cne '8.0.1-preview.86' -or $taskTransition.scope -cne 'SDK_CX_CY_NATIVE_QUALIFICATION_BEFORE_ORIGINAL_PROVIDER') {throw 'Unknown SDK transition request'}
+ @{recordedAt=[DateTimeOffset]::UtcNow.ToString('o');coordinatorPid=$PID;state='WAITING_FOR_ROOT_GRANTED_SDK_SLOT_AND_EXPLICIT_RETURN';nativeStarted=$false;desktopInputStarted=$false}|ConvertTo-Json|Set-Content (Join-Path $taskDraft 'provider-sdk-transition-observation.json')
+ Write-Output 'Original provider waits before native launch for coordinated SDK CX/CY qualification and explicit return.'
+ while(!(Test-Path $taskTransitionReturn)){Start-Sleep -Seconds 5}
+ $taskReturned=Get-Content $taskTransitionReturn -Raw|ConvertFrom-Json -DateKind String
+ if(!$taskReturned.sdkExplicitHandoffReceived -or !$taskReturned.actualCadConsumersIdle -or $taskReturned.candidatePackage -cne '8.0.1-preview.86'){throw 'Actual SDK qualification return and idle evidence required'}
+ $taskGrantPath=Join-Path $taskDraft 'provider-sdk-transition-granted.json'
+ if(!(Test-Path $taskGrantPath) -or (Get-FileHash $taskGrantPath).Hash -cne $taskReturned.grantSha256){throw 'Exact SDK native grant evidence required'}
+ foreach($taskRow in $taskProof.sourcePayload){if((Get-FileHash -LiteralPath (Join-Path $taskProof.workspace $taskRow.path)).Hash -cne $taskRow.sha256){throw 'Frozen source changed during SDK slot'}}
+ foreach($taskRow in $taskProof.providerPayload){if((Get-FileHash -LiteralPath (Join-Path $taskProvider $taskRow.path)).Hash -cne $taskRow.sha256){throw 'Frozen model payload changed during SDK slot'}}
+}
 . (Join-Path $taskRoot 'artifacts/assert-cad-native-consumers-idle-2.ps1')
 . (Join-Path $taskRoot 'artifacts/wait-af-native-consumers-idle-1.ps1')
 $null=Wait-AFNativeConsumersIdle -EvidenceDirectory (Join-Path $taskDraft 'provider-native-idle-observations-3')

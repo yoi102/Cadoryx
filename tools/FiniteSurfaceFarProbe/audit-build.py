@@ -4,10 +4,13 @@ from pathlib import Path
 import hashlib
 import itertools
 import json
+import sys
 
 ROOT = Path(__file__).resolve().parents[2]
 DRAFT = ROOT / 'artifacts/af1081-local86-1'
 OUT = ROOT / 'capability-evidence/diagnostics/af1081-local86'
+REV = int(sys.argv[1]) if len(sys.argv) == 2 else 5
+assert REV in [5, 6]
 
 def read(path):
     return json.loads(path.read_text(encoding='utf-8-sig'))
@@ -21,7 +24,7 @@ def ref(path):
 freeze = read(DRAFT / 'freeze.json')
 builds = []
 for config in ['Release', 'Debug']:
-    receipt_path = DRAFT / f'far-prerequisite-build-exit-{config.lower()}-5.json'
+    receipt_path = DRAFT / f'far-prerequisite-build-exit-{config.lower()}-{REV}.json'
     receipt = read(receipt_path)
     assert receipt['exitCode'] == 0 and receipt['configuration'] == config
     assert receipt['plannedCases'] == 90 and receipt['strictProductionBudgets']
@@ -55,11 +58,11 @@ assert len(cases) == len({r['name'] for r in cases}) == 90
 assert sum(r['material'] == 'plain' for r in cases) == 30
 assert sum(r['negative'] for r in cases) == 18
 
-target = OUT / 'far90-build-verification.json'
+target = OUT / ('far90-build-verification.json' if REV == 5 else f'far90-build-{REV}-verification.json')
 assert not target.exists(), 'Do not overwrite a recorded build.'
 result = {'recordedAt': datetime.now(timezone.utc).isoformat(),
           'state': 'STRICT_FAR90_BOTH_BUILDS_FROZEN_NOT_RUNTIME_OR_PRODUCT_ACCEPTANCE',
-          'sourceInputs': builds and read(DRAFT / 'far-prerequisite-build-exit-release-5.json')['sourceInputs'],
+          'sourceInputs': builds and read(DRAFT / f'far-prerequisite-build-exit-release-{REV}.json')['sourceInputs'],
           'candidateFreeze': ref(DRAFT / 'freeze.json'), 'builds': builds, 'cases': cases,
           'positiveCases': 72, 'negativeCases': 18, 'oldPlainCaseNamesRetained': True,
           'volumeTolerance': 'max(1e-6, sourceVolume*1e-9)',
