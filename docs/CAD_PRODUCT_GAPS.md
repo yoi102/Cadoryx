@@ -1,5 +1,9 @@
 # 3D CAD 产品缺口与实施规划
 
+2026-10-13，status242：[生产根两配置完整6652](../capability-evidence/diagnostics/af1076-root-full/verification.json)均已终态，各6628通过/原24严格STEP失败/零跳过，无新增失败，原6619名称、新33及实际native62保持。Release未重跑，只接续此前尚未启动的Debug；原PID2348拦截时身份未完整记录，不推断原因。[1077最终provider2实际运行审计](../capability-evidence/diagnostics/af1077-provider2/verification.json)确认工程图完成1/8轮、工作区4/8轮，两场景FAIL且资产0，实际native62与冻结载荷准确；工作区最后三个HTTP请求完整保留当前expected四字段及原恢复反馈，排除这些请求的数据裁剪假设，根因尚未证明。1077不合入，生产仍1076/公开Preview.85。SDK已接管原生时段继续整体迁移，准确增量588 Manual StableId加4 Blocked StableId，调用点/410输出/28612声明分开统计，原生/包验证尚未交付；Cadoryx先做托管定位，性能/D6/材质窗口待交还。A–F全部范围继续，G与清理暂缓。
+
+当前结论以status242为准；以下status241及更早是保留的历史检查点。
+
 2026-10-13，status241：开发生产源码为1076/公开Preview.85。[根Release6652](../capability-evidence/diagnostics/af1076-root-full/release-verification.json)实际6628通过/原24严格STEP失败/零跳过、无新增失败及native62准确，Debug仅续跑缺失配置、仍待终态。1077最终WPF两配置build0、实际应用原编译断言各45通过，探针共享16同哈希；原模型队列等待Debug结束。原6482ms/两fresh各20双视口周期、生产打开900秒及完整788×411 PNG验收程序已绑定最终载荷，性能尚未运行。原1076多文档8轮PASS，工程图第三轮FAIL，完整柱面数据可用不等于制造工作流完成。A–F全部范围及SDK CJ–CQ整体迁移继续，G/清理暂缓；当前结论以[STATUS](STATUS.md)为准。
 
 2026-10-13，status238：A–F继续，尚未全部完成。[完整1076组合源码已合入开发目录](AF_SOURCE1076_DEVELOPMENT_INTEGRATION.md)，55现有/44新文件、1189输入匹配；生产根两配置编译0并实际发现6652。候选两配置各455专项通过、实际native62匹配，原6619名称保持；完整6652、合入后根原生与原模型复验尚未执行。历史检查已修复显式cursor:null与过期只读重查；原STEP24严格拒绝、真实D6窗口/材质/性能及第4、5节其余范围继续。开发阶段确需新封装/重编译时允许本地精确版本OcctSharp NuGet，接近收尾再统一公开包；当前仍公开85，Cadoryx不用vcpkg。G及清理暂缓。
@@ -121,7 +125,7 @@ M14–M17 已记录的待办主要关注性能、精确建模边界、工程交�
 
 ## 4. 推荐怎么做下一步
 
-当前正式已验子批保持 **A4 / B17 / C5 / D5 / E4 / F5g**。[B17解析偏移连接](B17_ANALYTICAL_OFFSET_JOINS_PLAN.md)已完成解析直线/圆弧/圆闭环与孔岛的限定本地契约；后续B18、A5及其余A–F仍有未完成项。[完整1076组合已合入开发生产源码](AF_SOURCE1076_DEVELOPMENT_INTEGRATION.md)，使用公开Preview.85；两配置各455专项通过，合入后生产根各6652完整回归正在串行运行，真实产品门禁继续。G暂缓。
+当前正式已验子批保持 **A4 / B17 / C5 / D5 / E4 / F5g**。[B17解析偏移连接](B17_ANALYTICAL_OFFSET_JOINS_PLAN.md)已完成解析直线/圆弧/圆闭环与孔岛的限定本地契约；后续B18、A5及其余A–F仍有未完成项。[完整1076组合已合入开发生产源码](AF_SOURCE1076_DEVELOPMENT_INTEGRATION.md)，使用公开Preview.85；两配置各455专项通过，[合入后生产根各6652完整回归已终态](../capability-evidence/diagnostics/af1076-root-full/verification.json)，各6628通过/原24失败/零跳过，真实产品门禁继续。G暂缓。
 
 建议优先把“简单机械零件设计 → 装配 → 关联工程图 → 交换/安装交付”做成可靠闭环。下面是实施批次建议，不是新增阶段的完成声明，也不包含未经确定的工期。
 

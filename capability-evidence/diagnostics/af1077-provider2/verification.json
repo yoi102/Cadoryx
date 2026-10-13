@@ -1,0 +1,1774 @@
+{
+  "recordedAt": "2026-10-13T11:43:54.173006+00:00",
+  "state": "AF1077_FINAL_PROVIDER2_ACTUAL_FAILURES_VERIFIED",
+  "scenarios": [
+    {
+      "scenario": "drawing",
+      "passed": false,
+      "completedTurns": 1,
+      "requiredTurns": 8,
+      "failure": "Requested cad_drawing.create lacks an answer and successful production receipt.",
+      "assetsAfterClose": 0,
+      "actualNative62Matched": true,
+      "calls": 18,
+      "failedReceipts": [
+        {
+          "ordinal": 2,
+          "tool": "cad_drawing",
+          "arguments": {
+            "action": "create",
+            "documentId": "43b1527a-af16-4614-a72d-52d96b0f35f1",
+            "stateId": "77b6fe2c-eaab-4ea4-8879-b064ddc71232",
+            "type": "sheet",
+            "name": "Provider Drawing",
+            "authorJson": "{\"name\":\"Provider Drawing\",\"widthMm\":297,\"heightMm\":210,\"unit\":\"Millimeter\",\"title\":\"Provider Drawing\",\"standard\":\"ISO\"}"
+          },
+          "receipt": {
+            "success": false,
+            "message": "Invalid drawing arguments for action=create. Unknown or duplicate: name. contract accepts only action/type; other actions require exact documentId/stateId from cad_status. inspect requires type, documentId and stateId together. Outer name is only save_template; create/edit names belong in authorJson.",
+            "missingOrInvalid": [],
+            "unexpectedArguments": [
+              "name"
+            ],
+            "allowedArguments": [
+              "action",
+              "documentId",
+              "stateId",
+              "type",
+              "sheetId",
+              "id",
+              "authorJson"
+            ]
+          }
+        },
+        {
+          "ordinal": 8,
+          "tool": "cad_drawing",
+          "arguments": {
+            "action": "contract",
+            "documentId": "43b1527a-af16-4614-a72d-52d96b0f35f1",
+            "stateId": "836b457c-9cdb-46f7-bbdc-0dc6c3b25010"
+          },
+          "receipt": {
+            "success": false,
+            "message": "Invalid drawing arguments for action=contract. Unknown or duplicate: documentId, stateId. contract accepts only action/type; other actions require exact documentId/stateId from cad_status. inspect requires type, documentId and stateId together. Outer name is only save_template; create/edit names belong in authorJson.",
+            "missingOrInvalid": [],
+            "unexpectedArguments": [
+              "documentId",
+              "stateId"
+            ],
+            "allowedArguments": [
+              "action",
+              "type"
+            ],
+            "validRequests": [
+              {
+                "action": "contract",
+                "type": "sheet"
+              },
+              {
+                "action": "contract",
+                "type": "view"
+              },
+              {
+                "action": "contract",
+                "type": "dimension"
+              },
+              {
+                "action": "contract",
+                "type": "datum"
+              },
+              {
+                "action": "contract",
+                "type": "control_frame"
+              },
+              {
+                "action": "contract",
+                "type": "balloon"
+              },
+              {
+                "action": "contract",
+                "type": "hole_table"
+              },
+              {
+                "action": "contract",
+                "type": "field"
+              },
+              {
+                "action": "contract",
+                "type": "note"
+              },
+              {
+                "action": "contract",
+                "type": "template"
+              },
+              {
+                "action": "contract",
+                "type": "parts_table"
+              },
+              {
+                "action": "contract",
+                "type": "zones"
+              }
+            ],
+            "requestNote": "Read-only examples. Choose the requested type; contract omits every document, state, owner and source identity. The rejected request was not executed."
+          }
+        },
+        {
+          "ordinal": 12,
+          "tool": "cad_command",
+          "arguments": {
+            "command": "DELETE feature-id 79ddce7f-ad31-4843-b377-6392a4445a7e",
+            "documentId": "43b1527a-af16-4614-a72d-52d96b0f35f1",
+            "stateId": "836b457c-9cdb-46f7-bbdc-0dc6c3b25010"
+          },
+          "receipt": {
+            "success": false,
+            "message": "Unknown command: DELETE. Type HELP.",
+            "documentId": "43b1527a-af16-4614-a72d-52d96b0f35f1",
+            "stateId": "836b457c-9cdb-46f7-bbdc-0dc6c3b25010"
+          }
+        },
+        {
+          "ordinal": 13,
+          "tool": "cad_drawing",
+          "arguments": {
+            "action": "delete",
+            "documentId": "43b1527a-af16-4614-a72d-52d96b0f35f1",
+            "stateId": "836b457c-9cdb-46f7-bbdc-0dc6c3b25010",
+            "id": "79ddce7f-ad31-4843-b377-6392a4445a7e"
+          },
+          "receipt": {
+            "success": false,
+            "message": "Missing drawing object type."
+          }
+        },
+        {
+          "ordinal": 14,
+          "tool": "cad_drawing",
+          "arguments": {
+            "action": "delete",
+            "documentId": "43b1527a-af16-4614-a72d-52d96b0f35f1",
+            "stateId": "836b457c-9cdb-46f7-bbdc-0dc6c3b25010",
+            "id": "79ddce7f-ad31-4843-b377-6392a4445a7e",
+            "type": "feature"
+          },
+          "receipt": {
+            "success": false,
+            "message": "Exact sheetId owner is required."
+          }
+        },
+        {
+          "ordinal": 15,
+          "tool": "cad_drawing",
+          "arguments": {
+            "action": "delete",
+            "documentId": "43b1527a-af16-4614-a72d-52d96b0f35f1",
+            "stateId": "836b457c-9cdb-46f7-bbdc-0dc6c3b25010",
+            "id": "79ddce7f-ad31-4843-b377-6392a4445a7e",
+            "type": "feature",
+            "path": "parts/c5a6fc94-c8f0-4db7-88f1-144d251f05ea/79ddce7f-ad31-4843-b377-6392a4445a7e"
+          },
+          "receipt": {
+            "success": false,
+            "message": "Invalid drawing arguments for action=delete. Unknown or duplicate: path. contract accepts only action/type; other actions require exact documentId/stateId from cad_status. inspect requires type, documentId and stateId together. Outer name is only save_template; create/edit names belong in authorJson.",
+            "missingOrInvalid": [],
+            "unexpectedArguments": [
+              "path"
+            ],
+            "allowedArguments": [
+              "action",
+              "documentId",
+              "stateId",
+              "type",
+              "sheetId",
+              "id"
+            ]
+          }
+        },
+        {
+          "ordinal": 16,
+          "tool": "cad_drawing",
+          "arguments": {
+            "action": "delete",
+            "documentId": "43b1527a-af16-4614-a72d-52d96b0f35f1",
+            "stateId": "836b457c-9cdb-46f7-bbdc-0dc6c3b25010",
+            "id": "79ddce7f-ad31-4843-b377-6392a4445a7e",
+            "type": "feature"
+          },
+          "receipt": {
+            "success": false,
+            "message": "Exact sheetId owner is required."
+          }
+        },
+        {
+          "ordinal": 17,
+          "tool": "cad_command",
+          "arguments": {
+            "command": "DELETE feature-id 79ddce7f-ad31-4843-b377-6392a4445a7e",
+            "documentId": "43b1527a-af16-4614-a72d-52d96b0f35f1",
+            "stateId": "836b457c-9cdb-46f7-bbdc-0dc6c3b25010"
+          },
+          "receipt": {
+            "success": false,
+            "message": "Unknown command: DELETE. Type HELP.",
+            "documentId": "43b1527a-af16-4614-a72d-52d96b0f35f1",
+            "stateId": "836b457c-9cdb-46f7-bbdc-0dc6c3b25010"
+          }
+        },
+        {
+          "ordinal": 18,
+          "tool": "cad_command",
+          "arguments": {
+            "command": "HISTORY SUPPRESS|RESTORE feature-id 79ddce7f-ad31-4843-b377-6392a4445a7e",
+            "documentId": "43b1527a-af16-4614-a72d-52d96b0f35f1",
+            "stateId": "836b457c-9cdb-46f7-bbdc-0dc6c3b25010"
+          },
+          "receipt": {
+            "success": false,
+            "message": "Use cad_history with the exact inspected cursor for history commands."
+          }
+        }
+      ],
+      "captures": [
+        {
+          "request": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-drawing-2/request-001.json",
+            "sha256": "396273581C8D53460621B119C97BAAB126A1D2ACDF9DFA38DBB5BC09C8616903"
+          },
+          "wire": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-drawing-2/wire-request-001.json",
+            "sha256": "D3454EBE54DFC1AF866DF0575068D34D4F7FF1B81B9BF9D8454FA4E26FDDEFD5"
+          },
+          "response": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-drawing-2/response-001.json",
+            "sha256": "52E09591B9FE6671D9775FA5CF61BF5FE19D6009501BAE70C7F766458DF019DF"
+          }
+        },
+        {
+          "request": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-drawing-2/request-002.json",
+            "sha256": "BEB346AA9C3F5DEEF7BEE564830561E18516EA9A3575BE31E9FFDBC8502385ED"
+          },
+          "wire": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-drawing-2/wire-request-002.json",
+            "sha256": "9D0CCE0D5309C7CA3601F9FE59926CA25A35C44EE4082F7BCA4316CD05CBFEAF"
+          },
+          "response": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-drawing-2/response-002.json",
+            "sha256": "43CE687B14CCD4E5F3EA3CC98649444912067346B90FEC97A26C98B29857BF93"
+          }
+        },
+        {
+          "request": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-drawing-2/request-003.json",
+            "sha256": "B7F774B3AA537665B3B841C67472624A6F9F45CA8AE7974A1C776C6FC1A92C63"
+          },
+          "wire": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-drawing-2/wire-request-003.json",
+            "sha256": "DECCBDBC519A1103A29A8322A2C80DC37E0DB93506B45003A3C92EE7BAD004B9"
+          },
+          "response": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-drawing-2/response-003.json",
+            "sha256": "0A9E4230AAC61E30AD34913A2A1B043DEC05334B4D2066E18CC3ABA03CEC7171"
+          }
+        },
+        {
+          "request": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-drawing-2/request-004.json",
+            "sha256": "5F428795F97CAF6763FF07CCADC7E1009A276D67C60198450254A5BC7DBE1CFD"
+          },
+          "wire": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-drawing-2/wire-request-004.json",
+            "sha256": "9684CF3EE35B62FE94D5CFE0646EC6FB8DAA1D562F3B78EF04A9957ADD8DA59B"
+          },
+          "response": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-drawing-2/response-004.json",
+            "sha256": "0A43DD5010AD648DF53B0806132A53C5B9D84F38106DBE24EC8C2C3E1B36ABD3"
+          }
+        },
+        {
+          "request": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-drawing-2/request-005.json",
+            "sha256": "3DD43B80AA0336134DCDEB88406006260ACE062D113250510436D2DA0ADF8A85"
+          },
+          "wire": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-drawing-2/wire-request-005.json",
+            "sha256": "3544CEC764CCA73780BE6FA8278C4820C0412B1C7219D8BCFF7AB252D383E3C3"
+          },
+          "response": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-drawing-2/response-005.json",
+            "sha256": "3EB6C931DD629DB4A5D886870EEA830ADA39EDF8782623C33477E02E93336E75"
+          }
+        },
+        {
+          "request": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-drawing-2/request-006.json",
+            "sha256": "BEA9FD699CFD76C2F7804004FA13214DADAD98E2532ED407E8C7C5DE61676265"
+          },
+          "wire": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-drawing-2/wire-request-006.json",
+            "sha256": "E2077C52B49B00AF0447603ADC1B4FD159BC2DCC1BA4AB37E529F658D1655FA2"
+          },
+          "response": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-drawing-2/response-006.json",
+            "sha256": "CF8288F784F69B16C3B5919A39C9922CB65E7553377ED2FFD2173706CDE3D5C3"
+          }
+        },
+        {
+          "request": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-drawing-2/request-007.json",
+            "sha256": "EF6A67DA7DA83D02A9112D7B5E22BCC3F82E1C77BE456E5C655D64D9C3E51E3F"
+          },
+          "wire": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-drawing-2/wire-request-007.json",
+            "sha256": "C7FAF18611A01DE68B0CEF876070402029B27C254C9C9ADDD08C56836E1DC934"
+          },
+          "response": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-drawing-2/response-007.json",
+            "sha256": "A56C29738EF51E720A9203B8B1F7A57A8EFA430F22518CE3182F817E113D26CF"
+          }
+        },
+        {
+          "request": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-drawing-2/request-008.json",
+            "sha256": "92E1B7FE6DA10BBBFAE23C7C24F8F958B5374D85BBEBC5E08EAB3D6370D2DBBE"
+          },
+          "wire": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-drawing-2/wire-request-008.json",
+            "sha256": "76D6FE4C53E65A9F9EA1D3A45397203756940979957CA1CF27860DBF6B5D6BD2"
+          },
+          "response": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-drawing-2/response-008.json",
+            "sha256": "14EFFA7811EC80ACF10D2C5B7EE5366C4F397FE9DE68C3D802071F1F9D999693"
+          }
+        },
+        {
+          "request": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-drawing-2/request-009.json",
+            "sha256": "752D393706DE4C759B272DE5C75C38FC37C88C7880EEC4B6F68AA8A35B45AB47"
+          },
+          "wire": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-drawing-2/wire-request-009.json",
+            "sha256": "E85B0D87263ACB4752C50677629F9F1772695B0EA50C3FB8D73771C976CBD6F3"
+          },
+          "response": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-drawing-2/response-009.json",
+            "sha256": "BDFE654E841D3364B7CD0D1212DF02B4EEC5E496A9A5CB647A329E4026F1DA29"
+          }
+        },
+        {
+          "request": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-drawing-2/request-010.json",
+            "sha256": "2F3A8EC89A8C80CEC5E71A3AA527FC79334D0F7049AE68B75D3F7A6854C51DF0"
+          },
+          "wire": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-drawing-2/wire-request-010.json",
+            "sha256": "5B22F33A802A7453C1AEC1F90E25D2529EAD6B44762046212E43C6492B2C5B6D"
+          },
+          "response": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-drawing-2/response-010.json",
+            "sha256": "D4D1ADE44E239C64A743250A0774B3B2485E802035AC225A9D2329F11D79E951"
+          }
+        },
+        {
+          "request": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-drawing-2/request-011.json",
+            "sha256": "9461A4369C9E73EE2F342E9CFC5CFBCDE20D33169AC1FA95920A95F320DD4FDA"
+          },
+          "wire": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-drawing-2/wire-request-011.json",
+            "sha256": "983CCF5D5B40B5A12BF82FCCD508410CB63223156ED3F9925F9ACD3F18D65A11"
+          },
+          "response": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-drawing-2/response-011.json",
+            "sha256": "61D282C05F28472AE4FC3E3349EC456B971190CAE04D9F83D5416821201EC983"
+          }
+        },
+        {
+          "request": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-drawing-2/request-012.json",
+            "sha256": "F359DA961C36DE1A22F71967633E2EA81ED9F15381DBD6B587E3A536700A4BDA"
+          },
+          "wire": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-drawing-2/wire-request-012.json",
+            "sha256": "5D96AE7E49DCAC4EDE5D7F6B22814C26EE69BDA900E4AEBD5FC288F746CBCF28"
+          },
+          "response": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-drawing-2/response-012.json",
+            "sha256": "A16BB0AA78C4DFBF34D7C74CAAF7487127207370E91F8B5CBE869AD376DDCCC1"
+          }
+        },
+        {
+          "request": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-drawing-2/request-013.json",
+            "sha256": "546145D04C5B387EAE80276EC9D1F5E4512CF47FD23C5014771F048651489FE6"
+          },
+          "wire": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-drawing-2/wire-request-013.json",
+            "sha256": "063E8C5E8D918C987EFFA8F01D24D75B814C35C58AC229C91A01DFC1B4B8EACB"
+          },
+          "response": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-drawing-2/response-013.json",
+            "sha256": "801D5328773A3427CCD79FD6F128F3E79B3F91A5CAA400FC5E34664C08608AF4"
+          }
+        },
+        {
+          "request": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-drawing-2/request-014.json",
+            "sha256": "F1BF822F534AD4E30EA52B3E9B4D618123CEF93A8441934892028812A0F711B3"
+          },
+          "wire": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-drawing-2/wire-request-014.json",
+            "sha256": "486739196091025A5CAD007244161676A7A08F508FDDDF58FDE77C5344E412CA"
+          },
+          "response": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-drawing-2/response-014.json",
+            "sha256": "04291643C648225EEF8553363E0CC93B4C90B512C2C9F00834400B590CDA4919"
+          }
+        },
+        {
+          "request": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-drawing-2/request-015.json",
+            "sha256": "3DF865E09B664AE1281F67E961196B216E7F039F16093AF0B9BED450E3AF9B9E"
+          },
+          "wire": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-drawing-2/wire-request-015.json",
+            "sha256": "79F07772C9F67DA6C64C56C1F56CA3C65ED4AC7C668CDA6FD61B0309AA71D440"
+          },
+          "response": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-drawing-2/response-015.json",
+            "sha256": "9290F032F1565B6F8178F4DEC4478110489C8313CE13B597B7896EDADBF0AF42"
+          }
+        },
+        {
+          "request": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-drawing-2/request-016.json",
+            "sha256": "70B43DDF03231EB89F1EEA4C91583CA7612530E59EAB99474291C0808F4DFFA4"
+          },
+          "wire": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-drawing-2/wire-request-016.json",
+            "sha256": "4F5E5163BF2B42E639337E896A6FD27AC05781F851B5F4BF0E737D4A73D6F5B3"
+          },
+          "response": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-drawing-2/response-016.json",
+            "sha256": "02B4AFEB094F3C97538B530AA9D31997DFDF2CCD0C6005C2D3A86BE153BF9F59"
+          }
+        },
+        {
+          "request": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-drawing-2/request-017.json",
+            "sha256": "AE74D2B9E8229EAA20B107228E92C0A4A742991B181FDE4B8990F14D23A53A71"
+          },
+          "wire": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-drawing-2/wire-request-017.json",
+            "sha256": "6DDDAAA10101FD2055C6A1396C83B02C623EA4FB9E91ECA08B311BBC6D3E9A25"
+          },
+          "response": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-drawing-2/response-017.json",
+            "sha256": "02BBC0F03C74B6AC4B4DE0A41A9AEEC06ED223012B1D4D63C6435AF7080B1191"
+          }
+        },
+        {
+          "request": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-drawing-2/request-018.json",
+            "sha256": "E3AC88ED69FCE1B1312F4A4076183C8BA4B29DAAE7B7FA4502DFDC33FE595C57"
+          },
+          "wire": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-drawing-2/wire-request-018.json",
+            "sha256": "9F4DF8462EA98881D89F2BFF3DCE826BFB154018BAD2FD68B561F5345BE4CE98"
+          },
+          "response": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-drawing-2/response-018.json",
+            "sha256": "E0C31A7FD2D478C90B3DF2935E1DEE7AE436BF9648D99FE7A00119B09D8463E1"
+          }
+        },
+        {
+          "request": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-drawing-2/request-019.json",
+            "sha256": "43E3665A36E4FF275C0509BF77C8B49707BB6BA52D77B942BF11B17ECDA34089"
+          },
+          "wire": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-drawing-2/wire-request-019.json",
+            "sha256": "6BCFB7177E686E6070309C71777F548AB08246FD20E7CAE6013337525A336D9D"
+          },
+          "response": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-drawing-2/response-019.json",
+            "sha256": "D9DF2B8C432B3C97C33298ADC486F07E3F7A6196B2E758ABD1792923AB7EF534"
+          }
+        },
+        {
+          "request": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-drawing-2/request-020.json",
+            "sha256": "F7C10C7F6E5E49162EB81C28C39A83EC99F22C1240D7B2E90899C0D82654890E"
+          },
+          "wire": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-drawing-2/wire-request-020.json",
+            "sha256": "A852297BD1AF3FA47FE928DF7D6974C2C6233EAAD2A68EB676C425585FF3E9AD"
+          },
+          "response": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-drawing-2/response-020.json",
+            "sha256": "E9EB22DBE0A0B6FFBB99B5ED08C85772D4D5F416FFF932B647BF0896F8FA146F"
+          }
+        },
+        {
+          "request": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-drawing-2/request-021.json",
+            "sha256": "C25B84264CA3205CC57DAF33C02B702A9EA7D87B26290E55DC46066632552865"
+          },
+          "wire": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-drawing-2/wire-request-021.json",
+            "sha256": "CC0892F409B4F23701C24F017B5B548B6729D264145F9049C28E2F99E3951F91"
+          },
+          "response": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-drawing-2/response-021.json",
+            "sha256": "D9DF2B8C432B3C97C33298ADC486F07E3F7A6196B2E758ABD1792923AB7EF534"
+          }
+        }
+      ],
+      "keyActualWires": [
+        {
+          "wire": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-drawing-2/wire-request-019.json",
+            "sha256": "6BCFB7177E686E6070309C71777F548AB08246FD20E7CAE6013337525A336D9D"
+          }
+        },
+        {
+          "wire": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-drawing-2/wire-request-020.json",
+            "sha256": "A852297BD1AF3FA47FE928DF7D6974C2C6233EAAD2A68EB676C425585FF3E9AD"
+          }
+        },
+        {
+          "wire": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-drawing-2/wire-request-021.json",
+            "sha256": "CC0892F409B4F23701C24F017B5B548B6729D264145F9049C28E2F99E3951F91"
+          }
+        }
+      ],
+      "sameCurrentWorkspaceLists": [],
+      "finalResponse": {
+        "Content": "",
+        "ToolCalls": [],
+        "Model": "prism-ml/bonsai-27b"
+      }
+    },
+    {
+      "scenario": "workspace",
+      "passed": false,
+      "completedTurns": 4,
+      "requiredTurns": 8,
+      "failure": "The model exceeded the maximum number of agent tool rounds.",
+      "assetsAfterClose": 0,
+      "actualNative62Matched": true,
+      "calls": 37,
+      "failedReceipts": [
+        {
+          "ordinal": 1,
+          "tool": "cad_workspace",
+          "arguments": {
+            "action": "list",
+            "expected": {
+              "workspaceStateId": "00000000-0000-0000-0000-000000000000",
+              "activeSessionId": null,
+              "documentId": null,
+              "stateId": null
+            },
+            "limit": 10
+          },
+          "receipt": {
+            "success": false,
+            "message": "Missing, invalid, unknown or duplicate workspace fields: expected.",
+            "invalidFields": [
+              "expected"
+            ],
+            "action": "list",
+            "allowedFields": [
+              "action",
+              "offset",
+              "limit"
+            ],
+            "identitySource": {
+              "toolName": "cad_workspace",
+              "arguments": {
+                "action": "list"
+              }
+            },
+            "roles": {
+              "expected": "Copy the complete list.expected object. It describes the current workspace and active session; explicit null is valid only for all three active identity fields in an empty workspace.",
+              "target": "For activate, copy one actual sessions[].identity sessionId/documentId/stateId triple. Names and row indexes are not target identities."
+            },
+            "nextStep": "No workspace transition or file read was attempted. Read list, then explicitly retry your original action with only its allowed fields and the returned exact identities. No identity was filled in automatically."
+          }
+        },
+        {
+          "ordinal": 3,
+          "tool": "cad_workspace",
+          "arguments": {
+            "action": "new",
+            "name": "Provider First",
+            "expected": {
+              "workspaceStateId": "61362ecf-bd68-434c-aed8-98e005516aac",
+              "activeSessionId": null,
+              "documentId": null,
+              "stateId": null
+            },
+            "limit": 10
+          },
+          "receipt": {
+            "success": false,
+            "message": "Missing, invalid, unknown or duplicate workspace fields: limit.",
+            "invalidFields": [
+              "limit"
+            ],
+            "action": "new",
+            "allowedFields": [
+              "action",
+              "expected",
+              "name"
+            ],
+            "identitySource": {
+              "toolName": "cad_workspace",
+              "arguments": {
+                "action": "list"
+              }
+            },
+            "roles": {
+              "expected": "Copy the complete list.expected object. It describes the current workspace and active session; explicit null is valid only for all three active identity fields in an empty workspace.",
+              "target": "For activate, copy one actual sessions[].identity sessionId/documentId/stateId triple. Names and row indexes are not target identities."
+            },
+            "nextStep": "No workspace transition or file read was attempted. Read list, then explicitly retry your original action with only its allowed fields and the returned exact identities. No identity was filled in automatically."
+          }
+        },
+        {
+          "ordinal": 15,
+          "tool": "cad_file",
+          "arguments": {
+            "action": "contract",
+            "documentId": "7506d6bb-370d-4f97-bc61-bc48aee46ae0",
+            "stateId": "f2493c41-a09b-43a2-bcac-a5d267b0412f"
+          },
+          "receipt": {
+            "success": false,
+            "message": "Unknown or duplicate argument: documentId."
+          }
+        },
+        {
+          "ordinal": 16,
+          "tool": "cad_file",
+          "arguments": {
+            "action": "contract",
+            "path": "C:/Users/yoiri/source/repos/Cadoryx/artifacts/af1077-drawing-action-1/lmstudio-workspace-2/workspace-provider-saved.cadoryx"
+          },
+          "receipt": {
+            "success": false,
+            "message": "Unknown or duplicate argument: path."
+          }
+        },
+        {
+          "ordinal": 18,
+          "tool": "cad_file",
+          "arguments": {
+            "action": "save",
+            "documentId": "7506d6bb-370d-4f97-bc61-bc48aee46ae0",
+            "stateId": "f2493c41-a09b-43a2-bcac-a5d267b0412f",
+            "path": "C:/Users/yoiri/source/repos/Cadoryx/artifacts/af1077-drawing-action-1/lmstudio-workspace-2/workspace-provider-saved.cadoryx",
+            "overwrite": false
+          },
+          "receipt": {
+            "success": false,
+            "message": "Output exists; replacement was not requested."
+          }
+        },
+        {
+          "ordinal": 23,
+          "tool": "cad_workspace",
+          "arguments": {
+            "action": "activate",
+            "expected": {
+              "workspaceStateId": "ea22dc7d-2e4b-4ff6-a1d0-d1761dc1fb34",
+              "activeSessionId": null,
+              "documentId": null,
+              "stateId": null
+            },
+            "target": {
+              "sessionId": "83e22c88-9b65-4aed-b9dc-f6b96d0ad9c9",
+              "documentId": "7506d6bb-370d-4f97-bc61-bc48aee46ae0",
+              "stateId": "f2493c41-a09b-43a2-bcac-a5d267b0412f"
+            }
+          },
+          "receipt": {
+            "success": false,
+            "message": "Workspace or active document changed. Inspect workspace again.",
+            "rejection": "workspace_expectation_changed",
+            "reinspection": {
+              "toolName": "cad_workspace",
+              "arguments": {
+                "action": "list"
+              }
+            },
+            "expectedRole": "Copy the complete current list.expected object. Its activeSessionId/documentId/stateId describe the currently active session. Do not replace them with target identities.",
+            "targetRole": "For activate, copy sessionId/documentId/stateId from the desired sessions[].identity row separately into target.",
+            "nextStep": "Read the workspace list again, then explicitly submit your intended action with its current expected and chosen target. The rejected request is not retried or repaired automatically."
+          }
+        },
+        {
+          "ordinal": 25,
+          "tool": "cad_workspace",
+          "arguments": {
+            "action": "activate",
+            "expected": {
+              "workspaceStateId": "ea22dc7d-2e4b-4ff6-a1d0-d1761dc1fb34",
+              "activeSessionId": null,
+              "documentId": null,
+              "stateId": null
+            },
+            "target": {
+              "sessionId": "83e22c88-9b65-4aed-b9dc-f6b96d0ad9c9",
+              "documentId": "7506d6bb-370d-4f97-bc61-bc48aee46ae0",
+              "stateId": "f2493c41-a09b-43a2-bcac-a5d267b0412f"
+            }
+          },
+          "receipt": {
+            "success": false,
+            "message": "Workspace or active document changed. Inspect workspace again.",
+            "rejection": "workspace_expectation_changed",
+            "reinspection": {
+              "toolName": "cad_workspace",
+              "arguments": {
+                "action": "list"
+              }
+            },
+            "expectedRole": "Copy the complete current list.expected object. Its activeSessionId/documentId/stateId describe the currently active session. Do not replace them with target identities.",
+            "targetRole": "For activate, copy sessionId/documentId/stateId from the desired sessions[].identity row separately into target.",
+            "nextStep": "Read the workspace list again, then explicitly submit your intended action with its current expected and chosen target. The rejected request is not retried or repaired automatically."
+          }
+        },
+        {
+          "ordinal": 26,
+          "tool": "cad_workspace",
+          "arguments": {
+            "action": "activate",
+            "expected": {
+              "workspaceStateId": "ea22dc7d-2e4b-4ff6-a1d0-d1761dc1fb34",
+              "activeSessionId": null,
+              "documentId": null,
+              "stateId": null
+            },
+            "target": {
+              "sessionId": "83e22c88-9b65-4aed-b9dc-f6b96d0ad9c9",
+              "documentId": "7506d6bb-370d-4f97-bc61-bc48aee46ae0",
+              "stateId": "f2493c41-a09b-43a2-bcac-a5d267b0412f"
+            }
+          },
+          "receipt": {
+            "success": false,
+            "message": "Workspace or active document changed. Inspect workspace again.",
+            "rejection": "workspace_expectation_changed",
+            "reinspection": {
+              "toolName": "cad_workspace",
+              "arguments": {
+                "action": "list"
+              }
+            },
+            "expectedRole": "Copy the complete current list.expected object. Its activeSessionId/documentId/stateId describe the currently active session. Do not replace them with target identities.",
+            "targetRole": "For activate, copy sessionId/documentId/stateId from the desired sessions[].identity row separately into target.",
+            "nextStep": "Read the workspace list again, then explicitly submit your intended action with its current expected and chosen target. The rejected request is not retried or repaired automatically."
+          }
+        },
+        {
+          "ordinal": 27,
+          "tool": "cad_workspace",
+          "arguments": {
+            "action": "activate",
+            "expected": {
+              "workspaceStateId": "ea22dc7d-2e4b-4ff6-a1d0-d1761dc1fb34",
+              "activeSessionId": null,
+              "documentId": null,
+              "stateId": null
+            },
+            "target": {
+              "sessionId": "83e22c88-9b65-4aed-b9dc-f6b96d0ad9c9",
+              "documentId": "7506d6bb-370d-4f97-bc61-bc48aee46ae0",
+              "stateId": "f2493c41-a09b-43a2-bcac-a5d267b0412f"
+            }
+          },
+          "receipt": {
+            "success": false,
+            "message": "Workspace or active document changed. Inspect workspace again.",
+            "rejection": "workspace_expectation_changed",
+            "reinspection": {
+              "toolName": "cad_workspace",
+              "arguments": {
+                "action": "list"
+              }
+            },
+            "expectedRole": "Copy the complete current list.expected object. Its activeSessionId/documentId/stateId describe the currently active session. Do not replace them with target identities.",
+            "targetRole": "For activate, copy sessionId/documentId/stateId from the desired sessions[].identity row separately into target.",
+            "nextStep": "Read the workspace list again, then explicitly submit your intended action with its current expected and chosen target. The rejected request is not retried or repaired automatically."
+          }
+        },
+        {
+          "ordinal": 29,
+          "tool": "cad_workspace",
+          "arguments": {
+            "action": "activate",
+            "expected": {
+              "workspaceStateId": "ea22dc7d-2e4b-4ff6-a1d0-d1761dc1fb34",
+              "activeSessionId": null,
+              "documentId": null,
+              "stateId": null
+            },
+            "target": {
+              "sessionId": "83e22c88-9b65-4aed-b9dc-f6b96d0ad9c9",
+              "documentId": "7506d6bb-370d-4f97-bc61-bc48aee46ae0",
+              "stateId": "f2493c41-a09b-43a2-bcac-a5d267b0412f"
+            }
+          },
+          "receipt": {
+            "success": false,
+            "message": "Workspace or active document changed. Inspect workspace again.",
+            "rejection": "workspace_expectation_changed",
+            "reinspection": {
+              "toolName": "cad_workspace",
+              "arguments": {
+                "action": "list"
+              }
+            },
+            "expectedRole": "Copy the complete current list.expected object. Its activeSessionId/documentId/stateId describe the currently active session. Do not replace them with target identities.",
+            "targetRole": "For activate, copy sessionId/documentId/stateId from the desired sessions[].identity row separately into target.",
+            "nextStep": "Read the workspace list again, then explicitly submit your intended action with its current expected and chosen target. The rejected request is not retried or repaired automatically."
+          }
+        },
+        {
+          "ordinal": 30,
+          "tool": "cad_workspace",
+          "arguments": {
+            "action": "new",
+            "expected": {
+              "workspaceStateId": "ea22dc7d-2e4b-4ff6-a1d0-d1761dc1fb34",
+              "activeSessionId": null,
+              "documentId": null,
+              "stateId": null
+            },
+            "target": {
+              "sessionId": "83e22c88-9b65-4aed-b9dc-f6b96d0ad9c9",
+              "documentId": "7506d6bb-370d-4f97-bc61-bc48aee46ae0",
+              "stateId": "f2493c41-a09b-43a2-bcac-a5d267b0412f"
+            }
+          },
+          "receipt": {
+            "success": false,
+            "message": "Missing, invalid, unknown or duplicate workspace fields: target, name.",
+            "invalidFields": [
+              "target",
+              "name"
+            ],
+            "action": "new",
+            "allowedFields": [
+              "action",
+              "expected",
+              "name"
+            ],
+            "identitySource": {
+              "toolName": "cad_workspace",
+              "arguments": {
+                "action": "list"
+              }
+            },
+            "roles": {
+              "expected": "Copy the complete list.expected object. It describes the current workspace and active session; explicit null is valid only for all three active identity fields in an empty workspace.",
+              "target": "For activate, copy one actual sessions[].identity sessionId/documentId/stateId triple. Names and row indexes are not target identities."
+            },
+            "nextStep": "No workspace transition or file read was attempted. Read list, then explicitly retry your original action with only its allowed fields and the returned exact identities. No identity was filled in automatically."
+          }
+        },
+        {
+          "ordinal": 31,
+          "tool": "cad_workspace",
+          "arguments": {
+            "action": "activate",
+            "expected": {
+              "workspaceStateId": "ea22dc7d-2e4b-4ff6-a1d0-d1761dc1fb34",
+              "activeSessionId": null,
+              "documentId": null,
+              "stateId": null
+            },
+            "target": {
+              "sessionId": "83e22c88-9b65-4aed-b9dc-f6b96d0ad9c9",
+              "documentId": "7506d6bb-370d-4f97-bc61-bc48aee46ae0",
+              "stateId": "f2493c41-a09b-43a2-bcac-a5d267b0412f"
+            }
+          },
+          "receipt": {
+            "success": false,
+            "message": "Workspace or active document changed. Inspect workspace again.",
+            "rejection": "workspace_expectation_changed",
+            "reinspection": {
+              "toolName": "cad_workspace",
+              "arguments": {
+                "action": "list"
+              }
+            },
+            "expectedRole": "Copy the complete current list.expected object. Its activeSessionId/documentId/stateId describe the currently active session. Do not replace them with target identities.",
+            "targetRole": "For activate, copy sessionId/documentId/stateId from the desired sessions[].identity row separately into target.",
+            "nextStep": "Read the workspace list again, then explicitly submit your intended action with its current expected and chosen target. The rejected request is not retried or repaired automatically."
+          }
+        },
+        {
+          "ordinal": 33,
+          "tool": "cad_workspace",
+          "arguments": {
+            "action": "activate",
+            "expected": {
+              "workspaceStateId": "ea22dc7d-2e4b-4ff6-a1d0-d1761dc1fb34",
+              "activeSessionId": null,
+              "documentId": null,
+              "stateId": null
+            },
+            "target": {
+              "sessionId": "83e22c88-9b65-4aed-b9dc-f6b96d0ad9c9",
+              "documentId": "7506d6bb-370d-4f97-bc61-bc48aee46ae0",
+              "stateId": "f2493c41-a09b-43a2-bcac-a5d267b0412f"
+            }
+          },
+          "receipt": {
+            "success": false,
+            "message": "Workspace or active document changed. Inspect workspace again.",
+            "rejection": "workspace_expectation_changed",
+            "reinspection": {
+              "toolName": "cad_workspace",
+              "arguments": {
+                "action": "list"
+              }
+            },
+            "expectedRole": "Copy the complete current list.expected object. Its activeSessionId/documentId/stateId describe the currently active session. Do not replace them with target identities.",
+            "targetRole": "For activate, copy sessionId/documentId/stateId from the desired sessions[].identity row separately into target.",
+            "nextStep": "Read the workspace list again, then explicitly submit your intended action with its current expected and chosen target. The rejected request is not retried or repaired automatically."
+          }
+        },
+        {
+          "ordinal": 34,
+          "tool": "cad_workspace",
+          "arguments": {
+            "action": "activate",
+            "expected": {
+              "workspaceStateId": "ea22dc7d-2e4b-4ff6-a1d0-d1761dc1fb34",
+              "activeSessionId": null,
+              "documentId": null,
+              "stateId": null
+            },
+            "target": {
+              "sessionId": "83e22c88-9b65-4aed-b9dc-f6b96d0ad9c9",
+              "documentId": "7506d6bb-370d-4f97-bc61-bc48aee46ae0",
+              "stateId": "f2493c41-a09b-43a2-bcac-a5d267b0412f"
+            }
+          },
+          "receipt": {
+            "success": false,
+            "message": "Workspace or active document changed. Inspect workspace again.",
+            "rejection": "workspace_expectation_changed",
+            "reinspection": {
+              "toolName": "cad_workspace",
+              "arguments": {
+                "action": "list"
+              }
+            },
+            "expectedRole": "Copy the complete current list.expected object. Its activeSessionId/documentId/stateId describe the currently active session. Do not replace them with target identities.",
+            "targetRole": "For activate, copy sessionId/documentId/stateId from the desired sessions[].identity row separately into target.",
+            "nextStep": "Read the workspace list again, then explicitly submit your intended action with its current expected and chosen target. The rejected request is not retried or repaired automatically."
+          }
+        },
+        {
+          "ordinal": 36,
+          "tool": "cad_workspace",
+          "arguments": {
+            "action": "activate",
+            "expected": {
+              "workspaceStateId": "ea22dc7d-2e4b-4ff6-a1d0-d1761dc1fb34",
+              "activeSessionId": null,
+              "documentId": null,
+              "stateId": null
+            },
+            "target": {
+              "sessionId": "83e22c88-9b65-4aed-b9dc-f6b96d0ad9c9",
+              "documentId": "7506d6bb-370d-4f97-bc61-bc48aee46ae0",
+              "stateId": "f2493c41-a09b-43a2-bcac-a5d267b0412f"
+            }
+          },
+          "receipt": {
+            "success": false,
+            "message": "Workspace or active document changed. Inspect workspace again.",
+            "rejection": "workspace_expectation_changed",
+            "reinspection": {
+              "toolName": "cad_workspace",
+              "arguments": {
+                "action": "list"
+              }
+            },
+            "expectedRole": "Copy the complete current list.expected object. Its activeSessionId/documentId/stateId describe the currently active session. Do not replace them with target identities.",
+            "targetRole": "For activate, copy sessionId/documentId/stateId from the desired sessions[].identity row separately into target.",
+            "nextStep": "Read the workspace list again, then explicitly submit your intended action with its current expected and chosen target. The rejected request is not retried or repaired automatically."
+          }
+        }
+      ],
+      "captures": [
+        {
+          "request": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-workspace-2/request-001.json",
+            "sha256": "2C2F7832850C3228C66CDDECBD45773E99069D218D3CC52B3DE28A40044CE02C"
+          },
+          "wire": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-workspace-2/wire-request-001.json",
+            "sha256": "1288FC73F6A761469EFA09DBDF4C5D570FE16B95B5670F343DF2CAE91129AF5E"
+          },
+          "response": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-workspace-2/response-001.json",
+            "sha256": "949DAE8E27091AC292D8E861717896BD4FB92B1C0D1F2544E50531EA9FFB7BBB"
+          }
+        },
+        {
+          "request": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-workspace-2/request-002.json",
+            "sha256": "0AF437E28E99A61B0FABF40A353F95221D9614C80E9F81E3EB18BF17F3BD9791"
+          },
+          "wire": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-workspace-2/wire-request-002.json",
+            "sha256": "CD27C4C0C4B0B915BEA0D8942136B67DF8F7C6D63B025F93C04297B1BE73B134"
+          },
+          "response": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-workspace-2/response-002.json",
+            "sha256": "4FFDD58CE4B3C5FBCE539793BE053077EED999427206522B636C1633C259C5BD"
+          }
+        },
+        {
+          "request": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-workspace-2/request-003.json",
+            "sha256": "7E05427B645303FD5AA3F754911065D3562E2DB8FADE61CDAFE2C9462B3C2FA7"
+          },
+          "wire": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-workspace-2/wire-request-003.json",
+            "sha256": "CC809AD8EED5AF05BC233D4522245905C294BA7A5DBA0BB10AAF4010B5C6743B"
+          },
+          "response": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-workspace-2/response-003.json",
+            "sha256": "8B23C7F0D66E087EEE8EDAE42B41D2E4FE2FA8ED0A3F82DC2A58646AC45E7FDC"
+          }
+        },
+        {
+          "request": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-workspace-2/request-004.json",
+            "sha256": "16BF7DE292E53FE1372FA7E7ABFF89CF50E28F6B400553FABB7424F078AA3285"
+          },
+          "wire": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-workspace-2/wire-request-004.json",
+            "sha256": "52D52842671E55DF0B5C9FE58419C46DE59372DA76AB6E126E7FD659D384BB30"
+          },
+          "response": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-workspace-2/response-004.json",
+            "sha256": "967C5C7932E6837DECE8CDF31D0549051474BC9A0640F0B04C73BA4024635F9C"
+          }
+        },
+        {
+          "request": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-workspace-2/request-005.json",
+            "sha256": "5DECD35B8FFF1407094D2A965186CCA6C10161E1394677BEA7959076FF5886AA"
+          },
+          "wire": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-workspace-2/wire-request-005.json",
+            "sha256": "FF0C94EE72C68A89B4A45C4705707ECE59FAA31330C0E45F41B223CA164AF18E"
+          },
+          "response": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-workspace-2/response-005.json",
+            "sha256": "D5F0F5AB5E98376E09D0582A6C110A46182461206AD3A30D46BD70FDEB6541C5"
+          }
+        },
+        {
+          "request": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-workspace-2/request-006.json",
+            "sha256": "3730F99573A6CBD9A09A807E061BF62EB1692AAABA9BA3F0B3DB2AE798A75221"
+          },
+          "wire": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-workspace-2/wire-request-006.json",
+            "sha256": "2F440F57F3B9354293155AC88AFB172EFF702B57FF6D1427CCB2AD8922A58683"
+          },
+          "response": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-workspace-2/response-006.json",
+            "sha256": "B4DE1998670888A585C651F9861FA9CB1887F4A05456476B2BD1BF615F2842FE"
+          }
+        },
+        {
+          "request": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-workspace-2/request-007.json",
+            "sha256": "31D4FC599990FDEEE3521851ABC58968F84FA2C47F69B331C7CECFE198C49687"
+          },
+          "wire": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-workspace-2/wire-request-007.json",
+            "sha256": "1BB0B84659E60B813C0156B4BA9DFA6BD85391D42CC00E24E68C608E1179A803"
+          },
+          "response": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-workspace-2/response-007.json",
+            "sha256": "49DC5F0F82B6B94C13BF59966F00EC59F2EC3BC6CD46212864F546C4F288BCFC"
+          }
+        },
+        {
+          "request": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-workspace-2/request-008.json",
+            "sha256": "0479EF70D2F194933695D183A11849D17575EFFD387551F64F3746D098BE4520"
+          },
+          "wire": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-workspace-2/wire-request-008.json",
+            "sha256": "94F17A8D5D41AF3DA23045F1A94BF6B8BE39BB31918BF7A60FB027F74CA6C2FE"
+          },
+          "response": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-workspace-2/response-008.json",
+            "sha256": "9C6DDB4FF4D8657221A6FD3DA5415B7EE0A70539DA1309B40238DCA46B8E8E5A"
+          }
+        },
+        {
+          "request": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-workspace-2/request-009.json",
+            "sha256": "2458C23AD1F42EE0AA7476FBC53D89A80F704C6BD040632CC87FFD28FEEA03CC"
+          },
+          "wire": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-workspace-2/wire-request-009.json",
+            "sha256": "3071C9E76FBFD9E728CC0A56FA16FD439CDB8E93898602408FF1A1EFFD73360F"
+          },
+          "response": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-workspace-2/response-009.json",
+            "sha256": "D57A5F737FB71D5D23A6A6E44CD32337ECE3C9F342951CF5D2D5E5547957B2C2"
+          }
+        },
+        {
+          "request": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-workspace-2/request-010.json",
+            "sha256": "216F058524D5B455F38248A7EA6857BF78B79B777F79121FB8175D4D42027895"
+          },
+          "wire": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-workspace-2/wire-request-010.json",
+            "sha256": "6B27370F2CB6AC8D85C55D38F6399FCF55629D4B7346BF84F9AD80E2BBB4E86E"
+          },
+          "response": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-workspace-2/response-010.json",
+            "sha256": "B2AE755F0CCAAB65A2884355AF567F1767C8F1056F0D1435D68C0818CAA88DBB"
+          }
+        },
+        {
+          "request": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-workspace-2/request-011.json",
+            "sha256": "194B3115BF538742297B3FE9EDF9547DEACEBFE11C9E2FACE763D0A5330919B7"
+          },
+          "wire": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-workspace-2/wire-request-011.json",
+            "sha256": "F62D8EC79C7EA4BCC35DE6DC56CBEB2C1AB97669A548A726F69E1ED7B3BE7953"
+          },
+          "response": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-workspace-2/response-011.json",
+            "sha256": "4083237C0089B076E2F9C8A12060FFEB6E6B16446459CEDB8D3F0A8970A2CAB7"
+          }
+        },
+        {
+          "request": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-workspace-2/request-012.json",
+            "sha256": "FFC02DAD705FD692B36540AD7A715FAD4084C10C4C9A8457B274CC9E9A6446E3"
+          },
+          "wire": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-workspace-2/wire-request-012.json",
+            "sha256": "5B5697398E631C3885BF237665DFE3428893DE5EFA9C86CEE7662743CC228C46"
+          },
+          "response": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-workspace-2/response-012.json",
+            "sha256": "5246EB811F00DA398E4993AA98679DC09770673835B00E53361E4668D8FF7764"
+          }
+        },
+        {
+          "request": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-workspace-2/request-013.json",
+            "sha256": "D90BFA4A974DCAF1C6DBF053AFBF3FA932D898B002D628EB8BB68C032B6CBEE8"
+          },
+          "wire": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-workspace-2/wire-request-013.json",
+            "sha256": "47D387739148EAE3E16C515C0967E980DE8E57471D331308D1D164FAC263C6AB"
+          },
+          "response": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-workspace-2/response-013.json",
+            "sha256": "C2ACC8D82744E46A6D2469D91EC410F78A3761F2B3DB8D4AE2CD8A92FB59B644"
+          }
+        },
+        {
+          "request": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-workspace-2/request-014.json",
+            "sha256": "D6CC9875739F34F4A0D0C3FEF49ADD06117C189717AF90E84378CA98BC9CE6BE"
+          },
+          "wire": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-workspace-2/wire-request-014.json",
+            "sha256": "EEE902ABB2C7DD1B290729B896729502F2286F43AF12B4DFB043C246FD8244D8"
+          },
+          "response": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-workspace-2/response-014.json",
+            "sha256": "28C70C841DC023DE1DC7CFC2E8B3BC5D4464554B6644D457D3750B63ECE99ED0"
+          }
+        },
+        {
+          "request": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-workspace-2/request-015.json",
+            "sha256": "612599E980E773FB4B28FF8EF4AEB86E2CD032C26D81541F21CBADF68857C612"
+          },
+          "wire": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-workspace-2/wire-request-015.json",
+            "sha256": "114039DF11246D5382DCFE196CC320B50CF2805DAD2E6DBE2D77A02609CA3835"
+          },
+          "response": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-workspace-2/response-015.json",
+            "sha256": "6A7797E0B3C15DC19C1DA13FED508B67E7D9048CAD1F7780F20ADC39B822F9A9"
+          }
+        },
+        {
+          "request": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-workspace-2/request-016.json",
+            "sha256": "458EB74781B5034F0C5931D478165E989B20BD3584605EB3B8E922F61B3B613E"
+          },
+          "wire": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-workspace-2/wire-request-016.json",
+            "sha256": "9F7018F2B71FF2D6CE78F3B6BB4EC3A6D6803A42364E25DE83CD10787DE77415"
+          },
+          "response": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-workspace-2/response-016.json",
+            "sha256": "1596244BBBC67E585A9B6607A71523AF6F310141BC2070CEC889922F7D43CC3A"
+          }
+        },
+        {
+          "request": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-workspace-2/request-017.json",
+            "sha256": "3A37EF4E990C7F04A91BA30ADBC011206306EB6320A91D794EC0D321095D7EA9"
+          },
+          "wire": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-workspace-2/wire-request-017.json",
+            "sha256": "594FB4EE5176359FB976E31583D68C126602C40AABCE33A61507EE52E7F366F4"
+          },
+          "response": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-workspace-2/response-017.json",
+            "sha256": "46EA5933CBF2E2D5B1556F3B867D7936AD589220585C5B5A9C7A2346C54D8411"
+          }
+        },
+        {
+          "request": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-workspace-2/request-018.json",
+            "sha256": "04D7E6968A12B7BB7DA7CE84BCBE2B8AA8FAFFD7644A1B1539A9F420990CB6F9"
+          },
+          "wire": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-workspace-2/wire-request-018.json",
+            "sha256": "73B22163D00AFA2498734A2BFA1CCB0690F82F118136AB2A0B80FCCEA340C586"
+          },
+          "response": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-workspace-2/response-018.json",
+            "sha256": "7B0E187026B079621431D236D71CFB4A8516DBCD408F6C932527D5CE072326E0"
+          }
+        },
+        {
+          "request": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-workspace-2/request-019.json",
+            "sha256": "89583594123D807C3FB15EAFE2D5A1227A13FA68C3A350C21796A34511D722CD"
+          },
+          "wire": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-workspace-2/wire-request-019.json",
+            "sha256": "58CE8C3E8F334E5693214EA19ADE05C0D068BDD599C5C3E1F0124D3B6E31C5DB"
+          },
+          "response": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-workspace-2/response-019.json",
+            "sha256": "F0C48BF6FA84E4624F7EA315F95245971C690B65DA3C0D44927B695AA94926CF"
+          }
+        },
+        {
+          "request": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-workspace-2/request-020.json",
+            "sha256": "CBBB33214D8860F4153BB3BC34A872D2E9BDF215F1ED0C4BDD5C79471A9DDCD5"
+          },
+          "wire": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-workspace-2/wire-request-020.json",
+            "sha256": "B86FFCFCBA9154EF140281FD202FBE5CB69065A3B901F70C9A050D658ACBC17A"
+          },
+          "response": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-workspace-2/response-020.json",
+            "sha256": "9CCD55757F1C44C1427FD078C7A8A37B824E1326F546428E2CD3FDC075AE92FC"
+          }
+        },
+        {
+          "request": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-workspace-2/request-021.json",
+            "sha256": "570FCB32C470858837B23F31D04934D465C619D89C5C5FCE5847DFCFA8B0E5DC"
+          },
+          "wire": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-workspace-2/wire-request-021.json",
+            "sha256": "6C188424AF420507BFFDED50778CB853B4DD36202A2FE34473B6B6E70D6F9931"
+          },
+          "response": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-workspace-2/response-021.json",
+            "sha256": "68D6BDF92AAD1D0A2CD817BE8010595C1504841D20BFB67CF7C2B2ADA1C7CDDC"
+          }
+        },
+        {
+          "request": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-workspace-2/request-022.json",
+            "sha256": "75439509E789CC22CE960FCAAEE3878F48547F0D4BF2533AFAFA968D31D04CA0"
+          },
+          "wire": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-workspace-2/wire-request-022.json",
+            "sha256": "7F322900051CA2CB544223D8E7D1836954D305CB3D2B0FC59F9447FA194B953F"
+          },
+          "response": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-workspace-2/response-022.json",
+            "sha256": "0BDDA47DE2B9457C283D8DC6732058A6FDA6CE53E919CA858F8E18BA56B0C245"
+          }
+        },
+        {
+          "request": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-workspace-2/request-023.json",
+            "sha256": "90C8C69ED46E60AC55773E77A274A707BBB4A0B0B54F788D91EAA8FE876EB235"
+          },
+          "wire": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-workspace-2/wire-request-023.json",
+            "sha256": "6B4D228148BC9A611BEBF16C8244583109C6F0E21F38D0AE4785BE6331434E0A"
+          },
+          "response": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-workspace-2/response-023.json",
+            "sha256": "3CE4C506CF86127BB36224C14A1BD5A80CF368A13D359B4250DF83F75A3F146B"
+          }
+        },
+        {
+          "request": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-workspace-2/request-024.json",
+            "sha256": "0FE4AC8095245B6F793F953E37C2B6C747518559C1852FC9FB64E904C4418E3D"
+          },
+          "wire": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-workspace-2/wire-request-024.json",
+            "sha256": "B0AD78E49EE4D10A1231B38A0E931BBEA5AA25D15600764057F3392838B18B1E"
+          },
+          "response": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-workspace-2/response-024.json",
+            "sha256": "087601F1317811111E702C237B268C2B212ABDB515178C6BE64CEDC56E511D15"
+          }
+        },
+        {
+          "request": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-workspace-2/request-025.json",
+            "sha256": "EDDFCC8664AA919C35CD8ABEDCE3ED1C70A2BF59E9B49160FF269E9B1FA670F7"
+          },
+          "wire": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-workspace-2/wire-request-025.json",
+            "sha256": "18DDB76A3A28636FE534AFC37F620D0EAF7603477E024BBA62A0EFD5EEF89780"
+          },
+          "response": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-workspace-2/response-025.json",
+            "sha256": "627434D004857CFC460CACB9C30B7F6358029B24D33FAD644E7DCB7128BDD4B3"
+          }
+        },
+        {
+          "request": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-workspace-2/request-026.json",
+            "sha256": "9F32E63F9C8CAC640C150626BBA1AA6C5BFE35CFEB4275AF9B4FACBD12C6174F"
+          },
+          "wire": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-workspace-2/wire-request-026.json",
+            "sha256": "096CB459F1006702E4DE30D317D757F0773A2CB9BE26C877304D1C84B23F7BD3"
+          },
+          "response": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-workspace-2/response-026.json",
+            "sha256": "90017277D482F3DA3AA9C997686FAAC947D432B18B81AEB245C280C87E138ACB"
+          }
+        },
+        {
+          "request": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-workspace-2/request-027.json",
+            "sha256": "E84AC275DD6B574EA50ED2AB2439EF7A9710984770689199BC0CFDEA4C68746A"
+          },
+          "wire": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-workspace-2/wire-request-027.json",
+            "sha256": "61A29546B1C776E37AA2F5FDB76FB846F813F79A04DBAB78346384589F1DD24B"
+          },
+          "response": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-workspace-2/response-027.json",
+            "sha256": "4C3AC336CCFF32D87D073718B399921EF351474AA4C2DF7F7671EE3266F7937F"
+          }
+        },
+        {
+          "request": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-workspace-2/request-028.json",
+            "sha256": "7E8D9D93ADEB6C63FE9B0A47D5D189C3A439995873943FB35F550949A167FB4C"
+          },
+          "wire": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-workspace-2/wire-request-028.json",
+            "sha256": "3D62C8C6660270F2F956F7E8FD155A11BC09354D91D2BEE95AFCAEE926945213"
+          },
+          "response": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-workspace-2/response-028.json",
+            "sha256": "64896535A5557BFD90C59BC0C18F5145104E878EFC581FA896F9F9CE2A2BE658"
+          }
+        },
+        {
+          "request": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-workspace-2/request-029.json",
+            "sha256": "1CFAF245226A3359BC516F7C9407D9C8BCD80C7215F63835478A81411A49B732"
+          },
+          "wire": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-workspace-2/wire-request-029.json",
+            "sha256": "FECE3F8D62240A9B4B14C23F73BFD9465EAE9C38F83B6F9DCEE546129A29422B"
+          },
+          "response": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-workspace-2/response-029.json",
+            "sha256": "2CBCD5F86F854A6831E5C57441718972D62E57FF627C801FA7286A1F29514046"
+          }
+        },
+        {
+          "request": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-workspace-2/request-030.json",
+            "sha256": "02E79652A0E3CE5E8F4D81942FCB4FAC1335A66F51E43CFF7414F8F33482F896"
+          },
+          "wire": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-workspace-2/wire-request-030.json",
+            "sha256": "4BB5DF61365C4C9D6220EA8243CD8D5002C02981F6442C6D1EB27C28676CF527"
+          },
+          "response": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-workspace-2/response-030.json",
+            "sha256": "7E2E44A4050B7F3B3EA357D9513588FCAD728F29F73826A1C9C24705C35F8786"
+          }
+        },
+        {
+          "request": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-workspace-2/request-031.json",
+            "sha256": "9E042BBE7246AC5BF1A8C6FBC68033D1119CBFFFA7D815BD36BA7F14EBEF1E6F"
+          },
+          "wire": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-workspace-2/wire-request-031.json",
+            "sha256": "A0909A3CBAFDDF228DDCCB075800421A9843C35E42F2DF39E5F23BE1C72421E5"
+          },
+          "response": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-workspace-2/response-031.json",
+            "sha256": "8F7E8F3523A4C0E86EE3FA93C6CDE90BF8E849CAB091108A8523E755BDB04E28"
+          }
+        },
+        {
+          "request": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-workspace-2/request-032.json",
+            "sha256": "05412D0FA608D74D02F965F5E24AD199CAD06BBC1DE2199C34618482A81E7ACA"
+          },
+          "wire": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-workspace-2/wire-request-032.json",
+            "sha256": "0F3E2AD4DD3B536ABA7AE12AAD27CDC092AAF6368D899B07A0447294AB376474"
+          },
+          "response": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-workspace-2/response-032.json",
+            "sha256": "F5B06B462101ADE153E211CF408DE1F6850514661343C5AE0555F5BB7011982C"
+          }
+        },
+        {
+          "request": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-workspace-2/request-033.json",
+            "sha256": "A7A66077918A1ECB7F51186A8B6A94B9CC712BFC11A6487059F7EC6D96B7C244"
+          },
+          "wire": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-workspace-2/wire-request-033.json",
+            "sha256": "C6A5A59B38AA5826C1243D6A0233BDBEB8E826782F436BAB9B7C05F795B9E4B5"
+          },
+          "response": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-workspace-2/response-033.json",
+            "sha256": "2B44B0496B1FC63C4F561FED8074491078A1CA83F1280E0634BE6D49C5900A19"
+          }
+        },
+        {
+          "request": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-workspace-2/request-034.json",
+            "sha256": "F2A2300F17F5CEBED78C56BE368A8E73042E87A25ACB3421D34EA7AEB801FAAF"
+          },
+          "wire": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-workspace-2/wire-request-034.json",
+            "sha256": "5C90A920D8E5F00A88118E65EFC3BBF51D2E9D3E55857499CB926C2DC7AA8364"
+          },
+          "response": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-workspace-2/response-034.json",
+            "sha256": "DD867CA71109A470D0B84F206A709FEE3CD71D363E0DD17D9F7D24FB81E4C2FE"
+          }
+        },
+        {
+          "request": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-workspace-2/request-035.json",
+            "sha256": "77F4E72B1A8E44B662A32A40B58CDDB2F950FD018072D64F28A37F74D037C30F"
+          },
+          "wire": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-workspace-2/wire-request-035.json",
+            "sha256": "27843DAFCBAF2CC95E28219465504DF5BDF636250369173B01F46EF9B9408902"
+          },
+          "response": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-workspace-2/response-035.json",
+            "sha256": "E4CF5416526F6CFE2F250C153488C37E61AA92A1B25F943B7D5804DB36EDB3A5"
+          }
+        },
+        {
+          "request": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-workspace-2/request-036.json",
+            "sha256": "7ECF57AEBFD042CD810E1B973444A353A3D41FFCB621955A3F3B7ECBB9414C17"
+          },
+          "wire": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-workspace-2/wire-request-036.json",
+            "sha256": "F5092A1D5937FF8EF89FDB01AAC2C63B32A38F5FD50F887165BDDBFDC2064EB2"
+          },
+          "response": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-workspace-2/response-036.json",
+            "sha256": "8CE4FA28B1245EDEDD94C417D7834F0FC56583667471D28F3FFE17A5656CB949"
+          }
+        },
+        {
+          "request": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-workspace-2/request-037.json",
+            "sha256": "A8DD42FB954624BBB56579978911AF4A5122E43E4FBF2501EEE105700774D1F0"
+          },
+          "wire": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-workspace-2/wire-request-037.json",
+            "sha256": "1B0A4CB1B13FB00F3E72A33DE4761622DB7B7D7E02DEC50271DB2A8F747AA24A"
+          },
+          "response": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-workspace-2/response-037.json",
+            "sha256": "0A6FF6CB1857B66F1DFEF60A920424143A64C672A1EED1E37842575FB73B2A50"
+          }
+        },
+        {
+          "request": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-workspace-2/request-038.json",
+            "sha256": "906B35BF605DC4C85CF8A1B9E44873D0CF9032F4151EC222626DE1A22619EBEA"
+          },
+          "wire": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-workspace-2/wire-request-038.json",
+            "sha256": "F77BE913AA7D3AF6503B1E196CB2F1F88D0DC5D2B766802FE1C23B4A1C5160FE"
+          },
+          "response": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-workspace-2/response-038.json",
+            "sha256": "F81B17C64ABE4AB95264EBA5CE1DDCFE5F131F0F41D3BCBDD83B9627A69FD316"
+          }
+        },
+        {
+          "request": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-workspace-2/request-039.json",
+            "sha256": "A98F643612C626A0B2606C74BE9CA6D4ED30BEA34AB34C3CCA43F8774AE803C6"
+          },
+          "wire": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-workspace-2/wire-request-039.json",
+            "sha256": "60AF2835C8810FAA2CF689775BEA0F96F8123D5FA458FBD691679D9419F10CEE"
+          },
+          "response": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-workspace-2/response-039.json",
+            "sha256": "EC35264E3B1F96DD08FB12B9A25C8294F5BDA3D3645A7EAB4A138C6288AA275D"
+          }
+        },
+        {
+          "request": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-workspace-2/request-040.json",
+            "sha256": "182AB50726D81E0C9029F1C7D8B0288391F2401392C103423C17230DD0C3F924"
+          },
+          "wire": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-workspace-2/wire-request-040.json",
+            "sha256": "64D306828B489098DCDA06B03CB7ED72C7FA24BC0F267D1D8BE93F38225AAF86"
+          },
+          "response": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-workspace-2/response-040.json",
+            "sha256": "400344A05F1333D012B29A00EDDA7976076A889B43D01126F4C36E908DF2744A"
+          }
+        },
+        {
+          "request": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-workspace-2/request-041.json",
+            "sha256": "51858367658F39A587722CF62FF62C191FADF1FA62232CC74C82F2CFF1343CE2"
+          },
+          "wire": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-workspace-2/wire-request-041.json",
+            "sha256": "E73A11A9E45C1970D1666456E60967102BA81BBC303DD99BA01B93F6D7C04E5F"
+          },
+          "response": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-workspace-2/response-041.json",
+            "sha256": "7C9F2DDB29C0F6485D2313E661AA2FB2B4DCF2B33A28905155940A182202B0BC"
+          }
+        }
+      ],
+      "keyActualWires": [
+        {
+          "wire": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-workspace-2/wire-request-039.json",
+            "sha256": "60AF2835C8810FAA2CF689775BEA0F96F8123D5FA458FBD691679D9419F10CEE"
+          },
+          "receipts": [
+            {
+              "kind": "current-list",
+              "characters": 1005,
+              "expected": {
+                "workspaceStateId": "ea22dc7d-2e4b-4ff6-a1d0-d1761dc1fb34",
+                "activeSessionId": "5b3bfcb9-6fed-49aa-81ec-abe6fab76375",
+                "documentId": "216ecaba-43ce-4766-aece-91401ffbcafd",
+                "stateId": "0d91eb87-190b-4e08-8dd7-652652e7619b"
+              },
+              "verbatimToolReceipt": true
+            },
+            {
+              "kind": "stale-recovery",
+              "characters": 721,
+              "verbatimToolReceipt": true
+            },
+            {
+              "kind": "stale-recovery",
+              "characters": 721,
+              "verbatimToolReceipt": true
+            },
+            {
+              "kind": "current-list",
+              "characters": 1005,
+              "expected": {
+                "workspaceStateId": "ea22dc7d-2e4b-4ff6-a1d0-d1761dc1fb34",
+                "activeSessionId": "5b3bfcb9-6fed-49aa-81ec-abe6fab76375",
+                "documentId": "216ecaba-43ce-4766-aece-91401ffbcafd",
+                "stateId": "0d91eb87-190b-4e08-8dd7-652652e7619b"
+              },
+              "verbatimToolReceipt": true
+            },
+            {
+              "kind": "stale-recovery",
+              "characters": 721,
+              "verbatimToolReceipt": true
+            },
+            {
+              "kind": "stale-recovery",
+              "characters": 721,
+              "verbatimToolReceipt": true
+            }
+          ]
+        },
+        {
+          "wire": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-workspace-2/wire-request-040.json",
+            "sha256": "64D306828B489098DCDA06B03CB7ED72C7FA24BC0F267D1D8BE93F38225AAF86"
+          },
+          "receipts": [
+            {
+              "kind": "stale-recovery",
+              "characters": 721,
+              "verbatimToolReceipt": true
+            },
+            {
+              "kind": "stale-recovery",
+              "characters": 721,
+              "verbatimToolReceipt": true
+            },
+            {
+              "kind": "current-list",
+              "characters": 1005,
+              "expected": {
+                "workspaceStateId": "ea22dc7d-2e4b-4ff6-a1d0-d1761dc1fb34",
+                "activeSessionId": "5b3bfcb9-6fed-49aa-81ec-abe6fab76375",
+                "documentId": "216ecaba-43ce-4766-aece-91401ffbcafd",
+                "stateId": "0d91eb87-190b-4e08-8dd7-652652e7619b"
+              },
+              "verbatimToolReceipt": true
+            },
+            {
+              "kind": "stale-recovery",
+              "characters": 721,
+              "verbatimToolReceipt": true
+            },
+            {
+              "kind": "stale-recovery",
+              "characters": 721,
+              "verbatimToolReceipt": true
+            },
+            {
+              "kind": "current-list",
+              "characters": 1005,
+              "expected": {
+                "workspaceStateId": "ea22dc7d-2e4b-4ff6-a1d0-d1761dc1fb34",
+                "activeSessionId": "5b3bfcb9-6fed-49aa-81ec-abe6fab76375",
+                "documentId": "216ecaba-43ce-4766-aece-91401ffbcafd",
+                "stateId": "0d91eb87-190b-4e08-8dd7-652652e7619b"
+              },
+              "verbatimToolReceipt": true
+            }
+          ]
+        },
+        {
+          "wire": {
+            "path": "artifacts/af1077-drawing-action-1/lmstudio-workspace-2/wire-request-041.json",
+            "sha256": "E73A11A9E45C1970D1666456E60967102BA81BBC303DD99BA01B93F6D7C04E5F"
+          },
+          "receipts": [
+            {
+              "kind": "stale-recovery",
+              "characters": 721,
+              "verbatimToolReceipt": true
+            },
+            {
+              "kind": "current-list",
+              "characters": 1005,
+              "expected": {
+                "workspaceStateId": "ea22dc7d-2e4b-4ff6-a1d0-d1761dc1fb34",
+                "activeSessionId": "5b3bfcb9-6fed-49aa-81ec-abe6fab76375",
+                "documentId": "216ecaba-43ce-4766-aece-91401ffbcafd",
+                "stateId": "0d91eb87-190b-4e08-8dd7-652652e7619b"
+              },
+              "verbatimToolReceipt": true
+            },
+            {
+              "kind": "stale-recovery",
+              "characters": 721,
+              "verbatimToolReceipt": true
+            },
+            {
+              "kind": "stale-recovery",
+              "characters": 721,
+              "verbatimToolReceipt": true
+            },
+            {
+              "kind": "current-list",
+              "characters": 1005,
+              "expected": {
+                "workspaceStateId": "ea22dc7d-2e4b-4ff6-a1d0-d1761dc1fb34",
+                "activeSessionId": "5b3bfcb9-6fed-49aa-81ec-abe6fab76375",
+                "documentId": "216ecaba-43ce-4766-aece-91401ffbcafd",
+                "stateId": "0d91eb87-190b-4e08-8dd7-652652e7619b"
+              },
+              "verbatimToolReceipt": true
+            },
+            {
+              "kind": "stale-recovery",
+              "characters": 721,
+              "verbatimToolReceipt": true
+            }
+          ]
+        }
+      ],
+      "sameCurrentWorkspaceLists": [
+        21,
+        22,
+        24,
+        28,
+        32,
+        35,
+        37
+      ],
+      "finalResponse": {
+        "Content": "",
+        "ToolCalls": [
+          {
+            "Id": "GYmfViWML9vmIuPJ06ohB6QETZJiO1DD",
+            "Name": "cad_workspace",
+            "ArgumentsJson": "{\"action\":\"list\"}"
+          }
+        ],
+        "Model": "prism-ml/bonsai-27b"
+      }
+    }
+  ],
+  "frozenPayloadFiles": 137,
+  "originalPromptsAssertionsAndBudgetsChanged": false,
+  "workspaceLatestExpectedAndRecoveryReceiptWereNotTruncatedInLastThreeActualWires": true,
+  "productionApplied": false,
+  "rootCauseProven": false,
+  "AFComplete": false,
+  "nativeSlot": "RETURNED_TO_OCCTSHARP",
+  "G": "USER_DEFERRED",
+  "cleanup": false
+}

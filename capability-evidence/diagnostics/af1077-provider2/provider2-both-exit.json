@@ -1,0 +1,24 @@
+{
+  "started": "2026-10-13T11:30:07.8353021+00:00",
+  "scenarios": [
+    {
+      "exitCode": 1,
+      "terminal": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1077-drawing-action-1\\lmstudio-drawing-2-exit.json",
+      "scenario": "drawing",
+      "sha256": "32F2F5C6AFA61EE90B07BCC9FDB241AC91D6AC84F2B639E466E14186E5C32E05"
+    },
+    {
+      "exitCode": 1,
+      "terminal": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1077-drawing-action-1\\lmstudio-workspace-2-exit.json",
+      "scenario": "workspace",
+      "sha256": "2745910BACE92170C1ABEDAB8044DA7387C4445E517D3867A48B3C46B0392860"
+    }
+  ],
+  "productionApplied": false,
+  "freeze": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1077-drawing-action-1\\provider2-runtime-freeze.json",
+  "cleanup": false,
+  "AF": "ACTIVE",
+  "G": "USER_DEFERRED",
+  "desktopInputStarted": false,
+  "completed": "2026-10-13T11:35:41.3971294+00:00"
+}

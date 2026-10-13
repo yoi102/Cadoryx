@@ -1,0 +1,325 @@
+{
+  "recordedAt": "2026-10-13T11:29:52.752659+00:00",
+  "state": "AF1076_ROOT_FULL6652_BOTH_ACTUALLY_EXECUTED_AND_VERIFIED",
+  "freeze": {
+    "path": "artifacts/af1076-root-full-1/freeze.json",
+    "sha256": "2F1687EC4D2F5346F603B65AC85C33A57F45A1B26C9B15A09049CE8320770526"
+  },
+  "suite": {
+    "path": "artifacts/af1076-root-full-1/full-both-exit.json",
+    "sha256": "D4D82379A2AFDFE2AB4C9764FD2F66EF2970A5A9B4608C22DCA526C5AF0355D9"
+  },
+  "baseHead": "e4d7b6482646775a1835ec4505d76aa4f3197eb4",
+  "configurations": [
+    {
+      "configuration": "Release",
+      "total": 6652,
+      "passed": 6628,
+      "failed": 24,
+      "skipped": 0,
+      "parent6619NamesRetained": true,
+      "added33Names": [
+        "Cadoryx.Tests.HistoryCursorFeedbackTests.StaleHistoryReceiptProvidesAReadOnlyExactCursorRecoveryWithoutApplyingTheEdit(scenario: \"changed-author-state\")",
+        "Cadoryx.Tests.HistoryCursorFeedbackTests.StaleHistoryReceiptProvidesAReadOnlyExactCursorRecoveryWithoutApplyingTheEdit(scenario: \"changed-preview-position\")",
+        "Cadoryx.Tests.HistoryCursorFeedbackTests.StaleHistoryReceiptProvidesAReadOnlyExactCursorRecoveryWithoutApplyingTheEdit(scenario: \"foreign-document\")",
+        "Cadoryx.Tests.HistoryCursorFeedbackTests.StaleHistoryReceiptProvidesAReadOnlyExactCursorRecoveryWithoutApplyingTheEdit(scenario: \"invented-cursor-at-end\")",
+        "Cadoryx.Tests.NativeCompleteSourceContextTests.ACompleteReceiptRemainsByteIdenticalWithoutContextMetadata",
+        "Cadoryx.Tests.NativeCompleteSourceContextTests.BothOriginalBudgetsRetainCompletePrefixRowsAndEveryAdditionalRowHasItsActualPosition(budget: 2400)",
+        "Cadoryx.Tests.NativeCompleteSourceContextTests.BothOriginalBudgetsRetainCompletePrefixRowsAndEveryAdditionalRowHasItsActualPosition(budget: 6000)",
+        "Cadoryx.Tests.NativeCompleteSourceContextTests.CompleteCapturedCylinderRowSurvivesTheOriginalNormalBudgetWithoutAnInventedSelection",
+        "Cadoryx.Tests.NativeCompleteSourceContextTests.UnpairedOrMismatchedQueriesCannotExposeAdditionalNativeSelections(fault: \"bodyId\")",
+        "Cadoryx.Tests.NativeCompleteSourceContextTests.UnpairedOrMismatchedQueriesCannotExposeAdditionalNativeSelections(fault: \"documentId\")",
+        "Cadoryx.Tests.NativeCompleteSourceContextTests.UnpairedOrMismatchedQueriesCannotExposeAdditionalNativeSelections(fault: \"limit\")",
+        "Cadoryx.Tests.NativeCompleteSourceContextTests.UnpairedOrMismatchedQueriesCannotExposeAdditionalNativeSelections(fault: \"no-call\")",
+        "Cadoryx.Tests.NativeCompleteSourceContextTests.UnpairedOrMismatchedQueriesCannotExposeAdditionalNativeSelections(fault: \"offset\")",
+        "Cadoryx.Tests.NativeCompleteSourceContextTests.UnpairedOrMismatchedQueriesCannotExposeAdditionalNativeSelections(fault: \"path\")",
+        "Cadoryx.Tests.NativeCompleteSourceContextTests.UnpairedOrMismatchedQueriesCannotExposeAdditionalNativeSelections(fault: \"revision\")",
+        "Cadoryx.Tests.NativeCompleteSourceContextTests.UnpairedOrMismatchedQueriesCannotExposeAdditionalNativeSelections(fault: \"stateId\")",
+        "Cadoryx.Tests.NativeCompleteSourceContextTests.UnpairedOrMismatchedQueriesCannotExposeAdditionalNativeSelections(fault: \"unknown\")",
+        "Cadoryx.Tests.NativeReadDefaultPaginationTests.AReceiptFromAnotherPageCannotInventContinuationForAnOmittedParameter(offset: 0, limit: 50, explicitOffset: False, explicitLimit: False)",
+        "Cadoryx.Tests.NativeReadDefaultPaginationTests.AReceiptFromAnotherPageCannotInventContinuationForAnOmittedParameter(offset: 0, limit: 50, explicitOffset: True, explicitLimit: False)",
+        "Cadoryx.Tests.NativeReadDefaultPaginationTests.AReceiptFromAnotherPageCannotInventContinuationForAnOmittedParameter(offset: 37, limit: 50, explicitOffset: False, explicitLimit: False)",
+        "Cadoryx.Tests.NativeReadDefaultPaginationTests.AReceiptFromAnotherPageCannotInventContinuationForAnOmittedParameter(offset: 37, limit: 8, explicitOffset: False, explicitLimit: False)",
+        "Cadoryx.Tests.NativeReadDefaultPaginationTests.AReceiptFromAnotherPageCannotInventContinuationForAnOmittedParameter(offset: 37, limit: 8, explicitOffset: False, explicitLimit: True)",
+        "Cadoryx.Tests.NativeReadDefaultPaginationTests.ExplicitNonDefaultPagesStillProduceTheirOwnContinuation",
+        "Cadoryx.Tests.NativeReadDefaultPaginationTests.InvalidExplicitParametersDoNotFallBackToDefaults(field: \"limit\", value: \"8.5\")",
+        "Cadoryx.Tests.NativeReadDefaultPaginationTests.InvalidExplicitParametersDoNotFallBackToDefaults(field: \"limit\", value: \"\\\"8\\\"\")",
+        "Cadoryx.Tests.NativeReadDefaultPaginationTests.InvalidExplicitParametersDoNotFallBackToDefaults(field: \"limit\", value: \"null\")",
+        "Cadoryx.Tests.NativeReadDefaultPaginationTests.InvalidExplicitParametersDoNotFallBackToDefaults(field: \"offset\", value: \"0.5\")",
+        "Cadoryx.Tests.NativeReadDefaultPaginationTests.InvalidExplicitParametersDoNotFallBackToDefaults(field: \"offset\", value: \"\\\"0\\\"\")",
+        "Cadoryx.Tests.NativeReadDefaultPaginationTests.InvalidExplicitParametersDoNotFallBackToDefaults(field: \"offset\", value: \"null\")",
+        "Cadoryx.Tests.NativeReadDefaultPaginationTests.OmittedAndExplicitDefaultsPairWithTheSameProductionPage(explicitOffset: False, explicitLimit: False)",
+        "Cadoryx.Tests.NativeReadDefaultPaginationTests.OmittedAndExplicitDefaultsPairWithTheSameProductionPage(explicitOffset: False, explicitLimit: True)",
+        "Cadoryx.Tests.NativeReadDefaultPaginationTests.OmittedAndExplicitDefaultsPairWithTheSameProductionPage(explicitOffset: True, explicitLimit: False)",
+        "Cadoryx.Tests.NativeReadDefaultPaginationTests.OmittedAndExplicitDefaultsPairWithTheSameProductionPage(explicitOffset: True, explicitLimit: True)"
+      ],
+      "failures": [
+        {
+          "name": "Cadoryx.Tests.SketchRegionSingleLoopMixedNativeTests.SameLoopNaturalAndNativeConnectionsMoveInOneOriginalBudgetAndBuildTheExactSolid(kind: \"spline-g2\", mirror: False, distance: 0.10000000000000001, join: Bevel)",
+          "error": "Cadoryx.Db.CadValidationException : This expression profile has no proven exact circle/line exchange representation. Save Cadoryx to retain the exact offset; this export does not approximate curves."
+        },
+        {
+          "name": "Cadoryx.Tests.SketchRegionSingleLoopMixedNativeTests.SameLoopNaturalAndNativeConnectionsMoveInOneOriginalBudgetAndBuildTheExactSolid(kind: \"spline-g2\", mirror: False, distance: -0.10000000000000001, join: Bevel)",
+          "error": "Cadoryx.Db.CadValidationException : This expression profile has no proven exact circle/line exchange representation. Save Cadoryx to retain the exact offset; this export does not approximate curves."
+        },
+        {
+          "name": "Cadoryx.Tests.SketchRegionSingleLoopMixedNativeTests.SameLoopNaturalAndNativeConnectionsMoveInOneOriginalBudgetAndBuildTheExactSolid(kind: \"spline-g1\", mirror: False, distance: -0.10000000000000001, join: Miter)",
+          "error": "Cadoryx.Db.CadValidationException : This expression profile has no proven exact circle/line exchange representation. Save Cadoryx to retain the exact offset; this export does not approximate curves."
+        },
+        {
+          "name": "Cadoryx.Tests.SketchRegionSingleLoopMixedNativeTests.SameLoopNaturalAndNativeConnectionsMoveInOneOriginalBudgetAndBuildTheExactSolid(kind: \"spline-g1\", mirror: True, distance: 0.10000000000000001, join: Miter)",
+          "error": "Cadoryx.Db.CadValidationException : This expression profile has no proven exact circle/line exchange representation. Save Cadoryx to retain the exact offset; this export does not approximate curves."
+        },
+        {
+          "name": "Cadoryx.Tests.SketchRegionSingleLoopMixedNativeTests.SameLoopNaturalAndNativeConnectionsMoveInOneOriginalBudgetAndBuildTheExactSolid(kind: \"spline-g2\", mirror: False, distance: -0.10000000000000001, join: Miter)",
+          "error": "Cadoryx.Db.CadValidationException : This expression profile has no proven exact circle/line exchange representation. Save Cadoryx to retain the exact offset; this export does not approximate curves."
+        },
+        {
+          "name": "Cadoryx.Tests.SketchRegionSingleLoopMixedNativeTests.SameLoopNaturalAndNativeConnectionsMoveInOneOriginalBudgetAndBuildTheExactSolid(kind: \"spline-g1\", mirror: False, distance: -0.10000000000000001, join: Round)",
+          "error": "Cadoryx.Db.CadValidationException : This expression profile has no proven exact circle/line exchange representation. Save Cadoryx to retain the exact offset; this export does not approximate curves."
+        },
+        {
+          "name": "Cadoryx.Tests.SketchRegionSingleLoopMixedNativeTests.SameLoopNaturalAndNativeConnectionsMoveInOneOriginalBudgetAndBuildTheExactSolid(kind: \"spline-g2\", mirror: False, distance: -0.10000000000000001, join: Round)",
+          "error": "Cadoryx.Db.CadValidationException : This expression profile has no proven exact circle/line exchange representation. Save Cadoryx to retain the exact offset; this export does not approximate curves."
+        },
+        {
+          "name": "Cadoryx.Tests.SketchRegionSingleLoopMixedNativeTests.SameLoopNaturalAndNativeConnectionsMoveInOneOriginalBudgetAndBuildTheExactSolid(kind: \"spline-g2\", mirror: True, distance: 0.10000000000000001, join: Round)",
+          "error": "Cadoryx.Db.CadValidationException : This expression profile has no proven exact circle/line exchange representation. Save Cadoryx to retain the exact offset; this export does not approximate curves."
+        },
+        {
+          "name": "Cadoryx.Tests.SketchRegionSingleLoopMixedNativeTests.SameLoopNaturalAndNativeConnectionsMoveInOneOriginalBudgetAndBuildTheExactSolid(kind: \"spline-g1\", mirror: False, distance: -0.10000000000000001, join: Bevel)",
+          "error": "Cadoryx.Db.CadValidationException : This expression profile has no proven exact circle/line exchange representation. Save Cadoryx to retain the exact offset; this export does not approximate curves."
+        },
+        {
+          "name": "Cadoryx.Tests.SketchRegionSingleLoopMixedNativeTests.SameLoopNaturalAndNativeConnectionsMoveInOneOriginalBudgetAndBuildTheExactSolid(kind: \"spline-g1\", mirror: True, distance: -0.10000000000000001, join: Round)",
+          "error": "Cadoryx.Db.CadValidationException : This expression profile has no proven exact circle/line exchange representation. Save Cadoryx to retain the exact offset; this export does not approximate curves."
+        },
+        {
+          "name": "Cadoryx.Tests.SketchRegionSingleLoopMixedNativeTests.SameLoopNaturalAndNativeConnectionsMoveInOneOriginalBudgetAndBuildTheExactSolid(kind: \"spline-g1\", mirror: True, distance: -0.10000000000000001, join: Bevel)",
+          "error": "Cadoryx.Db.CadValidationException : This expression profile has no proven exact circle/line exchange representation. Save Cadoryx to retain the exact offset; this export does not approximate curves."
+        },
+        {
+          "name": "Cadoryx.Tests.SketchRegionSingleLoopMixedNativeTests.SameLoopNaturalAndNativeConnectionsMoveInOneOriginalBudgetAndBuildTheExactSolid(kind: \"spline-g2\", mirror: True, distance: -0.10000000000000001, join: Round)",
+          "error": "Cadoryx.Db.CadValidationException : This expression profile has no proven exact circle/line exchange representation. Save Cadoryx to retain the exact offset; this export does not approximate curves."
+        },
+        {
+          "name": "Cadoryx.Tests.SketchRegionSingleLoopMixedNativeTests.SameLoopNaturalAndNativeConnectionsMoveInOneOriginalBudgetAndBuildTheExactSolid(kind: \"spline-g1\", mirror: True, distance: 0.10000000000000001, join: Round)",
+          "error": "Cadoryx.Db.CadValidationException : This expression profile has no proven exact circle/line exchange representation. Save Cadoryx to retain the exact offset; this export does not approximate curves."
+        },
+        {
+          "name": "Cadoryx.Tests.SketchRegionSingleLoopMixedNativeTests.SameLoopNaturalAndNativeConnectionsMoveInOneOriginalBudgetAndBuildTheExactSolid(kind: \"spline-g2\", mirror: True, distance: 0.10000000000000001, join: Bevel)",
+          "error": "Cadoryx.Db.CadValidationException : This expression profile has no proven exact circle/line exchange representation. Save Cadoryx to retain the exact offset; this export does not approximate curves."
+        },
+        {
+          "name": "Cadoryx.Tests.SketchRegionSingleLoopMixedNativeTests.SameLoopNaturalAndNativeConnectionsMoveInOneOriginalBudgetAndBuildTheExactSolid(kind: \"spline-g2\", mirror: True, distance: -0.10000000000000001, join: Miter)",
+          "error": "Cadoryx.Db.CadValidationException : This expression profile has no proven exact circle/line exchange representation. Save Cadoryx to retain the exact offset; this export does not approximate curves."
+        },
+        {
+          "name": "Cadoryx.Tests.SketchRegionSingleLoopMixedNativeTests.SameLoopNaturalAndNativeConnectionsMoveInOneOriginalBudgetAndBuildTheExactSolid(kind: \"spline-g1\", mirror: True, distance: -0.10000000000000001, join: Miter)",
+          "error": "Cadoryx.Db.CadValidationException : This expression profile has no proven exact circle/line exchange representation. Save Cadoryx to retain the exact offset; this export does not approximate curves."
+        },
+        {
+          "name": "Cadoryx.Tests.SketchRegionSingleLoopMixedNativeTests.SameLoopNaturalAndNativeConnectionsMoveInOneOriginalBudgetAndBuildTheExactSolid(kind: \"spline-g1\", mirror: True, distance: 0.10000000000000001, join: Bevel)",
+          "error": "Cadoryx.Db.CadValidationException : This expression profile has no proven exact circle/line exchange representation. Save Cadoryx to retain the exact offset; this export does not approximate curves."
+        },
+        {
+          "name": "Cadoryx.Tests.SketchRegionSingleLoopMixedNativeTests.SameLoopNaturalAndNativeConnectionsMoveInOneOriginalBudgetAndBuildTheExactSolid(kind: \"spline-g1\", mirror: False, distance: 0.10000000000000001, join: Round)",
+          "error": "Cadoryx.Db.CadValidationException : This expression profile has no proven exact circle/line exchange representation. Save Cadoryx to retain the exact offset; this export does not approximate curves."
+        },
+        {
+          "name": "Cadoryx.Tests.SketchRegionSingleLoopMixedNativeTests.SameLoopNaturalAndNativeConnectionsMoveInOneOriginalBudgetAndBuildTheExactSolid(kind: \"spline-g2\", mirror: False, distance: 0.10000000000000001, join: Miter)",
+          "error": "Cadoryx.Db.CadValidationException : This expression profile has no proven exact circle/line exchange representation. Save Cadoryx to retain the exact offset; this export does not approximate curves."
+        },
+        {
+          "name": "Cadoryx.Tests.SketchRegionSingleLoopMixedNativeTests.SameLoopNaturalAndNativeConnectionsMoveInOneOriginalBudgetAndBuildTheExactSolid(kind: \"spline-g2\", mirror: True, distance: 0.10000000000000001, join: Miter)",
+          "error": "Cadoryx.Db.CadValidationException : This expression profile has no proven exact circle/line exchange representation. Save Cadoryx to retain the exact offset; this export does not approximate curves."
+        },
+        {
+          "name": "Cadoryx.Tests.SketchRegionSingleLoopMixedNativeTests.SameLoopNaturalAndNativeConnectionsMoveInOneOriginalBudgetAndBuildTheExactSolid(kind: \"spline-g2\", mirror: True, distance: -0.10000000000000001, join: Bevel)",
+          "error": "Cadoryx.Db.CadValidationException : This expression profile has no proven exact circle/line exchange representation. Save Cadoryx to retain the exact offset; this export does not approximate curves."
+        },
+        {
+          "name": "Cadoryx.Tests.SketchRegionSingleLoopMixedNativeTests.SameLoopNaturalAndNativeConnectionsMoveInOneOriginalBudgetAndBuildTheExactSolid(kind: \"spline-g1\", mirror: False, distance: 0.10000000000000001, join: Bevel)",
+          "error": "Cadoryx.Db.CadValidationException : This expression profile has no proven exact circle/line exchange representation. Save Cadoryx to retain the exact offset; this export does not approximate curves."
+        },
+        {
+          "name": "Cadoryx.Tests.SketchRegionSingleLoopMixedNativeTests.SameLoopNaturalAndNativeConnectionsMoveInOneOriginalBudgetAndBuildTheExactSolid(kind: \"spline-g2\", mirror: False, distance: 0.10000000000000001, join: Round)",
+          "error": "Cadoryx.Db.CadValidationException : This expression profile has no proven exact circle/line exchange representation. Save Cadoryx to retain the exact offset; this export does not approximate curves."
+        },
+        {
+          "name": "Cadoryx.Tests.SketchRegionSingleLoopMixedNativeTests.SameLoopNaturalAndNativeConnectionsMoveInOneOriginalBudgetAndBuildTheExactSolid(kind: \"spline-g1\", mirror: False, distance: 0.10000000000000001, join: Miter)",
+          "error": "Cadoryx.Db.CadValidationException : This expression profile has no proven exact circle/line exchange representation. Save Cadoryx to retain the exact offset; this export does not approximate curves."
+        }
+      ],
+      "newFailureNames": [],
+      "originalFailuresNowPassed": [],
+      "actualNative62Matched": true,
+      "trx": {
+        "path": "capability-evidence/diagnostics/af1076-root-full/release-runtime.trx",
+        "sha256": "8E779212EA2A28B68B8BD6FB8C979A912ED2C881438DB645587DB96DBD5A0373"
+      },
+      "binding": {
+        "path": "capability-evidence/diagnostics/af1076-root-full/release-loaded-native.json",
+        "sha256": "5CE569530E736BCF516F4873C95B4BC5F8690C47A5055CBCFCF036B6D721061A"
+      }
+    },
+    {
+      "configuration": "Debug",
+      "total": 6652,
+      "passed": 6628,
+      "failed": 24,
+      "skipped": 0,
+      "parent6619NamesRetained": true,
+      "added33Names": [
+        "Cadoryx.Tests.HistoryCursorFeedbackTests.StaleHistoryReceiptProvidesAReadOnlyExactCursorRecoveryWithoutApplyingTheEdit(scenario: \"changed-author-state\")",
+        "Cadoryx.Tests.HistoryCursorFeedbackTests.StaleHistoryReceiptProvidesAReadOnlyExactCursorRecoveryWithoutApplyingTheEdit(scenario: \"changed-preview-position\")",
+        "Cadoryx.Tests.HistoryCursorFeedbackTests.StaleHistoryReceiptProvidesAReadOnlyExactCursorRecoveryWithoutApplyingTheEdit(scenario: \"foreign-document\")",
+        "Cadoryx.Tests.HistoryCursorFeedbackTests.StaleHistoryReceiptProvidesAReadOnlyExactCursorRecoveryWithoutApplyingTheEdit(scenario: \"invented-cursor-at-end\")",
+        "Cadoryx.Tests.NativeCompleteSourceContextTests.ACompleteReceiptRemainsByteIdenticalWithoutContextMetadata",
+        "Cadoryx.Tests.NativeCompleteSourceContextTests.BothOriginalBudgetsRetainCompletePrefixRowsAndEveryAdditionalRowHasItsActualPosition(budget: 2400)",
+        "Cadoryx.Tests.NativeCompleteSourceContextTests.BothOriginalBudgetsRetainCompletePrefixRowsAndEveryAdditionalRowHasItsActualPosition(budget: 6000)",
+        "Cadoryx.Tests.NativeCompleteSourceContextTests.CompleteCapturedCylinderRowSurvivesTheOriginalNormalBudgetWithoutAnInventedSelection",
+        "Cadoryx.Tests.NativeCompleteSourceContextTests.UnpairedOrMismatchedQueriesCannotExposeAdditionalNativeSelections(fault: \"bodyId\")",
+        "Cadoryx.Tests.NativeCompleteSourceContextTests.UnpairedOrMismatchedQueriesCannotExposeAdditionalNativeSelections(fault: \"documentId\")",
+        "Cadoryx.Tests.NativeCompleteSourceContextTests.UnpairedOrMismatchedQueriesCannotExposeAdditionalNativeSelections(fault: \"limit\")",
+        "Cadoryx.Tests.NativeCompleteSourceContextTests.UnpairedOrMismatchedQueriesCannotExposeAdditionalNativeSelections(fault: \"no-call\")",
+        "Cadoryx.Tests.NativeCompleteSourceContextTests.UnpairedOrMismatchedQueriesCannotExposeAdditionalNativeSelections(fault: \"offset\")",
+        "Cadoryx.Tests.NativeCompleteSourceContextTests.UnpairedOrMismatchedQueriesCannotExposeAdditionalNativeSelections(fault: \"path\")",
+        "Cadoryx.Tests.NativeCompleteSourceContextTests.UnpairedOrMismatchedQueriesCannotExposeAdditionalNativeSelections(fault: \"revision\")",
+        "Cadoryx.Tests.NativeCompleteSourceContextTests.UnpairedOrMismatchedQueriesCannotExposeAdditionalNativeSelections(fault: \"stateId\")",
+        "Cadoryx.Tests.NativeCompleteSourceContextTests.UnpairedOrMismatchedQueriesCannotExposeAdditionalNativeSelections(fault: \"unknown\")",
+        "Cadoryx.Tests.NativeReadDefaultPaginationTests.AReceiptFromAnotherPageCannotInventContinuationForAnOmittedParameter(offset: 0, limit: 50, explicitOffset: False, explicitLimit: False)",
+        "Cadoryx.Tests.NativeReadDefaultPaginationTests.AReceiptFromAnotherPageCannotInventContinuationForAnOmittedParameter(offset: 0, limit: 50, explicitOffset: True, explicitLimit: False)",
+        "Cadoryx.Tests.NativeReadDefaultPaginationTests.AReceiptFromAnotherPageCannotInventContinuationForAnOmittedParameter(offset: 37, limit: 50, explicitOffset: False, explicitLimit: False)",
+        "Cadoryx.Tests.NativeReadDefaultPaginationTests.AReceiptFromAnotherPageCannotInventContinuationForAnOmittedParameter(offset: 37, limit: 8, explicitOffset: False, explicitLimit: False)",
+        "Cadoryx.Tests.NativeReadDefaultPaginationTests.AReceiptFromAnotherPageCannotInventContinuationForAnOmittedParameter(offset: 37, limit: 8, explicitOffset: False, explicitLimit: True)",
+        "Cadoryx.Tests.NativeReadDefaultPaginationTests.ExplicitNonDefaultPagesStillProduceTheirOwnContinuation",
+        "Cadoryx.Tests.NativeReadDefaultPaginationTests.InvalidExplicitParametersDoNotFallBackToDefaults(field: \"limit\", value: \"8.5\")",
+        "Cadoryx.Tests.NativeReadDefaultPaginationTests.InvalidExplicitParametersDoNotFallBackToDefaults(field: \"limit\", value: \"\\\"8\\\"\")",
+        "Cadoryx.Tests.NativeReadDefaultPaginationTests.InvalidExplicitParametersDoNotFallBackToDefaults(field: \"limit\", value: \"null\")",
+        "Cadoryx.Tests.NativeReadDefaultPaginationTests.InvalidExplicitParametersDoNotFallBackToDefaults(field: \"offset\", value: \"0.5\")",
+        "Cadoryx.Tests.NativeReadDefaultPaginationTests.InvalidExplicitParametersDoNotFallBackToDefaults(field: \"offset\", value: \"\\\"0\\\"\")",
+        "Cadoryx.Tests.NativeReadDefaultPaginationTests.InvalidExplicitParametersDoNotFallBackToDefaults(field: \"offset\", value: \"null\")",
+        "Cadoryx.Tests.NativeReadDefaultPaginationTests.OmittedAndExplicitDefaultsPairWithTheSameProductionPage(explicitOffset: False, explicitLimit: False)",
+        "Cadoryx.Tests.NativeReadDefaultPaginationTests.OmittedAndExplicitDefaultsPairWithTheSameProductionPage(explicitOffset: False, explicitLimit: True)",
+        "Cadoryx.Tests.NativeReadDefaultPaginationTests.OmittedAndExplicitDefaultsPairWithTheSameProductionPage(explicitOffset: True, explicitLimit: False)",
+        "Cadoryx.Tests.NativeReadDefaultPaginationTests.OmittedAndExplicitDefaultsPairWithTheSameProductionPage(explicitOffset: True, explicitLimit: True)"
+      ],
+      "failures": [
+        {
+          "name": "Cadoryx.Tests.SketchRegionSingleLoopMixedNativeTests.SameLoopNaturalAndNativeConnectionsMoveInOneOriginalBudgetAndBuildTheExactSolid(kind: \"spline-g2\", mirror: True, distance: 0.10000000000000001, join: Round)",
+          "error": "Cadoryx.Db.CadValidationException : This expression profile has no proven exact circle/line exchange representation. Save Cadoryx to retain the exact offset; this export does not approximate curves."
+        },
+        {
+          "name": "Cadoryx.Tests.SketchRegionSingleLoopMixedNativeTests.SameLoopNaturalAndNativeConnectionsMoveInOneOriginalBudgetAndBuildTheExactSolid(kind: \"spline-g1\", mirror: False, distance: 0.10000000000000001, join: Round)",
+          "error": "Cadoryx.Db.CadValidationException : This expression profile has no proven exact circle/line exchange representation. Save Cadoryx to retain the exact offset; this export does not approximate curves."
+        },
+        {
+          "name": "Cadoryx.Tests.SketchRegionSingleLoopMixedNativeTests.SameLoopNaturalAndNativeConnectionsMoveInOneOriginalBudgetAndBuildTheExactSolid(kind: \"spline-g2\", mirror: False, distance: -0.10000000000000001, join: Miter)",
+          "error": "Cadoryx.Db.CadValidationException : This expression profile has no proven exact circle/line exchange representation. Save Cadoryx to retain the exact offset; this export does not approximate curves."
+        },
+        {
+          "name": "Cadoryx.Tests.SketchRegionSingleLoopMixedNativeTests.SameLoopNaturalAndNativeConnectionsMoveInOneOriginalBudgetAndBuildTheExactSolid(kind: \"spline-g1\", mirror: False, distance: 0.10000000000000001, join: Miter)",
+          "error": "Cadoryx.Db.CadValidationException : This expression profile has no proven exact circle/line exchange representation. Save Cadoryx to retain the exact offset; this export does not approximate curves."
+        },
+        {
+          "name": "Cadoryx.Tests.SketchRegionSingleLoopMixedNativeTests.SameLoopNaturalAndNativeConnectionsMoveInOneOriginalBudgetAndBuildTheExactSolid(kind: \"spline-g1\", mirror: False, distance: -0.10000000000000001, join: Miter)",
+          "error": "Cadoryx.Db.CadValidationException : This expression profile has no proven exact circle/line exchange representation. Save Cadoryx to retain the exact offset; this export does not approximate curves."
+        },
+        {
+          "name": "Cadoryx.Tests.SketchRegionSingleLoopMixedNativeTests.SameLoopNaturalAndNativeConnectionsMoveInOneOriginalBudgetAndBuildTheExactSolid(kind: \"spline-g1\", mirror: True, distance: 0.10000000000000001, join: Round)",
+          "error": "Cadoryx.Db.CadValidationException : This expression profile has no proven exact circle/line exchange representation. Save Cadoryx to retain the exact offset; this export does not approximate curves."
+        },
+        {
+          "name": "Cadoryx.Tests.SketchRegionSingleLoopMixedNativeTests.SameLoopNaturalAndNativeConnectionsMoveInOneOriginalBudgetAndBuildTheExactSolid(kind: \"spline-g2\", mirror: True, distance: 0.10000000000000001, join: Bevel)",
+          "error": "Cadoryx.Db.CadValidationException : This expression profile has no proven exact circle/line exchange representation. Save Cadoryx to retain the exact offset; this export does not approximate curves."
+        },
+        {
+          "name": "Cadoryx.Tests.SketchRegionSingleLoopMixedNativeTests.SameLoopNaturalAndNativeConnectionsMoveInOneOriginalBudgetAndBuildTheExactSolid(kind: \"spline-g1\", mirror: True, distance: 0.10000000000000001, join: Miter)",
+          "error": "Cadoryx.Db.CadValidationException : This expression profile has no proven exact circle/line exchange representation. Save Cadoryx to retain the exact offset; this export does not approximate curves."
+        },
+        {
+          "name": "Cadoryx.Tests.SketchRegionSingleLoopMixedNativeTests.SameLoopNaturalAndNativeConnectionsMoveInOneOriginalBudgetAndBuildTheExactSolid(kind: \"spline-g1\", mirror: True, distance: -0.10000000000000001, join: Miter)",
+          "error": "Cadoryx.Db.CadValidationException : This expression profile has no proven exact circle/line exchange representation. Save Cadoryx to retain the exact offset; this export does not approximate curves."
+        },
+        {
+          "name": "Cadoryx.Tests.SketchRegionSingleLoopMixedNativeTests.SameLoopNaturalAndNativeConnectionsMoveInOneOriginalBudgetAndBuildTheExactSolid(kind: \"spline-g2\", mirror: True, distance: -0.10000000000000001, join: Round)",
+          "error": "Cadoryx.Db.CadValidationException : This expression profile has no proven exact circle/line exchange representation. Save Cadoryx to retain the exact offset; this export does not approximate curves."
+        },
+        {
+          "name": "Cadoryx.Tests.SketchRegionSingleLoopMixedNativeTests.SameLoopNaturalAndNativeConnectionsMoveInOneOriginalBudgetAndBuildTheExactSolid(kind: \"spline-g2\", mirror: False, distance: 0.10000000000000001, join: Bevel)",
+          "error": "Cadoryx.Db.CadValidationException : This expression profile has no proven exact circle/line exchange representation. Save Cadoryx to retain the exact offset; this export does not approximate curves."
+        },
+        {
+          "name": "Cadoryx.Tests.SketchRegionSingleLoopMixedNativeTests.SameLoopNaturalAndNativeConnectionsMoveInOneOriginalBudgetAndBuildTheExactSolid(kind: \"spline-g2\", mirror: False, distance: 0.10000000000000001, join: Miter)",
+          "error": "Cadoryx.Db.CadValidationException : This expression profile has no proven exact circle/line exchange representation. Save Cadoryx to retain the exact offset; this export does not approximate curves."
+        },
+        {
+          "name": "Cadoryx.Tests.SketchRegionSingleLoopMixedNativeTests.SameLoopNaturalAndNativeConnectionsMoveInOneOriginalBudgetAndBuildTheExactSolid(kind: \"spline-g1\", mirror: False, distance: -0.10000000000000001, join: Bevel)",
+          "error": "Cadoryx.Db.CadValidationException : This expression profile has no proven exact circle/line exchange representation. Save Cadoryx to retain the exact offset; this export does not approximate curves."
+        },
+        {
+          "name": "Cadoryx.Tests.SketchRegionSingleLoopMixedNativeTests.SameLoopNaturalAndNativeConnectionsMoveInOneOriginalBudgetAndBuildTheExactSolid(kind: \"spline-g2\", mirror: False, distance: -0.10000000000000001, join: Round)",
+          "error": "Cadoryx.Db.CadValidationException : This expression profile has no proven exact circle/line exchange representation. Save Cadoryx to retain the exact offset; this export does not approximate curves."
+        },
+        {
+          "name": "Cadoryx.Tests.SketchRegionSingleLoopMixedNativeTests.SameLoopNaturalAndNativeConnectionsMoveInOneOriginalBudgetAndBuildTheExactSolid(kind: \"spline-g1\", mirror: False, distance: -0.10000000000000001, join: Round)",
+          "error": "Cadoryx.Db.CadValidationException : This expression profile has no proven exact circle/line exchange representation. Save Cadoryx to retain the exact offset; this export does not approximate curves."
+        },
+        {
+          "name": "Cadoryx.Tests.SketchRegionSingleLoopMixedNativeTests.SameLoopNaturalAndNativeConnectionsMoveInOneOriginalBudgetAndBuildTheExactSolid(kind: \"spline-g1\", mirror: True, distance: -0.10000000000000001, join: Bevel)",
+          "error": "Cadoryx.Db.CadValidationException : This expression profile has no proven exact circle/line exchange representation. Save Cadoryx to retain the exact offset; this export does not approximate curves."
+        },
+        {
+          "name": "Cadoryx.Tests.SketchRegionSingleLoopMixedNativeTests.SameLoopNaturalAndNativeConnectionsMoveInOneOriginalBudgetAndBuildTheExactSolid(kind: \"spline-g1\", mirror: True, distance: 0.10000000000000001, join: Bevel)",
+          "error": "Cadoryx.Db.CadValidationException : This expression profile has no proven exact circle/line exchange representation. Save Cadoryx to retain the exact offset; this export does not approximate curves."
+        },
+        {
+          "name": "Cadoryx.Tests.SketchRegionSingleLoopMixedNativeTests.SameLoopNaturalAndNativeConnectionsMoveInOneOriginalBudgetAndBuildTheExactSolid(kind: \"spline-g1\", mirror: False, distance: 0.10000000000000001, join: Bevel)",
+          "error": "Cadoryx.Db.CadValidationException : This expression profile has no proven exact circle/line exchange representation. Save Cadoryx to retain the exact offset; this export does not approximate curves."
+        },
+        {
+          "name": "Cadoryx.Tests.SketchRegionSingleLoopMixedNativeTests.SameLoopNaturalAndNativeConnectionsMoveInOneOriginalBudgetAndBuildTheExactSolid(kind: \"spline-g2\", mirror: True, distance: -0.10000000000000001, join: Bevel)",
+          "error": "Cadoryx.Db.CadValidationException : This expression profile has no proven exact circle/line exchange representation. Save Cadoryx to retain the exact offset; this export does not approximate curves."
+        },
+        {
+          "name": "Cadoryx.Tests.SketchRegionSingleLoopMixedNativeTests.SameLoopNaturalAndNativeConnectionsMoveInOneOriginalBudgetAndBuildTheExactSolid(kind: \"spline-g2\", mirror: True, distance: -0.10000000000000001, join: Miter)",
+          "error": "Cadoryx.Db.CadValidationException : This expression profile has no proven exact circle/line exchange representation. Save Cadoryx to retain the exact offset; this export does not approximate curves."
+        },
+        {
+          "name": "Cadoryx.Tests.SketchRegionSingleLoopMixedNativeTests.SameLoopNaturalAndNativeConnectionsMoveInOneOriginalBudgetAndBuildTheExactSolid(kind: \"spline-g2\", mirror: True, distance: 0.10000000000000001, join: Miter)",
+          "error": "Cadoryx.Db.CadValidationException : This expression profile has no proven exact circle/line exchange representation. Save Cadoryx to retain the exact offset; this export does not approximate curves."
+        },
+        {
+          "name": "Cadoryx.Tests.SketchRegionSingleLoopMixedNativeTests.SameLoopNaturalAndNativeConnectionsMoveInOneOriginalBudgetAndBuildTheExactSolid(kind: \"spline-g2\", mirror: False, distance: -0.10000000000000001, join: Bevel)",
+          "error": "Cadoryx.Db.CadValidationException : This expression profile has no proven exact circle/line exchange representation. Save Cadoryx to retain the exact offset; this export does not approximate curves."
+        },
+        {
+          "name": "Cadoryx.Tests.SketchRegionSingleLoopMixedNativeTests.SameLoopNaturalAndNativeConnectionsMoveInOneOriginalBudgetAndBuildTheExactSolid(kind: \"spline-g1\", mirror: True, distance: -0.10000000000000001, join: Round)",
+          "error": "Cadoryx.Db.CadValidationException : This expression profile has no proven exact circle/line exchange representation. Save Cadoryx to retain the exact offset; this export does not approximate curves."
+        },
+        {
+          "name": "Cadoryx.Tests.SketchRegionSingleLoopMixedNativeTests.SameLoopNaturalAndNativeConnectionsMoveInOneOriginalBudgetAndBuildTheExactSolid(kind: \"spline-g2\", mirror: False, distance: 0.10000000000000001, join: Round)",
+          "error": "Cadoryx.Db.CadValidationException : This expression profile has no proven exact circle/line exchange representation. Save Cadoryx to retain the exact offset; this export does not approximate curves."
+        }
+      ],
+      "newFailureNames": [],
+      "originalFailuresNowPassed": [],
+      "actualNative62Matched": true,
+      "trx": {
+        "path": "capability-evidence/diagnostics/af1076-root-full/debug-runtime.trx",
+        "sha256": "07640D870EABA7AECE4068A24D6179471349624B054386EAB719099847F21547"
+      },
+      "binding": {
+        "path": "capability-evidence/diagnostics/af1076-root-full/debug-loaded-native.json",
+        "sha256": "83B538A2AAF5F718C5ACCBBB9922A31445BA2120FF672478EDB234D043F0D28F"
+      }
+    }
+  ],
+  "allPassed": false,
+  "originalStrictSTEPGateChanged": false,
+  "desktopOrModelGateProvenByFullRegression": false,
+  "AFComplete": false,
+  "cleanup": false,
+  "G": "USER_DEFERRED"
+}

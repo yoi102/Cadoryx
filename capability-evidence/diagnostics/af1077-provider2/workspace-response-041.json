@@ -1,0 +1,11 @@
+{
+  "Content": "",
+  "ToolCalls": [
+    {
+      "Id": "GYmfViWML9vmIuPJ06ohB6QETZJiO1DD",
+      "Name": "cad_workspace",
+      "ArgumentsJson": "{\u0022action\u0022:\u0022list\u0022}"
+    }
+  ],
+  "Model": "prism-ml/bonsai-27b"
+}

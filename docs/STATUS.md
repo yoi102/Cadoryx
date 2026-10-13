@@ -1,5 +1,9 @@
 # 当前状态
 
+2026-10-13，status242：[生产根两配置完整6652](../capability-evidence/diagnostics/af1076-root-full/verification.json)均已终态，各6628通过/原24严格STEP失败/零跳过，无新增失败，原6619名称、新33及实际native62保持。Release未重跑，只接续此前尚未启动的Debug；原PID2348拦截时身份未完整记录，不推断原因。[1077最终provider2实际运行审计](../capability-evidence/diagnostics/af1077-provider2/verification.json)确认工程图完成1/8轮、工作区4/8轮，两场景FAIL且资产0，实际native62与冻结载荷准确；工作区最后三个HTTP请求完整保留当前expected四字段及原恢复反馈，排除这些请求的数据裁剪假设，根因尚未证明。1077不合入，生产仍1076/公开Preview.85。SDK已接管原生时段继续整体迁移，准确增量588 Manual StableId加4 Blocked StableId，调用点/410输出/28612声明分开统计，原生/包验证尚未交付；Cadoryx先做托管定位，性能/D6/材质窗口待交还。A–F全部范围继续，G与清理暂缓。
+
+当前结论以status242为准；以下status241及更早是保留的历史检查点。
+
 2026-10-13，status241：生产根1076的[Release完整6652](../capability-evidence/diagnostics/af1076-root-full/release-verification.json)已终态，6628通过/原24 STEP失败/零跳过，无新增失败，原6619名称、新33及实际native62准确。原协调在Debug开始前被空闲检查报告PID2348拦下，该进程已退出、当时身份未完整记录；保留Release，只续跑原冻结Debug，当前协调25028/dotnet3736/testhost28692实际运行。1077候选[最终WPF两配置构建](../capability-evidence/diagnostics/af1077-final-app/verification.json)0警告/错误，直接调用原编译断言各45通过；最终provider2的16共享DLL与WPF逐字节一致，SDK13/native62磁盘匹配公开85。初次跨构建比较16文件不一致，实际观察到文档提交改变informational version；旧载荷保持，最终探针不重编项目引用。原Bonsai三份来源及所有预算保持，[队列42676](../capability-evidence/diagnostics/af1077-final-app/queue-verification.json)实际等待当前Debug协调，模型尚未运行。原两fresh直接20周期/6482ms/1800秒及生产打开900秒/完整788×411截图程序已适配，运行正文保持、尚未执行性能。生产仍1076，原STEP24、真实窗口/材质/性能和A–F全部范围继续；SDK CJ–CQ整体迁移继续，G/清理暂缓。
 
 当前进度以status241为准；以下status239及更早保留历史检查点。status240检查点保留于Git提交f0cc31c。
