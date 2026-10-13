@@ -1,0 +1,25 @@
+  Cadoryx.ViewModels.Services -> C:\Users\yoiri\source\repos\Cadoryx\Cadoryx.ViewModels.Services\bin\Debug\net10.0\Cadoryx.ViewModels.Services.dll
+  Cadoryx.AI.Contracts -> C:\Users\yoiri\source\repos\Cadoryx\Cadoryx.AI.Contracts\bin\Debug\net10.0\Cadoryx.AI.Contracts.dll
+  Cadoryx.CommandLine -> C:\Users\yoiri\source\repos\Cadoryx\Cadoryx.CommandLine\bin\Debug\net10.0\Cadoryx.CommandLine.dll
+  Cadoryx.AI.LmStudio -> C:\Users\yoiri\source\repos\Cadoryx\Cadoryx.AI.LmStudio\bin\Debug\net10.0\Cadoryx.AI.LmStudio.dll
+  Cadoryx.Agent -> C:\Users\yoiri\source\repos\Cadoryx\Cadoryx.Agent\bin\Debug\net10.0\Cadoryx.Agent.dll
+  Cadoryx.Db -> C:\Users\yoiri\source\repos\Cadoryx\Cadoryx.Db\bin\Debug\net10.0\Cadoryx.Db.dll
+  Cadoryx.Agent.Codex -> C:\Users\yoiri\source\repos\Cadoryx\Cadoryx.Agent.Codex\bin\Debug\net10.0\Cadoryx.Agent.Codex.dll
+  Cadoryx.Rendering -> C:\Users\yoiri\source\repos\Cadoryx\Cadoryx.Rendering\bin\Debug\net10.0\Cadoryx.Rendering.dll
+  Cadoryx.Kernel.Abstractions -> C:\Users\yoiri\source\repos\Cadoryx\Cadoryx.Kernel.Abstractions\bin\Debug\net10.0\Cadoryx.Kernel.Abstractions.dll
+  Cadoryx.Sketching -> C:\Users\yoiri\source\repos\Cadoryx\Cadoryx.Sketching\bin\Debug\net10.0\Cadoryx.Sketching.dll
+  Cadoryx.Lang -> C:\Users\yoiri\source\repos\Cadoryx\Cadoryx.Lang\bin\Debug\net10.0\Cadoryx.Lang.dll
+  Cadoryx.Commands -> C:\Users\yoiri\source\repos\Cadoryx\Cadoryx.Commands\bin\Debug\net10.0\Cadoryx.Commands.dll
+  Cadoryx.Kernel.Occt -> C:\Users\yoiri\source\repos\Cadoryx\Cadoryx.Kernel.Occt\bin\Debug\net10.0\Cadoryx.Kernel.Occt.dll
+  Cadoryx.IO -> C:\Users\yoiri\source\repos\Cadoryx\Cadoryx.IO\bin\Debug\net10.0\Cadoryx.IO.dll
+  Cadoryx.Editor -> C:\Users\yoiri\source\repos\Cadoryx\Cadoryx.Editor\bin\Debug\net10.0\Cadoryx.Editor.dll
+  Cadoryx.Rendering.Occt -> C:\Users\yoiri\source\repos\Cadoryx\Cadoryx.Rendering.Occt\bin\Debug\net10.0\Cadoryx.Rendering.Occt.dll
+  Cadoryx.Cli -> C:\Users\yoiri\source\repos\Cadoryx\Cadoryx.Cli\bin\Debug\net10.0\Cadoryx.Cli.dll
+  Cadoryx.ViewModels -> C:\Users\yoiri\source\repos\Cadoryx\Cadoryx.ViewModels\bin\Debug\net10.0\Cadoryx.ViewModels.dll
+  Cadoryx.Tests -> C:\Users\yoiri\source\repos\Cadoryx\Cadoryx.Tests\bin\Debug\net10.0\Cadoryx.Tests.dll
+
+Build succeeded.
+    0 Warning(s)
+    0 Error(s)
+
+Time Elapsed 00:00:12.20

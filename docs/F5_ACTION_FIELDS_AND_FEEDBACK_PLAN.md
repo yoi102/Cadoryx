@@ -1,5 +1,7 @@
 # F5：动作字段反馈与原供应商接续
 
+当前开发源码1078已修正[命令目录与专用工具路由](F5_COMMAND_CATALOG_ROUTES.md)，没有采用1077动作说明候选；原真实FAIL保持，最新提供方未复验。
+
 2026-10-13 当前：[最终provider2真实运行](../capability-evidence/diagnostics/af1077-provider2/verification.json)已审计，工程图1/8轮、工作区4/8轮均FAIL，实际native62匹配且资产0。工作区最后三个wire均有逐字节完整list.expected与stale恢复反馈，不能归因为身份被裁掉；工程图视图已创建，却继续非法DELETE/错误工具类型/历史文本调用而无正常回答。原提示、模型、8192/16轮预算保持，根因未证明。1077不合入生产。以下“尚未运行/排队”为此前检查点。
 
 当前最终候选以[1077完整WPF载荷](../capability-evidence/diagnostics/af1077-final-app/verification.json)为准：两配置WPF构建0，原45断言逐配置在实际WPF程序集上通过，provider2与Release WPF共享16文件逐字节一致。跨构建旧provider与WPF的16文件曾不一致，实际metadata显示Git文档提交号变化；旧载荷与前两队列记录保留，最终探针不重编项目引用。当前[第三版队列](../capability-evidence/diagnostics/af1077-final-app/queue-verification.json)等待仅续跑的生产根Debug6652；原Release完整6628/24已核验，下面旧队列11304已在原生执行前停止。新模型尚未执行，不能宣布字段说明已经解决真实工作流。

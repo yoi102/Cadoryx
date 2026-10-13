@@ -1,0 +1,15 @@
+{
+  "stages": [
+    {
+      "exitCode": 0,
+      "configuration": "Release",
+      "log": "artifacts/af1078-status-command-routing-1/root-build-Release.log"
+    },
+    {
+      "exitCode": 0,
+      "configuration": "Debug",
+      "log": "artifacts/af1078-status-command-routing-1/root-build-Debug.log"
+    }
+  ],
+  "nativeJobs": 0
+}

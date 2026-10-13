@@ -1,5 +1,9 @@
 # 3D CAD 产品缺口与实施规划
 
+2026-10-13，status243：[命令目录1078](../capability-evidence/diagnostics/af1078-command-catalog/verification.json)已合入开发：cad_status.commands只列cad_command实际可接受的入口，HISTORY/WORKSPACE/WS独立标明专用工具，使用同一映射保留原拒绝规则；终端注册/HELP、身份/游标守卫、12工具及schema未放宽。原生产程序集新12断言每配置8通过/4复现失败，候选及合入后根每配置57/57（原45加新12）通过；Tests依赖图及WPF两配置build0，SDK13/native62磁盘匹配公开85，没有加载原生模块。直接调用编译断言不是完整xunit；预计6664尚未全量发现/运行，真实模型未复验，原24 STEP失败不算修复。当前开发1078/公开85，1077说明候选未采用；1076两配置6652终态继续作为历史全量证据。SDK整体迁移原生验证继续，Cadoryx性能/D6/材质窗口待交还且须绑定最新最终载荷；A–F全部范围保持，G与清理暂缓。
+
+当前结论以status243为准；以下status242及更早是历史检查点。
+
 2026-10-13，status242：[生产根两配置完整6652](../capability-evidence/diagnostics/af1076-root-full/verification.json)均已终态，各6628通过/原24严格STEP失败/零跳过，无新增失败，原6619名称、新33及实际native62保持。Release未重跑，只接续此前尚未启动的Debug；原PID2348拦截时身份未完整记录，不推断原因。[1077最终provider2实际运行审计](../capability-evidence/diagnostics/af1077-provider2/verification.json)确认工程图完成1/8轮、工作区4/8轮，两场景FAIL且资产0，实际native62与冻结载荷准确；工作区最后三个HTTP请求完整保留当前expected四字段及原恢复反馈，排除这些请求的数据裁剪假设，根因尚未证明。1077不合入，生产仍1076/公开Preview.85。SDK已接管原生时段继续整体迁移，准确增量588 Manual StableId加4 Blocked StableId，调用点/410输出/28612声明分开统计，原生/包验证尚未交付；Cadoryx先做托管定位，性能/D6/材质窗口待交还。A–F全部范围继续，G与清理暂缓。
 
 当前结论以status242为准；以下status241及更早是保留的历史检查点。
@@ -125,7 +129,7 @@ M14–M17 已记录的待办主要关注性能、精确建模边界、工程交�
 
 ## 4. 推荐怎么做下一步
 
-当前正式已验子批保持 **A4 / B17 / C5 / D5 / E4 / F5g**。[B17解析偏移连接](B17_ANALYTICAL_OFFSET_JOINS_PLAN.md)已完成解析直线/圆弧/圆闭环与孔岛的限定本地契约；后续B18、A5及其余A–F仍有未完成项。[完整1076组合已合入开发生产源码](AF_SOURCE1076_DEVELOPMENT_INTEGRATION.md)，使用公开Preview.85；两配置各455专项通过，[合入后生产根各6652完整回归已终态](../capability-evidence/diagnostics/af1076-root-full/verification.json)，各6628通过/原24失败/零跳过，真实产品门禁继续。G暂缓。
+当前正式已验子批保持 **A4 / B17 / C5 / D5 / E4 / F5g**。[B17解析偏移连接](B17_ANALYTICAL_OFFSET_JOINS_PLAN.md)已完成解析直线/圆弧/圆闭环与孔岛的限定本地契约；后续B18、A5及其余A–F仍有未完成项。[完整1076组合已合入开发生产源码](AF_SOURCE1076_DEVELOPMENT_INTEGRATION.md)，当前增加1078命令目录修正、使用公开Preview.85；1076两配置各455专项通过，[合入后生产根各6652完整回归已终态](../capability-evidence/diagnostics/af1076-root-full/verification.json)，各6628通过/原24失败/零跳过，真实产品门禁继续。G暂缓。
 
 建议优先把“简单机械零件设计 → 装配 → 关联工程图 → 交换/安装交付”做成可靠闭环。下面是实施批次建议，不是新增阶段的完成声明，也不包含未经确定的工期。
 

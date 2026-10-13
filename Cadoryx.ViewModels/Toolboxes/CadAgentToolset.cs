@@ -95,13 +95,15 @@ internal sealed class CadAgentToolset : IAgentToolset
             return JsonSerializer.Serialize(document is null || document.IsDetached
                 ? new { active = false, name = "", documentId = "", stateId = "",
                     bodies = 0, parts = 0, features = 0, sketches = 0, drawings = 0, selected = 0,
-                    commands = commands.Commands.Select(x => x.Syntax).ToArray() }
+                    commands = commands.Commands.Where(x => DedicatedCommandTool(x.Name) is null).Select(x => x.Syntax).ToArray(),
+                    commandTools = new { HISTORY = "cad_history", WORKSPACE = "cad_workspace", WS = "cad_workspace" } }
                 : new { active = true, name = snapshot!.Name, documentId = snapshot.Id.ToString(),
                     stateId = snapshot.StateId.ToString(), bodies = snapshot.Bodies.Count,
                     parts = snapshot.Definitions.Values.OfType<Cadoryx.Db.PartDefinition>().Count(),
                     features = snapshot.Features.Count, sketches = snapshot.Sketches.Count,
                     drawings = snapshot.DrawingSheets.Count, selected = new CadCommandContext(document).SelectionCount,
-                    commands = commands.Commands.Select(x => x.Syntax).ToArray() });
+                    commands = commands.Commands.Where(x => DedicatedCommandTool(x.Name) is null).Select(x => x.Syntax).ToArray(),
+                    commandTools = new { HISTORY = "cad_history", WORKSPACE = "cad_workspace", WS = "cad_workspace" } });
         }
         if (call.Name is "cad_inspect" or "cad_select" or "cad_edit")
             return await CadAgentDocumentTools.ExecuteAsync(call, document, cancellationToken);
@@ -155,9 +157,9 @@ internal sealed class CadAgentToolset : IAgentToolset
         try
         {
             var first = CadCommandLineService.Tokenize(input).FirstOrDefault();
-            if (first?.Equals("HISTORY", StringComparison.OrdinalIgnoreCase) == true)
+            if (DedicatedCommandTool(first) == "cad_history")
                 return JsonSerializer.Serialize(new { success = false, message = "Use cad_history with the exact inspected cursor for history commands." });
-            if (first?.Equals("WORKSPACE", StringComparison.OrdinalIgnoreCase) == true || first?.Equals("WS", StringComparison.OrdinalIgnoreCase) == true)
+            if (DedicatedCommandTool(first) == "cad_workspace")
                 return JsonSerializer.Serialize(new { success = false, message = "Use cad_workspace with the exact inspected workspace identity." });
         }
         catch (FormatException error) { return JsonSerializer.Serialize(new { success = false, message = error.Message }); }
@@ -167,6 +169,14 @@ internal sealed class CadAgentToolset : IAgentToolset
             documentId = context is null ? null : document!.Session.Snapshot.Id.ToString(),
             stateId = context is null ? null : document!.Session.Snapshot.StateId.ToString() });
     }
+
+    // Keep the advertised cad_command catalog consistent with the execution guard.
+    private static string? DedicatedCommandTool(string? command) => command?.ToUpperInvariant() switch
+    {
+        "HISTORY" => "cad_history",
+        "WORKSPACE" or "WS" => "cad_workspace",
+        _ => null
+    };
 
     private static AiToolDefinition Define(string name, string description, string schema) =>
         // The transport emits compact JSON. Store that representation so context budgeting

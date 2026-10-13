@@ -1,0 +1,21 @@
+{
+  "productionApplied": false,
+  "stages": [
+    {
+      "log": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1078-status-command-routing-1\\build-restore.log",
+      "stage": "restore",
+      "exitCode": 0
+    },
+    {
+      "log": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1078-status-command-routing-1\\build-release.log",
+      "stage": "Release",
+      "exitCode": 0
+    },
+    {
+      "log": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1078-status-command-routing-1\\build-debug.log",
+      "stage": "Debug",
+      "exitCode": 0
+    }
+  ],
+  "nativeJobs": 0
+}

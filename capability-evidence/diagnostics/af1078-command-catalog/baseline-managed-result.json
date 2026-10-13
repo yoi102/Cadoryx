@@ -1,0 +1,409 @@
+{
+  "recordedAt": "2026-10-13T11:49:08.4441156+00:00",
+  "rows": [
+    {
+      "config": "Release",
+      "typeName": "AgentCommandCatalogTests",
+      "methodName": "StatusSeparatesDedicatedRoutesFromCallableCommandsWithoutChangingDocument",
+      "args": [
+        "none"
+      ],
+      "outcome": "Failed",
+      "exception": "Xunit.Sdk.EqualException: Assert.Equal() Failure: Collections differ\r\n           \u2193 (pos 0)\r\nExpected: [\u0022DATUM CONTRACT | {action-specific JSON} | DELETE|D\u0022\u00B7\u00B7\u00B7, \u0022MODEL {action,partId/name or id/revision,author JS\u0022\u00B7\u00B7\u00B7, \u0022DRAWING CONTRACT [type] | DRAWING {action,type,she\u0022\u00B7\u00B7\u00B7, \u0022FILE CONTRACT | {action:save/export/report/pdf/tem\u0022\u00B7\u00B7\u00B7, \u0022MATERIAL {action-specific JSON}\u0022, \u00B7\u00B7\u00B7]\r\nActual:   [\u0022HISTORY SUPPRESS|RESTORE feature-id revision | REO\u0022\u00B7\u00B7\u00B7, \u0022DATUM CONTRACT | {action-specific JSON} | DELETE|D\u0022\u00B7\u00B7\u00B7, \u0022MODEL {action,partId/name or id/revision,author JS\u0022\u00B7\u00B7\u00B7, \u0022DRAWING CONTRACT [type] | DRAWING {action,type,she\u0022\u00B7\u00B7\u00B7, \u0022FILE CONTRACT | {action:save/export/report/pdf/tem\u0022\u00B7\u00B7\u00B7, \u00B7\u00B7\u00B7]\r\n           \u2191 (pos 0)\r\n   at Xunit.Assert.Equal[T](T expected, T actual, IEqualityComparer\u00601 comparer) in /_/src/xunit.assert/Asserts/EqualityAsserts.cs:line 283\r\n   at Cadoryx.Tests.AgentCommandCatalogTests.StatusSeparatesDedicatedRoutesFromCallableCommandsWithoutChangingDocument(String state) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1078-status-command-routing-1\\workspace\\Cadoryx.Tests\\AgentCommandCatalogTests.cs:line 37\r\n   at Cadoryx.Tests.AgentCommandCatalogTests.StatusSeparatesDedicatedRoutesFromCallableCommandsWithoutChangingDocument(String state) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1078-status-command-routing-1\\workspace\\Cadoryx.Tests\\AgentCommandCatalogTests.cs:line 52\r\n   at Program.\u003C\u003Ec__DisplayClass0_1.\u003C\u003C\u003CMain\u003E$\u003Eg__Check|3\u003Ed.MoveNext() in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1078-status-command-routing-1\\probe-baseline\\Program.cs:line 41"
+    },
+    {
+      "config": "Release",
+      "typeName": "AgentCommandCatalogTests",
+      "methodName": "StatusSeparatesDedicatedRoutesFromCallableCommandsWithoutChangingDocument",
+      "args": [
+        "active"
+      ],
+      "outcome": "Failed",
+      "exception": "Xunit.Sdk.EqualException: Assert.Equal() Failure: Collections differ\r\n           \u2193 (pos 0)\r\nExpected: [\u0022DATUM CONTRACT | {action-specific JSON} | DELETE|D\u0022\u00B7\u00B7\u00B7, \u0022MODEL {action,partId/name or id/revision,author JS\u0022\u00B7\u00B7\u00B7, \u0022DRAWING CONTRACT [type] | DRAWING {action,type,she\u0022\u00B7\u00B7\u00B7, \u0022FILE CONTRACT | {action:save/export/report/pdf/tem\u0022\u00B7\u00B7\u00B7, \u0022MATERIAL {action-specific JSON}\u0022, \u00B7\u00B7\u00B7]\r\nActual:   [\u0022HISTORY SUPPRESS|RESTORE feature-id revision | REO\u0022\u00B7\u00B7\u00B7, \u0022DATUM CONTRACT | {action-specific JSON} | DELETE|D\u0022\u00B7\u00B7\u00B7, \u0022MODEL {action,partId/name or id/revision,author JS\u0022\u00B7\u00B7\u00B7, \u0022DRAWING CONTRACT [type] | DRAWING {action,type,she\u0022\u00B7\u00B7\u00B7, \u0022FILE CONTRACT | {action:save/export/report/pdf/tem\u0022\u00B7\u00B7\u00B7, \u00B7\u00B7\u00B7]\r\n           \u2191 (pos 0)\r\n   at Xunit.Assert.Equal[T](T expected, T actual, IEqualityComparer\u00601 comparer) in /_/src/xunit.assert/Asserts/EqualityAsserts.cs:line 283\r\n   at Cadoryx.Tests.AgentCommandCatalogTests.StatusSeparatesDedicatedRoutesFromCallableCommandsWithoutChangingDocument(String state) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1078-status-command-routing-1\\workspace\\Cadoryx.Tests\\AgentCommandCatalogTests.cs:line 37\r\n   at Cadoryx.Tests.AgentCommandCatalogTests.StatusSeparatesDedicatedRoutesFromCallableCommandsWithoutChangingDocument(String state) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1078-status-command-routing-1\\workspace\\Cadoryx.Tests\\AgentCommandCatalogTests.cs:line 52\r\n   at Program.\u003C\u003Ec__DisplayClass0_1.\u003C\u003C\u003CMain\u003E$\u003Eg__Check|3\u003Ed.MoveNext() in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1078-status-command-routing-1\\probe-baseline\\Program.cs:line 41"
+    },
+    {
+      "config": "Release",
+      "typeName": "AgentCommandCatalogTests",
+      "methodName": "StatusSeparatesDedicatedRoutesFromCallableCommandsWithoutChangingDocument",
+      "args": [
+        "detached"
+      ],
+      "outcome": "Failed",
+      "exception": "Xunit.Sdk.EqualException: Assert.Equal() Failure: Collections differ\r\n           \u2193 (pos 0)\r\nExpected: [\u0022DATUM CONTRACT | {action-specific JSON} | DELETE|D\u0022\u00B7\u00B7\u00B7, \u0022MODEL {action,partId/name or id/revision,author JS\u0022\u00B7\u00B7\u00B7, \u0022DRAWING CONTRACT [type] | DRAWING {action,type,she\u0022\u00B7\u00B7\u00B7, \u0022FILE CONTRACT | {action:save/export/report/pdf/tem\u0022\u00B7\u00B7\u00B7, \u0022MATERIAL {action-specific JSON}\u0022, \u00B7\u00B7\u00B7]\r\nActual:   [\u0022HISTORY SUPPRESS|RESTORE feature-id revision | REO\u0022\u00B7\u00B7\u00B7, \u0022DATUM CONTRACT | {action-specific JSON} | DELETE|D\u0022\u00B7\u00B7\u00B7, \u0022MODEL {action,partId/name or id/revision,author JS\u0022\u00B7\u00B7\u00B7, \u0022DRAWING CONTRACT [type] | DRAWING {action,type,she\u0022\u00B7\u00B7\u00B7, \u0022FILE CONTRACT | {action:save/export/report/pdf/tem\u0022\u00B7\u00B7\u00B7, \u00B7\u00B7\u00B7]\r\n           \u2191 (pos 0)\r\n   at Xunit.Assert.Equal[T](T expected, T actual, IEqualityComparer\u00601 comparer) in /_/src/xunit.assert/Asserts/EqualityAsserts.cs:line 283\r\n   at Cadoryx.Tests.AgentCommandCatalogTests.StatusSeparatesDedicatedRoutesFromCallableCommandsWithoutChangingDocument(String state) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1078-status-command-routing-1\\workspace\\Cadoryx.Tests\\AgentCommandCatalogTests.cs:line 37\r\n   at Cadoryx.Tests.AgentCommandCatalogTests.StatusSeparatesDedicatedRoutesFromCallableCommandsWithoutChangingDocument(String state) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1078-status-command-routing-1\\workspace\\Cadoryx.Tests\\AgentCommandCatalogTests.cs:line 52\r\n   at Program.\u003C\u003Ec__DisplayClass0_1.\u003C\u003C\u003CMain\u003E$\u003Eg__Check|3\u003Ed.MoveNext() in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1078-status-command-routing-1\\probe-baseline\\Program.cs:line 41"
+    },
+    {
+      "config": "Release",
+      "typeName": "AgentCommandCatalogTests",
+      "methodName": "DedicatedCommandsRemainRejectedBeforeDelegation",
+      "args": [
+        "HISTORY END",
+        "cad_history"
+      ],
+      "outcome": "Passed",
+      "elapsedMs": 10
+    },
+    {
+      "config": "Release",
+      "typeName": "AgentCommandCatalogTests",
+      "methodName": "DedicatedCommandsRemainRejectedBeforeDelegation",
+      "args": [
+        "history END",
+        "cad_history"
+      ],
+      "outcome": "Passed",
+      "elapsedMs": 0
+    },
+    {
+      "config": "Release",
+      "typeName": "AgentCommandCatalogTests",
+      "methodName": "DedicatedCommandsRemainRejectedBeforeDelegation",
+      "args": [
+        "\u0022HISTORY\u0022 END",
+        "cad_history"
+      ],
+      "outcome": "Passed",
+      "elapsedMs": 0
+    },
+    {
+      "config": "Release",
+      "typeName": "AgentCommandCatalogTests",
+      "methodName": "DedicatedCommandsRemainRejectedBeforeDelegation",
+      "args": [
+        "WORKSPACE LIST",
+        "cad_workspace"
+      ],
+      "outcome": "Passed",
+      "elapsedMs": 0
+    },
+    {
+      "config": "Release",
+      "typeName": "AgentCommandCatalogTests",
+      "methodName": "DedicatedCommandsRemainRejectedBeforeDelegation",
+      "args": [
+        "workspace LIST",
+        "cad_workspace"
+      ],
+      "outcome": "Passed",
+      "elapsedMs": 0
+    },
+    {
+      "config": "Release",
+      "typeName": "AgentCommandCatalogTests",
+      "methodName": "DedicatedCommandsRemainRejectedBeforeDelegation",
+      "args": [
+        "WS LIST",
+        "cad_workspace"
+      ],
+      "outcome": "Passed",
+      "elapsedMs": 0
+    },
+    {
+      "config": "Release",
+      "typeName": "AgentCommandCatalogTests",
+      "methodName": "DedicatedCommandsRemainRejectedBeforeDelegation",
+      "args": [
+        "ws LIST",
+        "cad_workspace"
+      ],
+      "outcome": "Passed",
+      "elapsedMs": 0
+    },
+    {
+      "config": "Release",
+      "typeName": "AgentCommandCatalogTests",
+      "methodName": "DedicatedCommandsRemainRejectedBeforeDelegation",
+      "args": [
+        "\u0022WS\u0022 LIST",
+        "cad_workspace"
+      ],
+      "outcome": "Passed",
+      "elapsedMs": 0
+    },
+    {
+      "config": "Release",
+      "typeName": "AgentCommandCatalogTests",
+      "methodName": "CatalogFilteringUsesExactCaseInsensitiveNamesAndDoesNotRemoveOtherCommands",
+      "args": [],
+      "outcome": "Failed",
+      "exception": "Xunit.Sdk.EqualException: Assert.Equal() Failure: Collections differ\r\n                                                          \u2193 (pos 0)\r\nExpected: string[]                                       [\u0022HISTORY_HELP\u0022, \u0022WSINFO\u0022]\r\nActual:   IEnumerableSelectIterator\u003CJsonElement, string\u003E [\u0022history END\u0022, \u0022workspace LIST\u0022, \u0022ws LIST\u0022, \u0022HISTORY_HELP\u0022, \u0022WSINFO\u0022]\r\n                                                          \u2191 (pos 0)\r\n   at Xunit.Assert.Equal[T](T expected, T actual, IEqualityComparer\u00601 comparer) in /_/src/xunit.assert/Asserts/EqualityAsserts.cs:line 283\r\n   at Cadoryx.Tests.AgentCommandCatalogTests.CatalogFilteringUsesExactCaseInsensitiveNamesAndDoesNotRemoveOtherCommands() in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1078-status-command-routing-1\\workspace\\Cadoryx.Tests\\AgentCommandCatalogTests.cs:line 80\r\n   at Program.\u003C\u003Ec__DisplayClass0_1.\u003C\u003C\u003CMain\u003E$\u003Eg__Check|3\u003Ed.MoveNext() in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1078-status-command-routing-1\\probe-baseline\\Program.cs:line 41"
+    },
+    {
+      "config": "Debug",
+      "typeName": "AgentCommandCatalogTests",
+      "methodName": "StatusSeparatesDedicatedRoutesFromCallableCommandsWithoutChangingDocument",
+      "args": [
+        "none"
+      ],
+      "outcome": "Failed",
+      "exception": "Xunit.Sdk.EqualException: Assert.Equal() Failure: Collections differ\r\n           \u2193 (pos 0)\r\nExpected: [\u0022DATUM CONTRACT | {action-specific JSON} | DELETE|D\u0022\u00B7\u00B7\u00B7, \u0022MODEL {action,partId/name or id/revision,author JS\u0022\u00B7\u00B7\u00B7, \u0022DRAWING CONTRACT [type] | DRAWING {action,type,she\u0022\u00B7\u00B7\u00B7, \u0022FILE CONTRACT | {action:save/export/report/pdf/tem\u0022\u00B7\u00B7\u00B7, \u0022MATERIAL {action-specific JSON}\u0022, \u00B7\u00B7\u00B7]\r\nActual:   [\u0022HISTORY SUPPRESS|RESTORE feature-id revision | REO\u0022\u00B7\u00B7\u00B7, \u0022DATUM CONTRACT | {action-specific JSON} | DELETE|D\u0022\u00B7\u00B7\u00B7, \u0022MODEL {action,partId/name or id/revision,author JS\u0022\u00B7\u00B7\u00B7, \u0022DRAWING CONTRACT [type] | DRAWING {action,type,she\u0022\u00B7\u00B7\u00B7, \u0022FILE CONTRACT | {action:save/export/report/pdf/tem\u0022\u00B7\u00B7\u00B7, \u00B7\u00B7\u00B7]\r\n           \u2191 (pos 0)\r\n   at Xunit.Assert.Equal[T](T expected, T actual, IEqualityComparer\u00601 comparer) in /_/src/xunit.assert/Asserts/EqualityAsserts.cs:line 283\r\n   at Cadoryx.Tests.AgentCommandCatalogTests.StatusSeparatesDedicatedRoutesFromCallableCommandsWithoutChangingDocument(String state) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1078-status-command-routing-1\\workspace\\Cadoryx.Tests\\AgentCommandCatalogTests.cs:line 37\r\n   at Cadoryx.Tests.AgentCommandCatalogTests.StatusSeparatesDedicatedRoutesFromCallableCommandsWithoutChangingDocument(String state) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1078-status-command-routing-1\\workspace\\Cadoryx.Tests\\AgentCommandCatalogTests.cs:line 52\r\n   at Program.\u003C\u003Ec__DisplayClass0_1.\u003C\u003C\u003CMain\u003E$\u003Eg__Check|3\u003Ed.MoveNext() in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1078-status-command-routing-1\\probe-baseline\\Program.cs:line 41"
+    },
+    {
+      "config": "Debug",
+      "typeName": "AgentCommandCatalogTests",
+      "methodName": "StatusSeparatesDedicatedRoutesFromCallableCommandsWithoutChangingDocument",
+      "args": [
+        "active"
+      ],
+      "outcome": "Failed",
+      "exception": "Xunit.Sdk.EqualException: Assert.Equal() Failure: Collections differ\r\n           \u2193 (pos 0)\r\nExpected: [\u0022DATUM CONTRACT | {action-specific JSON} | DELETE|D\u0022\u00B7\u00B7\u00B7, \u0022MODEL {action,partId/name or id/revision,author JS\u0022\u00B7\u00B7\u00B7, \u0022DRAWING CONTRACT [type] | DRAWING {action,type,she\u0022\u00B7\u00B7\u00B7, \u0022FILE CONTRACT | {action:save/export/report/pdf/tem\u0022\u00B7\u00B7\u00B7, \u0022MATERIAL {action-specific JSON}\u0022, \u00B7\u00B7\u00B7]\r\nActual:   [\u0022HISTORY SUPPRESS|RESTORE feature-id revision | REO\u0022\u00B7\u00B7\u00B7, \u0022DATUM CONTRACT | {action-specific JSON} | DELETE|D\u0022\u00B7\u00B7\u00B7, \u0022MODEL {action,partId/name or id/revision,author JS\u0022\u00B7\u00B7\u00B7, \u0022DRAWING CONTRACT [type] | DRAWING {action,type,she\u0022\u00B7\u00B7\u00B7, \u0022FILE CONTRACT | {action:save/export/report/pdf/tem\u0022\u00B7\u00B7\u00B7, \u00B7\u00B7\u00B7]\r\n           \u2191 (pos 0)\r\n   at Xunit.Assert.Equal[T](T expected, T actual, IEqualityComparer\u00601 comparer) in /_/src/xunit.assert/Asserts/EqualityAsserts.cs:line 283\r\n   at Cadoryx.Tests.AgentCommandCatalogTests.StatusSeparatesDedicatedRoutesFromCallableCommandsWithoutChangingDocument(String state) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1078-status-command-routing-1\\workspace\\Cadoryx.Tests\\AgentCommandCatalogTests.cs:line 37\r\n   at Cadoryx.Tests.AgentCommandCatalogTests.StatusSeparatesDedicatedRoutesFromCallableCommandsWithoutChangingDocument(String state) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1078-status-command-routing-1\\workspace\\Cadoryx.Tests\\AgentCommandCatalogTests.cs:line 52\r\n   at Program.\u003C\u003Ec__DisplayClass0_1.\u003C\u003C\u003CMain\u003E$\u003Eg__Check|3\u003Ed.MoveNext() in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1078-status-command-routing-1\\probe-baseline\\Program.cs:line 41"
+    },
+    {
+      "config": "Debug",
+      "typeName": "AgentCommandCatalogTests",
+      "methodName": "StatusSeparatesDedicatedRoutesFromCallableCommandsWithoutChangingDocument",
+      "args": [
+        "detached"
+      ],
+      "outcome": "Failed",
+      "exception": "Xunit.Sdk.EqualException: Assert.Equal() Failure: Collections differ\r\n           \u2193 (pos 0)\r\nExpected: [\u0022DATUM CONTRACT | {action-specific JSON} | DELETE|D\u0022\u00B7\u00B7\u00B7, \u0022MODEL {action,partId/name or id/revision,author JS\u0022\u00B7\u00B7\u00B7, \u0022DRAWING CONTRACT [type] | DRAWING {action,type,she\u0022\u00B7\u00B7\u00B7, \u0022FILE CONTRACT | {action:save/export/report/pdf/tem\u0022\u00B7\u00B7\u00B7, \u0022MATERIAL {action-specific JSON}\u0022, \u00B7\u00B7\u00B7]\r\nActual:   [\u0022HISTORY SUPPRESS|RESTORE feature-id revision | REO\u0022\u00B7\u00B7\u00B7, \u0022DATUM CONTRACT | {action-specific JSON} | DELETE|D\u0022\u00B7\u00B7\u00B7, \u0022MODEL {action,partId/name or id/revision,author JS\u0022\u00B7\u00B7\u00B7, \u0022DRAWING CONTRACT [type] | DRAWING {action,type,she\u0022\u00B7\u00B7\u00B7, \u0022FILE CONTRACT | {action:save/export/report/pdf/tem\u0022\u00B7\u00B7\u00B7, \u00B7\u00B7\u00B7]\r\n           \u2191 (pos 0)\r\n   at Xunit.Assert.Equal[T](T expected, T actual, IEqualityComparer\u00601 comparer) in /_/src/xunit.assert/Asserts/EqualityAsserts.cs:line 283\r\n   at Cadoryx.Tests.AgentCommandCatalogTests.StatusSeparatesDedicatedRoutesFromCallableCommandsWithoutChangingDocument(String state) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1078-status-command-routing-1\\workspace\\Cadoryx.Tests\\AgentCommandCatalogTests.cs:line 37\r\n   at Cadoryx.Tests.AgentCommandCatalogTests.StatusSeparatesDedicatedRoutesFromCallableCommandsWithoutChangingDocument(String state) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1078-status-command-routing-1\\workspace\\Cadoryx.Tests\\AgentCommandCatalogTests.cs:line 52\r\n   at Program.\u003C\u003Ec__DisplayClass0_1.\u003C\u003C\u003CMain\u003E$\u003Eg__Check|3\u003Ed.MoveNext() in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1078-status-command-routing-1\\probe-baseline\\Program.cs:line 41"
+    },
+    {
+      "config": "Debug",
+      "typeName": "AgentCommandCatalogTests",
+      "methodName": "DedicatedCommandsRemainRejectedBeforeDelegation",
+      "args": [
+        "HISTORY END",
+        "cad_history"
+      ],
+      "outcome": "Passed",
+      "elapsedMs": 5
+    },
+    {
+      "config": "Debug",
+      "typeName": "AgentCommandCatalogTests",
+      "methodName": "DedicatedCommandsRemainRejectedBeforeDelegation",
+      "args": [
+        "history END",
+        "cad_history"
+      ],
+      "outcome": "Passed",
+      "elapsedMs": 0
+    },
+    {
+      "config": "Debug",
+      "typeName": "AgentCommandCatalogTests",
+      "methodName": "DedicatedCommandsRemainRejectedBeforeDelegation",
+      "args": [
+        "\u0022HISTORY\u0022 END",
+        "cad_history"
+      ],
+      "outcome": "Passed",
+      "elapsedMs": 0
+    },
+    {
+      "config": "Debug",
+      "typeName": "AgentCommandCatalogTests",
+      "methodName": "DedicatedCommandsRemainRejectedBeforeDelegation",
+      "args": [
+        "WORKSPACE LIST",
+        "cad_workspace"
+      ],
+      "outcome": "Passed",
+      "elapsedMs": 0
+    },
+    {
+      "config": "Debug",
+      "typeName": "AgentCommandCatalogTests",
+      "methodName": "DedicatedCommandsRemainRejectedBeforeDelegation",
+      "args": [
+        "workspace LIST",
+        "cad_workspace"
+      ],
+      "outcome": "Passed",
+      "elapsedMs": 0
+    },
+    {
+      "config": "Debug",
+      "typeName": "AgentCommandCatalogTests",
+      "methodName": "DedicatedCommandsRemainRejectedBeforeDelegation",
+      "args": [
+        "WS LIST",
+        "cad_workspace"
+      ],
+      "outcome": "Passed",
+      "elapsedMs": 0
+    },
+    {
+      "config": "Debug",
+      "typeName": "AgentCommandCatalogTests",
+      "methodName": "DedicatedCommandsRemainRejectedBeforeDelegation",
+      "args": [
+        "ws LIST",
+        "cad_workspace"
+      ],
+      "outcome": "Passed",
+      "elapsedMs": 0
+    },
+    {
+      "config": "Debug",
+      "typeName": "AgentCommandCatalogTests",
+      "methodName": "DedicatedCommandsRemainRejectedBeforeDelegation",
+      "args": [
+        "\u0022WS\u0022 LIST",
+        "cad_workspace"
+      ],
+      "outcome": "Passed",
+      "elapsedMs": 0
+    },
+    {
+      "config": "Debug",
+      "typeName": "AgentCommandCatalogTests",
+      "methodName": "CatalogFilteringUsesExactCaseInsensitiveNamesAndDoesNotRemoveOtherCommands",
+      "args": [],
+      "outcome": "Failed",
+      "exception": "Xunit.Sdk.EqualException: Assert.Equal() Failure: Collections differ\r\n                                                          \u2193 (pos 0)\r\nExpected: string[]                                       [\u0022HISTORY_HELP\u0022, \u0022WSINFO\u0022]\r\nActual:   IEnumerableSelectIterator\u003CJsonElement, string\u003E [\u0022history END\u0022, \u0022workspace LIST\u0022, \u0022ws LIST\u0022, \u0022HISTORY_HELP\u0022, \u0022WSINFO\u0022]\r\n                                                          \u2191 (pos 0)\r\n   at Xunit.Assert.Equal[T](T expected, T actual, IEqualityComparer\u00601 comparer) in /_/src/xunit.assert/Asserts/EqualityAsserts.cs:line 283\r\n   at Cadoryx.Tests.AgentCommandCatalogTests.CatalogFilteringUsesExactCaseInsensitiveNamesAndDoesNotRemoveOtherCommands() in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1078-status-command-routing-1\\workspace\\Cadoryx.Tests\\AgentCommandCatalogTests.cs:line 80\r\n   at Program.\u003C\u003Ec__DisplayClass0_1.\u003C\u003C\u003CMain\u003E$\u003Eg__Check|3\u003Ed.MoveNext() in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1078-status-command-routing-1\\probe-baseline\\Program.cs:line 41"
+    }
+  ],
+  "configurations": [
+    {
+      "config": "Release",
+      "raw": "{\u0022type\u0022:\u0022object\u0022,\u0022properties\u0022:{\u0022action\u0022:{\u0022type\u0022:\u0022string\u0022,\u0022description\u0022:\u0022Except contract (inspect_sources too): documentId/stateId required.\u0022,\u0022enum\u0022:[\u0022contract\u0022,\u0022inspect\u0022,\u0022inspect_sources\u0022,\u0022create\u0022,\u0022edit\u0022,\u0022reselect\u0022,\u0022delete\u0022,\u0022set_parts_table\u0022,\u0022set_zones\u0022,\u0022refresh\u0022,\u0022save_template\u0022,\u0022apply_template\u0022,\u0022import_template\u0022,\u0022detach_coordinates\u0022]},\u0022type\u0022:{\u0022type\u0022:\u0022string\u0022,\u0022enum\u0022:[\u0022sheet\u0022,\u0022view\u0022,\u0022dimension\u0022,\u0022datum\u0022,\u0022control_frame\u0022,\u0022balloon\u0022,\u0022hole_table\u0022,\u0022field\u0022,\u0022note\u0022,\u0022template\u0022,\u0022parts_table\u0022,\u0022zones\u0022],\u0022description\u0022:\u0022Required for inspect.\u0022},\u0022documentId\u0022:{\u0022type\u0022:\u0022string\u0022,\u0022format\u0022:\u0022uuid\u0022,\u0022description\u0022:\u0022REQUIRED except contract: cad_status.documentId.\u0022},\u0022stateId\u0022:{\u0022type\u0022:\u0022string\u0022,\u0022format\u0022:\u0022uuid\u0022,\u0022description\u0022:\u0022REQUIRED except contract: cad_status.stateId.\u0022},\u0022sheetId\u0022:{\u0022type\u0022:\u0022string\u0022,\u0022format\u0022:\u0022uuid\u0022},\u0022id\u0022:{\u0022type\u0022:\u0022string\u0022,\u0022format\u0022:\u0022uuid\u0022},\u0022name\u0022:{\u0022type\u0022:\u0022string\u0022,\u0022maxLength\u0022:64,\u0022description\u0022:\u0022save_template only; else authorJson.\u0022},\u0022path\u0022:{\u0022type\u0022:\u0022string\u0022,\u0022maxLength\u0022:8192,\u0022description\u0022:\u0022Full occurrences.items[].path\u0022},\u0022bodyId\u0022:{\u0022type\u0022:\u0022string\u0022,\u0022format\u0022:\u0022uuid\u0022},\u0022revision\u0022:{\u0022type\u0022:\u0022string\u0022,\u0022format\u0022:\u0022uuid\u0022},\u0022authorJson\u0022:{\u0022type\u0022:\u0022string\u0022,\u0022minLength\u0022:2,\u0022maxLength\u0022:65536},\u0022offset\u0022:{\u0022type\u0022:\u0022integer\u0022,\u0022minimum\u0022:0,\u0022maximum\u0022:100000},\u0022limit\u0022:{\u0022type\u0022:\u0022integer\u0022,\u0022minimum\u0022:1,\u0022maximum\u0022:50}},\u0022required\u0022:[\u0022action\u0022],\u0022additionalProperties\u0022:false}",
+      "wire": "{\u0022type\u0022:\u0022object\u0022,\u0022properties\u0022:{\u0022action\u0022:{\u0022type\u0022:\u0022string\u0022,\u0022description\u0022:\u0022Except contract (inspect_sources too): documentId/stateId required.\u0022,\u0022enum\u0022:[\u0022contract\u0022,\u0022inspect\u0022,\u0022inspect_sources\u0022,\u0022create\u0022,\u0022edit\u0022,\u0022reselect\u0022,\u0022delete\u0022,\u0022set_parts_table\u0022,\u0022set_zones\u0022,\u0022refresh\u0022,\u0022save_template\u0022,\u0022apply_template\u0022,\u0022import_template\u0022,\u0022detach_coordinates\u0022]},\u0022type\u0022:{\u0022type\u0022:\u0022string\u0022,\u0022enum\u0022:[\u0022sheet\u0022,\u0022view\u0022,\u0022dimension\u0022,\u0022datum\u0022,\u0022control_frame\u0022,\u0022balloon\u0022,\u0022hole_table\u0022,\u0022field\u0022,\u0022note\u0022,\u0022template\u0022,\u0022parts_table\u0022,\u0022zones\u0022],\u0022description\u0022:\u0022Required for inspect.\u0022},\u0022documentId\u0022:{\u0022type\u0022:\u0022string\u0022,\u0022format\u0022:\u0022uuid\u0022,\u0022description\u0022:\u0022REQUIRED except contract: cad_status.documentId.\u0022},\u0022stateId\u0022:{\u0022type\u0022:\u0022string\u0022,\u0022format\u0022:\u0022uuid\u0022,\u0022description\u0022:\u0022REQUIRED except contract: cad_status.stateId.\u0022},\u0022sheetId\u0022:{\u0022type\u0022:\u0022string\u0022,\u0022format\u0022:\u0022uuid\u0022},\u0022id\u0022:{\u0022type\u0022:\u0022string\u0022,\u0022format\u0022:\u0022uuid\u0022},\u0022name\u0022:{\u0022type\u0022:\u0022string\u0022,\u0022maxLength\u0022:64,\u0022description\u0022:\u0022save_template only; else authorJson.\u0022},\u0022path\u0022:{\u0022type\u0022:\u0022string\u0022,\u0022maxLength\u0022:8192,\u0022description\u0022:\u0022Full occurrences.items[].path\u0022},\u0022bodyId\u0022:{\u0022type\u0022:\u0022string\u0022,\u0022format\u0022:\u0022uuid\u0022},\u0022revision\u0022:{\u0022type\u0022:\u0022string\u0022,\u0022format\u0022:\u0022uuid\u0022},\u0022authorJson\u0022:{\u0022type\u0022:\u0022string\u0022,\u0022minLength\u0022:2,\u0022maxLength\u0022:65536},\u0022offset\u0022:{\u0022type\u0022:\u0022integer\u0022,\u0022minimum\u0022:0,\u0022maximum\u0022:100000},\u0022limit\u0022:{\u0022type\u0022:\u0022integer\u0022,\u0022minimum\u0022:1,\u0022maximum\u0022:50}},\u0022required\u0022:[\u0022action\u0022],\u0022additionalProperties\u0022:false}",
+      "nativeModules": [],
+      "assemblies": [
+        {
+          "name": "Cadoryx.Tests",
+          "location": "C:/Users/yoiri/source/repos/Cadoryx\\artifacts/af1078-status-command-routing-1\\workspace/Cadoryx.Tests/bin\\Release\\net10.0\\Cadoryx.Tests.dll",
+          "sha256": "18B0E6D7107F6616AC750DE929FB9485A7DE481BE5DA243120470623CBF93446"
+        },
+        {
+          "name": "Cadoryx.ViewModels",
+          "location": "C:/Users/yoiri/source/repos/Cadoryx\\Cadoryx.ViewModels/bin\\Release\\net10.0\\Cadoryx.ViewModels.dll",
+          "sha256": "8F7628E431E480AE08CDC8C58205E768E119E5C931A3854EE7C485553E5B91EA"
+        },
+        {
+          "name": "Cadoryx.AI.LmStudio",
+          "location": "C:/Users/yoiri/source/repos/Cadoryx\\Cadoryx.ViewModels/bin\\Release\\net10.0\\Cadoryx.AI.LmStudio.dll",
+          "sha256": "4208BB92C28275B17EDAAAEB0794BBD6FF521E018410FB4651C50F41B6CECF00"
+        },
+        {
+          "name": "Cadoryx.Agent",
+          "location": "C:/Users/yoiri/source/repos/Cadoryx\\Cadoryx.ViewModels/bin\\Release\\net10.0\\Cadoryx.Agent.dll",
+          "sha256": "3A7A2F973C56DCAE1B8A9B8D23D302B7A572F2D471766FAD0503AF3943E146CA"
+        },
+        {
+          "name": "Cadoryx.AI.Contracts",
+          "location": "C:/Users/yoiri/source/repos/Cadoryx\\Cadoryx.ViewModels/bin\\Release\\net10.0\\Cadoryx.AI.Contracts.dll",
+          "sha256": "9B69A8EF1F587243B94C920CBB56D98C2BE9C872F7239DD2B9D20DEDE2DB616D"
+        },
+        {
+          "name": "Cadoryx.Db",
+          "location": "C:/Users/yoiri/source/repos/Cadoryx\\Cadoryx.ViewModels/bin\\Release\\net10.0\\Cadoryx.Db.dll",
+          "sha256": "1B474439C1A734285A551D111BBBEFB136825DD823D1010B0D193D906C767676"
+        },
+        {
+          "name": "Cadoryx.Editor",
+          "location": "C:/Users/yoiri/source/repos/Cadoryx\\Cadoryx.ViewModels/bin\\Release\\net10.0\\Cadoryx.Editor.dll",
+          "sha256": "A22F71F0D99FD9BCE527C0A7B43756CF1887D06F09A1E09DE471571834FD132D"
+        },
+        {
+          "name": "Cadoryx.Kernel.Abstractions",
+          "location": "C:/Users/yoiri/source/repos/Cadoryx\\Cadoryx.ViewModels/bin\\Release\\net10.0\\Cadoryx.Kernel.Abstractions.dll",
+          "sha256": "A2E06A6BC4E42A88813D0AC5BFFEE5EF418B6A763E91D4B4FAB2840D4CEF3B92"
+        },
+        {
+          "name": "Cadoryx.CommandLine",
+          "location": "C:/Users/yoiri/source/repos/Cadoryx\\Cadoryx.ViewModels/bin\\Release\\net10.0\\Cadoryx.CommandLine.dll",
+          "sha256": "27BE06965C761C4656AA2060C2D1F8CC450BC3207DB31D291541804206896554"
+        },
+        {
+          "name": "Cadoryx.Rendering",
+          "location": "C:/Users/yoiri/source/repos/Cadoryx\\Cadoryx.ViewModels/bin\\Release\\net10.0\\Cadoryx.Rendering.dll",
+          "sha256": "EF38B56341C1E6C05545507C54C7BF03C308C8C5B059101FEE56EE830313A1B6"
+        },
+        {
+          "name": "Cadoryx.ViewModels.Services",
+          "location": "C:/Users/yoiri/source/repos/Cadoryx\\Cadoryx.ViewModels/bin\\Release\\net10.0\\Cadoryx.ViewModels.Services.dll",
+          "sha256": "78DE35D53853F58300B1720F6E369B571B32E550126CB2AF6728E55EAC622D86"
+        },
+        {
+          "name": "Cadoryx.Lang",
+          "location": "C:/Users/yoiri/source/repos/Cadoryx\\Cadoryx.ViewModels/bin\\Release\\net10.0\\Cadoryx.Lang.dll",
+          "sha256": "FEE399B17206B90E27402FE95BBC0C3DD169ED02210171FA20B6C08D40C7EFD2"
+        },
+        {
+          "name": "Cadoryx.Commands",
+          "location": "C:/Users/yoiri/source/repos/Cadoryx\\Cadoryx.ViewModels/bin\\Release\\net10.0\\Cadoryx.Commands.dll",
+          "sha256": "4B74B5092F92A755F5A8C48B19EC821CE3A79FD1BBBF4A7F43662A8E9BE9CCA3"
+        }
+      ]
+    },
+    {
+      "config": "Debug",
+      "raw": "{\u0022type\u0022:\u0022object\u0022,\u0022properties\u0022:{\u0022action\u0022:{\u0022type\u0022:\u0022string\u0022,\u0022description\u0022:\u0022Except contract (inspect_sources too): documentId/stateId required.\u0022,\u0022enum\u0022:[\u0022contract\u0022,\u0022inspect\u0022,\u0022inspect_sources\u0022,\u0022create\u0022,\u0022edit\u0022,\u0022reselect\u0022,\u0022delete\u0022,\u0022set_parts_table\u0022,\u0022set_zones\u0022,\u0022refresh\u0022,\u0022save_template\u0022,\u0022apply_template\u0022,\u0022import_template\u0022,\u0022detach_coordinates\u0022]},\u0022type\u0022:{\u0022type\u0022:\u0022string\u0022,\u0022enum\u0022:[\u0022sheet\u0022,\u0022view\u0022,\u0022dimension\u0022,\u0022datum\u0022,\u0022control_frame\u0022,\u0022balloon\u0022,\u0022hole_table\u0022,\u0022field\u0022,\u0022note\u0022,\u0022template\u0022,\u0022parts_table\u0022,\u0022zones\u0022],\u0022description\u0022:\u0022Required for inspect.\u0022},\u0022documentId\u0022:{\u0022type\u0022:\u0022string\u0022,\u0022format\u0022:\u0022uuid\u0022,\u0022description\u0022:\u0022REQUIRED except contract: cad_status.documentId.\u0022},\u0022stateId\u0022:{\u0022type\u0022:\u0022string\u0022,\u0022format\u0022:\u0022uuid\u0022,\u0022description\u0022:\u0022REQUIRED except contract: cad_status.stateId.\u0022},\u0022sheetId\u0022:{\u0022type\u0022:\u0022string\u0022,\u0022format\u0022:\u0022uuid\u0022},\u0022id\u0022:{\u0022type\u0022:\u0022string\u0022,\u0022format\u0022:\u0022uuid\u0022},\u0022name\u0022:{\u0022type\u0022:\u0022string\u0022,\u0022maxLength\u0022:64,\u0022description\u0022:\u0022save_template only; else authorJson.\u0022},\u0022path\u0022:{\u0022type\u0022:\u0022string\u0022,\u0022maxLength\u0022:8192,\u0022description\u0022:\u0022Full occurrences.items[].path\u0022},\u0022bodyId\u0022:{\u0022type\u0022:\u0022string\u0022,\u0022format\u0022:\u0022uuid\u0022},\u0022revision\u0022:{\u0022type\u0022:\u0022string\u0022,\u0022format\u0022:\u0022uuid\u0022},\u0022authorJson\u0022:{\u0022type\u0022:\u0022string\u0022,\u0022minLength\u0022:2,\u0022maxLength\u0022:65536},\u0022offset\u0022:{\u0022type\u0022:\u0022integer\u0022,\u0022minimum\u0022:0,\u0022maximum\u0022:100000},\u0022limit\u0022:{\u0022type\u0022:\u0022integer\u0022,\u0022minimum\u0022:1,\u0022maximum\u0022:50}},\u0022required\u0022:[\u0022action\u0022],\u0022additionalProperties\u0022:false}",
+      "wire": "{\u0022type\u0022:\u0022object\u0022,\u0022properties\u0022:{\u0022action\u0022:{\u0022type\u0022:\u0022string\u0022,\u0022description\u0022:\u0022Except contract (inspect_sources too): documentId/stateId required.\u0022,\u0022enum\u0022:[\u0022contract\u0022,\u0022inspect\u0022,\u0022inspect_sources\u0022,\u0022create\u0022,\u0022edit\u0022,\u0022reselect\u0022,\u0022delete\u0022,\u0022set_parts_table\u0022,\u0022set_zones\u0022,\u0022refresh\u0022,\u0022save_template\u0022,\u0022apply_template\u0022,\u0022import_template\u0022,\u0022detach_coordinates\u0022]},\u0022type\u0022:{\u0022type\u0022:\u0022string\u0022,\u0022enum\u0022:[\u0022sheet\u0022,\u0022view\u0022,\u0022dimension\u0022,\u0022datum\u0022,\u0022control_frame\u0022,\u0022balloon\u0022,\u0022hole_table\u0022,\u0022field\u0022,\u0022note\u0022,\u0022template\u0022,\u0022parts_table\u0022,\u0022zones\u0022],\u0022description\u0022:\u0022Required for inspect.\u0022},\u0022documentId\u0022:{\u0022type\u0022:\u0022string\u0022,\u0022format\u0022:\u0022uuid\u0022,\u0022description\u0022:\u0022REQUIRED except contract: cad_status.documentId.\u0022},\u0022stateId\u0022:{\u0022type\u0022:\u0022string\u0022,\u0022format\u0022:\u0022uuid\u0022,\u0022description\u0022:\u0022REQUIRED except contract: cad_status.stateId.\u0022},\u0022sheetId\u0022:{\u0022type\u0022:\u0022string\u0022,\u0022format\u0022:\u0022uuid\u0022},\u0022id\u0022:{\u0022type\u0022:\u0022string\u0022,\u0022format\u0022:\u0022uuid\u0022},\u0022name\u0022:{\u0022type\u0022:\u0022string\u0022,\u0022maxLength\u0022:64,\u0022description\u0022:\u0022save_template only; else authorJson.\u0022},\u0022path\u0022:{\u0022type\u0022:\u0022string\u0022,\u0022maxLength\u0022:8192,\u0022description\u0022:\u0022Full occurrences.items[].path\u0022},\u0022bodyId\u0022:{\u0022type\u0022:\u0022string\u0022,\u0022format\u0022:\u0022uuid\u0022},\u0022revision\u0022:{\u0022type\u0022:\u0022string\u0022,\u0022format\u0022:\u0022uuid\u0022},\u0022authorJson\u0022:{\u0022type\u0022:\u0022string\u0022,\u0022minLength\u0022:2,\u0022maxLength\u0022:65536},\u0022offset\u0022:{\u0022type\u0022:\u0022integer\u0022,\u0022minimum\u0022:0,\u0022maximum\u0022:100000},\u0022limit\u0022:{\u0022type\u0022:\u0022integer\u0022,\u0022minimum\u0022:1,\u0022maximum\u0022:50}},\u0022required\u0022:[\u0022action\u0022],\u0022additionalProperties\u0022:false}",
+      "nativeModules": [],
+      "assemblies": [
+        {
+          "name": "Cadoryx.Tests",
+          "location": "C:/Users/yoiri/source/repos/Cadoryx\\artifacts/af1078-status-command-routing-1\\workspace/Cadoryx.Tests/bin\\Debug\\net10.0\\Cadoryx.Tests.dll",
+          "sha256": "24E67DDAD156DE50D8DFA4B4FCCB2B3D8FCBB390648D1656A583DD1D195F6988"
+        },
+        {
+          "name": "Cadoryx.ViewModels",
+          "location": "C:/Users/yoiri/source/repos/Cadoryx\\Cadoryx.ViewModels/bin\\Debug\\net10.0\\Cadoryx.ViewModels.dll",
+          "sha256": "F22371B284593A36CFABE9FB6022431497B36BA946D7695BF03F395F36ED83E2"
+        },
+        {
+          "name": "Cadoryx.AI.LmStudio",
+          "location": "C:/Users/yoiri/source/repos/Cadoryx\\Cadoryx.ViewModels/bin\\Debug\\net10.0\\Cadoryx.AI.LmStudio.dll",
+          "sha256": "10424BCB974D74CE34D130D5F830AEBCF738BD4134195A456D85F9C3CF37B7C1"
+        },
+        {
+          "name": "Cadoryx.Agent",
+          "location": "C:/Users/yoiri/source/repos/Cadoryx\\Cadoryx.ViewModels/bin\\Debug\\net10.0\\Cadoryx.Agent.dll",
+          "sha256": "937EC04A788088BC8A6D7668968D6D54862555B8CEFE3B81AA8A2F6C86F733CD"
+        },
+        {
+          "name": "Cadoryx.AI.Contracts",
+          "location": "C:/Users/yoiri/source/repos/Cadoryx\\Cadoryx.ViewModels/bin\\Debug\\net10.0\\Cadoryx.AI.Contracts.dll",
+          "sha256": "CD81B21F9E5A1686831214D206C4C93F2EC90F18D0B6F3D3E736E1506355D47E"
+        },
+        {
+          "name": "Cadoryx.Db",
+          "location": "C:/Users/yoiri/source/repos/Cadoryx\\Cadoryx.ViewModels/bin\\Debug\\net10.0\\Cadoryx.Db.dll",
+          "sha256": "B49B0430479E3687E6E98CDC0318D0BEA6AAF2649E78EF6A1A04471B161827A8"
+        },
+        {
+          "name": "Cadoryx.Editor",
+          "location": "C:/Users/yoiri/source/repos/Cadoryx\\Cadoryx.ViewModels/bin\\Debug\\net10.0\\Cadoryx.Editor.dll",
+          "sha256": "15E037B3FB3D8E8A985B94327B82A4F799F1018210F19C7C21936779F5BB8F7D"
+        },
+        {
+          "name": "Cadoryx.CommandLine",
+          "location": "C:/Users/yoiri/source/repos/Cadoryx\\Cadoryx.ViewModels/bin\\Debug\\net10.0\\Cadoryx.CommandLine.dll",
+          "sha256": "ECDE566DE6A7B8B597473731F608A45F81DB77066EF76DA6E5528A4E732130B1"
+        },
+        {
+          "name": "Cadoryx.Kernel.Abstractions",
+          "location": "C:/Users/yoiri/source/repos/Cadoryx\\Cadoryx.ViewModels/bin\\Debug\\net10.0\\Cadoryx.Kernel.Abstractions.dll",
+          "sha256": "48ED4C9B2B778D34F2D16DA992D74D6EFDC6CC1CD4A3B3E62774E2B1585CE8B1"
+        },
+        {
+          "name": "Cadoryx.Rendering",
+          "location": "C:/Users/yoiri/source/repos/Cadoryx\\Cadoryx.ViewModels/bin\\Debug\\net10.0\\Cadoryx.Rendering.dll",
+          "sha256": "ECA69D117A1EEF41BB63246DE1C22B282FF550950C2999F917220A16D64E9B7F"
+        },
+        {
+          "name": "Cadoryx.ViewModels.Services",
+          "location": "C:/Users/yoiri/source/repos/Cadoryx\\Cadoryx.ViewModels/bin\\Debug\\net10.0\\Cadoryx.ViewModels.Services.dll",
+          "sha256": "B24C036566BE72D3C93700EDF9F39CBE1A59AB9D1D989A56476FD68FCCD69C09"
+        },
+        {
+          "name": "Cadoryx.Lang",
+          "location": "C:/Users/yoiri/source/repos/Cadoryx\\Cadoryx.ViewModels/bin\\Debug\\net10.0\\Cadoryx.Lang.dll",
+          "sha256": "F4AA02A2249C1C142C0700549BB7EAF1CE04825F473C8FE6889974A04E18BEA4"
+        },
+        {
+          "name": "Cadoryx.Commands",
+          "location": "C:/Users/yoiri/source/repos/Cadoryx\\Cadoryx.ViewModels/bin\\Debug\\net10.0\\Cadoryx.Commands.dll",
+          "sha256": "DF6A76DFB26DCC1F4D5665BECDF122FB3D72AA5330453FFCAA0C2A5C53853B01"
+        }
+      ]
+    }
+  ],
+  "scope": "Original compiled assertions invoked directly, actual candidate ViewModels; not a full xunit run",
+  "productionApplied": false,
+  "modelWorkflow": "NOT RUN",
+  "nativeJobs": 0
+}

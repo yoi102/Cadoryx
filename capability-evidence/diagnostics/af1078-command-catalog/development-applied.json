@@ -1,0 +1,14 @@
+{
+  "source": "1078",
+  "base": "1076",
+  "productionApplied": true,
+  "changes": [
+    "Cadoryx.ViewModels/Toolboxes/CadAgentToolset.cs",
+    "Cadoryx.Tests/AgentCommandCatalogTests.cs"
+  ],
+  "allOriginal6652TestsUnchanged": true,
+  "rootBuild": "NOT RUN",
+  "nativeRuntime": "NOT RUN",
+  "full6664": "NOT RUN",
+  "model": "NOT RUN"
+}

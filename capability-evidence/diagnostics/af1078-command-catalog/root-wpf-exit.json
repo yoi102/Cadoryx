@@ -1,0 +1,15 @@
+{
+  "stages": [
+    {
+      "configuration": "Release",
+      "log": "artifacts/af1078-status-command-routing-1/root-wpf-Release.log",
+      "exitCode": 0
+    },
+    {
+      "configuration": "Debug",
+      "log": "artifacts/af1078-status-command-routing-1/root-wpf-Debug.log",
+      "exitCode": 0
+    }
+  ],
+  "nativeJobs": 0
+}
