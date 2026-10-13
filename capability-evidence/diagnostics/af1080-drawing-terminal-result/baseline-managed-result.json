@@ -1,0 +1,1299 @@
+{
+  "recordedAt": "2026-10-13T12:17:32.1896132+00:00",
+  "rows": [
+    {
+      "config": "Release",
+      "typeName": "DrawingTerminalReceiptTests",
+      "methodName": "TerminalSuccessMatchesAnActualRejectedProductionDrawingReceipt",
+      "args": [
+        "inspect",
+        false,
+        false
+      ],
+      "outcome": "Failed",
+      "exception": "Xunit.Sdk.EqualException: Assert.Equal() Failure: Values differ\r\nExpected: False\r\nActual:   True\r\n   at Xunit.Assert.Equal[T](T expected, T actual, IEqualityComparer\u00601 comparer) in /_/src/xunit.assert/Asserts/EqualityAsserts.cs:line 154\r\n   at Cadoryx.Tests.DrawingTerminalReceiptTests.TerminalSuccessMatchesAnActualRejectedProductionDrawingReceipt(String action, Boolean hasType, Boolean direct) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1080-drawing-terminal-result-1\\workspace\\Cadoryx.Tests\\DrawingTerminalReceiptTests.cs:line 28\r\n   at Cadoryx.Tests.DrawingTerminalReceiptTests.TerminalSuccessMatchesAnActualRejectedProductionDrawingReceipt(String action, Boolean hasType, Boolean direct) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1080-drawing-terminal-result-1\\workspace\\Cadoryx.Tests\\DrawingTerminalReceiptTests.cs:line 32\r\n   at Program.\u003C\u003Ec__DisplayClass0_1.\u003C\u003C\u003CMain\u003E$\u003Eg__Check|3\u003Ed.MoveNext() in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1080-drawing-terminal-result-1\\probe-baseline\\Program.cs:line 41"
+    },
+    {
+      "config": "Release",
+      "typeName": "DrawingTerminalReceiptTests",
+      "methodName": "TerminalSuccessMatchesAnActualRejectedProductionDrawingReceipt",
+      "args": [
+        "inspect",
+        true,
+        false
+      ],
+      "outcome": "Failed",
+      "exception": "Xunit.Sdk.EqualException: Assert.Equal() Failure: Values differ\r\nExpected: False\r\nActual:   True\r\n   at Xunit.Assert.Equal[T](T expected, T actual, IEqualityComparer\u00601 comparer) in /_/src/xunit.assert/Asserts/EqualityAsserts.cs:line 154\r\n   at Cadoryx.Tests.DrawingTerminalReceiptTests.TerminalSuccessMatchesAnActualRejectedProductionDrawingReceipt(String action, Boolean hasType, Boolean direct) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1080-drawing-terminal-result-1\\workspace\\Cadoryx.Tests\\DrawingTerminalReceiptTests.cs:line 28\r\n   at Cadoryx.Tests.DrawingTerminalReceiptTests.TerminalSuccessMatchesAnActualRejectedProductionDrawingReceipt(String action, Boolean hasType, Boolean direct) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1080-drawing-terminal-result-1\\workspace\\Cadoryx.Tests\\DrawingTerminalReceiptTests.cs:line 32\r\n   at Program.\u003C\u003Ec__DisplayClass0_1.\u003C\u003C\u003CMain\u003E$\u003Eg__Check|3\u003Ed.MoveNext() in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1080-drawing-terminal-result-1\\probe-baseline\\Program.cs:line 41"
+    },
+    {
+      "config": "Release",
+      "typeName": "DrawingTerminalReceiptTests",
+      "methodName": "TerminalSuccessMatchesAnActualRejectedProductionDrawingReceipt",
+      "args": [
+        "create",
+        false,
+        false
+      ],
+      "outcome": "Failed",
+      "exception": "Xunit.Sdk.EqualException: Assert.Equal() Failure: Values differ\r\nExpected: False\r\nActual:   True\r\n   at Xunit.Assert.Equal[T](T expected, T actual, IEqualityComparer\u00601 comparer) in /_/src/xunit.assert/Asserts/EqualityAsserts.cs:line 154\r\n   at Cadoryx.Tests.DrawingTerminalReceiptTests.TerminalSuccessMatchesAnActualRejectedProductionDrawingReceipt(String action, Boolean hasType, Boolean direct) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1080-drawing-terminal-result-1\\workspace\\Cadoryx.Tests\\DrawingTerminalReceiptTests.cs:line 28\r\n   at Cadoryx.Tests.DrawingTerminalReceiptTests.TerminalSuccessMatchesAnActualRejectedProductionDrawingReceipt(String action, Boolean hasType, Boolean direct) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1080-drawing-terminal-result-1\\workspace\\Cadoryx.Tests\\DrawingTerminalReceiptTests.cs:line 32\r\n   at Program.\u003C\u003Ec__DisplayClass0_1.\u003C\u003C\u003CMain\u003E$\u003Eg__Check|3\u003Ed.MoveNext() in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1080-drawing-terminal-result-1\\probe-baseline\\Program.cs:line 41"
+    },
+    {
+      "config": "Release",
+      "typeName": "DrawingTerminalReceiptTests",
+      "methodName": "TerminalSuccessMatchesAnActualRejectedProductionDrawingReceipt",
+      "args": [
+        "create",
+        true,
+        false
+      ],
+      "outcome": "Failed",
+      "exception": "Xunit.Sdk.EqualException: Assert.Equal() Failure: Values differ\r\nExpected: False\r\nActual:   True\r\n   at Xunit.Assert.Equal[T](T expected, T actual, IEqualityComparer\u00601 comparer) in /_/src/xunit.assert/Asserts/EqualityAsserts.cs:line 154\r\n   at Cadoryx.Tests.DrawingTerminalReceiptTests.TerminalSuccessMatchesAnActualRejectedProductionDrawingReceipt(String action, Boolean hasType, Boolean direct) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1080-drawing-terminal-result-1\\workspace\\Cadoryx.Tests\\DrawingTerminalReceiptTests.cs:line 28\r\n   at Cadoryx.Tests.DrawingTerminalReceiptTests.TerminalSuccessMatchesAnActualRejectedProductionDrawingReceipt(String action, Boolean hasType, Boolean direct) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1080-drawing-terminal-result-1\\workspace\\Cadoryx.Tests\\DrawingTerminalReceiptTests.cs:line 32\r\n   at Program.\u003C\u003Ec__DisplayClass0_1.\u003C\u003C\u003CMain\u003E$\u003Eg__Check|3\u003Ed.MoveNext() in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1080-drawing-terminal-result-1\\probe-baseline\\Program.cs:line 41"
+    },
+    {
+      "config": "Release",
+      "typeName": "DrawingTerminalReceiptTests",
+      "methodName": "TerminalSuccessMatchesAnActualRejectedProductionDrawingReceipt",
+      "args": [
+        "edit",
+        false,
+        false
+      ],
+      "outcome": "Failed",
+      "exception": "Xunit.Sdk.EqualException: Assert.Equal() Failure: Values differ\r\nExpected: False\r\nActual:   True\r\n   at Xunit.Assert.Equal[T](T expected, T actual, IEqualityComparer\u00601 comparer) in /_/src/xunit.assert/Asserts/EqualityAsserts.cs:line 154\r\n   at Cadoryx.Tests.DrawingTerminalReceiptTests.TerminalSuccessMatchesAnActualRejectedProductionDrawingReceipt(String action, Boolean hasType, Boolean direct) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1080-drawing-terminal-result-1\\workspace\\Cadoryx.Tests\\DrawingTerminalReceiptTests.cs:line 28\r\n   at Cadoryx.Tests.DrawingTerminalReceiptTests.TerminalSuccessMatchesAnActualRejectedProductionDrawingReceipt(String action, Boolean hasType, Boolean direct) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1080-drawing-terminal-result-1\\workspace\\Cadoryx.Tests\\DrawingTerminalReceiptTests.cs:line 32\r\n   at Program.\u003C\u003Ec__DisplayClass0_1.\u003C\u003C\u003CMain\u003E$\u003Eg__Check|3\u003Ed.MoveNext() in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1080-drawing-terminal-result-1\\probe-baseline\\Program.cs:line 41"
+    },
+    {
+      "config": "Release",
+      "typeName": "DrawingTerminalReceiptTests",
+      "methodName": "TerminalSuccessMatchesAnActualRejectedProductionDrawingReceipt",
+      "args": [
+        "edit",
+        true,
+        false
+      ],
+      "outcome": "Failed",
+      "exception": "Xunit.Sdk.EqualException: Assert.Equal() Failure: Values differ\r\nExpected: False\r\nActual:   True\r\n   at Xunit.Assert.Equal[T](T expected, T actual, IEqualityComparer\u00601 comparer) in /_/src/xunit.assert/Asserts/EqualityAsserts.cs:line 154\r\n   at Cadoryx.Tests.DrawingTerminalReceiptTests.TerminalSuccessMatchesAnActualRejectedProductionDrawingReceipt(String action, Boolean hasType, Boolean direct) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1080-drawing-terminal-result-1\\workspace\\Cadoryx.Tests\\DrawingTerminalReceiptTests.cs:line 28\r\n   at Cadoryx.Tests.DrawingTerminalReceiptTests.TerminalSuccessMatchesAnActualRejectedProductionDrawingReceipt(String action, Boolean hasType, Boolean direct) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1080-drawing-terminal-result-1\\workspace\\Cadoryx.Tests\\DrawingTerminalReceiptTests.cs:line 32\r\n   at Program.\u003C\u003Ec__DisplayClass0_1.\u003C\u003C\u003CMain\u003E$\u003Eg__Check|3\u003Ed.MoveNext() in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1080-drawing-terminal-result-1\\probe-baseline\\Program.cs:line 41"
+    },
+    {
+      "config": "Release",
+      "typeName": "DrawingTerminalReceiptTests",
+      "methodName": "TerminalSuccessMatchesAnActualRejectedProductionDrawingReceipt",
+      "args": [
+        "reselect",
+        false,
+        false
+      ],
+      "outcome": "Failed",
+      "exception": "Xunit.Sdk.EqualException: Assert.Equal() Failure: Values differ\r\nExpected: False\r\nActual:   True\r\n   at Xunit.Assert.Equal[T](T expected, T actual, IEqualityComparer\u00601 comparer) in /_/src/xunit.assert/Asserts/EqualityAsserts.cs:line 154\r\n   at Cadoryx.Tests.DrawingTerminalReceiptTests.TerminalSuccessMatchesAnActualRejectedProductionDrawingReceipt(String action, Boolean hasType, Boolean direct) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1080-drawing-terminal-result-1\\workspace\\Cadoryx.Tests\\DrawingTerminalReceiptTests.cs:line 28\r\n   at Cadoryx.Tests.DrawingTerminalReceiptTests.TerminalSuccessMatchesAnActualRejectedProductionDrawingReceipt(String action, Boolean hasType, Boolean direct) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1080-drawing-terminal-result-1\\workspace\\Cadoryx.Tests\\DrawingTerminalReceiptTests.cs:line 32\r\n   at Program.\u003C\u003Ec__DisplayClass0_1.\u003C\u003C\u003CMain\u003E$\u003Eg__Check|3\u003Ed.MoveNext() in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1080-drawing-terminal-result-1\\probe-baseline\\Program.cs:line 41"
+    },
+    {
+      "config": "Release",
+      "typeName": "DrawingTerminalReceiptTests",
+      "methodName": "TerminalSuccessMatchesAnActualRejectedProductionDrawingReceipt",
+      "args": [
+        "reselect",
+        true,
+        false
+      ],
+      "outcome": "Failed",
+      "exception": "Xunit.Sdk.EqualException: Assert.Equal() Failure: Values differ\r\nExpected: False\r\nActual:   True\r\n   at Xunit.Assert.Equal[T](T expected, T actual, IEqualityComparer\u00601 comparer) in /_/src/xunit.assert/Asserts/EqualityAsserts.cs:line 154\r\n   at Cadoryx.Tests.DrawingTerminalReceiptTests.TerminalSuccessMatchesAnActualRejectedProductionDrawingReceipt(String action, Boolean hasType, Boolean direct) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1080-drawing-terminal-result-1\\workspace\\Cadoryx.Tests\\DrawingTerminalReceiptTests.cs:line 28\r\n   at Cadoryx.Tests.DrawingTerminalReceiptTests.TerminalSuccessMatchesAnActualRejectedProductionDrawingReceipt(String action, Boolean hasType, Boolean direct) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1080-drawing-terminal-result-1\\workspace\\Cadoryx.Tests\\DrawingTerminalReceiptTests.cs:line 32\r\n   at Program.\u003C\u003Ec__DisplayClass0_1.\u003C\u003C\u003CMain\u003E$\u003Eg__Check|3\u003Ed.MoveNext() in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1080-drawing-terminal-result-1\\probe-baseline\\Program.cs:line 41"
+    },
+    {
+      "config": "Release",
+      "typeName": "DrawingTerminalReceiptTests",
+      "methodName": "TerminalSuccessMatchesAnActualRejectedProductionDrawingReceipt",
+      "args": [
+        "delete",
+        false,
+        false
+      ],
+      "outcome": "Failed",
+      "exception": "Xunit.Sdk.EqualException: Assert.Equal() Failure: Values differ\r\nExpected: False\r\nActual:   True\r\n   at Xunit.Assert.Equal[T](T expected, T actual, IEqualityComparer\u00601 comparer) in /_/src/xunit.assert/Asserts/EqualityAsserts.cs:line 154\r\n   at Cadoryx.Tests.DrawingTerminalReceiptTests.TerminalSuccessMatchesAnActualRejectedProductionDrawingReceipt(String action, Boolean hasType, Boolean direct) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1080-drawing-terminal-result-1\\workspace\\Cadoryx.Tests\\DrawingTerminalReceiptTests.cs:line 28\r\n   at Cadoryx.Tests.DrawingTerminalReceiptTests.TerminalSuccessMatchesAnActualRejectedProductionDrawingReceipt(String action, Boolean hasType, Boolean direct) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1080-drawing-terminal-result-1\\workspace\\Cadoryx.Tests\\DrawingTerminalReceiptTests.cs:line 32\r\n   at Program.\u003C\u003Ec__DisplayClass0_1.\u003C\u003C\u003CMain\u003E$\u003Eg__Check|3\u003Ed.MoveNext() in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1080-drawing-terminal-result-1\\probe-baseline\\Program.cs:line 41"
+    },
+    {
+      "config": "Release",
+      "typeName": "DrawingTerminalReceiptTests",
+      "methodName": "TerminalSuccessMatchesAnActualRejectedProductionDrawingReceipt",
+      "args": [
+        "delete",
+        true,
+        false
+      ],
+      "outcome": "Failed",
+      "exception": "Xunit.Sdk.EqualException: Assert.Equal() Failure: Values differ\r\nExpected: False\r\nActual:   True\r\n   at Xunit.Assert.Equal[T](T expected, T actual, IEqualityComparer\u00601 comparer) in /_/src/xunit.assert/Asserts/EqualityAsserts.cs:line 154\r\n   at Cadoryx.Tests.DrawingTerminalReceiptTests.TerminalSuccessMatchesAnActualRejectedProductionDrawingReceipt(String action, Boolean hasType, Boolean direct) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1080-drawing-terminal-result-1\\workspace\\Cadoryx.Tests\\DrawingTerminalReceiptTests.cs:line 28\r\n   at Cadoryx.Tests.DrawingTerminalReceiptTests.TerminalSuccessMatchesAnActualRejectedProductionDrawingReceipt(String action, Boolean hasType, Boolean direct) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1080-drawing-terminal-result-1\\workspace\\Cadoryx.Tests\\DrawingTerminalReceiptTests.cs:line 32\r\n   at Program.\u003C\u003Ec__DisplayClass0_1.\u003C\u003C\u003CMain\u003E$\u003Eg__Check|3\u003Ed.MoveNext() in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1080-drawing-terminal-result-1\\probe-baseline\\Program.cs:line 41"
+    },
+    {
+      "config": "Release",
+      "typeName": "DrawingTerminalReceiptTests",
+      "methodName": "EveryExistingReadOnlyContractStillReturnsTerminalSuccess",
+      "args": [
+        null,
+        false
+      ],
+      "outcome": "Passed",
+      "elapsedMs": 6
+    },
+    {
+      "config": "Release",
+      "typeName": "DrawingTerminalReceiptTests",
+      "methodName": "EveryExistingReadOnlyContractStillReturnsTerminalSuccess",
+      "args": [
+        "sheet",
+        false
+      ],
+      "outcome": "Passed",
+      "elapsedMs": 17
+    },
+    {
+      "config": "Release",
+      "typeName": "DrawingTerminalReceiptTests",
+      "methodName": "EveryExistingReadOnlyContractStillReturnsTerminalSuccess",
+      "args": [
+        "view",
+        false
+      ],
+      "outcome": "Passed",
+      "elapsedMs": 0
+    },
+    {
+      "config": "Release",
+      "typeName": "DrawingTerminalReceiptTests",
+      "methodName": "EveryExistingReadOnlyContractStillReturnsTerminalSuccess",
+      "args": [
+        "dimension",
+        false
+      ],
+      "outcome": "Passed",
+      "elapsedMs": 2
+    },
+    {
+      "config": "Release",
+      "typeName": "DrawingTerminalReceiptTests",
+      "methodName": "EveryExistingReadOnlyContractStillReturnsTerminalSuccess",
+      "args": [
+        "datum",
+        false
+      ],
+      "outcome": "Passed",
+      "elapsedMs": 0
+    },
+    {
+      "config": "Release",
+      "typeName": "DrawingTerminalReceiptTests",
+      "methodName": "EveryExistingReadOnlyContractStillReturnsTerminalSuccess",
+      "args": [
+        "control_frame",
+        false
+      ],
+      "outcome": "Passed",
+      "elapsedMs": 0
+    },
+    {
+      "config": "Release",
+      "typeName": "DrawingTerminalReceiptTests",
+      "methodName": "EveryExistingReadOnlyContractStillReturnsTerminalSuccess",
+      "args": [
+        "balloon",
+        false
+      ],
+      "outcome": "Passed",
+      "elapsedMs": 0
+    },
+    {
+      "config": "Release",
+      "typeName": "DrawingTerminalReceiptTests",
+      "methodName": "EveryExistingReadOnlyContractStillReturnsTerminalSuccess",
+      "args": [
+        "hole_table",
+        false
+      ],
+      "outcome": "Passed",
+      "elapsedMs": 0
+    },
+    {
+      "config": "Release",
+      "typeName": "DrawingTerminalReceiptTests",
+      "methodName": "EveryExistingReadOnlyContractStillReturnsTerminalSuccess",
+      "args": [
+        "field",
+        false
+      ],
+      "outcome": "Passed",
+      "elapsedMs": 0
+    },
+    {
+      "config": "Release",
+      "typeName": "DrawingTerminalReceiptTests",
+      "methodName": "EveryExistingReadOnlyContractStillReturnsTerminalSuccess",
+      "args": [
+        "note",
+        false
+      ],
+      "outcome": "Passed",
+      "elapsedMs": 0
+    },
+    {
+      "config": "Release",
+      "typeName": "DrawingTerminalReceiptTests",
+      "methodName": "EveryExistingReadOnlyContractStillReturnsTerminalSuccess",
+      "args": [
+        "template",
+        false
+      ],
+      "outcome": "Passed",
+      "elapsedMs": 1
+    },
+    {
+      "config": "Release",
+      "typeName": "DrawingTerminalReceiptTests",
+      "methodName": "EveryExistingReadOnlyContractStillReturnsTerminalSuccess",
+      "args": [
+        "parts_table",
+        false
+      ],
+      "outcome": "Passed",
+      "elapsedMs": 0
+    },
+    {
+      "config": "Release",
+      "typeName": "DrawingTerminalReceiptTests",
+      "methodName": "EveryExistingReadOnlyContractStillReturnsTerminalSuccess",
+      "args": [
+        "zones",
+        false
+      ],
+      "outcome": "Passed",
+      "elapsedMs": 0
+    },
+    {
+      "config": "Release",
+      "typeName": "DrawingTerminalReceiptTests",
+      "methodName": "ActualTerminalCreateAndDeleteRemainSuccessfulWithOneCommitAndOriginalUndoRedo",
+      "args": [
+        false
+      ],
+      "outcome": "Passed",
+      "elapsedMs": 297
+    },
+    {
+      "config": "Release",
+      "typeName": "DrawingTerminalReceiptTests",
+      "methodName": "UnknownFieldsRetainOriginalTerminalFailureInsteadOfBeingRepaired",
+      "args": [
+        false
+      ],
+      "outcome": "Passed",
+      "elapsedMs": 4
+    },
+    {
+      "config": "Release",
+      "typeName": "DrawingTerminalReceiptTests",
+      "methodName": "TerminalSuccessMatchesAnActualRejectedProductionDrawingReceipt",
+      "args": [
+        "inspect",
+        false,
+        true
+      ],
+      "outcome": "Failed",
+      "exception": "Xunit.Sdk.EqualException: Assert.Equal() Failure: Values differ\r\nExpected: False\r\nActual:   True\r\n   at Xunit.Assert.Equal[T](T expected, T actual, IEqualityComparer\u00601 comparer) in /_/src/xunit.assert/Asserts/EqualityAsserts.cs:line 154\r\n   at Cadoryx.Tests.DrawingTerminalReceiptTests.TerminalSuccessMatchesAnActualRejectedProductionDrawingReceipt(String action, Boolean hasType, Boolean direct) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1080-drawing-terminal-result-1\\workspace\\Cadoryx.Tests\\DrawingTerminalReceiptTests.cs:line 28\r\n   at Cadoryx.Tests.DrawingTerminalReceiptTests.TerminalSuccessMatchesAnActualRejectedProductionDrawingReceipt(String action, Boolean hasType, Boolean direct) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1080-drawing-terminal-result-1\\workspace\\Cadoryx.Tests\\DrawingTerminalReceiptTests.cs:line 32\r\n   at Program.\u003C\u003Ec__DisplayClass0_1.\u003C\u003C\u003CMain\u003E$\u003Eg__Check|3\u003Ed.MoveNext() in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1080-drawing-terminal-result-1\\probe-baseline\\Program.cs:line 41"
+    },
+    {
+      "config": "Release",
+      "typeName": "DrawingTerminalReceiptTests",
+      "methodName": "TerminalSuccessMatchesAnActualRejectedProductionDrawingReceipt",
+      "args": [
+        "inspect",
+        true,
+        true
+      ],
+      "outcome": "Failed",
+      "exception": "Xunit.Sdk.EqualException: Assert.Equal() Failure: Values differ\r\nExpected: False\r\nActual:   True\r\n   at Xunit.Assert.Equal[T](T expected, T actual, IEqualityComparer\u00601 comparer) in /_/src/xunit.assert/Asserts/EqualityAsserts.cs:line 154\r\n   at Cadoryx.Tests.DrawingTerminalReceiptTests.TerminalSuccessMatchesAnActualRejectedProductionDrawingReceipt(String action, Boolean hasType, Boolean direct) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1080-drawing-terminal-result-1\\workspace\\Cadoryx.Tests\\DrawingTerminalReceiptTests.cs:line 28\r\n   at Cadoryx.Tests.DrawingTerminalReceiptTests.TerminalSuccessMatchesAnActualRejectedProductionDrawingReceipt(String action, Boolean hasType, Boolean direct) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1080-drawing-terminal-result-1\\workspace\\Cadoryx.Tests\\DrawingTerminalReceiptTests.cs:line 32\r\n   at Program.\u003C\u003Ec__DisplayClass0_1.\u003C\u003C\u003CMain\u003E$\u003Eg__Check|3\u003Ed.MoveNext() in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1080-drawing-terminal-result-1\\probe-baseline\\Program.cs:line 41"
+    },
+    {
+      "config": "Release",
+      "typeName": "DrawingTerminalReceiptTests",
+      "methodName": "TerminalSuccessMatchesAnActualRejectedProductionDrawingReceipt",
+      "args": [
+        "create",
+        false,
+        true
+      ],
+      "outcome": "Failed",
+      "exception": "Xunit.Sdk.EqualException: Assert.Equal() Failure: Values differ\r\nExpected: False\r\nActual:   True\r\n   at Xunit.Assert.Equal[T](T expected, T actual, IEqualityComparer\u00601 comparer) in /_/src/xunit.assert/Asserts/EqualityAsserts.cs:line 154\r\n   at Cadoryx.Tests.DrawingTerminalReceiptTests.TerminalSuccessMatchesAnActualRejectedProductionDrawingReceipt(String action, Boolean hasType, Boolean direct) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1080-drawing-terminal-result-1\\workspace\\Cadoryx.Tests\\DrawingTerminalReceiptTests.cs:line 28\r\n   at Cadoryx.Tests.DrawingTerminalReceiptTests.TerminalSuccessMatchesAnActualRejectedProductionDrawingReceipt(String action, Boolean hasType, Boolean direct) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1080-drawing-terminal-result-1\\workspace\\Cadoryx.Tests\\DrawingTerminalReceiptTests.cs:line 32\r\n   at Program.\u003C\u003Ec__DisplayClass0_1.\u003C\u003C\u003CMain\u003E$\u003Eg__Check|3\u003Ed.MoveNext() in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1080-drawing-terminal-result-1\\probe-baseline\\Program.cs:line 41"
+    },
+    {
+      "config": "Release",
+      "typeName": "DrawingTerminalReceiptTests",
+      "methodName": "TerminalSuccessMatchesAnActualRejectedProductionDrawingReceipt",
+      "args": [
+        "create",
+        true,
+        true
+      ],
+      "outcome": "Failed",
+      "exception": "Xunit.Sdk.EqualException: Assert.Equal() Failure: Values differ\r\nExpected: False\r\nActual:   True\r\n   at Xunit.Assert.Equal[T](T expected, T actual, IEqualityComparer\u00601 comparer) in /_/src/xunit.assert/Asserts/EqualityAsserts.cs:line 154\r\n   at Cadoryx.Tests.DrawingTerminalReceiptTests.TerminalSuccessMatchesAnActualRejectedProductionDrawingReceipt(String action, Boolean hasType, Boolean direct) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1080-drawing-terminal-result-1\\workspace\\Cadoryx.Tests\\DrawingTerminalReceiptTests.cs:line 28\r\n   at Cadoryx.Tests.DrawingTerminalReceiptTests.TerminalSuccessMatchesAnActualRejectedProductionDrawingReceipt(String action, Boolean hasType, Boolean direct) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1080-drawing-terminal-result-1\\workspace\\Cadoryx.Tests\\DrawingTerminalReceiptTests.cs:line 32\r\n   at Program.\u003C\u003Ec__DisplayClass0_1.\u003C\u003C\u003CMain\u003E$\u003Eg__Check|3\u003Ed.MoveNext() in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1080-drawing-terminal-result-1\\probe-baseline\\Program.cs:line 41"
+    },
+    {
+      "config": "Release",
+      "typeName": "DrawingTerminalReceiptTests",
+      "methodName": "TerminalSuccessMatchesAnActualRejectedProductionDrawingReceipt",
+      "args": [
+        "edit",
+        false,
+        true
+      ],
+      "outcome": "Failed",
+      "exception": "Xunit.Sdk.EqualException: Assert.Equal() Failure: Values differ\r\nExpected: False\r\nActual:   True\r\n   at Xunit.Assert.Equal[T](T expected, T actual, IEqualityComparer\u00601 comparer) in /_/src/xunit.assert/Asserts/EqualityAsserts.cs:line 154\r\n   at Cadoryx.Tests.DrawingTerminalReceiptTests.TerminalSuccessMatchesAnActualRejectedProductionDrawingReceipt(String action, Boolean hasType, Boolean direct) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1080-drawing-terminal-result-1\\workspace\\Cadoryx.Tests\\DrawingTerminalReceiptTests.cs:line 28\r\n   at Cadoryx.Tests.DrawingTerminalReceiptTests.TerminalSuccessMatchesAnActualRejectedProductionDrawingReceipt(String action, Boolean hasType, Boolean direct) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1080-drawing-terminal-result-1\\workspace\\Cadoryx.Tests\\DrawingTerminalReceiptTests.cs:line 32\r\n   at Program.\u003C\u003Ec__DisplayClass0_1.\u003C\u003C\u003CMain\u003E$\u003Eg__Check|3\u003Ed.MoveNext() in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1080-drawing-terminal-result-1\\probe-baseline\\Program.cs:line 41"
+    },
+    {
+      "config": "Release",
+      "typeName": "DrawingTerminalReceiptTests",
+      "methodName": "TerminalSuccessMatchesAnActualRejectedProductionDrawingReceipt",
+      "args": [
+        "edit",
+        true,
+        true
+      ],
+      "outcome": "Failed",
+      "exception": "Xunit.Sdk.EqualException: Assert.Equal() Failure: Values differ\r\nExpected: False\r\nActual:   True\r\n   at Xunit.Assert.Equal[T](T expected, T actual, IEqualityComparer\u00601 comparer) in /_/src/xunit.assert/Asserts/EqualityAsserts.cs:line 154\r\n   at Cadoryx.Tests.DrawingTerminalReceiptTests.TerminalSuccessMatchesAnActualRejectedProductionDrawingReceipt(String action, Boolean hasType, Boolean direct) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1080-drawing-terminal-result-1\\workspace\\Cadoryx.Tests\\DrawingTerminalReceiptTests.cs:line 28\r\n   at Cadoryx.Tests.DrawingTerminalReceiptTests.TerminalSuccessMatchesAnActualRejectedProductionDrawingReceipt(String action, Boolean hasType, Boolean direct) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1080-drawing-terminal-result-1\\workspace\\Cadoryx.Tests\\DrawingTerminalReceiptTests.cs:line 32\r\n   at Program.\u003C\u003Ec__DisplayClass0_1.\u003C\u003C\u003CMain\u003E$\u003Eg__Check|3\u003Ed.MoveNext() in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1080-drawing-terminal-result-1\\probe-baseline\\Program.cs:line 41"
+    },
+    {
+      "config": "Release",
+      "typeName": "DrawingTerminalReceiptTests",
+      "methodName": "TerminalSuccessMatchesAnActualRejectedProductionDrawingReceipt",
+      "args": [
+        "reselect",
+        false,
+        true
+      ],
+      "outcome": "Failed",
+      "exception": "Xunit.Sdk.EqualException: Assert.Equal() Failure: Values differ\r\nExpected: False\r\nActual:   True\r\n   at Xunit.Assert.Equal[T](T expected, T actual, IEqualityComparer\u00601 comparer) in /_/src/xunit.assert/Asserts/EqualityAsserts.cs:line 154\r\n   at Cadoryx.Tests.DrawingTerminalReceiptTests.TerminalSuccessMatchesAnActualRejectedProductionDrawingReceipt(String action, Boolean hasType, Boolean direct) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1080-drawing-terminal-result-1\\workspace\\Cadoryx.Tests\\DrawingTerminalReceiptTests.cs:line 28\r\n   at Cadoryx.Tests.DrawingTerminalReceiptTests.TerminalSuccessMatchesAnActualRejectedProductionDrawingReceipt(String action, Boolean hasType, Boolean direct) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1080-drawing-terminal-result-1\\workspace\\Cadoryx.Tests\\DrawingTerminalReceiptTests.cs:line 32\r\n   at Program.\u003C\u003Ec__DisplayClass0_1.\u003C\u003C\u003CMain\u003E$\u003Eg__Check|3\u003Ed.MoveNext() in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1080-drawing-terminal-result-1\\probe-baseline\\Program.cs:line 41"
+    },
+    {
+      "config": "Release",
+      "typeName": "DrawingTerminalReceiptTests",
+      "methodName": "TerminalSuccessMatchesAnActualRejectedProductionDrawingReceipt",
+      "args": [
+        "reselect",
+        true,
+        true
+      ],
+      "outcome": "Failed",
+      "exception": "Xunit.Sdk.EqualException: Assert.Equal() Failure: Values differ\r\nExpected: False\r\nActual:   True\r\n   at Xunit.Assert.Equal[T](T expected, T actual, IEqualityComparer\u00601 comparer) in /_/src/xunit.assert/Asserts/EqualityAsserts.cs:line 154\r\n   at Cadoryx.Tests.DrawingTerminalReceiptTests.TerminalSuccessMatchesAnActualRejectedProductionDrawingReceipt(String action, Boolean hasType, Boolean direct) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1080-drawing-terminal-result-1\\workspace\\Cadoryx.Tests\\DrawingTerminalReceiptTests.cs:line 28\r\n   at Cadoryx.Tests.DrawingTerminalReceiptTests.TerminalSuccessMatchesAnActualRejectedProductionDrawingReceipt(String action, Boolean hasType, Boolean direct) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1080-drawing-terminal-result-1\\workspace\\Cadoryx.Tests\\DrawingTerminalReceiptTests.cs:line 32\r\n   at Program.\u003C\u003Ec__DisplayClass0_1.\u003C\u003C\u003CMain\u003E$\u003Eg__Check|3\u003Ed.MoveNext() in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1080-drawing-terminal-result-1\\probe-baseline\\Program.cs:line 41"
+    },
+    {
+      "config": "Release",
+      "typeName": "DrawingTerminalReceiptTests",
+      "methodName": "TerminalSuccessMatchesAnActualRejectedProductionDrawingReceipt",
+      "args": [
+        "delete",
+        false,
+        true
+      ],
+      "outcome": "Failed",
+      "exception": "Xunit.Sdk.EqualException: Assert.Equal() Failure: Values differ\r\nExpected: False\r\nActual:   True\r\n   at Xunit.Assert.Equal[T](T expected, T actual, IEqualityComparer\u00601 comparer) in /_/src/xunit.assert/Asserts/EqualityAsserts.cs:line 154\r\n   at Cadoryx.Tests.DrawingTerminalReceiptTests.TerminalSuccessMatchesAnActualRejectedProductionDrawingReceipt(String action, Boolean hasType, Boolean direct) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1080-drawing-terminal-result-1\\workspace\\Cadoryx.Tests\\DrawingTerminalReceiptTests.cs:line 28\r\n   at Cadoryx.Tests.DrawingTerminalReceiptTests.TerminalSuccessMatchesAnActualRejectedProductionDrawingReceipt(String action, Boolean hasType, Boolean direct) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1080-drawing-terminal-result-1\\workspace\\Cadoryx.Tests\\DrawingTerminalReceiptTests.cs:line 32\r\n   at Program.\u003C\u003Ec__DisplayClass0_1.\u003C\u003C\u003CMain\u003E$\u003Eg__Check|3\u003Ed.MoveNext() in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1080-drawing-terminal-result-1\\probe-baseline\\Program.cs:line 41"
+    },
+    {
+      "config": "Release",
+      "typeName": "DrawingTerminalReceiptTests",
+      "methodName": "TerminalSuccessMatchesAnActualRejectedProductionDrawingReceipt",
+      "args": [
+        "delete",
+        true,
+        true
+      ],
+      "outcome": "Failed",
+      "exception": "Xunit.Sdk.EqualException: Assert.Equal() Failure: Values differ\r\nExpected: False\r\nActual:   True\r\n   at Xunit.Assert.Equal[T](T expected, T actual, IEqualityComparer\u00601 comparer) in /_/src/xunit.assert/Asserts/EqualityAsserts.cs:line 154\r\n   at Cadoryx.Tests.DrawingTerminalReceiptTests.TerminalSuccessMatchesAnActualRejectedProductionDrawingReceipt(String action, Boolean hasType, Boolean direct) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1080-drawing-terminal-result-1\\workspace\\Cadoryx.Tests\\DrawingTerminalReceiptTests.cs:line 28\r\n   at Cadoryx.Tests.DrawingTerminalReceiptTests.TerminalSuccessMatchesAnActualRejectedProductionDrawingReceipt(String action, Boolean hasType, Boolean direct) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1080-drawing-terminal-result-1\\workspace\\Cadoryx.Tests\\DrawingTerminalReceiptTests.cs:line 32\r\n   at Program.\u003C\u003Ec__DisplayClass0_1.\u003C\u003C\u003CMain\u003E$\u003Eg__Check|3\u003Ed.MoveNext() in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1080-drawing-terminal-result-1\\probe-baseline\\Program.cs:line 41"
+    },
+    {
+      "config": "Release",
+      "typeName": "DrawingTerminalReceiptTests",
+      "methodName": "EveryExistingReadOnlyContractStillReturnsTerminalSuccess",
+      "args": [
+        null,
+        true
+      ],
+      "outcome": "Passed",
+      "elapsedMs": 0
+    },
+    {
+      "config": "Release",
+      "typeName": "DrawingTerminalReceiptTests",
+      "methodName": "EveryExistingReadOnlyContractStillReturnsTerminalSuccess",
+      "args": [
+        "sheet",
+        true
+      ],
+      "outcome": "Passed",
+      "elapsedMs": 0
+    },
+    {
+      "config": "Release",
+      "typeName": "DrawingTerminalReceiptTests",
+      "methodName": "EveryExistingReadOnlyContractStillReturnsTerminalSuccess",
+      "args": [
+        "view",
+        true
+      ],
+      "outcome": "Passed",
+      "elapsedMs": 0
+    },
+    {
+      "config": "Release",
+      "typeName": "DrawingTerminalReceiptTests",
+      "methodName": "EveryExistingReadOnlyContractStillReturnsTerminalSuccess",
+      "args": [
+        "dimension",
+        true
+      ],
+      "outcome": "Passed",
+      "elapsedMs": 0
+    },
+    {
+      "config": "Release",
+      "typeName": "DrawingTerminalReceiptTests",
+      "methodName": "EveryExistingReadOnlyContractStillReturnsTerminalSuccess",
+      "args": [
+        "datum",
+        true
+      ],
+      "outcome": "Passed",
+      "elapsedMs": 0
+    },
+    {
+      "config": "Release",
+      "typeName": "DrawingTerminalReceiptTests",
+      "methodName": "EveryExistingReadOnlyContractStillReturnsTerminalSuccess",
+      "args": [
+        "control_frame",
+        true
+      ],
+      "outcome": "Passed",
+      "elapsedMs": 0
+    },
+    {
+      "config": "Release",
+      "typeName": "DrawingTerminalReceiptTests",
+      "methodName": "EveryExistingReadOnlyContractStillReturnsTerminalSuccess",
+      "args": [
+        "balloon",
+        true
+      ],
+      "outcome": "Passed",
+      "elapsedMs": 0
+    },
+    {
+      "config": "Release",
+      "typeName": "DrawingTerminalReceiptTests",
+      "methodName": "EveryExistingReadOnlyContractStillReturnsTerminalSuccess",
+      "args": [
+        "hole_table",
+        true
+      ],
+      "outcome": "Passed",
+      "elapsedMs": 0
+    },
+    {
+      "config": "Release",
+      "typeName": "DrawingTerminalReceiptTests",
+      "methodName": "EveryExistingReadOnlyContractStillReturnsTerminalSuccess",
+      "args": [
+        "field",
+        true
+      ],
+      "outcome": "Passed",
+      "elapsedMs": 0
+    },
+    {
+      "config": "Release",
+      "typeName": "DrawingTerminalReceiptTests",
+      "methodName": "EveryExistingReadOnlyContractStillReturnsTerminalSuccess",
+      "args": [
+        "note",
+        true
+      ],
+      "outcome": "Passed",
+      "elapsedMs": 0
+    },
+    {
+      "config": "Release",
+      "typeName": "DrawingTerminalReceiptTests",
+      "methodName": "EveryExistingReadOnlyContractStillReturnsTerminalSuccess",
+      "args": [
+        "template",
+        true
+      ],
+      "outcome": "Passed",
+      "elapsedMs": 0
+    },
+    {
+      "config": "Release",
+      "typeName": "DrawingTerminalReceiptTests",
+      "methodName": "EveryExistingReadOnlyContractStillReturnsTerminalSuccess",
+      "args": [
+        "parts_table",
+        true
+      ],
+      "outcome": "Passed",
+      "elapsedMs": 0
+    },
+    {
+      "config": "Release",
+      "typeName": "DrawingTerminalReceiptTests",
+      "methodName": "EveryExistingReadOnlyContractStillReturnsTerminalSuccess",
+      "args": [
+        "zones",
+        true
+      ],
+      "outcome": "Passed",
+      "elapsedMs": 0
+    },
+    {
+      "config": "Release",
+      "typeName": "DrawingTerminalReceiptTests",
+      "methodName": "ActualTerminalCreateAndDeleteRemainSuccessfulWithOneCommitAndOriginalUndoRedo",
+      "args": [
+        true
+      ],
+      "outcome": "Passed",
+      "elapsedMs": 0
+    },
+    {
+      "config": "Release",
+      "typeName": "DrawingTerminalReceiptTests",
+      "methodName": "UnknownFieldsRetainOriginalTerminalFailureInsteadOfBeingRepaired",
+      "args": [
+        true
+      ],
+      "outcome": "Passed",
+      "elapsedMs": 3
+    },
+    {
+      "config": "Debug",
+      "typeName": "DrawingTerminalReceiptTests",
+      "methodName": "TerminalSuccessMatchesAnActualRejectedProductionDrawingReceipt",
+      "args": [
+        "inspect",
+        false,
+        false
+      ],
+      "outcome": "Failed",
+      "exception": "Xunit.Sdk.EqualException: Assert.Equal() Failure: Values differ\r\nExpected: False\r\nActual:   True\r\n   at Xunit.Assert.Equal[T](T expected, T actual, IEqualityComparer\u00601 comparer) in /_/src/xunit.assert/Asserts/EqualityAsserts.cs:line 154\r\n   at Cadoryx.Tests.DrawingTerminalReceiptTests.TerminalSuccessMatchesAnActualRejectedProductionDrawingReceipt(String action, Boolean hasType, Boolean direct) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1080-drawing-terminal-result-1\\workspace\\Cadoryx.Tests\\DrawingTerminalReceiptTests.cs:line 28\r\n   at Cadoryx.Tests.DrawingTerminalReceiptTests.TerminalSuccessMatchesAnActualRejectedProductionDrawingReceipt(String action, Boolean hasType, Boolean direct) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1080-drawing-terminal-result-1\\workspace\\Cadoryx.Tests\\DrawingTerminalReceiptTests.cs:line 32\r\n   at Program.\u003C\u003Ec__DisplayClass0_1.\u003C\u003C\u003CMain\u003E$\u003Eg__Check|3\u003Ed.MoveNext() in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1080-drawing-terminal-result-1\\probe-baseline\\Program.cs:line 41"
+    },
+    {
+      "config": "Debug",
+      "typeName": "DrawingTerminalReceiptTests",
+      "methodName": "TerminalSuccessMatchesAnActualRejectedProductionDrawingReceipt",
+      "args": [
+        "inspect",
+        true,
+        false
+      ],
+      "outcome": "Failed",
+      "exception": "Xunit.Sdk.EqualException: Assert.Equal() Failure: Values differ\r\nExpected: False\r\nActual:   True\r\n   at Xunit.Assert.Equal[T](T expected, T actual, IEqualityComparer\u00601 comparer) in /_/src/xunit.assert/Asserts/EqualityAsserts.cs:line 154\r\n   at Cadoryx.Tests.DrawingTerminalReceiptTests.TerminalSuccessMatchesAnActualRejectedProductionDrawingReceipt(String action, Boolean hasType, Boolean direct) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1080-drawing-terminal-result-1\\workspace\\Cadoryx.Tests\\DrawingTerminalReceiptTests.cs:line 28\r\n   at Cadoryx.Tests.DrawingTerminalReceiptTests.TerminalSuccessMatchesAnActualRejectedProductionDrawingReceipt(String action, Boolean hasType, Boolean direct) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1080-drawing-terminal-result-1\\workspace\\Cadoryx.Tests\\DrawingTerminalReceiptTests.cs:line 32\r\n   at Program.\u003C\u003Ec__DisplayClass0_1.\u003C\u003C\u003CMain\u003E$\u003Eg__Check|3\u003Ed.MoveNext() in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1080-drawing-terminal-result-1\\probe-baseline\\Program.cs:line 41"
+    },
+    {
+      "config": "Debug",
+      "typeName": "DrawingTerminalReceiptTests",
+      "methodName": "TerminalSuccessMatchesAnActualRejectedProductionDrawingReceipt",
+      "args": [
+        "create",
+        false,
+        false
+      ],
+      "outcome": "Failed",
+      "exception": "Xunit.Sdk.EqualException: Assert.Equal() Failure: Values differ\r\nExpected: False\r\nActual:   True\r\n   at Xunit.Assert.Equal[T](T expected, T actual, IEqualityComparer\u00601 comparer) in /_/src/xunit.assert/Asserts/EqualityAsserts.cs:line 154\r\n   at Cadoryx.Tests.DrawingTerminalReceiptTests.TerminalSuccessMatchesAnActualRejectedProductionDrawingReceipt(String action, Boolean hasType, Boolean direct) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1080-drawing-terminal-result-1\\workspace\\Cadoryx.Tests\\DrawingTerminalReceiptTests.cs:line 28\r\n   at Cadoryx.Tests.DrawingTerminalReceiptTests.TerminalSuccessMatchesAnActualRejectedProductionDrawingReceipt(String action, Boolean hasType, Boolean direct) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1080-drawing-terminal-result-1\\workspace\\Cadoryx.Tests\\DrawingTerminalReceiptTests.cs:line 32\r\n   at Program.\u003C\u003Ec__DisplayClass0_1.\u003C\u003C\u003CMain\u003E$\u003Eg__Check|3\u003Ed.MoveNext() in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1080-drawing-terminal-result-1\\probe-baseline\\Program.cs:line 41"
+    },
+    {
+      "config": "Debug",
+      "typeName": "DrawingTerminalReceiptTests",
+      "methodName": "TerminalSuccessMatchesAnActualRejectedProductionDrawingReceipt",
+      "args": [
+        "create",
+        true,
+        false
+      ],
+      "outcome": "Failed",
+      "exception": "Xunit.Sdk.EqualException: Assert.Equal() Failure: Values differ\r\nExpected: False\r\nActual:   True\r\n   at Xunit.Assert.Equal[T](T expected, T actual, IEqualityComparer\u00601 comparer) in /_/src/xunit.assert/Asserts/EqualityAsserts.cs:line 154\r\n   at Cadoryx.Tests.DrawingTerminalReceiptTests.TerminalSuccessMatchesAnActualRejectedProductionDrawingReceipt(String action, Boolean hasType, Boolean direct) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1080-drawing-terminal-result-1\\workspace\\Cadoryx.Tests\\DrawingTerminalReceiptTests.cs:line 28\r\n   at Cadoryx.Tests.DrawingTerminalReceiptTests.TerminalSuccessMatchesAnActualRejectedProductionDrawingReceipt(String action, Boolean hasType, Boolean direct) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1080-drawing-terminal-result-1\\workspace\\Cadoryx.Tests\\DrawingTerminalReceiptTests.cs:line 32\r\n   at Program.\u003C\u003Ec__DisplayClass0_1.\u003C\u003C\u003CMain\u003E$\u003Eg__Check|3\u003Ed.MoveNext() in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1080-drawing-terminal-result-1\\probe-baseline\\Program.cs:line 41"
+    },
+    {
+      "config": "Debug",
+      "typeName": "DrawingTerminalReceiptTests",
+      "methodName": "TerminalSuccessMatchesAnActualRejectedProductionDrawingReceipt",
+      "args": [
+        "edit",
+        false,
+        false
+      ],
+      "outcome": "Failed",
+      "exception": "Xunit.Sdk.EqualException: Assert.Equal() Failure: Values differ\r\nExpected: False\r\nActual:   True\r\n   at Xunit.Assert.Equal[T](T expected, T actual, IEqualityComparer\u00601 comparer) in /_/src/xunit.assert/Asserts/EqualityAsserts.cs:line 154\r\n   at Cadoryx.Tests.DrawingTerminalReceiptTests.TerminalSuccessMatchesAnActualRejectedProductionDrawingReceipt(String action, Boolean hasType, Boolean direct) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1080-drawing-terminal-result-1\\workspace\\Cadoryx.Tests\\DrawingTerminalReceiptTests.cs:line 28\r\n   at Cadoryx.Tests.DrawingTerminalReceiptTests.TerminalSuccessMatchesAnActualRejectedProductionDrawingReceipt(String action, Boolean hasType, Boolean direct) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1080-drawing-terminal-result-1\\workspace\\Cadoryx.Tests\\DrawingTerminalReceiptTests.cs:line 32\r\n   at Program.\u003C\u003Ec__DisplayClass0_1.\u003C\u003C\u003CMain\u003E$\u003Eg__Check|3\u003Ed.MoveNext() in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1080-drawing-terminal-result-1\\probe-baseline\\Program.cs:line 41"
+    },
+    {
+      "config": "Debug",
+      "typeName": "DrawingTerminalReceiptTests",
+      "methodName": "TerminalSuccessMatchesAnActualRejectedProductionDrawingReceipt",
+      "args": [
+        "edit",
+        true,
+        false
+      ],
+      "outcome": "Failed",
+      "exception": "Xunit.Sdk.EqualException: Assert.Equal() Failure: Values differ\r\nExpected: False\r\nActual:   True\r\n   at Xunit.Assert.Equal[T](T expected, T actual, IEqualityComparer\u00601 comparer) in /_/src/xunit.assert/Asserts/EqualityAsserts.cs:line 154\r\n   at Cadoryx.Tests.DrawingTerminalReceiptTests.TerminalSuccessMatchesAnActualRejectedProductionDrawingReceipt(String action, Boolean hasType, Boolean direct) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1080-drawing-terminal-result-1\\workspace\\Cadoryx.Tests\\DrawingTerminalReceiptTests.cs:line 28\r\n   at Cadoryx.Tests.DrawingTerminalReceiptTests.TerminalSuccessMatchesAnActualRejectedProductionDrawingReceipt(String action, Boolean hasType, Boolean direct) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1080-drawing-terminal-result-1\\workspace\\Cadoryx.Tests\\DrawingTerminalReceiptTests.cs:line 32\r\n   at Program.\u003C\u003Ec__DisplayClass0_1.\u003C\u003C\u003CMain\u003E$\u003Eg__Check|3\u003Ed.MoveNext() in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1080-drawing-terminal-result-1\\probe-baseline\\Program.cs:line 41"
+    },
+    {
+      "config": "Debug",
+      "typeName": "DrawingTerminalReceiptTests",
+      "methodName": "TerminalSuccessMatchesAnActualRejectedProductionDrawingReceipt",
+      "args": [
+        "reselect",
+        false,
+        false
+      ],
+      "outcome": "Failed",
+      "exception": "Xunit.Sdk.EqualException: Assert.Equal() Failure: Values differ\r\nExpected: False\r\nActual:   True\r\n   at Xunit.Assert.Equal[T](T expected, T actual, IEqualityComparer\u00601 comparer) in /_/src/xunit.assert/Asserts/EqualityAsserts.cs:line 154\r\n   at Cadoryx.Tests.DrawingTerminalReceiptTests.TerminalSuccessMatchesAnActualRejectedProductionDrawingReceipt(String action, Boolean hasType, Boolean direct) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1080-drawing-terminal-result-1\\workspace\\Cadoryx.Tests\\DrawingTerminalReceiptTests.cs:line 28\r\n   at Cadoryx.Tests.DrawingTerminalReceiptTests.TerminalSuccessMatchesAnActualRejectedProductionDrawingReceipt(String action, Boolean hasType, Boolean direct) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1080-drawing-terminal-result-1\\workspace\\Cadoryx.Tests\\DrawingTerminalReceiptTests.cs:line 32\r\n   at Program.\u003C\u003Ec__DisplayClass0_1.\u003C\u003C\u003CMain\u003E$\u003Eg__Check|3\u003Ed.MoveNext() in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1080-drawing-terminal-result-1\\probe-baseline\\Program.cs:line 41"
+    },
+    {
+      "config": "Debug",
+      "typeName": "DrawingTerminalReceiptTests",
+      "methodName": "TerminalSuccessMatchesAnActualRejectedProductionDrawingReceipt",
+      "args": [
+        "reselect",
+        true,
+        false
+      ],
+      "outcome": "Failed",
+      "exception": "Xunit.Sdk.EqualException: Assert.Equal() Failure: Values differ\r\nExpected: False\r\nActual:   True\r\n   at Xunit.Assert.Equal[T](T expected, T actual, IEqualityComparer\u00601 comparer) in /_/src/xunit.assert/Asserts/EqualityAsserts.cs:line 154\r\n   at Cadoryx.Tests.DrawingTerminalReceiptTests.TerminalSuccessMatchesAnActualRejectedProductionDrawingReceipt(String action, Boolean hasType, Boolean direct) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1080-drawing-terminal-result-1\\workspace\\Cadoryx.Tests\\DrawingTerminalReceiptTests.cs:line 28\r\n   at Cadoryx.Tests.DrawingTerminalReceiptTests.TerminalSuccessMatchesAnActualRejectedProductionDrawingReceipt(String action, Boolean hasType, Boolean direct) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1080-drawing-terminal-result-1\\workspace\\Cadoryx.Tests\\DrawingTerminalReceiptTests.cs:line 32\r\n   at Program.\u003C\u003Ec__DisplayClass0_1.\u003C\u003C\u003CMain\u003E$\u003Eg__Check|3\u003Ed.MoveNext() in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1080-drawing-terminal-result-1\\probe-baseline\\Program.cs:line 41"
+    },
+    {
+      "config": "Debug",
+      "typeName": "DrawingTerminalReceiptTests",
+      "methodName": "TerminalSuccessMatchesAnActualRejectedProductionDrawingReceipt",
+      "args": [
+        "delete",
+        false,
+        false
+      ],
+      "outcome": "Failed",
+      "exception": "Xunit.Sdk.EqualException: Assert.Equal() Failure: Values differ\r\nExpected: False\r\nActual:   True\r\n   at Xunit.Assert.Equal[T](T expected, T actual, IEqualityComparer\u00601 comparer) in /_/src/xunit.assert/Asserts/EqualityAsserts.cs:line 154\r\n   at Cadoryx.Tests.DrawingTerminalReceiptTests.TerminalSuccessMatchesAnActualRejectedProductionDrawingReceipt(String action, Boolean hasType, Boolean direct) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1080-drawing-terminal-result-1\\workspace\\Cadoryx.Tests\\DrawingTerminalReceiptTests.cs:line 28\r\n   at Cadoryx.Tests.DrawingTerminalReceiptTests.TerminalSuccessMatchesAnActualRejectedProductionDrawingReceipt(String action, Boolean hasType, Boolean direct) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1080-drawing-terminal-result-1\\workspace\\Cadoryx.Tests\\DrawingTerminalReceiptTests.cs:line 32\r\n   at Program.\u003C\u003Ec__DisplayClass0_1.\u003C\u003C\u003CMain\u003E$\u003Eg__Check|3\u003Ed.MoveNext() in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1080-drawing-terminal-result-1\\probe-baseline\\Program.cs:line 41"
+    },
+    {
+      "config": "Debug",
+      "typeName": "DrawingTerminalReceiptTests",
+      "methodName": "TerminalSuccessMatchesAnActualRejectedProductionDrawingReceipt",
+      "args": [
+        "delete",
+        true,
+        false
+      ],
+      "outcome": "Failed",
+      "exception": "Xunit.Sdk.EqualException: Assert.Equal() Failure: Values differ\r\nExpected: False\r\nActual:   True\r\n   at Xunit.Assert.Equal[T](T expected, T actual, IEqualityComparer\u00601 comparer) in /_/src/xunit.assert/Asserts/EqualityAsserts.cs:line 154\r\n   at Cadoryx.Tests.DrawingTerminalReceiptTests.TerminalSuccessMatchesAnActualRejectedProductionDrawingReceipt(String action, Boolean hasType, Boolean direct) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1080-drawing-terminal-result-1\\workspace\\Cadoryx.Tests\\DrawingTerminalReceiptTests.cs:line 28\r\n   at Cadoryx.Tests.DrawingTerminalReceiptTests.TerminalSuccessMatchesAnActualRejectedProductionDrawingReceipt(String action, Boolean hasType, Boolean direct) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1080-drawing-terminal-result-1\\workspace\\Cadoryx.Tests\\DrawingTerminalReceiptTests.cs:line 32\r\n   at Program.\u003C\u003Ec__DisplayClass0_1.\u003C\u003C\u003CMain\u003E$\u003Eg__Check|3\u003Ed.MoveNext() in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1080-drawing-terminal-result-1\\probe-baseline\\Program.cs:line 41"
+    },
+    {
+      "config": "Debug",
+      "typeName": "DrawingTerminalReceiptTests",
+      "methodName": "EveryExistingReadOnlyContractStillReturnsTerminalSuccess",
+      "args": [
+        null,
+        false
+      ],
+      "outcome": "Passed",
+      "elapsedMs": 3
+    },
+    {
+      "config": "Debug",
+      "typeName": "DrawingTerminalReceiptTests",
+      "methodName": "EveryExistingReadOnlyContractStillReturnsTerminalSuccess",
+      "args": [
+        "sheet",
+        false
+      ],
+      "outcome": "Passed",
+      "elapsedMs": 6
+    },
+    {
+      "config": "Debug",
+      "typeName": "DrawingTerminalReceiptTests",
+      "methodName": "EveryExistingReadOnlyContractStillReturnsTerminalSuccess",
+      "args": [
+        "view",
+        false
+      ],
+      "outcome": "Passed",
+      "elapsedMs": 1
+    },
+    {
+      "config": "Debug",
+      "typeName": "DrawingTerminalReceiptTests",
+      "methodName": "EveryExistingReadOnlyContractStillReturnsTerminalSuccess",
+      "args": [
+        "dimension",
+        false
+      ],
+      "outcome": "Passed",
+      "elapsedMs": 1
+    },
+    {
+      "config": "Debug",
+      "typeName": "DrawingTerminalReceiptTests",
+      "methodName": "EveryExistingReadOnlyContractStillReturnsTerminalSuccess",
+      "args": [
+        "datum",
+        false
+      ],
+      "outcome": "Passed",
+      "elapsedMs": 0
+    },
+    {
+      "config": "Debug",
+      "typeName": "DrawingTerminalReceiptTests",
+      "methodName": "EveryExistingReadOnlyContractStillReturnsTerminalSuccess",
+      "args": [
+        "control_frame",
+        false
+      ],
+      "outcome": "Passed",
+      "elapsedMs": 0
+    },
+    {
+      "config": "Debug",
+      "typeName": "DrawingTerminalReceiptTests",
+      "methodName": "EveryExistingReadOnlyContractStillReturnsTerminalSuccess",
+      "args": [
+        "balloon",
+        false
+      ],
+      "outcome": "Passed",
+      "elapsedMs": 0
+    },
+    {
+      "config": "Debug",
+      "typeName": "DrawingTerminalReceiptTests",
+      "methodName": "EveryExistingReadOnlyContractStillReturnsTerminalSuccess",
+      "args": [
+        "hole_table",
+        false
+      ],
+      "outcome": "Passed",
+      "elapsedMs": 0
+    },
+    {
+      "config": "Debug",
+      "typeName": "DrawingTerminalReceiptTests",
+      "methodName": "EveryExistingReadOnlyContractStillReturnsTerminalSuccess",
+      "args": [
+        "field",
+        false
+      ],
+      "outcome": "Passed",
+      "elapsedMs": 0
+    },
+    {
+      "config": "Debug",
+      "typeName": "DrawingTerminalReceiptTests",
+      "methodName": "EveryExistingReadOnlyContractStillReturnsTerminalSuccess",
+      "args": [
+        "note",
+        false
+      ],
+      "outcome": "Passed",
+      "elapsedMs": 0
+    },
+    {
+      "config": "Debug",
+      "typeName": "DrawingTerminalReceiptTests",
+      "methodName": "EveryExistingReadOnlyContractStillReturnsTerminalSuccess",
+      "args": [
+        "template",
+        false
+      ],
+      "outcome": "Passed",
+      "elapsedMs": 0
+    },
+    {
+      "config": "Debug",
+      "typeName": "DrawingTerminalReceiptTests",
+      "methodName": "EveryExistingReadOnlyContractStillReturnsTerminalSuccess",
+      "args": [
+        "parts_table",
+        false
+      ],
+      "outcome": "Passed",
+      "elapsedMs": 0
+    },
+    {
+      "config": "Debug",
+      "typeName": "DrawingTerminalReceiptTests",
+      "methodName": "EveryExistingReadOnlyContractStillReturnsTerminalSuccess",
+      "args": [
+        "zones",
+        false
+      ],
+      "outcome": "Passed",
+      "elapsedMs": 0
+    },
+    {
+      "config": "Debug",
+      "typeName": "DrawingTerminalReceiptTests",
+      "methodName": "ActualTerminalCreateAndDeleteRemainSuccessfulWithOneCommitAndOriginalUndoRedo",
+      "args": [
+        false
+      ],
+      "outcome": "Passed",
+      "elapsedMs": 188
+    },
+    {
+      "config": "Debug",
+      "typeName": "DrawingTerminalReceiptTests",
+      "methodName": "UnknownFieldsRetainOriginalTerminalFailureInsteadOfBeingRepaired",
+      "args": [
+        false
+      ],
+      "outcome": "Passed",
+      "elapsedMs": 1
+    },
+    {
+      "config": "Debug",
+      "typeName": "DrawingTerminalReceiptTests",
+      "methodName": "TerminalSuccessMatchesAnActualRejectedProductionDrawingReceipt",
+      "args": [
+        "inspect",
+        false,
+        true
+      ],
+      "outcome": "Failed",
+      "exception": "Xunit.Sdk.EqualException: Assert.Equal() Failure: Values differ\r\nExpected: False\r\nActual:   True\r\n   at Xunit.Assert.Equal[T](T expected, T actual, IEqualityComparer\u00601 comparer) in /_/src/xunit.assert/Asserts/EqualityAsserts.cs:line 154\r\n   at Cadoryx.Tests.DrawingTerminalReceiptTests.TerminalSuccessMatchesAnActualRejectedProductionDrawingReceipt(String action, Boolean hasType, Boolean direct) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1080-drawing-terminal-result-1\\workspace\\Cadoryx.Tests\\DrawingTerminalReceiptTests.cs:line 28\r\n   at Cadoryx.Tests.DrawingTerminalReceiptTests.TerminalSuccessMatchesAnActualRejectedProductionDrawingReceipt(String action, Boolean hasType, Boolean direct) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1080-drawing-terminal-result-1\\workspace\\Cadoryx.Tests\\DrawingTerminalReceiptTests.cs:line 32\r\n   at Program.\u003C\u003Ec__DisplayClass0_1.\u003C\u003C\u003CMain\u003E$\u003Eg__Check|3\u003Ed.MoveNext() in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1080-drawing-terminal-result-1\\probe-baseline\\Program.cs:line 41"
+    },
+    {
+      "config": "Debug",
+      "typeName": "DrawingTerminalReceiptTests",
+      "methodName": "TerminalSuccessMatchesAnActualRejectedProductionDrawingReceipt",
+      "args": [
+        "inspect",
+        true,
+        true
+      ],
+      "outcome": "Failed",
+      "exception": "Xunit.Sdk.EqualException: Assert.Equal() Failure: Values differ\r\nExpected: False\r\nActual:   True\r\n   at Xunit.Assert.Equal[T](T expected, T actual, IEqualityComparer\u00601 comparer) in /_/src/xunit.assert/Asserts/EqualityAsserts.cs:line 154\r\n   at Cadoryx.Tests.DrawingTerminalReceiptTests.TerminalSuccessMatchesAnActualRejectedProductionDrawingReceipt(String action, Boolean hasType, Boolean direct) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1080-drawing-terminal-result-1\\workspace\\Cadoryx.Tests\\DrawingTerminalReceiptTests.cs:line 28\r\n   at Cadoryx.Tests.DrawingTerminalReceiptTests.TerminalSuccessMatchesAnActualRejectedProductionDrawingReceipt(String action, Boolean hasType, Boolean direct) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1080-drawing-terminal-result-1\\workspace\\Cadoryx.Tests\\DrawingTerminalReceiptTests.cs:line 32\r\n   at Program.\u003C\u003Ec__DisplayClass0_1.\u003C\u003C\u003CMain\u003E$\u003Eg__Check|3\u003Ed.MoveNext() in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1080-drawing-terminal-result-1\\probe-baseline\\Program.cs:line 41"
+    },
+    {
+      "config": "Debug",
+      "typeName": "DrawingTerminalReceiptTests",
+      "methodName": "TerminalSuccessMatchesAnActualRejectedProductionDrawingReceipt",
+      "args": [
+        "create",
+        false,
+        true
+      ],
+      "outcome": "Failed",
+      "exception": "Xunit.Sdk.EqualException: Assert.Equal() Failure: Values differ\r\nExpected: False\r\nActual:   True\r\n   at Xunit.Assert.Equal[T](T expected, T actual, IEqualityComparer\u00601 comparer) in /_/src/xunit.assert/Asserts/EqualityAsserts.cs:line 154\r\n   at Cadoryx.Tests.DrawingTerminalReceiptTests.TerminalSuccessMatchesAnActualRejectedProductionDrawingReceipt(String action, Boolean hasType, Boolean direct) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1080-drawing-terminal-result-1\\workspace\\Cadoryx.Tests\\DrawingTerminalReceiptTests.cs:line 28\r\n   at Cadoryx.Tests.DrawingTerminalReceiptTests.TerminalSuccessMatchesAnActualRejectedProductionDrawingReceipt(String action, Boolean hasType, Boolean direct) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1080-drawing-terminal-result-1\\workspace\\Cadoryx.Tests\\DrawingTerminalReceiptTests.cs:line 32\r\n   at Program.\u003C\u003Ec__DisplayClass0_1.\u003C\u003C\u003CMain\u003E$\u003Eg__Check|3\u003Ed.MoveNext() in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1080-drawing-terminal-result-1\\probe-baseline\\Program.cs:line 41"
+    },
+    {
+      "config": "Debug",
+      "typeName": "DrawingTerminalReceiptTests",
+      "methodName": "TerminalSuccessMatchesAnActualRejectedProductionDrawingReceipt",
+      "args": [
+        "create",
+        true,
+        true
+      ],
+      "outcome": "Failed",
+      "exception": "Xunit.Sdk.EqualException: Assert.Equal() Failure: Values differ\r\nExpected: False\r\nActual:   True\r\n   at Xunit.Assert.Equal[T](T expected, T actual, IEqualityComparer\u00601 comparer) in /_/src/xunit.assert/Asserts/EqualityAsserts.cs:line 154\r\n   at Cadoryx.Tests.DrawingTerminalReceiptTests.TerminalSuccessMatchesAnActualRejectedProductionDrawingReceipt(String action, Boolean hasType, Boolean direct) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1080-drawing-terminal-result-1\\workspace\\Cadoryx.Tests\\DrawingTerminalReceiptTests.cs:line 28\r\n   at Cadoryx.Tests.DrawingTerminalReceiptTests.TerminalSuccessMatchesAnActualRejectedProductionDrawingReceipt(String action, Boolean hasType, Boolean direct) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1080-drawing-terminal-result-1\\workspace\\Cadoryx.Tests\\DrawingTerminalReceiptTests.cs:line 32\r\n   at Program.\u003C\u003Ec__DisplayClass0_1.\u003C\u003C\u003CMain\u003E$\u003Eg__Check|3\u003Ed.MoveNext() in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1080-drawing-terminal-result-1\\probe-baseline\\Program.cs:line 41"
+    },
+    {
+      "config": "Debug",
+      "typeName": "DrawingTerminalReceiptTests",
+      "methodName": "TerminalSuccessMatchesAnActualRejectedProductionDrawingReceipt",
+      "args": [
+        "edit",
+        false,
+        true
+      ],
+      "outcome": "Failed",
+      "exception": "Xunit.Sdk.EqualException: Assert.Equal() Failure: Values differ\r\nExpected: False\r\nActual:   True\r\n   at Xunit.Assert.Equal[T](T expected, T actual, IEqualityComparer\u00601 comparer) in /_/src/xunit.assert/Asserts/EqualityAsserts.cs:line 154\r\n   at Cadoryx.Tests.DrawingTerminalReceiptTests.TerminalSuccessMatchesAnActualRejectedProductionDrawingReceipt(String action, Boolean hasType, Boolean direct) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1080-drawing-terminal-result-1\\workspace\\Cadoryx.Tests\\DrawingTerminalReceiptTests.cs:line 28\r\n   at Cadoryx.Tests.DrawingTerminalReceiptTests.TerminalSuccessMatchesAnActualRejectedProductionDrawingReceipt(String action, Boolean hasType, Boolean direct) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1080-drawing-terminal-result-1\\workspace\\Cadoryx.Tests\\DrawingTerminalReceiptTests.cs:line 32\r\n   at Program.\u003C\u003Ec__DisplayClass0_1.\u003C\u003C\u003CMain\u003E$\u003Eg__Check|3\u003Ed.MoveNext() in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1080-drawing-terminal-result-1\\probe-baseline\\Program.cs:line 41"
+    },
+    {
+      "config": "Debug",
+      "typeName": "DrawingTerminalReceiptTests",
+      "methodName": "TerminalSuccessMatchesAnActualRejectedProductionDrawingReceipt",
+      "args": [
+        "edit",
+        true,
+        true
+      ],
+      "outcome": "Failed",
+      "exception": "Xunit.Sdk.EqualException: Assert.Equal() Failure: Values differ\r\nExpected: False\r\nActual:   True\r\n   at Xunit.Assert.Equal[T](T expected, T actual, IEqualityComparer\u00601 comparer) in /_/src/xunit.assert/Asserts/EqualityAsserts.cs:line 154\r\n   at Cadoryx.Tests.DrawingTerminalReceiptTests.TerminalSuccessMatchesAnActualRejectedProductionDrawingReceipt(String action, Boolean hasType, Boolean direct) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1080-drawing-terminal-result-1\\workspace\\Cadoryx.Tests\\DrawingTerminalReceiptTests.cs:line 28\r\n   at Cadoryx.Tests.DrawingTerminalReceiptTests.TerminalSuccessMatchesAnActualRejectedProductionDrawingReceipt(String action, Boolean hasType, Boolean direct) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1080-drawing-terminal-result-1\\workspace\\Cadoryx.Tests\\DrawingTerminalReceiptTests.cs:line 32\r\n   at Program.\u003C\u003Ec__DisplayClass0_1.\u003C\u003C\u003CMain\u003E$\u003Eg__Check|3\u003Ed.MoveNext() in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1080-drawing-terminal-result-1\\probe-baseline\\Program.cs:line 41"
+    },
+    {
+      "config": "Debug",
+      "typeName": "DrawingTerminalReceiptTests",
+      "methodName": "TerminalSuccessMatchesAnActualRejectedProductionDrawingReceipt",
+      "args": [
+        "reselect",
+        false,
+        true
+      ],
+      "outcome": "Failed",
+      "exception": "Xunit.Sdk.EqualException: Assert.Equal() Failure: Values differ\r\nExpected: False\r\nActual:   True\r\n   at Xunit.Assert.Equal[T](T expected, T actual, IEqualityComparer\u00601 comparer) in /_/src/xunit.assert/Asserts/EqualityAsserts.cs:line 154\r\n   at Cadoryx.Tests.DrawingTerminalReceiptTests.TerminalSuccessMatchesAnActualRejectedProductionDrawingReceipt(String action, Boolean hasType, Boolean direct) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1080-drawing-terminal-result-1\\workspace\\Cadoryx.Tests\\DrawingTerminalReceiptTests.cs:line 28\r\n   at Cadoryx.Tests.DrawingTerminalReceiptTests.TerminalSuccessMatchesAnActualRejectedProductionDrawingReceipt(String action, Boolean hasType, Boolean direct) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1080-drawing-terminal-result-1\\workspace\\Cadoryx.Tests\\DrawingTerminalReceiptTests.cs:line 32\r\n   at Program.\u003C\u003Ec__DisplayClass0_1.\u003C\u003C\u003CMain\u003E$\u003Eg__Check|3\u003Ed.MoveNext() in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1080-drawing-terminal-result-1\\probe-baseline\\Program.cs:line 41"
+    },
+    {
+      "config": "Debug",
+      "typeName": "DrawingTerminalReceiptTests",
+      "methodName": "TerminalSuccessMatchesAnActualRejectedProductionDrawingReceipt",
+      "args": [
+        "reselect",
+        true,
+        true
+      ],
+      "outcome": "Failed",
+      "exception": "Xunit.Sdk.EqualException: Assert.Equal() Failure: Values differ\r\nExpected: False\r\nActual:   True\r\n   at Xunit.Assert.Equal[T](T expected, T actual, IEqualityComparer\u00601 comparer) in /_/src/xunit.assert/Asserts/EqualityAsserts.cs:line 154\r\n   at Cadoryx.Tests.DrawingTerminalReceiptTests.TerminalSuccessMatchesAnActualRejectedProductionDrawingReceipt(String action, Boolean hasType, Boolean direct) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1080-drawing-terminal-result-1\\workspace\\Cadoryx.Tests\\DrawingTerminalReceiptTests.cs:line 28\r\n   at Cadoryx.Tests.DrawingTerminalReceiptTests.TerminalSuccessMatchesAnActualRejectedProductionDrawingReceipt(String action, Boolean hasType, Boolean direct) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1080-drawing-terminal-result-1\\workspace\\Cadoryx.Tests\\DrawingTerminalReceiptTests.cs:line 32\r\n   at Program.\u003C\u003Ec__DisplayClass0_1.\u003C\u003C\u003CMain\u003E$\u003Eg__Check|3\u003Ed.MoveNext() in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1080-drawing-terminal-result-1\\probe-baseline\\Program.cs:line 41"
+    },
+    {
+      "config": "Debug",
+      "typeName": "DrawingTerminalReceiptTests",
+      "methodName": "TerminalSuccessMatchesAnActualRejectedProductionDrawingReceipt",
+      "args": [
+        "delete",
+        false,
+        true
+      ],
+      "outcome": "Failed",
+      "exception": "Xunit.Sdk.EqualException: Assert.Equal() Failure: Values differ\r\nExpected: False\r\nActual:   True\r\n   at Xunit.Assert.Equal[T](T expected, T actual, IEqualityComparer\u00601 comparer) in /_/src/xunit.assert/Asserts/EqualityAsserts.cs:line 154\r\n   at Cadoryx.Tests.DrawingTerminalReceiptTests.TerminalSuccessMatchesAnActualRejectedProductionDrawingReceipt(String action, Boolean hasType, Boolean direct) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1080-drawing-terminal-result-1\\workspace\\Cadoryx.Tests\\DrawingTerminalReceiptTests.cs:line 28\r\n   at Cadoryx.Tests.DrawingTerminalReceiptTests.TerminalSuccessMatchesAnActualRejectedProductionDrawingReceipt(String action, Boolean hasType, Boolean direct) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1080-drawing-terminal-result-1\\workspace\\Cadoryx.Tests\\DrawingTerminalReceiptTests.cs:line 32\r\n   at Program.\u003C\u003Ec__DisplayClass0_1.\u003C\u003C\u003CMain\u003E$\u003Eg__Check|3\u003Ed.MoveNext() in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1080-drawing-terminal-result-1\\probe-baseline\\Program.cs:line 41"
+    },
+    {
+      "config": "Debug",
+      "typeName": "DrawingTerminalReceiptTests",
+      "methodName": "TerminalSuccessMatchesAnActualRejectedProductionDrawingReceipt",
+      "args": [
+        "delete",
+        true,
+        true
+      ],
+      "outcome": "Failed",
+      "exception": "Xunit.Sdk.EqualException: Assert.Equal() Failure: Values differ\r\nExpected: False\r\nActual:   True\r\n   at Xunit.Assert.Equal[T](T expected, T actual, IEqualityComparer\u00601 comparer) in /_/src/xunit.assert/Asserts/EqualityAsserts.cs:line 154\r\n   at Cadoryx.Tests.DrawingTerminalReceiptTests.TerminalSuccessMatchesAnActualRejectedProductionDrawingReceipt(String action, Boolean hasType, Boolean direct) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1080-drawing-terminal-result-1\\workspace\\Cadoryx.Tests\\DrawingTerminalReceiptTests.cs:line 28\r\n   at Cadoryx.Tests.DrawingTerminalReceiptTests.TerminalSuccessMatchesAnActualRejectedProductionDrawingReceipt(String action, Boolean hasType, Boolean direct) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1080-drawing-terminal-result-1\\workspace\\Cadoryx.Tests\\DrawingTerminalReceiptTests.cs:line 32\r\n   at Program.\u003C\u003Ec__DisplayClass0_1.\u003C\u003C\u003CMain\u003E$\u003Eg__Check|3\u003Ed.MoveNext() in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1080-drawing-terminal-result-1\\probe-baseline\\Program.cs:line 41"
+    },
+    {
+      "config": "Debug",
+      "typeName": "DrawingTerminalReceiptTests",
+      "methodName": "EveryExistingReadOnlyContractStillReturnsTerminalSuccess",
+      "args": [
+        null,
+        true
+      ],
+      "outcome": "Passed",
+      "elapsedMs": 0
+    },
+    {
+      "config": "Debug",
+      "typeName": "DrawingTerminalReceiptTests",
+      "methodName": "EveryExistingReadOnlyContractStillReturnsTerminalSuccess",
+      "args": [
+        "sheet",
+        true
+      ],
+      "outcome": "Passed",
+      "elapsedMs": 0
+    },
+    {
+      "config": "Debug",
+      "typeName": "DrawingTerminalReceiptTests",
+      "methodName": "EveryExistingReadOnlyContractStillReturnsTerminalSuccess",
+      "args": [
+        "view",
+        true
+      ],
+      "outcome": "Passed",
+      "elapsedMs": 0
+    },
+    {
+      "config": "Debug",
+      "typeName": "DrawingTerminalReceiptTests",
+      "methodName": "EveryExistingReadOnlyContractStillReturnsTerminalSuccess",
+      "args": [
+        "dimension",
+        true
+      ],
+      "outcome": "Passed",
+      "elapsedMs": 0
+    },
+    {
+      "config": "Debug",
+      "typeName": "DrawingTerminalReceiptTests",
+      "methodName": "EveryExistingReadOnlyContractStillReturnsTerminalSuccess",
+      "args": [
+        "datum",
+        true
+      ],
+      "outcome": "Passed",
+      "elapsedMs": 0
+    },
+    {
+      "config": "Debug",
+      "typeName": "DrawingTerminalReceiptTests",
+      "methodName": "EveryExistingReadOnlyContractStillReturnsTerminalSuccess",
+      "args": [
+        "control_frame",
+        true
+      ],
+      "outcome": "Passed",
+      "elapsedMs": 0
+    },
+    {
+      "config": "Debug",
+      "typeName": "DrawingTerminalReceiptTests",
+      "methodName": "EveryExistingReadOnlyContractStillReturnsTerminalSuccess",
+      "args": [
+        "balloon",
+        true
+      ],
+      "outcome": "Passed",
+      "elapsedMs": 0
+    },
+    {
+      "config": "Debug",
+      "typeName": "DrawingTerminalReceiptTests",
+      "methodName": "EveryExistingReadOnlyContractStillReturnsTerminalSuccess",
+      "args": [
+        "hole_table",
+        true
+      ],
+      "outcome": "Passed",
+      "elapsedMs": 0
+    },
+    {
+      "config": "Debug",
+      "typeName": "DrawingTerminalReceiptTests",
+      "methodName": "EveryExistingReadOnlyContractStillReturnsTerminalSuccess",
+      "args": [
+        "field",
+        true
+      ],
+      "outcome": "Passed",
+      "elapsedMs": 0
+    },
+    {
+      "config": "Debug",
+      "typeName": "DrawingTerminalReceiptTests",
+      "methodName": "EveryExistingReadOnlyContractStillReturnsTerminalSuccess",
+      "args": [
+        "note",
+        true
+      ],
+      "outcome": "Passed",
+      "elapsedMs": 0
+    },
+    {
+      "config": "Debug",
+      "typeName": "DrawingTerminalReceiptTests",
+      "methodName": "EveryExistingReadOnlyContractStillReturnsTerminalSuccess",
+      "args": [
+        "template",
+        true
+      ],
+      "outcome": "Passed",
+      "elapsedMs": 0
+    },
+    {
+      "config": "Debug",
+      "typeName": "DrawingTerminalReceiptTests",
+      "methodName": "EveryExistingReadOnlyContractStillReturnsTerminalSuccess",
+      "args": [
+        "parts_table",
+        true
+      ],
+      "outcome": "Passed",
+      "elapsedMs": 0
+    },
+    {
+      "config": "Debug",
+      "typeName": "DrawingTerminalReceiptTests",
+      "methodName": "EveryExistingReadOnlyContractStillReturnsTerminalSuccess",
+      "args": [
+        "zones",
+        true
+      ],
+      "outcome": "Passed",
+      "elapsedMs": 0
+    },
+    {
+      "config": "Debug",
+      "typeName": "DrawingTerminalReceiptTests",
+      "methodName": "ActualTerminalCreateAndDeleteRemainSuccessfulWithOneCommitAndOriginalUndoRedo",
+      "args": [
+        true
+      ],
+      "outcome": "Passed",
+      "elapsedMs": 0
+    },
+    {
+      "config": "Debug",
+      "typeName": "DrawingTerminalReceiptTests",
+      "methodName": "UnknownFieldsRetainOriginalTerminalFailureInsteadOfBeingRepaired",
+      "args": [
+        true
+      ],
+      "outcome": "Passed",
+      "elapsedMs": 2
+    }
+  ],
+  "configurations": [
+    {
+      "config": "Release",
+      "raw": "{\u0022type\u0022:\u0022object\u0022,\u0022properties\u0022:{\u0022action\u0022:{\u0022type\u0022:\u0022string\u0022,\u0022description\u0022:\u0022Except contract (inspect_sources too): documentId/stateId required.\u0022,\u0022enum\u0022:[\u0022contract\u0022,\u0022inspect\u0022,\u0022inspect_sources\u0022,\u0022create\u0022,\u0022edit\u0022,\u0022reselect\u0022,\u0022delete\u0022,\u0022set_parts_table\u0022,\u0022set_zones\u0022,\u0022refresh\u0022,\u0022save_template\u0022,\u0022apply_template\u0022,\u0022import_template\u0022,\u0022detach_coordinates\u0022]},\u0022type\u0022:{\u0022type\u0022:\u0022string\u0022,\u0022enum\u0022:[\u0022sheet\u0022,\u0022view\u0022,\u0022dimension\u0022,\u0022datum\u0022,\u0022control_frame\u0022,\u0022balloon\u0022,\u0022hole_table\u0022,\u0022field\u0022,\u0022note\u0022,\u0022template\u0022,\u0022parts_table\u0022,\u0022zones\u0022],\u0022description\u0022:\u0022Required for inspect.\u0022},\u0022documentId\u0022:{\u0022type\u0022:\u0022string\u0022,\u0022format\u0022:\u0022uuid\u0022,\u0022description\u0022:\u0022REQUIRED except contract: cad_status.documentId.\u0022},\u0022stateId\u0022:{\u0022type\u0022:\u0022string\u0022,\u0022format\u0022:\u0022uuid\u0022,\u0022description\u0022:\u0022REQUIRED except contract: cad_status.stateId.\u0022},\u0022sheetId\u0022:{\u0022type\u0022:\u0022string\u0022,\u0022format\u0022:\u0022uuid\u0022},\u0022id\u0022:{\u0022type\u0022:\u0022string\u0022,\u0022format\u0022:\u0022uuid\u0022},\u0022name\u0022:{\u0022type\u0022:\u0022string\u0022,\u0022maxLength\u0022:64,\u0022description\u0022:\u0022save_template only; else authorJson.\u0022},\u0022path\u0022:{\u0022type\u0022:\u0022string\u0022,\u0022maxLength\u0022:8192,\u0022description\u0022:\u0022Full occurrences.items[].path\u0022},\u0022bodyId\u0022:{\u0022type\u0022:\u0022string\u0022,\u0022format\u0022:\u0022uuid\u0022},\u0022revision\u0022:{\u0022type\u0022:\u0022string\u0022,\u0022format\u0022:\u0022uuid\u0022},\u0022authorJson\u0022:{\u0022type\u0022:\u0022string\u0022,\u0022minLength\u0022:2,\u0022maxLength\u0022:65536},\u0022offset\u0022:{\u0022type\u0022:\u0022integer\u0022,\u0022minimum\u0022:0,\u0022maximum\u0022:100000},\u0022limit\u0022:{\u0022type\u0022:\u0022integer\u0022,\u0022minimum\u0022:1,\u0022maximum\u0022:50}},\u0022required\u0022:[\u0022action\u0022],\u0022additionalProperties\u0022:false}",
+      "wire": "{\u0022type\u0022:\u0022object\u0022,\u0022properties\u0022:{\u0022action\u0022:{\u0022type\u0022:\u0022string\u0022,\u0022description\u0022:\u0022Except contract (inspect_sources too): documentId/stateId required.\u0022,\u0022enum\u0022:[\u0022contract\u0022,\u0022inspect\u0022,\u0022inspect_sources\u0022,\u0022create\u0022,\u0022edit\u0022,\u0022reselect\u0022,\u0022delete\u0022,\u0022set_parts_table\u0022,\u0022set_zones\u0022,\u0022refresh\u0022,\u0022save_template\u0022,\u0022apply_template\u0022,\u0022import_template\u0022,\u0022detach_coordinates\u0022]},\u0022type\u0022:{\u0022type\u0022:\u0022string\u0022,\u0022enum\u0022:[\u0022sheet\u0022,\u0022view\u0022,\u0022dimension\u0022,\u0022datum\u0022,\u0022control_frame\u0022,\u0022balloon\u0022,\u0022hole_table\u0022,\u0022field\u0022,\u0022note\u0022,\u0022template\u0022,\u0022parts_table\u0022,\u0022zones\u0022],\u0022description\u0022:\u0022Required for inspect.\u0022},\u0022documentId\u0022:{\u0022type\u0022:\u0022string\u0022,\u0022format\u0022:\u0022uuid\u0022,\u0022description\u0022:\u0022REQUIRED except contract: cad_status.documentId.\u0022},\u0022stateId\u0022:{\u0022type\u0022:\u0022string\u0022,\u0022format\u0022:\u0022uuid\u0022,\u0022description\u0022:\u0022REQUIRED except contract: cad_status.stateId.\u0022},\u0022sheetId\u0022:{\u0022type\u0022:\u0022string\u0022,\u0022format\u0022:\u0022uuid\u0022},\u0022id\u0022:{\u0022type\u0022:\u0022string\u0022,\u0022format\u0022:\u0022uuid\u0022},\u0022name\u0022:{\u0022type\u0022:\u0022string\u0022,\u0022maxLength\u0022:64,\u0022description\u0022:\u0022save_template only; else authorJson.\u0022},\u0022path\u0022:{\u0022type\u0022:\u0022string\u0022,\u0022maxLength\u0022:8192,\u0022description\u0022:\u0022Full occurrences.items[].path\u0022},\u0022bodyId\u0022:{\u0022type\u0022:\u0022string\u0022,\u0022format\u0022:\u0022uuid\u0022},\u0022revision\u0022:{\u0022type\u0022:\u0022string\u0022,\u0022format\u0022:\u0022uuid\u0022},\u0022authorJson\u0022:{\u0022type\u0022:\u0022string\u0022,\u0022minLength\u0022:2,\u0022maxLength\u0022:65536},\u0022offset\u0022:{\u0022type\u0022:\u0022integer\u0022,\u0022minimum\u0022:0,\u0022maximum\u0022:100000},\u0022limit\u0022:{\u0022type\u0022:\u0022integer\u0022,\u0022minimum\u0022:1,\u0022maximum\u0022:50}},\u0022required\u0022:[\u0022action\u0022],\u0022additionalProperties\u0022:false}",
+      "nativeModules": [],
+      "assemblies": [
+        {
+          "name": "Cadoryx.Tests",
+          "location": "C:/Users/yoiri/source/repos/Cadoryx\\artifacts/af1080-drawing-terminal-result-1\\workspace/Cadoryx.Tests/bin\\Release\\net10.0\\Cadoryx.Tests.dll",
+          "sha256": "F6DCBEA9EF6B7644A14BB1FB3CBB6A720594C147FABD37B083D7DFDF98792428"
+        },
+        {
+          "name": "Cadoryx.ViewModels",
+          "location": "C:/Users/yoiri/source/repos/Cadoryx\\Cadoryx.ViewModels/bin\\Release\\net10.0\\Cadoryx.ViewModels.dll",
+          "sha256": "BBF4D064A57A3347A08CF3906A4007DAF44F8A1BBF6F11D6CA5CD05C1C5B1B1C"
+        },
+        {
+          "name": "Cadoryx.AI.LmStudio",
+          "location": "C:/Users/yoiri/source/repos/Cadoryx\\Cadoryx.ViewModels/bin\\Release\\net10.0\\Cadoryx.AI.LmStudio.dll",
+          "sha256": "2519EC7A844EF65DE14B7B25506CC51BA27477F4CF1D2AEA28158506E22E2130"
+        },
+        {
+          "name": "Cadoryx.Agent",
+          "location": "C:/Users/yoiri/source/repos/Cadoryx\\Cadoryx.ViewModels/bin\\Release\\net10.0\\Cadoryx.Agent.dll",
+          "sha256": "9F94AB80E9C5BBB6CE1E1C88E7EAF825A95DD249DA6FB5065B4ECD18B9972B5F"
+        },
+        {
+          "name": "Cadoryx.AI.Contracts",
+          "location": "C:/Users/yoiri/source/repos/Cadoryx\\Cadoryx.ViewModels/bin\\Release\\net10.0\\Cadoryx.AI.Contracts.dll",
+          "sha256": "0F6E56E449B76027132505DF7AD407341BD25B42C605933FAD64EA6F0B57B438"
+        },
+        {
+          "name": "Cadoryx.Db",
+          "location": "C:/Users/yoiri/source/repos/Cadoryx\\Cadoryx.ViewModels/bin\\Release\\net10.0\\Cadoryx.Db.dll",
+          "sha256": "18E4565870D7F0AD3AC57946C8D3064449D0C39E7BD8972B04E9BBF1A31C150C"
+        },
+        {
+          "name": "Cadoryx.Editor",
+          "location": "C:/Users/yoiri/source/repos/Cadoryx\\Cadoryx.ViewModels/bin\\Release\\net10.0\\Cadoryx.Editor.dll",
+          "sha256": "4ACF35815C116A02FA82E1F0B7E5CE8EDD33E16B092C9E28E483DBEA0C8B2F1B"
+        },
+        {
+          "name": "Cadoryx.CommandLine",
+          "location": "C:/Users/yoiri/source/repos/Cadoryx\\Cadoryx.ViewModels/bin\\Release\\net10.0\\Cadoryx.CommandLine.dll",
+          "sha256": "B1D2C699D49D3B0363E6A38D5F5D51F6390F52F8FBB30D63896C949C28D9AF41"
+        },
+        {
+          "name": "Cadoryx.Kernel.Abstractions",
+          "location": "C:/Users/yoiri/source/repos/Cadoryx\\Cadoryx.ViewModels/bin\\Release\\net10.0\\Cadoryx.Kernel.Abstractions.dll",
+          "sha256": "7B59661ED37A4186D224E02A9BE513A70227A5E6D32CF31A77AC324547380768"
+        },
+        {
+          "name": "Cadoryx.ViewModels.Services",
+          "location": "C:/Users/yoiri/source/repos/Cadoryx\\Cadoryx.ViewModels/bin\\Release\\net10.0\\Cadoryx.ViewModels.Services.dll",
+          "sha256": "C2A9A5DC21FBEAB971A74F2FF73148784B2BA213C2DCC0BB8506353BD623ED60"
+        },
+        {
+          "name": "Cadoryx.Rendering",
+          "location": "C:/Users/yoiri/source/repos/Cadoryx\\Cadoryx.ViewModels/bin\\Release\\net10.0\\Cadoryx.Rendering.dll",
+          "sha256": "2F98C9F7163287B0CC3D849FF86A2C165C719BC39BE0EF724FE74576C451CA35"
+        },
+        {
+          "name": "Cadoryx.Lang",
+          "location": "C:/Users/yoiri/source/repos/Cadoryx\\Cadoryx.ViewModels/bin\\Release\\net10.0\\Cadoryx.Lang.dll",
+          "sha256": "BA2768B93E6D5842B0C5E280CBBB12DA1019DC158DBF6BA02292DEAF5B01393E"
+        },
+        {
+          "name": "Cadoryx.Commands",
+          "location": "C:/Users/yoiri/source/repos/Cadoryx\\Cadoryx.ViewModels/bin\\Release\\net10.0\\Cadoryx.Commands.dll",
+          "sha256": "EFC2B3A92406992447EA34B892B1F8CDD94216624EE8852060F5B7A2563481F2"
+        },
+        {
+          "name": "Cadoryx.Sketching",
+          "location": "C:/Users/yoiri/source/repos/Cadoryx\\Cadoryx.ViewModels/bin\\Release\\net10.0\\Cadoryx.Sketching.dll",
+          "sha256": "14ED3DF2CCD62BFC49C4F9DCA33C3AE736CBBC9D0127EE49FDD392E82CBFCC66"
+        }
+      ]
+    },
+    {
+      "config": "Debug",
+      "raw": "{\u0022type\u0022:\u0022object\u0022,\u0022properties\u0022:{\u0022action\u0022:{\u0022type\u0022:\u0022string\u0022,\u0022description\u0022:\u0022Except contract (inspect_sources too): documentId/stateId required.\u0022,\u0022enum\u0022:[\u0022contract\u0022,\u0022inspect\u0022,\u0022inspect_sources\u0022,\u0022create\u0022,\u0022edit\u0022,\u0022reselect\u0022,\u0022delete\u0022,\u0022set_parts_table\u0022,\u0022set_zones\u0022,\u0022refresh\u0022,\u0022save_template\u0022,\u0022apply_template\u0022,\u0022import_template\u0022,\u0022detach_coordinates\u0022]},\u0022type\u0022:{\u0022type\u0022:\u0022string\u0022,\u0022enum\u0022:[\u0022sheet\u0022,\u0022view\u0022,\u0022dimension\u0022,\u0022datum\u0022,\u0022control_frame\u0022,\u0022balloon\u0022,\u0022hole_table\u0022,\u0022field\u0022,\u0022note\u0022,\u0022template\u0022,\u0022parts_table\u0022,\u0022zones\u0022],\u0022description\u0022:\u0022Required for inspect.\u0022},\u0022documentId\u0022:{\u0022type\u0022:\u0022string\u0022,\u0022format\u0022:\u0022uuid\u0022,\u0022description\u0022:\u0022REQUIRED except contract: cad_status.documentId.\u0022},\u0022stateId\u0022:{\u0022type\u0022:\u0022string\u0022,\u0022format\u0022:\u0022uuid\u0022,\u0022description\u0022:\u0022REQUIRED except contract: cad_status.stateId.\u0022},\u0022sheetId\u0022:{\u0022type\u0022:\u0022string\u0022,\u0022format\u0022:\u0022uuid\u0022},\u0022id\u0022:{\u0022type\u0022:\u0022string\u0022,\u0022format\u0022:\u0022uuid\u0022},\u0022name\u0022:{\u0022type\u0022:\u0022string\u0022,\u0022maxLength\u0022:64,\u0022description\u0022:\u0022save_template only; else authorJson.\u0022},\u0022path\u0022:{\u0022type\u0022:\u0022string\u0022,\u0022maxLength\u0022:8192,\u0022description\u0022:\u0022Full occurrences.items[].path\u0022},\u0022bodyId\u0022:{\u0022type\u0022:\u0022string\u0022,\u0022format\u0022:\u0022uuid\u0022},\u0022revision\u0022:{\u0022type\u0022:\u0022string\u0022,\u0022format\u0022:\u0022uuid\u0022},\u0022authorJson\u0022:{\u0022type\u0022:\u0022string\u0022,\u0022minLength\u0022:2,\u0022maxLength\u0022:65536},\u0022offset\u0022:{\u0022type\u0022:\u0022integer\u0022,\u0022minimum\u0022:0,\u0022maximum\u0022:100000},\u0022limit\u0022:{\u0022type\u0022:\u0022integer\u0022,\u0022minimum\u0022:1,\u0022maximum\u0022:50}},\u0022required\u0022:[\u0022action\u0022],\u0022additionalProperties\u0022:false}",
+      "wire": "{\u0022type\u0022:\u0022object\u0022,\u0022properties\u0022:{\u0022action\u0022:{\u0022type\u0022:\u0022string\u0022,\u0022description\u0022:\u0022Except contract (inspect_sources too): documentId/stateId required.\u0022,\u0022enum\u0022:[\u0022contract\u0022,\u0022inspect\u0022,\u0022inspect_sources\u0022,\u0022create\u0022,\u0022edit\u0022,\u0022reselect\u0022,\u0022delete\u0022,\u0022set_parts_table\u0022,\u0022set_zones\u0022,\u0022refresh\u0022,\u0022save_template\u0022,\u0022apply_template\u0022,\u0022import_template\u0022,\u0022detach_coordinates\u0022]},\u0022type\u0022:{\u0022type\u0022:\u0022string\u0022,\u0022enum\u0022:[\u0022sheet\u0022,\u0022view\u0022,\u0022dimension\u0022,\u0022datum\u0022,\u0022control_frame\u0022,\u0022balloon\u0022,\u0022hole_table\u0022,\u0022field\u0022,\u0022note\u0022,\u0022template\u0022,\u0022parts_table\u0022,\u0022zones\u0022],\u0022description\u0022:\u0022Required for inspect.\u0022},\u0022documentId\u0022:{\u0022type\u0022:\u0022string\u0022,\u0022format\u0022:\u0022uuid\u0022,\u0022description\u0022:\u0022REQUIRED except contract: cad_status.documentId.\u0022},\u0022stateId\u0022:{\u0022type\u0022:\u0022string\u0022,\u0022format\u0022:\u0022uuid\u0022,\u0022description\u0022:\u0022REQUIRED except contract: cad_status.stateId.\u0022},\u0022sheetId\u0022:{\u0022type\u0022:\u0022string\u0022,\u0022format\u0022:\u0022uuid\u0022},\u0022id\u0022:{\u0022type\u0022:\u0022string\u0022,\u0022format\u0022:\u0022uuid\u0022},\u0022name\u0022:{\u0022type\u0022:\u0022string\u0022,\u0022maxLength\u0022:64,\u0022description\u0022:\u0022save_template only; else authorJson.\u0022},\u0022path\u0022:{\u0022type\u0022:\u0022string\u0022,\u0022maxLength\u0022:8192,\u0022description\u0022:\u0022Full occurrences.items[].path\u0022},\u0022bodyId\u0022:{\u0022type\u0022:\u0022string\u0022,\u0022format\u0022:\u0022uuid\u0022},\u0022revision\u0022:{\u0022type\u0022:\u0022string\u0022,\u0022format\u0022:\u0022uuid\u0022},\u0022authorJson\u0022:{\u0022type\u0022:\u0022string\u0022,\u0022minLength\u0022:2,\u0022maxLength\u0022:65536},\u0022offset\u0022:{\u0022type\u0022:\u0022integer\u0022,\u0022minimum\u0022:0,\u0022maximum\u0022:100000},\u0022limit\u0022:{\u0022type\u0022:\u0022integer\u0022,\u0022minimum\u0022:1,\u0022maximum\u0022:50}},\u0022required\u0022:[\u0022action\u0022],\u0022additionalProperties\u0022:false}",
+      "nativeModules": [],
+      "assemblies": [
+        {
+          "name": "Cadoryx.Tests",
+          "location": "C:/Users/yoiri/source/repos/Cadoryx\\artifacts/af1080-drawing-terminal-result-1\\workspace/Cadoryx.Tests/bin\\Debug\\net10.0\\Cadoryx.Tests.dll",
+          "sha256": "E3FC6CD5409B33E3033999E25E13AD15AAB03146F513AD4697C1B4351E992B41"
+        },
+        {
+          "name": "Cadoryx.ViewModels",
+          "location": "C:/Users/yoiri/source/repos/Cadoryx\\Cadoryx.ViewModels/bin\\Debug\\net10.0\\Cadoryx.ViewModels.dll",
+          "sha256": "A21D04F93A37CD82D8D196DDA62E559A7551B5D48C10298B157B8DE7FE868EF8"
+        },
+        {
+          "name": "Cadoryx.AI.LmStudio",
+          "location": "C:/Users/yoiri/source/repos/Cadoryx\\Cadoryx.ViewModels/bin\\Debug\\net10.0\\Cadoryx.AI.LmStudio.dll",
+          "sha256": "C521A157E61AF4D26B7F71148FD2B78E69EAB3B56789811D3A4730E97DB2BBC3"
+        },
+        {
+          "name": "Cadoryx.Agent",
+          "location": "C:/Users/yoiri/source/repos/Cadoryx\\Cadoryx.ViewModels/bin\\Debug\\net10.0\\Cadoryx.Agent.dll",
+          "sha256": "1B9371314EF6FB65DDDACEF90AE73DCACB3C0B02FF2EF756E9E92F3D00B1CDA4"
+        },
+        {
+          "name": "Cadoryx.AI.Contracts",
+          "location": "C:/Users/yoiri/source/repos/Cadoryx\\Cadoryx.ViewModels/bin\\Debug\\net10.0\\Cadoryx.AI.Contracts.dll",
+          "sha256": "192F613AFD8E8220FDD13A07EFCA5C66C25717ED1A2AE1587CD19750A90E629C"
+        },
+        {
+          "name": "Cadoryx.Db",
+          "location": "C:/Users/yoiri/source/repos/Cadoryx\\Cadoryx.ViewModels/bin\\Debug\\net10.0\\Cadoryx.Db.dll",
+          "sha256": "43722AFDFF7A27E125F917BDE2E8DD60A7419BECAE1A6D1A048D918AF03D661E"
+        },
+        {
+          "name": "Cadoryx.Editor",
+          "location": "C:/Users/yoiri/source/repos/Cadoryx\\Cadoryx.ViewModels/bin\\Debug\\net10.0\\Cadoryx.Editor.dll",
+          "sha256": "A704E02C0302DF0B9B00E8134E2A7F5E1BC795A88FC5AC010B2162858BF931E3"
+        },
+        {
+          "name": "Cadoryx.CommandLine",
+          "location": "C:/Users/yoiri/source/repos/Cadoryx\\Cadoryx.ViewModels/bin\\Debug\\net10.0\\Cadoryx.CommandLine.dll",
+          "sha256": "FE617737068B8F9037F3DABAE8851526DC23F83227835BF4A5FFB77F78F2E941"
+        },
+        {
+          "name": "Cadoryx.Kernel.Abstractions",
+          "location": "C:/Users/yoiri/source/repos/Cadoryx\\Cadoryx.ViewModels/bin\\Debug\\net10.0\\Cadoryx.Kernel.Abstractions.dll",
+          "sha256": "4781222C1814D6B269B160A1687D40A1EA757F0D0C9B335CF010371ACAB50DD1"
+        },
+        {
+          "name": "Cadoryx.ViewModels.Services",
+          "location": "C:/Users/yoiri/source/repos/Cadoryx\\Cadoryx.ViewModels/bin\\Debug\\net10.0\\Cadoryx.ViewModels.Services.dll",
+          "sha256": "DDC0221E6ECA7E49CD1D19D4F17FD62DC24463081C81C19D9BD3B397F90E04B2"
+        },
+        {
+          "name": "Cadoryx.Rendering",
+          "location": "C:/Users/yoiri/source/repos/Cadoryx\\Cadoryx.ViewModels/bin\\Debug\\net10.0\\Cadoryx.Rendering.dll",
+          "sha256": "52B0150ABF6B224FF76D29AF08608E75D2181E50799C42A6FC878C0FE65CCE9B"
+        },
+        {
+          "name": "Cadoryx.Lang",
+          "location": "C:/Users/yoiri/source/repos/Cadoryx\\Cadoryx.ViewModels/bin\\Debug\\net10.0\\Cadoryx.Lang.dll",
+          "sha256": "A41A653D2D054BD31FB671FEAB2C999EB9B3FC782147BA702A956F770D5E207E"
+        },
+        {
+          "name": "Cadoryx.Commands",
+          "location": "C:/Users/yoiri/source/repos/Cadoryx\\Cadoryx.ViewModels/bin\\Debug\\net10.0\\Cadoryx.Commands.dll",
+          "sha256": "5A95B61E2257A6FFDB776EAF492BA3BC0A73919F1712A67FB3AD4D48CEA08C71"
+        },
+        {
+          "name": "Cadoryx.Sketching",
+          "location": "C:/Users/yoiri/source/repos/Cadoryx\\Cadoryx.ViewModels/bin\\Debug\\net10.0\\Cadoryx.Sketching.dll",
+          "sha256": "F15CB208E0A08B59E23914A6D45FBDB13549C369E958E72C8A1B1F416B989828"
+        }
+      ]
+    }
+  ],
+  "scope": "Original compiled assertions invoked directly, actual candidate ViewModels; not a full xunit run",
+  "productionApplied": false,
+  "modelWorkflow": "NOT RUN",
+  "nativeJobs": 0
+}

@@ -1,6 +1,6 @@
 # F5：动作字段反馈与原供应商接续
 
-当前开发源码1078已修正[命令目录与专用工具路由](F5_COMMAND_CATALOG_ROUTES.md)，没有采用1077动作说明候选；原真实FAIL保持，最新提供方未复验。
+当前开发源码1080已修正[命令目录](F5_COMMAND_CATALOG_ROUTES.md)、[修改对象类型反馈](F5_DRAWING_MUTATION_TYPE_FEEDBACK.md)及[终端成功状态](F5_DRAWING_TERMINAL_RECEIPTS.md)；没有采用1077动作说明候选，原真实FAIL保持，当前提供方未复验。下方“当前最终1077/等待Debug”是此前历史检查点。
 
 2026-10-13 当前：[最终provider2真实运行](../capability-evidence/diagnostics/af1077-provider2/verification.json)已审计，工程图1/8轮、工作区4/8轮均FAIL，实际native62匹配且资产0。工作区最后三个wire均有逐字节完整list.expected与stale恢复反馈，不能归因为身份被裁掉；工程图视图已创建，却继续非法DELETE/错误工具类型/历史文本调用而无正常回答。原提示、模型、8192/16轮预算保持，根因未证明。1077不合入生产。以下“尚未运行/排队”为此前检查点。
 

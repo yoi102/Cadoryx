@@ -1,5 +1,9 @@
 # 当前状态
 
+2026-10-13，status245：[终端工程图收据1080](../capability-evidence/diagnostics/af1080-drawing-terminal-result/verification.json)已合入：终端CadCommandResult.Success采用生产JSON收据success，拒绝类型/inspection不再包装成成功；保留原消息、身份/游标与事务。新50项旧1079每配置30通过/20复现成功状态错误；候选和合入后根各208/208（原158+新50）托管断言直接调用通过，Tests依赖图/WPF两配置build0、SDK13/native62磁盘匹配公开85，无原生加载。当前源码1080/公开85；预计6815尚未完整发现/运行，原模型及最终性能/窗口未验，原STEP24未修复。SDK报告Release2255/2255，精确迁移594 Manual→Emitted加4 Blocked→Emitted，Debug/实际原生/包消费者继续、证据尚待独立接收；Cadoryx保持原生空闲。A–F全部范围继续，G/清理暂缓。
+
+当前结论以status245为准；以下status244及更早是保留历史。
+
 2026-10-13，status244：[工程图对象类型1079](../capability-evidence/diagnostics/af1079-drawing-object-type/verification.json)已合入开发：create/edit/reselect/delete在原文档/状态、只读及字段守卫后先拒绝错误type，返回该动作真实可用类型；feature/body/part不是图纸对象，reselect仅允许原有六类附着对象。没有选择owner/对象或填入身份，终端与AI共用生产反馈，原inspect类型集合/schema/12工具及8192预算保持。新101项旧1078程序集每配置30通过/71复现失败；最终候选和根每配置158/158（原57+新101）通过，Tests依赖图/WPF两配置build0、SDK13/native62磁盘一致，无原生加载。首轮新夹具缺ITechnicalDrawingKernel导致每配置33失败，真实回执已保存；补必需能力接口后仍禁止投影/几何，未放宽断言。当前1079/公开85；预计6765完整发现/运行、原模型及最终性能/窗口待验，原STEP24未修复。SDK仍持有原生时段继续整体迁移和运行时验证；A–F原范围保持，G/清理暂缓。
 
 当前结论以status244为准；以下status243及更早保留为历史。

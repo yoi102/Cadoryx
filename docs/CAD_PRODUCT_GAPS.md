@@ -1,5 +1,9 @@
 # 3D CAD 产品缺口与实施规划
 
+2026-10-13，status245：[终端工程图收据1080](../capability-evidence/diagnostics/af1080-drawing-terminal-result/verification.json)已合入：终端CadCommandResult.Success采用生产JSON收据success，拒绝类型/inspection不再包装成成功；保留原消息、身份/游标与事务。新50项旧1079每配置30通过/20复现成功状态错误；候选和合入后根各208/208（原158+新50）托管断言直接调用通过，Tests依赖图/WPF两配置build0、SDK13/native62磁盘匹配公开85，无原生加载。当前源码1080/公开85；预计6815尚未完整发现/运行，原模型及最终性能/窗口未验，原STEP24未修复。SDK报告Release2255/2255，精确迁移594 Manual→Emitted加4 Blocked→Emitted，Debug/实际原生/包消费者继续、证据尚待独立接收；Cadoryx保持原生空闲。A–F全部范围继续，G/清理暂缓。
+
+当前结论以status245为准；以下status244及更早是保留历史。
+
 2026-10-13，status244：[工程图对象类型1079](../capability-evidence/diagnostics/af1079-drawing-object-type/verification.json)已合入开发：create/edit/reselect/delete在原文档/状态、只读及字段守卫后先拒绝错误type，返回该动作真实可用类型；feature/body/part不是图纸对象，reselect仅允许原有六类附着对象。没有选择owner/对象或填入身份，终端与AI共用生产反馈，原inspect类型集合/schema/12工具及8192预算保持。新101项旧1078程序集每配置30通过/71复现失败；最终候选和根每配置158/158（原57+新101）通过，Tests依赖图/WPF两配置build0、SDK13/native62磁盘一致，无原生加载。首轮新夹具缺ITechnicalDrawingKernel导致每配置33失败，真实回执已保存；补必需能力接口后仍禁止投影/几何，未放宽断言。当前1079/公开85；预计6765完整发现/运行、原模型及最终性能/窗口待验，原STEP24未修复。SDK仍持有原生时段继续整体迁移和运行时验证；A–F原范围保持，G/清理暂缓。
 
 当前结论以status244为准；以下status243及更早保留为历史。
@@ -83,7 +87,7 @@ M14–M17 已记录的待办主要关注性能、精确建模边界、工程交�
 | 命令与 AI | 终端和结构化工具覆盖参数、基准、建模作者、历史、文件、多文档及既有工程图作者入口；LM Studio/Codex接入 | [F5g](F5_COMPLETE_DRAWING_TOOLS.md)及各F5子批确定性入口已有本地证据；Codex会话通过与LM Studio仍失败的场景分开记录，提供方长期稳定性继续验收 |
 | 安装 | 自包含 Windows x64 MSI、本机安装目录启动、卸载及用户数据保留 | 已记录的 MSI 是此前版本的本地测试包，不能代表当前最新源代码；测试证书不受 Windows 默认信任。[M17](M17_RELEASE_MATRIX.md) |
 
-当前工作依赖以[Directory.Build.props](../Directory.Build.props)、项目锁文件及[runtime-baseline](../Cadoryx.wpf/runtime-baseline.json)为准：**公开8.0.1-preview.85**，ABI1.118/桥0.133.0；Cadoryx仅消费NuGet、不需要vcpkg。当前开发源码1079。1076两配置完整6652各6628通过/原24严格STEP失败；1078/1079新增命令目录及类型反馈的当前托管证据见页首，预计6765尚未完整运行。历史1000/SDK26及隔离性能不能代替当前载荷验收。
+当前工作依赖以[Directory.Build.props](../Directory.Build.props)、项目锁文件及[runtime-baseline](../Cadoryx.wpf/runtime-baseline.json)为准：**公开8.0.1-preview.85**，ABI1.118/桥0.133.0；Cadoryx仅消费NuGet、不需要vcpkg。当前开发源码1080。1076两配置完整6652各6628通过/原24严格STEP失败；1078/1079/1080新增命令目录、类型反馈及终端成功状态的当前托管证据见页首，预计6815尚未完整运行。历史1000/SDK26及隔离性能不能代替当前载荷验收。
 
 ## 3. 具体还缺什么
 
@@ -104,7 +108,7 @@ M14–M17 已记录的待办主要关注性能、精确建模边界、工程交�
 | G09 | 关联基准面、基准轴、基准点 | [C2扩展](C2_EXTENDED_DATUMS.md)本地契约完成 | 精确BRep解析来源、轴点/相交构造、参数/阵列/孔/草图和冻结重选、原始资产及生产窗口已做；988基线同版门禁PASS。后续旋转轴、存储、三语言控件与失效/晚到/数值边界完成；最终1013/1013和同版联合门禁PASS（20261002-005501） | P1，已授权实施 |
 | G10 | 实体/特征镜像与线性、圆周阵列 | C3完整作者图/特征重放/装配镜像阵列及多副本样式/原生历史本地契约完成，最终2296/2296及同冻结六窗口PASS | [C3多副本记录](C3_MULTICOPY_STYLES_HISTORY.md)：独立颜色通道/层/材料/可见性及融合冲突、容器原生成员证明/显式CopyId已验；STEP/FreeCAD元数据和额外拓扑损失继续跟踪F4 | P1，已授权实施 |
 | G11 | 标准孔与螺纹表达 | C4 常用孔型及自动化控件范围完成 | [C4](C4_STANDARD_HOLES.md)统一通孔、盲孔、沉孔/沉头及常用尺寸、参数/基准/保存和生产编辑；[C5符号螺纹](C5_SYMBOLIC_METRIC_THREADS.md)304最终联合、六冻结窗口及16SDK通过；[实体牙型](C5_MODELED_METRIC_THREADS.md)真实牙槽/完整重放及proof、独立worker、六窗口、三语言同DLL图纸/3页矢量PDF及载荷审计已验，worker修后6/6与旋转通孔1/1；D5冻结2498全量及B15新schema51的55项螺纹联合已PASS；B15冻结2563全量PASS，B16第六冻结schema52集成2848全量PASS。A4长投影取消已验，真实输入/性能另列 | P1 孔 / P2 螺纹，产品建议待办 |
-| G12 | 扫掠与放样 | 基础曲面/关联/取消/本地交换及SDK26完整当前出现路径已接入；完整历史材料跨作者范围继续 | 原80真实曲面、104关联/存储及640取消竞争有历史证据；[完整路径应用接入](B18_APP_OCCURRENCE_INTEGRATION_PLAN.md)已从source1000进入后续组合，当前1079/公开85保留。SDK23复制域/SDK24历史域/SDK25同图保存不能仅凭上游通过算应用全部能力完成；兼容/实体化/材料/第三复制及跨作者对应继续。导轨、扭转与更高阶连续性另列，不以旧窗口替代当前验收 | P1基础已有 / P2高级及完整原生身份继续 |
+| G12 | 扫掠与放样 | 基础曲面/关联/取消/本地交换及SDK26完整当前出现路径已接入；完整历史材料跨作者范围继续 | 原80真实曲面、104关联/存储及640取消竞争有历史证据；[完整路径应用接入](B18_APP_OCCURRENCE_INTEGRATION_PLAN.md)已从source1000进入后续组合，当前1080/公开85保留。SDK23复制域/SDK24历史域/SDK25同图保存不能仅凭上游通过算应用全部能力完成；兼容/实体化/材料/第三复制及跨作者对应继续。导轨、扭转与更高阶连续性另列，不以旧窗口替代当前验收 | P1基础已有 / P2高级及完整原生身份继续 |
 | G13 | 抽壳、拔模和实体偏移 | [D3抽壳/拔模](D3_SHELL_DRAFT.md)及[D4整体实体偏移](D4_SOLID_OFFSET.md)当前本地契约完成；D4 37专项/178联合/2065全量及同冻结六窗口PASS | 带符号完整源偏移/参数/失败/后继/工程图/STEP/存储已验，单实体包装严格提取；逐面色和原始拓扑不能证明继承，任意复杂目标与真实指针另列 | A–F授权内；不代表整个D或A–F完成 |
 | G14 | 曲面建模、缝合及受控修复 | 未形成完整编辑工作流 | 可以处理/保存相应几何种类，不等于已有曲面工具；补有范围的建面、修剪、延伸、缝合和修复预览。ODA/Quadcept 无效样本保持诊断，修复应显式确认并报告变化 | P2；ODA 兼容诊断属 M15 |
 | G15 | 通用多边局部特征与复杂面直接编辑 | 整链/多轮廓及有限平面编辑有本地契约 | [E3](E3_CONTOUR_LOCAL_EDITING.md)接入原生有序切线链、多轮廓五规律圆角和多支撑双距离倒角，包含参数、存储、UI/作者及后继；[E4](E4_PLANAR_FACE_EDITING.md)有限面域推拉/删除面修补完成本地契约：95专项/2211全量及七窗口；每个选面必须原生确认删除。任意曲面移动/替换仍需逐几何类型交付，不能推广受限尺寸手柄 | P1 基础 / P2 自由面，M15 扩展 |
@@ -168,7 +172,7 @@ M14–M17 已记录的待办主要关注性能、精确建模边界、工程交�
 
 | 证据方向 | 当前可以引用什么 | 仍要取得什么 |
 |---|---|---|
-| 最新代码回归 | [1076根两配置完整6652](../capability-evidence/diagnostics/af1076-root-full/verification.json)各6628通过/原24失败/零跳过，无新增失败；1078命令目录及[1079类型反馈](../capability-evidence/diagnostics/af1079-drawing-object-type/verification.json)已合入，当前两配置各158托管断言直接调用通过、Tests依赖图/WPF build0 | 预计6765完整发现/原生回归、当前原模型、性能与窗口尚未执行；当前托管158不算全量xunit。原STEP24继续；SDK迁移新包尚未接收。A–F继续，G暂缓 |
+| 最新代码回归 | [1076根两配置完整6652](../capability-evidence/diagnostics/af1076-root-full/verification.json)各6628通过/原24失败/零跳过，无新增失败；1078命令目录及[1079类型反馈](../capability-evidence/diagnostics/af1079-drawing-object-type/verification.json)已合入，[1080终端收据](F5_DRAWING_TERMINAL_RECEIPTS.md)已合入，当前两配置各208托管断言直接调用通过、Tests依赖图/WPF build0 | 预计6815完整发现/原生回归、当前原模型、性能与窗口尚未执行；当前托管208不算全量xunit。原STEP24继续；SDK迁移新包尚未接收。A–F继续，G暂缓 |
 | 自动覆盖率 | [TEST_COVERAGE](TEST_COVERAGE.md) 记录 618 测试时生产程序集行 67.0%、分支 66.2% | 以新快照重测并补关键行为；WPF 界面和 OCCT 原生代码不在这些 xUnit 百分比内 |
 | 性能 | [隔离1056两fresh进程各20双视口周期与生产Open](../artifacts/af-merged-performance-verification-2.json)通过，完整提交4.752/5.061秒满足6482ms；原完整788×411整图保持。生产缓存修复版6800.2534ms失败保留 | 当前候选生产接入、自动WPF/设备失效恢复待验；导入仍占主要时间，CPU提交计时不证明物理屏幕或输入延迟 |
 | 厂商兼容 | [M15](M15_PRECISION_AND_ASSEMBLY.md) 的 CATIA V5、Open CASCADE、CoCreate、SolidWorks 读取/精确检查；ODA 样本被拒绝 | 不同来源的单位/层级/样式/PMI对照，以及外部 CAD 实际往返；为拒绝样本提供诊断或受控兼容方案 |

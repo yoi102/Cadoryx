@@ -1,0 +1,13 @@
+{
+  "source": "1080",
+  "base": "1079",
+  "productionApplied": true,
+  "original6765TestSourcesUnchanged": true,
+  "changed": [
+    "Cadoryx.ViewModels/Toolboxes/CadAgentDrawingTools.cs"
+  ],
+  "new": "Cadoryx.Tests/DrawingTerminalReceiptTests.cs",
+  "expectedFullCount": 6815,
+  "fullRuntime": "NOT RUN",
+  "realModel": "NOT RUN"
+}

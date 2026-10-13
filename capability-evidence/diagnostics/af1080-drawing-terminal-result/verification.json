@@ -1,0 +1,128 @@
+{
+  "recordedAt": "2026-10-13T12:20:41.553227+00:00",
+  "state": "AF1080_TERMINAL_DRAWING_SUCCESS_MATCHES_ACTUAL_RECEIPT_MANAGED_VERIFIED",
+  "baseSource": "1079",
+  "productionApplied": true,
+  "changedProductionFile": "Cadoryx.ViewModels/Toolboxes/CadAgentDrawingTools.cs",
+  "newTestSource": "Cadoryx.Tests/DrawingTerminalReceiptTests.cs",
+  "original6765TestSourcesChanged": false,
+  "originalSourceInputsRetained": 1190,
+  "baselineEach": {
+    "total": 50,
+    "passed": 30,
+    "reproducedFailures": 20
+  },
+  "candidateEach": {
+    "total": 208,
+    "passed": 208
+  },
+  "productionRootEach": {
+    "total": 208,
+    "passed": 208
+  },
+  "scope": "Direct invocation of compiled xunit assertions with real command-line and managed document/history paths; not full xunit/native runtime.",
+  "rawAndWireDrawingSchemaUnchanged": true,
+  "originalTwelveToolsAnd8192OutputSafetyBudgetsPassed": true,
+  "nativeLoadingProhibited": true,
+  "observedNativeModules": [],
+  "payloads": [
+    {
+      "directory": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\Cadoryx.Tests\\bin\\Release\\net10.0",
+      "sdk13OnDiskMatched": true,
+      "native62OnDiskMatched": true,
+      "viewModels": {
+        "path": "Cadoryx.Tests/bin/Release/net10.0/Cadoryx.ViewModels.dll",
+        "sha256": "0821DD051D5A8600FDD00A3039F3ADAB6D69E7DC965DD25A5B772A51DA4DE7A3"
+      }
+    },
+    {
+      "directory": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\Cadoryx.wpf\\bin\\Release\\net10.0-windows\\win-x64",
+      "sdk13OnDiskMatched": true,
+      "native62OnDiskMatched": true,
+      "viewModels": {
+        "path": "Cadoryx.wpf/bin/Release/net10.0-windows/win-x64/Cadoryx.ViewModels.dll",
+        "sha256": "0821DD051D5A8600FDD00A3039F3ADAB6D69E7DC965DD25A5B772A51DA4DE7A3"
+      }
+    },
+    {
+      "directory": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\Cadoryx.Tests\\bin\\Debug\\net10.0",
+      "sdk13OnDiskMatched": true,
+      "native62OnDiskMatched": true,
+      "viewModels": {
+        "path": "Cadoryx.Tests/bin/Debug/net10.0/Cadoryx.ViewModels.dll",
+        "sha256": "5CB2960F8DA5309A3836AA9A53438EB8F87CC336ED04C021985DB46F2D06AA83"
+      }
+    },
+    {
+      "directory": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\Cadoryx.wpf\\bin\\Debug\\net10.0-windows\\win-x64",
+      "sdk13OnDiskMatched": true,
+      "native62OnDiskMatched": true,
+      "viewModels": {
+        "path": "Cadoryx.wpf/bin/Debug/net10.0-windows/win-x64/Cadoryx.ViewModels.dll",
+        "sha256": "5CB2960F8DA5309A3836AA9A53438EB8F87CC336ED04C021985DB46F2D06AA83"
+      }
+    }
+  ],
+  "expectedFullCount": 6815,
+  "fullDiscovery": "NOT RUN",
+  "fullRuntime": "NOT RUN",
+  "realModelWorkflow": "NOT RUN",
+  "desktopInputStarted": false,
+  "AFComplete": false,
+  "G": "USER_DEFERRED",
+  "cleanup": false,
+  "evidence": [
+    {
+      "path": "capability-evidence/diagnostics/af1080-drawing-terminal-result/preparation.json",
+      "sha256": "90DE72EA18ADE404E0A1CCEC54A1C0858CCDDD3F3A572CDE3F1862D137B11E13"
+    },
+    {
+      "path": "capability-evidence/diagnostics/af1080-drawing-terminal-result/development-applied.json",
+      "sha256": "B7B591DBD77EBBE57136C7172145F39519083EFB7D01B3F39F8D54B3C63A7007"
+    },
+    {
+      "path": "capability-evidence/diagnostics/af1080-drawing-terminal-result/baseline-managed-result.json",
+      "sha256": "01DE19FEB000CDC47EFD205830886393DBBF3F9FCE4F602AA41FE310A558F67D"
+    },
+    {
+      "path": "capability-evidence/diagnostics/af1080-drawing-terminal-result/managed-result.json",
+      "sha256": "5C5ED51924BEBC90B28E6942238D09D393AB483AB88CC7CFAC75315E390D08A7"
+    },
+    {
+      "path": "capability-evidence/diagnostics/af1080-drawing-terminal-result/root-managed-result.json",
+      "sha256": "DC00E824C59DEC47C28BEBC9205A8D8258BB697DF1B799CBEEC1E397E4EA05A6"
+    },
+    {
+      "path": "capability-evidence/diagnostics/af1080-drawing-terminal-result/build-exit.json",
+      "sha256": "A3EBC5C2D5B9F1E32A84093DB340FD0E86B622328944EEF178233E2241BD50B5"
+    },
+    {
+      "path": "capability-evidence/diagnostics/af1080-drawing-terminal-result/build-release.log",
+      "sha256": "B3F212A2B5D9D971DC8E6BE20D3D7DD8E1500339C9A776E0598FFBA4623626BC"
+    },
+    {
+      "path": "capability-evidence/diagnostics/af1080-drawing-terminal-result/build-debug.log",
+      "sha256": "C6A3D820F78E8C289B4C2365D8FF686E39CC54F3566B5EA1B27E60CE1F579B67"
+    },
+    {
+      "path": "capability-evidence/diagnostics/af1080-drawing-terminal-result/root-build-exit.json",
+      "sha256": "22FF1492AA4054D3AA863EAEA855EC9B3A24FEFA83665065B2A83143AF998100"
+    },
+    {
+      "path": "capability-evidence/diagnostics/af1080-drawing-terminal-result/root-Tests-Release.log",
+      "sha256": "AE4C68D1FC093093ED5ED7DF06419BED684622E00C2C208320B2FA3E7F080057"
+    },
+    {
+      "path": "capability-evidence/diagnostics/af1080-drawing-terminal-result/root-Tests-Debug.log",
+      "sha256": "6EE398368DDD69D00F8AC83FC9CF068BA87A0A4D4B22B5EF6D392C773278438B"
+    },
+    {
+      "path": "capability-evidence/diagnostics/af1080-drawing-terminal-result/root-wpf-Release.log",
+      "sha256": "244D88E5CDE48A867B259DA87F547562AFC74118F9D1CA7617D2CBB38567A134"
+    },
+    {
+      "path": "capability-evidence/diagnostics/af1080-drawing-terminal-result/root-wpf-Debug.log",
+      "sha256": "1DD02B43E508092F87D8420B1F8FAD9938342183BABE881745A0D1149E65C68D"
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "stages": [
+    {
+      "configuration": "Release",
+      "project": "Tests",
+      "log": "artifacts/af1080-drawing-terminal-result-1/root-Tests-Release.log",
+      "exitCode": 0
+    },
+    {
+      "configuration": "Release",
+      "project": "wpf",
+      "log": "artifacts/af1080-drawing-terminal-result-1/root-wpf-Release.log",
+      "exitCode": 0
+    },
+    {
+      "configuration": "Debug",
+      "project": "Tests",
+      "log": "artifacts/af1080-drawing-terminal-result-1/root-Tests-Debug.log",
+      "exitCode": 0
+    },
+    {
+      "configuration": "Debug",
+      "project": "wpf",
+      "log": "artifacts/af1080-drawing-terminal-result-1/root-wpf-Debug.log",
+      "exitCode": 0
+    }
+  ],
+  "nativeJobs": 0
+}

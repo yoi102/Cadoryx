@@ -78,6 +78,8 @@ internal sealed partial class CadCommandContext
     public async Task<CadCommandResult> EditDrawingAsync(string requestJson,CancellationToken cancellationToken=default)
     {
         ValidateInvocation();using var parsed=JsonDocument.Parse(requestJson);
-        return new(true,await CadDrawingAuthoring.ApplyAsync(document,expectation,parsed.RootElement,false,cancellationToken));
+        var receipt=await CadDrawingAuthoring.ApplyAsync(document,expectation,parsed.RootElement,false,cancellationToken);
+        using var result=JsonDocument.Parse(receipt);
+        return new(result.RootElement.GetProperty("success").GetBoolean(),receipt);
     }
 }

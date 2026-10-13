@@ -1,0 +1,21 @@
+{
+  "stages": [
+    {
+      "log": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1080-drawing-terminal-result-1\\build-restore.log",
+      "stage": "restore",
+      "exitCode": 0
+    },
+    {
+      "log": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1080-drawing-terminal-result-1\\build-release.log",
+      "stage": "Release",
+      "exitCode": 0
+    },
+    {
+      "log": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1080-drawing-terminal-result-1\\build-debug.log",
+      "stage": "Debug",
+      "exitCode": 0
+    }
+  ],
+  "nativeJobs": 0,
+  "productionApplied": false
+}
