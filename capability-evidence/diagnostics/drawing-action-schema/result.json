@@ -1,0 +1,475 @@
+{
+  "recordedAt": "2026-10-13T10:05:17.5394918+00:00",
+  "rows": [
+    {
+      "config": "Release",
+      "aggressive": false,
+      "variant": "original",
+      "rawCharacters": 1326,
+      "wireCharacters": 1326,
+      "conditionalSurvivesWire": false,
+      "actionDescription": "Except contract (inspect_sources too): documentId/stateId required.",
+      "toolNames": [
+        "cad_drawing",
+        "cad_status",
+        "cad_inspect",
+        "cad_command",
+        "cad_select",
+        "cad_workspace",
+        "cad_file",
+        "cad_history",
+        "cad_edit",
+        "cad_parameter",
+        "cad_model",
+        "cad_datum"
+      ],
+      "promptTokens": 5625,
+      "outputTokens": 1024,
+      "payload": [
+        {
+          "name": "Cadoryx.Agent.dll",
+          "sha256": "3A7A2F973C56DCAE1B8A9B8D23D302B7A572F2D471766FAD0503AF3943E146CA"
+        },
+        {
+          "name": "Cadoryx.ViewModels.dll",
+          "sha256": "8F7628E431E480AE08CDC8C58205E768E119E5C931A3854EE7C485553E5B91EA"
+        },
+        {
+          "name": "Cadoryx.AI.LmStudio.dll",
+          "sha256": "4208BB92C28275B17EDAAAEB0794BBD6FF521E018410FB4651C50F41B6CECF00"
+        }
+      ]
+    },
+    {
+      "config": "Release",
+      "aggressive": false,
+      "variant": "conditional",
+      "rawCharacters": 1482,
+      "wireCharacters": 1326,
+      "conditionalSurvivesWire": false,
+      "actionDescription": "Except contract (inspect_sources too): documentId/stateId required.",
+      "toolNames": [
+        "cad_drawing",
+        "cad_status",
+        "cad_inspect",
+        "cad_command",
+        "cad_select",
+        "cad_workspace",
+        "cad_file",
+        "cad_history",
+        "cad_edit",
+        "cad_parameter",
+        "cad_model",
+        "cad_datum"
+      ],
+      "promptTokens": 5668,
+      "outputTokens": 1024,
+      "payload": [
+        {
+          "name": "Cadoryx.Agent.dll",
+          "sha256": "3A7A2F973C56DCAE1B8A9B8D23D302B7A572F2D471766FAD0503AF3943E146CA"
+        },
+        {
+          "name": "Cadoryx.ViewModels.dll",
+          "sha256": "8F7628E431E480AE08CDC8C58205E768E119E5C931A3854EE7C485553E5B91EA"
+        },
+        {
+          "name": "Cadoryx.AI.LmStudio.dll",
+          "sha256": "4208BB92C28275B17EDAAAEB0794BBD6FF521E018410FB4651C50F41B6CECF00"
+        }
+      ]
+    },
+    {
+      "config": "Release",
+      "aggressive": false,
+      "variant": "action_hint",
+      "rawCharacters": 1350,
+      "wireCharacters": 1350,
+      "conditionalSurvivesWire": false,
+      "actionDescription": "contract: only action/type, no IDs. Else documentId/stateId required (inspect_sources too).",
+      "toolNames": [
+        "cad_drawing",
+        "cad_status",
+        "cad_inspect",
+        "cad_command",
+        "cad_select",
+        "cad_workspace",
+        "cad_file",
+        "cad_history",
+        "cad_edit",
+        "cad_parameter",
+        "cad_model",
+        "cad_datum"
+      ],
+      "promptTokens": 5631,
+      "outputTokens": 1024,
+      "payload": [
+        {
+          "name": "Cadoryx.Agent.dll",
+          "sha256": "3A7A2F973C56DCAE1B8A9B8D23D302B7A572F2D471766FAD0503AF3943E146CA"
+        },
+        {
+          "name": "Cadoryx.ViewModels.dll",
+          "sha256": "8F7628E431E480AE08CDC8C58205E768E119E5C931A3854EE7C485553E5B91EA"
+        },
+        {
+          "name": "Cadoryx.AI.LmStudio.dll",
+          "sha256": "4208BB92C28275B17EDAAAEB0794BBD6FF521E018410FB4651C50F41B6CECF00"
+        }
+      ]
+    },
+    {
+      "config": "Release",
+      "aggressive": true,
+      "variant": "original",
+      "rawCharacters": 1326,
+      "wireCharacters": 1326,
+      "conditionalSurvivesWire": false,
+      "actionDescription": "Except contract (inspect_sources too): documentId/stateId required.",
+      "toolNames": [
+        "cad_drawing",
+        "cad_status",
+        "cad_inspect",
+        "cad_command",
+        "cad_select",
+        "cad_workspace",
+        "cad_file",
+        "cad_history",
+        "cad_edit",
+        "cad_parameter",
+        "cad_model",
+        "cad_datum"
+      ],
+      "promptTokens": 5625,
+      "outputTokens": 1024,
+      "payload": [
+        {
+          "name": "Cadoryx.Agent.dll",
+          "sha256": "3A7A2F973C56DCAE1B8A9B8D23D302B7A572F2D471766FAD0503AF3943E146CA"
+        },
+        {
+          "name": "Cadoryx.ViewModels.dll",
+          "sha256": "8F7628E431E480AE08CDC8C58205E768E119E5C931A3854EE7C485553E5B91EA"
+        },
+        {
+          "name": "Cadoryx.AI.LmStudio.dll",
+          "sha256": "4208BB92C28275B17EDAAAEB0794BBD6FF521E018410FB4651C50F41B6CECF00"
+        }
+      ]
+    },
+    {
+      "config": "Release",
+      "aggressive": true,
+      "variant": "conditional",
+      "rawCharacters": 1482,
+      "wireCharacters": 1326,
+      "conditionalSurvivesWire": false,
+      "actionDescription": "Except contract (inspect_sources too): documentId/stateId required.",
+      "toolNames": [
+        "cad_drawing",
+        "cad_status",
+        "cad_inspect",
+        "cad_command",
+        "cad_select",
+        "cad_workspace",
+        "cad_file",
+        "cad_history",
+        "cad_edit",
+        "cad_parameter",
+        "cad_model"
+      ],
+      "promptTokens": 4726,
+      "outputTokens": 1024,
+      "payload": [
+        {
+          "name": "Cadoryx.Agent.dll",
+          "sha256": "3A7A2F973C56DCAE1B8A9B8D23D302B7A572F2D471766FAD0503AF3943E146CA"
+        },
+        {
+          "name": "Cadoryx.ViewModels.dll",
+          "sha256": "8F7628E431E480AE08CDC8C58205E768E119E5C931A3854EE7C485553E5B91EA"
+        },
+        {
+          "name": "Cadoryx.AI.LmStudio.dll",
+          "sha256": "4208BB92C28275B17EDAAAEB0794BBD6FF521E018410FB4651C50F41B6CECF00"
+        }
+      ]
+    },
+    {
+      "config": "Release",
+      "aggressive": true,
+      "variant": "action_hint",
+      "rawCharacters": 1350,
+      "wireCharacters": 1350,
+      "conditionalSurvivesWire": false,
+      "actionDescription": "contract: only action/type, no IDs. Else documentId/stateId required (inspect_sources too).",
+      "toolNames": [
+        "cad_drawing",
+        "cad_status",
+        "cad_inspect",
+        "cad_command",
+        "cad_select",
+        "cad_workspace",
+        "cad_file",
+        "cad_history",
+        "cad_edit",
+        "cad_parameter",
+        "cad_model",
+        "cad_datum"
+      ],
+      "promptTokens": 5631,
+      "outputTokens": 1024,
+      "payload": [
+        {
+          "name": "Cadoryx.Agent.dll",
+          "sha256": "3A7A2F973C56DCAE1B8A9B8D23D302B7A572F2D471766FAD0503AF3943E146CA"
+        },
+        {
+          "name": "Cadoryx.ViewModels.dll",
+          "sha256": "8F7628E431E480AE08CDC8C58205E768E119E5C931A3854EE7C485553E5B91EA"
+        },
+        {
+          "name": "Cadoryx.AI.LmStudio.dll",
+          "sha256": "4208BB92C28275B17EDAAAEB0794BBD6FF521E018410FB4651C50F41B6CECF00"
+        }
+      ]
+    },
+    {
+      "config": "Debug",
+      "aggressive": false,
+      "variant": "original",
+      "rawCharacters": 1326,
+      "wireCharacters": 1326,
+      "conditionalSurvivesWire": false,
+      "actionDescription": "Except contract (inspect_sources too): documentId/stateId required.",
+      "toolNames": [
+        "cad_drawing",
+        "cad_status",
+        "cad_inspect",
+        "cad_command",
+        "cad_select",
+        "cad_workspace",
+        "cad_file",
+        "cad_history",
+        "cad_edit",
+        "cad_parameter",
+        "cad_model",
+        "cad_datum"
+      ],
+      "promptTokens": 5625,
+      "outputTokens": 1024,
+      "payload": [
+        {
+          "name": "Cadoryx.Agent.dll",
+          "sha256": "937EC04A788088BC8A6D7668968D6D54862555B8CEFE3B81AA8A2F6C86F733CD"
+        },
+        {
+          "name": "Cadoryx.ViewModels.dll",
+          "sha256": "F22371B284593A36CFABE9FB6022431497B36BA946D7695BF03F395F36ED83E2"
+        },
+        {
+          "name": "Cadoryx.AI.LmStudio.dll",
+          "sha256": "10424BCB974D74CE34D130D5F830AEBCF738BD4134195A456D85F9C3CF37B7C1"
+        }
+      ]
+    },
+    {
+      "config": "Debug",
+      "aggressive": false,
+      "variant": "conditional",
+      "rawCharacters": 1482,
+      "wireCharacters": 1326,
+      "conditionalSurvivesWire": false,
+      "actionDescription": "Except contract (inspect_sources too): documentId/stateId required.",
+      "toolNames": [
+        "cad_drawing",
+        "cad_status",
+        "cad_inspect",
+        "cad_command",
+        "cad_select",
+        "cad_workspace",
+        "cad_file",
+        "cad_history",
+        "cad_edit",
+        "cad_parameter",
+        "cad_model",
+        "cad_datum"
+      ],
+      "promptTokens": 5668,
+      "outputTokens": 1024,
+      "payload": [
+        {
+          "name": "Cadoryx.Agent.dll",
+          "sha256": "937EC04A788088BC8A6D7668968D6D54862555B8CEFE3B81AA8A2F6C86F733CD"
+        },
+        {
+          "name": "Cadoryx.ViewModels.dll",
+          "sha256": "F22371B284593A36CFABE9FB6022431497B36BA946D7695BF03F395F36ED83E2"
+        },
+        {
+          "name": "Cadoryx.AI.LmStudio.dll",
+          "sha256": "10424BCB974D74CE34D130D5F830AEBCF738BD4134195A456D85F9C3CF37B7C1"
+        }
+      ]
+    },
+    {
+      "config": "Debug",
+      "aggressive": false,
+      "variant": "action_hint",
+      "rawCharacters": 1350,
+      "wireCharacters": 1350,
+      "conditionalSurvivesWire": false,
+      "actionDescription": "contract: only action/type, no IDs. Else documentId/stateId required (inspect_sources too).",
+      "toolNames": [
+        "cad_drawing",
+        "cad_status",
+        "cad_inspect",
+        "cad_command",
+        "cad_select",
+        "cad_workspace",
+        "cad_file",
+        "cad_history",
+        "cad_edit",
+        "cad_parameter",
+        "cad_model",
+        "cad_datum"
+      ],
+      "promptTokens": 5631,
+      "outputTokens": 1024,
+      "payload": [
+        {
+          "name": "Cadoryx.Agent.dll",
+          "sha256": "937EC04A788088BC8A6D7668968D6D54862555B8CEFE3B81AA8A2F6C86F733CD"
+        },
+        {
+          "name": "Cadoryx.ViewModels.dll",
+          "sha256": "F22371B284593A36CFABE9FB6022431497B36BA946D7695BF03F395F36ED83E2"
+        },
+        {
+          "name": "Cadoryx.AI.LmStudio.dll",
+          "sha256": "10424BCB974D74CE34D130D5F830AEBCF738BD4134195A456D85F9C3CF37B7C1"
+        }
+      ]
+    },
+    {
+      "config": "Debug",
+      "aggressive": true,
+      "variant": "original",
+      "rawCharacters": 1326,
+      "wireCharacters": 1326,
+      "conditionalSurvivesWire": false,
+      "actionDescription": "Except contract (inspect_sources too): documentId/stateId required.",
+      "toolNames": [
+        "cad_drawing",
+        "cad_status",
+        "cad_inspect",
+        "cad_command",
+        "cad_select",
+        "cad_workspace",
+        "cad_file",
+        "cad_history",
+        "cad_edit",
+        "cad_parameter",
+        "cad_model",
+        "cad_datum"
+      ],
+      "promptTokens": 5625,
+      "outputTokens": 1024,
+      "payload": [
+        {
+          "name": "Cadoryx.Agent.dll",
+          "sha256": "937EC04A788088BC8A6D7668968D6D54862555B8CEFE3B81AA8A2F6C86F733CD"
+        },
+        {
+          "name": "Cadoryx.ViewModels.dll",
+          "sha256": "F22371B284593A36CFABE9FB6022431497B36BA946D7695BF03F395F36ED83E2"
+        },
+        {
+          "name": "Cadoryx.AI.LmStudio.dll",
+          "sha256": "10424BCB974D74CE34D130D5F830AEBCF738BD4134195A456D85F9C3CF37B7C1"
+        }
+      ]
+    },
+    {
+      "config": "Debug",
+      "aggressive": true,
+      "variant": "conditional",
+      "rawCharacters": 1482,
+      "wireCharacters": 1326,
+      "conditionalSurvivesWire": false,
+      "actionDescription": "Except contract (inspect_sources too): documentId/stateId required.",
+      "toolNames": [
+        "cad_drawing",
+        "cad_status",
+        "cad_inspect",
+        "cad_command",
+        "cad_select",
+        "cad_workspace",
+        "cad_file",
+        "cad_history",
+        "cad_edit",
+        "cad_parameter",
+        "cad_model"
+      ],
+      "promptTokens": 4726,
+      "outputTokens": 1024,
+      "payload": [
+        {
+          "name": "Cadoryx.Agent.dll",
+          "sha256": "937EC04A788088BC8A6D7668968D6D54862555B8CEFE3B81AA8A2F6C86F733CD"
+        },
+        {
+          "name": "Cadoryx.ViewModels.dll",
+          "sha256": "F22371B284593A36CFABE9FB6022431497B36BA946D7695BF03F395F36ED83E2"
+        },
+        {
+          "name": "Cadoryx.AI.LmStudio.dll",
+          "sha256": "10424BCB974D74CE34D130D5F830AEBCF738BD4134195A456D85F9C3CF37B7C1"
+        }
+      ]
+    },
+    {
+      "config": "Debug",
+      "aggressive": true,
+      "variant": "action_hint",
+      "rawCharacters": 1350,
+      "wireCharacters": 1350,
+      "conditionalSurvivesWire": false,
+      "actionDescription": "contract: only action/type, no IDs. Else documentId/stateId required (inspect_sources too).",
+      "toolNames": [
+        "cad_drawing",
+        "cad_status",
+        "cad_inspect",
+        "cad_command",
+        "cad_select",
+        "cad_workspace",
+        "cad_file",
+        "cad_history",
+        "cad_edit",
+        "cad_parameter",
+        "cad_model",
+        "cad_datum"
+      ],
+      "promptTokens": 5631,
+      "outputTokens": 1024,
+      "payload": [
+        {
+          "name": "Cadoryx.Agent.dll",
+          "sha256": "937EC04A788088BC8A6D7668968D6D54862555B8CEFE3B81AA8A2F6C86F733CD"
+        },
+        {
+          "name": "Cadoryx.ViewModels.dll",
+          "sha256": "F22371B284593A36CFABE9FB6022431497B36BA946D7695BF03F395F36ED83E2"
+        },
+        {
+          "name": "Cadoryx.AI.LmStudio.dll",
+          "sha256": "10424BCB974D74CE34D130D5F830AEBCF738BD4134195A456D85F9C3CF37B7C1"
+        }
+      ]
+    }
+  ],
+  "nativeJobs": 0,
+  "productionChanged": false,
+  "modelWorkflow": "NOT RUN",
+  "scope": "Schema presentation and existing short-context admission only"
+}

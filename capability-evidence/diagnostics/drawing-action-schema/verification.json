@@ -1,0 +1,254 @@
+{
+  "state": "PASS_DIAGNOSTIC_NOT_A_MODEL_WORKFLOW_FIX",
+  "frozenSourceFilesVerified": 1189,
+  "source1076Changed": false,
+  "nativeJobs": 0,
+  "configurations": [
+    {
+      "config": "Release",
+      "aggressive": false,
+      "variant": "original",
+      "rawCharacters": 1326,
+      "wireCharacters": 1326,
+      "promptTokens": 5625,
+      "outputTokens": 1024,
+      "toolCount": 12
+    },
+    {
+      "config": "Release",
+      "aggressive": false,
+      "variant": "conditional",
+      "rawCharacters": 1482,
+      "wireCharacters": 1326,
+      "promptTokens": 5668,
+      "outputTokens": 1024,
+      "toolCount": 12
+    },
+    {
+      "config": "Release",
+      "aggressive": false,
+      "variant": "action_hint",
+      "rawCharacters": 1350,
+      "wireCharacters": 1350,
+      "promptTokens": 5631,
+      "outputTokens": 1024,
+      "toolCount": 12
+    },
+    {
+      "config": "Release",
+      "aggressive": true,
+      "variant": "original",
+      "rawCharacters": 1326,
+      "wireCharacters": 1326,
+      "promptTokens": 5625,
+      "outputTokens": 1024,
+      "toolCount": 12
+    },
+    {
+      "config": "Release",
+      "aggressive": true,
+      "variant": "conditional",
+      "rawCharacters": 1482,
+      "wireCharacters": 1326,
+      "promptTokens": 4726,
+      "outputTokens": 1024,
+      "toolCount": 11
+    },
+    {
+      "config": "Release",
+      "aggressive": true,
+      "variant": "action_hint",
+      "rawCharacters": 1350,
+      "wireCharacters": 1350,
+      "promptTokens": 5631,
+      "outputTokens": 1024,
+      "toolCount": 12
+    },
+    {
+      "config": "Debug",
+      "aggressive": false,
+      "variant": "original",
+      "rawCharacters": 1326,
+      "wireCharacters": 1326,
+      "promptTokens": 5625,
+      "outputTokens": 1024,
+      "toolCount": 12
+    },
+    {
+      "config": "Debug",
+      "aggressive": false,
+      "variant": "conditional",
+      "rawCharacters": 1482,
+      "wireCharacters": 1326,
+      "promptTokens": 5668,
+      "outputTokens": 1024,
+      "toolCount": 12
+    },
+    {
+      "config": "Debug",
+      "aggressive": false,
+      "variant": "action_hint",
+      "rawCharacters": 1350,
+      "wireCharacters": 1350,
+      "promptTokens": 5631,
+      "outputTokens": 1024,
+      "toolCount": 12
+    },
+    {
+      "config": "Debug",
+      "aggressive": true,
+      "variant": "original",
+      "rawCharacters": 1326,
+      "wireCharacters": 1326,
+      "promptTokens": 5625,
+      "outputTokens": 1024,
+      "toolCount": 12
+    },
+    {
+      "config": "Debug",
+      "aggressive": true,
+      "variant": "conditional",
+      "rawCharacters": 1482,
+      "wireCharacters": 1326,
+      "promptTokens": 4726,
+      "outputTokens": 1024,
+      "toolCount": 11
+    },
+    {
+      "config": "Debug",
+      "aggressive": true,
+      "variant": "action_hint",
+      "rawCharacters": 1350,
+      "wireCharacters": 1350,
+      "promptTokens": 5631,
+      "outputTokens": 1024,
+      "toolCount": 12
+    }
+  ],
+  "productionContractRefusals": [
+    {
+      "ordinal": 10,
+      "arguments": {
+        "action": "contract",
+        "documentId": "cebcdb18-f74f-47d6-b68c-09c6932bf89e",
+        "stateId": "5c9f8324-1a07-4e3f-9f03-5a281e65d4f1",
+        "sheetId": "5df6c46c-a55b-45bf-8f65-9e1f6943350c",
+        "type": "view",
+        "authorJson": "{\"name\":\"Top\",\"kind\":\"Top\",\"centerMm\":{\"x\":80,\"y\":60},\"scale\":2}"
+      },
+      "reply": {
+        "success": false,
+        "message": "Invalid drawing arguments for action=contract. Unknown or duplicate: documentId, stateId, sheetId, authorJson. contract accepts only action/type; other actions require exact documentId/stateId from cad_status. inspect requires type, documentId and stateId together. Outer name is only save_template; create/edit names belong in authorJson.",
+        "missingOrInvalid": [],
+        "unexpectedArguments": [
+          "documentId",
+          "stateId",
+          "sheetId",
+          "authorJson"
+        ],
+        "allowedArguments": [
+          "action",
+          "type"
+        ],
+        "validRequests": [
+          {
+            "action": "contract",
+            "type": "view"
+          }
+        ],
+        "requestNote": "Read-only examples. Choose the requested type; contract omits every document, state, owner and source identity. The rejected request was not executed."
+      }
+    },
+    {
+      "ordinal": 19,
+      "arguments": {
+        "action": "contract",
+        "documentId": "cebcdb18-f74f-47d6-b68c-09c6932bf89e",
+        "stateId": "5db00acf-b213-4b1d-8861-eb3ab8d84c32"
+      },
+      "reply": {
+        "success": false,
+        "message": "Invalid drawing arguments for action=contract. Unknown or duplicate: documentId, stateId. contract accepts only action/type; other actions require exact documentId/stateId from cad_status. inspect requires type, documentId and stateId together. Outer name is only save_template; create/edit names belong in authorJson.",
+        "missingOrInvalid": [],
+        "unexpectedArguments": [
+          "documentId",
+          "stateId"
+        ],
+        "allowedArguments": [
+          "action",
+          "type"
+        ],
+        "validRequests": [
+          {
+            "action": "contract",
+            "type": "sheet"
+          },
+          {
+            "action": "contract",
+            "type": "view"
+          },
+          {
+            "action": "contract",
+            "type": "dimension"
+          },
+          {
+            "action": "contract",
+            "type": "datum"
+          },
+          {
+            "action": "contract",
+            "type": "control_frame"
+          },
+          {
+            "action": "contract",
+            "type": "balloon"
+          },
+          {
+            "action": "contract",
+            "type": "hole_table"
+          },
+          {
+            "action": "contract",
+            "type": "field"
+          },
+          {
+            "action": "contract",
+            "type": "note"
+          },
+          {
+            "action": "contract",
+            "type": "template"
+          },
+          {
+            "action": "contract",
+            "type": "parts_table"
+          },
+          {
+            "action": "contract",
+            "type": "zones"
+          }
+        ],
+        "requestNote": "Read-only examples. Choose the requested type; contract omits every document, state, owner and source identity. The rejected request was not executed."
+      }
+    }
+  ],
+  "files": [
+    {
+      "path": "Program.cs",
+      "sha256": "EFE2D2E8BAB0E9715B8404295A599E9CBB80156F52C69B1DA9B4731D4D92D2D8"
+    },
+    {
+      "path": "Probe.csproj",
+      "sha256": "17CB9ABFCC912E088434312FBB27B7F15C91333331ED759732AC4A3984616717"
+    },
+    {
+      "path": "result.json",
+      "sha256": "72D24055D619E130B81648B3917C77A4129758F40F060C145469AAE74054F44A"
+    }
+  ],
+  "conditionalProposal": "REJECTED: removed on wire, retry loses one tool",
+  "actionHintProposal": "Short-history admission only; full original recovery budgets and model NOT RUN",
+  "AFComplete": false,
+  "G": "USER_DEFERRED",
+  "cleanup": false
+}

@@ -24,6 +24,7 @@ capability-evidence/diagnostics/af1076-public85/** -text whitespace=cr-at-eol
 capability-evidence/diagnostics/af1076-root-full/** -text whitespace=cr-at-eol
 capability-evidence/diagnostics/exact-step-brep-status/** -text whitespace=cr-at-eol
 capability-evidence/diagnostics/exact-step-mapped-scale/** -text whitespace=cr-at-eol
+capability-evidence/diagnostics/drawing-action-schema/** -text whitespace=cr-at-eol
 Cadoryx.Tests/Fixtures/AgentContext/** -text whitespace=cr-at-eol
 # Preserve the observer source bytes tied to the actual window attempt.
 tools/CadFiniteSurfaceWindowProbe/WindowHost.cs -text whitespace=cr-at-eol,-blank-at-eof
