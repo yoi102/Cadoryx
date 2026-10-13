@@ -11,6 +11,7 @@ namespace Cadoryx.ViewModels.Toolboxes;
 
 internal static partial class CadDrawingAuthoring
 {
+    private static readonly string[] ObjectTypes=["sheet","template","view","dimension","datum","control_frame","balloon","hole_table","field","note"];
     internal static async Task<string> ApplyAsync(CadDocumentViewModel? document,DocumentCommandExpectation? expected,
         JsonElement args,bool identity,CancellationToken token)
     {
@@ -22,12 +23,29 @@ internal static partial class CadDrawingAuthoring
         if(action=="inspect")return Inspect(doc.Session.Snapshot,args);
         if(action=="inspect_sources")return await InspectSourcesAsync(doc,expected!,args,token);
         if(doc.IsReadOnly)throw new InvalidOperationException("Drawing authoring requires an editable document at the history end.");
+        if(action is "create" or "edit" or "reselect" or "delete" && ObjectTypeGuide(args,action,identity) is {} guide)return guide;
         var before=doc.Session.Snapshot;var command=new DrawingCommand(args.Clone(),action,doc.FileService);
         await doc.Session.ExecuteAsync(command,token,expected);
         var after=doc.Session.Snapshot;
         return JsonSerializer.Serialize(new{success=true,action,changed=after.StateId!=before.StateId,
             id=command.ResultId,documentId=after.Id.ToString(),stateId=after.StateId.ToString(),
             createdIds=Identities(after).Except(Identities(before)).Order().ToArray()},CadAuthoringInspection.JsonOptions);
+    }
+    // Fixed type guidance follows document/state and read-only guards; it never chooses an object.
+    private static string? ObjectTypeGuide(JsonElement args,string action,bool identity)
+    {
+        var allowedTypes=action switch
+        {
+            "delete"=>ObjectTypes,
+            "reselect"=>ObjectTypes.Where(type=>type is "view" or "dimension" or "datum" or "control_frame" or "balloon" or "hole_table").ToArray(),
+            _=>ObjectTypes.Where(type=>type!="template").ToArray()
+        };
+        if(args.TryGetProperty("type",out var type)&&type.ValueKind==JsonValueKind.String&&
+            allowedTypes.Contains(type.GetString(),StringComparer.Ordinal))return null;
+        return JsonSerializer.Serialize(new{success=false,action,rejection="invalid_drawing_object_type",
+            message="Missing or invalid drawing object type. Choose an exact drawing kind from allowedTypes before supplying its owner/object ID. Modeling feature/body/part IDs are not drawing object IDs. Templates use save_template/import_template; parts_table/zones use their dedicated actions. No type, owner or identity was supplied automatically.",
+            missingOrInvalid=new[]{"type"},allowedTypes,allowedArguments=AllowedRequestFields(action,identity),
+            contractRequest=new{action="contract"}},CadAuthoringInspection.JsonOptions);
     }
     // The same action field catalog governs production parsing and error guidance.
     internal static string[] AllowedRequestFields(string action,bool identity)

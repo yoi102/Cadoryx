@@ -1,0 +1,16 @@
+{
+  "productionApplied": false,
+  "nativeJobs": 0,
+  "stages": [
+    {
+      "stage": "Release",
+      "log": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1079-drawing-object-type-1\\build3-release.log",
+      "exitCode": 0
+    },
+    {
+      "stage": "Debug",
+      "log": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1079-drawing-object-type-1\\build3-debug.log",
+      "exitCode": 0
+    }
+  ]
+}

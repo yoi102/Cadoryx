@@ -1,0 +1,29 @@
+{
+  "nativeJobs": 0,
+  "stages": [
+    {
+      "exitCode": 0,
+      "log": "artifacts/af1079-drawing-object-type-1/root-Tests-Release.log",
+      "configuration": "Release",
+      "project": "Tests"
+    },
+    {
+      "exitCode": 0,
+      "log": "artifacts/af1079-drawing-object-type-1/root-wpf-Release.log",
+      "configuration": "Release",
+      "project": "wpf"
+    },
+    {
+      "exitCode": 0,
+      "log": "artifacts/af1079-drawing-object-type-1/root-Tests-Debug.log",
+      "configuration": "Debug",
+      "project": "Tests"
+    },
+    {
+      "exitCode": 0,
+      "log": "artifacts/af1079-drawing-object-type-1/root-wpf-Debug.log",
+      "configuration": "Debug",
+      "project": "wpf"
+    }
+  ]
+}

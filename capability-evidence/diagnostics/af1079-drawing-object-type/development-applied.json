@@ -1,0 +1,14 @@
+{
+  "source": "1079",
+  "base": "1078",
+  "productionApplied": true,
+  "original6664SourcesUnchanged": true,
+  "changed": [
+    "Cadoryx.ViewModels/Toolboxes/CadDrawingAuthoring.cs",
+    "Cadoryx.ViewModels/Toolboxes/CadDrawingInspection.cs"
+  ],
+  "new": "Cadoryx.Tests/DrawingMutationTypeFeedbackTests.cs",
+  "fullExpected": 6765,
+  "fullRuntime": "NOT RUN",
+  "realModel": "NOT RUN"
+}

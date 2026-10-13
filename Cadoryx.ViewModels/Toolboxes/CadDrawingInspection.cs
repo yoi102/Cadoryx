@@ -76,7 +76,7 @@ internal static partial class CadDrawingAuthoring
     private static string Inspect(DocumentSnapshot doc,JsonElement args)
     {
         // ApplyAsync has already checked the exact document/state before this read-only guide.
-        string[] allowedTypes=["sheet","template","view","dimension","datum","control_frame","balloon","hole_table","field","note"];
+        var allowedTypes=ObjectTypes;
         if(!args.TryGetProperty("type",out var requested)||requested.ValueKind!=JsonValueKind.String||
             !allowedTypes.Contains(requested.GetString(),StringComparer.Ordinal))
             return JsonSerializer.Serialize(new{success=false,

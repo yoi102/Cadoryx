@@ -1,0 +1,4 @@
+C:\Users\yoiri\source\repos\Cadoryx\artifacts\af1079-drawing-object-type-1\probe-fixture\Program.cs(33,16): warning CS8321: The local function 'Check' is declared but never used [C:\Users\yoiri\source\repos\Cadoryx\artifacts\af1079-drawing-object-type-1\probe-fixture\Probe.csproj]
+Release actual fixture receipt: {"success":false,"message":"Drawing kernel unavailable."}
+Debug actual fixture receipt: {"success":false,"message":"Drawing kernel unavailable."}
+{"resultPath":"C:/Users/yoiri/source/repos/Cadoryx\\artifacts/af1079-drawing-object-type-1\\fixture-diagnostic-result.json","cases":0,"failed":0}

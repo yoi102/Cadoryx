@@ -1,0 +1,4775 @@
+{
+  "payload": [
+    {
+      "path": "Cadoryx.AI.Contracts/AiAssistantSettings.cs",
+      "sha256": "97962C8128B405694AF1D0E5A6ED4FFD857F999B0AD654E9A40366DB69398676"
+    },
+    {
+      "path": "Cadoryx.AI.Contracts/AiChatContracts.cs",
+      "sha256": "6DDD719451C9864578E891F7D4870173AE776CFF059DED44FAFD5D4D73C6AB98"
+    },
+    {
+      "path": "Cadoryx.AI.Contracts/Cadoryx.AI.Contracts.csproj",
+      "sha256": "8766B77127C46226BDA54DD04A7EE376B1C81D8DA99B383BD08F442C18151D38"
+    },
+    {
+      "path": "Cadoryx.AI.Contracts/packages.lock.json",
+      "sha256": "A4364D81A6DE2707D66FBCED18FBBC926C882AB96E1D1AEBBB17E871285B9D75"
+    },
+    {
+      "path": "Cadoryx.AI.LmStudio/Cadoryx.AI.LmStudio.csproj",
+      "sha256": "A10CCDADA17E93C043FC896B12BD9161FF7DB31427341661D59AFBD5F0B2A428"
+    },
+    {
+      "path": "Cadoryx.AI.LmStudio/JsonAiAssistantSettingsStore.cs",
+      "sha256": "11CF2BE4843BCE9610E999394C35C18DFA91B34CD381F88F363208A6190280FD"
+    },
+    {
+      "path": "Cadoryx.AI.LmStudio/LmStudioChatClient.cs",
+      "sha256": "CD9BC72B26CB37A1E6C84D704D84B5FDFBB99F747D1262640CB8F2EE54331C1B"
+    },
+    {
+      "path": "Cadoryx.AI.LmStudio/ToolSchemaPresentation.cs",
+      "sha256": "351231815E4E14624D4259150AC4737FEE536669C0795AE3029FA5C7E8402E05"
+    },
+    {
+      "path": "Cadoryx.AI.LmStudio/packages.lock.json",
+      "sha256": "60D5B7778750656C74DF3BD2EEFBA7B7A84EFEBB800569FF1BD96263A0378E16"
+    },
+    {
+      "path": "Cadoryx.Agent.Codex/Cadoryx.Agent.Codex.csproj",
+      "sha256": "C3434623AE88E649D98546DE2A239CC676F6016B45A478990179F42C9D70A1ED"
+    },
+    {
+      "path": "Cadoryx.Agent.Codex/CodexAgentContracts.cs",
+      "sha256": "8EECA406CD3CBB9B4F823983D7DCB83ABDE6C43BAD00A2E5F3B8C704D1076721"
+    },
+    {
+      "path": "Cadoryx.Agent.Codex/CodexAppServerClient.cs",
+      "sha256": "7B596E7F23CDAD2D39A73619004A6BBA7D2B8F7EE9D4D9D2A5ED68E8C6B9EFD4"
+    },
+    {
+      "path": "Cadoryx.Agent.Codex/CodexAppServerTransport.cs",
+      "sha256": "02A3D765E01E0FEA814BA5280E58C3B56BB59BFEE275F06CC51963D7E0678518"
+    },
+    {
+      "path": "Cadoryx.Agent.Codex/packages.lock.json",
+      "sha256": "B77646DFC7042A6A61D6194F17B8CD177E1F369E9C21C7996FA1F2B405EF8596"
+    },
+    {
+      "path": "Cadoryx.Agent/AgentContracts.cs",
+      "sha256": "4A2A3B9BAF5D1EAF7818BE67B00233399FE041233C94852302DC0EFC39628DC0"
+    },
+    {
+      "path": "Cadoryx.Agent/AgentNativeReadContinuation.cs",
+      "sha256": "1E191C15D6B1FD350FAFA75F3FAAF22988F685594CF6D6E3FC812C91CE693A9E"
+    },
+    {
+      "path": "Cadoryx.Agent/AgentRequestContextBuilder.cs",
+      "sha256": "FAB2FB014820708AAA4731B8F78C8A5FE95D33F70C8A6F060CEB91207DF2C309"
+    },
+    {
+      "path": "Cadoryx.Agent/AgentRunner.cs",
+      "sha256": "BB253D1AED7A0DB2AD803D238955C6E82BEEC82B0348F86B8A19E10CFD87BF8F"
+    },
+    {
+      "path": "Cadoryx.Agent/AgentSuccessfulActionReceipt.cs",
+      "sha256": "4C5E5A856569584B754FFFBAEF76DE05FAC715029234055ADA927514B1569A54"
+    },
+    {
+      "path": "Cadoryx.Agent/AgentToolResultCompactor.cs",
+      "sha256": "FFAC212E7ADA13D13F5140680D41771BC3CF33FFAEE8175C9DDB3B030CDB4563"
+    },
+    {
+      "path": "Cadoryx.Agent/Cadoryx.Agent.csproj",
+      "sha256": "2CB9253EA6048F1B91702814D055A9275A9AF1C9995933429C33E4EABEABAC2B"
+    },
+    {
+      "path": "Cadoryx.Agent/packages.lock.json",
+      "sha256": "60D5B7778750656C74DF3BD2EEFBA7B7A84EFEBB800569FF1BD96263A0378E16"
+    },
+    {
+      "path": "Cadoryx.Cli/CadCommandLine.cs",
+      "sha256": "0ED314279259B402BA55CD24DF24ED9EF2AE9317254B4CB13DAAC6714066AFE3"
+    },
+    {
+      "path": "Cadoryx.Cli/CadMaterialCli.cs",
+      "sha256": "F9BEDB265812FA1EEB26E0930067C5A970D63875A0AC90573E1FBADAE8820771"
+    },
+    {
+      "path": "Cadoryx.Cli/Cadoryx.Cli.csproj",
+      "sha256": "A7AC03C049557BD536A7F8677C5FF8954041929FBE5D4A4224327AF79F665DE2"
+    },
+    {
+      "path": "Cadoryx.Cli/Program.cs",
+      "sha256": "3DA773011D66A0C6BB0BE0BE38EADA432EEB8E5469DF7D432E50AC3C1F96AA44"
+    },
+    {
+      "path": "Cadoryx.Cli/packages.lock.json",
+      "sha256": "6758B58C51744040EA42A0D034922ECB0B019E1BCA867FD4C576099892DF13C2"
+    },
+    {
+      "path": "Cadoryx.CommandLine/CadAuthoringCommands.cs",
+      "sha256": "BC298995920900E857BBB95563927919B8428E2EC783A7FD21EA8DF69EEC8167"
+    },
+    {
+      "path": "Cadoryx.CommandLine/CadCommandLineService.cs",
+      "sha256": "771A5858DBCF76757C34929821A56C8D1C1F9E29896ED6589D2411B860F7EFE5"
+    },
+    {
+      "path": "Cadoryx.CommandLine/CadDatumCommands.cs",
+      "sha256": "BF38BFBB688DB27BADFA51F6C6D41AC47AD634C88F9CAB1BAB471BEB7AA69191"
+    },
+    {
+      "path": "Cadoryx.CommandLine/CadDrawingCommands.cs",
+      "sha256": "7E66DF01CAC73E952385B3024C79A92F979002D0C5549BD68D1FD833EEEA2C1F"
+    },
+    {
+      "path": "Cadoryx.CommandLine/CadFileCommands.cs",
+      "sha256": "E4C2FAD7593C4CDF1C59DC06F14BFC53BBA10A5CD65C8EC8988EA07289674CAA"
+    },
+    {
+      "path": "Cadoryx.CommandLine/CadMaterialCommands.cs",
+      "sha256": "118D40E83B2787CAA524742BEF685533FA25645CA9830C103166D0AEE5F6F315"
+    },
+    {
+      "path": "Cadoryx.CommandLine/CadModelCommands.cs",
+      "sha256": "9006DA6B5EF47CA31F4381A6D16A8494A359918C445A7136E27A77E2DD6DBE31"
+    },
+    {
+      "path": "Cadoryx.CommandLine/CadTimelineCommands.cs",
+      "sha256": "3DC40C9FAE5C9C215D2164B60F0FD29AC1D360811B102EEF549A9F14136BE903"
+    },
+    {
+      "path": "Cadoryx.CommandLine/CadWorkspaceCommands.cs",
+      "sha256": "8D743D7F1C5795900160F2E88E9C0BB88026297448DBA8A4193B82A9DE34E5A2"
+    },
+    {
+      "path": "Cadoryx.CommandLine/Cadoryx.CommandLine.csproj",
+      "sha256": "3472FCCCE5613343D3B55F6C2BBC48CBFD3DE01F9CF32FD8607B8AC3A7E26395"
+    },
+    {
+      "path": "Cadoryx.CommandLine/packages.lock.json",
+      "sha256": "A4364D81A6DE2707D66FBCED18FBBC926C882AB96E1D1AEBBB17E871285B9D75"
+    },
+    {
+      "path": "Cadoryx.Commands/AssemblyConstraintCommands.cs",
+      "sha256": "84EA98DFDC45DE20D9BD3DFFB03146FEBE2E3B8E9520D258A87F8472ED9C1A75"
+    },
+    {
+      "path": "Cadoryx.Commands/AssemblyCycleSolver.cs",
+      "sha256": "CB6771B6102D1735FCE22B69B5CF2B81FC3562715E367FB4C8F3EAE6869CDA48"
+    },
+    {
+      "path": "Cadoryx.Commands/AssemblyDatumVerification.cs",
+      "sha256": "439F8F10ECD7901FA19FF82E170DD4816A37A11E6D7213F6D8FA102791E3A0E0"
+    },
+    {
+      "path": "Cadoryx.Commands/AssemblyMirrorUpdate.cs",
+      "sha256": "2F40BE366768FAB34A68A5597C551185D28D51EE4D90258522EAA25BCF2A3EB3"
+    },
+    {
+      "path": "Cadoryx.Commands/AssemblyNumerics.cs",
+      "sha256": "E79429D9D57AFD684A052BE127F363CC49CF24D44D301BC36676CB88E69DA441"
+    },
+    {
+      "path": "Cadoryx.Commands/AssemblyOccurrenceCommands.cs",
+      "sha256": "0C7884A5BC8832EECE4D1EA237FE67EBED0DD22BEBE8B59773B2036778B79A53"
+    },
+    {
+      "path": "Cadoryx.Commands/AssemblyRepetitionCommands.cs",
+      "sha256": "35AA5CC73BE5C8F3AC991E92A84025180898C33FE32BA0124D9F20CCD16588AA"
+    },
+    {
+      "path": "Cadoryx.Commands/AssemblySolveCommands.cs",
+      "sha256": "6ED6BF4C77EF76B2AA2CE6E2EB9CC7A43F2C2C7D8BB6AB06576DBB9D4102E0C0"
+    },
+    {
+      "path": "Cadoryx.Commands/AssemblySolveOptions.cs",
+      "sha256": "0DE168A59741B686A7298710BFF817F29CCD3DFF20DE0C099E2A1E95DA5F266F"
+    },
+    {
+      "path": "Cadoryx.Commands/Cadoryx.Commands.csproj",
+      "sha256": "1911E1D3420626D67E0E70C8A4AA6680214F8E7B75854EE7AC148B87E1988FE6"
+    },
+    {
+      "path": "Cadoryx.Commands/CommitPreparedDocumentCommand.cs",
+      "sha256": "CA814F1F24276EBCF72E1811CDBB1064E547DD0B14583133353478F4A11BADF3"
+    },
+    {
+      "path": "Cadoryx.Commands/ContourLocalCommands.cs",
+      "sha256": "2E9F87A0C533D2AE978FAF1F5051F52C34A28CE16FA98F536751E20D0279140C"
+    },
+    {
+      "path": "Cadoryx.Commands/CreateSectionCommand.cs",
+      "sha256": "DA1440D262623E2002EE0F23FE0FF622410C8CD6CD54C8152248D2E937B05483"
+    },
+    {
+      "path": "Cadoryx.Commands/DatumCommands.cs",
+      "sha256": "B8CD12743E4F28FE9C153A428CB3C182F2F9056CB5AC55F2CBD0122E0732BF87"
+    },
+    {
+      "path": "Cadoryx.Commands/DocumentCommands.cs",
+      "sha256": "9000E7A6DF9C5065CC6C6B1C7CE6657209F3FC686DF74FC22767164DE9530989"
+    },
+    {
+      "path": "Cadoryx.Commands/DrawingAnnotationCommands.cs",
+      "sha256": "8A2DB05D537F47428F8134FF215AC6B692EBF60C5ACE75123AE42CB7F56AE159"
+    },
+    {
+      "path": "Cadoryx.Commands/DrawingAttachmentContinuation.cs",
+      "sha256": "453475751B0C8B96673EFDA95C65364D7C7FFB95A64A1AFFF029D44A5D6E16CE"
+    },
+    {
+      "path": "Cadoryx.Commands/DrawingHoleTableCommands.cs",
+      "sha256": "D139F57D564CA39DDF1E7C56C49C6275AFCBCD1668E5B1E3BEFF6A6A9849ABDF"
+    },
+    {
+      "path": "Cadoryx.Commands/DrawingTemplateCommands.cs",
+      "sha256": "D886FE1BCB2A1A17C89D7E32C8573D2DC915E63615809263E9EA8925C6802E15"
+    },
+    {
+      "path": "Cadoryx.Commands/ExternalDependencyGraph.cs",
+      "sha256": "54A5748949A367CA47010E7FF1EC1BED1D1ED7A6FA269587958411B4AACBE780"
+    },
+    {
+      "path": "Cadoryx.Commands/ExternalPartCommands.cs",
+      "sha256": "FF6CAFF6BA663A7176D1700A51C33D72B4630FC0504542E5064E1123C9CD3100"
+    },
+    {
+      "path": "Cadoryx.Commands/ExtrusionCommands.cs",
+      "sha256": "8B4D906836A94B51276B99D32DB7C9A8ADD84637E1AA9F2E9A15C69057125828"
+    },
+    {
+      "path": "Cadoryx.Commands/ExtrusionPatternCommands.cs",
+      "sha256": "444E78FA04EB90C7ED3AEAE1786B976BCCFD0676DEDD53A9429649A6B443D36A"
+    },
+    {
+      "path": "Cadoryx.Commands/FaceFeatureCommands.cs",
+      "sha256": "6C716BEE4C3A5E986A3BDD3D931F5B5863D8BD19E3212E558498554E9206B568"
+    },
+    {
+      "path": "Cadoryx.Commands/FeatureTimelineCommands.cs",
+      "sha256": "31647C343A1BAD20AFA0A9095D2909B00118B6AEFAF99161C2CCC07611D9822E"
+    },
+    {
+      "path": "Cadoryx.Commands/HistoryFilletCommands.cs",
+      "sha256": "7D9D03C952649E557FA7304CDE36F41C291578D7B5E44804C4C44E6283D90D95"
+    },
+    {
+      "path": "Cadoryx.Commands/HistoryQueryCommands.cs",
+      "sha256": "71259F5469901E294647E648E73CDCA40C9908192C1AD159A28FB605AA0D0F5E"
+    },
+    {
+      "path": "Cadoryx.Commands/HoleCommands.cs",
+      "sha256": "6312CD8D86582E7F02AEFB43FB5E131DBB8E324E1D2429C136DEA5DE1FAFE066"
+    },
+    {
+      "path": "Cadoryx.Commands/HolePatternCommands.cs",
+      "sha256": "51B01AB23E6BBD1F171B986015DF3ED7DD140BC48C896F3C4FB7F9B0CBE3B297"
+    },
+    {
+      "path": "Cadoryx.Commands/LocalFeatureCommand.cs",
+      "sha256": "C217F7616467E99ECC3398F7EC34043108FE887447597DFEDE468CCD18325138"
+    },
+    {
+      "path": "Cadoryx.Commands/MaterialResourceCommand.cs",
+      "sha256": "5D8684AE1AA83152A426DC294315E9B851D67CFFC843365156F26B7966246518"
+    },
+    {
+      "path": "Cadoryx.Commands/ParameterBookEdits.cs",
+      "sha256": "868CD03F76C550129C2CE201C5DE03EAAD13913AC0ECEB6B31D551AE09D582C9"
+    },
+    {
+      "path": "Cadoryx.Commands/ParameterCommands.cs",
+      "sha256": "B5C9401E579151BCD7FD2D0AC52CE4B11C8A32ABFA05D20B42E7CDB37B902F16"
+    },
+    {
+      "path": "Cadoryx.Commands/PartIdentityClone.cs",
+      "sha256": "62EE2983386C8092D04857DCBF80BF2282D7821A30178624FE864739C4081D99"
+    },
+    {
+      "path": "Cadoryx.Commands/PartOccurrenceCommands.cs",
+      "sha256": "0FB38433E9C0E29858AD60856C74372F3B2CFF5D76895454F182826D04A3DF22"
+    },
+    {
+      "path": "Cadoryx.Commands/RecomputeCommand.cs",
+      "sha256": "BB5DFB2F95AC67D53E61C27F51F89C722D15EE72FE0D15522ADAA3EBB2760758"
+    },
+    {
+      "path": "Cadoryx.Commands/RepetitionCommands.cs",
+      "sha256": "66545F55FB9A63F6DFA5A07BD4FB1E37D186C31962ADBCD83EBDFA4F23EE05E3"
+    },
+    {
+      "path": "Cadoryx.Commands/ResourceCommands.cs",
+      "sha256": "D279D33C974C1E2DEB2A0DF8EF98B0144F8DE1E9BEA3401A1B38912CDA557088"
+    },
+    {
+      "path": "Cadoryx.Commands/SetMaterialTextureCommand.cs",
+      "sha256": "ACE4245879B5CBF51BCDF6A3EF6047C8AB35C1CFA4E21B83EB127568F86C3D4A"
+    },
+    {
+      "path": "Cadoryx.Commands/SketchCommands.cs",
+      "sha256": "AE1F7F724B4F781A830C97665815616582B39530EB654193DD267429956713C9"
+    },
+    {
+      "path": "Cadoryx.Commands/SketchCornerProfileUpdate.cs",
+      "sha256": "BB8C76A0D4D3E1EA750CCDC685BD2C5198596B9A1419354697CFCA1D879550F0"
+    },
+    {
+      "path": "Cadoryx.Commands/SketchExpressionCommands.cs",
+      "sha256": "1DD8C5689C70530D6582715D55C737B99566412EB320A7C3B32FF5FFD6D716E4"
+    },
+    {
+      "path": "Cadoryx.Commands/SketchNativeProjectionCommands.cs",
+      "sha256": "91D95C728F00D2431FF099B984EEBE307F0B9D050440753E39CBCD86576B00E7"
+    },
+    {
+      "path": "Cadoryx.Commands/SolidOffsetCommands.cs",
+      "sha256": "5F09DBEC7B9B68C576B27CB7142106DBD5DE5329BD40E35365FE2E270C7D63EE"
+    },
+    {
+      "path": "Cadoryx.Commands/TechnicalDrawingCommands.cs",
+      "sha256": "EE3FA9431811B0E3EE679363A19FF2D7471EE54D3FCC0C051C80BA1DEAE38673"
+    },
+    {
+      "path": "Cadoryx.Commands/TopologyReferenceCommands.cs",
+      "sha256": "BA4AEB33A955D42DB4AFEB4153EB70E600ED4B6E74CB45CFE2446E6D1020856C"
+    },
+    {
+      "path": "Cadoryx.Commands/UnusedDefinitionCommands.cs",
+      "sha256": "DA8AB83BD24AB5D9EE6FE98668BF5C3D3E158DCE4D4D0C93680F2B54CF1987A1"
+    },
+    {
+      "path": "Cadoryx.Commands/UpdateAssociatedSections.cs",
+      "sha256": "BD49A40E40129EF88194A1CD8018CA515FDC7CA71172F022BC0BBFF0168D05FC"
+    },
+    {
+      "path": "Cadoryx.Commands/UpdateDrawingAnnotations.cs",
+      "sha256": "290DA9BAECBD0C37A7DC3F9229B0293B8644051F27CF6BA0DBF1A406E9D8AC9E"
+    },
+    {
+      "path": "Cadoryx.Commands/UpdateTechnicalDrawings.cs",
+      "sha256": "6E5D5D13CB706519B9598A479D691FD1D4341BEBDFA69C2FFEEEDE6B5FA1813B"
+    },
+    {
+      "path": "Cadoryx.Commands/packages.lock.json",
+      "sha256": "2BBBAAC841ADB708DA62F6F4EF08A818C001E6EE999FD4B142F1DD020BF859C8"
+    },
+    {
+      "path": "Cadoryx.Db/AssemblyConstraints.cs",
+      "sha256": "20B20B1361C79AFD48E2DD3AA7E1AED2A36ED0BC06422F2E525683FD1F79173C"
+    },
+    {
+      "path": "Cadoryx.Db/AssemblyDatumReference.cs",
+      "sha256": "65DDED4593E292FE714A0D555441C02D927DBF36482A00C9F3A88833CB871077"
+    },
+    {
+      "path": "Cadoryx.Db/AssemblyMirror.cs",
+      "sha256": "65E5F2252FAD9B79D4F18901DD4F9CEB404D6920F2FD7769CBD5CC8B1AD7F09C"
+    },
+    {
+      "path": "Cadoryx.Db/AssemblyRepetition.cs",
+      "sha256": "C999B5892531C099A51F7D67B1F4310F9AA63E297585CF8BF0BD2F82A2C89DAD"
+    },
+    {
+      "path": "Cadoryx.Db/AssetFormat.cs",
+      "sha256": "726944DBB59FFEA740A3A27345F47109388608B15C4F824DAB6B8C208F92E856"
+    },
+    {
+      "path": "Cadoryx.Db/BillOfMaterials.cs",
+      "sha256": "EFC733585E53922E6A27E8A987DE83D4DC74D1A797C9D052289F5FE7FBCEE6D2"
+    },
+    {
+      "path": "Cadoryx.Db/CadTexturePayload.cs",
+      "sha256": "CC88F8BD1EE45BE16DDD34DAE39239C811E8EC44FD0DCB2EB697629131BB66A9"
+    },
+    {
+      "path": "Cadoryx.Db/Cadoryx.Db.csproj",
+      "sha256": "8D654C44B7BEBB6B31A9F2F606927F45B5072193ADC4EEF8CCE3F3CF3B278DF3"
+    },
+    {
+      "path": "Cadoryx.Db/ContourLocalRecipe.cs",
+      "sha256": "98D819B4B1CACA354EEBEF381E25AEB48F7E12E19ABC07EF63D0E3FBB7F503B2"
+    },
+    {
+      "path": "Cadoryx.Db/ContourParameterTargets.cs",
+      "sha256": "E744053262676339E5EB0C8C1669EE234CD83C7EA4098A4E6DF64E0C5AC05CF1"
+    },
+    {
+      "path": "Cadoryx.Db/ContourRadiusLaws.cs",
+      "sha256": "ECF12E8E114F74C8B547676DC172C2FF7D183E30D4520ABAC48A90D83F46FE2A"
+    },
+    {
+      "path": "Cadoryx.Db/CubicSplineDefinition.cs",
+      "sha256": "78D5CC6148407F4D83C97368D529074F6EA291D9CB586BC7026FC1BF5EE4E658"
+    },
+    {
+      "path": "Cadoryx.Db/CubicSplineKnotVector.cs",
+      "sha256": "CC5F0DCA7109EDB2ED821CA2226EC178B491EFBCA19168A41BAA5B19DEA58E13"
+    },
+    {
+      "path": "Cadoryx.Db/DatumConstructions.cs",
+      "sha256": "CAACAB684944F76F07E816C7FAF70616E3A12F86FB6499487FB5BFC6A83FC90B"
+    },
+    {
+      "path": "Cadoryx.Db/DatumPlanes.cs",
+      "sha256": "94AFAAAF8456DF55060D912E0FD171A9E1DECB8A7B86EC3889114A664B5CD436"
+    },
+    {
+      "path": "Cadoryx.Db/DocumentParameters.cs",
+      "sha256": "4D39940468436C53F8D00FF8C98B7BD56D043D0081264CADA3F61FDE53DE2906"
+    },
+    {
+      "path": "Cadoryx.Db/DocumentSnapshot.cs",
+      "sha256": "EE09508014DBD07725383FA02D9C7D52E9DFA4521A0E6AE282905DC35A5D33AD"
+    },
+    {
+      "path": "Cadoryx.Db/DrawingAnnotationLayout.cs",
+      "sha256": "5B6EDBC8A5E404D21B295F95BEC99AB66FA3513730656DF9C70BA450F541D068"
+    },
+    {
+      "path": "Cadoryx.Db/DrawingAnnotations.cs",
+      "sha256": "475E61A35D3DD66A8D5C0A723F49257A5544F93380DF457611A353E7B96D9B36"
+    },
+    {
+      "path": "Cadoryx.Db/DrawingCylinderSizeEvidence.cs",
+      "sha256": "AF1B6B2F97420FE0CA3102F5A21CC8E80435036242F173139CEF173F51D78118"
+    },
+    {
+      "path": "Cadoryx.Db/DrawingDatumSystems.cs",
+      "sha256": "07955F03EB2ED7B3820F51066852FB3CBDE05D189D3CA819BFADE080D956505E"
+    },
+    {
+      "path": "Cadoryx.Db/DrawingHatching.cs",
+      "sha256": "C1B72435862815702B4DB9D1424391200D14451F8FCCC36DF8297FE6E7DC0785"
+    },
+    {
+      "path": "Cadoryx.Db/DrawingHoleCoordinates.cs",
+      "sha256": "18B8E5D2F1AAB4FCA09F2EDBB678DD5E9DD8EF75835246A350646113AAE6219F"
+    },
+    {
+      "path": "Cadoryx.Db/DrawingHoleTableLayout.cs",
+      "sha256": "13AC80BA2BB6A598C804591FDF8FCF42E9A41455D47D46A5D7088E214DCB49BE"
+    },
+    {
+      "path": "Cadoryx.Db/DrawingHoleTables.cs",
+      "sha256": "7E01DE8A5CE6266BEB0C3BB6AF7674C915DB2E7C81DCBE6774D1E69A8E2A314C"
+    },
+    {
+      "path": "Cadoryx.Db/DrawingManufacturingLayout.cs",
+      "sha256": "E3BBA7D079533DACE2EDAED30C70C15EA44CF2EC03CF14D057A6595C4C161CEE"
+    },
+    {
+      "path": "Cadoryx.Db/DrawingPageLayout.cs",
+      "sha256": "302057CA1F66C0B97A108F2CF54C02A575D17C0FCFDA6F85E3B2DBBB232E27F2"
+    },
+    {
+      "path": "Cadoryx.Db/DrawingPlanarSizeEvidence.cs",
+      "sha256": "711C32D06FB2EC59D682497982F3802814C8C91326B1AAA159338FB265544AF7"
+    },
+    {
+      "path": "Cadoryx.Db/DrawingScale.cs",
+      "sha256": "1D94E25B8493AB1E4357A82012A00B0A95706C90612ED215CAA5287FB63DAE61"
+    },
+    {
+      "path": "Cadoryx.Db/DrawingSheetTemplates.cs",
+      "sha256": "442D502E42188C834A11EE36F5A71580A4BBFCC7332604E2AC8723B9234EFF35"
+    },
+    {
+      "path": "Cadoryx.Db/DrawingTemplateContentLayout.cs",
+      "sha256": "AA4A532C995324687E281BDC0BA58A938DBB81AAD41EF87864B3FD8819DE4346"
+    },
+    {
+      "path": "Cadoryx.Db/DrawingTemplateLibrary.cs",
+      "sha256": "840286E8E06D7764B6E5FCC67AE85AED7880F8F2209773228AFD694992D893E0"
+    },
+    {
+      "path": "Cadoryx.Db/EngineeringReview.cs",
+      "sha256": "BB5293A3B6585CA675B45C95EACAAE07738930A42057823556805DF66AC92F0D"
+    },
+    {
+      "path": "Cadoryx.Db/ExternalPartLink.cs",
+      "sha256": "7F7672AF31D996F9EA98CA3820457C559357640BEB7D3C2F2B7083E96395D142"
+    },
+    {
+      "path": "Cadoryx.Db/ExtrusionOptions.cs",
+      "sha256": "E212EA4F2DEEF58F1CE37A4CF8163164789E88AD44609D228C471DFC80C3E5E3"
+    },
+    {
+      "path": "Cadoryx.Db/ExtrusionPatternRecipe.cs",
+      "sha256": "F88DE51D48453FAC014A244CBAC092C2D6EC7E2846E466B7E4D691735C81DC70"
+    },
+    {
+      "path": "Cadoryx.Db/FaceEditRecipes.cs",
+      "sha256": "90AC9038D51AAB062A796E02BC1EB896899B9BD07E0938704FB923E23D3CCF52"
+    },
+    {
+      "path": "Cadoryx.Db/FaceFeatureRecipes.cs",
+      "sha256": "0BCB000DAA49AC0016A98C8717CC7C06AF646CEA6EA230F00C07BB6E62259476"
+    },
+    {
+      "path": "Cadoryx.Db/FeatureSuppression.cs",
+      "sha256": "445DE84C894D3E83DDD3B2D762193D76C2A5C6E9C5FADC7C885D2AD24334A9D9"
+    },
+    {
+      "path": "Cadoryx.Db/FeatureTimeline.cs",
+      "sha256": "8FEA3A3F597F6381BBFB9589663B289F70F58E7DE382D5EDC113A3B59098D5E7"
+    },
+    {
+      "path": "Cadoryx.Db/FeatureTimelineFailure.cs",
+      "sha256": "3AF6C3B7DDC81AB8431EEF65BCD026D47D1755161DC7833CB10A111C4A4C57ED"
+    },
+    {
+      "path": "Cadoryx.Db/FeatureTopologyBinding.cs",
+      "sha256": "763812B8D72E184F9004B94565D795CA19D1B50B72DE9054762C32278F862A46"
+    },
+    {
+      "path": "Cadoryx.Db/Features.cs",
+      "sha256": "832DF382C63266BC897EC734F99D587F01608C177FB7A5E27459D9B3EF8EE548"
+    },
+    {
+      "path": "Cadoryx.Db/Geometry.cs",
+      "sha256": "CB18112E1833A5067CDA9B165D5561C550FEE718447AC85F6F3EFFB951C7EC7D"
+    },
+    {
+      "path": "Cadoryx.Db/GuidedAuthoringRecipes.cs",
+      "sha256": "8636E890F2FC703FFCC5D98C0DF7848E77A792577C2280958D985C1B00B158A7"
+    },
+    {
+      "path": "Cadoryx.Db/GuidedAuthoringSources.cs",
+      "sha256": "19CDD67A101A1A0FC0763D44626B52803CC2DF2923F7F1C418867AFE10311E83"
+    },
+    {
+      "path": "Cadoryx.Db/GuidedModelingReport.cs",
+      "sha256": "AE6DC76A220CDE9466659D4E3F17FCA14C09092DC26BB4551E84524C61C0754E"
+    },
+    {
+      "path": "Cadoryx.Db/HistoryQueries.cs",
+      "sha256": "80F3EFBD78959C9FDC9C7EEC647A7365E27B2F32DA36B6D77C61FA285E3CABB6"
+    },
+    {
+      "path": "Cadoryx.Db/HolePatternRecipe.cs",
+      "sha256": "208148F6B86C9C365E3F98E1526C52D3316875D1E72818003D66DE09532879C5"
+    },
+    {
+      "path": "Cadoryx.Db/HoleRecipe.cs",
+      "sha256": "BBE155EA3E58BD4091F04AAE32183A1052B0EECBA76560EB900E1ABEF014E609"
+    },
+    {
+      "path": "Cadoryx.Db/Identity.cs",
+      "sha256": "28CEE56066F3525FB0A339EBFE0A0832C6B5B7C017CE502B82D7FB61096263A4"
+    },
+    {
+      "path": "Cadoryx.Db/LocalFeatureRecipe.cs",
+      "sha256": "D04C4F6A7A8C24DBA7B887AA32C9E92807EB258E2F4453D7DDE58CDB432A6EC2"
+    },
+    {
+      "path": "Cadoryx.Db/MaterialAppearance.cs",
+      "sha256": "102FED277ADE0D6BC000B003B3D921B30120876CC1F993064908D0CDF5D59192"
+    },
+    {
+      "path": "Cadoryx.Db/MetricThreadHoles.cs",
+      "sha256": "94D628EE0CA99011DAA734B04E00C0899373DADC9F93DBB6F14C4D23D94E9939"
+    },
+    {
+      "path": "Cadoryx.Db/Model.cs",
+      "sha256": "23F5D677577A565AD3F57B131E01AA51D37C0C861DEC209BC5D1F0096407832C"
+    },
+    {
+      "path": "Cadoryx.Db/OccurrencePlacement.cs",
+      "sha256": "C4948ED6C14FDB0FD1E14A4BAD57D41B83BFC2B9361C0BE9F4718A3B30F3CA54"
+    },
+    {
+      "path": "Cadoryx.Db/ParameterExpressions.cs",
+      "sha256": "9CC53D6E3CB86DCBF93F21E8F6B4E15995410F8F1DC790F23C9830EFF5A51FD2"
+    },
+    {
+      "path": "Cadoryx.Db/PreservedSection.cs",
+      "sha256": "686DB6032446D0CDCE84777773709AF8ACEB1E0C69BF1140C3DD6087D789FC14"
+    },
+    {
+      "path": "Cadoryx.Db/RepetitionPresentationEvidence.cs",
+      "sha256": "BCF46384AED918D6271D791BA30D41D5AAAFE09087C4C649958807D5C5FFCB54"
+    },
+    {
+      "path": "Cadoryx.Db/RepetitionRecipe.cs",
+      "sha256": "258B3CEB7CFEC88EE7D38A2A9A32611950663FB58A01CF87CA4A554B6A47DFF9"
+    },
+    {
+      "path": "Cadoryx.Db/RevolveAxisReference.cs",
+      "sha256": "8403DE3843E2A0C83C09B1123F8AD3F6DC21E5236BA958127A8802ABDB003C7D"
+    },
+    {
+      "path": "Cadoryx.Db/RevolveProfileValidation.cs",
+      "sha256": "5ADB055223A0FE37CDA4725DCA143735974EFCB5B77737C3BBFFEBD02D96C06A"
+    },
+    {
+      "path": "Cadoryx.Db/SketchAnalyticalCurve.cs",
+      "sha256": "75BF3EE02AEC4BE9D3028E118D0CD1862D9A90AE6B7B5DC4403BF11DEF541168"
+    },
+    {
+      "path": "Cadoryx.Db/SketchArcGeometry.cs",
+      "sha256": "3A3C148C3A325B43E2EFE4F1245F140F4D60D7201F50BBE8DDBEFBC2F7FCF7E3"
+    },
+    {
+      "path": "Cadoryx.Db/SketchBezierGeometry.cs",
+      "sha256": "15C622BB0286B259676328F965A59C40E5C41E68C4B4C0E27D1D4C1DF116BAD7"
+    },
+    {
+      "path": "Cadoryx.Db/SketchCircularContact.cs",
+      "sha256": "FBB2C230862FAD395DA29EBA10BEAA49F761408B6BDFB1E6A3DFD942719E900C"
+    },
+    {
+      "path": "Cadoryx.Db/SketchCornerFailure.cs",
+      "sha256": "1CBF6C8A68A045B600951023EE841D460DCBEACA8C61B1F13A77BF9DB5101C4B"
+    },
+    {
+      "path": "Cadoryx.Db/SketchCornerReplacement.cs",
+      "sha256": "34445CC7DC6790F409BF83E7984A570EA8FA523EA76660592C7A97581D37E5CA"
+    },
+    {
+      "path": "Cadoryx.Db/SketchCurveExpressionGeometry.cs",
+      "sha256": "909F52C095780DF7162BAF300AAC3733A2DDE1738759D8580AD7A50E367BA751"
+    },
+    {
+      "path": "Cadoryx.Db/SketchCurveFailure.cs",
+      "sha256": "9283A601606BD72BAF3DFC1699196287ECA6DC4373226D72DC9867F3BC965BB6"
+    },
+    {
+      "path": "Cadoryx.Db/SketchCurveParameterTargets.cs",
+      "sha256": "BDC0F05590FC7880E4DABBBF5DB1B8C9768E89E85733BD7EA37BB5338944AD36"
+    },
+    {
+      "path": "Cadoryx.Db/SketchEllipseGeometry.cs",
+      "sha256": "DDF4A205A0321ABA3626795BFFED3D674AD5F8DC3AB6D005A9C9F3086579751F"
+    },
+    {
+      "path": "Cadoryx.Db/SketchEndpointCurvature.cs",
+      "sha256": "D214EB10C046154B261531EB7D212056FE01E3CB75A2CBE64A2B56BB9A94EF87"
+    },
+    {
+      "path": "Cadoryx.Db/SketchEndpointTangency.cs",
+      "sha256": "37300E95404C9C5FB2BE0758E24605F12DF662D8ACBF83506468CE0F897C98A8"
+    },
+    {
+      "path": "Cadoryx.Db/SketchExpressionEndpoints.cs",
+      "sha256": "830CCE52807312C7B87AD6C4C9BDD921F2EC266A0779C242199132507BE7BD06"
+    },
+    {
+      "path": "Cadoryx.Db/SketchExpressionEntities.cs",
+      "sha256": "4F260595C99646D92A6F3CFDA9D259366C8F8E399A296E08D24CA57B9BC810FF"
+    },
+    {
+      "path": "Cadoryx.Db/SketchExpressionOperationProof.cs",
+      "sha256": "78D39E33917B91DAE1136793D140A76BD5E803FD6DECD20DDD04AE6D84233246"
+    },
+    {
+      "path": "Cadoryx.Db/SketchExpressionParameters.cs",
+      "sha256": "E651D44A8F141BD989B5394B4D768AF9DD632D172B5FF75E9AE89D53FD9D2FD5"
+    },
+    {
+      "path": "Cadoryx.Db/SketchExpressionPeriod.cs",
+      "sha256": "D91782E95A8773DE140056549EFA3750CE37F51E20BD82DD957423E6F278632B"
+    },
+    {
+      "path": "Cadoryx.Db/SketchExpressionTaylor.cs",
+      "sha256": "8C01F0C25D60394EEB9ABDD32DE435899D992068C824392F91E38CBD6D292FE9"
+    },
+    {
+      "path": "Cadoryx.Db/SketchFiniteParametricContact.cs",
+      "sha256": "07827032DBEDC823D359E7701AAD8AB7D60FF759A383C3754A922B3E9267ABE9"
+    },
+    {
+      "path": "Cadoryx.Db/SketchFixedCurveEndpoints.cs",
+      "sha256": "39C22C326847ADEDB1E169B515C7530F9898BAE59E494FA7868A2E0434D63047"
+    },
+    {
+      "path": "Cadoryx.Db/SketchFreeformGeometry.cs",
+      "sha256": "632C891481ED879B346B91DB722BB1A310964FD325FE05CD2094F6FDA230ABFD"
+    },
+    {
+      "path": "Cadoryx.Db/SketchLoops.cs",
+      "sha256": "7CE2838ACAD10C31295EDE5779206BCE2ED2924EA5B2057449F20EC61CBCF5B1"
+    },
+    {
+      "path": "Cadoryx.Db/SketchMixedLoops.cs",
+      "sha256": "5306F8B807ED4CF47EEC6E30A9A73DDEB56EB20BFDCCA5059F41F71DB6F1EBE4"
+    },
+    {
+      "path": "Cadoryx.Db/SketchMixedProfile.cs",
+      "sha256": "DF8010FE854483A8A2063045B0718EDB20963380A8AFC61ECCC577F386EE3228"
+    },
+    {
+      "path": "Cadoryx.Db/SketchNativeProjections.cs",
+      "sha256": "DD0D15DD2F71356245BB66F30EDF70DA278DAF73048E304D830446D1460951AE"
+    },
+    {
+      "path": "Cadoryx.Db/SketchPointUsage.cs",
+      "sha256": "F0EFC2FF264D904BD884765E031D4DF049AD5AAEDF8DC2870C35730E11BF2EA2"
+    },
+    {
+      "path": "Cadoryx.Db/SketchProfileReference.cs",
+      "sha256": "182F9154AB1C10B1D03589157803FEA8439A028F2F147832559823BC9E5A4828"
+    },
+    {
+      "path": "Cadoryx.Db/SketchProjections.cs",
+      "sha256": "5DC018344A227508210E711E05AD438920B04FCB2D82FF8241427910D5C803B8"
+    },
+    {
+      "path": "Cadoryx.Db/SketchRegionAuthors.cs",
+      "sha256": "912201B72F22CE6E128D30B95A4C11C5328E1302D4A6898A8B8327508F3CED09"
+    },
+    {
+      "path": "Cadoryx.Db/SketchRegionJointAuthors.cs",
+      "sha256": "E4AC4C4446530D65ED834891B548CEA1CBFE79813A0D7E850B6819A9A2979600"
+    },
+    {
+      "path": "Cadoryx.Db/SketchRegionParameterTargets.cs",
+      "sha256": "6A7BAEF2D33A564B8CBFAD296060C28913A0864C64920650FC5A568C7A845703"
+    },
+    {
+      "path": "Cadoryx.Db/SketchSplineGeometry.cs",
+      "sha256": "1FFDBCF7FC451767EC5ED33621961C479EC490F083B531F46A89228C3C94AA38"
+    },
+    {
+      "path": "Cadoryx.Db/Sketches.cs",
+      "sha256": "C42FF897ABA5DC066CFB320C5A53B0872E60C1DEFF2861841E83F09A789A926F"
+    },
+    {
+      "path": "Cadoryx.Db/SolidDimension.cs",
+      "sha256": "0833BE47C3018FCD804ED0F67A27D34C9D9EC775A065969C6C3AF1212EA6A9DD"
+    },
+    {
+      "path": "Cadoryx.Db/SolidOffsetRecipe.cs",
+      "sha256": "1DB5A7E1B63F8B790BF87427F9E6C9647752BB84D8231E0C8F69FDAF95654DF5"
+    },
+    {
+      "path": "Cadoryx.Db/TechnicalDrawings.cs",
+      "sha256": "D71545B38A4ABFB2523338CC861425CCA5BFE6611148068BB2444A6D9DC32B83"
+    },
+    {
+      "path": "Cadoryx.Db/TopologyHistory.cs",
+      "sha256": "13E99DFC459C560A662895E3816CB4948AFA3880F78FFD9F98140D6893FDC192"
+    },
+    {
+      "path": "Cadoryx.Db/TopologyReferences.cs",
+      "sha256": "90080F3B0591442C9E3F0AB74BADDB88D33FBBF799283C5EE9F8C22D20D1ACC8"
+    },
+    {
+      "path": "Cadoryx.Db/packages.lock.json",
+      "sha256": "A4364D81A6DE2707D66FBCED18FBBC926C882AB96E1D1AEBBB17E871285B9D75"
+    },
+    {
+      "path": "Cadoryx.Editor/CadMaterialAuthoringService.cs",
+      "sha256": "923CDAB9767082648928B2C199EE851F6001F495520F8591EE1928FB6DE16C89"
+    },
+    {
+      "path": "Cadoryx.Editor/Cadoryx.Editor.csproj",
+      "sha256": "40E82008D01C937E5D54D44C4A32EDCF3F95F936998E22EA3E5AC79F7D8DF853"
+    },
+    {
+      "path": "Cadoryx.Editor/DocumentCommandExpectation.cs",
+      "sha256": "BB7CB05AA8D6BB99C385392A903B4FAA3F19BABF0445FD2DC128F8F8EEFCDD96"
+    },
+    {
+      "path": "Cadoryx.Editor/DocumentHistoryExpectation.cs",
+      "sha256": "F67CC4749BB55021A3895298A9BF60540DF1B4632482582BDBD5DCE46AF7B499"
+    },
+    {
+      "path": "Cadoryx.Editor/DocumentHistoryUsage.cs",
+      "sha256": "EF87EACA63BE042D8BC3185261DE026AE8B9943A67B6032124D122EEBAB98C68"
+    },
+    {
+      "path": "Cadoryx.Editor/DocumentRecoveryService.cs",
+      "sha256": "FF0CD10D8294D3D636B293AA0C422C2027A0FBDDDF49B7EF260243600EB8CF63"
+    },
+    {
+      "path": "Cadoryx.Editor/DocumentScaleReport.cs",
+      "sha256": "9693918F49C9EAEF0261353646C2C42F678DEBA7687085DE010AC37D3AE7CABC"
+    },
+    {
+      "path": "Cadoryx.Editor/DocumentSession.cs",
+      "sha256": "CF497D7F0BA275A764F1905EB1A0DA30DC35B8246C720A804A962858A6712228"
+    },
+    {
+      "path": "Cadoryx.Editor/InspectionSelection.cs",
+      "sha256": "3C0D15B7751B44B6C34A5EDB4CF1E6D0D45195C0A13FE9D15D6895E16F0A5C62"
+    },
+    {
+      "path": "Cadoryx.Editor/ModelTreeSearch.cs",
+      "sha256": "8EC96ADA10C0D22A1A143D3ACDF86E27AF4C472A228E985F53027710B02F4B51"
+    },
+    {
+      "path": "Cadoryx.Editor/Selection.cs",
+      "sha256": "9B18C552C926F6D2961989551A78783CF6EA94C0EBF458B434E8D0D79B8F3898"
+    },
+    {
+      "path": "Cadoryx.Editor/SelectionMeasurement.cs",
+      "sha256": "7E009FE9779E9E8A57D5C966B9C18EA093A8E26E1340AA1B286DBF5ACDE33BA4"
+    },
+    {
+      "path": "Cadoryx.Editor/SketchCornerEditing.cs",
+      "sha256": "83543FE903B25E8CD2C1A2D51AF9063E0CC5B92AD6BBADF7C0F3CA606A378DF2"
+    },
+    {
+      "path": "Cadoryx.Editor/SketchCurveEditing.cs",
+      "sha256": "DD3C4716D803733BFF5B14AE72A491EE9874356522F1E22C2ED2958E82AC274A"
+    },
+    {
+      "path": "Cadoryx.Editor/SketchDraft.RegionAuthors.cs",
+      "sha256": "D3D0ADA897E2D1A0AB801FA67B7A258B727CECD3A0B46A0F06E52BD87EBE0939"
+    },
+    {
+      "path": "Cadoryx.Editor/SketchDraft.RegionReselection.cs",
+      "sha256": "C951DE39747A853C82DB3020EEFDE3C24B02E465DB99782866AFC5FB7FD0BEA1"
+    },
+    {
+      "path": "Cadoryx.Editor/SketchDraft.cs",
+      "sha256": "1D81EC7422E23EABE16FF0B9B9431FA6448CE4AF05CFB8218A196EBCD3D56E97"
+    },
+    {
+      "path": "Cadoryx.Editor/SketchExactBezierEditing.cs",
+      "sha256": "3379159C277A15B973FD304D0E3C075BB3DE5D33D79ED674C9B99B5D76A3ABD9"
+    },
+    {
+      "path": "Cadoryx.Editor/SketchExactCurveEditing.cs",
+      "sha256": "19E3E4D1BFEFC8BEF3EE2F5F64158635A279A7EA945215275FF77CB360C85790"
+    },
+    {
+      "path": "Cadoryx.Editor/SketchExactSplineEditing.cs",
+      "sha256": "CBF9E2BED7E7613070809124746C0AF6DA33238EDA73052CC343F58AAA901B01"
+    },
+    {
+      "path": "Cadoryx.Editor/SketchExpressionCurveEditing.cs",
+      "sha256": "B4DB73B93B6220CB52AC17C24D2F17E78122008B6E3B0734DEE5C743CE1D8149"
+    },
+    {
+      "path": "Cadoryx.Editor/SketchExpressionEditing.cs",
+      "sha256": "CF0A26F09A9868CE093F3D434A69B962045D4E2B0D956FCFEB733F761C8F896F"
+    },
+    {
+      "path": "Cadoryx.Editor/SketchExpressionRegionSelection.cs",
+      "sha256": "CCB25AD61CB55961D9F6347A6ACC1FC4D17E3ADAB986BBA079A0F8E7D8A8CE60"
+    },
+    {
+      "path": "Cadoryx.Editor/SketchFillet.cs",
+      "sha256": "7ECE9D615050BBEB0044AB47D37B8752ACFFCB1B48CF439F99D312E96A7BE68A"
+    },
+    {
+      "path": "Cadoryx.Editor/SketchLineEditing.cs",
+      "sha256": "496E656496786D1AA5493F7A58FBE5DF10F4A999FD5157EE8DF964937BB00D21"
+    },
+    {
+      "path": "Cadoryx.Editor/SketchLoopOffset.cs",
+      "sha256": "952895A4B0AEFC5C095D5CBFCF2D1F2932FF6656FC9C217DA0DCA6D6AE9EFF14"
+    },
+    {
+      "path": "Cadoryx.Editor/SketchNativeProjectionEditing.cs",
+      "sha256": "490DE9EC6922505FC0E654CEE6FDEBE62E11ED55F20D0B3FFAD51F293206F99C"
+    },
+    {
+      "path": "Cadoryx.Editor/SketchOffsetJoin.cs",
+      "sha256": "BA651446D7EEE10D131FC6668BBEDF070E29928B58FAFDF1BCFDD67B74E88C01"
+    },
+    {
+      "path": "Cadoryx.Editor/SketchRegionOffset.cs",
+      "sha256": "7BDDEDD52D8BDABA0CAEAB416976B961962425DAF5F00275BEDD1E4AEE3228CD"
+    },
+    {
+      "path": "Cadoryx.Editor/SketchRegionOffsetAuthoring.cs",
+      "sha256": "ED837FA937CB4D088CF046CF80A585CC0E9B8E79BA3704775F7D4C5142745176"
+    },
+    {
+      "path": "Cadoryx.Editor/SketchRegionSourceReselection.cs",
+      "sha256": "3BABF4D18E6C8D218C5E975AFD750DD3C57D32B1B04222C4F36D5A65C39F0A8F"
+    },
+    {
+      "path": "Cadoryx.Editor/TopologyHistoryInspection.cs",
+      "sha256": "0427DBA8066AF3836B97A9107C30BE06C03A506841E7B2115CF948D0D84E60F9"
+    },
+    {
+      "path": "Cadoryx.Editor/TopologyReferenceInspection.cs",
+      "sha256": "8D6D7522FF1C38C7ED5B2EF8F15391195D88D1D86833D87F4B9199E9B1B3BE23"
+    },
+    {
+      "path": "Cadoryx.Editor/Workspace.cs",
+      "sha256": "0020A48720D15ED103C0EA015634C8E343027875F361341B23BF85946A80C34F"
+    },
+    {
+      "path": "Cadoryx.Editor/packages.lock.json",
+      "sha256": "A226007D2FAA245850082E6B7A845C8BCFF132C76035A289E1359C21A8198DC6"
+    },
+    {
+      "path": "Cadoryx.IO/AssemblyMirrorSections.cs",
+      "sha256": "8F41770082F15CC740AC4CE1C1209694E57A4ED4388E2975C250349882A0D2CB"
+    },
+    {
+      "path": "Cadoryx.IO/AssemblyRepetitionSections.cs",
+      "sha256": "4D0A2978F238A20B0C04229CA365754A3ABB171187062D9CF608B7393F9F0A35"
+    },
+    {
+      "path": "Cadoryx.IO/AssetCatalog.cs",
+      "sha256": "8FB125F71725B7E04CC60B5FCDAAE50AB4ABD79ADB3C466CFB9A3C071587CA5D"
+    },
+    {
+      "path": "Cadoryx.IO/CadDocumentStorage.cs",
+      "sha256": "BD2802A3978587C47A2A14F0CDD6BB24E46C1F0F5884B03E7AC564924BF0FCC0"
+    },
+    {
+      "path": "Cadoryx.IO/CadRecoveryStore.cs",
+      "sha256": "B7513A83D37E39BC1CA1E77DC579ACCF9CAAC77AEDD30BED3828E41DA48C3BAE"
+    },
+    {
+      "path": "Cadoryx.IO/Cadoryx.IO.csproj",
+      "sha256": "B0CEC06565E3D0C9B052260DF90F3245F04017F86412A48C0C9DD6A45D4DAE84"
+    },
+    {
+      "path": "Cadoryx.IO/ContourLocalSections.cs",
+      "sha256": "50D31E2A8E9285BDDD649B5950736676A97A17F86DEA91BA0C2C72F40E9B1570"
+    },
+    {
+      "path": "Cadoryx.IO/DatumSections.cs",
+      "sha256": "65D489ED7D73714B8F7A64C629A22EF0B2255BEB5C7178B3847F6620FFE88728"
+    },
+    {
+      "path": "Cadoryx.IO/DocumentDeliveryService.cs",
+      "sha256": "D7A184A1698EE73CDEC28A333B8CC9179E3C1363A204F5A54EDDBCA567A3C3B3"
+    },
+    {
+      "path": "Cadoryx.IO/DocumentFileService.cs",
+      "sha256": "3C96D61E759727A30ED51854D79D3A4D83C15E48E9F857C7BF4934E5C6912C85"
+    },
+    {
+      "path": "Cadoryx.IO/DrawingAnnotationSections.cs",
+      "sha256": "CFF110F59AF2F0D7DF87806789D6E93FEC4C6F80F81FB4C66D833971C3D17A33"
+    },
+    {
+      "path": "Cadoryx.IO/DrawingDatumSystemMigrations.cs",
+      "sha256": "0206A3E1C579D4A7AF3CA648F4EA7227D6AFA630B965244253269BAE3F03450A"
+    },
+    {
+      "path": "Cadoryx.IO/DrawingHistoryMigrations.cs",
+      "sha256": "3A29EED3AA9D5535FC4A1A2E65F8BE623F8494AFCE01C0520257A4B9542EE57B"
+    },
+    {
+      "path": "Cadoryx.IO/DrawingHoleTableSections.cs",
+      "sha256": "46EFB2E6A572875AA8CEB459E60D839DD10EB53340571F9027509CD16DCED356"
+    },
+    {
+      "path": "Cadoryx.IO/DrawingPlanarSizeMigrations.cs",
+      "sha256": "95BE5D060B0EAF6125016C0B6D42CF33B42679058589EDAE75F648151DA70689"
+    },
+    {
+      "path": "Cadoryx.IO/DrawingTemplateFile.cs",
+      "sha256": "D02470F7D86193845219935FC7A06E3122D681270F97DE9CEFF765994DF5B370"
+    },
+    {
+      "path": "Cadoryx.IO/DrawingTemplateLibrarySections.cs",
+      "sha256": "22180B94E0CA85FC1EC390260EE340EF885551491F81030C1C9F2C8C2EC3B9B0"
+    },
+    {
+      "path": "Cadoryx.IO/EllipseSections.cs",
+      "sha256": "0F0130B8BD3AF642E1B3C34B84B3B8C846F381D0B773FCA05457EC0F1B4C3954"
+    },
+    {
+      "path": "Cadoryx.IO/EngineeringReport.cs",
+      "sha256": "2A36939A2690864BA6B2916E4076BE531CFE7C77490D4EB69302FD5A9BF4F21C"
+    },
+    {
+      "path": "Cadoryx.IO/EngineeringReviewSections.cs",
+      "sha256": "CC800B74B6DD18CA12C79AD203E9AB5DDE937FFECC1F543AED9A9B94B2468BBD"
+    },
+    {
+      "path": "Cadoryx.IO/ExactCurveSections.cs",
+      "sha256": "D9AD202D9614B05543AA98FAC967D64A9F118EB598A1614328F1F8D29955F884"
+    },
+    {
+      "path": "Cadoryx.IO/ExactEndpointSections.cs",
+      "sha256": "CC16895C4048593E9CD11862474E44385A7B5E8D1C98108E6D91E49ED3153A07"
+    },
+    {
+      "path": "Cadoryx.IO/ExchangeLossReport.cs",
+      "sha256": "A1A6BFE3F98E67693ABFB7A576B69F4D29128C4EB58E7FF68472D533F7636D84"
+    },
+    {
+      "path": "Cadoryx.IO/ExchangeMeasuredReport.cs",
+      "sha256": "FA75D628E221ECC63BD2A584E2AEA4328AA7957DBF2DA3FB31D470AD5B4F91E8"
+    },
+    {
+      "path": "Cadoryx.IO/ExchangeMeasurementService.cs",
+      "sha256": "41B0AC2FF3B3F5FBD69CC8F36172FC6303ABFDE2E6FEBCC1C4F86AD534B72C05"
+    },
+    {
+      "path": "Cadoryx.IO/ExpressionProfileMigrations.cs",
+      "sha256": "EBCDD13CDA589A4BC5BA7EF80D272D469894A1F721CED58E1C3DD34F41A5549D"
+    },
+    {
+      "path": "Cadoryx.IO/ExternalPartSections.cs",
+      "sha256": "8E261A2853C5719A44316E41D3DB435421F068F648F4D28368897AE3F3EC4420"
+    },
+    {
+      "path": "Cadoryx.IO/ExtrusionPatternSections.cs",
+      "sha256": "BFA29461758C8FF43C63C58507C297BAA045A57A2ACF72EB15372F58AFAA8111"
+    },
+    {
+      "path": "Cadoryx.IO/ExtrusionSections.cs",
+      "sha256": "28351A3C8E3F8D07BE36DD9932234C31A9D169F76C91E5BE2E20D0F737A69A4A"
+    },
+    {
+      "path": "Cadoryx.IO/FaceEditSections.cs",
+      "sha256": "26D399C1F29D0A6EA726447818462978143A681A3C0FC2EC5F9E8DF27FB86777"
+    },
+    {
+      "path": "Cadoryx.IO/FaceFeatureSections.cs",
+      "sha256": "B5092D38836FF9AC2A7169FEE886D516B086A0B1303E8505C83A929FEEA799B3"
+    },
+    {
+      "path": "Cadoryx.IO/FeatureBindingSections.cs",
+      "sha256": "7C176B7FEDD24B52F2172F015E4772AC2E0532413878F66D5BB2C0D27CC02959"
+    },
+    {
+      "path": "Cadoryx.IO/Format.cs",
+      "sha256": "1CC92A73576E5893537E8CC50837E69AE8F36FE6C9DE120A07EA0B4A63FE8858"
+    },
+    {
+      "path": "Cadoryx.IO/FreeformSections.cs",
+      "sha256": "2F68A91F3923C250ABD770673DF6A242B1DD533BBDFD12DB5DC20F75E42F1B2B"
+    },
+    {
+      "path": "Cadoryx.IO/GeometryReferenceAttachment.cs",
+      "sha256": "6E7004C2EF396596F38C5230DF8A6833ED0277D35128A4E3F6C0894FD63793FB"
+    },
+    {
+      "path": "Cadoryx.IO/GeometrySections.cs",
+      "sha256": "4D5F4A54F1B01088F46BBB12BBA832F1F6402E2876FE2336C5847A34B8634897"
+    },
+    {
+      "path": "Cadoryx.IO/GuidedAuthoringSections.cs",
+      "sha256": "F6A5B6462E5DDE3B066A1A3E8B96A89038186F2171F9DE243280AD1D041D085B"
+    },
+    {
+      "path": "Cadoryx.IO/GuidedModelingReportStorage.cs",
+      "sha256": "884B77118541A7473B707372CF89822FD1CC3270EF5A165C3CBC113A7E87B904"
+    },
+    {
+      "path": "Cadoryx.IO/HistoryQuerySections.cs",
+      "sha256": "35648A1C719975E289BAC7577BE2F2026C0507397D065CE1BE5D9EFEDA0270C0"
+    },
+    {
+      "path": "Cadoryx.IO/HistorySections.cs",
+      "sha256": "58D6BD72A1023555DC09CCD4C85F4591700A4DD7ADAC3E965D583F6865528869"
+    },
+    {
+      "path": "Cadoryx.IO/HolePatternSections.cs",
+      "sha256": "BCE2740F6C4B21FD730522B8F9E5632739C433235AA6774431C2F8872FC7B42A"
+    },
+    {
+      "path": "Cadoryx.IO/MaterialAppearanceSectionStorage.cs",
+      "sha256": "18F78F2B72A79C646880AA08028DC07D083BB7D3C37F0C6977B22C5A187C65D1"
+    },
+    {
+      "path": "Cadoryx.IO/MessagePackContracts.cs",
+      "sha256": "43336A5A78516EA4047C966C3BF015B07EE8A2DCCE61B343932B9651CBB5AAE3"
+    },
+    {
+      "path": "Cadoryx.IO/MessagePackSections.cs",
+      "sha256": "C9EF1E7A0FD3E5569C18756D30AFA8B00D660B1D3334615E6A62912C2AA5C1C6"
+    },
+    {
+      "path": "Cadoryx.IO/MetricThreadSections.cs",
+      "sha256": "D9BBB62FCBF1C66BE0A287D93056D5ADC459D64ABCC573655F351E5C39024012"
+    },
+    {
+      "path": "Cadoryx.IO/OccurrenceReferenceSectionStorage.cs",
+      "sha256": "DA60F18F2316B8BA6D760F4737668746E7C74173AD34249E288C607EC1B4EE69"
+    },
+    {
+      "path": "Cadoryx.IO/ParameterSections.cs",
+      "sha256": "B8884ED95DB952FCA318A8D7DE0A35DB1237B0392C00687892012B60BE182E22"
+    },
+    {
+      "path": "Cadoryx.IO/RepetitionPresentationMigrations.cs",
+      "sha256": "5A403CBFA253BE19F20A36220A81A4343CA189E3C6FE000A50BF7E81F958F266"
+    },
+    {
+      "path": "Cadoryx.IO/RevolveAxisSections.cs",
+      "sha256": "2D4CDB4347AA8A65B1B0A862C601315983ADE7458F5FA3808E3CA5C2B13EF3BC"
+    },
+    {
+      "path": "Cadoryx.IO/SectionMigrations.cs",
+      "sha256": "985270499617FE2024DD4FAC8EE12C511C3280D34F9CD372AEE9B8F5A9AABA4A"
+    },
+    {
+      "path": "Cadoryx.IO/SketchCurveExpressionPackFormatter.cs",
+      "sha256": "27F93A51FD72D68293F9B0BC7A8304D4CD98EDBED1D48E8CBDCFCB09C67FA210"
+    },
+    {
+      "path": "Cadoryx.IO/SketchCurveExpressionStorage.cs",
+      "sha256": "DC6A631B94667C8B41184C1A3F3FB54166C5319B8AA4CF5AC9DAAB0284936EF8"
+    },
+    {
+      "path": "Cadoryx.IO/SketchExpressionSections.cs",
+      "sha256": "37D5695D651F74DD36D44AC5AE046B1C5A2C14E737019BA0B5D14CC46B0E62EC"
+    },
+    {
+      "path": "Cadoryx.IO/SketchPointOriginStorage.cs",
+      "sha256": "F7CC66C6FB90B88CBBCD0BBDFF5363E6F07CA5838E587789528B5E204F768E89"
+    },
+    {
+      "path": "Cadoryx.IO/SketchRegionSectionMigrations.cs",
+      "sha256": "C9D495BF3F66981744C1EC82005F7494DFB3E5FE0482D888F9BAF6A397F73128"
+    },
+    {
+      "path": "Cadoryx.IO/SketchRegionSections.cs",
+      "sha256": "CB35E742EC3D657317383BAB1A8DE2321E0214AE3F7FFA2F71A0FA669165BE0F"
+    },
+    {
+      "path": "Cadoryx.IO/SketchSections.cs",
+      "sha256": "F8E0FC1CCF762FCFA669BD013F695843CCA64570878516DBFE6D8877DFACF93E"
+    },
+    {
+      "path": "Cadoryx.IO/SolidOffsetSections.cs",
+      "sha256": "7FE736E7542C0A47D1ADE789021BB4E8DDCD5ED2F22A28C7A865470580E5D34A"
+    },
+    {
+      "path": "Cadoryx.IO/TechnicalDrawingPdf.cs",
+      "sha256": "EA4935EAD37A94F303C242F8BAC91D01173490FBBDD2AF6671D2865A1400DCBE"
+    },
+    {
+      "path": "Cadoryx.IO/TechnicalDrawingSections.cs",
+      "sha256": "7B9627382DAF5B77B7B0E10FAC507AF8E4ADBC9E128C246084A661C17F910C61"
+    },
+    {
+      "path": "Cadoryx.IO/TopologySections.cs",
+      "sha256": "A5E070C43B826A723C21D5D2781EEB38A29D9A1394143C40C425830A07A5B92C"
+    },
+    {
+      "path": "Cadoryx.IO/packages.lock.json",
+      "sha256": "25330ABD565A46C3BD441FA4481133BADE9E6DD6DB4FD01529A0BE1BA33CE3B6"
+    },
+    {
+      "path": "Cadoryx.Kernel.Abstractions/AssetFormatPolicy.cs",
+      "sha256": "EBAD7F13EBD0F1A5C10669E116C543DB85CE1BA0F467B5109187576A015488A3"
+    },
+    {
+      "path": "Cadoryx.Kernel.Abstractions/Assets.cs",
+      "sha256": "CDA035DA177B6F443764369746F41A074AF0D014E8DDC8496C5435DDE59A5CD5"
+    },
+    {
+      "path": "Cadoryx.Kernel.Abstractions/Cadoryx.Kernel.Abstractions.csproj",
+      "sha256": "DDC8A925F13C18DFD2A5E19A7973C320856A5088A8CB52109653371B6B42DBB6"
+    },
+    {
+      "path": "Cadoryx.Kernel.Abstractions/ContourLocalContracts.cs",
+      "sha256": "ABDECF614F98EB44BDC023092D9AE30118CCEF961AA20F2B9E52B271B06879F6"
+    },
+    {
+      "path": "Cadoryx.Kernel.Abstractions/Delivery.cs",
+      "sha256": "54E726AD8316A2657E30CBBFED61E1A626ADBFBB8951E4A82D07FCB9778DCD08"
+    },
+    {
+      "path": "Cadoryx.Kernel.Abstractions/DiskAssetCache.cs",
+      "sha256": "56E38D1543472471D7E802F24E8AF54969A2B73D509262D18E9F3B3D05BED33D"
+    },
+    {
+      "path": "Cadoryx.Kernel.Abstractions/DiskAssetStore.cs",
+      "sha256": "3308E5F4E33374B606129FEB01815E3427FABC0C52055684D4B09148F538E5BB"
+    },
+    {
+      "path": "Cadoryx.Kernel.Abstractions/DiskDeferredAssets.cs",
+      "sha256": "704019DB35274CC943F8FEB87E12E7330CFB3DEB9D08C6B54ECEE99B93CB08E0"
+    },
+    {
+      "path": "Cadoryx.Kernel.Abstractions/DocumentFiles.cs",
+      "sha256": "B3B8757FD2500A6C767FA527F81D0FB09ADFEE635275636932462E963A3D598B"
+    },
+    {
+      "path": "Cadoryx.Kernel.Abstractions/ExactSketchExpressionRegions.cs",
+      "sha256": "EE3CB6F32439AED0FA6D36EBF54ACDC986507ABB77F5F3C6E75F9D51A3B402E1"
+    },
+    {
+      "path": "Cadoryx.Kernel.Abstractions/ExactSketchExpressions.cs",
+      "sha256": "AFD970A71B4C446F6F986A6923F505FA66D17492378D62FF75CCA9C23EB5122D"
+    },
+    {
+      "path": "Cadoryx.Kernel.Abstractions/ExactSketchGeometry.cs",
+      "sha256": "D3E5BEE59D653BB2C72C655C0EEF65848A9E2D16738ECBCB630CD7D1E8B3FA03"
+    },
+    {
+      "path": "Cadoryx.Kernel.Abstractions/ExchangeObservation.cs",
+      "sha256": "8CC0D2F62C21B242F756A62D02A5EFC628526186501AA66B9646C61C76FE3219"
+    },
+    {
+      "path": "Cadoryx.Kernel.Abstractions/ExtrusionLimits.cs",
+      "sha256": "E3CCE02C8E3270780988312D6185158D2D52407F02EDB9BE32C6F2FE798A704F"
+    },
+    {
+      "path": "Cadoryx.Kernel.Abstractions/FaceEditing.cs",
+      "sha256": "B8F736178CDCFE280135CE49942878A9C302A94179AFB4FA6A8E35C2CE5B77F1"
+    },
+    {
+      "path": "Cadoryx.Kernel.Abstractions/FiniteSurfaceExtrusion.cs",
+      "sha256": "C4F9CA7FE866089ABBE7DA20F42D47EC316FFFB8753F41432717899E363FA107"
+    },
+    {
+      "path": "Cadoryx.Kernel.Abstractions/GeometryAssetLease.cs",
+      "sha256": "A55064AACCB47652F077FA95121B9DFE02489CF617263F524EBEC35EDD12EE08"
+    },
+    {
+      "path": "Cadoryx.Kernel.Abstractions/GeometryInspection.cs",
+      "sha256": "FA4121337B43A2B8E82A57E7EB706BC13832AA663E31712EF8CA76B18795C712"
+    },
+    {
+      "path": "Cadoryx.Kernel.Abstractions/GeometryReview.cs",
+      "sha256": "8EC379E9A6FD9003F66E49038F2B46847461AE721DA4A7F2C0376075373A16F1"
+    },
+    {
+      "path": "Cadoryx.Kernel.Abstractions/GuidedDocumentEvidencePolicy.cs",
+      "sha256": "A54BD95AD2E3E93CF6B70E24B183AF37F894AFFDF8814EDD3FCB331685E9B64B"
+    },
+    {
+      "path": "Cadoryx.Kernel.Abstractions/IAssemblyDatumResolver.cs",
+      "sha256": "248E7B618776C2968C8EFCFBE7B3D0DA02780ECD25043DB569FCC312ACC8C1AD"
+    },
+    {
+      "path": "Cadoryx.Kernel.Abstractions/IDatumGeometryResolver.cs",
+      "sha256": "CADDB7E2E1E240C548E669CC5605EE91A11AE305C740EB518FE374F6E8E465BC"
+    },
+    {
+      "path": "Cadoryx.Kernel.Abstractions/IDrawingHoleResolver.cs",
+      "sha256": "97A0BBC7E2AAB70D080686067898BB1032121FBF2CDE663F05E664986A3769FD"
+    },
+    {
+      "path": "Cadoryx.Kernel.Abstractions/IDrawingPlanarSizeResolver.cs",
+      "sha256": "9B1BB88F367FD0E950B25A98C765E314B052E169FB15E45D49C84FAC90E8DCF5"
+    },
+    {
+      "path": "Cadoryx.Kernel.Abstractions/IDrawingSizeResolver.cs",
+      "sha256": "A3CC632A4059D0257CDF9EE998B2A0BF37F2FF0B0AFF02FE2E37AD36575A34D4"
+    },
+    {
+      "path": "Cadoryx.Kernel.Abstractions/IDrawingTopologyHistoryResolver.cs",
+      "sha256": "E3E1A0599599BCD2328D1F548F5BD2302D73DCED2FE28C545F2AAE5FC0D11C14"
+    },
+    {
+      "path": "Cadoryx.Kernel.Abstractions/IDrawingTopologyResolver.cs",
+      "sha256": "B2F51527B2AD221175CF4BAAF62A1E1418A8E1AFC065C6D72F2A5CADB4B2F95C"
+    },
+    {
+      "path": "Cadoryx.Kernel.Abstractions/IExchangeImportService.cs",
+      "sha256": "99A5DF91C547B488334E693B4C8114A96752A825564DD6400E0C75755CE53FEA"
+    },
+    {
+      "path": "Cadoryx.Kernel.Abstractions/KernelContracts.cs",
+      "sha256": "9E22254CCABF4599D4E1E7A2B878C9E9A0C763D17F3FD5BEF670147F961D6413"
+    },
+    {
+      "path": "Cadoryx.Kernel.Abstractions/MetricThreadVerification.cs",
+      "sha256": "536F705E96358A7F37734AF4016BC3B4456A2047A38ACDCC0D90EFF6A255C87E"
+    },
+    {
+      "path": "Cadoryx.Kernel.Abstractions/RecoveryContracts.cs",
+      "sha256": "1D1C3DF21622B79724F0E9FCD95BD3A59A15EEA5FA14AA59975D88C344CC4B9E"
+    },
+    {
+      "path": "Cadoryx.Kernel.Abstractions/RepetitionPresentationContracts.cs",
+      "sha256": "93ABCF08F7B9FB46EE952AB441AC0F5BDC1F3E44F8C78A82F753B19EE71BB779"
+    },
+    {
+      "path": "Cadoryx.Kernel.Abstractions/SerializedOccurrenceAssetPolicy.cs",
+      "sha256": "DD954A2FCBAB3453572D8AD02D35A51809D5BD4C5CA3653D230FDCEBCE1629ED"
+    },
+    {
+      "path": "Cadoryx.Kernel.Abstractions/SerializedReferenceAssetPolicy.cs",
+      "sha256": "B224BFB2A29492FD545FCA407A47CD8191983D13C71102847426372CB3454177"
+    },
+    {
+      "path": "Cadoryx.Kernel.Abstractions/SketchEdgeProjection.cs",
+      "sha256": "86A2E0CA9D9886729D5232A6C0CE97404BD8CABD1741A103E537FF6A9A5AB3D6"
+    },
+    {
+      "path": "Cadoryx.Kernel.Abstractions/SketchRegionEvaluationContext.cs",
+      "sha256": "4DB33480C79CA203088AD01AF8B59248CC82DCB08082FF05BFCD1A3F6ECECF1D"
+    },
+    {
+      "path": "Cadoryx.Kernel.Abstractions/SketchRegionJointCorrespondence.cs",
+      "sha256": "777FCCEE8A54C278728B2C172FC2961EBE86B6174ED4E35D7C4C8AFBE291C8AB"
+    },
+    {
+      "path": "Cadoryx.Kernel.Abstractions/SketchRegionOutputCorrespondence.cs",
+      "sha256": "CA218788EDD2E924430FD851BE29EFB8E9C73EC689A7338FBD62023F09EFEDE3"
+    },
+    {
+      "path": "Cadoryx.Kernel.Abstractions/TechnicalDrawingProjection.cs",
+      "sha256": "5048B0BE6C0E4F583DD4C2B37EDF0C69E13E9F2D95E4C976D7860CCE15C30348"
+    },
+    {
+      "path": "Cadoryx.Kernel.Abstractions/TopologyContracts.cs",
+      "sha256": "F8746123A550D2DC541133B9E3AB5F8C13B288B5D8AF3E175263B788979550D0"
+    },
+    {
+      "path": "Cadoryx.Kernel.Abstractions/TopologyHistoryComposition.cs",
+      "sha256": "BC90BD02BF0638503C7AD44011B425F53819381DAE338EE9A081E1446B67E435"
+    },
+    {
+      "path": "Cadoryx.Kernel.Abstractions/TopologyHistoryContracts.cs",
+      "sha256": "51DA85AE447BE218381E4BEE0FD516DFAA02DDC72F8935A660A9B9F6E49BDD2C"
+    },
+    {
+      "path": "Cadoryx.Kernel.Abstractions/TopologyHistoryPaths.cs",
+      "sha256": "3FC201907DDA6AE3510D740872C4E60343CAA236970AF649FC287F3FFFBAD3DA"
+    },
+    {
+      "path": "Cadoryx.Kernel.Abstractions/packages.lock.json",
+      "sha256": "29A60E9D5CC5ED1818C4BD296EF286D2D3702654AF5641CF9D04357A87669396"
+    },
+    {
+      "path": "Cadoryx.Kernel.Occt/BoxTopology.cs",
+      "sha256": "3AFCBAA4E58819EB4B7478132ACADAF2E51B5C84521E041518DCC3F60AC603AE"
+    },
+    {
+      "path": "Cadoryx.Kernel.Occt/BrepDirectionRoundtrip.cs",
+      "sha256": "DC1641C4F6BE7A23D7353487286922BD469A441E75E6E4247379F9F3169BAB72"
+    },
+    {
+      "path": "Cadoryx.Kernel.Occt/Cadoryx.Kernel.Occt.csproj",
+      "sha256": "D97256B874BFA0BA6167F7566C3A87D1399134C3F6A763A13AA25456FBD1292A"
+    },
+    {
+      "path": "Cadoryx.Kernel.Occt/IsolatedDrawingExecutor.cs",
+      "sha256": "8C12733688B6021BF550354BCB558F4F96D3B770F0871CAA75FBF5BCACC9CEAF"
+    },
+    {
+      "path": "Cadoryx.Kernel.Occt/IsolatedMetricThreadExecutor.cs",
+      "sha256": "AD056F1E059D5C46B4A9E0D3D4C55EB865CEF9BBA0650011D420664643A63D22"
+    },
+    {
+      "path": "Cadoryx.Kernel.Occt/MetricThreadWorkerJob.cs",
+      "sha256": "37AF0A4BCCAD8EBF148F6B59DE2A3A7C882201C9E39233FF5874AE8AFEACA119"
+    },
+    {
+      "path": "Cadoryx.Kernel.Occt/NativeHoleInspector.cs",
+      "sha256": "386F24D38C227CF6E35206055F87F4A3FC2F04DF009921474F47B28F6DF29E2E"
+    },
+    {
+      "path": "Cadoryx.Kernel.Occt/NativeMetricThreadTool.cs",
+      "sha256": "64411E296969B3EC52D8BE7CDF7F9264AF1DAD25AD87BF94093AAF7CC2465717"
+    },
+    {
+      "path": "Cadoryx.Kernel.Occt/NativePlanarSizeInspector.cs",
+      "sha256": "9ED6FB8479A61838699EA136A56C9300C631F03100F45FB5C50391D8BBE38C64"
+    },
+    {
+      "path": "Cadoryx.Kernel.Occt/NativeWorkerStartedMarker.cs",
+      "sha256": "C04CD5FFF8C6BDBB8A80582973D9B74247A9A2250F247E469184452722964D6C"
+    },
+    {
+      "path": "Cadoryx.Kernel.Occt/OcctAssemblyDatums.cs",
+      "sha256": "F63B2787C67DFDE041E97A930F2D0D30586AE485F17ABDD8EB47FD95290BAD7F"
+    },
+    {
+      "path": "Cadoryx.Kernel.Occt/OcctBooleanHistory.cs",
+      "sha256": "83F339E1AD6DA97F38EAD9481E636A012480CEC14B938D768C5C0D2B8B592F03"
+    },
+    {
+      "path": "Cadoryx.Kernel.Occt/OcctComposedHoleHistory.cs",
+      "sha256": "672F4CAE8099BE61E6D9FF8DFA9BD085F0709AAB9783B58560F0509307903A03"
+    },
+    {
+      "path": "Cadoryx.Kernel.Occt/OcctContourLocalGeometry.cs",
+      "sha256": "6BFD27BDB5F76C92A7BBE02577595FEBFE8CF548618BBA454FEB09DB345F947B"
+    },
+    {
+      "path": "Cadoryx.Kernel.Occt/OcctDatumGeometry.cs",
+      "sha256": "04B4A0C09F40DB0A8CE1248C97AAE0EA935279DF4DC6047330F5C6C1F8EE38A1"
+    },
+    {
+      "path": "Cadoryx.Kernel.Occt/OcctDrawingAttachments.cs",
+      "sha256": "BF6093A50A72A7EB0B03925C17B0E9CFC4AA2FD554FE01ABA9C3740F34946B3F"
+    },
+    {
+      "path": "Cadoryx.Kernel.Occt/OcctDrawingHoles.cs",
+      "sha256": "1085E66C7CF8EB844262D7B340328DE30F18CABB3924764E35F24F328D224A8D"
+    },
+    {
+      "path": "Cadoryx.Kernel.Occt/OcctDrawingPlanarSizeGeometry.cs",
+      "sha256": "93515CEB6413BA49FB6E1C047405AF52CB80BB76A401C69BEDB3E5A444758982"
+    },
+    {
+      "path": "Cadoryx.Kernel.Occt/OcctDrawingSizeGeometry.cs",
+      "sha256": "5A26A3CB1EC74F33365C2C6530E37D02BFD55938B8E472CEC3211251736D3078"
+    },
+    {
+      "path": "Cadoryx.Kernel.Occt/OcctExactSketchGeometry.cs",
+      "sha256": "EEC1D8B5D1A2E449D67833268B555CA0AAEA4152227458FB71AC14D1BBF8019F"
+    },
+    {
+      "path": "Cadoryx.Kernel.Occt/OcctExactSketchRegions.cs",
+      "sha256": "946AB21697B8DABE38CC3DDD42C66792E9B2E05BB4CE60A97A582C13373F2C6B"
+    },
+    {
+      "path": "Cadoryx.Kernel.Occt/OcctExchangeBounds.cs",
+      "sha256": "98F76E8B16DA6C1CF6BE5CAF814E7BE1AD4C7241EE1203C5B34827811C211B9A"
+    },
+    {
+      "path": "Cadoryx.Kernel.Occt/OcctExchangeObservation.cs",
+      "sha256": "B6F8459EE93AAF91277DD5C5F7BA7FDB1D0006D0DE27F0C913BB63882055A98F"
+    },
+    {
+      "path": "Cadoryx.Kernel.Occt/OcctExpressionExchange.cs",
+      "sha256": "538F29F2AB2BF035D04FD0483D8D090839E661F50EDCB36CB60670630BF903F9"
+    },
+    {
+      "path": "Cadoryx.Kernel.Occt/OcctExpressionProfiles.cs",
+      "sha256": "6005E79A162C4A1F721D7D77B5E7656D016B550CC6AB792D8AF1427E330B1ED7"
+    },
+    {
+      "path": "Cadoryx.Kernel.Occt/OcctExpressionRegionOffsetNative.cs",
+      "sha256": "8EE0D485139207D2F3DF858A5335E4E6F0E96084156B60B81D92275F99658D6C"
+    },
+    {
+      "path": "Cadoryx.Kernel.Occt/OcctExtrusionGeometry.cs",
+      "sha256": "FCD285273C15FC8DBA4C30D7165D01D377772F9C82C7542D6290A2731CE0CC82"
+    },
+    {
+      "path": "Cadoryx.Kernel.Occt/OcctExtrusionPatternGeometry.cs",
+      "sha256": "4B4D27849246707940D2F681C28B8897A2DF3A071C74DBB882AC96E938762CCD"
+    },
+    {
+      "path": "Cadoryx.Kernel.Occt/OcctFaceEditing.cs",
+      "sha256": "B66148BFEF9AA5060D7CBDE3504B6A76CF2A3D2C9592EEAFE9F67B2B5BA2F96C"
+    },
+    {
+      "path": "Cadoryx.Kernel.Occt/OcctFaceFeatureGeometry.cs",
+      "sha256": "27E1738D1EC00172D9691E3938CB43A32891DC1416E80ACD0BBBF412BE478904"
+    },
+    {
+      "path": "Cadoryx.Kernel.Occt/OcctFiniteSurfaceExtrusion.cs",
+      "sha256": "DDAD1E03DA472A42C5674B070741531AEA5E625FA0365AE629A0E8C0C7E479F1"
+    },
+    {
+      "path": "Cadoryx.Kernel.Occt/OcctFreeformSketchGeometry.cs",
+      "sha256": "CEBA7296CEF0F6C0CF9A4BF31FF093B09B66AAB250931B90E23AEC6C25860D4C"
+    },
+    {
+      "path": "Cadoryx.Kernel.Occt/OcctGeometryBridge.cs",
+      "sha256": "242B247F51118B2878E9EAA747F91F67629573CA4A108E189E329AFBC57F37B8"
+    },
+    {
+      "path": "Cadoryx.Kernel.Occt/OcctGeometryInspection.cs",
+      "sha256": "F0D3025A5DC54E43EA93AAEF703BFE1C6CB3009E9CB79C50F0B196D782EE47B3"
+    },
+    {
+      "path": "Cadoryx.Kernel.Occt/OcctGeometryKernel.cs",
+      "sha256": "55E4C2757D0DB4B4EB822D8B0A5781495B9F40EF57F6835EECA12480DFC757C8"
+    },
+    {
+      "path": "Cadoryx.Kernel.Occt/OcctGeometryReview.cs",
+      "sha256": "4DDAFD2217BFCD27B31BB44167706B0DDFB80246B009D5F9A59691DDED0265A6"
+    },
+    {
+      "path": "Cadoryx.Kernel.Occt/OcctGuidedAuthoringGeometry.cs",
+      "sha256": "B967C8B63A346A70AEB4F837F87628E8F81621631BAE054BE4DB950A780588A7"
+    },
+    {
+      "path": "Cadoryx.Kernel.Occt/OcctGuidedExpressionCurves.cs",
+      "sha256": "B1DD3FED726FF4C031BF066BA91DBBF54D837CC224B7C61FD4E4C1E84C50723D"
+    },
+    {
+      "path": "Cadoryx.Kernel.Occt/OcctGuidedModelingReport.cs",
+      "sha256": "19BFC60D7F51EA99B3E50FDDF99F4BA20D1C232F17C8C36FD80F812F0B8489CF"
+    },
+    {
+      "path": "Cadoryx.Kernel.Occt/OcctHistoryResolver.cs",
+      "sha256": "E9DD01A677D82AC5CD18CC63BD5DA8A9D4BBE1A63B7979B233FE8233DFD4017E"
+    },
+    {
+      "path": "Cadoryx.Kernel.Occt/OcctHoleGeometry.cs",
+      "sha256": "77DF05F676F20FF82944F104060E72AEA4A173CDAD4D208CD8C5036F899E0A28"
+    },
+    {
+      "path": "Cadoryx.Kernel.Occt/OcctHolePatternGeometry.cs",
+      "sha256": "B6292E81A2C2F43E1956EF9330C01C7B64DA7802762E1015E2D0A989060A121F"
+    },
+    {
+      "path": "Cadoryx.Kernel.Occt/OcctLocalHistory.cs",
+      "sha256": "1C6CB1D55AA1141CF85D6341C908B490C187999AC2649BD382D12A955F306460"
+    },
+    {
+      "path": "Cadoryx.Kernel.Occt/OcctMeshImport.cs",
+      "sha256": "818AF88ECEAC816650D2127DE0CE212F2C275B71A2AB1C5D896BB04B2BB02425"
+    },
+    {
+      "path": "Cadoryx.Kernel.Occt/OcctMirrorStyles.cs",
+      "sha256": "ADC376777B3582C829BC442453DF51472DD27D94408BA73E821A5CE2A1D5B1ED"
+    },
+    {
+      "path": "Cadoryx.Kernel.Occt/OcctModeledThreadDrawing.cs",
+      "sha256": "28883F33CE4734C7DA899BE21526865026D430BDBE3DBF3C16756D29F037EAC6"
+    },
+    {
+      "path": "Cadoryx.Kernel.Occt/OcctModeledThreadHoles.cs",
+      "sha256": "53764E296476490659A33B2394551D7EBC0BADE14459B7185A88EEAB7710F547"
+    },
+    {
+      "path": "Cadoryx.Kernel.Occt/OcctRepetitionContainerStyles.cs",
+      "sha256": "016F5B195A8BA8556B8F4EC0AFA2E8B599337AAE90191E7C2F725AD2AE9ECBF1"
+    },
+    {
+      "path": "Cadoryx.Kernel.Occt/OcctRepetitionHistory.cs",
+      "sha256": "701800AA2DBA5646E9F5AACF83EE8DE6E2D27C63C05CF3900BB5FEB5DBE2874B"
+    },
+    {
+      "path": "Cadoryx.Kernel.Occt/OcctRepetitionStyles.cs",
+      "sha256": "8DADD85DDCFFF77622001BB52CF263D300DE71FBE8C7E66A9013A457BEDA8F8B"
+    },
+    {
+      "path": "Cadoryx.Kernel.Occt/OcctRevolveGeometry.cs",
+      "sha256": "0BBDB14F8236038E544EF5067800A9BC14681F57F67817483095D27239A108DA"
+    },
+    {
+      "path": "Cadoryx.Kernel.Occt/OcctSectionDrawing.cs",
+      "sha256": "901946D839346404A48F1CCEA39F8DAB57C3E65544A8FAECE05A5329164663CA"
+    },
+    {
+      "path": "Cadoryx.Kernel.Occt/OcctSketchEdgeProjection.cs",
+      "sha256": "2038EAC8DA3AD94AA9F859379B905A5C9EFA730311AA9CBD4C6617EE543A082E"
+    },
+    {
+      "path": "Cadoryx.Kernel.Occt/OcctSketchExpressionRegions.cs",
+      "sha256": "C9C3DC8CB9ED2F4FA63B7F277477B50C048B5462026403AF0F3227D99251677C"
+    },
+    {
+      "path": "Cadoryx.Kernel.Occt/OcctSketchExpressions.cs",
+      "sha256": "4E00F00D7D3A8560E6EABBCEA2C81713FC8BC161E1BF33BD038A5A0568D85453"
+    },
+    {
+      "path": "Cadoryx.Kernel.Occt/OcctSketchProfileGeometry.cs",
+      "sha256": "82F40E3D74C50B5B8C9547BDD71595A09E5F79CA028164FE2DB164DEDEB3B17B"
+    },
+    {
+      "path": "Cadoryx.Kernel.Occt/OcctSketchRegionAuthors.cs",
+      "sha256": "935822907171FAF3BE5AF41B1856C1F2A337C0FCEC7E1680BCC92F3959F96920"
+    },
+    {
+      "path": "Cadoryx.Kernel.Occt/OcctSolidOffsetGeometry.cs",
+      "sha256": "D786C2C5B34231C0070A4CE0983A2B61B9E1F58BBFF46B10C94862CF5F9DEB2B"
+    },
+    {
+      "path": "Cadoryx.Kernel.Occt/OcctTechnicalDrawing.cs",
+      "sha256": "1C2614D46ABEB2C24C6C82B811AB6EBF6B53C2C1E2DBBE3EEE941C1BECF991C2"
+    },
+    {
+      "path": "Cadoryx.Kernel.Occt/OcctTopologyResolver.cs",
+      "sha256": "A2E16D5CDE6C908B3A6AD80F6AC045C8DA5F190587462B95B2D209C7BF0BD77F"
+    },
+    {
+      "path": "Cadoryx.Kernel.Occt/packages.lock.json",
+      "sha256": "AC55D43E4CB93183B8DC8CC2C453ABD01A71C2B1442605FBF1B0E32915EE13A7"
+    },
+    {
+      "path": "Cadoryx.Lang/Cadoryx.Lang.csproj",
+      "sha256": "5C01CA8E02CA31FE85D889D16121DB89206FE25AB2B3400569BF9880D9E29F63"
+    },
+    {
+      "path": "Cadoryx.Lang/LangKeys.cs",
+      "sha256": "A0F794D70D0DD70ABB28074A5C3A9E43EC545E84432856113509852935740898"
+    },
+    {
+      "path": "Cadoryx.Lang/Strings/Strings.Designer.cs",
+      "sha256": "AB4B5A6E6773AD5957D69AA637349F8BED7602F7906C3A3236A7BDA97FA1447C"
+    },
+    {
+      "path": "Cadoryx.Lang/Strings/Strings.ja-JP.resx",
+      "sha256": "F0A974ED9E19745E87DBF383F96E7F003931583A8707BF29F543B1FF0BE10DA5"
+    },
+    {
+      "path": "Cadoryx.Lang/Strings/Strings.resx",
+      "sha256": "C35EB43AAEA85D9B5C4E4CF8833950839EC59C1AFFBB38DAB65C6069E382BBB9"
+    },
+    {
+      "path": "Cadoryx.Lang/Strings/Strings.zh-CN.resx",
+      "sha256": "1BAE82D0B7B64CFFA157C8EDC7799AD4683C434E0A18839D589E3DD0EAE3352E"
+    },
+    {
+      "path": "Cadoryx.Lang/packages.lock.json",
+      "sha256": "DDE5E66D19CA78E5BF183902E270655E5434633845C96B2B5D53D26736A6996F"
+    },
+    {
+      "path": "Cadoryx.Rendering.Occt/CadViewportGraphicsFault.cs",
+      "sha256": "D88CDB551061AFE8DA831CB098F1AAB5CC7BCBDAEBA52B34C4F746CA45D27F48"
+    },
+    {
+      "path": "Cadoryx.Rendering.Occt/Cadoryx.Rendering.Occt.csproj",
+      "sha256": "DD177E4038EC27B95DD7C2213860F49DB9B16462322883422D724406FA204597"
+    },
+    {
+      "path": "Cadoryx.Rendering.Occt/MaterialAppearance.cs",
+      "sha256": "6CDDFC5E366EE34F6AE41D2EE042DD30D504C62A92DA38D37C4E5C17CDE9ED19"
+    },
+    {
+      "path": "Cadoryx.Rendering.Occt/OcctViewport.Cleanup.cs",
+      "sha256": "D79E75246398D605AB346B096E3BA3BD38420E501F3347AED70C9E0E2768E5B4"
+    },
+    {
+      "path": "Cadoryx.Rendering.Occt/OcctViewport.RectangleFeedback.cs",
+      "sha256": "AFFAB9C8F90F525C82FCFCDBB02B8CE077A634ED10A61C2A039D34390597B799"
+    },
+    {
+      "path": "Cadoryx.Rendering.Occt/OcctViewport.cs",
+      "sha256": "234227E5D19BB60C955C1DCA255C8D66848EDB2D8FCB3B174D9B5CB798B75459"
+    },
+    {
+      "path": "Cadoryx.Rendering.Occt/OcctViewportDimensions.cs",
+      "sha256": "EC0A6314A8BFCFB09D1CD484ACCEB7F81E65AE2B91D6EBCB40AFA391BCD54083"
+    },
+    {
+      "path": "Cadoryx.Rendering.Occt/OcctViewportOccurrenceHandles.cs",
+      "sha256": "18AE6CE4C189BC939B58B1555E6FA6807862B67821F37707888CFDE8CAAA444C"
+    },
+    {
+      "path": "Cadoryx.Rendering.Occt/OcctViewportSolidHandles.cs",
+      "sha256": "69850B07886721738A7313ACAAEF09977A9E48A27A3D7BD3FC6E3CCDEB19B728"
+    },
+    {
+      "path": "Cadoryx.Rendering.Occt/OccurrenceDrag.cs",
+      "sha256": "3B960E0E8D2AD9EDCDF20BDC11CAD80BD49269795824ABC59B765C5254660EF1"
+    },
+    {
+      "path": "Cadoryx.Rendering.Occt/OccurrenceGizmoMath.cs",
+      "sha256": "F973AA64BFFE3DDDF7D4E0AA53C6B713D3C921F48B955138089ACD825DE66800"
+    },
+    {
+      "path": "Cadoryx.Rendering.Occt/SolidDimensionHandles.cs",
+      "sha256": "3DBA4DDB8274140FE9D70B36BA72E0A07E50B00D1E0067B866ED4FA900694E3C"
+    },
+    {
+      "path": "Cadoryx.Rendering.Occt/packages.lock.json",
+      "sha256": "74EB738E8CC965A1B519C01970565E78E07B449D9B99212E87EF138503BFC014"
+    },
+    {
+      "path": "Cadoryx.Rendering/AdaptiveGridScale.cs",
+      "sha256": "E590AD69A91583D32CEE9A9B5D06D4EAC044825ABC4E756DE89EF95BFD579C2B"
+    },
+    {
+      "path": "Cadoryx.Rendering/CadCamera.cs",
+      "sha256": "146915E554D0F625D8AF6B34D0887089CC83FB6D106D92FD0BB3DC8C46581751"
+    },
+    {
+      "path": "Cadoryx.Rendering/CadCameraAnimation.cs",
+      "sha256": "B93D64FB74450911626763F3129BA5F9FF3FDFAF9DA7067AEDFD74C8A0F9AC27"
+    },
+    {
+      "path": "Cadoryx.Rendering/Cadoryx.Rendering.csproj",
+      "sha256": "0B0DDCF93BB56C16AE6914FC7AAAF1B88FA30C5CC4942E6E4A129F29FE86D1FD"
+    },
+    {
+      "path": "Cadoryx.Rendering/ReviewScene.cs",
+      "sha256": "20E171FC2E6F6B285A861397DAFACBFF0AA00B45BDF41534D8EF764C6DC4F1A5"
+    },
+    {
+      "path": "Cadoryx.Rendering/Scene.cs",
+      "sha256": "145E8EBAA3A3BB16A27E4BB9064F49750DCB7190403A8EFC3B87CF34C58C2D57"
+    },
+    {
+      "path": "Cadoryx.Rendering/packages.lock.json",
+      "sha256": "29A60E9D5CC5ED1818C4BD296EF286D2D3702654AF5641CF9D04357A87669396"
+    },
+    {
+      "path": "Cadoryx.Sketching/BoundedContactCoordinate.cs",
+      "sha256": "5ED43A5700AE0CB41FB61E545596C881B5DD22C1D141AF1FED7FB1669C3BB27F"
+    },
+    {
+      "path": "Cadoryx.Sketching/Cadoryx.Sketching.csproj",
+      "sha256": "6C67C16A4170DAE0778759636F23CFF4BD22FBBAC3F8EABD20C499721C4FB46E"
+    },
+    {
+      "path": "Cadoryx.Sketching/ManagedSketchConstraintSolver.cs",
+      "sha256": "5EBDAA8EE12901B0D6D2A73D949F02077CF3877762718E5AB861502BE29F4844"
+    },
+    {
+      "path": "Cadoryx.Sketching/SketchContactDifferentials.cs",
+      "sha256": "89F88869F5471E99B9F92611FE18CEE454508B83DB110F4BF76B5F7923B920B1"
+    },
+    {
+      "path": "Cadoryx.Sketching/SketchContactSolutionVerification.cs",
+      "sha256": "1FD8D3D26409A138AA84D09618A75C3E90CBD9F6E3F36741CC2B3C94AD5A9318"
+    },
+    {
+      "path": "Cadoryx.Sketching/SketchEquationSystem.ExpressionEndpoints.cs",
+      "sha256": "83638884D194603B2C6801FE67E9FB41D16EA42209C16FD03EF2067191438AA0"
+    },
+    {
+      "path": "Cadoryx.Sketching/SketchEquationSystem.PrescribedAuthors.cs",
+      "sha256": "ED7732D2E4A791552F68E870BA097111EC59E57A85517A94DC78E51A9B9BD1FF"
+    },
+    {
+      "path": "Cadoryx.Sketching/SketchEquationSystem.Regions.cs",
+      "sha256": "C8893E920E42935A9027345441E16AA095541B20CEBD044689FB727B8897BA2A"
+    },
+    {
+      "path": "Cadoryx.Sketching/SketchEquationSystem.cs",
+      "sha256": "B220F2C1F954BA75F351C0C255BF0DEC38F13B0E196356F8AC95689EE1FF750B"
+    },
+    {
+      "path": "Cadoryx.Sketching/SketchExpressionDifferentials.Regions.cs",
+      "sha256": "600B187A3836304B4C0E34698A4EB76538C043891433349D70250266FCF62C1D"
+    },
+    {
+      "path": "Cadoryx.Sketching/SketchExpressionDifferentials.Taylor.cs",
+      "sha256": "CABEA819DCC2CDC0A49ECDE61DD125743205E797B001895EF8A432FB8E8C7253"
+    },
+    {
+      "path": "Cadoryx.Sketching/SketchExpressionDifferentials.cs",
+      "sha256": "2CCDF7F7D10C8FA2A3752DBB462666E7369EE8F26E416D01901CA84CDEDF89B1"
+    },
+    {
+      "path": "Cadoryx.Sketching/SketchLocalAnalysis.cs",
+      "sha256": "F371D58D5F2F561E5A0D9F25AC0F592602C96E1A78DB1212603FD023740D9BC2"
+    },
+    {
+      "path": "Cadoryx.Sketching/SketchRegionIntersectionSensitivity.cs",
+      "sha256": "27FE1E7A888C6E990D4EB8E6AFC386A3CDC58225362A39838DF28F86E7FB2F19"
+    },
+    {
+      "path": "Cadoryx.Sketching/SketchRegionLivePointCouplingProof.cs",
+      "sha256": "215585A6C3A93904DEB7EAE21799B31263F5E0496F4927D686B9A22C792D04B8"
+    },
+    {
+      "path": "Cadoryx.Sketching/SketchRegionPointCouplingProof.cs",
+      "sha256": "0B4BC023AF22208853E5F7486787A749BC7923380B7FDE2D0A22DD22FC8445F4"
+    },
+    {
+      "path": "Cadoryx.Sketching/SketchRegionSolveChart.LivePointCoupling.cs",
+      "sha256": "01AD3B7CF39FEB91B6B38FF3ABE86A7A805687674E896420CF4FB7440568AECB"
+    },
+    {
+      "path": "Cadoryx.Sketching/SketchRegionSolveChart.NaturalJoints.cs",
+      "sha256": "75AFC0B47D96F608ABBD589CB8D71E98E7170ACFC06C2A291E269BB320F69D12"
+    },
+    {
+      "path": "Cadoryx.Sketching/SketchRegionSolveChart.PointCoupling.cs",
+      "sha256": "A8AE160C3C2A81B675335471B9DDAF1CB6031A264CEEE34E38674239CCEBAE87"
+    },
+    {
+      "path": "Cadoryx.Sketching/SketchRegionSolveChart.cs",
+      "sha256": "19CA469D2B7F6CE5ADF4FEB31A4A9342B32FC00802CF18FD8D2EEAE83C5AD89C"
+    },
+    {
+      "path": "Cadoryx.Sketching/SketchSolveContracts.cs",
+      "sha256": "7F41A41018EF15A4AA2D57148104982A2B22F0917B492BE472603032A44E3C56"
+    },
+    {
+      "path": "Cadoryx.Sketching/packages.lock.json",
+      "sha256": "5FC44C873410E7AA4558713546F045C832585ED7B45C0827DC9E76599CDD3BD2"
+    },
+    {
+      "path": "Cadoryx.Tests/AgentContextTests.cs",
+      "sha256": "7C83C03F17522EE65A53BA170D2C230658C8E8B66BD783F144B3F508D394E31E"
+    },
+    {
+      "path": "Cadoryx.Tests/AgentControlOnlyResponseTests.cs",
+      "sha256": "1AF76A13DFA0612BCCE668F991B376727E7C103CDB6AC8FAD2F3D2183F0EBC4E"
+    },
+    {
+      "path": "Cadoryx.Tests/AgentEmptyResponseRecoveryTests.cs",
+      "sha256": "76A535D5B331FE07A8FF7C26246C4D3861AC9C04AE9CEDDAABBEDF221C8C5012"
+    },
+    {
+      "path": "Cadoryx.Tests/AgentIdentityFieldPresentationTests.cs",
+      "sha256": "BC710CAA6D7BFB973D64C7B143B358C615CA1F49DD4975520BD838CA1A9CAE0B"
+    },
+    {
+      "path": "Cadoryx.Tests/AgentSuccessfulActionReceiptTests.cs",
+      "sha256": "ACD0B41047F9A4BCA5A9E9A5AB8F0FBFFA12EBB2965612964A43CEDCF974D9BA"
+    },
+    {
+      "path": "Cadoryx.Tests/AiAssistantTests.cs",
+      "sha256": "B0E74580AA31742340BBD2B44A955C1B071ABA1F827E778A84D9E2900B5B8A8E"
+    },
+    {
+      "path": "Cadoryx.Tests/AnalyticalCurveEditingTests.cs",
+      "sha256": "EE422EFEFCC3DBC336088A075749481A2061D2C509907E50E93C3676314EBF94"
+    },
+    {
+      "path": "Cadoryx.Tests/AnalyticalRevolveTests.cs",
+      "sha256": "8CD282D4A3F0F1353C481C8DF1EF4AE7CA54CFD50B4974044A6C3B4C1596CAF4"
+    },
+    {
+      "path": "Cadoryx.Tests/ArcSegmentSketchTests.cs",
+      "sha256": "FC4855D533CC5D8E6C5D1AF8532234C3E29E5B948101C8C42818B05027F0B47B"
+    },
+    {
+      "path": "Cadoryx.Tests/AssemblyConstraintTests.cs",
+      "sha256": "8983F94B43586E646654ADFC1C95FDEA8813CFDFAFBECD00C55A34BC2C076A21"
+    },
+    {
+      "path": "Cadoryx.Tests/AssemblyConvergenceTests.cs",
+      "sha256": "BBC04C91CAAB9390C03631D3CAE35F22F3A0D294B82D8D106CA2E3B21ED46714"
+    },
+    {
+      "path": "Cadoryx.Tests/AssemblyM5CompletionTests.cs",
+      "sha256": "F74EF923B8386F402F93BD800F403A16C7DCF6049FB06477F8492464E8CE37C9"
+    },
+    {
+      "path": "Cadoryx.Tests/AssemblyMirrorTests.cs",
+      "sha256": "E77250435404B7FDD8C8931B05A4661356A1863BF31A5838B503F9B13583B125"
+    },
+    {
+      "path": "Cadoryx.Tests/AssemblyOccurrenceTests.cs",
+      "sha256": "95ACB212A62A3121F0E3B283E51566121C9A0CC58DE32F6BA1578E653BDC92A9"
+    },
+    {
+      "path": "Cadoryx.Tests/AssemblyRankDiagnosticsTests.cs",
+      "sha256": "40160CEB894E72A81AAC8A7D2ADE6246E6CB1937E66D900070A334E13FF1EFB0"
+    },
+    {
+      "path": "Cadoryx.Tests/AssemblyRepetitionEditorTests.cs",
+      "sha256": "8D5FFFDABEA4866A91082DE93637E0B93787B0C3A0A658B23D56D520B36D6902"
+    },
+    {
+      "path": "Cadoryx.Tests/AssemblyRepetitionTests.cs",
+      "sha256": "D3E199F12D3337F99C7DF877511BABA725E457E961B68C45F71DF28C57D74F59"
+    },
+    {
+      "path": "Cadoryx.Tests/AssemblySolveEditorTests.cs",
+      "sha256": "0C7771F1004B2440C3CB35A26ABE43583AF74F227E2AFD3F50F1DACE712BCBC4"
+    },
+    {
+      "path": "Cadoryx.Tests/BooleanHistoryTests.cs",
+      "sha256": "786CCD3309BFEEF331BA97AB98AFA0FE0D3CCD51C66779556B52E2CF1193AC1D"
+    },
+    {
+      "path": "Cadoryx.Tests/BoundedContactCoordinateTests.cs",
+      "sha256": "D8016A05EC76E90E9B1F58497969C901C40830475E9EDFB8276BAFAC1632CD9B"
+    },
+    {
+      "path": "Cadoryx.Tests/BrepDirectionRoundtripTests.cs",
+      "sha256": "E05CBF53ABEFC4F15836A413B0BBFE1F0FCF334A2BFEE61CFB42318B3E141723"
+    },
+    {
+      "path": "Cadoryx.Tests/CadAgentDocumentToolTests.cs",
+      "sha256": "87E5FA0AD17702076632102220BD35C2A7C4F4F0BF1752B8E1D3C70FAD340058"
+    },
+    {
+      "path": "Cadoryx.Tests/Cadoryx.Tests.csproj",
+      "sha256": "77DC273EB02DD05FE1D2ACC33E06DC6E3D36B53465C121BEC620426783DACB60"
+    },
+    {
+      "path": "Cadoryx.Tests/CameraAnimationTests.cs",
+      "sha256": "C995EB4CD0E2F13152CB807EEFB21C0EBB087EDA8442C2E925E1673B5DA7D6B8"
+    },
+    {
+      "path": "Cadoryx.Tests/ChainedLocalFeatureTests.cs",
+      "sha256": "C186382E4E535F0D6CEE0F686968E856B03FCD21D7C1C21D4E6AED479C621140"
+    },
+    {
+      "path": "Cadoryx.Tests/CircularSketchProfileTests.cs",
+      "sha256": "54D3F0DF9631F4C84E1E2CBBE38C99BBE4108ADFF7A4AEB7BA86A06285C696B9"
+    },
+    {
+      "path": "Cadoryx.Tests/CodexAppServerClientTests.cs",
+      "sha256": "E4B5255466CF672CA26D7912DB6F1EA1FFCBA1A4510B573972002AA3DCE097A8"
+    },
+    {
+      "path": "Cadoryx.Tests/CommandInvocationTests.cs",
+      "sha256": "67B8D90EB9C63796C2DE679E1873AE2E99BED1138E92E38EC119E50DAD8D5F4B"
+    },
+    {
+      "path": "Cadoryx.Tests/CommandLineTests.cs",
+      "sha256": "DB2258FEAD8A497AE58FA66F0CB49C96F72568B178B8BAC7A16D904557F34CD6"
+    },
+    {
+      "path": "Cadoryx.Tests/ComposedDrillingHistoryTests.cs",
+      "sha256": "EC4B0E3BF4849A7806F1E032FAB548D113EABA36635CE31F8176E2579E6B3F6A"
+    },
+    {
+      "path": "Cadoryx.Tests/ContourEditorAndAuthorTests.cs",
+      "sha256": "B6E970F2FBB3E429434BF899938A423A00B384034542460A8FAC09363C6CFE9E"
+    },
+    {
+      "path": "Cadoryx.Tests/ContourLocalTests.cs",
+      "sha256": "8D8C41A0064EDED64ACC1E8B089D00C35AE161EFCF17A44764AEC46C92B1C576"
+    },
+    {
+      "path": "Cadoryx.Tests/ContourParameterAndStorageTests.cs",
+      "sha256": "DAF79581D54DD8F9A62E01AECDC71D7FAB4A3440C80B62FF1B8E557D4AFF2058"
+    },
+    {
+      "path": "Cadoryx.Tests/ContourQualityTests.cs",
+      "sha256": "9488FC801EE1F8113BE32733ACD5F668C6D5AF1BC2D09B607FA3ACA45A2B21C1"
+    },
+    {
+      "path": "Cadoryx.Tests/CubicSplineSketchTests.cs",
+      "sha256": "95217EE70C1205B153721ADFEDD5A5993319EB7B27F68005B5347C591DF0C6D3"
+    },
+    {
+      "path": "Cadoryx.Tests/CurveRegionRevolveTests.cs",
+      "sha256": "E61C69F4140960B8799551091EECBB0F1A1BF0F0A8B910A514E6364C84F6E0A8"
+    },
+    {
+      "path": "Cadoryx.Tests/CurvedConsumerTestScene.cs",
+      "sha256": "79369B6FE8A48A10E7189A5AD82E2DD4469806265990A9C4252D3BE8883F9312"
+    },
+    {
+      "path": "Cadoryx.Tests/CurvedExchangeBoundsProbeTests.cs",
+      "sha256": "10BE1F27DEDBC58D959FF6BDD96C305E4D230CE8975474D7208BEF8924BB38BC"
+    },
+    {
+      "path": "Cadoryx.Tests/DatumAgentTests.cs",
+      "sha256": "263E8AA6CB040D9027706924B4F0A7BF59467B21AC3D49C761D966ECFF9466F3"
+    },
+    {
+      "path": "Cadoryx.Tests/DatumPlaneTests.cs",
+      "sha256": "79072F03425DD4CF96BCC864A25A1A67D3625BB638F53C456D5E698B1FE887E1"
+    },
+    {
+      "path": "Cadoryx.Tests/DiskAssetCacheTests.cs",
+      "sha256": "1EA213B67DC6462551C5F4FE9F14F04087993E3D6CEF35F50865E17EE04E509A"
+    },
+    {
+      "path": "Cadoryx.Tests/DocumentGridTests.cs",
+      "sha256": "452B5E77369CA3DBDC0E9370AEC227A04693EE81E34C0341ACE43F96885FD9EB"
+    },
+    {
+      "path": "Cadoryx.Tests/DocumentResourcesTests.cs",
+      "sha256": "CA7F5C64B23954DF3C08426254AB0A07A85B67F982A8F882820446CC488B6627"
+    },
+    {
+      "path": "Cadoryx.Tests/DomainTests.cs",
+      "sha256": "EF5E6AC69E31716A2148957B19A327666E17EC186C4A0AA6BE4F2BA7E7683EFC"
+    },
+    {
+      "path": "Cadoryx.Tests/DrawingActionFeedbackTests.cs",
+      "sha256": "67CD6CB4BB66DF2F7720205C12049FB60C444BD449D2D05474FF58895C792FA1"
+    },
+    {
+      "path": "Cadoryx.Tests/DrawingAgentTests.cs",
+      "sha256": "63A8EACBA7EBCF74A52AD48DC6966BE48867A66552172EC5D8EE2243975F583D"
+    },
+    {
+      "path": "Cadoryx.Tests/DrawingAnnotationTests.cs",
+      "sha256": "4657EC0C47089F0E853D06C36ABFB40762C618ABC8B182BF92DAFB07104ADB24"
+    },
+    {
+      "path": "Cadoryx.Tests/DrawingAttachmentHistoryTests.cs",
+      "sha256": "ECFC590490E87CBA385F5134E7077EEEF11B3A5D1CA0A0DFEC853383D36B775F"
+    },
+    {
+      "path": "Cadoryx.Tests/DrawingContractRequestGuideTests.cs",
+      "sha256": "05E340C70A5A4697908C715677465E7F695AD2D81E044F6AC94CDD18689BF573"
+    },
+    {
+      "path": "Cadoryx.Tests/DrawingHoleCoordinateTests.cs",
+      "sha256": "3EE8D338B932D6E6843B5520644C3CAD8B0313CC55EB965ECA86BB36108F2012"
+    },
+    {
+      "path": "Cadoryx.Tests/DrawingHoleTableTests.cs",
+      "sha256": "2437556AF8368C22692AC22C766EF9EA086CE3CBB200B7312B345CEE8E229465"
+    },
+    {
+      "path": "Cadoryx.Tests/DrawingInspectionTypeFeedbackTests.cs",
+      "sha256": "B89112A323C60855A154081A4FD71DACDAA53CC2C2D5C7FB54868E5503C48FFD"
+    },
+    {
+      "path": "Cadoryx.Tests/DrawingPlanarSizeTests.cs",
+      "sha256": "1A0927EC49D6C1E05770DC3F8BC9A528927AE0678680BA596F07E030C7CFCA7F"
+    },
+    {
+      "path": "Cadoryx.Tests/DrawingQueryIdentityTests.cs",
+      "sha256": "789FAF0F20910556E2EA493E381D16E65535E1AC5BF6C91ECD6C41AFBACB1456"
+    },
+    {
+      "path": "Cadoryx.Tests/DrawingSizeEvidenceTests.cs",
+      "sha256": "A78A9169922196D55D5FB0CE6BD27CD7FB0A8C52BEA4F2596975A686197B462D"
+    },
+    {
+      "path": "Cadoryx.Tests/DrawingSourcePathDispatchTests.cs",
+      "sha256": "B01C1C7F58ECD1A559E296CF1A632EE216738E847819532ADF10F63C4F1A7937"
+    },
+    {
+      "path": "Cadoryx.Tests/DrawingSourcePathFeedbackTests.cs",
+      "sha256": "F2607B081492F2633EAD19651183B3F6A480D9B9380522F262552126D167BD6A"
+    },
+    {
+      "path": "Cadoryx.Tests/DrawingTemplateLibraryTests.cs",
+      "sha256": "442774692458857EF8EB04B2EC8A202E71626CA67AA615BCFB2CC6B04721BBC6"
+    },
+    {
+      "path": "Cadoryx.Tests/DrawingTypedDatumTests.cs",
+      "sha256": "08A8E57B225FA50D4C467BDB5FE5E5F4A0D2EC1622D49F0CE12C3AE58980DEED"
+    },
+    {
+      "path": "Cadoryx.Tests/ExactCubicSplineDefinitionTests.cs",
+      "sha256": "F07A682E053B148F811FFAF88DC16BCC12A35D2B55822D21EFCC3ABF42D1D019"
+    },
+    {
+      "path": "Cadoryx.Tests/ExactCurveEditingIntegrationTests.cs",
+      "sha256": "E20720CDAEFF0BF9201B7E1C9B4DECDE1EEAF43FEA07582EA349BA83C1F666E4"
+    },
+    {
+      "path": "Cadoryx.Tests/ExactHistoryContinuationTests.cs",
+      "sha256": "7FE93D40920CF90CC8F09081958914676CF881E82267B8E258600D0FC17B031C"
+    },
+    {
+      "path": "Cadoryx.Tests/ExactLocalTopologyTests.cs",
+      "sha256": "48D4D0A4C700A94B8FDB031A7C830FF91D60592B919636150564F1A40E8F18D1"
+    },
+    {
+      "path": "Cadoryx.Tests/ExactSketchGeometryServiceTests.cs",
+      "sha256": "168AFEE3FB8512B742202CB15E978354842DB55DA919395A618953BF829CEABD"
+    },
+    {
+      "path": "Cadoryx.Tests/ExactSplineAuthoringTests.cs",
+      "sha256": "8FFB557280ADF41D8D8EB10A0113B1540C47383E2EB2E87CD3062A3D189FC511"
+    },
+    {
+      "path": "Cadoryx.Tests/ExchangeFixtureTests.cs",
+      "sha256": "5070D10A9EE837B18EBB3FF718D1D6AB4BD960878B9F7433EDAE0068C3C53D21"
+    },
+    {
+      "path": "Cadoryx.Tests/ExchangeMeasurementTests.cs",
+      "sha256": "18FE08FAA85D694072B4EC396E2B35BEF546F99A8AB0C5E6659A2D0AC9167715"
+    },
+    {
+      "path": "Cadoryx.Tests/ExpandedMixedSketchTests.cs",
+      "sha256": "3A12E57CE7153F2F7D01EA8DDE258A50F9032ED8CA9C2AEDA71CF4A3CACDD4CA"
+    },
+    {
+      "path": "Cadoryx.Tests/ExportTests.cs",
+      "sha256": "125A1ACAE4B32CB8C3B561E58E93D99FCA43639CFC5CDBB5B2CDB4958D499375"
+    },
+    {
+      "path": "Cadoryx.Tests/ExtendedDatumBoundaryTests.cs",
+      "sha256": "7D145858458ECEBC5F3C2BD7D8A16255B16D43247030D2E9145F8EE6AABF1422"
+    },
+    {
+      "path": "Cadoryx.Tests/ExtendedDatumEditorTests.cs",
+      "sha256": "BD115C7427475892E528A41E6640E8509EEA1F51A421862D27C8280B6922B493"
+    },
+    {
+      "path": "Cadoryx.Tests/ExtendedDatumTests.cs",
+      "sha256": "F5F963532F569B4C01572CE412C75589DF299EB4E27ECED80DA897E5359B411C"
+    },
+    {
+      "path": "Cadoryx.Tests/ExternalPartLinkTests.cs",
+      "sha256": "BA225FCE88728AF06212AC03088ABBB7B52B184CEF390FB6D7F266EF0BD7EF61"
+    },
+    {
+      "path": "Cadoryx.Tests/ExtrusionPatternEditorTests.cs",
+      "sha256": "7DFB6321293B4AFD5E141E5149E12599CDBE5DEFC15B8BA3BCC4ED4676ED062A"
+    },
+    {
+      "path": "Cadoryx.Tests/ExtrusionPatternTests.cs",
+      "sha256": "762D0A084CDD3A6F2DBA81E8D9DF0EDC53B0DB53EBCBF99B9BB75A47D64C1BA9"
+    },
+    {
+      "path": "Cadoryx.Tests/ExtrusionTests.cs",
+      "sha256": "018D167D96CF7AA903E6F086E542CDC049F602018C32B473F4D30D353CBAC1D7"
+    },
+    {
+      "path": "Cadoryx.Tests/FaceFeatureEditorTests.cs",
+      "sha256": "E6E9EDA4869737DB7C2FF996474A109068A425A471ADB4F8C61FF7F2B353DDEF"
+    },
+    {
+      "path": "Cadoryx.Tests/FaceFeatureTests.cs",
+      "sha256": "C717F88CBE517FC628F0DA6CFBC8E1E850690EF0DFAACEAFEE9C8F9D38F81E99"
+    },
+    {
+      "path": "Cadoryx.Tests/FeatureBindingTests.cs",
+      "sha256": "491112A89B03749FA289668160A47072CB0C06C4D38A282DC9911C3D4285E72E"
+    },
+    {
+      "path": "Cadoryx.Tests/FeatureSuppressionTests.cs",
+      "sha256": "12CB16665A6E5A65346BB973B4FC27EB7AAD47E033C8ED1D9A5193838E3A3FB2"
+    },
+    {
+      "path": "Cadoryx.Tests/FeatureTimelineTests.cs",
+      "sha256": "AB9E2D5A715683D544261ECAC79781E13A4AF47D75BEB909BBFFA7C2F1C79C7B"
+    },
+    {
+      "path": "Cadoryx.Tests/FileAgentTests.cs",
+      "sha256": "197EC49340E2CDCE3F16419A8C2BF3471A1F0D706182AC024B7C1748BDD0CDB6"
+    },
+    {
+      "path": "Cadoryx.Tests/FileIdentityFeedbackTests.cs",
+      "sha256": "D3FE485E26CFFD9481091600781CE59A4DE2C06D71E8E0F5D7478A5360C7654D"
+    },
+    {
+      "path": "Cadoryx.Tests/FiniteSurfaceExtrusionBoundaryTests.cs",
+      "sha256": "56D008191C83B2BF04E2CCF1DB3A55623E5C538E3D792662EC1282330F576041"
+    },
+    {
+      "path": "Cadoryx.Tests/FiniteSurfaceExtrusionIntegrationTests.cs",
+      "sha256": "9D28219D5B03D1844118C354986B4D0574ABF5274B551D5B3BFE5F0DFC4338C7"
+    },
+    {
+      "path": "Cadoryx.Tests/FiniteSurfaceExtrusionTests.cs",
+      "sha256": "CD0B71F0191528250BA914D8FE99D22700A7AE3FB0FCED9FDB358083F21AC001"
+    },
+    {
+      "path": "Cadoryx.Tests/Fixtures/Drawing/README.md",
+      "sha256": "44E0F5AA290B5F9DC27FB05E87F16C7D87EFD3B0530B381BC41CD3C3768D6CE2"
+    },
+    {
+      "path": "Cadoryx.Tests/Fixtures/Drawing/modeled-m6-left-blind.brep",
+      "sha256": "FE2F36DAEAA88198057B88F958980EEB44F919C3FC77693ACB46FF348C1B09FB"
+    },
+    {
+      "path": "Cadoryx.Tests/Fixtures/Exchange/README.md",
+      "sha256": "14D4E61777A4F0765DD671D79B1D748B80323E8CE5D9850F462526FAA8816249"
+    },
+    {
+      "path": "Cadoryx.Tests/Fixtures/Exchange/minipc3-difficult-trim-solid.brep",
+      "sha256": "F58C54E9A1052685595DD0D19B0869F95DDABBAC0C0D279F8E92279D3317C46E"
+    },
+    {
+      "path": "Cadoryx.Tests/Fixtures/Exchange/minipc3-many-faces-solid.brep",
+      "sha256": "08DE662B2B91349E09E93C0AAD998743B6100828169D5AD56160D7B5A50B7F58"
+    },
+    {
+      "path": "Cadoryx.Tests/Fixtures/Exchange/minipc3-moment-cancellation-solid.brep",
+      "sha256": "0CE6C5ED2CEEC126A4CB73B69377179130FB51C8761EC75EBD17D7C0DFD74558"
+    },
+    {
+      "path": "Cadoryx.Tests/Fixtures/Exchange/minipc3-spline-pcurve-solid.brep",
+      "sha256": "475C57DC10C8603522C3523ABB2BCF373F80AA6214D8B1D4C6CC116B03CB604C"
+    },
+    {
+      "path": "Cadoryx.Tests/Fixtures/Exchange/rotated-colors.iges",
+      "sha256": "89F142F554A05CC07FFC90BFBB23DB92685C370865D45CD2BE324039D6249D45"
+    },
+    {
+      "path": "Cadoryx.Tests/Fixtures/Exchange/rotated-colors.step",
+      "sha256": "66A0AD9AF641AB605A2758158923145FE009D971D2A1EF4F5D2BD0579C5AFB27"
+    },
+    {
+      "path": "Cadoryx.Tests/Fixtures/Exchange/unit-inch.iges",
+      "sha256": "320AC4D1B7714445466A4AFB35B3AF91E19780D4012D9FDC8B051379568C7E11"
+    },
+    {
+      "path": "Cadoryx.Tests/Fixtures/Exchange/unit-inch.step",
+      "sha256": "9412C329D12DC047A3DDF61B2812376DED810205D108563F3881513BF8D55C98"
+    },
+    {
+      "path": "Cadoryx.Tests/Fixtures/Exchange/unit-meter.iges",
+      "sha256": "5CA811DD7940A312A6149F0CAA87796BEC447ED529096F3AE07B7C2192E91ECD"
+    },
+    {
+      "path": "Cadoryx.Tests/Fixtures/Exchange/unit-meter.step",
+      "sha256": "30B785AFAECD5987979368F43F70F4AE688B33C185DF66C5ED3A2042B9BD26FF"
+    },
+    {
+      "path": "Cadoryx.Tests/Fixtures/Exchange/unit-mm.iges",
+      "sha256": "05204075CDA367C76109EEE5F11796CFB2789B390D75134BB9F7BEA47A6475D6"
+    },
+    {
+      "path": "Cadoryx.Tests/Fixtures/Exchange/unit-mm.step",
+      "sha256": "005738C5B9EC571BB38C8FD7FD1BDB1C46FCD62C7013CC84DC8DE61263150944"
+    },
+    {
+      "path": "Cadoryx.Tests/Fixtures/Storage/README.md",
+      "sha256": "F0A9C98853B2D2DB243DA5AA4D4A23C9790C6597251F2FCDCC52F4F26F8B7C4F"
+    },
+    {
+      "path": "Cadoryx.Tests/Fixtures/Storage/RegionConnectionsLegacy/bevel.cadoryx",
+      "sha256": "E77D40EBF625DECD817CE31535E5C994AD77B97E4869E743A9F5C0205D74D7FE"
+    },
+    {
+      "path": "Cadoryx.Tests/Fixtures/Storage/RegionConnectionsLegacy/bevel.json",
+      "sha256": "CD4AD2A3CC7E9BA82776DC0EE9E32462251A7C96A3385C90622CD2363894D731"
+    },
+    {
+      "path": "Cadoryx.Tests/Fixtures/Storage/RegionConnectionsLegacy/bevel.msgpack",
+      "sha256": "C1992940837FF20DD68FB8C0ACDECFE35D53B01B0719579AA211F73185FD4D17"
+    },
+    {
+      "path": "Cadoryx.Tests/Fixtures/Storage/RegionConnectionsLegacy/circle.cadoryx",
+      "sha256": "D725EA4CF335F590144339278214ECB3D901061BFE52887FB8C6163E3A405E38"
+    },
+    {
+      "path": "Cadoryx.Tests/Fixtures/Storage/RegionConnectionsLegacy/circle.json",
+      "sha256": "1FD5BA4253600550D0FF1BCC944712F3BFAB4AA9F4CD97ED3FE67F6936EBE193"
+    },
+    {
+      "path": "Cadoryx.Tests/Fixtures/Storage/RegionConnectionsLegacy/circle.msgpack",
+      "sha256": "C2C481116A255FE78CA9B70CEFDBE23791FC3FB4E39313484FBCEF9E36D37B97"
+    },
+    {
+      "path": "Cadoryx.Tests/Fixtures/Storage/RegionConnectionsLegacy/empty.cadoryx",
+      "sha256": "AA5FCC3BD9FB20DD669E2E5EB6227CA8958F24E59F901B8308421B5B3CB6039F"
+    },
+    {
+      "path": "Cadoryx.Tests/Fixtures/Storage/RegionConnectionsLegacy/empty.json",
+      "sha256": "A3B303726065CC72BFD3305996555EC70FC346C972A5C2843DF2807B39146B59"
+    },
+    {
+      "path": "Cadoryx.Tests/Fixtures/Storage/RegionConnectionsLegacy/empty.msgpack",
+      "sha256": "2FF6516E138A7F95DF94744323B2CA96B24AE9B095742186226B935912820C22"
+    },
+    {
+      "path": "Cadoryx.Tests/Fixtures/Storage/RegionConnectionsLegacy/manifest.json",
+      "sha256": "A5F4E07CD53E003F60A2179170CCB6CF350D796F6D90706190B3C74F1C88A613"
+    },
+    {
+      "path": "Cadoryx.Tests/Fixtures/Storage/RegionConnectionsLegacy/miter.cadoryx",
+      "sha256": "B87951BD48BB93BB4C06CB2B5E93CDC7332B36B71CD631D5F950BAD23361ED16"
+    },
+    {
+      "path": "Cadoryx.Tests/Fixtures/Storage/RegionConnectionsLegacy/miter.json",
+      "sha256": "86305C4AB18B69A1F25637487ABAC319C3282B041E934EFCD025BA67485E617F"
+    },
+    {
+      "path": "Cadoryx.Tests/Fixtures/Storage/RegionConnectionsLegacy/miter.msgpack",
+      "sha256": "37C1B900744DAAE0C1DEA57D444FA3A70A0C20F4F2DAC000DC22C9B2C3FB13EF"
+    },
+    {
+      "path": "Cadoryx.Tests/Fixtures/Storage/RegionConnectionsLegacy/round.cadoryx",
+      "sha256": "D3C069BBC3C154EFA32F83C31C5628F00F4177AA08F6F13123C53C15DC7CE75D"
+    },
+    {
+      "path": "Cadoryx.Tests/Fixtures/Storage/RegionConnectionsLegacy/round.json",
+      "sha256": "4A9E75CB42539FD2E3C654203F38EBB5CEB967B79BA4F38673BD81F14B25C6F5"
+    },
+    {
+      "path": "Cadoryx.Tests/Fixtures/Storage/RegionConnectionsLegacy/round.msgpack",
+      "sha256": "31586165156EDD6A515FB3A8BE1995B546837EAC67C412D914669688417F9941"
+    },
+    {
+      "path": "Cadoryx.Tests/Fixtures/Storage/RegionConnectionsLegacy/tangent-capsule.cadoryx",
+      "sha256": "2482FB363F58A0078E934D62183135106DE1939A914C049D832E367269D112D2"
+    },
+    {
+      "path": "Cadoryx.Tests/Fixtures/Storage/RegionConnectionsLegacy/tangent-capsule.json",
+      "sha256": "48A0DA8CF3AFCE4AE68CDF8B153F0910AC36CF6DAAF69D1D94F1E588EDBA3F69"
+    },
+    {
+      "path": "Cadoryx.Tests/Fixtures/Storage/RegionConnectionsLegacy/tangent-capsule.msgpack",
+      "sha256": "57D697B8B11AD8AADE0CCB0ACF1162FE925B85FB03AD8C1A172B6EB765A68372"
+    },
+    {
+      "path": "Cadoryx.Tests/Fixtures/Storage/m3v-colored.cadoryx",
+      "sha256": "D8913E5FEF1E4E55DA67690BDB8741D6377DCAFE7FCEE4A4625E49E5AED9228D"
+    },
+    {
+      "path": "Cadoryx.Tests/Fixtures/Storage/m4s1-sketches.cadoryx",
+      "sha256": "7EF68017601B94E031858CD401EE07E0A02B2652A677C95A23CAFD5E7806EB46"
+    },
+    {
+      "path": "Cadoryx.Tests/Fixtures/Storage/m4s2-linked.cadoryx",
+      "sha256": "63F441927E25171E44C7F882E0D139943495337E34CD35644224D09470C7CBD7"
+    },
+    {
+      "path": "Cadoryx.Tests/Fixtures/Storage/m4t1-topology.cadoryx",
+      "sha256": "738EBA3CBCB0CED469F1B472B34C24F00BD2B72A7824017569427BC4E642DEBF"
+    },
+    {
+      "path": "Cadoryx.Tests/Fixtures/Storage/m4t1h1-history.cadoryx",
+      "sha256": "B007B5576DAC2622911EEAC9E224278795BE605494BCCC6D7014842048F4DAD7"
+    },
+    {
+      "path": "Cadoryx.Tests/Fixtures/Storage/m4t1h2a-history.cadoryx",
+      "sha256": "CC4722B54C3A96DC9FBD65F9BD470C24AB2FD785D66E89F89DC856240DA17528"
+    },
+    {
+      "path": "Cadoryx.Tests/Fixtures/Storage/m4t2-local.cadoryx",
+      "sha256": "C5B9347BAE6E5B46E7D4109781503C221617758846C4BA211F33F3C0E53CBE02"
+    },
+    {
+      "path": "Cadoryx.Tests/Fixtures/Storage/v1-box.cadoryx",
+      "sha256": "F3000CB7D341EA802F4B501E30FB2482A0016136D13E0EE0EAA5B0442BEB5BD8"
+    },
+    {
+      "path": "Cadoryx.Tests/Fixtures/Storage/v2-box.cadoryx",
+      "sha256": "8461B5CFCA76615561D4198036A2511FBC13B83BBF16510BCDED6F0479A7D04E"
+    },
+    {
+      "path": "Cadoryx.Tests/Fixtures/Storage/v2-colored-assembly.cadoryx",
+      "sha256": "F7A6A55BB037CE60C0C050912447226803765F3F810B9C6F2C9817EE25F3AD7B"
+    },
+    {
+      "path": "Cadoryx.Tests/FormatEvolutionTests.cs",
+      "sha256": "A2120F24A71EABCD945CB64921988DF3FB0DED217FA44AAC09F1185018F48B53"
+    },
+    {
+      "path": "Cadoryx.Tests/GuidedAuthoringTests.cs",
+      "sha256": "F59404AE43AB4085808ED5FF819BA07FCC53E2124CC4672804E80AA42A370B6F"
+    },
+    {
+      "path": "Cadoryx.Tests/GuidedEditorTests.cs",
+      "sha256": "E588E3A37DFA25FDB21630FA73194C146FAF72E7C1A8AC45369B570C5D35C2AE"
+    },
+    {
+      "path": "Cadoryx.Tests/GuidedModelingExchangeReportTests.cs",
+      "sha256": "FAE30899ED45B7CBC327901BE3B114459D8C1D048188AA1D30B01EB45C7EDC52"
+    },
+    {
+      "path": "Cadoryx.Tests/GuidedModelingReportTests.cs",
+      "sha256": "E9F43D584F78E8BE5A904D12F7CC060C88A4A7A2A29D7C1C26AD42BD14D43CAD"
+    },
+    {
+      "path": "Cadoryx.Tests/GuidedOccurrencePolicyTests.cs",
+      "sha256": "62DC9838A14BB1ED02587DFC62D3F1E48975A2EA3890D94575895DB3C9330535"
+    },
+    {
+      "path": "Cadoryx.Tests/HistoryAgentTests.cs",
+      "sha256": "16DC5292229CA1E63FA55704886F36C228C6A2DB7BB53D9ADA8617953EFF056C"
+    },
+    {
+      "path": "Cadoryx.Tests/HistoryChainTests.cs",
+      "sha256": "397329C18BE4A700FA2F411A41643E91A794291A85184A208AB56A9D62B95726"
+    },
+    {
+      "path": "Cadoryx.Tests/HistoryCursorFeedbackTests.cs",
+      "sha256": "D33C090ACC8CCFD5C1A2B4E6CC21D5E2E0EF13E7307DBD368101545B7FD68FAA"
+    },
+    {
+      "path": "Cadoryx.Tests/HistoryPathTests.cs",
+      "sha256": "0472532DD40B8A84BFEAB398F306401AA70C5EB70167A029C77F5F62EDFED2F8"
+    },
+    {
+      "path": "Cadoryx.Tests/HistoryQueryTests.cs",
+      "sha256": "08F0D89D9BFBF87A5C70D4A875213192E2DCA87B242A22DF46C3E3806C3D908F"
+    },
+    {
+      "path": "Cadoryx.Tests/HolePatternEditorTests.cs",
+      "sha256": "431BA062DD04541FDF2E0E6548D180D0AE197BAB0FB0115C1361B998F22DA7F0"
+    },
+    {
+      "path": "Cadoryx.Tests/HolePatternTests.cs",
+      "sha256": "35FDACA3FDA823147DD5416220AF7B55A95565949EBEFDEB6B5AD6E13F72C435"
+    },
+    {
+      "path": "Cadoryx.Tests/HoleTests.cs",
+      "sha256": "0B34632D595A88D62B56DB1F6B9B900802B284F89C83BD98190C19A916239BF4"
+    },
+    {
+      "path": "Cadoryx.Tests/ImportedMomentInspectionTests.cs",
+      "sha256": "5D01F80DA77F4491C0358638B42F84912449E3C723F3B2C0B18F8D2FB8804E25"
+    },
+    {
+      "path": "Cadoryx.Tests/IndependentAuthoringGraphTests.cs",
+      "sha256": "E40149C4F6DE44664E2215529878E905CDB4150AEBE7B97696D78A7054594D6A"
+    },
+    {
+      "path": "Cadoryx.Tests/IndependentNativeFreeformTests.cs",
+      "sha256": "ACAACC3492E55261A0F0A8A81FA8A12FBD1B18AB45A49021AABCD6B1CB4E99E3"
+    },
+    {
+      "path": "Cadoryx.Tests/IndependentNativeProjectionTests.cs",
+      "sha256": "EE6AE102E938C0EC8D3DE054FC086F4E08FD956A1E60FFE57B2B733D9B64548D"
+    },
+    {
+      "path": "Cadoryx.Tests/IndependentOccurrenceBindingsTests.cs",
+      "sha256": "EEA3E426465F3B80AF5D7CDCAF505FE4E2B442F7FF72E3E897C1D07A60496E17"
+    },
+    {
+      "path": "Cadoryx.Tests/InspectionRoleFeedbackTests.cs",
+      "sha256": "4D7E98518F134E8BA9920422AB5244E70BFC7A7B12D58EFE146991A1A94C7936"
+    },
+    {
+      "path": "Cadoryx.Tests/IsolatedDrawingTests.cs",
+      "sha256": "3B075EB26E90F12CF77575E8B28712C0EC33108713839644526779324C3802EF"
+    },
+    {
+      "path": "Cadoryx.Tests/IsolatedMetricThreadTests.cs",
+      "sha256": "C9A1FF8C375345E5E00E96E1C51243C1CB6970C63303487AFA6CC3C137026387"
+    },
+    {
+      "path": "Cadoryx.Tests/IsolatedNativeDeadlineCollection.cs",
+      "sha256": "104F1F9B2D1FDFBAB7B2C0D8BF92D8059293AF80DEA07B4DBF7BB65A89C05011"
+    },
+    {
+      "path": "Cadoryx.Tests/KernelTests.cs",
+      "sha256": "11F5BF5CC014F9C92386D43706113F2A589FF9B13E183BDD34D9DFF553B200B5"
+    },
+    {
+      "path": "Cadoryx.Tests/LocalFeatureEditorTests.cs",
+      "sha256": "F6EA211BD1C31EEE0B76599949E8620D3CC786F2BF6C19A1425AE13DF59C2070"
+    },
+    {
+      "path": "Cadoryx.Tests/LocalFeatureStorageTests.cs",
+      "sha256": "A4BEB58021EFDC991645C176D7BF75871163074EDBFCBB75903251241BDEA6D4"
+    },
+    {
+      "path": "Cadoryx.Tests/LocalFeatureTests.cs",
+      "sha256": "1A92C95341C7422758306A125C47A5AC476C4CF5FD998B699356EB9D04BF29C0"
+    },
+    {
+      "path": "Cadoryx.Tests/LocalHistoryInteropTests.cs",
+      "sha256": "F5C9AA4F84F4B509529FC3546B9053B04D8DEDAC63F732238AE546EF995BFDAC"
+    },
+    {
+      "path": "Cadoryx.Tests/M10AssemblyTests.cs",
+      "sha256": "63E24B5CFCC770E6C0365E23A57D121FF0DDEFB9BD0E51969A9BAC2B12859EFD"
+    },
+    {
+      "path": "Cadoryx.Tests/M11TechnicalDrawingTests.cs",
+      "sha256": "701140A6F26D191F582A19F11CE86ABA9A509B3F5850C6FAD38023E1500F0A06"
+    },
+    {
+      "path": "Cadoryx.Tests/M12InteractionTests.cs",
+      "sha256": "6899471D9CFE7450FF8FC0C5809C817FB4195BE026C9C85825E6EFE14BB5A338"
+    },
+    {
+      "path": "Cadoryx.Tests/M6EngineeringReviewTests.cs",
+      "sha256": "F5AB03BC8CC06C94D2D17B1C849D6641D1A016A0A49AA861741AD8710D5EB7AF"
+    },
+    {
+      "path": "Cadoryx.Tests/M6ReviewAndDeliveryTests.cs",
+      "sha256": "CC3025FC5736AD782A8CD9773F77DFA82A414F82030000F17D0C69A2A8B9F5FB"
+    },
+    {
+      "path": "Cadoryx.Tests/M6ScaleTests.cs",
+      "sha256": "5D1B25297B841B9548DC36393228CC23CF705962A4B8EF7D1A5D477C233D521E"
+    },
+    {
+      "path": "Cadoryx.Tests/M6SectionInterferenceTests.cs",
+      "sha256": "772334D8C8E0E237F0B97A215A01D70BC2E21EC721BA77493F568B41D30E7080"
+    },
+    {
+      "path": "Cadoryx.Tests/M6WorkspaceToolsTests.cs",
+      "sha256": "39108F169C6B5E194370A322EA3C6DD0FA4C86FEEB5B24A5635E251B8153827C"
+    },
+    {
+      "path": "Cadoryx.Tests/M7DeliveryTests.cs",
+      "sha256": "B3F729F96DF642843EC0055F2A9D86201CB564B02FC8AD6965BEED525AA0F827"
+    },
+    {
+      "path": "Cadoryx.Tests/M8SceneFitTests.cs",
+      "sha256": "D4BBC73739F1A893F688BA35288924FC875B9A760E15097133BEBC7D3E276D22"
+    },
+    {
+      "path": "Cadoryx.Tests/M8SolidHandleTests.cs",
+      "sha256": "8797CF00AB97D5A9380D6F7744402F21E09A5B614FA8C076A2A118E3CB0F4165"
+    },
+    {
+      "path": "Cadoryx.Tests/M9SketchRegionTests.cs",
+      "sha256": "175405FFCAF2A93E2DFD959625D2A1C884506A379FA432D5FE3B35B19968CBAE"
+    },
+    {
+      "path": "Cadoryx.Tests/ManufacturingDrawingTemplateTests.cs",
+      "sha256": "FCEE22B92C710927532B491AAD19530F549641DC136ADD239128ACBEF99D9116"
+    },
+    {
+      "path": "Cadoryx.Tests/MaterialAgentSelectionTests.cs",
+      "sha256": "3AA14027392C644864392F8682E4D9F50AC431DBD1648714248FFA3910531C14"
+    },
+    {
+      "path": "Cadoryx.Tests/MaterialAuthoringTests.cs",
+      "sha256": "1E95752474716DB70E2492D934E661B8849EA5A73C4B720ECC33007F37FFF785"
+    },
+    {
+      "path": "Cadoryx.Tests/MaterialCliTests.cs",
+      "sha256": "E6A92A0D6DC38B7EF3F54935573773537C043C3F784AD2EB7B81BCC96F86F6FD"
+    },
+    {
+      "path": "Cadoryx.Tests/MessagePackStorageTests.cs",
+      "sha256": "9B120354F9EFDFA6BE1592A76FF2FB2E00966B53872A51FF369AFCCEFF5BDE92"
+    },
+    {
+      "path": "Cadoryx.Tests/MetricThreadIntegrationTests.cs",
+      "sha256": "5DB37D2984FFF5D8409FE55B9C2C87A4A311F8EF088A57A6418A1986A3C6E0CB"
+    },
+    {
+      "path": "Cadoryx.Tests/MetricThreadSpecificationTests.cs",
+      "sha256": "21BCB8C0F788162995F0E5C7EB033B401F794E8F62433146723DA287A34DFB17"
+    },
+    {
+      "path": "Cadoryx.Tests/MirrorStyleTests.cs",
+      "sha256": "1851FEDAF14247A336F6D57FC923AB151D79EA17B46EEE0AF7B8C3B50134FA7D"
+    },
+    {
+      "path": "Cadoryx.Tests/MixedCurveSketchTests.cs",
+      "sha256": "F58102FDEA69F405A023A239B3CFF9C6A397E3C8455F97A9A39D35A24CDD2C45"
+    },
+    {
+      "path": "Cadoryx.Tests/ModelAgentTests.cs",
+      "sha256": "61ADA01CA76BCCF0E87EA6516A954DD3D18E0EC5A9D0126D2A1F8F9999A9B3F3"
+    },
+    {
+      "path": "Cadoryx.Tests/ModeledMetricThreadTests.cs",
+      "sha256": "3018D1AF9D7C243EDF47401B118D4154295F1B94729F66B2CE2DEA438D66F3FF"
+    },
+    {
+      "path": "Cadoryx.Tests/MultiInputHistoryTests.cs",
+      "sha256": "784335FD30F46C93165DA8A7136DD0DDD2FB8F4AA2DC4160CCB1146BB9F4297C"
+    },
+    {
+      "path": "Cadoryx.Tests/NativeOmittedGeometryReadTests.cs",
+      "sha256": "42E1C2004A0801AFD38E241BCF70BAC2E504D98E39EE85D3D16AC11A0BBBB291"
+    },
+    {
+      "path": "Cadoryx.Tests/NativeReadContinuationTests.cs",
+      "sha256": "9E3C7981C278E56AEF69D6FE3B8E4F4C5870E1498B77C0321756569C4DC0EDC3"
+    },
+    {
+      "path": "Cadoryx.Tests/NativeReadNavigationWireTests.cs",
+      "sha256": "E71477E2EF1305E6B95E9A687D25384B30DBF0700905A15906E368B6DE1FB502"
+    },
+    {
+      "path": "Cadoryx.Tests/NativeSelectionContextTests.cs",
+      "sha256": "5FB10124D4E91BAB8BCF1EC2B6016FBFC982E0BB05F501519DD58599E4A8B3AA"
+    },
+    {
+      "path": "Cadoryx.Tests/NativeWorkerStartedMarkerTests.cs",
+      "sha256": "84F90E0775A2DD357CD32664D18DF088784371178AF2445DC867F193A06DDD12"
+    },
+    {
+      "path": "Cadoryx.Tests/NestedIslandAndBezierTests.cs",
+      "sha256": "E1DFAA81E25C73444393B95FCFCE1D10748A6C21B776A4FBE8B0926B4D98F324"
+    },
+    {
+      "path": "Cadoryx.Tests/NotificationSettingsTests.cs",
+      "sha256": "CDFECB261BBCD956ADC1D903A7F3EDBE0634B6D9613A86A67ED3CF41D6CDBADE"
+    },
+    {
+      "path": "Cadoryx.Tests/OccurrenceGizmoMathTests.cs",
+      "sha256": "995D75E78AC1C85C169CC471ECA9C2BAD810B0444A7572616BF735D6FBB98B22"
+    },
+    {
+      "path": "Cadoryx.Tests/ParameterAgentTests.cs",
+      "sha256": "64BA1809E6B0929CDC69403E76CBD54DB30D8752A17DBAC7F0EE0A7BDAC76781"
+    },
+    {
+      "path": "Cadoryx.Tests/ParameterCommandTests.cs",
+      "sha256": "76C4FDA05658EEC9959A724814B04B56F75BA6B72D5A522201F09A34F9600168"
+    },
+    {
+      "path": "Cadoryx.Tests/ParameterExpressionTests.cs",
+      "sha256": "301092474A3177F1F1EA112080980BB7E7B33D7F8AA319D09F6F0B04D26A78EC"
+    },
+    {
+      "path": "Cadoryx.Tests/PartOccurrenceMaintenanceTests.cs",
+      "sha256": "4F7492517CC088B7446DA58F8976712DBC1E2ECCE1F843EA6D42087C24808284"
+    },
+    {
+      "path": "Cadoryx.Tests/PlanarFaceEditingAuthorTests.cs",
+      "sha256": "DB0206FF4239CE81E31024F3156553908FB5D46916B837003C5050E4335E6704"
+    },
+    {
+      "path": "Cadoryx.Tests/PlanarFaceEditingBoundaryTests.cs",
+      "sha256": "43E0135F1BED8DE98E0D88836B6E7ABDF149A824E54E624BBF404ADD1E97C4BA"
+    },
+    {
+      "path": "Cadoryx.Tests/PlanarFaceEditingDefeatureHistoryTests.cs",
+      "sha256": "C29C310E319D808D990B9437505E899E0D2238B8D143B17B7D0BE682A718821C"
+    },
+    {
+      "path": "Cadoryx.Tests/PlanarFaceEditingDefeaturePersistenceTests.cs",
+      "sha256": "7D3A35BB8C673EA644E4EBE0EA1BCAD232AEDB61ED480C4328FCEB0CFF3A285F"
+    },
+    {
+      "path": "Cadoryx.Tests/PlanarFaceEditingIntegrationTests.cs",
+      "sha256": "87F2C1838BE185293227BA9D84C7E6B2745D41CB27A096E64781C72CA130EAE9"
+    },
+    {
+      "path": "Cadoryx.Tests/PlanarFaceEditingTests.cs",
+      "sha256": "FB0CF3DD45ADB43F2F630B320F39A02554746041C504570D005BBA5454ED1C64"
+    },
+    {
+      "path": "Cadoryx.Tests/PolygonSketchHoleTests.cs",
+      "sha256": "3E9AC020A6A6D27F304C609A62023EBAFE6D13A07729544AD5C1646C3C569B70"
+    },
+    {
+      "path": "Cadoryx.Tests/ProviderIdentityReinspectionTests.cs",
+      "sha256": "BBE6EC5A72ACF97C1A35972E41B170346FF90760385AB37ED41F4D30288970A6"
+    },
+    {
+      "path": "Cadoryx.Tests/RadialMenuSettingsTests.cs",
+      "sha256": "3CE3C68895EE0E10F47F8CDD9DA887CE6A743223B931C0F593F913FF15B320E7"
+    },
+    {
+      "path": "Cadoryx.Tests/RecoveryTests.cs",
+      "sha256": "525D4E17AFBF7C99BCCC9F178BD215986665996FAF82BA750CEF53A3E8D3F5E8"
+    },
+    {
+      "path": "Cadoryx.Tests/RepetitionHistoryTests.cs",
+      "sha256": "EFEF9BF20A3884E174B9AA968EA7C2936C7261DFEA6C1AC97047A770FCF59C99"
+    },
+    {
+      "path": "Cadoryx.Tests/RepetitionStyleTests.cs",
+      "sha256": "16BF67EFDCA8F7B611C570E1C5F35E0E82C6991EFC6F489EA23A9BF9571A6C1C"
+    },
+    {
+      "path": "Cadoryx.Tests/RepetitionTests.cs",
+      "sha256": "5C7D47B510B8CDE4C14331F6307CBA99AB0D67F6F26F0D4A7F360ED0C90C8D20"
+    },
+    {
+      "path": "Cadoryx.Tests/RevolveAxisTests.cs",
+      "sha256": "EC5CCD73C9F148CD2BFC3575F6A140F83D803DEF7F88138C5D46848F135F55DC"
+    },
+    {
+      "path": "Cadoryx.Tests/SectionHatchRuleTests.cs",
+      "sha256": "6A5CC8C89F0BB0E3006B99532A3C3095DDB4A6A014892D90049EF626AA199DBF"
+    },
+    {
+      "path": "Cadoryx.Tests/SectionHatchingTests.cs",
+      "sha256": "325A7FFB0B82F028D827BF13A5B851EC1BA8A64375DEADDA0B870DE9B1424162"
+    },
+    {
+      "path": "Cadoryx.Tests/SectionMigrationTests.cs",
+      "sha256": "ED6EBB96ED038A0B7E11B14EC5F4F44FA65567E7334C6FFCAB5647B76C58ACFC"
+    },
+    {
+      "path": "Cadoryx.Tests/SerializedGeometryOccurrenceTests.cs",
+      "sha256": "E2767CB3CF1641D498AD5CEC9375A053519A2CDB9C2FAF240724574BDF0136FF"
+    },
+    {
+      "path": "Cadoryx.Tests/SerializedGeometryReferenceTests.cs",
+      "sha256": "10AE3873C87FF484C9CFCC76E04DDE209C4C017423D7992925D4EE89D20D1B7F"
+    },
+    {
+      "path": "Cadoryx.Tests/SerializedOccurrenceConsumerTests.cs",
+      "sha256": "EC9BAE8AA8E70614B2C297C5FBC0FC174CB638134CE6DBEFFF00C4A2B060C0C5"
+    },
+    {
+      "path": "Cadoryx.Tests/SketchAngularConstraintTests.cs",
+      "sha256": "7727AB90D36664CD342D6A61D21C0741EF65B9E95CE217D7BD09E98F3F33DAD7"
+    },
+    {
+      "path": "Cadoryx.Tests/SketchArcRadiusTests.cs",
+      "sha256": "221A1408467CD676D8D7E8AEB052B8A7E54901D117174FDAB516ACBCB8657608"
+    },
+    {
+      "path": "Cadoryx.Tests/SketchAssociationStorageTests.cs",
+      "sha256": "8DE2368D9723395E6FEAFD14FDF99DC15FB7879DE16033B229FBC027EB9B89B3"
+    },
+    {
+      "path": "Cadoryx.Tests/SketchAssociationTests.cs",
+      "sha256": "F930AF2293C032B2096C0F878A7B13EEDFFE32CF8975963394B33FB8CA7A7F53"
+    },
+    {
+      "path": "Cadoryx.Tests/SketchAssociativeEndpointStorageTests.cs",
+      "sha256": "E635CA355F2899FF64809463F953FE188ED5D3747187A2F64E5CA5ABF3AE9352"
+    },
+    {
+      "path": "Cadoryx.Tests/SketchAssociativeEndpointTests.cs",
+      "sha256": "B9797CC0783D153BB2BDE65C2A25B34B65105BDA3680623360B568E9579DF0E4"
+    },
+    {
+      "path": "Cadoryx.Tests/SketchAssociativeEndpointWorkflowTests.cs",
+      "sha256": "FE44A944826C09C1C36681B94DB2FA45A2ACD0266B40BFDAFCED8D82D7EC82ED"
+    },
+    {
+      "path": "Cadoryx.Tests/SketchBasicRelationTests.cs",
+      "sha256": "2BEA93CA8F6661E7648EF61EEA1426FBE3AB1A009D33284BDF7247DD55E0BC0D"
+    },
+    {
+      "path": "Cadoryx.Tests/SketchCircularContactIntegrationTests.cs",
+      "sha256": "9550B6BB5E308C411DED28FAD6E2822786A02FCA5E4EA79D2144978013A8DD1B"
+    },
+    {
+      "path": "Cadoryx.Tests/SketchCircularContactTests.cs",
+      "sha256": "A4EAA1E0D6105B6EB0FD2E690516D4258C4737FB3EB8A8EDB7997A69B5867E9D"
+    },
+    {
+      "path": "Cadoryx.Tests/SketchCommandTests.cs",
+      "sha256": "A90A735E4445294264795EF797A628823946E53680C5E8D24C0C0D5C329B63E9"
+    },
+    {
+      "path": "Cadoryx.Tests/SketchConicAuthoringTests.cs",
+      "sha256": "564E4E1E4391E8B58BB85D5839C42CF7303C87D963116137D0081E01B301E8E2"
+    },
+    {
+      "path": "Cadoryx.Tests/SketchConicIntegrationTests.cs",
+      "sha256": "5D0626220B8179E4288E7B437A7B92AF63D71C71EEE2AC12B8BDC13894E4DCE3"
+    },
+    {
+      "path": "Cadoryx.Tests/SketchCornerEditingTests.cs",
+      "sha256": "9CE3C21E2B6DCE924FB24601C0E4F1C1F4B720E84B01C431B074390E5773BB10"
+    },
+    {
+      "path": "Cadoryx.Tests/SketchCurveExpressionTests.cs",
+      "sha256": "89EC2BF5B34B31EB0E524F0002A62A9AE2F77A5B6D31883288B125426BC5493E"
+    },
+    {
+      "path": "Cadoryx.Tests/SketchCurveParameterTests.cs",
+      "sha256": "0B3D59F879C5EDD31F140C5C7FFEF1D03ED4B572464F8A4624431205B9E0B66D"
+    },
+    {
+      "path": "Cadoryx.Tests/SketchEditorTests.cs",
+      "sha256": "35AE76CD0A811A527C68F8FF084153F4B4C4DD55423AACF41B9C8DBAB056C6D2"
+    },
+    {
+      "path": "Cadoryx.Tests/SketchEllipseProjectionTests.cs",
+      "sha256": "8679BDF3E79180C19B16FB2D02D789C35CD167BE6BCB11E01895D553C09659EF"
+    },
+    {
+      "path": "Cadoryx.Tests/SketchEndpointCurvatureIntegrationTests.cs",
+      "sha256": "C41517CDD04D5825FBA59689B39D34715459B8EE49D56A49F250975BB930ACBC"
+    },
+    {
+      "path": "Cadoryx.Tests/SketchEndpointCurvatureTests.cs",
+      "sha256": "74A205FB30A2EDF9A150BA371074BB8485738C893DAAD36795D2271466634ABF"
+    },
+    {
+      "path": "Cadoryx.Tests/SketchEndpointTangencyTests.cs",
+      "sha256": "94771B0CD5D44750A5658DF1731F8608C7FE5AABF618687BD6E077D49279120C"
+    },
+    {
+      "path": "Cadoryx.Tests/SketchExactEndpointTests.cs",
+      "sha256": "DAD161254855BB5AD6B7D9586089C5EE9C29032B5730D9D7EE25D414F80F3160"
+    },
+    {
+      "path": "Cadoryx.Tests/SketchExactRegionRelationTests.cs",
+      "sha256": "F1789976225E02739FF40FC59340288C0B94DA283199FF7B85B27591B2C55F21"
+    },
+    {
+      "path": "Cadoryx.Tests/SketchExpressionConsumerTests.cs",
+      "sha256": "52E4892152DEBE26373DA62774A2235E94F6B82595E9A544B58E53388482E5A0"
+    },
+    {
+      "path": "Cadoryx.Tests/SketchExpressionContactStorageTests.cs",
+      "sha256": "AE1FCA1365943B56E4AF1F81F7D86535DAB0A8CD20ACAA9DC2623D498ACB33A3"
+    },
+    {
+      "path": "Cadoryx.Tests/SketchExpressionContactTests.cs",
+      "sha256": "29FDFC8C358B59A746D3C8BCA3F32FB90464D5575E4CD355492DD8D3EA167AF7"
+    },
+    {
+      "path": "Cadoryx.Tests/SketchExpressionCurveEditingTests.cs",
+      "sha256": "4AD9B6A6AF155EAEA24F53054614CB6A6B28D0AF2759B79236927CC298D94A00"
+    },
+    {
+      "path": "Cadoryx.Tests/SketchExpressionCurvedAssociationTests.cs",
+      "sha256": "BF465CAA4D3E903615057AD741D4459309ECBB4751F2297F482251064CFECDDE"
+    },
+    {
+      "path": "Cadoryx.Tests/SketchExpressionCurvedConsumerTests.cs",
+      "sha256": "FBFB5C89F2F3FC5A24DEB713B9D544A766DFFCBEA90E1CF95DD758D298708877"
+    },
+    {
+      "path": "Cadoryx.Tests/SketchExpressionCurvedExchangeTests.cs",
+      "sha256": "7579A60823FC383271D31AF172DA7ABE8AEA885C526297A15B985CCC42035613"
+    },
+    {
+      "path": "Cadoryx.Tests/SketchExpressionCurvedRaceTests.cs",
+      "sha256": "C9933255267247EB01C2C2AE6CFB2CF09AA3F25F682AF053E4E91770B7E0454D"
+    },
+    {
+      "path": "Cadoryx.Tests/SketchExpressionDifferentialTests.cs",
+      "sha256": "A114B208BA2536A4A23CF877F5F73151385B4D8B0D3329D13A10109AA03A7BC3"
+    },
+    {
+      "path": "Cadoryx.Tests/SketchExpressionDistanceDrivenEditorTests.cs",
+      "sha256": "225C220C1B6C13E91EFC0E6FE2A087644FEC1AF1509569978EC6256963C6B8D1"
+    },
+    {
+      "path": "Cadoryx.Tests/SketchExpressionEntityTests.cs",
+      "sha256": "52947F9149B8F5271ED1100DC1A687D1D9978207250952780796416FA79A682A"
+    },
+    {
+      "path": "Cadoryx.Tests/SketchExpressionProfileTests.cs",
+      "sha256": "4279104AD247D328C81EEBEDA5206D505CEF9E0217B3A44106DC58ED99C4D697"
+    },
+    {
+      "path": "Cadoryx.Tests/SketchExpressionRegionKernelTests.cs",
+      "sha256": "CD1D48C16758489410C0C9594423794B17AF58D17995730EF4226F2681049227"
+    },
+    {
+      "path": "Cadoryx.Tests/SketchExpressionRegionSelectionTests.cs",
+      "sha256": "78AA65F192276B838F7C02ECC63754C67D7230228B1F0B620D382BB23B6DC368"
+    },
+    {
+      "path": "Cadoryx.Tests/SketchExpressionSectionTests.cs",
+      "sha256": "574E80FB8789F9035BEF317B7E8F145F3141BF8358CB7937C31BC25E05F4563D"
+    },
+    {
+      "path": "Cadoryx.Tests/SketchFilletTests.cs",
+      "sha256": "9ED55DAB452DAE31639498D7F6C4C88AE234E472F4101ADC50BAD51D70F999D8"
+    },
+    {
+      "path": "Cadoryx.Tests/SketchFiniteParametricContactIntegrationTests.cs",
+      "sha256": "DE4F4B26B1AD17A3726C9114FD97AB5E5E04F03686C05DC9ADA507BB9F971980"
+    },
+    {
+      "path": "Cadoryx.Tests/SketchFiniteParametricContactSolveTests.cs",
+      "sha256": "86F39827412D13E283E7BB306A8B79D24B40C37CAE90DE0976B246B4A28286FB"
+    },
+    {
+      "path": "Cadoryx.Tests/SketchFiniteParametricContactTests.cs",
+      "sha256": "6E8960E1B00D87565ECD9F95BABC1C000F7F38932C2C102A04C101B40C840462"
+    },
+    {
+      "path": "Cadoryx.Tests/SketchFreeformAuthoringTests.cs",
+      "sha256": "8151351337D8DD95A96E8DCB2D2C77EBA06BD97C12833AF120AE7F94292F9278"
+    },
+    {
+      "path": "Cadoryx.Tests/SketchFreeformConsumerTests.cs",
+      "sha256": "23EF178006F1FEE0DA09E2D8074187B65DEE4DE1C96194D6D205695008C72B86"
+    },
+    {
+      "path": "Cadoryx.Tests/SketchFreeformGeometryTests.cs",
+      "sha256": "22BABA3BA07EE67C1962C90E01DD90EEF71733DD6D27E969A5DAE17981143C00"
+    },
+    {
+      "path": "Cadoryx.Tests/SketchFreeformProjectionTests.cs",
+      "sha256": "3EA33DF3EC70F2777F0CD510B45A9BC5278595680AAB6C7F9626242CBB6B2CB4"
+    },
+    {
+      "path": "Cadoryx.Tests/SketchLegacyPointFixture.cs",
+      "sha256": "F57FE36312EF06542C62D5C3FF940FC9FD175F59E1936521AFF32653CE4A7CE6"
+    },
+    {
+      "path": "Cadoryx.Tests/SketchLineEditingTests.cs",
+      "sha256": "D743FE92EFD19DBB1FF0C2E3C53A78D3D879D66010E035F44116BA153D53E8DC"
+    },
+    {
+      "path": "Cadoryx.Tests/SketchLocalAnalysisTests.cs",
+      "sha256": "861181663D903CE8A23145E4F81348D89E912C7B8C5A12E395258ED6084AACB2"
+    },
+    {
+      "path": "Cadoryx.Tests/SketchLoopOffsetTests.cs",
+      "sha256": "D5B4F33BB23FF24C78313E839862B7F8BC5BAA542224283BF979E170D6389127"
+    },
+    {
+      "path": "Cadoryx.Tests/SketchMixedFiniteContactIntegrationTests.cs",
+      "sha256": "ADD069DE99871075804473A77E9BB245A3268D8D9E4940B5EAFD0179B3BFC5EC"
+    },
+    {
+      "path": "Cadoryx.Tests/SketchMixedFiniteContactTests.cs",
+      "sha256": "9BF44C1ABBFA8841EBB75A40B4042D139DFAFD0CA9337148DC814F1163D4E3DF"
+    },
+    {
+      "path": "Cadoryx.Tests/SketchNativeEndpointTests.cs",
+      "sha256": "515F03AA78BB3DFCCE0E74CADF4862AA36F515E424BC8A2C583307F56217BE47"
+    },
+    {
+      "path": "Cadoryx.Tests/SketchNativeProjectionEditorTests.cs",
+      "sha256": "F1E96E19F0B15703D5664125F3F715A38D750354E5C303D6DC050CBC1572C0B4"
+    },
+    {
+      "path": "Cadoryx.Tests/SketchNativeProjectionTests.cs",
+      "sha256": "B96C7E02C24FA1C28DC6174C8B92919A5CB153666586298DF3C20918D38A093B"
+    },
+    {
+      "path": "Cadoryx.Tests/SketchOffsetJoinTests.cs",
+      "sha256": "58AD2A98283781D018E84B88B4D52DC3C607DADD97EE1FE6593DD4418B9FA625"
+    },
+    {
+      "path": "Cadoryx.Tests/SketchParametricTangencyTests.cs",
+      "sha256": "6527496822A3AFA2E4DE26F358A572659C51AE1A50ABD5455A0363DF6347D0F0"
+    },
+    {
+      "path": "Cadoryx.Tests/SketchPeriodicIntervalTests.cs",
+      "sha256": "621CE11F10BE6159C22B42C55260E59B8F4CEE06A3D8A84617C55F27DEA3D14A"
+    },
+    {
+      "path": "Cadoryx.Tests/SketchPointOriginTests.cs",
+      "sha256": "324346CA0CDBB0FA298B7D28CC43076C9F392782550E90D05BC637AF0DE4CB77"
+    },
+    {
+      "path": "Cadoryx.Tests/SketchProjectionTests.cs",
+      "sha256": "0D816CA880041D0A61ECBA6FFF03893FAB0A1475091913D8F20BF622184FA933"
+    },
+    {
+      "path": "Cadoryx.Tests/SketchRegionAuthorStorageTests.cs",
+      "sha256": "CBF21C59635984A56D0D94CBABB4A04E215D236438AF449735BB7F5678AF33D2"
+    },
+    {
+      "path": "Cadoryx.Tests/SketchRegionDynamicSolveTests.cs",
+      "sha256": "6A98E87E79A97FC7E92BC811A879BF50B0EE4CCFA804D97D60C676A3332BAFD7"
+    },
+    {
+      "path": "Cadoryx.Tests/SketchRegionIndependentMixedChartTests.cs",
+      "sha256": "E04D8D364B650745CCF7B4EADCE012081E1136E864C4FE0B6604595431A4043B"
+    },
+    {
+      "path": "Cadoryx.Tests/SketchRegionIntersectionSensitivityTests.cs",
+      "sha256": "1D43F46C280DE43C928D1BEEB1E208360B48E238F007C9E1BBB3FAB7F4821C68"
+    },
+    {
+      "path": "Cadoryx.Tests/SketchRegionJointAuthorStorageTests.cs",
+      "sha256": "D4343C76155A8C1DAA44DEA34F7A2254C1D6D26964208B325E94DB80470C76F3"
+    },
+    {
+      "path": "Cadoryx.Tests/SketchRegionJointWitnessTests.cs",
+      "sha256": "C33678BCCE0EEEA8423045EFE358048B13933051EEACCEEB1CDEE4035B5B676B"
+    },
+    {
+      "path": "Cadoryx.Tests/SketchRegionLivePointCoupledTests.cs",
+      "sha256": "DC3E6E6074586545C8322FF3978BD9838B9751C7E219C7D8C737E107C65EB8F7"
+    },
+    {
+      "path": "Cadoryx.Tests/SketchRegionMixedDependencyGuardTests.cs",
+      "sha256": "AA003117CA5DE81AD690842F9C953030BE0A879E0A38B95EAA24D4D3F8E6F8F2"
+    },
+    {
+      "path": "Cadoryx.Tests/SketchRegionNaturalChartTests.cs",
+      "sha256": "882BB9745F78851D26C069A7BDE64566BFDF0D332B6127D2F51492A896F5E324"
+    },
+    {
+      "path": "Cadoryx.Tests/SketchRegionNaturalFreeformChartTests.cs",
+      "sha256": "4C8BFA9C6F5C312F2BD3ED3D736D7FA1D68881F4391EAFF0C2DD08A5CC8C4821"
+    },
+    {
+      "path": "Cadoryx.Tests/SketchRegionNaturalParameterTests.cs",
+      "sha256": "4A1739BA7883848E5A98337C5DFDD24EB741D80AFCE3E56A33596EB5C4DAE911"
+    },
+    {
+      "path": "Cadoryx.Tests/SketchRegionOffsetTests.cs",
+      "sha256": "93834AD05FC437F239B42684C15FBE810654859CA403FABA410A72731C61947C"
+    },
+    {
+      "path": "Cadoryx.Tests/SketchRegionParameterTests.cs",
+      "sha256": "92E3E1B137ADBBE8161744018780DF990ED522C010EB0771473B4D8014E322D6"
+    },
+    {
+      "path": "Cadoryx.Tests/SketchRegionPointCoupledParameterTests.cs",
+      "sha256": "F76B1B119F62BAFFC133A31468230CFED610682227BCA90BA023C979A3EA19EF"
+    },
+    {
+      "path": "Cadoryx.Tests/SketchRegionPointCoupledTests.cs",
+      "sha256": "EC8915EFA1AF2ECDA6EFF5C39542346E80CC691391555534777EE8AB63B97518"
+    },
+    {
+      "path": "Cadoryx.Tests/SketchRegionPrescribedAuthorRejectionTests.cs",
+      "sha256": "2A6ABCA2B004495433232054FCB87FAB0E8484099568277CBF15EF83E8DCAA0D"
+    },
+    {
+      "path": "Cadoryx.Tests/SketchRegionReselectionTests.cs",
+      "sha256": "2D9EB9F5511631CE0AE77605A637AF08A5C1E8077600BD7C4636A713B4EDA3B0"
+    },
+    {
+      "path": "Cadoryx.Tests/SketchRegionReselectionWorkflowTests.cs",
+      "sha256": "EA296EC6A67ECE5626B9D2C795E9D3A8A4DA424C00ACFD744B94CFF4E82CBF0A"
+    },
+    {
+      "path": "Cadoryx.Tests/SketchRegionSingleLoopMixedNativeTests.cs",
+      "sha256": "D0E497F6A58809837C4E64384327774B52A82C37188223F97C05E9E173CF63BE"
+    },
+    {
+      "path": "Cadoryx.Tests/SketchRegionSingleLoopNaturalBoundaryTests.cs",
+      "sha256": "40278D4FDCF86166DAEBD7406E00EEA7DFB21824E6633403327E233351B1491F"
+    },
+    {
+      "path": "Cadoryx.Tests/SketchSlidingContactAuthoringTests.cs",
+      "sha256": "B02B18FCEB1BF0292866144C7468D20E0A3350BA65C0355A45D42DD7FBE59863"
+    },
+    {
+      "path": "Cadoryx.Tests/SketchSlidingContactDerivativeTests.cs",
+      "sha256": "2AF515AB25DC1016EE98438DDCE3DF6CB759AC6D46B44C963505A829D4BBC9A4"
+    },
+    {
+      "path": "Cadoryx.Tests/SketchSlidingContactGraphTests.cs",
+      "sha256": "68276CAB5224B3C22395612CAB8EE2CAC9C95A9BA45E496CCA29C20EE90D0DDA"
+    },
+    {
+      "path": "Cadoryx.Tests/SketchSlidingContactIntegrationTests.cs",
+      "sha256": "B12F2FAB67543A77AED1A1AD98E2F21CAD958B0D26B4615EBAE9B8ED2F9A98B1"
+    },
+    {
+      "path": "Cadoryx.Tests/SketchSlidingContactQueryTests.cs",
+      "sha256": "45CE758D49DD8D4F5932A2FD8BBB0B33697B7FD6D647B34AFD2495CDE0353037"
+    },
+    {
+      "path": "Cadoryx.Tests/SketchSlidingContactSolveTests.cs",
+      "sha256": "F0316C29A2CA9110910722ED2FF654D644C3B4A3830C44CB2E9C5BF8F7DB42AD"
+    },
+    {
+      "path": "Cadoryx.Tests/SketchSolverIsolationTests.cs",
+      "sha256": "E7FD78415948486C37FB4CC93B097CC748DFF5CDB184E104CE48A9FDD342CA0E"
+    },
+    {
+      "path": "Cadoryx.Tests/SketchSolverTests.cs",
+      "sha256": "E099D3E40B000DBF578289862F737ED239CFE6FC945EAF61C7D5E0F250BA68FA"
+    },
+    {
+      "path": "Cadoryx.Tests/SketchStorageTests.cs",
+      "sha256": "753843F6FCDB6195B200C16CD8183D889802C7A1AC75EC24A56279F4F7B21554"
+    },
+    {
+      "path": "Cadoryx.Tests/SolidOffsetTests.cs",
+      "sha256": "7562922AE63D9FA36FB94D2B71B614DC689AA22BF178369A6E115BAE3CD695EC"
+    },
+    {
+      "path": "Cadoryx.Tests/StorageFaultMatrixTests.cs",
+      "sha256": "ADFEC647A151F475EED1916108760B8F33BE98AD96361D6A31D247419CED010F"
+    },
+    {
+      "path": "Cadoryx.Tests/StorageTests.cs",
+      "sha256": "875458D5867805F103AC1507474FAA92FB5FDB6E771E2227589CCF647E75C1E3"
+    },
+    {
+      "path": "Cadoryx.Tests/ToolPresentationTests.cs",
+      "sha256": "48B1092524CFA437B94641D27EBED713A3A2E9E9A2CCBF973C0A156B6A9CEDF9"
+    },
+    {
+      "path": "Cadoryx.Tests/ToolSessionTests.cs",
+      "sha256": "75EA1E8F75430DD6C13F5DEF61BA8C607D9F6BAAFE8065B2EC9BE2C5C1E24A8E"
+    },
+    {
+      "path": "Cadoryx.Tests/TopologyHistoryCompositionTests.cs",
+      "sha256": "E9723860CCC8D4655FEB9FE7B2E5B19CCF67DCD80F087784673AA1B1546855E4"
+    },
+    {
+      "path": "Cadoryx.Tests/TopologyHistoryTests.cs",
+      "sha256": "765225EC055F48FF8F720602F63E8AA3569F2FAF14607E7D8F7205081447529D"
+    },
+    {
+      "path": "Cadoryx.Tests/TopologyReferenceTests.cs",
+      "sha256": "6B2D8D635B59393890542D12786B5D71804C799E28DD6496BC85083DCCD5B3E6"
+    },
+    {
+      "path": "Cadoryx.Tests/TopologyStorageTests.cs",
+      "sha256": "DAE79E070BA6E71CAA251CA1C18963AE0292219007A80864939BBC297B063DBA"
+    },
+    {
+      "path": "Cadoryx.Tests/ViewCubeSettingsTests.cs",
+      "sha256": "083071696C1DED15FB8B47EB4412C1DA962318B9F740B5E2198511101CB896D3"
+    },
+    {
+      "path": "Cadoryx.Tests/WorkspaceAgentTests.cs",
+      "sha256": "2C6A11404985F318FD7C0B7208F9DD76962DD97C2CA65975ACC046B2719B30E0"
+    },
+    {
+      "path": "Cadoryx.Tests/WorkspaceIdentityFeedbackTests.cs",
+      "sha256": "D8304BDE98C23DD6971B9AA347D47DB6A4AE61C873085FCBC89267AE651631B4"
+    },
+    {
+      "path": "Cadoryx.Tests/packages.lock.json",
+      "sha256": "CCBB81DBC687F5EA831407CD675DA2823F963EA749FC90C98D3D52B53B3D87D1"
+    },
+    {
+      "path": "Cadoryx.ViewModels.Services/Cadoryx.ViewModels.Services.csproj",
+      "sha256": "61E3F2D043E37F0DB4BE1D8083DD31BEBBFBB8FDE2CF027327DB2556C16BC385"
+    },
+    {
+      "path": "Cadoryx.ViewModels.Services/Events/ThemeChangedEvent.cs",
+      "sha256": "70802616E292379BD1109CEE65F77C99F6FCEE6DB9440862B96E5D0D7110176E"
+    },
+    {
+      "path": "Cadoryx.ViewModels.Services/Platform/Dialogs/IDialogService.cs",
+      "sha256": "1265894ED9292D7B4A31A4268026C56E0592CFC66269984A997669B6144E869F"
+    },
+    {
+      "path": "Cadoryx.ViewModels.Services/Platform/ICadFileDialogs.cs",
+      "sha256": "C697A774393C64A5AFE45B74A058CA53A4B49D91445C5C9322639A0623D3309B"
+    },
+    {
+      "path": "Cadoryx.ViewModels.Services/Platform/IRecoveryDialogService.cs",
+      "sha256": "A6DDFEF02836A253C0A493218545BF43B112236E99DC59EA0EFDC9904341D99D"
+    },
+    {
+      "path": "Cadoryx.ViewModels.Services/Platform/Notifications/CadMessageLog.cs",
+      "sha256": "F3AC45093D069FACF8F885A9C0C3376A7A3D66E90E686093F0EE7DD7DE022981"
+    },
+    {
+      "path": "Cadoryx.ViewModels.Services/Platform/Notifications/ICadNotificationService.cs",
+      "sha256": "AE2BB0942DD559A6B6FC797D4FC63B8C2190A81209B59D471B084D5F28D0D8CF"
+    },
+    {
+      "path": "Cadoryx.ViewModels.Services/Platform/Settings/CadoryxApplicationSettings.cs",
+      "sha256": "039EB379E18F5AF05808578F7AFB4A8BC51827A0A6B3DF16B9EBAA17A37F5ED4"
+    },
+    {
+      "path": "Cadoryx.ViewModels.Services/Platform/Settings/CadoryxRadialMenuSettings.cs",
+      "sha256": "8DD6FF5D40009E56B4EDFA7304DC303F7C61D3B39E95CCFB0EDAB74AE7FA416A"
+    },
+    {
+      "path": "Cadoryx.ViewModels.Services/Platform/Settings/IApplicationCultureService.cs",
+      "sha256": "8FCBFEB52A18E2647C2CFEE6C17B04CDEDC9EB01B6AF71E531333873491BE01F"
+    },
+    {
+      "path": "Cadoryx.ViewModels.Services/Platform/Settings/IApplicationSettingsDialogService.cs",
+      "sha256": "22EB40102AF156B3B5B949528426FBE3AF06E638DBA947E0D38AD9BA4708B35C"
+    },
+    {
+      "path": "Cadoryx.ViewModels.Services/Platform/Settings/IApplicationSettingsStore.cs",
+      "sha256": "DD240CD2E06E481AC06FF2A30068CA1CF00F1571F640816C512443C37017F651"
+    },
+    {
+      "path": "Cadoryx.ViewModels.Services/Platform/Settings/IApplicationThemeService.cs",
+      "sha256": "328662C2CA07C0AFCCEA3FE230CEE825AE8656A4E31546D65FD0F14EC513B4A2"
+    },
+    {
+      "path": "Cadoryx.ViewModels.Services/Platform/Toolboxes/IToolboxIconProvider.cs",
+      "sha256": "3813E26A2C8401F58878C9D35AC657BDAE80C97E90CDD90C174ED61BDC282825"
+    },
+    {
+      "path": "Cadoryx.ViewModels.Services/Platform/ViewServiceIdentifiers.cs",
+      "sha256": "E49925207103C8A518383C232F9F0019592DFEA2C7CB487059F1F7FB9C595432"
+    },
+    {
+      "path": "Cadoryx.ViewModels.Services/packages.lock.json",
+      "sha256": "A4364D81A6DE2707D66FBCED18FBBC926C882AB96E1D1AEBBB17E871285B9D75"
+    },
+    {
+      "path": "Cadoryx.ViewModels/AssemblyConstraintsViewModel.cs",
+      "sha256": "A172A210165864F2D340B38710BDA66196936A907C2F6F6A547D84A85B1ED210"
+    },
+    {
+      "path": "Cadoryx.ViewModels/AssemblyRepetitionEditorViewModel.cs",
+      "sha256": "840596F503E5A1913509876B358FCF173F7DECB6CF40CE1439DC5DF00C381DE1"
+    },
+    {
+      "path": "Cadoryx.ViewModels/CadDocumentViewModel.cs",
+      "sha256": "4A33DB7C672282EA681B8FEC4722B6364E89FEA47688EF560B24916B38E86193"
+    },
+    {
+      "path": "Cadoryx.ViewModels/Cadoryx.ViewModels.csproj",
+      "sha256": "9D565B33E146448BF84DF49D9019655BED7F4CA39634580DE039C71FC0984744"
+    },
+    {
+      "path": "Cadoryx.ViewModels/ContourLocalEditorViewModel.cs",
+      "sha256": "572DB8BCA24D266B74CAB0C77A11C511FFE076ADCBB77FDA4BA1F9FD19963F37"
+    },
+    {
+      "path": "Cadoryx.ViewModels/ContourProgramViewModel.cs",
+      "sha256": "CBE32C8CD3857AF3DBF0FFAF0F580320BE54AEAAC43CD752004D97AE10DEA214"
+    },
+    {
+      "path": "Cadoryx.ViewModels/DatumConstructionEditorViewModel.cs",
+      "sha256": "5C8A5BA63F48A218EF315A03752D9D6E99A62C42D968497696DADD1718DA0A27"
+    },
+    {
+      "path": "Cadoryx.ViewModels/DatumEditorViewModel.cs",
+      "sha256": "32EDE4EBAEC9E040F54739130932A7858B19DDA94B961426BB8DF5E8F4513578"
+    },
+    {
+      "path": "Cadoryx.ViewModels/DeliveryViewModel.cs",
+      "sha256": "6A8C0E77C98F795C45CDF722890504BE832DAD0B4A49CB39A93589D135DDA99F"
+    },
+    {
+      "path": "Cadoryx.ViewModels/DocumentResourcesViewModel.cs",
+      "sha256": "FCCF2344ED86A7A9AD76A5B5A155D3EBA4F79411A08B0D9B77A766B5AEE197ED"
+    },
+    {
+      "path": "Cadoryx.ViewModels/DocumentReviewOperations.cs",
+      "sha256": "CAB58C3BC9DF1D5293C2672DD1B82D8463DAA0CF6AC645C492328C997FA31F66"
+    },
+    {
+      "path": "Cadoryx.ViewModels/DocumentReviewViewModel.cs",
+      "sha256": "C8C3D9DF98831F4BE5C7349FEC032E0AE91C70C77E3A8727E459BC5EA3B70F16"
+    },
+    {
+      "path": "Cadoryx.ViewModels/EngineeringReviewViewModel.cs",
+      "sha256": "5E704F0B3ECCCC9CC30AC0811C23D166DF2C55759E21FFB6F92354209653F9ED"
+    },
+    {
+      "path": "Cadoryx.ViewModels/ExtrusionEditorViewModel.cs",
+      "sha256": "0F498581A08FE6154B06B2A642C71987CB49612E48B3B531DE6C1506EF500639"
+    },
+    {
+      "path": "Cadoryx.ViewModels/FaceFeatureEditorViewModel.cs",
+      "sha256": "09734752E85DEB8FF265FA54829361F4B813461949904841564A6CF2A092270B"
+    },
+    {
+      "path": "Cadoryx.ViewModels/GuidedEditorViewModel.cs",
+      "sha256": "67BE242A0838B939F48053CC3B7CF3FDAD3CC03052CC110DD80D7F607DC2D2F8"
+    },
+    {
+      "path": "Cadoryx.ViewModels/HistoryQueryViewModel.cs",
+      "sha256": "A27B6A7C8BCF52F2084E71CDB2C5CEE5A89C194FFCDEC9D83AF348D1BE28B78C"
+    },
+    {
+      "path": "Cadoryx.ViewModels/HoleEditorViewModel.cs",
+      "sha256": "90576FEC77944F48F4472B0955ADD15EBB9F7072CAD2E861101FE88A854746E5"
+    },
+    {
+      "path": "Cadoryx.ViewModels/InstancePlacementViewModel.cs",
+      "sha256": "60BCB5A04ED3ABA293FE4291E4DC0B40FD15FB4FCD89363E4EAE20B095FCA8B4"
+    },
+    {
+      "path": "Cadoryx.ViewModels/LocalFeatureViewModel.cs",
+      "sha256": "3F62472ABAC01D25C80D5312DF52883B4F867D68910573EBC7D3B7DF9416D207"
+    },
+    {
+      "path": "Cadoryx.ViewModels/MainWindowDelivery.cs",
+      "sha256": "FAE99F7825C532AB642328EC6CDD4853123D236B78A379BC158C64A7F1CE76B5"
+    },
+    {
+      "path": "Cadoryx.ViewModels/MainWindowDrawings.cs",
+      "sha256": "4ADC1C19A662BD36F1875060895007F1166CA4DC775C39DA32B065C8877DCD9E"
+    },
+    {
+      "path": "Cadoryx.ViewModels/MainWindowViewModel.cs",
+      "sha256": "0DAD5F6FACC032F3266E0715EA62BCD0079FDCEF99477841CFA02B151989979B"
+    },
+    {
+      "path": "Cadoryx.ViewModels/MaterialAppearanceEditorViewModel.cs",
+      "sha256": "6CB3C48D61D4CC16228952070CA521453156DDC3F13709DD0F1B1AD8A519209A"
+    },
+    {
+      "path": "Cadoryx.ViewModels/ParameterEditorViewModel.cs",
+      "sha256": "3EB325238A03D193A687C79AA11E158E3C7CDEE4745E46097A3891CDCD60C52C"
+    },
+    {
+      "path": "Cadoryx.ViewModels/RecoveryCenterViewModel.cs",
+      "sha256": "6ABCE3C5422C87A0CBD323F65B353EA0841641753A9068D24E268597C646A0CD"
+    },
+    {
+      "path": "Cadoryx.ViewModels/RepetitionEditorViewModel.cs",
+      "sha256": "0325A19EC46A6CF3EA42E799BC97E7D1EA881680B73E32053F900CC8F5119D4B"
+    },
+    {
+      "path": "Cadoryx.ViewModels/ReviewBookmarksViewModel.cs",
+      "sha256": "842F4C05B0079B341FB9960694E575028E3F8FC43C4851409AEF868EFC684B76"
+    },
+    {
+      "path": "Cadoryx.ViewModels/RevolveAxisEditor.cs",
+      "sha256": "1455213BCD2EACDCF447C44B25D6480E083DAF4B240F8BBEF2CA7F0F10FD9048"
+    },
+    {
+      "path": "Cadoryx.ViewModels/ServiceCollectionExtension.cs",
+      "sha256": "05A5C25DF4A7B924933EDD1BEA630F8D44AED828B21A80D183247A2EBD5B9472"
+    },
+    {
+      "path": "Cadoryx.ViewModels/SessionHistoryViewModel.cs",
+      "sha256": "5BFB312D1D82888038439A796754597F054B60B415C1ECEDD91F402A21F92A39"
+    },
+    {
+      "path": "Cadoryx.ViewModels/Settings/ApplicationSettingsViewModel.cs",
+      "sha256": "03CD1025D4122C84F1740C135B290EFD7458D41DA97FFCB867A6B6AE968FC888"
+    },
+    {
+      "path": "Cadoryx.ViewModels/Settings/DocumentSettingsViewModel.cs",
+      "sha256": "72191D7412A3D1D37ECB88A2B13A6574DA803C2B2CAB323370DB86D6906354F4"
+    },
+    {
+      "path": "Cadoryx.ViewModels/Settings/RadialMenuApplicationSettingsViewModel.cs",
+      "sha256": "F6AD0AAE6934D68E8B8000F5C39B413D828EBFE9F6D6EB254EF89ABA5E7C835D"
+    },
+    {
+      "path": "Cadoryx.ViewModels/SketchEditorViewModel.cs",
+      "sha256": "A38104431351930C968B0F713C7149C672E080DFBBAE9E04801248B522CE4AF6"
+    },
+    {
+      "path": "Cadoryx.ViewModels/SketchEllipseEditorInputs.cs",
+      "sha256": "724FB4759F45FFC1A5B81B70C22CF6CA795EBAC1418C21A22EC11A904F4E9707"
+    },
+    {
+      "path": "Cadoryx.ViewModels/SketchExactEndpointInputs.cs",
+      "sha256": "C2B25278B01AE6A8B43A6A85C73E5C6D7F7C3AE25CAEC4FD71BC4A12E8C21180"
+    },
+    {
+      "path": "Cadoryx.ViewModels/SketchExpressionEditorInputs.cs",
+      "sha256": "6186699F2435DB246EC1B4FAEFD761C68E0D0AAC66772B24203557035D12BE6A"
+    },
+    {
+      "path": "Cadoryx.ViewModels/SketchFiniteContactEditor.cs",
+      "sha256": "58E06CB5D26F0CB3D9A7DE678D3EF53CB6F017877D9F3F9871C95E404F0A4FFE"
+    },
+    {
+      "path": "Cadoryx.ViewModels/SketchFreeformEditorInputs.cs",
+      "sha256": "739C6D7B6DFD79D9840BBF444D15315858E96D59606CC932A1D659204666AD24"
+    },
+    {
+      "path": "Cadoryx.ViewModels/SketchNativeProjectionPickerViewModel.cs",
+      "sha256": "C54D6DCBEEC3F9E20952D912D175017D86FF8CAB4E4F9AEDAE430DFE73519853"
+    },
+    {
+      "path": "Cadoryx.ViewModels/SketchRegionSourceSelectionActions.cs",
+      "sha256": "F0545C65E54376CFC422A306ED2E85346E4013FE5301609A20E4A4C74FC6746C"
+    },
+    {
+      "path": "Cadoryx.ViewModels/SketchRegionSourceSelectionViewModel.cs",
+      "sha256": "FCB6906C210B2D67A006412F63457ABA5A35D5E7C4D3E81251654213D60B18E2"
+    },
+    {
+      "path": "Cadoryx.ViewModels/SketchSplineEditorInputs.cs",
+      "sha256": "939F67A76E19332A4A0479A6E042D7DB2A36E40E3B1743B464E9E532FBF13BE6"
+    },
+    {
+      "path": "Cadoryx.ViewModels/Toolboxes/AiAssistantToolboxViewModel.cs",
+      "sha256": "B7DC8C325C81A08670BC3E12B3D53C3A9A58F4E9EE2B169003E22CA6B5DC9066"
+    },
+    {
+      "path": "Cadoryx.ViewModels/Toolboxes/CadAgentDatumTools.cs",
+      "sha256": "5CBD30740BFF607B107B01AF848C37CD8B89E4D388A7D58956CF265EAA873E03"
+    },
+    {
+      "path": "Cadoryx.ViewModels/Toolboxes/CadAgentDocumentTools.cs",
+      "sha256": "C5B62CD3879044E4B729DD97866B00B161AF5CA8CD03E0051B2750E5AE5E7410"
+    },
+    {
+      "path": "Cadoryx.ViewModels/Toolboxes/CadAgentDrawingTools.cs",
+      "sha256": "8BDF58300CEAEF1967360659B2CFD1B22404F11F013B5CFB90A736A620FEDCD1"
+    },
+    {
+      "path": "Cadoryx.ViewModels/Toolboxes/CadAgentFileTools.cs",
+      "sha256": "0F035237C16C255856254E7A2B4A01F8CD1099B538426988A0C230236E64D8F0"
+    },
+    {
+      "path": "Cadoryx.ViewModels/Toolboxes/CadAgentHistoryTools.cs",
+      "sha256": "DE478BD2FE180B84784A29B404801BEAFCF2121BDD3B9C5A2E47413A22E9A353"
+    },
+    {
+      "path": "Cadoryx.ViewModels/Toolboxes/CadAgentModelTools.cs",
+      "sha256": "37E79CD1D300D04060E395C7F5D156071A982C401DAA4F1B48600DDE70139120"
+    },
+    {
+      "path": "Cadoryx.ViewModels/Toolboxes/CadAgentParameterTools.cs",
+      "sha256": "D7B3191CF063AC37836216A48D4D3AFCA38831E2474EC85314DB336302D9DF7F"
+    },
+    {
+      "path": "Cadoryx.ViewModels/Toolboxes/CadAgentToolset.cs",
+      "sha256": "848CD288B1E57E255B0263BAD16BC3FDA3A4667B97932C5B7A100E933D16A1BE"
+    },
+    {
+      "path": "Cadoryx.ViewModels/Toolboxes/CadAgentWorkspaceTools.cs",
+      "sha256": "020D6D77FD32CB024657467D2F772B609C492EDF3E1E84819168F5BF9067D0F4"
+    },
+    {
+      "path": "Cadoryx.ViewModels/Toolboxes/CadAuthoringInspection.cs",
+      "sha256": "1EA4DC759B87E59FFA6AE0025F6E1FCC1F5D4C9C8FD23AED2A10A4BA387A85E0"
+    },
+    {
+      "path": "Cadoryx.ViewModels/Toolboxes/CadCommandContext.cs",
+      "sha256": "A0704CC6D80FEAB6BBCD936CBFC4E0BB10CE55CAF21ACA30A7F25E5D9DE994E5"
+    },
+    {
+      "path": "Cadoryx.ViewModels/Toolboxes/CadCommandContextSketch.cs",
+      "sha256": "78857EF326B7FB9C11FE22E008DD8E0FDF9DD4CF93F33604E430A6B3FDF8FCFF"
+    },
+    {
+      "path": "Cadoryx.ViewModels/Toolboxes/CadCommandParameterContext.cs",
+      "sha256": "9A36C52E8999AB3B5349581AF8D6651E307C4C7B1910F3969063AFA3F9150404"
+    },
+    {
+      "path": "Cadoryx.ViewModels/Toolboxes/CadContourAuthoring.cs",
+      "sha256": "25440B742AB2B028EA0DBEF12CB90959CD18B50FD31D904C5A6097537FCC48E1"
+    },
+    {
+      "path": "Cadoryx.ViewModels/Toolboxes/CadDatumAuthoring.cs",
+      "sha256": "1DF7A08E8451FE4CAF9AB0CAF3CD5E130789BD12062CCD5D9CD2DB7548E0B06B"
+    },
+    {
+      "path": "Cadoryx.ViewModels/Toolboxes/CadDatumJson.cs",
+      "sha256": "1BCCF52D94D56582E46B7598B9DB513AECA32A9FC000E8ED5FDAC7243061D505"
+    },
+    {
+      "path": "Cadoryx.ViewModels/Toolboxes/CadDrawingAuthoring.cs",
+      "sha256": "DFAD78C9FD6223AEA0D59C923FE083B4693E328E1D3B29D33528FA1ED8739C8F"
+    },
+    {
+      "path": "Cadoryx.ViewModels/Toolboxes/CadDrawingAuthors.cs",
+      "sha256": "11D1F1277F4E69F4AF8516D2C4F6D73F8EF81E2DA22ABC0659DF1830437D9844"
+    },
+    {
+      "path": "Cadoryx.ViewModels/Toolboxes/CadDrawingBuild.cs",
+      "sha256": "E6DFAC8217B85AFAD01170C61732D19CDA773C3EAF219FFA571A1D6C9616A56C"
+    },
+    {
+      "path": "Cadoryx.ViewModels/Toolboxes/CadDrawingInspection.cs",
+      "sha256": "031F1C360829C3D13D42253D7D76418FE55ED04D1B783C455BB5A82B72A8CFD8"
+    },
+    {
+      "path": "Cadoryx.ViewModels/Toolboxes/CadMaterialAuthoring.cs",
+      "sha256": "0A7105AB8152D213C0DB13CBE365DAE4BA66DA1B2D1A674A1D0DCB2F47031CD3"
+    },
+    {
+      "path": "Cadoryx.ViewModels/Toolboxes/CadModelAssembly.cs",
+      "sha256": "9E26C1E5307EEED647CCEE9283F9A71E1691C3125D36ABDC432614A50476B7DC"
+    },
+    {
+      "path": "Cadoryx.ViewModels/Toolboxes/CadModelAuthoring.cs",
+      "sha256": "88D9F3771D8D174778AD272A8592B6CF965FF16769CED420632D15825A40853E"
+    },
+    {
+      "path": "Cadoryx.ViewModels/Toolboxes/CadModelContract.cs",
+      "sha256": "CDC41D43CD966EBF368EAEE6B6FC5E91D19F47098520278DC1364F049F0F3018"
+    },
+    {
+      "path": "Cadoryx.ViewModels/Toolboxes/CadModelInspection.cs",
+      "sha256": "90BEB228E8F74A73F46E3CF1DE0494D3535A7FE47DCEA18C8B7145139BE634E4"
+    },
+    {
+      "path": "Cadoryx.ViewModels/Toolboxes/CadModelJson.cs",
+      "sha256": "42188AAA5D54FE5053C87A6DC6DA02965323724E9F09168923AADB38C96D33E6"
+    },
+    {
+      "path": "Cadoryx.ViewModels/Toolboxes/CadParameterAuthoring.cs",
+      "sha256": "ECE1156061DC1FDF92A3497DB3D7F426D78BBA8CD9CA7F1C5EDC631ACF388DF0"
+    },
+    {
+      "path": "Cadoryx.ViewModels/Toolboxes/CadSketchContactAuthoring.cs",
+      "sha256": "319C070592303704A75AE373A73007064B972A8044E3CB9D7843A6C2F38A92B1"
+    },
+    {
+      "path": "Cadoryx.ViewModels/Toolboxes/CadSketchCurvatureAuthoring.cs",
+      "sha256": "D0ECA2DB2175A44CBE70F84EE092E9B9967CEB620726D5A21761E6FD728A5448"
+    },
+    {
+      "path": "Cadoryx.ViewModels/Toolboxes/CadSketchFiniteContactAuthoring.cs",
+      "sha256": "6D9EBA1723393A5A48419299D935447E1196ECAB38CD5609A57A18D3410EE180"
+    },
+    {
+      "path": "Cadoryx.ViewModels/Toolboxes/CadSketchOffsetAuthoring.cs",
+      "sha256": "D93DACE71BA3779654169D17C49B3A9BD5C4AC59B7318B411FB63B7438D5243E"
+    },
+    {
+      "path": "Cadoryx.ViewModels/Toolboxes/CadSketchRegionReselectionAuthoring.cs",
+      "sha256": "17E95DEC13DEE47B8D668046C18CD26E5121DD1C447277C718B47DFC3637785E"
+    },
+    {
+      "path": "Cadoryx.ViewModels/Toolboxes/CadTimelineAuthoring.cs",
+      "sha256": "8B527054AFFB11FC2683443485BEDC13DF39B9EA9DD1BA487DA48D5E0A457F7A"
+    },
+    {
+      "path": "Cadoryx.ViewModels/Toolboxes/CadToolboxViewModelBase.cs",
+      "sha256": "349C6AEC4BA720A0852D12A008C0EB1526135D6B4BFDD0F528FB47A24239B83F"
+    },
+    {
+      "path": "Cadoryx.ViewModels/Toolboxes/CadWorkspaceAuthoring.cs",
+      "sha256": "95EDAA3BF3C7BA944A299760175FB589A66FEF53AED65A1B7F73BD7CF604BFFF"
+    },
+    {
+      "path": "Cadoryx.ViewModels/Toolboxes/CommandLineToolboxViewModel.cs",
+      "sha256": "559308D08E811D0262424684B15768BB159506359777161D955C10B912665F5E"
+    },
+    {
+      "path": "Cadoryx.ViewModels/Toolboxes/MessagesToolboxViewModel.cs",
+      "sha256": "81B8462F6472BF511006C927C244ADDE7E578A16AE8E9192523CAFB4900DE1CD"
+    },
+    {
+      "path": "Cadoryx.ViewModels/Toolboxes/ModelTreeToolboxViewModel.cs",
+      "sha256": "DEA942BD19D6957DA4F0ABDEE71F92AE873123B1E4D719C0DE6750148560C81A"
+    },
+    {
+      "path": "Cadoryx.ViewModels/Toolboxes/ModelingToolboxViewModel.cs",
+      "sha256": "339670748175D21949CEF70DFFD5B87499D46E5693A46D92FCA0B141BB082AF8"
+    },
+    {
+      "path": "Cadoryx.ViewModels/Toolboxes/PropertiesToolboxViewModel.cs",
+      "sha256": "FA753302118DAD47E7ED3DDE1945DCF6B304AB9271E3CBE45A0A7C0221B45CE6"
+    },
+    {
+      "path": "Cadoryx.ViewModels/packages.lock.json",
+      "sha256": "5A36EB913F6193F81C75FA51A321B1C65F5EC4DC5067BE8E27BF08AD3EC64AE1"
+    },
+    {
+      "path": "Cadoryx.slnx",
+      "sha256": "E982956AD184971379A8B5C1DDB89796E604E62CD849D22FE464B71FD1599092"
+    },
+    {
+      "path": "Cadoryx.wpf.Controls/AssemblyInfo.cs",
+      "sha256": "A36BAAA726D8665ABBBF91BBAD03EAFA812D530BA58ABE45664889117EB949E3"
+    },
+    {
+      "path": "Cadoryx.wpf.Controls/Cadoryx.wpf.Controls.csproj",
+      "sha256": "DC0081C221E4B2F9F510E6901167AF50141F83C8FC3F32CEA8FF887BBC6BB56D"
+    },
+    {
+      "path": "Cadoryx.wpf.Controls/Generic.xaml",
+      "sha256": "9F08C4AC1C825AC8CCF88472B77FB7A05763BE1870CB54B70F0604F6818F49DB"
+    },
+    {
+      "path": "Cadoryx.wpf.Controls/packages.lock.json",
+      "sha256": "531D4CF71E5420C1C03DA4C06778BA2A212C7058A3882E7A3A873AE2F811511E"
+    },
+    {
+      "path": "Cadoryx.wpf/App.xaml",
+      "sha256": "0B4C9300DD852797C852612FB877A1DCF56A66765479CFA29B77CE2AAF9D8F9C"
+    },
+    {
+      "path": "Cadoryx.wpf/App.xaml.cs",
+      "sha256": "1AC5565E8E010EACA55448F11651BD5B82A1121AB3DB9B918C1FE237CC2E1348"
+    },
+    {
+      "path": "Cadoryx.wpf/AssemblyInfo.cs",
+      "sha256": "1D31ED3C7E4AAF76FABB82E330208385CB70685E9B7C577764493A4D169BCA61"
+    },
+    {
+      "path": "Cadoryx.wpf/Cadoryx.ico",
+      "sha256": "26022DD9DB6D4D57768064AC5171EB8CA5641B199532DCDAD497922657BD559E"
+    },
+    {
+      "path": "Cadoryx.wpf/Cadoryx.wpf.csproj",
+      "sha256": "288E6FE6A5B6DBB4EC72427E6A1A53CD618C1C72239C94831CF4C8FC699F17C1"
+    },
+    {
+      "path": "Cadoryx.wpf/Controls/CadoryxRadialActionIcon.cs",
+      "sha256": "2B039EC45542E95BB819316FBCD2464A09213A968FCDD661D15F41FEC71A3E67"
+    },
+    {
+      "path": "Cadoryx.wpf/Controls/CadoryxRadialMenuPopup.cs",
+      "sha256": "D3E12C29C84B46343A66D17EF9820F49985D9E64D773176EF79EA6272DFB626C"
+    },
+    {
+      "path": "Cadoryx.wpf/Controls/DrawingSheetCanvas.cs",
+      "sha256": "8A136E50E3CDF99691C255C570F92FEE69B09D486E966EB360A2F14886D0CE78"
+    },
+    {
+      "path": "Cadoryx.wpf/Controls/OcctViewportHost.cs",
+      "sha256": "901A3BB1233EB653AF35E08B8316B72169D5819B146A4F4FB39FE546234ADA94"
+    },
+    {
+      "path": "Cadoryx.wpf/Controls/SketchCanvas.cs",
+      "sha256": "2FC20E3D24B238173532A226B991F35CE6C9CCE2458DC3FB5FED830E3BF5A751"
+    },
+    {
+      "path": "Cadoryx.wpf/Converters/DefaultConverter.cs",
+      "sha256": "FB9B0FFA0CE083AF6889D985BFD7FD8247FBDBED568237121EDB1E7732D9C90A"
+    },
+    {
+      "path": "Cadoryx.wpf/Converters/DefaultToVisibilityConverter.cs",
+      "sha256": "53BE19222DF37CFEA7BB892D33C6D87F32924840EA3B38D150FB1686C4D4C24D"
+    },
+    {
+      "path": "Cadoryx.wpf/Converters/EnumToBooleanConverter.cs",
+      "sha256": "5C7DB85B98752048888E2F77DD45C336D962E14D88E3B831D02627245817B600"
+    },
+    {
+      "path": "Cadoryx.wpf/Converters/LCIDToStringConverter.cs",
+      "sha256": "A806EEC390D53C465F897245266926DBC5DFC323B70A4CE06F805F3164F87136"
+    },
+    {
+      "path": "Cadoryx.wpf/Converters/UIntColorToMediaColorConverter.cs",
+      "sha256": "C029F9DEABD798851D498EE0A94759AAE28FDA7B5AE4CBC867E55119B3392C36"
+    },
+    {
+      "path": "Cadoryx.wpf/Diagnostics/AssemblyRepetitionEditorSmokeRunner.cs",
+      "sha256": "A77B2EE880476A0FEB963091D3CEFAECA94E06C8F6C0780C5C9603CFA43A29AC"
+    },
+    {
+      "path": "Cadoryx.wpf/Diagnostics/AssemblySolveSmokeRunner.cs",
+      "sha256": "594AEFA46DD0522F15908AE8CD3834F163D9F8988126E60DCE866CCFF02D1E14"
+    },
+    {
+      "path": "Cadoryx.wpf/Diagnostics/CommandAndAgentSmokeRunner.cs",
+      "sha256": "B96ABE0DACFCCF20DD10691906FB64A34353F1114F5DD8CA39FF6A70ED34FCBC"
+    },
+    {
+      "path": "Cadoryx.wpf/Diagnostics/CommandDrawingSmokeRunner.cs",
+      "sha256": "DCB4EDA0155A7527DDBD622D2DBFA3CA68C83B9AD946E2CFC076F7F1CCB7A54F"
+    },
+    {
+      "path": "Cadoryx.wpf/Diagnostics/CommandFileSmokeRunner.cs",
+      "sha256": "C21B75E99EC632545B50C8FAC2C3308CCDDF4A20FC97F92D3CC4AF7A0D1805BA"
+    },
+    {
+      "path": "Cadoryx.wpf/Diagnostics/CommandModelSmokeRunner.cs",
+      "sha256": "BF8B31157A3F8A1946F63C09C7F1279C0713DD2F5E4704ED7587EE9A1EDDEDF5"
+    },
+    {
+      "path": "Cadoryx.wpf/Diagnostics/CommandWorkspaceSmokeRunner.cs",
+      "sha256": "1DF90F00DDDFD0D48C588D78CDC8E5EDDD339AFCBB26E31F0C22357ADDC5D0DC"
+    },
+    {
+      "path": "Cadoryx.wpf/Diagnostics/ContourLocalSmokeRunner.cs",
+      "sha256": "3E90F2C270412CA980ADC70AAB94FF90E52F9DB582C5FDF999788BF40370CAB6"
+    },
+    {
+      "path": "Cadoryx.wpf/Diagnostics/CurveRevolveSmokeRunner.cs",
+      "sha256": "F97A919FBC7B6062229003E4613FFD26AFFFAD570D792AFB75FDC385BD21D4CE"
+    },
+    {
+      "path": "Cadoryx.wpf/Diagnostics/DatumEditorSmokeRunner.cs",
+      "sha256": "275D075CF028FAC10A144C1C9A4E276F8DC04C70B2898BA02582C765EDDF8DF9"
+    },
+    {
+      "path": "Cadoryx.wpf/Diagnostics/DeliverySmokeRunner.cs",
+      "sha256": "FAC5D8B67FD04CBDB7B718E6994B5026498DD521BF590FC7B0774DC344BB8F75"
+    },
+    {
+      "path": "Cadoryx.wpf/Diagnostics/DiagnosticPaths.cs",
+      "sha256": "8A4234CD93691BF89E426CC64C1B6C7853C4B603B33CCA14938D7C61524B9F0A"
+    },
+    {
+      "path": "Cadoryx.wpf/Diagnostics/DrawingCancellationSmokeRunner.cs",
+      "sha256": "FBA5D85AFDE0A944C65944C9DA53CD0AF4F0FF7BA30EE788740EBFF0CB6B289E"
+    },
+    {
+      "path": "Cadoryx.wpf/Diagnostics/DrawingHoleTableSmokeRunner.cs",
+      "sha256": "EC4C0FE05DFBFEA0FF0388A28108B3ECCD740395435ECE4FAB35F3CDFFDAF331"
+    },
+    {
+      "path": "Cadoryx.wpf/Diagnostics/DrawingPlanarSizeSmokeRunner.cs",
+      "sha256": "BF0E242CBC4BB3CCEEACB8810873D97A26215F5F4CA18EF73AF34B1A9807EA5F"
+    },
+    {
+      "path": "Cadoryx.wpf/Diagnostics/DrawingTypedDatumSmokeRunner.cs",
+      "sha256": "1A99E3524307E6E82AAC9EC2EB60A236288094F1C37A27E9B23097C11B758011"
+    },
+    {
+      "path": "Cadoryx.wpf/Diagnostics/EngineeringReviewSmokeRunner.cs",
+      "sha256": "FAE292F7383F40000E2AA5F4BB1F69E25C74D217B8AF6C8145FDB35C41820C59"
+    },
+    {
+      "path": "Cadoryx.wpf/Diagnostics/ExactCurveEditorSmokeRunner.cs",
+      "sha256": "2C926BCF95363865E55B506999F3718D77BC8D4797BB26E2D9E046B93BD8D704"
+    },
+    {
+      "path": "Cadoryx.wpf/Diagnostics/ExchangeImportSmokeRunner.cs",
+      "sha256": "F0D399A2CBB27F369720A28261F6F3274E4EB34A39612FD995A36CBB19DAA52F"
+    },
+    {
+      "path": "Cadoryx.wpf/Diagnostics/ExtrusionEditorSmokeRunner.cs",
+      "sha256": "EC6778B25C33AE9988FED1B74EF94B93D4E98A5F3121DB7A23C29A81C36E9186"
+    },
+    {
+      "path": "Cadoryx.wpf/Diagnostics/FaceFeatureEditorSmokeRunner.cs",
+      "sha256": "DA31497E38EF5FCF2C2001B7619AFC73DC05CB6DBD91BA5EEFF2E7AF48E4FD82"
+    },
+    {
+      "path": "Cadoryx.wpf/Diagnostics/FeatureTimelineSmokeRunner.cs",
+      "sha256": "00619D34ED924C501D2FDA17D98FBAFEA5C123EB3DE3FB7AA060BD471BC1236E"
+    },
+    {
+      "path": "Cadoryx.wpf/Diagnostics/FiniteSurfaceExtrusionSmokeRunner.cs",
+      "sha256": "BB769EB34B936B72DEBDAD3F06DB959ECA29F8AC5AEBBEB164B4DCF611877301"
+    },
+    {
+      "path": "Cadoryx.wpf/Diagnostics/GuidedEditorSmokeRunner.cs",
+      "sha256": "41FFC58EE660F366CB6515352D7B97E2DF78B3E293176127A9D8A6C318943680"
+    },
+    {
+      "path": "Cadoryx.wpf/Diagnostics/HistorySmokeRunner.cs",
+      "sha256": "7CC390D34AB5134FDA1DADB58572444B30E829843BE165E160FCB505A3FC2C6E"
+    },
+    {
+      "path": "Cadoryx.wpf/Diagnostics/HoleEditorSmokeRunner.cs",
+      "sha256": "0918444DBFAC9A143CAD88A3B19796C64C517C5DC0AE07AB288E088668265B0F"
+    },
+    {
+      "path": "Cadoryx.wpf/Diagnostics/LocalFeatureSmokeRunner.cs",
+      "sha256": "93F79DE9442F02842935DFCD526D7E133D7FDD8474CCBCC102B952757BC35CBD"
+    },
+    {
+      "path": "Cadoryx.wpf/Diagnostics/M10AssemblyWindowSmokeRunner.cs",
+      "sha256": "6A8F61F034B4A62B1A4F5FDD6B4F17F51B54492667374ECEB03098B9B2E07471"
+    },
+    {
+      "path": "Cadoryx.wpf/Diagnostics/M11DrawingWindowSmokeRunner.cs",
+      "sha256": "4F604C4CC632D1D2379B3F1A57C63F502497D8A067C432AA4FC7EF163C891920"
+    },
+    {
+      "path": "Cadoryx.wpf/Diagnostics/M14OpenBenchmarkRunner.cs",
+      "sha256": "95539910C50260A18D169BCD764589FE992DA643CC5D3100D509D2E3C955E90F"
+    },
+    {
+      "path": "Cadoryx.wpf/Diagnostics/M6BenchmarkRunner.cs",
+      "sha256": "CA5675534B170440CB2C3C46141143CC1D8DFDF481793F5AD1464EA26C8FEEE4"
+    },
+    {
+      "path": "Cadoryx.wpf/Diagnostics/MetricThreadHoleSmokeRunner.cs",
+      "sha256": "638DDF8306D6913FD82CA6E1705E7A718FD97EC32310ED77D689EAB8202287AB"
+    },
+    {
+      "path": "Cadoryx.wpf/Diagnostics/MirrorStyleSmokeRunner.cs",
+      "sha256": "F42F5CE3092CA767C29DE1FDE3CA889E49C66D7FC6442A59BC78D64035C4FA74"
+    },
+    {
+      "path": "Cadoryx.wpf/Diagnostics/NotificationSmokeRunner.cs",
+      "sha256": "6321C1557B228B4263C0089D092D8B4375037C4D547B2012CD3910908D2FA5F3"
+    },
+    {
+      "path": "Cadoryx.wpf/Diagnostics/ParameterEditorSmokeRunner.cs",
+      "sha256": "E193866D03AFD620B45C89B28268290EDD6245C37FD84091EE20CCC3C06E7512"
+    },
+    {
+      "path": "Cadoryx.wpf/Diagnostics/PlanarFaceEditingSmokeRunner.cs",
+      "sha256": "9A0A1E01608A507C157CC457324FCD7FE058A2145750AD6AB128F019CE0588A0"
+    },
+    {
+      "path": "Cadoryx.wpf/Diagnostics/ProgressDialogSmokeRunner.cs",
+      "sha256": "A586A266556EFCCE47B8EA05CA7452977424C4F601B45E371F0691011689B79F"
+    },
+    {
+      "path": "Cadoryx.wpf/Diagnostics/RecoverySmokeRunner.cs",
+      "sha256": "8EFBE897646170AA49D1FFA51EA53100F95C5F15FB85AA978DB116B5BCDAE143"
+    },
+    {
+      "path": "Cadoryx.wpf/Diagnostics/RegionOffsetSmokeRunner.cs",
+      "sha256": "363EBEA415B63F9221A988618CE02C6D54B3E260E4952138955ED12279ECCB27"
+    },
+    {
+      "path": "Cadoryx.wpf/Diagnostics/RepetitionEditorSmokeRunner.cs",
+      "sha256": "B2E4311B93969EA9116BB7EB08987B1C3CCDD1B5DE07573CEABB48049FC47775"
+    },
+    {
+      "path": "Cadoryx.wpf/Diagnostics/RepetitionPresentationSmokeRunner.cs",
+      "sha256": "6B20796D2488B66451059E308A2CB36B585B805CDC32A51984767395DF2E87F8"
+    },
+    {
+      "path": "Cadoryx.wpf/Diagnostics/ResourceSmokeRunner.cs",
+      "sha256": "5E6A17622413D35305949ECEA9D96539F58DC5794F09E242D3D04BC37C9ACE56"
+    },
+    {
+      "path": "Cadoryx.wpf/Diagnostics/ReviewToolsSmokeRunner.cs",
+      "sha256": "D26EDB2FD4ED1313F6672B2272E4DD15C815D0FA00D63BCAE91CE9D31F34CF80"
+    },
+    {
+      "path": "Cadoryx.wpf/Diagnostics/RibbonNavigationSmokeRunner.cs",
+      "sha256": "A6D405258C34317A747419A99EF812FFBFC1CC8BD02E164349B8A30F9E16ED03"
+    },
+    {
+      "path": "Cadoryx.wpf/Diagnostics/SectionAnalysisSmokeRunner.cs",
+      "sha256": "80201FF476D5D0FE994AEBF0378F59B07C837D819EA04A8DA206CDF7563EC247"
+    },
+    {
+      "path": "Cadoryx.wpf/Diagnostics/SketchCircularContactSmokeRunner.cs",
+      "sha256": "723227496E985E08E1C43935446D3302257DA2581580AAF9444AC40896C287A9"
+    },
+    {
+      "path": "Cadoryx.wpf/Diagnostics/SketchCurveParameterSmokeRunner.cs",
+      "sha256": "3FA5CF35619878E310714386792B6DA3C06C29FC02204D4E379A08C9B3ABF9E1"
+    },
+    {
+      "path": "Cadoryx.wpf/Diagnostics/SketchEditorSmokeRunner.cs",
+      "sha256": "31073C5363DF6483866C339EB477B6D576EFFDB7FDEAD610715462509D3A796C"
+    },
+    {
+      "path": "Cadoryx.wpf/Diagnostics/SketchEndpointCurvatureSmokeRunner.cs",
+      "sha256": "62DBD331E5EEE4340B9DA296CF4BA8D53759322C0908205F0E991AB68EB76D26"
+    },
+    {
+      "path": "Cadoryx.wpf/Diagnostics/SketchExactEndpointSmokeRunner.cs",
+      "sha256": "C3549EE9903F08548048EA7156854C4E7C2CD58B7122BA2F0362CD12354C3DCB"
+    },
+    {
+      "path": "Cadoryx.wpf/Diagnostics/SketchExpressionAuthorSmokeRunner.cs",
+      "sha256": "5A63FD806B83B36DD0EC74C8A69C8F4E1ABD06A472A700AE626D70464654AE38"
+    },
+    {
+      "path": "Cadoryx.wpf/Diagnostics/SketchExpressionConsumerSmokeRunner.cs",
+      "sha256": "65A4B46E9C0017B0A08592159F59453F28D0C817BA8561E8AA557BA54257DE87"
+    },
+    {
+      "path": "Cadoryx.wpf/Diagnostics/SketchExpressionCurvedConsumerSmokeRunner.cs",
+      "sha256": "A6478D253C753525A26D682FC0E1E80AC8374E197DBDAFB6863BD2C32573656E"
+    },
+    {
+      "path": "Cadoryx.wpf/Diagnostics/SketchExpressionEditSmokeRunner.cs",
+      "sha256": "D7A1B57CEE2CD1F4CC4AA8A08B423EE035BBA3CA0C0CA999252C2FC3B1678183"
+    },
+    {
+      "path": "Cadoryx.wpf/Diagnostics/SketchFiniteContactSmokeRunner.cs",
+      "sha256": "799853F4DCD7844A571374CB9185F23E3A783008FB185C7A35EFF6362C31015A"
+    },
+    {
+      "path": "Cadoryx.wpf/Diagnostics/SketchMixedFiniteContactSmokeRunner.cs",
+      "sha256": "89C97884DDE20F190A265FE500BB153FDB8F38A5B00713B58EBBA85225BB0199"
+    },
+    {
+      "path": "Cadoryx.wpf/Diagnostics/SketchNativeFreeformSmoke.cs",
+      "sha256": "598C7FB92AE1B0B0A0A1555D3AEDC6F5B9BA3D7B0DFDC52A2E2C7F0A5DCC1B37"
+    },
+    {
+      "path": "Cadoryx.wpf/Diagnostics/SketchNativeProjectionSmokeRunner.cs",
+      "sha256": "C30D842002086F77A48D71E60DCB258A6AA0CF066BA08BFD5987A853BB2D84DB"
+    },
+    {
+      "path": "Cadoryx.wpf/Diagnostics/SketchPeriodicIntervalSmokeRunner.cs",
+      "sha256": "5B4EB1C3C0CF125BC0A7957796C0AB480A28A251A51B104D8AE33FABBB22A3F7"
+    },
+    {
+      "path": "Cadoryx.wpf/Diagnostics/SketchRegionAuthorSmokeRunner.cs",
+      "sha256": "DE5291C721E570CFBEDCD07FC24DE2DE741D6046FAA19D4CC3A2069D614DFA3E"
+    },
+    {
+      "path": "Cadoryx.wpf/Diagnostics/SketchRegionReselectionSmokeRunner.cs",
+      "sha256": "ACEEDB6ABEEEDEE7854181C70BD304ACE96ADF93088290BD217790E41B7ED822"
+    },
+    {
+      "path": "Cadoryx.wpf/Diagnostics/SketchSlidingContactSmokeRunner.cs",
+      "sha256": "54F310380F75EC6B12E7A38E3CDAA2C2B22C2E6A0E3BB4E26C8679B045A4742B"
+    },
+    {
+      "path": "Cadoryx.wpf/Diagnostics/SketchSmokeRunner.cs",
+      "sha256": "567C2FF8244EF3AD329FB3D8F0FE674BB203406F5A407EF567B490318617150B"
+    },
+    {
+      "path": "Cadoryx.wpf/Diagnostics/SmokeRunner.cs",
+      "sha256": "E28D1AFCB5649A7441096186AC529E5D010E557E1A0CCD470A6E115B351CDF4D"
+    },
+    {
+      "path": "Cadoryx.wpf/Diagnostics/SolidOffsetSmokeRunner.cs",
+      "sha256": "834654453381A5013A6E589864A80A4D5FA7F39BE1A3D49788E5450B8DF2AE31"
+    },
+    {
+      "path": "Cadoryx.wpf/Diagnostics/TopologySmokeRunner.cs",
+      "sha256": "41C52B373B3C93DD7545CF54347C61DC0DF8C3F7737F0CA0C3A377AD329ED413"
+    },
+    {
+      "path": "Cadoryx.wpf/Diagnostics/WindowSmokeRunner.cs",
+      "sha256": "1F7896C40443D9C296F0C185E653C3FEBEDF677FC67760701F6053822A2D24B7"
+    },
+    {
+      "path": "Cadoryx.wpf/Diagnostics/WorkspaceToolsSmokeRunner.cs",
+      "sha256": "E1972878CD5AA9A363171C13A1BE46CC5BA5D13254A494B3A0F67B11618E5180"
+    },
+    {
+      "path": "Cadoryx.wpf/MainWindow.xaml",
+      "sha256": "4EED3CCCEAE8B5B9D47B8CB67C105F6D17ED06D1DB9B8A6F0705FD055D07442A"
+    },
+    {
+      "path": "Cadoryx.wpf/MainWindow.xaml.cs",
+      "sha256": "5F3EB806296D561F674F42E9874E5CF1B4728B96E718A5B0E9F2A168FAA0E94E"
+    },
+    {
+      "path": "Cadoryx.wpf/Program.cs",
+      "sha256": "AB226CC7995699B3CAC7107D581681AAE14F2F6A6E84357D77BDC28D2283D732"
+    },
+    {
+      "path": "Cadoryx.wpf/Selectors/PanesStyleSelector.cs",
+      "sha256": "28E6470B2BEC3C57DE0F38D9905705491D0E59E1E74F98F8013D0E1EBD96CFF7"
+    },
+    {
+      "path": "Cadoryx.wpf/Services/Application/ApplicationCultureService.cs",
+      "sha256": "9AFBDA931EE83D86224E2546E8D987CC3B4D20A65A3F9A71758D72421AEC948D"
+    },
+    {
+      "path": "Cadoryx.wpf/Services/Application/ApplicationThemeService.cs",
+      "sha256": "D9F40EDCCD2EE78A224CBC2BE13D7E80A1DE0F8D628C7FF18C68C553FABE02D0"
+    },
+    {
+      "path": "Cadoryx.wpf/Services/Application/JsonApplicationSettingsStore.cs",
+      "sha256": "22834B76AC0045CFC2AF2ECD838649B2C910DC1C24B42CD649EC11F3EEC853A5"
+    },
+    {
+      "path": "Cadoryx.wpf/Services/Application/RecoveryHost.cs",
+      "sha256": "4775435F8CBE9030BF63A52E2D8448BA4314F17A990BC3B5B92096DBCBE63C8B"
+    },
+    {
+      "path": "Cadoryx.wpf/Services/Application/ToolboxLayoutPersistenceService.cs",
+      "sha256": "E7BDA363AC25C7FA8A4064BA420377C3390E30C662B735C44DAA79C2719CF9B8"
+    },
+    {
+      "path": "Cadoryx.wpf/Services/Application/WpfSessionDispatcher.cs",
+      "sha256": "F3623696D36FB09E31C443E03898F10FA475235CDCD1AF416655C4568FCCFEBE"
+    },
+    {
+      "path": "Cadoryx.wpf/Services/Dialogs/ApplicationSettingsDialogService.cs",
+      "sha256": "94A0179C742C17B91EB6AC161732077C191748FB0FAC8D7A108EE303EA3496EC"
+    },
+    {
+      "path": "Cadoryx.wpf/Services/Dialogs/CadFileDialogs.cs",
+      "sha256": "B8ADCCB741E32F2544700C2F329C98425294FE4ECADF9313F48E1BD240CE583B"
+    },
+    {
+      "path": "Cadoryx.wpf/Services/Dialogs/DialogService.cs",
+      "sha256": "F50FC3B95EF36DB1C99EBEF805B72BBB33492DA67F1726AC5EF76526FFE196D6"
+    },
+    {
+      "path": "Cadoryx.wpf/Services/Dialogs/DocumentResourcesDialogService.cs",
+      "sha256": "7D7D580196E3F6AC0C8F4EB296E76E9576F6C4AF4F8E9AE3A2A279CAD51A0626"
+    },
+    {
+      "path": "Cadoryx.wpf/Services/Dialogs/MaterialTextureImportService.cs",
+      "sha256": "64911C960E48FE892A052EB9A271CCB3C9B81EFEDA17DBE11F301175FA1B174B"
+    },
+    {
+      "path": "Cadoryx.wpf/Services/Dialogs/RecoveryDialogService.cs",
+      "sha256": "86E0B972EE76B49098E0A4A305807299FEB004CB8C8C1B98A45ECD16426A93CE"
+    },
+    {
+      "path": "Cadoryx.wpf/Services/IO/ImportWorkerJob.cs",
+      "sha256": "A7D3EB90E6FD501BE5E7C3A446B7F7901A6E5B8C187A26158ACD7484E66DDB82"
+    },
+    {
+      "path": "Cadoryx.wpf/Services/IO/IsolatedExchangeImporter.cs",
+      "sha256": "EA596784FA53FB1BA0AB352BC7D0BA29D226F5DF74D895DD7D48287748497E6F"
+    },
+    {
+      "path": "Cadoryx.wpf/Services/Notifications/CadNotificationService.cs",
+      "sha256": "41C724E6469C907F28B7C9584EAD5235FE72C4EA8E4FF350171D63F2F243C2C6"
+    },
+    {
+      "path": "Cadoryx.wpf/Services/Toolboxes/ToolboxIconProvider.cs",
+      "sha256": "28D3E2595D3423C14EAFE2FDB0D7B2F84586013D319C88B4DB8C232B37DE0F2A"
+    },
+    {
+      "path": "Cadoryx.wpf/Views/AssemblyConstraintsView.xaml",
+      "sha256": "0C95F6AD5D3AD33C09351A2867347050FC9942F858E5D6AAF599F689FCE2D00B"
+    },
+    {
+      "path": "Cadoryx.wpf/Views/AssemblyConstraintsView.xaml.cs",
+      "sha256": "553F3FEE99E8A4D8A9E91931FE3B3848366596C11A9DD8D763FA3C75F8CFAD8A"
+    },
+    {
+      "path": "Cadoryx.wpf/Views/AssemblyRepetitionEditorWindow.xaml",
+      "sha256": "DE9E9FF959BE96B28C347DEB1C7E51121E152E122FD452149AA7EFFA132BF391"
+    },
+    {
+      "path": "Cadoryx.wpf/Views/AssemblyRepetitionEditorWindow.xaml.cs",
+      "sha256": "675CC446F6DEDDDAF393AEEC6D164BDA79C052879BC6FEF6C7403F3A4D7361F0"
+    },
+    {
+      "path": "Cadoryx.wpf/Views/ContourLocalEditorWindow.xaml",
+      "sha256": "FB5C244203590CEAE4D95AB7DFF7A3D7815A2C6594945331104D4B681103ADDF"
+    },
+    {
+      "path": "Cadoryx.wpf/Views/ContourLocalEditorWindow.xaml.cs",
+      "sha256": "B9B31D080A5A63EE9B4E3800B6D3D670BBB81FEB3D5083500F0C626D329CBAF7"
+    },
+    {
+      "path": "Cadoryx.wpf/Views/DatumAxisEditorPanel.xaml",
+      "sha256": "D18980C2989BF995F16B7DE5415DAA340F5B85694C28A832F7BE96B5D5B429EA"
+    },
+    {
+      "path": "Cadoryx.wpf/Views/DatumAxisEditorPanel.xaml.cs",
+      "sha256": "ED57E91D20D280BAA7A62DEE0B75815B012EB9388B7DDD48CA13618F7725EDF6"
+    },
+    {
+      "path": "Cadoryx.wpf/Views/DatumEditorWindow.xaml",
+      "sha256": "FE5CA8E0E5B845716BE56C4D5653408F7F5A342B5056E944C40CC7DCEDB3B497"
+    },
+    {
+      "path": "Cadoryx.wpf/Views/DatumEditorWindow.xaml.cs",
+      "sha256": "3C73F8F8517898382362A5DC4408ED8AB64C29237547A3496D7E22680E18E80E"
+    },
+    {
+      "path": "Cadoryx.wpf/Views/DatumPointEditorPanel.xaml",
+      "sha256": "FA177F7B8F337F929C88C6414A864B5EF2F73A8DDBBA558855DD5F33906877C3"
+    },
+    {
+      "path": "Cadoryx.wpf/Views/DatumPointEditorPanel.xaml.cs",
+      "sha256": "B6B8C5C36196C3ECB08D7C558817A602DB0BD64E3EAAAFF8161169F8926A3F1C"
+    },
+    {
+      "path": "Cadoryx.wpf/Views/DeliveryWindow.xaml",
+      "sha256": "1B2143C7815E2E18C16DFB113A9B0CAB9EA109FFA3D698290D5406BB9CA50453"
+    },
+    {
+      "path": "Cadoryx.wpf/Views/DeliveryWindow.xaml.cs",
+      "sha256": "42277AA763FC5FF425DCD4C717BC11B32F42A130E4953AC2EF4610614067D67E"
+    },
+    {
+      "path": "Cadoryx.wpf/Views/Dialogs/ConfirmationDialog.xaml",
+      "sha256": "F056C2AC071A4D4952F44D2CFF92B351B31231F891058EB88B861D2AC41B33F0"
+    },
+    {
+      "path": "Cadoryx.wpf/Views/Dialogs/ConfirmationDialog.xaml.cs",
+      "sha256": "B5D3138FAC3BA2F5594EAD8763FACBD0C4A836D6D3D5DEE3670C733FD62627C7"
+    },
+    {
+      "path": "Cadoryx.wpf/Views/Dialogs/DocumentResourcesDialog.xaml",
+      "sha256": "570D3191D3D509785F47F66EF4FCF45C841D8A080D70685FBCF5E2967D4FE123"
+    },
+    {
+      "path": "Cadoryx.wpf/Views/Dialogs/DocumentResourcesDialog.xaml.cs",
+      "sha256": "1C5E4A7474182BB7CA7BD4030BBA988FCC5D4ABA5FC83FCD109F899B886A6E07"
+    },
+    {
+      "path": "Cadoryx.wpf/Views/Dialogs/ExitConfirmationDialog.xaml",
+      "sha256": "DF290397DEDC9F2E57CB90690B53BBC1027D687B9CB03B787B6E68C51B3011DA"
+    },
+    {
+      "path": "Cadoryx.wpf/Views/Dialogs/ExitConfirmationDialog.xaml.cs",
+      "sha256": "ED4640967D9368536E3CC63AD1E425D11B605EE41C2AF33A1488B93DE6318495"
+    },
+    {
+      "path": "Cadoryx.wpf/Views/Dialogs/ExportOptionsDialog.xaml",
+      "sha256": "DCC4332F6A1B18C0D37DC914A325FBB099BE5C004FD58145D369FAD52B7C01F2"
+    },
+    {
+      "path": "Cadoryx.wpf/Views/Dialogs/ExportOptionsDialog.xaml.cs",
+      "sha256": "CBDD4E8F48ACA1CA5381F11DAB586E91733E09D777A210E9B4205651E878CF63"
+    },
+    {
+      "path": "Cadoryx.wpf/Views/Dialogs/MaterialAppearanceEditor.xaml",
+      "sha256": "263F9997EEDE9B0E6D104097BE338956B2D64D0CD7580149F32DA3A7F7B7A0D5"
+    },
+    {
+      "path": "Cadoryx.wpf/Views/Dialogs/MaterialAppearanceEditor.xaml.cs",
+      "sha256": "29634C74AD5A640505A9F8142F0B54D07DC7EE29515E3FC9D974F8278A9B24B4"
+    },
+    {
+      "path": "Cadoryx.wpf/Views/Dialogs/MessageDialog.xaml",
+      "sha256": "3C5EB005D7714A4F61442D157E7C188149FF780661753E97C1091F98D4E7F414"
+    },
+    {
+      "path": "Cadoryx.wpf/Views/Dialogs/MessageDialog.xaml.cs",
+      "sha256": "9F50CC5DCE5E95C3A5295BFDE166C0A009F495CA1564E1156380884F4B1CE99E"
+    },
+    {
+      "path": "Cadoryx.wpf/Views/Dialogs/ProgressDialog.xaml",
+      "sha256": "A7CD72AECD3E99321B926E2447EB2ECD8EF364CAF290DAA2BEF60551772A8148"
+    },
+    {
+      "path": "Cadoryx.wpf/Views/Dialogs/ProgressDialog.xaml.cs",
+      "sha256": "7CB26BB74B351B306FF54DAFE713BF0A271999FA18DCC853365EF16A211DE6C4"
+    },
+    {
+      "path": "Cadoryx.wpf/Views/Dialogs/RecoveryDialog.xaml",
+      "sha256": "E05A49459110A4662C1E0EC9696F33B9A61A6EEF01C0F7DA4A4CB0931EBB1934"
+    },
+    {
+      "path": "Cadoryx.wpf/Views/Dialogs/RecoveryDialog.xaml.cs",
+      "sha256": "458BE44B7623A7046ED91017C71C2481B41279FC80AB5BC1DA3F09065E645C78"
+    },
+    {
+      "path": "Cadoryx.wpf/Views/DocumentReviewView.xaml",
+      "sha256": "59C2F5E4482954BCB7DF0514233538BAD11F2706528D40F022900801CD5098B6"
+    },
+    {
+      "path": "Cadoryx.wpf/Views/DocumentReviewView.xaml.cs",
+      "sha256": "FB4233279C92FF1DFA994A4CE299BB9607C4389D672ABEFB20EFE6FDF32AA2FF"
+    },
+    {
+      "path": "Cadoryx.wpf/Views/ExtrusionEditorWindow.xaml",
+      "sha256": "2413EA5690D04053CB5C7123A2B2F3068A4CE74EF947DBC29F337BF6D23FA43F"
+    },
+    {
+      "path": "Cadoryx.wpf/Views/ExtrusionEditorWindow.xaml.cs",
+      "sha256": "90903F11D19065209134E7E5733DA80F5D2D919A1642F0EF007AF7D6B920C5A3"
+    },
+    {
+      "path": "Cadoryx.wpf/Views/FaceFeatureEditorWindow.xaml",
+      "sha256": "7263059DB217DB92F66AD038A9ACE8B453BE677CABD5E4E55BCEB341FD369926"
+    },
+    {
+      "path": "Cadoryx.wpf/Views/FaceFeatureEditorWindow.xaml.cs",
+      "sha256": "D9F050BDBE9425E9B4E9F4A020BF5B1EE739600B59CC43FE034595044D9CED2F"
+    },
+    {
+      "path": "Cadoryx.wpf/Views/GuidedEditorWindow.xaml",
+      "sha256": "0A93FF8D63B2ACCD9C5CC2B26D372C80F85B1AE50E068952DFE26EC8DB592AD3"
+    },
+    {
+      "path": "Cadoryx.wpf/Views/GuidedEditorWindow.xaml.cs",
+      "sha256": "BE51449327D15CCC836AE7CA15A854263DF39971927A8EC48025E594B91DEF86"
+    },
+    {
+      "path": "Cadoryx.wpf/Views/HistoryQueryWindow.xaml",
+      "sha256": "21C1C33A09E8E4C3B5E9B3ACA2CA4D7D888049AF456ABE24ED44D4CEBA926E24"
+    },
+    {
+      "path": "Cadoryx.wpf/Views/HistoryQueryWindow.xaml.cs",
+      "sha256": "4AB20E76052E04E5A528DDC355145F8E463C3CE1808E6822E31D6AC4A2FEBE26"
+    },
+    {
+      "path": "Cadoryx.wpf/Views/HoleEditorWindow.xaml",
+      "sha256": "E5DA2BDA8403ACAEA56EBE137015F5336FB6E6B627C1C61AA07565868FA25167"
+    },
+    {
+      "path": "Cadoryx.wpf/Views/HoleEditorWindow.xaml.cs",
+      "sha256": "F1422A22187052E31B23D41FFB01C3A6C7D27BDD0413B404FC66AD3FB43E2128"
+    },
+    {
+      "path": "Cadoryx.wpf/Views/InstancePlacementView.xaml",
+      "sha256": "43369D064416BCC2E7EBD18667766C45050A717595DAF38C97E0EBD24B28CEE4"
+    },
+    {
+      "path": "Cadoryx.wpf/Views/InstancePlacementView.xaml.cs",
+      "sha256": "A1E1E57702A3C5834AA058249557EE330856EB2890FA3F684FD305BC3457B50D"
+    },
+    {
+      "path": "Cadoryx.wpf/Views/LocalFeatureWindow.xaml",
+      "sha256": "58B71AC178190AA3561B7ACCEA03E1232EE39B25E4505F03148E480CFC2D729F"
+    },
+    {
+      "path": "Cadoryx.wpf/Views/LocalFeatureWindow.xaml.cs",
+      "sha256": "688F22B1FD3E4D881B314B60AC39E2FACB3E5460103CC48ED4D95B45FE74F15E"
+    },
+    {
+      "path": "Cadoryx.wpf/Views/MainRibbonView.xaml",
+      "sha256": "6984E5C97324DAEF5F705F36DFBB552AC670BFE0CF2EF1830AB51324D55278D7"
+    },
+    {
+      "path": "Cadoryx.wpf/Views/MainRibbonView.xaml.cs",
+      "sha256": "1CBE098CEAAFB4810CE15B3B772248B82CA7008894A33A277ACB1F563D8FE79F"
+    },
+    {
+      "path": "Cadoryx.wpf/Views/MainStatusBarView.xaml",
+      "sha256": "2FDFCF28FD5ECD741875032E24FAFEA3D8AED2DD1E5CF71DF9B0790F0A48C268"
+    },
+    {
+      "path": "Cadoryx.wpf/Views/MainStatusBarView.xaml.cs",
+      "sha256": "0B12B3A37716D3219A43C863F350E749F12A9BC93F20AD056FC536305B081B41"
+    },
+    {
+      "path": "Cadoryx.wpf/Views/Notifications/CadNotification.xaml",
+      "sha256": "AD16A3C51DCD7E434291B3D80F2B5A5AEF9ACCFFFFC464A49D41831273C3B63C"
+    },
+    {
+      "path": "Cadoryx.wpf/Views/Notifications/CadNotification.xaml.cs",
+      "sha256": "0AB4D06BD66E49A3E9F85E4FBE5697B068852EA6F3420E369E1E8AA4AD159274"
+    },
+    {
+      "path": "Cadoryx.wpf/Views/Notifications/NotificationHostWindow.cs",
+      "sha256": "871E354E51BB3A23F57CD6DA2CB776C979E5F7BA314D0EBB81D0F0B4FE8808D0"
+    },
+    {
+      "path": "Cadoryx.wpf/Views/ParameterEditorWindow.xaml",
+      "sha256": "D02045683F98183C2867F6529FC9063B379F2C944C60817B7DE0E203436F8A15"
+    },
+    {
+      "path": "Cadoryx.wpf/Views/ParameterEditorWindow.xaml.cs",
+      "sha256": "061B2847A999E331D3FDAAF7895779B7338B96AB7A3F18673361DBFA93E334B9"
+    },
+    {
+      "path": "Cadoryx.wpf/Views/RepetitionEditorWindow.xaml",
+      "sha256": "EED9F64711D8169F56E03E8C7D5E3F8A52CA3BE9CC358D01655A202C32043C8D"
+    },
+    {
+      "path": "Cadoryx.wpf/Views/RepetitionEditorWindow.xaml.cs",
+      "sha256": "A7D300FDE7200A7B7AA6130F6C7B42CBEBB76A9D72F37E1983393A7376BB756C"
+    },
+    {
+      "path": "Cadoryx.wpf/Views/Settings/ApplicationSettingsView.xaml",
+      "sha256": "931AE3243F53D1F45D124D2116225CC140B6D602D55903BA710659D5881C80D6"
+    },
+    {
+      "path": "Cadoryx.wpf/Views/Settings/ApplicationSettingsView.xaml.cs",
+      "sha256": "54C1B26E03D9E5998EAD566BE563F54FC44D0892D6ECFDC38BB6D8CD5C370FC6"
+    },
+    {
+      "path": "Cadoryx.wpf/Views/Settings/ApplicationSettingsWindow.xaml",
+      "sha256": "B05D9459B7A5582E5D1A59EFC2D69C7E837DC7A8043E9F16D912473191B1C26C"
+    },
+    {
+      "path": "Cadoryx.wpf/Views/Settings/ApplicationSettingsWindow.xaml.cs",
+      "sha256": "556CECFAACBFDED25C32D86FD124FFE0CC496EC6C92B0BAB313F3FC34429FD27"
+    },
+    {
+      "path": "Cadoryx.wpf/Views/Settings/DocumentSettingsWindow.xaml",
+      "sha256": "281ABD795EAE8FB00ACCE48F3E2206BCB036C04B98EAA47AFD2E96EEF253F139"
+    },
+    {
+      "path": "Cadoryx.wpf/Views/Settings/DocumentSettingsWindow.xaml.cs",
+      "sha256": "03762FCE9CB85F6CDF1A75AA60CF5530381905486DDDE56DFE0F4AD17DAB2EB7"
+    },
+    {
+      "path": "Cadoryx.wpf/Views/Settings/RadialMenuSettingsView.xaml",
+      "sha256": "7272CBC06FF645A80B9AADFDE33D115F4E7AF71183792449F72F6F0859B6AB9E"
+    },
+    {
+      "path": "Cadoryx.wpf/Views/Settings/RadialMenuSettingsView.xaml.cs",
+      "sha256": "84A1DE9D14BB9AC0DB453F709B580554326E92A424BEC3CC2B2F434FD6F93D47"
+    },
+    {
+      "path": "Cadoryx.wpf/Views/Settings/RadialSlotPositionConverter.cs",
+      "sha256": "C9174A2CB19EF014C9CA620821EFD19511ED026AF73A0473ECE7E9B65A522F38"
+    },
+    {
+      "path": "Cadoryx.wpf/Views/SketchEditorWindow.xaml",
+      "sha256": "955C5DAF49E389E32578B174EA6A9DE37571C975FBA5E6BC88529CF09853704C"
+    },
+    {
+      "path": "Cadoryx.wpf/Views/SketchEditorWindow.xaml.cs",
+      "sha256": "2737B263D04B6DFC2B58C6EFE0D1EEC12D64244A5FCD48A7759892FFDCC1462D"
+    },
+    {
+      "path": "Cadoryx.wpf/Views/SketchNativeProjectionWindow.xaml",
+      "sha256": "AB05373760717FD8DC6C4AD57E601AAD47708B60776804907E00D35B5374B6F2"
+    },
+    {
+      "path": "Cadoryx.wpf/Views/SketchNativeProjectionWindow.xaml.cs",
+      "sha256": "611D665DF81576E380260210F8C76E04C171A6F5E0A0AD67B4E543BF1D40B26D"
+    },
+    {
+      "path": "Cadoryx.wpf/Views/SketchRegionSourceSelectionWindow.xaml",
+      "sha256": "F635A366051A933E5287BD3B00C04DAFD66133D06F69FDD1B8C9F3657E39F9E2"
+    },
+    {
+      "path": "Cadoryx.wpf/Views/SketchRegionSourceSelectionWindow.xaml.cs",
+      "sha256": "4FCDD7FC3D4F460560B0D754DC8A8B82C9FF6E87F1D4F24CBD4B11571B55E7BB"
+    },
+    {
+      "path": "Cadoryx.wpf/Views/TechnicalDrawingAnnotations.cs",
+      "sha256": "02A79E8DD13C96C13B851B252EC5EE81D9E3641445844981BCB31F74D6D3265F"
+    },
+    {
+      "path": "Cadoryx.wpf/Views/TechnicalDrawingHoles.cs",
+      "sha256": "372CE635F00839CD5A2EEF065396564DBC9D0D43CA7F5EF54F65E3D2205FDED7"
+    },
+    {
+      "path": "Cadoryx.wpf/Views/TechnicalDrawingTemplates.cs",
+      "sha256": "5BB5756C555A19233D863A27F487BB17212F2F8E10DEAF95575238ADDAB503F3"
+    },
+    {
+      "path": "Cadoryx.wpf/Views/TechnicalDrawingWindow.xaml",
+      "sha256": "679266529AEC3FECD32D0C910E3C78E0F6494D6731919077FD2AB07F60493BCF"
+    },
+    {
+      "path": "Cadoryx.wpf/Views/TechnicalDrawingWindow.xaml.cs",
+      "sha256": "EC7DCD45557E12434EE011DFF9500AEA228359D4981606D8C938E2D2F3354205"
+    },
+    {
+      "path": "Cadoryx.wpf/Views/Toolboxes/AiAssistantSettingsWindow.xaml",
+      "sha256": "122B58434E2295E435D6560062C27C60ACC0B2882D0617F17CF12FE58DDBDF99"
+    },
+    {
+      "path": "Cadoryx.wpf/Views/Toolboxes/AiAssistantSettingsWindow.xaml.cs",
+      "sha256": "710DE5F876943B1B1503AD0A7EF07F0EAE129801A3D021B4BFA4BA34F88E63C6"
+    },
+    {
+      "path": "Cadoryx.wpf/Views/Toolboxes/AiAssistantToolboxView.xaml",
+      "sha256": "E9D26DC2EF300EDBFE8B8C97E5B1F889C53830BE0122024EB830CB44057AF776"
+    },
+    {
+      "path": "Cadoryx.wpf/Views/Toolboxes/AiAssistantToolboxView.xaml.cs",
+      "sha256": "2FDF441FE6F50DC8060258D4B54A75D889634FDE3C2D488EC9397D8B618091D2"
+    },
+    {
+      "path": "Cadoryx.wpf/Views/Toolboxes/CommandLineToolboxView.xaml",
+      "sha256": "8F0E602BDD6BDBE87CBA6D4E61174414136B8B5698F8E263A88F7935098C7C96"
+    },
+    {
+      "path": "Cadoryx.wpf/Views/Toolboxes/CommandLineToolboxView.xaml.cs",
+      "sha256": "AF571CDF1797C1405FF4E2C43843EC5EA476F77A28A8B928F5707ADEB27290DD"
+    },
+    {
+      "path": "Cadoryx.wpf/Views/Toolboxes/MessagesToolboxView.xaml",
+      "sha256": "7D7A9DF34740F621BDF80D0D5F7A861792DB3F72A8829B73816BEE91ACF8506B"
+    },
+    {
+      "path": "Cadoryx.wpf/Views/Toolboxes/MessagesToolboxView.xaml.cs",
+      "sha256": "DCD442AC7FCF099051D852D17F6B4D45B91AF1C7949459DC2DBA686AD660038B"
+    },
+    {
+      "path": "Cadoryx.wpf/Views/Toolboxes/ModelTreeToolboxView.xaml",
+      "sha256": "745B34AD47AFCC8091DA22DD52FEB260FE2B32510BA5BCF521FB1DAB43F5A5E2"
+    },
+    {
+      "path": "Cadoryx.wpf/Views/Toolboxes/ModelTreeToolboxView.xaml.cs",
+      "sha256": "73962D60B437A6D33D050324E98117665A87F3C1F1628928978F23301BA7FBD0"
+    },
+    {
+      "path": "Cadoryx.wpf/Views/Toolboxes/ModelingToolboxView.xaml",
+      "sha256": "DF96FE82F479133770339CBE25D6DA6CABA5567C56BF70CB63D18BD9D007BF64"
+    },
+    {
+      "path": "Cadoryx.wpf/Views/Toolboxes/ModelingToolboxView.xaml.cs",
+      "sha256": "5F9A9281E1CDE379087E15B6752AE43DE75F7E29FDF73D1F7F42ED7023275E27"
+    },
+    {
+      "path": "Cadoryx.wpf/Views/Toolboxes/PropertiesToolboxView.xaml",
+      "sha256": "54714D42A1F35B4CE1F43772DB89ACE5DF16C8E376B1293C81B042B3E2F30BD0"
+    },
+    {
+      "path": "Cadoryx.wpf/Views/Toolboxes/PropertiesToolboxView.xaml.cs",
+      "sha256": "2E6C5D5416D68335C8CAADA1EF96B7B22103AA4F1EAF28C981FC8B6F16411C25"
+    },
+    {
+      "path": "Cadoryx.wpf/Views/ViewportPane.GraphicsRecovery.cs",
+      "sha256": "8DAD2A96C5F2D71C56BC83892C9155098BB926D457CBEAD791049B1CB49C6963"
+    },
+    {
+      "path": "Cadoryx.wpf/Views/ViewportPane.xaml",
+      "sha256": "AF6FD48BC3325B47BF2C191EDA522989876BD6C5318A6C84FA0B74EEA7CC18A4"
+    },
+    {
+      "path": "Cadoryx.wpf/Views/ViewportPane.xaml.cs",
+      "sha256": "9080596A2FED1ECEC6C5454C31F461E7568B16BB2A208B9EA39BE36D5CD17999"
+    },
+    {
+      "path": "Cadoryx.wpf/Views/ViewportView.xaml",
+      "sha256": "73F050E934BCA4EF0646E52822CD2D1B4870433F58910A443D07778E78014B3C"
+    },
+    {
+      "path": "Cadoryx.wpf/Views/ViewportView.xaml.cs",
+      "sha256": "F50C4AEA45F158C242691305224775FC204666DD77533DE3046B95A92E976648"
+    },
+    {
+      "path": "Cadoryx.wpf/packages.lock.json",
+      "sha256": "537A1C04E07CF856443FBD11BAB6F4920CB00CE504224001142FAEF98E95D959"
+    },
+    {
+      "path": "Cadoryx.wpf/runtime-baseline.json",
+      "sha256": "34EDB1AED31D6770672C4E87E7533C9A605AE085831975931708A81F981229E7"
+    },
+    {
+      "path": "Directory.Build.props",
+      "sha256": "B34C8CAA6CBF985AD817B69074587C7B712360F021ADBCB0B946DAC141A1C8F3"
+    },
+    {
+      "path": "LICENSE",
+      "sha256": "8D0E54DA638B44CC3CB5393E27D68AE5F96E711BDE713C00547EC07FB6D4EA1A"
+    },
+    {
+      "path": "NuGet.Config",
+      "sha256": "B296C795F8DEF26A98567763D2E20A36D3F5980B4C5FD4E9D99F4EDED7F521AF"
+    },
+    {
+      "path": "licenses/MathNet.Numerics/LICENSE.md",
+      "sha256": "3F87FB0BEC6467D87760555E3CB246646A51912B0E97F432C159BA6BAF5738F2"
+    },
+    {
+      "path": "Cadoryx.Kernel.Occt/OcctFiniteSurfaceNewBody.cs",
+      "sha256": "E564520C243F0A0502293CEE08CC9A78D675DA3307DEAE9361BEF51F0DC9B1FB"
+    },
+    {
+      "path": "Cadoryx.Tests/FiniteSurfaceNewBodyTests.cs",
+      "sha256": "46F10717280F69BE170F69E48B88305F43B127554A9047E3B8D63C31AC7CC26A"
+    },
+    {
+      "path": "Cadoryx.Tests/FiniteSurfaceNewBodyLifecycleTests.cs",
+      "sha256": "2887AD95F2BDF9979108E3C895FB80FDCF7A83534066F7C00605724F44DF65D9"
+    },
+    {
+      "path": "integrations/occtsharp-boolean-history/Consumer/Consumer.csproj",
+      "sha256": "FC8FD9DAE62B2F40C6C43C63CA686733DBC2060E05DF2BC66275180A983F78DC"
+    },
+    {
+      "path": "integrations/occtsharp-boolean-history/Consumer/Program.cs",
+      "sha256": "5010D558AFC2145087B651A4B0234136674D0E1E46C4F70A254E12611E6E8891"
+    },
+    {
+      "path": "integrations/occtsharp-boolean-history/Consumer/packages.lock.json",
+      "sha256": "853FAEFA4A3BC635FECD3EF752222F841EAE5F3650E8F56B96FD79781CA92C43"
+    },
+    {
+      "path": "tools/AgentConnectionProbe/AgentConnectionProbe.csproj",
+      "sha256": "848318EA712060F42BCD09E59BB54E0AC1103383F9DBB9C6700E20FED4B8FE63"
+    },
+    {
+      "path": "tools/AgentConnectionProbe/Program.cs",
+      "sha256": "77ED1ADF5CBA7303202F1CFAA18D7E9F8C9028473BFBF168ECB334EB980BB7AB"
+    },
+    {
+      "path": "tools/AgentConnectionProbe/packages.lock.json",
+      "sha256": "5E187C55B2FBD5B37FFAED9F5B35D293010C0F0126F7F1107F8C08A14ED2AAED"
+    },
+    {
+      "path": "tools/AnalyticalOffsetNativeProbe/AnalyticalOffsetNativeProbe.csproj",
+      "sha256": "9F14DECDACA1018C0DF7F9CD3F03C57F0D358AE8D0EFE50C033561659078FE48"
+    },
+    {
+      "path": "tools/AnalyticalOffsetNativeProbe/Program.cs",
+      "sha256": "EE8319BF2DA124DB5FB7453BAFE3D0A3CDAD5E69CB13894CAE61D1D5C1A64595"
+    },
+    {
+      "path": "tools/AnalyticalOffsetNativeProbe/packages.lock.json",
+      "sha256": "25F51D0FD4DA7A68F829974EF3BB559EA30C4E874C9798464515287425B2D225"
+    },
+    {
+      "path": "tools/AnalyticalOffsetProbe/AnalyticalOffsetProbe.csproj",
+      "sha256": "47F2072C6C0270E727BA4FF44D16BCD4877D2F20D38F2B73453DA7B2F31FFB45"
+    },
+    {
+      "path": "tools/AnalyticalOffsetProbe/Program.cs",
+      "sha256": "601F9A6EEB4F27AB1A351686129DE56F564AED6379929CAD87FA722335387880"
+    },
+    {
+      "path": "tools/AnalyticalOffsetProbe/ProposedSketchLoopOffset.cs",
+      "sha256": "3FA946E96E519754FBE1F03CE2094EDAF4EF705E32EA3C27622ECB725CC8D158"
+    },
+    {
+      "path": "tools/AnalyticalOffsetProbe/ProposedSketchRegionOffset.cs",
+      "sha256": "C85BD40F803B45E0BED67AFB3D502DB77C7781CEBAA185CFC152A2789CC6739A"
+    },
+    {
+      "path": "tools/AnalyticalOffsetProbe/packages.lock.json",
+      "sha256": "A4364D81A6DE2707D66FBCED18FBBC926C882AB96E1D1AEBBB17E871285B9D75"
+    },
+    {
+      "path": "tools/BoundedThreadDrawingProbe/BoundedThreadDrawingProbe.csproj",
+      "sha256": "197DE19E841EC470BB8D169B50E312F91ABEBBE3264ED7C10454AF82B2B67095"
+    },
+    {
+      "path": "tools/BoundedThreadDrawingProbe/packages.lock.json",
+      "sha256": "2BF41F23E5DA32AD069D3E909BB19B1830FA1B28F39783A7DA812F5E830D1569"
+    },
+    {
+      "path": "tools/CadAgentWorkflowProbe/CadAgentWorkflowProbe.csproj",
+      "sha256": "85BC46E149A1B2AAA3FF1009E74132E49531D2354B68EBE6827752FED3DCB0B4"
+    },
+    {
+      "path": "tools/CadAgentWorkflowProbe/DrawingProviderProbe.cs",
+      "sha256": "8BCF923185714028CDC865D774460FA56F73F86BE858F67186A9B4DC19D3BE72"
+    },
+    {
+      "path": "tools/CadAgentWorkflowProbe/Program.cs",
+      "sha256": "ECDE64BA427AB24667EC274D06B59404E37675BCD08447DFAE0EB62D62602346"
+    },
+    {
+      "path": "tools/CadAgentWorkflowProbe/WorkspaceProviderProbe.cs",
+      "sha256": "C46829DFDEA0342806F184BB1B894E0FB7002FF3C0928A00C6F484F1EC42C0CB"
+    },
+    {
+      "path": "tools/CadAgentWorkflowProbe/packages.lock.json",
+      "sha256": "76ED57A3E1C2E438AA00326A84CC7DC3244A7D649E81938C29E9C6395753EDDC"
+    },
+    {
+      "path": "tools/EndpointCurvatureProbe/EndpointCurvatureProbe.csproj",
+      "sha256": "A921DB2215B3AF966DBA003866770CC00DC69763FC8BFB723CA24BB8DC818D02"
+    },
+    {
+      "path": "tools/EndpointCurvatureProbe/Program.cs",
+      "sha256": "B6A82BAB0F09DA43B3FE4A6CFAB2B31DB5CC13917CE3135141567CD4F7B5BA05"
+    },
+    {
+      "path": "tools/EndpointCurvatureProbe/packages.lock.json",
+      "sha256": "AF5907ED193CBE437548884D921BBA8D5D94EA22CB1D1BEFCFB4B9F46543A27A"
+    },
+    {
+      "path": "tools/ExchangeFixtures/ExchangeFixtures.csproj",
+      "sha256": "F31FEF2A36E0965C1563EB9867AE0D3EDBB6A30407BEB26003A64FEA2C4F08CB"
+    },
+    {
+      "path": "tools/ExchangeFixtures/Program.cs",
+      "sha256": "B1DE06228EC791273079BE387F5CF22E978B51C5169F0666199595C3C787F6BB"
+    },
+    {
+      "path": "tools/ExchangeFixtures/packages.lock.json",
+      "sha256": "FA5463DF11F7E53A139B4E1E6453FACA936BD702E89CC59F56D44C7AF75B1EE2"
+    },
+    {
+      "path": "tools/FiniteContactProbe/FiniteContactProbe.csproj",
+      "sha256": "CEAF66B8C00AA31D037403941CF0AAA484786DE73A9E5208E277F553FFFBA404"
+    },
+    {
+      "path": "tools/FiniteContactProbe/Program.cs",
+      "sha256": "C9C4A1CC65D999BC6E187C572ED2BFF348C31886D309EC5F9B4EFB2672D168A7"
+    },
+    {
+      "path": "tools/FiniteContactProbe/packages.lock.json",
+      "sha256": "4FD249CAC37E668BBB74787D460E0EE711E67181FF0394E7A6F6310065B89F80"
+    },
+    {
+      "path": "tools/FiniteSurfaceProbe/FiniteSurfaceProbe.csproj",
+      "sha256": "CEAF66B8C00AA31D037403941CF0AAA484786DE73A9E5208E277F553FFFBA404"
+    },
+    {
+      "path": "tools/FiniteSurfaceProbe/Program.cs",
+      "sha256": "37F4195971B757E7FB116DBA308D280C4517FDF5D2EBD84422597B453A4A2F73"
+    },
+    {
+      "path": "tools/FiniteSurfaceProbe/packages.lock.json",
+      "sha256": "4FD249CAC37E668BBB74787D460E0EE711E67181FF0394E7A6F6310065B89F80"
+    },
+    {
+      "path": "tools/M10AssemblyProbe/M10AssemblyProbe.csproj",
+      "sha256": "AF16CD58A1A742998F409BA76875BB6D95F93061435B98160F6E03F567CF9DA8"
+    },
+    {
+      "path": "tools/M10AssemblyProbe/Program.cs",
+      "sha256": "0E51B6B54C16D8D31DB6ABD7AB9A8505E23C036A3B4F557093E32FBF3051B9CC"
+    },
+    {
+      "path": "tools/M10AssemblyProbe/packages.lock.json",
+      "sha256": "63E2AF95F8F8F95FD1E4E33F1E0921542839F2F1AD784803D083FC0A80CA4C5C"
+    },
+    {
+      "path": "tools/MixedContactGeometryProbe/MixedContactGeometryProbe.csproj",
+      "sha256": "783D137AA5DE7ACA8EB5666284A6C6D67933F0DAE470C52E249C89A02A3A3100"
+    },
+    {
+      "path": "tools/MixedContactGeometryProbe/Program.cs",
+      "sha256": "4706B45B418A3935DAC4B552D86EDB64E287604F4A61EED0EBBCD7ED0F83A12B"
+    },
+    {
+      "path": "tools/MixedContactGeometryProbe/packages.lock.json",
+      "sha256": "AF5907ED193CBE437548884D921BBA8D5D94EA22CB1D1BEFCFB4B9F46543A27A"
+    },
+    {
+      "path": "tools/MixedContactProbe/MixedContactProbe.csproj",
+      "sha256": "B11257B3CCEE3B36AFDF0AE904F92458EC9A8E8B0AB6DF5951D0608E76F15DDB"
+    },
+    {
+      "path": "tools/MixedContactProbe/Program.cs",
+      "sha256": "9AEE68B1BBD57156BC34C2CC72944B18503AC2EB9D99CA5FD3F18B6C6FBE5290"
+    },
+    {
+      "path": "tools/MixedContactProbe/packages.lock.json",
+      "sha256": "4FD249CAC37E668BBB74787D460E0EE711E67181FF0394E7A6F6310065B89F80"
+    },
+    {
+      "path": "tools/ModeledThreadDrawingProbe/ModeledThreadDrawingProbe.csproj",
+      "sha256": "5C5D83084C343C7E699D65DC1246FB16272212F70A5A0FA8DE56518235155B01"
+    },
+    {
+      "path": "tools/ModeledThreadDrawingProbe/Program.cs",
+      "sha256": "9E2410EB6142427887902178E4649DC73FBB4458609041510543A4D5255EAE83"
+    },
+    {
+      "path": "tools/ModeledThreadDrawingProbe/packages.lock.json",
+      "sha256": "2BF41F23E5DA32AD069D3E909BB19B1830FA1B28F39783A7DA812F5E830D1569"
+    },
+    {
+      "path": "tools/MulticopyExchangeProbe/MulticopyExchangeProbe.csproj",
+      "sha256": "A921DB2215B3AF966DBA003866770CC00DC69763FC8BFB723CA24BB8DC818D02"
+    },
+    {
+      "path": "tools/MulticopyExchangeProbe/Program.cs",
+      "sha256": "B9D89578C1C1C4CCD6670E5B5F2E42B7E9F5377195D909E8A272A7D4CE6E4186"
+    },
+    {
+      "path": "tools/MulticopyExchangeProbe/freecad_presentation.py",
+      "sha256": "EE5DBD9D6F4CBE3FE8B197D0944130369048DBE792BE4D7FCC90B3ADD8016519"
+    },
+    {
+      "path": "tools/MulticopyExchangeProbe/packages.lock.json",
+      "sha256": "AF5907ED193CBE437548884D921BBA8D5D94EA22CB1D1BEFCFB4B9F46543A27A"
+    },
+    {
+      "path": "tools/MulticopyExchangeProbe/run-freecad.ps1",
+      "sha256": "2729C50F6FFE0709E0E06A85DA7672C2755355B36C4CE7CAFF4587EEEF1C3748"
+    },
+    {
+      "path": "tools/MulticopyExchangeProbe/verify_presentations.py",
+      "sha256": "D3829241F23541349C295FCCDF7503078AE4352AFDECAB802416579F5ECF3160"
+    },
+    {
+      "path": "tools/MulticopyHistoryProbe/MulticopyHistoryProbe.csproj",
+      "sha256": "630D41ADEB2C2B62EFD70390A17DA9EE13A13DCBB7EB732B4FA3FA93B982FFD0"
+    },
+    {
+      "path": "tools/MulticopyHistoryProbe/PresentationMetadataProbe.cs",
+      "sha256": "D01D3C2A6215582DBAAD58B0E21E0788736F5E761A5A51E2484EAB3361F441A7"
+    },
+    {
+      "path": "tools/MulticopyHistoryProbe/Program.cs",
+      "sha256": "3EC2C906877AD6E10DF11410741186F07C6CE78594FB3302AD20C9D01380C09F"
+    },
+    {
+      "path": "tools/MulticopyHistoryProbe/packages.lock.json",
+      "sha256": "AF5907ED193CBE437548884D921BBA8D5D94EA22CB1D1BEFCFB4B9F46543A27A"
+    },
+    {
+      "path": "tools/OcctApiUsageAudit/OcctApiUsageAudit.csproj",
+      "sha256": "2778DBB1A55B31E2D5A8D59A621121692FC35B9FD575C4BDFEE5E98145E468A7"
+    },
+    {
+      "path": "tools/OcctApiUsageAudit/Program.cs",
+      "sha256": "844B39134F1CE8BA8542D0E646CEF0ABDDDA272EDF820DD7D08CA007AAE686CA"
+    },
+    {
+      "path": "tools/OcctApiUsageAudit/packages.lock.json",
+      "sha256": "A4364D81A6DE2707D66FBCED18FBBC926C882AB96E1D1AEBBB17E871285B9D75"
+    },
+    {
+      "path": "tools/OcctCapabilityProbe/ComposedHoleHistoryProbe.cs",
+      "sha256": "5AD1121673132CFDAF457BF96F70941F09F9D6AFFAB102914497878FA13B5BF7"
+    },
+    {
+      "path": "tools/OcctCapabilityProbe/ContourLocalProbe.cs",
+      "sha256": "254E0729F06C0EEF0B40DC80DFE1C0D8AF84D47B35B3F9228BCF9B901D81D477"
+    },
+    {
+      "path": "tools/OcctCapabilityProbe/ExchangeReadProbe.cs",
+      "sha256": "D7A0B14418A23E15A335F30CD28BD7DD653F12BD6B250B5100C1CEDEFF164C29"
+    },
+    {
+      "path": "tools/OcctCapabilityProbe/IgesExtrusionProbe.cs",
+      "sha256": "E3428F4870F3594FE96F12B50AAED5DD6A29E09C6714DC992D1315A2038D10F6"
+    },
+    {
+      "path": "tools/OcctCapabilityProbe/ImportedInspectionProbe.cs",
+      "sha256": "818A642EBA15072B489B7A47B59411BD0D8CA10FEF9CBD3883714C4F3DB31AAA"
+    },
+    {
+      "path": "tools/OcctCapabilityProbe/ManufacturingHoleCompositionProbe.cs",
+      "sha256": "2D460F33C16E8F839B704DCBE85DA8E563FDEB1AE231633115F3FEACA8045E51"
+    },
+    {
+      "path": "tools/OcctCapabilityProbe/ManufacturingHoleProbe.cs",
+      "sha256": "7C5616460AE31FE2190B4D2993DEFA009DF0F455E73BE0A1D4E36E54F73EFB11"
+    },
+    {
+      "path": "tools/OcctCapabilityProbe/ManufacturingReferenceProbe.cs",
+      "sha256": "D332725629B6657B9FC35BAA632D59C11711FE695326BB5AB1EE66001A157D29"
+    },
+    {
+      "path": "tools/OcctCapabilityProbe/ManufacturingSizeFeatureProbe.cs",
+      "sha256": "90E9DA011344F60348C2777719BC5FE4836EC5710CCD1748221594762AED368C"
+    },
+    {
+      "path": "tools/OcctCapabilityProbe/MulticopyHistoryCapabilityProbe.cs",
+      "sha256": "DC18E1A1B14EF3535FE2D06B865C90B96DB6892C45496712FBFDE5409B7CA618"
+    },
+    {
+      "path": "tools/OcctCapabilityProbe/OcctCapabilityProbe.csproj",
+      "sha256": "82CB0F28ADB9DC11D26F56DF8E92153DE67432D2B86304C083BB70A987C30987"
+    },
+    {
+      "path": "tools/OcctCapabilityProbe/PlanarFaceEditingProbe.cs",
+      "sha256": "90EC6E160E7840474DDE4A60E69CCF4D22A3FD23FBB455EC592C2A686147BF8A"
+    },
+    {
+      "path": "tools/OcctCapabilityProbe/PlanarSizeFeatureProbe.cs",
+      "sha256": "7F928F8E8C706F28D62434D5CCB393532431C8785993610392ADD834D8A872E1"
+    },
+    {
+      "path": "tools/OcctCapabilityProbe/Program.cs",
+      "sha256": "7A00D08B71278B6F269AFB7C472C969C021A3480211976B6F9EC8649D13CE0CF"
+    },
+    {
+      "path": "tools/OcctCapabilityProbe/README.md",
+      "sha256": "0E9BA69317C9FA3BB5E78EBA6B9FC2350D22B34AF4A100AF332E4C2D0E3658EB"
+    },
+    {
+      "path": "tools/OcctCapabilityProbe/SolidOffsetProbe.cs",
+      "sha256": "ABF4919C818A8A76495327F325BAA622CB8A9A7FEDC63725F666A1916EF50317"
+    },
+    {
+      "path": "tools/OcctCapabilityProbe/Verify.ps1",
+      "sha256": "56913400738521F7DE9FDA73FA022FA931975DB1E44D800F6B7B8F8CF137FA84"
+    },
+    {
+      "path": "tools/OcctCapabilityProbe/packages.lock.json",
+      "sha256": "AF5907ED193CBE437548884D921BBA8D5D94EA22CB1D1BEFCFB4B9F46543A27A"
+    },
+    {
+      "path": "tools/OffsetWorkflowProbe/OffsetWorkflowProbe.csproj",
+      "sha256": "B11257B3CCEE3B36AFDF0AE904F92458EC9A8E8B0AB6DF5951D0608E76F15DDB"
+    },
+    {
+      "path": "tools/OffsetWorkflowProbe/Program.cs",
+      "sha256": "9BD9D26EFDF2C6411DDDFD7FCF233634B68624FD3CBA979CC13D088E878ACB57"
+    },
+    {
+      "path": "tools/OffsetWorkflowProbe/packages.lock.json",
+      "sha256": "4FD249CAC37E668BBB74787D460E0EE711E67181FF0394E7A6F6310065B89F80"
+    },
+    {
+      "path": "tools/SketchProbe/Program.cs",
+      "sha256": "D32394B7B4AFC74234AF5D33675C8D3D9AA66F89329C62144FA94E9EE0328AAE"
+    },
+    {
+      "path": "tools/SketchProbe/SketchProbe.csproj",
+      "sha256": "927F5B850D8BF91C36F123A6B0DC2B1631D95563F831622F0A5A69937E31CF10"
+    },
+    {
+      "path": "tools/SketchProbe/packages.lock.json",
+      "sha256": "3980721F22B8F67CFE682A6D90A6E9579C5A06196BE38278F921833CD2921569"
+    },
+    {
+      "path": "tools/SlidingContactGeometryProbe/Program.cs",
+      "sha256": "540AD5C7D8D0613CDB05F5D0338E903802A9217748A6D7E49666008188FB0628"
+    },
+    {
+      "path": "tools/SlidingContactGeometryProbe/SlidingContactGeometryProbe.csproj",
+      "sha256": "783D137AA5DE7ACA8EB5666284A6C6D67933F0DAE470C52E249C89A02A3A3100"
+    },
+    {
+      "path": "tools/SlidingContactGeometryProbe/packages.lock.json",
+      "sha256": "AF5907ED193CBE437548884D921BBA8D5D94EA22CB1D1BEFCFB4B9F46543A27A"
+    },
+    {
+      "path": "tools/SlidingContactProbe/Program.cs",
+      "sha256": "943FB1D53671BC3D25EE0677D79E67740779D7C9F8ED99EFCE7F8AD788B57CBE"
+    },
+    {
+      "path": "tools/SlidingContactProbe/SlidingContactProbe.csproj",
+      "sha256": "B96A82FE86727470E4DA7358DEB15685DBCDEEE509F3A6C8C1EE3D130947831F"
+    },
+    {
+      "path": "tools/SlidingContactProbe/packages.lock.json",
+      "sha256": "4FD249CAC37E668BBB74787D460E0EE711E67181FF0394E7A6F6310065B89F80"
+    },
+    {
+      "path": "tools/StorageBench/LegacyFixtureWriter.cs.txt",
+      "sha256": "7F2E9A46AE7EFA2750D8557569596C6E2D1F050A1068C67CFFC4AFC247B6E4C4"
+    },
+    {
+      "path": "tools/StorageBench/Program.cs",
+      "sha256": "9BF7514445905122F37E25A713375B1ACAE64F404AEF0283428C7CA74EC27CAC"
+    },
+    {
+      "path": "tools/StorageBench/StorageBench.csproj",
+      "sha256": "D604E7A67CBF628521FB8F4681111501F03F367266495955DABB074994FB8A56"
+    },
+    {
+      "path": "tools/StorageBench/packages.lock.json",
+      "sha256": "B84EA769AE10F11B83858A5614DCF9C990C01FF365B58D5F8E70801BBCAA984F"
+    },
+    {
+      "path": "tools/SurfaceTerminationProbe/Program.cs",
+      "sha256": "192B31EFFD272C03E74296181A1D894AEC2F77481E8F95F7171BC8140460A896"
+    },
+    {
+      "path": "tools/SurfaceTerminationProbe/SurfaceTerminationProbe.csproj",
+      "sha256": "B0A624A5ABE04938F547C8A5478F243FFCCE9750224E5BC71A93997854805B18"
+    },
+    {
+      "path": "tools/SurfaceTerminationProbe/packages.lock.json",
+      "sha256": "AF5907ED193CBE437548884D921BBA8D5D94EA22CB1D1BEFCFB4B9F46543A27A"
+    },
+    {
+      "path": "tools/ThreadDrawingProbe/Program.cs",
+      "sha256": "7EDAC388B0A510492CBAE9331744E4D0AD08ACCD782C5FBEF05E453B27C7B267"
+    },
+    {
+      "path": "tools/ThreadDrawingProbe/ThreadDrawingProbe.csproj",
+      "sha256": "DBF0A9AB1BB913FD6EB7C9C5A0F1FABD6DBF88D7B804836ABE77381CE435D838"
+    },
+    {
+      "path": "tools/ThreadDrawingProbe/packages.lock.json",
+      "sha256": "2BF41F23E5DA32AD069D3E909BB19B1830FA1B28F39783A7DA812F5E830D1569"
+    },
+    {
+      "path": "tools/ThreadHelixProbe/NativeThreadBoundaryProbe.cs",
+      "sha256": "718686093AB136724512E66022DC0199BCF6FC4C6608460552FCF0B1824CD302"
+    },
+    {
+      "path": "tools/ThreadHelixProbe/NativeThreadHistoryProbe.cs",
+      "sha256": "18B274C27E1E61CDA7DD3526B200BC6E0786EBB61BEE3FADAD08010AA7DD40FE"
+    },
+    {
+      "path": "tools/ThreadHelixProbe/NativeThreadProfileProbe.cs",
+      "sha256": "63B10338B84E689BFFC70461678332C208D18EB4B15AA977EC9C503DA5AC83B0"
+    },
+    {
+      "path": "tools/ThreadHelixProbe/Program.cs",
+      "sha256": "629DBEDBF24D82464367305F44C91C3A52CFB3FEA4100F27933FA2A1B512DAEE"
+    },
+    {
+      "path": "tools/ThreadHelixProbe/ThreadHelixProbe.csproj",
+      "sha256": "32A5FD447D3217E396378A8EBDF38BBCE007092FC455A8C5639F26C62652B2BA"
+    },
+    {
+      "path": "tools/ThreadHelixProbe/packages.lock.json",
+      "sha256": "AF5907ED193CBE437548884D921BBA8D5D94EA22CB1D1BEFCFB4B9F46543A27A"
+    },
+    {
+      "path": "tools/ThreadHoleProbe/Program.cs",
+      "sha256": "1FAB3B13F1AADFF0967A370631E9B4BB79979A68E51F56E39D20AEC03B3D3405"
+    },
+    {
+      "path": "tools/ThreadHoleProbe/ThreadHoleProbe.csproj",
+      "sha256": "9060697F2D337D9BDDACA6F0D4672239EA072BBB0D1126AAB69EDF910C6C50C1"
+    },
+    {
+      "path": "tools/ThreadHoleProbe/packages.lock.json",
+      "sha256": "AF5907ED193CBE437548884D921BBA8D5D94EA22CB1D1BEFCFB4B9F46543A27A"
+    },
+    {
+      "path": "tools/ThreadProjectionProbe/Program.cs",
+      "sha256": "DC076071E96BFF18987741EA100D2722894DEB4522CF2CE447EDD9F43D427931"
+    },
+    {
+      "path": "tools/ThreadProjectionProbe/ThreadProjectionProbe.csproj",
+      "sha256": "B0A624A5ABE04938F547C8A5478F243FFCCE9750224E5BC71A93997854805B18"
+    },
+    {
+      "path": "tools/ThreadProjectionProbe/packages.lock.json",
+      "sha256": "AF5907ED193CBE437548884D921BBA8D5D94EA22CB1D1BEFCFB4B9F46543A27A"
+    },
+    {
+      "path": "tools/ViewerCapabilityProbe/Program.cs",
+      "sha256": "124C08812203170A4ED08BB2400FD471C040AEFD492DB17F36702F6B2D0E535E"
+    },
+    {
+      "path": "tools/ViewerCapabilityProbe/ViewerCapabilityProbe.csproj",
+      "sha256": "A921DB2215B3AF966DBA003866770CC00DC69763FC8BFB723CA24BB8DC818D02"
+    },
+    {
+      "path": "tools/ViewerCapabilityProbe/packages.lock.json",
+      "sha256": "AF5907ED193CBE437548884D921BBA8D5D94EA22CB1D1BEFCFB4B9F46543A27A"
+    },
+    {
+      "path": "Cadoryx.Tests/NativeReadDefaultPaginationTests.cs",
+      "sha256": "D6FC221CDCEFB0610DAD392C79AFA9B1B6D65256390E13BE490542433B99F26B"
+    },
+    {
+      "path": "Cadoryx.Tests/NativeCompleteSourceContextTests.cs",
+      "sha256": "91CE98AA067C5A92116293405459863037EBFD573CE54E43D32CEF1C14593652"
+    },
+    {
+      "path": "Cadoryx.Tests/Fixtures/AgentContext/NativeSelectionPage.json",
+      "sha256": "1A9ADFD73CDB0FDCF752532CB468F264A1052DED8319C1A6DD657376A49B21BE"
+    },
+    {
+      "path": "Cadoryx.Tests/AgentCommandCatalogTests.cs",
+      "sha256": "E9A5CC2F0ECCBA83217BA32DA456EB6DA185D4DFCB7334A37FA31AC45DD2E831"
+    },
+    {
+      "path": "Cadoryx.Tests/DrawingMutationTypeFeedbackTests.cs",
+      "sha256": "09DFFEE4627F2CAE179E81F6D60B55220C0487524F672578F1D29ADD515141A7"
+    }
+  ],
+  "changed": [
+    "Cadoryx.ViewModels/Toolboxes/CadDrawingAuthoring.cs",
+    "Cadoryx.ViewModels/Toolboxes/CadDrawingInspection.cs"
+  ],
+  "new": "Cadoryx.Tests/DrawingMutationTypeFeedbackTests.cs",
+  "productionApplied": false,
+  "original6664TestSourcesUnchanged": true
+}

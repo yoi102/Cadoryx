@@ -1,0 +1,172 @@
+{
+  "recordedAt": "2026-10-13T12:09:21.969317+00:00",
+  "state": "AF1079_EXACT_DRAWING_OBJECT_TYPE_FEEDBACK_DEVELOPMENT_APPLIED_MANAGED_VERIFIED",
+  "baseSource": "1078",
+  "productionApplied": true,
+  "changedProductionFiles": [
+    "Cadoryx.ViewModels/Toolboxes/CadDrawingAuthoring.cs",
+    "Cadoryx.ViewModels/Toolboxes/CadDrawingInspection.cs"
+  ],
+  "newTestSource": "Cadoryx.Tests/DrawingMutationTypeFeedbackTests.cs",
+  "original6664TestSourcesChanged": false,
+  "originalSourceInputsRetained": 1188,
+  "fixtureFailure": {
+    "actualReceipt": "Drawing kernel unavailable.",
+    "initialEach": {
+      "passed": 122,
+      "failed": 33
+    },
+    "correction": "Test kernel implements required drawing capability, still throws if geometry or projection is requested.",
+    "assertionsRelaxed": false,
+    "secondEach": {
+      "passed": 155,
+      "failed": 0
+    }
+  },
+  "baselineEach": {
+    "total": 101,
+    "passed": 30,
+    "reproducedFailures": 71
+  },
+  "candidateEach": {
+    "total": 158,
+    "passed": 158
+  },
+  "productionRootEach": {
+    "total": 158,
+    "passed": 158
+  },
+  "scope": "Direct invocation of compiled xunit assertions, including real managed sheet commands/history; not full xunit or native model runtime.",
+  "rawAndWireDrawingSchemaUnchanged": true,
+  "originalTwelveToolAnd8192OutputSafetyBudgetsPassed": true,
+  "nativeLoadingProhibited": true,
+  "observedNativeModules": [],
+  "payloads": [
+    {
+      "directory": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\Cadoryx.Tests\\bin\\Release\\net10.0",
+      "sdk13OnDiskMatched": true,
+      "native62OnDiskMatched": true,
+      "viewModels": {
+        "path": "Cadoryx.Tests/bin/Release/net10.0/Cadoryx.ViewModels.dll",
+        "sha256": "BBF4D064A57A3347A08CF3906A4007DAF44F8A1BBF6F11D6CA5CD05C1C5B1B1C"
+      }
+    },
+    {
+      "directory": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\Cadoryx.wpf\\bin\\Release\\net10.0-windows\\win-x64",
+      "sdk13OnDiskMatched": true,
+      "native62OnDiskMatched": true,
+      "viewModels": {
+        "path": "Cadoryx.wpf/bin/Release/net10.0-windows/win-x64/Cadoryx.ViewModels.dll",
+        "sha256": "BBF4D064A57A3347A08CF3906A4007DAF44F8A1BBF6F11D6CA5CD05C1C5B1B1C"
+      }
+    },
+    {
+      "directory": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\Cadoryx.Tests\\bin\\Debug\\net10.0",
+      "sdk13OnDiskMatched": true,
+      "native62OnDiskMatched": true,
+      "viewModels": {
+        "path": "Cadoryx.Tests/bin/Debug/net10.0/Cadoryx.ViewModels.dll",
+        "sha256": "A21D04F93A37CD82D8D196DDA62E559A7551B5D48C10298B157B8DE7FE868EF8"
+      }
+    },
+    {
+      "directory": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\Cadoryx.wpf\\bin\\Debug\\net10.0-windows\\win-x64",
+      "sdk13OnDiskMatched": true,
+      "native62OnDiskMatched": true,
+      "viewModels": {
+        "path": "Cadoryx.wpf/bin/Debug/net10.0-windows/win-x64/Cadoryx.ViewModels.dll",
+        "sha256": "A21D04F93A37CD82D8D196DDA62E559A7551B5D48C10298B157B8DE7FE868EF8"
+      }
+    }
+  ],
+  "fullExpected": 6765,
+  "fullDiscovery": "NOT RUN",
+  "fullRuntime": "NOT RUN",
+  "realModelWorkflow": "NOT RUN",
+  "desktopInputStarted": false,
+  "evidence": [
+    {
+      "path": "capability-evidence/diagnostics/af1079-drawing-object-type/preparation-v1.json",
+      "sha256": "52D46948E165F9C6646BDB205524116474D11F2690A12324835A12FC6CDC971B"
+    },
+    {
+      "path": "capability-evidence/diagnostics/af1079-drawing-object-type/preparation.json",
+      "sha256": "9EC3EB47C0C20C3A8A92D433F08B2603F961C235157C3CCF9AF33E578A5D9AC5"
+    },
+    {
+      "path": "capability-evidence/diagnostics/af1079-drawing-object-type/development-applied.json",
+      "sha256": "38AA4864E76DCDC436EE84C923E56D5B0BCCB9A0CB3CF3DA08EDDA58A75CCA0D"
+    },
+    {
+      "path": "capability-evidence/diagnostics/af1079-drawing-object-type/managed-result.json",
+      "sha256": "81DF44385C2696CC598840F23CB07757A944CAD6C9221AC82D6C62AC8F1B9CA9"
+    },
+    {
+      "path": "capability-evidence/diagnostics/af1079-drawing-object-type/baseline-managed-result.json",
+      "sha256": "EE0102E22AE708B475F6A5F58C58B3363E1DA73054760CD81089526A0710F4EA"
+    },
+    {
+      "path": "capability-evidence/diagnostics/af1079-drawing-object-type/fixture-diagnostic-stdout.log",
+      "sha256": "AFD99DB1D228481CF87A539BC973C1F57732BDA845D0772A1F19BA88B10EF153"
+    },
+    {
+      "path": "capability-evidence/diagnostics/af1079-drawing-object-type/fixture-diagnostic-stderr.log",
+      "sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "path": "capability-evidence/diagnostics/af1079-drawing-object-type/managed-result-2.json",
+      "sha256": "E4B9CBABA7E4A5E300FD45F4B978AF080353AA7F162B219D239A058CB5D21DED"
+    },
+    {
+      "path": "capability-evidence/diagnostics/af1079-drawing-object-type/baseline-managed-result-2.json",
+      "sha256": "70CCF0CB9EDC30CF9076F4E039531CC5F9849F44E8B981E0E96962FDB3283E9C"
+    },
+    {
+      "path": "capability-evidence/diagnostics/af1079-drawing-object-type/managed-result-3.json",
+      "sha256": "9A10EF7DF11829E4AC7B747BB8F3701AB37E224AFCC2ABCB997BBC21870C7AAB"
+    },
+    {
+      "path": "capability-evidence/diagnostics/af1079-drawing-object-type/baseline-managed-result-3.json",
+      "sha256": "0C58041EE026EDBEC9FB56BD734612E9898A4DEAB45E47D8EE96D9A692243B8F"
+    },
+    {
+      "path": "capability-evidence/diagnostics/af1079-drawing-object-type/root-managed-result.json",
+      "sha256": "435B9FA2431DB09D128C79C91DBFDD06AE8C4AF17143D8893DD0442D782C6341"
+    },
+    {
+      "path": "capability-evidence/diagnostics/af1079-drawing-object-type/build3-exit.json",
+      "sha256": "1BF057288D42A6B993ABC5DE31AFD132B127E47FDA0A9E097F4719CBF04D88EC"
+    },
+    {
+      "path": "capability-evidence/diagnostics/af1079-drawing-object-type/build3-release.log",
+      "sha256": "BAA2C7DE79328598EF71645FB28261C4F3AF20AF303DF8A263AA979F6021DEB3"
+    },
+    {
+      "path": "capability-evidence/diagnostics/af1079-drawing-object-type/build3-debug.log",
+      "sha256": "ED4843CF190B61DDBDE81DAA699A05FDB9028E3D97F73C6C9B58A5F8A4DCCC2D"
+    },
+    {
+      "path": "capability-evidence/diagnostics/af1079-drawing-object-type/root-build-exit.json",
+      "sha256": "AC04F05003DAEA89E27D47662159A5840EA2CEF7E3468F4B062B7005A6649D49"
+    },
+    {
+      "path": "capability-evidence/diagnostics/af1079-drawing-object-type/root-Tests-Release.log",
+      "sha256": "CF3E99629CEDF9F4B960307BFA429319B23D2C711B9598626BCF5711840C9277"
+    },
+    {
+      "path": "capability-evidence/diagnostics/af1079-drawing-object-type/root-Tests-Debug.log",
+      "sha256": "40A6123622B3D392861280D401F15BD2608B50D9861403B9CAF0A0F419BF49FC"
+    },
+    {
+      "path": "capability-evidence/diagnostics/af1079-drawing-object-type/root-wpf-Release.log",
+      "sha256": "3846F4DEEC8B42D49FE7E247EE0C72AD80A6C103EF1676CAEF3AC2349B578378"
+    },
+    {
+      "path": "capability-evidence/diagnostics/af1079-drawing-object-type/root-wpf-Debug.log",
+      "sha256": "CB2598739196D384EF1B37C3AED4C86940CD951FA54063418BE349562667CCB0"
+    }
+  ],
+  "AFComplete": false,
+  "G": "USER_DEFERRED",
+  "cleanup": false
+}
