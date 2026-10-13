@@ -1,5 +1,9 @@
 # 当前状态
 
+2026-10-13，status240：[1077动作字段候选](../capability-evidence/diagnostics/af1077-drawing-action/verification.json)只替换一处67字符说明，原始/wire均1326字符、全部1189输入及原6652测试源码保持；两配置ViewModels构建0警告/错误，原编译断言各45通过，包含原激进恢复预算，未启动原生或应用生产。原Bonsai三份来源保持、验收程序已编译、公开SDK13/native62磁盘核验准确；[实际队列11304](../capability-evidence/diagnostics/af1077-drawing-action/queue-verification.json)等待仍存活的完整6652协调3096及终态独立审计，之后串行两场景。第一版等待器缺两个元数据路径，在任何原生运行前停止自建队列并修正；生产完整作业没有中断。当前Release父19484/testhost35852和日志持续更新，Debug待串行，没有全量终态或模型新结果。OcctSharp已继续CJ–CQ整体迁移，Cadoryx新API可插入优先，现有动作修正无需新SDK。A–F所有范围继续，G和清理暂缓。
+
+当前进度以status240为准；以下status239及更早保留历史检查点。
+
 2026-10-13，status239：[1076原Bonsai复验](../capability-evidence/diagnostics/af1076-public85/provider-runtime-verification.json)已终态并核验：多文档原8轮PASS、资产0；工程图完成两轮，第三轮缺少尺寸创建收据FAIL。实际native62两组准确，原三份提示/断言、8192上下文/16工具轮保持。工程图的三个实际wire请求在5786字符内保留完整CylinderFace第38项及CircleEdge第26项，逐条匹配第18次原生成功查询；柱面数据可用性已证，不等于工作流通过。多文档没有调用新游标恢复，不据此证明因果。生产根完整6652 Release已启动并[确认进程实际存活/native62匹配](../capability-evidence/diagnostics/af1076-root-full/running-verification.json)，Debug待串行；原STEP拒绝已复现，尚无终态/总数。SDK[逐边逐面状态诊断](../capability-evidence/diagnostics/exact-step-brep-status/receipt-verification.json)164哈希引用已独立接收：原exact标志true，完整24直接上下文在face5-edge10/face6-edge9给出InvalidCurveOnSurface(8)，两个端盖UnorientableShape(27)；初版迭代日志漏录12上下文，identity/1024未录得不能算NoError。没有精确修复或新包。A–F继续，真实窗口/材质/性能、原STEP24及第4、5节其余范围保持，G和清理暂缓。
 
 当前进度以status239为准；以下status238及更早保留历史检查点。

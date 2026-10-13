@@ -1,0 +1,26 @@
+{
+  "recordedAt": "2026-10-13T10:22:36.5418685+00:00",
+  "productionApplied": false,
+  "nativeStarted": false,
+  "fullCoordinatorCreated": "2026-10-13T18:51:22.840922+09:00",
+  "fullCoordinatorPid": 3096,
+  "files": [
+    {
+      "sha256": "2677597FE99295E258EC64D85F18F5BA8BACD022D2D4B1B4A6BA4EEEDAC75601",
+      "path": "provider-queue-2-start.json"
+    },
+    {
+      "sha256": "4CE48AE95DBDE44C36B183F0082EAABE273584B23F771125324B996BF854928A",
+      "path": "provider-queue-1-stopped-before-native.json"
+    },
+    {
+      "sha256": "25CB7D3C1627D08C44EF7C0B613EEE27DCE0EA88CF0F86B9BAE27297E1692195",
+      "path": "provider-after-full-2.ps1"
+    }
+  ],
+  "state": "QUEUED_ACTUAL_PROCESS_WAITING_FOR_LIVE_FULL_COORDINATOR",
+  "queuePid": 11304,
+  "modelWorkflow": "NOT RUN",
+  "queue1StoppedBeforeNativeForMissingMetadataPaths": true,
+  "queueCreated": "2026-10-13T19:20:33.547935+09:00"
+}

@@ -1,0 +1,21 @@
+{
+  "nativeJobs": 0,
+  "stages": [
+    {
+      "stage": "restore",
+      "log": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1077-drawing-action-1\\build-restore.log",
+      "exitCode": 0
+    },
+    {
+      "stage": "Release",
+      "log": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1077-drawing-action-1\\build-release.log",
+      "exitCode": 0
+    },
+    {
+      "stage": "Debug",
+      "log": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1077-drawing-action-1\\build-debug.log",
+      "exitCode": 0
+    }
+  ],
+  "productionApplied": false
+}

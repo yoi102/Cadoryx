@@ -1,5 +1,9 @@
 # F5：动作字段反馈与原供应商接续
 
+2026-10-13：[1077隔离动作字段说明](../capability-evidence/diagnostics/af1077-drawing-action/verification.json)只改 `action.description` 为 `contract:action/type only. Else IDs required (inspect_sources too).`，原、新均67字符，原始及实际wire schema均1326字符。完整1189来源核验只差这一处，原6652测试源码、解析/身份守卫、默认12工具、上下文算法及原Bonsai三份来源保持。实际两配置ViewModels构建零警告/错误，原编译测试体的45项断言逐配置直接调用全部通过，含原激进恢复预算和长读取回执；这不是完整xunit/原生回归。验收程序已编译，SDK13/native62磁盘载荷匹配公开85。当前生产仍1076，[真实进程队列](../capability-evidence/diagnostics/af1077-drawing-action/queue-verification.json)等待生产根两配置6652终态、无新增失败及原生空闲后，再执行原drawing/workspace场景；模型尚未运行，不能宣布工作流修复。第一版队列在原生执行前发现缺少两个元数据路径，仅停止核对身份的自建等待进程，第二版重新排队，原全量作业保持。
+
+以下988及更早为历史检查点；当前实现和验收状态按上方1077及[STATUS](STATUS.md)阅读。
+
 2026-10-08 当前988已接入contract只读请求示例和前置角色说明，两配置零警告/错误，5737清单保留原5715+新增22；Release/Debug影响专项各84/84通过（新示例22、原动作反馈28、成功回执28、原上下文及默认工具6）。[当前构建](../artifacts/f5-contract-guide-build-1-exit.json)、[两配置84](../artifacts/f5-contract-guide-focused-both-verification-1.json)。完整5737未运行，原bonsai工程图八轮正在同16生产依赖/SDK13/实际62载荷上复验。A–F继续，G暂缓。
 
 ## 当前contract角色反馈
