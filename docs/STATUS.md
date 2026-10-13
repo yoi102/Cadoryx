@@ -1,5 +1,9 @@
 # 当前状态
 
+2026-10-14，status258：[F5检查身份反馈](F5_INSPECTION_DOCUMENT_ID_FEEDBACK.md)已合入开发，18对象/8所有者过滤领域拒绝无实际对应对象的documentId误用，保留真实typed GUID共享、未知对象空页、分页/其他零件范围、空选择和无数值目标；parameter_targets保留零件/装配ownerDefinitionId语义。建议只读且未执行，不选对象/补身份/重试；关闭请求/已关闭先拒绝，原取消及解析守卫保持，12工具/schema未变。新126加原59编译断言，原公开85最终WPF每配置139通过/46问题复现，当前根每配置185/185，实际OCCT加载0；Tests及最终WPF两配置build0，ViewModels与测试载荷同字节，SDK13/native62磁盘匹配公开85。不是完整xUnit或模型/桌面验收，当前根预计6973未完整发现/运行，包含D7的下一组合预计7117待构造；生产仍公开85、D7未合入。
+
+[冻结1082+D7/87.cu1 Release完整6991终态](../capability-evidence/diagnostics/af1082-d7-local87cu1/release-full-verification.json)已实际6967通过/原24延期失败/零跳过，名称及实际native62准确，没有新增失败；Debug正在串行，不能用旧6991代替新F5组合。此前D7两配置243/243、原36孔岛偏差消除的证据保持；原24STEP只精确延期，不放宽公差、不诊断重试或豁免其他失败。原模型、D6/恢复/材质实际窗口、性能及第4、5节A–F全部范围继续，正式已验子批仍A4/B17/C5/D5/E4/F5g，G/清理暂缓。当前native时段仍由根持有，Debug完整终态后实查空闲再优先交回SDK新16资格。以下status257及更早保留历史，以真实终态优先。
+
 2026-10-14，status257：[D7第四版](D7_ANALYTIC_NEAR_FAR_BRANCHES.md)原99加新144两配置各243/243通过、零失败/跳过，实际native62/载荷与原测试名称已独立审计；原36柱面孔岛偏差在原1e-7预算下消除，第三版失败保持。完整起始材料使用生成PlanarWireFaces、原SectionWire/明确孔逆向和递归岛；有限半域私有深复制及原盖面/边界/身份守卫保持。当前1082+D7/本地87.cu1整应用1198输入/50项目恢复及锁通过，非OCCT依赖保持，两配置完整solution build0、各实际发现6991，WPF/Tests SDK13/native62及provider共享16一致；Release完整6991已启动、Debug待串行，尚无全量终态。生产1082/公开85未切换、D7未合入。
 
 [工作区对象过滤诊断](../capability-evidence/diagnostics/af1081-local86/workspace-document-filter-feedback-diagnostic.json)确认原同文档/状态的bodies/parts无过滤各1，误将documentId填id后成功空页；F5反馈缺口尚未修正，未证明为原模型失败唯一原因。原24STEP精确延期且仍记失败，其余A–F、窗口/恢复/材质/性能/实际提供方保持；正式已验子批仍A4/B17/C5/D5/E4/F5g，G/清理暂缓。SDK后续149开发IDs不混入冻结133/87.cu1；根当前持有全量原生时段，结束后实际空闲边界优先交回新16资格。以下status256及更早为历史，以实际终态优先。

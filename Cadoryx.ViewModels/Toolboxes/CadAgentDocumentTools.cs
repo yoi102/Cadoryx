@@ -21,6 +21,7 @@ internal static class CadAgentDocumentTools
             var args = parsed.RootElement;
             if (args.ValueKind != JsonValueKind.Object) throw new ArgumentException("Expected an object.");
             if (document is null || document.IsDetached) throw new InvalidOperationException("No active document.");
+            if (document.IsClosingRequested || document.Session.IsClosing) throw new InvalidOperationException("The document is closing or closed.");
             return call.Name switch
             {
                 "cad_inspect" => Inspect(args, document, cancellationToken),
@@ -87,7 +88,8 @@ internal static class CadAgentDocumentTools
         if (CadAuthoringInspection.Supports(area))
         {
             if (args.TryGetProperty("sheetId", out _)) throw new ArgumentException("Authoring inspection has no sheetId filter.");
-            return CadAuthoringInspection.Read(document.Session, area, id, partId, offset, limit, cancellationToken);
+            var inspected = CadAuthoringInspection.Read(document.Session, area, id, partId, offset, limit, cancellationToken);
+            return CadInspectionDocumentIdentityFeedback.Read(snapshot, area, id, partId, offset, limit) ?? inspected;
         }
         // Typed namespaces may share a GUID. Refuse a mistaken document filter
         // only after checking that the actual requested drawing object is absent.
@@ -180,7 +182,7 @@ internal static class CadAgentDocumentTools
                 id, offset, limit),
             _ => throw new ArgumentException("Unknown inspection area.")
         };
-        return JsonSerializer.Serialize(result, InspectJsonOptions);
+        return CadInspectionDocumentIdentityFeedback.Read(snapshot, area, id, partId, offset, limit) ?? JsonSerializer.Serialize(result, InspectJsonOptions);
     }
 
     private static object InspectDrawingItems(DocumentSnapshot snapshot, JsonElement args, string area,

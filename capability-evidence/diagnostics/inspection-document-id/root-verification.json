@@ -1,0 +1,124 @@
+{
+  "recordedAt": "2026-10-13T20:08:42.471352+00:00",
+  "state": "F5_ROOT_PUBLIC85_BOTH185_COMPILED_ASSERTIONS_AND_FINAL_WPF_VERIFIED_NOT_FULL_XUNIT",
+  "applied": {
+    "path": "artifacts/inspection-document-id-root-1/applied.json",
+    "sha256": "18549EB4F0AF41CDF959967E84EE97D1D2F65D71CC82066937A7E338F7745E5E"
+  },
+  "public85ByteBaseline": {
+    "path": "capability-evidence/diagnostics/af1080-final-ready/freeze.json",
+    "sha256": "758ED1F4EF652F006BE1C325E0AFA91416686205B1F4044BFAC38CBF4A398CBC"
+  },
+  "sourceFiles": [
+    {
+      "path": "Cadoryx.ViewModels/Toolboxes/CadAgentDocumentTools.cs",
+      "sha256": "BC453F9DFBBECA2EF9B9B2FEC39D8E64B92E0FE21C5A2EE55998CADCB1034B8C"
+    },
+    {
+      "path": "Cadoryx.ViewModels/Toolboxes/CadInspectionDocumentIdentityFeedback.cs",
+      "sha256": "32692D41812365A7A76E623C83032B9D33B4778EF8C9655AF1A0EB51E87714BE"
+    },
+    {
+      "path": "Cadoryx.Tests/InspectionDocumentIdentityFeedbackTests.cs",
+      "sha256": "78CC43067C71795189D993F47CAA452FC5691A0BF4B1E0E179E76BA91C0319D2"
+    }
+  ],
+  "configurations": [
+    {
+      "mode": "baseline",
+      "configuration": "Release",
+      "total": 185,
+      "passed": 139,
+      "failed": 46,
+      "original59Passed": true,
+      "actualNativeModules": 0,
+      "receipt": {
+        "path": "artifacts/inspection-document-id-root-1/managed-baseline-release-1-results.json",
+        "sha256": "FD05B7C93984847A17364D0EEB96503819836C6686A1E64C0A7C48A184FAFE10"
+      },
+      "build": {
+        "path": "artifacts/inspection-document-id-root-1/build-managed-baseline-release-1-exit.json",
+        "sha256": "1F3FCF0DBE0D20AB78C53DA5F31EA95EC8A69AFE3E758070D94C188386CED80E"
+      },
+      "exit": {
+        "path": "artifacts/inspection-document-id-root-1/managed-baseline-release-1-exit.json",
+        "sha256": "48EE6E8A267329D976F685BBA7F879C7ABFCFD38C6B273A2219DF198422612D4"
+      }
+    },
+    {
+      "mode": "baseline",
+      "configuration": "Debug",
+      "total": 185,
+      "passed": 139,
+      "failed": 46,
+      "original59Passed": true,
+      "actualNativeModules": 0,
+      "receipt": {
+        "path": "artifacts/inspection-document-id-root-1/managed-baseline-debug-1-results.json",
+        "sha256": "D1AFD5C8E40EE475E4F680BA5E23A2F10FFC1A7B4C8CE1C81B8AB3B34AA80839"
+      },
+      "build": {
+        "path": "artifacts/inspection-document-id-root-1/build-managed-baseline-debug-1-exit.json",
+        "sha256": "1382DDCDB8FDB31106E000FD68AB7EB348B71D77D2F7C193AC6CB95EF50D114B"
+      },
+      "exit": {
+        "path": "artifacts/inspection-document-id-root-1/managed-baseline-debug-1-exit.json",
+        "sha256": "4AA48B99153A8084523F44F9D40CBE25CDA99750DF43F86685557F757467D745"
+      }
+    },
+    {
+      "mode": "root",
+      "configuration": "Release",
+      "total": 185,
+      "passed": 185,
+      "failed": 0,
+      "original59Passed": true,
+      "actualNativeModules": 0,
+      "receipt": {
+        "path": "artifacts/inspection-document-id-root-1/managed-root-release-1-results.json",
+        "sha256": "F374DAB54CF1CCE4079875492AC8E99496F34B0557178D6D2D8DA2CD95C9F91A"
+      },
+      "build": {
+        "path": "artifacts/inspection-document-id-root-1/build-managed-root-release-1-exit.json",
+        "sha256": "2368CE43AAAFEAB29A37009D5B7D05D09F9931D6DAF193CC4900955CFFC5C51B"
+      },
+      "exit": {
+        "path": "artifacts/inspection-document-id-root-1/managed-root-release-1-exit.json",
+        "sha256": "D375EFFCA8686193F616C2F0254215112E981160159A8A35EBADE00CD617598F"
+      }
+    },
+    {
+      "mode": "root",
+      "configuration": "Debug",
+      "total": 185,
+      "passed": 185,
+      "failed": 0,
+      "original59Passed": true,
+      "actualNativeModules": 0,
+      "receipt": {
+        "path": "artifacts/inspection-document-id-root-1/managed-root-debug-1-results.json",
+        "sha256": "E92FE29F8B04DB1BCFC9DBF1D38DFCB2A901D025A1C249C89936688A195189AF"
+      },
+      "build": {
+        "path": "artifacts/inspection-document-id-root-1/build-managed-root-debug-1-exit.json",
+        "sha256": "518FB26B38E070F87C87B0924035350F070EA08ED8D4F417FF84C86CB104FA9E"
+      },
+      "exit": {
+        "path": "artifacts/inspection-document-id-root-1/managed-root-debug-1-exit.json",
+        "sha256": "C5F5BAFDB851A10BFD8C2B9E4766AB5A208E4E147B52838460F83F323D65520F"
+      }
+    }
+  ],
+  "actualRootManaged185Both": true,
+  "rootTestsAndFinalWpfBothBuild0": true,
+  "finalWpfViewModelsMatchesTestedRoot": true,
+  "public85SDK13Native62DiskMatchedBoth": true,
+  "originalSchemaAnd12ToolsKept": true,
+  "runningOld6991Changed": false,
+  "D7Applied": false,
+  "fullCurrentRootRegressionExecuted": false,
+  "realModelRerun": false,
+  "actualDesktopRun": false,
+  "productionDevelopmentApplied": true,
+  "AFComplete": false
+}

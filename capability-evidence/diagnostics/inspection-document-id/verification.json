@@ -1,0 +1,626 @@
+{
+  "recordedAt": "2026-10-13T19:45:51.610776+00:00",
+  "state": "F5_ALL18_DOCUMENT_FILTER_ROLES_BOTH_MANAGED184_VERIFIED_NOT_MODEL_OR_FULL_XUNIT",
+  "parent": {
+    "path": "artifacts/af1082-d7-local87cu1-1/freeze.json",
+    "sha256": "B565EB406EB6E7490BB92E4FA7DC7AAA32DE28F99B5470A0326A560C01F4015D"
+  },
+  "source": {
+    "path": "artifacts/inspection-document-id-draft-1/workspace/Cadoryx.ViewModels/Toolboxes/CadAgentDocumentTools.cs",
+    "sha256": "BC453F9DFBBECA2EF9B9B2FEC39D8E64B92E0FE21C5A2EE55998CADCB1034B8C"
+  },
+  "helper": {
+    "path": "artifacts/inspection-document-id-draft-1/workspace/Cadoryx.ViewModels/Toolboxes/CadInspectionDocumentIdentityFeedback.cs",
+    "sha256": "C1F667732A09977617A5DB2711E7EA6FD7D9A201F3BD53F6181BF2DBE0EE5C5C"
+  },
+  "tests": {
+    "path": "tools/InspectionDocumentIdentityCandidate/InspectionDocumentIdentityFeedbackTests.cs",
+    "sha256": "B0D56442B44F9EC1AA5E589AAA116C6A533BBC33E5170E373C573FA78CDFD1D6"
+  },
+  "toolSource": [
+    {
+      "path": "tools/InspectionDocumentIdentityCandidate/audit.py",
+      "sha256": "C730EA0F9F3BBFD405DB961CD294F4368D5D1CC08BA993284888C2128E1AF516"
+    },
+    {
+      "path": "tools/InspectionDocumentIdentityCandidate/CadInspectionDocumentIdentityFeedback.cs",
+      "sha256": "C1F667732A09977617A5DB2711E7EA6FD7D9A201F3BD53F6181BF2DBE0EE5C5C"
+    },
+    {
+      "path": "tools/InspectionDocumentIdentityCandidate/InspectionDocumentIdentityFeedbackTests.cs",
+      "sha256": "B0D56442B44F9EC1AA5E589AAA116C6A533BBC33E5170E373C573FA78CDFD1D6"
+    },
+    {
+      "path": "tools/InspectionDocumentIdentityCandidate/ManagedFeedbackProbe.csproj",
+      "sha256": "0AD24A091CB4DCA96292D7198A102DB80A2A7796577CDF88315D98930586C5FC"
+    },
+    {
+      "path": "tools/InspectionDocumentIdentityCandidate/packages.lock.json",
+      "sha256": "A4364D81A6DE2707D66FBCED18FBBC926C882AB96E1D1AEBBB17E871285B9D75"
+    },
+    {
+      "path": "tools/InspectionDocumentIdentityCandidate/prepare.py",
+      "sha256": "3834A546A9AEBFCFBDB6C20EFFBE31C912215BC32B17F8AE1FE894D1EE06A02A"
+    },
+    {
+      "path": "tools/InspectionDocumentIdentityCandidate/Program.cs",
+      "sha256": "B3190D4D49EBC84B3FA085BBE7DAC204AB9D17D71CA3E7F00C0924B05297DB87"
+    },
+    {
+      "path": "tools/InspectionDocumentIdentityCandidate/README.md",
+      "sha256": "F5F97594240A3CB5E342A5A610A112DDD53ADE24BFBAB1A6FE2D76B56A2ABA4E"
+    },
+    {
+      "path": "tools/InspectionDocumentIdentityCandidate/run-managed.ps1",
+      "sha256": "E874C2EBACA9633E0F743CD629279DF3F4730B1558590CF84EDEF5573F4D4968"
+    }
+  ],
+  "configurations": [
+    {
+      "mode": "baseline",
+      "configuration": "Release",
+      "total": 184,
+      "passed": 138,
+      "failed": 46,
+      "new125": 125,
+      "original59Passed": true,
+      "actualNativeModules": 0,
+      "build": {
+        "path": "artifacts/inspection-document-id-draft-1/build-managed-baseline-release-6-exit.json",
+        "sha256": "3741C024C71DC6F4ADFC0BE457E3A5E6386972A7339D811A4A5388CE475505A6"
+      },
+      "receipt": {
+        "path": "artifacts/inspection-document-id-draft-1/managed-baseline-release-6-results.json",
+        "sha256": "C22C962CC7FADAC83AFABF6499DED609044682FE81439638673288934B885DD6"
+      },
+      "exit": {
+        "path": "artifacts/inspection-document-id-draft-1/managed-baseline-release-6-exit.json",
+        "sha256": "3650057352240C0EAF7B56F294B5606C36854666ECE4FB7165AD8E02045103BB"
+      },
+      "failures": [
+        {
+          "name": "Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.CallerExplicitlyReadsSuggestedQueryAndSeesOriginalState([\"parts\"])",
+          "passed": false,
+          "error": "System.Collections.Generic.KeyNotFoundException: The given key was not present in the dictionary.\r\n   at System.Text.Json.JsonElement.GetProperty(String propertyName)\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.CallerExplicitlyReadsSuggestedQueryAndSeesOriginalState(String area) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 44\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.CallerExplicitlyReadsSuggestedQueryAndSeesOriginalState(String area) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 49\r\n   at Program.<Main>$(String[] args) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\Program.cs:line 26"
+        },
+        {
+          "name": "Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.CallerExplicitlyReadsSuggestedQueryAndSeesOriginalState([\"bodies\"])",
+          "passed": false,
+          "error": "System.Collections.Generic.KeyNotFoundException: The given key was not present in the dictionary.\r\n   at System.Text.Json.JsonElement.GetProperty(String propertyName)\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.CallerExplicitlyReadsSuggestedQueryAndSeesOriginalState(String area) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 44\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.CallerExplicitlyReadsSuggestedQueryAndSeesOriginalState(String area) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 49\r\n   at Program.<Main>$(String[] args) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\Program.cs:line 26"
+        },
+        {
+          "name": "Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.CallerExplicitlyReadsSuggestedQueryAndSeesOriginalState([\"features\"])",
+          "passed": false,
+          "error": "System.Collections.Generic.KeyNotFoundException: The given key was not present in the dictionary.\r\n   at System.Text.Json.JsonElement.GetProperty(String propertyName)\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.CallerExplicitlyReadsSuggestedQueryAndSeesOriginalState(String area) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 44\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.CallerExplicitlyReadsSuggestedQueryAndSeesOriginalState(String area) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 49\r\n   at Program.<Main>$(String[] args) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\Program.cs:line 26"
+        },
+        {
+          "name": "Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.CallerExplicitlyReadsSuggestedQueryAndSeesOriginalState([\"layers\"])",
+          "passed": false,
+          "error": "System.Collections.Generic.KeyNotFoundException: The given key was not present in the dictionary.\r\n   at System.Text.Json.JsonElement.GetProperty(String propertyName)\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.CallerExplicitlyReadsSuggestedQueryAndSeesOriginalState(String area) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 44\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.CallerExplicitlyReadsSuggestedQueryAndSeesOriginalState(String area) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 49\r\n   at Program.<Main>$(String[] args) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\Program.cs:line 26"
+        },
+        {
+          "name": "Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.CallerExplicitlyReadsSuggestedQueryAndSeesOriginalState([\"materials\"])",
+          "passed": false,
+          "error": "System.Collections.Generic.KeyNotFoundException: The given key was not present in the dictionary.\r\n   at System.Text.Json.JsonElement.GetProperty(String propertyName)\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.CallerExplicitlyReadsSuggestedQueryAndSeesOriginalState(String area) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 44\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.CallerExplicitlyReadsSuggestedQueryAndSeesOriginalState(String area) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 49\r\n   at Program.<Main>$(String[] args) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\Program.cs:line 26"
+        },
+        {
+          "name": "Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.CallerExplicitlyReadsSuggestedQueryAndSeesOriginalState([\"selection\"])",
+          "passed": false,
+          "error": "System.Collections.Generic.KeyNotFoundException: The given key was not present in the dictionary.\r\n   at System.Text.Json.JsonElement.GetProperty(String propertyName)\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.CallerExplicitlyReadsSuggestedQueryAndSeesOriginalState(String area) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 44\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.CallerExplicitlyReadsSuggestedQueryAndSeesOriginalState(String area) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 49\r\n   at Program.<Main>$(String[] args) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\Program.cs:line 26"
+        },
+        {
+          "name": "Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.CallerExplicitlyReadsSuggestedQueryAndSeesOriginalState([\"sketches\"])",
+          "passed": false,
+          "error": "System.Collections.Generic.KeyNotFoundException: The given key was not present in the dictionary.\r\n   at System.Text.Json.JsonElement.GetProperty(String propertyName)\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.CallerExplicitlyReadsSuggestedQueryAndSeesOriginalState(String area) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 44\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.CallerExplicitlyReadsSuggestedQueryAndSeesOriginalState(String area) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 49\r\n   at Program.<Main>$(String[] args) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\Program.cs:line 26"
+        },
+        {
+          "name": "Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.CallerExplicitlyReadsSuggestedQueryAndSeesOriginalState([\"occurrences\"])",
+          "passed": false,
+          "error": "System.Collections.Generic.KeyNotFoundException: The given key was not present in the dictionary.\r\n   at System.Text.Json.JsonElement.GetProperty(String propertyName)\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.CallerExplicitlyReadsSuggestedQueryAndSeesOriginalState(String area) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 44\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.CallerExplicitlyReadsSuggestedQueryAndSeesOriginalState(String area) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 49\r\n   at Program.<Main>$(String[] args) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\Program.cs:line 26"
+        },
+        {
+          "name": "Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.CallerExplicitlyReadsSuggestedQueryAndSeesOriginalState([\"assembly\"])",
+          "passed": false,
+          "error": "System.Collections.Generic.KeyNotFoundException: The given key was not present in the dictionary.\r\n   at System.Text.Json.JsonElement.GetProperty(String propertyName)\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.CallerExplicitlyReadsSuggestedQueryAndSeesOriginalState(String area) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 44\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.CallerExplicitlyReadsSuggestedQueryAndSeesOriginalState(String area) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 49\r\n   at Program.<Main>$(String[] args) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\Program.cs:line 26"
+        },
+        {
+          "name": "Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.CallerExplicitlyReadsSuggestedQueryAndSeesOriginalState([\"parameters\"])",
+          "passed": false,
+          "error": "System.Collections.Generic.KeyNotFoundException: The given key was not present in the dictionary.\r\n   at System.Text.Json.JsonElement.GetProperty(String propertyName)\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.CallerExplicitlyReadsSuggestedQueryAndSeesOriginalState(String area) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 44\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.CallerExplicitlyReadsSuggestedQueryAndSeesOriginalState(String area) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 49\r\n   at Program.<Main>$(String[] args) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\Program.cs:line 26"
+        },
+        {
+          "name": "Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.CallerExplicitlyReadsSuggestedQueryAndSeesOriginalState([\"parameter_bindings\"])",
+          "passed": false,
+          "error": "System.Collections.Generic.KeyNotFoundException: The given key was not present in the dictionary.\r\n   at System.Text.Json.JsonElement.GetProperty(String propertyName)\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.CallerExplicitlyReadsSuggestedQueryAndSeesOriginalState(String area) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 44\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.CallerExplicitlyReadsSuggestedQueryAndSeesOriginalState(String area) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 49\r\n   at Program.<Main>$(String[] args) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\Program.cs:line 26"
+        },
+        {
+          "name": "Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.CallerExplicitlyReadsSuggestedQueryAndSeesOriginalState([\"parameter_targets\"])",
+          "passed": false,
+          "error": "System.Collections.Generic.KeyNotFoundException: The given key was not present in the dictionary.\r\n   at System.Text.Json.JsonElement.GetProperty(String propertyName)\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.CallerExplicitlyReadsSuggestedQueryAndSeesOriginalState(String area) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 44\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.CallerExplicitlyReadsSuggestedQueryAndSeesOriginalState(String area) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 49\r\n   at Program.<Main>$(String[] args) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\Program.cs:line 26"
+        },
+        {
+          "name": "Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.CallerExplicitlyReadsSuggestedQueryAndSeesOriginalState([\"datums\"])",
+          "passed": false,
+          "error": "System.Collections.Generic.KeyNotFoundException: The given key was not present in the dictionary.\r\n   at System.Text.Json.JsonElement.GetProperty(String propertyName)\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.CallerExplicitlyReadsSuggestedQueryAndSeesOriginalState(String area) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 44\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.CallerExplicitlyReadsSuggestedQueryAndSeesOriginalState(String area) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 49\r\n   at Program.<Main>$(String[] args) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\Program.cs:line 26"
+        },
+        {
+          "name": "Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.CallerExplicitlyReadsSuggestedQueryAndSeesOriginalState([\"datum_associations\"])",
+          "passed": false,
+          "error": "System.Collections.Generic.KeyNotFoundException: The given key was not present in the dictionary.\r\n   at System.Text.Json.JsonElement.GetProperty(String propertyName)\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.CallerExplicitlyReadsSuggestedQueryAndSeesOriginalState(String area) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 44\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.CallerExplicitlyReadsSuggestedQueryAndSeesOriginalState(String area) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 49\r\n   at Program.<Main>$(String[] args) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\Program.cs:line 26"
+        },
+        {
+          "name": "Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.CallerExplicitlyReadsSuggestedQueryAndSeesOriginalState([\"timeline\"])",
+          "passed": false,
+          "error": "System.Collections.Generic.KeyNotFoundException: The given key was not present in the dictionary.\r\n   at System.Text.Json.JsonElement.GetProperty(String propertyName)\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.CallerExplicitlyReadsSuggestedQueryAndSeesOriginalState(String area) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 44\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.CallerExplicitlyReadsSuggestedQueryAndSeesOriginalState(String area) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 49\r\n   at Program.<Main>$(String[] args) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\Program.cs:line 26"
+        },
+        {
+          "name": "Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.CallerExplicitlyReadsSuggestedQueryAndSeesOriginalState([\"recipes\"])",
+          "passed": false,
+          "error": "System.Collections.Generic.KeyNotFoundException: The given key was not present in the dictionary.\r\n   at System.Text.Json.JsonElement.GetProperty(String propertyName)\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.CallerExplicitlyReadsSuggestedQueryAndSeesOriginalState(String area) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 44\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.CallerExplicitlyReadsSuggestedQueryAndSeesOriginalState(String area) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 49\r\n   at Program.<Main>$(String[] args) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\Program.cs:line 26"
+        },
+        {
+          "name": "Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.CallerExplicitlyReadsSuggestedQueryAndSeesOriginalState([\"sketch_geometry\"])",
+          "passed": false,
+          "error": "System.Collections.Generic.KeyNotFoundException: The given key was not present in the dictionary.\r\n   at System.Text.Json.JsonElement.GetProperty(String propertyName)\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.CallerExplicitlyReadsSuggestedQueryAndSeesOriginalState(String area) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 44\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.CallerExplicitlyReadsSuggestedQueryAndSeesOriginalState(String area) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 49\r\n   at Program.<Main>$(String[] args) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\Program.cs:line 26"
+        },
+        {
+          "name": "Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.CallerExplicitlyReadsSuggestedQueryAndSeesOriginalState([\"assembly_patterns\"])",
+          "passed": false,
+          "error": "System.Collections.Generic.KeyNotFoundException: The given key was not present in the dictionary.\r\n   at System.Text.Json.JsonElement.GetProperty(String propertyName)\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.CallerExplicitlyReadsSuggestedQueryAndSeesOriginalState(String area) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 44\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.CallerExplicitlyReadsSuggestedQueryAndSeesOriginalState(String area) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 49\r\n   at Program.<Main>$(String[] args) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\Program.cs:line 26"
+        },
+        {
+          "name": "Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.DocumentFilterReportsItsActualObjectRoleAndReadOnlySuggestion([\"parts\"])",
+          "passed": false,
+          "error": "Xunit.Sdk.FalseException: Assert.False() Failure\r\nExpected: False\r\nActual:   True\r\n   at Xunit.Assert.False(Nullable`1 condition, String userMessage) in /_/src/xunit.assert/Asserts/BooleanAsserts.cs:line 82\r\n   at Xunit.Assert.False(Boolean condition) in /_/src/xunit.assert/Asserts/BooleanAsserts.cs:line 36\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.DocumentFilterReportsItsActualObjectRoleAndReadOnlySuggestion(String area) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 27\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.DocumentFilterReportsItsActualObjectRoleAndReadOnlySuggestion(String area) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 36\r\n   at Program.<Main>$(String[] args) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\Program.cs:line 26"
+        },
+        {
+          "name": "Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.DocumentFilterReportsItsActualObjectRoleAndReadOnlySuggestion([\"bodies\"])",
+          "passed": false,
+          "error": "Xunit.Sdk.FalseException: Assert.False() Failure\r\nExpected: False\r\nActual:   True\r\n   at Xunit.Assert.False(Nullable`1 condition, String userMessage) in /_/src/xunit.assert/Asserts/BooleanAsserts.cs:line 82\r\n   at Xunit.Assert.False(Boolean condition) in /_/src/xunit.assert/Asserts/BooleanAsserts.cs:line 36\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.DocumentFilterReportsItsActualObjectRoleAndReadOnlySuggestion(String area) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 27\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.DocumentFilterReportsItsActualObjectRoleAndReadOnlySuggestion(String area) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 36\r\n   at Program.<Main>$(String[] args) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\Program.cs:line 26"
+        },
+        {
+          "name": "Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.DocumentFilterReportsItsActualObjectRoleAndReadOnlySuggestion([\"features\"])",
+          "passed": false,
+          "error": "Xunit.Sdk.FalseException: Assert.False() Failure\r\nExpected: False\r\nActual:   True\r\n   at Xunit.Assert.False(Nullable`1 condition, String userMessage) in /_/src/xunit.assert/Asserts/BooleanAsserts.cs:line 82\r\n   at Xunit.Assert.False(Boolean condition) in /_/src/xunit.assert/Asserts/BooleanAsserts.cs:line 36\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.DocumentFilterReportsItsActualObjectRoleAndReadOnlySuggestion(String area) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 27\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.DocumentFilterReportsItsActualObjectRoleAndReadOnlySuggestion(String area) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 36\r\n   at Program.<Main>$(String[] args) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\Program.cs:line 26"
+        },
+        {
+          "name": "Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.DocumentFilterReportsItsActualObjectRoleAndReadOnlySuggestion([\"layers\"])",
+          "passed": false,
+          "error": "Xunit.Sdk.FalseException: Assert.False() Failure\r\nExpected: False\r\nActual:   True\r\n   at Xunit.Assert.False(Nullable`1 condition, String userMessage) in /_/src/xunit.assert/Asserts/BooleanAsserts.cs:line 82\r\n   at Xunit.Assert.False(Boolean condition) in /_/src/xunit.assert/Asserts/BooleanAsserts.cs:line 36\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.DocumentFilterReportsItsActualObjectRoleAndReadOnlySuggestion(String area) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 27\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.DocumentFilterReportsItsActualObjectRoleAndReadOnlySuggestion(String area) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 36\r\n   at Program.<Main>$(String[] args) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\Program.cs:line 26"
+        },
+        {
+          "name": "Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.DocumentFilterReportsItsActualObjectRoleAndReadOnlySuggestion([\"materials\"])",
+          "passed": false,
+          "error": "Xunit.Sdk.FalseException: Assert.False() Failure\r\nExpected: False\r\nActual:   True\r\n   at Xunit.Assert.False(Nullable`1 condition, String userMessage) in /_/src/xunit.assert/Asserts/BooleanAsserts.cs:line 82\r\n   at Xunit.Assert.False(Boolean condition) in /_/src/xunit.assert/Asserts/BooleanAsserts.cs:line 36\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.DocumentFilterReportsItsActualObjectRoleAndReadOnlySuggestion(String area) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 27\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.DocumentFilterReportsItsActualObjectRoleAndReadOnlySuggestion(String area) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 36\r\n   at Program.<Main>$(String[] args) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\Program.cs:line 26"
+        },
+        {
+          "name": "Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.DocumentFilterReportsItsActualObjectRoleAndReadOnlySuggestion([\"selection\"])",
+          "passed": false,
+          "error": "Xunit.Sdk.FalseException: Assert.False() Failure\r\nExpected: False\r\nActual:   True\r\n   at Xunit.Assert.False(Nullable`1 condition, String userMessage) in /_/src/xunit.assert/Asserts/BooleanAsserts.cs:line 82\r\n   at Xunit.Assert.False(Boolean condition) in /_/src/xunit.assert/Asserts/BooleanAsserts.cs:line 36\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.DocumentFilterReportsItsActualObjectRoleAndReadOnlySuggestion(String area) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 27\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.DocumentFilterReportsItsActualObjectRoleAndReadOnlySuggestion(String area) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 36\r\n   at Program.<Main>$(String[] args) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\Program.cs:line 26"
+        },
+        {
+          "name": "Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.DocumentFilterReportsItsActualObjectRoleAndReadOnlySuggestion([\"sketches\"])",
+          "passed": false,
+          "error": "Xunit.Sdk.FalseException: Assert.False() Failure\r\nExpected: False\r\nActual:   True\r\n   at Xunit.Assert.False(Nullable`1 condition, String userMessage) in /_/src/xunit.assert/Asserts/BooleanAsserts.cs:line 82\r\n   at Xunit.Assert.False(Boolean condition) in /_/src/xunit.assert/Asserts/BooleanAsserts.cs:line 36\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.DocumentFilterReportsItsActualObjectRoleAndReadOnlySuggestion(String area) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 27\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.DocumentFilterReportsItsActualObjectRoleAndReadOnlySuggestion(String area) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 36\r\n   at Program.<Main>$(String[] args) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\Program.cs:line 26"
+        },
+        {
+          "name": "Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.DocumentFilterReportsItsActualObjectRoleAndReadOnlySuggestion([\"occurrences\"])",
+          "passed": false,
+          "error": "Xunit.Sdk.FalseException: Assert.False() Failure\r\nExpected: False\r\nActual:   True\r\n   at Xunit.Assert.False(Nullable`1 condition, String userMessage) in /_/src/xunit.assert/Asserts/BooleanAsserts.cs:line 82\r\n   at Xunit.Assert.False(Boolean condition) in /_/src/xunit.assert/Asserts/BooleanAsserts.cs:line 36\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.DocumentFilterReportsItsActualObjectRoleAndReadOnlySuggestion(String area) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 27\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.DocumentFilterReportsItsActualObjectRoleAndReadOnlySuggestion(String area) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 36\r\n   at Program.<Main>$(String[] args) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\Program.cs:line 26"
+        },
+        {
+          "name": "Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.DocumentFilterReportsItsActualObjectRoleAndReadOnlySuggestion([\"assembly\"])",
+          "passed": false,
+          "error": "Xunit.Sdk.FalseException: Assert.False() Failure\r\nExpected: False\r\nActual:   True\r\n   at Xunit.Assert.False(Nullable`1 condition, String userMessage) in /_/src/xunit.assert/Asserts/BooleanAsserts.cs:line 82\r\n   at Xunit.Assert.False(Boolean condition) in /_/src/xunit.assert/Asserts/BooleanAsserts.cs:line 36\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.DocumentFilterReportsItsActualObjectRoleAndReadOnlySuggestion(String area) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 27\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.DocumentFilterReportsItsActualObjectRoleAndReadOnlySuggestion(String area) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 36\r\n   at Program.<Main>$(String[] args) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\Program.cs:line 26"
+        },
+        {
+          "name": "Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.DocumentFilterReportsItsActualObjectRoleAndReadOnlySuggestion([\"parameters\"])",
+          "passed": false,
+          "error": "Xunit.Sdk.FalseException: Assert.False() Failure\r\nExpected: False\r\nActual:   True\r\n   at Xunit.Assert.False(Nullable`1 condition, String userMessage) in /_/src/xunit.assert/Asserts/BooleanAsserts.cs:line 82\r\n   at Xunit.Assert.False(Boolean condition) in /_/src/xunit.assert/Asserts/BooleanAsserts.cs:line 36\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.DocumentFilterReportsItsActualObjectRoleAndReadOnlySuggestion(String area) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 27\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.DocumentFilterReportsItsActualObjectRoleAndReadOnlySuggestion(String area) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 36\r\n   at Program.<Main>$(String[] args) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\Program.cs:line 26"
+        },
+        {
+          "name": "Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.DocumentFilterReportsItsActualObjectRoleAndReadOnlySuggestion([\"parameter_bindings\"])",
+          "passed": false,
+          "error": "Xunit.Sdk.FalseException: Assert.False() Failure\r\nExpected: False\r\nActual:   True\r\n   at Xunit.Assert.False(Nullable`1 condition, String userMessage) in /_/src/xunit.assert/Asserts/BooleanAsserts.cs:line 82\r\n   at Xunit.Assert.False(Boolean condition) in /_/src/xunit.assert/Asserts/BooleanAsserts.cs:line 36\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.DocumentFilterReportsItsActualObjectRoleAndReadOnlySuggestion(String area) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 27\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.DocumentFilterReportsItsActualObjectRoleAndReadOnlySuggestion(String area) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 36\r\n   at Program.<Main>$(String[] args) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\Program.cs:line 26"
+        },
+        {
+          "name": "Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.DocumentFilterReportsItsActualObjectRoleAndReadOnlySuggestion([\"parameter_targets\"])",
+          "passed": false,
+          "error": "Xunit.Sdk.FalseException: Assert.False() Failure\r\nExpected: False\r\nActual:   True\r\n   at Xunit.Assert.False(Nullable`1 condition, String userMessage) in /_/src/xunit.assert/Asserts/BooleanAsserts.cs:line 82\r\n   at Xunit.Assert.False(Boolean condition) in /_/src/xunit.assert/Asserts/BooleanAsserts.cs:line 36\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.DocumentFilterReportsItsActualObjectRoleAndReadOnlySuggestion(String area) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 27\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.DocumentFilterReportsItsActualObjectRoleAndReadOnlySuggestion(String area) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 36\r\n   at Program.<Main>$(String[] args) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\Program.cs:line 26"
+        },
+        {
+          "name": "Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.DocumentFilterReportsItsActualObjectRoleAndReadOnlySuggestion([\"datums\"])",
+          "passed": false,
+          "error": "Xunit.Sdk.FalseException: Assert.False() Failure\r\nExpected: False\r\nActual:   True\r\n   at Xunit.Assert.False(Nullable`1 condition, String userMessage) in /_/src/xunit.assert/Asserts/BooleanAsserts.cs:line 82\r\n   at Xunit.Assert.False(Boolean condition) in /_/src/xunit.assert/Asserts/BooleanAsserts.cs:line 36\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.DocumentFilterReportsItsActualObjectRoleAndReadOnlySuggestion(String area) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 27\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.DocumentFilterReportsItsActualObjectRoleAndReadOnlySuggestion(String area) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 36\r\n   at Program.<Main>$(String[] args) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\Program.cs:line 26"
+        },
+        {
+          "name": "Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.DocumentFilterReportsItsActualObjectRoleAndReadOnlySuggestion([\"datum_associations\"])",
+          "passed": false,
+          "error": "Xunit.Sdk.FalseException: Assert.False() Failure\r\nExpected: False\r\nActual:   True\r\n   at Xunit.Assert.False(Nullable`1 condition, String userMessage) in /_/src/xunit.assert/Asserts/BooleanAsserts.cs:line 82\r\n   at Xunit.Assert.False(Boolean condition) in /_/src/xunit.assert/Asserts/BooleanAsserts.cs:line 36\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.DocumentFilterReportsItsActualObjectRoleAndReadOnlySuggestion(String area) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 27\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.DocumentFilterReportsItsActualObjectRoleAndReadOnlySuggestion(String area) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 36\r\n   at Program.<Main>$(String[] args) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\Program.cs:line 26"
+        },
+        {
+          "name": "Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.DocumentFilterReportsItsActualObjectRoleAndReadOnlySuggestion([\"timeline\"])",
+          "passed": false,
+          "error": "Xunit.Sdk.FalseException: Assert.False() Failure\r\nExpected: False\r\nActual:   True\r\n   at Xunit.Assert.False(Nullable`1 condition, String userMessage) in /_/src/xunit.assert/Asserts/BooleanAsserts.cs:line 82\r\n   at Xunit.Assert.False(Boolean condition) in /_/src/xunit.assert/Asserts/BooleanAsserts.cs:line 36\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.DocumentFilterReportsItsActualObjectRoleAndReadOnlySuggestion(String area) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 27\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.DocumentFilterReportsItsActualObjectRoleAndReadOnlySuggestion(String area) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 36\r\n   at Program.<Main>$(String[] args) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\Program.cs:line 26"
+        },
+        {
+          "name": "Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.DocumentFilterReportsItsActualObjectRoleAndReadOnlySuggestion([\"recipes\"])",
+          "passed": false,
+          "error": "Xunit.Sdk.FalseException: Assert.False() Failure\r\nExpected: False\r\nActual:   True\r\n   at Xunit.Assert.False(Nullable`1 condition, String userMessage) in /_/src/xunit.assert/Asserts/BooleanAsserts.cs:line 82\r\n   at Xunit.Assert.False(Boolean condition) in /_/src/xunit.assert/Asserts/BooleanAsserts.cs:line 36\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.DocumentFilterReportsItsActualObjectRoleAndReadOnlySuggestion(String area) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 27\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.DocumentFilterReportsItsActualObjectRoleAndReadOnlySuggestion(String area) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 36\r\n   at Program.<Main>$(String[] args) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\Program.cs:line 26"
+        },
+        {
+          "name": "Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.DocumentFilterReportsItsActualObjectRoleAndReadOnlySuggestion([\"sketch_geometry\"])",
+          "passed": false,
+          "error": "Xunit.Sdk.FalseException: Assert.False() Failure\r\nExpected: False\r\nActual:   True\r\n   at Xunit.Assert.False(Nullable`1 condition, String userMessage) in /_/src/xunit.assert/Asserts/BooleanAsserts.cs:line 82\r\n   at Xunit.Assert.False(Boolean condition) in /_/src/xunit.assert/Asserts/BooleanAsserts.cs:line 36\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.DocumentFilterReportsItsActualObjectRoleAndReadOnlySuggestion(String area) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 27\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.DocumentFilterReportsItsActualObjectRoleAndReadOnlySuggestion(String area) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 36\r\n   at Program.<Main>$(String[] args) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\Program.cs:line 26"
+        },
+        {
+          "name": "Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.DocumentFilterReportsItsActualObjectRoleAndReadOnlySuggestion([\"assembly_patterns\"])",
+          "passed": false,
+          "error": "Xunit.Sdk.FalseException: Assert.False() Failure\r\nExpected: False\r\nActual:   True\r\n   at Xunit.Assert.False(Nullable`1 condition, String userMessage) in /_/src/xunit.assert/Asserts/BooleanAsserts.cs:line 82\r\n   at Xunit.Assert.False(Boolean condition) in /_/src/xunit.assert/Asserts/BooleanAsserts.cs:line 36\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.DocumentFilterReportsItsActualObjectRoleAndReadOnlySuggestion(String area) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 27\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.DocumentFilterReportsItsActualObjectRoleAndReadOnlySuggestion(String area) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 36\r\n   at Program.<Main>$(String[] args) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\Program.cs:line 26"
+        },
+        {
+          "name": "Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.DocumentPartFilterOffersOnlyPartDiscovery([\"bodies\"])",
+          "passed": false,
+          "error": "Xunit.Sdk.FalseException: Assert.False() Failure\r\nExpected: False\r\nActual:   True\r\n   at Xunit.Assert.False(Nullable`1 condition, String userMessage) in /_/src/xunit.assert/Asserts/BooleanAsserts.cs:line 82\r\n   at Xunit.Assert.False(Boolean condition) in /_/src/xunit.assert/Asserts/BooleanAsserts.cs:line 36\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.DocumentPartFilterOffersOnlyPartDiscovery(String area) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 77\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.DocumentPartFilterOffersOnlyPartDiscovery(String area) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 81\r\n   at Program.<Main>$(String[] args) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\Program.cs:line 26"
+        },
+        {
+          "name": "Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.DocumentPartFilterOffersOnlyPartDiscovery([\"features\"])",
+          "passed": false,
+          "error": "Xunit.Sdk.FalseException: Assert.False() Failure\r\nExpected: False\r\nActual:   True\r\n   at Xunit.Assert.False(Nullable`1 condition, String userMessage) in /_/src/xunit.assert/Asserts/BooleanAsserts.cs:line 82\r\n   at Xunit.Assert.False(Boolean condition) in /_/src/xunit.assert/Asserts/BooleanAsserts.cs:line 36\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.DocumentPartFilterOffersOnlyPartDiscovery(String area) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 77\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.DocumentPartFilterOffersOnlyPartDiscovery(String area) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 81\r\n   at Program.<Main>$(String[] args) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\Program.cs:line 26"
+        },
+        {
+          "name": "Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.DocumentPartFilterOffersOnlyPartDiscovery([\"sketches\"])",
+          "passed": false,
+          "error": "Xunit.Sdk.FalseException: Assert.False() Failure\r\nExpected: False\r\nActual:   True\r\n   at Xunit.Assert.False(Nullable`1 condition, String userMessage) in /_/src/xunit.assert/Asserts/BooleanAsserts.cs:line 82\r\n   at Xunit.Assert.False(Boolean condition) in /_/src/xunit.assert/Asserts/BooleanAsserts.cs:line 36\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.DocumentPartFilterOffersOnlyPartDiscovery(String area) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 77\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.DocumentPartFilterOffersOnlyPartDiscovery(String area) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 81\r\n   at Program.<Main>$(String[] args) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\Program.cs:line 26"
+        },
+        {
+          "name": "Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.DocumentPartFilterOffersOnlyPartDiscovery([\"recipes\"])",
+          "passed": false,
+          "error": "Xunit.Sdk.FalseException: Assert.False() Failure\r\nExpected: False\r\nActual:   True\r\n   at Xunit.Assert.False(Nullable`1 condition, String userMessage) in /_/src/xunit.assert/Asserts/BooleanAsserts.cs:line 82\r\n   at Xunit.Assert.False(Boolean condition) in /_/src/xunit.assert/Asserts/BooleanAsserts.cs:line 36\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.DocumentPartFilterOffersOnlyPartDiscovery(String area) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 77\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.DocumentPartFilterOffersOnlyPartDiscovery(String area) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 81\r\n   at Program.<Main>$(String[] args) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\Program.cs:line 26"
+        },
+        {
+          "name": "Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.DocumentPartFilterOffersOnlyPartDiscovery([\"sketch_geometry\"])",
+          "passed": false,
+          "error": "Xunit.Sdk.FalseException: Assert.False() Failure\r\nExpected: False\r\nActual:   True\r\n   at Xunit.Assert.False(Nullable`1 condition, String userMessage) in /_/src/xunit.assert/Asserts/BooleanAsserts.cs:line 82\r\n   at Xunit.Assert.False(Boolean condition) in /_/src/xunit.assert/Asserts/BooleanAsserts.cs:line 36\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.DocumentPartFilterOffersOnlyPartDiscovery(String area) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 77\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.DocumentPartFilterOffersOnlyPartDiscovery(String area) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 81\r\n   at Program.<Main>$(String[] args) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\Program.cs:line 26"
+        },
+        {
+          "name": "Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.DocumentPartFilterOffersOnlyPartDiscovery([\"parameter_targets\"])",
+          "passed": false,
+          "error": "Xunit.Sdk.FalseException: Assert.False() Failure\r\nExpected: False\r\nActual:   True\r\n   at Xunit.Assert.False(Nullable`1 condition, String userMessage) in /_/src/xunit.assert/Asserts/BooleanAsserts.cs:line 82\r\n   at Xunit.Assert.False(Boolean condition) in /_/src/xunit.assert/Asserts/BooleanAsserts.cs:line 36\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.DocumentPartFilterOffersOnlyPartDiscovery(String area) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 77\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.DocumentPartFilterOffersOnlyPartDiscovery(String area) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 81\r\n   at Program.<Main>$(String[] args) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\Program.cs:line 26"
+        },
+        {
+          "name": "Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.DocumentPartFilterOffersOnlyPartDiscovery([\"datums\"])",
+          "passed": false,
+          "error": "Xunit.Sdk.FalseException: Assert.False() Failure\r\nExpected: False\r\nActual:   True\r\n   at Xunit.Assert.False(Nullable`1 condition, String userMessage) in /_/src/xunit.assert/Asserts/BooleanAsserts.cs:line 82\r\n   at Xunit.Assert.False(Boolean condition) in /_/src/xunit.assert/Asserts/BooleanAsserts.cs:line 36\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.DocumentPartFilterOffersOnlyPartDiscovery(String area) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 77\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.DocumentPartFilterOffersOnlyPartDiscovery(String area) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 81\r\n   at Program.<Main>$(String[] args) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\Program.cs:line 26"
+        },
+        {
+          "name": "Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.DocumentPartFilterOffersOnlyPartDiscovery([\"datum_associations\"])",
+          "passed": false,
+          "error": "Xunit.Sdk.FalseException: Assert.False() Failure\r\nExpected: False\r\nActual:   True\r\n   at Xunit.Assert.False(Nullable`1 condition, String userMessage) in /_/src/xunit.assert/Asserts/BooleanAsserts.cs:line 82\r\n   at Xunit.Assert.False(Boolean condition) in /_/src/xunit.assert/Asserts/BooleanAsserts.cs:line 36\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.DocumentPartFilterOffersOnlyPartDiscovery(String area) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 77\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.DocumentPartFilterOffersOnlyPartDiscovery(String area) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 81\r\n   at Program.<Main>$(String[] args) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\Program.cs:line 26"
+        },
+        {
+          "name": "Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.OriginalEntryAndParsingGuardsPrecedeFeedback([\"close\"])",
+          "passed": false,
+          "error": "Xunit.Sdk.FalseException: Assert.False() Failure\r\nExpected: False\r\nActual:   True\r\n   at Xunit.Assert.False(Nullable`1 condition, String userMessage) in /_/src/xunit.assert/Asserts/BooleanAsserts.cs:line 82\r\n   at Xunit.Assert.False(Boolean condition) in /_/src/xunit.assert/Asserts/BooleanAsserts.cs:line 36\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.OriginalEntryAndParsingGuardsPrecedeFeedback(String fault) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 147\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.OriginalEntryAndParsingGuardsPrecedeFeedback(String fault) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 148\r\n   at Program.<Main>$(String[] args) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\Program.cs:line 26"
+        },
+        {
+          "name": "Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.OriginalEntryAndParsingGuardsPrecedeFeedback([\"closing-requested\"])",
+          "passed": false,
+          "error": "Xunit.Sdk.FalseException: Assert.False() Failure\r\nExpected: False\r\nActual:   True\r\n   at Xunit.Assert.False(Nullable`1 condition, String userMessage) in /_/src/xunit.assert/Asserts/BooleanAsserts.cs:line 82\r\n   at Xunit.Assert.False(Boolean condition) in /_/src/xunit.assert/Asserts/BooleanAsserts.cs:line 36\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.OriginalEntryAndParsingGuardsPrecedeFeedback(String fault) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 147\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.OriginalEntryAndParsingGuardsPrecedeFeedback(String fault) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 148\r\n   at Program.<Main>$(String[] args) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\Program.cs:line 26"
+        }
+      ]
+    },
+    {
+      "mode": "baseline",
+      "configuration": "Debug",
+      "total": 184,
+      "passed": 138,
+      "failed": 46,
+      "new125": 125,
+      "original59Passed": true,
+      "actualNativeModules": 0,
+      "build": {
+        "path": "artifacts/inspection-document-id-draft-1/build-managed-baseline-debug-6-exit.json",
+        "sha256": "CA970F10EEBA39E3ED78E654EC3B0EB95B4FF1ECBEF5F88B2DA732560FACBD51"
+      },
+      "receipt": {
+        "path": "artifacts/inspection-document-id-draft-1/managed-baseline-debug-6-results.json",
+        "sha256": "BCC01638E42F00554D0A302FF2EC024439234A8789174D1EB2C19783CB84001A"
+      },
+      "exit": {
+        "path": "artifacts/inspection-document-id-draft-1/managed-baseline-debug-6-exit.json",
+        "sha256": "A50B99AFC95CAF88832AA1A400FD214418C035C33BED832090039C183B249F45"
+      },
+      "failures": [
+        {
+          "name": "Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.CallerExplicitlyReadsSuggestedQueryAndSeesOriginalState([\"parts\"])",
+          "passed": false,
+          "error": "System.Collections.Generic.KeyNotFoundException: The given key was not present in the dictionary.\r\n   at System.Text.Json.JsonElement.GetProperty(String propertyName)\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.CallerExplicitlyReadsSuggestedQueryAndSeesOriginalState(String area) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 44\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.CallerExplicitlyReadsSuggestedQueryAndSeesOriginalState(String area) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 49\r\n   at Program.<Main>$(String[] args) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\Program.cs:line 26"
+        },
+        {
+          "name": "Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.CallerExplicitlyReadsSuggestedQueryAndSeesOriginalState([\"bodies\"])",
+          "passed": false,
+          "error": "System.Collections.Generic.KeyNotFoundException: The given key was not present in the dictionary.\r\n   at System.Text.Json.JsonElement.GetProperty(String propertyName)\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.CallerExplicitlyReadsSuggestedQueryAndSeesOriginalState(String area) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 44\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.CallerExplicitlyReadsSuggestedQueryAndSeesOriginalState(String area) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 49\r\n   at Program.<Main>$(String[] args) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\Program.cs:line 26"
+        },
+        {
+          "name": "Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.CallerExplicitlyReadsSuggestedQueryAndSeesOriginalState([\"features\"])",
+          "passed": false,
+          "error": "System.Collections.Generic.KeyNotFoundException: The given key was not present in the dictionary.\r\n   at System.Text.Json.JsonElement.GetProperty(String propertyName)\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.CallerExplicitlyReadsSuggestedQueryAndSeesOriginalState(String area) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 44\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.CallerExplicitlyReadsSuggestedQueryAndSeesOriginalState(String area) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 49\r\n   at Program.<Main>$(String[] args) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\Program.cs:line 26"
+        },
+        {
+          "name": "Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.CallerExplicitlyReadsSuggestedQueryAndSeesOriginalState([\"layers\"])",
+          "passed": false,
+          "error": "System.Collections.Generic.KeyNotFoundException: The given key was not present in the dictionary.\r\n   at System.Text.Json.JsonElement.GetProperty(String propertyName)\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.CallerExplicitlyReadsSuggestedQueryAndSeesOriginalState(String area) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 44\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.CallerExplicitlyReadsSuggestedQueryAndSeesOriginalState(String area) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 49\r\n   at Program.<Main>$(String[] args) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\Program.cs:line 26"
+        },
+        {
+          "name": "Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.CallerExplicitlyReadsSuggestedQueryAndSeesOriginalState([\"materials\"])",
+          "passed": false,
+          "error": "System.Collections.Generic.KeyNotFoundException: The given key was not present in the dictionary.\r\n   at System.Text.Json.JsonElement.GetProperty(String propertyName)\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.CallerExplicitlyReadsSuggestedQueryAndSeesOriginalState(String area) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 44\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.CallerExplicitlyReadsSuggestedQueryAndSeesOriginalState(String area) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 49\r\n   at Program.<Main>$(String[] args) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\Program.cs:line 26"
+        },
+        {
+          "name": "Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.CallerExplicitlyReadsSuggestedQueryAndSeesOriginalState([\"selection\"])",
+          "passed": false,
+          "error": "System.Collections.Generic.KeyNotFoundException: The given key was not present in the dictionary.\r\n   at System.Text.Json.JsonElement.GetProperty(String propertyName)\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.CallerExplicitlyReadsSuggestedQueryAndSeesOriginalState(String area) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 44\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.CallerExplicitlyReadsSuggestedQueryAndSeesOriginalState(String area) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 49\r\n   at Program.<Main>$(String[] args) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\Program.cs:line 26"
+        },
+        {
+          "name": "Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.CallerExplicitlyReadsSuggestedQueryAndSeesOriginalState([\"sketches\"])",
+          "passed": false,
+          "error": "System.Collections.Generic.KeyNotFoundException: The given key was not present in the dictionary.\r\n   at System.Text.Json.JsonElement.GetProperty(String propertyName)\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.CallerExplicitlyReadsSuggestedQueryAndSeesOriginalState(String area) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 44\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.CallerExplicitlyReadsSuggestedQueryAndSeesOriginalState(String area) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 49\r\n   at Program.<Main>$(String[] args) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\Program.cs:line 26"
+        },
+        {
+          "name": "Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.CallerExplicitlyReadsSuggestedQueryAndSeesOriginalState([\"occurrences\"])",
+          "passed": false,
+          "error": "System.Collections.Generic.KeyNotFoundException: The given key was not present in the dictionary.\r\n   at System.Text.Json.JsonElement.GetProperty(String propertyName)\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.CallerExplicitlyReadsSuggestedQueryAndSeesOriginalState(String area) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 44\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.CallerExplicitlyReadsSuggestedQueryAndSeesOriginalState(String area) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 49\r\n   at Program.<Main>$(String[] args) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\Program.cs:line 26"
+        },
+        {
+          "name": "Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.CallerExplicitlyReadsSuggestedQueryAndSeesOriginalState([\"assembly\"])",
+          "passed": false,
+          "error": "System.Collections.Generic.KeyNotFoundException: The given key was not present in the dictionary.\r\n   at System.Text.Json.JsonElement.GetProperty(String propertyName)\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.CallerExplicitlyReadsSuggestedQueryAndSeesOriginalState(String area) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 44\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.CallerExplicitlyReadsSuggestedQueryAndSeesOriginalState(String area) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 49\r\n   at Program.<Main>$(String[] args) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\Program.cs:line 26"
+        },
+        {
+          "name": "Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.CallerExplicitlyReadsSuggestedQueryAndSeesOriginalState([\"parameters\"])",
+          "passed": false,
+          "error": "System.Collections.Generic.KeyNotFoundException: The given key was not present in the dictionary.\r\n   at System.Text.Json.JsonElement.GetProperty(String propertyName)\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.CallerExplicitlyReadsSuggestedQueryAndSeesOriginalState(String area) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 44\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.CallerExplicitlyReadsSuggestedQueryAndSeesOriginalState(String area) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 49\r\n   at Program.<Main>$(String[] args) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\Program.cs:line 26"
+        },
+        {
+          "name": "Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.CallerExplicitlyReadsSuggestedQueryAndSeesOriginalState([\"parameter_bindings\"])",
+          "passed": false,
+          "error": "System.Collections.Generic.KeyNotFoundException: The given key was not present in the dictionary.\r\n   at System.Text.Json.JsonElement.GetProperty(String propertyName)\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.CallerExplicitlyReadsSuggestedQueryAndSeesOriginalState(String area) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 44\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.CallerExplicitlyReadsSuggestedQueryAndSeesOriginalState(String area) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 49\r\n   at Program.<Main>$(String[] args) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\Program.cs:line 26"
+        },
+        {
+          "name": "Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.CallerExplicitlyReadsSuggestedQueryAndSeesOriginalState([\"parameter_targets\"])",
+          "passed": false,
+          "error": "System.Collections.Generic.KeyNotFoundException: The given key was not present in the dictionary.\r\n   at System.Text.Json.JsonElement.GetProperty(String propertyName)\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.CallerExplicitlyReadsSuggestedQueryAndSeesOriginalState(String area) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 44\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.CallerExplicitlyReadsSuggestedQueryAndSeesOriginalState(String area) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 49\r\n   at Program.<Main>$(String[] args) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\Program.cs:line 26"
+        },
+        {
+          "name": "Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.CallerExplicitlyReadsSuggestedQueryAndSeesOriginalState([\"datums\"])",
+          "passed": false,
+          "error": "System.Collections.Generic.KeyNotFoundException: The given key was not present in the dictionary.\r\n   at System.Text.Json.JsonElement.GetProperty(String propertyName)\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.CallerExplicitlyReadsSuggestedQueryAndSeesOriginalState(String area) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 44\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.CallerExplicitlyReadsSuggestedQueryAndSeesOriginalState(String area) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 49\r\n   at Program.<Main>$(String[] args) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\Program.cs:line 26"
+        },
+        {
+          "name": "Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.CallerExplicitlyReadsSuggestedQueryAndSeesOriginalState([\"datum_associations\"])",
+          "passed": false,
+          "error": "System.Collections.Generic.KeyNotFoundException: The given key was not present in the dictionary.\r\n   at System.Text.Json.JsonElement.GetProperty(String propertyName)\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.CallerExplicitlyReadsSuggestedQueryAndSeesOriginalState(String area) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 44\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.CallerExplicitlyReadsSuggestedQueryAndSeesOriginalState(String area) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 49\r\n   at Program.<Main>$(String[] args) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\Program.cs:line 26"
+        },
+        {
+          "name": "Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.CallerExplicitlyReadsSuggestedQueryAndSeesOriginalState([\"timeline\"])",
+          "passed": false,
+          "error": "System.Collections.Generic.KeyNotFoundException: The given key was not present in the dictionary.\r\n   at System.Text.Json.JsonElement.GetProperty(String propertyName)\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.CallerExplicitlyReadsSuggestedQueryAndSeesOriginalState(String area) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 44\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.CallerExplicitlyReadsSuggestedQueryAndSeesOriginalState(String area) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 49\r\n   at Program.<Main>$(String[] args) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\Program.cs:line 26"
+        },
+        {
+          "name": "Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.CallerExplicitlyReadsSuggestedQueryAndSeesOriginalState([\"recipes\"])",
+          "passed": false,
+          "error": "System.Collections.Generic.KeyNotFoundException: The given key was not present in the dictionary.\r\n   at System.Text.Json.JsonElement.GetProperty(String propertyName)\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.CallerExplicitlyReadsSuggestedQueryAndSeesOriginalState(String area) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 44\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.CallerExplicitlyReadsSuggestedQueryAndSeesOriginalState(String area) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 49\r\n   at Program.<Main>$(String[] args) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\Program.cs:line 26"
+        },
+        {
+          "name": "Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.CallerExplicitlyReadsSuggestedQueryAndSeesOriginalState([\"sketch_geometry\"])",
+          "passed": false,
+          "error": "System.Collections.Generic.KeyNotFoundException: The given key was not present in the dictionary.\r\n   at System.Text.Json.JsonElement.GetProperty(String propertyName)\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.CallerExplicitlyReadsSuggestedQueryAndSeesOriginalState(String area) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 44\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.CallerExplicitlyReadsSuggestedQueryAndSeesOriginalState(String area) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 49\r\n   at Program.<Main>$(String[] args) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\Program.cs:line 26"
+        },
+        {
+          "name": "Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.CallerExplicitlyReadsSuggestedQueryAndSeesOriginalState([\"assembly_patterns\"])",
+          "passed": false,
+          "error": "System.Collections.Generic.KeyNotFoundException: The given key was not present in the dictionary.\r\n   at System.Text.Json.JsonElement.GetProperty(String propertyName)\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.CallerExplicitlyReadsSuggestedQueryAndSeesOriginalState(String area) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 44\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.CallerExplicitlyReadsSuggestedQueryAndSeesOriginalState(String area) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 49\r\n   at Program.<Main>$(String[] args) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\Program.cs:line 26"
+        },
+        {
+          "name": "Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.DocumentFilterReportsItsActualObjectRoleAndReadOnlySuggestion([\"parts\"])",
+          "passed": false,
+          "error": "Xunit.Sdk.FalseException: Assert.False() Failure\r\nExpected: False\r\nActual:   True\r\n   at Xunit.Assert.False(Nullable`1 condition, String userMessage) in /_/src/xunit.assert/Asserts/BooleanAsserts.cs:line 82\r\n   at Xunit.Assert.False(Boolean condition) in /_/src/xunit.assert/Asserts/BooleanAsserts.cs:line 36\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.DocumentFilterReportsItsActualObjectRoleAndReadOnlySuggestion(String area) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 27\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.DocumentFilterReportsItsActualObjectRoleAndReadOnlySuggestion(String area) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 36\r\n   at Program.<Main>$(String[] args) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\Program.cs:line 26"
+        },
+        {
+          "name": "Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.DocumentFilterReportsItsActualObjectRoleAndReadOnlySuggestion([\"bodies\"])",
+          "passed": false,
+          "error": "Xunit.Sdk.FalseException: Assert.False() Failure\r\nExpected: False\r\nActual:   True\r\n   at Xunit.Assert.False(Nullable`1 condition, String userMessage) in /_/src/xunit.assert/Asserts/BooleanAsserts.cs:line 82\r\n   at Xunit.Assert.False(Boolean condition) in /_/src/xunit.assert/Asserts/BooleanAsserts.cs:line 36\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.DocumentFilterReportsItsActualObjectRoleAndReadOnlySuggestion(String area) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 27\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.DocumentFilterReportsItsActualObjectRoleAndReadOnlySuggestion(String area) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 36\r\n   at Program.<Main>$(String[] args) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\Program.cs:line 26"
+        },
+        {
+          "name": "Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.DocumentFilterReportsItsActualObjectRoleAndReadOnlySuggestion([\"features\"])",
+          "passed": false,
+          "error": "Xunit.Sdk.FalseException: Assert.False() Failure\r\nExpected: False\r\nActual:   True\r\n   at Xunit.Assert.False(Nullable`1 condition, String userMessage) in /_/src/xunit.assert/Asserts/BooleanAsserts.cs:line 82\r\n   at Xunit.Assert.False(Boolean condition) in /_/src/xunit.assert/Asserts/BooleanAsserts.cs:line 36\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.DocumentFilterReportsItsActualObjectRoleAndReadOnlySuggestion(String area) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 27\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.DocumentFilterReportsItsActualObjectRoleAndReadOnlySuggestion(String area) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 36\r\n   at Program.<Main>$(String[] args) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\Program.cs:line 26"
+        },
+        {
+          "name": "Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.DocumentFilterReportsItsActualObjectRoleAndReadOnlySuggestion([\"layers\"])",
+          "passed": false,
+          "error": "Xunit.Sdk.FalseException: Assert.False() Failure\r\nExpected: False\r\nActual:   True\r\n   at Xunit.Assert.False(Nullable`1 condition, String userMessage) in /_/src/xunit.assert/Asserts/BooleanAsserts.cs:line 82\r\n   at Xunit.Assert.False(Boolean condition) in /_/src/xunit.assert/Asserts/BooleanAsserts.cs:line 36\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.DocumentFilterReportsItsActualObjectRoleAndReadOnlySuggestion(String area) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 27\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.DocumentFilterReportsItsActualObjectRoleAndReadOnlySuggestion(String area) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 36\r\n   at Program.<Main>$(String[] args) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\Program.cs:line 26"
+        },
+        {
+          "name": "Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.DocumentFilterReportsItsActualObjectRoleAndReadOnlySuggestion([\"materials\"])",
+          "passed": false,
+          "error": "Xunit.Sdk.FalseException: Assert.False() Failure\r\nExpected: False\r\nActual:   True\r\n   at Xunit.Assert.False(Nullable`1 condition, String userMessage) in /_/src/xunit.assert/Asserts/BooleanAsserts.cs:line 82\r\n   at Xunit.Assert.False(Boolean condition) in /_/src/xunit.assert/Asserts/BooleanAsserts.cs:line 36\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.DocumentFilterReportsItsActualObjectRoleAndReadOnlySuggestion(String area) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 27\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.DocumentFilterReportsItsActualObjectRoleAndReadOnlySuggestion(String area) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 36\r\n   at Program.<Main>$(String[] args) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\Program.cs:line 26"
+        },
+        {
+          "name": "Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.DocumentFilterReportsItsActualObjectRoleAndReadOnlySuggestion([\"selection\"])",
+          "passed": false,
+          "error": "Xunit.Sdk.FalseException: Assert.False() Failure\r\nExpected: False\r\nActual:   True\r\n   at Xunit.Assert.False(Nullable`1 condition, String userMessage) in /_/src/xunit.assert/Asserts/BooleanAsserts.cs:line 82\r\n   at Xunit.Assert.False(Boolean condition) in /_/src/xunit.assert/Asserts/BooleanAsserts.cs:line 36\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.DocumentFilterReportsItsActualObjectRoleAndReadOnlySuggestion(String area) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 27\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.DocumentFilterReportsItsActualObjectRoleAndReadOnlySuggestion(String area) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 36\r\n   at Program.<Main>$(String[] args) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\Program.cs:line 26"
+        },
+        {
+          "name": "Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.DocumentFilterReportsItsActualObjectRoleAndReadOnlySuggestion([\"sketches\"])",
+          "passed": false,
+          "error": "Xunit.Sdk.FalseException: Assert.False() Failure\r\nExpected: False\r\nActual:   True\r\n   at Xunit.Assert.False(Nullable`1 condition, String userMessage) in /_/src/xunit.assert/Asserts/BooleanAsserts.cs:line 82\r\n   at Xunit.Assert.False(Boolean condition) in /_/src/xunit.assert/Asserts/BooleanAsserts.cs:line 36\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.DocumentFilterReportsItsActualObjectRoleAndReadOnlySuggestion(String area) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 27\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.DocumentFilterReportsItsActualObjectRoleAndReadOnlySuggestion(String area) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 36\r\n   at Program.<Main>$(String[] args) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\Program.cs:line 26"
+        },
+        {
+          "name": "Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.DocumentFilterReportsItsActualObjectRoleAndReadOnlySuggestion([\"occurrences\"])",
+          "passed": false,
+          "error": "Xunit.Sdk.FalseException: Assert.False() Failure\r\nExpected: False\r\nActual:   True\r\n   at Xunit.Assert.False(Nullable`1 condition, String userMessage) in /_/src/xunit.assert/Asserts/BooleanAsserts.cs:line 82\r\n   at Xunit.Assert.False(Boolean condition) in /_/src/xunit.assert/Asserts/BooleanAsserts.cs:line 36\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.DocumentFilterReportsItsActualObjectRoleAndReadOnlySuggestion(String area) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 27\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.DocumentFilterReportsItsActualObjectRoleAndReadOnlySuggestion(String area) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 36\r\n   at Program.<Main>$(String[] args) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\Program.cs:line 26"
+        },
+        {
+          "name": "Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.DocumentFilterReportsItsActualObjectRoleAndReadOnlySuggestion([\"assembly\"])",
+          "passed": false,
+          "error": "Xunit.Sdk.FalseException: Assert.False() Failure\r\nExpected: False\r\nActual:   True\r\n   at Xunit.Assert.False(Nullable`1 condition, String userMessage) in /_/src/xunit.assert/Asserts/BooleanAsserts.cs:line 82\r\n   at Xunit.Assert.False(Boolean condition) in /_/src/xunit.assert/Asserts/BooleanAsserts.cs:line 36\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.DocumentFilterReportsItsActualObjectRoleAndReadOnlySuggestion(String area) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 27\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.DocumentFilterReportsItsActualObjectRoleAndReadOnlySuggestion(String area) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 36\r\n   at Program.<Main>$(String[] args) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\Program.cs:line 26"
+        },
+        {
+          "name": "Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.DocumentFilterReportsItsActualObjectRoleAndReadOnlySuggestion([\"parameters\"])",
+          "passed": false,
+          "error": "Xunit.Sdk.FalseException: Assert.False() Failure\r\nExpected: False\r\nActual:   True\r\n   at Xunit.Assert.False(Nullable`1 condition, String userMessage) in /_/src/xunit.assert/Asserts/BooleanAsserts.cs:line 82\r\n   at Xunit.Assert.False(Boolean condition) in /_/src/xunit.assert/Asserts/BooleanAsserts.cs:line 36\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.DocumentFilterReportsItsActualObjectRoleAndReadOnlySuggestion(String area) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 27\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.DocumentFilterReportsItsActualObjectRoleAndReadOnlySuggestion(String area) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 36\r\n   at Program.<Main>$(String[] args) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\Program.cs:line 26"
+        },
+        {
+          "name": "Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.DocumentFilterReportsItsActualObjectRoleAndReadOnlySuggestion([\"parameter_bindings\"])",
+          "passed": false,
+          "error": "Xunit.Sdk.FalseException: Assert.False() Failure\r\nExpected: False\r\nActual:   True\r\n   at Xunit.Assert.False(Nullable`1 condition, String userMessage) in /_/src/xunit.assert/Asserts/BooleanAsserts.cs:line 82\r\n   at Xunit.Assert.False(Boolean condition) in /_/src/xunit.assert/Asserts/BooleanAsserts.cs:line 36\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.DocumentFilterReportsItsActualObjectRoleAndReadOnlySuggestion(String area) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 27\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.DocumentFilterReportsItsActualObjectRoleAndReadOnlySuggestion(String area) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 36\r\n   at Program.<Main>$(String[] args) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\Program.cs:line 26"
+        },
+        {
+          "name": "Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.DocumentFilterReportsItsActualObjectRoleAndReadOnlySuggestion([\"parameter_targets\"])",
+          "passed": false,
+          "error": "Xunit.Sdk.FalseException: Assert.False() Failure\r\nExpected: False\r\nActual:   True\r\n   at Xunit.Assert.False(Nullable`1 condition, String userMessage) in /_/src/xunit.assert/Asserts/BooleanAsserts.cs:line 82\r\n   at Xunit.Assert.False(Boolean condition) in /_/src/xunit.assert/Asserts/BooleanAsserts.cs:line 36\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.DocumentFilterReportsItsActualObjectRoleAndReadOnlySuggestion(String area) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 27\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.DocumentFilterReportsItsActualObjectRoleAndReadOnlySuggestion(String area) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 36\r\n   at Program.<Main>$(String[] args) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\Program.cs:line 26"
+        },
+        {
+          "name": "Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.DocumentFilterReportsItsActualObjectRoleAndReadOnlySuggestion([\"datums\"])",
+          "passed": false,
+          "error": "Xunit.Sdk.FalseException: Assert.False() Failure\r\nExpected: False\r\nActual:   True\r\n   at Xunit.Assert.False(Nullable`1 condition, String userMessage) in /_/src/xunit.assert/Asserts/BooleanAsserts.cs:line 82\r\n   at Xunit.Assert.False(Boolean condition) in /_/src/xunit.assert/Asserts/BooleanAsserts.cs:line 36\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.DocumentFilterReportsItsActualObjectRoleAndReadOnlySuggestion(String area) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 27\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.DocumentFilterReportsItsActualObjectRoleAndReadOnlySuggestion(String area) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 36\r\n   at Program.<Main>$(String[] args) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\Program.cs:line 26"
+        },
+        {
+          "name": "Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.DocumentFilterReportsItsActualObjectRoleAndReadOnlySuggestion([\"datum_associations\"])",
+          "passed": false,
+          "error": "Xunit.Sdk.FalseException: Assert.False() Failure\r\nExpected: False\r\nActual:   True\r\n   at Xunit.Assert.False(Nullable`1 condition, String userMessage) in /_/src/xunit.assert/Asserts/BooleanAsserts.cs:line 82\r\n   at Xunit.Assert.False(Boolean condition) in /_/src/xunit.assert/Asserts/BooleanAsserts.cs:line 36\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.DocumentFilterReportsItsActualObjectRoleAndReadOnlySuggestion(String area) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 27\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.DocumentFilterReportsItsActualObjectRoleAndReadOnlySuggestion(String area) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 36\r\n   at Program.<Main>$(String[] args) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\Program.cs:line 26"
+        },
+        {
+          "name": "Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.DocumentFilterReportsItsActualObjectRoleAndReadOnlySuggestion([\"timeline\"])",
+          "passed": false,
+          "error": "Xunit.Sdk.FalseException: Assert.False() Failure\r\nExpected: False\r\nActual:   True\r\n   at Xunit.Assert.False(Nullable`1 condition, String userMessage) in /_/src/xunit.assert/Asserts/BooleanAsserts.cs:line 82\r\n   at Xunit.Assert.False(Boolean condition) in /_/src/xunit.assert/Asserts/BooleanAsserts.cs:line 36\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.DocumentFilterReportsItsActualObjectRoleAndReadOnlySuggestion(String area) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 27\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.DocumentFilterReportsItsActualObjectRoleAndReadOnlySuggestion(String area) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 36\r\n   at Program.<Main>$(String[] args) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\Program.cs:line 26"
+        },
+        {
+          "name": "Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.DocumentFilterReportsItsActualObjectRoleAndReadOnlySuggestion([\"recipes\"])",
+          "passed": false,
+          "error": "Xunit.Sdk.FalseException: Assert.False() Failure\r\nExpected: False\r\nActual:   True\r\n   at Xunit.Assert.False(Nullable`1 condition, String userMessage) in /_/src/xunit.assert/Asserts/BooleanAsserts.cs:line 82\r\n   at Xunit.Assert.False(Boolean condition) in /_/src/xunit.assert/Asserts/BooleanAsserts.cs:line 36\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.DocumentFilterReportsItsActualObjectRoleAndReadOnlySuggestion(String area) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 27\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.DocumentFilterReportsItsActualObjectRoleAndReadOnlySuggestion(String area) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 36\r\n   at Program.<Main>$(String[] args) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\Program.cs:line 26"
+        },
+        {
+          "name": "Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.DocumentFilterReportsItsActualObjectRoleAndReadOnlySuggestion([\"sketch_geometry\"])",
+          "passed": false,
+          "error": "Xunit.Sdk.FalseException: Assert.False() Failure\r\nExpected: False\r\nActual:   True\r\n   at Xunit.Assert.False(Nullable`1 condition, String userMessage) in /_/src/xunit.assert/Asserts/BooleanAsserts.cs:line 82\r\n   at Xunit.Assert.False(Boolean condition) in /_/src/xunit.assert/Asserts/BooleanAsserts.cs:line 36\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.DocumentFilterReportsItsActualObjectRoleAndReadOnlySuggestion(String area) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 27\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.DocumentFilterReportsItsActualObjectRoleAndReadOnlySuggestion(String area) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 36\r\n   at Program.<Main>$(String[] args) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\Program.cs:line 26"
+        },
+        {
+          "name": "Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.DocumentFilterReportsItsActualObjectRoleAndReadOnlySuggestion([\"assembly_patterns\"])",
+          "passed": false,
+          "error": "Xunit.Sdk.FalseException: Assert.False() Failure\r\nExpected: False\r\nActual:   True\r\n   at Xunit.Assert.False(Nullable`1 condition, String userMessage) in /_/src/xunit.assert/Asserts/BooleanAsserts.cs:line 82\r\n   at Xunit.Assert.False(Boolean condition) in /_/src/xunit.assert/Asserts/BooleanAsserts.cs:line 36\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.DocumentFilterReportsItsActualObjectRoleAndReadOnlySuggestion(String area) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 27\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.DocumentFilterReportsItsActualObjectRoleAndReadOnlySuggestion(String area) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 36\r\n   at Program.<Main>$(String[] args) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\Program.cs:line 26"
+        },
+        {
+          "name": "Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.DocumentPartFilterOffersOnlyPartDiscovery([\"bodies\"])",
+          "passed": false,
+          "error": "Xunit.Sdk.FalseException: Assert.False() Failure\r\nExpected: False\r\nActual:   True\r\n   at Xunit.Assert.False(Nullable`1 condition, String userMessage) in /_/src/xunit.assert/Asserts/BooleanAsserts.cs:line 82\r\n   at Xunit.Assert.False(Boolean condition) in /_/src/xunit.assert/Asserts/BooleanAsserts.cs:line 36\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.DocumentPartFilterOffersOnlyPartDiscovery(String area) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 77\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.DocumentPartFilterOffersOnlyPartDiscovery(String area) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 81\r\n   at Program.<Main>$(String[] args) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\Program.cs:line 26"
+        },
+        {
+          "name": "Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.DocumentPartFilterOffersOnlyPartDiscovery([\"features\"])",
+          "passed": false,
+          "error": "Xunit.Sdk.FalseException: Assert.False() Failure\r\nExpected: False\r\nActual:   True\r\n   at Xunit.Assert.False(Nullable`1 condition, String userMessage) in /_/src/xunit.assert/Asserts/BooleanAsserts.cs:line 82\r\n   at Xunit.Assert.False(Boolean condition) in /_/src/xunit.assert/Asserts/BooleanAsserts.cs:line 36\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.DocumentPartFilterOffersOnlyPartDiscovery(String area) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 77\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.DocumentPartFilterOffersOnlyPartDiscovery(String area) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 81\r\n   at Program.<Main>$(String[] args) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\Program.cs:line 26"
+        },
+        {
+          "name": "Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.DocumentPartFilterOffersOnlyPartDiscovery([\"sketches\"])",
+          "passed": false,
+          "error": "Xunit.Sdk.FalseException: Assert.False() Failure\r\nExpected: False\r\nActual:   True\r\n   at Xunit.Assert.False(Nullable`1 condition, String userMessage) in /_/src/xunit.assert/Asserts/BooleanAsserts.cs:line 82\r\n   at Xunit.Assert.False(Boolean condition) in /_/src/xunit.assert/Asserts/BooleanAsserts.cs:line 36\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.DocumentPartFilterOffersOnlyPartDiscovery(String area) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 77\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.DocumentPartFilterOffersOnlyPartDiscovery(String area) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 81\r\n   at Program.<Main>$(String[] args) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\Program.cs:line 26"
+        },
+        {
+          "name": "Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.DocumentPartFilterOffersOnlyPartDiscovery([\"recipes\"])",
+          "passed": false,
+          "error": "Xunit.Sdk.FalseException: Assert.False() Failure\r\nExpected: False\r\nActual:   True\r\n   at Xunit.Assert.False(Nullable`1 condition, String userMessage) in /_/src/xunit.assert/Asserts/BooleanAsserts.cs:line 82\r\n   at Xunit.Assert.False(Boolean condition) in /_/src/xunit.assert/Asserts/BooleanAsserts.cs:line 36\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.DocumentPartFilterOffersOnlyPartDiscovery(String area) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 77\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.DocumentPartFilterOffersOnlyPartDiscovery(String area) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 81\r\n   at Program.<Main>$(String[] args) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\Program.cs:line 26"
+        },
+        {
+          "name": "Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.DocumentPartFilterOffersOnlyPartDiscovery([\"sketch_geometry\"])",
+          "passed": false,
+          "error": "Xunit.Sdk.FalseException: Assert.False() Failure\r\nExpected: False\r\nActual:   True\r\n   at Xunit.Assert.False(Nullable`1 condition, String userMessage) in /_/src/xunit.assert/Asserts/BooleanAsserts.cs:line 82\r\n   at Xunit.Assert.False(Boolean condition) in /_/src/xunit.assert/Asserts/BooleanAsserts.cs:line 36\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.DocumentPartFilterOffersOnlyPartDiscovery(String area) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 77\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.DocumentPartFilterOffersOnlyPartDiscovery(String area) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 81\r\n   at Program.<Main>$(String[] args) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\Program.cs:line 26"
+        },
+        {
+          "name": "Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.DocumentPartFilterOffersOnlyPartDiscovery([\"parameter_targets\"])",
+          "passed": false,
+          "error": "Xunit.Sdk.FalseException: Assert.False() Failure\r\nExpected: False\r\nActual:   True\r\n   at Xunit.Assert.False(Nullable`1 condition, String userMessage) in /_/src/xunit.assert/Asserts/BooleanAsserts.cs:line 82\r\n   at Xunit.Assert.False(Boolean condition) in /_/src/xunit.assert/Asserts/BooleanAsserts.cs:line 36\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.DocumentPartFilterOffersOnlyPartDiscovery(String area) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 77\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.DocumentPartFilterOffersOnlyPartDiscovery(String area) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 81\r\n   at Program.<Main>$(String[] args) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\Program.cs:line 26"
+        },
+        {
+          "name": "Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.DocumentPartFilterOffersOnlyPartDiscovery([\"datums\"])",
+          "passed": false,
+          "error": "Xunit.Sdk.FalseException: Assert.False() Failure\r\nExpected: False\r\nActual:   True\r\n   at Xunit.Assert.False(Nullable`1 condition, String userMessage) in /_/src/xunit.assert/Asserts/BooleanAsserts.cs:line 82\r\n   at Xunit.Assert.False(Boolean condition) in /_/src/xunit.assert/Asserts/BooleanAsserts.cs:line 36\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.DocumentPartFilterOffersOnlyPartDiscovery(String area) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 77\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.DocumentPartFilterOffersOnlyPartDiscovery(String area) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 81\r\n   at Program.<Main>$(String[] args) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\Program.cs:line 26"
+        },
+        {
+          "name": "Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.DocumentPartFilterOffersOnlyPartDiscovery([\"datum_associations\"])",
+          "passed": false,
+          "error": "Xunit.Sdk.FalseException: Assert.False() Failure\r\nExpected: False\r\nActual:   True\r\n   at Xunit.Assert.False(Nullable`1 condition, String userMessage) in /_/src/xunit.assert/Asserts/BooleanAsserts.cs:line 82\r\n   at Xunit.Assert.False(Boolean condition) in /_/src/xunit.assert/Asserts/BooleanAsserts.cs:line 36\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.DocumentPartFilterOffersOnlyPartDiscovery(String area) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 77\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.DocumentPartFilterOffersOnlyPartDiscovery(String area) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 81\r\n   at Program.<Main>$(String[] args) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\Program.cs:line 26"
+        },
+        {
+          "name": "Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.OriginalEntryAndParsingGuardsPrecedeFeedback([\"close\"])",
+          "passed": false,
+          "error": "Xunit.Sdk.FalseException: Assert.False() Failure\r\nExpected: False\r\nActual:   True\r\n   at Xunit.Assert.False(Nullable`1 condition, String userMessage) in /_/src/xunit.assert/Asserts/BooleanAsserts.cs:line 82\r\n   at Xunit.Assert.False(Boolean condition) in /_/src/xunit.assert/Asserts/BooleanAsserts.cs:line 36\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.OriginalEntryAndParsingGuardsPrecedeFeedback(String fault) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 147\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.OriginalEntryAndParsingGuardsPrecedeFeedback(String fault) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 148\r\n   at Program.<Main>$(String[] args) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\Program.cs:line 26"
+        },
+        {
+          "name": "Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.OriginalEntryAndParsingGuardsPrecedeFeedback([\"closing-requested\"])",
+          "passed": false,
+          "error": "Xunit.Sdk.FalseException: Assert.False() Failure\r\nExpected: False\r\nActual:   True\r\n   at Xunit.Assert.False(Nullable`1 condition, String userMessage) in /_/src/xunit.assert/Asserts/BooleanAsserts.cs:line 82\r\n   at Xunit.Assert.False(Boolean condition) in /_/src/xunit.assert/Asserts/BooleanAsserts.cs:line 36\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.OriginalEntryAndParsingGuardsPrecedeFeedback(String fault) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 147\r\n   at Cadoryx.Tests.InspectionDocumentIdentityFeedbackTests.OriginalEntryAndParsingGuardsPrecedeFeedback(String fault) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\InspectionDocumentIdentityFeedbackTests.cs:line 148\r\n   at Program.<Main>$(String[] args) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\InspectionDocumentIdentityCandidate\\Program.cs:line 26"
+        }
+      ]
+    },
+    {
+      "mode": "candidate",
+      "configuration": "Release",
+      "total": 184,
+      "passed": 184,
+      "failed": 0,
+      "new125": 125,
+      "original59Passed": true,
+      "actualNativeModules": 0,
+      "build": {
+        "path": "artifacts/inspection-document-id-draft-1/build-managed-candidate-release-6-exit.json",
+        "sha256": "538DD09A9546C7D9E06EEB413A6029C57FA0FBCB77C39C6B7D42DD3FF949D33E"
+      },
+      "receipt": {
+        "path": "artifacts/inspection-document-id-draft-1/managed-candidate-release-6-results.json",
+        "sha256": "C25F71586EA614BB15613F57107A9345AA820034AEF4D7217EB0588C5B71A38D"
+      },
+      "exit": {
+        "path": "artifacts/inspection-document-id-draft-1/managed-candidate-release-6-exit.json",
+        "sha256": "AC7DB0148FBD4E121FBE658F08FE8AA3B300AD464D2603B0C4549F89F32EED18"
+      },
+      "failures": []
+    },
+    {
+      "mode": "candidate",
+      "configuration": "Debug",
+      "total": 184,
+      "passed": 184,
+      "failed": 0,
+      "new125": 125,
+      "original59Passed": true,
+      "actualNativeModules": 0,
+      "build": {
+        "path": "artifacts/inspection-document-id-draft-1/build-managed-candidate-debug-6-exit.json",
+        "sha256": "9519992C0F355E9DAB68646E8B6068C1191BADD7CD817440DE7172C49514ED29"
+      },
+      "receipt": {
+        "path": "artifacts/inspection-document-id-draft-1/managed-candidate-debug-6-results.json",
+        "sha256": "774D39912F82558A14DA909303FF636E3EC221078D9D3CE4DD79BF8E390E51C5"
+      },
+      "exit": {
+        "path": "artifacts/inspection-document-id-draft-1/managed-candidate-debug-6-exit.json",
+        "sha256": "513352A2952FA52788282E555DB2D32E472FCD0EA1FEE87E68B16E4F7FD57FA6"
+      },
+      "failures": []
+    }
+  ],
+  "same184NamesBothModesAndConfigurations": true,
+  "original95AssertionsRetained": true,
+  "newLifecycleClosingRequested": 1,
+  "newTypedIdentityEmptyPageGuards": 29,
+  "firstFourFixtureRuns": "59 pass/95 invalid parameter-name fixture failures, retained; not product baseline",
+  "run5": "Each candidate183/1; assembly fixture used wrong instances JSON path; retained",
+  "nativeOrPerformanceWorkStarted": false,
+  "whole6991RegressionChanged": false,
+  "toolCountOrSchemaChanged": false,
+  "realProviderRerun": false,
+  "productionApplied": false,
+  "AFComplete": false
+}
