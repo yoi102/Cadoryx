@@ -1,0 +1,46 @@
+{
+  "recordedAt": "2026-10-13T19:16:54.094235+00:00",
+  "state": "CURRENT1082_D7_LOCAL87CU1_APPLICATION_BOTH_BUILT_DISCOVERED_FULL_RUNNING_NOT_COMPLETE",
+  "freeze": {
+    "path": "artifacts/af1082-d7-local87cu1-1/freeze.json",
+    "sha256": "B565EB406EB6E7490BB92E4FA7DC7AAA32DE28F99B5470A0326A560C01F4015D"
+  },
+  "preparation": {
+    "path": "artifacts/af1082-d7-local87cu1-1/preparation.json",
+    "sha256": "8087485BA53C965A34FB0283749EFEDBE0C1FAA9EBFB8ED194A4311976084F33"
+  },
+  "build": {
+    "path": "artifacts/af1082-d7-local87cu1-1/build-exit.json",
+    "sha256": "6D0B1A3BFE559438FC6DD4DA56432F6E52E73C2EBD749518AE579C825F20A3AE"
+  },
+  "locks": {
+    "path": "artifacts/af1082-d7-local87cu1-1/locks.json",
+    "sha256": "A80E7D0C71584DC15C3D3AE7D4088C3EE81B574557297DCFF2121EFF393A49DA"
+  },
+  "inputs": 1198,
+  "projects": 50,
+  "locksCount": 50,
+  "sdkReferences": 412,
+  "bothBuildWarningsErrors": 0,
+  "bothActualDiscovery": 6991,
+  "sdk13Native62BothDiskPayloadMatched": true,
+  "providerShared16Matched": true,
+  "focusedBoth243": {
+    "path": "capability-evidence/diagnostics/d7-analytic-branch/revision4-verification.json",
+    "sha256": "9229730BCC313443EC9414422B1428DDC1AD2F21EB4A963292D9AA50C7B6117F"
+  },
+  "releaseFirstActualNative62": {
+    "path": "artifacts/af1082-d7-local87cu1-1/full6991-release-1/loaded-native.json",
+    "sha256": "9DDDF5970C21084719E65781ECB46E7650C0397C6589EAED76A242655D24BA70"
+  },
+  "fullBothTerminalReceived": false,
+  "originalSTEP24ExactDeferral": {
+    "path": "capability-evidence/diagnostics/af1081-local86/step24-user-deferral.json",
+    "sha256": "E5CE102EC0A337F4C428B4B5F99E443A11736BCC012DD38CF8696CF0605585FE"
+  },
+  "productionApplied": false,
+  "actualWindowPerformanceModel": false,
+  "AFComplete": false,
+  "cleanup": false,
+  "G": "USER_DEFERRED"
+}

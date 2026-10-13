@@ -1,0 +1,541 @@
+{
+  "recordedAt": "2026-10-13T18:49:08.339072+00:00",
+  "state": "EXACT_LOCAL87CU1_PACKAGE_BYTES_AND_SOURCE_RECEIVED_NOT_CONSUMER_RUNTIME",
+  "version": "8.0.1-preview.87.cu1",
+  "snapshotPath": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\packages\\package-inputs.8.0.1-preview.87.cu1.json",
+  "snapshotSha256": "E980EECA3FBE9C745B14E411C8D5A445C6CED2D3A8AB7427E590FD68D54F8948",
+  "sourceRoot": "C:\\Users\\yoiri\\source\\repos\\OcctSharp",
+  "sourceFilesMatched": 2431,
+  "packages": [
+    {
+      "id": "OcctSharp.Native.win-x64",
+      "name": "OcctSharp.Native.win-x64.8.0.1-preview.87.cu1.nupkg",
+      "sha256": "DB387CD6BF45E4730D60A47AF694A9308CB605D8DAD3810430A9D893DC83443C"
+    },
+    {
+      "id": "OcctSharp.Runtime",
+      "name": "OcctSharp.Runtime.8.0.1-preview.87.cu1.nupkg",
+      "sha256": "68E984A07B21C0E82FD9543D7BFF99965524D3AFC78A3611174A6FC07DB7E6DE"
+    },
+    {
+      "id": "OcctSharp.Foundation",
+      "name": "OcctSharp.Foundation.8.0.1-preview.87.cu1.nupkg",
+      "sha256": "E97143D330B9F26052EB9C48C38F546D964294AA7776E4F3A17D0BCF7E4C84C8"
+    },
+    {
+      "id": "OcctSharp.Geometry",
+      "name": "OcctSharp.Geometry.8.0.1-preview.87.cu1.nupkg",
+      "sha256": "7AE070DE921E8961AF5AF6AA070F96B5AE5614A726F2E8AE6964673A1A1EEF6F"
+    },
+    {
+      "id": "OcctSharp.MeshData",
+      "name": "OcctSharp.MeshData.8.0.1-preview.87.cu1.nupkg",
+      "sha256": "952FE0491663356E7D8A88F753BD5EA65B7D02B5BAD13F165F4D71AD3ED1936A"
+    },
+    {
+      "id": "OcctSharp.Modeling",
+      "name": "OcctSharp.Modeling.8.0.1-preview.87.cu1.nupkg",
+      "sha256": "DBBC777C647321D5194767EF0F188C7411305FC6AF2187C800E43EC57718D37A"
+    },
+    {
+      "id": "OcctSharp.Mesh",
+      "name": "OcctSharp.Mesh.8.0.1-preview.87.cu1.nupkg",
+      "sha256": "8A9CDC4ED23A5684157DEC71CEA28A8B9A80056C6CA2899304AEAA1D3CF4FFA3"
+    },
+    {
+      "id": "OcctSharp.Documents",
+      "name": "OcctSharp.Documents.8.0.1-preview.87.cu1.nupkg",
+      "sha256": "F412B6E7C0A9D92CDC50BCCF3C6D8F3EED8D032E386347977773068CF7874C00"
+    },
+    {
+      "id": "OcctSharp.Visualization",
+      "name": "OcctSharp.Visualization.8.0.1-preview.87.cu1.nupkg",
+      "sha256": "68D23F8930498D15D051B3A45F92AE7CACC192398C5B91C25CF527DC456E2B47"
+    },
+    {
+      "id": "OcctSharp.DataExchange",
+      "name": "OcctSharp.DataExchange.8.0.1-preview.87.cu1.nupkg",
+      "sha256": "1DC1652D8BF3CDAA46652CC1DB4E04868DF7520A4BD666447C26B429AC0C5600"
+    },
+    {
+      "id": "OcctSharp.Xde",
+      "name": "OcctSharp.Xde.8.0.1-preview.87.cu1.nupkg",
+      "sha256": "FB1A8768B1C05042DEF825ED88A8AB02065A3AD3E01802C7D391569875A3992A"
+    },
+    {
+      "id": "OcctSharp.IVtk",
+      "name": "OcctSharp.IVtk.8.0.1-preview.87.cu1.nupkg",
+      "sha256": "281D82E8AD9C979AA5536C58BC12D228A37305602F0BBB334DD973535FB799F6"
+    },
+    {
+      "id": "OcctSharp.Draw",
+      "name": "OcctSharp.Draw.8.0.1-preview.87.cu1.nupkg",
+      "sha256": "26FE8E0AA4F3BC3986774230510E40C5E4E1978442EA26CF48549DD1E3E30622"
+    },
+    {
+      "id": "OcctSharp",
+      "name": "OcctSharp.8.0.1-preview.87.cu1.nupkg",
+      "sha256": "665C5133D61F237DC72B0E75FEE3FC3F1A1A08AA66E86DD44CC6B2D3C1B93C17"
+    }
+  ],
+  "managed13": [
+    {
+      "package": "OcctSharp.Runtime",
+      "entry": "lib/net10.0/OcctSharp.Runtime.dll",
+      "name": "OcctSharp.Runtime.dll",
+      "sha256": "51594194D643B4E75963089C007001074AF94F4100B72F8F68608EE648F4FCDE"
+    },
+    {
+      "package": "OcctSharp.Foundation",
+      "entry": "lib/net10.0/OcctSharp.Foundation.dll",
+      "name": "OcctSharp.Foundation.dll",
+      "sha256": "0C14C560E392399264C145C5939600448EACF7CD59BF1FBAFBCE65DE78F21DF7"
+    },
+    {
+      "package": "OcctSharp.Geometry",
+      "entry": "lib/net10.0/OcctSharp.Geometry.dll",
+      "name": "OcctSharp.Geometry.dll",
+      "sha256": "91D8127C06F72856F276B57B5EF39BB4899ED650713C19CD69F6F77D4E6053F2"
+    },
+    {
+      "package": "OcctSharp.MeshData",
+      "entry": "lib/net10.0/OcctSharp.MeshData.dll",
+      "name": "OcctSharp.MeshData.dll",
+      "sha256": "B6E0304B1B8FF6F08723A0CA1E16BF72E416A3E400591FCD6A813D4CB94D2FD8"
+    },
+    {
+      "package": "OcctSharp.Modeling",
+      "entry": "lib/net10.0/OcctSharp.Modeling.dll",
+      "name": "OcctSharp.Modeling.dll",
+      "sha256": "4B5D69B88A1184E9A7145E6725C1757D932F3133CC5ABD59163CB6177291BDDD"
+    },
+    {
+      "package": "OcctSharp.Mesh",
+      "entry": "lib/net10.0/OcctSharp.Mesh.dll",
+      "name": "OcctSharp.Mesh.dll",
+      "sha256": "4E23851D9A6A796AA707AB79AD92AE35CEE4BCD5FC98EBBBCC995E33D6C567B9"
+    },
+    {
+      "package": "OcctSharp.Documents",
+      "entry": "lib/net10.0/OcctSharp.Documents.dll",
+      "name": "OcctSharp.Documents.dll",
+      "sha256": "FDBE2C3A4ED4C79799A08A3AB1E8A237A4E6F68C9F433A1DD192A8C5AF918F3D"
+    },
+    {
+      "package": "OcctSharp.Visualization",
+      "entry": "lib/net10.0/OcctSharp.Visualization.dll",
+      "name": "OcctSharp.Visualization.dll",
+      "sha256": "2137A0F635650E5D5C0E505DAEBF043D7C42342A66C86520C3DFA877E8B0195B"
+    },
+    {
+      "package": "OcctSharp.DataExchange",
+      "entry": "lib/net10.0/OcctSharp.DataExchange.dll",
+      "name": "OcctSharp.DataExchange.dll",
+      "sha256": "972FEBCC153549C5DA63AF6A058B54947BCA9A73A970C7D2B3320A13192EDA7E"
+    },
+    {
+      "package": "OcctSharp.Xde",
+      "entry": "lib/net10.0/OcctSharp.Xde.dll",
+      "name": "OcctSharp.Xde.dll",
+      "sha256": "7811D275B8EE803E69E6DAD1643F7440A20EAA747137753CCBC8ACE60622910A"
+    },
+    {
+      "package": "OcctSharp.IVtk",
+      "entry": "lib/net10.0/OcctSharp.IVtk.dll",
+      "name": "OcctSharp.IVtk.dll",
+      "sha256": "7CFD8AFCC0846B84D215C1D1DEF94001FCBB4B5A99D729F28970BB2DCE4EA9E4"
+    },
+    {
+      "package": "OcctSharp.Draw",
+      "entry": "lib/net10.0/OcctSharp.Draw.dll",
+      "name": "OcctSharp.Draw.dll",
+      "sha256": "5BB55A3B0227A674E6C80A405E5A1FB56AB3586ECA551E1819FD693BEE38DD14"
+    },
+    {
+      "package": "OcctSharp",
+      "entry": "lib/net10.0/OcctSharp.dll",
+      "name": "OcctSharp.dll",
+      "sha256": "2D3A8F81204C907D0FBD300AC0FF5E9003B419F0D177438C5319F1D0C47CA442"
+    }
+  ],
+  "native62": [
+    {
+      "package": "OcctSharp.Native.win-x64",
+      "entry": "buildTransitive/win-x64/occt/FreeImage.dll",
+      "name": "FreeImage.dll",
+      "sha256": "4594BD0538F7F6B05148B00996FF36DDFEDEF8D66910E931503DCFEBF8EFE1DB"
+    },
+    {
+      "package": "OcctSharp.Native.win-x64",
+      "entry": "buildTransitive/win-x64/occt/OcctSharp.Native.dll",
+      "name": "OcctSharp.Native.dll",
+      "sha256": "32B48666136590B9069D7D8E9ED7AFEAC1AED37615E881B0A4E52BC7E352E3E7"
+    },
+    {
+      "package": "OcctSharp.Native.win-x64",
+      "entry": "buildTransitive/win-x64/occt/TKBO.dll",
+      "name": "TKBO.dll",
+      "sha256": "41F837935BCC65882ACD73295EF65CA13D47B018ACDCB6093FAF47804B96D0C5"
+    },
+    {
+      "package": "OcctSharp.Native.win-x64",
+      "entry": "buildTransitive/win-x64/occt/TKBRep.dll",
+      "name": "TKBRep.dll",
+      "sha256": "A511C8CF51178CF881C3BA0B54287DCECE6DED03CF3DE99E6FABF2A2D5152207"
+    },
+    {
+      "package": "OcctSharp.Native.win-x64",
+      "entry": "buildTransitive/win-x64/occt/TKBin.dll",
+      "name": "TKBin.dll",
+      "sha256": "B27B08FFBE07C1FACA441897E6D807062D01F453BD847175CAE999B15AD31D96"
+    },
+    {
+      "package": "OcctSharp.Native.win-x64",
+      "entry": "buildTransitive/win-x64/occt/TKBinL.dll",
+      "name": "TKBinL.dll",
+      "sha256": "A8A87E784C6AD97DAF773926A106E8904ABEF77AE30CAD602DD236A0FE376378"
+    },
+    {
+      "package": "OcctSharp.Native.win-x64",
+      "entry": "buildTransitive/win-x64/occt/TKBinTObj.dll",
+      "name": "TKBinTObj.dll",
+      "sha256": "F482E7F3A3526150C537E3DD6CDDDBD6B4E38B29C62AC3CF3F81D9E97A296EAB"
+    },
+    {
+      "package": "OcctSharp.Native.win-x64",
+      "entry": "buildTransitive/win-x64/occt/TKBinXCAF.dll",
+      "name": "TKBinXCAF.dll",
+      "sha256": "BE1F35F341A9BC1EF26DB6721AFE727747CC97053A86ADA5A51C03E4C43EBA3A"
+    },
+    {
+      "package": "OcctSharp.Native.win-x64",
+      "entry": "buildTransitive/win-x64/occt/TKBool.dll",
+      "name": "TKBool.dll",
+      "sha256": "FA76C5374AE85E1649F27DA41ED0B45EC36C68C413ACE84554198CF39D11DAFD"
+    },
+    {
+      "package": "OcctSharp.Native.win-x64",
+      "entry": "buildTransitive/win-x64/occt/TKCAF.dll",
+      "name": "TKCAF.dll",
+      "sha256": "E78FD6196F7356FFA541A015CB6DF481E9999D8E813E2D7A5D914CA6205614AE"
+    },
+    {
+      "package": "OcctSharp.Native.win-x64",
+      "entry": "buildTransitive/win-x64/occt/TKCDF.dll",
+      "name": "TKCDF.dll",
+      "sha256": "9BCCAB992DA8F4069CB4020A064D67DF507309CA679AD20BB97A9B5FB0797A3A"
+    },
+    {
+      "package": "OcctSharp.Native.win-x64",
+      "entry": "buildTransitive/win-x64/occt/TKD3DHost.dll",
+      "name": "TKD3DHost.dll",
+      "sha256": "0EB1591D44FFF265C3870865013C7FCBDE9F9B7DF79903ED0116AC1C93DE10BE"
+    },
+    {
+      "package": "OcctSharp.Native.win-x64",
+      "entry": "buildTransitive/win-x64/occt/TKDE.dll",
+      "name": "TKDE.dll",
+      "sha256": "2F0E1C9BD86C367B36DC7519502B095DE0DEE910D1F86B5B39BA962790A0D0C5"
+    },
+    {
+      "package": "OcctSharp.Native.win-x64",
+      "entry": "buildTransitive/win-x64/occt/TKDECascade.dll",
+      "name": "TKDECascade.dll",
+      "sha256": "6E65801F138067283CA2355F7E43FF5BF30502E0CB6F782F33245E7B5096F5A1"
+    },
+    {
+      "package": "OcctSharp.Native.win-x64",
+      "entry": "buildTransitive/win-x64/occt/TKDEGLTF.dll",
+      "name": "TKDEGLTF.dll",
+      "sha256": "636F0E11859C256774B1004617E643D5EFDC415F993A464D73A82F4618CC902A"
+    },
+    {
+      "package": "OcctSharp.Native.win-x64",
+      "entry": "buildTransitive/win-x64/occt/TKDEIGES.dll",
+      "name": "TKDEIGES.dll",
+      "sha256": "3D16433A5CA16D36DFDFE168AF7F7C0645093CDC6C80CA38A157BC84769E43F9"
+    },
+    {
+      "package": "OcctSharp.Native.win-x64",
+      "entry": "buildTransitive/win-x64/occt/TKDEOBJ.dll",
+      "name": "TKDEOBJ.dll",
+      "sha256": "C09644DE8F5AFEA74C531054F713132823F0020F28A889229AE2E762D8CA121D"
+    },
+    {
+      "package": "OcctSharp.Native.win-x64",
+      "entry": "buildTransitive/win-x64/occt/TKDEPLY.dll",
+      "name": "TKDEPLY.dll",
+      "sha256": "35DAFA5EFACF1DFECCB3E01D560547630142B4C52FFAC5CE4CAE726DFBD31262"
+    },
+    {
+      "package": "OcctSharp.Native.win-x64",
+      "entry": "buildTransitive/win-x64/occt/TKDESTEP.dll",
+      "name": "TKDESTEP.dll",
+      "sha256": "DC010933AEF4481083D21F77ADFAEE6ACEADE87D5F454AD5F4743F07A00B4DF6"
+    },
+    {
+      "package": "OcctSharp.Native.win-x64",
+      "entry": "buildTransitive/win-x64/occt/TKDESTL.dll",
+      "name": "TKDESTL.dll",
+      "sha256": "68488A4FD4B3C426123BD9969F5E42DD335A89CEA2FFA4E147452653F1BB63A1"
+    },
+    {
+      "package": "OcctSharp.Native.win-x64",
+      "entry": "buildTransitive/win-x64/occt/TKDEVRML.dll",
+      "name": "TKDEVRML.dll",
+      "sha256": "7F30F93D81398A61F5E52997494C43ABFABD868009273B4492B1E2B8DD105F7A"
+    },
+    {
+      "package": "OcctSharp.Native.win-x64",
+      "entry": "buildTransitive/win-x64/occt/TKExpress.dll",
+      "name": "TKExpress.dll",
+      "sha256": "2535B5993A42E41C6E35E5EA50574953D0BC5705EAE70D596C1194E5B9C8E872"
+    },
+    {
+      "package": "OcctSharp.Native.win-x64",
+      "entry": "buildTransitive/win-x64/occt/TKFeat.dll",
+      "name": "TKFeat.dll",
+      "sha256": "05F968C96DD0C170463B09F0121DB70E3DB720250634959C91C42396F9437141"
+    },
+    {
+      "package": "OcctSharp.Native.win-x64",
+      "entry": "buildTransitive/win-x64/occt/TKFillet.dll",
+      "name": "TKFillet.dll",
+      "sha256": "6ACCA10E58155ECAA1621DCECF395463C6560D4A3B63729BD7688ED7B15A38F5"
+    },
+    {
+      "package": "OcctSharp.Native.win-x64",
+      "entry": "buildTransitive/win-x64/occt/TKG2d.dll",
+      "name": "TKG2d.dll",
+      "sha256": "0D87A20363CFB66F7862FBC9AA7234059D13712B3A0D7E6B35CBB0172810A93C"
+    },
+    {
+      "package": "OcctSharp.Native.win-x64",
+      "entry": "buildTransitive/win-x64/occt/TKG3d.dll",
+      "name": "TKG3d.dll",
+      "sha256": "8A13921267C5839C0D8D4395DAE33FC5C1F80F8D03C0D8C0CEB153AA3DA35C6C"
+    },
+    {
+      "package": "OcctSharp.Native.win-x64",
+      "entry": "buildTransitive/win-x64/occt/TKGeomAlgo.dll",
+      "name": "TKGeomAlgo.dll",
+      "sha256": "154E047A29217C0FAF101EC0B8119D6D327E89560CD82CB18D17EC48D508883B"
+    },
+    {
+      "package": "OcctSharp.Native.win-x64",
+      "entry": "buildTransitive/win-x64/occt/TKGeomBase.dll",
+      "name": "TKGeomBase.dll",
+      "sha256": "6BD91D22B6A893884BA74FEC8C352F68BCF0F79096D00F52119D4810EF42567E"
+    },
+    {
+      "package": "OcctSharp.Native.win-x64",
+      "entry": "buildTransitive/win-x64/occt/TKHLR.dll",
+      "name": "TKHLR.dll",
+      "sha256": "499F63A9335A17F8D2903DB1D56E27EE2DEAD324E35EFE46E2A9FAC8A8BF6F89"
+    },
+    {
+      "package": "OcctSharp.Native.win-x64",
+      "entry": "buildTransitive/win-x64/occt/TKHelix.dll",
+      "name": "TKHelix.dll",
+      "sha256": "B95F60B662FFF3BBDC7A768AA1DF664468187C3638AC562B5C87C8B9C6808DFF"
+    },
+    {
+      "package": "OcctSharp.Native.win-x64",
+      "entry": "buildTransitive/win-x64/occt/TKLCAF.dll",
+      "name": "TKLCAF.dll",
+      "sha256": "C51A1DA060562BA8855C02A091D849A575459FEE3ED80543358F9113871DAF9D"
+    },
+    {
+      "package": "OcctSharp.Native.win-x64",
+      "entry": "buildTransitive/win-x64/occt/TKMath.dll",
+      "name": "TKMath.dll",
+      "sha256": "2C41EFC32C025D1E7753548498027AA240D315B455BF36130432EA23E5860A2A"
+    },
+    {
+      "package": "OcctSharp.Native.win-x64",
+      "entry": "buildTransitive/win-x64/occt/TKMesh.dll",
+      "name": "TKMesh.dll",
+      "sha256": "143337A5BF7128B7D5F50B33129D70EE4B4E9669F9166D89AF732444A221F95F"
+    },
+    {
+      "package": "OcctSharp.Native.win-x64",
+      "entry": "buildTransitive/win-x64/occt/TKMeshVS.dll",
+      "name": "TKMeshVS.dll",
+      "sha256": "7CF4CEC11EC0B9A7AFF012442A9E868932B74848E46CAA79DC091175A18DD9DD"
+    },
+    {
+      "package": "OcctSharp.Native.win-x64",
+      "entry": "buildTransitive/win-x64/occt/TKOffset.dll",
+      "name": "TKOffset.dll",
+      "sha256": "B3145BF379A12F46C68B206966679252CB36C0616C1A3D73D572033CB3EFCF8F"
+    },
+    {
+      "package": "OcctSharp.Native.win-x64",
+      "entry": "buildTransitive/win-x64/occt/TKOpenGl.dll",
+      "name": "TKOpenGl.dll",
+      "sha256": "8C47BB81B4D9F712E557864A67A31637DFF74D83D92B83AEE6960A673CBA07E7"
+    },
+    {
+      "package": "OcctSharp.Native.win-x64",
+      "entry": "buildTransitive/win-x64/occt/TKPrim.dll",
+      "name": "TKPrim.dll",
+      "sha256": "37DE279166407566D7FFF2DD063638FDF1F8DC89C0D030E550AA4868585F49DD"
+    },
+    {
+      "package": "OcctSharp.Native.win-x64",
+      "entry": "buildTransitive/win-x64/occt/TKRWMesh.dll",
+      "name": "TKRWMesh.dll",
+      "sha256": "49A61A27309032C374ED78ED205DC89860C4D5D510A7160AE4A5CF85CC7DAC1C"
+    },
+    {
+      "package": "OcctSharp.Native.win-x64",
+      "entry": "buildTransitive/win-x64/occt/TKService.dll",
+      "name": "TKService.dll",
+      "sha256": "B16E5AEB5213D9586A606C6443246C0D77CE52B117A54A4E523FD9E0BB41AAE6"
+    },
+    {
+      "package": "OcctSharp.Native.win-x64",
+      "entry": "buildTransitive/win-x64/occt/TKShHealing.dll",
+      "name": "TKShHealing.dll",
+      "sha256": "91E87BD3E5A3267C4A2D97B171EA05FA21FE1B78A2B905F7CF7E3CF19F5CD43E"
+    },
+    {
+      "package": "OcctSharp.Native.win-x64",
+      "entry": "buildTransitive/win-x64/occt/TKStd.dll",
+      "name": "TKStd.dll",
+      "sha256": "7366BFDEF0BE23AE8C0D9FD7AB1676CCC4F8CCD7DEFC53ADD1B4BDC3E91F5660"
+    },
+    {
+      "package": "OcctSharp.Native.win-x64",
+      "entry": "buildTransitive/win-x64/occt/TKStdL.dll",
+      "name": "TKStdL.dll",
+      "sha256": "4EE319E9CD1D1DFF7337B1F03EC8FB2CCBAD0AE0AB8A18FA8EBBF2DBB3113B61"
+    },
+    {
+      "package": "OcctSharp.Native.win-x64",
+      "entry": "buildTransitive/win-x64/occt/TKTObj.dll",
+      "name": "TKTObj.dll",
+      "sha256": "B1491D455B088B13BC332260804DBE53E7FBF8E495A3271759C14334CD3A1196"
+    },
+    {
+      "package": "OcctSharp.Native.win-x64",
+      "entry": "buildTransitive/win-x64/occt/TKTopAlgo.dll",
+      "name": "TKTopAlgo.dll",
+      "sha256": "6690CE35FCF32BD2C379D12A21ABDE6BAF023087F3EEFBCCC5AE40E416B0B107"
+    },
+    {
+      "package": "OcctSharp.Native.win-x64",
+      "entry": "buildTransitive/win-x64/occt/TKV3d.dll",
+      "name": "TKV3d.dll",
+      "sha256": "5356773B60EAF73345AE6822369EB8B721A9D18EABA925491870E24CBA651BD9"
+    },
+    {
+      "package": "OcctSharp.Native.win-x64",
+      "entry": "buildTransitive/win-x64/occt/TKVCAF.dll",
+      "name": "TKVCAF.dll",
+      "sha256": "94948F34AD0696D0D4CA404DA4369B348B0B3C1241EEE1E42DAD87353E5629BF"
+    },
+    {
+      "package": "OcctSharp.Native.win-x64",
+      "entry": "buildTransitive/win-x64/occt/TKXCAF.dll",
+      "name": "TKXCAF.dll",
+      "sha256": "64095FF4FFA3BDD41BD17FFFDC39F9490CE34C2EF59AAB427C71DEAA6F3B791A"
+    },
+    {
+      "package": "OcctSharp.Native.win-x64",
+      "entry": "buildTransitive/win-x64/occt/TKXMesh.dll",
+      "name": "TKXMesh.dll",
+      "sha256": "302BFC3CB41C8EF00548A974C28F86BD194D6267FA31F080227D8D765BC8E9D3"
+    },
+    {
+      "package": "OcctSharp.Native.win-x64",
+      "entry": "buildTransitive/win-x64/occt/TKXSBase.dll",
+      "name": "TKXSBase.dll",
+      "sha256": "3978FEC70540BD0B369FF01263BA341E01A57E308F5EA1788B5DC56B1A851AA7"
+    },
+    {
+      "package": "OcctSharp.Native.win-x64",
+      "entry": "buildTransitive/win-x64/occt/TKXml.dll",
+      "name": "TKXml.dll",
+      "sha256": "9904AAF0435D24E7B89BA094FCB96708942A33B4DFD88241968CE6054B3AF811"
+    },
+    {
+      "package": "OcctSharp.Native.win-x64",
+      "entry": "buildTransitive/win-x64/occt/TKXmlL.dll",
+      "name": "TKXmlL.dll",
+      "sha256": "7477A1A138630480D9D42CBAF04637322CD96DCA19880694DEC6A60C77532BCC"
+    },
+    {
+      "package": "OcctSharp.Native.win-x64",
+      "entry": "buildTransitive/win-x64/occt/TKXmlTObj.dll",
+      "name": "TKXmlTObj.dll",
+      "sha256": "689187644BA9103F9288B2BC22208998A933F68CFE19D9B259EBD78DE58FE939"
+    },
+    {
+      "package": "OcctSharp.Native.win-x64",
+      "entry": "buildTransitive/win-x64/occt/TKXmlXCAF.dll",
+      "name": "TKXmlXCAF.dll",
+      "sha256": "CECC1712C731DCC0DDC4E855FBFF9EC8D159F83141FB0E5C010A2ECDFB0CEE13"
+    },
+    {
+      "package": "OcctSharp.Native.win-x64",
+      "entry": "buildTransitive/win-x64/occt/TKernel.dll",
+      "name": "TKernel.dll",
+      "sha256": "3ECBC7F193EBB746CC88A81E03EB603D24FDF03470B346551698F45D4FAEB7B4"
+    },
+    {
+      "package": "OcctSharp.Native.win-x64",
+      "entry": "buildTransitive/win-x64/occt/avcodec-57.dll",
+      "name": "avcodec-57.dll",
+      "sha256": "4D7A6A2CFF37C782CE1A3C74FA83EBBEBCC43DFC774E3F497A406C84C1458C7E"
+    },
+    {
+      "package": "OcctSharp.Native.win-x64",
+      "entry": "buildTransitive/win-x64/occt/avformat-57.dll",
+      "name": "avformat-57.dll",
+      "sha256": "297D3207DD0E6325DAB7A080472A4FD2F743CFC53861615B4DC96B91227CD3AF"
+    },
+    {
+      "package": "OcctSharp.Native.win-x64",
+      "entry": "buildTransitive/win-x64/occt/avutil-55.dll",
+      "name": "avutil-55.dll",
+      "sha256": "BE7C03FF47618916D16AF446E2F7C00E48F2FF8934C6ACE4C0D0E3D804732E8E"
+    },
+    {
+      "package": "OcctSharp.Native.win-x64",
+      "entry": "buildTransitive/win-x64/occt/freetype.dll",
+      "name": "freetype.dll",
+      "sha256": "637621E4AE51B496B8A86F9B053050D5AF2BA999EA0680BBFE3D5DF91F976C75"
+    },
+    {
+      "package": "OcctSharp.Native.win-x64",
+      "entry": "buildTransitive/win-x64/occt/jemalloc.dll",
+      "name": "jemalloc.dll",
+      "sha256": "EA0CFCF6A12BB3863961074547C958FD978AA3F800244CC4FE2847B127C4DF5E"
+    },
+    {
+      "package": "OcctSharp.Native.win-x64",
+      "entry": "buildTransitive/win-x64/occt/openvr_api.dll",
+      "name": "openvr_api.dll",
+      "sha256": "71DB78E77E577DB6D0666C25437695D42CEAFB9C7F8DA94FBE765525B8E2F5F2"
+    },
+    {
+      "package": "OcctSharp.Native.win-x64",
+      "entry": "buildTransitive/win-x64/occt/swscale-4.dll",
+      "name": "swscale-4.dll",
+      "sha256": "67BCFFB3CCDAEBF2BBD3149542D92DD9430ABFDFF1D7B79B3A529AF712926412"
+    },
+    {
+      "package": "OcctSharp.Native.win-x64",
+      "entry": "buildTransitive/win-x64/occt/tbb12.dll",
+      "name": "tbb12.dll",
+      "sha256": "887888A0C2FFE7F64718D4EEA2A10CE41C68DEC1A954DB3A62646ADEEE66C0AD"
+    }
+  ],
+  "immutableReceivedFeed": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\local-sdk87cu1-received-1\\feed",
+  "nativeRuntimeStartedHere": false,
+  "upstreamDeliveryGatesIndependentlyReceived": false,
+  "productionApplied": false,
+  "publiclyPublished": false,
+  "AFComplete": false
+}

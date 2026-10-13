@@ -1,0 +1,554 @@
+{
+  "recordedAt": "2026-10-13T18:57:56.899328+00:00",
+  "state": "EXACT_SDK87CU1_TERMINAL_EVIDENCE_INDEPENDENTLY_RECEIVED",
+  "version": "8.0.1-preview.87.cu1",
+  "upstreamEvidenceFiles": 133,
+  "evidence": [
+    {
+      "path": "artifacts/local-sdk87cu1-gates-received-1/upstream/OcctSharp/artifacts/batch-cu/planar-candidate-packages/OcctSharp.8.0.1-preview.87.cu1.nupkg",
+      "sha256": "665C5133D61F237DC72B0E75FEE3FC3F1A1A08AA66E86DD44CC6B2D3C1B93C17"
+    },
+    {
+      "path": "artifacts/local-sdk87cu1-gates-received-1/upstream/OcctSharp/artifacts/batch-cu/planar-candidate-packages/OcctSharp.DataExchange.8.0.1-preview.87.cu1.nupkg",
+      "sha256": "1DC1652D8BF3CDAA46652CC1DB4E04868DF7520A4BD666447C26B429AC0C5600"
+    },
+    {
+      "path": "artifacts/local-sdk87cu1-gates-received-1/upstream/OcctSharp/artifacts/batch-cu/planar-candidate-packages/OcctSharp.Documents.8.0.1-preview.87.cu1.nupkg",
+      "sha256": "F412B6E7C0A9D92CDC50BCCF3C6D8F3EED8D032E386347977773068CF7874C00"
+    },
+    {
+      "path": "artifacts/local-sdk87cu1-gates-received-1/upstream/OcctSharp/artifacts/batch-cu/planar-candidate-packages/OcctSharp.Draw.8.0.1-preview.87.cu1.nupkg",
+      "sha256": "26FE8E0AA4F3BC3986774230510E40C5E4E1978442EA26CF48549DD1E3E30622"
+    },
+    {
+      "path": "artifacts/local-sdk87cu1-gates-received-1/upstream/OcctSharp/artifacts/batch-cu/planar-candidate-packages/OcctSharp.Foundation.8.0.1-preview.87.cu1.nupkg",
+      "sha256": "E97143D330B9F26052EB9C48C38F546D964294AA7776E4F3A17D0BCF7E4C84C8"
+    },
+    {
+      "path": "artifacts/local-sdk87cu1-gates-received-1/upstream/OcctSharp/artifacts/batch-cu/planar-candidate-packages/OcctSharp.Geometry.8.0.1-preview.87.cu1.nupkg",
+      "sha256": "7AE070DE921E8961AF5AF6AA070F96B5AE5614A726F2E8AE6964673A1A1EEF6F"
+    },
+    {
+      "path": "artifacts/local-sdk87cu1-gates-received-1/upstream/OcctSharp/artifacts/batch-cu/planar-candidate-packages/OcctSharp.IVtk.8.0.1-preview.87.cu1.nupkg",
+      "sha256": "281D82E8AD9C979AA5536C58BC12D228A37305602F0BBB334DD973535FB799F6"
+    },
+    {
+      "path": "artifacts/local-sdk87cu1-gates-received-1/upstream/OcctSharp/artifacts/batch-cu/planar-candidate-packages/OcctSharp.Mesh.8.0.1-preview.87.cu1.nupkg",
+      "sha256": "8A9CDC4ED23A5684157DEC71CEA28A8B9A80056C6CA2899304AEAA1D3CF4FFA3"
+    },
+    {
+      "path": "artifacts/local-sdk87cu1-gates-received-1/upstream/OcctSharp/artifacts/batch-cu/planar-candidate-packages/OcctSharp.MeshData.8.0.1-preview.87.cu1.nupkg",
+      "sha256": "952FE0491663356E7D8A88F753BD5EA65B7D02B5BAD13F165F4D71AD3ED1936A"
+    },
+    {
+      "path": "artifacts/local-sdk87cu1-gates-received-1/upstream/OcctSharp/artifacts/batch-cu/planar-candidate-packages/OcctSharp.Modeling.8.0.1-preview.87.cu1.nupkg",
+      "sha256": "DBBC777C647321D5194767EF0F188C7411305FC6AF2187C800E43EC57718D37A"
+    },
+    {
+      "path": "artifacts/local-sdk87cu1-gates-received-1/upstream/OcctSharp/artifacts/batch-cu/planar-candidate-packages/OcctSharp.Native.win-x64.8.0.1-preview.87.cu1.nupkg",
+      "sha256": "DB387CD6BF45E4730D60A47AF694A9308CB605D8DAD3810430A9D893DC83443C"
+    },
+    {
+      "path": "artifacts/local-sdk87cu1-gates-received-1/upstream/OcctSharp/artifacts/batch-cu/planar-candidate-packages/OcctSharp.Runtime.8.0.1-preview.87.cu1.nupkg",
+      "sha256": "68E984A07B21C0E82FD9543D7BFF99965524D3AFC78A3611174A6FC07DB7E6DE"
+    },
+    {
+      "path": "artifacts/local-sdk87cu1-gates-received-1/upstream/OcctSharp/artifacts/batch-cu/planar-candidate-packages/OcctSharp.Visualization.8.0.1-preview.87.cu1.nupkg",
+      "sha256": "68D23F8930498D15D051B3A45F92AE7CACC192398C5B91C25CF527DC456E2B47"
+    },
+    {
+      "path": "artifacts/local-sdk87cu1-gates-received-1/upstream/OcctSharp/artifacts/batch-cu/planar-candidate-packages/OcctSharp.Xde.8.0.1-preview.87.cu1.nupkg",
+      "sha256": "FB1A8768B1C05042DEF825ED88A8AB02065A3AD3E01802C7D391569875A3992A"
+    },
+    {
+      "path": "artifacts/local-sdk87cu1-gates-received-1/upstream/OcctSharp/artifacts/batch-cu/planar-candidate-packages/package-inputs.json",
+      "sha256": "E980EECA3FBE9C745B14E411C8D5A445C6CED2D3A8AB7427E590FD68D54F8948"
+    },
+    {
+      "path": "artifacts/local-sdk87cu1-gates-received-1/upstream/OcctSharp/artifacts/batch-cu/planar-candidate-source-freeze/inputs.json",
+      "sha256": "80C70F9D5B6F18E4B6F1ECA4DD9FC3FE6929B3DA0D2D1B1CB4D34BD3194996DB"
+    },
+    {
+      "path": "artifacts/local-sdk87cu1-gates-received-1/upstream/OcctSharp/artifacts/batch-cu/planar-package-consumers/consumer-harness-revision2.json",
+      "sha256": "3997167F0DD29B1C5EA067ABCEB21676C2554DE53B233E0F30E1779B650F2FCE"
+    },
+    {
+      "path": "artifacts/local-sdk87cu1-gates-received-1/upstream/OcctSharp/artifacts/batch-cu/planar-package-consumers/facade/FreshPackage.Tests.csproj",
+      "sha256": "73B4A87E47618A128B0153E8261AF435C08C09299D629C0009258D08783EABF3"
+    },
+    {
+      "path": "artifacts/local-sdk87cu1-gates-received-1/upstream/OcctSharp/artifacts/batch-cu/planar-package-consumers/facade/TestResults/fresh-facade-release-2.trx",
+      "sha256": "E3BBB26CDEDE0CBA2B4E5BA5603CE96EF9BA3DBC37C6068E5E19F37AC22A0098"
+    },
+    {
+      "path": "artifacts/local-sdk87cu1-gates-received-1/upstream/OcctSharp/artifacts/batch-cu/planar-package-consumers/facade/loaded-native-release-2.json",
+      "sha256": "BB1ED2F01DEFD8EECFCF18C06C912B810DE651002CCA0658D5DFE4A3E5043353"
+    },
+    {
+      "path": "artifacts/local-sdk87cu1-gates-received-1/upstream/OcctSharp/artifacts/batch-cu/planar-package-consumers/facade/packages.lock.json",
+      "sha256": "360EFD1286594A20BB22DB502D2FD07ECCCB1E71538D7D13FAEAEB156743679E"
+    },
+    {
+      "path": "artifacts/local-sdk87cu1-gates-received-1/upstream/OcctSharp/artifacts/batch-cu/planar-package-consumers/modules/FreshPackage.Tests.csproj",
+      "sha256": "AFB503D64417B14404F5F9BA73FB3B09E563C4036D9D17B4017EA04086A65396"
+    },
+    {
+      "path": "artifacts/local-sdk87cu1-gates-received-1/upstream/OcctSharp/artifacts/batch-cu/planar-package-consumers/modules/TestResults/fresh-modules-release-1.trx",
+      "sha256": "27281DE531301A6B25590A28FD48E4F5AD96DB43CD0CB917EDC4F0F5139543D0"
+    },
+    {
+      "path": "artifacts/local-sdk87cu1-gates-received-1/upstream/OcctSharp/artifacts/batch-cu/planar-package-consumers/modules/loaded-native-release-1.json",
+      "sha256": "4B5D4E7763AFD23A43947F697C4D3A73F6BE447DAD8FC033A5D247F985ADD8B6"
+    },
+    {
+      "path": "artifacts/local-sdk87cu1-gates-received-1/upstream/OcctSharp/artifacts/batch-cu/planar-package-consumers/modules/packages.lock.json",
+      "sha256": "CCF6BA2C097886615607DE2DF06188076A7B8795CC36B627FDD894903B748887"
+    },
+    {
+      "path": "artifacts/local-sdk87cu1-gates-received-1/upstream/OcctSharp/artifacts/batch-cu/planar-wire-candidate-delivery.json",
+      "sha256": "3FCC0797B753C043893583A084F2F7363D5B56E30415107B82CD3411E643C393"
+    },
+    {
+      "path": "artifacts/local-sdk87cu1-gates-received-1/upstream/OcctSharp/artifacts/batch-cu/planar-wire-full-loaded-debug-1.json",
+      "sha256": "2A9149AA90F34F58CD09AD24ADF60270208C3136E7CB2A443D7B670B6EED631E"
+    },
+    {
+      "path": "artifacts/local-sdk87cu1-gates-received-1/upstream/OcctSharp/artifacts/batch-cu/planar-wire-full-loaded-release-1.json",
+      "sha256": "2204E9712B2C4F3617853AB6C4F1E1A5CDCAAB486B166FE75ACC6E8175C78C8E"
+    },
+    {
+      "path": "artifacts/local-sdk87cu1-gates-received-1/upstream/OcctSharp/artifacts/batch-cu/planar-wire-source-qualification.json",
+      "sha256": "9288891B70A4BB307772433690895F42FD55145DB9E8F37BCBD02A3C823F677E"
+    },
+    {
+      "path": "artifacts/local-sdk87cu1-gates-received-1/upstream/OcctSharp/artifacts/batch-cu/source-qualification-managed/Debug/Microsoft.TestPlatform.CommunicationUtilities.dll",
+      "sha256": "2EBA928C1770209F1FD9F515603A0B4FFBFCADF816681AB36D02B9B36417AB33"
+    },
+    {
+      "path": "artifacts/local-sdk87cu1-gates-received-1/upstream/OcctSharp/artifacts/batch-cu/source-qualification-managed/Debug/Microsoft.TestPlatform.CoreUtilities.dll",
+      "sha256": "7837F9DF4B11A9844143FC9419E5752BDD50305436ADCBF84F82B8A52D5909D7"
+    },
+    {
+      "path": "artifacts/local-sdk87cu1-gates-received-1/upstream/OcctSharp/artifacts/batch-cu/source-qualification-managed/Debug/Microsoft.TestPlatform.CrossPlatEngine.dll",
+      "sha256": "2F3B463A227B8F30171F8720164B3C0B90451248E0B2F3E8C3DA82C23A3FDFCD"
+    },
+    {
+      "path": "artifacts/local-sdk87cu1-gates-received-1/upstream/OcctSharp/artifacts/batch-cu/source-qualification-managed/Debug/Microsoft.TestPlatform.PlatformAbstractions.dll",
+      "sha256": "668C7F0DF2C30FEAC9CEA9DCE808CCABB72FF575C1E820404124212B4EAE1773"
+    },
+    {
+      "path": "artifacts/local-sdk87cu1-gates-received-1/upstream/OcctSharp/artifacts/batch-cu/source-qualification-managed/Debug/Microsoft.TestPlatform.Utilities.dll",
+      "sha256": "886EF3AB15251E57CA9C124E41DE3C43BA0520A036B876BB709ED325438501FE"
+    },
+    {
+      "path": "artifacts/local-sdk87cu1-gates-received-1/upstream/OcctSharp/artifacts/batch-cu/source-qualification-managed/Debug/Microsoft.VisualStudio.CodeCoverage.Shim.dll",
+      "sha256": "E590F0095B103C635C7FD45AD5FF537DD221B0BC2DB214717940F59FAF4767F0"
+    },
+    {
+      "path": "artifacts/local-sdk87cu1-gates-received-1/upstream/OcctSharp/artifacts/batch-cu/source-qualification-managed/Debug/Microsoft.VisualStudio.TestPlatform.Common.dll",
+      "sha256": "96D7B2A7E3F79133E17196FDAD189486B59852379385198B5CD857E9947164FB"
+    },
+    {
+      "path": "artifacts/local-sdk87cu1-gates-received-1/upstream/OcctSharp/artifacts/batch-cu/source-qualification-managed/Debug/Microsoft.VisualStudio.TestPlatform.ObjectModel.dll",
+      "sha256": "F6D6BC01A85FD68A0599533FCC0DE7357922051BAD90012B8AD15DE31A4EF5E9"
+    },
+    {
+      "path": "artifacts/local-sdk87cu1-gates-received-1/upstream/OcctSharp/artifacts/batch-cu/source-qualification-managed/Debug/Newtonsoft.Json.dll",
+      "sha256": "22C649F75FCE5BE7C7CCDA8880473B634EF69ECF33F5D1AB8AD892CAF47D5A07"
+    },
+    {
+      "path": "artifacts/local-sdk87cu1-gates-received-1/upstream/OcctSharp/artifacts/batch-cu/source-qualification-managed/Debug/OcctSharp.DataExchange.dll",
+      "sha256": "539A54226C033F13006E09F5EA44C742C5FBB65CCFC0226B5BB80A0B33401505"
+    },
+    {
+      "path": "artifacts/local-sdk87cu1-gates-received-1/upstream/OcctSharp/artifacts/batch-cu/source-qualification-managed/Debug/OcctSharp.DataExchange.pdb",
+      "sha256": "9B013485ECB8538FD5402DDAEF2FE4524EB809E2B20944C0A41AB1CF99FEBEC7"
+    },
+    {
+      "path": "artifacts/local-sdk87cu1-gates-received-1/upstream/OcctSharp/artifacts/batch-cu/source-qualification-managed/Debug/OcctSharp.Documents.dll",
+      "sha256": "9500A8FA6C51F843C7835B1584E7DCA8CC437E1C25432326909FFEF04972B9F1"
+    },
+    {
+      "path": "artifacts/local-sdk87cu1-gates-received-1/upstream/OcctSharp/artifacts/batch-cu/source-qualification-managed/Debug/OcctSharp.Documents.pdb",
+      "sha256": "14A865397F67307579A7D9EEAC3699FB0766A203071C208B1A03E0340814AB7A"
+    },
+    {
+      "path": "artifacts/local-sdk87cu1-gates-received-1/upstream/OcctSharp/artifacts/batch-cu/source-qualification-managed/Debug/OcctSharp.Draw.dll",
+      "sha256": "F7429E58074C078C321A2D0AC11904A1CD680A98E9500B61E4E61C68C4E15DE8"
+    },
+    {
+      "path": "artifacts/local-sdk87cu1-gates-received-1/upstream/OcctSharp/artifacts/batch-cu/source-qualification-managed/Debug/OcctSharp.Draw.pdb",
+      "sha256": "29AE857485D1747B6A0281C062829D0868667960874B1BD410A56BBB54F12A5F"
+    },
+    {
+      "path": "artifacts/local-sdk87cu1-gates-received-1/upstream/OcctSharp/artifacts/batch-cu/source-qualification-managed/Debug/OcctSharp.Foundation.dll",
+      "sha256": "198D9A8FEE3B6BAC01DD38B8F0BFA5C87A8BD37A5F95BBB513D6F2AD6EE0E4F9"
+    },
+    {
+      "path": "artifacts/local-sdk87cu1-gates-received-1/upstream/OcctSharp/artifacts/batch-cu/source-qualification-managed/Debug/OcctSharp.Foundation.pdb",
+      "sha256": "AE70089AE7CDFEFE377FD148103FB7EC5057C6484E536F949B728FB477AA9090"
+    },
+    {
+      "path": "artifacts/local-sdk87cu1-gates-received-1/upstream/OcctSharp/artifacts/batch-cu/source-qualification-managed/Debug/OcctSharp.Geometry.dll",
+      "sha256": "B3EEFD778EFC4B77ECFA45C09D8DECBA29CB5EA682856198D31398B98F031E0B"
+    },
+    {
+      "path": "artifacts/local-sdk87cu1-gates-received-1/upstream/OcctSharp/artifacts/batch-cu/source-qualification-managed/Debug/OcctSharp.Geometry.pdb",
+      "sha256": "56F56449A2D74ECBB879767AC9E0CF2C88A923AA6E6BE40CDAB39919FECC2574"
+    },
+    {
+      "path": "artifacts/local-sdk87cu1-gates-received-1/upstream/OcctSharp/artifacts/batch-cu/source-qualification-managed/Debug/OcctSharp.IVtk.dll",
+      "sha256": "7A6C363D00CD320C84C88713FBBE67A7AF0A99335E90F9E7F4556F6F1BC7AA95"
+    },
+    {
+      "path": "artifacts/local-sdk87cu1-gates-received-1/upstream/OcctSharp/artifacts/batch-cu/source-qualification-managed/Debug/OcctSharp.IVtk.pdb",
+      "sha256": "37D02A61BD85EE4F3D0C32913262BCBBA1B7F265641E6CFD89BECB72B3518E6A"
+    },
+    {
+      "path": "artifacts/local-sdk87cu1-gates-received-1/upstream/OcctSharp/artifacts/batch-cu/source-qualification-managed/Debug/OcctSharp.Mesh.dll",
+      "sha256": "DE3D5AD0E185B94574ADCE2715038E6B47499C7B82AD4B1B15CDC5ADDC01ECC2"
+    },
+    {
+      "path": "artifacts/local-sdk87cu1-gates-received-1/upstream/OcctSharp/artifacts/batch-cu/source-qualification-managed/Debug/OcctSharp.Mesh.pdb",
+      "sha256": "4FCBA5CAEB053258F65B3FE76E181131FE3E7F880F23C334C42AECC1D014DE42"
+    },
+    {
+      "path": "artifacts/local-sdk87cu1-gates-received-1/upstream/OcctSharp/artifacts/batch-cu/source-qualification-managed/Debug/OcctSharp.MeshData.dll",
+      "sha256": "08E645C54671A189E1C23E822E0FA255294567E592121F8AF30ECD72F0AC6272"
+    },
+    {
+      "path": "artifacts/local-sdk87cu1-gates-received-1/upstream/OcctSharp/artifacts/batch-cu/source-qualification-managed/Debug/OcctSharp.MeshData.pdb",
+      "sha256": "1CEA7C4892D23E22BABD339E7A8C7BA5B443A36B58DE971DBF4418736BA98FD1"
+    },
+    {
+      "path": "artifacts/local-sdk87cu1-gates-received-1/upstream/OcctSharp/artifacts/batch-cu/source-qualification-managed/Debug/OcctSharp.Modeling.dll",
+      "sha256": "A629A03A38967D1085C42AE780732EC46316889EBA1332FC902720F1866B2F1C"
+    },
+    {
+      "path": "artifacts/local-sdk87cu1-gates-received-1/upstream/OcctSharp/artifacts/batch-cu/source-qualification-managed/Debug/OcctSharp.Modeling.pdb",
+      "sha256": "681BEFEB3F22BAA6CD5D3A26E4BA1B19F786C2D024E88584B3AF0C33A3F2DAB6"
+    },
+    {
+      "path": "artifacts/local-sdk87cu1-gates-received-1/upstream/OcctSharp/artifacts/batch-cu/source-qualification-managed/Debug/OcctSharp.Native.win-x64.dll",
+      "sha256": "50D2E0512F337868172BB7FF31488B1F25E773748D0592490FB5E69EC5424B6C"
+    },
+    {
+      "path": "artifacts/local-sdk87cu1-gates-received-1/upstream/OcctSharp/artifacts/batch-cu/source-qualification-managed/Debug/OcctSharp.Native.win-x64.pdb",
+      "sha256": "8A8C063FB997FC7E0849DCB54A9FA63DE65075A852B139215A27014734B40CAE"
+    },
+    {
+      "path": "artifacts/local-sdk87cu1-gates-received-1/upstream/OcctSharp/artifacts/batch-cu/source-qualification-managed/Debug/OcctSharp.Runtime.Tests.deps.json",
+      "sha256": "B2DB19EDDE7863FD3C8CF1E4C8D3443DA106E41313884D1CD5B889E93702ABBF"
+    },
+    {
+      "path": "artifacts/local-sdk87cu1-gates-received-1/upstream/OcctSharp/artifacts/batch-cu/source-qualification-managed/Debug/OcctSharp.Runtime.Tests.dll",
+      "sha256": "3BCFFAC2186824FB728E02E8CA865B97CB37057A5FD41A0D81A3E409BF3EEC3A"
+    },
+    {
+      "path": "artifacts/local-sdk87cu1-gates-received-1/upstream/OcctSharp/artifacts/batch-cu/source-qualification-managed/Debug/OcctSharp.Runtime.Tests.pdb",
+      "sha256": "7A1C3C43F8C50594BF153088AAE3029523F5E5E44E377B82226E8DF11423B702"
+    },
+    {
+      "path": "artifacts/local-sdk87cu1-gates-received-1/upstream/OcctSharp/artifacts/batch-cu/source-qualification-managed/Debug/OcctSharp.Runtime.Tests.runtimeconfig.json",
+      "sha256": "F0C3AEB0DE8768C419A86C1DC92E79D302CE70A018D1A86DE3EFB13BD0F00A4C"
+    },
+    {
+      "path": "artifacts/local-sdk87cu1-gates-received-1/upstream/OcctSharp/artifacts/batch-cu/source-qualification-managed/Debug/OcctSharp.Runtime.dll",
+      "sha256": "04A04FD4ABCCC1FA6AC17C986CA39C71CE8904635C08C9AD596755AD1251721C"
+    },
+    {
+      "path": "artifacts/local-sdk87cu1-gates-received-1/upstream/OcctSharp/artifacts/batch-cu/source-qualification-managed/Debug/OcctSharp.Runtime.pdb",
+      "sha256": "54C42FB40EB2F3CEED8204B83E8A25358DCF23475C77786C270C826A5E3742F9"
+    },
+    {
+      "path": "artifacts/local-sdk87cu1-gates-received-1/upstream/OcctSharp/artifacts/batch-cu/source-qualification-managed/Debug/OcctSharp.Visualization.dll",
+      "sha256": "B1FF642D26808BCFFE81F5417621A04335B613A1A51002C5F40532F6FB312BF0"
+    },
+    {
+      "path": "artifacts/local-sdk87cu1-gates-received-1/upstream/OcctSharp/artifacts/batch-cu/source-qualification-managed/Debug/OcctSharp.Visualization.pdb",
+      "sha256": "AA5E3D5525CD41B9A0C07F31AADFCE948EA3A0C0A30140116C6B8590B2512520"
+    },
+    {
+      "path": "artifacts/local-sdk87cu1-gates-received-1/upstream/OcctSharp/artifacts/batch-cu/source-qualification-managed/Debug/OcctSharp.Xde.dll",
+      "sha256": "F881773BAB5C452FAA09F14E34F185EA6F0DAA0B7CDC88BA628968324F1D2400"
+    },
+    {
+      "path": "artifacts/local-sdk87cu1-gates-received-1/upstream/OcctSharp/artifacts/batch-cu/source-qualification-managed/Debug/OcctSharp.Xde.pdb",
+      "sha256": "C3EFF4D440F9E329989BB797EFC2C16F7114C73E5A6A5BDA337AD7A6FDC4DCED"
+    },
+    {
+      "path": "artifacts/local-sdk87cu1-gates-received-1/upstream/OcctSharp/artifacts/batch-cu/source-qualification-managed/Debug/OcctSharp.dll",
+      "sha256": "548ADAADA590D58629B7BF2342108FBEA44DADAB6D23B0A6865E72EE9BC7E2E7"
+    },
+    {
+      "path": "artifacts/local-sdk87cu1-gates-received-1/upstream/OcctSharp/artifacts/batch-cu/source-qualification-managed/Debug/OcctSharp.pdb",
+      "sha256": "0491B936CD1439AAD672D93BC18105E39DDE3223D8D4A0671788F7DBC2A8688E"
+    },
+    {
+      "path": "artifacts/local-sdk87cu1-gates-received-1/upstream/OcctSharp/artifacts/batch-cu/source-qualification-managed/Debug/at-iges-headers.json",
+      "sha256": "82E6CF781995BCD3B99DFA19D79D44979AEADDF0F6A4DEEC4635DB4655F5B171"
+    },
+    {
+      "path": "artifacts/local-sdk87cu1-gates-received-1/upstream/OcctSharp/artifacts/batch-cu/source-qualification-managed/Debug/testhost.dll",
+      "sha256": "F9F95F20F7A99215B50CFD511085B31549B26F87AFAEB02C0A3C21F6875817E8"
+    },
+    {
+      "path": "artifacts/local-sdk87cu1-gates-received-1/upstream/OcctSharp/artifacts/batch-cu/source-qualification-managed/Debug/xunit.abstractions.dll",
+      "sha256": "3166DC70323FB30CCF1CEDB0FE86F2AD122C46D254542342D90386EFC4C9285C"
+    },
+    {
+      "path": "artifacts/local-sdk87cu1-gates-received-1/upstream/OcctSharp/artifacts/batch-cu/source-qualification-managed/Debug/xunit.assert.dll",
+      "sha256": "BCD9711B22D227AC8CD4C1568E72433A0F576D2EC8AAE64AC508081892015B1D"
+    },
+    {
+      "path": "artifacts/local-sdk87cu1-gates-received-1/upstream/OcctSharp/artifacts/batch-cu/source-qualification-managed/Debug/xunit.core.dll",
+      "sha256": "2F7FEEEC8C6DEC7DF684C25FB80AADB292B963D09723460F03D53C5AD2088ACC"
+    },
+    {
+      "path": "artifacts/local-sdk87cu1-gates-received-1/upstream/OcctSharp/artifacts/batch-cu/source-qualification-managed/Debug/xunit.execution.dotnet.dll",
+      "sha256": "E70FEBE547C15F8155DB3E2D95C3BA4445A59CBC21A3E7541AB22ED49D3DCF7B"
+    },
+    {
+      "path": "artifacts/local-sdk87cu1-gates-received-1/upstream/OcctSharp/artifacts/batch-cu/source-qualification-managed/Debug/xunit.runner.visualstudio.testadapter.dll",
+      "sha256": "384ABA4BAD96399A7FD2205A5A3517B643A16F4D7E843BD0B92E1E42F81FCE2A"
+    },
+    {
+      "path": "artifacts/local-sdk87cu1-gates-received-1/upstream/OcctSharp/artifacts/batch-cu/source-qualification-managed/Release/Microsoft.TestPlatform.CommunicationUtilities.dll",
+      "sha256": "2EBA928C1770209F1FD9F515603A0B4FFBFCADF816681AB36D02B9B36417AB33"
+    },
+    {
+      "path": "artifacts/local-sdk87cu1-gates-received-1/upstream/OcctSharp/artifacts/batch-cu/source-qualification-managed/Release/Microsoft.TestPlatform.CoreUtilities.dll",
+      "sha256": "7837F9DF4B11A9844143FC9419E5752BDD50305436ADCBF84F82B8A52D5909D7"
+    },
+    {
+      "path": "artifacts/local-sdk87cu1-gates-received-1/upstream/OcctSharp/artifacts/batch-cu/source-qualification-managed/Release/Microsoft.TestPlatform.CrossPlatEngine.dll",
+      "sha256": "2F3B463A227B8F30171F8720164B3C0B90451248E0B2F3E8C3DA82C23A3FDFCD"
+    },
+    {
+      "path": "artifacts/local-sdk87cu1-gates-received-1/upstream/OcctSharp/artifacts/batch-cu/source-qualification-managed/Release/Microsoft.TestPlatform.PlatformAbstractions.dll",
+      "sha256": "668C7F0DF2C30FEAC9CEA9DCE808CCABB72FF575C1E820404124212B4EAE1773"
+    },
+    {
+      "path": "artifacts/local-sdk87cu1-gates-received-1/upstream/OcctSharp/artifacts/batch-cu/source-qualification-managed/Release/Microsoft.TestPlatform.Utilities.dll",
+      "sha256": "886EF3AB15251E57CA9C124E41DE3C43BA0520A036B876BB709ED325438501FE"
+    },
+    {
+      "path": "artifacts/local-sdk87cu1-gates-received-1/upstream/OcctSharp/artifacts/batch-cu/source-qualification-managed/Release/Microsoft.VisualStudio.CodeCoverage.Shim.dll",
+      "sha256": "E590F0095B103C635C7FD45AD5FF537DD221B0BC2DB214717940F59FAF4767F0"
+    },
+    {
+      "path": "artifacts/local-sdk87cu1-gates-received-1/upstream/OcctSharp/artifacts/batch-cu/source-qualification-managed/Release/Microsoft.VisualStudio.TestPlatform.Common.dll",
+      "sha256": "96D7B2A7E3F79133E17196FDAD189486B59852379385198B5CD857E9947164FB"
+    },
+    {
+      "path": "artifacts/local-sdk87cu1-gates-received-1/upstream/OcctSharp/artifacts/batch-cu/source-qualification-managed/Release/Microsoft.VisualStudio.TestPlatform.ObjectModel.dll",
+      "sha256": "F6D6BC01A85FD68A0599533FCC0DE7357922051BAD90012B8AD15DE31A4EF5E9"
+    },
+    {
+      "path": "artifacts/local-sdk87cu1-gates-received-1/upstream/OcctSharp/artifacts/batch-cu/source-qualification-managed/Release/Newtonsoft.Json.dll",
+      "sha256": "22C649F75FCE5BE7C7CCDA8880473B634EF69ECF33F5D1AB8AD892CAF47D5A07"
+    },
+    {
+      "path": "artifacts/local-sdk87cu1-gates-received-1/upstream/OcctSharp/artifacts/batch-cu/source-qualification-managed/Release/OcctSharp.DataExchange.dll",
+      "sha256": "1135F0257A8DBE010DDE5B2360ECAC28F5BA96C75B13D1055FD9B77DA278C2AB"
+    },
+    {
+      "path": "artifacts/local-sdk87cu1-gates-received-1/upstream/OcctSharp/artifacts/batch-cu/source-qualification-managed/Release/OcctSharp.DataExchange.pdb",
+      "sha256": "BB8D484303CF5BDD7CF07858EEBFC131708EFD6AF646FE5FB39BC45D62405D66"
+    },
+    {
+      "path": "artifacts/local-sdk87cu1-gates-received-1/upstream/OcctSharp/artifacts/batch-cu/source-qualification-managed/Release/OcctSharp.Documents.dll",
+      "sha256": "D8A6312525A0F9BE5BCFEBB2C282D202513C5E31D581C87C87AA632CDC23D621"
+    },
+    {
+      "path": "artifacts/local-sdk87cu1-gates-received-1/upstream/OcctSharp/artifacts/batch-cu/source-qualification-managed/Release/OcctSharp.Documents.pdb",
+      "sha256": "C397C086C2737450D5E10F5DC8A6961AEE3DF643440AC4DCC393F978DDB7D960"
+    },
+    {
+      "path": "artifacts/local-sdk87cu1-gates-received-1/upstream/OcctSharp/artifacts/batch-cu/source-qualification-managed/Release/OcctSharp.Draw.dll",
+      "sha256": "B94DEEC047D5363F0A087819D60300D60A7AF7C1DBFB769ED49BD46EA909C77B"
+    },
+    {
+      "path": "artifacts/local-sdk87cu1-gates-received-1/upstream/OcctSharp/artifacts/batch-cu/source-qualification-managed/Release/OcctSharp.Draw.pdb",
+      "sha256": "1C70974AEAE5679D47E8B52B534F40D65459DCD62E5AB3FF1AD8804AB861FCF9"
+    },
+    {
+      "path": "artifacts/local-sdk87cu1-gates-received-1/upstream/OcctSharp/artifacts/batch-cu/source-qualification-managed/Release/OcctSharp.Foundation.dll",
+      "sha256": "F42A5C0E1BB4BFDE8803C11016CCDBEDDF9247D7810B1F44939B9E3AA329F2E6"
+    },
+    {
+      "path": "artifacts/local-sdk87cu1-gates-received-1/upstream/OcctSharp/artifacts/batch-cu/source-qualification-managed/Release/OcctSharp.Foundation.pdb",
+      "sha256": "EC4F749D2EF9178ECE65A5934DABBFC7029AD5A9ABE086508F5EADF5AC86A1EA"
+    },
+    {
+      "path": "artifacts/local-sdk87cu1-gates-received-1/upstream/OcctSharp/artifacts/batch-cu/source-qualification-managed/Release/OcctSharp.Geometry.dll",
+      "sha256": "A657AA3F11004839DD3C118502747205FD4BF41021A35428B7C8691DC4615004"
+    },
+    {
+      "path": "artifacts/local-sdk87cu1-gates-received-1/upstream/OcctSharp/artifacts/batch-cu/source-qualification-managed/Release/OcctSharp.Geometry.pdb",
+      "sha256": "65135201C158A021EBA4EFD3D849A835D0012D20765126A3382EB600C5737A0A"
+    },
+    {
+      "path": "artifacts/local-sdk87cu1-gates-received-1/upstream/OcctSharp/artifacts/batch-cu/source-qualification-managed/Release/OcctSharp.IVtk.dll",
+      "sha256": "BEEA11B8CDDD74EB087D4FE063DCA0D899DEB057639099831E9866364F196F3F"
+    },
+    {
+      "path": "artifacts/local-sdk87cu1-gates-received-1/upstream/OcctSharp/artifacts/batch-cu/source-qualification-managed/Release/OcctSharp.IVtk.pdb",
+      "sha256": "A24AA1956A2B88CAF647523F42F01BB8ED6F7742026D892B16FB81663572B680"
+    },
+    {
+      "path": "artifacts/local-sdk87cu1-gates-received-1/upstream/OcctSharp/artifacts/batch-cu/source-qualification-managed/Release/OcctSharp.Mesh.dll",
+      "sha256": "03E815B0C6814D7DF8F3177BE27DE8C3AFB2D67153024D230F0A6D84490C294A"
+    },
+    {
+      "path": "artifacts/local-sdk87cu1-gates-received-1/upstream/OcctSharp/artifacts/batch-cu/source-qualification-managed/Release/OcctSharp.Mesh.pdb",
+      "sha256": "1E7F08BF9C0833491BD575ACE9CC9AE23BD9E941C3DB356BE0824FC3A83E9C57"
+    },
+    {
+      "path": "artifacts/local-sdk87cu1-gates-received-1/upstream/OcctSharp/artifacts/batch-cu/source-qualification-managed/Release/OcctSharp.MeshData.dll",
+      "sha256": "2E66294F32CF6B8203FAF61F1E65BCBBB2CF79212823A0203E1B6CE82FF60AD3"
+    },
+    {
+      "path": "artifacts/local-sdk87cu1-gates-received-1/upstream/OcctSharp/artifacts/batch-cu/source-qualification-managed/Release/OcctSharp.MeshData.pdb",
+      "sha256": "101AAB347075E1D8C91E121F226B491B0FCC79250D560226904B9A5E08E7A091"
+    },
+    {
+      "path": "artifacts/local-sdk87cu1-gates-received-1/upstream/OcctSharp/artifacts/batch-cu/source-qualification-managed/Release/OcctSharp.Modeling.dll",
+      "sha256": "6995E991E5697A641DBCB18EF4EC9E697C39C264A7BE3CC265BCF57FF3F754DF"
+    },
+    {
+      "path": "artifacts/local-sdk87cu1-gates-received-1/upstream/OcctSharp/artifacts/batch-cu/source-qualification-managed/Release/OcctSharp.Modeling.pdb",
+      "sha256": "874D157D95CA289E7F7E5AB098092D9770DD16649D007398B09E8A6DF60CF935"
+    },
+    {
+      "path": "artifacts/local-sdk87cu1-gates-received-1/upstream/OcctSharp/artifacts/batch-cu/source-qualification-managed/Release/OcctSharp.Native.win-x64.dll",
+      "sha256": "2AD853F1154F848987EEEEC831989680C1BD55170F2528056349402B28ACE00F"
+    },
+    {
+      "path": "artifacts/local-sdk87cu1-gates-received-1/upstream/OcctSharp/artifacts/batch-cu/source-qualification-managed/Release/OcctSharp.Native.win-x64.pdb",
+      "sha256": "A9E18B8BB707BD04B0F088439EC1A1C30DCB525BBFE0ACFAD39DEA5D29C609E5"
+    },
+    {
+      "path": "artifacts/local-sdk87cu1-gates-received-1/upstream/OcctSharp/artifacts/batch-cu/source-qualification-managed/Release/OcctSharp.Runtime.Tests.deps.json",
+      "sha256": "B2DB19EDDE7863FD3C8CF1E4C8D3443DA106E41313884D1CD5B889E93702ABBF"
+    },
+    {
+      "path": "artifacts/local-sdk87cu1-gates-received-1/upstream/OcctSharp/artifacts/batch-cu/source-qualification-managed/Release/OcctSharp.Runtime.Tests.dll",
+      "sha256": "EB07457FC30E42DA004D2041E791C022CD1C718FAAA249930B5201E90124D163"
+    },
+    {
+      "path": "artifacts/local-sdk87cu1-gates-received-1/upstream/OcctSharp/artifacts/batch-cu/source-qualification-managed/Release/OcctSharp.Runtime.Tests.pdb",
+      "sha256": "3CD80FABD5C0BA3F504E336D62A0902C7BC0DE09DDDFA5D70CD872E552929081"
+    },
+    {
+      "path": "artifacts/local-sdk87cu1-gates-received-1/upstream/OcctSharp/artifacts/batch-cu/source-qualification-managed/Release/OcctSharp.Runtime.Tests.runtimeconfig.json",
+      "sha256": "A217D17BE0661ABF2717A26937C6E379C33542CB6F292FD3FC5A2D5113A9D6DC"
+    },
+    {
+      "path": "artifacts/local-sdk87cu1-gates-received-1/upstream/OcctSharp/artifacts/batch-cu/source-qualification-managed/Release/OcctSharp.Runtime.dll",
+      "sha256": "380F18104786ACFE827A0A8EEEEE42F4FB0349E87B7CC65BE01A0106FFF5F80E"
+    },
+    {
+      "path": "artifacts/local-sdk87cu1-gates-received-1/upstream/OcctSharp/artifacts/batch-cu/source-qualification-managed/Release/OcctSharp.Runtime.pdb",
+      "sha256": "5B656671D1BA8141AD4AC1B41B6682005D965859B571B4DF572ED429D7281551"
+    },
+    {
+      "path": "artifacts/local-sdk87cu1-gates-received-1/upstream/OcctSharp/artifacts/batch-cu/source-qualification-managed/Release/OcctSharp.Visualization.dll",
+      "sha256": "2E2B62D1EBDD4E31EE4669082BB7533467E81F1BCEC2DB94591EC9BC5962AF74"
+    },
+    {
+      "path": "artifacts/local-sdk87cu1-gates-received-1/upstream/OcctSharp/artifacts/batch-cu/source-qualification-managed/Release/OcctSharp.Visualization.pdb",
+      "sha256": "B28A555994464B1A972C5725FF4A2041A326BD09662901948FF43B4968255930"
+    },
+    {
+      "path": "artifacts/local-sdk87cu1-gates-received-1/upstream/OcctSharp/artifacts/batch-cu/source-qualification-managed/Release/OcctSharp.Xde.dll",
+      "sha256": "CCE8868AA86EF713AE01ABFDADDFD3E3D1D1B5EB45F8239FD902C4F59F0518A0"
+    },
+    {
+      "path": "artifacts/local-sdk87cu1-gates-received-1/upstream/OcctSharp/artifacts/batch-cu/source-qualification-managed/Release/OcctSharp.Xde.pdb",
+      "sha256": "E8F651D64CCCA5C87F0AAAB4C9F7363D9DC8047899F023B51CE7C7C6AE1A2750"
+    },
+    {
+      "path": "artifacts/local-sdk87cu1-gates-received-1/upstream/OcctSharp/artifacts/batch-cu/source-qualification-managed/Release/OcctSharp.dll",
+      "sha256": "E4E4528F07014BC772074582CC3416A9C9BCC5A75416FEE0F49460CD7BC99644"
+    },
+    {
+      "path": "artifacts/local-sdk87cu1-gates-received-1/upstream/OcctSharp/artifacts/batch-cu/source-qualification-managed/Release/OcctSharp.pdb",
+      "sha256": "85B28E14B3962A0F5239BED3904281FA63C8486F566FB74A7C45724618801B0A"
+    },
+    {
+      "path": "artifacts/local-sdk87cu1-gates-received-1/upstream/OcctSharp/artifacts/batch-cu/source-qualification-managed/Release/at-iges-headers.json",
+      "sha256": "F01A5DE42760312D0308B6B1B16EC6BC0D8E33A17108955A29AFB5CEA0ED624F"
+    },
+    {
+      "path": "artifacts/local-sdk87cu1-gates-received-1/upstream/OcctSharp/artifacts/batch-cu/source-qualification-managed/Release/testhost.dll",
+      "sha256": "F9F95F20F7A99215B50CFD511085B31549B26F87AFAEB02C0A3C21F6875817E8"
+    },
+    {
+      "path": "artifacts/local-sdk87cu1-gates-received-1/upstream/OcctSharp/artifacts/batch-cu/source-qualification-managed/Release/xunit.abstractions.dll",
+      "sha256": "3166DC70323FB30CCF1CEDB0FE86F2AD122C46D254542342D90386EFC4C9285C"
+    },
+    {
+      "path": "artifacts/local-sdk87cu1-gates-received-1/upstream/OcctSharp/artifacts/batch-cu/source-qualification-managed/Release/xunit.assert.dll",
+      "sha256": "BCD9711B22D227AC8CD4C1568E72433A0F576D2EC8AAE64AC508081892015B1D"
+    },
+    {
+      "path": "artifacts/local-sdk87cu1-gates-received-1/upstream/OcctSharp/artifacts/batch-cu/source-qualification-managed/Release/xunit.core.dll",
+      "sha256": "2F7FEEEC8C6DEC7DF684C25FB80AADB292B963D09723460F03D53C5AD2088ACC"
+    },
+    {
+      "path": "artifacts/local-sdk87cu1-gates-received-1/upstream/OcctSharp/artifacts/batch-cu/source-qualification-managed/Release/xunit.execution.dotnet.dll",
+      "sha256": "E70FEBE547C15F8155DB3E2D95C3BA4445A59CBC21A3E7541AB22ED49D3DCF7B"
+    },
+    {
+      "path": "artifacts/local-sdk87cu1-gates-received-1/upstream/OcctSharp/artifacts/batch-cu/source-qualification-managed/Release/xunit.runner.visualstudio.testadapter.dll",
+      "sha256": "384ABA4BAD96399A7FD2205A5A3517B643A16F4D7E843BD0B92E1E42F81FCE2A"
+    },
+    {
+      "path": "artifacts/local-sdk87cu1-gates-received-1/upstream/OcctSharp/artifacts/migration-plan-20261013-cr-da/cold-generation-planar/generated/manifest.json",
+      "sha256": "0045EB67F25AC71BC374A30B85E302E064CA56A6237C5B59B4E8841E8C94588D"
+    },
+    {
+      "path": "artifacts/local-sdk87cu1-gates-received-1/upstream/OcctSharp/artifacts/migration-plan-20261013-cr-da/qualification133.json",
+      "sha256": "F79322E860AC9A0F055F828584CB56DFCB4FCA85F1130EEC3A525AB5D4EBAF37"
+    },
+    {
+      "path": "artifacts/local-sdk87cu1-gates-received-1/upstream/OcctSharp/artifacts/packages/package-inputs.8.0.1-preview.85.json",
+      "sha256": "BADB62C6D5561DE7A49DCA9EE132A93AFFD88AB6B09478254CF47F31AA4BEFBC"
+    },
+    {
+      "path": "artifacts/local-sdk87cu1-gates-received-1/upstream/OcctSharp/artifacts/packages/package-inputs.8.0.1-preview.86.json",
+      "sha256": "68767DF12046AD9EC4929367AB9E7A526F1C07AFDCACAFE52850B4B539CE6964"
+    },
+    {
+      "path": "artifacts/local-sdk87cu1-gates-received-1/upstream/OcctSharp/tests/OcctSharp.Generator.Tests/TestResults/cr-da-planar-wire-generator-debug-1.trx",
+      "sha256": "D488B1D81E2EA54DA312761FFA34B911A890930BDF4519F15191F953B6CAFB68"
+    },
+    {
+      "path": "artifacts/local-sdk87cu1-gates-received-1/upstream/OcctSharp/tests/OcctSharp.Generator.Tests/TestResults/cr-da-planar-wire-generator-release-1.trx",
+      "sha256": "D885BADFCBC0A94DBB910392E5C5DAF3BC0775A7D341DE6244F3D615BB5806DF"
+    },
+    {
+      "path": "artifacts/local-sdk87cu1-gates-received-1/upstream/OcctSharp/tests/OcctSharp.Runtime.Tests/TestResults/cr-da-planar-wire-full-runtime-debug-1.trx",
+      "sha256": "2D5C011B2AAC2462044A18AA201F063B3BCB3B04024DB383937A3FA4982C2CB7"
+    },
+    {
+      "path": "artifacts/local-sdk87cu1-gates-received-1/upstream/OcctSharp/tests/OcctSharp.Runtime.Tests/TestResults/cr-da-planar-wire-full-runtime-release-1.trx",
+      "sha256": "BBB0AE0EC1A53F28559241D62F4CB7042A89C78A1D327B4F273853476D608C4D"
+    }
+  ],
+  "frozenPackageInputsMatched": 2431,
+  "frozenQualificationInputsMatched": 1841,
+  "package14MatchesPreviouslyReceivedFeed": true,
+  "actualRuntimeBoth": 2367,
+  "actualGeneratorBoth": 437,
+  "actualFreshFacade": 53,
+  "actualFreshModules": 31,
+  "actualNative62BothAndConsumersHashMatched": true,
+  "sourceDebugTbb": "tbb12_debug.dll; package consumers use Release tbb12.dll",
+  "cold418AndApiAdded338Removed0": "Upstream qualification assertions; linked receipts retained",
+  "explicitNativeHandoffReceived": true,
+  "localConsumerRuntimeStarted": false,
+  "productionApplied": false,
+  "AFComplete": false
+}

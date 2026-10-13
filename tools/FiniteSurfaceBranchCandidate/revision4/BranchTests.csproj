@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <AssemblyName>Cadoryx.Tests</AssemblyName>
+    <PlatformTarget>x64</PlatformTarget>
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+    <GenerateRuntimeConfigurationFiles>true</GenerateRuntimeConfigurationFiles>
+    <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <OcctSharpVersion>8.0.1-preview.87.cu1</OcctSharpVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="KernelBranchCandidate.csproj" />
+    <PackageReference Include="OcctSharp" Version="[$(OcctSharpVersion)]" />
+    <PackageReference Include="OcctSharp.Native.win-x64" Version="[$(OcctSharpVersion)]" />
+    <Reference Include="$(CandidateTests)/*.dll"
+               Exclude="$(CandidateTests)/Cadoryx.Tests.dll;$(CandidateTests)/Cadoryx.Kernel.Occt.dll;$(CandidateTests)/OcctSharp*.dll"><Private>true</Private></Reference>
+    <Compile Include="$(CandidateSource)/Cadoryx.Tests/**/*.cs"
+             Exclude="$(CandidateSource)/Cadoryx.Tests/bin/**/*.cs;$(CandidateSource)/Cadoryx.Tests/obj/**/*.cs" />
+    <Compile Include="../FiniteSurfaceAnalyticBranchTests.cs" />
+    <Content Include="$(CandidateTests)/testhost.*"><Link>%(Filename)%(Extension)</Link><CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory></Content>
+    <Content Include="$(CandidateTests)/Fixtures/**/*"><Link>Fixtures/%(RecursiveDir)%(Filename)%(Extension)</Link><CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory></Content>
+  </ItemGroup>
+</Project>

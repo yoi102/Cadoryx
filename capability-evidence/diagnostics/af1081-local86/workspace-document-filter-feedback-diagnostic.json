@@ -1,0 +1,302 @@
+{
+  "recordedAt": "2026-10-13T19:09:37.342668+00:00",
+  "state": "F5_HISTORICAL_PROVIDER_DOCUMENT_FILTER_FEEDBACK_GAP_OBSERVED_NOT_REMEDIATED",
+  "historicalProviderAudit": {
+    "path": "capability-evidence/diagnostics/af1081-local86/provider-verification.json",
+    "sha256": "6A4AA0BFDD251BF10B461C3DF2526B08C51F3E7B149150948233D2C47D603A51"
+  },
+  "calls": {
+    "path": "artifacts/af1081-local86-1/lmstudio-workspace-1/tool-calls.json",
+    "sha256": "6B74EA1E5341DFE11C2133CE65D1E89296E080EEFB61B274EAAC71F583E8FD2E"
+  },
+  "currentInspectionSource": {
+    "path": "Cadoryx.ViewModels/Toolboxes/CadAgentDocumentTools.cs",
+    "sha256": "C1813F3C0136BA32F2741E00A5047C0C1BD93AA75914E1BC3FA84A57E7360816"
+  },
+  "evidence": [
+    {
+      "ordinal": 16,
+      "tool": "cad_status",
+      "arguments": {},
+      "receipt": {
+        "active": true,
+        "name": "Provider First",
+        "documentId": "38ce2f16-ec6f-4c14-a7c6-86c0decfcd55",
+        "stateId": "100e3cf5-fb75-4781-b28d-364cc236a009",
+        "bodies": 1,
+        "parts": 1,
+        "features": 1,
+        "sketches": 0,
+        "drawings": 0,
+        "selected": 0
+      }
+    },
+    {
+      "ordinal": 17,
+      "tool": "cad_inspect",
+      "arguments": {
+        "area": "parts"
+      },
+      "receipt": {
+        "success": true,
+        "documentId": "38ce2f16-ec6f-4c14-a7c6-86c0decfcd55",
+        "stateId": "100e3cf5-fb75-4781-b28d-364cc236a009",
+        "area": "parts",
+        "total": 1,
+        "offset": 0,
+        "limit": 50,
+        "hasMore": false,
+        "items": [
+          {
+            "id": "383167a7-cac6-48ec-9098-88f1241c8431",
+            "name": "Part 1",
+            "bodies": 1,
+            "features": 1,
+            "external": false
+          }
+        ]
+      }
+    },
+    {
+      "ordinal": 18,
+      "tool": "cad_inspect",
+      "arguments": {
+        "area": "bodies"
+      },
+      "receipt": {
+        "success": true,
+        "documentId": "38ce2f16-ec6f-4c14-a7c6-86c0decfcd55",
+        "stateId": "100e3cf5-fb75-4781-b28d-364cc236a009",
+        "area": "bodies",
+        "total": 1,
+        "offset": 0,
+        "limit": 50,
+        "hasMore": false,
+        "items": [
+          {
+            "id": "318c9ef8-4a50-4613-a687-415d6bc00a91",
+            "name": "ProviderBox",
+            "partId": "383167a7-cac6-48ec-9098-88f1241c8431",
+            "featureId": "c0a57fb5-41a7-48b8-ac5d-0605835f0d8f",
+            "kind": "Solid",
+            "revision": "f92bdf5a-399c-4065-a538-ef9fa9ff0a3f",
+            "volumeMm3": 23.999999999999996,
+            "bounds": {
+              "min": {
+                "x": -1e-07,
+                "y": -1e-07,
+                "z": -1e-07
+              },
+              "max": {
+                "x": 2.0000001,
+                "y": 3.0000001,
+                "z": 4.0000001
+              }
+            },
+            "layerId": "af858928-0392-4356-b875-34002e20d3c6",
+            "materialId": null,
+            "isVisible": true
+          }
+        ]
+      }
+    },
+    {
+      "ordinal": 19,
+      "tool": "cad_inspect",
+      "arguments": {
+        "area": "features"
+      },
+      "receipt": {
+        "success": true,
+        "documentId": "38ce2f16-ec6f-4c14-a7c6-86c0decfcd55",
+        "stateId": "100e3cf5-fb75-4781-b28d-364cc236a009",
+        "area": "features",
+        "total": 1,
+        "offset": 0,
+        "limit": 50,
+        "hasMore": false,
+        "items": [
+          {
+            "id": "c0a57fb5-41a7-48b8-ac5d-0605835f0d8f",
+            "name": "ProviderBox",
+            "partId": "383167a7-cac6-48ec-9098-88f1241c8431",
+            "recipe": "BoxRecipe",
+            "outputBodyId": "318c9ef8-4a50-4613-a687-415d6bc00a91",
+            "inputs": [],
+            "isStale": false,
+            "isSuppressed": false
+          }
+        ]
+      }
+    },
+    {
+      "ordinal": 23,
+      "tool": "cad_status",
+      "arguments": {},
+      "receipt": {
+        "active": true,
+        "name": "Provider First",
+        "documentId": "38ce2f16-ec6f-4c14-a7c6-86c0decfcd55",
+        "stateId": "100e3cf5-fb75-4781-b28d-364cc236a009",
+        "bodies": 1,
+        "parts": 1,
+        "features": 1,
+        "sketches": 0,
+        "drawings": 0,
+        "selected": 0
+      }
+    },
+    {
+      "ordinal": 24,
+      "tool": "cad_inspect",
+      "arguments": {
+        "area": "sketches",
+        "id": "38ce2f16-ec6f-4c14-a7c6-86c0decfcd55",
+        "limit": 10
+      },
+      "receipt": {
+        "success": true,
+        "documentId": "38ce2f16-ec6f-4c14-a7c6-86c0decfcd55",
+        "stateId": "100e3cf5-fb75-4781-b28d-364cc236a009",
+        "area": "sketches",
+        "total": 0,
+        "offset": 0,
+        "limit": 10,
+        "hasMore": false,
+        "items": []
+      }
+    },
+    {
+      "ordinal": 27,
+      "tool": "cad_inspect",
+      "arguments": {
+        "area": "sketches",
+        "id": "38ce2f16-ec6f-4c14-a7c6-86c0decfcd55",
+        "limit": 50
+      },
+      "receipt": {
+        "success": true,
+        "documentId": "38ce2f16-ec6f-4c14-a7c6-86c0decfcd55",
+        "stateId": "100e3cf5-fb75-4781-b28d-364cc236a009",
+        "area": "sketches",
+        "total": 0,
+        "offset": 0,
+        "limit": 50,
+        "hasMore": false,
+        "items": []
+      }
+    },
+    {
+      "ordinal": 28,
+      "tool": "cad_inspect",
+      "arguments": {
+        "area": "bodies",
+        "id": "38ce2f16-ec6f-4c14-a7c6-86c0decfcd55",
+        "limit": 10
+      },
+      "receipt": {
+        "success": true,
+        "documentId": "38ce2f16-ec6f-4c14-a7c6-86c0decfcd55",
+        "stateId": "100e3cf5-fb75-4781-b28d-364cc236a009",
+        "area": "bodies",
+        "total": 0,
+        "offset": 0,
+        "limit": 10,
+        "hasMore": false,
+        "items": []
+      }
+    },
+    {
+      "ordinal": 29,
+      "tool": "cad_inspect",
+      "arguments": {
+        "area": "parts",
+        "id": "38ce2f16-ec6f-4c14-a7c6-86c0decfcd55",
+        "limit": 10
+      },
+      "receipt": {
+        "success": true,
+        "documentId": "38ce2f16-ec6f-4c14-a7c6-86c0decfcd55",
+        "stateId": "100e3cf5-fb75-4781-b28d-364cc236a009",
+        "area": "parts",
+        "total": 0,
+        "offset": 0,
+        "limit": 10,
+        "hasMore": false,
+        "items": []
+      }
+    },
+    {
+      "ordinal": 30,
+      "tool": "cad_inspect",
+      "arguments": {
+        "area": "drawings",
+        "id": "38ce2f16-ec6f-4c14-a7c6-86c0decfcd55",
+        "limit": 10
+      },
+      "receipt": {
+        "success": false,
+        "message": "id selects a drawing sheet, not documentId. Query cad_inspect with area=drawings and no id; copy items[].id as sheetId."
+      }
+    },
+    {
+      "ordinal": 33,
+      "tool": "cad_inspect",
+      "arguments": {
+        "area": "drawings",
+        "id": "38ce2f16-ec6f-4c14-a7c6-86c0decfcd55",
+        "limit": 10
+      },
+      "receipt": {
+        "success": false,
+        "message": "id selects a drawing sheet, not documentId. Query cad_inspect with area=drawings and no id; copy items[].id as sheetId."
+      }
+    },
+    {
+      "ordinal": 34,
+      "tool": "cad_workspace",
+      "arguments": {
+        "action": "open",
+        "expected": {
+          "workspaceStateId": "73d14fe5-dfd2-4584-abc9-b74a576f8c56",
+          "activeSessionId": "75e2f513-396a-4623-97ba-a9612c52761f",
+          "documentId": "38ce2f16-ec6f-4c14-a7c6-86c0decfcd55",
+          "stateId": "100e3cf5-fb75-4781-b28d-364cc236a009"
+        },
+        "path": "C:/Users/yoiri/source/repos/Cadoryx/artifacts/af1081-local86-1/lmstudio-workspace-1/workspace-provider-saved.cadoryx"
+      },
+      "receipt": {
+        "success": true,
+        "changed": false,
+        "workspaceChanged": false,
+        "opened": false,
+        "active": {
+          "sessionId": "75e2f513-396a-4623-97ba-a9612c52761f",
+          "documentId": "38ce2f16-ec6f-4c14-a7c6-86c0decfcd55",
+          "stateId": "100e3cf5-fb75-4781-b28d-364cc236a009",
+          "name": "Provider First",
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1081-local86-1\\lmstudio-workspace-1\\workspace-provider-saved.cadoryx",
+          "dirty": false,
+          "readOnly": false,
+          "closing": false
+        },
+        "expected": {
+          "workspaceStateId": "73d14fe5-dfd2-4584-abc9-b74a576f8c56",
+          "activeSessionId": "75e2f513-396a-4623-97ba-a9612c52761f",
+          "documentId": "38ce2f16-ec6f-4c14-a7c6-86c0decfcd55",
+          "stateId": "100e3cf5-fb75-4781-b28d-364cc236a009"
+        },
+        "diagnostics": [],
+        "diagnosticCount": 0,
+        "diagnosticsTruncated": false
+      }
+    }
+  ],
+  "conclusion": "Unfiltered bodies/parts each have one item in the same document/state; documentId used as the optional object id filter silently returns successful empty pages. Drawing inspection already rejects this mistaken role.",
+  "soleRootCauseProven": false,
+  "modelRetestDone": false,
+  "productModified": false,
+  "nextImplementation": "Reject only documentId-valued object filters when no real typed object shares that GUID; give a read-only unfiltered query suggestion, preserve ordinary missing-object empty pages and valid typed GUID collisions. Do not automatically execute the suggested query or select an object.",
+  "original16ToolRounds8192ContextAndFourMinuteBudgetChanged": false,
+  "AFComplete": false
+}

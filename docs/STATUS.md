@@ -1,5 +1,13 @@
 # 当前状态
 
+2026-10-14，status257：[D7第四版](D7_ANALYTIC_NEAR_FAR_BRANCHES.md)原99加新144两配置各243/243通过、零失败/跳过，实际native62/载荷与原测试名称已独立审计；原36柱面孔岛偏差在原1e-7预算下消除，第三版失败保持。完整起始材料使用生成PlanarWireFaces、原SectionWire/明确孔逆向和递归岛；有限半域私有深复制及原盖面/边界/身份守卫保持。当前1082+D7/本地87.cu1整应用1198输入/50项目恢复及锁通过，非OCCT依赖保持，两配置完整solution build0、各实际发现6991，WPF/Tests SDK13/native62及provider共享16一致；Release完整6991已启动、Debug待串行，尚无全量终态。生产1082/公开85未切换、D7未合入。
+
+[工作区对象过滤诊断](../capability-evidence/diagnostics/af1081-local86/workspace-document-filter-feedback-diagnostic.json)确认原同文档/状态的bodies/parts无过滤各1，误将documentId填id后成功空页；F5反馈缺口尚未修正，未证明为原模型失败唯一原因。原24STEP精确延期且仍记失败，其余A–F、窗口/恢复/材质/性能/实际提供方保持；正式已验子批仍A4/B17/C5/D5/E4/F5g，G/清理暂缓。SDK后续149开发IDs不混入冻结133/87.cu1；根当前持有全量原生时段，结束后实际空闲边界优先交回新16资格。以下status256及更早为历史，以实际终态优先。
+
+2026-10-14，status256：A–F继续，原24严格STEP按精确名单延期，仍记失败；G及清理暂缓。已独立接收本地`8.0.1-preview.87.cu1`的14包与2431打包冻结来源、1841资格来源；两配置上游Runtime2367/Generator437、两个干净NuGet消费者53/31的完整TRX名称及各实际native62路径/哈希核对通过，记录见[交付接收](../artifacts/local-sdk87cu1-gates-received-1/receipt.json)。实际源码Debug使用`tbb12_debug.dll`，包消费者使用Release的`tbb12.dll`；API/冷生成的上游声明和收据保留，未据此宣称A–F或SDK大批完成。
+
+D7第四版现在直接接入生成器`PlanarWireFaces.Create`，孔逆向原线框、递归岛和原SectionWire完整范围保持。[候选冻结](../artifacts/d7-analytic-branch-draft-4/freeze.json)已核对两配置build0、精确SDK14/managed13/native62、原6974完整发现和原Release应用伴随程序集；不是整应用Debug验收。首版class-library输出漏复制NuGet运行时模块，补`CopyLocalLockFileAssemblies`后重新输出到新编号，两轮日志保持；未运行缺失载荷或放宽测试。SDK已明确交回且根再次实查空闲，原99加新144的两配置243正在串行验收，尚无完整终态。当前1082加D7整应用1198输入/50项目隔离候选已经准备，须等两配置243全部通过才恢复、构建和发现预计6991；尚未运行该完整回归。生产1082/公开85保持。以下status255及更早为历史检查点，最新以实际终态优先。
+
 2026-10-14，status255：[D7第三版编译与接口缺口](../capability-evidence/diagnostics/d7-analytic-branch/revision3-build-verification.json)已独立核对两配置build0及原1193来源保持；边界覆盖改为在深复制上逐一扣除原允许面域，保留完整原始盖面/起始域、Near/Far、精确有效性/自交及全部公差。[两配置完整原99加新144](../capability-evidence/diagnostics/d7-analytic-branch/revision3-verification.json)各实际207通过/36失败/零跳过，原99与此前36个Far覆盖失败全部通过，实际native62/载荷准确；剩36全部是柱面polygon hole/island单位棱柱面积与体积差4e-7，仍为失败。Release/Debug同名36失败、实际载荷/native62及完整终态已独立核对，不把D7候选合入或计D完成。生产保持1082/公开85，当前预计6847全量、模型/窗口/性能仍待验；原24STEP仅精确延期，其他失败不豁免。
 
 完整起始材料helper已编译：使用原SectionWire覆盖表达式/freeform/mixed/spline和递归岛，明确孔角色，通过现有生成Shape.Reversed()逆向原生线框，不重建曲线或使用3D孔切刀；目前未接入评估。冻结86最小消费者对完整wire-set面入口实际CS1501，SDK确认公开入口缺失，已标准生成PlanarWireFaces.Create并两配置托管build0/Generator437；新增1托管支持产物、旧417原生生成产物/IDs保持，runtime与新包尚未交付，不当作新API已验。SDK此前133增量完整源码资格已经明确交回原生时段，根核对交还/资格哈希及实际空闲后启动第三版；其上游436/2361两配置和实际native62属于上游源码资格报告，未独立接收为新包。第三版两配置已结束、协调/场景进程均已终止，根再次实查消费者空闲并保存[新SDK原生时段交还](../artifacts/d7-analytic-branch-draft-3/sdk-native-grant.json)，现已明确交回约30分钟，优先完整面入口及精确本地NuGet资格；冻结86不变，根随后接包并验证原完整144/99及当前产品回归。以下status254及更早保留历史。

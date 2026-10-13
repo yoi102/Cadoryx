@@ -1,0 +1,76 @@
+{
+  "recordedAt": "2026-10-13T19:12:06.517466+00:00",
+  "state": "D7_REVISION4_COMPLETE_NATIVE_WIRE_MATERIAL_BOTH_ACTUAL243_INDEPENDENTLY_AUDITED",
+  "freeze": {
+    "path": "artifacts/d7-analytic-branch-draft-4/freeze.json",
+    "sha256": "9A6EDCEB734DF35151C64D9A2D9E21E50071E81E29CC8E6311F7E5E4C630B782"
+  },
+  "sdkReceivedGates": {
+    "path": "artifacts/local-sdk87cu1-gates-received-1/receipt.json",
+    "sha256": "13F424D012C28B8DF7BBA7F560868B6EC2C39520CB2F5D46763ACA99327CBA74"
+  },
+  "suite": {
+    "path": "artifacts/d7-analytic-branch-draft-4/focused-both-exit.json",
+    "sha256": "79C634FFB293C5A1F10607BDF424CAB569BA602C4BF41CFF01F7C9042E74CD06"
+  },
+  "unchangedBaseline": {
+    "path": "artifacts/d7-analytic-branch-draft-1/focused-verification.json",
+    "sha256": "7A9FC5537522B11AD94DE82F20BEA3E1BFD01C19572BA1656C214EED0594140A"
+  },
+  "configurations": [
+    {
+      "configuration": "Release",
+      "total": 243,
+      "passed": 243,
+      "failed": 0,
+      "skipped": 0,
+      "failures": [],
+      "old99Failures": [],
+      "actualNative62Matched": true,
+      "trx": {
+        "path": "artifacts/d7-analytic-branch-draft-4/candidate-release-runtime-1/runtime.trx",
+        "sha256": "3E42B25649EAA4DB5D06EAB18F64BF19841FDF5879E045EEFC80FBE58EAC8D09"
+      },
+      "binding": {
+        "path": "artifacts/d7-analytic-branch-draft-4/candidate-release-runtime-1/loaded-native.json",
+        "sha256": "CEA76D3755964F4DA5A0F5ED66CFAF9037591FB912927750F1146884F6C4E31D"
+      },
+      "terminal": {
+        "path": "artifacts/d7-analytic-branch-draft-4/candidate-release-runtime-1/exit.json",
+        "sha256": "FD995C8AAF61F75697838D023DF811187D30B80985FB618819538F266B989EBF"
+      }
+    },
+    {
+      "configuration": "Debug",
+      "total": 243,
+      "passed": 243,
+      "failed": 0,
+      "skipped": 0,
+      "failures": [],
+      "old99Failures": [],
+      "actualNative62Matched": true,
+      "trx": {
+        "path": "artifacts/d7-analytic-branch-draft-4/candidate-debug-runtime-1/runtime.trx",
+        "sha256": "D4B4812973246F9F9F39087E043F44B597AE3D70BD6EF810938CDFBBD63F235D"
+      },
+      "binding": {
+        "path": "artifacts/d7-analytic-branch-draft-4/candidate-debug-runtime-1/loaded-native.json",
+        "sha256": "2E9B4F7DAE689164E5FD6F0B7F9E734E725D0ABF7A26CDB445C3CF66A9086ACE"
+      },
+      "terminal": {
+        "path": "artifacts/d7-analytic-branch-draft-4/candidate-debug-runtime-1/exit.json",
+        "sha256": "DFF13437D8AF6BC02B17C4A26B8CE1E71BB489BDE40B3F82CC6C2886AF7045F4"
+      }
+    }
+  ],
+  "candidateFocusedPassed": true,
+  "whole6974RegressionExecuted": false,
+  "geometryBudgetsChanged": false,
+  "originalRaw90FailuresChanged": false,
+  "originalStrictSTEP24Changed": false,
+  "completeStartHelperWired": true,
+  "newPlanarWireFaceAPIReceived": true,
+  "productionApplied": false,
+  "actualWindowExecuted": false,
+  "AFComplete": false
+}

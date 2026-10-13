@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <AssemblyName>Cadoryx.Kernel.Occt</AssemblyName>
+    <PlatformTarget>x64</PlatformTarget>
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <OcctSharpVersion>8.0.1-preview.87.cu1</OcctSharpVersion>
+    <InformationalVersion>1.0.0-d7-candidate.4</InformationalVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <AssemblyMetadata Include="OcctSharpPackageVersion" Value="$(OcctSharpVersion)" />
+    <InternalsVisibleTo Include="Cadoryx.Tests" />
+    <PackageReference Include="OcctSharp" Version="[$(OcctSharpVersion)]" />
+    <Reference Include="$(CandidatePayload)/Cadoryx.Db.dll;$(CandidatePayload)/Cadoryx.Kernel.Abstractions.dll"><Private>true</Private></Reference>
+    <Compile Include="$(CandidateSource)/Cadoryx.Kernel.Occt/**/*.cs"
+             Exclude="$(CandidateSource)/Cadoryx.Kernel.Occt/bin/**/*.cs;$(CandidateSource)/Cadoryx.Kernel.Occt/obj/**/*.cs;$(CandidateSource)/Cadoryx.Kernel.Occt/OcctFiniteSurfaceExtrusion.cs" />
+    <Compile Include="OcctFiniteSurfaceExtrusion.Candidate.cs" />
+    <Compile Include="OcctFiniteSurfaceBranchDomain.cs" />
+    <Compile Include="OcctFiniteSurfaceBoundaryCoverage.cs" />
+    <Compile Include="OcctFiniteSurfaceStartMaterial.cs" />
+  </ItemGroup>
+  <Target Name="RequireFrozenCandidate" BeforeTargets="ResolveReferences">
+    <Error Condition="!Exists('$(CandidatePayload)/Cadoryx.Kernel.Occt.dll') Or !Exists('$(CandidateSource)/Cadoryx.Kernel.Occt/OcctFiniteSurfaceExtrusion.cs')" Text="Supply the original frozen application source and payload. Restore only the independently received exact SDK package set." />
+    <Error Condition="'$(OcctSharpVersion)' != '8.0.1-preview.87.cu1'" Text="This candidate requires the precise qualified 87.cu1 PlanarWireFaces package, not an ABI-compatible substitute." />
+  </Target>
+</Project>
