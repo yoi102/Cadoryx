@@ -1,5 +1,9 @@
 # 当前状态
 
+2026-10-13，status247：[GuidedSweep/AppSweep调用范围审查](AF_GUIDED_SWEEP_APPSWEEP_CALL_CHAIN.md)完成，13份来源/哈希和固定OCCT直接调用已记录；当前曲线扫掠及螺纹经PipeShell→BRepFill_Sweep→GeomFill_Sweep，全局近似分支用SweepFunction/Approx_SweepApproximation。另一GeomFill_Pipe::ApproxSurf明确使用已知缺陷类；不据此证明完整传递闭包、公开85实际加载DLL安全或算法已修复。现有SDK会话已收到继续整体迁移及按需优先API的用户授权；上游报告冷源首轮2253/2255、原CC/CB窗口输入2失败，根同载荷定向5通过，完整冷源复验/86包消费者仍在进行，独立交付未接收、native lane未交还。开发仍1080/公开85，最终6815/原模型/性能/窗口NOT RUN；A–F全部范围和原STEP24保持，G/清理暂缓。
+
+当前进度以status247和1080最终验收记录为准；以下保留历史。
+
 2026-10-13，status246：[1080最终验收准备](../capability-evidence/diagnostics/af1080-final-ready/verification.json)完成：1192来源保持，完整solution Release/Debug build0，实际最终WPF各208编译断言通过，provider16共享逐字节一致，SDK13/native62磁盘匹配公开85。76实际编译程序集的221类型/696成员集合与原1073逐项相同、零直接native imports；元数据不算能力/运行验收。原模型三份来源、6815全量、公差/预算、两fresh各20周期/6482ms/1800秒、生产Open900秒及完整788×411 PNG保持，实际均NOT RUN。[D6最新宿主](../capability-evidence/diagnostics/af1080-window-observer/verification.json)两配置build0、19生产/worker/SDK13/native62及资源一致，原36矩阵/29断言/六状态/30和300秒不变，桌面未开始。SDK仍占用native lane，包86待交付；不先启动85全量再重复86。[AppSweep归档诊断接收](../capability-evidence/diagnostics/appsweep-upstream/verification.json)五哈希及18源码匹配，归档两配置记录Z0/期望Z3；367原辅助输入匹配、172变化/16缺失，旧二进制完整来源未重认证，probe退出0表示复现缺陷，不能算修复或应用受影响证明。A–F全部范围及原STEP24继续，G/清理暂缓。
 
 当前进度以status246为准；以下status245及更早保留历史。

@@ -1,0 +1,560 @@
+{
+  "recordedAt": "2026-10-13T12:57:25.944285+00:00",
+  "state": "BOUNDED_SOURCE_CHAIN_IDENTIFIED_NOT_NATIVE_RUNTIME_OR_TRANSITIVE_SAFETY_PROOF",
+  "occtCommit": "b8f597c677811d1f9f4d8a97f5ae2825c0353a42",
+  "sources": [
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\Cadoryx.Kernel.Occt\\OcctGuidedAuthoringGeometry.cs",
+      "sha256": "B967C8B63A346A70AEB4F837F87628E8F81621631BAE054BE4DB950A780588A7",
+      "role": "Current Cadoryx source1080 authoring route",
+      "excerpts": [
+        {
+          "needle": "if(straightDelta is {} delta)",
+          "lines": [
+            143
+          ],
+          "text": [
+            "            if(straightDelta is {} delta)"
+          ]
+        },
+        {
+          "needle": "using var solid=face.Extrude(direction);",
+          "lines": [
+            151
+          ],
+          "text": [
+            "                RequireClear(face,token);using var solid=face.Extrude(direction);"
+          ]
+        },
+        {
+          "needle": "using var plan=GuidedSweepPlan.Create",
+          "lines": [
+            155
+          ],
+          "text": [
+            "            using var plan=GuidedSweepPlan.Create(preparedSpine!,[new(preparedSection,WithContact:false,WithCorrection:false)],new()"
+          ]
+        },
+        {
+          "needle": "Frame=GuidedSweepFrame.CorrectedFrenet",
+          "lines": [
+            157
+          ],
+          "text": [
+            "                Frame=GuidedSweepFrame.CorrectedFrenet,Transition=(GuidedSweepTransition)recipe.Corner,"
+          ]
+        },
+        {
+          "needle": "using var built=plan.Build();",
+          "lines": [
+            161
+          ],
+          "text": [
+            "            using var built=plan.Build();"
+          ]
+        }
+      ]
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\Cadoryx.Kernel.Occt\\NativeMetricThreadTool.cs",
+      "sha256": "64411E296969B3EC52D8BE7CDF7F9264AF1DAD25AD87BF94093AAF7CC2465717",
+      "role": "Current Cadoryx source1080 modeled thread route",
+      "excerpts": [
+        {
+          "needle": "using var plan=GuidedSweepPlan.Create",
+          "lines": [
+            40
+          ],
+          "text": [
+            "        using var plan=GuidedSweepPlan.Create(spine,[new(section)],new(){Frame=GuidedSweepFrame.Frenet,"
+          ]
+        },
+        {
+          "needle": "Frame=GuidedSweepFrame.Frenet",
+          "lines": [
+            40
+          ],
+          "text": [
+            "        using var plan=GuidedSweepPlan.Create(spine,[new(section)],new(){Frame=GuidedSweepFrame.Frenet,"
+          ]
+        },
+        {
+          "needle": "using var sweep=plan.Build();",
+          "lines": [
+            44
+          ],
+          "text": [
+            "        using var sweep=plan.Build();"
+          ]
+        }
+      ]
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Modeling\\Authoring\\GuidedSweepPlan.cs",
+      "sha256": "64CBC4D27F4A3FE7D0DC36ACE97A6781AF4C6CD62D4DE7364FA8FD61D584ED53",
+      "role": "Current SDK qualification source; not a released85 binary provenance claim",
+      "excerpts": [
+        {
+          "needle": "public AuthoringResult Build() => Execute(2, 2);",
+          "lines": [
+            87
+          ],
+          "text": [
+            "    public AuthoringResult Build() => Execute(2, 2);"
+          ]
+        },
+        {
+          "needle": "NativeMethods.GuidedSweep",
+          "lines": [
+            108
+          ],
+          "text": [
+            "                NativeError.ThrowIfFailed(NativeMethods.GuidedSweep(p, length, s, sections.Length, in options,"
+          ]
+        }
+      ]
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Native\\src\\Modeling\\GuidedSweep.cpp",
+      "sha256": "DB69A3CFE7FFE33C9DF5AC3480AB60D4F51A92951DDADFF981CE610A98D2BDFD",
+      "role": "Current SDK qualification native route",
+      "excerpts": [
+        {
+          "needle": "occtsharp_guided_sweep(",
+          "lines": [
+            64
+          ],
+          "text": [
+            "OcctSharp_Status OCCTSHARP_CALL occtsharp_guided_sweep(const OcctSharp_ShapeHandle* const* inputs, int32_t count,"
+          ]
+        },
+        {
+          "needle": "OcctSharpGenerated::LocalMakePipeShellBuilder builder(spine)",
+          "lines": [
+            113
+          ],
+          "text": [
+            "      OcctSharpGenerated::LocalMakePipeShellBuilder builder(spine); builder.SetIsBuildHistory(true); Frame(builder, spine, graph, o);"
+          ]
+        },
+        {
+          "needle": "case 0: builder.SetMode(false);",
+          "lines": [
+            40
+          ],
+          "text": [
+            "    case 0: builder.SetMode(false); break;"
+          ]
+        },
+        {
+          "needle": "case 1: builder.SetMode(true);",
+          "lines": [
+            41
+          ],
+          "text": [
+            "    case 1: builder.SetMode(true); break;"
+          ]
+        },
+        {
+          "needle": "builder.Build(); state.algorithm_status",
+          "lines": [
+            144
+          ],
+          "text": [
+            "        builder.Build(); state.algorithm_status = builder.GetStatus(); state.done = builder.IsDone();"
+          ]
+        }
+      ]
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\src\\OcctSharp.Generator\\Emission\\local-feature-adapters-native.txt",
+      "sha256": "4F9EBF8AD08ED1A5CEA6377B85A99B6DF737CEDE4195B7DD4E3DC948DAB1FF1C",
+      "role": "Generator input, not hand-edited output",
+      "excerpts": [
+        {
+          "needle": "class LocalMakePipeShellBuilder final",
+          "lines": [
+            169
+          ],
+          "text": [
+            "class LocalMakePipeShellBuilder final {"
+          ]
+        },
+        {
+          "needle": "BRepOffsetAPI_MakePipeShell value;",
+          "lines": [
+            170
+          ],
+          "text": [
+            "BRepOffsetAPI_MakePipeShell value;"
+          ]
+        },
+        {
+          "needle": "LocalMakePipeShellBuilder(const TopoDS_Wire & p0):value(p0){}",
+          "lines": [
+            185
+          ],
+          "text": [
+            "LocalMakePipeShellBuilder(const TopoDS_Wire & p0):value(p0){}"
+          ]
+        },
+        {
+          "needle": "void Build(const Message_ProgressRange",
+          "lines": [
+            36,
+            79,
+            95,
+            114,
+            163,
+            187
+          ],
+          "text": [
+            "void Build(const Message_ProgressRange & p0 = Message_ProgressRange()){value.Build(p0);}",
+            "void Build(const Message_ProgressRange & p0 = Message_ProgressRange()){value.Build(p0);}",
+            "void Build(const Message_ProgressRange & p0 = Message_ProgressRange()){value.Build(p0);}",
+            "void Build(const Message_ProgressRange & p0 = Message_ProgressRange()){value.Build(p0);}",
+            "void Build(const Message_ProgressRange & p0 = Message_ProgressRange()){value.Build(p0);}",
+            "void Build(const Message_ProgressRange & p0 = Message_ProgressRange()){value.Build(p0);}"
+          ]
+        }
+      ]
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\batch-bz\\sdk\\BRepOffsetAPI_MakePipeShell.cxx",
+      "sha256": "947F2FCE9BF88AC78CA32D3B31ED92F0971AB9C0898776C4F9E0734FDFF67697",
+      "role": "Previously pinned SDK source",
+      "excerpts": [
+        {
+          "needle": "myPipe = new (BRepFill_PipeShell)(Spine);",
+          "lines": [
+            32
+          ],
+          "text": [
+            "  myPipe = new (BRepFill_PipeShell)(Spine);"
+          ]
+        },
+        {
+          "needle": "Ok = myPipe->Build();",
+          "lines": [
+            211
+          ],
+          "text": [
+            "  Ok = myPipe->Build();"
+          ]
+        }
+      ]
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\appsweep-caller-static-1\\BRepFill_PipeShell.cxx",
+      "sha256": "32CBBE2081A488416CDA2DB9E217A5FB37FDDC8C2677CB124BCD21281E64940C",
+      "role": "Unmodified upstream at fixed OCCT commit",
+      "excerpts": [
+        {
+          "needle": "BRepFill_Sweep MkSw(mySection, myLocation, true);",
+          "lines": [
+            759
+          ],
+          "text": [
+            "  BRepFill_Sweep MkSw(mySection, myLocation, true);"
+          ]
+        },
+        {
+          "needle": "MkSw.Build(Dummy,",
+          "lines": [
+            779
+          ],
+          "text": [
+            "  MkSw.Build(Dummy,"
+          ]
+        }
+      ]
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\appsweep-caller-static-1\\BRepFill_Sweep.cxx",
+      "sha256": "0D2143638F9EB2E45C879C3AA3AE34AE8367A366D0ACADDFE5B54D9315B0693F",
+      "role": "Unmodified upstream at fixed OCCT commit",
+      "excerpts": [
+        {
+          "needle": "GeomFill_Sweep Sweep(myLoc->Law(ipath), KPart);",
+          "lines": [
+            2109
+          ],
+          "text": [
+            "    GeomFill_Sweep Sweep(myLoc->Law(ipath), KPart);"
+          ]
+        },
+        {
+          "needle": "GeomFill_Sweep Sweep(myLoc->Law(IPath), KPart);",
+          "lines": [
+            2293
+          ],
+          "text": [
+            "    GeomFill_Sweep Sweep(myLoc->Law(IPath), KPart);"
+          ]
+        },
+        {
+          "needle": "Sweep.Build(mySec->Law(isec),",
+          "lines": [
+            2112,
+            2316
+          ],
+          "text": [
+            "    Sweep.Build(mySec->Law(isec), myApproxStyle, myContinuity, myDegmax, mySegmax);",
+            "      Sweep.Build(mySec->Law(isec), myApproxStyle, myContinuity, myDegmax, mySegmax);"
+          ]
+        }
+      ]
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\appsweep-caller-static-1\\GeomFill_Sweep.cxx",
+      "sha256": "530D74F50D01C3C2CCD5761054C258D41DDA6312D9BC9325C3EC8EA3AED13CBD",
+      "role": "Unmodified upstream at fixed OCCT commit",
+      "excerpts": [
+        {
+          "needle": "done = BuildAll(Continuity, Degmax, Segmax);",
+          "lines": [
+            230
+          ],
+          "text": [
+            "    done = BuildAll(Continuity, Degmax, Segmax);"
+          ]
+        },
+        {
+          "needle": "new (GeomFill_SweepFunction)(mySec, myLoc,",
+          "lines": [
+            253
+          ],
+          "text": [
+            "    new (GeomFill_SweepFunction)(mySec, myLoc, First, SFirst, (SLast - SFirst) / (Last - First));"
+          ]
+        },
+        {
+          "needle": "Approx_SweepApproximation Approx(Func);",
+          "lines": [
+            254
+          ],
+          "text": [
+            "  Approx_SweepApproximation Approx(Func);"
+          ]
+        }
+      ]
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\appsweep-caller-static-1\\GeomFill_Pipe.cxx",
+      "sha256": "A7DFE604F02D4695805B6C271E0882E08BDE8295B9181EE806F2C7934E7101E2",
+      "role": "A distinct explicit caller exists; not evidence that every Pipe route uses AppSweep",
+      "excerpts": [
+        {
+          "needle": "void GeomFill_Pipe::ApproxSurf(const bool WithParameters)",
+          "lines": [
+            1014
+          ],
+          "text": [
+            "void GeomFill_Pipe::ApproxSurf(const bool WithParameters)"
+          ]
+        },
+        {
+          "needle": "GeomFill_SweepSectionGenerator Section(",
+          "lines": [
+            1025
+          ],
+          "text": [
+            "  GeomFill_SweepSectionGenerator Section(myAdpPath, myAdpFirstSect, myAdpLastSect, myRadius);"
+          ]
+        },
+        {
+          "needle": "GeomFill_AppSweep          App(",
+          "lines": [
+            1057
+          ],
+          "text": [
+            "  GeomFill_AppSweep          App(4, 8, T3d, T2d, NbIt, WithParameters);"
+          ]
+        },
+        {
+          "needle": "App.Perform(Line, Section, 30);",
+          "lines": [
+            1059
+          ],
+          "text": [
+            "  App.Perform(Line, Section, 30);"
+          ]
+        }
+      ]
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\batch-bw\\sdk\\GeomFill_AppSweep_0.cxx",
+      "sha256": "A789303EFDB221ED0DA50FA145292C66E4F28B4C49DB061EDD924E5A31291A12",
+      "role": "Previously accepted archived source",
+      "excerpts": [
+        {
+          "needle": "#define TheSectionGenerator GeomFill_SweepSectionGenerator",
+          "lines": [
+            25
+          ],
+          "text": [
+            "#define TheSectionGenerator GeomFill_SweepSectionGenerator"
+          ]
+        },
+        {
+          "needle": "#include <AppBlend_AppSurf.gxx>",
+          "lines": [
+            32
+          ],
+          "text": [
+            "#include <AppBlend_AppSurf.gxx>"
+          ]
+        }
+      ]
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\batch-bw\\sdk\\GeomFill_SweepSectionGenerator.cxx",
+      "sha256": "6C8308E7640DAA4E7A8BCF8957E9E04238FF4865A96F1C7456047AA93C1FA13A",
+      "role": "Archived defective transformation branch",
+      "excerpts": [
+        {
+          "needle": "Trans.SetTranslation(PRef, P);",
+          "lines": [
+            335
+          ],
+          "text": [
+            "      Trans.SetTranslation(PRef, P);"
+          ]
+        },
+        {
+          "needle": "else if (D1Ref.IsOpposite",
+          "lines": [
+            343
+          ],
+          "text": [
+            "      else if (D1Ref.IsOpposite(D1, Precision::Angular()))"
+          ]
+        },
+        {
+          "needle": "TR = Rot * Trans;",
+          "lines": [
+            350
+          ],
+          "text": [
+            "        TR = Rot * Trans;"
+          ]
+        },
+        {
+          "needle": "cumulTR = TR * cumulTR;",
+          "lines": [
+            354
+          ],
+          "text": [
+            "      cumulTR = TR * cumulTR;"
+          ]
+        }
+      ]
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\capability-evidence\\diagnostics\\af1080-final-ready\\occt-api-usage.json",
+      "sha256": "464ECB276C4557E9EC6656429CB53EC5FC80B49535AA83B3A56B58C10E2254F5",
+      "role": "Existing actual compiled metadata audit",
+      "excerpts": [
+        {
+          "needle": "OcctSharp.GuidedSweepPlan",
+          "lines": [
+            959,
+            3159,
+            3165,
+            3171,
+            3177
+          ],
+          "text": [
+            "      \"symbol\": \"[OcctSharp.Modeling]OcctSharp.GuidedSweepPlan\",",
+            "      \"symbol\": \"[OcctSharp.Modeling]OcctSharp.GuidedSweepPlan::Build\\u00600():[OcctSharp.Modeling]OcctSharp.AuthoringResult;header=32;required=0\",",
+            "      \"symbol\": \"[OcctSharp.Modeling]OcctSharp.GuidedSweepPlan::Create\\u00600([OcctSharp.Modeling]OcctSharp.Shape,[System.Runtime]System.Collections.Generic.IEnumerable\\u00601\\u003C[OcctSharp.Modeling]OcctSharp.GuidedSweepSection\\u003E,[OcctSharp.Modeling]OcctSharp.GuidedSweepOptions,[OcctSharp.Modeling]OcctSharp.Shape,[OcctSharp.Geometry]OcctSharp.ScalarLawDefinition):[OcctSharp.Modeling]OcctSharp.GuidedSweepPlan;header=0;required=5\",",
+            "      \"symbol\": \"[OcctSharp.Modeling]OcctSharp.GuidedSweepPlan::PrepareOffsetCurves\\u00600([OcctSharp.Modeling]OcctSharp.Shape,System.Double,System.Int32,System.Int32):[OcctSharp.Modeling]OcctSharp.AuthoringResult;header=0;required=4\",",
+            "      \"symbol\": \"[OcctSharp.Modeling]OcctSharp.GuidedSweepPlan::get_Options\\u00600():[OcctSharp.Modeling]OcctSharp.GuidedSweepOptions;header=32;required=0\","
+          ]
+        }
+      ]
+    }
+  ],
+  "upstreamSourceReceipt": {
+    "commit": "b8f597c677811d1f9f4d8a97f5ae2825c0353a42",
+    "sources": [
+      {
+        "upstreamPath": "src/ModelingAlgorithms/TKBool/BRepFill/BRepFill_PipeShell.cxx",
+        "url": "https://raw.githubusercontent.com/Open-Cascade-SAS/OCCT/b8f597c677811d1f9f4d8a97f5ae2825c0353a42/src/ModelingAlgorithms/TKBool/BRepFill/BRepFill_PipeShell.cxx",
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\appsweep-caller-static-1\\BRepFill_PipeShell.cxx",
+        "bytes": 51596,
+        "sha256": "32CBBE2081A488416CDA2DB9E217A5FB37FDDC8C2677CB124BCD21281E64940C"
+      },
+      {
+        "upstreamPath": "src/ModelingAlgorithms/TKBool/BRepFill/BRepFill_Sweep.cxx",
+        "url": "https://raw.githubusercontent.com/Open-Cascade-SAS/OCCT/b8f597c677811d1f9f4d8a97f5ae2825c0353a42/src/ModelingAlgorithms/TKBool/BRepFill/BRepFill_Sweep.cxx",
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\appsweep-caller-static-1\\BRepFill_Sweep.cxx",
+        "bytes": 119755,
+        "sha256": "0D2143638F9EB2E45C879C3AA3AE34AE8367A366D0ACADDFE5B54D9315B0693F"
+      },
+      {
+        "upstreamPath": "src/ModelingAlgorithms/TKGeomAlgo/GeomFill/GeomFill_Sweep.cxx",
+        "url": "https://raw.githubusercontent.com/Open-Cascade-SAS/OCCT/b8f597c677811d1f9f4d8a97f5ae2825c0353a42/src/ModelingAlgorithms/TKGeomAlgo/GeomFill/GeomFill_Sweep.cxx",
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\appsweep-caller-static-1\\GeomFill_Sweep.cxx",
+        "bytes": 39212,
+        "sha256": "530D74F50D01C3C2CCD5761054C258D41DDA6312D9BC9325C3EC8EA3AED13CBD"
+      },
+      {
+        "upstreamPath": "src/ModelingAlgorithms/TKGeomAlgo/GeomFill/GeomFill_Pipe.cxx",
+        "url": "https://raw.githubusercontent.com/Open-Cascade-SAS/OCCT/b8f597c677811d1f9f4d8a97f5ae2825c0353a42/src/ModelingAlgorithms/TKGeomAlgo/GeomFill/GeomFill_Pipe.cxx",
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\appsweep-caller-static-1\\GeomFill_Pipe.cxx",
+        "bytes": 35278,
+        "sha256": "A7DFE604F02D4695805B6C271E0882E08BDE8295B9181EE806F2C7934E7101E2"
+      }
+    ]
+  },
+  "boundedDirectSymbolAbsence": [
+    {
+      "file": "BRepFill_PipeShell.cxx",
+      "symbolsAbsent": [
+        "GeomFill_SweepSectionGenerator",
+        "GeomFill_AppSweep",
+        "GeomFill_Pipe"
+      ]
+    },
+    {
+      "file": "BRepFill_Sweep.cxx",
+      "symbolsAbsent": [
+        "GeomFill_SweepSectionGenerator",
+        "GeomFill_AppSweep",
+        "GeomFill_Pipe"
+      ]
+    },
+    {
+      "file": "GeomFill_Sweep.cxx",
+      "symbolsAbsent": [
+        "GeomFill_SweepSectionGenerator",
+        "GeomFill_AppSweep",
+        "GeomFill_Pipe"
+      ]
+    }
+  ],
+  "currentApplicationDirectRoutes": {
+    "straightAuthoringSweep": "Exact prism Extrude",
+    "curvedAuthoringSweep": "GuidedSweepPlan CorrectedFrenet",
+    "modeledThread": "GuidedSweepPlan Frenet",
+    "sdkQualificationSource": "LocalMakePipeShellBuilder -> BRepOffsetAPI_MakePipeShell -> BRepFill_PipeShell -> BRepFill_Sweep -> GeomFill_Sweep",
+    "generalApproximationBranch": "GeomFill_SweepFunction -> Approx_SweepApproximation"
+  },
+  "knownDifferentCaller": "GeomFill_Pipe::ApproxSurf constructs SweepSectionGenerator and AppSweep",
+  "limitations": [
+    "Only listed source edges and direct symbol absence are audited; full transitive calls are not proved.",
+    "Current migrating SDK source is not a released85 loaded DLL provenance proof.",
+    "No native process was run; output geometry and end-section placement remain NOT RUN on current final payload.",
+    "Existing upstream archived defect reproduction remains a defect, not a repaired algorithm.",
+    "No new SDK API has yet been justified by this call-chain audit."
+  ],
+  "nativeRuntime": "NOT RUN",
+  "algorithmRepair": false,
+  "productionCodeChanged": false,
+  "publicOrGeneratedSdkModified": false,
+  "desktopInput": false,
+  "cleanup": false,
+  "AF": "ACTIVE",
+  "G": "USER_DEFERRED"
+}
