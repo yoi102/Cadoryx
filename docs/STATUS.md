@@ -1,5 +1,11 @@
 # 当前状态
 
+2026-10-14，status252：[完整90项Far前提两配置编译/载荷冻结](../capability-evidence/diagnostics/af1081-local86/far90-build-verification.json)已通过，保留原30项plain名称并新增孔/递归岛，各72正例/18反例，生产体积与面积预算保持。首轮新90项因不存在的双参数CreatePlanarFace重载编译失败已保留；改为现有单面构造及精确Boolean Cut，不新增SDK封装。两配置SDK13/native62及生产内核/契约逐字节匹配。运行审计器和[串行跟进程序](../tools/FiniteSurfaceFarProbe/run-after-debug.ps1)已保存，实际协调14204等待已核对PID/创建时间的Debug协调50296完整终态；此时没有运行Far、模型、窗口或性能。脚本采用JSON原始日期字符串与同一Get-Process时间接口精确核对身份，停止于缺终态、载荷改变或新增回归；两配置完整审计后依次运行Far90与原模型工作流，不能把前提通过视为产品完成。原24严格STEP失败继续按用户授权延期，其余A–F active；生产1081/公开85、本地86仅候选，G/清理暂缓。以下status251及更早保留历史，实际进程/终态优先于历史运行中表述。
+
+2026-10-14，status251：用户明确允许[原24项严格STEP失败延期处理](../capability-evidence/diagnostics/af1081-local86/step24-user-deferral.json)，精确用例名称与历史两配置失败集合一致；不修改公差、严格几何断言或失败结果，不延期其他交换失败，继续其余A–F。原Debug作业已中断且缺TRX/exit，原因未知，[中断核验](../capability-evidence/diagnostics/af1081-local86/debug-interruption-verification.json)确认冻结来源、两配置载荷及完整Release结果保持。SDK已明确交回原生时段，根实际核对消费者空闲后启动独立Debug协调50296/dotnet47124/testhost15932，输出`full6830-debug-2`，实际native62路径/哈希已记录；当前尚无完整终态。Release6830保留6806通过/原24失败/零跳过，不重跑。SDK新增55生成声明和两配置聚焦各87/87属于开发验证，未打包交付、不改变冻结86。完整孔岛Far前提扩展为90项，当前新源码尚未运行；恢复、模型、性能及D6/材质真实窗口仍待验。生产1081/公开85、本地86仅隔离候选；A–F保持active，G/清理暂缓。
+
+当前结论以status251及实际终态收据为准；以下保留历史，status250中的“Debug运行中”指已中断的原作业。
+
 2026-10-13，status250：[1081/本地86 Release完整6830](../capability-evidence/diagnostics/af1081-local86/release-full-verification.json)已终态并独立核对：6806通过/原24严格STEP失败/零跳过，原6652名称及新178保持、零新增失败，实际native62路径/哈希匹配；Debug已串行开始，尚未终态。原24/36恢复C#已落入[可重建工具](../tools/CadRecoveryWindowProbe/README.md)，两配置四次publish0、当前19生产/worker/资源/SDK13/native62匹配；原运行断言保留，实际恢复及整图审阅未运行。Computer Use已初始化且只读枚举成功，无激活或键鼠输入。两配置结束后先预留SDK约30分钟生成绑定原生验证时段，模型队列显式hold等待明确交回与真实空闲；性能前会要求SDK停止占CPU的编译。生产仍1081/公开85，86仅隔离候选；原STEP24/AppSweep、模型/性能/窗口及A–F全部范围继续，G/清理暂缓。
 
 当前结论以status250为准；以下保留历史。

@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType><TargetFramework>net10.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF><RuntimeIdentifier>win-x64</RuntimeIdentifier><PlatformTarget>x64</PlatformTarget>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="$(CandidatePayload)/*.dll"><Private>true</Private></Reference>
+    <Content Include="$(CandidatePayload)/occt/*.*"><Link>occt/%(Filename)%(Extension)</Link><CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory></Content>
+  </ItemGroup>
+  <Target Name="RequireCandidate" BeforeTargets="ResolveReferences">
+    <Error Condition="'$(CandidatePayload)' == '' Or !Exists('$(CandidatePayload)/Cadoryx.Kernel.Occt.dll')" Text="Supply the frozen production WPF CandidatePayload; do not rebuild the application or SDK." />
+  </Target>
+</Project>

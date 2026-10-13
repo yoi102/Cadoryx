@@ -1,0 +1,62 @@
+{
+  "recordedAt": "2026-10-13T14:59:35.838645+00:00",
+  "state": "ORIGINAL_DEBUG_INTERRUPTION_SOURCE_BINARY_RELEASE_PRESERVED_NOT_TEST_TERMINAL",
+  "interruption": {
+    "path": "artifacts/af1081-local86-1/debug-interrupted-observation-1.json",
+    "sha256": "52B6053BAE28A175247BB668D550318386C4CF989F97A4ED82BC74A731FAB32E"
+  },
+  "nativeHandoff": {
+    "path": "artifacts/af1081-local86-1/native-lane-to-sdk-1.json",
+    "sha256": "6E8DFECD8E881834240B31921D73E5E2A436A8948AA33E5FA30715EC00C857EC"
+  },
+  "releaseCompletedAudit": {
+    "path": "capability-evidence/diagnostics/af1081-local86/release-full-verification.json",
+    "sha256": "3D531236EFD8AB866D2FD0AAF06E8E0D552D65784B298CEC7338533DF431339B"
+  },
+  "freeze": {
+    "path": "artifacts/af1081-local86-1/freeze.json",
+    "sha256": "622BFC6BD268C2349A0A74F3B1504B382A4472B555224D9B29CB7FA4F1B3E9A3"
+  },
+  "sourceAndBothTestPayloadsUnchanged": true,
+  "releaseRerun": false,
+  "debugOriginalTrxAndExit": "MISSING",
+  "debugCause": "UNKNOWN",
+  "loggedPassRowsNotTrxResults": 4526,
+  "loggedFailedNamesNotCompleteResults": [
+    "Cadoryx.Tests.SketchRegionSingleLoopMixedNativeTests.SameLoopNaturalAndNativeConnectionsMoveInOneOriginalBudgetAndBuildTheExactSolid(kind: \"spline-g1\", mirror: False, distance: -0.10000000000000001, join: Bevel)",
+    "Cadoryx.Tests.SketchRegionSingleLoopMixedNativeTests.SameLoopNaturalAndNativeConnectionsMoveInOneOriginalBudgetAndBuildTheExactSolid(kind: \"spline-g1\", mirror: False, distance: -0.10000000000000001, join: Miter)",
+    "Cadoryx.Tests.SketchRegionSingleLoopMixedNativeTests.SameLoopNaturalAndNativeConnectionsMoveInOneOriginalBudgetAndBuildTheExactSolid(kind: \"spline-g1\", mirror: False, distance: -0.10000000000000001, join: Round)",
+    "Cadoryx.Tests.SketchRegionSingleLoopMixedNativeTests.SameLoopNaturalAndNativeConnectionsMoveInOneOriginalBudgetAndBuildTheExactSolid(kind: \"spline-g1\", mirror: False, distance: 0.10000000000000001, join: Bevel)",
+    "Cadoryx.Tests.SketchRegionSingleLoopMixedNativeTests.SameLoopNaturalAndNativeConnectionsMoveInOneOriginalBudgetAndBuildTheExactSolid(kind: \"spline-g1\", mirror: False, distance: 0.10000000000000001, join: Miter)",
+    "Cadoryx.Tests.SketchRegionSingleLoopMixedNativeTests.SameLoopNaturalAndNativeConnectionsMoveInOneOriginalBudgetAndBuildTheExactSolid(kind: \"spline-g1\", mirror: False, distance: 0.10000000000000001, join: Round)",
+    "Cadoryx.Tests.SketchRegionSingleLoopMixedNativeTests.SameLoopNaturalAndNativeConnectionsMoveInOneOriginalBudgetAndBuildTheExactSolid(kind: \"spline-g1\", mirror: True, distance: -0.10000000000000001, join: Bevel)",
+    "Cadoryx.Tests.SketchRegionSingleLoopMixedNativeTests.SameLoopNaturalAndNativeConnectionsMoveInOneOriginalBudgetAndBuildTheExactSolid(kind: \"spline-g1\", mirror: True, distance: -0.10000000000000001, join: Miter)",
+    "Cadoryx.Tests.SketchRegionSingleLoopMixedNativeTests.SameLoopNaturalAndNativeConnectionsMoveInOneOriginalBudgetAndBuildTheExactSolid(kind: \"spline-g1\", mirror: True, distance: -0.10000000000000001, join: Round)",
+    "Cadoryx.Tests.SketchRegionSingleLoopMixedNativeTests.SameLoopNaturalAndNativeConnectionsMoveInOneOriginalBudgetAndBuildTheExactSolid(kind: \"spline-g1\", mirror: True, distance: 0.10000000000000001, join: Bevel)",
+    "Cadoryx.Tests.SketchRegionSingleLoopMixedNativeTests.SameLoopNaturalAndNativeConnectionsMoveInOneOriginalBudgetAndBuildTheExactSolid(kind: \"spline-g1\", mirror: True, distance: 0.10000000000000001, join: Miter)",
+    "Cadoryx.Tests.SketchRegionSingleLoopMixedNativeTests.SameLoopNaturalAndNativeConnectionsMoveInOneOriginalBudgetAndBuildTheExactSolid(kind: \"spline-g1\", mirror: True, distance: 0.10000000000000001, join: Round)",
+    "Cadoryx.Tests.SketchRegionSingleLoopMixedNativeTests.SameLoopNaturalAndNativeConnectionsMoveInOneOriginalBudgetAndBuildTheExactSolid(kind: \"spline-g2\", mirror: False, distance: -0.10000000000000001, join: Bevel)",
+    "Cadoryx.Tests.SketchRegionSingleLoopMixedNativeTests.SameLoopNaturalAndNativeConnectionsMoveInOneOriginalBudgetAndBuildTheExactSolid(kind: \"spline-g2\", mirror: False, distance: -0.10000000000000001, join: Miter)",
+    "Cadoryx.Tests.SketchRegionSingleLoopMixedNativeTests.SameLoopNaturalAndNativeConnectionsMoveInOneOriginalBudgetAndBuildTheExactSolid(kind: \"spline-g2\", mirror: False, distance: -0.10000000000000001, join: Round)",
+    "Cadoryx.Tests.SketchRegionSingleLoopMixedNativeTests.SameLoopNaturalAndNativeConnectionsMoveInOneOriginalBudgetAndBuildTheExactSolid(kind: \"spline-g2\", mirror: False, distance: 0.10000000000000001, join: Bevel)",
+    "Cadoryx.Tests.SketchRegionSingleLoopMixedNativeTests.SameLoopNaturalAndNativeConnectionsMoveInOneOriginalBudgetAndBuildTheExactSolid(kind: \"spline-g2\", mirror: False, distance: 0.10000000000000001, join: Miter)",
+    "Cadoryx.Tests.SketchRegionSingleLoopMixedNativeTests.SameLoopNaturalAndNativeConnectionsMoveInOneOriginalBudgetAndBuildTheExactSolid(kind: \"spline-g2\", mirror: False, distance: 0.10000000000000001, join: Round)",
+    "Cadoryx.Tests.SketchRegionSingleLoopMixedNativeTests.SameLoopNaturalAndNativeConnectionsMoveInOneOriginalBudgetAndBuildTheExactSolid(kind: \"spline-g2\", mirror: True, distance: -0.10000000000000001, join: Bevel)",
+    "Cadoryx.Tests.SketchRegionSingleLoopMixedNativeTests.SameLoopNaturalAndNativeConnectionsMoveInOneOriginalBudgetAndBuildTheExactSolid(kind: \"spline-g2\", mirror: True, distance: -0.10000000000000001, join: Miter)",
+    "Cadoryx.Tests.SketchRegionSingleLoopMixedNativeTests.SameLoopNaturalAndNativeConnectionsMoveInOneOriginalBudgetAndBuildTheExactSolid(kind: \"spline-g2\", mirror: True, distance: -0.10000000000000001, join: Round)",
+    "Cadoryx.Tests.SketchRegionSingleLoopMixedNativeTests.SameLoopNaturalAndNativeConnectionsMoveInOneOriginalBudgetAndBuildTheExactSolid(kind: \"spline-g2\", mirror: True, distance: 0.10000000000000001, join: Bevel)",
+    "Cadoryx.Tests.SketchRegionSingleLoopMixedNativeTests.SameLoopNaturalAndNativeConnectionsMoveInOneOriginalBudgetAndBuildTheExactSolid(kind: \"spline-g2\", mirror: True, distance: 0.10000000000000001, join: Miter)",
+    "Cadoryx.Tests.SketchRegionSingleLoopMixedNativeTests.SameLoopNaturalAndNativeConnectionsMoveInOneOriginalBudgetAndBuildTheExactSolid(kind: \"spline-g2\", mirror: True, distance: 0.10000000000000001, join: Round)"
+  ],
+  "newLoggedFailureNames": [],
+  "debugPassed": false,
+  "sdkNativeLaneExplicitlyGranted": true,
+  "resumeOnlyMissingDebug": true,
+  "actualModelRun": false,
+  "actualPerformanceRun": false,
+  "actualDesktopRun": false,
+  "productionApplied": false,
+  "publiclyPublished": false,
+  "AFComplete": false,
+  "G": "USER_DEFERRED"
+}

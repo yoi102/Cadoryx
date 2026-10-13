@@ -1,5 +1,9 @@
 # A–F 全量实施跟踪
 
+2026-10-14，status252：[Far90两配置构建/载荷审计](../capability-evidence/diagnostics/af1081-local86/far90-build-verification.json)通过，严格预算、原30名称、孔与递归岛完整范围保持；运行和产品接入尚未完成。[串行跟进](../tools/FiniteSurfaceFarProbe/run-after-debug.ps1)实际协调14204等待重跑Debug协调50296的完整审计，随后依次运行两配置Far90及原模型工作流，异常保留证据并停止。原24严格STEP失败单独延期，不等待修复、不记作通过；A–F其他功能/窗口/性能及交换范围继续。最新状态见[STATUS](STATUS.md)，下方均保留历史。
+
+2026-10-14，status251：原24项严格STEP失败已按用户授权[单独延期](../capability-evidence/diagnostics/af1081-local86/step24-user-deferral.json)，名称与原历史两配置逐项一致；保留失败与严格断言，不延期其他交换问题。原Debug作业已实际中断且缺完整结果；SDK明确交回时段后核对消费者空闲，只重跑缺终态Debug6830，保留已完成Release6806/24/0和旧日志。当前`full6830-debug-2`实际进程已核对，尚未终态。完整Far孔岛前提90项、模型/性能/恢复/D6/材质真实窗口及其他A–F继续；不将工具构建或SDK开发验证作为产品验收。生产1081/公开85、本地86仅隔离候选。最新状态以[STATUS](STATUS.md)与实际收据为准；下方均为历史，G/清理暂缓。
+
 2026-10-13，status248：[1081主窗口失败回滚](AF_MAIN_WINDOW_ATTACHMENT_RECOVERY.md)已合入开发，两配置各223托管断言、Tests依赖图/WPF build0；当前预计6830尚未完整发现/运行，旧1080冻结不可替代当前验收。[本地86接收](../capability-evidence/diagnostics/local-sdk86-received/verification.json)2050来源/25交付文件及14包内容已独立核对，SDK明确交还时段且接收时消费者空闲；86未应用、生产仍公开85。原STEP24/模型/性能/窗口及A–F全部范围保持，G/清理暂缓；下一步构造1081/选定SDK统一最终载荷。
 
 2026-10-13，status247：[GuidedSweep/AppSweep调用范围](AF_GUIDED_SWEEP_APPSWEEP_CALL_CHAIN.md)已核对13份来源，区分PipeShell/GeomFill_Sweep与实际AppSweep调用者；仅静态直接调用审查，未证明整体算法安全或完成修复。上游冷源首轮2253/2255、CC/CB两项窗口输入失败，完整复验和本地86包资格继续、时段尚未交还。开发仍1080/公开85，原最终6815、模型/性能/窗口未运行，原STEP24和A–F全部范围继续；G/清理暂缓。当前结论以[STATUS](STATUS.md)和1080验收记录为准，以下保留历史。
