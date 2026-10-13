@@ -8,8 +8,12 @@ if($taskAll.state -cne 'CURRENT_F5_D7_EXACT87CU1_PERFORMANCE_PREPARED_NOT_RUNTIM
 foreach($taskRow in $taskAll.sourcePayload){if((Get-FileHash (Join-Path $taskDraft ('workspace/'+$taskRow.path))).Hash -cne $taskRow.sha256){throw 'Final candidate source differs'}}
 & 'C:/Users/yoiri/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe' -X utf8 (Join-Path $PSScriptRoot 'require-full-gate.py')
 if($LASTEXITCODE -ne 0){throw 'Current full7117 actual evidence gate failed'}
-$taskProvider=Get-Content (Join-Path $taskDraft 'provider-both-exit.json') -Raw|ConvertFrom-Json -DateKind String
-if($taskProvider.scenarios.Count -ne 2){throw 'Both original model scenarios must actually finish before this native stage'}
+& 'C:/Users/yoiri/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe' -X utf8 (Join-Path $PSScriptRoot 'require-provider-evidence.py')
+if($LASTEXITCODE -ne 0){throw 'Both original provider outcomes and current provenance must be actually verified'}
+$taskPausePath=Join-Path $taskDraft 'sdk-performance-pause.json'
+if(!(Test-Path $taskPausePath)){throw 'SDK CPU builds must be explicitly paused before MiniPC sampling; a returned native lane does not prove CPU pause'}
+$taskPause=Get-Content $taskPausePath -Raw|ConvertFrom-Json -DateKind String
+if(!$taskPause.sdkCpuBuildsExplicitlyPaused -or !$taskPause.rootMayRunOriginalMiniPC -or $taskPause.sdkThread -cne '01a0f7b3-ff5f-7cb0-bff9-a5caad1a49b0' -or $taskPause.acceptedFrozenPackageVersion -cne '8.0.1-preview.87.cu1' -or $taskPause.performanceFreezeSHA256 -cne (Get-FileHash (Join-Path $taskDraft 'performance-freeze.json')).Hash){throw 'Current SDK CPU pause does not cover this exact performance candidate'}
 $taskFreeze=@($taskAll.configurations|Where-Object configuration -CEQ 'Release')[0]
 foreach($taskRow in $taskFreeze.payload){if((Get-FileHash (Join-Path $taskFreeze.candidate $taskRow.path)).Hash -cne $taskRow.sha256){throw 'Final application payload differs'}}
 if($taskAll.originalDirectRuns -ne 2 -or $taskAll.originalLifecycleCyclesPerRun -ne 20 -or $taskAll.targetMs -ne 6482 -or $taskAll.directTimeoutSeconds -ne 1800 -or $taskAll.productionOpenRuns -ne 2 -or $taskAll.productionOpenTimeoutSeconds -ne 900){throw 'Original performance budgets changed'}

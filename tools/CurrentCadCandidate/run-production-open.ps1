@@ -15,7 +15,7 @@ if((Get-FileHash -LiteralPath $taskVerifierPath).Hash -cne $taskImageProof.instr
 $taskNativeRows=@($taskFreeze.native);if($taskNativeRows.Count -ne 62){throw 'Native62 required'}
 $taskNativeDirectory=Join-Path $taskFreeze.candidate 'occt';$taskSources=1185
 $taskTemplate=[IO.File]::ReadAllText($taskVerifierPath)
-Write-Output 'AF1080/public85 unified two fresh production opens; original900s/counts/full788x411-PNG; timings separate from direct6482ms target.'
+Write-Output 'Current F5+D7/local87cu1 two fresh production opens; original900s/counts/full788x411-PNG; timings separate from direct6482ms target.'
 & ([ScriptBlock]::Create($taskTemplate)) -Executable (Join-Path $taskFreeze.candidate 'Cadoryx.wpf.exe') `
  -InputFile 'C:/Users/yoiri/Downloads/MiniPC3.step' -Output (Join-Path $taskRoot 'artifacts/af1082-f5-d7-production-open-1') `
  -Runs 2 -TimeoutSeconds 900 -ExpectedScreenshotSha256 $taskExpectedImage
