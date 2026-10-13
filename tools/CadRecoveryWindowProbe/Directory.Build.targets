@@ -1,0 +1,6 @@
+<Project>
+  <Target Name="ValidateCandidatePayload" BeforeTargets="ResolveReferences">
+    <Error Condition="'$(CandidatePayload)' == ''" Text="Provide CandidatePayload pointing to the frozen production WPF build output." />
+    <Error Condition="!Exists('$(CandidatePayload)/Cadoryx.wpf.exe') Or !Exists('$(CandidatePayload)/Cadoryx.wpf.deps.json') Or !Exists('$(CandidatePayload)/Cadoryx.wpf.runtimeconfig.json')" Text="The candidate must include the production worker executable and runtime configuration." />
+  </Target>
+</Project>

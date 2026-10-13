@@ -1,5 +1,9 @@
 # 3D CAD 产品缺口与实施规划
 
+2026-10-13，status250：[1081/本地86 Release完整6830](../capability-evidence/diagnostics/af1081-local86/release-full-verification.json)实际6806通过/原24失败/零跳过，原名称与新178及native62准确、无新增失败；Debug串行运行中。原24/36恢复工具已持久化并两配置publish0，实际恢复/整图审阅、原模型/性能/36 D6窗口未运行；模型队列在两配置结束后等待SDK验证时段明确交回。生产仍公开85、本地86仅候选。A–F全部范围/STEP24/AppSweep保持，G/清理暂缓。
+
+2026-10-13，status249：[1081/本地86隔离验收](AF_SOURCE1081_LOCAL86_ACCEPTANCE.md)已完成50项目锁定恢复、两配置build0和各实际发现6830；SDK13/native62与共享provider16核对准确。Release完整回归实际运行，Debug待串行，模型队列等待两配置终态；原性能与36真实窗口尚未运行。生产仍公开85，本地86只在隔离候选。现有SDK会话继续生成器迁移并按需优先API；A–F原范围/STEP24/AppSweep保持，G/清理暂缓。
+
 2026-10-13，status248：[1081主窗口失败回滚](AF_MAIN_WINDOW_ATTACHMENT_RECOVERY.md)已合入开发，两配置各223托管断言、Tests依赖图/WPF build0；当前预计6830尚未完整发现/运行，旧1080冻结不可替代当前验收。[本地86接收](../capability-evidence/diagnostics/local-sdk86-received/verification.json)2050来源/25交付文件及14包内容已独立核对，SDK明确交还时段且接收时消费者空闲；86未应用、生产仍公开85。原STEP24/模型/性能/窗口及A–F全部范围保持，G/清理暂缓；下一步构造1081/选定SDK统一最终载荷。
 
 2026-10-13，status247：[GuidedSweep/AppSweep调用范围](AF_GUIDED_SWEEP_APPSWEEP_CALL_CHAIN.md)已核对13份来源，区分PipeShell/GeomFill_Sweep与实际AppSweep调用者；仅静态直接调用审查，未证明整体算法安全或完成修复。上游冷源首轮2253/2255、CC/CB两项窗口输入失败，完整复验和本地86包资格继续、时段尚未交还。开发仍1080/公开85，原最终6815、模型/性能/窗口未运行，原STEP24和A–F全部范围继续；G/清理暂缓。当前结论以[STATUS](STATUS.md)和1080验收记录为准，以下保留历史。
@@ -145,7 +149,7 @@ M14–M17 已记录的待办主要关注性能、精确建模边界、工程交�
 
 ## 4. 推荐怎么做下一步
 
-当前正式已验子批保持 **A4 / B17 / C5 / D5 / E4 / F5g**。[B17解析偏移连接](B17_ANALYTICAL_OFFSET_JOINS_PLAN.md)已完成解析直线/圆弧/圆闭环与孔岛的限定本地契约；后续B18、A5及其余A–F仍有未完成项。[完整1076组合已合入开发生产源码](AF_SOURCE1076_DEVELOPMENT_INTEGRATION.md)，当前增加1078命令目录及1079类型反馈修正、使用公开Preview.85；1076两配置各455专项通过，[合入后生产根各6652完整回归已终态](../capability-evidence/diagnostics/af1076-root-full/verification.json)，各6628通过/原24失败/零跳过，真实产品门禁继续。G暂缓。
+当前正式已验子批保持 **A4 / B17 / C5 / D5 / E4 / F5g**。[B17解析偏移连接](B17_ANALYTICAL_OFFSET_JOINS_PLAN.md)已完成解析直线/圆弧/圆闭环与孔岛的限定本地契约；后续B18、A5及其余A–F仍有未完成项。生产源码1081包括完整1076组合、命令目录/工程图类型与终端状态反馈、主窗口候选失败回滚，仍使用公开Preview.85。[1081/本地86候选](AF_SOURCE1081_LOCAL86_ACCEPTANCE.md)两配置实际发现6830，完整回归正在运行；1076两配置各455专项及生产根各6652完整回归仅作为历史证据，其原24严格STEP失败保持。当前模型、性能、窗口及其余产品门禁继续，G暂缓。
 
 建议优先把“简单机械零件设计 → 装配 → 关联工程图 → 交换/安装交付”做成可靠闭环。下面是实施批次建议，不是新增阶段的完成声明，也不包含未经确定的工期。
 
@@ -180,7 +184,7 @@ M14–M17 已记录的待办主要关注性能、精确建模边界、工程交�
 
 | 证据方向 | 当前可以引用什么 | 仍要取得什么 |
 |---|---|---|
-| 最新代码回归 | [1076根两配置完整6652](../capability-evidence/diagnostics/af1076-root-full/verification.json)各6628通过/原24失败/零跳过，无新增失败；1078命令目录及[1079类型反馈](../capability-evidence/diagnostics/af1079-drawing-object-type/verification.json)已合入，[1080终端收据](F5_DRAWING_TERMINAL_RECEIPTS.md)已合入，当前两配置各208托管断言直接调用通过、Tests依赖图/WPF build0 | 预计6815完整发现/原生回归、当前原模型、性能与窗口尚未执行；当前托管208不算全量xunit。原STEP24继续；SDK迁移新包尚未接收。A–F继续，G暂缓 |
+| 最新代码回归 | 生产1081/公开85，包括[主窗口失败回滚](AF_MAIN_WINDOW_ATTACHMENT_RECOVERY.md)；[本地86 Release完整6830](../capability-evidence/diagnostics/af1081-local86/release-full-verification.json)6806通过/原24失败/零跳过，无新增失败，原6652名称、新178及实际native62准确；Debug已串行运行。两配置build0/实际发现6830保持 | Debug完整终态、当前原模型、性能及实际窗口仍待验；不能以Release替代两配置或真实工作流。A5原24/36已持久化、两配置publish0，原运行断言与D6窗口36保持未运行；原STEP24/AppSweep及A–F全部范围继续，G暂缓 |
 | 自动覆盖率 | [TEST_COVERAGE](TEST_COVERAGE.md) 记录 618 测试时生产程序集行 67.0%、分支 66.2% | 以新快照重测并补关键行为；WPF 界面和 OCCT 原生代码不在这些 xUnit 百分比内 |
 | 性能 | [隔离1056两fresh进程各20双视口周期与生产Open](../artifacts/af-merged-performance-verification-2.json)通过，完整提交4.752/5.061秒满足6482ms；原完整788×411整图保持。生产缓存修复版6800.2534ms失败保留 | 当前候选生产接入、自动WPF/设备失效恢复待验；导入仍占主要时间，CPU提交计时不证明物理屏幕或输入延迟 |
 | 厂商兼容 | [M15](M15_PRECISION_AND_ASSEMBLY.md) 的 CATIA V5、Open CASCADE、CoCreate、SolidWorks 读取/精确检查；ODA 样本被拒绝 | 不同来源的单位/层级/样式/PMI对照，以及外部 CAD 实际往返；为拒绝样本提供诊断或受控兼容方案 |

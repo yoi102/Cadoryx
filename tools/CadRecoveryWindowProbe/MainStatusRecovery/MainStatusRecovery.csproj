@@ -1,0 +1,5 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <ItemGroup>
+    <Reference Include="$(CandidatePayload)/*.dll"><Private>false</Private></Reference>
+  </ItemGroup>
+</Project>

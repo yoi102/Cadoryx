@@ -1,0 +1,34 @@
+{
+  "recordedAt": "2026-10-13T14:03:31.006042+00:00",
+  "auditors": [
+    {
+      "label": "recovery24",
+      "original": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\verify-af1063r5-wpf-recovery24-1.py",
+        "sha256": "A731688A1AC014F841E2323D9724969C040AE98FE16508512BD89D260B61C501"
+      },
+      "candidate": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\capability-evidence\\diagnostics\\af1081-local86\\audit-recovery24.py",
+        "sha256": "CF34671236CC2B04F0E50A1A6A173DBF34B5032C92726478A39F70108B00B083"
+      },
+      "originalRuntimeValidationBodySha256": "FD45A6AE9195E5A2FB8DCD50A347599DB163DC9B92CB5CFB5F785F7B6EADBE40",
+      "runtimeAssertionsRetainedExceptTerminalLabel": true
+    },
+    {
+      "label": "main-status36",
+      "original": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\verify-af1063r5-main-status-recovery-1.py",
+        "sha256": "5552BD7C64350D5F1200462CC5A83335EC4B0EEF78CA9120CC664EC4B541A6B4"
+      },
+      "candidate": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\capability-evidence\\diagnostics\\af1081-local86\\audit-main-status36.py",
+        "sha256": "F5DA1E411FA734ABDCC923BFF8285C16D156A40632A02632A941CE80C5527223"
+      },
+      "originalRuntimeValidationBodySha256": "EF9919A50E46DBE64DC56623F39DF4B992CEBF9E1A2D413AFB9E38DA3B02755D",
+      "runtimeAssertionsRetainedExceptTerminalLabel": true
+    }
+  ],
+  "runtime": "NOT RUN",
+  "nativeJobs": 0,
+  "desktopInput": false
+}

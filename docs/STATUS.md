@@ -1,5 +1,13 @@
 # 当前状态
 
+2026-10-13，status250：[1081/本地86 Release完整6830](../capability-evidence/diagnostics/af1081-local86/release-full-verification.json)已终态并独立核对：6806通过/原24严格STEP失败/零跳过，原6652名称及新178保持、零新增失败，实际native62路径/哈希匹配；Debug已串行开始，尚未终态。原24/36恢复C#已落入[可重建工具](../tools/CadRecoveryWindowProbe/README.md)，两配置四次publish0、当前19生产/worker/资源/SDK13/native62匹配；原运行断言保留，实际恢复及整图审阅未运行。Computer Use已初始化且只读枚举成功，无激活或键鼠输入。两配置结束后先预留SDK约30分钟生成绑定原生验证时段，模型队列显式hold等待明确交回与真实空闲；性能前会要求SDK停止占CPU的编译。生产仍1081/公开85，86仅隔离候选；原STEP24/AppSweep、模型/性能/窗口及A–F全部范围继续，G/清理暂缓。
+
+当前结论以status250为准；以下保留历史。
+
+2026-10-13，status249：[1081/本地86隔离验收](AF_SOURCE1081_LOCAL86_ACCEPTANCE.md)已完成1193输入冻结、50项目恢复/锁定恢复、50锁/30份SDK锁/412引用保持非OCCT依赖，solution两配置build0且各实际发现6830，应用/测试SDK13/native62及provider共享16匹配。D6宿主两配置build0、19生产/worker/资源/SDK身份准确，原36场景保持但桌面未开始。Release6830实际运行中、完整进程链及实际native62已核对，Debug串行待接续；原模型已排队等待完整终态审计，原性能尚未运行。生产仍1081/公开85，86只在候选且未公开发布；SDK现有会话继续CR–DA生成器迁移并按需优先API。原STEP24/AppSweep及A–F全部范围继续，G/清理暂缓。
+
+当前结论以status249为准；以下保留历史。
+
 2026-10-13，status248：[主窗口候选失败回滚1081](AF_MAIN_WINDOW_ATTACHMENT_RECOVERY.md)已修正普通new/open候选会话和资产泄漏、激活失败恢复原活动文档及空工作区隐式新建。新增15在原1080两配置各15失败，当前各223（原208+新15）托管编译断言通过；Tests依赖图及WPF两配置build0，实际WPF ViewModels哈希匹配，原1192仅MainWindow改变加一份测试，原生加载0。预计6830尚未完整发现/运行，1080原验收准备仅作历史。SDK [本地86独立接收](../capability-evidence/diagnostics/local-sdk86-received/verification.json)2050来源、25交付文件、14包/精确依赖/13托管/62native/11license匹配并冻结feed；SDK明确交还时段，实际消费者空闲已记录，未启动新native。当前生产1081/公开85，86未应用；接下来用最新源码/选定SDK统一门禁，原STEP24/模型/性能/窗口及A–F全部范围继续，G/清理暂缓。
 
 当前结论以status248为准；以下保留历史。

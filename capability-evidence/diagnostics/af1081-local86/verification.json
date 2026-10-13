@@ -1,0 +1,94 @@
+{
+  "recordedAt": "2026-10-13T13:44:14.440216+00:00",
+  "state": "LOCAL86_SOURCE1081_BOTH_BUILD0_DISCOVERED6830_RELEASE_RUNNING_NOT_TERMINAL",
+  "baseHead": "58a9bda1d71034e5f228704d654a30dd0bf01225",
+  "productionSourceInputsRetained": 1193,
+  "productionPackage": "8.0.1-preview.85",
+  "candidatePackage": "8.0.1-preview.86",
+  "restoreProjects": 50,
+  "lockedFiles": 50,
+  "sdkContainingLocks": 30,
+  "sdkLockReferences": 412,
+  "nonOcctDependenciesUnchanged": true,
+  "solutionBothBuild0Warnings0Errors": true,
+  "bothActuallyDiscovered": 6830,
+  "providerShared16ByteIdentical": true,
+  "localSdk13Native62DiskMatched": true,
+  "windowHostBothBuild0": [
+    {
+      "configuration": "Release",
+      "host": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1081-local86-1\\window-observer-1\\bin\\Release\\net10.0-windows\\win-x64",
+      "binarySha256": "2EDBE3124B40169D5053DEF29B1130AB4F42945DD74CD1192FE5D05D56EF7CE3",
+      "application19AndWorkerMatched": true,
+      "localSdk13Native62AndLanguageResourcesMatched": true
+    },
+    {
+      "configuration": "Debug",
+      "host": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1081-local86-1\\window-observer-1\\bin\\Debug\\net10.0-windows\\win-x64",
+      "binarySha256": "8752545DF31CA2ACB9022321B04183F27360237DEAC2CB5952A839942C2CDD69",
+      "application19AndWorkerMatched": true,
+      "localSdk13Native62AndLanguageResourcesMatched": true
+    }
+  ],
+  "originalModelSources3AndBudgetsRetained": true,
+  "originalPerformanceInputImageAndBudgetsRetained": true,
+  "originalD6HostAndMatrix36Retained": true,
+  "actualReleaseNative62Matched": true,
+  "actualProcessesAtObservation": [
+    {
+      "ProcessId": 35636,
+      "ParentProcessId": 25908,
+      "CreationDate": "2026-10-13T22:38:27.720523+09:00",
+      "ExecutablePath": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1081-local86-1\\workspace\\Cadoryx.Tests\\bin\\Release\\net10.0\\testhost.exe",
+      "CommandLine": "\"C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1081-local86-1\\workspace\\Cadoryx.Tests\\bin\\Release\\net10.0\\testhost.exe\"  --runtimeconfig \"C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1081-local86-1\\workspace\\Cadoryx.Tests\\bin\\Release\\net10.0\\Cadoryx.Tests.runtimeconfig.json\" --depsfile \"C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1081-local86-1\\workspace\\Cadoryx.Tests\\bin\\Release\\net10.0\\Cadoryx.Tests.deps.json\" --port 1893 --endpoint 127.0.0.1:01893 --role client --parentprocessid 25908 --telemetryoptedin false"
+    },
+    {
+      "ProcessId": 25908,
+      "ParentProcessId": 52704,
+      "CreationDate": "2026-10-13T22:38:27.574949+09:00",
+      "ExecutablePath": "C:\\Program Files\\dotnet\\dotnet.exe",
+      "CommandLine": "\"C:\\Program Files\\dotnet\\dotnet.exe\" exec \"C:\\Program Files\\dotnet\\sdk\\10.0.401\\vstest.console.dll\" C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1081-local86-1\\workspace\\Cadoryx.Tests\\bin\\Release\\net10.0\\Cadoryx.Tests.dll /TestCaseFilter:FullyQualifiedName~Cadoryx.Tests /Logger:console;verbosity=normal /Logger:trx;LogFileName=runtime.trx /ResultsDirectory:C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1081-local86-1\\full6830-release-1 --artifactsProcessingMode-collect --testSessionCorrelationId:52704_ae3f0a6e-1b15-4e8e-9d68-05fd160d952a"
+    },
+    {
+      "ProcessId": 52704,
+      "ParentProcessId": 44084,
+      "CreationDate": "2026-10-13T22:38:27.44446+09:00",
+      "ExecutablePath": "C:\\Program Files\\dotnet\\dotnet.exe",
+      "CommandLine": "\"C:\\Program Files\\dotnet\\dotnet.exe\" vstest C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1081-local86-1\\workspace\\Cadoryx.Tests\\bin\\Release\\net10.0\\Cadoryx.Tests.dll /TestCaseFilter:FullyQualifiedName~Cadoryx.Tests /Logger:console;verbosity=normal /Logger:trx;LogFileName=runtime.trx /ResultsDirectory:C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1081-local86-1\\full6830-release-1"
+    },
+    {
+      "ProcessId": 44084,
+      "ParentProcessId": 47400,
+      "CreationDate": "2026-10-13T22:38:22.282774+09:00",
+      "ExecutablePath": "C:\\Users\\yoiri\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\powershell\\pwsh.exe",
+      "CommandLine": "\"C:\\Users\\yoiri\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\powershell\\pwsh.exe\" -NoProfile -File capability-evidence/diagnostics/af1081-local86/run-full.ps1"
+    }
+  ],
+  "releaseStart": {
+    "path": "artifacts/af1081-local86-1/full6830-release-1/start.json",
+    "sha256": "74967B6ABE8F0F6C38C90952A58462762AE2423D7B1B02611AB412006629C9C2"
+  },
+  "actualNativeBinding": {
+    "path": "artifacts/af1081-local86-1/full6830-release-1/loaded-native.json",
+    "sha256": "B99340484D513F00D9A08ACF9EA9BA71FC2FC27F6E6456D7AA07F89F30664BDC"
+  },
+  "freeze": {
+    "path": "artifacts/af1081-local86-1/freeze.json",
+    "sha256": "622BFC6BD268C2349A0A74F3B1504B382A4472B555224D9B29CB7FA4F1B3E9A3"
+  },
+  "followups": {
+    "path": "artifacts/af1081-local86-1/followup-preparation.json",
+    "sha256": "5401F22AC42B3065C0559F7F67ABA5F8B2D71823E772B05564609A75EB99AA97"
+  },
+  "fullRuntimeTerminal": false,
+  "actualModelRun": false,
+  "actualPerformanceRun": false,
+  "actualDesktopRun": false,
+  "productionApplied": false,
+  "publiclyPublished": false,
+  "originalSTEP24Unresolved": true,
+  "AppSweepUnresolved": true,
+  "AFComplete": false,
+  "G": "USER_DEFERRED",
+  "cleanup": false
+}

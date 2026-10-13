@@ -1,5 +1,9 @@
 # A5 当前恢复矩阵与主壳状态栏验收
 
+2026-10-13 当前：原24视口恢复程序与36主壳状态栏hook已绑定[1081/本地86候选](AF_SOURCE1081_LOCAL86_ACCEPTANCE.md)，两配置四次publish均退出0，没有记录警告/错误，C#全文保持。[构建与身份审计](../capability-evidence/diagnostics/af1081-local86/recovery-build-verification.json)核对19个当前生产程序集、worker及其配置、语言资源和SDK13/native62；原24/36矩阵、30秒就绪、900秒观察、48保存文件及52/144整图条件保持。[当前运行器](../capability-evidence/diagnostics/af1081-local86/run-recovery.ps1)已准备但未启动，要求当前两配置6830完整终态与精确载荷，运行前通知用户。生产根仍1081/公开85；原STEP24、模型、性能、D6及A–F其余范围继续。以下source1000/SDK26、1063/SDK30记录为历史，不能替代当前验收。
+
+原C#已落入[tools/CadRecoveryWindowProbe](../tools/CadRecoveryWindowProbe/README.md)，使用调用方提供的冻结WPF输出重建。[两配置工具发布](../capability-evidence/diagnostics/af1081-local86/durable-recovery-verification.json)核对四次publish及当前载荷；[独立审计准备](../capability-evidence/diagnostics/af1081-local86/recovery-auditors-preparation.json)保持原运行断言正文，不把准备当作通过。Windows Computer Use已初始化并成功只读枚举窗口，没有启动任务窗口、激活窗口或键鼠输入。
+
 2026-10-12，status209：两份SDK30基线验收程序已编译并核对引用载荷，**均未运行**。生产仍为source1000 / SDK26，A–F未全部完成，G暂缓。1063修订5的Release/Debug完整6467均已独立通过；新1068的65项仍有24项STEP导出失败，不能用基线结论替代最终候选或桌面验收。
 
 ## 原24项恢复矩阵
