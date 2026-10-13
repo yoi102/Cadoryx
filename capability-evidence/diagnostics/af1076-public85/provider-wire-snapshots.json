@@ -1,0 +1,73 @@
+{
+  "recordedAt": "2026-10-13T09:58:33.224415+00:00",
+  "state": "ACTUAL_1076_FULL_SOURCE_ITEM_CONTEXT_WIRE_REQUESTS_PRESERVED",
+  "runtimeAudit": {
+    "path": "capability-evidence/diagnostics/af1076-public85/provider-runtime-verification.json",
+    "sha256": "53E3E9CCCB6B49928D7F159EDE1896C24BAD71CBD4729C35C1CF33197636778B"
+  },
+  "contexts": 3,
+  "requestFiles": [
+    {
+      "original": {
+        "path": "artifacts/af1076-public85-1/lmstudio-drawing-1/request-021.json",
+        "sha256": "8420CF3144B566E961A831892E292FCB803BC71AF668AABCC308D73EFE086438"
+      },
+      "saved": {
+        "path": "capability-evidence/diagnostics/af1076-public85/1076-drawing-request-021.json",
+        "sha256": "8420CF3144B566E961A831892E292FCB803BC71AF668AABCC308D73EFE086438"
+      }
+    },
+    {
+      "original": {
+        "path": "artifacts/af1076-public85-1/lmstudio-drawing-1/wire-request-021.json",
+        "sha256": "0695975451E069CBBC77FF413B6A2DA683EFE47B5DB58D9EA64F0B6AA5272970"
+      },
+      "saved": {
+        "path": "capability-evidence/diagnostics/af1076-public85/1076-drawing-wire-request-021.json",
+        "sha256": "0695975451E069CBBC77FF413B6A2DA683EFE47B5DB58D9EA64F0B6AA5272970"
+      }
+    },
+    {
+      "original": {
+        "path": "artifacts/af1076-public85-1/lmstudio-drawing-1/request-022.json",
+        "sha256": "0779094BB910BCCBD6F946FE9AF43529C01922415DB8B6D91558000EEEA88D5E"
+      },
+      "saved": {
+        "path": "capability-evidence/diagnostics/af1076-public85/1076-drawing-request-022.json",
+        "sha256": "0779094BB910BCCBD6F946FE9AF43529C01922415DB8B6D91558000EEEA88D5E"
+      }
+    },
+    {
+      "original": {
+        "path": "artifacts/af1076-public85-1/lmstudio-drawing-1/wire-request-022.json",
+        "sha256": "397B84A1929397C8345AF5EFAF4455BAC7E3F0355DADE1BB8F257D6FE8C7F2A7"
+      },
+      "saved": {
+        "path": "capability-evidence/diagnostics/af1076-public85/1076-drawing-wire-request-022.json",
+        "sha256": "397B84A1929397C8345AF5EFAF4455BAC7E3F0355DADE1BB8F257D6FE8C7F2A7"
+      }
+    },
+    {
+      "original": {
+        "path": "artifacts/af1076-public85-1/lmstudio-drawing-1/request-023.json",
+        "sha256": "F3AAFE7A14C9F5DF61B920BDBCCB9BD115A23BBA92EB58EE1F9AC330242DE329"
+      },
+      "saved": {
+        "path": "capability-evidence/diagnostics/af1076-public85/1076-drawing-request-023.json",
+        "sha256": "F3AAFE7A14C9F5DF61B920BDBCCB9BD115A23BBA92EB58EE1F9AC330242DE329"
+      }
+    },
+    {
+      "original": {
+        "path": "artifacts/af1076-public85-1/lmstudio-drawing-1/wire-request-023.json",
+        "sha256": "3BB0B90F35BDFFEC1AA57A8192B93CC8F2F2BB8DBDD2F2936435150C56BC564C"
+      },
+      "saved": {
+        "path": "capability-evidence/diagnostics/af1076-public85/1076-drawing-wire-request-023.json",
+        "sha256": "3BB0B90F35BDFFEC1AA57A8192B93CC8F2F2BB8DBDD2F2936435150C56BC564C"
+      }
+    }
+  ],
+  "originalModelOrBudgetsChanged": false,
+  "workflowPassed": false
+}

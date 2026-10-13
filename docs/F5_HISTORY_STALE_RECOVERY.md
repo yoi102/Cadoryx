@@ -1,5 +1,7 @@
 # F5 历史游标显式空值与拒绝后的重新读取
 
+1076后续原模型复验：多文档原8轮全部通过、关闭资产0，但本次没有调用新的游标恢复或带显式游标的作者检查，不能将通过归因该修复。工程图第三轮仍失败。两组实际native62和原提示/预算核验见[真实提供方记录](../capability-evidence/diagnostics/af1076-public85/provider-runtime-verification.json)；本页下方“原模型未复验”保留合入检查点时的状态。
+
 2026-10-13。原 Bonsai 的 [1075 多文档工作流](../capability-evidence/diagnostics/af1075-public85/provider-runtime-verification.json)完成五轮，第六轮超出原16工具轮。记录中两次 `return_end` 使用了不匹配的游标，收到通用过期错误后继续读取不含历史游标的 `parts` / `sketches`，随后重复提交。两场景都没有触发新增的 `completeSourceItems`，不能归因该功能或宣称模型已修复。
 
 进一步实际测试复现：作者检查使用 `WhenWritingNull`，在真实历史末端省略了根级 `cursor:null`。历史工具却要求明确传入检查到的游标，包括历史末端的显式空值。此次修复只将该根字段写为 JSON 值，保留其他可选空字段的既有规则；回滚时仍返回完整真实游标。

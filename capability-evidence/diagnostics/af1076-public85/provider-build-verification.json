@@ -1,0 +1,94 @@
+{
+  "recordedAt": "2026-10-13T09:44:43.098751+00:00",
+  "state": "AF1076_ORIGINAL_PROVIDER_PROBE_BUILT_FROZEN_APPLICATION16_PUBLIC_SDK13_NATIVE62_MATCH",
+  "sources": [
+    {
+      "path": "artifacts/af1076-public85-1/workspace/tools/CadAgentWorkflowProbe/Program.cs",
+      "sha256": "ECDE64BA427AB24667EC274D06B59404E37675BCD08447DFAE0EB62D62602346"
+    },
+    {
+      "path": "artifacts/af1076-public85-1/workspace/tools/CadAgentWorkflowProbe/DrawingProviderProbe.cs",
+      "sha256": "8BCF923185714028CDC865D774460FA56F73F86BE858F67186A9B4DC19D3BE72"
+    },
+    {
+      "path": "artifacts/af1076-public85-1/workspace/tools/CadAgentWorkflowProbe/WorkspaceProviderProbe.cs",
+      "sha256": "C46829DFDEA0342806F184BB1B894E0FB7002FF3C0928A00C6F484F1EC42C0CB"
+    }
+  ],
+  "sharedApplication16": [
+    {
+      "path": "artifacts/af1076-public85-1/provider/Cadoryx.Agent.Codex.dll",
+      "sha256": "8869ACB158D838492F48DCCE8DA96B20CB324674E40FA511924BBFA7A8C7E6EF"
+    },
+    {
+      "path": "artifacts/af1076-public85-1/provider/Cadoryx.Agent.dll",
+      "sha256": "C219974D9A091EF290668C049B6322B0C13087AC5C628F6B26FADF4E627862B9"
+    },
+    {
+      "path": "artifacts/af1076-public85-1/provider/Cadoryx.AI.Contracts.dll",
+      "sha256": "AE3C0027D63391D3F989A9706D12CFCEC77F5ADDD4C9B35384109CE9369C574D"
+    },
+    {
+      "path": "artifacts/af1076-public85-1/provider/Cadoryx.AI.LmStudio.dll",
+      "sha256": "2987759714862D94C5F0858BE1069ADAFA8832BD61907F729AADA76E42DAD4D0"
+    },
+    {
+      "path": "artifacts/af1076-public85-1/provider/Cadoryx.CommandLine.dll",
+      "sha256": "58EEFA02C9295A34AF5B12CFBECC91427793F489BF27A8A4776DDB10800B9010"
+    },
+    {
+      "path": "artifacts/af1076-public85-1/provider/Cadoryx.Commands.dll",
+      "sha256": "783862488A5905C6EBF06D047FF549FD00162C068A8AD916C26EE30F018E431A"
+    },
+    {
+      "path": "artifacts/af1076-public85-1/provider/Cadoryx.Db.dll",
+      "sha256": "24E43D9224A10B50967CE40C2F5612C936C7E5CC28F7E89EBE0FB36523A2C482"
+    },
+    {
+      "path": "artifacts/af1076-public85-1/provider/Cadoryx.Editor.dll",
+      "sha256": "7C22DE4F199F129865E54F5F1771D9F8179A253984434A8D9CEA0DEDED2FA390"
+    },
+    {
+      "path": "artifacts/af1076-public85-1/provider/Cadoryx.IO.dll",
+      "sha256": "A7B399483614266B0BDD7DE357AA46C47987F02CDF96F2D77A759A6BD5F1D661"
+    },
+    {
+      "path": "artifacts/af1076-public85-1/provider/Cadoryx.Kernel.Abstractions.dll",
+      "sha256": "919543B2D8FCF003BD61E2F8D87E4C67385B65DF26A8F881DC2853A65A3D1C5A"
+    },
+    {
+      "path": "artifacts/af1076-public85-1/provider/Cadoryx.Kernel.Occt.dll",
+      "sha256": "0ADAD5F421203DE0E3F34C415F7928D5C2E9877E67903E7B96E80F327C02E862"
+    },
+    {
+      "path": "artifacts/af1076-public85-1/provider/Cadoryx.Lang.dll",
+      "sha256": "B74B26B81BD7FF1D8B404F80C71A1B05F3D510BDE180829F1A8FED190AF63B86"
+    },
+    {
+      "path": "artifacts/af1076-public85-1/provider/Cadoryx.Rendering.dll",
+      "sha256": "29FFA268334B11483C7D3288FD7097AA22F19A00FB637405963F79D4BAD55ADF"
+    },
+    {
+      "path": "artifacts/af1076-public85-1/provider/Cadoryx.Sketching.dll",
+      "sha256": "412C4902196018C3F13FFC8A423114BEC76A13CEA985148FA35000A9492E66AC"
+    },
+    {
+      "path": "artifacts/af1076-public85-1/provider/Cadoryx.ViewModels.dll",
+      "sha256": "8CEF546AB59DA300B872736CC15218DA9476AE81ED3C11B4DBB3D96D14A4EE4E"
+    },
+    {
+      "path": "artifacts/af1076-public85-1/provider/Cadoryx.ViewModels.Services.dll",
+      "sha256": "D794395E55749A1D24890BD68B4D8596F787BF425367937ECBBBDF9B9F889463"
+    }
+  ],
+  "sdkManaged13MatchPublicParent": true,
+  "native62DiskMatchPublicParent": true,
+  "providerBinary": {
+    "path": "artifacts/af1076-public85-1/provider/CadAgentWorkflowProbe.dll",
+    "sha256": "B5AAD7F8CF4EC126C93904CDFA00CC4275306CEF0ED654A8A6F3E685DB8F7E50"
+  },
+  "originalPromptsAssertionsAndBudgetsPreserved": true,
+  "actualProviderWorkflowRun": false,
+  "AFComplete": false,
+  "cleanup": false
+}

@@ -1,0 +1,369 @@
+{
+  "recordedAt": "2026-10-13T09:51:02.303128+00:00",
+  "state": "AF1076_ORIGINAL_BONSAI_ACTUAL_RUNTIME_TERMINALS_VERIFIED",
+  "suite": {
+    "path": "artifacts/af1076-public85-1/provider-both-exit.json",
+    "sha256": "AF6AF80B6B3F881575A0FD579B92E0847A3F5EE766E3DEE26452A4DBDEC8F63C"
+  },
+  "freeze": {
+    "path": "artifacts/af1076-public85-1/provider-runtime-freeze.json",
+    "sha256": "2D5B5033D5AC0A3230B13538FF84AA30EA4C6FFBE6825D53D0F6942DDAC93F6F"
+  },
+  "scenarios": [
+    {
+      "scenario": "drawing",
+      "passed": false,
+      "completedTurns": 2,
+      "requiredTurns": 8,
+      "failure": "Requested cad_drawing.create lacks an answer and successful production receipt.",
+      "assetsAfterClose": 0,
+      "actualNative62Matched": true,
+      "terminal": {
+        "path": "artifacts/af1076-public85-1/lmstudio-drawing-1-exit.json",
+        "sha256": "CF7AF4A43C5B7EC0722D36EFECFC435FA4B34D4244083CA31D397BD0AEB06834"
+      },
+      "result": {
+        "path": "artifacts/af1076-public85-1/lmstudio-drawing-1/result.json",
+        "sha256": "C93185F82312DA714A543D584FA77690BDAE9888473221E23511583C2E5D2BEF"
+      },
+      "toolCalls": {
+        "path": "artifacts/af1076-public85-1/lmstudio-drawing-1/tool-calls.json",
+        "sha256": "C1D09E97FFEABD8491AEB677F16ADAD65722C8A84287300DB16DFC5D976AA65B"
+      },
+      "completeActualSourceRowsContexts": [
+        {
+          "request": {
+            "path": "artifacts/af1076-public85-1/lmstudio-drawing-1/request-021.json",
+            "sha256": "8420CF3144B566E961A831892E292FCB803BC71AF668AABCC308D73EFE086438"
+          },
+          "wire": {
+            "path": "artifacts/af1076-public85-1/lmstudio-drawing-1/wire-request-021.json",
+            "sha256": "0695975451E069CBBC77FF413B6A2DA683EFE47B5DB58D9EA64F0B6AA5272970"
+          },
+          "characters": 5786,
+          "actualSourceToolOrdinal": 18,
+          "completePrefixCount": 15,
+          "includedItems": 17,
+          "supplementalPositions": [
+            26,
+            38
+          ],
+          "supplementalRowsMatchActualSuccessfulNativeQuery": true,
+          "actualCylinderRowInWire": true,
+          "drawingToolAvailable": true
+        },
+        {
+          "request": {
+            "path": "artifacts/af1076-public85-1/lmstudio-drawing-1/request-022.json",
+            "sha256": "0779094BB910BCCBD6F946FE9AF43529C01922415DB8B6D91558000EEEA88D5E"
+          },
+          "wire": {
+            "path": "artifacts/af1076-public85-1/lmstudio-drawing-1/wire-request-022.json",
+            "sha256": "397B84A1929397C8345AF5EFAF4455BAC7E3F0355DADE1BB8F257D6FE8C7F2A7"
+          },
+          "characters": 5786,
+          "actualSourceToolOrdinal": 18,
+          "completePrefixCount": 15,
+          "includedItems": 17,
+          "supplementalPositions": [
+            26,
+            38
+          ],
+          "supplementalRowsMatchActualSuccessfulNativeQuery": true,
+          "actualCylinderRowInWire": true,
+          "drawingToolAvailable": true
+        },
+        {
+          "request": {
+            "path": "artifacts/af1076-public85-1/lmstudio-drawing-1/request-023.json",
+            "sha256": "F3AAFE7A14C9F5DF61B920BDBCCB9BD115A23BBA92EB58EE1F9AC330242DE329"
+          },
+          "wire": {
+            "path": "artifacts/af1076-public85-1/lmstudio-drawing-1/wire-request-023.json",
+            "sha256": "3BB0B90F35BDFFEC1AA57A8192B93CC8F2F2BB8DBDD2F2936435150C56BC564C"
+          },
+          "characters": 5786,
+          "actualSourceToolOrdinal": 18,
+          "completePrefixCount": 15,
+          "includedItems": 17,
+          "supplementalPositions": [
+            26,
+            38
+          ],
+          "supplementalRowsMatchActualSuccessfulNativeQuery": true,
+          "actualCylinderRowInWire": true,
+          "drawingToolAvailable": true
+        }
+      ],
+      "actualExplicitCursorReads": [],
+      "failedReceipts": [
+        {
+          "ordinal": 1,
+          "tool": "cad_workspace",
+          "arguments": {
+            "action": "list",
+            "expected": {
+              "workspaceStateId": "00000000-0000-0000-0000-000000000000",
+              "activeSessionId": null,
+              "documentId": null,
+              "stateId": null
+            }
+          },
+          "receipt": {
+            "success": false,
+            "message": "Workspace authoring is unavailable in this context."
+          }
+        },
+        {
+          "ordinal": 4,
+          "tool": "cad_drawing",
+          "arguments": {
+            "action": "create",
+            "documentId": "cebcdb18-f74f-47d6-b68c-09c6932bf89e",
+            "stateId": "b08b4145-2b5f-424b-a7d1-eb5ee1130e6c",
+            "name": "Provider Drawing",
+            "authorJson": "{\"name\":\"Provider Drawing\",\"widthMm\":297,\"heightMm\":210,\"unit\":\"Millimeter\",\"title\":\"Provider Drawing\",\"standard\":\"ISO\"}"
+          },
+          "receipt": {
+            "success": false,
+            "message": "Invalid drawing arguments for action=create. Unknown or duplicate: name. contract accepts only action/type; other actions require exact documentId/stateId from cad_status. inspect requires type, documentId and stateId together. Outer name is only save_template; create/edit names belong in authorJson.",
+            "missingOrInvalid": [],
+            "unexpectedArguments": [
+              "name"
+            ],
+            "allowedArguments": [
+              "action",
+              "documentId",
+              "stateId",
+              "type",
+              "sheetId",
+              "id",
+              "authorJson"
+            ]
+          }
+        },
+        {
+          "ordinal": 10,
+          "tool": "cad_drawing",
+          "arguments": {
+            "action": "contract",
+            "documentId": "cebcdb18-f74f-47d6-b68c-09c6932bf89e",
+            "stateId": "5c9f8324-1a07-4e3f-9f03-5a281e65d4f1",
+            "sheetId": "5df6c46c-a55b-45bf-8f65-9e1f6943350c",
+            "type": "view",
+            "authorJson": "{\"name\":\"Top\",\"kind\":\"Top\",\"centerMm\":{\"x\":80,\"y\":60},\"scale\":2}"
+          },
+          "receipt": {
+            "success": false,
+            "message": "Invalid drawing arguments for action=contract. Unknown or duplicate: documentId, stateId, sheetId, authorJson. contract accepts only action/type; other actions require exact documentId/stateId from cad_status. inspect requires type, documentId and stateId together. Outer name is only save_template; create/edit names belong in authorJson.",
+            "missingOrInvalid": [],
+            "unexpectedArguments": [
+              "documentId",
+              "stateId",
+              "sheetId",
+              "authorJson"
+            ],
+            "allowedArguments": [
+              "action",
+              "type"
+            ],
+            "validRequests": [
+              {
+                "action": "contract",
+                "type": "view"
+              }
+            ],
+            "requestNote": "Read-only examples. Choose the requested type; contract omits every document, state, owner and source identity. The rejected request was not executed."
+          }
+        },
+        {
+          "ordinal": 17,
+          "tool": "cad_drawing",
+          "arguments": {
+            "action": "inspect_sources",
+            "documentId": "cebcdb18-f74f-47d6-b68c-09c6932bf89e",
+            "id": "811249b5-9e13-4728-8aa7-f4f580b38e64",
+            "bodyId": "b665b108-1897-4799-bcd0-f1d4ea5fb52c",
+            "revision": "6dbf2db1-d718-4555-a20b-a8075e411858",
+            "limit": 50
+          },
+          "receipt": {
+            "success": false,
+            "message": "Invalid drawing arguments for action=inspect_sources. Missing or invalid: stateId. Unknown or duplicate: id. contract accepts only action/type; other actions require exact documentId/stateId from cad_status. inspect requires type, documentId and stateId together. Outer name is only save_template; create/edit names belong in authorJson.",
+            "missingOrInvalid": [
+              "stateId"
+            ],
+            "unexpectedArguments": [
+              "id"
+            ],
+            "allowedArguments": [
+              "action",
+              "documentId",
+              "stateId",
+              "path",
+              "bodyId",
+              "revision",
+              "offset",
+              "limit"
+            ],
+            "identitySource": {
+              "toolName": "cad_status",
+              "arguments": {}
+            },
+            "identityRole": "Copy documentId/stateId from the active cad_status response, not an item, body, sheet or source selection. Read current state before explicitly submitting the drawing request again. No identities were supplied or filled in automatically."
+          }
+        },
+        {
+          "ordinal": 19,
+          "tool": "cad_drawing",
+          "arguments": {
+            "action": "contract",
+            "documentId": "cebcdb18-f74f-47d6-b68c-09c6932bf89e",
+            "stateId": "5db00acf-b213-4b1d-8861-eb3ab8d84c32"
+          },
+          "receipt": {
+            "success": false,
+            "message": "Invalid drawing arguments for action=contract. Unknown or duplicate: documentId, stateId. contract accepts only action/type; other actions require exact documentId/stateId from cad_status. inspect requires type, documentId and stateId together. Outer name is only save_template; create/edit names belong in authorJson.",
+            "missingOrInvalid": [],
+            "unexpectedArguments": [
+              "documentId",
+              "stateId"
+            ],
+            "allowedArguments": [
+              "action",
+              "type"
+            ],
+            "validRequests": [
+              {
+                "action": "contract",
+                "type": "sheet"
+              },
+              {
+                "action": "contract",
+                "type": "view"
+              },
+              {
+                "action": "contract",
+                "type": "dimension"
+              },
+              {
+                "action": "contract",
+                "type": "datum"
+              },
+              {
+                "action": "contract",
+                "type": "control_frame"
+              },
+              {
+                "action": "contract",
+                "type": "balloon"
+              },
+              {
+                "action": "contract",
+                "type": "hole_table"
+              },
+              {
+                "action": "contract",
+                "type": "field"
+              },
+              {
+                "action": "contract",
+                "type": "note"
+              },
+              {
+                "action": "contract",
+                "type": "template"
+              },
+              {
+                "action": "contract",
+                "type": "parts_table"
+              },
+              {
+                "action": "contract",
+                "type": "zones"
+              }
+            ],
+            "requestNote": "Read-only examples. Choose the requested type; contract omits every document, state, owner and source identity. The rejected request was not executed."
+          }
+        }
+      ],
+      "finalResponse": {
+        "source": {
+          "path": "artifacts/af1076-public85-1/lmstudio-drawing-1/response-024.json",
+          "sha256": "D9DF2B8C432B3C97C33298ADC486F07E3F7A6196B2E758ABD1792923AB7EF534"
+        },
+        "content": "",
+        "toolCalls": 0
+      }
+    },
+    {
+      "scenario": "workspace",
+      "passed": true,
+      "completedTurns": 8,
+      "requiredTurns": 8,
+      "failure": null,
+      "assetsAfterClose": 0,
+      "actualNative62Matched": true,
+      "terminal": {
+        "path": "artifacts/af1076-public85-1/lmstudio-workspace-1-exit.json",
+        "sha256": "7A5072362F00EB7AEE6EDAB4860C75FA82F889713E1E96B65AC057E88038ACE9"
+      },
+      "result": {
+        "path": "artifacts/af1076-public85-1/lmstudio-workspace-1/result.json",
+        "sha256": "B95EAD62974693155C883EC70019E28E459528B9B204B6AA6C950A7D9F8D2A18"
+      },
+      "toolCalls": {
+        "path": "artifacts/af1076-public85-1/lmstudio-workspace-1/tool-calls.json",
+        "sha256": "8279CD3E87FF7507C83A0527ACD6222B1099C6425676A823039C77CBF86D6FE3"
+      },
+      "completeActualSourceRowsContexts": [],
+      "actualExplicitCursorReads": [],
+      "failedReceipts": [
+        {
+          "ordinal": 7,
+          "tool": "cad_file",
+          "arguments": {
+            "action": "contract",
+            "documentId": "57f15ce3-ceb0-43c7-898f-7cbbd0c3a6be",
+            "stateId": "f84b8284-44e8-42b2-8f2f-0e472c67607a"
+          },
+          "receipt": {
+            "success": false,
+            "message": "Unknown or duplicate argument: documentId."
+          }
+        },
+        {
+          "ordinal": 10,
+          "tool": "cad_file",
+          "arguments": {
+            "action": "save",
+            "documentId": "57f15ce3-ceb0-43c7-898f-7cbbd0c3a6be",
+            "stateId": "f84b8284-44e8-42b2-8f2f-0e472c67607a",
+            "path": "C:/Users/yoiri/source/repos/Cadoryx/artifacts/af1076-public85-1/lmstudio-workspace-1/workspace-provider-saved.cadoryx",
+            "overwrite": false
+          },
+          "receipt": {
+            "success": false,
+            "message": "Output exists; replacement was not requested."
+          }
+        }
+      ],
+      "finalResponse": {
+        "source": {
+          "path": "artifacts/af1076-public85-1/lmstudio-workspace-1/response-038.json",
+          "sha256": "3D8E385184973D1D2000F46F614C8F7D560C730601B1882DCF61A1DB51FE28FD"
+        },
+        "content": "All three documents remain open in the workspace:\n\n| Session | Name | Status | Document ID |\n|---------|------|--------|-------------|\n| 1 | Provider First | Inactive | `57f15ce3-ceb0-43c7-898f-7cbbd0c3a6be` |\n| 2 | **Provider Second** | **Active** | `3f96a2f2-ac2f-4fee-8821-c97284f26da6` |\n| 3 | Provider native source | Inactive | `b7fe1f6d-1a42-4704-9d36-84fd1694bddc` |\n\n**Provider Second** has been activated using the exact target identity (`sessionId: e247be13-5087-411b-923f-d30b8d5a1798`, `documentId: 3f96a2f2-ac2f-4fee-8821-c97284f26da6`, `stateId: bb8f9309-95b0-4331-b08c-39bad58c3ccf`).\n\n**Zero bodies confirmed**:\n- `cad_status` reports `bodies: 0`\n- `cad_inspect` on parts area returns `total: 0` with no items",
+        "toolCalls": 0
+      }
+    }
+  ],
+  "drawingSourceAvailabilityGapClosedInThisWireCapture": true,
+  "drawingDimensionWorkflowGateClosed": false,
+  "originalPromptsAssertionsAndBudgetsChanged": false,
+  "rootCauseProven": false,
+  "developmentSourceApplied": true,
+  "AFComplete": false,
+  "cleanup": false,
+  "G": "USER_DEFERRED"
+}

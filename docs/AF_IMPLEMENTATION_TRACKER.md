@@ -1,5 +1,7 @@
 # A–F 全量实施跟踪
 
+2026-10-13，status239：1076原模型两场景已实际结束，多文档8轮PASS/资产0，工程图第三轮FAIL；实际native62准确。完整CylinderFace原条目已进入三个实际HTTP请求，原查询/位置/5786字符和工具可用性已验，不算尺寸工作流通过；新游标恢复在本次多文档没有被调用。生产根完整6652 Release实际运行，Debug串行待验，未报告最终总数。SDK状态诊断已接收，原两个端盖边InvalidCurveOnSurface(8)、面UnorientableShape(27)及原exact标志保持；缺12上下文的初版日志不是通过证据，没有可采用修复。原A–F全部范围继续，G/清理暂缓；详见[STATUS](STATUS.md)。
+
 2026-10-13，status238：[完整1076组合已合入开发目录](AF_SOURCE1076_DEVELOPMENT_INTEGRATION.md)，不再是尚未合入的source1000组合。55现有/44新增、1189输入一致，生产根两配置构建0及实际6652发现；候选两配置各455个不同专项通过、实际native62核验。原6619名称完整保留，完整6652及根原生验收尚未运行。新历史回执保留cursor:null、过期仅提示只读重查，合入前生产两配置各261通过；不推断原模型可用。1075原两场景均FAIL且completeSourceItems未触发；D6第三版窗口可启动但实际六状态未完成。SDK mapped-scale两方案严格FAIL，继续定位具体状态。A–F所有原范围继续，G/清理暂缓；下方旧生产/候选状态按历史检查点阅读。
 
 2026-10-13，status237：[原Bonsai1074两场景](../capability-evidence/diagnostics/af1074-public85/provider-runtime-verification.json)实际多文档8轮PASS/资产0、工程图第三轮原16轮FAIL，实际native62准确。新[F5完整原生条目补充](F5_COMPLETE_NATIVE_SOURCE_CONTEXT.md)两配置34/34，旧版各33/1；1075完整solution两配置构建0、实际Agent二进制各34/34，原6635来源保持、新13项、预计6648尚未发现/全量执行。窗口宿主输入前启动失败已定位，修订2编译通过但实际窗口仍未通过。SDK原版诊断仍失败，新的精确mapped-scale假设未验证；原STEP24/窗口/材质/性能/生产集成及其他A–F范围保持，G与清理暂缓。

@@ -1,0 +1,42 @@
+{
+  "recordedAt": "2026-10-13T09:57:30.938152+00:00",
+  "state": "PRODUCTION_ROOT_FULL6652_RELEASE_VERIFIED_LIVE_DEBUG_QUEUED_NOT_COMPLETE",
+  "freeze": {
+    "path": "capability-evidence/diagnostics/af1076-root-full/initial-root-freeze.json",
+    "sha256": "2F1687EC4D2F5346F603B65AC85C33A57F45A1B26C9B15A09049CE8320770526"
+  },
+  "sourceInputsMatched": 1189,
+  "expected6652EachConfiguration": true,
+  "actualProcessesObserved": [
+    {
+      "ProcessId": 19484,
+      "ParentProcessId": 3096,
+      "ExecutablePath": "C:\\Program Files\\dotnet\\dotnet.exe",
+      "CreationDate": "/Date(1791885086590)/"
+    },
+    {
+      "ProcessId": 35852,
+      "ParentProcessId": 31716,
+      "ExecutablePath": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\Cadoryx.Tests\\bin\\Release\\net10.0\\testhost.exe",
+      "CreationDate": "/Date(1791885086939)/"
+    }
+  ],
+  "start": {
+    "path": "capability-evidence/diagnostics/af1076-root-full/release-running-start.json",
+    "sha256": "104CF0DA2DAC8C5BA375353738B2547706158EE7052D09010BD6F50A42DE54D9"
+  },
+  "binding": {
+    "path": "capability-evidence/diagnostics/af1076-root-full/release-running-loaded-native.json",
+    "sha256": "5CE569530E736BCF516F4873C95B4BC5F8690C47A5055CBCFCF036B6D721061A"
+  },
+  "actualNative62PathsAndHashesMatch": true,
+  "runnerSessionId": 91313,
+  "finalTerminalPresent": false,
+  "debugStarted": false,
+  "originalStrictSTEPFailuresObservedButFinalCountsUnknown": true,
+  "originalTestAssertionsAndBudgetsChanged": false,
+  "full6652Passed": false,
+  "AFComplete": false,
+  "cleanup": false,
+  "G": "USER_DEFERRED"
+}

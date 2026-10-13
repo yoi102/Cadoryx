@@ -1,0 +1,5 @@
+{
+  "Content": "All three documents remain open in the workspace:\n\n| Session | Name | Status | Document ID |\n|---------|------|--------|-------------|\n| 1 | Provider First | Inactive | \u006057f15ce3-ceb0-43c7-898f-7cbbd0c3a6be\u0060 |\n| 2 | **Provider Second** | **Active** | \u00603f96a2f2-ac2f-4fee-8821-c97284f26da6\u0060 |\n| 3 | Provider native source | Inactive | \u0060b7fe1f6d-1a42-4704-9d36-84fd1694bddc\u0060 |\n\n**Provider Second** has been activated using the exact target identity (\u0060sessionId: e247be13-5087-411b-923f-d30b8d5a1798\u0060, \u0060documentId: 3f96a2f2-ac2f-4fee-8821-c97284f26da6\u0060, \u0060stateId: bb8f9309-95b0-4331-b08c-39bad58c3ccf\u0060).\n\n**Zero bodies confirmed**:\n- \u0060cad_status\u0060 reports \u0060bodies: 0\u0060\n- \u0060cad_inspect\u0060 on parts area returns \u0060total: 0\u0060 with no items",
+  "ToolCalls": [],
+  "Model": "prism-ml/bonsai-27b"
+}

@@ -1,5 +1,7 @@
 # F5 同一次原生读取的完整条目补充
 
+1076实际复验结果：三个HTTP请求均在5786字符内携带第38项完整CylinderFace和第26项CircleEdge，与第18次真实成功原生读取逐条一致；`cad_drawing`仍可用。工程图第三轮在错误契约请求被拒绝后空答复，没有创建尺寸。此处数据可用性已由实际载荷证明，不能据此宣布原八轮制造工作流通过；详见[原模型审计](../capability-evidence/diagnostics/af1076-public85/provider-runtime-verification.json)。下方1074/1075及窗口启动叙述是当时检查点，当前组合源码已合入开发目录。
+
 2026-10-13。[1074原Bonsai实际验收](../capability-evidence/diagnostics/af1074-public85/provider-runtime-verification.json)中，多文档八轮通过、关闭资产0；工程图第三轮触及原16工具轮，前两轮完成，未创建尺寸。最后实际HTTP请求保留完整20项/5890字符和CylinderFace第38项的续读提示，`cad_drawing`可用；模型反复添加无关`id`、合法读取和查询状态，没有取续页。该记录不证明唯一根因。
 
 新实现保留原连续前缀、分页元数据、真实查询身份和只读续页，再在同一6000/2400字符预算内补充尚未在前缀出现的原生几何类型的完整原条目。每个补充条目都逐字节来自这次实际成功查询，带原结果位置；不推定拓扑索引、不选择实体或执行编辑。`includedItemCount/remainingOmittedItemCount`说明实际补充后的数量，原`retainedItemCount/omittedItemCount`仍描述连续前缀。完整第一项放不下时先撤掉可选补充，不跳过或虚构选择。配对缺失、身份/页参数不符、未知或重复字段仍不给补充；可完整容纳的原回执不改字节。

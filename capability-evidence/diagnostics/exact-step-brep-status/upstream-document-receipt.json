@@ -1,0 +1,13 @@
+{
+  "recordedAt": "2026-10-13T09:58:33.225416+00:00",
+  "source": {
+    "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\docs\\EXACT_STEP_BREP_STATUS_DIAGNOSTIC.md",
+    "sha256": "5C4805217DA30C934BE82ABD69DCD9D01762F061866C1907B6863591F93D8B58"
+  },
+  "snapshot": {
+    "path": "capability-evidence/diagnostics/exact-step-brep-status/upstream-coordinate-diagnosis.md",
+    "sha256": "5C4805217DA30C934BE82ABD69DCD9D01762F061866C1907B6863591F93D8B58"
+  },
+  "newNativeRun": false,
+  "diagnosisRepairsProduct": false
+}

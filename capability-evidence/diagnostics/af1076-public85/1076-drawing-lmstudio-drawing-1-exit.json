@@ -1,0 +1,17 @@
+{
+  "desktopInputStarted": false,
+  "endpoint": "http://127.0.0.1:15630/v1",
+  "binding": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1076-public85-1\\lmstudio-drawing-1-loaded-native.json",
+  "started": "2026-10-13T09:44:53.8786630+00:00",
+  "exitCode": 1,
+  "provider": "lmstudio",
+  "productionApplied": false,
+  "scenario": "drawing",
+  "completed": "2026-10-13T09:46:46.9103447+00:00",
+  "candidate": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1076-public85-1\\provider",
+  "model": "prism-ml/bonsai-27b",
+  "maxToolRounds": 16,
+  "cleanup": false,
+  "contextLength": 8192,
+  "originalPerTurnMinutes": 4
+}

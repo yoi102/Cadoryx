@@ -1,0 +1,947 @@
+{
+  "recordedAt": "2026-10-13T09:53:32.738895+00:00",
+  "state": "STOCK_EXACT_BREP_STATUS_DIAGNOSIS_INDEPENDENTLY_RECEIVED_NOT_REPAIRED",
+  "upstreamAudit": {
+    "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-brep-status-static\\run-543ec745111b4b6c9f782aaa647cb28e\\independent-status-audit.json",
+    "sha256": "33DFCA2D7262C17842AB26DF164D4EB201B84D80E12846478620B105AC60E7C1"
+  },
+  "verifiedHashReferences": [
+    {
+      "sha256": "C8337DDE4954A32CCF309F05D1AEFE5CB480FFFE57E32CC66448FC282D8A3235",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\tools\\ExactStepBrepStatusProbe\\audit-results.ps1"
+    },
+    {
+      "sha256": "83C27B033A562E7BD756635E784DE34B9484B64F609060B53B2EC70C88A8DE54",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-brep-status-static\\run-543ec745111b4b6c9f782aaa647cb28e\\both-result.json"
+    },
+    {
+      "sha256": "EFE249CBF299AB23786EF6487D002A6187B7025E24054CB5814E18FBEA591BE0",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-brep-status-static\\run-543ec745111b4b6c9f782aaa647cb28e\\original-flags-result.json"
+    },
+    {
+      "sha256": "AD9889AEA0E97692E6343B0DEA0FA1D00D43CC62A8A58DB10202C77C751F39D7",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-mapped-scale-static\\native-minimum\\run-c72fe1fca6cb44bc9765cdbb95fa7504\\both-result.json"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\tests\\OcctSharp.Runtime.Tests\\Fixtures\\b18-exact-step\\spline-g1-mirrored-inward-Bevel.brep",
+      "sha256": "B74ABBF44809F93AA28FA4F6349241F2B8882D8BB92A1B40EC3D859EB3260D51"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\runtime\\win-x64\\runtime-manifest.json",
+      "sha256": "C7989B6724B0C0EF6963642CD22EBC05D216171EC97D3DA5D0F7FBB2C2DF625F"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-brep-status-static\\run-543ec745111b4b6c9f782aaa647cb28e\\ExactStepBrepStatusProbe.exe",
+      "sha256": "FC766DC1A8B1B5318BCCAF3662D145F83201C8C03A3BE793FD2C00365CB1530C"
+    },
+    {
+      "sha256": "0836F4A6F44C42B8061FFF0B895E9E0EE78E09FBF2ADAF847776E8FE7AC5D9F1",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-brep-status-static\\run-543ec745111b4b6c9f782aaa647cb28e\\ExactStepBrepStatusProbe-flags.exe"
+    },
+    {
+      "sha256": "BF02922FB2E3B24F3A1FB9F0965464D29EF29726F0F7931128A5E6D70C36D66C",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-brep-status-static\\sources\\status-first.cpp"
+    },
+    {
+      "sha256": "3C7B85C32FCF722A5CC9978B49B2415438AE84A8C206F29AA67AB8A01FB8FBEC",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-brep-status-static\\sources\\status-flags.cpp"
+    },
+    {
+      "sha256": "BD13C76CDD673E2C1E9339E5DAB5584FB3D09EC90450DEFC1E8470EBFCACAA73",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\tools\\ExactStepMappedScaleProbe\\common.hxx"
+    },
+    {
+      "sha256": "54A9C62313E702302714A1E7E35E7F21F5381C32E50C32D5C57607C8EF6BA6A3",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\tools\\ExactStepBrepStatusProbe\\CMakeLists.txt"
+    },
+    {
+      "sha256": "21C8215F25B7966DE5C131F357CBD37D29DED95C1655024D5017871AEB4A5F7D",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-brep-status-static\\pinned-source\\BRepCheck_Analyzer.cxx"
+    },
+    {
+      "sha256": "193F4BA62D6C504836251F9253E6DEDDA592055DA4155349A5A469424285A7A6",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-brep-status-static\\pinned-source\\BRepCheck_Analyzer.hxx"
+    },
+    {
+      "sha256": "EDFD8935DB79074F3747368F9658FD0A3BEAC5CD3A69EAFC205624A4EA6C25EC",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-brep-status-static\\pinned-source\\BRepCheck_Edge.cxx"
+    },
+    {
+      "sha256": "44AF3F1F70BC381B15E245383F37EB363674489FA292DE867AF198F419BDD0CD",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-brep-status-static\\pinned-source\\BRepCheck_Edge.hxx"
+    },
+    {
+      "sha256": "B6EBF3F92D932AFA710236CF4A491275489C6F158B1701665F670CD396234D74",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-brep-status-static\\pinned-source\\BRepCheck_Face.cxx"
+    },
+    {
+      "sha256": "25A4E4319992525B819DA230EECF3C64734AB901CAE9B81C5B479CD6AC4D3604",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-brep-status-static\\pinned-source\\BRepCheck_Result.cxx"
+    },
+    {
+      "sha256": "A9A88E144DBAAC91512061F2908B84D0209E439539F1D567D08E95EB8648F081",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-brep-status-static\\pinned-source\\BRepCheck_Result.hxx"
+    },
+    {
+      "sha256": "8FF8CEF324240016CB6D64F05C3D696423A8F21945BD1BD295059F3F6422986E",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-brep-status-static\\pinned-source\\BRepLib_ValidateEdge.cxx"
+    },
+    {
+      "sha256": "71738B5107B643E5B54C44754665D4AA5924CD26269D65E3E8DE4E480B796890",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-brep-status-static\\run-543ec745111b4b6c9f782aaa647cb28e\\original-status-matrix.json"
+    },
+    {
+      "sha256": "04610269D13D1541F31AC605F409AFE4A1900B33B5D767E9BE43CDD70D0D18A1",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-brep-status-static\\run-543ec745111b4b6c9f782aaa647cb28e\\original-result.json"
+    },
+    {
+      "sha256": "0D87A20363CFB66F7862FBC9AA7234059D13712B3A0D7E6B35CBB0172810A93C",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-brep-status-static\\run-543ec745111b4b6c9f782aaa647cb28e\\TKG2d.dll"
+    },
+    {
+      "sha256": "8A13921267C5839C0D8D4395DAE33FC5C1F80F8D03C0D8C0CEB153AA3DA35C6C",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-brep-status-static\\run-543ec745111b4b6c9f782aaa647cb28e\\TKG3d.dll"
+    },
+    {
+      "sha256": "2C41EFC32C025D1E7753548498027AA240D315B455BF36130432EA23E5860A2A",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-brep-status-static\\run-543ec745111b4b6c9f782aaa647cb28e\\TKMath.dll"
+    },
+    {
+      "sha256": "6BD91D22B6A893884BA74FEC8C352F68BCF0F79096D00F52119D4810EF42567E",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-brep-status-static\\run-543ec745111b4b6c9f782aaa647cb28e\\TKGeomBase.dll"
+    },
+    {
+      "sha256": "3ECBC7F193EBB746CC88A81E03EB603D24FDF03470B346551698F45D4FAEB7B4",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-brep-status-static\\run-543ec745111b4b6c9f782aaa647cb28e\\TKernel.dll"
+    },
+    {
+      "sha256": "A511C8CF51178CF881C3BA0B54287DCECE6DED03CF3DE99E6FABF2A2D5152207",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-brep-status-static\\run-543ec745111b4b6c9f782aaa647cb28e\\TKBRep.dll"
+    },
+    {
+      "sha256": "6690CE35FCF32BD2C379D12A21ABDE6BAF023087F3EEFBCCC5AE40E416B0B107",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-brep-status-static\\run-543ec745111b4b6c9f782aaa647cb28e\\TKTopAlgo.dll"
+    },
+    {
+      "sha256": "887888A0C2FFE7F64718D4EEA2A10CE41C68DEC1A954DB3A62646ADEEE66C0AD",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-brep-status-static\\run-543ec745111b4b6c9f782aaa647cb28e\\tbb12.dll"
+    },
+    {
+      "sha256": "3978FEC70540BD0B369FF01263BA341E01A57E308F5EA1788B5DC56B1A851AA7",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-brep-status-static\\run-543ec745111b4b6c9f782aaa647cb28e\\TKXSBase.dll"
+    },
+    {
+      "sha256": "EA0CFCF6A12BB3863961074547C958FD978AA3F800244CC4FE2847B127C4DF5E",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-brep-status-static\\run-543ec745111b4b6c9f782aaa647cb28e\\jemalloc.dll"
+    },
+    {
+      "sha256": "DC010933AEF4481083D21F77ADFAEE6ACEADE87D5F454AD5F4743F07A00B4DF6",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-brep-status-static\\run-543ec745111b4b6c9f782aaa647cb28e\\TKDESTEP.dll"
+    },
+    {
+      "sha256": "91E87BD3E5A3267C4A2D97B171EA05FA21FE1B78A2B905F7CF7E3CF19F5CD43E",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-brep-status-static\\run-543ec745111b4b6c9f782aaa647cb28e\\TKShHealing.dll"
+    },
+    {
+      "sha256": "2F0E1C9BD86C367B36DC7519502B095DE0DEE910D1F86B5B39BA962790A0D0C5",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-brep-status-static\\run-543ec745111b4b6c9f782aaa647cb28e\\TKDE.dll"
+    },
+    {
+      "sha256": "64095FF4FFA3BDD41BD17FFFDC39F9490CE34C2EF59AAB427C71DEAA6F3B791A",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-brep-status-static\\run-543ec745111b4b6c9f782aaa647cb28e\\TKXCAF.dll"
+    },
+    {
+      "sha256": "154E047A29217C0FAF101EC0B8119D6D327E89560CD82CB18D17EC48D508883B",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-brep-status-static\\run-543ec745111b4b6c9f782aaa647cb28e\\TKGeomAlgo.dll"
+    },
+    {
+      "sha256": "C51A1DA060562BA8855C02A091D849A575459FEE3ED80543358F9113871DAF9D",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-brep-status-static\\run-543ec745111b4b6c9f782aaa647cb28e\\TKLCAF.dll"
+    },
+    {
+      "sha256": "94948F34AD0696D0D4CA404DA4369B348B0B3C1241EEE1E42DAD87353E5629BF",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-brep-status-static\\run-543ec745111b4b6c9f782aaa647cb28e\\TKVCAF.dll"
+    },
+    {
+      "sha256": "B16E5AEB5213D9586A606C6443246C0D77CE52B117A54A4E523FD9E0BB41AAE6",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-brep-status-static\\run-543ec745111b4b6c9f782aaa647cb28e\\TKService.dll"
+    },
+    {
+      "sha256": "5356773B60EAF73345AE6822369EB8B721A9D18EABA925491870E24CBA651BD9",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-brep-status-static\\run-543ec745111b4b6c9f782aaa647cb28e\\TKV3d.dll"
+    },
+    {
+      "sha256": "E78FD6196F7356FFA541A015CB6DF481E9999D8E813E2D7A5D914CA6205614AE",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-brep-status-static\\run-543ec745111b4b6c9f782aaa647cb28e\\TKCAF.dll"
+    },
+    {
+      "sha256": "71DB78E77E577DB6D0666C25437695D42CEAFB9C7F8DA94FBE765525B8E2F5F2",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-brep-status-static\\run-543ec745111b4b6c9f782aaa647cb28e\\openvr_api.dll"
+    },
+    {
+      "sha256": "9BCCAB992DA8F4069CB4020A064D67DF507309CA679AD20BB97A9B5FB0797A3A",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-brep-status-static\\run-543ec745111b4b6c9f782aaa647cb28e\\TKCDF.dll"
+    },
+    {
+      "sha256": "637621E4AE51B496B8A86F9B053050D5AF2BA999EA0680BBFE3D5DF91F976C75",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-brep-status-static\\run-543ec745111b4b6c9f782aaa647cb28e\\freetype.dll"
+    },
+    {
+      "sha256": "297D3207DD0E6325DAB7A080472A4FD2F743CFC53861615B4DC96B91227CD3AF",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-brep-status-static\\run-543ec745111b4b6c9f782aaa647cb28e\\avformat-57.dll"
+    },
+    {
+      "sha256": "4D7A6A2CFF37C782CE1A3C74FA83EBBEBCC43DFC774E3F497A406C84C1458C7E",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-brep-status-static\\run-543ec745111b4b6c9f782aaa647cb28e\\avcodec-57.dll"
+    },
+    {
+      "sha256": "67BCFFB3CCDAEBF2BBD3149542D92DD9430ABFDFF1D7B79B3A529AF712926412",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-brep-status-static\\run-543ec745111b4b6c9f782aaa647cb28e\\swscale-4.dll"
+    },
+    {
+      "sha256": "BE7C03FF47618916D16AF446E2F7C00E48F2FF8934C6ACE4C0D0E3D804732E8E",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-brep-status-static\\run-543ec745111b4b6c9f782aaa647cb28e\\avutil-55.dll"
+    },
+    {
+      "sha256": "143337A5BF7128B7D5F50B33129D70EE4B4E9669F9166D89AF732444A221F95F",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-brep-status-static\\run-543ec745111b4b6c9f782aaa647cb28e\\TKMesh.dll"
+    },
+    {
+      "sha256": "499F63A9335A17F8D2903DB1D56E27EE2DEAD324E35EFE46E2A9FAC8A8BF6F89",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-brep-status-static\\run-543ec745111b4b6c9f782aaa647cb28e\\TKHLR.dll"
+    },
+    {
+      "sha256": "41F837935BCC65882ACD73295EF65CA13D47B018ACDCB6093FAF47804B96D0C5",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-brep-status-static\\run-543ec745111b4b6c9f782aaa647cb28e\\TKBO.dll"
+    },
+    {
+      "sha256": "37DE279166407566D7FFF2DD063638FDF1F8DC89C0D030E550AA4868585F49DD",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-brep-status-static\\run-543ec745111b4b6c9f782aaa647cb28e\\TKPrim.dll"
+    },
+    {
+      "sha256": "4594BD0538F7F6B05148B00996FF36DDFEDEF8D66910E931503DCFEBF8EFE1DB",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-brep-status-static\\run-543ec745111b4b6c9f782aaa647cb28e\\FreeImage.dll"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-brep-status-static\\run-543ec745111b4b6c9f782aaa647cb28e\\original.jsonl",
+      "sha256": "1FA90194EFEE92FE1665E1DE8DCC594A0A06256B1CA8E6D5193664869E330111"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\sdk31-planar-equivalence-probe-1\\writer-release-0-1.step",
+      "sha256": "8E6A4AFF886156B89ADF9BE5F0FE02E12B17A9133F9A0B03F611A2469912A7D4"
+    },
+    {
+      "sha256": "AFC8F87F72DF4F23E19BCB318AE076D9F6023EAC1250A935EE5F1936ECE449ED",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-brep-status-static\\run-543ec745111b4b6c9f782aaa647cb28e\\identity-status-matrix.json"
+    },
+    {
+      "sha256": "AF078C8320D1F694D71012DD5A5AC978CD97298CEBA06354FDE62D1A6D5FC8DB",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-brep-status-static\\run-543ec745111b4b6c9f782aaa647cb28e\\identity-result.json"
+    },
+    {
+      "sha256": "0D87A20363CFB66F7862FBC9AA7234059D13712B3A0D7E6B35CBB0172810A93C",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-brep-status-static\\run-543ec745111b4b6c9f782aaa647cb28e\\TKG2d.dll"
+    },
+    {
+      "sha256": "8A13921267C5839C0D8D4395DAE33FC5C1F80F8D03C0D8C0CEB153AA3DA35C6C",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-brep-status-static\\run-543ec745111b4b6c9f782aaa647cb28e\\TKG3d.dll"
+    },
+    {
+      "sha256": "3ECBC7F193EBB746CC88A81E03EB603D24FDF03470B346551698F45D4FAEB7B4",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-brep-status-static\\run-543ec745111b4b6c9f782aaa647cb28e\\TKernel.dll"
+    },
+    {
+      "sha256": "2C41EFC32C025D1E7753548498027AA240D315B455BF36130432EA23E5860A2A",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-brep-status-static\\run-543ec745111b4b6c9f782aaa647cb28e\\TKMath.dll"
+    },
+    {
+      "sha256": "6BD91D22B6A893884BA74FEC8C352F68BCF0F79096D00F52119D4810EF42567E",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-brep-status-static\\run-543ec745111b4b6c9f782aaa647cb28e\\TKGeomBase.dll"
+    },
+    {
+      "sha256": "A511C8CF51178CF881C3BA0B54287DCECE6DED03CF3DE99E6FABF2A2D5152207",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-brep-status-static\\run-543ec745111b4b6c9f782aaa647cb28e\\TKBRep.dll"
+    },
+    {
+      "sha256": "6690CE35FCF32BD2C379D12A21ABDE6BAF023087F3EEFBCCC5AE40E416B0B107",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-brep-status-static\\run-543ec745111b4b6c9f782aaa647cb28e\\TKTopAlgo.dll"
+    },
+    {
+      "sha256": "3978FEC70540BD0B369FF01263BA341E01A57E308F5EA1788B5DC56B1A851AA7",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-brep-status-static\\run-543ec745111b4b6c9f782aaa647cb28e\\TKXSBase.dll"
+    },
+    {
+      "sha256": "DC010933AEF4481083D21F77ADFAEE6ACEADE87D5F454AD5F4743F07A00B4DF6",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-brep-status-static\\run-543ec745111b4b6c9f782aaa647cb28e\\TKDESTEP.dll"
+    },
+    {
+      "sha256": "154E047A29217C0FAF101EC0B8119D6D327E89560CD82CB18D17EC48D508883B",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-brep-status-static\\run-543ec745111b4b6c9f782aaa647cb28e\\TKGeomAlgo.dll"
+    },
+    {
+      "sha256": "887888A0C2FFE7F64718D4EEA2A10CE41C68DEC1A954DB3A62646ADEEE66C0AD",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-brep-status-static\\run-543ec745111b4b6c9f782aaa647cb28e\\tbb12.dll"
+    },
+    {
+      "sha256": "EA0CFCF6A12BB3863961074547C958FD978AA3F800244CC4FE2847B127C4DF5E",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-brep-status-static\\run-543ec745111b4b6c9f782aaa647cb28e\\jemalloc.dll"
+    },
+    {
+      "sha256": "2F0E1C9BD86C367B36DC7519502B095DE0DEE910D1F86B5B39BA962790A0D0C5",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-brep-status-static\\run-543ec745111b4b6c9f782aaa647cb28e\\TKDE.dll"
+    },
+    {
+      "sha256": "C51A1DA060562BA8855C02A091D849A575459FEE3ED80543358F9113871DAF9D",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-brep-status-static\\run-543ec745111b4b6c9f782aaa647cb28e\\TKLCAF.dll"
+    },
+    {
+      "sha256": "64095FF4FFA3BDD41BD17FFFDC39F9490CE34C2EF59AAB427C71DEAA6F3B791A",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-brep-status-static\\run-543ec745111b4b6c9f782aaa647cb28e\\TKXCAF.dll"
+    },
+    {
+      "sha256": "91E87BD3E5A3267C4A2D97B171EA05FA21FE1B78A2B905F7CF7E3CF19F5CD43E",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-brep-status-static\\run-543ec745111b4b6c9f782aaa647cb28e\\TKShHealing.dll"
+    },
+    {
+      "sha256": "9BCCAB992DA8F4069CB4020A064D67DF507309CA679AD20BB97A9B5FB0797A3A",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-brep-status-static\\run-543ec745111b4b6c9f782aaa647cb28e\\TKCDF.dll"
+    },
+    {
+      "sha256": "5356773B60EAF73345AE6822369EB8B721A9D18EABA925491870E24CBA651BD9",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-brep-status-static\\run-543ec745111b4b6c9f782aaa647cb28e\\TKV3d.dll"
+    },
+    {
+      "sha256": "B16E5AEB5213D9586A606C6443246C0D77CE52B117A54A4E523FD9E0BB41AAE6",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-brep-status-static\\run-543ec745111b4b6c9f782aaa647cb28e\\TKService.dll"
+    },
+    {
+      "sha256": "94948F34AD0696D0D4CA404DA4369B348B0B3C1241EEE1E42DAD87353E5629BF",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-brep-status-static\\run-543ec745111b4b6c9f782aaa647cb28e\\TKVCAF.dll"
+    },
+    {
+      "sha256": "E78FD6196F7356FFA541A015CB6DF481E9999D8E813E2D7A5D914CA6205614AE",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-brep-status-static\\run-543ec745111b4b6c9f782aaa647cb28e\\TKCAF.dll"
+    },
+    {
+      "sha256": "143337A5BF7128B7D5F50B33129D70EE4B4E9669F9166D89AF732444A221F95F",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-brep-status-static\\run-543ec745111b4b6c9f782aaa647cb28e\\TKMesh.dll"
+    },
+    {
+      "sha256": "499F63A9335A17F8D2903DB1D56E27EE2DEAD324E35EFE46E2A9FAC8A8BF6F89",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-brep-status-static\\run-543ec745111b4b6c9f782aaa647cb28e\\TKHLR.dll"
+    },
+    {
+      "sha256": "71DB78E77E577DB6D0666C25437695D42CEAFB9C7F8DA94FBE765525B8E2F5F2",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-brep-status-static\\run-543ec745111b4b6c9f782aaa647cb28e\\openvr_api.dll"
+    },
+    {
+      "sha256": "4594BD0538F7F6B05148B00996FF36DDFEDEF8D66910E931503DCFEBF8EFE1DB",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-brep-status-static\\run-543ec745111b4b6c9f782aaa647cb28e\\FreeImage.dll"
+    },
+    {
+      "sha256": "637621E4AE51B496B8A86F9B053050D5AF2BA999EA0680BBFE3D5DF91F976C75",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-brep-status-static\\run-543ec745111b4b6c9f782aaa647cb28e\\freetype.dll"
+    },
+    {
+      "sha256": "297D3207DD0E6325DAB7A080472A4FD2F743CFC53861615B4DC96B91227CD3AF",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-brep-status-static\\run-543ec745111b4b6c9f782aaa647cb28e\\avformat-57.dll"
+    },
+    {
+      "sha256": "4D7A6A2CFF37C782CE1A3C74FA83EBBEBCC43DFC774E3F497A406C84C1458C7E",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-brep-status-static\\run-543ec745111b4b6c9f782aaa647cb28e\\avcodec-57.dll"
+    },
+    {
+      "sha256": "BE7C03FF47618916D16AF446E2F7C00E48F2FF8934C6ACE4C0D0E3D804732E8E",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-brep-status-static\\run-543ec745111b4b6c9f782aaa647cb28e\\avutil-55.dll"
+    },
+    {
+      "sha256": "67BCFFB3CCDAEBF2BBD3149542D92DD9430ABFDFF1D7B79B3A529AF712926412",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-brep-status-static\\run-543ec745111b4b6c9f782aaa647cb28e\\swscale-4.dll"
+    },
+    {
+      "sha256": "41F837935BCC65882ACD73295EF65CA13D47B018ACDCB6093FAF47804B96D0C5",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-brep-status-static\\run-543ec745111b4b6c9f782aaa647cb28e\\TKBO.dll"
+    },
+    {
+      "sha256": "37DE279166407566D7FFF2DD063638FDF1F8DC89C0D030E550AA4868585F49DD",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-brep-status-static\\run-543ec745111b4b6c9f782aaa647cb28e\\TKPrim.dll"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-brep-status-static\\run-543ec745111b4b6c9f782aaa647cb28e\\identity.jsonl",
+      "sha256": "D55B5A626350119520E522408B913515B98114640B475BCD3669746C1BDAE603"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-mapped-scale-static\\native-minimum\\run-c72fe1fca6cb44bc9765cdbb95fa7504\\factor-1.step",
+      "sha256": "B0F160A9A30C036F6B622168B342545042514CAB0CA65A176EBDCE64029270F2"
+    },
+    {
+      "sha256": "797E98DEAF1089D8DD0F88A24A25155A18E3DF83400C5266932CB08E1C9AD2C1",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-brep-status-static\\run-543ec745111b4b6c9f782aaa647cb28e\\scale1024-status-matrix.json"
+    },
+    {
+      "sha256": "4ECF0E3A4511BB210353F0D563313C635480731FD30B57D17A494DEDA779C79F",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-brep-status-static\\run-543ec745111b4b6c9f782aaa647cb28e\\scale1024-result.json"
+    },
+    {
+      "sha256": "0D87A20363CFB66F7862FBC9AA7234059D13712B3A0D7E6B35CBB0172810A93C",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-brep-status-static\\run-543ec745111b4b6c9f782aaa647cb28e\\TKG2d.dll"
+    },
+    {
+      "sha256": "3ECBC7F193EBB746CC88A81E03EB603D24FDF03470B346551698F45D4FAEB7B4",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-brep-status-static\\run-543ec745111b4b6c9f782aaa647cb28e\\TKernel.dll"
+    },
+    {
+      "sha256": "2C41EFC32C025D1E7753548498027AA240D315B455BF36130432EA23E5860A2A",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-brep-status-static\\run-543ec745111b4b6c9f782aaa647cb28e\\TKMath.dll"
+    },
+    {
+      "sha256": "8A13921267C5839C0D8D4395DAE33FC5C1F80F8D03C0D8C0CEB153AA3DA35C6C",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-brep-status-static\\run-543ec745111b4b6c9f782aaa647cb28e\\TKG3d.dll"
+    },
+    {
+      "sha256": "6BD91D22B6A893884BA74FEC8C352F68BCF0F79096D00F52119D4810EF42567E",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-brep-status-static\\run-543ec745111b4b6c9f782aaa647cb28e\\TKGeomBase.dll"
+    },
+    {
+      "sha256": "A511C8CF51178CF881C3BA0B54287DCECE6DED03CF3DE99E6FABF2A2D5152207",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-brep-status-static\\run-543ec745111b4b6c9f782aaa647cb28e\\TKBRep.dll"
+    },
+    {
+      "sha256": "DC010933AEF4481083D21F77ADFAEE6ACEADE87D5F454AD5F4743F07A00B4DF6",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-brep-status-static\\run-543ec745111b4b6c9f782aaa647cb28e\\TKDESTEP.dll"
+    },
+    {
+      "sha256": "6690CE35FCF32BD2C379D12A21ABDE6BAF023087F3EEFBCCC5AE40E416B0B107",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-brep-status-static\\run-543ec745111b4b6c9f782aaa647cb28e\\TKTopAlgo.dll"
+    },
+    {
+      "sha256": "3978FEC70540BD0B369FF01263BA341E01A57E308F5EA1788B5DC56B1A851AA7",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-brep-status-static\\run-543ec745111b4b6c9f782aaa647cb28e\\TKXSBase.dll"
+    },
+    {
+      "sha256": "887888A0C2FFE7F64718D4EEA2A10CE41C68DEC1A954DB3A62646ADEEE66C0AD",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-brep-status-static\\run-543ec745111b4b6c9f782aaa647cb28e\\tbb12.dll"
+    },
+    {
+      "sha256": "EA0CFCF6A12BB3863961074547C958FD978AA3F800244CC4FE2847B127C4DF5E",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-brep-status-static\\run-543ec745111b4b6c9f782aaa647cb28e\\jemalloc.dll"
+    },
+    {
+      "sha256": "2F0E1C9BD86C367B36DC7519502B095DE0DEE910D1F86B5B39BA962790A0D0C5",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-brep-status-static\\run-543ec745111b4b6c9f782aaa647cb28e\\TKDE.dll"
+    },
+    {
+      "sha256": "C51A1DA060562BA8855C02A091D849A575459FEE3ED80543358F9113871DAF9D",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-brep-status-static\\run-543ec745111b4b6c9f782aaa647cb28e\\TKLCAF.dll"
+    },
+    {
+      "sha256": "64095FF4FFA3BDD41BD17FFFDC39F9490CE34C2EF59AAB427C71DEAA6F3B791A",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-brep-status-static\\run-543ec745111b4b6c9f782aaa647cb28e\\TKXCAF.dll"
+    },
+    {
+      "sha256": "154E047A29217C0FAF101EC0B8119D6D327E89560CD82CB18D17EC48D508883B",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-brep-status-static\\run-543ec745111b4b6c9f782aaa647cb28e\\TKGeomAlgo.dll"
+    },
+    {
+      "sha256": "91E87BD3E5A3267C4A2D97B171EA05FA21FE1B78A2B905F7CF7E3CF19F5CD43E",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-brep-status-static\\run-543ec745111b4b6c9f782aaa647cb28e\\TKShHealing.dll"
+    },
+    {
+      "sha256": "9BCCAB992DA8F4069CB4020A064D67DF507309CA679AD20BB97A9B5FB0797A3A",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-brep-status-static\\run-543ec745111b4b6c9f782aaa647cb28e\\TKCDF.dll"
+    },
+    {
+      "sha256": "B16E5AEB5213D9586A606C6443246C0D77CE52B117A54A4E523FD9E0BB41AAE6",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-brep-status-static\\run-543ec745111b4b6c9f782aaa647cb28e\\TKService.dll"
+    },
+    {
+      "sha256": "5356773B60EAF73345AE6822369EB8B721A9D18EABA925491870E24CBA651BD9",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-brep-status-static\\run-543ec745111b4b6c9f782aaa647cb28e\\TKV3d.dll"
+    },
+    {
+      "sha256": "94948F34AD0696D0D4CA404DA4369B348B0B3C1241EEE1E42DAD87353E5629BF",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-brep-status-static\\run-543ec745111b4b6c9f782aaa647cb28e\\TKVCAF.dll"
+    },
+    {
+      "sha256": "E78FD6196F7356FFA541A015CB6DF481E9999D8E813E2D7A5D914CA6205614AE",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-brep-status-static\\run-543ec745111b4b6c9f782aaa647cb28e\\TKCAF.dll"
+    },
+    {
+      "sha256": "4594BD0538F7F6B05148B00996FF36DDFEDEF8D66910E931503DCFEBF8EFE1DB",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-brep-status-static\\run-543ec745111b4b6c9f782aaa647cb28e\\FreeImage.dll"
+    },
+    {
+      "sha256": "637621E4AE51B496B8A86F9B053050D5AF2BA999EA0680BBFE3D5DF91F976C75",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-brep-status-static\\run-543ec745111b4b6c9f782aaa647cb28e\\freetype.dll"
+    },
+    {
+      "sha256": "71DB78E77E577DB6D0666C25437695D42CEAFB9C7F8DA94FBE765525B8E2F5F2",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-brep-status-static\\run-543ec745111b4b6c9f782aaa647cb28e\\openvr_api.dll"
+    },
+    {
+      "sha256": "297D3207DD0E6325DAB7A080472A4FD2F743CFC53861615B4DC96B91227CD3AF",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-brep-status-static\\run-543ec745111b4b6c9f782aaa647cb28e\\avformat-57.dll"
+    },
+    {
+      "sha256": "4D7A6A2CFF37C782CE1A3C74FA83EBBEBCC43DFC774E3F497A406C84C1458C7E",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-brep-status-static\\run-543ec745111b4b6c9f782aaa647cb28e\\avcodec-57.dll"
+    },
+    {
+      "sha256": "67BCFFB3CCDAEBF2BBD3149542D92DD9430ABFDFF1D7B79B3A529AF712926412",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-brep-status-static\\run-543ec745111b4b6c9f782aaa647cb28e\\swscale-4.dll"
+    },
+    {
+      "sha256": "499F63A9335A17F8D2903DB1D56E27EE2DEAD324E35EFE46E2A9FAC8A8BF6F89",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-brep-status-static\\run-543ec745111b4b6c9f782aaa647cb28e\\TKHLR.dll"
+    },
+    {
+      "sha256": "143337A5BF7128B7D5F50B33129D70EE4B4E9669F9166D89AF732444A221F95F",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-brep-status-static\\run-543ec745111b4b6c9f782aaa647cb28e\\TKMesh.dll"
+    },
+    {
+      "sha256": "BE7C03FF47618916D16AF446E2F7C00E48F2FF8934C6ACE4C0D0E3D804732E8E",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-brep-status-static\\run-543ec745111b4b6c9f782aaa647cb28e\\avutil-55.dll"
+    },
+    {
+      "sha256": "41F837935BCC65882ACD73295EF65CA13D47B018ACDCB6093FAF47804B96D0C5",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-brep-status-static\\run-543ec745111b4b6c9f782aaa647cb28e\\TKBO.dll"
+    },
+    {
+      "sha256": "37DE279166407566D7FFF2DD063638FDF1F8DC89C0D030E550AA4868585F49DD",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-brep-status-static\\run-543ec745111b4b6c9f782aaa647cb28e\\TKPrim.dll"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-brep-status-static\\run-543ec745111b4b6c9f782aaa647cb28e\\scale1024.jsonl",
+      "sha256": "9B1FF322BD65CD2DC1639A60122BDF211C279FEFD1F3AE2AE1504BCC8D2D1AEA"
+    },
+    {
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-mapped-scale-static\\native-minimum\\run-c72fe1fca6cb44bc9765cdbb95fa7504\\factor-1024.step",
+      "sha256": "BDC312C4C6624913E085DD246B25FA3B679680203E20C610BB4A9C477A1ABD5D"
+    },
+    {
+      "sha256": "9DAAD414831A870FCD53DE6EA12E10BA0532C4796887C88927E0364411E605FA",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-brep-status-static\\run-543ec745111b4b6c9f782aaa647cb28e\\original-flags-status-matrix.json"
+    },
+    {
+      "sha256": "EFE249CBF299AB23786EF6487D002A6187B7025E24054CB5814E18FBEA591BE0",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-brep-status-static\\run-543ec745111b4b6c9f782aaa647cb28e\\original-flags-result.json"
+    },
+    {
+      "sha256": "0D87A20363CFB66F7862FBC9AA7234059D13712B3A0D7E6B35CBB0172810A93C",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-brep-status-static\\run-543ec745111b4b6c9f782aaa647cb28e\\TKG2d.dll"
+    },
+    {
+      "sha256": "3ECBC7F193EBB746CC88A81E03EB603D24FDF03470B346551698F45D4FAEB7B4",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-brep-status-static\\run-543ec745111b4b6c9f782aaa647cb28e\\TKernel.dll"
+    },
+    {
+      "sha256": "2C41EFC32C025D1E7753548498027AA240D315B455BF36130432EA23E5860A2A",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-brep-status-static\\run-543ec745111b4b6c9f782aaa647cb28e\\TKMath.dll"
+    },
+    {
+      "sha256": "8A13921267C5839C0D8D4395DAE33FC5C1F80F8D03C0D8C0CEB153AA3DA35C6C",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-brep-status-static\\run-543ec745111b4b6c9f782aaa647cb28e\\TKG3d.dll"
+    },
+    {
+      "sha256": "A511C8CF51178CF881C3BA0B54287DCECE6DED03CF3DE99E6FABF2A2D5152207",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-brep-status-static\\run-543ec745111b4b6c9f782aaa647cb28e\\TKBRep.dll"
+    },
+    {
+      "sha256": "6BD91D22B6A893884BA74FEC8C352F68BCF0F79096D00F52119D4810EF42567E",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-brep-status-static\\run-543ec745111b4b6c9f782aaa647cb28e\\TKGeomBase.dll"
+    },
+    {
+      "sha256": "6690CE35FCF32BD2C379D12A21ABDE6BAF023087F3EEFBCCC5AE40E416B0B107",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-brep-status-static\\run-543ec745111b4b6c9f782aaa647cb28e\\TKTopAlgo.dll"
+    },
+    {
+      "sha256": "3978FEC70540BD0B369FF01263BA341E01A57E308F5EA1788B5DC56B1A851AA7",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-brep-status-static\\run-543ec745111b4b6c9f782aaa647cb28e\\TKXSBase.dll"
+    },
+    {
+      "sha256": "DC010933AEF4481083D21F77ADFAEE6ACEADE87D5F454AD5F4743F07A00B4DF6",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-brep-status-static\\run-543ec745111b4b6c9f782aaa647cb28e\\TKDESTEP.dll"
+    },
+    {
+      "sha256": "EA0CFCF6A12BB3863961074547C958FD978AA3F800244CC4FE2847B127C4DF5E",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-brep-status-static\\run-543ec745111b4b6c9f782aaa647cb28e\\jemalloc.dll"
+    },
+    {
+      "sha256": "887888A0C2FFE7F64718D4EEA2A10CE41C68DEC1A954DB3A62646ADEEE66C0AD",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-brep-status-static\\run-543ec745111b4b6c9f782aaa647cb28e\\tbb12.dll"
+    },
+    {
+      "sha256": "154E047A29217C0FAF101EC0B8119D6D327E89560CD82CB18D17EC48D508883B",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-brep-status-static\\run-543ec745111b4b6c9f782aaa647cb28e\\TKGeomAlgo.dll"
+    },
+    {
+      "sha256": "2F0E1C9BD86C367B36DC7519502B095DE0DEE910D1F86B5B39BA962790A0D0C5",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-brep-status-static\\run-543ec745111b4b6c9f782aaa647cb28e\\TKDE.dll"
+    },
+    {
+      "sha256": "64095FF4FFA3BDD41BD17FFFDC39F9490CE34C2EF59AAB427C71DEAA6F3B791A",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-brep-status-static\\run-543ec745111b4b6c9f782aaa647cb28e\\TKXCAF.dll"
+    },
+    {
+      "sha256": "91E87BD3E5A3267C4A2D97B171EA05FA21FE1B78A2B905F7CF7E3CF19F5CD43E",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-brep-status-static\\run-543ec745111b4b6c9f782aaa647cb28e\\TKShHealing.dll"
+    },
+    {
+      "sha256": "C51A1DA060562BA8855C02A091D849A575459FEE3ED80543358F9113871DAF9D",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-brep-status-static\\run-543ec745111b4b6c9f782aaa647cb28e\\TKLCAF.dll"
+    },
+    {
+      "sha256": "94948F34AD0696D0D4CA404DA4369B348B0B3C1241EEE1E42DAD87353E5629BF",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-brep-status-static\\run-543ec745111b4b6c9f782aaa647cb28e\\TKVCAF.dll"
+    },
+    {
+      "sha256": "5356773B60EAF73345AE6822369EB8B721A9D18EABA925491870E24CBA651BD9",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-brep-status-static\\run-543ec745111b4b6c9f782aaa647cb28e\\TKV3d.dll"
+    },
+    {
+      "sha256": "B16E5AEB5213D9586A606C6443246C0D77CE52B117A54A4E523FD9E0BB41AAE6",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-brep-status-static\\run-543ec745111b4b6c9f782aaa647cb28e\\TKService.dll"
+    },
+    {
+      "sha256": "E78FD6196F7356FFA541A015CB6DF481E9999D8E813E2D7A5D914CA6205614AE",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-brep-status-static\\run-543ec745111b4b6c9f782aaa647cb28e\\TKCAF.dll"
+    },
+    {
+      "sha256": "9BCCAB992DA8F4069CB4020A064D67DF507309CA679AD20BB97A9B5FB0797A3A",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-brep-status-static\\run-543ec745111b4b6c9f782aaa647cb28e\\TKCDF.dll"
+    },
+    {
+      "sha256": "499F63A9335A17F8D2903DB1D56E27EE2DEAD324E35EFE46E2A9FAC8A8BF6F89",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-brep-status-static\\run-543ec745111b4b6c9f782aaa647cb28e\\TKHLR.dll"
+    },
+    {
+      "sha256": "143337A5BF7128B7D5F50B33129D70EE4B4E9669F9166D89AF732444A221F95F",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-brep-status-static\\run-543ec745111b4b6c9f782aaa647cb28e\\TKMesh.dll"
+    },
+    {
+      "sha256": "71DB78E77E577DB6D0666C25437695D42CEAFB9C7F8DA94FBE765525B8E2F5F2",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-brep-status-static\\run-543ec745111b4b6c9f782aaa647cb28e\\openvr_api.dll"
+    },
+    {
+      "sha256": "4594BD0538F7F6B05148B00996FF36DDFEDEF8D66910E931503DCFEBF8EFE1DB",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-brep-status-static\\run-543ec745111b4b6c9f782aaa647cb28e\\FreeImage.dll"
+    },
+    {
+      "sha256": "637621E4AE51B496B8A86F9B053050D5AF2BA999EA0680BBFE3D5DF91F976C75",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-brep-status-static\\run-543ec745111b4b6c9f782aaa647cb28e\\freetype.dll"
+    },
+    {
+      "sha256": "67BCFFB3CCDAEBF2BBD3149542D92DD9430ABFDFF1D7B79B3A529AF712926412",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-brep-status-static\\run-543ec745111b4b6c9f782aaa647cb28e\\swscale-4.dll"
+    },
+    {
+      "sha256": "297D3207DD0E6325DAB7A080472A4FD2F743CFC53861615B4DC96B91227CD3AF",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-brep-status-static\\run-543ec745111b4b6c9f782aaa647cb28e\\avformat-57.dll"
+    },
+    {
+      "sha256": "4D7A6A2CFF37C782CE1A3C74FA83EBBEBCC43DFC774E3F497A406C84C1458C7E",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-brep-status-static\\run-543ec745111b4b6c9f782aaa647cb28e\\avcodec-57.dll"
+    },
+    {
+      "sha256": "BE7C03FF47618916D16AF446E2F7C00E48F2FF8934C6ACE4C0D0E3D804732E8E",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-brep-status-static\\run-543ec745111b4b6c9f782aaa647cb28e\\avutil-55.dll"
+    },
+    {
+      "sha256": "41F837935BCC65882ACD73295EF65CA13D47B018ACDCB6093FAF47804B96D0C5",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-brep-status-static\\run-543ec745111b4b6c9f782aaa647cb28e\\TKBO.dll"
+    },
+    {
+      "sha256": "37DE279166407566D7FFF2DD063638FDF1F8DC89C0D030E550AA4868585F49DD",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-brep-status-static\\run-543ec745111b4b6c9f782aaa647cb28e\\TKPrim.dll"
+    },
+    {
+      "sha256": "98CE6CA8C534CAA6566FCF97347E6243244AA975AF6298AD734870A417D258C8",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-brep-status-static\\run-543ec745111b4b6c9f782aaa647cb28e\\original-flags.jsonl"
+    },
+    {
+      "sha256": "8E6A4AFF886156B89ADF9BE5F0FE02E12B17A9133F9A0B03F611A2469912A7D4",
+      "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\sdk31-planar-equivalence-probe-1\\writer-release-0-1.step"
+    }
+  ],
+  "cases": [
+    {
+      "case": "original",
+      "summary": {
+        "kind": "summary",
+        "originalExactValid": false,
+        "edgeUses": 24,
+        "shapeKept": true,
+        "gate": 1e-07,
+        "productAccepted": false,
+        "logLine": 247
+      },
+      "actualNodes": 34,
+      "actualEdgeUses": 24,
+      "iteratorContextCount": 12,
+      "directContextCount": 0,
+      "unobservedCachedContextCount": 12,
+      "analyzerExactObserved": false,
+      "traceStoredFailures": 0,
+      "traceAbsentPlaneFailures": 2,
+      "faces": [
+        {
+          "originalSelfCodes": [
+            0
+          ],
+          "node": 3,
+          "face": 1
+        },
+        {
+          "originalSelfCodes": [
+            0
+          ],
+          "node": 13,
+          "face": 2
+        },
+        {
+          "originalSelfCodes": [
+            0
+          ],
+          "node": 20,
+          "face": 3
+        },
+        {
+          "originalSelfCodes": [
+            0
+          ],
+          "node": 27,
+          "face": 4
+        },
+        {
+          "originalSelfCodes": [
+            27
+          ],
+          "node": 31,
+          "face": 5
+        },
+        {
+          "originalSelfCodes": [
+            27
+          ],
+          "node": 33,
+          "face": 6
+        }
+      ]
+    },
+    {
+      "case": "identity",
+      "summary": {
+        "kind": "summary",
+        "originalExactValid": false,
+        "edgeUses": 24,
+        "shapeKept": true,
+        "gate": 1e-07,
+        "productAccepted": false,
+        "logLine": 246
+      },
+      "actualNodes": 34,
+      "actualEdgeUses": 24,
+      "iteratorContextCount": 12,
+      "directContextCount": 0,
+      "unobservedCachedContextCount": 12,
+      "analyzerExactObserved": false,
+      "traceStoredFailures": 0,
+      "traceAbsentPlaneFailures": 2,
+      "faces": [
+        {
+          "originalSelfCodes": [
+            0
+          ],
+          "node": 3,
+          "face": 1
+        },
+        {
+          "originalSelfCodes": [
+            0
+          ],
+          "node": 13,
+          "face": 2
+        },
+        {
+          "originalSelfCodes": [
+            0
+          ],
+          "node": 20,
+          "face": 3
+        },
+        {
+          "originalSelfCodes": [
+            0
+          ],
+          "node": 27,
+          "face": 4
+        },
+        {
+          "originalSelfCodes": [
+            27
+          ],
+          "node": 31,
+          "face": 5
+        },
+        {
+          "originalSelfCodes": [
+            27
+          ],
+          "node": 33,
+          "face": 6
+        }
+      ]
+    },
+    {
+      "case": "scale1024",
+      "summary": {
+        "kind": "summary",
+        "originalExactValid": false,
+        "edgeUses": 24,
+        "shapeKept": true,
+        "gate": 1e-07,
+        "productAccepted": false,
+        "logLine": 257
+      },
+      "actualNodes": 34,
+      "actualEdgeUses": 24,
+      "iteratorContextCount": 12,
+      "directContextCount": 0,
+      "unobservedCachedContextCount": 12,
+      "analyzerExactObserved": false,
+      "traceStoredFailures": 15,
+      "traceAbsentPlaneFailures": 2,
+      "faces": [
+        {
+          "originalSelfCodes": [
+            27
+          ],
+          "node": 3,
+          "face": 1
+        },
+        {
+          "originalSelfCodes": [
+            27
+          ],
+          "node": 13,
+          "face": 2
+        },
+        {
+          "originalSelfCodes": [
+            27
+          ],
+          "node": 20,
+          "face": 3
+        },
+        {
+          "originalSelfCodes": [
+            27
+          ],
+          "node": 27,
+          "face": 4
+        },
+        {
+          "originalSelfCodes": [
+            27
+          ],
+          "node": 31,
+          "face": 5
+        },
+        {
+          "originalSelfCodes": [
+            27
+          ],
+          "node": 33,
+          "face": 6
+        }
+      ]
+    },
+    {
+      "case": "original-flags",
+      "summary": {
+        "kind": "summary",
+        "originalExactValid": false,
+        "edgeUses": 24,
+        "shapeKept": true,
+        "gate": 1e-07,
+        "productAccepted": false,
+        "logLine": 332
+      },
+      "actualNodes": 34,
+      "actualEdgeUses": 24,
+      "iteratorContextCount": 12,
+      "directContextCount": 24,
+      "unobservedCachedContextCount": 0,
+      "analyzerExactObserved": true,
+      "traceStoredFailures": 0,
+      "traceAbsentPlaneFailures": 2,
+      "faces": [
+        {
+          "originalSelfCodes": [
+            0
+          ],
+          "node": 3,
+          "face": 1
+        },
+        {
+          "originalSelfCodes": [
+            0
+          ],
+          "node": 13,
+          "face": 2
+        },
+        {
+          "originalSelfCodes": [
+            0
+          ],
+          "node": 20,
+          "face": 3
+        },
+        {
+          "originalSelfCodes": [
+            0
+          ],
+          "node": 27,
+          "face": 4
+        },
+        {
+          "originalSelfCodes": [
+            27
+          ],
+          "node": 31,
+          "face": 5
+        },
+        {
+          "originalSelfCodes": [
+            27
+          ],
+          "node": 33,
+          "face": 6
+        }
+      ]
+    }
+  ],
+  "originalExactFlagObserved": true,
+  "originalDirectEdgeFaceFailures": [
+    {
+      "face": 5,
+      "edge": 10,
+      "status": 8
+    },
+    {
+      "face": 6,
+      "edge": 9,
+      "status": 8
+    }
+  ],
+  "importedShapeIndexDomainOnly": true,
+  "iteratorMissingContextsCannotBeInterpretedAsNoError": true,
+  "originalDirectCheckerDisagreement": false,
+  "iteratorBinaryInternalCauseProved": false,
+  "identityAndScaleMissingDirectContextsNotReplayed": true,
+  "original24ApplicationFailuresClosed": false,
+  "generatorOrPackagesChanged": false,
+  "AFComplete": false,
+  "cleanup": false,
+  "G": "USER_DEFERRED"
+}

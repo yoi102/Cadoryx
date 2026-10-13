@@ -1,5 +1,9 @@
 # 当前状态
 
+2026-10-13，status239：[1076原Bonsai复验](../capability-evidence/diagnostics/af1076-public85/provider-runtime-verification.json)已终态并核验：多文档原8轮PASS、资产0；工程图完成两轮，第三轮缺少尺寸创建收据FAIL。实际native62两组准确，原三份提示/断言、8192上下文/16工具轮保持。工程图的三个实际wire请求在5786字符内保留完整CylinderFace第38项及CircleEdge第26项，逐条匹配第18次原生成功查询；柱面数据可用性已证，不等于工作流通过。多文档没有调用新游标恢复，不据此证明因果。生产根完整6652 Release已启动并[确认进程实际存活/native62匹配](../capability-evidence/diagnostics/af1076-root-full/running-verification.json)，Debug待串行；原STEP拒绝已复现，尚无终态/总数。SDK[逐边逐面状态诊断](../capability-evidence/diagnostics/exact-step-brep-status/receipt-verification.json)164哈希引用已独立接收：原exact标志true，完整24直接上下文在face5-edge10/face6-edge9给出InvalidCurveOnSurface(8)，两个端盖UnorientableShape(27)；初版迭代日志漏录12上下文，identity/1024未录得不能算NoError。没有精确修复或新包。A–F继续，真实窗口/材质/性能、原STEP24及第4、5节其余范围保持，G和清理暂缓。
+
+当前进度以status239为准；以下status238及更早保留历史检查点。
+
 2026-10-13，status238：[source1076开发合入](AF_SOURCE1076_DEVELOPMENT_INTEGRATION.md)完成，55个现有更改/44个新文件、1189输入匹配受测候选。生产根锁定恢复、完整solution Release/Debug构建零警告/错误，各实际发现6652，SDK13/native62磁盘匹配公开85。候选两配置各436实际原生专项及19独立线协议共455通过，原6619名称完整保留、新增33、实际native62准确、原激进十二工具预算通过；完整6652及合入后根原生测试尚未执行。[历史显式空游标/过期只读恢复](F5_HISTORY_STALE_RECOVERY.md)生产合入前各261通过。1075原Bonsai工程图第二轮收据FAIL、多文档第六轮工具16 FAIL，资产0且实际native62准确，两场景均未触发completeSourceItems；1076未模型复验。D6宿主两项启动错误已修复，第三版实际窗口取消、六状态轨迹未完成；原36窗口仍未通过。mapped-scale最小两方案已接收且strict BRep均FAIL，未采用，上游继续具体状态/坐标系定位。A–F继续，原STEP24、真实窗口/材质/性能与其余范围保持，G和清理暂缓。
 
 当前进度以status238为准；以下status237及更早为保留的历史检查点。

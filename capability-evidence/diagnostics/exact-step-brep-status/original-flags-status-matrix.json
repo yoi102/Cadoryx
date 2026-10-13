@@ -1,0 +1,1082 @@
+{
+  "indexDomain": "THIS_IMPORTED_SHAPE_ONLY_NOT_PERSISTENT_AUTHOR_IDS",
+  "edgeFaceMatrix": [
+    {
+      "edge": 1,
+      "face": 1,
+      "edgeNode": 5,
+      "faceNode": 3,
+      "originalContextComputed": true,
+      "iteratorCodes": [
+        0
+      ],
+      "directCodes": [
+        0
+      ],
+      "cachedStatusObserved": true,
+      "independentCodes": [
+        0
+      ],
+      "trace": {
+        "kind": "edgeFaceTrace",
+        "edge": 1,
+        "face": 1,
+        "branch": "STORED_PCURVE_WITH_TRANSFORMED_SURFACE",
+        "storedPcurve": true,
+        "sameRange": true,
+        "sameParameter": true,
+        "localCurveFirst": 0,
+        "localCurveLast": 3,
+        "checkerWorldFirst": 0,
+        "checkerWorldLast": 3,
+        "localPcurveFirst": 0,
+        "localPcurveLast": 3,
+        "curveLocationScale": 1,
+        "surfaceLocationScale": 1,
+        "relativeCurveSurfaceScale": 1,
+        "rawCheckedTolerance": 1E-07,
+        "checkerMethodDone": true,
+        "checkerTolerancePass": true,
+        "checkerCorrectedMaxDistance": 7.106751526936104E-13,
+        "physicalMethodDone": true,
+        "physicalMaxDistance": 7.106680460131502E-13,
+        "physicalCheckOverridesOriginalStatus": false,
+        "certifiedBound": false,
+        "logLine": 149
+      }
+    },
+    {
+      "edge": 2,
+      "face": 1,
+      "edgeNode": 8,
+      "faceNode": 3,
+      "originalContextComputed": true,
+      "iteratorCodes": [
+        0
+      ],
+      "directCodes": [
+        0
+      ],
+      "cachedStatusObserved": true,
+      "independentCodes": [
+        0
+      ],
+      "trace": {
+        "kind": "edgeFaceTrace",
+        "edge": 2,
+        "face": 1,
+        "branch": "STORED_PCURVE_WITH_TRANSFORMED_SURFACE",
+        "storedPcurve": true,
+        "sameRange": true,
+        "sameParameter": true,
+        "localCurveFirst": 0.09999999999989549,
+        "localCurveLast": 4.380000000000053,
+        "checkerWorldFirst": 0.09999999999989549,
+        "checkerWorldLast": 4.380000000000053,
+        "localPcurveFirst": 0.09999999999989549,
+        "localPcurveLast": 4.380000000000053,
+        "curveLocationScale": 1,
+        "surfaceLocationScale": 1,
+        "relativeCurveSurfaceScale": 1,
+        "rawCheckedTolerance": 1E-07,
+        "checkerMethodDone": true,
+        "checkerTolerancePass": true,
+        "checkerCorrectedMaxDistance": 0,
+        "physicalMethodDone": true,
+        "physicalMaxDistance": 0,
+        "physicalCheckOverridesOriginalStatus": false,
+        "certifiedBound": false,
+        "logLine": 154
+      }
+    },
+    {
+      "edge": 3,
+      "face": 1,
+      "edgeNode": 10,
+      "faceNode": 3,
+      "originalContextComputed": true,
+      "iteratorCodes": [
+        0
+      ],
+      "directCodes": [
+        0
+      ],
+      "cachedStatusObserved": true,
+      "independentCodes": [
+        0
+      ],
+      "trace": {
+        "kind": "edgeFaceTrace",
+        "edge": 3,
+        "face": 1,
+        "branch": "STORED_PCURVE_WITH_TRANSFORMED_SURFACE",
+        "storedPcurve": true,
+        "sameRange": true,
+        "sameParameter": true,
+        "localCurveFirst": 0,
+        "localCurveLast": 3,
+        "checkerWorldFirst": 0,
+        "checkerWorldLast": 3,
+        "localPcurveFirst": 0,
+        "localPcurveLast": 3,
+        "curveLocationScale": 1,
+        "surfaceLocationScale": 1,
+        "relativeCurveSurfaceScale": 1,
+        "rawCheckedTolerance": 1E-07,
+        "checkerMethodDone": true,
+        "checkerTolerancePass": true,
+        "checkerCorrectedMaxDistance": 1.4846428013213566E-12,
+        "physicalMethodDone": true,
+        "physicalMaxDistance": 1.4846279550418061E-12,
+        "physicalCheckOverridesOriginalStatus": false,
+        "certifiedBound": false,
+        "logLine": 159
+      }
+    },
+    {
+      "edge": 4,
+      "face": 1,
+      "edgeNode": 12,
+      "faceNode": 3,
+      "originalContextComputed": true,
+      "iteratorCodes": [
+        0
+      ],
+      "directCodes": [
+        0
+      ],
+      "cachedStatusObserved": true,
+      "independentCodes": [
+        0
+      ],
+      "trace": {
+        "kind": "edgeFaceTrace",
+        "edge": 4,
+        "face": 1,
+        "branch": "STORED_PCURVE_WITH_TRANSFORMED_SURFACE",
+        "storedPcurve": true,
+        "sameRange": true,
+        "sameParameter": true,
+        "localCurveFirst": 0.09999999999989549,
+        "localCurveLast": 4.380000000000053,
+        "checkerWorldFirst": 0.09999999999989549,
+        "checkerWorldLast": 4.380000000000053,
+        "localPcurveFirst": 0.09999999999989549,
+        "localPcurveLast": 4.380000000000053,
+        "curveLocationScale": 1,
+        "surfaceLocationScale": 1,
+        "relativeCurveSurfaceScale": 1,
+        "rawCheckedTolerance": 1E-07,
+        "checkerMethodDone": true,
+        "checkerTolerancePass": true,
+        "checkerCorrectedMaxDistance": 2.775585317138507E-17,
+        "physicalMethodDone": true,
+        "physicalMaxDistance": 2.7755575615628914E-17,
+        "physicalCheckOverridesOriginalStatus": false,
+        "certifiedBound": false,
+        "logLine": 164
+      }
+    },
+    {
+      "edge": 5,
+      "face": 2,
+      "edgeNode": 15,
+      "faceNode": 13,
+      "originalContextComputed": true,
+      "iteratorCodes": [
+        0
+      ],
+      "directCodes": [
+        0
+      ],
+      "cachedStatusObserved": true,
+      "independentCodes": [
+        0
+      ],
+      "trace": {
+        "kind": "edgeFaceTrace",
+        "edge": 5,
+        "face": 2,
+        "branch": "STORED_PCURVE_WITH_TRANSFORMED_SURFACE",
+        "storedPcurve": true,
+        "sameRange": true,
+        "sameParameter": true,
+        "localCurveFirst": 0,
+        "localCurveLast": 3,
+        "checkerWorldFirst": 0,
+        "checkerWorldLast": 3,
+        "localPcurveFirst": 0,
+        "localPcurveLast": 3,
+        "curveLocationScale": 1,
+        "surfaceLocationScale": 1,
+        "relativeCurveSurfaceScale": 1,
+        "rawCheckedTolerance": 1E-07,
+        "checkerMethodDone": true,
+        "checkerTolerancePass": true,
+        "checkerCorrectedMaxDistance": 6.495566110615622E-13,
+        "physicalMethodDone": true,
+        "physicalMaxDistance": 6.495501155604066E-13,
+        "physicalCheckOverridesOriginalStatus": false,
+        "certifiedBound": false,
+        "logLine": 169
+      }
+    },
+    {
+      "edge": 6,
+      "face": 2,
+      "edgeNode": 18,
+      "faceNode": 13,
+      "originalContextComputed": true,
+      "iteratorCodes": [
+        0
+      ],
+      "directCodes": [
+        0
+      ],
+      "cachedStatusObserved": true,
+      "independentCodes": [
+        0
+      ],
+      "trace": {
+        "kind": "edgeFaceTrace",
+        "edge": 6,
+        "face": 2,
+        "branch": "STORED_PCURVE_WITH_TRANSFORMED_SURFACE",
+        "storedPcurve": true,
+        "sameRange": true,
+        "sameParameter": true,
+        "localCurveFirst": -1.0262265786604009E-13,
+        "localCurveLast": 8.859999999999525,
+        "checkerWorldFirst": -1.0262265786604009E-13,
+        "checkerWorldLast": 8.859999999999525,
+        "localPcurveFirst": -1.0262265786604009E-13,
+        "localPcurveLast": 8.859999999999525,
+        "curveLocationScale": 1,
+        "surfaceLocationScale": 1,
+        "relativeCurveSurfaceScale": 1,
+        "rawCheckedTolerance": 1E-07,
+        "checkerMethodDone": true,
+        "checkerTolerancePass": true,
+        "checkerCorrectedMaxDistance": 4.965117957177612E-16,
+        "physicalMethodDone": true,
+        "physicalMaxDistance": 4.965068306494546E-16,
+        "physicalCheckOverridesOriginalStatus": false,
+        "certifiedBound": false,
+        "logLine": 174
+      }
+    },
+    {
+      "edge": 1,
+      "face": 2,
+      "edgeNode": 5,
+      "faceNode": 13,
+      "originalContextComputed": true,
+      "iteratorCodes": [],
+      "directCodes": [
+        0
+      ],
+      "cachedStatusObserved": true,
+      "independentCodes": [
+        0
+      ],
+      "trace": {
+        "kind": "edgeFaceTrace",
+        "edge": 1,
+        "face": 2,
+        "branch": "STORED_PCURVE_WITH_TRANSFORMED_SURFACE",
+        "storedPcurve": true,
+        "sameRange": true,
+        "sameParameter": true,
+        "localCurveFirst": 0,
+        "localCurveLast": 3,
+        "checkerWorldFirst": 0,
+        "checkerWorldLast": 3,
+        "localPcurveFirst": 0,
+        "localPcurveLast": 3,
+        "curveLocationScale": 1,
+        "surfaceLocationScale": 1,
+        "relativeCurveSurfaceScale": 1,
+        "rawCheckedTolerance": 1E-07,
+        "checkerMethodDone": true,
+        "checkerTolerancePass": true,
+        "checkerCorrectedMaxDistance": 5.3807697786718565E-12,
+        "physicalMethodDone": true,
+        "physicalMaxDistance": 5.380715971512141E-12,
+        "physicalCheckOverridesOriginalStatus": false,
+        "certifiedBound": false,
+        "logLine": 179
+      }
+    },
+    {
+      "edge": 7,
+      "face": 2,
+      "edgeNode": 19,
+      "faceNode": 13,
+      "originalContextComputed": true,
+      "iteratorCodes": [
+        0
+      ],
+      "directCodes": [
+        0
+      ],
+      "cachedStatusObserved": true,
+      "independentCodes": [
+        0
+      ],
+      "trace": {
+        "kind": "edgeFaceTrace",
+        "edge": 7,
+        "face": 2,
+        "branch": "STORED_PCURVE_WITH_TRANSFORMED_SURFACE",
+        "storedPcurve": true,
+        "sameRange": true,
+        "sameParameter": true,
+        "localCurveFirst": -1.0262265786604009E-13,
+        "localCurveLast": 8.859999999999525,
+        "checkerWorldFirst": -1.0262265786604009E-13,
+        "checkerWorldLast": 8.859999999999525,
+        "localPcurveFirst": -1.0262265786604009E-13,
+        "localPcurveLast": 8.859999999999525,
+        "curveLocationScale": 1,
+        "surfaceLocationScale": 1,
+        "relativeCurveSurfaceScale": 1,
+        "rawCheckedTolerance": 1E-07,
+        "checkerMethodDone": true,
+        "checkerTolerancePass": true,
+        "checkerCorrectedMaxDistance": 4.577612574190223E-16,
+        "physicalMethodDone": true,
+        "physicalMaxDistance": 4.577566798522237E-16,
+        "physicalCheckOverridesOriginalStatus": false,
+        "certifiedBound": false,
+        "logLine": 184
+      }
+    },
+    {
+      "edge": 8,
+      "face": 3,
+      "edgeNode": 22,
+      "faceNode": 20,
+      "originalContextComputed": true,
+      "iteratorCodes": [
+        0
+      ],
+      "directCodes": [
+        0
+      ],
+      "cachedStatusObserved": true,
+      "independentCodes": [
+        0
+      ],
+      "trace": {
+        "kind": "edgeFaceTrace",
+        "edge": 8,
+        "face": 3,
+        "branch": "STORED_PCURVE_WITH_TRANSFORMED_SURFACE",
+        "storedPcurve": true,
+        "sameRange": true,
+        "sameParameter": true,
+        "localCurveFirst": 0,
+        "localCurveLast": 3,
+        "checkerWorldFirst": 0,
+        "checkerWorldLast": 3,
+        "localPcurveFirst": 0,
+        "localPcurveLast": 3,
+        "curveLocationScale": 1,
+        "surfaceLocationScale": 1,
+        "relativeCurveSurfaceScale": 1,
+        "rawCheckedTolerance": 1E-07,
+        "checkerMethodDone": true,
+        "checkerTolerancePass": true,
+        "checkerCorrectedMaxDistance": 3.031479188141695E-13,
+        "physicalMethodDone": true,
+        "physicalMaxDistance": 3.0314488736529583E-13,
+        "physicalCheckOverridesOriginalStatus": false,
+        "certifiedBound": false,
+        "logLine": 189
+      }
+    },
+    {
+      "edge": 9,
+      "face": 3,
+      "edgeNode": 25,
+      "faceNode": 20,
+      "originalContextComputed": true,
+      "iteratorCodes": [
+        0
+      ],
+      "directCodes": [
+        0
+      ],
+      "cachedStatusObserved": true,
+      "independentCodes": [
+        0
+      ],
+      "trace": {
+        "kind": "edgeFaceTrace",
+        "edge": 9,
+        "face": 3,
+        "branch": "STORED_PCURVE_WITH_TRANSFORMED_SURFACE",
+        "storedPcurve": true,
+        "sameRange": true,
+        "sameParameter": true,
+        "localCurveFirst": -2.996441498054232E-14,
+        "localCurveLast": 0.9999999999999927,
+        "checkerWorldFirst": -2.996441498054232E-14,
+        "checkerWorldLast": 0.9999999999999927,
+        "localPcurveFirst": -2.996441498054232E-14,
+        "localPcurveLast": 0.9999999999999927,
+        "curveLocationScale": 1,
+        "surfaceLocationScale": 1,
+        "relativeCurveSurfaceScale": 1,
+        "rawCheckedTolerance": 3.2460099206167287E-07,
+        "checkerMethodDone": true,
+        "checkerTolerancePass": true,
+        "checkerCorrectedMaxDistance": 9.930235914355224E-16,
+        "physicalMethodDone": true,
+        "physicalMaxDistance": 9.930136612989092E-16,
+        "physicalCheckOverridesOriginalStatus": false,
+        "certifiedBound": false,
+        "logLine": 194
+      }
+    },
+    {
+      "edge": 5,
+      "face": 3,
+      "edgeNode": 15,
+      "faceNode": 20,
+      "originalContextComputed": true,
+      "iteratorCodes": [],
+      "directCodes": [
+        0
+      ],
+      "cachedStatusObserved": true,
+      "independentCodes": [
+        0
+      ],
+      "trace": {
+        "kind": "edgeFaceTrace",
+        "edge": 5,
+        "face": 3,
+        "branch": "STORED_PCURVE_WITH_TRANSFORMED_SURFACE",
+        "storedPcurve": true,
+        "sameRange": true,
+        "sameParameter": true,
+        "localCurveFirst": 0,
+        "localCurveLast": 3,
+        "checkerWorldFirst": 0,
+        "checkerWorldLast": 3,
+        "localPcurveFirst": 0,
+        "localPcurveLast": 3,
+        "curveLocationScale": 1,
+        "surfaceLocationScale": 1,
+        "relativeCurveSurfaceScale": 1,
+        "rawCheckedTolerance": 1E-07,
+        "checkerMethodDone": true,
+        "checkerTolerancePass": true,
+        "checkerCorrectedMaxDistance": 6.498106259380715E-13,
+        "physicalMethodDone": true,
+        "physicalMaxDistance": 6.498041278967924E-13,
+        "physicalCheckOverridesOriginalStatus": false,
+        "certifiedBound": false,
+        "logLine": 199
+      }
+    },
+    {
+      "edge": 10,
+      "face": 3,
+      "edgeNode": 26,
+      "faceNode": 20,
+      "originalContextComputed": true,
+      "iteratorCodes": [
+        0
+      ],
+      "directCodes": [
+        0
+      ],
+      "cachedStatusObserved": true,
+      "independentCodes": [
+        0
+      ],
+      "trace": {
+        "kind": "edgeFaceTrace",
+        "edge": 10,
+        "face": 3,
+        "branch": "STORED_PCURVE_WITH_TRANSFORMED_SURFACE",
+        "storedPcurve": true,
+        "sameRange": true,
+        "sameParameter": true,
+        "localCurveFirst": -2.996441498054232E-14,
+        "localCurveLast": 0.9999999999999927,
+        "checkerWorldFirst": -2.996441498054232E-14,
+        "checkerWorldLast": 0.9999999999999927,
+        "localPcurveFirst": -2.996441498054232E-14,
+        "localPcurveLast": 0.9999999999999927,
+        "curveLocationScale": 1,
+        "surfaceLocationScale": 1,
+        "relativeCurveSurfaceScale": 1,
+        "rawCheckedTolerance": 3.2460099206167287E-07,
+        "checkerMethodDone": true,
+        "checkerTolerancePass": true,
+        "checkerCorrectedMaxDistance": 9.930235914355224E-16,
+        "physicalMethodDone": true,
+        "physicalMaxDistance": 9.930136612989092E-16,
+        "physicalCheckOverridesOriginalStatus": false,
+        "certifiedBound": false,
+        "logLine": 204
+      }
+    },
+    {
+      "edge": 3,
+      "face": 4,
+      "edgeNode": 10,
+      "faceNode": 27,
+      "originalContextComputed": true,
+      "iteratorCodes": [],
+      "directCodes": [
+        0
+      ],
+      "cachedStatusObserved": true,
+      "independentCodes": [
+        0
+      ],
+      "trace": {
+        "kind": "edgeFaceTrace",
+        "edge": 3,
+        "face": 4,
+        "branch": "STORED_PCURVE_WITH_TRANSFORMED_SURFACE",
+        "storedPcurve": true,
+        "sameRange": true,
+        "sameParameter": true,
+        "localCurveFirst": 0,
+        "localCurveLast": 3,
+        "checkerWorldFirst": 0,
+        "checkerWorldLast": 3,
+        "localPcurveFirst": 0,
+        "localPcurveLast": 3,
+        "curveLocationScale": 1,
+        "surfaceLocationScale": 1,
+        "relativeCurveSurfaceScale": 1,
+        "rawCheckedTolerance": 1E-07,
+        "checkerMethodDone": true,
+        "checkerTolerancePass": true,
+        "checkerCorrectedMaxDistance": 2.41414226528255E-13,
+        "physicalMethodDone": true,
+        "physicalMaxDistance": 2.4141181241013086E-13,
+        "physicalCheckOverridesOriginalStatus": false,
+        "certifiedBound": false,
+        "logLine": 209
+      }
+    },
+    {
+      "edge": 11,
+      "face": 4,
+      "edgeNode": 29,
+      "faceNode": 27,
+      "originalContextComputed": true,
+      "iteratorCodes": [
+        0
+      ],
+      "directCodes": [
+        0
+      ],
+      "cachedStatusObserved": true,
+      "independentCodes": [
+        0
+      ],
+      "trace": {
+        "kind": "edgeFaceTrace",
+        "edge": 11,
+        "face": 4,
+        "branch": "STORED_PCURVE_WITH_TRANSFORMED_SURFACE",
+        "storedPcurve": true,
+        "sameRange": true,
+        "sameParameter": true,
+        "localCurveFirst": 0.10000000000020196,
+        "localCurveLast": 8.959999999999829,
+        "checkerWorldFirst": 0.10000000000020196,
+        "checkerWorldLast": 8.959999999999829,
+        "localPcurveFirst": 0.10000000000020196,
+        "localPcurveLast": 8.959999999999829,
+        "curveLocationScale": 1,
+        "surfaceLocationScale": 1,
+        "relativeCurveSurfaceScale": 1,
+        "rawCheckedTolerance": 1E-07,
+        "checkerMethodDone": true,
+        "checkerTolerancePass": true,
+        "checkerCorrectedMaxDistance": 2.5121730553733795E-15,
+        "physicalMethodDone": true,
+        "physicalMaxDistance": 2.5121479338940403E-15,
+        "physicalCheckOverridesOriginalStatus": false,
+        "certifiedBound": false,
+        "logLine": 214
+      }
+    },
+    {
+      "edge": 8,
+      "face": 4,
+      "edgeNode": 22,
+      "faceNode": 27,
+      "originalContextComputed": true,
+      "iteratorCodes": [],
+      "directCodes": [
+        0
+      ],
+      "cachedStatusObserved": true,
+      "independentCodes": [
+        0
+      ],
+      "trace": {
+        "kind": "edgeFaceTrace",
+        "edge": 8,
+        "face": 4,
+        "branch": "STORED_PCURVE_WITH_TRANSFORMED_SURFACE",
+        "storedPcurve": true,
+        "sameRange": true,
+        "sameParameter": true,
+        "localCurveFirst": 0,
+        "localCurveLast": 3,
+        "checkerWorldFirst": 0,
+        "checkerWorldLast": 3,
+        "localPcurveFirst": 0,
+        "localPcurveLast": 3,
+        "curveLocationScale": 1,
+        "surfaceLocationScale": 1,
+        "relativeCurveSurfaceScale": 1,
+        "rawCheckedTolerance": 1E-07,
+        "checkerMethodDone": true,
+        "checkerTolerancePass": true,
+        "checkerCorrectedMaxDistance": 4.972078468471598E-12,
+        "physicalMethodDone": true,
+        "physicalMaxDistance": 4.9720287481841155E-12,
+        "physicalCheckOverridesOriginalStatus": false,
+        "certifiedBound": false,
+        "logLine": 219
+      }
+    },
+    {
+      "edge": 12,
+      "face": 4,
+      "edgeNode": 30,
+      "faceNode": 27,
+      "originalContextComputed": true,
+      "iteratorCodes": [
+        0
+      ],
+      "directCodes": [
+        0
+      ],
+      "cachedStatusObserved": true,
+      "independentCodes": [
+        0
+      ],
+      "trace": {
+        "kind": "edgeFaceTrace",
+        "edge": 12,
+        "face": 4,
+        "branch": "STORED_PCURVE_WITH_TRANSFORMED_SURFACE",
+        "storedPcurve": true,
+        "sameRange": true,
+        "sameParameter": true,
+        "localCurveFirst": 0.10000000000020196,
+        "localCurveLast": 8.959999999999829,
+        "checkerWorldFirst": 0.10000000000020196,
+        "checkerWorldLast": 8.959999999999829,
+        "localPcurveFirst": 0.10000000000020196,
+        "localPcurveLast": 8.959999999999829,
+        "curveLocationScale": 1,
+        "surfaceLocationScale": 1,
+        "relativeCurveSurfaceScale": 1,
+        "rawCheckedTolerance": 1E-07,
+        "checkerMethodDone": true,
+        "checkerTolerancePass": true,
+        "checkerCorrectedMaxDistance": 1.9860471828710448E-15,
+        "physicalMethodDone": true,
+        "physicalMaxDistance": 1.9860273225978185E-15,
+        "physicalCheckOverridesOriginalStatus": false,
+        "certifiedBound": false,
+        "logLine": 224
+      }
+    },
+    {
+      "edge": 4,
+      "face": 5,
+      "edgeNode": 12,
+      "faceNode": 31,
+      "originalContextComputed": true,
+      "iteratorCodes": [],
+      "directCodes": [
+        0
+      ],
+      "cachedStatusObserved": true,
+      "independentCodes": [
+        0
+      ],
+      "trace": {
+        "kind": "edgeFaceTrace",
+        "edge": 4,
+        "face": 5,
+        "branch": "ABSENT_PLANE_PCURVE_FRESH_WORLD_PROJECTION",
+        "storedPcurve": false,
+        "sameRange": true,
+        "sameParameter": true,
+        "localCurveFirst": 0.09999999999989549,
+        "localCurveLast": 4.380000000000053,
+        "checkerWorldFirst": 0.09999999999989549,
+        "checkerWorldLast": 4.380000000000053,
+        "localPcurveFirst": 0.09999999999989549,
+        "localPcurveLast": 4.380000000000053,
+        "curveLocationScale": 1,
+        "surfaceLocationScale": 1,
+        "relativeCurveSurfaceScale": 1,
+        "rawCheckedTolerance": 1E-07,
+        "checkerMethodDone": true,
+        "checkerTolerancePass": true,
+        "checkerCorrectedMaxDistance": 1.563659080850885E-11,
+        "physicalMethodDone": true,
+        "physicalMaxDistance": 1.5636434444164404E-11,
+        "physicalCheckOverridesOriginalStatus": false,
+        "certifiedBound": false,
+        "logLine": 229
+      }
+    },
+    {
+      "edge": 7,
+      "face": 5,
+      "edgeNode": 19,
+      "faceNode": 31,
+      "originalContextComputed": true,
+      "iteratorCodes": [],
+      "directCodes": [
+        0
+      ],
+      "cachedStatusObserved": true,
+      "independentCodes": [
+        0
+      ],
+      "trace": {
+        "kind": "edgeFaceTrace",
+        "edge": 7,
+        "face": 5,
+        "branch": "ABSENT_PLANE_PCURVE_FRESH_WORLD_PROJECTION",
+        "storedPcurve": false,
+        "sameRange": true,
+        "sameParameter": true,
+        "localCurveFirst": -1.0262265786604009E-13,
+        "localCurveLast": 8.859999999999525,
+        "checkerWorldFirst": -1.0262265786604009E-13,
+        "checkerWorldLast": 8.859999999999525,
+        "localPcurveFirst": -1.0262265786604009E-13,
+        "localPcurveLast": 8.859999999999525,
+        "curveLocationScale": 1,
+        "surfaceLocationScale": 1,
+        "relativeCurveSurfaceScale": 1,
+        "rawCheckedTolerance": 1E-07,
+        "checkerMethodDone": true,
+        "checkerTolerancePass": true,
+        "checkerCorrectedMaxDistance": 4.206954313225682E-12,
+        "physicalMethodDone": true,
+        "physicalMaxDistance": 4.206912244103241E-12,
+        "physicalCheckOverridesOriginalStatus": false,
+        "certifiedBound": false,
+        "logLine": 234
+      }
+    },
+    {
+      "edge": 10,
+      "face": 5,
+      "edgeNode": 26,
+      "faceNode": 31,
+      "originalContextComputed": true,
+      "iteratorCodes": [],
+      "directCodes": [
+        8
+      ],
+      "cachedStatusObserved": true,
+      "independentCodes": [
+        8
+      ],
+      "trace": {
+        "kind": "edgeFaceTrace",
+        "edge": 10,
+        "face": 5,
+        "branch": "ABSENT_PLANE_PCURVE_FRESH_WORLD_PROJECTION",
+        "storedPcurve": false,
+        "sameRange": true,
+        "sameParameter": true,
+        "localCurveFirst": -2.996441498054232E-14,
+        "localCurveLast": 0.9999999999999927,
+        "checkerWorldFirst": -2.996441498054232E-14,
+        "checkerWorldLast": 0.9999999999999927,
+        "localPcurveFirst": -2.996441498054232E-14,
+        "localPcurveLast": 0.9999999999999927,
+        "curveLocationScale": 1,
+        "surfaceLocationScale": 1,
+        "relativeCurveSurfaceScale": 1,
+        "rawCheckedTolerance": 3.2460099206167287E-07,
+        "checkerMethodDone": true,
+        "checkerTolerancePass": false,
+        "checkerCorrectedMaxDistance": 7.729996834243354E-07,
+        "physicalMethodDone": true,
+        "physicalMaxDistance": 7.729919535048003E-07,
+        "physicalCheckOverridesOriginalStatus": false,
+        "certifiedBound": false,
+        "logLine": 239
+      }
+    },
+    {
+      "edge": 12,
+      "face": 5,
+      "edgeNode": 30,
+      "faceNode": 31,
+      "originalContextComputed": true,
+      "iteratorCodes": [],
+      "directCodes": [
+        0
+      ],
+      "cachedStatusObserved": true,
+      "independentCodes": [
+        0
+      ],
+      "trace": {
+        "kind": "edgeFaceTrace",
+        "edge": 12,
+        "face": 5,
+        "branch": "ABSENT_PLANE_PCURVE_FRESH_WORLD_PROJECTION",
+        "storedPcurve": false,
+        "sameRange": true,
+        "sameParameter": true,
+        "localCurveFirst": 0.10000000000020196,
+        "localCurveLast": 8.959999999999829,
+        "checkerWorldFirst": 0.10000000000020196,
+        "checkerWorldLast": 8.959999999999829,
+        "localPcurveFirst": 0.10000000000020196,
+        "localPcurveLast": 8.959999999999829,
+        "curveLocationScale": 1,
+        "surfaceLocationScale": 1,
+        "relativeCurveSurfaceScale": 1,
+        "rawCheckedTolerance": 1E-07,
+        "checkerMethodDone": true,
+        "checkerTolerancePass": true,
+        "checkerCorrectedMaxDistance": 6.897705185535345E-12,
+        "physicalMethodDone": true,
+        "physicalMaxDistance": 6.897636209173253E-12,
+        "physicalCheckOverridesOriginalStatus": false,
+        "certifiedBound": false,
+        "logLine": 244
+      }
+    },
+    {
+      "edge": 2,
+      "face": 6,
+      "edgeNode": 8,
+      "faceNode": 33,
+      "originalContextComputed": true,
+      "iteratorCodes": [],
+      "directCodes": [
+        0
+      ],
+      "cachedStatusObserved": true,
+      "independentCodes": [
+        0
+      ],
+      "trace": {
+        "kind": "edgeFaceTrace",
+        "edge": 2,
+        "face": 6,
+        "branch": "ABSENT_PLANE_PCURVE_FRESH_WORLD_PROJECTION",
+        "storedPcurve": false,
+        "sameRange": true,
+        "sameParameter": true,
+        "localCurveFirst": 0.09999999999989549,
+        "localCurveLast": 4.380000000000053,
+        "checkerWorldFirst": 0.09999999999989549,
+        "checkerWorldLast": 4.380000000000053,
+        "localPcurveFirst": 0.09999999999989549,
+        "localPcurveLast": 4.380000000000053,
+        "curveLocationScale": 1,
+        "surfaceLocationScale": 1,
+        "relativeCurveSurfaceScale": 1,
+        "rawCheckedTolerance": 1E-07,
+        "checkerMethodDone": true,
+        "checkerTolerancePass": true,
+        "checkerCorrectedMaxDistance": 1.563659080850885E-11,
+        "physicalMethodDone": true,
+        "physicalMaxDistance": 1.5636434444164404E-11,
+        "physicalCheckOverridesOriginalStatus": false,
+        "certifiedBound": false,
+        "logLine": 249
+      }
+    },
+    {
+      "edge": 6,
+      "face": 6,
+      "edgeNode": 18,
+      "faceNode": 33,
+      "originalContextComputed": true,
+      "iteratorCodes": [],
+      "directCodes": [
+        0
+      ],
+      "cachedStatusObserved": true,
+      "independentCodes": [
+        0
+      ],
+      "trace": {
+        "kind": "edgeFaceTrace",
+        "edge": 6,
+        "face": 6,
+        "branch": "ABSENT_PLANE_PCURVE_FRESH_WORLD_PROJECTION",
+        "storedPcurve": false,
+        "sameRange": true,
+        "sameParameter": true,
+        "localCurveFirst": -1.0262265786604009E-13,
+        "localCurveLast": 8.859999999999525,
+        "checkerWorldFirst": -1.0262265786604009E-13,
+        "checkerWorldLast": 8.859999999999525,
+        "localPcurveFirst": -1.0262265786604009E-13,
+        "localPcurveLast": 8.859999999999525,
+        "curveLocationScale": 1,
+        "surfaceLocationScale": 1,
+        "relativeCurveSurfaceScale": 1,
+        "rawCheckedTolerance": 1E-07,
+        "checkerMethodDone": true,
+        "checkerTolerancePass": true,
+        "checkerCorrectedMaxDistance": 4.206954313225682E-12,
+        "physicalMethodDone": true,
+        "physicalMaxDistance": 4.206912244103241E-12,
+        "physicalCheckOverridesOriginalStatus": false,
+        "certifiedBound": false,
+        "logLine": 254
+      }
+    },
+    {
+      "edge": 9,
+      "face": 6,
+      "edgeNode": 25,
+      "faceNode": 33,
+      "originalContextComputed": true,
+      "iteratorCodes": [],
+      "directCodes": [
+        8
+      ],
+      "cachedStatusObserved": true,
+      "independentCodes": [
+        8
+      ],
+      "trace": {
+        "kind": "edgeFaceTrace",
+        "edge": 9,
+        "face": 6,
+        "branch": "ABSENT_PLANE_PCURVE_FRESH_WORLD_PROJECTION",
+        "storedPcurve": false,
+        "sameRange": true,
+        "sameParameter": true,
+        "localCurveFirst": -2.996441498054232E-14,
+        "localCurveLast": 0.9999999999999927,
+        "checkerWorldFirst": -2.996441498054232E-14,
+        "checkerWorldLast": 0.9999999999999927,
+        "localPcurveFirst": -2.996441498054232E-14,
+        "localPcurveLast": 0.9999999999999927,
+        "curveLocationScale": 1,
+        "surfaceLocationScale": 1,
+        "relativeCurveSurfaceScale": 1,
+        "rawCheckedTolerance": 3.2460099206167287E-07,
+        "checkerMethodDone": true,
+        "checkerTolerancePass": false,
+        "checkerCorrectedMaxDistance": 7.729996834243354E-07,
+        "physicalMethodDone": true,
+        "physicalMaxDistance": 7.729919535048003E-07,
+        "physicalCheckOverridesOriginalStatus": false,
+        "certifiedBound": false,
+        "logLine": 259
+      }
+    },
+    {
+      "edge": 11,
+      "face": 6,
+      "edgeNode": 29,
+      "faceNode": 33,
+      "originalContextComputed": true,
+      "iteratorCodes": [],
+      "directCodes": [
+        0
+      ],
+      "cachedStatusObserved": true,
+      "independentCodes": [
+        0
+      ],
+      "trace": {
+        "kind": "edgeFaceTrace",
+        "edge": 11,
+        "face": 6,
+        "branch": "ABSENT_PLANE_PCURVE_FRESH_WORLD_PROJECTION",
+        "storedPcurve": false,
+        "sameRange": true,
+        "sameParameter": true,
+        "localCurveFirst": 0.10000000000020196,
+        "localCurveLast": 8.959999999999829,
+        "checkerWorldFirst": 0.10000000000020196,
+        "checkerWorldLast": 8.959999999999829,
+        "localPcurveFirst": 0.10000000000020196,
+        "localPcurveLast": 8.959999999999829,
+        "curveLocationScale": 1,
+        "surfaceLocationScale": 1,
+        "relativeCurveSurfaceScale": 1,
+        "rawCheckedTolerance": 1E-07,
+        "checkerMethodDone": true,
+        "checkerTolerancePass": true,
+        "checkerCorrectedMaxDistance": 6.897705185535345E-12,
+        "physicalMethodDone": true,
+        "physicalMaxDistance": 6.897636209173253E-12,
+        "physicalCheckOverridesOriginalStatus": false,
+        "certifiedBound": false,
+        "logLine": 264
+      }
+    }
+  ],
+  "faces": [
+    {
+      "originalSelfCodes": [
+        0
+      ],
+      "node": 3,
+      "face": 1
+    },
+    {
+      "originalSelfCodes": [
+        0
+      ],
+      "node": 13,
+      "face": 2
+    },
+    {
+      "originalSelfCodes": [
+        0
+      ],
+      "node": 20,
+      "face": 3
+    },
+    {
+      "originalSelfCodes": [
+        0
+      ],
+      "node": 27,
+      "face": 4
+    },
+    {
+      "originalSelfCodes": [
+        27
+      ],
+      "node": 31,
+      "face": 5
+    },
+    {
+      "originalSelfCodes": [
+        27
+      ],
+      "node": 33,
+      "face": 6
+    }
+  ],
+  "case": "original-flags"
+}

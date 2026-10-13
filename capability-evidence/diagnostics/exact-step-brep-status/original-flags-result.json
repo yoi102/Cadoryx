@@ -1,0 +1,31 @@
+{
+  "state": "ADDITIONAL_EXACT_FLAG_AND_DIRECT_STATUS_OBSERVATION",
+  "input": {
+    "sha256": "8E6A4AFF886156B89ADF9BE5F0FE02E12B17A9133F9A0B03F611A2469912A7D4",
+    "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\sdk31-planar-equivalence-probe-1\\writer-release-0-1.step"
+  },
+  "source": {
+    "sha256": "3C7B85C32FCF722A5CC9978B49B2415438AE84A8C206F29AA67AB8A01FB8FBEC",
+    "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\tools\\ExactStepBrepStatusProbe\\status.cpp"
+  },
+  "exitCode": 1,
+  "log": {
+    "sha256": "98CE6CA8C534CAA6566FCF97347E6243244AA975AF6298AD734870A417D258C8",
+    "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-brep-status-static\\run-543ec745111b4b6c9f782aaa647cb28e\\original-flags.jsonl"
+  },
+  "exe": {
+    "sha256": "0836F4A6F44C42B8061FFF0B895E9E0EE78E09FBF2ADAF847776E8FE7AC5D9F1",
+    "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\exact-step-brep-status-static\\run-543ec745111b4b6c9f782aaa647cb28e\\ExactStepBrepStatusProbe-flags.exe"
+  },
+  "originalAnalyzerUnmodified": true,
+  "summary": [
+    {
+      "kind": "summary",
+      "originalExactValid": false,
+      "edgeUses": 24,
+      "shapeKept": true,
+      "gate": 1E-07,
+      "productAccepted": false
+    }
+  ]
+}
