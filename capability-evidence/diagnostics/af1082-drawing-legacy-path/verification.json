@@ -1,0 +1,109 @@
+{
+  "recordedAt": "2026-10-13T17:10:13.677298+00:00",
+  "state": "AF1082_LEGACY_DRAWING_VIEW_PATH_GUIDANCE_BOTH_FOCUSED49_PASSED",
+  "source": {
+    "path": "Cadoryx.ViewModels/Toolboxes/CadAgentDocumentTools.cs",
+    "sha256": "C1813F3C0136BA32F2741E00A5047C0C1BD93AA75914E1BC3FA84A57E7360816"
+  },
+  "tests": {
+    "path": "Cadoryx.Tests/DrawingLegacyViewPathFeedbackTests.cs",
+    "sha256": "2F258DB270BAD4BAED727A3C77F48E7F3A14D386B7A5B0C306D7ED43748CB7E4"
+  },
+  "baselineSource": {
+    "path": "artifacts/af1082-drawing-legacy-path-1/baseline-CadAgentDocumentTools.cs",
+    "sha256": "C5B62CD3879044E4B729DD97866B00B161AF5CA8CD03E0051B2750E5AE5E7410"
+  },
+  "publicSDKNativeBaseline": {
+    "path": "capability-evidence/diagnostics/af1080-final-ready/freeze.json",
+    "sha256": "758ED1F4EF652F006BE1C325E0AFA91416686205B1F4044BFAC38CBF4A398CBC"
+  },
+  "configurations": [
+    {
+      "configuration": "Release",
+      "baselineNew17Passed": 7,
+      "baselineNew17Failed": 10,
+      "candidate49Passed": 49,
+      "candidateFailed": 0,
+      "skipped": 0,
+      "original32Preserved": true,
+      "existingSuccessfulNativeViewTestPassed": true,
+      "actualPublic85Native62Matched": true,
+      "builds": [
+        {
+          "path": "artifacts/af1082-drawing-legacy-path-1/baseline-build-release-exit.json",
+          "sha256": "51F1160C2EAC9A36235463D62098CCD114E12466FBA388C22CDFAA0DBFF75B95"
+        },
+        {
+          "path": "artifacts/af1082-drawing-legacy-path-1/candidate-build-release-exit.json",
+          "sha256": "9C0B1C2147870295DB562D803893FEF428817829F8D1E7A12E5F7CF742C5FBEB"
+        }
+      ],
+      "baseline": {
+        "path": "artifacts/af1082-drawing-legacy-path-1/baseline-release/tests.trx",
+        "sha256": "04B4A84411D2D1575A7D1A90422478411C2C2AA069DAD87117BDF19D1868A66E"
+      },
+      "candidate": {
+        "path": "artifacts/af1082-drawing-legacy-path-1/candidate-release/tests.trx",
+        "sha256": "4D3F3C87BE9F641CD8B19B07962D0736600DCE57731714888D491187F69697E8"
+      },
+      "binding": {
+        "path": "artifacts/af1082-drawing-legacy-path-1/candidate-release/loaded-native.json",
+        "sha256": "0506CFA5211BD78C9D9554A463ABA90F332A4BA6AA9BD4FBD049408E423ECF93"
+      },
+      "terminal": {
+        "path": "artifacts/af1082-drawing-legacy-path-1/candidate-release/exit.json",
+        "sha256": "50257D0263BAA595C9C4CA43665F47431828370814BEF2C724FC2E08AAC78D99"
+      }
+    },
+    {
+      "configuration": "Debug",
+      "baselineNew17Passed": 7,
+      "baselineNew17Failed": 10,
+      "candidate49Passed": 49,
+      "candidateFailed": 0,
+      "skipped": 0,
+      "original32Preserved": true,
+      "existingSuccessfulNativeViewTestPassed": true,
+      "actualPublic85Native62Matched": true,
+      "builds": [
+        {
+          "path": "artifacts/af1082-drawing-legacy-path-1/baseline-build-debug-exit.json",
+          "sha256": "2F5C9C9FBC240FAFF3D33C0F34316E20D3FBB3EB9C908E37EB21496581981F8A"
+        },
+        {
+          "path": "artifacts/af1082-drawing-legacy-path-1/candidate-build-debug-exit.json",
+          "sha256": "7590BE11F921824F96514B0284853F5D8F8079515A1DFCC38F544534357B67FD"
+        }
+      ],
+      "baseline": {
+        "path": "artifacts/af1082-drawing-legacy-path-1/baseline-debug/tests.trx",
+        "sha256": "F4444E96B1EB5CF4F3D310B496D57E3106DDE002077D43FF235509A28DB26D88"
+      },
+      "candidate": {
+        "path": "artifacts/af1082-drawing-legacy-path-1/candidate-debug/tests.trx",
+        "sha256": "143CF3A6FC80D076755F3452D7DC306E704CD225ADEE3CCC9D073946D91450F9"
+      },
+      "binding": {
+        "path": "artifacts/af1082-drawing-legacy-path-1/candidate-debug/loaded-native.json",
+        "sha256": "13720C3584A7AA1E79258FC9B6ABCE61318117E5A0BFE2FBD1045B1E36CCFD6E"
+      },
+      "terminal": {
+        "path": "artifacts/af1082-drawing-legacy-path-1/candidate-debug/exit.json",
+        "sha256": "503395E15CD8058DB0FC2522CE707663559FFF8B02F73857F6E587EF87A9F876"
+      }
+    }
+  ],
+  "defaultToolSchemasChanged": false,
+  "legacyValidViewEntryPreserved": true,
+  "documentStateSheetAndLifecycleGuardsPreserved": true,
+  "identitiesInferredOrFilled": false,
+  "rejectedRequestRetriedAutomatically": false,
+  "originalStrictSTEP24Changed": false,
+  "modelAcceptanceRerun": false,
+  "current6847FullRegressionExecuted": false,
+  "productionSourceApplied": true,
+  "local86Applied": false,
+  "AFComplete": false,
+  "G": "USER_DEFERRED",
+  "cleanup": false
+}

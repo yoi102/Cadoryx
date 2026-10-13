@@ -1,5 +1,7 @@
 # Cadoryx 实施路线与验收
 
+2026-10-14，status254：**A–F继续，六大批尚未完成；G和清理暂缓。** 当前源码1082/公开SDK85，[工程图旧视图路径反馈](AF_DRAWING_LEGACY_VIEW_PATH.md)两配置各49/49、Tests及最终WPF build0，原32及正常原生创建保持，实际native62匹配公开85；当前预计6847全量和真实模型重跑尚未执行。本地86仍隔离，1081/86完整6830各6806通过/原24严格STEP失败，原24已按用户授权精确延期而非通过。D7解析分支两轮隔离候选仍失败，最新两配置各171/243，原99均通过但72孔/岛起始材料及Far覆盖问题待修正；不能只以编译或部分用例计D完成。正式已验子批A4/B17/C5/D5/E4/F5g；剩余验收及原模型终态详见[当前状态](STATUS.md)，第4、5节全部范围保持。以下status209及更早保留历史。
+
 2026-10-12，status209：**A–F 继续推进，尚未全部完成；G 实机、安装及交付暂缓。** 生产仍为 source1000 / SDK26，SDK30基线1063修订5及最新隔离source1068尚未合入。修订5两配置完整6467/6467已独立通过，原Bonsai两场景实际失败。隔离source1068/solver19的原59加新6共65项为41通过/24导出失败；36个正例均在2次迭代完成求解及导出前检查，原预算保持。完整6532、生产窗口与合入仍待验。实时结果见[状态页](STATUS.md)，大批完成标准保持[产品规划第4、5节](CAD_PRODUCT_GAPS.md#4-推荐怎么做下一步)。
 
 当前[Release完整6467/6467](../artifacts/af-sdk30-history-identity-draft-5/full6467-release-1-verification.json)与[Debug完整6467/6467](../artifacts/af-sdk30-history-identity-draft-5/full6467-debug-1-verification.json)均独立通过，零失败/跳过、原用例名称及实际SDK30/native62保持。[原Bonsai两个实际结果](../artifacts/af-sdk30-history-identity-draft-5/provider-both-1-exit.json)均失败：工程图在创建阶段缺少成功收据，跨文档第八轮超原16工具轮预算；不修改提示、身份守卫或预算。当前1066的相关980失败后，[最终应用准备](../artifacts/b18-single-loop-mixed-joints-draft-2/final-app-after-baseline-1-exit.json)按原门禁停止，未启动1066发布或桌面。已发布1063只作基线，不能代替后续修正候选的最终验收；原24和新36须绑定最终载荷后重编译/实际运行。

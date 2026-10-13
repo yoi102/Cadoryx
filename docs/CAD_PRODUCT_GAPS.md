@@ -1,5 +1,7 @@
 # 3D CAD 产品缺口与实施规划
 
+2026-10-14，status254：[工程图旧入口路径反馈1082](AF_DRAWING_LEGACY_VIEW_PATH.md)已合入，两配置各49/49，原正常原生创建保留、实际native62匹配公开85，Tests及WPF build0；当前预计6847全量/真实模型未重跑。原1081/86完整6830各6806通过/原24精确延期失败保持。[原模型实际终态审计](../capability-evidence/diagnostics/af1081-local86/provider-verification.json)为工程图1/8、工作区5/8均失败，原预算/来源/native保持；旧预启动hold已结束。D7隔离候选两配置修订1各168/243通过、修订2各171/243通过；原99均通过，但72失败仍待修正，两修订均未合入，不代表D完成。正式已验子批仍A4/B17/C5/D5/E4/F5g；恢复、窗口、材质、性能及其他A–F继续，第4、5节范围保持，G/清理暂缓。当前以[STATUS](STATUS.md)和实际终态为准，以下均为历史。
+
 2026-10-14，status253：[当前1081/本地86两配置完整6830](../capability-evidence/diagnostics/af1081-local86/full-verification.json)各6806通过/原24延期失败/零跳过，无新增失败，原名称及native62准确；Debug已补齐终态。[Far90两配置修订6](../capability-evidence/diagnostics/af1081-local86/far90-runtime-6-verification.json)各72通过/18失败，所有原始source/stop BRep字节保持；18为原生raw-full-near体积错误，完整Near/Far私有裁剪及孔岛/负例有各自通过记录，不代表Far产品完成。模型预启动协调25052实际hold，根已明确交还SDK CX25/CY8约30分钟资格时段，模型、恢复、窗口和性能仍待验；源版本/原第4、5节A–F范围保持，G/清理暂缓。最新以[STATUS](STATUS.md)和实际终态为准，以下均为历史。
 
 2026-10-14，status251：用户允许[精确24项原有严格STEP失败延期修复](../capability-evidence/diagnostics/af1081-local86/step24-user-deferral.json)，继续其余A–F；它们仍是已知失败，不能记作通过或延伸为其他交换问题的豁免。Release6830已核对6806通过/原24失败/零跳过。原Debug进程已消失且缺终态，SDK明确交回时段、实际空闲核查后只重跑冻结Debug，输出`full6830-debug-2`；尚未完整验收。恢复、模型、性能、D6/材质实际窗口与完整90项孔岛Far前提仍待验；SDK最新55声明仅开发验证。生产1081/公开85、本地86仍隔离候选；第4、5节A–F范围保持，G/清理暂缓。当前以[STATUS](STATUS.md)及实际终态为准，以下记录保留历史。

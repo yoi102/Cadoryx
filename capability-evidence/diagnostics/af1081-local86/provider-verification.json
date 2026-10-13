@@ -1,0 +1,492 @@
+{
+  "recordedAt": "2026-10-13T16:56:49.679658+00:00",
+  "state": "AF1081_LOCAL86_ORIGINAL_PROVIDER_FAILURES_INDEPENDENTLY_VERIFIED",
+  "freeze": {
+    "path": "artifacts/af1081-local86-1/provider-runtime-freeze.json",
+    "sha256": "58A1D8994A1B3B3B12DBC2BC8A73788DC5178E9A5BEB45D0E636C8282EF1F94A"
+  },
+  "parent": {
+    "path": "artifacts/af1081-local86-1/freeze.json",
+    "sha256": "622BFC6BD268C2349A0A74F3B1504B382A4472B555224D9B29CB7FA4F1B3E9A3"
+  },
+  "suite": {
+    "path": "artifacts/af1081-local86-1/provider-both-exit.json",
+    "sha256": "6EF6A36EEC3A43C800A3E6DD4663AAEE19536AF33BFDFAA98E4D11C0F8621E5A"
+  },
+  "scenarios": [
+    {
+      "scenario": "drawing",
+      "passed": false,
+      "completedTurns": 1,
+      "requiredTurns": 8,
+      "failure": "Requested cad_drawing.create lacks an answer and successful production receipt.",
+      "assetsAfterClose": 0,
+      "actualNative62Matched": true,
+      "calls": 22,
+      "failedReceipts": [
+        {
+          "ordinal": 0,
+          "tool": "cad_workspace",
+          "arguments": {
+            "action": "list",
+            "expected": {
+              "workspaceStateId": "00000000-0000-0000-0000-000000000000",
+              "activeSessionId": null,
+              "documentId": null,
+              "stateId": null
+            }
+          },
+          "receipt": {
+            "success": false,
+            "message": "Workspace authoring is unavailable in this context."
+          }
+        },
+        {
+          "ordinal": 3,
+          "tool": "cad_drawing",
+          "arguments": {
+            "action": "create",
+            "type": "sheet",
+            "documentId": "d5ced59e-bd8e-4d0e-81d7-6bc159e370b1",
+            "stateId": "8f8e0520-6dd3-46a8-af89-ee3bb178c832",
+            "authorJson": "{\"name\":\"Provider Drawing\",\"widthMm\":297,\"heightMm\":210,\"unit\":\"Millimeter\",\"title\":\"Provider Drawing\",\"standard\":\"ISO\",\"template\":{\"paper\":\"A4\",\"landscape\":false,\"projection\":\"ThirdAngle\",\"language\":\"English\",\"margins\":{\"left\":10,\"top\":10,\"right\":10,\"bottom\":10},\"titleBlock\":{\"drawingNumber\":\"\",\"revision\":\"\",\"organization\":\"\",\"material\":\"\",\"surfaceFinish\":\"\",\"generalTolerance\":\"\",\"drawnBy\":\"\",\"checkedBy\":\"\",\"approvedBy\",\"issueDate\":\"\"}}}"
+          },
+          "receipt": {
+            "success": false,
+            "message": "',' is invalid after a property name. Expected a ':'. LineNumber: 0 | BytePositionInLine: 424."
+          }
+        },
+        {
+          "ordinal": 4,
+          "tool": "cad_drawing",
+          "arguments": {
+            "action": "create",
+            "type": "sheet",
+            "documentId": "d5ced59e-bd8e-4d0e-81d7-6bc159e370b1",
+            "stateId": "8f8e0520-6dd3-46a8-af89-ee3bb178c832",
+            "authorJson": "{\"name\":\"Provider Drawing\",\"widthMm\":297,\"heightMm\":210,\"unit\":\"Millimeter\",\"title\":\"Provider Drawing\",\"standard\":\"ISO\",\"template\":{\"paper\":\"A4\",\"landscape\":false,\"projection\":\"ThirdAngle\",\"language\":\"English\",\"margins\":{\"left\":10,\"top\":10,\"right\":10,\"bottom\":10},\"titleBlock\":{\"drawingNumber\":\"\",\"revision\":\"\",\"organization\":\"\",\"material\":\"\",\"surfaceFinish\":\"\",\"generalTolerance\":\"\",\"drawnBy\":\"\",\"checkedBy\":\"\",\"approvedBy\":\"\",\"issueDate\":\"\"}}}"
+          },
+          "receipt": {
+            "success": false,
+            "message": "Sheet dimensions differ from the selected paper format. Select Custom for a custom size."
+          }
+        },
+        {
+          "ordinal": 10,
+          "tool": "cad_edit",
+          "arguments": {
+            "action": "add_drawing_view",
+            "documentId": "d5ced59e-bd8e-4d0e-81d7-6bc159e370b1",
+            "stateId": "9f47e549-4b16-47e1-81e9-94ce59de408f",
+            "sheetId": "b0261303-1f29-427a-b864-960982f5d99c",
+            "name": "Top",
+            "kind": "Top"
+          },
+          "receipt": {
+            "success": false,
+            "message": "Missing or invalid path."
+          }
+        },
+        {
+          "ordinal": 11,
+          "tool": "cad_edit",
+          "arguments": {
+            "action": "add_drawing_view",
+            "documentId": "d5ced59e-bd8e-4d0e-81d7-6bc159e370b1",
+            "stateId": "9f47e549-4b16-47e1-81e9-94ce59de408f",
+            "sheetId": "b0261303-1f29-427a-b864-960982f5d99c",
+            "name": "Top",
+            "kind": "Top",
+            "path": "\"\""
+          },
+          "receipt": {
+            "success": false,
+            "message": "Instance path belongs to another document or is malformed."
+          }
+        },
+        {
+          "ordinal": 13,
+          "tool": "cad_edit",
+          "arguments": {
+            "action": "add_drawing_view",
+            "documentId": "d5ced59e-bd8e-4d0e-81d7-6bc159e370b1",
+            "stateId": "9f47e549-4b16-47e1-81e9-94ce59de408f",
+            "sheetId": "b0261303-1f29-427a-b864-960982f5d99c",
+            "name": "Top",
+            "kind": "Top"
+          },
+          "receipt": {
+            "success": false,
+            "message": "Missing or invalid path."
+          }
+        },
+        {
+          "ordinal": 14,
+          "tool": "cad_edit",
+          "arguments": {
+            "action": "add_drawing_view",
+            "documentId": "d5ced59e-bd8e-4d0e-81d7-6bc159e370b1",
+            "stateId": "9f47e549-4b16-47e1-81e9-94ce59de408f",
+            "sheetId": "b0261303-1f29-427a-b864-960982f5d99c",
+            "name": "Top",
+            "kind": "Top"
+          },
+          "receipt": {
+            "success": false,
+            "message": "Missing or invalid path."
+          }
+        },
+        {
+          "ordinal": 15,
+          "tool": "cad_command",
+          "arguments": {
+            "command": "DRAWING add_drawing_view Top b0261303-1f29-427a-b864-960982f5d99c {\"name\":\"Top\",\"kind\":\"Top\",\"centerMm\":{\"x\":80,\"y\":60},\"scale\":2}",
+            "documentId": "d5ced59e-bd8e-4d0e-81d7-6bc159e370b1",
+            "stateId": "9f47e549-4b16-47e1-81e9-94ce59de408f"
+          },
+          "receipt": {
+            "success": false,
+            "message": "Usage: DRAWING CONTRACT [type] | DRAWING {action-specific JSON}",
+            "documentId": "d5ced59e-bd8e-4d0e-81d7-6bc159e370b1",
+            "stateId": "9f47e549-4b16-47e1-81e9-94ce59de408f"
+          }
+        },
+        {
+          "ordinal": 16,
+          "tool": "cad_drawing",
+          "arguments": {
+            "action": "contract",
+            "documentId": "d5ced59e-bd8e-4d0e-81d7-6bc159e370b1",
+            "stateId": "9f47e549-4b16-47e1-81e9-94ce59de408f",
+            "name": "Top",
+            "path": "\"\""
+          },
+          "receipt": {
+            "success": false,
+            "message": "Invalid drawing arguments for action=contract. Unknown or duplicate: documentId, stateId, name, path. contract accepts only action/type; other actions require exact documentId/stateId from cad_status. inspect requires type, documentId and stateId together. Outer name is only save_template; create/edit names belong in authorJson.",
+            "missingOrInvalid": [],
+            "unexpectedArguments": [
+              "documentId",
+              "stateId",
+              "name",
+              "path"
+            ],
+            "allowedArguments": [
+              "action",
+              "type"
+            ],
+            "validRequests": [
+              {
+                "action": "contract",
+                "type": "sheet"
+              },
+              {
+                "action": "contract",
+                "type": "view"
+              },
+              {
+                "action": "contract",
+                "type": "dimension"
+              },
+              {
+                "action": "contract",
+                "type": "datum"
+              },
+              {
+                "action": "contract",
+                "type": "control_frame"
+              },
+              {
+                "action": "contract",
+                "type": "balloon"
+              },
+              {
+                "action": "contract",
+                "type": "hole_table"
+              },
+              {
+                "action": "contract",
+                "type": "field"
+              },
+              {
+                "action": "contract",
+                "type": "note"
+              },
+              {
+                "action": "contract",
+                "type": "template"
+              },
+              {
+                "action": "contract",
+                "type": "parts_table"
+              },
+              {
+                "action": "contract",
+                "type": "zones"
+              }
+            ],
+            "requestNote": "Read-only examples. Choose the requested type; contract omits every document, state, owner and source identity. The rejected request was not executed."
+          }
+        },
+        {
+          "ordinal": 17,
+          "tool": "cad_edit",
+          "arguments": {
+            "action": "add_drawing_view",
+            "documentId": "d5ced59e-bd8e-4d0e-81d7-6bc159e370b1",
+            "stateId": "9f47e549-4b16-47e1-81e9-94ce59de408f",
+            "sheetId": "b0261303-1f29-427a-b864-960982f5d99c",
+            "name": "Top",
+            "kind": "Top",
+            "path": "\"\""
+          },
+          "receipt": {
+            "success": false,
+            "message": "Instance path belongs to another document or is malformed."
+          }
+        },
+        {
+          "ordinal": 18,
+          "tool": "cad_edit",
+          "arguments": {
+            "action": "add_drawing_view",
+            "documentId": "d5ced59e-bd8e-4d0e-81d7-6bc159e370b1",
+            "stateId": "9f47e549-4b16-47e1-81e9-94ce59de408f",
+            "sheetId": "b0261303-1f29-427a-b864-960982f5d99c",
+            "name": "Top",
+            "kind": "Top"
+          },
+          "receipt": {
+            "success": false,
+            "message": "Missing or invalid path."
+          }
+        },
+        {
+          "ordinal": 19,
+          "tool": "cad_edit",
+          "arguments": {
+            "action": "add_drawing_view",
+            "documentId": "d5ced59e-bd8e-4d0e-81d7-6bc159e370b1",
+            "stateId": "9f47e549-4b16-47e1-81e9-94ce59de408f",
+            "sheetId": "b0261303-1f29-427a-b864-960982f5d99c",
+            "name": "Top",
+            "kind": "Top",
+            "path": "\"\""
+          },
+          "receipt": {
+            "success": false,
+            "message": "Instance path belongs to another document or is malformed."
+          }
+        }
+      ],
+      "saved": [],
+      "result": {
+        "path": "artifacts/af1081-local86-1/lmstudio-drawing-1/result.json",
+        "sha256": "4B9F906EB79B9E03CC44F238C47733EDE371A3CC8C178BD7415F892C27D01D63"
+      },
+      "terminal": {
+        "path": "artifacts/af1081-local86-1/lmstudio-drawing-1-exit.json",
+        "sha256": "D2730B2467307961432208843131ECF608A9727F560ED71760EBBBB7751AF72B"
+      },
+      "binding": {
+        "path": "artifacts/af1081-local86-1/lmstudio-drawing-1-loaded-native.json",
+        "sha256": "6AF6B0D718AF9FC51D194C16CBF05E38D89A3E682036B863557D7DEB2356ADDE"
+      },
+      "toolCalls": {
+        "path": "artifacts/af1081-local86-1/lmstudio-drawing-1/tool-calls.json",
+        "sha256": "28CCD8DCAFA7C9FAD0907E00C0A3A98C11838CB97DAF3A0CE9BE627506BA80E0"
+      }
+    },
+    {
+      "scenario": "workspace",
+      "passed": false,
+      "completedTurns": 5,
+      "requiredTurns": 8,
+      "failure": "The model exceeded the maximum number of agent tool rounds.",
+      "assetsAfterClose": 0,
+      "actualNative62Matched": true,
+      "calls": 35,
+      "failedReceipts": [
+        {
+          "ordinal": 6,
+          "tool": "cad_file",
+          "arguments": {
+            "action": "contract",
+            "documentId": "38ce2f16-ec6f-4c14-a7c6-86c0decfcd55",
+            "stateId": "100e3cf5-fb75-4781-b28d-364cc236a009"
+          },
+          "receipt": {
+            "success": false,
+            "message": "Unknown or duplicate argument: documentId."
+          }
+        },
+        {
+          "ordinal": 13,
+          "tool": "cad_workspace",
+          "arguments": {
+            "action": "activate",
+            "target": {
+              "sessionId": "75e2f513-396a-4623-97ba-a9612c52761f",
+              "documentId": "38ce2f16-ec6f-4c14-a7c6-86c0decfcd55",
+              "stateId": "100e3cf5-fb75-4781-b28d-364cc236a009"
+            },
+            "expected": {
+              "workspaceStateId": "ab19e281-d0b5-44cd-a200-b20e5c3ba0f2",
+              "activeSessionId": "75e2f513-396a-4623-97ba-a9612c52761f",
+              "documentId": "38ce2f16-ec6f-4c14-a7c6-86c0decfcd55",
+              "stateId": "100e3cf5-fb75-4781-b28d-364cc236a009"
+            }
+          },
+          "receipt": {
+            "success": false,
+            "message": "Workspace or active document changed. Inspect workspace again.",
+            "rejection": "workspace_expectation_changed",
+            "reinspection": {
+              "toolName": "cad_workspace",
+              "arguments": {
+                "action": "list"
+              }
+            },
+            "expectedRole": "Copy the complete current list.expected object. Its activeSessionId/documentId/stateId describe the currently active session. Do not replace them with target identities.",
+            "targetRole": "For activate, copy sessionId/documentId/stateId from the desired sessions[].identity row separately into target.",
+            "nextStep": "Read the workspace list again, then explicitly submit your intended action with its current expected and chosen target. The rejected request is not retried or repaired automatically."
+          }
+        },
+        {
+          "ordinal": 20,
+          "tool": "cad_workspace",
+          "arguments": {
+            "action": "list",
+            "path": "C:/Users/yoiri/source/repos/Cadoryx/artifacts/af1081-local86-1/lmstudio-workspace-1/workspace-provider-saved.cadoryx"
+          },
+          "receipt": {
+            "success": false,
+            "message": "Missing, invalid, unknown or duplicate workspace fields: path.",
+            "invalidFields": [
+              "path"
+            ],
+            "action": "list",
+            "allowedFields": [
+              "action",
+              "offset",
+              "limit"
+            ],
+            "identitySource": {
+              "toolName": "cad_workspace",
+              "arguments": {
+                "action": "list"
+              }
+            },
+            "roles": {
+              "expected": "Copy the complete list.expected object. It describes the current workspace and active session; explicit null is valid only for all three active identity fields in an empty workspace.",
+              "target": "For activate, copy one actual sessions[].identity sessionId/documentId/stateId triple. Names and row indexes are not target identities."
+            },
+            "nextStep": "No workspace transition or file read was attempted. Read list, then explicitly retry your original action with only its allowed fields and the returned exact identities. No identity was filled in automatically."
+          }
+        },
+        {
+          "ordinal": 26,
+          "tool": "cad_history",
+          "arguments": {
+            "action": "return_end",
+            "cursor": {
+              "stateId": "100e3cf5-fb75-4781-b28d-364cc236a009",
+              "position": 0
+            },
+            "documentId": "38ce2f16-ec6f-4c14-a7c6-86c0decfcd55",
+            "stateId": "100e3cf5-fb75-4781-b28d-364cc236a009"
+          },
+          "receipt": {
+            "success": false,
+            "message": "Invalid cursor object: Missing or invalid partId. Copy cursor.stateId, cursor.partId and cursor.position from exact inspection; root partId is only rollback/reorder. Use explicit null only at the history end."
+          }
+        },
+        {
+          "ordinal": 30,
+          "tool": "cad_inspect",
+          "arguments": {
+            "area": "drawings",
+            "id": "38ce2f16-ec6f-4c14-a7c6-86c0decfcd55",
+            "limit": 10
+          },
+          "receipt": {
+            "success": false,
+            "message": "id selects a drawing sheet, not documentId. Query cad_inspect with area=drawings and no id; copy items[].id as sheetId."
+          }
+        },
+        {
+          "ordinal": 31,
+          "tool": "cad_history",
+          "arguments": {
+            "action": "return_end",
+            "cursor": {
+              "stateId": "100e3cf5-fb75-4781-b28d-364cc236a009",
+              "partId": "38ce2f16-ec6f-4c14-a7c6-86c0decfcd55",
+              "position": 0
+            },
+            "documentId": "38ce2f16-ec6f-4c14-a7c6-86c0decfcd55",
+            "stateId": "100e3cf5-fb75-4781-b28d-364cc236a009"
+          },
+          "receipt": {
+            "success": false,
+            "message": "The document changed while this operation was being prepared.",
+            "code": "stale_history_expectation",
+            "recovery": {
+              "tool": "cad_inspect",
+              "arguments": {
+                "area": "recipes",
+                "offset": 0,
+                "limit": 1
+              },
+              "instruction": "Read the root documentId, stateId and cursor from this fresh inspection. Copy cursor exactly, including explicit null at the history end; do not construct it from items[].position. Review the intended action before retrying; reselect any edited feature and its current revision separately."
+            }
+          }
+        },
+        {
+          "ordinal": 33,
+          "tool": "cad_inspect",
+          "arguments": {
+            "area": "drawings",
+            "id": "38ce2f16-ec6f-4c14-a7c6-86c0decfcd55",
+            "limit": 10
+          },
+          "receipt": {
+            "success": false,
+            "message": "id selects a drawing sheet, not documentId. Query cad_inspect with area=drawings and no id; copy items[].id as sheetId."
+          }
+        }
+      ],
+      "saved": [
+        {
+          "path": "artifacts/af1081-local86-1/lmstudio-workspace-1/workspace-provider-saved.cadoryx",
+          "sha256": "799A7DF93AA4F043714FA903E71B30DF5DD904FFBE614696F7C2674637739AF7"
+        }
+      ],
+      "result": {
+        "path": "artifacts/af1081-local86-1/lmstudio-workspace-1/result.json",
+        "sha256": "B41921206226736E9DCD44CECCC20362F6E9D7078812199D537EF9231C397872"
+      },
+      "terminal": {
+        "path": "artifacts/af1081-local86-1/lmstudio-workspace-1-exit.json",
+        "sha256": "7B46486E855D8153CFD8A7BE61254D0088D23B5A38E7E71E2DDE013F219115A1"
+      },
+      "binding": {
+        "path": "artifacts/af1081-local86-1/lmstudio-workspace-1-loaded-native.json",
+        "sha256": "B5ECAE9956E4EDB46D3C15BEC071683DE4EC8F400B1F608B182AC21E0BF32553"
+      },
+      "toolCalls": {
+        "path": "artifacts/af1081-local86-1/lmstudio-workspace-1/tool-calls.json",
+        "sha256": "6B74EA1E5341DFE11C2133CE65D1E89296E080EEFB61B274EAAC71F583E8FD2E"
+      }
+    }
+  ],
+  "originalSourcesMatched": 1193,
+  "payloadMatched": 137,
+  "originalPromptAndAssertionsChanged": false,
+  "original8192Context16ToolRounds4MinutesPreserved": true,
+  "productionApplied": false,
+  "modelAcceptancePassed": false,
+  "AFComplete": false,
+  "G": "USER_DEFERRED",
+  "cleanup": false
+}

@@ -395,7 +395,19 @@ internal static class CadAgentDocumentTools
                 var sheetId = RequiredGuid(args, "sheetId");
                 if (!snapshot.DrawingSheets.ContainsKey(sheetId))
                     throw new KeyNotFoundException("Drawing sheet is missing.");
-                var path = ExactPath(args, "path", snapshot);
+                OccurrencePath path;
+                try { path = ExactPath(args, "path", snapshot); }
+                catch (Exception error) when (error is ArgumentException or InvalidOperationException)
+                {
+                    return JsonSerializer.Serialize(new
+                    {
+                        success = false, action, rejection = "drawing_view_path_invalid",
+                        message = error.Message + " add_drawing_view requires a complete occurrences.items[].path, including the document and every instance slot; a document ID, leaf slot or empty string is not a source path. Read cad_inspect occurrences without an id filter and explicitly choose the intended source. For the cad_drawing create/type=view entry, first read its view contract and place author fields in authorJson.",
+                        sourceRead = new { toolName = "cad_inspect", arguments = new { area = "occurrences", offset = 0, limit = 8 } },
+                        contractRead = new { toolName = "cad_drawing", arguments = new { action = "contract", type = "view" } },
+                        nextStep = "Read the source list and current cad_status, then explicitly resubmit the intended view with the exact sheet and chosen source. These suggestions were not executed; no source or identity was inferred, supplied or repaired."
+                    });
+                }
                 var kindName = RequiredString(args, "kind");
                 if (!Enum.TryParse<DrawingViewKind>(kindName, false, out var kind) ||
                     kind == DrawingViewKind.Section)

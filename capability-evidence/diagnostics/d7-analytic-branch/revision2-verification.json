@@ -1,0 +1,648 @@
+{
+  "recordedAt": "2026-10-13T17:17:15.755497+00:00",
+  "state": "D7_REVISION2_BOTH_ACTUAL243_FOCUSED_TESTS_INDEPENDENTLY_AUDITED",
+  "freeze": {
+    "path": "artifacts/d7-analytic-branch-draft-2/freeze.json",
+    "sha256": "AB1A129B3B1342D74AD563C531B64C4B42BA5D4364480C371D7BA56107A08FF0"
+  },
+  "suite": {
+    "path": "artifacts/d7-analytic-branch-draft-2/focused-both-exit.json",
+    "sha256": "2321B00F2D3C0FEDA06FD8279F14F1749ED3117288CE69ACFB3163C427E6AE41"
+  },
+  "unchangedBaseline": {
+    "path": "artifacts/d7-analytic-branch-draft-1/focused-verification.json",
+    "sha256": "7A9FC5537522B11AD94DE82F20BEA3E1BFD01C19572BA1656C214EED0594140A"
+  },
+  "configurations": [
+    {
+      "configuration": "Release",
+      "total": 243,
+      "passed": 171,
+      "failed": 72,
+      "skipped": 0,
+      "failures": [
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"cylinder\", pose: 1, material: \"plain\", operation: Fuse, branch: Far)",
+          "message": "Cadoryx.Db.CadValidationException : A native boundary is neither an authored prism side/start nor completely covered by the original finite stop face: area=75.54783723933315, covered=47.095674478666304, budget=1E-07, surface=Plane."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"cylinder\", pose: 0, material: \"plain\", operation: NewBody, branch: Far)",
+          "message": "Cadoryx.Db.CadValidationException : A native boundary is neither an authored prism side/start nor completely covered by the original finite stop face: area=75.54783723933315, covered=0, budget=1E-07, surface=Plane."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"cylinder\", pose: 2, material: \"hole\", operation: Cut, branch: Far)",
+          "message": "Cadoryx.Db.CadValidationException : Starting material faces do not account for the complete exact unit prism, including every hole and island: area=11.9999994, volume=11.99999979999999, starts=1."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"cylinder\", pose: 2, material: \"island\", operation: NewBody, branch: Far)",
+          "message": "Cadoryx.Db.CadValidationException : Starting material faces do not account for the complete exact unit prism, including every hole and island: area=12.9999994, volume=12.9999998, starts=2."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"sphere\", pose: 2, material: \"hole\", operation: NewBody, branch: Far)",
+          "message": "Cadoryx.Db.CadValidationException : A native boundary is neither an authored prism side/start nor completely covered by the original finite stop face: area=234.4489449972038, covered=0, budget=2.344489449972038E-07, surface=Cylinder."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"sphere\", pose: 1, material: \"plain\", operation: Fuse, branch: Far)",
+          "message": "Cadoryx.Db.CadValidationException : A native boundary is neither an authored prism side/start nor completely covered by the original finite stop face: area=234.44894499720402, covered=0, budget=2.3444894499720405E-07, surface=Cylinder."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"cylinder\", pose: 2, material: \"plain\", operation: Fuse, branch: Far)",
+          "message": "Cadoryx.Db.CadValidationException : A native boundary is neither an authored prism side/start nor completely covered by the original finite stop face: area=75.5478372393332, covered=0, budget=1E-07, surface=Plane."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"cylinder\", pose: 0, material: \"hole\", operation: Fuse, branch: Near)",
+          "message": "Cadoryx.Db.CadValidationException : Starting material faces do not account for the complete exact unit prism, including every hole and island: area=11.9999994, volume=11.999999800000001, starts=1."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"cylinder\", pose: 2, material: \"hole\", operation: Fuse, branch: Far)",
+          "message": "Cadoryx.Db.CadValidationException : Starting material faces do not account for the complete exact unit prism, including every hole and island: area=11.9999994, volume=11.9999998, starts=1."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"cylinder\", pose: 0, material: \"island\", operation: Fuse, branch: Far)",
+          "message": "Cadoryx.Db.CadValidationException : Starting material faces do not account for the complete exact unit prism, including every hole and island: area=12.9999994, volume=12.999999800000001, starts=2."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"cylinder\", pose: 0, material: \"island\", operation: Fuse, branch: Near)",
+          "message": "Cadoryx.Db.CadValidationException : Starting material faces do not account for the complete exact unit prism, including every hole and island: area=12.9999994, volume=12.999999800000001, starts=2."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"cylinder\", pose: 0, material: \"island\", operation: Cut, branch: Near)",
+          "message": "Cadoryx.Db.CadValidationException : Starting material faces do not account for the complete exact unit prism, including every hole and island: area=12.9999994, volume=12.999999800000001, starts=2."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"cylinder\", pose: 1, material: \"hole\", operation: Fuse, branch: Near)",
+          "message": "Cadoryx.Db.CadValidationException : Starting material faces do not account for the complete exact unit prism, including every hole and island: area=11.9999994, volume=11.999999800000001, starts=1."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"sphere\", pose: 0, material: \"island\", operation: Cut, branch: Far)",
+          "message": "Cadoryx.Db.CadValidationException : A native boundary is neither an authored prism side/start nor completely covered by the original finite stop face: area=347.5462805264366, covered=0, budget=3.475462805264366E-07, surface=Cylinder."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"sphere\", pose: 0, material: \"island\", operation: NewBody, branch: Far)",
+          "message": "Cadoryx.Db.CadValidationException : A native boundary is neither an authored prism side/start nor completely covered by the original finite stop face: area=234.44894499720402, covered=0, budget=2.3444894499720405E-07, surface=Cylinder."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"cylinder\", pose: 1, material: \"island\", operation: Fuse, branch: Far)",
+          "message": "Cadoryx.Db.CadValidationException : Starting material faces do not account for the complete exact unit prism, including every hole and island: area=12.9999994, volume=12.999999800000001, starts=2."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"cylinder\", pose: 0, material: \"hole\", operation: NewBody, branch: Far)",
+          "message": "Cadoryx.Db.CadValidationException : Starting material faces do not account for the complete exact unit prism, including every hole and island: area=11.9999994, volume=11.999999800000001, starts=1."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"sphere\", pose: 0, material: \"plain\", operation: Cut, branch: Far)",
+          "message": "Cadoryx.Db.CadValidationException : A native boundary is neither an authored prism side/start nor completely covered by the original finite stop face: area=347.5462805264366, covered=0, budget=3.475462805264366E-07, surface=Cylinder."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"cylinder\", pose: 2, material: \"island\", operation: Fuse, branch: Far)",
+          "message": "Cadoryx.Db.CadValidationException : Starting material faces do not account for the complete exact unit prism, including every hole and island: area=12.9999994, volume=12.9999998, starts=2."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"cylinder\", pose: 2, material: \"hole\", operation: NewBody, branch: Far)",
+          "message": "Cadoryx.Db.CadValidationException : Starting material faces do not account for the complete exact unit prism, including every hole and island: area=11.9999994, volume=11.9999998, starts=1."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"cylinder\", pose: 0, material: \"hole\", operation: NewBody, branch: Near)",
+          "message": "Cadoryx.Db.CadValidationException : Starting material faces do not account for the complete exact unit prism, including every hole and island: area=11.9999994, volume=11.999999800000001, starts=1."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"sphere\", pose: 2, material: \"island\", operation: Fuse, branch: Far)",
+          "message": "Cadoryx.Db.CadValidationException : A native boundary is neither an authored prism side/start nor completely covered by the original finite stop face: area=234.4489449972038, covered=0, budget=2.344489449972038E-07, surface=Cylinder."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"sphere\", pose: 2, material: \"plain\", operation: Cut, branch: Far)",
+          "message": "Cadoryx.Db.CadValidationException : A native boundary is neither an authored prism side/start nor completely covered by the original finite stop face: area=347.5462805264356, covered=0, budget=3.4754628052643565E-07, surface=Cylinder."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"cylinder\", pose: 0, material: \"plain\", operation: Fuse, branch: Far)",
+          "message": "Cadoryx.Db.CadValidationException : A native boundary is neither an authored prism side/start nor completely covered by the original finite stop face: area=75.54783723933315, covered=0, budget=1E-07, surface=Plane."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"sphere\", pose: 1, material: \"plain\", operation: NewBody, branch: Far)",
+          "message": "Cadoryx.Db.CadValidationException : A native boundary is neither an authored prism side/start nor completely covered by the original finite stop face: area=234.44894499720402, covered=0, budget=2.3444894499720405E-07, surface=Cylinder."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"cylinder\", pose: 0, material: \"hole\", operation: Cut, branch: Near)",
+          "message": "Cadoryx.Db.CadValidationException : Starting material faces do not account for the complete exact unit prism, including every hole and island: area=11.9999994, volume=11.999999800000001, starts=1."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"cylinder\", pose: 2, material: \"plain\", operation: Cut, branch: Far)",
+          "message": "Cadoryx.Db.CadValidationException : A native boundary is neither an authored prism side/start nor completely covered by the original finite stop face: area=110.6274169979696, covered=0, budget=1.1062741699796961E-07, surface=Plane."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"cylinder\", pose: 2, material: \"hole\", operation: Fuse, branch: Near)",
+          "message": "Cadoryx.Db.CadValidationException : Starting material faces do not account for the complete exact unit prism, including every hole and island: area=11.9999994, volume=11.9999998, starts=1."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"sphere\", pose: 2, material: \"plain\", operation: Fuse, branch: Far)",
+          "message": "Cadoryx.Db.CadValidationException : A native boundary is neither an authored prism side/start nor completely covered by the original finite stop face: area=234.4489449972038, covered=0, budget=2.344489449972038E-07, surface=Cylinder."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"sphere\", pose: 1, material: \"hole\", operation: Fuse, branch: Far)",
+          "message": "Cadoryx.Db.CadValidationException : A native boundary is neither an authored prism side/start nor completely covered by the original finite stop face: area=234.44894499720402, covered=0, budget=2.3444894499720405E-07, surface=Cylinder."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"sphere\", pose: 1, material: \"hole\", operation: NewBody, branch: Far)",
+          "message": "Cadoryx.Db.CadValidationException : A native boundary is neither an authored prism side/start nor completely covered by the original finite stop face: area=234.44894499720402, covered=0, budget=2.3444894499720405E-07, surface=Cylinder."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"cylinder\", pose: 1, material: \"island\", operation: Cut, branch: Near)",
+          "message": "Cadoryx.Db.CadValidationException : Starting material faces do not account for the complete exact unit prism, including every hole and island: area=12.9999994, volume=12.9999998, starts=2."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"cylinder\", pose: 1, material: \"plain\", operation: NewBody, branch: Far)",
+          "message": "Cadoryx.Db.CadValidationException : A native boundary is neither an authored prism side/start nor completely covered by the original finite stop face: area=75.54783723933315, covered=0, budget=1E-07, surface=Plane."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"cylinder\", pose: 1, material: \"island\", operation: Cut, branch: Far)",
+          "message": "Cadoryx.Db.CadValidationException : Starting material faces do not account for the complete exact unit prism, including every hole and island: area=12.9999994, volume=12.9999998, starts=2."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"cylinder\", pose: 1, material: \"hole\", operation: Fuse, branch: Far)",
+          "message": "Cadoryx.Db.CadValidationException : Starting material faces do not account for the complete exact unit prism, including every hole and island: area=11.9999994, volume=11.999999800000001, starts=1."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"cylinder\", pose: 0, material: \"hole\", operation: Cut, branch: Far)",
+          "message": "Cadoryx.Db.CadValidationException : Starting material faces do not account for the complete exact unit prism, including every hole and island: area=11.9999994, volume=11.999999800000001, starts=1."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"cylinder\", pose: 0, material: \"hole\", operation: Fuse, branch: Far)",
+          "message": "Cadoryx.Db.CadValidationException : Starting material faces do not account for the complete exact unit prism, including every hole and island: area=11.9999994, volume=11.999999800000001, starts=1."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"sphere\", pose: 2, material: \"island\", operation: Cut, branch: Far)",
+          "message": "Cadoryx.Db.CadValidationException : A native boundary is neither an authored prism side/start nor completely covered by the original finite stop face: area=347.5462805264356, covered=0, budget=3.4754628052643565E-07, surface=Cylinder."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"cylinder\", pose: 1, material: \"hole\", operation: NewBody, branch: Near)",
+          "message": "Cadoryx.Db.CadValidationException : Starting material faces do not account for the complete exact unit prism, including every hole and island: area=11.9999994, volume=11.999999800000001, starts=1."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"sphere\", pose: 0, material: \"plain\", operation: Fuse, branch: Far)",
+          "message": "Cadoryx.Db.CadValidationException : A native boundary is neither an authored prism side/start nor completely covered by the original finite stop face: area=234.44894499720402, covered=0, budget=2.3444894499720405E-07, surface=Cylinder."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"cylinder\", pose: 0, material: \"island\", operation: NewBody, branch: Near)",
+          "message": "Cadoryx.Db.CadValidationException : Starting material faces do not account for the complete exact unit prism, including every hole and island: area=12.9999994, volume=12.999999800000001, starts=2."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"cylinder\", pose: 2, material: \"hole\", operation: NewBody, branch: Near)",
+          "message": "Cadoryx.Db.CadValidationException : Starting material faces do not account for the complete exact unit prism, including every hole and island: area=11.9999994, volume=11.9999998, starts=1."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"sphere\", pose: 1, material: \"plain\", operation: Cut, branch: Far)",
+          "message": "Cadoryx.Db.CadValidationException : A native boundary is neither an authored prism side/start nor completely covered by the original finite stop face: area=347.5462805264366, covered=0, budget=3.475462805264366E-07, surface=Cylinder."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"cylinder\", pose: 2, material: \"island\", operation: NewBody, branch: Near)",
+          "message": "Cadoryx.Db.CadValidationException : Starting material faces do not account for the complete exact unit prism, including every hole and island: area=12.9999994, volume=12.9999998, starts=2."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"sphere\", pose: 0, material: \"plain\", operation: NewBody, branch: Far)",
+          "message": "Cadoryx.Db.CadValidationException : A native boundary is neither an authored prism side/start nor completely covered by the original finite stop face: area=234.44894499720402, covered=0, budget=2.3444894499720405E-07, surface=Cylinder."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"sphere\", pose: 1, material: \"hole\", operation: Cut, branch: Far)",
+          "message": "Cadoryx.Db.CadValidationException : A native boundary is neither an authored prism side/start nor completely covered by the original finite stop face: area=347.5462805264366, covered=0, budget=3.475462805264366E-07, surface=Cylinder."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"cylinder\", pose: 1, material: \"hole\", operation: Cut, branch: Far)",
+          "message": "Cadoryx.Db.CadValidationException : Starting material faces do not account for the complete exact unit prism, including every hole and island: area=11.9999994, volume=11.9999998, starts=1."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"sphere\", pose: 1, material: \"island\", operation: Fuse, branch: Far)",
+          "message": "Cadoryx.Db.CadValidationException : A native boundary is neither an authored prism side/start nor completely covered by the original finite stop face: area=234.44894499720402, covered=0, budget=2.3444894499720405E-07, surface=Cylinder."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"cylinder\", pose: 1, material: \"hole\", operation: Cut, branch: Near)",
+          "message": "Cadoryx.Db.CadValidationException : Starting material faces do not account for the complete exact unit prism, including every hole and island: area=11.9999994, volume=11.9999998, starts=1."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"cylinder\", pose: 2, material: \"hole\", operation: Cut, branch: Near)",
+          "message": "Cadoryx.Db.CadValidationException : Starting material faces do not account for the complete exact unit prism, including every hole and island: area=11.9999994, volume=11.99999979999999, starts=1."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"sphere\", pose: 0, material: \"hole\", operation: NewBody, branch: Far)",
+          "message": "Cadoryx.Db.CadValidationException : A native boundary is neither an authored prism side/start nor completely covered by the original finite stop face: area=234.44894499720402, covered=0, budget=2.3444894499720405E-07, surface=Cylinder."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"cylinder\", pose: 1, material: \"hole\", operation: NewBody, branch: Far)",
+          "message": "Cadoryx.Db.CadValidationException : Starting material faces do not account for the complete exact unit prism, including every hole and island: area=11.9999994, volume=11.999999800000001, starts=1."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"cylinder\", pose: 2, material: \"island\", operation: Fuse, branch: Near)",
+          "message": "Cadoryx.Db.CadValidationException : Starting material faces do not account for the complete exact unit prism, including every hole and island: area=12.9999994, volume=12.9999998, starts=2."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"sphere\", pose: 0, material: \"hole\", operation: Cut, branch: Far)",
+          "message": "Cadoryx.Db.CadValidationException : A native boundary is neither an authored prism side/start nor completely covered by the original finite stop face: area=347.5462805264366, covered=0, budget=3.475462805264366E-07, surface=Cylinder."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"sphere\", pose: 2, material: \"hole\", operation: Fuse, branch: Far)",
+          "message": "Cadoryx.Db.CadValidationException : A native boundary is neither an authored prism side/start nor completely covered by the original finite stop face: area=234.4489449972038, covered=0, budget=2.344489449972038E-07, surface=Cylinder."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"sphere\", pose: 1, material: \"island\", operation: Cut, branch: Far)",
+          "message": "Cadoryx.Db.CadValidationException : A native boundary is neither an authored prism side/start nor completely covered by the original finite stop face: area=347.5462805264366, covered=0, budget=3.475462805264366E-07, surface=Cylinder."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"cylinder\", pose: 1, material: \"island\", operation: NewBody, branch: Near)",
+          "message": "Cadoryx.Db.CadValidationException : Starting material faces do not account for the complete exact unit prism, including every hole and island: area=12.9999994, volume=12.999999800000001, starts=2."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"sphere\", pose: 2, material: \"plain\", operation: NewBody, branch: Far)",
+          "message": "Cadoryx.Db.CadValidationException : A native boundary is neither an authored prism side/start nor completely covered by the original finite stop face: area=234.4489449972038, covered=0, budget=2.344489449972038E-07, surface=Cylinder."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"cylinder\", pose: 1, material: \"island\", operation: NewBody, branch: Far)",
+          "message": "Cadoryx.Db.CadValidationException : Starting material faces do not account for the complete exact unit prism, including every hole and island: area=12.9999994, volume=12.999999800000001, starts=2."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"cylinder\", pose: 2, material: \"plain\", operation: NewBody, branch: Far)",
+          "message": "Cadoryx.Db.CadValidationException : A native boundary is neither an authored prism side/start nor completely covered by the original finite stop face: area=74.62741699796949, covered=0, budget=1E-07, surface=Plane."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"cylinder\", pose: 1, material: \"plain\", operation: Cut, branch: Far)",
+          "message": "Cadoryx.Db.CadValidationException : A native boundary is neither an authored prism side/start nor completely covered by the original finite stop face: area=110.62741699796952, covered=0, budget=1.1062741699796952E-07, surface=Plane."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"cylinder\", pose: 0, material: \"plain\", operation: Cut, branch: Far)",
+          "message": "Cadoryx.Db.CadValidationException : A native boundary is neither an authored prism side/start nor completely covered by the original finite stop face: area=110.62741699796952, covered=0, budget=1.1062741699796952E-07, surface=Plane."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"sphere\", pose: 0, material: \"hole\", operation: Fuse, branch: Far)",
+          "message": "Cadoryx.Db.CadValidationException : A native boundary is neither an authored prism side/start nor completely covered by the original finite stop face: area=234.44894499720402, covered=0, budget=2.3444894499720405E-07, surface=Cylinder."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"sphere\", pose: 1, material: \"island\", operation: NewBody, branch: Far)",
+          "message": "Cadoryx.Db.CadValidationException : A native boundary is neither an authored prism side/start nor completely covered by the original finite stop face: area=234.44894499720402, covered=0, budget=2.3444894499720405E-07, surface=Cylinder."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"cylinder\", pose: 0, material: \"island\", operation: Cut, branch: Far)",
+          "message": "Cadoryx.Db.CadValidationException : Starting material faces do not account for the complete exact unit prism, including every hole and island: area=12.9999994, volume=12.999999800000001, starts=2."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"cylinder\", pose: 0, material: \"island\", operation: NewBody, branch: Far)",
+          "message": "Cadoryx.Db.CadValidationException : Starting material faces do not account for the complete exact unit prism, including every hole and island: area=12.9999994, volume=12.999999800000001, starts=2."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"cylinder\", pose: 2, material: \"island\", operation: Cut, branch: Far)",
+          "message": "Cadoryx.Db.CadValidationException : Starting material faces do not account for the complete exact unit prism, including every hole and island: area=12.9999994, volume=12.99999979999999, starts=2."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"cylinder\", pose: 1, material: \"island\", operation: Fuse, branch: Near)",
+          "message": "Cadoryx.Db.CadValidationException : Starting material faces do not account for the complete exact unit prism, including every hole and island: area=12.9999994, volume=12.999999800000001, starts=2."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"sphere\", pose: 2, material: \"island\", operation: NewBody, branch: Far)",
+          "message": "Cadoryx.Db.CadValidationException : A native boundary is neither an authored prism side/start nor completely covered by the original finite stop face: area=234.4489449972038, covered=0, budget=2.344489449972038E-07, surface=Cylinder."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"cylinder\", pose: 2, material: \"island\", operation: Cut, branch: Near)",
+          "message": "Cadoryx.Db.CadValidationException : Starting material faces do not account for the complete exact unit prism, including every hole and island: area=12.9999994, volume=12.99999979999999, starts=2."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"sphere\", pose: 0, material: \"island\", operation: Fuse, branch: Far)",
+          "message": "Cadoryx.Db.CadValidationException : A native boundary is neither an authored prism side/start nor completely covered by the original finite stop face: area=234.44894499720402, covered=0, budget=2.3444894499720405E-07, surface=Cylinder."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"sphere\", pose: 2, material: \"hole\", operation: Cut, branch: Far)",
+          "message": "Cadoryx.Db.CadValidationException : A native boundary is neither an authored prism side/start nor completely covered by the original finite stop face: area=347.5462805264356, covered=0, budget=3.4754628052643565E-07, surface=Cylinder."
+        }
+      ],
+      "old99Failures": [],
+      "actualNative62Matched": true,
+      "trx": {
+        "path": "artifacts/d7-analytic-branch-draft-2/candidate-release-runtime-1/runtime.trx",
+        "sha256": "B7C49F86B3162045F36A5C3DE540A12A0C0780FE9395DD289BC04D6D91C64558"
+      },
+      "binding": {
+        "path": "artifacts/d7-analytic-branch-draft-2/candidate-release-runtime-1/loaded-native.json",
+        "sha256": "2AC3A28334475883F77B4BF22EB625A0D685A809CB3B075D74860A13082B4ECF"
+      },
+      "terminal": {
+        "path": "artifacts/d7-analytic-branch-draft-2/candidate-release-runtime-1/exit.json",
+        "sha256": "85BD9098B3CE9E1FB47FE90440BCD5DC6EA38203217E5A49E5BA9E0EFE7AB0BA"
+      }
+    },
+    {
+      "configuration": "Debug",
+      "total": 243,
+      "passed": 171,
+      "failed": 72,
+      "skipped": 0,
+      "failures": [
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"sphere\", pose: 2, material: \"hole\", operation: Cut, branch: Far)",
+          "message": "Cadoryx.Db.CadValidationException : A native boundary is neither an authored prism side/start nor completely covered by the original finite stop face: area=347.5462805264356, covered=0, budget=3.4754628052643565E-07, surface=Cylinder."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"sphere\", pose: 0, material: \"island\", operation: Cut, branch: Far)",
+          "message": "Cadoryx.Db.CadValidationException : A native boundary is neither an authored prism side/start nor completely covered by the original finite stop face: area=347.5462805264366, covered=0, budget=3.475462805264366E-07, surface=Cylinder."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"cylinder\", pose: 1, material: \"hole\", operation: Cut, branch: Far)",
+          "message": "Cadoryx.Db.CadValidationException : Starting material faces do not account for the complete exact unit prism, including every hole and island: area=11.9999994, volume=11.9999998, starts=1."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"sphere\", pose: 1, material: \"island\", operation: Cut, branch: Far)",
+          "message": "Cadoryx.Db.CadValidationException : A native boundary is neither an authored prism side/start nor completely covered by the original finite stop face: area=347.5462805264366, covered=0, budget=3.475462805264366E-07, surface=Cylinder."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"cylinder\", pose: 0, material: \"plain\", operation: Fuse, branch: Far)",
+          "message": "Cadoryx.Db.CadValidationException : A native boundary is neither an authored prism side/start nor completely covered by the original finite stop face: area=75.54783723933315, covered=0, budget=1E-07, surface=Plane."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"cylinder\", pose: 2, material: \"island\", operation: Fuse, branch: Near)",
+          "message": "Cadoryx.Db.CadValidationException : Starting material faces do not account for the complete exact unit prism, including every hole and island: area=12.9999994, volume=12.9999998, starts=2."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"sphere\", pose: 1, material: \"plain\", operation: Fuse, branch: Far)",
+          "message": "Cadoryx.Db.CadValidationException : A native boundary is neither an authored prism side/start nor completely covered by the original finite stop face: area=234.44894499720402, covered=0, budget=2.3444894499720405E-07, surface=Cylinder."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"cylinder\", pose: 0, material: \"hole\", operation: NewBody, branch: Near)",
+          "message": "Cadoryx.Db.CadValidationException : Starting material faces do not account for the complete exact unit prism, including every hole and island: area=11.9999994, volume=11.999999800000001, starts=1."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"cylinder\", pose: 1, material: \"hole\", operation: NewBody, branch: Far)",
+          "message": "Cadoryx.Db.CadValidationException : Starting material faces do not account for the complete exact unit prism, including every hole and island: area=11.9999994, volume=11.999999800000001, starts=1."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"sphere\", pose: 1, material: \"island\", operation: Fuse, branch: Far)",
+          "message": "Cadoryx.Db.CadValidationException : A native boundary is neither an authored prism side/start nor completely covered by the original finite stop face: area=234.44894499720402, covered=0, budget=2.3444894499720405E-07, surface=Cylinder."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"cylinder\", pose: 1, material: \"plain\", operation: Fuse, branch: Far)",
+          "message": "Cadoryx.Db.CadValidationException : A native boundary is neither an authored prism side/start nor completely covered by the original finite stop face: area=75.54783723933315, covered=47.095674478666304, budget=1E-07, surface=Plane."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"cylinder\", pose: 2, material: \"island\", operation: NewBody, branch: Far)",
+          "message": "Cadoryx.Db.CadValidationException : Starting material faces do not account for the complete exact unit prism, including every hole and island: area=12.9999994, volume=12.9999998, starts=2."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"cylinder\", pose: 0, material: \"island\", operation: Cut, branch: Far)",
+          "message": "Cadoryx.Db.CadValidationException : Starting material faces do not account for the complete exact unit prism, including every hole and island: area=12.9999994, volume=12.999999800000001, starts=2."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"sphere\", pose: 0, material: \"island\", operation: NewBody, branch: Far)",
+          "message": "Cadoryx.Db.CadValidationException : A native boundary is neither an authored prism side/start nor completely covered by the original finite stop face: area=234.44894499720402, covered=0, budget=2.3444894499720405E-07, surface=Cylinder."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"cylinder\", pose: 1, material: \"island\", operation: Fuse, branch: Far)",
+          "message": "Cadoryx.Db.CadValidationException : Starting material faces do not account for the complete exact unit prism, including every hole and island: area=12.9999994, volume=12.999999800000001, starts=2."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"cylinder\", pose: 1, material: \"island\", operation: Fuse, branch: Near)",
+          "message": "Cadoryx.Db.CadValidationException : Starting material faces do not account for the complete exact unit prism, including every hole and island: area=12.9999994, volume=12.999999800000001, starts=2."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"sphere\", pose: 1, material: \"hole\", operation: NewBody, branch: Far)",
+          "message": "Cadoryx.Db.CadValidationException : A native boundary is neither an authored prism side/start nor completely covered by the original finite stop face: area=234.44894499720402, covered=0, budget=2.3444894499720405E-07, surface=Cylinder."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"cylinder\", pose: 2, material: \"hole\", operation: NewBody, branch: Near)",
+          "message": "Cadoryx.Db.CadValidationException : Starting material faces do not account for the complete exact unit prism, including every hole and island: area=11.9999994, volume=11.9999998, starts=1."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"cylinder\", pose: 2, material: \"island\", operation: Fuse, branch: Far)",
+          "message": "Cadoryx.Db.CadValidationException : Starting material faces do not account for the complete exact unit prism, including every hole and island: area=12.9999994, volume=12.9999998, starts=2."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"cylinder\", pose: 0, material: \"island\", operation: Fuse, branch: Near)",
+          "message": "Cadoryx.Db.CadValidationException : Starting material faces do not account for the complete exact unit prism, including every hole and island: area=12.9999994, volume=12.999999800000001, starts=2."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"cylinder\", pose: 1, material: \"plain\", operation: NewBody, branch: Far)",
+          "message": "Cadoryx.Db.CadValidationException : A native boundary is neither an authored prism side/start nor completely covered by the original finite stop face: area=75.54783723933315, covered=0, budget=1E-07, surface=Plane."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"cylinder\", pose: 0, material: \"hole\", operation: Fuse, branch: Far)",
+          "message": "Cadoryx.Db.CadValidationException : Starting material faces do not account for the complete exact unit prism, including every hole and island: area=11.9999994, volume=11.999999800000001, starts=1."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"cylinder\", pose: 0, material: \"hole\", operation: NewBody, branch: Far)",
+          "message": "Cadoryx.Db.CadValidationException : Starting material faces do not account for the complete exact unit prism, including every hole and island: area=11.9999994, volume=11.999999800000001, starts=1."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"cylinder\", pose: 0, material: \"hole\", operation: Cut, branch: Near)",
+          "message": "Cadoryx.Db.CadValidationException : Starting material faces do not account for the complete exact unit prism, including every hole and island: area=11.9999994, volume=11.999999800000001, starts=1."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"cylinder\", pose: 1, material: \"island\", operation: Cut, branch: Far)",
+          "message": "Cadoryx.Db.CadValidationException : Starting material faces do not account for the complete exact unit prism, including every hole and island: area=12.9999994, volume=12.9999998, starts=2."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"sphere\", pose: 2, material: \"plain\", operation: NewBody, branch: Far)",
+          "message": "Cadoryx.Db.CadValidationException : A native boundary is neither an authored prism side/start nor completely covered by the original finite stop face: area=234.4489449972038, covered=0, budget=2.344489449972038E-07, surface=Cylinder."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"cylinder\", pose: 2, material: \"hole\", operation: Fuse, branch: Near)",
+          "message": "Cadoryx.Db.CadValidationException : Starting material faces do not account for the complete exact unit prism, including every hole and island: area=11.9999994, volume=11.9999998, starts=1."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"cylinder\", pose: 2, material: \"hole\", operation: Cut, branch: Near)",
+          "message": "Cadoryx.Db.CadValidationException : Starting material faces do not account for the complete exact unit prism, including every hole and island: area=11.9999994, volume=11.99999979999999, starts=1."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"cylinder\", pose: 0, material: \"island\", operation: NewBody, branch: Far)",
+          "message": "Cadoryx.Db.CadValidationException : Starting material faces do not account for the complete exact unit prism, including every hole and island: area=12.9999994, volume=12.999999800000001, starts=2."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"cylinder\", pose: 1, material: \"hole\", operation: Cut, branch: Near)",
+          "message": "Cadoryx.Db.CadValidationException : Starting material faces do not account for the complete exact unit prism, including every hole and island: area=11.9999994, volume=11.9999998, starts=1."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"sphere\", pose: 2, material: \"island\", operation: Fuse, branch: Far)",
+          "message": "Cadoryx.Db.CadValidationException : A native boundary is neither an authored prism side/start nor completely covered by the original finite stop face: area=234.4489449972038, covered=0, budget=2.344489449972038E-07, surface=Cylinder."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"sphere\", pose: 1, material: \"hole\", operation: Cut, branch: Far)",
+          "message": "Cadoryx.Db.CadValidationException : A native boundary is neither an authored prism side/start nor completely covered by the original finite stop face: area=347.5462805264366, covered=0, budget=3.475462805264366E-07, surface=Cylinder."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"cylinder\", pose: 2, material: \"hole\", operation: Cut, branch: Far)",
+          "message": "Cadoryx.Db.CadValidationException : Starting material faces do not account for the complete exact unit prism, including every hole and island: area=11.9999994, volume=11.99999979999999, starts=1."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"sphere\", pose: 2, material: \"plain\", operation: Cut, branch: Far)",
+          "message": "Cadoryx.Db.CadValidationException : A native boundary is neither an authored prism side/start nor completely covered by the original finite stop face: area=347.5462805264356, covered=0, budget=3.4754628052643565E-07, surface=Cylinder."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"sphere\", pose: 0, material: \"plain\", operation: Cut, branch: Far)",
+          "message": "Cadoryx.Db.CadValidationException : A native boundary is neither an authored prism side/start nor completely covered by the original finite stop face: area=347.5462805264366, covered=0, budget=3.475462805264366E-07, surface=Cylinder."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"sphere\", pose: 1, material: \"plain\", operation: NewBody, branch: Far)",
+          "message": "Cadoryx.Db.CadValidationException : A native boundary is neither an authored prism side/start nor completely covered by the original finite stop face: area=234.44894499720402, covered=0, budget=2.3444894499720405E-07, surface=Cylinder."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"sphere\", pose: 0, material: \"island\", operation: Fuse, branch: Far)",
+          "message": "Cadoryx.Db.CadValidationException : A native boundary is neither an authored prism side/start nor completely covered by the original finite stop face: area=234.44894499720402, covered=0, budget=2.3444894499720405E-07, surface=Cylinder."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"cylinder\", pose: 1, material: \"island\", operation: NewBody, branch: Near)",
+          "message": "Cadoryx.Db.CadValidationException : Starting material faces do not account for the complete exact unit prism, including every hole and island: area=12.9999994, volume=12.999999800000001, starts=2."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"sphere\", pose: 0, material: \"hole\", operation: NewBody, branch: Far)",
+          "message": "Cadoryx.Db.CadValidationException : A native boundary is neither an authored prism side/start nor completely covered by the original finite stop face: area=234.44894499720402, covered=0, budget=2.3444894499720405E-07, surface=Cylinder."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"cylinder\", pose: 2, material: \"island\", operation: NewBody, branch: Near)",
+          "message": "Cadoryx.Db.CadValidationException : Starting material faces do not account for the complete exact unit prism, including every hole and island: area=12.9999994, volume=12.9999998, starts=2."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"sphere\", pose: 2, material: \"hole\", operation: Fuse, branch: Far)",
+          "message": "Cadoryx.Db.CadValidationException : A native boundary is neither an authored prism side/start nor completely covered by the original finite stop face: area=234.4489449972038, covered=0, budget=2.344489449972038E-07, surface=Cylinder."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"cylinder\", pose: 1, material: \"hole\", operation: NewBody, branch: Near)",
+          "message": "Cadoryx.Db.CadValidationException : Starting material faces do not account for the complete exact unit prism, including every hole and island: area=11.9999994, volume=11.999999800000001, starts=1."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"sphere\", pose: 0, material: \"hole\", operation: Fuse, branch: Far)",
+          "message": "Cadoryx.Db.CadValidationException : A native boundary is neither an authored prism side/start nor completely covered by the original finite stop face: area=234.44894499720402, covered=0, budget=2.3444894499720405E-07, surface=Cylinder."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"sphere\", pose: 2, material: \"island\", operation: NewBody, branch: Far)",
+          "message": "Cadoryx.Db.CadValidationException : A native boundary is neither an authored prism side/start nor completely covered by the original finite stop face: area=234.4489449972038, covered=0, budget=2.344489449972038E-07, surface=Cylinder."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"cylinder\", pose: 0, material: \"hole\", operation: Cut, branch: Far)",
+          "message": "Cadoryx.Db.CadValidationException : Starting material faces do not account for the complete exact unit prism, including every hole and island: area=11.9999994, volume=11.999999800000001, starts=1."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"cylinder\", pose: 1, material: \"hole\", operation: Fuse, branch: Far)",
+          "message": "Cadoryx.Db.CadValidationException : Starting material faces do not account for the complete exact unit prism, including every hole and island: area=11.9999994, volume=11.999999800000001, starts=1."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"sphere\", pose: 2, material: \"island\", operation: Cut, branch: Far)",
+          "message": "Cadoryx.Db.CadValidationException : A native boundary is neither an authored prism side/start nor completely covered by the original finite stop face: area=347.5462805264356, covered=0, budget=3.4754628052643565E-07, surface=Cylinder."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"cylinder\", pose: 0, material: \"island\", operation: Fuse, branch: Far)",
+          "message": "Cadoryx.Db.CadValidationException : Starting material faces do not account for the complete exact unit prism, including every hole and island: area=12.9999994, volume=12.999999800000001, starts=2."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"cylinder\", pose: 2, material: \"hole\", operation: Fuse, branch: Far)",
+          "message": "Cadoryx.Db.CadValidationException : Starting material faces do not account for the complete exact unit prism, including every hole and island: area=11.9999994, volume=11.9999998, starts=1."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"cylinder\", pose: 1, material: \"plain\", operation: Cut, branch: Far)",
+          "message": "Cadoryx.Db.CadValidationException : A native boundary is neither an authored prism side/start nor completely covered by the original finite stop face: area=110.62741699796952, covered=0, budget=1.1062741699796952E-07, surface=Plane."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"cylinder\", pose: 0, material: \"island\", operation: NewBody, branch: Near)",
+          "message": "Cadoryx.Db.CadValidationException : Starting material faces do not account for the complete exact unit prism, including every hole and island: area=12.9999994, volume=12.999999800000001, starts=2."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"sphere\", pose: 2, material: \"plain\", operation: Fuse, branch: Far)",
+          "message": "Cadoryx.Db.CadValidationException : A native boundary is neither an authored prism side/start nor completely covered by the original finite stop face: area=234.4489449972038, covered=0, budget=2.344489449972038E-07, surface=Cylinder."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"cylinder\", pose: 1, material: \"island\", operation: Cut, branch: Near)",
+          "message": "Cadoryx.Db.CadValidationException : Starting material faces do not account for the complete exact unit prism, including every hole and island: area=12.9999994, volume=12.9999998, starts=2."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"sphere\", pose: 2, material: \"hole\", operation: NewBody, branch: Far)",
+          "message": "Cadoryx.Db.CadValidationException : A native boundary is neither an authored prism side/start nor completely covered by the original finite stop face: area=234.4489449972038, covered=0, budget=2.344489449972038E-07, surface=Cylinder."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"cylinder\", pose: 2, material: \"island\", operation: Cut, branch: Near)",
+          "message": "Cadoryx.Db.CadValidationException : Starting material faces do not account for the complete exact unit prism, including every hole and island: area=12.9999994, volume=12.99999979999999, starts=2."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"cylinder\", pose: 2, material: \"hole\", operation: NewBody, branch: Far)",
+          "message": "Cadoryx.Db.CadValidationException : Starting material faces do not account for the complete exact unit prism, including every hole and island: area=11.9999994, volume=11.9999998, starts=1."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"cylinder\", pose: 0, material: \"plain\", operation: Cut, branch: Far)",
+          "message": "Cadoryx.Db.CadValidationException : A native boundary is neither an authored prism side/start nor completely covered by the original finite stop face: area=110.62741699796952, covered=0, budget=1.1062741699796952E-07, surface=Plane."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"cylinder\", pose: 0, material: \"island\", operation: Cut, branch: Near)",
+          "message": "Cadoryx.Db.CadValidationException : Starting material faces do not account for the complete exact unit prism, including every hole and island: area=12.9999994, volume=12.999999800000001, starts=2."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"cylinder\", pose: 2, material: \"plain\", operation: Fuse, branch: Far)",
+          "message": "Cadoryx.Db.CadValidationException : A native boundary is neither an authored prism side/start nor completely covered by the original finite stop face: area=75.5478372393332, covered=0, budget=1E-07, surface=Plane."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"sphere\", pose: 0, material: \"plain\", operation: NewBody, branch: Far)",
+          "message": "Cadoryx.Db.CadValidationException : A native boundary is neither an authored prism side/start nor completely covered by the original finite stop face: area=234.44894499720402, covered=0, budget=2.3444894499720405E-07, surface=Cylinder."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"cylinder\", pose: 1, material: \"hole\", operation: Fuse, branch: Near)",
+          "message": "Cadoryx.Db.CadValidationException : Starting material faces do not account for the complete exact unit prism, including every hole and island: area=11.9999994, volume=11.999999800000001, starts=1."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"cylinder\", pose: 0, material: \"hole\", operation: Fuse, branch: Near)",
+          "message": "Cadoryx.Db.CadValidationException : Starting material faces do not account for the complete exact unit prism, including every hole and island: area=11.9999994, volume=11.999999800000001, starts=1."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"sphere\", pose: 0, material: \"plain\", operation: Fuse, branch: Far)",
+          "message": "Cadoryx.Db.CadValidationException : A native boundary is neither an authored prism side/start nor completely covered by the original finite stop face: area=234.44894499720402, covered=0, budget=2.3444894499720405E-07, surface=Cylinder."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"sphere\", pose: 0, material: \"hole\", operation: Cut, branch: Far)",
+          "message": "Cadoryx.Db.CadValidationException : A native boundary is neither an authored prism side/start nor completely covered by the original finite stop face: area=347.5462805264366, covered=0, budget=3.475462805264366E-07, surface=Cylinder."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"cylinder\", pose: 1, material: \"island\", operation: NewBody, branch: Far)",
+          "message": "Cadoryx.Db.CadValidationException : Starting material faces do not account for the complete exact unit prism, including every hole and island: area=12.9999994, volume=12.999999800000001, starts=2."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"cylinder\", pose: 2, material: \"plain\", operation: NewBody, branch: Far)",
+          "message": "Cadoryx.Db.CadValidationException : A native boundary is neither an authored prism side/start nor completely covered by the original finite stop face: area=74.62741699796949, covered=0, budget=1E-07, surface=Plane."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"sphere\", pose: 1, material: \"island\", operation: NewBody, branch: Far)",
+          "message": "Cadoryx.Db.CadValidationException : A native boundary is neither an authored prism side/start nor completely covered by the original finite stop face: area=234.44894499720402, covered=0, budget=2.3444894499720405E-07, surface=Cylinder."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"sphere\", pose: 1, material: \"hole\", operation: Fuse, branch: Far)",
+          "message": "Cadoryx.Db.CadValidationException : A native boundary is neither an authored prism side/start nor completely covered by the original finite stop face: area=234.44894499720402, covered=0, budget=2.3444894499720405E-07, surface=Cylinder."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"cylinder\", pose: 2, material: \"island\", operation: Cut, branch: Far)",
+          "message": "Cadoryx.Db.CadValidationException : Starting material faces do not account for the complete exact unit prism, including every hole and island: area=12.9999994, volume=12.99999979999999, starts=2."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"sphere\", pose: 1, material: \"plain\", operation: Cut, branch: Far)",
+          "message": "Cadoryx.Db.CadValidationException : A native boundary is neither an authored prism side/start nor completely covered by the original finite stop face: area=347.5462805264366, covered=0, budget=3.475462805264366E-07, surface=Cylinder."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"cylinder\", pose: 2, material: \"plain\", operation: Cut, branch: Far)",
+          "message": "Cadoryx.Db.CadValidationException : A native boundary is neither an authored prism side/start nor completely covered by the original finite stop face: area=110.6274169979696, covered=0, budget=1.1062741699796961E-07, surface=Plane."
+        },
+        {
+          "name": "Cadoryx.Tests.FiniteSurfaceAnalyticBranchTests.ExplicitBranchRetainsCompleteMaterialOriginalAuthorsUndoAndReopen(kind: \"cylinder\", pose: 0, material: \"plain\", operation: NewBody, branch: Far)",
+          "message": "Cadoryx.Db.CadValidationException : A native boundary is neither an authored prism side/start nor completely covered by the original finite stop face: area=75.54783723933315, covered=0, budget=1E-07, surface=Plane."
+        }
+      ],
+      "old99Failures": [],
+      "actualNative62Matched": true,
+      "trx": {
+        "path": "artifacts/d7-analytic-branch-draft-2/candidate-debug-runtime-1/runtime.trx",
+        "sha256": "55F659E334B6CE5312569EA9E3A9EBE2611B26F13BA2D328F4DA6C5FC0B8B007"
+      },
+      "binding": {
+        "path": "artifacts/d7-analytic-branch-draft-2/candidate-debug-runtime-1/loaded-native.json",
+        "sha256": "DD6B30A196751465340B0F14FD7090F51196CD3DE21A9776CCB944DDA3449C6F"
+      },
+      "terminal": {
+        "path": "artifacts/d7-analytic-branch-draft-2/candidate-debug-runtime-1/exit.json",
+        "sha256": "9D143F954F00D2AB458644F9CAF35096AD5FFB1B12552FF796F98B7A289E7C60"
+      }
+    }
+  ],
+  "candidateFocusedPassed": false,
+  "whole6974RegressionExecuted": false,
+  "geometryBudgetsChanged": false,
+  "originalRaw90FailuresChanged": false,
+  "originalStrictSTEP24Changed": false,
+  "productionApplied": false,
+  "actualWindowExecuted": false,
+  "AFComplete": false
+}

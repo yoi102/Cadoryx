@@ -1,0 +1,42 @@
+{
+  "recordedAt": "2026-10-13T17:44:05.117124+00:00",
+  "state": "AF1082_WPF_BOTH_BUILD0_FINAL_VIEWMODELS_MATCH_FOCUSED49",
+  "source": {
+    "path": "Cadoryx.ViewModels/Toolboxes/CadAgentDocumentTools.cs",
+    "sha256": "C1813F3C0136BA32F2741E00A5047C0C1BD93AA75914E1BC3FA84A57E7360816"
+  },
+  "configurations": [
+    {
+      "configuration": "Release",
+      "buildPassed": true,
+      "testedViewModelsByteIdenticalToFinalWpf": true,
+      "viewModelsSha256": "77515A1FDD4D1B7D8EDBDE9EB39EA09418DE87886CB8DFCE95ACDDE16C1787FA",
+      "terminal": {
+        "path": "artifacts/af1082-drawing-legacy-path-1/wpf-build-release-exit.json",
+        "sha256": "86C2CAB76E8C945EA9794698EE4E16E44D87B368CE96ECCDD81EB5BDC6B7CD41"
+      },
+      "log": {
+        "path": "artifacts/af1082-drawing-legacy-path-1/wpf-build-release.log",
+        "sha256": "7367E3592D5F99E48BE9CCFED7D50D6FBF347633CD365DC997DBBA578AD5FBEA"
+      }
+    },
+    {
+      "configuration": "Debug",
+      "buildPassed": true,
+      "testedViewModelsByteIdenticalToFinalWpf": true,
+      "viewModelsSha256": "765DE4FE0B565CF48F500FB6021C7ED1DFFD984563EF72C1EACB0021F777A7D0",
+      "terminal": {
+        "path": "artifacts/af1082-drawing-legacy-path-1/wpf-build-debug-exit.json",
+        "sha256": "E92451ED7287EA32CFB5C96A4FB9F70755413B8CBC7C78F9D4FC77ADF675C35B"
+      },
+      "log": {
+        "path": "artifacts/af1082-drawing-legacy-path-1/wpf-build-debug.log",
+        "sha256": "48F3ADD15B5B6D830E01F141A82E4278B109CF242C40E03CC03BF6CB447644EF"
+      }
+    }
+  ],
+  "realModelRerun": false,
+  "actualDesktopWindowRun": false,
+  "current6847FullRegressionExecuted": false,
+  "AFComplete": false
+}

@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <AssemblyName>Cadoryx.Kernel.Occt</AssemblyName>
+    <PlatformTarget>x64</PlatformTarget>
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <InformationalVersion>1.0.0-d7-candidate.1</InformationalVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <AssemblyMetadata Include="OcctSharpPackageVersion" Value="8.0.1-preview.86" />
+    <InternalsVisibleTo Include="Cadoryx.Tests" />
+    <Reference Include="$(CandidatePayload)/Cadoryx.Db.dll;$(CandidatePayload)/Cadoryx.Kernel.Abstractions.dll;$(CandidatePayload)/OcctSharp*.dll"><Private>true</Private></Reference>
+    <Compile Include="$(CandidateSource)/Cadoryx.Kernel.Occt/**/*.cs"
+             Exclude="$(CandidateSource)/Cadoryx.Kernel.Occt/bin/**/*.cs;$(CandidateSource)/Cadoryx.Kernel.Occt/obj/**/*.cs;$(CandidateSource)/Cadoryx.Kernel.Occt/OcctFiniteSurfaceExtrusion.cs" />
+    <Compile Include="OcctFiniteSurfaceExtrusion.Candidate.cs" />
+    <Compile Include="OcctFiniteSurfaceBranchDomain.cs" />
+  </ItemGroup>
+  <Target Name="RequireFrozenCandidate" BeforeTargets="ResolveReferences">
+    <Error Condition="!Exists('$(CandidatePayload)/Cadoryx.Kernel.Occt.dll') Or !Exists('$(CandidateSource)/Cadoryx.Kernel.Occt/OcctFiniteSurfaceExtrusion.cs') Or !Exists('$(MSBuildProjectDirectory)/OcctFiniteSurfaceExtrusion.Candidate.cs')" Text="Supply original frozen 1081/86 source and payload; do not rebuild or replace the original application." />
+  </Target>
+</Project>
