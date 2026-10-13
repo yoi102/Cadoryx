@@ -1,0 +1,62 @@
+{
+  "state": "FAIL_ACTUAL_MAIN_STATUS_RECOVERY36",
+  "cases": [
+    {
+      "name": "en-US-native-presentation-loss-recover-0",
+      "culture": "en-US",
+      "loss": "native-presentation-loss",
+      "route": "recover",
+      "failedPane": 0,
+      "passed": false,
+      "failure": "System.InvalidOperationException: Actual main shell did not report recovery beginning.\r\n   at StartupHook.Require(Boolean value, String message) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\CadRecoveryWindowProbe\\MainStatusRecovery\\StartupHook.cs:line 39\r\n   at StartupHook.RunAsync(String output) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\CadRecoveryWindowProbe\\MainStatusRecovery\\StartupHook.cs:line 160",
+      "checks": [],
+      "images": [
+        {
+          "kind": "before",
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\main-status36\\runtime-2\\en-US-native-presentation-loss-recover-0\\before.png",
+          "sha256": "782825F4FF504094BCAE2AA84D937510FF97F08782245923D76BDB318504D7BF"
+        },
+        {
+          "kind": "other-before",
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\main-status36\\runtime-2\\en-US-native-presentation-loss-recover-0\\other-before.png",
+          "sha256": "19D2591DD5E44813073E2162474DB43D008DF248A12FFC2C0FF6F96557B6CD05"
+        }
+      ],
+      "finalStatus": "\u5C31\u7EEA",
+      "boundStatusText": "\u5C31\u7EEA",
+      "attempts": 1,
+      "completed": 1
+    }
+  ],
+  "transitions": [
+    {
+      "name": "en-US-native-presentation-loss-recover-0",
+      "observedChanges": [
+        {
+          "value": "\u6B63\u5728\u6062\u590D\u89C6\u56FE\u2026",
+          "boundTextAtEvent": "\u6B63\u5728\u6062\u590D\u89C6\u56FE\u2026",
+          "time": 653161246502
+        },
+        {
+          "value": "\u5C31\u7EEA",
+          "boundTextAtEvent": "\u5C31\u7EEA",
+          "time": 653162643303
+        }
+      ]
+    }
+  ],
+  "planned": 36,
+  "actual": 1,
+  "failure": "System.InvalidOperationException: Actual saved documents did not close.\r\n   at StartupHook.Require(Boolean value, String message) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\CadRecoveryWindowProbe\\MainStatusRecovery\\StartupHook.cs:line 39\r\n   at StartupHook.RunAsync(String output) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\tools\\CadRecoveryWindowProbe\\MainStatusRecovery\\StartupHook.cs:line 198",
+  "finalHosts": 2,
+  "finalAssets": {
+    "Count": 1,
+    "SizeBytes": 2737
+  },
+  "observationsBeforeFixtureFallback": true,
+  "mainShellStatusBar": "ACTUAL_PRODUCTION_BINDING_AND_FINAL_FULL_WPF_SHELL",
+  "beginningStatusEvidence": "Property change and bound text observation; no claim that every short recovery message reached physical scanout.",
+  "actualAbsentOrInvalidContext": "NOT_RUN",
+  "physicalGpuRemoval": false,
+  "desktopInputStarted": false
+}

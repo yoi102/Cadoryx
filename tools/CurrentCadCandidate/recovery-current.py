@@ -36,7 +36,14 @@ def accepted_app(label):
     assert build['state'] == 'CURRENT_F5_D7_BOTH_RECOVERY24_MAIN36_D6WINDOW36_HOSTS_PUBLISH0_NOT_RUNTIME'
     assert sha(freeze_path) == build['freeze']['sha256']
     original_sources = read(ROOT / build['originalRecoverySources']['path'])
-    for row in original_sources['sources']: assert sha(ROOT / row['path']) == row['sha256']
+    for row in original_sources['sources']:
+        if row['path'] == 'tools/CadRecoveryWindowProbe/README.md':
+            data = (ROOT / row['path']).read_bytes()
+            old = b'`capability-evidence/diagnostics/af1081-local86/run-recovery.ps1`'
+            new = b'`tools/CurrentCadCandidate/run-recovery.ps1`'
+            assert data.count(new) == 1 and old not in data
+            assert hashlib.sha256(data.replace(new, old)).hexdigest().upper() == row['sha256']
+        else: assert sha(ROOT / row['path']) == row['sha256']
     prep_path = DRAFT / 'recovery-preparation.json'; prep = read(prep_path)
     assert prep['original24'] == 24 and prep['original36Matrix']['planned'] == 36
     stage = next(c for c in build['configurations'] if c['label'] == label and c['configuration'] == 'Release')

@@ -2,6 +2,7 @@ import datetime
 import itertools
 import json
 import struct
+import sys
 from pathlib import Path
 import importlib.util
 spec = importlib.util.spec_from_file_location('recovery_current', Path(__file__).with_name('recovery-current.py'))
@@ -9,8 +10,11 @@ current = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(current)
 read, sha, ref, a = current.read, current.sha, current.ref, current.a
 app, full_proofs, fixture, fixture_path, prep_path = current.accepted_app('main-status36')
+iteration = int(sys.argv[1]) if len(sys.argv) == 2 else 1
+assert 1 <= iteration <= 100
+runtime = f'runtime-{iteration}'
 draft = current.DRAFT / 'main-status36'
-terminal_path = draft / 'runtime-1-exit.json'
+terminal_path = draft / (runtime + '-exit.json')
 terminal = read(terminal_path)
 assert terminal['state'] == 'PROCESS_PASS_PENDING_INDEPENDENT_AUDIT_AND_IMAGE_REVIEW'
 assert terminal['exitCode'] == 0 and terminal['planned'] == 36
@@ -57,10 +61,10 @@ assert {row['name']: row['sha256'] for row in binding['native']} == {row['name']
 for row in binding['native']:
     assert ref(Path(row['path']))['sha256'] == row['sha256']
     assert Path(row['path']).resolve().parent == (Path(app['candidate']) / 'occt').resolve()
-assert (draft / 'runtime-1-stderr.log').stat().st_size == 0
+assert (draft / (runtime + '-stderr.log')).stat().st_size == 0
 assert not result['desktopInputStarted'] and not result['physicalGpuRemoval']
 assert result['actualAbsentOrInvalidContext'] == 'NOT_RUN'
-out = draft / 'runtime-1-verification.json'
+out = draft / (runtime + '-verification.json')
 assert not out.exists()
 record = dict(recordedAt=datetime.datetime.now(datetime.timezone.utc).isoformat(),
     state='PASS_LOCAL87CU1_CURRENT_F5_D7_MAIN_STATUS_RECOVERY36_NATIVE62_144_FULL_IMAGES_PENDING_DIRECT_REVIEW',

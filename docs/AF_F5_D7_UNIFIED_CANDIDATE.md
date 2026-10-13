@@ -1,7 +1,16 @@
 # 最新 F5 与 D7 统一验收候选
 
-2026-10-14，status261。开发根已合入F5对象身份反馈，仍消费公开Preview.85。
+2026-10-14，status262。开发根已合入F5对象身份反馈，仍消费公开Preview.85。
 D7尚未合入生产。原24严格STEP按精确名单延期且仍记失败，G和清理暂缓。
+
+当前[两配置完整7117终态](../capability-evidence/diagnostics/af1082-f5-d7-local87cu1/full-verification.json)
+均7093通过/精确原24延期失败/零跳过，无新增失败，完整来源/名称/actual62已核对。
+原24恢复第2轮实际通过，48保存/52整图/actual62和2个唯一全帧直审通过。
+主壳36第2轮仅首场景且FAIL：恢复次数与完成次数均1、中文开始/就绪实际存在，
+fixture文化与实际UI文化不同，初始dirty文档另触发保存提示；根点击取消后终态，
+实际外部输入独立记录。原结果不改，不算36通过。模型/D6/材质/性能仍未验。
+SDK224CPU暂停已明确接收并链接原收据，包保持87.cu1；D7尚未合入根。
+
 
 [当前Release完整7117终态](../capability-evidence/diagnostics/af1082-f5-d7-local87cu1/release-full-verification.json)
 已7093通过、精确原24延期失败、零跳过，无新增失败。完整名称、1200冻结输入、

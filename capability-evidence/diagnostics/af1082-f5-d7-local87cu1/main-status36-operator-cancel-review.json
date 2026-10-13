@@ -1,0 +1,29 @@
+{
+  "recordedAt": "2026-10-13T22:45:09.778468+00:00",
+  "result": {
+    "path": "artifacts/af1082-f5-d7-local87cu1-1/main-status36/runtime-2/result.json",
+    "sha256": "2ABE6AF13C6E3A805B144C1F489F6CB53D70C6B4972A9732FBF016BF8C51B3F8"
+  },
+  "state": "FIRST_MAIN_CASE_FAILED_CULTURE_ASSERT_AND_CLOSE_PROMPT_AFTER_ACTUAL_RECOVERY",
+  "actualBeginAndReadyChinesePresent": [
+    {
+      "value": "\u6b63\u5728\u6062\u590d\u89c6\u56fe\u2026",
+      "boundTextAtEvent": "\u6b63\u5728\u6062\u590d\u89c6\u56fe\u2026",
+      "time": 653161246502
+    },
+    {
+      "value": "\u5c31\u7eea",
+      "boundTextAtEvent": "\u5c31\u7eea",
+      "time": 653162643303
+    }
+  ],
+  "actualRecoveryAttempts": 1,
+  "actualRecoveryCompleted": 1,
+  "observedPrompt": "Save changes for owned synthetic initial Untitled1 document",
+  "operatorAction": "Computer Use click Cancel on the observed related screenshot; no discard or save",
+  "desktopInputStartedByRoot": true,
+  "observerDoesNotInjectInput": true,
+  "originalStateNotEdited": true,
+  "main36Passed": false,
+  "AFComplete": false
+}

@@ -1,0 +1,32 @@
+{
+  "recordedAt": "2026-10-13T22:45:09.777469+00:00",
+  "state": "CURRENT_ORIGINAL_RECOVERY24_ALL_UNIQUE_FULL_FRAMES_DIRECTLY_REVIEWED",
+  "audit": {
+    "path": "artifacts/af1082-f5-d7-local87cu1-1/recovery24/runtime-2-verification.json",
+    "sha256": "311C567DF45B9D3274330E3CE52FB81EFA4769C7AF6E2498E604C1B8DB670B0C"
+  },
+  "reviewedWholeImages": [
+    {
+      "case": "native-presentation-loss-completed-1-recover",
+      "kind": "before",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\recovery24\\runtime-2\\native-presentation-loss-completed-1-recover\\before.png",
+      "sha256": "013E487AE29C1FB87DE42E36D6AC751D4CECD31F40B8659DD66C60B2D891DE15",
+      "width": 480,
+      "height": 320
+    },
+    {
+      "case": "native-presentation-loss-completed-2-recover",
+      "kind": "other-before",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\recovery24\\runtime-2\\native-presentation-loss-completed-2-recover\\other-before.png",
+      "sha256": "A128793B4618B795F712ED3CFEB0A7B44DA706FDD6E72BEACE6464F0859662D1",
+      "width": 480,
+      "height": 320
+    }
+  ],
+  "wholeImages": 52,
+  "uniqueWholeImages": 2,
+  "observations": "Primary full perspective block frame and secondary full top-view block frame present; before/after identity and other-pane identity are separately established by the complete audit.",
+  "physicalDisplayScanoutProven": false,
+  "desktopInputStarted": false,
+  "AFComplete": false
+}

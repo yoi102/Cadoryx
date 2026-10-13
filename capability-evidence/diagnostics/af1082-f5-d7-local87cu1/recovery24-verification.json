@@ -1,0 +1,2150 @@
+{
+  "recordedAt": "2026-10-13T22:28:55.878034+00:00",
+  "state": "PASS_LOCAL87CU1_CURRENT_F5_D7_ORIGINAL_WPF24_NATIVE62_HISTORY_SAVE48_IMAGES52_PENDING_DIRECT_REVIEW",
+  "preparation": {
+    "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\recovery-preparation.json",
+    "sha256": "B4DBDC01999EFF0D9CE9633AC7E56DEAFE83FE9857ADFC8D618A024A1A04204C"
+  },
+  "fixture": {
+    "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\capability-evidence\\diagnostics\\af1082-f5-d7-local87cu1\\hosts-verification.json",
+    "sha256": "1643ECBCC15251C0C627FB66DE2ACC7BA947DB6A90BF54897E12E40643107B0A"
+  },
+  "semanticBuild": {
+    "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\freeze.json",
+    "sha256": "67B761151A6CCF780C60D772FA3C732037649E5F333A1DAC6DDB425C913DDF0E"
+  },
+  "fullBoth7117": {
+    "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\capability-evidence\\diagnostics\\af1082-f5-d7-local87cu1\\full-verification.json",
+    "sha256": "24F11228795602C1096854152EED626806ACF49E36B8C7F879ED564B9432DCA0"
+  },
+  "terminal": {
+    "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\recovery24\\runtime-2-exit.json",
+    "sha256": "07F0817C29173C859A4D9F8F26E7DBAD5B4B9A28B451FAF0F82929B58120572E"
+  },
+  "result": {
+    "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\recovery24\\runtime-2\\result.json",
+    "sha256": "0F6E2C5CDA8FF924EE5B89745773C57FA3CBC03002933BB2FDE0BA2E3B2D827C"
+  },
+  "binding": {
+    "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\recovery24\\runtime-2-loaded-native.json",
+    "sha256": "C47424F2E551A8C793776F0F1BD97DC478089660490A45DF31DE6F301F8BE62A"
+  },
+  "rawStderrBytes": 0,
+  "cases": [
+    {
+      "name": "native-presentation-loss-completed-1-recover",
+      "loss": "native-presentation-loss",
+      "phase": "completed",
+      "paneCount": 1,
+      "route": "recover",
+      "passed": true,
+      "failure": null,
+      "checks": [
+        "coalesced_exact_host_replaced_current_snapshot_camera_and_complete_frame",
+        "exact_document_history_generation_file_and_saved_state_preserved_without_command_replay",
+        "same_session_native_authoring_exact_undo_redo_and_production_save_reopen"
+      ],
+      "images": [
+        {
+          "kind": "before",
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\recovery24\\runtime-2\\native-presentation-loss-completed-1-recover\\before.png",
+          "sha256": "013E487AE29C1FB87DE42E36D6AC751D4CECD31F40B8659DD66C60B2D891DE15"
+        },
+        {
+          "kind": "after",
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\recovery24\\runtime-2\\native-presentation-loss-completed-1-recover\\after.png",
+          "sha256": "013E487AE29C1FB87DE42E36D6AC751D4CECD31F40B8659DD66C60B2D891DE15"
+        }
+      ],
+      "observation": {
+        "health": {
+          "NativeHealth": 1,
+          "OwnerDisposed": false,
+          "ContextPreviouslyValid": true,
+          "RequiresNewViewer": true
+        },
+        "attempts": 1,
+        "completed": 1,
+        "hosts": 1,
+        "oldHandleStillWindow": false,
+        "oldVisible": 0,
+        "oldGeometry": 0,
+        "oldSource": 0,
+        "oldXde": 0,
+        "messages": [
+          "Viewport graphics data is unavailable.",
+          "Viewport graphics data is unavailable."
+        ]
+      },
+      "finalHosts": 0,
+      "finalAssets": {
+        "Count": 0,
+        "SizeBytes": 0
+      },
+      "reopenedAssets": {
+        "Count": 0,
+        "SizeBytes": 0
+      },
+      "emergencyCleanupExcludedFromOutcome": true
+    },
+    {
+      "name": "native-presentation-loss-completed-1-close-before-dispatch",
+      "loss": "native-presentation-loss",
+      "phase": "completed",
+      "paneCount": 1,
+      "route": "close-before-dispatch",
+      "passed": true,
+      "failure": null,
+      "checks": [
+        "exact_document_history_generation_file_and_saved_state_preserved_without_command_replay",
+        "same_session_native_authoring_exact_undo_redo_and_production_save_reopen"
+      ],
+      "images": [
+        {
+          "kind": "before",
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\recovery24\\runtime-2\\native-presentation-loss-completed-1-close-before-dispatch\\before.png",
+          "sha256": "013E487AE29C1FB87DE42E36D6AC751D4CECD31F40B8659DD66C60B2D891DE15"
+        }
+      ],
+      "observation": {
+        "health": {
+          "NativeHealth": 1,
+          "OwnerDisposed": false,
+          "ContextPreviouslyValid": true,
+          "RequiresNewViewer": true
+        },
+        "attempts": 0,
+        "completed": 0,
+        "hosts": 0,
+        "oldHandleStillWindow": false,
+        "oldVisible": 0,
+        "oldGeometry": 0,
+        "oldSource": 0,
+        "oldXde": 0,
+        "messages": [
+          "Viewport graphics data is unavailable.",
+          "Viewport graphics data is unavailable."
+        ]
+      },
+      "finalHosts": 0,
+      "finalAssets": {
+        "Count": 0,
+        "SizeBytes": 0
+      },
+      "reopenedAssets": {
+        "Count": 0,
+        "SizeBytes": 0
+      },
+      "emergencyCleanupExcludedFromOutcome": true
+    },
+    {
+      "name": "native-presentation-loss-completed-1-cleanup-callback-fails",
+      "loss": "native-presentation-loss",
+      "phase": "completed",
+      "paneCount": 1,
+      "route": "cleanup-callback-fails",
+      "passed": true,
+      "failure": null,
+      "checks": [
+        "exact_document_history_generation_file_and_saved_state_preserved_without_command_replay",
+        "same_session_native_authoring_exact_undo_redo_and_production_save_reopen"
+      ],
+      "images": [
+        {
+          "kind": "before",
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\recovery24\\runtime-2\\native-presentation-loss-completed-1-cleanup-callback-fails\\before.png",
+          "sha256": "013E487AE29C1FB87DE42E36D6AC751D4CECD31F40B8659DD66C60B2D891DE15"
+        }
+      ],
+      "observation": {
+        "health": {
+          "NativeHealth": 1,
+          "OwnerDisposed": false,
+          "ContextPreviouslyValid": true,
+          "RequiresNewViewer": true
+        },
+        "attempts": 1,
+        "completed": 0,
+        "hosts": 0,
+        "oldHandleStillWindow": false,
+        "oldVisible": 0,
+        "oldGeometry": 0,
+        "oldSource": 0,
+        "oldXde": 0,
+        "messages": [
+          "Viewport graphics data is unavailable.",
+          "Viewport graphics data is unavailable.",
+          "Owned recovery teardown callback fault",
+          "Owned recovery teardown callback fault"
+        ]
+      },
+      "finalHosts": 0,
+      "finalAssets": {
+        "Count": 0,
+        "SizeBytes": 0
+      },
+      "reopenedAssets": {
+        "Count": 0,
+        "SizeBytes": 0
+      },
+      "emergencyCleanupExcludedFromOutcome": true
+    },
+    {
+      "name": "native-presentation-loss-completed-2-recover",
+      "loss": "native-presentation-loss",
+      "phase": "completed",
+      "paneCount": 2,
+      "route": "recover",
+      "passed": true,
+      "failure": null,
+      "checks": [
+        "coalesced_exact_host_replaced_current_snapshot_camera_and_complete_frame",
+        "exact_document_history_generation_file_and_saved_state_preserved_without_command_replay",
+        "other_real_pane_owner_and_complete_frame_unchanged",
+        "same_session_native_authoring_exact_undo_redo_and_production_save_reopen"
+      ],
+      "images": [
+        {
+          "kind": "before",
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\recovery24\\runtime-2\\native-presentation-loss-completed-2-recover\\before.png",
+          "sha256": "013E487AE29C1FB87DE42E36D6AC751D4CECD31F40B8659DD66C60B2D891DE15"
+        },
+        {
+          "kind": "other-before",
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\recovery24\\runtime-2\\native-presentation-loss-completed-2-recover\\other-before.png",
+          "sha256": "A128793B4618B795F712ED3CFEB0A7B44DA706FDD6E72BEACE6464F0859662D1"
+        },
+        {
+          "kind": "after",
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\recovery24\\runtime-2\\native-presentation-loss-completed-2-recover\\after.png",
+          "sha256": "013E487AE29C1FB87DE42E36D6AC751D4CECD31F40B8659DD66C60B2D891DE15"
+        },
+        {
+          "kind": "other-after",
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\recovery24\\runtime-2\\native-presentation-loss-completed-2-recover\\other-after.png",
+          "sha256": "A128793B4618B795F712ED3CFEB0A7B44DA706FDD6E72BEACE6464F0859662D1"
+        }
+      ],
+      "observation": {
+        "health": {
+          "NativeHealth": 1,
+          "OwnerDisposed": false,
+          "ContextPreviouslyValid": true,
+          "RequiresNewViewer": true
+        },
+        "attempts": 1,
+        "completed": 1,
+        "hosts": 2,
+        "oldHandleStillWindow": false,
+        "oldVisible": 0,
+        "oldGeometry": 0,
+        "oldSource": 0,
+        "oldXde": 0,
+        "messages": [
+          "Viewport graphics data is unavailable.",
+          "Viewport graphics data is unavailable."
+        ]
+      },
+      "finalHosts": 0,
+      "finalAssets": {
+        "Count": 0,
+        "SizeBytes": 0
+      },
+      "reopenedAssets": {
+        "Count": 0,
+        "SizeBytes": 0
+      },
+      "emergencyCleanupExcludedFromOutcome": true
+    },
+    {
+      "name": "native-presentation-loss-completed-2-close-before-dispatch",
+      "loss": "native-presentation-loss",
+      "phase": "completed",
+      "paneCount": 2,
+      "route": "close-before-dispatch",
+      "passed": true,
+      "failure": null,
+      "checks": [
+        "exact_document_history_generation_file_and_saved_state_preserved_without_command_replay",
+        "same_session_native_authoring_exact_undo_redo_and_production_save_reopen"
+      ],
+      "images": [
+        {
+          "kind": "before",
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\recovery24\\runtime-2\\native-presentation-loss-completed-2-close-before-dispatch\\before.png",
+          "sha256": "013E487AE29C1FB87DE42E36D6AC751D4CECD31F40B8659DD66C60B2D891DE15"
+        },
+        {
+          "kind": "other-before",
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\recovery24\\runtime-2\\native-presentation-loss-completed-2-close-before-dispatch\\other-before.png",
+          "sha256": "A128793B4618B795F712ED3CFEB0A7B44DA706FDD6E72BEACE6464F0859662D1"
+        }
+      ],
+      "observation": {
+        "health": {
+          "NativeHealth": 1,
+          "OwnerDisposed": false,
+          "ContextPreviouslyValid": true,
+          "RequiresNewViewer": true
+        },
+        "attempts": 0,
+        "completed": 0,
+        "hosts": 0,
+        "oldHandleStillWindow": false,
+        "oldVisible": 0,
+        "oldGeometry": 0,
+        "oldSource": 0,
+        "oldXde": 0,
+        "messages": [
+          "Viewport graphics data is unavailable.",
+          "Viewport graphics data is unavailable."
+        ]
+      },
+      "finalHosts": 0,
+      "finalAssets": {
+        "Count": 0,
+        "SizeBytes": 0
+      },
+      "reopenedAssets": {
+        "Count": 0,
+        "SizeBytes": 0
+      },
+      "emergencyCleanupExcludedFromOutcome": true
+    },
+    {
+      "name": "native-presentation-loss-completed-2-cleanup-callback-fails",
+      "loss": "native-presentation-loss",
+      "phase": "completed",
+      "paneCount": 2,
+      "route": "cleanup-callback-fails",
+      "passed": true,
+      "failure": null,
+      "checks": [
+        "exact_document_history_generation_file_and_saved_state_preserved_without_command_replay",
+        "other_real_pane_owner_and_complete_frame_unchanged",
+        "same_session_native_authoring_exact_undo_redo_and_production_save_reopen"
+      ],
+      "images": [
+        {
+          "kind": "before",
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\recovery24\\runtime-2\\native-presentation-loss-completed-2-cleanup-callback-fails\\before.png",
+          "sha256": "013E487AE29C1FB87DE42E36D6AC751D4CECD31F40B8659DD66C60B2D891DE15"
+        },
+        {
+          "kind": "other-before",
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\recovery24\\runtime-2\\native-presentation-loss-completed-2-cleanup-callback-fails\\other-before.png",
+          "sha256": "A128793B4618B795F712ED3CFEB0A7B44DA706FDD6E72BEACE6464F0859662D1"
+        },
+        {
+          "kind": "other-after",
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\recovery24\\runtime-2\\native-presentation-loss-completed-2-cleanup-callback-fails\\other-after.png",
+          "sha256": "A128793B4618B795F712ED3CFEB0A7B44DA706FDD6E72BEACE6464F0859662D1"
+        }
+      ],
+      "observation": {
+        "health": {
+          "NativeHealth": 1,
+          "OwnerDisposed": false,
+          "ContextPreviouslyValid": true,
+          "RequiresNewViewer": true
+        },
+        "attempts": 1,
+        "completed": 0,
+        "hosts": 1,
+        "oldHandleStillWindow": false,
+        "oldVisible": 0,
+        "oldGeometry": 0,
+        "oldSource": 0,
+        "oldXde": 0,
+        "messages": [
+          "Viewport graphics data is unavailable.",
+          "Viewport graphics data is unavailable.",
+          "Owned recovery teardown callback fault",
+          "Owned recovery teardown callback fault"
+        ]
+      },
+      "finalHosts": 0,
+      "finalAssets": {
+        "Count": 0,
+        "SizeBytes": 0
+      },
+      "reopenedAssets": {
+        "Count": 0,
+        "SizeBytes": 0
+      },
+      "emergencyCleanupExcludedFromOutcome": true
+    },
+    {
+      "name": "native-presentation-loss-progressive-1-recover",
+      "loss": "native-presentation-loss",
+      "phase": "progressive",
+      "paneCount": 1,
+      "route": "recover",
+      "passed": true,
+      "failure": null,
+      "checks": [
+        "coalesced_exact_host_replaced_current_snapshot_camera_and_complete_frame",
+        "exact_document_history_generation_file_and_saved_state_preserved_without_command_replay",
+        "same_session_native_authoring_exact_undo_redo_and_production_save_reopen"
+      ],
+      "images": [
+        {
+          "kind": "before",
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\recovery24\\runtime-2\\native-presentation-loss-progressive-1-recover\\before.png",
+          "sha256": "013E487AE29C1FB87DE42E36D6AC751D4CECD31F40B8659DD66C60B2D891DE15"
+        },
+        {
+          "kind": "after",
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\recovery24\\runtime-2\\native-presentation-loss-progressive-1-recover\\after.png",
+          "sha256": "013E487AE29C1FB87DE42E36D6AC751D4CECD31F40B8659DD66C60B2D891DE15"
+        }
+      ],
+      "observation": {
+        "health": {
+          "NativeHealth": 1,
+          "OwnerDisposed": false,
+          "ContextPreviouslyValid": true,
+          "RequiresNewViewer": true
+        },
+        "attempts": 1,
+        "completed": 1,
+        "hosts": 1,
+        "oldHandleStillWindow": false,
+        "oldVisible": 0,
+        "oldGeometry": 0,
+        "oldSource": 0,
+        "oldXde": 0,
+        "messages": [
+          "Viewport graphics data is unavailable.",
+          "Viewport graphics data is unavailable."
+        ]
+      },
+      "finalHosts": 0,
+      "finalAssets": {
+        "Count": 0,
+        "SizeBytes": 0
+      },
+      "reopenedAssets": {
+        "Count": 0,
+        "SizeBytes": 0
+      },
+      "emergencyCleanupExcludedFromOutcome": true
+    },
+    {
+      "name": "native-presentation-loss-progressive-1-close-before-dispatch",
+      "loss": "native-presentation-loss",
+      "phase": "progressive",
+      "paneCount": 1,
+      "route": "close-before-dispatch",
+      "passed": true,
+      "failure": null,
+      "checks": [
+        "exact_document_history_generation_file_and_saved_state_preserved_without_command_replay",
+        "same_session_native_authoring_exact_undo_redo_and_production_save_reopen"
+      ],
+      "images": [
+        {
+          "kind": "before",
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\recovery24\\runtime-2\\native-presentation-loss-progressive-1-close-before-dispatch\\before.png",
+          "sha256": "013E487AE29C1FB87DE42E36D6AC751D4CECD31F40B8659DD66C60B2D891DE15"
+        }
+      ],
+      "observation": {
+        "health": {
+          "NativeHealth": 1,
+          "OwnerDisposed": false,
+          "ContextPreviouslyValid": true,
+          "RequiresNewViewer": true
+        },
+        "attempts": 0,
+        "completed": 0,
+        "hosts": 0,
+        "oldHandleStillWindow": false,
+        "oldVisible": 0,
+        "oldGeometry": 0,
+        "oldSource": 0,
+        "oldXde": 0,
+        "messages": [
+          "Viewport graphics data is unavailable.",
+          "Viewport graphics data is unavailable."
+        ]
+      },
+      "finalHosts": 0,
+      "finalAssets": {
+        "Count": 0,
+        "SizeBytes": 0
+      },
+      "reopenedAssets": {
+        "Count": 0,
+        "SizeBytes": 0
+      },
+      "emergencyCleanupExcludedFromOutcome": true
+    },
+    {
+      "name": "native-presentation-loss-progressive-1-cleanup-callback-fails",
+      "loss": "native-presentation-loss",
+      "phase": "progressive",
+      "paneCount": 1,
+      "route": "cleanup-callback-fails",
+      "passed": true,
+      "failure": null,
+      "checks": [
+        "exact_document_history_generation_file_and_saved_state_preserved_without_command_replay",
+        "same_session_native_authoring_exact_undo_redo_and_production_save_reopen"
+      ],
+      "images": [
+        {
+          "kind": "before",
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\recovery24\\runtime-2\\native-presentation-loss-progressive-1-cleanup-callback-fails\\before.png",
+          "sha256": "013E487AE29C1FB87DE42E36D6AC751D4CECD31F40B8659DD66C60B2D891DE15"
+        }
+      ],
+      "observation": {
+        "health": {
+          "NativeHealth": 1,
+          "OwnerDisposed": false,
+          "ContextPreviouslyValid": true,
+          "RequiresNewViewer": true
+        },
+        "attempts": 1,
+        "completed": 0,
+        "hosts": 0,
+        "oldHandleStillWindow": false,
+        "oldVisible": 0,
+        "oldGeometry": 0,
+        "oldSource": 0,
+        "oldXde": 0,
+        "messages": [
+          "Viewport graphics data is unavailable.",
+          "Viewport graphics data is unavailable.",
+          "Owned recovery teardown callback fault",
+          "Owned recovery teardown callback fault"
+        ]
+      },
+      "finalHosts": 0,
+      "finalAssets": {
+        "Count": 0,
+        "SizeBytes": 0
+      },
+      "reopenedAssets": {
+        "Count": 0,
+        "SizeBytes": 0
+      },
+      "emergencyCleanupExcludedFromOutcome": true
+    },
+    {
+      "name": "native-presentation-loss-progressive-2-recover",
+      "loss": "native-presentation-loss",
+      "phase": "progressive",
+      "paneCount": 2,
+      "route": "recover",
+      "passed": true,
+      "failure": null,
+      "checks": [
+        "coalesced_exact_host_replaced_current_snapshot_camera_and_complete_frame",
+        "exact_document_history_generation_file_and_saved_state_preserved_without_command_replay",
+        "other_real_pane_owner_and_complete_frame_unchanged",
+        "same_session_native_authoring_exact_undo_redo_and_production_save_reopen"
+      ],
+      "images": [
+        {
+          "kind": "before",
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\recovery24\\runtime-2\\native-presentation-loss-progressive-2-recover\\before.png",
+          "sha256": "013E487AE29C1FB87DE42E36D6AC751D4CECD31F40B8659DD66C60B2D891DE15"
+        },
+        {
+          "kind": "other-before",
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\recovery24\\runtime-2\\native-presentation-loss-progressive-2-recover\\other-before.png",
+          "sha256": "A128793B4618B795F712ED3CFEB0A7B44DA706FDD6E72BEACE6464F0859662D1"
+        },
+        {
+          "kind": "after",
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\recovery24\\runtime-2\\native-presentation-loss-progressive-2-recover\\after.png",
+          "sha256": "013E487AE29C1FB87DE42E36D6AC751D4CECD31F40B8659DD66C60B2D891DE15"
+        },
+        {
+          "kind": "other-after",
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\recovery24\\runtime-2\\native-presentation-loss-progressive-2-recover\\other-after.png",
+          "sha256": "A128793B4618B795F712ED3CFEB0A7B44DA706FDD6E72BEACE6464F0859662D1"
+        }
+      ],
+      "observation": {
+        "health": {
+          "NativeHealth": 1,
+          "OwnerDisposed": false,
+          "ContextPreviouslyValid": true,
+          "RequiresNewViewer": true
+        },
+        "attempts": 1,
+        "completed": 1,
+        "hosts": 2,
+        "oldHandleStillWindow": false,
+        "oldVisible": 0,
+        "oldGeometry": 0,
+        "oldSource": 0,
+        "oldXde": 0,
+        "messages": [
+          "Viewport graphics data is unavailable.",
+          "Viewport graphics data is unavailable."
+        ]
+      },
+      "finalHosts": 0,
+      "finalAssets": {
+        "Count": 0,
+        "SizeBytes": 0
+      },
+      "reopenedAssets": {
+        "Count": 0,
+        "SizeBytes": 0
+      },
+      "emergencyCleanupExcludedFromOutcome": true
+    },
+    {
+      "name": "native-presentation-loss-progressive-2-close-before-dispatch",
+      "loss": "native-presentation-loss",
+      "phase": "progressive",
+      "paneCount": 2,
+      "route": "close-before-dispatch",
+      "passed": true,
+      "failure": null,
+      "checks": [
+        "exact_document_history_generation_file_and_saved_state_preserved_without_command_replay",
+        "same_session_native_authoring_exact_undo_redo_and_production_save_reopen"
+      ],
+      "images": [
+        {
+          "kind": "before",
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\recovery24\\runtime-2\\native-presentation-loss-progressive-2-close-before-dispatch\\before.png",
+          "sha256": "013E487AE29C1FB87DE42E36D6AC751D4CECD31F40B8659DD66C60B2D891DE15"
+        },
+        {
+          "kind": "other-before",
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\recovery24\\runtime-2\\native-presentation-loss-progressive-2-close-before-dispatch\\other-before.png",
+          "sha256": "A128793B4618B795F712ED3CFEB0A7B44DA706FDD6E72BEACE6464F0859662D1"
+        }
+      ],
+      "observation": {
+        "health": {
+          "NativeHealth": 1,
+          "OwnerDisposed": false,
+          "ContextPreviouslyValid": true,
+          "RequiresNewViewer": true
+        },
+        "attempts": 0,
+        "completed": 0,
+        "hosts": 0,
+        "oldHandleStillWindow": false,
+        "oldVisible": 0,
+        "oldGeometry": 0,
+        "oldSource": 0,
+        "oldXde": 0,
+        "messages": [
+          "Viewport graphics data is unavailable.",
+          "Viewport graphics data is unavailable."
+        ]
+      },
+      "finalHosts": 0,
+      "finalAssets": {
+        "Count": 0,
+        "SizeBytes": 0
+      },
+      "reopenedAssets": {
+        "Count": 0,
+        "SizeBytes": 0
+      },
+      "emergencyCleanupExcludedFromOutcome": true
+    },
+    {
+      "name": "native-presentation-loss-progressive-2-cleanup-callback-fails",
+      "loss": "native-presentation-loss",
+      "phase": "progressive",
+      "paneCount": 2,
+      "route": "cleanup-callback-fails",
+      "passed": true,
+      "failure": null,
+      "checks": [
+        "exact_document_history_generation_file_and_saved_state_preserved_without_command_replay",
+        "other_real_pane_owner_and_complete_frame_unchanged",
+        "same_session_native_authoring_exact_undo_redo_and_production_save_reopen"
+      ],
+      "images": [
+        {
+          "kind": "before",
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\recovery24\\runtime-2\\native-presentation-loss-progressive-2-cleanup-callback-fails\\before.png",
+          "sha256": "013E487AE29C1FB87DE42E36D6AC751D4CECD31F40B8659DD66C60B2D891DE15"
+        },
+        {
+          "kind": "other-before",
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\recovery24\\runtime-2\\native-presentation-loss-progressive-2-cleanup-callback-fails\\other-before.png",
+          "sha256": "A128793B4618B795F712ED3CFEB0A7B44DA706FDD6E72BEACE6464F0859662D1"
+        },
+        {
+          "kind": "other-after",
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\recovery24\\runtime-2\\native-presentation-loss-progressive-2-cleanup-callback-fails\\other-after.png",
+          "sha256": "A128793B4618B795F712ED3CFEB0A7B44DA706FDD6E72BEACE6464F0859662D1"
+        }
+      ],
+      "observation": {
+        "health": {
+          "NativeHealth": 1,
+          "OwnerDisposed": false,
+          "ContextPreviouslyValid": true,
+          "RequiresNewViewer": true
+        },
+        "attempts": 1,
+        "completed": 0,
+        "hosts": 1,
+        "oldHandleStillWindow": false,
+        "oldVisible": 0,
+        "oldGeometry": 0,
+        "oldSource": 0,
+        "oldXde": 0,
+        "messages": [
+          "Viewport graphics data is unavailable.",
+          "Viewport graphics data is unavailable.",
+          "Owned recovery teardown callback fault",
+          "Owned recovery teardown callback fault"
+        ]
+      },
+      "finalHosts": 0,
+      "finalAssets": {
+        "Count": 0,
+        "SizeBytes": 0
+      },
+      "reopenedAssets": {
+        "Count": 0,
+        "SizeBytes": 0
+      },
+      "emergencyCleanupExcludedFromOutcome": true
+    },
+    {
+      "name": "native-owner-disposed-completed-1-recover",
+      "loss": "native-owner-disposed",
+      "phase": "completed",
+      "paneCount": 1,
+      "route": "recover",
+      "passed": true,
+      "failure": null,
+      "checks": [
+        "coalesced_exact_host_replaced_current_snapshot_camera_and_complete_frame",
+        "exact_document_history_generation_file_and_saved_state_preserved_without_command_replay",
+        "same_session_native_authoring_exact_undo_redo_and_production_save_reopen"
+      ],
+      "images": [
+        {
+          "kind": "before",
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\recovery24\\runtime-2\\native-owner-disposed-completed-1-recover\\before.png",
+          "sha256": "013E487AE29C1FB87DE42E36D6AC751D4CECD31F40B8659DD66C60B2D891DE15"
+        },
+        {
+          "kind": "after",
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\recovery24\\runtime-2\\native-owner-disposed-completed-1-recover\\after.png",
+          "sha256": "013E487AE29C1FB87DE42E36D6AC751D4CECD31F40B8659DD66C60B2D891DE15"
+        }
+      ],
+      "observation": {
+        "health": {
+          "NativeHealth": 0,
+          "OwnerDisposed": true,
+          "ContextPreviouslyValid": true,
+          "RequiresNewViewer": true
+        },
+        "attempts": 1,
+        "completed": 1,
+        "hosts": 1,
+        "oldHandleStillWindow": false,
+        "oldVisible": 0,
+        "oldGeometry": 0,
+        "oldSource": 0,
+        "oldXde": 0,
+        "messages": [
+          "Viewport graphics data is unavailable.",
+          "Viewport graphics data is unavailable."
+        ]
+      },
+      "finalHosts": 0,
+      "finalAssets": {
+        "Count": 0,
+        "SizeBytes": 0
+      },
+      "reopenedAssets": {
+        "Count": 0,
+        "SizeBytes": 0
+      },
+      "emergencyCleanupExcludedFromOutcome": true
+    },
+    {
+      "name": "native-owner-disposed-completed-1-close-before-dispatch",
+      "loss": "native-owner-disposed",
+      "phase": "completed",
+      "paneCount": 1,
+      "route": "close-before-dispatch",
+      "passed": true,
+      "failure": null,
+      "checks": [
+        "exact_document_history_generation_file_and_saved_state_preserved_without_command_replay",
+        "same_session_native_authoring_exact_undo_redo_and_production_save_reopen"
+      ],
+      "images": [
+        {
+          "kind": "before",
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\recovery24\\runtime-2\\native-owner-disposed-completed-1-close-before-dispatch\\before.png",
+          "sha256": "013E487AE29C1FB87DE42E36D6AC751D4CECD31F40B8659DD66C60B2D891DE15"
+        }
+      ],
+      "observation": {
+        "health": {
+          "NativeHealth": 0,
+          "OwnerDisposed": true,
+          "ContextPreviouslyValid": true,
+          "RequiresNewViewer": true
+        },
+        "attempts": 0,
+        "completed": 0,
+        "hosts": 0,
+        "oldHandleStillWindow": false,
+        "oldVisible": 0,
+        "oldGeometry": 0,
+        "oldSource": 0,
+        "oldXde": 0,
+        "messages": [
+          "Viewport graphics data is unavailable.",
+          "Viewport graphics data is unavailable."
+        ]
+      },
+      "finalHosts": 0,
+      "finalAssets": {
+        "Count": 0,
+        "SizeBytes": 0
+      },
+      "reopenedAssets": {
+        "Count": 0,
+        "SizeBytes": 0
+      },
+      "emergencyCleanupExcludedFromOutcome": true
+    },
+    {
+      "name": "native-owner-disposed-completed-1-cleanup-callback-fails",
+      "loss": "native-owner-disposed",
+      "phase": "completed",
+      "paneCount": 1,
+      "route": "cleanup-callback-fails",
+      "passed": true,
+      "failure": null,
+      "checks": [
+        "exact_document_history_generation_file_and_saved_state_preserved_without_command_replay",
+        "same_session_native_authoring_exact_undo_redo_and_production_save_reopen"
+      ],
+      "images": [
+        {
+          "kind": "before",
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\recovery24\\runtime-2\\native-owner-disposed-completed-1-cleanup-callback-fails\\before.png",
+          "sha256": "013E487AE29C1FB87DE42E36D6AC751D4CECD31F40B8659DD66C60B2D891DE15"
+        }
+      ],
+      "observation": {
+        "health": {
+          "NativeHealth": 0,
+          "OwnerDisposed": true,
+          "ContextPreviouslyValid": true,
+          "RequiresNewViewer": true
+        },
+        "attempts": 1,
+        "completed": 0,
+        "hosts": 0,
+        "oldHandleStillWindow": false,
+        "oldVisible": 0,
+        "oldGeometry": 0,
+        "oldSource": 0,
+        "oldXde": 0,
+        "messages": [
+          "Viewport graphics data is unavailable.",
+          "Viewport graphics data is unavailable.",
+          "Owned recovery teardown callback fault",
+          "Owned recovery teardown callback fault"
+        ]
+      },
+      "finalHosts": 0,
+      "finalAssets": {
+        "Count": 0,
+        "SizeBytes": 0
+      },
+      "reopenedAssets": {
+        "Count": 0,
+        "SizeBytes": 0
+      },
+      "emergencyCleanupExcludedFromOutcome": true
+    },
+    {
+      "name": "native-owner-disposed-completed-2-recover",
+      "loss": "native-owner-disposed",
+      "phase": "completed",
+      "paneCount": 2,
+      "route": "recover",
+      "passed": true,
+      "failure": null,
+      "checks": [
+        "coalesced_exact_host_replaced_current_snapshot_camera_and_complete_frame",
+        "exact_document_history_generation_file_and_saved_state_preserved_without_command_replay",
+        "other_real_pane_owner_and_complete_frame_unchanged",
+        "same_session_native_authoring_exact_undo_redo_and_production_save_reopen"
+      ],
+      "images": [
+        {
+          "kind": "before",
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\recovery24\\runtime-2\\native-owner-disposed-completed-2-recover\\before.png",
+          "sha256": "013E487AE29C1FB87DE42E36D6AC751D4CECD31F40B8659DD66C60B2D891DE15"
+        },
+        {
+          "kind": "other-before",
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\recovery24\\runtime-2\\native-owner-disposed-completed-2-recover\\other-before.png",
+          "sha256": "A128793B4618B795F712ED3CFEB0A7B44DA706FDD6E72BEACE6464F0859662D1"
+        },
+        {
+          "kind": "after",
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\recovery24\\runtime-2\\native-owner-disposed-completed-2-recover\\after.png",
+          "sha256": "013E487AE29C1FB87DE42E36D6AC751D4CECD31F40B8659DD66C60B2D891DE15"
+        },
+        {
+          "kind": "other-after",
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\recovery24\\runtime-2\\native-owner-disposed-completed-2-recover\\other-after.png",
+          "sha256": "A128793B4618B795F712ED3CFEB0A7B44DA706FDD6E72BEACE6464F0859662D1"
+        }
+      ],
+      "observation": {
+        "health": {
+          "NativeHealth": 0,
+          "OwnerDisposed": true,
+          "ContextPreviouslyValid": true,
+          "RequiresNewViewer": true
+        },
+        "attempts": 1,
+        "completed": 1,
+        "hosts": 2,
+        "oldHandleStillWindow": false,
+        "oldVisible": 0,
+        "oldGeometry": 0,
+        "oldSource": 0,
+        "oldXde": 0,
+        "messages": [
+          "Viewport graphics data is unavailable.",
+          "Viewport graphics data is unavailable."
+        ]
+      },
+      "finalHosts": 0,
+      "finalAssets": {
+        "Count": 0,
+        "SizeBytes": 0
+      },
+      "reopenedAssets": {
+        "Count": 0,
+        "SizeBytes": 0
+      },
+      "emergencyCleanupExcludedFromOutcome": true
+    },
+    {
+      "name": "native-owner-disposed-completed-2-close-before-dispatch",
+      "loss": "native-owner-disposed",
+      "phase": "completed",
+      "paneCount": 2,
+      "route": "close-before-dispatch",
+      "passed": true,
+      "failure": null,
+      "checks": [
+        "exact_document_history_generation_file_and_saved_state_preserved_without_command_replay",
+        "same_session_native_authoring_exact_undo_redo_and_production_save_reopen"
+      ],
+      "images": [
+        {
+          "kind": "before",
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\recovery24\\runtime-2\\native-owner-disposed-completed-2-close-before-dispatch\\before.png",
+          "sha256": "013E487AE29C1FB87DE42E36D6AC751D4CECD31F40B8659DD66C60B2D891DE15"
+        },
+        {
+          "kind": "other-before",
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\recovery24\\runtime-2\\native-owner-disposed-completed-2-close-before-dispatch\\other-before.png",
+          "sha256": "A128793B4618B795F712ED3CFEB0A7B44DA706FDD6E72BEACE6464F0859662D1"
+        }
+      ],
+      "observation": {
+        "health": {
+          "NativeHealth": 0,
+          "OwnerDisposed": true,
+          "ContextPreviouslyValid": true,
+          "RequiresNewViewer": true
+        },
+        "attempts": 0,
+        "completed": 0,
+        "hosts": 0,
+        "oldHandleStillWindow": false,
+        "oldVisible": 0,
+        "oldGeometry": 0,
+        "oldSource": 0,
+        "oldXde": 0,
+        "messages": [
+          "Viewport graphics data is unavailable.",
+          "Viewport graphics data is unavailable."
+        ]
+      },
+      "finalHosts": 0,
+      "finalAssets": {
+        "Count": 0,
+        "SizeBytes": 0
+      },
+      "reopenedAssets": {
+        "Count": 0,
+        "SizeBytes": 0
+      },
+      "emergencyCleanupExcludedFromOutcome": true
+    },
+    {
+      "name": "native-owner-disposed-completed-2-cleanup-callback-fails",
+      "loss": "native-owner-disposed",
+      "phase": "completed",
+      "paneCount": 2,
+      "route": "cleanup-callback-fails",
+      "passed": true,
+      "failure": null,
+      "checks": [
+        "exact_document_history_generation_file_and_saved_state_preserved_without_command_replay",
+        "other_real_pane_owner_and_complete_frame_unchanged",
+        "same_session_native_authoring_exact_undo_redo_and_production_save_reopen"
+      ],
+      "images": [
+        {
+          "kind": "before",
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\recovery24\\runtime-2\\native-owner-disposed-completed-2-cleanup-callback-fails\\before.png",
+          "sha256": "013E487AE29C1FB87DE42E36D6AC751D4CECD31F40B8659DD66C60B2D891DE15"
+        },
+        {
+          "kind": "other-before",
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\recovery24\\runtime-2\\native-owner-disposed-completed-2-cleanup-callback-fails\\other-before.png",
+          "sha256": "A128793B4618B795F712ED3CFEB0A7B44DA706FDD6E72BEACE6464F0859662D1"
+        },
+        {
+          "kind": "other-after",
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\recovery24\\runtime-2\\native-owner-disposed-completed-2-cleanup-callback-fails\\other-after.png",
+          "sha256": "A128793B4618B795F712ED3CFEB0A7B44DA706FDD6E72BEACE6464F0859662D1"
+        }
+      ],
+      "observation": {
+        "health": {
+          "NativeHealth": 0,
+          "OwnerDisposed": true,
+          "ContextPreviouslyValid": true,
+          "RequiresNewViewer": true
+        },
+        "attempts": 1,
+        "completed": 0,
+        "hosts": 1,
+        "oldHandleStillWindow": false,
+        "oldVisible": 0,
+        "oldGeometry": 0,
+        "oldSource": 0,
+        "oldXde": 0,
+        "messages": [
+          "Viewport graphics data is unavailable.",
+          "Viewport graphics data is unavailable.",
+          "Owned recovery teardown callback fault",
+          "Owned recovery teardown callback fault"
+        ]
+      },
+      "finalHosts": 0,
+      "finalAssets": {
+        "Count": 0,
+        "SizeBytes": 0
+      },
+      "reopenedAssets": {
+        "Count": 0,
+        "SizeBytes": 0
+      },
+      "emergencyCleanupExcludedFromOutcome": true
+    },
+    {
+      "name": "native-owner-disposed-progressive-1-recover",
+      "loss": "native-owner-disposed",
+      "phase": "progressive",
+      "paneCount": 1,
+      "route": "recover",
+      "passed": true,
+      "failure": null,
+      "checks": [
+        "coalesced_exact_host_replaced_current_snapshot_camera_and_complete_frame",
+        "exact_document_history_generation_file_and_saved_state_preserved_without_command_replay",
+        "same_session_native_authoring_exact_undo_redo_and_production_save_reopen"
+      ],
+      "images": [
+        {
+          "kind": "before",
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\recovery24\\runtime-2\\native-owner-disposed-progressive-1-recover\\before.png",
+          "sha256": "013E487AE29C1FB87DE42E36D6AC751D4CECD31F40B8659DD66C60B2D891DE15"
+        },
+        {
+          "kind": "after",
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\recovery24\\runtime-2\\native-owner-disposed-progressive-1-recover\\after.png",
+          "sha256": "013E487AE29C1FB87DE42E36D6AC751D4CECD31F40B8659DD66C60B2D891DE15"
+        }
+      ],
+      "observation": {
+        "health": {
+          "NativeHealth": 0,
+          "OwnerDisposed": true,
+          "ContextPreviouslyValid": true,
+          "RequiresNewViewer": true
+        },
+        "attempts": 1,
+        "completed": 1,
+        "hosts": 1,
+        "oldHandleStillWindow": false,
+        "oldVisible": 0,
+        "oldGeometry": 0,
+        "oldSource": 0,
+        "oldXde": 0,
+        "messages": [
+          "Viewport graphics data is unavailable.",
+          "Viewport graphics data is unavailable.",
+          "Cannot access a disposed object.\r\nObject name: 'OcctSharp.OcctViewer'."
+        ]
+      },
+      "finalHosts": 0,
+      "finalAssets": {
+        "Count": 0,
+        "SizeBytes": 0
+      },
+      "reopenedAssets": {
+        "Count": 0,
+        "SizeBytes": 0
+      },
+      "emergencyCleanupExcludedFromOutcome": true
+    },
+    {
+      "name": "native-owner-disposed-progressive-1-close-before-dispatch",
+      "loss": "native-owner-disposed",
+      "phase": "progressive",
+      "paneCount": 1,
+      "route": "close-before-dispatch",
+      "passed": true,
+      "failure": null,
+      "checks": [
+        "exact_document_history_generation_file_and_saved_state_preserved_without_command_replay",
+        "same_session_native_authoring_exact_undo_redo_and_production_save_reopen"
+      ],
+      "images": [
+        {
+          "kind": "before",
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\recovery24\\runtime-2\\native-owner-disposed-progressive-1-close-before-dispatch\\before.png",
+          "sha256": "013E487AE29C1FB87DE42E36D6AC751D4CECD31F40B8659DD66C60B2D891DE15"
+        }
+      ],
+      "observation": {
+        "health": {
+          "NativeHealth": 0,
+          "OwnerDisposed": true,
+          "ContextPreviouslyValid": true,
+          "RequiresNewViewer": true
+        },
+        "attempts": 0,
+        "completed": 0,
+        "hosts": 0,
+        "oldHandleStillWindow": false,
+        "oldVisible": 0,
+        "oldGeometry": 0,
+        "oldSource": 0,
+        "oldXde": 0,
+        "messages": [
+          "Viewport graphics data is unavailable.",
+          "Viewport graphics data is unavailable.",
+          "Cannot access a disposed object.\r\nObject name: 'OcctSharp.OcctViewer'."
+        ]
+      },
+      "finalHosts": 0,
+      "finalAssets": {
+        "Count": 0,
+        "SizeBytes": 0
+      },
+      "reopenedAssets": {
+        "Count": 0,
+        "SizeBytes": 0
+      },
+      "emergencyCleanupExcludedFromOutcome": true
+    },
+    {
+      "name": "native-owner-disposed-progressive-1-cleanup-callback-fails",
+      "loss": "native-owner-disposed",
+      "phase": "progressive",
+      "paneCount": 1,
+      "route": "cleanup-callback-fails",
+      "passed": true,
+      "failure": null,
+      "checks": [
+        "exact_document_history_generation_file_and_saved_state_preserved_without_command_replay",
+        "same_session_native_authoring_exact_undo_redo_and_production_save_reopen"
+      ],
+      "images": [
+        {
+          "kind": "before",
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\recovery24\\runtime-2\\native-owner-disposed-progressive-1-cleanup-callback-fails\\before.png",
+          "sha256": "013E487AE29C1FB87DE42E36D6AC751D4CECD31F40B8659DD66C60B2D891DE15"
+        }
+      ],
+      "observation": {
+        "health": {
+          "NativeHealth": 0,
+          "OwnerDisposed": true,
+          "ContextPreviouslyValid": true,
+          "RequiresNewViewer": true
+        },
+        "attempts": 1,
+        "completed": 0,
+        "hosts": 0,
+        "oldHandleStillWindow": false,
+        "oldVisible": 0,
+        "oldGeometry": 0,
+        "oldSource": 0,
+        "oldXde": 0,
+        "messages": [
+          "Viewport graphics data is unavailable.",
+          "Viewport graphics data is unavailable.",
+          "Cannot access a disposed object.\r\nObject name: 'OcctSharp.OcctViewer'.",
+          "Owned recovery teardown callback fault",
+          "Owned recovery teardown callback fault"
+        ]
+      },
+      "finalHosts": 0,
+      "finalAssets": {
+        "Count": 0,
+        "SizeBytes": 0
+      },
+      "reopenedAssets": {
+        "Count": 0,
+        "SizeBytes": 0
+      },
+      "emergencyCleanupExcludedFromOutcome": true
+    },
+    {
+      "name": "native-owner-disposed-progressive-2-recover",
+      "loss": "native-owner-disposed",
+      "phase": "progressive",
+      "paneCount": 2,
+      "route": "recover",
+      "passed": true,
+      "failure": null,
+      "checks": [
+        "coalesced_exact_host_replaced_current_snapshot_camera_and_complete_frame",
+        "exact_document_history_generation_file_and_saved_state_preserved_without_command_replay",
+        "other_real_pane_owner_and_complete_frame_unchanged",
+        "same_session_native_authoring_exact_undo_redo_and_production_save_reopen"
+      ],
+      "images": [
+        {
+          "kind": "before",
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\recovery24\\runtime-2\\native-owner-disposed-progressive-2-recover\\before.png",
+          "sha256": "013E487AE29C1FB87DE42E36D6AC751D4CECD31F40B8659DD66C60B2D891DE15"
+        },
+        {
+          "kind": "other-before",
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\recovery24\\runtime-2\\native-owner-disposed-progressive-2-recover\\other-before.png",
+          "sha256": "A128793B4618B795F712ED3CFEB0A7B44DA706FDD6E72BEACE6464F0859662D1"
+        },
+        {
+          "kind": "after",
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\recovery24\\runtime-2\\native-owner-disposed-progressive-2-recover\\after.png",
+          "sha256": "013E487AE29C1FB87DE42E36D6AC751D4CECD31F40B8659DD66C60B2D891DE15"
+        },
+        {
+          "kind": "other-after",
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\recovery24\\runtime-2\\native-owner-disposed-progressive-2-recover\\other-after.png",
+          "sha256": "A128793B4618B795F712ED3CFEB0A7B44DA706FDD6E72BEACE6464F0859662D1"
+        }
+      ],
+      "observation": {
+        "health": {
+          "NativeHealth": 0,
+          "OwnerDisposed": true,
+          "ContextPreviouslyValid": true,
+          "RequiresNewViewer": true
+        },
+        "attempts": 1,
+        "completed": 1,
+        "hosts": 2,
+        "oldHandleStillWindow": false,
+        "oldVisible": 0,
+        "oldGeometry": 0,
+        "oldSource": 0,
+        "oldXde": 0,
+        "messages": [
+          "Viewport graphics data is unavailable.",
+          "Viewport graphics data is unavailable.",
+          "Cannot access a disposed object.\r\nObject name: 'OcctSharp.OcctViewer'."
+        ]
+      },
+      "finalHosts": 0,
+      "finalAssets": {
+        "Count": 0,
+        "SizeBytes": 0
+      },
+      "reopenedAssets": {
+        "Count": 0,
+        "SizeBytes": 0
+      },
+      "emergencyCleanupExcludedFromOutcome": true
+    },
+    {
+      "name": "native-owner-disposed-progressive-2-close-before-dispatch",
+      "loss": "native-owner-disposed",
+      "phase": "progressive",
+      "paneCount": 2,
+      "route": "close-before-dispatch",
+      "passed": true,
+      "failure": null,
+      "checks": [
+        "exact_document_history_generation_file_and_saved_state_preserved_without_command_replay",
+        "same_session_native_authoring_exact_undo_redo_and_production_save_reopen"
+      ],
+      "images": [
+        {
+          "kind": "before",
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\recovery24\\runtime-2\\native-owner-disposed-progressive-2-close-before-dispatch\\before.png",
+          "sha256": "013E487AE29C1FB87DE42E36D6AC751D4CECD31F40B8659DD66C60B2D891DE15"
+        },
+        {
+          "kind": "other-before",
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\recovery24\\runtime-2\\native-owner-disposed-progressive-2-close-before-dispatch\\other-before.png",
+          "sha256": "A128793B4618B795F712ED3CFEB0A7B44DA706FDD6E72BEACE6464F0859662D1"
+        }
+      ],
+      "observation": {
+        "health": {
+          "NativeHealth": 0,
+          "OwnerDisposed": true,
+          "ContextPreviouslyValid": true,
+          "RequiresNewViewer": true
+        },
+        "attempts": 0,
+        "completed": 0,
+        "hosts": 0,
+        "oldHandleStillWindow": false,
+        "oldVisible": 0,
+        "oldGeometry": 0,
+        "oldSource": 0,
+        "oldXde": 0,
+        "messages": [
+          "Viewport graphics data is unavailable.",
+          "Viewport graphics data is unavailable.",
+          "Cannot access a disposed object.\r\nObject name: 'OcctSharp.OcctViewer'."
+        ]
+      },
+      "finalHosts": 0,
+      "finalAssets": {
+        "Count": 0,
+        "SizeBytes": 0
+      },
+      "reopenedAssets": {
+        "Count": 0,
+        "SizeBytes": 0
+      },
+      "emergencyCleanupExcludedFromOutcome": true
+    },
+    {
+      "name": "native-owner-disposed-progressive-2-cleanup-callback-fails",
+      "loss": "native-owner-disposed",
+      "phase": "progressive",
+      "paneCount": 2,
+      "route": "cleanup-callback-fails",
+      "passed": true,
+      "failure": null,
+      "checks": [
+        "exact_document_history_generation_file_and_saved_state_preserved_without_command_replay",
+        "other_real_pane_owner_and_complete_frame_unchanged",
+        "same_session_native_authoring_exact_undo_redo_and_production_save_reopen"
+      ],
+      "images": [
+        {
+          "kind": "before",
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\recovery24\\runtime-2\\native-owner-disposed-progressive-2-cleanup-callback-fails\\before.png",
+          "sha256": "013E487AE29C1FB87DE42E36D6AC751D4CECD31F40B8659DD66C60B2D891DE15"
+        },
+        {
+          "kind": "other-before",
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\recovery24\\runtime-2\\native-owner-disposed-progressive-2-cleanup-callback-fails\\other-before.png",
+          "sha256": "A128793B4618B795F712ED3CFEB0A7B44DA706FDD6E72BEACE6464F0859662D1"
+        },
+        {
+          "kind": "other-after",
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\recovery24\\runtime-2\\native-owner-disposed-progressive-2-cleanup-callback-fails\\other-after.png",
+          "sha256": "A128793B4618B795F712ED3CFEB0A7B44DA706FDD6E72BEACE6464F0859662D1"
+        }
+      ],
+      "observation": {
+        "health": {
+          "NativeHealth": 0,
+          "OwnerDisposed": true,
+          "ContextPreviouslyValid": true,
+          "RequiresNewViewer": true
+        },
+        "attempts": 1,
+        "completed": 0,
+        "hosts": 1,
+        "oldHandleStillWindow": false,
+        "oldVisible": 0,
+        "oldGeometry": 0,
+        "oldSource": 0,
+        "oldXde": 0,
+        "messages": [
+          "Viewport graphics data is unavailable.",
+          "Viewport graphics data is unavailable.",
+          "Cannot access a disposed object.\r\nObject name: 'OcctSharp.OcctViewer'.",
+          "Owned recovery teardown callback fault",
+          "Owned recovery teardown callback fault"
+        ]
+      },
+      "finalHosts": 0,
+      "finalAssets": {
+        "Count": 0,
+        "SizeBytes": 0
+      },
+      "reopenedAssets": {
+        "Count": 0,
+        "SizeBytes": 0
+      },
+      "emergencyCleanupExcludedFromOutcome": true
+    }
+  ],
+  "images": [
+    {
+      "case": "native-presentation-loss-completed-1-recover",
+      "kind": "before",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\recovery24\\runtime-2\\native-presentation-loss-completed-1-recover\\before.png",
+      "sha256": "013E487AE29C1FB87DE42E36D6AC751D4CECD31F40B8659DD66C60B2D891DE15",
+      "width": 480,
+      "height": 320
+    },
+    {
+      "case": "native-presentation-loss-completed-1-recover",
+      "kind": "after",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\recovery24\\runtime-2\\native-presentation-loss-completed-1-recover\\after.png",
+      "sha256": "013E487AE29C1FB87DE42E36D6AC751D4CECD31F40B8659DD66C60B2D891DE15",
+      "width": 480,
+      "height": 320
+    },
+    {
+      "case": "native-presentation-loss-completed-1-close-before-dispatch",
+      "kind": "before",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\recovery24\\runtime-2\\native-presentation-loss-completed-1-close-before-dispatch\\before.png",
+      "sha256": "013E487AE29C1FB87DE42E36D6AC751D4CECD31F40B8659DD66C60B2D891DE15",
+      "width": 480,
+      "height": 320
+    },
+    {
+      "case": "native-presentation-loss-completed-1-cleanup-callback-fails",
+      "kind": "before",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\recovery24\\runtime-2\\native-presentation-loss-completed-1-cleanup-callback-fails\\before.png",
+      "sha256": "013E487AE29C1FB87DE42E36D6AC751D4CECD31F40B8659DD66C60B2D891DE15",
+      "width": 480,
+      "height": 320
+    },
+    {
+      "case": "native-presentation-loss-completed-2-recover",
+      "kind": "before",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\recovery24\\runtime-2\\native-presentation-loss-completed-2-recover\\before.png",
+      "sha256": "013E487AE29C1FB87DE42E36D6AC751D4CECD31F40B8659DD66C60B2D891DE15",
+      "width": 480,
+      "height": 320
+    },
+    {
+      "case": "native-presentation-loss-completed-2-recover",
+      "kind": "other-before",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\recovery24\\runtime-2\\native-presentation-loss-completed-2-recover\\other-before.png",
+      "sha256": "A128793B4618B795F712ED3CFEB0A7B44DA706FDD6E72BEACE6464F0859662D1",
+      "width": 480,
+      "height": 320
+    },
+    {
+      "case": "native-presentation-loss-completed-2-recover",
+      "kind": "after",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\recovery24\\runtime-2\\native-presentation-loss-completed-2-recover\\after.png",
+      "sha256": "013E487AE29C1FB87DE42E36D6AC751D4CECD31F40B8659DD66C60B2D891DE15",
+      "width": 480,
+      "height": 320
+    },
+    {
+      "case": "native-presentation-loss-completed-2-recover",
+      "kind": "other-after",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\recovery24\\runtime-2\\native-presentation-loss-completed-2-recover\\other-after.png",
+      "sha256": "A128793B4618B795F712ED3CFEB0A7B44DA706FDD6E72BEACE6464F0859662D1",
+      "width": 480,
+      "height": 320
+    },
+    {
+      "case": "native-presentation-loss-completed-2-close-before-dispatch",
+      "kind": "before",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\recovery24\\runtime-2\\native-presentation-loss-completed-2-close-before-dispatch\\before.png",
+      "sha256": "013E487AE29C1FB87DE42E36D6AC751D4CECD31F40B8659DD66C60B2D891DE15",
+      "width": 480,
+      "height": 320
+    },
+    {
+      "case": "native-presentation-loss-completed-2-close-before-dispatch",
+      "kind": "other-before",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\recovery24\\runtime-2\\native-presentation-loss-completed-2-close-before-dispatch\\other-before.png",
+      "sha256": "A128793B4618B795F712ED3CFEB0A7B44DA706FDD6E72BEACE6464F0859662D1",
+      "width": 480,
+      "height": 320
+    },
+    {
+      "case": "native-presentation-loss-completed-2-cleanup-callback-fails",
+      "kind": "before",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\recovery24\\runtime-2\\native-presentation-loss-completed-2-cleanup-callback-fails\\before.png",
+      "sha256": "013E487AE29C1FB87DE42E36D6AC751D4CECD31F40B8659DD66C60B2D891DE15",
+      "width": 480,
+      "height": 320
+    },
+    {
+      "case": "native-presentation-loss-completed-2-cleanup-callback-fails",
+      "kind": "other-before",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\recovery24\\runtime-2\\native-presentation-loss-completed-2-cleanup-callback-fails\\other-before.png",
+      "sha256": "A128793B4618B795F712ED3CFEB0A7B44DA706FDD6E72BEACE6464F0859662D1",
+      "width": 480,
+      "height": 320
+    },
+    {
+      "case": "native-presentation-loss-completed-2-cleanup-callback-fails",
+      "kind": "other-after",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\recovery24\\runtime-2\\native-presentation-loss-completed-2-cleanup-callback-fails\\other-after.png",
+      "sha256": "A128793B4618B795F712ED3CFEB0A7B44DA706FDD6E72BEACE6464F0859662D1",
+      "width": 480,
+      "height": 320
+    },
+    {
+      "case": "native-presentation-loss-progressive-1-recover",
+      "kind": "before",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\recovery24\\runtime-2\\native-presentation-loss-progressive-1-recover\\before.png",
+      "sha256": "013E487AE29C1FB87DE42E36D6AC751D4CECD31F40B8659DD66C60B2D891DE15",
+      "width": 480,
+      "height": 320
+    },
+    {
+      "case": "native-presentation-loss-progressive-1-recover",
+      "kind": "after",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\recovery24\\runtime-2\\native-presentation-loss-progressive-1-recover\\after.png",
+      "sha256": "013E487AE29C1FB87DE42E36D6AC751D4CECD31F40B8659DD66C60B2D891DE15",
+      "width": 480,
+      "height": 320
+    },
+    {
+      "case": "native-presentation-loss-progressive-1-close-before-dispatch",
+      "kind": "before",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\recovery24\\runtime-2\\native-presentation-loss-progressive-1-close-before-dispatch\\before.png",
+      "sha256": "013E487AE29C1FB87DE42E36D6AC751D4CECD31F40B8659DD66C60B2D891DE15",
+      "width": 480,
+      "height": 320
+    },
+    {
+      "case": "native-presentation-loss-progressive-1-cleanup-callback-fails",
+      "kind": "before",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\recovery24\\runtime-2\\native-presentation-loss-progressive-1-cleanup-callback-fails\\before.png",
+      "sha256": "013E487AE29C1FB87DE42E36D6AC751D4CECD31F40B8659DD66C60B2D891DE15",
+      "width": 480,
+      "height": 320
+    },
+    {
+      "case": "native-presentation-loss-progressive-2-recover",
+      "kind": "before",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\recovery24\\runtime-2\\native-presentation-loss-progressive-2-recover\\before.png",
+      "sha256": "013E487AE29C1FB87DE42E36D6AC751D4CECD31F40B8659DD66C60B2D891DE15",
+      "width": 480,
+      "height": 320
+    },
+    {
+      "case": "native-presentation-loss-progressive-2-recover",
+      "kind": "other-before",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\recovery24\\runtime-2\\native-presentation-loss-progressive-2-recover\\other-before.png",
+      "sha256": "A128793B4618B795F712ED3CFEB0A7B44DA706FDD6E72BEACE6464F0859662D1",
+      "width": 480,
+      "height": 320
+    },
+    {
+      "case": "native-presentation-loss-progressive-2-recover",
+      "kind": "after",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\recovery24\\runtime-2\\native-presentation-loss-progressive-2-recover\\after.png",
+      "sha256": "013E487AE29C1FB87DE42E36D6AC751D4CECD31F40B8659DD66C60B2D891DE15",
+      "width": 480,
+      "height": 320
+    },
+    {
+      "case": "native-presentation-loss-progressive-2-recover",
+      "kind": "other-after",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\recovery24\\runtime-2\\native-presentation-loss-progressive-2-recover\\other-after.png",
+      "sha256": "A128793B4618B795F712ED3CFEB0A7B44DA706FDD6E72BEACE6464F0859662D1",
+      "width": 480,
+      "height": 320
+    },
+    {
+      "case": "native-presentation-loss-progressive-2-close-before-dispatch",
+      "kind": "before",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\recovery24\\runtime-2\\native-presentation-loss-progressive-2-close-before-dispatch\\before.png",
+      "sha256": "013E487AE29C1FB87DE42E36D6AC751D4CECD31F40B8659DD66C60B2D891DE15",
+      "width": 480,
+      "height": 320
+    },
+    {
+      "case": "native-presentation-loss-progressive-2-close-before-dispatch",
+      "kind": "other-before",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\recovery24\\runtime-2\\native-presentation-loss-progressive-2-close-before-dispatch\\other-before.png",
+      "sha256": "A128793B4618B795F712ED3CFEB0A7B44DA706FDD6E72BEACE6464F0859662D1",
+      "width": 480,
+      "height": 320
+    },
+    {
+      "case": "native-presentation-loss-progressive-2-cleanup-callback-fails",
+      "kind": "before",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\recovery24\\runtime-2\\native-presentation-loss-progressive-2-cleanup-callback-fails\\before.png",
+      "sha256": "013E487AE29C1FB87DE42E36D6AC751D4CECD31F40B8659DD66C60B2D891DE15",
+      "width": 480,
+      "height": 320
+    },
+    {
+      "case": "native-presentation-loss-progressive-2-cleanup-callback-fails",
+      "kind": "other-before",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\recovery24\\runtime-2\\native-presentation-loss-progressive-2-cleanup-callback-fails\\other-before.png",
+      "sha256": "A128793B4618B795F712ED3CFEB0A7B44DA706FDD6E72BEACE6464F0859662D1",
+      "width": 480,
+      "height": 320
+    },
+    {
+      "case": "native-presentation-loss-progressive-2-cleanup-callback-fails",
+      "kind": "other-after",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\recovery24\\runtime-2\\native-presentation-loss-progressive-2-cleanup-callback-fails\\other-after.png",
+      "sha256": "A128793B4618B795F712ED3CFEB0A7B44DA706FDD6E72BEACE6464F0859662D1",
+      "width": 480,
+      "height": 320
+    },
+    {
+      "case": "native-owner-disposed-completed-1-recover",
+      "kind": "before",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\recovery24\\runtime-2\\native-owner-disposed-completed-1-recover\\before.png",
+      "sha256": "013E487AE29C1FB87DE42E36D6AC751D4CECD31F40B8659DD66C60B2D891DE15",
+      "width": 480,
+      "height": 320
+    },
+    {
+      "case": "native-owner-disposed-completed-1-recover",
+      "kind": "after",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\recovery24\\runtime-2\\native-owner-disposed-completed-1-recover\\after.png",
+      "sha256": "013E487AE29C1FB87DE42E36D6AC751D4CECD31F40B8659DD66C60B2D891DE15",
+      "width": 480,
+      "height": 320
+    },
+    {
+      "case": "native-owner-disposed-completed-1-close-before-dispatch",
+      "kind": "before",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\recovery24\\runtime-2\\native-owner-disposed-completed-1-close-before-dispatch\\before.png",
+      "sha256": "013E487AE29C1FB87DE42E36D6AC751D4CECD31F40B8659DD66C60B2D891DE15",
+      "width": 480,
+      "height": 320
+    },
+    {
+      "case": "native-owner-disposed-completed-1-cleanup-callback-fails",
+      "kind": "before",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\recovery24\\runtime-2\\native-owner-disposed-completed-1-cleanup-callback-fails\\before.png",
+      "sha256": "013E487AE29C1FB87DE42E36D6AC751D4CECD31F40B8659DD66C60B2D891DE15",
+      "width": 480,
+      "height": 320
+    },
+    {
+      "case": "native-owner-disposed-completed-2-recover",
+      "kind": "before",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\recovery24\\runtime-2\\native-owner-disposed-completed-2-recover\\before.png",
+      "sha256": "013E487AE29C1FB87DE42E36D6AC751D4CECD31F40B8659DD66C60B2D891DE15",
+      "width": 480,
+      "height": 320
+    },
+    {
+      "case": "native-owner-disposed-completed-2-recover",
+      "kind": "other-before",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\recovery24\\runtime-2\\native-owner-disposed-completed-2-recover\\other-before.png",
+      "sha256": "A128793B4618B795F712ED3CFEB0A7B44DA706FDD6E72BEACE6464F0859662D1",
+      "width": 480,
+      "height": 320
+    },
+    {
+      "case": "native-owner-disposed-completed-2-recover",
+      "kind": "after",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\recovery24\\runtime-2\\native-owner-disposed-completed-2-recover\\after.png",
+      "sha256": "013E487AE29C1FB87DE42E36D6AC751D4CECD31F40B8659DD66C60B2D891DE15",
+      "width": 480,
+      "height": 320
+    },
+    {
+      "case": "native-owner-disposed-completed-2-recover",
+      "kind": "other-after",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\recovery24\\runtime-2\\native-owner-disposed-completed-2-recover\\other-after.png",
+      "sha256": "A128793B4618B795F712ED3CFEB0A7B44DA706FDD6E72BEACE6464F0859662D1",
+      "width": 480,
+      "height": 320
+    },
+    {
+      "case": "native-owner-disposed-completed-2-close-before-dispatch",
+      "kind": "before",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\recovery24\\runtime-2\\native-owner-disposed-completed-2-close-before-dispatch\\before.png",
+      "sha256": "013E487AE29C1FB87DE42E36D6AC751D4CECD31F40B8659DD66C60B2D891DE15",
+      "width": 480,
+      "height": 320
+    },
+    {
+      "case": "native-owner-disposed-completed-2-close-before-dispatch",
+      "kind": "other-before",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\recovery24\\runtime-2\\native-owner-disposed-completed-2-close-before-dispatch\\other-before.png",
+      "sha256": "A128793B4618B795F712ED3CFEB0A7B44DA706FDD6E72BEACE6464F0859662D1",
+      "width": 480,
+      "height": 320
+    },
+    {
+      "case": "native-owner-disposed-completed-2-cleanup-callback-fails",
+      "kind": "before",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\recovery24\\runtime-2\\native-owner-disposed-completed-2-cleanup-callback-fails\\before.png",
+      "sha256": "013E487AE29C1FB87DE42E36D6AC751D4CECD31F40B8659DD66C60B2D891DE15",
+      "width": 480,
+      "height": 320
+    },
+    {
+      "case": "native-owner-disposed-completed-2-cleanup-callback-fails",
+      "kind": "other-before",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\recovery24\\runtime-2\\native-owner-disposed-completed-2-cleanup-callback-fails\\other-before.png",
+      "sha256": "A128793B4618B795F712ED3CFEB0A7B44DA706FDD6E72BEACE6464F0859662D1",
+      "width": 480,
+      "height": 320
+    },
+    {
+      "case": "native-owner-disposed-completed-2-cleanup-callback-fails",
+      "kind": "other-after",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\recovery24\\runtime-2\\native-owner-disposed-completed-2-cleanup-callback-fails\\other-after.png",
+      "sha256": "A128793B4618B795F712ED3CFEB0A7B44DA706FDD6E72BEACE6464F0859662D1",
+      "width": 480,
+      "height": 320
+    },
+    {
+      "case": "native-owner-disposed-progressive-1-recover",
+      "kind": "before",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\recovery24\\runtime-2\\native-owner-disposed-progressive-1-recover\\before.png",
+      "sha256": "013E487AE29C1FB87DE42E36D6AC751D4CECD31F40B8659DD66C60B2D891DE15",
+      "width": 480,
+      "height": 320
+    },
+    {
+      "case": "native-owner-disposed-progressive-1-recover",
+      "kind": "after",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\recovery24\\runtime-2\\native-owner-disposed-progressive-1-recover\\after.png",
+      "sha256": "013E487AE29C1FB87DE42E36D6AC751D4CECD31F40B8659DD66C60B2D891DE15",
+      "width": 480,
+      "height": 320
+    },
+    {
+      "case": "native-owner-disposed-progressive-1-close-before-dispatch",
+      "kind": "before",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\recovery24\\runtime-2\\native-owner-disposed-progressive-1-close-before-dispatch\\before.png",
+      "sha256": "013E487AE29C1FB87DE42E36D6AC751D4CECD31F40B8659DD66C60B2D891DE15",
+      "width": 480,
+      "height": 320
+    },
+    {
+      "case": "native-owner-disposed-progressive-1-cleanup-callback-fails",
+      "kind": "before",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\recovery24\\runtime-2\\native-owner-disposed-progressive-1-cleanup-callback-fails\\before.png",
+      "sha256": "013E487AE29C1FB87DE42E36D6AC751D4CECD31F40B8659DD66C60B2D891DE15",
+      "width": 480,
+      "height": 320
+    },
+    {
+      "case": "native-owner-disposed-progressive-2-recover",
+      "kind": "before",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\recovery24\\runtime-2\\native-owner-disposed-progressive-2-recover\\before.png",
+      "sha256": "013E487AE29C1FB87DE42E36D6AC751D4CECD31F40B8659DD66C60B2D891DE15",
+      "width": 480,
+      "height": 320
+    },
+    {
+      "case": "native-owner-disposed-progressive-2-recover",
+      "kind": "other-before",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\recovery24\\runtime-2\\native-owner-disposed-progressive-2-recover\\other-before.png",
+      "sha256": "A128793B4618B795F712ED3CFEB0A7B44DA706FDD6E72BEACE6464F0859662D1",
+      "width": 480,
+      "height": 320
+    },
+    {
+      "case": "native-owner-disposed-progressive-2-recover",
+      "kind": "after",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\recovery24\\runtime-2\\native-owner-disposed-progressive-2-recover\\after.png",
+      "sha256": "013E487AE29C1FB87DE42E36D6AC751D4CECD31F40B8659DD66C60B2D891DE15",
+      "width": 480,
+      "height": 320
+    },
+    {
+      "case": "native-owner-disposed-progressive-2-recover",
+      "kind": "other-after",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\recovery24\\runtime-2\\native-owner-disposed-progressive-2-recover\\other-after.png",
+      "sha256": "A128793B4618B795F712ED3CFEB0A7B44DA706FDD6E72BEACE6464F0859662D1",
+      "width": 480,
+      "height": 320
+    },
+    {
+      "case": "native-owner-disposed-progressive-2-close-before-dispatch",
+      "kind": "before",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\recovery24\\runtime-2\\native-owner-disposed-progressive-2-close-before-dispatch\\before.png",
+      "sha256": "013E487AE29C1FB87DE42E36D6AC751D4CECD31F40B8659DD66C60B2D891DE15",
+      "width": 480,
+      "height": 320
+    },
+    {
+      "case": "native-owner-disposed-progressive-2-close-before-dispatch",
+      "kind": "other-before",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\recovery24\\runtime-2\\native-owner-disposed-progressive-2-close-before-dispatch\\other-before.png",
+      "sha256": "A128793B4618B795F712ED3CFEB0A7B44DA706FDD6E72BEACE6464F0859662D1",
+      "width": 480,
+      "height": 320
+    },
+    {
+      "case": "native-owner-disposed-progressive-2-cleanup-callback-fails",
+      "kind": "before",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\recovery24\\runtime-2\\native-owner-disposed-progressive-2-cleanup-callback-fails\\before.png",
+      "sha256": "013E487AE29C1FB87DE42E36D6AC751D4CECD31F40B8659DD66C60B2D891DE15",
+      "width": 480,
+      "height": 320
+    },
+    {
+      "case": "native-owner-disposed-progressive-2-cleanup-callback-fails",
+      "kind": "other-before",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\recovery24\\runtime-2\\native-owner-disposed-progressive-2-cleanup-callback-fails\\other-before.png",
+      "sha256": "A128793B4618B795F712ED3CFEB0A7B44DA706FDD6E72BEACE6464F0859662D1",
+      "width": 480,
+      "height": 320
+    },
+    {
+      "case": "native-owner-disposed-progressive-2-cleanup-callback-fails",
+      "kind": "other-after",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\recovery24\\runtime-2\\native-owner-disposed-progressive-2-cleanup-callback-fails\\other-after.png",
+      "sha256": "A128793B4618B795F712ED3CFEB0A7B44DA706FDD6E72BEACE6464F0859662D1",
+      "width": 480,
+      "height": 320
+    }
+  ],
+  "saves": [
+    {
+      "case": "native-presentation-loss-completed-1-recover",
+      "stage": "before",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\recovery24\\runtime-2\\native-presentation-loss-completed-1-recover\\before.cadoryx",
+      "sha256": "7F20F175E29FE1D881736865C81780D8F39C34DE7D09F5C0E7E58060645797E8"
+    },
+    {
+      "case": "native-presentation-loss-completed-1-recover",
+      "stage": "after",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\recovery24\\runtime-2\\native-presentation-loss-completed-1-recover\\after.cadoryx",
+      "sha256": "76AC2EF73A7F7335D19A278C35025D01F9AE57724D2BF20818588D1B6E6B74E7"
+    },
+    {
+      "case": "native-presentation-loss-completed-1-close-before-dispatch",
+      "stage": "before",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\recovery24\\runtime-2\\native-presentation-loss-completed-1-close-before-dispatch\\before.cadoryx",
+      "sha256": "40BEE17E35570BCE00D0FACC21BA970CE7D07818655D95BA9F533A6F0DE8B960"
+    },
+    {
+      "case": "native-presentation-loss-completed-1-close-before-dispatch",
+      "stage": "after",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\recovery24\\runtime-2\\native-presentation-loss-completed-1-close-before-dispatch\\after.cadoryx",
+      "sha256": "B805B6DA4CCF71C78BB488D2FBD69C4A04D3BA0FEFEE876D456B221E734C2A4C"
+    },
+    {
+      "case": "native-presentation-loss-completed-1-cleanup-callback-fails",
+      "stage": "before",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\recovery24\\runtime-2\\native-presentation-loss-completed-1-cleanup-callback-fails\\before.cadoryx",
+      "sha256": "D22159FE99A51C03571CCD4C202C44E93E8AF733A633231C8DF2D5FA28F50F0B"
+    },
+    {
+      "case": "native-presentation-loss-completed-1-cleanup-callback-fails",
+      "stage": "after",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\recovery24\\runtime-2\\native-presentation-loss-completed-1-cleanup-callback-fails\\after.cadoryx",
+      "sha256": "DBBE413B824AF925CFFD736047978E8EF7247FCF98FC390DAD6EF74CAFB33D37"
+    },
+    {
+      "case": "native-presentation-loss-completed-2-recover",
+      "stage": "before",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\recovery24\\runtime-2\\native-presentation-loss-completed-2-recover\\before.cadoryx",
+      "sha256": "3DAEF36E86A3EB1AFD263B0B61855881369371AEAE2CD36867CD75FA7FC99A45"
+    },
+    {
+      "case": "native-presentation-loss-completed-2-recover",
+      "stage": "after",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\recovery24\\runtime-2\\native-presentation-loss-completed-2-recover\\after.cadoryx",
+      "sha256": "E47D442833D54CCF7436ED628E4554F3B1315B593F56E4BB2BBBF35557E7FCA2"
+    },
+    {
+      "case": "native-presentation-loss-completed-2-close-before-dispatch",
+      "stage": "before",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\recovery24\\runtime-2\\native-presentation-loss-completed-2-close-before-dispatch\\before.cadoryx",
+      "sha256": "B4FD193C3FA978629587F1096D8A7B7BF1004D48825EE2241D7704926335A998"
+    },
+    {
+      "case": "native-presentation-loss-completed-2-close-before-dispatch",
+      "stage": "after",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\recovery24\\runtime-2\\native-presentation-loss-completed-2-close-before-dispatch\\after.cadoryx",
+      "sha256": "56FA6242B134127C74FABF3EA2B1A925E0644D7ED0D616B76DEFA54731C7ACF7"
+    },
+    {
+      "case": "native-presentation-loss-completed-2-cleanup-callback-fails",
+      "stage": "before",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\recovery24\\runtime-2\\native-presentation-loss-completed-2-cleanup-callback-fails\\before.cadoryx",
+      "sha256": "3A5706C55ACADC1498F1565CF7F260327CF67B18FCA42EC15367A43A9B75FC1A"
+    },
+    {
+      "case": "native-presentation-loss-completed-2-cleanup-callback-fails",
+      "stage": "after",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\recovery24\\runtime-2\\native-presentation-loss-completed-2-cleanup-callback-fails\\after.cadoryx",
+      "sha256": "C98D71EC0E47AF3D7243D55E765F289BB71B8098297C92D0461885B5245AF3B3"
+    },
+    {
+      "case": "native-presentation-loss-progressive-1-recover",
+      "stage": "before",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\recovery24\\runtime-2\\native-presentation-loss-progressive-1-recover\\before.cadoryx",
+      "sha256": "FC6677C0A577FA8F1EAA1D5189672D1E15D2437FA48D0C782738FE7A71BB19A9"
+    },
+    {
+      "case": "native-presentation-loss-progressive-1-recover",
+      "stage": "after",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\recovery24\\runtime-2\\native-presentation-loss-progressive-1-recover\\after.cadoryx",
+      "sha256": "1C42F225F24D4650427F76B1529F61AF781CDD17BC489FD742D4B3EE21100CA9"
+    },
+    {
+      "case": "native-presentation-loss-progressive-1-close-before-dispatch",
+      "stage": "before",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\recovery24\\runtime-2\\native-presentation-loss-progressive-1-close-before-dispatch\\before.cadoryx",
+      "sha256": "4819E0BB03DA99CD1E8C928551E22A03E3A3EF4BDCA3B5D43AC48C1AAAE7E9C7"
+    },
+    {
+      "case": "native-presentation-loss-progressive-1-close-before-dispatch",
+      "stage": "after",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\recovery24\\runtime-2\\native-presentation-loss-progressive-1-close-before-dispatch\\after.cadoryx",
+      "sha256": "7B394ADBC46C887E5F8FCC437CFC9559477964EB912F2CB202FAB0924B0C4EF8"
+    },
+    {
+      "case": "native-presentation-loss-progressive-1-cleanup-callback-fails",
+      "stage": "before",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\recovery24\\runtime-2\\native-presentation-loss-progressive-1-cleanup-callback-fails\\before.cadoryx",
+      "sha256": "D8D8467FE4D41393352855694C02513DD37380912D8C65F27C105AB487B07175"
+    },
+    {
+      "case": "native-presentation-loss-progressive-1-cleanup-callback-fails",
+      "stage": "after",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\recovery24\\runtime-2\\native-presentation-loss-progressive-1-cleanup-callback-fails\\after.cadoryx",
+      "sha256": "0129A683B60585E6CF57E6AC7AC8783831DEB02446EBCA3800DF1646F730D900"
+    },
+    {
+      "case": "native-presentation-loss-progressive-2-recover",
+      "stage": "before",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\recovery24\\runtime-2\\native-presentation-loss-progressive-2-recover\\before.cadoryx",
+      "sha256": "DCF03978DE3A0FF871A2EB187F6DA874EF79E1A3602D5E4712FA61F915E06F5F"
+    },
+    {
+      "case": "native-presentation-loss-progressive-2-recover",
+      "stage": "after",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\recovery24\\runtime-2\\native-presentation-loss-progressive-2-recover\\after.cadoryx",
+      "sha256": "DFC5B45DAEDFFEEAAAC9888184831A87F7539373F74AA477C1B7FC9C27E07FE5"
+    },
+    {
+      "case": "native-presentation-loss-progressive-2-close-before-dispatch",
+      "stage": "before",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\recovery24\\runtime-2\\native-presentation-loss-progressive-2-close-before-dispatch\\before.cadoryx",
+      "sha256": "4135D077AD79838EEC5C9D5B59C7AD945271EFBDA24AC791596B80210B9A6304"
+    },
+    {
+      "case": "native-presentation-loss-progressive-2-close-before-dispatch",
+      "stage": "after",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\recovery24\\runtime-2\\native-presentation-loss-progressive-2-close-before-dispatch\\after.cadoryx",
+      "sha256": "308B8165E7B2AA208D8BA16555A7F9751EAEE08BDA2D939C4C5DBC3FD5989343"
+    },
+    {
+      "case": "native-presentation-loss-progressive-2-cleanup-callback-fails",
+      "stage": "before",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\recovery24\\runtime-2\\native-presentation-loss-progressive-2-cleanup-callback-fails\\before.cadoryx",
+      "sha256": "B1E13869F50676665F23944663A1215477F701D35BC64C2FBCE7B5B051D84AC5"
+    },
+    {
+      "case": "native-presentation-loss-progressive-2-cleanup-callback-fails",
+      "stage": "after",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\recovery24\\runtime-2\\native-presentation-loss-progressive-2-cleanup-callback-fails\\after.cadoryx",
+      "sha256": "8A204E2C9F13320762E4262703438CAEDBB7835885EBDE479D8452C35D96C010"
+    },
+    {
+      "case": "native-owner-disposed-completed-1-recover",
+      "stage": "before",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\recovery24\\runtime-2\\native-owner-disposed-completed-1-recover\\before.cadoryx",
+      "sha256": "45BDE617111B521BF7731A4179159B5255D97C5BE8F53A57361CDA1C6BCFED35"
+    },
+    {
+      "case": "native-owner-disposed-completed-1-recover",
+      "stage": "after",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\recovery24\\runtime-2\\native-owner-disposed-completed-1-recover\\after.cadoryx",
+      "sha256": "E5078579EAC3F2B16B82A67A61824D94B257749DE0AB67DC4334F0B952FC446E"
+    },
+    {
+      "case": "native-owner-disposed-completed-1-close-before-dispatch",
+      "stage": "before",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\recovery24\\runtime-2\\native-owner-disposed-completed-1-close-before-dispatch\\before.cadoryx",
+      "sha256": "C66A91CEF2E0715252E91529791807BBF9C42C32D5BD6EE258C1D9140D4BB4E7"
+    },
+    {
+      "case": "native-owner-disposed-completed-1-close-before-dispatch",
+      "stage": "after",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\recovery24\\runtime-2\\native-owner-disposed-completed-1-close-before-dispatch\\after.cadoryx",
+      "sha256": "C356B18BCF8951DD3B6DA741AE1E077A3E94BB62D77EA8BF7289603307089EB8"
+    },
+    {
+      "case": "native-owner-disposed-completed-1-cleanup-callback-fails",
+      "stage": "before",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\recovery24\\runtime-2\\native-owner-disposed-completed-1-cleanup-callback-fails\\before.cadoryx",
+      "sha256": "1F036952066A50201664530EB6B2A77DDB1F37673AA36242EAE1F58D60E962A8"
+    },
+    {
+      "case": "native-owner-disposed-completed-1-cleanup-callback-fails",
+      "stage": "after",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\recovery24\\runtime-2\\native-owner-disposed-completed-1-cleanup-callback-fails\\after.cadoryx",
+      "sha256": "C97BBBD4A46E50E4050A189CC9B2E5F0EF220F67BC0248895B73FE8FA422A09A"
+    },
+    {
+      "case": "native-owner-disposed-completed-2-recover",
+      "stage": "before",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\recovery24\\runtime-2\\native-owner-disposed-completed-2-recover\\before.cadoryx",
+      "sha256": "5E64989ECEC67562901C6D3EFAC00713F7329588149AE5321D723E192C7D06CA"
+    },
+    {
+      "case": "native-owner-disposed-completed-2-recover",
+      "stage": "after",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\recovery24\\runtime-2\\native-owner-disposed-completed-2-recover\\after.cadoryx",
+      "sha256": "C8C5A1E0327D051DEC113D3E1FFFC48FF6DB45EB06DBC23B9FC4F71A453EB34D"
+    },
+    {
+      "case": "native-owner-disposed-completed-2-close-before-dispatch",
+      "stage": "before",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\recovery24\\runtime-2\\native-owner-disposed-completed-2-close-before-dispatch\\before.cadoryx",
+      "sha256": "FBDE8AE443EB63D9655AC434F61520322995F42A31146E08A58A70561E06839C"
+    },
+    {
+      "case": "native-owner-disposed-completed-2-close-before-dispatch",
+      "stage": "after",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\recovery24\\runtime-2\\native-owner-disposed-completed-2-close-before-dispatch\\after.cadoryx",
+      "sha256": "BFC1FBD3645CACB1E10B25B51AB8B83972F6BF46161C8BDA56DDB5E078D9D9BE"
+    },
+    {
+      "case": "native-owner-disposed-completed-2-cleanup-callback-fails",
+      "stage": "before",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\recovery24\\runtime-2\\native-owner-disposed-completed-2-cleanup-callback-fails\\before.cadoryx",
+      "sha256": "8E0887FDD89218E493E7348A80FB28ACA40CBFF1AF4F3CED4D798A94D3494DB4"
+    },
+    {
+      "case": "native-owner-disposed-completed-2-cleanup-callback-fails",
+      "stage": "after",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\recovery24\\runtime-2\\native-owner-disposed-completed-2-cleanup-callback-fails\\after.cadoryx",
+      "sha256": "7FD3BFAF0DAF235E54E001E24ADBB6CC084D96B45D768680FBE9E05955104899"
+    },
+    {
+      "case": "native-owner-disposed-progressive-1-recover",
+      "stage": "before",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\recovery24\\runtime-2\\native-owner-disposed-progressive-1-recover\\before.cadoryx",
+      "sha256": "F7377FFDAB4B02D34ABAD589D42395CA67690BD347795C04D00FF1DAD0729858"
+    },
+    {
+      "case": "native-owner-disposed-progressive-1-recover",
+      "stage": "after",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\recovery24\\runtime-2\\native-owner-disposed-progressive-1-recover\\after.cadoryx",
+      "sha256": "E0E162786AFE3B97EAE4DDED74AFF9185B4C2732E93AF5BDB0939DF32C675C37"
+    },
+    {
+      "case": "native-owner-disposed-progressive-1-close-before-dispatch",
+      "stage": "before",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\recovery24\\runtime-2\\native-owner-disposed-progressive-1-close-before-dispatch\\before.cadoryx",
+      "sha256": "078FCF9938D61379B4830C214239394939FB6E7ED73447106B15CFE53483F96A"
+    },
+    {
+      "case": "native-owner-disposed-progressive-1-close-before-dispatch",
+      "stage": "after",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\recovery24\\runtime-2\\native-owner-disposed-progressive-1-close-before-dispatch\\after.cadoryx",
+      "sha256": "6845AF78270868F0944722E6F54692DFCC6EE9A234E1735FB13BBCCD9EDA79D3"
+    },
+    {
+      "case": "native-owner-disposed-progressive-1-cleanup-callback-fails",
+      "stage": "before",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\recovery24\\runtime-2\\native-owner-disposed-progressive-1-cleanup-callback-fails\\before.cadoryx",
+      "sha256": "3439349E314850773456C72D9AD844DD6D65C1AA35E04FC0F2F45A523FAC7B9A"
+    },
+    {
+      "case": "native-owner-disposed-progressive-1-cleanup-callback-fails",
+      "stage": "after",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\recovery24\\runtime-2\\native-owner-disposed-progressive-1-cleanup-callback-fails\\after.cadoryx",
+      "sha256": "63808921165D91035CA24C09690E5B57515DF6C33D20AEB23F9668E095AD25B6"
+    },
+    {
+      "case": "native-owner-disposed-progressive-2-recover",
+      "stage": "before",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\recovery24\\runtime-2\\native-owner-disposed-progressive-2-recover\\before.cadoryx",
+      "sha256": "10A9D5677002B43E0A6FFC91D1C8644565C105B4E58D36FA1DBF675572120823"
+    },
+    {
+      "case": "native-owner-disposed-progressive-2-recover",
+      "stage": "after",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\recovery24\\runtime-2\\native-owner-disposed-progressive-2-recover\\after.cadoryx",
+      "sha256": "C48EE27A17A1E3C778A3A3E43935D036DC22B684D316F9EE21BDE0AB04391E5F"
+    },
+    {
+      "case": "native-owner-disposed-progressive-2-close-before-dispatch",
+      "stage": "before",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\recovery24\\runtime-2\\native-owner-disposed-progressive-2-close-before-dispatch\\before.cadoryx",
+      "sha256": "1A35C304D3A449D9D64926DA9D4D6F64800477403E891EF99351258C3461BC6B"
+    },
+    {
+      "case": "native-owner-disposed-progressive-2-close-before-dispatch",
+      "stage": "after",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\recovery24\\runtime-2\\native-owner-disposed-progressive-2-close-before-dispatch\\after.cadoryx",
+      "sha256": "377B49B1EC6F0E6210CE2083C1F68DFABFBD8E83FE694490F41AEBDF24E8D578"
+    },
+    {
+      "case": "native-owner-disposed-progressive-2-cleanup-callback-fails",
+      "stage": "before",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\recovery24\\runtime-2\\native-owner-disposed-progressive-2-cleanup-callback-fails\\before.cadoryx",
+      "sha256": "F7416859B067C6D957DB81384468FC5BF5F2E9ED95846BBD29333D876F5E2CAB"
+    },
+    {
+      "case": "native-owner-disposed-progressive-2-cleanup-callback-fails",
+      "stage": "after",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\recovery24\\runtime-2\\native-owner-disposed-progressive-2-cleanup-callback-fails\\after.cadoryx",
+      "sha256": "864048FA03AE61215BB807C0EBC9DF996F80A39DE8FC6D5E6579D7EA4E860B51"
+    }
+  ],
+  "uniqueWholeImages": [
+    {
+      "case": "native-presentation-loss-completed-1-recover",
+      "kind": "before",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\recovery24\\runtime-2\\native-presentation-loss-completed-1-recover\\before.png",
+      "sha256": "013E487AE29C1FB87DE42E36D6AC751D4CECD31F40B8659DD66C60B2D891DE15",
+      "width": 480,
+      "height": 320
+    },
+    {
+      "case": "native-presentation-loss-completed-2-recover",
+      "kind": "other-before",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\recovery24\\runtime-2\\native-presentation-loss-completed-2-recover\\other-before.png",
+      "sha256": "A128793B4618B795F712ED3CFEB0A7B44DA706FDD6E72BEACE6464F0859662D1",
+      "width": 480,
+      "height": 320
+    }
+  ],
+  "originalProgramByteIdentical": true,
+  "original24CaseAssertionsAnd30sLimitsRetained": true,
+  "newWholeImageReview": "PENDING_DIRECT_REVIEW_EVERY_UNIQUE_FULL_FRAME",
+  "actualAbsentOrInvalidContext": "NOT_RUN",
+  "physicalGpuRemoval": "NOT_RUN",
+  "mainShellStatusBar": "SEPARATE_MAIN36_REQUIRED",
+  "productionApplied": false,
+  "publiclyPublished": false,
+  "desktopInputStarted": false,
+  "AFComplete": false,
+  "G": "USER_DEFERRED"
+}

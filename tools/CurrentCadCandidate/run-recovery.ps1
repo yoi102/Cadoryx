@@ -1,5 +1,6 @@
 [CmdletBinding()]
-param([ValidateSet('recovery24','main-status36')][string]$Label)
+param([ValidateSet('recovery24','main-status36')][string]$Label,
+      [ValidateRange(1,100)][int]$Iteration=1)
 $ErrorActionPreference='Stop'
 $taskRoot='C:/Users/yoiri/source/repos/Cadoryx'
 $taskDraft=Join-Path $taskRoot 'artifacts/af1082-f5-d7-local87cu1-1'
@@ -20,11 +21,13 @@ foreach($taskRow in $taskFixture.payload){if((Get-FileHash (Join-Path $taskFixtu
 $taskUnrelated=@(Assert-CadNativeConsumersIdle)
 . (Join-Path $taskRoot 'artifacts/a5-native-binding-helper-1.ps1')
 $taskFolder=Join-Path $taskDraft $Label
-$taskOutput=Join-Path $taskFolder 'runtime-1'
-$taskReceipt=Join-Path $taskFolder 'runtime-1-exit.json'
-$taskBinding=Join-Path $taskFolder 'runtime-1-loaded-native.json'
+$taskRuntime='runtime-'+$Iteration
+$taskOutput=Join-Path $taskFolder $taskRuntime
+$taskReceipt=Join-Path $taskFolder ($taskRuntime+'-exit.json')
+$taskBinding=Join-Path $taskFolder ($taskRuntime+'-loaded-native.json')
 if((Test-Path $taskOutput)-or(Test-Path $taskReceipt)){throw 'Immutable recovery runtime exists'}
-[IO.Directory]::CreateDirectory($taskOutput)>$null
+[IO.Directory]::CreateDirectory($taskFolder)>$null
+if($Label -ceq 'main-status36'){[IO.Directory]::CreateDirectory($taskOutput)>$null}
 $taskCandidate=if($Label -ceq 'recovery24'){$taskFixture.output}else{$taskApp.candidate}
 $taskExecutable=if($Label -ceq 'recovery24'){'WpfAutoRecoveryConsumer.exe'}else{'Cadoryx.wpf.exe'}
 $taskInfo=[Diagnostics.ProcessStartInfo]::new((Join-Path $taskCandidate $taskExecutable))
@@ -39,12 +42,12 @@ if($Label -ceq 'main-status36'){
 }
 $taskInfo.ArgumentList.Add($taskOutput)
 $taskProcess=[Diagnostics.Process]::Start($taskInfo)
-$taskOut=[IO.File]::Open((Join-Path $taskFolder 'runtime-1.log'),[IO.FileMode]::CreateNew,[IO.FileAccess]::Write,[IO.FileShare]::Read)
-$taskErr=[IO.File]::Open((Join-Path $taskFolder 'runtime-1-stderr.log'),[IO.FileMode]::CreateNew,[IO.FileAccess]::Write,[IO.FileShare]::Read)
+$taskOut=[IO.File]::Open((Join-Path $taskFolder ($taskRuntime+'.log')),[IO.FileMode]::CreateNew,[IO.FileAccess]::Write,[IO.FileShare]::Read)
+$taskErr=[IO.File]::Open((Join-Path $taskFolder ($taskRuntime+'-stderr.log')),[IO.FileMode]::CreateNew,[IO.FileAccess]::Write,[IO.FileShare]::Read)
 $taskCopy=$taskProcess.StandardOutput.BaseStream.CopyToAsync($taskOut);$taskErrorCopy=$taskProcess.StandardError.BaseStream.CopyToAsync($taskErr)
 $taskCount=if($Label -ceq 'recovery24'){24}else{36}
 $taskEntry=[ordered]@{started=[DateTimeOffset]::UtcNow.ToString('o');state='RUNNING';pid=$taskProcess.Id;coordinatorPid=$PID;label=$Label;planned=$taskCount;candidate=$taskCandidate;output=$taskOutput;native=$taskBinding;unrelatedProcessesPreserved=$taskUnrelated;desktopInputStarted=$false;productionApplied=$false;publiclyPublished=$false;readinessSecondsEach=30;observationDeadlineSeconds=900}
-$taskEntry|ConvertTo-Json -Depth 6|Set-Content (Join-Path $taskFolder 'runtime-1-start.json')
+$taskEntry|ConvertTo-Json -Depth 6|Set-Content (Join-Path $taskFolder ($taskRuntime+'-start.json'))
 Write-Output ('CurrentF5D7/local87cu1 '+$Label+' started PID='+$taskProcess.Id+'; owned WPF windows, no mouse/keyboard injection')
 $taskWatch=[Diagnostics.Stopwatch]::StartNew()
 try {

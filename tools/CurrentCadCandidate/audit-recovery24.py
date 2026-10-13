@@ -2,6 +2,7 @@ import datetime
 import itertools
 import json
 import struct
+import sys
 from pathlib import Path
 import importlib.util
 spec = importlib.util.spec_from_file_location('recovery_current', Path(__file__).with_name('recovery-current.py'))
@@ -9,8 +10,11 @@ current = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(current)
 read, sha, ref, a = current.read, current.sha, current.ref, current.a
 app, full_proofs, fixture, fixture_path, prep_path = current.accepted_app('recovery24')
+iteration = int(sys.argv[1]) if len(sys.argv) == 2 else 1
+assert 1 <= iteration <= 100
+runtime = f'runtime-{iteration}'
 draft = current.DRAFT / 'recovery24'
-terminal_path = draft / 'runtime-1-exit.json'
+terminal_path = draft / (runtime + '-exit.json')
 terminal = read(terminal_path)
 assert terminal['state'] == 'PROCESS_PASS_PENDING_INDEPENDENT_AUDIT_AND_IMAGE_REVIEW'
 assert terminal['exitCode'] == 0 and not terminal['productionApplied'] and not terminal['desktopInputStarted']
@@ -18,14 +22,14 @@ assert terminal['observationDeadlineSeconds'] == 900
 proof_path = Path(fixture['compiledAgainst']['path']);proof = read(proof_path)
 candidate = Path(fixture['candidate'])
 for row in fixture['payload']:assert sha(candidate/row['path']) == row['sha256']
-assert (draft/'runtime-1-stderr.log').stat().st_size == 0
+assert (draft/(runtime + '-stderr.log')).stat().st_size == 0
 result_path = Path(terminal['output']) / 'result.json'
 result = read(result_path)
 assert result['state'] == 'PASS_OWNED_WPF_AUTO_RECOVERY24_PENDING_INDEPENDENT_AUDIT'
 assert not result['desktopInputStarted'] and not result['physicalGpuRemoval']
 assert result['actualAbsentOrInvalidContext'] == result['mainShellStatusBar'] == 'NOT_RUN'
 expected_native = {row['name']: row['sha256'] for row in proof['native62']}
-binding_path = draft / 'runtime-1-loaded-native.json'
+binding_path = draft / (runtime + '-loaded-native.json')
 for observed in (result['native'], read(binding_path)['native']):
     assert len(observed) == 62 and {row['name']: row['sha256'] for row in observed} == expected_native
     for row in observed:
@@ -96,7 +100,7 @@ assert {str(p) for p in Path(terminal['output']).rglob('*.png')} == {row['path']
 unique = {}
 for row in images:
     unique.setdefault(row['sha256'], row)
-output = draft / 'runtime-1-verification.json'
+output = draft / (runtime + '-verification.json')
 assert not output.exists()
 record = dict(recordedAt=datetime.datetime.now(datetime.timezone.utc).isoformat(),
     state='PASS_LOCAL87CU1_CURRENT_F5_D7_ORIGINAL_WPF24_NATIVE62_HISTORY_SAVE48_IMAGES52_PENDING_DIRECT_REVIEW',

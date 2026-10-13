@@ -14,6 +14,9 @@ $taskPausePath=Join-Path $taskDraft 'sdk-performance-pause.json'
 if(!(Test-Path $taskPausePath)){throw 'SDK CPU builds must be explicitly paused before MiniPC sampling; a returned native lane does not prove CPU pause'}
 $taskPause=Get-Content $taskPausePath -Raw|ConvertFrom-Json -DateKind String
 if(!$taskPause.sdkCpuBuildsExplicitlyPaused -or !$taskPause.rootMayRunOriginalMiniPC -or $taskPause.sdkThread -cne '01a0f7b3-ff5f-7cb0-bff9-a5caad1a49b0' -or $taskPause.acceptedFrozenPackageVersion -cne '8.0.1-preview.87.cu1' -or $taskPause.performanceFreezeSHA256 -cne (Get-FileHash (Join-Path $taskDraft 'performance-freeze.json')).Hash){throw 'Current SDK CPU pause does not cover this exact performance candidate'}
+if((Get-FileHash $taskPause.sdkConfirmation.path).Hash -cne $taskPause.sdkConfirmation.sha256){throw 'SDK explicit CPU pause source receipt changed'}
+$taskSdkPause=Get-Content $taskPause.sdkConfirmation.path -Raw|ConvertFrom-Json -DateKind String
+if($taskSdkPause.state -cne 'SDK_CPU_WORK_QUIESCENT_NATIVE_LANE_REMAINS_CADORYX' -or $taskSdkPause.activeOwnNativeJobs -ne 0 -or $taskSdkPause.activeOwnBuildToolSessions -ne 0 -or $taskSdkPause.currentLaneOwner -cne 'Cadoryx'){throw 'SDK receipt no longer states the required CPU pause'}
 $taskFreeze=@($taskAll.configurations|Where-Object configuration -CEQ 'Release')[0]
 foreach($taskRow in $taskFreeze.payload){if((Get-FileHash (Join-Path $taskFreeze.candidate $taskRow.path)).Hash -cne $taskRow.sha256){throw 'Final application payload differs'}}
 if($taskAll.originalDirectRuns -ne 2 -or $taskAll.originalLifecycleCyclesPerRun -ne 20 -or $taskAll.targetMs -ne 6482 -or $taskAll.directTimeoutSeconds -ne 1800 -or $taskAll.productionOpenRuns -ne 2 -or $taskAll.productionOpenTimeoutSeconds -ne 900){throw 'Original performance budgets changed'}
