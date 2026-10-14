@@ -1,0 +1,37 @@
+{
+  "recordedAt": "2026-10-14T00:11:29.088278+00:00",
+  "state": "D6_FIRST_ACTUAL_WINDOW_INPUT_ATTEMPT_FAILED_ORIGINAL_ASSERTIONS_PRESERVED",
+  "caseIndex": 0,
+  "terminal": {
+    "path": "artifacts/af1082-f5-d7-local87cu1-1/windows/window-create-en-US-plane-positive-1-exit.json",
+    "sha256": "2E5DC341759B0C78B72E02D78671BF0EE0377399148A9CD36832510497C393C4"
+  },
+  "failure": {
+    "path": "artifacts/af1082-f5-d7-local87cu1-1/windows/window-create-en-US-plane-positive-1/failure.json",
+    "sha256": "59A9291BD897E7F99193018AC9E2282C056C9DDA4AACC479AD595B868257E771"
+  },
+  "stateTrace": {
+    "path": "artifacts/af1082-f5-d7-local87cu1-1/windows/window-create-en-US-plane-positive-1/state.json",
+    "sha256": "5709AE625143E66629BFC6939DF4C2757719F5A2FC4D9FFB0CE31C470EE20C5F"
+  },
+  "operator": {
+    "path": "artifacts/af1082-f5-d7-root-integration-1/d6-first-operator-record1.json",
+    "sha256": "5CADBDA2AD1001774B47FFF5E7F13BD15B1B4A2846F3A76CA0DBCDD8B8296BC3"
+  },
+  "fixture": {
+    "path": "C:/Users/yoiri/source/repos/Cadoryx/artifacts/d6-window-fixtures-2/fixtures-1\\plane-positive.cadoryx",
+    "sha256": "E3913830ACD00B9E5096E4FF5609A3485CD936709A9C540A277D4661D6E388D4"
+  },
+  "originalSixStatesCompleted": 0,
+  "originalSixStatesRequired": 6,
+  "originalSnapshotUnchangedInEveryObservedTransition": true,
+  "finalTemporaryStartY": 1,
+  "confirmationInputIssued": false,
+  "actualCancelAndOwnedWindowAbsenceRecorded": true,
+  "original30sReadinessAnd300sObservationRetained": true,
+  "productGeometryBugProven": false,
+  "issue": "Returned owner/related modal input targeting, including ComboBox popup focus; must qualify the actual input target before repeating the original case in a new output.",
+  "rawObserverResultsModified": false,
+  "D6Accepted": false,
+  "AFComplete": false
+}

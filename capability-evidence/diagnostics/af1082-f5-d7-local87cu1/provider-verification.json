@@ -1,0 +1,1440 @@
+{
+  "recordedAt": "2026-10-13T23:33:48.341589+00:00",
+  "state": "CURRENT_F5_D7_ORIGINAL_PROVIDER_OUTCOMES_ACTUALLY_VERIFIED",
+  "freeze": {
+    "path": "artifacts/af1082-f5-d7-local87cu1-1/provider-runtime-freeze.json",
+    "sha256": "B682A369486F2D45D63D624DABC5C53E6EC2A7738045D2812B70A5A7B304D0C3"
+  },
+  "parent": {
+    "path": "artifacts/af1082-f5-d7-local87cu1-1/freeze.json",
+    "sha256": "67B761151A6CCF780C60D772FA3C732037649E5F333A1DAC6DDB425C913DDF0E"
+  },
+  "suite": {
+    "path": "artifacts/af1082-f5-d7-local87cu1-1/provider-both-exit.json",
+    "sha256": "7024460722FC48D8DDDA269AB29A606C455237FF900F8D84AC03EA56E05493D4"
+  },
+  "fullGate": {
+    "path": "capability-evidence/diagnostics/af1082-f5-d7-local87cu1/full-verification.json",
+    "sha256": "24F11228795602C1096854152EED626806ACF49E36B8C7F879ED564B9432DCA0"
+  },
+  "scenarios": [
+    {
+      "scenario": "drawing",
+      "passed": false,
+      "completedTurns": 2,
+      "requiredTurns": 8,
+      "failure": "Requested cad_drawing.create lacks an answer and successful production receipt.",
+      "assetsAfterClose": 0,
+      "actualNative62Matched": true,
+      "calls": 19,
+      "failedReceipts": [
+        {
+          "ordinal": 1,
+          "tool": "cad_workspace",
+          "arguments": {
+            "action": "list",
+            "expected": {
+              "workspaceStateId": "00000000-0000-0000-0000-000000000000",
+              "activeSessionId": null,
+              "documentId": null,
+              "stateId": null
+            }
+          },
+          "receipt": {
+            "success": false,
+            "message": "Workspace authoring is unavailable in this context."
+          }
+        },
+        {
+          "ordinal": 3,
+          "tool": "cad_drawing",
+          "arguments": {
+            "action": "contract",
+            "documentId": "336c5bf2-9272-4c9d-addb-612437170b22",
+            "stateId": "1db41a9c-1806-4144-ab06-befe3523e198",
+            "type": "sheet"
+          },
+          "receipt": {
+            "success": false,
+            "message": "Invalid drawing arguments for action=contract. Unknown or duplicate: documentId, stateId. contract accepts only action/type; other actions require exact documentId/stateId from cad_status. inspect requires type, documentId and stateId together. Outer name is only save_template; create/edit names belong in authorJson.",
+            "missingOrInvalid": [],
+            "unexpectedArguments": [
+              "documentId",
+              "stateId"
+            ],
+            "allowedArguments": [
+              "action",
+              "type"
+            ],
+            "validRequests": [
+              {
+                "action": "contract",
+                "type": "sheet"
+              }
+            ],
+            "requestNote": "Read-only examples. Choose the requested type; contract omits every document, state, owner and source identity. The rejected request was not executed."
+          }
+        },
+        {
+          "ordinal": 4,
+          "tool": "cad_drawing",
+          "arguments": {
+            "action": "create",
+            "documentId": "336c5bf2-9272-4c9d-addb-612437170b22",
+            "stateId": "1db41a9c-1806-4144-ab06-befe3523e198",
+            "type": "sheet",
+            "name": "Provider Drawing",
+            "authorJson": "{\"widthMm\":297,\"heightMm\":210,\"unit\":\"Millimeter\",\"title\":\"Provider Drawing\",\"standard\":\"ISO\"}"
+          },
+          "receipt": {
+            "success": false,
+            "message": "Invalid drawing arguments for action=create. Unknown or duplicate: name. contract accepts only action/type; other actions require exact documentId/stateId from cad_status. inspect requires type, documentId and stateId together. Outer name is only save_template; create/edit names belong in authorJson.",
+            "missingOrInvalid": [],
+            "unexpectedArguments": [
+              "name"
+            ],
+            "allowedArguments": [
+              "action",
+              "documentId",
+              "stateId",
+              "type",
+              "sheetId",
+              "id",
+              "authorJson"
+            ]
+          }
+        },
+        {
+          "ordinal": 9,
+          "tool": "cad_drawing",
+          "arguments": {
+            "action": "contract",
+            "type": "view",
+            "sheetId": "069e073e-393d-471a-a9e7-19aebfd4d6c2",
+            "authorJson": "{\"name\":\"Top\",\"kind\":\"Top\",\"centerMm\":{\"x\":80,\"y\":60},\"scale\":2}"
+          },
+          "receipt": {
+            "success": false,
+            "message": "Invalid drawing arguments for action=contract. Unknown or duplicate: sheetId, authorJson. contract accepts only action/type; other actions require exact documentId/stateId from cad_status. inspect requires type, documentId and stateId together. Outer name is only save_template; create/edit names belong in authorJson.",
+            "missingOrInvalid": [],
+            "unexpectedArguments": [
+              "sheetId",
+              "authorJson"
+            ],
+            "allowedArguments": [
+              "action",
+              "type"
+            ],
+            "validRequests": [
+              {
+                "action": "contract",
+                "type": "view"
+              }
+            ],
+            "requestNote": "Read-only examples. Choose the requested type; contract omits every document, state, owner and source identity. The rejected request was not executed."
+          }
+        },
+        {
+          "ordinal": 10,
+          "tool": "cad_drawing",
+          "arguments": {
+            "action": "create",
+            "documentId": "336c5bf2-9272-4c9d-addb-612437170b22",
+            "stateId": "69d5991a-025b-4272-9bf4-07e0a7ae691a",
+            "sheetId": "069e073e-393d-471a-a9e7-19aebfd4d6c2",
+            "authorJson": "{\"name\":\"Top\",\"kind\":\"Top\",\"centerMm\":{\"x\":80,\"y\":60},\"scale\":2}"
+          },
+          "receipt": {
+            "success": false,
+            "action": "create",
+            "rejection": "invalid_drawing_object_type",
+            "message": "Missing or invalid drawing object type. Choose an exact drawing kind from allowedTypes before supplying its owner/object ID. Modeling feature/body/part IDs are not drawing object IDs. Templates use save_template/import_template; parts_table/zones use their dedicated actions. No type, owner or identity was supplied automatically.",
+            "missingOrInvalid": [
+              "type"
+            ],
+            "allowedTypes": [
+              "sheet",
+              "view",
+              "dimension",
+              "datum",
+              "control_frame",
+              "balloon",
+              "hole_table",
+              "field",
+              "note"
+            ],
+            "allowedArguments": [
+              "action",
+              "documentId",
+              "stateId",
+              "type",
+              "sheetId",
+              "id",
+              "authorJson"
+            ],
+            "contractRequest": {
+              "action": "contract"
+            }
+          }
+        },
+        {
+          "ordinal": 15,
+          "tool": "cad_drawing",
+          "arguments": {
+            "action": "inspect_sources",
+            "documentId": "336c5bf2-9272-4c9d-addb-612437170b22",
+            "id": "a4dd0607-e664-4051-8da6-44ae6bbaacc3",
+            "bodyId": "a7471987-5cfd-41cf-ac89-46baa100c87b",
+            "revision": "f06d4fae-f118-4e7d-ae61-33760f450065",
+            "limit": 50
+          },
+          "receipt": {
+            "success": false,
+            "message": "Invalid drawing arguments for action=inspect_sources. Missing or invalid: stateId. Unknown or duplicate: id. contract accepts only action/type; other actions require exact documentId/stateId from cad_status. inspect requires type, documentId and stateId together. Outer name is only save_template; create/edit names belong in authorJson.",
+            "missingOrInvalid": [
+              "stateId"
+            ],
+            "unexpectedArguments": [
+              "id"
+            ],
+            "allowedArguments": [
+              "action",
+              "documentId",
+              "stateId",
+              "path",
+              "bodyId",
+              "revision",
+              "offset",
+              "limit"
+            ],
+            "identitySource": {
+              "toolName": "cad_status",
+              "arguments": {}
+            },
+            "identityRole": "Copy documentId/stateId from the active cad_status response, not an item, body, sheet or source selection. Read current state before explicitly submitting the drawing request again. No identities were supplied or filled in automatically."
+          }
+        },
+        {
+          "ordinal": 17,
+          "tool": "cad_drawing",
+          "arguments": {
+            "action": "contract",
+            "documentId": "336c5bf2-9272-4c9d-addb-612437170b22",
+            "stateId": "5f0cc0b5-4d4c-4f3e-9e0f-89bc6739e5e3"
+          },
+          "receipt": {
+            "success": false,
+            "message": "Invalid drawing arguments for action=contract. Unknown or duplicate: documentId, stateId. contract accepts only action/type; other actions require exact documentId/stateId from cad_status. inspect requires type, documentId and stateId together. Outer name is only save_template; create/edit names belong in authorJson.",
+            "missingOrInvalid": [],
+            "unexpectedArguments": [
+              "documentId",
+              "stateId"
+            ],
+            "allowedArguments": [
+              "action",
+              "type"
+            ],
+            "validRequests": [
+              {
+                "action": "contract",
+                "type": "sheet"
+              },
+              {
+                "action": "contract",
+                "type": "view"
+              },
+              {
+                "action": "contract",
+                "type": "dimension"
+              },
+              {
+                "action": "contract",
+                "type": "datum"
+              },
+              {
+                "action": "contract",
+                "type": "control_frame"
+              },
+              {
+                "action": "contract",
+                "type": "balloon"
+              },
+              {
+                "action": "contract",
+                "type": "hole_table"
+              },
+              {
+                "action": "contract",
+                "type": "field"
+              },
+              {
+                "action": "contract",
+                "type": "note"
+              },
+              {
+                "action": "contract",
+                "type": "template"
+              },
+              {
+                "action": "contract",
+                "type": "parts_table"
+              },
+              {
+                "action": "contract",
+                "type": "zones"
+              }
+            ],
+            "requestNote": "Read-only examples. Choose the requested type; contract omits every document, state, owner and source identity. The rejected request was not executed."
+          }
+        }
+      ],
+      "terminal": {
+        "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-drawing-1-exit.json",
+        "sha256": "008F574B7AD121B20A0634B4B73F46D5B6B54E0DCF80361354D95A6A4D01E6D8"
+      },
+      "result": {
+        "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-drawing-1/result.json",
+        "sha256": "67C0E98DF8DE501FBE62F4AFAE4D4CBA7844D95AE04EFCC0D1E431D27AE65805"
+      },
+      "binding": {
+        "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-drawing-1-loaded-native.json",
+        "sha256": "A4E3E028D76E215CCEB0BD3E13F2E10048CBB7C307A93A7FBD75CD9595E80B6D"
+      },
+      "toolCalls": {
+        "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-drawing-1/tool-calls.json",
+        "sha256": "F1A17E4FA448A4AEC0874B7DE9622C042AB1B2589024CEC4B25447346EF66618"
+      },
+      "captures": [
+        {
+          "request": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-drawing-1/request-001.json",
+            "sha256": "DEEBD196B487C913782D5F0309F7BD68E9AD619F2E69447A7C7140D8FE77BF65"
+          },
+          "wire": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-drawing-1/wire-request-001.json",
+            "sha256": "BD3F5D5A0C5215D7CE63F1298C903EC8D1B1DC74C76DBB526CDBCDFB27ED5DD9"
+          },
+          "response": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-drawing-1/response-001.json",
+            "sha256": "AE618052C7FE46964DD6D259C2EBBBC127A4F14F6FF1B220446E1724F336A6CA"
+          }
+        },
+        {
+          "request": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-drawing-1/request-002.json",
+            "sha256": "96EAC1FE3531DB330960FBCD58ACDD63894B747BAF2D8C03FD9FF559268B8892"
+          },
+          "wire": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-drawing-1/wire-request-002.json",
+            "sha256": "0FC8F8A09BB2D6D1ABBA7BD7C6C11E15AAF3ED26BE9971B421AFDA5C36159EE8"
+          },
+          "response": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-drawing-1/response-002.json",
+            "sha256": "1415F40E32355368CAFA0367C32D66746A57D67C0FCE1214B71B6F743D107EA7"
+          }
+        },
+        {
+          "request": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-drawing-1/request-003.json",
+            "sha256": "635232D9F6F631D0086DC3413EABF33EF24865127BB28F8B12294640855FEBAF"
+          },
+          "wire": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-drawing-1/wire-request-003.json",
+            "sha256": "3F5B079603F0E2CAE2C3424023EE2081906470E5801EEA274FDCDB539DB4BD81"
+          },
+          "response": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-drawing-1/response-003.json",
+            "sha256": "02EE98BA918931FC5F264EED3B209918BF4AA8177752F601F5E4540C93F945C7"
+          }
+        },
+        {
+          "request": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-drawing-1/request-004.json",
+            "sha256": "9B59157DDC5EFF8A926DEEA0F20659083C8954D238C09F194D527FB56A229101"
+          },
+          "wire": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-drawing-1/wire-request-004.json",
+            "sha256": "E0BD7ABD97D43B391BA1254B5A24CB2663E617FA5B4D39D17A45A4EC8F707814"
+          },
+          "response": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-drawing-1/response-004.json",
+            "sha256": "99A0A1BBBECB43C244D704CCD26D8B02EBD7D700CB1A946FB639F2644B11FD60"
+          }
+        },
+        {
+          "request": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-drawing-1/request-005.json",
+            "sha256": "991A5FCA2D0EB3D704CCCCF174492B06FCA3E6E9346707CB06A43A4689B641FC"
+          },
+          "wire": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-drawing-1/wire-request-005.json",
+            "sha256": "EE08DCE0AD0980261712F528A6EEC606BD64D5C37335A23D0A304256A4C0D9D2"
+          },
+          "response": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-drawing-1/response-005.json",
+            "sha256": "ED98CE19532C6153F84A95DA68124B77F12B0B3FACC78AAAB3A0E1E0CA17B040"
+          }
+        },
+        {
+          "request": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-drawing-1/request-006.json",
+            "sha256": "9501A863E04BC7A0D4B536929CBC0C0702450856D86F349D992DE7A0AD813668"
+          },
+          "wire": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-drawing-1/wire-request-006.json",
+            "sha256": "36FCDA5656FCE15212B64EF047ED0081EB88813B83FA92350F5555709F71BB15"
+          },
+          "response": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-drawing-1/response-006.json",
+            "sha256": "1247BD62BDBD94FFF8F2D1C12780C6018E5101E12BE5A4D0CC18C05E07D687E1"
+          }
+        },
+        {
+          "request": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-drawing-1/request-007.json",
+            "sha256": "2312991435FF91B653DA5A6A5863C040024CB689D5F07A28C8746962B4952D7D"
+          },
+          "wire": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-drawing-1/wire-request-007.json",
+            "sha256": "7C9EFEF68EC0DE52BF8BE12215C10E1E919A8D1BC490C9261BBA0102175678F5"
+          },
+          "response": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-drawing-1/response-007.json",
+            "sha256": "438E55218686EE9C160E0EA7F23FDFE13C2CF4F5B51C47CA90F80C309E442780"
+          }
+        },
+        {
+          "request": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-drawing-1/request-008.json",
+            "sha256": "7638D6F87DF3DBEFBF405D867B3187AEBADBA9DA369F6D2A261FE028A5033C8A"
+          },
+          "wire": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-drawing-1/wire-request-008.json",
+            "sha256": "053D1A50CC00582432C296455A88B95367107CC4ECFF93E6BD3B528B125B7B75"
+          },
+          "response": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-drawing-1/response-008.json",
+            "sha256": "958978097D80CD240E147673BB40F1FD8EDB4FE82FE7368177936FF5617337D4"
+          }
+        },
+        {
+          "request": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-drawing-1/request-009.json",
+            "sha256": "0C55AD4AFFE995FDA0E43B80C0DB95AFE29CDDFF438B28FA2F3CD688B6A0B6E0"
+          },
+          "wire": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-drawing-1/wire-request-009.json",
+            "sha256": "F94A1634FEDF649A44C0E07BFDCFD1F879AF6F072AEE69ECC94EA836F52FE660"
+          },
+          "response": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-drawing-1/response-009.json",
+            "sha256": "0E372564F3AD0B3FAE8ECE7BDACEB7CA6A6E2EC2BC76702985871585102200E6"
+          }
+        },
+        {
+          "request": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-drawing-1/request-010.json",
+            "sha256": "176D7145E100715CEDEA60DCBDA892156188DF16E3223E130EC477677C2BC655"
+          },
+          "wire": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-drawing-1/wire-request-010.json",
+            "sha256": "7ECE743F94B24AA6EBF032703DEA631B2A15EB859C99F2CBCD6BAEFFF90BD3C7"
+          },
+          "response": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-drawing-1/response-010.json",
+            "sha256": "E232366B062A9CC9ACAA1144DCEBD9111954DFA0C5FEB8C0F7AA3357B6A25DA9"
+          }
+        },
+        {
+          "request": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-drawing-1/request-011.json",
+            "sha256": "CFB276A91D56EA4DDD9B00A9C5258F533AE0943C1324B4231C2B72AB22BEC691"
+          },
+          "wire": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-drawing-1/wire-request-011.json",
+            "sha256": "EE042381592D493163541177705ED21390CE6899A5391EA695F2797C7DFAE94B"
+          },
+          "response": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-drawing-1/response-011.json",
+            "sha256": "D9DF2B8C432B3C97C33298ADC486F07E3F7A6196B2E758ABD1792923AB7EF534"
+          }
+        },
+        {
+          "request": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-drawing-1/request-012.json",
+            "sha256": "EF068B7E39C68AD80FC77CDE959615D4F544F6149A06481C75C5538107768BAA"
+          },
+          "wire": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-drawing-1/wire-request-012.json",
+            "sha256": "CEF5A4B154BD071B3454FD391CB9ECF9A5A8BE50378293A9C40FE97D913C3034"
+          },
+          "response": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-drawing-1/response-012.json",
+            "sha256": "9AEDD6F5BB2294E08C047ED80E984457EC2DEADCFEAF69BFDF3F57A6E2259BEC"
+          }
+        },
+        {
+          "request": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-drawing-1/request-013.json",
+            "sha256": "569249EB7CCC0477C5AE68A8C0349C910B28F21A8CA3BDBC84CA5BC78F9D4A03"
+          },
+          "wire": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-drawing-1/wire-request-013.json",
+            "sha256": "910C15E8919E5C88A03F0E04507C7DDB6B79A625F5A8332E77503D8ABF0AA15B"
+          },
+          "response": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-drawing-1/response-013.json",
+            "sha256": "F9501D251960A67BD619C85914DFE2D284FB3A194BDEC19485776213487C24FB"
+          }
+        },
+        {
+          "request": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-drawing-1/request-014.json",
+            "sha256": "02543F3CE1865FDD6CDBD3CD15121BA23563C6B546728920CDC3543118B16B08"
+          },
+          "wire": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-drawing-1/wire-request-014.json",
+            "sha256": "4DE9B69B69A245217DF152EB2766820FFDC6C9B1F21941E168F973A31CE929A3"
+          },
+          "response": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-drawing-1/response-014.json",
+            "sha256": "5C7678A70BB322CFF931F63C5F72348DA981C9ECC00A9E921A50909BA74E9A29"
+          }
+        },
+        {
+          "request": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-drawing-1/request-015.json",
+            "sha256": "6D5E7AE7570466E21FB4E76E022BF62A41DAC87A33AAA0F71CD43F4DC1FB12EA"
+          },
+          "wire": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-drawing-1/wire-request-015.json",
+            "sha256": "1C558935F590508BD6FAA26D438E78E028C02DB242955B5133F257FB23ADEEA7"
+          },
+          "response": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-drawing-1/response-015.json",
+            "sha256": "2E309E0E5680313792115F8EB72B79E7F96D8F4C8C4C894223CA84D78F4AA9B0"
+          }
+        },
+        {
+          "request": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-drawing-1/request-016.json",
+            "sha256": "0EDC258FD48356F0941B17DB2C68F42B6F4C9C50D52C7A4017D4B7C1B7DFC968"
+          },
+          "wire": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-drawing-1/wire-request-016.json",
+            "sha256": "A0B403D2059E11EAB8B5CE2F2B405EA7BA258D8B461CBAC1E521CAA3F156C2AC"
+          },
+          "response": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-drawing-1/response-016.json",
+            "sha256": "39A6FF90A42C563C58B722960F6063AD89A4452D8ADD1BEB4B941106AD09958D"
+          }
+        },
+        {
+          "request": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-drawing-1/request-017.json",
+            "sha256": "BFEE6FC31E65DBB57D6B3E9718C093C574D8CA0C17B4C7BB8F8987356C33CD3D"
+          },
+          "wire": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-drawing-1/wire-request-017.json",
+            "sha256": "F5639178968B3464AAC5591CBCC775FB612BF7808562F4EDF5634462C72576A4"
+          },
+          "response": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-drawing-1/response-017.json",
+            "sha256": "ED712703FD805C5E99F265305BE6BF6FCE16F096EE0E68C078C441086322CE5D"
+          }
+        },
+        {
+          "request": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-drawing-1/request-018.json",
+            "sha256": "69435FD010443C708D96C013906EC33498EC6A6045BAE7925176A15508684EE0"
+          },
+          "wire": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-drawing-1/wire-request-018.json",
+            "sha256": "F0342374D92E99AC7B7D18A5BBFF4C08E1149ED52FE947AB15052EB003B891EB"
+          },
+          "response": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-drawing-1/response-018.json",
+            "sha256": "17A0997BDBB69D4EBE8CDC1D79BE7268261D03A1ABCC8823A9E756105688222E"
+          }
+        },
+        {
+          "request": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-drawing-1/request-019.json",
+            "sha256": "238FC7F1A1E4175C3032BD48EEE13F73AE240D404060124C8C4E0EE998FAFEC6"
+          },
+          "wire": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-drawing-1/wire-request-019.json",
+            "sha256": "ACF5713F933CD052CEA08190A12B32D21AF8414DE54C05AD99D01FBD591C8AF0"
+          },
+          "response": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-drawing-1/response-019.json",
+            "sha256": "DFF725F6FAEDAB45671B621694CD5CDBE2DA3779703442D40775881D898347A4"
+          }
+        },
+        {
+          "request": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-drawing-1/request-020.json",
+            "sha256": "9A9A90FA3C1D5039439E5F90A3A5A6F4B23DCCD2D44575150BB10FF7E7031B5F"
+          },
+          "wire": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-drawing-1/wire-request-020.json",
+            "sha256": "A340DAFE6E704FED30627BF4EE627E4627409429D0EC0FDF3DC5137E546C4E43"
+          },
+          "response": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-drawing-1/response-020.json",
+            "sha256": "D9DF2B8C432B3C97C33298ADC486F07E3F7A6196B2E758ABD1792923AB7EF534"
+          }
+        },
+        {
+          "request": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-drawing-1/request-021.json",
+            "sha256": "8D4DE3FCFD6CEC62A61B1E2828ACEA553300F8A6D73E6EFC94569BC9C46E0B69"
+          },
+          "wire": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-drawing-1/wire-request-021.json",
+            "sha256": "682DAA362BD1AD6C94E2CD570BCA445D414F72CA2A94F2416D1867CDC8966401"
+          },
+          "response": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-drawing-1/response-021.json",
+            "sha256": "8E910C7BDB3C459C0C15D4A18C23015D40444A8D0A42692FA60B05888CD87343"
+          }
+        },
+        {
+          "request": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-drawing-1/request-022.json",
+            "sha256": "7EEC2EAADAC207FE9FAC8094FBB832BEA58AA062B9886FDD237CAE208425EE60"
+          },
+          "wire": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-drawing-1/wire-request-022.json",
+            "sha256": "6A96A80BA5B1DA97F29D7C36EAF6817FFB69A5AEFA4AC833119BDFD1DF7835B3"
+          },
+          "response": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-drawing-1/response-022.json",
+            "sha256": "05E566167FAF1FCF081237BCCB30D76B075F58165FF44ABF9CD9DE9778A407CE"
+          }
+        },
+        {
+          "request": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-drawing-1/request-023.json",
+            "sha256": "640C67D734025AF90061110E71B28E7964C773A2FAD84E0F97D862D754FDC441"
+          },
+          "wire": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-drawing-1/wire-request-023.json",
+            "sha256": "1A98C055D5EA1CD47E1DB3D95121A6C62A25ECB0FB9F4F51D36A8B13EC4611AA"
+          },
+          "response": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-drawing-1/response-023.json",
+            "sha256": "F8C91190ABD17C8CB7402DE9ACDD1AF2E60EE089A37B1240C997DB72186F4787"
+          }
+        },
+        {
+          "request": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-drawing-1/request-024.json",
+            "sha256": "312B4F16639BEF1D6FBEA551636F40D597F82F54841608F59AFAFB2F2B6DB8F8"
+          },
+          "wire": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-drawing-1/wire-request-024.json",
+            "sha256": "EFF6A86C4820D000C1E480A6F27C259089FEEA896678DF4B34F93CFAF2C22E4F"
+          },
+          "response": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-drawing-1/response-024.json",
+            "sha256": "D9DF2B8C432B3C97C33298ADC486F07E3F7A6196B2E758ABD1792923AB7EF534"
+          }
+        }
+      ],
+      "outputs": []
+    },
+    {
+      "scenario": "workspace",
+      "passed": true,
+      "completedTurns": 8,
+      "requiredTurns": 8,
+      "failure": null,
+      "assetsAfterClose": 0,
+      "actualNative62Matched": true,
+      "calls": 34,
+      "failedReceipts": [
+        {
+          "ordinal": 7,
+          "tool": "cad_file",
+          "arguments": {
+            "action": "contract",
+            "documentId": "95d9235f-5a54-447f-9596-ae6b4c770ab4",
+            "stateId": "e99402a4-bbcc-4253-8807-b189f06351c0"
+          },
+          "receipt": {
+            "success": false,
+            "message": "Unknown or duplicate argument: documentId."
+          }
+        },
+        {
+          "ordinal": 19,
+          "tool": "cad_history",
+          "arguments": {
+            "action": "return_end",
+            "cursor": {
+              "stateId": "e99402a4-bbcc-4253-8807-b189f06351c0",
+              "position": 0
+            },
+            "documentId": "95d9235f-5a54-447f-9596-ae6b4c770ab4",
+            "stateId": "e99402a4-bbcc-4253-8807-b189f06351c0"
+          },
+          "receipt": {
+            "success": false,
+            "message": "Invalid cursor object: Missing or invalid partId. Copy cursor.stateId, cursor.partId and cursor.position from exact inspection; root partId is only rollback/reorder. Use explicit null only at the history end."
+          }
+        },
+        {
+          "ordinal": 21,
+          "tool": "cad_history",
+          "arguments": {
+            "action": "return_end",
+            "cursor": {
+              "stateId": "e99402a4-bbcc-4253-8807-b189f06351c0",
+              "partId": "5b761e87-fd46-493b-93f6-d9c5f631782b",
+              "position": 0
+            },
+            "documentId": "95d9235f-5a54-447f-9596-ae6b4c770ab4",
+            "stateId": "e99402a4-bbcc-4253-8807-b189f06351c0"
+          },
+          "receipt": {
+            "success": false,
+            "message": "The document changed while this operation was being prepared.",
+            "code": "stale_history_expectation",
+            "recovery": {
+              "tool": "cad_inspect",
+              "arguments": {
+                "area": "recipes",
+                "offset": 0,
+                "limit": 1
+              },
+              "instruction": "Read the root documentId, stateId and cursor from this fresh inspection. Copy cursor exactly, including explicit null at the history end; do not construct it from items[].position. Review the intended action before retrying; reselect any edited feature and its current revision separately."
+            }
+          }
+        },
+        {
+          "ordinal": 27,
+          "tool": "cad_workspace",
+          "arguments": {
+            "action": "activate",
+            "expected": {
+              "workspaceStateId": "808465d7-7bcb-42cf-ba41-d4b34ff2f52c",
+              "activeSessionId": "894e12dd-cbcb-4aa0-9d00-aff74416b216",
+              "documentId": "8dd5ed2c-fb0d-4a89-97e1-7f348ffc047c",
+              "stateId": "7af87f63-de0d-47f0-b5de-11c825b81aec"
+            },
+            "path": ""
+          },
+          "receipt": {
+            "success": false,
+            "message": "Missing, invalid, unknown or duplicate workspace fields: path, target.",
+            "invalidFields": [
+              "path",
+              "target"
+            ],
+            "action": "activate",
+            "allowedFields": [
+              "action",
+              "expected",
+              "target"
+            ],
+            "identitySource": {
+              "toolName": "cad_workspace",
+              "arguments": {
+                "action": "list"
+              }
+            },
+            "roles": {
+              "expected": "Copy the complete list.expected object. It describes the current workspace and active session; explicit null is valid only for all three active identity fields in an empty workspace.",
+              "target": "For activate, copy one actual sessions[].identity sessionId/documentId/stateId triple. Names and row indexes are not target identities."
+            },
+            "nextStep": "No workspace transition or file read was attempted. Read list, then explicitly retry your original action with only its allowed fields and the returned exact identities. No identity was filled in automatically."
+          }
+        },
+        {
+          "ordinal": 28,
+          "tool": "cad_workspace",
+          "arguments": {
+            "action": "activate",
+            "expected": {
+              "workspaceStateId": "808465d7-7bcb-42cf-ba41-d4b34ff2f52c",
+              "activeSessionId": "894e12dd-cbcb-4aa0-9d00-aff74416b216",
+              "documentId": "8dd5ed2c-fb0d-4a89-97e1-7f348ffc047c",
+              "stateId": "7af87f63-de0d-47f0-b5de-11c825b81aec"
+            }
+          },
+          "receipt": {
+            "success": false,
+            "message": "Missing, invalid, unknown or duplicate workspace fields: target.",
+            "invalidFields": [
+              "target"
+            ],
+            "action": "activate",
+            "allowedFields": [
+              "action",
+              "expected",
+              "target"
+            ],
+            "identitySource": {
+              "toolName": "cad_workspace",
+              "arguments": {
+                "action": "list"
+              }
+            },
+            "roles": {
+              "expected": "Copy the complete list.expected object. It describes the current workspace and active session; explicit null is valid only for all three active identity fields in an empty workspace.",
+              "target": "For activate, copy one actual sessions[].identity sessionId/documentId/stateId triple. Names and row indexes are not target identities."
+            },
+            "nextStep": "No workspace transition or file read was attempted. Read list, then explicitly retry your original action with only its allowed fields and the returned exact identities. No identity was filled in automatically."
+          }
+        },
+        {
+          "ordinal": 29,
+          "tool": "cad_workspace",
+          "arguments": {
+            "action": "activate",
+            "expected": {
+              "workspaceStateId": "808465d7-7bcb-42cf-ba41-d4b34ff2f52c",
+              "activeSessionId": "894e12dd-cbcb-4aa0-9d00-aff74416b216",
+              "documentId": "8dd5ed2c-fb0d-4a89-97e1-7f348ffc047c",
+              "stateId": "7af87f63-de0d-47f0-b5de-11c825b81aec"
+            },
+            "target": {
+              "sessionId": "894e12dd-cbcb-4aa0-9d00-aff74416b216",
+              "documentId": "8dd5ed2c-fb0d-4a89-97e1-7f348ffc047c",
+              "stateId": "7af87f63-de0d-47f0-b5de-11c825b81aec"
+            }
+          },
+          "receipt": {
+            "success": false,
+            "message": "Workspace or active document changed. Inspect workspace again.",
+            "rejection": "workspace_expectation_changed",
+            "reinspection": {
+              "toolName": "cad_workspace",
+              "arguments": {
+                "action": "list"
+              }
+            },
+            "expectedRole": "Copy the complete current list.expected object. Its activeSessionId/documentId/stateId describe the currently active session. Do not replace them with target identities.",
+            "targetRole": "For activate, copy sessionId/documentId/stateId from the desired sessions[].identity row separately into target.",
+            "nextStep": "Read the workspace list again, then explicitly submit your intended action with its current expected and chosen target. The rejected request is not retried or repaired automatically."
+          }
+        }
+      ],
+      "terminal": {
+        "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-workspace-1-exit.json",
+        "sha256": "832F8F2DFA695E75D82A1C00470A3779767A6D7D213E9996F40164C1E3A76F77"
+      },
+      "result": {
+        "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-workspace-1/result.json",
+        "sha256": "0D264987A5416E98461BE154C1922852C01228667E0D632AC65823274F6A10AB"
+      },
+      "binding": {
+        "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-workspace-1-loaded-native.json",
+        "sha256": "F607A23A5AB753D5CE7692B73E4C7EA37023933F4916360C3AB98611C4A11E82"
+      },
+      "toolCalls": {
+        "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-workspace-1/tool-calls.json",
+        "sha256": "EE81261B6365104D8BCD7C34D55999F54705E82746F3CDA1A9F96C81206215E0"
+      },
+      "captures": [
+        {
+          "request": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-workspace-1/request-001.json",
+            "sha256": "C564A4BFBF7F58528627169B44E514B7D90834C7065158EF7B67CBCCB297C6E9"
+          },
+          "wire": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-workspace-1/wire-request-001.json",
+            "sha256": "313F6D69D8C906E79F1FA484E5DF23F0FC9BE0898377074AACE2F2C4EAE3EAE4"
+          },
+          "response": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-workspace-1/response-001.json",
+            "sha256": "40FA687AC4EEBAFC0D65C9591A6692475FF1C9384443B69E8481AE27BDF48666"
+          }
+        },
+        {
+          "request": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-workspace-1/request-002.json",
+            "sha256": "E92FE8BF211E055C0274E870159A156D68A3D0AA16AF71937E6C4AF9D638A6F7"
+          },
+          "wire": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-workspace-1/wire-request-002.json",
+            "sha256": "2D0FC78A06748429F2E1AFF59469E1580855BE78D675E79077A3DE5992D31727"
+          },
+          "response": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-workspace-1/response-002.json",
+            "sha256": "F4E396C45F394DE3DF72D0E106CB814801F1F32E97DE9B506DAB21800590D4AD"
+          }
+        },
+        {
+          "request": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-workspace-1/request-003.json",
+            "sha256": "DB259EA144B989AC01A64872FE1D65B5A3B9E62AF51EBCDFB198672BF738993D"
+          },
+          "wire": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-workspace-1/wire-request-003.json",
+            "sha256": "05B274B86A5C6BDAAB263967E689BC241C838A10B7751CAF5CFFBBFA590EE1EC"
+          },
+          "response": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-workspace-1/response-003.json",
+            "sha256": "A697C6E9C9B8D6EF41A9923BEC5B85AD6705CC7ED25F0C1978DC1A5F4F336AEC"
+          }
+        },
+        {
+          "request": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-workspace-1/request-004.json",
+            "sha256": "C0A1AED02437A8E5874460817D231FBFD58B4DC2BD65599490476AB257FC1606"
+          },
+          "wire": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-workspace-1/wire-request-004.json",
+            "sha256": "76B064242425AAE6A4357AEB639C7AE110481A21F32C2DBA47648B409DD141AF"
+          },
+          "response": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-workspace-1/response-004.json",
+            "sha256": "5F2A5D02DED43CE50487066A5231AEBBEEA58C8438E4BD1AC86B566597BD4039"
+          }
+        },
+        {
+          "request": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-workspace-1/request-005.json",
+            "sha256": "7823B69F4F9655A15538BB814AA5542AF00BC8B40D8D1E1C54E1957D26B79DA4"
+          },
+          "wire": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-workspace-1/wire-request-005.json",
+            "sha256": "6DA096C74B726D449728820DDBBA716A18D1F011ACE6BCCACC6F873FE86BF7C0"
+          },
+          "response": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-workspace-1/response-005.json",
+            "sha256": "F793E60FF62B0C2CDD8E932AF0AE57878BE48CE9B791F7FAD913A810467BEE45"
+          }
+        },
+        {
+          "request": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-workspace-1/request-006.json",
+            "sha256": "722614B37064A45F51FD7BE226E9CB818BE7C36FC4E57636F9523500BC490211"
+          },
+          "wire": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-workspace-1/wire-request-006.json",
+            "sha256": "5ADFC4617E92DD674FCEF78244B1EDEBB72EB0F35F5C5A47454A8B86A8661170"
+          },
+          "response": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-workspace-1/response-006.json",
+            "sha256": "0672FF464FC9B3F051E1FB999AAD005A234811A4333E183AD7BB7015737F25B5"
+          }
+        },
+        {
+          "request": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-workspace-1/request-007.json",
+            "sha256": "74867F70C205827E5D6112C16DAA2BEF6EE2ABCE2DC6406B3BFCC49030D7A660"
+          },
+          "wire": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-workspace-1/wire-request-007.json",
+            "sha256": "3B2784EB4DB8FF3A0ECB00F5D5926DE9E44D5B150780090F154BFEF84C45B962"
+          },
+          "response": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-workspace-1/response-007.json",
+            "sha256": "E763B5CD8F0B0E003F14C03EBC3F8EF394C9D8485332A0A578AE20E8B7DC1867"
+          }
+        },
+        {
+          "request": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-workspace-1/request-008.json",
+            "sha256": "5C44BB32BA6C0F1A3F1639665BCB0B86FF86DEBB5B85481D49406A0876E0027B"
+          },
+          "wire": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-workspace-1/wire-request-008.json",
+            "sha256": "E152611764DDE9F6F4422F7E43945D5B9711353DC2A34CC861E4B708F9523751"
+          },
+          "response": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-workspace-1/response-008.json",
+            "sha256": "E80ABB169B6B4C95641A9EA04915D2F3A31F43BF11ABD63538A0F288F4FB51CB"
+          }
+        },
+        {
+          "request": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-workspace-1/request-009.json",
+            "sha256": "8302FED38CAAD8BF9B08E8EED8FD2FEE0777C897BD8A9E56700624485BA20B18"
+          },
+          "wire": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-workspace-1/wire-request-009.json",
+            "sha256": "0CA48790DF0752CAACD2BEE51C76217B6F6F6902AEBE0E085E6FB0151D207EFB"
+          },
+          "response": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-workspace-1/response-009.json",
+            "sha256": "B9FC1C14D61C18BBCBE420272566E752C48A218F4A23E4FC563AFD17E70C5671"
+          }
+        },
+        {
+          "request": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-workspace-1/request-010.json",
+            "sha256": "B90EBB53DEAA0705371AAA0716C5738E971926E3AF6389D1F2E4986B7CD9DCF7"
+          },
+          "wire": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-workspace-1/wire-request-010.json",
+            "sha256": "1CEABE2FE9DD67D52FEEA883D044F424F66CE8E08BF645A518AC2C9E328B2748"
+          },
+          "response": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-workspace-1/response-010.json",
+            "sha256": "7AEC7353E7B9B0329C658AC555B6957E5D61E9B3C9DE0B0133890A4FE5CEC791"
+          }
+        },
+        {
+          "request": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-workspace-1/request-011.json",
+            "sha256": "2CCCD60BA4EF786804620D6D9565561A5EB14EB1E97D36E969B4C3130B78AD0D"
+          },
+          "wire": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-workspace-1/wire-request-011.json",
+            "sha256": "CB6EA3488E2822B85142B918074A7627E839732E3D70E1E22B643C2C872D97D2"
+          },
+          "response": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-workspace-1/response-011.json",
+            "sha256": "EB3AF93A13C562563293ECD39D22411146B64868855E438DC71344EEC03BCE5C"
+          }
+        },
+        {
+          "request": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-workspace-1/request-012.json",
+            "sha256": "E8089453E84C8F21211A66BD3CB4FDA33AE3B9F5EB0E0AE9D03DAA0C3576A89D"
+          },
+          "wire": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-workspace-1/wire-request-012.json",
+            "sha256": "050941F3B8DA5E68BBCF5F0A3911D64D1130F237E6C656179ED53D4DE2A282C7"
+          },
+          "response": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-workspace-1/response-012.json",
+            "sha256": "CD4DDCACD2C75DA7E7AD5FCD59A1B13B945CC6596CE968A907DAEE52DFF1FBEF"
+          }
+        },
+        {
+          "request": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-workspace-1/request-013.json",
+            "sha256": "16F32D4E662615012456FA68C87EEC53E47D59072D4E822FAEE076106632F2C1"
+          },
+          "wire": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-workspace-1/wire-request-013.json",
+            "sha256": "46FB8625680F091C2BACCEA5CEC28183D3D7CC783880D29C5A4A3E9DCB038D47"
+          },
+          "response": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-workspace-1/response-013.json",
+            "sha256": "2A754C0A9EC928F832507D9DC29D0D18CBBF27F670EECC119B4C38E3D45807EB"
+          }
+        },
+        {
+          "request": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-workspace-1/request-014.json",
+            "sha256": "D0A50713C60A910E9BB579E42E8E1BBBD0FB9CC0CFD04215ADDBDF1585E92206"
+          },
+          "wire": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-workspace-1/wire-request-014.json",
+            "sha256": "8F7F041FDFB4334D2FD814E5EEF0A70ADA20976DD16EB63FD28790DE4E9A865F"
+          },
+          "response": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-workspace-1/response-014.json",
+            "sha256": "9EB71ECF1A3BA07D07A78E8023D19450E591227D3C6F12081C52DCE5EC45578F"
+          }
+        },
+        {
+          "request": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-workspace-1/request-015.json",
+            "sha256": "28D266069568CE6EE579588DE4B34AF53A3055FCE20791C67A251348A5C84E1F"
+          },
+          "wire": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-workspace-1/wire-request-015.json",
+            "sha256": "3001C6082DC90EE995BD4B6A5DA2F22BF15A43F9C340DCABCFE2D7E9D74BB654"
+          },
+          "response": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-workspace-1/response-015.json",
+            "sha256": "23B33A70A738F136D7B3F33317247A8D7C004CC213CCEAA4DE557D0E0F09BF10"
+          }
+        },
+        {
+          "request": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-workspace-1/request-016.json",
+            "sha256": "63F1CDE830E81995601550FE17812F40117140C22B02F60B51958BEA3BE6840E"
+          },
+          "wire": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-workspace-1/wire-request-016.json",
+            "sha256": "070C8EB1AC923723681F63B5D25CC3DB937F3E56820573A3EA5E411AF0DD5964"
+          },
+          "response": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-workspace-1/response-016.json",
+            "sha256": "22BE34D2D831F01FEE334103B77F307364BE739C4C7E5D80D4D21E34423B9D05"
+          }
+        },
+        {
+          "request": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-workspace-1/request-017.json",
+            "sha256": "7379998102CFC95DE88A6C2F46FB995B459662308DDEA545837A3E8BC3D50EBF"
+          },
+          "wire": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-workspace-1/wire-request-017.json",
+            "sha256": "75E3D8D25458636C2C22690B4226B7A4AFD54E8C91BFD2A6594F1380A562E72C"
+          },
+          "response": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-workspace-1/response-017.json",
+            "sha256": "A5106DC82295CB0BC5799420822F44E8B0C51928C80B8898AAA296FE9F882475"
+          }
+        },
+        {
+          "request": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-workspace-1/request-018.json",
+            "sha256": "1164BAAA771E46DE2A66A29CED353BD9E842863A9114A2BC59559A8AF30FA968"
+          },
+          "wire": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-workspace-1/wire-request-018.json",
+            "sha256": "2EBF7A67CB7DA1706B8F2111311F8623692C2A54D38BC3600F924862374A869A"
+          },
+          "response": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-workspace-1/response-018.json",
+            "sha256": "E6EBF74D94F34AB5724EDE3ABEBCF43F9E0E776E1699C14F75AE9473E722FD47"
+          }
+        },
+        {
+          "request": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-workspace-1/request-019.json",
+            "sha256": "F576A0A5C0B39B5ECCC7C12996E7FA2FBF0A350C39CE9F3908FD2796B2833C59"
+          },
+          "wire": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-workspace-1/wire-request-019.json",
+            "sha256": "19D8AC240BC0F8ACAEAC66749BE0A5F495852290BEF7DF980F491A3728E5B83E"
+          },
+          "response": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-workspace-1/response-019.json",
+            "sha256": "58C7AB5ACAD4EFF928C4AC019D8947EB7B432631A09D7F0324A506F67AEEC299"
+          }
+        },
+        {
+          "request": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-workspace-1/request-020.json",
+            "sha256": "E5686871BFABE4A80A3DCAE56BB7D60D1C3415FEA77C9F990F5A7C5DEC45C8A0"
+          },
+          "wire": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-workspace-1/wire-request-020.json",
+            "sha256": "212402E20E0F18F191D86D4C71307B915254A69B26B0DDBE801EEF24CD5EFE9F"
+          },
+          "response": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-workspace-1/response-020.json",
+            "sha256": "2C2ACDAE09D988A5F66CA4617A6F73C76B7193832FB6FA0E028650FBC214F961"
+          }
+        },
+        {
+          "request": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-workspace-1/request-021.json",
+            "sha256": "D413D07F314E6165AA369C80D705CE6EAA31E37A55BA9FFAEF69A4C81E0C7EC7"
+          },
+          "wire": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-workspace-1/wire-request-021.json",
+            "sha256": "A4895A50E9C87D106F538BFE77033D0DC99755423DA26E9B2FF73A591912EBD8"
+          },
+          "response": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-workspace-1/response-021.json",
+            "sha256": "C537BE7A17BA11579B326C08339262245915006A15578230EF0E706752AD1DAF"
+          }
+        },
+        {
+          "request": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-workspace-1/request-022.json",
+            "sha256": "6F7E8E7C1653D42C5E992A4CA8DD927DD9A36AA5DCABFB265F51CCCF64AF3451"
+          },
+          "wire": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-workspace-1/wire-request-022.json",
+            "sha256": "2E9E33833AB646C58C3370FC36487A4641E1E6CB1877E814631C8627A3BB4A28"
+          },
+          "response": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-workspace-1/response-022.json",
+            "sha256": "EB36408AB0D8FE63A7408CD93BF593EBCF8F3AA5A07E01802DA8B0DB0A4C6195"
+          }
+        },
+        {
+          "request": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-workspace-1/request-023.json",
+            "sha256": "40DFD70F30F72F41A8DF5E30567736D1D230412670B621555423459A520D0DE3"
+          },
+          "wire": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-workspace-1/wire-request-023.json",
+            "sha256": "AF468C48426AF3FFDCD2A355C6EB8BB69C100FFFBC35F54FDD40B83B5B5BAEBB"
+          },
+          "response": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-workspace-1/response-023.json",
+            "sha256": "E5B93E2AE70DC28CBF54861D2BFF3B252EA5B0EBCADC7EF74B68AEFE84DB2251"
+          }
+        },
+        {
+          "request": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-workspace-1/request-024.json",
+            "sha256": "3391FAFDD8622B6FB74B089AD88E2D68B84653F0F1BED5A935D103992F50368F"
+          },
+          "wire": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-workspace-1/wire-request-024.json",
+            "sha256": "B7E9B45F06C7AD646D96DDC878875393FBE24FF2B48BBCB7688A38C82060AB3D"
+          },
+          "response": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-workspace-1/response-024.json",
+            "sha256": "F499B558D315F74EE6B39ABF1784D139421B07DEF254A7C14BEA1364068893E5"
+          }
+        },
+        {
+          "request": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-workspace-1/request-025.json",
+            "sha256": "7DA1B1D073CCBAB7D182FD038D1C53D12D56DDB3F2184D244D891D2082D9CDC4"
+          },
+          "wire": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-workspace-1/wire-request-025.json",
+            "sha256": "D59F6D695CB8A093B1D48F37478BECEA3F8B8E5CE3B0BD52187D6EC7C927527D"
+          },
+          "response": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-workspace-1/response-025.json",
+            "sha256": "0EC10F51B44E6EDA22E1683ADDC9AEC02ADF53402C1FF0BD50745E24BCD2D9B5"
+          }
+        },
+        {
+          "request": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-workspace-1/request-026.json",
+            "sha256": "617D7DB515F9FE7202EB44D88936EBC28AF649B34766C7BD990C9841100248BC"
+          },
+          "wire": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-workspace-1/wire-request-026.json",
+            "sha256": "7368E67C9302F18EF01DA321B0128DEFB7DD4ECB289D6AAB83D4133ED6984CEE"
+          },
+          "response": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-workspace-1/response-026.json",
+            "sha256": "A8708BFB9D8987AD82A5206912460DE239A1061B51D0043E7138A2A49F028FC0"
+          }
+        },
+        {
+          "request": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-workspace-1/request-027.json",
+            "sha256": "9D73695640B6ACA2A7143DBEEACF2E6BC049F2D50ECEE10A51259F7178F9630F"
+          },
+          "wire": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-workspace-1/wire-request-027.json",
+            "sha256": "9EA2A3BB0A2964E03C97A4A284D9CE4CA6BE0DFC3329315748CB676CCA9D9EFB"
+          },
+          "response": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-workspace-1/response-027.json",
+            "sha256": "F2E70709540969F5F63A3434A9D124266E4053E9BAD9FE032C87EFB17A4DDDE9"
+          }
+        },
+        {
+          "request": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-workspace-1/request-028.json",
+            "sha256": "51093E3CE2540AA4FEF13BB77854413D7D8F010956CF2C8FD8BC01133AB632F9"
+          },
+          "wire": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-workspace-1/wire-request-028.json",
+            "sha256": "CB6127ED0968A956BE6B1EF188BA43B0A387CF7C50D4B2FA8FBEF63DF35B13CC"
+          },
+          "response": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-workspace-1/response-028.json",
+            "sha256": "1DE88D7BEF1F5703D243A9F28AD9EB071B7CC4886404F8B153413D9CFF634C3A"
+          }
+        },
+        {
+          "request": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-workspace-1/request-029.json",
+            "sha256": "DF11A25C7A3012C5429ABF82BFF1565152249B3F3AA904494D10F1E6DFBC0DDB"
+          },
+          "wire": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-workspace-1/wire-request-029.json",
+            "sha256": "0E8AAE5C97E1C8CBD8C6175BF64537C7C709656033C2BF8A902456BF118BB288"
+          },
+          "response": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-workspace-1/response-029.json",
+            "sha256": "A66D3D2D05AD55909281CA3D8298A9D7CF0AB7936046D1229D91FE595112596D"
+          }
+        },
+        {
+          "request": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-workspace-1/request-030.json",
+            "sha256": "503EA209AED7BBF89571D9726447BEB994DE0FF6BC9EC3F1A4FC7B6FF4FA626A"
+          },
+          "wire": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-workspace-1/wire-request-030.json",
+            "sha256": "3BDA2E28C12FB5AD6021FC8F8FED9D72B3065048D506B8C833C6B482B85D48C5"
+          },
+          "response": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-workspace-1/response-030.json",
+            "sha256": "DF8D80B57D71BF86274A5E8F3804FD51F3DBDF850D47D2FDB8186450AFD5E316"
+          }
+        },
+        {
+          "request": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-workspace-1/request-031.json",
+            "sha256": "8306351E036426C423CFFE25BF747A6395D54D6AAF3C9B7DC664F7E8639A3EE1"
+          },
+          "wire": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-workspace-1/wire-request-031.json",
+            "sha256": "EEE53983E41D7E03DB40E19D1732199D2C5D15E8B9ECBA654476196EE02DFF34"
+          },
+          "response": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-workspace-1/response-031.json",
+            "sha256": "F05B42948610069FC6BAFE15CFB5BB28C02B0A9C9462C1F8395682CE278918BF"
+          }
+        },
+        {
+          "request": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-workspace-1/request-032.json",
+            "sha256": "7A4E99989BCA30B71787F0A0A98E65072638E6B26A09FC948A329C4D6DED018A"
+          },
+          "wire": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-workspace-1/wire-request-032.json",
+            "sha256": "33E67FA3A93F6AC2A37E8F763F9FCDDB44F8727F017F646824B43D9DA8EF2314"
+          },
+          "response": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-workspace-1/response-032.json",
+            "sha256": "94072D6293A4136310336BC35296FA9998D8A2057C23AB6AF405F86FFE7F9625"
+          }
+        },
+        {
+          "request": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-workspace-1/request-033.json",
+            "sha256": "48B0D09F17911738BBF79C8102FDBF84F6095ABB30713BF4C52BF7B62D63838B"
+          },
+          "wire": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-workspace-1/wire-request-033.json",
+            "sha256": "DF36ABD576459A37717FF63589B7B39F44127B2109497B98DAF6F95AA8F6615E"
+          },
+          "response": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-workspace-1/response-033.json",
+            "sha256": "BED1587E96C8EAE46E98A6920967D032C9BAE96F3B684607B3D4CE49AD763AE8"
+          }
+        },
+        {
+          "request": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-workspace-1/request-034.json",
+            "sha256": "522681FAC090DAD8C255FED69EAF03B8D9D103CC45BFB2981B6D485EC5180A1B"
+          },
+          "wire": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-workspace-1/wire-request-034.json",
+            "sha256": "193EDC459EC59361BE07C52DEF25CBEA1D52A8E39E6C049A77156E1FA0271246"
+          },
+          "response": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-workspace-1/response-034.json",
+            "sha256": "B8F40DED7918ED1F186B3EFE653F9675D12C7AAA6E45E9A8646D08D096F2AB02"
+          }
+        },
+        {
+          "request": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-workspace-1/request-035.json",
+            "sha256": "9CE55F4918A14B0A71B69C41AD53BCC6DFA3E6B3659A898D999BA3F69D6B77E5"
+          },
+          "wire": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-workspace-1/wire-request-035.json",
+            "sha256": "576F79D273A4401AEDBF7954D62A4F7048111D7A2072434AD6436F0347D24569"
+          },
+          "response": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-workspace-1/response-035.json",
+            "sha256": "12889C6C74866583C00D86909A0FF0D099137EB0E96680C39D9AEBD15C958B15"
+          }
+        },
+        {
+          "request": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-workspace-1/request-036.json",
+            "sha256": "A8C38F5381CE99072443014DE1088EC33379B071BBFB3D9F354E2324DFB1B3AD"
+          },
+          "wire": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-workspace-1/wire-request-036.json",
+            "sha256": "4AEE7C69F0A231A5DEEF69DDB8BB14347E8F1A0746BF227800920C0D599E2D18"
+          },
+          "response": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-workspace-1/response-036.json",
+            "sha256": "DEA7F4A160DDF3EC7A06A7C07F1B1405A97610BF9180774985E104371F9B6312"
+          }
+        },
+        {
+          "request": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-workspace-1/request-037.json",
+            "sha256": "5BABA9BF90AE99585A62C7C0D4C6BCEC39F0738FB360B0E61F9B1DAD6FBCF603"
+          },
+          "wire": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-workspace-1/wire-request-037.json",
+            "sha256": "ECE48D63E20CBF9B067BEF4F3A481E998DC991BAA1FD1431E553A01C4F64DBAA"
+          },
+          "response": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-workspace-1/response-037.json",
+            "sha256": "2BDB15B41E7163E36E5F6E6A2B79E5ABCCFDDD7911AF0284901B285BBD8602F2"
+          }
+        },
+        {
+          "request": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-workspace-1/request-038.json",
+            "sha256": "415CC38720ABBF6CC7251EFA7DD8C893CE3AB02346A59A8A6D6A5E314E362DFD"
+          },
+          "wire": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-workspace-1/wire-request-038.json",
+            "sha256": "98B1BEBA380E627674B2A8A147AFD71901C431A430C58146B1FE598041529AC6"
+          },
+          "response": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-workspace-1/response-038.json",
+            "sha256": "55BA59762B54BFFA854833752F9F2429C7CAF2001D41299F390C8ECA24566CCC"
+          }
+        },
+        {
+          "request": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-workspace-1/request-039.json",
+            "sha256": "895AE3DCD4BEF8DD95D0B151003D5F9F3FAB08E592F149EDA9C1E1B49F737F11"
+          },
+          "wire": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-workspace-1/wire-request-039.json",
+            "sha256": "8B58A77E9AF939654D8AED59DEEA3E3788FC83C521AC689684DC9371DC5EC031"
+          },
+          "response": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-workspace-1/response-039.json",
+            "sha256": "349823DF3F183DE5C7EEB71094162A991E3097CC6F2A728598C7ACF9FB97B0F1"
+          }
+        },
+        {
+          "request": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-workspace-1/request-040.json",
+            "sha256": "AAAFAA25E09D535F794DD542EBDE8B3C769C16B4ECDDCCDEB055AE398100CDFE"
+          },
+          "wire": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-workspace-1/wire-request-040.json",
+            "sha256": "862E72134FFAA0D7BCDE5EA05CCBBEE3E686095B14EB5F0D1E913E3AF41CCD12"
+          },
+          "response": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-workspace-1/response-040.json",
+            "sha256": "315D898D9C5D172E973A38CCB2E476852D3102E832907BA2FF6B6D0113D2A510"
+          }
+        },
+        {
+          "request": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-workspace-1/request-041.json",
+            "sha256": "546DC6B24CAC4843FC903D48EF839937227DB1EE5FC04203E580639F581DDBC4"
+          },
+          "wire": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-workspace-1/wire-request-041.json",
+            "sha256": "2CDE31F2E4607258A99705B63936DCF017AD69D45040A37F2DDA6B86ABB7D444"
+          },
+          "response": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-workspace-1/response-041.json",
+            "sha256": "C5D529223C6EF4676C76326E83143AFD9B578738C73D415BDB99894B54BEAD22"
+          }
+        },
+        {
+          "request": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-workspace-1/request-042.json",
+            "sha256": "E80360F5545FD18F7637B91240537AB7C3FABCBF3DE1095586FC909D581F195F"
+          },
+          "wire": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-workspace-1/wire-request-042.json",
+            "sha256": "68F6B0F6C2755358A3E807ADD870C3B52E59B668155C4A6166EE4B8C0DF9EC30"
+          },
+          "response": {
+            "path": "artifacts/af1082-f5-d7-local87cu1-1/lmstudio-workspace-1/response-042.json",
+            "sha256": "FF6DF9D26F180F2F6025B3A6BA434144E8BFD91961B433C4A487439B02282AAE"
+          }
+        }
+      ],
+      "outputs": []
+    }
+  ],
+  "originalPromptsAssertionsAndBudgetsChanged": false,
+  "allPassed": false,
+  "productionApplied": false,
+  "desktopInputStarted": false,
+  "AFComplete": false,
+  "G": "USER_DEFERRED",
+  "cleanup": false
+}

@@ -12,7 +12,8 @@ read = lambda p: json.loads(p.read_text(encoding='utf-8-sig'))
 sha = lambda p: hashlib.sha256(p.read_bytes()).hexdigest().upper()
 def ref(p): return {'path': p.relative_to(ROOT).as_posix(), 'sha256': sha(p)}
 
-assert len(sys.argv) == 2
+ui_culture_revision = len(sys.argv) == 3 and sys.argv[2] == '--ui-culture'
+assert len(sys.argv) == 2 or ui_culture_revision
 index = int(sys.argv[1]); assert 0 <= index < 36
 runpy.run_path(str(Path(__file__).with_name('require-full-gate.py')))
 freeze = read(DRAFT / 'freeze.json')
@@ -30,6 +31,14 @@ host = next(r for r in hosts['configurations'] if r['label'] == 'd6-window36' an
 candidate = Path(host['output'])
 for row in host['payload']: assert sha(candidate / row['path']) == row['sha256']
 for row in hosts['windowObserverSources']: assert sha(ROOT / row['path']) == row['sha256']
+if ui_culture_revision:
+    import importlib.util
+    spec = importlib.util.spec_from_file_location('ui_followups', Path(__file__).with_name('qualify-ui-followups.py'))
+    ui = importlib.util.module_from_spec(spec); spec.loader.exec_module(ui)
+    qualified, host_path = ui.verified_followups()
+    runpy.run_path(str(Path(__file__).with_name('require-followup-evidence.py')))
+    host = next(r for r in qualified['followers'] if r['label'] == 'd6-window36')
+    candidate = Path(host['output'])
 output = Path(case['output'])
 terminal_path = Path(str(output) + '-exit.json'); terminal = read(terminal_path)
 assert terminal['state'] == 'PROCESS_EXIT0_PENDING_INDEPENDENT_TRACE_AUDIT_AND_DESKTOP_REVIEW'

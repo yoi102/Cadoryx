@@ -1,6 +1,9 @@
+[CmdletBinding()]
+param([switch]$UseUiCulturePatch)
 $ErrorActionPreference='Stop'
 Set-StrictMode -Version Latest
 $taskRoot='C:/Users/yoiri/source/repos/Cadoryx'
+$taskUseUiCulturePatch=$UseUiCulturePatch.IsPresent
 . (Join-Path $taskRoot 'tools/CurrentCadCandidate/assert-performance-ready.ps1')
 . (Join-Path $taskRoot 'artifacts/assert-cad-native-consumers-idle-2.ps1')
 $null=Assert-CadNativeConsumersIdle

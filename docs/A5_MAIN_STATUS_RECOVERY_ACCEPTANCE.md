@@ -1,5 +1,15 @@
 # A5 当前恢复矩阵与主壳状态栏验收
 
+最终UI原24第3轮已完整24/24通过，48保存/52完整图/实际native62/历史及生命周期保持；[两张唯一完整图也已直接审阅](../capability-evidence/diagnostics/af1082-f5-d7-local87cu1/recovery24-ui-whole-image-review.json)。下段“第3轮待运行”保留其此前准备状态，现在以本条及实际第3轮终态为准。原Bonsai跨文档8/8、工程图2/8后失败已独立核对；原队列失败保留，后续窗口和性能用[明确恢复资格](../tools/CurrentCadCandidate/require-followup-evidence.py)接续，不能把这次恢复程序通过当作模型、D6或性能通过。
+
+2026-10-14 当前：最终 F5+D7/本地 `8.0.1-preview.87.cu1` 的[完整两配置7117](../capability-evidence/diagnostics/af1082-f5-d7-local87cu1/full-verification.json)各7093通过、精确原24严格STEP失败延期、零跳过。原24视口恢复第2轮已通过，但使用修正前WPF；修正后原24第3轮尚待运行。最终[主壳36第5轮](../artifacts/af1082-f5-d7-local87cu1-1/main-status36/runtime-5-verification.json)36/36通过，实际native62、144完整图、后续建模/撤销/重做/保存重开及最终零宿主/资产已审计。[全部42个不同完整图直接审阅](../capability-evidence/diagnostics/af1082-f5-d7-local87cu1/main-status36-whole-image-review.json)包括36张完整主壳及六张三语言原生视口图，未用拼图或缩略图代替。主壳RenderTargetBitmap不包含HwndHost原生内容，原生图和状态栏图分别取证；不声称短恢复消息物理扫描、缺失上下文或物理GPU移除通过。
+
+本轮修复[生产恢复文本](../Cadoryx.wpf/Views/ViewportPane.GraphicsRecovery.cs)：显式使用恢复状态所有者的`CurrentCultureLCID`查询资源。Dispatcher执行上下文的线程文化可能与窗口选定语言不同；清理失败退役宿主还会先清空`main`，因此优先保留的`graphicsStatusOwner`，直到完成状态清理。恢复开始、期限、失败及就绪均使用同一选定语言，没有更改恢复算法或期限。修正候选及公开85开发根的Release/Debug各构建0警告/错误。
+
+[独立UI差异资格](../artifacts/af1082-f5-d7-ui-culture-1/application-verification2.json)保留原1200输入，仅上述源文件不同；可运行应用仅替换WPF DLL/PDB，其余18个生产DLL、13 SDK、62原生、worker及语言资源逐字节保持。它是原完整回归之上的WPF专项差异，不能称修正后重新完成7117全量。[后续资格工具](../tools/CurrentCadCandidate/qualify-ui-followups.py)核对原24和D6宿主其他字节、原提供方16共享程序集，以及原MiniPC样本/整图/20周期/6482ms预算，后续真实运行仍分开报告。
+
+原失败均保留：第1轮原24输出目录前提错误；原主壳第2轮语言/初始dirty提示，第3轮修正夹具后仍混用恢复开始/就绪语言；第一版修复第4轮在清理失败时再次用错语言。修订夹具只保存并关闭私有初始空文档、等待真实新文档命令并设置应用选定语言，[原断言/矩阵/30秒与900秒条件](../tools/CurrentCadCandidate/MainStatusRecoveryRevision/StartupHook.cs)保持。根仍公开85，D7未合入；模型、D6窗口、材质、性能和A–F其余范围继续，G及清理暂缓。以下记录为历史。
+
 2026-10-13 当前：原24视口恢复程序与36主壳状态栏hook已绑定[1081/本地86候选](AF_SOURCE1081_LOCAL86_ACCEPTANCE.md)，两配置四次publish均退出0，没有记录警告/错误，C#全文保持。[构建与身份审计](../capability-evidence/diagnostics/af1081-local86/recovery-build-verification.json)核对19个当前生产程序集、worker及其配置、语言资源和SDK13/native62；原24/36矩阵、30秒就绪、900秒观察、48保存文件及52/144整图条件保持。[当前运行器](../capability-evidence/diagnostics/af1081-local86/run-recovery.ps1)已准备但未启动，要求当前两配置6830完整终态与精确载荷，运行前通知用户。生产根仍1081/公开85；原STEP24、模型、性能、D6及A–F其余范围继续。以下source1000/SDK26、1063/SDK30记录为历史，不能替代当前验收。
 
 原C#已落入[tools/CadRecoveryWindowProbe](../tools/CadRecoveryWindowProbe/README.md)，使用调用方提供的冻结WPF输出重建。[两配置工具发布](../capability-evidence/diagnostics/af1081-local86/durable-recovery-verification.json)核对四次publish及当前载荷；[独立审计准备](../capability-evidence/diagnostics/af1081-local86/recovery-auditors-preparation.json)保持原运行断言正文，不把准备当作通过。Windows Computer Use已初始化并成功只读枚举窗口，没有启动任务窗口、激活窗口或键鼠输入。

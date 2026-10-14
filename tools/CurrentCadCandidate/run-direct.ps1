@@ -1,10 +1,11 @@
 [CmdletBinding()]
-param([int]$Runs=2,[int]$Cycles=20)
+param([int]$Runs=2,[int]$Cycles=20,[switch]$UseUiCulturePatch)
 $ErrorActionPreference='Stop'
 Set-StrictMode -Version Latest
 $taskRoot='C:/Users/yoiri/source/repos/Cadoryx'
 $taskInput='C:/Users/yoiri/Downloads/MiniPC3.step'
 $taskHash='F3773A7F37BD0CB8E717E4BE6F1070A72E5C6E7B2F36F26F9501183DF8C4C68E'
+$taskUseUiCulturePatch=$UseUiCulturePatch.IsPresent
 . (Join-Path $taskRoot 'tools/CurrentCadCandidate/assert-performance-ready.ps1')
 . (Join-Path $taskRoot 'artifacts/assert-cad-native-consumers-idle-2.ps1')
 $null=Assert-CadNativeConsumersIdle

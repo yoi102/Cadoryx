@@ -1,6 +1,9 @@
 [CmdletBinding()]
 param([ValidateSet('recovery24','main-status36')][string]$Label,
-      [ValidateRange(1,100)][int]$Iteration=1)
+      [ValidateRange(1,100)][int]$Iteration=1,
+      [switch]$UseRevisedMainFixture,
+      [switch]$UseUiCulturePatch,
+      [ValidateRange(1,2)][int]$UiCultureRevision=1)
 $ErrorActionPreference='Stop'
 $taskRoot='C:/Users/yoiri/source/repos/Cadoryx'
 $taskDraft=Join-Path $taskRoot 'artifacts/af1082-f5-d7-local87cu1-1'
@@ -13,7 +16,31 @@ if($LASTEXITCODE -ne 0){throw 'Current full7117 actual evidence gate failed'}
 if($taskProof.state -cne 'CURRENT_F5_D7_BOTH_RECOVERY24_MAIN36_D6WINDOW36_HOSTS_PUBLISH0_NOT_RUNTIME' -or (Get-FileHash (Join-Path $taskDraft 'freeze.json')).Hash -cne $taskProof.freeze.sha256){throw 'Recovery host build differs from current application'}
 $taskFixture=@($taskProof.configurations|Where-Object {$_.label -ceq $Label -and $_.configuration -ceq 'Release'})[0]
 if(!$taskFixture){throw 'Frozen recovery fixture required'}
+if($UseRevisedMainFixture){
+ if($Label -cne 'main-status36'){throw 'Revised fixture only applies to the original main36 preparation'}
+ $taskRevision=Get-Content (Join-Path $taskDraft 'main-status36-revision2-build-verification.json') -Raw|ConvertFrom-Json -DateKind String
+ if($taskRevision.state -cne 'REVISED_MAIN36_PREPARATION_ONLY_CURRENT_F5_D7_BUILD0_NOT_RUNTIME' -or $taskRevision.freeze.sha256 -cne $taskProof.freeze.sha256 -or !$taskRevision.originalNativeMatrixAndAssertionsAnd30_900BudgetsRetained){throw 'Revised main fixture provenance or original conditions differ'}
+ foreach($taskRow in @($taskRevision.originalSource)+@($taskRevision.revisedSources)){if((Get-FileHash (Join-Path $taskRoot $taskRow.path)).Hash -cne $taskRow.sha256){throw 'Revised main source changed'}}
+ $taskFixture=$taskRevision
+}
 $taskApp=@($taskFreeze.configurations|Where-Object configuration -CEQ 'Release')[0]
+if($UseUiCulturePatch){
+ if($Label -ceq 'main-status36' -and !$UseRevisedMainFixture){throw 'UI-only main36 culture delta requires the revised original main36 fixture'}
+ $taskUiProof=if($UiCultureRevision -eq 1){'application-verification.json'}else{'application-verification2.json'}
+ $taskUi=Get-Content (Join-Path $taskRoot ('artifacts/af1082-f5-d7-ui-culture-1/'+$taskUiProof)) -Raw|ConvertFrom-Json -DateKind String
+ if($taskUi.state -cne 'CURRENT_UI_RECOVERY_CULTURE_ONLY_DELTA_BUILD0_ORIGINAL_CORE18_SDK13_NATIVE62_IDENTICAL' -or $taskUi.baseFreeze.sha256 -cne $taskProof.freeze.sha256 -or !$taskUi.core18Sdk13Native62AndWorkerBytesUnchanged){throw 'Current UI delta qualification required'}
+ foreach($taskReference in @($taskUi.baseFullBoth7117,$taskUi.sourceChange,$taskUi.compileLog)){if((Get-FileHash (Join-Path $taskRoot $taskReference.path)).Hash -cne $taskReference.sha256){throw 'UI delta source or original full gate changed'}}
+ $taskApp=@{candidate=$taskUi.candidate;appPayload=$taskUi.payload}
+ if($Label -ceq 'recovery24'){
+  if($UiCultureRevision -ne 2){throw 'Original24 requires qualified final UI revision2'}
+  $taskFollowers=Get-Content (Join-Path $taskRoot 'artifacts/af1082-f5-d7-ui-culture-1/followups-verification1.json') -Raw|ConvertFrom-Json -DateKind String
+  if($taskFollowers.state -cne 'QUALIFIED_WPF_CULTURE_ONLY_FOLLOWERS_ORIGINAL_CORE_AND_ASSERTIONS_RETAINED_NOT_RUNTIME' -or !$taskFollowers.originalRecoveryAndWindowHostAssertionsUnchanged){throw 'Qualified unchanged original24 follower required'}
+  foreach($taskReference in @($taskFollowers.application,$taskFollowers.base,$taskFollowers.main36,$taskFollowers.main36DirectReview,$taskFollowers.originalHosts,$taskFollowers.source)){
+   if((Get-FileHash (Join-Path $taskRoot $taskReference.path)).Hash -cne $taskReference.sha256){throw 'UI original24 qualification reference differs'}
+  }
+  $taskFixture=@($taskFollowers.followers|Where-Object label -CEQ 'recovery24')[0]
+ }
+}
 foreach($taskRow in $taskFreeze.sourcePayload){if((Get-FileHash (Join-Path $taskFreeze.workspace $taskRow.path)).Hash -cne $taskRow.sha256){throw 'Frozen current source differs'}}
 foreach($taskRow in $taskApp.appPayload){if((Get-FileHash (Join-Path $taskApp.candidate $taskRow.path)).Hash -cne $taskRow.sha256){throw 'Frozen current app differs'}}
 foreach($taskRow in $taskFixture.payload){if((Get-FileHash (Join-Path $taskFixture.output $taskRow.path)).Hash -cne $taskRow.sha256){throw 'Frozen recovery fixture differs'}}

@@ -1,5 +1,6 @@
 [CmdletBinding()]
-param([Parameter(Mandatory)][ValidateRange(0,35)][int]$CaseIndex)
+param([Parameter(Mandatory)][ValidateRange(0,35)][int]$CaseIndex,
+      [switch]$UseUiCulturePatch)
 $ErrorActionPreference='Stop'
 $taskRoot=[IO.Path]::GetFullPath((Join-Path $PSScriptRoot '../..'))
 $taskDraft=Join-Path $taskRoot 'artifacts/af1082-f5-d7-local87cu1-1'
@@ -13,7 +14,10 @@ if((Get-FileHash (Join-Path $taskDraft 'freeze.json')).Hash -cne $taskPrep.freez
 $taskQueuePath=Join-Path $taskDraft 'followup-queue-exit.json'
 if(!(Test-Path $taskQueuePath)){throw 'Current recovery/provider queue still holds this native lane; wait for its actual terminal result'}
 $taskQueue=Get-Content $taskQueuePath -Raw|ConvertFrom-Json -DateKind String
-if($taskQueue.state -cne 'FOLLOWUPS_COMPLETED_IMAGE_REVIEW_AND_DESKTOP_PERFORMANCE_REMAIN'){throw 'Inspect the recovery/provider queue failure before interactive window acceptance'}
+if($UseUiCulturePatch){
+ & 'C:/Users/yoiri/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe' -X utf8 (Join-Path $PSScriptRoot 'require-followup-evidence.py')
+ if($LASTEXITCODE -ne 0){throw 'Actual audited resumed recovery/provider terminal results required'}
+}elseif($taskQueue.state -cne 'FOLLOWUPS_COMPLETED_IMAGE_REVIEW_AND_DESKTOP_PERFORMANCE_REMAIN'){throw 'Inspect the recovery/provider queue failure before interactive window acceptance'}
 if($taskPrep.D6Matrix.Count -ne 36){throw 'Original36 matrix required'}
 $taskCase=$taskPrep.D6Matrix[$CaseIndex]
 $taskHostProofPath=Join-Path $taskRoot $taskPrep.recoveryHosts.path
@@ -26,6 +30,11 @@ $taskHost=@($taskHostProof.configurations|Where-Object {$_.label -ceq 'd6-window
 if($taskHost.Count -ne 1){throw 'Exactly one current Release host required'}
 $taskHost=$taskHost[0]
 foreach($taskRow in $taskHost.payload){if((Get-FileHash (Join-Path $taskHost.output $taskRow.path)).Hash -cne $taskRow.sha256){throw 'Frozen window/worker/resource payload changed'}}
+if($UseUiCulturePatch){
+ $taskFollowers=Get-Content (Join-Path $taskRoot 'artifacts/af1082-f5-d7-ui-culture-1/followups-verification1.json') -Raw|ConvertFrom-Json -DateKind String
+ $taskHost=@($taskFollowers.followers|Where-Object label -CEQ 'd6-window36')[0]
+ foreach($taskRow in $taskHost.payload){if((Get-FileHash (Join-Path $taskHost.output $taskRow.path)).Hash -cne $taskRow.sha256){throw 'Qualified final UI window payload changed'}}
+}
 if((Get-FileHash $taskCase.fixture.path).Hash -cne $taskCase.fixture.sha256){throw 'Original exact fixture changed'}
 $taskOutput=[IO.Path]::GetFullPath($taskCase.output)
 if(![IO.Path]::GetRelativePath((Join-Path $taskDraft 'windows'),$taskOutput).StartsWith('window-')){throw 'Case output is outside the current planned matrix'}

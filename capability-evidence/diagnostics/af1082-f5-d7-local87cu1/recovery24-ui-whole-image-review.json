@@ -1,0 +1,38 @@
+{
+  "recordedAt": "2026-10-13T23:35:27.433607+00:00",
+  "state": "FINAL_UI_CULTURE_ORIGINAL_RECOVERY24_ALL_UNIQUE_FULL_FRAMES_DIRECTLY_REVIEWED",
+  "audit": {
+    "path": "artifacts/af1082-f5-d7-local87cu1-1/recovery24/runtime-3-verification.json",
+    "sha256": "0E7B1F15F936137062F214348C26B2300AAD995A5C733819E33EADE152246E04"
+  },
+  "application": {
+    "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-ui-culture-1\\application-verification2.json",
+    "sha256": "DD097B3B7C417135E64C4E7B1653E25D7CD2B81073091F747C7B39666C7724BE"
+  },
+  "reviewedWholeImages": [
+    {
+      "case": "native-presentation-loss-completed-1-recover",
+      "kind": "before",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\recovery24\\runtime-3\\native-presentation-loss-completed-1-recover\\before.png",
+      "sha256": "013E487AE29C1FB87DE42E36D6AC751D4CECD31F40B8659DD66C60B2D891DE15",
+      "width": 480,
+      "height": 320
+    },
+    {
+      "case": "native-presentation-loss-completed-2-recover",
+      "kind": "other-before",
+      "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\recovery24\\runtime-3\\native-presentation-loss-completed-2-recover\\other-before.png",
+      "sha256": "A128793B4618B795F712ED3CFEB0A7B44DA706FDD6E72BEACE6464F0859662D1",
+      "width": 480,
+      "height": 320
+    }
+  ],
+  "wholeImages": 52,
+  "uniqueWholeImages": 2,
+  "method": "Both unique PNGs directly viewed at original resolution with view_image.",
+  "observations": "Complete perspective block and complete top-view block, with view cube/axes present. All before/after and other-pane byte identities are independently verified by runtime3 audit.",
+  "physicalDisplayScanoutProven": false,
+  "physicalGpuRemoval": false,
+  "desktopInputStarted": false,
+  "AFComplete": false
+}

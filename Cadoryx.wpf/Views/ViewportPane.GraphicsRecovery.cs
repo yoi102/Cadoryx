@@ -4,11 +4,13 @@ using Cadoryx.Rendering.Occt;
 using Cadoryx.ViewModels;
 using Cadoryx.wpf.Controls;
 using Cadoryx.Lang.Strings;
+using System.Globalization;
 
 namespace Cadoryx.wpf.Views;
 
 public partial class ViewportPane
 {
+    private CultureInfo GraphicsRecoveryCulture()=>CultureInfo.GetCultureInfo((graphicsStatusOwner??main)?.CurrentCultureLCID??CultureInfo.CurrentUICulture.LCID);
     private DispatcherOperation? pendingGraphicsRecovery;
     private DispatcherTimer? graphicsRecoveryTimer;
     private long graphicsAttachmentEpoch;
@@ -133,7 +135,7 @@ public partial class ViewportPane
     {
         if(!recoveringGraphicsHost||!ReferenceEquals(sender,graphicsRecoveryTimer)||
             graphicsRecoveryEpoch!=graphicsAttachmentEpoch||!ReferenceEquals(document,graphicsRecoveryDocument))return;
-        var failure=new TimeoutException(Strings.ResourceManager.GetString("ViewportRecoveryDeadline"));
+        var failure=new TimeoutException(Strings.ResourceManager.GetString("ViewportRecoveryDeadline",GraphicsRecoveryCulture()));
         document?.Report(failure);
         if(host is {} failedHost)FailGraphicsRecovery(failure,failedHost,failedHost.Viewport);
         else FinishGraphicsRecovery(false);
@@ -159,7 +161,7 @@ public partial class ViewportPane
     {
         if(main is null||!IsActive||!ReferenceEquals(main.ActiveDocument,document))return;
         graphicsStatusOwner=main;
-        graphicsRecoveryStatus=Strings.ResourceManager.GetString("ViewportRecovering");
+        graphicsRecoveryStatus=Strings.ResourceManager.GetString("ViewportRecovering",GraphicsRecoveryCulture());
         if(graphicsRecoveryStatus is not null)main.StatusText=graphicsRecoveryStatus;
     }
 
@@ -170,7 +172,8 @@ public partial class ViewportPane
         graphicsRecoveryTimer=null;recoveringGraphicsHost=false;
         if(graphicsStatusOwner is {} owner&&graphicsRecoveryStatus is not null&&owner.StatusText==graphicsRecoveryStatus)
             owner.StatusText=succeeded==false&&ReferenceEquals(owner.ActiveDocument,graphicsRecoveryDocument)
-                ?Strings.ResourceManager.GetString("ViewportRecoveryFailed")??Strings.Ready:Strings.Ready;
+                ?Strings.ResourceManager.GetString("ViewportRecoveryFailed",GraphicsRecoveryCulture())??(Strings.ResourceManager.GetString("Ready",GraphicsRecoveryCulture())??Strings.Ready)
+                :(Strings.ResourceManager.GetString("Ready",GraphicsRecoveryCulture())??Strings.Ready);
         graphicsRecoveryStatus=null;graphicsStatusOwner=null;graphicsRecoveryDocument=null;graphicsPrimaryFailure=null;
     }
 }

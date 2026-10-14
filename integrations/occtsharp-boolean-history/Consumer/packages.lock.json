@@ -4,55 +4,55 @@
     "net10.0": {
       "OcctSharp.Modeling": {
         "type": "Direct",
-        "requested": "[8.0.1-preview.85, 8.0.1-preview.85]",
-        "resolved": "8.0.1-preview.85",
-        "contentHash": "ldravbY9KjqXVgCDomBlsQBQXfOKYzDq1Sxvpm1vEU2LQNs3/MU3068pXMw5FHkzQPaZyLWTul57W6eI0HdZ2A==",
+        "requested": "[8.0.1-preview.87.cu1, 8.0.1-preview.87.cu1]",
+        "resolved": "8.0.1-preview.87.cu1",
+        "contentHash": "2eutHxq2bWFSri6Hv9i2mOhowZraCWFwNpUXNUDwfI1IvlW0ORxsUdp0g3dw3ekEEyAcPGEd8TTReduM26y7PQ==",
         "dependencies": {
-          "OcctSharp.Foundation": "[8.0.1-preview.85]",
-          "OcctSharp.Geometry": "[8.0.1-preview.85]",
-          "OcctSharp.MeshData": "[8.0.1-preview.85]",
-          "OcctSharp.Runtime": "[8.0.1-preview.85]"
+          "OcctSharp.Foundation": "[8.0.1-preview.87.cu1]",
+          "OcctSharp.Geometry": "[8.0.1-preview.87.cu1]",
+          "OcctSharp.MeshData": "[8.0.1-preview.87.cu1]",
+          "OcctSharp.Runtime": "[8.0.1-preview.87.cu1]"
         }
       },
       "OcctSharp.Native.win-x64": {
         "type": "Direct",
-        "requested": "[8.0.1-preview.85, 8.0.1-preview.85]",
-        "resolved": "8.0.1-preview.85",
-        "contentHash": "/wJ1dXOaq600VfsAsltyNVdjfyVKmaMCTc2BIhXXyH/cJrhVqwL0gcI1+sL0X8dpu92+weBQ2ZafqCu+xAiXcg=="
+        "requested": "[8.0.1-preview.87.cu1, 8.0.1-preview.87.cu1]",
+        "resolved": "8.0.1-preview.87.cu1",
+        "contentHash": "gkKApRPrXmUENbW62dJUOo1iRKMR78lMtSQtaDJfjGpf9P8tXfO42zU/fby1dUpFNRT/m+mBqoUsuZk7Ljaeow=="
       },
       "OcctSharp.Foundation": {
         "type": "Transitive",
-        "resolved": "8.0.1-preview.85",
-        "contentHash": "Lf7urSm2XXpjdTf6496hTcwDsVoQKzBIEuCvt7KNKahIxzqa7ug1Z/xJzJj19gRi3yfEUaVk5whjzylVMeGm6g==",
+        "resolved": "8.0.1-preview.87.cu1",
+        "contentHash": "XUzr6oOVcTrRZOq3XVLc7jA2dT1Ed6TeDWTL2Xs2By3DOdIBNKtHbg9fmfUooKvdquai0CSkTDl7OLWiTwqvhQ==",
         "dependencies": {
-          "OcctSharp.Runtime": "[8.0.1-preview.85]"
+          "OcctSharp.Runtime": "[8.0.1-preview.87.cu1]"
         }
       },
       "OcctSharp.Geometry": {
         "type": "Transitive",
-        "resolved": "8.0.1-preview.85",
-        "contentHash": "s8V+BNwu2pSh/LrFPO5wcJq8F2pfwzS8N7bHWenLToKmqV8uHwkvzrzncffvfQZFxfqlcpJ9u6t34DO7AecDrg==",
+        "resolved": "8.0.1-preview.87.cu1",
+        "contentHash": "lOeEnKya0vjQidJGvJkITIjJ5KHR5Jnngf7sZ8PsRP3THes3TeuW64ra3gRniFzym1zV+8AqglOfAxiNx0VyZQ==",
         "dependencies": {
-          "OcctSharp.Foundation": "[8.0.1-preview.85]",
-          "OcctSharp.Runtime": "[8.0.1-preview.85]"
+          "OcctSharp.Foundation": "[8.0.1-preview.87.cu1]",
+          "OcctSharp.Runtime": "[8.0.1-preview.87.cu1]"
         }
       },
       "OcctSharp.MeshData": {
         "type": "Transitive",
-        "resolved": "8.0.1-preview.85",
-        "contentHash": "mtPBjhYfDk50DpJuJ4yt1xlAvY67CBCPn4Zvnj03Fzj6/qarjXFPA146hDCpUVYBl7hAdrJCv9vlkWZsf402Mw==",
+        "resolved": "8.0.1-preview.87.cu1",
+        "contentHash": "40jLPmVNVaJ4Pgx1GBRKctx0VZE2q3nP40ic6iv9jLf/VS+70NnoIMvFZUjXfcjOPWdAaTohQamnxMTOKLUAkQ==",
         "dependencies": {
-          "OcctSharp.Foundation": "[8.0.1-preview.85]",
-          "OcctSharp.Geometry": "[8.0.1-preview.85]",
-          "OcctSharp.Runtime": "[8.0.1-preview.85]"
+          "OcctSharp.Foundation": "[8.0.1-preview.87.cu1]",
+          "OcctSharp.Geometry": "[8.0.1-preview.87.cu1]",
+          "OcctSharp.Runtime": "[8.0.1-preview.87.cu1]"
         }
       },
       "OcctSharp.Runtime": {
         "type": "Transitive",
-        "resolved": "8.0.1-preview.85",
-        "contentHash": "hmTPhHP2XWm65vKzf9IRB1TfIuk6HiB/iYIpiOWTqNhwMiycs66GEpVtbnNDG1PS0cAsqYoArJm+RX51ACOrOA==",
+        "resolved": "8.0.1-preview.87.cu1",
+        "contentHash": "QQwYe2E3DhPVDZETwu0MTsgV8qKEFdvCDoDojeC+pV2wegCIY8+A9bvcs1Pjh9MAV3NwhtMxIpVnofQi4mHaGw==",
         "dependencies": {
-          "OcctSharp.Native.win-x64": "[8.0.1-preview.85]"
+          "OcctSharp.Native.win-x64": "[8.0.1-preview.87.cu1]"
         }
       }
     },

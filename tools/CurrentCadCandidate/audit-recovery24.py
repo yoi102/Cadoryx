@@ -9,8 +9,9 @@ spec = importlib.util.spec_from_file_location('recovery_current', Path(__file__)
 current = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(current)
 read, sha, ref, a = current.read, current.sha, current.ref, current.a
-app, full_proofs, fixture, fixture_path, prep_path = current.accepted_app('recovery24')
-iteration = int(sys.argv[1]) if len(sys.argv) == 2 else 1
+ui_culture_revision = len(sys.argv) == 3 and sys.argv[2] == '--ui-culture'
+app, full_proofs, fixture, fixture_path, prep_path = current.accepted_app('recovery24', ui_culture_revision)
+iteration = int(sys.argv[1]) if len(sys.argv) >= 2 else 1
 assert 1 <= iteration <= 100
 runtime = f'runtime-{iteration}'
 draft = current.DRAFT / 'recovery24'
@@ -28,7 +29,7 @@ result = read(result_path)
 assert result['state'] == 'PASS_OWNED_WPF_AUTO_RECOVERY24_PENDING_INDEPENDENT_AUDIT'
 assert not result['desktopInputStarted'] and not result['physicalGpuRemoval']
 assert result['actualAbsentOrInvalidContext'] == result['mainShellStatusBar'] == 'NOT_RUN'
-expected_native = {row['name']: row['sha256'] for row in proof['native62']}
+expected_native = {row['name']: row['sha256'] for row in app['native']}
 binding_path = draft / (runtime + '-loaded-native.json')
 for observed in (result['native'], read(binding_path)['native']):
     assert len(observed) == 62 and {row['name']: row['sha256'] for row in observed} == expected_native

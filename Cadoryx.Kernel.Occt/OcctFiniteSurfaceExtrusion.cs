@@ -40,9 +40,9 @@ public sealed partial class OcctGeometryKernel:IFiniteSurfaceExtrusionResolver
             using var actual=OcctGeometryBridge.ReadShape(result,assets);using var valid=recipe.Options.Operation==ExtrusionOperation.NewBody?
                 CopyFiniteSurfaceMaterial(actual,token):CopyOffsetSolid(actual,token);
             using var intersection=expected.Common(actual);
-            double expectedVolume=AuthoringMeasure(expected,InspectionPropertyKind.Volume),actualVolume=AuthoringMeasure(actual,InspectionPropertyKind.Volume);
+            double expectedVolume=FiniteSurfaceMeasure(expected,InspectionPropertyKind.Volume),actualVolume=FiniteSurfaceMeasure(actual,InspectionPropertyKind.Volume);
             double tolerance=Math.Max(1e-6,expectedVolume*1e-9);
-            if(Math.Abs(actualVolume-expectedVolume)>tolerance||Math.Abs(AuthoringMeasure(intersection,InspectionPropertyKind.Volume)-expectedVolume)>tolerance||
+            if(Math.Abs(actualVolume-expectedVolume)>tolerance||Math.Abs(FiniteSurfaceMeasure(intersection,InspectionPropertyKind.Volume)-expectedVolume)>tolerance||
                 expected.GetTopologySummary().UniqueCounts!=actual.GetTopologySummary().UniqueCounts)
                 throw new CadValidationException("Stored finite surface result differs from its exact author replay.");
             return true;
@@ -72,7 +72,8 @@ public sealed partial class OcctGeometryKernel:IFiniteSurfaceExtrusionResolver
             var frame=new RigidTransform3d(recipe.Placement.Translation,NormalRotation(direction));
             // Extract every material face, including holes and recursive islands, from
             // the already validated exact profile builder. No boundary sampling is used.
-            using var shortPrism=Create(new ExtrudeRecipe(recipe.Profile,1,recipe.Placement),assets,token);
+            using var shortPrism=BuildCompleteFiniteSurfaceStartPrism(recipe.Profile,recipe.Placement,
+                (outer,holes)=>PlanarWireFaces.Create(outer,holes),token);
             var shortFaces=shortPrism.GetFaces();
             try
             {
@@ -80,8 +81,8 @@ public sealed partial class OcctGeometryKernel:IFiniteSurfaceExtrusionResolver
                 if(starts.Length==0)throw new CadValidationException("No complete exact starting profile was found.");
                 using var profile=starts.Length==1?starts[0].Clone():ShapeFactory.CreateCompound(starts);
                 double area=FiniteSurfaceArea(profile);
-                if(Math.Abs(area-AuthoringMeasure(shortPrism,InspectionPropertyKind.Volume))>Math.Max(1e-7,area*1e-9))
-                    throw new CadValidationException("Starting material faces do not account for the complete exact unit prism, including every hole and island.");
+                if(Math.Abs(area-FiniteSurfaceMeasure(shortPrism,InspectionPropertyKind.Volume))>Math.Max(1e-7,area*1e-9))
+                    throw new CadValidationException($"Starting material faces do not account for the complete exact unit prism, including every hole and island: area={area:R}, volume={FiniteSurfaceMeasure(shortPrism,InspectionPropertyKind.Volume):R}, starts={starts.Length}.");
                 using var onSupport=profile.Common(support);
                 if(area<=1e-8||Math.Abs(FiniteSurfaceArea(onSupport)-area)>Math.Max(1e-7,area*1e-9))
                     throw new CadValidationException("The exact finite support does not cover the entire starting material profile.");
@@ -97,20 +98,26 @@ public sealed partial class OcctGeometryKernel:IFiniteSurfaceExtrusionResolver
                 }
                 else if(options.SurfaceBranch!=ExtrusionSurfaceBranch.Near)
                     throw new CadValidationException("A plane has exactly one directional branch; choose Near.");
+                // Keep the original finite face as author identity and coverage
+                // evidence; use only its private exact half-domain for construction.
+                using var effectiveStop=CopyFiniteSurfaceBranchDomain(stop,branch,
+                    options.SurfaceBranch??throw new CadValidationException("An explicit analytic branch is required."),token);
+                using var coverageSnapshot=RepairSnapshot.Create(stop);
+                using var coverageStop=coverageSnapshot.CopyShape();
                 token.ThrowIfCancellationRequested();
                 using var plan=LimitedFeaturePlan.Create(source,profile,support,new()
                 {
                     Limit=LocalFeatureLimit.Until,AddMaterial=options.Operation==ExtrusionOperation.Fuse,
                     Direction=new(direction.X,direction.Y,direction.Z)
-                },until:stop);
+                },until:effectiveStop);
                 using var built=plan.Build();
                 if(!built.Diagnostics.AlgorithmDone||!built.Diagnostics.ShapeIsValid)
                     throw new CadValidationException("Native finite surface extrusion failed: "+built.Diagnostics.Message);
                 using var result=CopyOffsetSolid(built.RequireShape(),token);
-                double before=AuthoringMeasure(source,InspectionPropertyKind.Volume),after=AuthoringMeasure(result,InspectionPropertyKind.Volume);
+                double before=FiniteSurfaceMeasure(source,InspectionPropertyKind.Volume),after=FiniteSurfaceMeasure(result,InspectionPropertyKind.Volume);
                 double volumeTolerance=Math.Max(1e-6,before*1e-9);
                 using var nested=source.Common(result);
-                if(Math.Abs(AuthoringMeasure(nested,InspectionPropertyKind.Volume)-Math.Min(before,after))>volumeTolerance||
+                if(Math.Abs(FiniteSurfaceMeasure(nested,InspectionPropertyKind.Volume)-Math.Min(before,after))>volumeTolerance||
                     (options.Operation==ExtrusionOperation.Fuse?after-before:before-after)<=volumeTolerance)
                     throw new CadValidationException("Finite surface extrusion did not change nested material in the authored operation.");
                 using var delta=options.Operation==ExtrusionOperation.Fuse?result.Cut(source):source.Cut(result);
@@ -118,7 +125,7 @@ public sealed partial class OcctGeometryKernel:IFiniteSurfaceExtrusionResolver
                 using var vector=GpVec.Create(direction.X*length,direction.Y*length,direction.Z*length);
                 using var envelope=profile.Extrude(vector);
                 using var outside=delta.Cut(envelope);
-                if(AuthoringMeasure(outside,InspectionPropertyKind.Volume)>volumeTolerance)
+                if(FiniteSurfaceMeasure(outside,InspectionPropertyKind.Volume)>volumeTolerance)
                     throw new CadValidationException("Native changed material outside the complete authored directional profile.");
                 using var completeStart=profile.Common(delta);
                 if(Math.Abs(FiniteSurfaceArea(completeStart)-area)>Math.Max(1e-7,area*1e-9))
@@ -127,16 +134,16 @@ public sealed partial class OcctGeometryKernel:IFiniteSurfaceExtrusionResolver
                 try
                 {
                     var sides=envelopeFaces.Where(f=>!FiniteSurfaceIsProfilePlane(f,frame,length)).ToArray();
-                    using var permitted=ShapeFactory.CreateCompound([..sides,stop]);
+                    Shape[] permitted=[..sides,coverageStop];
                     double capArea=0;
                     foreach(var face in deltaFaces)
                     {
                         token.ThrowIfCancellationRequested();double faceArea=FiniteSurfaceArea(face);
-                        using var onPermitted=face.Common(permitted);
                         double tolerance=Math.Max(1e-7,faceArea*1e-9);
-                        if(Math.Abs(FiniteSurfaceArea(onPermitted)-faceArea)>tolerance)
-                            throw new CadValidationException("A native boundary is neither an authored prism side/start nor completely covered by the original finite stop face.");
-                        using var cap=face.Common(stop);double covered=FiniteSurfaceArea(cap);
+                        double uncovered=FiniteSurfaceUncoveredBoundary(face,permitted,tolerance,token);
+                        if(uncovered>tolerance)
+                            throw new CadValidationException($"A native boundary is neither an authored prism side/start nor completely covered by the original finite stop face: area={faceArea:R}, uncovered={uncovered:R}, budget={tolerance:R}, surface={face.GetFaceSurfaceSnapshot().SurfaceType}.");
+                        using var cap=face.Common(coverageStop);double covered=FiniteSurfaceArea(cap);
                         if(covered<=tolerance)continue;
                         if(Math.Abs(covered-faceArea)>tolerance)
                             throw new CadValidationException("The original finite stop only partially covers a native terminal cap.");
@@ -156,7 +163,7 @@ public sealed partial class OcctGeometryKernel:IFiniteSurfaceExtrusionResolver
                 using(var check=RepairSnapshot.Create(stopSource))if(check.Fingerprint!=stopMap.Fingerprint)
                     throw new CadValidationException("Native surface extrusion changed its original finite stop representation.");
                 token.ThrowIfCancellationRequested();using var material=extractNewBody?CopyFiniteSurfaceMaterial(delta,token):null;
-                using var stored=OcctGeometryBridge.StoreShape(material??result,assets);
+                using var stored=OcctGeometryBridge.StoreShape(material??result,assets,adaptiveVolume:true);
                 return new(stored.Geometry,GeometryAssetLease.Acquire(stored.Geometry,assets),
                     [new("HISTORY.UNSUPPORTED","Limited prism aggregate argument history does not prove a complete original-to-final topology map; reselect final topology explicitly."),
                      new("STYLE.UNSUPPORTED","New surface extrusion faces have no proved per-face style correspondence.")]);
@@ -169,18 +176,30 @@ public sealed partial class OcctGeometryKernel:IFiniteSurfaceExtrusionResolver
     private static FiniteSurfaceBranchProof? FiniteSurfaceAnalyticBranch(Shape face,SurfaceGeometryType kind,Vector3d direction)
     {
         if(kind==SurfaceGeometryType.Plane)return null;
-        // Recognized OCCT analytic families use their canonical angular/axial
-        // parameters. These exact evaluations recover coefficients; bounds below
-        // certify the entire cap. They are not samples used to infer a surface type.
-        Vector3d Point(double u,double v){var p=face.EvaluateFaceDerivatives(u,v).Point;return new(p.X,p.Y,p.Z);}
-        var first=Point(0,0);var opposite=Point(Math.PI,0);var center=(first+opposite)*.5;
-        double radius=(first-center).Length;
+        // Recover the recognized analytic coefficients at an interior UV point.
+        // A finite half-face need not include u=0 or u=pi. Raw parametric
+        // derivatives avoid applying the selected face's reversed orientation.
+        var domain=face.GetFaceSurfaceSnapshot();
+        CadGuard.Finite(domain.FirstUParameter,domain.LastUParameter,
+            domain.FirstVParameter,domain.LastVParameter);
+        if(domain.LastUParameter-domain.FirstUParameter<=1e-8||
+            domain.LastVParameter-domain.FirstVParameter<=1e-8)
+            throw new CadValidationException("The analytic stop has a degenerate UV domain.");
+        var at=face.EvaluateFaceDerivatives(
+            domain.FirstUParameter+(domain.LastUParameter-domain.FirstUParameter)*.5,
+            domain.FirstVParameter+(domain.LastVParameter-domain.FirstVParameter)*.5);
+        var point=new Vector3d(at.Point.X,at.Point.Y,at.Point.Z);
+        var du=new Vector3d(at.UDerivative.X,at.UDerivative.Y,at.UDerivative.Z);
+        var dv=new Vector3d(at.VDerivative.X,at.VDerivative.Y,at.VDerivative.Z);
+        double radius=kind==SurfaceGeometryType.Sphere?dv.Length:du.Length;
         if(!double.IsFinite(radius)||radius<=1e-6)throw new CadValidationException("The analytic stop has a degenerate radius.");
+        var radial=du.Cross(dv);
+        if(radial.Length<=1e-8)throw new CadValidationException("The analytic stop has degenerate derivatives.");
+        var center=point-radial.Normalized()*radius;
         var projection=direction;
         if(kind==SurfaceGeometryType.Cylinder)
         {
-            var p=face.EvaluateFaceDerivatives(0,0).VDerivative;
-            var axis=new Vector3d(p.X,p.Y,p.Z).Normalized();
+            var axis=dv.Normalized();
             projection=direction-axis*axis.Dot(direction);
             if(projection.Length<=1e-8)throw new CadValidationException("The extrusion direction is parallel to the cylindrical stop axis.");
             projection=projection.Normalized();
@@ -193,10 +212,16 @@ public sealed partial class OcctGeometryKernel:IFiniteSurfaceExtrusionResolver
         var bounds=local.GetBoundingBox();
         return new(new(bounds.Minimum.X,bounds.Minimum.Y,bounds.Minimum.Z),new(bounds.Maximum.X,bounds.Maximum.Y,bounds.Maximum.Z));
     }
+    private static double FiniteSurfaceMeasure(Shape shape,InspectionPropertyKind property)
+    {
+        var parts=shape.GetSubShapes(property==InspectionPropertyKind.Area?ShapeKind.Face:ShapeKind.Solid);
+        try{return parts.Sum(p=>Math.Abs(p.InspectAdaptiveProperties(property,1e-11).Properties.Mass));}
+        finally{foreach(var part in parts)part.Dispose();}
+    }
     private static double FiniteSurfaceArea(Shape shape)
     {
         var faces=shape.GetFaces();
-        try{return faces.Sum(f=>AuthoringMeasure(f,InspectionPropertyKind.Area));}
+        try{return faces.Sum(f=>FiniteSurfaceMeasure(f,InspectionPropertyKind.Area));}
         finally{foreach(var face in faces)face.Dispose();}
     }
     private static bool FiniteSurfaceIsProfilePlane(Shape face,RigidTransform3d frame,double z)

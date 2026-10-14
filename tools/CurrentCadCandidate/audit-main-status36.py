@@ -9,8 +9,9 @@ spec = importlib.util.spec_from_file_location('recovery_current', Path(__file__)
 current = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(current)
 read, sha, ref, a = current.read, current.sha, current.ref, current.a
-app, full_proofs, fixture, fixture_path, prep_path = current.accepted_app('main-status36')
-iteration = int(sys.argv[1]) if len(sys.argv) == 2 else 1
+ui_culture_revision = len(sys.argv) == 3 and sys.argv[2] == '--ui-culture'
+app, full_proofs, fixture, fixture_path, prep_path = current.accepted_app('main-status36', ui_culture_revision)
+iteration = int(sys.argv[1]) if len(sys.argv) >= 2 else 1
 assert 1 <= iteration <= 100
 runtime = f'runtime-{iteration}'
 draft = current.DRAFT / 'main-status36'

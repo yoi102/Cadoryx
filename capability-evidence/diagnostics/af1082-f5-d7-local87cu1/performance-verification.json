@@ -1,0 +1,152 @@
+{
+  "recordedAt": "2026-10-13T23:48:16.554282+00:00",
+  "state": "CURRENT_FINAL_UI_DIRECT_AND_PRODUCTION_CORRECTNESS_PASS_PERFORMANCE_AS_MEASURED",
+  "qualification": {
+    "path": "artifacts/af1082-f5-d7-ui-culture-1/followups-verification1.json",
+    "sha256": "6C4AF2F15245D85D110AED49F10E73DD7402843EA5EF1793246F2270DDB663FF"
+  },
+  "application": {
+    "path": "artifacts/af1082-f5-d7-ui-culture-1/application-verification2.json",
+    "sha256": "DD097B3B7C417135E64C4E7B1653E25D7CD2B81073091F747C7B39666C7724BE"
+  },
+  "originalPerformance": {
+    "path": "artifacts/af1082-f5-d7-local87cu1-1/performance-freeze.json",
+    "sha256": "1AF2AB47FD2446852A6E33851C57734420B8B6EC9C96A48D11805BD3CCB4CF6B"
+  },
+  "sourceInput": {
+    "path": "C:\\Users\\yoiri\\Downloads\\MiniPC3.step",
+    "sha256": "F3773A7F37BD0CB8E717E4BE6F1070A72E5C6E7B2F36F26F9501183DF8C4C68E"
+  },
+  "sourceCount": 1200,
+  "sourceOnlyProvenWpfCultureDiffers": true,
+  "directCorrectness": "PASS",
+  "directTarget6482Ms": "PASS",
+  "direct": [
+    {
+      "run": 1,
+      "firstCompleteSubmitMs": 4571.4236,
+      "firstVisibleSubmitMs": 988.4377,
+      "inputServiceP95Ms": 0.0642,
+      "targetMs": 6482,
+      "targetMet": true,
+      "cycles": 20,
+      "report": {
+        "path": "artifacts/af1082-f5-d7-direct-1/run-1/user-model-1-report.json",
+        "sha256": "60C747E226F6652B9C3F8716AE3156122D6250700BCAF738C9BF7B62B9B7BFD0"
+      },
+      "actualNative62": {
+        "path": "artifacts/af1082-f5-d7-direct-1/run-1/loaded-native.json",
+        "sha256": "C07301B6D51F36C295CC86C9A32F09B10989445012F56A85E4BA1CE91253BADB"
+      },
+      "result": {
+        "path": "artifacts/af1082-f5-d7-direct-1/run-1/result.txt",
+        "sha256": "15975BE275057126FA8D0B470865CBEB2F2B9D6CF91E618C2D06E7F4D45752C4"
+      },
+      "bindings": {
+        "path": "artifacts/af1082-f5-d7-direct-1/run-1/bindings.log",
+        "sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+      }
+    },
+    {
+      "run": 2,
+      "firstCompleteSubmitMs": 4605.6025,
+      "firstVisibleSubmitMs": 964.7718,
+      "inputServiceP95Ms": 0.0637,
+      "targetMs": 6482,
+      "targetMet": true,
+      "cycles": 20,
+      "report": {
+        "path": "artifacts/af1082-f5-d7-direct-1/run-2/user-model-1-report.json",
+        "sha256": "2CAA021C08762459BC045CB2A6CC48CD4DFBD99BE5682887D8E74105F30057B4"
+      },
+      "actualNative62": {
+        "path": "artifacts/af1082-f5-d7-direct-1/run-2/loaded-native.json",
+        "sha256": "76EC64EAAC90EF082C1FA28B59291AC315B6F7256C616EE5A3C7223B478FBEF8"
+      },
+      "result": {
+        "path": "artifacts/af1082-f5-d7-direct-1/run-2/result.txt",
+        "sha256": "15975BE275057126FA8D0B470865CBEB2F2B9D6CF91E618C2D06E7F4D45752C4"
+      },
+      "bindings": {
+        "path": "artifacts/af1082-f5-d7-direct-1/run-2/bindings.log",
+        "sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+      }
+    }
+  ],
+  "productionOpenCorrectness": "PASS",
+  "productionOpen": [
+    {
+      "run": 1,
+      "firstVisibleFromClickMs": 61658.1374,
+      "fullSceneFromClickMs": 65979.099,
+      "sceneCompleteMs": 5514.262,
+      "workerKernelImportMs": 58810.741,
+      "report": {
+        "path": "artifacts/af1082-f5-d7-production-open-1/run-1/report.json",
+        "sha256": "3DFC891E4E17C0D33A93B86182C319962DE8C1D9B5C18A09DF29AAE9ECE27A65"
+      },
+      "actualNative62": {
+        "path": "artifacts/af1082-f5-d7-production-open-1/run-1/loaded-native.json",
+        "sha256": "E80CE7000F725EEA622F4DCEAD791F9DED5C7065D26CC2097527E3559A8C424C"
+      },
+      "completeAcceptedPng": {
+        "path": "artifacts/af1082-f5-d7-production-open-1/run-1/full-scene.png",
+        "sha256": "2E8022953A2D1D2118E6FBC4DDC8A964D7EEC1ACA8CA6B2AF055131595E63852"
+      },
+      "result": {
+        "path": "artifacts/af1082-f5-d7-production-open-1/run-1/result.txt",
+        "sha256": "6922BD775067AF3A8E5FAD902617F8C6A60510E97884C7E0F0B72D78537379D5"
+      }
+    },
+    {
+      "run": 2,
+      "firstVisibleFromClickMs": 61619.7198,
+      "fullSceneFromClickMs": 65940.5609,
+      "sceneCompleteMs": 5475.132,
+      "workerKernelImportMs": 58575.8237,
+      "report": {
+        "path": "artifacts/af1082-f5-d7-production-open-1/run-2/report.json",
+        "sha256": "11C0B307DBB326091CCDBAC821CEE7E0EA9A82E27986E9A7290813C88D9F3CDD"
+      },
+      "actualNative62": {
+        "path": "artifacts/af1082-f5-d7-production-open-1/run-2/loaded-native.json",
+        "sha256": "2E2B46649B4184244DCB9299DEC39C9E7282AFD6939FEE18FF0A505A971AFF10"
+      },
+      "completeAcceptedPng": {
+        "path": "artifacts/af1082-f5-d7-production-open-1/run-2/full-scene.png",
+        "sha256": "2E8022953A2D1D2118E6FBC4DDC8A964D7EEC1ACA8CA6B2AF055131595E63852"
+      },
+      "result": {
+        "path": "artifacts/af1082-f5-d7-production-open-1/run-2/result.txt",
+        "sha256": "6922BD775067AF3A8E5FAD902617F8C6A60510E97884C7E0F0B72D78537379D5"
+      }
+    }
+  ],
+  "actualFourProcessIds": [
+    14384,
+    30184,
+    28836,
+    50816
+  ],
+  "directSummary": {
+    "path": "artifacts/af1082-f5-d7-direct-1/summary.json",
+    "sha256": "164E8BD91AA4D83C40D17A4701975F89E2A7605CAF77A3FB688243960347D15E"
+  },
+  "openSummary": {
+    "path": "artifacts/af1082-f5-d7-production-open-1/summary.json",
+    "sha256": "EE9B4DD845CE9EA19EFA073F7572A3BE2F395845A7629304BB423F9E19517244"
+  },
+  "sdkCpuPause": {
+    "path": "artifacts/af1082-f5-d7-local87cu1-1/sdk-performance-pause.json",
+    "sha256": "D25D1789DFDCF7A130E5AD7D289E9676C75BA9E8F7C0D1166206FFBB36E072DB"
+  },
+  "wholePngReferenceUnchanged": true,
+  "cacheCondition": "Fresh application processes; OS file cache, antivirus and background load not controlled",
+  "physicalDisplayFpsOrLatency": "NOT_MEASURED",
+  "originalSTEP24": "DEFERRED_FAILURES",
+  "materialAndD6WindowAcceptance": "SEPARATE_PENDING",
+  "providerAllPassed": false,
+  "A5": "NOT_FULLY_ACCEPTED",
+  "AFComplete": false,
+  "G": "USER_DEFERRED"
+}

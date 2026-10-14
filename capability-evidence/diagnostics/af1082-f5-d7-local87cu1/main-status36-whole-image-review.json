@@ -1,0 +1,445 @@
+{
+  "recordedAt": "2026-10-13T23:28:35.052023+00:00",
+  "state": "CURRENT_UI_CULTURE_MAIN36_ALL42_UNIQUE_FULL_FRAMES_DIRECTLY_REVIEWED",
+  "audit": {
+    "path": "artifacts/af1082-f5-d7-local87cu1-1/main-status36/runtime-5-verification.json",
+    "sha256": "87D8D6436AD20327CC32FBE514FF19C5C3B8105781A9D225DD51032C2EA48A07"
+  },
+  "application": {
+    "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-ui-culture-1\\application-verification2.json",
+    "sha256": "DD097B3B7C417135E64C4E7B1653E25D7CD2B81073091F747C7B39666C7724BE"
+  },
+  "wholeImages": 144,
+  "uniqueWholeImages": 42,
+  "fullShells": 36,
+  "reviewedWholeImages": [
+    {
+      "case": "en-US-native-owner-disposed-cleanup-callback-fails-1",
+      "kind": "other-after",
+      "image": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\main-status36\\runtime-5\\en-US-native-owner-disposed-cleanup-callback-fails-1\\other-after.png",
+        "sha256": "030D4524496BA495E9F805FF8AED88A7AEF0B682470E461CF4F5AF9B3D61BE9A"
+      },
+      "width": 392,
+      "height": 411
+    },
+    {
+      "case": "en-US-native-owner-disposed-cleanup-callback-fails-1",
+      "kind": "before",
+      "image": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\main-status36\\runtime-5\\en-US-native-owner-disposed-cleanup-callback-fails-1\\before.png",
+        "sha256": "7455B9E5E8E968BFDCFFC8A4E26B3A03C0EC8A6E3A4F526D7AB8A41C65BACF54"
+      },
+      "width": 391,
+      "height": 411
+    },
+    {
+      "case": "en-US-native-presentation-loss-recover-0",
+      "kind": "complete-wpf-shell-final-status",
+      "image": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\main-status36\\runtime-5\\en-US-native-presentation-loss-recover-0\\main-shell.png",
+        "sha256": "AC808FB80A5A2F8EDE37D866DED28F3D366CA718E44DF73A7F3D9080D0E4EA0E"
+      },
+      "width": 1450,
+      "height": 900
+    },
+    {
+      "case": "en-US-native-presentation-loss-recover-1",
+      "kind": "complete-wpf-shell-final-status",
+      "image": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\main-status36\\runtime-5\\en-US-native-presentation-loss-recover-1\\main-shell.png",
+        "sha256": "DB8A23ACC90857AEFDBC9E61E22CA43A779C78BEE448AB35983CEB3B76D459ED"
+      },
+      "width": 1450,
+      "height": 900
+    },
+    {
+      "case": "en-US-native-presentation-loss-detach-before-dispatch-0",
+      "kind": "complete-wpf-shell-final-status",
+      "image": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\main-status36\\runtime-5\\en-US-native-presentation-loss-detach-before-dispatch-0\\main-shell.png",
+        "sha256": "4FF662B11E38714BC1B33DE8BD40A282A3381B523DEF9C43D2553514DBC451B0"
+      },
+      "width": 1450,
+      "height": 900
+    },
+    {
+      "case": "en-US-native-presentation-loss-detach-before-dispatch-1",
+      "kind": "complete-wpf-shell-final-status",
+      "image": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\main-status36\\runtime-5\\en-US-native-presentation-loss-detach-before-dispatch-1\\main-shell.png",
+        "sha256": "F514E00F96E6A452A8F5C5BB3FFB644D6907AD16D28176EAAB62FC82D9D31249"
+      },
+      "width": 1450,
+      "height": 900
+    },
+    {
+      "case": "en-US-native-presentation-loss-cleanup-callback-fails-0",
+      "kind": "complete-wpf-shell-final-status",
+      "image": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\main-status36\\runtime-5\\en-US-native-presentation-loss-cleanup-callback-fails-0\\main-shell.png",
+        "sha256": "BE6B32ACE37C89E8362725B0230992790F1BB5F03127B0AEB7072C2B9F87C257"
+      },
+      "width": 1450,
+      "height": 900
+    },
+    {
+      "case": "en-US-native-presentation-loss-cleanup-callback-fails-1",
+      "kind": "complete-wpf-shell-final-status",
+      "image": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\main-status36\\runtime-5\\en-US-native-presentation-loss-cleanup-callback-fails-1\\main-shell.png",
+        "sha256": "2D9808311FBCD917CA1D0FD5714862543B5D934CE7EF95FEBCA763138B4E0C82"
+      },
+      "width": 1450,
+      "height": 900
+    },
+    {
+      "case": "en-US-native-owner-disposed-recover-0",
+      "kind": "complete-wpf-shell-final-status",
+      "image": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\main-status36\\runtime-5\\en-US-native-owner-disposed-recover-0\\main-shell.png",
+        "sha256": "C205167DE61C0623843C149EEADCE55227266F3B22EA3A697BC3A9F2E758D95C"
+      },
+      "width": 1450,
+      "height": 900
+    },
+    {
+      "case": "en-US-native-owner-disposed-recover-1",
+      "kind": "complete-wpf-shell-final-status",
+      "image": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\main-status36\\runtime-5\\en-US-native-owner-disposed-recover-1\\main-shell.png",
+        "sha256": "06269DB8D9FCAD3D3E70C03AE52E1D157E7001C37D7C29B08DD7931816D86BFC"
+      },
+      "width": 1450,
+      "height": 900
+    },
+    {
+      "case": "en-US-native-owner-disposed-detach-before-dispatch-0",
+      "kind": "complete-wpf-shell-final-status",
+      "image": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\main-status36\\runtime-5\\en-US-native-owner-disposed-detach-before-dispatch-0\\main-shell.png",
+        "sha256": "F3C6B793EF776944779E4FC530C68470A72EFDEF5767E020C814CAEAB3EEFB22"
+      },
+      "width": 1450,
+      "height": 900
+    },
+    {
+      "case": "en-US-native-owner-disposed-detach-before-dispatch-1",
+      "kind": "complete-wpf-shell-final-status",
+      "image": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\main-status36\\runtime-5\\en-US-native-owner-disposed-detach-before-dispatch-1\\main-shell.png",
+        "sha256": "0C6881F0DEC881172C170F8BA50E27664527768DB7E9DC3AF20D8A1AC2EA631A"
+      },
+      "width": 1450,
+      "height": 900
+    },
+    {
+      "case": "en-US-native-owner-disposed-cleanup-callback-fails-0",
+      "kind": "complete-wpf-shell-final-status",
+      "image": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\main-status36\\runtime-5\\en-US-native-owner-disposed-cleanup-callback-fails-0\\main-shell.png",
+        "sha256": "4DA6D7F3C44AD24D271C555A84B48EF72DA72180D8C230E1480AEC6E38F4CB61"
+      },
+      "width": 1450,
+      "height": 900
+    },
+    {
+      "case": "en-US-native-owner-disposed-cleanup-callback-fails-1",
+      "kind": "complete-wpf-shell-final-status",
+      "image": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\main-status36\\runtime-5\\en-US-native-owner-disposed-cleanup-callback-fails-1\\main-shell.png",
+        "sha256": "63D8A88CB41810260565732C61C076FA2E1ABF6F591C1B9D7DE192EE09C418AF"
+      },
+      "width": 1450,
+      "height": 900
+    },
+    {
+      "case": "zh-CN-native-owner-disposed-cleanup-callback-fails-1",
+      "kind": "other-after",
+      "image": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\main-status36\\runtime-5\\zh-CN-native-owner-disposed-cleanup-callback-fails-1\\other-after.png",
+        "sha256": "782825F4FF504094BCAE2AA84D937510FF97F08782245923D76BDB318504D7BF"
+      },
+      "width": 392,
+      "height": 411
+    },
+    {
+      "case": "zh-CN-native-owner-disposed-cleanup-callback-fails-1",
+      "kind": "before",
+      "image": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\main-status36\\runtime-5\\zh-CN-native-owner-disposed-cleanup-callback-fails-1\\before.png",
+        "sha256": "19D2591DD5E44813073E2162474DB43D008DF248A12FFC2C0FF6F96557B6CD05"
+      },
+      "width": 391,
+      "height": 411
+    },
+    {
+      "case": "zh-CN-native-presentation-loss-recover-0",
+      "kind": "complete-wpf-shell-final-status",
+      "image": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\main-status36\\runtime-5\\zh-CN-native-presentation-loss-recover-0\\main-shell.png",
+        "sha256": "ADB5BAD47D6E7B69416E92754A0A0D2F8A4082DD317550A447617978C96A54F6"
+      },
+      "width": 1450,
+      "height": 900
+    },
+    {
+      "case": "zh-CN-native-presentation-loss-recover-1",
+      "kind": "complete-wpf-shell-final-status",
+      "image": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\main-status36\\runtime-5\\zh-CN-native-presentation-loss-recover-1\\main-shell.png",
+        "sha256": "F8182D5816CD011BECC12D86E24F66A195D156A87B286A166F3A6470A006A99C"
+      },
+      "width": 1450,
+      "height": 900
+    },
+    {
+      "case": "zh-CN-native-presentation-loss-detach-before-dispatch-0",
+      "kind": "complete-wpf-shell-final-status",
+      "image": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\main-status36\\runtime-5\\zh-CN-native-presentation-loss-detach-before-dispatch-0\\main-shell.png",
+        "sha256": "6A34779946E10E93FB18427845D03D62CC83EC1E7F02C8A01ACAEF37F769392C"
+      },
+      "width": 1450,
+      "height": 900
+    },
+    {
+      "case": "zh-CN-native-presentation-loss-detach-before-dispatch-1",
+      "kind": "complete-wpf-shell-final-status",
+      "image": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\main-status36\\runtime-5\\zh-CN-native-presentation-loss-detach-before-dispatch-1\\main-shell.png",
+        "sha256": "9AD196580FE641B403C362C2F910D35D81B3738BFBF7C99C84F35963DD2B316C"
+      },
+      "width": 1450,
+      "height": 900
+    },
+    {
+      "case": "zh-CN-native-presentation-loss-cleanup-callback-fails-0",
+      "kind": "complete-wpf-shell-final-status",
+      "image": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\main-status36\\runtime-5\\zh-CN-native-presentation-loss-cleanup-callback-fails-0\\main-shell.png",
+        "sha256": "6CA79BD820051AB2E946BA859F5EA1F78FFE38C686AA6413186C5A664EA33D43"
+      },
+      "width": 1450,
+      "height": 900
+    },
+    {
+      "case": "zh-CN-native-presentation-loss-cleanup-callback-fails-1",
+      "kind": "complete-wpf-shell-final-status",
+      "image": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\main-status36\\runtime-5\\zh-CN-native-presentation-loss-cleanup-callback-fails-1\\main-shell.png",
+        "sha256": "D726821D7AA3B323C74C6407EA375819ADDB047E6B835AE92436A7204E353E43"
+      },
+      "width": 1450,
+      "height": 900
+    },
+    {
+      "case": "zh-CN-native-owner-disposed-recover-0",
+      "kind": "complete-wpf-shell-final-status",
+      "image": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\main-status36\\runtime-5\\zh-CN-native-owner-disposed-recover-0\\main-shell.png",
+        "sha256": "3A9871A6D00D6001E35F038D15A4E19F76AFAEEDE9CB7BACD6A263D4AE35D5AB"
+      },
+      "width": 1450,
+      "height": 900
+    },
+    {
+      "case": "zh-CN-native-owner-disposed-recover-1",
+      "kind": "complete-wpf-shell-final-status",
+      "image": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\main-status36\\runtime-5\\zh-CN-native-owner-disposed-recover-1\\main-shell.png",
+        "sha256": "33A1850EAF85B21735B1020DA96558F90014B7D7E9B15358ED285C5021A66DBA"
+      },
+      "width": 1450,
+      "height": 900
+    },
+    {
+      "case": "zh-CN-native-owner-disposed-detach-before-dispatch-0",
+      "kind": "complete-wpf-shell-final-status",
+      "image": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\main-status36\\runtime-5\\zh-CN-native-owner-disposed-detach-before-dispatch-0\\main-shell.png",
+        "sha256": "440EDA6EB145B098D8F6E95D420D3D3A1436DF9BA3538C9292670DF59F975A43"
+      },
+      "width": 1450,
+      "height": 900
+    },
+    {
+      "case": "zh-CN-native-owner-disposed-detach-before-dispatch-1",
+      "kind": "complete-wpf-shell-final-status",
+      "image": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\main-status36\\runtime-5\\zh-CN-native-owner-disposed-detach-before-dispatch-1\\main-shell.png",
+        "sha256": "C06C2AC1952B022B5D80940894F5D4057890F4AA60BAD1BAA0BF176DDD7DFDF2"
+      },
+      "width": 1450,
+      "height": 900
+    },
+    {
+      "case": "zh-CN-native-owner-disposed-cleanup-callback-fails-0",
+      "kind": "complete-wpf-shell-final-status",
+      "image": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\main-status36\\runtime-5\\zh-CN-native-owner-disposed-cleanup-callback-fails-0\\main-shell.png",
+        "sha256": "DA1C44B920B555E71E6D1E203C0FC7B35CF146027D06B40EA07EE02F1F097C3F"
+      },
+      "width": 1450,
+      "height": 900
+    },
+    {
+      "case": "zh-CN-native-owner-disposed-cleanup-callback-fails-1",
+      "kind": "complete-wpf-shell-final-status",
+      "image": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\main-status36\\runtime-5\\zh-CN-native-owner-disposed-cleanup-callback-fails-1\\main-shell.png",
+        "sha256": "AFB78AB80DE4C926437C5A38E6AC8A4E5F31BAC40B5FDE7508DF7B975AE7F439"
+      },
+      "width": 1450,
+      "height": 900
+    },
+    {
+      "case": "ja-JP-native-owner-disposed-cleanup-callback-fails-1",
+      "kind": "other-after",
+      "image": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\main-status36\\runtime-5\\ja-JP-native-owner-disposed-cleanup-callback-fails-1\\other-after.png",
+        "sha256": "91F379E8F6EF7D72070D788824B58E77279D95CEA69F633951C7570994967E35"
+      },
+      "width": 392,
+      "height": 411
+    },
+    {
+      "case": "ja-JP-native-owner-disposed-cleanup-callback-fails-1",
+      "kind": "before",
+      "image": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\main-status36\\runtime-5\\ja-JP-native-owner-disposed-cleanup-callback-fails-1\\before.png",
+        "sha256": "FFEE30BA258AC739DDAE7910994A1895FEEADD00E59AA429A8F7E66F6983AA1F"
+      },
+      "width": 391,
+      "height": 411
+    },
+    {
+      "case": "ja-JP-native-presentation-loss-recover-0",
+      "kind": "complete-wpf-shell-final-status",
+      "image": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\main-status36\\runtime-5\\ja-JP-native-presentation-loss-recover-0\\main-shell.png",
+        "sha256": "725B9AA573806057821BEBCDFD62E6005CCF245DAD9EF2C921867BC385D34CE7"
+      },
+      "width": 1450,
+      "height": 900
+    },
+    {
+      "case": "ja-JP-native-presentation-loss-recover-1",
+      "kind": "complete-wpf-shell-final-status",
+      "image": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\main-status36\\runtime-5\\ja-JP-native-presentation-loss-recover-1\\main-shell.png",
+        "sha256": "3A7C0B1EC6858D2C31A3D9C1A36ADCB471DA5633ACEF940EFA0A0C5C4E447C19"
+      },
+      "width": 1450,
+      "height": 900
+    },
+    {
+      "case": "ja-JP-native-presentation-loss-detach-before-dispatch-0",
+      "kind": "complete-wpf-shell-final-status",
+      "image": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\main-status36\\runtime-5\\ja-JP-native-presentation-loss-detach-before-dispatch-0\\main-shell.png",
+        "sha256": "106BCE31107AB317F0F10476428B1089C1D1E40F8FC8F180CE15800355EAF512"
+      },
+      "width": 1450,
+      "height": 900
+    },
+    {
+      "case": "ja-JP-native-presentation-loss-detach-before-dispatch-1",
+      "kind": "complete-wpf-shell-final-status",
+      "image": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\main-status36\\runtime-5\\ja-JP-native-presentation-loss-detach-before-dispatch-1\\main-shell.png",
+        "sha256": "D5BAC9F08A358D07BC21316DB45E5F5F9AF2FFA9A44DF48D19182EB54CAD9DAB"
+      },
+      "width": 1450,
+      "height": 900
+    },
+    {
+      "case": "ja-JP-native-presentation-loss-cleanup-callback-fails-0",
+      "kind": "complete-wpf-shell-final-status",
+      "image": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\main-status36\\runtime-5\\ja-JP-native-presentation-loss-cleanup-callback-fails-0\\main-shell.png",
+        "sha256": "BCE7FF6FE51D978F419EA303923C092324460B5009684332714FBBC2EBF15687"
+      },
+      "width": 1450,
+      "height": 900
+    },
+    {
+      "case": "ja-JP-native-presentation-loss-cleanup-callback-fails-1",
+      "kind": "complete-wpf-shell-final-status",
+      "image": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\main-status36\\runtime-5\\ja-JP-native-presentation-loss-cleanup-callback-fails-1\\main-shell.png",
+        "sha256": "7C694BFD2C0095E068B58F2CECE4FF5238FDC3B21B5944ED5FBBA95435D63D22"
+      },
+      "width": 1450,
+      "height": 900
+    },
+    {
+      "case": "ja-JP-native-owner-disposed-recover-0",
+      "kind": "complete-wpf-shell-final-status",
+      "image": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\main-status36\\runtime-5\\ja-JP-native-owner-disposed-recover-0\\main-shell.png",
+        "sha256": "A7C1B99DE20B68A4E1227A749C92E1919D95568706209D0D8CE2ED25F67280C5"
+      },
+      "width": 1450,
+      "height": 900
+    },
+    {
+      "case": "ja-JP-native-owner-disposed-recover-1",
+      "kind": "complete-wpf-shell-final-status",
+      "image": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\main-status36\\runtime-5\\ja-JP-native-owner-disposed-recover-1\\main-shell.png",
+        "sha256": "ED9C44355FE221188130C0A317316EAADFF7444BA24DD7EEF101F5B898773BE4"
+      },
+      "width": 1450,
+      "height": 900
+    },
+    {
+      "case": "ja-JP-native-owner-disposed-detach-before-dispatch-0",
+      "kind": "complete-wpf-shell-final-status",
+      "image": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\main-status36\\runtime-5\\ja-JP-native-owner-disposed-detach-before-dispatch-0\\main-shell.png",
+        "sha256": "28A0A0A1F69541717F4189D18EDC75159BBACA614C2CA280B86E9FA96B23F100"
+      },
+      "width": 1450,
+      "height": 900
+    },
+    {
+      "case": "ja-JP-native-owner-disposed-detach-before-dispatch-1",
+      "kind": "complete-wpf-shell-final-status",
+      "image": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\main-status36\\runtime-5\\ja-JP-native-owner-disposed-detach-before-dispatch-1\\main-shell.png",
+        "sha256": "FAA6910F58D9E4081A386BD66788B481E5DA2BDFF93333E68F142978A56ED5CA"
+      },
+      "width": 1450,
+      "height": 900
+    },
+    {
+      "case": "ja-JP-native-owner-disposed-cleanup-callback-fails-0",
+      "kind": "complete-wpf-shell-final-status",
+      "image": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\main-status36\\runtime-5\\ja-JP-native-owner-disposed-cleanup-callback-fails-0\\main-shell.png",
+        "sha256": "952ECBB049FB62C716A2C6F11BD0F0C94FE9B6F132A7A4B741A8B2FCD56C8E4E"
+      },
+      "width": 1450,
+      "height": 900
+    },
+    {
+      "case": "ja-JP-native-owner-disposed-cleanup-callback-fails-1",
+      "kind": "complete-wpf-shell-final-status",
+      "image": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\main-status36\\runtime-5\\ja-JP-native-owner-disposed-cleanup-callback-fails-1\\main-shell.png",
+        "sha256": "0CF6B4659AA2E8E35A104376F8B234AB97DDC89498EF78E80BCCD3568FBC3899"
+      },
+      "width": 1450,
+      "height": 900
+    }
+  ],
+  "method": "Each unique PNG directly viewed with view_image at original resolution, indices 0 through 41; no collage or thumbnail substitution.",
+  "observations": "All 36 full WPF shells show selected EN/CN/JP and correct localized Ready or View recovery failed text. Six native frames show complete primary perspective block and secondary top view in the three languages. HwndHost panes are blank in RenderTargetBitmap shell captures; native geometry and before/after identity are established separately by native screenshots and runtime assertions. Existing mixed-language grid labels and diagnostic messages remain outside this recovery-text fix.",
+  "physicalDisplayScanoutProven": false,
+  "shortRecoveryBeginningMessagePhysicalScanout": "NOT_CLAIMED",
+  "actualAbsentOrInvalidContext": "NOT_RUN",
+  "physicalGpuRemoval": false,
+  "desktopInputStarted": false,
+  "AFComplete": false
+}

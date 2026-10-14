@@ -1,5 +1,19 @@
 # 当前状态
 
+2026-10-14，status265：**D7已接入开发根，SDK切换为精确本地`8.0.1-preview.87.cu1` NuGet；A–F仍未全部完成。** [根接入审计](../capability-evidence/diagnostics/af1082-f5-d7-local87cu1/root-integration-verification.json)核对原1200输入加唯一已证恢复语言差异、38项D7/依赖变更（五源码、三配置、30锁文件），非OCCT依赖保持；locked restore、完整solution Release/Debug均0警告/错误，WPF/Tests各SDK13/native62磁盘一致。根Release原缺失分支36/36、零失败/跳过，真实testhost及62模块路径/哈希、全部原用例名称已取证。第一版logger参数失败和第二版虽36通过却未捕捉孙进程的记录保留；第三版只修启动器和进程树观察，未改测试。根普通构建嵌入当前Git身份，冻结程序集仍是原Git身份；不声称19生产DLL同字节或重新运行根完整7117。
+
+[当前MiniPC3独立性能审计](../capability-evidence/diagnostics/af1082-f5-d7-local87cu1/performance-verification.json)：两fresh直接完整提交4571.4236/4605.6025ms，均达到原6482ms，各20双视口周期与4964实例/1185几何通过；两个生产Open完整显示65979.099/65940.5609ms，内核导入58810.741/58575.8237ms。原788×411完整PNG逐字节相同，已直接查看当前完整图；CPU提交、导入及物理显示延迟分开，不宣称物理帧率/输入延迟达标。此证据绑定最终WPF-only差异载荷和原7117两配置，不替代普通根构建的桌面验收。
+
+原24恢复24/24、主壳36/36及全部不同整图直审保持；Bonsai跨文档8/8、工程图2/8后失败。D6首窗口本轮已启动但未完成六控制状态：实际关联弹窗可见，Computer Use索引/弹出层点击未命中预期控件，临时起始Y变为1；没有Confirm，实际Cancel后测试窗口消失，原observer FAIL及快照未改记录保留。不能以此通过D6原36窗口，下一步须修正实际输入目标及完成矩阵/材质窗口。已实查消费者空闲并明确返还现有SDK224原生及CPU时段，根须等新明确返还，不能复用旧204收据。精确原24严格STEP继续延期且未重试，正式已验子批仍A4/B17/C5/D5/E4/F5g，全部第4、5节范围保持，G及清理暂缓；以下status264及更早为历史。
+
+2026-10-14，status264：[原Bonsai两个场景实际终态](../capability-evidence/diagnostics/af1082-f5-d7-local87cu1/provider-verification.json)已独立核对：跨文档8/8通过，工程图完成2/8、第三轮缺成功创建收据而失败；双方关闭后资产0，原模型/提示/8192上下文/16工具轮/4分钟和实际native62保持。工程图仍待修复，未列入STEP延期或算AI全验通过。最终WPF原24恢复第3轮24/24通过、48保存/52整图/actual native62及两唯一完整图已直审，[当前整图记录](../capability-evidence/diagnostics/af1082-f5-d7-local87cu1/recovery24-ui-whole-image-review.json)绑定修正后UI。主壳36/144整图/42唯一全帧记录保持。
+
+[恢复后续资格](../tools/CurrentCadCandidate/require-followup-evidence.py)明确保留原失败队列，通过实际原24/36和两个模型终态接续独立窗口/性能验收，不改失败结果或原判定。最终UI的原MiniPC3两fresh进程、每次20双视口周期已启动；当前尚无完整性能终态。D7根合入仍待，开发根公开85及恢复文本修正；正式已验子批仍A4/B17/C5/D5/E4/F5g，全部A–F继续，精确原24严格STEP失败延期且仍记失败，G及清理暂缓。以下status263及更早为历史。
+
+2026-10-14，status263：A–F继续，原24严格STEP精确延期且仍记失败，G及清理暂缓。最终[主壳恢复36第5轮](../artifacts/af1082-f5-d7-local87cu1-1/main-status36/runtime-5-verification.json)36/36、实际native62、144完整图及最终零宿主/资产已审计；[42不同完整图逐一直接审阅](../capability-evidence/diagnostics/af1082-f5-d7-local87cu1/main-status36-whole-image-review.json)包括全部36主壳。已修复恢复文本跨Dispatcher文化和宿主退役后语言回退，显式使用状态所有者选定语言；[专项来源与边界](A5_MAIN_STATUS_RECOVERY_ACCEPTANCE.md)保留第2至4轮失败和夹具准备修正。修正候选及公开85开发根Release/Debug均build0。
+
+[WPF-only差异资格](../artifacts/af1082-f5-d7-ui-culture-1/application-verification2.json)仅替换WPF DLL/PDB，原18生产DLL/13SDK/62原生/worker/资源字节保持；原1200来源只改恢复文本，不声称重新运行完整7117。原两配置7117各7093通过/原24延期失败/零跳过仍有效于冻结原候选。修正前原24第2轮通过保持，最终WPF原24第3轮、D6原36窗口及MiniPC性能已绑定独立宿主/最终载荷，尚未运行。原Bonsai工程图本轮前2轮完成、第3轮缺成功创建收据失败，跨文档正在继续；保持原提示/8192/16工具轮/4分钟。根仍公开85、D7未合入，正式已验仍A4/B17/C5/D5/E4/F5g；以下status262及更早为历史。
+
 2026-10-14，status262：[最新F5+D7/精确87.cu1完整7117两配置](../capability-evidence/diagnostics/af1082-f5-d7-local87cu1/full-verification.json)各7093通过、精确原24延期失败、零跳过，无新增失败，完整名称/1200输入/程序集/actual native62已独立核对。现有SDK亦独立接收同一结果；224后续源码不混入冻结包，SDK明确暂停CPU编译/扫描直到根性能完成并返还，原收据哈希与当前性能冻结已关联。
 
 原24恢复第2轮已完整通过：真实原生丢失/所有者释放、24矩阵、30/900秒、48保存/52完整图、actual native62、文档/历史/资产条件核对；52图归并2个唯一全帧均已直审，物理GPU移除/实际无效上下文/屏幕扫描仍未证明。第1轮启动器预建目录违反程序“目录不存在”要求，保留失败，改为只建父目录；主壳36恰要求预建空目录，分别遵守原约定。C#/项目/props字节保持，README仅允许已知一行启动路径替换，反向替换的原哈希核对准确。

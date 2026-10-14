@@ -1,0 +1,6 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <Import Project="../../CadRecoveryWindowProbe/Directory.Build.props" />
+  <PropertyGroup><AssemblyName>MainStatusRecovery</AssemblyName></PropertyGroup>
+  <ItemGroup><Reference Include="$(CandidatePayload)/*.dll"><Private>false</Private></Reference></ItemGroup>
+  <Import Project="../../CadRecoveryWindowProbe/Directory.Build.targets" />
+</Project>

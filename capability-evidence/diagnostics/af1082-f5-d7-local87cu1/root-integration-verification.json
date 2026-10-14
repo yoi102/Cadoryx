@@ -1,0 +1,343 @@
+{
+  "recordedAt": "2026-10-14T00:05:10.767044+00:00",
+  "state": "D7_EXACT_LOCAL87CU1_ROOT_SOURCE_AND_BOTH_BUILD0_SDK13_NATIVE62_RELEASE_GUARD36_VERIFIED",
+  "source": {
+    "path": "artifacts/af1082-f5-d7-root-integration-1/source-receipt.json",
+    "sha256": "6754E1F79D077EB2854E27A8A64E5ED5A256980E49BF2A1E495055779887F0D2"
+  },
+  "build": {
+    "path": "artifacts/af1082-f5-d7-root-integration-1/build-exit1.json",
+    "sha256": "7BE02E40F6EBAD81B1A1A91DEB8EDF5EEA1BD12314E44C788E59956A4B17A991"
+  },
+  "source1200MatchedWithOnlyProvenWpfCultureDelta": true,
+  "payloads": [
+    {
+      "configuration": "Release",
+      "sdk13": [
+        {
+          "path": "OcctSharp.DataExchange.dll",
+          "sha256": "972FEBCC153549C5DA63AF6A058B54947BCA9A73A970C7D2B3320A13192EDA7E"
+        },
+        {
+          "path": "OcctSharp.dll",
+          "sha256": "2D3A8F81204C907D0FBD300AC0FF5E9003B419F0D177438C5319F1D0C47CA442"
+        },
+        {
+          "path": "OcctSharp.Documents.dll",
+          "sha256": "FDBE2C3A4ED4C79799A08A3AB1E8A237A4E6F68C9F433A1DD192A8C5AF918F3D"
+        },
+        {
+          "path": "OcctSharp.Draw.dll",
+          "sha256": "5BB55A3B0227A674E6C80A405E5A1FB56AB3586ECA551E1819FD693BEE38DD14"
+        },
+        {
+          "path": "OcctSharp.Foundation.dll",
+          "sha256": "0C14C560E392399264C145C5939600448EACF7CD59BF1FBAFBCE65DE78F21DF7"
+        },
+        {
+          "path": "OcctSharp.Geometry.dll",
+          "sha256": "91D8127C06F72856F276B57B5EF39BB4899ED650713C19CD69F6F77D4E6053F2"
+        },
+        {
+          "path": "OcctSharp.IVtk.dll",
+          "sha256": "7CFD8AFCC0846B84D215C1D1DEF94001FCBB4B5A99D729F28970BB2DCE4EA9E4"
+        },
+        {
+          "path": "OcctSharp.Mesh.dll",
+          "sha256": "4E23851D9A6A796AA707AB79AD92AE35CEE4BCD5FC98EBBBCC995E33D6C567B9"
+        },
+        {
+          "path": "OcctSharp.MeshData.dll",
+          "sha256": "B6E0304B1B8FF6F08723A0CA1E16BF72E416A3E400591FCD6A813D4CB94D2FD8"
+        },
+        {
+          "path": "OcctSharp.Modeling.dll",
+          "sha256": "4B5D69B88A1184E9A7145E6725C1757D932F3133CC5ABD59163CB6177291BDDD"
+        },
+        {
+          "path": "OcctSharp.Runtime.dll",
+          "sha256": "51594194D643B4E75963089C007001074AF94F4100B72F8F68608EE648F4FCDE"
+        },
+        {
+          "path": "OcctSharp.Visualization.dll",
+          "sha256": "2137A0F635650E5D5C0E505DAEBF043D7C42342A66C86520C3DFA877E8B0195B"
+        },
+        {
+          "path": "OcctSharp.Xde.dll",
+          "sha256": "7811D275B8EE803E69E6DAD1643F7440A20EAA747137753CCBC8ACE60622910A"
+        }
+      ],
+      "native62MatchedInWpfAndTests": true,
+      "production": [
+        {
+          "path": "Cadoryx.wpf/bin/Release/net10.0-windows/win-x64/Cadoryx.Agent.Codex.dll",
+          "sha256": "F7F65770B9FF7263C832FAA5512E9B376967904D1B28B9D340CB95A599FA4295"
+        },
+        {
+          "path": "Cadoryx.wpf/bin/Release/net10.0-windows/win-x64/Cadoryx.Agent.dll",
+          "sha256": "6D411E9D5AF35451C435FC1799072D6621A0D88FA024F65DAAE4FAF93EE202A2"
+        },
+        {
+          "path": "Cadoryx.wpf/bin/Release/net10.0-windows/win-x64/Cadoryx.AI.Contracts.dll",
+          "sha256": "729C8A9D077689958180E427C38B23C6ABE0B9BB0206980AE0A5A5DA4929950B"
+        },
+        {
+          "path": "Cadoryx.wpf/bin/Release/net10.0-windows/win-x64/Cadoryx.AI.LmStudio.dll",
+          "sha256": "52475906EFAD079752AA11639CBBCA016D0A5D85DFB6A5FEDA72E6DB1FD364ED"
+        },
+        {
+          "path": "Cadoryx.wpf/bin/Release/net10.0-windows/win-x64/Cadoryx.CommandLine.dll",
+          "sha256": "D639FF52AF583A47E753807039F0EAB07184AC98C4A3C1042F8C5BFF108789F5"
+        },
+        {
+          "path": "Cadoryx.wpf/bin/Release/net10.0-windows/win-x64/Cadoryx.Commands.dll",
+          "sha256": "CF16D5F792176C500FC47B76A3B7D3B05FDABC6D5CC3AB2687D6DE66B22360B3"
+        },
+        {
+          "path": "Cadoryx.wpf/bin/Release/net10.0-windows/win-x64/Cadoryx.Db.dll",
+          "sha256": "B54F26614CFAB8B899348B2335C5B2A88346A67613D08919F33736CF0D25DB90"
+        },
+        {
+          "path": "Cadoryx.wpf/bin/Release/net10.0-windows/win-x64/Cadoryx.Editor.dll",
+          "sha256": "8BFED13834B591A08D70CD1D9E49E9D59DD50C6D52E2ACAC1E7CC66FDB2F8A88"
+        },
+        {
+          "path": "Cadoryx.wpf/bin/Release/net10.0-windows/win-x64/Cadoryx.IO.dll",
+          "sha256": "0C2790AC34433CD5292C067531EC367F94D8ECE343866CFB9C22662319DF08D8"
+        },
+        {
+          "path": "Cadoryx.wpf/bin/Release/net10.0-windows/win-x64/Cadoryx.Kernel.Abstractions.dll",
+          "sha256": "8CDC595F542116187473B68DA4D90AA3FDE464FC321ECDEE651231D5A6B9C9FA"
+        },
+        {
+          "path": "Cadoryx.wpf/bin/Release/net10.0-windows/win-x64/Cadoryx.Kernel.Occt.dll",
+          "sha256": "82AAF018F53B5D8C1D7619942F20326C3A2DDDD78D1FAC7C7C58EEA44E9AF776"
+        },
+        {
+          "path": "Cadoryx.wpf/bin/Release/net10.0-windows/win-x64/Cadoryx.Lang.dll",
+          "sha256": "8EAA65595FFA02289F5A727DC8364F51B0A2466F243E4A84A0BF3411CC398A07"
+        },
+        {
+          "path": "Cadoryx.wpf/bin/Release/net10.0-windows/win-x64/Cadoryx.Rendering.dll",
+          "sha256": "76D6CD3E7C293D69F220D20B9F9214E10F9E2E6271C4E2A098605B8640421B10"
+        },
+        {
+          "path": "Cadoryx.wpf/bin/Release/net10.0-windows/win-x64/Cadoryx.Rendering.Occt.dll",
+          "sha256": "EA02AD53F8C5C7395FE37430CC2328C53C8058D40341825B769EC47DBFA05C9B"
+        },
+        {
+          "path": "Cadoryx.wpf/bin/Release/net10.0-windows/win-x64/Cadoryx.Sketching.dll",
+          "sha256": "C7A2F2D2E2F6EF5E0D2B80043B0EC85131BCA34279BE4BC32BBF1CAA36F93976"
+        },
+        {
+          "path": "Cadoryx.wpf/bin/Release/net10.0-windows/win-x64/Cadoryx.ViewModels.dll",
+          "sha256": "4D8377AEE227E9E03B8D0D40BF94DBD3B34F5DDFBF165E6CC098870578A47DA8"
+        },
+        {
+          "path": "Cadoryx.wpf/bin/Release/net10.0-windows/win-x64/Cadoryx.ViewModels.Services.dll",
+          "sha256": "8307AE87122652076EC3170717D5A501CC86973BAF3E60206AE5E39A5B64671E"
+        },
+        {
+          "path": "Cadoryx.wpf/bin/Release/net10.0-windows/win-x64/Cadoryx.wpf.Controls.dll",
+          "sha256": "4AE1BD42144B59A6127242D583F4003513F08BF8C2D502D97F97726CC8D44182"
+        },
+        {
+          "path": "Cadoryx.wpf/bin/Release/net10.0-windows/win-x64/Cadoryx.wpf.dll",
+          "sha256": "1E6D429D9A24A36BBFAD66F44B04BA06B8ED8D53BCEC10FC4876C7787F23DBFC"
+        }
+      ],
+      "tests": {
+        "path": "Cadoryx.Tests/bin/Release/net10.0/Cadoryx.Tests.dll",
+        "sha256": "C4607645A3DA905F43D741C30C91C19CAEDFCBB8ABB97DF68A6950DA1A23BA42"
+      },
+      "exactFrozenProductionDllBytesMatched": false
+    },
+    {
+      "configuration": "Debug",
+      "sdk13": [
+        {
+          "path": "OcctSharp.DataExchange.dll",
+          "sha256": "972FEBCC153549C5DA63AF6A058B54947BCA9A73A970C7D2B3320A13192EDA7E"
+        },
+        {
+          "path": "OcctSharp.dll",
+          "sha256": "2D3A8F81204C907D0FBD300AC0FF5E9003B419F0D177438C5319F1D0C47CA442"
+        },
+        {
+          "path": "OcctSharp.Documents.dll",
+          "sha256": "FDBE2C3A4ED4C79799A08A3AB1E8A237A4E6F68C9F433A1DD192A8C5AF918F3D"
+        },
+        {
+          "path": "OcctSharp.Draw.dll",
+          "sha256": "5BB55A3B0227A674E6C80A405E5A1FB56AB3586ECA551E1819FD693BEE38DD14"
+        },
+        {
+          "path": "OcctSharp.Foundation.dll",
+          "sha256": "0C14C560E392399264C145C5939600448EACF7CD59BF1FBAFBCE65DE78F21DF7"
+        },
+        {
+          "path": "OcctSharp.Geometry.dll",
+          "sha256": "91D8127C06F72856F276B57B5EF39BB4899ED650713C19CD69F6F77D4E6053F2"
+        },
+        {
+          "path": "OcctSharp.IVtk.dll",
+          "sha256": "7CFD8AFCC0846B84D215C1D1DEF94001FCBB4B5A99D729F28970BB2DCE4EA9E4"
+        },
+        {
+          "path": "OcctSharp.Mesh.dll",
+          "sha256": "4E23851D9A6A796AA707AB79AD92AE35CEE4BCD5FC98EBBBCC995E33D6C567B9"
+        },
+        {
+          "path": "OcctSharp.MeshData.dll",
+          "sha256": "B6E0304B1B8FF6F08723A0CA1E16BF72E416A3E400591FCD6A813D4CB94D2FD8"
+        },
+        {
+          "path": "OcctSharp.Modeling.dll",
+          "sha256": "4B5D69B88A1184E9A7145E6725C1757D932F3133CC5ABD59163CB6177291BDDD"
+        },
+        {
+          "path": "OcctSharp.Runtime.dll",
+          "sha256": "51594194D643B4E75963089C007001074AF94F4100B72F8F68608EE648F4FCDE"
+        },
+        {
+          "path": "OcctSharp.Visualization.dll",
+          "sha256": "2137A0F635650E5D5C0E505DAEBF043D7C42342A66C86520C3DFA877E8B0195B"
+        },
+        {
+          "path": "OcctSharp.Xde.dll",
+          "sha256": "7811D275B8EE803E69E6DAD1643F7440A20EAA747137753CCBC8ACE60622910A"
+        }
+      ],
+      "native62MatchedInWpfAndTests": true,
+      "production": [
+        {
+          "path": "Cadoryx.wpf/bin/Debug/net10.0-windows/win-x64/Cadoryx.Agent.Codex.dll",
+          "sha256": "817C95FB25BD352ED0E07AA59A36B4B70669E9CDD7EB5FCE5BD3F2D8DC75ABC9"
+        },
+        {
+          "path": "Cadoryx.wpf/bin/Debug/net10.0-windows/win-x64/Cadoryx.Agent.dll",
+          "sha256": "43A0E4A0308405659F5E9A048A1A5FA7126EBBCEBE6F0D42C092EE40424715A5"
+        },
+        {
+          "path": "Cadoryx.wpf/bin/Debug/net10.0-windows/win-x64/Cadoryx.AI.Contracts.dll",
+          "sha256": "874A67DF38AE6023CD48500C08574671849F37D7FBF56D4A2128D6A24199300F"
+        },
+        {
+          "path": "Cadoryx.wpf/bin/Debug/net10.0-windows/win-x64/Cadoryx.AI.LmStudio.dll",
+          "sha256": "20A4B5A9436861E37A8C0241C44E1D341EBBCAAF25A290215A1C74B5675BE534"
+        },
+        {
+          "path": "Cadoryx.wpf/bin/Debug/net10.0-windows/win-x64/Cadoryx.CommandLine.dll",
+          "sha256": "ED44CD8859438E2C18568B2173BE9F070655B3E58425754444132F61AF21EA89"
+        },
+        {
+          "path": "Cadoryx.wpf/bin/Debug/net10.0-windows/win-x64/Cadoryx.Commands.dll",
+          "sha256": "F31F113478635EBBC02E846396F4A06EE8D30D9006F6611461DD334ECF60B3D3"
+        },
+        {
+          "path": "Cadoryx.wpf/bin/Debug/net10.0-windows/win-x64/Cadoryx.Db.dll",
+          "sha256": "6F4899E6AEE40BA46B79955E0C891B457BD32DB0F2D209B2152805BD075B79F3"
+        },
+        {
+          "path": "Cadoryx.wpf/bin/Debug/net10.0-windows/win-x64/Cadoryx.Editor.dll",
+          "sha256": "417C3FBDD749A4676DFC90750D4B555321C58FC26A6FDAFCCD2A8D1DC8CF791B"
+        },
+        {
+          "path": "Cadoryx.wpf/bin/Debug/net10.0-windows/win-x64/Cadoryx.IO.dll",
+          "sha256": "9D7DFB3012EE58CEB4EF28FD3748BE6D9B4434044F23ABDF1A384BE67CB1B59D"
+        },
+        {
+          "path": "Cadoryx.wpf/bin/Debug/net10.0-windows/win-x64/Cadoryx.Kernel.Abstractions.dll",
+          "sha256": "F3BB33E3BE6C942DC10E63D79D263F3BCBA8F1F2B345A9EE9EE2E161851729E9"
+        },
+        {
+          "path": "Cadoryx.wpf/bin/Debug/net10.0-windows/win-x64/Cadoryx.Kernel.Occt.dll",
+          "sha256": "4C7CD0F03A49815D16C59B3063C5C83DD3EAE712A4E431E046B716C10C7CBA7F"
+        },
+        {
+          "path": "Cadoryx.wpf/bin/Debug/net10.0-windows/win-x64/Cadoryx.Lang.dll",
+          "sha256": "75E9ACEE6202EAEA90FEAE34D97472C7F1755D284FB74FE94DF52438DF1B402D"
+        },
+        {
+          "path": "Cadoryx.wpf/bin/Debug/net10.0-windows/win-x64/Cadoryx.Rendering.dll",
+          "sha256": "21BA3D8FEF6845B4015727E91CA8B687E428E58126363DA9859790BD2EC28E3D"
+        },
+        {
+          "path": "Cadoryx.wpf/bin/Debug/net10.0-windows/win-x64/Cadoryx.Rendering.Occt.dll",
+          "sha256": "0BAE64DD1DA04ACDDC1880CA4CFCD5000C5C6429AEF22C9743A8DF66303E084F"
+        },
+        {
+          "path": "Cadoryx.wpf/bin/Debug/net10.0-windows/win-x64/Cadoryx.Sketching.dll",
+          "sha256": "9BDB3C89090EA97AE198355A02A6DB45D6891D0FA7C228485610616DB41ED2B0"
+        },
+        {
+          "path": "Cadoryx.wpf/bin/Debug/net10.0-windows/win-x64/Cadoryx.ViewModels.dll",
+          "sha256": "D4208A05B7878C401A0DA36BD70DAB7553A95F33D385AAA9650AB1390ACCA2DB"
+        },
+        {
+          "path": "Cadoryx.wpf/bin/Debug/net10.0-windows/win-x64/Cadoryx.ViewModels.Services.dll",
+          "sha256": "F657768A77E46529F9A1479ED4844FF3055DAA2B3FA590B8C79BF778C70F2DF7"
+        },
+        {
+          "path": "Cadoryx.wpf/bin/Debug/net10.0-windows/win-x64/Cadoryx.wpf.Controls.dll",
+          "sha256": "A045CB4641BB765E986B4D15B0449437AE72C82F378ABBD27FC40C76C66E066A"
+        },
+        {
+          "path": "Cadoryx.wpf/bin/Debug/net10.0-windows/win-x64/Cadoryx.wpf.dll",
+          "sha256": "EC3ED2E645CD412FCB21548EF72E48B6B427828BBB94489A48028FC435C30996"
+        }
+      ],
+      "tests": {
+        "path": "Cadoryx.Tests/bin/Debug/net10.0/Cadoryx.Tests.dll",
+        "sha256": "979F34C5398F16803E06592955624B42178394DBAF5F49BD6EC313FF80B455D3"
+      },
+      "exactFrozenProductionDllBytesMatched": false
+    }
+  ],
+  "originalReleaseGuard36": {
+    "trx": {
+      "path": "artifacts/af1082-f5-d7-root-integration-1/binding36-release-3/result.trx",
+      "sha256": "F20041FFACDD9386B8C29FE1576222B9CA38229B0B09841CB507CCA51C3F4E3F"
+    },
+    "terminal": {
+      "path": "artifacts/af1082-f5-d7-root-integration-1/binding36-release-3/exit.json",
+      "sha256": "E0F02D89709469EDEAE42DDDCC0DEADB15711B92F5CB7207361D378D2E783708"
+    },
+    "binding": {
+      "path": "artifacts/af1082-f5-d7-root-integration-1/binding36-release-3/loaded-native.json",
+      "sha256": "C9AC29956CD96D598FEE8CE6E19614E95E8B1523D111A7827EC2BB9A27A3B959"
+    },
+    "processTree": {
+      "path": "artifacts/af1082-f5-d7-root-integration-1/binding36-release-3/owned-process-tree.json",
+      "sha256": "615BBE014B6BA70014A06DCEED1673252D59F2025C43F2D710C1767F9362989F"
+    },
+    "passed": 36,
+    "failed": 0,
+    "skipped": 0,
+    "originalFull7117NamesRetained": true
+  },
+  "originalFrozenFullBoth7117": {
+    "path": "capability-evidence/diagnostics/af1082-f5-d7-local87cu1/full-verification.json",
+    "sha256": "24F11228795602C1096854152EED626806ACF49E36B8C7F879ED564B9432DCA0"
+  },
+  "rootBuildGitRevision": "e37abe6f788d6e8bcbc43ffb8f5331ecdd726ead",
+  "originalFrozenBuildGitRevision": "ecc13a4eb4453a7ab155258658bb504f3c845f63",
+  "rootAndFrozenProductionDllByteEquality": "NOT_CLAIMED; normal root builds embed the current Git revision, frozen assemblies embed the earlier revision; sources and SDK/native payloads verified separately.",
+  "rootFull7117Rerun": false,
+  "retainedFailedRunner1": {
+    "path": "artifacts/af1082-f5-d7-root-integration-1/binding36-release-1/exit.json",
+    "sha256": "EC62298CB9A5D56B317EAFDB25963F248DE48E7EB1D2C73D0100A6E9A46AB832"
+  },
+  "retainedUncapturedBindingRunner2": {
+    "path": "artifacts/af1082-f5-d7-root-integration-1/binding36-release-2/exit.json",
+    "sha256": "8108B0B6D6D28003E1D0E3BE3E262A8BC4CE745372A9C6D8F01F8BF46EF68057"
+  },
+  "rootProductionRuntimeBindingProven": "RELEASE_TESTHOST_NATIVE62_ONLY",
+  "D6AndMaterialDesktopAcceptance": false,
+  "providerAllPassed": false,
+  "STEP24": "USER_DEFERRED_FAILURES_NOT_RETRIED",
+  "publiclyPublished": false,
+  "AFComplete": false,
+  "G": "USER_DEFERRED",
+  "cleanup": false
+}

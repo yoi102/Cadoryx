@@ -24,3 +24,11 @@ if((Get-FileHash $taskAll.input.path).Hash -cne $taskAll.input.sha256 -or (Get-I
 if((Get-FileHash $taskAll.expectedImage.path).Hash -cne $taskAll.expectedImage.sha256 -or $taskAll.expectedImage.sha256 -cne '2E8022953A2D1D2118E6FBC4DDC8A964D7EEC1ACA8CA6B2AF055131595E63852'){throw 'Original full image reference differs'}
 if((Get-FileHash $taskAll.originalInstrumentedVerifier.path).Hash -cne $taskAll.originalInstrumentedVerifier.sha256){throw 'Original production verifier differs'}
 Write-Output 'Performance gate is independent: original24 STEP failures and model results remain unresolved unless their own receipts prove otherwise.'
+if($taskUseUiCulturePatch){
+ & 'C:/Users/yoiri/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe' -X utf8 (Join-Path $PSScriptRoot 'require-followup-evidence.py')
+ if($LASTEXITCODE -ne 0){throw 'Qualified final UI and actual resumed terminal followups required'}
+ $taskUiFollowers=Get-Content (Join-Path $taskRoot 'artifacts/af1082-f5-d7-ui-culture-1/followups-verification1.json') -Raw|ConvertFrom-Json -DateKind String
+ if($taskUiFollowers.originalPerformance.sha256 -cne (Get-FileHash (Join-Path $taskDraft 'performance-freeze.json')).Hash){throw 'UI qualification must inherit the exact original performance freeze covered by the SDK pause'}
+ $taskFreeze=$taskUiFollowers.performance
+ foreach($taskRow in $taskFreeze.payload){if((Get-FileHash (Join-Path $taskFreeze.candidate $taskRow.path)).Hash -cne $taskRow.sha256){throw 'Qualified final UI performance payload differs'}}
+}

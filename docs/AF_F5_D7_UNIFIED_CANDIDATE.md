@@ -1,5 +1,9 @@
 # 最新 F5 与 D7 统一验收候选
 
+2026-10-14，status265：D7及精确本地87.cu1已接入开发根。[根审计](../capability-evidence/diagnostics/af1082-f5-d7-local87cu1/root-integration-verification.json)验证1200原输入加唯一已证WPF恢复文化差异、locked restore/Release/Debug完整build0、SDK13/native62和根Release原拒绝36/36。原冻结7117两配置各7093通过/精确原24延期失败/零跳过保持；根普通构建带当前Git身份，不声称原生产DLL同字节或根7117已重跑。
+
+最终UI恢复24/24、主壳36/36及全部不同完整图直审通过。[MiniPC两fresh直接运行](../capability-evidence/diagnostics/af1082-f5-d7-local87cu1/performance-verification.json)各20双视口周期、完整提交4.571/4.606秒达到6482ms；两次Open完整显示65.98/65.94秒，完整参考PNG保持。[原Bonsai结果](../capability-evidence/diagnostics/af1082-f5-d7-local87cu1/provider-verification.json)跨文档8/8、工程图2/8后失败。D6首窗口未完成六状态，Cancel后FAIL记录保留；当前已交还SDK224 native/CPU时段，后续窗口/材质及全部A–F范围继续。原STEP24延期且未重试，G及清理暂缓。以下status262及更早为历史。
+
 2026-10-14，status262。开发根已合入F5对象身份反馈，仍消费公开Preview.85。
 D7尚未合入生产。原24严格STEP按精确名单延期且仍记失败，G和清理暂缓。
 

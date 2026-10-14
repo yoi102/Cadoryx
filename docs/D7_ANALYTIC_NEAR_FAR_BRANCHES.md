@@ -1,5 +1,7 @@
 # D7 解析有限曲面的完整近、远分支候选
 
+2026-10-14，status265：本候选已按[根接入审计](../capability-evidence/diagnostics/af1082-f5-d7-local87cu1/root-integration-verification.json)接入开发根，精确本地87.cu1 NuGet及30锁保持非OCCT依赖；1200原输入加唯一恢复语言差异、locked restore/两配置完整build0、SDK13/native62及根Release原缺失分支36/36已核对。原完整7117两配置和243矩阵属于此前冻结候选，根完整7117没有重跑。最终WPF恢复与MiniPC两次直接性能/两次Open已有专项证据；原D6实际窗口未通过、材质窗口仍待，不把根合入当作D批或A–F完成。以下“未合入”保留历史当时状态，以本条及STATUS为准。
+
 2026-10-14。A–F继续；原24严格STEP按精确名单延期，G和清理暂缓。
 生产仍为1082/公开Preview.85。本候选使用开发期允许的精确本地
 `8.0.1-preview.87.cu1` NuGet，尚未合入生产。
