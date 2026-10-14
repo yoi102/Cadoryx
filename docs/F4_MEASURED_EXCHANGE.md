@@ -55,6 +55,10 @@ WPF 冻结发布在 `artifacts/publish/f4-exchange-20261003-4`，CLI 在 `artifa
 
 ## 边界及继续工作
 
+2026-10-14下一批准备：[独立源消费者](../tools/ExchangeOccurrenceProbe/Program.cs)已以精确最终87包编译，13托管/62原生载荷逐项匹配，[冻结收据](../artifacts/f4-occurrence-external-1/preparation.json)明确为NOT_RUNTIME。源契约要求一个装配根、两个共享子装配出现、五个零件出现、实际复用分区2/3、六个源Box面及各一个真实dimension/tolerance/datum；PMI引用源文档中实际测得的x=0/x=2面标签。[FreeCAD观测器](../tools/ExchangeOccurrenceProbe/freecad_observe.py)记录实际object/link/group、global placement、每个对象自身Shape及ShapeAppearance，再写回并重读STEP；原始对象数不当实例数，复合体/叶体不重复累计，link的Shape坐标与global placement分列，不猜对应。
+
+[串行入口](../tools/ExchangeOccurrenceProbe/run.ps1)先要求第八候选完整两配置实际通过、原模型队列终态及当前原生消费者空闲，再分别执行Source/External/Returned；每轮新目录和退出记录保留失败。此时仅消费者编译、包字节核验、Python与PowerShell语法检查完成，三阶段均未运行，外部完整互操作未证明。最终87公开PMI快照已核对所有权：父绑定标签必须同文档，快照内辅助Shape须释放，标签Entry只在当前文档内有效；还缺从公开文档所有者读取“是否显式声明/每单位米数”的已验证路径，SDK会话按生成器补充或给出既有公开路径。PMI每项没有独立unit字段，STEP也没有被证明的notes专用开关，不将隐式mm或OCAF注释创建当作声明/交换成功。
+
 本地观测预算为 256 个体实例、4096 个出现节点及 250000 面。面积与体积按实例累计，不扣除重叠；混合体、片体、线框及网格不推断闭合实体体积。颜色集合相同不证明逐面分配相同。
 
 FreeCAD 这组外部回传使用 Part BRep 通道，会扁平化层级；没有证明名称、共享关系、逐面颜色或 PMI 保留。STL 明确按毫米解释，只核对三角形数及边界，面积为观测，未证明最大网格误差或闭合体积。边界、面积及体积一致不能代替完整几何等价或拓扑身份传递。
