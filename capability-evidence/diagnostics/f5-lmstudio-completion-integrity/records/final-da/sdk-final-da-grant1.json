@@ -1,0 +1,42 @@
+{
+  "D6Accepted": false,
+  "cleanup": false,
+  "drawingCurrent": "FAIL_2_OF_8_TOOL_ROUND_LIMIT",
+  "sdkMayStartNativeAndCpuBuilds": true,
+  "sdkThread": "01a0f7b3-ff5f-7cb0-bff9-a5caad1a49b0",
+  "rootMustWaitForSdkExplicitReturnBeforeNativeWindowOrPerformance": true,
+  "STEP24": "EXACT_ORIGINAL_FAILURES_USER_DEFERRED_NOT_RETRIED",
+  "workspaceCurrent": "NOT_RUN",
+  "actualNativeIdleConfirmed": true,
+  "acceptedFrozenPackageVersion": "8.0.1-preview.87.cu1",
+  "AFComplete": false,
+  "recordedAt": "2026-10-14T01:15:46.3483062+00:00",
+  "newPackageAccepted": false,
+  "frozenPackageMustRemainUnchanged": true,
+  "rootWillNotStartModelRuns": true,
+  "state": "ROOT_NATIVE_LANE_RETURNED_FOR_FINAL_DA_EXCLUSIVE_QUALIFICATION",
+  "G": "USER_DEFERRED",
+  "scope": "Final DA Preview87 ABI119 bridge134 qualification, dual447/2420 and cold builds,14 packages,45 package-only consumers and release-check; exclusive native/window and full CPU lane for several hours, explicit return required",
+  "proofs": [
+    {
+      "path": "artifacts/af1082-f5-d7-root-integration-1/sdk-explicit-return224-received1.json",
+      "sha256": "32B9D90F0B9C33B8A7413D73D5CD280FB4E39F2AFAC6CE4BBC8279B17B6DA08E"
+    },
+    {
+      "path": "artifacts/f5-lmstudio-completion-integrity-1/qualification4.json",
+      "sha256": "DCE5C93B93045F00D467D993FCD6EBF901502329A715744E9FB9D4461C5D2159"
+    },
+    {
+      "path": "capability-evidence/diagnostics/f5-lmstudio-completion-integrity/provider-drawing3-verification.json",
+      "sha256": "C4DA6A582C6946BB35425F3DBCA615F5178E4114DFCC19C15077F0BE781D2384"
+    },
+    {
+      "path": "artifacts/f5-lmstudio-completion-integrity-1/provider-drawing-3-exit.json",
+      "sha256": "C28668DB6B37726A424E730B77EA5CB3488CE52F6EC5C71936AEB3A27F70CA3C"
+    },
+    {
+      "path": "artifacts/af1082-f5-d7-root-integration-1/native-idle-before-final-da-grant1.json",
+      "sha256": "86FC41130AA419EDF0357BE6B30AD6A5FF1A758F549563221CBD66ACF537F2F0"
+    }
+  ]
+}

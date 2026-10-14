@@ -50,7 +50,8 @@ public enum AgentRunEventKind
     AssistantMessage,
     ToolResult,
     ContextReduced,
-    EmptyResponseRetry
+    EmptyResponseRetry,
+    TruncatedResponseRetry
 }
 
 public sealed record AgentRunEvent(

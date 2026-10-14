@@ -4397,5 +4397,6 @@ namespace Cadoryx.Lang.Strings {
                 return ResourceManager.GetString("AiEmptyResponseRetry", resourceCulture);
             }
         }
+        public static string AiTruncatedResponseRetry => ResourceManager.GetString("AiTruncatedResponseRetry", resourceCulture);
     }
 }

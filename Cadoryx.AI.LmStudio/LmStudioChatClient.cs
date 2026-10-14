@@ -68,9 +68,21 @@ public sealed class LmStudioChatClient(HttpClient httpClient) : IAiChatClient
         if (!root.TryGetProperty("choices", out var choices) ||
             choices.ValueKind != JsonValueKind.Array ||
             choices.GetArrayLength() == 0 ||
-            !choices[0].TryGetProperty("message", out var message))
+            choices[0].ValueKind != JsonValueKind.Object ||
+            !choices[0].TryGetProperty("message", out var message) ||
+            message.ValueKind != JsonValueKind.Object)
         {
             throw new InvalidOperationException("LM Studio returned a response without an assistant message.");
+        }
+
+        // A token-limited response can contain an apparently complete first call
+        // followed by a truncated second call. Never dispatch a partial batch.
+        if (choices[0].TryGetProperty("finish_reason", out var finish) &&
+            finish.ValueKind == JsonValueKind.String && finish.GetString() == "length")
+        {
+            throw new AiResponseTruncatedException(
+                "LM Studio reached a token limit before completing the response. " +
+                "No tool calls from this incomplete response were accepted.");
         }
 
         var content = message.TryGetProperty("content", out var contentElement) &&
@@ -78,6 +90,8 @@ public sealed class LmStudioChatClient(HttpClient httpClient) : IAiChatClient
             ? contentElement.GetString()
             : null;
         var toolCalls = ParseToolCalls(message);
+        if (finish.ValueKind == JsonValueKind.String && finish.GetString() == "tool_calls" && toolCalls.Count == 0)
+            throw InvalidToolCalls();
         var model = root.TryGetProperty("model", out var modelElement)
             ? modelElement.GetString()
             : null;
@@ -127,29 +141,54 @@ public sealed class LmStudioChatClient(HttpClient httpClient) : IAiChatClient
 
     private static IReadOnlyList<AiToolCall> ParseToolCalls(JsonElement message)
     {
-        if (!message.TryGetProperty("tool_calls", out var calls) || calls.ValueKind != JsonValueKind.Array)
+        if (!message.TryGetProperty("tool_calls", out var calls) || calls.ValueKind == JsonValueKind.Null)
             return [];
+        if (calls.ValueKind != JsonValueKind.Array)
+            throw InvalidToolCalls();
 
         var result = new List<AiToolCall>();
+        var ids = new HashSet<string>(StringComparer.Ordinal);
         foreach (var call in calls.EnumerateArray())
         {
-            if (!call.TryGetProperty("function", out var function))
-                continue;
+            if (call.ValueKind != JsonValueKind.Object ||
+                !call.TryGetProperty("function", out var function) || function.ValueKind != JsonValueKind.Object ||
+                HasDuplicateProperties(call) || HasDuplicateProperties(function) ||
+                (call.TryGetProperty("type", out var type) && (type.ValueKind != JsonValueKind.String || type.GetString() != "function")))
+                throw InvalidToolCalls();
 
-            var id = call.TryGetProperty("id", out var idElement)
+            var id = call.TryGetProperty("id", out var idElement) && idElement.ValueKind == JsonValueKind.String
                 ? idElement.GetString()
                 : null;
-            var name = function.TryGetProperty("name", out var nameElement)
+            var name = function.TryGetProperty("name", out var nameElement) && nameElement.ValueKind == JsonValueKind.String
                 ? nameElement.GetString()
                 : null;
-            var arguments = function.TryGetProperty("arguments", out var argumentsElement)
-                ? argumentsElement.GetString()
-                : null;
-            if (!string.IsNullOrWhiteSpace(id) && !string.IsNullOrWhiteSpace(name))
-                result.Add(new AiToolCall(id, name, arguments ?? "{}"));
+            if (string.IsNullOrWhiteSpace(id) || string.IsNullOrWhiteSpace(name) || !ids.Add(id))
+                throw InvalidToolCalls();
+            string arguments = "{}";
+            if (function.TryGetProperty("arguments", out var argumentsElement) && argumentsElement.ValueKind != JsonValueKind.Null)
+            {
+                if (argumentsElement.ValueKind != JsonValueKind.String) throw InvalidToolCalls();
+                arguments = argumentsElement.GetString()!;
+            }
+            try
+            {
+                using var parsedArguments = JsonDocument.Parse(arguments);
+                if (parsedArguments.RootElement.ValueKind != JsonValueKind.Object) throw InvalidToolCalls();
+            }
+            catch (JsonException) { throw InvalidToolCalls(); }
+            result.Add(new AiToolCall(id, name, arguments));
         }
 
         return result;
+    }
+
+    private static InvalidOperationException InvalidToolCalls() => new(
+        "LM Studio returned an incomplete or invalid tool-call batch. No calls from this response were accepted.");
+
+    private static bool HasDuplicateProperties(JsonElement value)
+    {
+        var names = new HashSet<string>(StringComparer.Ordinal);
+        return value.EnumerateObject().Any(property => !names.Add(property.Name));
     }
 
     private static Uri BuildEndpoint(string endpoint, string relativePath)

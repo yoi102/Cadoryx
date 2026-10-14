@@ -1,0 +1,127 @@
+{
+  "recordedAt": "2026-10-14T01:15:46.3172076+00:00",
+  "actualNativeIdleConfirmed": true,
+  "processesStopped": false,
+  "observations": [
+    {
+      "pid": 7868,
+      "path": "C:\\Program Files\\dotnet\\dotnet.exe",
+      "occtModules": [],
+      "action": "PRESERVED_UNRELATED_PROCESS"
+    },
+    {
+      "pid": 10692,
+      "path": "C:\\Program Files\\dotnet\\dotnet.exe",
+      "occtModules": [],
+      "action": "PRESERVED_UNRELATED_PROCESS"
+    },
+    {
+      "pid": 15728,
+      "path": "C:\\Program Files\\dotnet\\dotnet.exe",
+      "occtModules": [],
+      "action": "PRESERVED_UNRELATED_PROCESS"
+    },
+    {
+      "pid": 16632,
+      "path": "C:\\Program Files\\dotnet\\dotnet.exe",
+      "occtModules": [],
+      "action": "PRESERVED_UNRELATED_PROCESS"
+    },
+    {
+      "pid": 16896,
+      "path": "C:\\Program Files\\dotnet\\dotnet.exe",
+      "occtModules": [],
+      "action": "PRESERVED_UNRELATED_PROCESS"
+    },
+    {
+      "pid": 21604,
+      "path": "C:\\Program Files\\dotnet\\dotnet.exe",
+      "occtModules": [],
+      "action": "PRESERVED_UNRELATED_PROCESS"
+    },
+    {
+      "pid": 36868,
+      "path": "C:\\Program Files\\dotnet\\dotnet.exe",
+      "occtModules": [],
+      "action": "PRESERVED_UNRELATED_PROCESS"
+    },
+    {
+      "pid": 37236,
+      "path": "C:\\Program Files\\dotnet\\dotnet.exe",
+      "occtModules": [],
+      "action": "PRESERVED_UNRELATED_PROCESS"
+    },
+    {
+      "pid": 41736,
+      "path": "C:\\Program Files\\dotnet\\dotnet.exe",
+      "occtModules": [],
+      "action": "PRESERVED_UNRELATED_PROCESS"
+    },
+    {
+      "pid": 42164,
+      "path": "C:\\Program Files\\dotnet\\dotnet.exe",
+      "occtModules": [],
+      "action": "PRESERVED_UNRELATED_PROCESS"
+    },
+    {
+      "pid": 43904,
+      "path": "C:\\Program Files\\dotnet\\dotnet.exe",
+      "occtModules": [],
+      "action": "PRESERVED_UNRELATED_PROCESS"
+    },
+    {
+      "pid": 46868,
+      "path": "C:\\Program Files\\dotnet\\dotnet.exe",
+      "occtModules": [],
+      "action": "PRESERVED_UNRELATED_PROCESS"
+    },
+    {
+      "pid": 47172,
+      "path": "C:\\Program Files\\dotnet\\dotnet.exe",
+      "occtModules": [],
+      "action": "PRESERVED_UNRELATED_PROCESS"
+    },
+    {
+      "pid": 48800,
+      "path": "C:\\Program Files\\dotnet\\dotnet.exe",
+      "occtModules": [],
+      "action": "PRESERVED_UNRELATED_PROCESS"
+    },
+    {
+      "pid": 49884,
+      "path": "C:\\Program Files\\dotnet\\dotnet.exe",
+      "occtModules": [],
+      "action": "PRESERVED_UNRELATED_PROCESS"
+    },
+    {
+      "pid": 49960,
+      "path": "C:\\Program Files\\dotnet\\dotnet.exe",
+      "occtModules": [],
+      "action": "PRESERVED_UNRELATED_PROCESS"
+    },
+    {
+      "pid": 50316,
+      "path": "C:\\Program Files\\dotnet\\dotnet.exe",
+      "occtModules": [],
+      "action": "PRESERVED_UNRELATED_PROCESS"
+    },
+    {
+      "pid": 50568,
+      "path": "C:\\Program Files\\dotnet\\dotnet.exe",
+      "occtModules": [],
+      "action": "PRESERVED_UNRELATED_PROCESS"
+    },
+    {
+      "pid": 51752,
+      "path": "C:\\Program Files\\dotnet\\dotnet.exe",
+      "occtModules": [],
+      "action": "PRESERVED_UNRELATED_PROCESS"
+    },
+    {
+      "pid": 52572,
+      "path": "C:\\Program Files\\dotnet\\dotnet.exe",
+      "occtModules": [],
+      "action": "PRESERVED_UNRELATED_PROCESS"
+    }
+  ]
+}

@@ -6,6 +6,8 @@ public sealed class AgentRunner(IAiChatClient chatClient) : IAgentRunner
 {
     internal const string EmptyResponseRecoveryInstruction =
         "Empty reply: use receipts; finish latest request; do not repeat completed edits.";
+    internal const string TruncatedResponseRecoveryInstruction =
+        "Truncated reply: use receipts; finish latest request; do not repeat completed edits.";
 
     public async Task<AgentRunResult> RunAsync(
         AgentRunRequest request,
@@ -18,25 +20,41 @@ public sealed class AgentRunner(IAiChatClient chatClient) : IAgentRunner
         var availableTools = request.Toolset?.ToolDefinitions ?? [];
         var selectedTools = request.Toolset?.SelectTools(request.UserPrompt) ?? [];
         var contextWindowTokens = NormalizeContextWindow(request.ContextWindowTokens);
-        var emptyRetryUsed = false;
-        var retryEmptyResponse = false;
+        var responseRetryUsed = false;
+        string? recoveryInstruction = null;
+        var conservativeContext = false;
 
         for (var round = 0; round < request.MaximumToolRounds; round++)
         {
             cancellationToken.ThrowIfCancellationRequested();
-            // The actual empty reply stays in history. Only the next request gets
-            // this instruction; no user message, receipt or command is invented.
-            var completionRequest = retryEmptyResponse
-                ? request with { SystemPrompt = request.SystemPrompt + "\n" + EmptyResponseRecoveryInstruction }
+            // Empty replies stay in history; rejected truncated replies do not.
+            // Recovery changes only the next request, preserving actual receipts.
+            var completionRequest = recoveryInstruction is not null
+                ? request with { SystemPrompt = request.SystemPrompt + "\n" + recoveryInstruction }
                 : request;
-            retryEmptyResponse = false;
-            var completion = await CompleteWithContextRetryAsync(
-                completionRequest,
-                selectedTools,
-                availableTools,
-                contextWindowTokens,
-                reportEvent,
-                cancellationToken);
+            recoveryInstruction = null;
+            CompletionAttempt completion;
+            try
+            {
+                completion = await CompleteWithContextRetryAsync(
+                    completionRequest,
+                    selectedTools,
+                    availableTools,
+                    contextWindowTokens,
+                    reportEvent,
+                    cancellationToken,
+                    conservativeContext);
+            }
+            catch (AiResponseTruncatedException) when (!responseRetryUsed && round + 1 < request.MaximumToolRounds)
+            {
+                // Share the existing single recovery allowance with empty replies.
+                // Use existing conservative context compaction, without raising caps.
+                responseRetryUsed = true;
+                conservativeContext = true;
+                recoveryInstruction = TruncatedResponseRecoveryInstruction;
+                await ReportAsync(reportEvent, new AgentRunEvent(AgentRunEventKind.TruncatedResponseRetry));
+                continue;
+            }
             contextWindowTokens = completion.ContextWindowTokens;
 
             request.Conversation.AddAssistant(completion.Completion);
@@ -52,10 +70,10 @@ public sealed class AgentRunner(IAiChatClient chatClient) : IAgentRunner
             if (completion.Completion.ToolCalls.Count == 0)
             {
                 if (IsEmptyOrControlOnly(completion.Completion.Content) &&
-                    !emptyRetryUsed && round + 1 < request.MaximumToolRounds)
+                    !responseRetryUsed && round + 1 < request.MaximumToolRounds)
                 {
-                    emptyRetryUsed = true;
-                    retryEmptyResponse = true;
+                    responseRetryUsed = true;
+                    recoveryInstruction = EmptyResponseRecoveryInstruction;
                     await ReportAsync(reportEvent, new AgentRunEvent(AgentRunEventKind.EmptyResponseRetry));
                     continue;
                 }
@@ -109,11 +127,12 @@ public sealed class AgentRunner(IAiChatClient chatClient) : IAgentRunner
         IReadOnlyList<AiToolDefinition> availableTools,
         int contextWindowTokens,
         Func<AgentRunEvent, ValueTask>? reportEvent,
-        CancellationToken cancellationToken)
+        CancellationToken cancellationToken,
+        bool aggressiveContext = false)
     {
         for (var attempt = 0; attempt < 2; attempt++)
         {
-            var aggressive = attempt > 0;
+            var aggressive = aggressiveContext || attempt > 0;
             var tools = aggressive && request.Toolset is not null && availableTools.Count > 0
                 ? request.Toolset.SelectTools(request.UserPrompt, aggressive: true)
                 : selectedTools;

@@ -1,0 +1,31 @@
+{
+  "startedUtc": "2026-10-14T00:40:47.6632713+00:00",
+  "state": "FAIL",
+  "caseIndex": 0,
+  "case": {
+    "phase": "create",
+    "language": "en-US",
+    "label": "plane-positive",
+    "route": "confirm",
+    "fixture": {
+      "path": "C:/Users/yoiri/source/repos/Cadoryx/artifacts/d6-window-fixtures-2/fixtures-1\\plane-positive.cadoryx",
+      "sha256": "E3913830ACD00B9E5096E4FF5609A3485CD936709A9C540A277D4661D6E388D4"
+    },
+    "output": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\windows\\window-create-en-US-plane-positive-2",
+    "state": "NOT RUN"
+  },
+  "pid": 43892,
+  "processStartUtc": "2026-10-14T00:40:47.6587240Z",
+  "coordinatorPid": 39720,
+  "candidate": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-ui-culture-1\\hosts\\d6-window36-release-1",
+  "output": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\windows\\window-create-en-US-plane-positive-2",
+  "readinessSeconds": 30,
+  "observationSeconds": 300,
+  "hostInjectsInput": false,
+  "productionApplied": false,
+  "AFComplete": false,
+  "unrelatedProcessesPreserved": [],
+  "exitCode": 1,
+  "error": "Owned D6 observer failed; preserve exact fixture, control trace and original assertions",
+  "completedUtc": "2026-10-14T00:45:27.3679248+00:00"
+}

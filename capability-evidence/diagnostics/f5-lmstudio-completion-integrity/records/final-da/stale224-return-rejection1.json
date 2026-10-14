@@ -1,0 +1,6 @@
+{
+  "old224ReturnRejected": true,
+  "nativeStarted": false,
+  "error": "Final DA exclusive SDK lane remains reserved; the earlier224 return cannot authorize a CAD runtime",
+  "recordedAt": "2026-10-14T01:16:03.3041000+00:00"
+}

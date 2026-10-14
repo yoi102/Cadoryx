@@ -1,0 +1,1 @@
+{"type":"Cadoryx.AI.Contracts.AiResponseTruncatedException","message":"LM Studio reached a token limit before completing the response. No tool calls from this incomplete response were accepted."}

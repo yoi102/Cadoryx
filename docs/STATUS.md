@@ -1,5 +1,11 @@
 # 当前状态
 
+2026-10-14，status266：**原严格STEP的精确24项继续延期，其余A–F继续，尚未全部完成。** [本批F5截断恢复](F5_TRUNCATED_RESPONSE_RECOVERY.md)已实现完整工具批次校验、typed截断拒绝与共享原一次恢复额度；截断后本请求后续轮次保持已有保守裁剪，三语言提示为System。原提示、身份/几何守卫、8192上下文、1024输出、16工具轮和4分钟保持。两配置纯托管各40/40、相关旧AI/上下文/恢复各97/97，原测试名称保持；同40测试载荷仅换原客户端为8通过/32复现失败，与STEP24无关。完整solution两配置build0警告/错误，完整预计7160尚未重跑。[资格/失败检查点](../capability-evidence/diagnostics/f5-lmstudio-completion-integrity/checkpoint.json)保存五变更模块/两个语言卫星及十处原输入差异，SDK/native/其他核心/worker字节保持；不以原7117两配置全量代替新7160。
+
+[原raw工程图1](../capability-evidence/diagnostics/f5-lmstudio-completion-integrity/provider-drawing1-verification.json)完成1/8，已创建Top之后第19响应length，usage7691+501=8192；只证明达到token限制，不声称用尽1024输出。修订3的[工程图2](../capability-evidence/diagnostics/f5-lmstudio-completion-integrity/provider-drawing2-verification.json)完成2/8，第三轮恢复后再次length失败；[最新修订4工程图3](../capability-evidence/diagnostics/f5-lmstudio-completion-integrity/provider-drawing3-verification.json)完成2/8、第三轮超16工具轮，无截断，实际原生62及资产归零通过。模型反复提交缺状态/非完整路径查询；成功查询后的完整CylinderFace也在实际请求内，不能把此轮归为几何数据不可用。工程图供应商仍FAIL；最新差异载荷工作区尚未重跑，原8/8仅作冻结基线证据。
+
+D6第二次原窗口仍FAIL：关联弹层输入目标未有效命中，临时StartY=-1，无Confirm/preview，真实Cancel后原快照保持。原36窗口与材质当前组合待验；旧恢复24/24、主壳36/36和MiniPC两fresh4.571/4.606秒证据绑定此前最终UI载荷，不能直接作为五模块差异的当前桌面/性能验收。根已在全部模型终态和实际消费者空闲后明确交还SDK final DA数小时native/window及全量CPU时段，旧224返还已实测被防护拒绝；待新明确返还再启动运行验收。开发仍精确本地87.cu1，没有接收新Preview87包或变更SDK封装。正式已验子批仍A4/B17/C5/D5/E4/F5g，第4、5节范围保持，G及清理暂缓；以下status265及更早为历史。
+
 2026-10-14，status265：**D7已接入开发根，SDK切换为精确本地`8.0.1-preview.87.cu1` NuGet；A–F仍未全部完成。** [根接入审计](../capability-evidence/diagnostics/af1082-f5-d7-local87cu1/root-integration-verification.json)核对原1200输入加唯一已证恢复语言差异、38项D7/依赖变更（五源码、三配置、30锁文件），非OCCT依赖保持；locked restore、完整solution Release/Debug均0警告/错误，WPF/Tests各SDK13/native62磁盘一致。根Release原缺失分支36/36、零失败/跳过，真实testhost及62模块路径/哈希、全部原用例名称已取证。第一版logger参数失败和第二版虽36通过却未捕捉孙进程的记录保留；第三版只修启动器和进程树观察，未改测试。根普通构建嵌入当前Git身份，冻结程序集仍是原Git身份；不声称19生产DLL同字节或重新运行根完整7117。
 
 [当前MiniPC3独立性能审计](../capability-evidence/diagnostics/af1082-f5-d7-local87cu1/performance-verification.json)：两fresh直接完整提交4571.4236/4605.6025ms，均达到原6482ms，各20双视口周期与4964实例/1185几何通过；两个生产Open完整显示65979.099/65940.5609ms，内核导入58810.741/58575.8237ms。原788×411完整PNG逐字节相同，已直接查看当前完整图；CPU提交、导入及物理显示延迟分开，不宣称物理帧率/输入延迟达标。此证据绑定最终WPF-only差异载荷和原7117两配置，不替代普通根构建的桌面验收。

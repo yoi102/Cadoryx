@@ -1,0 +1,11 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup><IsTestProject>true</IsTestProject><IsPackable>false</IsPackable></PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="../../Cadoryx.AI.LmStudio/Cadoryx.AI.LmStudio.csproj" />
+    <ProjectReference Include="../../Cadoryx.Agent/Cadoryx.Agent.csproj" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.14.1" />
+    <PackageReference Include="xunit" Version="2.9.3" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="3.1.5" PrivateAssets="all" />
+    <Compile Include="../../Cadoryx.Tests/LmStudioCompletionIntegrityTests.cs" Link="LmStudioCompletionIntegrityTests.cs" />
+  </ItemGroup>
+</Project>

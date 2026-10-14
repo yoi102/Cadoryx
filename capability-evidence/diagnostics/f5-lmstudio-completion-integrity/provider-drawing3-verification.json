@@ -1,0 +1,766 @@
+{
+  "recordedAt": "2026-10-14T01:15:01.456160+00:00",
+  "state": "ORIGINAL_RAW_PROVIDER_TERMINAL_INDEPENDENT_AUDIT",
+  "scenario": "drawing",
+  "iteration": 3,
+  "qualification": {
+    "path": "artifacts/f5-lmstudio-completion-integrity-1/qualification4.json",
+    "sha256": "DCE5C93B93045F00D467D993FCD6EBF901502329A715744E9FB9D4461C5D2159"
+  },
+  "terminal": {
+    "path": "artifacts/f5-lmstudio-completion-integrity-1/provider-drawing-3-exit.json",
+    "sha256": "C28668DB6B37726A424E730B77EA5CB3488CE52F6EC5C71936AEB3A27F70CA3C"
+  },
+  "result": {
+    "path": "artifacts/f5-lmstudio-completion-integrity-1/provider-drawing-3/result.json",
+    "sha256": "34F5AD05ADAD38A99A756337DD47576D779B13696D6FF60446B913B7DE933C92"
+  },
+  "calls": {
+    "path": "artifacts/f5-lmstudio-completion-integrity-1/provider-drawing-3/tool-calls.json",
+    "sha256": "C7BCC5080E468FFF606AB4084F70AA0F58C6F325B4C01AC35EFBCD4583C16DA2"
+  },
+  "binding": {
+    "path": "artifacts/f5-lmstudio-completion-integrity-1/provider-drawing-3-loaded-native.json",
+    "sha256": "625E73E9CEEE70703BA2805B9B79DC64F2C705C678E9FE03B13C734B950AD039"
+  },
+  "passed": false,
+  "completedTurns": 2,
+  "totalTurns": 8,
+  "failure": "The model exceeded the maximum number of agent tool rounds.",
+  "assetsAfterClose": 0,
+  "native62Verified": true,
+  "originalPromptsAssertions8192_16_4MinutesRetained": true,
+  "parsedCompleteBatchCallsExactlyMatchDispatchedCalls": true,
+  "rawResponses": [
+    {
+      "response": {
+        "path": "artifacts/f5-lmstudio-completion-integrity-1/provider-drawing-3/wire-response-001.json",
+        "sha256": "B24630314E4761EB1F4423294E53F2EB5C40BD2998484334AC130BFCF83108EC"
+      },
+      "finishReason": "tool_calls",
+      "usage": {
+        "prompt_tokens": 6940,
+        "completion_tokens": 324,
+        "total_tokens": 7264,
+        "completion_tokens_details": {
+          "reasoning_tokens": 222
+        }
+      },
+      "contentPresent": false,
+      "toolCallCount": 1
+    },
+    {
+      "response": {
+        "path": "artifacts/f5-lmstudio-completion-integrity-1/provider-drawing-3/wire-response-002.json",
+        "sha256": "A7ED075755EC31CAEE55AD62B3E095F25462462E57E05321EDB71443AFDA4A11"
+      },
+      "finishReason": "tool_calls",
+      "usage": {
+        "prompt_tokens": 7074,
+        "completion_tokens": 43,
+        "total_tokens": 7117,
+        "completion_tokens_details": {
+          "reasoning_tokens": 26
+        }
+      },
+      "contentPresent": false,
+      "toolCallCount": 1
+    },
+    {
+      "response": {
+        "path": "artifacts/f5-lmstudio-completion-integrity-1/provider-drawing-3/wire-response-003.json",
+        "sha256": "EE8B0DEBF25C9D75837C224A077D2D5E6ED96390A1429646FB2CD4816A2F8A71"
+      },
+      "finishReason": "tool_calls",
+      "usage": {
+        "prompt_tokens": 7765,
+        "completion_tokens": 189,
+        "total_tokens": 7954,
+        "completion_tokens_details": {
+          "reasoning_tokens": 147
+        }
+      },
+      "contentPresent": false,
+      "toolCallCount": 1
+    },
+    {
+      "response": {
+        "path": "artifacts/f5-lmstudio-completion-integrity-1/provider-drawing-3/wire-response-004.json",
+        "sha256": "A898579F678578B76E1F86421F54608DC8C1CADCC7640B64EA4A469B433445B5"
+      },
+      "finishReason": "tool_calls",
+      "usage": {
+        "prompt_tokens": 6050,
+        "completion_tokens": 346,
+        "total_tokens": 6396,
+        "completion_tokens_details": {
+          "reasoning_tokens": 167
+        }
+      },
+      "contentPresent": false,
+      "toolCallCount": 1
+    },
+    {
+      "response": {
+        "path": "artifacts/f5-lmstudio-completion-integrity-1/provider-drawing-3/wire-response-005.json",
+        "sha256": "24CAAF7408449E96A15820CA5E45D31E2F212B384D94BEAA589CB8F9EE22B01E"
+      },
+      "finishReason": "tool_calls",
+      "usage": {
+        "prompt_tokens": 6404,
+        "completion_tokens": 35,
+        "total_tokens": 6439,
+        "completion_tokens_details": {
+          "reasoning_tokens": 18
+        }
+      },
+      "contentPresent": false,
+      "toolCallCount": 1
+    },
+    {
+      "response": {
+        "path": "artifacts/f5-lmstudio-completion-integrity-1/provider-drawing-3/wire-response-006.json",
+        "sha256": "C869E8DABE66BE4161FAA522DF6D67E6CE412A78ABCCBF9089DA11B26B43BBD6"
+      },
+      "finishReason": "stop",
+      "usage": {
+        "prompt_tokens": 6268,
+        "completion_tokens": 408,
+        "total_tokens": 6676,
+        "completion_tokens_details": {
+          "reasoning_tokens": 205
+        }
+      },
+      "contentPresent": true,
+      "toolCallCount": 0
+    },
+    {
+      "response": {
+        "path": "artifacts/f5-lmstudio-completion-integrity-1/provider-drawing-3/wire-response-007.json",
+        "sha256": "7DD18FF4EF70C590247ACA4C880633EAB65A2C67460D6812901620FEDF4AD037"
+      },
+      "finishReason": "tool_calls",
+      "usage": {
+        "prompt_tokens": 3966,
+        "completion_tokens": 359,
+        "total_tokens": 4325,
+        "completion_tokens_details": {
+          "reasoning_tokens": 342
+        }
+      },
+      "contentPresent": false,
+      "toolCallCount": 1
+    },
+    {
+      "response": {
+        "path": "artifacts/f5-lmstudio-completion-integrity-1/provider-drawing-3/wire-response-008.json",
+        "sha256": "6B37F7C4041DF142AB5F19CB6F5C61954AD9DF08C8C075D7A30F5CC9F2D60FE2"
+      },
+      "finishReason": "tool_calls",
+      "usage": {
+        "prompt_tokens": 4655,
+        "completion_tokens": 195,
+        "total_tokens": 4850,
+        "completion_tokens_details": {
+          "reasoning_tokens": 153
+        }
+      },
+      "contentPresent": false,
+      "toolCallCount": 1
+    },
+    {
+      "response": {
+        "path": "artifacts/f5-lmstudio-completion-integrity-1/provider-drawing-3/wire-response-009.json",
+        "sha256": "4C3295FEDB937DAA9EA71548306B3B51B04E62A37C9375CE141D83F327B58BC1"
+      },
+      "finishReason": "tool_calls",
+      "usage": {
+        "prompt_tokens": 5475,
+        "completion_tokens": 555,
+        "total_tokens": 6030,
+        "completion_tokens_details": {
+          "reasoning_tokens": 341
+        }
+      },
+      "contentPresent": false,
+      "toolCallCount": 1
+    },
+    {
+      "response": {
+        "path": "artifacts/f5-lmstudio-completion-integrity-1/provider-drawing-3/wire-response-010.json",
+        "sha256": "5C7AD68E20A46E4E5E7CE0520F54968CE200618700AF63DE5D90B8A8EFAD4BF9"
+      },
+      "finishReason": "tool_calls",
+      "usage": {
+        "prompt_tokens": 5860,
+        "completion_tokens": 69,
+        "total_tokens": 5929,
+        "completion_tokens_details": {
+          "reasoning_tokens": 52
+        }
+      },
+      "contentPresent": false,
+      "toolCallCount": 1
+    },
+    {
+      "response": {
+        "path": "artifacts/f5-lmstudio-completion-integrity-1/provider-drawing-3/wire-response-011.json",
+        "sha256": "D33DFD4A1CF4704F354A3A72FD346A77655E0DC5CC734599FBCC2786B0041AC1"
+      },
+      "finishReason": "tool_calls",
+      "usage": {
+        "prompt_tokens": 6553,
+        "completion_tokens": 155,
+        "total_tokens": 6708,
+        "completion_tokens_details": {
+          "reasoning_tokens": 84
+        }
+      },
+      "contentPresent": false,
+      "toolCallCount": 1
+    },
+    {
+      "response": {
+        "path": "artifacts/f5-lmstudio-completion-integrity-1/provider-drawing-3/wire-response-012.json",
+        "sha256": "DA2B39D68F79F4FE741F638C965F896A8B43E3D9BA52CB4CE1B6FBE536127EC1"
+      },
+      "finishReason": "tool_calls",
+      "usage": {
+        "prompt_tokens": 6746,
+        "completion_tokens": 35,
+        "total_tokens": 6781,
+        "completion_tokens_details": {
+          "reasoning_tokens": 18
+        }
+      },
+      "contentPresent": false,
+      "toolCallCount": 1
+    },
+    {
+      "response": {
+        "path": "artifacts/f5-lmstudio-completion-integrity-1/provider-drawing-3/wire-response-013.json",
+        "sha256": "379A708BF26F707E9B1046C5E507BDC8F9B90EE4094D6C7E7DDECB19BEB3D4B6"
+      },
+      "finishReason": "tool_calls",
+      "usage": {
+        "prompt_tokens": 6750,
+        "completion_tokens": 247,
+        "total_tokens": 6997,
+        "completion_tokens_details": {
+          "reasoning_tokens": 216
+        }
+      },
+      "contentPresent": false,
+      "toolCallCount": 1
+    },
+    {
+      "response": {
+        "path": "artifacts/f5-lmstudio-completion-integrity-1/provider-drawing-3/wire-response-014.json",
+        "sha256": "46D761BCD8E90B4EEFB4FA8380588E0505293C68B6DFA68D58021A11AC312A71"
+      },
+      "finishReason": "stop",
+      "usage": {
+        "prompt_tokens": 7050,
+        "completion_tokens": 415,
+        "total_tokens": 7465,
+        "completion_tokens_details": {
+          "reasoning_tokens": 230
+        }
+      },
+      "contentPresent": true,
+      "toolCallCount": 0
+    },
+    {
+      "response": {
+        "path": "artifacts/f5-lmstudio-completion-integrity-1/provider-drawing-3/wire-response-015.json",
+        "sha256": "A66C1E988710908FD645DEFB14B0AAC5EEB0EB1B4501FB66B6F4DCD040C30229"
+      },
+      "finishReason": "tool_calls",
+      "usage": {
+        "prompt_tokens": 4172,
+        "completion_tokens": 153,
+        "total_tokens": 4325,
+        "completion_tokens_details": {
+          "reasoning_tokens": 136
+        }
+      },
+      "contentPresent": false,
+      "toolCallCount": 1
+    },
+    {
+      "response": {
+        "path": "artifacts/f5-lmstudio-completion-integrity-1/provider-drawing-3/wire-response-016.json",
+        "sha256": "B829893D7FA0B32D3838D23F84079F53F639F0A25E60806D6A22297F4C569892"
+      },
+      "finishReason": "tool_calls",
+      "usage": {
+        "prompt_tokens": 4865,
+        "completion_tokens": 557,
+        "total_tokens": 5422,
+        "completion_tokens_details": {
+          "reasoning_tokens": 340
+        }
+      },
+      "contentPresent": false,
+      "toolCallCount": 1
+    },
+    {
+      "response": {
+        "path": "artifacts/f5-lmstudio-completion-integrity-1/provider-drawing-3/wire-response-017.json",
+        "sha256": "1AF9EC03C47377CD314140D617493E43E42DA4CE0366D7A9E5EDD82207365884"
+      },
+      "finishReason": "tool_calls",
+      "usage": {
+        "prompt_tokens": 5258,
+        "completion_tokens": 317,
+        "total_tokens": 5575,
+        "completion_tokens_details": {
+          "reasoning_tokens": 56
+        }
+      },
+      "contentPresent": false,
+      "toolCallCount": 1
+    },
+    {
+      "response": {
+        "path": "artifacts/f5-lmstudio-completion-integrity-1/provider-drawing-3/wire-response-018.json",
+        "sha256": "0597B7F8F8A9D8FE8B5ADA103B8789FCF959E69A015C262D972B3E3A0694BE5E"
+      },
+      "finishReason": "tool_calls",
+      "usage": {
+        "prompt_tokens": 5727,
+        "completion_tokens": 104,
+        "total_tokens": 5831,
+        "completion_tokens_details": {
+          "reasoning_tokens": 61
+        }
+      },
+      "contentPresent": false,
+      "toolCallCount": 1
+    },
+    {
+      "response": {
+        "path": "artifacts/f5-lmstudio-completion-integrity-1/provider-drawing-3/wire-response-019.json",
+        "sha256": "AB44DCDCC8DDF6BF665040C45E56883A7AF3928CAFC281E7D7842D980A18C665"
+      },
+      "finishReason": "tool_calls",
+      "usage": {
+        "prompt_tokens": 6022,
+        "completion_tokens": 66,
+        "total_tokens": 6088,
+        "completion_tokens_details": {
+          "reasoning_tokens": 25
+        }
+      },
+      "contentPresent": false,
+      "toolCallCount": 1
+    },
+    {
+      "response": {
+        "path": "artifacts/f5-lmstudio-completion-integrity-1/provider-drawing-3/wire-response-020.json",
+        "sha256": "08ECD5DDFEDD771C6BC1214FD0634051BB00403D6E9A8FDA57A5F8000607C8DA"
+      },
+      "finishReason": "tool_calls",
+      "usage": {
+        "prompt_tokens": 6474,
+        "completion_tokens": 134,
+        "total_tokens": 6608,
+        "completion_tokens_details": {
+          "reasoning_tokens": 91
+        }
+      },
+      "contentPresent": false,
+      "toolCallCount": 1
+    },
+    {
+      "response": {
+        "path": "artifacts/f5-lmstudio-completion-integrity-1/provider-drawing-3/wire-response-021.json",
+        "sha256": "89030C236EF8266C60CBC6FB1191B9F3B86B7C4E59FC22B2C2DC041990C38FF3"
+      },
+      "finishReason": "tool_calls",
+      "usage": {
+        "prompt_tokens": 6938,
+        "completion_tokens": 109,
+        "total_tokens": 7047,
+        "completion_tokens_details": {
+          "reasoning_tokens": 27
+        }
+      },
+      "contentPresent": false,
+      "toolCallCount": 1
+    },
+    {
+      "response": {
+        "path": "artifacts/f5-lmstudio-completion-integrity-1/provider-drawing-3/wire-response-022.json",
+        "sha256": "472E8FD79D1E14C71706D93CA0A307FFAA58A78E2D5A9F7E5E710528D194D08E"
+      },
+      "finishReason": "tool_calls",
+      "usage": {
+        "prompt_tokens": 7310,
+        "completion_tokens": 437,
+        "total_tokens": 7747,
+        "completion_tokens_details": {
+          "reasoning_tokens": 140
+        }
+      },
+      "contentPresent": false,
+      "toolCallCount": 1
+    },
+    {
+      "response": {
+        "path": "artifacts/f5-lmstudio-completion-integrity-1/provider-drawing-3/wire-response-023.json",
+        "sha256": "7265E0865FD5BF3D979A81F9EE46083E2580C100E9CB28595297DEA48B7CF74A"
+      },
+      "finishReason": "tool_calls",
+      "usage": {
+        "prompt_tokens": 7523,
+        "completion_tokens": 309,
+        "total_tokens": 7832,
+        "completion_tokens_details": {
+          "reasoning_tokens": 292
+        }
+      },
+      "contentPresent": false,
+      "toolCallCount": 1
+    },
+    {
+      "response": {
+        "path": "artifacts/f5-lmstudio-completion-integrity-1/provider-drawing-3/wire-response-024.json",
+        "sha256": "43244D7BC32BF7DA6AE3C58CDB79C7901736561DB783740B0A31791CD132206E"
+      },
+      "finishReason": "tool_calls",
+      "usage": {
+        "prompt_tokens": 4865,
+        "completion_tokens": 557,
+        "total_tokens": 5422,
+        "completion_tokens_details": {
+          "reasoning_tokens": 340
+        }
+      },
+      "contentPresent": false,
+      "toolCallCount": 1
+    },
+    {
+      "response": {
+        "path": "artifacts/f5-lmstudio-completion-integrity-1/provider-drawing-3/wire-response-025.json",
+        "sha256": "C56030F64B5CADE40D4B95835B9889C1856182C29B3326E2003AAA9A5036D59F"
+      },
+      "finishReason": "tool_calls",
+      "usage": {
+        "prompt_tokens": 5258,
+        "completion_tokens": 317,
+        "total_tokens": 5575,
+        "completion_tokens_details": {
+          "reasoning_tokens": 56
+        }
+      },
+      "contentPresent": false,
+      "toolCallCount": 1
+    },
+    {
+      "response": {
+        "path": "artifacts/f5-lmstudio-completion-integrity-1/provider-drawing-3/wire-response-026.json",
+        "sha256": "E4576A5E794C14D7230EA2A89248F3A269CED0A6FAAC59C3C9CF7A11666F0305"
+      },
+      "finishReason": "tool_calls",
+      "usage": {
+        "prompt_tokens": 5727,
+        "completion_tokens": 104,
+        "total_tokens": 5831,
+        "completion_tokens_details": {
+          "reasoning_tokens": 61
+        }
+      },
+      "contentPresent": false,
+      "toolCallCount": 1
+    },
+    {
+      "response": {
+        "path": "artifacts/f5-lmstudio-completion-integrity-1/provider-drawing-3/wire-response-027.json",
+        "sha256": "D1BB869EEFE81686FC104F913E75B7AFBFEBA3B4D1605A3A71E6F8D5C4CBEDCB"
+      },
+      "finishReason": "tool_calls",
+      "usage": {
+        "prompt_tokens": 6022,
+        "completion_tokens": 66,
+        "total_tokens": 6088,
+        "completion_tokens_details": {
+          "reasoning_tokens": 25
+        }
+      },
+      "contentPresent": false,
+      "toolCallCount": 1
+    },
+    {
+      "response": {
+        "path": "artifacts/f5-lmstudio-completion-integrity-1/provider-drawing-3/wire-response-028.json",
+        "sha256": "A11E0811CBD466790623B382D9FDB03BDFFF95F60BC7BC3DD2E91000B44075D0"
+      },
+      "finishReason": "tool_calls",
+      "usage": {
+        "prompt_tokens": 6474,
+        "completion_tokens": 134,
+        "total_tokens": 6608,
+        "completion_tokens_details": {
+          "reasoning_tokens": 91
+        }
+      },
+      "contentPresent": false,
+      "toolCallCount": 1
+    },
+    {
+      "response": {
+        "path": "artifacts/f5-lmstudio-completion-integrity-1/provider-drawing-3/wire-response-029.json",
+        "sha256": "4AC7BE58DF9A06B1E4FDCC52C8441B285765720413DF6A2C8E8128CAA17190D1"
+      },
+      "finishReason": "tool_calls",
+      "usage": {
+        "prompt_tokens": 6938,
+        "completion_tokens": 109,
+        "total_tokens": 7047,
+        "completion_tokens_details": {
+          "reasoning_tokens": 27
+        }
+      },
+      "contentPresent": false,
+      "toolCallCount": 1
+    },
+    {
+      "response": {
+        "path": "artifacts/f5-lmstudio-completion-integrity-1/provider-drawing-3/wire-response-030.json",
+        "sha256": "AA48AE2EF0816B57A7FBA89A114FB854630BEB72720B552147E264CAFD487265"
+      },
+      "finishReason": "tool_calls",
+      "usage": {
+        "prompt_tokens": 7310,
+        "completion_tokens": 437,
+        "total_tokens": 7747,
+        "completion_tokens_details": {
+          "reasoning_tokens": 140
+        }
+      },
+      "contentPresent": false,
+      "toolCallCount": 1
+    }
+  ],
+  "changedSuccessReceipts": [
+    {
+      "ordinal": 4,
+      "tool": "cad_drawing",
+      "arguments": {
+        "action": "create",
+        "documentId": "15049495-397f-465f-98f6-27c190e0698e",
+        "stateId": "1ded8bfc-d371-4a34-ba76-41e04ab82320",
+        "type": "sheet",
+        "authorJson": "{\"name\":\"Provider Drawing\",\"widthMm\":297,\"heightMm\":210,\"unit\":\"Millimeter\",\"title\":\"Provider Drawing\",\"standard\":\"ISO\"}"
+      },
+      "receipt": {
+        "success": true,
+        "action": "create",
+        "changed": true,
+        "id": "86ae58c9-3f6a-45d6-8aee-211f3204070d",
+        "documentId": "15049495-397f-465f-98f6-27c190e0698e",
+        "stateId": "814f273d-afa5-4ef7-b2de-554eb9efa83c",
+        "createdIds": [
+          "86ae58c9-3f6a-45d6-8aee-211f3204070d"
+        ]
+      }
+    },
+    {
+      "ordinal": 8,
+      "tool": "cad_drawing",
+      "arguments": {
+        "action": "create",
+        "documentId": "15049495-397f-465f-98f6-27c190e0698e",
+        "stateId": "814f273d-afa5-4ef7-b2de-554eb9efa83c",
+        "sheetId": "86ae58c9-3f6a-45d6-8aee-211f3204070d",
+        "type": "view",
+        "authorJson": "{\"name\":\"Top\",\"kind\":\"Top\",\"centerMm\":{\"x\":80,\"y\":60},\"scale\":2}"
+      },
+      "receipt": {
+        "success": true,
+        "action": "create",
+        "changed": true,
+        "id": "de015e8c-bba0-441f-8eca-87b8658fd1b0",
+        "documentId": "15049495-397f-465f-98f6-27c190e0698e",
+        "stateId": "4de4d223-6526-4caa-9906-d14279e6e9f3",
+        "createdIds": [
+          "de015e8c-bba0-441f-8eca-87b8658fd1b0"
+        ]
+      }
+    }
+  ],
+  "rejectedCalls": [
+    {
+      "ordinal": 1,
+      "tool": "cad_workspace",
+      "arguments": {
+        "action": "list",
+        "expected": {
+          "workspaceStateId": "00000000-0000-0000-0000-000000000000",
+          "activeSessionId": null,
+          "documentId": null,
+          "stateId": null
+        }
+      },
+      "receipt": {
+        "success": false,
+        "message": "Workspace authoring is unavailable in this context."
+      }
+    },
+    {
+      "ordinal": 14,
+      "tool": "cad_drawing",
+      "arguments": {
+        "action": "inspect_sources",
+        "documentId": "15049495-397f-465f-98f6-27c190e0698e",
+        "path": "c4bbb435-decc-4900-8d4a-4b1eab954b39",
+        "bodyId": "eaa24d7c-abd1-4461-9ca9-03a052006f64",
+        "revision": "55acbb73-94bd-442e-baf1-9b68a3c2d55c",
+        "limit": 50
+      },
+      "receipt": {
+        "success": false,
+        "message": "Invalid drawing arguments for action=inspect_sources. Missing or invalid: stateId. contract accepts only action/type; other actions require exact documentId/stateId from cad_status. inspect requires type, documentId and stateId together. Outer name is only save_template; create/edit names belong in authorJson.",
+        "missingOrInvalid": [
+          "stateId"
+        ],
+        "unexpectedArguments": [],
+        "allowedArguments": [
+          "action",
+          "documentId",
+          "stateId",
+          "path",
+          "bodyId",
+          "revision",
+          "offset",
+          "limit"
+        ],
+        "identitySource": {
+          "toolName": "cad_status",
+          "arguments": {}
+        },
+        "identityRole": "Copy documentId/stateId from the active cad_status response, not an item, body, sheet or source selection. Read current state before explicitly submitting the drawing request again. No identities were supplied or filled in automatically."
+      }
+    },
+    {
+      "ordinal": 15,
+      "tool": "cad_drawing",
+      "arguments": {
+        "action": "inspect_sources",
+        "documentId": "15049495-397f-465f-98f6-27c190e0698e",
+        "path": "c4bbb435-decc-4900-8d4a-4b1eab954b39",
+        "bodyId": "eaa24d7c-abd1-4461-9ca9-03a052006f64",
+        "revision": "55acbb73-94bd-442e-baf1-9b68a3c2d55c",
+        "limit": 50,
+        "stateId": "4de4d223-6526-4caa-9906-d14279e6e9f3"
+      },
+      "receipt": {
+        "success": false,
+        "action": "inspect_sources",
+        "message": "A full path in this exact document is required.",
+        "rejection": "drawing_source_path_invalid",
+        "sourceReads": [
+          {
+            "toolName": "cad_inspect",
+            "arguments": {
+              "area": "occurrences",
+              "offset": 0,
+              "limit": 8
+            }
+          },
+          {
+            "toolName": "cad_inspect",
+            "arguments": {
+              "area": "bodies",
+              "offset": 0,
+              "limit": 8
+            }
+          }
+        ],
+        "pathRole": "Copy one complete occurrences.items[].path including the document root and every instance slot. A slot, body, feature or definition ID alone is not a path.",
+        "bodyRole": "Copy bodyId/revision from actual bodies.items[].id/revision for the selected occurrence's definition. Native inspection still validates membership and revision.",
+        "nextStep": "Read actual sources and fresh cad_status, then explicitly resubmit inspect_sources with exact documentId/stateId/path/bodyId/revision. No source was inferred, repaired, rebound or inspected automatically."
+      }
+    },
+    {
+      "ordinal": 22,
+      "tool": "cad_drawing",
+      "arguments": {
+        "action": "inspect_sources",
+        "documentId": "15049495-397f-465f-98f6-27c190e0698e",
+        "path": "c4bbb435-decc-4900-8d4a-4b1eab954b39",
+        "bodyId": "eaa24d7c-abd1-4461-9ca9-03a052006f64",
+        "revision": "55acbb73-94bd-442e-baf1-9b68a3c2d55c",
+        "limit": 50
+      },
+      "receipt": {
+        "success": false,
+        "message": "Invalid drawing arguments for action=inspect_sources. Missing or invalid: stateId. contract accepts only action/type; other actions require exact documentId/stateId from cad_status. inspect requires type, documentId and stateId together. Outer name is only save_template; create/edit names belong in authorJson.",
+        "missingOrInvalid": [
+          "stateId"
+        ],
+        "unexpectedArguments": [],
+        "allowedArguments": [
+          "action",
+          "documentId",
+          "stateId",
+          "path",
+          "bodyId",
+          "revision",
+          "offset",
+          "limit"
+        ],
+        "identitySource": {
+          "toolName": "cad_status",
+          "arguments": {}
+        },
+        "identityRole": "Copy documentId/stateId from the active cad_status response, not an item, body, sheet or source selection. Read current state before explicitly submitting the drawing request again. No identities were supplied or filled in automatically."
+      }
+    },
+    {
+      "ordinal": 23,
+      "tool": "cad_drawing",
+      "arguments": {
+        "action": "inspect_sources",
+        "documentId": "15049495-397f-465f-98f6-27c190e0698e",
+        "path": "c4bbb435-decc-4900-8d4a-4b1eab954b39",
+        "bodyId": "eaa24d7c-abd1-4461-9ca9-03a052006f64",
+        "revision": "55acbb73-94bd-442e-baf1-9b68a3c2d55c",
+        "limit": 50,
+        "stateId": "4de4d223-6526-4caa-9906-d14279e6e9f3"
+      },
+      "receipt": {
+        "success": false,
+        "action": "inspect_sources",
+        "message": "A full path in this exact document is required.",
+        "rejection": "drawing_source_path_invalid",
+        "sourceReads": [
+          {
+            "toolName": "cad_inspect",
+            "arguments": {
+              "area": "occurrences",
+              "offset": 0,
+              "limit": 8
+            }
+          },
+          {
+            "toolName": "cad_inspect",
+            "arguments": {
+              "area": "bodies",
+              "offset": 0,
+              "limit": 8
+            }
+          }
+        ],
+        "pathRole": "Copy one complete occurrences.items[].path including the document root and every instance slot. A slot, body, feature or definition ID alone is not a path.",
+        "bodyRole": "Copy bodyId/revision from actual bodies.items[].id/revision for the selected occurrence's definition. Native inspection still validates membership and revision.",
+        "nextStep": "Read actual sources and fresh cad_status, then explicitly resubmit inspect_sources with exact documentId/stateId/path/bodyId/revision. No source was inferred, repaired, rebound or inspected automatically."
+      }
+    }
+  ],
+  "currentFullSuiteRerun": false,
+  "STEP24": "EXACT_ORIGINAL_FAILURES_USER_DEFERRED_NOT_RETRIED",
+  "D6Accepted": false,
+  "AFComplete": false
+}

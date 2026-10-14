@@ -293,11 +293,12 @@ public partial class AiAssistantToolboxViewModel : CadToolboxViewModelBase, IDis
             AgentRunEventKind.ToolResult => $"{entry.ToolName}: {entry.Content}",
             AgentRunEventKind.ContextReduced => "Context was shortened to fit the model window.",
             AgentRunEventKind.EmptyResponseRetry => Strings.AiEmptyResponseRetry,
+            AgentRunEventKind.TruncatedResponseRetry => Strings.AiTruncatedResponseRetry,
             _ => null
         };
         if (!string.IsNullOrWhiteSpace(content))
         {
-            void Add() { if (version != conversationVersion) return; Messages.Add(new CadChatEntry(entry.Kind == AgentRunEventKind.ToolResult ? "Tool" : entry.Kind == AgentRunEventKind.EmptyResponseRetry ? "System" : "Assistant", content)); while (Messages.Count > 200) Messages.RemoveAt(0); }
+            void Add() { if (version != conversationVersion) return; Messages.Add(new CadChatEntry(entry.Kind == AgentRunEventKind.ToolResult ? "Tool" : entry.Kind is AgentRunEventKind.EmptyResponseRetry or AgentRunEventKind.TruncatedResponseRetry ? "System" : "Assistant", content)); while (Messages.Count > 200) Messages.RemoveAt(0); }
             if (uiContext is null || ReferenceEquals(SynchronizationContext.Current, uiContext)) Add();
             else uiContext.Post(_ => Add(), null);
         }

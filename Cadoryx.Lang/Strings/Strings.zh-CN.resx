@@ -3363,4 +3363,5 @@
   <data name="ViewportRecovering" xml:space="preserve"><value>正在恢复视图…</value></data>
   <data name="ViewportRecoveryFailed" xml:space="preserve"><value>视图恢复失败。</value></data>
   <data name="ViewportRecoveryDeadline" xml:space="preserve"><value>重建的视口未能在 30 秒内就绪。</value></data>
+  <data name="AiTruncatedResponseRetry" xml:space="preserve"><value>模型回复被截断，正在原轮数限制内重试一次，保留已完成的操作。</value></data>
 </root>

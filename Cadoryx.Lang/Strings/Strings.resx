@@ -3385,4 +3385,5 @@
   <data name="ViewportRecovering" xml:space="preserve"><value>Restoring view…</value></data>
   <data name="ViewportRecoveryFailed" xml:space="preserve"><value>View recovery failed.</value></data>
   <data name="ViewportRecoveryDeadline" xml:space="preserve"><value>The replacement viewport did not become ready within 30 seconds.</value></data>
+  <data name="AiTruncatedResponseRetry" xml:space="preserve"><value>The model response was cut off. Retrying once within the current limit, keeping completed actions.</value></data>
 </root>

@@ -1,6 +1,7 @@
 [CmdletBinding()]
 param([Parameter(Mandatory)][ValidateRange(0,35)][int]$CaseIndex,
-      [switch]$UseUiCulturePatch)
+      [switch]$UseUiCulturePatch,
+      [ValidateRange(1,100)][int]$Iteration=1)
 $ErrorActionPreference='Stop'
 $taskRoot=[IO.Path]::GetFullPath((Join-Path $PSScriptRoot '../..'))
 $taskDraft=Join-Path $taskRoot 'artifacts/af1082-f5-d7-local87cu1-1'
@@ -20,6 +21,11 @@ if($UseUiCulturePatch){
 }elseif($taskQueue.state -cne 'FOLLOWUPS_COMPLETED_IMAGE_REVIEW_AND_DESKTOP_PERFORMANCE_REMAIN'){throw 'Inspect the recovery/provider queue failure before interactive window acceptance'}
 if($taskPrep.D6Matrix.Count -ne 36){throw 'Original36 matrix required'}
 $taskCase=$taskPrep.D6Matrix[$CaseIndex]
+$taskOriginalCaseOutput=$taskCase.output
+if($Iteration -ne 1){
+ if(!$taskCase.output.EndsWith('-1',[StringComparison]::Ordinal)){throw 'Original immutable output naming differs'}
+ $taskCase.output=$taskCase.output.Substring(0,$taskCase.output.Length-1)+$Iteration
+}
 $taskHostProofPath=Join-Path $taskRoot $taskPrep.recoveryHosts.path
 if((Get-FileHash $taskHostProofPath).Hash -cne $taskPrep.recoveryHosts.sha256){throw 'Current host qualification changed'}
 $taskHostProof=Get-Content $taskHostProofPath -Raw|ConvertFrom-Json -DateKind String

@@ -1,5 +1,13 @@
 function Assert-CurrentSdkNativeReturn {
  param([string]$TaskRoot)
+ $taskFinalGrant=Join-Path $TaskRoot 'artifacts/af1082-f5-d7-root-integration-1/sdk-final-da-grant1.json'
+ if(Test-Path $taskFinalGrant){
+  $taskFinalReturn=Join-Path $TaskRoot 'artifacts/af1082-f5-d7-root-integration-1/sdk-final-da-return-received1.json'
+  if(!(Test-Path $taskFinalReturn)){throw 'Final DA exclusive SDK lane remains reserved; the earlier224 return cannot authorize a CAD runtime'}
+  $taskFinal=Get-Content $taskFinalReturn -Raw|ConvertFrom-Json -DateKind String
+  if(!$taskFinal.sdkExplicitNativeReturnReceived -or $taskFinal.parentGrantSHA256 -cne (Get-FileHash $taskFinalGrant).Hash){throw 'Final DA explicit return must cover the latest reservation'}
+  if((Get-FileHash $taskFinal.sdkConfirmation.path).Hash -cne $taskFinal.sdkConfirmation.sha256){throw 'Final DA explicit return source changed'}
+ }
  $taskLatestGrant=Join-Path $TaskRoot 'artifacts/af1082-f5-d7-root-integration-1/sdk-native-return224-2.json'
  if(Test-Path $taskLatestGrant){
   $taskCurrentReturn=Join-Path $TaskRoot 'artifacts/af1082-f5-d7-root-integration-1/sdk-explicit-return224-received1.json'

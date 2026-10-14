@@ -1,0 +1,46 @@
+{
+  "recordedAt": "2026-10-14T00:45:30.217Z",
+  "actions": [
+    {
+      "action": "click",
+      "target": "TerminationPicker",
+      "screenshotId": "screenshot-0",
+      "x": 895,
+      "y": 379,
+      "time": "2026-10-14T00:42:23.936Z"
+    },
+    {
+      "action": "click",
+      "target": "To finite surface popup item",
+      "screenshotId": "screenshot-2",
+      "x": 114,
+      "y": 154,
+      "time": "2026-10-14T00:42:35.005Z"
+    },
+    {
+      "action": "click",
+      "target": "TerminationPicker reopened",
+      "screenshotId": "screenshot-0",
+      "x": 895,
+      "y": 379,
+      "time": "2026-10-14T00:43:12.293Z"
+    },
+    {
+      "action": "click",
+      "target": "Cancel unconfirmed editor",
+      "screenshotId": "screenshot-0",
+      "x": 1024,
+      "y": 834,
+      "time": "2026-10-14T00:45:26.863Z"
+    }
+  ],
+  "failedAccessibleAction": {
+    "index": 340,
+    "error": "element 340 is not available in cached app state for WindowHost.exe"
+  },
+  "observations": "list_windows and list_apps expose only owner. Related popup screenshot exists but selecting via screenshot2 dismissed popup and decremented temporary StartY; Termination stayed Fixed distance. Returned popup accessibility item cannot be used by the cached owner. No Confirm input. Original six-state trace remains unfulfilled.",
+  "confirmationInputIssued": false,
+  "constructedWindow": false,
+  "finalOwnedReturnedWindows": [],
+  "D6Accepted": false
+}

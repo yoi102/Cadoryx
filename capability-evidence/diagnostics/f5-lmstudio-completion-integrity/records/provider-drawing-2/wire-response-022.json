@@ -1,0 +1,29 @@
+{
+  "id": "chatcmpl-643vs4zmjp7ld62lppgenl",
+  "object": "chat.completion",
+  "created": 1791940154,
+  "model": "prism-ml/bonsai-27b",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "",
+        "reasoning_content": "The inspect_sources returned the native selections. I can see that index 38 is a CylinderFace with path \"f7c2c2c260-d173-406e-b3e3-eb77b0339632/b9302c21-5837-446d-9f9c-586b3794d879\", bodyId \"de4f1aa8-91bc-4e71-ae56-07be5251d253\", revision \"370c4362-075a-4c63-97e4-e1c13d0d26cb\".\n\nNow I need to create a Diameter dimension on this CylinderFace for the specified view. Let me use cad_edit with action \"create_drawing_sheet\" or similar... wait, looking at the available actions in cad_edit, I don't see a direct \"",
+        "tool_calls": []
+      },
+      "logprobs": null,
+      "finish_reason": "length"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 7973,
+    "completion_tokens": 219,
+    "total_tokens": 8192,
+    "completion_tokens_details": {
+      "reasoning_tokens": 219
+    }
+  },
+  "stats": {},
+  "system_fingerprint": "prism-ml/bonsai-27b"
+}

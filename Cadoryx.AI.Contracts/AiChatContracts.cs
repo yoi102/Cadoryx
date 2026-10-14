@@ -106,6 +106,9 @@ public sealed class AiContextWindowExceededException : HttpRequestException
     public int? ContextWindowTokens { get; }
 }
 
+// No text or tool calls from this response have been accepted by the client.
+public sealed class AiResponseTruncatedException(string message) : InvalidOperationException(message);
+
 public interface IAiAssistantSettingsStore
 {
     AiAssistantSettings Load();

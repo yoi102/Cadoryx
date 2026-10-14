@@ -1,0 +1,45 @@
+{
+  "state": "DRAWING3_REPEATED_EIGHT_READ_CALLS_WITH_COMPLETE_CYLINDER_AVAILABLE_IN_TWO_ACTUAL_REQUESTS",
+  "captures": [
+    {
+      "request": "artifacts/f5-lmstudio-completion-integrity-1/provider-drawing-3/request-023.json",
+      "sha256": "BC6FE91798A6B51DEAAABACE3BBCDABE9F138285B03BB3B6751F6536486B96B1",
+      "completeCylinderFaceRetained": true,
+      "rowMatchesNativeSuccessfulReadByteSemanticExactly": true
+    },
+    {
+      "request": "artifacts/f5-lmstudio-completion-integrity-1/provider-drawing-3/request-024.json",
+      "sha256": "4EC953D0D4552C6FFF59EF28236F4B31DE44DEB0956E5357F7497C4D73446A2A",
+      "completeCylinderFaceRetained": true,
+      "rowMatchesNativeSuccessfulReadByteSemanticExactly": true
+    }
+  ],
+  "repeatedCallOrdinals": [
+    [
+      13,
+      20
+    ],
+    [
+      21,
+      28
+    ]
+  ],
+  "firstSuccessfulQueryOrdinal": 20,
+  "actualCylinderSelection": {
+    "index": 38,
+    "kind": "Face",
+    "selection": {
+      "path": "15049495-397f-465f-98f6-27c190e0698e/c4bbb435-decc-4900-8d4a-4b1eab954b39",
+      "bodyId": "eaa24d7c-abd1-4461-9ca9-03a052006f64",
+      "revision": "55acbb73-94bd-442e-baf1-9b68a3c2d55c",
+      "asset": "20bad286545c0db06d38143f3d5a79fca15f18eca98f7adb88c492013233b45f",
+      "fingerprint": "7F270420AD41CD525D3DC661E225D82B195F5C421B8D904BF45FF3495B60CCD9",
+      "index": 38
+    },
+    "geometry": "CylinderFace"
+  },
+  "providerPassed": false,
+  "fullWorkflowComplete": false,
+  "sourceOfFailure": "Original16-tool-round limit; no response length/truncation event",
+  "STEP24Retried": false
+}

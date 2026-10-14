@@ -22,6 +22,7 @@ capability-evidence/diagnostics/f5-complete-source-context/** -text whitespace=c
 capability-evidence/diagnostics/f5-history-stale-recovery/** -text whitespace=cr-at-eol
 capability-evidence/diagnostics/af1076-public85/** -text whitespace=cr-at-eol
 capability-evidence/diagnostics/af1076-root-full/** -text whitespace=cr-at-eol
+capability-evidence/diagnostics/f5-lmstudio-completion-integrity/** -text whitespace=cr-at-eol
 capability-evidence/diagnostics/exact-step-brep-status/** -text whitespace=cr-at-eol
 capability-evidence/diagnostics/exact-step-mapped-scale/** -text whitespace=cr-at-eol
 capability-evidence/diagnostics/drawing-action-schema/** -text whitespace=cr-at-eol

@@ -3363,4 +3363,5 @@
   <data name="ViewportRecovering" xml:space="preserve"><value>ビューを復旧しています…</value></data>
   <data name="ViewportRecoveryFailed" xml:space="preserve"><value>ビューの復旧に失敗しました。</value></data>
   <data name="ViewportRecoveryDeadline" xml:space="preserve"><value>再作成したビューポートは 30 秒以内に準備完了になりませんでした。</value></data>
+  <data name="AiTruncatedResponseRetry" xml:space="preserve"><value>モデルの応答が途中で切れました。完了した操作を保持し、現在の回数制限内で一度だけ再試行します。</value></data>
 </root>

@@ -5,6 +5,7 @@ import hashlib
 import json
 import runpy
 import sys
+import argparse
 
 ROOT = Path(__file__).resolve().parents[2]
 DRAFT = ROOT / 'artifacts/af1082-f5-d7-local87cu1-1'
@@ -12,15 +13,22 @@ read = lambda p: json.loads(p.read_text(encoding='utf-8-sig'))
 sha = lambda p: hashlib.sha256(p.read_bytes()).hexdigest().upper()
 def ref(p): return {'path': p.relative_to(ROOT).as_posix(), 'sha256': sha(p)}
 
-ui_culture_revision = len(sys.argv) == 3 and sys.argv[2] == '--ui-culture'
-assert len(sys.argv) == 2 or ui_culture_revision
-index = int(sys.argv[1]); assert 0 <= index < 36
+parser = argparse.ArgumentParser()
+parser.add_argument('case_index', type=int)
+parser.add_argument('--ui-culture', action='store_true')
+parser.add_argument('--iteration', type=int, default=1)
+args = parser.parse_args()
+ui_culture_revision = args.ui_culture
+index = args.case_index; assert 0 <= index < 36 and 1 <= args.iteration <= 100
 runpy.run_path(str(Path(__file__).with_name('require-full-gate.py')))
 freeze = read(DRAFT / 'freeze.json')
 prep = read(DRAFT / 'followup-preparation.json')
 assert prep['freeze']['sha256'] == sha(DRAFT / 'freeze.json')
 assert len(prep['D6Matrix']) == 36
-case = prep['D6Matrix'][index]
+case = dict(prep['D6Matrix'][index])
+if args.iteration != 1:
+    assert case['output'].endswith('-1')
+    case['output'] = case['output'][:-1] + str(args.iteration)
 assert sha(Path(case['fixture']['path'])) == case['fixture']['sha256']
 host_path = ROOT / prep['recoveryHosts']['path']
 assert sha(host_path) == prep['recoveryHosts']['sha256']

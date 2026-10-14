@@ -1,0 +1,49 @@
+  Determining projects to restore...
+  Restored C:\Users\yoiri\source\repos\Cadoryx\Cadoryx.Rendering\Cadoryx.Rendering.csproj (in 87 ms).
+  Restored C:\Users\yoiri\source\repos\Cadoryx\Cadoryx.CommandLine\Cadoryx.CommandLine.csproj (in 83 ms).
+  Restored C:\Users\yoiri\source\repos\Cadoryx\Cadoryx.ViewModels.Services\Cadoryx.ViewModels.Services.csproj (in 83 ms).
+  Restored C:\Users\yoiri\source\repos\Cadoryx\Cadoryx.Kernel.Abstractions\Cadoryx.Kernel.Abstractions.csproj (in 87 ms).
+  Restored C:\Users\yoiri\source\repos\Cadoryx\Cadoryx.Agent.Codex\Cadoryx.Agent.Codex.csproj (in 87 ms).
+  Restored C:\Users\yoiri\source\repos\Cadoryx\Cadoryx.Db\Cadoryx.Db.csproj (in 83 ms).
+  Restored C:\Users\yoiri\source\repos\Cadoryx\Cadoryx.Lang\Cadoryx.Lang.csproj (in 151 ms).
+  Restored C:\Users\yoiri\source\repos\Cadoryx\Cadoryx.Sketching\Cadoryx.Sketching.csproj (in 152 ms).
+  Restored C:\Users\yoiri\source\repos\Cadoryx\Cadoryx.Commands\Cadoryx.Commands.csproj (in 152 ms).
+  Restored C:\Users\yoiri\source\repos\Cadoryx\Cadoryx.Editor\Cadoryx.Editor.csproj (in 152 ms).
+  Restored C:\Users\yoiri\source\repos\Cadoryx\Cadoryx.Kernel.Occt\Cadoryx.Kernel.Occt.csproj (in 155 ms).
+  Restored C:\Users\yoiri\source\repos\Cadoryx\Cadoryx.IO\Cadoryx.IO.csproj (in 155 ms).
+  Restored C:\Users\yoiri\source\repos\Cadoryx\Cadoryx.ViewModels\Cadoryx.ViewModels.csproj (in 154 ms).
+  Restored C:\Users\yoiri\source\repos\Cadoryx\tools\CadAgentWorkflowProbeRawTransport\CadAgentWorkflowProbeRawTransport.csproj (in 185 ms).
+  3 of 17 projects are up-to-date for restore.
+  Cadoryx.Lang -> C:\Users\yoiri\source\repos\Cadoryx\Cadoryx.Lang\bin\Release\net10.0\Cadoryx.Lang.dll
+  Cadoryx.ViewModels.Services -> C:\Users\yoiri\source\repos\Cadoryx\Cadoryx.ViewModels.Services\bin\Release\net10.0\Cadoryx.ViewModels.Services.dll
+  Cadoryx.Db -> C:\Users\yoiri\source\repos\Cadoryx\Cadoryx.Db\bin\Release\net10.0\Cadoryx.Db.dll
+  Cadoryx.Kernel.Abstractions -> C:\Users\yoiri\source\repos\Cadoryx\Cadoryx.Kernel.Abstractions\bin\Release\net10.0\Cadoryx.Kernel.Abstractions.dll
+  Cadoryx.Sketching -> C:\Users\yoiri\source\repos\Cadoryx\Cadoryx.Sketching\bin\Release\net10.0\Cadoryx.Sketching.dll
+  Cadoryx.Commands -> C:\Users\yoiri\source\repos\Cadoryx\Cadoryx.Commands\bin\Release\net10.0\Cadoryx.Commands.dll
+  Cadoryx.Rendering -> C:\Users\yoiri\source\repos\Cadoryx\Cadoryx.Rendering\bin\Release\net10.0\Cadoryx.Rendering.dll
+  Cadoryx.Editor -> C:\Users\yoiri\source\repos\Cadoryx\Cadoryx.Editor\bin\Release\net10.0\Cadoryx.Editor.dll
+  Cadoryx.CommandLine -> C:\Users\yoiri\source\repos\Cadoryx\Cadoryx.CommandLine\bin\Release\net10.0\Cadoryx.CommandLine.dll
+  Cadoryx.AI.Contracts -> C:\Users\yoiri\source\repos\Cadoryx\Cadoryx.AI.Contracts\bin\Release\net10.0\Cadoryx.AI.Contracts.dll
+  Cadoryx.Agent -> C:\Users\yoiri\source\repos\Cadoryx\Cadoryx.Agent\bin\Release\net10.0\Cadoryx.Agent.dll
+  Cadoryx.Agent.Codex -> C:\Users\yoiri\source\repos\Cadoryx\Cadoryx.Agent.Codex\bin\Release\net10.0\Cadoryx.Agent.Codex.dll
+  Cadoryx.AI.LmStudio -> C:\Users\yoiri\source\repos\Cadoryx\Cadoryx.AI.LmStudio\bin\Release\net10.0\Cadoryx.AI.LmStudio.dll
+  Cadoryx.ViewModels -> C:\Users\yoiri\source\repos\Cadoryx\Cadoryx.ViewModels\bin\Release\net10.0\Cadoryx.ViewModels.dll
+  Cadoryx.IO -> C:\Users\yoiri\source\repos\Cadoryx\Cadoryx.IO\bin\Release\net10.0\Cadoryx.IO.dll
+  Cadoryx.Kernel.Occt -> C:\Users\yoiri\source\repos\Cadoryx\Cadoryx.Kernel.Occt\bin\Release\net10.0\Cadoryx.Kernel.Occt.dll
+C:\Users\yoiri\source\repos\Cadoryx\tools\CadAgentWorkflowProbe\WorkspaceProviderProbe.cs(28,9): error CS0122: 'CadWorkspaceAuthoring' is inaccessible due to its protection level [C:\Users\yoiri\source\repos\Cadoryx\tools\CadAgentWorkflowProbeRawTransport\CadAgentWorkflowProbeRawTransport.csproj]
+C:\Users\yoiri\source\repos\Cadoryx\tools\CadAgentWorkflowProbe\WorkspaceProviderProbe.cs(29,115): error CS1061: 'CadWorkspaceAuthoring?' does not contain a definition for 'NotifyChanged' and no accessible extension method 'NotifyChanged' accepting a first argument of type 'CadWorkspaceAuthoring?' could be found (are you missing a using directive or an assembly reference?) [C:\Users\yoiri\source\repos\Cadoryx\tools\CadAgentWorkflowProbeRawTransport\CadAgentWorkflowProbeRawTransport.csproj]
+C:\Users\yoiri\source\repos\Cadoryx\tools\CadAgentWorkflowProbe\WorkspaceProviderProbe.cs(33,76): error CS0122: 'CadAgentToolset' is inaccessible due to its protection level [C:\Users\yoiri\source\repos\Cadoryx\tools\CadAgentWorkflowProbeRawTransport\CadAgentWorkflowProbeRawTransport.csproj]
+C:\Users\yoiri\source\repos\Cadoryx\artifacts\f5-lmstudio-completion-integrity-1\raw-source1\Program.cs(38,34): error CS0122: 'CadAgentToolset' is inaccessible due to its protection level [C:\Users\yoiri\source\repos\Cadoryx\tools\CadAgentWorkflowProbeRawTransport\CadAgentWorkflowProbeRawTransport.csproj]
+C:\Users\yoiri\source\repos\Cadoryx\tools\CadAgentWorkflowProbe\DrawingProviderProbe.cs(25,71): error CS0122: 'CadAgentToolset' is inaccessible due to its protection level [C:\Users\yoiri\source\repos\Cadoryx\tools\CadAgentWorkflowProbeRawTransport\CadAgentWorkflowProbeRawTransport.csproj]
+
+Build FAILED.
+
+C:\Users\yoiri\source\repos\Cadoryx\tools\CadAgentWorkflowProbe\WorkspaceProviderProbe.cs(28,9): error CS0122: 'CadWorkspaceAuthoring' is inaccessible due to its protection level [C:\Users\yoiri\source\repos\Cadoryx\tools\CadAgentWorkflowProbeRawTransport\CadAgentWorkflowProbeRawTransport.csproj]
+C:\Users\yoiri\source\repos\Cadoryx\tools\CadAgentWorkflowProbe\WorkspaceProviderProbe.cs(29,115): error CS1061: 'CadWorkspaceAuthoring?' does not contain a definition for 'NotifyChanged' and no accessible extension method 'NotifyChanged' accepting a first argument of type 'CadWorkspaceAuthoring?' could be found (are you missing a using directive or an assembly reference?) [C:\Users\yoiri\source\repos\Cadoryx\tools\CadAgentWorkflowProbeRawTransport\CadAgentWorkflowProbeRawTransport.csproj]
+C:\Users\yoiri\source\repos\Cadoryx\tools\CadAgentWorkflowProbe\WorkspaceProviderProbe.cs(33,76): error CS0122: 'CadAgentToolset' is inaccessible due to its protection level [C:\Users\yoiri\source\repos\Cadoryx\tools\CadAgentWorkflowProbeRawTransport\CadAgentWorkflowProbeRawTransport.csproj]
+C:\Users\yoiri\source\repos\Cadoryx\artifacts\f5-lmstudio-completion-integrity-1\raw-source1\Program.cs(38,34): error CS0122: 'CadAgentToolset' is inaccessible due to its protection level [C:\Users\yoiri\source\repos\Cadoryx\tools\CadAgentWorkflowProbeRawTransport\CadAgentWorkflowProbeRawTransport.csproj]
+C:\Users\yoiri\source\repos\Cadoryx\tools\CadAgentWorkflowProbe\DrawingProviderProbe.cs(25,71): error CS0122: 'CadAgentToolset' is inaccessible due to its protection level [C:\Users\yoiri\source\repos\Cadoryx\tools\CadAgentWorkflowProbeRawTransport\CadAgentWorkflowProbeRawTransport.csproj]
+    0 Warning(s)
+    5 Error(s)
+
+Time Elapsed 00:00:31.30

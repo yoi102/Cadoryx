@@ -1,0 +1,29 @@
+{
+  "recordedAt": "2026-10-14T00:23:53.416780+00:00",
+  "state": "ORIGINAL_PROVIDER_WORKFLOWS_RAW_RESPONSE_RECORDING_PROJECTION_NOT_RUNTIME",
+  "originals": [
+    {
+      "path": "tools/CadAgentWorkflowProbe/Program.cs",
+      "sha256": "ECDE64BA427AB24667EC274D06B59404E37675BCD08447DFAE0EB62D62602346"
+    },
+    {
+      "path": "tools/CadAgentWorkflowProbe/DrawingProviderProbe.cs",
+      "sha256": "8BCF923185714028CDC865D774460FA56F73F86BE858F67186A9B4DC19D3BE72"
+    },
+    {
+      "path": "tools/CadAgentWorkflowProbe/WorkspaceProviderProbe.cs",
+      "sha256": "C46829DFDEA0342806F184BB1B894E0FB7002FF3C0928A00C6F484F1EC42C0CB"
+    }
+  ],
+  "projected": {
+    "path": "artifacts/f5-lmstudio-completion-integrity-1/raw-source1/Program.cs",
+    "sha256": "673EF26169247DA4BBA5B07EC4675A1D56F119351FCCFCD551429A1F3DDBA86E"
+  },
+  "originalProgramRecoveredByteExactlyByReversingOnlyTwoRecordingReplacements": true,
+  "originalPromptsAssertionsModel8192Context16Rounds4MinutesUnchanged": true,
+  "originalTransportRequestBytesNotModified": true,
+  "headersRecorded": false,
+  "rawResponsesSyntheticOwnedScopeOnly": true,
+  "liveProviderStarted": false,
+  "AFComplete": false
+}

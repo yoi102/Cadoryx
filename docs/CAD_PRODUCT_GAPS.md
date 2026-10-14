@@ -1,5 +1,7 @@
 # 3D CAD 产品缺口与实施规划
 
+2026-10-14，status266：原严格STEP精确24项延期且不重试，其余A–F继续、尚未全部完成。[F5截断恢复](F5_TRUNCATED_RESPONSE_RECOVERY.md)两配置各40/40纯托管及97/97相关测试、完整solution build0，原一次恢复/8192/1024/16轮/4分钟保持；完整预计7160未重跑。[最新原工程图](../capability-evidence/diagnostics/f5-lmstudio-completion-integrity/provider-drawing3-verification.json)2/8后超工具轮FAIL，无截断，实际native62/资产归零已验，工程图供应商未完成。D6第二窗口无有效确认/预览，真实Cancel后FAIL和原快照保持；当前材质/窗口/最新工作区与其他全部A–F继续。旧恢复24/36及MiniPC达标证据属于此前载荷，SDK final DA独占时段已明确交还，待新明确返还后续运行；开发仍精确本地87.cu1，正式已验仍A4/B17/C5/D5/E4/F5g，G/清理暂缓。当前以[STATUS](STATUS.md)及原终态为准，以下较早状态保留历史。
+
 2026-10-14，status262：最新两配置完整7117各7093通过/原24延期失败/零跳过，无新增失败；原24恢复第2轮及48保存/52整图/native62通过，2个唯一全帧均已直审。主壳36首场景FAIL，文化设置与初始dirty文档关闭须核对；原模型/D6/材质/性能及D7合入仍待，根公开85。正式已验A4/B17/C5/D5/E4/F5g保持，A–F全部范围继续、G/清理暂缓。当前以[STATUS](STATUS.md)为准，以下status261及更早为历史。
 
 2026-10-14，status261：最新F5+D7/精确87.cu1 Release完整7117已实际7093通过/精确原24延期失败/零跳过，无新增失败，名称/源码/程序集/实际native62已独立核对；Debug串行运行、尚未终态。原24/36恢复及两模型等待完整两配置门禁。根公开85、D7未合入，正式已验A4/B17/C5/D5/E4/F5g保持，A–F继续、G/清理暂缓。以下status260及更早为历史，当前以[STATUS](STATUS.md)为准。
@@ -173,9 +175,9 @@ M14–M17 已记录的待办主要关注性能、精确建模边界、工程交�
 
 2026-10-14执行顺序更新：原24项严格STEP失败按用户授权单独延期，不等待其修复即可继续其他批次。其他功能、实际窗口、模型、性能及交换门禁继续执行；延期不等于完成，也不降低原第5节完成标准。
 
-当前正式已验子批保持 **A4 / B17 / C5 / D5 / E4 / F5g**，A–F尚未全部完成。D7已接入开发根，使用开发期允许的精确本地87.cu1 NuGet，恢复文本显式使用窗口选定语言。[根接入](../capability-evidence/diagnostics/af1082-f5-d7-local87cu1/root-integration-verification.json)验证原1200输入加唯一恢复语言差异、38项D7/依赖变更、locked restore与完整solution Release/Debug build0、SDK13/native62及根Release原缺失分支36/36。普通根构建带当前Git身份，不声称与冻结19生产DLL同字节或根7117已重跑。原冻结[完整7117两配置](../capability-evidence/diagnostics/af1082-f5-d7-local87cu1/full-verification.json)各7093通过、精确原24严格STEP延期失败、零跳过，无新增失败。
+当前正式已验子批保持 **A4 / B17 / C5 / D5 / E4 / F5g**，A–F尚未全部完成。D7已接入开发根，使用开发期允许的精确本地87.cu1 NuGet；[本批F5回复完整性](F5_TRUNCATED_RESPONSE_RECOVERY.md)再变更五模块/两个语言卫星，两配置各40纯托管和97相关测试通过，完整solution build0。完整预计7160未重跑；原冻结[完整7117两配置](../capability-evidence/diagnostics/af1082-f5-d7-local87cu1/full-verification.json)各7093通过、原24延期失败、零跳过，仅作基线，不声称当前普通根/差异载荷已完整验收。
 
-最终WPF-only载荷原24恢复24/24、48保存/52完整图、主壳36/36及144完整图通过，所有不同完整图已直接审阅。[当前MiniPC3独立审计](../capability-evidence/diagnostics/af1082-f5-d7-local87cu1/performance-verification.json)两fresh直接完整提交4.571/4.606秒达到原6482ms，各20双视口周期通过；两次Open完整显示65.98/65.94秒，完整参考PNG保持。物理显示/输入延迟仍未证明。原Bonsai跨文档8/8、工程图2/8后失败；D6首窗口未完成六状态，实际Cancel后FAIL保留，快照未改。D6/材质窗口、工程图模型失败及其余全部A–F继续，当前原生/CPU时段已明确返还SDK224，须等新明确交回才再启动根native/window。精确原24严格STEP继续延期且未重试，G及清理暂缓。
+此前WPF-only载荷原24恢复24/24、48保存/52完整图、主壳36/36及144完整图通过，所有不同整图已审阅；[MiniPC3](../capability-evidence/diagnostics/af1082-f5-d7-local87cu1/performance-verification.json)两fresh4.571/4.606秒达到原6482ms，各20双视口周期、两次Open完整显示65.98/65.94秒及参考PNG保持。它们不代替当前五模块差异的窗口/性能，物理显示/输入延迟未证明。最新原工程图2/8后超16工具轮FAIL，工作区新差异未重跑；D6第二窗口亦未完成六状态，实际Cancel后FAIL、快照未改。已在模型终态和实际空闲后明确交还SDK final DA数小时独占时段，须等最新明确返还后续native/window/model；旧224收据不能解锁。精确原24严格STEP继续延期且未重试，第4、5节其余范围保持，G/清理暂缓。
 
 建议优先把“简单机械零件设计 → 装配 → 关联工程图 → 交换/安装交付”做成可靠闭环。下面是实施批次建议，不是新增阶段的完成声明，也不包含未经确定的工期。
 

@@ -148,16 +148,23 @@ public sealed class AgentEmptyResponseRecoveryTests
     }
 
     [Theory][InlineData("en-US")][InlineData("zh-CN")][InlineData("ja-JP")]
-    public async Task ToolboxDisplaysLocalizedRecoveryAsSystemStatusAndGenuineAnswerAsAssistant(string culture)
+    public Task ToolboxDisplaysLocalizedRecoveryAsSystemStatusAndGenuineAnswerAsAssistant(string culture) =>
+        AssertLocalizedRecoveryAsync(culture, truncated: false);
+
+    [Theory][InlineData("en-US")][InlineData("zh-CN")][InlineData("ja-JP")]
+    public Task ToolboxDisplaysLocalizedTruncationAsSystemStatusAndGenuineAnswerAsAssistant(string culture) =>
+        AssertLocalizedRecoveryAsync(culture, truncated: true);
+
+    private static async Task AssertLocalizedRecoveryAsync(string culture, bool truncated)
     {
         var original=Strings.Culture;try
         {
-            Strings.Culture=CultureInfo.GetCultureInfo(culture);var expected=Strings.AiEmptyResponseRetry;
-            using var model=new AiAssistantToolboxViewModel(new Settings(),new RetryEventRunner(),new ScriptedChat((_,_,_)=>Task.FromResult(Answer("unused"))),new Codex(),new CadCommandLineService(),new Icons());
+            Strings.Culture=CultureInfo.GetCultureInfo(culture);var expected=truncated?Strings.AiTruncatedResponseRetry:Strings.AiEmptyResponseRetry;
+            using var model=new AiAssistantToolboxViewModel(new Settings(),new RetryEventRunner(truncated),new ScriptedChat((_,_,_)=>Task.FromResult(Answer("unused"))),new Codex(),new CadCommandLineService(),new Icons());
             model.Model="model";model.UserInput="Inspect";await model.SendCommand.ExecuteAsync(null);
             Assert.Contains(model.Messages,m=>m.Role=="System"&&m.Content==expected);Assert.DoesNotContain(model.Messages,m=>m.Role=="Assistant"&&m.Content==expected);
             Assert.Contains(model.Messages,m=>m.Role=="Assistant"&&m.Content=="actual answer");Assert.False(model.IsBusy);
-            Assert.NotEqual("AiEmptyResponseRetry",expected);Assert.False(string.IsNullOrWhiteSpace(expected));
+            Assert.NotEqual(truncated?"AiTruncatedResponseRetry":"AiEmptyResponseRetry",expected);Assert.False(string.IsNullOrWhiteSpace(expected));
         }
         finally{Strings.Culture=original;}
     }
@@ -186,10 +193,10 @@ public sealed class AgentEmptyResponseRecoveryTests
         public Task<string> ExecuteAsync(AiToolCall call,CancellationToken token)=>Task.FromResult("{\"success\":true,\"changed\":false}");
     }
     private sealed class Settings:IAiAssistantSettingsStore{private AiAssistantSettings settings=new();public AiAssistantSettings Load()=>settings.Clone();public void Save(AiAssistantSettings value)=>settings=value.Clone();}
-    private sealed class RetryEventRunner:IAgentRunner
+    private sealed class RetryEventRunner(bool truncated=false):IAgentRunner
     {
         public async Task<AgentRunResult> RunAsync(AgentRunRequest request,Func<AgentRunEvent,ValueTask>? reportEvent=null,CancellationToken cancellationToken=default)
-        {if(reportEvent is not null){await reportEvent(new(AgentRunEventKind.EmptyResponseRetry));await reportEvent(new(AgentRunEventKind.AssistantMessage,"actual answer"));}return new("model",8192,false);}
+        {if(reportEvent is not null){await reportEvent(new(truncated?AgentRunEventKind.TruncatedResponseRetry:AgentRunEventKind.EmptyResponseRetry));await reportEvent(new(AgentRunEventKind.AssistantMessage,"actual answer"));}return new("model",8192,false);}
     }
     private sealed class Codex:ICodexAgentClient
     {

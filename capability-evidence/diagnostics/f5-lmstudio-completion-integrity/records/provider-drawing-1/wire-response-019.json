@@ -1,0 +1,29 @@
+{
+  "id": "chatcmpl-5uvmp4wr19q5v107je5qsw",
+  "object": "chat.completion",
+  "created": 1791939244,
+  "model": "prism-ml/bonsai-27b",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "",
+        "reasoning_content": "The Top view has been created successfully. Let me verify the final state to confirm there are no other objects in the drawing and that everything is correct.\n\nFrom the inspection results, I can see:\n- The document has 1 body (a8ee00fd-3eda-4502-bd6c-28afc904980c)\n- The document has 1 part (35238973-1572-468a-bf9b-0cd7032ba1c6)\n- The document has 2 features: a Hole and a Seed\n- The drawing has 1 sheet with 1 Top view\n\nThe user asked for \"No other objects\" - but the document already had bodies/features from before. Let me check if there are any other drawings or sheets that might need to be cleaned up, or if the user meant no other *drawing* objects.\n\nLooking at the requirements again: \"create exactly one Top view named Top in sheetId 639e8363-ff57-48a4-91e7-ee694fc4c072. authorJson: name=Top,kind=Top,centerMm={x:80,y:60},scale=2. No other objects.\"\n\nThe \"No other objects\" likely refers to no other drawing objects (views, dimensions, etc.) in that sheet. The view inspection shows only 1 view with sourceCount:1, which is correct.\n\nLet me verify the final state one more time and confirm everything is as expected.\n",
+        "tool_calls": []
+      },
+      "logprobs": null,
+      "finish_reason": "length"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 7691,
+    "completion_tokens": 501,
+    "total_tokens": 8192,
+    "completion_tokens_details": {
+      "reasoning_tokens": 347
+    }
+  },
+  "stats": {},
+  "system_fingerprint": "prism-ml/bonsai-27b"
+}

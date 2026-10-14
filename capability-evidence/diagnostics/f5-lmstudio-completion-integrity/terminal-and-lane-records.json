@@ -1,0 +1,41 @@
+{
+  "records": [
+    {
+      "source": "artifacts/af1082-f5-d7-root-integration-1/sdk-final-da-grant1.json",
+      "persisted": "capability-evidence/diagnostics/f5-lmstudio-completion-integrity/records/final-da/sdk-final-da-grant1.json",
+      "sha256": "54AE531399F0E14A2CEA66D8241F8850387A0578AEA4D1381B511E06B41830EF"
+    },
+    {
+      "source": "artifacts/af1082-f5-d7-root-integration-1/native-idle-before-final-da-grant1.json",
+      "persisted": "capability-evidence/diagnostics/f5-lmstudio-completion-integrity/records/final-da/native-idle-before-final-da-grant1.json",
+      "sha256": "86FC41130AA419EDF0357BE6B30AD6A5FF1A758F549563221CBD66ACF537F2F0"
+    },
+    {
+      "source": "artifacts/af1082-f5-d7-root-integration-1/stale224-return-rejection1.json",
+      "persisted": "capability-evidence/diagnostics/f5-lmstudio-completion-integrity/records/final-da/stale224-return-rejection1.json",
+      "sha256": "5C8E90A640DA7DFB64666AB3F85CE72D384983DE4483F57C627EC0FB212D2334"
+    },
+    {
+      "source": "artifacts/f5-lmstudio-completion-integrity-1/provider-drawing-3/result.json",
+      "persisted": "capability-evidence/diagnostics/f5-lmstudio-completion-integrity/records/provider-drawing-3/result.json",
+      "sha256": "34F5AD05ADAD38A99A756337DD47576D779B13696D6FF60446B913B7DE933C92"
+    },
+    {
+      "source": "artifacts/f5-lmstudio-completion-integrity-1/provider-drawing-3/events.json",
+      "persisted": "capability-evidence/diagnostics/f5-lmstudio-completion-integrity/records/provider-drawing-3/events.json",
+      "sha256": "F293C7ABB501AAC3F1E22B5F6189FFA53A31828D10E462FD2697912A9DC0F47F"
+    },
+    {
+      "source": "artifacts/f5-lmstudio-completion-integrity-1/provider-drawing-3/request-023.json",
+      "persisted": "capability-evidence/diagnostics/f5-lmstudio-completion-integrity/records/provider-drawing-3/request-023.json",
+      "sha256": "BC6FE91798A6B51DEAAABACE3BBCDABE9F138285B03BB3B6751F6536486B96B1"
+    },
+    {
+      "source": "artifacts/f5-lmstudio-completion-integrity-1/provider-drawing-3/request-024.json",
+      "persisted": "capability-evidence/diagnostics/f5-lmstudio-completion-integrity/records/provider-drawing-3/request-024.json",
+      "sha256": "4EC953D0D4552C6FFF59EF28236F4B31DE44DEB0956E5357F7497C4D73446A2A"
+    }
+  ],
+  "AFComplete": false,
+  "STEP24Retried": false
+}

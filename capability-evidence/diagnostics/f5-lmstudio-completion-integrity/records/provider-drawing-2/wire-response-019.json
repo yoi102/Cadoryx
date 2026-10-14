@@ -1,0 +1,38 @@
+{
+  "id": "chatcmpl-9e251qfo4orwcxh46tyyn",
+  "object": "chat.completion",
+  "created": 1791940130,
+  "model": "prism-ml/bonsai-27b",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "",
+        "reasoning_content": "The user wants me to:\n1. Read cad_status\n2. Inspect native selections with cad_drawing inspect_sources using specific parameters\n3. Copy only its actual selection (never invent an index, fingerprint or geometry cache)\n4. Use contract(dimension), then create exactly one Diameter dimension on the CylinderFace for viewId fdc8ef16-5010-4121-85e1-ea4302d173ca, sheetId 750bfc34-2ca0-485e-ba7c-22897b5afc21, textPositionMm={x:80,y:35},upperTolerance=0.1,lowerTolerance=0.1. No measured value input.\n\nLet me first read cad_status to get the current state.\n",
+        "tool_calls": [
+          {
+            "type": "function",
+            "id": "bBzTdjTfAUUFsqYJolmhqKD2yiGkKRJz",
+            "function": {
+              "name": "cad_status",
+              "arguments": "{}"
+            }
+          }
+        ]
+      },
+      "logprobs": null,
+      "finish_reason": "tool_calls"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 6903,
+    "completion_tokens": 202,
+    "total_tokens": 7105,
+    "completion_tokens_details": {
+      "reasoning_tokens": 185
+    }
+  },
+  "stats": {},
+  "system_fingerprint": "prism-ml/bonsai-27b"
+}

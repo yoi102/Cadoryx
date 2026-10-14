@@ -1,0 +1,306 @@
+{
+  "recordedAt": "2026-10-14T01:14:49.733504+00:00",
+  "state": "F5_BOUNDED_RECOVERY_40_BOTH_RELATED97_BOTH_D6_UNRESOLVED_CHECKPOINT",
+  "qualification": {
+    "path": "artifacts/f5-lmstudio-completion-integrity-1/qualification4.json",
+    "sha256": "DCE5C93B93045F00D467D993FCD6EBF901502329A715744E9FB9D4461C5D2159"
+  },
+  "sources": [
+    {
+      "path": "Cadoryx.AI.Contracts/AiChatContracts.cs",
+      "sha256": "89606346DAC351C5499B267FDC960C1ED83CF9CD7A2668471FC8507A2D795919"
+    },
+    {
+      "path": "Cadoryx.AI.LmStudio/LmStudioChatClient.cs",
+      "sha256": "C810F450EBFB5244E68F4D726D9F880A60A678D9F0B6B71E810660EC1E38E2D2"
+    },
+    {
+      "path": "Cadoryx.Agent/AgentContracts.cs",
+      "sha256": "BC2E8FD6990BB48418A8184942666A7E4CC4DD23D167DF80C0CFEFB48BDC9E76"
+    },
+    {
+      "path": "Cadoryx.Agent/AgentRunner.cs",
+      "sha256": "65DF56F4AF6A7F994E68052E9E1D990271304A108977A363B5C7752FD5231A82"
+    },
+    {
+      "path": "Cadoryx.Lang/Strings/Strings.Designer.cs",
+      "sha256": "E4128DE25269878CF992A19E5BF085504D81B8000D51A8BFC0EE246A3E9EE4DF"
+    },
+    {
+      "path": "Cadoryx.Lang/Strings/Strings.ja-JP.resx",
+      "sha256": "84E4150B03CF5DDE3466EB67AC18D226F68D15F7802A3EBAC0CE62148FCEFE9F"
+    },
+    {
+      "path": "Cadoryx.Lang/Strings/Strings.resx",
+      "sha256": "A5CA09EDFE9783172DAC08B3B08A6CBEE49A8277E2E01D91C5D554AD7AE07C75"
+    },
+    {
+      "path": "Cadoryx.Lang/Strings/Strings.zh-CN.resx",
+      "sha256": "1C142A682C98879B3A840605F2126DBE491F483BAF023CDB2BE3A49C6257826A"
+    },
+    {
+      "path": "Cadoryx.Tests/AgentEmptyResponseRecoveryTests.cs",
+      "sha256": "EC8384535954BEAE6379C18407CBCD66FC2AF243C2EB50D070018AE0D15BB098"
+    },
+    {
+      "path": "Cadoryx.Tests/LmStudioCompletionIntegrityTests.cs",
+      "sha256": "A6FD7EAA1C075078E7F872C8475B7D6C21146CD51DDC1F0C11ACBBFE8FC8B1A4"
+    },
+    {
+      "path": "Cadoryx.ViewModels/Toolboxes/AiAssistantToolboxViewModel.cs",
+      "sha256": "E90965BC0263AA73D216103B026B0D35C2DBE5D124164871FFD1AF531C2DADA2"
+    }
+  ],
+  "persisted": [
+    {
+      "source": {
+        "path": "artifacts/f5-lmstudio-completion-integrity-1/qualification2.json",
+        "sha256": "3502CD5C5E2FF96831AF9B6B4345B59A1818F7D9E62E8FF4B20B36244BC3D4D6"
+      },
+      "persisted": {
+        "path": "capability-evidence/diagnostics/f5-lmstudio-completion-integrity/records/qualification2.json",
+        "sha256": "3502CD5C5E2FF96831AF9B6B4345B59A1818F7D9E62E8FF4B20B36244BC3D4D6"
+      }
+    },
+    {
+      "source": {
+        "path": "artifacts/f5-lmstudio-completion-integrity-1/qualification3.json",
+        "sha256": "29BD0FD4472A510995B6961E4E579B95ED3038E06E1176BCB1E53E7B4A2485C3"
+      },
+      "persisted": {
+        "path": "capability-evidence/diagnostics/f5-lmstudio-completion-integrity/records/qualification3.json",
+        "sha256": "29BD0FD4472A510995B6961E4E579B95ED3038E06E1176BCB1E53E7B4A2485C3"
+      }
+    },
+    {
+      "source": {
+        "path": "artifacts/f5-lmstudio-completion-integrity-1/qualification4.json",
+        "sha256": "DCE5C93B93045F00D467D993FCD6EBF901502329A715744E9FB9D4461C5D2159"
+      },
+      "persisted": {
+        "path": "capability-evidence/diagnostics/f5-lmstudio-completion-integrity/records/qualification4.json",
+        "sha256": "DCE5C93B93045F00D467D993FCD6EBF901502329A715744E9FB9D4461C5D2159"
+      }
+    },
+    {
+      "source": {
+        "path": "artifacts/f5-lmstudio-completion-integrity-1/baseline-results3/baseline3.trx",
+        "sha256": "3A124C5F5EC52681072F352BF257D11552F4360BC9F355140E8DF745D0A8CA60"
+      },
+      "persisted": {
+        "path": "capability-evidence/diagnostics/f5-lmstudio-completion-integrity/records/baseline-results3/baseline3.trx",
+        "sha256": "3A124C5F5EC52681072F352BF257D11552F4360BC9F355140E8DF745D0A8CA60"
+      }
+    },
+    {
+      "source": {
+        "path": "artifacts/f5-lmstudio-completion-integrity-1/release5/transport-release5.trx",
+        "sha256": "DAF435CBE16D46322606AD8C01E72E9B12DBDAEB19450126E1924AF05400A565"
+      },
+      "persisted": {
+        "path": "capability-evidence/diagnostics/f5-lmstudio-completion-integrity/records/release5/transport-release5.trx",
+        "sha256": "DAF435CBE16D46322606AD8C01E72E9B12DBDAEB19450126E1924AF05400A565"
+      }
+    },
+    {
+      "source": {
+        "path": "artifacts/f5-lmstudio-completion-integrity-1/debug3/transport-debug3.trx",
+        "sha256": "1DF70056DD7747C887BF77020E6A01BD69D0AA43A8EC421F9E6BCA4C5BBD6338"
+      },
+      "persisted": {
+        "path": "capability-evidence/diagnostics/f5-lmstudio-completion-integrity/records/debug3/transport-debug3.trx",
+        "sha256": "1DF70056DD7747C887BF77020E6A01BD69D0AA43A8EC421F9E6BCA4C5BBD6338"
+      }
+    },
+    {
+      "source": {
+        "path": "artifacts/f5-lmstudio-completion-integrity-1/related-release4/related-release4.trx",
+        "sha256": "39DCC9651CD65881A46CA6B4AC80A02681E0D29E5F7C11AD5C183DFD9B7298E5"
+      },
+      "persisted": {
+        "path": "capability-evidence/diagnostics/f5-lmstudio-completion-integrity/records/related-release4/related-release4.trx",
+        "sha256": "39DCC9651CD65881A46CA6B4AC80A02681E0D29E5F7C11AD5C183DFD9B7298E5"
+      }
+    },
+    {
+      "source": {
+        "path": "artifacts/f5-lmstudio-completion-integrity-1/related-debug4/related-debug4.trx",
+        "sha256": "FBD01FEF2DA9B5A6032E721B3CFD0A1794D3F19C65A9DF29F0043F98945F80FC"
+      },
+      "persisted": {
+        "path": "capability-evidence/diagnostics/f5-lmstudio-completion-integrity/records/related-debug4/related-debug4.trx",
+        "sha256": "FBD01FEF2DA9B5A6032E721B3CFD0A1794D3F19C65A9DF29F0043F98945F80FC"
+      }
+    },
+    {
+      "source": {
+        "path": "artifacts/f5-lmstudio-completion-integrity-1/root-release3.log",
+        "sha256": "A7DBFC2EBEF454D2242EF8A790031F3185CA3FF6A9E8F2C2B81310DA0B3AC0EA"
+      },
+      "persisted": {
+        "path": "capability-evidence/diagnostics/f5-lmstudio-completion-integrity/records/root-release3.log",
+        "sha256": "A7DBFC2EBEF454D2242EF8A790031F3185CA3FF6A9E8F2C2B81310DA0B3AC0EA"
+      }
+    },
+    {
+      "source": {
+        "path": "artifacts/f5-lmstudio-completion-integrity-1/root-debug3.log",
+        "sha256": "35B71014E29753C0BEDE0FEA58F810343BD0F83394045BF201DDB9547AF275E7"
+      },
+      "persisted": {
+        "path": "capability-evidence/diagnostics/f5-lmstudio-completion-integrity/records/root-debug3.log",
+        "sha256": "35B71014E29753C0BEDE0FEA58F810343BD0F83394045BF201DDB9547AF275E7"
+      }
+    },
+    {
+      "source": {
+        "path": "artifacts/f5-lmstudio-completion-integrity-1/raw-provider-build5.log",
+        "sha256": "27D8ACB18DC20B22B2856575612AF78EAFEF2FECDEEEC6841FE22FD6B37AD9F2"
+      },
+      "persisted": {
+        "path": "capability-evidence/diagnostics/f5-lmstudio-completion-integrity/records/raw-provider-build5.log",
+        "sha256": "27D8ACB18DC20B22B2856575612AF78EAFEF2FECDEEEC6841FE22FD6B37AD9F2"
+      }
+    },
+    {
+      "source": {
+        "path": "artifacts/f5-lmstudio-completion-integrity-1/raw-provider-build1.log",
+        "sha256": "0DCA0FEF4199B3D68BBB54D2238CFF892BE4D4547BE784BE0B2DD678AD946A55"
+      },
+      "persisted": {
+        "path": "capability-evidence/diagnostics/f5-lmstudio-completion-integrity/records/raw-provider-build1.log",
+        "sha256": "0DCA0FEF4199B3D68BBB54D2238CFF892BE4D4547BE784BE0B2DD678AD946A55"
+      }
+    },
+    {
+      "source": {
+        "path": "artifacts/f5-lmstudio-completion-integrity-1/raw-provider-build3.log",
+        "sha256": "6F995DD863A9376A8B528338EF43D710C1EC146F1D905E608BAC0AB431804A3F"
+      },
+      "persisted": {
+        "path": "capability-evidence/diagnostics/f5-lmstudio-completion-integrity/records/raw-provider-build3.log",
+        "sha256": "6F995DD863A9376A8B528338EF43D710C1EC146F1D905E608BAC0AB431804A3F"
+      }
+    },
+    {
+      "source": {
+        "path": "artifacts/f5-lmstudio-completion-integrity-1/provider-drawing-1/wire-response-019.json",
+        "sha256": "8ADD317A096554731E20EF92D66F9A35321293DC67E6F5A94A036B1AE3520C47"
+      },
+      "persisted": {
+        "path": "capability-evidence/diagnostics/f5-lmstudio-completion-integrity/records/provider-drawing-1/wire-response-019.json",
+        "sha256": "8ADD317A096554731E20EF92D66F9A35321293DC67E6F5A94A036B1AE3520C47"
+      }
+    },
+    {
+      "source": {
+        "path": "artifacts/f5-lmstudio-completion-integrity-1/provider-drawing-1/response-019-failure.json",
+        "sha256": "A25AE8AA576733D0828B301EA2A3D24599B66AA4B9ECB67208377B40EAAE5AAA"
+      },
+      "persisted": {
+        "path": "capability-evidence/diagnostics/f5-lmstudio-completion-integrity/records/provider-drawing-1/response-019-failure.json",
+        "sha256": "A25AE8AA576733D0828B301EA2A3D24599B66AA4B9ECB67208377B40EAAE5AAA"
+      }
+    },
+    {
+      "source": {
+        "path": "artifacts/f5-lmstudio-completion-integrity-1/provider-drawing-2/events.json",
+        "sha256": "B4421873A7F17F576CD819EF2E7521C633F35993AC58AE040CFDB3F00214FBC1"
+      },
+      "persisted": {
+        "path": "capability-evidence/diagnostics/f5-lmstudio-completion-integrity/records/provider-drawing-2/events.json",
+        "sha256": "B4421873A7F17F576CD819EF2E7521C633F35993AC58AE040CFDB3F00214FBC1"
+      }
+    },
+    {
+      "source": {
+        "path": "artifacts/f5-lmstudio-completion-integrity-1/provider-drawing-2/wire-response-019.json",
+        "sha256": "F72C15B10CACC26F38A659820E2257522F1A442FD6890C2C62C1DB5F147E5A43"
+      },
+      "persisted": {
+        "path": "capability-evidence/diagnostics/f5-lmstudio-completion-integrity/records/provider-drawing-2/wire-response-019.json",
+        "sha256": "F72C15B10CACC26F38A659820E2257522F1A442FD6890C2C62C1DB5F147E5A43"
+      }
+    },
+    {
+      "source": {
+        "path": "artifacts/f5-lmstudio-completion-integrity-1/provider-drawing-2/wire-response-022.json",
+        "sha256": "C51A943906FEF6FAEA904DF2EFFBC9F7DFC8DF660F95688BF301CE06B624988C"
+      },
+      "persisted": {
+        "path": "capability-evidence/diagnostics/f5-lmstudio-completion-integrity/records/provider-drawing-2/wire-response-022.json",
+        "sha256": "C51A943906FEF6FAEA904DF2EFFBC9F7DFC8DF660F95688BF301CE06B624988C"
+      }
+    },
+    {
+      "source": {
+        "path": "artifacts/f5-lmstudio-completion-integrity-1/provider-drawing-2/response-022-failure.json",
+        "sha256": "D3CA234964EF5BB3F6EAB81977411C0D36FAA7785E6CFE70159C88BD3E43F10A"
+      },
+      "persisted": {
+        "path": "capability-evidence/diagnostics/f5-lmstudio-completion-integrity/records/provider-drawing-2/response-022-failure.json",
+        "sha256": "D3CA234964EF5BB3F6EAB81977411C0D36FAA7785E6CFE70159C88BD3E43F10A"
+      }
+    },
+    {
+      "source": {
+        "path": "artifacts/f5-lmstudio-completion-integrity-1/raw-source1/projection-verification.json",
+        "sha256": "7386B6EEEB0603DD7C0988DAF3C0956FBBEFAACC613BE2100FD9AF5748796114"
+      },
+      "persisted": {
+        "path": "capability-evidence/diagnostics/f5-lmstudio-completion-integrity/records/raw-source1/projection-verification.json",
+        "sha256": "7386B6EEEB0603DD7C0988DAF3C0956FBBEFAACC613BE2100FD9AF5748796114"
+      }
+    },
+    {
+      "source": {
+        "path": "artifacts/f5-lmstudio-completion-integrity-1/d6-operator2.json",
+        "sha256": "CAB5881446182830FF675874F2F939E4630C559DCED553FAC740A3AF53958D2F"
+      },
+      "persisted": {
+        "path": "capability-evidence/diagnostics/f5-lmstudio-completion-integrity/records/d6-operator2.json",
+        "sha256": "CAB5881446182830FF675874F2F939E4630C559DCED553FAC740A3AF53958D2F"
+      }
+    },
+    {
+      "source": {
+        "path": "artifacts/af1082-f5-d7-local87cu1-1/windows/window-create-en-US-plane-positive-2/state.json",
+        "sha256": "6400320A9E365CC90DA48337A182D8CDCB03033CC4B6CF6BF85D35C420E1E07C"
+      },
+      "persisted": {
+        "path": "capability-evidence/diagnostics/f5-lmstudio-completion-integrity/records/d6-second-attempt/state.json",
+        "sha256": "6400320A9E365CC90DA48337A182D8CDCB03033CC4B6CF6BF85D35C420E1E07C"
+      }
+    },
+    {
+      "source": {
+        "path": "artifacts/af1082-f5-d7-local87cu1-1/windows/window-create-en-US-plane-positive-2/failure.json",
+        "sha256": "B4A0424E10E2A73AB1E36B6C8B968DDF3B5DA9253E7D50741282AB546AEB69BE"
+      },
+      "persisted": {
+        "path": "capability-evidence/diagnostics/f5-lmstudio-completion-integrity/records/d6-second-attempt/failure.json",
+        "sha256": "B4A0424E10E2A73AB1E36B6C8B968DDF3B5DA9253E7D50741282AB546AEB69BE"
+      }
+    },
+    {
+      "source": {
+        "path": "artifacts/af1082-f5-d7-local87cu1-1/windows/window-create-en-US-plane-positive-2-exit.json",
+        "sha256": "B82907E5E2FA07740CEAFBB627ADA9D8A2DCA7CE885EF42A5E229AD61AFFF033"
+      },
+      "persisted": {
+        "path": "capability-evidence/diagnostics/f5-lmstudio-completion-integrity/records/d6-second-attempt/window-create-en-US-plane-positive-2-exit.json",
+        "sha256": "B82907E5E2FA07740CEAFBB627ADA9D8A2DCA7CE885EF42A5E229AD61AFFF033"
+      }
+    }
+  ],
+  "full7160Rerun": false,
+  "originalSTEP24Retried": false,
+  "STEP24": "EXACT_ORIGINAL_FAILURES_USER_DEFERRED",
+  "D6SecondActualAttempt": "FAIL_CANCELLED_NO_CONFIRM_NO_PREVIEW_ORIGINAL_SNAPSHOT_UNCHANGED",
+  "D6Accepted": false,
+  "workspaceCurrentRecovery": "NOT_RUN",
+  "SDK": "EXACT_LOCAL_8.0.1-preview.87.cu1_UNCHANGED",
+  "AFComplete": false,
+  "G": "USER_DEFERRED",
+  "cleanup": false
+}
