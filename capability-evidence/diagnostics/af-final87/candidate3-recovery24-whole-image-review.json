@@ -1,0 +1,37 @@
+{
+  "recordedAt": "2026-10-14T04:42:33.721496+00:00",
+  "state": "FINAL87_RECOVERY24_ALL52_FULL_IMAGE_BYTES_AND_TWO_UNIQUE_DIRECT_REVIEW_PASS",
+  "audit": {
+    "path": "artifacts/af-final87-3/recovery24/runtime-1-verification.json",
+    "sha256": "CEB5E10365BDB1881BC933A9F5C3633A21115DB217D3BE1CD02457CD06392797"
+  },
+  "reviewed": [
+    {
+      "image": {
+        "path": "artifacts/af-final87-3/recovery24/runtime-1/native-presentation-loss-completed-1-recover/before.png",
+        "sha256": "013E487AE29C1FB87DE42E36D6AC751D4CECD31F40B8659DD66C60B2D891DE15"
+      },
+      "width": 480,
+      "height": 320,
+      "directOriginalSizeViewed": true,
+      "observation": "Complete isometric block with three shaded faces, axes and navigation cube; no blank or corrupt frame."
+    },
+    {
+      "image": {
+        "path": "artifacts/af-final87-3/recovery24/runtime-1/native-presentation-loss-completed-2-recover/other-before.png",
+        "sha256": "A128793B4618B795F712ED3CFEB0A7B44DA706FDD6E72BEACE6464F0859662D1"
+      },
+      "width": 480,
+      "height": 320,
+      "directOriginalSizeViewed": true,
+      "observation": "Complete planar top view of the block with Top navigation cube and axes; original camera framing retained."
+    }
+  ],
+  "all52HashesVerified": true,
+  "allCasesBeforeAfterAndOtherPaneByteEqualityAudited": true,
+  "uniqueDirectFullImages": 2,
+  "physicalDisplayScanout": false,
+  "physicalGpuRemoval": false,
+  "actualAbsentOrInvalidContext": "NOT_RUN",
+  "AFComplete": false
+}

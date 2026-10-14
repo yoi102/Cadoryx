@@ -1,0 +1,56 @@
+{
+  "recordedAt": "2026-10-14T04:28:27.095505+00:00",
+  "state": "FINAL87_CURRENT_BOTH_FULL_NONDEFERRED7170_PASS_ACTUAL62",
+  "freeze": {
+    "path": "artifacts/af-final87-3/freeze.json",
+    "sha256": "51D01EF2973B3BCAF27572B6D40B793DD0753C6FD8C90575C911B2BEFEBFA07A"
+  },
+  "version": "8.0.1-preview.87",
+  "configurations": [
+    {
+      "configuration": "Release",
+      "passed": 7170,
+      "failed": 0,
+      "skipped": 0,
+      "exactUserDeferredNotExecuted": 24,
+      "terminal": {
+        "path": "artifacts/af-final87-3/full-release-1/exit.json",
+        "sha256": "91A436735FA73CB9BEDFEDC113C355D035D83A16B2ACEB7C869CAAAFD935F624"
+      },
+      "trx": {
+        "path": "artifacts/af-final87-3/full-release-1/runtime.trx",
+        "sha256": "564615E958C03FD7930B4E077DD1C25849472F4144C6A3EB4EE1A94328C9273F"
+      },
+      "native": {
+        "path": "artifacts/af-final87-3/full-release-1/loaded-native.json",
+        "sha256": "8BBB017E59E4D0FE2FADE703C6BE5ABB29E2D7080FC38D768849B9DE5ABB2CC6"
+      }
+    },
+    {
+      "configuration": "Debug",
+      "passed": 7170,
+      "failed": 0,
+      "skipped": 0,
+      "exactUserDeferredNotExecuted": 24,
+      "terminal": {
+        "path": "artifacts/af-final87-3/full-debug-1/exit.json",
+        "sha256": "E29AE3742F5B93FD36FB40BC6808952841ACA871ABEEF25D220C34A133F5B56C"
+      },
+      "trx": {
+        "path": "artifacts/af-final87-3/full-debug-1/runtime.trx",
+        "sha256": "43FB0DB76F2BFFF31EF670F03F0BE43DD638EA67A71E43892DC1FA91B538BC5B"
+      },
+      "native": {
+        "path": "artifacts/af-final87-3/full-debug-1/loaded-native.json",
+        "sha256": "2C66B79D833649A7B7538A3D1D2EE20AD63CFB36E8B53027DAE3198BB6B2D3DE"
+      }
+    }
+  ],
+  "original7117NamesAndMultiplicityPreserved": true,
+  "newCaseCount": 77,
+  "exactSTEP24NotExecuted": true,
+  "countsAndDisplayNameMultiplicityVerified": true,
+  "modelOrWindowAccepted": false,
+  "productionApplied": false,
+  "AFComplete": false
+}

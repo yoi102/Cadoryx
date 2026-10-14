@@ -1,0 +1,37 @@
+{
+  "recordedAt": "2026-10-14T04:45:24.633278+00:00",
+  "state": "FINAL87_ORIGINAL_RECOVERY24_AND_MAIN36_RUNTIME_AUDITED_MAIN_IMAGE_REVIEW_PENDING",
+  "freeze": {
+    "path": "artifacts/af-final87-3/freeze.json",
+    "sha256": "51D01EF2973B3BCAF27572B6D40B793DD0753C6FD8C90575C911B2BEFEBFA07A"
+  },
+  "fullBoth": {
+    "path": "capability-evidence/diagnostics/af-final87/candidate3-full-verification.json",
+    "sha256": "F5C81FC4AB42FEF250FF0541C231C0D47B95D31536BEA49706437382FE74F795"
+  },
+  "recovery24": {
+    "path": "artifacts/af-final87-3/recovery24/runtime-1-verification.json",
+    "sha256": "CEB5E10365BDB1881BC933A9F5C3633A21115DB217D3BE1CD02457CD06392797"
+  },
+  "recovery24DirectReview": {
+    "path": "capability-evidence/diagnostics/af-final87/candidate3-recovery24-whole-image-review.json",
+    "sha256": "9C419583797B8BAFC0F2322B700D839DFBEEB65E2C5C0DD7F6CF0B383244D064"
+  },
+  "main36": {
+    "path": "artifacts/af-final87-3/main-status36/runtime-1-verification.json",
+    "sha256": "8DAE4B27CDAAEACE97F4C11252069F4A382DCDFB915D13C05B6279EAD6183853"
+  },
+  "recoveryCases": 24,
+  "mainCases": 36,
+  "saves": 48,
+  "recoveryImages": 52,
+  "mainImages": 144,
+  "original30sReadinessAnd900sObservationRetained": true,
+  "actualNative62MatchedBoth": true,
+  "modelHistoryPostFaultEditAndSaveReopenAudited": true,
+  "main36DirectReview": "PENDING_42_UNIQUE_FULL_FRAMES",
+  "actualAbsentOrInvalidContext": "NOT_RUN",
+  "physicalGpuRemoval": "NOT_RUN",
+  "desktopInputStarted": false,
+  "AFComplete": false
+}

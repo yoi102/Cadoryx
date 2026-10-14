@@ -1,5 +1,15 @@
 # 当前状态
 
+2026-10-14，status272：**最终87第三候选完整两配置各7170通过，原恢复24/36实际运行已审计；工程图模型仍失败，A–F尚未完成。** [完整回归](../capability-evidence/diagnostics/af-final87/candidate3-full-verification.json)原7194发现减精确原STEP24，所有名称/次数及两actual native62保持，零失败/跳过；原STEP24未执行、不算通过。
+
+[原模型实际终态](../capability-evidence/diagnostics/af-final87/candidate3-provider-verification.json)：跨文档8/8通过，工程图完成2/8后第三轮截断失败，双方关闭后资产0、actual native62及原HTTP完整采集已核对。工程图两处length必须区分：response019为prompt7866+completion326=8192上下文顶满；response023为prompt6720+completion1024=7744、reasoning_tokens1024，耗尽原1024输出预算。原一次恢复/8192/1024/16轮/4分钟及拒绝不完整调用保持，不能只归因为上下文或延伸STEP延期。
+
+[当前恢复实际审计](../capability-evidence/diagnostics/af-final87/candidate3-recovery-verification.json)：原视口24/24、48保存/52整图/native62通过，两张不同完整图已直接审阅；主壳36/36/native62/144完整图及模型、历史、后续编辑、撤销重做、保存重开和归零已审计，42张不同完整图尚待直接审阅。原30秒/900秒及矩阵保持；不声称实际缺失上下文、物理GPU移除或物理扫描通过。D6、材质82/346及实际界面、MiniPC性能、F5失败修复和根final87接入继续；根仍87.cu1、正式A4/B17/C5/D5/E4/F5g及第4、5节全部范围保持，G/清理暂缓。以下status271及更早为历史。
+
+2026-10-14，status271：**最终87第三候选完整Release/Debug各7170/7170通过，精确原STEP24未执行；A–F尚未全部完成。** [两配置完整审计](../capability-evidence/diagnostics/af-final87/candidate3-full-verification.json)核对7194发现减原24的所有名称/次数、唯一testId、冻结测试载荷及双方实际native62路径/哈希；零失败/跳过。Release36.1768分钟，Debug37.8070分钟。[Debug单配置审计](../capability-evidence/diagnostics/af-final87/candidate3-full-debug-verification.json)另核对全部冻结来源。旧7164/4及专项123/3失败候选保留，没有扩大延期范围。
+
+原队列在两配置门禁通过后完成六个恢复/D6宿主的两配置publish0及精确app19/SDK13/native62/语言资源资格，尚未实际恢复或D6操作。原工程图模型已启动，保留Bonsai27B q1_0/8192/16轮/4分钟、原三份提示与断言及原始HTTP采集；跨文档随后串行，当前尚无两模型终态。恢复24/36、D6/材质实际窗口、原82材质/346整图、MiniPC性能和根final87接入继续；旧载荷结果不代替本轮验收。根仍精确本地87.cu1，正式已验A4/B17/C5/D5/E4/F5g及第4、5节全部范围保持，G/清理暂缓；以下status270及更早为历史。
+
 2026-10-14，status270：**最终87第三候选Release实际7170/7170通过；Debug原队列继续，A–F尚未完成。** [单配置完整审计](../capability-evidence/diagnostics/af-final87/candidate3-full-release-verification.json)核对冻结来源、测试载荷、7194真实发现减精确原24后的7170名称/次数、唯一testId和实际native62路径/哈希；零失败/跳过，耗时36.1768分钟。原STEP24未执行，不算通过；原失败候选7164/4及第二专项123/3保留，未扩大延期名单。
 
 Debug7170已由同一协调进程串行启动，实际native62已捕捉，尚未终态；完整两配置门禁未打开，原模型/恢复/窗口/材质/性能均待它通过。原24/36恢复、D6矩阵36、MiniPC原样本/预算及原82材质/346整图工具已绑定第三候选；原材质消费者和逐字节相同的只读界面观察器两项辅助publish0，仅是构建资格，不是运行或实际界面通过。根仍精确本地87.cu1，最终87仅隔离，正式已验仍A4/B17/C5/D5/E4/F5g，第4、5节全部范围保持，G/清理暂缓；以下status269及更早为历史。

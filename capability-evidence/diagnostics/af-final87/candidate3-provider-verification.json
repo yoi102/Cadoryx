@@ -1,0 +1,1999 @@
+{
+  "recordedAt": "2026-10-14T04:38:10.563876+00:00",
+  "state": "FINAL87_ORIGINAL_PROVIDER_ACTUAL_OUTCOMES_RAW_CAPTURE_VERIFIED",
+  "freeze": {
+    "path": "artifacts/af-final87-3/freeze.json",
+    "sha256": "51D01EF2973B3BCAF27572B6D40B793DD0753C6FD8C90575C911B2BEFEBFA07A"
+  },
+  "suite": {
+    "path": "artifacts/af-final87-3/after-full-exit.json",
+    "sha256": "8C03C8509D487BB70557FD2B9CEBDD91F1967EC8309E1A06887ADD7B81D17ACD"
+  },
+  "scenarios": [
+    {
+      "scenario": "drawing",
+      "passed": false,
+      "completedTurns": 2,
+      "requiredTurns": 8,
+      "failure": "LM Studio reached a token limit before completing the response. No tool calls from this incomplete response were accepted.",
+      "assetsAfterClose": 0,
+      "actualNative62Matched": true,
+      "calls": 19,
+      "failedReceipts": [
+        {
+          "ordinal": 1,
+          "tool": "cad_workspace",
+          "arguments": {
+            "action": "list",
+            "expected": {
+              "workspaceStateId": "00000000-0000-0000-0000-000000000000",
+              "activeSessionId": null,
+              "documentId": null,
+              "stateId": null
+            }
+          },
+          "receipt": {
+            "success": false,
+            "message": "Workspace authoring is unavailable in this context."
+          }
+        },
+        {
+          "ordinal": 8,
+          "tool": "cad_drawing",
+          "arguments": {
+            "action": "contract",
+            "sheetId": "edfcbee8-880b-4d38-abb5-fbbced110ecb",
+            "authorJson": "{\"name\":\"Top\",\"kind\":\"Top\",\"centerMm\":{\"x\":80,\"y\":60},\"scale\":2}"
+          },
+          "receipt": {
+            "success": false,
+            "message": "Invalid drawing arguments for action=contract. Unknown or duplicate: sheetId, authorJson. contract accepts only action/type; other actions require exact documentId/stateId from cad_status. inspect requires type, documentId and stateId together. Outer name is only save_template; create/edit names belong in authorJson.",
+            "missingOrInvalid": [],
+            "unexpectedArguments": [
+              "sheetId",
+              "authorJson"
+            ],
+            "allowedArguments": [
+              "action",
+              "type"
+            ],
+            "validRequests": [
+              {
+                "action": "contract",
+                "type": "sheet"
+              },
+              {
+                "action": "contract",
+                "type": "view"
+              },
+              {
+                "action": "contract",
+                "type": "dimension"
+              },
+              {
+                "action": "contract",
+                "type": "datum"
+              },
+              {
+                "action": "contract",
+                "type": "control_frame"
+              },
+              {
+                "action": "contract",
+                "type": "balloon"
+              },
+              {
+                "action": "contract",
+                "type": "hole_table"
+              },
+              {
+                "action": "contract",
+                "type": "field"
+              },
+              {
+                "action": "contract",
+                "type": "note"
+              },
+              {
+                "action": "contract",
+                "type": "template"
+              },
+              {
+                "action": "contract",
+                "type": "parts_table"
+              },
+              {
+                "action": "contract",
+                "type": "zones"
+              }
+            ],
+            "requestNote": "Read-only examples. Choose the requested type; contract omits every document, state, owner and source identity. The rejected request was not executed."
+          }
+        },
+        {
+          "ordinal": 9,
+          "tool": "cad_drawing",
+          "arguments": {
+            "action": "create",
+            "documentId": "e0e4aa6e-a180-4322-b170-6a0e1ddebb4c",
+            "stateId": "8f6b2ed0-0c5a-4cab-8c21-d43ed6c643b1",
+            "sheetId": "edfcbee8-880b-4d38-abb5-fbbced110ecb",
+            "type": "view",
+            "authorJson": "{\"name\":\"Top\",\"kind\":\"Top\",\"centerMm\":{\"x\":80,\"y\":60},\"scale\":2}"
+          },
+          "receipt": {
+            "success": false,
+            "message": "Exact drawing sheet is missing."
+          }
+        },
+        {
+          "ordinal": 15,
+          "tool": "cad_drawing",
+          "arguments": {
+            "action": "inspect_sources",
+            "documentId": "e0e4aa6e-a180-4322-b170-6a0e1ddebb4c",
+            "id": "14b5543a-67ad-4ff1-9f0e-a2ee0501e2d5",
+            "bodyId": "61061856-dfdd-42cf-8138-271ae502b311",
+            "revision": "28b14872-995d-4808-a419-c7dd2e41544a",
+            "limit": 50
+          },
+          "receipt": {
+            "success": false,
+            "message": "Invalid drawing arguments for action=inspect_sources. Missing or invalid: stateId. Unknown or duplicate: id. contract accepts only action/type; other actions require exact documentId/stateId from cad_status. inspect requires type, documentId and stateId together. Outer name is only save_template; create/edit names belong in authorJson.",
+            "missingOrInvalid": [
+              "stateId"
+            ],
+            "unexpectedArguments": [
+              "id"
+            ],
+            "allowedArguments": [
+              "action",
+              "documentId",
+              "stateId",
+              "path",
+              "bodyId",
+              "revision",
+              "offset",
+              "limit"
+            ],
+            "identitySource": {
+              "toolName": "cad_status",
+              "arguments": {}
+            },
+            "identityRole": "Copy documentId/stateId from the active cad_status response, not an item, body, sheet or source selection. Read current state before explicitly submitting the drawing request again. No identities were supplied or filled in automatically."
+          }
+        },
+        {
+          "ordinal": 17,
+          "tool": "cad_drawing",
+          "arguments": {
+            "action": "contract",
+            "documentId": "e0e4aa6e-a180-4322-b170-6a0e1ddebb4c",
+            "stateId": "b7b90da4-632b-421b-9902-43fff5967ce4",
+            "authorJson": "{\"type\":\"dimension\",\"viewId\":\"97171b28-1df4-49e2-a3bf-c599bd86ffde\",\"sheetId\":\"edfcbee8-880b-4d38-abb5-fbbced110ecb\",\"target\":{\"path\":\"e0e4aa6e-a180-4322-b170-6a0e1ddebb4c/14b5543a-67ad-4ff1-9f0e-a2ee0501e2d5\",\"bodyId\":\"61061856-dfdd-42cf-8138-271ae502b311\",\"revision\":\"28b14872-995d-4808-a419-c7dd2e41544a\"},\"type\":\"Diameter\",\"textPositionMm\":{\"x\":80,\"y\":35},\"upperTolerance\":0.1,\"lowerTolerance\":0.1}"
+          },
+          "receipt": {
+            "success": false,
+            "message": "Invalid drawing arguments for action=contract. Unknown or duplicate: documentId, stateId, authorJson. contract accepts only action/type; other actions require exact documentId/stateId from cad_status. inspect requires type, documentId and stateId together. Outer name is only save_template; create/edit names belong in authorJson.",
+            "missingOrInvalid": [],
+            "unexpectedArguments": [
+              "documentId",
+              "stateId",
+              "authorJson"
+            ],
+            "allowedArguments": [
+              "action",
+              "type"
+            ],
+            "validRequests": [
+              {
+                "action": "contract",
+                "type": "sheet"
+              },
+              {
+                "action": "contract",
+                "type": "view"
+              },
+              {
+                "action": "contract",
+                "type": "dimension"
+              },
+              {
+                "action": "contract",
+                "type": "datum"
+              },
+              {
+                "action": "contract",
+                "type": "control_frame"
+              },
+              {
+                "action": "contract",
+                "type": "balloon"
+              },
+              {
+                "action": "contract",
+                "type": "hole_table"
+              },
+              {
+                "action": "contract",
+                "type": "field"
+              },
+              {
+                "action": "contract",
+                "type": "note"
+              },
+              {
+                "action": "contract",
+                "type": "template"
+              },
+              {
+                "action": "contract",
+                "type": "parts_table"
+              },
+              {
+                "action": "contract",
+                "type": "zones"
+              }
+            ],
+            "requestNote": "Read-only examples. Choose the requested type; contract omits every document, state, owner and source identity. The rejected request was not executed."
+          }
+        }
+      ],
+      "terminal": {
+        "path": "artifacts/af-final87-3/provider-drawing-1-exit.json",
+        "sha256": "AEA6EC0FD90C1BFE74BEF079C995EEB171D27F53F9870AFB8A716796F2458004"
+      },
+      "start": {
+        "path": "artifacts/af-final87-3/provider-drawing-1-start.json",
+        "sha256": "706A8885CAA3486F8C66298783B67898ED3F7261F883F1092FD1F9FC47A91AB3"
+      },
+      "result": {
+        "path": "artifacts/af-final87-3/provider-drawing-1/result.json",
+        "sha256": "FD79FD8433136F47873DCCF9383FA21E9E709E406046F25EB8CDF1A1A6184767"
+      },
+      "binding": {
+        "path": "artifacts/af-final87-3/provider-drawing-1-loaded-native.json",
+        "sha256": "93CC74C5A3F1E32A2900DAEC9EE30B4C05786FB7D351792A93593592930BDDE5"
+      },
+      "toolCalls": {
+        "path": "artifacts/af-final87-3/provider-drawing-1/tool-calls.json",
+        "sha256": "340A0D2B844F7A4BDDD2C25F55D499290966559EB5D9DDF0E11BE87EA51CE5D6"
+      },
+      "captures": [
+        {
+          "request": {
+            "path": "artifacts/af-final87-3/provider-drawing-1/request-001.json",
+            "sha256": "DEEBD196B487C913782D5F0309F7BD68E9AD619F2E69447A7C7140D8FE77BF65"
+          },
+          "wire": {
+            "path": "artifacts/af-final87-3/provider-drawing-1/wire-request-001.json",
+            "sha256": "BD3F5D5A0C5215D7CE63F1298C903EC8D1B1DC74C76DBB526CDBCDFB27ED5DD9"
+          },
+          "rawResponse": {
+            "path": "artifacts/af-final87-3/provider-drawing-1/wire-response-001.json",
+            "sha256": "ED3D8215E5FA949EB305528D4FE57719229096C580D60D1C7DF7EFCE4821D422"
+          },
+          "httpStatus": {
+            "path": "artifacts/af-final87-3/provider-drawing-1/wire-response-001-status.json",
+            "sha256": "87D41C8F4F1229D0A405EF749ACA3F6ACDE8264364E7FE9D146F4AFC5DA731DD"
+          },
+          "decoded": {
+            "path": "artifacts/af-final87-3/provider-drawing-1/response-001.json",
+            "sha256": "B9930EFC336EC03CBBE196FFAAEED573ACB44A5F9F3D121ADEBB0E23AD12CC3F"
+          },
+          "typedClientFailure": null
+        },
+        {
+          "request": {
+            "path": "artifacts/af-final87-3/provider-drawing-1/request-002.json",
+            "sha256": "E24C4344A4F903EBAFB3D14F28AE13E707F7F6F98887BF54BF61044A656B7FA6"
+          },
+          "wire": {
+            "path": "artifacts/af-final87-3/provider-drawing-1/wire-request-002.json",
+            "sha256": "6043B114E7A2176A8D54973670FB97E02463AE6999E552189783CF49A7625AC6"
+          },
+          "rawResponse": {
+            "path": "artifacts/af-final87-3/provider-drawing-1/wire-response-002.json",
+            "sha256": "08E7ABEE4D6962F51CEEF40C4AD9C4E56AC5F4F59A71A73677F3E25AB40759CC"
+          },
+          "httpStatus": {
+            "path": "artifacts/af-final87-3/provider-drawing-1/wire-response-002-status.json",
+            "sha256": "38061B9031D09894B40308B209CADA92B02C490B9672546675B87AA254A51887"
+          },
+          "decoded": {
+            "path": "artifacts/af-final87-3/provider-drawing-1/response-002.json",
+            "sha256": "E69DF923B8B3E91382A39AAD01C921DF5AE7BE20A2032C5A0BD5CFCF0B182ECC"
+          },
+          "typedClientFailure": null
+        },
+        {
+          "request": {
+            "path": "artifacts/af-final87-3/provider-drawing-1/request-003.json",
+            "sha256": "C00EA61550643AF540B845EEB4205974114F520AFB93BA50BED5E2B1E15F4E48"
+          },
+          "wire": {
+            "path": "artifacts/af-final87-3/provider-drawing-1/wire-request-003.json",
+            "sha256": "DAAA263079E0CBB6563595EFB25909B77D116028400E0BE3EB15AA1F3CAF6EB5"
+          },
+          "rawResponse": {
+            "path": "artifacts/af-final87-3/provider-drawing-1/wire-response-003.json",
+            "sha256": "C03A4065797CEF0FE1444CABE4AFFEABED9F008EC84DA3EA5522D2D677D1C540"
+          },
+          "httpStatus": {
+            "path": "artifacts/af-final87-3/provider-drawing-1/wire-response-003-status.json",
+            "sha256": "4D9574F10B220909D4F67A8DB8ADCDCAF2586AF57B65AC4679E68ED5A9646493"
+          },
+          "decoded": {
+            "path": "artifacts/af-final87-3/provider-drawing-1/response-003.json",
+            "sha256": "758137E1FAF76B15B05A3B127FE83538FCD0B5CE5EFC9164D868300076F79994"
+          },
+          "typedClientFailure": null
+        },
+        {
+          "request": {
+            "path": "artifacts/af-final87-3/provider-drawing-1/request-004.json",
+            "sha256": "F1F39C07A8EADDD34EC8E3D1448A308369CBD02833A990FAA0662198DD6663EA"
+          },
+          "wire": {
+            "path": "artifacts/af-final87-3/provider-drawing-1/wire-request-004.json",
+            "sha256": "5A2D7ACC0784215D29D91E021EF5269DE0A435796A060AF2F372E2DDA920EF15"
+          },
+          "rawResponse": {
+            "path": "artifacts/af-final87-3/provider-drawing-1/wire-response-004.json",
+            "sha256": "52E2AF0E19CFC97F9318FB367A14AC40E63DE2B1AB6EE5768E2A5F729E7936B3"
+          },
+          "httpStatus": {
+            "path": "artifacts/af-final87-3/provider-drawing-1/wire-response-004-status.json",
+            "sha256": "0060C4A84FE17EBD04C9D502CC9F08EAEDE32CE765661C69BFDCF4343DF9D5D5"
+          },
+          "decoded": {
+            "path": "artifacts/af-final87-3/provider-drawing-1/response-004.json",
+            "sha256": "23B90CDEC0437FC916821E7FABBDB467A8AB1E584FFF0020C8134155F2ABBFF2"
+          },
+          "typedClientFailure": null
+        },
+        {
+          "request": {
+            "path": "artifacts/af-final87-3/provider-drawing-1/request-005.json",
+            "sha256": "653256B9134AEE14EF0D7AEC17E78F57505CE3C4C9F21BA03F661E0F882884D0"
+          },
+          "wire": {
+            "path": "artifacts/af-final87-3/provider-drawing-1/wire-request-005.json",
+            "sha256": "02EBF32CB440A8A87C71F1BB4DB9DC2B4DF2FB64AB75B645EA5B251651ABE2BD"
+          },
+          "rawResponse": {
+            "path": "artifacts/af-final87-3/provider-drawing-1/wire-response-005.json",
+            "sha256": "23F8E56B38FA2F55C782CBDB1AD391BECC69895C3F8A8E422BEF1941B71BAE15"
+          },
+          "httpStatus": {
+            "path": "artifacts/af-final87-3/provider-drawing-1/wire-response-005-status.json",
+            "sha256": "29D7A3C385EC8763B1FA05267537F8D49610E8FD98101352A7CAA68521DE1D48"
+          },
+          "decoded": {
+            "path": "artifacts/af-final87-3/provider-drawing-1/response-005.json",
+            "sha256": "792E08D9B2CAE30454E1B8E4338ADCE4028DA4782E4193859EC0A5854BDC8E71"
+          },
+          "typedClientFailure": null
+        },
+        {
+          "request": {
+            "path": "artifacts/af-final87-3/provider-drawing-1/request-006.json",
+            "sha256": "387A015DE42CD73E64C07753DC9DAA72BD7EC11E83F5B5ED4C38D0AA1F719310"
+          },
+          "wire": {
+            "path": "artifacts/af-final87-3/provider-drawing-1/wire-request-006.json",
+            "sha256": "8AD4234FCC59E9F65C7886DC4FBE6FDE7B8D2295F774A5BDE34079761B6646E7"
+          },
+          "rawResponse": {
+            "path": "artifacts/af-final87-3/provider-drawing-1/wire-response-006.json",
+            "sha256": "1157098DB48DD95641827C840D327F506E3B0B7BD2BF9A0E34BEE6A88EF89AA1"
+          },
+          "httpStatus": {
+            "path": "artifacts/af-final87-3/provider-drawing-1/wire-response-006-status.json",
+            "sha256": "2A2DB28DF5EE9F7DF2AC9080538BF7862D0C15E8386404E83CC6FA9CCFC52D58"
+          },
+          "decoded": {
+            "path": "artifacts/af-final87-3/provider-drawing-1/response-006.json",
+            "sha256": "046D395D091BE26738D0503C33924CBCA6A31AED340708F6C77A2DA5260552E7"
+          },
+          "typedClientFailure": null
+        },
+        {
+          "request": {
+            "path": "artifacts/af-final87-3/provider-drawing-1/request-007.json",
+            "sha256": "EF99C239C0E0F89BB79DFD6EADB29049D0A4A486B513A2AF2A9112889A3FDBDC"
+          },
+          "wire": {
+            "path": "artifacts/af-final87-3/provider-drawing-1/wire-request-007.json",
+            "sha256": "A6ADDB81A5DAE0DD0F1CDAE1476280B082C26F47F843B560406A65013D45B4F4"
+          },
+          "rawResponse": {
+            "path": "artifacts/af-final87-3/provider-drawing-1/wire-response-007.json",
+            "sha256": "38A86AB054998AAC6F49974441D940BCFE17361ADA522E5C45210A354D1C90C5"
+          },
+          "httpStatus": {
+            "path": "artifacts/af-final87-3/provider-drawing-1/wire-response-007-status.json",
+            "sha256": "2A71059A09D6D711944BB2880D95F63AB8067CBDE9BB50CFFC8604A70879360F"
+          },
+          "decoded": {
+            "path": "artifacts/af-final87-3/provider-drawing-1/response-007.json",
+            "sha256": "AFD0C1EEA01ABD13F43872FC66D2E787C2A9A47EC4169AD8325C51F6D0D30F40"
+          },
+          "typedClientFailure": null
+        },
+        {
+          "request": {
+            "path": "artifacts/af-final87-3/provider-drawing-1/request-008.json",
+            "sha256": "D859F422EDA496F502D3C8DDACACE980C3A08D8ABC0EED1C14052165DF627C79"
+          },
+          "wire": {
+            "path": "artifacts/af-final87-3/provider-drawing-1/wire-request-008.json",
+            "sha256": "67AA921517B61F869637CAC35A031E5862A86262BD0F012478DA097DA3D0A725"
+          },
+          "rawResponse": {
+            "path": "artifacts/af-final87-3/provider-drawing-1/wire-response-008.json",
+            "sha256": "25B2285E4A4D9B1AE4DC6531976574B6F22B37851A1F507CBD7B71B2EE658D1A"
+          },
+          "httpStatus": {
+            "path": "artifacts/af-final87-3/provider-drawing-1/wire-response-008-status.json",
+            "sha256": "CBD2F8EBA7AE58E9CC86905764A759653718F826956C15A3E71A9BB6814056A1"
+          },
+          "decoded": {
+            "path": "artifacts/af-final87-3/provider-drawing-1/response-008.json",
+            "sha256": "428B8B5B343B22D2A35601C2519C0FC0069B0C2456BD82A388EDD72503EB1437"
+          },
+          "typedClientFailure": null
+        },
+        {
+          "request": {
+            "path": "artifacts/af-final87-3/provider-drawing-1/request-009.json",
+            "sha256": "10247DDAC611F112FB1D886E0AF646D074DA408F30AAA538943B540E7CAB2F10"
+          },
+          "wire": {
+            "path": "artifacts/af-final87-3/provider-drawing-1/wire-request-009.json",
+            "sha256": "5C186A9D95E33400447779D1B19A663B8298FD343784762F7780F971111C38AD"
+          },
+          "rawResponse": {
+            "path": "artifacts/af-final87-3/provider-drawing-1/wire-response-009.json",
+            "sha256": "4BB8F347A05D2BEFB5E3389570F21336D867397DDB03060A0B01534901E3350F"
+          },
+          "httpStatus": {
+            "path": "artifacts/af-final87-3/provider-drawing-1/wire-response-009-status.json",
+            "sha256": "0E7DD26596B3E7CB5579897062A68CFCC1CBDAB2B6D751AE357C8038B972BB2C"
+          },
+          "decoded": {
+            "path": "artifacts/af-final87-3/provider-drawing-1/response-009.json",
+            "sha256": "2F0FCCC87A2FC6A8306141426354E524C5384BC416A7641C9A45AA8544F6BF7C"
+          },
+          "typedClientFailure": null
+        },
+        {
+          "request": {
+            "path": "artifacts/af-final87-3/provider-drawing-1/request-010.json",
+            "sha256": "E7D9897092F4CBF2CAA2141A2289AA5118EE32E91B911E67657EC6BB2F68BB02"
+          },
+          "wire": {
+            "path": "artifacts/af-final87-3/provider-drawing-1/wire-request-010.json",
+            "sha256": "0D5B5CA30F6632D95AF739B544B38409E194FDBFF102F2B375FA6E9028F8A40F"
+          },
+          "rawResponse": {
+            "path": "artifacts/af-final87-3/provider-drawing-1/wire-response-010.json",
+            "sha256": "DB4A8C67B31C646FEBB412A44C6F54B410CFBFF8EF3E807259DAB02AB2AD4C08"
+          },
+          "httpStatus": {
+            "path": "artifacts/af-final87-3/provider-drawing-1/wire-response-010-status.json",
+            "sha256": "3AFF671DEAF9C313077597E6C83CE13C33623743D2F6337921C22A9B831A6F86"
+          },
+          "decoded": {
+            "path": "artifacts/af-final87-3/provider-drawing-1/response-010.json",
+            "sha256": "CC212022C32F1C679DE6C59245132D756B6CF8628CFEFB145C9582F0C7AC2E3A"
+          },
+          "typedClientFailure": null
+        },
+        {
+          "request": {
+            "path": "artifacts/af-final87-3/provider-drawing-1/request-011.json",
+            "sha256": "CFF369862BC804034036410AB6822BB1854506804D851BD978D885217E91C392"
+          },
+          "wire": {
+            "path": "artifacts/af-final87-3/provider-drawing-1/wire-request-011.json",
+            "sha256": "5530C26A348EC4FB3C490923F9B62A22C3EFF83939010B30044A36628B0993A3"
+          },
+          "rawResponse": {
+            "path": "artifacts/af-final87-3/provider-drawing-1/wire-response-011.json",
+            "sha256": "37084942994F82DF4A9C18F0B0374940E4932D9E5587FD8B9F10AFF41F3CFC50"
+          },
+          "httpStatus": {
+            "path": "artifacts/af-final87-3/provider-drawing-1/wire-response-011-status.json",
+            "sha256": "B37C1A5751F99642AA3387B483088F474BFF38E9E1219EC9868ED6528E44BA89"
+          },
+          "decoded": {
+            "path": "artifacts/af-final87-3/provider-drawing-1/response-011.json",
+            "sha256": "4BAF49570CD3CB6FB7749E576C854F3BB27C8697AF1BA12F79F7B93D02A77651"
+          },
+          "typedClientFailure": null
+        },
+        {
+          "request": {
+            "path": "artifacts/af-final87-3/provider-drawing-1/request-012.json",
+            "sha256": "A3E057A316169ED35DCEC0CB2CCEC24591FDBE494D91D3D76DFFD7B695B3D94C"
+          },
+          "wire": {
+            "path": "artifacts/af-final87-3/provider-drawing-1/wire-request-012.json",
+            "sha256": "EE3012985EA6BD8C5458DEFAB4DB0CDBFE9DDB5CFC0636B9FEFA3254C3F992D6"
+          },
+          "rawResponse": {
+            "path": "artifacts/af-final87-3/provider-drawing-1/wire-response-012.json",
+            "sha256": "16E09270E5DCB452329401E9736E527C1E50569ECEF562C084221485747585D6"
+          },
+          "httpStatus": {
+            "path": "artifacts/af-final87-3/provider-drawing-1/wire-response-012-status.json",
+            "sha256": "4674D49AE54F654161AA111B25515431C9863A2649B60DCD4B1DD59D3F5EB9FC"
+          },
+          "decoded": {
+            "path": "artifacts/af-final87-3/provider-drawing-1/response-012.json",
+            "sha256": "B63C6A216C43DB8E0805A47122AA7FB1A9ABE64C94CE94F3C41C81372EB67470"
+          },
+          "typedClientFailure": null
+        },
+        {
+          "request": {
+            "path": "artifacts/af-final87-3/provider-drawing-1/request-013.json",
+            "sha256": "F1A671BABC8B185C3D2D19B89B7150187C0389EA3D89DBAD2694474D3884C2AC"
+          },
+          "wire": {
+            "path": "artifacts/af-final87-3/provider-drawing-1/wire-request-013.json",
+            "sha256": "094A47659AEB00201CDC39D2C8B94BD0F112F53A7E5419778CA5DE0E7816A21A"
+          },
+          "rawResponse": {
+            "path": "artifacts/af-final87-3/provider-drawing-1/wire-response-013.json",
+            "sha256": "D9FD722B6E7681A2593E00235F88878560C4431EABF94C4265637709F72C0DF5"
+          },
+          "httpStatus": {
+            "path": "artifacts/af-final87-3/provider-drawing-1/wire-response-013-status.json",
+            "sha256": "463D2DBDF9A6DBB06EDBC7AB48886AF54BC498B40FC3FA1D9ABAD7A6A96C58F2"
+          },
+          "decoded": {
+            "path": "artifacts/af-final87-3/provider-drawing-1/response-013.json",
+            "sha256": "10C239B8DE980ABE64924A31A4468822872AC433A552AACA488BA1FC76A37DC3"
+          },
+          "typedClientFailure": null
+        },
+        {
+          "request": {
+            "path": "artifacts/af-final87-3/provider-drawing-1/request-014.json",
+            "sha256": "FB87183C2B3A98318F2CFEB79855826C0C3AD14111413045FF368F825855A044"
+          },
+          "wire": {
+            "path": "artifacts/af-final87-3/provider-drawing-1/wire-request-014.json",
+            "sha256": "A0B3FF1B57F20F93E00F00962D1EA12256F8035845FB9AE0DA24A75F94960A80"
+          },
+          "rawResponse": {
+            "path": "artifacts/af-final87-3/provider-drawing-1/wire-response-014.json",
+            "sha256": "3CA32FA5DBBB129996B256794A54D94E6B9D23399DEBC0BB0F0D6AD3856D7E63"
+          },
+          "httpStatus": {
+            "path": "artifacts/af-final87-3/provider-drawing-1/wire-response-014-status.json",
+            "sha256": "CB77150AB33E11927C907F9AB5FF948698C52988A3943057ADB9629FE56F98EE"
+          },
+          "decoded": {
+            "path": "artifacts/af-final87-3/provider-drawing-1/response-014.json",
+            "sha256": "DF834E926E0969D807A1BBA45D5468329651EE25270F73ACB0B90BFE16AB808C"
+          },
+          "typedClientFailure": null
+        },
+        {
+          "request": {
+            "path": "artifacts/af-final87-3/provider-drawing-1/request-015.json",
+            "sha256": "7643508F0020E584EAB52394947B563E4D07C2B174F954D5BB92F7D4E516A412"
+          },
+          "wire": {
+            "path": "artifacts/af-final87-3/provider-drawing-1/wire-request-015.json",
+            "sha256": "FD8679AB83DA5665BA85667A98CA1D01717720B86294D9561390B6CF618BCA67"
+          },
+          "rawResponse": {
+            "path": "artifacts/af-final87-3/provider-drawing-1/wire-response-015.json",
+            "sha256": "A04659A52BEB755C42637A13689FF2D8763CF9C37F3BE0B19B5DCAE9F06077C7"
+          },
+          "httpStatus": {
+            "path": "artifacts/af-final87-3/provider-drawing-1/wire-response-015-status.json",
+            "sha256": "190B6AAAD42D057CAA75D998A75D3344602E1F727F41749B51983917694D1BE5"
+          },
+          "decoded": {
+            "path": "artifacts/af-final87-3/provider-drawing-1/response-015.json",
+            "sha256": "B8445E085153B66F2F2021C29C58D5FDB27BA2E0E07023A5A7C97117B16E4D95"
+          },
+          "typedClientFailure": null
+        },
+        {
+          "request": {
+            "path": "artifacts/af-final87-3/provider-drawing-1/request-016.json",
+            "sha256": "93F54DB22BA502D83C7559632CBDD1642C2A6E22CA0445AE497B01399B68F254"
+          },
+          "wire": {
+            "path": "artifacts/af-final87-3/provider-drawing-1/wire-request-016.json",
+            "sha256": "716913DCBE9B73490867D9B8AD100F62207A0E09803441B509C11930A83D7952"
+          },
+          "rawResponse": {
+            "path": "artifacts/af-final87-3/provider-drawing-1/wire-response-016.json",
+            "sha256": "851DBF20576A7B7C437DDE1D9336214A33FE641CBE2378512C536E2AFC332024"
+          },
+          "httpStatus": {
+            "path": "artifacts/af-final87-3/provider-drawing-1/wire-response-016-status.json",
+            "sha256": "6305895A185BD7611355885DED7E5833AF359021C540EE2EE9BB1D37C79616DA"
+          },
+          "decoded": {
+            "path": "artifacts/af-final87-3/provider-drawing-1/response-016.json",
+            "sha256": "C3B4B3CC29BC7EEFE4C52BCFC07F327F109B5201A1A0071B35EC25B2BF9F4E3B"
+          },
+          "typedClientFailure": null
+        },
+        {
+          "request": {
+            "path": "artifacts/af-final87-3/provider-drawing-1/request-017.json",
+            "sha256": "7F3251FA4DA5FAD7B2E6E1C56F1C6FFD0E39B2A3570AB41021FA268B969C61D8"
+          },
+          "wire": {
+            "path": "artifacts/af-final87-3/provider-drawing-1/wire-request-017.json",
+            "sha256": "8BD58DA9EE34C9E3545909B3C949768191A0A059E66865D47973AB17318B55E7"
+          },
+          "rawResponse": {
+            "path": "artifacts/af-final87-3/provider-drawing-1/wire-response-017.json",
+            "sha256": "D5331DE627EFBA87B50FF30EBF2A93DFB20FE33119108721FC1D69C23D678780"
+          },
+          "httpStatus": {
+            "path": "artifacts/af-final87-3/provider-drawing-1/wire-response-017-status.json",
+            "sha256": "8CF8D52A5279BE0A6064A73F183CD0C552A50C94543BA18B0820E2568B7DFF2E"
+          },
+          "decoded": {
+            "path": "artifacts/af-final87-3/provider-drawing-1/response-017.json",
+            "sha256": "D0105ECB8A931253354A4EA54DC9DAC6236124E98D697F568159F1AA2E389F1D"
+          },
+          "typedClientFailure": null
+        },
+        {
+          "request": {
+            "path": "artifacts/af-final87-3/provider-drawing-1/request-018.json",
+            "sha256": "712ED54591661A26D5F984F947E2C7B94B7A486B25592B45E35B27604B1AFF32"
+          },
+          "wire": {
+            "path": "artifacts/af-final87-3/provider-drawing-1/wire-request-018.json",
+            "sha256": "2328D900FE11740C8F167C903CBD57B846FC095A0A1E4C63245E4A9EAD1E8457"
+          },
+          "rawResponse": {
+            "path": "artifacts/af-final87-3/provider-drawing-1/wire-response-018.json",
+            "sha256": "75634C2DB0091F50EF76D2FEFB75980E3C7C31E9FFD29A4A4C764501086841DF"
+          },
+          "httpStatus": {
+            "path": "artifacts/af-final87-3/provider-drawing-1/wire-response-018-status.json",
+            "sha256": "58735C5A76DBCC1B2A67F85A7C719BFA0F852DD24F72C7E2C638C1243C0E3475"
+          },
+          "decoded": {
+            "path": "artifacts/af-final87-3/provider-drawing-1/response-018.json",
+            "sha256": "55B35728DA5BEC0F047AE206C0436A12765D180287F0942807CF7E524A725DD8"
+          },
+          "typedClientFailure": null
+        },
+        {
+          "request": {
+            "path": "artifacts/af-final87-3/provider-drawing-1/request-019.json",
+            "sha256": "02464E4C1089534E7C7A6D6A68C3EA2227337BC8DA10B64C25277BAB1DFFD1BD"
+          },
+          "wire": {
+            "path": "artifacts/af-final87-3/provider-drawing-1/wire-request-019.json",
+            "sha256": "73C3C226D06A6C075825AF0E28293B462CA22EC0B39F5F7A189844B63C0107F5"
+          },
+          "rawResponse": {
+            "path": "artifacts/af-final87-3/provider-drawing-1/wire-response-019.json",
+            "sha256": "F245C7E1DDA5CBF8151B749982671CF19A4DCA01DA20D2E2CC1EAFFB97997CCE"
+          },
+          "httpStatus": {
+            "path": "artifacts/af-final87-3/provider-drawing-1/wire-response-019-status.json",
+            "sha256": "F84C95B07BDEB8BC7EF29F24E5952EF57A70D8237E9FA54C58606C69125B1027"
+          },
+          "decoded": null,
+          "typedClientFailure": {
+            "path": "artifacts/af-final87-3/provider-drawing-1/response-019-failure.json",
+            "sha256": "D3CA234964EF5BB3F6EAB81977411C0D36FAA7785E6CFE70159C88BD3E43F10A"
+          }
+        },
+        {
+          "request": {
+            "path": "artifacts/af-final87-3/provider-drawing-1/request-020.json",
+            "sha256": "483C5816A330F784723B42C297C195E1CE9DBABB71A61B8897360298A65C6936"
+          },
+          "wire": {
+            "path": "artifacts/af-final87-3/provider-drawing-1/wire-request-020.json",
+            "sha256": "2983817E92429573CE0483563FE1350CCD8C280D805769885CD854CCACD75FFB"
+          },
+          "rawResponse": {
+            "path": "artifacts/af-final87-3/provider-drawing-1/wire-response-020.json",
+            "sha256": "43799928C6C8CE64FEFE68C925E7BD578BADB5C80512F772C943A4FCA833A95E"
+          },
+          "httpStatus": {
+            "path": "artifacts/af-final87-3/provider-drawing-1/wire-response-020-status.json",
+            "sha256": "F770564A53520E78ACAF3A3B7BFDC8695045AEA0A2E448D1275AE1952A47D3F0"
+          },
+          "decoded": {
+            "path": "artifacts/af-final87-3/provider-drawing-1/response-020.json",
+            "sha256": "385214B8CCE0C5B84CBD9E6BD1D049E58C55FB8CFE55E9302959AF81973F68E7"
+          },
+          "typedClientFailure": null
+        },
+        {
+          "request": {
+            "path": "artifacts/af-final87-3/provider-drawing-1/request-021.json",
+            "sha256": "3252D2FB3F6CE4A9441CB85E3EBC8C79F0A0ADBE0D690A3696749AE46B440929"
+          },
+          "wire": {
+            "path": "artifacts/af-final87-3/provider-drawing-1/wire-request-021.json",
+            "sha256": "6F0F6A5F19D09E29CF76AFCD277B688256E319AECB1D73A59F3C7113F1799D8B"
+          },
+          "rawResponse": {
+            "path": "artifacts/af-final87-3/provider-drawing-1/wire-response-021.json",
+            "sha256": "5FAF508EA555EE785959E42B133D79354B250A2C50E1E15482726B609974338C"
+          },
+          "httpStatus": {
+            "path": "artifacts/af-final87-3/provider-drawing-1/wire-response-021-status.json",
+            "sha256": "A0671894F8583F21C7FBFB1A97038C46C257BB9D8A9213FEB8AE4659C1789374"
+          },
+          "decoded": {
+            "path": "artifacts/af-final87-3/provider-drawing-1/response-021.json",
+            "sha256": "57A51D6E1B0DB762F09AAB9A8146DC4645588C4CECF525432A1F0C719785D0EE"
+          },
+          "typedClientFailure": null
+        },
+        {
+          "request": {
+            "path": "artifacts/af-final87-3/provider-drawing-1/request-022.json",
+            "sha256": "C64392391387315A375A65E70EA48FAA9ED4D48BB4A51B3952912E0FE5FB77E2"
+          },
+          "wire": {
+            "path": "artifacts/af-final87-3/provider-drawing-1/wire-request-022.json",
+            "sha256": "A3FA879629D2398B96B95EF6A80B14F4A3A06ACFA4B9AB6E534E11AE712681EB"
+          },
+          "rawResponse": {
+            "path": "artifacts/af-final87-3/provider-drawing-1/wire-response-022.json",
+            "sha256": "3F37A9D85C9149D71517510B85DD7804DDCD45E335A09323BAC194DEFF074488"
+          },
+          "httpStatus": {
+            "path": "artifacts/af-final87-3/provider-drawing-1/wire-response-022-status.json",
+            "sha256": "2A48E62BF43AB882168E3D5695DCEBEC71C1D883233A56873A721C62D7EF68AA"
+          },
+          "decoded": {
+            "path": "artifacts/af-final87-3/provider-drawing-1/response-022.json",
+            "sha256": "C494C19F7E56CE3FA53F1EEB17BC9F36116F7378FE3235E76A639830C8B0E569"
+          },
+          "typedClientFailure": null
+        },
+        {
+          "request": {
+            "path": "artifacts/af-final87-3/provider-drawing-1/request-023.json",
+            "sha256": "4832ADA0328287D18B78A1D6978C41E0F0A30F73F23BBA63290B795DA3B5A5CD"
+          },
+          "wire": {
+            "path": "artifacts/af-final87-3/provider-drawing-1/wire-request-023.json",
+            "sha256": "441CD8BC5DAAE82DDBD60C4AC29C6C5683CD49C41087727634837F8720765B27"
+          },
+          "rawResponse": {
+            "path": "artifacts/af-final87-3/provider-drawing-1/wire-response-023.json",
+            "sha256": "28BC23EED26D40DE37B03D8579F78534A3C14AE901141F7DB75547C98935866C"
+          },
+          "httpStatus": {
+            "path": "artifacts/af-final87-3/provider-drawing-1/wire-response-023-status.json",
+            "sha256": "0CE51726FA0875B19D157BE3192DAF3D8AC5E180C7F414DEC1FC3163BFDF09A6"
+          },
+          "decoded": null,
+          "typedClientFailure": {
+            "path": "artifacts/af-final87-3/provider-drawing-1/response-023-failure.json",
+            "sha256": "D3CA234964EF5BB3F6EAB81977411C0D36FAA7785E6CFE70159C88BD3E43F10A"
+          }
+        }
+      ],
+      "outputs": []
+    },
+    {
+      "scenario": "workspace",
+      "passed": true,
+      "completedTurns": 8,
+      "requiredTurns": 8,
+      "failure": null,
+      "assetsAfterClose": 0,
+      "actualNative62Matched": true,
+      "calls": 38,
+      "failedReceipts": [
+        {
+          "ordinal": 7,
+          "tool": "cad_file",
+          "arguments": {
+            "action": "contract",
+            "documentId": "ae800d06-f137-4499-a554-aae1b13125ed",
+            "stateId": "33182a68-7353-47bc-b500-0319a15c42c7"
+          },
+          "receipt": {
+            "success": false,
+            "message": "Unknown or duplicate argument: documentId."
+          }
+        },
+        {
+          "ordinal": 20,
+          "tool": "cad_workspace",
+          "arguments": {
+            "action": "open",
+            "expected": {
+              "workspaceStateId": "3440c87f-9584-41e4-8bf1-776f5f72ac08",
+              "activeSessionId": "fd8d1ab3-fcfb-49d9-8f57-841e51340c50",
+              "documentId": "ae800d06-f137-4499-a554-aae1b13125ed",
+              "stateId": "33182a68-7353-47bc-b500-0319a15c42c7"
+            },
+            "path": "C:/Users/yoiri/source/repos/Cadoryx/artifacts/af-final87-3/provider-workspace-source.cadoryx"
+          },
+          "receipt": {
+            "success": false,
+            "message": "Requested input file does not exist."
+          }
+        },
+        {
+          "ordinal": 22,
+          "tool": "cad_workspace",
+          "arguments": {
+            "action": "open",
+            "expected": {
+              "workspaceStateId": "3440c87f-9584-41e4-8bf1-776f5f72ac08",
+              "activeSessionId": "fd8d1ab3-fcfb-49d9-8f57-841e51340c50",
+              "documentId": "ae800d06-f137-4499-a554-aae1b13125ed",
+              "stateId": "33182a68-7353-47bc-b500-0319a15c42c7"
+            },
+            "path": "C:/Users/yoiri/source/repos/Cadoryx/artifacts/af-final87-3/provider-workspace-source.cadoryx"
+          },
+          "receipt": {
+            "success": false,
+            "message": "Requested input file does not exist."
+          }
+        },
+        {
+          "ordinal": 23,
+          "tool": "cad_workspace",
+          "arguments": {
+            "action": "open",
+            "expected": {
+              "workspaceStateId": "3440c87f-9584-41e4-8bf1-776f5f72ac08",
+              "activeSessionId": "fd8d1ab3-fcfb-49d9-8f57-841e51340c50",
+              "documentId": "ae800d06-f137-4499-a554-aae1b13125ed",
+              "stateId": "33182a68-7353-47bc-b500-0319a15c42c7"
+            },
+            "path": "C:/Users/yoiri/source/repos/Cadoryx/artifacts/af-final87-3/provider-workspace-source.cadoryx"
+          },
+          "receipt": {
+            "success": false,
+            "message": "Requested input file does not exist."
+          }
+        },
+        {
+          "ordinal": 28,
+          "tool": "cad_workspace",
+          "arguments": {
+            "action": "list",
+            "expected": {
+              "workspaceStateId": "00000000-0000-0000-0000-000000000000",
+              "activeSessionId": null,
+              "documentId": null,
+              "stateId": null
+            },
+            "limit": 50,
+            "offset": 0
+          },
+          "receipt": {
+            "success": false,
+            "message": "Missing, invalid, unknown or duplicate workspace fields: expected.",
+            "invalidFields": [
+              "expected"
+            ],
+            "action": "list",
+            "allowedFields": [
+              "action",
+              "offset",
+              "limit"
+            ],
+            "identitySource": {
+              "toolName": "cad_workspace",
+              "arguments": {
+                "action": "list"
+              }
+            },
+            "roles": {
+              "expected": "Copy the complete list.expected object. It describes the current workspace and active session; explicit null is valid only for all three active identity fields in an empty workspace.",
+              "target": "For activate, copy one actual sessions[].identity sessionId/documentId/stateId triple. Names and row indexes are not target identities."
+            },
+            "nextStep": "No workspace transition or file read was attempted. Read list, then explicitly retry your original action with only its allowed fields and the returned exact identities. No identity was filled in automatically."
+          }
+        },
+        {
+          "ordinal": 32,
+          "tool": "cad_workspace",
+          "arguments": {
+            "action": "activate",
+            "expected": {
+              "workspaceStateId": "5e9bc46b-fd88-450b-ba64-6d941e3cc26c",
+              "activeSessionId": "0a952f06-e621-4e6d-9f9b-d57f77bd9fbd",
+              "documentId": "5faa09b4-f7e1-4154-9e69-7eaf0a2bc5ce",
+              "stateId": "139519cd-e8ac-41a7-88eb-53241314c89a"
+            },
+            "target": {
+              "sessionId": "19a66be9-890f-4998-bff9-3d410a8deb22",
+              "documentId": "49775e2d-8c95-446f-adf2-0231dd4f1e7d",
+              "stateId": "0948ae03-0e7d-4e68-9f25-55a4ef21112c"
+            },
+            "limit": 50,
+            "offset": 0
+          },
+          "receipt": {
+            "success": false,
+            "message": "Missing, invalid, unknown or duplicate workspace fields: limit, offset.",
+            "invalidFields": [
+              "limit",
+              "offset"
+            ],
+            "action": "activate",
+            "allowedFields": [
+              "action",
+              "expected",
+              "target"
+            ],
+            "identitySource": {
+              "toolName": "cad_workspace",
+              "arguments": {
+                "action": "list"
+              }
+            },
+            "roles": {
+              "expected": "Copy the complete list.expected object. It describes the current workspace and active session; explicit null is valid only for all three active identity fields in an empty workspace.",
+              "target": "For activate, copy one actual sessions[].identity sessionId/documentId/stateId triple. Names and row indexes are not target identities."
+            },
+            "nextStep": "No workspace transition or file read was attempted. Read list, then explicitly retry your original action with only its allowed fields and the returned exact identities. No identity was filled in automatically."
+          }
+        }
+      ],
+      "terminal": {
+        "path": "artifacts/af-final87-3/provider-workspace-1-exit.json",
+        "sha256": "0700DD45F19DEAA79291FC37287D8CCA5873AE2F7BD09DC3D1173B482D9F838B"
+      },
+      "start": {
+        "path": "artifacts/af-final87-3/provider-workspace-1-start.json",
+        "sha256": "06B81D7EA46677922DFDE6FD803CE6F6BEF4896D7462FB7B365C2DC68C811627"
+      },
+      "result": {
+        "path": "artifacts/af-final87-3/provider-workspace-1/result.json",
+        "sha256": "4F7B1890042D01EE2BB14B4DFCA72577BC923ECF21E0950373AF0D9BD13C2AA2"
+      },
+      "binding": {
+        "path": "artifacts/af-final87-3/provider-workspace-1-loaded-native.json",
+        "sha256": "17DF4DC626C775CD0EE9ED67A6EE5F5C38CFF18814F4325F1CBA70FBF7A72101"
+      },
+      "toolCalls": {
+        "path": "artifacts/af-final87-3/provider-workspace-1/tool-calls.json",
+        "sha256": "96C20DE4447E19F67128A1909D1AA3EBB0C6C734EAF8ED4FAC49FB79045DFAE0"
+      },
+      "captures": [
+        {
+          "request": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/request-001.json",
+            "sha256": "C564A4BFBF7F58528627169B44E514B7D90834C7065158EF7B67CBCCB297C6E9"
+          },
+          "wire": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/wire-request-001.json",
+            "sha256": "313F6D69D8C906E79F1FA484E5DF23F0FC9BE0898377074AACE2F2C4EAE3EAE4"
+          },
+          "rawResponse": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/wire-response-001.json",
+            "sha256": "BC14082F292F173EAC03FDC07881F61E52F92511A5E176CF984E5B3AA05DC967"
+          },
+          "httpStatus": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/wire-response-001-status.json",
+            "sha256": "D32FD8F53F7799B7B487901979FD0A712D796F055C456AAE2C5FBF17DBD6F2F9"
+          },
+          "decoded": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/response-001.json",
+            "sha256": "16CCC5B71358E89F7BC9745F9151C9F9380628732332F08747630F55AAA55518"
+          },
+          "typedClientFailure": null
+        },
+        {
+          "request": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/request-002.json",
+            "sha256": "54CD2C0DEB7D0984A7456E1D145E9C247B66D631F2D11F9D80CE19C1341975E2"
+          },
+          "wire": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/wire-request-002.json",
+            "sha256": "4E70B562A8027ED0AB48674477EA513297D87ABE7DFC43D9739380D2EF6DDB14"
+          },
+          "rawResponse": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/wire-response-002.json",
+            "sha256": "B751BA21E981D766B2AFAA755D9420AFE7EB0ACF9824FC5822A0607016AA6F43"
+          },
+          "httpStatus": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/wire-response-002-status.json",
+            "sha256": "EC6AD10A86619AC0FE282CB158576CF35B18E77261ED86E1B8A6E1CB790A7716"
+          },
+          "decoded": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/response-002.json",
+            "sha256": "5AB414EA7AB4D61192E6B0136C3EADE77C0298989C942FB504C61F2D8E0E05C0"
+          },
+          "typedClientFailure": null
+        },
+        {
+          "request": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/request-003.json",
+            "sha256": "33E123D5AE4B8653F6F054F0B50808E956E95B5AB11C20DC78F7783143CA2E56"
+          },
+          "wire": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/wire-request-003.json",
+            "sha256": "80A9E4E486F9A3A304475995FD3D828614F51207888160E76331C86065410696"
+          },
+          "rawResponse": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/wire-response-003.json",
+            "sha256": "7D19C0C159E93A40A65CA4CAC9305C49BC150A6963F41896231451E7CE80E692"
+          },
+          "httpStatus": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/wire-response-003-status.json",
+            "sha256": "2038A74F84D615645A8F7D02CFF941E0FC56F0903B69D0E431AAC0E44EA691DA"
+          },
+          "decoded": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/response-003.json",
+            "sha256": "856801FE0CD375957D6B6A55CF515D3CD7B0FF1161E59261BCCADE41B74F43BF"
+          },
+          "typedClientFailure": null
+        },
+        {
+          "request": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/request-004.json",
+            "sha256": "6B50B165D91AB990170D514486A31AC1C13A0F9AD4506A3D4874FAED8C440198"
+          },
+          "wire": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/wire-request-004.json",
+            "sha256": "0E2F26B30F17BAC9BAB7DE2FAF8DC094A898EAD08FA803E24881CAA3E24D7499"
+          },
+          "rawResponse": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/wire-response-004.json",
+            "sha256": "6086185F0FD0722C2CC7E46B43B9D44F6560109EC8BB1D89075F6702C7833290"
+          },
+          "httpStatus": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/wire-response-004-status.json",
+            "sha256": "33D54A3582004703D65790B15BF7C8A8779F80E5C5D74B1488D483FE4FA7EA05"
+          },
+          "decoded": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/response-004.json",
+            "sha256": "0CB3D36059C925EBCA2EFD341885087F96319A98AB3745D9FB4495121801548C"
+          },
+          "typedClientFailure": null
+        },
+        {
+          "request": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/request-005.json",
+            "sha256": "80AC997CB9A38EE8F1A7FA24F957EA8AECFFF0E432D9667F15A9770634042D17"
+          },
+          "wire": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/wire-request-005.json",
+            "sha256": "B3A4F13DA3BF47FFF48127166C72E14F263CE639372D771B426D7CF76755D3AD"
+          },
+          "rawResponse": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/wire-response-005.json",
+            "sha256": "B2724740C5E7420106DFF6010DB211274CA0F40B55C1499D01C3AF7C75B0D72A"
+          },
+          "httpStatus": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/wire-response-005-status.json",
+            "sha256": "2465D46C8FABF9746D466447C76B89FCBCC9A61CFC34F9DE9C1677440D7CDBC2"
+          },
+          "decoded": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/response-005.json",
+            "sha256": "D4A194E18C35805878454BD60F2B2B6DBE2A085D5CA935CDA355D6A2727B3589"
+          },
+          "typedClientFailure": null
+        },
+        {
+          "request": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/request-006.json",
+            "sha256": "DB30D3E499C4D2AA10B2C1A64443AEBBA4B227A83853152B66FC35A8287B9134"
+          },
+          "wire": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/wire-request-006.json",
+            "sha256": "E44A2D9D7221242346998002F6034C8EB94B1808EB2D97E030C94414469F654D"
+          },
+          "rawResponse": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/wire-response-006.json",
+            "sha256": "BCA0EDEA5AEFA361F9FF72D1B81852913C330894623506E6B2A93F01158F8EDD"
+          },
+          "httpStatus": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/wire-response-006-status.json",
+            "sha256": "531FBFF1367439F78DC46B93FDCD1F8187E92C14AEBCA0AA131E19BCEF622343"
+          },
+          "decoded": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/response-006.json",
+            "sha256": "11BA5895CCA4A1EAFC58906612C89D320B4369F00FD8C390044D719B7513F0D8"
+          },
+          "typedClientFailure": null
+        },
+        {
+          "request": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/request-007.json",
+            "sha256": "C6E6EA569B67A9038C0EAD1101DD5872342EC843E9FDA98AAC46D33F2B73A07C"
+          },
+          "wire": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/wire-request-007.json",
+            "sha256": "FE0110A79B4844AEF25F916EE9016714FADAB2CB0091E14BFF0BE011DFA3FB24"
+          },
+          "rawResponse": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/wire-response-007.json",
+            "sha256": "3B52D5B888FF6EE54C6B81CD80D87BA32CE21A06897B80839332B635380B7AB3"
+          },
+          "httpStatus": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/wire-response-007-status.json",
+            "sha256": "2AAA62662BC0869A35FE4426C56073A2B1513203E33F629815B46ACDC807DA16"
+          },
+          "decoded": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/response-007.json",
+            "sha256": "72B1339F109CDA73EEF2A9FDF74ED079A789A262AF3AF177D898A39A9C1D7C1D"
+          },
+          "typedClientFailure": null
+        },
+        {
+          "request": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/request-008.json",
+            "sha256": "D2D170F78588BE155CD3842E51A828179D1A59B25CC656E918AB7832CCD97A41"
+          },
+          "wire": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/wire-request-008.json",
+            "sha256": "26377ED8626EB2FD3CAF50BDC5A5E17196746986F806504EB612466ECFFA666E"
+          },
+          "rawResponse": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/wire-response-008.json",
+            "sha256": "541149A1A9BA0C5D824AC67F794FF27291B2017411E97029249EDC643F62D701"
+          },
+          "httpStatus": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/wire-response-008-status.json",
+            "sha256": "C8244C914F09BA962555166A0969EBF67DE6027327F49C6F86A8C40B927A2EC5"
+          },
+          "decoded": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/response-008.json",
+            "sha256": "6C76063D06301EB9E644C7DC51881D06D741DBE9A20EB6DA229BF03CE3505203"
+          },
+          "typedClientFailure": null
+        },
+        {
+          "request": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/request-009.json",
+            "sha256": "CB43FF65DCB543614894768E8C43815CD401C8A690D9F21D15F0B68039B500A9"
+          },
+          "wire": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/wire-request-009.json",
+            "sha256": "6BC65FA3CA03643BC79EBC42252BD255CA028C9FA64FCCF3B1E5FD2D81F8F025"
+          },
+          "rawResponse": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/wire-response-009.json",
+            "sha256": "8B3325E4063AD629135825B353BD7CA0056F5F0AF83201528DC1B18193693E47"
+          },
+          "httpStatus": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/wire-response-009-status.json",
+            "sha256": "1397D61353466C3D454BA15E6DCCFC730A184312A3B0C776066048F5E1936AB2"
+          },
+          "decoded": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/response-009.json",
+            "sha256": "0AC5EBF8A88BAC6B4D073C89919E5E906E5AD3C0E3A32434D463019D96D3797A"
+          },
+          "typedClientFailure": null
+        },
+        {
+          "request": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/request-010.json",
+            "sha256": "1C2852399B918434FC4BA450EFB5132FBB122B37FBC8A8A4C90F9B27B86ED95D"
+          },
+          "wire": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/wire-request-010.json",
+            "sha256": "F50097DCFB4D0A4E8CA42844A911FABCDF9C98419FC87E6DBA9E1CBDF3E92BC7"
+          },
+          "rawResponse": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/wire-response-010.json",
+            "sha256": "340B5A0547EFA92A5FABABD7A16B4695F2550270CAACF43830EE196BD8738E81"
+          },
+          "httpStatus": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/wire-response-010-status.json",
+            "sha256": "852B6A1C3F03A7412F5A75D309127C01B38E9810F1D7780ABFCE5B1AC38EEED2"
+          },
+          "decoded": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/response-010.json",
+            "sha256": "6BC22A6A65C971E91557C05BA094194E87A9ABE0F552975A19C731E872609220"
+          },
+          "typedClientFailure": null
+        },
+        {
+          "request": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/request-011.json",
+            "sha256": "89BA7B415593A1F581AAD4B5292F1203461FB47CF47A1DF109EB123F7A2DAC85"
+          },
+          "wire": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/wire-request-011.json",
+            "sha256": "2ACD9C729FACEB8A9532F1290387C0655E3386A7549E6397E1CDBD5CB8DFD967"
+          },
+          "rawResponse": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/wire-response-011.json",
+            "sha256": "EE6647C3F965D6A414BAD01C2156BE72501DE661A101EB0C171BE5B1132CA734"
+          },
+          "httpStatus": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/wire-response-011-status.json",
+            "sha256": "D61BB756F3EEF41E9412FE6F54B451613D26D1E17F6C4DF978D1DF6B576956F6"
+          },
+          "decoded": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/response-011.json",
+            "sha256": "4F758E0BB1DCD0C03E5656CFB49633E532FC281556E3DBCC78C05D74E54280DD"
+          },
+          "typedClientFailure": null
+        },
+        {
+          "request": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/request-012.json",
+            "sha256": "9ED948A3943DDBC400B2329ADE68046E3218B025B621EB5A90D4E5694E0FF7E2"
+          },
+          "wire": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/wire-request-012.json",
+            "sha256": "BAC40B411D858BD4CF815C251552AEA63561323E36E03FE38900DD3321E9ED68"
+          },
+          "rawResponse": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/wire-response-012.json",
+            "sha256": "D6E6B03F37D1A34F2196BD350485A268945D31DABD924E4ACCE6F93567A1E7C3"
+          },
+          "httpStatus": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/wire-response-012-status.json",
+            "sha256": "41A1774D55FAACBA439875054F4563B40B13142DE3004D6BCBE3D2387CE7C712"
+          },
+          "decoded": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/response-012.json",
+            "sha256": "CB18A80914BBB5D4E965ECAD207970FD93E29B6A3FBE4F3A59882BD2BB7D4CD1"
+          },
+          "typedClientFailure": null
+        },
+        {
+          "request": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/request-013.json",
+            "sha256": "74FBD6CFE3FF0CBBE5D713614E2D97BA85EF624477B0722727331F3FA9A65894"
+          },
+          "wire": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/wire-request-013.json",
+            "sha256": "D3F4BAA081F21287B08D8E97CCD8F615B197AF1FE42D7F52E0DA1D0FBC28CE43"
+          },
+          "rawResponse": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/wire-response-013.json",
+            "sha256": "16593912E54BCF798519376FE39A05F5D730E310CD5855155502838C95A503D9"
+          },
+          "httpStatus": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/wire-response-013-status.json",
+            "sha256": "604C9A95DC3196BDC0EE74B91A1C568A853AC799079673B43C327E0DE72F53F7"
+          },
+          "decoded": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/response-013.json",
+            "sha256": "7F4812C404763588A4BE0B7EE60D918FF4AC5B381C21DADAEFEBD645907DCE60"
+          },
+          "typedClientFailure": null
+        },
+        {
+          "request": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/request-014.json",
+            "sha256": "DAA53340AF8FDC1017819AA88BE662F06CE5AF077C1C26F95B1B53AD1949CBFC"
+          },
+          "wire": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/wire-request-014.json",
+            "sha256": "995A5AAD7B7EE88A6476AF63385E6331C4DD1F6E58CCA1EBB6CF52106F4EF4F1"
+          },
+          "rawResponse": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/wire-response-014.json",
+            "sha256": "223737F17787DDB9468762189E4949D26B5D9A643798FD6F004F4CF75F8D9240"
+          },
+          "httpStatus": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/wire-response-014-status.json",
+            "sha256": "455CEFCD6E6ECA9F0211D6F3FAA91FEC29F723F0F5B44BC9F6766A85F1316076"
+          },
+          "decoded": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/response-014.json",
+            "sha256": "1091DE050B1503BC279ACFE468D94BAF767A784F60BFFF647EFACAF437EF738D"
+          },
+          "typedClientFailure": null
+        },
+        {
+          "request": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/request-015.json",
+            "sha256": "128FBE4AA6BB4729A1C1FD8ECE5BD9EE237EBABF376C4FE286D27521F1B25B4A"
+          },
+          "wire": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/wire-request-015.json",
+            "sha256": "DD69235D060C578F9D2DE692EDB624A45AD56ED95D6B69BAB06C3B72790F65D2"
+          },
+          "rawResponse": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/wire-response-015.json",
+            "sha256": "B03B3F5D84966E216FFD1DACB29A8A49629B1FC04F6C2EA264F6B3B56DAA4979"
+          },
+          "httpStatus": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/wire-response-015-status.json",
+            "sha256": "4F958B6DDC0603A35C5B6DF152D507EE74253ACF83BA434D217AC6B4B5B0FF03"
+          },
+          "decoded": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/response-015.json",
+            "sha256": "7EF21119D4FEE3F0739E6866730A0F7FFC4ED9EFC85947133A9F8A00D7449ACD"
+          },
+          "typedClientFailure": null
+        },
+        {
+          "request": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/request-016.json",
+            "sha256": "02B6267E4F2624782C73DB77487242803A1FCE5957271711AEEF5DFD4963C6F7"
+          },
+          "wire": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/wire-request-016.json",
+            "sha256": "7ECB2915FCA131560C4AFD82CADF917C2324A70B9F6EE80CDFF33529959E10E4"
+          },
+          "rawResponse": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/wire-response-016.json",
+            "sha256": "CA688EF325D4496591C4F75100A1D84C9196DDC75FD349223C3FDAF62D4CABE5"
+          },
+          "httpStatus": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/wire-response-016-status.json",
+            "sha256": "99DC4718290428FCA9979F2CE0CEB023752E296006AA5B0F6A1CEB8AD8B2D3BC"
+          },
+          "decoded": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/response-016.json",
+            "sha256": "C5C69B457A20BBF2F0983B45FE6BD32A394328174C4271C20187B46E1E528D5E"
+          },
+          "typedClientFailure": null
+        },
+        {
+          "request": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/request-017.json",
+            "sha256": "CA450335D44FC60CF535B8B16AB605775AFE0697FE15C9408D04C10A02F2A8FD"
+          },
+          "wire": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/wire-request-017.json",
+            "sha256": "11753D94877CFBA846868DA36724C316EF96B0C8D8A2F72A868A43AC93E22913"
+          },
+          "rawResponse": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/wire-response-017.json",
+            "sha256": "6FC11960F20C365F5E66A5D312559A6FA1F45705A0EA31A6B8F570161946D1C1"
+          },
+          "httpStatus": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/wire-response-017-status.json",
+            "sha256": "85566BA18F1E15FE36C392DB5766D0736D2A620A6054AD2E91FF44FEB147E3C6"
+          },
+          "decoded": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/response-017.json",
+            "sha256": "A866FFE2E253751B4CF858A8F611CC2BE840B3198DF4E2F60274689444241555"
+          },
+          "typedClientFailure": null
+        },
+        {
+          "request": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/request-018.json",
+            "sha256": "578B5DA16A9B09C8DD2F747CA6FBF39BBCC232EE0D9322CA47B60EA9E899831A"
+          },
+          "wire": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/wire-request-018.json",
+            "sha256": "98CE90CA7A90DF970EDBC26760D061FE11922C046F6A017E9F34A63D9594B4E3"
+          },
+          "rawResponse": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/wire-response-018.json",
+            "sha256": "7D2C59E3F38C1026878566143A2EC2F7973BF34329F14DEE94C862842CB467CF"
+          },
+          "httpStatus": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/wire-response-018-status.json",
+            "sha256": "7E23C83496023CE78FB721254306F16A28E6B8590207CFB04AF0C633CF20F098"
+          },
+          "decoded": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/response-018.json",
+            "sha256": "2CC599FCE1EE391892E2FB67D618C8A7800DB28DF6A18D2F7B238A07DFDCC616"
+          },
+          "typedClientFailure": null
+        },
+        {
+          "request": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/request-019.json",
+            "sha256": "78FAB006B5865AFCE5DC481EAA0B526172F64E3BC68BBE7543950667D920E98A"
+          },
+          "wire": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/wire-request-019.json",
+            "sha256": "EFEB82F336F5C9FC022893F6EB793D93D2699BEDAA62D2910853A666D552C521"
+          },
+          "rawResponse": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/wire-response-019.json",
+            "sha256": "A31C21184ECEF3EE3851B8732CEDCAAB51929E44AE27E93E1E49DC650BEF2614"
+          },
+          "httpStatus": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/wire-response-019-status.json",
+            "sha256": "A57B4D8B2B6005FC2D7ABD03B398A858B19A29BAB485327963F13D8A186287F6"
+          },
+          "decoded": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/response-019.json",
+            "sha256": "0686B2ADFAC7863575887882DD2C41403DD0D8BE8FBC358404E8869A9D585B76"
+          },
+          "typedClientFailure": null
+        },
+        {
+          "request": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/request-020.json",
+            "sha256": "048EA4CE93375CEB357BF16FE3CE5C52BE549F45FDB2A2321BA741A027C5490E"
+          },
+          "wire": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/wire-request-020.json",
+            "sha256": "36FD32CAE62ACFA5B22A9C068119AD67EF14C05249C392A9DF2739D806EE9D4F"
+          },
+          "rawResponse": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/wire-response-020.json",
+            "sha256": "CB7721AC1B4012F93B65C5EC65A5066B2A18B9630C2B697B446681272A4CA044"
+          },
+          "httpStatus": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/wire-response-020-status.json",
+            "sha256": "AD27FCD9DAD6A632837CEE0CF07315AFFAA5A3D3456B829C6211ACA8F57666C7"
+          },
+          "decoded": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/response-020.json",
+            "sha256": "C1F3DBEF984F70C492030213EC8FDFA52293F40A0BC45AD94741C219B4E561F5"
+          },
+          "typedClientFailure": null
+        },
+        {
+          "request": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/request-021.json",
+            "sha256": "6F3079E41345CD26AEBE52C03F76DF31DE808DFB6A5062DC3E9913BEC2650A5E"
+          },
+          "wire": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/wire-request-021.json",
+            "sha256": "37FC1457E9A9FA88300E063222C462F79CAA5A23DB34F6EE9E0E9A784DF40D3D"
+          },
+          "rawResponse": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/wire-response-021.json",
+            "sha256": "A83B3F9D542A27C342D249472C1CBD46DFB06E3985D95E0BBD4DB36763F67F3D"
+          },
+          "httpStatus": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/wire-response-021-status.json",
+            "sha256": "9A2708AAA8884D939D80F6560A3E2A014385D1AA09176B2497FEBEC496BB6570"
+          },
+          "decoded": null,
+          "typedClientFailure": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/response-021-failure.json",
+            "sha256": "D3CA234964EF5BB3F6EAB81977411C0D36FAA7785E6CFE70159C88BD3E43F10A"
+          }
+        },
+        {
+          "request": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/request-022.json",
+            "sha256": "2943C0B2A08B79A53782AE9FC52B983C404A8485CA63C5087FE0BA2C3357DFB1"
+          },
+          "wire": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/wire-request-022.json",
+            "sha256": "570B3535EE2841C7A23499F55CF0D4AD439ADF541270367896DDC11BBC942D47"
+          },
+          "rawResponse": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/wire-response-022.json",
+            "sha256": "9F18194AEB7E4290CEAA4332658397679B39F7147ADD82DEB4BB65DA144CA5C9"
+          },
+          "httpStatus": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/wire-response-022-status.json",
+            "sha256": "B15F9FCE93D3B63032DABA0AF572D52E90C0D0893E460E48A7EBDC77F5CEA712"
+          },
+          "decoded": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/response-022.json",
+            "sha256": "2820B00C2B4AE0D1976F30AF72EC4E477B36C7A72F2F4357DDF283B7515AA0DD"
+          },
+          "typedClientFailure": null
+        },
+        {
+          "request": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/request-023.json",
+            "sha256": "91D2474F8AE2848A0900127A77563C07CC5BB625FF057301E3E1A14043204B7E"
+          },
+          "wire": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/wire-request-023.json",
+            "sha256": "5B5E5849798653D6A3500E90063BB398CD028969D8A496370ED98FC4DA2AF991"
+          },
+          "rawResponse": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/wire-response-023.json",
+            "sha256": "02E33ECD61D14A3B9C289F5F27E8A6D7A180B2CE664860F11439D5D875E38127"
+          },
+          "httpStatus": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/wire-response-023-status.json",
+            "sha256": "299B15EF1B4C17866B43792050A7734613CAF7C6DD562026751F23B3F653C627"
+          },
+          "decoded": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/response-023.json",
+            "sha256": "72C4BFBC20FFA7077D8D34F5B646AA7DE5ACACC4FD9C5B2A8864BBF821CC77AD"
+          },
+          "typedClientFailure": null
+        },
+        {
+          "request": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/request-024.json",
+            "sha256": "5613EDEE3F5CF824F082083C747AE12530AB2BE633B3A1858D3DF3BF04B781A9"
+          },
+          "wire": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/wire-request-024.json",
+            "sha256": "A922E6CBD269A0A4965A258A0E884B12E498FAE63FF84C9D82BCFE4463B4FE2C"
+          },
+          "rawResponse": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/wire-response-024.json",
+            "sha256": "E5B5C02C3D7C376F626F29E7B47D2AC01895E6B29A5B92B2685D7A4B7B1328D0"
+          },
+          "httpStatus": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/wire-response-024-status.json",
+            "sha256": "D03A4C3FEE402DE074CD220B2C124EB751CCC13BCC83B146EB02A50E1C48F1E6"
+          },
+          "decoded": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/response-024.json",
+            "sha256": "3AC474E08FF3A440C645C7BB1BC5CCDBF89472F60EDF69A0E8936D571D589C9A"
+          },
+          "typedClientFailure": null
+        },
+        {
+          "request": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/request-025.json",
+            "sha256": "B990DA88ACD8BFC17F70132E18C43367694917E04D52A4B8173A215E68E79E73"
+          },
+          "wire": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/wire-request-025.json",
+            "sha256": "11703A52E0062CE9CCFE2F76DA50A12510DCBDE19002D89D1864E213083529E9"
+          },
+          "rawResponse": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/wire-response-025.json",
+            "sha256": "05FF5E7F72226407B0FC3135CEE06814FE5DE719D4B30FE7093E364F03825E7F"
+          },
+          "httpStatus": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/wire-response-025-status.json",
+            "sha256": "29161CA4E8DE044E9C9A8E85E00F1E2D9ADC1DEDBA1F816444072F279EF07CD6"
+          },
+          "decoded": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/response-025.json",
+            "sha256": "29CC1942E69E5B11ECFD20CE91F9DBD63048D5664841AAB74A92C0EFED1F6238"
+          },
+          "typedClientFailure": null
+        },
+        {
+          "request": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/request-026.json",
+            "sha256": "031E1BE062BB16D4FD0E40736E67109E7A54377BFD045C44A03B54417031DE2F"
+          },
+          "wire": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/wire-request-026.json",
+            "sha256": "636465E06320629F7E01334FBC33F820CBE4F0F552F65052FB63BC7301FEB9F5"
+          },
+          "rawResponse": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/wire-response-026.json",
+            "sha256": "AF4B557BEF62DEB52FF658032C095547E1AD14BB52BF6FE4AAC0BF7B6BB26304"
+          },
+          "httpStatus": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/wire-response-026-status.json",
+            "sha256": "BD7239AFA83F3F3C20DD7F7F9909125D53EE413EF5550A5C9203A2A4E54525C2"
+          },
+          "decoded": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/response-026.json",
+            "sha256": "F8EFBE946308C710DE053E1D761168B26F16DDFA85B13479317835D2CBE46A45"
+          },
+          "typedClientFailure": null
+        },
+        {
+          "request": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/request-027.json",
+            "sha256": "FD76168430D142C1037B18D8133B19FA1CA3CC665F4A363017EFFDDB69F11E6A"
+          },
+          "wire": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/wire-request-027.json",
+            "sha256": "FB54C7B42F2866E2193A0A819A25C266850315BF88475D97151DC24F072D34CD"
+          },
+          "rawResponse": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/wire-response-027.json",
+            "sha256": "CAC3E1BD3C4728B0E731252700BECF56095FCD4051DA582A0FB5BAB3F13913D5"
+          },
+          "httpStatus": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/wire-response-027-status.json",
+            "sha256": "DDAAD9F2C192ED61CB21BFFE80017D7B94F520C05EDCC3DA8FD4C19AD32471E8"
+          },
+          "decoded": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/response-027.json",
+            "sha256": "E9D1368E87978253EFA618D5B29499AF712A08200428725002499B134FD745A8"
+          },
+          "typedClientFailure": null
+        },
+        {
+          "request": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/request-028.json",
+            "sha256": "58593A766DDDD48A286CE65A8E53A39AD02716AD5CCB9B40C1208D87A0DDC8B8"
+          },
+          "wire": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/wire-request-028.json",
+            "sha256": "8A360764B099473743599510B68A4CF00E257F3A0EB2924F2EEC549EDFFCE8E1"
+          },
+          "rawResponse": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/wire-response-028.json",
+            "sha256": "76B02F35C84366AD36978D1DC76D2A6CD76726B46EBB5CEED1CBA46E3567E320"
+          },
+          "httpStatus": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/wire-response-028-status.json",
+            "sha256": "EFF7719E10EBB6A83D79FD11FB7C1A7D5DB0FB9730A36E11AAA27831F0905CAB"
+          },
+          "decoded": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/response-028.json",
+            "sha256": "88CB31F004A0677FB50305D8EA6BFF9C70EA6B75DBE1CACEC19B992CE399AB43"
+          },
+          "typedClientFailure": null
+        },
+        {
+          "request": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/request-029.json",
+            "sha256": "2C67EDCCEC9CA7E18CDA606493B93AEAC6DA3F722D76B31461239185909B5F65"
+          },
+          "wire": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/wire-request-029.json",
+            "sha256": "2B225ED0B12630FF3C9FB0FC36BC3CFB1CE23D223D25D8719BCA5BFD3AD51B3F"
+          },
+          "rawResponse": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/wire-response-029.json",
+            "sha256": "28AC6DA25A7F281EF55F445FB4EE622728B0FB39BF2A67995FE72CE9F8DAC5E4"
+          },
+          "httpStatus": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/wire-response-029-status.json",
+            "sha256": "1A5E340A86733337F988E6ABE4F38B0F73E64EAAFF382D7FB1ED4F9604CCB918"
+          },
+          "decoded": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/response-029.json",
+            "sha256": "595C687A90C7F34C32A84C7F409CA352299C86F2CA1F74D352A168EC9F305571"
+          },
+          "typedClientFailure": null
+        },
+        {
+          "request": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/request-030.json",
+            "sha256": "B5EE16A4A704060E7EDAAE4EDACA0607913419F17B5FCE9F01267A1327F5F07A"
+          },
+          "wire": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/wire-request-030.json",
+            "sha256": "926690404A7F2CEEF5F21918FF04BE4DC31E37FBE622356D65D87E665DC2536F"
+          },
+          "rawResponse": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/wire-response-030.json",
+            "sha256": "A5DF35DBB7BDB3051781F2B7F4064A85544C47717A1298D4062B14C57DFEF178"
+          },
+          "httpStatus": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/wire-response-030-status.json",
+            "sha256": "7D5C9EA0CE9E2F580B6C1E00775590177C3A0CF3229343B4D5183B883403FD65"
+          },
+          "decoded": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/response-030.json",
+            "sha256": "7A4140893EEF6F339C5FB652A52E04EDC39B5689B91406885B7A60C3DAFAC5FD"
+          },
+          "typedClientFailure": null
+        },
+        {
+          "request": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/request-031.json",
+            "sha256": "1D3F5B30FCC2E677D168D43AD23EB1CA3EF597B77E02F03E3CB07A6936F36742"
+          },
+          "wire": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/wire-request-031.json",
+            "sha256": "F9213229A99CF59E71D6AB7381B60426421324DDD52284571E054FB0E1892551"
+          },
+          "rawResponse": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/wire-response-031.json",
+            "sha256": "7EC574B2B07458831F1527B46D51A88B894CFC0F4C5DAC034A3DBB61472544E9"
+          },
+          "httpStatus": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/wire-response-031-status.json",
+            "sha256": "B066A08AF00276A01E9618F552DFDD83E5B6E955EC1CC377F8A52BABAD8FB165"
+          },
+          "decoded": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/response-031.json",
+            "sha256": "25ABC3A925F33AE7D67B77C96538DBAAF24AC33703FF8F84E828E232BE45989E"
+          },
+          "typedClientFailure": null
+        },
+        {
+          "request": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/request-032.json",
+            "sha256": "8ECC8C0F1638DA23A8F281933D3749CA1801BFA779958AF57C90B314998F218A"
+          },
+          "wire": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/wire-request-032.json",
+            "sha256": "419976F4193B09B1AE1A922549D6E2E256DEDC7C17FB08D8C8C2494CA5A30ADB"
+          },
+          "rawResponse": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/wire-response-032.json",
+            "sha256": "74C0EFAB4825419BED85C5D281CECF0E530D32A6CD4530BC9780CF1F2608D697"
+          },
+          "httpStatus": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/wire-response-032-status.json",
+            "sha256": "FE9FFB2FF0429139C671FF3FBBDEB09BD3A32EFC653861D7E52AAA5C2DA1B2F3"
+          },
+          "decoded": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/response-032.json",
+            "sha256": "3BF11EA8DFE7CBD18BD09A75C2963D35924027A450B3957C5E91AC3C4332B258"
+          },
+          "typedClientFailure": null
+        },
+        {
+          "request": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/request-033.json",
+            "sha256": "B43226117A1B04C4A521D874197A0B25AB34C34C669796733C31DD4E7C32E5FA"
+          },
+          "wire": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/wire-request-033.json",
+            "sha256": "9D767F840F71BC2D328E26E61E48DB21BD22F80F4210D6BAFF2EBD13F20AE2EE"
+          },
+          "rawResponse": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/wire-response-033.json",
+            "sha256": "DFCC6C2018B8DB7FA428FDA106593BA21C61F3D7890C60DBDEF88644266CEE14"
+          },
+          "httpStatus": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/wire-response-033-status.json",
+            "sha256": "C6C5250FA6B029D229650556D12D0780FFAE7DC6F8C88CE2624AA9384F47D37D"
+          },
+          "decoded": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/response-033.json",
+            "sha256": "589571BBB1CFF5DC2B9F75E29B4F7107572ED4E51EEAC10AA13C264232AB9CFE"
+          },
+          "typedClientFailure": null
+        },
+        {
+          "request": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/request-034.json",
+            "sha256": "FD634F44D914CAD76120CB4AE3894EE508E1532D794113AE5B41C6EBD8582D8B"
+          },
+          "wire": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/wire-request-034.json",
+            "sha256": "A81172E44E15FAD7EE210DB03954867D261D23978E8EE1E8543DF5C6EFD679D9"
+          },
+          "rawResponse": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/wire-response-034.json",
+            "sha256": "66EDA33E8CA9D784BC8F76F9DAEB799C304EA3F893B9707509FA7D6D5291BBAD"
+          },
+          "httpStatus": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/wire-response-034-status.json",
+            "sha256": "C81843A7EB39FC29E2BE580876CB7A0D724BB6577C3700601E4BECDB77E27EA6"
+          },
+          "decoded": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/response-034.json",
+            "sha256": "AFF61DBC5078C89D104893D8567C9B0639ADDAB734D50EDDDFBF78B3B0985D55"
+          },
+          "typedClientFailure": null
+        },
+        {
+          "request": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/request-035.json",
+            "sha256": "AE8010080CB64A1AB7DCF01727AAA692233ABB78C0AECB1916E650EAFE622DA0"
+          },
+          "wire": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/wire-request-035.json",
+            "sha256": "0F799E9138DFF6EBDECA496D5B3C89A73D1C7C68D139EF5C558556196F325C97"
+          },
+          "rawResponse": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/wire-response-035.json",
+            "sha256": "3F5956EE20ABC493E501B773FECED4336D5BCF822D5ECBCAB695DDBBEBE2143F"
+          },
+          "httpStatus": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/wire-response-035-status.json",
+            "sha256": "2EB486A01C1A1E52EF3C5E027AEA7DE551762035F7EFBC5281E0BA1312766DA1"
+          },
+          "decoded": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/response-035.json",
+            "sha256": "8A919E1D753725240E39D35206C4E6ED5F65C54EB1D848248E38E8E6015B3751"
+          },
+          "typedClientFailure": null
+        },
+        {
+          "request": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/request-036.json",
+            "sha256": "521C1D02ADC3CD5B1C32714A07554BD4DF6F81F8C5D4304E47C500CA5BDC6288"
+          },
+          "wire": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/wire-request-036.json",
+            "sha256": "C58C8DB08D3B1967E32C68775C899056EE783CF3D4897F13B6CB008E25D74B9F"
+          },
+          "rawResponse": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/wire-response-036.json",
+            "sha256": "0670BE23B2DD88D7354D88F6BC3B45771DBC0CF4CE4E46E6EEBCDAF4EC2B49F8"
+          },
+          "httpStatus": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/wire-response-036-status.json",
+            "sha256": "4C7C94C8D808CEAE45DA5DEB08178B517A225B420C9B0747971C83136EB08FAF"
+          },
+          "decoded": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/response-036.json",
+            "sha256": "C83F43298DFCA772B80AD0D2A28591A9DF24E21A529E1F0C3B9CCDF364CA0BB4"
+          },
+          "typedClientFailure": null
+        },
+        {
+          "request": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/request-037.json",
+            "sha256": "4D294754F1DDFE16617E09318A27B975EAF7D92D3596F919101155489D43F16F"
+          },
+          "wire": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/wire-request-037.json",
+            "sha256": "B485B0F96769B9DC616FF81DFF6708BFCF3286A6FF87B90B439E8DC032139407"
+          },
+          "rawResponse": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/wire-response-037.json",
+            "sha256": "5F7CB9964A2ED1F779C7C00B803C7F11C0D6818E41EC56F223ABC20B28951C00"
+          },
+          "httpStatus": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/wire-response-037-status.json",
+            "sha256": "AC9925F3D1FCFFEA100A64A001A62797754BD3201829BBF006537D4186366A2C"
+          },
+          "decoded": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/response-037.json",
+            "sha256": "29FBDE7FB951E02B513314B9E526CF5B58A25485094A6C400D4E02B05001E496"
+          },
+          "typedClientFailure": null
+        },
+        {
+          "request": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/request-038.json",
+            "sha256": "571E6F848220E2FDB744F42506FBB9002A8AE96CD897064F7EE5D34D03013BD9"
+          },
+          "wire": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/wire-request-038.json",
+            "sha256": "3C80AB9B20A0AF67ED421420A7028681F6352D6E73665191CA7B82740F9A4AC4"
+          },
+          "rawResponse": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/wire-response-038.json",
+            "sha256": "462123E60142867655BC1E99B7BF0E3E057D2EAAB2A7C30616952830075C225A"
+          },
+          "httpStatus": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/wire-response-038-status.json",
+            "sha256": "BAB59824F841D2103F4BDC8F15518CF8F1E978F062C1D800CD7D115B53CF6F63"
+          },
+          "decoded": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/response-038.json",
+            "sha256": "8BAC92B48F732A3650BD6480AA79D69E6437C4D95C6EEA57C106FF91C33E7968"
+          },
+          "typedClientFailure": null
+        },
+        {
+          "request": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/request-039.json",
+            "sha256": "DD10F1CCBB383FF726078E5C0C2FEA10F9E8A2A8CC65D562CBBBCAEEC7AC538D"
+          },
+          "wire": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/wire-request-039.json",
+            "sha256": "F6DBADCD033CCD11681BFE68BB47350633F64E6366361E2C4A23EB7B0A3FE449"
+          },
+          "rawResponse": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/wire-response-039.json",
+            "sha256": "6223B7AC7AB858614AC15C6A88EF2839DEC759D68FDB1510A30DF1DCD067F8AB"
+          },
+          "httpStatus": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/wire-response-039-status.json",
+            "sha256": "0C93C0864615422A994A01384B74F5701914D956B476E99F9EC69F6126EB8EE1"
+          },
+          "decoded": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/response-039.json",
+            "sha256": "4643C762AA08A940C350CA77EC7D5F7D33435C2085B3A901B3CD742ADDE1A5BE"
+          },
+          "typedClientFailure": null
+        },
+        {
+          "request": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/request-040.json",
+            "sha256": "0E72DC006AD38DEBA7186EBDF97D2132296084CE8ECDB3AC47CA753BC41677CD"
+          },
+          "wire": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/wire-request-040.json",
+            "sha256": "5AA8C50FC87BACB607F74BA4F6BC8680D508385445DCE5770FADCAD42009F506"
+          },
+          "rawResponse": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/wire-response-040.json",
+            "sha256": "677DFAE59D24E7111AAEF029E9FCE9B62ADB022A68F35B8490738C3FF435B08C"
+          },
+          "httpStatus": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/wire-response-040-status.json",
+            "sha256": "CD66750E74CF51896AFAB225FA4E3F9EFBCBB7C7793DD9C6EF9959D6F364D3E7"
+          },
+          "decoded": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/response-040.json",
+            "sha256": "6F6A20AF36612EF646077CC6794058F02D24217291D6873E4F548A314BBB1EC4"
+          },
+          "typedClientFailure": null
+        },
+        {
+          "request": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/request-041.json",
+            "sha256": "EE99E1C88C1491C88516D96853D3F5DBF371D808156E887E6ACDD132DE6A0403"
+          },
+          "wire": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/wire-request-041.json",
+            "sha256": "D2719438FDCCEE49AE19D8A5D86EDF76DF3C0B47E782D74273B06224A9DC3451"
+          },
+          "rawResponse": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/wire-response-041.json",
+            "sha256": "ACB84D3FA22F03EDBA16AE75D715849358DE28464A735979775ABC8A19C68186"
+          },
+          "httpStatus": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/wire-response-041-status.json",
+            "sha256": "B93C6A1B395E8AE8F24EFBC903DADD936CA1285FF59A6D5259B132828E485385"
+          },
+          "decoded": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/response-041.json",
+            "sha256": "55C5FF3488E98B3904C1ED3020C859E293EAEA25AD11A65C59922C00CC751DEB"
+          },
+          "typedClientFailure": null
+        },
+        {
+          "request": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/request-042.json",
+            "sha256": "CC2569D7C713A192FFF20A526DFF61385A9FE647986DC84CE72BCA9D1919A1A2"
+          },
+          "wire": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/wire-request-042.json",
+            "sha256": "1B47F6D5816E0C90C1302F2CB335C8499B2ECF6E57AC2845A5A03AB0C1CCA642"
+          },
+          "rawResponse": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/wire-response-042.json",
+            "sha256": "66353F93C33B038E20FB53317786F22AF0124F7C3D8B4D31D918F54D5AEE1079"
+          },
+          "httpStatus": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/wire-response-042-status.json",
+            "sha256": "FD0A009F9518E22CF431D83302336A3C7086167E700CC2026D8BAA466E54392D"
+          },
+          "decoded": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/response-042.json",
+            "sha256": "311E7BC86B3C061C51A96A425B747BDDA0C968E4DD4904A22EBE60243CABF0F1"
+          },
+          "typedClientFailure": null
+        },
+        {
+          "request": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/request-043.json",
+            "sha256": "46DA95B9F84EFF4EDCD72E30309D9BBEFAC530B9205DCA83714D1962603C9A53"
+          },
+          "wire": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/wire-request-043.json",
+            "sha256": "CD102361BE4ED9D9D77A7B430DF893FE95B4F61079CCB073000DD1410C29739E"
+          },
+          "rawResponse": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/wire-response-043.json",
+            "sha256": "F3AFDC5B920DD2777E7CCE5F1C91A918555C854BB621E4588B142DA4649EBB35"
+          },
+          "httpStatus": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/wire-response-043-status.json",
+            "sha256": "D28B1061675422BE6C3DC3C8D4D35E44E9B72546F01C35FE9B7D0F906A08BB2D"
+          },
+          "decoded": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/response-043.json",
+            "sha256": "5F04B39F90888770EA7E14310CF1FD03727A0CB77FDD278393F978C923A8D46C"
+          },
+          "typedClientFailure": null
+        },
+        {
+          "request": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/request-044.json",
+            "sha256": "6AF59412FF3E89FC197ED743B3FDB7DE1E3923AD15617067CF520D7564864527"
+          },
+          "wire": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/wire-request-044.json",
+            "sha256": "C9705F4D14DBBFF9153D089B03553D34707923394E9FEFE1CFEDB1BD3A36874E"
+          },
+          "rawResponse": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/wire-response-044.json",
+            "sha256": "5C4BFFE634968010DAAE38CDE4731F975AD122F1BBF7A06079A43B1E151E8A8A"
+          },
+          "httpStatus": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/wire-response-044-status.json",
+            "sha256": "018907F1CF6B63A01DEB5F4394D3517C51DB8E9B67C5AA3447250E770057B590"
+          },
+          "decoded": {
+            "path": "artifacts/af-final87-3/provider-workspace-1/response-044.json",
+            "sha256": "AC11DC22715CC4C6A8F0609158D53496CE816FE5D2152452C22B7352C8F45D62"
+          },
+          "typedClientFailure": null
+        }
+      ],
+      "outputs": []
+    }
+  ],
+  "allPassed": false,
+  "originalPromptsAssertionsAndBudgetsChanged": false,
+  "productionApplied": false,
+  "desktopInputStarted": false,
+  "AFComplete": false
+}
