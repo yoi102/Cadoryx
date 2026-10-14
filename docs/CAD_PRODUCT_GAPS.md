@@ -1,5 +1,7 @@
 # 3D CAD 产品缺口与实施规划
 
+2026-10-14，status270：[最终87第三候选Release完整审计](../capability-evidence/diagnostics/af-final87/candidate3-full-release-verification.json)实际7170/7170、零失败/跳过，36.1768分钟；7194发现减精确原24的全部名称/次数、冻结载荷和actual native62保持。Debug7170已串行启动，尚未终态；原STEP24未执行、不算通过，不扩展延期范围。原模型/恢复/窗口/材质/性能及根接入仍待两配置门禁；根87.cu1、正式A4/B17/C5/D5/E4/F5g保持，A–F继续，G/清理暂缓。以[STATUS](STATUS.md)及实际终态为准，以下为历史记录。
+
 2026-10-14，status269：原STEP精确24项延期，其余A–F继续。首最终87完整Release实际7164通过/4个原导航用例失败，第二候选专项123/126，均保留；[第三候选专项](../capability-evidence/diagnostics/af-final87/candidate3-focused-verification.json)两配置各126/126，原失败4项及新增2项通过，actual native62一致。1378来源/53项目两配置build0、实际7194发现/原7117+77名称次数保持；当前非延期7170完整回归已启动，Debug串行，尚未终态。根仍87.cu1，新最终87仅隔离；模型/恢复/窗口/材质/性能和根接入待完整门禁，正式已验仍A4/B17/C5/D5/E4/F5g，A–F尚未完成，G/清理暂缓。以[STATUS](STATUS.md)及实际终态为准，以下是历史记录。
 
 2026-10-14，status268：[最终本地87接收与当前候选](../capability-evidence/diagnostics/af-final87/pre-runtime-verification.json)已核对14包/SDK13/native62、1372来源/53项目、两配置完整build0及各实际发现7192，原7117+新75及同名次数保持。Release7168正在运行且actual62已取证、Debug待串行；精确原STEP24不执行、不算通过，不跳过整个方法或其他交换案例。开发根仍87.cu1，新87仅隔离；最新模型/恢复/窗口/性能和接入待全量门禁，A–F全部范围继续，G/清理暂缓。以[STATUS](STATUS.md)及实际终态为准，以下较早记录保留历史。
@@ -183,7 +185,7 @@ M14–M17 已记录的待办主要关注性能、精确建模边界、工程交�
 
 最终87第三候选的[性能与D6验收工具](../capability-evidence/diagnostics/af-final87/candidate3-performance-window-tools-preparation.json)已绑定同一冻结，保留原性能结果23条和D6结果15条assert、D6运行主体、36场景/30秒/300秒、两fresh×20周期/6482ms/1800秒及两生产Open/900秒/788×411整图。提前运行均被完整回归门禁拒绝，未启动窗口或采样；正式性能采样还要求最新明确SDK返还、实际无SDK构建作业和原生消费者空闲。工具准备不能计入性能、实际输入或整个批次通过。
 
-当前正式已验子批保持 **A4 / B17 / C5 / D5 / E4 / F5g**，A–F尚未全部完成。开发根已接入D7，仍用精确本地87.cu1；最终87第三候选仅隔离。当前1378来源/53项目两配置build0、实际7194发现保持原7117和新增77；[两配置126专项](../capability-evidence/diagnostics/af-final87/candidate3-focused-verification.json)修复原4项导航回归，原测试断言与2400/6000预算未改、实际native62一致。7170非延期完整回归进行中，Debug串行；原STEP24按唯一完整名称不执行、不算通过。
+当前正式已验子批保持 **A4 / B17 / C5 / D5 / E4 / F5g**，A–F尚未全部完成。开发根已接入D7，仍用精确本地87.cu1；最终87第三候选仅隔离。当前1378来源/53项目两配置build0、实际7194发现保持原7117和新增77；[两配置126专项](../capability-evidence/diagnostics/af-final87/candidate3-focused-verification.json)修复原4项导航回归，原测试断言与2400/6000预算未改、实际native62一致。[Release7170完整回归](../capability-evidence/diagnostics/af-final87/candidate3-full-release-verification.json)已全部通过，Debug同7170串行运行且尚未终态；原STEP24按唯一完整名称不执行、不算通过。
 
 SDK最终87资格已明确交回原生、模型、窗口、性能及全量CPU时段；根已核对最新返还来源，旧收据不能替代它。当前完整门禁后继续原工程图/跨文档两模型、恢复24/36、D6创建/编辑36、材质实际窗口和MiniPC两fresh×20周期/6482ms；[恢复与模型审计工具](../capability-evidence/diagnostics/af-final87/candidate3-followup-tools-preparation.json)已绑定新载荷并验证提前运行会被拒绝，准备不算通过。此前WPF载荷恢复24/36和MiniPC4.571/4.606秒、生产Open65.98/65.94秒/整PNG仅作历史证据；最新原工程图2/8超16轮失败和D6第二窗口Cancel/FAIL保留。物理显示/输入延迟仍未证明；原第5节标准与其余全部范围保持，G/清理暂缓。
 

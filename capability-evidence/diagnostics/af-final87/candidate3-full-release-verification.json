@@ -1,0 +1,32 @@
+{
+  "recordedAt": "2026-10-14T03:52:20.739791+00:00",
+  "state": "FINAL87_SINGLE_FULL_CONFIGURATION_VERIFIED_BOTH_GATE_SEPARATE",
+  "configuration": "Release",
+  "freeze": {
+    "path": "artifacts/af-final87-3/freeze.json",
+    "sha256": "51D01EF2973B3BCAF27572B6D40B793DD0753C6FD8C90575C911B2BEFEBFA07A"
+  },
+  "version": "8.0.1-preview.87",
+  "discovered": 7194,
+  "passed": 7170,
+  "failed": 0,
+  "skipped": 0,
+  "exactUserDeferredNotExecuted": 24,
+  "terminal": {
+    "path": "artifacts/af-final87-3/full-release-1/exit.json",
+    "sha256": "91A436735FA73CB9BEDFEDC113C355D035D83A16B2ACEB7C869CAAAFD935F624"
+  },
+  "trx": {
+    "path": "artifacts/af-final87-3/full-release-1/runtime.trx",
+    "sha256": "564615E958C03FD7930B4E077DD1C25849472F4144C6A3EB4EE1A94328C9273F"
+  },
+  "actualNative62": {
+    "path": "artifacts/af-final87-3/full-release-1/loaded-native.json",
+    "sha256": "8BBB017E59E4D0FE2FADE703C6BE5ABB29E2D7080FC38D768849B9DE5ABB2CC6"
+  },
+  "namesAndMultiplicityEqualDiscoveryMinusExact24": true,
+  "bothConfigurationsProved": false,
+  "modelOrWindowAccepted": false,
+  "productionApplied": false,
+  "AFComplete": false
+}
