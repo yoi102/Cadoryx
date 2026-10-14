@@ -1,0 +1,89 @@
+{
+  "recordedAt": "2026-10-14T03:32:00.241816+00:00",
+  "state": "FINAL87_ORIGINAL_PERFORMANCE_AND_D6_RUNTIME_TOOLS_PREPARED_NOT_RUN",
+  "freeze": {
+    "path": "artifacts/af-final87-3/freeze.json",
+    "sha256": "51D01EF2973B3BCAF27572B6D40B793DD0753C6FD8C90575C911B2BEFEBFA07A"
+  },
+  "sources": [
+    {
+      "path": "tools/FinalCadAcceptance/assert-performance-ready.ps1",
+      "sha256": "991EC3BC757EE7DA2E5FC721551568E7062430A5075B5ED2CB13AC3EAA6F0AC7"
+    },
+    {
+      "path": "tools/FinalCadAcceptance/run-direct.ps1",
+      "sha256": "12DF74A3E946DF60E02B3A54EAEDC41CEA28F63AA0BCFBDC02050F6C7D2FB6D9"
+    },
+    {
+      "path": "tools/FinalCadAcceptance/run-production-open.ps1",
+      "sha256": "44C3A285FE927846B1B76387BD7BCBD25508BF4035FC4F461B020F7FEB2DDAAB"
+    },
+    {
+      "path": "tools/FinalCadAcceptance/audit-performance.py",
+      "sha256": "AF8CEF220137871F6A60ABB5799D88CE536CD16E48B193CB584864724C185D61"
+    },
+    {
+      "path": "tools/FinalCadAcceptance/require-followup-runtime.py",
+      "sha256": "D59F816EC95105A5591E683ADCAC7F7DFCBA16D10186B8F5941710C1B2BEE64A"
+    },
+    {
+      "path": "tools/FinalCadAcceptance/run-window.ps1",
+      "sha256": "E7BFB98DA93B72997F4B5735CAD5040F12D5C8829AA40BE70FA6671279484BCC"
+    },
+    {
+      "path": "tools/FinalCadAcceptance/audit-window.py",
+      "sha256": "CB98072EE7E5960B85635D585D10E917BAB29049ED7174A1CCFAC9232237AB0A"
+    }
+  ],
+  "originals": [
+    {
+      "path": "tools/CurrentCadCandidate/run-direct.ps1",
+      "sha256": "9D5DF3D924CAE670903060661B97BAC84B673EB7836AF0D1157EE51B8C4AC0F5"
+    },
+    {
+      "path": "tools/CurrentCadCandidate/run-production-open.ps1",
+      "sha256": "0289DE919BF607E02C5141418225A0FEE7102CD37CCDDD4473AC991B1B857C75"
+    },
+    {
+      "path": "tools/CurrentCadCandidate/audit-performance.py",
+      "sha256": "36DFB391D04FFDB3757ADECE2EF969EC745CC19DA1A0443D42C4EF1BA858C31D"
+    },
+    {
+      "path": "tools/CurrentCadCandidate/run-window.ps1",
+      "sha256": "E77C56B22F8D5525DACB7E4DF21A507C2463C4C6F36F2B69B8B1F7F0E20C4509"
+    },
+    {
+      "path": "tools/CurrentCadCandidate/audit-window.py",
+      "sha256": "E2C756C6A51052E44DFFB248D4C36BAB7F6214E670BB7F2094C784F4C77BDDEB"
+    }
+  ],
+  "assertionCounts": {
+    "performanceOriginalResultAssertions": 23,
+    "D6OriginalResultAssertions": 15
+  },
+  "originalResultAssertionsUnchanged": true,
+  "D6RuntimeBodyByteIdentical": true,
+  "negativeGates": {
+    "path": "artifacts/af-final87-3/performance-window-negative-gates1.json",
+    "sha256": "97990B432A1F59820C01CC79DA05F3012380C0AC0E9E2997E5FD4C229089CBF4"
+  },
+  "performanceSampleBytes": 88258425,
+  "directRuns": 2,
+  "cyclesEach": 20,
+  "targetMs": 6482,
+  "directDeadlineSeconds": 1800,
+  "openRuns": 2,
+  "openDeadlineSeconds": 900,
+  "wholeImageSize": [
+    788,
+    411
+  ],
+  "D6Cases": 36,
+  "D6ReadinessSeconds": 30,
+  "D6ObservationSeconds": 300,
+  "CPUAndNativeIdleRequired": true,
+  "performanceRuntimeStarted": false,
+  "D6RuntimeStarted": false,
+  "physicalDisplayFpsOrLatency": "NOT_MEASURED",
+  "AFComplete": false
+}
