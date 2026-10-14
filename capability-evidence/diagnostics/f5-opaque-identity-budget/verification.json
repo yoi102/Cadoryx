@@ -1,0 +1,259 @@
+{
+  "recordedAt": "2026-10-14T06:11:30.813791+00:00",
+  "state": "F5_OPAQUE_IDENTITY_COST_AND_CONTRACT_SUBMISSION_BOTH_FOCUSED_PASS_NEW_FULL_AND_MODEL_PENDING",
+  "sources": [
+    {
+      "path": "Cadoryx.Agent/AgentRequestContextBuilder.cs",
+      "sha256": "6851EBAD140BC8C3624D21856E060FFB1D1429FBB76A6A822E39902C32DCBC01"
+    },
+    {
+      "path": "Cadoryx.Agent/AgentToolResultCompactor.cs",
+      "sha256": "152AD5D47E7852CCA3B11EEC747BC19373C5D89D66891E88B835490DE51C2CB2"
+    },
+    {
+      "path": "Cadoryx.ViewModels/Toolboxes/CadAgentToolset.cs",
+      "sha256": "6016F7DC5EA0A5D1366900C96CF6CEFFDCE7CAB65691CD64DF5F27D847748BDD"
+    },
+    {
+      "path": "Cadoryx.ViewModels/Toolboxes/CadAgentDrawingTools.cs",
+      "sha256": "DD1B6ACFC31402396F173ADB297BAAC687AE4F19434EECBF3AC15D298703B15F"
+    },
+    {
+      "path": "Cadoryx.ViewModels/Toolboxes/CadDrawingInspection.cs",
+      "sha256": "B23A3D2835BB1DA99E2BF963237872F61FF3DF70B9822AD47B9DFDCF2B9B95D7"
+    },
+    {
+      "path": "Cadoryx.Tests/AgentOpaqueIdentityBudgetTests.cs",
+      "sha256": "391B41ADDA99235811DB65A7D9E89BF19BEE1B65201CA2D68691FFB64545121A"
+    },
+    {
+      "path": "Cadoryx.Tests/DrawingContractRequestGuideTests.cs",
+      "sha256": "B3B7356E720DE8B6C092041507D4D42AF53D708409F72BF21632D10BAC5C2CFC"
+    },
+    {
+      "path": "tools/AgentSelectionContextTests/AgentSelectionContextTests.csproj",
+      "sha256": "CD40C71F511057FE0CCF49A7B2C4BBF94F062B62EC9C12B8102C73EC78F941CD"
+    }
+  ],
+  "fixture": [
+    {
+      "path": "Cadoryx.Tests/Fixtures/AgentContext/OpaqueIdentityBudget/request-019.json",
+      "sha256": "02464E4C1089534E7C7A6D6A68C3EA2227337BC8DA10B64C25277BAB1DFFD1BD"
+    },
+    {
+      "path": "Cadoryx.Tests/Fixtures/AgentContext/OpaqueIdentityBudget/tokenizer-measurement.json",
+      "sha256": "3E18526CF14853189B3B8A485DEB85D9E1B5AFE50AAFC46140FA9D1B812D19CF"
+    }
+  ],
+  "actualTokenizer": {
+    "characters": 5680,
+    "actualTokens": 3002,
+    "oldProseEstimate": 1578,
+    "inference": false
+  },
+  "regressions": [
+    {
+      "label": "managed-Release",
+      "total": 59,
+      "passed": 59,
+      "failed": 0,
+      "skipped": 0,
+      "trx": {
+        "path": "capability-evidence/diagnostics/f5-opaque-identity-budget/records/release3/identity-release3.trx",
+        "sha256": "AD1003E12086402D22E8ECEEF5693F13F7DE8C490E1D473EAD83E06711037D2C"
+      }
+    },
+    {
+      "label": "managed-Debug",
+      "total": 59,
+      "passed": 59,
+      "failed": 0,
+      "skipped": 0,
+      "trx": {
+        "path": "capability-evidence/diagnostics/f5-opaque-identity-budget/records/debug1/identity-debug1.trx",
+        "sha256": "10F425ECED24B29D85F3D330F0A9D8F380426647160662DC7972C12BC81BBD12"
+      }
+    },
+    {
+      "label": "transport-Release",
+      "total": 40,
+      "passed": 40,
+      "failed": 0,
+      "skipped": 0,
+      "trx": {
+        "path": "capability-evidence/diagnostics/f5-opaque-identity-budget/records/transport-release1/transport-release1.trx",
+        "sha256": "D29F865A9BB09E835EDC7D9A942B7C7BB1C871DE98E341546F52605C8FCC6C9E"
+      }
+    },
+    {
+      "label": "transport-Debug",
+      "total": 40,
+      "passed": 40,
+      "failed": 0,
+      "skipped": 0,
+      "trx": {
+        "path": "capability-evidence/diagnostics/f5-opaque-identity-budget/records/transport-debug1/transport-debug1.trx",
+        "sha256": "C1CCB5E4321D5107DDAE3BBA09F712EBA00A83FFC7BB62896DB5F2A44CB6EEC8"
+      }
+    },
+    {
+      "label": "root-contract-Release",
+      "total": 56,
+      "passed": 56,
+      "failed": 0,
+      "skipped": 0,
+      "trx": {
+        "path": "capability-evidence/diagnostics/f5-opaque-identity-budget/records/contract-release4/contract-release4.trx",
+        "sha256": "CB649D3279824629707754727C6497CD641277EE8B3F9641DF465D9DF644981F"
+      }
+    },
+    {
+      "label": "root-contract-Debug",
+      "total": 56,
+      "passed": 56,
+      "failed": 0,
+      "skipped": 0,
+      "trx": {
+        "path": "capability-evidence/diagnostics/f5-opaque-identity-budget/records/contract-debug3/contract-debug3.trx",
+        "sha256": "C8154CC45AB88ADAB51ED0FB337423BC09B3F86658F35E29F171D6D8D0BBC45B"
+      }
+    },
+    {
+      "label": "old-Agent-same-new3",
+      "total": 3,
+      "passed": 2,
+      "failed": 1,
+      "skipped": 0,
+      "trx": {
+        "path": "capability-evidence/diagnostics/f5-opaque-identity-budget/records/old-agent-baseline1-results/old-agent-baseline1.trx",
+        "sha256": "7AAB19B167B3B017569553AD3DA757E89089D612A96DF69D2D4D70AE3DDEB873"
+      }
+    },
+    {
+      "label": "old-ViewModel-same-new1",
+      "total": 1,
+      "passed": 0,
+      "failed": 1,
+      "skipped": 0,
+      "trx": {
+        "path": "capability-evidence/diagnostics/f5-opaque-identity-budget/records/old-viewmodel-baseline1-results/old-viewmodel-baseline1.trx",
+        "sha256": "8E87AEF72606941FD1E3B2CAD342D24A889EEE31884B2BF656FA988B2515A4C4"
+      }
+    },
+    {
+      "label": "first-identity-failure",
+      "total": 59,
+      "passed": 57,
+      "failed": 2,
+      "skipped": 0,
+      "trx": {
+        "path": "capability-evidence/diagnostics/f5-opaque-identity-budget/records/release1/identity-release1.trx",
+        "sha256": "BF5E391FB4C1E3983CEEA6B06C301FFA97E1861AE908E803C96354BD6B952617"
+      }
+    },
+    {
+      "label": "first-contract-failure",
+      "total": 31,
+      "passed": 30,
+      "failed": 1,
+      "skipped": 0,
+      "trx": {
+        "path": "capability-evidence/diagnostics/f5-opaque-identity-budget/records/contract-release1/contract-release1.trx",
+        "sha256": "734EB1033BDA293FEE800073B46E1BFB35ABBC30C3F119DDAF76045EA9F72ABD"
+      }
+    },
+    {
+      "label": "default-catalog-failure",
+      "total": 1,
+      "passed": 0,
+      "failed": 1,
+      "skipped": 0,
+      "trx": {
+        "path": "capability-evidence/diagnostics/f5-opaque-identity-budget/records/default-tools1/default-tools1.trx",
+        "sha256": "9E4A9B0AAA2E8F67A2EFDAA7E0283A08ADBBFF8831C62BC4CF3935C4935F7867"
+      }
+    },
+    {
+      "label": "recovery-catalog-Release-failure",
+      "total": 56,
+      "passed": 55,
+      "failed": 1,
+      "skipped": 0,
+      "trx": {
+        "path": "capability-evidence/diagnostics/f5-opaque-identity-budget/records/contract-release3/contract-release3.trx",
+        "sha256": "1C863FCE75DD661C0F18469DCF894B473C0651673BAA1643E584E95B6237D07E"
+      }
+    },
+    {
+      "label": "recovery-catalog-Debug-failure",
+      "total": 56,
+      "passed": 55,
+      "failed": 1,
+      "skipped": 0,
+      "trx": {
+        "path": "capability-evidence/diagnostics/f5-opaque-identity-budget/records/contract-debug2/contract-debug2.trx",
+        "sha256": "4D2EC19D8290A3AFA0D284C2A0A49C9F7DCBD3C2F64918CFE86A4CE5F149910D"
+      }
+    }
+  ],
+  "managedCorePerConfig": 55,
+  "adapterOnlyPerConfig": 4,
+  "oldAgentSameThreeTestsTwoPassOneFailure": true,
+  "oldViewModelSameOneTestFailure": true,
+  "originalGuideTestsAdditiveOnly": true,
+  "originalNativeNavigationAssertionsUnchanged": true,
+  "actualReplay": {
+    "path": "capability-evidence/diagnostics/f5-opaque-identity-budget/context-replay1.json",
+    "sha256": "4C7268FE616219EBC0F07A25A4FE10D68AF0703DBB881AA50C8E2F212C8BD977"
+  },
+  "replaySummaries": [
+    {
+      "aggressive": false,
+      "EstimatedPromptTokens": 6517,
+      "MaxOutputTokens": 1024,
+      "nativeCharacters": 3727,
+      "nativeEstimatedTokens": 2030,
+      "completeCylinderPreserved": true,
+      "rowsUnchanged": true
+    },
+    {
+      "aggressive": true,
+      "EstimatedPromptTokens": 5136,
+      "MaxOutputTokens": 1024,
+      "nativeCharacters": 2323,
+      "nativeEstimatedTokens": 1050,
+      "completeCylinderPreserved": true,
+      "rowsUnchanged": true
+    }
+  ],
+  "candidate4ActualFocused": {
+    "total": 212,
+    "passed": 211,
+    "failed": 1,
+    "debugStarted": false,
+    "trx": {
+      "path": "capability-evidence/diagnostics/f5-opaque-identity-budget/candidate4-focused-release-failure.trx",
+      "sha256": "678D242F642A6994EF49B4461E2494E8A7441EEE637754F034E02D6A23078FA9"
+    }
+  },
+  "candidate5Focus": {
+    "path": "capability-evidence/diagnostics/af-final87/candidate5-focused-verification.json",
+    "sha256": "CA9EB7A7A3B70E9DD0AE5201898AA8DEC22813BEF94F89EED5B515C265EC50AF"
+  },
+  "candidate5Freeze": {
+    "path": "artifacts/af-final87-5/freeze.json",
+    "sha256": "E65DB27E7876BC319EEA23A4DEAE150B4E4CDD2D0651F093BE8B25637114B4D1"
+  },
+  "actualDiscoveredEach": 7198,
+  "expectedNonDeferredEach": 7174,
+  "originalSTEP24": "DEFERRED_NOT_EXECUTED",
+  "rootSDK": "8.0.1-preview.87.cu1",
+  "rootContractTestsNative62Provenance": "NOT_CAPTURED_SEPARATE_FROM_FINAL87_FOCUSED_ACTUAL62",
+  "fullBothCurrentComplete": false,
+  "originalModelReplayed": false,
+  "budgetsAndPromptsChanged": false,
+  "nativeSDKChanged": false,
+  "desktopWindowOrPerformanceRetested": false,
+  "AFComplete": false,
+  "G": "USER_DEFERRED"
+}

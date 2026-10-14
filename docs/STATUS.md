@@ -1,5 +1,11 @@
 # 当前状态
 
+2026-10-14，status274：**F5身份预算与工程图提交路径已修正，当前新源码的完整回归和真实模型仍待终态；A–F未完成。** [本批说明](F5_OPAQUE_IDENTITY_BUDGET.md)及[独立审计](../capability-evidence/diagnostics/f5-opaque-identity-budget/verification.json)记录原模型分词器实测5680字符/3002token、旧估1578；完整身份按保守成本预算，必要时从原完整回执重选完整行，不改身份、导航、原生守卫和6000/2400上限。contract给出与实际解析一致的独立submission路由，不填身份或执行示例；原提示/8192/1024/16轮/4分钟/共享一次恢复保持。
+
+两配置纯托管各59（55产品加4适配器）、传输各40、开发根专项各56通过；旧Agent同3测试为2通过/1失败，旧ViewModel同1测试失败，早期预算回归保留。第四候选实际Release212为211通过/1个原恢复目录断言失败、Debug未启动；进一步收短重复说明后，[第五候选专项两配置各212/212](../capability-evidence/diagnostics/af-final87/candidate5-focused-verification.json)通过且actual native62匹配。第五候选1412来源/53项目两配置build0，各实际发现7198=原7194+4，名称/次数保持；当前完整Release7174已启动，actual62已取证，Debug串行。原STEP精确24未执行，不算通过；完整门禁通过后原模型复验队列才继续，不将排队算通过。
+
+根开发源码已包含本批修正，SDK仍87.cu1；最终87仅隔离候选，接入待资格。此前第三候选的完整7170、恢复24/36、材质82/346整图、MiniPC四进程和D6首例保留原来源；材质实际UI、D6剩余35场景、原工程图失败收敛及全部第4、5节其余范围继续。正式已验仍A4/B17/C5/D5/E4/F5g，G/清理暂缓。以下status273及更早为历史。
+
 2026-10-14，status273：**原严格STEP24继续精确延期，其余A–F推进，尚未全部完成。** 最终87第三候选Release/Debug仍各7170/7170、零失败/跳过，原24未执行、不算通过；根开发仍87.cu1，最终87仅隔离候选。正式已验A4/B17/C5/D5/E4/F5g及第4、5节完整范围保持，G/清理暂缓。
 
 [材质原生82](../capability-evidence/diagnostics/af-final87/candidate3-material82-verification.json)实际82/82、每例资产归零及实际native62准确；[完整画面审阅](../capability-evidence/diagnostics/af-final87/candidate3-material82-whole-image-review.json)核对346张完整480×320图与原验收图逐字节相同，本轮14种不同完整图全部直接审阅。材质拾取/添加/应用/分配及六语言主题界面流程仍待实际验收，不以原生消费者代替。

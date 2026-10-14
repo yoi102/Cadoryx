@@ -17,6 +17,26 @@ namespace Cadoryx.Tests;
 [Collection("ModelAgentNativeGates")]
 public sealed class DrawingContractRequestGuideTests
 {
+    [Fact]
+    public async Task EveryAuthorContractExplainsItsSeparateSubmissionWithoutSupplyingAnyIdentity()
+    {
+        foreach(var type in Catalog().Where(t=>t!="template"))
+        {
+            using var contract=await Query(JsonSerializer.Serialize(new{action="contract",type}));
+            Assert.True(contract.RootElement.GetProperty("success").GetBoolean());
+            var submission=contract.RootElement.GetProperty("submission");
+            var action=type switch{"parts_table"=>"set_parts_table","zones"=>"set_zones",_=>"create"};
+            Assert.Equal(action,submission.GetProperty("action").GetString());
+            var required=submission.GetProperty("requiredArguments").EnumerateArray().Select(v=>v.GetString()).ToArray();
+            Assert.Contains("documentId",required);Assert.Contains("stateId",required);Assert.Contains("authorJson",required);
+            Assert.Equal(type!="sheet",required.Contains("sheetId"));
+            Assert.Equal(action=="create",required.Contains("type"));Assert.DoesNotContain("id",required);
+            Assert.Contains("JSON string",submission.GetProperty("authorJson").GetString());
+            Assert.Contains("read-only: nothing created",submission.GetProperty("note").GetString());
+            Assert.False(submission.TryGetProperty("documentId",out _));Assert.False(submission.TryGetProperty("stateId",out _));
+            Assert.False(submission.TryGetProperty("sheetId",out _));Assert.False(submission.TryGetProperty("id",out _));
+        }
+    }
     [Theory]
     [InlineData("sheet")][InlineData("view")][InlineData("dimension")][InlineData("datum")]
     [InlineData("control_frame")][InlineData("balloon")][InlineData("hole_table")][InlineData("field")]

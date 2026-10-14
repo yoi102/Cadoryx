@@ -1,0 +1,10 @@
+{
+  "oldViewModel": {
+    "path": "artifacts/af-final87-3/workspace/Cadoryx.ViewModels/bin/Release/net10.0/Cadoryx.ViewModels.dll",
+    "sha256": "648B30CB52F9E591DF79BB7944C67632C801E930401B2D7984C03CC15F724F8F"
+  },
+  "sameTestPayload": "697BBC96CC7168015ED903CE790F3B31F7CCA95972561E8DE11683921F39D461",
+  "onlyViewModelSwappedInRootFlatPayload": true,
+  "nativeOrWindowConsumer": false,
+  "fixtureOnlyContractTest": true
+}

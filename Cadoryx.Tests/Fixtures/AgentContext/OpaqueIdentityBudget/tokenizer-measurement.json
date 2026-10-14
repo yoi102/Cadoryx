@@ -1,0 +1,74 @@
+{
+  "recordedAt": "2026-10-14T05:37:58.174Z",
+  "model": {
+    "type": "llm",
+    "modelKey": "prism-ml/bonsai-27b",
+    "format": "gguf",
+    "displayName": "Bonsai 27B",
+    "path": "prism-ml/bonsai-27b",
+    "sizeBytes": 4734614604,
+    "paramsString": "27B",
+    "architecture": "qwen35",
+    "quantization": {
+      "name": "Q1_0",
+      "bits": 1
+    },
+    "identifier": "prism-ml/bonsai-27b",
+    "instanceReference": "/hjIR5Uh6p99gx6f9HjbbxfP",
+    "vision": true,
+    "trainedForToolUse": true,
+    "maxContextLength": 262144,
+    "contextLength": 8192
+  },
+  "source": {
+    "path": "artifacts/af-final87-3/provider-drawing-1/request-019.json",
+    "sha256": "02464E4C1089534E7C7A6D6A68C3EA2227337BC8DA10B64C25277BAB1DFFD1BD"
+  },
+  "messages": [
+    {
+      "messageIndex": 0,
+      "role": 0,
+      "characters": 167,
+      "actualContentTokens": 31,
+      "contentSha256": "D3AED73FDEEF5E6C3B95D45D44D54502AE379F709694E5E0AF50E48DB377F9F3"
+    },
+    {
+      "messageIndex": 1,
+      "role": 1,
+      "characters": 615,
+      "actualContentTokens": 284,
+      "contentSha256": "AFADAEAA905CDF4F23F2940A0D23E0D6228A1AC616CACE37C55CC70D1100969D"
+    },
+    {
+      "messageIndex": 2,
+      "role": 2,
+      "characters": 0,
+      "actualContentTokens": 0,
+      "contentSha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "messageIndex": 3,
+      "role": 3,
+      "characters": 837,
+      "actualContentTokens": 168,
+      "contentSha256": "824D1C8CF1BEC81B5CC571B1A9F76CD1E4BA812F1C6C5DCC49AFD7625269BAA7"
+    },
+    {
+      "messageIndex": 4,
+      "role": 2,
+      "characters": 0,
+      "actualContentTokens": 0,
+      "contentSha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+    },
+    {
+      "messageIndex": 5,
+      "role": 3,
+      "characters": 5680,
+      "actualContentTokens": 3002,
+      "contentSha256": "2D9B9D26AC53A25C658DF09BCDC9F9279866F4746CF348826C51AE23AC4869CD"
+    }
+  ],
+  "onlyTokenizedOriginalContent": true,
+  "inference": false,
+  "promptsAndReceiptsChanged": false
+}

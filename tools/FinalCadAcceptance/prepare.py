@@ -1,14 +1,27 @@
 """Freeze current application sources in a new final87-only workspace."""
 from pathlib import Path
 from datetime import datetime, timezone
-import hashlib, json, shutil, subprocess, sys, xml.etree.ElementTree as ET
+import argparse, hashlib, json, shutil, subprocess, sys, xml.etree.ElementTree as ET
+from collections import Counter
 
 ROOT = Path(__file__).resolve().parents[2]
-iteration=int(sys.argv[1]) if len(sys.argv)==2 else 1
+parser=argparse.ArgumentParser();parser.add_argument('iteration',type=int,nargs='?',default=1);parser.add_argument('--additional-discovery',type=Path)
+args=parser.parse_args();iteration=args.iteration
 assert 1<=iteration<=100
 STAGE = ROOT / f'artifacts/af-final87-{iteration}'; WORK = STAGE / 'workspace'
 read = lambda p: json.loads(p.read_text(encoding='utf-8-sig'))
 sha = lambda p: hashlib.sha256(p.read_bytes()).hexdigest().upper()
+additional=None;expectedTotal=7192 if iteration==1 else 7194
+if args.additional_discovery:
+    additional=read(args.additional_discovery);prior=additional['priorFreeze'];assert sha(ROOT/prior['path'])==prior['sha256']
+    priorFreeze=read(ROOT/prior['path']);delta=Counter(additional['additionalNames'])
+    assert delta and all(isinstance(v,int) and v>0 for v in delta.values())
+    for row in additional['rootDiscovery']+additional['rootTestPayload']:assert sha(ROOT/row['path'])==row['sha256']
+    for config,row in zip(('Release','Debug'),additional['rootDiscovery'],strict=True):
+        actual=Counter(line.strip() for line in (ROOT/row['path']).read_text(encoding='utf-8-sig').splitlines() if line.strip().startswith('Cadoryx.Tests.'))
+        before=Counter(next(c for c in priorFreeze['configurations'] if c['configuration']==config)['discoveredNames'])
+        assert actual==before+delta
+    expectedTotal=additional['expectedTotal'];assert expectedTotal==priorFreeze['expectedTotal']+sum(delta.values())
 if iteration!=1:
     assert not STAGE.exists();STAGE.mkdir()
     shutil.copyfile(ROOT/'artifacts/af-final87-1/sdk-reception.json',STAGE/'sdk-reception.json')
@@ -55,8 +68,9 @@ record = dict(recordedAt=datetime.now(timezone.utc).isoformat(),state='CURRENT_A
     baseHead=subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip(), workspace=str(WORK),
     sdkReception=dict(path=str(STAGE/'sdk-reception.json'),sha256=sha(STAGE/'sdk-reception.json')),
     rootSource=source, candidateChanges=mutations, projects=projects, rawProgramSource=str(raw),
-    rawProjection=projection, expectedTotal=7192 if iteration==1 else 7194, deferredCount=24, expectedExecuted=7168 if iteration==1 else 7170,
+    rawProjection=projection, expectedTotal=expectedTotal, deferredCount=24, expectedExecuted=expectedTotal-24,
     originalTestsModified=False, originalPromptsAssertionsAndBudgetsModified=False,
     productionApplied=False, publicNuget=False, AFComplete=False)
+if additional is not None:record['additionalDiscovery']=dict(path=str(args.additional_discovery.resolve()),sha256=sha(args.additional_discovery));record['additionalNames']=additional['additionalNames'];record['priorFreeze']=additional['priorFreeze']
 (STAGE/'preparation.json').write_text(json.dumps(record,indent=2)+'\n',encoding='utf-8')
 print(f'Frozen {len(source)} tracked sources and53 projects; exact final87 only; current{record['expectedTotal']} pending discovery, exact24 deferred.')

@@ -1,0 +1,2066 @@
+[
+  {
+    "aggressive": false,
+    "EstimatedPromptTokens": 6517,
+    "MaxOutputTokens": 1024,
+    "nativeCharacters": 3727,
+    "nativeEstimatedTokens": 2030,
+    "completeCylinderPreserved": true,
+    "rowsUnchanged": true,
+    "messages": [
+      {
+        "Role": 0,
+        "Content": "CAD assistant. Inspect exact state before edits. Read cad_drawing contract for strict authors; copy actual native selections. Only claim success after actual receipts.",
+        "ToolCalls": null,
+        "ToolCallId": null,
+        "ContentParts": null
+      },
+      {
+        "Role": 1,
+        "Content": "Read cad_status. Inspect native selections with cad_drawing inspect_sources, path=e0e4aa6e-a180-4322-b170-6a0e1ddebb4c/14b5543a-67ad-4ff1-9f0e-a2ee0501e2d5,bodyId=61061856-dfdd-42cf-8138-271ae502b311,revision=28b14872-995d-4808-a419-c7dd2e41544a,limit=50. Copy only its actual selection; never invent an index, fingerprint or geometry cache. Use contract(dimension), then create exactly one Diameter dimension on the CylinderFace for viewId 97171b28-1df4-49e2-a3bf-c599bd86ffde, sheetId efdcbee8-880b-4d38-abb5-fbbced110ecb, textPositionMm={x:80,y:35},upperTolerance=0.1,lowerTolerance=0.1. No measured value input.",
+        "ToolCalls": null,
+        "ToolCallId": null,
+        "ContentParts": null
+      },
+      {
+        "Role": 2,
+        "Content": "",
+        "ToolCalls": [
+          {
+            "Id": "VULo3T70Hloir0gDRVxNTauO7pc19tNq",
+            "Name": "cad_drawing",
+            "ArgumentsJson": "{\u0022action\u0022:\u0022inspect_sources\u0022,\u0022documentId\u0022:\u0022e0e4aa6e-a180-4322-b170-6a0e1ddebb4c\u0022,\u0022stateId\u0022:\u0022b7b90da4-632b-421b-9902-43fff5967ce4\u0022,\u0022path\u0022:\u0022e0e4aa6e-a180-4322-b170-6a0e1ddebb4c/14b5543a-67ad-4ff1-9f0e-a2ee0501e2d5\u0022,\u0022bodyId\u0022:\u002261061856-dfdd-42cf-8138-271ae502b311\u0022,\u0022revision\u0022:\u002228b14872-995d-4808-a419-c7dd2e41544a\u0022,\u0022limit\u0022:50}"
+          }
+        ],
+        "ToolCallId": null,
+        "ContentParts": null
+      },
+      {
+        "Role": 3,
+        "Content": "{\u0022success\u0022:true,\u0022action\u0022:\u0022inspect_sources\u0022,\u0022documentId\u0022:\u0022e0e4aa6e-a180-4322-b170-6a0e1ddebb4c\u0022,\u0022stateId\u0022:\u0022b7b90da4-632b-421b-9902-43fff5967ce4\u0022,\u0022offset\u0022:0,\u0022limit\u0022:50,\u0022total\u0022:45,\u0022hasMore\u0022:false,\u0022contextPage\u0022:{\u0022hasMore\u0022:true,\u0022queryHasMore\u0022:false,\u0022originalItemCount\u0022:45,\u0022retainedItemCount\u0022:7,\u0022omittedItemCount\u0022:38,\u0022nextOffset\u0022:7,\u0022message\u0022:\u0022Context omitted later items; listed items are complete. Fetch omitted items with inspect_sources offset=nextOffset and a smaller limit.\u0022,\u0022toolName\u0022:\u0022cad_drawing\u0022,\u0022nextRequest\u0022:{\u0022action\u0022:\u0022inspect_sources\u0022,\u0022documentId\u0022:\u0022e0e4aa6e-a180-4322-b170-6a0e1ddebb4c\u0022,\u0022stateId\u0022:\u0022b7b90da4-632b-421b-9902-43fff5967ce4\u0022,\u0022path\u0022:\u0022e0e4aa6e-a180-4322-b170-6a0e1ddebb4c/14b5543a-67ad-4ff1-9f0e-a2ee0501e2d5\u0022,\u0022bodyId\u0022:\u002261061856-dfdd-42cf-8138-271ae502b311\u0022,\u0022revision\u0022:\u002228b14872-995d-4808-a419-c7dd2e41544a\u0022,\u0022offset\u0022:7,\u0022limit\u0022:7},\u0022requestNote\u0022:\u0022Read-only continuation copied from this successful query. Not executed; stale identities still reject. Omitted geometry hints are result positions, not selections: copy the nextRequest identity and use a hinted offset/limit to inspect a desired row before authoring.\u0022,\u0022omittedGeometryReads\u0022:[{\u0022geometry\u0022:\u0022CylinderFace\u0022,\u0022offset\u0022:38,\u0022limit\u0022:1},{\u0022geometry\u0022:\u0022CircleEdge\u0022,\u0022offset\u0022:26,\u0022limit\u0022:1},{\u0022geometry\u0022:\u0022PlaneFace\u0022,\u0022offset\u0022:13,\u0022limit\u0022:1},{\u0022geometry\u0022:\u0022LineEdge\u0022,\u0022offset\u0022:8,\u0022limit\u0022:1}],\u0022completeSourceItems\u0022:[{\u0022offset\u0022:38,\u0022item\u0022:{\u0022index\u0022:38,\u0022kind\u0022:\u0022Face\u0022,\u0022selection\u0022:{\u0022path\u0022:\u0022e0e4aa6e-a180-4322-b170-6a0e1ddebb4c/14b5543a-67ad-4ff1-9f0e-a2ee0501e2d5\u0022,\u0022bodyId\u0022:\u002261061856-dfdd-42cf-8138-271ae502b311\u0022,\u0022revision\u0022:\u002228b14872-995d-4808-a419-c7dd2e41544a\u0022,\u0022asset\u0022:\u002220bad286545c0db06d38143f3d5a79fca15f18eca98f7adb88c492013233b45f\u0022,\u0022fingerprint\u0022:\u00227F270420AD41CD525D3DC661E225D82B195F5C421B8D904BF45FF3495B60CCD9\u0022,\u0022index\u0022:38},\u0022geometry\u0022:\u0022CylinderFace\u0022}},{\u0022offset\u0022:26,\u0022item\u0022:{\u0022index\u0022:26,\u0022kind\u0022:\u0022Edge\u0022,\u0022selection\u0022:{\u0022path\u0022:\u0022e0e4aa6e-a180-4322-b170-6a0e1ddebb4c/14b5543a-67ad-4ff1-9f0e-a2ee0501e2d5\u0022,\u0022bodyId\u0022:\u002261061856-dfdd-42cf-8138-271ae502b311\u0022,\u0022revision\u0022:\u002228b14872-995d-4808-a419-c7dd2e41544a\u0022,\u0022asset\u0022:\u002220bad286545c0db06d38143f3d5a79fca15f18eca98f7adb88c492013233b45f\u0022,\u0022fingerprint\u0022:\u00227F270420AD41CD525D3DC661E225D82B195F5C421B8D904BF45FF3495B60CCD9\u0022,\u0022index\u0022:26},\u0022geometry\u0022:\u0022CircleEdge\u0022}}],\u0022includedItemCount\u0022:9,\u0022remainingOmittedItemCount\u0022:36,\u0022completeSourceItemsNote\u0022:\u0022Original complete rows from this successful read. No selection or edit was executed. Offsets are query positions; includedItemCount includes prefix and extra rows. nextRequest starts after the prefix.\u0022},\u0022items\u0022:[{\u0022index\u0022:0,\u0022kind\u0022:\u0022Compound\u0022,\u0022diagnostic\u0022:\u0022Select an original face or edge.\u0022},{\u0022index\u0022:1,\u0022kind\u0022:\u0022Solid\u0022,\u0022diagnostic\u0022:\u0022Select an original face or edge.\u0022},{\u0022index\u0022:2,\u0022kind\u0022:\u0022Shell\u0022,\u0022diagnostic\u0022:\u0022Select an original face or edge.\u0022},{\u0022index\u0022:3,\u0022kind\u0022:\u0022Face\u0022,\u0022selection\u0022:{\u0022path\u0022:\u0022e0e4aa6e-a180-4322-b170-6a0e1ddebb4c/14b5543a-67ad-4ff1-9f0e-a2ee0501e2d5\u0022,\u0022bodyId\u0022:\u002261061856-dfdd-42cf-8138-271ae502b311\u0022,\u0022revision\u0022:\u002228b14872-995d-4808-a419-c7dd2e41544a\u0022,\u0022asset\u0022:\u002220bad286545c0db06d38143f3d5a79fca15f18eca98f7adb88c492013233b45f\u0022,\u0022fingerprint\u0022:\u00227F270420AD41CD525D3DC661E225D82B195F5C421B8D904BF45FF3495B60CCD9\u0022,\u0022index\u0022:3},\u0022geometry\u0022:\u0022PlaneFace\u0022},{\u0022index\u0022:4,\u0022kind\u0022:\u0022Wire\u0022,\u0022diagnostic\u0022:\u0022Select an original face or edge.\u0022},{\u0022index\u0022:5,\u0022kind\u0022:\u0022Edge\u0022,\u0022selection\u0022:{\u0022path\u0022:\u0022e0e4aa6e-a180-4322-b170-6a0e1ddebb4c/14b5543a-67ad-4ff1-9f0e-a2ee0501e2d5\u0022,\u0022bodyId\u0022:\u002261061856-dfdd-42cf-8138-271ae502b311\u0022,\u0022revision\u0022:\u002228b14872-995d-4808-a419-c7dd2e41544a\u0022,\u0022asset\u0022:\u002220bad286545c0db06d38143f3d5a79fca15f18eca98f7adb88c492013233b45f\u0022,\u0022fingerprint\u0022:\u00227F270420AD41CD525D3DC661E225D82B195F5C421B8D904BF45FF3495B60CCD9\u0022,\u0022index\u0022:5},\u0022geometry\u0022:\u0022LineEdge\u0022},{\u0022index\u0022:6,\u0022kind\u0022:\u0022Vertex\u0022,\u0022diagnostic\u0022:\u0022Select an original face or edge.\u0022}]}",
+        "ToolCalls": null,
+        "ToolCallId": "VULo3T70Hloir0gDRVxNTauO7pc19tNq",
+        "ContentParts": null
+      }
+    ],
+    "tools": [
+      {
+        "Name": "cad_status",
+        "Description": "Document IDs/state/size/selection/commands.",
+        "Parameters": {
+          "type": "object",
+          "properties": {},
+          "additionalProperties": false
+        }
+      },
+      {
+        "Name": "cad_drawing",
+        "Description": "contract: only action/type, no IDs. Read schema. create: type\u002BdocumentId/stateId\u002BsheetId(child)\u002BauthorJson string; omit id. No caches. PDF:cad_file.",
+        "Parameters": {
+          "type": "object",
+          "properties": {
+            "action": {
+              "type": "string",
+              "description": "Except contract (inspect_sources too): documentId/stateId required.",
+              "enum": [
+                "contract",
+                "inspect",
+                "inspect_sources",
+                "create",
+                "edit",
+                "reselect",
+                "delete",
+                "set_parts_table",
+                "set_zones",
+                "refresh",
+                "save_template",
+                "apply_template",
+                "import_template",
+                "detach_coordinates"
+              ]
+            },
+            "type": {
+              "type": "string",
+              "enum": [
+                "sheet",
+                "view",
+                "dimension",
+                "datum",
+                "control_frame",
+                "balloon",
+                "hole_table",
+                "field",
+                "note",
+                "template",
+                "parts_table",
+                "zones"
+              ],
+              "description": "contract schema; inspect/create/edit/reselect/delete kind."
+            },
+            "documentId": {
+              "type": "string",
+              "format": "uuid",
+              "description": "REQUIRED except contract: cad_status.documentId."
+            },
+            "stateId": {
+              "type": "string",
+              "format": "uuid",
+              "description": "REQUIRED except contract: cad_status.stateId."
+            },
+            "sheetId": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "id": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "name": {
+              "type": "string",
+              "maxLength": 64,
+              "description": "save_template only; else authorJson."
+            },
+            "path": {
+              "type": "string",
+              "maxLength": 8192,
+              "description": "Full occurrences.items[].path"
+            },
+            "bodyId": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "revision": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "authorJson": {
+              "type": "string",
+              "minLength": 2,
+              "maxLength": 65536
+            },
+            "offset": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 100000
+            },
+            "limit": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 50
+            }
+          },
+          "required": [
+            "action"
+          ],
+          "additionalProperties": false
+        }
+      },
+      {
+        "Name": "cad_inspect",
+        "Description": "IDs/authors mm/rad; id=object ID, not documentId; model_contract id=type. drawings:sheet IDs; drawing_views/dimensions:sheetId; timeline:partId; recipes:inputs; sketch_geometry:entities/rank.",
+        "Parameters": {
+          "type": "object",
+          "properties": {
+            "area": {
+              "type": "string",
+              "enum": [
+                "document",
+                "parts",
+                "bodies",
+                "features",
+                "layers",
+                "materials",
+                "selection",
+                "sketches",
+                "occurrences",
+                "assembly",
+                "drawings",
+                "drawing_views",
+                "drawing_dimensions",
+                "parameters",
+                "parameter_bindings",
+                "parameter_targets",
+                "datums",
+                "datum_associations",
+                "timeline",
+                "recipes",
+                "sketch_geometry",
+                "model_contract",
+                "assembly_patterns"
+              ]
+            },
+            "id": {
+              "type": "string"
+            },
+            "partId": {
+              "type": "string"
+            },
+            "sheetId": {
+              "type": "string"
+            },
+            "offset": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 100000
+            },
+            "limit": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 50
+            }
+          },
+          "required": [
+            "area"
+          ],
+          "additionalProperties": false
+        }
+      },
+      {
+        "Name": "cad_command",
+        "Description": "cad_status.commands, exact document/state. HISTORY:cad_history. Pre-commit cancel rolls back; committed succeeds.",
+        "Parameters": {
+          "type": "object",
+          "properties": {
+            "command": {
+              "type": "string"
+            },
+            "documentId": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "stateId": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          "required": [
+            "command"
+          ],
+          "additionalProperties": false
+        }
+      },
+      {
+        "Name": "cad_select",
+        "Description": "Exact inspected occurrence/body: documentId/stateId/full path; bodyId/revision for bodies; reject stale/ambiguous.",
+        "Parameters": {
+          "type": "object",
+          "properties": {
+            "documentId": {
+              "type": "string"
+            },
+            "stateId": {
+              "type": "string"
+            },
+            "path": {
+              "type": "string"
+            },
+            "bodyId": {
+              "type": "string"
+            },
+            "revision": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "documentId",
+            "stateId",
+            "path"
+          ],
+          "additionalProperties": false
+        }
+      },
+      {
+        "Name": "cad_workspace",
+        "Description": "list.expected verbatim; keep IDs/nulls; target separate. User switch cancels.",
+        "Parameters": {
+          "type": "object",
+          "properties": {
+            "action": {
+              "type": "string",
+              "enum": [
+                "contract",
+                "list",
+                "new",
+                "open",
+                "activate"
+              ]
+            },
+            "expected": {
+              "type": "object",
+              "description": "list.expected verbatim; keep IDs/nulls; target separate.",
+              "properties": {
+                "workspaceStateId": {
+                  "type": "string",
+                  "format": "uuid"
+                },
+                "activeSessionId": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "format": "uuid",
+                  "description": "Null only if latest list.expected.activeSessionId is null."
+                },
+                "documentId": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "format": "uuid",
+                  "description": "Null only if latest list.expected.documentId is null."
+                },
+                "stateId": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "format": "uuid",
+                  "description": "Null only if latest list.expected.stateId is null."
+                }
+              },
+              "required": [
+                "workspaceStateId",
+                "activeSessionId",
+                "documentId",
+                "stateId"
+              ],
+              "additionalProperties": false
+            },
+            "name": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 200
+            },
+            "path": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 4096
+            },
+            "target": {
+              "type": "object",
+              "properties": {
+                "sessionId": {
+                  "type": "string",
+                  "format": "uuid"
+                },
+                "documentId": {
+                  "type": "string",
+                  "format": "uuid"
+                },
+                "stateId": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              },
+              "required": [
+                "sessionId",
+                "documentId",
+                "stateId"
+              ],
+              "additionalProperties": false
+            },
+            "offset": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 100000
+            },
+            "limit": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 50
+            }
+          },
+          "required": [
+            "action"
+          ],
+          "additionalProperties": false
+        }
+      },
+      {
+        "Name": "cad_file",
+        "Description": "save/export/report/pdf/template_export: read contract; exact documentId/stateId, absolute path, explicit overwrite, template id. Receipt:bytes/hash/source/diagnostics. Non-save:history end. PDF rejects stale references; no undo. Report actual path/hash; never claim a rejected or failed file write succeeded.",
+        "Parameters": {
+          "type": "object",
+          "properties": {},
+          "oneOf": [
+            {
+              "type": "object",
+              "properties": {
+                "action": {
+                  "const": "contract"
+                }
+              },
+              "required": [
+                "action"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "action": {
+                  "type": "string",
+                  "enum": [
+                    "save",
+                    "export",
+                    "report",
+                    "pdf",
+                    "template_export"
+                  ]
+                },
+                "documentId": {
+                  "type": "string",
+                  "format": "uuid",
+                  "minLength": 36,
+                  "maxLength": 36
+                },
+                "stateId": {
+                  "type": "string",
+                  "format": "uuid",
+                  "minLength": 36,
+                  "maxLength": 36
+                },
+                "id": {
+                  "type": "string",
+                  "format": "uuid",
+                  "minLength": 36,
+                  "maxLength": 36
+                },
+                "path": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 4096
+                },
+                "overwrite": {
+                  "type": "boolean"
+                },
+                "optionsJson": {
+                  "type": "string",
+                  "minLength": 2,
+                  "maxLength": 2048
+                }
+              },
+              "required": [
+                "action",
+                "documentId",
+                "stateId",
+                "path"
+              ],
+              "additionalProperties": false,
+              "allOf": [
+                {
+                  "if": {
+                    "properties": {
+                      "action": {
+                        "enum": [
+                          "save",
+                          "pdf",
+                          "template_export"
+                        ]
+                      }
+                    }
+                  },
+                  "then": {
+                    "not": {
+                      "required": [
+                        "optionsJson"
+                      ]
+                    }
+                  }
+                },
+                {
+                  "if": {
+                    "properties": {
+                      "action": {
+                        "const": "report"
+                      }
+                    }
+                  },
+                  "then": {
+                    "required": [
+                      "optionsJson"
+                    ]
+                  }
+                },
+                {
+                  "if": {
+                    "properties": {
+                      "action": {
+                        "const": "template_export"
+                      }
+                    }
+                  },
+                  "then": {
+                    "required": [
+                      "id"
+                    ]
+                  },
+                  "else": {
+                    "not": {
+                      "required": [
+                        "id"
+                      ]
+                    }
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "Name": "cad_history",
+        "Description": "Exact documentId/stateId\u002Bcursor(null=end); reject stale. timeline; suppress:result revision. Reorder:IDs/dependencies/operands at history end. Rollback:session only. Preview:changed=false, previewChanged/cursor.",
+        "Parameters": {
+          "type": "object",
+          "properties": {
+            "documentId": {
+              "$ref": "#/$defs/id"
+            },
+            "stateId": {
+              "$ref": "#/$defs/id"
+            },
+            "cursor": {
+              "$ref": "#/$defs/cursor"
+            }
+          },
+          "required": [
+            "documentId",
+            "stateId",
+            "cursor"
+          ],
+          "oneOf": [
+            {
+              "type": "object",
+              "properties": {
+                "action": {
+                  "const": "set_suppressed"
+                },
+                "documentId": {},
+                "stateId": {},
+                "cursor": {},
+                "id": {
+                  "$ref": "#/$defs/id"
+                },
+                "revision": {
+                  "$ref": "#/$defs/id"
+                },
+                "suppressed": {
+                  "type": "boolean"
+                }
+              },
+              "required": [
+                "action",
+                "id",
+                "revision",
+                "suppressed"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "action": {
+                  "const": "reorder"
+                },
+                "documentId": {},
+                "stateId": {},
+                "cursor": {},
+                "partId": {
+                  "$ref": "#/$defs/id"
+                },
+                "order": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/$defs/id"
+                  },
+                  "minItems": 1,
+                  "maxItems": 1024,
+                  "uniqueItems": true
+                }
+              },
+              "required": [
+                "action",
+                "partId",
+                "order"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "action": {
+                  "const": "rollback"
+                },
+                "documentId": {},
+                "stateId": {},
+                "cursor": {},
+                "partId": {
+                  "$ref": "#/$defs/id"
+                },
+                "position": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 1000000
+                }
+              },
+              "required": [
+                "action",
+                "partId",
+                "position"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "action": {
+                  "const": "return_end"
+                },
+                "documentId": {},
+                "stateId": {},
+                "cursor": {}
+              },
+              "required": [
+                "action"
+              ],
+              "additionalProperties": false
+            }
+          ],
+          "$defs": {
+            "id": {
+              "type": "string",
+              "format": "uuid",
+              "minLength": 36,
+              "maxLength": 36
+            },
+            "cursor": {
+              "oneOf": [
+                {
+                  "type": "null"
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "stateId": {
+                      "$ref": "#/$defs/id"
+                    },
+                    "partId": {
+                      "$ref": "#/$defs/id"
+                    },
+                    "position": {
+                      "type": "integer",
+                      "minimum": 0,
+                      "maximum": 1000000
+                    }
+                  },
+                  "required": [
+                    "stateId",
+                    "partId",
+                    "position"
+                  ],
+                  "additionalProperties": false
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "Name": "cad_edit",
+        "Description": "Exact document/state, mm. Contact/G2:sketch_geometry contract, id/revision. Offset:sketchId/revision, seeds(loop=1), distanceMm, join(default Miter). Returns IDs; no guessed topology.",
+        "Parameters": {
+          "type": "object",
+          "properties": {
+            "action": {
+              "type": "string",
+              "enum": [
+                "create_box",
+                "create_cylinder",
+                "create_sketch_rectangle",
+                "rename_sketch",
+                "set_sketch_contact",
+                "delete_sketch_contact",
+                "set_sketch_curvature",
+                "delete_sketch_curvature",
+                "set_sketch_finite_contact",
+                "delete_sketch_finite_contact",
+                "offset_sketch_loop",
+                "offset_sketch_regions",
+                "reselect_region_sources",
+                "fix_assembly_instance",
+                "set_assembly_constraint_enabled",
+                "set_assembly_distance",
+                "create_drawing_sheet",
+                "rename_drawing_sheet",
+                "add_drawing_view"
+              ]
+            },
+            "documentId": {
+              "type": "string"
+            },
+            "stateId": {
+              "type": "string"
+            },
+            "id": {
+              "type": "string"
+            },
+            "revision": {
+              "type": "string"
+            },
+            "sketchId": {
+              "type": "string"
+            },
+            "sources": {
+              "type": "array",
+              "items": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "format": "uuid"
+                },
+                "minItems": 1,
+                "maxItems": 4096
+              },
+              "minItems": 1,
+              "maxItems": 64
+            },
+            "seeds": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "minItems": 1,
+              "maxItems": 256
+            },
+            "join": {
+              "type": "string",
+              "enum": [
+                "Miter",
+                "Round",
+                "Bevel"
+              ]
+            },
+            "constraintId": {
+              "type": "string"
+            },
+            "curveA": {
+              "type": "string"
+            },
+            "curveB": {
+              "type": "string"
+            },
+            "parameterA": {
+              "type": "number"
+            },
+            "parameterB": {
+              "type": "number"
+            },
+            "parameterMode": {
+              "type": "string",
+              "enum": [
+                "Fixed",
+                "SolveA",
+                "SolveB",
+                "SolveBoth"
+              ]
+            },
+            "seedA": {
+              "type": "number"
+            },
+            "lowerA": {
+              "type": "number"
+            },
+            "upperA": {
+              "type": "number"
+            },
+            "seedB": {
+              "type": "number"
+            },
+            "lowerB": {
+              "type": "number"
+            },
+            "upperB": {
+              "type": "number"
+            },
+            "direction": {
+              "type": "string",
+              "enum": [
+                "SameDirection",
+                "OppositeDirection"
+              ]
+            },
+            "continuity": {
+              "type": "string",
+              "enum": [
+                "G1",
+                "G2"
+              ]
+            },
+            "branch": {
+              "type": "string",
+              "enum": [
+                "LineLeft",
+                "LineRight",
+                "External",
+                "AContainsB",
+                "BContainsA"
+              ]
+            },
+            "name": {
+              "type": "string"
+            },
+            "partId": {
+              "type": "string"
+            },
+            "layerId": {
+              "type": "string"
+            },
+            "materialId": {
+              "type": "string"
+            },
+            "path": {
+              "type": "string"
+            },
+            "sheetId": {
+              "type": "string"
+            },
+            "kind": {
+              "type": "string",
+              "enum": [
+                "Front",
+                "Top",
+                "Right",
+                "Isometric"
+              ]
+            },
+            "enabled": {
+              "type": "boolean"
+            },
+            "distanceMm": {
+              "type": "number"
+            },
+            "x": {
+              "type": "number"
+            },
+            "y": {
+              "type": "number"
+            },
+            "z": {
+              "type": "number"
+            },
+            "width": {
+              "type": "number"
+            },
+            "depth": {
+              "type": "number"
+            },
+            "radius": {
+              "type": "number"
+            },
+            "height": {
+              "type": "number"
+            },
+            "scale": {
+              "type": "number"
+            },
+            "centerX": {
+              "type": "number"
+            },
+            "centerY": {
+              "type": "number"
+            }
+          },
+          "required": [
+            "action",
+            "documentId",
+            "stateId"
+          ],
+          "additionalProperties": false
+        }
+      },
+      {
+        "Name": "cad_parameter",
+        "Description": "Atomic mm/rad/scalar. Read state/parameter_targets; full IDs. New expression/reference:omit id; edits keep id. References cannot drive; bind rejects drivers; unbind:binding id; delete guards users. Returns IDs/state.",
+        "Parameters": {
+          "type": "object",
+          "properties": {
+            "documentId": {
+              "$ref": "#/$defs/id"
+            },
+            "stateId": {
+              "$ref": "#/$defs/id"
+            }
+          },
+          "required": [
+            "documentId",
+            "stateId"
+          ],
+          "oneOf": [
+            {
+              "type": "object",
+              "properties": {
+                "action": {
+                  "const": "set_expression"
+                },
+                "documentId": {},
+                "stateId": {},
+                "id": {
+                  "$ref": "#/$defs/id"
+                },
+                "name": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 64
+                },
+                "dimension": {
+                  "type": "string",
+                  "enum": [
+                    "Scalar",
+                    "Length",
+                    "Angle"
+                  ]
+                },
+                "expression": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 2048
+                }
+              },
+              "required": [
+                "action",
+                "name",
+                "dimension",
+                "expression"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "action": {
+                  "const": "set_reference"
+                },
+                "documentId": {},
+                "stateId": {},
+                "id": {
+                  "$ref": "#/$defs/id"
+                },
+                "name": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 64
+                },
+                "dimension": {
+                  "type": "string",
+                  "enum": [
+                    "Scalar",
+                    "Length",
+                    "Angle"
+                  ]
+                },
+                "target": {
+                  "$ref": "#/$defs/target"
+                }
+              },
+              "required": [
+                "action",
+                "name",
+                "dimension",
+                "target"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "action": {
+                  "const": "delete"
+                },
+                "documentId": {},
+                "stateId": {},
+                "id": {
+                  "$ref": "#/$defs/id"
+                }
+              },
+              "required": [
+                "action",
+                "id"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "action": {
+                  "const": "bind"
+                },
+                "documentId": {},
+                "stateId": {},
+                "parameterId": {
+                  "$ref": "#/$defs/id"
+                },
+                "target": {
+                  "$ref": "#/$defs/target"
+                }
+              },
+              "required": [
+                "action",
+                "parameterId",
+                "target"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "action": {
+                  "const": "unbind"
+                },
+                "documentId": {},
+                "stateId": {},
+                "id": {
+                  "$ref": "#/$defs/id"
+                }
+              },
+              "required": [
+                "action",
+                "id"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "action": {
+                  "const": "recompute"
+                },
+                "documentId": {},
+                "stateId": {}
+              },
+              "required": [
+                "action"
+              ],
+              "additionalProperties": false
+            }
+          ],
+          "$defs": {
+            "id": {
+              "type": "string",
+              "format": "uuid",
+              "minLength": 36,
+              "maxLength": 36
+            },
+            "target": {
+              "type": "object",
+              "properties": {
+                "kind": {
+                  "type": "string",
+                  "enum": [
+                    "Feature",
+                    "Datum",
+                    "AssemblyPattern",
+                    "SketchConstraint",
+                    "ExactSketchCurve",
+                    "SketchRegion"
+                  ]
+                },
+                "owner": {
+                  "$ref": "#/$defs/id"
+                },
+                "property": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 64
+                },
+                "constraint": {
+                  "$ref": "#/$defs/id"
+                },
+                "curve": {
+                  "$ref": "#/$defs/id"
+                },
+                "index": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 100000
+                }
+              },
+              "required": [
+                "kind",
+                "owner",
+                "property"
+              ],
+              "additionalProperties": false,
+              "oneOf": [
+                {
+                  "properties": {
+                    "kind": {
+                      "type": "string",
+                      "enum": [
+                        "Feature",
+                        "Datum",
+                        "AssemblyPattern"
+                      ]
+                    },
+                    "property": {
+                      "type": "string"
+                    },
+                    "constraint": false,
+                    "curve": false,
+                    "index": false
+                  }
+                },
+                {
+                  "properties": {
+                    "kind": {
+                      "const": "SketchConstraint"
+                    },
+                    "property": {
+                      "type": "string"
+                    },
+                    "curve": false,
+                    "index": false
+                  },
+                  "required": [
+                    "constraint"
+                  ]
+                },
+                {
+                  "properties": {
+                    "kind": {
+                      "const": "ExactSketchCurve"
+                    },
+                    "property": {
+                      "type": "string"
+                    },
+                    "constraint": false
+                  },
+                  "required": [
+                    "curve"
+                  ]
+                },
+                {
+                  "properties": {
+                    "kind": {
+                      "const": "SketchRegion"
+                    },
+                    "property": {
+                      "const": "Distance"
+                    },
+                    "constraint": false,
+                    "index": false
+                  },
+                  "required": [
+                    "curve"
+                  ]
+                }
+              ]
+            }
+          }
+        }
+      }
+    ]
+  },
+  {
+    "aggressive": true,
+    "EstimatedPromptTokens": 5136,
+    "MaxOutputTokens": 1024,
+    "nativeCharacters": 2323,
+    "nativeEstimatedTokens": 1050,
+    "completeCylinderPreserved": true,
+    "rowsUnchanged": true,
+    "messages": [
+      {
+        "Role": 0,
+        "Content": "CAD assistant. Inspect exact state before edits. Read cad_drawing contract for strict authors; copy actual native selections. Only claim success after actual receipts.",
+        "ToolCalls": null,
+        "ToolCallId": null,
+        "ContentParts": null
+      },
+      {
+        "Role": 1,
+        "Content": "Read cad_status. Inspect native selections with cad_drawing inspect_sources, path=e0e4aa6e-a180-4322-b170-6a0e1ddebb4c/14b5543a-67ad-4ff1-9f0e-a2ee0501e2d5,bodyId=61061856-dfdd-42cf-8138-271ae502b311,revision=28b14872-995d-4808-a419-c7dd2e41544a,limit=50. Copy only its actual selection; never invent an index, fingerprint or geometry cache. Use contract(dimension), then create exactly one Diameter dimension on the CylinderFace for viewId 97171b28-1df4-49e2-a3bf-c599bd86ffde, sheetId efdcbee8-880b-4d38-abb5-fbbced110ecb, textPositionMm={x:80,y:35},upperTolerance=0.1,lowerTolerance=0.1. No measured value input.",
+        "ToolCalls": null,
+        "ToolCallId": null,
+        "ContentParts": null
+      },
+      {
+        "Role": 2,
+        "Content": "",
+        "ToolCalls": [
+          {
+            "Id": "YdsUO61gCjibr90OLBFA9eMDiRHPtSk5",
+            "Name": "cad_drawing",
+            "ArgumentsJson": "{\u0022action\u0022:\u0022inspect_sources\u0022,\u0022documentId\u0022:\u0022e0e4aa6e-a180-4322-b170-6a0e1ddebb4c\u0022,\u0022id\u0022:\u002214b5543a-67ad-4ff1-9f0e-a2ee0501e2d5\u0022,\u0022bodyId\u0022:\u002261061856-dfdd-42cf-8138-271ae502b311\u0022,\u0022revision\u0022:\u002228b14872-995d-4808-a419-c7dd2e41544a\u0022,\u0022limit\u0022:50}"
+          }
+        ],
+        "ToolCallId": null,
+        "ContentParts": null
+      },
+      {
+        "Role": 3,
+        "Content": "{\u0022success\u0022:false,\u0022message\u0022:\u0022Invalid drawing arguments for action=inspect_sources. Missing or invalid: stateId. Unknown or duplicate: id. contract accepts only action/type; other actions require exact documentId/stateId from cad_status. inspect requires type, documentId and stateId together. Outer name is only save_template; create/edit names belong in authorJson.\u0022,\u0022missingOrInvalid\u0022:[\u0022stateId\u0022],\u0022unexpectedArguments\u0022:[\u0022id\u0022],\u0022allowedArguments\u0022:[\u0022action\u0022,\u0022documentId\u0022,\u0022stateId\u0022,\u0022path\u0022,\u0022bodyId\u0022,\u0022revision\u0022,\u0022offset\u0022,\u0022limit\u0022],\u0022identitySource\u0022:{\u0022toolName\u0022:\u0022cad_status\u0022,\u0022arguments\u0022:{}},\u0022identityRole\u0022:\u0022Copy documentId/stateId from the active cad_status response, not an item, body, sheet or source selection. Read current state before explicitly submitting the drawing request again. No identities were supplied or filled in automatically.\u0022}",
+        "ToolCalls": null,
+        "ToolCallId": "YdsUO61gCjibr90OLBFA9eMDiRHPtSk5",
+        "ContentParts": null
+      },
+      {
+        "Role": 2,
+        "Content": "",
+        "ToolCalls": [
+          {
+            "Id": "VULo3T70Hloir0gDRVxNTauO7pc19tNq",
+            "Name": "cad_drawing",
+            "ArgumentsJson": "{\u0022action\u0022:\u0022inspect_sources\u0022,\u0022documentId\u0022:\u0022e0e4aa6e-a180-4322-b170-6a0e1ddebb4c\u0022,\u0022stateId\u0022:\u0022b7b90da4-632b-421b-9902-43fff5967ce4\u0022,\u0022path\u0022:\u0022e0e4aa6e-a180-4322-b170-6a0e1ddebb4c/14b5543a-67ad-4ff1-9f0e-a2ee0501e2d5\u0022,\u0022bodyId\u0022:\u002261061856-dfdd-42cf-8138-271ae502b311\u0022,\u0022revision\u0022:\u002228b14872-995d-4808-a419-c7dd2e41544a\u0022,\u0022limit\u0022:50}"
+          }
+        ],
+        "ToolCallId": null,
+        "ContentParts": null
+      },
+      {
+        "Role": 3,
+        "Content": "{\u0022success\u0022:true,\u0022action\u0022:\u0022inspect_sources\u0022,\u0022documentId\u0022:\u0022e0e4aa6e-a180-4322-b170-6a0e1ddebb4c\u0022,\u0022stateId\u0022:\u0022b7b90da4-632b-421b-9902-43fff5967ce4\u0022,\u0022offset\u0022:0,\u0022limit\u0022:50,\u0022total\u0022:45,\u0022hasMore\u0022:false,\u0022contextPage\u0022:{\u0022hasMore\u0022:true,\u0022queryHasMore\u0022:false,\u0022originalItemCount\u0022:45,\u0022retainedItemCount\u0022:3,\u0022omittedItemCount\u0022:42,\u0022nextOffset\u0022:3,\u0022message\u0022:\u0022Context omitted later items; listed items are complete. Fetch omitted items with inspect_sources offset=nextOffset and a smaller limit.\u0022,\u0022toolName\u0022:\u0022cad_drawing\u0022,\u0022nextRequest\u0022:{\u0022action\u0022:\u0022inspect_sources\u0022,\u0022documentId\u0022:\u0022e0e4aa6e-a180-4322-b170-6a0e1ddebb4c\u0022,\u0022stateId\u0022:\u0022b7b90da4-632b-421b-9902-43fff5967ce4\u0022,\u0022path\u0022:\u0022e0e4aa6e-a180-4322-b170-6a0e1ddebb4c/14b5543a-67ad-4ff1-9f0e-a2ee0501e2d5\u0022,\u0022bodyId\u0022:\u002261061856-dfdd-42cf-8138-271ae502b311\u0022,\u0022revision\u0022:\u002228b14872-995d-4808-a419-c7dd2e41544a\u0022,\u0022offset\u0022:3,\u0022limit\u0022:3},\u0022requestNote\u0022:\u0022Read-only continuation copied from this successful query. Not executed; stale identities still reject. Omitted geometry hints are result positions, not selections: copy the nextRequest identity and use a hinted offset/limit to inspect a desired row before authoring.\u0022,\u0022omittedGeometryReads\u0022:[{\u0022geometry\u0022:\u0022CylinderFace\u0022,\u0022offset\u0022:38,\u0022limit\u0022:1},{\u0022geometry\u0022:\u0022CircleEdge\u0022,\u0022offset\u0022:26,\u0022limit\u0022:1},{\u0022geometry\u0022:\u0022PlaneFace\u0022,\u0022offset\u0022:3,\u0022limit\u0022:1},{\u0022geometry\u0022:\u0022LineEdge\u0022,\u0022offset\u0022:5,\u0022limit\u0022:1}],\u0022completeSourceItems\u0022:[{\u0022offset\u0022:38,\u0022item\u0022:{\u0022index\u0022:38,\u0022kind\u0022:\u0022Face\u0022,\u0022selection\u0022:{\u0022path\u0022:\u0022e0e4aa6e-a180-4322-b170-6a0e1ddebb4c/14b5543a-67ad-4ff1-9f0e-a2ee0501e2d5\u0022,\u0022bodyId\u0022:\u002261061856-dfdd-42cf-8138-271ae502b311\u0022,\u0022revision\u0022:\u002228b14872-995d-4808-a419-c7dd2e41544a\u0022,\u0022asset\u0022:\u002220bad286545c0db06d38143f3d5a79fca15f18eca98f7adb88c492013233b45f\u0022,\u0022fingerprint\u0022:\u00227F270420AD41CD525D3DC661E225D82B195F5C421B8D904BF45FF3495B60CCD9\u0022,\u0022index\u0022:38},\u0022geometry\u0022:\u0022CylinderFace\u0022}}],\u0022includedItemCount\u0022:4,\u0022remainingOmittedItemCount\u0022:41,\u0022completeSourceItemsNote\u0022:\u0022Original complete rows from this successful read. No selection or edit was executed. Offsets are query positions; includedItemCount includes prefix and extra rows. nextRequest starts after the prefix.\u0022},\u0022items\u0022:[{\u0022index\u0022:0,\u0022kind\u0022:\u0022Compound\u0022,\u0022diagnostic\u0022:\u0022Select an original face or edge.\u0022},{\u0022index\u0022:1,\u0022kind\u0022:\u0022Solid\u0022,\u0022diagnostic\u0022:\u0022Select an original face or edge.\u0022},{\u0022index\u0022:2,\u0022kind\u0022:\u0022Shell\u0022,\u0022diagnostic\u0022:\u0022Select an original face or edge.\u0022}]}",
+        "ToolCalls": null,
+        "ToolCallId": "VULo3T70Hloir0gDRVxNTauO7pc19tNq",
+        "ContentParts": null
+      }
+    ],
+    "tools": [
+      {
+        "Name": "cad_status",
+        "Description": "Document IDs/state/size/selection/commands.",
+        "Parameters": {
+          "type": "object",
+          "properties": {},
+          "additionalProperties": false
+        }
+      },
+      {
+        "Name": "cad_drawing",
+        "Description": "contract: only action/type, no IDs. Read schema. create: type\u002BdocumentId/stateId\u002BsheetId(child)\u002BauthorJson string; omit id. No caches. PDF:cad_file.",
+        "Parameters": {
+          "type": "object",
+          "properties": {
+            "action": {
+              "type": "string",
+              "description": "Except contract (inspect_sources too): documentId/stateId required.",
+              "enum": [
+                "contract",
+                "inspect",
+                "inspect_sources",
+                "create",
+                "edit",
+                "reselect",
+                "delete",
+                "set_parts_table",
+                "set_zones",
+                "refresh",
+                "save_template",
+                "apply_template",
+                "import_template",
+                "detach_coordinates"
+              ]
+            },
+            "type": {
+              "type": "string",
+              "enum": [
+                "sheet",
+                "view",
+                "dimension",
+                "datum",
+                "control_frame",
+                "balloon",
+                "hole_table",
+                "field",
+                "note",
+                "template",
+                "parts_table",
+                "zones"
+              ],
+              "description": "contract schema; inspect/create/edit/reselect/delete kind."
+            },
+            "documentId": {
+              "type": "string",
+              "format": "uuid",
+              "description": "REQUIRED except contract: cad_status.documentId."
+            },
+            "stateId": {
+              "type": "string",
+              "format": "uuid",
+              "description": "REQUIRED except contract: cad_status.stateId."
+            },
+            "sheetId": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "id": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "name": {
+              "type": "string",
+              "maxLength": 64,
+              "description": "save_template only; else authorJson."
+            },
+            "path": {
+              "type": "string",
+              "maxLength": 8192,
+              "description": "Full occurrences.items[].path"
+            },
+            "bodyId": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "revision": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "authorJson": {
+              "type": "string",
+              "minLength": 2,
+              "maxLength": 65536
+            },
+            "offset": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 100000
+            },
+            "limit": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 50
+            }
+          },
+          "required": [
+            "action"
+          ],
+          "additionalProperties": false
+        }
+      },
+      {
+        "Name": "cad_inspect",
+        "Description": "IDs/authors mm/rad; id=object ID, not documentId; model_contract id=type. drawings:sheet IDs; drawing_views/dimensions:sheetId; timeline:partId; recipes:inputs; sketch_geometry:entities/rank.",
+        "Parameters": {
+          "type": "object",
+          "properties": {
+            "area": {
+              "type": "string",
+              "enum": [
+                "document",
+                "parts",
+                "bodies",
+                "features",
+                "layers",
+                "materials",
+                "selection",
+                "sketches",
+                "occurrences",
+                "assembly",
+                "drawings",
+                "drawing_views",
+                "drawing_dimensions",
+                "parameters",
+                "parameter_bindings",
+                "parameter_targets",
+                "datums",
+                "datum_associations",
+                "timeline",
+                "recipes",
+                "sketch_geometry",
+                "model_contract",
+                "assembly_patterns"
+              ]
+            },
+            "id": {
+              "type": "string"
+            },
+            "partId": {
+              "type": "string"
+            },
+            "sheetId": {
+              "type": "string"
+            },
+            "offset": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 100000
+            },
+            "limit": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 50
+            }
+          },
+          "required": [
+            "area"
+          ],
+          "additionalProperties": false
+        }
+      },
+      {
+        "Name": "cad_command",
+        "Description": "cad_status.commands, exact document/state. HISTORY:cad_history. Pre-commit cancel rolls back; committed succeeds.",
+        "Parameters": {
+          "type": "object",
+          "properties": {
+            "command": {
+              "type": "string"
+            },
+            "documentId": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "stateId": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          "required": [
+            "command"
+          ],
+          "additionalProperties": false
+        }
+      },
+      {
+        "Name": "cad_select",
+        "Description": "Exact inspected occurrence/body: documentId/stateId/full path; bodyId/revision for bodies; reject stale/ambiguous.",
+        "Parameters": {
+          "type": "object",
+          "properties": {
+            "documentId": {
+              "type": "string"
+            },
+            "stateId": {
+              "type": "string"
+            },
+            "path": {
+              "type": "string"
+            },
+            "bodyId": {
+              "type": "string"
+            },
+            "revision": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "documentId",
+            "stateId",
+            "path"
+          ],
+          "additionalProperties": false
+        }
+      },
+      {
+        "Name": "cad_workspace",
+        "Description": "list.expected verbatim; keep IDs/nulls; target separate. User switch cancels.",
+        "Parameters": {
+          "type": "object",
+          "properties": {
+            "action": {
+              "type": "string",
+              "enum": [
+                "contract",
+                "list",
+                "new",
+                "open",
+                "activate"
+              ]
+            },
+            "expected": {
+              "type": "object",
+              "description": "list.expected verbatim; keep IDs/nulls; target separate.",
+              "properties": {
+                "workspaceStateId": {
+                  "type": "string",
+                  "format": "uuid"
+                },
+                "activeSessionId": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "format": "uuid",
+                  "description": "Null only if latest list.expected.activeSessionId is null."
+                },
+                "documentId": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "format": "uuid",
+                  "description": "Null only if latest list.expected.documentId is null."
+                },
+                "stateId": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "format": "uuid",
+                  "description": "Null only if latest list.expected.stateId is null."
+                }
+              },
+              "required": [
+                "workspaceStateId",
+                "activeSessionId",
+                "documentId",
+                "stateId"
+              ],
+              "additionalProperties": false
+            },
+            "name": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 200
+            },
+            "path": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 4096
+            },
+            "target": {
+              "type": "object",
+              "properties": {
+                "sessionId": {
+                  "type": "string",
+                  "format": "uuid"
+                },
+                "documentId": {
+                  "type": "string",
+                  "format": "uuid"
+                },
+                "stateId": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              },
+              "required": [
+                "sessionId",
+                "documentId",
+                "stateId"
+              ],
+              "additionalProperties": false
+            },
+            "offset": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 100000
+            },
+            "limit": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 50
+            }
+          },
+          "required": [
+            "action"
+          ],
+          "additionalProperties": false
+        }
+      },
+      {
+        "Name": "cad_file",
+        "Description": "save/export/report/pdf/template_export: read contract; exact documentId/stateId, absolute path, explicit overwrite, template id. Receipt:bytes/hash/source/diagnostics. Non-save:history end. PDF rejects stale references; no undo. Report actual path/hash; never claim a rejected or failed file write succeeded.",
+        "Parameters": {
+          "type": "object",
+          "properties": {},
+          "oneOf": [
+            {
+              "type": "object",
+              "properties": {
+                "action": {
+                  "const": "contract"
+                }
+              },
+              "required": [
+                "action"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "action": {
+                  "type": "string",
+                  "enum": [
+                    "save",
+                    "export",
+                    "report",
+                    "pdf",
+                    "template_export"
+                  ]
+                },
+                "documentId": {
+                  "type": "string",
+                  "format": "uuid",
+                  "minLength": 36,
+                  "maxLength": 36
+                },
+                "stateId": {
+                  "type": "string",
+                  "format": "uuid",
+                  "minLength": 36,
+                  "maxLength": 36
+                },
+                "id": {
+                  "type": "string",
+                  "format": "uuid",
+                  "minLength": 36,
+                  "maxLength": 36
+                },
+                "path": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 4096
+                },
+                "overwrite": {
+                  "type": "boolean"
+                },
+                "optionsJson": {
+                  "type": "string",
+                  "minLength": 2,
+                  "maxLength": 2048
+                }
+              },
+              "required": [
+                "action",
+                "documentId",
+                "stateId",
+                "path"
+              ],
+              "additionalProperties": false,
+              "allOf": [
+                {
+                  "if": {
+                    "properties": {
+                      "action": {
+                        "enum": [
+                          "save",
+                          "pdf",
+                          "template_export"
+                        ]
+                      }
+                    }
+                  },
+                  "then": {
+                    "not": {
+                      "required": [
+                        "optionsJson"
+                      ]
+                    }
+                  }
+                },
+                {
+                  "if": {
+                    "properties": {
+                      "action": {
+                        "const": "report"
+                      }
+                    }
+                  },
+                  "then": {
+                    "required": [
+                      "optionsJson"
+                    ]
+                  }
+                },
+                {
+                  "if": {
+                    "properties": {
+                      "action": {
+                        "const": "template_export"
+                      }
+                    }
+                  },
+                  "then": {
+                    "required": [
+                      "id"
+                    ]
+                  },
+                  "else": {
+                    "not": {
+                      "required": [
+                        "id"
+                      ]
+                    }
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "Name": "cad_history",
+        "Description": "Exact documentId/stateId\u002Bcursor(null=end); reject stale. timeline; suppress:result revision. Reorder:IDs/dependencies/operands at history end. Rollback:session only. Preview:changed=false, previewChanged/cursor.",
+        "Parameters": {
+          "type": "object",
+          "properties": {
+            "documentId": {
+              "$ref": "#/$defs/id"
+            },
+            "stateId": {
+              "$ref": "#/$defs/id"
+            },
+            "cursor": {
+              "$ref": "#/$defs/cursor"
+            }
+          },
+          "required": [
+            "documentId",
+            "stateId",
+            "cursor"
+          ],
+          "oneOf": [
+            {
+              "type": "object",
+              "properties": {
+                "action": {
+                  "const": "set_suppressed"
+                },
+                "documentId": {},
+                "stateId": {},
+                "cursor": {},
+                "id": {
+                  "$ref": "#/$defs/id"
+                },
+                "revision": {
+                  "$ref": "#/$defs/id"
+                },
+                "suppressed": {
+                  "type": "boolean"
+                }
+              },
+              "required": [
+                "action",
+                "id",
+                "revision",
+                "suppressed"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "action": {
+                  "const": "reorder"
+                },
+                "documentId": {},
+                "stateId": {},
+                "cursor": {},
+                "partId": {
+                  "$ref": "#/$defs/id"
+                },
+                "order": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/$defs/id"
+                  },
+                  "minItems": 1,
+                  "maxItems": 1024,
+                  "uniqueItems": true
+                }
+              },
+              "required": [
+                "action",
+                "partId",
+                "order"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "action": {
+                  "const": "rollback"
+                },
+                "documentId": {},
+                "stateId": {},
+                "cursor": {},
+                "partId": {
+                  "$ref": "#/$defs/id"
+                },
+                "position": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 1000000
+                }
+              },
+              "required": [
+                "action",
+                "partId",
+                "position"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "action": {
+                  "const": "return_end"
+                },
+                "documentId": {},
+                "stateId": {},
+                "cursor": {}
+              },
+              "required": [
+                "action"
+              ],
+              "additionalProperties": false
+            }
+          ],
+          "$defs": {
+            "id": {
+              "type": "string",
+              "format": "uuid",
+              "minLength": 36,
+              "maxLength": 36
+            },
+            "cursor": {
+              "oneOf": [
+                {
+                  "type": "null"
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "stateId": {
+                      "$ref": "#/$defs/id"
+                    },
+                    "partId": {
+                      "$ref": "#/$defs/id"
+                    },
+                    "position": {
+                      "type": "integer",
+                      "minimum": 0,
+                      "maximum": 1000000
+                    }
+                  },
+                  "required": [
+                    "stateId",
+                    "partId",
+                    "position"
+                  ],
+                  "additionalProperties": false
+                }
+              ]
+            }
+          }
+        }
+      },
+      {
+        "Name": "cad_edit",
+        "Description": "Exact document/state, mm. Contact/G2:sketch_geometry contract, id/revision. Offset:sketchId/revision, seeds(loop=1), distanceMm, join(default Miter). Returns IDs; no guessed topology.",
+        "Parameters": {
+          "type": "object",
+          "properties": {
+            "action": {
+              "type": "string",
+              "enum": [
+                "create_box",
+                "create_cylinder",
+                "create_sketch_rectangle",
+                "rename_sketch",
+                "set_sketch_contact",
+                "delete_sketch_contact",
+                "set_sketch_curvature",
+                "delete_sketch_curvature",
+                "set_sketch_finite_contact",
+                "delete_sketch_finite_contact",
+                "offset_sketch_loop",
+                "offset_sketch_regions",
+                "reselect_region_sources",
+                "fix_assembly_instance",
+                "set_assembly_constraint_enabled",
+                "set_assembly_distance",
+                "create_drawing_sheet",
+                "rename_drawing_sheet",
+                "add_drawing_view"
+              ]
+            },
+            "documentId": {
+              "type": "string"
+            },
+            "stateId": {
+              "type": "string"
+            },
+            "id": {
+              "type": "string"
+            },
+            "revision": {
+              "type": "string"
+            },
+            "sketchId": {
+              "type": "string"
+            },
+            "sources": {
+              "type": "array",
+              "items": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "format": "uuid"
+                },
+                "minItems": 1,
+                "maxItems": 4096
+              },
+              "minItems": 1,
+              "maxItems": 64
+            },
+            "seeds": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "minItems": 1,
+              "maxItems": 256
+            },
+            "join": {
+              "type": "string",
+              "enum": [
+                "Miter",
+                "Round",
+                "Bevel"
+              ]
+            },
+            "constraintId": {
+              "type": "string"
+            },
+            "curveA": {
+              "type": "string"
+            },
+            "curveB": {
+              "type": "string"
+            },
+            "parameterA": {
+              "type": "number"
+            },
+            "parameterB": {
+              "type": "number"
+            },
+            "parameterMode": {
+              "type": "string",
+              "enum": [
+                "Fixed",
+                "SolveA",
+                "SolveB",
+                "SolveBoth"
+              ]
+            },
+            "seedA": {
+              "type": "number"
+            },
+            "lowerA": {
+              "type": "number"
+            },
+            "upperA": {
+              "type": "number"
+            },
+            "seedB": {
+              "type": "number"
+            },
+            "lowerB": {
+              "type": "number"
+            },
+            "upperB": {
+              "type": "number"
+            },
+            "direction": {
+              "type": "string",
+              "enum": [
+                "SameDirection",
+                "OppositeDirection"
+              ]
+            },
+            "continuity": {
+              "type": "string",
+              "enum": [
+                "G1",
+                "G2"
+              ]
+            },
+            "branch": {
+              "type": "string",
+              "enum": [
+                "LineLeft",
+                "LineRight",
+                "External",
+                "AContainsB",
+                "BContainsA"
+              ]
+            },
+            "name": {
+              "type": "string"
+            },
+            "partId": {
+              "type": "string"
+            },
+            "layerId": {
+              "type": "string"
+            },
+            "materialId": {
+              "type": "string"
+            },
+            "path": {
+              "type": "string"
+            },
+            "sheetId": {
+              "type": "string"
+            },
+            "kind": {
+              "type": "string",
+              "enum": [
+                "Front",
+                "Top",
+                "Right",
+                "Isometric"
+              ]
+            },
+            "enabled": {
+              "type": "boolean"
+            },
+            "distanceMm": {
+              "type": "number"
+            },
+            "x": {
+              "type": "number"
+            },
+            "y": {
+              "type": "number"
+            },
+            "z": {
+              "type": "number"
+            },
+            "width": {
+              "type": "number"
+            },
+            "depth": {
+              "type": "number"
+            },
+            "radius": {
+              "type": "number"
+            },
+            "height": {
+              "type": "number"
+            },
+            "scale": {
+              "type": "number"
+            },
+            "centerX": {
+              "type": "number"
+            },
+            "centerY": {
+              "type": "number"
+            }
+          },
+          "required": [
+            "action",
+            "documentId",
+            "stateId"
+          ],
+          "additionalProperties": false
+        }
+      }
+    ]
+  }
+]

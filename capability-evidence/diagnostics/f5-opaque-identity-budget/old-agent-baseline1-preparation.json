@@ -1,0 +1,9 @@
+{
+  "oldAgent": {
+    "path": "artifacts/af-final87-3/workspace/Cadoryx.Agent/bin/Release/net10.0/Cadoryx.Agent.dll",
+    "sha256": "E6F9E87D218DCA5ED097DBEBBE291CE10186C3BC09064A02F6BE80EF334774AC"
+  },
+  "sameTestPayload": "9014B1F6A54A257A607A499A57E7CB440B74F35B6ED3E83422B4AAC73156428B",
+  "onlyAgentSwapped": true,
+  "otherPayloadBytesEqual": true
+}

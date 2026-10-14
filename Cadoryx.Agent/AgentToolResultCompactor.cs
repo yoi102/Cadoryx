@@ -9,10 +9,15 @@ internal static class AgentToolResultCompactor
     private static readonly HashSet<string> Fields = new(StringComparer.Ordinal)
     { "success", "action", "documentId", "stateId", "offset", "limit", "total", "hasMore", "items" };
 
-    internal static bool TryCompactNativeSelectionPage(string content, int maximumCharacters, out string compacted, AiToolCall? actualCall = null)
+    internal static bool TryCompactNativeSelectionPage(string content, int maximumCharacters, out string compacted, AiToolCall? actualCall = null) =>
+        TryCompactNativeSelectionPage(content, maximumCharacters, out compacted, actualCall, null);
+
+    internal static bool TryCompactNativeSelectionPage(string content, int maximumCharacters, out string compacted, AiToolCall? actualCall, int? maximumTokens)
     {
         compacted = content;
-        if (content.Length <= maximumCharacters || content.Length > MaximumReceiptCharacters || maximumCharacters <= 0)
+        bool Fits(string value) => value.Length <= maximumCharacters &&
+            (maximumTokens is null || AgentRequestContextBuilder.EstimateTextTokens(value) <= maximumTokens.Value);
+        if (Fits(content) || content.Length > MaximumReceiptCharacters || maximumCharacters <= 0 || maximumTokens <= 0)
             return false;
         try
         {
@@ -108,9 +113,9 @@ internal static class AgentToolResultCompactor
                 return JsonSerializer.Serialize(page);
             }
             var full = Page(items.Length);
-            if (full.Length <= maximumCharacters) { compacted = full; return true; }
+            if (Fits(full)) { compacted = full; return true; }
             var smallest = Page(0);
-            if (smallest.Length > maximumCharacters) return false;
+            if (!Fits(smallest)) return false;
             // Prefix content alone is a lower bound on every candidate. Avoid
             // repeatedly serializing prefixes that cannot fit even without metadata.
             var prefixCharacters = 0;
@@ -134,7 +139,7 @@ internal static class AgentToolResultCompactor
                         for (var retained = maximumPrefix; retained > 0; retained--)
                         {
                             var candidate = Page(retained);
-                            if (candidate.Length <= maximumCharacters) { compacted = candidate; return true; }
+                            if (Fits(candidate)) { compacted = candidate; return true; }
                         }
                     }
             includeOmittedGeometryReads = true;
@@ -142,9 +147,9 @@ internal static class AgentToolResultCompactor
             maximumAdditionalRows = 8;
             // Discovery metadata must never prevent a complete original item
             // from fitting. Prefer actual selectors over optional discovery hints.
-            if (items.Length > 0 && Page(1).Length > maximumCharacters)
+            if (items.Length > 0 && !Fits(Page(1)))
                 includeCompleteSourceItems = false;
-            if (items.Length > 0 && Page(1).Length > maximumCharacters)
+            if (items.Length > 0 && !Fits(Page(1)))
                 includeOmittedGeometryReads = false;
             // Optional rows/hints disappear when their kind enters the prefix,
             // so serialized sizes need not be monotonic. At most 50 candidates
@@ -153,7 +158,7 @@ internal static class AgentToolResultCompactor
             for (var retained = maximumPrefix; retained > 0; retained--)
             {
                 var candidate = Page(retained);
-                if (candidate.Length <= maximumCharacters) { compacted = candidate; break; }
+                if (Fits(candidate)) { compacted = candidate; break; }
             }
             return true;
         }

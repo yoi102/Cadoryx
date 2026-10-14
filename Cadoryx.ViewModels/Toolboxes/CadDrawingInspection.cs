@@ -32,7 +32,14 @@ internal static partial class CadDrawingAuthoring
             file="cad_file action=template_export, exact id, path ending .json; import uses the existing native template file format, not authorJson."});
         var authorType=AuthorTypes.GetValueOrDefault(type)??throw new ArgumentException("Unknown drawing contract type.");
         var definitions=new Dictionary<string,object>();var schema=CadModelJson.TypeSchema(authorType,definitions);
+        var submissionAction=type switch{"parts_table"=>"set_parts_table","zones"=>"set_zones",_=>"create"};
+        string[] submissionRequired=submissionAction=="create"
+            ? type=="sheet"?["action","type","documentId","stateId","authorJson"]:["action","type","documentId","stateId","sheetId","authorJson"]
+            :["action","documentId","stateId","sheetId","authorJson"];
         return JsonSerializer.Serialize(new Dictionary<string,object>{["success"]=true,["type"]=type,["authorSchema"]=schema,["$defs"]=definitions,
+            ["submission"]=new{action=submissionAction,requiredArguments=submissionRequired,
+                authorJson="JSON string matching authorSchema/$defs; not a JSON object argument.",
+                note="contract is read-only: nothing created. Submit this action separately using current documentId/stateId and exact owner/native selections. create omits id; the server assigns it. Do not send authorJson or identities to contract."},
             ["notes"]="Pure author input only. Omitted optional nullable fields clear them. For control frames datumSystem is ordered; for planar features opposite and internalWidth are explicit; hole coordinates use frame OR coordinates(binding,revisions). New hole rows omit id; existing rows copy their exact id. View SourcePath is creation/reselect only."},CadAuthoringInspection.JsonOptions);
     }
     private static object Object(DocumentSnapshot doc,TechnicalDrawingSheet? sheet,string type,Guid id)=>type switch

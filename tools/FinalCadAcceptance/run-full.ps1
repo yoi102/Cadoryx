@@ -9,7 +9,9 @@ Assert-CurrentSdkNativeReturn -TaskRoot $taskRoot
 . (Join-Path $taskRoot 'artifacts/assert-cad-native-consumers-idle-2.ps1')
 . (Join-Path $taskRoot 'artifacts/a5-native-binding-helper-1.ps1')
 $taskFreeze=Get-Content (Join-Path $taskStage 'freeze.json') -Raw|ConvertFrom-Json -DateKind String
-if($taskFreeze.version -cne '8.0.1-preview.87' -or $taskFreeze.expectedTotal -ne $(if($CandidateIteration -eq 1){7192}else{7194}) -or $taskFreeze.expectedExecuted -ne ($taskFreeze.expectedTotal-24)){throw 'Current final87 exact freeze required'}
+$taskPreparationName=if($CandidateIteration -eq 1){'preparation2.json'}else{'preparation.json'}
+$taskPreparation=Get-Content (Join-Path $taskStage $taskPreparationName) -Raw|ConvertFrom-Json -DateKind String
+if($taskFreeze.version -cne '8.0.1-preview.87' -or $taskFreeze.expectedTotal -ne $taskPreparation.expectedTotal -or $taskFreeze.expectedExecuted -ne ($taskFreeze.expectedTotal-24) -or $taskFreeze.deferredNames.Count -ne 24){throw 'Current final87 exact freeze required'}
 $taskRunLabel=if($Focused){'focused'}else{'full'}
 if(Test-Path (Join-Path $taskStage ($taskRunLabel+'-both-exit.json'))){throw 'Preserve immutable runtime result'}
 $taskRows=@()
@@ -21,6 +23,7 @@ foreach($taskConfig in $taskFreeze.configurations){
  $taskExpectedNames=@($taskConfig.discoveredNames | Where-Object {$_ -notin $taskFreeze.deferredNames})
  if($Focused){
   $taskClasses=@('NativeOmittedGeometryReadTests','NativeCompleteSourceContextTests','AgentNativeSelectionRetentionTests','LmStudioCompletionIntegrityTests','AgentEmptyResponseRecoveryTests')
+  if($CandidateIteration -ge 4){$taskClasses+=@('AgentOpaqueIdentityBudgetTests','AgentContextTests','DrawingContractRequestGuideTests','DrawingAgentTests')}
   $taskExpectedNames=@($taskExpectedNames | Where-Object {($_ -split '\.')[2] -in $taskClasses})
   if(!$taskExpectedNames.Count){throw 'Original focused cases missing from frozen discovery'}
   $taskFilter='('+ (($taskClasses | ForEach-Object {'FullyQualifiedName~Cadoryx.Tests.'+$_+'.'}) -join '|') +')&'+$taskFilter

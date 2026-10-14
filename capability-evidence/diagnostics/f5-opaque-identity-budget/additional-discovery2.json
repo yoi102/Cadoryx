@@ -1,0 +1,35 @@
+{
+  "recordedAt": "2026-10-14T05:58:33.944486+00:00",
+  "priorFreeze": {
+    "path": "artifacts/af-final87-3/freeze.json",
+    "sha256": "51D01EF2973B3BCAF27572B6D40B793DD0753C6FD8C90575C911B2BEFEBFA07A"
+  },
+  "additionalNames": {
+    "Cadoryx.Tests.AgentOpaqueIdentityBudgetTests.ActualIdentityRichPageIsChargedAtLeastItsMeasuredModelTokenCount": 1,
+    "Cadoryx.Tests.AgentOpaqueIdentityBudgetTests.ActualRequestFitsOriginalBudgetsWithoutOrphanedOrRewrittenSelections(aggressive: False)": 1,
+    "Cadoryx.Tests.AgentOpaqueIdentityBudgetTests.ActualRequestFitsOriginalBudgetsWithoutOrphanedOrRewrittenSelections(aggressive: True)": 1,
+    "Cadoryx.Tests.DrawingContractRequestGuideTests.EveryAuthorContractExplainsItsSeparateSubmissionWithoutSupplyingAnyIdentity": 1
+  },
+  "expectedTotal": 7198,
+  "rootDiscovery": [
+    {
+      "path": "artifacts/f5-opaque-identities-1/discovery-release2.log",
+      "sha256": "E056B229EC80A0E18FE1AC3E5FD551C583239782E380D08E44388B3DDD3245B8"
+    },
+    {
+      "path": "artifacts/f5-opaque-identities-1/discovery-debug2.log",
+      "sha256": "E056B229EC80A0E18FE1AC3E5FD551C583239782E380D08E44388B3DDD3245B8"
+    }
+  ],
+  "rootTestPayload": [
+    {
+      "path": "Cadoryx.Tests/bin/Release/net10.0/Cadoryx.Tests.dll",
+      "sha256": "697BBC96CC7168015ED903CE790F3B31F7CCA95972561E8DE11683921F39D461"
+    },
+    {
+      "path": "Cadoryx.Tests/bin/Debug/net10.0/Cadoryx.Tests.dll",
+      "sha256": "CE81686E273A9F26C79E4DD966FD020C688F6417E8F659D2718C88D3CD2501C0"
+    }
+  ],
+  "namesAndMultiplicitiesRetained": true
+}

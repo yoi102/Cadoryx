@@ -7,7 +7,10 @@
     <PackageReference Include="xunit.runner.visualstudio" Version="3.1.5" PrivateAssets="all" />
     <Compile Include="../../Cadoryx.Tests/AgentNativeSelectionRetentionTests.cs" Link="AgentNativeSelectionRetentionTests.cs" />
     <Compile Include="../../Cadoryx.Tests/NativeCompleteSourceContextTests.cs" Link="NativeCompleteSourceContextTests.cs" />
+    <Compile Include="../../Cadoryx.Tests/AgentOpaqueIdentityBudgetTests.cs" Link="AgentOpaqueIdentityBudgetTests.cs" />
+    <Compile Include="../../Cadoryx.Tests/AgentContextTests.cs" Link="AgentContextTests.cs" />
     <None Include="../../Cadoryx.Tests/Fixtures/AgentContext/NativeSelectionRetention/**" Link="Fixtures/AgentContext/NativeSelectionRetention/%(RecursiveDir)%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
     <None Include="../../Cadoryx.Tests/Fixtures/AgentContext/NativeSelectionPage.json" Link="Fixtures/AgentContext/NativeSelectionPage.json" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="../../Cadoryx.Tests/Fixtures/AgentContext/OpaqueIdentityBudget/**" Link="Fixtures/AgentContext/OpaqueIdentityBudget/%(RecursiveDir)%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
 </Project>

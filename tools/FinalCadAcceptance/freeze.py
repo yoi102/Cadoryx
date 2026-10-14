@@ -49,6 +49,11 @@ for config in ('Release','Debug'):
     assert len(names)==prep['expectedTotal']
     prior=Counter(next(c for c in old['configurations'] if c['configuration']==config)['discoveredNames'])
     current=Counter(names); assert prior<=current
+    if 'additionalDiscovery' in prep:
+        deltaProof=prep['additionalDiscovery'];assert sha(Path(deltaProof['path']))==deltaProof['sha256']
+        previous=prep['priorFreeze'];assert sha(ROOT/previous['path'])==previous['sha256']
+        previousConfig=next(c for c in read(ROOT/previous['path'])['configurations'] if c['configuration']==config)
+        assert current==Counter(previousConfig['discoveredNames'])+Counter(prep['additionalNames'])
     added=current-prior
     assert sum(added.values())==prep['expectedTotal']-7117
     assert sum(v for n,v in added.items() if n.startswith('Cadoryx.Tests.LmStudioCompletionIntegrityTests.'))==40

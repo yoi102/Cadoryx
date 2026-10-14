@@ -1,4 +1,5 @@
 using Cadoryx.AI.Contracts;
+using System.Text.RegularExpressions;
 
 namespace Cadoryx.Agent;
 
@@ -8,8 +9,9 @@ internal sealed record AgentRequestContext(
     int MaxOutputTokens,
     int EstimatedPromptTokens);
 
-internal static class AgentRequestContextBuilder
+internal static partial class AgentRequestContextBuilder
 {
+    private sealed record NativeReadCompaction(AiToolCall Call, string Receipt, int MaximumCharacters);
     private const int NormalSafetyTokens = 640;
     private const int RetrySafetyTokens = 1280;
     private const int NormalMaximumToolResultCharacters = 6000;
@@ -123,7 +125,11 @@ internal static class AgentRequestContextBuilder
         }
 
         var selected = compacted[selectedStart..].ToList();
-        TrimHistoryToBudget(selected, tokenBudget, protectedCallIds);
+        NativeReadCompaction? nativeRead = null;
+        if (nativeCallId is not null && uniqueCalls.TryGetValue(nativeCallId, out var nativeCall) &&
+            conversation.SingleOrDefault(m => m.Role == AiChatRole.Tool && m.ToolCallId == nativeCallId)?.Content is { } nativeReceipt)
+            nativeRead = new(nativeCall, nativeReceipt, maximumToolResultCharacters);
+        TrimHistoryToBudget(selected, tokenBudget, protectedCallIds, nativeRead);
         var omitted = new List<string>();
         if (protectedCallId is not null && !AgentSuccessfulActionReceipt.ContainsExchange(selected, protectedCallId))
             omitted.Add(AgentSuccessfulActionReceipt.OmittedExchangeMarker);
@@ -144,7 +150,8 @@ internal static class AgentRequestContextBuilder
         return NormalizeToolMessages(selected);
     }
 
-    private static void TrimHistoryToBudget(List<AiChatMessage> selected, int tokenBudget, IReadOnlySet<string>? protectedCallIds = null)
+    private static void TrimHistoryToBudget(List<AiChatMessage> selected, int tokenBudget, IReadOnlySet<string>? protectedCallIds = null,
+        NativeReadCompaction? nativeRead = null)
     {
         while (selected.Count > 0 && selected.Sum(EstimateMessageTokens) > tokenBudget)
         {
@@ -159,6 +166,8 @@ internal static class AgentRequestContextBuilder
                 (protectedCallIds is null || message.ToolCalls?.Any(call => protectedCallIds.Contains(call.Id)) != true));
             // When the complete protected exchange cannot fit even on its own,
             // retain the original bounded fallback and report its omission.
+            if (assistant < 0 && nativeRead is not null && TryFitNativeRead(selected, tokenBudget, nativeRead))
+                continue;
             if (assistant < 0)
                 assistant = selected.FindIndex(1, message => message.Role == AiChatRole.Assistant);
             if (assistant >= 0)
@@ -184,6 +193,20 @@ internal static class AgentRequestContextBuilder
             selected[user] = TruncateMessageToTokenBudget(selected[user], tokenBudget);
             break;
         }
+    }
+
+    private static bool TryFitNativeRead(List<AiChatMessage> selected, int tokenBudget, NativeReadCompaction nativeRead)
+    {
+        int index = selected.FindIndex(m => m.Role == AiChatRole.Tool && m.ToolCallId == nativeRead.Call.Id);
+        if (index < 0) return false;
+        var original = selected[index];
+        int available = tokenBudget - selected.Sum(EstimateMessageTokens) + EstimateMessageTokens(original) - 8;
+        if (available <= 0 || !AgentToolResultCompactor.TryCompactNativeSelectionPage(nativeRead.Receipt,
+                nativeRead.MaximumCharacters, out var content, nativeRead.Call, available)) return false;
+        var candidate = original with { Content = content };
+        if (EstimateMessageTokens(candidate) >= EstimateMessageTokens(original)) return false;
+        selected[index] = candidate;
+        return true;
     }
 
     private static void RemoveAssistantExchange(List<AiChatMessage> messages, int assistantIndex)
@@ -404,6 +427,16 @@ internal static class AgentRequestContextBuilder
             else
                 nonAscii++;
         }
-        return (int)Math.Ceiling(ascii / 3.6 + nonAscii / 1.25);
+        // Opaque identities are not prose. The actual native-source page used
+        // 3002 model tokens where the prose estimate charged only1578. Reserve
+        // one token per identity character so exact selections consume budget
+        // before history is chosen; never shorten or synthesize their values.
+        var identityCharacters = 0;
+        foreach (Match identity in OpaqueIdentityPattern().Matches(text))
+            identityCharacters += identity.Length;
+        return (int)Math.Ceiling((ascii - identityCharacters) / 3.6 + nonAscii / 1.25 + identityCharacters);
     }
+
+    [GeneratedRegex(@"(?<![A-Za-z0-9])(?:[A-Fa-f0-9]{8}-[A-Fa-f0-9]{4}-[A-Fa-f0-9]{4}-[A-Fa-f0-9]{4}-[A-Fa-f0-9]{12}|[A-Fa-f0-9]{64})(?![A-Za-z0-9])", RegexOptions.CultureInvariant)]
+    private static partial Regex OpaqueIdentityPattern();
 }
