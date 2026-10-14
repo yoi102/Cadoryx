@@ -1,5 +1,13 @@
 # 当前状态
 
+2026-10-14，status273：**原严格STEP24继续精确延期，其余A–F推进，尚未全部完成。** 最终87第三候选Release/Debug仍各7170/7170、零失败/跳过，原24未执行、不算通过；根开发仍87.cu1，最终87仅隔离候选。正式已验A4/B17/C5/D5/E4/F5g及第4、5节完整范围保持，G/清理暂缓。
+
+[材质原生82](../capability-evidence/diagnostics/af-final87/candidate3-material82-verification.json)实际82/82、每例资产归零及实际native62准确；[完整画面审阅](../capability-evidence/diagnostics/af-final87/candidate3-material82-whole-image-review.json)核对346张完整480×320图与原验收图逐字节相同，本轮14种不同完整图全部直接审阅。材质拾取/添加/应用/分配及六语言主题界面流程仍待实际验收，不以原生消费者代替。
+
+[MiniPC性能](../capability-evidence/diagnostics/af-final87/candidate3-performance-verification.json)四个独立进程已终态：两fresh直接提交4658.5572/4595.3682ms，均满足原6482ms目标，各20次双视口生命周期；首次可见提交1011.2643/1003.5942ms。生产打开全场景67126.4984/67281.2994ms，内核导入59938.7742/60160.0902ms，未把直接提交时间当完整导入时间。原88,258,425字节样本、4964实例/1185几何、actual62和[完整788×411 PNG](../capability-evidence/diagnostics/af-final87/candidate3-performance-whole-image-review.json)保持；dispatcher服务p95并非物理输入延迟，系统缓存/后台负载未完全控制。[主壳36整图](../capability-evidence/diagnostics/af-final87/candidate3-main36-whole-image-review.json)已补完：144张当前图/42种身份，36张主壳完整图直接审阅、6张原生图与已直接审阅图逐字节相同；不声称物理GPU移除或扫描通过。
+
+[D6第一个实际创建场景](../capability-evidence/diagnostics/af-final87/candidate3-d6-case0-desktop-review.json)六状态、显式面身份/起始Z6、96mm³独立实体、撤销重做/保存重开/native62/资产0通过，原矩阵完成1/36，剩余35待验。旧主窗口输入导致取消及新增宿主首轮300秒超时均保留为失败；验收宿主只增加`ShowInTaskbar=true`便于Computer Use返回独立弹窗，两配置build0、产品app19/SDK13/native62及原断言/30秒/300秒未变，不代替产品原窗口呈现验收。原工程图模型2/8后第三轮截断失败继续调查，原预算与一次恢复不放宽；材质实际UI、剩余D6、F5失败修复、根final87接入及全部其他A–F继续。以下status272及更早为历史。
+
 2026-10-14，status272：**最终87第三候选完整两配置各7170通过，原恢复24/36实际运行已审计；工程图模型仍失败，A–F尚未完成。** [完整回归](../capability-evidence/diagnostics/af-final87/candidate3-full-verification.json)原7194发现减精确原STEP24，所有名称/次数及两actual native62保持，零失败/跳过；原STEP24未执行、不算通过。
 
 [原模型实际终态](../capability-evidence/diagnostics/af-final87/candidate3-provider-verification.json)：跨文档8/8通过，工程图完成2/8后第三轮截断失败，双方关闭后资产0、actual native62及原HTTP完整采集已核对。工程图两处length必须区分：response019为prompt7866+completion326=8192上下文顶满；response023为prompt6720+completion1024=7744、reasoning_tokens1024，耗尽原1024输出预算。原一次恢复/8192/1024/16轮/4分钟及拒绝不完整调用保持，不能只归因为上下文或延伸STEP延期。

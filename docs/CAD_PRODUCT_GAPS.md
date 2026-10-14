@@ -1,5 +1,7 @@
 # 3D CAD 产品缺口与实施规划
 
+2026-10-14，status273：原严格STEP精确24项延期且未执行，其余两配置各7170通过。材质原生82/82、346完整图/14种当前整图审阅完成；MiniPC两fresh直接提交4658.5572/4595.3682ms满足6482ms，生产完整打开约67秒分别记录，主壳36的144整图/42身份审阅已完成。[D6首个实际创建](../capability-evidence/diagnostics/af-final87/candidate3-d6-case0-desktop-review.json)原六状态/确认/撤销重做/保存重开通过，矩阵1/36，原失败与300秒超时保留；仅验收宿主增加任务栏入口以返回独立弹窗，产品/断言/预算不变。工程图模型失败、实际材质UI、剩余35个D6和根最终87接入继续；正式A4/B17/C5/D5/E4/F5g及第4、5节完整范围保持，A–F尚未完成，G/清理暂缓。以[STATUS](STATUS.md)及实际终态为准，以下为历史记录。
+
 2026-10-14，status272：[最终87完整两配置](../capability-evidence/diagnostics/af-final87/candidate3-full-verification.json)各7170通过、原STEP24未执行；[原模型](../capability-evidence/diagnostics/af-final87/candidate3-provider-verification.json)跨文档8/8通过、工程图2/8后截断失败，原预算和拒绝保持。[当前恢复24/36](../capability-evidence/diagnostics/af-final87/candidate3-recovery-verification.json)实际通过，原48保存/52与144整图/native62/历史和生命周期已审计；原24两唯一完整图已直审，主壳42不同完整图仍待直审。D6/材质/性能、工程图失败与根接入继续，正式A4/B17/C5/D5/E4/F5g保持；A–F尚未完成，G/清理暂缓。以[STATUS](STATUS.md)及实际终态为准，以下为历史记录。
 
 2026-10-14，status271：[最终87第三候选完整两配置](../capability-evidence/diagnostics/af-final87/candidate3-full-verification.json)各7170/7170、零失败/跳过，原7194发现减精确原24名称/次数与actual native62保持；原STEP24未执行、不算通过。六恢复/D6宿主构建与载荷已资格，原工程图模型开始、跨文档随后串行；当前恢复/窗口/材质/性能与根接入仍待实际验收，旧载荷不代替。根87.cu1、正式A4/B17/C5/D5/E4/F5g保持，A–F尚未完成，G/清理暂缓。以[STATUS](STATUS.md)及实际终态为准，以下为历史记录。

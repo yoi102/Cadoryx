@@ -1,5 +1,7 @@
 # A–F 全量实施跟踪
 
+2026-10-14，status273：最终87第三候选两配置各7170/7170通过，精确原STEP24未执行、不算通过。[材质82与346整图](../capability-evidence/diagnostics/af-final87/candidate3-material82-whole-image-review.json)、[MiniPC四进程性能](../capability-evidence/diagnostics/af-final87/candidate3-performance-verification.json)及主壳36全部整图审阅已完成。[D6首个实际创建场景](../capability-evidence/diagnostics/af-final87/candidate3-d6-case0-desktop-review.json)六状态/确认/撤销重做/保存重开/native62/资产0通过，原矩阵1/36；前两失败保留，宿主仅增加任务栏入口，产品与原30/300秒未改。原工程图2/8失败调查、实际材质UI、剩余D6和根final87接入及全部其他第4、5节范围继续；根87.cu1、正式A4/B17/C5/D5/E4/F5g保持，A–F尚未完成，G/清理暂缓。[STATUS](STATUS.md)和实际终态优先，以下为历史。
+
 2026-10-14，status268：最终本地87/ABI119/bridge134精确包已接收，当前隔离1372输入/53项目两配置build0、各实际发现7192（原7117+新75完整）。Release7168沿实际作业运行/actual62已取证，Debug待串行；只排除唯一原STEP24，其他同名用例按完整次数核对。开发根仍87.cu1，模型/恢复/D6/材质/性能及新根接入未运行；完整A–F范围与正式A4/B17/C5/D5/E4/F5g保持，G/清理暂缓。[当前证据](../capability-evidence/diagnostics/af-final87/pre-runtime-verification.json)及[STATUS](STATUS.md)优先，以下历史不代替新包验收。
 
 2026-10-14，status267：[F5来源保留](F5_NATIVE_SELECTION_CONTEXT_RETENTION.md)两配置核心45/45（新32+旧分页13）、适配器4分列及原截断40通过；同最终载荷仅换原Agent的两条真实上下文重放0/2，修后通过。精确STEP24过滤已准备并适配器验，不改断言、不延期其他用例；非延期同名显示项保留完整次数。整应用预计7192未build/发现/运行、实际模型/窗口/性能未启动；原工程图2/8及D6失败保持。SDK final DA仍在资格/消费者设置修正，必须最新明确返还；开发精确87.cu1不变，A–F全部范围及正式A4/B17/C5/D5/E4/F5g保持，G/清理暂缓。以下为历史，以[STATUS](STATUS.md)及终态为准。

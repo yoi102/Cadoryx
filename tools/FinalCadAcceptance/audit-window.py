@@ -3,7 +3,7 @@ from pathlib import Path
 from datetime import datetime,timezone
 import argparse,hashlib,json,subprocess,sys
 ROOT=Path(__file__).resolve().parents[2]
-parser=argparse.ArgumentParser();parser.add_argument('case_index',type=int);parser.add_argument('--candidate',type=int,default=3);parser.add_argument('--iteration',type=int,default=1)
+parser=argparse.ArgumentParser();parser.add_argument('case_index',type=int);parser.add_argument('--candidate',type=int,default=3);parser.add_argument('--iteration',type=int,default=1);parser.add_argument('--targetable-modal',action='store_true')
 args=parser.parse_args();index=args.case_index
 assert 0<=index<36 and 1<=args.candidate<=100 and 1<=args.iteration<=100
 DRAFT=ROOT/f'artifacts/af-final87-{args.candidate}'
@@ -17,7 +17,11 @@ case=dict(prep['D6Matrix'][index])
 if args.iteration!=1:
  assert case['output'].endswith('-1');case['output']=case['output'][:-1]+str(args.iteration)
 assert sha(Path(case['fixture']['path']))==case['fixture']['sha256']
-host_path=DRAFT/'hosts-verification.json';hosts=read(host_path)
+host_path=DRAFT/'hosts-verification.json'
+if args.targetable_modal:
+ subprocess.run([sys.executable,str(Path(__file__).with_name('targetable-window-host.py')),'check',str(args.candidate)],check=True)
+ host_path=DRAFT/'targetable-window-host1-verification.json'
+hosts=read(host_path)
 assert hosts['freeze']['sha256']==sha(DRAFT/'freeze.json') and hosts['readinessSeconds']==30 and hosts['D6DeadlineSeconds']==300
 host=next(r for r in hosts['hosts'] if r['label']=='d6-window36' and r['configuration']=='Release')
 candidate=Path(host['output'])
@@ -27,6 +31,8 @@ output = Path(case['output'])
 terminal_path = Path(str(output) + '-exit.json'); terminal = read(terminal_path)
 assert terminal['state'] == 'PROCESS_EXIT0_PENDING_INDEPENDENT_TRACE_AUDIT_AND_DESKTOP_REVIEW'
 assert terminal['exitCode'] == 0 and terminal['caseIndex'] == index and terminal['case'] == case
+assert terminal.get('targetableModal',False) == args.targetable_modal
+if args.targetable_modal: assert terminal['hostProofSHA256'] == sha(host_path)
 assert terminal['readinessSeconds'] == 30 and terminal['observationSeconds'] == 300
 assert Path(terminal['candidate']) == candidate and not terminal['hostInjectsInput']
 result_path = output / 'result.json'; result = read(result_path)

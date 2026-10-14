@@ -1,0 +1,91 @@
+{
+  "recordedAt": "2026-10-14T05:10:40.362288+00:00",
+  "state": "FINAL87_MATERIAL82_ALL346_FULL_BYTES_EQUAL_14_CURRENT_UNIQUE_FULL_IMAGES_DIRECTLY_REVIEWED",
+  "audit": {
+    "path": "capability-evidence/diagnostics/af-final87/candidate3-material82-verification.json",
+    "sha256": "4B53EE4F3AEE5564CA05D461ACA91D93C16DACB38B7FB64DF85FBBC44F74DF4C"
+  },
+  "totalFrames": 346,
+  "uniqueFullImages": 14,
+  "originalDimensions": [
+    480,
+    320
+  ],
+  "all346FullBytesEqualAcceptedPrior": true,
+  "directlyReviewed": [
+    {
+      "path": "artifacts/af-final87-3/material82-results1/336-author-reject-scale-False-second-after.png",
+      "sha256": "57C93005C6D0EA2A7C6E7E3513A4D875D6977AEC54001AEFE0748CC535B40AAF",
+      "coveredFrameCount": 64
+    },
+    {
+      "path": "artifacts/af-final87-3/material82-results1/272-author-Pbr-True-False-True-source-restored.png",
+      "sha256": "206AB6AB2DD2095F04785E44B76F207238AAFA4B1D158500C2D94A6537EC3DBD",
+      "coveredFrameCount": 72
+    },
+    {
+      "path": "artifacts/af-final87-3/material82-results1/130-styled-caller-release-occurrences-second-highlighted.png",
+      "sha256": "2A69222B68D0C3E9E05B938686C344062E5EB907C23509FBA1070AD316412CA4",
+      "coveredFrameCount": 16
+    },
+    {
+      "path": "artifacts/af-final87-3/material82-results1/292-author-Pbr-True-True-True-source-restored.png",
+      "sha256": "F101665B3B682D96AB94E99C7B5BD69C6071836E37C136A014F61158156DCFBE",
+      "coveredFrameCount": 52
+    },
+    {
+      "path": "artifacts/af-final87-3/material82-results1/171-author-Phong-False-True-True-second-after-first-close.png",
+      "sha256": "FEA22D834B077CD816D7CA503276C780F4DF77746C9C95658BC89FCD423B1FE8",
+      "coveredFrameCount": 20
+    },
+    {
+      "path": "artifacts/af-final87-3/material82-results1/209-author-Phong-True-True-True-1-selected.png",
+      "sha256": "1E61B45B737ACF16B83E722C49AE60C5F6479701D1066BC3E56A17CBE0730838",
+      "coveredFrameCount": 16
+    },
+    {
+      "path": "artifacts/af-final87-3/material82-results1/341-author-progressive-Phong-complete.png",
+      "sha256": "00EF551C1FA827DA1000AE739800935C51A58B3AAF1CE97365E32FEF892D9A63",
+      "coveredFrameCount": 21
+    },
+    {
+      "path": "artifacts/af-final87-3/material82-results1/251-author-Pbr-False-True-True-second-after-first-close.png",
+      "sha256": "18F2AD746FC1279F4A3EBFBA9F9A859B8F4BDC602DF230C2676BA4D6B4D24272",
+      "coveredFrameCount": 20
+    },
+    {
+      "path": "artifacts/af-final87-3/material82-results1/289-author-Pbr-True-True-True-1-selected.png",
+      "sha256": "D674A5D887D1BAEF7B626E1C351F6CE0229729E66FB3742ED1C7D7DB83E6B412",
+      "coveredFrameCount": 16
+    },
+    {
+      "path": "artifacts/af-final87-3/material82-results1/342-author-progressive-Pbr-complete.png",
+      "sha256": "890F95406DCDD0E1DD9E3EF7CE6A4A8D452A9A4B752838129AC42329E644FD02",
+      "coveredFrameCount": 45
+    },
+    {
+      "path": "artifacts/af-final87-3/material82-results1/343-author-visible-face-Phong.png",
+      "sha256": "767C65F5E4749A6E0ADA241298E241D1FF679462A376F3FC0B5795884DE89E93",
+      "coveredFrameCount": 1
+    },
+    {
+      "path": "artifacts/af-final87-3/material82-results1/344-author-hidden-face-Phong.png",
+      "sha256": "9CB26A8F5B6BC1B271B2C2DA438994B16F561CF3190858323EE8A0B135DE36CC",
+      "coveredFrameCount": 1
+    },
+    {
+      "path": "artifacts/af-final87-3/material82-results1/345-author-visible-face-Pbr.png",
+      "sha256": "08AD3618A93ABE440ED387E73A0DA7C6536859B02CB1801E911397319941777C",
+      "coveredFrameCount": 1
+    },
+    {
+      "path": "artifacts/af-final87-3/material82-results1/346-author-hidden-face-Pbr.png",
+      "sha256": "DCA8A10B0E76C58BC2A2B1997BD903711BE7DEEBF50B24F53BE9E7D881FD9A4F",
+      "coveredFrameCount": 1
+    }
+  ],
+  "observation": "Directly viewed all14 unique current full frames at480x320. Source and restored solids, yellow face highlight, orange selected appearance, Phong/Pbr material differences, checkerboard progressive completion and blue opposite-face colors are visible. The rejected-scale empty frame is identical to the original negative fixture; it is not a successful geometry-render claim.",
+  "actualDesktopPickerAuthorWorkflow": "NOT_RUN",
+  "physicalDisplayScanout": "NOT_MEASURED",
+  "AFComplete": false
+}

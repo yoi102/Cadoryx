@@ -1,0 +1,149 @@
+{
+  "recordedAt": "2026-10-14T05:04:25.343479+00:00",
+  "state": "FINAL87_DIRECT_AND_PRODUCTION_CORRECTNESS_PASS_PERFORMANCE_AS_MEASURED",
+  "freeze": {
+    "path": "artifacts/af-final87-3/freeze.json",
+    "sha256": "51D01EF2973B3BCAF27572B6D40B793DD0753C6FD8C90575C911B2BEFEBFA07A"
+  },
+  "followup": {
+    "path": "artifacts/af-final87-3/followup-preparation.json",
+    "sha256": "ADBA41A8DFA92BDB6D54EBA13B8A9AA43014802B487B0599FE242D4FD592B4FE"
+  },
+  "version": "8.0.1-preview.87",
+  "sourceCount": 1378,
+  "directCorrectness": "PASS",
+  "directTarget6482Ms": "PASS",
+  "direct": [
+    {
+      "run": 1,
+      "firstCompleteSubmitMs": 4658.5572,
+      "firstVisibleSubmitMs": 1011.2643,
+      "inputServiceP95Ms": 0.0601,
+      "targetMs": 6482,
+      "targetMet": true,
+      "cycles": 20,
+      "report": {
+        "path": "artifacts/af-final87-3/performance-direct-1/run-1/user-model-1-report.json",
+        "sha256": "09523D18AFDB0EC27BB5F005B688E8CA861A07567A0A6309B1D0332FF13348EC"
+      },
+      "actualNative62": {
+        "path": "artifacts/af-final87-3/performance-direct-1/run-1/loaded-native.json",
+        "sha256": "5BF06FDCBD8F391C6A76B3CAD4CEE2D30C7E5C5998004090DF0C40CF1D9225F7"
+      },
+      "result": {
+        "path": "artifacts/af-final87-3/performance-direct-1/run-1/result.txt",
+        "sha256": "15975BE275057126FA8D0B470865CBEB2F2B9D6CF91E618C2D06E7F4D45752C4"
+      },
+      "bindings": {
+        "path": "artifacts/af-final87-3/performance-direct-1/run-1/bindings.log",
+        "sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+      }
+    },
+    {
+      "run": 2,
+      "firstCompleteSubmitMs": 4595.3682,
+      "firstVisibleSubmitMs": 1003.5942,
+      "inputServiceP95Ms": 0.0638,
+      "targetMs": 6482,
+      "targetMet": true,
+      "cycles": 20,
+      "report": {
+        "path": "artifacts/af-final87-3/performance-direct-1/run-2/user-model-1-report.json",
+        "sha256": "46D4553B1AA3A441372B1AF3F630D164E067EB2E2A726E6D672465CE891538EB"
+      },
+      "actualNative62": {
+        "path": "artifacts/af-final87-3/performance-direct-1/run-2/loaded-native.json",
+        "sha256": "8FB725A14B258B571B537E507ACD1401EDB524F3EE93BE55E6899432DD2EE445"
+      },
+      "result": {
+        "path": "artifacts/af-final87-3/performance-direct-1/run-2/result.txt",
+        "sha256": "15975BE275057126FA8D0B470865CBEB2F2B9D6CF91E618C2D06E7F4D45752C4"
+      },
+      "bindings": {
+        "path": "artifacts/af-final87-3/performance-direct-1/run-2/bindings.log",
+        "sha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+      }
+    }
+  ],
+  "productionOpenCorrectness": "PASS",
+  "productionOpen": [
+    {
+      "run": 1,
+      "firstVisibleFromClickMs": 62814.0173,
+      "fullSceneFromClickMs": 67126.4984,
+      "sceneCompleteMs": 5542.7952,
+      "workerKernelImportMs": 59938.7742,
+      "report": {
+        "path": "artifacts/af-final87-3/performance-open-1/run-1/report.json",
+        "sha256": "7E9EF2CA83DC4C4947DB9E1C450B102EFF60251ACB37C3EAB9E502DF6E0E53BE"
+      },
+      "actualNative62": {
+        "path": "artifacts/af-final87-3/performance-open-1/run-1/loaded-native.json",
+        "sha256": "B8FD921CF19051F05793B52CBFD1FCF5E6F19EDE1C9C4F594EFFBCBAA1C43B06"
+      },
+      "completeAcceptedPng": {
+        "path": "artifacts/af-final87-3/performance-open-1/run-1/full-scene.png",
+        "sha256": "2E8022953A2D1D2118E6FBC4DDC8A964D7EEC1ACA8CA6B2AF055131595E63852"
+      },
+      "result": {
+        "path": "artifacts/af-final87-3/performance-open-1/run-1/result.txt",
+        "sha256": "6922BD775067AF3A8E5FAD902617F8C6A60510E97884C7E0F0B72D78537379D5"
+      }
+    },
+    {
+      "run": 2,
+      "firstVisibleFromClickMs": 63061.8107,
+      "fullSceneFromClickMs": 67281.2994,
+      "sceneCompleteMs": 5428.0187,
+      "workerKernelImportMs": 60160.0902,
+      "report": {
+        "path": "artifacts/af-final87-3/performance-open-1/run-2/report.json",
+        "sha256": "ED9A5E45A251D48CBD3F3D6507E6BDD10CFD5061970585021F79B30FC5F31233"
+      },
+      "actualNative62": {
+        "path": "artifacts/af-final87-3/performance-open-1/run-2/loaded-native.json",
+        "sha256": "6F4AABFBB2757A0AA988DCB7407DD4ED2BFE0AC67C4C1FA49F3928705CC1F3EC"
+      },
+      "completeAcceptedPng": {
+        "path": "artifacts/af-final87-3/performance-open-1/run-2/full-scene.png",
+        "sha256": "2E8022953A2D1D2118E6FBC4DDC8A964D7EEC1ACA8CA6B2AF055131595E63852"
+      },
+      "result": {
+        "path": "artifacts/af-final87-3/performance-open-1/run-2/result.txt",
+        "sha256": "6922BD775067AF3A8E5FAD902617F8C6A60510E97884C7E0F0B72D78537379D5"
+      }
+    }
+  ],
+  "actualFourProcessIds": [
+    8292,
+    48108,
+    37824,
+    49720
+  ],
+  "directSummary": {
+    "path": "artifacts/af-final87-3/performance-direct-1/summary.json",
+    "sha256": "29C6B26587123F173FBD3AF4BD3A0CF27A1ECEDDD3B62EA6E437CFB3E62DCF60"
+  },
+  "openSummary": {
+    "path": "artifacts/af-final87-3/performance-open-1/summary.json",
+    "sha256": "602927795B2494DA2A8AF5C467338F769B798F9A1DC2876D985ED244F1E122E7"
+  },
+  "sdkCpuLaneObservations": [
+    {
+      "path": "artifacts/af-final87-3/performance-direct-lane1.json",
+      "sha256": "EB16F3C8F80EA3CC792F273F9FFF9A747BDCFDD11DB26446A67BB474764DC8DB"
+    },
+    {
+      "path": "artifacts/af-final87-3/performance-open-lane1.json",
+      "sha256": "261A28F1CB95CFD05CAE0E9F233B57CD9BD46DC28B8EE74A49DBE14107202FD3"
+    }
+  ],
+  "wholePngReferenceUnchanged": true,
+  "cacheCondition": "Fresh application processes; OS file cache, antivirus and background load not controlled",
+  "physicalDisplayFpsOrLatency": "NOT_MEASURED",
+  "originalSTEP24": "DEFERRED_NOT_EXECUTED",
+  "materialAndD6WindowAcceptance": "SEPARATE_PENDING",
+  "providerAllPassed": false,
+  "AFComplete": false,
+  "G": "USER_DEFERRED"
+}

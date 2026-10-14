@@ -1,0 +1,25 @@
+{
+  "recordedAt": "2026-10-14T05:05:01.344412+00:00",
+  "state": "FINAL87_MINIPC_CURRENT_COMPLETE_788_411_PNG_DIRECT_REVIEW_AND_BOTH_EXACT_BYTES_PASS",
+  "audit": {
+    "path": "capability-evidence/diagnostics/af-final87/candidate3-performance-verification.json",
+    "sha256": "1F17E724B49A079342CBB74B2ACD19E2F3BD6713B01976CE0535ABF10283824E"
+  },
+  "directlyViewedCurrentImage": {
+    "path": "artifacts/af-final87-3/performance-open-1/run-1/full-scene.png",
+    "sha256": "2E8022953A2D1D2118E6FBC4DDC8A964D7EEC1ACA8CA6B2AF055131595E63852"
+  },
+  "secondCurrentImage": {
+    "path": "artifacts/af-final87-3/performance-open-1/run-2/full-scene.png",
+    "sha256": "2E8022953A2D1D2118E6FBC4DDC8A964D7EEC1ACA8CA6B2AF055131595E63852"
+  },
+  "observation": "Complete MiniPC assembly visible in the fitted viewport, with the metal housing, circuit board, connectors and navigation cube; no blank frame or missing gross assembly components.",
+  "originalSizeDirectlyViewed": [
+    788,
+    411
+  ],
+  "bothCurrentPngFullBytesEqual": true,
+  "acceptedPriorPngHashUnchanged": true,
+  "physicalDisplayFpsOrInputLatency": "NOT_MEASURED",
+  "AFComplete": false
+}

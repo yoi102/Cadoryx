@@ -1,0 +1,93 @@
+{
+  "recordedAt": "2026-10-14T05:28:15.722111+00:00",
+  "state": "FINAL87_D6_CASE0_ACTUAL_RETURNED_MODAL_INPUT_AND_ORIGINAL_SIX_STATES_DESKTOP_REVIEW_PASS",
+  "caseIndex": 0,
+  "completedOriginalMatrixCases": 1,
+  "originalMatrixCases": 36,
+  "remainingOriginalMatrixCases": 35,
+  "freeze": {
+    "path": "artifacts/af-final87-3/freeze.json",
+    "sha256": "51D01EF2973B3BCAF27572B6D40B793DD0753C6FD8C90575C911B2BEFEBFA07A"
+  },
+  "hostQualification": {
+    "path": "artifacts/af-final87-3/targetable-window-host1-verification.json",
+    "sha256": "F13E60B9886661420C73C86FA973DA7DB00F6E47EB67A1BF811D65627BF75597"
+  },
+  "audit": {
+    "path": "artifacts/af-final87-3/windows/window-create-en-US-plane-positive-3-verification.json",
+    "sha256": "873B5DCFB37E5EB5A647BA6A06A457125C8381C499566C87C5B02D575FDC994A"
+  },
+  "terminal": {
+    "path": "artifacts/af-final87-3/windows/window-create-en-US-plane-positive-3-exit.json",
+    "sha256": "67D36A61FED4EF867A85FE48E5F4EEEFEF17332D15B8A4EA8DE5DD04FED61AC6"
+  },
+  "result": {
+    "path": "artifacts/af-final87-3/windows/window-create-en-US-plane-positive-3/result.json",
+    "sha256": "5D4CA2AF786D7084ED2757FE775B7E2D59BD1DC2095A40B1DBCF6A0D88788A51"
+  },
+  "trace": {
+    "path": "artifacts/af-final87-3/windows/window-create-en-US-plane-positive-3/state.json",
+    "sha256": "22271D51976CBE3D4A88712F1A077509285D59F1F356B59BB4E36E1D055BD767"
+  },
+  "originalFixture": {
+    "path": "artifacts/af-final87-3/windows/window-create-en-US-plane-positive-3/fixture-opened.json",
+    "sha256": "A76B6B5407DC47657E61438D534FC9A3BCCDF990A9FE143D55C1358617D91A29"
+  },
+  "observedReturnedModal": {
+    "app": "process:C:/Users/yoiri/source/repos/Cadoryx/artifacts/af-final87-3/hosts/d6-targetable-release-1/WindowHost.exe",
+    "id": 22811576,
+    "title": "Advanced extrusion"
+  },
+  "inputMethod": "Computer Use node_repl @oai/sky; one actual action followed by refreshed state",
+  "nativeHandlesUsedToConstructInput": false,
+  "wholeModalVisuallyReviewed": true,
+  "observations": [
+    "Current standalone modal returned by list_windows; source/starting-support controls disabled for New body.",
+    "Actual starting Z set to6 and explicit finite limit #0 selected after matching document/feature/revision/asset/fingerprint/index with fixture.",
+    "Missing selection error visible with confirmation disabled.",
+    "Near preview ready and confirmation enabled; document unchanged.",
+    "Far branch invalidates ready preview; plane Far preview rejects with choose Near message.",
+    "Near restored and Confirm used; exact96mm3, one new independent body, undo/redo, save/reopen and assets0 verified by original observer."
+  ],
+  "assertionsChanged": false,
+  "originalReadinessSeconds": 30,
+  "originalObservationSeconds": 300,
+  "taskbarVisibilityHarnessOnly": true,
+  "failuresRetained": [
+    {
+      "iteration": 1,
+      "terminal": {
+        "path": "artifacts/af-final87-3/windows/window-create-en-US-plane-positive-1-exit.json",
+        "sha256": "F4062F62794DDD6F53B967F4F1F3233AB225C5D6DC87EA072CA92AE44A2DAD1A"
+      },
+      "failure": {
+        "path": "artifacts/af-final87-3/windows/window-create-en-US-plane-positive-1/failure.json",
+        "sha256": "FECE786EBB69D6F05D361E5990829216E439015BBAAAB2547EB3486A288A101B"
+      },
+      "trace": {
+        "path": "artifacts/af-final87-3/windows/window-create-en-US-plane-positive-1/state.json",
+        "sha256": "15721364EA9F242B321967B128C2AFFB349BCCEB73E40CCA0A5C85E9559C179E"
+      },
+      "reason": "Cancelled incomplete trace after owner-focused input"
+    },
+    {
+      "iteration": 2,
+      "terminal": {
+        "path": "artifacts/af-final87-3/windows/window-create-en-US-plane-positive-2-exit.json",
+        "sha256": "16C5F1FC2999395C691ACB3AEC27FEA40CAD9578C7CCE1E30DF23B423A8DBFAE"
+      },
+      "failure": {
+        "path": "artifacts/af-final87-3/windows/window-create-en-US-plane-positive-2/failure.json",
+        "sha256": "8EF920150905F7C55E82BD72F01AF60A48DD157F8AAE86FD41A118DB987C38D3"
+      },
+      "trace": {
+        "path": "artifacts/af-final87-3/windows/window-create-en-US-plane-positive-2/state.json",
+        "sha256": "B0D2A8AFDB5C49A5F86CAFBFE6489BCB8D1C67AD0ED482AECDD206C84DE29032"
+      },
+      "reason": "Original300s elapsed after5of6 required states"
+    }
+  ],
+  "physicalScanoutOrFullWindowMatrix": false,
+  "productionApplied": false,
+  "AFComplete": false
+}

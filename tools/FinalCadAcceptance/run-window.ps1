@@ -1,6 +1,6 @@
 [CmdletBinding()]
 param([Parameter(Mandatory)][ValidateRange(0,35)][int]$CaseIndex,
-      [ValidateRange(1,100)][int]$CandidateIteration=3,[ValidateRange(1,100)][int]$Iteration=1)
+      [ValidateRange(1,100)][int]$CandidateIteration=3,[ValidateRange(1,100)][int]$Iteration=1,[switch]$TargetableModal)
 $ErrorActionPreference='Stop'
 $taskRoot=[IO.Path]::GetFullPath((Join-Path $PSScriptRoot '../..'))
 $taskDraft=Join-Path $taskRoot ('artifacts/af-final87-'+$CandidateIteration)
@@ -17,6 +17,11 @@ if($Iteration -ne 1){
  $taskCase.output=$taskCase.output.Substring(0,$taskCase.output.Length-1)+$Iteration
 }
 $taskHostProofPath=Join-Path $taskDraft 'hosts-verification.json'
+if($TargetableModal){
+ & 'C:/Users/yoiri/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe' (Join-Path $PSScriptRoot 'targetable-window-host.py') check $CandidateIteration
+ if($LASTEXITCODE -ne 0){throw 'Targetable modal host qualification failed'}
+ $taskHostProofPath=Join-Path $taskDraft 'targetable-window-host1-verification.json'
+}
 $taskHostProof=Get-Content $taskHostProofPath -Raw|ConvertFrom-Json -DateKind String
 if($taskHostProof.freeze.sha256 -cne $taskPrep.freeze.sha256 -or $taskHostProof.readinessSeconds -ne 30 -or $taskHostProof.D6DeadlineSeconds -ne 300){throw 'Original D6 host/budgets changed'}
 $taskMatches=@($taskHostProof.hosts|Where-Object {$_.label -ceq 'd6-window36' -and $_.configuration -ceq 'Release'})
@@ -42,6 +47,8 @@ foreach($taskKey in @($taskInfo.Environment.Keys)){if($taskKey -match '^(CSF_|CA
 foreach($taskArg in @('--d6-newbody-ui-smoke',$taskOutput,$taskCase.fixture.path,$taskCase.language,$taskCase.route,$taskCase.phase)){$taskInfo.ArgumentList.Add($taskArg)}
 $taskProcess=[Diagnostics.Process]::Start($taskInfo)
 $taskEntry=[ordered]@{startedUtc=[DateTimeOffset]::UtcNow.ToString('o');state='OWNED_D6_WINDOW_RUNNING';caseIndex=$CaseIndex;case=$taskCase;pid=$taskProcess.Id;processStartUtc=$taskProcess.StartTime.ToUniversalTime().ToString('o');coordinatorPid=$PID;candidate=$taskHost.output;output=$taskOutput;readinessSeconds=30;observationSeconds=300;hostInjectsInput=$false;productionApplied=$false;AFComplete=$false;unrelatedProcessesPreserved=$taskUnrelated}
+$taskEntry.targetableModal=[bool]$TargetableModal
+$taskEntry.hostProofSHA256=(Get-FileHash $taskHostProofPath).Hash
 $taskEntry|ConvertTo-Json -Depth 8|Set-Content ($taskOutput+'-start.json')
 Write-Output ('Owned D6 '+$taskCase.phase+'/'+$taskCase.language+'/'+$taskCase.label+'/'+$taskCase.route+' PID='+$taskProcess.Id+'; select a returned modal with Computer Use; original30/300s retained.')
 $taskOut=[IO.File]::Open(($taskOutput+'.log'),[IO.FileMode]::CreateNew,[IO.FileAccess]::Write,[IO.FileShare]::Read)
