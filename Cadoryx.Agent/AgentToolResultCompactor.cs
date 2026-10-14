@@ -121,15 +121,16 @@ internal static class AgentToolResultCompactor
                 if (prefixCharacters > maximumCharacters) break;
                 maximumPrefix = index + 1;
             }
-            // Try bounded subsets of complete original kinds before discarding all
-            // supplemental selectors. Navigation hints are optional; identities are not.
+            // Try every bounded subset, including no supplemental rows, before
+            // removing original read navigation. Identities and rows stay complete.
             if (continuation is not null)
+                foreach (var hints in new[] { true, false })
                 for (maximumAdditionalRows = Math.Min(8, items.Where(item => item.TryGetProperty("selection", out var selection) &&
                          selection.ValueKind == JsonValueKind.Object && item.TryGetProperty("geometry", out var geometry) && geometry.ValueKind == JsonValueKind.String)
-                         .Select(item => item.GetProperty("geometry").GetString()).Distinct(StringComparer.Ordinal).Count()); maximumAdditionalRows > 0; maximumAdditionalRows--)
-                    foreach (var hints in new[] { true, false })
+                         .Select(item => item.GetProperty("geometry").GetString()).Distinct(StringComparer.Ordinal).Count()); maximumAdditionalRows >= 0; maximumAdditionalRows--)
                     {
                         includeOmittedGeometryReads = hints;
+                        includeCompleteSourceItems = maximumAdditionalRows > 0;
                         for (var retained = maximumPrefix; retained > 0; retained--)
                         {
                             var candidate = Page(retained);
@@ -137,6 +138,7 @@ internal static class AgentToolResultCompactor
                         }
                     }
             includeOmittedGeometryReads = true;
+            includeCompleteSourceItems = true;
             maximumAdditionalRows = 8;
             // Discovery metadata must never prevent a complete original item
             // from fitting. Prefer actual selectors over optional discovery hints.

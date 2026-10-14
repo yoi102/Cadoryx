@@ -1,8 +1,8 @@
 [CmdletBinding()]
-param([ValidateRange(1,100)][int]$Iteration=1)
+param([ValidateRange(1,100)][int]$Iteration=1,[ValidateRange(1,100)][int]$CandidateIteration=1)
 $ErrorActionPreference='Stop'
 $taskRoot=[IO.Path]::GetFullPath((Join-Path $PSScriptRoot '../..'))
-$taskStage=Join-Path $taskRoot 'artifacts/af-final87-1'
+$taskStage=Join-Path $taskRoot ('artifacts/af-final87-'+$CandidateIteration)
 $taskPrepName=if($Iteration -eq 1){'preparation.json'}else{'preparation'+$Iteration+'.json'}
 $taskPrep=Get-Content (Join-Path $taskStage $taskPrepName) -Raw|ConvertFrom-Json -DateKind String
 $taskWork=$taskPrep.workspace;$taskCache=Join-Path $taskStage 'nuget-cache'

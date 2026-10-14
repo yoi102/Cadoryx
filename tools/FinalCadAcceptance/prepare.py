@@ -1,12 +1,17 @@
 """Freeze current application sources in a new final87-only workspace."""
 from pathlib import Path
 from datetime import datetime, timezone
-import hashlib, json, shutil, subprocess, xml.etree.ElementTree as ET
+import hashlib, json, shutil, subprocess, sys, xml.etree.ElementTree as ET
 
 ROOT = Path(__file__).resolve().parents[2]
-STAGE = ROOT / 'artifacts/af-final87-1'; WORK = STAGE / 'workspace'
+iteration=int(sys.argv[1]) if len(sys.argv)==2 else 1
+assert 1<=iteration<=100
+STAGE = ROOT / f'artifacts/af-final87-{iteration}'; WORK = STAGE / 'workspace'
 read = lambda p: json.loads(p.read_text(encoding='utf-8-sig'))
 sha = lambda p: hashlib.sha256(p.read_bytes()).hexdigest().upper()
+if iteration!=1:
+    assert not STAGE.exists();STAGE.mkdir()
+    shutil.copyfile(ROOT/'artifacts/af-final87-1/sdk-reception.json',STAGE/'sdk-reception.json')
 sdk = read(STAGE / 'sdk-reception.json')
 assert sdk['version'] == '8.0.1-preview.87' and not sdk['applicationAccepted']
 for row in sdk['packages']: assert sha(Path(sdk['feed']) / row['name']) == row['sha256']
@@ -50,8 +55,8 @@ record = dict(recordedAt=datetime.now(timezone.utc).isoformat(),state='CURRENT_A
     baseHead=subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip(), workspace=str(WORK),
     sdkReception=dict(path=str(STAGE/'sdk-reception.json'),sha256=sha(STAGE/'sdk-reception.json')),
     rootSource=source, candidateChanges=mutations, projects=projects, rawProgramSource=str(raw),
-    rawProjection=projection, expectedTotal=7192, deferredCount=24, expectedExecuted=7168,
+    rawProjection=projection, expectedTotal=7192 if iteration==1 else 7194, deferredCount=24, expectedExecuted=7168 if iteration==1 else 7170,
     originalTestsModified=False, originalPromptsAssertionsAndBudgetsModified=False,
     productionApplied=False, publicNuget=False, AFComplete=False)
 (STAGE/'preparation.json').write_text(json.dumps(record,indent=2)+'\n',encoding='utf-8')
-print(f'Frozen {len(source)} tracked sources and53 projects; exact final87 only; current7192 pending discovery, exact24 deferred.')
+print(f'Frozen {len(source)} tracked sources and53 projects; exact final87 only; current{record['expectedTotal']} pending discovery, exact24 deferred.')

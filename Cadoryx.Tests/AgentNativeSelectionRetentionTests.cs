@@ -142,6 +142,26 @@ public sealed class AgentNativeSelectionRetentionTests
         Assert.InRange(compacted.Length, 1, 2400);
     }
 
+    [Theory, InlineData(2400), InlineData(6000)]
+    public void WholeSourceRowsAndOriginalOmittedReadNavigationCoexistWithinTheBudget(int budget)
+    {
+        var (messages, _, _, source) = Captured();
+        var call = messages.Where(m => m.Role == AiChatRole.Assistant).SelectMany(m => m.ToolCalls ?? []).Single(c => c.Id == source);
+        string receipt = messages.Single(m => m.ToolCallId == source).Content!;
+        Assert.True(AgentToolResultCompactor.TryCompactNativeSelectionPage(receipt, budget, out var compacted, call));
+        using var full = JsonDocument.Parse(receipt); using var result = JsonDocument.Parse(compacted);
+        var context = result.RootElement.GetProperty("contextPage");
+        var hint = Assert.Single(context.GetProperty("omittedGeometryReads").EnumerateArray(), h => h.GetProperty("geometry").GetString() == "CylinderFace");
+        int offset = hint.GetProperty("offset").GetInt32();
+        var actual = full.RootElement.GetProperty("items")[offset];
+        Assert.Equal("CylinderFace", actual.GetProperty("geometry").GetString());
+        Assert.False(hint.TryGetProperty("selection", out _));
+        var extra = Assert.Single(context.GetProperty("completeSourceItems").EnumerateArray(), r => r.GetProperty("item").GetProperty("geometry").GetString() == "CylinderFace");
+        Assert.Equal(offset, extra.GetProperty("offset").GetInt32());
+        Assert.Equal(JsonSerializer.Serialize(actual), JsonSerializer.Serialize(extra.GetProperty("item")));
+        Assert.InRange(compacted.Length, 1, budget);
+    }
+
     private static (List<AiChatMessage> Messages, AiToolDefinition[] Tools, string System, string Source) Captured()
     {
         using var fixture = JsonDocument.Parse(File.ReadAllText(Path.Combine(AppContext.BaseDirectory, "Fixtures/AgentContext/NativeSelectionRetention/before-request30.json")));
