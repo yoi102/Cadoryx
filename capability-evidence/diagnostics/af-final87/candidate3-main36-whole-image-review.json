@@ -1,0 +1,559 @@
+{
+  "recordedAt": "2026-10-14T04:50:23.746347+00:00",
+  "state": "FINAL87_MAIN36_ALL144_FULL_IMAGES_COVERED_36_CURRENT_SHELLS_DIRECT_REVIEW_6_EXACT_PRIOR_NATIVE_FRAMES_PASS",
+  "audit": {
+    "path": "artifacts/af-final87-3/main-status36/runtime-1-verification.json",
+    "sha256": "8DAE4B27CDAAEACE97F4C11252069F4A382DCDFB915D13C05B6279EAD6183853"
+  },
+  "comparison": {
+    "path": "artifacts/af-final87-3/main36-image-comparison1.json",
+    "sha256": "94900E0D8FF20E859399F1309F0F03FB58FC23E7B7B276E4442BB6DA0AB4EF7D"
+  },
+  "priorWholeImageReview": {
+    "path": "capability-evidence/diagnostics/af1082-f5-d7-local87cu1/main-status36-whole-image-review.json",
+    "sha256": "01F0CCD2A98685AF29A29C8ADF57A8D9F020CA4266F9B5428659932A7ECC4419"
+  },
+  "wholeImages": 144,
+  "uniqueWholeImages": 42,
+  "directCurrentOriginalSizeImages": [
+    {
+      "case": "en-US-native-presentation-loss-recover-0",
+      "kind": "complete-wpf-shell-final-status",
+      "image": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af-final87-3\\main-status36\\runtime-1\\en-US-native-presentation-loss-recover-0\\main-shell.png",
+        "sha256": "48F8D5B4073C1BE41C8434C8476FC8D5C13EF2B8F3CB908A328E58CC26759B23"
+      },
+      "width": 1450,
+      "height": 900,
+      "observation": "Ready on recovery/detach, View recovery failed on cleanup failure; complete readable shell/status, no modal obstruction."
+    },
+    {
+      "case": "en-US-native-presentation-loss-recover-1",
+      "kind": "complete-wpf-shell-final-status",
+      "image": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af-final87-3\\main-status36\\runtime-1\\en-US-native-presentation-loss-recover-1\\main-shell.png",
+        "sha256": "23B72B0D4F186158779C366A4E8BE3630F758396B7D50DE55CE98501006145F0"
+      },
+      "width": 1450,
+      "height": 900,
+      "observation": "Ready on recovery/detach, View recovery failed on cleanup failure; complete readable shell/status, no modal obstruction."
+    },
+    {
+      "case": "en-US-native-presentation-loss-detach-before-dispatch-0",
+      "kind": "complete-wpf-shell-final-status",
+      "image": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af-final87-3\\main-status36\\runtime-1\\en-US-native-presentation-loss-detach-before-dispatch-0\\main-shell.png",
+        "sha256": "E53B2B2A0BBE6A81D8A5CDD4CF27DA76ED0CA1FF7EDF74641B8BB1A9D0EA4EDA"
+      },
+      "width": 1450,
+      "height": 900,
+      "observation": "Ready on recovery/detach, View recovery failed on cleanup failure; complete readable shell/status, no modal obstruction."
+    },
+    {
+      "case": "en-US-native-presentation-loss-detach-before-dispatch-1",
+      "kind": "complete-wpf-shell-final-status",
+      "image": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af-final87-3\\main-status36\\runtime-1\\en-US-native-presentation-loss-detach-before-dispatch-1\\main-shell.png",
+        "sha256": "01278248475D33B9A9130226818DFE6A6C14DE850B8881C2DEC800146EA88A33"
+      },
+      "width": 1450,
+      "height": 900,
+      "observation": "Ready on recovery/detach, View recovery failed on cleanup failure; complete readable shell/status, no modal obstruction."
+    },
+    {
+      "case": "en-US-native-presentation-loss-cleanup-callback-fails-0",
+      "kind": "complete-wpf-shell-final-status",
+      "image": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af-final87-3\\main-status36\\runtime-1\\en-US-native-presentation-loss-cleanup-callback-fails-0\\main-shell.png",
+        "sha256": "6D9F61FCC7B5A8521D26792F95136690A9CCDFF6723FD0EC755A1843AE9B13DC"
+      },
+      "width": 1450,
+      "height": 900,
+      "observation": "Ready on recovery/detach, View recovery failed on cleanup failure; complete readable shell/status, no modal obstruction."
+    },
+    {
+      "case": "en-US-native-presentation-loss-cleanup-callback-fails-1",
+      "kind": "complete-wpf-shell-final-status",
+      "image": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af-final87-3\\main-status36\\runtime-1\\en-US-native-presentation-loss-cleanup-callback-fails-1\\main-shell.png",
+        "sha256": "1CDBFA9BF82B7B43AFBAAF447D9C4B2048B3DF3E43F8D5160C32004E0490DB30"
+      },
+      "width": 1450,
+      "height": 900,
+      "observation": "Ready on recovery/detach, View recovery failed on cleanup failure; complete readable shell/status, no modal obstruction."
+    },
+    {
+      "case": "en-US-native-owner-disposed-recover-0",
+      "kind": "complete-wpf-shell-final-status",
+      "image": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af-final87-3\\main-status36\\runtime-1\\en-US-native-owner-disposed-recover-0\\main-shell.png",
+        "sha256": "87790632EF29BE489C33A11719DDBD33C259A7D6C7070FC6129CEF0EC82235E1"
+      },
+      "width": 1450,
+      "height": 900,
+      "observation": "Ready on recovery/detach, View recovery failed on cleanup failure; complete readable shell/status, no modal obstruction."
+    },
+    {
+      "case": "en-US-native-owner-disposed-recover-1",
+      "kind": "complete-wpf-shell-final-status",
+      "image": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af-final87-3\\main-status36\\runtime-1\\en-US-native-owner-disposed-recover-1\\main-shell.png",
+        "sha256": "65E86024284EE95F7DAD8E0F65A5498EE804ECD6D9B41BDF28E78B8C4BCE6F3E"
+      },
+      "width": 1450,
+      "height": 900,
+      "observation": "Ready on recovery/detach, View recovery failed on cleanup failure; complete readable shell/status, no modal obstruction."
+    },
+    {
+      "case": "en-US-native-owner-disposed-detach-before-dispatch-0",
+      "kind": "complete-wpf-shell-final-status",
+      "image": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af-final87-3\\main-status36\\runtime-1\\en-US-native-owner-disposed-detach-before-dispatch-0\\main-shell.png",
+        "sha256": "E9F713CF8C9DD10ABBAB4D47E8192CF8546F55FC83C27EA549D6B18DF227D89A"
+      },
+      "width": 1450,
+      "height": 900,
+      "observation": "Ready on recovery/detach, View recovery failed on cleanup failure; complete readable shell/status, no modal obstruction."
+    },
+    {
+      "case": "en-US-native-owner-disposed-detach-before-dispatch-1",
+      "kind": "complete-wpf-shell-final-status",
+      "image": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af-final87-3\\main-status36\\runtime-1\\en-US-native-owner-disposed-detach-before-dispatch-1\\main-shell.png",
+        "sha256": "EBCA6799811E99A4EB65B10AC1ECD2561BA9D22BC7E9B3609755B9F7C42D31CD"
+      },
+      "width": 1450,
+      "height": 900,
+      "observation": "Ready on recovery/detach, View recovery failed on cleanup failure; complete readable shell/status, no modal obstruction."
+    },
+    {
+      "case": "en-US-native-owner-disposed-cleanup-callback-fails-0",
+      "kind": "complete-wpf-shell-final-status",
+      "image": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af-final87-3\\main-status36\\runtime-1\\en-US-native-owner-disposed-cleanup-callback-fails-0\\main-shell.png",
+        "sha256": "818AEE0AC52BDA4DD6A0FA6B203C61B04AAA8045A6247F0E7B157A0C8A294EED"
+      },
+      "width": 1450,
+      "height": 900,
+      "observation": "Ready on recovery/detach, View recovery failed on cleanup failure; complete readable shell/status, no modal obstruction."
+    },
+    {
+      "case": "en-US-native-owner-disposed-cleanup-callback-fails-1",
+      "kind": "complete-wpf-shell-final-status",
+      "image": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af-final87-3\\main-status36\\runtime-1\\en-US-native-owner-disposed-cleanup-callback-fails-1\\main-shell.png",
+        "sha256": "EC85C6F15C17FD2D3F088E534D8B1F7BB7125AB708D21A7BC7AAB5FFE46A93A9"
+      },
+      "width": 1450,
+      "height": 900,
+      "observation": "Ready on recovery/detach, View recovery failed on cleanup failure; complete readable shell/status, no modal obstruction."
+    },
+    {
+      "case": "zh-CN-native-presentation-loss-recover-0",
+      "kind": "complete-wpf-shell-final-status",
+      "image": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af-final87-3\\main-status36\\runtime-1\\zh-CN-native-presentation-loss-recover-0\\main-shell.png",
+        "sha256": "18B84FFDD9F6C58BE332A31DB7EC4926BEBD58C726AB0FC573714E429DFD0937"
+      },
+      "width": 1450,
+      "height": 900,
+      "observation": "就绪 on recovery/detach, 视图恢复失败 on cleanup failure; complete readable shell/status, no modal obstruction."
+    },
+    {
+      "case": "zh-CN-native-presentation-loss-recover-1",
+      "kind": "complete-wpf-shell-final-status",
+      "image": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af-final87-3\\main-status36\\runtime-1\\zh-CN-native-presentation-loss-recover-1\\main-shell.png",
+        "sha256": "2F9E1A6BB0F41DAB311B4005CFEF2BA34DE813FEE4D549DDD99A079A559A10FA"
+      },
+      "width": 1450,
+      "height": 900,
+      "observation": "就绪 on recovery/detach, 视图恢复失败 on cleanup failure; complete readable shell/status, no modal obstruction."
+    },
+    {
+      "case": "zh-CN-native-presentation-loss-detach-before-dispatch-0",
+      "kind": "complete-wpf-shell-final-status",
+      "image": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af-final87-3\\main-status36\\runtime-1\\zh-CN-native-presentation-loss-detach-before-dispatch-0\\main-shell.png",
+        "sha256": "DB7E5BF733FBF11159CB7BBBBCA7155BD18EB4B17663A16010DEA9C75CF7FBD8"
+      },
+      "width": 1450,
+      "height": 900,
+      "observation": "就绪 on recovery/detach, 视图恢复失败 on cleanup failure; complete readable shell/status, no modal obstruction."
+    },
+    {
+      "case": "zh-CN-native-presentation-loss-detach-before-dispatch-1",
+      "kind": "complete-wpf-shell-final-status",
+      "image": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af-final87-3\\main-status36\\runtime-1\\zh-CN-native-presentation-loss-detach-before-dispatch-1\\main-shell.png",
+        "sha256": "EA8C34194D981E2D3578AB0DDA9BDF622D780492CB38B8A20AD4764376122DF3"
+      },
+      "width": 1450,
+      "height": 900,
+      "observation": "就绪 on recovery/detach, 视图恢复失败 on cleanup failure; complete readable shell/status, no modal obstruction."
+    },
+    {
+      "case": "zh-CN-native-presentation-loss-cleanup-callback-fails-0",
+      "kind": "complete-wpf-shell-final-status",
+      "image": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af-final87-3\\main-status36\\runtime-1\\zh-CN-native-presentation-loss-cleanup-callback-fails-0\\main-shell.png",
+        "sha256": "8B304883F08299066DDD7B5755982EFD6CD376CFE554A95A0AD8994EEF2F7A0D"
+      },
+      "width": 1450,
+      "height": 900,
+      "observation": "就绪 on recovery/detach, 视图恢复失败 on cleanup failure; complete readable shell/status, no modal obstruction."
+    },
+    {
+      "case": "zh-CN-native-presentation-loss-cleanup-callback-fails-1",
+      "kind": "complete-wpf-shell-final-status",
+      "image": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af-final87-3\\main-status36\\runtime-1\\zh-CN-native-presentation-loss-cleanup-callback-fails-1\\main-shell.png",
+        "sha256": "029169047F814AF2B94292293788F0C8F4C93189E747E97ABF5A7C727B9DFE2D"
+      },
+      "width": 1450,
+      "height": 900,
+      "observation": "就绪 on recovery/detach, 视图恢复失败 on cleanup failure; complete readable shell/status, no modal obstruction."
+    },
+    {
+      "case": "zh-CN-native-owner-disposed-recover-0",
+      "kind": "complete-wpf-shell-final-status",
+      "image": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af-final87-3\\main-status36\\runtime-1\\zh-CN-native-owner-disposed-recover-0\\main-shell.png",
+        "sha256": "C1BAED308B7753DA29FA6B2E4D83964412E9142076A10FBD510F3E8B941631E5"
+      },
+      "width": 1450,
+      "height": 900,
+      "observation": "就绪 on recovery/detach, 视图恢复失败 on cleanup failure; complete readable shell/status, no modal obstruction."
+    },
+    {
+      "case": "zh-CN-native-owner-disposed-recover-1",
+      "kind": "complete-wpf-shell-final-status",
+      "image": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af-final87-3\\main-status36\\runtime-1\\zh-CN-native-owner-disposed-recover-1\\main-shell.png",
+        "sha256": "A1D0CA8F363B6A001AC8CFA0C906B1D563C4909C9C37711FB57060A540FAA29D"
+      },
+      "width": 1450,
+      "height": 900,
+      "observation": "就绪 on recovery/detach, 视图恢复失败 on cleanup failure; complete readable shell/status, no modal obstruction."
+    },
+    {
+      "case": "zh-CN-native-owner-disposed-detach-before-dispatch-0",
+      "kind": "complete-wpf-shell-final-status",
+      "image": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af-final87-3\\main-status36\\runtime-1\\zh-CN-native-owner-disposed-detach-before-dispatch-0\\main-shell.png",
+        "sha256": "70C4C2FBBF8DFC38AA1113B5BB06C8C1BF8246B909F0DC195A71BF982DF19CC5"
+      },
+      "width": 1450,
+      "height": 900,
+      "observation": "就绪 on recovery/detach, 视图恢复失败 on cleanup failure; complete readable shell/status, no modal obstruction."
+    },
+    {
+      "case": "zh-CN-native-owner-disposed-detach-before-dispatch-1",
+      "kind": "complete-wpf-shell-final-status",
+      "image": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af-final87-3\\main-status36\\runtime-1\\zh-CN-native-owner-disposed-detach-before-dispatch-1\\main-shell.png",
+        "sha256": "F67068CCE55AEE0C95839042FF0604FB247F52DE2DAF31DBE3393133C20D3F9A"
+      },
+      "width": 1450,
+      "height": 900,
+      "observation": "就绪 on recovery/detach, 视图恢复失败 on cleanup failure; complete readable shell/status, no modal obstruction."
+    },
+    {
+      "case": "zh-CN-native-owner-disposed-cleanup-callback-fails-0",
+      "kind": "complete-wpf-shell-final-status",
+      "image": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af-final87-3\\main-status36\\runtime-1\\zh-CN-native-owner-disposed-cleanup-callback-fails-0\\main-shell.png",
+        "sha256": "6BFCD320A19C740806B7137AA4AE1FAAB0A3F8DE9E40FD12CB49AAB6DBF2ED2D"
+      },
+      "width": 1450,
+      "height": 900,
+      "observation": "就绪 on recovery/detach, 视图恢复失败 on cleanup failure; complete readable shell/status, no modal obstruction."
+    },
+    {
+      "case": "zh-CN-native-owner-disposed-cleanup-callback-fails-1",
+      "kind": "complete-wpf-shell-final-status",
+      "image": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af-final87-3\\main-status36\\runtime-1\\zh-CN-native-owner-disposed-cleanup-callback-fails-1\\main-shell.png",
+        "sha256": "79C632DE9BC5A67DB2176B4AEE5EBD138D2924CD87D8F33460EC8E2BCFC4A74F"
+      },
+      "width": 1450,
+      "height": 900,
+      "observation": "就绪 on recovery/detach, 视图恢复失败 on cleanup failure; complete readable shell/status, no modal obstruction."
+    },
+    {
+      "case": "ja-JP-native-presentation-loss-recover-0",
+      "kind": "complete-wpf-shell-final-status",
+      "image": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af-final87-3\\main-status36\\runtime-1\\ja-JP-native-presentation-loss-recover-0\\main-shell.png",
+        "sha256": "BF786F5E16A44F068C78DD07118F72C35F361FD8AEA43B667E4FB497409DFC56"
+      },
+      "width": 1450,
+      "height": 900,
+      "observation": "準備完了 on recovery/detach, ビューの復旧に失敗しました on cleanup failure; complete readable shell/status, no modal obstruction."
+    },
+    {
+      "case": "ja-JP-native-presentation-loss-recover-1",
+      "kind": "complete-wpf-shell-final-status",
+      "image": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af-final87-3\\main-status36\\runtime-1\\ja-JP-native-presentation-loss-recover-1\\main-shell.png",
+        "sha256": "92E42DEE615C51358704D31D0C64D6F27A1A6C8275455904C88FB4239DA58DC2"
+      },
+      "width": 1450,
+      "height": 900,
+      "observation": "準備完了 on recovery/detach, ビューの復旧に失敗しました on cleanup failure; complete readable shell/status, no modal obstruction."
+    },
+    {
+      "case": "ja-JP-native-presentation-loss-detach-before-dispatch-0",
+      "kind": "complete-wpf-shell-final-status",
+      "image": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af-final87-3\\main-status36\\runtime-1\\ja-JP-native-presentation-loss-detach-before-dispatch-0\\main-shell.png",
+        "sha256": "B2F1257221DD8847BC6542A5412EB4D43CB35120EDF885BB3544D4B27D28518D"
+      },
+      "width": 1450,
+      "height": 900,
+      "observation": "準備完了 on recovery/detach, ビューの復旧に失敗しました on cleanup failure; complete readable shell/status, no modal obstruction."
+    },
+    {
+      "case": "ja-JP-native-presentation-loss-detach-before-dispatch-1",
+      "kind": "complete-wpf-shell-final-status",
+      "image": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af-final87-3\\main-status36\\runtime-1\\ja-JP-native-presentation-loss-detach-before-dispatch-1\\main-shell.png",
+        "sha256": "079668B5119BF350D7EA8EF7F0A88E1829CBAFB5220D510572406AEE4AE1AFE8"
+      },
+      "width": 1450,
+      "height": 900,
+      "observation": "準備完了 on recovery/detach, ビューの復旧に失敗しました on cleanup failure; complete readable shell/status, no modal obstruction."
+    },
+    {
+      "case": "ja-JP-native-presentation-loss-cleanup-callback-fails-0",
+      "kind": "complete-wpf-shell-final-status",
+      "image": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af-final87-3\\main-status36\\runtime-1\\ja-JP-native-presentation-loss-cleanup-callback-fails-0\\main-shell.png",
+        "sha256": "091ECA8200B7B8AF9D1C0F48D4A0006B47AD634DEF7B3527AD243FF94977D0E8"
+      },
+      "width": 1450,
+      "height": 900,
+      "observation": "準備完了 on recovery/detach, ビューの復旧に失敗しました on cleanup failure; complete readable shell/status, no modal obstruction."
+    },
+    {
+      "case": "ja-JP-native-presentation-loss-cleanup-callback-fails-1",
+      "kind": "complete-wpf-shell-final-status",
+      "image": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af-final87-3\\main-status36\\runtime-1\\ja-JP-native-presentation-loss-cleanup-callback-fails-1\\main-shell.png",
+        "sha256": "6401B935300DC8E4B6F20926470F73017FA6B2F5185F2EE7054D8BEC434F5F22"
+      },
+      "width": 1450,
+      "height": 900,
+      "observation": "準備完了 on recovery/detach, ビューの復旧に失敗しました on cleanup failure; complete readable shell/status, no modal obstruction."
+    },
+    {
+      "case": "ja-JP-native-owner-disposed-recover-0",
+      "kind": "complete-wpf-shell-final-status",
+      "image": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af-final87-3\\main-status36\\runtime-1\\ja-JP-native-owner-disposed-recover-0\\main-shell.png",
+        "sha256": "39E57CB4E98D89EA81A24FA46BA317E75B668F3D6EFCE9828DCEF8CB62AA748C"
+      },
+      "width": 1450,
+      "height": 900,
+      "observation": "準備完了 on recovery/detach, ビューの復旧に失敗しました on cleanup failure; complete readable shell/status, no modal obstruction."
+    },
+    {
+      "case": "ja-JP-native-owner-disposed-recover-1",
+      "kind": "complete-wpf-shell-final-status",
+      "image": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af-final87-3\\main-status36\\runtime-1\\ja-JP-native-owner-disposed-recover-1\\main-shell.png",
+        "sha256": "7EAA4A37FAC0330FD4B9282F39E4F6CA278A7E6E27C63E8BE63D0F6A103D4AE8"
+      },
+      "width": 1450,
+      "height": 900,
+      "observation": "準備完了 on recovery/detach, ビューの復旧に失敗しました on cleanup failure; complete readable shell/status, no modal obstruction."
+    },
+    {
+      "case": "ja-JP-native-owner-disposed-detach-before-dispatch-0",
+      "kind": "complete-wpf-shell-final-status",
+      "image": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af-final87-3\\main-status36\\runtime-1\\ja-JP-native-owner-disposed-detach-before-dispatch-0\\main-shell.png",
+        "sha256": "391050E4E320D7BC431652FCA349EB462927AB1EB68B9AE921B74AB7C2891F39"
+      },
+      "width": 1450,
+      "height": 900,
+      "observation": "準備完了 on recovery/detach, ビューの復旧に失敗しました on cleanup failure; complete readable shell/status, no modal obstruction."
+    },
+    {
+      "case": "ja-JP-native-owner-disposed-detach-before-dispatch-1",
+      "kind": "complete-wpf-shell-final-status",
+      "image": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af-final87-3\\main-status36\\runtime-1\\ja-JP-native-owner-disposed-detach-before-dispatch-1\\main-shell.png",
+        "sha256": "86FB0F7D266FE3EB62911693346C106F65EFEEF0B61D7282F49D9CC9D3CA5630"
+      },
+      "width": 1450,
+      "height": 900,
+      "observation": "準備完了 on recovery/detach, ビューの復旧に失敗しました on cleanup failure; complete readable shell/status, no modal obstruction."
+    },
+    {
+      "case": "ja-JP-native-owner-disposed-cleanup-callback-fails-0",
+      "kind": "complete-wpf-shell-final-status",
+      "image": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af-final87-3\\main-status36\\runtime-1\\ja-JP-native-owner-disposed-cleanup-callback-fails-0\\main-shell.png",
+        "sha256": "49274128FC181EA5309C27B751DE249FF52C81864926A7A5BF9D24BD7EAB2EE0"
+      },
+      "width": 1450,
+      "height": 900,
+      "observation": "準備完了 on recovery/detach, ビューの復旧に失敗しました on cleanup failure; complete readable shell/status, no modal obstruction."
+    },
+    {
+      "case": "ja-JP-native-owner-disposed-cleanup-callback-fails-1",
+      "kind": "complete-wpf-shell-final-status",
+      "image": {
+        "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af-final87-3\\main-status36\\runtime-1\\ja-JP-native-owner-disposed-cleanup-callback-fails-1\\main-shell.png",
+        "sha256": "68DCA12B9DDC127F227764966C62C61775BE5D89FAABBAD2115229F7D9BF9AC2"
+      },
+      "width": 1450,
+      "height": 900,
+      "observation": "準備完了 on recovery/detach, ビューの復旧に失敗しました on cleanup failure; complete readable shell/status, no modal obstruction."
+    }
+  ],
+  "exactFullBytePreviouslyReviewedNativeImages": [
+    {
+      "current": {
+        "case": "en-US-native-presentation-loss-recover-0",
+        "kind": "before",
+        "image": {
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af-final87-3\\main-status36\\runtime-1\\en-US-native-presentation-loss-recover-0\\before.png",
+          "sha256": "030D4524496BA495E9F805FF8AED88A7AEF0B682470E461CF4F5AF9B3D61BE9A"
+        },
+        "width": 392,
+        "height": 411
+      },
+      "prior": {
+        "case": "en-US-native-owner-disposed-cleanup-callback-fails-1",
+        "kind": "other-after",
+        "image": {
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\main-status36\\runtime-5\\en-US-native-owner-disposed-cleanup-callback-fails-1\\other-after.png",
+          "sha256": "030D4524496BA495E9F805FF8AED88A7AEF0B682470E461CF4F5AF9B3D61BE9A"
+        },
+        "width": 392,
+        "height": 411
+      }
+    },
+    {
+      "current": {
+        "case": "en-US-native-presentation-loss-recover-0",
+        "kind": "other-before",
+        "image": {
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af-final87-3\\main-status36\\runtime-1\\en-US-native-presentation-loss-recover-0\\other-before.png",
+          "sha256": "7455B9E5E8E968BFDCFFC8A4E26B3A03C0EC8A6E3A4F526D7AB8A41C65BACF54"
+        },
+        "width": 391,
+        "height": 411
+      },
+      "prior": {
+        "case": "en-US-native-owner-disposed-cleanup-callback-fails-1",
+        "kind": "before",
+        "image": {
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\main-status36\\runtime-5\\en-US-native-owner-disposed-cleanup-callback-fails-1\\before.png",
+          "sha256": "7455B9E5E8E968BFDCFFC8A4E26B3A03C0EC8A6E3A4F526D7AB8A41C65BACF54"
+        },
+        "width": 391,
+        "height": 411
+      }
+    },
+    {
+      "current": {
+        "case": "zh-CN-native-presentation-loss-recover-0",
+        "kind": "before",
+        "image": {
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af-final87-3\\main-status36\\runtime-1\\zh-CN-native-presentation-loss-recover-0\\before.png",
+          "sha256": "782825F4FF504094BCAE2AA84D937510FF97F08782245923D76BDB318504D7BF"
+        },
+        "width": 392,
+        "height": 411
+      },
+      "prior": {
+        "case": "zh-CN-native-owner-disposed-cleanup-callback-fails-1",
+        "kind": "other-after",
+        "image": {
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\main-status36\\runtime-5\\zh-CN-native-owner-disposed-cleanup-callback-fails-1\\other-after.png",
+          "sha256": "782825F4FF504094BCAE2AA84D937510FF97F08782245923D76BDB318504D7BF"
+        },
+        "width": 392,
+        "height": 411
+      }
+    },
+    {
+      "current": {
+        "case": "zh-CN-native-presentation-loss-recover-0",
+        "kind": "other-before",
+        "image": {
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af-final87-3\\main-status36\\runtime-1\\zh-CN-native-presentation-loss-recover-0\\other-before.png",
+          "sha256": "19D2591DD5E44813073E2162474DB43D008DF248A12FFC2C0FF6F96557B6CD05"
+        },
+        "width": 391,
+        "height": 411
+      },
+      "prior": {
+        "case": "zh-CN-native-owner-disposed-cleanup-callback-fails-1",
+        "kind": "before",
+        "image": {
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\main-status36\\runtime-5\\zh-CN-native-owner-disposed-cleanup-callback-fails-1\\before.png",
+          "sha256": "19D2591DD5E44813073E2162474DB43D008DF248A12FFC2C0FF6F96557B6CD05"
+        },
+        "width": 391,
+        "height": 411
+      }
+    },
+    {
+      "current": {
+        "case": "ja-JP-native-presentation-loss-recover-0",
+        "kind": "before",
+        "image": {
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af-final87-3\\main-status36\\runtime-1\\ja-JP-native-presentation-loss-recover-0\\before.png",
+          "sha256": "91F379E8F6EF7D72070D788824B58E77279D95CEA69F633951C7570994967E35"
+        },
+        "width": 392,
+        "height": 411
+      },
+      "prior": {
+        "case": "ja-JP-native-owner-disposed-cleanup-callback-fails-1",
+        "kind": "other-after",
+        "image": {
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\main-status36\\runtime-5\\ja-JP-native-owner-disposed-cleanup-callback-fails-1\\other-after.png",
+          "sha256": "91F379E8F6EF7D72070D788824B58E77279D95CEA69F633951C7570994967E35"
+        },
+        "width": 392,
+        "height": 411
+      }
+    },
+    {
+      "current": {
+        "case": "ja-JP-native-presentation-loss-recover-0",
+        "kind": "other-before",
+        "image": {
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af-final87-3\\main-status36\\runtime-1\\ja-JP-native-presentation-loss-recover-0\\other-before.png",
+          "sha256": "FFEE30BA258AC739DDAE7910994A1895FEEADD00E59AA429A8F7E66F6983AA1F"
+        },
+        "width": 391,
+        "height": 411
+      },
+      "prior": {
+        "case": "ja-JP-native-owner-disposed-cleanup-callback-fails-1",
+        "kind": "before",
+        "image": {
+          "path": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af1082-f5-d7-local87cu1-1\\main-status36\\runtime-5\\ja-JP-native-owner-disposed-cleanup-callback-fails-1\\before.png",
+          "sha256": "FFEE30BA258AC739DDAE7910994A1895FEEADD00E59AA429A8F7E66F6983AA1F"
+        },
+        "width": 391,
+        "height": 411
+      }
+    }
+  ],
+  "all144HashesVerified": true,
+  "completeShellsDirectlyReviewed": 36,
+  "WpfRenderTargetBitmapDoesNotCaptureHwndHost": true,
+  "nativeFramesSeparatelyVerified": true,
+  "entireUiLocalizationNotClaimed": true,
+  "physicalDisplayScanout": false,
+  "physicalGpuRemoval": false,
+  "actualAbsentOrInvalidContext": "NOT_RUN",
+  "AFComplete": false
+}
