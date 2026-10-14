@@ -1,0 +1,92 @@
+{
+  "state": "PASS_FINAL87_INVENTORY_PUBLIC_CONSUMERS_AND_SEPARATE_PACKAGED_ORIGINAL_ABI_CASES",
+  "qualification": {
+    "path": "OcctSharp/artifacts/batch-da/final87-sdk-qualification-1.json",
+    "sha256": "165091205FF78E84C049156D7A79D65232A8D53AAACB044530C9D90900A71182"
+  },
+  "finalInventory": {
+    "path": "OcctSharp/artifacts/batch-cz/final87-inventory-1/full-inventory.json",
+    "sha256": "2681EFD34E4714AFA191F1D163C99C4DBA64A60EC512DE9F01E9DC3F98205686"
+  },
+  "closure": {
+    "path": "OcctSharp/artifacts/batch-cz/final87-inventory-1/dependency-closure.json",
+    "sha256": "86C42E5DB62ED790F9E8AA1BB85C51D0C2EBBEB0DDA70E840356A5073AF70362"
+  },
+  "states": {
+    "Blocked": 38113,
+    "Emitted": 28842,
+    "Manual": 4,
+    "Skipped": 49407
+  },
+  "supported": 28846,
+  "nonSkippedDenominator": 66959,
+  "supportedPercent": 43.08009378873639,
+  "newIds": 224,
+  "planned": 192,
+  "prerequisites": 32,
+  "newManual": 0,
+  "parseExclusions": 28,
+  "wholeSdkSemanticScanComplete": false,
+  "publicConsumers": {
+    "facade": 163,
+    "modules": 67,
+    "actualNativeEach": 62,
+    "noFriendAssembly": true,
+    "noProjectReferences": true
+  },
+  "rawAbiPackageReplay": {
+    "passed": 5,
+    "skipped": 0,
+    "friend": "Existing original test friend only; not public API acceptance",
+    "result": {
+      "path": "OcctSharp/artifacts/batch-da/final87-package-abi-1/TestResults/raw-package.trx",
+      "sha256": "D2099AE196D1368C979D1F4B92F5A443C1E30C49E6211996CE45632F10F13312"
+    },
+    "actualNative": {
+      "path": "OcctSharp/artifacts/batch-da/final87-package-abi-1/actual-loaded-native.json",
+      "sha256": "E18B19F6A17680C0B03ED1C69781CAA41F31816583F7FCC0021E297D45C9515E"
+    },
+    "methodSources": [
+      {
+        "method": "RawTypedTokenCapacitySentinelsRetirementAndConcurrentLeasesArePreserved",
+        "bodySha256": "2F1DA2FB774C97535C1FF245B871114E217E12591C9FCB750FBE3A5B6FC88927",
+        "originalSource": {
+          "path": "OcctSharp/tests/OcctSharp.Runtime.Tests/GeneratedBinaryShapeArchiveTests.cs",
+          "sha256": "4E255C234177CED8D3791E24A392CC16B0BEC7A9BFC82F01F14F45818D385F1F"
+        }
+      },
+      {
+        "method": "RawFailuresClearOwnerAndPreserveCountsBuffersAndRetiredOutput",
+        "bodySha256": "8589F6A721AD1034035FD971C82E2320CA1AAFA32E9BF1DD009238C2509D584F",
+        "originalSource": {
+          "path": "OcctSharp/tests/OcctSharp.Runtime.Tests/GeneratedBoundaryPlateTests.cs",
+          "sha256": "841A341F4C8EAE2412FDA0C6F5287942ADE5EDF1D7B8219D59DFF36AD0D2632A"
+        }
+      },
+      {
+        "method": "RawInvalidEventsPreserveOutputSentinelsAndStaleViewerIsRejected",
+        "bodySha256": "80E2837410868D1A5DE15C1415960A64BBDCEC931DD9FD83BA945855A10139A4",
+        "originalSource": {
+          "path": "OcctSharp/tests/OcctSharp.Runtime.Tests/GeneratedViewerControlTests.cs",
+          "sha256": "EB06297339ECD65EF154169E9FF4A00FFCC27EE49106BC65406E6DCB597B2BCD"
+        }
+      }
+    ]
+  },
+  "harnessPreparation": {
+    "path": "OcctSharp/artifacts/batch-da/package-consumers224-5/preparation.json",
+    "sha256": "D3E3F9453C013971A698ECB4F057DA06ACC2584B77EFE2F340001E5640C353A9"
+  },
+  "rawAbiScope": {
+    "path": "OcctSharp/artifacts/batch-da/package-consumers224-5/raw-abi-scope.json",
+    "sha256": "591184CBCFF9A0D4D704CBCE2E4736FA7FB92B7DFCE164E0C367AA5B254E4945"
+  },
+  "preparationBooleanClarification": "facadeRunsAllOriginalAndNewFixtures in preparation is overbroad: all public fixtures run163, the three exact private ABI bodies are separately executed in package friend replay5. No assertions removed or internal product handles exposed.",
+  "failedAttemptsRetained": [
+    "consumer1 internal handle compile errors and unused Win32 helper field",
+    "consumer2 default-null initializer analyzer rejection"
+  ],
+  "helperChange": "Only isolated Win32 helper RawPaint field becomes equivalent nullable auto-property; original product/SDK test sources untouched.",
+  "applicationFinal87Acceptance": "NOT RUN",
+  "wholeRoundDelivered": false
+}

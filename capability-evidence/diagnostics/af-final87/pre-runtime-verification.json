@@ -1,0 +1,29 @@
+{
+  "productionApplied": false,
+  "build": {
+    "sha256": "F75E329F2A53BF6A474ABF075744384DB3FDDE20A5B2329321FA77240CEBF51C",
+    "path": "artifacts/af-final87-1/build-exit-2.json"
+  },
+  "expectedExecutedEach": 7168,
+  "sdkReception": {
+    "sha256": "480FE60FFF5489BE9922E6880288DF62BD605A1832B0E17EBA3E197299C1C725",
+    "path": "artifacts/af-final87-1/sdk-reception.json"
+  },
+  "recordedAt": "2026-10-14T02:31:49.1944425+00:00",
+  "SDK13Native62DiskMatched": true,
+  "providerShared16": true,
+  "freeze": {
+    "sha256": "BEAE2BA617E0FB7886D98FFDF7A09C26A34898A8E7EEF2300B6143A665BC9CE7",
+    "path": "artifacts/af-final87-1/freeze.json"
+  },
+  "rootInputs": 1372,
+  "original7117NamesAndMultiplicityPreserved": true,
+  "projects": 53,
+  "AFComplete": false,
+  "modelsRecoveryWindowsPerformanceAccepted": false,
+  "STEP24NotRun": true,
+  "G": "USER_DEFERRED",
+  "cleanup": false,
+  "discoveredEach": 7192,
+  "state": "FINAL87_EXACT_RECEPTION_BOTH7192_DISCOVERY_BUILD0_FULL7168_RUNNING"
+}

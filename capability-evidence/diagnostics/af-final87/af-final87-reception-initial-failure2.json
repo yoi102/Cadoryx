@@ -1,0 +1,8 @@
+{
+  "coldBridge": "FF9F6518D930DCA14EBD786AEAE57C02B26AB7796B7E195D7F1CFA93D7D14E03",
+  "stageCreated": false,
+  "state": "RECEPTION_PREFLIGHT_FAILED_NO_PACKAGE_ACCEPTED",
+  "packageBridge": "21B427EDB5895A55BC49A77A24650294FAABCA3A28CCFECEFDFA7CCC8DC27E9C",
+  "productionChanged": false,
+  "reason": "Independent cold Release bridge has its own verified DLL bytes; incorrect receiver assumed package byte equality across build directories"
+}

@@ -1,0 +1,7 @@
+{
+  "state": "RECEPTION_PREFLIGHT_FAILED_NO_PACKAGE_ACCEPTED",
+  "stageCreated": false,
+  "reason": "First receiver recognized runtimes/native only; this exact Native.win-x64 NuGet owns buildTransitive/win-x64/occt",
+  "productionChanged": false,
+  "oldFailure": "assert len(managed)==13 and native==expectedNative62"
+}

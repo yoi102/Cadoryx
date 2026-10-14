@@ -1,5 +1,7 @@
 # 3D CAD 产品缺口与实施规划
 
+2026-10-14，status268：[最终本地87接收与当前候选](../capability-evidence/diagnostics/af-final87/pre-runtime-verification.json)已核对14包/SDK13/native62、1372来源/53项目、两配置完整build0及各实际发现7192，原7117+新75及同名次数保持。Release7168正在运行且actual62已取证、Debug待串行；精确原STEP24不执行、不算通过，不跳过整个方法或其他交换案例。开发根仍87.cu1，新87仅隔离；最新模型/恢复/窗口/性能和接入待全量门禁，A–F全部范围继续，G/清理暂缓。以[STATUS](STATUS.md)及实际终态为准，以下较早记录保留历史。
+
 2026-10-14，status267：[来源上下文保留](F5_NATIVE_SELECTION_CONTEXT_RETENTION.md)新32加原分页13两配置45/45，另4适配器身份夹具及原截断40各两配置通过；同载荷原Agent两条实际重放0/2，修后通过。精确STEP24过滤及名单/次数审计已准备，不延期整个方法或其他交换案例；当前新根尚未发现/编译/运行预计7192，模型/窗口/性能未重跑。SDK final DA继续资格、尚未明确返还；开发仍精确本地87.cu1，A–F全范围继续，原STEP24保持延期，G/清理暂缓。当前以[STATUS](STATUS.md)为准，以下较早记录保留历史。
 
 2026-10-14，status266：原严格STEP精确24项延期且不重试，其余A–F继续、尚未全部完成。[F5截断恢复](F5_TRUNCATED_RESPONSE_RECOVERY.md)两配置各40/40纯托管及97/97相关测试、完整solution build0，原一次恢复/8192/1024/16轮/4分钟保持；完整预计7160未重跑。[最新原工程图](../capability-evidence/diagnostics/f5-lmstudio-completion-integrity/provider-drawing3-verification.json)2/8后超工具轮FAIL，无截断，实际native62/资产归零已验，工程图供应商未完成。D6第二窗口无有效确认/预览，真实Cancel后FAIL和原快照保持；当前材质/窗口/最新工作区与其他全部A–F继续。旧恢复24/36及MiniPC达标证据属于此前载荷，SDK final DA独占时段已明确交还，待新明确返还后续运行；开发仍精确本地87.cu1，正式已验仍A4/B17/C5/D5/E4/F5g，G/清理暂缓。当前以[STATUS](STATUS.md)及原终态为准，以下较早状态保留历史。

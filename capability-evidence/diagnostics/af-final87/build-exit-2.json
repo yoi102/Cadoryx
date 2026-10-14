@@ -1,0 +1,50 @@
+{
+  "stages": [
+    {
+      "log": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af-final87-1\\restore-locked-2.log",
+      "stage": "restore-locked-2",
+      "completed": "2026-10-14T02:21:54.9215879+00:00",
+      "exitCode": 0
+    },
+    {
+      "log": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af-final87-1\\core-build-release-2.log",
+      "stage": "core-build-release-2",
+      "completed": "2026-10-14T02:21:56.2358593+00:00",
+      "exitCode": 0
+    },
+    {
+      "log": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af-final87-1\\build-release-2.log",
+      "stage": "build-release-2",
+      "completed": "2026-10-14T02:21:58.8415381+00:00",
+      "exitCode": 0
+    },
+    {
+      "log": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af-final87-1\\discovery-release-2.log",
+      "stage": "discovery-release-2",
+      "completed": "2026-10-14T02:22:02.3297290+00:00",
+      "exitCode": 0
+    },
+    {
+      "log": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af-final87-1\\core-build-debug-2.log",
+      "stage": "core-build-debug-2",
+      "completed": "2026-10-14T02:22:11.2848478+00:00",
+      "exitCode": 0
+    },
+    {
+      "log": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af-final87-1\\build-debug-2.log",
+      "stage": "build-debug-2",
+      "completed": "2026-10-14T02:22:15.3966623+00:00",
+      "exitCode": 0
+    },
+    {
+      "log": "C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af-final87-1\\discovery-debug-2.log",
+      "stage": "discovery-debug-2",
+      "completed": "2026-10-14T02:22:18.8071906+00:00",
+      "exitCode": 0
+    }
+  ],
+  "productionApplied": false,
+  "fullTestsStarted": false,
+  "preparation": "preparation2.json",
+  "AFComplete": false
+}

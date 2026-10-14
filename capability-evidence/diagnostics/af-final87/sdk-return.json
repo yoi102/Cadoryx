@@ -1,0 +1,32 @@
+{
+  "state": "SDK_FINAL87_LOCAL_QUALIFICATION_TERMINAL_LANE_EXPLICITLY_RETURNED_TO_CADORYX",
+  "recordedUtc": "2026-10-14T02:11:17.3695565+00:00",
+  "sourceGrant": {
+    "path": "C:/Users/yoiri/source/repos/Cadoryx/artifacts/af1082-f5-d7-root-integration-1/sdk-final-da-grant1.json",
+    "sha256": "54AE531399F0E14A2CEA66D8241F8850387A0578AEA4D1381B511E06B41830EF"
+  },
+  "explicitlyReturned": true,
+  "rootMayResumeNativeWindowModelPerformance": true,
+  "relatedNativeWindowJobs": 0,
+  "relatedFullCpuJobs": 0,
+  "observations": [],
+  "qualification": {
+    "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\batch-da\\final87-sdk-qualification-1.json",
+    "sha256": "165091205FF78E84C049156D7A79D65232A8D53AAACB044530C9D90900A71182"
+  },
+  "supplement": {
+    "path": "C:\\Users\\yoiri\\source\\repos\\OcctSharp\\OcctSharp\\artifacts\\batch-da\\final87-sdk-supplement-1.json",
+    "sha256": "8870632F817085E3916117B942D08870339034FA00398CC033ADAA3228C2107F"
+  },
+  "finalPackageVersion": "8.0.1-preview.87",
+  "nativeAbi": "1.119",
+  "bridgeVersion": "0.134.0",
+  "SDKLocalGates": "PASS",
+  "applicationFinal87Reception": "NOT RUN",
+  "wholeRoundDelivered": false,
+  "rootAFComplete": false,
+  "originalSTEP24": "USER_DEFERRED_FAILURES_UNCHANGED",
+  "newManual": 0,
+  "publicNuget": "NOT RUN",
+  "old85_86_87cu1": "ALL_PACKAGE_BYTES_VERIFIED_UNCHANGED"
+}
