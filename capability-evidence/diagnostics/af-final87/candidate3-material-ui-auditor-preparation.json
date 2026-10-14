@@ -1,0 +1,28 @@
+{
+  "recordedAt": "2026-10-14T04:04:29.530020+00:00",
+  "state": "FINAL87_MATERIAL_UI_AUDITOR_PREPARED_ORIGINAL_BEHAVIOR_FRESH_IDENTITIES_NOT_RUNTIME",
+  "original": {
+    "path": "artifacts/verify-a5-sdk27-material-desktop-3-2.py",
+    "sha256": "F19B54E24585D16167479665533638B0014A4A99D64058E85DD254F2DE0D0825"
+  },
+  "current": {
+    "path": "tools/FinalCadAcceptance/audit-material-desktop.py",
+    "sha256": "4164D395F9F44A23C1FEDA0DA225328ED445FB86C6E789A1FF0045A894D21565"
+  },
+  "originalRuntimeAssertCount": 64,
+  "currentRuntimeAssertCount": 65,
+  "reverseProjectionByteExactlyMatchesOriginalBody": true,
+  "differences": [
+    "Actual current PID instead of prior PID",
+    "Actual observer payload path/hash instead of prior build",
+    "Same frozen picker bytes in current directory",
+    "Actual newly authored material GUID",
+    "Actual newly authored geometry revision compared across complete workflow",
+    "Current visual review explicitly pending, not inherited"
+  ],
+  "originalStagesThemeMatrixBudgetsAndStorageChecksRetained": true,
+  "freshMaterialIdNotDocumentIdAdditionalGuard": true,
+  "runtimeAcceptanceProven": false,
+  "currentVisualReview": "SEPARATE_NOT_RUN",
+  "AFComplete": false
+}
