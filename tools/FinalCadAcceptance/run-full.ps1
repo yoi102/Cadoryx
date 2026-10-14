@@ -24,6 +24,7 @@ foreach($taskConfig in $taskFreeze.configurations){
  if($Focused){
   $taskClasses=@('NativeOmittedGeometryReadTests','NativeCompleteSourceContextTests','AgentNativeSelectionRetentionTests','LmStudioCompletionIntegrityTests','AgentEmptyResponseRecoveryTests')
   if($CandidateIteration -ge 4){$taskClasses+=@('AgentOpaqueIdentityBudgetTests','AgentContextTests','DrawingContractRequestGuideTests','DrawingAgentTests')}
+  if($CandidateIteration -ge 6){$taskClasses+=@('DrawingInspectionTypeFeedbackTests','ExchangeOccurrenceSemanticTests','ExchangeMeasurementTests')}
   $taskExpectedNames=@($taskExpectedNames | Where-Object {($_ -split '\.')[2] -in $taskClasses})
   if(!$taskExpectedNames.Count){throw 'Original focused cases missing from frozen discovery'}
   $taskFilter='('+ (($taskClasses | ForEach-Object {'FullyQualifiedName~Cadoryx.Tests.'+$_+'.'}) -join '|') +')&'+$taskFilter

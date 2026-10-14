@@ -1,4 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <ItemGroup><ProjectReference Include="../Cadoryx.Kernel.Abstractions/Cadoryx.Kernel.Abstractions.csproj" /></ItemGroup>
   <ItemGroup><PackageReference Include="MessagePack" Version="3.1.8" /><PackageReference Include="PDFsharp" Version="6.2.4" /></ItemGroup>
+  <!-- PDFsharp requests 8.0.1; 8.0.2 fixes both currently reported PKCS advisories. -->
+  <ItemGroup><PackageReference Include="System.Security.Cryptography.Pkcs" Version="8.0.2" /></ItemGroup>
 </Project>

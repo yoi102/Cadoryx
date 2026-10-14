@@ -1,0 +1,41 @@
+{
+  "recordedAt": "2026-10-14T06:54:57.942348+00:00",
+  "state": "CANDIDATE5_RELEASE_FAILED_TWO_INSPECT_DESCRIPTION_REGRESSIONS",
+  "freeze": {
+    "path": "artifacts/af-final87-5/freeze.json",
+    "sha256": "E65DB27E7876BC319EEA23A4DEAE150B4E4CDD2D0651F093BE8B25637114B4D1"
+  },
+  "terminal": {
+    "path": "artifacts/af-final87-5/full-release-1/exit.json",
+    "sha256": "CFB878DC106967C83A0708D0EE3A0C34B21DF8D9C8BD470E8877BCE3A015DE56"
+  },
+  "trx": {
+    "path": "artifacts/af-final87-5/full-release-1/runtime.trx",
+    "sha256": "562528F79734113357DEA52467E887FD665528A666C6A59470CE5AC3522D21D0"
+  },
+  "native": {
+    "path": "artifacts/af-final87-5/full-release-1/loaded-native.json",
+    "sha256": "ABF611D3B127C9615B889F4EA65664CECEAEC680652A0332D6919A4D2FCBD471"
+  },
+  "passed": 7172,
+  "failed": 2,
+  "skipped": 0,
+  "failures": [
+    {
+      "name": "Cadoryx.Tests.DrawingInspectionTypeFeedbackTests.DefaultTwelveToolsAnd8192ContextBudgetKeepTheExplicitInspectionRequirement(aggressive: False)",
+      "message": "Assert.Contains() Failure: Sub-string not found\r\nString:    \"contract: only action/type, no IDs. Read \"\u00b7\u00b7\u00b7\r\nNot found: \"type+documentId+stateId\"",
+      "stack": "   at Cadoryx.Tests.DrawingInspectionTypeFeedbackTests.DefaultTwelveToolsAnd8192ContextBudgetKeepTheExplicitInspectionRequirement(Boolean aggressive) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af-final87-5\\workspace\\Cadoryx.Tests\\DrawingInspectionTypeFeedbackTests.cs:line 68\r\n   at InvokeStub_DrawingInspectionTypeFeedbackTests.DefaultTwelveToolsAnd8192ContextBudgetKeepTheExplicitInspectionRequirement(Object, Span`1)\r\n   at System.Reflection.RuntimeMethodInfo.Invoke(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)"
+    },
+    {
+      "name": "Cadoryx.Tests.DrawingInspectionTypeFeedbackTests.DefaultTwelveToolsAnd8192ContextBudgetKeepTheExplicitInspectionRequirement(aggressive: True)",
+      "message": "Assert.Contains() Failure: Sub-string not found\r\nString:    \"contract: only action/type, no IDs. Read \"\u00b7\u00b7\u00b7\r\nNot found: \"type+documentId+stateId\"",
+      "stack": "   at Cadoryx.Tests.DrawingInspectionTypeFeedbackTests.DefaultTwelveToolsAnd8192ContextBudgetKeepTheExplicitInspectionRequirement(Boolean aggressive) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af-final87-5\\workspace\\Cadoryx.Tests\\DrawingInspectionTypeFeedbackTests.cs:line 68\r\n   at System.RuntimeMethodHandle.InvokeMethod(ObjectHandleOnStack target, Void** arguments, ObjectHandleOnStack sig, BOOL isConstructor, ObjectHandleOnStack result)\r\n   at System.Reflection.MethodBaseInvoker.InterpretedInvoke_Method(Object obj, IntPtr* args)\r\n   at System.Reflection.MethodBaseInvoker.InvokeDirectByRefWithFewArgs(Object obj, Span`1 copyOfArgs, BindingFlags invokeAttr)"
+    }
+  ],
+  "exactSTEP24NotExecuted": true,
+  "additionalFailuresDeferred": false,
+  "debugStarted": false,
+  "modelOrWindowFollowupStarted": false,
+  "originalAssertionsChanged": false,
+  "AFComplete": false
+}

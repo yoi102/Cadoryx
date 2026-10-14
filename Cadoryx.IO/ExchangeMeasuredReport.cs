@@ -14,6 +14,8 @@ public sealed record ExchangeMeasuredReport(int SchemaVersion,string DocumentId,
 {
     public const string LocalBasis="Cadoryx export and Cadoryx/OCCT re-import; no external CAD result is implied";
     public static ImmutableArray<ExchangeComparison> Compare(ExchangeModelObservation source,ExchangeModelObservation reopened,string format,CadExportOptions options)
+        =>Compare(source,reopened,format,options,true);
+    internal static ImmutableArray<ExchangeComparison> Compare(ExchangeModelObservation source,ExchangeModelObservation reopened,string format,CadExportOptions options,bool occurrenceSemantics)
     {
         var rows=ImmutableArray.CreateBuilder<ExchangeComparison>();
         void Count(string name,bool same,string note)=>rows.Add(new(name,same?"Same":"Different",note));
@@ -38,7 +40,36 @@ public sealed record ExchangeMeasuredReport(int SchemaVersion,string DocumentId,
             "Sorted definition reuse counts; matching counts do not prove that the same parts share identity.");
         var sourceNames=source.Occurrences.Select(o=>(o.Name,o.DefinitionName,o.Assembly,o.Depth)).ToArray();
         var resultNames=reopened.Occurrences.Select(o=>(o.Name,o.DefinitionName,o.Assembly,o.Depth)).ToArray();
-        Count("HierarchyAndNames",sourceNames.SequenceEqual(resultNames),"Ordered occurrence depth, names and assembly/part kinds; reader-created wrapper nodes are included.");
+        bool sameHierarchy=sourceNames.SequenceEqual(resultNames);
+        Count("HierarchyAndNames",sameHierarchy,"Ordered occurrence depth, names and assembly/part kinds; reader-created wrapper nodes are included.");
+        if(occurrenceSemantics)
+        {
+            const string pairing="Ordered occurrence graph with identical depth, names and kinds; no inferred topology or persistent identity mapping.";
+            if(!sameHierarchy)
+            {
+                foreach(string aspect in new[]{"OccurrenceDefinitionSharing","OccurrenceTranslationsMm","OccurrenceOrientations"})
+                    rows.Add(new(aspect,"NotComparable","Ordered occurrence graphs differ; no correspondence was guessed."));
+            }
+            else
+            {
+                Count("OccurrenceDefinitionSharing",source.Occurrences.Select(o=>o.DefinitionGroup).SequenceEqual(reopened.Occurrences.Select(o=>o.DefinitionGroup)),
+                    "Canonical first-appearance definition groups compare the actual sharing partition, including assembly definitions. "+pairing);
+                double translationDifference=0,orientationDifference=0;
+                for(int index=0;index<source.Occurrences.Length;index++)
+                {
+                    var first=source.Occurrences[index].WorldTransform;var second=reopened.Occurrences[index].WorldTransform;
+                    first.Validate();second.Validate();
+                    static double MaximumCoordinate(Vector3d v)=>Math.Max(Math.Abs(v.X),Math.Max(Math.Abs(v.Y),Math.Abs(v.Z)));
+                    translationDifference=Math.Max(translationDifference,MaximumCoordinate(first.Translation-second.Translation));
+                    foreach(var axis in new[]{new Vector3d(1,0,0),new Vector3d(0,1,0),Vector3d.UnitZ})
+                        orientationDifference=Math.Max(orientationDifference,MaximumCoordinate(first.Rotation.Rotate(axis)-second.Rotation.Rotate(axis)));
+                }
+                rows.Add(new("OccurrenceTranslationsMm",translationDifference<=.00001?"WithinTolerance":"Different",
+                    "Maximum world translation coordinate difference; tolerance1e-5mm. "+pairing,translationDifference));
+                rows.Add(new("OccurrenceOrientations",orientationDifference<=1e-7?"WithinTolerance":"Different",
+                    "Maximum rotated unit-axis coordinate difference; tolerance1e-7, dimensionless. Quaternion sign alone does not change orientation. "+pairing,orientationDifference));
+            }
+        }
         Count("EffectiveColorPalette",source.EffectiveColorPalette.SequenceEqual(reopened.EffectiveColorPalette),
             "Observed effective RGB palette; matching colors do not prove per-face assignment, transparency or full style retention.");
         rows.Add(new("PMI","NotMeasured","No source PMI inventory or semantic PMI transfer proof is available."));

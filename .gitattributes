@@ -3,6 +3,9 @@
 ###############################################################################
 * text=auto
 
+# Keep the measured report regression receipts byte-identical to their SHA-256.
+capability-evidence/diagnostics/f4-occurrence-semantics/** -text whitespace=cr-at-eol
+
 # Keep recovery patches byte-stable for their recorded SHA-256. Git binary
 # literal blocks have significant blank terminators, including the final block.
 capability-evidence/*.patch text eol=lf whitespace=-blank-at-eol,-blank-at-eof

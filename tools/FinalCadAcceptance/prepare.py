@@ -55,6 +55,14 @@ projects = previous['projects'] + ['tools/LmStudioTransportTests/LmStudioTranspo
     'tools/AgentSelectionContextTests/AgentSelectionContextTests.csproj',
     'tools/CadAgentWorkflowProbeRawTransport/CadAgentWorkflowProbeRawTransport.csproj']
 assert len(projects) == len(set(projects)) == 53 and all((WORK / p).exists() for p in projects)
+additionalProjects=[] if additional is None else additional.get('additionalProjects',[])
+if iteration>=6:
+    assert additionalProjects==['tools/ExchangeSemanticTests/ExchangeSemanticTests.csproj']
+else:
+    assert not additionalProjects
+projects+=additionalProjects
+assert len(projects)==len(set(projects))==53+len(additionalProjects)
+assert all((WORK/p).exists() for p in projects)
 for name in projects:
     for ref in ET.parse(WORK / name).findall('.//ProjectReference'):
         assert 'OcctSharp' not in ref.attrib['Include'], name
@@ -73,4 +81,4 @@ record = dict(recordedAt=datetime.now(timezone.utc).isoformat(),state='CURRENT_A
     productionApplied=False, publicNuget=False, AFComplete=False)
 if additional is not None:record['additionalDiscovery']=dict(path=str(args.additional_discovery.resolve()),sha256=sha(args.additional_discovery));record['additionalNames']=additional['additionalNames'];record['priorFreeze']=additional['priorFreeze']
 (STAGE/'preparation.json').write_text(json.dumps(record,indent=2)+'\n',encoding='utf-8')
-print(f'Frozen {len(source)} tracked sources and53 projects; exact final87 only; current{record['expectedTotal']} pending discovery, exact24 deferred.')
+print(f'Frozen {len(source)} tracked sources and{len(projects)} projects; exact final87 only; current{record['expectedTotal']} pending discovery, exact24 deferred.')

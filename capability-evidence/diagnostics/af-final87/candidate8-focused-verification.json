@@ -1,0 +1,58 @@
+{
+  "recordedAt": "2026-10-14T07:29:31.135133+00:00",
+  "state": "ORIGINAL_FOUR_NAVIGATION_REGRESSIONS_FIXED_BOTH_ACTUAL62",
+  "freeze": {
+    "path": "artifacts/af-final87-8/freeze.json",
+    "sha256": "C59B4952F2E48EA2919DD961C39A1BE55356B30C87E67F97516EABCC8C588854"
+  },
+  "originalFailureTrx": {
+    "path": "artifacts/af-final87-1/full-release-1/runtime.trx",
+    "sha256": "0AC740AF80649B393FCF5C19342E1D0ACFD043DB58E5D62FABEDFE6CCFB530E4"
+  },
+  "originalFullPassed": 7164,
+  "originalFullFailed": 4,
+  "knownOriginalFailures": [
+    "Cadoryx.Tests.NativeOmittedGeometryReadTests.ActualOmittedCylinderReadAuthorsDiameterOnlyFromItsFreshNativeSelection(budget: 2400, offset: 0)",
+    "Cadoryx.Tests.NativeOmittedGeometryReadTests.ActualOmittedCylinderReadAuthorsDiameterOnlyFromItsFreshNativeSelection(budget: 2400, offset: 3)",
+    "Cadoryx.Tests.NativeOmittedGeometryReadTests.SyntheticDiscoveryUsesAbsoluteResultPositionsAndNeverNativeTopologyIndices(offset: 0)",
+    "Cadoryx.Tests.NativeOmittedGeometryReadTests.SyntheticDiscoveryUsesAbsoluteResultPositionsAndNeverNativeTopologyIndices(offset: 37)"
+  ],
+  "configurations": [
+    {
+      "configuration": "Release",
+      "passed": 291,
+      "failed": 0,
+      "skipped": 0,
+      "originalFourPassed": true,
+      "trx": {
+        "path": "artifacts/af-final87-8/focused-release-1/runtime.trx",
+        "sha256": "5F0362B55BF8BEABAA0FA0CE78D32AEC421DAF6A285C982CAEFBB43442480651"
+      },
+      "native": {
+        "path": "artifacts/af-final87-8/focused-release-1/loaded-native.json",
+        "sha256": "68C50CA012B0F986BA6F4168999283E8980D0ACC8E8DC9F94E2CC78816A93CBF"
+      }
+    },
+    {
+      "configuration": "Debug",
+      "passed": 291,
+      "failed": 0,
+      "skipped": 0,
+      "originalFourPassed": true,
+      "trx": {
+        "path": "artifacts/af-final87-8/focused-debug-1/runtime.trx",
+        "sha256": "2AAD21FFAD7C298202286F4D41047BC5796401F0D2B2ACFBF2884F53F05B65D7"
+      },
+      "native": {
+        "path": "artifacts/af-final87-8/focused-debug-1/loaded-native.json",
+        "sha256": "80251BFB9CA2826E3269F5CCED097FACDB40571B42732B77B93DD83BE4E752C4"
+      }
+    }
+  ],
+  "originalAssertionsAndBudgetsChanged": false,
+  "exactSTEP24NotRun": true,
+  "fullCurrentPassed": false,
+  "modelOrWindowAccepted": false,
+  "productionApplied": false,
+  "AFComplete": false
+}

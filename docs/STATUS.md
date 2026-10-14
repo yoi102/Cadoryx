@@ -1,5 +1,11 @@
 # 当前状态
 
+2026-10-14，status275：**原严格STEP精确24项单独延期，其余A–F继续；当前第八候选完整回归运行中。** [第五候选真实失败](../capability-evidence/diagnostics/af-final87/candidate5-failed-terminal.json)为Release7172通过/2失败，Debug和模型未启动；[第六、七候选失败](../capability-evidence/diagnostics/af-final87/candidate6-7-failed-terminals.json)分别是工具依赖警告门禁和原说明/12工具预算断言，均保留来源，不扩大延期。
+
+本批恢复工程图inspect必需的精确身份与类型提示，精简重复说明以保留原8192/1024/640或1280/12工具契约；[第八候选两配置扩大专项](../capability-evidence/diagnostics/af-final87/candidate8-focused-verification.json)各291/291、actual62准确。F4新增[schema2实例共享及世界位姿比较](F4_MEASURED_EXCHANGE.md)，两配置报告专测各10和原真实交换测量各39通过；旧schema1按原行契约验证，不猜测图对应，也不据此宣称外部CAD完整互操作。PDFsharp传递的Pkcs8.0.1及8个二进制引用工具均精确升级8.0.2，[54项目审计](../capability-evidence/diagnostics/f4-occurrence-semantics/dependency-audit54.json)无当前已报告漏洞，未禁用审计。
+
+第八候选1416来源/54项目两配置构建零警告错误、实际发现7208=第五候选7198+精确新增10；完整Release7184已启动，Debug串行，原24未执行、不算通过。原模型/宿主队列只跟随此次完整运行且须通过其审计；原提示、Bonsai27B Q1_0、8192/1024/16轮/4分钟和一次恢复保持。根开发仍精确87.cu1，最终87仅隔离候选；正式已验A4/B17/C5/D5/E4/F5g保持，D6剩余35、实际材质UI、外部完整交换、根final87接入及第4、5节全部范围继续。A–F未完成，G/清理暂缓；以下status274及更早为历史。
+
 2026-10-14，status274：**F5身份预算与工程图提交路径已修正，当前新源码的完整回归和真实模型仍待终态；A–F未完成。** [本批说明](F5_OPAQUE_IDENTITY_BUDGET.md)及[独立审计](../capability-evidence/diagnostics/f5-opaque-identity-budget/verification.json)记录原模型分词器实测5680字符/3002token、旧估1578；完整身份按保守成本预算，必要时从原完整回执重选完整行，不改身份、导航、原生守卫和6000/2400上限。contract给出与实际解析一致的独立submission路由，不填身份或执行示例；原提示/8192/1024/16轮/4分钟/共享一次恢复保持。
 
 两配置纯托管各59（55产品加4适配器）、传输各40、开发根专项各56通过；旧Agent同3测试为2通过/1失败，旧ViewModel同1测试失败，早期预算回归保留。第四候选实际Release212为211通过/1个原恢复目录断言失败、Debug未启动；进一步收短重复说明后，[第五候选专项两配置各212/212](../capability-evidence/diagnostics/af-final87/candidate5-focused-verification.json)通过且actual native62匹配。第五候选1412来源/53项目两配置build0，各实际发现7198=原7194+4，名称/次数保持；当前完整Release7174已启动，actual62已取证，Debug串行。原STEP精确24未执行，不算通过；完整门禁通过后原模型复验队列才继续，不将排队算通过。

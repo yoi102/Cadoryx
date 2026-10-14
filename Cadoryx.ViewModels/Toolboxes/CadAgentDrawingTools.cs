@@ -11,7 +11,7 @@ internal static class CadAgentDrawingTools
     private static readonly string[] ContractTypes = ["sheet","view","dimension","datum","control_frame","balloon","hole_table","field","note","template","parts_table","zones"];
     internal static readonly string Schema=JsonSerializer.Serialize(new{type="object",properties=new{
         action=new{type="string",description="Except contract (inspect_sources too): documentId/stateId required.",@enum=new[]{"contract","inspect","inspect_sources","create","edit","reselect","delete","set_parts_table","set_zones","refresh","save_template","apply_template","import_template","detach_coordinates"}},
-        type=new{type="string",@enum=ContractTypes,description="contract schema; inspect/create/edit/reselect/delete kind."},
+        type=new{type="string",@enum=ContractTypes,description="Required for inspect/create/edit/reselect/delete; contract kind."},
         documentId=new{type="string",format="uuid",description="REQUIRED except contract: cad_status.documentId."},
         stateId=new{type="string",format="uuid",description="REQUIRED except contract: cad_status.stateId."},
         sheetId=new{type="string",format="uuid"},id=new{type="string",format="uuid"},name=new{type="string",maxLength=64,description="save_template only; else authorJson."},

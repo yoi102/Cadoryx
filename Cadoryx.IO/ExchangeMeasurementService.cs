@@ -46,7 +46,7 @@ public sealed class ExchangeMeasurementService(IGeometryKernel kernel)
                     measured.Add(new(format,entry,new FileInfo(file).Length,after,observed,exported.Diagnostics,reopened.Diagnostics,
                         ExchangeMeasuredReport.Compare(source,observed,format,exportOptions)));
                 }
-                var report=new ExchangeMeasuredReport(1,snapshot.Id.ToString(),snapshot.StateId.ToString(),DateTimeOffset.UtcNow,
+                var report=new ExchangeMeasuredReport(2,snapshot.Id.ToString(),snapshot.StateId.ToString(),DateTimeOffset.UtcNow,
                     kernel.Version,ExchangeMeasuredReport.LocalBasis,options,[..snapshot.ReferencedAssets().Select(a=>a.Sha256).Distinct().Order()],source,measured.ToImmutable(),
                     ["External CAD reader/writer results","Per-face color assignment, transparency and full style semantics","Source PMI inventory and semantic PMI preservation",
                      "Complete geometric equivalence or maximum mesh approximation error","Feature history, sketch constraints, drawing sheets and assembly mate transfer"]);
@@ -84,7 +84,7 @@ public sealed class ExchangeMeasurementService(IGeometryKernel kernel)
             report=await JsonSerializer.DeserializeAsync<ExchangeMeasuredReport>(input,Json,token)??throw new InvalidDataException("Empty measurement report.");
         }
         catch(JsonException ex){throw new InvalidDataException("Invalid measurement report JSON.",ex);}
-        if(report.SchemaVersion!=1||report.Basis!=ExchangeMeasuredReport.LocalBasis||string.IsNullOrWhiteSpace(report.Kernel)||report.Options is null||
+        if(report.SchemaVersion is not (1 or 2)||report.Basis!=ExchangeMeasuredReport.LocalBasis||string.IsNullOrWhiteSpace(report.Kernel)||report.Options is null||
             !Guid.TryParse(report.DocumentId,out var document)||document==Guid.Empty||!Guid.TryParse(report.StateId,out var state)||state==Guid.Empty||
             report.Formats.IsDefaultOrEmpty||report.Formats.Any(m=>m is null)||
             report.SourceAssetHashes.IsDefaultOrEmpty||report.SourceAssetHashes.Any(h=>!IsHash(h))||
@@ -103,7 +103,7 @@ public sealed class ExchangeMeasurementService(IGeometryKernel kernel)
                 measured.ExportDiagnostics.IsDefault||measured.ImportDiagnostics.IsDefault||measured.ExportDiagnostics.Any(d=>d is null)||measured.ImportDiagnostics.Any(d=>d is null)||
                 measured.Comparisons.IsDefaultOrEmpty||measured.Comparisons.Any(c=>c is null)||
                 !measured.Comparisons.SequenceEqual(ExchangeMeasuredReport.Compare(report.Source,measured.Reopened,measured.Format,
-                    new(report.Options.LinearDeflectionMm,report.Options.AngularDeflectionRad,VisibleOnly:report.Options.VisibleOnly))))
+                    new(report.Options.LinearDeflectionMm,report.Options.AngularDeflectionRad,VisibleOnly:report.Options.VisibleOnly),report.SchemaVersion>=2)))
                 throw new InvalidDataException("Invalid measured comparisons or entry.");
             var payload=zip.GetEntry(measured.Entry)??throw new InvalidDataException("Missing measured exchange file.");
             if(payload.Length!=measured.Bytes)throw new InvalidDataException("Measured exchange size mismatch.");

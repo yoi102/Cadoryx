@@ -1,0 +1,172 @@
+{
+  "version": 1,
+  "parameters": "--vulnerable --include-transitive",
+  "sources": [
+    "C:/Users/yoiri/source/repos/Cadoryx/artifacts/local-sdk87cu1-received-1/feed",
+    "https://api.nuget.org/v3/index.json"
+  ],
+  "projects": [
+    {
+      "path": "C:/Users/yoiri/source/repos/Cadoryx/Cadoryx.Agent.Codex/Cadoryx.Agent.Codex.csproj"
+    },
+    {
+      "path": "C:/Users/yoiri/source/repos/Cadoryx/Cadoryx.Agent/Cadoryx.Agent.csproj"
+    },
+    {
+      "path": "C:/Users/yoiri/source/repos/Cadoryx/Cadoryx.AI.Contracts/Cadoryx.AI.Contracts.csproj"
+    },
+    {
+      "path": "C:/Users/yoiri/source/repos/Cadoryx/Cadoryx.AI.LmStudio/Cadoryx.AI.LmStudio.csproj"
+    },
+    {
+      "path": "C:/Users/yoiri/source/repos/Cadoryx/Cadoryx.Cli/Cadoryx.Cli.csproj"
+    },
+    {
+      "path": "C:/Users/yoiri/source/repos/Cadoryx/Cadoryx.CommandLine/Cadoryx.CommandLine.csproj"
+    },
+    {
+      "path": "C:/Users/yoiri/source/repos/Cadoryx/Cadoryx.Commands/Cadoryx.Commands.csproj"
+    },
+    {
+      "path": "C:/Users/yoiri/source/repos/Cadoryx/Cadoryx.Db/Cadoryx.Db.csproj"
+    },
+    {
+      "path": "C:/Users/yoiri/source/repos/Cadoryx/Cadoryx.Editor/Cadoryx.Editor.csproj"
+    },
+    {
+      "path": "C:/Users/yoiri/source/repos/Cadoryx/Cadoryx.IO/Cadoryx.IO.csproj"
+    },
+    {
+      "path": "C:/Users/yoiri/source/repos/Cadoryx/Cadoryx.Kernel.Abstractions/Cadoryx.Kernel.Abstractions.csproj"
+    },
+    {
+      "path": "C:/Users/yoiri/source/repos/Cadoryx/Cadoryx.Kernel.Occt/Cadoryx.Kernel.Occt.csproj"
+    },
+    {
+      "path": "C:/Users/yoiri/source/repos/Cadoryx/Cadoryx.Lang/Cadoryx.Lang.csproj"
+    },
+    {
+      "path": "C:/Users/yoiri/source/repos/Cadoryx/Cadoryx.Rendering.Occt/Cadoryx.Rendering.Occt.csproj"
+    },
+    {
+      "path": "C:/Users/yoiri/source/repos/Cadoryx/Cadoryx.Rendering/Cadoryx.Rendering.csproj"
+    },
+    {
+      "path": "C:/Users/yoiri/source/repos/Cadoryx/Cadoryx.Sketching/Cadoryx.Sketching.csproj"
+    },
+    {
+      "path": "C:/Users/yoiri/source/repos/Cadoryx/Cadoryx.Tests/Cadoryx.Tests.csproj"
+    },
+    {
+      "path": "C:/Users/yoiri/source/repos/Cadoryx/Cadoryx.ViewModels.Services/Cadoryx.ViewModels.Services.csproj"
+    },
+    {
+      "path": "C:/Users/yoiri/source/repos/Cadoryx/Cadoryx.ViewModels/Cadoryx.ViewModels.csproj"
+    },
+    {
+      "path": "C:/Users/yoiri/source/repos/Cadoryx/Cadoryx.wpf.Controls/Cadoryx.wpf.Controls.csproj"
+    },
+    {
+      "path": "C:/Users/yoiri/source/repos/Cadoryx/Cadoryx.wpf/Cadoryx.wpf.csproj"
+    },
+    {
+      "path": "C:/Users/yoiri/source/repos/Cadoryx/integrations/occtsharp-boolean-history/Consumer/Consumer.csproj"
+    },
+    {
+      "path": "C:/Users/yoiri/source/repos/Cadoryx/tools/AgentConnectionProbe/AgentConnectionProbe.csproj"
+    },
+    {
+      "path": "C:/Users/yoiri/source/repos/Cadoryx/tools/AgentSelectionContextTests/AgentSelectionContextTests.csproj"
+    },
+    {
+      "path": "C:/Users/yoiri/source/repos/Cadoryx/tools/AnalyticalOffsetNativeProbe/AnalyticalOffsetNativeProbe.csproj"
+    },
+    {
+      "path": "C:/Users/yoiri/source/repos/Cadoryx/tools/AnalyticalOffsetProbe/AnalyticalOffsetProbe.csproj"
+    },
+    {
+      "path": "C:/Users/yoiri/source/repos/Cadoryx/tools/BoundedThreadDrawingProbe/BoundedThreadDrawingProbe.csproj"
+    },
+    {
+      "path": "C:/Users/yoiri/source/repos/Cadoryx/tools/CadAgentWorkflowProbe/CadAgentWorkflowProbe.csproj"
+    },
+    {
+      "path": "C:/Users/yoiri/source/repos/Cadoryx/tools/CadAgentWorkflowProbeRawTransport/CadAgentWorkflowProbeRawTransport.csproj"
+    },
+    {
+      "path": "C:/Users/yoiri/source/repos/Cadoryx/tools/EndpointCurvatureProbe/EndpointCurvatureProbe.csproj"
+    },
+    {
+      "path": "C:/Users/yoiri/source/repos/Cadoryx/tools/ExchangeFixtures/ExchangeFixtures.csproj"
+    },
+    {
+      "path": "C:/Users/yoiri/source/repos/Cadoryx/tools/ExchangeSemanticTests/ExchangeSemanticTests.csproj"
+    },
+    {
+      "path": "C:/Users/yoiri/source/repos/Cadoryx/tools/FiniteContactProbe/FiniteContactProbe.csproj"
+    },
+    {
+      "path": "C:/Users/yoiri/source/repos/Cadoryx/tools/FiniteSurfaceProbe/FiniteSurfaceProbe.csproj"
+    },
+    {
+      "path": "C:/Users/yoiri/source/repos/Cadoryx/tools/LmStudioTransportTests/LmStudioTransportTests.csproj"
+    },
+    {
+      "path": "C:/Users/yoiri/source/repos/Cadoryx/tools/M10AssemblyProbe/M10AssemblyProbe.csproj"
+    },
+    {
+      "path": "C:/Users/yoiri/source/repos/Cadoryx/tools/MixedContactGeometryProbe/MixedContactGeometryProbe.csproj"
+    },
+    {
+      "path": "C:/Users/yoiri/source/repos/Cadoryx/tools/MixedContactProbe/MixedContactProbe.csproj"
+    },
+    {
+      "path": "C:/Users/yoiri/source/repos/Cadoryx/tools/ModeledThreadDrawingProbe/ModeledThreadDrawingProbe.csproj"
+    },
+    {
+      "path": "C:/Users/yoiri/source/repos/Cadoryx/tools/MulticopyExchangeProbe/MulticopyExchangeProbe.csproj"
+    },
+    {
+      "path": "C:/Users/yoiri/source/repos/Cadoryx/tools/MulticopyHistoryProbe/MulticopyHistoryProbe.csproj"
+    },
+    {
+      "path": "C:/Users/yoiri/source/repos/Cadoryx/tools/OcctApiUsageAudit/OcctApiUsageAudit.csproj"
+    },
+    {
+      "path": "C:/Users/yoiri/source/repos/Cadoryx/tools/OcctCapabilityProbe/OcctCapabilityProbe.csproj"
+    },
+    {
+      "path": "C:/Users/yoiri/source/repos/Cadoryx/tools/OffsetWorkflowProbe/OffsetWorkflowProbe.csproj"
+    },
+    {
+      "path": "C:/Users/yoiri/source/repos/Cadoryx/tools/SketchProbe/SketchProbe.csproj"
+    },
+    {
+      "path": "C:/Users/yoiri/source/repos/Cadoryx/tools/SlidingContactGeometryProbe/SlidingContactGeometryProbe.csproj"
+    },
+    {
+      "path": "C:/Users/yoiri/source/repos/Cadoryx/tools/SlidingContactProbe/SlidingContactProbe.csproj"
+    },
+    {
+      "path": "C:/Users/yoiri/source/repos/Cadoryx/tools/StorageBench/StorageBench.csproj"
+    },
+    {
+      "path": "C:/Users/yoiri/source/repos/Cadoryx/tools/SurfaceTerminationProbe/SurfaceTerminationProbe.csproj"
+    },
+    {
+      "path": "C:/Users/yoiri/source/repos/Cadoryx/tools/ThreadDrawingProbe/ThreadDrawingProbe.csproj"
+    },
+    {
+      "path": "C:/Users/yoiri/source/repos/Cadoryx/tools/ThreadHelixProbe/ThreadHelixProbe.csproj"
+    },
+    {
+      "path": "C:/Users/yoiri/source/repos/Cadoryx/tools/ThreadHoleProbe/ThreadHoleProbe.csproj"
+    },
+    {
+      "path": "C:/Users/yoiri/source/repos/Cadoryx/tools/ThreadProjectionProbe/ThreadProjectionProbe.csproj"
+    },
+    {
+      "path": "C:/Users/yoiri/source/repos/Cadoryx/tools/ViewerCapabilityProbe/ViewerCapabilityProbe.csproj"
+    }
+  ]
+}

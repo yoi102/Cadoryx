@@ -23,6 +23,8 @@ classes = {'NativeOmittedGeometryReadTests', 'NativeCompleteSourceContextTests',
            'AgentEmptyResponseRecoveryTests'}
 if iteration >= 4:
     classes.update({'AgentOpaqueIdentityBudgetTests','AgentContextTests','DrawingContractRequestGuideTests','DrawingAgentTests'})
+if iteration >= 6:
+    classes.update({'DrawingInspectionTypeFeedbackTests','ExchangeOccurrenceSemanticTests','ExchangeMeasurementTests'})
 old_trx = ROOT / 'artifacts/af-final87-1/full-release-1/runtime.trx'
 old = results(old_trx)
 assert len(old) == 7168 and Counter(r.attrib['outcome'] for r in old) == {'Passed': 7164, 'Failed': 4}

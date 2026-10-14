@@ -1,0 +1,84 @@
+{
+  "recordedAt": "2026-10-14T07:28:27.144710+00:00",
+  "state": "CANDIDATE6_WARNING_GATE_AND_CANDIDATE7_THREE_ORIGINAL_REGRESSIONS_RETAINED",
+  "candidate6": {
+    "preparation": {
+      "path": "artifacts/af-final87-6/preparation.json",
+      "sha256": "27C1354EF07854E87229D79E460D2194C054224C2408D20162E043A60278173B"
+    },
+    "build": {
+      "path": "artifacts/af-final87-6/build-exit.json",
+      "sha256": "400964BEB004B0A1AC233987D4CFF250DC1A449E0811371023E42C687C68D86F"
+    },
+    "warnings": [
+      {
+        "configuration": "release",
+        "compileExit": 0,
+        "warnings": 16,
+        "zeroWarningGatePassed": false,
+        "log": {
+          "path": "artifacts/af-final87-6/build-release.log",
+          "sha256": "41F155A7CDD2E9AC899F6994462AE272C3A872FCFBA75ADBA5001AF4BDE960AA"
+        }
+      },
+      {
+        "configuration": "debug",
+        "compileExit": 0,
+        "warnings": 16,
+        "zeroWarningGatePassed": false,
+        "log": {
+          "path": "artifacts/af-final87-6/build-debug.log",
+          "sha256": "A028C09DC4ECCD996BEFB1F26F42D428F2190907E05457C850C62188C1A04C75"
+        }
+      }
+    ],
+    "frozen": false,
+    "runtimeStarted": false
+  },
+  "candidate7": {
+    "freeze": {
+      "path": "artifacts/af-final87-7/freeze.json",
+      "sha256": "E4BC4BB7FC9EE9858A992F7A6E12819120C817B132EA03C58DEF82A5DC2C5ADB"
+    },
+    "trx": {
+      "path": "artifacts/af-final87-7/focused-release-1/runtime.trx",
+      "sha256": "FAD5291B59741786414C6797954C92863522C855BA20642FEEF4A3AFEECEF733"
+    },
+    "terminal": {
+      "path": "artifacts/af-final87-7/focused-release-1/exit.json",
+      "sha256": "C4750A5504B331781D57AAA8E47C948D1D9FC1075BFC2848B5EB1FEBCB757F4A"
+    },
+    "native": {
+      "path": "artifacts/af-final87-7/focused-release-1/loaded-native.json",
+      "sha256": "1B98C85B300B0E98F954A549929E78F58E24B14C0349A9DBFEA769F7CE92E9B8"
+    },
+    "passed": 288,
+    "failed": 3,
+    "skipped": 0,
+    "failures": [
+      {
+        "name": "Cadoryx.Tests.DrawingInspectionTypeFeedbackTests.DefaultTwelveToolsAnd8192ContextBudgetKeepTheExplicitInspectionRequirement(aggressive: True)",
+        "message": "Assert.Contains() Failure: Sub-string not found\r\nString:    \"contract schema; inspect/create/edit/rese\"\u00b7\u00b7\u00b7\r\nNot found: \"Required for inspect\"",
+        "stack": "   at Cadoryx.Tests.DrawingInspectionTypeFeedbackTests.DefaultTwelveToolsAnd8192ContextBudgetKeepTheExplicitInspectionRequirement(Boolean aggressive) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af-final87-7\\workspace\\Cadoryx.Tests\\DrawingInspectionTypeFeedbackTests.cs:line 69\r\n   at System.Reflection.MethodBaseInvoker.InterpretedInvoke_Method(Object obj, IntPtr* args)\r\n   at System.Reflection.MethodBaseInvoker.InvokeDirectByRefWithFewArgs(Object obj, Span`1 copyOfArgs, BindingFlags invokeAttr)"
+      },
+      {
+        "name": "Cadoryx.Tests.AgentEmptyResponseRecoveryTests.RecoveryDirectiveRetainsAllTwelveToolsWithTheOriginalDefaultBudgets(aggressive: True)",
+        "message": "Assert.Equal() Failure: Values differ\r\nExpected: 12\r\nActual:   11",
+        "stack": "   at Cadoryx.Tests.AgentEmptyResponseRecoveryTests.RecoveryDirectiveRetainsAllTwelveToolsWithTheOriginalDefaultBudgets(Boolean aggressive) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af-final87-7\\workspace\\Cadoryx.Tests\\AgentEmptyResponseRecoveryTests.cs:line 137\r\n   at InvokeStub_AgentEmptyResponseRecoveryTests.RecoveryDirectiveRetainsAllTwelveToolsWithTheOriginalDefaultBudgets(Object, Span`1)\r\n   at System.Reflection.RuntimeMethodInfo.Invoke(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)"
+      },
+      {
+        "name": "Cadoryx.Tests.DrawingInspectionTypeFeedbackTests.DefaultTwelveToolsAnd8192ContextBudgetKeepTheExplicitInspectionRequirement(aggressive: False)",
+        "message": "Assert.Contains() Failure: Sub-string not found\r\nString:    \"contract schema; inspect/create/edit/rese\"\u00b7\u00b7\u00b7\r\nNot found: \"Required for inspect\"",
+        "stack": "   at Cadoryx.Tests.DrawingInspectionTypeFeedbackTests.DefaultTwelveToolsAnd8192ContextBudgetKeepTheExplicitInspectionRequirement(Boolean aggressive) in C:\\Users\\yoiri\\source\\repos\\Cadoryx\\artifacts\\af-final87-7\\workspace\\Cadoryx.Tests\\DrawingInspectionTypeFeedbackTests.cs:line 69\r\n   at InvokeStub_DrawingInspectionTypeFeedbackTests.DefaultTwelveToolsAnd8192ContextBudgetKeepTheExplicitInspectionRequirement(Object, Span`1)\r\n   at System.Reflection.MethodBaseInvoker.InvokeWithOneArg(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)"
+      }
+    ],
+    "metadata10Passed": true,
+    "originalNativeMeasurement39Passed": true,
+    "debugStarted": false,
+    "fullStarted": false
+  },
+  "failuresDeferred": false,
+  "assertionsOrBudgetsChanged": false,
+  "STEP24Retried": false,
+  "AFComplete": false
+}
