@@ -1,0 +1,6 @@
+{
+  "managedDuplicateNamesAccepted": true,
+  "STEPStarted": false,
+  "missingDuplicateOccurrenceRejected": true,
+  "scope": "Actual managed transport40 has duplicate truncated display names; offline policy names appended; not root discovery"
+}

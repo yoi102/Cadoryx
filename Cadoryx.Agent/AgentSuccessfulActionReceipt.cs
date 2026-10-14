@@ -10,6 +10,10 @@ internal static class AgentSuccessfulActionReceipt
         "Do not assume its identifiers or repeat completed edits; inspect the current state.";
 
     internal static string? FindLatestCompleteExchange(IReadOnlyList<AiChatMessage> messages)
+        => FindLatestCompleteExchange(messages, (_, content) => IsSuccessfulChange(content));
+
+    internal static string? FindLatestCompleteExchange(IReadOnlyList<AiChatMessage> messages,
+        Func<AiToolCall, string?, bool> matches, int afterResultIndex = -1)
     {
         var user = -1;
         for (var index = messages.Count - 1; index >= 0; index--)
@@ -29,7 +33,8 @@ internal static class AgentSuccessfulActionReceipt
             // A reused call ID cannot identify one exchange unambiguously.
             if (ids.Any(id => messages.Skip(user + 1).Where(m => m.Role == AiChatRole.Assistant)
                     .SelectMany(m => m.ToolCalls ?? []).Count(call => call.Id == id) != 1)) continue;
-            var mutation = results.LastOrDefault(result => IsSuccessfulChange(result.Content));
+            var mutation = results.Where((_, resultIndex) => index + 1 + resultIndex > afterResultIndex)
+                .LastOrDefault(result => matches(calls.Single(call => call.Id == result.ToolCallId), result.Content));
             if (mutation is not null) return mutation.ToolCallId;
         }
         return null;

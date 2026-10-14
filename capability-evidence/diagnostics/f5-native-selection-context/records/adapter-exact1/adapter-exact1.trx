@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TestRun id="4c89e8ff-35c4-4fe2-bc54-761984b082f0" name="yoiri@YOIRI 2026-10-14 10:57:42" runUser="YOIRI\yoiri" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Times creation="2026-10-14T10:57:42.8053157+09:00" queuing="2026-10-14T10:57:42.8053159+09:00" start="2026-10-14T10:57:42.3271561+09:00" finish="2026-10-14T10:57:42.8081463+09:00" />
+  <TestSettings name="default" id="fa86f1f2-872a-4011-8c42-3b866a0746b0">
+    <Deployment runDeploymentRoot="yoiri_YOIRI_2026-10-14_10_57_42" />
+  </TestSettings>
+  <Results>
+    <UnitTestResult executionId="2ff5443e-1e89-4cf4-bd57-4336825ce5ae" testId="55581a00-566c-886a-63fd-10c2161bc2a9" testName="Cadoryx.AdapterProbes.FilterAdapterProbeTests.ExactDisplayNameHandlesStringBooleanDoubleAndEnumSiblings(kind: &quot;spline-g2&quot;, mirror: False, distance: -0.10000000000000001, join: Round)" computerName="YOIRI" duration="00:00:00.0002535" startTime="2026-10-14T10:57:42.7415566+09:00" endTime="2026-10-14T10:57:42.7416059+09:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="2ff5443e-1e89-4cf4-bd57-4336825ce5ae" />
+    <UnitTestResult executionId="aa4883ef-983f-476a-bda7-e41eea0e7699" testId="36f5e7f0-f97f-519c-c3c7-4cbf308b9750" testName="Cadoryx.AdapterProbes.FilterAdapterProbeTests.ExactDisplayNameHandlesStringBooleanDoubleAndEnumSiblings(kind: &quot;line&quot;, mirror: True, distance: 0.10000000000000001, join: Bevel)" computerName="YOIRI" duration="00:00:00.0000070" startTime="2026-10-14T10:57:42.7419016+09:00" endTime="2026-10-14T10:57:42.7419250+09:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="aa4883ef-983f-476a-bda7-e41eea0e7699" />
+    <UnitTestResult executionId="70a134ed-640c-4561-b7c0-d151ca9ad7cb" testId="f6c818ab-01c5-9665-719a-111bdc07aa69" testName="Cadoryx.AdapterProbes.FilterAdapterProbeTests.ExactDisplayNameHandlesStringBooleanDoubleAndEnumSiblings(kind: &quot;spline-g1&quot;, mirror: True, distance: 0.10000000000000001, join: Miter)" computerName="YOIRI" duration="00:00:00.0057232" startTime="2026-10-14T10:57:42.7262440+09:00" endTime="2026-10-14T10:57:42.7360035+09:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="70a134ed-640c-4561-b7c0-d151ca9ad7cb" />
+  </Results>
+  <TestDefinitions>
+    <UnitTest name="Cadoryx.AdapterProbes.FilterAdapterProbeTests.ExactDisplayNameHandlesStringBooleanDoubleAndEnumSiblings(kind: &quot;spline-g2&quot;, mirror: False, distance: -0.10000000000000001, join: Round)" storage="c:\users\yoiri\source\repos\cadoryx\tools\agentselectioncontexttests\bin\release\net10.0\cadoryx.agent.tests.dll" id="55581a00-566c-886a-63fd-10c2161bc2a9">
+      <Execution id="2ff5443e-1e89-4cf4-bd57-4336825ce5ae" />
+      <TestMethod codeBase="C:\Users\yoiri\source\repos\Cadoryx\tools\AgentSelectionContextTests\bin\Release\net10.0\Cadoryx.Agent.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Cadoryx.AdapterProbes.FilterAdapterProbeTests" name="ExactDisplayNameHandlesStringBooleanDoubleAndEnumSiblings" />
+    </UnitTest>
+    <UnitTest name="Cadoryx.AdapterProbes.FilterAdapterProbeTests.ExactDisplayNameHandlesStringBooleanDoubleAndEnumSiblings(kind: &quot;line&quot;, mirror: True, distance: 0.10000000000000001, join: Bevel)" storage="c:\users\yoiri\source\repos\cadoryx\tools\agentselectioncontexttests\bin\release\net10.0\cadoryx.agent.tests.dll" id="36f5e7f0-f97f-519c-c3c7-4cbf308b9750">
+      <Execution id="aa4883ef-983f-476a-bda7-e41eea0e7699" />
+      <TestMethod codeBase="C:\Users\yoiri\source\repos\Cadoryx\tools\AgentSelectionContextTests\bin\Release\net10.0\Cadoryx.Agent.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Cadoryx.AdapterProbes.FilterAdapterProbeTests" name="ExactDisplayNameHandlesStringBooleanDoubleAndEnumSiblings" />
+    </UnitTest>
+    <UnitTest name="Cadoryx.AdapterProbes.FilterAdapterProbeTests.ExactDisplayNameHandlesStringBooleanDoubleAndEnumSiblings(kind: &quot;spline-g1&quot;, mirror: True, distance: 0.10000000000000001, join: Miter)" storage="c:\users\yoiri\source\repos\cadoryx\tools\agentselectioncontexttests\bin\release\net10.0\cadoryx.agent.tests.dll" id="f6c818ab-01c5-9665-719a-111bdc07aa69">
+      <Execution id="70a134ed-640c-4561-b7c0-d151ca9ad7cb" />
+      <TestMethod codeBase="C:\Users\yoiri\source\repos\Cadoryx\tools\AgentSelectionContextTests\bin\Release\net10.0\Cadoryx.Agent.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Cadoryx.AdapterProbes.FilterAdapterProbeTests" name="ExactDisplayNameHandlesStringBooleanDoubleAndEnumSiblings" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestEntries>
+    <TestEntry testId="55581a00-566c-886a-63fd-10c2161bc2a9" executionId="2ff5443e-1e89-4cf4-bd57-4336825ce5ae" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="36f5e7f0-f97f-519c-c3c7-4cbf308b9750" executionId="aa4883ef-983f-476a-bda7-e41eea0e7699" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="f6c818ab-01c5-9665-719a-111bdc07aa69" executionId="70a134ed-640c-4561-b7c0-d151ca9ad7cb" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <ResultSummary outcome="Completed">
+    <Counters total="3" executed="3" passed="3" failed="0" error="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+    <Output>
+      <StdOut>[xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v3.1.5+1b188a7b0a (64-bit .NET 10.0.12)&#xD;
+[xUnit.net 00:00:00.05]   Discovering: Cadoryx.Agent.Tests&#xD;
+[xUnit.net 00:00:00.08]   Discovered:  Cadoryx.Agent.Tests&#xD;
+[xUnit.net 00:00:00.10]   Starting:    Cadoryx.Agent.Tests&#xD;
+[xUnit.net 00:00:00.13]   Finished:    Cadoryx.Agent.Tests&#xD;
+</StdOut>
+    </Output>
+  </ResultSummary>
+</TestRun>

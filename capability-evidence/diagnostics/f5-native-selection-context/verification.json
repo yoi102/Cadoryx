@@ -1,0 +1,117 @@
+{
+  "recordedAt": "2026-10-14T02:06:01.798361+00:00",
+  "state": "MANAGED_NATIVE_READ_RETENTION_45_CORE_PLUS4_ADAPTER_BOTH_TRANSPORT40_BOTH_NOT_PRODUCT_ACCEPTANCE",
+  "regressions": [
+    {
+      "label": "Release",
+      "total": 49,
+      "passed": 49,
+      "failed": 0,
+      "skipped": 0,
+      "trx": {
+        "path": "artifacts/f5-native-selection-context-1/release6/selection-release6.trx",
+        "sha256": "195172C8918545BEC966271311E7FAF92627EEBA404C2654EBB3AA2AADAC87A8"
+      }
+    },
+    {
+      "label": "Debug",
+      "total": 49,
+      "passed": 49,
+      "failed": 0,
+      "skipped": 0,
+      "trx": {
+        "path": "artifacts/f5-native-selection-context-1/debug4/selection-debug4.trx",
+        "sha256": "7F2B6334DB483628E9933747757348E8C9A8FDF982A37E89E96A7DE470AAE4C0"
+      }
+    },
+    {
+      "label": "old-Agent-same-payload",
+      "total": 2,
+      "passed": 0,
+      "failed": 2,
+      "skipped": 0,
+      "trx": {
+        "path": "artifacts/f5-native-selection-context-1/baseline5-results/baseline5.trx",
+        "sha256": "2A570890274676594349AC8516FBCE225BFD99DD4DA9FA6CD18F59F0C745BDBB"
+      }
+    },
+    {
+      "label": "transport-Release",
+      "total": 40,
+      "passed": 40,
+      "failed": 0,
+      "skipped": 0,
+      "trx": {
+        "path": "artifacts/f5-native-selection-context-1/transport-release3/transport-release8.trx",
+        "sha256": "F086D3CE301D98BCACBF1C556BBA6FA875CB2FB9FF4AB7B9C163902F8F693ED0"
+      }
+    },
+    {
+      "label": "transport-Debug",
+      "total": 40,
+      "passed": 40,
+      "failed": 0,
+      "skipped": 0,
+      "trx": {
+        "path": "artifacts/f5-native-selection-context-1/transport-debug3/transport-debug6.trx",
+        "sha256": "051CFC2E2214627F0572CB8D92511B5018A30DC2645C4DCA4D97672E19D3835F"
+      }
+    }
+  ],
+  "coreNewTests": 32,
+  "existingNativePageTests": 13,
+  "adapterOnlyTests": 4,
+  "sameFinalTestPayloadOnlyAgentSwappedBaselineTwoFailures": true,
+  "sharedAgentAndContractsPayloadVerifiedBoth": true,
+  "standaloneNoOcctPayload": true,
+  "sources": [
+    {
+      "path": "Cadoryx.Agent/AgentNativeSelectionReceipt.cs",
+      "sha256": "AEAC29B5AFABE78261CD55406A702AE602760FC4E8467AEA5F34DED152BB3BAA"
+    },
+    {
+      "path": "Cadoryx.Agent/AgentRequestContextBuilder.cs",
+      "sha256": "1989B19597B7DEA0ADB0B91D3B0964AEC42FE5478080E989D08645DA19D40BFE"
+    },
+    {
+      "path": "Cadoryx.Agent/AgentSuccessfulActionReceipt.cs",
+      "sha256": "6728377C7CCB5C13BAC8A12B60E322AA6DBBFDADE7D863CB7217D07E133180A8"
+    },
+    {
+      "path": "Cadoryx.Agent/AgentToolResultCompactor.cs",
+      "sha256": "D42DA13F6529F7AD0842225AA4FDC0E5BCCEA08F44060DAC5A4B37E57037792E"
+    },
+    {
+      "path": "Cadoryx.Tests/AgentNativeSelectionRetentionTests.cs",
+      "sha256": "8F3F39840460F18A8235ED06A3D5AD6D18078FF8E03889FB94DCC4BA2E432AFC"
+    },
+    {
+      "path": "tools/AgentSelectionContextTests/AgentSelectionContextTests.csproj",
+      "sha256": "A4DC2D179CB273455D04ADFE0B84FBCABE862B4F0DE0573D50AF75108EF09E72"
+    },
+    {
+      "path": "tools/CurrentCadCandidate/deferred-step-filter.ps1",
+      "sha256": "BA8F3F2D2DF6DAC25A6AA5595B5863179358FEE99B09FE2395679E81DF9E066A"
+    }
+  ],
+  "fixture": {
+    "path": "Cadoryx.Tests/Fixtures/AgentContext/NativeSelectionRetention/before-request30.json",
+    "sha256": "D7359AF5B050310CD7304F5797DF453E261E6F800165E2FE96C865D70C8D5EB1"
+  },
+  "preservedEarlierFailureLog": {
+    "path": "artifacts/f5-native-selection-context-baseline1.log",
+    "sha256": "65619E7ABE136767C342CC0CF32C248647DBA14E84FDC5F1AB2A64BE4600E564"
+  },
+  "exactSTEP24ExclusionPreparedAndAdapterVerified": true,
+  "currentRootDiscovery": false,
+  "full7192BuiltDiscoveredOrRun": false,
+  "full7192ExpectedOnly": true,
+  "originalModelReplayedThisTurn": false,
+  "nativeWindowOrPerformanceStarted": false,
+  "rootWaitingForFinalDAExplicitReturn": true,
+  "STEP24Retried": false,
+  "D6Accepted": false,
+  "AFComplete": false,
+  "G": "USER_DEFERRED",
+  "cleanup": false
+}

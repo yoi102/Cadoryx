@@ -1,5 +1,7 @@
 # A–F 全量实施跟踪
 
+2026-10-14，status267：[F5来源保留](F5_NATIVE_SELECTION_CONTEXT_RETENTION.md)两配置核心45/45（新32+旧分页13）、适配器4分列及原截断40通过；同最终载荷仅换原Agent的两条真实上下文重放0/2，修后通过。精确STEP24过滤已准备并适配器验，不改断言、不延期其他用例；非延期同名显示项保留完整次数。整应用预计7192未build/发现/运行、实际模型/窗口/性能未启动；原工程图2/8及D6失败保持。SDK final DA仍在资格/消费者设置修正，必须最新明确返还；开发精确87.cu1不变，A–F全部范围及正式A4/B17/C5/D5/E4/F5g保持，G/清理暂缓。以下为历史，以[STATUS](STATUS.md)及终态为准。
+
 2026-10-14，status266：原严格STEP精确24项继续延期，其余A–F继续。[本批F5完整回复与有界恢复](F5_TRUNCATED_RESPONSE_RECOVERY.md)两配置各40/40纯托管、97/97相关测试、完整solution build0；原预算/身份守卫保持，预计7160全量未重跑。最新原工程图2/8后第三轮超16工具轮FAIL、没有截断，实际native62/资产0准确，当前新差异工作区未重跑；D6第二实窗仍FAIL且已取消、没有确认/预览、原快照保持。SDK final DA独占时段已明确交还，旧224返还被防护拒绝；源码/文档工作继续，运行待新明确返还。开发仍精确本地87.cu1，正式已验A4/B17/C5/D5/E4/F5g保持，G及清理暂缓；以下为历史，以[STATUS](STATUS.md)及真实终态为准。
 
 2026-10-14，status253：当前1081/本地86[两配置完整6830](../capability-evidence/diagnostics/af1081-local86/full-verification.json)各6806通过/原24延期失败/零跳过，原名称、实际native62及零新增失败已核对。[Far90修订6](../capability-evidence/diagnostics/af1081-local86/far90-runtime-6-verification.json)各72/18失败，原始BRep不变性修正已验；18个raw-full-near原生体积错误继续保留，尚未接入产品。模型协调25052在真实预启动hold，根经完整终态和实际空闲检查已明确交还SDK CX/CY约30分钟资格时段；SDK明确返回后续原模型。恢复/性能/D6及材质窗口和全部其他A–F继续，G/清理暂缓。以下为历史，当前见[STATUS](STATUS.md)。

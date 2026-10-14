@@ -1,0 +1,9 @@
+{
+  "filter": "FullyQualifiedName~Cadoryx.AdapterProbes&DisplayName!=Cadoryx.AdapterProbes.FilterAdapterProbeTests.ExactDisplayNameHandlesStringBooleanDoubleAndEnumSiblings\\(kind: \"spline-g1\", mirror: False, distance: -0.10000000000000001, join: Bevel\\)",
+  "after": 3,
+  "actualProductOrSTEPCodeStarted": false,
+  "allRemainingSiblingNamesPreserved": true,
+  "before": 4,
+  "probeIsOnlyAdapterIdentity": true,
+  "excluded": "Cadoryx.AdapterProbes.FilterAdapterProbeTests.ExactDisplayNameHandlesStringBooleanDoubleAndEnumSiblings(kind: \"spline-g1\", mirror: False, distance: -0.10000000000000001, join: Bevel)"
+}

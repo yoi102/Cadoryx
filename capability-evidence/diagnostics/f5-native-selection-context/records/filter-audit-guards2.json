@@ -1,0 +1,24 @@
+{
+  "STEPStarted": false,
+  "positiveGuardPassed": true,
+  "scope": "Offline identity list with pure-managed43 TRX; not root discovery",
+  "negativeGuards": [
+    {
+      "fault": "missing-deferred",
+      "error": "Current discovery is missing or ambiguously repeats an exact deferred case; do not guess or exclude a method"
+    },
+    {
+      "fault": "ambiguous-deferred",
+      "error": "Current discovery is missing or ambiguously repeats an exact deferred case; do not guess or exclude a method"
+    },
+    {
+      "fault": "extra-nondeferred",
+      "error": "Executed names differ from current discovery minus exactly the user-deferred24"
+    },
+    {
+      "fault": "failed-process",
+      "error": "Nondeferred regression process failed; inspect actual failures"
+    }
+  ],
+  "helperSHA256": "BA8F3F2D2DF6DAC25A6AA5595B5863179358FEE99B09FE2395679E81DF9E066A"
+}

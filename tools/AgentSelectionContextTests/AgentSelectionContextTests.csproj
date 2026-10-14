@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup><IsTestProject>true</IsTestProject><IsPackable>false</IsPackable><AssemblyName>Cadoryx.Agent.Tests</AssemblyName></PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="../../Cadoryx.Agent/Cadoryx.Agent.csproj" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.14.1" />
+    <PackageReference Include="xunit" Version="2.9.3" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="3.1.5" PrivateAssets="all" />
+    <Compile Include="../../Cadoryx.Tests/AgentNativeSelectionRetentionTests.cs" Link="AgentNativeSelectionRetentionTests.cs" />
+    <Compile Include="../../Cadoryx.Tests/NativeCompleteSourceContextTests.cs" Link="NativeCompleteSourceContextTests.cs" />
+    <None Include="../../Cadoryx.Tests/Fixtures/AgentContext/NativeSelectionRetention/**" Link="Fixtures/AgentContext/NativeSelectionRetention/%(RecursiveDir)%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="../../Cadoryx.Tests/Fixtures/AgentContext/NativeSelectionPage.json" Link="Fixtures/AgentContext/NativeSelectionPage.json" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+</Project>

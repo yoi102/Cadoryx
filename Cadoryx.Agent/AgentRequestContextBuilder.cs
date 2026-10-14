@@ -91,6 +91,8 @@ internal static class AgentRequestContextBuilder
             return [];
 
         var protectedCallId = AgentSuccessfulActionReceipt.FindLatestCompleteExchange(conversation);
+        var nativeCallId = AgentNativeSelectionReceipt.FindLatestCompleteExchange(conversation);
+        var protectedCallIds = new[] { protectedCallId, nativeCallId }.OfType<string>().ToHashSet(StringComparer.Ordinal);
         var uniqueCalls = conversation.Where(message => message.Role == AiChatRole.Assistant)
             .SelectMany(message => message.ToolCalls ?? []).GroupBy(call => call.Id, StringComparer.Ordinal)
             .Where(group => group.Count() == 1).ToDictionary(group => group.Key, group => group.Single(), StringComparer.Ordinal);
@@ -121,11 +123,16 @@ internal static class AgentRequestContextBuilder
         }
 
         var selected = compacted[selectedStart..].ToList();
-        TrimHistoryToBudget(selected, tokenBudget, protectedCallId);
+        TrimHistoryToBudget(selected, tokenBudget, protectedCallIds);
+        var omitted = new List<string>();
         if (protectedCallId is not null && !AgentSuccessfulActionReceipt.ContainsExchange(selected, protectedCallId))
+            omitted.Add(AgentSuccessfulActionReceipt.OmittedExchangeMarker);
+        if (nativeCallId is not null && !AgentSuccessfulActionReceipt.ContainsExchange(selected, nativeCallId))
+            omitted.Add(AgentNativeSelectionReceipt.OmittedExchangeMarker);
+        if (omitted.Count > 0)
         {
             // This is context-compaction metadata, not a replacement tool receipt.
-            var marker = AiChatMessage.System(AgentSuccessfulActionReceipt.OmittedExchangeMarker);
+            var marker = AiChatMessage.System(string.Join("\n", omitted));
             var markerCost = EstimateMessageTokens(marker);
             if (markerCost <= tokenBudget)
             {
@@ -137,7 +144,7 @@ internal static class AgentRequestContextBuilder
         return NormalizeToolMessages(selected);
     }
 
-    private static void TrimHistoryToBudget(List<AiChatMessage> selected, int tokenBudget, string? protectedCallId = null)
+    private static void TrimHistoryToBudget(List<AiChatMessage> selected, int tokenBudget, IReadOnlySet<string>? protectedCallIds = null)
     {
         while (selected.Count > 0 && selected.Sum(EstimateMessageTokens) > tokenBudget)
         {
@@ -149,7 +156,7 @@ internal static class AgentRequestContextBuilder
             }
 
             var assistant = selected.FindIndex(1, message => message.Role == AiChatRole.Assistant &&
-                (protectedCallId is null || message.ToolCalls?.Any(call => call.Id == protectedCallId) != true));
+                (protectedCallIds is null || message.ToolCalls?.Any(call => protectedCallIds.Contains(call.Id)) != true));
             // When the complete protected exchange cannot fit even on its own,
             // retain the original bounded fallback and report its omission.
             if (assistant < 0)

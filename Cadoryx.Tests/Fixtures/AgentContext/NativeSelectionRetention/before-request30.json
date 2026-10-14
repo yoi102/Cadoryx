@@ -1,0 +1,1845 @@
+{
+  "SystemPrompt": "CAD assistant. Inspect exact state before edits. Read cad_drawing contract for strict authors; copy actual native selections. Only claim success after actual receipts.",
+  "ContextWindowTokens": 8192,
+  "Messages": [
+    {
+      "Role": 1,
+      "Content": "Read cad_drawing contract and cad_status, then use cad_drawing action=create,type=sheet to create exactly one sheet named Provider Drawing. Use contract(sheet) for authorJson. Author: name=Provider Drawing,widthMm=297,heightMm=210,unit=Millimeter,title=Provider Drawing,standard=ISO. A manufacturing template is not required. Do not create views yet.",
+      "ToolCalls": null,
+      "ToolCallId": null,
+      "ContentParts": null
+    },
+    {
+      "Role": 2,
+      "Content": "",
+      "ToolCalls": [
+        {
+          "Id": "vfQk2qWKilWt1G0eWXV2BlelXn5dgH4S",
+          "Name": "cad_workspace",
+          "ArgumentsJson": "{\"action\":\"list\",\"expected\":{\"workspaceStateId\":\"00000000-0000-0000-0000-000000000000\",\"activeSessionId\":null,\"documentId\":null,\"stateId\":null}}"
+        }
+      ]
+    },
+    {
+      "Role": 3,
+      "Content": "{\"success\":false,\"message\":\"Workspace authoring is unavailable in this context.\"}",
+      "ToolCallId": "vfQk2qWKilWt1G0eWXV2BlelXn5dgH4S"
+    },
+    {
+      "Role": 2,
+      "Content": "",
+      "ToolCalls": [
+        {
+          "Id": "qfp7xSw9nHsQqHAeZwVwQiVnwUZndws6",
+          "Name": "cad_status",
+          "ArgumentsJson": "{}"
+        }
+      ]
+    },
+    {
+      "Role": 3,
+      "Content": "{\"active\":true,\"name\":\"Synthetic drawing provider\",\"documentId\":\"15049495-397f-465f-98f6-27c190e0698e\",\"stateId\":\"1ded8bfc-d371-4a34-ba76-41e04ab82320\",\"bodies\":1,\"parts\":1,\"features\":2,\"sketches\":0,\"drawings\":0,\"selected\":0,\"commands\":[\"DATUM CONTRACT | {action-specific JSON} | DELETE|DETACH id revision | BIND_SKETCH|UNBIND_SKETCH sketch-id sketch-revision datum-id datum-revision | BIND_WORKPLANE|UNBIND_WORKPLANE datum-id datum-revision exact-path | SOURCES feature-id revision [offset limit]\",\"MODEL {action,partId/name or id/revision,author JSON} | CONTRACT recipe-type [offset limit]\",\"DRAWING CONTRACT [type] | DRAWING {action,type,sheetId,id,author}\",\"FILE CONTRACT | {action:save/export/report/pdf/template_export,path,overwrite?,options?,id?}\",\"MATERIAL {action-specific JSON}\",\"SKETCH_REGION_SOURCES {action:reselect_region_sources,sketchId,revision,id,sources}\",\"SKETCH_OFFSET {action,sketchId,revision,seeds,distanceMm,optional join}\",\"SKETCH_FINITE_CONTACT {action-specific JSON}\",\"SKETCH_CURVATURE {action,id,revision,curveA,curveB,optional constraintId/enabled}\",\"SKETCH_CONTACT {action,id,revision,curveA,curveB,branch,optional constraintId/enabled}\",\"PARAMETERS [offset limit]\",\"BINDINGS [offset limit]\",\"TARGETS [offset limit]\",\"DATUMS [offset limit]\",\"DATUM_BINDINGS [offset limit]\",\"RECIPES [offset limit]\",\"SKETCH_GEOMETRY [offset limit]\",\"ASSEMBLY_PATTERNS [offset limit]\",\"TIMELINE part-id [offset limit]\",\"PARAM SET NEW|id name SCALAR|LENGTH|ANGLE \\u0022expression\\u0022 | DELETE id | BIND parameter-id kind owner-id property [companion-id [index]] | UNBIND binding-id | RECOMPUTE\",\"HELP [command]\",\"CLEAR\",\"STATUS\",\"STATS\",\"LIST\",\"FIND name\",\"SELECTION\",\"PARTS\",\"FEATURES\",\"LAYERS\",\"MATERIALS\",\"SKETCHES\",\"DRAWINGS\",\"OCCURRENCES\",\"SELECT exact-name\",\"UNDO\",\"REDO\",\"FIT\",\"VIEW TOP|FRONT|RIGHT|BACK|LEFT|BOTTOM|ISO\",\"DESELECT\",\"FOCUS\",\"ISOLATE\",\"HIDE\",\"SHOWALL\",\"DISPLAY [SHADED|WIREFRAME]\",\"GRID [ON|OFF|SPACING mm|SNAP ON|OFF]\",\"TOOL BOX|CYLINDER\",\"CANCEL\",\"BOX name width depth height [x y z]\",\"CYLINDER name radius height [x y z]\"],\"commandTools\":{\"HISTORY\":\"cad_history\",\"WORKSPACE\":\"cad_workspace\",\"WS\":\"cad_workspace\"}}",
+      "ToolCallId": "qfp7xSw9nHsQqHAeZwVwQiVnwUZndws6"
+    },
+    {
+      "Role": 2,
+      "Content": "",
+      "ToolCalls": [
+        {
+          "Id": "UMMJB4cDQ5dS2QffpwJfWQkYp8ONbk0B",
+          "Name": "cad_drawing",
+          "ArgumentsJson": "{\"action\":\"contract\",\"type\":\"sheet\"}"
+        }
+      ]
+    },
+    {
+      "Role": 3,
+      "Content": "{\"success\":true,\"type\":\"sheet\",\"authorSchema\":{\"$ref\":\"#/$defs/DrawingSheetAuthor\"},\"$defs\":{\"DrawingSheetAuthor\":{\"type\":\"object\",\"properties\":{\"name\":{\"type\":\"string\",\"maxLength\":8192},\"widthMm\":{\"type\":\"number\",\"minimum\":-1000000,\"maximum\":1000000},\"heightMm\":{\"type\":\"number\",\"minimum\":-1000000,\"maximum\":1000000},\"unit\":{\"type\":\"string\",\"enum\":[\"Millimeter\",\"Centimeter\",\"Meter\",\"Inch\"]},\"title\":{\"type\":\"string\",\"maxLength\":8192},\"standard\":{\"type\":\"string\",\"enum\":[\"ISO\",\"GB\",\"ASME\"]},\"author\":{\"anyOf\":[{\"type\":\"string\",\"maxLength\":8192},{\"type\":\"null\"}]},\"template\":{\"anyOf\":[{\"$ref\":\"#/$defs/DrawingSheetTemplate\"},{\"type\":\"null\"}]}},\"required\":[\"name\",\"widthMm\",\"heightMm\",\"unit\",\"title\"],\"additionalProperties\":false},\"DrawingSheetTemplate\":{\"type\":\"object\",\"properties\":{\"paper\":{\"type\":\"string\",\"enum\":[\"Custom\",\"A4\",\"A3\",\"A2\",\"A1\",\"A0\",\"AnsiA\",\"AnsiB\",\"AnsiC\",\"AnsiD\",\"AnsiE\"]},\"landscape\":{\"type\":\"boolean\"},\"projection\":{\"type\":\"string\",\"enum\":[\"FirstAngle\",\"ThirdAngle\"]},\"language\":{\"type\":\"string\",\"enum\":[\"English\",\"Chinese\",\"Japanese\"]},\"margins\":{\"$ref\":\"#/$defs/DrawingFrameMargins\"},\"titleBlock\":{\"$ref\":\"#/$defs/DrawingTitleBlock\"},\"customFields\":{\"type\":\"array\",\"items\":{\"$ref\":\"#/$defs/DrawingCustomField\"},\"maxItems\":1050},\"notes\":{\"type\":\"array\",\"items\":{\"$ref\":\"#/$defs/DrawingManufacturingNote\"},\"maxItems\":1050},\"zones\":{\"anyOf\":[{\"$ref\":\"#/$defs/DrawingFrameZones\"},{\"type\":\"null\"}]}},\"required\":[\"paper\",\"landscape\",\"projection\",\"language\",\"margins\",\"titleBlock\"],\"additionalProperties\":false},\"DrawingFrameMargins\":{\"type\":\"object\",\"properties\":{\"left\":{\"type\":\"number\",\"minimum\":-1000000,\"maximum\":1000000},\"top\":{\"type\":\"number\",\"minimum\":-1000000,\"maximum\":1000000},\"right\":{\"type\":\"number\",\"minimum\":-1000000,\"maximum\":1000000},\"bottom\":{\"type\":\"number\",\"minimum\":-1000000,\"maximum\":1000000}},\"required\":[],\"additionalProperties\":false},\"DrawingTitleBlock\":{\"type\":\"object\",\"properties\":{\"drawingNumber\":{\"type\":\"string\",\"maxLength\":8192},\"revision\":{\"type\":\"string\",\"maxLength\":8192},\"organization\":{\"type\":\"string\",\"maxLength\":8192},\"material\":{\"type\":\"string\",\"maxLength\":8192},\"surfaceFinish\":{\"type\":\"string\",\"maxLength\":8192},\"generalTolerance\":{\"type\":\"string\",\"maxLength\":8192},\"drawnBy\":{\"type\":\"string\",\"maxLength\":8192},\"checkedBy\":{\"type\":\"string\",\"maxLength\":8192},\"approvedBy\":{\"type\":\"string\",\"maxLength\":8192},\"issueDate\":{\"type\":\"string\",\"maxLength\":8192}},\"required\":[],\"additionalProperties\":false},\"DrawingCustomField\":{\"type\":\"object\",\"properties\":{\"id\":{\"type\":\"string\",\"format\":\"uuid\",\"minLength\":36,\"maxLength\":36},\"caption\":{\"type\":\"string\",\"maxLength\":8192},\"value\":{\"type\":\"string\",\"maxLength\":8192},\"positionMm\":{\"$ref\":\"#/$defs/Point2d\"},\"widthMm\":{\"type\":\"number\",\"minimum\":-1000000,\"maximum\":1000000},\"heightMm\":{\"type\":\"number\",\"minimum\":-1000000,\"maximum\":1000000}},\"required\":[\"id\",\"caption\",\"value\",\"positionMm\",\"widthMm\"],\"additionalProperties\":false},\"Point2d\":{\"type\":\"object\",\"properties\":{\"x\":{\"type\":\"number\",\"minimum\":-1000000,\"maximum\":1000000},\"y\":{\"type\":\"number\",\"minimum\":-1000000,\"maximum\":1000000}},\"required\":[\"x\",\"y\"],\"additionalProperties\":false},\"DrawingManufacturingNote\":{\"type\":\"object\",\"properties\":{\"id\":{\"type\":\"string\",\"format\":\"uuid\",\"minLength\":36,\"maxLength\":36},\"text\":{\"type\":\"string\",\"maxLength\":8192},\"positionMm\":{\"$ref\":\"#/$defs/Point2d\"},\"widthMm\":{\"type\":\"number\",\"minimum\":-1000000,\"maximum\":1000000}},\"required\":[\"id\",\"text\",\"positionMm\",\"widthMm\"],\"additionalProperties\":false},\"DrawingFrameZones\":{\"type\":\"object\",\"properties\":{\"columns\":{\"type\":\"integer\",\"minimum\":-1000000,\"maximum\":1000000},\"rows\":{\"type\":\"integer\",\"minimum\":-1000000,\"maximum\":1000000},\"reverseColumns\":{\"type\":\"boolean\"},\"reverseRows\":{\"type\":\"boolean\"}},\"required\":[],\"additionalProperties\":false}},\"notes\":\"Pure author input only. Omitted optional nullable fields clear them. For control frames datumSystem is ordered; for planar features opposite and internalWidth are explicit; hole coordinates use frame OR coordinates(binding,revisions). New hole rows omit id; existing rows copy their exact id. View SourcePath is creation/reselect only.\"}",
+      "ToolCallId": "UMMJB4cDQ5dS2QffpwJfWQkYp8ONbk0B"
+    },
+    {
+      "Role": 2,
+      "Content": "",
+      "ToolCalls": [
+        {
+          "Id": "YTfRSce0EMI4EcXORllihMrUGZJGuB8U",
+          "Name": "cad_drawing",
+          "ArgumentsJson": "{\"action\":\"create\",\"documentId\":\"15049495-397f-465f-98f6-27c190e0698e\",\"stateId\":\"1ded8bfc-d371-4a34-ba76-41e04ab82320\",\"type\":\"sheet\",\"authorJson\":\"{\\\"name\\\":\\\"Provider Drawing\\\",\\\"widthMm\\\":297,\\\"heightMm\\\":210,\\\"unit\\\":\\\"Millimeter\\\",\\\"title\\\":\\\"Provider Drawing\\\",\\\"standard\\\":\\\"ISO\\\"}\"}"
+        }
+      ]
+    },
+    {
+      "Role": 3,
+      "Content": "{\"success\":true,\"action\":\"create\",\"changed\":true,\"id\":\"86ae58c9-3f6a-45d6-8aee-211f3204070d\",\"documentId\":\"15049495-397f-465f-98f6-27c190e0698e\",\"stateId\":\"814f273d-afa5-4ef7-b2de-554eb9efa83c\",\"createdIds\":[\"86ae58c9-3f6a-45d6-8aee-211f3204070d\"]}",
+      "ToolCallId": "YTfRSce0EMI4EcXORllihMrUGZJGuB8U"
+    },
+    {
+      "Role": 2,
+      "Content": "",
+      "ToolCalls": [
+        {
+          "Id": "2UhyEqu4LAhsil6mTY4Qawl7SHRF7r3z",
+          "Name": "cad_status",
+          "ArgumentsJson": "{}"
+        }
+      ]
+    },
+    {
+      "Role": 3,
+      "Content": "{\"active\":true,\"name\":\"Synthetic drawing provider\",\"documentId\":\"15049495-397f-465f-98f6-27c190e0698e\",\"stateId\":\"814f273d-afa5-4ef7-b2de-554eb9efa83c\",\"bodies\":1,\"parts\":1,\"features\":2,\"sketches\":0,\"drawings\":1,\"selected\":0,\"commands\":[\"DATUM CONTRACT | {action-specific JSON} | DELETE|DETACH id revision | BIND_SKETCH|UNBIND_SKETCH sketch-id sketch-revision datum-id datum-revision | BIND_WORKPLANE|UNBIND_WORKPLANE datum-id datum-revision exact-path | SOURCES feature-id revision [offset limit]\",\"MODEL {action,partId/name or id/revision,author JSON} | CONTRACT recipe-type [offset limit]\",\"DRAWING CONTRACT [type] | DRAWING {action,type,sheetId,id,author}\",\"FILE CONTRACT | {action:save/export/report/pdf/template_export,path,overwrite?,options?,id?}\",\"MATERIAL {action-specific JSON}\",\"SKETCH_REGION_SOURCES {action:reselect_region_sources,sketchId,revision,id,sources}\",\"SKETCH_OFFSET {action,sketchId,revision,seeds,distanceMm,optional join}\",\"SKETCH_FINITE_CONTACT {action-specific JSON}\",\"SKETCH_CURVATURE {action,id,revision,curveA,curveB,optional constraintId/enabled}\",\"SKETCH_CONTACT {action,id,revision,curveA,curveB,branch,optional constraintId/enabled}\",\"PARAMETERS [offset limit]\",\"BINDINGS [offset limit]\",\"TARGETS [offset limit]\",\"DATUMS [offset limit]\",\"DATUM_BINDINGS [offset limit]\",\"RECIPES [offset limit]\",\"SKETCH_GEOMETRY [offset limit]\",\"ASSEMBLY_PATTERNS [offset limit]\",\"TIMELINE part-id [offset limit]\",\"PARAM SET NEW|id name SCALAR|LENGTH|ANGLE \\u0022expression\\u0022 | DELETE id | BIND parameter-id kind owner-id property [companion-id [index]] | UNBIND binding-id | RECOMPUTE\",\"HELP [command]\",\"CLEAR\",\"STATUS\",\"STATS\",\"LIST\",\"FIND name\",\"SELECTION\",\"PARTS\",\"FEATURES\",\"LAYERS\",\"MATERIALS\",\"SKETCHES\",\"DRAWINGS\",\"OCCURRENCES\",\"SELECT exact-name\",\"UNDO\",\"REDO\",\"FIT\",\"VIEW TOP|FRONT|RIGHT|BACK|LEFT|BOTTOM|ISO\",\"DESELECT\",\"FOCUS\",\"ISOLATE\",\"HIDE\",\"SHOWALL\",\"DISPLAY [SHADED|WIREFRAME]\",\"GRID [ON|OFF|SPACING mm|SNAP ON|OFF]\",\"TOOL BOX|CYLINDER\",\"CANCEL\",\"BOX name width depth height [x y z]\",\"CYLINDER name radius height [x y z]\"],\"commandTools\":{\"HISTORY\":\"cad_history\",\"WORKSPACE\":\"cad_workspace\",\"WS\":\"cad_workspace\"}}",
+      "ToolCallId": "2UhyEqu4LAhsil6mTY4Qawl7SHRF7r3z"
+    },
+    {
+      "Role": 2,
+      "Content": "Sheet created successfully:\n\n**Sheet Details:**\n- **Name:** Provider Drawing\n- **Width:** 297 mm\n- **Height:** 210 mm\n- **Unit:** Millimeter\n- **Title:** Provider Drawing\n- **Standard:** ISO\n- **Sheet ID:** `86ae58c9-3f6a-45d6-8aee-211f3204070d`\n\n**Document State:**\n- **Document ID:** `15049495-397f-465f-98f6-27c190e0698e`\n- **State ID:** `814f273d-afa5-4ef7-b2de-554eb9efa83c`\n\nNo views were created as requested. The sheet is ready for further drawing operations.",
+      "ToolCalls": []
+    },
+    {
+      "Role": 1,
+      "Content": "Use cad_status and cad_drawing contract(view), then create exactly one Top view named Top in sheetId 86ae58c9-3f6a-45d6-8aee-211f3204070d. authorJson: name=Top,kind=Top,centerMm={x:80,y:60},scale=2. No other objects.",
+      "ToolCalls": null,
+      "ToolCallId": null,
+      "ContentParts": null
+    },
+    {
+      "Role": 2,
+      "Content": "",
+      "ToolCalls": [
+        {
+          "Id": "uBV2tAstD6vhA93WHAP8Za6xeloi6Kid",
+          "Name": "cad_status",
+          "ArgumentsJson": "{}"
+        }
+      ]
+    },
+    {
+      "Role": 3,
+      "Content": "{\"active\":true,\"name\":\"Synthetic drawing provider\",\"documentId\":\"15049495-397f-465f-98f6-27c190e0698e\",\"stateId\":\"814f273d-afa5-4ef7-b2de-554eb9efa83c\",\"bodies\":1,\"parts\":1,\"features\":2,\"sketches\":0,\"drawings\":1,\"selected\":0,\"commands\":[\"DATUM CONTRACT | {action-specific JSON} | DELETE|DETACH id revision | BIND_SKETCH|UNBIND_SKETCH sketch-id sketch-revision datum-id datum-revision | BIND_WORKPLANE|UNBIND_WORKPLANE datum-id datum-revision exact-path | SOURCES feature-id revision [offset limit]\",\"MODEL {action,partId/name or id/revision,author JSON} | CONTRACT recipe-type [offset limit]\",\"DRAWING CONTRACT [type] | DRAWING {action,type,sheetId,id,author}\",\"FILE CONTRACT | {action:save/export/report/pdf/template_export,path,overwrite?,options?,id?}\",\"MATERIAL {action-specific JSON}\",\"SKETCH_REGION_SOURCES {action:reselect_region_sources,sketchId,revision,id,sources}\",\"SKETCH_OFFSET {action,sketchId,revision,seeds,distanceMm,optional join}\",\"SKETCH_FINITE_CONTACT {action-specific JSON}\",\"SKETCH_CURVATURE {action,id,revision,curveA,curveB,optional constraintId/enabled}\",\"SKETCH_CONTACT {action,id,revision,curveA,curveB,branch,optional constraintId/enabled}\",\"PARAMETERS [offset limit]\",\"BINDINGS [offset limit]\",\"TARGETS [offset limit]\",\"DATUMS [offset limit]\",\"DATUM_BINDINGS [offset limit]\",\"RECIPES [offset limit]\",\"SKETCH_GEOMETRY [offset limit]\",\"ASSEMBLY_PATTERNS [offset limit]\",\"TIMELINE part-id [offset limit]\",\"PARAM SET NEW|id name SCALAR|LENGTH|ANGLE \\u0022expression\\u0022 | DELETE id | BIND parameter-id kind owner-id property [companion-id [index]] | UNBIND binding-id | RECOMPUTE\",\"HELP [command]\",\"CLEAR\",\"STATUS\",\"STATS\",\"LIST\",\"FIND name\",\"SELECTION\",\"PARTS\",\"FEATURES\",\"LAYERS\",\"MATERIALS\",\"SKETCHES\",\"DRAWINGS\",\"OCCURRENCES\",\"SELECT exact-name\",\"UNDO\",\"REDO\",\"FIT\",\"VIEW TOP|FRONT|RIGHT|BACK|LEFT|BOTTOM|ISO\",\"DESELECT\",\"FOCUS\",\"ISOLATE\",\"HIDE\",\"SHOWALL\",\"DISPLAY [SHADED|WIREFRAME]\",\"GRID [ON|OFF|SPACING mm|SNAP ON|OFF]\",\"TOOL BOX|CYLINDER\",\"CANCEL\",\"BOX name width depth height [x y z]\",\"CYLINDER name radius height [x y z]\"],\"commandTools\":{\"HISTORY\":\"cad_history\",\"WORKSPACE\":\"cad_workspace\",\"WS\":\"cad_workspace\"}}",
+      "ToolCallId": "uBV2tAstD6vhA93WHAP8Za6xeloi6Kid"
+    },
+    {
+      "Role": 2,
+      "Content": "",
+      "ToolCalls": [
+        {
+          "Id": "jSqPKOch6OQOtK41B0CDa2dRK54aLwyY",
+          "Name": "cad_drawing",
+          "ArgumentsJson": "{\"action\":\"contract\",\"type\":\"view\"}"
+        }
+      ]
+    },
+    {
+      "Role": 3,
+      "Content": "{\"success\":true,\"type\":\"view\",\"authorSchema\":{\"$ref\":\"#/$defs/DrawingViewAuthor\"},\"$defs\":{\"DrawingViewAuthor\":{\"type\":\"object\",\"properties\":{\"name\":{\"type\":\"string\",\"maxLength\":8192},\"kind\":{\"type\":\"string\",\"enum\":[\"Front\",\"Top\",\"Right\",\"Isometric\",\"Section\",\"Detail\"]},\"centerMm\":{\"$ref\":\"#/$defs/Point2d\"},\"scale\":{\"type\":\"number\",\"minimum\":-1000000,\"maximum\":1000000},\"parentView\":{\"anyOf\":[{\"type\":\"string\",\"format\":\"uuid\",\"minLength\":36,\"maxLength\":36},{\"type\":\"null\"}]},\"sourcePath\":{\"anyOf\":[{\"type\":\"string\",\"maxLength\":8192},{\"type\":\"null\"}]},\"sectionNormal\":{\"anyOf\":[{\"$ref\":\"#/$defs/Vector3d\"},{\"type\":\"null\"}]},\"sectionOffsetMm\":{\"type\":\"number\",\"minimum\":-1000000,\"maximum\":1000000},\"detailCenter\":{\"anyOf\":[{\"$ref\":\"#/$defs/Point2d\"},{\"type\":\"null\"}]},\"detailRadius\":{\"type\":\"number\",\"minimum\":-1000000,\"maximum\":1000000},\"hatching\":{\"anyOf\":[{\"$ref\":\"#/$defs/DrawingSectionHatching\"},{\"type\":\"null\"}]}},\"required\":[\"name\",\"kind\",\"centerMm\",\"scale\"],\"additionalProperties\":false},\"Point2d\":{\"type\":\"object\",\"properties\":{\"x\":{\"type\":\"number\",\"minimum\":-1000000,\"maximum\":1000000},\"y\":{\"type\":\"number\",\"minimum\":-1000000,\"maximum\":1000000}},\"required\":[\"x\",\"y\"],\"additionalProperties\":false},\"Vector3d\":{\"type\":\"object\",\"properties\":{\"x\":{\"type\":\"number\",\"minimum\":-1000000,\"maximum\":1000000},\"y\":{\"type\":\"number\",\"minimum\":-1000000,\"maximum\":1000000},\"z\":{\"type\":\"number\",\"minimum\":-1000000,\"maximum\":1000000}},\"required\":[\"x\",\"y\",\"z\"],\"additionalProperties\":false},\"DrawingSectionHatching\":{\"type\":\"object\",\"properties\":{\"default\":{\"$ref\":\"#/$defs/DrawingHatchStyle\"},\"alternateSources\":{\"type\":\"boolean\"},\"materials\":{\"type\":\"array\",\"items\":{\"$ref\":\"#/$defs/DrawingMaterialHatch\"},\"maxItems\":1050}},\"required\":[\"default\"],\"additionalProperties\":false},\"DrawingHatchStyle\":{\"type\":\"object\",\"properties\":{\"angleDegrees\":{\"type\":\"number\",\"minimum\":-1000000,\"maximum\":1000000},\"spacingMm\":{\"type\":\"number\",\"minimum\":-1000000,\"maximum\":1000000},\"enabled\":{\"type\":\"boolean\"}},\"required\":[],\"additionalProperties\":false},\"DrawingMaterialHatch\":{\"type\":\"object\",\"properties\":{\"material\":{\"type\":\"string\",\"format\":\"uuid\",\"minLength\":36,\"maxLength\":36},\"style\":{\"$ref\":\"#/$defs/DrawingHatchStyle\"}},\"required\":[\"material\",\"style\"],\"additionalProperties\":false}},\"notes\":\"Pure author input only. Omitted optional nullable fields clear them. For control frames datumSystem is ordered; for planar features opposite and internalWidth are explicit; hole coordinates use frame OR coordinates(binding,revisions). New hole rows omit id; existing rows copy their exact id. View SourcePath is creation/reselect only.\"}",
+      "ToolCallId": "jSqPKOch6OQOtK41B0CDa2dRK54aLwyY"
+    },
+    {
+      "Role": 2,
+      "Content": "",
+      "ToolCalls": [
+        {
+          "Id": "Td7JSUPjzN7B3xfOZwH1ORZGXarDiU3h",
+          "Name": "cad_drawing",
+          "ArgumentsJson": "{\"action\":\"create\",\"documentId\":\"15049495-397f-465f-98f6-27c190e0698e\",\"stateId\":\"814f273d-afa5-4ef7-b2de-554eb9efa83c\",\"sheetId\":\"86ae58c9-3f6a-45d6-8aee-211f3204070d\",\"type\":\"view\",\"authorJson\":\"{\\\"name\\\":\\\"Top\\\",\\\"kind\\\":\\\"Top\\\",\\\"centerMm\\\":{\\\"x\\\":80,\\\"y\\\":60},\\\"scale\\\":2}\"}"
+        }
+      ]
+    },
+    {
+      "Role": 3,
+      "Content": "{\"success\":true,\"action\":\"create\",\"changed\":true,\"id\":\"de015e8c-bba0-441f-8eca-87b8658fd1b0\",\"documentId\":\"15049495-397f-465f-98f6-27c190e0698e\",\"stateId\":\"4de4d223-6526-4caa-9906-d14279e6e9f3\",\"createdIds\":[\"de015e8c-bba0-441f-8eca-87b8658fd1b0\"]}",
+      "ToolCallId": "Td7JSUPjzN7B3xfOZwH1ORZGXarDiU3h"
+    },
+    {
+      "Role": 2,
+      "Content": "",
+      "ToolCalls": [
+        {
+          "Id": "0EF97k4bKgKnyUEMWzKalUT00XhzmNak",
+          "Name": "cad_status",
+          "ArgumentsJson": "{}"
+        }
+      ]
+    },
+    {
+      "Role": 3,
+      "Content": "{\"active\":true,\"name\":\"Synthetic drawing provider\",\"documentId\":\"15049495-397f-465f-98f6-27c190e0698e\",\"stateId\":\"4de4d223-6526-4caa-9906-d14279e6e9f3\",\"bodies\":1,\"parts\":1,\"features\":2,\"sketches\":0,\"drawings\":1,\"selected\":0,\"commands\":[\"DATUM CONTRACT | {action-specific JSON} | DELETE|DETACH id revision | BIND_SKETCH|UNBIND_SKETCH sketch-id sketch-revision datum-id datum-revision | BIND_WORKPLANE|UNBIND_WORKPLANE datum-id datum-revision exact-path | SOURCES feature-id revision [offset limit]\",\"MODEL {action,partId/name or id/revision,author JSON} | CONTRACT recipe-type [offset limit]\",\"DRAWING CONTRACT [type] | DRAWING {action,type,sheetId,id,author}\",\"FILE CONTRACT | {action:save/export/report/pdf/template_export,path,overwrite?,options?,id?}\",\"MATERIAL {action-specific JSON}\",\"SKETCH_REGION_SOURCES {action:reselect_region_sources,sketchId,revision,id,sources}\",\"SKETCH_OFFSET {action,sketchId,revision,seeds,distanceMm,optional join}\",\"SKETCH_FINITE_CONTACT {action-specific JSON}\",\"SKETCH_CURVATURE {action,id,revision,curveA,curveB,optional constraintId/enabled}\",\"SKETCH_CONTACT {action,id,revision,curveA,curveB,branch,optional constraintId/enabled}\",\"PARAMETERS [offset limit]\",\"BINDINGS [offset limit]\",\"TARGETS [offset limit]\",\"DATUMS [offset limit]\",\"DATUM_BINDINGS [offset limit]\",\"RECIPES [offset limit]\",\"SKETCH_GEOMETRY [offset limit]\",\"ASSEMBLY_PATTERNS [offset limit]\",\"TIMELINE part-id [offset limit]\",\"PARAM SET NEW|id name SCALAR|LENGTH|ANGLE \\u0022expression\\u0022 | DELETE id | BIND parameter-id kind owner-id property [companion-id [index]] | UNBIND binding-id | RECOMPUTE\",\"HELP [command]\",\"CLEAR\",\"STATUS\",\"STATS\",\"LIST\",\"FIND name\",\"SELECTION\",\"PARTS\",\"FEATURES\",\"LAYERS\",\"MATERIALS\",\"SKETCHES\",\"DRAWINGS\",\"OCCURRENCES\",\"SELECT exact-name\",\"UNDO\",\"REDO\",\"FIT\",\"VIEW TOP|FRONT|RIGHT|BACK|LEFT|BOTTOM|ISO\",\"DESELECT\",\"FOCUS\",\"ISOLATE\",\"HIDE\",\"SHOWALL\",\"DISPLAY [SHADED|WIREFRAME]\",\"GRID [ON|OFF|SPACING mm|SNAP ON|OFF]\",\"TOOL BOX|CYLINDER\",\"CANCEL\",\"BOX name width depth height [x y z]\",\"CYLINDER name radius height [x y z]\"],\"commandTools\":{\"HISTORY\":\"cad_history\",\"WORKSPACE\":\"cad_workspace\",\"WS\":\"cad_workspace\"}}",
+      "ToolCallId": "0EF97k4bKgKnyUEMWzKalUT00XhzmNak"
+    },
+    {
+      "Role": 2,
+      "Content": "",
+      "ToolCalls": [
+        {
+          "Id": "VcKAReAiuB7JntQfNJu8yYWaGt7UxYYb",
+          "Name": "cad_inspect",
+          "ArgumentsJson": "{\"area\":\"drawings\",\"id\":\"de015e8c-bba0-441f-8eca-87b8658fd1b0\"}"
+        }
+      ]
+    },
+    {
+      "Role": 3,
+      "Content": "{\"success\":true,\"documentId\":\"15049495-397f-465f-98f6-27c190e0698e\",\"stateId\":\"4de4d223-6526-4caa-9906-d14279e6e9f3\",\"area\":\"drawings\",\"total\":0,\"offset\":0,\"limit\":50,\"hasMore\":false,\"items\":[]}",
+      "ToolCallId": "VcKAReAiuB7JntQfNJu8yYWaGt7UxYYb"
+    },
+    {
+      "Role": 2,
+      "Content": "",
+      "ToolCalls": [
+        {
+          "Id": "Jc7yJUZqOromSQ0BrQgDC79G0h5xDr1o",
+          "Name": "cad_status",
+          "ArgumentsJson": "{}"
+        }
+      ]
+    },
+    {
+      "Role": 3,
+      "Content": "{\"active\":true,\"name\":\"Synthetic drawing provider\",\"documentId\":\"15049495-397f-465f-98f6-27c190e0698e\",\"stateId\":\"4de4d223-6526-4caa-9906-d14279e6e9f3\",\"bodies\":1,\"parts\":1,\"features\":2,\"sketches\":0,\"drawings\":1,\"selected\":0,\"commands\":[\"DATUM CONTRACT | {action-specific JSON} | DELETE|DETACH id revision | BIND_SKETCH|UNBIND_SKETCH sketch-id sketch-revision datum-id datum-revision | BIND_WORKPLANE|UNBIND_WORKPLANE datum-id datum-revision exact-path | SOURCES feature-id revision [offset limit]\",\"MODEL {action,partId/name or id/revision,author JSON} | CONTRACT recipe-type [offset limit]\",\"DRAWING CONTRACT [type] | DRAWING {action,type,sheetId,id,author}\",\"FILE CONTRACT | {action:save/export/report/pdf/template_export,path,overwrite?,options?,id?}\",\"MATERIAL {action-specific JSON}\",\"SKETCH_REGION_SOURCES {action:reselect_region_sources,sketchId,revision,id,sources}\",\"SKETCH_OFFSET {action,sketchId,revision,seeds,distanceMm,optional join}\",\"SKETCH_FINITE_CONTACT {action-specific JSON}\",\"SKETCH_CURVATURE {action,id,revision,curveA,curveB,optional constraintId/enabled}\",\"SKETCH_CONTACT {action,id,revision,curveA,curveB,branch,optional constraintId/enabled}\",\"PARAMETERS [offset limit]\",\"BINDINGS [offset limit]\",\"TARGETS [offset limit]\",\"DATUMS [offset limit]\",\"DATUM_BINDINGS [offset limit]\",\"RECIPES [offset limit]\",\"SKETCH_GEOMETRY [offset limit]\",\"ASSEMBLY_PATTERNS [offset limit]\",\"TIMELINE part-id [offset limit]\",\"PARAM SET NEW|id name SCALAR|LENGTH|ANGLE \\u0022expression\\u0022 | DELETE id | BIND parameter-id kind owner-id property [companion-id [index]] | UNBIND binding-id | RECOMPUTE\",\"HELP [command]\",\"CLEAR\",\"STATUS\",\"STATS\",\"LIST\",\"FIND name\",\"SELECTION\",\"PARTS\",\"FEATURES\",\"LAYERS\",\"MATERIALS\",\"SKETCHES\",\"DRAWINGS\",\"OCCURRENCES\",\"SELECT exact-name\",\"UNDO\",\"REDO\",\"FIT\",\"VIEW TOP|FRONT|RIGHT|BACK|LEFT|BOTTOM|ISO\",\"DESELECT\",\"FOCUS\",\"ISOLATE\",\"HIDE\",\"SHOWALL\",\"DISPLAY [SHADED|WIREFRAME]\",\"GRID [ON|OFF|SPACING mm|SNAP ON|OFF]\",\"TOOL BOX|CYLINDER\",\"CANCEL\",\"BOX name width depth height [x y z]\",\"CYLINDER name radius height [x y z]\"],\"commandTools\":{\"HISTORY\":\"cad_history\",\"WORKSPACE\":\"cad_workspace\",\"WS\":\"cad_workspace\"}}",
+      "ToolCallId": "Jc7yJUZqOromSQ0BrQgDC79G0h5xDr1o"
+    },
+    {
+      "Role": 2,
+      "Content": "",
+      "ToolCalls": [
+        {
+          "Id": "YGI92KnMXLl17lj6NX7TTkpxuKYVqFNj",
+          "Name": "cad_inspect",
+          "ArgumentsJson": "{\"area\":\"drawings\"}"
+        }
+      ]
+    },
+    {
+      "Role": 3,
+      "Content": "{\"success\":true,\"documentId\":\"15049495-397f-465f-98f6-27c190e0698e\",\"stateId\":\"4de4d223-6526-4caa-9906-d14279e6e9f3\",\"area\":\"drawings\",\"total\":1,\"offset\":0,\"limit\":50,\"hasMore\":false,\"items\":[{\"id\":\"86ae58c9-3f6a-45d6-8aee-211f3204070d\",\"name\":\"Provider Drawing\",\"widthMm\":297,\"heightMm\":210,\"unit\":\"Millimeter\",\"viewTotal\":1,\"dimensionTotal\":0,\"views\":[{\"id\":\"de015e8c-bba0-441f-8eca-87b8658fd1b0\",\"name\":\"Top\",\"kind\":\"Top\",\"scale\":2,\"center\":{\"x\":80,\"y\":60},\"staleReason\":null,\"sourceCount\":1}],\"dimensions\":[]}]}",
+      "ToolCallId": "YGI92KnMXLl17lj6NX7TTkpxuKYVqFNj"
+    },
+    {
+      "Role": 2,
+      "Content": "The Top view has been created successfully in the specified sheet. Here's the confirmation:\n\n**Sheet ID:** `86ae58c9-3f6a-45d6-8aee-211f3204070d`  \n**View ID:** `de015e8c-bba0-441f-8eca-87b8658fd1b0`\n\n**View properties:**\n- Name: `Top`\n- Kind: `Top`\n- Scale: `2`\n- Center: `{x: 80, y: 60}` mm\n- Dimensions: 0 (no dimensions)\n- Source count: 1\n\nThe drawing contains exactly one Top view with no other objects. The document state is clean and the view was created as specified.",
+      "ToolCalls": []
+    },
+    {
+      "Role": 1,
+      "Content": "Read cad_status. Inspect native selections with cad_drawing inspect_sources, path=15049495-397f-465f-98f6-27c190e0698e/c4bbb435-decc-4900-8d4a-4b1eab954b39,bodyId=eaa24d7c-abd1-4461-9ca9-03a052006f64,revision=55acbb73-94bd-442e-baf1-9b68a3c2d55c,limit=50. Copy only its actual selection; never invent an index, fingerprint or geometry cache. Use contract(dimension), then create exactly one Diameter dimension on the CylinderFace for viewId de015e8c-bba0-441f-8eca-87b8658fd1b0, sheetId 86ae58c9-3f6a-45d6-8aee-211f3204070d, textPositionMm={x:80,y:35},upperTolerance=0.1,lowerTolerance=0.1. No measured value input.",
+      "ToolCalls": null,
+      "ToolCallId": null,
+      "ContentParts": null
+    },
+    {
+      "Role": 2,
+      "Content": "",
+      "ToolCalls": [
+        {
+          "Id": "yO5ymYmloxLgH5dlJvEuCuiSX8XRYGfH",
+          "Name": "cad_status",
+          "ArgumentsJson": "{}"
+        }
+      ]
+    },
+    {
+      "Role": 3,
+      "Content": "{\"active\":true,\"name\":\"Synthetic drawing provider\",\"documentId\":\"15049495-397f-465f-98f6-27c190e0698e\",\"stateId\":\"4de4d223-6526-4caa-9906-d14279e6e9f3\",\"bodies\":1,\"parts\":1,\"features\":2,\"sketches\":0,\"drawings\":1,\"selected\":0,\"commands\":[\"DATUM CONTRACT | {action-specific JSON} | DELETE|DETACH id revision | BIND_SKETCH|UNBIND_SKETCH sketch-id sketch-revision datum-id datum-revision | BIND_WORKPLANE|UNBIND_WORKPLANE datum-id datum-revision exact-path | SOURCES feature-id revision [offset limit]\",\"MODEL {action,partId/name or id/revision,author JSON} | CONTRACT recipe-type [offset limit]\",\"DRAWING CONTRACT [type] | DRAWING {action,type,sheetId,id,author}\",\"FILE CONTRACT | {action:save/export/report/pdf/template_export,path,overwrite?,options?,id?}\",\"MATERIAL {action-specific JSON}\",\"SKETCH_REGION_SOURCES {action:reselect_region_sources,sketchId,revision,id,sources}\",\"SKETCH_OFFSET {action,sketchId,revision,seeds,distanceMm,optional join}\",\"SKETCH_FINITE_CONTACT {action-specific JSON}\",\"SKETCH_CURVATURE {action,id,revision,curveA,curveB,optional constraintId/enabled}\",\"SKETCH_CONTACT {action,id,revision,curveA,curveB,branch,optional constraintId/enabled}\",\"PARAMETERS [offset limit]\",\"BINDINGS [offset limit]\",\"TARGETS [offset limit]\",\"DATUMS [offset limit]\",\"DATUM_BINDINGS [offset limit]\",\"RECIPES [offset limit]\",\"SKETCH_GEOMETRY [offset limit]\",\"ASSEMBLY_PATTERNS [offset limit]\",\"TIMELINE part-id [offset limit]\",\"PARAM SET NEW|id name SCALAR|LENGTH|ANGLE \\u0022expression\\u0022 | DELETE id | BIND parameter-id kind owner-id property [companion-id [index]] | UNBIND binding-id | RECOMPUTE\",\"HELP [command]\",\"CLEAR\",\"STATUS\",\"STATS\",\"LIST\",\"FIND name\",\"SELECTION\",\"PARTS\",\"FEATURES\",\"LAYERS\",\"MATERIALS\",\"SKETCHES\",\"DRAWINGS\",\"OCCURRENCES\",\"SELECT exact-name\",\"UNDO\",\"REDO\",\"FIT\",\"VIEW TOP|FRONT|RIGHT|BACK|LEFT|BOTTOM|ISO\",\"DESELECT\",\"FOCUS\",\"ISOLATE\",\"HIDE\",\"SHOWALL\",\"DISPLAY [SHADED|WIREFRAME]\",\"GRID [ON|OFF|SPACING mm|SNAP ON|OFF]\",\"TOOL BOX|CYLINDER\",\"CANCEL\",\"BOX name width depth height [x y z]\",\"CYLINDER name radius height [x y z]\"],\"commandTools\":{\"HISTORY\":\"cad_history\",\"WORKSPACE\":\"cad_workspace\",\"WS\":\"cad_workspace\"}}",
+      "ToolCallId": "yO5ymYmloxLgH5dlJvEuCuiSX8XRYGfH"
+    },
+    {
+      "Role": 2,
+      "Content": "",
+      "ToolCalls": [
+        {
+          "Id": "AQhYQPzTD9OkauLypQu1Zuq1EXv1L47D",
+          "Name": "cad_drawing",
+          "ArgumentsJson": "{\"action\":\"inspect_sources\",\"documentId\":\"15049495-397f-465f-98f6-27c190e0698e\",\"path\":\"c4bbb435-decc-4900-8d4a-4b1eab954b39\",\"bodyId\":\"eaa24d7c-abd1-4461-9ca9-03a052006f64\",\"revision\":\"55acbb73-94bd-442e-baf1-9b68a3c2d55c\",\"limit\":50}"
+        }
+      ]
+    },
+    {
+      "Role": 3,
+      "Content": "{\"success\":false,\"message\":\"Invalid drawing arguments for action=inspect_sources. Missing or invalid: stateId. contract accepts only action/type; other actions require exact documentId/stateId from cad_status. inspect requires type, documentId and stateId together. Outer name is only save_template; create/edit names belong in authorJson.\",\"missingOrInvalid\":[\"stateId\"],\"unexpectedArguments\":[],\"allowedArguments\":[\"action\",\"documentId\",\"stateId\",\"path\",\"bodyId\",\"revision\",\"offset\",\"limit\"],\"identitySource\":{\"toolName\":\"cad_status\",\"arguments\":{}},\"identityRole\":\"Copy documentId/stateId from the active cad_status response, not an item, body, sheet or source selection. Read current state before explicitly submitting the drawing request again. No identities were supplied or filled in automatically.\"}",
+      "ToolCallId": "AQhYQPzTD9OkauLypQu1Zuq1EXv1L47D"
+    },
+    {
+      "Role": 2,
+      "Content": "",
+      "ToolCalls": [
+        {
+          "Id": "tiaH80OTv0IznFMI3qQySZmGpuXsamVy",
+          "Name": "cad_drawing",
+          "ArgumentsJson": "{\"action\":\"inspect_sources\",\"documentId\":\"15049495-397f-465f-98f6-27c190e0698e\",\"path\":\"c4bbb435-decc-4900-8d4a-4b1eab954b39\",\"bodyId\":\"eaa24d7c-abd1-4461-9ca9-03a052006f64\",\"revision\":\"55acbb73-94bd-442e-baf1-9b68a3c2d55c\",\"limit\":50,\"stateId\":\"4de4d223-6526-4caa-9906-d14279e6e9f3\"}"
+        }
+      ]
+    },
+    {
+      "Role": 3,
+      "Content": "{\"success\":false,\"action\":\"inspect_sources\",\"message\":\"A full path in this exact document is required.\",\"rejection\":\"drawing_source_path_invalid\",\"sourceReads\":[{\"toolName\":\"cad_inspect\",\"arguments\":{\"area\":\"occurrences\",\"offset\":0,\"limit\":8}},{\"toolName\":\"cad_inspect\",\"arguments\":{\"area\":\"bodies\",\"offset\":0,\"limit\":8}}],\"pathRole\":\"Copy one complete occurrences.items[].path including the document root and every instance slot. A slot, body, feature or definition ID alone is not a path.\",\"bodyRole\":\"Copy bodyId/revision from actual bodies.items[].id/revision for the selected occurrence\\u0027s definition. Native inspection still validates membership and revision.\",\"nextStep\":\"Read actual sources and fresh cad_status, then explicitly resubmit inspect_sources with exact documentId/stateId/path/bodyId/revision. No source was inferred, repaired, rebound or inspected automatically.\"}",
+      "ToolCallId": "tiaH80OTv0IznFMI3qQySZmGpuXsamVy"
+    },
+    {
+      "Role": 2,
+      "Content": "",
+      "ToolCalls": [
+        {
+          "Id": "oaw077412qcENNdSJ4rM6mER7FRp8bZ6",
+          "Name": "cad_inspect",
+          "ArgumentsJson": "{\"area\":\"occurrences\",\"limit\":8}"
+        }
+      ]
+    },
+    {
+      "Role": 3,
+      "Content": "{\"success\":true,\"documentId\":\"15049495-397f-465f-98f6-27c190e0698e\",\"stateId\":\"4de4d223-6526-4caa-9906-d14279e6e9f3\",\"area\":\"occurrences\",\"total\":1,\"offset\":0,\"limit\":8,\"hasMore\":false,\"items\":[{\"path\":\"15049495-397f-465f-98f6-27c190e0698e/c4bbb435-decc-4900-8d4a-4b1eab954b39\",\"name\":\"Part 1\",\"definitionId\":\"6f404912-909f-42b9-a095-0d78c96dd0c5\",\"isVisible\":true,\"translation\":{\"x\":0,\"y\":0,\"z\":0}}]}",
+      "ToolCallId": "oaw077412qcENNdSJ4rM6mER7FRp8bZ6"
+    },
+    {
+      "Role": 2,
+      "Content": "",
+      "ToolCalls": [
+        {
+          "Id": "nyw9pBIadZAI2AAUHeZUM3qRaGdvOGYW",
+          "Name": "cad_inspect",
+          "ArgumentsJson": "{\"area\":\"bodies\",\"limit\":8}"
+        }
+      ]
+    },
+    {
+      "Role": 3,
+      "Content": "{\"success\":true,\"documentId\":\"15049495-397f-465f-98f6-27c190e0698e\",\"stateId\":\"4de4d223-6526-4caa-9906-d14279e6e9f3\",\"area\":\"bodies\",\"total\":1,\"offset\":0,\"limit\":8,\"hasMore\":false,\"items\":[{\"id\":\"eaa24d7c-abd1-4461-9ca9-03a052006f64\",\"name\":\"Hole\",\"partId\":\"6f404912-909f-42b9-a095-0d78c96dd0c5\",\"featureId\":\"7fc602cb-c6cf-4b29-b741-783c4a75b91c\",\"kind\":\"Solid\",\"revision\":\"55acbb73-94bd-442e-baf1-9b68a3c2d55c\",\"volumeMm3\":1781.1504440784613,\"bounds\":{\"min\":{\"x\":-1E-07,\"y\":-1E-07,\"z\":-1E-07},\"max\":{\"x\":12.0000001,\"y\":10.0000001,\"z\":15.0000001}},\"layerId\":\"16cf38b2-a2c0-47dc-bb50-cb7765255af1\",\"materialId\":null,\"isVisible\":true}]}",
+      "ToolCallId": "nyw9pBIadZAI2AAUHeZUM3qRaGdvOGYW"
+    },
+    {
+      "Role": 2,
+      "Content": "",
+      "ToolCalls": [
+        {
+          "Id": "PtwzbyXKavaRjR5BPtVhbpXmj94WlIyZ",
+          "Name": "cad_inspect",
+          "ArgumentsJson": "{\"area\":\"features\",\"limit\":20}"
+        }
+      ]
+    },
+    {
+      "Role": 3,
+      "Content": "{\"success\":true,\"documentId\":\"15049495-397f-465f-98f6-27c190e0698e\",\"stateId\":\"4de4d223-6526-4caa-9906-d14279e6e9f3\",\"area\":\"features\",\"total\":2,\"offset\":0,\"limit\":20,\"hasMore\":false,\"items\":[{\"id\":\"7fc602cb-c6cf-4b29-b741-783c4a75b91c\",\"name\":\"Hole\",\"partId\":\"6f404912-909f-42b9-a095-0d78c96dd0c5\",\"recipe\":\"HoleRecipe\",\"outputBodyId\":\"eaa24d7c-abd1-4461-9ca9-03a052006f64\",\"inputs\":[\"090ea2c8-1f49-41e2-a7b4-a5af4e52f079\"],\"isStale\":false,\"isSuppressed\":false},{\"id\":\"090ea2c8-1f49-41e2-a7b4-a5af4e52f079\",\"name\":\"Seed\",\"partId\":\"6f404912-909f-42b9-a095-0d78c96dd0c5\",\"recipe\":\"BoxRecipe\",\"outputBodyId\":\"3f14d5ee-00c8-41e9-85fa-e58ed9ec6934\",\"inputs\":[],\"isStale\":false,\"isSuppressed\":false}]}",
+      "ToolCallId": "PtwzbyXKavaRjR5BPtVhbpXmj94WlIyZ"
+    },
+    {
+      "Role": 2,
+      "Content": "",
+      "ToolCalls": [
+        {
+          "Id": "ajjXgnmlm8djMbMLXeBvjCXPwChM9OQR",
+          "Name": "cad_inspect",
+          "ArgumentsJson": "{\"area\":\"features\",\"id\":\"7fc602cb-c6cf-4b29-b741-783c4a75b91c\",\"limit\":20}"
+        }
+      ]
+    },
+    {
+      "Role": 3,
+      "Content": "{\"success\":true,\"documentId\":\"15049495-397f-465f-98f6-27c190e0698e\",\"stateId\":\"4de4d223-6526-4caa-9906-d14279e6e9f3\",\"area\":\"features\",\"total\":1,\"offset\":0,\"limit\":20,\"hasMore\":false,\"items\":[{\"id\":\"7fc602cb-c6cf-4b29-b741-783c4a75b91c\",\"name\":\"Hole\",\"partId\":\"6f404912-909f-42b9-a095-0d78c96dd0c5\",\"recipe\":\"HoleRecipe\",\"outputBodyId\":\"eaa24d7c-abd1-4461-9ca9-03a052006f64\",\"inputs\":[\"090ea2c8-1f49-41e2-a7b4-a5af4e52f079\"],\"isStale\":false,\"isSuppressed\":false}]}",
+      "ToolCallId": "ajjXgnmlm8djMbMLXeBvjCXPwChM9OQR"
+    },
+    {
+      "Role": 2,
+      "Content": "",
+      "ToolCalls": [
+        {
+          "Id": "f6Os7nddWXCxtmZ4Ol4fVvtQrb62BGFm",
+          "Name": "cad_drawing",
+          "ArgumentsJson": "{\"action\":\"inspect_sources\",\"documentId\":\"15049495-397f-465f-98f6-27c190e0698e\",\"path\":\"15049495-397f-465f-98f6-27c190e0698e/c4bbb435-decc-4900-8d4a-4b1eab954b39\",\"bodyId\":\"eaa24d7c-abd1-4461-9ca9-03a052006f64\",\"revision\":\"55acbb73-94bd-442e-baf1-9b68a3c2d55c\",\"limit\":50,\"stateId\":\"4de4d223-6526-4caa-9906-d14279e6e9f3\"}"
+        }
+      ]
+    },
+    {
+      "Role": 3,
+      "Content": "{\"success\":true,\"action\":\"inspect_sources\",\"documentId\":\"15049495-397f-465f-98f6-27c190e0698e\",\"stateId\":\"4de4d223-6526-4caa-9906-d14279e6e9f3\",\"offset\":0,\"limit\":50,\"total\":45,\"hasMore\":false,\"items\":[{\"index\":0,\"kind\":\"Compound\",\"diagnostic\":\"Select an original face or edge.\"},{\"index\":1,\"kind\":\"Solid\",\"diagnostic\":\"Select an original face or edge.\"},{\"index\":2,\"kind\":\"Shell\",\"diagnostic\":\"Select an original face or edge.\"},{\"index\":3,\"kind\":\"Face\",\"selection\":{\"path\":\"15049495-397f-465f-98f6-27c190e0698e/c4bbb435-decc-4900-8d4a-4b1eab954b39\",\"bodyId\":\"eaa24d7c-abd1-4461-9ca9-03a052006f64\",\"revision\":\"55acbb73-94bd-442e-baf1-9b68a3c2d55c\",\"asset\":\"20bad286545c0db06d38143f3d5a79fca15f18eca98f7adb88c492013233b45f\",\"fingerprint\":\"7F270420AD41CD525D3DC661E225D82B195F5C421B8D904BF45FF3495B60CCD9\",\"index\":3},\"geometry\":\"PlaneFace\"},{\"index\":4,\"kind\":\"Wire\",\"diagnostic\":\"Select an original face or edge.\"},{\"index\":5,\"kind\":\"Edge\",\"selection\":{\"path\":\"15049495-397f-465f-98f6-27c190e0698e/c4bbb435-decc-4900-8d4a-4b1eab954b39\",\"bodyId\":\"eaa24d7c-abd1-4461-9ca9-03a052006f64\",\"revision\":\"55acbb73-94bd-442e-baf1-9b68a3c2d55c\",\"asset\":\"20bad286545c0db06d38143f3d5a79fca15f18eca98f7adb88c492013233b45f\",\"fingerprint\":\"7F270420AD41CD525D3DC661E225D82B195F5C421B8D904BF45FF3495B60CCD9\",\"index\":5},\"geometry\":\"LineEdge\"},{\"index\":6,\"kind\":\"Vertex\",\"diagnostic\":\"Select an original face or edge.\"},{\"index\":7,\"kind\":\"Vertex\",\"diagnostic\":\"Select an original face or edge.\"},{\"index\":8,\"kind\":\"Edge\",\"selection\":{\"path\":\"15049495-397f-465f-98f6-27c190e0698e/c4bbb435-decc-4900-8d4a-4b1eab954b39\",\"bodyId\":\"eaa24d7c-abd1-4461-9ca9-03a052006f64\",\"revision\":\"55acbb73-94bd-442e-baf1-9b68a3c2d55c\",\"asset\":\"20bad286545c0db06d38143f3d5a79fca15f18eca98f7adb88c492013233b45f\",\"fingerprint\":\"7F270420AD41CD525D3DC661E225D82B195F5C421B8D904BF45FF3495B60CCD9\",\"index\":8},\"geometry\":\"LineEdge\"},{\"index\":9,\"kind\":\"Vertex\",\"diagnostic\":\"Select an original face or edge.\"},{\"index\":10,\"kind\":\"Edge\",\"selection\":{\"path\":\"15049495-397f-465f-98f6-27c190e0698e/c4bbb435-decc-4900-8d4a-4b1eab954b39\",\"bodyId\":\"eaa24d7c-abd1-4461-9ca9-03a052006f64\",\"revision\":\"55acbb73-94bd-442e-baf1-9b68a3c2d55c\",\"asset\":\"20bad286545c0db06d38143f3d5a79fca15f18eca98f7adb88c492013233b45f\",\"fingerprint\":\"7F270420AD41CD525D3DC661E225D82B195F5C421B8D904BF45FF3495B60CCD9\",\"index\":10},\"geometry\":\"LineEdge\"},{\"index\":11,\"kind\":\"Vertex\",\"diagnostic\":\"Select an original face or edge.\"},{\"index\":12,\"kind\":\"Edge\",\"selection\":{\"path\":\"15049495-397f-465f-98f6-27c190e0698e/c4bbb435-decc-4900-8d4a-4b1eab954b39\",\"bodyId\":\"eaa24d7c-abd1-4461-9ca9-03a052006f64\",\"revision\":\"55acbb73-94bd-442e-baf1-9b68a3c2d55c\",\"asset\":\"20bad286545c0db06d38143f3d5a79fca15f18eca98f7adb88c492013233b45f\",\"fingerprint\":\"7F270420AD41CD525D3DC661E225D82B195F5C421B8D904BF45FF3495B60CCD9\",\"index\":12},\"geometry\":\"LineEdge\"},{\"index\":13,\"kind\":\"Face\",\"selection\":{\"path\":\"15049495-397f-465f-98f6-27c190e0698e/c4bbb435-decc-4900-8d4a-4b1eab954b39\",\"bodyId\":\"eaa24d7c-abd1-4461-9ca9-03a052006f64\",\"revision\":\"55acbb73-94bd-442e-baf1-9b68a3c2d55c\",\"asset\":\"20bad286545c0db06d38143f3d5a79fca15f18eca98f7adb88c492013233b45f\",\"fingerprint\":\"7F270420AD41CD525D3DC661E225D82B195F5C421B8D904BF45FF3495B60CCD9\",\"index\":13},\"geometry\":\"PlaneFace\"},{\"index\":14,\"kind\":\"Wire\",\"diagnostic\":\"Select an original face or edge.\"},{\"index\":15,\"kind\":\"Edge\",\"selection\":{\"path\":\"15049495-397f-465f-98f6-27c190e0698e/c4bbb435-decc-4900-8d4a-4b1eab954b39\",\"bodyId\":\"eaa24d7c-abd1-4461-9ca9-03a052006f64\",\"revision\":\"55acbb73-94bd-442e-baf1-9b68a3c2d55c\",\"asset\":\"20bad286545c0db06d38143f3d5a79fca15f18eca98f7adb88c492013233b45f\",\"fingerprint\":\"7F270420AD41CD525D3DC661E225D82B195F5C421B8D904BF45FF3495B60CCD9\",\"index\":15},\"geometry\":\"LineEdge\"},{\"index\":16,\"kind\":\"Vertex\",\"diagnostic\":\"Select an original face or edge.\"},{\"index\":17,\"kind\":\"Edge\",\"selection\":{\"path\":\"15049495-397f-465f-98f6-27c190e0698e/c4bbb435-decc-4900-8d4a-4b1eab954b39\",\"bodyId\":\"eaa24d7c-abd1-4461-9ca9-03a052006f64\",\"revision\":\"55acbb73-94bd-442e-baf1-9b68a3c2d55c\",\"asset\":\"20bad286545c0db06d38143f3d5a79fca15f18eca98f7adb88c492013233b45f\",\"fingerprint\":\"7F270420AD41CD525D3DC661E225D82B195F5C421B8D904BF45FF3495B60CCD9\",\"index\":17},\"geometry\":\"LineEdge\"},{\"index\":18,\"kind\":\"Vertex\",\"diagnostic\":\"Select an original face or edge.\"},{\"index\":19,\"kind\":\"Edge\",\"selection\":{\"path\":\"15049495-397f-465f-98f6-27c190e0698e/c4bbb435-decc-4900-8d4a-4b1eab954b39\",\"bodyId\":\"eaa24d7c-abd1-4461-9ca9-03a052006f64\",\"revision\":\"55acbb73-94bd-442e-baf1-9b68a3c2d55c\",\"asset\":\"20bad286545c0db06d38143f3d5a79fca15f18eca98f7adb88c492013233b45f\",\"fingerprint\":\"7F270420AD41CD525D3DC661E225D82B195F5C421B8D904BF45FF3495B60CCD9\",\"index\":19},\"geometry\":\"LineEdge\"},{\"index\":20,\"kind\":\"Face\",\"selection\":{\"path\":\"15049495-397f-465f-98f6-27c190e0698e/c4bbb435-decc-4900-8d4a-4b1eab954b39\",\"bodyId\":\"eaa24d7c-abd1-4461-9ca9-03a052006f64\",\"revision\":\"55acbb73-94bd-442e-baf1-9b68a3c2d55c\",\"asset\":\"20bad286545c0db06d38143f3d5a79fca15f18eca98f7adb88c492013233b45f\",\"fingerprint\":\"7F270420AD41CD525D3DC661E225D82B195F5C421B8D904BF45FF3495B60CCD9\",\"index\":20},\"geometry\":\"PlaneFace\"},{\"index\":21,\"kind\":\"Wire\",\"diagnostic\":\"Select an original face or edge.\"},{\"index\":22,\"kind\":\"Edge\",\"selection\":{\"path\":\"15049495-397f-465f-98f6-27c190e0698e/c4bbb435-decc-4900-8d4a-4b1eab954b39\",\"bodyId\":\"eaa24d7c-abd1-4461-9ca9-03a052006f64\",\"revision\":\"55acbb73-94bd-442e-baf1-9b68a3c2d55c\",\"asset\":\"20bad286545c0db06d38143f3d5a79fca15f18eca98f7adb88c492013233b45f\",\"fingerprint\":\"7F270420AD41CD525D3DC661E225D82B195F5C421B8D904BF45FF3495B60CCD9\",\"index\":22},\"geometry\":\"LineEdge\"},{\"index\":23,\"kind\":\"Vertex\",\"diagnostic\":\"Select an original face or edge.\"},{\"index\":24,\"kind\":\"Edge\",\"selection\":{\"path\":\"15049495-397f-465f-98f6-27c190e0698e/c4bbb435-decc-4900-8d4a-4b1eab954b39\",\"bodyId\":\"eaa24d7c-abd1-4461-9ca9-03a052006f64\",\"revision\":\"55acbb73-94bd-442e-baf1-9b68a3c2d55c\",\"asset\":\"20bad286545c0db06d38143f3d5a79fca15f18eca98f7adb88c492013233b45f\",\"fingerprint\":\"7F270420AD41CD525D3DC661E225D82B195F5C421B8D904BF45FF3495B60CCD9\",\"index\":24},\"geometry\":\"LineEdge\"},{\"index\":25,\"kind\":\"Wire\",\"diagnostic\":\"Select an original face or edge.\"},{\"index\":26,\"kind\":\"Edge\",\"selection\":{\"path\":\"15049495-397f-465f-98f6-27c190e0698e/c4bbb435-decc-4900-8d4a-4b1eab954b39\",\"bodyId\":\"eaa24d7c-abd1-4461-9ca9-03a052006f64\",\"revision\":\"55acbb73-94bd-442e-baf1-9b68a3c2d55c\",\"asset\":\"20bad286545c0db06d38143f3d5a79fca15f18eca98f7adb88c492013233b45f\",\"fingerprint\":\"7F270420AD41CD525D3DC661E225D82B195F5C421B8D904BF45FF3495B60CCD9\",\"index\":26},\"geometry\":\"CircleEdge\"},{\"index\":27,\"kind\":\"Vertex\",\"diagnostic\":\"Select an original face or edge.\"},{\"index\":28,\"kind\":\"Face\",\"selection\":{\"path\":\"15049495-397f-465f-98f6-27c190e0698e/c4bbb435-decc-4900-8d4a-4b1eab954b39\",\"bodyId\":\"eaa24d7c-abd1-4461-9ca9-03a052006f64\",\"revision\":\"55acbb73-94bd-442e-baf1-9b68a3c2d55c\",\"asset\":\"20bad286545c0db06d38143f3d5a79fca15f18eca98f7adb88c492013233b45f\",\"fingerprint\":\"7F270420AD41CD525D3DC661E225D82B195F5C421B8D904BF45FF3495B60CCD9\",\"index\":28},\"geometry\":\"PlaneFace\"},{\"index\":29,\"kind\":\"Wire\",\"diagnostic\":\"Select an original face or edge.\"},{\"index\":30,\"kind\":\"Edge\",\"selection\":{\"path\":\"15049495-397f-465f-98f6-27c190e0698e/c4bbb435-decc-4900-8d4a-4b1eab954b39\",\"bodyId\":\"eaa24d7c-abd1-4461-9ca9-03a052006f64\",\"revision\":\"55acbb73-94bd-442e-baf1-9b68a3c2d55c\",\"asset\":\"20bad286545c0db06d38143f3d5a79fca15f18eca98f7adb88c492013233b45f\",\"fingerprint\":\"7F270420AD41CD525D3DC661E225D82B195F5C421B8D904BF45FF3495B60CCD9\",\"index\":30},\"geometry\":\"LineEdge\"},{\"index\":31,\"kind\":\"Vertex\",\"diagnostic\":\"Select an original face or edge.\"},{\"index\":32,\"kind\":\"Edge\",\"selection\":{\"path\":\"15049495-397f-465f-98f6-27c190e0698e/c4bbb435-decc-4900-8d4a-4b1eab954b39\",\"bodyId\":\"eaa24d7c-abd1-4461-9ca9-03a052006f64\",\"revision\":\"55acbb73-94bd-442e-baf1-9b68a3c2d55c\",\"asset\":\"20bad286545c0db06d38143f3d5a79fca15f18eca98f7adb88c492013233b45f\",\"fingerprint\":\"7F270420AD41CD525D3DC661E225D82B195F5C421B8D904BF45FF3495B60CCD9\",\"index\":32},\"geometry\":\"LineEdge\"},{\"index\":33,\"kind\":\"Face\",\"selection\":{\"path\":\"15049495-397f-465f-98f6-27c190e0698e/c4bbb435-decc-4900-8d4a-4b1eab954b39\",\"bodyId\":\"eaa24d7c-abd1-4461-9ca9-03a052006f64\",\"revision\":\"55acbb73-94bd-442e-baf1-9b68a3c2d55c\",\"asset\":\"20bad286545c0db06d38143f3d5a79fca15f18eca98f7adb88c492013233b45f\",\"fingerprint\":\"7F270420AD41CD525D3DC661E225D82B195F5C421B8D904BF45FF3495B60CCD9\",\"index\":33},\"geometry\":\"PlaneFace\"},{\"index\":34,\"kind\":\"Wire\",\"diagnostic\":\"Select an original face or edge.\"},{\"index\":35,\"kind\":\"Edge\",\"selection\":{\"path\":\"15049495-397f-465f-98f6-27c190e0698e/c4bbb435-decc-4900-8d4a-4b1eab954b39\",\"bodyId\":\"eaa24d7c-abd1-4461-9ca9-03a052006f64\",\"revision\":\"55acbb73-94bd-442e-baf1-9b68a3c2d55c\",\"asset\":\"20bad286545c0db06d38143f3d5a79fca15f18eca98f7adb88c492013233b45f\",\"fingerprint\":\"7F270420AD41CD525D3DC661E225D82B195F5C421B8D904BF45FF3495B60CCD9\",\"index\":35},\"geometry\":\"LineEdge\"},{\"index\":36,\"kind\":\"Face\",\"selection\":{\"path\":\"15049495-397f-465f-98f6-27c190e0698e/c4bbb435-decc-4900-8d4a-4b1eab954b39\",\"bodyId\":\"eaa24d7c-abd1-4461-9ca9-03a052006f64\",\"revision\":\"55acbb73-94bd-442e-baf1-9b68a3c2d55c\",\"asset\":\"20bad286545c0db06d38143f3d5a79fca15f18eca98f7adb88c492013233b45f\",\"fingerprint\":\"7F270420AD41CD525D3DC661E225D82B195F5C421B8D904BF45FF3495B60CCD9\",\"index\":36},\"geometry\":\"PlaneFace\"},{\"index\":37,\"kind\":\"Wire\",\"diagnostic\":\"Select an original face or edge.\"},{\"index\":38,\"kind\":\"Face\",\"selection\":{\"path\":\"15049495-397f-465f-98f6-27c190e0698e/c4bbb435-decc-4900-8d4a-4b1eab954b39\",\"bodyId\":\"eaa24d7c-abd1-4461-9ca9-03a052006f64\",\"revision\":\"55acbb73-94bd-442e-baf1-9b68a3c2d55c\",\"asset\":\"20bad286545c0db06d38143f3d5a79fca15f18eca98f7adb88c492013233b45f\",\"fingerprint\":\"7F270420AD41CD525D3DC661E225D82B195F5C421B8D904BF45FF3495B60CCD9\",\"index\":38},\"geometry\":\"CylinderFace\"},{\"index\":39,\"kind\":\"Wire\",\"diagnostic\":\"Select an original face or edge.\"},{\"index\":40,\"kind\":\"Edge\",\"selection\":{\"path\":\"15049495-397f-465f-98f6-27c190e0698e/c4bbb435-decc-4900-8d4a-4b1eab954b39\",\"bodyId\":\"eaa24d7c-abd1-4461-9ca9-03a052006f64\",\"revision\":\"55acbb73-94bd-442e-baf1-9b68a3c2d55c\",\"asset\":\"20bad286545c0db06d38143f3d5a79fca15f18eca98f7adb88c492013233b45f\",\"fingerprint\":\"7F270420AD41CD525D3DC661E225D82B195F5C421B8D904BF45FF3495B60CCD9\",\"index\":40},\"geometry\":\"LineEdge\"},{\"index\":41,\"kind\":\"Vertex\",\"diagnostic\":\"Select an original face or edge.\"},{\"index\":42,\"kind\":\"Edge\",\"selection\":{\"path\":\"15049495-397f-465f-98f6-27c190e0698e/c4bbb435-decc-4900-8d4a-4b1eab954b39\",\"bodyId\":\"eaa24d7c-abd1-4461-9ca9-03a052006f64\",\"revision\":\"55acbb73-94bd-442e-baf1-9b68a3c2d55c\",\"asset\":\"20bad286545c0db06d38143f3d5a79fca15f18eca98f7adb88c492013233b45f\",\"fingerprint\":\"7F270420AD41CD525D3DC661E225D82B195F5C421B8D904BF45FF3495B60CCD9\",\"index\":42},\"geometry\":\"CircleEdge\"},{\"index\":43,\"kind\":\"Face\",\"selection\":{\"path\":\"15049495-397f-465f-98f6-27c190e0698e/c4bbb435-decc-4900-8d4a-4b1eab954b39\",\"bodyId\":\"eaa24d7c-abd1-4461-9ca9-03a052006f64\",\"revision\":\"55acbb73-94bd-442e-baf1-9b68a3c2d55c\",\"asset\":\"20bad286545c0db06d38143f3d5a79fca15f18eca98f7adb88c492013233b45f\",\"fingerprint\":\"7F270420AD41CD525D3DC661E225D82B195F5C421B8D904BF45FF3495B60CCD9\",\"index\":43},\"geometry\":\"PlaneFace\"},{\"index\":44,\"kind\":\"Wire\",\"diagnostic\":\"Select an original face or edge.\"}]}",
+      "ToolCallId": "f6Os7nddWXCxtmZ4Ol4fVvtQrb62BGFm"
+    },
+    {
+      "Role": 2,
+      "Content": "",
+      "ToolCalls": [
+        {
+          "Id": "Y4eYqH0s4TTuavjmVSxuuIaaDX6eCIjx",
+          "Name": "cad_status",
+          "ArgumentsJson": "{}"
+        }
+      ]
+    },
+    {
+      "Role": 3,
+      "Content": "{\"active\":true,\"name\":\"Synthetic drawing provider\",\"documentId\":\"15049495-397f-465f-98f6-27c190e0698e\",\"stateId\":\"4de4d223-6526-4caa-9906-d14279e6e9f3\",\"bodies\":1,\"parts\":1,\"features\":2,\"sketches\":0,\"drawings\":1,\"selected\":0,\"commands\":[\"DATUM CONTRACT | {action-specific JSON} | DELETE|DETACH id revision | BIND_SKETCH|UNBIND_SKETCH sketch-id sketch-revision datum-id datum-revision | BIND_WORKPLANE|UNBIND_WORKPLANE datum-id datum-revision exact-path | SOURCES feature-id revision [offset limit]\",\"MODEL {action,partId/name or id/revision,author JSON} | CONTRACT recipe-type [offset limit]\",\"DRAWING CONTRACT [type] | DRAWING {action,type,sheetId,id,author}\",\"FILE CONTRACT | {action:save/export/report/pdf/template_export,path,overwrite?,options?,id?}\",\"MATERIAL {action-specific JSON}\",\"SKETCH_REGION_SOURCES {action:reselect_region_sources,sketchId,revision,id,sources}\",\"SKETCH_OFFSET {action,sketchId,revision,seeds,distanceMm,optional join}\",\"SKETCH_FINITE_CONTACT {action-specific JSON}\",\"SKETCH_CURVATURE {action,id,revision,curveA,curveB,optional constraintId/enabled}\",\"SKETCH_CONTACT {action,id,revision,curveA,curveB,branch,optional constraintId/enabled}\",\"PARAMETERS [offset limit]\",\"BINDINGS [offset limit]\",\"TARGETS [offset limit]\",\"DATUMS [offset limit]\",\"DATUM_BINDINGS [offset limit]\",\"RECIPES [offset limit]\",\"SKETCH_GEOMETRY [offset limit]\",\"ASSEMBLY_PATTERNS [offset limit]\",\"TIMELINE part-id [offset limit]\",\"PARAM SET NEW|id name SCALAR|LENGTH|ANGLE \\u0022expression\\u0022 | DELETE id | BIND parameter-id kind owner-id property [companion-id [index]] | UNBIND binding-id | RECOMPUTE\",\"HELP [command]\",\"CLEAR\",\"STATUS\",\"STATS\",\"LIST\",\"FIND name\",\"SELECTION\",\"PARTS\",\"FEATURES\",\"LAYERS\",\"MATERIALS\",\"SKETCHES\",\"DRAWINGS\",\"OCCURRENCES\",\"SELECT exact-name\",\"UNDO\",\"REDO\",\"FIT\",\"VIEW TOP|FRONT|RIGHT|BACK|LEFT|BOTTOM|ISO\",\"DESELECT\",\"FOCUS\",\"ISOLATE\",\"HIDE\",\"SHOWALL\",\"DISPLAY [SHADED|WIREFRAME]\",\"GRID [ON|OFF|SPACING mm|SNAP ON|OFF]\",\"TOOL BOX|CYLINDER\",\"CANCEL\",\"BOX name width depth height [x y z]\",\"CYLINDER name radius height [x y z]\"],\"commandTools\":{\"HISTORY\":\"cad_history\",\"WORKSPACE\":\"cad_workspace\",\"WS\":\"cad_workspace\"}}",
+      "ToolCallId": "Y4eYqH0s4TTuavjmVSxuuIaaDX6eCIjx"
+    },
+    {
+      "Role": 2,
+      "Content": "",
+      "ToolCalls": [
+        {
+          "Id": "zFXNrNm8MfNb2j3yXSbMzwpflkJMaJsF",
+          "Name": "cad_drawing",
+          "ArgumentsJson": "{\"action\":\"inspect_sources\",\"documentId\":\"15049495-397f-465f-98f6-27c190e0698e\",\"path\":\"c4bbb435-decc-4900-8d4a-4b1eab954b39\",\"bodyId\":\"eaa24d7c-abd1-4461-9ca9-03a052006f64\",\"revision\":\"55acbb73-94bd-442e-baf1-9b68a3c2d55c\",\"limit\":50}"
+        }
+      ]
+    },
+    {
+      "Role": 3,
+      "Content": "{\"success\":false,\"message\":\"Invalid drawing arguments for action=inspect_sources. Missing or invalid: stateId. contract accepts only action/type; other actions require exact documentId/stateId from cad_status. inspect requires type, documentId and stateId together. Outer name is only save_template; create/edit names belong in authorJson.\",\"missingOrInvalid\":[\"stateId\"],\"unexpectedArguments\":[],\"allowedArguments\":[\"action\",\"documentId\",\"stateId\",\"path\",\"bodyId\",\"revision\",\"offset\",\"limit\"],\"identitySource\":{\"toolName\":\"cad_status\",\"arguments\":{}},\"identityRole\":\"Copy documentId/stateId from the active cad_status response, not an item, body, sheet or source selection. Read current state before explicitly submitting the drawing request again. No identities were supplied or filled in automatically.\"}",
+      "ToolCallId": "zFXNrNm8MfNb2j3yXSbMzwpflkJMaJsF"
+    },
+    {
+      "Role": 2,
+      "Content": "",
+      "ToolCalls": [
+        {
+          "Id": "DfqjLe4C99A8KyDXuKYtpcXhZ2qKsdUQ",
+          "Name": "cad_drawing",
+          "ArgumentsJson": "{\"action\":\"inspect_sources\",\"documentId\":\"15049495-397f-465f-98f6-27c190e0698e\",\"path\":\"c4bbb435-decc-4900-8d4a-4b1eab954b39\",\"bodyId\":\"eaa24d7c-abd1-4461-9ca9-03a052006f64\",\"revision\":\"55acbb73-94bd-442e-baf1-9b68a3c2d55c\",\"limit\":50,\"stateId\":\"4de4d223-6526-4caa-9906-d14279e6e9f3\"}"
+        }
+      ]
+    },
+    {
+      "Role": 3,
+      "Content": "{\"success\":false,\"action\":\"inspect_sources\",\"message\":\"A full path in this exact document is required.\",\"rejection\":\"drawing_source_path_invalid\",\"sourceReads\":[{\"toolName\":\"cad_inspect\",\"arguments\":{\"area\":\"occurrences\",\"offset\":0,\"limit\":8}},{\"toolName\":\"cad_inspect\",\"arguments\":{\"area\":\"bodies\",\"offset\":0,\"limit\":8}}],\"pathRole\":\"Copy one complete occurrences.items[].path including the document root and every instance slot. A slot, body, feature or definition ID alone is not a path.\",\"bodyRole\":\"Copy bodyId/revision from actual bodies.items[].id/revision for the selected occurrence\\u0027s definition. Native inspection still validates membership and revision.\",\"nextStep\":\"Read actual sources and fresh cad_status, then explicitly resubmit inspect_sources with exact documentId/stateId/path/bodyId/revision. No source was inferred, repaired, rebound or inspected automatically.\"}",
+      "ToolCallId": "DfqjLe4C99A8KyDXuKYtpcXhZ2qKsdUQ"
+    },
+    {
+      "Role": 2,
+      "Content": "",
+      "ToolCalls": [
+        {
+          "Id": "gLMbwF7CjKOeXkttj6j3dJ7qbOb27UCF",
+          "Name": "cad_inspect",
+          "ArgumentsJson": "{\"area\":\"occurrences\",\"limit\":8}"
+        }
+      ]
+    },
+    {
+      "Role": 3,
+      "Content": "{\"success\":true,\"documentId\":\"15049495-397f-465f-98f6-27c190e0698e\",\"stateId\":\"4de4d223-6526-4caa-9906-d14279e6e9f3\",\"area\":\"occurrences\",\"total\":1,\"offset\":0,\"limit\":8,\"hasMore\":false,\"items\":[{\"path\":\"15049495-397f-465f-98f6-27c190e0698e/c4bbb435-decc-4900-8d4a-4b1eab954b39\",\"name\":\"Part 1\",\"definitionId\":\"6f404912-909f-42b9-a095-0d78c96dd0c5\",\"isVisible\":true,\"translation\":{\"x\":0,\"y\":0,\"z\":0}}]}",
+      "ToolCallId": "gLMbwF7CjKOeXkttj6j3dJ7qbOb27UCF"
+    },
+    {
+      "Role": 2,
+      "Content": "",
+      "ToolCalls": [
+        {
+          "Id": "VTqZ3YzNABneeO3mZGVeEh7MFEUbYtHC",
+          "Name": "cad_inspect",
+          "ArgumentsJson": "{\"area\":\"bodies\",\"limit\":8}"
+        }
+      ]
+    },
+    {
+      "Role": 3,
+      "Content": "{\"success\":true,\"documentId\":\"15049495-397f-465f-98f6-27c190e0698e\",\"stateId\":\"4de4d223-6526-4caa-9906-d14279e6e9f3\",\"area\":\"bodies\",\"total\":1,\"offset\":0,\"limit\":8,\"hasMore\":false,\"items\":[{\"id\":\"eaa24d7c-abd1-4461-9ca9-03a052006f64\",\"name\":\"Hole\",\"partId\":\"6f404912-909f-42b9-a095-0d78c96dd0c5\",\"featureId\":\"7fc602cb-c6cf-4b29-b741-783c4a75b91c\",\"kind\":\"Solid\",\"revision\":\"55acbb73-94bd-442e-baf1-9b68a3c2d55c\",\"volumeMm3\":1781.1504440784613,\"bounds\":{\"min\":{\"x\":-1E-07,\"y\":-1E-07,\"z\":-1E-07},\"max\":{\"x\":12.0000001,\"y\":10.0000001,\"z\":15.0000001}},\"layerId\":\"16cf38b2-a2c0-47dc-bb50-cb7765255af1\",\"materialId\":null,\"isVisible\":true}]}",
+      "ToolCallId": "VTqZ3YzNABneeO3mZGVeEh7MFEUbYtHC"
+    },
+    {
+      "Role": 2,
+      "Content": "",
+      "ToolCalls": [
+        {
+          "Id": "CsZHweaTV9NSfA6ZlydmznSbic53z3ZQ",
+          "Name": "cad_inspect",
+          "ArgumentsJson": "{\"area\":\"features\",\"limit\":20}"
+        }
+      ]
+    },
+    {
+      "Role": 3,
+      "Content": "{\"success\":true,\"documentId\":\"15049495-397f-465f-98f6-27c190e0698e\",\"stateId\":\"4de4d223-6526-4caa-9906-d14279e6e9f3\",\"area\":\"features\",\"total\":2,\"offset\":0,\"limit\":20,\"hasMore\":false,\"items\":[{\"id\":\"7fc602cb-c6cf-4b29-b741-783c4a75b91c\",\"name\":\"Hole\",\"partId\":\"6f404912-909f-42b9-a095-0d78c96dd0c5\",\"recipe\":\"HoleRecipe\",\"outputBodyId\":\"eaa24d7c-abd1-4461-9ca9-03a052006f64\",\"inputs\":[\"090ea2c8-1f49-41e2-a7b4-a5af4e52f079\"],\"isStale\":false,\"isSuppressed\":false},{\"id\":\"090ea2c8-1f49-41e2-a7b4-a5af4e52f079\",\"name\":\"Seed\",\"partId\":\"6f404912-909f-42b9-a095-0d78c96dd0c5\",\"recipe\":\"BoxRecipe\",\"outputBodyId\":\"3f14d5ee-00c8-41e9-85fa-e58ed9ec6934\",\"inputs\":[],\"isStale\":false,\"isSuppressed\":false}]}",
+      "ToolCallId": "CsZHweaTV9NSfA6ZlydmznSbic53z3ZQ"
+    },
+    {
+      "Role": 2,
+      "Content": "",
+      "ToolCalls": [
+        {
+          "Id": "UufMr2lZpHCexi1XPS1OtRY5Qt5tYXzE",
+          "Name": "cad_inspect",
+          "ArgumentsJson": "{\"area\":\"features\",\"id\":\"7fc602cb-c6cf-4b29-b741-783c4a75b91c\",\"limit\":20}"
+        }
+      ]
+    },
+    {
+      "Role": 3,
+      "Content": "{\"success\":true,\"documentId\":\"15049495-397f-465f-98f6-27c190e0698e\",\"stateId\":\"4de4d223-6526-4caa-9906-d14279e6e9f3\",\"area\":\"features\",\"total\":1,\"offset\":0,\"limit\":20,\"hasMore\":false,\"items\":[{\"id\":\"7fc602cb-c6cf-4b29-b741-783c4a75b91c\",\"name\":\"Hole\",\"partId\":\"6f404912-909f-42b9-a095-0d78c96dd0c5\",\"recipe\":\"HoleRecipe\",\"outputBodyId\":\"eaa24d7c-abd1-4461-9ca9-03a052006f64\",\"inputs\":[\"090ea2c8-1f49-41e2-a7b4-a5af4e52f079\"],\"isStale\":false,\"isSuppressed\":false}]}",
+      "ToolCallId": "UufMr2lZpHCexi1XPS1OtRY5Qt5tYXzE"
+    }
+  ],
+  "Tools": [
+    {
+      "Name": "cad_status",
+      "Description": "Document IDs/state/size/selection/commands.",
+      "Parameters": {
+        "type": "object",
+        "properties": {},
+        "additionalProperties": false
+      }
+    },
+    {
+      "Name": "cad_drawing",
+      "Description": "contract: only action/type, no IDs. Else latest cad_status.documentId/stateId (inspect_sources too). inspect:type+documentId+stateId. Owner IDs separate; native, no caches. PDF:cad_file.",
+      "Parameters": {
+        "type": "object",
+        "properties": {
+          "action": {
+            "type": "string",
+            "description": "Except contract (inspect_sources too): documentId/stateId required.",
+            "enum": [
+              "contract",
+              "inspect",
+              "inspect_sources",
+              "create",
+              "edit",
+              "reselect",
+              "delete",
+              "set_parts_table",
+              "set_zones",
+              "refresh",
+              "save_template",
+              "apply_template",
+              "import_template",
+              "detach_coordinates"
+            ]
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "sheet",
+              "view",
+              "dimension",
+              "datum",
+              "control_frame",
+              "balloon",
+              "hole_table",
+              "field",
+              "note",
+              "template",
+              "parts_table",
+              "zones"
+            ],
+            "description": "Required for inspect."
+          },
+          "documentId": {
+            "type": "string",
+            "format": "uuid",
+            "description": "REQUIRED except contract: cad_status.documentId."
+          },
+          "stateId": {
+            "type": "string",
+            "format": "uuid",
+            "description": "REQUIRED except contract: cad_status.stateId."
+          },
+          "sheetId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "name": {
+            "type": "string",
+            "maxLength": 64,
+            "description": "save_template only; else authorJson."
+          },
+          "path": {
+            "type": "string",
+            "maxLength": 8192,
+            "description": "Full occurrences.items[].path"
+          },
+          "bodyId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "revision": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "authorJson": {
+            "type": "string",
+            "minLength": 2,
+            "maxLength": 65536
+          },
+          "offset": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 100000
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 50
+          }
+        },
+        "required": [
+          "action"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "Name": "cad_inspect",
+      "Description": "IDs/authors mm/rad; id=object ID, not documentId; model_contract id=type. drawings:sheet IDs; drawing_views/dimensions:sheetId; timeline:partId; recipes:inputs; sketch_geometry:entities/rank.",
+      "Parameters": {
+        "type": "object",
+        "properties": {
+          "area": {
+            "type": "string",
+            "enum": [
+              "document",
+              "parts",
+              "bodies",
+              "features",
+              "layers",
+              "materials",
+              "selection",
+              "sketches",
+              "occurrences",
+              "assembly",
+              "drawings",
+              "drawing_views",
+              "drawing_dimensions",
+              "parameters",
+              "parameter_bindings",
+              "parameter_targets",
+              "datums",
+              "datum_associations",
+              "timeline",
+              "recipes",
+              "sketch_geometry",
+              "model_contract",
+              "assembly_patterns"
+            ]
+          },
+          "id": {
+            "type": "string"
+          },
+          "partId": {
+            "type": "string"
+          },
+          "sheetId": {
+            "type": "string"
+          },
+          "offset": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 100000
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 50
+          }
+        },
+        "required": [
+          "area"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "Name": "cad_command",
+      "Description": "cad_status.commands, exact document/state. HISTORY:cad_history. Pre-commit cancel rolls back; committed succeeds.",
+      "Parameters": {
+        "type": "object",
+        "properties": {
+          "command": {
+            "type": "string"
+          },
+          "documentId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "stateId": {
+            "type": "string",
+            "format": "uuid"
+          }
+        },
+        "required": [
+          "command"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "Name": "cad_select",
+      "Description": "Exact inspected occurrence/body: documentId/stateId/full path; bodyId/revision for bodies; reject stale/ambiguous.",
+      "Parameters": {
+        "type": "object",
+        "properties": {
+          "documentId": {
+            "type": "string"
+          },
+          "stateId": {
+            "type": "string"
+          },
+          "path": {
+            "type": "string"
+          },
+          "bodyId": {
+            "type": "string"
+          },
+          "revision": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "documentId",
+          "stateId",
+          "path"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "Name": "cad_workspace",
+      "Description": "list.expected verbatim; keep IDs/nulls; target separate. User switch cancels.",
+      "Parameters": {
+        "type": "object",
+        "properties": {
+          "action": {
+            "type": "string",
+            "enum": [
+              "contract",
+              "list",
+              "new",
+              "open",
+              "activate"
+            ]
+          },
+          "expected": {
+            "type": "object",
+            "description": "list.expected verbatim; keep IDs/nulls; target separate.",
+            "properties": {
+              "workspaceStateId": {
+                "type": "string",
+                "format": "uuid"
+              },
+              "activeSessionId": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "format": "uuid",
+                "description": "Null only if latest list.expected.activeSessionId is null."
+              },
+              "documentId": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "format": "uuid",
+                "description": "Null only if latest list.expected.documentId is null."
+              },
+              "stateId": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "format": "uuid",
+                "description": "Null only if latest list.expected.stateId is null."
+              }
+            },
+            "required": [
+              "workspaceStateId",
+              "activeSessionId",
+              "documentId",
+              "stateId"
+            ],
+            "additionalProperties": false
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 200
+          },
+          "path": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 4096
+          },
+          "target": {
+            "type": "object",
+            "properties": {
+              "sessionId": {
+                "type": "string",
+                "format": "uuid"
+              },
+              "documentId": {
+                "type": "string",
+                "format": "uuid"
+              },
+              "stateId": {
+                "type": "string",
+                "format": "uuid"
+              }
+            },
+            "required": [
+              "sessionId",
+              "documentId",
+              "stateId"
+            ],
+            "additionalProperties": false
+          },
+          "offset": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 100000
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 50
+          }
+        },
+        "required": [
+          "action"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "Name": "cad_file",
+      "Description": "save/export/report/pdf/template_export: read contract; exact documentId/stateId, absolute path, explicit overwrite, template id. Receipt:bytes/hash/source/diagnostics. Non-save:history end. PDF rejects stale references; no undo. Report actual path/hash; never claim a rejected or failed file write succeeded.",
+      "Parameters": {
+        "type": "object",
+        "properties": {},
+        "oneOf": [
+          {
+            "type": "object",
+            "properties": {
+              "action": {
+                "const": "contract"
+              }
+            },
+            "required": [
+              "action"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "action": {
+                "type": "string",
+                "enum": [
+                  "save",
+                  "export",
+                  "report",
+                  "pdf",
+                  "template_export"
+                ]
+              },
+              "documentId": {
+                "type": "string",
+                "format": "uuid",
+                "minLength": 36,
+                "maxLength": 36
+              },
+              "stateId": {
+                "type": "string",
+                "format": "uuid",
+                "minLength": 36,
+                "maxLength": 36
+              },
+              "id": {
+                "type": "string",
+                "format": "uuid",
+                "minLength": 36,
+                "maxLength": 36
+              },
+              "path": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 4096
+              },
+              "overwrite": {
+                "type": "boolean"
+              },
+              "optionsJson": {
+                "type": "string",
+                "minLength": 2,
+                "maxLength": 2048
+              }
+            },
+            "required": [
+              "action",
+              "documentId",
+              "stateId",
+              "path"
+            ],
+            "additionalProperties": false,
+            "allOf": [
+              {
+                "if": {
+                  "properties": {
+                    "action": {
+                      "enum": [
+                        "save",
+                        "pdf",
+                        "template_export"
+                      ]
+                    }
+                  }
+                },
+                "then": {
+                  "not": {
+                    "required": [
+                      "optionsJson"
+                    ]
+                  }
+                }
+              },
+              {
+                "if": {
+                  "properties": {
+                    "action": {
+                      "const": "report"
+                    }
+                  }
+                },
+                "then": {
+                  "required": [
+                    "optionsJson"
+                  ]
+                }
+              },
+              {
+                "if": {
+                  "properties": {
+                    "action": {
+                      "const": "template_export"
+                    }
+                  }
+                },
+                "then": {
+                  "required": [
+                    "id"
+                  ]
+                },
+                "else": {
+                  "not": {
+                    "required": [
+                      "id"
+                    ]
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "Name": "cad_history",
+      "Description": "Exact documentId/stateId+cursor(null=end); reject stale. timeline; suppress:result revision. Reorder:IDs/dependencies/operands at history end. Rollback:session only. Preview:changed=false, previewChanged/cursor.",
+      "Parameters": {
+        "type": "object",
+        "properties": {
+          "documentId": {
+            "$ref": "#/$defs/id"
+          },
+          "stateId": {
+            "$ref": "#/$defs/id"
+          },
+          "cursor": {
+            "$ref": "#/$defs/cursor"
+          }
+        },
+        "required": [
+          "documentId",
+          "stateId",
+          "cursor"
+        ],
+        "oneOf": [
+          {
+            "type": "object",
+            "properties": {
+              "action": {
+                "const": "set_suppressed"
+              },
+              "documentId": {},
+              "stateId": {},
+              "cursor": {},
+              "id": {
+                "$ref": "#/$defs/id"
+              },
+              "revision": {
+                "$ref": "#/$defs/id"
+              },
+              "suppressed": {
+                "type": "boolean"
+              }
+            },
+            "required": [
+              "action",
+              "id",
+              "revision",
+              "suppressed"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "action": {
+                "const": "reorder"
+              },
+              "documentId": {},
+              "stateId": {},
+              "cursor": {},
+              "partId": {
+                "$ref": "#/$defs/id"
+              },
+              "order": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/id"
+                },
+                "minItems": 1,
+                "maxItems": 1024,
+                "uniqueItems": true
+              }
+            },
+            "required": [
+              "action",
+              "partId",
+              "order"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "action": {
+                "const": "rollback"
+              },
+              "documentId": {},
+              "stateId": {},
+              "cursor": {},
+              "partId": {
+                "$ref": "#/$defs/id"
+              },
+              "position": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 1000000
+              }
+            },
+            "required": [
+              "action",
+              "partId",
+              "position"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "action": {
+                "const": "return_end"
+              },
+              "documentId": {},
+              "stateId": {},
+              "cursor": {}
+            },
+            "required": [
+              "action"
+            ],
+            "additionalProperties": false
+          }
+        ],
+        "$defs": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "minLength": 36,
+            "maxLength": 36
+          },
+          "cursor": {
+            "oneOf": [
+              {
+                "type": "null"
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "stateId": {
+                    "$ref": "#/$defs/id"
+                  },
+                  "partId": {
+                    "$ref": "#/$defs/id"
+                  },
+                  "position": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 1000000
+                  }
+                },
+                "required": [
+                  "stateId",
+                  "partId",
+                  "position"
+                ],
+                "additionalProperties": false
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "Name": "cad_edit",
+      "Description": "Exact document/state, mm. Contact/G2:sketch_geometry contract, id/revision. Offset:sketchId/revision, seeds(loop=1), distanceMm, join(default Miter). Returns IDs; no guessed topology.",
+      "Parameters": {
+        "type": "object",
+        "properties": {
+          "action": {
+            "type": "string",
+            "enum": [
+              "create_box",
+              "create_cylinder",
+              "create_sketch_rectangle",
+              "rename_sketch",
+              "set_sketch_contact",
+              "delete_sketch_contact",
+              "set_sketch_curvature",
+              "delete_sketch_curvature",
+              "set_sketch_finite_contact",
+              "delete_sketch_finite_contact",
+              "offset_sketch_loop",
+              "offset_sketch_regions",
+              "reselect_region_sources",
+              "fix_assembly_instance",
+              "set_assembly_constraint_enabled",
+              "set_assembly_distance",
+              "create_drawing_sheet",
+              "rename_drawing_sheet",
+              "add_drawing_view"
+            ]
+          },
+          "documentId": {
+            "type": "string"
+          },
+          "stateId": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          },
+          "revision": {
+            "type": "string"
+          },
+          "sketchId": {
+            "type": "string"
+          },
+          "sources": {
+            "type": "array",
+            "items": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "format": "uuid"
+              },
+              "minItems": 1,
+              "maxItems": 4096
+            },
+            "minItems": 1,
+            "maxItems": 64
+          },
+          "seeds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "minItems": 1,
+            "maxItems": 256
+          },
+          "join": {
+            "type": "string",
+            "enum": [
+              "Miter",
+              "Round",
+              "Bevel"
+            ]
+          },
+          "constraintId": {
+            "type": "string"
+          },
+          "curveA": {
+            "type": "string"
+          },
+          "curveB": {
+            "type": "string"
+          },
+          "parameterA": {
+            "type": "number"
+          },
+          "parameterB": {
+            "type": "number"
+          },
+          "parameterMode": {
+            "type": "string",
+            "enum": [
+              "Fixed",
+              "SolveA",
+              "SolveB",
+              "SolveBoth"
+            ]
+          },
+          "seedA": {
+            "type": "number"
+          },
+          "lowerA": {
+            "type": "number"
+          },
+          "upperA": {
+            "type": "number"
+          },
+          "seedB": {
+            "type": "number"
+          },
+          "lowerB": {
+            "type": "number"
+          },
+          "upperB": {
+            "type": "number"
+          },
+          "direction": {
+            "type": "string",
+            "enum": [
+              "SameDirection",
+              "OppositeDirection"
+            ]
+          },
+          "continuity": {
+            "type": "string",
+            "enum": [
+              "G1",
+              "G2"
+            ]
+          },
+          "branch": {
+            "type": "string",
+            "enum": [
+              "LineLeft",
+              "LineRight",
+              "External",
+              "AContainsB",
+              "BContainsA"
+            ]
+          },
+          "name": {
+            "type": "string"
+          },
+          "partId": {
+            "type": "string"
+          },
+          "layerId": {
+            "type": "string"
+          },
+          "materialId": {
+            "type": "string"
+          },
+          "path": {
+            "type": "string"
+          },
+          "sheetId": {
+            "type": "string"
+          },
+          "kind": {
+            "type": "string",
+            "enum": [
+              "Front",
+              "Top",
+              "Right",
+              "Isometric"
+            ]
+          },
+          "enabled": {
+            "type": "boolean"
+          },
+          "distanceMm": {
+            "type": "number"
+          },
+          "x": {
+            "type": "number"
+          },
+          "y": {
+            "type": "number"
+          },
+          "z": {
+            "type": "number"
+          },
+          "width": {
+            "type": "number"
+          },
+          "depth": {
+            "type": "number"
+          },
+          "radius": {
+            "type": "number"
+          },
+          "height": {
+            "type": "number"
+          },
+          "scale": {
+            "type": "number"
+          },
+          "centerX": {
+            "type": "number"
+          },
+          "centerY": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "action",
+          "documentId",
+          "stateId"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "Name": "cad_parameter",
+      "Description": "Atomic mm/rad/scalar. Read state/parameter_targets; full IDs. New expression/reference:omit id; edits keep id. References cannot drive; bind rejects drivers; unbind:binding id; delete guards users. Returns IDs/state.",
+      "Parameters": {
+        "type": "object",
+        "properties": {
+          "documentId": {
+            "$ref": "#/$defs/id"
+          },
+          "stateId": {
+            "$ref": "#/$defs/id"
+          }
+        },
+        "required": [
+          "documentId",
+          "stateId"
+        ],
+        "oneOf": [
+          {
+            "type": "object",
+            "properties": {
+              "action": {
+                "const": "set_expression"
+              },
+              "documentId": {},
+              "stateId": {},
+              "id": {
+                "$ref": "#/$defs/id"
+              },
+              "name": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 64
+              },
+              "dimension": {
+                "type": "string",
+                "enum": [
+                  "Scalar",
+                  "Length",
+                  "Angle"
+                ]
+              },
+              "expression": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 2048
+              }
+            },
+            "required": [
+              "action",
+              "name",
+              "dimension",
+              "expression"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "action": {
+                "const": "set_reference"
+              },
+              "documentId": {},
+              "stateId": {},
+              "id": {
+                "$ref": "#/$defs/id"
+              },
+              "name": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 64
+              },
+              "dimension": {
+                "type": "string",
+                "enum": [
+                  "Scalar",
+                  "Length",
+                  "Angle"
+                ]
+              },
+              "target": {
+                "$ref": "#/$defs/target"
+              }
+            },
+            "required": [
+              "action",
+              "name",
+              "dimension",
+              "target"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "action": {
+                "const": "delete"
+              },
+              "documentId": {},
+              "stateId": {},
+              "id": {
+                "$ref": "#/$defs/id"
+              }
+            },
+            "required": [
+              "action",
+              "id"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "action": {
+                "const": "bind"
+              },
+              "documentId": {},
+              "stateId": {},
+              "parameterId": {
+                "$ref": "#/$defs/id"
+              },
+              "target": {
+                "$ref": "#/$defs/target"
+              }
+            },
+            "required": [
+              "action",
+              "parameterId",
+              "target"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "action": {
+                "const": "unbind"
+              },
+              "documentId": {},
+              "stateId": {},
+              "id": {
+                "$ref": "#/$defs/id"
+              }
+            },
+            "required": [
+              "action",
+              "id"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "action": {
+                "const": "recompute"
+              },
+              "documentId": {},
+              "stateId": {}
+            },
+            "required": [
+              "action"
+            ],
+            "additionalProperties": false
+          }
+        ],
+        "$defs": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "minLength": 36,
+            "maxLength": 36
+          },
+          "target": {
+            "type": "object",
+            "properties": {
+              "kind": {
+                "type": "string",
+                "enum": [
+                  "Feature",
+                  "Datum",
+                  "AssemblyPattern",
+                  "SketchConstraint",
+                  "ExactSketchCurve",
+                  "SketchRegion"
+                ]
+              },
+              "owner": {
+                "$ref": "#/$defs/id"
+              },
+              "property": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 64
+              },
+              "constraint": {
+                "$ref": "#/$defs/id"
+              },
+              "curve": {
+                "$ref": "#/$defs/id"
+              },
+              "index": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 100000
+              }
+            },
+            "required": [
+              "kind",
+              "owner",
+              "property"
+            ],
+            "additionalProperties": false,
+            "oneOf": [
+              {
+                "properties": {
+                  "kind": {
+                    "type": "string",
+                    "enum": [
+                      "Feature",
+                      "Datum",
+                      "AssemblyPattern"
+                    ]
+                  },
+                  "property": {
+                    "type": "string"
+                  },
+                  "constraint": false,
+                  "curve": false,
+                  "index": false
+                }
+              },
+              {
+                "properties": {
+                  "kind": {
+                    "const": "SketchConstraint"
+                  },
+                  "property": {
+                    "type": "string"
+                  },
+                  "curve": false,
+                  "index": false
+                },
+                "required": [
+                  "constraint"
+                ]
+              },
+              {
+                "properties": {
+                  "kind": {
+                    "const": "ExactSketchCurve"
+                  },
+                  "property": {
+                    "type": "string"
+                  },
+                  "constraint": false
+                },
+                "required": [
+                  "curve"
+                ]
+              },
+              {
+                "properties": {
+                  "kind": {
+                    "const": "SketchRegion"
+                  },
+                  "property": {
+                    "const": "Distance"
+                  },
+                  "constraint": false,
+                  "index": false
+                },
+                "required": [
+                  "curve"
+                ]
+              }
+            ]
+          }
+        }
+      }
+    }
+  ],
+  "NativeReadToolCallId": "f6Os7nddWXCxtmZ4Ol4fVvtQrb62BGFm",
+  "ExpectedCylinderItem": {
+    "index": 38,
+    "kind": "Face",
+    "selection": {
+      "path": "15049495-397f-465f-98f6-27c190e0698e/c4bbb435-decc-4900-8d4a-4b1eab954b39",
+      "bodyId": "eaa24d7c-abd1-4461-9ca9-03a052006f64",
+      "revision": "55acbb73-94bd-442e-baf1-9b68a3c2d55c",
+      "asset": "20bad286545c0db06d38143f3d5a79fca15f18eca98f7adb88c492013233b45f",
+      "fingerprint": "7F270420AD41CD525D3DC661E225D82B195F5C421B8D904BF45FF3495B60CCD9",
+      "index": 38
+    },
+    "geometry": "CylinderFace"
+  },
+  "OriginalMaximumToolRounds": 16,
+  "OriginalPerTurnMinutes": 4,
+  "AssistantAndToolMessagesCopiedFromActualCompletedResponsesWithoutRewriting": true,
+  "Sources": [
+    {
+      "path": "artifacts/f5-lmstudio-completion-integrity-1/provider-drawing-3/tool-calls.json",
+      "sha256": "C7BCC5080E468FFF606AB4084F70AA0F58C6F325B4C01AC35EFBCD4583C16DA2"
+    },
+    {
+      "path": "artifacts/f5-lmstudio-completion-integrity-1/provider-drawing-3/request-001.json",
+      "sha256": "DEEBD196B487C913782D5F0309F7BD68E9AD619F2E69447A7C7140D8FE77BF65"
+    },
+    {
+      "path": "artifacts/f5-lmstudio-completion-integrity-1/provider-drawing-3/response-001.json",
+      "sha256": "0757713F7BBFE8633630DACBBBE7455921BADD1C4CAD4C58D902E3B4A9CC2081"
+    },
+    {
+      "path": "artifacts/f5-lmstudio-completion-integrity-1/provider-drawing-3/request-002.json",
+      "sha256": "18DD685996A4A6E754EB2CD6B2A69B3551BB06963E37597BE33E4B8C9AD11399"
+    },
+    {
+      "path": "artifacts/f5-lmstudio-completion-integrity-1/provider-drawing-3/response-002.json",
+      "sha256": "FE1E3A2A26D8A5B4513020C032F48496DF9F36985189AD7C1BAC8E92F041698A"
+    },
+    {
+      "path": "artifacts/f5-lmstudio-completion-integrity-1/provider-drawing-3/request-003.json",
+      "sha256": "0C30D81345CBF825DA66D01BD2DCE954FAB701174E48DD6CDC95E558AC745A30"
+    },
+    {
+      "path": "artifacts/f5-lmstudio-completion-integrity-1/provider-drawing-3/response-003.json",
+      "sha256": "4B0262944BDD3FA82D5C0824042A5AA122EA85A55F7B313111BDF72945B21A94"
+    },
+    {
+      "path": "artifacts/f5-lmstudio-completion-integrity-1/provider-drawing-3/request-004.json",
+      "sha256": "39DAFAB3C2FA0BBD11DD36B7C93A8DAC04F684E64B968135DDF41D45F2824DCE"
+    },
+    {
+      "path": "artifacts/f5-lmstudio-completion-integrity-1/provider-drawing-3/response-004.json",
+      "sha256": "2497E47B2325D7682DF2237947EB18FA558FEF04B9F918415965B73945747894"
+    },
+    {
+      "path": "artifacts/f5-lmstudio-completion-integrity-1/provider-drawing-3/request-005.json",
+      "sha256": "1E4D546B859D10868A7EFFAD05F1FF57B85892AD2847AB347E835A196CF08A2E"
+    },
+    {
+      "path": "artifacts/f5-lmstudio-completion-integrity-1/provider-drawing-3/response-005.json",
+      "sha256": "0E19AFD32BB0C545C8A54914C9F9467E612598CE3A5C6B1ABE1C3FA99BCAFD97"
+    },
+    {
+      "path": "artifacts/f5-lmstudio-completion-integrity-1/provider-drawing-3/request-006.json",
+      "sha256": "0F413B92406638BFD5C87FA3B4753D9FB3B62F56E583DE2DB530807FB7277185"
+    },
+    {
+      "path": "artifacts/f5-lmstudio-completion-integrity-1/provider-drawing-3/response-006.json",
+      "sha256": "EA7D4E7919B86677CE82091FBCB563D581D7C0334A45D120B413EE4922BD17F2"
+    },
+    {
+      "path": "artifacts/f5-lmstudio-completion-integrity-1/provider-drawing-3/request-007.json",
+      "sha256": "BA5047F4331A57664272833D7744B7CAB9F8CFF7850F3EF16405488CF51BDEF5"
+    },
+    {
+      "path": "artifacts/f5-lmstudio-completion-integrity-1/provider-drawing-3/response-007.json",
+      "sha256": "14C10DC9956E0AA4D60DB5F7B22ECEB7BF6BEC13B43AA9014783B99F8D8B4B71"
+    },
+    {
+      "path": "artifacts/f5-lmstudio-completion-integrity-1/provider-drawing-3/request-008.json",
+      "sha256": "30B796D92FB6C49234B77C8B7212431287B674D32A1E20019D0076FE5E8037C5"
+    },
+    {
+      "path": "artifacts/f5-lmstudio-completion-integrity-1/provider-drawing-3/response-008.json",
+      "sha256": "57533BC940CB555CDD2C573CBCC1F34C7F7BAEA370476E70803DAD168ACF1813"
+    },
+    {
+      "path": "artifacts/f5-lmstudio-completion-integrity-1/provider-drawing-3/request-009.json",
+      "sha256": "F1B9BFC7D68A931923EDA5658E8CFE8DDA67F23EC81D411D67EB76E9D70F8507"
+    },
+    {
+      "path": "artifacts/f5-lmstudio-completion-integrity-1/provider-drawing-3/response-009.json",
+      "sha256": "A0BEBD27E9AC486DFC3E2691FCC1AA7BFDA06F0977EC144167CB1AEEC5DF4E2B"
+    },
+    {
+      "path": "artifacts/f5-lmstudio-completion-integrity-1/provider-drawing-3/request-010.json",
+      "sha256": "064D055C408C070698CAF8A59A8B5A59085D051E0C657887F99E00695C8C516B"
+    },
+    {
+      "path": "artifacts/f5-lmstudio-completion-integrity-1/provider-drawing-3/response-010.json",
+      "sha256": "5731BEA15350C88ED368CB157113268B2C8084E1765C5CFB5377004FBCB13CCE"
+    },
+    {
+      "path": "artifacts/f5-lmstudio-completion-integrity-1/provider-drawing-3/request-011.json",
+      "sha256": "E5D7FDE7EED205C4B3010ECC2A14656EA5BC856EE399F9934C4FA75F08140147"
+    },
+    {
+      "path": "artifacts/f5-lmstudio-completion-integrity-1/provider-drawing-3/response-011.json",
+      "sha256": "8D0D1A4B23929A8EA6BD4D9C5CD2701159B1A80F54E0790F709008D3ACF32069"
+    },
+    {
+      "path": "artifacts/f5-lmstudio-completion-integrity-1/provider-drawing-3/request-012.json",
+      "sha256": "386BDBE2E414F366215B01661FED4F28D4980CF067F574AD55E96CA68C3C65AA"
+    },
+    {
+      "path": "artifacts/f5-lmstudio-completion-integrity-1/provider-drawing-3/response-012.json",
+      "sha256": "E1A386C659AEEDC3CC5B77A50C450D2AE37927523CA3427E92633A338B38D8E9"
+    },
+    {
+      "path": "artifacts/f5-lmstudio-completion-integrity-1/provider-drawing-3/request-013.json",
+      "sha256": "77A611EE5DCAEADE27B4E633C80A66E1AB54BA2A203B9618C3B1803D813F2481"
+    },
+    {
+      "path": "artifacts/f5-lmstudio-completion-integrity-1/provider-drawing-3/response-013.json",
+      "sha256": "27ACDBF0373AB1D8F7F3E9F362BF4B51433EAF8F3DECDE67A62BD8764BE78F70"
+    },
+    {
+      "path": "artifacts/f5-lmstudio-completion-integrity-1/provider-drawing-3/request-014.json",
+      "sha256": "A635D140AA6589AC74321451D9EBC6E268A660899275645F0E70867F997F7C96"
+    },
+    {
+      "path": "artifacts/f5-lmstudio-completion-integrity-1/provider-drawing-3/response-014.json",
+      "sha256": "EDD6C261C4195E834A935B8A3FD352B5279E2E1E0579009F24330C3CF5A4EE08"
+    },
+    {
+      "path": "artifacts/f5-lmstudio-completion-integrity-1/provider-drawing-3/request-015.json",
+      "sha256": "BFB31876DA8007245B04BFDCEA3B3FFD4D19431B0C4255CD2F32A187EB4DC0E4"
+    },
+    {
+      "path": "artifacts/f5-lmstudio-completion-integrity-1/provider-drawing-3/response-015.json",
+      "sha256": "23C4F687A1D209F7ABCF93F8DF5E8D7978486160A39AACD0A34501A4AD39F082"
+    },
+    {
+      "path": "artifacts/f5-lmstudio-completion-integrity-1/provider-drawing-3/request-016.json",
+      "sha256": "FEFF523A3358C6B10A574391515EBC3845D8F6B91D74DC1BAF46FE9F1C1E1EEF"
+    },
+    {
+      "path": "artifacts/f5-lmstudio-completion-integrity-1/provider-drawing-3/response-016.json",
+      "sha256": "0F4EB7AAF63084239EA765B759069696D38A05DC8EC1E1995CA78C9A872F9964"
+    },
+    {
+      "path": "artifacts/f5-lmstudio-completion-integrity-1/provider-drawing-3/request-017.json",
+      "sha256": "65741B2B2A36C022A9D88CCDCE374C5774DA8E95E38658FA8018F2DC0BEA3B04"
+    },
+    {
+      "path": "artifacts/f5-lmstudio-completion-integrity-1/provider-drawing-3/response-017.json",
+      "sha256": "9E89DBB8AAAB569FA89DC9F04F0CFF2C326C4CD11AEF8A0046D101E5D84FA926"
+    },
+    {
+      "path": "artifacts/f5-lmstudio-completion-integrity-1/provider-drawing-3/request-018.json",
+      "sha256": "E21B67564F0D0AB93BAD078B965E0AC44AC576D2B94F608369AC9AB96BFC1E4D"
+    },
+    {
+      "path": "artifacts/f5-lmstudio-completion-integrity-1/provider-drawing-3/response-018.json",
+      "sha256": "377B5DBF9B686BDB5AFDA3429B00AECA33FEF319CA515E9C41743A430C09174E"
+    },
+    {
+      "path": "artifacts/f5-lmstudio-completion-integrity-1/provider-drawing-3/request-019.json",
+      "sha256": "D6EB0426266F7DC6D59DA3968A82EAFD772FEC40830A19946FF577AC9ACAAD11"
+    },
+    {
+      "path": "artifacts/f5-lmstudio-completion-integrity-1/provider-drawing-3/response-019.json",
+      "sha256": "E408A3B48DDF58FE9BCD5F763D8C33B2F995A97C622940D06288B4283D4CB568"
+    },
+    {
+      "path": "artifacts/f5-lmstudio-completion-integrity-1/provider-drawing-3/request-020.json",
+      "sha256": "59EC2D0079BC090F75B89333B73E76ACD8EB51C22821FB6858939D8742EEDF56"
+    },
+    {
+      "path": "artifacts/f5-lmstudio-completion-integrity-1/provider-drawing-3/response-020.json",
+      "sha256": "0124AAF2D08DD9C6D596E56439389C66FBBA13E9EEA206BCE04C50D1F481CF50"
+    },
+    {
+      "path": "artifacts/f5-lmstudio-completion-integrity-1/provider-drawing-3/request-021.json",
+      "sha256": "BE855A90FE5A1236666745A7B54FCD75AEB6D93F9158945D33220FE2F59A9719"
+    },
+    {
+      "path": "artifacts/f5-lmstudio-completion-integrity-1/provider-drawing-3/response-021.json",
+      "sha256": "C1EA913FF4461DD3341236DF2EE2F5596A90179D4E6F14AD470D1CCD6DE046BF"
+    },
+    {
+      "path": "artifacts/f5-lmstudio-completion-integrity-1/provider-drawing-3/request-022.json",
+      "sha256": "20A924186D2FDF9E5234EB00AC276F664A9511113C57EB37A0E82AB5D15F2A0B"
+    },
+    {
+      "path": "artifacts/f5-lmstudio-completion-integrity-1/provider-drawing-3/response-022.json",
+      "sha256": "922A04409690D29A8023161159BF362E30001E82F05CE5165D670424977CC4B0"
+    },
+    {
+      "path": "artifacts/f5-lmstudio-completion-integrity-1/provider-drawing-3/request-023.json",
+      "sha256": "BC6FE91798A6B51DEAAABACE3BBCDABE9F138285B03BB3B6751F6536486B96B1"
+    },
+    {
+      "path": "artifacts/f5-lmstudio-completion-integrity-1/provider-drawing-3/response-023.json",
+      "sha256": "ECFDE01D383EC0BEE954B4C6709117E8A882AE1A5C7C310D279C8DC77BB0C564"
+    },
+    {
+      "path": "artifacts/f5-lmstudio-completion-integrity-1/provider-drawing-3/request-024.json",
+      "sha256": "4EC953D0D4552C6FFF59EF28236F4B31DE44DEB0956E5357F7497C4D73446A2A"
+    },
+    {
+      "path": "artifacts/f5-lmstudio-completion-integrity-1/provider-drawing-3/response-024.json",
+      "sha256": "24098E183EFA555C78E30F472BBA6E6B7281A338AD7805F7DCBD7E32EB1A0B27"
+    },
+    {
+      "path": "artifacts/f5-lmstudio-completion-integrity-1/provider-drawing-3/request-025.json",
+      "sha256": "36ADB54A285BD192EAB20ED207B286661FF4EE521AD0190D1CB16CF24138C6CE"
+    },
+    {
+      "path": "artifacts/f5-lmstudio-completion-integrity-1/provider-drawing-3/response-025.json",
+      "sha256": "B47C5270C72EC42F153F8EA90E28BABDF6CB7A8310E9EBD42F0330085065D47A"
+    },
+    {
+      "path": "artifacts/f5-lmstudio-completion-integrity-1/provider-drawing-3/request-026.json",
+      "sha256": "A4FFCE1C3126276EBCD9766E5922460C1E7AA08812D2CA19D60F54657421A5E2"
+    },
+    {
+      "path": "artifacts/f5-lmstudio-completion-integrity-1/provider-drawing-3/response-026.json",
+      "sha256": "BEF78D4CE964097AE6B9269D0B47B6EC314A428CA1A0FB2E7284E7D5992F4ECB"
+    },
+    {
+      "path": "artifacts/f5-lmstudio-completion-integrity-1/provider-drawing-3/request-027.json",
+      "sha256": "DE1B1BFDA33772319F53800E12406F2D33EDD6FE8B4E88BA7186F36C2378598C"
+    },
+    {
+      "path": "artifacts/f5-lmstudio-completion-integrity-1/provider-drawing-3/response-027.json",
+      "sha256": "9412FCBFD5E7720C19E8D8E939B66A287E2532020977FC4D5A8A060D99BC878A"
+    },
+    {
+      "path": "artifacts/f5-lmstudio-completion-integrity-1/provider-drawing-3/request-028.json",
+      "sha256": "4385CF0D50E672FE0517235EA2F7D3A3DB7DA869248D576223BD0856C1BCB1E2"
+    },
+    {
+      "path": "artifacts/f5-lmstudio-completion-integrity-1/provider-drawing-3/response-028.json",
+      "sha256": "CED4CC6373CF3211795A0E42CF21FDD572AE0F5C4414D2A6C7F468C48A7E22D6"
+    },
+    {
+      "path": "artifacts/f5-lmstudio-completion-integrity-1/provider-drawing-3/request-029.json",
+      "sha256": "EB71BA6ADD3A86A8E51318DD09A71DDEDFC36304BCC9F581B49988B6B6110E78"
+    },
+    {
+      "path": "artifacts/f5-lmstudio-completion-integrity-1/provider-drawing-3/response-029.json",
+      "sha256": "11CAD815ADF89EB6A76312850C3267C4AB1828FE9F7427FE5BDEBB553F738E60"
+    },
+    {
+      "path": "artifacts/f5-lmstudio-completion-integrity-1/provider-drawing-3/request-030.json",
+      "sha256": "DD3BE3B6040C876FC7F334CD08FB02839F34FC6F191A9362AD8086D08E68A934"
+    }
+  ]
+}

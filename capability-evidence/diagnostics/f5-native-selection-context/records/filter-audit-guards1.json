@@ -1,0 +1,20 @@
+{
+  "nativeStarted": false,
+  "negativeGuards": [
+    {
+      "fault": "missing-deferred",
+      "error": "Current discovery is missing an exact deferred case; do not guess or exclude a method"
+    },
+    {
+      "fault": "extra-nondeferred",
+      "error": "Executed names differ from current discovery minus exactly the user-deferred24"
+    },
+    {
+      "fault": "failed-process",
+      "error": "Nondeferred regression process failed; inspect actual failures"
+    }
+  ],
+  "STEPStarted": false,
+  "scope": "Offline mixed identity list and pure-managed43 TRX, not current root discovery",
+  "positiveGuardPassed": true
+}

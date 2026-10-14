@@ -38,6 +38,7 @@ internal static class AgentToolResultCompactor
 
             bool includeOmittedGeometryReads = true;
             bool includeCompleteSourceItems = true;
+            int maximumAdditionalRows = 8;
             string Page(int retained)
             {
                 var page = root.EnumerateObject().Where(p => p.Name != "items")
@@ -70,6 +71,9 @@ internal static class AgentToolResultCompactor
                                 row.item.TryGetProperty("kind",out var kind) && kind.ValueKind == JsonValueKind.String &&
                                 kind.GetString() == (geometry.GetString()!.EndsWith("Face",StringComparison.Ordinal) ? "Face" : "Edge"))
                             .GroupBy(row => row.item.GetProperty("geometry").GetString(), StringComparer.Ordinal)
+                            // A small budget favors less frequent geometry kinds.
+                            // Every row is still copied from this exact read, never inferred.
+                            .OrderBy(group => group.Count()).ThenBy(group => group.First().position)
                             .Take(8).Select(group => group.First())
                             .ToArray();
                         var omittedReads = omittedRows.Select(row => new { geometry = row.item.GetProperty("geometry").GetString(), offset = offset + row.position, limit = 1 }).ToArray();
@@ -84,7 +88,7 @@ internal static class AgentToolResultCompactor
                             var prefixKinds = items[..retained].Where(item => item.TryGetProperty("geometry", out var geometry) && geometry.ValueKind == JsonValueKind.String)
                                 .Select(item => item.GetProperty("geometry").GetString()).ToHashSet(StringComparer.Ordinal);
                             var additional = omittedRows.Where(row => !prefixKinds.Contains(row.item.GetProperty("geometry").GetString()))
-                                .Select(row => new { offset = offset + row.position, item = row.item }).ToArray();
+                                .Take(maximumAdditionalRows).Select(row => new { offset = offset + row.position, item = row.item }).ToArray();
                             if (additional.Length > 0)
                             {
                                 // Copy complete original rows from this actual query.
@@ -92,7 +96,7 @@ internal static class AgentToolResultCompactor
                                 context["completeSourceItems"] = additional;
                                 context["includedItemCount"] = retained + additional.Length;
                                 context["remainingOmittedItemCount"] = items.Length - retained - additional.Length;
-                                context["completeSourceItemsNote"] = "Additional complete rows from this same successful read, with original result positions. No selection or edit was executed. retainedItemCount/omittedItemCount describe only the contiguous items prefix; remainingOmittedItemCount accounts for these additional rows. nextRequest still starts after the prefix.";
+                                context["completeSourceItemsNote"] = "Original complete rows from this successful read. No selection or edit was executed. Offsets are query positions; includedItemCount includes prefix and extra rows. nextRequest starts after the prefix.";
                             }
                         }
                     }
@@ -107,6 +111,33 @@ internal static class AgentToolResultCompactor
             if (full.Length <= maximumCharacters) { compacted = full; return true; }
             var smallest = Page(0);
             if (smallest.Length > maximumCharacters) return false;
+            // Prefix content alone is a lower bound on every candidate. Avoid
+            // repeatedly serializing prefixes that cannot fit even without metadata.
+            var prefixCharacters = 0;
+            var maximumPrefix = 0;
+            for (var index = 0; index < items.Length - 1; index++)
+            {
+                prefixCharacters += JsonSerializer.Serialize(items[index]).Length + (index > 0 ? 1 : 0);
+                if (prefixCharacters > maximumCharacters) break;
+                maximumPrefix = index + 1;
+            }
+            // Try bounded subsets of complete original kinds before discarding all
+            // supplemental selectors. Navigation hints are optional; identities are not.
+            if (continuation is not null)
+                for (maximumAdditionalRows = Math.Min(8, items.Where(item => item.TryGetProperty("selection", out var selection) &&
+                         selection.ValueKind == JsonValueKind.Object && item.TryGetProperty("geometry", out var geometry) && geometry.ValueKind == JsonValueKind.String)
+                         .Select(item => item.GetProperty("geometry").GetString()).Distinct(StringComparer.Ordinal).Count()); maximumAdditionalRows > 0; maximumAdditionalRows--)
+                    foreach (var hints in new[] { true, false })
+                    {
+                        includeOmittedGeometryReads = hints;
+                        for (var retained = maximumPrefix; retained > 0; retained--)
+                        {
+                            var candidate = Page(retained);
+                            if (candidate.Length <= maximumCharacters) { compacted = candidate; return true; }
+                        }
+                    }
+            includeOmittedGeometryReads = true;
+            maximumAdditionalRows = 8;
             // Discovery metadata must never prevent a complete original item
             // from fitting. Prefer actual selectors over optional discovery hints.
             if (items.Length > 0 && Page(1).Length > maximumCharacters)
@@ -117,7 +148,7 @@ internal static class AgentToolResultCompactor
             // so serialized sizes need not be monotonic. At most 50 candidates
             // are possible; choose the longest complete prefix that fits.
             compacted = smallest;
-            for (var retained = items.Length - 1; retained > 0; retained--)
+            for (var retained = maximumPrefix; retained > 0; retained--)
             {
                 var candidate = Page(retained);
                 if (candidate.Length <= maximumCharacters) { compacted = candidate; break; }
@@ -129,7 +160,7 @@ internal static class AgentToolResultCompactor
 
     private static bool Identity(JsonElement value) => value.ValueKind == JsonValueKind.String &&
         Guid.TryParseExact(value.GetString(), "D", out var id) && id != Guid.Empty;
-    private static bool HasDuplicateFields(JsonElement value)
+    internal static bool HasDuplicateFields(JsonElement value)
     {
         if (value.ValueKind == JsonValueKind.Array) return value.EnumerateArray().Any(HasDuplicateFields);
         if (value.ValueKind != JsonValueKind.Object) return false;
