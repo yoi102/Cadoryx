@@ -1,0 +1,83 @@
+{
+  "recordedAt": "2026-10-14T03:45:17.320025+00:00",
+  "state": "FINAL87_ORIGINAL_MATERIAL_TOOLS_BUILD0_PAYLOAD_QUALIFIED_NOT_RUNTIME",
+  "freeze": {
+    "path": "artifacts/af-final87-3/freeze.json",
+    "sha256": "51D01EF2973B3BCAF27572B6D40B793DD0753C6FD8C90575C911B2BEFEBFA07A"
+  },
+  "preparation": {
+    "path": "artifacts/af-final87-3/material-preparation.json",
+    "sha256": "0DB023DC063D5DDA2E8B317E495F6CEB2B27790B641EFCC50C49E3D0DD28D8E4"
+  },
+  "buildQualification": {
+    "path": "artifacts/af-final87-3/material-build-verification.json",
+    "sha256": "4D34227DD148A130910216F26A4347A515948D83DF8427FB676E6386D0463B97"
+  },
+  "sources": [
+    {
+      "path": "tools/FinalCadAcceptance/prepare-material.py",
+      "sha256": "C898BE4D166AB51889675A9131DBD3071C6A0576224A7F2A8EFCA1B1EEB24327"
+    },
+    {
+      "path": "tools/FinalCadAcceptance/build-material.ps1",
+      "sha256": "96939B59F9CB00E57D856678BA188EBCD71F281E2DE5A2D9780CCC954B7964BC"
+    },
+    {
+      "path": "tools/FinalCadAcceptance/audit-material-build.py",
+      "sha256": "7CA5A694EE43FB488AF02EC752E9924E13A186B85F8912FEFB53712BB7DC6E38"
+    },
+    {
+      "path": "tools/FinalCadAcceptance/run-material82.ps1",
+      "sha256": "A2A348472403BC1822CADD9157614245C223E2A1CC19A6651E5CCE6E24B8F522"
+    },
+    {
+      "path": "tools/FinalCadAcceptance/audit-material82.py",
+      "sha256": "147A113CFA4996B35FB6AD7A79CC5ABF69A278D92FE0538947E5F219941E9F18"
+    },
+    {
+      "path": "tools/FinalCadAcceptance/run-material-desktop.ps1",
+      "sha256": "D4F1D0E69585A34DABA78140FF6B269DC1DABF31154C50EAA70D3DAB6B9C2BF6"
+    }
+  ],
+  "observerSources": [
+    {
+      "path": "tools/CadMaterialDesktopProbe/MaterialDesktopObserver.csproj",
+      "sha256": "B1AF433AB133460921E6EBDB32892B9C78AB7B09D537085F9C3BF1199065B259"
+    },
+    {
+      "path": "tools/CadMaterialDesktopProbe/StartupHook.cs",
+      "sha256": "69FB05FD26C308DE130C99803A3FEBEF3485CBF578C1D07747FAEE1A5E25FDB9"
+    }
+  ],
+  "originalObserverByteIdentical": true,
+  "original82CasesAssertionsUnchangedExceptRuntimeIdentity": true,
+  "original82ManagedRoles": 30,
+  "originalNative62": 62,
+  "requiredFullFrames": 346,
+  "originalPickerFixturesByteIdentical": true,
+  "cultures": [
+    2052,
+    1033,
+    1041
+  ],
+  "themes": [
+    "dark",
+    "light"
+  ],
+  "originalObserverReadySeconds": 60,
+  "originalDesktopMinutes": 30,
+  "negativeGates": [
+    {
+      "path": "artifacts/af-final87-3/material82-negative-gate1.json",
+      "sha256": "6C58598D82373067C92E457DDAF693D9C4669F98B412C35A2481498FC9EC4F34"
+    },
+    {
+      "path": "artifacts/af-final87-3/material-desktop-negative-gate1.json",
+      "sha256": "BB8EE9D2171FC7A4065A8E79C3F371761FCCAB4CC8B3A1D2E32D41D868EED2C6"
+    }
+  ],
+  "runtimeStarted": false,
+  "desktopInputStarted": false,
+  "materialUiAccepted": false,
+  "AFComplete": false
+}
