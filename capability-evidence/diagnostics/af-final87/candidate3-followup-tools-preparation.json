@@ -1,0 +1,65 @@
+{
+  "recordedAt": "2026-10-14T03:24:23.769106+00:00",
+  "state": "FINAL87_FOLLOWUP_RECOVERY_AND_PROVIDER_AUDITORS_PREPARED_NOT_RUNTIME",
+  "freeze": {
+    "path": "artifacts/af-final87-3/freeze.json",
+    "sha256": "51D01EF2973B3BCAF27572B6D40B793DD0753C6FD8C90575C911B2BEFEBFA07A"
+  },
+  "sources": [
+    {
+      "path": "tools/FinalCadAcceptance/recovery-current.py",
+      "sha256": "AC54D5745BD606EEF0FF29E7ED42AB7AE1BF73BDD66CBE90BBB78BB4C7C92F32"
+    },
+    {
+      "path": "tools/FinalCadAcceptance/prepare-recovery-auditors.py",
+      "sha256": "C58C027E90C0A7F76F2A61843F900405633E9C56E3FECB3F16AF5550525C0940"
+    },
+    {
+      "path": "tools/FinalCadAcceptance/audit-recovery.py",
+      "sha256": "E13C464015562DB0A6560505CCC6403D61E2142C57D5104D3A15AA7FAF81236C"
+    },
+    {
+      "path": "tools/FinalCadAcceptance/run-recovery.ps1",
+      "sha256": "4C431FDBEE906E9A98F6357D940E88D6290ED2A028A57B13DAA7932AF92B39C0"
+    },
+    {
+      "path": "tools/FinalCadAcceptance/audit-provider.py",
+      "sha256": "8EC313F39D0CAF1CDBE2473DA40F64DFB5DFBC9AF65E98B5FDB92679662841EC"
+    }
+  ],
+  "originalRecoveryRunner": {
+    "path": "tools/CurrentCadCandidate/run-recovery.ps1",
+    "sha256": "4512F5E40A8A67120AEE0E8D9EA83EC2CC2A4606FF9DD6AACFB0DED5BD1F5487"
+  },
+  "originalRuntimeBodyUnchangedExceptVersionLabel": true,
+  "originalRecoveryAuditorAssertionCounts": [
+    38,
+    29
+  ],
+  "projection": {
+    "path": "artifacts/af-final87-3/recovery-auditors-preparation.json",
+    "sha256": "7A664B9D00AB9D8F45FF4B22B85904940995611EA2DFE33597462070E5DE48D6"
+  },
+  "negativeGate": {
+    "path": "artifacts/af-final87-3/recovery-negative-gate1.json",
+    "sha256": "713C6AA6C1ECF986582E6BC1BCCB504A2966C4536C14AE08AA393E997A4B6838"
+  },
+  "readonlyReadinessSeconds": 30,
+  "observationSeconds": 900,
+  "recoveryPlanned": [
+    24,
+    36
+  ],
+  "requiredSaves": 48,
+  "requiredImages": [
+    52,
+    144
+  ],
+  "providerExpectedTurnsEach": 8,
+  "providerRequiredRawHttpCaptures": true,
+  "providerOriginalPromptsAndBudgetsChanged": false,
+  "fullCurrentTerminal": false,
+  "recoveryRuntimeStarted": false,
+  "providerAuditRuntimeStarted": false,
+  "AFComplete": false
+}

@@ -1,5 +1,7 @@
 # A5 当前恢复矩阵与主壳状态栏验收
 
+2026-10-14最终87第三候选接续：两配置各126专项已通过，但当前7170非延期完整回归尚未两配置终态，原STEP24未执行。新[恢复与模型审计准备](../capability-evidence/diagnostics/af-final87/candidate3-followup-tools-preparation.json)将原24/36宿主和审计绑定到当前最终87；原运行主体除版本标签外保持，原审计的38/29条assert表达式保持，30秒/900秒、48保存文件与52/144整图要求保持。提前运行的反例被完整门禁拒绝，未创建恢复窗口；工具语法和来源准备不算实际恢复、图像或模型通过。以下都是此前载荷的独立证据。
+
 最终UI原24第3轮已完整24/24通过，48保存/52完整图/实际native62/历史及生命周期保持；[两张唯一完整图也已直接审阅](../capability-evidence/diagnostics/af1082-f5-d7-local87cu1/recovery24-ui-whole-image-review.json)。下段“第3轮待运行”保留其此前准备状态，现在以本条及实际第3轮终态为准。原Bonsai跨文档8/8、工程图2/8后失败已独立核对；原队列失败保留，后续窗口和性能用[明确恢复资格](../tools/CurrentCadCandidate/require-followup-evidence.py)接续，不能把这次恢复程序通过当作模型、D6或性能通过。
 
 2026-10-14 当前：最终 F5+D7/本地 `8.0.1-preview.87.cu1` 的[完整两配置7117](../capability-evidence/diagnostics/af1082-f5-d7-local87cu1/full-verification.json)各7093通过、精确原24严格STEP失败延期、零跳过。原24视口恢复第2轮已通过，但使用修正前WPF；修正后原24第3轮尚待运行。最终[主壳36第5轮](../artifacts/af1082-f5-d7-local87cu1-1/main-status36/runtime-5-verification.json)36/36通过，实际native62、144完整图、后续建模/撤销/重做/保存重开及最终零宿主/资产已审计。[全部42个不同完整图直接审阅](../capability-evidence/diagnostics/af1082-f5-d7-local87cu1/main-status36-whole-image-review.json)包括36张完整主壳及六张三语言原生视口图，未用拼图或缩略图代替。主壳RenderTargetBitmap不包含HwndHost原生内容，原生图和状态栏图分别取证；不声称短恢复消息物理扫描、缺失上下文或物理GPU移除通过。
